@@ -5,12 +5,20 @@ import {supabase} from '../src/supabase';
 const ink='#193b2a',pale='#e7f2da';
 export default function AccountPage(){
  const router=useRouter(),params=useLocalSearchParams<{course?:string}>(),course=typeof params.course==='string'?params.course:'';
- const [mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>('register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>('register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  useEffect(()=>{
-  const {data:{subscription}}=supabase.auth.onAuthStateChange(event=>{
-   if(event==='PASSWORD_RECOVERY'){setMode('new-password');setMessage('Podaj nowe hasło do swojego konta.');}
+  let isCurrent=true;
+  void supabase.auth.getUser().then(({data:{user},error})=>{
+    if(isCurrent && !error && user?.email)setActiveEmail(user.email);
+  }).catch(()=>{});
+  const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
+   if(event==='PASSWORD_RECOVERY'){
+     setMode('new-password');setMessage('Podaj nowe hasło do swojego konta.');
+   }else if(event==='SIGNED_IN' || event==='TOKEN_REFRESHED'){
+     if(session?.user?.email)setActiveEmail(session.user.email);
+   }else if(event==='SIGNED_OUT')setActiveEmail('');
   });
-  return()=>subscription.unsubscribe();
+  return()=>{isCurrent=false;subscription.unsubscribe();};
  },[]);
  async function submit(){
    setBusy(true);setMessage('');
@@ -56,6 +64,16 @@ export default function AccountPage(){
  <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:22}}>← Wszystkie kursy</Text></Pressable>
  <Text style={{fontSize:12,color:'#61826c',fontWeight:'800',marginBottom:8}}>TRENERKI ACADEMY · TWOJE KONTO</Text>
  <Text style={{fontSize:30,fontWeight:'900',color:ink,marginBottom:10}}>{heading}</Text>
+ {!!activeEmail&&mode!=='new-password'&&<View style={{backgroundColor:'#e8f3dc',borderWidth:1,borderColor:'#d3e6c0',borderRadius:13,padding:16,marginVertical:12}}>
+   <Text style={{fontWeight:'800',color:ink}}>Twoja sesja nadal jest aktywna</Text>
+   <Text style={{color:'#45664f',marginTop:5,marginBottom:11}}>{activeEmail}</Text>
+   <Pressable onPress={()=>router.replace('/moje-kursy')} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
+     <Text style={{color:'#fff',fontWeight:'800'}}>Otwórz Moje kursy →</Text>
+   </Pressable>
+   <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
+     <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
+   </Pressable>
+ </View>}
  <Text style={{color:'#53695d',lineHeight:22,marginBottom:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':course?'Załóż konto lub zaloguj się, żeby korzystać ze swojego panelu ucznia. Płatności za kursy uruchomimy w kolejnym etapie.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Płatności uruchomimy później.'}</Text>
  {mode==='register'&&<TextInput style={input} placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
  {mode!=='new-password'&&<TextInput style={input} placeholder="Adres e-mail" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address"/>}
