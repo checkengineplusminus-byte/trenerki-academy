@@ -1,22 +1,13 @@
-# TRENERKI Academy
-Praktyczna nauka online — 8 etapów, testy, rozmowa sytuacyjna i certyfikat PL/EN. 
+# TRENERKI Academy · Expo Web & Supabase foundation
 
-## Status
-Projekt w przygotowaniu. **Nie przyjmuje płatności ani nie wydaje prawdziwych certyfikatów.**
+**Prototype / not production-ready.** The preserved legacy demo is in `public/academy/`; it has local demo logic and is NOT used as a trusted production exam system.
 
-Repozytorium jest obecnie **PUBLICZNE**. Pełna wersja demonstracyjna zawiera treści szkoleń, bazę pytań i odpowiedzi. Te materiały nie powinny zostać opublikowane w publicznym repozytorium ani wykorzystywane w produkcyjnym egzaminie po stronie przeglądarki.
+Project includes Expo Router, registration and login form (`/konto`), library (`/moje-kursy`), cross-device saved notes (`/nauka`), RLS-ready SQL schema, Stripe checkout and signed webhook handlers, transactional Resend email stub.
 
-## Expo Web
-Docelowo: Expo Router + Expo Hosting. Stary interfejs HTML zachowujemy w podkatalogu `public/academy/` podczas etapowej migracji.
+- `npm install`
+- Copy `.env.example` to `.env` and fill PUBLIC keys from the NEW, separate Supabase project.
+- `npm run web`
+- `npm run export:web` to create static output
+- `npx eas-cli@latest deploy` once Expo project is authenticated and ready.
 
-Wymagane przed produkcją:
-- przełączyć repozytorium na **Private**;
-- przesłać pełne źródła i wykonać `npm install && npx expo export --platform web`;
-- połączyć projekt z kontem Expo i wykonać `npx eas-cli@latest deploy`;
-- podłączyć prawdziwe konta, uprawnienia, Supabase Auth, Stripe i bezpieczną bazę egzaminów;
-- zweryfikować treści z ekspertami i dokumenty prawne.
-
-## Prawa i dane
-Prototyp zachowuje stare teksty oraz wygląd TRENERKI. Nie kopiujemy cudzych kursów. Dokumenty prywatne są robocze i wymagają prawnego przeglądu przed sprzedażą.
-
-Wersja przygotowanej paczki: `0.4.0`, 7.11.2026.
+See `docs/SETUP_SUPABASE_RESEND.md`. Never upload paid answer banks or secret keys to public repositories. Never share service role key with frontend.
