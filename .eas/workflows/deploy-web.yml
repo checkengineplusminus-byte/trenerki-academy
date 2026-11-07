@@ -1,0 +1,11 @@
+name: TRENERKI Academy — deploy website
+on:
+  push:
+    branches: ['main']
+jobs:
+  deploy_web:
+    name: Publish Expo website
+    type: deploy
+    environment: production
+    params:
+      prod: true
