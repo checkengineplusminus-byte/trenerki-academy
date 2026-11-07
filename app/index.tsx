@@ -1,7 +1,21 @@
-import { Text, View } from 'react-native';
-export default function Home() {
-  return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7',padding:24}}>
-    <Text style={{fontSize:32,fontWeight:'800',color:'#173228'}}>TRENERKI Academy</Text>
-    <Text style={{fontSize:16,color:'#4d6556',marginTop:12,textAlign:'center'}}>Wersja techniczna Expo. Pełny katalog i egzaminy pozostają prywatne do czasu zabezpieczenia projektu.</Text>
-  </View>;
+import React,{useEffect,useState} from 'react';
+import {ScrollView,View,Text,Pressable,TextInput,ActivityIndicator} from 'react-native';
+import {useRouter} from 'expo-router';
+import {supabase} from '../src/supabase';
+type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
+const ink='#173d30',green='#d9efb7';
+export default function Home(){
+ const [courses,setCourses]=useState<Course[]>([]),[loading,setLoading]=useState(true),[error,setError]=useState(''),[search,setSearch]=useState('');
+ const router=useRouter();
+ useEffect(()=>{let alive=true;void (async()=>{try{const {data,error}=await supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('published',true).order('title_pl');if(error)throw error;if(alive)setCourses(data||[]);}catch(e:any){if(alive)setError(e.message||'Nie można wczytać katalogu.');}finally{if(alive)setLoading(false);}})();return()=>{alive=false}},[]);
+ const filtered=courses.filter(c=>(c.title_pl+' '+(c.category_pl||'')+' '+(c.description_pl||'')).toLowerCase().includes(search.toLowerCase()));
+ return <ScrollView style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{padding:22,maxWidth:1130,width:'100%',alignSelf:'center'}}>
+ <View style={{flexDirection:'row',flexWrap:'wrap',alignItems:'center',justifyContent:'space-between',gap:16,marginBottom:26}}><Text style={{fontSize:23,fontWeight:'900',color:ink}}>TRENERKI <Text style={{fontWeight:'400'}}>Academy</Text></Text><View style={{flexDirection:'row',gap:18}}><Pressable onPress={()=>router.push('/moje-kursy')}><Text style={{color:ink,fontWeight:'700'}}>Moje kursy</Text></Pressable><Pressable onPress={()=>router.push('/konto')}><Text style={{color:ink,fontWeight:'700'}}>Zaloguj się</Text></Pressable></View></View>
+ <View style={{backgroundColor:'#e5f2d5',borderRadius:25,padding:28,marginBottom:25}}><Text style={{fontSize:12,fontWeight:'800',color:'#49704c',letterSpacing:2}}>UCZ SIĘ PRAKTYCZNIE · WE WŁASNYM TEMPIE</Text><Text style={{fontSize:38,fontWeight:'900',color:ink,maxWidth:800,marginTop:14,lineHeight:44}}>Umiejętności, które naprawdę przydają się w życiu i pracy.</Text><Text style={{color:'#47644e',fontSize:17,maxWidth:680,marginTop:14,lineHeight:25}}>Wybierz kurs, załóż konto i ucz się we własnym tempie. Twój postęp zapisuje się na koncie.</Text><Pressable onPress={()=>router.push('/konto')} style={{backgroundColor:ink,padding:16,marginTop:23,alignSelf:'flex-start',borderRadius:13}}><Text style={{color:'white',fontWeight:'800'}}>Dołącz do akademii →</Text></Pressable></View>
+ <Text style={{fontSize:26,fontWeight:'900',color:ink,marginBottom:15}}>Odkryj kursy</Text><TextInput value={search} onChangeText={setSearch} placeholder="Znajdź kurs lub temat…" style={{borderColor:'#d1ddcc',borderWidth:1,backgroundColor:'white',borderRadius:14,padding:15,marginBottom:18,fontSize:16}}/>
+ {loading&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a12626',marginBottom:16}}>{error}</Text>}
+ <View style={{flexDirection:'row',flexWrap:'wrap',gap:16}}>{filtered.map(c=><View key={c.slug} style={{backgroundColor:'white',borderWidth:1,borderColor:'#dde8d6',borderRadius:20,padding:22,width:330,maxWidth:'100%',flexGrow:1}}><Text style={{fontSize:12,color:'#608262',fontWeight:'800'}}>{c.category_pl||'KURS ONLINE'}</Text><Text style={{fontSize:22,color:ink,fontWeight:'800',marginTop:12}}>{c.title_pl}</Text><Text style={{color:'#5d6c61',marginVertical:15,lineHeight:22}}>{c.description_pl}</Text><Text style={{color:ink,fontSize:23,fontWeight:'900'}}>{(c.price_grosze/100).toFixed(0)} zł</Text><Pressable style={{backgroundColor:green,padding:14,borderRadius:11,marginTop:16}} onPress={()=>router.push({pathname:'/konto',params:{course:c.slug}})}><Text style={{textAlign:'center',color:ink,fontWeight:'900'}}>Zapisz się na kurs →</Text></Pressable></View>)}</View>
+ {!loading&&filtered.length===0&&!error&&<Text>Nie znaleziono kursów.</Text>}
+ <Text style={{marginVertical:32,fontSize:12,color:'#687b6a'}}>Dokument ukończenia kursu jest prywatnym potwierdzeniem nauki, a nie państwowym certyfikatem ani kwalifikacją zawodową. Szczegóły w regulaminie.</Text>
+ </ScrollView>;
 }
