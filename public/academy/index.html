@@ -89,6 +89,25 @@ function openCheckout(){const code=selectedCourse?.id;window.location.assign('/k
 function openLibrary(e){if(e)e.preventDefault();window.location.assign('/moje-kursy');}
 window.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelector('#modal-root').innerHTML='';});
 render();
+
+const _catalogEndpoint='https://kcvvixcjuwglfvdpypzs.supabase.co/rest/v1/ta_courses?select=slug,title_pl,description_pl,price_grosze&published=eq.true';
+fetch(_catalogEndpoint,{headers:{apikey:'sb_publishable_wpRp2JuWNW_WcjZdWXwIRQ_HfCPlxrj',accept:'application/json'}})
+ .then(async res=>{if(!res.ok)throw new Error('catalog_fetch_failed');return res.json()})
+ .then(rows=>{
+  if(!Array.isArray(rows))return;
+  const bySlug=new Map(rows.map(row=>[row.slug,row]));
+  for(const c of COURSES){
+   const row=bySlug.get(c.id);
+   if(!row)continue;
+   if(typeof row.title_pl==='string'&&row.title_pl.trim())c.title=row.title_pl;
+   if(typeof row.description_pl==='string'&&row.description_pl.trim())c.short=row.description_pl;
+   if(Number.isInteger(row.price_grosze)&&row.price_grosze>=0)c.price=row.price_grosze/100;
+  }
+  if(page==='home')updateCatalog();
+  else if(selectedCourse)render();
+ })
+ .catch(()=>{}); // Render original course catalog as a safe fallback during outages.
+
 </script>
 </body>
 </html>
