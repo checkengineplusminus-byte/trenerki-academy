@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "TRENERKI Academy",
+    "slug": "trenerki-academy",
+    "scheme": "trenerki",
+    "version": "0.4.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "web": {
+      "output": "static",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
