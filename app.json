@@ -2,8 +2,9 @@
   "expo": {
     "name": "TRENERKI Academy",
     "slug": "trenerki-academy",
+    "owner": "adrianflagas-team",
     "scheme": "trenerki",
-    "version": "0.4.0",
+    "version": "0.6.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "web": {
