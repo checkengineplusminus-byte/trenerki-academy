@@ -24,7 +24,7 @@ export default function MyCourses(){
   <Text style={{fontSize:32,fontWeight:'900',color:'#173228',marginBottom:10}}>Moje kursy</Text>
   <Text style={{color:'#5c7460',marginBottom:21}}>Zakupy i postęp są przypisane do Twojego konta. Dostęp trwa 12 miesięcy od zakupu.</Text>
   {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a52626'}}>{error}</Text>}
-  {!busy&&!items.length&&<Text>Nie masz jeszcze opłaconych kursów.</Text>}
+  {!busy&&!items.length&&<Text>Konto jest gotowe. Nie masz jeszcze aktywnych kursów — płatności i zapisy uruchomimy w kolejnym etapie.</Text>}
   {items.map((row,i)=>{const active=row.status==='active'&&new Date(row.expires_at)>new Date();return <View key={row.course_slug+String(i)} style={{backgroundColor:'white',padding:20,marginBottom:13,borderRadius:15,borderWidth:1,borderColor:'#d8e9d6'}}>
     <Text style={{fontSize:20,fontWeight:'800',color:'#183d2c'}}>{row.ta_courses?.title_pl||row.course_slug}</Text>
     <Text style={{marginTop:9,color:'#526f5b'}}>Postęp: {row.progress}% · Dostęp do: {new Date(row.expires_at).toLocaleDateString('pl-PL')} · {active?'aktywny':'zakończony'}</Text>
