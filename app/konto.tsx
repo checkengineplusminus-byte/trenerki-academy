@@ -34,7 +34,7 @@ export default function AccountPage(){
      if(password.length<8)throw new Error('Hasło powinno mieć minimum 8 znaków.');
      if(mode==='register'){
        if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
-       const emailRedirectTo=typeof window==='undefined'?undefined:window.location.origin+'/konto'+(course?'?course='+encodeURIComponent(course):'');
+       const emailRedirectTo='https://trenerki-academy.expo.app/konto';
        const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim()}}});
        if(error)throw error;
        if(data.session){router.replace('/moje-kursy');return;}
