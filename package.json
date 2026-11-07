@@ -1,6 +1,6 @@
 {
-  "name": "trenerki-academy-expo",
-  "version": "0.4.0",
+  "name": "trenerki-academy",
+  "version": "0.6.0",
   "private": true,
   "main": "expo-router/entry",
   "scripts": {
@@ -16,10 +16,13 @@
     "react-native": "0.88.0",
     "react-native-web": "~0.21.0",
     "expo-constants": "~18.1.0",
-    "expo-linking": "~8.1.0"
+    "expo-linking": "~8.1.0",
+    "expo-status-bar": "~3.1.0",
+    "@supabase/supabase-js": "2.86.0",
+    "@react-native-async-storage/async-storage": "2.2.0"
   },
   "devDependencies": {
-    "typescript": "^5.9.0",
+    "typescript": "5.9.3",
     "@types/react": "~19.3.0"
   }
 }
