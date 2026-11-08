@@ -502,5 +502,29 @@
       "Współpraca rodziców i wychowanie w dwóch domach",
       "Mój plan bliskości na 30 dni"
     ]
+  },
+  {
+    "id": "word-skroty",
+    "title": "Word — skróty klawiaturowe od podstaw",
+    "short": "Poznaj skróty Word dla Windows na obrazowych przykładach. Zobacz klawisze, efekt przed i po, praktyczne wskazówki i zadania do samodzielnego ćwiczenia.",
+    "cat": "Cyfrowe umiejętności",
+    "price": 10,
+    "emoji": "📝",
+    "accent": "#E4EBFA",
+    "duration": "Własne tempo",
+    "level": "Początkujący i praktyczny",
+    "flag": "Mini-kurs · 10 zł",
+    "certificate_title_pl": "Praktyczne skróty klawiaturowe Microsoft Word",
+    "certificate_title_en": "Practical Microsoft Word Keyboard Shortcuts",
+    "outline": [
+      "Dokument: zapisz, otwórz i cofnij",
+      "Formatowanie tekstu bez myszy",
+      "Akapity, wyrównanie i odstępy",
+      "Nagłówki, style i listy",
+      "Poruszanie się po długim dokumencie",
+      "Zaznaczanie, kopiowanie i edycja",
+      "Strony i dokumenty gotowe do wysłania",
+      "Sprawdzanie tekstu i zadanie końcowe"
+    ]
   }
 ]
