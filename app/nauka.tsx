@@ -66,19 +66,21 @@ export default function Learning(){
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
  const currentNotes=notes[String(module)]||'';
- async function recordAttempt(mode:'case'|'construction'|'keyboard',answerIndex:number,correct:boolean){
+ async function recordAttempt(mode:'case'|'construction'|'keyboard',answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string){
   if(!userId)return;
   try{
-   const {error:e}=await supabase.from('ta_learning_attempts').insert({
-    user_id:userId,course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,correct
+   const {data,error:e}=await supabase.functions.invoke<{ok?:boolean;correct?:boolean;error?:string}>('ta-lesson-guide',{
+    body:{action:'attempt',course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,
+     ...(mode==='keyboard'?{active_combo:activeCombo,selected_combo:selectedCombo}:{})}
    });
-   if(e)throw e;
+   if(e||!data?.ok)throw new Error(data?.error||e?.message||'Brak odpowiedzi serwera');
+   const correct=!!data.correct;
    setPractice(v=>({attempts:v.attempts+1,correct:v.correct+(correct?1:0)}));
    setReview(v=>{
     const k=String(module),t=v[k]||{correct:0,incorrect:0};
     return {...v,[k]:{correct:t.correct+(correct?1:0),incorrect:t.incorrect+(correct?0:1)}};
    });
-  }catch(e:any){setMsg('Odpowiedź sprawdzona, ale historia próby nie została zapisana. '+String(e?.message||'').slice(0,110));}
+  }catch(e:any){setMsg('Serwer nie mógł zweryfikować odpowiedzi. '+String(e?.message||'').slice(0,150));}
  }
  function changeModule(number:number){
   const firstPending=items.find(v=>!done.includes(v.lesson_no));
@@ -207,7 +209,7 @@ export default function Learning(){
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
-      <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
+      <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
      </>
    }
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
