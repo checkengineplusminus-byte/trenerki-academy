@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9ed"/><stop offset="1" stop-color="#e9f2df"/></linearGradient></defs>
+<rect width="1100" height="620" rx="24" fill="url(#bg)"/>
+<path d="M36 144H1064" stroke="#d8dfca" stroke-width="2"/>
+<text x="58" y="68" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#52705b" letter-spacing="3">TRENERKI ACADEMY · ZAPOMNIANE RZEMIOSŁA</text>
+<text x="58" y="120" font-family="Arial,sans-serif" font-size="39" font-weight="bold" fill="#173c2d">SZEWC</text>
+<rect x="48" y="174" width="450" height="361" rx="25" fill="#e5ead8"/>
+<ellipse cx="274" cy="466" rx="145" ry="20" fill="#c9d7c0" opacity=".7"/>
+<g transform="translate(275 344) scale(.95)"><path d="M-138 2Q-99 7 -69 -74 L2 -65Q23 4 86 13Q130 19 144 62L144 99Q93 127 -2 112L-127 100Q-152 57 -138 2Z" fill="#a47453" stroke="#634737" stroke-width="8"/><path d="M-140 91Q-4 125 142 91" fill="none" stroke="#e0c39a" stroke-width="16"/><path d="M-40 -23L7 -14 M-48 -3L1 6 M-55 17L-8 26" stroke="#f4d3a5" stroke-width="7" stroke-linecap="round"/></g>
+<rect x="530" y="178" width="519" height="346" rx="21" fill="#fffdf6" stroke="#d9e0cf" stroke-width="2"/>
+<text x="560" y="221" font-size="17" font-weight="bold" font-family="Arial,sans-serif" fill="#52705b">OD MATERIAŁU DO GOTOWEGO WYROBU</text>
+<rect x="554" y="250" width="470" height="69" rx="12" fill="#f0f3e9"/><text x="570" y="274" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">1 · MATERIAŁ</text><text x="570" y="301" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">SKÓRA</text><rect x="554" y="332" width="470" height="69" rx="12" fill="#f0f3e9"/><text x="570" y="356" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">2 · WARSZTAT</text><text x="570" y="383" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">KOPYTO I SZYCIE</text><rect x="554" y="414" width="470" height="69" rx="12" fill="#e0eedd"/><text x="570" y="438" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">3 · WYRÓB</text><text x="570" y="465" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">BUT</text>
+<text x="55" y="570" font-family="Arial,sans-serif" font-size="17" fill="#586e5e">Autorska ilustracja edukacyjna · poznawaj przedmioty i narzędzia krok po kroku</text>
+</svg>
