@@ -1,0 +1,122 @@
+{
+  "kowal-tradycja": {
+    "what": "Kowal rozgrzewał i kształtował żelazo w kuźni, tworząc narzędzia, zawiasy i okucia. Poznasz pracę paleniska, kowadła i kleszczy.",
+    "first": "Przyjrzyj się kutemu zawiasowi. Po czym poznasz, że metal był kształtowany, a nie odlany?",
+    "result": "Rozpoznasz podstawowe narzędzia kuźni i etapy powstawania prostego wyrobu metalowego.",
+    "boundary": "Gorący metal i kuźnia wymagają praktycznego szkolenia oraz ochrony."
+  },
+  "zdun-tradycja": {
+    "what": "Zdun budował piece kaflowe, w których liczyła się akumulacja ciepła, droga spalin i szczelność konstrukcji.",
+    "first": "Zobacz przekrój pieca kaflowego i znajdź kafle, palenisko oraz kanały spalinowe.",
+    "result": "Zrozumiesz, dlaczego tradycyjny piec oddaje ciepło inaczej niż zwykły grzejnik.",
+    "boundary": "Budowa i uruchamianie pieców wymagają fachowca i zgodności z przepisami przeciwpożarowymi."
+  },
+  "kolodziej": {
+    "what": "Kołodziej wykonywał drewniane koła i części wozów, dopasowując piastę, szprychy i obręcz do obciążeń.",
+    "first": "Porównaj rysunek drewnianego koła z kołem współczesnym. Wskaż piastę i szprychy.",
+    "result": "Rozpoznasz elementy koła, ich funkcję i powody stosowania drewna oraz metalowej obręczy.",
+    "boundary": "Pojazdy i koła przeznaczone do ruchu wymagają odpowiedniego bezpieczeństwa oraz kontroli."
+  },
+  "bednarz": {
+    "what": "Bednarz składał beczki z wyprofilowanych klepek, które utrzymywały kształt dzięki obręczom i dopasowaniu drewna.",
+    "first": "Spójrz na beczkę bez kleju. Spróbuj wyjaśnić, co utrzymuje klepki razem.",
+    "result": "Poznasz konstrukcję beczki, rolę dna, obręczy i dokładnego dopasowania elementów.",
+    "boundary": "Przy wyrobach do żywności trzeba stosować odpowiednie materiały i zasady higieny."
+  },
+  "woznica": {
+    "what": "Woźnica prowadził zaprzęg i odpowiadał za współpracę z końmi, wozem i warunkami drogi.",
+    "first": "Zobacz dawną uprząż i spróbuj znaleźć elementy łączące konia z wozem.",
+    "result": "Poznasz podstawowe nazwy elementów zaprzęgu oraz znaczenie spokojnego prowadzenia zwierząt.",
+    "boundary": "Praca z końmi i powożenie wymagają doświadczenia, właściwego nadzoru i dobrostanu zwierząt."
+  },
+  "rymarz": {
+    "what": "Rymarz tworzył i naprawiał pasy, uprzęże oraz skórzane elementy przenoszące siły podczas pracy zwierząt.",
+    "first": "Porównaj zwykły pasek ze skórzanym elementem uprzęży. Jaką rolę pełnią szwy i sprzączki?",
+    "result": "Rozpoznasz rodzaje skór, okuć i połączeń stosowanych w rymarstwie.",
+    "boundary": "Sprzęt obciążany przy pracy zwierząt wymaga fachowej kontroli wytrzymałości."
+  },
+  "garncarz-tradycja": {
+    "what": "Garncarz zamieniał glinę w miski i dzbany przez formowanie, suszenie i wypalanie.",
+    "first": "Obejrzyj miskę uformowaną na kole i wyjaśnij, co daje obracający się krążek.",
+    "result": "Poznasz pracę koła, strukturę gliny, suszenie, szkliwienie oraz bezpieczną obserwację wypału.",
+    "boundary": "Piece i pyły ceramiczne mogą być niebezpieczne; naczynia do żywności wymagają odpowiedniej glazury."
+  },
+  "plecionkarz": {
+    "what": "Plecionkarz przeplatał wiklinę i trzcinę, łącząc elastyczność włókien z konstrukcją dna oraz ścian kosza.",
+    "first": "Weź pod lupę kosz wiklinowy i znajdź pionowe pręty osnowy oraz wpleciony materiał.",
+    "result": "Odróżnisz podstawowe sploty i dowiesz się, jak rzemieślnik planował kształt naczynia.",
+    "boundary": "Do nauki wybieraj bezpieczne, nieszkodliwe materiały i unikaj ostrych narzędzi bez instruktażu."
+  },
+  "powroznik": {
+    "what": "Powroźnik skręcał naturalne włókna w trwałe liny, dobierając ich rodzaj i kierunek skrętu.",
+    "first": "Porównaj kawałek sznurka z liną. Sprawdź, ile pasm je tworzy i jak są ułożone.",
+    "result": "Poznasz budowę skręconej liny i historyczne zastosowania lnu, konopi oraz sizalu.",
+    "boundary": "Nie używaj własnych eksperymentalnych lin do podnoszenia ładunków ani zabezpieczenia ludzi."
+  },
+  "snycerz": {
+    "what": "Snycerz wykonywał dekoracyjne detale i rzeźby w drewnie, planując wzór zgodnie z kierunkiem włókien.",
+    "first": "Zobacz drewniany ornament. Wskaż, gdzie rzeźbiarz usunął materiał, aby uzyskać światło i cień.",
+    "result": "Poznasz różnicę między reliefem, płaskorzeźbą i detalem przestrzennym.",
+    "boundary": "Ostre dłuta i maszyny do drewna wymagają właściwych technik bezpieczeństwa."
+  },
+  "sitarz": {
+    "what": "Sitarz wykonywał sita z ram i naciągniętej siatki, dopasowując wielkość oczek do sortowanego materiału.",
+    "first": "Porównaj dwa sita: drobne i grube. Jakie ziarno przejdzie przez każde z nich?",
+    "result": "Poznasz budowę sita, rolę oczek i dawne zastosowania w kuchni oraz gospodarstwie.",
+    "boundary": "Do kontaktu z żywnością używaj materiałów dopuszczonych do takiego zastosowania."
+  },
+  "zecer": {
+    "what": "Zecer składał tekst z fizycznych czcionek przed epoką komputerowego składu, pamiętając o lustrzanym odbiciu druku.",
+    "first": "Zobacz metalowe litery od strony druku. Dlaczego pojedynczy znak wygląda odwrotnie?",
+    "result": "Zrozumiesz skład wiersza, odstępy i sposób przenoszenia tekstu na papier.",
+    "boundary": "Dawne metale typograficzne mogą zawierać ołów; nie przetapiaj ich ani nie stosuj bez wiedzy o ryzyku."
+  },
+  "ludwisarz": {
+    "what": "Ludwisarz odlewał dzwony z metalu, łącząc wiedzę o formach, stopach i proporcjach wpływających na brzmienie.",
+    "first": "Przyjrzyj się kształtowi dzwonu i znajdź serce, koronę oraz płaszcz.",
+    "result": "Poznasz etapy przygotowania formy i zależność między kształtem a brzmieniem.",
+    "boundary": "Wysokotemperaturowe odlewanie metali wymaga profesjonalnej odlewni i ochrony."
+  },
+  "introligator-tradycja": {
+    "what": "Introligator łączył karty książki w blok i oprawę tak, by publikacja wytrzymała wielokrotne otwieranie.",
+    "first": "Obejrzyj grzbiet starej książki. Spróbuj rozpoznać, jak zszyto lub sklejono kartki.",
+    "result": "Poznasz rolę składek, nici, grzbietu i okładki w konstrukcji książki.",
+    "boundary": "Przy starych cennych książkach konserwację powierzaj specjalistom."
+  },
+  "tkacz-reczny": {
+    "what": "Tkacz przeplatał nitki osnowy i wątku na krośnie, tworząc tkaniny o rozmaitych wzorach.",
+    "first": "Spójrz na fragment płótna pod lupą i rozróżnij dwie prostopadłe grupy nici.",
+    "result": "Rozpoznasz osnowę, wątek i rolę podstawowych elementów krosna.",
+    "boundary": "Ruchome elementy krosna wymagają ostrożności i instruktażu."
+  },
+  "kaletnik-tradycja": {
+    "what": "Kaletnik projektował i szył torby, paski i portfele, dobierając materiały oraz połączenia do codziennego użytkowania.",
+    "first": "Sprawdź, jak uszyta jest krawędź torby i gdzie zastosowano wzmocnienia.",
+    "result": "Poznasz podstawowe rodzaje szwów, okuć i konstrukcję niewielkiego wyrobu.",
+    "boundary": "Narzędzia tnące, kleje i maszyny wymagają bezpiecznego użytkowania."
+  },
+  "zegarmistrz-tradycja": {
+    "what": "Zegarmistrz rozumiał działanie sprężyny, przekładni i wychwytu mechanicznego zegarka.",
+    "first": "Przyjrzyj się rysunkowi mechanizmu. Które koła przenoszą ruch, a który element reguluje jego tempo?",
+    "result": "Poznasz rolę przekładni, sprężyny i balansu w mierzeniu czasu.",
+    "boundary": "Delikatne mechanizmy i chemikalia warsztatowe wymagają odpowiedniego wyposażenia i szkolenia."
+  },
+  "mlynarz-tradycyjny": {
+    "what": "Młynarz przemieniał ziarno w mąkę dzięki systemowi czyszczenia, rozdrabniania i odsiewania.",
+    "first": "Obejrzyj drogę ziarna przez młyn. Gdzie oddziela się zanieczyszczenia, a gdzie powstaje mąka?",
+    "result": "Rozpoznasz kamienie młyńskie, żarna i dawne sposoby wykorzystania wody lub wiatru.",
+    "boundary": "Pył mączny bywa palny; młyny mają ruchome elementy i wymagają zasad higieny."
+  },
+  "gontarz": {
+    "what": "Gontarz przygotowywał drewniane elementy pokrycia dachowego, zwracając uwagę na włókna drewna i odprowadzanie deszczu.",
+    "first": "Spójrz na dach z gontów. Dlaczego poszczególne deseczki zachodzą na siebie?",
+    "result": "Poznasz różnicę między gontem łupanym i ciętym oraz rolę układania warstw.",
+    "boundary": "Prace dekarskie na wysokości wymagają fachowych zabezpieczeń i szkolenia."
+  },
+  "szewc-tradycja": {
+    "what": "Szewc naprawiał obuwie, wymieniając podeszwy, pięty i drobne elementy, zamiast wyrzucać całą parę.",
+    "first": "Zobacz but z odklejającą się podeszwą. Co należy sprawdzić przed wyborem sposobu naprawy?",
+    "result": "Poznasz budowę obuwia i podstawowe rodzaje połączeń materiałów.",
+    "boundary": "Zwracaj uwagę na opary klejów i bezpieczeństwo maszyn szewskich."
+  }
+}
