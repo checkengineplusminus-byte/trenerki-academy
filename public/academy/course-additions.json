@@ -15,11 +15,15 @@
       "Odżywianie, nawodnienie i obserwacja",
       "Wsparcie rodziny i opiekunów",
       "Sytuacje alarmowe i wzywanie pomocy",
-      "Plan wsparcia i granice opiekuna"
+      "Plan wsparcia i granice opiekuna",
+      "Rozmowa o pomocy bez odbierania wyboru",
+      "Leki i obowiązki opiekuna",
+      "Kryzys opiekuna — szukaj wsparcia",
+      "Plan wsparcia na kolejny miesiąc"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Opieka nad osobami starszymi",
     "certificate_title_en": "Opieka nad osobami starszymi"
   },
@@ -39,11 +43,15 @@
       "Pomoc w rozpoczynaniu zadań",
       "Przeciążenie i regulacja bodźców",
       "Współpraca z rodziną i specjalistami",
-      "Indywidualny plan wsparcia"
+      "Indywidualny plan wsparcia",
+      "Zadanie w czterech małych etapach",
+      "Plan przerw bez karania",
+      "Nauka współpracy zamiast kontrolowania",
+      "Sprawdzian — indywidualny plan na tydzień"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Opieka i wsparcie osób z ADHD",
     "certificate_title_en": "Opieka i wsparcie osób z ADHD"
   },
@@ -63,11 +71,15 @@
       "Przekonania, które mnie ograniczają",
       "Potrzeby i granice",
       "Moje schematy decyzji",
-      "Mój osobisty plan rozwoju"
+      "Mój osobisty plan rozwoju",
+      "Rozpoznaj swój sposób reagowania na stres",
+      "Autentyczne tak i uczciwe nie",
+      "Jak nie wracać do starego schematu",
+      "Plan końcowy — jedna zmiana na 30 dni"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Poznaj siebie — odkryj swoje mocne strony",
     "certificate_title_en": "Poznaj siebie — odkryj swoje mocne strony"
   },
@@ -87,11 +99,15 @@
       "Radzenie sobie z presją",
       "Nawyki i konsekwencja",
       "Odpowiedzialność za swoje decyzje",
-      "Plan mocniejszego charakteru"
+      "Plan mocniejszego charakteru",
+      "Stanowczość w pracy bez konfliktu",
+      "Odporność na presję grupy",
+      "Powrót do rozmowy po silnych emocjach",
+      "Próba końcowa — granice i odpowiedzialność"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Wybuduj mocny charakter i bądź stanowczy",
     "certificate_title_en": "Wybuduj mocny charakter i bądź stanowczy"
   },
@@ -183,11 +199,15 @@
       "Wsparcie i proszenie o pomoc",
       "Nowe źródła dochodu",
       "Nawyki odbudowy",
-      "Plan 90 dni od nowa"
+      "Plan 90 dni od nowa",
+      "Rozmowa z wierzycielem bez unikania",
+      "Budżet awaryjny na cztery tygodnie",
+      "Mały dochód dodatkowy bez pułapek",
+      "90 dni odbudowy — przegląd wyników"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Zaczynam od zera po utracie majątku",
     "certificate_title_en": "Zaczynam od zera po utracie majątku"
   },
@@ -207,11 +227,15 @@
       "Tygodniowy plan domu",
       "Obowiązki odpowiednie do wieku",
       "Jak rozmawiać o niedotrzymanych ustaleniach",
-      "System bez ciągłych przypomnień"
+      "System bez ciągłych przypomnień",
+      "Nie tylko sprzątanie — kto pamięta?",
+      "Plan obowiązków w dwóch domach",
+      "Co zrobić, gdy harmonogram nie działa?",
+      "Siedmiodniowy test nowego systemu"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Obowiązki domowe — dom, który działa",
     "certificate_title_en": "Obowiązki domowe — dom, który działa"
   },
@@ -231,11 +255,15 @@
       "Temperatura, czas i wilgotność",
       "Dekoracja i estetyka",
       "Kalkulacja kosztu porcji",
-      "Plan produkcji i kontrola jakości"
+      "Plan produkcji i kontrola jakości",
+      "Pierwsza własna receptura — kontrolowana zmiana",
+      "Alergeny w zamówieniu",
+      "Powtarzalność między partiami",
+      "Zamówienie końcowe — od wyceny do odbioru"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Bądź lepszym cukiernikiem",
     "certificate_title_en": "Bądź lepszym cukiernikiem"
   },
@@ -255,11 +283,15 @@
       "Budowanie smaku i przyprawianie",
       "Sosy, buliony i konsystencja",
       "Menu, produkty i straty",
-      "Serwis i jakość każdej porcji"
+      "Serwis i jakość każdej porcji",
+      "Menu z trzech produktów",
+      "Bezpieczne chłodzenie potraw",
+      "Od smaku do korekty",
+      "Serwis — pięć porcji tej samej jakości"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Bądź lepszym kucharzem",
     "certificate_title_en": "Bądź lepszym kucharzem"
   },
@@ -279,11 +311,15 @@
       "Rozmowa bez presji",
       "Granice i odmowa",
       "Zaufanie budowane powoli",
-      "Relacje pasujące do Ciebie"
+      "Relacje pasujące do Ciebie",
+      "Rozmowa od jednego zdania",
+      "Przeciążenie społeczne i plan odpoczynku",
+      "Odmowa z szacunkiem",
+      "Twoja własna definicja dobrych relacji"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Nie lubię ludzi — jak to zmienić?",
     "certificate_title_en": "Nie lubię ludzi — jak to zmienić?"
   },
@@ -303,11 +339,15 @@
       "Jazda próbna i diagnostyka",
       "Ukryte koszty i typowe pułapki",
       "Umowa, płatność i przekazanie",
-      "Lista kontrolna zakupu"
+      "Lista kontrolna zakupu",
+      "Pytania do sprzedającego przed wyjazdem",
+      "Diagnostyka nie zastępuje oględzin",
+      "Negocjacje oparte na faktach",
+      "Decyzja końcowa — kupić czy odejść?"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Jak kupić samochód i nie żałować",
     "certificate_title_en": "Jak kupić samochód i nie żałować"
   },
@@ -327,11 +367,15 @@
       "Nauka z praktyki i mentorów",
       "Projekty jako dowody umiejętności",
       "Odwaga wobec odmowy",
-      "Twój plan na 100 dni"
+      "Twój plan na 100 dni",
+      "Pierwszy klient — sprawdzian prawdziwej wartości",
+      "Porażka bez katastrofy",
+      "Odważny cel a bezpieczeństwo finansowe",
+      "Projekt końcowy — pokaż, co umiesz"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Zawsze mierz ponad swoje siły — nawet bez szkoły",
     "certificate_title_en": "Zawsze mierz ponad swoje siły — nawet bez szkoły"
   },
@@ -399,11 +443,15 @@
       "Budżet i stawki",
       "Konwersje i pomiar",
       "Wykluczenia i optymalizacja",
-      "Raport, wnioski i plan kolejnej kampanii"
+      "Raport, wnioski i plan kolejnej kampanii",
+      "Przed kliknięciem «Opublikuj»",
+      "Rozmowa z klientem po kampanii",
+      "Podejrzane kliknięcia a wykluczenia",
+      "Raport końcowy bez przechwałek"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Promocja firmy w Google Ads od podstaw",
     "certificate_title_en": "Promocja firmy w Google Ads od podstaw"
   },
@@ -423,11 +471,15 @@
       "Budżet, testy i harmonogram",
       "Zdarzenia i pomiar",
       "Optymalizacja bez zgadywania",
-      "Wyniki i plan skalowania"
+      "Wyniki i plan skalowania",
+      "Test dwóch różnych komunikatów",
+      "Bezpieczne dane klientów",
+      "Reklama nie działa — co badać najpierw?",
+      "Plan skalowania po udanym teście"
     ],
-    "duration": "Własne tempo",
+    "duration": "12 lekcji",
     "level": "Praktyczny",
-    "flag": "Nowy kurs",
+    "flag": "Nowe przykłady · 12 lekcji",
     "certificate_title_pl": "Promocja firmy w Facebook Ads i Instagramie",
     "certificate_title_en": "Promocja firmy w Facebook Ads i Instagramie"
   },
