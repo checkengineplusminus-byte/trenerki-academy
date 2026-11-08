@@ -93,7 +93,7 @@ Deno.serve(async(req:Request)=>{
  if(authError||!user?.id||!user.email_confirmed_at)return respond({error:'login_required'},401);
  let payload:any;try{payload=await req.json()}catch{return respond({error:'invalid_json'},400)}
  const action=cut(payload?.action,30),slug=cut(payload?.course_slug,80),no=Number(payload.lesson_no);
- if(!['status','dialogue','complete'].includes(action)||!slugOK(slug)||!Number.isInteger(no)||no<0||no>199)return respond({error:'invalid_input'},400);
+ if(!['status','dialogue','complete','attempt'].includes(action)||!slugOK(slug)||!Number.isInteger(no)||no<0||no>199)return respond({error:'invalid_input'},400);
  const db=createClient(url,secret,{auth:{persistSession:false,autoRefreshToken:false}});
  const {data:access,error:ae}=await db.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',slug)
   .in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
@@ -119,6 +119,36 @@ Deno.serve(async(req:Request)=>{
   first_name:name,count:row?.meaningful_count||0,turns:row?.turn_count||0,
   opening,history:visible,reply:firstMsg||null,
   cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!Deno.env.get('OPENAI_API_KEY')});
+ if(action==='attempt'){
+  const mode=cut(payload.mode,24),selected=Number(payload.selected_index);
+  if(!['case','construction','keyboard'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
+  const material=lesson.material||{};
+  let correct=false;
+  if(mode==='case'){
+   const options=material.learning?.options||[],answer=Number(material.learning?.correct);
+   if(!Array.isArray(options)||options.length<2||selected>=options.length||!Number.isInteger(answer)||answer<0||answer>=options.length)
+    return respond({error:'exercise_not_configured'},422);
+   correct=selected===answer;
+  }else if(mode==='construction'){
+   const options=material.construction?.roleplay?.options||[],answer=Number(material.construction?.roleplay?.correct);
+   if(!Array.isArray(options)||options.length<2||selected>=options.length||!Number.isInteger(answer)||answer<0||answer>=options.length)
+    return respond({error:'exercise_not_configured'},422);
+   correct=selected===answer;
+  }else{
+   const shortcuts=Array.isArray(material.shortcuts)?material.shortcuts:[],
+   active=cut(payload.active_combo,80).toUpperCase().replace(/\\s/g,''),
+   chosen=cut(payload.selected_combo,80).toUpperCase().replace(/\\s/g,'');
+   const known=new Set(shortcuts.map((v:any)=>cut(v.combo,80).toUpperCase().replace(/\\s/g,'')));
+   if(shortcuts.length<3||!known.has(active)||!known.has(chosen)||selected>=3)
+    return respond({error:'invalid_attempt'},400);
+   correct=active===chosen;
+  }
+  const {error:e}=await db.from('ta_learning_attempts').insert({
+   user_id:user.id,course_slug:slug,lesson_no:no,mode,selected_index:selected,correct
+  });
+  if(e){console.error('attempt_save',e.code);return respond({error:'attempt_save_failed'},503);}
+  return respond({ok:true,correct,lesson_no:no,mode});
+ }
  if(action==='status')return respond(state(record));
  if(action==='complete'){
   if(alreadyDone)return respond({ok:true,completed:true,next:lessons.find(l=>l.lesson_no>no)?.lesson_no??null});
