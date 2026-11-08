@@ -35,7 +35,7 @@ function localLessonCoach(name:string,lesson:any,text:string,history:any[],count
  return {reply:cut(reply,1400),meaningful,severe:false,question:''};
 }
 async function respondAsAnielka(name:string,lesson:any,text:string,history:any[],meaningful:number,learnerSummary:string):Promise<ModelResult|null>{
- const key=Deno.env.get('OPENAI_API_KEY');
+ const key=(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));
  if(!key)return null;
  const mat=lesson.material||{},learning=mat.learning||{},construction=mat.construction||{};
  const context={
@@ -118,7 +118,7 @@ Deno.serve(async(req:Request)=>{
  const state=(row:any,firstMsg?:string)=>({ok:true,ready:alreadyDone||!!row?.approved,already_completed:alreadyDone,
   first_name:name,count:row?.meaningful_count||0,turns:row?.turn_count||0,
   opening,history:visible,reply:firstMsg||null,
-  cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!Deno.env.get('OPENAI_API_KEY')});
+  cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'))});
  if(action==='attempt'){
   const mode=cut(payload.mode,24),selected=Number(payload.selected_index);
   if(!['case','construction','keyboard'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
