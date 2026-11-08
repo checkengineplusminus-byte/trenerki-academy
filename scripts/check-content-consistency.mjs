@@ -80,7 +80,7 @@ try{
  if(!checkout.includes("academyAction('demo_checkout'")||checkout.includes("ta-create-checkout")||!checkout.includes('TRYB TESTOWY'))fail('Checkout not strictly marked DEMO');else ok('No-charge test purchasing');
  if(!gift.includes("academyAction('create_gift'")||!gift.includes("academyAction('redeem_gift'")||!gift.includes('swiety-mikolaj'))fail('Gift card redemption/sharing missing');else ok('Gift card flow');
  if(!admin.includes("academyAction('admin_dashboard'")||!admin.includes('Jakość kursów'))fail('Protected administration or editorial view missing');else ok('Administrator content-review dashboard');
- if(!progress.includes(".in('status',['active','demo'])")||!progress.includes('reviewStatus'))fail('Demo entitlement or student editorial warnings missing');else ok('Demo lesson access and learner guidance');
+ if(!progress.includes(".in('status',['active','demo'])")||!progress.includes("setDone(")||!checkout.includes("review_status"))fail('Demo access, saved progress or editorial warnings missing');else ok('Demo lessons, progress and pre-purchase editorial review checks');
  if(!academy.includes("functions.invoke('ta-academy'"))fail('Protected backend integration missing');
  if(/service_role|stripe_secret_key/i.test(checkout+academy+gift+admin))fail('Server secret name exposed in frontend, review required');
  if(!process.exitCode)console.log('All static integrity checks passed.');
