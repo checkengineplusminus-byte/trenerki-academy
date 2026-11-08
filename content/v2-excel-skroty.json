@@ -168,7 +168,8 @@
             "heading": "Czego nie robić",
             "text": "Poprawiam D5 bez sprawdzenia.. Dlaczego: Komórka to przecięcie wiersza i kolumny. Kolumny mają litery, wiersze liczby, więc B3 oznacza konkretny adres; pomylenie adresu może zmienić wynik formuły."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -222,7 +223,8 @@
             "heading": "Czego nie robić",
             "text": "Dodaję 100 do numeru produktu.. Dlaczego: Komórka może zawierać tekst, liczbę, datę lub formułę. Numer zamówienia z zerami na początku warto przechowywać jako tekst; data wymaga spójnego formatu."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -276,7 +278,8 @@
             "heading": "Czego nie robić",
             "text": "Zmieniam losową komórkę z podobną liczbą.. Dlaczego: Wpis do komórki zatwierdzasz Enterem. Pasek formuły pozwala zobaczyć pełną treść, a F2 często przełącza edycję. Nie nadpisuj wartości bez sprawdzenia adresu."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -330,7 +333,8 @@
             "heading": "Czego nie robić",
             "text": "Wpisuję wynik 700 wszędzie ręcznie i nie aktualizuję zmian.. Dlaczego: Formuła zaczyna się od =. W kosztorysie =C2*D2 mnoży ilość z C2 przez cenę z D2; zmiana jednej wartości powoduje ponowne wyliczenie."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -384,7 +388,8 @@
             "heading": "Czego nie robić",
             "text": "Dodaję tylko pierwszą komórkę i nazywam to sumą.. Dlaczego: Zakres A1:A10 obejmuje dziesięć komórek. Funkcja SUMA lub SUM zlicza liczby; ŚREDNIA oblicza średnią, a jej wynik nie musi być sumą."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -438,7 +443,8 @@
             "heading": "Czego nie robić",
             "text": "Wpisuję 25 do formuły oczekującej 0,25 bez kontroli.. Dlaczego: Wyświetlanie 25% lub 250 zł to format, nie nowa liczba. Zmiana formatu nie powinna służyć do ukrywania błędów obliczeń."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -546,7 +552,8 @@
             "heading": "Czego nie robić",
             "text": "Nadpisuję wynik sumy na oko.. Dlaczego: Ułóż nagłówki Usługa, Ilość, Cena, Wartość. Oblicz trzy wartości formułami, a potem sumę. Zmieniaj ilość, by zobaczyć automatyczną aktualizację kosztu."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -800,7 +807,8 @@
             "heading": "Czego nie robić",
             "text": "Kopiuję liczbę 700 zamiast formuły i ignoruję różnicę.. Dlaczego: F2 umożliwia edycję, Ctrl+C/V kopiowanie i wklejanie, Ctrl+Z cofanie. Przed masową operacją zachowaj kopię i sprawdź pierwszy wiersz wyniku."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -929,7 +937,8 @@
             "heading": "Czego nie robić",
             "text": "Ukrywam błędne komórki białym tekstem.. Dlaczego: Pogrubienie nagłówków, format procentowy i ustawienia komórek ułatwiają kontrolę danych. Nie używaj koloru jako jedynego nośnika informacji."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -1181,7 +1190,8 @@
             "heading": "Czego nie robić",
             "text": "Wpisuję inne VAT w każdym wierszu bez wyjaśnienia.. Dlaczego: Autosumowanie i powtarzanie formuł przyspiesza pracę. Odwołania względne przesuwają się po kopiowaniu; F4 może blokować adresy w formule."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -1310,7 +1320,8 @@
             "heading": "Czego nie robić",
             "text": "Kasuję wszystkie wiersze innych kategorii.. Dlaczego: Tabela z nagłówkami pozwala filtrować, sortować i łatwiej dodawać nowe wiersze. Filtr tylko ukrywa część danych, nie usuwa ich."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -1563,7 +1574,8 @@
             "heading": "Czego nie robić",
             "text": "Ukrywam najwyższy koszt, aby wykres wyglądał lepiej.. Dlaczego: Wykres wymaga wiarygodnych danych, czytelnych podpisów osi i skali. Barwy nie mogą maskować tego, że wartości są nieporównywalne."
           }
-        ]
+        ],
+        "illustration": "excel-chart"
       }
     },
     {
@@ -1617,7 +1629,8 @@
             "heading": "Czego nie robić",
             "text": "Wpisuję 0 bez informacji, by suma się zgadzała.. Dlaczego: W jednej tabeli połącz ilości, ceny, formuły i filtry. Sprawdź skrajne wartości, puste komórki i błędne formaty."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -1671,7 +1684,8 @@
             "heading": "Czego nie robić",
             "text": "Wysyłam starszy PDF jako aktualny.. Dlaczego: Utwórz dane z nagłówkami, wyliczenia oraz wykres; poprawka wartości musi aktualizować wynik. Porównaj obliczenie z niezależnym przykładem."
           }
-        ]
+        ],
+        "illustration": "excel-chart"
       }
     },
     {
@@ -1780,7 +1794,8 @@
             "heading": "Czego nie robić",
             "text": "Traktuję tekst trzy jako poprawne działanie mnożenia.. Dlaczego: Walidacja ogranicza błędne wpisy, np. niepożądany tekst w ilości lub datę poza zakresem. To pomoc, a nie pełna gwarancja poprawności."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -1834,7 +1849,8 @@
             "heading": "Czego nie robić",
             "text": "Ukrywam błąd białym kolorem.. Dlaczego: Błędy #DZIEL/0!, #ARG! czy #ADR! wskazują problemy w formule albo danych. Nie zamieniaj ich na zero bez zrozumienia przyczyny."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -1942,7 +1958,8 @@
             "heading": "Czego nie robić",
             "text": "Uznaję tę samą kwotę za ten sam dokument.. Dlaczego: Wyszukiwanie wartości po kluczu wymaga jednoznacznego identyfikatora. Duplikaty i różnice formatów mogą dać błędne dopasowanie."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -1996,7 +2013,8 @@
             "heading": "Czego nie robić",
             "text": "Sumuję wyłącznie pierwszy wiersz każdej grupy.. Dlaczego: Tabela przestawna grupuje i podsumowuje wiersze według kategorii; przy zmianie danych może wymagać odświeżenia. Kontrola sumy nadal jest obowiązkowa."
           }
-        ]
+        ],
+        "illustration": "excel-chart"
       }
     },
     {
@@ -2050,7 +2068,8 @@
             "heading": "Czego nie robić",
             "text": "Podaję jedną liczbę jako gwarancję.. Dlaczego: Dobry budżet pokazuje wariant podstawowy i zmianę ceny lub ilości; założenia mają być podpisane. Prognoza nie jest pewną przyszłością."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -2158,7 +2177,8 @@
             "heading": "Czego nie robić",
             "text": "Wysyłam go mimo błędu, bo termin jest krótki.. Dlaczego: Wykrywanie duplikatów, pustych danych, ukrytych filtrów i nieprawidłowych sum to część pracy eksperta. Raport powinien być odtwarzalny."
           }
-        ]
+        ],
+        "illustration": "excel-chart"
       }
     },
     {
@@ -2212,7 +2232,8 @@
             "heading": "Czego nie robić",
             "text": "Obwiniam program, choć nie sprawdziłem formuł.. Dlaczego: Przygotuj arkusz z danymi, formułami, podsumowaniem, kontrolą błędów i wariantem ceny. W finale umiej objaśnić, skąd pochodzi każda ważna liczba."
           }
-        ]
+        ],
+        "illustration": "excel-formulas"
       }
     }
   ]
