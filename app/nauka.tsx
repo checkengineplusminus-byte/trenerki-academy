@@ -18,7 +18,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0});
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -33,13 +33,19 @@ export default function Learning(){
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
     supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle(),
-    supabase.from('ta_learning_attempts').select('correct').eq('user_id',u.id).eq('course_slug',slug)
+    supabase.from('ta_learning_attempts').select('lesson_no,correct').eq('user_id',u.id).eq('course_slug',slug)
    ]);
    if(lessons.error||draft.error||progress.error||details.error)throw lessons.error||draft.error||progress.error||details.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
    if(active){
     setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
     setPractice({attempts:attempts.data?.length||0,correct:(attempts.data||[]).filter(x=>x.correct).length});
+    const perLesson:Record<string,{correct:number,incorrect:number}>={};
+    for(const attempt of attempts.data||[]){
+     const k=String(attempt.lesson_no);if(!perLesson[k])perLesson[k]={correct:0,incorrect:0};
+     if(attempt.correct)perLesson[k].correct++;else perLesson[k].incorrect++;
+    }
+    setReview(perLesson);
     const state=draft.data?.notes||{};
     setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
     const resume=draft.data?.last_module;
@@ -62,6 +68,10 @@ export default function Learning(){
    });
    if(e)throw e;
    setPractice(v=>({attempts:v.attempts+1,correct:v.correct+(correct?1:0)}));
+   setReview(v=>{
+    const k=String(module),t=v[k]||{correct:0,incorrect:0};
+    return {...v,[k]:{correct:t.correct+(correct?1:0),incorrect:t.incorrect+(correct?0:1)}};
+   });
   }catch(e:any){setMsg('Odpowiedź sprawdzona, ale historia próby nie została zapisana. '+String(e?.message||'').slice(0,110));}
  }
  function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setVerified(false);setMsg('');}}
@@ -119,6 +129,14 @@ export default function Learning(){
     <Text style={{fontSize:12,color:secondary,marginTop:9}}>Ukończono {completed} z {items.length} lekcji. Możesz wrócić do każdej lekcji.</Text>
     {practice.attempts>0&&<Text style={{fontSize:12,color:secondary,marginTop:7}}>Sprawdziany: {practice.correct} poprawnych odpowiedzi z {practice.attempts} prób. Błędy pomagają rozpoznać, co trzeba powtórzyć.</Text>}
    </View>
+   {items.some(x=>(review[String(x.lesson_no)]?.incorrect||0)>0&&(review[String(x.lesson_no)]?.correct||0)===0)&&<View style={{backgroundColor:'#fff5e5',borderRadius:14,padding:16,marginBottom:15,gap:9}}>
+    <Text style={{color:'#604722',fontWeight:'900',fontSize:16}}>Warto powtórzyć</Text>
+    <Text style={{color:'#7d663d',fontSize:12,lineHeight:20}}>W tych lekcjach pojawiły się trudności. Możesz wrócić do przykładu i przećwiczyć zadanie jeszcze raz.</Text>
+    {items.filter(x=>(review[String(x.lesson_no)]?.incorrect||0)>0&&(review[String(x.lesson_no)]?.correct||0)===0).slice(0,3).map(x=><Pressable key={x.lesson_no} onPress={()=>changeModule(x.lesson_no)} style={{backgroundColor:'white',padding:12,borderRadius:10}}>
+      <Text style={{fontWeight:'800',color:ink}}>{x.title_pl}</Text>
+      <Text style={{fontSize:11,color:'#7b6548'}}>Powtórz ćwiczenie, aby sprawdzić zrozumienie.</Text>
+    </Pressable>)}
+   </View>}
    <Text style={{fontWeight:'900',fontSize:16,color:ink,marginBottom:10}}>Wybierz lekcję</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:18}}>
     {items.map((v,i)=><Pressable key={v.lesson_no} onPress={()=>changeModule(v.lesson_no)} style={{minWidth:38,paddingVertical:10,paddingHorizontal:11,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#fff',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
