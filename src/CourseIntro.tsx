@@ -101,8 +101,8 @@ const intros:Record<string,Intro>={
  }
 };
 export default function CourseIntro({slug,title,description,first}:{slug:string,title:string,description?:string,first:boolean}){
- const [open,setOpen]=useState(first);
- useEffect(()=>setOpen(first),[slug,first]);
+ const [open,setOpen]=useState(false);
+ useEffect(()=>setOpen(false),[slug,first]);
  const localGuides={...(individualGuides as Record<string,Intro>),...(craftGuides as Record<string,Intro>)};
  const entry=intros[slug]||localGuides[slug]||{
   what:description||'Poznaj codzienną praktykę tego tematu, żeby zobaczyć, kiedy i jak wykorzystać nową umiejętność.',
