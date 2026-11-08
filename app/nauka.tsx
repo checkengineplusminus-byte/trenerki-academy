@@ -21,10 +21,11 @@ type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
  const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const scrollRef=React.useRef<ScrollView>(null);
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[dialogueReady,setDialogueReady]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -85,14 +86,13 @@ export default function Learning(){
  function changeModule(number:number){
   const firstPending=items.find(v=>!done.includes(v.lesson_no));
   if(!items.some(v=>v.lesson_no===number))return;
-  if(firstPending&&number>firstPending.lesson_no){setMsg('Ten etap jest jeszcze zamknięty. Najpierw ukończ wcześniejszą lekcję i rozmowę z Anielką.');return;}
-  setModule(number);setVerified(false);setVerifiedKeyboard(false);setDialogueReady(false);setMsg('');
+  if(firstPending&&number>firstPending.lesson_no){setMsg('Najpierw ukończ poprzednie lekcje i ich ćwiczenia.');return;}
+  setModule(number);setVerified(false);setVerifiedKeyboard(false);setMsg('');scrollRef.current?.scrollTo({y:0,animated:true});
  }
  const firstPending=items.find(v=>!done.includes(v.lesson_no));
  const unlockedNo=firstPending?.lesson_no??Infinity;
  const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
  const canFinish=done.includes(module)||(
-   dialogueReady&&
    (!lesson?.material?.learning&&!lesson?.material?.construction||verified)&&
    (!lesson?.material?.shortcuts?.length||verifiedKeyboard)
  );
@@ -106,7 +106,7 @@ export default function Learning(){
  }
  async function finishLesson(){
   if(saving||!userId||!lesson)return;
-  if(!canFinish){setMsg('Aby przejść dalej, wykonaj ćwiczenia i porozmawiaj z Anielką. Kolejność etapów jest obowiązkowa.');return;}
+  if(!canFinish){setMsg('Wykonaj poprawnie ćwiczenie. Rozmowa z Anielką jest zawsze opcjonalna.');return;}
   setSaving(true);setMsg('');
   try{
    if(!done.includes(module)){
@@ -115,8 +115,7 @@ export default function Learning(){
       body:{action:'complete',course_slug:slug,lesson_no:module}
     });
     if(pe||!result?.completed){
-      const msg=result?.error==='dialogue_required'?'Anielka musi jeszcze potwierdzić zrozumienie tematu.':
-       result?.error==='exercise_required'?'Wykonaj poprawnie ćwiczenie praktyczne, a potem spróbuj ponownie.':
+      const msg=result?.error==='exercise_required'?'Wykonaj poprawnie ćwiczenie praktyczne, a potem spróbuj ponownie.':
        result?.error==='previous_lessons_required'?'Najpierw ukończ poprzednie lekcje.':
        'Nie udało się potwierdzić zaliczenia na serwerze. Spróbuj ponownie.';
       throw new Error(msg);
@@ -126,12 +125,12 @@ export default function Learning(){
    const target=next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setDialogueReady(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
+   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Lekcja zaliczona. Oto następny etap.');scrollRef.current?.scrollTo({y:0,animated:true});}
    else setMsg('Brawo! Ukończono wszystkie lekcje. Poniżej dostępny jest egzamin końcowy Anielki — postęp 100% to jeszcze nie zaliczenie kursu.');
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
  }
- return <ScrollView style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:18,paddingTop:25,paddingBottom:65,maxWidth:860,alignSelf:'center',width:'100%'}}>
+ return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:18,paddingTop:25,paddingBottom:65,maxWidth:860,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:31,fontWeight:'900',color:ink,marginTop:15,marginBottom:9}}>Moja nauka</Text>
   {busy&&<ActivityIndicator size="large"/>}
@@ -180,7 +179,7 @@ export default function Learning(){
   </>}
   {progress===100&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
-   <CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={index===0}/>
+   {index===0&&!hasSoftwareOrientation(slug)&&!isLogisticsCourse(slug)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
    {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug}/>}
    {(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
    {items.length===30&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
@@ -191,7 +190,7 @@ export default function Learning(){
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
-     sections={lesson.material?.sections} illustration={lesson.material?.illustration}
+     sections={index===0&&hasSoftwareOrientation(slug)?lesson.material?.sections?.slice(1):lesson.material?.sections} illustration={lesson.material?.illustration}
      situation={lesson.material?.learning?.situation} example={lesson.material?.learning?.example}
     />}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
@@ -201,11 +200,11 @@ export default function Learning(){
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
-      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
+      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified} hideSituation={!!lesson.material?.sections?.length} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}
-      {!!lesson.material?.shortcuts?.length&&!!lesson.material?.raw?.[1]&&<View style={{backgroundColor:'#ecf4e9',borderColor:'#dce9d8',borderWidth:1,padding:17,borderRadius:14,marginBottom:15,gap:8}}>
+      {!lesson.material?.sections?.length&&!!lesson.material?.shortcuts?.length&&!!lesson.material?.raw?.[1]&&<View style={{backgroundColor:'#ecf4e9',borderColor:'#dce9d8',borderWidth:1,padding:17,borderRadius:14,marginBottom:15,gap:8}}>
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
@@ -214,11 +213,11 @@ export default function Learning(){
    }
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
 
-   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} onReady={setDialogueReady}/>
    <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
-    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Najpierw ćwiczenie i rozmowa z Anielką':next!==undefined?'Zalicz etap i przejdź dalej':'Zalicz ostatnią lekcję i przejdź do egzaminu'}</Text>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Rozwiąż zadanie, aby przejść dalej':next!==undefined?'Zalicz lekcję i przejdź dalej →':'Zakończ lekcje i przejdź do egzaminu →'}</Text>
    </Pressable>
-   {!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Zaliczenie wymaga rozmowy z Anielką, a jeśli lekcja zawiera ćwiczenie — również poprawnego rozwiązania. Nie ma opcji pomijania.</Text>}
+   {!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Wybierz poprawną odpowiedź w ćwiczeniu. Kolejne lekcje otwierają się po kolei.</Text>}
+   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:19,gap:12}}>
     <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
      <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
