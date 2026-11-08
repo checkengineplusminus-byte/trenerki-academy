@@ -136,9 +136,9 @@ Deno.serve(async(req:Request)=>{
    correct=selected===answer;
   }else{
    const shortcuts=Array.isArray(material.shortcuts)?material.shortcuts:[],
-   active=cut(payload.active_combo,80).toUpperCase().replace(/\\s/g,''),
-   chosen=cut(payload.selected_combo,80).toUpperCase().replace(/\\s/g,'');
-   const known=new Set(shortcuts.map((v:any)=>cut(v.combo,80).toUpperCase().replace(/\\s/g,'')));
+   active=cut(payload.active_combo,80).toUpperCase().replace(/\s/g,''),
+   chosen=cut(payload.selected_combo,80).toUpperCase().replace(/\s/g,'');
+   const known=new Set(shortcuts.map((v:any)=>cut(v.combo,80).toUpperCase().replace(/\s/g,'')));
    if(shortcuts.length<3||!known.has(active)||!known.has(chosen)||selected>=3)
     return respond({error:'invalid_attempt'},400);
    correct=active===chosen;
