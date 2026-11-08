@@ -20,9 +20,9 @@ const intros:Record<string,Intro>={
  result:'Rozróżnisz polecenia wpisywane w wierszu komend od skrótów klawiatury oraz zrozumiesz podstawy precyzyjnego rysowania.'
  },
  'windows-skroty':{
- what:'Windows to system operacyjny komputera. Zarządza oknami programów, plikami, ustawieniami i pracą z klawiaturą.',
- first:'Otworzysz Eksplorator i przełączysz aplikację bez szukania ikon. Każdy skrót sprawdzisz w przykładzie.',
- result:'Zaoszczędzisz czas przy codziennych zadaniach bez zapamiętywania długich instrukcji.'
+ what:'Wyobraź sobie komputer z początku lat osiemdziesiątych: zamiast dzisiejszego pulpitu użytkownik wpisuje polecenia do MS-DOS. Microsoft ogłosił Windows w 1983 roku, a w 1985 roku wypuścił Windows 1.0 z obsługą myszy i okien. W 1995 roku Windows 95 spopularyzował menu Start i pasek zadań. System zmieniał się przez kolejne dekady aż do Windows 11. Zaczniemy od zrozumienia tej historii i tego, po co w ogóle potrzebny jest system operacyjny.',
+ first:'Nie zaczynamy od wciskania skrótów. Najpierw poznasz historię, pulpit, okna, menu Start, pliki, foldery i Eksplorator. Zobaczysz własne ilustracje ekranów, a później w próbnym Notatniku napiszesz i zapiszesz swój pierwszy dokument. Dopiero kiedy rozumiesz te elementy, przejdziemy do pracy klawiaturą i rozwiązywania problemów.',
+ result:'Zrozumiesz rolę systemu operacyjnego, samodzielnie zorganizujesz dokumenty, zapiszesz i odnajdziesz plik, ustawisz dwa okna do pracy, sprawdzisz źródło programu, ochronisz dane i wykonasz zadanie biurowe od początku do końca. W trzecim dziale nauczysz się diagnozy problemów, kopii zapasowych i bezpiecznego udostępniania.'
  },
  'norweski-na-budowie':{
  what:'Norweski na budowie to język codziennej pracy. Uczymy się od pierwszego „hei” i pytania, gdzie jest wejście, nie od skomplikowanych zdań kierownika.',
@@ -111,17 +111,17 @@ export default function CourseIntro({slug,title,description,first}:{slug:string,
  };
  return <View style={{backgroundColor:'#edf5e7',borderRadius:17,marginBottom:19,borderWidth:1,borderColor:'#dbe9d7'}}>
   <Pressable onPress={()=>setOpen(v=>!v)} style={{padding:18,flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10}}>
-   <Text style={{fontWeight:'900',fontSize:19,color:'#193d2c',flex:1}}>O czym naprawdę jest ten kurs?</Text>
+   <Text style={{fontWeight:'900',fontSize:19,color:'#193d2c',flex:1}}>Poznaj swój kurs — od czego zaczniemy?</Text>
    <Text style={{fontWeight:'900',color:'#456c48'}}>{open?'Zwiń':'Rozwiń'}</Text>
   </Pressable>
   {open&&<View style={{paddingHorizontal:19,paddingBottom:20,gap:14}}>
    <Text style={{fontSize:15,lineHeight:25,color:'#3c6048'}}>{entry.what}</Text>
    <View style={{backgroundColor:'white',padding:15,borderRadius:11,gap:7}}>
-    <Text style={{fontWeight:'900',color:'#3e7247',fontSize:13}}>NA POCZĄTEK</Text>
+    <Text style={{fontWeight:'900',color:'#3e7247',fontSize:13}}>PIERWSZE KROKI — ZACZYNAMY OD ZERA</Text>
     <Text style={{lineHeight:23,color:'#264431'}}>{entry.first}</Text>
    </View>
    <View style={{gap:5}}>
-    <Text style={{fontWeight:'900',color:'#3e7247',fontSize:13}}>CO BĘDZIESZ POTRAFIĆ</Text>
+    <Text style={{fontWeight:'900',color:'#3e7247',fontSize:13}}>CZEGO SIĘ NAUCZYSZ</Text>
     <Text style={{lineHeight:24,color:'#264431'}}>{entry.result}</Text>
    </View>
    {!!entry.boundary&&<Text style={{fontSize:12,lineHeight:20,color:'#67806c'}}>{entry.boundary}</Text>}
