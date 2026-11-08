@@ -26,6 +26,8 @@ Nie włączono rzeczywistego obciążania kart, faktur VAT ani automatycznego na
 
 ## Treści i bezpieczeństwo
 
+**OSTRZEŻENIE DLA WŁAŚCICIELA:** repozytorium `checkengineplusminus-byte/trenerki-academy` ma na GitHubie widoczność **public** (zweryfikowano 8.11.2026). Pliki `content/*lessons*.json` i `content/keyboard-*.json` w tym repo zawierają robocze treści kursów i mogą być odczytane bez logowania do Supabase, także z historii Git. RLS chroni bazę danych, **nie chroni publicznego GitHuba**. Przed uruchomieniem sprzedaży należy przenieść płatne materiały i ich historię do prywatnego repozytorium lub innego prywatnego zasobu, wyłączyć dostęp do publicznej historii i sprawdzić forki/klony. Nie kasować wersji źródłowej bez prywatnego backupu. Zmiana samego `.gitignore` lub usunięcie pliku z bieżącego commitu nie usuwa go z historii.
+
 - Prywatne lekcje tylko przez Supabase RLS z aktywnym `active` lub `demo` na koncie użytkownika. Publiczny plik HTML zawiera wyłącznie katalog i opisy, **bez płatnych lekcji lub odpowiedzi**.
 - Kursy o relacjach, uzależnieniach i rodzicielstwie nie zastępują specjalisty ani pomocy alarmowej; nie nakazują pozostawania w przemocowym związku.
 - Kursy o dawnych rzemiosłach nie uprawniają do budowania pieców, pracy na wysokości, obsługi maszyn ani zawodowego wykonywania ryzykownych prac.
