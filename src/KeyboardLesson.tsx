@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {View,Text,Pressable,TextInput,Platform} from 'react-native';
 import SoftwarePlayground from './SoftwarePlayground';
+import HandsOnLab from './HandsOnLab';
 
 export type KeyboardShortcut={
  combo:string;keys:string[];kind:'alias'|'hotkey';label:string;
@@ -73,9 +74,10 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
  const [active,setActive]=useState<KeyboardShortcut|null>(null);
+ const [runId,setRunId]=useState(0);
  const [command,setCommand]=useState(''),[feedback,setFeedback]=useState(''),[listening,setListening]=useState(false),[quizAnswer,setQuizAnswer]=useState<number|null>(null);
  useEffect(()=>{setActive(null);setCommand('');setFeedback('');setListening(false);setQuizAnswer(null);onPracticed?.(false)},[shortcuts]);
- function run(item:KeyboardShortcut){setActive(item);setQuizAnswer(null);onPracticed?.(false);setFeedback('Zobacz efekt w symulatorze. Teraz sprawdź, czy rozumiesz działanie polecenia.');}
+ function run(item:KeyboardShortcut){setRunId(n=>n+1);setActive(item);setQuizAnswer(null);onPracticed?.(false);setFeedback('Zobacz efekt w symulatorze. Teraz sprawdź, czy rozumiesz działanie polecenia.');}
  function runCommand(){
   const found=valid.find(s=>s.kind==='alias'&&s.combo.toUpperCase()===command.trim().toUpperCase());
   if(found){run(found);setCommand('');}
@@ -107,7 +109,7 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
    <Text style={{color:ink,fontSize:23,fontWeight:'900'}}>Sprawdź to samodzielnie ⌨️</Text>
    <Text style={{color:secondary,lineHeight:22}}>Wybierz skrót, zobacz jak zmienia się przykładowy dokument albo rysunek i powtórz to w swoim programie. Tutaj ćwiczysz bez ryzyka dla prawdziwych plików.</Text>
   </View>
-  <SoftwarePlayground mode={mode} active={active}/>
+  {(mode==='excel'||mode==='cad')?<HandsOnLab mode={mode} active={active} runId={runId}/>:<SoftwarePlayground mode={mode} active={active}/>}
   {aliases&&<View style={{backgroundColor:'#f5f8f1',padding:16,borderRadius:13,gap:8}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Wpisz polecenie AutoCAD i naciśnij Enter</Text>
    <TextInput value={command} autoCapitalize="characters" onChangeText={setCommand} onSubmitEditing={runCommand} returnKeyType="done" placeholder="Np. L, C, REC, PL…" style={{borderWidth:1,borderColor:'#bdcfba',borderRadius:10,padding:13,backgroundColor:'white',color:ink,fontWeight:'800'}}/>
