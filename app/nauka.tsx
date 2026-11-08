@@ -155,16 +155,14 @@ export default function Learning(){
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
   {!!items.length&&<>
-   <View style={{backgroundColor:'#eaf3e4',padding:17,borderRadius:15,marginTop:12,marginBottom:18}}>
+   <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
-     <Text style={{color:ink,fontWeight:'900'}}>Twój postęp</Text>
-     <Text style={{fontSize:19,fontWeight:'900',color:ink}}>{progress}%</Text>
+     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Postęp · {completed}/{items.length} lekcji</Text>
+     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{progress}%</Text>
     </View>
-    <View style={{height:9,backgroundColor:'#cfddca',borderRadius:9,marginTop:10,overflow:'hidden'}}>
-     <View style={{height:9,width:progress+'%',backgroundColor:'#7cae6e'}}/>
+    <View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
+     <View style={{height:8,width:progress+'%',backgroundColor:'#7cae6e'}}/>
     </View>
-    <Text style={{fontSize:12,color:secondary,marginTop:9}}>Ukończono {completed} z {items.length} lekcji. Nowe etapy otwierają się wyłącznie po zaliczeniu poprzedniego.</Text>
-    {practice.attempts>0&&<Text style={{fontSize:12,color:secondary,marginTop:7}}>Sprawdziany: {practice.correct} poprawnych odpowiedzi z {practice.attempts} prób. Błędy pomagają rozpoznać, co trzeba powtórzyć.</Text>}
    </View>
    {items.some(x=>(review[String(x.lesson_no)]?.incorrect||0)>0&&(review[String(x.lesson_no)]?.correct||0)===0)&&<View style={{backgroundColor:'#fff5e5',borderRadius:14,padding:16,marginBottom:15,gap:9}}>
     <Text style={{color:'#604722',fontWeight:'900',fontSize:16}}>Warto powtórzyć</Text>
@@ -175,10 +173,9 @@ export default function Learning(){
     </Pressable>)}
    </View>}
    <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
-    style={{backgroundColor:'#eef6e9',padding:17,borderRadius:13,marginBottom:13,borderWidth:1,borderColor:'#d6e7d0',gap:7}}>
-     <Text style={{color:ink,fontWeight:'900',fontSize:18}}>{showProgram?'Zwiń plan kursu':'Plan kursu — zobacz wszystkie lekcje →'}</Text>
-     <Text style={{color:secondary,fontSize:13}}>Aktualnie: {items.length===30?'dział '+(Math.floor(index/10)+1)+' z 3 · ':''}lekcja {index+1} z {items.length}</Text>
-     <Text style={{color:ink,fontSize:15,fontWeight:'800'}}>{lesson?.title_pl}</Text>
+    style={{backgroundColor:'#f1f6ed',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#d6e7d0',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
+     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
+     <Text style={{color:secondary,fontSize:12}}>Lekcja {index+1}/{items.length}</Text>
    </Pressable>
    {showProgram&&(items.length===30?[
      {name:'DZIAŁ I · PODSTAWY',about:'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
@@ -249,11 +246,10 @@ export default function Learning(){
     {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>
    {!canFinish&&<Text style={{fontSize:12,color:'#647565',lineHeight:19,marginTop:7,textAlign:'center'}}>Po poprawnym rozwiązaniu przycisk „Dalej” odblokuje się automatycznie.</Text>}
-   <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:12,gap:12}}>
-    <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
-     <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
-    </Pressable>
-   </View>
+   {previous!==undefined&&<Pressable accessibilityRole="button" onPress={()=>changeModule(previous)}
+    style={{alignSelf:'flex-start',paddingVertical:12,paddingHorizontal:5,marginTop:8}}>
+    <Text style={{color:secondary,fontSize:14,fontWeight:'800'}}>← Wróć do poprzedniej lekcji</Text>
+   </Pressable>}
   </>}
   {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#eaf2e0'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
  </ScrollView>;
