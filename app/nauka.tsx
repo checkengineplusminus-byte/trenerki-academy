@@ -8,6 +8,7 @@ import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import AiTutor from '../src/AiTutor';
 import CourseIntro from '../src/CourseIntro';
 import ConceptAtlas from '../src/ConceptAtlas';
+import FinalExam from '../src/FinalExam';
 type Lesson={
  lesson_no:number,title_pl:string,
  material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
@@ -110,7 +111,7 @@ export default function Learning(){
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
    if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
-   else setMsg('Brawo! Ukończono ostatnią lekcję tego kursu. Możesz wrócić do dowolnego tematu.');
+   else setMsg('Brawo! Ukończono wszystkie lekcje. Poniżej dostępny jest egzamin końcowy Anielki — postęp 100% to jeszcze nie zaliczenie kursu.');
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
  }
@@ -153,7 +154,7 @@ export default function Learning(){
    </View>)}
    {progress===100&&<View style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Wszystkie lekcje ukończone! 🎉</Text>
-    <Text style={{color:secondary,marginTop:6}}>Możesz wrócić do materiałów albo kontynuować z innym kursem.</Text>
+    <Text style={{color:secondary,marginTop:6}}>Masz komplet lekcji. Teraz czeka Cię osobny egzamin Anielki. Dopiero jego zaliczenie umożliwia wystawienie autorskiego dyplomu.</Text>
    </View>}
   </>}
   {!!lesson&&<>
@@ -185,6 +186,7 @@ export default function Learning(){
       <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
      </>
    }
+   {progress===100&&<FinalExam courseSlug={slug}/>}
    <AiTutor courseSlug={slug} lessonNo={module}/>
    <View style={{marginTop:23,gap:9}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Moje notatki do tej lekcji</Text>
