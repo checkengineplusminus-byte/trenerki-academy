@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
+import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
@@ -21,7 +21,20 @@ type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
  const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
- const scrollRef=React.useRef<ScrollView>(null);
+ const scrollRef=React.useRef<ScrollView>(null),exerciseYRef=React.useRef(0);
+ function scrollToTop(){
+  scrollRef.current?.scrollTo({y:0,animated:false});
+  if(Platform.OS==='web'&&typeof window!=='undefined')window.scrollTo(0,0);
+ }
+ function returnToExercise(){
+  const y=Math.max(0,exerciseYRef.current-24);
+  scrollRef.current?.scrollTo({y,animated:true});
+  if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
+ }
+ useEffect(()=>{
+  const afterLayout=setTimeout(scrollToTop,100);
+  return ()=>clearTimeout(afterLayout);
+ },[slug,module,items.length]);
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
@@ -91,7 +104,7 @@ export default function Learning(){
   const firstPending=items.find(v=>!done.includes(v.lesson_no));
   if(!items.some(v=>v.lesson_no===number))return;
   if(firstPending&&number>firstPending.lesson_no){setMsg('Najpierw ukończ poprzednie lekcje i ich ćwiczenia.');return;}
-  setModule(number);setVerified(false);setVerifiedKeyboard(false);setMsg('');scrollRef.current?.scrollTo({y:0,animated:true});
+  setModule(number);setVerified(false);setVerifiedKeyboard(false);setMsg('');scrollToTop();
  }
  const firstPending=items.find(v=>!done.includes(v.lesson_no));
  const unlockedNo=firstPending?.lesson_no??Infinity;
@@ -129,7 +142,7 @@ export default function Learning(){
    const target=next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Lekcja zaliczona. Oto następny etap.');scrollRef.current?.scrollTo({y:0,animated:true});}
+   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Lekcja zaliczona. Oto następny etap.');scrollToTop();}
    else setMsg('Brawo! Ukończono wszystkie lekcje. Poniżej dostępny jest egzamin końcowy Anielki — postęp 100% to jeszcze nie zaliczenie kursu.');
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
@@ -201,6 +214,7 @@ export default function Learning(){
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
+   <View onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
@@ -215,13 +229,16 @@ export default function Learning(){
       <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
      </>
    }
+   </View>
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
 
    <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
     <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Rozwiąż zadanie, aby przejść dalej':next!==undefined?'Zalicz lekcję i przejdź dalej →':'Zakończ lekcje i przejdź do egzaminu →'}</Text>
    </Pressable>
    {!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Wybierz poprawną odpowiedź w ćwiczeniu. Kolejne lekcje otwierają się po kolei.</Text>}
-   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
+   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}
+    canMoveOn={canFinish}
+    onFinish={()=>{if(canFinish){void finishLesson()}else{returnToExercise()}}}/>
    {next!==undefined&&<View style={{padding:13,marginTop:10,backgroundColor:'#f0f5ed',borderRadius:11}}>
      <Text style={{color:'#648067',fontWeight:'800',fontSize:12}}>NASTĘPNA LEKCJA · {index+2}/{items.length}</Text>
      <Text style={{color:ink,fontWeight:'800',fontSize:15,marginTop:5}}>{items[index+1]?.title_pl}</Text>
