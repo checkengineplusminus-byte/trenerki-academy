@@ -31,7 +31,7 @@ export default function DiplomaPage(){
    }
   }catch(e:any){if(active)setError(e.message||'Nie udało się pobrać dokumentu.');}
   finally{if(active)setBusy(false);}
- })();return()=>{active=false};},[slug]);
+ })();return()=>{active=false};},[slug,preview]);
  const print=()=>{
   if(Platform.OS!=='web'||!cert)return;
   const root=globalThis as any;
