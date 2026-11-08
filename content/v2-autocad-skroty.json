@@ -499,7 +499,7 @@
             "text": "Przeskalowuję cały budynek w modelu.. Wyjaśnienie: Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach."
           }
         ],
-        "illustration": "autocad-coordinates"
+        "illustration": "autocad-interface"
       }
     },
     {
@@ -554,7 +554,7 @@
             "text": "Rysuję prostokąt na oko z podpisem 4×3.. Wyjaśnienie: Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu."
           }
         ],
-        "illustration": "autocad-coordinates"
+        "illustration": "autocad-interface"
       }
     },
     {
@@ -664,7 +664,7 @@
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
         "editorial_status": "review_needed",
-        "illustration": "autocad-interface",
+        "illustration": "autocad-commands",
         "sections": [
           {
             "heading": "Poznaj pojęcie i zastosowanie",
@@ -933,7 +933,7 @@
             "text": "Klikam blisko narożnika na oko.. Wyjaśnienie: OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."
           }
         ],
-        "illustration": "autocad-commands"
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -1189,7 +1189,7 @@
             "text": "Skaluję budynek do monitora.. Wyjaśnienie: Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."
           }
         ],
-        "illustration": "autocad-commands"
+        "illustration": "autocad-interface"
       }
     },
     {
@@ -1317,7 +1317,7 @@
             "text": "Ignoruję ostrzeżenie.. Wyjaśnienie: Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."
           }
         ],
-        "illustration": "autocad-filetypes"
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -1444,7 +1444,7 @@
             "text": "Nadpisuję etykietę na 1000.. Wyjaśnienie: Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."
           }
         ],
-        "illustration": "autocad-coordinates"
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -1639,7 +1639,7 @@
             "text": "Dopisuję dowolną nośność.. Wyjaśnienie: Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."
           }
         ],
-        "illustration": "autocad-layers"
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -1693,7 +1693,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Sprawdzam tylko kolor tła.. Wyjaśnienie: Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -2133,7 +2134,7 @@
             "text": "Kasuję przypadkową połowę rysunku.. Wyjaśnienie: Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."
           }
         ],
-        "illustration": "autocad-commands"
+        "illustration": "autocad-coordinates"
       }
     },
     {
