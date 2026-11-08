@@ -104,6 +104,32 @@ try{
  if(!sandbox.includes('mode===\'cad\'')||!sandbox.includes('mode===\'windows\'')||!sandbox.includes('isExcel')||!sandbox.includes('isWord'))fail('Virtual software screens missing');
  if(!cases.includes('onPassed')||!progress.includes('const canFinish='))fail('Graded lesson checkpoint missing');
  if(!progress.includes('ta_learning_attempts')||!progress.includes("recordAttempt('case'")||!progress.includes("recordAttempt('construction'")||!progress.includes("recordAttempt('keyboard'"))fail('All graded exercise categories must save individual attempts');
+ const guideUI=read('src/GuidedDialogue.tsx');
+ const finalExamUI=read('src/FinalExam.tsx');
+ const caseQuiz=read('src/CaseLesson.tsx');
+ const languageQuiz=read('src/ConstructionLesson.tsx');
+ const keyboardQuiz=read('src/KeyboardLesson.tsx');
+ const softwareUI=read('src/SoftwareOrientation.tsx');
+ if(progress.includes('dialogueReady')||progress.includes('setDialogueReady')||
+    guideUI.includes('accessibilityRole="checkbox"')||finalExamUI.includes('accessibilityRole="checkbox"')||
+    guideUI.includes('agentOnline?')||progress.includes('Najpierw ćwiczenie i rozmowa z Anielką'))
+  fail('Optional learner mentor and no-checkbox UX regressed');
+ else ok('Anielka is optional, with no consent checkbox or technical status banners inside the course');
+ if(guideServer.includes('if(!record?.approved||record.meaningful_count<2)')||
+    !guideServer.includes("if(action==='complete')")||
+    !guideServer.includes("db.from('ta_learning_attempts').select('id')"))
+  fail('Server must not require a mentor session, but must check objective practice');
+ else ok('Sequential progression and objective exercises are mandatory; mentor chat is not');
+ if(!caseQuiz.includes('await onAttempt')||!languageQuiz.includes('await onAttempt')||
+    !keyboardQuiz.includes('await onAttempt')||!keyboardQuiz.includes('quizConfirmed')||
+    !progress.includes('async function recordAttempt('))
+  fail('Correct answers must be acknowledged by server before unlocking');
+ else ok('All three exercise types wait for server confirmation and permit retries');
+ if(!softwareUI.includes("tab==='interface'")||!softwareUI.includes("tab==='history'")||
+    !softwareUI.includes("tab==='terms'")||!softwareUI.includes("tab==='practice'")||
+    !softwareUI.includes('<HandsOnLab'))
+  fail('Four-tab software interface with working Excel/CAD simulator missing');
+ else ok('Interactive four-tab software navigation and hands-on labs available');
  const guideServer=read('supabase/functions/ta-lesson-guide/index.ts');
  if(!progress.includes("action:'attempt'")||progress.includes(".from('ta_learning_attempts').insert")||
     !guideServer.includes("if(action==='attempt')")||
