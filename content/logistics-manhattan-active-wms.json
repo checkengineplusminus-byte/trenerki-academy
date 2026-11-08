@@ -1,0 +1,1333 @@
+{
+  "schema_version": 2,
+  "course_slug": "manhattan-active-wms",
+  "intro": "Manhattan ActiveWarehouse (dawniej kojarzony jako Manhattan Active WM) to chmurowa platforma zarządzania zapasami, realizacją zamówień, pracą i automatyką. Ekrany zależą od wdrożenia i edycji.",
+  "source": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Operacje magazynowe",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 0,
+      "title_pl": "Czym jest Manhattan ActiveWarehouse",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Czym jest Manhattan ActiveWarehouse",
+          "Jedna platforma łączy inventory, labor, yard i automatyzację.",
+          "Gdzie wykorzystasz tę wiedzę: Nowy operator myli system magazynowy z księgowym. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Odróżnij rolę WMS i ERP na procesie zamówienia. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Jedna platforma łączy inventory, labor, yard i automatyzację.",
+          "situation": "Nowy operator myli system magazynowy z księgowym.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Odróżnij rolę WMS i ERP na procesie zamówienia.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Odróżnij rolę WMS i ERP na procesie zamówienia.",
+          "explanation": "Jedna platforma łączy inventory, labor, yard i automatyzację.",
+          "feedback": [
+            "Tak. Jedna platforma łączy inventory, labor, yard i automatyzację.",
+            "Nie. Jedna platforma łączy inventory, labor, yard i automatyzację.",
+            "Nie. Jedna platforma łączy inventory, labor, yard i automatyzację."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Odróżnij rolę WMS i ERP na procesie zamówienia."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Nowy operator myli system magazynowy z księgowym.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 1,
+      "title_pl": "Użytkownik, rola i pulpit",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Użytkownik, rola i pulpit",
+          "Dashboard zawiera operacyjne zadania i wskaźniki zależne od roli.",
+          "Gdzie wykorzystasz tę wiedzę: Picker widzi mniej kart niż supervisor. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zweryfikuj rolę i wymagane uprawnienia. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Dashboard zawiera operacyjne zadania i wskaźniki zależne od roli.",
+          "situation": "Picker widzi mniej kart niż supervisor.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zweryfikuj rolę i wymagane uprawnienia.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj rolę i wymagane uprawnienia.",
+          "explanation": "Dashboard zawiera operacyjne zadania i wskaźniki zależne od roli.",
+          "feedback": [
+            "Tak. Dashboard zawiera operacyjne zadania i wskaźniki zależne od roli.",
+            "Nie. Dashboard zawiera operacyjne zadania i wskaźniki zależne od roli.",
+            "Nie. Dashboard zawiera operacyjne zadania i wskaźniki zależne od roli."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zweryfikuj rolę i wymagane uprawnienia."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Picker widzi mniej kart niż supervisor.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 2,
+      "title_pl": "SKU, lokalizacja i obiekt",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "SKU, lokalizacja i obiekt",
+          "SKU określa produkt, location jego miejsce, facility cały magazyn.",
+          "Gdzie wykorzystasz tę wiedzę: Ten sam SKU znajduje się w dwóch magazynach. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wybierz właściwy facility i bin przed pracą. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "SKU określa produkt, location jego miejsce, facility cały magazyn.",
+          "situation": "Ten sam SKU znajduje się w dwóch magazynach.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wybierz właściwy facility i bin przed pracą.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Wybierz właściwy facility i bin przed pracą.",
+          "explanation": "SKU określa produkt, location jego miejsce, facility cały magazyn.",
+          "feedback": [
+            "Tak. SKU określa produkt, location jego miejsce, facility cały magazyn.",
+            "Nie. SKU określa produkt, location jego miejsce, facility cały magazyn.",
+            "Nie. SKU określa produkt, location jego miejsce, facility cały magazyn."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wybierz właściwy facility i bin przed pracą."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Ten sam SKU znajduje się w dwóch magazynach.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 3,
+      "title_pl": "On-hand a available",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "On-hand a available",
+          "Zapas może być fizyczny, zarezerwowany, dostępny lub zablokowany.",
+          "Gdzie wykorzystasz tę wiedzę: Na regale stoi 30, system udostępnia 20. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź alokację i status 10 sztuk. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Zapas może być fizyczny, zarezerwowany, dostępny lub zablokowany.",
+          "situation": "Na regale stoi 30, system udostępnia 20.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź alokację i status 10 sztuk.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź alokację i status 10 sztuk.",
+          "explanation": "Zapas może być fizyczny, zarezerwowany, dostępny lub zablokowany.",
+          "feedback": [
+            "Tak. Zapas może być fizyczny, zarezerwowany, dostępny lub zablokowany.",
+            "Nie. Zapas może być fizyczny, zarezerwowany, dostępny lub zablokowany.",
+            "Nie. Zapas może być fizyczny, zarezerwowany, dostępny lub zablokowany."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź alokację i status 10 sztuk."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Na regale stoi 30, system udostępnia 20.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 4,
+      "title_pl": "Receiving i ASN",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Receiving i ASN",
+          "Przyjęcie opiera się na dostawie i przewidywanej zawartości.",
+          "Gdzie wykorzystasz tę wiedzę: Na awizie 8 palet, przyjechało 7. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zarejestruj 7 i odchylenie jednej. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przyjęcie opiera się na dostawie i przewidywanej zawartości.",
+          "situation": "Na awizie 8 palet, przyjechało 7.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zarejestruj 7 i odchylenie jednej.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj 7 i odchylenie jednej.",
+          "explanation": "Przyjęcie opiera się na dostawie i przewidywanej zawartości.",
+          "feedback": [
+            "Tak. Przyjęcie opiera się na dostawie i przewidywanej zawartości.",
+            "Nie. Przyjęcie opiera się na dostawie i przewidywanej zawartości.",
+            "Nie. Przyjęcie opiera się na dostawie i przewidywanej zawartości."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zarejestruj 7 i odchylenie jednej."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Na awizie 8 palet, przyjechało 7.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 5,
+      "title_pl": "Putaway",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Putaway",
+          "System wskazuje dopuszczalne miejsce odłożenia uwzględniając profil towaru.",
+          "Gdzie wykorzystasz tę wiedzę: Operator chce odłożyć ciężki towar na regał z ograniczeniem. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Skontroluj dopuszczalną lokację i nie łam ograniczeń. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "System wskazuje dopuszczalne miejsce odłożenia uwzględniając profil towaru.",
+          "situation": "Operator chce odłożyć ciężki towar na regał z ograniczeniem.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Skontroluj dopuszczalną lokację i nie łam ograniczeń.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Skontroluj dopuszczalną lokację i nie łam ograniczeń.",
+          "explanation": "System wskazuje dopuszczalne miejsce odłożenia uwzględniając profil towaru.",
+          "feedback": [
+            "Tak. System wskazuje dopuszczalne miejsce odłożenia uwzględniając profil towaru.",
+            "Nie. System wskazuje dopuszczalne miejsce odłożenia uwzględniając profil towaru.",
+            "Nie. System wskazuje dopuszczalne miejsce odłożenia uwzględniając profil towaru."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Skontroluj dopuszczalną lokację i nie łam ograniczeń."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Operator chce odłożyć ciężki towar na regał z ograniczeniem.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 6,
+      "title_pl": "Śledzenie partii i numerów seryjnych",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Śledzenie partii i numerów seryjnych",
+          "Traceability pozwala znaleźć pochodzenie i trasę produktu.",
+          "Gdzie wykorzystasz tę wiedzę: Klient reklamuje konkretny serial. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Odszukaj numer i jego historię operacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Traceability pozwala znaleźć pochodzenie i trasę produktu.",
+          "situation": "Klient reklamuje konkretny serial.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Odszukaj numer i jego historię operacji.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Odszukaj numer i jego historię operacji.",
+          "explanation": "Traceability pozwala znaleźć pochodzenie i trasę produktu.",
+          "feedback": [
+            "Tak. Traceability pozwala znaleźć pochodzenie i trasę produktu.",
+            "Nie. Traceability pozwala znaleźć pochodzenie i trasę produktu.",
+            "Nie. Traceability pozwala znaleźć pochodzenie i trasę produktu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Odszukaj numer i jego historię operacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Klient reklamuje konkretny serial.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 7,
+      "title_pl": "Strefy: reserve i active picking",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Strefy: reserve i active picking",
+          "Rezerwa uzupełnia pickface; brak w pickface nie musi oznaczać braku zapasu.",
+          "Gdzie wykorzystasz tę wiedzę: Na pickface nie ma produktu, w rezerwie jest 90. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź potrzebę replenishment. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Rezerwa uzupełnia pickface; brak w pickface nie musi oznaczać braku zapasu.",
+          "situation": "Na pickface nie ma produktu, w rezerwie jest 90.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź potrzebę replenishment.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź potrzebę replenishment.",
+          "explanation": "Rezerwa uzupełnia pickface; brak w pickface nie musi oznaczać braku zapasu.",
+          "feedback": [
+            "Tak. Rezerwa uzupełnia pickface; brak w pickface nie musi oznaczać braku zapasu.",
+            "Nie. Rezerwa uzupełnia pickface; brak w pickface nie musi oznaczać braku zapasu.",
+            "Nie. Rezerwa uzupełnia pickface; brak w pickface nie musi oznaczać braku zapasu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź potrzebę replenishment."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Na pickface nie ma produktu, w rezerwie jest 90.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 8,
+      "title_pl": "Skaner i potwierdzanie pracy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Skaner i potwierdzanie pracy",
+          "Skan produktu i adresu jest potwierdzeniem fizycznej czynności.",
+          "Gdzie wykorzystasz tę wiedzę: Operator chce wpisywać lokalizacje z pamięci. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wymagaj kontroli fizycznej etykiety i właściwego skanu. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Skan produktu i adresu jest potwierdzeniem fizycznej czynności.",
+          "situation": "Operator chce wpisywać lokalizacje z pamięci.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wymagaj kontroli fizycznej etykiety i właściwego skanu.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Wymagaj kontroli fizycznej etykiety i właściwego skanu.",
+          "explanation": "Skan produktu i adresu jest potwierdzeniem fizycznej czynności.",
+          "feedback": [
+            "Tak. Skan produktu i adresu jest potwierdzeniem fizycznej czynności.",
+            "Nie. Skan produktu i adresu jest potwierdzeniem fizycznej czynności.",
+            "Nie. Skan produktu i adresu jest potwierdzeniem fizycznej czynności."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wymagaj kontroli fizycznej etykiety i właściwego skanu."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Operator chce wpisywać lokalizacje z pamięci.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 9,
+      "title_pl": "Pierwsza symulacja: przyjęcie 12 kartonów",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsza symulacja: przyjęcie 12 kartonów",
+          "Przyjęcie, dokument, ilość i adres muszą być zgodne.",
+          "Gdzie wykorzystasz tę wiedzę: W kartonie zbiorczym brakuje dwóch sztuk. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zarejestruj rzeczywistą zawartość i wyjątek. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przyjęcie, dokument, ilość i adres muszą być zgodne.",
+          "situation": "W kartonie zbiorczym brakuje dwóch sztuk.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zarejestruj rzeczywistą zawartość i wyjątek.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj rzeczywistą zawartość i wyjątek.",
+          "explanation": "Przyjęcie, dokument, ilość i adres muszą być zgodne.",
+          "feedback": [
+            "Tak. Przyjęcie, dokument, ilość i adres muszą być zgodne.",
+            "Nie. Przyjęcie, dokument, ilość i adres muszą być zgodne.",
+            "Nie. Przyjęcie, dokument, ilość i adres muszą być zgodne."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zarejestruj rzeczywistą zawartość i wyjątek."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: W kartonie zbiorczym brakuje dwóch sztuk.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 10,
+      "title_pl": "Wave i tworzenie pracy",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Wave i tworzenie pracy",
+          "Waving może grupować realizację, zależnie od edycji i konfiguracji.",
+          "Gdzie wykorzystasz tę wiedzę: Zamówienie pilne nie jest w fali. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź regułę włączenia i priorytet. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Waving może grupować realizację, zależnie od edycji i konfiguracji.",
+          "situation": "Zamówienie pilne nie jest w fali.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź regułę włączenia i priorytet.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź regułę włączenia i priorytet.",
+          "explanation": "Waving może grupować realizację, zależnie od edycji i konfiguracji.",
+          "feedback": [
+            "Tak. Waving może grupować realizację, zależnie od edycji i konfiguracji.",
+            "Nie. Waving może grupować realizację, zależnie od edycji i konfiguracji.",
+            "Nie. Waving może grupować realizację, zależnie od edycji i konfiguracji."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź regułę włączenia i priorytet."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zamówienie pilne nie jest w fali.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 11,
+      "title_pl": "Picking według zadań",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking według zadań",
+          "Kolejność pobrania może optymalizować trasę bez zmiany zamówionej ilości.",
+          "Gdzie wykorzystasz tę wiedzę: Picker znalazł 4 zamiast 5. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Raportuj short pick i utrzymaj zgodność zamówienia. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Kolejność pobrania może optymalizować trasę bez zmiany zamówionej ilości.",
+          "situation": "Picker znalazł 4 zamiast 5.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Raportuj short pick i utrzymaj zgodność zamówienia.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Raportuj short pick i utrzymaj zgodność zamówienia.",
+          "explanation": "Kolejność pobrania może optymalizować trasę bez zmiany zamówionej ilości.",
+          "feedback": [
+            "Tak. Kolejność pobrania może optymalizować trasę bez zmiany zamówionej ilości.",
+            "Nie. Kolejność pobrania może optymalizować trasę bez zmiany zamówionej ilości.",
+            "Nie. Kolejność pobrania może optymalizować trasę bez zmiany zamówionej ilości."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Raportuj short pick i utrzymaj zgodność zamówienia."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Picker znalazł 4 zamiast 5.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 12,
+      "title_pl": "Batch, zone i order picking",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Batch, zone i order picking",
+          "Strategia zbierania zamówień zależy od typów jednostek i przepływu.",
+          "Gdzie wykorzystasz tę wiedzę: Dwie podobne paczki mieszały się na wózku. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Rozdziel identyfikatory zamówień i skanuj na każdym kroku. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Strategia zbierania zamówień zależy od typów jednostek i przepływu.",
+          "situation": "Dwie podobne paczki mieszały się na wózku.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Rozdziel identyfikatory zamówień i skanuj na każdym kroku.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Rozdziel identyfikatory zamówień i skanuj na każdym kroku.",
+          "explanation": "Strategia zbierania zamówień zależy od typów jednostek i przepływu.",
+          "feedback": [
+            "Tak. Strategia zbierania zamówień zależy od typów jednostek i przepływu.",
+            "Nie. Strategia zbierania zamówień zależy od typów jednostek i przepływu.",
+            "Nie. Strategia zbierania zamówień zależy od typów jednostek i przepływu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Rozdziel identyfikatory zamówień i skanuj na każdym kroku."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwie podobne paczki mieszały się na wózku.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 13,
+      "title_pl": "Packing i kontrola zawartości",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Packing i kontrola zawartości",
+          "Paczka musi zawierać pozycje właściwego zamówienia i etykietę.",
+          "Gdzie wykorzystasz tę wiedzę: W pakowaniu skan nie pasuje do zamówienia. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wstrzymaj pakowanie i sprawdź order ID oraz SKU. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Paczka musi zawierać pozycje właściwego zamówienia i etykietę.",
+          "situation": "W pakowaniu skan nie pasuje do zamówienia.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wstrzymaj pakowanie i sprawdź order ID oraz SKU.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj pakowanie i sprawdź order ID oraz SKU.",
+          "explanation": "Paczka musi zawierać pozycje właściwego zamówienia i etykietę.",
+          "feedback": [
+            "Tak. Paczka musi zawierać pozycje właściwego zamówienia i etykietę.",
+            "Nie. Paczka musi zawierać pozycje właściwego zamówienia i etykietę.",
+            "Nie. Paczka musi zawierać pozycje właściwego zamówienia i etykietę."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wstrzymaj pakowanie i sprawdź order ID oraz SKU."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: W pakowaniu skan nie pasuje do zamówienia.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 14,
+      "title_pl": "Replenishment",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Replenishment",
+          "Uzupełnianie pickface eliminuje puste miejsca przy dostępnej rezerwie.",
+          "Gdzie wykorzystasz tę wiedzę: Linia zamówienia jest opóźniona przez pusty slot. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Uruchom lub sprawdź zadanie uzupełnienia. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Uzupełnianie pickface eliminuje puste miejsca przy dostępnej rezerwie.",
+          "situation": "Linia zamówienia jest opóźniona przez pusty slot.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Uruchom lub sprawdź zadanie uzupełnienia.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Uruchom lub sprawdź zadanie uzupełnienia.",
+          "explanation": "Uzupełnianie pickface eliminuje puste miejsca przy dostępnej rezerwie.",
+          "feedback": [
+            "Tak. Uzupełnianie pickface eliminuje puste miejsca przy dostępnej rezerwie.",
+            "Nie. Uzupełnianie pickface eliminuje puste miejsca przy dostępnej rezerwie.",
+            "Nie. Uzupełnianie pickface eliminuje puste miejsca przy dostępnej rezerwie."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Uruchom lub sprawdź zadanie uzupełnienia."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Linia zamówienia jest opóźniona przez pusty slot.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 15,
+      "title_pl": "Returns — powroty od klientów",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Returns — powroty od klientów",
+          "Zwrot wymaga przyjęcia, oceny jakości i decyzji o miejscu towaru.",
+          "Gdzie wykorzystasz tę wiedzę: Przyszedł produkt z uszkodzonym opakowaniem. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Oznacz stan do kontroli, nie odkładaj automatycznie na sprzedaż. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Zwrot wymaga przyjęcia, oceny jakości i decyzji o miejscu towaru.",
+          "situation": "Przyszedł produkt z uszkodzonym opakowaniem.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Oznacz stan do kontroli, nie odkładaj automatycznie na sprzedaż.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Oznacz stan do kontroli, nie odkładaj automatycznie na sprzedaż.",
+          "explanation": "Zwrot wymaga przyjęcia, oceny jakości i decyzji o miejscu towaru.",
+          "feedback": [
+            "Tak. Zwrot wymaga przyjęcia, oceny jakości i decyzji o miejscu towaru.",
+            "Nie. Zwrot wymaga przyjęcia, oceny jakości i decyzji o miejscu towaru.",
+            "Nie. Zwrot wymaga przyjęcia, oceny jakości i decyzji o miejscu towaru."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Oznacz stan do kontroli, nie odkładaj automatycznie na sprzedaż."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Przyszedł produkt z uszkodzonym opakowaniem.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 16,
+      "title_pl": "Loading i dock door",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Loading i dock door",
+          "Zadania załadunku łączą paczki i palety z samochodem i rampą.",
+          "Gdzie wykorzystasz tę wiedzę: Dwie ciężarówki stoją przy różnych dokach. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Skanuj shipment i dock zgodny z planem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Zadania załadunku łączą paczki i palety z samochodem i rampą.",
+          "situation": "Dwie ciężarówki stoją przy różnych dokach.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Skanuj shipment i dock zgodny z planem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Skanuj shipment i dock zgodny z planem.",
+          "explanation": "Zadania załadunku łączą paczki i palety z samochodem i rampą.",
+          "feedback": [
+            "Tak. Zadania załadunku łączą paczki i palety z samochodem i rampą.",
+            "Nie. Zadania załadunku łączą paczki i palety z samochodem i rampą.",
+            "Nie. Zadania załadunku łączą paczki i palety z samochodem i rampą."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Skanuj shipment i dock zgodny z planem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwie ciężarówki stoją przy różnych dokach.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 17,
+      "title_pl": "Yard i appointment",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Yard i appointment",
+          "Yard management pomaga koordynować przyjazdy i bramy.",
+          "Gdzie wykorzystasz tę wiedzę: Dwa auta mają rezerwację tej samej rampy. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Rozstrzygnij konflikt w harmonogramie przed rozładunkiem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Yard management pomaga koordynować przyjazdy i bramy.",
+          "situation": "Dwa auta mają rezerwację tej samej rampy.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Rozstrzygnij konflikt w harmonogramie przed rozładunkiem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Rozstrzygnij konflikt w harmonogramie przed rozładunkiem.",
+          "explanation": "Yard management pomaga koordynować przyjazdy i bramy.",
+          "feedback": [
+            "Tak. Yard management pomaga koordynować przyjazdy i bramy.",
+            "Nie. Yard management pomaga koordynować przyjazdy i bramy.",
+            "Nie. Yard management pomaga koordynować przyjazdy i bramy."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Rozstrzygnij konflikt w harmonogramie przed rozładunkiem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwa auta mają rezerwację tej samej rampy.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 18,
+      "title_pl": "Warehouse visibility",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Warehouse visibility",
+          "Widok operacyjny porównuje ruchy i wyjątki w całym facility.",
+          "Gdzie wykorzystasz tę wiedzę: Raport pokazuje opóźnienie jednej strefy. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Ustal wąskie gardło z danych operacyjnych. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Widok operacyjny porównuje ruchy i wyjątki w całym facility.",
+          "situation": "Raport pokazuje opóźnienie jednej strefy.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Ustal wąskie gardło z danych operacyjnych.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Ustal wąskie gardło z danych operacyjnych.",
+          "explanation": "Widok operacyjny porównuje ruchy i wyjątki w całym facility.",
+          "feedback": [
+            "Tak. Widok operacyjny porównuje ruchy i wyjątki w całym facility.",
+            "Nie. Widok operacyjny porównuje ruchy i wyjątki w całym facility.",
+            "Nie. Widok operacyjny porównuje ruchy i wyjątki w całym facility."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Ustal wąskie gardło z danych operacyjnych."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Raport pokazuje opóźnienie jednej strefy.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: odbiór do wysyłki",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: odbiór do wysyłki",
+          "Proces łączy receiving, putaway, wave, pick, pack i loading.",
+          "Gdzie wykorzystasz tę wiedzę: Towar jest spakowany, ale nieprzypisany do shipment. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Napraw powiązanie dokumentów przed załadunkiem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Proces łączy receiving, putaway, wave, pick, pack i loading.",
+          "situation": "Towar jest spakowany, ale nieprzypisany do shipment.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Napraw powiązanie dokumentów przed załadunkiem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Napraw powiązanie dokumentów przed załadunkiem.",
+          "explanation": "Proces łączy receiving, putaway, wave, pick, pack i loading.",
+          "feedback": [
+            "Tak. Proces łączy receiving, putaway, wave, pick, pack i loading.",
+            "Nie. Proces łączy receiving, putaway, wave, pick, pack i loading.",
+            "Nie. Proces łączy receiving, putaway, wave, pick, pack i loading."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Napraw powiązanie dokumentów przed załadunkiem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Towar jest spakowany, ale nieprzypisany do shipment.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 20,
+      "title_pl": "Expert: dynamic task execution",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: dynamic task execution",
+          "Priorytety zadań zmieniają się wraz z zapotrzebowaniem i dostępnością zasobów.",
+          "Gdzie wykorzystasz tę wiedzę: Wydajność spada po zmianie obłożenia ramp. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź przydział pracy i limity zasobów zamiast wymuszać skany. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Priorytety zadań zmieniają się wraz z zapotrzebowaniem i dostępnością zasobów.",
+          "situation": "Wydajność spada po zmianie obłożenia ramp.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź przydział pracy i limity zasobów zamiast wymuszać skany.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przydział pracy i limity zasobów zamiast wymuszać skany.",
+          "explanation": "Priorytety zadań zmieniają się wraz z zapotrzebowaniem i dostępnością zasobów.",
+          "feedback": [
+            "Tak. Priorytety zadań zmieniają się wraz z zapotrzebowaniem i dostępnością zasobów.",
+            "Nie. Priorytety zadań zmieniają się wraz z zapotrzebowaniem i dostępnością zasobów.",
+            "Nie. Priorytety zadań zmieniają się wraz z zapotrzebowaniem i dostępnością zasobów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź przydział pracy i limity zasobów zamiast wymuszać skany."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Wydajność spada po zmianie obłożenia ramp.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 21,
+      "title_pl": "Expert: slotting optimisation",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: slotting optimisation",
+          "Slotting dopasowuje produkty do lokalizacji według rotacji, rozmiaru i ograniczeń.",
+          "Gdzie wykorzystasz tę wiedzę: Produkt szybko rotujący stoi daleko od stanowisk. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zaproponuj analizę przeniesienia z kontrolą pojemności i bezpieczeństwa. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Slotting dopasowuje produkty do lokalizacji według rotacji, rozmiaru i ograniczeń.",
+          "situation": "Produkt szybko rotujący stoi daleko od stanowisk.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zaproponuj analizę przeniesienia z kontrolą pojemności i bezpieczeństwa.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zaproponuj analizę przeniesienia z kontrolą pojemności i bezpieczeństwa.",
+          "explanation": "Slotting dopasowuje produkty do lokalizacji według rotacji, rozmiaru i ograniczeń.",
+          "feedback": [
+            "Tak. Slotting dopasowuje produkty do lokalizacji według rotacji, rozmiaru i ograniczeń.",
+            "Nie. Slotting dopasowuje produkty do lokalizacji według rotacji, rozmiaru i ograniczeń.",
+            "Nie. Slotting dopasowuje produkty do lokalizacji według rotacji, rozmiaru i ograniczeń."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zaproponuj analizę przeniesienia z kontrolą pojemności i bezpieczeństwa."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Produkt szybko rotujący stoi daleko od stanowisk.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 22,
+      "title_pl": "Expert: labor management",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: labor management",
+          "Wskaźniki pracy oceniają wolumen, jakość i ergonomię.",
+          "Gdzie wykorzystasz tę wiedzę: Brygada ma wysoki throughput, ale rośnie liczba urazów. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Analizuj również obciążenie i bezpieczeństwo. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Wskaźniki pracy oceniają wolumen, jakość i ergonomię.",
+          "situation": "Brygada ma wysoki throughput, ale rośnie liczba urazów.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Analizuj również obciążenie i bezpieczeństwo.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Analizuj również obciążenie i bezpieczeństwo.",
+          "explanation": "Wskaźniki pracy oceniają wolumen, jakość i ergonomię.",
+          "feedback": [
+            "Tak. Wskaźniki pracy oceniają wolumen, jakość i ergonomię.",
+            "Nie. Wskaźniki pracy oceniają wolumen, jakość i ergonomię.",
+            "Nie. Wskaźniki pracy oceniają wolumen, jakość i ergonomię."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Analizuj również obciążenie i bezpieczeństwo."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Brygada ma wysoki throughput, ale rośnie liczba urazów.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 23,
+      "title_pl": "Expert: automation integration",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: automation integration",
+          "Roboty i systemy transportu muszą odbierać zadania bez dublowania wykonania.",
+          "Gdzie wykorzystasz tę wiedzę: Robot raportuje task failed po fizycznym odłożeniu. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zweryfikuj stan urządzenia i WMS przed ręcznym ponowieniem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Roboty i systemy transportu muszą odbierać zadania bez dublowania wykonania.",
+          "situation": "Robot raportuje task failed po fizycznym odłożeniu.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zweryfikuj stan urządzenia i WMS przed ręcznym ponowieniem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj stan urządzenia i WMS przed ręcznym ponowieniem.",
+          "explanation": "Roboty i systemy transportu muszą odbierać zadania bez dublowania wykonania.",
+          "feedback": [
+            "Tak. Roboty i systemy transportu muszą odbierać zadania bez dublowania wykonania.",
+            "Nie. Roboty i systemy transportu muszą odbierać zadania bez dublowania wykonania.",
+            "Nie. Roboty i systemy transportu muszą odbierać zadania bez dublowania wykonania."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zweryfikuj stan urządzenia i WMS przed ręcznym ponowieniem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Robot raportuje task failed po fizycznym odłożeniu.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 24,
+      "title_pl": "Expert: system-driven replenishment",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: system-driven replenishment",
+          "Dynamiczne uzupełnianie powinno uwzględniać zamówienia i realną przepustowość.",
+          "Gdzie wykorzystasz tę wiedzę: Zlecenie replenishment blokuje przejście pickerom. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Skoryguj priorytety i trasę zgodnie z operacją. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Dynamiczne uzupełnianie powinno uwzględniać zamówienia i realną przepustowość.",
+          "situation": "Zlecenie replenishment blokuje przejście pickerom.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Skoryguj priorytety i trasę zgodnie z operacją.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Skoryguj priorytety i trasę zgodnie z operacją.",
+          "explanation": "Dynamiczne uzupełnianie powinno uwzględniać zamówienia i realną przepustowość.",
+          "feedback": [
+            "Tak. Dynamiczne uzupełnianie powinno uwzględniać zamówienia i realną przepustowość.",
+            "Nie. Dynamiczne uzupełnianie powinno uwzględniać zamówienia i realną przepustowość.",
+            "Nie. Dynamiczne uzupełnianie powinno uwzględniać zamówienia i realną przepustowość."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Skoryguj priorytety i trasę zgodnie z operacją."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zlecenie replenishment blokuje przejście pickerom.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 25,
+      "title_pl": "Expert: KPI i SLA",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: KPI i SLA",
+          "Terminowość, koszt, jakość i reklamacje opisują efektywność lepiej niż tylko liczba skanów.",
+          "Gdzie wykorzystasz tę wiedzę: 99% pick rate przy 90% on-time. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zbadaj przyczynę opóźnień mimo wysokiej liczby pobrań. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Terminowość, koszt, jakość i reklamacje opisują efektywność lepiej niż tylko liczba skanów.",
+          "situation": "99% pick rate przy 90% on-time.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zbadaj przyczynę opóźnień mimo wysokiej liczby pobrań.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zbadaj przyczynę opóźnień mimo wysokiej liczby pobrań.",
+          "explanation": "Terminowość, koszt, jakość i reklamacje opisują efektywność lepiej niż tylko liczba skanów.",
+          "feedback": [
+            "Tak. Terminowość, koszt, jakość i reklamacje opisują efektywność lepiej niż tylko liczba skanów.",
+            "Nie. Terminowość, koszt, jakość i reklamacje opisują efektywność lepiej niż tylko liczba skanów.",
+            "Nie. Terminowość, koszt, jakość i reklamacje opisują efektywność lepiej niż tylko liczba skanów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zbadaj przyczynę opóźnień mimo wysokiej liczby pobrań."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: 99% pick rate przy 90% on-time.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 26,
+      "title_pl": "Expert: audit trace",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: audit trace",
+          "W logach powinno być widać użytkownika, czas i zmianę statusu.",
+          "Gdzie wykorzystasz tę wiedzę: Zapas zniknął po nocnej zmianie. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Odtwórz łańcuch potwierdzeń przed korektą. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "W logach powinno być widać użytkownika, czas i zmianę statusu.",
+          "situation": "Zapas zniknął po nocnej zmianie.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Odtwórz łańcuch potwierdzeń przed korektą.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Odtwórz łańcuch potwierdzeń przed korektą.",
+          "explanation": "W logach powinno być widać użytkownika, czas i zmianę statusu.",
+          "feedback": [
+            "Tak. W logach powinno być widać użytkownika, czas i zmianę statusu.",
+            "Nie. W logach powinno być widać użytkownika, czas i zmianę statusu.",
+            "Nie. W logach powinno być widać użytkownika, czas i zmianę statusu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Odtwórz łańcuch potwierdzeń przed korektą."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zapas zniknął po nocnej zmianie.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 27,
+      "title_pl": "Expert: interfejsy z ERP i przewoźnikiem",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: interfejsy z ERP i przewoźnikiem",
+          "Integracja zamówień, dokumentów i statusów może opóźnić komunikat.",
+          "Gdzie wykorzystasz tę wiedzę: WMS wykonał wydanie, ale przewoźnik nie ma awiza. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź kolejkę i identyfikator wiadomości przed dublem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Integracja zamówień, dokumentów i statusów może opóźnić komunikat.",
+          "situation": "WMS wykonał wydanie, ale przewoźnik nie ma awiza.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź kolejkę i identyfikator wiadomości przed dublem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź kolejkę i identyfikator wiadomości przed dublem.",
+          "explanation": "Integracja zamówień, dokumentów i statusów może opóźnić komunikat.",
+          "feedback": [
+            "Tak. Integracja zamówień, dokumentów i statusów może opóźnić komunikat.",
+            "Nie. Integracja zamówień, dokumentów i statusów może opóźnić komunikat.",
+            "Nie. Integracja zamówień, dokumentów i statusów może opóźnić komunikat."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź kolejkę i identyfikator wiadomości przed dublem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: WMS wykonał wydanie, ale przewoźnik nie ma awiza.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 28,
+      "title_pl": "Expert: awaria automatyki",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: awaria automatyki",
+          "Wstrzymanie sortera może wymagać zgodnego przepływu ręcznego.",
+          "Gdzie wykorzystasz tę wiedzę: Zamówienia czekają na uszkodzony sorter. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Uruchom zatwierdzony tryb awaryjny i uzgodnij status każdego taska. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Wstrzymanie sortera może wymagać zgodnego przepływu ręcznego.",
+          "situation": "Zamówienia czekają na uszkodzony sorter.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Uruchom zatwierdzony tryb awaryjny i uzgodnij status każdego taska.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Uruchom zatwierdzony tryb awaryjny i uzgodnij status każdego taska.",
+          "explanation": "Wstrzymanie sortera może wymagać zgodnego przepływu ręcznego.",
+          "feedback": [
+            "Tak. Wstrzymanie sortera może wymagać zgodnego przepływu ręcznego.",
+            "Nie. Wstrzymanie sortera może wymagać zgodnego przepływu ręcznego.",
+            "Nie. Wstrzymanie sortera może wymagać zgodnego przepływu ręcznego."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Uruchom zatwierdzony tryb awaryjny i uzgodnij status każdego taska."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zamówienia czekają na uszkodzony sorter.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Manhattan ActiveWarehouse",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Manhattan ActiveWarehouse",
+          "Ocena łączy decyzje dla inventory, labor, yard i automation.",
+          "Gdzie wykorzystasz tę wiedzę: Kierowca czeka przy rampie, brak etykiet i strefa pakowania ma opóźnienie. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Ustal kolejność działań i dokumentów bez fikcyjnego potwierdzania wysyłki. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Ocena łączy decyzje dla inventory, labor, yard i automation.",
+          "situation": "Kierowca czeka przy rampie, brak etykiet i strefa pakowania ma opóźnienie.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Ustal kolejność działań i dokumentów bez fikcyjnego potwierdzania wysyłki.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Ustal kolejność działań i dokumentów bez fikcyjnego potwierdzania wysyłki.",
+          "explanation": "Ocena łączy decyzje dla inventory, labor, yard i automation.",
+          "feedback": [
+            "Tak. Ocena łączy decyzje dla inventory, labor, yard i automation.",
+            "Nie. Ocena łączy decyzje dla inventory, labor, yard i automation.",
+            "Nie. Ocena łączy decyzje dla inventory, labor, yard i automation."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Ustal kolejność działań i dokumentów bez fikcyjnego potwierdzania wysyłki."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Kierowca czeka przy rampie, brak etykiet i strefa pakowania ma opóźnienie.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    }
+  ]
+}
