@@ -2,15 +2,17 @@ import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,Pressable,ActivityIndicator} from 'react-native';
 import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import {academyAction} from '../src/academyApi';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
 export default function MyCourses(){
- const router=useRouter(),[items,setItems]=useState<(Enrollment&{progress:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true);
+ const router=useRouter(),[items,setItems]=useState<(Enrollment&{progress:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
  useEffect(()=>{void load()},[]);
  async function load(){
   setBusy(true);
   try{
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.replace('/konto');return;}
+   void academyAction('whoami').then(info=>setAdmin(!!info.is_admin)).catch(()=>setAdmin(false));
    const [{data:rows,error:e},{data:passed,error:p}]=await Promise.all([
      supabase.from('ta_enrollments').select('course_slug,expires_at,status,ta_courses(title_pl)').eq('user_id',user.id),
      supabase.from('ta_learning_progress').select('course_slug,lesson_no').eq('user_id',user.id)]);
@@ -32,6 +34,7 @@ export default function MyCourses(){
     <View style={{backgroundColor:'#eaf1e6',height:8,borderRadius:8,overflow:'hidden',marginTop:12}}><View style={{backgroundColor:'#79a87d',width:row.progress+'%',height:8}}/></View>
     <Pressable disabled={!active} onPress={()=>router.push({pathname:'/nauka',params:{course:row.course_slug}})} style={{alignSelf:'flex-start',backgroundColor:'#1e5234',padding:13,marginTop:14,borderRadius:10,opacity:active?1:.5}}><Text style={{color:'white',fontWeight:'800'}}>Kontynuuj naukę →</Text></Pressable>
    </View>})}
+  {isAdmin&&<Pressable onPress={()=>router.push('/admin')} style={{backgroundColor:'#173228',padding:15,marginTop:15,borderRadius:12,alignItems:'center'}}><Text style={{color:'white',fontWeight:'900'}}>Panel administratora TRENERKI →</Text></Pressable>}
   <Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#e8f3dc',padding:14,marginTop:18,borderRadius:12,alignItems:'center'}}><Text style={{color:'#173228',fontWeight:'800'}}>🎁 Wyślij lub odbierz prezent →</Text></Pressable>
   <Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#e8f3dc',padding:14,marginTop:18,borderRadius:12,alignItems:'center'}}><Text style={{color:'#173228',fontWeight:'800'}}>Przeglądaj wszystkie kursy →</Text></Pressable>
   <Pressable onPress={async()=>{await supabase.auth.signOut();router.replace('/konto')}} style={{padding:13,marginTop:12}}><Text style={{color:'#476d50',fontWeight:'700'}}>Wyloguj się</Text></Pressable>
