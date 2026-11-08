@@ -5,7 +5,7 @@ import {supabase} from './supabase';
 type Line={role:'student'|'anielka';text:string;created_at?:string};
 type ServerState={
  ok?:boolean;ready?:boolean;already_completed?:boolean;available?:boolean;
- first_name?:string;opening?:string;reply?:string;count?:number;turns?:number;
+ first_name?:string;opening?:string;reply?:string;count?:number;turns?:number;agent_online?:boolean;
  history?:Line[];cooldown_until?:string|null;error?:string;
 };
 type Props={courseSlug:string;lessonNo:number;onReady:(ready:boolean)=>void};
@@ -25,7 +25,7 @@ export default function GuidedDialogue({courseSlug,lessonNo,onReady}:Props){
  const [loading,setLoading]=useState(true),[sending,setSending]=useState(false);
  const [history,setHistory]=useState<Line[]>([]),[ready,setReady]=useState(false);
  const [opening,setOpening]=useState(''),[firstName,setFirstName]=useState('');
- const [available,setAvailable]=useState(true),[count,setCount]=useState(0);
+ const [available,setAvailable]=useState(true),[agentOnline,setAgentOnline]=useState(false),[count,setCount]=useState(0);
  const [cooldown,setCooldown]=useState<string|null>(null);
  const [consent,setConsent]=useState(false),[input,setInput]=useState('');
  const [error,setError]=useState(''),[notice,setNotice]=useState('');
@@ -43,6 +43,7 @@ export default function GuidedDialogue({courseSlug,lessonNo,onReady}:Props){
   if(data.first_name)setFirstName(data.first_name);
   if(data.count!==undefined)setCount(data.count);
   if(data.available!==undefined)setAvailable(data.available);
+  if(data.agent_online!==undefined)setAgentOnline(data.agent_online);
   setCooldown(data.cooldown_until||null);
  };
  async function refresh(){
@@ -59,16 +60,18 @@ export default function GuidedDialogue({courseSlug,lessonNo,onReady}:Props){
   try{
    const data=await call('dialogue',outgoing);
    apply(data);setInput('');
-   if(data.ready)setNotice((firstName||'')+', poznaliśmy ten temat wystarczająco dobrze, by iść dalej. Zaliczymy jeszcze pozostałe ćwiczenia z tej lekcji.');
+   if(data.ready)setNotice((firstName||'')+', możesz przejść do następnego etapu po poprawnym wykonaniu pozostałych ćwiczeń z lekcji.');
    if(data.cooldown_until)setNotice('Przerwa w rozmowie została włączona po poważnym, powtarzającym się naruszeniu granic. Nie usunięto Twoich wcześniej zaliczonych lekcji.');
   }catch(e:any){setError(e.message||'Wiadomość nie została wysłana.')}
   finally{setSending(false)}
  }
  const stalled=!!cooldown&&new Date(cooldown).getTime()>Date.now();
  return <View style={{marginTop:23,borderRadius:19,padding:19,backgroundColor:green,borderWidth:1,borderColor:'#cde3c9',gap:13}}>
-  <Text style={{color:'#55755a',fontWeight:'900',fontSize:12}}>ANIELKA · ROZMOWA PODCZAS NAUKI</Text>
+  <Text style={{color:'#55755a',fontWeight:'900',fontSize:12}}>ANIELKA · {agentOnline?'OSOBISTY AGENT AI':'INTERAKTYWNY PRZEWODNIK EDUKACYJNY'}</Text>
   <Text style={{color:ink,fontWeight:'900',fontSize:22}}>Porozmawiajmy o tym, czego się uczysz</Text>
-  <Text style={{color:muted,lineHeight:22,fontSize:14}}>Anielka odpowie na Twoje słowa, wyjaśni trudności i sprawdzi zrozumienie. Zwykle wystarczą dwie konkretne wypowiedzi — nie musisz zgadywać ani się spieszyć. Nie ma kar za błędne odpowiedzi.</Text>
+  <Text style={{color:muted,lineHeight:22,fontSize:14}}>{agentOnline?
+    'Agent AI pamięta, w których tematach miałeś trudności, i odpowie na Twoje własne pytania. Po dwóch wartościowych wypowiedziach oraz ćwiczeniach odblokuje następny etap. Nie karze za pomyłki.':
+    'Gdy model AI jest niedostępny, możesz nadal uczyć się z własnego materiału i prowadzić rozmowę z przewodnikiem. W tym trybie odpowiedzi są generowane z treści lekcji według prostych reguł, a zaliczenie sprawdza także osobny quiz. To nie jest ocena AI.'}</Text>
   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
    <Text style={{color:ink,fontWeight:'900'}}>Zrozumienie tematu</Text>
    <Text style={{color:ink,fontWeight:'900'}}>{Math.min(count,2)}/2</Text>
