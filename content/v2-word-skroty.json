@@ -16,13 +16,13 @@
         "level": "podstawy",
         "raw": [
           "Poznaj Word — edytor dokumentów",
-          "Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+          "Word nie jest drukarką ani internetową stroną. To edytor, czyli cyfrowa maszyna do pisania, która pozwala powracać do już istniejącego tekstu, zmieniać akapity i zachowywać różne wersje. Pierwsza wersja Worda pojawiła się w 1983 roku w firmie Microsoft. Charles Simonyi i Richard Brodie należeli do twórców jego wczesnego rozwoju; Word dla Windows pojawił się w 1989 roku.",
           "Przykład zawodowy: Firma prosi Cię o pismo, które będzie jeszcze poprawiane.",
           "Prawidłowe postępowanie: Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.",
           "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
         ],
         "learning": {
-          "intro": "Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+          "intro": "Word nie jest drukarką ani internetową stroną. To edytor, czyli cyfrowa maszyna do pisania, która pozwala powracać do już istniejącego tekstu, zmieniać akapity i zachowywać różne wersje. Pierwsza wersja Worda pojawiła się w 1983 roku w firmie Microsoft. Charles Simonyi i Richard Brodie należeli do twórców jego wczesnego rozwoju; Word dla Windows pojawił się w 1989 roku.",
           "situation": "Firma prosi Cię o pismo, które będzie jeszcze poprawiane.",
           "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
           "options": [
@@ -41,7 +41,25 @@
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu."
         },
         "editorial_status": "review_needed",
-        "illustration": "word-interface"
+        "illustration": "word-interface",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Word nie jest drukarką ani internetową stroną. To edytor, czyli cyfrowa maszyna do pisania, która pozwala powracać do już istniejącego tekstu, zmieniać akapity i zachowywać różne wersje. Pierwsza wersja Worda pojawiła się w 1983 roku w firmie Microsoft. Charles Simonyi i Richard Brodie należeli do twórców jego wczesnego rozwoju; Word dla Windows pojawił się w 1989 roku."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Pomyśl o sytuacji: przez godzinę piszesz dwustronicową ofertę i dopiero potem klient zmienia datę. W edytorze poprawiasz jedną datę i ponownie zapisujesz dokument. W tradycyjnej maszynie do pisania poprawa całych zdań była znacznie trudniejsza. To właśnie zdolność edycji jest podstawową zaletą programu."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Kiedy masz napisać raport, najpierw wymyśl strukturę: tytuł, data, autor, sekcje, załączniki. Potem dopiero dobierz formatowanie. Dokument jest poprawny nie dlatego, że wygląda efektownie, lecz dlatego, że zawiera właściwe, sprawdzone informacje."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku."
+          }
+        ]
       }
     },
     {
@@ -78,7 +96,25 @@
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie."
         },
         "editorial_status": "review_needed",
-        "illustration": "word-interface"
+        "illustration": "word-interface",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Zanim zaczniesz pisać, rozpoznaj elementy okna. Wstążka to górny pasek z kartami. Karta Plik prowadzi do otwierania, zapisu i drukowania; Narzędzia główne zawierają czcionkę, akapity i style; Wstawianie pozwala dodać obraz, tabelę, nagłówek; Układ odpowiada za marginesy i orientację."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Kliknięcie karty zmienia widoczne narzędzia, nie usuwa treści dokumentu. Biała kartka jest obszarem edycji. Migająca kreska pokazuje miejsce, w które wpiszesz następną literę. Pasek stanu na dole może pokazywać numer strony, liczbę słów i powiększenie."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: wskaż na schemacie miejsce do zmiany marginesu, miejsce do wstawienia tabeli i miejsce do zapisania pliku. W prawdziwym Wordzie spróbuj bez ryzyka otworzyć Narzędzia główne, Wstawianie i Układ. Wyjaśnij, dlaczego wybór karty nie oznacza jeszcze wykonania polecenia."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron."
+          }
+        ]
       }
     },
     {
@@ -114,7 +150,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Plik DOCX przechowuje edytowalny dokument Worda: tekst, tabele, formatowanie, obrazy i część ustawień. PDF służy przede wszystkim do stabilnego prezentowania gotowych stron. Jest różnica między „Zapisz” a „Eksportuj do PDF”: zmiana liter po kropce w nazwie pliku nie zmienia jego formatu."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Szablon to powtarzalna konstrukcja dokumentu, np. formularz odbioru z miejscem na datę, klienta i podpis. Wiele firm korzysta z szablonów, żeby każde pismo było czytelne i zawierało wszystkie wymagane pola. Nie wolno zostawiać danych poprzedniego klienta."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: utwórz dokument z jednym akapitem. Zapisz go jako DOCX. Następnie wyeksportuj do PDF i otwórz oba pliki. Zobacz, w którym możesz łatwo zmienić słowa, a w którym łatwiej sprawdzić wygląd do wydruku. Zachowaj oryginał."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu."
+          }
+        ]
       }
     },
     {
@@ -150,7 +204,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "W Wordzie istnieje wskaźnik myszy oraz kursor tekstowy. Wskaźnik służy do kliknięcia w odpowiednie miejsce, a kursor tekstowy informuje, gdzie pojawi się nowy znak. Zaznaczenie jest czymś innym: określa fragment, na który zadziała polecenie. Pomyłki często wynikają z niezrozumienia tej różnicy."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Zaznacz dokładnie jedno zdanie i użyj pogrubienia. Potem kliknij poza zaznaczeniem — reszta akapitu powinna zachować wcześniejszy wygląd. Jeśli przypadkowo nacisniesz literę, gdy cały akapit jest zaznaczony, zastąpisz nim zaznaczoną treść; najpierw użyj Ctrl+Z, a następnie zapisz bezpieczną wersję."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: wpisz trzy zdania. Zaznacz drugie, skopiuj je, wklej na końcu i sprawdź, czy pierwsze oraz trzecie się nie zmieniły. Umiejętność kontroli zakresu zaznaczenia jest ważniejsza niż szybkość kliknięć."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu."
+          }
+        ]
       }
     },
     {
@@ -186,7 +258,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Enter tworzy nowy akapit. Każdy akapit może mieć własny styl, odstępy i wyrównanie. Shift+Enter wstawia ręczne złamanie wiersza bez zakładania nowego akapitu. To istotne np. w adresie lub podpisie, ale nie powinno służyć do ustawiania całego dokumentu."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Kiedy naciskasz Enter dziesięć razy, aby przenieść podpis na kolejną stronę, dokument może się rozsypać po dodaniu jednego zdania u góry. Do nowej strony użyj prawidłowego podziału strony, a do odstępów ustawień akapitu. Włącz wyświetlanie znaków niedrukowalnych, aby zobaczyć ukryte końce akapitów."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: napisz adres w trzech wierszach, następnie dwa zwykłe akapity. Ustaw odstęp po jednym akapicie i porównaj z dodawaniem pustych Enterów. Wytłumacz różnicę Anielce."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie."
+          }
+        ]
       }
     },
     {
@@ -222,7 +312,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Czcionka oznacza krój liter, np. Aptos, a rozmiar opisuje ich wielkość. Pogrubienie, kursywa, podkreślenie i kolor są wyróżnieniami. Styl jest czymś więcej: łączy ustawienia i określa rolę tekstu, np. tytuł dokumentu lub Nagłówek 1. Dzięki temu wygląd pozostaje jednolity."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Nie stosuj losowo wielu krojów i kolorów. Dokument biznesowy powinien dać się przeczytać także na telefonie i po wydruku. Dobry kontrast i czytelna hierarchia są ważniejsze od dekoracji. Czytnik ekranu korzysta ze struktury dokumentu, więc tytuł rozdziału powinien być prawdziwym nagłówkiem."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: stwórz tytuł, dwie sekcje i tekst. Użyj stylów Nagłówek 1 i zwykłego. Sprawdź, czy wszystkie nagłówki wyglądają podobnie, a zwykłe akapity nie zostały przypadkowo pogrubione."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów."
+          }
+        ]
       }
     },
     {
@@ -258,7 +366,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Margines to wolne miejsce między krawędzią strony a treścią. Orientacja pionowa i pozioma określa sposób ustawienia kartki. Wyrównanie dotyczy akapitów: do lewej, do środka, do prawej lub wyjustowane. Żadna z tych funkcji nie jest tym samym co zmiana formatu całej strony."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Jeżeli chcesz stworzyć dwie kolumny cen, nie wpisuj 25 spacji, aby ustawić kwoty. Taki układ rozpadnie się po zmianie czcionki. Wykorzystaj tabelę albo tabulatory. Jeśli szeroka tabela wychodzi poza margines, rozważ orientację poziomą tej strony lub odpowiedni układ kolumn."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: przygotuj krótką tabelę z trzema cenami i numerami pozycji. Wyświetl podgląd wydruku w orientacji pionowej, później poziomej. Sprawdź, czy nic nie wychodzi poza kartkę."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn."
+          }
+        ]
       }
     },
     {
@@ -294,7 +420,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Zapisanie dokumentu oznacza utrwalenie go w określonej lokalizacji, a nie tylko pozostawienie otwartego okna. Przy pierwszym zapisie wybierz folder, nazwę i format. Ctrl+S powtarza zapis w już wybranym pliku. „Zapisz jako” pozwala utworzyć nową kopię lub zmienić lokalizację."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Dobra nazwa może zawierać datę w formacie RRRR-MM-DD, nazwę projektu i numer wersji. Unikaj nazw typu final_final_ostatni. Gdy korzystasz z chmury, sprawdź, czy plik jest faktycznie zsynchronizowany; synchronizacja nie jest tym samym co niezależna kopia bezpieczeństwa."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: zapisz plik jako 2026-11-08-pismo-v01.docx w folderze ćwiczeń. Zamknij go i znajdź w Eksploratorze. Otwórz ponownie i sprawdź, czy wprowadzona treść nadal istnieje. W ten sposób udowodnisz, że zapis działa."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem."
+          }
+        ]
       }
     },
     {
@@ -330,7 +474,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Ctrl+Z służy do cofania wielu zmian, Ctrl+Y może je ponawiać. Nie każde działanie da się jednak cofnąć: zamknięcie dokumentu, usunięcie niektórych plików lub wysłanie wiadomości nie zawsze odwraca się jednym skrótem. Ważne dokumenty warto chronić dodatkowymi wersjami."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Wyobraź sobie, że zaznaczyłeś dwa akapity i przez przypadek je nadpisałeś. Najpierw cofnij czynność, sprawdź odzyskaną treść, a następnie zapisz nową wersję. Jeśli dokument jest współdzielony, trzeba też zobaczyć, czy inna osoba nie wprowadziła zmian w międzyczasie."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Ćwiczenie: zrób kopię próbnego dokumentu. Zmień trzy słowa, cofnij dwie ostatnie zmiany, ponów jedną. Sprawdź, co się stało. Dopiero potem zamknij dokument i spróbuj go ponownie otworzyć."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości."
+          }
+        ]
       }
     },
     {
@@ -366,7 +528,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw zrozum",
+            "text": "Pierwsze oficjalne pismo powinno być zrozumiałe bez domyślania się kontekstu. Najczęściej zawiera nadawcę, datę, odbiorcę, temat, właściwą treść i podpis. Zwróć uwagę na rzeczywiste daty, kwoty i imiona. Word może wskazać literówkę, ale nie zweryfikuje prawdziwości uzgodnionego terminu."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Napisz krótkie pismo potwierdzające spotkanie. Temat powinien od razu wyjaśniać, czego dotyczy. W treści umieść konkretną datę, godzinę, adres i cel. Zakończ prośbą o potwierdzenie. Zapisz edytowalny DOCX, a dla odbiorcy wyeksportuj PDF i sprawdź jego strony."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Sprawdzenie: wyobraź sobie, że odbiorca nie ma Twoich wcześniejszych wiadomości. Czy na podstawie tego jednego pisma będzie wiedział kiedy, gdzie i po co ma się pojawić? Jeśli nie, uzupełnij dokument, zanim wyślesz."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy."
+          }
+        ]
       }
     },
     {
@@ -495,7 +675,25 @@
           }
         ],
         "editorial_status": "review_needed",
-        "illustration": "word-interface"
+        "illustration": "word-interface",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Dostałeś wzór protokołu do uzupełnienia dla nowego klienta. Poprawne działanie: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane. Po wykonaniu porównaj własny wynik z kryterium: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy."
+          }
+        ]
       }
     },
     {
@@ -623,7 +821,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Przed drukiem oferty pojawia się dodatkowa pusta strona. Poprawne działanie: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii. Po wykonaniu porównaj własny wynik z kryterium: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki."
+          }
+        ]
       }
     },
     {
@@ -752,7 +968,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Tekst z internetu ma dziwną czcionkę i odstępy. Poprawne działanie: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu. Po wykonaniu porównaj własny wynik z kryterium: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."
+          }
+        ]
       }
     },
     {
@@ -886,7 +1120,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Potrzebujesz automatycznego spisu treści długiej instrukcji. Poprawne działanie: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły. Po wykonaniu porównaj własny wynik z kryterium: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności."
+          }
+        ]
       }
     },
     {
@@ -1014,7 +1266,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Kwoty i nazwiska mają być w dwóch równych kolumnach. Poprawne działanie: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji. Po wykonaniu porównaj własny wynik z kryterium: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji."
+          }
+        ]
       }
     },
     {
@@ -1144,7 +1414,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "W 50-stronicowej instrukcji zmieniła się nazwa urządzenia. Poprawne działanie: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem. Po wykonaniu porównaj własny wynik z kryterium: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu."
+          }
+        ]
       }
     },
     {
@@ -1274,7 +1562,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Protokół odbioru wymaga zdjęć usterek i ich lokalizacji. Poprawne działanie: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność. Po wykonaniu porównaj własny wynik z kryterium: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."
+          }
+        ]
       }
     },
     {
@@ -1401,7 +1707,25 @@
             "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
           }
         ],
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Dodajesz stronę do raportu i wszystkie numery się przesuwają. Poprawne działanie: Włącz automatyczne numery stron i sprawdź ustawienia sekcji.. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Włącz automatyczne numery stron i sprawdź ustawienia sekcji. Po wykonaniu porównaj własny wynik z kryterium: Włącz automatyczne numery stron i sprawdź ustawienia sekcji."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ."
+          }
+        ]
       }
     },
     {
@@ -1437,7 +1761,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Współpracownik zmienił kilka istotnych zdań w umowie. Poprawne działanie: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby. Po wykonaniu porównaj własny wynik z kryterium: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane."
+          }
+        ]
       }
     },
     {
@@ -1473,7 +1815,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Raport z budowy ma trzy usterki bez przypisanej lokalizacji. Poprawne działanie: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk. Po wykonaniu porównaj własny wynik z kryterium: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji."
+          }
+        ]
       }
     },
     {
@@ -1510,7 +1870,25 @@
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację."
         },
         "editorial_status": "review_needed",
-        "illustration": "word-interface"
+        "illustration": "word-interface",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "W długim raporcie jedna szeroka tabela potrzebuje układu poziomego. Poprawne działanie: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację. Po wykonaniu porównaj własny wynik z kryterium: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji."
+          }
+        ]
       }
     },
     {
@@ -1546,7 +1924,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Po dodaniu nowego rozdziału spis pokazuje stare numery stron. Poprawne działanie: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków. Po wykonaniu porównaj własny wynik z kryterium: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu."
+          }
+        ]
       }
     },
     {
@@ -1582,7 +1978,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Masz przygotować 40 ofert na jednym wzorze. Poprawne działanie: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty. Po wykonaniu porównaj własny wynik z kryterium: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy."
+          }
+        ]
       }
     },
     {
@@ -1618,7 +2032,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Przy wydruku zaproszeń nazwiska nie pasują do adresów. Poprawne działanie: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką. Po wykonaniu porównaj własny wynik z kryterium: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd."
+          }
+        ]
       }
     },
     {
@@ -1654,7 +2086,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Plik PDF ma piękne strony, ale czytnik ekranu nie znajduje nagłówków. Poprawne działanie: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem. Po wykonaniu porównaj własny wynik z kryterium: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument."
+          }
+        ]
       }
     },
     {
@@ -1690,7 +2140,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "W ofercie nadal są komentarze o wewnętrznych cenach. Poprawne działanie: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę. Po wykonaniu porównaj własny wynik z kryterium: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy."
+          }
+        ]
       }
     },
     {
@@ -1726,7 +2194,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Dwie osoby wysłały różne pliki nazwane final.docx. Poprawne działanie: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię. Po wykonaniu porównaj własny wynik z kryterium: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem."
+          }
+        ]
       }
     },
     {
@@ -1762,7 +2248,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Tabela wygląda dobrze w Wordzie, ale ucieka poza margines w PDF. Poprawne działanie: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę. Po wykonaniu porównaj własny wynik z kryterium: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę."
+          }
+        ]
       }
     },
     {
@@ -1798,7 +2302,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Po pracy offline Word zgłasza konflikt dwóch zapisów. Poprawne działanie: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki. Po wykonaniu porównaj własny wynik z kryterium: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją."
+          }
+        ]
       }
     },
     {
@@ -1834,7 +2356,25 @@
           ],
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum mechanizm i jego zastosowanie",
+            "text": "Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."
+          },
+          {
+            "heading": "Przykład z prawdziwej pracy",
+            "text": "Firma wymaga raportu z harmonogramem, zdjęciami, tabelą i podpisami. Poprawne działanie: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."
+          },
+          {
+            "heading": "Wykonaj zadanie krok po kroku",
+            "text": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy. Po wykonaniu porównaj własny wynik z kryterium: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy."
+          },
+          {
+            "heading": "Najczęstszy błąd i jego konsekwencja",
+            "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."
+          }
+        ]
       }
     }
   ]
