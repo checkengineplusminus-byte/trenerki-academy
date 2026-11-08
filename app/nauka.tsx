@@ -7,6 +7,7 @@ import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionL
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import AiTutor from '../src/AiTutor';
 import CourseIntro from '../src/CourseIntro';
+import ConceptAtlas from '../src/ConceptAtlas';
 type Lesson={
  lesson_no:number,title_pl:string,
  material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
@@ -18,7 +19,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -74,9 +75,10 @@ export default function Learning(){
    });
   }catch(e:any){setMsg('Odpowiedź sprawdzona, ale historia próby nie została zapisana. '+String(e?.message||'').slice(0,110));}
  }
- function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setVerified(false);setMsg('');}}
+ function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setVerified(false);setVerifiedKeyboard(false);setMsg('');}}
  const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
- const canFinish=done.includes(module)||!hasExercise||verified;
+ const canFinish=done.includes(module)||(!lesson?.material?.learning&&!lesson?.material?.construction&&!lesson?.material?.shortcuts?.length)||
+  ((!lesson?.material?.learning&&!lesson?.material?.construction||verified)&&(!lesson?.material?.shortcuts?.length||verifiedKeyboard));
  async function persistDraft(target:number,noteState:NoteState){
   if(!userId)return;
   const {error:e}=await supabase.from('ta_drafts').upsert({
@@ -107,7 +109,7 @@ export default function Learning(){
    const target=next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setVerified(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
+   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
    else setMsg('Brawo! Ukończono ostatnią lekcję tego kursu. Możesz wrócić do dowolnego tematu.');
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
@@ -137,12 +139,18 @@ export default function Learning(){
       <Text style={{fontSize:11,color:'#7b6548'}}>Powtórz ćwiczenie, aby sprawdzić zrozumienie.</Text>
     </Pressable>)}
    </View>}
-   <Text style={{fontWeight:'900',fontSize:16,color:ink,marginBottom:10}}>Wybierz lekcję</Text>
-   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:18}}>
-    {items.map((v,i)=><Pressable key={v.lesson_no} onPress={()=>changeModule(v.lesson_no)} style={{minWidth:38,paddingVertical:10,paddingHorizontal:11,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#fff',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
-     <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':''}{i+1}</Text>
-    </Pressable>)}
-   </View>
+   <Text style={{fontWeight:'900',fontSize:17,color:ink,marginBottom:11}}>Program Twojego kursu</Text>
+   {(items.length===30?[
+     {name:'DZIAŁ I · PODSTAWY',about:'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
+     {name:'DZIAŁ II · PRAKTYKA',about:'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
+     {name:'DZIAŁ III · EXPERT',about:'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
+   ]:[{name:'DOSTĘPNE LEKCJE',about:'Program w trakcie rozbudowy',list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#dfe9dc',borderRadius:13,padding:13,gap:9}}>
+     <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
+     <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#f8faf6',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':''}{v.lesson_no+1}</Text>
+     </Pressable>)}</View>
+   </View>)}
    {progress===100&&<View style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Wszystkie lekcje ukończone! 🎉</Text>
     <Text style={{color:secondary,marginTop:6}}>Możesz wrócić do materiałów albo kontynuować z innym kursem.</Text>
@@ -150,8 +158,19 @@ export default function Learning(){
   </>}
   {!!lesson&&<>
    <CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={index===0}/>
+   {(index===0||(items.length===30&&index%10===0))&&<ConceptAtlas slug={slug}/>}
+   {items.length===30&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
+     <Text style={{fontWeight:'900',color:ink}}>{index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT'}</Text>
+   </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
+   {!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
+     <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WIEDZA · PRZYKŁAD · BEZPIECZNA PRAKTYKA</Text>
+     {lesson.material.raw.slice(1,5).map((paragraph,i)=><View key={i} style={{gap:5}}>
+      <Text style={{fontWeight:'900',color:ink,fontSize:13}}>{['Zrozum zasadę','Przykład z życia','Co zrobisz','Błąd, którego unikamy'][i]}</Text>
+      <Text style={{color:'#365344',lineHeight:24,fontSize:15}}>{paragraph}</Text>
+     </View>)}
+   </View>}
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
@@ -163,7 +182,7 @@ export default function Learning(){
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
-      <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
+      <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
      </>
    }
    <AiTutor courseSlug={slug} lessonNo={module}/>
