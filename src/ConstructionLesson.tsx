@@ -26,12 +26,26 @@ function Speaker({text,locale}:{text:string;locale:string}){
    g.speechSynthesis.cancel();
    const utterance=new g.SpeechSynthesisUtterance(text);
    utterance.lang=locale;utterance.rate=0.83;utterance.pitch=1.0;
-   const voices=g.speechSynthesis.getVoices();
+   const voices=g.speechSynthesis.getVoices()||[];
    const voice=voices.find((v:any)=>v.lang?.toLowerCase()===locale.toLowerCase())||
      voices.find((v:any)=>v.lang?.toLowerCase().startsWith(locale.slice(0,2).toLowerCase()));
    if(voice)utterance.voice=voice;
-   utterance.onerror=()=>setMessage('Głos dla tego języka jest niedostępny w przeglądarce.');
-   setMessage('');g.speechSynthesis.speak(utterance);
+   utterance.onstart=()=>setMessage('');
+   utterance.onerror=(event:any)=>{
+    const reason=String(event?.error||'');
+    if(reason==='canceled'||reason==='interrupted')return;
+    if(['voice-unavailable','language-unavailable','synthesis-unavailable'].includes(reason)){
+      setMessage('Brak głosu '+locale+' na tym urządzeniu. Wymowa i podpowiedzi tekstowe pozostają dostępne.');
+    }else if(reason==='audio-hardware'||reason==='audio-busy'){
+      setMessage('Urządzenie nie może teraz odtwarzać głosu. Sprawdź dźwięk i spróbuj ponownie.');
+    }else setMessage('Odsłuch nie działa w tej przeglądarce. Możesz skorzystać z zapisu wymowy obok zwrotu.');
+   };
+   setMessage('');
+   // Przeglądarki ładują głosy asynchronicznie. Nie wybieramy głosu innego języka.
+   if(!voices.length&&g.speechSynthesis.addEventListener){
+    g.speechSynthesis.addEventListener('voiceschanged',()=>{}, {once:true});
+   }
+   g.speechSynthesis.resume();g.speechSynthesis.speak(utterance);
   }catch{setMessage('Nie udało się odtworzyć. Spróbuj innej przeglądarki.');}
  }
  return <View style={{alignItems:'flex-end',gap:4}}>
@@ -41,9 +55,9 @@ function Speaker({text,locale}:{text:string;locale:string}){
   {!!message&&<Text style={{color:'#ad6633',fontSize:10,maxWidth:185,textAlign:'right'}}>{message}</Text>}
  </View>;
 }
-export default function ConstructionLesson({lesson,identity}:{lesson?:ConstructionMaterial,identity?:string}){
+export default function ConstructionLesson({lesson,identity,onPassed}:{lesson?:ConstructionMaterial,identity?:string,onPassed?:(passed:boolean)=>void}){
  const [selected,setSelected]=useState<number|null>(null);
- useEffect(()=>{setSelected(null)},[identity]);
+ useEffect(()=>{setSelected(null);onPassed?.(false)},[identity]);
  if(!lesson)return null;
  const quiz=lesson.roleplay;
  const lessonIndex=Number((identity||'0').split('-').slice(-1)[0])||0;
@@ -115,7 +129,7 @@ export default function ConstructionLesson({lesson,identity}:{lesson?:Constructi
   {!!quiz&&<View style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
    <Text style={{fontSize:12,color:'#bfe6b0',fontWeight:'900',letterSpacing:1}}>Z ŻYCIA BUDOWY · MAŁA SYMULACJA</Text>
    <Text style={{fontSize:20,color:'white',fontWeight:'900',lineHeight:28}}>{quiz.question}</Text>
-   {shuffled.map(({answer,original},i)=><Pressable key={i} onPress={()=>setSelected(i)} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
+   {shuffled.map(({answer,original},i)=><Pressable key={i} onPress={()=>{setSelected(i);onPassed?.(original===quiz.correct)}} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
     <Text style={{color:ink,fontWeight:'800',lineHeight:21}}>{String.fromCharCode(65+i)}. {answer}</Text>
    </Pressable>)}
    {selected!==null&&<View style={{backgroundColor:choiceCorrect?'#d4ead2':'#fff0d9',padding:13,borderRadius:11}}>
