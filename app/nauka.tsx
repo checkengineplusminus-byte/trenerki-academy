@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 type Lesson={lesson_no:number,title_pl:string,material:{raw?:string[]}};
 export default function Learning(){
  const {course}=useLocalSearchParams<{course:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
- const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),[notes,setNotes]=useState(''),[module,setModule]=useState(0),[user,setUser]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),[busy,setBusy]=useState(true);
+ const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),[notes,setNotes]=useState(''),[module,setModule]=useState(0),[user,setUser]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),[courseNote,setCourseNote]=useState(''),[reviewStatus,setReviewStatus]=useState(''),[busy,setBusy]=useState(true);
  useEffect(()=>{void (async()=>{
   try{
    const {data:{user:u}}=await supabase.auth.getUser();
@@ -13,12 +13,14 @@ export default function Learning(){
    setUser(u.id);
    const {data:e}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
    if(!e?.length){setError('Nie masz aktywnego dostępu do tego kursu. Odbierz prezent, darmowy kurs albo poproś administratora o symulację zakupu.');return;}
-   const [{data:l,error:le},{data:d},{data:p}]=await Promise.all([
+   const [{data:l,error:le},{data:d},{data:p},{data:guide}]=await Promise.all([
     supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no'),
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
-    supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug)]);
+    supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
+    supabase.from('ta_course_previews').select('editorial_note,review_status').eq('course_slug',slug).maybeSingle()]);
    if(le)throw le;
    setItems(l||[]);setDone((p||[]).map(v=>v.lesson_no));
+   if(guide){setCourseNote(guide.editorial_note||'');setReviewStatus(guide.review_status||'');}
    if(d){setModule(d.last_module);setNotes(String(d.notes?.text||''));}
   }catch(e:any){setError(e.message||'Nie udało się pobrać materiałów.');}
   finally{setBusy(false);}
@@ -41,6 +43,11 @@ export default function Learning(){
   <Pressable onPress={()=>router.push('/moje-kursy')}><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:31,fontWeight:'900',color:'#173d30',marginVertical:16}}>Moja nauka</Text>
   <Text style={{color:'#526c59',marginBottom:14}}>Uczysz się na prawdziwych przykładach. Każde ćwiczenie potraktuj jako próbę zrozumienia sytuacji, a nie przepis odpowiedni dla wszystkich. Szanuj bezpieczeństwo, granice i indywidualne potrzeby innych osób.</Text>
+  {!!courseNote&&<View style={{backgroundColor:'#edf4e6',padding:16,borderRadius:13,marginBottom:18,gap:7}}>
+   <Text style={{fontWeight:'900',color:'#173d30'}}>Wspólne zasady tego kursu</Text>
+   <Text style={{color:'#47634d',lineHeight:22}}>{courseNote}</Text>
+   {reviewStatus!=='approved'&&<Text style={{color:'#80612d',fontSize:12}}>Wersja edukacyjna do testów — lekcje mogą jeszcze zostać poprawione przez redakcję.</Text>}
+  </View>}
   {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a12626',marginBottom:15}}>{error}</Text>}
   {!!lesson&&<>
     <Text style={{color:'#53765b'}}>Lekcja {module+1} z {items.length} · Ukończono {done.length}/{items.length} ({progress}%)</Text>
