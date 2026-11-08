@@ -1,5 +1,6 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {View,Text,Pressable,Linking,TextInput,Platform} from 'react-native';
+import {View,Text,Pressable,TextInput,Platform} from 'react-native';
+import SoftwarePlayground from './SoftwarePlayground';
 
 export type KeyboardShortcut={
  combo:string;keys:string[];kind:'alias'|'hotkey';label:string;
@@ -66,14 +67,14 @@ function ShortcutCard({item,index,onRun,active}:{item:KeyboardShortcut,index:num
   </Pressable>
  </View>;
 }
-export default function KeyboardLesson({shortcuts,tips,exercise,references}:{
- shortcuts?:KeyboardShortcut[];tips?:string[];exercise?:string;references?:KeyboardReference[];
+export default function KeyboardLesson({shortcuts,tips,exercise,references,onPracticed}:{
+ shortcuts?:KeyboardShortcut[];tips?:string[];exercise?:string;references?:KeyboardReference[];onPracticed?:(verified:boolean)=>void;
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
  const [active,setActive]=useState<KeyboardShortcut|null>(null);
- const [command,setCommand]=useState(''),[feedback,setFeedback]=useState(''),[listening,setListening]=useState(false);
- useEffect(()=>{setActive(null);setCommand('');setFeedback('');setListening(false)},[shortcuts]);
- function run(item:KeyboardShortcut){setActive(item);setFeedback('Wykonano '+item.combo+' w symulatorze.');}
+ const [command,setCommand]=useState(''),[feedback,setFeedback]=useState(''),[listening,setListening]=useState(false),[quizAnswer,setQuizAnswer]=useState<number|null>(null);
+ useEffect(()=>{setActive(null);setCommand('');setFeedback('');setListening(false);setQuizAnswer(null);onPracticed?.(false)},[shortcuts]);
+ function run(item:KeyboardShortcut){setActive(item);setQuizAnswer(null);onPracticed?.(false);setFeedback('Zobacz efekt w symulatorze. Teraz sprawdź, czy rozumiesz działanie polecenia.');}
  function runCommand(){
   const found=valid.find(s=>s.kind==='alias'&&s.combo.toUpperCase()===command.trim().toUpperCase());
   if(found){run(found);setCommand('');}
@@ -97,12 +98,15 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references}:{
  },[listening,valid]);
  if(!valid.length)return null;
  const aliases=valid.some(s=>s.kind==='alias');
+ const label=(valid[0]?.platform||'').toLowerCase();
+ const mode:'excel'|'cad'|'word'|'windows'=label.includes('excel')?'excel':label.includes('autocad')?'cad':label.includes('word')?'word':'windows';
+ const answerOptions=active?[active,...valid.filter(x=>x.combo!==active.combo).slice(0,2)].sort((a,b)=>a.combo.localeCompare(b.combo)):[];
  return <View style={{gap:16,marginTop:19}}>
   <View style={{backgroundColor:'#e1efcf',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:23,fontWeight:'900'}}>Sprawdź to samodzielnie ⌨️</Text>
    <Text style={{color:secondary,lineHeight:22}}>Wybierz skrót, zobacz jak zmienia się przykładowy dokument albo rysunek i powtórz to w swoim programie. Tutaj ćwiczysz bez ryzyka dla prawdziwych plików.</Text>
   </View>
-  <CommandCanvas item={active}/>
+  <SoftwarePlayground mode={mode} active={active}/>
   {aliases&&<View style={{backgroundColor:'#f5f8f1',padding:16,borderRadius:13,gap:8}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Wpisz polecenie AutoCAD i naciśnij Enter</Text>
    <TextInput value={command} autoCapitalize="characters" onChangeText={setCommand} onSubmitEditing={runCommand} returnKeyType="done" placeholder="Np. L, C, REC, PL…" style={{borderWidth:1,borderColor:'#bdcfba',borderRadius:10,padding:13,backgroundColor:'white',color:ink,fontWeight:'800'}}/>
@@ -113,6 +117,14 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references}:{
    <Text style={{color:secondary,fontSize:12,marginTop:6}}>Działa w przeglądarce, jeśli system lub przeglądarka nie przechwyci kombinacji. Przycisk „Wykonaj” działa niezależnie.</Text>
   </Pressable>
   {!!feedback&&<Text style={{backgroundColor:'#eaf5e2',padding:11,borderRadius:9,color:ink}}>{feedback}</Text>}
+  {active&&answerOptions.length>=3&&<View style={{backgroundColor:'#193b2d',padding:19,borderRadius:15,gap:11}}>
+    <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ, CZY ROZUMIESZ</Text>
+    <Text style={{fontWeight:'900',color:'white',fontSize:18,lineHeight:26}}>Które polecenie daje taki efekt: {active.after}?</Text>
+    {answerOptions.map((option,i)=><Pressable key={option.combo} onPress={()=>{setQuizAnswer(i);onPracticed?.(option.combo===active.combo)}} style={{padding:13,borderRadius:10,backgroundColor:quizAnswer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
+      <Text style={{color:ink,fontWeight:'800'}}>{String.fromCharCode(65+i)}. {option.combo} — {option.label}</Text>
+    </Pressable>)}
+    {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{answerOptions[quizAnswer]?.combo===active.combo?'Dobrze. Możesz zaliczyć tę lekcję.':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
+  </View>}
   {valid.map((item,i)=><ShortcutCard key={item.combo+'-'+i} item={item} index={i} onRun={run} active={active===item}/>)}
   {!!tips?.length&&<View style={{backgroundColor:'#edf5e9',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>Małe triki</Text>
@@ -122,9 +134,6 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references}:{
    <Text style={{color:'#d8efb9',fontWeight:'900',fontSize:12}}>TWOJE ĆWICZENIE</Text>
    <Text style={{color:'white',marginTop:8,lineHeight:24,fontWeight:'700'}}>{exercise}</Text>
   </View>}
-  {!!references?.length&&<View style={{gap:6,padding:5}}>
-   <Text style={{color:ink,fontWeight:'800'}}>Sprawdź działanie w instrukcji programu</Text>
-   {references.filter(x=>/^https:\/\//.test(x.url)).map((x,i)=><Pressable key={i} onPress={()=>Linking.openURL(x.url)}><Text style={{color:'#376c4a',textDecorationLine:'underline'}}>{x.label} ↗</Text></Pressable>)}
-  </View>}
+
  </View>;
 }
