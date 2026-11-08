@@ -3,94 +3,87 @@ import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {supabase} from './supabase';
 
 type Line={role:'student'|'anielka';text:string;created_at?:string};
-type Session={ok?:boolean;error?:string;history?:Line[];opening?:string;first_name?:string;reply?:string;cooldown_until?:string|null;can_reply?:boolean};
+type Session={ok?:boolean;error?:string;history?:Line[];opening?:string;reply?:string;cooldown_until?:string|null;can_reply?:boolean};
 type Props={courseSlug:string;lessonNo:number;canMoveOn?:boolean;onFinish?:()=>void};
-const ink='#183d2c',muted='#4d6c56';
-const humanError=(code:string)=>({
- previous_lessons_required:'Wróć do bieżącego etapu kursu.',
- course_not_owned:'Nie masz aktywnego dostępu do tej lekcji.',
- daily_limit:'Dziś wykorzystano limit wiadomości. Nadal możesz kontynuować naukę.',
- cooldown_active:'Zróbmy krótką przerwę od rozmowy. Nadal możesz wykonywać ćwiczenia.',
- message_too_short:'Napisz nieco więcej, żebym mogła Ci pomóc.',
- dialogue_conflict_retry:'Rozmowa zmieniła się w innym oknie. Otwórz ją ponownie.',
- retry_request:'Spróbuj wysłać wiadomość jeszcze raz.',
- ai_unavailable:'Teraz nie udało się odpowiedzieć. Możesz uczyć się dalej.',
- dialogue_unavailable:'Historia rozmowy jest chwilowo niedostępna.',
-} as Record<string,string>)[code]||'Nie udało się pobrać odpowiedzi. Spróbuj ponownie, a nauka pozostaje dostępna.';
-
-export default function GuidedDialogue({courseSlug,lessonNo,canMoveOn=false,onFinish}:Props){
- const [open,setOpen]=useState(false),[loading,setLoading]=useState(false),[sending,setSending]=useState(false);
+const ink='#183c2b', muted='#58705f';
+const names:Record<string,string>={
+ previous_lessons_required:'Najpierw ukończ wcześniejszą lekcję.',
+ course_not_owned:'Ta lekcja nie jest jeszcze dostępna.',
+ daily_limit:'Na dziś wykorzystano limit rozmowy. Możesz kontynuować kurs.',
+ cooldown_active:'Wróć do rozmowy później; ćwiczenia są nadal dostępne.',
+ message_too_short:'Napisz trochę więcej, bym mogła pomóc.',
+ dialogue_conflict_retry:'Rozmowa zmieniła się w innym oknie. Spróbuj ponownie.',
+ retry_request:'Nie udało się wysłać pytania. Spróbuj ponownie.',
+ no_payment_details:'Nie wpisuj numerów kart ani innych danych płatniczych.',
+};
+export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  const [history,setHistory]=useState<Line[]>([]),[opening,setOpening]=useState(''),[input,setInput]=useState('');
- const [error,setError]=useState(''),[notice,setNotice]=useState(''),[cooldown,setCooldown]=useState<string|null>(null),[canReply,setCanReply]=useState(true);
- const call=async(action:'status'|'dialogue',message?:string):Promise<Session>=>{
-  const {data,error:invokeError}=await supabase.functions.invoke<Session>('ta-lesson-guide',{
+ const [loading,setLoading]=useState(true),[sending,setSending]=useState(false),[canReply,setCanReply]=useState(true);
+ const [error,setError]=useState(''),[showOlder,setShowOlder]=useState(false),[cooldown,setCooldown]=useState<string|null>(null);
+ const request=async(action:'status'|'dialogue',message?:string)=>{
+  const {data,error:e}=await supabase.functions.invoke<Session>('ta-lesson-guide',{
    body:{action,course_slug:courseSlug,lesson_no:lessonNo,...(message?{message}:{})}
   });
-  if(invokeError||data?.error||!data)throw new Error(humanError(String(data?.error||'connection_error')));
+  if(e||!data||data.error)throw new Error(names[data?.error||'']||'Nie udało się połączyć z Anielką. Spróbuj ponownie.');
   return data;
  };
- function apply(data:Session){
+ const apply=(data:Session)=>{
   if(data.history)setHistory(data.history);
   if(data.opening)setOpening(data.opening);
   if(data.cooldown_until!==undefined)setCooldown(data.cooldown_until);
   if(data.can_reply!==undefined)setCanReply(data.can_reply);
- }
- async function refresh(){
-  setLoading(true);setError('');
-  try{apply(await call('status'))}
-  catch(e:any){setError(e?.message||'Nie udało się załadować rozmowy.')}
-  finally{setLoading(false)}
- }
- useEffect(()=>{setOpen(false);setInput('');setHistory([]);setError('');setNotice('');setOpening('');setCooldown(null);setCanReply(true)},[courseSlug,lessonNo]);
- function toggle(){if(!open){void refresh()}setOpen(v=>!v)}
+ };
+ useEffect(()=>{
+  let active=true;
+  setHistory([]);setInput('');setOpening('');setError('');setShowOlder(false);
+  setCooldown(null);setCanReply(true);setLoading(true);
+  void request('status').then(d=>{if(active)apply(d)})
+   .catch(e=>{if(active)setError(String(e?.message||'Połączenie chwilowo niedostępne.'))})
+   .finally(()=>{if(active)setLoading(false)});
+  return ()=>{active=false};
+ },[courseSlug,lessonNo]);
  async function send(){
-  if(sending||!canReply||input.trim().length<5)return;
-  setSending(true);setNotice('');setError('');
-  try{
-   const data=await call('dialogue',input.trim());
-   apply(data);setInput('');
-   if(data.cooldown_until)setNotice('Zróbmy przerwę w rozmowie. Wróć, gdy będziesz gotowy. Pozostałe ćwiczenia są nadal dostępne.');
-  }catch(e:any){setError(e?.message||'Nie udało się wysłać wiadomości.')}
+  const message=input.trim();
+  if(sending||!canReply||message.length<5)return;
+  setSending(true);setError('');
+  try{apply(await request('dialogue',message));setInput('')}
+  catch(e:any){setError(e?.message||'Nie udało się wysłać pytania.')}
   finally{setSending(false)}
  }
- const stalled=!!cooldown&&new Date(cooldown).getTime()>Date.now();
- return <View style={{borderColor:'#c9ddc5',borderWidth:1,backgroundColor:'#e9f4e6',borderRadius:16,marginTop:20,overflow:'hidden'}}>
-  <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={toggle} style={{padding:17,flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
-   <View style={{flex:1,gap:5}}>
-    <Text style={{color:'#407851',fontSize:11,fontWeight:'900'}}>ANIELKA · TWOJA POMOC W NAUCE</Text>
-    <Text style={{color:ink,fontWeight:'900',fontSize:19}}>Masz pytanie? Porozmawiajmy.</Text>
+ const paused=!!cooldown&&new Date(cooldown).getTime()>Date.now(),allowed=!paused&&canReply;
+ const visible=showOlder?history:history.slice(-4);
+ return <View style={{backgroundColor:'#edf6e8',borderRadius:15,borderWidth:1,borderColor:'#d4e3d0',padding:15,gap:11,marginTop:16}}>
+  <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
+   <View style={{width:38,height:38,borderRadius:19,backgroundColor:'#d4ebcd',alignItems:'center',justifyContent:'center'}}>
+    <Text style={{fontSize:20}}>💬</Text>
    </View>
-   <Text style={{fontWeight:'900',color:ink}}>{open?'Zwiń ↑':'Otwórz ↓'}</Text>
-  </Pressable>
-  {open&&<View style={{paddingHorizontal:16,paddingBottom:18,gap:11}}>
-   {loading&&<ActivityIndicator color={ink}/>}
-   {!loading&&!history.length&&!!opening&&<View style={{alignSelf:'flex-start',backgroundColor:'white',padding:15,borderRadius:12,maxWidth:'94%'}}>
-    <Text style={{color:'#36734d',fontWeight:'900',fontSize:12,marginBottom:5}}>Anielka</Text>
-    <Text style={{color:ink,lineHeight:23,fontSize:15}}>{opening}</Text>
-   </View>}
-   {history.map((m,i)=><View key={i} style={{alignSelf:m.role==='student'?'flex-end':'flex-start',backgroundColor:m.role==='student'?'#cce5c7':'white',padding:14,borderRadius:12,maxWidth:'94%',gap:5}}>
-    <Text style={{color:'#36734d',fontWeight:'900',fontSize:12}}>{m.role==='student'?'Ty':'Anielka'}</Text>
-    <Text style={{color:ink,fontSize:15,lineHeight:23}}>{m.text}</Text>
-   </View>)}
-   {!loading&&!stalled&&canReply&&<>
-    <TextInput multiline value={input} onChangeText={setInput} maxLength={1000} placeholder="Napisz, co chcesz wyjaśnić lub przećwiczyć…" textAlignVertical="top"
-     style={{backgroundColor:'white',borderColor:'#bdd6b9',borderWidth:1,borderRadius:11,minHeight:95,padding:14,color:ink,fontSize:15}}/>
-    <Pressable onPress={send} disabled={sending||input.trim().length<5}
-     style={{backgroundColor:ink,padding:15,borderRadius:11,opacity:sending||input.trim().length<5?.5:1}}>
-     <Text style={{textAlign:'center',fontWeight:'900',color:'white'}}>{sending?'Anielka odpowiada…':'Wyślij wiadomość'}</Text>
-    </Pressable>
-   </>}
-   {!canReply&&<Text style={{color:muted,lineHeight:22}}>Na dziś zakończyliśmy rozmowę. Możesz bez przeszkód kontynuować ćwiczenia.</Text>}
-   {!!notice&&<Text style={{color:muted,lineHeight:21}}>{notice}</Text>}
-   {!!error&&<View style={{backgroundColor:'white',padding:12,borderRadius:10,gap:8}}>
-    <Text style={{color:'#985b39',lineHeight:21}}>{error}</Text>
-    <Pressable onPress={()=>void refresh()}><Text style={{fontWeight:'900',color:ink}}>Odśwież rozmowę</Text></Pressable>
-   </View>}
-   <Pressable accessibilityRole="button" onPress={()=>{setOpen(false);onFinish?.()}}
-    style={{paddingVertical:16,paddingHorizontal:14,borderRadius:11,backgroundColor:'#193d2b',marginTop:5}}>
-    <Text style={{color:'white',fontSize:15,fontWeight:'900',textAlign:'center'}}>{canMoveOn?'Zakończ rozmowę i przejdź do następnego zadania →':'Zakończ rozmowę i wróć do ćwiczenia ↑'}</Text>
+   <View style={{flex:1}}>
+    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Anielka wyjaśni Ci to prościej</Text>
+    <Text style={{color:muted,fontSize:12}}>Nie rozumiesz? Zapytaj własnymi słowami.</Text>
+   </View>
+  </View>
+  {loading&&<ActivityIndicator color={ink}/>}
+  {!loading&&!history.length&&!!opening&&<Text style={{fontSize:14,color:ink,lineHeight:22,backgroundColor:'white',padding:12,borderRadius:10}}>{opening}</Text>}
+  {history.length>4&&!showOlder&&<Pressable onPress={()=>setShowOlder(true)} accessibilityRole="button" style={{padding:5}}>
+   <Text style={{color:'#386c48',fontWeight:'800',textAlign:'center'}}>Pokaż wcześniejszą rozmowę</Text>
+  </Pressable>}
+  {showOlder&&history.length>4&&<Pressable onPress={()=>setShowOlder(false)} accessibilityRole="button">
+   <Text style={{color:'#386c48',fontWeight:'800',textAlign:'center'}}>Zwiń starsze wiadomości</Text>
+  </Pressable>}
+  {visible.map((m,i)=><View key={i} style={{alignSelf:m.role==='student'?'flex-end':'flex-start',backgroundColor:m.role==='student'?'#d8edd4':'white',borderRadius:12,padding:12,maxWidth:'97%',gap:4}}>
+   <Text style={{color:'#3c7652',fontSize:11,fontWeight:'900'}}>{m.role==='student'?'Ty':'Anielka'}</Text>
+   <Text style={{color:ink,fontSize:14,lineHeight:23}}>{m.text}</Text>
+  </View>)}
+  {allowed&&<View style={{gap:8}}>
+   <TextInput value={input} onChangeText={setInput} multiline maxLength={1000} placeholder="Np. Nie rozumiem, skąd ta kwota. Wyjaśnij na liczbach."
+    placeholderTextColor="#728576" textAlignVertical="top" accessibilityLabel="Twoje pytanie do Anielki"
+    style={{backgroundColor:'white',borderColor:'#c4d7c2',borderWidth:1,borderRadius:11,minHeight:74,padding:13,color:ink,fontSize:16}}/>
+   <Pressable accessibilityRole="button" onPress={()=>void send()} disabled={sending||input.trim().length<5}
+    style={{backgroundColor:ink,borderRadius:11,padding:15,opacity:sending||input.trim().length<5?.5:1}}>
+    <Text style={{color:'white',textAlign:'center',fontWeight:'900',fontSize:15}}>{sending?'Odpowiadam…':'Zapytaj Anielkę →'}</Text>
    </Pressable>
-   <Text style={{color:muted,fontSize:12,lineHeight:19}}>Nie podawaj haseł ani cudzych danych osobowych. Rozmowa jest dodatkową pomocą — możesz uczyć się bez niej.</Text>
   </View>}
+  {!allowed&&<Text style={{color:muted,lineHeight:21}}>Możesz teraz przejść dalej z kursem. Do rozmowy wrócisz później.</Text>}
+  {!!error&&<Text style={{color:'#a25132',fontSize:13,lineHeight:20}}>{error}</Text>}
  </View>;
 }
