@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import {View,Text,Pressable} from 'react-native';
-type Intro={what:string;first:string;result:string};
+import individualGuides from '../content/course-guides-individual.json';
+import craftGuides from '../content/craft-guides-individual.json';
+type Intro={what:string;first:string;result:string;boundary?:string};
 const intros:Record<string,Intro>={
  'excel-skroty':{
  what:'Excel to arkusz kalkulacyjny. Działa jak siatka komórek: w jednej wpisujesz liczbę, w drugiej formułę, a program może sam policzyć wynik.',
@@ -100,8 +102,9 @@ const intros:Record<string,Intro>={
 };
 export default function CourseIntro({slug,title,description,first}:{slug:string,title:string,description?:string,first:boolean}){
  const [open,setOpen]=useState(first);
- useEffect(()=>setOpen(first),[slug]);
- const entry=intros[slug]||{
+ useEffect(()=>setOpen(first),[slug,first]);
+ const localGuides={...(individualGuides as Record<string,Intro>),...(craftGuides as Record<string,Intro>)};
+ const entry=intros[slug]||localGuides[slug]||{
   what:description||'Poznaj codzienną praktykę tego tematu, żeby zobaczyć, kiedy i jak wykorzystać nową umiejętność.',
   first:'Najpierw przeanalizujesz przykład, potem spróbujesz samodzielnie podjąć decyzję.',
   result:'Ułożysz sposób działania, który możesz sprawdzić na bezpiecznym przykładzie.'
@@ -121,6 +124,7 @@ export default function CourseIntro({slug,title,description,first}:{slug:string,
     <Text style={{fontWeight:'900',color:'#3e7247',fontSize:13}}>CO BĘDZIESZ POTRAFIĆ</Text>
     <Text style={{lineHeight:24,color:'#264431'}}>{entry.result}</Text>
    </View>
+   {!!entry.boundary&&<Text style={{fontSize:12,lineHeight:20,color:'#67806c'}}>{entry.boundary}</Text>}
   </View>}
  </View>;
 }
