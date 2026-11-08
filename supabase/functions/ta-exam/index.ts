@@ -91,7 +91,7 @@ async function gradeWithAi(question:string,expected:string,answer:string):Promis
  'Nie udzielaj uprawnień zawodowych i nie oceniaj osobowości ucznia.',
  'Zwróć wyłącznie zgodny JSON zawierający correct (boolean) i feedback (konkretny krótki komentarz po polsku, 1-3 zdania).'
  ].join(' ');
- const body={model:Deno.env.get('TRENERKI_AI_MODEL')||'gpt-6-luna',store:false,max_output_tokens:650,reasoning:{effort:'low'},
+ const body={model:'gpt-6-luna',store:false,max_output_tokens:650,reasoning:{effort:'low'},
    text:{format:{type:'json_schema',name:'tre_exam_evaluation',strict:true,
      schema:{type:'object',properties:{correct:{type:'boolean'},feedback:{type:'string'}},required:['correct','feedback'],additionalProperties:false}}},
    input:[{role:'developer',content:rubric},{role:'user',content:JSON.stringify({question,reference_solution:expected,student_answer:answer})}]};
