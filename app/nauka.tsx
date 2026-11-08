@@ -5,6 +5,7 @@ import {supabase} from '../src/supabase';
 import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
+import AiTutor from '../src/AiTutor';
 type Lesson={
  lesson_no:number,title_pl:string,
  material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
@@ -127,6 +128,7 @@ export default function Learning(){
       <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified}/>
      </>
    }
+   <AiTutor courseSlug={slug} lessonNo={module}/>
    <View style={{marginTop:23,gap:9}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Moje notatki do tej lekcji</Text>
     <TextInput multiline value={currentNotes} onChangeText={text=>setNotes(prev=>({...prev,[String(module)]:text}))} placeholder="Co zapamiętasz? Zapisz własny przykład…" style={{backgroundColor:'white',borderColor:line,borderWidth:1,borderRadius:13,padding:15,minHeight:95,textAlignVertical:'top'}}/>
