@@ -4,7 +4,7 @@ export type LearningSection={heading:string;text:string};
 const ink='#173e2d',body='#3e5c48';
 type Props={courseSlug:string;lessonNo:number;title:string;sections?:LearningSection[];illustration?:string;
             situation?:string;example?:string;source?:{label:string;url:string}[]};
-const imageNames=new Set(['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security','windows-desktop','windows-explorer','excel-interface','word-interface','autocad-interface','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands']);
+const imageNames=new Set(['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security','windows-desktop','windows-explorer','excel-interface','word-interface','autocad-interface','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands','craft-bednarz','craft-garncarz-tradycja','craft-gontarz','craft-introligator-tradycja','craft-kaletnik-tradycja','craft-kolodziej','craft-kowal-tradycja','craft-ludwisarz','craft-mlynarz-tradycyjny','craft-plecionkarz','craft-powroznik','craft-rymarz','craft-sitarz','craft-snycerz','craft-szewc-tradycja','craft-tkacz-reczny','craft-woznica','craft-zdun-tradycja','craft-zecer','craft-zegarmistrz-tradycja']);
 function FallbackDiagram({title,sections,example}:{title:string;sections:LearningSection[];example?:string}){
  const blocks=sections.length>=3?
   sections.slice(0,3).map(s=>({label:s.heading,info:s.text.slice(0,90)})):
@@ -38,6 +38,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
    />:<FallbackDiagram title={title} sections={named} example={example}/>}
    <Text style={{fontSize:11,color:'#65816d',paddingHorizontal:6,paddingBottom:4}}>Autorska ilustracja TRENERKI Academy · schemat dydaktyczny, nie zrzut ekranu producenta</Text>
   </View>}
+  {!validIllustration&&named.length>0&&<FallbackDiagram title={title} sections={named} example={example}/>}
   {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
    <Pressable accessibilityRole="button" onPress={()=>setExpanded(v=>!v)}
     style={{backgroundColor:'#e8f3e3',padding:18,flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:12}}>
