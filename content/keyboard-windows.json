@@ -1,0 +1,859 @@
+[
+  {
+    "lesson_no": 0,
+    "title_pl": "Pulpit i menu",
+    "material": {
+      "raw": [
+        "Pulpit i menu",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Win+D",
+          "keys": [
+            "Win",
+            "D"
+          ],
+          "kind": "hotkey",
+          "label": "Pokaż lub ukryj pulpit",
+          "before": "Widzisz wiele otwartych okien",
+          "after": "Pulpit staje się widoczny",
+          "tip": "Naciśnij ponownie, aby wrócić do okien.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+M",
+          "keys": [
+            "Win",
+            "M"
+          ],
+          "kind": "hotkey",
+          "label": "Minimalizuj wszystkie okna",
+          "before": "Pulpit zasłonięty aplikacjami",
+          "after": "Okna zostają zminimalizowane",
+          "tip": "Nie zamyka aplikacji ani nie zapisuje plików.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Shift+M",
+          "keys": [
+            "Win",
+            "Shift",
+            "M"
+          ],
+          "kind": "hotkey",
+          "label": "Przywróć okna zminimalizowane kombinacją Win+M",
+          "before": "Okna są zminimalizowane",
+          "after": "Okna wracają na ekran",
+          "tip": "Dotyczy okien uprzednio zminimalizowanych poleceniem Win+M.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Tab",
+          "keys": [
+            "Win",
+            "Tab"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz widok zadań",
+          "before": "Trudno znaleźć właściwe okno",
+          "after": "Widzisz otwarte aplikacje i pulpity",
+          "tip": "Sprawdź, czy nie udostępniasz ekranu z poufnymi oknami.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Ctrl+D",
+          "keys": [
+            "Win",
+            "Ctrl",
+            "D"
+          ],
+          "kind": "hotkey",
+          "label": "Utwórz wirtualny pulpit",
+          "before": "Jeden pulpit pełen okien",
+          "after": "Powstaje nowy pulpit roboczy",
+          "tip": "Oddziel pracę od prywatnych aplikacji.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Ctrl+←",
+          "keys": [
+            "Win",
+            "Ctrl",
+            "←"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź na wirtualny pulpit po lewej",
+          "before": "Masz kilka pulpitów",
+          "after": "Przechodzisz do sąsiedniego pulpitu",
+          "tip": "Strzałka w prawo przechodzi w przeciwną stronę.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 1,
+    "title_pl": "Szybkie przełączanie i układ okien",
+    "material": {
+      "raw": [
+        "Szybkie przełączanie i układ okien",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Alt+Tab",
+          "keys": [
+            "Alt",
+            "Tab"
+          ],
+          "kind": "hotkey",
+          "label": "Przełącz aplikację",
+          "before": "Zmieniasz okna myszą",
+          "after": "Wybierasz aplikację klawiaturą",
+          "tip": "Przytrzymanie Alt pokazuje listę otwartych okien.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Alt+F4",
+          "keys": [
+            "Alt",
+            "F4"
+          ],
+          "kind": "hotkey",
+          "label": "Zamknij aktywne okno",
+          "before": "Okno programu jest otwarte",
+          "after": "Program prosi o zapis lub zamyka okno",
+          "tip": "Zapisz niezapisane zmiany przed zamknięciem.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+↑",
+          "keys": [
+            "Win",
+            "↑"
+          ],
+          "kind": "hotkey",
+          "label": "Maksymalizuj okno",
+          "before": "Okno zajmuje tylko część ekranu",
+          "after": "Zajmuje większą powierzchnię",
+          "tip": "Działanie zależy od aktualnego stanu okna.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+↓",
+          "keys": [
+            "Win",
+            "↓"
+          ],
+          "kind": "hotkey",
+          "label": "Przywróć lub minimalizuj okno",
+          "before": "Okno jest zmaksymalizowane",
+          "after": "Przywraca rozmiar lub minimalizuje",
+          "tip": "Możliwe są dwa kolejne etapy.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+←",
+          "keys": [
+            "Win",
+            "←"
+          ],
+          "kind": "hotkey",
+          "label": "Przypnij okno do lewej strony",
+          "before": "Chcesz porównywać dwa dokumenty",
+          "after": "Okno zajmuje lewą część ekranu",
+          "tip": "Wybierz kolejne okno do prawej połowy.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+→",
+          "keys": [
+            "Win",
+            "→"
+          ],
+          "kind": "hotkey",
+          "label": "Przypnij okno do prawej strony",
+          "before": "Chcesz przenieść okno obok drugiego",
+          "after": "Okno zajmuje prawą część ekranu",
+          "tip": "Przydatne do kopiowania danych między aplikacjami.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 2,
+    "title_pl": "Zrzuty ekranu i nagrywanie",
+    "material": {
+      "raw": [
+        "Zrzuty ekranu i nagrywanie",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Win+Shift+S",
+          "keys": [
+            "Win",
+            "Shift",
+            "S"
+          ],
+          "kind": "hotkey",
+          "label": "Wybierz fragment ekranu",
+          "before": "Chcesz pokazać konkretny błąd",
+          "after": "Włącza się narzędzie do zaznaczania zrzutu",
+          "tip": "Przed wysłaniem zdjęcia ukryj hasła i dane osobowe.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+PrtSc",
+          "keys": [
+            "Win",
+            "PrtSc"
+          ],
+          "kind": "hotkey",
+          "label": "Zapisz zrzut całego ekranu",
+          "before": "Musisz udokumentować wygląd pulpitu",
+          "after": "Zrzut zwykle zapisuje się w Obrazy → Zrzuty ekranu",
+          "tip": "Sprawdź, gdzie trafił plik w używanej konfiguracji.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Alt+PrtSc",
+          "keys": [
+            "Alt",
+            "PrtSc"
+          ],
+          "kind": "hotkey",
+          "label": "Skopiuj aktywne okno",
+          "before": "Potrzebujesz zrzutu jednego programu",
+          "after": "Do schowka trafia zrzut aktywnego okna",
+          "tip": "Wklej Ctrl+V do edytora; sprawdź zawartość przed wysyłką.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "PrtSc",
+          "keys": [
+            "PrtSc"
+          ],
+          "kind": "hotkey",
+          "label": "Wykonaj zrzut lub otwórz narzędzie wycinania",
+          "before": "Naciskasz klawisz Print Screen",
+          "after": "Zachowanie zależy od ustawień Windows",
+          "tip": "W Windows 11 może otwierać narzędzie wycinania.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+G",
+          "keys": [
+            "Win",
+            "G"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz pasek Xbox Game Bar",
+          "before": "Potrzebujesz narzędzi nagrywania",
+          "after": "Otwiera się panel Game Bar, jeśli jest dostępny",
+          "tip": "Na komputerze firmowym funkcja może być wyłączona.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Alt+R",
+          "keys": [
+            "Win",
+            "Alt",
+            "R"
+          ],
+          "kind": "hotkey",
+          "label": "Rozpocznij lub zatrzymaj nagrywanie",
+          "before": "Chcesz pokazać działanie aplikacji",
+          "after": "Może uruchomić nagranie przez Game Bar",
+          "tip": "Nie nagrywaj danych klientów lub cudzych rozmów bez podstawy.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 3,
+    "title_pl": "System i ustawienia",
+    "material": {
+      "raw": [
+        "System i ustawienia",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Win+I",
+          "keys": [
+            "Win",
+            "I"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz Ustawienia",
+          "before": "Szukasz konfiguracji urządzenia",
+          "after": "Otwiera się aplikacja Ustawienia",
+          "tip": "Możesz tam sprawdzić opcje klawiatury.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+S",
+          "keys": [
+            "Win",
+            "S"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz wyszukiwarkę",
+          "before": "Nie pamiętasz lokalizacji programu",
+          "after": "Wyszukujesz aplikacje, pliki i ustawienia",
+          "tip": "Wpisuj dokładną nazwę programu.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+R",
+          "keys": [
+            "Win",
+            "R"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz Uruchom",
+          "before": "Chcesz uruchomić znany program",
+          "after": "Otwiera się okno Uruchom",
+          "tip": "Nie wklejaj nieznanych poleceń od obcych osób.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+X",
+          "keys": [
+            "Win",
+            "X"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz szybkie menu systemowe",
+          "before": "Szukasz narzędzi administracyjnych",
+          "after": "Pojawia się menu systemowe",
+          "tip": "Nie zmieniaj ustawień, których znaczenia nie znasz.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+P",
+          "keys": [
+            "Win",
+            "P"
+          ],
+          "kind": "hotkey",
+          "label": "Wybierz sposób projekcji",
+          "before": "Podłączono drugi ekran",
+          "after": "Widzisz tryby wyświetlania",
+          "tip": "Przy prezentacji sprawdź, czy poufny ekran nie jest udostępniony.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+K",
+          "keys": [
+            "Win",
+            "K"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz połączenia przesyłania obrazu",
+          "before": "Chcesz połączyć bezprzewodowy ekran",
+          "after": "Pojawia się panel połączeń, jeśli sprzęt obsługuje",
+          "tip": "Działanie zależy od obsługi Miracast i urządzeń.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 4,
+    "title_pl": "Pliki i foldery",
+    "material": {
+      "raw": [
+        "Pliki i foldery",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Win+E",
+          "keys": [
+            "Win",
+            "E"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz Eksplorator plików",
+          "before": "Szukasz folderu w menu Start",
+          "after": "Otwiera się Eksplorator plików",
+          "tip": "Przypnij najczęściej używane foldery do Szybkiego dostępu.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Shift+N",
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "N"
+          ],
+          "kind": "hotkey",
+          "label": "Utwórz nowy folder",
+          "before": "Jesteś w Eksploratorze plików",
+          "after": "Powstaje nowy folder",
+          "tip": "Nadaj mu nazwę opisującą zawartość.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "F2",
+          "keys": [
+            "F2"
+          ],
+          "kind": "hotkey",
+          "label": "Zmień nazwę zaznaczonego pliku",
+          "before": "Nazwa pliku jest nieczytelna",
+          "after": "Możesz edytować nazwę",
+          "tip": "Uważaj, aby nie zmienić rozszerzenia.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+C",
+          "keys": [
+            "Ctrl",
+            "C"
+          ],
+          "kind": "hotkey",
+          "label": "Kopiuj zaznaczone pliki",
+          "before": "Plik jest w jednym folderze",
+          "after": "Plik trafia do schowka do skopiowania",
+          "tip": "Kopiowanie nie przenosi oryginału.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+X",
+          "keys": [
+            "Ctrl",
+            "X"
+          ],
+          "kind": "hotkey",
+          "label": "Wytnij zaznaczony plik",
+          "before": "Chcesz przenieść plik",
+          "after": "Plik zostaje wybrany do przeniesienia",
+          "tip": "Po Ctrl+V sprawdź, czy plik pojawił się w celu.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+V",
+          "keys": [
+            "Ctrl",
+            "V"
+          ],
+          "kind": "hotkey",
+          "label": "Wklej ze schowka",
+          "before": "Masz wycięty albo skopiowany plik",
+          "after": "Plik lub tekst jest wklejany",
+          "tip": "Uważaj na kopiowanie poufnych danych.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 5,
+    "title_pl": "Schowek i edycja",
+    "material": {
+      "raw": [
+        "Schowek i edycja",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Win+V",
+          "keys": [
+            "Win",
+            "V"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz historię schowka",
+          "before": "Kopiowałeś kilka elementów",
+          "after": "Pojawia się historia schowka, jeśli jest włączona",
+          "tip": "Nie włączaj historii na komputerze współdzielonym bez zastanowienia.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Z",
+          "keys": [
+            "Ctrl",
+            "Z"
+          ],
+          "kind": "hotkey",
+          "label": "Cofnij ostatnią czynność",
+          "before": "Pomyliłeś się przy edycji",
+          "after": "Ostatnia obsługiwana czynność jest cofnięta",
+          "tip": "Nie wszystkie operacje można cofnąć.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Y",
+          "keys": [
+            "Ctrl",
+            "Y"
+          ],
+          "kind": "hotkey",
+          "label": "Ponów cofniętą czynność",
+          "before": "Chcesz przywrócić zmianę",
+          "after": "Program może ponowić ostatnie polecenie",
+          "tip": "Działanie zależy od aplikacji.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+A",
+          "keys": [
+            "Ctrl",
+            "A"
+          ],
+          "kind": "hotkey",
+          "label": "Zaznacz wszystko",
+          "before": "Chcesz zaznaczyć cały tekst lub listę plików",
+          "after": "Wszystkie elementy aktywnego obszaru są zaznaczone",
+          "tip": "Zwróć uwagę, który program jest aktywny.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Backspace",
+          "keys": [
+            "Ctrl",
+            "Backspace"
+          ],
+          "kind": "hotkey",
+          "label": "Usuń poprzednie słowo",
+          "before": "Kasujesz litera po literze",
+          "after": "W wielu edytorach znika całe słowo",
+          "tip": "Działanie zależy od edytora tekstu.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Shift+Esc",
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "Esc"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz Menedżer zadań",
+          "before": "Aplikacja zawiesiła się",
+          "after": "Otwiera się Menedżer zadań",
+          "tip": "Nie kończ nieznanych procesów systemowych.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 6,
+    "title_pl": "Pisanie i nawigacja",
+    "material": {
+      "raw": [
+        "Pisanie i nawigacja",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+Home",
+          "keys": [
+            "Ctrl",
+            "Home"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź na początek",
+          "before": "Jesteś na końcu długiego tekstu",
+          "after": "Kursor może przejść na początek dokumentu",
+          "tip": "Działa w wielu edytorach, nie we wszystkich aplikacjach.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+End",
+          "keys": [
+            "Ctrl",
+            "End"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź na koniec",
+          "before": "Przewijasz dokument",
+          "after": "Kursor może przejść na koniec dokumentu",
+          "tip": "W Eksploratorze lub przeglądarce zachowanie może się różnić.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+←",
+          "keys": [
+            "Ctrl",
+            "←"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź o słowo w lewo",
+          "before": "Przesuwasz kursor znak po znaku",
+          "after": "Kursor przeskakuje do sąsiedniego słowa",
+          "tip": "Połącz z Shift, aby rozszerzyć zaznaczenie.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+→",
+          "keys": [
+            "Ctrl",
+            "→"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź o słowo w prawo",
+          "before": "Szukasz wybranego słowa",
+          "after": "Kursor przeskakuje do następnego słowa",
+          "tip": "Wpisz przykładowy tekst i przetestuj.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Shift+End",
+          "keys": [
+            "Shift",
+            "End"
+          ],
+          "kind": "hotkey",
+          "label": "Zaznacz do końca wiersza",
+          "before": "Chcesz poprawić końcówkę linii",
+          "after": "Zaznaczasz tekst do końca wiersza",
+          "tip": "Nie musisz używać myszy.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Shift+→",
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "→"
+          ],
+          "kind": "hotkey",
+          "label": "Zaznacz kolejne słowo",
+          "before": "Chcesz zmienić całe słowo",
+          "after": "W wielu edytorach zaznaczane jest kolejne słowo",
+          "tip": "Działanie zależy od aplikacji.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  },
+  {
+    "lesson_no": 7,
+    "title_pl": "Bezpieczeństwo i dostępność",
+    "material": {
+      "raw": [
+        "Bezpieczeństwo i dostępność",
+        "Krótkie kombinacje klawiszy mogą przyspieszyć codzienną pracę. Poniżej każdą pokazujemy jak prawdziwe klawisze: zobacz efekt PRZED i PO i spróbuj na własnym komputerze.",
+        "Skróty dotyczą głównie Windows 11 i zależą od aktywnej aplikacji, konfiguracji sprzętu oraz języka klawiatury.",
+        "Nigdy nie uruchamiaj nieznanych poleceń ani nie udostępniaj poufnego ekranu bez sprawdzenia."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Win+L",
+          "keys": [
+            "Win",
+            "L"
+          ],
+          "kind": "hotkey",
+          "label": "Zablokuj komputer",
+          "before": "Odchodzisz od stanowiska",
+          "after": "Ekran zostaje zablokowany",
+          "tip": "Stosuj zawsze przed opuszczeniem komputera firmowego.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Ctrl+Alt+Del",
+          "keys": [
+            "Ctrl",
+            "Alt",
+            "Del"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz ekran zabezpieczeń",
+          "before": "Chcesz znaleźć opcje bezpieczeństwa",
+          "after": "Wyświetla się ekran zabezpieczeń Windows",
+          "tip": "Nie zastępuje ustawionego silnego hasła.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+U",
+          "keys": [
+            "Win",
+            "U"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz ustawienia ułatwień dostępu",
+          "before": "Chcesz zmienić czytelność systemu",
+          "after": "Otwierają się ustawienia dostępności",
+          "tip": "Znajdziesz m.in. narratora i lupę.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Ctrl+Enter",
+          "keys": [
+            "Win",
+            "Ctrl",
+            "Enter"
+          ],
+          "kind": "hotkey",
+          "label": "Włącz lub wyłącz Narratora",
+          "before": "Potrzebujesz czytnika ekranu",
+          "after": "Może włączyć funkcję Narrator",
+          "tip": "Działanie może wymagać potwierdzenia ustawień.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win++",
+          "keys": [
+            "Win",
+            "",
+            ""
+          ],
+          "kind": "hotkey",
+          "label": "Włącz lupę",
+          "before": "Tekst na ekranie jest za mały",
+          "after": "Włącza się Lupa systemowa",
+          "tip": "Win+Esc zazwyczaj zamyka Lupę.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        },
+        {
+          "combo": "Win+Esc",
+          "keys": [
+            "Win",
+            "Esc"
+          ],
+          "kind": "hotkey",
+          "label": "Zamknij Lupę",
+          "before": "Lupa jest aktywna",
+          "after": "Lupa zostaje wyłączona",
+          "tip": "Przydatne po powiększaniu fragmentów ekranu.",
+          "platform": "Windows 11 — standardowa konfiguracja"
+        }
+      ],
+      "quickTips": [
+        "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+        "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+        "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+      ],
+      "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+      "references": [
+        {
+          "label": "Microsoft — skróty klawiaturowe w Windows",
+          "url": "https://support.microsoft.com/en-us/windows/keyboard-shortcuts-in-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "lesson_kind": "illustrated_keyboard_shortcuts"
+    }
+  }
+]
