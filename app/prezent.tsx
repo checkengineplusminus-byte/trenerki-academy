@@ -64,7 +64,7 @@ export default function GiftPage(){
     {(item.price_grosze===0||isAdmin)&&<>
      <TextInput style={input} placeholder="E-mail obdarowanej osoby (opcjonalnie)" value={recipient} onChangeText={setRecipient} autoCapitalize="none" keyboardType="email-address"/>
      <TextInput style={[input,{minHeight:86,textAlignVertical:'top'}]} multiline value={message} maxLength={300} onChangeText={setMessage} placeholder="Kilka słów od Ciebie, np. „Pomyślałem o Tobie”"/>
-     <Pressable disabled={busy} onPress={createGift} style={{backgroundColor:ink,borderRadius:12,padding:17,opacity:busy?.6:1}}>
+     <Pressable disabled={busy} onPress={createGift} style={{backgroundColor:ink,borderRadius:12,padding:17,opacity:busy?0.6:1}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{busy?'Tworzę prezent…':'Utwórz kartę podarunkową →'}</Text>
      </Pressable>
     </>}
@@ -81,7 +81,7 @@ export default function GiftPage(){
     <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Masz kod od znajomego?</Text>
     <Text style={{color:'#5b755e'}}>Wpisz kod i odbierz wybrany kurs na swoim koncie. Jedna karta może zostać wykorzystana tylko raz.</Text>
     <TextInput style={input} value={code} onChangeText={setCode} autoCapitalize="characters" placeholder="TA-..."/>
-    <Pressable onPress={redeem} disabled={busy||!code.trim()} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:busy||!code.trim()?.5:1}}>
+    <Pressable onPress={redeem} disabled={busy||!code.trim()} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(busy||!code.trim())?0.5:1}}>
      <Text style={{textAlign:'center',fontWeight:'900',color:'white'}}>Odbierz prezent →</Text>
     </Pressable>
    </View>
