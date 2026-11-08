@@ -224,7 +224,7 @@
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu."
           }
         ],
-        "illustration": "word-structure"
+        "illustration": "word-document"
       }
     },
     {
@@ -279,7 +279,7 @@
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie."
           }
         ],
-        "illustration": "word-structure"
+        "illustration": "word-document"
       }
     },
     {
@@ -388,7 +388,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -497,7 +498,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -681,7 +683,7 @@
           }
         ],
         "editorial_status": "review_needed",
-        "illustration": "word-interface",
+        "illustration": "word-document",
         "sections": [
           {
             "heading": "Zrozum mechanizm i jego zastosowanie",
@@ -845,7 +847,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -993,7 +996,7 @@
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."
           }
         ],
-        "illustration": "word-document"
+        "illustration": "word-structure"
       }
     },
     {
@@ -1292,7 +1295,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -1440,7 +1444,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -1589,7 +1594,7 @@
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."
           }
         ],
-        "illustration": "word-structure"
+        "illustration": "word-document"
       }
     },
     {
@@ -1734,7 +1739,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -1843,7 +1849,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -1880,7 +1887,7 @@
           "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację."
         },
         "editorial_status": "review_needed",
-        "illustration": "word-interface",
+        "illustration": "word-structure",
         "sections": [
           {
             "heading": "Zrozum mechanizm i jego zastosowanie",
@@ -2337,7 +2344,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją."
           }
-        ]
+        ],
+        "illustration": "word-review"
       }
     },
     {
@@ -2392,7 +2400,7 @@
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."
           }
         ],
-        "illustration": "word-review"
+        "illustration": "word-document"
       }
     }
   ]
