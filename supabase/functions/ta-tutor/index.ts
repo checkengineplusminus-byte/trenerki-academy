@@ -76,7 +76,7 @@ Deno.serve(async req=>{
   const signal=AbortSignal.timeout(14000);
   const ai=await fetch('https://api.openai.com/v1/responses',{
     method:'POST',headers:{'authorization':'Bearer '+Deno.env.get('OPENAI_API_KEY'),'content-type':'application/json'},
-    body:JSON.stringify({model:Deno.env.get('TRENERKI_AI_MODEL')||'gpt-6-luna',store:false,max_output_tokens:650,reasoning:{effort:'low'},
+    body:JSON.stringify({model:'gpt-6-luna',store:false,max_output_tokens:650,reasoning:{effort:'low'},
       input:[{role:'developer',content:prompt+'\n'+instruction},{role:'user',content:question}]}),
     signal
   });
