@@ -141,7 +141,21 @@
     "outcome_1": "Porozmawiasz z szacunkiem, bez wyręczania na siłę.",
     "outcome_2": "Zaplanujesz bezpieczną codzienną rutynę.",
     "outcome_3": "Rozpoznasz granice obowiązków opiekuna i sytuacje wymagające pomocy specjalistycznej.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Potrzeby seniora i szacunek",
+      "Komunikacja i aktywne słuchanie",
+      "Bezpieczeństwo w domu",
+      "Rytm dnia i samodzielność",
+      "Odżywianie, nawodnienie i obserwacja",
+      "Wsparcie rodziny i opiekunów",
+      "Sytuacje alarmowe i wzywanie pomocy",
+      "Plan wsparcia i granice opiekuna",
+      "Rozmowa o pomocy bez odbierania wyboru",
+      "Leki i obowiązki opiekuna",
+      "Kryzys opiekuna — szukaj wsparcia",
+      "Plan wsparcia na kolejny miesiąc"
+    ]
   },
   "wsparcie-adhd": {
     "course_slug": "wsparcie-adhd",
@@ -150,7 +164,21 @@
     "outcome_1": "Rozbijesz duże zadanie na konkretne kroki.",
     "outcome_2": "Ułożysz prostą rutynę, która zmniejsza chaos.",
     "outcome_3": "Przećwiczysz spokojne komunikaty i dostosowanie otoczenia.",
-    "source_url": "https://www.cdc.gov/adhd/treatment/behavior-therapy.html"
+    "source_url": "https://www.cdc.gov/adhd/treatment/behavior-therapy.html",
+    "module_titles": [
+      "Czym jest ADHD i czym nie jest",
+      "Uwaga, impulsywność i emocje",
+      "Jasna komunikacja bez oceniania",
+      "Przyjazna organizacja dnia",
+      "Pomoc w rozpoczynaniu zadań",
+      "Przeciążenie i regulacja bodźców",
+      "Współpraca z rodziną i specjalistami",
+      "Indywidualny plan wsparcia",
+      "Zadanie w czterech małych etapach",
+      "Plan przerw bez karania",
+      "Nauka współpracy zamiast kontrolowania",
+      "Sprawdzian — indywidualny plan na tydzień"
+    ]
   },
   "poznaj-siebie": {
     "course_slug": "poznaj-siebie",
@@ -159,7 +187,21 @@
     "outcome_1": "Rozpoznasz swoje mocne strony poza etykietami.",
     "outcome_2": "Nazwiesz potrzeby, które często odkładasz.",
     "outcome_3": "Zrobisz mapę decyzji opartą na własnych wartościach.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Kim jestem poza rolami",
+      "Wartości i ważne wybory",
+      "Moje mocne strony",
+      "Emocje jako informacje",
+      "Przekonania, które mnie ograniczają",
+      "Potrzeby i granice",
+      "Moje schematy decyzji",
+      "Mój osobisty plan rozwoju",
+      "Rozpoznaj swój sposób reagowania na stres",
+      "Autentyczne tak i uczciwe nie",
+      "Jak nie wracać do starego schematu",
+      "Plan końcowy — jedna zmiana na 30 dni"
+    ]
   },
   "mocny-charakter": {
     "course_slug": "mocny-charakter",
@@ -168,7 +210,21 @@
     "outcome_1": "Przećwiczysz odmawianie bez agresji.",
     "outcome_2": "Odróżnisz własne zasady od presji otoczenia.",
     "outcome_3": "Zbudujesz prosty plan konsekwentnych działań.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Stanowczość zamiast agresji",
+      "Twoje zasady i wartości",
+      "Powiedz nie bez poczucia winy",
+      "Trudne rozmowy spokojnym głosem",
+      "Radzenie sobie z presją",
+      "Nawyki i konsekwencja",
+      "Odpowiedzialność za swoje decyzje",
+      "Plan mocniejszego charakteru",
+      "Stanowczość w pracy bez konfliktu",
+      "Odporność na presję grupy",
+      "Powrót do rozmowy po silnych emocjach",
+      "Próba końcowa — granice i odpowiedzialność"
+    ]
   },
   "zwiazek-rozmowa": {
     "course_slug": "zwiazek-rozmowa",
@@ -204,7 +260,21 @@
     "outcome_1": "Rozdzielisz sprawy pilne od ważnych.",
     "outcome_2": "Zbudujesz prostą mapę kosztów i dostępnych zasobów.",
     "outcome_3": "Ułożysz bezpieczny plan małych kroków bez obietnic szybkiego wzbogacenia.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Uznanie faktów bez katastrofizowania",
+      "Co zostało po stracie",
+      "Bezpieczna mapa finansów",
+      "Priorytety pierwszych 30 dni",
+      "Wsparcie i proszenie o pomoc",
+      "Nowe źródła dochodu",
+      "Nawyki odbudowy",
+      "Plan 90 dni od nowa",
+      "Rozmowa z wierzycielem bez unikania",
+      "Budżet awaryjny na cztery tygodnie",
+      "Mały dochód dodatkowy bez pułapek",
+      "90 dni odbudowy — przegląd wyników"
+    ]
   },
   "obowiazki-domowe": {
     "course_slug": "obowiazki-domowe",
@@ -213,7 +283,21 @@
     "outcome_1": "Zrobisz jasną listę obowiązków.",
     "outcome_2": "Podzielisz zadania odpowiednio do możliwości domowników.",
     "outcome_3": "Utrzymasz prosty system bez ciągłych przypomnień.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Dlaczego obowiązki się piętrzą",
+      "Lista zadań w całym domu",
+      "Równy podział odpowiedzialności",
+      "Codzienna rutyna 15 minut",
+      "Tygodniowy plan domu",
+      "Obowiązki odpowiednie do wieku",
+      "Jak rozmawiać o niedotrzymanych ustaleniach",
+      "System bez ciągłych przypomnień",
+      "Nie tylko sprzątanie — kto pamięta?",
+      "Plan obowiązków w dwóch domach",
+      "Co zrobić, gdy harmonogram nie działa?",
+      "Siedmiodniowy test nowego systemu"
+    ]
   },
   "lepszy-cukiernik": {
     "course_slug": "lepszy-cukiernik",
@@ -222,7 +306,21 @@
     "outcome_1": "Nauczysz się kontrolować proporcje i proces.",
     "outcome_2": "Zorganizujesz pracę w bezpieczny sposób.",
     "outcome_3": "Policzysz koszt porcji i ograniczysz straty.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Stanowisko i bezpieczeństwo żywności",
+      "Ważenie i proporcje",
+      "Ciasta podstawowe i konsystencja",
+      "Kremy i stabilizacja",
+      "Temperatura, czas i wilgotność",
+      "Dekoracja i estetyka",
+      "Kalkulacja kosztu porcji",
+      "Plan produkcji i kontrola jakości",
+      "Pierwsza własna receptura — kontrolowana zmiana",
+      "Alergeny w zamówieniu",
+      "Powtarzalność między partiami",
+      "Zamówienie końcowe — od wyceny do odbioru"
+    ]
   },
   "lepszy-kucharz": {
     "course_slug": "lepszy-kucharz",
@@ -231,7 +329,21 @@
     "outcome_1": "Zorganizujesz mise en place.",
     "outcome_2": "Przećwiczysz podstawy temperatury i technik.",
     "outcome_3": "Zbudujesz smak bez niepotrzebnego chaosu.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Mise en place i porządek",
+      "Bezpieczeństwo i higiena kuchni",
+      "Techniki krojenia",
+      "Temperatura i obróbka cieplna",
+      "Budowanie smaku i przyprawianie",
+      "Sosy, buliony i konsystencja",
+      "Menu, produkty i straty",
+      "Serwis i jakość każdej porcji",
+      "Menu z trzech produktów",
+      "Bezpieczne chłodzenie potraw",
+      "Od smaku do korekty",
+      "Serwis — pięć porcji tej samej jakości"
+    ]
   },
   "nie-lubie-ludzi": {
     "course_slug": "nie-lubie-ludzi",
@@ -240,7 +352,21 @@
     "outcome_1": "Rozpoznasz, co naprawdę Cię męczy w kontaktach.",
     "outcome_2": "Nauczysz się granic bez poczucia winy.",
     "outcome_3": "Spróbujesz małych, bezpiecznych kroków w budowaniu relacji.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Dystans do ludzi — skąd się bierze",
+      "Introwersja, zmęczenie i przeciążenie",
+      "Myśli o innych a fakty",
+      "Bezpieczny kontakt małymi krokami",
+      "Rozmowa bez presji",
+      "Granice i odmowa",
+      "Zaufanie budowane powoli",
+      "Relacje pasujące do Ciebie",
+      "Rozmowa od jednego zdania",
+      "Przeciążenie społeczne i plan odpoczynku",
+      "Odmowa z szacunkiem",
+      "Twoja własna definicja dobrych relacji"
+    ]
   },
   "jak-kupic-samochod": {
     "course_slug": "jak-kupic-samochod",
@@ -249,7 +375,21 @@
     "outcome_1": "Zrobisz listę kosztów poza ceną zakupu.",
     "outcome_2": "Sprawdzisz dokumenty i przygotujesz oględziny.",
     "outcome_3": "Zbudujesz własną checklistę jazdy próbnej.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Potrzeby i budżet zakupu",
+      "Cena zakupu kontra koszt użytkowania",
+      "Historia i dokumenty samochodu",
+      "Oględziny nadwozia i wnętrza",
+      "Jazda próbna i diagnostyka",
+      "Ukryte koszty i typowe pułapki",
+      "Umowa, płatność i przekazanie",
+      "Lista kontrolna zakupu",
+      "Pytania do sprzedającego przed wyjazdem",
+      "Diagnostyka nie zastępuje oględzin",
+      "Negocjacje oparte na faktach",
+      "Decyzja końcowa — kupić czy odejść?"
+    ]
   },
   "mierz-ponad-sily": {
     "course_slug": "mierz-ponad-sily",
@@ -258,7 +398,21 @@
     "outcome_1": "Rozpoznasz kompetencje, które już masz.",
     "outcome_2": "Rozłożysz ambitny cel na możliwe kroki.",
     "outcome_3": "Zaczniesz budować portfolio zamiast tylko opowiadać o planach.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Ambicja i realistyczne ryzyko",
+      "Wartość umiejętności poza dyplomem",
+      "Jak wybrać wielki cel",
+      "Rozbijanie celu na etapy",
+      "Nauka z praktyki i mentorów",
+      "Projekty jako dowody umiejętności",
+      "Odwaga wobec odmowy",
+      "Twój plan na 100 dni",
+      "Pierwszy klient — sprawdzian prawdziwej wartości",
+      "Porażka bez katastrofy",
+      "Odważny cel a bezpieczeństwo finansowe",
+      "Projekt końcowy — pokaż, co umiesz"
+    ]
   },
   "excel-skroty": {
     "course_slug": "excel-skroty",
@@ -285,7 +439,21 @@
     "outcome_1": "Dobierzesz cel kampanii do realnej potrzeby.",
     "outcome_2": "Nauczysz się mierzyć sensowne konwersje.",
     "outcome_3": "Przygotujesz listę słów i wykluczeń.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Cel reklamy i klient",
+      "Struktura konta i kampanii",
+      "Słowa kluczowe i intencje",
+      "Teksty reklam i strony docelowe",
+      "Budżet i stawki",
+      "Konwersje i pomiar",
+      "Wykluczenia i optymalizacja",
+      "Raport, wnioski i plan kolejnej kampanii",
+      "Przed kliknięciem «Opublikuj»",
+      "Rozmowa z klientem po kampanii",
+      "Podejrzane kliknięcia a wykluczenia",
+      "Raport końcowy bez przechwałek"
+    ]
   },
   "facebook-ads-promocja": {
     "course_slug": "facebook-ads-promocja",
@@ -294,7 +462,21 @@
     "outcome_1": "Dobierzesz odbiorców i komunikat.",
     "outcome_2": "Przygotujesz proste testy dwóch reklam.",
     "outcome_3": "Sprawdzisz wynik przed podniesieniem budżetu.",
-    "source_url": null
+    "source_url": null,
+    "module_titles": [
+      "Cel kampanii i grupa odbiorców",
+      "Konto reklamowe i bezpieczeństwo",
+      "Facebook i Instagram — placementy",
+      "Kreacje, wideo i komunikat",
+      "Budżet, testy i harmonogram",
+      "Zdarzenia i pomiar",
+      "Optymalizacja bez zgadywania",
+      "Wyniki i plan skalowania",
+      "Test dwóch różnych komunikatów",
+      "Bezpieczne dane klientów",
+      "Reklama nie działa — co badać najpierw?",
+      "Plan skalowania po udanym teście"
+    ]
   },
   "swiety-mikolaj": {
     "course_slug": "swiety-mikolaj",
