@@ -1,4 +1,4 @@
-# TRENERKI Academy — Expo Hosting + Supabase
+# TRENERKI Academy v0.7.0 — Expo Hosting + Supabase
 
 Production preview: **https://trenerki-academy.expo.app**
 
@@ -7,6 +7,18 @@ Production preview: **https://trenerki-academy.expo.app**
 The Expo web root (`app/index.tsx`) opens the original **TRENERKI Academy HTML design** from `public/academy/index.html`. The original layout, CSS, hero illustration, course cards, filtering, mobile styles, vector icons and course preview screens have been restored. This file contains **only public course metadata**, not paid lessons, quiz solutions or answer keys. The public catalog synchronizes titles, descriptions and prices from Supabase; it retains a public-only static fallback during an API outage.
 
 Legal pages are available under `public/academy/`: `regulamin.html`, `prywatnosc.html` and `certyfikaty.html`. They are pre-launch drafts with clear disclosures; before charging consumers, the legally required operator identification and finalized policies must be supplied.
+
+## v0.7.0 — purchase funnel and expanded catalog
+
+- 34 courses are in the public catalog; 15 original + 19 newly requested courses.
+- Each course offers **Poznaj kurs** (public eight-module outline) and **Kup kurs** (redirects to `/konto?course=<slug>&next=kup`).
+- Successful login or an existing authenticated session with a selected course redirects to `/kup?course=<slug>`, where the user sees course, price and purchase button.
+- Two shortcuts mini-courses (Excel / AutoCAD) cost **10 PLN each**; **Uprawnienia Świętego Mikołaja** is explicitly fun and free, without formal qualifications.
+- Free course signup uses authenticated Supabase Edge Function `ta-enroll-free`, which checks server-side that price is actually zero before granting a 12-month enrollment.
+- Paid purchase invokes `ta-create-checkout` with a price read from Supabase, an authenticated/verified user, and explicit digital-content consents. Stripe payment cannot complete until required server secrets, legal details and webhook verification are configured.
+- Supabase has 272 lesson entries (34 x 8). Several new courses currently have **draft lesson outlines**, not completed professionally reviewed content; do not market them as fully finished or charge for them yet.
+- Prices for the 16 new full courses are **working proposals**, not owner-approved final prices. Only Excel = 10 PLN, AutoCAD = 10 PLN, and Santa = gratis were explicitly specified.
+- The original static HTML design is preserved. Frontend code has **no simulated purchases** and no paid material in the public bundle.
 
 ## Authentication and protected content
 
