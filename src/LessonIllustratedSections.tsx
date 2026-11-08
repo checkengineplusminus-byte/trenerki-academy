@@ -53,6 +53,6 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
      <Text style={{color:body,fontSize:15.5,lineHeight:27}}>{section.text}</Text>
     </View>)}
    </View>}
-  </View>
+  </View>}
  </View>;
 }
