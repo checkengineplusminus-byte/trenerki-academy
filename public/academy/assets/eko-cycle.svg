@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-label="Życie przedmiotu">
+<rect width="1200" height="650" rx="28" fill="#f9fbf6"/>
+<rect x="24" y="22" width="1152" height="606" rx="27" fill="#f0f6eb" stroke="#d2e4ce"/>
+<path d="M46 178 H1154" stroke="#d0dfd1" stroke-width="2"/>
+<text x="48" y="91" font-size="37" font-weight="900" fill="#163d2d" font-family="Arial, sans-serif">Życie przedmiotu</text>
+<text x="49" y="136" font-size="21" fill="#567060" font-family="Arial, sans-serif">Wpływ środowiskowy nie zaczyna się przy koszu. Zobacz wcześniejsze etapy.</text>
+<g font-family="Arial, sans-serif"><g><rect x="44" y="225" width="210.4" height="310" rx="26" fill="#d9e8cb" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="149.2" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="149.2" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">01</text>
+<text x="149.2" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">SUROWCE</text>
+<text x="149.2" y="442" font-size="15" fill="#385c44" text-anchor="middle">Skąd materiał?</text>
+<path d="M 256.4 365 L 265.4 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="269.4" y="225" width="210.4" height="310" rx="26" fill="#cfe0ee" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="374.59999999999997" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="374.59999999999997" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">02</text>
+<text x="374.59999999999997" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">PRODUKCJA</text>
+<text x="374.59999999999997" y="442" font-size="15" fill="#385c44" text-anchor="middle">Ile energii?</text>
+<path d="M 481.79999999999995 365 L 490.79999999999995 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="494.8" y="225" width="210.4" height="310" rx="26" fill="#e7dfc5" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="600" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="600" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">03</text>
+<text x="600" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">TRANSPORT</text>
+<text x="600" y="442" font-size="15" fill="#385c44" text-anchor="middle">Jak daleko?</text>
+<path d="M 707.2 365 L 716.2 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="720.2" y="225" width="210.4" height="310" rx="26" fill="#c9e7d5" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="825.4000000000001" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="825.4000000000001" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">04</text>
+<text x="825.4000000000001" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">UŻYTKOWANIE</text>
+<text x="825.4000000000001" y="442" font-size="15" fill="#385c44" text-anchor="middle">Jak długo?</text>
+<path d="M 932.6 365 L 941.6 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="945.6" y="225" width="210.4" height="310" rx="26" fill="#f2e6b7" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="1050.8" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="1050.8" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">05</text>
+<text x="1050.8" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">KONIEC ŻYCIA</text>
+<text x="1050.8" y="442" font-size="15" fill="#385c44" text-anchor="middle">Naprawa lub odzysk</text>
+
+</g></g>
+<text x="46" y="591" font-size="17" font-weight="800" fill="#628168" font-family="Arial, sans-serif">TRENERKI ACADEMY · Oryginalna ilustracja edukacyjna · schemat poglądowy</text>
+</svg>
