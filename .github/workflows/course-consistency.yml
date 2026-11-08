@@ -16,3 +16,19 @@ jobs:
           node-version: '22'
       - name: Check curriculum and test-only sales
         run: node scripts/check-content-consistency.mjs
+  web_bundle:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify production web bundle
+        run: npx expo export --platform web --output-dir /tmp/trenerki-smoke
+        env:
+          EXPO_NO_TELEMETRY: '1'
