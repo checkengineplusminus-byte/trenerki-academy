@@ -1,0 +1,1333 @@
+{
+  "schema_version": 2,
+  "course_slug": "ongoing-wms",
+  "intro": "Ongoing WMS to chmurowy WMS używany m.in. w skandynawskich magazynach i logistyce 3PL. Wyróżnia się integracjami z ERP, sklepami, platformami wysyłkowymi, kurierami, skanerami i automatyzacją. Procedury zależą od konfiguracji magazynu.",
+  "source": "https://docs.ongoingwarehouse.com/",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Praktyka",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 0,
+      "title_pl": "Co to jest Ongoing WMS",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co to jest Ongoing WMS",
+          "Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL.",
+          "Zastosowanie w pracy: Nowa osoba myli WMS z portalem sklepu internetowego. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Rozdziel odpowiedzialność sklepu za sprzedaż i WMS za wykonanie magazynowe. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL.",
+          "situation": "Nowa osoba myli WMS z portalem sklepu internetowego.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Rozdziel odpowiedzialność sklepu za sprzedaż i WMS za wykonanie magazynowe.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Rozdziel odpowiedzialność sklepu za sprzedaż i WMS za wykonanie magazynowe.",
+          "explanation": "Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL.",
+          "feedback": [
+            "Poprawnie. Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL.",
+            "Nie. Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL.",
+            "Nie. Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Rozdziel odpowiedzialność sklepu za sprzedaż i WMS za wykonanie magazynowe."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Nowa osoba myli WMS z portalem sklepu internetowego.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 1,
+      "title_pl": "Pulpit użytkownika i uprawnienia",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pulpit użytkownika i uprawnienia",
+          "Widoczne funkcje zależą od konfiguracji i przypisanej roli operatora.",
+          "Zastosowanie w pracy: Kierowca próbuje skorygować cudzy stan magazynowy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź rolę i udostępnij tylko odpowiedni proces. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Widoczne funkcje zależą od konfiguracji i przypisanej roli operatora.",
+          "situation": "Kierowca próbuje skorygować cudzy stan magazynowy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź rolę i udostępnij tylko odpowiedni proces.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rolę i udostępnij tylko odpowiedni proces.",
+          "explanation": "Widoczne funkcje zależą od konfiguracji i przypisanej roli operatora.",
+          "feedback": [
+            "Poprawnie. Widoczne funkcje zależą od konfiguracji i przypisanej roli operatora.",
+            "Nie. Widoczne funkcje zależą od konfiguracji i przypisanej roli operatora.",
+            "Nie. Widoczne funkcje zależą od konfiguracji i przypisanej roli operatora."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź rolę i udostępnij tylko odpowiedni proces."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Kierowca próbuje skorygować cudzy stan magazynowy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 2,
+      "title_pl": "Goods owner — właściciel towaru",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Goods owner — właściciel towaru",
+          "W 3PL identyczne produkty mogą należeć do różnych klientów; stan należy rozdzielić logicznie.",
+          "Zastosowanie w pracy: Dwa sklepy mają to samo SKU i podobne etykiety. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Wybierz prawidłowego właściciela towaru przed ruchem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "W 3PL identyczne produkty mogą należeć do różnych klientów; stan należy rozdzielić logicznie.",
+          "situation": "Dwa sklepy mają to samo SKU i podobne etykiety.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Wybierz prawidłowego właściciela towaru przed ruchem.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Wybierz prawidłowego właściciela towaru przed ruchem.",
+          "explanation": "W 3PL identyczne produkty mogą należeć do różnych klientów; stan należy rozdzielić logicznie.",
+          "feedback": [
+            "Poprawnie. W 3PL identyczne produkty mogą należeć do różnych klientów; stan należy rozdzielić logicznie.",
+            "Nie. W 3PL identyczne produkty mogą należeć do różnych klientów; stan należy rozdzielić logicznie.",
+            "Nie. W 3PL identyczne produkty mogą należeć do różnych klientów; stan należy rozdzielić logicznie."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Wybierz prawidłowego właściciela towaru przed ruchem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwa sklepy mają to samo SKU i podobne etykiety.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 3,
+      "title_pl": "Article / SKU",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Article / SKU",
+          "Kartoteka artykułu określa identyfikator, jednostki i parametry produktu.",
+          "Zastosowanie w pracy: Sklep przesłał SKU nieistniejący w bazie WMS. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj mapowanie artykułu przed przyjęciem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Kartoteka artykułu określa identyfikator, jednostki i parametry produktu.",
+          "situation": "Sklep przesłał SKU nieistniejący w bazie WMS.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj mapowanie artykułu przed przyjęciem.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj mapowanie artykułu przed przyjęciem.",
+          "explanation": "Kartoteka artykułu określa identyfikator, jednostki i parametry produktu.",
+          "feedback": [
+            "Poprawnie. Kartoteka artykułu określa identyfikator, jednostki i parametry produktu.",
+            "Nie. Kartoteka artykułu określa identyfikator, jednostki i parametry produktu.",
+            "Nie. Kartoteka artykułu określa identyfikator, jednostki i parametry produktu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj mapowanie artykułu przed przyjęciem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sklep przesłał SKU nieistniejący w bazie WMS.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 4,
+      "title_pl": "Warehouse location",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Warehouse location",
+          "Adres regału wskazuje faktyczne położenie SKU i jest podstawą sprawnej kompletacji.",
+          "Zastosowanie w pracy: Pracownik chce składować paletę na przypadkowo wolnym regale. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź dopuszczalną lokację i przypisanie produktu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Adres regału wskazuje faktyczne położenie SKU i jest podstawą sprawnej kompletacji.",
+          "situation": "Pracownik chce składować paletę na przypadkowo wolnym regale.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź dopuszczalną lokację i przypisanie produktu.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź dopuszczalną lokację i przypisanie produktu.",
+          "explanation": "Adres regału wskazuje faktyczne położenie SKU i jest podstawą sprawnej kompletacji.",
+          "feedback": [
+            "Poprawnie. Adres regału wskazuje faktyczne położenie SKU i jest podstawą sprawnej kompletacji.",
+            "Nie. Adres regału wskazuje faktyczne położenie SKU i jest podstawą sprawnej kompletacji.",
+            "Nie. Adres regału wskazuje faktyczne położenie SKU i jest podstawą sprawnej kompletacji."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź dopuszczalną lokację i przypisanie produktu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Pracownik chce składować paletę na przypadkowo wolnym regale.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 5,
+      "title_pl": "In order i out order",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "In order i out order",
+          "Zlecenia przychodzące i wychodzące mają różny przepływ; nie można ich mieszać.",
+          "Zastosowanie w pracy: Przyjęcie dostawy jest błędnie zgłaszane jako zwrot klienta. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zidentyfikuj rodzaj dokumentu przed pracą. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zlecenia przychodzące i wychodzące mają różny przepływ; nie można ich mieszać.",
+          "situation": "Przyjęcie dostawy jest błędnie zgłaszane jako zwrot klienta.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zidentyfikuj rodzaj dokumentu przed pracą.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj rodzaj dokumentu przed pracą.",
+          "explanation": "Zlecenia przychodzące i wychodzące mają różny przepływ; nie można ich mieszać.",
+          "feedback": [
+            "Poprawnie. Zlecenia przychodzące i wychodzące mają różny przepływ; nie można ich mieszać.",
+            "Nie. Zlecenia przychodzące i wychodzące mają różny przepływ; nie można ich mieszać.",
+            "Nie. Zlecenia przychodzące i wychodzące mają różny przepływ; nie można ich mieszać."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zidentyfikuj rodzaj dokumentu przed pracą."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Przyjęcie dostawy jest błędnie zgłaszane jako zwrot klienta.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 6,
+      "title_pl": "ERP, e-commerce i Ongoing",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ERP, e-commerce i Ongoing",
+          "Integracja przesyła pozycje oraz statusy między sklepem, ERP i magazynem.",
+          "Zastosowanie w pracy: Sklep przyjął zamówienie, lecz w WMS go nie ma. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź integrację i identyfikator zamówienia. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Integracja przesyła pozycje oraz statusy między sklepem, ERP i magazynem.",
+          "situation": "Sklep przyjął zamówienie, lecz w WMS go nie ma.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź integrację i identyfikator zamówienia.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź integrację i identyfikator zamówienia.",
+          "explanation": "Integracja przesyła pozycje oraz statusy między sklepem, ERP i magazynem.",
+          "feedback": [
+            "Poprawnie. Integracja przesyła pozycje oraz statusy między sklepem, ERP i magazynem.",
+            "Nie. Integracja przesyła pozycje oraz statusy między sklepem, ERP i magazynem.",
+            "Nie. Integracja przesyła pozycje oraz statusy między sklepem, ERP i magazynem."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź integrację i identyfikator zamówienia."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sklep przyjął zamówienie, lecz w WMS go nie ma.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 7,
+      "title_pl": "Skanery i kody kreskowe",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Skanery i kody kreskowe",
+          "Ongoing może obsługiwać skanery ręczne, które potwierdzają lokalizacje i artykuły.",
+          "Zastosowanie w pracy: Produkt ma nową etykietę, której skaner nie rozpoznaje. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj mapowanie EAN/SKU, nie zastępuj go zgadywaniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Ongoing może obsługiwać skanery ręczne, które potwierdzają lokalizacje i artykuły.",
+          "situation": "Produkt ma nową etykietę, której skaner nie rozpoznaje.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj mapowanie EAN/SKU, nie zastępuj go zgadywaniem.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj mapowanie EAN/SKU, nie zastępuj go zgadywaniem.",
+          "explanation": "Ongoing może obsługiwać skanery ręczne, które potwierdzają lokalizacje i artykuły.",
+          "feedback": [
+            "Poprawnie. Ongoing może obsługiwać skanery ręczne, które potwierdzają lokalizacje i artykuły.",
+            "Nie. Ongoing może obsługiwać skanery ręczne, które potwierdzają lokalizacje i artykuły.",
+            "Nie. Ongoing może obsługiwać skanery ręczne, które potwierdzają lokalizacje i artykuły."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj mapowanie EAN/SKU, nie zastępuj go zgadywaniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Produkt ma nową etykietę, której skaner nie rozpoznaje.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 8,
+      "title_pl": "Kuriera i nShift — podstawy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Kuriera i nShift — podstawy",
+          "Platformy wysyłkowe mogą otrzymywać dane z WMS, ale etykieta i numer trackingu muszą odpowiadać zamówieniu.",
+          "Zastosowanie w pracy: Wysłano dane do platformy przewoźnika, ale brak etykiety. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź status generowania etykiety przed oddaniem paczki. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Platformy wysyłkowe mogą otrzymywać dane z WMS, ale etykieta i numer trackingu muszą odpowiadać zamówieniu.",
+          "situation": "Wysłano dane do platformy przewoźnika, ale brak etykiety.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź status generowania etykiety przed oddaniem paczki.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź status generowania etykiety przed oddaniem paczki.",
+          "explanation": "Platformy wysyłkowe mogą otrzymywać dane z WMS, ale etykieta i numer trackingu muszą odpowiadać zamówieniu.",
+          "feedback": [
+            "Poprawnie. Platformy wysyłkowe mogą otrzymywać dane z WMS, ale etykieta i numer trackingu muszą odpowiadać zamówieniu.",
+            "Nie. Platformy wysyłkowe mogą otrzymywać dane z WMS, ale etykieta i numer trackingu muszą odpowiadać zamówieniu.",
+            "Nie. Platformy wysyłkowe mogą otrzymywać dane z WMS, ale etykieta i numer trackingu muszą odpowiadać zamówieniu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź status generowania etykiety przed oddaniem paczki."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Wysłano dane do platformy przewoźnika, ale brak etykiety.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 9,
+      "title_pl": "Pierwsze przyjęcie dziesięciu kartonów",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsze przyjęcie dziesięciu kartonów",
+          "Przyjmując towar, sprawdź właściciela, numer dostawy, SKU i rzeczywistą ilość.",
+          "Zastosowanie w pracy: Sklep awizował 10 kartonów, przyjechało 9. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zapisz 9 i rozbieżność do uzgodnienia. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przyjmując towar, sprawdź właściciela, numer dostawy, SKU i rzeczywistą ilość.",
+          "situation": "Sklep awizował 10 kartonów, przyjechało 9.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zapisz 9 i rozbieżność do uzgodnienia.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zapisz 9 i rozbieżność do uzgodnienia.",
+          "explanation": "Przyjmując towar, sprawdź właściciela, numer dostawy, SKU i rzeczywistą ilość.",
+          "feedback": [
+            "Poprawnie. Przyjmując towar, sprawdź właściciela, numer dostawy, SKU i rzeczywistą ilość.",
+            "Nie. Przyjmując towar, sprawdź właściciela, numer dostawy, SKU i rzeczywistą ilość.",
+            "Nie. Przyjmując towar, sprawdź właściciela, numer dostawy, SKU i rzeczywistą ilość."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zapisz 9 i rozbieżność do uzgodnienia."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sklep awizował 10 kartonów, przyjechało 9.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 10,
+      "title_pl": "Inbound — przyjęcie towaru",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Inbound — przyjęcie towaru",
+          "Przyjęcie w WMS aktualizuje dane operacyjne, a dokumentację trzeba uzgodnić z dostawcą.",
+          "Zastosowanie w pracy: Na paczce nie ma czytelnego identyfikatora artykułu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zidentyfikuj SKU z dokumentami przed wprowadzeniem do stanu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przyjęcie w WMS aktualizuje dane operacyjne, a dokumentację trzeba uzgodnić z dostawcą.",
+          "situation": "Na paczce nie ma czytelnego identyfikatora artykułu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zidentyfikuj SKU z dokumentami przed wprowadzeniem do stanu.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj SKU z dokumentami przed wprowadzeniem do stanu.",
+          "explanation": "Przyjęcie w WMS aktualizuje dane operacyjne, a dokumentację trzeba uzgodnić z dostawcą.",
+          "feedback": [
+            "Poprawnie. Przyjęcie w WMS aktualizuje dane operacyjne, a dokumentację trzeba uzgodnić z dostawcą.",
+            "Nie. Przyjęcie w WMS aktualizuje dane operacyjne, a dokumentację trzeba uzgodnić z dostawcą.",
+            "Nie. Przyjęcie w WMS aktualizuje dane operacyjne, a dokumentację trzeba uzgodnić z dostawcą."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zidentyfikuj SKU z dokumentami przed wprowadzeniem do stanu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Na paczce nie ma czytelnego identyfikatora artykułu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 11,
+      "title_pl": "Putaway i przenoszenie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Putaway i przenoszenie",
+          "Lokalizację docelową należy potwierdzić po fizycznym odłożeniu towaru.",
+          "Zastosowanie w pracy: Operator odłożył karton na B-05, lecz wpisał B-06. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Skoryguj rozbieżność zgodnie z procesem i potwierdź realną lokację. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Lokalizację docelową należy potwierdzić po fizycznym odłożeniu towaru.",
+          "situation": "Operator odłożył karton na B-05, lecz wpisał B-06.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Skoryguj rozbieżność zgodnie z procesem i potwierdź realną lokację.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Skoryguj rozbieżność zgodnie z procesem i potwierdź realną lokację.",
+          "explanation": "Lokalizację docelową należy potwierdzić po fizycznym odłożeniu towaru.",
+          "feedback": [
+            "Poprawnie. Lokalizację docelową należy potwierdzić po fizycznym odłożeniu towaru.",
+            "Nie. Lokalizację docelową należy potwierdzić po fizycznym odłożeniu towaru.",
+            "Nie. Lokalizację docelową należy potwierdzić po fizycznym odłożeniu towaru."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Skoryguj rozbieżność zgodnie z procesem i potwierdź realną lokację."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Operator odłożył karton na B-05, lecz wpisał B-06.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 12,
+      "title_pl": "Order picking",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Order picking",
+          "Pobranie musi dotyczyć konkretnego klienta, SKU i ilości.",
+          "Zastosowanie w pracy: Na liście jest 8 sztuk, fizycznie 7. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zgłoś shortage i nie potwierdzaj fikcyjnej sztuki. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Pobranie musi dotyczyć konkretnego klienta, SKU i ilości.",
+          "situation": "Na liście jest 8 sztuk, fizycznie 7.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zgłoś shortage i nie potwierdzaj fikcyjnej sztuki.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zgłoś shortage i nie potwierdzaj fikcyjnej sztuki.",
+          "explanation": "Pobranie musi dotyczyć konkretnego klienta, SKU i ilości.",
+          "feedback": [
+            "Poprawnie. Pobranie musi dotyczyć konkretnego klienta, SKU i ilości.",
+            "Nie. Pobranie musi dotyczyć konkretnego klienta, SKU i ilości.",
+            "Nie. Pobranie musi dotyczyć konkretnego klienta, SKU i ilości."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zgłoś shortage i nie potwierdzaj fikcyjnej sztuki."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Na liście jest 8 sztuk, fizycznie 7.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 13,
+      "title_pl": "Picking scanner",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking scanner",
+          "Skaner ułatwia kontrolę, ale nie eliminuje konieczności weryfikacji uszkodzeń.",
+          "Zastosowanie w pracy: Zeskanowano poprawny SKU, ale paczka jest zniszczona. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zatrzymaj wydanie i zastosuj proces jakościowy. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Skaner ułatwia kontrolę, ale nie eliminuje konieczności weryfikacji uszkodzeń.",
+          "situation": "Zeskanowano poprawny SKU, ale paczka jest zniszczona.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zatrzymaj wydanie i zastosuj proces jakościowy.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj wydanie i zastosuj proces jakościowy.",
+          "explanation": "Skaner ułatwia kontrolę, ale nie eliminuje konieczności weryfikacji uszkodzeń.",
+          "feedback": [
+            "Poprawnie. Skaner ułatwia kontrolę, ale nie eliminuje konieczności weryfikacji uszkodzeń.",
+            "Nie. Skaner ułatwia kontrolę, ale nie eliminuje konieczności weryfikacji uszkodzeń.",
+            "Nie. Skaner ułatwia kontrolę, ale nie eliminuje konieczności weryfikacji uszkodzeń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zatrzymaj wydanie i zastosuj proces jakościowy."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Zeskanowano poprawny SKU, ale paczka jest zniszczona.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 14,
+      "title_pl": "Packing i multi-order",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Packing i multi-order",
+          "Konsolidacja zamówień musi zachować identyfikację właściciela i odbiorcy.",
+          "Zastosowanie w pracy: Dwie paczki z dwóch sklepów trafiły na jeden stół pakowania. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Oddziel zamówienia i skanuj ich identyfikatory. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Konsolidacja zamówień musi zachować identyfikację właściciela i odbiorcy.",
+          "situation": "Dwie paczki z dwóch sklepów trafiły na jeden stół pakowania.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Oddziel zamówienia i skanuj ich identyfikatory.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Oddziel zamówienia i skanuj ich identyfikatory.",
+          "explanation": "Konsolidacja zamówień musi zachować identyfikację właściciela i odbiorcy.",
+          "feedback": [
+            "Poprawnie. Konsolidacja zamówień musi zachować identyfikację właściciela i odbiorcy.",
+            "Nie. Konsolidacja zamówień musi zachować identyfikację właściciela i odbiorcy.",
+            "Nie. Konsolidacja zamówień musi zachować identyfikację właściciela i odbiorcy."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Oddziel zamówienia i skanuj ich identyfikatory."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwie paczki z dwóch sklepów trafiły na jeden stół pakowania.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 15,
+      "title_pl": "Shipping carrier selection",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Shipping carrier selection",
+          "Wysłanie do Bring, PostNord lub DHL wymaga poprawnego serwisu, adresu i etykiety.",
+          "Zastosowanie w pracy: Klient wybrał Bring, a etykieta jest PostNord. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zatrzymaj paczkę i uzgodnij metodę przewozu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Wysłanie do Bring, PostNord lub DHL wymaga poprawnego serwisu, adresu i etykiety.",
+          "situation": "Klient wybrał Bring, a etykieta jest PostNord.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zatrzymaj paczkę i uzgodnij metodę przewozu.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj paczkę i uzgodnij metodę przewozu.",
+          "explanation": "Wysłanie do Bring, PostNord lub DHL wymaga poprawnego serwisu, adresu i etykiety.",
+          "feedback": [
+            "Poprawnie. Wysłanie do Bring, PostNord lub DHL wymaga poprawnego serwisu, adresu i etykiety.",
+            "Nie. Wysłanie do Bring, PostNord lub DHL wymaga poprawnego serwisu, adresu i etykiety.",
+            "Nie. Wysłanie do Bring, PostNord lub DHL wymaga poprawnego serwisu, adresu i etykiety."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zatrzymaj paczkę i uzgodnij metodę przewozu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient wybrał Bring, a etykieta jest PostNord.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 16,
+      "title_pl": "Integracja z Shopify i WooCommerce",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Integracja z Shopify i WooCommerce",
+          "Sklep przesyła zlecenie, WMS zwraca status; brak synchronizacji nie powinien tworzyć duplikatów.",
+          "Zastosowanie w pracy: Klient dwa razy nacisnął zakup, a w WMS pojawiły się dwa podobne zlecenia. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź unikalne identyfikatory i czy to dwa faktyczne zamówienia. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Sklep przesyła zlecenie, WMS zwraca status; brak synchronizacji nie powinien tworzyć duplikatów.",
+          "situation": "Klient dwa razy nacisnął zakup, a w WMS pojawiły się dwa podobne zlecenia.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź unikalne identyfikatory i czy to dwa faktyczne zamówienia.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź unikalne identyfikatory i czy to dwa faktyczne zamówienia.",
+          "explanation": "Sklep przesyła zlecenie, WMS zwraca status; brak synchronizacji nie powinien tworzyć duplikatów.",
+          "feedback": [
+            "Poprawnie. Sklep przesyła zlecenie, WMS zwraca status; brak synchronizacji nie powinien tworzyć duplikatów.",
+            "Nie. Sklep przesyła zlecenie, WMS zwraca status; brak synchronizacji nie powinien tworzyć duplikatów.",
+            "Nie. Sklep przesyła zlecenie, WMS zwraca status; brak synchronizacji nie powinien tworzyć duplikatów."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź unikalne identyfikatory i czy to dwa faktyczne zamówienia."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient dwa razy nacisnął zakup, a w WMS pojawiły się dwa podobne zlecenia.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 17,
+      "title_pl": "Returns i RMA",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Returns i RMA",
+          "Zwrot od klienta powinien mieć powiązanie z pierwotnym zamówieniem i decyzją jakościową.",
+          "Zastosowanie w pracy: Klient odesłał niepełny zestaw produktów. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zarejestruj realną zawartość i różnicę do rozpatrzenia. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zwrot od klienta powinien mieć powiązanie z pierwotnym zamówieniem i decyzją jakościową.",
+          "situation": "Klient odesłał niepełny zestaw produktów.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zarejestruj realną zawartość i różnicę do rozpatrzenia.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj realną zawartość i różnicę do rozpatrzenia.",
+          "explanation": "Zwrot od klienta powinien mieć powiązanie z pierwotnym zamówieniem i decyzją jakościową.",
+          "feedback": [
+            "Poprawnie. Zwrot od klienta powinien mieć powiązanie z pierwotnym zamówieniem i decyzją jakościową.",
+            "Nie. Zwrot od klienta powinien mieć powiązanie z pierwotnym zamówieniem i decyzją jakościową.",
+            "Nie. Zwrot od klienta powinien mieć powiązanie z pierwotnym zamówieniem i decyzją jakościową."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zarejestruj realną zawartość i różnicę do rozpatrzenia."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient odesłał niepełny zestaw produktów.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 18,
+      "title_pl": "Stocktaking i cycle counts",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Stocktaking i cycle counts",
+          "Inwentaryzacja porównuje fizyczny stan z zapisem WMS dla konkretnego właściciela i lokacji.",
+          "Zastosowanie w pracy: W regale jest 13, w systemie 15. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zapisz 13 i skieruj różnicę do weryfikacji. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Inwentaryzacja porównuje fizyczny stan z zapisem WMS dla konkretnego właściciela i lokacji.",
+          "situation": "W regale jest 13, w systemie 15.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zapisz 13 i skieruj różnicę do weryfikacji.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zapisz 13 i skieruj różnicę do weryfikacji.",
+          "explanation": "Inwentaryzacja porównuje fizyczny stan z zapisem WMS dla konkretnego właściciela i lokacji.",
+          "feedback": [
+            "Poprawnie. Inwentaryzacja porównuje fizyczny stan z zapisem WMS dla konkretnego właściciela i lokacji.",
+            "Nie. Inwentaryzacja porównuje fizyczny stan z zapisem WMS dla konkretnego właściciela i lokacji.",
+            "Nie. Inwentaryzacja porównuje fizyczny stan z zapisem WMS dla konkretnego właściciela i lokacji."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zapisz 13 i skieruj różnicę do weryfikacji."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: W regale jest 13, w systemie 15.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: od sklepu do kuriera",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: od sklepu do kuriera",
+          "Zamówienie e-commerce powinno przepłynąć przez pick, pack, label i tracking.",
+          "Zastosowanie w pracy: Pakiet jest przygotowany, ale WMS nie zwrócił trackingu sklepowi. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź powiązanie shipment i kolejkę integracji. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zamówienie e-commerce powinno przepłynąć przez pick, pack, label i tracking.",
+          "situation": "Pakiet jest przygotowany, ale WMS nie zwrócił trackingu sklepowi.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź powiązanie shipment i kolejkę integracji.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź powiązanie shipment i kolejkę integracji.",
+          "explanation": "Zamówienie e-commerce powinno przepłynąć przez pick, pack, label i tracking.",
+          "feedback": [
+            "Poprawnie. Zamówienie e-commerce powinno przepłynąć przez pick, pack, label i tracking.",
+            "Nie. Zamówienie e-commerce powinno przepłynąć przez pick, pack, label i tracking.",
+            "Nie. Zamówienie e-commerce powinno przepłynąć przez pick, pack, label i tracking."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź powiązanie shipment i kolejkę integracji."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Pakiet jest przygotowany, ale WMS nie zwrócił trackingu sklepowi.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 20,
+      "title_pl": "Expert: multi-client 3PL",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: multi-client 3PL",
+          "Właściciele towaru muszą być rozdzieleni stanami i uprawnieniami oraz raportowaniem.",
+          "Zastosowanie w pracy: Klient A widzi raport zapasu klienta B. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Ogranicz filtr i uprawnienia przed udostępnieniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Właściciele towaru muszą być rozdzieleni stanami i uprawnieniami oraz raportowaniem.",
+          "situation": "Klient A widzi raport zapasu klienta B.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Ogranicz filtr i uprawnienia przed udostępnieniem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Ogranicz filtr i uprawnienia przed udostępnieniem.",
+          "explanation": "Właściciele towaru muszą być rozdzieleni stanami i uprawnieniami oraz raportowaniem.",
+          "feedback": [
+            "Poprawnie. Właściciele towaru muszą być rozdzieleni stanami i uprawnieniami oraz raportowaniem.",
+            "Nie. Właściciele towaru muszą być rozdzieleni stanami i uprawnieniami oraz raportowaniem.",
+            "Nie. Właściciele towaru muszą być rozdzieleni stanami i uprawnieniami oraz raportowaniem."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Ogranicz filtr i uprawnienia przed udostępnieniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient A widzi raport zapasu klienta B.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 21,
+      "title_pl": "Expert: integracja Business NXT / Visma",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: integracja Business NXT / Visma",
+          "Ongoing integruje się z systemami ERP, m.in. Business NXT i Visma; mapowanie jednostek i statusów ma znaczenie.",
+          "Zastosowanie w pracy: ERP wysłał 12 kartonów jako 12 sztuk. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Skoryguj mapowanie UOM i przetestuj przesyłanie na danych próbnych. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Ongoing integruje się z systemami ERP, m.in. Business NXT i Visma; mapowanie jednostek i statusów ma znaczenie.",
+          "situation": "ERP wysłał 12 kartonów jako 12 sztuk.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Skoryguj mapowanie UOM i przetestuj przesyłanie na danych próbnych.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Skoryguj mapowanie UOM i przetestuj przesyłanie na danych próbnych.",
+          "explanation": "Ongoing integruje się z systemami ERP, m.in. Business NXT i Visma; mapowanie jednostek i statusów ma znaczenie.",
+          "feedback": [
+            "Poprawnie. Ongoing integruje się z systemami ERP, m.in. Business NXT i Visma; mapowanie jednostek i statusów ma znaczenie.",
+            "Nie. Ongoing integruje się z systemami ERP, m.in. Business NXT i Visma; mapowanie jednostek i statusów ma znaczenie.",
+            "Nie. Ongoing integruje się z systemami ERP, m.in. Business NXT i Visma; mapowanie jednostek i statusów ma znaczenie."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Skoryguj mapowanie UOM i przetestuj przesyłanie na danych próbnych."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: ERP wysłał 12 kartonów jako 12 sztuk.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 22,
+      "title_pl": "Expert: EDI i API",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: EDI i API",
+          "Dokument elektroniczny powinien mieć identyfikator i potwierdzenie przetworzenia.",
+          "Zastosowanie w pracy: System wysłał tę samą dostawę dwa razy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Rozpoznaj duplikat dokumentu i zapobiegaj podwójnemu zapisowi. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Dokument elektroniczny powinien mieć identyfikator i potwierdzenie przetworzenia.",
+          "situation": "System wysłał tę samą dostawę dwa razy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Rozpoznaj duplikat dokumentu i zapobiegaj podwójnemu zapisowi.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Rozpoznaj duplikat dokumentu i zapobiegaj podwójnemu zapisowi.",
+          "explanation": "Dokument elektroniczny powinien mieć identyfikator i potwierdzenie przetworzenia.",
+          "feedback": [
+            "Poprawnie. Dokument elektroniczny powinien mieć identyfikator i potwierdzenie przetworzenia.",
+            "Nie. Dokument elektroniczny powinien mieć identyfikator i potwierdzenie przetworzenia.",
+            "Nie. Dokument elektroniczny powinien mieć identyfikator i potwierdzenie przetworzenia."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Rozpoznaj duplikat dokumentu i zapobiegaj podwójnemu zapisowi."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: System wysłał tę samą dostawę dwa razy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 23,
+      "title_pl": "Expert: fulfilment cost i fakturowanie 3PL",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: fulfilment cost i fakturowanie 3PL",
+          "Usługi przyjęcia, składowania, pick i pack mogą być naliczane oddzielnie.",
+          "Zastosowanie w pracy: Faktura 3PL pokazuje 80 picków, a log 74. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Uzgodnij naliczenia ze zdarzeniami operacyjnymi przed fakturowaniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Usługi przyjęcia, składowania, pick i pack mogą być naliczane oddzielnie.",
+          "situation": "Faktura 3PL pokazuje 80 picków, a log 74.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Uzgodnij naliczenia ze zdarzeniami operacyjnymi przed fakturowaniem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Uzgodnij naliczenia ze zdarzeniami operacyjnymi przed fakturowaniem.",
+          "explanation": "Usługi przyjęcia, składowania, pick i pack mogą być naliczane oddzielnie.",
+          "feedback": [
+            "Poprawnie. Usługi przyjęcia, składowania, pick i pack mogą być naliczane oddzielnie.",
+            "Nie. Usługi przyjęcia, składowania, pick i pack mogą być naliczane oddzielnie.",
+            "Nie. Usługi przyjęcia, składowania, pick i pack mogą być naliczane oddzielnie."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Uzgodnij naliczenia ze zdarzeniami operacyjnymi przed fakturowaniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Faktura 3PL pokazuje 80 picków, a log 74.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 24,
+      "title_pl": "Expert: automatyka i AutoStore",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: automatyka i AutoStore",
+          "WMS może współpracować z automatyką, ale stan zewnętrznego urządzenia trzeba uzgodnić z WMS.",
+          "Zastosowanie w pracy: AutoStore raportuje wykonanie, WMS pokazuje task Open. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zbadaj synchronizację i identyfikator taska. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "WMS może współpracować z automatyką, ale stan zewnętrznego urządzenia trzeba uzgodnić z WMS.",
+          "situation": "AutoStore raportuje wykonanie, WMS pokazuje task Open.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zbadaj synchronizację i identyfikator taska.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zbadaj synchronizację i identyfikator taska.",
+          "explanation": "WMS może współpracować z automatyką, ale stan zewnętrznego urządzenia trzeba uzgodnić z WMS.",
+          "feedback": [
+            "Poprawnie. WMS może współpracować z automatyką, ale stan zewnętrznego urządzenia trzeba uzgodnić z WMS.",
+            "Nie. WMS może współpracować z automatyką, ale stan zewnętrznego urządzenia trzeba uzgodnić z WMS.",
+            "Nie. WMS może współpracować z automatyką, ale stan zewnętrznego urządzenia trzeba uzgodnić z WMS."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zbadaj synchronizację i identyfikator taska."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: AutoStore raportuje wykonanie, WMS pokazuje task Open.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 25,
+      "title_pl": "Expert: cold chain i batch",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: cold chain i batch",
+          "Towary wymagające temperatury oraz partie muszą mieć zgodne warunki składowania i dokumentację.",
+          "Zastosowanie w pracy: Produkt chłodniczy stoi na suchej rampie zbyt długo. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zgłoś odchylenie temperatury i zastosuj właściwą kontrolę jakości. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Towary wymagające temperatury oraz partie muszą mieć zgodne warunki składowania i dokumentację.",
+          "situation": "Produkt chłodniczy stoi na suchej rampie zbyt długo.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zgłoś odchylenie temperatury i zastosuj właściwą kontrolę jakości.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zgłoś odchylenie temperatury i zastosuj właściwą kontrolę jakości.",
+          "explanation": "Towary wymagające temperatury oraz partie muszą mieć zgodne warunki składowania i dokumentację.",
+          "feedback": [
+            "Poprawnie. Towary wymagające temperatury oraz partie muszą mieć zgodne warunki składowania i dokumentację.",
+            "Nie. Towary wymagające temperatury oraz partie muszą mieć zgodne warunki składowania i dokumentację.",
+            "Nie. Towary wymagające temperatury oraz partie muszą mieć zgodne warunki składowania i dokumentację."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zgłoś odchylenie temperatury i zastosuj właściwą kontrolę jakości."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Produkt chłodniczy stoi na suchej rampie zbyt długo.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 26,
+      "title_pl": "Expert: rzetelne KPI 3PL",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: rzetelne KPI 3PL",
+          "SLA wobec klienta mierzy termin, kompletność i błędy, nie tylko liczbę paczek.",
+          "Zastosowanie w pracy: Magazyn wysłał 200 paczek, ale 12 dotarło z błędnym SKU. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Analizuj dokładność i zgłoszenia, nie ogłaszaj bezwarunkowego sukcesu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "SLA wobec klienta mierzy termin, kompletność i błędy, nie tylko liczbę paczek.",
+          "situation": "Magazyn wysłał 200 paczek, ale 12 dotarło z błędnym SKU.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Analizuj dokładność i zgłoszenia, nie ogłaszaj bezwarunkowego sukcesu.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Analizuj dokładność i zgłoszenia, nie ogłaszaj bezwarunkowego sukcesu.",
+          "explanation": "SLA wobec klienta mierzy termin, kompletność i błędy, nie tylko liczbę paczek.",
+          "feedback": [
+            "Poprawnie. SLA wobec klienta mierzy termin, kompletność i błędy, nie tylko liczbę paczek.",
+            "Nie. SLA wobec klienta mierzy termin, kompletność i błędy, nie tylko liczbę paczek.",
+            "Nie. SLA wobec klienta mierzy termin, kompletność i błędy, nie tylko liczbę paczek."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Analizuj dokładność i zgłoszenia, nie ogłaszaj bezwarunkowego sukcesu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Magazyn wysłał 200 paczek, ale 12 dotarło z błędnym SKU.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 27,
+      "title_pl": "Expert: obsługa niezgodności",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: obsługa niezgodności",
+          "Niezgodność danych między sklepem, ERP i WMS wymaga znalezienia źródła, nie ręcznego dopasowania raportów.",
+          "Zastosowanie w pracy: WMS ma 21 sztuk, ERP 17, sklep pokazuje 19. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź statusy i niewysłane zdarzenia przed korektą. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Niezgodność danych między sklepem, ERP i WMS wymaga znalezienia źródła, nie ręcznego dopasowania raportów.",
+          "situation": "WMS ma 21 sztuk, ERP 17, sklep pokazuje 19.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź statusy i niewysłane zdarzenia przed korektą.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Sprawdź statusy i niewysłane zdarzenia przed korektą.",
+          "explanation": "Niezgodność danych między sklepem, ERP i WMS wymaga znalezienia źródła, nie ręcznego dopasowania raportów.",
+          "feedback": [
+            "Poprawnie. Niezgodność danych między sklepem, ERP i WMS wymaga znalezienia źródła, nie ręcznego dopasowania raportów.",
+            "Nie. Niezgodność danych między sklepem, ERP i WMS wymaga znalezienia źródła, nie ręcznego dopasowania raportów.",
+            "Nie. Niezgodność danych między sklepem, ERP i WMS wymaga znalezienia źródła, nie ręcznego dopasowania raportów."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź statusy i niewysłane zdarzenia przed korektą."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: WMS ma 21 sztuk, ERP 17, sklep pokazuje 19.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 28,
+      "title_pl": "Expert: procedura awarii integracji",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: procedura awarii integracji",
+          "Awaryjne ręczne operacje powinny mieć numery dokumentów i kontrolę ponownego synchronizowania.",
+          "Zastosowanie w pracy: Sklep przestał przesyłać zamówienia przez godzinę. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zastosuj zatwierdzoną procedurę i uzgodnij brakujące zlecenia bez duplikatów. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Awaryjne ręczne operacje powinny mieć numery dokumentów i kontrolę ponownego synchronizowania.",
+          "situation": "Sklep przestał przesyłać zamówienia przez godzinę.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zastosuj zatwierdzoną procedurę i uzgodnij brakujące zlecenia bez duplikatów.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zastosuj zatwierdzoną procedurę i uzgodnij brakujące zlecenia bez duplikatów.",
+          "explanation": "Awaryjne ręczne operacje powinny mieć numery dokumentów i kontrolę ponownego synchronizowania.",
+          "feedback": [
+            "Poprawnie. Awaryjne ręczne operacje powinny mieć numery dokumentów i kontrolę ponownego synchronizowania.",
+            "Nie. Awaryjne ręczne operacje powinny mieć numery dokumentów i kontrolę ponownego synchronizowania.",
+            "Nie. Awaryjne ręczne operacje powinny mieć numery dokumentów i kontrolę ponownego synchronizowania."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zastosuj zatwierdzoną procedurę i uzgodnij brakujące zlecenia bez duplikatów."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sklep przestał przesyłać zamówienia przez godzinę.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Ongoing WMS",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Ongoing WMS",
+          "Pełna ścieżka wymaga rozróżnienia owner, inbound, picking, shipping i statusu integracji.",
+          "Zastosowanie w pracy: Dwa sklepy zgłaszają brak jednej pozycji tej samej nazwy, lecz różne SKU. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź klienta, SKU, dokument i skany, zanim zmienisz stan. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Pełna ścieżka wymaga rozróżnienia owner, inbound, picking, shipping i statusu integracji.",
+          "situation": "Dwa sklepy zgłaszają brak jednej pozycji tej samej nazwy, lecz różne SKU.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź klienta, SKU, dokument i skany, zanim zmienisz stan.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Sprawdź klienta, SKU, dokument i skany, zanim zmienisz stan.",
+          "explanation": "Pełna ścieżka wymaga rozróżnienia owner, inbound, picking, shipping i statusu integracji.",
+          "feedback": [
+            "Poprawnie. Pełna ścieżka wymaga rozróżnienia owner, inbound, picking, shipping i statusu integracji.",
+            "Nie. Pełna ścieżka wymaga rozróżnienia owner, inbound, picking, shipping i statusu integracji.",
+            "Nie. Pełna ścieżka wymaga rozróżnienia owner, inbound, picking, shipping i statusu integracji."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź klienta, SKU, dokument i skany, zanim zmienisz stan."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwa sklepy zgłaszają brak jednej pozycji tej samej nazwy, lecz różne SKU.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://docs.ongoingwarehouse.com/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    }
+  ]
+}
