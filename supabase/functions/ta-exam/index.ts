@@ -45,6 +45,40 @@ function questionFrom(lessons:Lesson[],history:any[],phase:string){
   question:'W programie „'+l.title_pl+'” masz sytuację: '+trim(shortcut.before,500)+'. Chcesz uzyskać rezultat: '+trim(shortcut.after,500)+'. Wyjaśnij, jakich klawiszy lub polecenia użyjesz i jak sprawdzisz efekt.',
   expected_answer:'Prawidłowe polecenie: '+trim(shortcut.combo,90)+' ('+trim(shortcut.label,170)+'). '+trim(shortcut.tip,600)+'. Rezultat: '+trim(shortcut.after,400)};
 }
+type Choice={lesson_no:number;question:string;expected_answer:string;question_options:string[];correct_option:number};
+function choiceBank(lessons:Lesson[]):Choice[]{
+ const bank:Choice[]=[];
+ for(const l of lessons){
+  const m=l.material||{},q=m.learning?.options?.length>=2?m.learning:m.construction?.roleplay?.options?.length>=2?m.construction.roleplay:null;
+  if(!q||!Array.isArray(q.options))continue;
+  const arr=q.options.map((v:any)=>trim(v,450)),correct=Number(q.correct);
+  if(arr.length<2||arr.length>6||!arr.every((x:string)=>x.length>=3)||new Set(arr).size!==arr.length||!Number.isInteger(correct)||correct<0||correct>=arr.length)continue;
+  bank.push({
+   lesson_no:l.lesson_no,
+   question:trim(m.learning===q?'Sytuacja: '+trim(m.learning.situation,500)+' '+trim(q.question,360):'Zadanie językowe „'+l.title_pl+'”: '+trim(q.question,780),1150),
+   expected_answer:trim(arr[correct]+'. '+(q.explanation||q.why||m.learning?.intro||''),1100),
+   question_options:arr,correct_option:correct
+  });
+ }
+ return bank;
+}
+function nextChoice(bank:Choice[],history:any[],phase:string):Choice|null{
+ const used=new Set((history||[]).map((x:any)=>Number(x.lesson_no)));
+ const expertMin=Math.max(0,...bank.map(x=>x.lesson_no))-9;
+ const experts=bank.filter(x=>x.lesson_no>=expertMin);
+ const target=(phase==='final'||phase==='extra')&&experts.length>=2?experts:bank;
+ let available=target.filter(x=>!used.has(x.lesson_no));
+ if(!available.length)available=bank.filter(x=>!used.has(x.lesson_no));
+ if(!available.length)available=bank;
+ if(!available.length)return null;
+ const chosen=pick(available),shuffled=chosen.question_options.map((answer,index)=>({answer,index}));
+ for(let i=shuffled.length-1;i>0;i--){
+  const a=new Uint32Array(1);crypto.getRandomValues(a);const j=a[0]%(i+1);
+  [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
+ }
+ return {...chosen,question_options:shuffled.map(x=>x.answer),correct_option:shuffled.findIndex(x=>x.index===chosen.correct_option)};
+}
+
 async function gradeWithAi(question:string,expected:string,answer:string):Promise<Grade|null>{
  const apiKey=Deno.env.get('OPENAI_API_KEY');if(!apiKey)return null;
  const rubric=[
@@ -87,34 +121,41 @@ Deno.serve(async(req:Request)=>{
  if(authError||!user?.id||!user.email_confirmed_at)return json({error:'login_required'},401);
  let input:any;try{input=await req.json()}catch{return json({error:'invalid_json'},400)}
  const action=trim(input.action,20),slug=trim(input.course_slug,80);
- if(!['status','start','answer'].includes(action)||!validSlug(slug))return json({error:'invalid_input'},400);
+ if(!['status','start','answer','switch_mode'].includes(action)||!validSlug(slug))return json({error:'invalid_input'},400);
  const db=createClient(url,secret,{auth:{persistSession:false,autoRefreshToken:false}});
  const {data:existingCert}=await db.from('ta_certificates')
   .select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at')
-  .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).maybeSingle();
+  .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).order('issued_at',{ascending:false}).limit(1).maybeSingle();
  if(existingCert)return json({ok:true,state:'passed',certificate:existingCert});
  // Recovery: if the model graded the exam as passed but issuing the diploma failed,
  // do not force a learner to retake it or lose the server-recorded result.
- const {data:passedSession}=await db.from('ta_exam_sessions').select('id,holder_name,is_demo')
+ const {data:passedSession}=await db.from('ta_exam_sessions').select('*')
   .eq('user_id',user.id).eq('course_slug',slug).eq('status','passed').order('updated_at',{ascending:false}).limit(1).maybeSingle();
  if(passedSession){
-  const {data:passedRecord}=await db.from('ta_exam_results').select('id').eq('user_id',user.id)
-   .eq('course_slug',slug).eq('passed',true).order('assessed_at',{ascending:false}).limit(1).maybeSingle();
-  if(passedRecord){
-   const {data:courseInfo}=await db.from('ta_courses').select('certificate_pl,certificate_en,title_pl').eq('slug',slug).maybeSingle();
-   const {data:previewInfo}=await db.from('ta_course_previews').select('review_status').eq('course_slug',slug).maybeSingle();
-   const no='TRE-'+new Date().getUTCFullYear()+'-'+crypto.randomUUID().replace(/-/g,'').slice(0,14).toUpperCase();
-   const {data:restored,error:restoreError}=await db.from('ta_certificates').insert({
-    user_id:user.id,course_slug:slug,certificate_no:no,holder_name:passedSession.holder_name,
-    title_pl:courseInfo?.certificate_pl||courseInfo?.title_pl||slug,
-    title_en:courseInfo?.certificate_en||courseInfo?.title_pl||slug,
-    exam_session_id:passedSession.id,is_demo:passedSession.is_demo||previewInfo?.review_status!=='approved'
-   }).select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at').single();
-   if(!restoreError&&restored)return json({ok:true,state:'passed',certificate:restored,recovered:true});
-   const {data:found}=await db.from('ta_certificates').select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at')
-    .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).maybeSingle();
-   if(found)return json({ok:true,state:'passed',certificate:found});
+  const oldHistory=passedSession.history||[];
+  const score=Math.round((passedSession.correct_count||0)/Math.max(1,oldHistory.length)*100);
+  const {data:existingResult}=await db.from('ta_exam_results').select('id').eq('exam_session_id',passedSession.id).maybeSingle();
+  if(!existingResult){
+   const {error:save}=await db.from('ta_exam_results').insert({
+    user_id:user.id,course_slug:slug,exam_session_id:passedSession.id,passed:true,score_percent:score
+   });
+   if(save&&save.code!=='23505')return json({error:'exam_result_save_failed'},503);
   }
+  const {data:courseInfo}=await db.from('ta_courses').select('certificate_pl,certificate_en,title_pl').eq('slug',slug).maybeSingle();
+  const {data:previewInfo}=await db.from('ta_course_previews').select('review_status').eq('course_slug',slug).maybeSingle();
+  const no='TRE-'+new Date().getUTCFullYear()+'-'+crypto.randomUUID().replace(/-/g,'').slice(0,14).toUpperCase();
+  const {data:restored,error:restoreError}=await db.from('ta_certificates').insert({
+   user_id:user.id,course_slug:slug,certificate_no:no,holder_name:passedSession.holder_name,
+   title_pl:courseInfo?.certificate_pl||courseInfo?.title_pl||slug,
+   title_en:courseInfo?.certificate_en||courseInfo?.title_pl||slug,
+   exam_session_id:passedSession.id,is_demo:passedSession.is_demo||previewInfo?.review_status!=='approved'
+  }).select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at').single();
+  if(!restoreError&&restored)return json({ok:true,state:'passed',certificate:restored,recovered:true});
+  const {data:found}=await db.from('ta_certificates').select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at')
+   .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).order('issued_at',{ascending:false}).limit(1).maybeSingle();
+  if(found)return json({ok:true,state:'passed',certificate:found});
+  console.error('certificate_recovery_failed',restoreError?.code);
+  return json({error:'certificate_issue_failed'},503);
  }
  const {data:enrollments,error:enError}=await db.from('ta_enrollments')
   .select('status,expires_at').eq('user_id',user.id).eq('course_slug',slug)
@@ -126,9 +167,11 @@ Deno.serve(async(req:Request)=>{
  const {count:completed,error:ce}=await db.from('ta_learning_progress').select('lesson_no',{count:'exact',head:true}).eq('user_id',user.id).eq('course_slug',slug);
  if(ce)return json({error:'db_unavailable'},503);
  const ready=(completed||0)>=lessons.length;
- const available=!!Deno.env.get('OPENAI_API_KEY');
+ const bank=choiceBank(lessons as Lesson[]);
+ const hasAi=!!Deno.env.get('OPENAI_API_KEY');
+ const available=hasAi||bank.length>=6;
  let {data:session,error:se}=await db.from('ta_exam_sessions').select('*')
- .eq('user_id',user.id).eq('course_slug',slug).eq('status','in_progress').maybeSingle();
+ .eq('user_id',user.id).eq('course_slug',slug).eq('status','in_progress').order('created_at',{ascending:false}).limit(1).maybeSingle();
  if(se)return json({error:'db_unavailable'},503);
  if(session&&new Date(session.expires_at).getTime()<Date.now()){
   await db.from('ta_exam_sessions').update({status:'failed',phase:'failed',updated_at:new Date().toISOString()}).eq('id',session.id).eq('status','in_progress');
@@ -137,7 +180,7 @@ Deno.serve(async(req:Request)=>{
  const present=(s:any)=>({ok:true,state:s?'in_progress':ready?'ready':'not_ready',available,completed:completed||0,total:lessons.length,
   session:s?{id:s.id,phase:s.phase,question:s.question,step:s.step,correct:s.correct_count,wrong:s.wrong_count,
   history:(s.history||[]).map((v:any)=>({question:v.question,answer:v.answer,correct:v.correct,feedback:v.feedback})),
-  holder_name:s.holder_name,is_demo:s.is_demo}:null});
+  holder_name:s.holder_name,is_demo:s.is_demo,grading_mode:s.grading_mode||'oral',options:(s.grading_mode==='choice'?s.question_options||[]:[])}:null});
  if(action==='status')return json(present(session));
  if(!ready)return json({error:'lessons_incomplete',completed:completed||0,total:lessons.length},403);
  if(!available)return json({error:'ai_not_configured'},503);
@@ -150,23 +193,49 @@ Deno.serve(async(req:Request)=>{
    .eq('user_id',user.id).eq('course_slug',slug).gte('assessed_at',today.toISOString());
   if(ae)return json({error:'db_unavailable'},503);
   if((failedAttempts||0)>=3)return json({error:'exam_daily_limit'},429);
-  const first=questionFrom(lessons as Lesson[],[],'practice');
+  const gradingMode=hasAi?'oral':'choice';
+  const first=gradingMode==='choice'?nextChoice(bank,[],'practice'):questionFrom(lessons as Lesson[],[],'practice');
   if(!first)return json({error:'question_bank_incomplete'},422);
   const isDemo=enrollments[0].status==='demo';
   const {data:s,error:e}=await db.from('ta_exam_sessions').insert({
    user_id:user.id,course_slug:slug,holder_name:name,step:1,correct_count:0,wrong_count:0,phase:'practice',
    question_lesson_no:first.lesson_no,question:first.question,expected_answer:first.expected_answer,
+   grading_mode:gradingMode,question_options:gradingMode==='choice'?(first as Choice).question_options:[],
+   correct_option:gradingMode==='choice'?(first as Choice).correct_option:null,
    history:[],status:'in_progress',is_demo:isDemo
   }).select('*').single();
   if(e)return json({error:'exam_start_failed'},409);
   return json(present(s));
  }
  if(!session)return json({error:'exam_not_started'},409);
- const answer=trim(input.answer,1200).replace(/\s+/g,' ');
- if(answer.length<20)return json({error:'answer_too_short'},400);
+ if(action==='switch_mode'){
+  if(session.grading_mode==='choice')return json(present(session));
+  const first=nextChoice(bank,session.history||[],session.phase);
+  if(!first)return json({error:'question_bank_incomplete'},422);
+  const {data:changed,error:e}=await db.from('ta_exam_sessions').update({
+   grading_mode:'choice',question:first.question,question_lesson_no:first.lesson_no,
+   expected_answer:first.expected_answer,question_options:first.question_options,correct_option:first.correct_option,
+   updated_at:new Date().toISOString()
+  }).eq('id',session.id).eq('user_id',user.id).eq('status','in_progress').eq('step',session.step).select('*').maybeSingle();
+  if(e||!changed)return json({error:'exam_switch_failed'},409);
+  return json(present(changed));
+ }
  if((session.history||[]).length>=12)return json({error:'exam_limit'},409);
- const evaluation=await gradeWithAi(session.question,session.expected_answer,answer);
- if(!evaluation)return json({error:'grader_unavailable'},503);
+ const isChoice=session.grading_mode==='choice';
+ let answer=trim(input.answer,1200).replace(/\s+/g,' ');
+ let evaluation:Grade|null=null;
+ if(isChoice){
+  const selected=Number(input.selected_index),opts=session.question_options||[];
+  if(!Number.isInteger(selected)||selected<0||selected>=opts.length||!Number.isInteger(session.correct_option))return json({error:'invalid_choice'},400);
+  const correct=selected===session.correct_option;
+  answer=trim(opts[selected],500);
+  evaluation={correct,feedback:correct?'To prawidłowy wybór. '+trim(session.expected_answer,440):
+   'Ta odpowiedź nie rozwiązuje zadania. Porównaj działanie z wymaganym rezultatem. '+trim(session.expected_answer,400)};
+ }else{
+  if(answer.length<20)return json({error:'answer_too_short'},400);
+  evaluation=await gradeWithAi(session.question,session.expected_answer,answer);
+ }
+ if(!evaluation)return json({error:'grader_unavailable',fallback_available:bank.length>=6},503);
  const correctCount=session.correct_count+(evaluation.correct?1:0);
  const wrongCount=session.wrong_count+(evaluation.correct?0:1);
  let phase=session.phase,status='in_progress';
@@ -182,24 +251,26 @@ Deno.serve(async(req:Request)=>{
  const history=[...(session.history||[]),{
   lesson_no:session.question_lesson_no,question:session.question,answer,correct:evaluation.correct,feedback:evaluation.feedback,
   answered_at:new Date().toISOString()}];
- const next=status==='in_progress'?questionFrom(lessons as Lesson[],history,phase):null;
+ const next=status==='in_progress'?(isChoice?nextChoice(bank,history,phase):questionFrom(lessons as Lesson[],history,phase)):null;
  if(status==='in_progress'&&!next)return json({error:'question_bank_incomplete'},422);
  const now=new Date().toISOString();
  const {data:changed,error:saveError}=await db.from('ta_exam_sessions').update({
   status,phase,step:session.step+1,correct_count:correctCount,wrong_count:wrongCount,history,
   question:next?.question||null,question_lesson_no:next?.lesson_no??null,
-  expected_answer:next?.expected_answer||null,updated_at:now
+  expected_answer:next?.expected_answer||null,
+  question_options:isChoice?(next as Choice)?.question_options||[]:[],correct_option:isChoice?(next as Choice)?.correct_option??null:null,updated_at:now
  }).eq('id',session.id).eq('user_id',user.id).eq('status','in_progress')
  .eq('step',session.step).eq('question',session.question).select('id,step').maybeSingle();
  if(saveError)return json({error:'exam_save_failed'},503);
  if(!changed)return json({error:'exam_answer_already_submitted'},409);
  if(status==='in_progress')return json({ok:true,state:'in_progress',phase,correct:correctCount,wrong:wrongCount,
   feedback:evaluation.feedback,answer_correct:evaluation.correct,question:next?.question,step:session.step+1,
+  grading_mode:session.grading_mode,options:isChoice?(next as Choice)?.question_options||[]:[],
   announcement:phase==='final'?'Gratulacje! Widzę, że dałeś radę pięć razy. Jeszcze ostatnie pytanie i dyplom.':
     phase==='extra'?'Ostatnia odpowiedź nie wystarczyła. Masz jeszcze jedną szansę — pokaż, co naprawdę rozumiesz.':null});
  const score=Math.round(correctCount/Math.max(1,history.length)*100);
  const {error:resultError}=await db.from('ta_exam_results').insert({
-  user_id:user.id,course_slug:slug,score_percent:score,passed:status==='passed',assessed_at:now
+  user_id:user.id,course_slug:slug,exam_session_id:session.id,score_percent:score,passed:status==='passed',assessed_at:now
  });
  if(resultError){console.error('exam_results_insert_failed',resultError.code);return json({error:'exam_result_save_failed'},503);}
  if(status==='failed')return json({ok:true,state:'failed',feedback:evaluation.feedback,correct:correctCount,wrong:wrongCount,
