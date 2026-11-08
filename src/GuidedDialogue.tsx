@@ -43,7 +43,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  useEffect(()=>{setOpen(false);setInput('');setHistory([]);setError('');setNotice('');setOpening('');setCooldown(null)},[courseSlug,lessonNo]);
  function toggle(){if(!open){void refresh()}setOpen(v=>!v)}
  async function send(){
-  if(sending||input.trim().length<3)return;
+  if(sending||input.trim().length<5)return;
   setSending(true);setNotice('');setError('');
   try{
    const data=await call('dialogue',input.trim());
@@ -74,8 +74,8 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
    {!loading&&!stalled&&<>
     <TextInput multiline value={input} onChangeText={setInput} maxLength={1000} placeholder="Napisz, co chcesz wyjaśnić lub przećwiczyć…" textAlignVertical="top"
      style={{backgroundColor:'white',borderColor:'#bdd6b9',borderWidth:1,borderRadius:11,minHeight:95,padding:14,color:ink,fontSize:15}}/>
-    <Pressable onPress={send} disabled={sending||input.trim().length<3}
-     style={{backgroundColor:ink,padding:15,borderRadius:11,opacity:sending||input.trim().length<3?.5:1}}>
+    <Pressable onPress={send} disabled={sending||input.trim().length<5}
+     style={{backgroundColor:ink,padding:15,borderRadius:11,opacity:sending||input.trim().length<5?.5:1}}>
      <Text style={{textAlign:'center',fontWeight:'900',color:'white'}}>{sending?'Anielka odpowiada…':'Wyślij wiadomość'}</Text>
     </Pressable>
    </>}
