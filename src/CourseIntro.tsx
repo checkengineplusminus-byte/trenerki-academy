@@ -5,19 +5,19 @@ import craftGuides from '../content/craft-guides-individual.json';
 type Intro={what:string;first:string;result:string;boundary?:string};
 const intros:Record<string,Intro>={
  'excel-skroty':{
- what:'Excel to arkusz kalkulacyjny. Działa jak siatka komórek: w jednej wpisujesz liczbę, w drugiej formułę, a program może sam policzyć wynik.',
- first:'Wyobraź sobie kosztorys: ilość farby, cena za litr i koszt całkowity. Zaczniemy od poruszania się po komórkach bez myszy.',
- result:'Nauczysz się szybciej wyszukiwać dane, formatować komórki, pracować z tabelami i nie zgubić się w dużym arkuszu.'
+ what:'Excel to program firmy Microsoft służący do tworzenia arkuszy kalkulacyjnych, czyli tabel z danymi i formułami, które potrafią liczyć wyniki automatycznie. Pierwszy Excel ukazał się na Macintosh w 1985 roku; wersja dla Windows przyszła w 1987 roku. Excel rozwijał ideę elektronicznych arkuszy, zastępujących liczenie i przepisywanie kosztorysów na papierze. W arkuszu poznasz skoroszyt, kartę, wiersz, kolumnę, komórkę A1, formułę, funkcję i wykres.',
+ first:'Na pierwszym ekranie zobaczysz schemat głównego okna Excela i wszystkie jego obszary. Potem dostaniesz działający wirtualny kosztorys: wybierzesz komórkę, zmienisz liczbę, wpiszesz formułę, przeliczysz sumę i zrobisz wykres. Bez zapamiętywania skrótów przed zrozumieniem programu.',
+ result:'Samodzielnie wykonasz budżet i kosztorys, policzysz wartości i podatki, sprawdzisz błędy formuł, uporządkujesz dane w tabeli i wykresach. W trzecim dziale przejdziesz do analizy, kontroli i zastosowań zawodowych.'
  },
  'word-skroty':{
- what:'Word to edytor tekstu. Tworzysz w nim pisma, oferty, umowy i raporty. Skróty oszczędzają czas przy pisaniu oraz poprawianiu dokumentów.',
- first:'Zrobimy krótkie pismo do klienta. Zmienisz nagłówek, zapiszesz dokument i cofniesz przypadkową zmianę.',
- result:'Będziesz szybciej edytować dokumenty i świadomie sprawdzać rezultat każdego polecenia.'
+ what:'Word został stworzony przez firmę Microsoft jako edytor dokumentów. Wśród jego głównych twórców byli Charles Simonyi i Richard Brodie. Program Multi-Tool Word trafił na rynek w 1983 roku; Microsoft podaje premierę 25 października 1983 r. Word dla Windows pojawił się w 1989 roku. Program pozwala pisać i poprawiać pisma bez przepisywania całych stron, a później wzbogacono go o tabele, obrazy, style, spisy treści i wspólną pracę.',
+ first:'Najpierw zobaczysz ilustrowany ekran Worda: karty Plik, Narzędzia główne, Wstawianie, Układ i Recenzja, obszar dokumentu i kursor. Wyjaśnię różnicę między DOCX a PDF, akapitem a linią, nazwą dokumentu a miejscem zapisu. Dopiero potem napiszesz własne pismo w ćwiczeniu.',
+ result:'Nauczysz się tworzyć prawdziwe dokumenty, protokoły, oferty, raporty, tabele i automatyczne spisy treści. Na poziomie Expert sprawdzisz dostępność, wersje, ukryte komentarze, bezpieczeństwo danych i gotowy PDF.'
  },
  'autocad-skroty':{
- what:'AutoCAD służy do wykonywania i edytowania rysunków technicznych. Używa linii, okręgów, warstw i dokładnych wymiarów.',
- first:'Na wirtualnym rysunku wykonasz polecenie L i zobaczysz linię. Następnie wypróbujesz okrąg, prostokąt i podstawowe zmiany geometrii.',
- result:'Rozróżnisz polecenia wpisywane w wierszu komend od skrótów klawiatury oraz zrozumiesz podstawy precyzyjnego rysowania.'
+ what:'AutoCAD to program projektowania wspomaganego komputerowo (CAD) firmy Autodesk, założonej w 1982 roku m.in. przez Johna Walkera. AutoCAD zadebiutował w 1982 roku i umożliwił przeniesienie precyzyjnych rysunków z deski kreślarskiej na komputer. Jego główny format DWG wywodzi się z technologii opracowanej przez Mike’a Riddle’a w latach 70. XX wieku. Zanim narysujesz pierwszą linię, poznasz jednostki, współrzędne, formaty DWG i DXF, warstwy oraz przestrzeń modelu.',
+ first:'Najpierw zobaczysz schemat prawdziwego układu AutoCAD-a: Ribbon, Model Space, Command Line, Layout, Layers i narzędzia dokładności. W wirtualnym rysunku wykonasz polecenia L, C, REC, M i CP. Narysowana geometria będzie zmieniać się na ekranie po każdej komendzie, a nie tylko wyświetlać opis.',
+ result:'Przejdziesz od rysowania prostych figur, warstw i wymiarowania do kontroli i edycji dokumentacji technicznej. Na poziomie Expert nauczysz się planować rysunek, unikać błędów jednostek i przygotować przejrzystą dokumentację do dalszej pracy.'
  },
  'windows-skroty':{
  what:'Wyobraź sobie komputer z początku lat osiemdziesiątych: zamiast dzisiejszego pulpitu użytkownik wpisuje polecenia do MS-DOS. Microsoft ogłosił Windows w 1983 roku, a w 1985 roku wypuścił Windows 1.0 z obsługą myszy i okien. W 1995 roku Windows 95 spopularyzował menu Start i pasek zadań. System zmieniał się przez kolejne dekady aż do Windows 11. Zaczniemy od zrozumienia tej historii i tego, po co w ogóle potrzebny jest system operacyjny.',
