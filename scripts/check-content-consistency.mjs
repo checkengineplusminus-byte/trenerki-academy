@@ -107,5 +107,33 @@ try{
  if(page.includes("lekcji i ćwiczenia</span>'"))fail('Literal lesson-count bug in cards');
  if(!academy.includes("functions.invoke('ta-academy'"))fail('Protected backend integration missing');
  if(/service_role|stripe_secret_key/i.test(checkout+academy+gift+admin))fail('Server secret name exposed in frontend, review required');
+ const exam=read('src/FinalExam.tsx'),diploma=read('app/dyplom.tsx'),examServer=read('supabase/functions/ta-exam/index.ts');
+ const routes=read('app/_layout.tsx'),account=read('app/konto.tsx'),myCourses=read('app/moje-kursy.tsx');
+ const terms=read('public/academy/regulamin.html'),privacy=read('public/academy/prywatnosc.html'),certificateRules=read('public/academy/certyfikaty.html');
+ for(const [name,body] of [['regulamin',terms],['polityka',privacy],['dyplomy',certificateRules]]){
+  if(!body.includes('autors')||!body.includes('kwalifikacj')||!body.includes('2026'))fail('Outdated legal page '+name);
+ }
+ if(!terms.includes('CV')||!certificateRules.includes('CV')||!account.includes('regulamin.html')||!account.includes('prywatnosc.html'))fail('Autorski dyplom and privacy terms missing at registration');
+ else ok('Original independent courses, CV wording and privacy notices in legal pages and registration');
+ if(!progress.includes('<FinalExam')||!exam.includes('ta-exam')||!exam.includes('holder_name')||
+    !diploma.includes('WZÓR TESTOWY')||!diploma.includes('is_demo')||!myCourses.includes('ta_certificates')||!routes.includes('name="dyplom"'))fail('Final exam and private diploma flow missing');
+ else ok('Exam, learner dashboard and personal sample-safe diploma route wired');
+ if(!examServer.includes("phase==='final'")||!examServer.includes("phase==='extra'")||
+    !examServer.includes('correctCount>=5')||!examServer.includes('ta_exam_results')||
+    !examServer.includes('ta_certificates')||!examServer.includes('auth.getUser(bearer)'))fail('Server-side exam grading, recovery or issuance missing');
+ else ok('Five-correct-plus-final server examination logic present');
+ const logistics=read('src/LogisticsWorkshop.tsx');
+ if(!logistics.includes('LogisticsAtlas')||!logistics.includes('LogisticsWorkshop')||
+    !progress.includes('<LogisticsWorkshop')||!progress.includes('<LogisticsAtlas'))fail('Product-specific WMS practice missing');
+ else ok('Product-specific logistics glossary and cumulative warehouse simulation connected');
+ const specialistSlugs=[...logisticsSlugs,...thirtyLessonSlugs];
+ for(const slug of specialistSlugs){
+  const source=JSON.parse(read(slug.startsWith('word')||['windows-skroty','excel-skroty','autocad-skroty'].includes(slug)?'content/v2-'+slug+'.json':'content/logistics-'+slug+'.json'));
+  const lessons=source.lessons||[];
+  if(lessons.length!==30||new Set(lessons.map(x=>x.lesson_no)).size!==30||
+     !lessons.every((x,i)=>x.lesson_no===i&&x.material?.section===Math.floor(i/10)+1&&x.material?.learning?.situation&&x.material?.learning?.example))
+    fail(slug+': expected 30 individual graded lessons in 3 sections');
+ }
+ ok('13 specialist 30-lesson programs have unique, graded examples and chapter groupings');
  if(!process.exitCode)console.log('All static integrity checks passed.');
 }catch(e){fail(String(e?.stack||e))}
