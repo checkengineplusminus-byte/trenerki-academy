@@ -6,6 +6,7 @@ import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../sr
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import AiTutor from '../src/AiTutor';
+import CourseIntro from '../src/CourseIntro';
 type Lesson={
  lesson_no:number,title_pl:string,
  material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
@@ -17,7 +18,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false);
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -27,15 +28,16 @@ export default function Learning(){
    const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
    if(ee)throw ee;
    if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
-   const [lessons,draft,progress]=await Promise.all([
+   const [lessons,draft,progress,details]=await Promise.all([
     supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no',{ascending:true}),
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
-    supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug)
+    supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
+    supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle()
    ]);
-   if(lessons.error||draft.error||progress.error)throw lessons.error||draft.error||progress.error;
+   if(lessons.error||draft.error||progress.error||details.error)throw lessons.error||draft.error||progress.error||details.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
    if(active){
-    setUserId(u.id);setItems(all);setDone(completed);
+    setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
     const state=draft.data?.notes||{};
     setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
     const resume=draft.data?.last_module;
@@ -116,6 +118,7 @@ export default function Learning(){
    </View>}
   </>}
   {!!lesson&&<>
+   <CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={index===0}/>
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
    {lesson.material?.construction?
