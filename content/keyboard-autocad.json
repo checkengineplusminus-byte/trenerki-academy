@@ -1,0 +1,800 @@
+[
+  {
+    "lesson_no": 0,
+    "title_pl": "Podstawowe komendy rysowania",
+    "material": {
+      "raw": [
+        "Podstawowe komendy rysowania",
+        "Rysunek zaczyna się od prostych kształtów. W AutoCAD alias to wpisane polecenie zakończone Enterem, a nie kombinacja klawiszy.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "L",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "L",
+          "label": "Linia — LINE",
+          "before": "Puste pole rysunku",
+          "after": "Tworzysz odcinek od punktu A do B",
+          "tip": "Wybieraj punkty z włączonymi pomocami precyzyjnego wskazywania.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "PL",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "PL",
+          "label": "Polilinia — PLINE",
+          "before": "Kilka oddzielnych krawędzi",
+          "after": "Połączone segmenty jednego obiektu",
+          "tip": "Wygodne do obrysów, które chcesz później modyfikować jako całość.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "C",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "C",
+          "label": "Okrąg — CIRCLE",
+          "before": "Brak otworu na rysunku",
+          "after": "Okrąg o wskazanym środku i promieniu",
+          "tip": "Podaj promień z klawiatury zamiast ustawiać go na oko.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "REC",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "REC",
+          "label": "Prostokąt — RECTANG",
+          "before": "Cztery niezależne linie",
+          "after": "Prostokąt będący polilinią",
+          "tip": "Dobry początek prostego rzutu pomieszczenia.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "A",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "A",
+          "label": "Łuk — ARC",
+          "before": "Prosta krawędź",
+          "after": "Odcinek łuku",
+          "tip": "Dla precyzji wybierz sposób definiowania łuku w wierszu poleceń.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 1,
+    "title_pl": "Modyfikacja obiektów",
+    "material": {
+      "raw": [
+        "Modyfikacja obiektów",
+        "Oszczędzaj czas, edytując elementy zamiast rysować je za każdym razem od zera.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "M",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "M",
+          "label": "Przenieś — MOVE",
+          "before": "Obiekt w złym miejscu",
+          "after": "Obiekt przesunięty o wektor",
+          "tip": "Najpierw wskaż obiekty, potem punkt bazowy i docelowy.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "CP",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "CP",
+          "label": "Kopiuj — COPY",
+          "before": "Jedna kolumna na planie",
+          "after": "Dwie identyczne kolumny",
+          "tip": "Używaj dokładnych przesunięć i stałych punktów bazowych.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "RO",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "RO",
+          "label": "Obróć — ROTATE",
+          "before": "Element pod niewłaściwym kątem",
+          "after": "Element obrócony o podany kąt",
+          "tip": "Wpisz kąt z klawiatury zamiast obracać na oko.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "SC",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "SC",
+          "label": "Skaluj — SCALE",
+          "before": "Detal o zbyt dużym rozmiarze",
+          "after": "Detal w nowej skali",
+          "tip": "Nie zmieniaj skali przypadkowo w rysunku wykonawczym; kontroluj jednostki.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "MI",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "MI",
+          "label": "Odbij lustrzanie — MIRROR",
+          "before": "Jeden wspornik po lewej",
+          "after": "Odbicie wspornika po prawej",
+          "tip": "Przed zatwierdzeniem sprawdź, czy chcesz zachować obiekt źródłowy.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 2,
+    "title_pl": "Precyzja: przyciąganie i tryby",
+    "material": {
+      "raw": [
+        "Precyzja: przyciąganie i tryby",
+        "Precyzja nie wynika z prowadzenia myszy powoli, tylko z prawidłowego wskazywania punktów i ustawień.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "F3"
+          ],
+          "kind": "hotkey",
+          "combo": "F3",
+          "label": "OSNAP — tryb lokalizacji",
+          "before": "Wskaźnik nie łapie dokładnych końców",
+          "after": "Możesz przyciągać kursor do charakterystycznych punktów",
+          "tip": "Sprawdź skonfigurowane tryby lokalizacji, np. Endpoint.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "F8"
+          ],
+          "kind": "hotkey",
+          "combo": "F8",
+          "label": "ORTHO — rysowanie prostopadłe",
+          "before": "Kursor może rysować pod dowolnym kątem",
+          "after": "Ruch ograniczony do osi prostokątnych",
+          "tip": "Dobre do ścian i prostych krawędzi.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "F10"
+          ],
+          "kind": "hotkey",
+          "combo": "F10",
+          "label": "Śledzenie biegunowe — POLAR",
+          "before": "Trudno prowadzić linię pod zadanym kątem",
+          "after": "Wskaźnik pomaga trzymać ustawione kąty",
+          "tip": "Dobierz kąty w ustawieniach śledzenia biegunowego.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "F12"
+          ],
+          "kind": "hotkey",
+          "combo": "F12",
+          "label": "Dynamic Input",
+          "before": "Parametry tylko w wierszu poleceń",
+          "after": "Wskazówki i wartości pojawiają się przy kursorze",
+          "tip": "Jeśli przeszkadza, możesz przełączyć tryb tym samym klawiszem.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "F11"
+          ],
+          "kind": "hotkey",
+          "combo": "F11",
+          "label": "Śledzenie punktów OSNAP",
+          "before": "Brak podpowiedzi linii odniesienia",
+          "after": "Możesz korzystać z torów wyrównania",
+          "tip": "Działa najlepiej z dobrze dobranymi trybami lokalizacji.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 3,
+    "title_pl": "Warstwy, rodzaje linii i właściwości",
+    "material": {
+      "raw": [
+        "Warstwy, rodzaje linii i właściwości",
+        "Porządek warstw oszczędza czas na dużych projektach i pomaga uniknąć pomyłek podczas wydruku.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "LA",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "LA",
+          "label": "Menedżer warstw — LAYER",
+          "before": "Ściany i instalacje narysowane razem",
+          "after": "Warstwy da się porządkować i filtrować",
+          "tip": "Nazwij warstwy według ich funkcji, nie losowych numerów.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "1"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+1",
+          "label": "Paleta właściwości",
+          "before": "Nie widzisz parametrów obiektu",
+          "after": "Otwiera się paleta z cechami obiektu",
+          "tip": "Sprawdzaj współrzędne i warstwę przed zmianami.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "MA",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "MA",
+          "label": "Dopasuj właściwości — MATCHPROP",
+          "before": "Element ma inny kolor i warstwę",
+          "after": "Wskazany obiekt przejmuje cechy wzorca",
+          "tip": "Zawsze sprawdź, które właściwości są kopiowane.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "LT",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "LT",
+          "label": "Typ linii — LINETYPE",
+          "before": "Wszystko wygląda jak linia ciągła",
+          "after": "Możesz zarządzać typami linii",
+          "tip": "Skala rodzaju linii może wpływać na wygląd kreskowania.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "9"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+9",
+          "label": "Pokaż / ukryj wiersz poleceń",
+          "before": "Wiersz poleceń jest ukryty",
+          "after": "Wiersz poleceń widoczny",
+          "tip": "Jeśli alias nie działa, najpierw sprawdź fokus w wierszu poleceń.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 4,
+    "title_pl": "Widok i nawigacja bez zgadywania",
+    "material": {
+      "raw": [
+        "Widok i nawigacja bez zgadywania",
+        "Przesuwanie widoku nie powinno zmieniać geometrii rysunku.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Z",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "Z",
+          "label": "Powiększ widok — ZOOM",
+          "before": "Detal jest zbyt mały",
+          "after": "Możesz wybrać zakres zbliżenia",
+          "tip": "ZOOM nie skaluje obiektów, tylko sposób ich wyświetlania.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "P",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "P",
+          "label": "Przesuwaj widok — PAN",
+          "before": "Potrzebny fragment poza ekranem",
+          "after": "Widok przesunięty, obiekty bez zmian",
+          "tip": "W rysunku z większą liczbą warstw użyj środkowego przycisku myszy, jeśli Ci wygodniej.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "RE",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "RE",
+          "label": "Odśwież — REGEN",
+          "before": "Widok wygląda na nieaktualny",
+          "after": "Rysunek jest przerysowany",
+          "tip": "Nie traktuj odświeżenia jako naprawy błędnej geometrii.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "0"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+0",
+          "label": "Clean Screen",
+          "before": "Interfejs zajmuje dużo miejsca",
+          "after": "Widoczna jest większa powierzchnia rysunku",
+          "tip": "Powtórz skrót, by przywrócić elementy interfejsu.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "9"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+9",
+          "label": "Command Line",
+          "before": "Wiersz poleceń nie jest widoczny",
+          "after": "Wiersz poleceń wraca",
+          "tip": "Wiele komend uczy się szybciej dzięki podpowiedziom w wierszu poleceń.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 5,
+    "title_pl": "Bloki i odnośniki w projekcie",
+    "material": {
+      "raw": [
+        "Bloki i odnośniki w projekcie",
+        "Powtarzalne elementy, jak drzwi i symbole instalacji, najlepiej porządkować zamiast kopiować chaotycznie.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "B",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "B",
+          "label": "Utwórz blok — BLOCK",
+          "before": "Wiele oddzielnych linii symbolu",
+          "after": "Jeden blok z nazwą i punktem bazowym",
+          "tip": "Nadaj jednoznaczną nazwę i rozsądny punkt wstawienia.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "I",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "I",
+          "label": "Wstaw blok — INSERT",
+          "before": "Symbol nieobecny na rysunku",
+          "after": "Blok wstawiony do rysunku",
+          "tip": "Sprawdź skalę i jednostki przed wstawieniem.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "X",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "X",
+          "label": "Rozbij — EXPLODE",
+          "before": "Obiekt jest jedną całością",
+          "after": "Obiekt rozbity na części",
+          "tip": "Nie rozbijaj bloków bez potrzeby, bo tracisz wygodę zarządzania.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "W",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "W",
+          "label": "Zapisz blok do pliku — WBLOCK",
+          "before": "Symbol tylko w danym rysunku",
+          "after": "Symbol może być zapisany jako oddzielny plik",
+          "tip": "Wspólna biblioteka bloków oszczędza czas zespołu.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "XR",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "XR",
+          "label": "Odnośniki — XREF",
+          "before": "Potrzebujesz rysunku innej branży",
+          "after": "Otwiera się zarządzanie odnośnikami",
+          "tip": "Nie przerabiaj cudzych rysunków bez uzgodnienia rewizji.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 6,
+    "title_pl": "Wymiary i opisy",
+    "material": {
+      "raw": [
+        "Wymiary i opisy",
+        "Rysunek techniczny musi być jednoznaczny. Nie wpisuj na oko wymiarów, które nie odpowiadają geometrii.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "D",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "D",
+          "label": "Style wymiarowe — DIMSTYLE",
+          "before": "Wymiary mają różne wielkości tekstu",
+          "after": "Możesz zarządzać spójnym stylem wymiarowania",
+          "tip": "Zdefiniuj styl zanim wymiarujesz cały rysunek.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "DIM",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "DIM",
+          "label": "Wymiarowanie — DIM",
+          "before": "Brak wymiaru na detalu",
+          "after": "Powstaje obiekt wymiarowy",
+          "tip": "Sprawdź jednostki i precyzję prezentacji.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "MT",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "MT",
+          "label": "Tekst wielowierszowy — MTEXT",
+          "before": "Opis składa się z luźnych obiektów tekstowych",
+          "after": "Jeden spójny blok opisu",
+          "tip": "Opisuj elementy jasno, zwłaszcza miejsca z ograniczeniami montażowymi.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "DI",
+            "Enter"
+          ],
+          "kind": "alias",
+          "combo": "DI",
+          "label": "Pomiar odległości — DIST",
+          "before": "Nie znasz długości między punktami",
+          "after": "AutoCAD podaje odległość",
+          "tip": "To narzędzie pomocnicze; pomiar nie zastępuje weryfikacji dokumentacji.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "F8"
+          ],
+          "kind": "hotkey",
+          "combo": "F8",
+          "label": "Wyrównanie kierunków — ORTHO",
+          "before": "Wymiar trudno ustawić równolegle do osi",
+          "after": "Wskazania łatwiej prowadzić w osi",
+          "tip": "Pamiętaj, że tryb ORTHO nie usuwa wcześniej istniejących błędów.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 7,
+    "title_pl": "Plik, historia i bezpieczna praca",
+    "material": {
+      "raw": [
+        "Plik, historia i bezpieczna praca",
+        "Ostatnia lekcja łączy skróty w jeden proces bezpiecznej edycji.",
+        "Klawisze pokazujemy schematycznie. W AutoCAD alias wpisujesz i zatwierdzasz Enterem; kombinacje Ctrl i klawisze funkcyjne działają inaczej.",
+        "Nazwy aliasów mogą być zmienione przez użytkownika lub administratora CAD. Po skrócie sprawdź wiersz poleceń."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "S"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+S",
+          "label": "Zapisz rysunek",
+          "before": "Zmiany niezapisane",
+          "after": "Rysunek zapisany w DWG",
+          "tip": "Zachowaj kopię przed dużą zmianą.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "O"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+O",
+          "label": "Otwórz rysunek",
+          "before": "Rysunek nieotwarty",
+          "after": "Możesz wybrać plik DWG",
+          "tip": "Sprawdź wersję pliku i brakujące odnośniki.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "P"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+P",
+          "label": "Wydruk — PLOT",
+          "before": "Nieznane ustawienia wydruku",
+          "after": "Okno wydruku i skali",
+          "tip": "Zawsze sprawdź papier, skalę i plik CTB/STB.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Z"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+Z",
+          "label": "Cofnij",
+          "before": "Zmieniono zły element",
+          "after": "Ostatnia akcja cofnięta",
+          "tip": "Skontroluj efekt cofnięcia; nie wszystkie zdarzenia mają ten sam zakres.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Y"
+          ],
+          "kind": "hotkey",
+          "combo": "Ctrl+Y",
+          "label": "Ponów",
+          "before": "Wycofana zmiana",
+          "after": "Ostatnia cofnięta zmiana przywrócona",
+          "tip": "Sprawdź wiersz poleceń, czy polecenie jest dostępne.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        },
+        {
+          "keys": [
+            "Esc"
+          ],
+          "kind": "hotkey",
+          "combo": "Esc",
+          "label": "Anuluj bieżące polecenie",
+          "before": "Trwa przypadkowa komenda",
+          "after": "Komenda została przerwana",
+          "tip": "Najprostszy sposób wyjścia z niechcianej operacji.",
+          "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+        }
+      ],
+      "quickTips": [
+        "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+        "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+        "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+      ],
+      "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+      "references": [
+        {
+          "label": "Autodesk — AutoCAD Shortcuts",
+          "url": "https://www.autodesk.com/asean/shortcuts/autocad"
+        },
+        {
+          "label": "Autodesk — command aliases vs hotkeys",
+          "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  }
+]
