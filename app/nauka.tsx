@@ -18,7 +18,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''});
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -28,20 +28,22 @@ export default function Learning(){
    const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
    if(ee)throw ee;
    if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
-   const [lessons,draft,progress,details]=await Promise.all([
+   const [lessons,draft,progress,details,attempts]=await Promise.all([
     supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no',{ascending:true}),
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
-    supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle()
+    supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle(),
+    supabase.from('ta_learning_attempts').select('correct').eq('user_id',u.id).eq('course_slug',slug)
    ]);
    if(lessons.error||draft.error||progress.error||details.error)throw lessons.error||draft.error||progress.error||details.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
    if(active){
     setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
+    setPractice({attempts:attempts.data?.length||0,correct:(attempts.data||[]).filter(x=>x.correct).length});
     const state=draft.data?.notes||{};
     setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
     const resume=draft.data?.last_module;
-    const next=all.find(v=>v.lesson_no===resume)?resume:all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all[0]?.lesson_no??0;
+    const next=all.some(v=>v.lesson_no===resume&&!completed.includes(v.lesson_no))?resume:all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all[0]?.lesson_no??0;
     setModule(next);
    }
   }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
@@ -52,6 +54,16 @@ export default function Learning(){
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
  const currentNotes=notes[String(module)]||'';
+ async function recordAttempt(mode:'case'|'construction'|'keyboard',answerIndex:number,correct:boolean){
+  if(!userId)return;
+  try{
+   const {error:e}=await supabase.from('ta_learning_attempts').insert({
+    user_id:userId,course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,correct
+   });
+   if(e)throw e;
+   setPractice(v=>({attempts:v.attempts+1,correct:v.correct+(correct?1:0)}));
+  }catch(e:any){setMsg('Odpowiedź sprawdzona, ale historia próby nie została zapisana. '+String(e?.message||'').slice(0,110));}
+ }
  function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setVerified(false);setMsg('');}}
  const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
  const canFinish=done.includes(module)||!hasExercise||verified;
@@ -105,6 +117,7 @@ export default function Learning(){
      <View style={{height:9,width:progress+'%',backgroundColor:'#7cae6e'}}/>
     </View>
     <Text style={{fontSize:12,color:secondary,marginTop:9}}>Ukończono {completed} z {items.length} lekcji. Możesz wrócić do każdej lekcji.</Text>
+    {practice.attempts>0&&<Text style={{fontSize:12,color:secondary,marginTop:7}}>Sprawdziany: {practice.correct} poprawnych odpowiedzi z {practice.attempts} prób. Błędy pomagają rozpoznać, co trzeba powtórzyć.</Text>}
    </View>
    <Text style={{fontWeight:'900',fontSize:16,color:ink,marginBottom:10}}>Wybierz lekcję</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:18}}>
@@ -122,13 +135,13 @@ export default function Learning(){
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
    {lesson.material?.construction?
-     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified}/>:
+     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
-      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified}/>}
+      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}
-      <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified}/>
+      <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
      </>
    }
    <AiTutor courseSlug={slug} lessonNo={module}/>
