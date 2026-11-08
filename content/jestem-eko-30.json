@@ -1,0 +1,1668 @@
+{
+  "schema_version": 2,
+  "slug": "jestem-eko",
+  "title": "JESTEM EKO — żyj świadomie, segreguj mądrze",
+  "sections": [
+    "I. Zrozum środowisko od zera",
+    "II. Praktyka w domu i w pracy",
+    "III. Expert: świadome decyzje"
+  ],
+  "sources": {
+    "eu": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html",
+    "pl": "https://www.gov.pl/web/klimat/segregacjaodpadow",
+    "no": "https://sortere.no/",
+    "textile": "https://www.gov.pl/web/wios-warszawa/od-1-stycznia-2025-r-wchodzi-w-zycie-zmiana-przepisow-dotyczaca-segregacji-odpadow"
+  },
+  "lessons": [
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 0,
+      "title_pl": "Co to znaczy być eko — bez udawania",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co to znaczy być eko — bez udawania",
+          "Bycie eko nie polega na idealności ani na kupowaniu gadżetów z zieloną etykietą. Zaczyna się od pytania: czy naprawdę potrzebuję nowej rzeczy? Unikanie niepotrzebnego zakupu i przedłużanie życia przedmiotów zwykle mają sens przed ich segregacją.",
+          "Sytuacja: Masz sprawny czajnik, ale reklama poleca nowy ekologiczny model.",
+          "Prawidłowe działanie: Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt.",
+          "Nie rób tego: Kupuję drugi tylko dlatego, że ma zielony kolor."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Bycie eko nie polega na idealności ani na kupowaniu gadżetów z zieloną etykietą. Zaczyna się od pytania: czy naprawdę potrzebuję nowej rzeczy? Unikanie niepotrzebnego zakupu i przedłużanie życia przedmiotów zwykle mają sens przed ich segregacją."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz sprawny czajnik, ale reklama poleca nowy ekologiczny model. Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-cycle",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Bycie eko nie polega na idealności ani na kupowaniu gadżetów z zieloną etykietą. Zaczyna się od pytania: czy naprawdę potrzebuję nowej rzeczy? Unikanie niepotrzebnego zakupu i przedłużanie życia przedmiotów zwykle mają sens przed ich segregacją.",
+          "situation": "Masz sprawny czajnik, ale reklama poleca nowy ekologiczny model.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt.",
+            "Kupuję drugi tylko dlatego, że ma zielony kolor."
+          ],
+          "correct": 0,
+          "example": "Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt.",
+          "explanation": "Bycie eko nie polega na idealności ani na kupowaniu gadżetów z zieloną etykietą. Zaczyna się od pytania: czy naprawdę potrzebuję nowej rzeczy? Unikanie niepotrzebnego zakupu i przedłużanie życia przedmiotów zwykle mają sens przed ich segregacją.",
+          "feedback": [
+            "Tak — Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt.",
+            "To nie jest właściwe. Bycie eko nie polega na idealności ani na kupowaniu gadżetów z zieloną etykietą. Zaczyna się od pytania: czy naprawdę potrzebuję nowej rzeczy? Unikanie niepotrzebnego zakupu i przedłużanie życia przedmiotów zwykle mają sens przed ich segregacją."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Zastanawiam się, czy zmiana rzeczywiście zmniejszy zużycie zasobów, i zachowuję sprawny sprzęt."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 1,
+      "title_pl": "Życie przedmiotu: skąd bierze się wpływ na środowisko?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Życie przedmiotu: skąd bierze się wpływ na środowisko?",
+          "Produkt przechodzi etapy: surowce, produkcja, transport, używanie, naprawa i koniec życia. Koszulka, telefon i szklana butelka obciążają środowisko w różnych momentach. Sam kolor kosza nie mówi nic o energii potrzebnej do ich produkcji.",
+          "Sytuacja: Kupujesz kolejną koszulkę, choć w szafie masz dwadzieścia.",
+          "Prawidłowe działanie: Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej.",
+          "Nie rób tego: Wyrzucam pięć sprawnych koszulek, aby zrobić miejsce."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Produkt przechodzi etapy: surowce, produkcja, transport, używanie, naprawa i koniec życia. Koszulka, telefon i szklana butelka obciążają środowisko w różnych momentach. Sam kolor kosza nie mówi nic o energii potrzebnej do ich produkcji."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Kupujesz kolejną koszulkę, choć w szafie masz dwadzieścia. Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-cycle",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Produkt przechodzi etapy: surowce, produkcja, transport, używanie, naprawa i koniec życia. Koszulka, telefon i szklana butelka obciążają środowisko w różnych momentach. Sam kolor kosza nie mówi nic o energii potrzebnej do ich produkcji.",
+          "situation": "Kupujesz kolejną koszulkę, choć w szafie masz dwadzieścia.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej.",
+            "Wyrzucam pięć sprawnych koszulek, aby zrobić miejsce."
+          ],
+          "correct": 0,
+          "example": "Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej.",
+          "explanation": "Produkt przechodzi etapy: surowce, produkcja, transport, używanie, naprawa i koniec życia. Koszulka, telefon i szklana butelka obciążają środowisko w różnych momentach. Sam kolor kosza nie mówi nic o energii potrzebnej do ich produkcji.",
+          "feedback": [
+            "Tak — Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej.",
+            "To nie jest właściwe. Produkt przechodzi etapy: surowce, produkcja, transport, używanie, naprawa i koniec życia. Koszulka, telefon i szklana butelka obciążają środowisko w różnych momentach. Sam kolor kosza nie mówi nic o energii potrzebnej do ich produkcji."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Najpierw oceniam, czy istniejąca odzież wystarczy i jak długo użyję nowej."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 2,
+      "title_pl": "Hierarchia odpadów — najpierw zapobiegaj",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Hierarchia odpadów — najpierw zapobiegaj",
+          "Europejska hierarchia stawia przed recyklingiem zapobieganie powstawaniu odpadów oraz przygotowanie do ponownego użycia. Potem jest recykling, inny odzysk i dopiero unieszkodliwianie. Samo przekazanie rzeczy do recyklingu nie zawsze jest najlepszym wyborem.",
+          "Sytuacja: W plecaku zepsuł się zamek, ale materiał nadal jest mocny.",
+          "Prawidłowe działanie: Sprawdzam naprawę zamka i dalsze używanie.",
+          "Nie rób tego: Wrzucam cały plecak do plastiku, bo ma plastikowy zamek."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Europejska hierarchia stawia przed recyklingiem zapobieganie powstawaniu odpadów oraz przygotowanie do ponownego użycia. Potem jest recykling, inny odzysk i dopiero unieszkodliwianie. Samo przekazanie rzeczy do recyklingu nie zawsze jest najlepszym wyborem."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W plecaku zepsuł się zamek, ale materiał nadal jest mocny. Sprawdzam naprawę zamka i dalsze używanie."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam naprawę zamka i dalsze używanie. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hierarchy",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Europejska hierarchia stawia przed recyklingiem zapobieganie powstawaniu odpadów oraz przygotowanie do ponownego użycia. Potem jest recykling, inny odzysk i dopiero unieszkodliwianie. Samo przekazanie rzeczy do recyklingu nie zawsze jest najlepszym wyborem.",
+          "situation": "W plecaku zepsuł się zamek, ale materiał nadal jest mocny.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam naprawę zamka i dalsze używanie.",
+            "Wrzucam cały plecak do plastiku, bo ma plastikowy zamek."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam naprawę zamka i dalsze używanie.",
+          "explanation": "Europejska hierarchia stawia przed recyklingiem zapobieganie powstawaniu odpadów oraz przygotowanie do ponownego użycia. Potem jest recykling, inny odzysk i dopiero unieszkodliwianie. Samo przekazanie rzeczy do recyklingu nie zawsze jest najlepszym wyborem.",
+          "feedback": [
+            "Tak — Sprawdzam naprawę zamka i dalsze używanie.",
+            "To nie jest właściwe. Europejska hierarchia stawia przed recyklingiem zapobieganie powstawaniu odpadów oraz przygotowanie do ponownego użycia. Potem jest recykling, inny odzysk i dopiero unieszkodliwianie. Samo przekazanie rzeczy do recyklingu nie zawsze jest najlepszym wyborem."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam naprawę zamka i dalsze używanie."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 3,
+      "title_pl": "Dokąd jadą śmieci po odbiorze?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Dokąd jadą śmieci po odbiorze?",
+          "Odpady kierowane są do sortowania i przetwarzania, a część do odzysku energii lub unieszkodliwienia. Zabrudzony papier czy bateria wrzucona do odpadów zmieszanych mogą pogorszyć bezpieczeństwo i jakość odbioru. Trójkąt na opakowaniu nie daje gwarancji, że ten przedmiot zostanie lokalnie przetworzony.",
+          "Sytuacja: W pojemniku z papierem widzisz baterię i tłuste opakowanie.",
+          "Prawidłowe działanie: Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość.",
+          "Nie rób tego: Zakładam, że sortownia zawsze naprawi każdy błąd i nic nie robię."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Odpady kierowane są do sortowania i przetwarzania, a część do odzysku energii lub unieszkodliwienia. Zabrudzony papier czy bateria wrzucona do odpadów zmieszanych mogą pogorszyć bezpieczeństwo i jakość odbioru. Trójkąt na opakowaniu nie daje gwarancji, że ten przedmiot zostanie lokalnie przetworzony."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W pojemniku z papierem widzisz baterię i tłuste opakowanie. Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Odpady kierowane są do sortowania i przetwarzania, a część do odzysku energii lub unieszkodliwienia. Zabrudzony papier czy bateria wrzucona do odpadów zmieszanych mogą pogorszyć bezpieczeństwo i jakość odbioru. Trójkąt na opakowaniu nie daje gwarancji, że ten przedmiot zostanie lokalnie przetworzony.",
+          "situation": "W pojemniku z papierem widzisz baterię i tłuste opakowanie.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość.",
+            "Zakładam, że sortownia zawsze naprawi każdy błąd i nic nie robię."
+          ],
+          "correct": 0,
+          "example": "Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość.",
+          "explanation": "Odpady kierowane są do sortowania i przetwarzania, a część do odzysku energii lub unieszkodliwienia. Zabrudzony papier czy bateria wrzucona do odpadów zmieszanych mogą pogorszyć bezpieczeństwo i jakość odbioru. Trójkąt na opakowaniu nie daje gwarancji, że ten przedmiot zostanie lokalnie przetworzony.",
+          "feedback": [
+            "Tak — Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość.",
+            "To nie jest właściwe. Odpady kierowane są do sortowania i przetwarzania, a część do odzysku energii lub unieszkodliwienia. Zabrudzony papier czy bateria wrzucona do odpadów zmieszanych mogą pogorszyć bezpieczeństwo i jakość odbioru. Trójkąt na opakowaniu nie daje gwarancji, że ten przedmiot zostanie lokalnie przetworzony."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Postępuję według zasad lokalnej zbiórki i zgłaszam niebezpieczną zawartość."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 4,
+      "title_pl": "Pięć pojemników w Polsce — poznaj kolory",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pięć pojemników w Polsce — poznaj kolory",
+          "W Jednolitym Systemie Segregacji Odpadów kolor niebieski oznacza papier, żółty metale i tworzywa sztuczne, zielony szkło opakowaniowe, brązowy bio, a pozostałe resztkowe zbierane są osobno. Baterie, leki i elektronika to wyjątki, które wymagają własnej ścieżki.",
+          "Sytuacja: Masz gazetę, pustą butelkę PET i słoik po dżemie.",
+          "Prawidłowe działanie: Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji.",
+          "Nie rób tego: Wrzucam wszystko do jednego kosza, bo wszystkie są opakowaniami."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "W Jednolitym Systemie Segregacji Odpadów kolor niebieski oznacza papier, żółty metale i tworzywa sztuczne, zielony szkło opakowaniowe, brązowy bio, a pozostałe resztkowe zbierane są osobno. Baterie, leki i elektronika to wyjątki, które wymagają własnej ścieżki."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz gazetę, pustą butelkę PET i słoik po dżemie. Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "W Jednolitym Systemie Segregacji Odpadów kolor niebieski oznacza papier, żółty metale i tworzywa sztuczne, zielony szkło opakowaniowe, brązowy bio, a pozostałe resztkowe zbierane są osobno. Baterie, leki i elektronika to wyjątki, które wymagają własnej ścieżki.",
+          "situation": "Masz gazetę, pustą butelkę PET i słoik po dżemie.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji.",
+            "Wrzucam wszystko do jednego kosza, bo wszystkie są opakowaniami."
+          ],
+          "correct": 0,
+          "example": "Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji.",
+          "explanation": "W Jednolitym Systemie Segregacji Odpadów kolor niebieski oznacza papier, żółty metale i tworzywa sztuczne, zielony szkło opakowaniowe, brązowy bio, a pozostałe resztkowe zbierane są osobno. Baterie, leki i elektronika to wyjątki, które wymagają własnej ścieżki.",
+          "feedback": [
+            "Tak — Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji.",
+            "To nie jest właściwe. W Jednolitym Systemie Segregacji Odpadów kolor niebieski oznacza papier, żółty metale i tworzywa sztuczne, zielony szkło opakowaniowe, brązowy bio, a pozostałe resztkowe zbierane są osobno. Baterie, leki i elektronika to wyjątki, które wymagają własnej ścieżki."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Rozdzielam papier, plastikowe opakowanie i szkło do właściwych frakcji."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 5,
+      "title_pl": "Norwegia: sprawdź zasady własnej gminy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Norwegia: sprawdź zasady własnej gminy",
+          "W Norwegii często spotkasz nazwy matavfall, papp/papir, plastemballasje, glass- og metallemballasje oraz restavfall. Kolory worków i sposób odbioru mogą różnić się między gminami. Właściwe instrukcje sprawdzisz u lokalnego operatora lub na sortere.no.",
+          "Sytuacja: Przenosisz się z Oslo do innej gminy i zauważasz inne kolory worków.",
+          "Prawidłowe działanie: Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki.",
+          "Nie rób tego: Zakładam, że każda gmina ma identyczne zasady."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "W Norwegii często spotkasz nazwy matavfall, papp/papir, plastemballasje, glass- og metallemballasje oraz restavfall. Kolory worków i sposób odbioru mogą różnić się między gminami. Właściwe instrukcje sprawdzisz u lokalnego operatora lub na sortere.no."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Przenosisz się z Oslo do innej gminy i zauważasz inne kolory worków. Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://sortere.no/"
+          }
+        ],
+        "learning": {
+          "intro": "W Norwegii często spotkasz nazwy matavfall, papp/papir, plastemballasje, glass- og metallemballasje oraz restavfall. Kolory worków i sposób odbioru mogą różnić się między gminami. Właściwe instrukcje sprawdzisz u lokalnego operatora lub na sortere.no.",
+          "situation": "Przenosisz się z Oslo do innej gminy i zauważasz inne kolory worków.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki.",
+            "Zakładam, że każda gmina ma identyczne zasady."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki.",
+          "explanation": "W Norwegii często spotkasz nazwy matavfall, papp/papir, plastemballasje, glass- og metallemballasje oraz restavfall. Kolory worków i sposób odbioru mogą różnić się między gminami. Właściwe instrukcje sprawdzisz u lokalnego operatora lub na sortere.no.",
+          "feedback": [
+            "Tak — Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki.",
+            "To nie jest właściwe. W Norwegii często spotkasz nazwy matavfall, papp/papir, plastemballasje, glass- og metallemballasje oraz restavfall. Kolory worków i sposób odbioru mogą różnić się między gminami. Właściwe instrukcje sprawdzisz u lokalnego operatora lub na sortere.no."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam aktualną instrukcję segregacji dla adresu, zamiast kopiować stare nawyki."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 6,
+      "title_pl": "Papier, karton, chusteczki i kartony po napojach",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Papier, karton, chusteczki i kartony po napojach",
+          "Czysty papier, gazety i tektura zwykle trafiają do osobnej frakcji. Tłuszcz i resztki jedzenia mogą utrudnić odzysk włókien. Nie każdy karton po mleku ma identyczną drogę w różnych systemach zbiórki; lokalne instrukcje są ważniejsze od samej nazwy materiału.",
+          "Sytuacja: Składasz czyste pudło kartonowe po przesyłce.",
+          "Prawidłowe działanie: Spłaszczam je i umieszczam w odpowiedniej frakcji papieru.",
+          "Nie rób tego: Wrzucam do niego baterie i opakowania plastikowe, bo to też śmieci."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Czysty papier, gazety i tektura zwykle trafiają do osobnej frakcji. Tłuszcz i resztki jedzenia mogą utrudnić odzysk włókien. Nie każdy karton po mleku ma identyczną drogę w różnych systemach zbiórki; lokalne instrukcje są ważniejsze od samej nazwy materiału."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Składasz czyste pudło kartonowe po przesyłce. Spłaszczam je i umieszczam w odpowiedniej frakcji papieru."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Spłaszczam je i umieszczam w odpowiedniej frakcji papieru. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Czysty papier, gazety i tektura zwykle trafiają do osobnej frakcji. Tłuszcz i resztki jedzenia mogą utrudnić odzysk włókien. Nie każdy karton po mleku ma identyczną drogę w różnych systemach zbiórki; lokalne instrukcje są ważniejsze od samej nazwy materiału.",
+          "situation": "Składasz czyste pudło kartonowe po przesyłce.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Spłaszczam je i umieszczam w odpowiedniej frakcji papieru.",
+            "Wrzucam do niego baterie i opakowania plastikowe, bo to też śmieci."
+          ],
+          "correct": 0,
+          "example": "Spłaszczam je i umieszczam w odpowiedniej frakcji papieru.",
+          "explanation": "Czysty papier, gazety i tektura zwykle trafiają do osobnej frakcji. Tłuszcz i resztki jedzenia mogą utrudnić odzysk włókien. Nie każdy karton po mleku ma identyczną drogę w różnych systemach zbiórki; lokalne instrukcje są ważniejsze od samej nazwy materiału.",
+          "feedback": [
+            "Tak — Spłaszczam je i umieszczam w odpowiedniej frakcji papieru.",
+            "To nie jest właściwe. Czysty papier, gazety i tektura zwykle trafiają do osobnej frakcji. Tłuszcz i resztki jedzenia mogą utrudnić odzysk włókien. Nie każdy karton po mleku ma identyczną drogę w różnych systemach zbiórki; lokalne instrukcje są ważniejsze od samej nazwy materiału."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Spłaszczam je i umieszczam w odpowiedniej frakcji papieru."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 7,
+      "title_pl": "Plastik — opakowanie nie oznacza dowolnego przedmiotu",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Plastik — opakowanie nie oznacza dowolnego przedmiotu",
+          "Do frakcji opakowań z tworzyw może trafić pusta butelka po szamponie, ale zużyta szczoteczka do zębów albo plastikowa zabawka nie jest opakowaniem. Symbol rodzaju tworzywa opisuje materiał, nie zapewnia lokalnego odbioru. Opakowanie powinno być opróżnione zgodnie z lokalnymi wytycznymi.",
+          "Sytuacja: Masz pustą butelkę po szamponie i złamaną szczoteczkę.",
+          "Prawidłowe działanie: Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy.",
+          "Nie rób tego: Obie wrzucam do opakowań z plastiku tylko dlatego, że są z plastiku."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Do frakcji opakowań z tworzyw może trafić pusta butelka po szamponie, ale zużyta szczoteczka do zębów albo plastikowa zabawka nie jest opakowaniem. Symbol rodzaju tworzywa opisuje materiał, nie zapewnia lokalnego odbioru. Opakowanie powinno być opróżnione zgodnie z lokalnymi wytycznymi."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz pustą butelkę po szamponie i złamaną szczoteczkę. Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Do frakcji opakowań z tworzyw może trafić pusta butelka po szamponie, ale zużyta szczoteczka do zębów albo plastikowa zabawka nie jest opakowaniem. Symbol rodzaju tworzywa opisuje materiał, nie zapewnia lokalnego odbioru. Opakowanie powinno być opróżnione zgodnie z lokalnymi wytycznymi.",
+          "situation": "Masz pustą butelkę po szamponie i złamaną szczoteczkę.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy.",
+            "Obie wrzucam do opakowań z plastiku tylko dlatego, że są z plastiku."
+          ],
+          "correct": 0,
+          "example": "Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy.",
+          "explanation": "Do frakcji opakowań z tworzyw może trafić pusta butelka po szamponie, ale zużyta szczoteczka do zębów albo plastikowa zabawka nie jest opakowaniem. Symbol rodzaju tworzywa opisuje materiał, nie zapewnia lokalnego odbioru. Opakowanie powinno być opróżnione zgodnie z lokalnymi wytycznymi.",
+          "feedback": [
+            "Tak — Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy.",
+            "To nie jest właściwe. Do frakcji opakowań z tworzyw może trafić pusta butelka po szamponie, ale zużyta szczoteczka do zębów albo plastikowa zabawka nie jest opakowaniem. Symbol rodzaju tworzywa opisuje materiał, nie zapewnia lokalnego odbioru. Opakowanie powinno być opróżnione zgodnie z lokalnymi wytycznymi."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Butelkę klasyfikuję jako opakowanie, a szczoteczkę sprawdzam jako przedmiot nieopakowaniowy."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 8,
+      "title_pl": "Szkło — czym różni się słoik od szklanki?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Szkło — czym różni się słoik od szklanki?",
+          "Do pojemników na szkło opakowaniowe nie należy automatycznie wrzucać ceramiki, luster, szyb, szkła żaroodpornego ani żarówek. Różne składy i sposoby przetwarzania mają znaczenie. Szczegóły odbioru odłamków i materiałów budowlanych sprawdź lokalnie.",
+          "Sytuacja: W kuchni pękł ceramiczny kubek, a obok stoi pusty szklany słoik.",
+          "Prawidłowe działanie: Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich.",
+          "Nie rób tego: Wrzucam oba do zielonego pojemnika na szkło."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Do pojemników na szkło opakowaniowe nie należy automatycznie wrzucać ceramiki, luster, szyb, szkła żaroodpornego ani żarówek. Różne składy i sposoby przetwarzania mają znaczenie. Szczegóły odbioru odłamków i materiałów budowlanych sprawdź lokalnie."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W kuchni pękł ceramiczny kubek, a obok stoi pusty szklany słoik. Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Do pojemników na szkło opakowaniowe nie należy automatycznie wrzucać ceramiki, luster, szyb, szkła żaroodpornego ani żarówek. Różne składy i sposoby przetwarzania mają znaczenie. Szczegóły odbioru odłamków i materiałów budowlanych sprawdź lokalnie.",
+          "situation": "W kuchni pękł ceramiczny kubek, a obok stoi pusty szklany słoik.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich.",
+            "Wrzucam oba do zielonego pojemnika na szkło."
+          ],
+          "correct": 0,
+          "example": "Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich.",
+          "explanation": "Do pojemników na szkło opakowaniowe nie należy automatycznie wrzucać ceramiki, luster, szyb, szkła żaroodpornego ani żarówek. Różne składy i sposoby przetwarzania mają znaczenie. Szczegóły odbioru odłamków i materiałów budowlanych sprawdź lokalnie.",
+          "feedback": [
+            "Tak — Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich.",
+            "To nie jest właściwe. Do pojemników na szkło opakowaniowe nie należy automatycznie wrzucać ceramiki, luster, szyb, szkła żaroodpornego ani żarówek. Różne składy i sposoby przetwarzania mają znaczenie. Szczegóły odbioru odłamków i materiałów budowlanych sprawdź lokalnie."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Słoik oddaję do szkła opakowaniowego, kubek do właściwej lokalnej frakcji, nie mieszam ich."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 9,
+      "title_pl": "Odpady kuchenne i BIO — co jest wyjątkiem?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Odpady kuchenne i BIO — co jest wyjątkiem?",
+          "Obierki i pozostałości żywności często trafiają do bio lub matavfall, ale zasady dla kości, tłuszczu, dużych gałęzi i worków zależą od systemu. Oleju po smażeniu nie wlewaj do zlewu. BIO nie znaczy, że każda naturalna rzecz pasuje do worka.",
+          "Sytuacja: Pozostał olej z patelni i obierki z ziemniaków.",
+          "Prawidłowe działanie: Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji.",
+          "Nie rób tego: Wylewam cały olej do odpływu, bo pochodzi z jedzenia."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Obierki i pozostałości żywności często trafiają do bio lub matavfall, ale zasady dla kości, tłuszczu, dużych gałęzi i worków zależą od systemu. Oleju po smażeniu nie wlewaj do zlewu. BIO nie znaczy, że każda naturalna rzecz pasuje do worka."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Pozostał olej z patelni i obierki z ziemniaków. Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Obierki i pozostałości żywności często trafiają do bio lub matavfall, ale zasady dla kości, tłuszczu, dużych gałęzi i worków zależą od systemu. Oleju po smażeniu nie wlewaj do zlewu. BIO nie znaczy, że każda naturalna rzecz pasuje do worka.",
+          "situation": "Pozostał olej z patelni i obierki z ziemniaków.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji.",
+            "Wylewam cały olej do odpływu, bo pochodzi z jedzenia."
+          ],
+          "correct": 0,
+          "example": "Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji.",
+          "explanation": "Obierki i pozostałości żywności często trafiają do bio lub matavfall, ale zasady dla kości, tłuszczu, dużych gałęzi i worków zależą od systemu. Oleju po smażeniu nie wlewaj do zlewu. BIO nie znaczy, że każda naturalna rzecz pasuje do worka.",
+          "feedback": [
+            "Tak — Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji.",
+            "To nie jest właściwe. Obierki i pozostałości żywności często trafiają do bio lub matavfall, ale zasady dla kości, tłuszczu, dużych gałęzi i worków zależą od systemu. Oleju po smażeniu nie wlewaj do zlewu. BIO nie znaczy, że każda naturalna rzecz pasuje do worka."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Obierki segreguję lokalnie jako bio, a olej oddaję odpowiednio, nie wylewam go do kanalizacji."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 10,
+      "title_pl": "Baterie, elektronika i żarówki",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Baterie, elektronika i żarówki",
+          "Baterie i akumulatory mogą powodować pożary w strumieniu odpadów. Telefony, ładowarki, komputery i LED-y wymagają odpowiednich punktów zbiórki. Przed oddaniem urządzenia warto wykonać kopię danych i usunąć konta. Nie rozbieraj uszkodzonych akumulatorów samodzielnie.",
+          "Sytuacja: W szufladzie leży spuchnięta bateria i stary telefon.",
+          "Prawidłowe działanie: Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane.",
+          "Nie rób tego: Przebijam baterię, aby zmniejszyć jej rozmiar."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Baterie i akumulatory mogą powodować pożary w strumieniu odpadów. Telefony, ładowarki, komputery i LED-y wymagają odpowiednich punktów zbiórki. Przed oddaniem urządzenia warto wykonać kopię danych i usunąć konta. Nie rozbieraj uszkodzonych akumulatorów samodzielnie."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W szufladzie leży spuchnięta bateria i stary telefon. Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hazard",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Baterie i akumulatory mogą powodować pożary w strumieniu odpadów. Telefony, ładowarki, komputery i LED-y wymagają odpowiednich punktów zbiórki. Przed oddaniem urządzenia warto wykonać kopię danych i usunąć konta. Nie rozbieraj uszkodzonych akumulatorów samodzielnie.",
+          "situation": "W szufladzie leży spuchnięta bateria i stary telefon.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane.",
+            "Przebijam baterię, aby zmniejszyć jej rozmiar."
+          ],
+          "correct": 0,
+          "example": "Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane.",
+          "explanation": "Baterie i akumulatory mogą powodować pożary w strumieniu odpadów. Telefony, ładowarki, komputery i LED-y wymagają odpowiednich punktów zbiórki. Przed oddaniem urządzenia warto wykonać kopię danych i usunąć konta. Nie rozbieraj uszkodzonych akumulatorów samodzielnie.",
+          "feedback": [
+            "Tak — Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane.",
+            "To nie jest właściwe. Baterie i akumulatory mogą powodować pożary w strumieniu odpadów. Telefony, ładowarki, komputery i LED-y wymagają odpowiednich punktów zbiórki. Przed oddaniem urządzenia warto wykonać kopię danych i usunąć konta. Nie rozbieraj uszkodzonych akumulatorów samodzielnie."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Izoluję zagrożenie zgodnie z zasadami bezpieczeństwa i pytam punkt specjalny o odbiór; z telefonu usuwam dane."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 11,
+      "title_pl": "Farby, rozpuszczalniki i przeterminowane leki",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Farby, rozpuszczalniki i przeterminowane leki",
+          "Odpady niebezpieczne, takie jak resztki rozpuszczalników, farb, chemikaliów i leków, nie należą do bio. Nie wylewaj ich do kanalizacji; sprawdź specjalne punkty zbiórki i oznacz pojemniki. Część aptek odbiera określone leki w ramach lokalnych systemów.",
+          "Sytuacja: Po remoncie została puszka z resztką farby i opakowanie po rozpuszczalniku.",
+          "Prawidłowe działanie: Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych.",
+          "Nie rób tego: Wylewam oba płyny do toalety."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Odpady niebezpieczne, takie jak resztki rozpuszczalników, farb, chemikaliów i leków, nie należą do bio. Nie wylewaj ich do kanalizacji; sprawdź specjalne punkty zbiórki i oznacz pojemniki. Część aptek odbiera określone leki w ramach lokalnych systemów."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Po remoncie została puszka z resztką farby i opakowanie po rozpuszczalniku. Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hazard",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Odpady niebezpieczne, takie jak resztki rozpuszczalników, farb, chemikaliów i leków, nie należą do bio. Nie wylewaj ich do kanalizacji; sprawdź specjalne punkty zbiórki i oznacz pojemniki. Część aptek odbiera określone leki w ramach lokalnych systemów.",
+          "situation": "Po remoncie została puszka z resztką farby i opakowanie po rozpuszczalniku.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych.",
+            "Wylewam oba płyny do toalety."
+          ],
+          "correct": 0,
+          "example": "Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych.",
+          "explanation": "Odpady niebezpieczne, takie jak resztki rozpuszczalników, farb, chemikaliów i leków, nie należą do bio. Nie wylewaj ich do kanalizacji; sprawdź specjalne punkty zbiórki i oznacz pojemniki. Część aptek odbiera określone leki w ramach lokalnych systemów.",
+          "feedback": [
+            "Tak — Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych.",
+            "To nie jest właściwe. Odpady niebezpieczne, takie jak resztki rozpuszczalników, farb, chemikaliów i leków, nie należą do bio. Nie wylewaj ich do kanalizacji; sprawdź specjalne punkty zbiórki i oznacz pojemniki. Część aptek odbiera określone leki w ramach lokalnych systemów."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Przechowuję szczelnie i oddaję zgodnie z zasadami odbioru odpadów niebezpiecznych."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 12,
+      "title_pl": "Ubrania i tekstylia — napraw, oddaj, posegreguj",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Ubrania i tekstylia — napraw, oddaj, posegreguj",
+          "Ubranie w dobrym stanie lepiej naprawić albo przekazać do ponownego noszenia. Uszkodzone tekstylia oddaj do wskazanej zbiórki, a nie do mieszanych. W Polsce od 2025 r. gminy zapewniają selektywną zbiórkę tekstyliów m.in. przez PSZOK; sprawdzaj warunki przyjęcia.",
+          "Sytuacja: W kurtce pękł zamek, ale materiał jest dobry.",
+          "Prawidłowe działanie: Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad.",
+          "Nie rób tego: Wyrzucam kurtkę do plastiku, bo ma plastikowy zamek."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Ubranie w dobrym stanie lepiej naprawić albo przekazać do ponownego noszenia. Uszkodzone tekstylia oddaj do wskazanej zbiórki, a nie do mieszanych. W Polsce od 2025 r. gminy zapewniają selektywną zbiórkę tekstyliów m.in. przez PSZOK; sprawdzaj warunki przyjęcia."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W kurtce pękł zamek, ale materiał jest dobry. Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-textiles",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/wios-warszawa/od-1-stycznia-2025-r-wchodzi-w-zycie-zmiana-przepisow-dotyczaca-segregacji-odpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Ubranie w dobrym stanie lepiej naprawić albo przekazać do ponownego noszenia. Uszkodzone tekstylia oddaj do wskazanej zbiórki, a nie do mieszanych. W Polsce od 2025 r. gminy zapewniają selektywną zbiórkę tekstyliów m.in. przez PSZOK; sprawdzaj warunki przyjęcia.",
+          "situation": "W kurtce pękł zamek, ale materiał jest dobry.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad.",
+            "Wyrzucam kurtkę do plastiku, bo ma plastikowy zamek."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad.",
+          "explanation": "Ubranie w dobrym stanie lepiej naprawić albo przekazać do ponownego noszenia. Uszkodzone tekstylia oddaj do wskazanej zbiórki, a nie do mieszanych. W Polsce od 2025 r. gminy zapewniają selektywną zbiórkę tekstyliów m.in. przez PSZOK; sprawdzaj warunki przyjęcia.",
+          "feedback": [
+            "Tak — Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad.",
+            "To nie jest właściwe. Ubranie w dobrym stanie lepiej naprawić albo przekazać do ponownego noszenia. Uszkodzone tekstylia oddaj do wskazanej zbiórki, a nie do mieszanych. W Polsce od 2025 r. gminy zapewniają selektywną zbiórkę tekstyliów m.in. przez PSZOK; sprawdzaj warunki przyjęcia."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam naprawę zamka, zanim uznam kurtkę za odpad."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 13,
+      "title_pl": "Etykiety „eko” na ubraniach — jak myśleć krytycznie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Etykiety „eko” na ubraniach — jak myśleć krytycznie",
+          "Określenia naturalny, zielony czy zrównoważony nie mówią same w sobie o pełnym wpływie produktu. Porównuj trwałość, rzeczywistą potrzebę zakupu, sposób pielęgnacji i zakres wiarygodnych certyfikatów. Dłuższe użytkowanie jest ważne; sam materiał nie daje uniwersalnego rankingu.",
+          "Sytuacja: Sklep nazywa nową koszulkę „eko”, lecz nie podaje szczegółów.",
+          "Prawidłowe działanie: Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny.",
+          "Nie rób tego: Kupuję natychmiast, bo metka ma zielony liść."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Określenia naturalny, zielony czy zrównoważony nie mówią same w sobie o pełnym wpływie produktu. Porównuj trwałość, rzeczywistą potrzebę zakupu, sposób pielęgnacji i zakres wiarygodnych certyfikatów. Dłuższe użytkowanie jest ważne; sam materiał nie daje uniwersalnego rankingu."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Sklep nazywa nową koszulkę „eko”, lecz nie podaje szczegółów. Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-textiles",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Określenia naturalny, zielony czy zrównoważony nie mówią same w sobie o pełnym wpływie produktu. Porównuj trwałość, rzeczywistą potrzebę zakupu, sposób pielęgnacji i zakres wiarygodnych certyfikatów. Dłuższe użytkowanie jest ważne; sam materiał nie daje uniwersalnego rankingu.",
+          "situation": "Sklep nazywa nową koszulkę „eko”, lecz nie podaje szczegółów.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny.",
+            "Kupuję natychmiast, bo metka ma zielony liść."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny.",
+          "explanation": "Określenia naturalny, zielony czy zrównoważony nie mówią same w sobie o pełnym wpływie produktu. Porównuj trwałość, rzeczywistą potrzebę zakupu, sposób pielęgnacji i zakres wiarygodnych certyfikatów. Dłuższe użytkowanie jest ważne; sam materiał nie daje uniwersalnego rankingu.",
+          "feedback": [
+            "Tak — Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny.",
+            "To nie jest właściwe. Określenia naturalny, zielony czy zrównoważony nie mówią same w sobie o pełnym wpływie produktu. Porównuj trwałość, rzeczywistą potrzebę zakupu, sposób pielęgnacji i zakres wiarygodnych certyfikatów. Dłuższe użytkowanie jest ważne; sam materiał nie daje uniwersalnego rankingu."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam skład, trwałość, źródło deklaracji i czy zakup jest potrzebny."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 14,
+      "title_pl": "Żywność — nie marnuj, ale nie ryzykuj zdrowiem",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Żywność — nie marnuj, ale nie ryzykuj zdrowiem",
+          "Plan zakupów i ustawienie produktów w lodówce pomagają ograniczać wyrzucanie żywności. „Najlepiej spożyć przed” opisuje jakość, a „należy spożyć do” odnosi się do bezpieczeństwa. Produktu po terminie „należy spożyć do” nie spożywaj; nie oceniaj ryzyka wyłącznie zapachem.",
+          "Sytuacja: W lodówce jest surowe mięso dzień po dacie „należy spożyć do”.",
+          "Prawidłowe działanie: Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie.",
+          "Nie rób tego: Gotuję je mocniej, aby odzyskać bezpieczeństwo."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Plan zakupów i ustawienie produktów w lodówce pomagają ograniczać wyrzucanie żywności. „Najlepiej spożyć przed” opisuje jakość, a „należy spożyć do” odnosi się do bezpieczeństwa. Produktu po terminie „należy spożyć do” nie spożywaj; nie oceniaj ryzyka wyłącznie zapachem."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W lodówce jest surowe mięso dzień po dacie „należy spożyć do”. Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-food",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Plan zakupów i ustawienie produktów w lodówce pomagają ograniczać wyrzucanie żywności. „Najlepiej spożyć przed” opisuje jakość, a „należy spożyć do” odnosi się do bezpieczeństwa. Produktu po terminie „należy spożyć do” nie spożywaj; nie oceniaj ryzyka wyłącznie zapachem.",
+          "situation": "W lodówce jest surowe mięso dzień po dacie „należy spożyć do”.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie.",
+            "Gotuję je mocniej, aby odzyskać bezpieczeństwo."
+          ],
+          "correct": 0,
+          "example": "Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie.",
+          "explanation": "Plan zakupów i ustawienie produktów w lodówce pomagają ograniczać wyrzucanie żywności. „Najlepiej spożyć przed” opisuje jakość, a „należy spożyć do” odnosi się do bezpieczeństwa. Produktu po terminie „należy spożyć do” nie spożywaj; nie oceniaj ryzyka wyłącznie zapachem.",
+          "feedback": [
+            "Tak — Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie.",
+            "To nie jest właściwe. Plan zakupów i ustawienie produktów w lodówce pomagają ograniczać wyrzucanie żywności. „Najlepiej spożyć przed” opisuje jakość, a „należy spożyć do” odnosi się do bezpieczeństwa. Produktu po terminie „należy spożyć do” nie spożywaj; nie oceniaj ryzyka wyłącznie zapachem."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Nie używam mięsa po tej dacie, nawet jeśli wygląda poprawnie."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 15,
+      "title_pl": "Kompost i przetwarzanie odpadów organicznych",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Kompost i przetwarzanie odpadów organicznych",
+          "Kompostowanie wymaga dostępu powietrza, odpowiedniej wilgotności i prawidłowego doboru składników. Mięso, tłuszcze i inne odpadki mogą przyciągać szkodniki w typowych przydomowych kompostownikach. Nie każdy system domowy przyjmuje wszystkie bioodpady.",
+          "Sytuacja: Do kompostu wrzucano mięso, pojawiły się szczury.",
+          "Prawidłowe działanie: Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji.",
+          "Nie rób tego: Dodaję więcej mięsa, aby przyspieszyć rozkład."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Kompostowanie wymaga dostępu powietrza, odpowiedniej wilgotności i prawidłowego doboru składników. Mięso, tłuszcze i inne odpadki mogą przyciągać szkodniki w typowych przydomowych kompostownikach. Nie każdy system domowy przyjmuje wszystkie bioodpady."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Do kompostu wrzucano mięso, pojawiły się szczury. Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-food",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Kompostowanie wymaga dostępu powietrza, odpowiedniej wilgotności i prawidłowego doboru składników. Mięso, tłuszcze i inne odpadki mogą przyciągać szkodniki w typowych przydomowych kompostownikach. Nie każdy system domowy przyjmuje wszystkie bioodpady.",
+          "situation": "Do kompostu wrzucano mięso, pojawiły się szczury.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji.",
+            "Dodaję więcej mięsa, aby przyspieszyć rozkład."
+          ],
+          "correct": 0,
+          "example": "Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji.",
+          "explanation": "Kompostowanie wymaga dostępu powietrza, odpowiedniej wilgotności i prawidłowego doboru składników. Mięso, tłuszcze i inne odpadki mogą przyciągać szkodniki w typowych przydomowych kompostownikach. Nie każdy system domowy przyjmuje wszystkie bioodpady.",
+          "feedback": [
+            "Tak — Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji.",
+            "To nie jest właściwe. Kompostowanie wymaga dostępu powietrza, odpowiedniej wilgotności i prawidłowego doboru składników. Mięso, tłuszcze i inne odpadki mogą przyciągać szkodniki w typowych przydomowych kompostownikach. Nie każdy system domowy przyjmuje wszystkie bioodpady."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Przerywam dodawanie niedozwolonych resztek i poprawiam proces według instrukcji."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 16,
+      "title_pl": "Kaucja, butelki i opakowania wielorazowe",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Kaucja, butelki i opakowania wielorazowe",
+          "Systemy kaucyjne obejmują konkretne oznakowane opakowania. W Polsce od października 2025 r. działa system dla wybranych butelek i puszek. Opakowanie z kaucją oddawaj do właściwego punktu; nie każde szkło czy tworzywo podlega temu samemu systemowi.",
+          "Sytuacja: Masz pustą butelkę z etykietą systemu kaucyjnego.",
+          "Prawidłowe działanie: Sprawdzam oznaczenie i oddaję do punktu zwrotu.",
+          "Nie rób tego: Wrzucam butelkę do zmieszanych, mimo dostępnego zwrotu."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Systemy kaucyjne obejmują konkretne oznakowane opakowania. W Polsce od października 2025 r. działa system dla wybranych butelek i puszek. Opakowanie z kaucją oddawaj do właściwego punktu; nie każde szkło czy tworzywo podlega temu samemu systemowi."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz pustą butelkę z etykietą systemu kaucyjnego. Sprawdzam oznaczenie i oddaję do punktu zwrotu."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam oznaczenie i oddaję do punktu zwrotu. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://www.gov.pl/web/klimat/segregacjaodpadow"
+          }
+        ],
+        "learning": {
+          "intro": "Systemy kaucyjne obejmują konkretne oznakowane opakowania. W Polsce od października 2025 r. działa system dla wybranych butelek i puszek. Opakowanie z kaucją oddawaj do właściwego punktu; nie każde szkło czy tworzywo podlega temu samemu systemowi.",
+          "situation": "Masz pustą butelkę z etykietą systemu kaucyjnego.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam oznaczenie i oddaję do punktu zwrotu.",
+            "Wrzucam butelkę do zmieszanych, mimo dostępnego zwrotu."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam oznaczenie i oddaję do punktu zwrotu.",
+          "explanation": "Systemy kaucyjne obejmują konkretne oznakowane opakowania. W Polsce od października 2025 r. działa system dla wybranych butelek i puszek. Opakowanie z kaucją oddawaj do właściwego punktu; nie każde szkło czy tworzywo podlega temu samemu systemowi.",
+          "feedback": [
+            "Tak — Sprawdzam oznaczenie i oddaję do punktu zwrotu.",
+            "To nie jest właściwe. Systemy kaucyjne obejmują konkretne oznakowane opakowania. W Polsce od października 2025 r. działa system dla wybranych butelek i puszek. Opakowanie z kaucją oddawaj do właściwego punktu; nie każde szkło czy tworzywo podlega temu samemu systemowi."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam oznaczenie i oddaję do punktu zwrotu."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 17,
+      "title_pl": "Energia w domu — mierz zamiast zgadywać",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Energia w domu — mierz zamiast zgadywać",
+          "Ogrzewanie, stan izolacji, temperatura pomieszczeń i działanie urządzeń mogą znacząco zmieniać zużycie energii. Decyzje najlepiej opierać na odczycie licznika i realnym komforcie. Przy instalacjach elektrycznych i chłodniczych nie podejmuj samodzielnie ryzykownych napraw.",
+          "Sytuacja: Lodówka ma uszkodzoną uszczelkę i stale się załącza.",
+          "Prawidłowe działanie: Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności.",
+          "Nie rób tego: Odłączam lodówkę na noc z pełną zawartością."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Ogrzewanie, stan izolacji, temperatura pomieszczeń i działanie urządzeń mogą znacząco zmieniać zużycie energii. Decyzje najlepiej opierać na odczycie licznika i realnym komforcie. Przy instalacjach elektrycznych i chłodniczych nie podejmuj samodzielnie ryzykownych napraw."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Lodówka ma uszkodzoną uszczelkę i stale się załącza. Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-home",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Ogrzewanie, stan izolacji, temperatura pomieszczeń i działanie urządzeń mogą znacząco zmieniać zużycie energii. Decyzje najlepiej opierać na odczycie licznika i realnym komforcie. Przy instalacjach elektrycznych i chłodniczych nie podejmuj samodzielnie ryzykownych napraw.",
+          "situation": "Lodówka ma uszkodzoną uszczelkę i stale się załącza.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności.",
+            "Odłączam lodówkę na noc z pełną zawartością."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności.",
+          "explanation": "Ogrzewanie, stan izolacji, temperatura pomieszczeń i działanie urządzeń mogą znacząco zmieniać zużycie energii. Decyzje najlepiej opierać na odczycie licznika i realnym komforcie. Przy instalacjach elektrycznych i chłodniczych nie podejmuj samodzielnie ryzykownych napraw.",
+          "feedback": [
+            "Tak — Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności.",
+            "To nie jest właściwe. Ogrzewanie, stan izolacji, temperatura pomieszczeń i działanie urządzeń mogą znacząco zmieniać zużycie energii. Decyzje najlepiej opierać na odczycie licznika i realnym komforcie. Przy instalacjach elektrycznych i chłodniczych nie podejmuj samodzielnie ryzykownych napraw."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam uszczelkę i możliwość bezpiecznej naprawy, nie wyłączam chłodzenia żywności."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 18,
+      "title_pl": "Woda — napraw wyciek, dbaj o higienę",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Woda — napraw wyciek, dbaj o higienę",
+          "Nieszczelny kran może marnować wodę przez wiele godzin. Zmywarka i pralka powinny działać zgodnie z instrukcją oraz rzeczywistą potrzebą. Oszczędzanie nie uzasadnia zaniedbania higieny ani wylewania chemikaliów do odpływu.",
+          "Sytuacja: Kran cieknie od tygodni, ale rachunki są niskie.",
+          "Prawidłowe działanie: Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji.",
+          "Nie rób tego: Ignoruję wyciek, bo woda jest odnawialna."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Nieszczelny kran może marnować wodę przez wiele godzin. Zmywarka i pralka powinny działać zgodnie z instrukcją oraz rzeczywistą potrzebą. Oszczędzanie nie uzasadnia zaniedbania higieny ani wylewania chemikaliów do odpływu."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Kran cieknie od tygodni, ale rachunki są niskie. Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-home",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Nieszczelny kran może marnować wodę przez wiele godzin. Zmywarka i pralka powinny działać zgodnie z instrukcją oraz rzeczywistą potrzebą. Oszczędzanie nie uzasadnia zaniedbania higieny ani wylewania chemikaliów do odpływu.",
+          "situation": "Kran cieknie od tygodni, ale rachunki są niskie.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji.",
+            "Ignoruję wyciek, bo woda jest odnawialna."
+          ],
+          "correct": 0,
+          "example": "Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji.",
+          "explanation": "Nieszczelny kran może marnować wodę przez wiele godzin. Zmywarka i pralka powinny działać zgodnie z instrukcją oraz rzeczywistą potrzebą. Oszczędzanie nie uzasadnia zaniedbania higieny ani wylewania chemikaliów do odpływu.",
+          "feedback": [
+            "Tak — Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji.",
+            "To nie jest właściwe. Nieszczelny kran może marnować wodę przez wiele godzin. Zmywarka i pralka powinny działać zgodnie z instrukcją oraz rzeczywistą potrzebą. Oszczędzanie nie uzasadnia zaniedbania higieny ani wylewania chemikaliów do odpływu."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Zgłaszam lub naprawiam nieszczelność bez ryzykownej ingerencji."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 19,
+      "title_pl": "Telefony i komputery — używaj dłużej",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Telefony i komputery — używaj dłużej",
+          "Wytworzenie elektroniki wymaga surowców i energii. Aktualizacje, naprawy i bezpieczna wymiana podzespołów mogą przedłużyć czas użytkowania. Przed sprzedażą lub oddaniem sprzętu wykonaj kopię i usuń prywatne dane; nie porzucaj urządzeń w odpadach zmieszanych.",
+          "Sytuacja: Laptop uruchamia się wolno, choć działa i nadaje się do pracy.",
+          "Prawidłowe działanie: Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego.",
+          "Nie rób tego: Kupuję nowy bez sprawdzenia przyczyny spowolnienia."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Wytworzenie elektroniki wymaga surowców i energii. Aktualizacje, naprawy i bezpieczna wymiana podzespołów mogą przedłużyć czas użytkowania. Przed sprzedażą lub oddaniem sprzętu wykonaj kopię i usuń prywatne dane; nie porzucaj urządzeń w odpadach zmieszanych."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Laptop uruchamia się wolno, choć działa i nadaje się do pracy. Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hazard",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Wytworzenie elektroniki wymaga surowców i energii. Aktualizacje, naprawy i bezpieczna wymiana podzespołów mogą przedłużyć czas użytkowania. Przed sprzedażą lub oddaniem sprzętu wykonaj kopię i usuń prywatne dane; nie porzucaj urządzeń w odpadach zmieszanych.",
+          "situation": "Laptop uruchamia się wolno, choć działa i nadaje się do pracy.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego.",
+            "Kupuję nowy bez sprawdzenia przyczyny spowolnienia."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego.",
+          "explanation": "Wytworzenie elektroniki wymaga surowców i energii. Aktualizacje, naprawy i bezpieczna wymiana podzespołów mogą przedłużyć czas użytkowania. Przed sprzedażą lub oddaniem sprzętu wykonaj kopię i usuń prywatne dane; nie porzucaj urządzeń w odpadach zmieszanych.",
+          "feedback": [
+            "Tak — Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego.",
+            "To nie jest właściwe. Wytworzenie elektroniki wymaga surowców i energii. Aktualizacje, naprawy i bezpieczna wymiana podzespołów mogą przedłużyć czas użytkowania. Przed sprzedażą lub oddaniem sprzętu wykonaj kopię i usuń prywatne dane; nie porzucaj urządzeń w odpadach zmieszanych."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam przyczyny i ewentualną naprawę przed zakupem nowego."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 20,
+      "title_pl": "Dojazdy, transport i rozsądna mobilność",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Dojazdy, transport i rozsądna mobilność",
+          "Spacer, rower czy transport zbiorowy mogą zmniejszać zużycie paliwa przy odpowiednich warunkach. Wybór powinien uwzględniać bezpieczeństwo, pogodę, dostępność i zdrowie. Nie obwiniaj osób, dla których auto jest konieczne; szukaj realnych zmian.",
+          "Sytuacja: Masz bezpieczną drogę pieszą do sklepu oddalonego o 600 metrów.",
+          "Prawidłowe działanie: Rozważam spacer lub połączenie zakupów z innymi zadaniami.",
+          "Nie rób tego: Wybieram auto zawsze, nawet gdy spacer byłby bezpieczny i wygodny."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Spacer, rower czy transport zbiorowy mogą zmniejszać zużycie paliwa przy odpowiednich warunkach. Wybór powinien uwzględniać bezpieczeństwo, pogodę, dostępność i zdrowie. Nie obwiniaj osób, dla których auto jest konieczne; szukaj realnych zmian."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz bezpieczną drogę pieszą do sklepu oddalonego o 600 metrów. Rozważam spacer lub połączenie zakupów z innymi zadaniami."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Rozważam spacer lub połączenie zakupów z innymi zadaniami. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-cycle",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Spacer, rower czy transport zbiorowy mogą zmniejszać zużycie paliwa przy odpowiednich warunkach. Wybór powinien uwzględniać bezpieczeństwo, pogodę, dostępność i zdrowie. Nie obwiniaj osób, dla których auto jest konieczne; szukaj realnych zmian.",
+          "situation": "Masz bezpieczną drogę pieszą do sklepu oddalonego o 600 metrów.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Rozważam spacer lub połączenie zakupów z innymi zadaniami.",
+            "Wybieram auto zawsze, nawet gdy spacer byłby bezpieczny i wygodny."
+          ],
+          "correct": 0,
+          "example": "Rozważam spacer lub połączenie zakupów z innymi zadaniami.",
+          "explanation": "Spacer, rower czy transport zbiorowy mogą zmniejszać zużycie paliwa przy odpowiednich warunkach. Wybór powinien uwzględniać bezpieczeństwo, pogodę, dostępność i zdrowie. Nie obwiniaj osób, dla których auto jest konieczne; szukaj realnych zmian.",
+          "feedback": [
+            "Tak — Rozważam spacer lub połączenie zakupów z innymi zadaniami.",
+            "To nie jest właściwe. Spacer, rower czy transport zbiorowy mogą zmniejszać zużycie paliwa przy odpowiednich warunkach. Wybór powinien uwzględniać bezpieczeństwo, pogodę, dostępność i zdrowie. Nie obwiniaj osób, dla których auto jest konieczne; szukaj realnych zmian."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Rozważam spacer lub połączenie zakupów z innymi zadaniami."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 21,
+      "title_pl": "Remont i budowa: sortuj surowce, unikaj zagrożeń",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Remont i budowa: sortuj surowce, unikaj zagrożeń",
+          "Czyste drewno, metale, gruz, impregnaty, farby i materiały z substancjami niebezpiecznymi wymagają różnych sposobów zbiórki. Materiał podejrzany o azbest pozostaw bez naruszania i zleć fachową ocenę. Nie próbuj recyklingu przez przypadkowe mieszanie odpadów.",
+          "Sytuacja: W starym budynku znaleziono podejrzaną płytę izolacyjną.",
+          "Prawidłowe działanie: Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów.",
+          "Nie rób tego: Łamię płytę, aby zmieściła się w worku."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Czyste drewno, metale, gruz, impregnaty, farby i materiały z substancjami niebezpiecznymi wymagają różnych sposobów zbiórki. Materiał podejrzany o azbest pozostaw bez naruszania i zleć fachową ocenę. Nie próbuj recyklingu przez przypadkowe mieszanie odpadów."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W starym budynku znaleziono podejrzaną płytę izolacyjną. Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-sort",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Czyste drewno, metale, gruz, impregnaty, farby i materiały z substancjami niebezpiecznymi wymagają różnych sposobów zbiórki. Materiał podejrzany o azbest pozostaw bez naruszania i zleć fachową ocenę. Nie próbuj recyklingu przez przypadkowe mieszanie odpadów.",
+          "situation": "W starym budynku znaleziono podejrzaną płytę izolacyjną.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów.",
+            "Łamię płytę, aby zmieściła się w worku."
+          ],
+          "correct": 0,
+          "example": "Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów.",
+          "explanation": "Czyste drewno, metale, gruz, impregnaty, farby i materiały z substancjami niebezpiecznymi wymagają różnych sposobów zbiórki. Materiał podejrzany o azbest pozostaw bez naruszania i zleć fachową ocenę. Nie próbuj recyklingu przez przypadkowe mieszanie odpadów.",
+          "feedback": [
+            "Tak — Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów.",
+            "To nie jest właściwe. Czyste drewno, metale, gruz, impregnaty, farby i materiały z substancjami niebezpiecznymi wymagają różnych sposobów zbiórki. Materiał podejrzany o azbest pozostaw bez naruszania i zleć fachową ocenę. Nie próbuj recyklingu przez przypadkowe mieszanie odpadów."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Wstrzymuję prace przy materiale i kieruję sprawę do uprawnionych specjalistów."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 22,
+      "title_pl": "Zakupy firmowe i opakowania transportowe",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Zakupy firmowe i opakowania transportowe",
+          "Konsolidacja dostaw, opakowania zwrotne i prawidłowe zabezpieczenie produktów mogą ograniczyć straty. Nie wymuszaj redukcji opakowania kosztem uszkodzonego towaru. Porównuj rzeczywisty wpływ, terminy i liczbę przewozów.",
+          "Sytuacja: Firma sprowadza codziennie małą paczkę od jednego dostawcy.",
+          "Prawidłowe działanie: Analizuję możliwość łączenia zamówień i opakowań zwrotnych.",
+          "Nie rób tego: Zlecam pięć kolejnych dostaw tylko dlatego, że transport opisano jako zielony."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Konsolidacja dostaw, opakowania zwrotne i prawidłowe zabezpieczenie produktów mogą ograniczyć straty. Nie wymuszaj redukcji opakowania kosztem uszkodzonego towaru. Porównuj rzeczywisty wpływ, terminy i liczbę przewozów."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Firma sprowadza codziennie małą paczkę od jednego dostawcy. Analizuję możliwość łączenia zamówień i opakowań zwrotnych."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Analizuję możliwość łączenia zamówień i opakowań zwrotnych. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-cycle",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Konsolidacja dostaw, opakowania zwrotne i prawidłowe zabezpieczenie produktów mogą ograniczyć straty. Nie wymuszaj redukcji opakowania kosztem uszkodzonego towaru. Porównuj rzeczywisty wpływ, terminy i liczbę przewozów.",
+          "situation": "Firma sprowadza codziennie małą paczkę od jednego dostawcy.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Analizuję możliwość łączenia zamówień i opakowań zwrotnych.",
+            "Zlecam pięć kolejnych dostaw tylko dlatego, że transport opisano jako zielony."
+          ],
+          "correct": 0,
+          "example": "Analizuję możliwość łączenia zamówień i opakowań zwrotnych.",
+          "explanation": "Konsolidacja dostaw, opakowania zwrotne i prawidłowe zabezpieczenie produktów mogą ograniczyć straty. Nie wymuszaj redukcji opakowania kosztem uszkodzonego towaru. Porównuj rzeczywisty wpływ, terminy i liczbę przewozów.",
+          "feedback": [
+            "Tak — Analizuję możliwość łączenia zamówień i opakowań zwrotnych.",
+            "To nie jest właściwe. Konsolidacja dostaw, opakowania zwrotne i prawidłowe zabezpieczenie produktów mogą ograniczyć straty. Nie wymuszaj redukcji opakowania kosztem uszkodzonego towaru. Porównuj rzeczywisty wpływ, terminy i liczbę przewozów."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Analizuję możliwość łączenia zamówień i opakowań zwrotnych."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 23,
+      "title_pl": "Greenwashing — co jest dowodem?",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Greenwashing — co jest dowodem?",
+          "Sformułowania „100% eko” lub „przyjazny planecie” wymagają konkretnego, sprawdzalnego znaczenia. Pytaj o parametry, zakres całego produktu, źródła badań i niezależną ocenę. Certyfikat może dotyczyć tylko jednego etapu lub składnika, nie wszystkiego.",
+          "Sytuacja: Reklama twierdzi, że produkt jest w pełni neutralny dla planety, ale nie podaje danych.",
+          "Prawidłowe działanie: Proszę o konkretny zakres deklaracji i wiarygodne dowody.",
+          "Nie rób tego: Wierzę bez weryfikacji, bo logo ma zielony kolor."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Sformułowania „100% eko” lub „przyjazny planecie” wymagają konkretnego, sprawdzalnego znaczenia. Pytaj o parametry, zakres całego produktu, źródła badań i niezależną ocenę. Certyfikat może dotyczyć tylko jednego etapu lub składnika, nie wszystkiego."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Reklama twierdzi, że produkt jest w pełni neutralny dla planety, ale nie podaje danych. Proszę o konkretny zakres deklaracji i wiarygodne dowody."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Proszę o konkretny zakres deklaracji i wiarygodne dowody. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hierarchy",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Sformułowania „100% eko” lub „przyjazny planecie” wymagają konkretnego, sprawdzalnego znaczenia. Pytaj o parametry, zakres całego produktu, źródła badań i niezależną ocenę. Certyfikat może dotyczyć tylko jednego etapu lub składnika, nie wszystkiego.",
+          "situation": "Reklama twierdzi, że produkt jest w pełni neutralny dla planety, ale nie podaje danych.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Proszę o konkretny zakres deklaracji i wiarygodne dowody.",
+            "Wierzę bez weryfikacji, bo logo ma zielony kolor."
+          ],
+          "correct": 0,
+          "example": "Proszę o konkretny zakres deklaracji i wiarygodne dowody.",
+          "explanation": "Sformułowania „100% eko” lub „przyjazny planecie” wymagają konkretnego, sprawdzalnego znaczenia. Pytaj o parametry, zakres całego produktu, źródła badań i niezależną ocenę. Certyfikat może dotyczyć tylko jednego etapu lub składnika, nie wszystkiego.",
+          "feedback": [
+            "Tak — Proszę o konkretny zakres deklaracji i wiarygodne dowody.",
+            "To nie jest właściwe. Sformułowania „100% eko” lub „przyjazny planecie” wymagają konkretnego, sprawdzalnego znaczenia. Pytaj o parametry, zakres całego produktu, źródła badań i niezależną ocenę. Certyfikat może dotyczyć tylko jednego etapu lub składnika, nie wszystkiego."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Proszę o konkretny zakres deklaracji i wiarygodne dowody."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 24,
+      "title_pl": "Audyt domowego kosza — licz i wyciągaj wnioski",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Audyt domowego kosza — licz i wyciągaj wnioski",
+          "Przez tydzień zapisuj typ i przyczynę odpadów: opakowania, resztki żywności, tekstylia i inne. Nie dotykaj odpadów niebezpiecznych, aby je ważyć. Największa frakcja nie zawsze wskazuje największy wpływ, ale dane pomogą znaleźć priorytet.",
+          "Sytuacja: Po tygodniu okazuje się, że najczęściej wyrzucasz opakowania po zakupach internetowych.",
+          "Prawidłowe działanie: Sprawdzam, co można kupować rzadziej lub łączyć dostawy.",
+          "Nie rób tego: Kupuję drogie pojemniki, żeby schować problem przed domownikami."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Przez tydzień zapisuj typ i przyczynę odpadów: opakowania, resztki żywności, tekstylia i inne. Nie dotykaj odpadów niebezpiecznych, aby je ważyć. Największa frakcja nie zawsze wskazuje największy wpływ, ale dane pomogą znaleźć priorytet."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Po tygodniu okazuje się, że najczęściej wyrzucasz opakowania po zakupach internetowych. Sprawdzam, co można kupować rzadziej lub łączyć dostawy."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Sprawdzam, co można kupować rzadziej lub łączyć dostawy. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-home",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Przez tydzień zapisuj typ i przyczynę odpadów: opakowania, resztki żywności, tekstylia i inne. Nie dotykaj odpadów niebezpiecznych, aby je ważyć. Największa frakcja nie zawsze wskazuje największy wpływ, ale dane pomogą znaleźć priorytet.",
+          "situation": "Po tygodniu okazuje się, że najczęściej wyrzucasz opakowania po zakupach internetowych.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Sprawdzam, co można kupować rzadziej lub łączyć dostawy.",
+            "Kupuję drogie pojemniki, żeby schować problem przed domownikami."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam, co można kupować rzadziej lub łączyć dostawy.",
+          "explanation": "Przez tydzień zapisuj typ i przyczynę odpadów: opakowania, resztki żywności, tekstylia i inne. Nie dotykaj odpadów niebezpiecznych, aby je ważyć. Największa frakcja nie zawsze wskazuje największy wpływ, ale dane pomogą znaleźć priorytet.",
+          "feedback": [
+            "Tak — Sprawdzam, co można kupować rzadziej lub łączyć dostawy.",
+            "To nie jest właściwe. Przez tydzień zapisuj typ i przyczynę odpadów: opakowania, resztki żywności, tekstylia i inne. Nie dotykaj odpadów niebezpiecznych, aby je ważyć. Największa frakcja nie zawsze wskazuje największy wpływ, ale dane pomogą znaleźć priorytet."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Sprawdzam, co można kupować rzadziej lub łączyć dostawy."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 25,
+      "title_pl": "Zero waste bez presji: plan na 30 dni",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Zero waste bez presji: plan na 30 dni",
+          "Nie potrzebujesz absolutnego zera odpadów, żeby działać skutecznie. Wybierz trzy realne zmiany, przypisz im mierniki i sprawdź wyniki po miesiącu. Bezpieczeństwo i finanse są ważniejsze niż wygląd zielonego stylu życia.",
+          "Sytuacja: Masz ograniczony budżet i nie możesz wymienić wszystkich urządzeń.",
+          "Prawidłowe działanie: Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się.",
+          "Nie rób tego: Biorę wysoki kredyt tylko po to, by kupić modne urządzenia."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Nie potrzebujesz absolutnego zera odpadów, żeby działać skutecznie. Wybierz trzy realne zmiany, przypisz im mierniki i sprawdź wyniki po miesiącu. Bezpieczeństwo i finanse są ważniejsze niż wygląd zielonego stylu życia."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz ograniczony budżet i nie możesz wymienić wszystkich urządzeń. Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hierarchy",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Nie potrzebujesz absolutnego zera odpadów, żeby działać skutecznie. Wybierz trzy realne zmiany, przypisz im mierniki i sprawdź wyniki po miesiącu. Bezpieczeństwo i finanse są ważniejsze niż wygląd zielonego stylu życia.",
+          "situation": "Masz ograniczony budżet i nie możesz wymienić wszystkich urządzeń.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się.",
+            "Biorę wysoki kredyt tylko po to, by kupić modne urządzenia."
+          ],
+          "correct": 0,
+          "example": "Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się.",
+          "explanation": "Nie potrzebujesz absolutnego zera odpadów, żeby działać skutecznie. Wybierz trzy realne zmiany, przypisz im mierniki i sprawdź wyniki po miesiącu. Bezpieczeństwo i finanse są ważniejsze niż wygląd zielonego stylu życia.",
+          "feedback": [
+            "Tak — Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się.",
+            "To nie jest właściwe. Nie potrzebujesz absolutnego zera odpadów, żeby działać skutecznie. Wybierz trzy realne zmiany, przypisz im mierniki i sprawdź wyniki po miesiącu. Bezpieczeństwo i finanse są ważniejsze niż wygląd zielonego stylu życia."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Wybieram bezpłatne lub tanie zmiany i mierzę wynik bez zadłużania się."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 26,
+      "title_pl": "Porównuj produkty uczciwie — cykl życia",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Porównuj produkty uczciwie — cykl życia",
+          "Porównanie torby materiałowej i jednorazowej lub kubka wielorazowego wymaga danych o produkcji, liczbie użyć, myciu, trwałości i końcu życia. Bez tych danych nie da się odpowiedzialnie ogłosić uniwersalnego zwycięzcy. Lepiej pokazać niepewność niż wymyślony próg użyć.",
+          "Sytuacja: Ktoś stwierdza, że każda bawełniana torba jest zawsze lepsza od plastikowej.",
+          "Prawidłowe działanie: Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków.",
+          "Nie rób tego: Potwierdzam wyłącznie dlatego, że materiał jest naturalny."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Porównanie torby materiałowej i jednorazowej lub kubka wielorazowego wymaga danych o produkcji, liczbie użyć, myciu, trwałości i końcu życia. Bez tych danych nie da się odpowiedzialnie ogłosić uniwersalnego zwycięzcy. Lepiej pokazać niepewność niż wymyślony próg użyć."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Ktoś stwierdza, że każda bawełniana torba jest zawsze lepsza od plastikowej. Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-cycle",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Porównanie torby materiałowej i jednorazowej lub kubka wielorazowego wymaga danych o produkcji, liczbie użyć, myciu, trwałości i końcu życia. Bez tych danych nie da się odpowiedzialnie ogłosić uniwersalnego zwycięzcy. Lepiej pokazać niepewność niż wymyślony próg użyć.",
+          "situation": "Ktoś stwierdza, że każda bawełniana torba jest zawsze lepsza od plastikowej.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków.",
+            "Potwierdzam wyłącznie dlatego, że materiał jest naturalny."
+          ],
+          "correct": 0,
+          "example": "Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków.",
+          "explanation": "Porównanie torby materiałowej i jednorazowej lub kubka wielorazowego wymaga danych o produkcji, liczbie użyć, myciu, trwałości i końcu życia. Bez tych danych nie da się odpowiedzialnie ogłosić uniwersalnego zwycięzcy. Lepiej pokazać niepewność niż wymyślony próg użyć.",
+          "feedback": [
+            "Tak — Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków.",
+            "To nie jest właściwe. Porównanie torby materiałowej i jednorazowej lub kubka wielorazowego wymaga danych o produkcji, liczbie użyć, myciu, trwałości i końcu życia. Bez tych danych nie da się odpowiedzialnie ogłosić uniwersalnego zwycięzcy. Lepiej pokazać niepewność niż wymyślony próg użyć."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Pytam o liczbę użyć i rzeczywiste dane, nie ogłaszam zasady bez wyjątków."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 27,
+      "title_pl": "Zespół i rodzina — naucz innych bez zawstydzania",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Zespół i rodzina — naucz innych bez zawstydzania",
+          "Działający system wymaga czytelnych pojemników, lokalnej instrukcji, odpowiedzialności i sposobu wyjaśniania pomyłek. Zmiany utrzymują się lepiej, gdy ludzie rozumieją powód i mają warunki do właściwego wyboru. Jedna kartka wskazówek bywa lepsza niż setka zakazów.",
+          "Sytuacja: W biurze baterie trafiają do resztkowych, bo nikt nie wie, gdzie je oddać.",
+          "Prawidłowe działanie: Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie.",
+          "Nie rób tego: Publicznie zawstydzam pracownika bez przygotowania rozwiązania."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Działający system wymaga czytelnych pojemników, lokalnej instrukcji, odpowiedzialności i sposobu wyjaśniania pomyłek. Zmiany utrzymują się lepiej, gdy ludzie rozumieją powód i mają warunki do właściwego wyboru. Jedna kartka wskazówek bywa lepsza niż setka zakazów."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W biurze baterie trafiają do resztkowych, bo nikt nie wie, gdzie je oddać. Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-community",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Działający system wymaga czytelnych pojemników, lokalnej instrukcji, odpowiedzialności i sposobu wyjaśniania pomyłek. Zmiany utrzymują się lepiej, gdy ludzie rozumieją powód i mają warunki do właściwego wyboru. Jedna kartka wskazówek bywa lepsza niż setka zakazów.",
+          "situation": "W biurze baterie trafiają do resztkowych, bo nikt nie wie, gdzie je oddać.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie.",
+            "Publicznie zawstydzam pracownika bez przygotowania rozwiązania."
+          ],
+          "correct": 0,
+          "example": "Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie.",
+          "explanation": "Działający system wymaga czytelnych pojemników, lokalnej instrukcji, odpowiedzialności i sposobu wyjaśniania pomyłek. Zmiany utrzymują się lepiej, gdy ludzie rozumieją powód i mają warunki do właściwego wyboru. Jedna kartka wskazówek bywa lepsza niż setka zakazów.",
+          "feedback": [
+            "Tak — Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie.",
+            "To nie jest właściwe. Działający system wymaga czytelnych pojemników, lokalnej instrukcji, odpowiedzialności i sposobu wyjaśniania pomyłek. Zmiany utrzymują się lepiej, gdy ludzie rozumieją powód i mają warunki do właściwego wyboru. Jedna kartka wskazówek bywa lepsza niż setka zakazów."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Ustawiam bezpieczny punkt zbiórki i wyjaśniam jego użycie."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 28,
+      "title_pl": "Expert: projekt domowy — od danych do działania",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: projekt domowy — od danych do działania",
+          "Przygotuj prostą tabelę: co jest wyrzucane, z jakiej przyczyny, jaki jest lepszy wybór, kto go wykona i kiedy sprawdzimy wynik. Ustal jeden miernik na frakcję, nie obciążając domowników skomplikowanym raportowaniem. Zostaw miejsce na korektę planu.",
+          "Sytuacja: W projekcie ekologicznym nikt nie pamięta, kto odpowiada za zbiórkę baterii.",
+          "Prawidłowe działanie: Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie.",
+          "Nie rób tego: Pozwalam, by odpady niebezpieczne trafiały do dowolnego pojemnika."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Przygotuj prostą tabelę: co jest wyrzucane, z jakiej przyczyny, jaki jest lepszy wybór, kto go wykona i kiedy sprawdzimy wynik. Ustal jeden miernik na frakcję, nie obciążając domowników skomplikowanym raportowaniem. Zostaw miejsce na korektę planu."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "W projekcie ekologicznym nikt nie pamięta, kto odpowiada za zbiórkę baterii. Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-community",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Przygotuj prostą tabelę: co jest wyrzucane, z jakiej przyczyny, jaki jest lepszy wybór, kto go wykona i kiedy sprawdzimy wynik. Ustal jeden miernik na frakcję, nie obciążając domowników skomplikowanym raportowaniem. Zostaw miejsce na korektę planu.",
+          "situation": "W projekcie ekologicznym nikt nie pamięta, kto odpowiada za zbiórkę baterii.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie.",
+            "Pozwalam, by odpady niebezpieczne trafiały do dowolnego pojemnika."
+          ],
+          "correct": 0,
+          "example": "Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie.",
+          "explanation": "Przygotuj prostą tabelę: co jest wyrzucane, z jakiej przyczyny, jaki jest lepszy wybór, kto go wykona i kiedy sprawdzimy wynik. Ustal jeden miernik na frakcję, nie obciążając domowników skomplikowanym raportowaniem. Zostaw miejsce na korektę planu.",
+          "feedback": [
+            "Tak — Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie.",
+            "To nie jest właściwe. Przygotuj prostą tabelę: co jest wyrzucane, z jakiej przyczyny, jaki jest lepszy wybór, kto go wykona i kiedy sprawdzimy wynik. Ustal jeden miernik na frakcję, nie obciążając domowników skomplikowanym raportowaniem. Zostaw miejsce na korektę planu."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Wyznaczam osobę, miejsce i datę przeglądu oraz informuję wszystkich spokojnie."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "jestem-eko",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny: JESTEM EKO w prawdziwym życiu",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny: JESTEM EKO w prawdziwym życiu",
+          "Znajomość kolorów koszy to początek, nie koniec. Na poziomie Expert umiesz rozdzielić potrzebę od zakupu, naprawić albo oddać rzeczy, wyjaśnić recykling, rozpoznać odpady niebezpieczne i sprawdzić lokalną instrukcję. Jeśli brakuje danych, potrafisz powiedzieć, co należy zweryfikować.",
+          "Sytuacja: Masz kurtkę z zepsutym zamkiem, butelkę z kaucją i rozładowaną baterię.",
+          "Prawidłowe działanie: Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki.",
+          "Nie rób tego: Wrzucam wszystkie trzy do pojemnika na plastik."
+        ],
+        "sections": [
+          {
+            "heading": "Poznaj zasadę",
+            "text": "Znajomość kolorów koszy to początek, nie koniec. Na poziomie Expert umiesz rozdzielić potrzebę od zakupu, naprawić albo oddać rzeczy, wyjaśnić recykling, rozpoznać odpady niebezpieczne i sprawdzić lokalną instrukcję. Jeśli brakuje danych, potrafisz powiedzieć, co należy zweryfikować."
+          },
+          {
+            "heading": "Wyobraź sobie konkretną sytuację",
+            "text": "Masz kurtkę z zepsutym zamkiem, butelkę z kaucją i rozładowaną baterię. Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki."
+          },
+          {
+            "heading": "Twoje ćwiczenie",
+            "text": "Znajdź odpowiedni przedmiot lub przykład w swoim otoczeniu. Wyjaśnij na piśmie, dlaczego właściwym postępowaniem jest: Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki. Potem sprawdź aktualne instrukcje lokalnego operatora, jeśli dotyczy to segregacji."
+          }
+        ],
+        "illustration": "eko-hierarchy",
+        "sources": [
+          {
+            "label": "Oficjalne informacje i zasady",
+            "url": "https://eur-lex.europa.eu/EN/legal-content/glossary/waste-hierarchy.html"
+          }
+        ],
+        "learning": {
+          "intro": "Znajomość kolorów koszy to początek, nie koniec. Na poziomie Expert umiesz rozdzielić potrzebę od zakupu, naprawić albo oddać rzeczy, wyjaśnić recykling, rozpoznać odpady niebezpieczne i sprawdzić lokalną instrukcję. Jeśli brakuje danych, potrafisz powiedzieć, co należy zweryfikować.",
+          "situation": "Masz kurtkę z zepsutym zamkiem, butelkę z kaucją i rozładowaną baterię.",
+          "question": "Jak najlepiej postąpisz i dlaczego?",
+          "options": [
+            "Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki.",
+            "Wrzucam wszystkie trzy do pojemnika na plastik."
+          ],
+          "correct": 0,
+          "example": "Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki.",
+          "explanation": "Znajomość kolorów koszy to początek, nie koniec. Na poziomie Expert umiesz rozdzielić potrzebę od zakupu, naprawić albo oddać rzeczy, wyjaśnić recykling, rozpoznać odpady niebezpieczne i sprawdzić lokalną instrukcję. Jeśli brakuje danych, potrafisz powiedzieć, co należy zweryfikować.",
+          "feedback": [
+            "Tak — Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki.",
+            "To nie jest właściwe. Znajomość kolorów koszy to początek, nie koniec. Na poziomie Expert umiesz rozdzielić potrzebę od zakupu, naprawić albo oddać rzeczy, wyjaśnić recykling, rozpoznać odpady niebezpieczne i sprawdzić lokalną instrukcję. Jeśli brakuje danych, potrafisz powiedzieć, co należy zweryfikować."
+          ],
+          "task": "Powiedz Anielce, jak zastosujesz tę zasadę u siebie: Kurtkę rozważam do naprawy, butelkę oddaję w systemie kaucji, baterię do specjalnej zbiórki."
+        },
+        "editorial_status": "review_needed"
+      }
+    }
+  ]
+}
