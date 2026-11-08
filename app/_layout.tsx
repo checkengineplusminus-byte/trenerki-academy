@@ -31,6 +31,7 @@ export default function RootLayout(){
    <Stack.Protected guard={signedIn} redirectTo="/konto">
     <Stack.Screen name="moje-kursy"/>
     <Stack.Screen name="nauka"/>
+    <Stack.Screen name="dyplom"/>
     <Stack.Screen name="admin"/>
    </Stack.Protected>
   </Stack>;
