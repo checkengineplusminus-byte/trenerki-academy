@@ -168,7 +168,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -222,7 +223,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -276,7 +278,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -330,7 +333,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -438,7 +442,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -546,7 +551,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -986,7 +992,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -1138,7 +1145,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -1580,7 +1588,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -1779,7 +1788,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane."
           }
-        ]
+        ],
+        "illustration": "word-review"
       }
     },
     {
@@ -1942,7 +1952,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -1996,7 +2007,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -2050,7 +2062,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd."
           }
-        ]
+        ],
+        "illustration": "word-review"
       }
     },
     {
@@ -2104,7 +2117,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument."
           }
-        ]
+        ],
+        "illustration": "word-structure"
       }
     },
     {
@@ -2158,7 +2172,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy."
           }
-        ]
+        ],
+        "illustration": "word-review"
       }
     },
     {
@@ -2212,7 +2227,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem."
           }
-        ]
+        ],
+        "illustration": "word-review"
       }
     },
     {
@@ -2266,7 +2282,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę."
           }
-        ]
+        ],
+        "illustration": "word-document"
       }
     },
     {
@@ -2374,7 +2391,8 @@
             "heading": "Najczęstszy błąd i jego konsekwencja",
             "text": "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."
           }
-        ]
+        ],
+        "illustration": "word-review"
       }
     }
   ]
