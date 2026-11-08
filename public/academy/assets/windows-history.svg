@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-label="Windows — skąd się wziął?">
+<rect width="1200" height="650" rx="28" fill="#f9fbf6"/>
+<rect x="24" y="22" width="1152" height="606" rx="27" fill="#f0f6eb" stroke="#d2e4ce"/>
+<path d="M46 178 H1154" stroke="#d0dfd1" stroke-width="2"/>
+<text x="48" y="91" font-size="37" font-weight="900" fill="#163d2d" font-family="Arial, sans-serif">Windows — skąd się wziął?</text>
+<text x="49" y="136" font-size="21" fill="#567060" font-family="Arial, sans-serif">Historia interfejsu, zanim nauczysz się skrótów.</text>
+<g font-family="Arial, sans-serif"><g><rect x="44" y="225" width="172.83333333333334" height="310" rx="26" fill="#d9e7f2" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="130.41666666666669" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="130.41666666666669" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">1981</text>
+<text x="130.41666666666669" y="396" font-size="16" font-weight="800" fill="#183a2a" text-anchor="middle">MS-DOS</text>
+<text x="130.41666666666669" y="442" font-size="13" fill="#385c44" text-anchor="middle">Wpisywanie poleceń</text>
+<path d="M 218.83333333333334 365 L 227.83333333333334 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="231.83333333333334" y="225" width="172.83333333333334" height="310" rx="26" fill="#d6eadb" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="318.25" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="318.25" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">1985</text>
+<text x="318.25" y="396" font-size="16" font-weight="800" fill="#183a2a" text-anchor="middle">WINDOWS 1.0</text>
+<text x="318.25" y="442" font-size="13" fill="#385c44" text-anchor="middle">Okna, mysz, programy</text>
+<path d="M 406.6666666666667 365 L 415.6666666666667 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="419.6666666666667" y="225" width="172.83333333333334" height="310" rx="26" fill="#d8e0ed" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="506.08333333333337" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="506.08333333333337" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">1995</text>
+<text x="506.08333333333337" y="396" font-size="16" font-weight="800" fill="#183a2a" text-anchor="middle">WINDOWS 95</text>
+<text x="506.08333333333337" y="442" font-size="13" fill="#385c44" text-anchor="middle">Menu Start i pasek zadań</text>
+<path d="M 594.5 365 L 603.5 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="607.5" y="225" width="172.83333333333334" height="310" rx="26" fill="#dce9d1" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="693.9166666666666" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="693.9166666666666" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">2001</text>
+<text x="693.9166666666666" y="396" font-size="16" font-weight="800" fill="#183a2a" text-anchor="middle">WINDOWS XP</text>
+<text x="693.9166666666666" y="442" font-size="13" fill="#385c44" text-anchor="middle">Nowy wygląd użytkownika</text>
+<path d="M 782.3333333333334 365 L 791.3333333333334 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="795.3333333333334" y="225" width="172.83333333333334" height="310" rx="26" fill="#cbdde6" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="881.75" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="881.75" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">2015</text>
+<text x="881.75" y="396" font-size="16" font-weight="800" fill="#183a2a" text-anchor="middle">WINDOWS 10</text>
+<text x="881.75" y="442" font-size="13" fill="#385c44" text-anchor="middle">Powrót menu Start</text>
+<path d="M 970.1666666666667 365 L 979.1666666666667 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="983.1666666666667" y="225" width="172.83333333333334" height="310" rx="26" fill="#d0e9e1" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="1069.5833333333335" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="1069.5833333333335" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">2021</text>
+<text x="1069.5833333333335" y="396" font-size="16" font-weight="800" fill="#183a2a" text-anchor="middle">WINDOWS 11</text>
+<text x="1069.5833333333335" y="442" font-size="13" fill="#385c44" text-anchor="middle">Nowy układ interfejsu</text>
+
+</g></g>
+<text x="46" y="591" font-size="17" font-weight="800" fill="#628168" font-family="Arial, sans-serif">TRENERKI ACADEMY · Oryginalna ilustracja edukacyjna · schemat poglądowy</text>
+</svg>
