@@ -6,10 +6,10 @@
 
 ## Stan: 8 listopada 2026
 
-- **69 kursów** z ustalonymi cenami w złotych i 8 modułami każdy (**552 lekcje** w Supabase).
-- **69 kart kursów i opisów przed zakupem**, z ciekawostką, sytuacją z życia, efektami nauki, pełnym spisem modułów i odpowiednimi ostrzeżeniami.
+- **69 kursów** z ustalonymi cenami w złotych: 66 kursów po 8 lekcji oraz 3 języki budowlane po 12 lekcji (**564 lekcje** w Supabase).
+- **69 kart kursów i opisów przed zakupem**, z ciekawostką, sytuacją z życia, efektami nauki i faktycznym spisem 8 lub 12 modułów.
 - **20 kursów rzadkich rzemiosł** w serii „Zapomniane rzemiosła”. Każdy ma status historyczny nauczania oparty na źródle. Gdy brak wiarygodnej daty zakończenia kształcenia w Polsce, pozostaje `null` i strona mówi to otwarcie. **Kowal, zdun i kaletnik nadal występują w materiałach MEN; nie wolno nazywać ich wymarłymi zawodami.**
-- **Angielski, norweski i niemiecki na budowie**, kurs o wspieraniu dziecka w pracach domowych, **Transport i logistyka**, **Windows — skróty**.
+- **Angielski, norweski i niemiecki na budowie od zera (A0)** — każdy po 12 lekcji, 72 zwroty z odsłuchem, ilustracje własne, słownik, scenki decyzyjne i linki do urzędów; kurs o wspieraniu dziecka w pracach domowych, **Transport i logistyka**, **Windows — skróty**.
 - Windows, Word, Excel i AutoCAD: **8 modułów** każdy; rysowane w React klawisze, widok *PRZED/PO*, tipy i zadania. Windows **48 skrótów**, Word **48**, Excel **40**, AutoCAD **41**. Skróty mogą zależeć od wersji, języka, platformy i ustawień.
 - Zrealizowane również kursy bezpieczeństwa w relacjach, wsparcia bliskich osoby uzależnionej, ekonomii domowej, niemarnowania jedzenia i pielęgnacji trawnika. Dwa ostatnie kosztują **29,99 zł**; Windows, Word, Excel i AutoCAD po **10 zł**. Świąteczny kurs Mikołaja **gratis**.
 - Wszystkie nowe treści mają **status roboczy**, dopóki nie zostaną sprawdzone przez redaktora / specjalistę. Nie sprzedajemy ich jako ukończonej, certyfikowanej edukacji.
@@ -42,7 +42,7 @@ Nie włączono rzeczywistego obciążania kart, faktur VAT ani automatycznego na
 - `app/kup.tsx` — strona decyzji przed zakupem, serwerowo ograniczona symulacja.
 - `app/prezent.tsx` — podarunki, kody jednorazowe.
 - `app/admin.tsx` — panel z serwerową autoryzacją właściciela.
-- `app/nauka.tsx`, `src/KeyboardLesson.tsx` — nauka i wizualne skróty.
+- `app/nauka.tsx`, `src/KeyboardLesson.tsx`, `src/ConstructionLesson.tsx` — nauka, wizualne skróty i 12-lekcyjne języki budowlane. Widok automatycznie przechodzi do następnej lekcji po zapisaniu postępu; notatki zapisuje oddzielnie.\n- `public/academy/illustrations/` — sześć własnych ilustracji SVG do lekcji (brama, bezpieczeństwo, narzędzia, plan budowy, zgłoszenie, zakończenie).
 - `supabase/functions/ta-academy/index.ts` — admin, prezenty, testy; sekrety wyłącznie po stronie serwera.
 - `content/` — źródłowe programy, materiały i informacje historyczne.
 - `scripts/check-content-consistency.mjs` — automatyczny test spójności kursów i cen.
@@ -58,3 +58,14 @@ Nie włączono rzeczywistego obciążania kart, faktur VAT ani automatycznego na
 5. Bezpieczne serwerowe testy/egzaminy, weryfikowalne potwierdzenia ukończenia oraz reguły wykrywania nadużyć.
 
 **Uwaga:** strony prawne są wersjami przedprodukcyjnymi. Płatności są wyłączone.
+
+## 8 listopada 2026 — poprawka nauki języków na budowie
+
+- Rozszerzono limit bazy `ta_lessons.lesson_no` i `ta_drafts.last_module` z 0–7 do 0–199.
+- Trzy szkolenia są osobnymi programami **A0** dla zwykłych pracowników, nie kierowników.
+- Norwegia: karta HMS, HMS / SJA / SHA / KS, Arbeitstilsynet, płaca budowlana od 6.11.2026.
+- UK: prawo do pracy, site induction, CSCS (nie jest powszechnie ustawowo obowiązkowa), HSE i National Minimum Wage £12.71/h od 1.04.2026 (wiek 21+).
+- Niemcy: Unterweisung, PSA, SiGePlan / SiGeKo, BMAS i 13,90 €/h od 1.01.2026.
+- 72 podstawowe zwroty na każdy język, odsłuch mowy urządzenia w lokalizacji en-GB / nb-NO / de-DE, alfabet i quizy sytuacyjne.
+- Naprawiono postęp w `/moje-kursy` i `/nauka`: mianownik wynika z rzeczywistej liczby lekcji, zapis postępu nie zależy od notatek, a przycisk **Ukończ i przejdź dalej** zmienia lekcję.
+- Oficjalne linki widoczne tylko przy potrzebnych informacjach o prawach, bezpieczeństwie i płacach, nie jako stały akademicki blok źródeł.
