@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-label="Plan dla rodziny i firmy">
+<rect width="1200" height="650" rx="28" fill="#f9fbf6"/>
+<rect x="24" y="22" width="1152" height="606" rx="27" fill="#f0f6eb" stroke="#d2e4ce"/>
+<path d="M46 178 H1154" stroke="#d0dfd1" stroke-width="2"/>
+<text x="48" y="91" font-size="37" font-weight="900" fill="#163d2d" font-family="Arial, sans-serif">Plan dla rodziny i firmy</text>
+<text x="49" y="136" font-size="21" fill="#567060" font-family="Arial, sans-serif">Działania bez wstydu i presji: małe decyzje, jasne odpowiedzialności.</text>
+<g font-family="Arial, sans-serif"><g><rect x="44" y="225" width="266.75" height="310" rx="26" fill="#d1e9c9" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="177.375" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="177.375" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">CEL</text>
+<text x="177.375" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">Jeden problem</text>
+<text x="177.375" y="442" font-size="15" fill="#385c44" text-anchor="middle">Np. opakowania</text>
+<path d="M 312.75 365 L 321.75 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="325.75" y="225" width="266.75" height="310" rx="26" fill="#c7dfe1" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="459.125" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="459.125" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">KROK</text>
+<text x="459.125" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">Jedna zmiana</text>
+<text x="459.125" y="442" font-size="15" fill="#385c44" text-anchor="middle">Np. wspólne dostawy</text>
+<path d="M 594.5 365 L 603.5 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="607.5" y="225" width="266.75" height="310" rx="26" fill="#f1e4c1" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="740.875" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="740.875" y="306" font-size="25" text-anchor="middle" font-weight="800" fill="white">MIARA</text>
+<text x="740.875" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">Co sprawdzamy?</text>
+<text x="740.875" y="442" font-size="15" fill="#385c44" text-anchor="middle">Ile mniej odpadów?</text>
+<path d="M 876.25 365 L 885.25 365" stroke="#45674e" stroke-width="3" stroke-dasharray="4,4"/>
+</g>
+<g><rect x="889.25" y="225" width="266.75" height="310" rx="26" fill="#e4d8e9" stroke="#315944" stroke-opacity=".19" stroke-width="2"/>
+<circle cx="1022.625" cy="297" r="39" fill="#153c2d" fill-opacity=".92"/>
+<text x="1022.625" y="306" font-size="15" text-anchor="middle" font-weight="800" fill="white">PRZEGLĄD</text>
+<text x="1022.625" y="396" font-size="19" font-weight="800" fill="#183a2a" text-anchor="middle">Co poprawić?</text>
+<text x="1022.625" y="442" font-size="15" fill="#385c44" text-anchor="middle">Bez oceniania ludzi</text>
+
+</g></g>
+<text x="46" y="591" font-size="17" font-weight="800" fill="#628168" font-family="Arial, sans-serif">TRENERKI ACADEMY · Oryginalna ilustracja edukacyjna · schemat poglądowy</text>
+</svg>
