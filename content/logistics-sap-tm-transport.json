@@ -1,0 +1,1333 @@
+{
+  "schema_version": 2,
+  "course_slug": "sap-tm-transport",
+  "intro": "SAP Transportation Management (SAP TM) wspiera planowanie i rozliczanie fizycznych przewozów. To TMS: różni się od SAP EWM, który zarządza pracą wewnątrz magazynu. Kurs dotyczy jednostek transportowych, zleceń, przewoźników, tenderingu i obsługi odchyleń.",
+  "source": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Praktyka",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 0,
+      "title_pl": "Czym jest SAP Transportation Management",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Czym jest SAP Transportation Management",
+          "SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów.",
+          "Zastosowanie w pracy: Firma ma pełny magazyn, ale nie zaplanowała odbiorów. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Oddziel pracę SAP TM od picking w SAP EWM. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów.",
+          "situation": "Firma ma pełny magazyn, ale nie zaplanowała odbiorów.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Oddziel pracę SAP TM od picking w SAP EWM.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Oddziel pracę SAP TM od picking w SAP EWM.",
+          "explanation": "SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów.",
+          "feedback": [
+            "Poprawnie. SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów.",
+            "Nie. SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów.",
+            "Nie. SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Oddziel pracę SAP TM od picking w SAP EWM."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Firma ma pełny magazyn, ale nie zaplanowała odbiorów.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 1,
+      "title_pl": "ERP, EWM i TM — przepływ",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ERP, EWM i TM — przepływ",
+          "ERP zarządza zleceniem, EWM pracą magazynu, TM przewozem. Statusy muszą być spójne.",
+          "Zastosowanie w pracy: WMS potwierdził załadunek, ale TM nie ma zlecenia. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź przepływ dokumentów między systemami. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "ERP zarządza zleceniem, EWM pracą magazynu, TM przewozem. Statusy muszą być spójne.",
+          "situation": "WMS potwierdził załadunek, ale TM nie ma zlecenia.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź przepływ dokumentów między systemami.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przepływ dokumentów między systemami.",
+          "explanation": "ERP zarządza zleceniem, EWM pracą magazynu, TM przewozem. Statusy muszą być spójne.",
+          "feedback": [
+            "Poprawnie. ERP zarządza zleceniem, EWM pracą magazynu, TM przewozem. Statusy muszą być spójne.",
+            "Nie. ERP zarządza zleceniem, EWM pracą magazynu, TM przewozem. Statusy muszą być spójne.",
+            "Nie. ERP zarządza zleceniem, EWM pracą magazynu, TM przewozem. Statusy muszą być spójne."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź przepływ dokumentów między systemami."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: WMS potwierdził załadunek, ale TM nie ma zlecenia.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 2,
+      "title_pl": "Interfejs SAP TM i role",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Interfejs SAP TM i role",
+          "Planner, dispatcher i controller potrzebują innych uprawnień.",
+          "Zastosowanie w pracy: Magazynier chce zmienić umowę z przewoźnikiem. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj rolę i wymagane zatwierdzenie. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Planner, dispatcher i controller potrzebują innych uprawnień.",
+          "situation": "Magazynier chce zmienić umowę z przewoźnikiem.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj rolę i wymagane zatwierdzenie.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj rolę i wymagane zatwierdzenie.",
+          "explanation": "Planner, dispatcher i controller potrzebują innych uprawnień.",
+          "feedback": [
+            "Poprawnie. Planner, dispatcher i controller potrzebują innych uprawnień.",
+            "Nie. Planner, dispatcher i controller potrzebują innych uprawnień.",
+            "Nie. Planner, dispatcher i controller potrzebują innych uprawnień."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj rolę i wymagane zatwierdzenie."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Magazynier chce zmienić umowę z przewoźnikiem.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 3,
+      "title_pl": "Freight unit — co przewozimy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Freight unit — co przewozimy",
+          "Freight unit reprezentuje wymaganie przewozowe wynikające z zamówienia lub dostawy.",
+          "Zastosowanie w pracy: Klient zamawia transport 8 palet z jednym terminem. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź jednostkę transportową i parametry ładunku. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Freight unit reprezentuje wymaganie przewozowe wynikające z zamówienia lub dostawy.",
+          "situation": "Klient zamawia transport 8 palet z jednym terminem.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź jednostkę transportową i parametry ładunku.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź jednostkę transportową i parametry ładunku.",
+          "explanation": "Freight unit reprezentuje wymaganie przewozowe wynikające z zamówienia lub dostawy.",
+          "feedback": [
+            "Poprawnie. Freight unit reprezentuje wymaganie przewozowe wynikające z zamówienia lub dostawy.",
+            "Nie. Freight unit reprezentuje wymaganie przewozowe wynikające z zamówienia lub dostawy.",
+            "Nie. Freight unit reprezentuje wymaganie przewozowe wynikające z zamówienia lub dostawy."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź jednostkę transportową i parametry ładunku."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient zamawia transport 8 palet z jednym terminem.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 4,
+      "title_pl": "Freight order — jak przewozimy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Freight order — jak przewozimy",
+          "Freight order opisuje zorganizowany przewóz z trasą, zasobem i przewoźnikiem.",
+          "Zastosowanie w pracy: Zlecenie obejmuje dwie dostawy jedną ciężarówką. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Dobierz właściwy FO i kolejność punktów. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Freight order opisuje zorganizowany przewóz z trasą, zasobem i przewoźnikiem.",
+          "situation": "Zlecenie obejmuje dwie dostawy jedną ciężarówką.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Dobierz właściwy FO i kolejność punktów.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Dobierz właściwy FO i kolejność punktów.",
+          "explanation": "Freight order opisuje zorganizowany przewóz z trasą, zasobem i przewoźnikiem.",
+          "feedback": [
+            "Poprawnie. Freight order opisuje zorganizowany przewóz z trasą, zasobem i przewoźnikiem.",
+            "Nie. Freight order opisuje zorganizowany przewóz z trasą, zasobem i przewoźnikiem.",
+            "Nie. Freight order opisuje zorganizowany przewóz z trasą, zasobem i przewoźnikiem."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Dobierz właściwy FO i kolejność punktów."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Zlecenie obejmuje dwie dostawy jedną ciężarówką.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 5,
+      "title_pl": "Dane podstawowe: lokalizacje",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Dane podstawowe: lokalizacje",
+          "Adresy i okna czasowe determinują możliwy plan trasy.",
+          "Zastosowanie w pracy: Klient podał poprawne miasto, lecz błędny kod pocztowy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj punkt dostawy przed planowaniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Adresy i okna czasowe determinują możliwy plan trasy.",
+          "situation": "Klient podał poprawne miasto, lecz błędny kod pocztowy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj punkt dostawy przed planowaniem.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj punkt dostawy przed planowaniem.",
+          "explanation": "Adresy i okna czasowe determinują możliwy plan trasy.",
+          "feedback": [
+            "Poprawnie. Adresy i okna czasowe determinują możliwy plan trasy.",
+            "Nie. Adresy i okna czasowe determinują możliwy plan trasy.",
+            "Nie. Adresy i okna czasowe determinują możliwy plan trasy."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj punkt dostawy przed planowaniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient podał poprawne miasto, lecz błędny kod pocztowy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 6,
+      "title_pl": "Waga, objętość i nośność",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Waga, objętość i nośność",
+          "Brak masy i gabarytu uniemożliwia wiarygodną ocenę ładowności.",
+          "Zastosowanie w pracy: Masz 10 palet bez informacji o masie. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Uzupełnij wagę, wymiary i ograniczenia przed przydzieleniem auta. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Brak masy i gabarytu uniemożliwia wiarygodną ocenę ładowności.",
+          "situation": "Masz 10 palet bez informacji o masie.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Uzupełnij wagę, wymiary i ograniczenia przed przydzieleniem auta.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Uzupełnij wagę, wymiary i ograniczenia przed przydzieleniem auta.",
+          "explanation": "Brak masy i gabarytu uniemożliwia wiarygodną ocenę ładowności.",
+          "feedback": [
+            "Poprawnie. Brak masy i gabarytu uniemożliwia wiarygodną ocenę ładowności.",
+            "Nie. Brak masy i gabarytu uniemożliwia wiarygodną ocenę ładowności.",
+            "Nie. Brak masy i gabarytu uniemożliwia wiarygodną ocenę ładowności."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Uzupełnij wagę, wymiary i ograniczenia przed przydzieleniem auta."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Masz 10 palet bez informacji o masie.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 7,
+      "title_pl": "Carrier i resource",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Carrier i resource",
+          "Przewoźnik oraz zasób transportowy muszą mieć właściwe możliwości.",
+          "Zastosowanie w pracy: Transport wymaga windy, a przewoźnik ma auto bez niej. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zgłoś wymaganie sprzętowe przy doborze środka przewozu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przewoźnik oraz zasób transportowy muszą mieć właściwe możliwości.",
+          "situation": "Transport wymaga windy, a przewoźnik ma auto bez niej.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zgłoś wymaganie sprzętowe przy doborze środka przewozu.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zgłoś wymaganie sprzętowe przy doborze środka przewozu.",
+          "explanation": "Przewoźnik oraz zasób transportowy muszą mieć właściwe możliwości.",
+          "feedback": [
+            "Poprawnie. Przewoźnik oraz zasób transportowy muszą mieć właściwe możliwości.",
+            "Nie. Przewoźnik oraz zasób transportowy muszą mieć właściwe możliwości.",
+            "Nie. Przewoźnik oraz zasób transportowy muszą mieć właściwe możliwości."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zgłoś wymaganie sprzętowe przy doborze środka przewozu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Transport wymaga windy, a przewoźnik ma auto bez niej.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 8,
+      "title_pl": "ETA i okna dostaw",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ETA i okna dostaw",
+          "Czas przejazdu musi uwzględniać okna, załadunki i realistyczne przerwy.",
+          "Zastosowanie w pracy: Kierowca ma dojechać o 08:00, ale rozładunek trwa do 09:00. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Popraw harmonogram, nie ustawiaj niemożliwego ETA. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Czas przejazdu musi uwzględniać okna, załadunki i realistyczne przerwy.",
+          "situation": "Kierowca ma dojechać o 08:00, ale rozładunek trwa do 09:00.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Popraw harmonogram, nie ustawiaj niemożliwego ETA.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Popraw harmonogram, nie ustawiaj niemożliwego ETA.",
+          "explanation": "Czas przejazdu musi uwzględniać okna, załadunki i realistyczne przerwy.",
+          "feedback": [
+            "Poprawnie. Czas przejazdu musi uwzględniać okna, załadunki i realistyczne przerwy.",
+            "Nie. Czas przejazdu musi uwzględniać okna, załadunki i realistyczne przerwy.",
+            "Nie. Czas przejazdu musi uwzględniać okna, załadunki i realistyczne przerwy."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Popraw harmonogram, nie ustawiaj niemożliwego ETA."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Kierowca ma dojechać o 08:00, ale rozładunek trwa do 09:00.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 9,
+      "title_pl": "Pierwsza trasa: dwa przystanki",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsza trasa: dwa przystanki",
+          "Zaplanuj odbiór, dwa rozładunki i powrót, zachowując ograniczenia czasu i miejsca.",
+          "Zastosowanie w pracy: Pierwszy odbiorca przyjmuje od 11:00, drugi do 12:00. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj kolejność i czasy, zanim obiecasz terminy. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zaplanuj odbiór, dwa rozładunki i powrót, zachowując ograniczenia czasu i miejsca.",
+          "situation": "Pierwszy odbiorca przyjmuje od 11:00, drugi do 12:00.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj kolejność i czasy, zanim obiecasz terminy.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj kolejność i czasy, zanim obiecasz terminy.",
+          "explanation": "Zaplanuj odbiór, dwa rozładunki i powrót, zachowując ograniczenia czasu i miejsca.",
+          "feedback": [
+            "Poprawnie. Zaplanuj odbiór, dwa rozładunki i powrót, zachowując ograniczenia czasu i miejsca.",
+            "Nie. Zaplanuj odbiór, dwa rozładunki i powrót, zachowując ograniczenia czasu i miejsca.",
+            "Nie. Zaplanuj odbiór, dwa rozładunki i powrót, zachowując ograniczenia czasu i miejsca."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj kolejność i czasy, zanim obiecasz terminy."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Pierwszy odbiorca przyjmuje od 11:00, drugi do 12:00.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 10,
+      "title_pl": "Transport cockpit",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Transport cockpit",
+          "Widok planowania pozwala przeglądać potrzeby przewozowe i przypisywać je do zleceń.",
+          "Zastosowanie w pracy: Jedna jednostka transportowa nie ma przypisanego kursu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź alokację FU do właściwego FO. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Widok planowania pozwala przeglądać potrzeby przewozowe i przypisywać je do zleceń.",
+          "situation": "Jedna jednostka transportowa nie ma przypisanego kursu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź alokację FU do właściwego FO.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź alokację FU do właściwego FO.",
+          "explanation": "Widok planowania pozwala przeglądać potrzeby przewozowe i przypisywać je do zleceń.",
+          "feedback": [
+            "Poprawnie. Widok planowania pozwala przeglądać potrzeby przewozowe i przypisywać je do zleceń.",
+            "Nie. Widok planowania pozwala przeglądać potrzeby przewozowe i przypisywać je do zleceń.",
+            "Nie. Widok planowania pozwala przeglądać potrzeby przewozowe i przypisywać je do zleceń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź alokację FU do właściwego FO."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Jedna jednostka transportowa nie ma przypisanego kursu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 11,
+      "title_pl": "Delivery proposals",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Delivery proposals",
+          "SAP TM może proponować dostawy na podstawie zamówień i ich parametrów.",
+          "Zastosowanie w pracy: Propozycja obejmuje niewłaściwą ilość. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Skontroluj stan zlecenia i ilości przed utworzeniem dostawy. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "SAP TM może proponować dostawy na podstawie zamówień i ich parametrów.",
+          "situation": "Propozycja obejmuje niewłaściwą ilość.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Skontroluj stan zlecenia i ilości przed utworzeniem dostawy.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Skontroluj stan zlecenia i ilości przed utworzeniem dostawy.",
+          "explanation": "SAP TM może proponować dostawy na podstawie zamówień i ich parametrów.",
+          "feedback": [
+            "Poprawnie. SAP TM może proponować dostawy na podstawie zamówień i ich parametrów.",
+            "Nie. SAP TM może proponować dostawy na podstawie zamówień i ich parametrów.",
+            "Nie. SAP TM może proponować dostawy na podstawie zamówień i ich parametrów."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Skontroluj stan zlecenia i ilości przed utworzeniem dostawy."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Propozycja obejmuje niewłaściwą ilość.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 12,
+      "title_pl": "Consolidation",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Consolidation",
+          "Łączenie ładunków powinno uwzględniać kompatybilność towarów i okna dostaw.",
+          "Zastosowanie w pracy: Dwie przesyłki są na podobnej trasie, ale mają różne wymagania temperatury. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź zgodność ładunków przed łączeniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Łączenie ładunków powinno uwzględniać kompatybilność towarów i okna dostaw.",
+          "situation": "Dwie przesyłki są na podobnej trasie, ale mają różne wymagania temperatury.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź zgodność ładunków przed łączeniem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź zgodność ładunków przed łączeniem.",
+          "explanation": "Łączenie ładunków powinno uwzględniać kompatybilność towarów i okna dostaw.",
+          "feedback": [
+            "Poprawnie. Łączenie ładunków powinno uwzględniać kompatybilność towarów i okna dostaw.",
+            "Nie. Łączenie ładunków powinno uwzględniać kompatybilność towarów i okna dostaw.",
+            "Nie. Łączenie ładunków powinno uwzględniać kompatybilność towarów i okna dostaw."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź zgodność ładunków przed łączeniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwie przesyłki są na podobnej trasie, ale mają różne wymagania temperatury.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 13,
+      "title_pl": "Carrier selection",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Carrier selection",
+          "Wybór przewoźnika uwzględnia cenę, termin, usługę i wymagania prawne.",
+          "Zastosowanie w pracy: Najtańsza oferta nie obejmuje wymaganej windy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Porównaj pełny zakres usługi, nie tylko stawkę. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Wybór przewoźnika uwzględnia cenę, termin, usługę i wymagania prawne.",
+          "situation": "Najtańsza oferta nie obejmuje wymaganej windy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Porównaj pełny zakres usługi, nie tylko stawkę.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Porównaj pełny zakres usługi, nie tylko stawkę.",
+          "explanation": "Wybór przewoźnika uwzględnia cenę, termin, usługę i wymagania prawne.",
+          "feedback": [
+            "Poprawnie. Wybór przewoźnika uwzględnia cenę, termin, usługę i wymagania prawne.",
+            "Nie. Wybór przewoźnika uwzględnia cenę, termin, usługę i wymagania prawne.",
+            "Nie. Wybór przewoźnika uwzględnia cenę, termin, usługę i wymagania prawne."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Porównaj pełny zakres usługi, nie tylko stawkę."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Najtańsza oferta nie obejmuje wymaganej windy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 14,
+      "title_pl": "Tendering i RFQ",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Tendering i RFQ",
+          "Freight RFQ umożliwia uzyskanie ofert od przewoźników, a award wiąże z wybraną propozycją.",
+          "Zastosowanie w pracy: Dwóch przewoźników składa różne oferty. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Porównaj termin, zakres i koszt przed przyznaniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Freight RFQ umożliwia uzyskanie ofert od przewoźników, a award wiąże z wybraną propozycją.",
+          "situation": "Dwóch przewoźników składa różne oferty.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Porównaj termin, zakres i koszt przed przyznaniem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Porównaj termin, zakres i koszt przed przyznaniem.",
+          "explanation": "Freight RFQ umożliwia uzyskanie ofert od przewoźników, a award wiąże z wybraną propozycją.",
+          "feedback": [
+            "Poprawnie. Freight RFQ umożliwia uzyskanie ofert od przewoźników, a award wiąże z wybraną propozycją.",
+            "Nie. Freight RFQ umożliwia uzyskanie ofert od przewoźników, a award wiąże z wybraną propozycją.",
+            "Nie. Freight RFQ umożliwia uzyskanie ofert od przewoźników, a award wiąże z wybraną propozycją."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Porównaj termin, zakres i koszt przed przyznaniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwóch przewoźników składa różne oferty.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 15,
+      "title_pl": "Direct tendering",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Direct tendering",
+          "Zlecenie można przesłać bezpośrednio wybranemu przewoźnikowi, zależnie od reguł procesu.",
+          "Zastosowanie w pracy: Pierwszy przewoźnik odrzuca zlecenie. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Uruchom zatwierdzoną alternatywę i zachowaj status odmowy. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zlecenie można przesłać bezpośrednio wybranemu przewoźnikowi, zależnie od reguł procesu.",
+          "situation": "Pierwszy przewoźnik odrzuca zlecenie.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Uruchom zatwierdzoną alternatywę i zachowaj status odmowy.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Uruchom zatwierdzoną alternatywę i zachowaj status odmowy.",
+          "explanation": "Zlecenie można przesłać bezpośrednio wybranemu przewoźnikowi, zależnie od reguł procesu.",
+          "feedback": [
+            "Poprawnie. Zlecenie można przesłać bezpośrednio wybranemu przewoźnikowi, zależnie od reguł procesu.",
+            "Nie. Zlecenie można przesłać bezpośrednio wybranemu przewoźnikowi, zależnie od reguł procesu.",
+            "Nie. Zlecenie można przesłać bezpośrednio wybranemu przewoźnikowi, zależnie od reguł procesu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Uruchom zatwierdzoną alternatywę i zachowaj status odmowy."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Pierwszy przewoźnik odrzuca zlecenie.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 16,
+      "title_pl": "Dispatch i execution",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Dispatch i execution",
+          "Plan trzeba przekazać wykonawcy wraz z aktualnymi punktami i dokumentami.",
+          "Zastosowanie w pracy: Trasa została zmieniona po wydrukowaniu planu dla kierowcy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Przekaż zatwierdzoną rewizję i potwierdź odbiór. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Plan trzeba przekazać wykonawcy wraz z aktualnymi punktami i dokumentami.",
+          "situation": "Trasa została zmieniona po wydrukowaniu planu dla kierowcy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Przekaż zatwierdzoną rewizję i potwierdź odbiór.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Przekaż zatwierdzoną rewizję i potwierdź odbiór.",
+          "explanation": "Plan trzeba przekazać wykonawcy wraz z aktualnymi punktami i dokumentami.",
+          "feedback": [
+            "Poprawnie. Plan trzeba przekazać wykonawcy wraz z aktualnymi punktami i dokumentami.",
+            "Nie. Plan trzeba przekazać wykonawcy wraz z aktualnymi punktami i dokumentami.",
+            "Nie. Plan trzeba przekazać wykonawcy wraz z aktualnymi punktami i dokumentami."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Przekaż zatwierdzoną rewizję i potwierdź odbiór."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Trasa została zmieniona po wydrukowaniu planu dla kierowcy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 17,
+      "title_pl": "Tracking i event management",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Tracking i event management",
+          "Zdarzenia transportowe powinny pokazywać faktyczny postęp, nie automatyczne życzenia.",
+          "Zastosowanie w pracy: Samochód opóźnia się o 3 godziny. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zarejestruj opóźnienie i poinformuj odbiorcę według procedury. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zdarzenia transportowe powinny pokazywać faktyczny postęp, nie automatyczne życzenia.",
+          "situation": "Samochód opóźnia się o 3 godziny.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zarejestruj opóźnienie i poinformuj odbiorcę według procedury.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj opóźnienie i poinformuj odbiorcę według procedury.",
+          "explanation": "Zdarzenia transportowe powinny pokazywać faktyczny postęp, nie automatyczne życzenia.",
+          "feedback": [
+            "Poprawnie. Zdarzenia transportowe powinny pokazywać faktyczny postęp, nie automatyczne życzenia.",
+            "Nie. Zdarzenia transportowe powinny pokazywać faktyczny postęp, nie automatyczne życzenia.",
+            "Nie. Zdarzenia transportowe powinny pokazywać faktyczny postęp, nie automatyczne życzenia."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zarejestruj opóźnienie i poinformuj odbiorcę według procedury."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Samochód opóźnia się o 3 godziny.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 18,
+      "title_pl": "Freight charges",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Freight charges",
+          "Koszt może obejmować km, opłaty dodatkowe, postoje i warunki umowy.",
+          "Zastosowanie w pracy: Faktura przewoźnika zawiera nieplanowaną dopłatę. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Porównaj ją z umową i udokumentowanymi zdarzeniami. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Koszt może obejmować km, opłaty dodatkowe, postoje i warunki umowy.",
+          "situation": "Faktura przewoźnika zawiera nieplanowaną dopłatę.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Porównaj ją z umową i udokumentowanymi zdarzeniami.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Porównaj ją z umową i udokumentowanymi zdarzeniami.",
+          "explanation": "Koszt może obejmować km, opłaty dodatkowe, postoje i warunki umowy.",
+          "feedback": [
+            "Poprawnie. Koszt może obejmować km, opłaty dodatkowe, postoje i warunki umowy.",
+            "Nie. Koszt może obejmować km, opłaty dodatkowe, postoje i warunki umowy.",
+            "Nie. Koszt może obejmować km, opłaty dodatkowe, postoje i warunki umowy."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Porównaj ją z umową i udokumentowanymi zdarzeniami."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Faktura przewoźnika zawiera nieplanowaną dopłatę.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: od order do potwierdzenia",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: od order do potwierdzenia",
+          "Połącz FU, FO, przewoźnika, trasę, wykonanie i rozliczenie.",
+          "Zastosowanie w pracy: Towar dotarł, ale brak potwierdzenia dostawy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Uzyskaj POD przed pełnym rozliczeniem zgodnie z procesem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Połącz FU, FO, przewoźnika, trasę, wykonanie i rozliczenie.",
+          "situation": "Towar dotarł, ale brak potwierdzenia dostawy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Uzyskaj POD przed pełnym rozliczeniem zgodnie z procesem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Uzyskaj POD przed pełnym rozliczeniem zgodnie z procesem.",
+          "explanation": "Połącz FU, FO, przewoźnika, trasę, wykonanie i rozliczenie.",
+          "feedback": [
+            "Poprawnie. Połącz FU, FO, przewoźnika, trasę, wykonanie i rozliczenie.",
+            "Nie. Połącz FU, FO, przewoźnika, trasę, wykonanie i rozliczenie.",
+            "Nie. Połącz FU, FO, przewoźnika, trasę, wykonanie i rozliczenie."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Uzyskaj POD przed pełnym rozliczeniem zgodnie z procesem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Towar dotarł, ale brak potwierdzenia dostawy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 20,
+      "title_pl": "Expert: multi-stop planning",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: multi-stop planning",
+          "Każdy punkt dodaje czas obsługi i wpływa na termin kolejnych zleceń.",
+          "Zastosowanie w pracy: Dodatkowy punkt powoduje utratę slotu na końcu trasy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Przelicz ETA i uzgodnij zmianę terminu przed zatwierdzeniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Każdy punkt dodaje czas obsługi i wpływa na termin kolejnych zleceń.",
+          "situation": "Dodatkowy punkt powoduje utratę slotu na końcu trasy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Przelicz ETA i uzgodnij zmianę terminu przed zatwierdzeniem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Przelicz ETA i uzgodnij zmianę terminu przed zatwierdzeniem.",
+          "explanation": "Każdy punkt dodaje czas obsługi i wpływa na termin kolejnych zleceń.",
+          "feedback": [
+            "Poprawnie. Każdy punkt dodaje czas obsługi i wpływa na termin kolejnych zleceń.",
+            "Nie. Każdy punkt dodaje czas obsługi i wpływa na termin kolejnych zleceń.",
+            "Nie. Każdy punkt dodaje czas obsługi i wpływa na termin kolejnych zleceń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Przelicz ETA i uzgodnij zmianę terminu przed zatwierdzeniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dodatkowy punkt powoduje utratę slotu na końcu trasy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 21,
+      "title_pl": "Expert: tendering strategy",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: tendering strategy",
+          "Wiele etapów tenderingu zwiększa szansę uzyskania przewoźnika, lecz może opóźniać decyzję.",
+          "Zastosowanie w pracy: Trzy RFQ pozostają bez odpowiedzi. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zastosuj zaplanowany krok zastępczy i kontroluj deadline. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Wiele etapów tenderingu zwiększa szansę uzyskania przewoźnika, lecz może opóźniać decyzję.",
+          "situation": "Trzy RFQ pozostają bez odpowiedzi.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zastosuj zaplanowany krok zastępczy i kontroluj deadline.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zastosuj zaplanowany krok zastępczy i kontroluj deadline.",
+          "explanation": "Wiele etapów tenderingu zwiększa szansę uzyskania przewoźnika, lecz może opóźniać decyzję.",
+          "feedback": [
+            "Poprawnie. Wiele etapów tenderingu zwiększa szansę uzyskania przewoźnika, lecz może opóźniać decyzję.",
+            "Nie. Wiele etapów tenderingu zwiększa szansę uzyskania przewoźnika, lecz może opóźniać decyzję.",
+            "Nie. Wiele etapów tenderingu zwiększa szansę uzyskania przewoźnika, lecz może opóźniać decyzję."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zastosuj zaplanowany krok zastępczy i kontroluj deadline."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Trzy RFQ pozostają bez odpowiedzi.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 22,
+      "title_pl": "Expert: capacity planning",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: capacity planning",
+          "Nośność, objętość i liczba miejsc paletowych ograniczają realny plan.",
+          "Zastosowanie w pracy: Auto ma ładowność 10 t, plan zakłada 11 t. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Rozdziel ładunek lub wybierz odpowiedni zestaw. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Nośność, objętość i liczba miejsc paletowych ograniczają realny plan.",
+          "situation": "Auto ma ładowność 10 t, plan zakłada 11 t.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Rozdziel ładunek lub wybierz odpowiedni zestaw.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Rozdziel ładunek lub wybierz odpowiedni zestaw.",
+          "explanation": "Nośność, objętość i liczba miejsc paletowych ograniczają realny plan.",
+          "feedback": [
+            "Poprawnie. Nośność, objętość i liczba miejsc paletowych ograniczają realny plan.",
+            "Nie. Nośność, objętość i liczba miejsc paletowych ograniczają realny plan.",
+            "Nie. Nośność, objętość i liczba miejsc paletowych ograniczają realny plan."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Rozdziel ładunek lub wybierz odpowiedni zestaw."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Auto ma ładowność 10 t, plan zakłada 11 t.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 23,
+      "title_pl": "Expert: dokumenty i przewóz międzynarodowy",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: dokumenty i przewóz międzynarodowy",
+          "Zależnie od kierunku potrzebne są dokumenty przewozowe, celne i zgodność ze szczególnymi regulacjami.",
+          "Zastosowanie w pracy: Zlecenie przekracza granicę, ale nie ma danych wymaganych do odprawy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zatrzymaj plan i zleć weryfikację dokumentów specjalistom. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zależnie od kierunku potrzebne są dokumenty przewozowe, celne i zgodność ze szczególnymi regulacjami.",
+          "situation": "Zlecenie przekracza granicę, ale nie ma danych wymaganych do odprawy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zatrzymaj plan i zleć weryfikację dokumentów specjalistom.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj plan i zleć weryfikację dokumentów specjalistom.",
+          "explanation": "Zależnie od kierunku potrzebne są dokumenty przewozowe, celne i zgodność ze szczególnymi regulacjami.",
+          "feedback": [
+            "Poprawnie. Zależnie od kierunku potrzebne są dokumenty przewozowe, celne i zgodność ze szczególnymi regulacjami.",
+            "Nie. Zależnie od kierunku potrzebne są dokumenty przewozowe, celne i zgodność ze szczególnymi regulacjami.",
+            "Nie. Zależnie od kierunku potrzebne są dokumenty przewozowe, celne i zgodność ze szczególnymi regulacjami."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zatrzymaj plan i zleć weryfikację dokumentów specjalistom."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Zlecenie przekracza granicę, ale nie ma danych wymaganych do odprawy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 24,
+      "title_pl": "Expert: cargo damage",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: cargo damage",
+          "Szkoda transportowa wymaga zdjęć, protokołu i powiadomień zgodnych z umową.",
+          "Zastosowanie w pracy: Odbiorca zgłasza uszkodzoną paletę. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zbieraj dowody i uruchom proces reklamacyjny bez fałszowania POD. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Szkoda transportowa wymaga zdjęć, protokołu i powiadomień zgodnych z umową.",
+          "situation": "Odbiorca zgłasza uszkodzoną paletę.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zbieraj dowody i uruchom proces reklamacyjny bez fałszowania POD.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zbieraj dowody i uruchom proces reklamacyjny bez fałszowania POD.",
+          "explanation": "Szkoda transportowa wymaga zdjęć, protokołu i powiadomień zgodnych z umową.",
+          "feedback": [
+            "Poprawnie. Szkoda transportowa wymaga zdjęć, protokołu i powiadomień zgodnych z umową.",
+            "Nie. Szkoda transportowa wymaga zdjęć, protokołu i powiadomień zgodnych z umową.",
+            "Nie. Szkoda transportowa wymaga zdjęć, protokołu i powiadomień zgodnych z umową."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zbieraj dowody i uruchom proces reklamacyjny bez fałszowania POD."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Odbiorca zgłasza uszkodzoną paletę.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 25,
+      "title_pl": "Expert: SLA i ocena przewoźnika",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: SLA i ocena przewoźnika",
+          "Wskaźniki to m.in. terminowość, szkody, koszty oraz rzetelność statusów.",
+          "Zastosowanie w pracy: Przewoźnik jest tani, ale często spóźniony. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Porównaj koszt całkowity i jakość dostaw. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Wskaźniki to m.in. terminowość, szkody, koszty oraz rzetelność statusów.",
+          "situation": "Przewoźnik jest tani, ale często spóźniony.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Porównaj koszt całkowity i jakość dostaw.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Porównaj koszt całkowity i jakość dostaw.",
+          "explanation": "Wskaźniki to m.in. terminowość, szkody, koszty oraz rzetelność statusów.",
+          "feedback": [
+            "Poprawnie. Wskaźniki to m.in. terminowość, szkody, koszty oraz rzetelność statusów.",
+            "Nie. Wskaźniki to m.in. terminowość, szkody, koszty oraz rzetelność statusów.",
+            "Nie. Wskaźniki to m.in. terminowość, szkody, koszty oraz rzetelność statusów."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Porównaj koszt całkowity i jakość dostaw."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Przewoźnik jest tani, ale często spóźniony.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 26,
+      "title_pl": "Expert: integracja z EWM i ERP",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: integracja z EWM i ERP",
+          "Przy przekazaniu ładunku błędy kolejki mogą rozjechać status magazynu i przewozu.",
+          "Zastosowanie w pracy: EWM mówi Loaded, TM wciąż Planned. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zidentyfikuj brakujący komunikat i dokument before ponownego księgowania. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przy przekazaniu ładunku błędy kolejki mogą rozjechać status magazynu i przewozu.",
+          "situation": "EWM mówi Loaded, TM wciąż Planned.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zidentyfikuj brakujący komunikat i dokument before ponownego księgowania.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj brakujący komunikat i dokument before ponownego księgowania.",
+          "explanation": "Przy przekazaniu ładunku błędy kolejki mogą rozjechać status magazynu i przewozu.",
+          "feedback": [
+            "Poprawnie. Przy przekazaniu ładunku błędy kolejki mogą rozjechać status magazynu i przewozu.",
+            "Nie. Przy przekazaniu ładunku błędy kolejki mogą rozjechać status magazynu i przewozu.",
+            "Nie. Przy przekazaniu ładunku błędy kolejki mogą rozjechać status magazynu i przewozu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zidentyfikuj brakujący komunikat i dokument before ponownego księgowania."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: EWM mówi Loaded, TM wciąż Planned.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 27,
+      "title_pl": "Expert: exceptions and replanning",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: exceptions and replanning",
+          "Nie każdą awarię da się naprawić jednym kliknięciem; plan wymaga aktualnych zasobów i potwierdzeń.",
+          "Zastosowanie w pracy: Kierowca zachorował po załadunku. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zorganizuj zastępstwo i uzgodnij nowy harmonogram z zainteresowanymi. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Nie każdą awarię da się naprawić jednym kliknięciem; plan wymaga aktualnych zasobów i potwierdzeń.",
+          "situation": "Kierowca zachorował po załadunku.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zorganizuj zastępstwo i uzgodnij nowy harmonogram z zainteresowanymi.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zorganizuj zastępstwo i uzgodnij nowy harmonogram z zainteresowanymi.",
+          "explanation": "Nie każdą awarię da się naprawić jednym kliknięciem; plan wymaga aktualnych zasobów i potwierdzeń.",
+          "feedback": [
+            "Poprawnie. Nie każdą awarię da się naprawić jednym kliknięciem; plan wymaga aktualnych zasobów i potwierdzeń.",
+            "Nie. Nie każdą awarię da się naprawić jednym kliknięciem; plan wymaga aktualnych zasobów i potwierdzeń.",
+            "Nie. Nie każdą awarię da się naprawić jednym kliknięciem; plan wymaga aktualnych zasobów i potwierdzeń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zorganizuj zastępstwo i uzgodnij nowy harmonogram z zainteresowanymi."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Kierowca zachorował po załadunku.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 28,
+      "title_pl": "Expert: audit transport costs",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: audit transport costs",
+          "Rozliczenie przewozu powinno być odtwarzalne i powiązane z dokumentami oraz przewoźnikiem.",
+          "Zastosowanie w pracy: Na fakturze jest opłata postojowa bez zapisu czasu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Poproś o dowody i porównaj z umową. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Rozliczenie przewozu powinno być odtwarzalne i powiązane z dokumentami oraz przewoźnikiem.",
+          "situation": "Na fakturze jest opłata postojowa bez zapisu czasu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Poproś o dowody i porównaj z umową.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Poproś o dowody i porównaj z umową.",
+          "explanation": "Rozliczenie przewozu powinno być odtwarzalne i powiązane z dokumentami oraz przewoźnikiem.",
+          "feedback": [
+            "Poprawnie. Rozliczenie przewozu powinno być odtwarzalne i powiązane z dokumentami oraz przewoźnikiem.",
+            "Nie. Rozliczenie przewozu powinno być odtwarzalne i powiązane z dokumentami oraz przewoźnikiem.",
+            "Nie. Rozliczenie przewozu powinno być odtwarzalne i powiązane z dokumentami oraz przewoźnikiem."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Poproś o dowody i porównaj z umową."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Na fakturze jest opłata postojowa bez zapisu czasu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny SAP TM",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny SAP TM",
+          "Od planowania do rozliczenia trzeba pilnować ładowności, terminów i potwierdzeń.",
+          "Zastosowanie w pracy: Spedycja chce zaakceptować transport za 5000 zł, ale nie zna masy i wymaganej windy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Uzupełnij krytyczne parametry i dopiero podejmij decyzję o przewoźniku. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Od planowania do rozliczenia trzeba pilnować ładowności, terminów i potwierdzeń.",
+          "situation": "Spedycja chce zaakceptować transport za 5000 zł, ale nie zna masy i wymaganej windy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Uzupełnij krytyczne parametry i dopiero podejmij decyzję o przewoźniku.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Uzupełnij krytyczne parametry i dopiero podejmij decyzję o przewoźniku.",
+          "explanation": "Od planowania do rozliczenia trzeba pilnować ładowności, terminów i potwierdzeń.",
+          "feedback": [
+            "Poprawnie. Od planowania do rozliczenia trzeba pilnować ładowności, terminów i potwierdzeń.",
+            "Nie. Od planowania do rozliczenia trzeba pilnować ładowności, terminów i potwierdzeń.",
+            "Nie. Od planowania do rozliczenia trzeba pilnować ładowności, terminów i potwierdzeń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Uzupełnij krytyczne parametry i dopiero podejmij decyzję o przewoźniku."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Spedycja chce zaakceptować transport za 5000 zł, ale nie zna masy i wymaganej windy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    }
+  ]
+}
