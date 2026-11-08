@@ -72,8 +72,8 @@ try{
   if(!courses.some(c=>c.id===name+'-skroty'))fail(name+': course missing from catalog');
   else ok(name+' has '+total+' illustrated shortcuts');
  }
- if(!component.includes('function Keycap')||!component.includes('Co się zmieni?')||!progress.includes('<KeyboardLesson'))fail('Visual keycaps not integrated into lesson view');
- else ok('Protected lessons render keycaps and before/after comparison');
+ if(!component.includes('function Keycap')||!component.includes('function CommandCanvas')||!component.includes('runCommand')||!component.includes('Wykonaj w symulatorze')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
+ else ok('Protected lessons include working simulated Word and AutoCAD keyboard actions');
  for(const stale of ['Testy + egzamin','Przed egzaminem czeka Cię','Czytasz, podejmujesz decyzję, zapisujesz rozwiązanie i rozwiązujesz krótki quiz']){
   if(page.includes(stale))fail('Misleading unfinished-feature promise: '+stale);
  }
