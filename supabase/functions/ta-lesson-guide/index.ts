@@ -62,7 +62,7 @@ async function respondAsAnielka(name:string,lesson:any,text:string,history:any[]
   'Zwróć poprawny JSON wg schematu. reply: 2-5 naturalnych zdań, maks. 130 słów, z konkretną informacją zwrotną i podpowiedzią, kiedy jest potrzebna.',
   'question: krótkie pytanie o konkretny przykład lub decyzję z tej lekcji; jeśli temat jest opanowany, może być pustym tekstem.'
  ].join(' ');
- const body={model:Deno.env.get('TRENERKI_AI_MODEL')||'gpt-5-mini',store:false,max_output_tokens:750,reasoning:{effort:'low'},
+ const body={model:Deno.env.get('TRENERKI_AI_MODEL')||'gpt-6-luna',store:false,max_output_tokens:750,reasoning:{effort:'low'},
   text:{format:{type:'json_schema',name:'mentor_dialogue',strict:true,schema:{
    type:'object',properties:{reply:{type:'string'},meaningful:{type:'boolean'},severe:{type:'boolean'},question:{type:'string'}},
    required:['reply','meaningful','severe','question'],additionalProperties:false}}},
