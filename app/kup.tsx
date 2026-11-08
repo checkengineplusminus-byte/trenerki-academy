@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
-type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,source_url:string|null,module_titles:string[]};
+type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,source_url:string|null,module_titles:string[],editorial_note:string,review_status:string};
 const ink='#193a2c',muted='#5b7563',lime='#e6f3d6';
 export default function Purchase(){
  const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
@@ -19,7 +19,7 @@ export default function Purchase(){
    if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
    const [courseResult,previewResult,enrollmentResult,profile]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
-    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,source_url,module_titles').eq('course_slug',slug).maybeSingle(),
+    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,source_url,module_titles,editorial_note,review_status').eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1),
     academyAction('whoami')
    ]);
@@ -83,6 +83,11 @@ export default function Purchase(){
       {!!preview.source_url&&<Pressable onPress={()=>Linking.openURL(preview.source_url!)}>
        <Text style={{color:'#3e6b4e',fontSize:13,textDecorationLine:'underline'}}>Więcej wiedzy: źródło i materiały do sprawdzenia ↗</Text>
       </Pressable>}
+     </View>
+     <View style={{backgroundColor:'#f0f5eb',padding:18,borderRadius:12,gap:8}}>
+      <Text style={{fontWeight:'900',color:ink}}>Ważne zasady tego kursu</Text>
+      <Text style={{color:'#3f5b49',lineHeight:22}}>{preview.editorial_note}</Text>
+      {preview.review_status!=='approved'&&<Text style={{fontSize:12,color:'#87622b'}}>Materiały są jeszcze w weryfikacji redakcyjnej. To wersja testowa szkolenia, a nie gotowa oferta sprzedaży.</Text>}
      </View>
      {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#dfe8d9',padding:23,gap:12}}>
       <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>8 kroków do praktycznej umiejętności</Text>
