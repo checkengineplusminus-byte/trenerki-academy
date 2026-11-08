@@ -13,9 +13,9 @@ const card={padding:20,borderWidth:1,borderColor:'#e0eadb',backgroundColor:'whit
 export default function AdminPage(){
  const router=useRouter();
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
- const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[filter,setFilter]=useState('');
+ const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'users'|'orders'|'gifts'|'drafts'>('users');
+ const [tab,setTab]=useState<'users'|'orders'|'gifts'|'drafts'|'quality'>('users');
  const students:Student[]=stats?.users||[];
  const filteredStudents=useMemo(()=>students.filter(u=>(u.email||'').toLowerCase().includes(filter.trim().toLowerCase())),[students,filter]);
  useEffect(()=>{void refresh()},[]);
@@ -24,12 +24,13 @@ export default function AdminPage(){
   try{
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.replace('/konto');return;}
-   const [r,allCourses]=await Promise.all([
+   const [r,allCourses,allReviews]=await Promise.all([
     academyAction('admin_dashboard'),
-    supabase.from('ta_courses').select('slug,title_pl,price_grosze').eq('published',true).order('title_pl')
+    supabase.from('ta_courses').select('slug,title_pl,price_grosze').eq('published',true).order('title_pl'),
+    supabase.from('ta_course_previews').select('course_slug,review_status')
    ]);
-   if(allCourses.error)throw allCourses.error;
-   setCourses(allCourses.data||[]);setStats(r);
+   if(allCourses.error||allReviews.error)throw allCourses.error||allReviews.error;
+   setCourses(allCourses.data||[]);setReviews(allReviews.data||[]);setStats(r);
   }catch(e:any){setError(e?.message||'Panel nie jest dostępny.');}
   finally{setBusy(false)}
  }
@@ -74,9 +75,10 @@ export default function AdminPage(){
      {count('Zamówienia DEMO',stats.counts?.demo_orders)}
      {count('Karty podarunkowe',stats.counts?.gift_codes)}
      {count('Przychód z testów','0 zł')}
+     {count('Kursy czekające na weryfikację',reviews.filter(r=>r.review_status!=='approved').length)}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe']] as const).map(([key,label])=>
+     {([['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe'],['quality','Jakość kursów']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -115,6 +117,14 @@ export default function AdminPage(){
      <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:'swiety-mikolaj'}})} style={{marginTop:16,backgroundColor:pale,padding:15,borderRadius:11}}>
       <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Podaruj kurs Świętego Mikołaja</Text>
      </Pressable>
+    </View>}
+    {tab==='quality'&&<View style={card}>
+     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:10}}>Spójność materiałów</Text>
+     <Text style={{color:muted,lineHeight:23,marginBottom:15}}>Status dotyczy weryfikacji redakcyjnej. Kursy robocze służą do testów, nie do płatnej sprzedaży. Każda lekcja musi respektować wspólne zasady bezpieczeństwa, zakres kompetencji i rzeczywiste możliwości platformy.</Text>
+     {courses.map(c=>{const review=reviews.find(v=>v.course_slug===c.slug);return <View key={c.slug} style={{paddingVertical:12,borderBottomWidth:1,borderColor:'#edf1e9',gap:5}}>
+      <Text style={{fontWeight:'800',color:ink}}>{c.title_pl}</Text>
+      <Text style={{color:review?.review_status==='approved'?'#377c51':'#866335',fontSize:12,fontWeight:'700'}}>{review?.review_status==='approved'?'Zatwierdzony':review?.review_status==='review_needed'?'Wymaga sprawdzenia':'Wersja robocza'}</Text>
+     </View>})}
     </View>}
     {tab==='drafts'&&<View style={card}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Zestawienia testowe</Text>
