@@ -228,5 +228,27 @@ try{
 
  if(!progress.includes('<LessonIllustratedSections'))fail('Illustrated lesson reading must appear in app');
  else ok(originalImages.length+' authored original diagrams available for the lessons');
+ const carFix=JSON.parse(read('content/car-purchase-clear-budget-2026-11-08.json'));
+ const introBudget=carFix.lessons.find(x=>x.lesson_no===0)?.material;
+ if(!introBudget||introBudget.learning.correct!==0||
+    !introBudget.learning.situation.includes('40 000 zł')||
+    !introBudget.learning.situation.includes('5 000 zł')||
+    !introBudget.learning.options[0].includes('35 000 zł')||
+    (introBudget.sections||[]).length<4)
+  fail('Car-buying lesson must state exact total cash, reserve and maximum vehicle price');
+ else ok('Car budget scenario has exact amounts, worked subtraction and transparent answer');
+ const chatUI=read('src/GuidedDialogue.tsx');
+ const dialogueServer=read('supabase/functions/ta-lesson-guide/index.ts');
+ if(dialogueServer.includes("if(alreadyDone)return respond({error:'lesson_already_complete'}")||
+    !dialogueServer.includes('requestedQuiz&&canReplyAgain')||
+    !chatUI.includes('onFinish?.()')||
+    !chatUI.includes('canMoveOn?'))
+  fail('Mentor dialogue must remain answerable after a completed lesson, with optional finish action');
+ else ok('Anielka chat remains available and can be closed to resume verified learning');
+ if(!progress.includes('setTimeout(scrollToTop,100)')||
+    !progress.includes('window.scrollTo(0,0)')||
+    !progress.includes('onFinish={()=>{if(canFinish)'))
+  fail('Lesson transition and mentor completion must reset scroll and respect practice validation');
+ else ok('Automatic scroll reset and mentor-to-lesson navigation are connected');
  if(!process.exitCode)console.log('All static integrity checks passed.');
 }catch(e){fail(String(e?.stack||e))}
