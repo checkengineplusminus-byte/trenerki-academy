@@ -6,7 +6,7 @@ type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:
 const dark='#173228';
 export default function Purchase(){
  const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'';
- const router=useRouter(),[item,setItem]=useState<Course|null>(null),[email,setEmail]=useState(''),[busy,setBusy]=useState(true),[paying,setPaying]=useState(false),[owned,setOwned]=useState(false),[message,setMessage]=useState('');
+ const router=useRouter(),[termsAccepted,setTermsAccepted]=useState(false),[immediateAccess,setImmediateAccess]=useState(false),[item,setItem]=useState<Course|null>(null),[email,setEmail]=useState(''),[busy,setBusy]=useState(true),[paying,setPaying]=useState(false),[owned,setOwned]=useState(false),[message,setMessage]=useState('');
  useEffect(()=>{let active=true;void (async()=>{
   if(!slug){if(active){setMessage('Wybierz kurs z katalogu.');setBusy(false);}return;}
   try{
@@ -23,13 +23,16 @@ export default function Purchase(){
   finally{if(active)setBusy(false);}
  })();return()=>{active=false}},[slug]);
  async function enroll(){
-  if(!item)return;setPaying(true);setMessage('');
+  if(!item)return;
+  if(item.price_grosze>0&&(!termsAccepted||!immediateAccess)){setMessage('Przed zakupem potwierdź zapoznanie się z regulaminem oraz zgodę na rozpoczęcie dostarczania treści cyfrowych.');return;}
+  setPaying(true);setMessage('');
   try{
    const functionName=item.price_grosze===0?'ta-enroll-free':'ta-create-checkout';
-   const {data,error}=await supabase.functions.invoke(functionName,{body:{course_slug:item.slug}});
+   const {data,error}=await supabase.functions.invoke(functionName,{body:{course_slug:item.slug,accepted_terms:termsAccepted,immediate_content_consent:immediateAccess}});
    if(error){
     let code='';
     try{const ctx=(error as any).context;if(ctx&&typeof ctx.json==='function'){const result=await ctx.json();code=String(result?.error||'');}}catch(_){}
+    if(code==='consent_required')throw new Error('Zaznacz zgody pod zamówieniem, aby kontynuować.');
     if(code==='payments_not_configured')throw new Error('Płatności online nie zostały jeszcze uruchomione. Kurs jest zapisany jako wybrany, ale nie pobraliśmy żadnych pieniędzy.');
     if(code==='already_purchased'||code==='already_enrolled_or_expired')throw new Error('Ten kurs jest już powiązany z Twoim kontem. Sprawdź Moje kursy.');
     if(code==='confirmed_login_required'||code==='login_required'){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
@@ -60,9 +63,23 @@ export default function Purchase(){
    {owned?<View style={{backgroundColor:'#e9f3de',padding:16,borderRadius:12,marginTop:20}}>
     <Text style={{color:dark,fontWeight:'800',marginBottom:10}}>Masz już aktywny dostęp.</Text>
     <Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{backgroundColor:dark,padding:15,borderRadius:11,alignItems:'center'}}><Text style={{color:'white',fontWeight:'800'}}>Przejdź do nauki →</Text></Pressable>
-   </View>:<Pressable disabled={paying} onPress={enroll} style={{backgroundColor:dark,padding:16,borderRadius:12,alignItems:'center',marginTop:20,opacity:paying?.6:1}}>
-    <Text style={{color:'white',fontWeight:'900'}}>{paying?'Przetwarzanie…':item.price_grosze===0?'Odbierz kurs za darmo →':'Kup kurs i przejdź do płatności →'}</Text>
-   </Pressable>}
+   </View>:<View>
+    {item.price_grosze>0&&<View style={{marginTop:20,gap:9}}>
+      <Pressable onPress={()=>setTermsAccepted(v=>!v)} style={{flexDirection:'row',alignItems:'flex-start',gap:11,paddingVertical:5}}>
+        <Text style={{fontSize:22,color:dark}}>{termsAccepted?'☑':'☐'}</Text>
+        <Text style={{color:'#405d4a',flex:1}}>Zapoznałem(-am) się z regulaminem i warunkami dostępu do kursu.</Text>
+      </Pressable>
+      <Pressable onPress={()=>setImmediateAccess(v=>!v)} style={{flexDirection:'row',alignItems:'flex-start',gap:11,paddingVertical:5}}>
+        <Text style={{fontSize:22,color:dark}}>{immediateAccess?'☑':'☐'}</Text>
+        <Text style={{color:'#405d4a',flex:1}}>Wyrażam zgodę na rozpoczęcie dostarczania treści cyfrowych bezpośrednio po zakupie i przyjmuję do wiadomości, że po rozpoczęciu świadczenia mogę utracić prawo odstąpienia od umowy na zasadach określonych prawem.</Text>
+      </Pressable>
+      <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/regulamin.html')}>
+        <Text style={{color:dark,textDecorationLine:'underline',fontWeight:'800'}}>Przeczytaj regulamin ↗</Text>
+      </Pressable>
+    </View>}
+    <Pressable disabled={paying} onPress={enroll} style={{backgroundColor:dark,padding:16,borderRadius:12,alignItems:'center',marginTop:20,opacity:paying?.6:1}}>
+    <Text style={{color:'white',fontWeight:'900'}}>{paying?'Przetwarzanie…':item.price_grosze===0?'Odbierz kurs za darmo →':'Kupuję i płacę ${(item.price_grosze/100).toFixed(0)} zł →'}</Text>
+   </Pressable></View>}
    {item.price_grosze>0&&<Text style={{color:'#758574',fontSize:12,marginTop:12}}>Płatność zostanie zrealizowana wyłącznie u operatora płatności, gdy integracja będzie aktywna. Nie wpisuj danych karty na tej stronie.</Text>}
    {item.price_grosze===0&&<Text style={{color:'#758574',fontSize:12,marginTop:12}}>Darmowy kurs świąteczny ma charakter humorystyczny. Nie daje formalnych uprawnień zawodowych.</Text>}
   </View>}
