@@ -41,7 +41,25 @@
           "task": "Sprawdź na swoim przykładzie: Sprawdzam geometrię i jednostki w oryginalnym DWG."
         },
         "editorial_status": "review_needed",
-        "illustration": "autocad-interface"
+        "illustration": "autocad-interface",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "CAD oznacza Computer-Aided Design, czyli projektowanie wspomagane komputerowo. W przeciwieństwie do Painta, rysunek CAD jest tworzony z precyzyjnych obiektów o współrzędnych, wymiarach i relacjach. Firma Autodesk powstała w 1982 roku, a jej program AutoCAD trafił na rynek również w 1982 roku. Wśród współzałożycieli firmy był John Walker."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Przed upowszechnieniem CAD rysownik używał papieru, liniału i deski kreślarskiej. Zmiana wymiaru wymagała poprawienia wielu fragmentów na papierze. W AutoCAD można edytować geometrię, zmieniać warstwy i drukować rysunek w określonej skali, lecz program nie zastępuje oceny konstrukcyjnej i podpisu uprawnionego projektanta."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Pierwsze zadanie nie polega na rysowaniu profesjonalnej konstrukcji. Otwórz bezpieczny wirtualny obszar rysunku, przyjrzyj się siatce i obiektom. Rozróżnij linię, okrąg i prostokąt oraz powiedz Anielce, czym różni się rysunek techniczny od zwykłego obrazka."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Przykładam linijkę do monitora.. Wyjaśnienie: CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele."
+          }
+        ]
       }
     },
     {
@@ -78,7 +96,25 @@
           "task": "Sprawdź na swoim przykładzie: Czytam polecenie i wskazuję wymagany punkt."
         },
         "editorial_status": "review_needed",
-        "illustration": "autocad-interface"
+        "illustration": "autocad-interface",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "Okno AutoCAD-a składa się z kilku stref. Wstążka Ribbon (np. Home, Insert, Annotate) grupuje narzędzia. Pośrodku znajduje się obszar rysunku, na dole wiersz poleceń Command Line, a w wielu układach także karty Model i Layout oraz pasek stanu z funkcjami dokładności."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Gdy wybierzesz LINE, program nie zawsze od razu tworzy linię. Najpierw wyświetla polecenie „Specify first point”, następnie prosi o kolejny punkt. Enter zatwierdza etap, a Esc przerywa pracę. Wpisanie L może być aliasem LINE — nazwy i skróty zależą od konfiguracji."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: wskaż w rysunkowym schemacie wstążkę, przestrzeń modelu, wiersz poleceń, zakładkę Layout, warstwy i pasek stanu. Uruchom wirtualne polecenie L i sprawdź, czy naprawdę powstała linia na rysunku."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Klikam losowo w menu.. Wyjaśnienie: U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami."
+          }
+        ]
       }
     },
     {
@@ -114,7 +150,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Zachowuję wersję DWG i przygotowuję skontrolowany PDF."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "DWG jest podstawowym natywnym formatem AutoCAD-a. Może przechowywać linie, okręgi, polilinie, warstwy, tekst, wymiary, bloki i informacje projektu. Technologia DWG powstała wcześniej — pod koniec lat siedemdziesiątych pracował nad nią Mike Riddle, a od 1982 roku stała się związana z Autodesk. DXF służy do wymiany danych między aplikacjami CAD."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "PDF nie jest odpowiednikiem DWG. PDF zwykle pokazuje rysunek przygotowany do podglądu, ale może nie zachowywać edytowalnych obiektów, warstw i znaczeń geometrycznych w formie odpowiedniej do dalszej pracy. Wysyłając do produkcji sam PDF, nie zakładaj, że odbiorca potrafi z niego bezbłędnie odtworzyć model."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: wyjaśnij różnicę DWG, DXF i PDF, a potem zaplanuj paczkę przekazania: plik źródłowy DWG, PDF kontrolny z datą i rewizją, oraz komplet wymaganych odnośników, jeśli rysunek ich używa."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Kasuję DWG po wygenerowaniu PDF.. Wyjaśnienie: DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym."
+          }
+        ]
       }
     },
     {
@@ -150,7 +204,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Weryfikuję jednostki i opisuję wynik w mm lub m."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "W AutoCAD współrzędne i długości trzeba interpretować w kontekście jednostek projektu. Jeśli rysunek jest tworzony w milimetrach, wpis 1200 oznacza długość 1200 mm, czyli 1,2 metra. W pliku opartym na metrach wpis 1200 oznacza 1200 metrów. Dlatego nie zakładaj jednostki na podstawie wyglądu obiektu."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Rysunek balustrady może mieć długość 2500 mm. Jeśli przez pomyłkę zaimportujesz geometrię w calach albo metrach, gotowy element może być w złej skali. Tego błędu nie naprawia sam widoczny napis „2500” obok linii — musi zgadzać się rzeczywista geometria i sposób jej wymiarowania."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: oblicz 4 m w milimetrach i odpowiedz, jaki wymiar wprowadzisz do rysunku o jednostkach mm. Następnie sprawdź w symulatorze, czy ustawiony prostokąt odpowiada opisanym wymiarom; traktuj go jako schemat, a nie wykonawczy rysunek konstrukcji."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Zakładam na oko, że chodzi o metry.. Wyjaśnienie: W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry."
+          }
+        ]
       }
     },
     {
@@ -186,7 +258,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Wprowadzam współrzędne i kontroluję pozycję."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "Każdy punkt w przestrzeni 2D ma współrzędną X i Y. X opisuje położenie w poziomie, a Y w pionie układu rysunku. Dwa punkty (0,0) i (4000,0) wyznaczają poziomą linię o długości 4000 jednostek. Współrzędne względne wyrażają przesunięcie od aktualnego punktu, a bezwzględne pozycję względem początku układu."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Jeśli rysujesz pokój 4 × 3 metry w milimetrach, jego narożniki mogą mieć współrzędne (0,0), (4000,0), (4000,3000) i (0,3000). Wprowadzanie punktów pozwala zachować dokładność lepszą niż przypadkowe kliknięcie myszą."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: zapisz na kartce cztery narożniki pokoju w mm. Wskaż odcinki poziome i pionowe. Dopiero potem uruchom symulację linii i porównaj rysunek z planem współrzędnych."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Klikam w najbardziej zielone miejsce.. Wyjaśnienie: Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu."
+          }
+        ]
       }
     },
     {
@@ -222,7 +312,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Stosuję polilinię albo domykam kontur i sprawdzam spójność."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "LINE tworzy pojedyncze odcinki. PLINE tworzy połączoną polilinię, która może być jednym obiektem. CIRCLE tworzy okrąg opisany środkiem i promieniem lub innymi parametrami zależnymi od polecenia. RECTANG może utworzyć prostokątny obrys. Te obiekty różnią się właściwościami, dlatego wybór narzędzia ma znaczenie dla późniejszej edycji."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Wyobraź sobie rysowanie czterech krawędzi otworu. Możesz utworzyć oddzielne linie, ale gdy potrzebujesz zamkniętego obrysu do dalszego wykorzystania, lepsza może być polilinia. Okrąg z kolei służy np. do zaznaczenia miejsca otworu, ale nie jest dowodem, że otwór nadaje się do wykonania."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "W symulatorze uruchom po kolei L, PL, C i REC. Po każdej komendzie sprawdź, jaki obiekt pojawił się na ekranie, i porównaj z poprzednim. Nie kończ ćwiczenia na samym przeczytaniu nazwy polecenia."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Traktuję odrębne odcinki jako jeden obiekt.. Wyjaśnienie: LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję."
+          }
+        ]
       }
     },
     {
@@ -258,7 +366,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Naciskam Esc i sprawdzam stan rysunku."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "Enter w AutoCAD zwykle potwierdza dane, kończy etap albo powtarza ostatnie polecenie — zależnie od stanu. Esc przerywa bieżące polecenie lub zaznaczenie. Nie są to przyciski „zawsze zatwierdź” i „zawsze cofnij”. Cofnięcie ostatniej modyfikacji to osobna czynność, często dostępna przez Ctrl+Z."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Kiedy rozpoczniesz LINE, AutoCAD może oczekiwać wskazania pierwszego punktu, następnego punktu i ewentualnie kolejnych. Jeżeli w trakcie rysowania chcesz zrezygnować, użyj Esc i sprawdź, jakie elementy już powstały. Nie zakładaj, że anulowanie usuwa wszystkie wcześniejsze kroki."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: zainicjuj próbny rysunek, zatwierdź poprawny etap, a potem sprawdź zachowanie Esc i Cofnij. Opisz różnicę między przerwaniem polecenia a cofnięciem już utworzonego obiektu."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Klikam przypadkowy punkt docelowy.. Wyjaśnienie: Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością."
+          }
+        ]
       }
     },
     {
@@ -294,7 +420,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Sprawdzam warstwy i tymczasowo ukrywam zbędne."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "Warstwa to sposób logicznego organizowania obiektów. Rysunki budowlane mogą mieć osobne warstwy dla osi, ścian, balustrad, wymiarów i instalacji. Warstwa może mieć kolor, rodzaj linii, grubość i stan widoczności. Ukrycie warstwy nie usuwa jej obiektów ani nie potwierdza, że projekt jest wolny od kolizji."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Na rysunku z balustradą ukrywasz warstwę instalacji, żeby lepiej zobaczyć detal. Jeżeli potem sprawdzasz kolizję z rurami, musisz ponownie wyświetlić właściwe warstwy i przeanalizować geometrię. Kolory pomagają orientacji, ale nie zastępują kontroli technicznej."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "W symulatorze użyj LA, zmień warstwę rysowania i narysuj jeszcze jeden obiekt. Porównaj kolory obiektów. Potem wyjaśnij, dlaczego nie wystarczy wydrukować tylko jednej warstwy, by zatwierdzić całą konstrukcję."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Usuwam instalacje z projektu.. Wyjaśnienie: Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów."
+          }
+        ]
       }
     },
     {
@@ -330,7 +474,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "Model Space to przestrzeń modelu, w której zwykle rysujesz obiekt w jego rzeczywistych jednostkach. Layout (Paper Space) służy do przygotowania arkusza wydruku, ramki, tabliczki i odpowiednich widoków. Skala przedstawienia na kartce to nie to samo co zmiana wymiarów modelu."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Przykład: pomieszczenie ma 4 × 3 m, a drukujesz je w skali 1:50 na A3. Nie zmniejszasz fizycznego rysunku w modelu pięćdziesięciokrotnie; ustawiasz właściwy widok w arkuszu. Na wydruku kontrolujesz skalę, podpisy, jednostki i czytelność."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: opisz, co powinno zostać w Model Space, a co w Layout. Wskaż, gdzie powinny znaleźć się wymiary i numer rewizji. Nie przekazuj do produkcji niesprawdzonego PDF-a z przypadkowym powiększeniem."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Przeskalowuję cały budynek w modelu.. Wyjaśnienie: Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach."
+          }
+        ]
       }
     },
     {
@@ -366,7 +528,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Rysuję 4000×3000 w mm i weryfikuję pomiary."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Od czego zaczynamy?",
+            "text": "Pierwszy samodzielny szkic powinien mieć ustaloną jednostkę, czytelną nazwę i weryfikowalne wymiary. Dla pokoju 4 × 3 metry w jednostkach mm obrys powinien mieć boki 4000 oraz 3000. Najpierw rozrysuj plan i kolejność poleceń. Nie ucz się wyłącznie nazw ikon; ucz się kontrolować powstałą geometrię."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Kolejność: sprawdzenie jednostek, przygotowanie odpowiedniej warstwy, narysowanie obrysu, odczyt wymiarów, korekta ewentualnego błędu, zapis pliku DWG i kontrola widoku przed eksportem. Dopóki nie umiesz wykazać poprawności wymiarów, szkic pozostaje ćwiczeniem."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Ćwiczenie: zrób próbny obrys pokoju w wirtualnym AutoCAD, narysuj dodatkowy okrąg i kopię elementu. Powiedz Anielce, czy narzędzia zmieniają geometrię, warstwę czy tylko sposób wyświetlania. Następnie sprawdź, które dane byłyby niezbędne do wykonania rysunku produkcyjnego."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Rysuję prostokąt na oko z podpisem 4×3.. Wyjaśnienie: Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu."
+          }
+        ]
       }
     },
     {
@@ -476,7 +656,25 @@
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
         "editorial_status": "review_needed",
-        "illustration": "autocad-interface"
+        "illustration": "autocad-interface",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Projekt wymaga okrągłego otworu i prostokątnego obrysu. Prawidłowa praktyka: Dobieram właściwą geometrię i kontroluję wymiar.. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Dobieram właściwą geometrię i kontroluję wymiar. Poprawny wynik: Dobieram właściwą geometrię i kontroluję wymiar."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Oba obiekty wykonuję z losowych prostych.. Wyjaśnienie: Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry."
+          }
+        ]
       }
     },
     {
@@ -585,7 +783,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Masz dwa identyczne słupki, jeden istnieje. Prawidłowa praktyka: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie. Poprawny wynik: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Przenoszę jedyny słupek.. Wyjaśnienie: Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię."
+          }
+        ]
       }
     },
     {
@@ -689,7 +905,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Koniec poręczy ma trafić dokładnie w narożnik słupka. Prawidłowa praktyka: Używam właściwego przyciągania i sprawdzam punkt.. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Używam właściwego przyciągania i sprawdzam punkt. Poprawny wynik: Używam właściwego przyciągania i sprawdzam punkt."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Klikam blisko narożnika na oko.. Wyjaśnienie: OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."
+          }
+        ]
       }
     },
     {
@@ -798,7 +1032,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Trzeba rozróżnić elementy poręczy i instalacje. Prawidłowa praktyka: Wybieram opisane warstwy i zachowuję legendę.. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Wybieram opisane warstwy i zachowuję legendę. Poprawny wynik: Wybieram opisane warstwy i zachowuję legendę."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Przenoszę wszystko do jednej warstwy.. Wyjaśnienie: Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu."
+          }
+        ]
       }
     },
     {
@@ -907,7 +1159,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Konstrukcja znika poza ekranem. Prawidłowa praktyka: Przesuwam lub oddalam widok bez zmiany położenia geometrii.. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Przesuwam lub oddalam widok bez zmiany położenia geometrii. Poprawny wynik: Przesuwam lub oddalam widok bez zmiany położenia geometrii."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Skaluję budynek do monitora.. Wyjaśnienie: Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."
+          }
+        ]
       }
     },
     {
@@ -1016,7 +1286,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Otwierasz rysunek z ostrzeżeniem Missing XREF. Prawidłowa praktyka: Sprawdzam ścieżki i komplet zależnych plików.. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Sprawdzam ścieżki i komplet zależnych plików. Poprawny wynik: Sprawdzam ścieżki i komplet zależnych plików."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Ignoruję ostrzeżenie.. Wyjaśnienie: Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."
+          }
+        ]
       }
     },
     {
@@ -1124,7 +1412,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Obiekt mierzy 975, etykieta ręczna pokazuje 1000. Prawidłowa praktyka: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją. Poprawny wynik: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Nadpisuję etykietę na 1000.. Wyjaśnienie: Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."
+          }
+        ]
       }
     },
     {
@@ -1245,7 +1551,25 @@
           "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
         ],
         "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Klient oczekuje aktualnego planu z wymiarami. Prawidłowa praktyka: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem. Poprawny wynik: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Wysyłam pierwszy przypadkowy podgląd.. Wyjaśnienie: Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw."
+          }
+        ]
       }
     },
     {
@@ -1281,7 +1605,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Narysowano cztery słupki bez wymiarów. Prawidłowa praktyka: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia. Poprawny wynik: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Dopisuję dowolną nośność.. Wyjaśnienie: Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."
+          }
+        ]
       }
     },
     {
@@ -1317,7 +1659,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Kontroluję geometrię, jednostki, warstwy i wydruk."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Oddajesz rysunek pomieszczenia z otworami. Prawidłowa praktyka: Kontroluję geometrię, jednostki, warstwy i wydruk.. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Kontroluję geometrię, jednostki, warstwy i wydruk. Poprawny wynik: Kontroluję geometrię, jednostki, warstwy i wydruk."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Sprawdzam tylko kolor tła.. Wyjaśnienie: Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów."
+          }
+        ]
       }
     },
     {
@@ -1354,7 +1714,25 @@
           "task": "Sprawdź na swoim przykładzie: Wstrzymuję produkcję i proszę o potwierdzony komplet."
         },
         "editorial_status": "review_needed",
-        "illustration": "autocad-interface"
+        "illustration": "autocad-interface",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Fabryka chce ciąć element z pliku bez numeru rewizji. Prawidłowa praktyka: Wstrzymuję produkcję i proszę o potwierdzony komplet.. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Wstrzymuję produkcję i proszę o potwierdzony komplet. Poprawny wynik: Wstrzymuję produkcję i proszę o potwierdzony komplet."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Produkuję z pierwszego maila.. Wyjaśnienie: Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień."
+          }
+        ]
       }
     },
     {
@@ -1390,7 +1768,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Zgłaszam kolizję i czekam na zatwierdzoną zmianę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Rura biegnie przez wspornik balustrady. Prawidłowa praktyka: Zgłaszam kolizję i czekam na zatwierdzoną zmianę.. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Zgłaszam kolizję i czekam na zatwierdzoną zmianę. Poprawny wynik: Zgłaszam kolizję i czekam na zatwierdzoną zmianę."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Kasuję rurę z DWG.. Wyjaśnienie: Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku."
+          }
+        ]
       }
     },
     {
@@ -1426,7 +1822,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Weryfikuję kompletność i proszę o brakujące dane."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Dostarczony projekt otwiera się z brakami. Prawidłowa praktyka: Weryfikuję kompletność i proszę o brakujące dane.. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Weryfikuję kompletność i proszę o brakujące dane. Poprawny wynik: Weryfikuję kompletność i proszę o brakujące dane."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Ukrywam ostrzeżenia.. Wyjaśnienie: Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii."
+          }
+        ]
       }
     },
     {
@@ -1462,7 +1876,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Wydaję nową wersję do zatwierdzenia z opisem zmian."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Klient zmienia szerokość poręczy po akceptacji. Prawidłowa praktyka: Wydaję nową wersję do zatwierdzenia z opisem zmian.. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Wydaję nową wersję do zatwierdzenia z opisem zmian. Poprawny wynik: Wydaję nową wersję do zatwierdzenia z opisem zmian."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Nadpisuję jedyną kopię.. Wyjaśnienie: Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia."
+          }
+        ]
       }
     },
     {
@@ -1498,7 +1930,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Poprawiam układ arkusza i style tekstu, zachowując geometrię."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Rzut 1:50 ma za małe opisy. Prawidłowa praktyka: Poprawiam układ arkusza i style tekstu, zachowując geometrię.. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Poprawiam układ arkusza i style tekstu, zachowując geometrię. Poprawny wynik: Poprawiam układ arkusza i style tekstu, zachowując geometrię."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Skaluję obiekty budynku.. Wyjaśnienie: Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu."
+          }
+        ]
       }
     },
     {
@@ -1534,7 +1984,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Zapisuję różnicę i uzgadniam korektę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "DWG pokazuje 3200 mm, na budowie mierzysz 3170 mm. Prawidłowa praktyka: Zapisuję różnicę i uzgadniam korektę.. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Zapisuję różnicę i uzgadniam korektę. Poprawny wynik: Zapisuję różnicę i uzgadniam korektę."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Produkuję 3200 bez kontroli.. Wyjaśnienie: Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją."
+          }
+        ]
       }
     },
     {
@@ -1570,7 +2038,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Zestawienie podaje 65 słupków. Prawidłowa praktyka: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem. Poprawny wynik: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Licząc tylko ikony, deklaruję 65.. Wyjaśnienie: Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów."
+          }
+        ]
       }
     },
     {
@@ -1606,7 +2092,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Odnajduję nakładki i weryfikuję obrys na kopii pliku."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Masz zdublowane linie cięcia. Prawidłowa praktyka: Odnajduję nakładki i weryfikuję obrys na kopii pliku.. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Odnajduję nakładki i weryfikuję obrys na kopii pliku. Poprawny wynik: Odnajduję nakładki i weryfikuję obrys na kopii pliku."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Kasuję przypadkową połowę rysunku.. Wyjaśnienie: Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."
+          }
+        ]
       }
     },
     {
@@ -1642,7 +2146,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Wskazuję wersję obowiązującą i sprawdzam komplet."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Podwykonawca otrzymuje pięć podobnych plików bez instrukcji. Prawidłowa praktyka: Wskazuję wersję obowiązującą i sprawdzam komplet.. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Wskazuję wersję obowiązującą i sprawdzam komplet. Poprawny wynik: Wskazuję wersję obowiązującą i sprawdzam komplet."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Zostawiam odbiorcy dowolny wybór.. Wyjaśnienie: Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku."
+          }
+        ]
       }
     },
     {
@@ -1678,7 +2200,25 @@
           ],
           "task": "Sprawdź na swoim przykładzie: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj pojęcie i zastosowanie",
+            "text": "Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje."
+          },
+          {
+            "heading": "Wyobraź sobie sytuację na prawdziwym projekcie",
+            "text": "Przekazujesz szkic balustrady do przeglądu przez projektanta. Prawidłowa praktyka: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje."
+          },
+          {
+            "heading": "Ćwiczenie — wykonaj i skontroluj",
+            "text": "Sprawdź na swoim przykładzie: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie. Poprawny wynik: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie."
+          },
+          {
+            "heading": "Błąd, który trzeba rozpoznać",
+            "text": "Ogłaszam dokument wykonawczym bez obliczeń.. Wyjaśnienie: Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje."
+          }
+        ]
       }
     }
   ]
