@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9ed"/><stop offset="1" stop-color="#e9f2df"/></linearGradient></defs>
+<rect width="1100" height="620" rx="24" fill="url(#bg)"/>
+<path d="M36 144H1064" stroke="#d8dfca" stroke-width="2"/>
+<text x="58" y="68" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#52705b" letter-spacing="3">TRENERKI ACADEMY · ZAPOMNIANE RZEMIOSŁA</text>
+<text x="58" y="120" font-family="Arial,sans-serif" font-size="39" font-weight="bold" fill="#173c2d">GARNCARZ</text>
+<rect x="48" y="174" width="450" height="361" rx="25" fill="#e5ead8"/>
+<ellipse cx="274" cy="466" rx="145" ry="20" fill="#c9d7c0" opacity=".7"/>
+<g transform="translate(275 344) scale(.95)"><path d="M-36 -131 L36 -131 C30 -98 25 -79 50 -53 Q126 10 95 94 Q76 150 0 151 Q-76 150 -95 94 Q-126 10 -50 -53 C-25 -79 -30 -98 -36 -131Z" fill="#c98150" stroke="#70452f" stroke-width="7"/><ellipse cy="-132" rx="37" ry="12" fill="#f3c49d" stroke="#70452f" stroke-width="6"/><path d="M-93 3 Q0 38 94 3 M-74 103 Q0 130 74 103" fill="none" stroke="#a65a35" stroke-width="12"/><path d="M100 -22 Q150 -28 140 35 Q137 76 99 79" fill="none" stroke="#70452f" stroke-width="10"/></g>
+<rect x="530" y="178" width="519" height="346" rx="21" fill="#fffdf6" stroke="#d9e0cf" stroke-width="2"/>
+<text x="560" y="221" font-size="17" font-weight="bold" font-family="Arial,sans-serif" fill="#52705b">OD MATERIAŁU DO GOTOWEGO WYROBU</text>
+<rect x="554" y="250" width="470" height="69" rx="12" fill="#f0f3e9"/><text x="570" y="274" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">1 · MATERIAŁ</text><text x="570" y="301" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">GLINA</text><rect x="554" y="332" width="470" height="69" rx="12" fill="#f0f3e9"/><text x="570" y="356" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">2 · WARSZTAT</text><text x="570" y="383" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">KOŁO GARNCARSKIE</text><rect x="554" y="414" width="470" height="69" rx="12" fill="#e0eedd"/><text x="570" y="438" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">3 · WYRÓB</text><text x="570" y="465" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">DZBAN</text>
+<text x="55" y="570" font-family="Arial,sans-serif" font-size="17" fill="#586e5e">Autorska ilustracja edukacyjna · poznawaj przedmioty i narzędzia krok po kroku</text>
+</svg>
