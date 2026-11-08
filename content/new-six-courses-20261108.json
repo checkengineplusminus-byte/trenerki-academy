@@ -1,0 +1,307 @@
+{
+  "date": "2026-11-08",
+  "notes": "Ceny katalogowe TRENERKI są ustalone względem ofert rynkowych, nie są średnią arytmetyczną z różnych formatów. Materiały są w przygotowaniu; nie pobieramy realnych płatności.",
+  "courses": [
+    {
+      "id": "wyjdz-z-toksycznego-zwiazku",
+      "title": "Wyjdź z toksycznego związku i nie daj się manipulować",
+      "cat": "Relacje i rodzina",
+      "price": 99,
+      "emoji": "🛡️",
+      "accent": "#E7E5F1",
+      "flag": "Nowość · relacje i bezpieczeństwo",
+      "duration": "Własne tempo",
+      "level": "Dla dorosłych",
+      "short": "Rozpoznawaj kontrolę i manipulację, odzyskuj własne granice i przygotuj bezpieczny plan dalszych kroków. Bez zawstydzania i bez presji na decyzję.",
+      "outline": [
+        "Kiedy trudna relacja staje się krzywdząca",
+        "Manipulacja, izolacja i kontrola — konkretne sygnały",
+        "Jak odbudować zaufanie do własnej oceny",
+        "Granice i odpowiedzi na presję",
+        "Bezpieczeństwo przed rozmową lub rozstaniem",
+        "Wsparcie, dokumenty i sprawy codzienne",
+        "Po rozstaniu: kontakt, dzieci i granice",
+        "Mój plan bezpieczeństwa i odzyskiwania sprawczości"
+      ],
+      "preview": {
+        "curiosity": "Nie każda kłótnia oznacza przemoc. Ale powtarzające się zastraszanie, kontrola pieniędzy i odcinanie od bliskich to sygnały, których nie warto bagatelizować.",
+        "scenario": "Partner czyta Twoje wiadomości i mówi, że bez tego nie ma zaufania. Zaczynasz ukrywać zwykłe rozmowy z przyjaciółmi, żeby uniknąć awantury.",
+        "outcome_1": "Odróżnisz konflikt od wzorca kontroli i przemocy.",
+        "outcome_2": "Przećwiczysz stawianie granic i szukanie wsparcia bez ryzykownej konfrontacji.",
+        "outcome_3": "Ułożysz indywidualny, bezpieczny plan kolejnych kroków.",
+        "source_url": "https://www.gov.pl/web/gov/skorzystaj-z-pomocy-dla-osob-dotknietych-przemoca-w-rodzinie"
+      },
+      "editorial_note": "Twoje bezpieczeństwo i autonomia są pierwsze. Nie zalecamy konfrontacji z osobą stosującą przemoc bez oceny ryzyka ani nie nakazujemy pozostawania czy odchodzenia. W bezpośrednim zagrożeniu dzwoń 112; w Polsce Niebieska Linia 800 120 002 (całodobowo). Kurs nie zastępuje pomocy prawnej i psychologicznej.",
+      "certificate_title_pl": "Rozpoznawanie manipulacji i bezpieczne granice w relacjach",
+      "certificate_title_en": "Recognising Manipulation and Setting Safe Boundaries"
+    },
+    {
+      "id": "kryzys-po-40-bez-dlugow",
+      "title": "Kryzys po czterdziestce — jak nie wpaść w długi",
+      "cat": "Życiowy restart",
+      "price": 79,
+      "emoji": "🧭",
+      "accent": "#EAE5D8",
+      "flag": "Nowość · życiowe wybory",
+      "duration": "Własne tempo",
+      "level": "Dla dorosłych",
+      "short": "Gdy po czterdziestce pojawia się potrzeba wielkiej zmiany, naucz się spokojnie policzyć koszty, zatrzymać impulsy i podjąć decyzję bez niepotrzebnego zadłużenia.",
+      "outline": [
+        "Czterdziestka to etap, nie finansowy wyścig",
+        "Co naprawdę kosztuje mnie dziś życie",
+        "Impulsywne zakupy, porównania i presja",
+        "Samochód, dom, biznes — policz cały koszt",
+        "Długi, raty i ostrzegawcze sygnały",
+        "Poduszka bezpieczeństwa i plan B",
+        "Zmiana pracy lub związku bez finansowej paniki",
+        "Plan 90 dni: rozwój bez ryzykownego długu"
+      ],
+      "preview": {
+        "curiosity": "Zmiana życia nie wymaga od razu nowego auta ani kredytu. Czasem najtańszym krokiem jest sprawdzenie, co naprawdę chcesz zmienić.",
+        "scenario": "Po czterdziestce myślisz o nowym samochodzie i biznesie. Raty wyglądają na dostępne, ale nie policzyłeś napraw, podatków i słabszych miesięcy.",
+        "outcome_1": "Policzysz pełny koszt decyzji, a nie tylko pierwszą ratę.",
+        "outcome_2": "Rozpoznasz presję porównywania się i impulsywne zakupy.",
+        "outcome_3": "Ułożysz bezpieczny plan zmiany na 90 dni.",
+        "source_url": "https://uokik.gov.pl/public/kupie-teraz-zaplace-pozniej-jak-wyprzedaze-zadluzaja-porady-uokik"
+      },
+      "editorial_note": "Ambicja jest ważna, ale zdrowie i stabilność finansowa mają pierwszeństwo. Nie pożyczaj pod wpływem presji, nie poręczaj zobowiązań bez analizy. Materiał edukacyjny, nie spersonalizowana porada inwestycyjna ani kredytowa.",
+      "certificate_title_pl": "Świadome wybory finansowe i życiowe po czterdziestce",
+      "certificate_title_en": "Financial and Life Choices After Forty"
+    },
+    {
+      "id": "partner-z-uzaleznieniem",
+      "title": "Moja druga połówka ma problem z alkoholem lub narkotykami — jak żyć, pomagać i chronić siebie",
+      "cat": "Relacje i rodzina",
+      "price": 129,
+      "emoji": "🤲",
+      "accent": "#E0EAE7",
+      "flag": "Nowość · wsparcie i granice",
+      "duration": "Własne tempo",
+      "level": "Dla dorosłych",
+      "short": "Jak mówić o uzależnieniu, szukać rzetelnej pomocy, chronić dzieci i siebie oraz decydować o własnej przyszłości — bez brania odpowiedzialności za cudze leczenie.",
+      "outline": [
+        "Uzależnienie a odpowiedzialność za zachowanie",
+        "Jak rozmawiać bez zawstydzania i groźby",
+        "Granice: wsparcie nie oznacza przyzwolenia",
+        "Pieniądze, bezpieczeństwo i dobro dzieci",
+        "Jak znaleźć profesjonalną pomoc i grupy wsparcia",
+        "Nawrót, odmowa leczenia i trudne decyzje",
+        "Zostać czy odejść — własna decyzja bez presji",
+        "Plan wsparcia, kontaktów i bezpieczeństwa"
+      ],
+      "preview": {
+        "curiosity": "Nie możesz wytrzeźwieć za drugą osobę. Możesz jednak szukać wsparcia, chronić własne granice i nie brać na siebie odpowiedzialności za jej leczenie.",
+        "scenario": "Bliska osoba znów obiecuje zmianę po nocy spędzonej na piciu. Ty tłumaczysz nieobecność w pracy, ukrywasz problem przed dziećmi i nie wiesz, co robić dalej.",
+        "outcome_1": "Poznasz różnicę między pomocą a przejmowaniem cudzych obowiązków.",
+        "outcome_2": "Przećwiczysz spokojną rozmowę i przygotujesz listę instytucji wsparcia.",
+        "outcome_3": "Ocenisz swoje opcje, bezpieczeństwo i potrzeby dzieci bez presji pozostania w związku.",
+        "source_url": "https://www.niaaa.nih.gov/publications/brochures-and-fact-sheets/treatment-alcohol-problems-finding-and-getting-help"
+      },
+      "editorial_note": "Nie obciążamy bliskich winą za uzależnienie drugiej osoby. Bezpieczeństwo dorosłych i dzieci jest ważniejsze niż utrzymanie relacji za wszelką cenę. Odstawianie alkoholu po długim intensywnym piciu może wymagać pomocy medycznej. Kurs nie jest terapią ani instrukcją odstawiania substancji; w niebezpieczeństwie wzywaj służby ratunkowe.",
+      "certificate_title_pl": "Wsparcie bliskich osoby uzależnionej i zdrowe granice",
+      "certificate_title_en": "Supporting Loved Ones with Addiction and Healthy Boundaries"
+    },
+    {
+      "id": "nie-marnuj-jedzenia",
+      "title": "Nie wyrzucaj jedzenia — gotuj z tego, co masz",
+      "cat": "Dom i organizacja",
+      "price": 29.99,
+      "emoji": "🥕",
+      "accent": "#E6ECD5",
+      "flag": "Nowość · mini-kurs 29,99 zł",
+      "duration": "Własne tempo",
+      "level": "Dla każdego",
+      "short": "Resztki w lodówce zamieniaj w smaczne, proste posiłki. Mniej śmieci, niższe koszty i mniej stresu przed kolejnymi zakupami — zawsze z zasadami bezpieczeństwa żywności.",
+      "outline": [
+        "Dlaczego żywność ląduje w koszu",
+        "Daty ważności: co jest bezpieczne",
+        "Lodówka, zamrażarka i plan wykorzystania",
+        "Z pieczywa i warzyw: trzy szybkie dania",
+        "Z ryżu, kaszy i makaronu: drugie życie obiadu",
+        "Małe porcje, plan zakupów i zamienniki",
+        "Przelicz koszt porcji i realne oszczędności",
+        "Tygodniowe wyzwanie: zero niepotrzebnych strat"
+      ],
+      "preview": {
+        "curiosity": "Czerstwy, ale bezpieczny chleb może stać się grzankami, a ugotowane ziemniaki — podstawą nowego obiadu. Nie chodzi o jedzenie za wszelką cenę, lecz o plan.",
+        "scenario": "W lodówce zostały pół papryki, ugotowany ryż z poprzedniego dnia i trzy jajka. Zanim coś ugotujesz, musisz sprawdzić, jak te produkty były przechowywane.",
+        "outcome_1": "Odróżnisz datę jakości od terminu bezpieczeństwa żywności.",
+        "outcome_2": "Ułożysz trzy proste przepisy z produktów, które już masz.",
+        "outcome_3": "Policzysz koszt porcji i ograniczysz przypadkowe zakupy.",
+        "source_url": "https://www.gov.pl/web/gis/najlepiej-spozyc-przed-nalezy-spozyc-do-co-to-oznacza-i-do-kiedy-produkt-moze-znajdowac-sie-w-obrocie"
+      },
+      "editorial_note": "Oszczędzanie nie może zagrażać zdrowiu. Produktów po terminie „należy spożyć do” nie używaj. W razie nieprawidłowego przechowywania lub oznak zepsucia wyrzuć żywność; nie polegaj wyłącznie na zapachu. Uwzględniaj alergeny i higienę.",
+      "certificate_title_pl": "Bezpieczne planowanie posiłków i niemarnowanie żywności",
+      "certificate_title_en": "Safe Meal Planning and Reducing Food Waste"
+    },
+    {
+      "id": "trawnik-jestem-ogrodnikiem",
+      "title": "Trawnik — jestem swoim ogrodnikiem",
+      "cat": "Hobby i natura",
+      "price": 29.99,
+      "emoji": "🌱",
+      "accent": "#D9EDD6",
+      "flag": "Nowość · mini-kurs 29,99 zł",
+      "duration": "Własne tempo",
+      "level": "Dla każdego",
+      "short": "Od wyboru trawy do diagnozowania plam i mchu: koszenie, podlewanie, gleba, pogoda, cień i natura wokół domu, bez niepotrzebnych wydatków i chemii.",
+      "outline": [
+        "Poznaj trawnik: słońce, cień, gleba i klimat",
+        "Wybór mieszanki i zakładanie trawnika",
+        "Koszenie: wysokość, pora i zasada jednej trzeciej",
+        "Podlewanie i susza — nie marnuj wody",
+        "Mech, chwasty, puste miejsca i zagęszczenie",
+        "Napowietrzanie, piaskowanie i nawożenie z głową",
+        "Kret, zwierzęta, choroby i wpływ otoczenia",
+        "Roczny kalendarz pielęgnacji i test wiedzy"
+      ],
+      "preview": {
+        "curiosity": "Żółty trawnik nie zawsze jest martwy. W czasie suszy część traw przechodzi w stan spoczynku, a nadmierne podlewanie może marnować wodę.",
+        "scenario": "Po upalnym tygodniu trawa zrobiła się brązowa. Sąsiad mówi, żeby lać wodę codziennie i skosić nisko, a Ty nie wiesz, czy to pomoże.",
+        "outcome_1": "Rozpoznasz wpływ gleby, cienia i pogody na trawę.",
+        "outcome_2": "Ułożysz rozsądny plan koszenia i podlewania dla lokalnych warunków.",
+        "outcome_3": "Zdiagnozujesz częste problemy bez kupowania preparatów w ciemno.",
+        "source_url": "https://www.rhs.org.uk/lawns/mowing"
+      },
+      "editorial_note": "Pielęgnację dopasuj do gatunku trawy, klimatu, gleby, suszy oraz lokalnych ograniczeń wody i środków ochrony roślin. Nie kosimy mokrego ani zamarzniętego trawnika. Chemia nie zastępuje diagnozy; wspieramy bioróżnorodność i zapylacze.",
+      "certificate_title_pl": "Praktyczna pielęgnacja trawnika w ogrodzie",
+      "certificate_title_en": "Practical Lawn Care"
+    },
+    {
+      "id": "ekonomia-domowa-bez-dlugow",
+      "title": "Ekonomia domowa — wybory, które chronią przed długami",
+      "cat": "Finanse domowe",
+      "price": 99,
+      "emoji": "🏡",
+      "accent": "#E1EBE8",
+      "flag": "Nowość · finanse rodziny",
+      "duration": "Własne tempo",
+      "level": "Dla każdego",
+      "short": "Zaplanuj domowe pieniądze, rozpoznaj ukryte koszty, porównaj kredyty i rachunki oraz przygotuj plan na trudniejsze miesiące — bez wstydu i nierealnych obietnic.",
+      "outline": [
+        "Mapa domowych wpływów i wydatków",
+        "Koszty stałe, zmienne i prawdziwy koszt życia",
+        "Kredyt, raty, RRSO i „kup teraz, zapłać później”",
+        "Zakupy spożywcze, energia i rachunki",
+        "Poduszka awaryjna i kolejność priorytetów",
+        "Wspólne pieniądze i rozmowy bez oskarżeń",
+        "Co zrobić, gdy budżet przestaje się spinać",
+        "Plan miesiąca: świadome decyzje i kontrola"
+      ],
+      "preview": {
+        "curiosity": "Mała rata bywa kosztowną decyzją, gdy zsumujesz opłaty, ubezpieczenie i czas spłaty. W domowym budżecie liczy się cały koszt, nie reklama.",
+        "scenario": "Rodzinie zostaje 900 zł po opłaceniu rachunków. Jeden domownik chce kupić sprzęt w ratach, drugi boi się nieplanowanego rachunku za samochód.",
+        "outcome_1": "Sporządzisz realny budżet z podziałem na konieczne i odraczalne wydatki.",
+        "outcome_2": "Porównasz koszt pożyczki, rat i odroczonej płatności.",
+        "outcome_3": "Przygotujesz plan awaryjny na gorszy miesiąc i listę źródeł bezpłatnej pomocy.",
+        "source_url": "https://uokik.gov.pl/public/kupie-teraz-zaplace-pozniej-jak-wyprzedaze-zadluzaja-porady-uokik"
+      },
+      "editorial_note": "Kurs nie oferuje produktów finansowych ani gwarancji wyjścia z zadłużenia. Przed decyzją sprawdzaj pełny koszt kredytu, RRSO i aktualne warunki. W kryzysie warto wcześnie kontaktować się z wierzycielem oraz niezależnym, bezpłatnym doradztwem; nie zaciągaj kolejnego długu bez oceny możliwości spłaty.",
+      "certificate_title_pl": "Świadome zarządzanie budżetem i ryzykiem zadłużenia",
+      "certificate_title_en": "Household Budgeting and Debt-Risk Awareness"
+    }
+  ],
+  "price_benchmarks": [
+    {
+      "id": "wyjdz-z-toksycznego-zwiazku",
+      "price": 99,
+      "comparables": [
+        {
+          "price": 47,
+          "url": "https://platforma.szkolenia-psychologiczne.pl/",
+          "title": "Potęga Manipulacji"
+        },
+        {
+          "price": 123,
+          "url": "https://platforma.szkolenia-psychologiczne.pl/",
+          "title": "Toksyczny narcyzm"
+        },
+        {
+          "price": 390,
+          "url": "https://instytutbennewicz.pl/produkt/jak-uwolnic-sie-z-toksycznej-relacji/",
+          "title": "Jak uwolnić się z toksycznej relacji"
+        }
+      ]
+    },
+    {
+      "id": "kryzys-po-40-bez-dlugow",
+      "price": 79,
+      "comparables": [
+        {
+          "price": 79,
+          "url": "https://mg-szkolenia.pl/szkolenie/zarzadzanie-domowym-budzetem",
+          "title": "Zarządzanie domowym budżetem, 30 dni"
+        },
+        {
+          "price": 120,
+          "url": "https://mg-szkolenia.pl/szkolenie/zarzadzanie-domowym-budzetem",
+          "title": "Zarządzanie domowym budżetem, 90 dni"
+        },
+        {
+          "price": 247,
+          "url": "https://eduj.pl/produkt/budzet_domowy_krok_po_kroku_zapanuj_nad_osobistymi_finansami",
+          "title": "Budżet domowy krok po kroku"
+        }
+      ]
+    },
+    {
+      "id": "partner-z-uzaleznieniem",
+      "price": 129,
+      "comparables": [
+        {
+          "price": 299,
+          "url": "https://euphire.pl/produkt/ewa-woydyllo-osiatynska-rodzina-relacje-bliskie-zwiazki-a-problemy-alkoholowe-szkolenie-on-line/",
+          "title": "Rodzina i problemy alkoholowe"
+        },
+        {
+          "price": 120,
+          "url": "https://lukaszzielonka.pl/grupa-dla-wspoluzaleznionych-online.html",
+          "title": "Grupa wsparcia, jedno spotkanie 90 min"
+        }
+      ]
+    },
+    {
+      "id": "nie-marnuj-jedzenia",
+      "price": 29.99,
+      "comparables": [
+        {
+          "price": 934.8,
+          "url": "https://prs.pl/szkolenia/bezpieczenstwo-zywnosci/trendy-i-wyzwania/marnotrawienie-zywnosci/",
+          "title": "Profesjonalne szkolenie B2B, nieporównywalna formuła"
+        }
+      ]
+    },
+    {
+      "id": "trawnik-jestem-ogrodnikiem",
+      "price": 29.99,
+      "comparables": [
+        {
+          "price": 1600,
+          "url": "https://www.pdis.pl/kurs/kurs-zakladanie-pielegnacja-ogrodow",
+          "title": "64-godzinne szkolenie ogrodnicze, nieporównywalna formuła"
+        }
+      ]
+    },
+    {
+      "id": "ekonomia-domowa-bez-dlugow",
+      "price": 99,
+      "comparables": [
+        {
+          "price": 79,
+          "url": "https://mg-szkolenia.pl/szkolenie/zarzadzanie-domowym-budzetem",
+          "title": "Budżet domowy, 30 dni"
+        },
+        {
+          "price": 159,
+          "url": "https://mg-szkolenia.pl/szkolenie/zarzadzanie-domowym-budzetem",
+          "title": "Budżet domowy, 180 dni"
+        },
+        {
+          "price": 247,
+          "url": "https://eduj.pl/produkt/budzet_domowy_krok_po_kroku_zapanuj_nad_osobistymi_finansami",
+          "title": "Budżet domowy krok po kroku"
+        }
+      ]
+    }
+  ]
+}
