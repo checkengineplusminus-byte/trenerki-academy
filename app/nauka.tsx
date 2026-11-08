@@ -195,12 +195,12 @@ export default function Learning(){
     />}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
-     {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)).slice(0,7).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
+     {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
-      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified} hideSituation={!!lesson.material?.sections?.length} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
+      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified} hideSituation={!!lesson.material?.sections?.length||!!lesson.material?.raw?.some(p=>p.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}
@@ -218,6 +218,10 @@ export default function Learning(){
    </Pressable>
    {!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Wybierz poprawną odpowiedź w ćwiczeniu. Kolejne lekcje otwierają się po kolei.</Text>}
    <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
+   {next!==undefined&&<View style={{padding:13,marginTop:10,backgroundColor:'#f0f5ed',borderRadius:11}}>
+     <Text style={{color:'#648067',fontWeight:'800',fontSize:12}}>NASTĘPNA LEKCJA · {index+2}/{items.length}</Text>
+     <Text style={{color:ink,fontWeight:'800',fontSize:15,marginTop:5}}>{items[index+1]?.title_pl}</Text>
+    </View>}
    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:19,gap:12}}>
     <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
      <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
