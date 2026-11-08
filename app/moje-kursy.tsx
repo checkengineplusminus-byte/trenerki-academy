@@ -42,9 +42,15 @@ export default function MyCourses(){
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:25,maxWidth:900,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800',marginBottom:18}}>← Katalog kursów</Text></Pressable>
   <Text style={{fontSize:32,fontWeight:'900',color:'#173228',marginBottom:10}}>Moje kursy</Text>
-  <Text style={{color:'#5c7460',marginBottom:21}}>Tutaj znajdziesz kursy, postęp i notatki. Płatne dostępy testowe trwają 14 dni; nie są sprzedażą ani dowodem płatności. Po uruchomieniu Stripe pojawią się także prawdziwe zakupy.</Text>
+  <Text style={{color:'#5c7460',marginBottom:21}}>Twoje kursy i wyniki nauki w jednym miejscu. Możesz wracać do ukończonych lekcji i sprawdzać postępy.</Text>
   {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a52626'}}>{error}</Text>}
-  {!busy&&!items.length&&<Text>Konto jest gotowe. Wybierz interesujący Cię kurs z katalogu, kliknij „Kup kurs” lub odbierz darmowy kurs Świętego Mikołaja.</Text>}
+  {!busy&&!items.length&&<View style={{backgroundColor:'#eaf4e5',padding:24,borderRadius:17,borderColor:'#cfdfc7',borderWidth:1,gap:13}}>
+   <Text style={{fontSize:22,color:'#183d2c',fontWeight:'900'}}>Czysty start — wybierz pierwszy kurs</Text>
+   <Text style={{fontSize:15,lineHeight:25,color:'#4b6852'}}>Na Twoim koncie nie ma obecnie zapisanych kursów. Gdy rozpoczniesz nowy, pojawi się tutaj wraz z postępem od pierwszej lekcji.</Text>
+   <Pressable accessibilityRole="button" onPress={()=>router.push('/')} style={{backgroundColor:'#193d2b',borderRadius:11,padding:15}}>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Odkryj kursy i rozpocznij naukę →</Text>
+   </Pressable>
+  </View>}
   {items.map((row,i)=>{const active=['active','demo'].includes(row.status)&&new Date(row.expires_at)>new Date();return <View key={row.course_slug+String(i)} style={{backgroundColor:'white',padding:20,marginBottom:13,borderRadius:15,borderWidth:1,borderColor:'#d8e9d6'}}>
     <Text style={{fontSize:20,fontWeight:'800',color:'#183d2c'}}>{row.ta_courses?.title_pl||row.course_slug}</Text>
     {row.status==='demo'&&<Text style={{fontWeight:'800',fontSize:12,color:'#886129',backgroundColor:'#fff3d5',padding:10,borderRadius:10,marginTop:10}}>DOSTĘP TESTOWY • 0 zł zapłacone • bez faktury</Text>}
