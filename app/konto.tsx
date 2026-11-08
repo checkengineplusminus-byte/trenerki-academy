@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,TextInput,Pressable,ScrollView} from 'react-native';
+import {View,Text,TextInput,Pressable,ScrollView,Linking} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 const ink='#193b2a',pale='#e7f2da';
@@ -91,6 +91,14 @@ export default function AccountPage(){
  <Pressable onPress={submit} disabled={busy} style={{backgroundColor:ink,padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'white',fontWeight:'800'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
  {mode!=='new-password'&&<Pressable onPress={()=>{setMode(mode==='register'?'login':'register');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{mode==='register'?'Mam już konto — zaloguj':'Utwórz nowe konto'}</Text></Pressable>}
  {mode==='login'&&<Pressable onPress={()=>{setMode('reset');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink}}>Nie pamiętam hasła</Text></Pressable>}
+ <View style={{marginTop:17,marginBottom:6,gap:8}}>
+  <Text style={{color:'#55705e',fontSize:12,lineHeight:20}}>TRENERKI oferuje autorskie kursy i autorskie dyplomy potwierdzające naukę. Dyplom można wpisać do CV jako szkolenie dodatkowe; nie jest kwalifikacją zawodową ani oficjalnym uprawnieniem.</Text>
+  <View style={{flexDirection:'row',gap:17,flexWrap:'wrap'}}>
+   <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/regulamin.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Regulamin</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/prywatnosc.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Polityka prywatności</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
+  </View>
+ </View>
  <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja jest bezpłatna. Obecnie zakupy płatnych kursów mają wyłącznie tryb DEMO na koncie administratora, bez pobierania pieniędzy. Darmowe kursy i prezenty można odbierać po zalogowaniu.</Text>
  </View></ScrollView>
 }
