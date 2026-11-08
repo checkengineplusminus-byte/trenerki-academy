@@ -70,14 +70,14 @@ function ShortcutCard({item,index,onRun,active}:{item:KeyboardShortcut,index:num
 }
 export default function KeyboardLesson({shortcuts,tips,exercise,references,onPracticed,onAttempt,identity}:{
  shortcuts?:KeyboardShortcut[];tips?:string[];exercise?:string;references?:KeyboardReference[];
- identity?:string;onPracticed?:(verified:boolean)=>void;onAttempt?:(index:number,correct:boolean,activeCombo?:string,selectedCombo?:string)=>void;
+ identity?:string;onPracticed?:(verified:boolean)=>void;onAttempt?:(index:number,correct:boolean,activeCombo?:string,selectedCombo?:string)=>Promise<boolean>|boolean;
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
  const [active,setActive]=useState<KeyboardShortcut|null>(null);
  const [runId,setRunId]=useState(0);
- const [command,setCommand]=useState(''),[feedback,setFeedback]=useState(''),[listening,setListening]=useState(false),[quizAnswer,setQuizAnswer]=useState<number|null>(null);
- useEffect(()=>{setActive(null);setCommand('');setFeedback('');setListening(false);setQuizAnswer(null);onPracticed?.(false)},[shortcuts]);
- function run(item:KeyboardShortcut){setRunId(n=>n+1);setActive(item);setQuizAnswer(null);onPracticed?.(false);setFeedback('Zobacz efekt w symulatorze. Teraz sprawdź, czy rozumiesz działanie polecenia.');}
+ const [command,setCommand]=useState(''),[feedback,setFeedback]=useState(''),[listening,setListening]=useState(false),[quizAnswer,setQuizAnswer]=useState<number|null>(null),[quizVerifying,setQuizVerifying]=useState(false),[quizConfirmed,setQuizConfirmed]=useState(false),[quizError,setQuizError]=useState('');
+ useEffect(()=>{setActive(null);setCommand('');setFeedback('');setListening(false);setQuizAnswer(null);setQuizConfirmed(false);setQuizError('');onPracticed?.(false)},[shortcuts]);
+ function run(item:KeyboardShortcut){setRunId(n=>n+1);setActive(item);setQuizAnswer(null);setQuizConfirmed(false);setQuizError('');onPracticed?.(false);setFeedback('Zobacz efekt w symulatorze. Teraz sprawdź, czy rozumiesz działanie polecenia.');}
  function runCommand(){
   const found=valid.find(s=>s.kind==='alias'&&s.combo.toUpperCase()===command.trim().toUpperCase());
   if(found){run(found);setCommand('');}
@@ -104,6 +104,20 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
  const label=(valid[0]?.platform||'').toLowerCase();
  const mode:'excel'|'cad'|'word'|'windows'=label.includes('excel')?'excel':label.includes('autocad')?'cad':label.includes('word')?'word':'windows';
  const answerOptions=active?[active,...valid.filter(x=>x.combo!==active.combo).slice(0,2)].sort((a,b)=>a.combo.localeCompare(b.combo)):[];
+ async function verifyShortcut(option:KeyboardShortcut,index:number){
+  if(!active||quizVerifying||quizConfirmed)return;
+  const localCorrect=option.combo===active.combo;
+  setQuizAnswer(index);setQuizError('');onPracticed?.(false);setQuizVerifying(true);
+  try{
+   const accepted=onAttempt?await onAttempt(index,localCorrect,active.combo,option.combo):localCorrect;
+   const confirmed=localCorrect&&!!accepted;
+   setQuizConfirmed(confirmed);onPracticed?.(confirmed);
+   if(localCorrect&&!confirmed)setQuizError('Poprawną odpowiedź trzeba jeszcze zapisać. Kliknij ją ponownie.');
+  }catch{
+   setQuizConfirmed(false);onPracticed?.(false);setQuizError('Nie udało się zapisać odpowiedzi. Spróbuj ponownie.');
+  }finally{setQuizVerifying(false)}
+ }
+
  return <View style={{gap:16,marginTop:19}}>
   <View style={{backgroundColor:'#e1efcf',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:23,fontWeight:'900'}}>Sprawdź to samodzielnie ⌨️</Text>
@@ -125,10 +139,11 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
   {active&&answerOptions.length>=3&&<View style={{backgroundColor:'#193b2d',padding:19,borderRadius:15,gap:11}}>
     <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ, CZY ROZUMIESZ</Text>
     <Text style={{fontWeight:'900',color:'white',fontSize:18,lineHeight:26}}>Które polecenie daje taki efekt: {active.after}?</Text>
-    {answerOptions.map((option,i)=><Pressable key={option.combo} onPress={()=>{setQuizAnswer(i);onPracticed?.(option.combo===active.combo);onAttempt?.(i,option.combo===active.combo,active.combo,option.combo)}} style={{padding:13,borderRadius:10,backgroundColor:quizAnswer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
+    {answerOptions.map((option,i)=><Pressable key={option.combo} disabled={quizVerifying||quizConfirmed} onPress={()=>void verifyShortcut(option,i)} style={{padding:13,borderRadius:10,backgroundColor:quizAnswer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
       <Text style={{color:ink,fontWeight:'800'}}>{String.fromCharCode(65+i)}. {option.combo} — {option.label}</Text>
     </Pressable>)}
-    {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{answerOptions[quizAnswer]?.combo===active.combo?'Dobrze. Możesz zaliczyć tę lekcję.':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
+    {!!quizError&&<Text style={{color:'#ffe2ac',fontWeight:'800',lineHeight:21}}>{quizError}</Text>}
+    {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{quizConfirmed?'Wynik potwierdzony. Teraz możesz zaliczyć lekcję.':answerOptions[quizAnswer]?.combo===active.combo?'Poprawnie — zapisuję wynik…':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
   </View>}
   {!!tips?.length&&<View style={{backgroundColor:'#edf5e9',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>Małe triki</Text>
