@@ -128,12 +128,20 @@ try{
  else ok('Product-specific logistics glossary and cumulative warehouse simulation connected');
  const specialistSlugs=[...logisticsSlugs,...thirtyLessonSlugs];
  for(const slug of specialistSlugs){
-  const source=JSON.parse(read(slug.startsWith('word')||['windows-skroty','excel-skroty','autocad-skroty'].includes(slug)?'content/v2-'+slug+'.json':'content/logistics-'+slug+'.json'));
+  const path=slug==='jestem-eko'?'content/jestem-eko-30.json':slug==='windows-skroty'?'content/windows-course-expanded-20261108.json':slug.startsWith('word')||['excel-skroty','autocad-skroty'].includes(slug)?'content/v2-'+slug+'.json':'content/logistics-'+slug+'.json';
+  const source=JSON.parse(read(path));
   const lessons=source.lessons||[];
   if(lessons.length!==30||new Set(lessons.map(x=>x.lesson_no)).size!==30||
      !lessons.every((x,i)=>x.lesson_no===i&&x.material?.section===Math.floor(i/10)+1&&x.material?.learning?.situation&&x.material?.learning?.example))
     fail(slug+': expected 30 individual graded lessons in 3 sections');
  }
- ok('13 specialist 30-lesson programs have unique, graded examples and chapter groupings');
+ ok(specialistSlugs.length+' specialist 30-lesson programs have unique, graded examples and chapter groupings');
+  const originalImages=['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security'];
+ for(const file of originalImages){
+  const svg=read('public/academy/assets/'+file+'.svg');
+  if(!svg.includes('<svg')||!svg.includes('</svg>')||!svg.includes('TRENERKI ACADEMY'))fail('Invalid or missing illustration: '+file);
+ }
+ if(!progress.includes('<LessonIllustratedSections'))fail('Illustrated lesson reading must appear in app');
+ else ok(originalImages.length+' authored original diagrams available for the lessons');
  if(!process.exitCode)console.log('All static integrity checks passed.');
 }catch(e){fail(String(e?.stack||e))}
