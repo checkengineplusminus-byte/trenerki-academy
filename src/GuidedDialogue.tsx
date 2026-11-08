@@ -3,8 +3,8 @@ import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {supabase} from './supabase';
 
 type Line={role:'student'|'anielka';text:string;created_at?:string};
-type Session={ok?:boolean;error?:string;history?:Line[];opening?:string;first_name?:string;reply?:string;cooldown_until?:string|null};
-type Props={courseSlug:string;lessonNo:number};
+type Session={ok?:boolean;error?:string;history?:Line[];opening?:string;first_name?:string;reply?:string;cooldown_until?:string|null;can_reply?:boolean};
+type Props={courseSlug:string;lessonNo:number;canMoveOn?:boolean;onFinish?:()=>void};
 const ink='#183d2c',muted='#4d6c56';
 const humanError=(code:string)=>({
  previous_lessons_required:'Wróć do bieżącego etapu kursu.',
@@ -18,10 +18,10 @@ const humanError=(code:string)=>({
  dialogue_unavailable:'Historia rozmowy jest chwilowo niedostępna.',
 } as Record<string,string>)[code]||'Nie udało się pobrać odpowiedzi. Spróbuj ponownie, a nauka pozostaje dostępna.';
 
-export default function GuidedDialogue({courseSlug,lessonNo}:Props){
+export default function GuidedDialogue({courseSlug,lessonNo,canMoveOn=false,onFinish}:Props){
  const [open,setOpen]=useState(false),[loading,setLoading]=useState(false),[sending,setSending]=useState(false);
  const [history,setHistory]=useState<Line[]>([]),[opening,setOpening]=useState(''),[input,setInput]=useState('');
- const [error,setError]=useState(''),[notice,setNotice]=useState(''),[cooldown,setCooldown]=useState<string|null>(null);
+ const [error,setError]=useState(''),[notice,setNotice]=useState(''),[cooldown,setCooldown]=useState<string|null>(null),[canReply,setCanReply]=useState(true);
  const call=async(action:'status'|'dialogue',message?:string):Promise<Session>=>{
   const {data,error:invokeError}=await supabase.functions.invoke<Session>('ta-lesson-guide',{
    body:{action,course_slug:courseSlug,lesson_no:lessonNo,...(message?{message}:{})}
@@ -33,6 +33,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
   if(data.history)setHistory(data.history);
   if(data.opening)setOpening(data.opening);
   if(data.cooldown_until!==undefined)setCooldown(data.cooldown_until);
+  if(data.can_reply!==undefined)setCanReply(data.can_reply);
  }
  async function refresh(){
   setLoading(true);setError('');
@@ -40,10 +41,10 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
   catch(e:any){setError(e?.message||'Nie udało się załadować rozmowy.')}
   finally{setLoading(false)}
  }
- useEffect(()=>{setOpen(false);setInput('');setHistory([]);setError('');setNotice('');setOpening('');setCooldown(null)},[courseSlug,lessonNo]);
+ useEffect(()=>{setOpen(false);setInput('');setHistory([]);setError('');setNotice('');setOpening('');setCooldown(null);setCanReply(true)},[courseSlug,lessonNo]);
  function toggle(){if(!open){void refresh()}setOpen(v=>!v)}
  async function send(){
-  if(sending||input.trim().length<5)return;
+  if(sending||!canReply||input.trim().length<5)return;
   setSending(true);setNotice('');setError('');
   try{
    const data=await call('dialogue',input.trim());
@@ -71,7 +72,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
     <Text style={{color:'#36734d',fontWeight:'900',fontSize:12}}>{m.role==='student'?'Ty':'Anielka'}</Text>
     <Text style={{color:ink,fontSize:15,lineHeight:23}}>{m.text}</Text>
    </View>)}
-   {!loading&&!stalled&&<>
+   {!loading&&!stalled&&canReply&&<>
     <TextInput multiline value={input} onChangeText={setInput} maxLength={1000} placeholder="Napisz, co chcesz wyjaśnić lub przećwiczyć…" textAlignVertical="top"
      style={{backgroundColor:'white',borderColor:'#bdd6b9',borderWidth:1,borderRadius:11,minHeight:95,padding:14,color:ink,fontSize:15}}/>
     <Pressable onPress={send} disabled={sending||input.trim().length<5}
@@ -79,11 +80,16 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
      <Text style={{textAlign:'center',fontWeight:'900',color:'white'}}>{sending?'Anielka odpowiada…':'Wyślij wiadomość'}</Text>
     </Pressable>
    </>}
+   {!canReply&&<Text style={{color:muted,lineHeight:22}}>Na dziś zakończyliśmy rozmowę. Możesz bez przeszkód kontynuować ćwiczenia.</Text>}
    {!!notice&&<Text style={{color:muted,lineHeight:21}}>{notice}</Text>}
    {!!error&&<View style={{backgroundColor:'white',padding:12,borderRadius:10,gap:8}}>
     <Text style={{color:'#985b39',lineHeight:21}}>{error}</Text>
     <Pressable onPress={()=>void refresh()}><Text style={{fontWeight:'900',color:ink}}>Odśwież rozmowę</Text></Pressable>
    </View>}
+   <Pressable accessibilityRole="button" onPress={()=>{setOpen(false);onFinish?.()}}
+    style={{paddingVertical:16,paddingHorizontal:14,borderRadius:11,backgroundColor:'#193d2b',marginTop:5}}>
+    <Text style={{color:'white',fontSize:15,fontWeight:'900',textAlign:'center'}}>{canMoveOn?'Zakończ rozmowę i przejdź do następnego zadania →':'Zakończ rozmowę i wróć do ćwiczenia ↑'}</Text>
+   </Pressable>
    <Text style={{color:muted,fontSize:12,lineHeight:19}}>Nie podawaj haseł ani cudzych danych osobowych. Rozmowa jest dodatkową pomocą — możesz uczyć się bez niej.</Text>
   </View>}
  </View>;
