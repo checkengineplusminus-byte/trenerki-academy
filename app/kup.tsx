@@ -78,7 +78,7 @@ export default function Purchase(){
       </Pressable>
     </View>}
     <Pressable disabled={paying} onPress={enroll} style={{backgroundColor:dark,padding:16,borderRadius:12,alignItems:'center',marginTop:20,opacity:paying?.6:1}}>
-    <Text style={{color:'white',fontWeight:'900'}}>{paying?'Przetwarzanie…':item.price_grosze===0?'Odbierz kurs za darmo →':'Kupuję i płacę ${(item.price_grosze/100).toFixed(0)} zł →'}</Text>
+    <Text style={{color:'white',fontWeight:'900'}}>{paying?'Przetwarzanie…':item.price_grosze===0?'Odbierz kurs za darmo →':'Kupuję i płacę '+(item.price_grosze/100).toFixed(0)+' zł →'}</Text>
    </Pressable></View>}
    {item.price_grosze>0&&<Text style={{color:'#758574',fontSize:12,marginTop:12}}>Płatność zostanie zrealizowana wyłącznie u operatora płatności, gdy integracja będzie aktywna. Nie wpisuj danych karty na tej stronie.</Text>}
    {item.price_grosze===0&&<Text style={{color:'#758574',fontSize:12,marginTop:12}}>Darmowy kurs świąteczny ma charakter humorystyczny. Nie daje formalnych uprawnień zawodowych.</Text>}
