@@ -1,0 +1,790 @@
+{
+  "date": "2026-11-08",
+  "courses": [
+    {
+      "id": "kowal-tradycja",
+      "title": "Kowal — ogień, stal i tradycja kuźni",
+      "short": "Poznaj stal, pracę z narzędziami (kowadło, kleszcze, młoty) i historię tego, jak powstawał kuta klamka. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "⚒️",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Kowal",
+        "Materiały i ich pochodzenie: stal",
+        "Jak wyglądało stanowisko i narzędzia: kowadło, kleszcze, młoty",
+        "Projekt przedmiotu: kuta klamka",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: bezpieczeństwo gorącego metalu",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "stal",
+        "tools": "kowadło, kleszcze, młoty",
+        "product": "kuta klamka",
+        "issue": "bezpieczeństwo gorącego metalu"
+      },
+      "history": {
+        "teaching_status": "MEN 2026",
+        "last_verified_year": 2026,
+        "ended_year": null,
+        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "source_url": "https://infozawodowe.men.gov.pl/zawody/kowal"
+      },
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/kowal",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Kowal — ogień, stal i tradycja kuźni",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Kowal — ogień, stal i tradycja kuźni"
+    },
+    {
+      "id": "zdun-tradycja",
+      "title": "Zdun — piece kaflowe i mistrzowie ciepła",
+      "short": "Poznaj kafle i glina ogniotrwała, pracę z narzędziami (kafle, narzędzia zduńskie) i historię tego, jak powstawał piec kaflowy. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🔥",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Zdun",
+        "Materiały i ich pochodzenie: kafle i glina ogniotrwała",
+        "Jak wyglądało stanowisko i narzędzia: kafle, narzędzia zduńskie",
+        "Projekt przedmiotu: piec kaflowy",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: odprowadzanie spalin i wentylacja",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "kafle i glina ogniotrwała",
+        "tools": "kafle, narzędzia zduńskie",
+        "product": "piec kaflowy",
+        "issue": "odprowadzanie spalin i wentylacja"
+      },
+      "history": {
+        "teaching_status": "MEN 2026",
+        "last_verified_year": 2026,
+        "ended_year": null,
+        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "source_url": "https://infozawodowe.men.gov.pl/zawody/zdun"
+      },
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/zdun",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Zdun — piece kaflowe i mistrzowie ciepła",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Zdun — piece kaflowe i mistrzowie ciepła"
+    },
+    {
+      "id": "kolodziej",
+      "title": "Kołodziej — drewniane koła dawnych wozów",
+      "short": "Poznaj drewno i metalowe obręcze, pracę z narzędziami (piasta, szprychy, obręcz) i historię tego, jak powstawał koło do wozu. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🛞",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Kołodziej",
+        "Materiały i ich pochodzenie: drewno i metalowe obręcze",
+        "Jak wyglądało stanowisko i narzędzia: piasta, szprychy, obręcz",
+        "Projekt przedmiotu: koło do wozu",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: wytrzymałość i geometria koła",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "drewno i metalowe obręcze",
+        "tools": "piasta, szprychy, obręcz",
+        "product": "koło do wozu",
+        "issue": "wytrzymałość i geometria koła"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Kołodziej — drewniane koła dawnych wozów",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Kołodziej — drewniane koła dawnych wozów"
+    },
+    {
+      "id": "bednarz",
+      "title": "Bednarz — beczki i drewniane naczynia",
+      "short": "Poznaj klepki z drewna, pracę z narzędziami (strugi, drewniane klepki, obręcze) i historię tego, jak powstawał beczka. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🪵",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Bednarz",
+        "Materiały i ich pochodzenie: klepki z drewna",
+        "Jak wyglądało stanowisko i narzędzia: strugi, drewniane klepki, obręcze",
+        "Projekt przedmiotu: beczka",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: szczelność naczynia",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "klepki z drewna",
+        "tools": "strugi, drewniane klepki, obręcze",
+        "product": "beczka",
+        "issue": "szczelność naczynia"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Bednarz — beczki i drewniane naczynia",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Bednarz — beczki i drewniane naczynia"
+    },
+    {
+      "id": "woznica",
+      "title": "Woźnica — dawna sztuka powożenia",
+      "short": "Poznaj uprząż i wóz, pracę z narzędziami (lejce, dyszel, uprząż) i historię tego, jak powstawał przejazd powozem. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🐎",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Woźnica",
+        "Materiały i ich pochodzenie: uprząż i wóz",
+        "Jak wyglądało stanowisko i narzędzia: lejce, dyszel, uprząż",
+        "Projekt przedmiotu: przejazd powozem",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: dobrostan konia i bezpieczeństwo drogi",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "uprząż i wóz",
+        "tools": "lejce, dyszel, uprząż",
+        "product": "przejazd powozem",
+        "issue": "dobrostan konia i bezpieczeństwo drogi"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Woźnica — dawna sztuka powożenia",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Woźnica — dawna sztuka powożenia"
+    },
+    {
+      "id": "rymarz",
+      "title": "Rymarz — skórzane uprzęże i naprawy",
+      "short": "Poznaj skóra i okucia, pracę z narzędziami (szydło, igły, szablony) i historię tego, jak powstawał uprząż. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🐴",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Rymarz",
+        "Materiały i ich pochodzenie: skóra i okucia",
+        "Jak wyglądało stanowisko i narzędzia: szydło, igły, szablony",
+        "Projekt przedmiotu: uprząż",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: trwałość szwów i bezpieczeństwo zwierzęcia",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "skóra i okucia",
+        "tools": "szydło, igły, szablony",
+        "product": "uprząż",
+        "issue": "trwałość szwów i bezpieczeństwo zwierzęcia"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Rymarz — skórzane uprzęże i naprawy",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Rymarz — skórzane uprzęże i naprawy"
+    },
+    {
+      "id": "garncarz-tradycja",
+      "title": "Garncarz — glina i koło garncarskie",
+      "short": "Poznaj glina i szkliwa, pracę z narzędziami (koło garncarskie i narzędzia formierskie) i historię tego, jak powstawał gliniany dzban. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🏺",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Garncarz",
+        "Materiały i ich pochodzenie: glina i szkliwa",
+        "Jak wyglądało stanowisko i narzędzia: koło garncarskie i narzędzia formierskie",
+        "Projekt przedmiotu: gliniany dzban",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: bezpieczny wypał i pył",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "glina i szkliwa",
+        "tools": "koło garncarskie i narzędzia formierskie",
+        "product": "gliniany dzban",
+        "issue": "bezpieczny wypał i pył"
+      },
+      "history": {
+        "teaching_status": "warsztaty 2026",
+        "last_verified_year": 2026,
+        "ended_year": null,
+        "note": "Potwierdzone warsztaty w 2026, zatem zawód nie przestał być nauczany. Brak daty zakończenia.",
+        "source_url": "https://garncarnia.pl/oferta/szkola-garncarska/"
+      },
+      "source_url": "https://garncarnia.pl/oferta/szkola-garncarska/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Garncarz — glina i koło garncarskie",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Garncarz — glina i koło garncarskie"
+    },
+    {
+      "id": "plecionkarz",
+      "title": "Plecionkarz — kosze z wikliny",
+      "short": "Poznaj wiklina i trzcina, pracę z narzędziami (włókna, szablony i noże) i historię tego, jak powstawał kosz. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🧺",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Plecionkarz",
+        "Materiały i ich pochodzenie: wiklina i trzcina",
+        "Jak wyglądało stanowisko i narzędzia: włókna, szablony i noże",
+        "Projekt przedmiotu: kosz",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: wytrzymałość splotu",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "wiklina i trzcina",
+        "tools": "włókna, szablony i noże",
+        "product": "kosz",
+        "issue": "wytrzymałość splotu"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Plecionkarz — kosze z wikliny",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Plecionkarz — kosze z wikliny"
+    },
+    {
+      "id": "powroznik",
+      "title": "Powroźnik — tradycyjne liny i powrozy",
+      "short": "Poznaj len, konopie i sizal, pracę z narzędziami (narzędzia do skręcania włókien) i historię tego, jak powstawał powróz. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🪢",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Powroźnik",
+        "Materiały i ich pochodzenie: len, konopie i sizal",
+        "Jak wyglądało stanowisko i narzędzia: narzędzia do skręcania włókien",
+        "Projekt przedmiotu: powróz",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: prawidłowy skręt i zużycie liny",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "len, konopie i sizal",
+        "tools": "narzędzia do skręcania włókien",
+        "product": "powróz",
+        "issue": "prawidłowy skręt i zużycie liny"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Powroźnik — tradycyjne liny i powrozy",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Powroźnik — tradycyjne liny i powrozy"
+    },
+    {
+      "id": "snycerz",
+      "title": "Snycerz — ornament i rzeźba w drewnie",
+      "short": "Poznaj drewno lipowe i dębowe, pracę z narzędziami (dłuta, noże i zaciski) i historię tego, jak powstawał drewniany ornament. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🪚",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Snycerz",
+        "Materiały i ich pochodzenie: drewno lipowe i dębowe",
+        "Jak wyglądało stanowisko i narzędzia: dłuta, noże i zaciski",
+        "Projekt przedmiotu: drewniany ornament",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: praca ostrymi narzędziami",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "drewno lipowe i dębowe",
+        "tools": "dłuta, noże i zaciski",
+        "product": "drewniany ornament",
+        "issue": "praca ostrymi narzędziami"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Snycerz — ornament i rzeźba w drewnie",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Snycerz — ornament i rzeźba w drewnie"
+    },
+    {
+      "id": "sitarz",
+      "title": "Sitarz — sztuka ręcznej produkcji sit",
+      "short": "Poznaj ramy i siatki, pracę z narzędziami (drewniane ramy, siatki, igły) i historię tego, jak powstawał sito. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🕸️",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Sitarz",
+        "Materiały i ich pochodzenie: ramy i siatki",
+        "Jak wyglądało stanowisko i narzędzia: drewniane ramy, siatki, igły",
+        "Projekt przedmiotu: sito",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: oczka dopasowane do materiału",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "ramy i siatki",
+        "tools": "drewniane ramy, siatki, igły",
+        "product": "sito",
+        "issue": "oczka dopasowane do materiału"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Sitarz — sztuka ręcznej produkcji sit",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Sitarz — sztuka ręcznej produkcji sit"
+    },
+    {
+      "id": "zecer",
+      "title": "Zecer — skład gazet przed komputerem",
+      "short": "Poznaj czcionki i papier, pracę z narzędziami (kaszta drukarska i czcionki metalowe) i historię tego, jak powstawał kolumna gazety. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "📰",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Zecer",
+        "Materiały i ich pochodzenie: czcionki i papier",
+        "Jak wyglądało stanowisko i narzędzia: kaszta drukarska i czcionki metalowe",
+        "Projekt przedmiotu: kolumna gazety",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: zagrożenia związane z ołowiem",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "czcionki i papier",
+        "tools": "kaszta drukarska i czcionki metalowe",
+        "product": "kolumna gazety",
+        "issue": "zagrożenia związane z ołowiem"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Zecer — skład gazet przed komputerem",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Zecer — skład gazet przed komputerem"
+    },
+    {
+      "id": "ludwisarz",
+      "title": "Ludwisarz — dzwony i tradycyjne odlewnictwo",
+      "short": "Poznaj brąz i formy, pracę z narzędziami (model dzwonu i forma odlewnicza) i historię tego, jak powstawał dzwon. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🔔",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Ludwisarz",
+        "Materiały i ich pochodzenie: brąz i formy",
+        "Jak wyglądało stanowisko i narzędzia: model dzwonu i forma odlewnicza",
+        "Projekt przedmiotu: dzwon",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: wysoka temperatura płynnych metali",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "brąz i formy",
+        "tools": "model dzwonu i forma odlewnicza",
+        "product": "dzwon",
+        "issue": "wysoka temperatura płynnych metali"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Ludwisarz — dzwony i tradycyjne odlewnictwo",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Ludwisarz — dzwony i tradycyjne odlewnictwo"
+    },
+    {
+      "id": "introligator-tradycja",
+      "title": "Introligator — oprawa książek ręcznie",
+      "short": "Poznaj papier, płótno i nici, pracę z narzędziami (prasa, ściegi i kleje) i historię tego, jak powstawał książka w oprawie. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "📚",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Introligator",
+        "Materiały i ich pochodzenie: papier, płótno i nici",
+        "Jak wyglądało stanowisko i narzędzia: prasa, ściegi i kleje",
+        "Projekt przedmiotu: książka w oprawie",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: trwałość grzbietu",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "papier, płótno i nici",
+        "tools": "prasa, ściegi i kleje",
+        "product": "książka w oprawie",
+        "issue": "trwałość grzbietu"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Introligator — oprawa książek ręcznie",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Introligator — oprawa książek ręcznie"
+    },
+    {
+      "id": "tkacz-reczny",
+      "title": "Tkacz ręczny — krosno i dawne tkaniny",
+      "short": "Poznaj wełna i len, pracę z narzędziami (krosno i czółenko) i historię tego, jak powstawał tkanina. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🧵",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Tkacz ręczny",
+        "Materiały i ich pochodzenie: wełna i len",
+        "Jak wyglądało stanowisko i narzędzia: krosno i czółenko",
+        "Projekt przedmiotu: tkanina",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: prawidłowe napięcie osnowy",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "wełna i len",
+        "tools": "krosno i czółenko",
+        "product": "tkanina",
+        "issue": "prawidłowe napięcie osnowy"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Tkacz ręczny — krosno i dawne tkaniny",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Tkacz ręczny — krosno i dawne tkaniny"
+    },
+    {
+      "id": "kaletnik-tradycja",
+      "title": "Kaletnik — torby, paski i portfele",
+      "short": "Poznaj skóra i zamienniki, pracę z narzędziami (szydło, wykroje i okucia) i historię tego, jak powstawał portfel. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "👜",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Kaletnik",
+        "Materiały i ich pochodzenie: skóra i zamienniki",
+        "Jak wyglądało stanowisko i narzędzia: szydło, wykroje i okucia",
+        "Projekt przedmiotu: portfel",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: trwałość połączeń i klejów",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "skóra i zamienniki",
+        "tools": "szydło, wykroje i okucia",
+        "product": "portfel",
+        "issue": "trwałość połączeń i klejów"
+      },
+      "history": {
+        "teaching_status": "MEN 2026",
+        "last_verified_year": 2026,
+        "ended_year": null,
+        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "source_url": "https://infozawodowe.men.gov.pl/zawody/kaletnik"
+      },
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/kaletnik",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Kaletnik — torby, paski i portfele",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Kaletnik — torby, paski i portfele"
+    },
+    {
+      "id": "zegarmistrz-tradycja",
+      "title": "Zegarmistrz — serce mechanicznego zegarka",
+      "short": "Poznaj mechanizmy zegarków, pracę z narzędziami (lupa i przyrządy precyzyjne) i historię tego, jak powstawał zegar mechaniczny. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "⌚",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Zegarmistrz",
+        "Materiały i ich pochodzenie: mechanizmy zegarków",
+        "Jak wyglądało stanowisko i narzędzia: lupa i przyrządy precyzyjne",
+        "Projekt przedmiotu: zegar mechaniczny",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: sprężyny i części pod napięciem",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "mechanizmy zegarków",
+        "tools": "lupa i przyrządy precyzyjne",
+        "product": "zegar mechaniczny",
+        "issue": "sprężyny i części pod napięciem"
+      },
+      "history": {
+        "teaching_status": "MEN dokument kwalifikacji",
+        "last_verified_year": 2026,
+        "ended_year": null,
+        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf"
+      },
+      "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Zegarmistrz — serce mechanicznego zegarka",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Zegarmistrz — serce mechanicznego zegarka"
+    },
+    {
+      "id": "mlynarz-tradycyjny",
+      "title": "Młynarz — od ziarna do mąki",
+      "short": "Poznaj zboża i mąka, pracę z narzędziami (żarna, sita, kamienie) i historię tego, jak powstawał mąka. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🌾",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Młynarz",
+        "Materiały i ich pochodzenie: zboża i mąka",
+        "Jak wyglądało stanowisko i narzędzia: żarna, sita, kamienie",
+        "Projekt przedmiotu: mąka",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: zagrożenia pyłem mącznym",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "zboża i mąka",
+        "tools": "żarna, sita, kamienie",
+        "product": "mąka",
+        "issue": "zagrożenia pyłem mącznym"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Młynarz — od ziarna do mąki",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Młynarz — od ziarna do mąki"
+    },
+    {
+      "id": "gontarz",
+      "title": "Gontarz — drewniane dachy",
+      "short": "Poznaj drewno iglaste, pracę z narzędziami (narzędzia gontarskie) i historię tego, jak powstawał gont dachowy. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "🏠",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Gontarz",
+        "Materiały i ich pochodzenie: drewno iglaste",
+        "Jak wyglądało stanowisko i narzędzia: narzędzia gontarskie",
+        "Projekt przedmiotu: gont dachowy",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: bezpieczeństwo pracy na wysokości",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "drewno iglaste",
+        "tools": "narzędzia gontarskie",
+        "product": "gont dachowy",
+        "issue": "bezpieczeństwo pracy na wysokości"
+      },
+      "history": {
+        "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+        "last_verified_year": null,
+        "ended_year": null,
+        "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+        "source_url": "https://zrp.pl/o-nas/historia/"
+      },
+      "source_url": "https://zrp.pl/o-nas/historia/",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Gontarz — drewniane dachy",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Gontarz — drewniane dachy"
+    },
+    {
+      "id": "szewc-tradycja",
+      "title": "Szewc — uratuj i napraw stare buty",
+      "short": "Poznaj skóra, guma i tkaniny, pracę z narzędziami (kopyto szewskie, szydło, kleje) i historię tego, jak powstawał naprawiony but. Tradycja wciąż potrafi inspirować; kurs nie zastępuje nauki pod okiem fachowca.",
+      "cat": "Zapomniane rzemiosła",
+      "price": 79,
+      "emoji": "👞",
+      "accent": "#E9E2D4",
+      "duration": "Własne tempo",
+      "level": "Historia i podstawy",
+      "flag": "Ocalić od zapomnienia · 79 zł",
+      "outline": [
+        "Historia zawodu w Polsce: Szewc",
+        "Materiały i ich pochodzenie: skóra, guma i tkaniny",
+        "Jak wyglądało stanowisko i narzędzia: kopyto szewskie, szydło, kleje",
+        "Projekt przedmiotu: naprawiony but",
+        "Dawna technika krok po kroku — przegląd historyczny",
+        "Typowe problemy: bezpieczne klejenie i obuwie ochronne",
+        "Renowacja, etyka i bezpieczeństwo",
+        "Nauka zawodu dawniej i dziś — gdzie szukać mistrza"
+      ],
+      "lesson_focus": {
+        "material": "skóra, guma i tkaniny",
+        "tools": "kopyto szewskie, szydło, kleje",
+        "product": "naprawiony but",
+        "issue": "bezpieczne klejenie i obuwie ochronne"
+      },
+      "history": {
+        "teaching_status": "MEN profil zawodu",
+        "last_verified_year": 2026,
+        "ended_year": null,
+        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc"
+      },
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc",
+      "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+      "certificate_title_pl": "Poznanie tradycji: Szewc — uratuj i napraw stare buty",
+      "certificate_title_en": "Historical Introduction to Polish Craft: Szewc — uratuj i napraw stare buty"
+    }
+  ],
+  "pricing_note": "79 zł za krótki kurs wprowadzający online, nie jest to porównywalne z nauką rzemiosła u mistrza lub praktycznymi warsztatami.",
+  "market_benchmarks": [
+    "https://szkolaczeladnicza.pl/oferta/rektrutacja/",
+    "https://garncarnia.pl/oferta/szkola-garncarska/"
+  ]
+}
