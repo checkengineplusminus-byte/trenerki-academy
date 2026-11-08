@@ -1,0 +1,876 @@
+[
+  {
+    "lesson_no": 0,
+    "title_pl": "Dokument: zapisz, otwórz i cofnij",
+    "material": {
+      "raw": [
+        "Dokument: zapisz, otwórz i cofnij",
+        "Zaczynasz pismo do urzędu. Zamiast szukać menu, wykonujesz najważniejsze operacje na dokumencie.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "N"
+          ],
+          "combo": "Ctrl+N",
+          "kind": "hotkey",
+          "label": "Nowy dokument",
+          "before": "W programie otwarty stary dokument",
+          "after": "Pojawia się nowy pusty dokument",
+          "tip": "Stwórz osobny plik do ćwiczeń, by nie zmieniać ważnych pism.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "O"
+          ],
+          "combo": "Ctrl+O",
+          "kind": "hotkey",
+          "label": "Otwórz plik",
+          "before": "Ekran edycji bez wybranego pliku",
+          "after": "Okno otwierania dokumentu",
+          "tip": "Nie otwieraj nieznanych załączników z podejrzanych wiadomości.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "S"
+          ],
+          "combo": "Ctrl+S",
+          "kind": "hotkey",
+          "label": "Zapisz zmiany",
+          "before": "Praca od ostatniego zapisu może zniknąć",
+          "after": "Zmiany są zapisane w pliku",
+          "tip": "Nadaj plikowi czytelną nazwę przy pierwszym zapisie.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Z"
+          ],
+          "combo": "Ctrl+Z",
+          "kind": "hotkey",
+          "label": "Cofnij ostatnią akcję",
+          "before": "Przypadkowo usunięty akapit",
+          "after": "Akapit wraca",
+          "tip": "Cofnięcie nie zawsze obejmuje każde działanie, np. wysłanie pliku.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Y"
+          ],
+          "combo": "Ctrl+Y",
+          "kind": "hotkey",
+          "label": "Ponów akcję",
+          "before": "Dopiero co cofnięta zmiana",
+          "after": "Zmiana wykonana ponownie",
+          "tip": "Jeśli Ponów jest niedostępne, Word może powtórzyć ostatnią akcję.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "P"
+          ],
+          "combo": "Ctrl+P",
+          "kind": "hotkey",
+          "label": "Drukuj / podgląd wydruku",
+          "before": "Nie wiadomo, jak pismo zmieści się na stronie",
+          "after": "Widzisz stronę w podglądzie drukowania",
+          "tip": "Przejrzyj marginesy i liczbę stron zanim wydrukujesz.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 1,
+    "title_pl": "Formatowanie tekstu bez myszy",
+    "material": {
+      "raw": [
+        "Formatowanie tekstu bez myszy",
+        "Przygotuj czytelne CV. Najpierw zaznacz tekst, dopiero później zastosuj formatowanie.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "B"
+          ],
+          "combo": "Ctrl+B",
+          "kind": "hotkey",
+          "label": "Pogrub tekst",
+          "before": "ważna informacja",
+          "after": "WAŻNA informacja (pogrubiona)",
+          "tip": "Pogrubiaj hasła lub tytuły, nie całe długie akapity.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "I"
+          ],
+          "combo": "Ctrl+I",
+          "kind": "hotkey",
+          "label": "Kursywa",
+          "before": "cytat zapisany zwykłym krojem",
+          "after": "cytat zapisany kursywą",
+          "tip": "Do cytatu użyj kursywy oszczędnie; czytelność jest ważniejsza od dekoracji.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "U"
+          ],
+          "combo": "Ctrl+U",
+          "kind": "hotkey",
+          "label": "Podkreślenie",
+          "before": "termin zgłoszenia",
+          "after": "podkreślony termin zgłoszenia",
+          "tip": "Podkreślenie może być mylone z linkiem — stosuj świadomie.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Shift",
+            "F3"
+          ],
+          "combo": "Shift+F3",
+          "kind": "hotkey",
+          "label": "Zmień wielkość liter",
+          "before": "JAN KOWALSKI",
+          "after": "Jan Kowalski",
+          "tip": "Skrót cyklicznie zmienia warianty; sprawdź polskie znaki.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Space"
+          ],
+          "combo": "Ctrl+Space",
+          "kind": "hotkey",
+          "label": "Usuń ręczne formatowanie znaków",
+          "before": "jeden fragment ma przypadkowy kolor i rozmiar",
+          "after": "fragment wraca do formatowania ze stylu",
+          "tip": "Wciśnij po zaznaczeniu problematycznego fragmentu.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "D"
+          ],
+          "combo": "Ctrl+D",
+          "kind": "hotkey",
+          "label": "Otwórz okno Czcionka",
+          "before": "Szukasz opcji czcionki na wstążce",
+          "after": "Otwiera się okno ustawień fontu",
+          "tip": "Korzystaj ze stylów zamiast ręcznie formatować każdą linijkę.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 2,
+    "title_pl": "Akapity, wyrównanie i odstępy",
+    "material": {
+      "raw": [
+        "Akapity, wyrównanie i odstępy",
+        "Dobre pismo jest równe, czytelne i ma konsekwentny układ. Wyrównanie dotyczy zwykle całego akapitu.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "L"
+          ],
+          "combo": "Ctrl+L",
+          "kind": "hotkey",
+          "label": "Wyrównaj do lewej",
+          "before": "Akapit wyśrodkowany",
+          "after": "Akapit zaczyna się przy lewym marginesie",
+          "tip": "Najczęściej najlepsze ustawienie dla treści pisma.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "E"
+          ],
+          "combo": "Ctrl+E",
+          "kind": "hotkey",
+          "label": "Wyśrodkuj",
+          "before": "Nagłówek zaczyna się od lewej",
+          "after": "Nagłówek na środku strony",
+          "tip": "Użyj do tytułu, nie do każdego akapitu.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "R"
+          ],
+          "combo": "Ctrl+R",
+          "kind": "hotkey",
+          "label": "Wyrównaj do prawej",
+          "before": "Data przy lewym marginesie",
+          "after": "Data przy prawym marginesie",
+          "tip": "Przydatne dla daty w korespondencji.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "J"
+          ],
+          "combo": "Ctrl+J",
+          "kind": "hotkey",
+          "label": "Wyjustuj",
+          "before": "Prawy brzeg akapitu nierówny",
+          "after": "Obie krawędzie akapitu są wyrównane",
+          "tip": "Sprawdź, czy nie powstały zbyt duże odstępy między wyrazami.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "M"
+          ],
+          "combo": "Ctrl+M",
+          "kind": "hotkey",
+          "label": "Zwiększ wcięcie",
+          "before": "Akapit bez wcięcia",
+          "after": "Akapit odsunięty w prawo",
+          "tip": "Wcięć nie rób wieloma spacjami.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "M"
+          ],
+          "combo": "Ctrl+Shift+M",
+          "kind": "hotkey",
+          "label": "Zmniejsz wcięcie",
+          "before": "Akapit za bardzo przesunięty",
+          "after": "Wcięcie akapitu mniejsze",
+          "tip": "Porządkuj długą listę argumentów tym skrótem.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 3,
+    "title_pl": "Nagłówki, style i listy",
+    "material": {
+      "raw": [
+        "Nagłówki, style i listy",
+        "Gdy dokument ma kilka stron, prawdziwe style nagłówków ułatwiają nawigację, a także dostępność dla czytników ekranu.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "Alt",
+            "1"
+          ],
+          "combo": "Ctrl+Alt+1",
+          "kind": "hotkey",
+          "label": "Nadaj styl Nagłówek 1",
+          "before": "Duży tekst wyglądający jak tytuł",
+          "after": "Semantyczny Nagłówek 1",
+          "tip": "Zamiast powiększać i pogrubiać, stosuj styl.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Alt",
+            "2"
+          ],
+          "combo": "Ctrl+Alt+2",
+          "kind": "hotkey",
+          "label": "Nadaj styl Nagłówek 2",
+          "before": "Podrozdział bez struktury",
+          "after": "Podrozdział jako Nagłówek 2",
+          "tip": "Stosuj logiczną hierarchię: H2 pod H1.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Alt",
+            "3"
+          ],
+          "combo": "Ctrl+Alt+3",
+          "kind": "hotkey",
+          "label": "Nadaj styl Nagłówek 3",
+          "before": "Podpunkt bez poziomu",
+          "after": "Podpunkt jako Nagłówek 3",
+          "tip": "Nie pomijaj poziomów nagłówków bez powodu.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "N"
+          ],
+          "combo": "Ctrl+Shift+N",
+          "kind": "hotkey",
+          "label": "Ustaw styl Normalny",
+          "before": "Zaznaczony fragment jest nagłówkiem",
+          "after": "Fragment znów ma styl zwykłego akapitu",
+          "tip": "Przydatne po przypadkowym zastosowaniu stylu.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "L"
+          ],
+          "combo": "Ctrl+Shift+L",
+          "kind": "hotkey",
+          "label": "Utwórz listę punktowaną",
+          "before": "Zakupy w osobnych liniach",
+          "after": "Lista z punktami",
+          "tip": "Nie wpisuj ręcznie znaków •, gdy Word może prowadzić listę.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "S"
+          ],
+          "combo": "Ctrl+Shift+S",
+          "kind": "hotkey",
+          "label": "Panel Zastosuj style",
+          "before": "Nie pamiętasz nazwy stylu",
+          "after": "Możesz wyszukać i zastosować styl",
+          "tip": "W firmowym szablonie style mogą mieć własne nazwy.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 4,
+    "title_pl": "Poruszanie się po długim dokumencie",
+    "material": {
+      "raw": [
+        "Poruszanie się po długim dokumencie",
+        "Długa umowa lub instrukcja ma kilkadziesiąt stron. Nie przewijaj jej bez końca.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "Home"
+          ],
+          "combo": "Ctrl+Home",
+          "kind": "hotkey",
+          "label": "Przejdź na początek",
+          "before": "Kursor na stronie 27",
+          "after": "Kursor na początku dokumentu",
+          "tip": "Przydatne po zakończeniu redakcji.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "End"
+          ],
+          "combo": "Ctrl+End",
+          "kind": "hotkey",
+          "label": "Przejdź na koniec",
+          "before": "Kursor na stronie 2",
+          "after": "Kursor na końcu dokumentu",
+          "tip": "Szybko dodasz zakończenie lub podpis.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "F"
+          ],
+          "combo": "Ctrl+F",
+          "kind": "hotkey",
+          "label": "Otwórz wyszukiwanie",
+          "before": "Nie wiesz, gdzie występuje nazwa klienta",
+          "after": "Wyszukujesz frazę w dokumencie",
+          "tip": "Wpisuj charakterystyczne słowo, nie całe długie zdanie.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "H"
+          ],
+          "combo": "Ctrl+H",
+          "kind": "hotkey",
+          "label": "Znajdź i zamień",
+          "before": "Stara nazwa firmy w wielu miejscach",
+          "after": "Możesz zamienić nazwę w całym pliku",
+          "tip": "Najpierw sprawdź znalezione wystąpienia, by nie uszkodzić innych słów.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "G"
+          ],
+          "combo": "Ctrl+G",
+          "kind": "hotkey",
+          "label": "Przejdź do",
+          "before": "Szukasz strony 15",
+          "after": "Otwiera się okno przechodzenia",
+          "tip": "Wybierz numer strony, sekcję lub inną lokalizację.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "A"
+          ],
+          "combo": "Ctrl+A",
+          "kind": "hotkey",
+          "label": "Zaznacz wszystko",
+          "before": "Zaznaczono jedno słowo",
+          "after": "Zaznaczona cała zawartość dokumentu",
+          "tip": "Przed masową zmianą zrób kopię pliku.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 5,
+    "title_pl": "Zaznaczanie, kopiowanie i edycja",
+    "material": {
+      "raw": [
+        "Zaznaczanie, kopiowanie i edycja",
+        "Umiejętne zaznaczanie zmniejsza liczbę pomyłek podczas pracy z długimi tekstami.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "→"
+          ],
+          "combo": "Ctrl+Shift+Right",
+          "kind": "hotkey",
+          "label": "Zaznacz do końca następnego wyrazu",
+          "before": "Kursor przed słowem",
+          "after": "Następny wyraz zaznaczony",
+          "tip": "Przytrzymaj Shift i Ctrl, a potem naciskaj strzałkę.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "←"
+          ],
+          "combo": "Ctrl+Shift+Left",
+          "kind": "hotkey",
+          "label": "Zaznacz poprzedni wyraz",
+          "before": "Kursor po słowie",
+          "after": "Poprzedni wyraz zaznaczony",
+          "tip": "Dobre do poprawiania końca zdania.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "C"
+          ],
+          "combo": "Ctrl+C",
+          "kind": "hotkey",
+          "label": "Kopiuj",
+          "before": "Tekst zaznaczony, brak kopii",
+          "after": "Tekst w schowku",
+          "tip": "Po skopiowaniu nie musisz usuwać oryginału.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "V"
+          ],
+          "combo": "Ctrl+V",
+          "kind": "hotkey",
+          "label": "Wklej",
+          "before": "Schowek zawiera tekst",
+          "after": "Tekst wklejony w miejscu kursora",
+          "tip": "Sprawdź formatowanie po wklejeniu z internetu.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "X"
+          ],
+          "combo": "Ctrl+X",
+          "kind": "hotkey",
+          "label": "Wytnij",
+          "before": "Zaznaczony akapit w złym miejscu",
+          "after": "Akapit przeniesiony do schowka",
+          "tip": "Po wycięciu od razu wklej w docelowe miejsce.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Backspace"
+          ],
+          "combo": "Ctrl+Backspace",
+          "kind": "hotkey",
+          "label": "Usuń poprzedni wyraz",
+          "before": "Kursor po błędnym wyrazie",
+          "after": "Cały poprzedni wyraz usunięty",
+          "tip": "Pracuj na kopii dokumentu, gdy ćwiczysz nowe skróty.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 6,
+    "title_pl": "Strony i dokumenty gotowe do wysłania",
+    "material": {
+      "raw": [
+        "Strony i dokumenty gotowe do wysłania",
+        "W CV lub raporcie nie ustawiaj nowej strony wieloma Enterami — struktura powinna pozostać stabilna.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "Ctrl",
+            "Enter"
+          ],
+          "combo": "Ctrl+Enter",
+          "kind": "hotkey",
+          "label": "Wstaw podział strony",
+          "before": "Nowy rozdział zaczyna się na dole strony",
+          "after": "Nowy rozdział zaczyna następną stronę",
+          "tip": "Nie zastępuj podziału strony kilkunastoma Enterami.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Shift",
+            "Enter"
+          ],
+          "combo": "Shift+Enter",
+          "kind": "hotkey",
+          "label": "Złam wiersz bez nowego akapitu",
+          "before": "Dwie linie tworzą osobne akapity",
+          "after": "Następna linia w tym samym akapicie",
+          "tip": "Przydatne w adresie lub wersach, gdy nie chcesz nowego akapitu.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "8"
+          ],
+          "combo": "Ctrl+Shift+8",
+          "kind": "hotkey",
+          "label": "Pokaż znaki niedrukowane",
+          "before": "Nie wiesz, skąd biorą się puste linie",
+          "after": "Widzisz znaczniki akapitów i spacji",
+          "tip": "Ponowne użycie skrótu ukrywa te znaki.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "Space"
+          ],
+          "combo": "Ctrl+Shift+Space",
+          "kind": "hotkey",
+          "label": "Spacja nierozdzielająca",
+          "before": "Liczba 10 i jednostka km rozdzielają się przy końcu linii",
+          "after": "Liczba i jednostka pozostają razem",
+          "tip": "Użyj między liczbą a jednostką lub inicjałem a nazwiskiem.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "P"
+          ],
+          "combo": "Ctrl+P",
+          "kind": "hotkey",
+          "label": "Sprawdź wydruk",
+          "before": "Długi akapit przeskakuje na kolejną stronę",
+          "after": "Widzisz rozkład stron przed wydrukiem",
+          "tip": "Przejrzyj dokument zanim wyślesz PDF klientowi.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "S"
+          ],
+          "combo": "Ctrl+S",
+          "kind": "hotkey",
+          "label": "Zachowaj ostatnie zmiany",
+          "before": "Poprawione pismo niezapisane",
+          "after": "Ostatnie poprawki zapisane",
+          "tip": "Stosuj krótką checklistę przed wysyłką: nazwa, data, podpis, załącznik.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 7,
+    "title_pl": "Sprawdzanie tekstu i zadanie końcowe",
+    "material": {
+      "raw": [
+        "Sprawdzanie tekstu i zadanie końcowe",
+        "Przed wysłaniem dokumentu przejrzyj treść pod kątem pisowni, nazewnictwa i czytelności.",
+        "Otwórz testowy dokument i przećwicz pokazane niżej skróty. Najpierw przeczytaj efekt „przed” i „po”; potem wykonaj komendę własnoręcznie.",
+        "Porada: symbole na klawiaturze, język programu i system operacyjny mogą wpływać na skróty."
+      ],
+      "shortcuts": [
+        {
+          "keys": [
+            "F7"
+          ],
+          "combo": "F7",
+          "kind": "hotkey",
+          "label": "Sprawdź pisownię i gramatykę",
+          "before": "W dokumencie potencjalne błędy",
+          "after": "Otwiera się moduł Redaktor",
+          "tip": "Narzędzie pomaga, ale nie rozumie wszystkich nazw własnych.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "K"
+          ],
+          "combo": "Ctrl+K",
+          "kind": "hotkey",
+          "label": "Wstaw hiperłącze",
+          "before": "Adres www zapisany jako zwykły tekst",
+          "after": "Okno wstawiania linku",
+          "tip": "Nadaj linkom opisowy tekst, nie samo „kliknij tutaj”.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Z"
+          ],
+          "combo": "Ctrl+Z",
+          "kind": "hotkey",
+          "label": "Cofnij błędną zmianę",
+          "before": "Przypadkowo skasowane zdanie",
+          "after": "Zdanie przywrócone",
+          "tip": "Przećwicz na kopii dokumentu: usuń fragment, potem cofnij.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "S"
+          ],
+          "combo": "Ctrl+S",
+          "kind": "hotkey",
+          "label": "Zapisz finalną wersję",
+          "before": "Tekst gotowy, ale niezapisany",
+          "after": "Dokument zapisany",
+          "tip": "W nazwie użyj wersji i daty, np. Oferta_2026-11-08.docx.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "P"
+          ],
+          "combo": "Ctrl+P",
+          "kind": "hotkey",
+          "label": "Podgląd końcowy",
+          "before": "Nie wiesz, jak wygląda wynik",
+          "after": "Widzisz wszystkie strony",
+          "tip": "Sprawdź numerację i marginesy.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        },
+        {
+          "keys": [
+            "Ctrl",
+            "Home"
+          ],
+          "combo": "Ctrl+Home",
+          "kind": "hotkey",
+          "label": "Kontrola od początku",
+          "before": "Jesteś na końcu dokumentu",
+          "after": "Wracasz na pierwszą stronę",
+          "tip": "Zrób końcową korektę od początku do końca.",
+          "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+        "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+        "Nie pracuj na jedynej kopii ważnego dokumentu."
+      ],
+      "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+      "references": [
+        {
+          "label": "Microsoft Support — skróty klawiaturowe w Word",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  }
+]
