@@ -73,6 +73,29 @@ Deno.serve(async(req:Request)=>{
   .select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at')
   .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).maybeSingle();
  if(existingCert)return json({ok:true,state:'passed',certificate:existingCert});
+ // Recovery: if the model graded the exam as passed but issuing the diploma failed,
+ // do not force a learner to retake it or lose the server-recorded result.
+ const {data:passedSession}=await db.from('ta_exam_sessions').select('id,holder_name,is_demo')
+  .eq('user_id',user.id).eq('course_slug',slug).eq('status','passed').order('updated_at',{ascending:false}).limit(1).maybeSingle();
+ if(passedSession){
+  const {data:passedRecord}=await db.from('ta_exam_results').select('id').eq('user_id',user.id)
+   .eq('course_slug',slug).eq('passed',true).order('assessed_at',{ascending:false}).limit(1).maybeSingle();
+  if(passedRecord){
+   const {data:courseInfo}=await db.from('ta_courses').select('certificate_pl,certificate_en,title_pl').eq('slug',slug).maybeSingle();
+   const {data:previewInfo}=await db.from('ta_course_previews').select('review_status').eq('course_slug',slug).maybeSingle();
+   const no='TRE-'+new Date().getUTCFullYear()+'-'+crypto.randomUUID().replace(/-/g,'').slice(0,14).toUpperCase();
+   const {data:restored,error:restoreError}=await db.from('ta_certificates').insert({
+    user_id:user.id,course_slug:slug,certificate_no:no,holder_name:passedSession.holder_name,
+    title_pl:courseInfo?.certificate_pl||courseInfo?.title_pl||slug,
+    title_en:courseInfo?.certificate_en||courseInfo?.title_pl||slug,
+    exam_session_id:passedSession.id,is_demo:passedSession.is_demo||previewInfo?.review_status!=='approved'
+   }).select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at').single();
+   if(!restoreError&&restored)return json({ok:true,state:'passed',certificate:restored,recovered:true});
+   const {data:found}=await db.from('ta_certificates').select('id,certificate_no,holder_name,title_pl,issued_at,is_demo,revoked_at')
+    .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).maybeSingle();
+   if(found)return json({ok:true,state:'passed',certificate:found});
+  }
+ }
  const {data:enrollments,error:enError}=await db.from('ta_enrollments')
   .select('status,expires_at').eq('user_id',user.id).eq('course_slug',slug)
   .in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
