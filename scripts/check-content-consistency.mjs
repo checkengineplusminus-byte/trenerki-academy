@@ -91,7 +91,7 @@ try{
  const handsOn=read('src/HandsOnLab.tsx');
  if(!component.includes('HandsOnLab')||!component.includes('runId={runId}')||!handsOn.includes('setRows(')||!handsOn.includes('setShapes(')||!handsOn.includes("mode==='excel'"))fail('Hands-on Excel and AutoCAD workbench not connected');
  else ok('Excel and AutoCAD visual practice connected to every command execution');
- if(!component.includes('function Keycap')||!component.includes('SoftwarePlayground')||!component.includes('runCommand')||!component.includes('SPRAWDŹ, CZY ROZUMIESZ')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
+ if(!component.includes('function Keycap')||!component.includes('SoftwarePlayground')||!component.includes('runCommand')||!component.includes('2. SPRAWDŹ WIEDZĘ')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
  else ok('Protected lessons include working simulated Word and AutoCAD keyboard actions');
  for(const stale of ['Testy + egzamin','Przed egzaminem czeka Cię','Czytasz, podejmujesz decyzję, zapisujesz rozwiązanie i rozwiązujesz krótki quiz']){
   if(page.includes(stale))fail('Misleading unfinished-feature promise: '+stale);
@@ -241,14 +241,28 @@ try{
  const dialogueServer=read('supabase/functions/ta-lesson-guide/index.ts');
  if(dialogueServer.includes("if(alreadyDone)return respond({error:'lesson_already_complete'}")||
     !dialogueServer.includes('requestedQuiz&&canReplyAgain')||
-    !chatUI.includes('onFinish?.()')||
-    !chatUI.includes('canMoveOn?'))
-  fail('Mentor dialogue must remain answerable after a completed lesson, with optional finish action');
- else ok('Anielka chat remains available and can be closed to resume verified learning');
+    !chatUI.includes("void request('status').then")||
+    !chatUI.includes('onPress={()=>void send()}')||
+    chatUI.includes('setOpen('))
+  fail('Anielka must open without extra action, remain replyable and never block learner progress');
+ else ok('Anielka input appears automatically and remains optional for completed lessons');
  if(!progress.includes('setTimeout(scrollToTop,100)')||
     !progress.includes('window.scrollTo(0,0)')||
-    !progress.includes('onFinish={()=>{if(canFinish)'))
-  fail('Lesson transition and mentor completion must reset scroll and respect practice validation');
- else ok('Automatic scroll reset and mentor-to-lesson navigation are connected');
+    !progress.includes('if(canFinish)void finishLesson();else returnToExercise()'))
+  fail('Lesson transition must reset scroll and advance with one verified button');
+ else ok('Automatic scroll reset and one-action lesson navigation connected');
+ const craftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
+ if(craftGuides.courses.length!==20||craftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
+  fail('Every craft course must have eight individually illustrated/explained lessons');
+ for(const c of craftGuides.courses){
+  const asset='craft-'+c.slug;
+  const svg=read('public/academy/assets/'+asset+'.svg');
+  if(!svg.includes('<svg')||!svg.includes('</svg>')||!illustrated.includes("'"+asset+"'"))
+   fail('Missing or unregistered profession illustration '+asset);
+ }
+ if(!handsOn.includes('function tapCommand(')||!handsOn.includes("mobile&&")||
+    !component.includes('minHeight:48')||!chatUI.includes('Zapytaj Anielkę'))
+  fail('Touchscreen software practice and single-action mentor interface missing');
+ else ok('Touchscreen buttons, automatic Anielka and all 20 profession illustrations verified');
  if(!process.exitCode)console.log('All static integrity checks passed.');
 }catch(e){fail(String(e?.stack||e))}
