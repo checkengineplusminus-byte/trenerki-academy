@@ -331,5 +331,471 @@
     "outcome_2": "Zobaczysz graficznie, które klawisze nacisnąć i jaki będzie rezultat.",
     "outcome_3": "Poznasz wskazówki pozwalające uniknąć przypadkowego formatowania i przyspieszyć pracę.",
     "source_url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+  },
+  "wyjdz-z-toksycznego-zwiazku": {
+    "course_slug": "wyjdz-z-toksycznego-zwiazku",
+    "curiosity": "Nie każda kłótnia oznacza przemoc. Ale powtarzające się zastraszanie, kontrola pieniędzy i odcinanie od bliskich to sygnały, których nie warto bagatelizować.",
+    "scenario": "Partner czyta Twoje wiadomości i mówi, że bez tego nie ma zaufania. Zaczynasz ukrywać zwykłe rozmowy z przyjaciółmi, żeby uniknąć awantury.",
+    "outcome_1": "Odróżnisz konflikt od wzorca kontroli i przemocy.",
+    "outcome_2": "Przećwiczysz stawianie granic i szukanie wsparcia bez ryzykownej konfrontacji.",
+    "outcome_3": "Ułożysz indywidualny, bezpieczny plan kolejnych kroków.",
+    "source_url": "https://www.gov.pl/web/gov/skorzystaj-z-pomocy-dla-osob-dotknietych-przemoca-w-rodzinie",
+    "editorial_note": "Twoje bezpieczeństwo i autonomia są pierwsze. Nie zalecamy konfrontacji z osobą stosującą przemoc bez oceny ryzyka ani nie nakazujemy pozostawania czy odchodzenia. W bezpośrednim zagrożeniu dzwoń 112; w Polsce Niebieska Linia 800 120 002 (całodobowo). Kurs nie zastępuje pomocy prawnej i psychologicznej."
+  },
+  "kryzys-po-40-bez-dlugow": {
+    "course_slug": "kryzys-po-40-bez-dlugow",
+    "curiosity": "Zmiana życia nie wymaga od razu nowego auta ani kredytu. Czasem najtańszym krokiem jest sprawdzenie, co naprawdę chcesz zmienić.",
+    "scenario": "Po czterdziestce myślisz o nowym samochodzie i biznesie. Raty wyglądają na dostępne, ale nie policzyłeś napraw, podatków i słabszych miesięcy.",
+    "outcome_1": "Policzysz pełny koszt decyzji, a nie tylko pierwszą ratę.",
+    "outcome_2": "Rozpoznasz presję porównywania się i impulsywne zakupy.",
+    "outcome_3": "Ułożysz bezpieczny plan zmiany na 90 dni.",
+    "source_url": "https://uokik.gov.pl/public/kupie-teraz-zaplace-pozniej-jak-wyprzedaze-zadluzaja-porady-uokik",
+    "editorial_note": "Ambicja jest ważna, ale zdrowie i stabilność finansowa mają pierwszeństwo. Nie pożyczaj pod wpływem presji, nie poręczaj zobowiązań bez analizy. Materiał edukacyjny, nie spersonalizowana porada inwestycyjna ani kredytowa."
+  },
+  "partner-z-uzaleznieniem": {
+    "course_slug": "partner-z-uzaleznieniem",
+    "curiosity": "Nie możesz wytrzeźwieć za drugą osobę. Możesz jednak szukać wsparcia, chronić własne granice i nie brać na siebie odpowiedzialności za jej leczenie.",
+    "scenario": "Bliska osoba znów obiecuje zmianę po nocy spędzonej na piciu. Ty tłumaczysz nieobecność w pracy, ukrywasz problem przed dziećmi i nie wiesz, co robić dalej.",
+    "outcome_1": "Poznasz różnicę między pomocą a przejmowaniem cudzych obowiązków.",
+    "outcome_2": "Przećwiczysz spokojną rozmowę i przygotujesz listę instytucji wsparcia.",
+    "outcome_3": "Ocenisz swoje opcje, bezpieczeństwo i potrzeby dzieci bez presji pozostania w związku.",
+    "source_url": "https://www.niaaa.nih.gov/publications/brochures-and-fact-sheets/treatment-alcohol-problems-finding-and-getting-help",
+    "editorial_note": "Nie obciążamy bliskich winą za uzależnienie drugiej osoby. Bezpieczeństwo dorosłych i dzieci jest ważniejsze niż utrzymanie relacji za wszelką cenę. Odstawianie alkoholu po długim intensywnym piciu może wymagać pomocy medycznej. Kurs nie jest terapią ani instrukcją odstawiania substancji; w niebezpieczeństwie wzywaj służby ratunkowe."
+  },
+  "nie-marnuj-jedzenia": {
+    "course_slug": "nie-marnuj-jedzenia",
+    "curiosity": "Czerstwy, ale bezpieczny chleb może stać się grzankami, a ugotowane ziemniaki — podstawą nowego obiadu. Nie chodzi o jedzenie za wszelką cenę, lecz o plan.",
+    "scenario": "W lodówce zostały pół papryki, ugotowany ryż z poprzedniego dnia i trzy jajka. Zanim coś ugotujesz, musisz sprawdzić, jak te produkty były przechowywane.",
+    "outcome_1": "Odróżnisz datę jakości od terminu bezpieczeństwa żywności.",
+    "outcome_2": "Ułożysz trzy proste przepisy z produktów, które już masz.",
+    "outcome_3": "Policzysz koszt porcji i ograniczysz przypadkowe zakupy.",
+    "source_url": "https://www.gov.pl/web/gis/najlepiej-spozyc-przed-nalezy-spozyc-do-co-to-oznacza-i-do-kiedy-produkt-moze-znajdowac-sie-w-obrocie",
+    "editorial_note": "Oszczędzanie nie może zagrażać zdrowiu. Produktów po terminie „należy spożyć do” nie używaj. W razie nieprawidłowego przechowywania lub oznak zepsucia wyrzuć żywność; nie polegaj wyłącznie na zapachu. Uwzględniaj alergeny i higienę."
+  },
+  "trawnik-jestem-ogrodnikiem": {
+    "course_slug": "trawnik-jestem-ogrodnikiem",
+    "curiosity": "Żółty trawnik nie zawsze jest martwy. W czasie suszy część traw przechodzi w stan spoczynku, a nadmierne podlewanie może marnować wodę.",
+    "scenario": "Po upalnym tygodniu trawa zrobiła się brązowa. Sąsiad mówi, żeby lać wodę codziennie i skosić nisko, a Ty nie wiesz, czy to pomoże.",
+    "outcome_1": "Rozpoznasz wpływ gleby, cienia i pogody na trawę.",
+    "outcome_2": "Ułożysz rozsądny plan koszenia i podlewania dla lokalnych warunków.",
+    "outcome_3": "Zdiagnozujesz częste problemy bez kupowania preparatów w ciemno.",
+    "source_url": "https://www.rhs.org.uk/lawns/mowing",
+    "editorial_note": "Pielęgnację dopasuj do gatunku trawy, klimatu, gleby, suszy oraz lokalnych ograniczeń wody i środków ochrony roślin. Nie kosimy mokrego ani zamarzniętego trawnika. Chemia nie zastępuje diagnozy; wspieramy bioróżnorodność i zapylacze."
+  },
+  "ekonomia-domowa-bez-dlugow": {
+    "course_slug": "ekonomia-domowa-bez-dlugow",
+    "curiosity": "Mała rata bywa kosztowną decyzją, gdy zsumujesz opłaty, ubezpieczenie i czas spłaty. W domowym budżecie liczy się cały koszt, nie reklama.",
+    "scenario": "Rodzinie zostaje 900 zł po opłaceniu rachunków. Jeden domownik chce kupić sprzęt w ratach, drugi boi się nieplanowanego rachunku za samochód.",
+    "outcome_1": "Sporządzisz realny budżet z podziałem na konieczne i odraczalne wydatki.",
+    "outcome_2": "Porównasz koszt pożyczki, rat i odroczonej płatności.",
+    "outcome_3": "Przygotujesz plan awaryjny na gorszy miesiąc i listę źródeł bezpłatnej pomocy.",
+    "source_url": "https://uokik.gov.pl/public/kupie-teraz-zaplace-pozniej-jak-wyprzedaze-zadluzaja-porady-uokik",
+    "editorial_note": "Kurs nie oferuje produktów finansowych ani gwarancji wyjścia z zadłużenia. Przed decyzją sprawdzaj pełny koszt kredytu, RRSO i aktualne warunki. W kryzysie warto wcześnie kontaktować się z wierzycielem oraz niezależnym, bezpłatnym doradztwem; nie zaciągaj kolejnego długu bez oceny możliwości spłaty."
+  },
+  "angielski-na-budowie": {
+    "course_slug": "angielski-na-budowie",
+    "curiosity": "Na budowie jedna jasna prośba bywa ważniejsza niż dziesięć perfekcyjnych słówek z podręcznika.",
+    "scenario": "Stop work. The area is not safe. — Wstrzymaj pracę. To miejsce nie jest bezpieczne.",
+    "outcome_1": "Przećwiczysz: narzędzia i materiały.",
+    "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: dostawy i rozładunek.",
+    "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
+    "source_url": "https://www.hse.gov.uk/construction/",
+    "editorial_note": "Nie zgaduj przy poleceniach bezpieczeństwa. Gdy nie rozumiesz instrukcji, poproś o tłumacza lub ponowne wyjaśnienie; słownik nie zastępuje szkolenia BHP.",
+    "history": null
+  },
+  "norweski-na-budowie": {
+    "course_slug": "norweski-na-budowie",
+    "curiosity": "Na budowie jedna jasna prośba bywa ważniejsza niż dziesięć perfekcyjnych słówek z podręcznika.",
+    "scenario": "Stopp arbeidet, det er ikke trygt her. — Wstrzymaj pracę, tutaj nie jest bezpiecznie.",
+    "outcome_1": "Przećwiczysz: materiały i narzędzia.",
+    "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: levering i lossing.",
+    "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
+    "source_url": "https://www.arbeidstilsynet.no/",
+    "editorial_note": "W sprawach HMS, SJA, podnoszenia ładunków i pracy na wysokości stosuj aktualne wymagania norweskie; nauka języka nie zastępuje wymaganych kursów.",
+    "history": null
+  },
+  "niemiecki-na-budowie": {
+    "course_slug": "niemiecki-na-budowie",
+    "curiosity": "Na budowie jedna jasna prośba bywa ważniejsza niż dziesięć perfekcyjnych słówek z podręcznika.",
+    "scenario": "Arbeit einstellen! Hier besteht Gefahr. — Przerwać pracę! Tutaj istnieje zagrożenie.",
+    "outcome_1": "Przećwiczysz: materiały i narzędzia.",
+    "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: dostawy i rozładunek.",
+    "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
+    "source_url": "https://www.bgbau.de/",
+    "editorial_note": "Niemieckie zasady BHP i wymagania do pracy mogą różnić się od polskich; tłumaczenie polecenia nie jest dowodem uprawnienia.",
+    "history": null
+  },
+  "pomagaj-dziecku-w-lekcjach": {
+    "course_slug": "pomagaj-dziecku-w-lekcjach",
+    "curiosity": "Kiedy dziecko samo odkryje pierwszy krok rozwiązania, uczy się więcej niż wtedy, gdy dorosły poda mu gotowy wynik.",
+    "scenario": "Zadanie tekstowe ma pięć zdań — Poproś dziecko o opowiedzenie treści własnymi słowami.",
+    "outcome_1": "Przećwiczysz: jak poznać prawdziwą trudność.",
+    "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: pomagaj bez podawania odpowiedzi.",
+    "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
+    "source_url": "https://www.unicef.org/parenting/child-care/9-tips-for-better-communication",
+    "editorial_note": "Nie wykonuj zadań za dziecko, nie zawstydzaj go i nie uzależniaj miłości od ocen. Stosuj wymagania szkolne odpowiednie do wieku i potrzeb, szczególnie przy ADHD lub trudnościach w nauce.",
+    "history": null
+  },
+  "windows-skroty": {
+    "course_slug": "windows-skroty",
+    "curiosity": "Kombinacja Windows + E otwiera Eksplorator plików — czasem dwa klawisze oszczędzają minutę codziennego szukania.",
+    "scenario": "Win + Shift + S — Otwórz narzędzie do zaznaczenia zrzutu.",
+    "outcome_1": "Przećwiczysz: szybka zmiana aplikacji.",
+    "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: ustawienia i wyszukiwanie.",
+    "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
+    "source_url": "https://support.microsoft.com/pl-pl/windows/skróty-klawiaturowe-w-systemie-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+    "editorial_note": "Skróty zależą od wersji systemu i ustawień klawiatury. Pokazujemy Windows 11 na standardowym układzie; nie udostępniaj poufnych zrzutów ani zawartości schowka.",
+    "history": null
+  },
+  "transport-logistyka-praktycznie": {
+    "course_slug": "transport-logistyka-praktycznie",
+    "curiosity": "Pusta trasa powrotna może kosztować więcej niż oszczędność wywalczona na paliwie.",
+    "scenario": "Skrzynie różnią się ciężarem i wymiarami — Zaplanuj sposób zabezpieczenia z przeszkoloną osobą.",
+    "outcome_1": "Przećwiczysz: rodzaje transportu.",
+    "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: dokumenty przewozowe.",
+    "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
+    "source_url": "https://pisil.pl/jesien-2026-kurs-spedycyjny-on-line/",
+    "editorial_note": "Nie obiecujemy uprawnień przewoźnika ani certyfikatu kompetencji zawodowych. Przy transporcie i zabezpieczaniu ładunku przestrzegaj prawa, mas, ograniczeń, dokumentów i wymogów przewozu towarów niebezpiecznych.",
+    "history": null
+  },
+  "kowal-tradycja": {
+    "course_slug": "kowal-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Kowal to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz kuta klamka. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: stal.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: kowadło, kleszcze, młoty.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://infozawodowe.men.gov.pl/zawody/kowal",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "MEN 2026",
+      "last_verified_year": 2026,
+      "ended_year": null,
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/kowal"
+    }
+  },
+  "zdun-tradycja": {
+    "course_slug": "zdun-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Zdun to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz piec kaflowy. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: kafle i glina ogniotrwała.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: kafle, narzędzia zduńskie.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://infozawodowe.men.gov.pl/zawody/zdun",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "MEN 2026",
+      "last_verified_year": 2026,
+      "ended_year": null,
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/zdun"
+    }
+  },
+  "kolodziej": {
+    "course_slug": "kolodziej",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Kołodziej to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz koło do wozu. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: drewno i metalowe obręcze.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: piasta, szprychy, obręcz.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "bednarz": {
+    "course_slug": "bednarz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Bednarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz beczka. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: klepki z drewna.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: strugi, drewniane klepki, obręcze.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "woznica": {
+    "course_slug": "woznica",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Woźnica to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz przejazd powozem. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: uprząż i wóz.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: lejce, dyszel, uprząż.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "rymarz": {
+    "course_slug": "rymarz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Rymarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz uprząż. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: skóra i okucia.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: szydło, igły, szablony.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "garncarz-tradycja": {
+    "course_slug": "garncarz-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Garncarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz gliniany dzban. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: glina i szkliwa.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: koło garncarskie i narzędzia formierskie.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://garncarnia.pl/oferta/szkola-garncarska/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "warsztaty 2026",
+      "last_verified_year": 2026,
+      "ended_year": null,
+      "note": "Potwierdzone warsztaty w 2026, zatem zawód nie przestał być nauczany. Brak daty zakończenia.",
+      "source_url": "https://garncarnia.pl/oferta/szkola-garncarska/"
+    }
+  },
+  "plecionkarz": {
+    "course_slug": "plecionkarz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Plecionkarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz kosz. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: wiklina i trzcina.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: włókna, szablony i noże.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "powroznik": {
+    "course_slug": "powroznik",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Powroźnik to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz powróz. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: len, konopie i sizal.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: narzędzia do skręcania włókien.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "snycerz": {
+    "course_slug": "snycerz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Snycerz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz drewniany ornament. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: drewno lipowe i dębowe.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: dłuta, noże i zaciski.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "sitarz": {
+    "course_slug": "sitarz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Sitarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz sito. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: ramy i siatki.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: drewniane ramy, siatki, igły.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "zecer": {
+    "course_slug": "zecer",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Zecer to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz kolumna gazety. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: czcionki i papier.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: kaszta drukarska i czcionki metalowe.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "ludwisarz": {
+    "course_slug": "ludwisarz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Ludwisarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz dzwon. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: brąz i formy.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: model dzwonu i forma odlewnicza.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "introligator-tradycja": {
+    "course_slug": "introligator-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Introligator to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz książka w oprawie. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: papier, płótno i nici.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: prasa, ściegi i kleje.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "tkacz-reczny": {
+    "course_slug": "tkacz-reczny",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Tkacz ręczny to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz tkanina. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: wełna i len.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: krosno i czółenko.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "kaletnik-tradycja": {
+    "course_slug": "kaletnik-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Kaletnik to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz portfel. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: skóra i zamienniki.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: szydło, wykroje i okucia.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://infozawodowe.men.gov.pl/zawody/kaletnik",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "MEN 2026",
+      "last_verified_year": 2026,
+      "ended_year": null,
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/kaletnik"
+    }
+  },
+  "zegarmistrz-tradycja": {
+    "course_slug": "zegarmistrz-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Zegarmistrz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz zegar mechaniczny. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: mechanizmy zegarków.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: lupa i przyrządy precyzyjne.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "MEN dokument kwalifikacji",
+      "last_verified_year": 2026,
+      "ended_year": null,
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+      "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf"
+    }
+  },
+  "mlynarz-tradycyjny": {
+    "course_slug": "mlynarz-tradycyjny",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Młynarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz mąka. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: zboża i mąka.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: żarna, sita, kamienie.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "gontarz": {
+    "course_slug": "gontarz",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Gontarz to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz gont dachowy. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: drewno iglaste.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: narzędzia gontarskie.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://zrp.pl/o-nas/historia/",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
+      "last_verified_year": null,
+      "ended_year": null,
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
+      "source_url": "https://zrp.pl/o-nas/historia/"
+    }
+  },
+  "szewc-tradycja": {
+    "course_slug": "szewc-tradycja",
+    "curiosity": "Zawody sprzed wielu pokoleń wcale nie musiały zniknąć. Szewc to historia wiedzy przekazywanej z ręki do ręki — a do dziś nie zawsze znamy datę ostatniej szkolnej lekcji.",
+    "scenario": "W muzeum widzisz naprawiony but. Przewodnik opowiada o dawnym mistrzu, ale Ty chcesz sprawdzić, jakich używał materiałów i czego trzeba było nauczyć się, zanim powstał ten wyrób.",
+    "outcome_1": "Poznasz rolę materiałów: skóra, guma i tkaniny.",
+    "outcome_2": "Rozpoznasz funkcje narzędzi: kopyto szewskie, szydło, kleje.",
+    "outcome_3": "Odróżnisz udokumentowane fakty historyczne od niepotwierdzonych dat zakończenia nauki zawodu.",
+    "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc",
+    "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
+    "history": {
+      "teaching_status": "MEN profil zawodu",
+      "last_verified_year": 2026,
+      "ended_year": null,
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+      "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc"
+    }
   }
 }
