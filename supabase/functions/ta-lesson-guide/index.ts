@@ -113,7 +113,7 @@ Deno.serve(async(req:Request)=>{
  if(de)return respond({error:'dialogue_unavailable'},503);
  const name=greetingName(user);
  const prompt=cut(lesson.material?.learning?.situation||lesson.material?.construction?.roleplay?.question||lesson.material?.raw?.[1]||lesson.title_pl,330);
- const opening='Cześć, '+name+'! Dzisiaj zajmiemy się tematem „'+cut(lesson.title_pl,150)+'”. '+(prompt?'Pomyśl o takiej sytuacji: '+prompt+' ':'')+'Co zrobiłbyś lub zrobiłabyś w pierwszej kolejności? Możesz napisać też, co jest jeszcze niejasne.';
+ const opening='Cześć, '+name+'! Jestem obok, gdy czegoś nie rozumiesz. Napisz, który krok sprawia trudność — znajdziemy prosty przykład.';
  const visible=(record?.messages||[]).map((m:any)=>({role:m.role,text:m.text,created_at:m.created_at})).slice(-24);
  const state=(row:any,firstMsg?:string)=>({ok:true,ready:alreadyDone||!!row?.approved,already_completed:alreadyDone,
   first_name:name,count:row?.meaningful_count||0,turns:row?.turn_count||0,
@@ -152,8 +152,8 @@ Deno.serve(async(req:Request)=>{
  if(action==='status')return respond(state(record));
  if(action==='complete'){
   if(alreadyDone)return respond({ok:true,completed:true,next:lessons.find(l=>l.lesson_no>no)?.lesson_no??null});
-  if(!record?.approved||record.meaningful_count<2)return respond({error:'dialogue_required'},409);
-  if(record.cooldown_until&&new Date(record.cooldown_until).getTime()>Date.now())return respond({error:'cooldown_active'},429);
+  // Conversation is voluntary support, never a prerequisite for lesson completion.
+  // Completion still requires prior lessons and correct, server-validated practice.
   const mat=lesson.material||{};
   const required:('case'|'construction'|'keyboard')[]=[];
   if(mat.construction)required.push('construction');
