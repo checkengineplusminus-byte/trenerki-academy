@@ -13,17 +13,37 @@ type Lesson={lesson_no:number;title_pl:string;material:any};
 function pick<T>(arr:T[]):T{const b=new Uint32Array(1);crypto.getRandomValues(b);return arr[b[0]%arr.length];}
 function questionFrom(lessons:Lesson[],history:any[],phase:string){
  const used=new Set(history.map(x=>Number(x.lesson_no)));
- const relevant=lessons.filter(l=>l?.material?.learning?.situation&&l?.material?.learning?.example);
+ const relevant=lessons.filter(l=>
+  (l?.material?.learning?.situation&&l?.material?.learning?.example)||
+  (l?.material?.construction?.roleplay?.question&&l?.material?.construction?.roleplay?.options?.length)||
+  (Array.isArray(l?.material?.shortcuts)&&l.material.shortcuts.length>0));
  if(relevant.length<4)return null;
- const sorted=phase==='final'||phase==='extra'?
-  relevant.filter(l=>l.lesson_no>=Math.max(0,lessons.length-10)):
-  relevant.filter(l=>l.lesson_no>=Math.floor(lessons.length*(history.length%3)/3));
- const pool=(sorted.length?sorted:relevant).filter(l=>!used.has(l.lesson_no));
- const l=pick(pool.length?pool:relevant.filter(l=>!used.has(l.lesson_no)).length?relevant.filter(l=>!used.has(l.lesson_no)):relevant);
- const source=l.material.learning;
- const question='Sytuacja w kursie „'+l.title_pl+'”: '+trim(source.situation,700)+' Jak konkretnie postąpisz i co sprawdzisz, zanim uznasz zadanie za zakończone?';
- const expected=trim(source.example,750)+' Zasada: '+trim(source.explanation||source.intro,1100);
- return {lesson_no:l.lesson_no,question,expected_answer:expected};
+ const expertMin=Math.max(0,lessons.length-10);
+ const poolForStage=phase==='final'||phase==='extra'?
+  relevant.filter(l=>l.lesson_no>=expertMin):relevant;
+ const preferred=(poolForStage.length>=2?poolForStage:relevant).filter(l=>!used.has(l.lesson_no));
+ const unused=preferred.length?preferred:relevant.filter(l=>!used.has(l.lesson_no));
+ const l=pick(unused.length?unused:relevant);
+ const mat=l.material;
+ if(mat?.learning?.situation&&mat?.learning?.example){
+  const source=mat.learning;
+  const question='Sytuacja z kursu „'+l.title_pl+'”: '+trim(source.situation,700)+' Jak konkretnie postąpisz i co sprawdzisz, zanim uznasz zadanie za zakończone?';
+  const expected=trim(source.example,750)+' Zasada: '+trim(source.explanation||source.intro,1100);
+  return {lesson_no:l.lesson_no,question,expected_answer:expected};
+ }
+ if(mat?.construction?.roleplay?.question&&mat?.construction?.roleplay?.options?.length){
+  const r=mat.construction.roleplay,answerIndex=Number(r.correct)||0;
+  const correct=trim(r.options[answerIndex],650);
+  const samples=(mat.construction.phrases||[]).slice(0,4).map((p:any)=>trim(p.target,90)+' — '+trim(p.polish,90)).join('; ');
+  return {lesson_no:l.lesson_no,
+   question:'W sytuacji językowej „'+l.title_pl+'”: '+trim(r.question,600)+' Odpowiedz pełnym zdaniem, użyj odpowiednich słów w języku kursu, a następnie wyjaśnij, dlaczego taka odpowiedź jest bezpieczna.',
+   expected_answer:correct+'. '+trim(r.why,700)+'. Przykładowe zdania: '+samples};
+ }
+ const commands=mat.shortcuts||[];
+ const shortcut=pick(commands);
+ return {lesson_no:l.lesson_no,
+  question:'W programie „'+l.title_pl+'” masz sytuację: '+trim(shortcut.before,500)+'. Chcesz uzyskać rezultat: '+trim(shortcut.after,500)+'. Wyjaśnij, jakich klawiszy lub polecenia użyjesz i jak sprawdzisz efekt.',
+  expected_answer:'Prawidłowe polecenie: '+trim(shortcut.combo,90)+' ('+trim(shortcut.label,170)+'). '+trim(shortcut.tip,600)+'. Rezultat: '+trim(shortcut.after,400)};
 }
 async function gradeWithAi(question:string,expected:string,answer:string):Promise<Grade|null>{
  const apiKey=Deno.env.get('OPENAI_API_KEY');if(!apiKey)return null;
