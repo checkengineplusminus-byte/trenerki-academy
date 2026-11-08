@@ -1,0 +1,164 @@
+{
+  "apartamenty": [
+    "Uznać, że gość sam sprawdzi wyposażenie.",
+    "Nie sprawdzać zamków, światła i urządzeń przed przyjazdem.",
+    "Pominąć zdjęcia i zapis usterek.",
+    "Zamknąć reklamację bez wyjaśnienia, co się wydarzyło."
+  ],
+  "bdo": [
+    "Skopiować obowiązki innej firmy, nie badając własnej działalności.",
+    "Zignorować opakowania, bo sklep jest mały.",
+    "Wpisać szacunkowe masy bez dokumentów.",
+    "Uznawać zeszłoroczne zasady za aktualne."
+  ],
+  "blizej-dziecka": [
+    "Od razu osądzić intencje dziecka.",
+    "Wykład zamiast wysłuchania trudności.",
+    "Zawstydzać za przeżywane emocje.",
+    "Nie uwzględniać zdania dziecka w rozmowie."
+  ],
+  "brygadzista": [
+    "Przydzielić zadania bez sprawdzenia ryzyka.",
+    "Samodzielnie zmienić projekt bez wymaganej zgody.",
+    "Nie zgłosić brakującego materiału.",
+    "Oceniać człowieka zamiast opisać problem."
+  ],
+  "dostepne-pdf": [
+    "Sprawdzić jedynie wygląd PDF na własnym ekranie.",
+    "Oznaczyć ważne dane tylko kolorem.",
+    "Wysłać wyłącznie skan nieczytelny dla czytnika.",
+    "Uwierzyć w jednorazowy automatyczny test bez weryfikacji."
+  ],
+  "dziennik-kota": [
+    "Przyjąć kota bez wywiadu o zdrowiu.",
+    "Używać tych samych akcesoriów bez higieny.",
+    "Samodzielnie zmieniać leczenie zwierzęcia.",
+    "Pominąć kontakt awaryjny i zgodę właściciela."
+  ],
+  "ekonomia-domowa-bez-dlugow": [
+    "Traktować kredyt odnawialny jak zarobki.",
+    "Porównywać wyłącznie wysokość raty.",
+    "Nie uwzględnić rachunków rocznych.",
+    "Brać nową pożyczkę przed zbadaniem zobowiązań."
+  ],
+  "festyn": [
+    "Kupić porcje dla wszystkich odwiedzających bez prognozy.",
+    "Pominąć bezpieczne przechowywanie jedzenia.",
+    "Ustalić cenę bez obliczenia składników.",
+    "Planować obsługę bez przerw i zastępstw."
+  ],
+  "gpsr": [
+    "Założyć, że rękodzieło jest wyłączone z wymagań.",
+    "Pominąć ocenę ryzyka produktu.",
+    "Skopiować etykietę bez sprawdzenia własnych materiałów.",
+    "Zignorować zgłoszoną wadę produktu."
+  ],
+  "kgw": [
+    "Wydawać dotację przed przeczytaniem warunków.",
+    "Używać zeszłorocznych terminów rozliczenia.",
+    "Gromadzić rachunki bez powiązania z zadaniem.",
+    "Założyć, że każdy wydatek jest kwalifikowalny."
+  ],
+  "kierownik-budowy": [
+    "Zatwierdzić zmianę poza zakresem uprawnień.",
+    "Wykorzystać nieaktualną rewizję rysunku.",
+    "Zastąpić rzeczywistą kontrolę bezpieczeństwa samym podpisem.",
+    "Ukryć blokadę zamiast zgłosić ją zespołowi."
+  ],
+  "koordynator": [
+    "Wycenić sprzątanie tylko z metrażu.",
+    "Mieszać niezgodne środki czystości.",
+    "Nie określić, co zawiera zamówienie.",
+    "Nie dokumentować stanu i uwag klienta."
+  ],
+  "kryzys-po-40-bez-dlugow": [
+    "Kupować drogie rzeczy, żeby dorównać znajomym.",
+    "Liczyć tylko ratę, nie koszt roczny.",
+    "Podjąć długoterminową decyzję pod wpływem frustracji.",
+    "Uznać, że zmiana musi nastąpić natychmiast."
+  ],
+  "lepsza-mama": [
+    "Porównywać rodzicielstwo z idealnymi zdjęciami.",
+    "Zawstydzać dziecko za błąd.",
+    "Ignorować długotrwałe zmęczenie opiekuna.",
+    "Karać dziecko za samo przeżywanie emocji."
+  ],
+  "lepszy-szef": [
+    "Podejmować wszystkie decyzje za zespół.",
+    "Oceniać pracownika bez podania faktów.",
+    "Traktować pracę bez przerw jako oznakę ambicji.",
+    "Obiecywać terminy bez sprawdzenia możliwości."
+  ],
+  "lepszy-tata": [
+    "Zastępować regularny czas prezentami.",
+    "Wciągać dziecko w spór dorosłych.",
+    "Rozmawiać wyłącznie o ocenach.",
+    "Grozić za trudne emocje."
+  ],
+  "nie-marnuj-jedzenia": [
+    "Zjeść pozostałe pieczywo po odkrojeniu pleśni.",
+    "Kupować kolejne produkty bez sprawdzenia zapasów.",
+    "Ignorować rozróżnienie dat żywności.",
+    "Gotować duże porcje bez planu chłodzenia."
+  ],
+  "odbiory": [
+    "Opisać usterkę słowem «fatalna» bez faktów.",
+    "Orzec o ukrytej konstrukcji bez badań.",
+    "Pominąć zdjęcie i datę zgłoszenia.",
+    "Rozkręcać instalację bez uprawnień podczas oględzin."
+  ],
+  "partner-z-uzaleznieniem": [
+    "Uznać obietnicę za równoważną leczeniu.",
+    "Pozostawić dziecko pod opieką osoby nietrzeźwej.",
+    "Brać nowy kredyt, by ukryć problem.",
+    "Wymuszać trudną rozmowę podczas agresji."
+  ],
+  "pasieka": [
+    "Zakupić ule bez analizy otoczenia.",
+    "Pracować przy pszczołach bez przygotowania na użądlenia.",
+    "Podawać przypadkowe preparaty na choroby.",
+    "Ignorować niepokojące objawy rodziny pszczelej."
+  ],
+  "petsitter": [
+    "Zabrać kota w obce miejsce bez zgody.",
+    "Zmieniać dawki leków weterynaryjnych.",
+    "Nie zgłosić właścicielowi niepokojących objawów.",
+    "Nie sprawdzić zamknięcia okien i drzwi."
+  ],
+  "rodzice-50-50": [
+    "Wykorzystywać dziecko jako posłańca.",
+    "Zmieniać terminy bez informowania opiekunów.",
+    "Wymagać opowiedzenia się po jednej stronie.",
+    "Ignorować ważne ustalenia i decyzje opiekuńcze."
+  ],
+  "swiety-mikolaj": [
+    "Pytać publicznie dziecko o jego «grzeczność».",
+    "Wymuszać przytulenie do zdjęcia.",
+    "Obiecywać prezenty bez uzgodnień.",
+    "Wyśmiewać nieśmiałe dziecko."
+  ],
+  "trawnik-jestem-ogrodnikiem": [
+    "Użyć nawozu bez sprawdzenia przyczyny problemu.",
+    "Kosić bardzo krótko w czasie suszy.",
+    "Podlewać mimo lokalnych ograniczeń.",
+    "Traktować każdą plamę na trawniku jednakowo."
+  ],
+  "wspolnota": [
+    "Wydać środki wspólnoty bez odpowiedniej decyzji.",
+    "Zignorować pilny przeciek do następnego zebrania.",
+    "Udostępnić cudze dane bez podstawy.",
+    "Zlecić remont bez porównania zakresu i ofert."
+  ],
+  "wyjdz-z-toksycznego-zwiazku": [
+    "Traktować kontrolę telefonu jako dowód troski.",
+    "Podejmować ryzykowną konfrontację mimo zagrożenia.",
+    "Zostać bez bezpiecznego sposobu szukania pomocy.",
+    "Ocenić bezpieczeństwo tylko na podstawie obietnic."
+  ],
+  "zwiazek-rozmowa": [
+    "Zacząć od oskarżenia «ty zawsze».",
+    "Zakładać, że druga osoba czyta w myślach.",
+    "Prowadzić spór wyłącznie po to, by wygrać.",
+    "Kontynuować rozmowę mimo przemocy lub zagrożenia."
+  ]
+}
