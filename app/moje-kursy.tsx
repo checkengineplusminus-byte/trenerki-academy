@@ -4,8 +4,9 @@ import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
+type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 export default function MyCourses(){
- const router=useRouter(),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
+ const router=useRouter(),[certificates,setCertificates]=useState<Record<string,Diploma>>({}),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
  useEffect(()=>{void load()},[]);
  async function load(){
   setBusy(true);
@@ -27,6 +28,10 @@ export default function MyCourses(){
     if(le)throw le;
     for(const row of lessons||[])counts.set(row.course_slug,(counts.get(row.course_slug)||0)+1);
    }
+   const {data:diplomas,error:de}=await supabase.from('ta_certificates')
+     .select('course_slug,certificate_no,is_demo,issued_at').eq('user_id',user.id).is('revoked_at',null);
+   if(de)throw de;
+   setCertificates(Object.fromEntries((diplomas||[]).map(d=>[d.course_slug,d as Diploma])));
    setItems(enrolled.map(row=>{
     const lessonCount=counts.get(row.course_slug)||8;
     const completedCount=Math.min(lessonCount,done.get(row.course_slug)?.size||0);
@@ -46,6 +51,12 @@ export default function MyCourses(){
     <Text style={{marginTop:9,color:'#526f5b'}}>Postęp: {row.progress}% ({row.completedCount}/{row.lessonCount} lekcji) · Dostęp do: {new Date(row.expires_at).toLocaleDateString('pl-PL')} · {active?'aktywny':'zakończony'}</Text>
     <View style={{backgroundColor:'#eaf1e6',height:8,borderRadius:8,overflow:'hidden',marginTop:12}}><View style={{backgroundColor:'#79a87d',width:row.progress+'%',height:8}}/></View>
     <Pressable disabled={!active} onPress={()=>router.push({pathname:'/nauka',params:{course:row.course_slug}})} style={{alignSelf:'flex-start',backgroundColor:'#1e5234',padding:13,marginTop:14,borderRadius:10,opacity:active?1:.5}}><Text style={{color:'white',fontWeight:'800'}}>Kontynuuj naukę →</Text></Pressable>
+    {certificates[row.course_slug]?
+     <Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug}})} style={{alignSelf:'flex-start',backgroundColor:'#e8f3dc',padding:13,marginTop:10,borderRadius:10,borderWidth:1,borderColor:'#b7d9b0'}}>
+      <Text style={{color:'#235e3b',fontWeight:'900'}}>{certificates[row.course_slug].is_demo?'Zobacz wzór dyplomu testowego →':'Zobacz autorski dyplom →'}</Text>
+     </Pressable>:
+     row.progress===100&&<Text style={{fontSize:12,color:'#5d765e',marginTop:8}}>Lekcje ukończone. Do otrzymania autorskiego dyplomu wymagany jest egzamin końcowy.</Text>}
+
    </View>})}
   {isAdmin&&<Pressable onPress={()=>router.push('/admin')} style={{backgroundColor:'#173228',padding:15,marginTop:15,borderRadius:12,alignItems:'center'}}><Text style={{color:'white',fontWeight:'900'}}>Panel administratora TRENERKI →</Text></Pressable>}
   <Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#e8f3dc',padding:14,marginTop:18,borderRadius:12,alignItems:'center'}}><Text style={{color:'#173228',fontWeight:'800'}}>🎁 Wyślij lub odbierz prezent →</Text></Pressable>
