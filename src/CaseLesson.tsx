@@ -44,23 +44,22 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
     style={{borderRadius:11,padding:14,backgroundColor:chosen===original?(passed?'#d9f0c9':'#fff0db'):'#f7faf4',borderWidth:chosen===original?2:1,borderColor:chosen===original?(passed?'#6aa365':'#c8a06c'):'#d9e3d6'}}>
     <Text style={{fontSize:15,color:ink,fontWeight:'700',lineHeight:23}}>{String.fromCharCode(65+position)}. {value}</Text>
    </Pressable>)}
-   {chosen!==null&&<View style={{backgroundColor:chosen===data.correct?'#cfe8c7':'#ffefd8',borderRadius:11,padding:15,gap:7}}>
-    <Text style={{fontWeight:'900',color:ink,fontSize:16}}>{passed?'Poprawnie — wynik zapisany.':chosen===data.correct?'Poprawna odpowiedź. '+(verifying?'Zapisuję wynik…':'Sprawdź potwierdzenie zapisu.'):'Zastanów się jeszcze raz nad tym przypadkiem.'}</Text>
-    <Text style={{color:ink,lineHeight:23,fontSize:14}}>{data.feedback?.[chosen]|| (passed?data.explanation:'Sprawdź, które działanie odpowiada bezpośrednio na opisany problem. Po odpowiedzi zobaczysz przykład i wyjaśnienie.')}</Text>
+   {chosen!==null&&<View style={{backgroundColor:passed?'#cfe8c7':'#ffefd8',borderRadius:11,padding:14,gap:7}}>
+    <Text style={{fontWeight:'900',color:ink,fontSize:16}}>{passed?'✓ Poprawna odpowiedź. Zapisano wynik.':verifying?'Sprawdzam odpowiedź…':chosen===data.correct?'Poprawna odpowiedź, trwa potwierdzanie.':'Jeszcze nie. Spróbuj raz jeszcze.'}</Text>
+    {!passed&&chosen!==data.correct&&<Text style={{color:ink,lineHeight:22,fontSize:14}}>Przyjrzyj się celowi zadania i wybierz rozwiązanie, które naprawdę prowadzi do wyniku.</Text>}
     {!!verifyError&&<Text style={{fontSize:13,color:'#95512f',fontWeight:'800'}}>{verifyError}</Text>}
-    {!passed&&tries>=2&&<Pressable onPress={()=>setHint(true)}><Text style={{color:'#4b674b',fontWeight:'800'}}>Pokaż podpowiedź →</Text></Pressable>}
-    {hint&&!passed&&<Text style={{fontWeight:'700',color:ink}}>Zwróć uwagę na: {correctText}</Text>}
+    {!passed&&tries>=2&&!hint&&<Pressable accessibilityRole="button" onPress={()=>setHint(true)} style={{paddingVertical:6}}>
+     <Text style={{color:'#4b674b',fontWeight:'900'}}>Potrzebuję podpowiedzi →</Text>
+    </Pressable>}
+    {hint&&!passed&&<Text style={{fontWeight:'700',color:ink,lineHeight:22}}>Wskazówka: {correctText}</Text>}
+    {passed&&!!data.explanation&&!data.explanation.includes(data.example||'__NO_MATCH__')&&
+     <Text style={{color:ink,fontSize:14,lineHeight:22}}>{data.explanation}</Text>}
    </View>}
   </View>
-  {chosen!==null&&<View style={{backgroundColor:'#fff',borderRadius:17,borderWidth:1,borderColor:'#dfe8db',padding:19,gap:12}}>
-   <Text style={{fontSize:12,fontWeight:'900',color:'#587b5c'}}>PRZYKŁADOWE ROZWIĄZANIE</Text>
-   <Text style={{fontSize:16,fontWeight:'800',color:ink,lineHeight:26}}>{data.example}</Text>
-   <Text style={{fontSize:14,color:gray,lineHeight:24}}>{data.explanation}</Text>
-  </View>}
-  {!!data.task&&<View style={{backgroundColor:'#f0f5ec',borderRadius:15,padding:19,gap:10}}>
-   <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Ćwiczenie po lekcji</Text>
-   <Text style={{color:gray,fontSize:15,lineHeight:24}}>{data.task}</Text>
-   <Text style={{color:'#68806b',fontSize:12}}>Możesz zapisać własny przykład, ale ważniejsze jest zrozumienie decyzji z zadania.</Text>
-  </View>}
+  {!!data.task&&!/^(W tym scenariuszu:|Zastosuj zasadę|Przygotuj własny plan|Powiedz Anielce)/i.test(data.task)&&
+   <View style={{backgroundColor:'#f0f5ec',borderRadius:13,padding:14,gap:6}}>
+    <Text style={{fontWeight:'900',fontSize:14,color:ink}}>Chcesz spróbować więcej?</Text>
+    <Text style={{color:gray,fontSize:14,lineHeight:22}}>{data.task}</Text>
+   </View>}
  </View>;
 }
