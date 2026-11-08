@@ -46,6 +46,10 @@ export default function ConstructionLesson({lesson,identity}:{lesson?:Constructi
  useEffect(()=>{setSelected(null)},[identity]);
  if(!lesson)return null;
  const quiz=lesson.roleplay;
+ const lessonIndex=Number((identity||'0').split('-').slice(-1)[0])||0;
+ const shift=quiz?.options?.length?lessonIndex%quiz.options.length:0;
+ const shuffled=(quiz?.options||[]).map((_,i)=>({answer:quiz.options[(i+shift)%quiz.options.length],original:(i+shift)%quiz.options.length}));
+ const choiceCorrect=selected!==null&&shuffled[selected]?.original===quiz.correct;
  const picture='/academy/illustrations/'+(['wejscie','bezpieczenstwo','narzedzia','placa','zgloszenie','koniec'].includes(lesson.scene)?lesson.scene:'wejscie')+'.svg';
  return <View style={{gap:17}}>
   <View style={{backgroundColor:'#e9f2e2',borderRadius:18,overflow:'hidden',borderWidth:1,borderColor:'#d5e8ce'}}>
@@ -111,11 +115,11 @@ export default function ConstructionLesson({lesson,identity}:{lesson?:Constructi
   {!!quiz&&<View style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
    <Text style={{fontSize:12,color:'#bfe6b0',fontWeight:'900',letterSpacing:1}}>Z ŻYCIA BUDOWY · MAŁA SYMULACJA</Text>
    <Text style={{fontSize:20,color:'white',fontWeight:'900',lineHeight:28}}>{quiz.question}</Text>
-   {quiz.options.map((answer,i)=><Pressable key={i} onPress={()=>setSelected(i)} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(i===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(i===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
+   {shuffled.map(({answer,original},i)=><Pressable key={i} onPress={()=>setSelected(i)} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
     <Text style={{color:ink,fontWeight:'800',lineHeight:21}}>{String.fromCharCode(65+i)}. {answer}</Text>
    </Pressable>)}
-   {selected!==null&&<View style={{backgroundColor:selected===quiz.correct?'#d4ead2':'#fff0d9',padding:13,borderRadius:11}}>
-    <Text style={{color:ink,fontWeight:'900'}}>{selected===quiz.correct?'Świetnie — to bezpieczna odpowiedź.':'Spróbuj jeszcze raz. To ważne.'}</Text>
+   {selected!==null&&<View style={{backgroundColor:choiceCorrect?'#d4ead2':'#fff0d9',padding:13,borderRadius:11}}>
+    <Text style={{color:ink,fontWeight:'900'}}>{choiceCorrect?'Świetnie — to bezpieczna odpowiedź.':'Spróbuj jeszcze raz. To ważne.'}</Text>
     <Text style={{color:'#4e5f4d',marginTop:5,lineHeight:21}}>{quiz.why}</Text>
    </View>}
   </View>}
