@@ -3,72 +3,144 @@ import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator} from 'react-
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
-type Lesson={lesson_no:number,title_pl:string,material:{raw?:string[],shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}};
+import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
+type Lesson={
+ lesson_no:number,title_pl:string,
+ material:{raw?:string[],construction?:ConstructionMaterial,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
+};
+type NoteState=Record<string,string>;
+const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
- const {course}=useLocalSearchParams<{course:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
- const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),[notes,setNotes]=useState(''),[module,setModule]=useState(0),[user,setUser]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),[courseNote,setCourseNote]=useState(''),[reviewStatus,setReviewStatus]=useState(''),[busy,setBusy]=useState(true);
- useEffect(()=>{void (async()=>{
+ const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
+ [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
+ [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false);
+ useEffect(()=>{let active=true;(async()=>{
+  setBusy(true);setError('');
   try{
-   const {data:{user:u}}=await supabase.auth.getUser();
-   if(!u){router.replace('/konto');return;}
-   setUser(u.id);
-   const {data:e}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
-   if(!e?.length){setError('Nie masz aktywnego dostępu do tego kursu. Odbierz prezent, darmowy kurs albo poproś administratora o symulację zakupu.');return;}
-   const [{data:l,error:le},{data:d},{data:p},{data:guide}]=await Promise.all([
-    supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no'),
+   if(!slug)throw new Error('Wybierz kurs z listy.');
+   const {data:{user:u},error:ue}=await supabase.auth.getUser();
+   if(ue||!u){router.replace('/konto');return;}
+   const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
+   if(ee)throw ee;
+   if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
+   const [lessons,draft,progress]=await Promise.all([
+    supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no',{ascending:true}),
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
-    supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
-    supabase.from('ta_course_previews').select('editorial_note,review_status').eq('course_slug',slug).maybeSingle()]);
-   if(le)throw le;
-   setItems(l||[]);setDone((p||[]).map(v=>v.lesson_no));
-   if(guide){setCourseNote(guide.editorial_note||'');setReviewStatus(guide.review_status||'');}
-   if(d){setModule(d.last_module);setNotes(String(d.notes?.text||''));}
-  }catch(e:any){setError(e.message||'Nie udało się pobrać materiałów.');}
-  finally{setBusy(false);}
- })()},[slug]);
- async function save(mark=false){
-  try{
-   if(!user)return;
-   const {error:e}=await supabase.from('ta_drafts').upsert({user_id:user,course_slug:slug,last_module:module,notes:{text:notes},updated_at:new Date().toISOString()},{onConflict:'user_id,course_slug'});
-   if(e)throw e;
-   if(mark){
-    const {error:pe}=await supabase.from('ta_learning_progress').upsert({user_id:user,course_slug:slug,lesson_no:module},{onConflict:'user_id,course_slug,lesson_no'});
-    if(pe)throw pe;
-    setDone(prev=>Array.from(new Set([...prev,module])));
+    supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug)
+   ]);
+   if(lessons.error||draft.error||progress.error)throw lessons.error||draft.error||progress.error;
+   const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
+   if(active){
+    setUserId(u.id);setItems(all);setDone(completed);
+    const state=draft.data?.notes||{};
+    setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
+    const resume=draft.data?.last_module;
+    const next=all.find(v=>v.lesson_no===resume)?resume:all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all[0]?.lesson_no??0;
+    setModule(next);
    }
-   setMsg(mark?'Lekcja ukończona — zapisano postęp.':'Notatki zapisane.');
-  }catch(e:any){setMsg(e.message||'Nie udało się zapisać.');}
+  }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
+  finally{if(active)setBusy(false);}
+ })();return()=>{active=false};},[slug]);
+ const lesson=items.find(x=>x.lesson_no===module),index=items.findIndex(x=>x.lesson_no===module);
+ const completed=items.filter(x=>done.includes(x.lesson_no)).length;
+ const progress=items.length?Math.round(completed/items.length*100):0;
+ const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
+ const currentNotes=notes[String(module)]||'';
+ function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setMsg('');}}
+ async function persistDraft(target:number,noteState:NoteState){
+  if(!userId)return;
+  const {error:e}=await supabase.from('ta_drafts').upsert({
+   user_id:userId,course_slug:slug,last_module:target,notes:{byLesson:noteState},
+   updated_at:new Date().toISOString()
+  },{onConflict:'user_id,course_slug'});
+  if(e)throw e;
  }
- const lesson=items.find(l=>l.lesson_no===module),progress=items.length?Math.round(done.length/items.length*100):0;
- return <ScrollView style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{padding:22,maxWidth:850,alignSelf:'center',width:'100%'}}>
-  <Pressable onPress={()=>router.push('/moje-kursy')}><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
-  <Text style={{fontSize:31,fontWeight:'900',color:'#173d30',marginVertical:16}}>Moja nauka</Text>
-  <Text style={{color:'#526c59',marginBottom:14}}>Uczysz się na prawdziwych przykładach. Każde ćwiczenie potraktuj jako próbę zrozumienia sytuacji, a nie przepis odpowiedni dla wszystkich. Szanuj bezpieczeństwo, granice i indywidualne potrzeby innych osób.</Text>
-  {!!courseNote&&<View style={{backgroundColor:'#edf4e6',padding:16,borderRadius:13,marginBottom:18,gap:7}}>
-   <Text style={{fontWeight:'900',color:'#173d30'}}>Wspólne zasady tego kursu</Text>
-   <Text style={{color:'#47634d',lineHeight:22}}>{courseNote}</Text>
-   {reviewStatus!=='approved'&&<Text style={{color:'#80612d',fontSize:12}}>Wersja edukacyjna do testów — lekcje mogą jeszcze zostać poprawione przez redakcję.</Text>}
-  </View>}
-  {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a12626',marginBottom:15}}>{error}</Text>}
+ async function saveNotes(){
+  if(saving||!userId)return;setSaving(true);setMsg('');
+  try{await persistDraft(module,notes);setMsg('Notatki zapisane.');}
+  catch(e:any){setMsg('Nie udało się zapisać notatek: '+(e?.message||'błąd sieci'));}
+  finally{setSaving(false);}
+ }
+ async function finishLesson(){
+  if(saving||!userId||!lesson)return;
+  setSaving(true);setMsg('');
+  try{
+   if(!done.includes(module)){
+    // Postęp zapisujemy NAJPIERW. Brak zapisu notatek nie może odebrać ukończenia lekcji.
+    const {error:pe}=await supabase.from('ta_learning_progress').upsert({
+     user_id:userId,course_slug:slug,lesson_no:module
+    },{onConflict:'user_id,course_slug,lesson_no'});
+    if(pe)throw pe;
+    setDone(prev=>prev.includes(module)?prev:[...prev,module]);
+   }
+   const target=next??module;
+   try{await persistDraft(target,notes);}
+   catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
+   if(next!==undefined){setModule(next);setMsg(prev=>prev||'Brawo! Lekcja ukończona. Przechodzisz do następnej.');}
+   else setMsg('Brawo! Ukończono ostatnią lekcję tego kursu. Możesz wrócić do dowolnego tematu.');
+  }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
+  finally{setSaving(false);}
+ }
+ return <ScrollView style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:18,paddingTop:25,paddingBottom:65,maxWidth:860,alignSelf:'center',width:'100%'}}>
+  <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
+  <Text style={{fontSize:31,fontWeight:'900',color:ink,marginTop:15,marginBottom:9}}>Moja nauka</Text>
+  {busy&&<ActivityIndicator size="large"/>}
+  {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
+  {!!items.length&&<>
+   <View style={{backgroundColor:'#eaf3e4',padding:17,borderRadius:15,marginTop:12,marginBottom:18}}>
+    <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
+     <Text style={{color:ink,fontWeight:'900'}}>Twój postęp</Text>
+     <Text style={{fontSize:19,fontWeight:'900',color:ink}}>{progress}%</Text>
+    </View>
+    <View style={{height:9,backgroundColor:'#cfddca',borderRadius:9,marginTop:10,overflow:'hidden'}}>
+     <View style={{height:9,width:progress+'%',backgroundColor:'#7cae6e'}}/>
+    </View>
+    <Text style={{fontSize:12,color:secondary,marginTop:9}}>Ukończono {completed} z {items.length} lekcji. Możesz wrócić do każdej lekcji.</Text>
+   </View>
+   <Text style={{fontWeight:'900',fontSize:16,color:ink,marginBottom:10}}>Wybierz lekcję</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:18}}>
+    {items.map((v,i)=><Pressable key={v.lesson_no} onPress={()=>changeModule(v.lesson_no)} style={{minWidth:38,paddingVertical:10,paddingHorizontal:11,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#fff',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+     <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':''}{i+1}</Text>
+    </Pressable>)}
+   </View>
+   {progress===100&&<View style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
+    <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Wszystkie lekcje ukończone! 🎉</Text>
+    <Text style={{color:secondary,marginTop:6}}>Możesz wrócić do materiałów albo kontynuować z innym kursem.</Text>
+   </View>}
+  </>}
   {!!lesson&&<>
-    <Text style={{color:'#53765b'}}>Lekcja {module+1} z {items.length} · Ukończono {done.length}/{items.length} ({progress}%)</Text>
-    <View style={{height:8,backgroundColor:'#e1e9dc',borderRadius:10,overflow:'hidden',marginTop:12}}><View style={{height:8,width:progress+'%',backgroundColor:'#83b978'}}/></View>
-    <Text style={{color:'#173d30',fontSize:26,fontWeight:'800',marginVertical:25}}>{lesson.title_pl}</Text>
-    <View style={{backgroundColor:'white',borderRadius:18,padding:23,borderWidth:1,borderColor:'#dde9d7'}}>
-     {(lesson.material?.raw||[]).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26,marginBottom:15}}>{line}</Text>)}
-    </View>
-    <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references}/>
-    <Text style={{marginTop:25,fontWeight:'800',color:'#173d30'}}>Twoje notatki</Text>
-    <TextInput multiline placeholder="Zapisz swoje przemyślenia…" value={notes} onChangeText={setNotes} style={{backgroundColor:'white',borderColor:'#dde9d7',borderWidth:1,borderRadius:12,padding:15,minHeight:120,marginTop:8,textAlignVertical:'top'}}/>
-    <View style={{flexDirection:'row',gap:10,flexWrap:'wrap',marginTop:15}}>
-     <Pressable onPress={()=>save(false)} style={{padding:15,borderRadius:12,backgroundColor:'#e3ecd9'}}><Text style={{color:'#173d30',fontWeight:'800'}}>Zapisz notatki</Text></Pressable>
-     <Pressable onPress={()=>save(true)} style={{padding:15,borderRadius:12,backgroundColor:'#173d30'}}><Text style={{color:'white',fontWeight:'800'}}>Oznacz jako ukończoną</Text></Pressable>
-    </View>
-    <View style={{flexDirection:'row',justifyContent:'space-between',marginVertical:24}}>
-     <Pressable disabled={module===0} onPress={()=>{setModule(m=>m-1);setMsg('')}}><Text style={{fontWeight:'800',color:module===0?'#a0aba2':'#173d30'}}>← Poprzednia</Text></Pressable>
-     <Pressable disabled={module>=items.length-1} onPress={()=>{setModule(m=>m+1);setMsg('')}}><Text style={{fontWeight:'800',color:module>=items.length-1?'#a0aba2':'#173d30'}}>Następna →</Text></Pressable>
-    </View>
-   </>}
-  {!!msg&&<Text style={{color:'#35613c',marginBottom:20}}>{msg}</Text>}
+   <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
+   <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
+   {lesson.material?.construction?
+     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction}/>:
+     <>
+      <View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
+       {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/^Źródło:|^Status nauczania w Polsce:|^Wersja edukacyjna|^Historia i praktyczne znaczenie: Nie ma jednolitego/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
+      </View>
+      <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references}/>
+     </>
+   }
+   <View style={{marginTop:23,gap:9}}>
+    <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Moje notatki do tej lekcji</Text>
+    <TextInput multiline value={currentNotes} onChangeText={text=>setNotes(prev=>({...prev,[String(module)]:text}))} placeholder="Co zapamiętasz? Zapisz własny przykład…" style={{backgroundColor:'white',borderColor:line,borderWidth:1,borderRadius:13,padding:15,minHeight:95,textAlignVertical:'top'}}/>
+    <Pressable disabled={saving} onPress={saveNotes} style={{padding:13,backgroundColor:'#e2eddc',borderRadius:11,alignItems:'center',opacity:saving?0.55:1}}>
+     <Text style={{color:ink,fontWeight:'800'}}>Zapisz notatki</Text>
+    </Pressable>
+   </View>
+   <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':next!==undefined?'Ukończ lekcję i przejdź dalej →':'Zakończ kurs ✓'}</Text>
+   </Pressable>
+   <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:19,gap:12}}>
+    <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
+     <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
+    </Pressable>
+    <Pressable disabled={next===undefined} onPress={()=>next!==undefined&&changeModule(next)} style={{padding:11,opacity:next===undefined?0.4:1}}>
+     <Text style={{fontWeight:'800',color:ink}}>Pomiń na razie →</Text>
+    </Pressable>
+   </View>
+  </>}
+  {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#eaf2e0'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
  </ScrollView>;
 }
