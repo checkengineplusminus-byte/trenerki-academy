@@ -14,7 +14,7 @@ const ink='#173e2d';
 const mapError=(code:string)=>({
  course_not_owned:'Nie masz aktualnego dostępu do tego kursu.',
  lessons_incomplete:'Ukończ wymagane lekcje przed egzaminem.',
- ai_not_configured:'Egzamin Anielki czeka na konfigurację dostawcy AI. Nie wydajemy dyplomów bez ocenienia odpowiedzi.',
+ ai_not_configured:'Egzamin jest chwilowo niedostępny. Spróbuj ponownie.',
  grader_unavailable:'Nie udało się bezpiecznie ocenić odpowiedzi. Nie zaliczono jej ani nie odjęto próby. Spróbuj ponownie.',
  answer_too_short:'Odpowiedz własnymi zdaniami, opisując działanie i kontrolę wyniku (minimum 20 znaków).',
  invalid_holder_name:'Wpisz prawdziwe imię i nazwisko, które powinno widnieć na dyplomie.',
@@ -28,7 +28,7 @@ const mapError=(code:string)=>({
 export default function FinalExam({courseSlug}:{courseSlug:string}){
  const router=useRouter();
  const [loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[state,setState]=useState('ready');
- const [available,setAvailable]=useState(false),[name,setName]=useState(''),[consent,setConsent]=useState(false);
+ const [available,setAvailable]=useState(false),[name,setName]=useState('');
  const [answer,setAnswer]=useState(''),[question,setQuestion]=useState(''),[phase,setPhase]=useState('practice');
  const [correct,setCorrect]=useState(0),[wrong,setWrong]=useState(0),[history,setHistory]=useState<History[]>([]);
  const [message,setMessage]=useState(''),[error,setError]=useState(''),[cert,setCert]=useState<Cert|null>(null);
@@ -67,7 +67,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  }
  useEffect(()=>{void refresh();},[courseSlug]);
  async function start(){
-  if(!consent||busy)return;
+  if(busy||name.trim().length<3)return;
   setBusy(true);setError('');setMessage('');
   try{const r=await call('start',{holder_name:name.trim()});apply(r);}
   catch(e:any){setError(e.message||'Nie udało się rozpocząć egzaminu.');}
@@ -97,23 +97,20 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  return <View style={{marginTop:25,padding:20,backgroundColor:'#e7f2e1',borderRadius:19,borderWidth:1,borderColor:'#cde5c6',gap:13}}>
   <Text style={{color:'#668466',fontSize:12,fontWeight:'900'}}>ETAP KOŃCOWY · OSOBNY OD POSTĘPU LEKCJI</Text>
   <Text style={{color:ink,fontWeight:'900',fontSize:24}}>Egzamin z Anielką</Text>
-  <Text style={{color:'#516e58',lineHeight:23}}>Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. W razie pomyłki dostaniesz jeszcze jedną szansę. Przy aktywnym modelu AI Anielka ocenia wyjaśnienia własnymi słowami; gdy dostawca nie jest dostępny, bezpieczny tryb pytań wyboru pozwala zdać egzamin bez utraty postępów. Dyplom wystawia wyłącznie serwer.</Text>
+  <Text style={{color:'#516e58',lineHeight:23}}>Sprawdzimy, czego nauczyłeś się podczas kursu. Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. Jeżeli się pomylisz, dostaniesz jeszcze jedną szansę. Po zaliczeniu otrzymasz autorski dyplom z imieniem, nazwiskiem i datą ukończenia.</Text>
   {loading&&<ActivityIndicator color={ink}/>}
   {!loading&&state==='ready'&&<View style={{gap:12}}>
-   {!available?<Text style={{color:'#8b5941',lineHeight:22}}>Egzamin nie jest obecnie aktywny. Serwer AI nie jest jeszcze skonfigurowany; nie wystawiamy automatycznych dyplomów bez ocenienia odpowiedzi.</Text>:<>
+   {!available?<Text style={{color:'#8b5941',lineHeight:22}}>Egzamin jest chwilowo niedostępny. Twoja dotychczasowa nauka pozostaje zapisana.</Text>:<>
     <Text style={{fontWeight:'900',color:ink}}>Imię i nazwisko na dyplomie</Text>
     <TextInput value={name} maxLength={120} onChangeText={setName} placeholder="Imię i nazwisko" style={{backgroundColor:'white',color:ink,borderColor:'#b8d3b7',borderWidth:1,borderRadius:11,padding:13,fontSize:16}}/>
     <Text style={{fontSize:12,color:'#647b69',lineHeight:20}}>Dane na dokumencie są deklarowane przez użytkownika; nie stanowią potwierdzenia tożsamości.</Text>
-    <Pressable accessibilityRole="checkbox" accessibilityState={{checked:consent}} onPress={()=>setConsent(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start'}}>
-     <Text style={{fontSize:20,color:ink}}>{consent?'☑':'☐'}</Text>
-     <Text style={{flex:1,color:'#45664f',lineHeight:21,fontSize:13}}>Zgadzam się przekazać moje odpowiedzi do dostawcy modelu AI w celu ich oceny. Nie wpisuję danych innych osób ani haseł. Zapoznałem/am się z zasadami dyplomów i polityką prywatności.</Text>
-    </Pressable>
-    {button('Rozpocznij egzamin',start,!consent||busy||name.trim().length<3)}
+>
+    {button('Rozpocznij egzamin',start,busy||name.trim().length<3)}
    </>}
   </View>}
   {!loading&&state==='in_progress'&&<View style={{gap:13}}>
    <Text style={{fontSize:14,fontWeight:'900',color:ink}}>Poprawne odpowiedzi: {correct}/5 · Błędy: {wrong}</Text>
-   <Text style={{color:'#4f7455',fontSize:12,fontWeight:'800'}}>{gradingMode==='choice'?'Tryb bezpiecznego egzaminu z pytaniami wyboru · wynik sprawdza serwer':'Rozmowa egzaminacyjna z Anielką · AI ocenia wyjaśnienia'}</Text>
+   <Text style={{color:'#4f7455',fontSize:12,fontWeight:'800'}}>{gradingMode==='choice'?'Pytania jednokrotnego wyboru':'Odpowiedzi własnymi słowami'}</Text>
    <View style={{height:9,backgroundColor:'#cadec4',borderRadius:7,overflow:'hidden'}}><View style={{height:9,width:Math.min(100,correct/5*100)+'%',backgroundColor:'#72ae79'}}/></View>
    {phase==='final'&&<Text style={{fontWeight:'900',color:'#316d42'}}>Gratulacje! Pięć poprawnych odpowiedzi — ostatnie pytanie przed zaliczeniem.</Text>}
    {phase==='extra'&&<Text style={{fontWeight:'900',color:'#98682b'}}>To dodatkowa szansa po pytaniu finałowym. Zastanów się dokładnie.</Text>}
@@ -135,13 +132,13 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
    <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/>}
    {button(busy?'Sprawdzanie odpowiedzi…':'Zatwierdź odpowiedź',send,busy||(gradingMode==='choice'?selectedOption===null:answer.trim().length<20))}
    {gradingMode==='oral'&&<Pressable accessibilityRole="button" onPress={switchMode} disabled={busy} style={{padding:13,backgroundColor:'#f2f7ec',borderRadius:11,borderWidth:1,borderColor:'#c9ddc4'}}>
-    <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>Problemy z agentem AI? Przejdź na serwerowy test wiedzy bez utraty odpowiedzi</Text>
+    <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>Wolę pytania jednokrotnego wyboru — zachowaj mój postęp</Text>
    </Pressable>}
   </View>}
   {!loading&&state==='failed'&&<View style={{gap:12}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Tym razem nie udało się zaliczyć.</Text>
    <Text style={{color:'#526c55',lineHeight:22}}>Wróć do trudnych tematów i wykonaj nowe podejście. Wynik tej próby został zapisany.</Text>
-   {button('Spróbuj jeszcze raz',()=>{setState('ready');setHistory([]);setConsent(false);setCorrect(0);setWrong(0);},busy)}
+   {button('Spróbuj jeszcze raz',()=>{setState('ready');setHistory([]);setCorrect(0);setWrong(0);},busy)}
   </View>}
   {!loading&&state==='passed'&&<View style={{gap:12}}>
    <Text style={{color:'#205c35',fontWeight:'900',fontSize:19}}>Gratulacje! Zaliczyłeś egzamin.</Text>
