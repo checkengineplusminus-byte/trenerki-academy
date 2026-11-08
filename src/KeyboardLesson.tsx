@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {View,Text,Pressable,TextInput,Platform} from 'react-native';
+import {View,Text,Pressable,TextInput,Platform,useWindowDimensions} from 'react-native';
 import SoftwarePlayground from './SoftwarePlayground';
 import HandsOnLab from './HandsOnLab';
 
@@ -73,6 +73,7 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
  identity?:string;onPracticed?:(verified:boolean)=>void;onAttempt?:(index:number,correct:boolean,activeCombo?:string,selectedCombo?:string)=>Promise<boolean>|boolean;
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
+ const {width}=useWindowDimensions(),mobile=width<650;
  const [active,setActive]=useState<KeyboardShortcut|null>(null);
  const [runId,setRunId]=useState(0);
  const [command,setCommand]=useState(''),[feedback,setFeedback]=useState(''),[listening,setListening]=useState(false),[quizAnswer,setQuizAnswer]=useState<number|null>(null),[quizVerifying,setQuizVerifying]=useState(false),[quizConfirmed,setQuizConfirmed]=useState(false),[quizError,setQuizError]=useState('');
@@ -119,25 +120,39 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
  }
 
  return <View style={{gap:16,marginTop:19}}>
-  <View style={{backgroundColor:'#e1efcf',borderRadius:15,padding:18,gap:8}}>
-   <Text style={{color:ink,fontSize:23,fontWeight:'900'}}>Sprawdź to samodzielnie ⌨️</Text>
-   <Text style={{color:secondary,lineHeight:22}}>Wybierz skrót, zobacz jak zmienia się przykładowy dokument albo rysunek i powtórz to w swoim programie. Tutaj ćwiczysz bez ryzyka dla prawdziwych plików.</Text>
+  <View style={{backgroundColor:'#e1efcf',borderRadius:14,padding:mobile?13:18,gap:6}}>
+   <Text style={{color:ink,fontSize:mobile?19:23,fontWeight:'900'}}>Wypróbuj polecenie na ekranie</Text>
+   <Text style={{color:secondary,lineHeight:22,fontSize:14}}>Dotknij przycisku, zobacz wynik, a potem odpowiedz na krótkie pytanie. Klawiatura nie jest potrzebna.</Text>
+  </View>
+  <View style={{gap:7}}>
+   <Text style={{fontSize:13,fontWeight:'900',color:ink}}>1. Wybierz i uruchom polecenie</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+    {valid.map((item,i)=><Pressable key={item.combo+'-'+i} accessibilityRole="button"
+     onPress={()=>run(item)}
+     style={{minHeight:48,justifyContent:'center',backgroundColor:active?.combo===item.combo?ink:'#e8f2e4',borderRadius:10,paddingVertical:10,paddingHorizontal:12,borderWidth:1,borderColor:active?.combo===item.combo?ink:'#c9ddc5'}}>
+     <Text style={{fontWeight:'900',fontSize:13,color:active?.combo===item.combo?'white':ink}}>{item.combo}</Text>
+    </Pressable>)}
+   </View>
   </View>
   {(mode==='excel'||mode==='cad')?<HandsOnLab key={identity||mode} mode={mode} active={active} runId={runId}/>:<SoftwarePlayground mode={mode} active={active}/>}
-  {aliases&&<View style={{backgroundColor:'#f5f8f1',padding:16,borderRadius:13,gap:8}}>
+  {aliases&&!mobile&&<View style={{backgroundColor:'#f5f8f1',padding:16,borderRadius:13,gap:8}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Wpisz polecenie AutoCAD i naciśnij Enter</Text>
    <TextInput value={command} autoCapitalize="characters" onChangeText={setCommand} onSubmitEditing={runCommand} returnKeyType="done" placeholder="Np. L, C, REC, PL…" style={{borderWidth:1,borderColor:'#bdcfba',borderRadius:10,padding:13,backgroundColor:'white',color:ink,fontWeight:'800'}}/>
    <Pressable onPress={runCommand} style={{padding:13,backgroundColor:ink,borderRadius:10}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Enter ↵ · Wykonaj komendę</Text></Pressable>
   </View>}
-  <Pressable onPress={()=>setListening(v=>!v)} style={{backgroundColor:listening?'#e1f3d7':'#f0f2eb',padding:14,borderRadius:12,borderWidth:1,borderColor:listening?'#78b271':'#d8e3d4'}}>
+  {!mobile&&<Pressable onPress={()=>setListening(v=>!v)} style={{backgroundColor:listening?'#e1f3d7':'#f0f2eb',padding:14,borderRadius:12,borderWidth:1,borderColor:listening?'#78b271':'#d8e3d4'}}>
    <Text style={{color:ink,fontWeight:'900'}}>{listening?'● Nasłuchiwanie skrótów aktywne — wyłącz':'⌨ Włącz wykrywanie skrótów z klawiatury'}</Text>
-   <Text style={{color:secondary,fontSize:12,marginTop:6}}>Działa w przeglądarce, jeśli system lub przeglądarka nie przechwyci kombinacji. Przycisk „Wykonaj” działa niezależnie.</Text>
-  </Pressable>
+   <Text style={{color:secondary,fontSize:12,marginTop:6}}>Opcjonalne. Możesz też użyć przycisków na ekranie.</Text>
+  </Pressable>}
   {!!feedback&&<Text style={{backgroundColor:'#eaf5e2',padding:11,borderRadius:9,color:ink}}>{feedback}</Text>}
-  {active&&<Text style={{color:secondary,fontSize:13,lineHeight:21}}>Po wykonaniu polecenia sprawdź jego efekt w warsztacie powyżej. Krótki sprawdzian znajduje się pod listą poleceń.</Text>}
-  {valid.map((item,i)=><ShortcutCard key={item.combo+'-'+i} item={item} index={i} onRun={run} active={active===item}/>)}
-  {active&&answerOptions.length>=3&&<View style={{backgroundColor:'#193b2d',padding:19,borderRadius:15,gap:11}}>
-    <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ, CZY ROZUMIESZ</Text>
+  {active&&<View style={{backgroundColor:'#eef5e9',borderRadius:12,padding:12,gap:5}}>
+    <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Wykonano: {active.combo} · {active.label}</Text>
+    <Text style={{color:secondary,lineHeight:22,fontSize:13}}>{active.after}</Text>
+   </View>}
+  {!mobile&&active&&<ShortcutCard item={active} index={valid.findIndex(x=>x.combo===active.combo)} onRun={run} active={true}/>}
+  {!active&&<Text style={{color:secondary,lineHeight:20,fontSize:13}}>Wybierz pierwszy przycisk powyżej. Nie musisz szukać polecenia na klawiaturze.</Text>}
+  {active&&answerOptions.length>=3&&<View style={{backgroundColor:'#193b2d',padding:mobile?14:19,borderRadius:15,gap:11}}>
+    <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>2. SPRAWDŹ WIEDZĘ</Text>
     <Text style={{fontWeight:'900',color:'white',fontSize:18,lineHeight:26}}>Które polecenie daje taki efekt: {active.after}?</Text>
     {answerOptions.map((option,i)=><Pressable key={option.combo} disabled={quizVerifying||quizConfirmed} onPress={()=>void verifyShortcut(option,i)} style={{padding:13,borderRadius:10,backgroundColor:quizAnswer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
       <Text style={{color:ink,fontWeight:'800'}}>{String.fromCharCode(65+i)}. {option.combo} — {option.label}</Text>
@@ -145,11 +160,11 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
     {!!quizError&&<Text style={{color:'#ffe2ac',fontWeight:'800',lineHeight:21}}>{quizError}</Text>}
     {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{quizConfirmed?'Wynik potwierdzony. Teraz możesz zaliczyć lekcję.':answerOptions[quizAnswer]?.combo===active.combo?'Poprawnie — zapisuję wynik…':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
   </View>}
-  {!!tips?.length&&<View style={{backgroundColor:'#edf5e9',borderRadius:15,padding:18,gap:8}}>
+  {!!tips?.length&&!mobile&&<View style={{backgroundColor:'#edf5e9',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>Małe triki</Text>
    {tips.map((t,i)=><Text key={i} style={{color:secondary,lineHeight:22}}>• {t}</Text>)}
   </View>}
-  {!!exercise&&<View style={{backgroundColor:ink,borderRadius:15,padding:19}}>
+  {!!exercise&&!mobile&&<View style={{backgroundColor:ink,borderRadius:15,padding:19}}>
    <Text style={{color:'#d8efb9',fontWeight:'900',fontSize:12}}>TWOJE ĆWICZENIE</Text>
    <Text style={{color:'white',marginTop:8,lineHeight:24,fontWeight:'700'}}>{exercise}</Text>
   </View>}
