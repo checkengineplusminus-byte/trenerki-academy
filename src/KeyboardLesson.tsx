@@ -131,6 +131,7 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
      onPress={()=>run(item)}
      style={{minHeight:48,justifyContent:'center',backgroundColor:active?.combo===item.combo?ink:'#e8f2e4',borderRadius:10,paddingVertical:10,paddingHorizontal:12,borderWidth:1,borderColor:active?.combo===item.combo?ink:'#c9ddc5'}}>
      <Text style={{fontWeight:'900',fontSize:13,color:active?.combo===item.combo?'white':ink}}>{item.combo}</Text>
+     <Text numberOfLines={2} style={{color:active?.combo===item.combo?'#e0efdb':'#526c5b',fontWeight:'700',fontSize:11,maxWidth:105,marginTop:3}}>{item.label}</Text>
     </Pressable>)}
    </View>
   </View>
@@ -160,9 +161,17 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
     {!!quizError&&<Text style={{color:'#ffe2ac',fontWeight:'800',lineHeight:21}}>{quizError}</Text>}
     {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{quizConfirmed?'Wynik potwierdzony. Teraz możesz zaliczyć lekcję.':answerOptions[quizAnswer]?.combo===active.combo?'Poprawnie — zapisuję wynik…':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
   </View>}
+  {!!tips?.length&&mobile&&<View style={{backgroundColor:'#edf5e9',borderRadius:12,padding:13,gap:6}}>
+   <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Praktyczny trik</Text>
+   {tips.slice(0,2).map((tip,i)=><Text key={i} style={{color:secondary,lineHeight:21,fontSize:13}}>• {tip}</Text>)}
+  </View>}
   {!!tips?.length&&!mobile&&<View style={{backgroundColor:'#edf5e9',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>Małe triki</Text>
    {tips.map((t,i)=><Text key={i} style={{color:secondary,lineHeight:22}}>• {t}</Text>)}
+  </View>}
+  {!!exercise&&mobile&&<View style={{backgroundColor:'#f1f5ed',borderRadius:12,padding:13,gap:5}}>
+   <Text style={{color:ink,fontSize:13,fontWeight:'900'}}>Spróbuj dodatkowo</Text>
+   <Text style={{color:secondary,fontSize:13,lineHeight:21}}>{exercise}</Text>
   </View>}
   {!!exercise&&!mobile&&<View style={{backgroundColor:ink,borderRadius:15,padding:19}}>
    <Text style={{color:'#d8efb9',fontWeight:'900',fontSize:12}}>TWOJE ĆWICZENIE</Text>
