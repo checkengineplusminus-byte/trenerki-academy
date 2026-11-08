@@ -4,67 +4,30 @@
   "courses": [
     {
       "id": "angielski-na-budowie",
-      "title": "Angielski na budowie — rozmawiaj bez stresu",
+      "title": "Angielski na budowie — od zera, krok po kroku",
       "price": 149,
       "emoji": "🇬🇧",
       "accent": "#E3EDF5",
       "cat": "Języki na budowie",
-      "short": "Praktyczny angielski podczas odpraw, dostaw, pomiarów i ustalania bezpieczeństwa — z tłumaczeniem, wymową i przykładami z prawdziwej budowy.",
+      "short": "Od Hello i alfabetu po pracę w Wielkiej Brytanii: CSCS, site induction, podstawowe narzędzia, pytania, prawa pracownika i zamknięcie dnia.",
       "flag": "Nowy kurs",
-      "duration": "Własne tempo",
-      "level": "Praktyczny",
+      "duration": "12 lekcji",
+      "level": "Od zera · A0",
       "outline": [
-        "Dzień dobry na budowie",
-        "Narzędzia i materiały",
-        "Wymiary i rysunki",
-        "Bezpieczeństwo i wyposażenie",
-        "Dostawy i rozładunek",
-        "Harmonogram i opóźnienia",
-        "Problemy i poprawki",
-        "Odbiór i raport"
+        "Od zera — alfabet i pierwsze słowa w pracy",
+        "Pierwszy dzień — wejście, CSCS i instruktaż",
+        "Plan budowy — wejście, toaleta, wyjście",
+        "Bezpieczeństwo — PPE, RAMS i site induction",
+        "Poznaj ekipę — pytania zwykłego pracownika",
+        "Narzędzia i materiały po angielsku",
+        "Liczby, wymiary i godziny pracy",
+        "W codziennej pracy — pytaj, proś, potwierdzaj",
+        "STOP — zagrożenia i numer alarmowy",
+        "Prawa pracownika — stawki, umowa, payslip",
+        "Opóźnienia, rysunki i brak materiału",
+        "Zakończenie zmiany i raport"
       ],
-      "lesson_scenarios": [
-        {
-          "title": "Dzień dobry na budowie",
-          "scenario": "Good morning. I'm the site supervisor.",
-          "advice": "Dzień dobry. Jestem kierownikiem prac."
-        },
-        {
-          "title": "Narzędzia i materiały",
-          "scenario": "We need a drill, anchors and a tape measure.",
-          "advice": "Potrzebujemy wiertarki, kotew i miarki."
-        },
-        {
-          "title": "Wymiary i rysunki",
-          "scenario": "Please check the latest drawing revision.",
-          "advice": "Sprawdź najnowszą rewizję rysunku."
-        },
-        {
-          "title": "Bezpieczeństwo i wyposażenie",
-          "scenario": "Stop work. The area is not safe.",
-          "advice": "Wstrzymaj pracę. To miejsce nie jest bezpieczne."
-        },
-        {
-          "title": "Dostawy i rozładunek",
-          "scenario": "The delivery will arrive on Thursday.",
-          "advice": "Dostawa przyjedzie w czwartek."
-        },
-        {
-          "title": "Harmonogram i opóźnienia",
-          "scenario": "This task is delayed by two days.",
-          "advice": "To zadanie jest opóźnione o dwa dni."
-        },
-        {
-          "title": "Problemy i poprawki",
-          "scenario": "There is a difference between the drawing and the site.",
-          "advice": "Jest rozbieżność między rysunkiem a budową."
-        },
-        {
-          "title": "Odbiór i raport",
-          "scenario": "Please confirm the completed work in writing.",
-          "advice": "Potwierdź wykonane prace na piśmie."
-        }
-      ],
+      "lesson_scenarios": [],
       "source_url": "https://www.hse.gov.uk/construction/",
       "editorial_note": "Nie zgaduj przy poleceniach bezpieczeństwa. Gdy nie rozumiesz instrukcji, poproś o tłumacza lub ponowne wyjaśnienie; słownik nie zastępuje szkolenia BHP.",
       "certificate_title_pl": "Ukończenie prywatnego kursu: Angielski na budowie — rozmawiaj bez stresu",
@@ -72,67 +35,30 @@
     },
     {
       "id": "norweski-na-budowie",
-      "title": "Norweski na budowie — język pracy w Norwegii",
+      "title": "Norweski na budowie — od zera do pierwszego dnia pracy",
       "price": 149,
       "emoji": "🇳🇴",
       "accent": "#DEEDE8",
       "cat": "Języki na budowie",
-      "short": "Zrozum norweskie odprawy, HMS, fremdrift, zamówienia, innfesting i odbiory. Krótkie zdania do używania codziennie na placu budowy.",
+      "short": "Od pierwszego «hei» przez kartę HMS i analizę SJA po narzędzia, wypłatę i bezpieczne zakończenie pracy. Praktyczny norweski dla każdego pracownika.",
       "flag": "Nowy kurs",
-      "duration": "Własne tempo",
-      "level": "Praktyczny",
+      "duration": "12 lekcji",
+      "level": "Od zera · A0",
       "outline": [
-        "Przedstaw się ekipie",
-        "Materiały i narzędzia",
-        "Rysunki i zmiany",
-        "HMS i bezpieczeństwo",
-        "Levering i lossing",
-        "Fremdrift og forsinkelse",
-        "Avvik og endring",
-        "Overtakelse i rapport"
+        "Zacznij od zera — alfabet i pierwsze słowa",
+        "Pierwszy dzień — wejście i karta HMS",
+        "Poznaj plac — wejście, toaleta, apteczka",
+        "HMS, SJA, SHA, KS — co oznaczają?",
+        "Ekipa — porozmawiaj jak zwykły pracownik",
+        "Narzędzia i materiały od podstaw",
+        "Liczby, godziny i wymiary",
+        "Dzień pracy — pytania, zadania, przerwy",
+        "STOP — zagrożenie i wezwanie pomocy",
+        "Twoje prawa, minimalne stawki i wypłata",
+        "Dostawy, zmiany i zgłaszanie problemów",
+        "Koniec zmiany — porządek i przekazanie"
       ],
-      "lesson_scenarios": [
-        {
-          "title": "Przedstaw się ekipie",
-          "scenario": "Hei, jeg er arbeidsleder på prosjektet.",
-          "advice": "Cześć, jestem kierownikiem robót przy tym projekcie."
-        },
-        {
-          "title": "Materiały i narzędzia",
-          "scenario": "Vi trenger skruer, drill og målebånd.",
-          "advice": "Potrzebujemy śrub, wiertarki i miarki."
-        },
-        {
-          "title": "Rysunki i zmiany",
-          "scenario": "Kan du sende siste revisjon av tegningen?",
-          "advice": "Możesz wysłać ostatnią rewizję rysunku?"
-        },
-        {
-          "title": "HMS i bezpieczeństwo",
-          "scenario": "Stopp arbeidet, det er ikke trygt her.",
-          "advice": "Wstrzymaj pracę, tutaj nie jest bezpiecznie."
-        },
-        {
-          "title": "Levering i lossing",
-          "scenario": "Leveransen kommer på torsdag. Hvor kan vi losse?",
-          "advice": "Dostawa przyjdzie w czwartek. Gdzie możemy rozładować?"
-        },
-        {
-          "title": "Fremdrift og forsinkelse",
-          "scenario": "Monteringen er forsinket med to dager.",
-          "advice": "Montaż jest opóźniony o dwa dni."
-        },
-        {
-          "title": "Avvik og endring",
-          "scenario": "Det er et avvik mellom tegning og utførelse.",
-          "advice": "Jest rozbieżność między rysunkiem i wykonaniem."
-        },
-        {
-          "title": "Overtakelse i rapport",
-          "scenario": "Kan du bekrefte dette skriftlig?",
-          "advice": "Możesz to potwierdzić na piśmie?"
-        }
-      ],
+      "lesson_scenarios": [],
       "source_url": "https://www.arbeidstilsynet.no/",
       "editorial_note": "W sprawach HMS, SJA, podnoszenia ładunków i pracy na wysokości stosuj aktualne wymagania norweskie; nauka języka nie zastępuje wymaganych kursów.",
       "certificate_title_pl": "Ukończenie prywatnego kursu: Norweski na budowie — język pracy w Norwegii",
@@ -140,67 +66,30 @@
     },
     {
       "id": "niemiecki-na-budowie",
-      "title": "Niemiecki na budowie — komunikacja od pierwszego dnia",
+      "title": "Niemiecki na budowie — od pierwszego słowa",
       "price": 149,
       "emoji": "🇩🇪",
       "accent": "#F0E6D9",
       "cat": "Języki na budowie",
-      "short": "Praktyczne zwroty dla ekip budowlanych: materiały, rysunki, rusztowania, dostawy, opóźnienia i zgłaszanie zagrożeń.",
+      "short": "Naucz się Hallo, ä ö ü ß, prostych pytań i pracy w Niemczech: instruktaż, PSA, narzędzia, wynagrodzenie i bezpieczne przekazanie stanowiska.",
       "flag": "Nowy kurs",
-      "duration": "Własne tempo",
-      "level": "Praktyczny",
+      "duration": "12 lekcji",
+      "level": "Od zera · A0",
       "outline": [
-        "Pozdrowienia i role",
-        "Materiały i narzędzia",
-        "Rysunki i pomiary",
-        "Bezpieczeństwo i zagrożenia",
-        "Dostawy i rozładunek",
-        "Harmonogram prac",
-        "Usterki i poprawki",
-        "Odbiór i potwierdzenie"
+        "Od zera — alfabet i pierwsze słowa",
+        "Pierwszy dzień — wejście i instruktaż w Niemczech",
+        "Gdzie iść? Biuro, toaleta i drogi piesze",
+        "Bezpieczeństwo: PSA, SiGePlan, Unterweisung",
+        "Rozmowy zwykłego pracownika na budowie",
+        "Narzędzia i materiały po niemiecku",
+        "Liczby, wymiary i godziny",
+        "Dzień pracy — pytania i zadania",
+        "Wypadek i zagrożenie — co mówić",
+        "Umowa, płaca minimalna i rozliczenie",
+        "Zmiany planu, dostawy i problemy",
+        "Koniec pracy — sprzątanie i przekazanie"
       ],
-      "lesson_scenarios": [
-        {
-          "title": "Pozdrowienia i role",
-          "scenario": "Guten Morgen. Ich bin der Bauleiter.",
-          "advice": "Dzień dobry. Jestem kierownikiem budowy."
-        },
-        {
-          "title": "Materiały i narzędzia",
-          "scenario": "Wir brauchen Schrauben und ein Maßband.",
-          "advice": "Potrzebujemy śrub i miarki."
-        },
-        {
-          "title": "Rysunki i pomiary",
-          "scenario": "Bitte prüfen Sie die neueste Zeichnung.",
-          "advice": "Proszę sprawdzić najnowszy rysunek."
-        },
-        {
-          "title": "Bezpieczeństwo i zagrożenia",
-          "scenario": "Arbeit einstellen! Hier besteht Gefahr.",
-          "advice": "Przerwać pracę! Tutaj istnieje zagrożenie."
-        },
-        {
-          "title": "Dostawy i rozładunek",
-          "scenario": "Wann kommt die Lieferung?",
-          "advice": "Kiedy dotrze dostawa?"
-        },
-        {
-          "title": "Harmonogram prac",
-          "scenario": "Die Montage verzögert sich um zwei Tage.",
-          "advice": "Montaż opóźnia się o dwa dni."
-        },
-        {
-          "title": "Usterki i poprawki",
-          "scenario": "Wir müssen diesen Fehler dokumentieren.",
-          "advice": "Musimy udokumentować tę usterkę."
-        },
-        {
-          "title": "Odbiór i potwierdzenie",
-          "scenario": "Bitte bestätigen Sie das schriftlich.",
-          "advice": "Proszę potwierdzić to na piśmie."
-        }
-      ],
+      "lesson_scenarios": [],
       "source_url": "https://www.bgbau.de/",
       "editorial_note": "Niemieckie zasady BHP i wymagania do pracy mogą różnić się od polskich; tłumaczenie polecenia nie jest dowodem uprawnienia.",
       "certificate_title_pl": "Ukończenie prywatnego kursu: Niemiecki na budowie — komunikacja od pierwszego dnia",
