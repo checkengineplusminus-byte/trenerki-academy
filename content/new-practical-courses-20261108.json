@@ -1,0 +1,423 @@
+{
+  "date": "2026-11-08",
+  "type": "practical",
+  "courses": [
+    {
+      "id": "angielski-na-budowie",
+      "title": "Angielski na budowie — rozmawiaj bez stresu",
+      "price": 149,
+      "emoji": "🇬🇧",
+      "accent": "#E3EDF5",
+      "cat": "Języki na budowie",
+      "short": "Praktyczny angielski podczas odpraw, dostaw, pomiarów i ustalania bezpieczeństwa — z tłumaczeniem, wymową i przykładami z prawdziwej budowy.",
+      "flag": "Nowy kurs",
+      "duration": "Własne tempo",
+      "level": "Praktyczny",
+      "outline": [
+        "Dzień dobry na budowie",
+        "Narzędzia i materiały",
+        "Wymiary i rysunki",
+        "Bezpieczeństwo i wyposażenie",
+        "Dostawy i rozładunek",
+        "Harmonogram i opóźnienia",
+        "Problemy i poprawki",
+        "Odbiór i raport"
+      ],
+      "lesson_scenarios": [
+        {
+          "title": "Dzień dobry na budowie",
+          "scenario": "Good morning. I'm the site supervisor.",
+          "advice": "Dzień dobry. Jestem kierownikiem prac."
+        },
+        {
+          "title": "Narzędzia i materiały",
+          "scenario": "We need a drill, anchors and a tape measure.",
+          "advice": "Potrzebujemy wiertarki, kotew i miarki."
+        },
+        {
+          "title": "Wymiary i rysunki",
+          "scenario": "Please check the latest drawing revision.",
+          "advice": "Sprawdź najnowszą rewizję rysunku."
+        },
+        {
+          "title": "Bezpieczeństwo i wyposażenie",
+          "scenario": "Stop work. The area is not safe.",
+          "advice": "Wstrzymaj pracę. To miejsce nie jest bezpieczne."
+        },
+        {
+          "title": "Dostawy i rozładunek",
+          "scenario": "The delivery will arrive on Thursday.",
+          "advice": "Dostawa przyjedzie w czwartek."
+        },
+        {
+          "title": "Harmonogram i opóźnienia",
+          "scenario": "This task is delayed by two days.",
+          "advice": "To zadanie jest opóźnione o dwa dni."
+        },
+        {
+          "title": "Problemy i poprawki",
+          "scenario": "There is a difference between the drawing and the site.",
+          "advice": "Jest rozbieżność między rysunkiem a budową."
+        },
+        {
+          "title": "Odbiór i raport",
+          "scenario": "Please confirm the completed work in writing.",
+          "advice": "Potwierdź wykonane prace na piśmie."
+        }
+      ],
+      "source_url": "https://www.hse.gov.uk/construction/",
+      "editorial_note": "Nie zgaduj przy poleceniach bezpieczeństwa. Gdy nie rozumiesz instrukcji, poproś o tłumacza lub ponowne wyjaśnienie; słownik nie zastępuje szkolenia BHP.",
+      "certificate_title_pl": "Ukończenie prywatnego kursu: Angielski na budowie — rozmawiaj bez stresu",
+      "certificate_title_en": "Private Course Completion: Angielski na budowie — rozmawiaj bez stresu"
+    },
+    {
+      "id": "norweski-na-budowie",
+      "title": "Norweski na budowie — język pracy w Norwegii",
+      "price": 149,
+      "emoji": "🇳🇴",
+      "accent": "#DEEDE8",
+      "cat": "Języki na budowie",
+      "short": "Zrozum norweskie odprawy, HMS, fremdrift, zamówienia, innfesting i odbiory. Krótkie zdania do używania codziennie na placu budowy.",
+      "flag": "Nowy kurs",
+      "duration": "Własne tempo",
+      "level": "Praktyczny",
+      "outline": [
+        "Przedstaw się ekipie",
+        "Materiały i narzędzia",
+        "Rysunki i zmiany",
+        "HMS i bezpieczeństwo",
+        "Levering i lossing",
+        "Fremdrift og forsinkelse",
+        "Avvik og endring",
+        "Overtakelse i rapport"
+      ],
+      "lesson_scenarios": [
+        {
+          "title": "Przedstaw się ekipie",
+          "scenario": "Hei, jeg er arbeidsleder på prosjektet.",
+          "advice": "Cześć, jestem kierownikiem robót przy tym projekcie."
+        },
+        {
+          "title": "Materiały i narzędzia",
+          "scenario": "Vi trenger skruer, drill og målebånd.",
+          "advice": "Potrzebujemy śrub, wiertarki i miarki."
+        },
+        {
+          "title": "Rysunki i zmiany",
+          "scenario": "Kan du sende siste revisjon av tegningen?",
+          "advice": "Możesz wysłać ostatnią rewizję rysunku?"
+        },
+        {
+          "title": "HMS i bezpieczeństwo",
+          "scenario": "Stopp arbeidet, det er ikke trygt her.",
+          "advice": "Wstrzymaj pracę, tutaj nie jest bezpiecznie."
+        },
+        {
+          "title": "Levering i lossing",
+          "scenario": "Leveransen kommer på torsdag. Hvor kan vi losse?",
+          "advice": "Dostawa przyjdzie w czwartek. Gdzie możemy rozładować?"
+        },
+        {
+          "title": "Fremdrift og forsinkelse",
+          "scenario": "Monteringen er forsinket med to dager.",
+          "advice": "Montaż jest opóźniony o dwa dni."
+        },
+        {
+          "title": "Avvik og endring",
+          "scenario": "Det er et avvik mellom tegning og utførelse.",
+          "advice": "Jest rozbieżność między rysunkiem i wykonaniem."
+        },
+        {
+          "title": "Overtakelse i rapport",
+          "scenario": "Kan du bekrefte dette skriftlig?",
+          "advice": "Możesz to potwierdzić na piśmie?"
+        }
+      ],
+      "source_url": "https://www.arbeidstilsynet.no/",
+      "editorial_note": "W sprawach HMS, SJA, podnoszenia ładunków i pracy na wysokości stosuj aktualne wymagania norweskie; nauka języka nie zastępuje wymaganych kursów.",
+      "certificate_title_pl": "Ukończenie prywatnego kursu: Norweski na budowie — język pracy w Norwegii",
+      "certificate_title_en": "Private Course Completion: Norweski na budowie — język pracy w Norwegii"
+    },
+    {
+      "id": "niemiecki-na-budowie",
+      "title": "Niemiecki na budowie — komunikacja od pierwszego dnia",
+      "price": 149,
+      "emoji": "🇩🇪",
+      "accent": "#F0E6D9",
+      "cat": "Języki na budowie",
+      "short": "Praktyczne zwroty dla ekip budowlanych: materiały, rysunki, rusztowania, dostawy, opóźnienia i zgłaszanie zagrożeń.",
+      "flag": "Nowy kurs",
+      "duration": "Własne tempo",
+      "level": "Praktyczny",
+      "outline": [
+        "Pozdrowienia i role",
+        "Materiały i narzędzia",
+        "Rysunki i pomiary",
+        "Bezpieczeństwo i zagrożenia",
+        "Dostawy i rozładunek",
+        "Harmonogram prac",
+        "Usterki i poprawki",
+        "Odbiór i potwierdzenie"
+      ],
+      "lesson_scenarios": [
+        {
+          "title": "Pozdrowienia i role",
+          "scenario": "Guten Morgen. Ich bin der Bauleiter.",
+          "advice": "Dzień dobry. Jestem kierownikiem budowy."
+        },
+        {
+          "title": "Materiały i narzędzia",
+          "scenario": "Wir brauchen Schrauben und ein Maßband.",
+          "advice": "Potrzebujemy śrub i miarki."
+        },
+        {
+          "title": "Rysunki i pomiary",
+          "scenario": "Bitte prüfen Sie die neueste Zeichnung.",
+          "advice": "Proszę sprawdzić najnowszy rysunek."
+        },
+        {
+          "title": "Bezpieczeństwo i zagrożenia",
+          "scenario": "Arbeit einstellen! Hier besteht Gefahr.",
+          "advice": "Przerwać pracę! Tutaj istnieje zagrożenie."
+        },
+        {
+          "title": "Dostawy i rozładunek",
+          "scenario": "Wann kommt die Lieferung?",
+          "advice": "Kiedy dotrze dostawa?"
+        },
+        {
+          "title": "Harmonogram prac",
+          "scenario": "Die Montage verzögert sich um zwei Tage.",
+          "advice": "Montaż opóźnia się o dwa dni."
+        },
+        {
+          "title": "Usterki i poprawki",
+          "scenario": "Wir müssen diesen Fehler dokumentieren.",
+          "advice": "Musimy udokumentować tę usterkę."
+        },
+        {
+          "title": "Odbiór i potwierdzenie",
+          "scenario": "Bitte bestätigen Sie das schriftlich.",
+          "advice": "Proszę potwierdzić to na piśmie."
+        }
+      ],
+      "source_url": "https://www.bgbau.de/",
+      "editorial_note": "Niemieckie zasady BHP i wymagania do pracy mogą różnić się od polskich; tłumaczenie polecenia nie jest dowodem uprawnienia.",
+      "certificate_title_pl": "Ukończenie prywatnego kursu: Niemiecki na budowie — komunikacja od pierwszego dnia",
+      "certificate_title_en": "Private Course Completion: Niemiecki na budowie — komunikacja od pierwszego dnia"
+    },
+    {
+      "id": "pomagaj-dziecku-w-lekcjach",
+      "title": "Bądź dobrym nauczycielem swojego dziecka — prace domowe bez kłótni",
+      "price": 99,
+      "emoji": "📚",
+      "accent": "#EAE9F6",
+      "cat": "Relacje i rodzina",
+      "short": "Pomagaj dziecku myśleć i samodzielnie rozwiązywać zadania, nie odrabiając lekcji za nie. Przyjazny plan także dla dziecka, które łatwo się rozprasza.",
+      "flag": "Nowy kurs",
+      "duration": "Własne tempo",
+      "level": "Praktyczny",
+      "outline": [
+        "Najpierw relacja, potem zadanie",
+        "Jak poznać prawdziwą trudność",
+        "Prosty kącik do nauki",
+        "Zadania krok po kroku",
+        "Pomagaj bez podawania odpowiedzi",
+        "Przerwy, emocje i motywacja",
+        "Kontakt ze szkołą bez wstydu",
+        "Rutyna, która szanuje dziecko"
+      ],
+      "lesson_scenarios": [
+        {
+          "title": "Najpierw relacja, potem zadanie",
+          "scenario": "Dziecko wraca zmęczone po szkole",
+          "advice": "Zamiast zaczynać od ocen, zapytaj co było trudne."
+        },
+        {
+          "title": "Jak poznać prawdziwą trudność",
+          "scenario": "Dziecko mówi: Nie umiem",
+          "advice": "Sprawdź, czy problem to polecenie, stres czy brak wiedzy."
+        },
+        {
+          "title": "Prosty kącik do nauki",
+          "scenario": "Biurko pełne rozpraszaczy",
+          "advice": "Ustal spokojne miejsce i przygotuj tylko potrzebne rzeczy."
+        },
+        {
+          "title": "Zadania krok po kroku",
+          "scenario": "Zadanie tekstowe ma pięć zdań",
+          "advice": "Poproś dziecko o opowiedzenie treści własnymi słowami."
+        },
+        {
+          "title": "Pomagaj bez podawania odpowiedzi",
+          "scenario": "Dziecko chce gotowe rozwiązanie",
+          "advice": "Zadaj pytanie: jaki będzie pierwszy krok?"
+        },
+        {
+          "title": "Przerwy, emocje i motywacja",
+          "scenario": "Po 15 minutach pojawia się frustracja",
+          "advice": "Zaproponuj krótką przerwę i zmianę sposobu nauki."
+        },
+        {
+          "title": "Kontakt ze szkołą bez wstydu",
+          "scenario": "Nadal brakuje zrozumienia materiału",
+          "advice": "Ustal konkretne pytania do nauczyciela, nie obwiniaj dziecka."
+        },
+        {
+          "title": "Rutyna, która szanuje dziecko",
+          "scenario": "Domowa nauka zmienia się w walkę",
+          "advice": "Zrób plan tygodnia z czasem na odpoczynek i zabawę."
+        }
+      ],
+      "source_url": "https://www.unicef.org/parenting/child-care/9-tips-for-better-communication",
+      "editorial_note": "Nie wykonuj zadań za dziecko, nie zawstydzaj go i nie uzależniaj miłości od ocen. Stosuj wymagania szkolne odpowiednie do wieku i potrzeb, szczególnie przy ADHD lub trudnościach w nauce.",
+      "certificate_title_pl": "Ukończenie prywatnego kursu: Bądź dobrym nauczycielem swojego dziecka — prace domowe bez kłótni",
+      "certificate_title_en": "Private Course Completion: Bądź dobrym nauczycielem swojego dziecka — prace domowe bez kłótni"
+    },
+    {
+      "id": "windows-skroty",
+      "title": "Windows — skróty klawiszowe i przydatne sztuczki",
+      "price": 10,
+      "emoji": "⌨️",
+      "accent": "#E1EBF5",
+      "cat": "Cyfrowe umiejętności",
+      "short": "Klawisze narysowane jak na klawiaturze, efekt przed i po oraz wskazówki: okna, pliki, zrzuty ekranu, schowek, wyszukiwanie i szybka praca.",
+      "flag": "Mini-kurs · 10 zł",
+      "duration": "Własne tempo",
+      "level": "Praktyczny",
+      "outline": [
+        "Pulpit i menu",
+        "Szybka zmiana aplikacji",
+        "Dzielenie ekranu",
+        "Zrzut ekranu",
+        "Ustawienia i wyszukiwanie",
+        "Praca z plikami",
+        "Schowek i kopiowanie",
+        "Bezpieczeństwo i koniec pracy"
+      ],
+      "lesson_scenarios": [
+        {
+          "title": "Pulpit i menu",
+          "scenario": "Win + D",
+          "advice": "Pokaż lub ukryj pulpit."
+        },
+        {
+          "title": "Szybka zmiana aplikacji",
+          "scenario": "Alt + Tab",
+          "advice": "Przełącz się na inne otwarte okno."
+        },
+        {
+          "title": "Dzielenie ekranu",
+          "scenario": "Win + ← / →",
+          "advice": "Przypnij okno do lewej lub prawej połowy ekranu."
+        },
+        {
+          "title": "Zrzut ekranu",
+          "scenario": "Win + Shift + S",
+          "advice": "Otwórz narzędzie do zaznaczenia zrzutu."
+        },
+        {
+          "title": "Ustawienia i wyszukiwanie",
+          "scenario": "Win + I",
+          "advice": "Otwórz Ustawienia systemu."
+        },
+        {
+          "title": "Praca z plikami",
+          "scenario": "Win + E",
+          "advice": "Otwórz Eksplorator plików."
+        },
+        {
+          "title": "Schowek i kopiowanie",
+          "scenario": "Win + V",
+          "advice": "Otwórz historię schowka, jeśli jest włączona."
+        },
+        {
+          "title": "Bezpieczeństwo i koniec pracy",
+          "scenario": "Win + L",
+          "advice": "Zablokuj komputer, pozostawiając otwarte aplikacje."
+        }
+      ],
+      "source_url": "https://support.microsoft.com/pl-pl/windows/skróty-klawiaturowe-w-systemie-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+      "editorial_note": "Skróty zależą od wersji systemu i ustawień klawiatury. Pokazujemy Windows 11 na standardowym układzie; nie udostępniaj poufnych zrzutów ani zawartości schowka.",
+      "certificate_title_pl": "Ukończenie prywatnego kursu: Windows — skróty klawiszowe i przydatne sztuczki",
+      "certificate_title_en": "Private Course Completion: Windows — skróty klawiszowe i przydatne sztuczki"
+    },
+    {
+      "id": "transport-logistyka-praktycznie",
+      "title": "Transport i logistyka — zostań dobry w planowaniu dostaw",
+      "price": 149,
+      "emoji": "🚚",
+      "accent": "#E1EAE6",
+      "cat": "Transport i logistyka",
+      "short": "Transport od strony codziennej pracy: zlecenie, trasa, załadunek, dokumenty, przewoźnik, koszt, harmonogram i rozmowa z klientem.",
+      "flag": "Nowy kurs",
+      "duration": "Własne tempo",
+      "level": "Praktyczny",
+      "outline": [
+        "Od zlecenia do dostawy",
+        "Rodzaje transportu",
+        "Trasa i okna dostaw",
+        "Załadunek i zabezpieczenie",
+        "Dokumenty przewozowe",
+        "Koszt i marża",
+        "Opóźnienia i reklamacje",
+        "KPI i ciągła poprawa"
+      ],
+      "lesson_scenarios": [
+        {
+          "title": "Od zlecenia do dostawy",
+          "scenario": "Klient podaje adres i termin bez ilości ładunku",
+          "advice": "Zbierz wymiary, wagę, miejsce i wymagania."
+        },
+        {
+          "title": "Rodzaje transportu",
+          "scenario": "Dwa towary mają odmienne wymagania",
+          "advice": "Dobierz środek transportu do ładunku."
+        },
+        {
+          "title": "Trasa i okna dostaw",
+          "scenario": "Kierowca ma trzy punkty rozładunku",
+          "advice": "Rozpisz kolejność z uwzględnieniem godzin i ograniczeń."
+        },
+        {
+          "title": "Załadunek i zabezpieczenie",
+          "scenario": "Skrzynie różnią się ciężarem i wymiarami",
+          "advice": "Zaplanuj sposób zabezpieczenia z przeszkoloną osobą."
+        },
+        {
+          "title": "Dokumenty przewozowe",
+          "scenario": "Dostawa międzynarodowa wymaga dokumentacji",
+          "advice": "Sprawdź, które dokumenty są obowiązkowe."
+        },
+        {
+          "title": "Koszt i marża",
+          "scenario": "Kilometry wydają się tanie, czas postoju nie",
+          "advice": "Uwzględnij paliwo, czas, opłaty, ryzyko i puste przebiegi."
+        },
+        {
+          "title": "Opóźnienia i reklamacje",
+          "scenario": "Samochód utknął w korku i klient czeka",
+          "advice": "Wyślij jasny ETA oraz potwierdzoną zmianę terminu."
+        },
+        {
+          "title": "KPI i ciągła poprawa",
+          "scenario": "Powracają uszkodzenia przesyłek",
+          "advice": "Odróżnij przyczynę od objawu i zaplanuj kontrolę."
+        }
+      ],
+      "source_url": "https://pisil.pl/jesien-2026-kurs-spedycyjny-on-line/",
+      "editorial_note": "Nie obiecujemy uprawnień przewoźnika ani certyfikatu kompetencji zawodowych. Przy transporcie i zabezpieczaniu ładunku przestrzegaj prawa, mas, ograniczeń, dokumentów i wymogów przewozu towarów niebezpiecznych.",
+      "certificate_title_pl": "Ukończenie prywatnego kursu: Transport i logistyka — zostań dobry w planowaniu dostaw",
+      "certificate_title_en": "Private Course Completion: Transport i logistyka — zostań dobry w planowaniu dostaw"
+    }
+  ],
+  "pricing_sources": {
+    "angielski-na-budowie": "https://futureinvestment.pl/sklep/kursy-online/architektura-i-budownictwo/jezyk-angielski-w-budownictwie/",
+    "norweski-na-budowie": "https://rekrutacja.sggw.edu.pl/pl/offer/KURSY_UO_2025_26/programme/K-JN-Bud_A1/",
+    "niemiecki-na-budowie": "https://www.goethe.de/ins/pl/pl/spr/kur/dl1.html",
+    "pomagaj-dziecku-w-lekcjach": "https://www.cwp.edu.pl/szkolenia/dziecko-w-szkole-jak-wspierac-nauke-relacje-i-radzenie-sobie-z-trudnosciami",
+    "windows-skroty": "https://support.microsoft.com/pl-pl/windows/skróty-klawiaturowe-w-systemie-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
+    "transport-logistyka-praktycznie": "https://www.adnakademia.pl/szkolenia/kurs-online-praca-w-logistyce-specjalista-ds-celnych-transportowych-magazynowych-42h-kurs-weekendowy/"
+  },
+  "pricing_note": "Własne ceny w PLN, dostosowane do krótkiego kursu samodzielnego, nie arytmetyczna średnia kursów wielogodzinnych z nauczycielem."
+}
