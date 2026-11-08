@@ -163,7 +163,7 @@ export default function Learning(){
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
-      <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
+      <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
      </>
    }
    <AiTutor courseSlug={slug} lessonNo={module}/>
