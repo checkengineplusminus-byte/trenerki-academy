@@ -136,11 +136,44 @@ try{
     fail(slug+': expected 30 individual graded lessons in 3 sections');
  }
  ok(specialistSlugs.length+' specialist 30-lesson programs have unique, graded examples and chapter groupings');
-  const originalImages=['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security'];
+  const originalImages=['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security','windows-desktop','windows-explorer','excel-interface','word-interface','autocad-interface','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands'];
  for(const file of originalImages){
   const svg=read('public/academy/assets/'+file+'.svg');
   if(!svg.includes('<svg')||!svg.includes('</svg>')||!svg.includes('TRENERKI ACADEMY'))fail('Invalid or missing illustration: '+file);
  }
+ const orientation=read('src/SoftwareOrientation.tsx');
+ const illustrated=read('src/LessonIllustratedSections.tsx');
+ const lab=read('src/HandsOnLab.tsx');
+ if(!progress.includes('<SoftwareOrientation slug={slug}/>')||
+   !orientation.includes('<HandsOnLab key={slug}')||
+   !orientation.includes("p.mode==='excel'||p.mode==='cad'")||
+   !lab.includes('setShapes(')||!lab.includes('setRows('))
+  fail('First software lesson lost its interactive Excel/AutoCAD laboratory');
+ else ok('Real stateful Excel/CAD practice visible on first software lesson');
+ if(!orientation.includes("1983 roku")||!orientation.includes("1985 roku")||
+   !orientation.includes("1982 roku")||!orientation.includes('p.zones.map'))
+  fail('Historical program orientation and labeled interface zones missing');
+ const softwareSlugs=['word-skroty','excel-skroty','autocad-skroty'];
+ for(const slug of softwareSlugs){
+  const chapters=JSON.parse(read('content/v2-'+slug+'.json')).lessons;
+  if(chapters.length!==30||chapters.some(x=>!Array.isArray(x.material?.sections)||x.material.sections.length<4))
+   fail(slug+': need four substantive tutorial sections in each of 30 lessons');
+  for(const entry of chapters){
+   const asset=entry.material?.illustration;
+   if(asset&&!originalImages.includes(asset))fail(slug+': unknown lesson asset '+asset);
+  }
+ }
+ if(!illustrated.includes('if(!named.length&&!validIllustration)'))fail('Images must render even for old lessons without section structure');
+ else ok('Software illustrations work with and without long-form sections');
+ if(!examServer.includes('nextChoice(')||!examServer.includes("grading_mode:'choice'")||
+   !exam.includes('switch_mode')||!exam.includes('selected_index')||!examServer.includes('correct_option'))
+  fail('Exam server must support objective fallback with protected correct answer');
+ if(!diploma.includes('window.print()')||!diploma.includes('Data ukończenia:'))
+  fail('Certificate A4 printable output missing');
+ const agentServer=read('supabase/functions/ta-lesson-guide/index.ts');
+ if(!agentServer.includes('learnerSummary')||!agentServer.includes('localLessonCoach')||!agentServer.includes('agent_online'))
+  fail('Adaptive mentor and declared offline mode missing');
+
  if(!progress.includes('<LessonIllustratedSections'))fail('Illustrated lesson reading must appear in app');
  else ok(originalImages.length+' authored original diagrams available for the lessons');
  if(!process.exitCode)console.log('All static integrity checks passed.');
