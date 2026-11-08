@@ -816,8 +816,7 @@
           "combo": "Win++",
           "keys": [
             "Win",
-            "",
-            ""
+            "+"
           ],
           "kind": "hotkey",
           "label": "Włącz lupę",
