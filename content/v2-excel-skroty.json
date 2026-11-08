@@ -279,7 +279,7 @@
             "text": "Zmieniam losową komórkę z podobną liczbą.. Dlaczego: Wpis do komórki zatwierdzasz Enterem. Pasek formuły pozwala zobaczyć pełną treść, a F2 często przełącza edycję. Nie nadpisuj wartości bez sprawdzenia adresu."
           }
         ],
-        "illustration": "excel-addresses"
+        "illustration": "excel-interface"
       }
     },
     {
@@ -498,7 +498,8 @@
             "heading": "Czego nie robić",
             "text": "Zamieniam nazwę .csv na .xlsx bez konwersji.. Dlaczego: Zapisujesz plik z nazwą, lokalizacją i właściwym formatem. CSV zachowuje głównie dane tabelaryczne, zwykle bez wszystkich funkcji i wielu arkuszy XLSX."
           }
-        ]
+        ],
+        "illustration": "excel-interface"
       }
     },
     {
@@ -553,7 +554,7 @@
             "text": "Nadpisuję wynik sumy na oko.. Dlaczego: Ułóż nagłówki Usługa, Ilość, Cena, Wartość. Oblicz trzy wartości formułami, a potem sumę. Zmieniaj ilość, by zobaczyć automatyczną aktualizację kosztu."
           }
         ],
-        "illustration": "excel-formulas"
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -808,7 +809,7 @@
             "text": "Kopiuję liczbę 700 zamiast formuły i ignoruję różnicę.. Dlaczego: F2 umożliwia edycję, Ctrl+C/V kopiowanie i wklejanie, Ctrl+Z cofanie. Przed masową operacją zachowaj kopię i sprawdź pierwszy wiersz wyniku."
           }
         ],
-        "illustration": "excel-addresses"
+        "illustration": "excel-interface"
       }
     },
     {
@@ -938,7 +939,7 @@
             "text": "Ukrywam błędne komórki białym tekstem.. Dlaczego: Pogrubienie nagłówków, format procentowy i ustawienia komórek ułatwiają kontrolę danych. Nie używaj koloru jako jedynego nośnika informacji."
           }
         ],
-        "illustration": "excel-addresses"
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -1065,7 +1066,8 @@
             "heading": "Czego nie robić",
             "text": "Dopisuję materiał poza zakresem i zapominam o sumie.. Dlaczego: Możesz dodawać i ukrywać wiersze, kolumny oraz arkusze; przed operacją skontroluj formuły zależne od sąsiednich zakresów."
           }
-        ]
+        ],
+        "illustration": "excel-interface"
       }
     },
     {
@@ -1321,7 +1323,7 @@
             "text": "Kasuję wszystkie wiersze innych kategorii.. Dlaczego: Tabela z nagłówkami pozwala filtrować, sortować i łatwiej dodawać nowe wiersze. Filtr tylko ukrywa część danych, nie usuwa ich."
           }
         ],
-        "illustration": "excel-addresses"
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -1447,7 +1449,8 @@
             "heading": "Czego nie robić",
             "text": "Zmieniając nazwę pliku uznaję go za zapisany.. Dlaczego: Zapisuj zmiany regularnie i stosuj nazwy z datą lub rewizją. Przy eksportowaniu do PDF upewnij się, że nie obcinasz kolumn."
           }
-        ]
+        ],
+        "illustration": "excel-interface"
       }
     },
     {
@@ -1904,7 +1907,8 @@
             "heading": "Czego nie robić",
             "text": "Kopiuję same wartości co miesiąc bez śladu źródła.. Dlaczego: Linki między arkuszami oszczędzają ręczne kopiowanie, ale mają ryzyko zmiany nazw i zakresów. Oznacz źródła oraz sprawdzaj zależności."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -1959,7 +1963,7 @@
             "text": "Uznaję tę samą kwotę za ten sam dokument.. Dlaczego: Wyszukiwanie wartości po kluczu wymaga jednoznacznego identyfikatora. Duplikaty i różnice formatów mogą dać błędne dopasowanie."
           }
         ],
-        "illustration": "excel-addresses"
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -2069,7 +2073,7 @@
             "text": "Podaję jedną liczbę jako gwarancję.. Dlaczego: Dobry budżet pokazuje wariant podstawowy i zmianę ceny lub ilości; założenia mają być podpisane. Prognoza nie jest pewną przyszłością."
           }
         ],
-        "illustration": "excel-formulas"
+        "illustration": "excel-chart"
       }
     },
     {
@@ -2123,7 +2127,8 @@
             "heading": "Czego nie robić",
             "text": "Publikuję dokument w ogólnodostępnym folderze.. Dlaczego: Arkusz może zawierać dane osobowe, stawki i informacje finansowe. Dostęp i uprawnienia do edycji powinny wynikać z roli, a nie wygody."
           }
-        ]
+        ],
+        "illustration": "excel-addresses"
       }
     },
     {
@@ -2178,7 +2183,7 @@
             "text": "Wysyłam go mimo błędu, bo termin jest krótki.. Dlaczego: Wykrywanie duplikatów, pustych danych, ukrytych filtrów i nieprawidłowych sum to część pracy eksperta. Raport powinien być odtwarzalny."
           }
         ],
-        "illustration": "excel-chart"
+        "illustration": "excel-formulas"
       }
     },
     {
@@ -2233,7 +2238,7 @@
             "text": "Obwiniam program, choć nie sprawdziłem formuł.. Dlaczego: Przygotuj arkusz z danymi, formułami, podsumowaniem, kontrolą błędów i wariantem ceny. W finale umiej objaśnić, skąd pochodzi każda ważna liczba."
           }
         ],
-        "illustration": "excel-formulas"
+        "illustration": "excel-chart"
       }
     }
   ]
