@@ -29,7 +29,8 @@ try{
  else{new Script(page.slice(scriptStart+8,scriptEnd),{filename:'academy-index.js'});ok('Homepage JavaScript syntax');}
  if(courses.length===15+additions.length&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
  for(const c of courses){
-  if(!Array.isArray(c.outline)||c.outline.length!==8)fail(c.id+': eight-module syllabus missing');
+  const construction=['norweski-na-budowie','angielski-na-budowie','niemiecki-na-budowie'].includes(c.id);
+  if(!Array.isArray(c.outline)||c.outline.length!==(construction?12:8))fail(c.id+': expected '+(construction?12:8)+' lesson syllabus');
   if(!previews[c.id]||!['curiosity','scenario','outcome_1','outcome_2','outcome_3'].every(k=>typeof previews[c.id][k]==='string'&&previews[c.id][k].length>20))fail(c.id+': missing life-based preview');
  }
  if(Object.keys(previews).length===courses.length&&additions.length===courses.length-15)ok(courses.length+' practical previews and '+additions.length+' added courses');else fail('Preview/addition count mismatch');
@@ -47,6 +48,17 @@ try{
  }
  if(!page.includes('Ostatni potwierdzony rok:'))fail('Missing historical teaching status in course preview');
  if(courses.some(c=>!Number.isFinite(c.price)||c.price<0))fail('Catalog includes a missing or invalid price');
+ const construction=['norweski-na-budowie','angielski-na-budowie','niemiecki-na-budowie'];
+ for(const slug of construction){
+  const course=courses.find(c=>c.id===slug);
+  if(!course||course.outline.length!==12)fail(slug+': needs 12 chapters from first day to end of shift');
+  if(!course?.outline?.[0]?.toLowerCase().includes('zera'))fail(slug+': should start from zero');
+ }
+ const languageViewer=read('src/ConstructionLesson.tsx');
+ if(!languageViewer.includes('speechSynthesis')||!languageViewer.includes('roleplay')||!languageViewer.includes('academy/illustrations/'))fail('Pronunciation, illustrated scenes or interactive exercise missing');
+ if(!progress.includes('finishLesson')||!progress.includes('setModule(next)')||!progress.includes('ConstructionLesson'))fail('Auto-advance from completed lesson missing');
+ const dashboard=read('app/moje-kursy.tsx');
+ if(dashboard.includes('*12.5')||!dashboard.includes('lessonCount'))fail('Progress calculation must use real lesson counts');
  const shortcutModules=['word','autocad','excel','windows'];
  const component=read('src/KeyboardLesson.tsx');
  for(const name of shortcutModules){
