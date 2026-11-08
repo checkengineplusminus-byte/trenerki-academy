@@ -9,6 +9,7 @@ import AiTutor from '../src/AiTutor';
 import CourseIntro from '../src/CourseIntro';
 import ConceptAtlas from '../src/ConceptAtlas';
 import FinalExam from '../src/FinalExam';
+import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
  material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
@@ -159,7 +160,7 @@ export default function Learning(){
   </>}
   {!!lesson&&<>
    <CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={index===0}/>
-   {(index===0||(items.length===30&&index%10===0))&&<ConceptAtlas slug={slug}/>}
+   {(index===0||(items.length===30&&index%10===0))&&(isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:<ConceptAtlas slug={slug}/>)}
    {items.length===30&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
      <Text style={{fontWeight:'900',color:ink}}>{index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT'}</Text>
    </View>}
@@ -186,6 +187,7 @@ export default function Learning(){
       <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct)=>recordAttempt('keyboard',index,correct)}/>
      </>
    }
+   {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
    {progress===100&&<FinalExam courseSlug={slug}/>}
    <AiTutor courseSlug={slug} lessonNo={module}/>
    <View style={{marginTop:23,gap:9}}>
