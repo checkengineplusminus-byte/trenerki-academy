@@ -153,17 +153,35 @@ try{
  if(!orientation.includes("1983 roku")||!orientation.includes("1985 roku")||
    !orientation.includes("1982 roku")||!orientation.includes('p.zones.map'))
   fail('Historical program orientation and labeled interface zones missing');
+ const assignedIllustrations={};
+ for(const visual of originalImages)assignedIllustrations[visual]=0;
+ const expectedVisualGroups={
+  'word-skroty':['word-interface','word-document','word-structure','word-review'],
+  'excel-skroty':['excel-interface','excel-addresses','excel-formulas','excel-chart'],
+  'autocad-skroty':['autocad-interface','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands']
+ };
  const softwareSlugs=['word-skroty','excel-skroty','autocad-skroty'];
  for(const slug of softwareSlugs){
   const chapters=JSON.parse(read('content/v2-'+slug+'.json')).lessons;
   if(chapters.length!==30||chapters.some(x=>!Array.isArray(x.material?.sections)||x.material.sections.length<4))
    fail(slug+': need four substantive tutorial sections in each of 30 lessons');
+  const seen=new Set();
   for(const entry of chapters){
    const asset=entry.material?.illustration;
-   if(asset&&!originalImages.includes(asset))fail(slug+': unknown lesson asset '+asset);
+   if(!asset||!originalImages.includes(asset))fail(slug+': missing or unknown illustration for lesson '+(entry.lesson_no+1)+': '+asset);
+   else {seen.add(asset);assignedIllustrations[asset]++;}
   }
+  for(const asset of expectedVisualGroups[slug])if(!seen.has(asset))fail(slug+': dedicated illustration never appears in course: '+asset);
+  if(chapters.filter(x=>x.material?.sections?.[0]?.text?.length>=220).length<9)
+   fail(slug+': fewer than nine substantive lessons with theory exceeding 220 characters');
+  else ok(slug+': 30 illustrated lessons, '+seen.size+' themed visual families, substantial introductory theory');
  }
- if(!illustrated.includes('if(!named.length&&!validIllustration)'))fail('Images must render even for old lessons without section structure');
+ if(!illustrated.includes('if(!named.length&&!validIllustration)')||
+   !illustrated.includes('imageNames.has(illustration)'))fail('Images must render even for old lessons without section structure');
+ for(const asset of Object.values(expectedVisualGroups).flat()){
+  if(!illustrated.includes("'"+asset+"'"))fail('Renderer does not support course asset '+asset);
+ }
+
  else ok('Software illustrations work with and without long-form sections');
  if(!examServer.includes('nextChoice(')||!examServer.includes("grading_mode:'choice'")||
    !exam.includes('switch_mode')||!exam.includes('selected_index')||!examServer.includes('correct_option'))
