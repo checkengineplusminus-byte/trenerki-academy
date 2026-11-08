@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {View,Text,Pressable,TextInput} from 'react-native';
+import {View,Text,Pressable,TextInput,useWindowDimensions} from 'react-native';
 import type {KeyboardShortcut} from './KeyboardLesson';
 
 /* Autorski, bezpieczny warsztat w przeglądarce. Nie uruchamia Excela/AutoCAD-a. */
@@ -25,6 +25,8 @@ function evaluate(rows:string[][],cell:string):string {
  return v;
 }
 export default function HandsOnLab({mode,active,runId}:{mode:LabMode;active:KeyboardShortcut|null;runId:number}){
+ const {width}=useWindowDimensions(),mobile=width<650;
+ const [manualLabel,setManualLabel]=useState('');
  const [rows,setRows]=useState<string[][]>(initialRows.map(r=>[...r]));
  const [selected,setSelected]=useState('B2'),[clipboard,setClipboard]=useState(''),[history,setHistory]=useState<string[][]|null>(null);
  const [format,setFormat]=useState({bold:false,underline:false,percent:false,table:false,filter:false});
@@ -100,12 +102,48 @@ export default function HandsOnLab({mode,active,runId}:{mode:LabMode;active:Keyb
    else setCadInfo('Aktywne polecenie: '+active.label+'. To uproszczony widok ćwiczenia.');
   }
  },[runId]);
+ function tapCommand(command:string){
+  if(excel){
+   if(command==='SUMA'){setSelected('E5');applyValue('=SUM(E2:E4)','E5');setStatus('SUMA liczy razem wartości z E2, E3 i E4.');}
+   else if(command==='FORMULA'){setSelected('E2');applyValue('=C2*D2','E2');setStatus('Mnożenie: ilość C2 razy cena D2.');}
+   else if(command==='WYKRES'){setChart(v=>!v);setStatus('Wykres porównuje wartości pozycji kosztorysu.');}
+   else if(command==='COFNIJ'){if(history){setRows(history.map(r=>[...r]));setStatus('Cofnięto ostatnią edycję.')}else setStatus('Najpierw zmień wartość w komórce.');}
+   else if(command==='RESET'){setRows(initialRows.map(r=>[...r]));setSelected('B2');setChart(false);setStatus('Wrócono do przykładowego kosztorysu.');}
+  }else{
+   const kinds:Record<string,Shape['kind']>={LINIA:'line',OKRAG:'circle',PROSTOKAT:'rect'};
+   if(kinds[command]){
+    setShapes(old=>[...old.slice(-13),{id:Math.max(0,...old.map(v=>v.id))+1,kind:kinds[command],
+     x:35+(old.length*39)%160,y:25+(old.length*27)%92,size:1,rotation:0,layer}]);
+    setCadInfo(command==='LINIA'?'Narysowano linię. Zobacz jej położenie na siatce.':
+     command==='OKRAG'?'Dodano okrąg. Pomyśl, jak określa się środek i promień.':
+     'Dodano prostokąt. Sprawdź jego cztery krawędzie.');
+   }else if(command==='KOPIA'){
+    setShapes(old=>{const last=old[old.length-1];return [...old.slice(-13),{...last,id:Math.max(...old.map(v=>v.id))+1,x:Math.min(215,last.x+42),y:Math.min(145,last.y+28)}]});
+    setCadInfo('Powstała kopia ostatniego obiektu; oryginał pozostaje na miejscu.');
+   }else if(command==='COFNIJ'){setShapes(old=>old.length>1?old.slice(0,-1):old);setCadInfo('Cofnięto ostatni utworzony obiekt.');}
+   else if(command==='RESET'){setShapes(initialDrawing);setCadInfo('Rysunek przywrócony do stanu początkowego.');}
+   setStatus('Wykonano polecenie przyciskiem ekranowym.');
+  }
+  setManualLabel(command);
+ }
+ const touchActions=excel?
+  [{code:'FORMULA',title:'Formuła ×'},{code:'SUMA',title:'Suma ∑'},{code:'WYKRES',title:'Wykres ▥'},{code:'COFNIJ',title:'Cofnij ↶'},{code:'RESET',title:'Od nowa'}]:
+  [{code:'LINIA',title:'Linia ╱'},{code:'OKRAG',title:'Okrąg ○'},{code:'PROSTOKAT',title:'Prostokąt ▭'},{code:'KOPIA',title:'Kopiuj ⧉'},{code:'COFNIJ',title:'Cofnij ↶'},{code:'RESET',title:'Od nowa'}];
  const selectedValue=evaluate(rows,selected);
  const chartValues=[Number(rows[1]?.[2]||0)*Number(rows[1]?.[3]||0),Number(rows[2]?.[2]||0)*Number(rows[2]?.[3]||0),Number(rows[3]?.[2]||0)*Number(rows[3]?.[3]||0)];
  return <View style={{backgroundColor:'white',padding:16,borderRadius:16,borderWidth:1,borderColor:'#d5e4d2',gap:13}}>
   <Text style={{color:'#68816a',fontSize:12,fontWeight:'900'}}>WARSZTAT INTERAKTYWNY · {excel?'EXCEL':'AUTOCAD'}</Text>
   <Text style={{fontSize:20,fontWeight:'900',color:ink}}>{excel?'Kosztorys prac — ćwiczenie':'Szkic pomieszczenia — ćwiczenie'}</Text>
-  <Text style={{color:'#526a56',lineHeight:21}}>Najpierw wybierz polecenie w lekcji. Każde wykonanie zmienia ten przykład — możesz też samodzielnie pracować na polu ćwiczenia.</Text>
+  <Text style={{color:'#526a56',lineHeight:21,fontSize:14}}>Wybierz polecenie, sprawdź zmianę na ekranie, a potem wykonaj zadanie.</Text>
+  {mobile&&<View style={{backgroundColor:'#edf5e8',padding:11,borderRadius:12,gap:9}}>
+   <Text style={{color:ink,fontWeight:'900',fontSize:13}}>Sterowanie dotykiem · bez klawiatury</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+    {touchActions.map(a=><Pressable key={a.code} accessibilityRole="button" onPress={()=>tapCommand(a.code)}
+     style={{minHeight:46,justifyContent:'center',paddingVertical:10,paddingHorizontal:12,borderRadius:9,backgroundColor:manualLabel===a.code?ink:'white',borderWidth:1,borderColor:'#c6dbc3'}}>
+     <Text style={{color:manualLabel===a.code?'white':ink,fontWeight:'900',fontSize:13}}>{a.title}</Text>
+    </Pressable>)}
+   </View>
+  </View>}
   {excel?<View style={{gap:10}}>
    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
     <Text style={{fontWeight:'800',color:ink}}>Arkusz {sheet} · {selected}</Text>
