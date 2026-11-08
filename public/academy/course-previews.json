@@ -1,0 +1,326 @@
+{
+  "brygadzista": {
+    "course_slug": "brygadzista",
+    "curiosity": "Dobra odprawa trwa krótko, ale jej brak potrafi zepsuć cały dzień na budowie.",
+    "scenario": "Dwóch pracowników czeka na materiał, a inna ekipa już chce wejść na ten sam podest. Kto i co ustala najpierw?",
+    "outcome_1": "Przydzielisz pracę tak, żeby nikt nie zgadywał, za co odpowiada.",
+    "outcome_2": "Poprowadzisz konkretną odprawę i zauważysz ryzyko przed rozpoczęciem pracy.",
+    "outcome_3": "Zapiszesz opóźnienia i ustalenia bez obwiniania ludzi.",
+    "source_url": null
+  },
+  "kierownik-budowy": {
+    "course_slug": "kierownik-budowy",
+    "curiosity": "Najdroższe błędy na budowie często zaczynają się od niepotwierdzonej zmiany.",
+    "scenario": "Produkcja pracuje według starego rysunku, a na budowie jest już nowa rewizja. Co robisz?",
+    "outcome_1": "Ułożysz plan zależności zamiast listy życzeń.",
+    "outcome_2": "Nauczysz się rozpoznawać zmianę, która wymaga pisemnego potwierdzenia.",
+    "outcome_3": "Przećwiczysz rozmowę o opóźnieniu bez szukania winnych.",
+    "source_url": null
+  },
+  "lepszy-szef": {
+    "course_slug": "lepszy-szef",
+    "curiosity": "Ludzie rzadko czytają w myślach szefa — nawet najlepsi potrzebują jasnych oczekiwań.",
+    "scenario": "Mówisz „zrób to dobrze”, ale trzy osoby rozumieją to inaczej. Co zmienisz?",
+    "outcome_1": "Zaczniesz delegować wynik, termin i odpowiedzialność.",
+    "outcome_2": "Przećwiczysz trudny feedback bez upokarzania.",
+    "outcome_3": "Ułożysz plan rozmowy, gdy zespół traci zaufanie.",
+    "source_url": null
+  },
+  "apartamenty": {
+    "course_slug": "apartamenty",
+    "curiosity": "Gość nie widzi Twojej listy kontrolnej — widzi jeden włos w łazience.",
+    "scenario": "Gość przyjeżdża za 40 minut, a poprzedni zostawił uszkodzoną lampę.",
+    "outcome_1": "Zbudujesz listę kontroli gotowości apartamentu.",
+    "outcome_2": "Nauczysz się dokumentować szkody i zmiany stanu lokalu.",
+    "outcome_3": "Przećwiczysz spokojną komunikację z gościem.",
+    "source_url": null
+  },
+  "gpsr": {
+    "course_slug": "gpsr",
+    "curiosity": "Mały handmade nie oznacza, że bezpieczeństwo produktu można pominąć.",
+    "scenario": "Sprzedajesz świeczkę online i klient pyta o bezpieczne użytkowanie. Jakie informacje przygotujesz?",
+    "outcome_1": "Zrozumiesz własną rolę w łańcuchu sprzedaży.",
+    "outcome_2": "Sporządzisz praktyczny szkic analizy ryzyka.",
+    "outcome_3": "Sprawdzisz opisy i oznakowanie produktu.",
+    "source_url": null
+  },
+  "bdo": {
+    "course_slug": "bdo",
+    "curiosity": "To, że wysyłasz tylko kilka paczek, nie oznacza, że temat opakowań Cię nie dotyczy.",
+    "scenario": "Kupujesz pudełka i wysyłasz towar do klientów. Czy wiesz, co musisz udokumentować?",
+    "outcome_1": "Odróżnisz obowiązki zależne od rodzaju działalności.",
+    "outcome_2": "Przygotujesz listę dokumentów i prosty obieg danych.",
+    "outcome_3": "Nauczysz się weryfikować aktualne wymagania zamiast zgadywać.",
+    "source_url": null
+  },
+  "dostepne-pdf": {
+    "course_slug": "dostepne-pdf",
+    "curiosity": "Dla czytnika ekranu duży pogrubiony napis nie zawsze jest nagłówkiem.",
+    "scenario": "Dostajesz PDF, który na telefonie wygląda ładnie, ale nie da się po nim wygodnie poruszać.",
+    "outcome_1": "Zbudujesz logiczną hierarchię nagłówków.",
+    "outcome_2": "Napiszesz sensowne opisy grafik i tabel.",
+    "outcome_3": "Sprawdzisz dokument przed publikacją.",
+    "source_url": null
+  },
+  "kgw": {
+    "course_slug": "kgw",
+    "curiosity": "Najłatwiej rozliczać dotację, gdy dokumenty zbierasz od pierwszego dnia, nie ostatniego.",
+    "scenario": "Koło organizuje wydarzenie, a faktury przynoszą różne osoby i w różnym czasie.",
+    "outcome_1": "Rozpiszesz budżet zgodnie z kategoriami wydatków.",
+    "outcome_2": "Przygotujesz prosty rejestr dokumentów.",
+    "outcome_3": "Wychwycisz brakujące załączniki przed rozliczeniem.",
+    "source_url": null
+  },
+  "festyn": {
+    "course_slug": "festyn",
+    "curiosity": "Stoisko, które wygląda świetnie, może przegrać przez brak planu porcji i kolejki.",
+    "scenario": "Na festynie nagle zaczyna padać, a przy stoisku ustawia się dwadzieścia osób.",
+    "outcome_1": "Oszacujesz porcje i niezbędne zapasy.",
+    "outcome_2": "Podzielisz obowiązki i przygotujesz stanowisko.",
+    "outcome_3": "Uwzględnisz higienę żywności i plan awaryjny.",
+    "source_url": null
+  },
+  "petsitter": {
+    "course_slug": "petsitter",
+    "curiosity": "Dla kota spokojna rutyna bywa ważniejsza niż dużo uwagi od obcej osoby.",
+    "scenario": "Wchodzisz do mieszkania, a kota nigdzie nie widać. Co sprawdzasz w pierwszej kolejności?",
+    "outcome_1": "Przygotujesz wywiad z opiekunem zwierzęcia.",
+    "outcome_2": "Zadbasz o bezpieczeństwo podczas wizyty.",
+    "outcome_3": "Nauczysz się dokumentować obserwacje bez diagnozowania.",
+    "source_url": null
+  },
+  "odbiory": {
+    "course_slug": "odbiory",
+    "curiosity": "Zdjęcie usterki bez punktu odniesienia może niewiele powiedzieć po kilku miesiącach.",
+    "scenario": "Widzisz rysę na szybie. Jak ją opiszesz, żeby można ją było później odnaleźć?",
+    "outcome_1": "Ułożysz metodę oględzin pomieszczenie po pomieszczeniu.",
+    "outcome_2": "Zrobisz czytelne zdjęcia i opisy lokalizacji.",
+    "outcome_3": "Oddzielisz obserwację od oceny przyczyny.",
+    "source_url": null
+  },
+  "wspolnota": {
+    "course_slug": "wspolnota",
+    "curiosity": "Wspólnota to ludzie, pieniądze i decyzje — a nie tylko klatka schodowa.",
+    "scenario": "Jeden mieszkaniec zgłasza awarię, drugi chce znać koszty, a termin zebrania się zbliża.",
+    "outcome_1": "Przygotujesz prosty rejestr spraw.",
+    "outcome_2": "Zrozumiesz różnicę między budżetem a rozliczeniem.",
+    "outcome_3": "Ułatwisz komunikację z właścicielami lokali.",
+    "source_url": null
+  },
+  "pasieka": {
+    "course_slug": "pasieka",
+    "curiosity": "Pierwsza pasieka zaczyna się od planu miejsca i bezpieczeństwa, nie od słoika miodu.",
+    "scenario": "Masz miejsce na ule, ale obok jest ścieżka i sąsiedzi. Co sprawdzić przed zakupem rodzin?",
+    "outcome_1": "Przygotujesz plan sezonu i wyposażenia.",
+    "outcome_2": "Zrozumiesz podstawowe zasady bezpiecznej pracy.",
+    "outcome_3": "Nauczysz się obserwować i notować zmiany w pasiece.",
+    "source_url": null
+  },
+  "koordynator": {
+    "course_slug": "koordynator",
+    "curiosity": "W małej firmie pierwsze zlecenie bywa mniej trudne od poprawnego policzenia jego kosztu.",
+    "scenario": "Klient prosi o wycenę bez zdjęć i bez metrażu. Jak unikniesz zgadywania?",
+    "outcome_1": "Ułożysz wywiad przed wyceną.",
+    "outcome_2": "Policzysz czas, materiały i koszty dojazdu.",
+    "outcome_3": "Przygotujesz protokół odbioru i komunikację z klientem.",
+    "source_url": null
+  },
+  "dziennik-kota": {
+    "course_slug": "dziennik-kota",
+    "curiosity": "Hotelik dla kotów powinien być spokojnym i bezpiecznym miejscem, a nie tylko wolnym pokojem.",
+    "scenario": "Opiekun informuje o specjalnej diecie dopiero przy przyjęciu kota. Co powinieneś zrobić?",
+    "outcome_1": "Przygotujesz checklistę przyjęcia.",
+    "outcome_2": "Zorganizujesz bezpieczną przestrzeń i rutynę.",
+    "outcome_3": "Nauczysz się przekazywać właścicielowi rzetelne obserwacje.",
+    "source_url": null
+  },
+  "opieka-seniorzy": {
+    "course_slug": "opieka-seniorzy",
+    "curiosity": "Pomoc jest dobra wtedy, gdy nie odbiera drugiej osobie godności i samodzielności.",
+    "scenario": "Starsza osoba mówi: „Poradzę sobie”, ale widzisz, że poruszanie sprawia jej trudność.",
+    "outcome_1": "Porozmawiasz z szacunkiem, bez wyręczania na siłę.",
+    "outcome_2": "Zaplanujesz bezpieczną codzienną rutynę.",
+    "outcome_3": "Rozpoznasz granice obowiązków opiekuna i sytuacje wymagające pomocy specjalistycznej.",
+    "source_url": null
+  },
+  "wsparcie-adhd": {
+    "course_slug": "wsparcie-adhd",
+    "curiosity": "Ktoś może naprawdę chcieć wykonać zadanie i nadal mieć trudność z rozpoczęciem go.",
+    "scenario": "Mówisz „posprzątaj pokój”, a po godzinie nic się nie wydarzyło. Jak inaczej pomożesz?",
+    "outcome_1": "Rozbijesz duże zadanie na konkretne kroki.",
+    "outcome_2": "Ułożysz prostą rutynę, która zmniejsza chaos.",
+    "outcome_3": "Przećwiczysz spokojne komunikaty i dostosowanie otoczenia.",
+    "source_url": "https://www.cdc.gov/adhd/treatment/behavior-therapy.html"
+  },
+  "poznaj-siebie": {
+    "course_slug": "poznaj-siebie",
+    "curiosity": "Łatwo powiedzieć, kim jesteś z zawodu. Trudniej odpowiedzieć: co jest naprawdę moje?",
+    "scenario": "Otrzymujesz świetną propozycję, ale czujesz, że nie pasuje do Twoich wartości.",
+    "outcome_1": "Rozpoznasz swoje mocne strony poza etykietami.",
+    "outcome_2": "Nazwiesz potrzeby, które często odkładasz.",
+    "outcome_3": "Zrobisz mapę decyzji opartą na własnych wartościach.",
+    "source_url": null
+  },
+  "mocny-charakter": {
+    "course_slug": "mocny-charakter",
+    "curiosity": "Stanowczość nie oznacza głośnego głosu. Czasem oznacza spokojne „nie”.",
+    "scenario": "Znajomy kolejny raz prosi o przysługę, na którą nie masz czasu.",
+    "outcome_1": "Przećwiczysz odmawianie bez agresji.",
+    "outcome_2": "Odróżnisz własne zasady od presji otoczenia.",
+    "outcome_3": "Zbudujesz prosty plan konsekwentnych działań.",
+    "source_url": null
+  },
+  "zwiazek-rozmowa": {
+    "course_slug": "zwiazek-rozmowa",
+    "curiosity": "Można spędzać ze sobą cały wieczór i wcale się nie usłyszeć.",
+    "scenario": "Jedno mówi o zmęczeniu, drugie słyszy pretensję. Jak zatrzymać spiralę?",
+    "outcome_1": "Nauczysz się słuchać bez gotowej riposty.",
+    "outcome_2": "Powiesz o potrzebach bez oskarżeń.",
+    "outcome_3": "Przećwiczysz rozmowę po konflikcie.",
+    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+  },
+  "blizej-dziecka": {
+    "course_slug": "blizej-dziecka",
+    "curiosity": "Czasem najlepsze pytanie do dziecka brzmi po prostu: „Co było dziś dla ciebie ważne?”.",
+    "scenario": "Dziecko wraca ze szkoły milczące. Chcesz pomóc, ale każde pytanie kończy się „nic”.",
+    "outcome_1": "Zaczniesz rozmowy bez przesłuchania.",
+    "outcome_2": "Stworzysz małe rytuały wspólnego czasu.",
+    "outcome_3": "Nauczysz się reagować na emocje bez zawstydzania.",
+    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+  },
+  "rodzice-50-50": {
+    "course_slug": "rodzice-50-50",
+    "curiosity": "Dla dziecka dwa domy nie muszą oznaczać dwóch zupełnie różnych światów.",
+    "scenario": "Zbliża się zmiana opieki; brakuje stroju na WF i informacji o sprawdzianie.",
+    "outcome_1": "Przygotujesz spokojny harmonogram dwóch domów.",
+    "outcome_2": "Ułożysz neutralną komunikację między rodzicami.",
+    "outcome_3": "Ograniczysz sytuacje, w których dziecko staje się posłańcem.",
+    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+  },
+  "zaczynam-od-zera": {
+    "course_slug": "zaczynam-od-zera",
+    "curiosity": "Po stracie to, co nadal masz, może być ważniejsze od tego, czego już nie ma.",
+    "scenario": "Budzi Cię stres o rachunki i trudno zdecydować, od czego zacząć.",
+    "outcome_1": "Rozdzielisz sprawy pilne od ważnych.",
+    "outcome_2": "Zbudujesz prostą mapę kosztów i dostępnych zasobów.",
+    "outcome_3": "Ułożysz bezpieczny plan małych kroków bez obietnic szybkiego wzbogacenia.",
+    "source_url": null
+  },
+  "obowiazki-domowe": {
+    "course_slug": "obowiazki-domowe",
+    "curiosity": "Największe konflikty o porządek często dotyczą nie samych zadań, lecz niewypowiedzianych oczekiwań.",
+    "scenario": "Jedna osoba sprząta, druga mówi „nie wiedziałem, że trzeba”.",
+    "outcome_1": "Zrobisz jasną listę obowiązków.",
+    "outcome_2": "Podzielisz zadania odpowiednio do możliwości domowników.",
+    "outcome_3": "Utrzymasz prosty system bez ciągłych przypomnień.",
+    "source_url": null
+  },
+  "lepszy-cukiernik": {
+    "course_slug": "lepszy-cukiernik",
+    "curiosity": "Dwa identyczne przepisy mogą dać inny wynik przez temperaturę i sposób mieszania.",
+    "scenario": "Biszkopt raz rośnie idealnie, a raz opada. Co warto zanotować?",
+    "outcome_1": "Nauczysz się kontrolować proporcje i proces.",
+    "outcome_2": "Zorganizujesz pracę w bezpieczny sposób.",
+    "outcome_3": "Policzysz koszt porcji i ograniczysz straty.",
+    "source_url": null
+  },
+  "lepszy-kucharz": {
+    "course_slug": "lepszy-kucharz",
+    "curiosity": "W kuchni kolejność przygotowania składników często decyduje o spokoju podczas gotowania.",
+    "scenario": "Goście przychodzą wcześniej, a składniki do trzech dań nie są przygotowane.",
+    "outcome_1": "Zorganizujesz mise en place.",
+    "outcome_2": "Przećwiczysz podstawy temperatury i technik.",
+    "outcome_3": "Zbudujesz smak bez niepotrzebnego chaosu.",
+    "source_url": null
+  },
+  "nie-lubie-ludzi": {
+    "course_slug": "nie-lubie-ludzi",
+    "curiosity": "Nie trzeba być duszą towarzystwa, żeby mieć dobre relacje. Introwersja nie jest wadą.",
+    "scenario": "Po kilku spotkaniach czujesz wyczerpanie i zaczynasz unikać wszystkich.",
+    "outcome_1": "Rozpoznasz, co naprawdę Cię męczy w kontaktach.",
+    "outcome_2": "Nauczysz się granic bez poczucia winy.",
+    "outcome_3": "Spróbujesz małych, bezpiecznych kroków w budowaniu relacji.",
+    "source_url": null
+  },
+  "jak-kupic-samochod": {
+    "course_slug": "jak-kupic-samochod",
+    "curiosity": "Niska cena z ogłoszenia nie oznacza niskiego kosztu pierwszego roku.",
+    "scenario": "Auto wygląda świetnie na zdjęciach, ale sprzedający nie chce pokazać historii serwisowej.",
+    "outcome_1": "Zrobisz listę kosztów poza ceną zakupu.",
+    "outcome_2": "Sprawdzisz dokumenty i przygotujesz oględziny.",
+    "outcome_3": "Zbudujesz własną checklistę jazdy próbnej.",
+    "source_url": null
+  },
+  "mierz-ponad-sily": {
+    "course_slug": "mierz-ponad-sily",
+    "curiosity": "Dyplom pomaga w wielu drogach, ale nie zastępuje działania — tak jak działanie nie zastępuje wymaganych uprawnień.",
+    "scenario": "Masz pomysł na projekt, lecz myślisz: „Nie mam odpowiedniej szkoły, więc nawet nie spróbuję”.",
+    "outcome_1": "Rozpoznasz kompetencje, które już masz.",
+    "outcome_2": "Rozłożysz ambitny cel na możliwe kroki.",
+    "outcome_3": "Zaczniesz budować portfolio zamiast tylko opowiadać o planach.",
+    "source_url": null
+  },
+  "excel-skroty": {
+    "course_slug": "excel-skroty",
+    "curiosity": "Jedna kombinacja klawiszy może zastąpić kilkanaście kliknięć myszą.",
+    "scenario": "Masz 500 wierszy danych i codziennie ręcznie przewijasz arkusz.",
+    "outcome_1": "Poznasz najpraktyczniejsze skróty poruszania się.",
+    "outcome_2": "Przećwiczysz szybką edycję i formatowanie.",
+    "outcome_3": "Zapiszesz własną ściągę do pracy.",
+    "source_url": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f"
+  },
+  "autocad-skroty": {
+    "course_slug": "autocad-skroty",
+    "curiosity": "W AutoCADzie szybka komenda często jest prostsza niż szukanie ikony w menu.",
+    "scenario": "Rysujesz serię jednakowych detali i wciąż wracasz do panelu narzędzi.",
+    "outcome_1": "Poznasz podstawowe komendy i aliasy.",
+    "outcome_2": "Przećwiczysz kopiowanie, modyfikację i nawigację.",
+    "outcome_3": "Przygotujesz własną listę skrótów do projektów.",
+    "source_url": null
+  },
+  "google-ads-promocja": {
+    "course_slug": "google-ads-promocja",
+    "curiosity": "Dużo kliknięć nie musi oznaczać dobrego wyniku biznesowego.",
+    "scenario": "Reklama wydaje budżet, ale telefon milczy. Co sprawdzisz przed zwiększeniem wydatków?",
+    "outcome_1": "Dobierzesz cel kampanii do realnej potrzeby.",
+    "outcome_2": "Nauczysz się mierzyć sensowne konwersje.",
+    "outcome_3": "Przygotujesz listę słów i wykluczeń.",
+    "source_url": null
+  },
+  "facebook-ads-promocja": {
+    "course_slug": "facebook-ads-promocja",
+    "curiosity": "Ładna grafika nie pomoże, jeśli trafia do niewłaściwej grupy.",
+    "scenario": "Promujesz usługę lokalną, a reklama dociera do osób z drugiego końca kraju.",
+    "outcome_1": "Dobierzesz odbiorców i komunikat.",
+    "outcome_2": "Przygotujesz proste testy dwóch reklam.",
+    "outcome_3": "Sprawdzisz wynik przed podniesieniem budżetu.",
+    "source_url": null
+  },
+  "swiety-mikolaj": {
+    "course_slug": "swiety-mikolaj",
+    "curiosity": "Najlepszy Mikołaj nie pyta dziecka, czy było grzeczne — najpierw okazuje mu życzliwość.",
+    "scenario": "Dziecko boi się brody i nie chce podejść. Jak zachowasz świąteczny nastrój bez naciskania?",
+    "outcome_1": "Przygotujesz bezpieczną wizytę.",
+    "outcome_2": "Przećwiczysz ciepłe rozmowy z dziećmi.",
+    "outcome_3": "Ułożysz listę małych dobrych uczynków.",
+    "source_url": null
+  },
+  "lepszy-tata": {
+    "course_slug": "lepszy-tata",
+    "curiosity": "Dziecko nie potrzebuje taty idealnego. Potrzebuje taty, do którego może wrócić także po trudnym dniu.",
+    "scenario": "Odbierasz dziecko po tygodniu rozłąki, a ono zamiast przytulenia mówi tylko „cześć”.",
+    "outcome_1": "Zaczniesz rozmawiać bez naciskania na odpowiedź.",
+    "outcome_2": "Zbudujesz wspólne rytuały nawet w dwóch domach.",
+    "outcome_3": "Przećwiczysz spokojne granice i naprawianie relacji.",
+    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+  },
+  "lepsza-mama": {
+    "course_slug": "lepsza-mama",
+    "curiosity": "Dbanie o własną równowagę nie jest przeciwieństwem troski o dziecko.",
+    "scenario": "Po trudnym dniu dziecko potrzebuje uwagi właśnie wtedy, gdy Ty nie masz już siły.",
+    "outcome_1": "Nauczysz się mówić o emocjach bez obwiniania.",
+    "outcome_2": "Znajdziesz małe sposoby na wspólny spokojny czas.",
+    "outcome_3": "Przećwiczysz granice i proszenie o wsparcie.",
+    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+  }
+}
