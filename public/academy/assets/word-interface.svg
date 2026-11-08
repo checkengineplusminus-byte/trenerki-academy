@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Word — wstążka, narzędzia i kartka">
+<rect width="1200" height="720" rx="26" fill="#f4f8f1"/>
+<text x="45" y="59" fill="#173d2a" font-size="30" font-weight="900" font-family="Arial, sans-serif">Word — wstążka, narzędzia i kartka</text>
+<text x="45" y="90" fill="#627b64" font-size="17" font-family="Arial, sans-serif">Autorska wizualizacja funkcji programu — schemat edukacyjny, wygląd może różnić się w zależności od wersji.</text>
+
+<rect x="45" y="115" width="1110" height="530" rx="17" fill="#e4eaf5" stroke="#a1bbcc"/>
+<rect x="45" y="115" width="1110" height="59" rx="16" fill="#2658a5" stroke="none"/><text x="72" y="154" font-size="23" fill="white" font-weight="600" font-family="Arial, sans-serif">Word — Oferta.docx</text>
+<rect x="65" y="191" width="70" height="39" rx="9" fill="#f2f5f4" stroke="none"/><text x="77" y="217" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Plik</text><rect x="151" y="191" width="144" height="39" rx="9" fill="#d7e8fa" stroke="none"/><text x="163" y="217" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Narzędzia</text><rect x="304" y="191" width="134" height="39" rx="9" fill="#e8edf4" stroke="none"/><text x="316" y="217" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Wstawianie</text><rect x="450" y="191" width="88" height="39" rx="9" fill="#e8edf4" stroke="none"/><text x="462" y="217" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Układ</text>
+<rect x="551" y="191" width="115" height="39" rx="9" fill="#e8edf4" stroke="none"/><text x="563" y="217" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Recenzja</text><rect x="679" y="191" width="82" height="39" rx="9" fill="#e8edf4" stroke="none"/><text x="691" y="217" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Widok</text>
+<rect x="80" y="252" width="1040" height="62" rx="8" fill="#f8fafc" stroke="none"/>
+<text x="113" y="289" font-size="22" fill="#2658a5" font-weight="600" font-family="Arial, sans-serif">B</text><text x="172" y="289" font-size="22" fill="#2658a5" font-weight="600" font-family="Arial, sans-serif">I</text><text x="211" y="289" font-size="22" fill="#2658a5" font-weight="600" font-family="Arial, sans-serif">U</text>
+<text x="277" y="288" font-size="16" fill="#4a6486" font-weight="600" font-family="Arial, sans-serif">Czcionka: Aptos      12 pkt      Wyrównanie      Nagłówki</text>
+<rect x="260" y="330" width="710" height="292" rx="7" fill="white" stroke="#c4cfdd"/>
+<text x="315" y="387" font-size="26" fill="#243e6a" font-weight="800" font-family="Arial, sans-serif">Potwierdzenie terminu</text>
+<text x="315" y="439" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Szanowni Państwo,</text>
+<text x="315" y="481" font-size="17" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">potwierdzamy spotkanie w ustalonym terminie.</text>
+<text x="315" y="525" font-size="17" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Prosimy o potwierdzenie obecności.</text>
+<text x="315" y="579" font-size="17" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Z poważaniem, TRENERKI</text>
+<circle cx="68" cy="326" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="62" y="333" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">1</text><text x="97" y="332" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Wstążka narzędzi</text>
+<circle cx="976" cy="402" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="970" y="409" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">2</text><text x="1005" y="408" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Edytowalna strona</text>
+<text x="49" y="694" font-family="Arial, sans-serif" font-size="15" fill="#607b67">TRENERKI ACADEMY · oryginalna ilustracja edukacyjna</text>
+</svg>
