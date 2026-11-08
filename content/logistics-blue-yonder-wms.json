@@ -1,0 +1,1333 @@
+{
+  "schema_version": 2,
+  "course_slug": "blue-yonder-wms",
+  "intro": "Blue Yonder oferuje zarządzanie magazynem połączone z planowaniem pracy, slottingiem, optymalizacją ruchu i automatyką. Funkcje AI są narzędziem wsparcia, nie zastępują decyzji operatora.",
+  "source": "https://blueyonder.com/solutions/warehouse-management",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Operacje magazynowe",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 0,
+      "title_pl": "Co robi Blue Yonder WMS",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co robi Blue Yonder WMS",
+          "WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę.",
+          "Gdzie wykorzystasz tę wiedzę: Nowy magazynier myli zamówienie sprzedaży z zadaniem fizycznym. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Rozpoznaj dokument źródłowy i zadanie magazynowe. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę.",
+          "situation": "Nowy magazynier myli zamówienie sprzedaży z zadaniem fizycznym.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Rozpoznaj dokument źródłowy i zadanie magazynowe.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Rozpoznaj dokument źródłowy i zadanie magazynowe.",
+          "explanation": "WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę.",
+          "feedback": [
+            "Tak. WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę.",
+            "Nie. WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę.",
+            "Nie. WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Rozpoznaj dokument źródłowy i zadanie magazynowe."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Nowy magazynier myli zamówienie sprzedaży z zadaniem fizycznym.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 1,
+      "title_pl": "Menu pracownika i supervisor",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Menu pracownika i supervisor",
+          "Ekrany mogą się różnić zależnie od roli i konfiguracji.",
+          "Gdzie wykorzystasz tę wiedzę: Picker nie widzi ustawień slottingu. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Weryfikuj uprawnienia bez nadawania operatorowi roli administratora. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Ekrany mogą się różnić zależnie od roli i konfiguracji.",
+          "situation": "Picker nie widzi ustawień slottingu.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Weryfikuj uprawnienia bez nadawania operatorowi roli administratora.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Weryfikuj uprawnienia bez nadawania operatorowi roli administratora.",
+          "explanation": "Ekrany mogą się różnić zależnie od roli i konfiguracji.",
+          "feedback": [
+            "Tak. Ekrany mogą się różnić zależnie od roli i konfiguracji.",
+            "Nie. Ekrany mogą się różnić zależnie od roli i konfiguracji.",
+            "Nie. Ekrany mogą się różnić zależnie od roli i konfiguracji."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Weryfikuj uprawnienia bez nadawania operatorowi roli administratora."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Picker nie widzi ustawień slottingu.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 2,
+      "title_pl": "SKU, UOM i lokalizacja",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "SKU, UOM i lokalizacja",
+          "Jednostki i miejsca muszą być jednoznaczne.",
+          "Gdzie wykorzystasz tę wiedzę: 12 kartonów zostało zinterpretowanych jako 12 sztuk. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź UOM oraz przelicznik przed przyjęciem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Jednostki i miejsca muszą być jednoznaczne.",
+          "situation": "12 kartonów zostało zinterpretowanych jako 12 sztuk.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź UOM oraz przelicznik przed przyjęciem.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź UOM oraz przelicznik przed przyjęciem.",
+          "explanation": "Jednostki i miejsca muszą być jednoznaczne.",
+          "feedback": [
+            "Tak. Jednostki i miejsca muszą być jednoznaczne.",
+            "Nie. Jednostki i miejsca muszą być jednoznaczne.",
+            "Nie. Jednostki i miejsca muszą być jednoznaczne."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź UOM oraz przelicznik przed przyjęciem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: 12 kartonów zostało zinterpretowanych jako 12 sztuk.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 3,
+      "title_pl": "Inventory visibility",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Inventory visibility",
+          "Widoczność zapasów wymaga zgodności danych z rzeczywistym stanem.",
+          "Gdzie wykorzystasz tę wiedzę: System pokazuje 45 dostępnych, na podłodze widać 50. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź rezerwacje i blokady jakości. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Widoczność zapasów wymaga zgodności danych z rzeczywistym stanem.",
+          "situation": "System pokazuje 45 dostępnych, na podłodze widać 50.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź rezerwacje i blokady jakości.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rezerwacje i blokady jakości.",
+          "explanation": "Widoczność zapasów wymaga zgodności danych z rzeczywistym stanem.",
+          "feedback": [
+            "Tak. Widoczność zapasów wymaga zgodności danych z rzeczywistym stanem.",
+            "Nie. Widoczność zapasów wymaga zgodności danych z rzeczywistym stanem.",
+            "Nie. Widoczność zapasów wymaga zgodności danych z rzeczywistym stanem."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź rezerwacje i blokady jakości."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: System pokazuje 45 dostępnych, na podłodze widać 50.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 4,
+      "title_pl": "ASN i plan dostawy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ASN i plan dostawy",
+          "Awizo przygotowuje obsadę i miejsce odbioru.",
+          "Gdzie wykorzystasz tę wiedzę: Przyjechał niespodziewany transport bez numeru awiza. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zidentyfikuj dostawę przed jej zaksięgowaniem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Awizo przygotowuje obsadę i miejsce odbioru.",
+          "situation": "Przyjechał niespodziewany transport bez numeru awiza.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zidentyfikuj dostawę przed jej zaksięgowaniem.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj dostawę przed jej zaksięgowaniem.",
+          "explanation": "Awizo przygotowuje obsadę i miejsce odbioru.",
+          "feedback": [
+            "Tak. Awizo przygotowuje obsadę i miejsce odbioru.",
+            "Nie. Awizo przygotowuje obsadę i miejsce odbioru.",
+            "Nie. Awizo przygotowuje obsadę i miejsce odbioru."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zidentyfikuj dostawę przed jej zaksięgowaniem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Przyjechał niespodziewany transport bez numeru awiza.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 5,
+      "title_pl": "Receiving i quality hold",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Receiving i quality hold",
+          "Towar uszkodzony nie powinien od razu trafić do dostępnego zapasu.",
+          "Gdzie wykorzystasz tę wiedzę: Jeden karton jest mokry po transporcie. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zarejestruj wyjątek i blokadę jakości. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Towar uszkodzony nie powinien od razu trafić do dostępnego zapasu.",
+          "situation": "Jeden karton jest mokry po transporcie.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zarejestruj wyjątek i blokadę jakości.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj wyjątek i blokadę jakości.",
+          "explanation": "Towar uszkodzony nie powinien od razu trafić do dostępnego zapasu.",
+          "feedback": [
+            "Tak. Towar uszkodzony nie powinien od razu trafić do dostępnego zapasu.",
+            "Nie. Towar uszkodzony nie powinien od razu trafić do dostępnego zapasu.",
+            "Nie. Towar uszkodzony nie powinien od razu trafić do dostępnego zapasu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zarejestruj wyjątek i blokadę jakości."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Jeden karton jest mokry po transporcie.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 6,
+      "title_pl": "Putaway rules",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Putaway rules",
+          "Adres odkładania może zależeć od wagi, rotacji i ograniczeń.",
+          "Gdzie wykorzystasz tę wiedzę: Duża paleta została skierowana do zbyt niskiego miejsca. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wskaż wyjątek i zatwierdzoną alternatywną lokację. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Adres odkładania może zależeć od wagi, rotacji i ograniczeń.",
+          "situation": "Duża paleta została skierowana do zbyt niskiego miejsca.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wskaż wyjątek i zatwierdzoną alternatywną lokację.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Wskaż wyjątek i zatwierdzoną alternatywną lokację.",
+          "explanation": "Adres odkładania może zależeć od wagi, rotacji i ograniczeń.",
+          "feedback": [
+            "Tak. Adres odkładania może zależeć od wagi, rotacji i ograniczeń.",
+            "Nie. Adres odkładania może zależeć od wagi, rotacji i ograniczeń.",
+            "Nie. Adres odkładania może zależeć od wagi, rotacji i ograniczeń."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wskaż wyjątek i zatwierdzoną alternatywną lokację."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Duża paleta została skierowana do zbyt niskiego miejsca.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 7,
+      "title_pl": "Skanowanie RF",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Skanowanie RF",
+          "Skan potwierdza rzeczywisty ruch i redukuje pomyłki.",
+          "Gdzie wykorzystasz tę wiedzę: Numer regału jest nieczytelny. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Oznacz problem z etykietą zamiast zgadywać lokalizację. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Skan potwierdza rzeczywisty ruch i redukuje pomyłki.",
+          "situation": "Numer regału jest nieczytelny.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Oznacz problem z etykietą zamiast zgadywać lokalizację.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Oznacz problem z etykietą zamiast zgadywać lokalizację.",
+          "explanation": "Skan potwierdza rzeczywisty ruch i redukuje pomyłki.",
+          "feedback": [
+            "Tak. Skan potwierdza rzeczywisty ruch i redukuje pomyłki.",
+            "Nie. Skan potwierdza rzeczywisty ruch i redukuje pomyłki.",
+            "Nie. Skan potwierdza rzeczywisty ruch i redukuje pomyłki."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Oznacz problem z etykietą zamiast zgadywać lokalizację."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Numer regału jest nieczytelny.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 8,
+      "title_pl": "Zapas zarezerwowany",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Zapas zarezerwowany",
+          "Rezerwacja nie oznacza fizycznej wysyłki.",
+          "Gdzie wykorzystasz tę wiedzę: Dwa zamówienia czekają na ostatni egzemplarz. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź priorytet i alokację przed pickiem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Rezerwacja nie oznacza fizycznej wysyłki.",
+          "situation": "Dwa zamówienia czekają na ostatni egzemplarz.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź priorytet i alokację przed pickiem.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź priorytet i alokację przed pickiem.",
+          "explanation": "Rezerwacja nie oznacza fizycznej wysyłki.",
+          "feedback": [
+            "Tak. Rezerwacja nie oznacza fizycznej wysyłki.",
+            "Nie. Rezerwacja nie oznacza fizycznej wysyłki.",
+            "Nie. Rezerwacja nie oznacza fizycznej wysyłki."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź priorytet i alokację przed pickiem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwa zamówienia czekają na ostatni egzemplarz.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 9,
+      "title_pl": "Ćwiczenie: paleta 120 sztuk",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Ćwiczenie: paleta 120 sztuk",
+          "Porównaj awizo, LPN, ilość i adres putaway.",
+          "Gdzie wykorzystasz tę wiedzę: Na palecie naliczono 118 z deklarowanych 120. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Potwierdź 118 i odchylenie dwóch. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Porównaj awizo, LPN, ilość i adres putaway.",
+          "situation": "Na palecie naliczono 118 z deklarowanych 120.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Potwierdź 118 i odchylenie dwóch.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Potwierdź 118 i odchylenie dwóch.",
+          "explanation": "Porównaj awizo, LPN, ilość i adres putaway.",
+          "feedback": [
+            "Tak. Porównaj awizo, LPN, ilość i adres putaway.",
+            "Nie. Porównaj awizo, LPN, ilość i adres putaway.",
+            "Nie. Porównaj awizo, LPN, ilość i adres putaway."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Potwierdź 118 i odchylenie dwóch."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Na palecie naliczono 118 z deklarowanych 120.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 10,
+      "title_pl": "Warehouse operations",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Warehouse operations",
+          "Operator wykonuje przyjęcie, przeniesienie, picking i loading w zadanej kolejności.",
+          "Gdzie wykorzystasz tę wiedzę: Dostawa jest przyjęta, ale brak docelowej lokalizacji. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź niedokończony putaway. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Operator wykonuje przyjęcie, przeniesienie, picking i loading w zadanej kolejności.",
+          "situation": "Dostawa jest przyjęta, ale brak docelowej lokalizacji.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź niedokończony putaway.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź niedokończony putaway.",
+          "explanation": "Operator wykonuje przyjęcie, przeniesienie, picking i loading w zadanej kolejności.",
+          "feedback": [
+            "Tak. Operator wykonuje przyjęcie, przeniesienie, picking i loading w zadanej kolejności.",
+            "Nie. Operator wykonuje przyjęcie, przeniesienie, picking i loading w zadanej kolejności.",
+            "Nie. Operator wykonuje przyjęcie, przeniesienie, picking i loading w zadanej kolejności."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź niedokończony putaway."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dostawa jest przyjęta, ale brak docelowej lokalizacji.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 11,
+      "title_pl": "System-directed picking",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "System-directed picking",
+          "WMS może kierować do konkretnej lokacji według reguł.",
+          "Gdzie wykorzystasz tę wiedzę: W binie A brak zapasu, ale B ma 30. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zgłoś wyjątek i zweryfikuj strategię lokalizacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "WMS może kierować do konkretnej lokacji według reguł.",
+          "situation": "W binie A brak zapasu, ale B ma 30.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zgłoś wyjątek i zweryfikuj strategię lokalizacji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zgłoś wyjątek i zweryfikuj strategię lokalizacji.",
+          "explanation": "WMS może kierować do konkretnej lokacji według reguł.",
+          "feedback": [
+            "Tak. WMS może kierować do konkretnej lokacji według reguł.",
+            "Nie. WMS może kierować do konkretnej lokacji według reguł.",
+            "Nie. WMS może kierować do konkretnej lokacji według reguł."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zgłoś wyjątek i zweryfikuj strategię lokalizacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: W binie A brak zapasu, ale B ma 30.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 12,
+      "title_pl": "Wave / batch picking",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Wave / batch picking",
+          "Grupowanie pracy może redukować przejścia, ale nie może mieszać zamówień.",
+          "Gdzie wykorzystasz tę wiedzę: Dwie paczki mają podobne artykuły. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Skanuj order ID przy konsolidacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Grupowanie pracy może redukować przejścia, ale nie może mieszać zamówień.",
+          "situation": "Dwie paczki mają podobne artykuły.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Skanuj order ID przy konsolidacji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Skanuj order ID przy konsolidacji.",
+          "explanation": "Grupowanie pracy może redukować przejścia, ale nie może mieszać zamówień.",
+          "feedback": [
+            "Tak. Grupowanie pracy może redukować przejścia, ale nie może mieszać zamówień.",
+            "Nie. Grupowanie pracy może redukować przejścia, ale nie może mieszać zamówień.",
+            "Nie. Grupowanie pracy może redukować przejścia, ale nie może mieszać zamówień."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Skanuj order ID przy konsolidacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwie paczki mają podobne artykuły.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 13,
+      "title_pl": "Packing control",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Packing control",
+          "Pakowanie musi potwierdzić pełną listę pozycji przed etykietą.",
+          "Gdzie wykorzystasz tę wiedzę: Zamówienie ma 5 pozycji, w pudełku są 4. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zidentyfikuj brak przed finalizacją przesyłki. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Pakowanie musi potwierdzić pełną listę pozycji przed etykietą.",
+          "situation": "Zamówienie ma 5 pozycji, w pudełku są 4.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zidentyfikuj brak przed finalizacją przesyłki.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj brak przed finalizacją przesyłki.",
+          "explanation": "Pakowanie musi potwierdzić pełną listę pozycji przed etykietą.",
+          "feedback": [
+            "Tak. Pakowanie musi potwierdzić pełną listę pozycji przed etykietą.",
+            "Nie. Pakowanie musi potwierdzić pełną listę pozycji przed etykietą.",
+            "Nie. Pakowanie musi potwierdzić pełną listę pozycji przed etykietą."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zidentyfikuj brak przed finalizacją przesyłki."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zamówienie ma 5 pozycji, w pudełku są 4.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 14,
+      "title_pl": "Warehouse load building",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Warehouse load building",
+          "Optymalizacja załadunku bierze pod uwagę masę, gabaryty i kolejność rozładunku.",
+          "Gdzie wykorzystasz tę wiedzę: Ciężkie palety są planowane na szczycie lekkich. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź stabilność i ograniczenia ładunkowe. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Optymalizacja załadunku bierze pod uwagę masę, gabaryty i kolejność rozładunku.",
+          "situation": "Ciężkie palety są planowane na szczycie lekkich.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź stabilność i ograniczenia ładunkowe.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź stabilność i ograniczenia ładunkowe.",
+          "explanation": "Optymalizacja załadunku bierze pod uwagę masę, gabaryty i kolejność rozładunku.",
+          "feedback": [
+            "Tak. Optymalizacja załadunku bierze pod uwagę masę, gabaryty i kolejność rozładunku.",
+            "Nie. Optymalizacja załadunku bierze pod uwagę masę, gabaryty i kolejność rozładunku.",
+            "Nie. Optymalizacja załadunku bierze pod uwagę masę, gabaryty i kolejność rozładunku."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź stabilność i ograniczenia ładunkowe."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Ciężkie palety są planowane na szczycie lekkich.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 15,
+      "title_pl": "Returns processing",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Returns processing",
+          "Zwrot to osobny przepływ kontroli jakości i decyzji o ponownej sprzedaży.",
+          "Gdzie wykorzystasz tę wiedzę: Zwrot dotyczy produktu z uszkodzoną plombą. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zatrzymaj towar do odpowiedniej kontroli. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Zwrot to osobny przepływ kontroli jakości i decyzji o ponownej sprzedaży.",
+          "situation": "Zwrot dotyczy produktu z uszkodzoną plombą.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zatrzymaj towar do odpowiedniej kontroli.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj towar do odpowiedniej kontroli.",
+          "explanation": "Zwrot to osobny przepływ kontroli jakości i decyzji o ponownej sprzedaży.",
+          "feedback": [
+            "Tak. Zwrot to osobny przepływ kontroli jakości i decyzji o ponownej sprzedaży.",
+            "Nie. Zwrot to osobny przepływ kontroli jakości i decyzji o ponownej sprzedaży.",
+            "Nie. Zwrot to osobny przepływ kontroli jakości i decyzji o ponownej sprzedaży."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zatrzymaj towar do odpowiedniej kontroli."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zwrot dotyczy produktu z uszkodzoną plombą.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 16,
+      "title_pl": "Resource forecasting",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Resource forecasting",
+          "Prognoza zapotrzebowania na ludzi nie jest gwarancją, lecz sygnałem do planu.",
+          "Gdzie wykorzystasz tę wiedzę: Na jutro prognozowany jest dwukrotny wolumen. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zaplanuj obsadę i przegląd prognozy z realnymi zleceniami. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Prognoza zapotrzebowania na ludzi nie jest gwarancją, lecz sygnałem do planu.",
+          "situation": "Na jutro prognozowany jest dwukrotny wolumen.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zaplanuj obsadę i przegląd prognozy z realnymi zleceniami.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zaplanuj obsadę i przegląd prognozy z realnymi zleceniami.",
+          "explanation": "Prognoza zapotrzebowania na ludzi nie jest gwarancją, lecz sygnałem do planu.",
+          "feedback": [
+            "Tak. Prognoza zapotrzebowania na ludzi nie jest gwarancją, lecz sygnałem do planu.",
+            "Nie. Prognoza zapotrzebowania na ludzi nie jest gwarancją, lecz sygnałem do planu.",
+            "Nie. Prognoza zapotrzebowania na ludzi nie jest gwarancją, lecz sygnałem do planu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zaplanuj obsadę i przegląd prognozy z realnymi zleceniami."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Na jutro prognozowany jest dwukrotny wolumen.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 17,
+      "title_pl": "Labor management",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Labor management",
+          "Mierniki pracy muszą obejmować bezpieczeństwo i błędy.",
+          "Gdzie wykorzystasz tę wiedzę: Wysokie pick rate i wysoka liczba reklamacji. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Uzupełnij ocenę o poprawność kompletacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Mierniki pracy muszą obejmować bezpieczeństwo i błędy.",
+          "situation": "Wysokie pick rate i wysoka liczba reklamacji.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Uzupełnij ocenę o poprawność kompletacji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Uzupełnij ocenę o poprawność kompletacji.",
+          "explanation": "Mierniki pracy muszą obejmować bezpieczeństwo i błędy.",
+          "feedback": [
+            "Tak. Mierniki pracy muszą obejmować bezpieczeństwo i błędy.",
+            "Nie. Mierniki pracy muszą obejmować bezpieczeństwo i błędy.",
+            "Nie. Mierniki pracy muszą obejmować bezpieczeństwo i błędy."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Uzupełnij ocenę o poprawność kompletacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Wysokie pick rate i wysoka liczba reklamacji.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 18,
+      "title_pl": "Yard management",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Yard management",
+          "Koordynacja doków zmniejsza kolejki i opóźnienia.",
+          "Gdzie wykorzystasz tę wiedzę: Trzy ciężarówki przyjadą na tę samą godzinę. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zweryfikuj sloty i dostępne rampy. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Koordynacja doków zmniejsza kolejki i opóźnienia.",
+          "situation": "Trzy ciężarówki przyjadą na tę samą godzinę.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zweryfikuj sloty i dostępne rampy.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj sloty i dostępne rampy.",
+          "explanation": "Koordynacja doków zmniejsza kolejki i opóźnienia.",
+          "feedback": [
+            "Tak. Koordynacja doków zmniejsza kolejki i opóźnienia.",
+            "Nie. Koordynacja doków zmniejsza kolejki i opóźnienia.",
+            "Nie. Koordynacja doków zmniejsza kolejki i opóźnienia."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zweryfikuj sloty i dostępne rampy."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Trzy ciężarówki przyjadą na tę samą godzinę.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: kompletne wydanie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: kompletne wydanie",
+          "Od wave do etykiety i załadunku liczy się spójność identyfikatorów.",
+          "Gdzie wykorzystasz tę wiedzę: Paczka ma etykietę obcego zamówienia. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wstrzymaj wydanie i popraw po identyfikacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Od wave do etykiety i załadunku liczy się spójność identyfikatorów.",
+          "situation": "Paczka ma etykietę obcego zamówienia.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wstrzymaj wydanie i popraw po identyfikacji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj wydanie i popraw po identyfikacji.",
+          "explanation": "Od wave do etykiety i załadunku liczy się spójność identyfikatorów.",
+          "feedback": [
+            "Tak. Od wave do etykiety i załadunku liczy się spójność identyfikatorów.",
+            "Nie. Od wave do etykiety i załadunku liczy się spójność identyfikatorów.",
+            "Nie. Od wave do etykiety i załadunku liczy się spójność identyfikatorów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wstrzymaj wydanie i popraw po identyfikacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Paczka ma etykietę obcego zamówienia.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 20,
+      "title_pl": "Expert: warehouse execution",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: warehouse execution",
+          "Warstwa WES może koordynować ludzi i maszyny według aktualnych priorytetów.",
+          "Gdzie wykorzystasz tę wiedzę: Sorter czeka na zadanie, choć kolejka paczek rośnie. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Diagnozuj przesyłanie zadań i stan urządzeń. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Warstwa WES może koordynować ludzi i maszyny według aktualnych priorytetów.",
+          "situation": "Sorter czeka na zadanie, choć kolejka paczek rośnie.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Diagnozuj przesyłanie zadań i stan urządzeń.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Diagnozuj przesyłanie zadań i stan urządzeń.",
+          "explanation": "Warstwa WES może koordynować ludzi i maszyny według aktualnych priorytetów.",
+          "feedback": [
+            "Tak. Warstwa WES może koordynować ludzi i maszyny według aktualnych priorytetów.",
+            "Nie. Warstwa WES może koordynować ludzi i maszyny według aktualnych priorytetów.",
+            "Nie. Warstwa WES może koordynować ludzi i maszyny według aktualnych priorytetów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Diagnozuj przesyłanie zadań i stan urządzeń."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Sorter czeka na zadanie, choć kolejka paczek rośnie.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 21,
+      "title_pl": "Expert: slotting oparty na rotacji",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: slotting oparty na rotacji",
+          "Analizuj pick frequency i gabaryty przed przenoszeniem produktów.",
+          "Gdzie wykorzystasz tę wiedzę: Towar codziennie pobierany stoi daleko od pack. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zaplanuj bezpieczny re-slotting z kontrolą pojemności. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Analizuj pick frequency i gabaryty przed przenoszeniem produktów.",
+          "situation": "Towar codziennie pobierany stoi daleko od pack.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zaplanuj bezpieczny re-slotting z kontrolą pojemności.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zaplanuj bezpieczny re-slotting z kontrolą pojemności.",
+          "explanation": "Analizuj pick frequency i gabaryty przed przenoszeniem produktów.",
+          "feedback": [
+            "Tak. Analizuj pick frequency i gabaryty przed przenoszeniem produktów.",
+            "Nie. Analizuj pick frequency i gabaryty przed przenoszeniem produktów.",
+            "Nie. Analizuj pick frequency i gabaryty przed przenoszeniem produktów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zaplanuj bezpieczny re-slotting z kontrolą pojemności."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Towar codziennie pobierany stoi daleko od pack.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 22,
+      "title_pl": "Expert: robotics hub",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: robotics hub",
+          "Roboty mogą pochodzić od wielu dostawców; integracja wymaga spójnych statusów z WMS.",
+          "Gdzie wykorzystasz tę wiedzę: Robot zgłasza odłożenie, WMS nadal ma task Open. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Uzgodnij statusy i zidentyfikuj brak synchronizacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Roboty mogą pochodzić od wielu dostawców; integracja wymaga spójnych statusów z WMS.",
+          "situation": "Robot zgłasza odłożenie, WMS nadal ma task Open.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Uzgodnij statusy i zidentyfikuj brak synchronizacji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Uzgodnij statusy i zidentyfikuj brak synchronizacji.",
+          "explanation": "Roboty mogą pochodzić od wielu dostawców; integracja wymaga spójnych statusów z WMS.",
+          "feedback": [
+            "Tak. Roboty mogą pochodzić od wielu dostawców; integracja wymaga spójnych statusów z WMS.",
+            "Nie. Roboty mogą pochodzić od wielu dostawców; integracja wymaga spójnych statusów z WMS.",
+            "Nie. Roboty mogą pochodzić od wielu dostawców; integracja wymaga spójnych statusów z WMS."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Uzgodnij statusy i zidentyfikuj brak synchronizacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Robot zgłasza odłożenie, WMS nadal ma task Open.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 23,
+      "title_pl": "Expert: orkiestracja zasobów",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: orkiestracja zasobów",
+          "Przydział pracy jest dynamiczny i zależy od presji terminów.",
+          "Gdzie wykorzystasz tę wiedzę: Strefa A przeciążona, B bez zadań. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Przeanalizuj relokację zasobów z zachowaniem kompetencji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przydział pracy jest dynamiczny i zależy od presji terminów.",
+          "situation": "Strefa A przeciążona, B bez zadań.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Przeanalizuj relokację zasobów z zachowaniem kompetencji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Przeanalizuj relokację zasobów z zachowaniem kompetencji.",
+          "explanation": "Przydział pracy jest dynamiczny i zależy od presji terminów.",
+          "feedback": [
+            "Tak. Przydział pracy jest dynamiczny i zależy od presji terminów.",
+            "Nie. Przydział pracy jest dynamiczny i zależy od presji terminów.",
+            "Nie. Przydział pracy jest dynamiczny i zależy od presji terminów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Przeanalizuj relokację zasobów z zachowaniem kompetencji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Strefa A przeciążona, B bez zadań.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 24,
+      "title_pl": "Expert: planning versus execution",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: planning versus execution",
+          "Plan wolumenu i rzeczywiste wykonanie nie są tym samym.",
+          "Gdzie wykorzystasz tę wiedzę: Plan pokazuje 800 paczek, wykonano 610. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zidentyfikuj opóźniony proces zamiast korygować plan na oko. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Plan wolumenu i rzeczywiste wykonanie nie są tym samym.",
+          "situation": "Plan pokazuje 800 paczek, wykonano 610.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zidentyfikuj opóźniony proces zamiast korygować plan na oko.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj opóźniony proces zamiast korygować plan na oko.",
+          "explanation": "Plan wolumenu i rzeczywiste wykonanie nie są tym samym.",
+          "feedback": [
+            "Tak. Plan wolumenu i rzeczywiste wykonanie nie są tym samym.",
+            "Nie. Plan wolumenu i rzeczywiste wykonanie nie są tym samym.",
+            "Nie. Plan wolumenu i rzeczywiste wykonanie nie są tym samym."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zidentyfikuj opóźniony proces zamiast korygować plan na oko."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Plan pokazuje 800 paczek, wykonano 610.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 25,
+      "title_pl": "Expert: analityka odchyleń",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: analityka odchyleń",
+          "Dane o czasie, błędach i ruchach mogą wspierać ocenę przyczyny.",
+          "Gdzie wykorzystasz tę wiedzę: W jednej alejce rośnie liczba pomyłek. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź etykiety, układ i proces, zanim obwinisz operatora. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Dane o czasie, błędach i ruchach mogą wspierać ocenę przyczyny.",
+          "situation": "W jednej alejce rośnie liczba pomyłek.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź etykiety, układ i proces, zanim obwinisz operatora.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź etykiety, układ i proces, zanim obwinisz operatora.",
+          "explanation": "Dane o czasie, błędach i ruchach mogą wspierać ocenę przyczyny.",
+          "feedback": [
+            "Tak. Dane o czasie, błędach i ruchach mogą wspierać ocenę przyczyny.",
+            "Nie. Dane o czasie, błędach i ruchach mogą wspierać ocenę przyczyny.",
+            "Nie. Dane o czasie, błędach i ruchach mogą wspierać ocenę przyczyny."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź etykiety, układ i proces, zanim obwinisz operatora."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: W jednej alejce rośnie liczba pomyłek.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 26,
+      "title_pl": "Expert: AI recommendations",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: AI recommendations",
+          "Rekomendacja AI wymaga walidacji i możliwości odtworzenia decyzji.",
+          "Gdzie wykorzystasz tę wiedzę: System proponuje skrót ruchu przez zablokowaną strefę. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Odrzuć niebezpieczną trasę i zgłoś regułę. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Rekomendacja AI wymaga walidacji i możliwości odtworzenia decyzji.",
+          "situation": "System proponuje skrót ruchu przez zablokowaną strefę.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Odrzuć niebezpieczną trasę i zgłoś regułę.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Odrzuć niebezpieczną trasę i zgłoś regułę.",
+          "explanation": "Rekomendacja AI wymaga walidacji i możliwości odtworzenia decyzji.",
+          "feedback": [
+            "Tak. Rekomendacja AI wymaga walidacji i możliwości odtworzenia decyzji.",
+            "Nie. Rekomendacja AI wymaga walidacji i możliwości odtworzenia decyzji.",
+            "Nie. Rekomendacja AI wymaga walidacji i możliwości odtworzenia decyzji."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Odrzuć niebezpieczną trasę i zgłoś regułę."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: System proponuje skrót ruchu przez zablokowaną strefę.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 27,
+      "title_pl": "Expert: interfejs WMS–TMS",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: interfejs WMS–TMS",
+          "Przeniesienie informacji o załadunku wpływa na trasę i fakturowanie.",
+          "Gdzie wykorzystasz tę wiedzę: TMS nie widzi potwierdzonego wyjazdu. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź numer shipment i kolejkę integracji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przeniesienie informacji o załadunku wpływa na trasę i fakturowanie.",
+          "situation": "TMS nie widzi potwierdzonego wyjazdu.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź numer shipment i kolejkę integracji.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź numer shipment i kolejkę integracji.",
+          "explanation": "Przeniesienie informacji o załadunku wpływa na trasę i fakturowanie.",
+          "feedback": [
+            "Tak. Przeniesienie informacji o załadunku wpływa na trasę i fakturowanie.",
+            "Nie. Przeniesienie informacji o załadunku wpływa na trasę i fakturowanie.",
+            "Nie. Przeniesienie informacji o załadunku wpływa na trasę i fakturowanie."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź numer shipment i kolejkę integracji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: TMS nie widzi potwierdzonego wyjazdu.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 28,
+      "title_pl": "Expert: awaria automation",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: awaria automation",
+          "Tryb awaryjny musi ograniczać podwójne skanowanie.",
+          "Gdzie wykorzystasz tę wiedzę: Skaner powtarza poprzedni task po restarcie. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź status zadania w WMS przed ponowną akcją. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Tryb awaryjny musi ograniczać podwójne skanowanie.",
+          "situation": "Skaner powtarza poprzedni task po restarcie.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź status zadania w WMS przed ponowną akcją.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź status zadania w WMS przed ponowną akcją.",
+          "explanation": "Tryb awaryjny musi ograniczać podwójne skanowanie.",
+          "feedback": [
+            "Tak. Tryb awaryjny musi ograniczać podwójne skanowanie.",
+            "Nie. Tryb awaryjny musi ograniczać podwójne skanowanie.",
+            "Nie. Tryb awaryjny musi ograniczać podwójne skanowanie."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź status zadania w WMS przed ponowną akcją."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Skaner powtarza poprzedni task po restarcie.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Blue Yonder",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Blue Yonder",
+          "Połącz order, resources, picking, slotting, automation i transport.",
+          "Gdzie wykorzystasz tę wiedzę: Kurier czeka, a system pokazuje zakończony picking bez pack. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zweryfikuj etap pakowania i dopiero potwierdź gotowość załadunku. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Połącz order, resources, picking, slotting, automation i transport.",
+          "situation": "Kurier czeka, a system pokazuje zakończony picking bez pack.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zweryfikuj etap pakowania i dopiero potwierdź gotowość załadunku.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj etap pakowania i dopiero potwierdź gotowość załadunku.",
+          "explanation": "Połącz order, resources, picking, slotting, automation i transport.",
+          "feedback": [
+            "Tak. Połącz order, resources, picking, slotting, automation i transport.",
+            "Nie. Połącz order, resources, picking, slotting, automation i transport.",
+            "Nie. Połącz order, resources, picking, slotting, automation i transport."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zweryfikuj etap pakowania i dopiero potwierdź gotowość załadunku."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Kurier czeka, a system pokazuje zakończony picking bez pack.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://blueyonder.com/solutions/warehouse-management"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    }
+  ]
+}
