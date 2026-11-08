@@ -1,0 +1,92 @@
+{
+  "apartamenty": [
+    "Gość przyjeżdża za godzinę. W ogłoszeniu obiecano ekspres do kawy, ale nie wiesz, czy działa.",
+    "Masz 90 minut na przygotowanie mieszkania po wymeldowaniu. Od czego zaczynasz, żeby niczego nie pominąć?",
+    "W szafie leży czysta pościel obok wilgotnych ręczników po poprzednim gościu.",
+    "Klient pisze, że nie działa internet, choć przed przyjazdem nikt go nie sprawdził.",
+    "Gość przylatuje późnym wieczorem i nie może otworzyć skrytki z kluczami.",
+    "Po wyjeździe zauważasz pęknięty stolik, ale nie masz żadnych zdjęć z poprzedniego dnia.",
+    "Nowy pracownik mówi, że mieszkanie jest gotowe, ale w łazience brakuje papieru i mydła.",
+    "O 23:00 gość zgłasza brak ciepłej wody. Właściciel nie odbiera telefonu."
+  ],
+  "bdo": [
+    "Zaczynasz sprzedaż internetową świec własnej produkcji i wysyłasz je w kartonach z wypełnieniem.",
+    "Wysyłasz codziennie paczki w różnych opakowaniach, ale nie zapisujesz ich masy ani rodzaju.",
+    "Firma mówi, że ma numer BDO, ale nie możesz znaleźć potwierdzenia właściwego wpisu.",
+    "W styczniu chcesz podsumować opakowania z poprzedniego roku. Paragony są w kilku folderach.",
+    "Masz przygotować sprawozdanie, lecz nie wiesz, które dane i terminy dotyczą Twojej firmy.",
+    "Klient odsyła produkt w zużytym pudełku. Zastanawiasz się, co zrobić z opakowaniem.",
+    "Sprzedawca zapewnia, że to dostawca bierze na siebie całą odpowiedzialność za opakowania.",
+    "Po miesiącu widzisz rozbieżność między zakupami kartonów a liczbą wysłanych paczek."
+  ],
+  "blizej-dziecka": [
+    "Dziecko rzuca plecakiem po powrocie ze szkoły. Ty widzisz bałagan, ale nie wiesz, co się stało.",
+    "W sobotę masz mnóstwo obowiązków. Dziecko prosi tylko, żebyś z nim chwilę posiedział.",
+    "Pytasz «jak było w szkole?», słyszysz «normalnie» i rozmowa natychmiast się kończy.",
+    "Dziecko płacze po kłótni z kolegą. Czujesz złość i chcesz od razu mu doradzić.",
+    "Ustalasz godzinę korzystania z telefonu, ale dziecko protestuje i mówi, że to niesprawiedliwe.",
+    "Dziecko boi się powiedzieć o złej ocenie, bo poprzednio bardzo się zdenerwowałeś.",
+    "Nastolatek widzi niemiłe komentarze w sieci i nie wie, czy powinien pokazać je rodzicowi.",
+    "Chcecie spędzać więcej czasu razem, ale każdego wieczoru kończy się na telewizorze."
+  ],
+  "brygadzista": [
+    "Wczoraj byłeś monterem, dziś odpowiadasz za sześcioosobową ekipę na nowej budowie.",
+    "Dwóch pracowników czeka na decyzję, a odprawa przeciąga się już piętnastą minutę.",
+    "Przed rozpoczęciem pracy zauważasz nieosłoniętą krawędź stropu na stanowisku ekipy.",
+    "O godzinie ósmej ciężarówka przywiozła niewłaściwe uchwyty. Montaż miał trwać do południa.",
+    "Ekipa zamontowała sześć balustrad, ale przy jednej otwory nie pasują do zatwierdzonego rysunku.",
+    "Pracownicy spierają się o podział cięższych zadań i zaczynają się obrażać.",
+    "Kierownik pyta, co jest gotowe, lecz w notatkach masz tylko informację «pracowaliśmy».",
+    "Zostajesz sam jako prowadzący zmianę. Rano masz materiały, ludzi i kilka zależnych od siebie prac."
+  ],
+  "dostepne-pdf": [
+    "Klient korzysta z czytnika ekranu i mówi, że w Twoim PDF słyszy tylko «strona 1, obraz».",
+    "Na pierwszej stronie raportu tytuł jest ogromny, ale program odczytuje go jak zwykły akapit.",
+    "W instrukcji zdjęcie pokazuje kluczowy krok, lecz nie ma żadnego opisu jego znaczenia.",
+    "W tabeli słabsze wyniki oznaczyłeś tylko czerwonym kolorem. Nie wszyscy to rozróżniają.",
+    "Użytkownik chce przejść do rozdziału 5 bez przewijania czterdziestu stron.",
+    "Formularz ma wiele pól, ale klawiaturą trudno ustalić, gdzie wpisuje się nazwisko.",
+    "Po eksporcie z edytora układ jest ładny, lecz nagłówki nie są rozpoznawane przez czytnik.",
+    "Kończysz raport i zastanawiasz się, czy automatyczny test dostępności wystarczy."
+  ],
+  "dziennik-kota": [
+    "Chcesz przyjąć na weekend pięć kotów, lecz masz tylko trzy odrębne, bezpieczne miejsca.",
+    "Nowy opiekun chce zostawić kota, który ostatnio chorował i dostaje leki.",
+    "Kot chowa się pod półką i nie chce jeść w pierwszym dniu pobytu.",
+    "Jedna kuweta została umyta tymi samymi narzędziami, którymi sprzątano inne pomieszczenie.",
+    "Podopieczny zjada dziś znacznie mniej niż zwykle. Właściciel jest za granicą.",
+    "Właściciel prosi o codzienną relację, ale w notatkach masz tylko zdjęcie kota.",
+    "Dwie rezerwacje dotyczą tego samego miejsca i częściowo nakładają się w kalendarzu.",
+    "Wieczorem zauważasz wyraźne pogorszenie stanu kota i nie możesz dodzwonić się do właściciela."
+  ],
+  "ekonomia-domowa-bez-dlugow": [
+    "Wypłata wpłynęła w piątek, ale po tygodniu nie potrafisz wyjaśnić, gdzie zniknęła połowa pieniędzy.",
+    "Co miesiąc płacisz czynsz i raty, ale raz w roku pojawia się duża składka ubezpieczeniowa.",
+    "Sklep oferuje nowy sprzęt za «tylko 99 zł miesięcznie», bez pokazania całego kosztu na plakacie.",
+    "Masz w lodówce jedzenie, ale trzy razy zamawiasz kolację, bo nie zaplanowałeś posiłku.",
+    "Pralka się zepsuła, a nie masz żadnej rezerwy na nieprzewidziane wydatki.",
+    "Jedna osoba w domu pilnuje wszystkich rachunków. Druga nie zna nawet terminów płatności.",
+    "Na koncie brakuje pieniędzy na ratę. Zastanawiasz się, czy wziąć kolejną pożyczkę.",
+    "Na koniec miesiąca zostaje trochę gotówki, ale nie wiesz, czy naprawdę masz wolne środki."
+  ],
+  "festyn": [
+    "Przygotowujesz stoisko z ciastem na festynie, na którym spodziewane są setki osób.",
+    "Chcesz sprzedawać 80 porcji zupy, ale receptura jest zapisana tylko «na oko».",
+    "Na słońcu stoi kremowe ciasto. Nie wiesz, jak długo było poza chłodzeniem.",
+    "Wydarzenie jest w parku, a produkty wymagają prądu, transportu i odpowiednich pojemników.",
+    "Porcja kosztuje 15 zł, ale nie policzyłeś opakowania, pracy ani strat.",
+    "W kolejce stoi dziesięć osób, a jedyna osoba obsługująca musi jednocześnie przygotować jedzenie.",
+    "Po dwóch godzinach masz przychód w kasie, ale nie wiesz, ile porcji sprzedano.",
+    "Festyn się skończył. Została część produktów i kilka faktur, a zespół chce znać wynik."
+  ],
+  "gpsr": [
+    "Tworzysz ręcznie świecę zapachową i chcesz zacząć sprzedawać ją w sklepie internetowym.",
+    "Kupujesz części od dostawcy, składasz gotowy produkt i sprzedajesz go pod własną nazwą.",
+    "Klient zgłasza, że element ręcznie wykonanego przedmiotu może odpaść podczas używania.",
+    "Zmieniasz dostawcę materiału, ale używasz starego opisu oceny bezpieczeństwa produktu.",
+    "Na opakowaniu brakuje ważnej informacji dla bezpiecznego użytkowania wyrobu.",
+    "W ofercie internetowej umieszczasz zdjęcie, ale pomijasz wymagane informacje o produkcie.",
+    "Dostajesz kilka podobnych reklamacji dotyczących przegrzewania się produktu.",
+    "Przed otwarciem sklepu sprawdzasz, czy każda karta produktu ma komplet wymaganych informacji."
+  ]
+}
