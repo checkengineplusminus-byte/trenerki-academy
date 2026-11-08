@@ -101,7 +101,7 @@ export default function Purchase(){
      </View>}
      {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
-     </Pressable>:<Pressable disabled={paying||(!isAdmin&&item.price_grosze>0)} onPress={checkout} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:paying||(!isAdmin&&item.price_grosze>0)?.5:1}}>
+     </Pressable>:<Pressable disabled={paying||(!isAdmin&&item.price_grosze>0)} onPress={checkout} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(!isAdmin&&item.price_grosze>0))?0.5:1}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Zapisuję testowy zakup…':item.price_grosze===0?'Odbierz za darmo →':isAdmin?'Symuluj zakup · 0 zł pobrane →':'Zakupy testowe tylko dla administratora'}</Text>
      </Pressable>}
      <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
