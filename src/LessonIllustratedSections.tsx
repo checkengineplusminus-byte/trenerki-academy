@@ -4,7 +4,7 @@ export type LearningSection={heading:string;text:string};
 const ink='#173e2d',body='#3e5c48';
 type Props={courseSlug:string;lessonNo:number;title:string;sections?:LearningSection[];illustration?:string;
             situation?:string;example?:string;source?:{label:string;url:string}[]};
-const imageNames=new Set(['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security','windows-desktop','windows-explorer','excel-interface','word-interface','autocad-interface','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands']);
+const imageNames=new Set(['eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security','windows-desktop','windows-explorer','excel-interface','word-interface','autocad-interface','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands']);
 function FallbackDiagram({title,sections,example}:{title:string;sections:LearningSection[];example?:string}){
  const blocks=sections.length>=3?
   sections.slice(0,3).map(s=>({label:s.heading,info:s.text.slice(0,90)})):
