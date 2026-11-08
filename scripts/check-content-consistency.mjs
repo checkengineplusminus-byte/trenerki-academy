@@ -27,18 +27,27 @@ try{
  const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.lastIndexOf('</script>');
  if(scriptStart<0||scriptEnd<0)fail('HTML script missing');
  else{new Script(page.slice(scriptStart+8,scriptEnd),{filename:'academy-index.js'});ok('Homepage JavaScript syntax');}
- if(courses.length===37&&new Set(courses.map(c=>c.id)).size===37)ok('37 unique courses');else fail('Course count or duplicate slug');
+ if(courses.length===15+additions.length&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
  for(const c of courses){
   if(!Array.isArray(c.outline)||c.outline.length!==8)fail(c.id+': eight-module syllabus missing');
   if(!previews[c.id]||!['curiosity','scenario','outcome_1','outcome_2','outcome_3'].every(k=>typeof previews[c.id][k]==='string'&&previews[c.id][k].length>20))fail(c.id+': missing life-based preview');
  }
- if(Object.keys(previews).length===37&&additions.length===22)ok('37 practical previews and 22 added courses');else fail('Preview/addition count mismatch');
+ if(Object.keys(previews).length===courses.length&&additions.length===courses.length-15)ok(courses.length+' practical previews and '+additions.length+' added courses');else fail('Preview/addition count mismatch');
  const price=new Map(courses.map(c=>[c.id,c.price]));
- for(const [id,expected] of [['excel-skroty',10],['autocad-skroty',10],['word-skroty',10],['swiety-mikolaj',0],['lepszy-tata',99],['lepsza-mama',99]]){
+ for(const [id,expected] of [['excel-skroty',10],['autocad-skroty',10],['word-skroty',10],['windows-skroty',10],['swiety-mikolaj',0],['lepszy-tata',99],['lepsza-mama',99],['nie-marnuj-jedzenia',29.99],['trawnik-jestem-ogrodnikiem',29.99],['angielski-na-budowie',149],['norweski-na-budowie',149],['niemiecki-na-budowie',149]]){
   if(price.get(id)!==expected)fail('Price mismatch '+id);else ok(id+' '+expected+' PLN');
  }
  if(!page.includes('Cześć, to ja Anielka!'))fail('Anielka greeting missing');
- const shortcutModules=['word','autocad','excel'];
+ const history=JSON.parse(read('content/traditional-crafts-20-20261108.json')).courses;
+ if(history.length!==20)fail('Expected 20 traditional crafts');
+ for(const item of history){
+  const p=previews[item.id];
+  if(!p?.history||!('ended_year' in p.history)||!p.history.note||!p.history.source_url)fail(item.id+': historical evidence metadata missing');
+  if(p?.history?.ended_year&&!p.history.source_url)fail(item.id+': ungrounded historical teaching end date');
+ }
+ if(!page.includes('Ostatni potwierdzony rok:'))fail('Missing historical teaching status in course preview');
+ if(courses.some(c=>!Number.isFinite(c.price)||c.price<0))fail('Catalog includes a missing or invalid price');
+ const shortcutModules=['word','autocad','excel','windows'];
  const component=read('src/KeyboardLesson.tsx');
  for(const name of shortcutModules){
   const lessons=JSON.parse(read('content/keyboard-'+name+'.json'));
@@ -48,7 +57,7 @@ try{
    if(!l.material?.shortcuts?.every(x=>x.keys?.length&&x.before&&x.after&&x.tip&&x.kind))fail(name+': shortcut missing keys, before/after or tip');
    if(!l.material?.references?.length)fail(name+': reference missing');
   }
-  if(!page.includes("'"+name+"-skroty'"))fail(name+': visual preview missing');
+  if(!courses.some(c=>c.id===name+'-skroty'))fail(name+': course missing from catalog');
   else ok(name+' has '+total+' illustrated shortcuts');
  }
  if(!component.includes('function Keycap')||!component.includes('Co się zmieni?')||!progress.includes('<KeyboardLesson'))fail('Visual keycaps not integrated into lesson view');
