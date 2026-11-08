@@ -18,15 +18,15 @@ function FallbackDiagram({title,sections,example}:{title:string;sections:Learnin
     <Text style={{fontWeight:'900',color:ink,fontSize:12}}>{b.label}</Text>
     <Text style={{color:body,fontSize:11,lineHeight:16}}>{b.info}</Text>
    </View>)}
-  </View>
+  </View>}
  </View>;
 }
 export default function LessonIllustratedSections({courseSlug,lessonNo,title,sections,illustration,situation,example}:Props){
  const [failed,setFailed]=useState(false),[expanded,setExpanded]=useState(true);
  useEffect(()=>{setFailed(false);setExpanded(true)},[courseSlug,lessonNo]);
  const named=Array.isArray(sections)&&sections.length>0?sections.filter(x=>x?.heading&&x?.text):[];
- if(!named.length)return <FallbackDiagram title={title} sections={situation?[{heading:'Zadanie z lekcji',text:situation}]:[]} example={example}/>;
  const validIllustration=typeof illustration==='string'&&imageNames.has(illustration),showImage=validIllustration&&Platform.OS==='web'&&!failed;
+ if(!named.length&&!validIllustration)return <FallbackDiagram title={title} sections={situation?[{heading:'Zadanie z lekcji',text:situation}]:[]} example={example}/>;
  return <View style={{marginBottom:18,gap:14}}>
   {validIllustration&&<View style={{backgroundColor:'#f1f8ed',padding:9,borderWidth:1,borderColor:'#d9e7d5',borderRadius:16,gap:7}}>
    {showImage?<Image
@@ -38,7 +38,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
    />:<FallbackDiagram title={title} sections={named} example={example}/>}
    <Text style={{fontSize:11,color:'#65816d',paddingHorizontal:6,paddingBottom:4}}>Autorska ilustracja TRENERKI Academy · schemat dydaktyczny, nie zrzut ekranu producenta</Text>
   </View>}
-  <View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
+  {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
    <Pressable accessibilityRole="button" onPress={()=>setExpanded(v=>!v)}
     style={{backgroundColor:'#e8f3e3',padding:18,flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:12}}>
     <Text style={{color:ink,fontWeight:'900',fontSize:19,flex:1}}>Poznaj temat naprawdę — teoria i praktyka</Text>
