@@ -1,0 +1,1333 @@
+{
+  "schema_version": 2,
+  "course_slug": "astro-consafe-wms",
+  "intro": "Astro WMS firmy Consafe Logistics to system realizujący procesy ręczne i zautomatyzowane, w tym WES, slotting, voice picking, VAS i analitykę. Kurs ma formę niezależnych studiów przypadków z operacji magazynu.",
+  "source": "https://www.consafelogistics.com/solutions/astro-wms",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Praktyka",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 0,
+      "title_pl": "Czym jest Consafe Astro WMS",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Czym jest Consafe Astro WMS",
+          "Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne.",
+          "Zastosowanie w pracy: Operator myli aplikację WMS z systemem robotów. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Wskaż rolę WMS jako źródła zadań, a automatów jako wykonawców. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne.",
+          "situation": "Operator myli aplikację WMS z systemem robotów.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Wskaż rolę WMS jako źródła zadań, a automatów jako wykonawców.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Wskaż rolę WMS jako źródła zadań, a automatów jako wykonawców.",
+          "explanation": "Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne.",
+          "feedback": [
+            "Poprawnie. Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne.",
+            "Nie. Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne.",
+            "Nie. Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Wskaż rolę WMS jako źródła zadań, a automatów jako wykonawców."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Operator myli aplikację WMS z systemem robotów.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 1,
+      "title_pl": "Ekrany, stanowiska i role",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Ekrany, stanowiska i role",
+          "Dostępny interfejs zależy od wersji i uprawnień użytkownika.",
+          "Zastosowanie w pracy: Picker nie widzi panelu konfiguracji slottingu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź rolę i zakres odpowiedzialności. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Dostępny interfejs zależy od wersji i uprawnień użytkownika.",
+          "situation": "Picker nie widzi panelu konfiguracji slottingu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź rolę i zakres odpowiedzialności.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rolę i zakres odpowiedzialności.",
+          "explanation": "Dostępny interfejs zależy od wersji i uprawnień użytkownika.",
+          "feedback": [
+            "Poprawnie. Dostępny interfejs zależy od wersji i uprawnień użytkownika.",
+            "Nie. Dostępny interfejs zależy od wersji i uprawnień użytkownika.",
+            "Nie. Dostępny interfejs zależy od wersji i uprawnień użytkownika."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź rolę i zakres odpowiedzialności."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Picker nie widzi panelu konfiguracji slottingu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 2,
+      "title_pl": "Towar i numer artykułu",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Towar i numer artykułu",
+          "SKU i opis produktu trzeba skojarzyć z prawidłową jednostką.",
+          "Zastosowanie w pracy: Sklep zamówił 20 kartonów, na regale liczba jest w sztukach. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź przelicznik i rzeczywisty stan. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "SKU i opis produktu trzeba skojarzyć z prawidłową jednostką.",
+          "situation": "Sklep zamówił 20 kartonów, na regale liczba jest w sztukach.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź przelicznik i rzeczywisty stan.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przelicznik i rzeczywisty stan.",
+          "explanation": "SKU i opis produktu trzeba skojarzyć z prawidłową jednostką.",
+          "feedback": [
+            "Poprawnie. SKU i opis produktu trzeba skojarzyć z prawidłową jednostką.",
+            "Nie. SKU i opis produktu trzeba skojarzyć z prawidłową jednostką.",
+            "Nie. SKU i opis produktu trzeba skojarzyć z prawidłową jednostką."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź przelicznik i rzeczywisty stan."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sklep zamówił 20 kartonów, na regale liczba jest w sztukach.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 3,
+      "title_pl": "Lokacje i strefy magazynowe",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Lokacje i strefy magazynowe",
+          "Adres określa miejsce, strefa grupuje lokacje według funkcji i ograniczeń.",
+          "Zastosowanie w pracy: Część chemikaliów trafia do strefy zwykłej. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Wstrzymaj odłożenie i sprawdź strefę dopuszczoną do przechowywania. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Adres określa miejsce, strefa grupuje lokacje według funkcji i ograniczeń.",
+          "situation": "Część chemikaliów trafia do strefy zwykłej.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Wstrzymaj odłożenie i sprawdź strefę dopuszczoną do przechowywania.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj odłożenie i sprawdź strefę dopuszczoną do przechowywania.",
+          "explanation": "Adres określa miejsce, strefa grupuje lokacje według funkcji i ograniczeń.",
+          "feedback": [
+            "Poprawnie. Adres określa miejsce, strefa grupuje lokacje według funkcji i ograniczeń.",
+            "Nie. Adres określa miejsce, strefa grupuje lokacje według funkcji i ograniczeń.",
+            "Nie. Adres określa miejsce, strefa grupuje lokacje według funkcji i ograniczeń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Wstrzymaj odłożenie i sprawdź strefę dopuszczoną do przechowywania."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Część chemikaliów trafia do strefy zwykłej.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 4,
+      "title_pl": "Przyjęcie dostaw",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Przyjęcie dostaw",
+          "Receiving łączy dokument, fizyczną liczbę jednostek i status jakości.",
+          "Zastosowanie w pracy: Dostawca zadeklarował 18 palet, przyjechało 17. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zapisz 17 i zgłoś brak. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Receiving łączy dokument, fizyczną liczbę jednostek i status jakości.",
+          "situation": "Dostawca zadeklarował 18 palet, przyjechało 17.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zapisz 17 i zgłoś brak.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zapisz 17 i zgłoś brak.",
+          "explanation": "Receiving łączy dokument, fizyczną liczbę jednostek i status jakości.",
+          "feedback": [
+            "Poprawnie. Receiving łączy dokument, fizyczną liczbę jednostek i status jakości.",
+            "Nie. Receiving łączy dokument, fizyczną liczbę jednostek i status jakości.",
+            "Nie. Receiving łączy dokument, fizyczną liczbę jednostek i status jakości."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zapisz 17 i zgłoś brak."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dostawca zadeklarował 18 palet, przyjechało 17.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 5,
+      "title_pl": "WMS i WES",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "WMS i WES",
+          "WES orkiestruje pracę sprzętu oraz ludzi w ramach wykonania zadań magazynowych.",
+          "Zastosowanie w pracy: Sorter stoi mimo gotowych zleceń. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź kolejkę i status automatyki oraz zadania w WMS. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "WES orkiestruje pracę sprzętu oraz ludzi w ramach wykonania zadań magazynowych.",
+          "situation": "Sorter stoi mimo gotowych zleceń.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź kolejkę i status automatyki oraz zadania w WMS.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź kolejkę i status automatyki oraz zadania w WMS.",
+          "explanation": "WES orkiestruje pracę sprzętu oraz ludzi w ramach wykonania zadań magazynowych.",
+          "feedback": [
+            "Poprawnie. WES orkiestruje pracę sprzętu oraz ludzi w ramach wykonania zadań magazynowych.",
+            "Nie. WES orkiestruje pracę sprzętu oraz ludzi w ramach wykonania zadań magazynowych.",
+            "Nie. WES orkiestruje pracę sprzętu oraz ludzi w ramach wykonania zadań magazynowych."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź kolejkę i status automatyki oraz zadania w WMS."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sorter stoi mimo gotowych zleceń.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 6,
+      "title_pl": "Stany i rezerwacje",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Stany i rezerwacje",
+          "Zapas zablokowany lub zarezerwowany nie jest bezwarunkowo dostępny do wysyłki.",
+          "Zastosowanie w pracy: Na hali są 32 sztuki, w sprzedaży dostępnych 20. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź rezerwację i blokadę 12 sztuk. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zapas zablokowany lub zarezerwowany nie jest bezwarunkowo dostępny do wysyłki.",
+          "situation": "Na hali są 32 sztuki, w sprzedaży dostępnych 20.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź rezerwację i blokadę 12 sztuk.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rezerwację i blokadę 12 sztuk.",
+          "explanation": "Zapas zablokowany lub zarezerwowany nie jest bezwarunkowo dostępny do wysyłki.",
+          "feedback": [
+            "Poprawnie. Zapas zablokowany lub zarezerwowany nie jest bezwarunkowo dostępny do wysyłki.",
+            "Nie. Zapas zablokowany lub zarezerwowany nie jest bezwarunkowo dostępny do wysyłki.",
+            "Nie. Zapas zablokowany lub zarezerwowany nie jest bezwarunkowo dostępny do wysyłki."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź rezerwację i blokadę 12 sztuk."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Na hali są 32 sztuki, w sprzedaży dostępnych 20.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 7,
+      "title_pl": "RF i terminal mobilny",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "RF i terminal mobilny",
+          "Terminal pozwala identyfikować produkt i adres; skan musi odnosić się do faktycznej czynności.",
+          "Zastosowanie w pracy: Skaner nie rozpoznaje kodu palety. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Weryfikuj etykietę i identyfikator zamiast potwierdzać z pamięci. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Terminal pozwala identyfikować produkt i adres; skan musi odnosić się do faktycznej czynności.",
+          "situation": "Skaner nie rozpoznaje kodu palety.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Weryfikuj etykietę i identyfikator zamiast potwierdzać z pamięci.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Weryfikuj etykietę i identyfikator zamiast potwierdzać z pamięci.",
+          "explanation": "Terminal pozwala identyfikować produkt i adres; skan musi odnosić się do faktycznej czynności.",
+          "feedback": [
+            "Poprawnie. Terminal pozwala identyfikować produkt i adres; skan musi odnosić się do faktycznej czynności.",
+            "Nie. Terminal pozwala identyfikować produkt i adres; skan musi odnosić się do faktycznej czynności.",
+            "Nie. Terminal pozwala identyfikować produkt i adres; skan musi odnosić się do faktycznej czynności."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Weryfikuj etykietę i identyfikator zamiast potwierdzać z pamięci."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Skaner nie rozpoznaje kodu palety.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 8,
+      "title_pl": "Voice picking od zera",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Voice picking od zera",
+          "Głos może kierować operatora do produktu, ale potwierdzenie ilości i lokalizacji nadal jest potrzebne.",
+          "Zastosowanie w pracy: System głosowy podał inny adres niż etykieta regału. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zatrzymaj pobranie i zweryfikuj instrukcję. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Głos może kierować operatora do produktu, ale potwierdzenie ilości i lokalizacji nadal jest potrzebne.",
+          "situation": "System głosowy podał inny adres niż etykieta regału.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zatrzymaj pobranie i zweryfikuj instrukcję.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj pobranie i zweryfikuj instrukcję.",
+          "explanation": "Głos może kierować operatora do produktu, ale potwierdzenie ilości i lokalizacji nadal jest potrzebne.",
+          "feedback": [
+            "Poprawnie. Głos może kierować operatora do produktu, ale potwierdzenie ilości i lokalizacji nadal jest potrzebne.",
+            "Nie. Głos może kierować operatora do produktu, ale potwierdzenie ilości i lokalizacji nadal jest potrzebne.",
+            "Nie. Głos może kierować operatora do produktu, ale potwierdzenie ilości i lokalizacji nadal jest potrzebne."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zatrzymaj pobranie i zweryfikuj instrukcję."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: System głosowy podał inny adres niż etykieta regału.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 9,
+      "title_pl": "Pierwsze zadanie: odbiór 10 HU",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsze zadanie: odbiór 10 HU",
+          "Przyjęcie HU wymaga zgodnego identyfikatora i ilości oraz właściwego miejsca dalszego ruchu.",
+          "Zastosowanie w pracy: Dwie z dziesięciu palet mają uszkodzone etykiety. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zidentyfikuj i oznacz palety przed odłożeniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przyjęcie HU wymaga zgodnego identyfikatora i ilości oraz właściwego miejsca dalszego ruchu.",
+          "situation": "Dwie z dziesięciu palet mają uszkodzone etykiety.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zidentyfikuj i oznacz palety przed odłożeniem.",
+            "Wprowadzam dane bez identyfikacji zamówienia, właściciela i jednostki, zakładając że zawsze są takie same.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj i oznacz palety przed odłożeniem.",
+          "explanation": "Przyjęcie HU wymaga zgodnego identyfikatora i ilości oraz właściwego miejsca dalszego ruchu.",
+          "feedback": [
+            "Poprawnie. Przyjęcie HU wymaga zgodnego identyfikatora i ilości oraz właściwego miejsca dalszego ruchu.",
+            "Nie. Przyjęcie HU wymaga zgodnego identyfikatora i ilości oraz właściwego miejsca dalszego ruchu.",
+            "Nie. Przyjęcie HU wymaga zgodnego identyfikatora i ilości oraz właściwego miejsca dalszego ruchu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zidentyfikuj i oznacz palety przed odłożeniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwie z dziesięciu palet mają uszkodzone etykiety.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 10,
+      "title_pl": "Putaway i optymalizacja lokacji",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Putaway i optymalizacja lokacji",
+          "System może wskazywać miejsce według pojemności, rotacji i ograniczeń.",
+          "Zastosowanie w pracy: Paleta waży więcej niż dopuszcza wskazany regał. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zgłoś niezgodność i odłóż na zgodne miejsce. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "System może wskazywać miejsce według pojemności, rotacji i ograniczeń.",
+          "situation": "Paleta waży więcej niż dopuszcza wskazany regał.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zgłoś niezgodność i odłóż na zgodne miejsce.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zgłoś niezgodność i odłóż na zgodne miejsce.",
+          "explanation": "System może wskazywać miejsce według pojemności, rotacji i ograniczeń.",
+          "feedback": [
+            "Poprawnie. System może wskazywać miejsce według pojemności, rotacji i ograniczeń.",
+            "Nie. System może wskazywać miejsce według pojemności, rotacji i ograniczeń.",
+            "Nie. System może wskazywać miejsce według pojemności, rotacji i ograniczeń."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zgłoś niezgodność i odłóż na zgodne miejsce."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Paleta waży więcej niż dopuszcza wskazany regał.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 11,
+      "title_pl": "Picking i kontrola trasy",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking i kontrola trasy",
+          "Krótka trasa nie może łamać ograniczeń bezpieczeństwa i logiki FIFO/FEFO.",
+          "Zastosowanie w pracy: System sugeruje obejście przez strefę wyłączoną z pracy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Użyj zatwierdzonej alternatywy i zgłoś problem planowania. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Krótka trasa nie może łamać ograniczeń bezpieczeństwa i logiki FIFO/FEFO.",
+          "situation": "System sugeruje obejście przez strefę wyłączoną z pracy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Użyj zatwierdzonej alternatywy i zgłoś problem planowania.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Użyj zatwierdzonej alternatywy i zgłoś problem planowania.",
+          "explanation": "Krótka trasa nie może łamać ograniczeń bezpieczeństwa i logiki FIFO/FEFO.",
+          "feedback": [
+            "Poprawnie. Krótka trasa nie może łamać ograniczeń bezpieczeństwa i logiki FIFO/FEFO.",
+            "Nie. Krótka trasa nie może łamać ograniczeń bezpieczeństwa i logiki FIFO/FEFO.",
+            "Nie. Krótka trasa nie może łamać ograniczeń bezpieczeństwa i logiki FIFO/FEFO."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Użyj zatwierdzonej alternatywy i zgłoś problem planowania."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: System sugeruje obejście przez strefę wyłączoną z pracy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 12,
+      "title_pl": "Batch picking i sortowanie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Batch picking i sortowanie",
+          "Zbieranie wielu zamówień razem wymaga ich ponownego rozdzielenia w sortowni.",
+          "Zastosowanie w pracy: Dwie podobne paczki trafiły na jeden conveyor. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj identyfikator każdej paczki przed sortowaniem. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Zbieranie wielu zamówień razem wymaga ich ponownego rozdzielenia w sortowni.",
+          "situation": "Dwie podobne paczki trafiły na jeden conveyor.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj identyfikator każdej paczki przed sortowaniem.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj identyfikator każdej paczki przed sortowaniem.",
+          "explanation": "Zbieranie wielu zamówień razem wymaga ich ponownego rozdzielenia w sortowni.",
+          "feedback": [
+            "Poprawnie. Zbieranie wielu zamówień razem wymaga ich ponownego rozdzielenia w sortowni.",
+            "Nie. Zbieranie wielu zamówień razem wymaga ich ponownego rozdzielenia w sortowni.",
+            "Nie. Zbieranie wielu zamówień razem wymaga ich ponownego rozdzielenia w sortowni."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj identyfikator każdej paczki przed sortowaniem."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwie podobne paczki trafiły na jeden conveyor.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 13,
+      "title_pl": "Packing i Smart Box",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Packing i Smart Box",
+          "Optymalizacja kartonu oszczędza przestrzeń, ale musi chronić towar.",
+          "Zastosowanie w pracy: Algorytm wskazał zbyt małe pudełko na delikatne urządzenie. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Sprawdź wymagania ochronne i dobierz bezpieczne opakowanie. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Optymalizacja kartonu oszczędza przestrzeń, ale musi chronić towar.",
+          "situation": "Algorytm wskazał zbyt małe pudełko na delikatne urządzenie.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Sprawdź wymagania ochronne i dobierz bezpieczne opakowanie.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź wymagania ochronne i dobierz bezpieczne opakowanie.",
+          "explanation": "Optymalizacja kartonu oszczędza przestrzeń, ale musi chronić towar.",
+          "feedback": [
+            "Poprawnie. Optymalizacja kartonu oszczędza przestrzeń, ale musi chronić towar.",
+            "Nie. Optymalizacja kartonu oszczędza przestrzeń, ale musi chronić towar.",
+            "Nie. Optymalizacja kartonu oszczędza przestrzeń, ale musi chronić towar."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Sprawdź wymagania ochronne i dobierz bezpieczne opakowanie."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Algorytm wskazał zbyt małe pudełko na delikatne urządzenie.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 14,
+      "title_pl": "Loading i dokumenty przewoźnika",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Loading i dokumenty przewoźnika",
+          "Przy wydaniu na transport trzeba uzgodnić etykiety, ilości i rampę.",
+          "Zastosowanie w pracy: Na palecie jest etykieta innego kierunku dostawy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Wstrzymaj załadunek i popraw identyfikację. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przy wydaniu na transport trzeba uzgodnić etykiety, ilości i rampę.",
+          "situation": "Na palecie jest etykieta innego kierunku dostawy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Wstrzymaj załadunek i popraw identyfikację.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj załadunek i popraw identyfikację.",
+          "explanation": "Przy wydaniu na transport trzeba uzgodnić etykiety, ilości i rampę.",
+          "feedback": [
+            "Poprawnie. Przy wydaniu na transport trzeba uzgodnić etykiety, ilości i rampę.",
+            "Nie. Przy wydaniu na transport trzeba uzgodnić etykiety, ilości i rampę.",
+            "Nie. Przy wydaniu na transport trzeba uzgodnić etykiety, ilości i rampę."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Wstrzymaj załadunek i popraw identyfikację."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Na palecie jest etykieta innego kierunku dostawy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 15,
+      "title_pl": "VAS — usługi dodane",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "VAS — usługi dodane",
+          "Przepakowanie i etykietowanie mogą być osobnym zadaniem i pozycją rozliczenia.",
+          "Zastosowanie w pracy: Klient zlecił naklejenie nowych etykiet na 300 sztuk. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zarejestruj usługę i wynik kontroli jakości. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przepakowanie i etykietowanie mogą być osobnym zadaniem i pozycją rozliczenia.",
+          "situation": "Klient zlecił naklejenie nowych etykiet na 300 sztuk.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zarejestruj usługę i wynik kontroli jakości.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj usługę i wynik kontroli jakości.",
+          "explanation": "Przepakowanie i etykietowanie mogą być osobnym zadaniem i pozycją rozliczenia.",
+          "feedback": [
+            "Poprawnie. Przepakowanie i etykietowanie mogą być osobnym zadaniem i pozycją rozliczenia.",
+            "Nie. Przepakowanie i etykietowanie mogą być osobnym zadaniem i pozycją rozliczenia.",
+            "Nie. Przepakowanie i etykietowanie mogą być osobnym zadaniem i pozycją rozliczenia."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zarejestruj usługę i wynik kontroli jakości."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Klient zlecił naklejenie nowych etykiet na 300 sztuk.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 16,
+      "title_pl": "Returns processing",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Returns processing",
+          "Towar wracający od klienta wymaga weryfikacji, zanim trafi do dostępnego zapasu.",
+          "Zastosowanie w pracy: Zwrot jest w otwartym opakowaniu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zastosuj kontrolę i odpowiedni status jakości. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Towar wracający od klienta wymaga weryfikacji, zanim trafi do dostępnego zapasu.",
+          "situation": "Zwrot jest w otwartym opakowaniu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zastosuj kontrolę i odpowiedni status jakości.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zastosuj kontrolę i odpowiedni status jakości.",
+          "explanation": "Towar wracający od klienta wymaga weryfikacji, zanim trafi do dostępnego zapasu.",
+          "feedback": [
+            "Poprawnie. Towar wracający od klienta wymaga weryfikacji, zanim trafi do dostępnego zapasu.",
+            "Nie. Towar wracający od klienta wymaga weryfikacji, zanim trafi do dostępnego zapasu.",
+            "Nie. Towar wracający od klienta wymaga weryfikacji, zanim trafi do dostępnego zapasu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zastosuj kontrolę i odpowiedni status jakości."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Zwrot jest w otwartym opakowaniu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 17,
+      "title_pl": "Slotting i rotacja SKU",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Slotting i rotacja SKU",
+          "Często pobierane produkty warto rozmieścić blisko stanowisk, zachowując nośność i bezpieczeństwo.",
+          "Zastosowanie w pracy: Szybkorotujący produkt leży w odległej alejce. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Wykonaj analizę relokacji, zamiast przenosić bez planu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Często pobierane produkty warto rozmieścić blisko stanowisk, zachowując nośność i bezpieczeństwo.",
+          "situation": "Szybkorotujący produkt leży w odległej alejce.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Wykonaj analizę relokacji, zamiast przenosić bez planu.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Wykonaj analizę relokacji, zamiast przenosić bez planu.",
+          "explanation": "Często pobierane produkty warto rozmieścić blisko stanowisk, zachowując nośność i bezpieczeństwo.",
+          "feedback": [
+            "Poprawnie. Często pobierane produkty warto rozmieścić blisko stanowisk, zachowując nośność i bezpieczeństwo.",
+            "Nie. Często pobierane produkty warto rozmieścić blisko stanowisk, zachowując nośność i bezpieczeństwo.",
+            "Nie. Często pobierane produkty warto rozmieścić blisko stanowisk, zachowując nośność i bezpieczeństwo."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Wykonaj analizę relokacji, zamiast przenosić bez planu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Szybkorotujący produkt leży w odległej alejce.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 18,
+      "title_pl": "Cycle count i korekty",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Cycle count i korekty",
+          "Liczenie porównuje stan fizyczny z WMS, ale korekta może wymagać osobnego zatwierdzenia.",
+          "Zastosowanie w pracy: W regale jest 40, WMS pokazuje 42. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zarejestruj 40 i przekaż różnicę do zatwierdzenia. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Liczenie porównuje stan fizyczny z WMS, ale korekta może wymagać osobnego zatwierdzenia.",
+          "situation": "W regale jest 40, WMS pokazuje 42.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zarejestruj 40 i przekaż różnicę do zatwierdzenia.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj 40 i przekaż różnicę do zatwierdzenia.",
+          "explanation": "Liczenie porównuje stan fizyczny z WMS, ale korekta może wymagać osobnego zatwierdzenia.",
+          "feedback": [
+            "Poprawnie. Liczenie porównuje stan fizyczny z WMS, ale korekta może wymagać osobnego zatwierdzenia.",
+            "Nie. Liczenie porównuje stan fizyczny z WMS, ale korekta może wymagać osobnego zatwierdzenia.",
+            "Nie. Liczenie porównuje stan fizyczny z WMS, ale korekta może wymagać osobnego zatwierdzenia."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zarejestruj 40 i przekaż różnicę do zatwierdzenia."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: W regale jest 40, WMS pokazuje 42.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: automatyzacja plus operator",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: automatyzacja plus operator",
+          "Połącz receiving, automatykę, picking, packing i loading bez dublowania ruchów.",
+          "Zastosowanie w pracy: Robot odłożył paletę, ale operator nadal widzi zadanie otwarte. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zweryfikuj wspólny status WES i WMS, nie powtarzaj w ciemno. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Połącz receiving, automatykę, picking, packing i loading bez dublowania ruchów.",
+          "situation": "Robot odłożył paletę, ale operator nadal widzi zadanie otwarte.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zweryfikuj wspólny status WES i WMS, nie powtarzaj w ciemno.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Kopiuję status z innego dokumentu i uznaję, że system sam usunie rozbieżności."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj wspólny status WES i WMS, nie powtarzaj w ciemno.",
+          "explanation": "Połącz receiving, automatykę, picking, packing i loading bez dublowania ruchów.",
+          "feedback": [
+            "Poprawnie. Połącz receiving, automatykę, picking, packing i loading bez dublowania ruchów.",
+            "Nie. Połącz receiving, automatykę, picking, packing i loading bez dublowania ruchów.",
+            "Nie. Połącz receiving, automatykę, picking, packing i loading bez dublowania ruchów."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zweryfikuj wspólny status WES i WMS, nie powtarzaj w ciemno."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Robot odłożył paletę, ale operator nadal widzi zadanie otwarte.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 20,
+      "title_pl": "Expert: Digital Twin",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: Digital Twin",
+          "Cyfrowy model wspiera analizę przepływów, ale wymaga poprawnych danych o rzeczywistych lokacjach.",
+          "Zastosowanie w pracy: Digital Twin pokazuje pusty regał, na którym stoi paleta. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zbadaj źródło danych i ostatnie ruchy. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Cyfrowy model wspiera analizę przepływów, ale wymaga poprawnych danych o rzeczywistych lokacjach.",
+          "situation": "Digital Twin pokazuje pusty regał, na którym stoi paleta.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zbadaj źródło danych i ostatnie ruchy.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zbadaj źródło danych i ostatnie ruchy.",
+          "explanation": "Cyfrowy model wspiera analizę przepływów, ale wymaga poprawnych danych o rzeczywistych lokacjach.",
+          "feedback": [
+            "Poprawnie. Cyfrowy model wspiera analizę przepływów, ale wymaga poprawnych danych o rzeczywistych lokacjach.",
+            "Nie. Cyfrowy model wspiera analizę przepływów, ale wymaga poprawnych danych o rzeczywistych lokacjach.",
+            "Nie. Cyfrowy model wspiera analizę przepływów, ale wymaga poprawnych danych o rzeczywistych lokacjach."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zbadaj źródło danych i ostatnie ruchy."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Digital Twin pokazuje pusty regał, na którym stoi paleta.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 21,
+      "title_pl": "Expert: AI workforce prediction",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: AI workforce prediction",
+          "Prognoza liczby ludzi pomaga planować zmiany, lecz wymaga kontroli trendów i dostępności.",
+          "Zastosowanie w pracy: Prognoza zapowiada pik, a grafik ma o połowę mniej operatorów. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Przeanalizuj obsadę i możliwe ryzyko SLA. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Prognoza liczby ludzi pomaga planować zmiany, lecz wymaga kontroli trendów i dostępności.",
+          "situation": "Prognoza zapowiada pik, a grafik ma o połowę mniej operatorów.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Przeanalizuj obsadę i możliwe ryzyko SLA.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Przeanalizuj obsadę i możliwe ryzyko SLA.",
+          "explanation": "Prognoza liczby ludzi pomaga planować zmiany, lecz wymaga kontroli trendów i dostępności.",
+          "feedback": [
+            "Poprawnie. Prognoza liczby ludzi pomaga planować zmiany, lecz wymaga kontroli trendów i dostępności.",
+            "Nie. Prognoza liczby ludzi pomaga planować zmiany, lecz wymaga kontroli trendów i dostępności.",
+            "Nie. Prognoza liczby ludzi pomaga planować zmiany, lecz wymaga kontroli trendów i dostępności."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Przeanalizuj obsadę i możliwe ryzyko SLA."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Prognoza zapowiada pik, a grafik ma o połowę mniej operatorów.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 22,
+      "title_pl": "Expert: Article Association",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: Article Association",
+          "Analiza współwystępowania produktów w zamówieniach może poprawić rozmieszczenie SKU.",
+          "Zastosowanie w pracy: Dwie pozycje często są razem kompletowane. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zaproponuj położenie bliżej siebie po weryfikacji pojemności i ryzyka. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Analiza współwystępowania produktów w zamówieniach może poprawić rozmieszczenie SKU.",
+          "situation": "Dwie pozycje często są razem kompletowane.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zaproponuj położenie bliżej siebie po weryfikacji pojemności i ryzyka.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zaproponuj położenie bliżej siebie po weryfikacji pojemności i ryzyka.",
+          "explanation": "Analiza współwystępowania produktów w zamówieniach może poprawić rozmieszczenie SKU.",
+          "feedback": [
+            "Poprawnie. Analiza współwystępowania produktów w zamówieniach może poprawić rozmieszczenie SKU.",
+            "Nie. Analiza współwystępowania produktów w zamówieniach może poprawić rozmieszczenie SKU.",
+            "Nie. Analiza współwystępowania produktów w zamówieniach może poprawić rozmieszczenie SKU."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zaproponuj położenie bliżej siebie po weryfikacji pojemności i ryzyka."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Dwie pozycje często są razem kompletowane.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 23,
+      "title_pl": "Expert: voice error handling",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: voice error handling",
+          "Błędne rozpoznanie komunikatu głosowego może spowodować niezgodność pobrania.",
+          "Zastosowanie w pracy: System rozpoznał osiem zamiast trzy. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Powtórz potwierdzenie i skontroluj ilość na terminalu. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Błędne rozpoznanie komunikatu głosowego może spowodować niezgodność pobrania.",
+          "situation": "System rozpoznał osiem zamiast trzy.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Powtórz potwierdzenie i skontroluj ilość na terminalu.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Powtórz potwierdzenie i skontroluj ilość na terminalu.",
+          "explanation": "Błędne rozpoznanie komunikatu głosowego może spowodować niezgodność pobrania.",
+          "feedback": [
+            "Poprawnie. Błędne rozpoznanie komunikatu głosowego może spowodować niezgodność pobrania.",
+            "Nie. Błędne rozpoznanie komunikatu głosowego może spowodować niezgodność pobrania.",
+            "Nie. Błędne rozpoznanie komunikatu głosowego może spowodować niezgodność pobrania."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Powtórz potwierdzenie i skontroluj ilość na terminalu."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: System rozpoznał osiem zamiast trzy.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 24,
+      "title_pl": "Expert: Dangerous Goods",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: Dangerous Goods",
+          "Produkty niebezpieczne wymagają zgodnych danych, etykiet i przepisów; WMS nie znosi obowiązków prawnych.",
+          "Zastosowanie w pracy: System proponuje wspólne składowanie chemikaliów niezgodnych. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Zatrzymaj ruch i sprawdź zasady segregacji oraz procedury. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Produkty niebezpieczne wymagają zgodnych danych, etykiet i przepisów; WMS nie znosi obowiązków prawnych.",
+          "situation": "System proponuje wspólne składowanie chemikaliów niezgodnych.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Zatrzymaj ruch i sprawdź zasady segregacji oraz procedury.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj ruch i sprawdź zasady segregacji oraz procedury.",
+          "explanation": "Produkty niebezpieczne wymagają zgodnych danych, etykiet i przepisów; WMS nie znosi obowiązków prawnych.",
+          "feedback": [
+            "Poprawnie. Produkty niebezpieczne wymagają zgodnych danych, etykiet i przepisów; WMS nie znosi obowiązków prawnych.",
+            "Nie. Produkty niebezpieczne wymagają zgodnych danych, etykiet i przepisów; WMS nie znosi obowiązków prawnych.",
+            "Nie. Produkty niebezpieczne wymagają zgodnych danych, etykiet i przepisów; WMS nie znosi obowiązków prawnych."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Zatrzymaj ruch i sprawdź zasady segregacji oraz procedury."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: System proponuje wspólne składowanie chemikaliów niezgodnych.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 25,
+      "title_pl": "Expert: traceability",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: traceability",
+          "Śledzenie partii umożliwia sprawdzenie drogi towaru przez magazyn i wydanie.",
+          "Zastosowanie w pracy: Partia produktu podlega wycofaniu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Odszukaj miejsca składowania i powiązane wysyłki. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Śledzenie partii umożliwia sprawdzenie drogi towaru przez magazyn i wydanie.",
+          "situation": "Partia produktu podlega wycofaniu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Odszukaj miejsca składowania i powiązane wysyłki.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Odszukaj miejsca składowania i powiązane wysyłki.",
+          "explanation": "Śledzenie partii umożliwia sprawdzenie drogi towaru przez magazyn i wydanie.",
+          "feedback": [
+            "Poprawnie. Śledzenie partii umożliwia sprawdzenie drogi towaru przez magazyn i wydanie.",
+            "Nie. Śledzenie partii umożliwia sprawdzenie drogi towaru przez magazyn i wydanie.",
+            "Nie. Śledzenie partii umożliwia sprawdzenie drogi towaru przez magazyn i wydanie."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Odszukaj miejsca składowania i powiązane wysyłki."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Partia produktu podlega wycofaniu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 26,
+      "title_pl": "Expert: integracja WMS i automatyki",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: integracja WMS i automatyki",
+          "Wykonanie zadania w sterowniku robota musi zostać prawidłowo odwzorowane w systemie WMS.",
+          "Zastosowanie w pracy: Sterownik potwierdza podniesienie, WMS nie. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Porównaj identyfikator zadania i ostatni status. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Wykonanie zadania w sterowniku robota musi zostać prawidłowo odwzorowane w systemie WMS.",
+          "situation": "Sterownik potwierdza podniesienie, WMS nie.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Porównaj identyfikator zadania i ostatni status.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Porównaj identyfikator zadania i ostatni status.",
+          "explanation": "Wykonanie zadania w sterowniku robota musi zostać prawidłowo odwzorowane w systemie WMS.",
+          "feedback": [
+            "Poprawnie. Wykonanie zadania w sterowniku robota musi zostać prawidłowo odwzorowane w systemie WMS.",
+            "Nie. Wykonanie zadania w sterowniku robota musi zostać prawidłowo odwzorowane w systemie WMS.",
+            "Nie. Wykonanie zadania w sterowniku robota musi zostać prawidłowo odwzorowane w systemie WMS."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Porównaj identyfikator zadania i ostatni status."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Sterownik potwierdza podniesienie, WMS nie.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 27,
+      "title_pl": "Expert: KPI i ślad audytowy",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: KPI i ślad audytowy",
+          "Analizuj terminowość, jakość oraz czas i źródło błędów; liczba paczek nie tłumaczy całości.",
+          "Zastosowanie w pracy: Wydajność wzrosła, lecz reklamacje podwoiły się. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Oceń rodzaj błędów i nie deklaruj poprawy jakości. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Analizuj terminowość, jakość oraz czas i źródło błędów; liczba paczek nie tłumaczy całości.",
+          "situation": "Wydajność wzrosła, lecz reklamacje podwoiły się.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Oceń rodzaj błędów i nie deklaruj poprawy jakości.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Oceń rodzaj błędów i nie deklaruj poprawy jakości.",
+          "explanation": "Analizuj terminowość, jakość oraz czas i źródło błędów; liczba paczek nie tłumaczy całości.",
+          "feedback": [
+            "Poprawnie. Analizuj terminowość, jakość oraz czas i źródło błędów; liczba paczek nie tłumaczy całości.",
+            "Nie. Analizuj terminowość, jakość oraz czas i źródło błędów; liczba paczek nie tłumaczy całości.",
+            "Nie. Analizuj terminowość, jakość oraz czas i źródło błędów; liczba paczek nie tłumaczy całości."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Oceń rodzaj błędów i nie deklaruj poprawy jakości."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Wydajność wzrosła, lecz reklamacje podwoiły się.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 28,
+      "title_pl": "Expert: plan awaryjny",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: plan awaryjny",
+          "Przejście na tryb ręczny wymaga zabezpieczenia identyfikatorów i uzgodnienia po przywróceniu systemu.",
+          "Zastosowanie w pracy: Automatyka przestaje działać przed odbiorem transportu. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Stosuj zatwierdzony proces awaryjny i późniejszą rekoncyliację. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Przejście na tryb ręczny wymaga zabezpieczenia identyfikatorów i uzgodnienia po przywróceniu systemu.",
+          "situation": "Automatyka przestaje działać przed odbiorem transportu.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Stosuj zatwierdzony proces awaryjny i późniejszą rekoncyliację.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Stosuj zatwierdzony proces awaryjny i późniejszą rekoncyliację.",
+          "explanation": "Przejście na tryb ręczny wymaga zabezpieczenia identyfikatorów i uzgodnienia po przywróceniu systemu.",
+          "feedback": [
+            "Poprawnie. Przejście na tryb ręczny wymaga zabezpieczenia identyfikatorów i uzgodnienia po przywróceniu systemu.",
+            "Nie. Przejście na tryb ręczny wymaga zabezpieczenia identyfikatorów i uzgodnienia po przywróceniu systemu.",
+            "Nie. Przejście na tryb ręczny wymaga zabezpieczenia identyfikatorów i uzgodnienia po przywróceniu systemu."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Stosuj zatwierdzony proces awaryjny i późniejszą rekoncyliację."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: Automatyka przestaje działać przed odbiorem transportu.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Astro WMS",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Astro WMS",
+          "Rozumienie łączy pracę manualną, voice, automatykę, slotting i kontrolę wydań.",
+          "Zastosowanie w pracy: System pokazuje, że paleta jest wysłana, ale nadal znajduje się na regale. Warto potwierdzić dokument wejściowy, fizyczny lub transportowy stan rzeczy i osobę odpowiedzialną za decyzję.",
+          "Dobre rozwiązanie: Wstrzymaj dalsze wydanie i wyjaśnij konflikt statusów na podstawie skanów i dokumentów. Po operacji porównaj dokument, status systemu i potwierdzone zdarzenie.",
+          "Istotne zastrzeżenie: dokładne ekrany, dostępne moduły i nazwy operacji zależą od instalacji oraz uprawnień."
+        ],
+        "learning": {
+          "intro": "Rozumienie łączy pracę manualną, voice, automatykę, slotting i kontrolę wydań.",
+          "situation": "System pokazuje, że paleta jest wysłana, ale nadal znajduje się na regale.",
+          "question": "Które działanie prawidłowo rozwiązuje problem?",
+          "options": [
+            "Wstrzymaj dalsze wydanie i wyjaśnij konflikt statusów na podstawie skanów i dokumentów.",
+            "Potwierdzam dokument lub etap, którego fizycznie nie wykonano, aby skrócić kolejkę.",
+            "Pomijam historię zmian, uprawnienia i zgodę osoby odpowiedzialnej za proces."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj dalsze wydanie i wyjaśnij konflikt statusów na podstawie skanów i dokumentów.",
+          "explanation": "Rozumienie łączy pracę manualną, voice, automatykę, slotting i kontrolę wydań.",
+          "feedback": [
+            "Poprawnie. Rozumienie łączy pracę manualną, voice, automatykę, slotting i kontrolę wydań.",
+            "Nie. Rozumienie łączy pracę manualną, voice, automatykę, slotting i kontrolę wydań.",
+            "Nie. Rozumienie łączy pracę manualną, voice, automatykę, slotting i kontrolę wydań."
+          ],
+          "task": "Wyjaśnij, jakie dwa dowody sprawdzisz przed zatwierdzeniem: Wstrzymaj dalsze wydanie i wyjaśnij konflikt statusów na podstawie skanów i dokumentów."
+        },
+        "exercise": "Praca na fikcyjnym zleceniu: System pokazuje, że paleta jest wysłana, ale nadal znajduje się na regale.",
+        "references": [
+          {
+            "label": "Oficjalna dokumentacja producenta / opis modułu",
+            "url": "https://www.consafelogistics.com/solutions/astro-wms"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Niezależny, nieoficjalny kurs; bez połączenia z prawdziwą instancją producenta."
+      }
+    }
+  ]
+}
