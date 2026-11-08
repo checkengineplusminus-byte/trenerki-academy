@@ -178,5 +178,59 @@
     "first": "Klient podaje adres dostawy, ale nie wagę ani wymiary. Nauczysz się zbierać dane do oferty.",
     "result": "Będziesz planować trasę, zabezpieczenie ładunku, komunikację opóźnień i kalkulację marży.",
     "boundary": "Szczególne ładunki i zasady transportu wymagają sprawdzenia aktualnych uprawnień i przepisów."
+  },
+  "axapta-dynamics-magazyn": {
+    "what": "Axapta była potoczną nazwą systemu Microsoft Dynamics AX. Starsze środowiska, w tym AX 2012, różnią się od Dynamics 365 Supply Chain Management interfejsem i konfiguracją WMS. Ćwiczenia szkoleniowe wyjaśniają logikę procesów bez przedstawiania imitacji jako prawdziwej instalacji.",
+    "first": "Zaczynasz od zera: Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Receiving: rejestracja dostawy zakupu, Zadanie: pełny przepływ PO → wydanie, Egzamin próbny Axapta / D365 SCM. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "sap-ewm-magazyn": {
+    "what": "SAP EWM jest rozbudowanym systemem WMS. Przyjęcie, warehouse task i finalne putaway to odrębne etapy; nazwy ekranów, transakcji i uprawnienia zależą od wersji oraz instalacji SAP.",
+    "first": "Zaczynasz od zera: SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Warehouse task i warehouse order, Ćwiczenie: od rampy do GI, Egzamin próbny SAP EWM. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "oracle-wms-cloud": {
+    "what": "Oracle Warehouse Management Cloud organizuje operacje magazynowe przez zamówienia, ASN, locations, LPN, wave i zadania mobilne. Kurs nie wymaga dostępu do prawdziwego środowiska Oracle i nie jest oficjalnym szkoleniem producenta.",
+    "first": "Zaczynasz od zera: Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Mobile RF: skanowanie przyjęć, Praktyka: pełna realizacja zamówienia, Egzamin próbny Oracle WMS Cloud. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "manhattan-active-wms": {
+    "what": "Manhattan ActiveWarehouse (dawniej kojarzony jako Manhattan Active WM) to chmurowa platforma zarządzania zapasami, realizacją zamówień, pracą i automatyką. Ekrany zależą od wdrożenia i edycji.",
+    "first": "Zaczynasz od zera: Jedna platforma łączy inventory, labor, yard i automatyzację. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Wave i tworzenie pracy, Praktyka: odbiór do wysyłki, Egzamin próbny Manhattan ActiveWarehouse. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "blue-yonder-wms": {
+    "what": "Blue Yonder oferuje zarządzanie magazynem połączone z planowaniem pracy, slottingiem, optymalizacją ruchu i automatyką. Funkcje AI są narzędziem wsparcia, nie zastępują decyzji operatora.",
+    "first": "Zaczynasz od zera: WMS zarządza towarem od przyjazdu przez magazyn po wysyłkę. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Warehouse operations, Praktyka: kompletne wydanie, Egzamin próbny Blue Yonder. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "infor-wms": {
+    "what": "Infor CloudSuite WMS obsługuje magazyny dystrybucyjne, 3PL i e-commerce, łącząc RF, zapasy, cross-docking, kitting, labor management oraz analizy wizualne. Dokładny interfejs zależy od wdrożenia.",
+    "first": "Zaczynasz od zera: WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Putaway i location control, Praktyka: dwa zamówienia 3PL, Egzamin próbny Infor WMS. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "ongoing-wms": {
+    "what": "Ongoing WMS to chmurowy WMS używany m.in. w skandynawskich magazynach i logistyce 3PL. Wyróżnia się integracjami z ERP, sklepami, platformami wysyłkowymi, kurierami, skanerami i automatyzacją. Procedury zależą od konfiguracji magazynu.",
+    "first": "Zaczynasz od zera: Ongoing to system zarządzający ruchem i stanem zapasu w magazynie, szczególnie przydatny przy obsłudze wielu klientów 3PL. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Inbound — przyjęcie towaru, Praktyka: od sklepu do kuriera, Egzamin próbny Ongoing WMS. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "astro-consafe-wms": {
+    "what": "Astro WMS firmy Consafe Logistics to system realizujący procesy ręczne i zautomatyzowane, w tym WES, slotting, voice picking, VAS i analitykę. Kurs ma formę niezależnych studiów przypadków z operacji magazynu.",
+    "first": "Zaczynasz od zera: Astro WMS nadzoruje przepływ towaru w magazynie i może integrować urządzenia automatyczne. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Putaway i optymalizacja lokacji, Praktyka: automatyzacja plus operator, Egzamin próbny Astro WMS. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "sap-tm-transport": {
+    "what": "SAP Transportation Management (SAP TM) wspiera planowanie i rozliczanie fizycznych przewozów. To TMS: różni się od SAP EWM, który zarządza pracą wewnątrz magazynu. Kurs dotyczy jednostek transportowych, zleceń, przewoźników, tenderingu i obsługi odchyleń.",
+    "first": "Zaczynasz od zera: SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
+    "result": "Po 30 lekcjach przeanalizujesz procesy: Transport cockpit, Praktyka: od order do potwierdzenia, Egzamin próbny SAP TM. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
+    "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
   }
 }
