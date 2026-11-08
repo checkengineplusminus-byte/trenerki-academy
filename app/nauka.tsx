@@ -11,8 +11,8 @@ export default function Learning(){
    const {data:{user:u}}=await supabase.auth.getUser();
    if(!u){router.replace('/konto');return;}
    setUser(u.id);
-   const {data:e}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
-   if(!e?.length){setError('Nie masz aktywnego dostępu do tego kursu.');return;}
+   const {data:e}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
+   if(!e?.length){setError('Nie masz aktywnego dostępu do tego kursu. Odbierz prezent, darmowy kurs albo poproś administratora o symulację zakupu.');return;}
    const [{data:l,error:le},{data:d},{data:p}]=await Promise.all([
     supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no'),
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
@@ -40,6 +40,7 @@ export default function Learning(){
  return <ScrollView style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{padding:22,maxWidth:850,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/moje-kursy')}><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:31,fontWeight:'900',color:'#173d30',marginVertical:16}}>Moja nauka</Text>
+  <Text style={{color:'#526c59',marginBottom:14}}>Uczysz się na prawdziwych przykładach. Każde ćwiczenie potraktuj jako próbę zrozumienia sytuacji, a nie przepis odpowiedni dla wszystkich. Szanuj bezpieczeństwo, granice i indywidualne potrzeby innych osób.</Text>
   {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a12626',marginBottom:15}}>{error}</Text>}
   {!!lesson&&<>
     <Text style={{color:'#53765b'}}>Lekcja {module+1} z {items.length} · Ukończono {done.length}/{items.length} ({progress}%)</Text>
