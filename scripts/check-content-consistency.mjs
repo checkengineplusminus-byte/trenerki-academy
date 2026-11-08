@@ -85,7 +85,7 @@ try{
  const sandbox=read('src/SoftwarePlayground.tsx'),cases=read('src/CaseLesson.tsx');
  if(!sandbox.includes('mode===\'cad\'')||!sandbox.includes('mode===\'windows\'')||!sandbox.includes('isExcel')||!sandbox.includes('isWord'))fail('Virtual software screens missing');
  if(!cases.includes('onPassed')||!progress.includes('const canFinish='))fail('Graded lesson checkpoint missing');
- if(page.includes("'<span class=\\"pill\\">${c.outline?.length||8} lekcji i ćwiczenia</span>'"))fail('Raw ${...} interpolation text in course card');
+ if(page.includes("<span class=\\"pill\\">\x24{c.outline?.length||8} lekcji i ćwiczenia</span>'"))fail('Literal lesson-count bug in cards');
  if(!academy.includes("functions.invoke('ta-academy'"))fail('Protected backend integration missing');
  if(/service_role|stripe_secret_key/i.test(checkout+academy+gift+admin))fail('Server secret name exposed in frontend, review required');
  if(!process.exitCode)console.log('All static integrity checks passed.');
