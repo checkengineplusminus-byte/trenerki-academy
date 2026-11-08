@@ -1,1 +1,1685 @@
-{"schema_version":2,"course_slug":"autocad-skroty","sections":["PODSTAWY","PRAKTYKA","EXPERT"],"lessons":[{"course_slug":"autocad-skroty","lesson_no":0,"title_pl":"Co to jest CAD?","material":{"section":1,"level":"podstawy","raw":["Co to jest CAD?","CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.","Sytuacja: Ktoś chce zmierzyć poręcz na zdjęciu i w DWG.","Poprawne działanie: Sprawdzam geometrię i jednostki w oryginalnym DWG.","Błędny wybór: Przykładam linijkę do monitora."],"learning":{"intro":"CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.","situation":"Ktoś chce zmierzyć poręcz na zdjęciu i w DWG.","question":"Które działanie jest właściwe?","options":["Sprawdzam geometrię i jednostki w oryginalnym DWG.","Przykładam linijkę do monitora.","Uznaję zdjęcie za dokładny rysunek techniczny."],"correct":0,"example":"Sprawdzam geometrię i jednostki w oryginalnym DWG.","explanation":"CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.","feedback":["Dobrze. CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.","Nie. CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.","Nie. CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele."],"task":"Sprawdź na swoim przykładzie: Sprawdzam geometrię i jednostki w oryginalnym DWG."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":1,"title_pl":"Mapa okna AutoCAD-a","material":{"section":1,"level":"podstawy","raw":["Mapa okna AutoCAD-a","U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.","Sytuacja: Po wpisaniu LINE nic nie widać.","Poprawne działanie: Czytam polecenie i wskazuję wymagany punkt.","Błędny wybór: Klikam losowo w menu."],"learning":{"intro":"U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.","situation":"Po wpisaniu LINE nic nie widać.","question":"Które działanie jest właściwe?","options":["Czytam polecenie i wskazuję wymagany punkt.","Klikam losowo w menu.","Zmniejszam jasność ekranu."],"correct":0,"example":"Czytam polecenie i wskazuję wymagany punkt.","explanation":"U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.","feedback":["Dobrze. U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.","Nie. U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.","Nie. U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami."],"task":"Sprawdź na swoim przykładzie: Czytam polecenie i wskazuję wymagany punkt."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":2,"title_pl":"Co to jest DWG, DXF i PDF?","material":{"section":1,"level":"podstawy","raw":["Co to jest DWG, DXF i PDF?","DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.","Sytuacja: Masz oddać wykonawcy rysunek do wydruku, zachowując możliwość zmian.","Poprawne działanie: Zachowuję wersję DWG i przygotowuję skontrolowany PDF.","Błędny wybór: Kasuję DWG po wygenerowaniu PDF."],"learning":{"intro":"DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.","situation":"Masz oddać wykonawcy rysunek do wydruku, zachowując możliwość zmian.","question":"Które działanie jest właściwe?","options":["Zachowuję wersję DWG i przygotowuję skontrolowany PDF.","Kasuję DWG po wygenerowaniu PDF.","Zmieniam rozszerzenie PDF na DWG."],"correct":0,"example":"Zachowuję wersję DWG i przygotowuję skontrolowany PDF.","explanation":"DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.","feedback":["Dobrze. DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.","Nie. DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.","Nie. DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym."],"task":"Sprawdź na swoim przykładzie: Zachowuję wersję DWG i przygotowuję skontrolowany PDF."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":3,"title_pl":"Jednostki i milimetry","material":{"section":1,"level":"podstawy","raw":["Jednostki i milimetry","W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.","Sytuacja: Projektant podał długość 1200 dla balustrady.","Poprawne działanie: Weryfikuję jednostki i opisuję wynik w mm lub m.","Błędny wybór: Zakładam na oko, że chodzi o metry."],"learning":{"intro":"W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.","situation":"Projektant podał długość 1200 dla balustrady.","question":"Które działanie jest właściwe?","options":["Weryfikuję jednostki i opisuję wynik w mm lub m.","Zakładam na oko, że chodzi o metry.","Zmniejszam obiekt do wielkości na ekranie."],"correct":0,"example":"Weryfikuję jednostki i opisuję wynik w mm lub m.","explanation":"W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.","feedback":["Dobrze. W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.","Nie. W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.","Nie. W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry."],"task":"Sprawdź na swoim przykładzie: Weryfikuję jednostki i opisuję wynik w mm lub m."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":4,"title_pl":"Punkt, współrzędne X i Y","material":{"section":1,"level":"podstawy","raw":["Punkt, współrzędne X i Y","Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.","Sytuacja: Masz postawić narożnik w punkcie 0,0.","Poprawne działanie: Wprowadzam współrzędne i kontroluję pozycję.","Błędny wybór: Klikam w najbardziej zielone miejsce."],"learning":{"intro":"Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.","situation":"Masz postawić narożnik w punkcie 0,0.","question":"Które działanie jest właściwe?","options":["Wprowadzam współrzędne i kontroluję pozycję.","Klikam w najbardziej zielone miejsce.","Wpisuję współrzędne jako zwykły tekst etykiety."],"correct":0,"example":"Wprowadzam współrzędne i kontroluję pozycję.","explanation":"Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.","feedback":["Dobrze. Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.","Nie. Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.","Nie. Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu."],"task":"Sprawdź na swoim przykładzie: Wprowadzam współrzędne i kontroluję pozycję."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":5,"title_pl":"Linia, polilinia i okrąg","material":{"section":1,"level":"podstawy","raw":["Linia, polilinia i okrąg","LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.","Sytuacja: Tworzysz zamknięty obrys podestu.","Poprawne działanie: Stosuję polilinię albo domykam kontur i sprawdzam spójność.","Błędny wybór: Traktuję odrębne odcinki jako jeden obiekt."],"learning":{"intro":"LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.","situation":"Tworzysz zamknięty obrys podestu.","question":"Które działanie jest właściwe?","options":["Stosuję polilinię albo domykam kontur i sprawdzam spójność.","Traktuję odrębne odcinki jako jeden obiekt.","Rysuję obrys wyłącznie opisem tekstowym."],"correct":0,"example":"Stosuję polilinię albo domykam kontur i sprawdzam spójność.","explanation":"LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.","feedback":["Dobrze. LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.","Nie. LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.","Nie. LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję."],"task":"Sprawdź na swoim przykładzie: Stosuję polilinię albo domykam kontur i sprawdzam spójność."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":6,"title_pl":"Co znaczy Enter i Esc?","material":{"section":1,"level":"podstawy","raw":["Co znaczy Enter i Esc?","Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.","Sytuacja: Przypadkowo aktywowałeś MOVE.","Poprawne działanie: Naciskam Esc i sprawdzam stan rysunku.","Błędny wybór: Klikam przypadkowy punkt docelowy."],"learning":{"intro":"Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.","situation":"Przypadkowo aktywowałeś MOVE.","question":"Które działanie jest właściwe?","options":["Naciskam Esc i sprawdzam stan rysunku.","Klikam przypadkowy punkt docelowy.","Usuwam całą warstwę."],"correct":0,"example":"Naciskam Esc i sprawdzam stan rysunku.","explanation":"Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.","feedback":["Dobrze. Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.","Nie. Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.","Nie. Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością."],"task":"Sprawdź na swoim przykładzie: Naciskam Esc i sprawdzam stan rysunku."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":7,"title_pl":"Warstwy od zera","material":{"section":1,"level":"podstawy","raw":["Warstwy od zera","Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.","Sytuacja: Na planie rury zasłaniają obrys balustrady.","Poprawne działanie: Sprawdzam warstwy i tymczasowo ukrywam zbędne.","Błędny wybór: Usuwam instalacje z projektu."],"learning":{"intro":"Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.","situation":"Na planie rury zasłaniają obrys balustrady.","question":"Które działanie jest właściwe?","options":["Sprawdzam warstwy i tymczasowo ukrywam zbędne.","Usuwam instalacje z projektu.","Przesuwam poręcz w przypadkowe miejsce."],"correct":0,"example":"Sprawdzam warstwy i tymczasowo ukrywam zbędne.","explanation":"Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.","feedback":["Dobrze. Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.","Nie. Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.","Nie. Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów."],"task":"Sprawdź na swoim przykładzie: Sprawdzam warstwy i tymczasowo ukrywam zbędne."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":8,"title_pl":"Model Space i Layout","material":{"section":1,"level":"podstawy","raw":["Model Space i Layout","Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.","Sytuacja: Rysunek wygląda na papierze mniejszy niż w modelu.","Poprawne działanie: Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu.","Błędny wybór: Przeskalowuję cały budynek w modelu."],"learning":{"intro":"Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.","situation":"Rysunek wygląda na papierze mniejszy niż w modelu.","question":"Które działanie jest właściwe?","options":["Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu.","Przeskalowuję cały budynek w modelu.","Usuwam wymiary z rysunku."],"correct":0,"example":"Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu.","explanation":"Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.","feedback":["Dobrze. Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.","Nie. Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.","Nie. Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach."],"task":"Sprawdź na swoim przykładzie: Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":9,"title_pl":"Pierwszy szkic 4 na 3 metry","material":{"section":1,"level":"podstawy","raw":["Pierwszy szkic 4 na 3 metry","Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.","Sytuacja: Masz wykonać plan pomieszczenia 4 × 3 m.","Poprawne działanie: Rysuję 4000×3000 w mm i weryfikuję pomiary.","Błędny wybór: Rysuję prostokąt na oko z podpisem 4×3."],"learning":{"intro":"Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.","situation":"Masz wykonać plan pomieszczenia 4 × 3 m.","question":"Które działanie jest właściwe?","options":["Rysuję 4000×3000 w mm i weryfikuję pomiary.","Rysuję prostokąt na oko z podpisem 4×3.","Zapisuję wyłącznie zdjęcie monitora."],"correct":0,"example":"Rysuję 4000×3000 w mm i weryfikuję pomiary.","explanation":"Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.","feedback":["Dobrze. Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.","Nie. Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.","Nie. Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu."],"task":"Sprawdź na swoim przykładzie: Rysuję 4000×3000 w mm i weryfikuję pomiary."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":10,"title_pl":"LINE, PLINE, RECTANG i CIRCLE","material":{"section":2,"level":"praktyka","raw":["LINE, PLINE, RECTANG i CIRCLE","Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.","Sytuacja: Projekt wymaga okrągłego otworu i prostokątnego obrysu.","Poprawne działanie: Dobieram właściwą geometrię i kontroluję wymiar.","Błędny wybór: Oba obiekty wykonuję z losowych prostych."],"learning":{"intro":"Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.","situation":"Projekt wymaga okrągłego otworu i prostokątnego obrysu.","question":"Które działanie jest właściwe?","options":["Dobieram właściwą geometrię i kontroluję wymiar.","Oba obiekty wykonuję z losowych prostych.","Wpisuję średnicę bez tworzenia koła."],"correct":0,"example":"Dobieram właściwą geometrię i kontroluję wymiar.","explanation":"Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.","feedback":["Dobrze. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.","Nie. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.","Nie. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry."],"task":"Sprawdź na swoim przykładzie: Dobieram właściwą geometrię i kontroluję wymiar."},"shortcuts":[{"keys":["L","Enter"],"kind":"alias","combo":"L","label":"Linia — LINE","before":"Puste pole rysunku","after":"Tworzysz odcinek od punktu A do B","tip":"Wybieraj punkty z włączonymi pomocami precyzyjnego wskazywania.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["PL","Enter"],"kind":"alias","combo":"PL","label":"Polilinia — PLINE","before":"Kilka oddzielnych krawędzi","after":"Połączone segmenty jednego obiektu","tip":"Wygodne do obrysów, które chcesz później modyfikować jako całość.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["C","Enter"],"kind":"alias","combo":"C","label":"Okrąg — CIRCLE","before":"Brak otworu na rysunku","after":"Okrąg o wskazanym środku i promieniu","tip":"Podaj promień z klawiatury zamiast ustawiać go na oko.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["REC","Enter"],"kind":"alias","combo":"REC","label":"Prostokąt — RECTANG","before":"Cztery niezależne linie","after":"Prostokąt będący polilinią","tip":"Dobry początek prostego rzutu pomieszczenia.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["A","Enter"],"kind":"alias","combo":"A","label":"Łuk — ARC","before":"Prosta krawędź","after":"Odcinek łuku","tip":"Dla precyzji wybierz sposób definiowania łuku w wierszu poleceń.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":11,"title_pl":"MOVE, COPY, ROTATE i SCALE","material":{"section":2,"level":"praktyka","raw":["MOVE, COPY, ROTATE i SCALE","Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.","Sytuacja: Masz dwa identyczne słupki, jeden istnieje.","Poprawne działanie: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.","Błędny wybór: Przenoszę jedyny słupek."],"learning":{"intro":"Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.","situation":"Masz dwa identyczne słupki, jeden istnieje.","question":"Które działanie jest właściwe?","options":["Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.","Przenoszę jedyny słupek.","Zmniejszam słupek, aby wyglądał na drugi."],"correct":0,"example":"Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.","explanation":"Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.","feedback":["Dobrze. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.","Nie. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.","Nie. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię."],"task":"Sprawdź na swoim przykładzie: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie."},"shortcuts":[{"keys":["M","Enter"],"kind":"alias","combo":"M","label":"Przenieś — MOVE","before":"Obiekt w złym miejscu","after":"Obiekt przesunięty o wektor","tip":"Najpierw wskaż obiekty, potem punkt bazowy i docelowy.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["CP","Enter"],"kind":"alias","combo":"CP","label":"Kopiuj — COPY","before":"Jedna kolumna na planie","after":"Dwie identyczne kolumny","tip":"Używaj dokładnych przesunięć i stałych punktów bazowych.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["RO","Enter"],"kind":"alias","combo":"RO","label":"Obróć — ROTATE","before":"Element pod niewłaściwym kątem","after":"Element obrócony o podany kąt","tip":"Wpisz kąt z klawiatury zamiast obracać na oko.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["SC","Enter"],"kind":"alias","combo":"SC","label":"Skaluj — SCALE","before":"Detal o zbyt dużym rozmiarze","after":"Detal w nowej skali","tip":"Nie zmieniaj skali przypadkowo w rysunku wykonawczym; kontroluj jednostki.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["MI","Enter"],"kind":"alias","combo":"MI","label":"Odbij lustrzanie — MIRROR","before":"Jeden wspornik po lewej","after":"Odbicie wspornika po prawej","tip":"Przed zatwierdzeniem sprawdź, czy chcesz zachować obiekt źródłowy.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":12,"title_pl":"OSNAP i ORTHO","material":{"section":2,"level":"praktyka","raw":["OSNAP i ORTHO","OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.","Sytuacja: Koniec poręczy ma trafić dokładnie w narożnik słupka.","Poprawne działanie: Używam właściwego przyciągania i sprawdzam punkt.","Błędny wybór: Klikam blisko narożnika na oko."],"learning":{"intro":"OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.","situation":"Koniec poręczy ma trafić dokładnie w narożnik słupka.","question":"Które działanie jest właściwe?","options":["Używam właściwego przyciągania i sprawdzam punkt.","Klikam blisko narożnika na oko.","Ustawiam większy zoom i zakładam perfekcję."],"correct":0,"example":"Używam właściwego przyciągania i sprawdzam punkt.","explanation":"OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.","feedback":["Dobrze. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.","Nie. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.","Nie. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."],"task":"Sprawdź na swoim przykładzie: Używam właściwego przyciągania i sprawdzam punkt."},"shortcuts":[{"keys":["F3"],"kind":"hotkey","combo":"F3","label":"OSNAP — tryb lokalizacji","before":"Wskaźnik nie łapie dokładnych końców","after":"Możesz przyciągać kursor do charakterystycznych punktów","tip":"Sprawdź skonfigurowane tryby lokalizacji, np. Endpoint.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["F8"],"kind":"hotkey","combo":"F8","label":"ORTHO — rysowanie prostopadłe","before":"Kursor może rysować pod dowolnym kątem","after":"Ruch ograniczony do osi prostokątnych","tip":"Dobre do ścian i prostych krawędzi.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["F10"],"kind":"hotkey","combo":"F10","label":"Śledzenie biegunowe — POLAR","before":"Trudno prowadzić linię pod zadanym kątem","after":"Wskaźnik pomaga trzymać ustawione kąty","tip":"Dobierz kąty w ustawieniach śledzenia biegunowego.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["F12"],"kind":"hotkey","combo":"F12","label":"Dynamic Input","before":"Parametry tylko w wierszu poleceń","after":"Wskazówki i wartości pojawiają się przy kursorze","tip":"Jeśli przeszkadza, możesz przełączyć tryb tym samym klawiszem.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["F11"],"kind":"hotkey","combo":"F11","label":"Śledzenie punktów OSNAP","before":"Brak podpowiedzi linii odniesienia","after":"Możesz korzystać z torów wyrównania","tip":"Działa najlepiej z dobrze dobranymi trybami lokalizacji.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":13,"title_pl":"LA, właściwości i warstwy","material":{"section":2,"level":"praktyka","raw":["LA, właściwości i warstwy","Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.","Sytuacja: Trzeba rozróżnić elementy poręczy i instalacje.","Poprawne działanie: Wybieram opisane warstwy i zachowuję legendę.","Błędny wybór: Przenoszę wszystko do jednej warstwy."],"learning":{"intro":"Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.","situation":"Trzeba rozróżnić elementy poręczy i instalacje.","question":"Które działanie jest właściwe?","options":["Wybieram opisane warstwy i zachowuję legendę.","Przenoszę wszystko do jednej warstwy.","Usuwam instalacje, bo nie są moje."],"correct":0,"example":"Wybieram opisane warstwy i zachowuję legendę.","explanation":"Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.","feedback":["Dobrze. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.","Nie. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.","Nie. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu."],"task":"Sprawdź na swoim przykładzie: Wybieram opisane warstwy i zachowuję legendę."},"shortcuts":[{"keys":["LA","Enter"],"kind":"alias","combo":"LA","label":"Menedżer warstw — LAYER","before":"Ściany i instalacje narysowane razem","after":"Warstwy da się porządkować i filtrować","tip":"Nazwij warstwy według ich funkcji, nie losowych numerów.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","1"],"kind":"hotkey","combo":"Ctrl+1","label":"Paleta właściwości","before":"Nie widzisz parametrów obiektu","after":"Otwiera się paleta z cechami obiektu","tip":"Sprawdzaj współrzędne i warstwę przed zmianami.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["MA","Enter"],"kind":"alias","combo":"MA","label":"Dopasuj właściwości — MATCHPROP","before":"Element ma inny kolor i warstwę","after":"Wskazany obiekt przejmuje cechy wzorca","tip":"Zawsze sprawdź, które właściwości są kopiowane.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["LT","Enter"],"kind":"alias","combo":"LT","label":"Typ linii — LINETYPE","before":"Wszystko wygląda jak linia ciągła","after":"Możesz zarządzać typami linii","tip":"Skala rodzaju linii może wpływać na wygląd kreskowania.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","9"],"kind":"hotkey","combo":"Ctrl+9","label":"Pokaż / ukryj wiersz poleceń","before":"Wiersz poleceń jest ukryty","after":"Wiersz poleceń widoczny","tip":"Jeśli alias nie działa, najpierw sprawdź fokus w wierszu poleceń.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":14,"title_pl":"ZOOM, PAN i regeneracja","material":{"section":2,"level":"praktyka","raw":["ZOOM, PAN i regeneracja","Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.","Sytuacja: Konstrukcja znika poza ekranem.","Poprawne działanie: Przesuwam lub oddalam widok bez zmiany położenia geometrii.","Błędny wybór: Skaluję budynek do monitora."],"learning":{"intro":"Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.","situation":"Konstrukcja znika poza ekranem.","question":"Które działanie jest właściwe?","options":["Przesuwam lub oddalam widok bez zmiany położenia geometrii.","Skaluję budynek do monitora.","Przesuwam wszystkie obiekty w przypadkowe miejsce."],"correct":0,"example":"Przesuwam lub oddalam widok bez zmiany położenia geometrii.","explanation":"Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.","feedback":["Dobrze. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.","Nie. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.","Nie. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."],"task":"Sprawdź na swoim przykładzie: Przesuwam lub oddalam widok bez zmiany położenia geometrii."},"shortcuts":[{"keys":["Z","Enter"],"kind":"alias","combo":"Z","label":"Powiększ widok — ZOOM","before":"Detal jest zbyt mały","after":"Możesz wybrać zakres zbliżenia","tip":"ZOOM nie skaluje obiektów, tylko sposób ich wyświetlania.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["P","Enter"],"kind":"alias","combo":"P","label":"Przesuwaj widok — PAN","before":"Potrzebny fragment poza ekranem","after":"Widok przesunięty, obiekty bez zmian","tip":"W rysunku z większą liczbą warstw użyj środkowego przycisku myszy, jeśli Ci wygodniej.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["RE","Enter"],"kind":"alias","combo":"RE","label":"Odśwież — REGEN","before":"Widok wygląda na nieaktualny","after":"Rysunek jest przerysowany","tip":"Nie traktuj odświeżenia jako naprawy błędnej geometrii.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","0"],"kind":"hotkey","combo":"Ctrl+0","label":"Clean Screen","before":"Interfejs zajmuje dużo miejsca","after":"Widoczna jest większa powierzchnia rysunku","tip":"Powtórz skrót, by przywrócić elementy interfejsu.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","9"],"kind":"hotkey","combo":"Ctrl+9","label":"Command Line","before":"Wiersz poleceń nie jest widoczny","after":"Wiersz poleceń wraca","tip":"Wiele komend uczy się szybciej dzięki podpowiedziom w wierszu poleceń.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":15,"title_pl":"Bloki, INSERT i XREF","material":{"section":2,"level":"praktyka","raw":["Bloki, INSERT i XREF","Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.","Sytuacja: Otwierasz rysunek z ostrzeżeniem Missing XREF.","Poprawne działanie: Sprawdzam ścieżki i komplet zależnych plików.","Błędny wybór: Ignoruję ostrzeżenie."],"learning":{"intro":"Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.","situation":"Otwierasz rysunek z ostrzeżeniem Missing XREF.","question":"Które działanie jest właściwe?","options":["Sprawdzam ścieżki i komplet zależnych plików.","Ignoruję ostrzeżenie.","Kasuję odnośnik bez uzgodnienia."],"correct":0,"example":"Sprawdzam ścieżki i komplet zależnych plików.","explanation":"Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.","feedback":["Dobrze. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.","Nie. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.","Nie. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."],"task":"Sprawdź na swoim przykładzie: Sprawdzam ścieżki i komplet zależnych plików."},"shortcuts":[{"keys":["B","Enter"],"kind":"alias","combo":"B","label":"Utwórz blok — BLOCK","before":"Wiele oddzielnych linii symbolu","after":"Jeden blok z nazwą i punktem bazowym","tip":"Nadaj jednoznaczną nazwę i rozsądny punkt wstawienia.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["I","Enter"],"kind":"alias","combo":"I","label":"Wstaw blok — INSERT","before":"Symbol nieobecny na rysunku","after":"Blok wstawiony do rysunku","tip":"Sprawdź skalę i jednostki przed wstawieniem.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["X","Enter"],"kind":"alias","combo":"X","label":"Rozbij — EXPLODE","before":"Obiekt jest jedną całością","after":"Obiekt rozbity na części","tip":"Nie rozbijaj bloków bez potrzeby, bo tracisz wygodę zarządzania.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["W","Enter"],"kind":"alias","combo":"W","label":"Zapisz blok do pliku — WBLOCK","before":"Symbol tylko w danym rysunku","after":"Symbol może być zapisany jako oddzielny plik","tip":"Wspólna biblioteka bloków oszczędza czas zespołu.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["XR","Enter"],"kind":"alias","combo":"XR","label":"Odnośniki — XREF","before":"Potrzebujesz rysunku innej branży","after":"Otwiera się zarządzanie odnośnikami","tip":"Nie przerabiaj cudzych rysunków bez uzgodnienia rewizji.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":16,"title_pl":"Wymiarowanie i adnotacje","material":{"section":2,"level":"praktyka","raw":["Wymiarowanie i adnotacje","Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.","Sytuacja: Obiekt mierzy 975, etykieta ręczna pokazuje 1000.","Poprawne działanie: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.","Błędny wybór: Nadpisuję etykietę na 1000."],"learning":{"intro":"Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.","situation":"Obiekt mierzy 975, etykieta ręczna pokazuje 1000.","question":"Które działanie jest właściwe?","options":["Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.","Nadpisuję etykietę na 1000.","Ukrywam wymiary przed odbiorem."],"correct":0,"example":"Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.","explanation":"Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.","feedback":["Dobrze. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.","Nie. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.","Nie. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."],"task":"Sprawdź na swoim przykładzie: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją."},"shortcuts":[{"keys":["D","Enter"],"kind":"alias","combo":"D","label":"Style wymiarowe — DIMSTYLE","before":"Wymiary mają różne wielkości tekstu","after":"Możesz zarządzać spójnym stylem wymiarowania","tip":"Zdefiniuj styl zanim wymiarujesz cały rysunek.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["DIM","Enter"],"kind":"alias","combo":"DIM","label":"Wymiarowanie — DIM","before":"Brak wymiaru na detalu","after":"Powstaje obiekt wymiarowy","tip":"Sprawdź jednostki i precyzję prezentacji.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["MT","Enter"],"kind":"alias","combo":"MT","label":"Tekst wielowierszowy — MTEXT","before":"Opis składa się z luźnych obiektów tekstowych","after":"Jeden spójny blok opisu","tip":"Opisuj elementy jasno, zwłaszcza miejsca z ograniczeniami montażowymi.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["DI","Enter"],"kind":"alias","combo":"DI","label":"Pomiar odległości — DIST","before":"Nie znasz długości między punktami","after":"AutoCAD podaje odległość","tip":"To narzędzie pomocnicze; pomiar nie zastępuje weryfikacji dokumentacji.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["F8"],"kind":"hotkey","combo":"F8","label":"Wyrównanie kierunków — ORTHO","before":"Wymiar trudno ustawić równolegle do osi","after":"Wskazania łatwiej prowadzić w osi","tip":"Pamiętaj, że tryb ORTHO nie usuwa wcześniej istniejących błędów.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":17,"title_pl":"Bezpieczny zapis i wydruk","material":{"section":2,"level":"praktyka","raw":["Bezpieczny zapis i wydruk","Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.","Sytuacja: Klient oczekuje aktualnego planu z wymiarami.","Poprawne działanie: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.","Błędny wybór: Wysyłam pierwszy przypadkowy podgląd."],"learning":{"intro":"Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.","situation":"Klient oczekuje aktualnego planu z wymiarami.","question":"Które działanie jest właściwe?","options":["Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.","Wysyłam pierwszy przypadkowy podgląd.","Kasuję oryginalny DWG."],"correct":0,"example":"Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.","explanation":"Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.","feedback":["Dobrze. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.","Nie. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.","Nie. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw."],"task":"Sprawdź na swoim przykładzie: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem."},"shortcuts":[{"keys":["Ctrl","S"],"kind":"hotkey","combo":"Ctrl+S","label":"Zapisz rysunek","before":"Zmiany niezapisane","after":"Rysunek zapisany w DWG","tip":"Zachowaj kopię przed dużą zmianą.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","O"],"kind":"hotkey","combo":"Ctrl+O","label":"Otwórz rysunek","before":"Rysunek nieotwarty","after":"Możesz wybrać plik DWG","tip":"Sprawdź wersję pliku i brakujące odnośniki.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","P"],"kind":"hotkey","combo":"Ctrl+P","label":"Wydruk — PLOT","before":"Nieznane ustawienia wydruku","after":"Okno wydruku i skali","tip":"Zawsze sprawdź papier, skalę i plik CTB/STB.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","Z"],"kind":"hotkey","combo":"Ctrl+Z","label":"Cofnij","before":"Zmieniono zły element","after":"Ostatnia akcja cofnięta","tip":"Skontroluj efekt cofnięcia; nie wszystkie zdarzenia mają ten sam zakres.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Ctrl","Y"],"kind":"hotkey","combo":"Ctrl+Y","label":"Ponów","before":"Wycofana zmiana","after":"Ostatnia cofnięta zmiana przywrócona","tip":"Sprawdź wiersz poleceń, czy polecenie jest dostępne.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"},{"keys":["Esc"],"kind":"hotkey","combo":"Esc","label":"Anuluj bieżące polecenie","before":"Trwa przypadkowa komenda","after":"Komenda została przerwana","tip":"Najprostszy sposób wyjścia z niechcianej operacji.","platform":"AutoCAD dla Windows (domyślne aliasy/ustawienia)"}],"quickTips":["Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.","Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).","Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."],"exercise":"Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.","editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":18,"title_pl":"Ćwiczenie: szkic balustrady","material":{"section":2,"level":"praktyka","raw":["Ćwiczenie: szkic balustrady","Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.","Sytuacja: Narysowano cztery słupki bez wymiarów.","Poprawne działanie: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.","Błędny wybór: Dopisuję dowolną nośność."],"learning":{"intro":"Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.","situation":"Narysowano cztery słupki bez wymiarów.","question":"Które działanie jest właściwe?","options":["Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.","Dopisuję dowolną nośność.","Zatwierdzam sam konstrukcję bez uprawnień."],"correct":0,"example":"Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.","explanation":"Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.","feedback":["Dobrze. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.","Nie. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.","Nie. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."],"task":"Sprawdź na swoim przykładzie: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":19,"title_pl":"Zadanie praktyczne CAD","material":{"section":2,"level":"praktyka","raw":["Zadanie praktyczne CAD","Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.","Sytuacja: Oddajesz rysunek pomieszczenia z otworami.","Poprawne działanie: Kontroluję geometrię, jednostki, warstwy i wydruk.","Błędny wybór: Sprawdzam tylko kolor tła."],"learning":{"intro":"Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.","situation":"Oddajesz rysunek pomieszczenia z otworami.","question":"Które działanie jest właściwe?","options":["Kontroluję geometrię, jednostki, warstwy i wydruk.","Sprawdzam tylko kolor tła.","Wysyłam niedokończony plan bez opisu."],"correct":0,"example":"Kontroluję geometrię, jednostki, warstwy i wydruk.","explanation":"Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.","feedback":["Dobrze. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.","Nie. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.","Nie. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów."],"task":"Sprawdź na swoim przykładzie: Kontroluję geometrię, jednostki, warstwy i wydruk."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":20,"title_pl":"Expert: rysunek produkcyjny","material":{"section":3,"level":"expert","raw":["Expert: rysunek produkcyjny","Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.","Sytuacja: Fabryka chce ciąć element z pliku bez numeru rewizji.","Poprawne działanie: Wstrzymuję produkcję i proszę o potwierdzony komplet.","Błędny wybór: Produkuję z pierwszego maila."],"learning":{"intro":"Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.","situation":"Fabryka chce ciąć element z pliku bez numeru rewizji.","question":"Które działanie jest właściwe?","options":["Wstrzymuję produkcję i proszę o potwierdzony komplet.","Produkuję z pierwszego maila.","Zakładam, że najnowsza data pliku wystarczy."],"correct":0,"example":"Wstrzymuję produkcję i proszę o potwierdzony komplet.","explanation":"Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.","feedback":["Dobrze. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.","Nie. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.","Nie. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień."],"task":"Sprawdź na swoim przykładzie: Wstrzymuję produkcję i proszę o potwierdzony komplet."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":21,"title_pl":"Expert: konflikty branżowe","material":{"section":3,"level":"expert","raw":["Expert: konflikty branżowe","Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.","Sytuacja: Rura biegnie przez wspornik balustrady.","Poprawne działanie: Zgłaszam kolizję i czekam na zatwierdzoną zmianę.","Błędny wybór: Kasuję rurę z DWG."],"learning":{"intro":"Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.","situation":"Rura biegnie przez wspornik balustrady.","question":"Które działanie jest właściwe?","options":["Zgłaszam kolizję i czekam na zatwierdzoną zmianę.","Kasuję rurę z DWG.","Przesuwam wspornik bez obliczeń."],"correct":0,"example":"Zgłaszam kolizję i czekam na zatwierdzoną zmianę.","explanation":"Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.","feedback":["Dobrze. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.","Nie. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.","Nie. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku."],"task":"Sprawdź na swoim przykładzie: Zgłaszam kolizję i czekam na zatwierdzoną zmianę."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":22,"title_pl":"Expert: obcy plik DWG","material":{"section":3,"level":"expert","raw":["Expert: obcy plik DWG","Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.","Sytuacja: Dostarczony projekt otwiera się z brakami.","Poprawne działanie: Weryfikuję kompletność i proszę o brakujące dane.","Błędny wybór: Ukrywam ostrzeżenia."],"learning":{"intro":"Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.","situation":"Dostarczony projekt otwiera się z brakami.","question":"Które działanie jest właściwe?","options":["Weryfikuję kompletność i proszę o brakujące dane.","Ukrywam ostrzeżenia.","Zmieniam kolor tła i uznaję dokument za pełny."],"correct":0,"example":"Weryfikuję kompletność i proszę o brakujące dane.","explanation":"Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.","feedback":["Dobrze. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.","Nie. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.","Nie. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii."],"task":"Sprawdź na swoim przykładzie: Weryfikuję kompletność i proszę o brakujące dane."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":23,"title_pl":"Expert: rewizja i wariant","material":{"section":3,"level":"expert","raw":["Expert: rewizja i wariant","Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.","Sytuacja: Klient zmienia szerokość poręczy po akceptacji.","Poprawne działanie: Wydaję nową wersję do zatwierdzenia z opisem zmian.","Błędny wybór: Nadpisuję jedyną kopię."],"learning":{"intro":"Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.","situation":"Klient zmienia szerokość poręczy po akceptacji.","question":"Które działanie jest właściwe?","options":["Wydaję nową wersję do zatwierdzenia z opisem zmian.","Nadpisuję jedyną kopię.","Wprowadzam zmianę tylko ustnie."],"correct":0,"example":"Wydaję nową wersję do zatwierdzenia z opisem zmian.","explanation":"Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.","feedback":["Dobrze. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.","Nie. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.","Nie. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia."],"task":"Sprawdź na swoim przykładzie: Wydaję nową wersję do zatwierdzenia z opisem zmian."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":24,"title_pl":"Expert: skala arkusza","material":{"section":3,"level":"expert","raw":["Expert: skala arkusza","Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.","Sytuacja: Rzut 1:50 ma za małe opisy.","Poprawne działanie: Poprawiam układ arkusza i style tekstu, zachowując geometrię.","Błędny wybór: Skaluję obiekty budynku."],"learning":{"intro":"Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.","situation":"Rzut 1:50 ma za małe opisy.","question":"Które działanie jest właściwe?","options":["Poprawiam układ arkusza i style tekstu, zachowując geometrię.","Skaluję obiekty budynku.","Usuwam wymiary."],"correct":0,"example":"Poprawiam układ arkusza i style tekstu, zachowując geometrię.","explanation":"Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.","feedback":["Dobrze. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.","Nie. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.","Nie. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu."],"task":"Sprawdź na swoim przykładzie: Poprawiam układ arkusza i style tekstu, zachowując geometrię."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":25,"title_pl":"Expert: pomiar z natury","material":{"section":3,"level":"expert","raw":["Expert: pomiar z natury","Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.","Sytuacja: DWG pokazuje 3200 mm, na budowie mierzysz 3170 mm.","Poprawne działanie: Zapisuję różnicę i uzgadniam korektę.","Błędny wybór: Produkuję 3200 bez kontroli."],"learning":{"intro":"Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.","situation":"DWG pokazuje 3200 mm, na budowie mierzysz 3170 mm.","question":"Które działanie jest właściwe?","options":["Zapisuję różnicę i uzgadniam korektę.","Produkuję 3200 bez kontroli.","Poprawiam DWG po cichu."],"correct":0,"example":"Zapisuję różnicę i uzgadniam korektę.","explanation":"Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.","feedback":["Dobrze. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.","Nie. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.","Nie. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją."],"task":"Sprawdź na swoim przykładzie: Zapisuję różnicę i uzgadniam korektę."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":26,"title_pl":"Expert: bloki i zestawienia","material":{"section":3,"level":"expert","raw":["Expert: bloki i zestawienia","Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.","Sytuacja: Zestawienie podaje 65 słupków.","Poprawne działanie: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.","Błędny wybór: Licząc tylko ikony, deklaruję 65."],"learning":{"intro":"Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.","situation":"Zestawienie podaje 65 słupków.","question":"Które działanie jest właściwe?","options":["Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.","Licząc tylko ikony, deklaruję 65.","Nie uwzględniam zduplikowanych bloków."],"correct":0,"example":"Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.","explanation":"Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.","feedback":["Dobrze. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.","Nie. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.","Nie. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów."],"task":"Sprawdź na swoim przykładzie: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":27,"title_pl":"Expert: kontrola geometrii","material":{"section":3,"level":"expert","raw":["Expert: kontrola geometrii","Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.","Sytuacja: Masz zdublowane linie cięcia.","Poprawne działanie: Odnajduję nakładki i weryfikuję obrys na kopii pliku.","Błędny wybór: Kasuję przypadkową połowę rysunku."],"learning":{"intro":"Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.","situation":"Masz zdublowane linie cięcia.","question":"Które działanie jest właściwe?","options":["Odnajduję nakładki i weryfikuję obrys na kopii pliku.","Kasuję przypadkową połowę rysunku.","Oddaję plik bez sprawdzenia."],"correct":0,"example":"Odnajduję nakładki i weryfikuję obrys na kopii pliku.","explanation":"Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.","feedback":["Dobrze. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.","Nie. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.","Nie. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."],"task":"Sprawdź na swoim przykładzie: Odnajduję nakładki i weryfikuję obrys na kopii pliku."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":28,"title_pl":"Expert: komplet plików","material":{"section":3,"level":"expert","raw":["Expert: komplet plików","Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.","Sytuacja: Podwykonawca otrzymuje pięć podobnych plików bez instrukcji.","Poprawne działanie: Wskazuję wersję obowiązującą i sprawdzam komplet.","Błędny wybór: Zostawiam odbiorcy dowolny wybór."],"learning":{"intro":"Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.","situation":"Podwykonawca otrzymuje pięć podobnych plików bez instrukcji.","question":"Które działanie jest właściwe?","options":["Wskazuję wersję obowiązującą i sprawdzam komplet.","Zostawiam odbiorcy dowolny wybór.","Wysyłam wyłącznie miniaturę."],"correct":0,"example":"Wskazuję wersję obowiązującą i sprawdzam komplet.","explanation":"Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.","feedback":["Dobrze. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.","Nie. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.","Nie. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku."],"task":"Sprawdź na swoim przykładzie: Wskazuję wersję obowiązującą i sprawdzam komplet."},"editorial_status":"review_needed"}},{"course_slug":"autocad-skroty","lesson_no":29,"title_pl":"Egzamin próbny: pełny cykl CAD","material":{"section":3,"level":"expert","raw":["Egzamin próbny: pełny cykl CAD","Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.","Sytuacja: Przekazujesz szkic balustrady do przeglądu przez projektanta.","Poprawne działanie: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.","Błędny wybór: Ogłaszam dokument wykonawczym bez obliczeń."],"learning":{"intro":"Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.","situation":"Przekazujesz szkic balustrady do przeglądu przez projektanta.","question":"Które działanie jest właściwe?","options":["Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.","Ogłaszam dokument wykonawczym bez obliczeń.","Wysyłam obraz bez wymiarów."],"correct":0,"example":"Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.","explanation":"Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.","feedback":["Dobrze. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.","Nie. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.","Nie. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje."],"task":"Sprawdź na swoim przykładzie: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie."},"editorial_status":"review_needed"}}]}
+{
+  "schema_version": 2,
+  "course_slug": "autocad-skroty",
+  "sections": [
+    "PODSTAWY",
+    "PRAKTYKA",
+    "EXPERT"
+  ],
+  "lessons": [
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 0,
+      "title_pl": "Co to jest CAD?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co to jest CAD?",
+          "CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.",
+          "Sytuacja: Ktoś chce zmierzyć poręcz na zdjęciu i w DWG.",
+          "Poprawne działanie: Sprawdzam geometrię i jednostki w oryginalnym DWG.",
+          "Błędny wybór: Przykładam linijkę do monitora."
+        ],
+        "learning": {
+          "intro": "CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.",
+          "situation": "Ktoś chce zmierzyć poręcz na zdjęciu i w DWG.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Sprawdzam geometrię i jednostki w oryginalnym DWG.",
+            "Przykładam linijkę do monitora.",
+            "Uznaję zdjęcie za dokładny rysunek techniczny."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam geometrię i jednostki w oryginalnym DWG.",
+          "explanation": "CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.",
+          "feedback": [
+            "Dobrze. CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.",
+            "Nie. CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele.",
+            "Nie. CAD oznacza projektowanie wspomagane komputerowo; rysujesz obiekty o wymiarach, nie tylko kolorowe piksele."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Sprawdzam geometrię i jednostki w oryginalnym DWG."
+        },
+        "editorial_status": "review_needed",
+        "illustration": "autocad-interface"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 1,
+      "title_pl": "Mapa okna AutoCAD-a",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Mapa okna AutoCAD-a",
+          "U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.",
+          "Sytuacja: Po wpisaniu LINE nic nie widać.",
+          "Poprawne działanie: Czytam polecenie i wskazuję wymagany punkt.",
+          "Błędny wybór: Klikam losowo w menu."
+        ],
+        "learning": {
+          "intro": "U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.",
+          "situation": "Po wpisaniu LINE nic nie widać.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Czytam polecenie i wskazuję wymagany punkt.",
+            "Klikam losowo w menu.",
+            "Zmniejszam jasność ekranu."
+          ],
+          "correct": 0,
+          "example": "Czytam polecenie i wskazuję wymagany punkt.",
+          "explanation": "U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.",
+          "feedback": [
+            "Dobrze. U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.",
+            "Nie. U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami.",
+            "Nie. U góry jest wstążka kart, pośrodku obszar modelu, a na dole wiersz poleceń z kolejnymi krokami."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Czytam polecenie i wskazuję wymagany punkt."
+        },
+        "editorial_status": "review_needed",
+        "illustration": "autocad-interface"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 2,
+      "title_pl": "Co to jest DWG, DXF i PDF?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co to jest DWG, DXF i PDF?",
+          "DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.",
+          "Sytuacja: Masz oddać wykonawcy rysunek do wydruku, zachowując możliwość zmian.",
+          "Poprawne działanie: Zachowuję wersję DWG i przygotowuję skontrolowany PDF.",
+          "Błędny wybór: Kasuję DWG po wygenerowaniu PDF."
+        ],
+        "learning": {
+          "intro": "DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.",
+          "situation": "Masz oddać wykonawcy rysunek do wydruku, zachowując możliwość zmian.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Zachowuję wersję DWG i przygotowuję skontrolowany PDF.",
+            "Kasuję DWG po wygenerowaniu PDF.",
+            "Zmieniam rozszerzenie PDF na DWG."
+          ],
+          "correct": 0,
+          "example": "Zachowuję wersję DWG i przygotowuję skontrolowany PDF.",
+          "explanation": "DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.",
+          "feedback": [
+            "Dobrze. DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.",
+            "Nie. DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym.",
+            "Nie. DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Zachowuję wersję DWG i przygotowuję skontrolowany PDF."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 3,
+      "title_pl": "Jednostki i milimetry",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Jednostki i milimetry",
+          "W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.",
+          "Sytuacja: Projektant podał długość 1200 dla balustrady.",
+          "Poprawne działanie: Weryfikuję jednostki i opisuję wynik w mm lub m.",
+          "Błędny wybór: Zakładam na oko, że chodzi o metry."
+        ],
+        "learning": {
+          "intro": "W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.",
+          "situation": "Projektant podał długość 1200 dla balustrady.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Weryfikuję jednostki i opisuję wynik w mm lub m.",
+            "Zakładam na oko, że chodzi o metry.",
+            "Zmniejszam obiekt do wielkości na ekranie."
+          ],
+          "correct": 0,
+          "example": "Weryfikuję jednostki i opisuję wynik w mm lub m.",
+          "explanation": "W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.",
+          "feedback": [
+            "Dobrze. W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.",
+            "Nie. W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry.",
+            "Nie. W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Weryfikuję jednostki i opisuję wynik w mm lub m."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 4,
+      "title_pl": "Punkt, współrzędne X i Y",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Punkt, współrzędne X i Y",
+          "Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.",
+          "Sytuacja: Masz postawić narożnik w punkcie 0,0.",
+          "Poprawne działanie: Wprowadzam współrzędne i kontroluję pozycję.",
+          "Błędny wybór: Klikam w najbardziej zielone miejsce."
+        ],
+        "learning": {
+          "intro": "Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.",
+          "situation": "Masz postawić narożnik w punkcie 0,0.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Wprowadzam współrzędne i kontroluję pozycję.",
+            "Klikam w najbardziej zielone miejsce.",
+            "Wpisuję współrzędne jako zwykły tekst etykiety."
+          ],
+          "correct": 0,
+          "example": "Wprowadzam współrzędne i kontroluję pozycję.",
+          "explanation": "Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.",
+          "feedback": [
+            "Dobrze. Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.",
+            "Nie. Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu.",
+            "Nie. Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Wprowadzam współrzędne i kontroluję pozycję."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 5,
+      "title_pl": "Linia, polilinia i okrąg",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Linia, polilinia i okrąg",
+          "LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.",
+          "Sytuacja: Tworzysz zamknięty obrys podestu.",
+          "Poprawne działanie: Stosuję polilinię albo domykam kontur i sprawdzam spójność.",
+          "Błędny wybór: Traktuję odrębne odcinki jako jeden obiekt."
+        ],
+        "learning": {
+          "intro": "LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.",
+          "situation": "Tworzysz zamknięty obrys podestu.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Stosuję polilinię albo domykam kontur i sprawdzam spójność.",
+            "Traktuję odrębne odcinki jako jeden obiekt.",
+            "Rysuję obrys wyłącznie opisem tekstowym."
+          ],
+          "correct": 0,
+          "example": "Stosuję polilinię albo domykam kontur i sprawdzam spójność.",
+          "explanation": "LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.",
+          "feedback": [
+            "Dobrze. LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.",
+            "Nie. LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję.",
+            "Nie. LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Stosuję polilinię albo domykam kontur i sprawdzam spójność."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 6,
+      "title_pl": "Co znaczy Enter i Esc?",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co znaczy Enter i Esc?",
+          "Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.",
+          "Sytuacja: Przypadkowo aktywowałeś MOVE.",
+          "Poprawne działanie: Naciskam Esc i sprawdzam stan rysunku.",
+          "Błędny wybór: Klikam przypadkowy punkt docelowy."
+        ],
+        "learning": {
+          "intro": "Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.",
+          "situation": "Przypadkowo aktywowałeś MOVE.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Naciskam Esc i sprawdzam stan rysunku.",
+            "Klikam przypadkowy punkt docelowy.",
+            "Usuwam całą warstwę."
+          ],
+          "correct": 0,
+          "example": "Naciskam Esc i sprawdzam stan rysunku.",
+          "explanation": "Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.",
+          "feedback": [
+            "Dobrze. Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.",
+            "Nie. Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością.",
+            "Nie. Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Naciskam Esc i sprawdzam stan rysunku."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 7,
+      "title_pl": "Warstwy od zera",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Warstwy od zera",
+          "Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.",
+          "Sytuacja: Na planie rury zasłaniają obrys balustrady.",
+          "Poprawne działanie: Sprawdzam warstwy i tymczasowo ukrywam zbędne.",
+          "Błędny wybór: Usuwam instalacje z projektu."
+        ],
+        "learning": {
+          "intro": "Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.",
+          "situation": "Na planie rury zasłaniają obrys balustrady.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Sprawdzam warstwy i tymczasowo ukrywam zbędne.",
+            "Usuwam instalacje z projektu.",
+            "Przesuwam poręcz w przypadkowe miejsce."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam warstwy i tymczasowo ukrywam zbędne.",
+          "explanation": "Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.",
+          "feedback": [
+            "Dobrze. Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.",
+            "Nie. Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów.",
+            "Nie. Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Sprawdzam warstwy i tymczasowo ukrywam zbędne."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 8,
+      "title_pl": "Model Space i Layout",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Model Space i Layout",
+          "Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.",
+          "Sytuacja: Rysunek wygląda na papierze mniejszy niż w modelu.",
+          "Poprawne działanie: Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu.",
+          "Błędny wybór: Przeskalowuję cały budynek w modelu."
+        ],
+        "learning": {
+          "intro": "Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.",
+          "situation": "Rysunek wygląda na papierze mniejszy niż w modelu.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu.",
+            "Przeskalowuję cały budynek w modelu.",
+            "Usuwam wymiary z rysunku."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu.",
+          "explanation": "Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.",
+          "feedback": [
+            "Dobrze. Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.",
+            "Nie. Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach.",
+            "Nie. Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Sprawdzam skalę viewportu, nie zmieniam wymiarów modelu."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 9,
+      "title_pl": "Pierwszy szkic 4 na 3 metry",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwszy szkic 4 na 3 metry",
+          "Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.",
+          "Sytuacja: Masz wykonać plan pomieszczenia 4 × 3 m.",
+          "Poprawne działanie: Rysuję 4000×3000 w mm i weryfikuję pomiary.",
+          "Błędny wybór: Rysuję prostokąt na oko z podpisem 4×3."
+        ],
+        "learning": {
+          "intro": "Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.",
+          "situation": "Masz wykonać plan pomieszczenia 4 × 3 m.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Rysuję 4000×3000 w mm i weryfikuję pomiary.",
+            "Rysuję prostokąt na oko z podpisem 4×3.",
+            "Zapisuję wyłącznie zdjęcie monitora."
+          ],
+          "correct": 0,
+          "example": "Rysuję 4000×3000 w mm i weryfikuję pomiary.",
+          "explanation": "Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.",
+          "feedback": [
+            "Dobrze. Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.",
+            "Nie. Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu.",
+            "Nie. Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Rysuję 4000×3000 w mm i weryfikuję pomiary."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 10,
+      "title_pl": "LINE, PLINE, RECTANG i CIRCLE",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "LINE, PLINE, RECTANG i CIRCLE",
+          "Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.",
+          "Sytuacja: Projekt wymaga okrągłego otworu i prostokątnego obrysu.",
+          "Poprawne działanie: Dobieram właściwą geometrię i kontroluję wymiar.",
+          "Błędny wybór: Oba obiekty wykonuję z losowych prostych."
+        ],
+        "learning": {
+          "intro": "Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.",
+          "situation": "Projekt wymaga okrągłego otworu i prostokątnego obrysu.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Dobieram właściwą geometrię i kontroluję wymiar.",
+            "Oba obiekty wykonuję z losowych prostych.",
+            "Wpisuję średnicę bez tworzenia koła."
+          ],
+          "correct": 0,
+          "example": "Dobieram właściwą geometrię i kontroluję wymiar.",
+          "explanation": "Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.",
+          "feedback": [
+            "Dobrze. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.",
+            "Nie. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry.",
+            "Nie. Odpowiednio linia, polilinia, prostokąt i okrąg. Po wywołaniu polecenia musisz wskazać punkty lub parametry."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Dobieram właściwą geometrię i kontroluję wymiar."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "L",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "L",
+            "label": "Linia — LINE",
+            "before": "Puste pole rysunku",
+            "after": "Tworzysz odcinek od punktu A do B",
+            "tip": "Wybieraj punkty z włączonymi pomocami precyzyjnego wskazywania.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "PL",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "PL",
+            "label": "Polilinia — PLINE",
+            "before": "Kilka oddzielnych krawędzi",
+            "after": "Połączone segmenty jednego obiektu",
+            "tip": "Wygodne do obrysów, które chcesz później modyfikować jako całość.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "C",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "C",
+            "label": "Okrąg — CIRCLE",
+            "before": "Brak otworu na rysunku",
+            "after": "Okrąg o wskazanym środku i promieniu",
+            "tip": "Podaj promień z klawiatury zamiast ustawiać go na oko.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "REC",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "REC",
+            "label": "Prostokąt — RECTANG",
+            "before": "Cztery niezależne linie",
+            "after": "Prostokąt będący polilinią",
+            "tip": "Dobry początek prostego rzutu pomieszczenia.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "A",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "A",
+            "label": "Łuk — ARC",
+            "before": "Prosta krawędź",
+            "after": "Odcinek łuku",
+            "tip": "Dla precyzji wybierz sposób definiowania łuku w wierszu poleceń.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed",
+        "illustration": "autocad-interface"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 11,
+      "title_pl": "MOVE, COPY, ROTATE i SCALE",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "MOVE, COPY, ROTATE i SCALE",
+          "Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.",
+          "Sytuacja: Masz dwa identyczne słupki, jeden istnieje.",
+          "Poprawne działanie: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.",
+          "Błędny wybór: Przenoszę jedyny słupek."
+        ],
+        "learning": {
+          "intro": "Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.",
+          "situation": "Masz dwa identyczne słupki, jeden istnieje.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.",
+            "Przenoszę jedyny słupek.",
+            "Zmniejszam słupek, aby wyglądał na drugi."
+          ],
+          "correct": 0,
+          "example": "Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie.",
+          "explanation": "Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.",
+          "feedback": [
+            "Dobrze. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.",
+            "Nie. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię.",
+            "Nie. Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Kopiuję słupek, zachowując pierwotny i sprawdzając przesunięcie."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "M",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "M",
+            "label": "Przenieś — MOVE",
+            "before": "Obiekt w złym miejscu",
+            "after": "Obiekt przesunięty o wektor",
+            "tip": "Najpierw wskaż obiekty, potem punkt bazowy i docelowy.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "CP",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "CP",
+            "label": "Kopiuj — COPY",
+            "before": "Jedna kolumna na planie",
+            "after": "Dwie identyczne kolumny",
+            "tip": "Używaj dokładnych przesunięć i stałych punktów bazowych.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "RO",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "RO",
+            "label": "Obróć — ROTATE",
+            "before": "Element pod niewłaściwym kątem",
+            "after": "Element obrócony o podany kąt",
+            "tip": "Wpisz kąt z klawiatury zamiast obracać na oko.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "SC",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "SC",
+            "label": "Skaluj — SCALE",
+            "before": "Detal o zbyt dużym rozmiarze",
+            "after": "Detal w nowej skali",
+            "tip": "Nie zmieniaj skali przypadkowo w rysunku wykonawczym; kontroluj jednostki.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "MI",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "MI",
+            "label": "Odbij lustrzanie — MIRROR",
+            "before": "Jeden wspornik po lewej",
+            "after": "Odbicie wspornika po prawej",
+            "tip": "Przed zatwierdzeniem sprawdź, czy chcesz zachować obiekt źródłowy.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 12,
+      "title_pl": "OSNAP i ORTHO",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "OSNAP i ORTHO",
+          "OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.",
+          "Sytuacja: Koniec poręczy ma trafić dokładnie w narożnik słupka.",
+          "Poprawne działanie: Używam właściwego przyciągania i sprawdzam punkt.",
+          "Błędny wybór: Klikam blisko narożnika na oko."
+        ],
+        "learning": {
+          "intro": "OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.",
+          "situation": "Koniec poręczy ma trafić dokładnie w narożnik słupka.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Używam właściwego przyciągania i sprawdzam punkt.",
+            "Klikam blisko narożnika na oko.",
+            "Ustawiam większy zoom i zakładam perfekcję."
+          ],
+          "correct": 0,
+          "example": "Używam właściwego przyciągania i sprawdzam punkt.",
+          "explanation": "OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.",
+          "feedback": [
+            "Dobrze. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.",
+            "Nie. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień.",
+            "Nie. OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Używam właściwego przyciągania i sprawdzam punkt."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "F3"
+            ],
+            "kind": "hotkey",
+            "combo": "F3",
+            "label": "OSNAP — tryb lokalizacji",
+            "before": "Wskaźnik nie łapie dokładnych końców",
+            "after": "Możesz przyciągać kursor do charakterystycznych punktów",
+            "tip": "Sprawdź skonfigurowane tryby lokalizacji, np. Endpoint.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "F8"
+            ],
+            "kind": "hotkey",
+            "combo": "F8",
+            "label": "ORTHO — rysowanie prostopadłe",
+            "before": "Kursor może rysować pod dowolnym kątem",
+            "after": "Ruch ograniczony do osi prostokątnych",
+            "tip": "Dobre do ścian i prostych krawędzi.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "F10"
+            ],
+            "kind": "hotkey",
+            "combo": "F10",
+            "label": "Śledzenie biegunowe — POLAR",
+            "before": "Trudno prowadzić linię pod zadanym kątem",
+            "after": "Wskaźnik pomaga trzymać ustawione kąty",
+            "tip": "Dobierz kąty w ustawieniach śledzenia biegunowego.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "F12"
+            ],
+            "kind": "hotkey",
+            "combo": "F12",
+            "label": "Dynamic Input",
+            "before": "Parametry tylko w wierszu poleceń",
+            "after": "Wskazówki i wartości pojawiają się przy kursorze",
+            "tip": "Jeśli przeszkadza, możesz przełączyć tryb tym samym klawiszem.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "F11"
+            ],
+            "kind": "hotkey",
+            "combo": "F11",
+            "label": "Śledzenie punktów OSNAP",
+            "before": "Brak podpowiedzi linii odniesienia",
+            "after": "Możesz korzystać z torów wyrównania",
+            "tip": "Działa najlepiej z dobrze dobranymi trybami lokalizacji.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 13,
+      "title_pl": "LA, właściwości i warstwy",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "LA, właściwości i warstwy",
+          "Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.",
+          "Sytuacja: Trzeba rozróżnić elementy poręczy i instalacje.",
+          "Poprawne działanie: Wybieram opisane warstwy i zachowuję legendę.",
+          "Błędny wybór: Przenoszę wszystko do jednej warstwy."
+        ],
+        "learning": {
+          "intro": "Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.",
+          "situation": "Trzeba rozróżnić elementy poręczy i instalacje.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Wybieram opisane warstwy i zachowuję legendę.",
+            "Przenoszę wszystko do jednej warstwy.",
+            "Usuwam instalacje, bo nie są moje."
+          ],
+          "correct": 0,
+          "example": "Wybieram opisane warstwy i zachowuję legendę.",
+          "explanation": "Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.",
+          "feedback": [
+            "Dobrze. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.",
+            "Nie. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu.",
+            "Nie. Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Wybieram opisane warstwy i zachowuję legendę."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "LA",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "LA",
+            "label": "Menedżer warstw — LAYER",
+            "before": "Ściany i instalacje narysowane razem",
+            "after": "Warstwy da się porządkować i filtrować",
+            "tip": "Nazwij warstwy według ich funkcji, nie losowych numerów.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "1"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+1",
+            "label": "Paleta właściwości",
+            "before": "Nie widzisz parametrów obiektu",
+            "after": "Otwiera się paleta z cechami obiektu",
+            "tip": "Sprawdzaj współrzędne i warstwę przed zmianami.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "MA",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "MA",
+            "label": "Dopasuj właściwości — MATCHPROP",
+            "before": "Element ma inny kolor i warstwę",
+            "after": "Wskazany obiekt przejmuje cechy wzorca",
+            "tip": "Zawsze sprawdź, które właściwości są kopiowane.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "LT",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "LT",
+            "label": "Typ linii — LINETYPE",
+            "before": "Wszystko wygląda jak linia ciągła",
+            "after": "Możesz zarządzać typami linii",
+            "tip": "Skala rodzaju linii może wpływać na wygląd kreskowania.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "9"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+9",
+            "label": "Pokaż / ukryj wiersz poleceń",
+            "before": "Wiersz poleceń jest ukryty",
+            "after": "Wiersz poleceń widoczny",
+            "tip": "Jeśli alias nie działa, najpierw sprawdź fokus w wierszu poleceń.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 14,
+      "title_pl": "ZOOM, PAN i regeneracja",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "ZOOM, PAN i regeneracja",
+          "Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.",
+          "Sytuacja: Konstrukcja znika poza ekranem.",
+          "Poprawne działanie: Przesuwam lub oddalam widok bez zmiany położenia geometrii.",
+          "Błędny wybór: Skaluję budynek do monitora."
+        ],
+        "learning": {
+          "intro": "Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.",
+          "situation": "Konstrukcja znika poza ekranem.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Przesuwam lub oddalam widok bez zmiany położenia geometrii.",
+            "Skaluję budynek do monitora.",
+            "Przesuwam wszystkie obiekty w przypadkowe miejsce."
+          ],
+          "correct": 0,
+          "example": "Przesuwam lub oddalam widok bez zmiany położenia geometrii.",
+          "explanation": "Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.",
+          "feedback": [
+            "Dobrze. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.",
+            "Nie. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów.",
+            "Nie. Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Przesuwam lub oddalam widok bez zmiany położenia geometrii."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Z",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "Z",
+            "label": "Powiększ widok — ZOOM",
+            "before": "Detal jest zbyt mały",
+            "after": "Możesz wybrać zakres zbliżenia",
+            "tip": "ZOOM nie skaluje obiektów, tylko sposób ich wyświetlania.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "P",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "P",
+            "label": "Przesuwaj widok — PAN",
+            "before": "Potrzebny fragment poza ekranem",
+            "after": "Widok przesunięty, obiekty bez zmian",
+            "tip": "W rysunku z większą liczbą warstw użyj środkowego przycisku myszy, jeśli Ci wygodniej.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "RE",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "RE",
+            "label": "Odśwież — REGEN",
+            "before": "Widok wygląda na nieaktualny",
+            "after": "Rysunek jest przerysowany",
+            "tip": "Nie traktuj odświeżenia jako naprawy błędnej geometrii.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "0"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+0",
+            "label": "Clean Screen",
+            "before": "Interfejs zajmuje dużo miejsca",
+            "after": "Widoczna jest większa powierzchnia rysunku",
+            "tip": "Powtórz skrót, by przywrócić elementy interfejsu.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "9"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+9",
+            "label": "Command Line",
+            "before": "Wiersz poleceń nie jest widoczny",
+            "after": "Wiersz poleceń wraca",
+            "tip": "Wiele komend uczy się szybciej dzięki podpowiedziom w wierszu poleceń.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 15,
+      "title_pl": "Bloki, INSERT i XREF",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Bloki, INSERT i XREF",
+          "Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.",
+          "Sytuacja: Otwierasz rysunek z ostrzeżeniem Missing XREF.",
+          "Poprawne działanie: Sprawdzam ścieżki i komplet zależnych plików.",
+          "Błędny wybór: Ignoruję ostrzeżenie."
+        ],
+        "learning": {
+          "intro": "Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.",
+          "situation": "Otwierasz rysunek z ostrzeżeniem Missing XREF.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Sprawdzam ścieżki i komplet zależnych plików.",
+            "Ignoruję ostrzeżenie.",
+            "Kasuję odnośnik bez uzgodnienia."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam ścieżki i komplet zależnych plików.",
+          "explanation": "Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.",
+          "feedback": [
+            "Dobrze. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.",
+            "Nie. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu.",
+            "Nie. Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Sprawdzam ścieżki i komplet zależnych plików."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "B",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "B",
+            "label": "Utwórz blok — BLOCK",
+            "before": "Wiele oddzielnych linii symbolu",
+            "after": "Jeden blok z nazwą i punktem bazowym",
+            "tip": "Nadaj jednoznaczną nazwę i rozsądny punkt wstawienia.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "I",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "I",
+            "label": "Wstaw blok — INSERT",
+            "before": "Symbol nieobecny na rysunku",
+            "after": "Blok wstawiony do rysunku",
+            "tip": "Sprawdź skalę i jednostki przed wstawieniem.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "X",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "X",
+            "label": "Rozbij — EXPLODE",
+            "before": "Obiekt jest jedną całością",
+            "after": "Obiekt rozbity na części",
+            "tip": "Nie rozbijaj bloków bez potrzeby, bo tracisz wygodę zarządzania.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "W",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "W",
+            "label": "Zapisz blok do pliku — WBLOCK",
+            "before": "Symbol tylko w danym rysunku",
+            "after": "Symbol może być zapisany jako oddzielny plik",
+            "tip": "Wspólna biblioteka bloków oszczędza czas zespołu.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "XR",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "XR",
+            "label": "Odnośniki — XREF",
+            "before": "Potrzebujesz rysunku innej branży",
+            "after": "Otwiera się zarządzanie odnośnikami",
+            "tip": "Nie przerabiaj cudzych rysunków bez uzgodnienia rewizji.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 16,
+      "title_pl": "Wymiarowanie i adnotacje",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Wymiarowanie i adnotacje",
+          "Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.",
+          "Sytuacja: Obiekt mierzy 975, etykieta ręczna pokazuje 1000.",
+          "Poprawne działanie: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.",
+          "Błędny wybór: Nadpisuję etykietę na 1000."
+        ],
+        "learning": {
+          "intro": "Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.",
+          "situation": "Obiekt mierzy 975, etykieta ręczna pokazuje 1000.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.",
+            "Nadpisuję etykietę na 1000.",
+            "Ukrywam wymiary przed odbiorem."
+          ],
+          "correct": 0,
+          "example": "Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją.",
+          "explanation": "Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.",
+          "feedback": [
+            "Dobrze. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.",
+            "Nie. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety.",
+            "Nie. Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Weryfikuję geometrię i aktualizuję ją zgodnie z dokumentacją."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "D",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "D",
+            "label": "Style wymiarowe — DIMSTYLE",
+            "before": "Wymiary mają różne wielkości tekstu",
+            "after": "Możesz zarządzać spójnym stylem wymiarowania",
+            "tip": "Zdefiniuj styl zanim wymiarujesz cały rysunek.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "DIM",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "DIM",
+            "label": "Wymiarowanie — DIM",
+            "before": "Brak wymiaru na detalu",
+            "after": "Powstaje obiekt wymiarowy",
+            "tip": "Sprawdź jednostki i precyzję prezentacji.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "MT",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "MT",
+            "label": "Tekst wielowierszowy — MTEXT",
+            "before": "Opis składa się z luźnych obiektów tekstowych",
+            "after": "Jeden spójny blok opisu",
+            "tip": "Opisuj elementy jasno, zwłaszcza miejsca z ograniczeniami montażowymi.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "DI",
+              "Enter"
+            ],
+            "kind": "alias",
+            "combo": "DI",
+            "label": "Pomiar odległości — DIST",
+            "before": "Nie znasz długości między punktami",
+            "after": "AutoCAD podaje odległość",
+            "tip": "To narzędzie pomocnicze; pomiar nie zastępuje weryfikacji dokumentacji.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "F8"
+            ],
+            "kind": "hotkey",
+            "combo": "F8",
+            "label": "Wyrównanie kierunków — ORTHO",
+            "before": "Wymiar trudno ustawić równolegle do osi",
+            "after": "Wskazania łatwiej prowadzić w osi",
+            "tip": "Pamiętaj, że tryb ORTHO nie usuwa wcześniej istniejących błędów.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 17,
+      "title_pl": "Bezpieczny zapis i wydruk",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Bezpieczny zapis i wydruk",
+          "Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.",
+          "Sytuacja: Klient oczekuje aktualnego planu z wymiarami.",
+          "Poprawne działanie: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.",
+          "Błędny wybór: Wysyłam pierwszy przypadkowy podgląd."
+        ],
+        "learning": {
+          "intro": "Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.",
+          "situation": "Klient oczekuje aktualnego planu z wymiarami.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.",
+            "Wysyłam pierwszy przypadkowy podgląd.",
+            "Kasuję oryginalny DWG."
+          ],
+          "correct": 0,
+          "example": "Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem.",
+          "explanation": "Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.",
+          "feedback": [
+            "Dobrze. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.",
+            "Nie. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw.",
+            "Nie. Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Weryfikuję wersję, skalę i komplet oznaczeń przed wysłaniem."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "S"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+S",
+            "label": "Zapisz rysunek",
+            "before": "Zmiany niezapisane",
+            "after": "Rysunek zapisany w DWG",
+            "tip": "Zachowaj kopię przed dużą zmianą.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "O"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+O",
+            "label": "Otwórz rysunek",
+            "before": "Rysunek nieotwarty",
+            "after": "Możesz wybrać plik DWG",
+            "tip": "Sprawdź wersję pliku i brakujące odnośniki.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "P"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+P",
+            "label": "Wydruk — PLOT",
+            "before": "Nieznane ustawienia wydruku",
+            "after": "Okno wydruku i skali",
+            "tip": "Zawsze sprawdź papier, skalę i plik CTB/STB.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Z"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+Z",
+            "label": "Cofnij",
+            "before": "Zmieniono zły element",
+            "after": "Ostatnia akcja cofnięta",
+            "tip": "Skontroluj efekt cofnięcia; nie wszystkie zdarzenia mają ten sam zakres.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Y"
+            ],
+            "kind": "hotkey",
+            "combo": "Ctrl+Y",
+            "label": "Ponów",
+            "before": "Wycofana zmiana",
+            "after": "Ostatnia cofnięta zmiana przywrócona",
+            "tip": "Sprawdź wiersz poleceń, czy polecenie jest dostępne.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          },
+          {
+            "keys": [
+              "Esc"
+            ],
+            "kind": "hotkey",
+            "combo": "Esc",
+            "label": "Anuluj bieżące polecenie",
+            "before": "Trwa przypadkowa komenda",
+            "after": "Komenda została przerwana",
+            "tip": "Najprostszy sposób wyjścia z niechcianej operacji.",
+            "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
+          }
+        ],
+        "quickTips": [
+          "Zawsze patrz na komunikat w wierszu poleceń — mówi, jaki jest następny krok.",
+          "Zmiana aliasu: plik acad.pgp lub konfigurator aliasów, następnie REINIT (PGP File).",
+          "Nie zmieniaj rysunku konstrukcyjnego bez zatwierdzenia i kontroli rewizji."
+        ],
+        "exercise": "Utwórz kopię testowego DWG i przećwicz każde polecenie. Zanotuj różnicę między wyświetleniem a modyfikacją geometrii.",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 18,
+      "title_pl": "Ćwiczenie: szkic balustrady",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Ćwiczenie: szkic balustrady",
+          "Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.",
+          "Sytuacja: Narysowano cztery słupki bez wymiarów.",
+          "Poprawne działanie: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.",
+          "Błędny wybór: Dopisuję dowolną nośność."
+        ],
+        "learning": {
+          "intro": "Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.",
+          "situation": "Narysowano cztery słupki bez wymiarów.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.",
+            "Dopisuję dowolną nośność.",
+            "Zatwierdzam sam konstrukcję bez uprawnień."
+          ],
+          "correct": 0,
+          "example": "Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia.",
+          "explanation": "Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.",
+          "feedback": [
+            "Dobrze. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.",
+            "Nie. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant.",
+            "Nie. Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Dodaję poprawną geometrię i opis oraz kieruję do zatwierdzenia."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 19,
+      "title_pl": "Zadanie praktyczne CAD",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Zadanie praktyczne CAD",
+          "Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.",
+          "Sytuacja: Oddajesz rysunek pomieszczenia z otworami.",
+          "Poprawne działanie: Kontroluję geometrię, jednostki, warstwy i wydruk.",
+          "Błędny wybór: Sprawdzam tylko kolor tła."
+        ],
+        "learning": {
+          "intro": "Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.",
+          "situation": "Oddajesz rysunek pomieszczenia z otworami.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Kontroluję geometrię, jednostki, warstwy i wydruk.",
+            "Sprawdzam tylko kolor tła.",
+            "Wysyłam niedokończony plan bez opisu."
+          ],
+          "correct": 0,
+          "example": "Kontroluję geometrię, jednostki, warstwy i wydruk.",
+          "explanation": "Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.",
+          "feedback": [
+            "Dobrze. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.",
+            "Nie. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów.",
+            "Nie. Połącz rysowanie, edycję, warstwy, pomiar i wydruk. Kontrola dokumentu ważniejsza jest niż liczba zapamiętanych aliasów."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Kontroluję geometrię, jednostki, warstwy i wydruk."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 20,
+      "title_pl": "Expert: rysunek produkcyjny",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: rysunek produkcyjny",
+          "Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.",
+          "Sytuacja: Fabryka chce ciąć element z pliku bez numeru rewizji.",
+          "Poprawne działanie: Wstrzymuję produkcję i proszę o potwierdzony komplet.",
+          "Błędny wybór: Produkuję z pierwszego maila."
+        ],
+        "learning": {
+          "intro": "Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.",
+          "situation": "Fabryka chce ciąć element z pliku bez numeru rewizji.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Wstrzymuję produkcję i proszę o potwierdzony komplet.",
+            "Produkuję z pierwszego maila.",
+            "Zakładam, że najnowsza data pliku wystarczy."
+          ],
+          "correct": 0,
+          "example": "Wstrzymuję produkcję i proszę o potwierdzony komplet.",
+          "explanation": "Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.",
+          "feedback": [
+            "Dobrze. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.",
+            "Nie. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień.",
+            "Nie. Dokument produkcyjny wymaga zatwierdzonej rewizji, tolerancji i jednoznacznych wymiarów; szkic szkoleniowy nie daje uprawnień."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Wstrzymuję produkcję i proszę o potwierdzony komplet."
+        },
+        "editorial_status": "review_needed",
+        "illustration": "autocad-interface"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 21,
+      "title_pl": "Expert: konflikty branżowe",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: konflikty branżowe",
+          "Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.",
+          "Sytuacja: Rura biegnie przez wspornik balustrady.",
+          "Poprawne działanie: Zgłaszam kolizję i czekam na zatwierdzoną zmianę.",
+          "Błędny wybór: Kasuję rurę z DWG."
+        ],
+        "learning": {
+          "intro": "Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.",
+          "situation": "Rura biegnie przez wspornik balustrady.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Zgłaszam kolizję i czekam na zatwierdzoną zmianę.",
+            "Kasuję rurę z DWG.",
+            "Przesuwam wspornik bez obliczeń."
+          ],
+          "correct": 0,
+          "example": "Zgłaszam kolizję i czekam na zatwierdzoną zmianę.",
+          "explanation": "Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.",
+          "feedback": [
+            "Dobrze. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.",
+            "Nie. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku.",
+            "Nie. Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Zgłaszam kolizję i czekam na zatwierdzoną zmianę."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 22,
+      "title_pl": "Expert: obcy plik DWG",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: obcy plik DWG",
+          "Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.",
+          "Sytuacja: Dostarczony projekt otwiera się z brakami.",
+          "Poprawne działanie: Weryfikuję kompletność i proszę o brakujące dane.",
+          "Błędny wybór: Ukrywam ostrzeżenia."
+        ],
+        "learning": {
+          "intro": "Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.",
+          "situation": "Dostarczony projekt otwiera się z brakami.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Weryfikuję kompletność i proszę o brakujące dane.",
+            "Ukrywam ostrzeżenia.",
+            "Zmieniam kolor tła i uznaję dokument za pełny."
+          ],
+          "correct": 0,
+          "example": "Weryfikuję kompletność i proszę o brakujące dane.",
+          "explanation": "Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.",
+          "feedback": [
+            "Dobrze. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.",
+            "Nie. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii.",
+            "Nie. Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Weryfikuję kompletność i proszę o brakujące dane."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 23,
+      "title_pl": "Expert: rewizja i wariant",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: rewizja i wariant",
+          "Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.",
+          "Sytuacja: Klient zmienia szerokość poręczy po akceptacji.",
+          "Poprawne działanie: Wydaję nową wersję do zatwierdzenia z opisem zmian.",
+          "Błędny wybór: Nadpisuję jedyną kopię."
+        ],
+        "learning": {
+          "intro": "Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.",
+          "situation": "Klient zmienia szerokość poręczy po akceptacji.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Wydaję nową wersję do zatwierdzenia z opisem zmian.",
+            "Nadpisuję jedyną kopię.",
+            "Wprowadzam zmianę tylko ustnie."
+          ],
+          "correct": 0,
+          "example": "Wydaję nową wersję do zatwierdzenia z opisem zmian.",
+          "explanation": "Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.",
+          "feedback": [
+            "Dobrze. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.",
+            "Nie. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia.",
+            "Nie. Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Wydaję nową wersję do zatwierdzenia z opisem zmian."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 24,
+      "title_pl": "Expert: skala arkusza",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: skala arkusza",
+          "Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.",
+          "Sytuacja: Rzut 1:50 ma za małe opisy.",
+          "Poprawne działanie: Poprawiam układ arkusza i style tekstu, zachowując geometrię.",
+          "Błędny wybór: Skaluję obiekty budynku."
+        ],
+        "learning": {
+          "intro": "Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.",
+          "situation": "Rzut 1:50 ma za małe opisy.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Poprawiam układ arkusza i style tekstu, zachowując geometrię.",
+            "Skaluję obiekty budynku.",
+            "Usuwam wymiary."
+          ],
+          "correct": 0,
+          "example": "Poprawiam układ arkusza i style tekstu, zachowując geometrię.",
+          "explanation": "Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.",
+          "feedback": [
+            "Dobrze. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.",
+            "Nie. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu.",
+            "Nie. Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Poprawiam układ arkusza i style tekstu, zachowując geometrię."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 25,
+      "title_pl": "Expert: pomiar z natury",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: pomiar z natury",
+          "Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.",
+          "Sytuacja: DWG pokazuje 3200 mm, na budowie mierzysz 3170 mm.",
+          "Poprawne działanie: Zapisuję różnicę i uzgadniam korektę.",
+          "Błędny wybór: Produkuję 3200 bez kontroli."
+        ],
+        "learning": {
+          "intro": "Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.",
+          "situation": "DWG pokazuje 3200 mm, na budowie mierzysz 3170 mm.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Zapisuję różnicę i uzgadniam korektę.",
+            "Produkuję 3200 bez kontroli.",
+            "Poprawiam DWG po cichu."
+          ],
+          "correct": 0,
+          "example": "Zapisuję różnicę i uzgadniam korektę.",
+          "explanation": "Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.",
+          "feedback": [
+            "Dobrze. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.",
+            "Nie. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją.",
+            "Nie. Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Zapisuję różnicę i uzgadniam korektę."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 26,
+      "title_pl": "Expert: bloki i zestawienia",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: bloki i zestawienia",
+          "Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.",
+          "Sytuacja: Zestawienie podaje 65 słupków.",
+          "Poprawne działanie: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.",
+          "Błędny wybór: Licząc tylko ikony, deklaruję 65."
+        ],
+        "learning": {
+          "intro": "Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.",
+          "situation": "Zestawienie podaje 65 słupków.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.",
+            "Licząc tylko ikony, deklaruję 65.",
+            "Nie uwzględniam zduplikowanych bloków."
+          ],
+          "correct": 0,
+          "example": "Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem.",
+          "explanation": "Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.",
+          "feedback": [
+            "Dobrze. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.",
+            "Nie. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów.",
+            "Nie. Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Sprawdzam definicje i wystąpienia, porównując ilość z rysunkiem."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 27,
+      "title_pl": "Expert: kontrola geometrii",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: kontrola geometrii",
+          "Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.",
+          "Sytuacja: Masz zdublowane linie cięcia.",
+          "Poprawne działanie: Odnajduję nakładki i weryfikuję obrys na kopii pliku.",
+          "Błędny wybór: Kasuję przypadkową połowę rysunku."
+        ],
+        "learning": {
+          "intro": "Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.",
+          "situation": "Masz zdublowane linie cięcia.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Odnajduję nakładki i weryfikuję obrys na kopii pliku.",
+            "Kasuję przypadkową połowę rysunku.",
+            "Oddaję plik bez sprawdzenia."
+          ],
+          "correct": 0,
+          "example": "Odnajduję nakładki i weryfikuję obrys na kopii pliku.",
+          "explanation": "Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.",
+          "feedback": [
+            "Dobrze. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.",
+            "Nie. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną.",
+            "Nie. Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Odnajduję nakładki i weryfikuję obrys na kopii pliku."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 28,
+      "title_pl": "Expert: komplet plików",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: komplet plików",
+          "Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.",
+          "Sytuacja: Podwykonawca otrzymuje pięć podobnych plików bez instrukcji.",
+          "Poprawne działanie: Wskazuję wersję obowiązującą i sprawdzam komplet.",
+          "Błędny wybór: Zostawiam odbiorcy dowolny wybór."
+        ],
+        "learning": {
+          "intro": "Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.",
+          "situation": "Podwykonawca otrzymuje pięć podobnych plików bez instrukcji.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Wskazuję wersję obowiązującą i sprawdzam komplet.",
+            "Zostawiam odbiorcy dowolny wybór.",
+            "Wysyłam wyłącznie miniaturę."
+          ],
+          "correct": 0,
+          "example": "Wskazuję wersję obowiązującą i sprawdzam komplet.",
+          "explanation": "Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.",
+          "feedback": [
+            "Dobrze. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.",
+            "Nie. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku.",
+            "Nie. Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Wskazuję wersję obowiązującą i sprawdzam komplet."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "autocad-skroty",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny: pełny cykl CAD",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny: pełny cykl CAD",
+          "Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.",
+          "Sytuacja: Przekazujesz szkic balustrady do przeglądu przez projektanta.",
+          "Poprawne działanie: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.",
+          "Błędny wybór: Ogłaszam dokument wykonawczym bez obliczeń."
+        ],
+        "learning": {
+          "intro": "Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.",
+          "situation": "Przekazujesz szkic balustrady do przeglądu przez projektanta.",
+          "question": "Które działanie jest właściwe?",
+          "options": [
+            "Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.",
+            "Ogłaszam dokument wykonawczym bez obliczeń.",
+            "Wysyłam obraz bez wymiarów."
+          ],
+          "correct": 0,
+          "example": "Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie.",
+          "explanation": "Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.",
+          "feedback": [
+            "Dobrze. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.",
+            "Nie. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje.",
+            "Nie. Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje."
+          ],
+          "task": "Sprawdź na swoim przykładzie: Opisuję założenia, rewizję, wymiary i wyraźnie proszę o zatwierdzenie."
+        },
+        "editorial_status": "review_needed"
+      }
+    }
+  ]
+}
