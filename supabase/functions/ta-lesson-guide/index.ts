@@ -14,13 +14,34 @@ const greetingName=(u:any)=>{
  return name.length>1?name:'Przyjacielu';
 };
 type ModelResult={reply:string;meaningful:boolean;severe:boolean;question:string};
-async function respondAsAnielka(name:string,lesson:any,text:string,history:any[],meaningful:number):Promise<ModelResult|null>{
+function tokens(value:string){
+ return (value.toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g,'').match(/[a-ząćęłńóśźż]{4,}/g)||[])
+  .filter(v=>!['ktore','ktory','ktora','jestem','poniewaz','zawsze','trzeba','kiedy','przed','potem','teraz','wtedy','mozna','takie','tutaj','swoje','wlasne','wlasciwe'].includes(v));
+}
+function localLessonCoach(name:string,lesson:any,text:string,history:any[],count:number):ModelResult{
+ const material=lesson.material||{},learn=material.learning||{},q=material.construction?.roleplay||{};
+ const ref=cut(learn.example||q.options?.[q.correct]||material.raw?.[1]||lesson.title_pl,700);
+ const meaningfulWords=new Set(tokens(text));
+ const refer=new Set(tokens([learn.example,learn.situation,material.raw?.[1],lesson.title_pl].filter(Boolean).join(' ')));
+ const overlap=[...meaningfulWords].filter(w=>refer.has(w)).length;
+ const isDuplicate=(history||[]).some((m:any)=>m.role==='student'&&cut(m.text,1000).toLowerCase()===text.toLowerCase());
+ const meaningful=text.length>=52&&meaningfulWords.size>=9&&overlap>=2&&!isDuplicate;
+ const tip=cut(learn.explanation||material.sections?.[0]?.text||material.raw?.[1]||ref,340);
+ const question=count+Number(meaningful)>=2?
+  'Wróć do ćwiczenia i pokaż w nim właściwy rezultat.':'Co sprawdzisz na końcu, aby upewnić się, że nie popełniłeś błędu?';
+ const reply=meaningful?
+  name+', widzę konkretne nawiązanie do lekcji. Najważniejsza zasada tutaj to: '+ref+'. '+question:
+  name+', możesz spokojnie spróbować inaczej. Zwróć uwagę na ten fragment: '+tip+'. Podaj jeden rzeczywisty krok i sposób sprawdzenia wyniku; możesz korzystać z materiału.';
+ return {reply:cut(reply,1400),meaningful,severe:false,question:''};
+}
+async function respondAsAnielka(name:string,lesson:any,text:string,history:any[],meaningful:number,learnerSummary:string):Promise<ModelResult|null>{
  const key=Deno.env.get('OPENAI_API_KEY');
  if(!key)return null;
  const mat=lesson.material||{},learning=mat.learning||{},construction=mat.construction||{};
  const context={
-  lesson:cut(lesson.title_pl,180),
+  lesson:cut(lesson.title_pl,180),learner_summary:cut(learnerSummary,720),
   content:(mat.raw||[]).filter((s:any)=>typeof s==='string').slice(0,5).map((s:string)=>s.slice(0,550)),
+  explanations:(mat.sections||[]).slice(0,4).map((x:any)=>({heading:cut(x.heading,80),text:cut(x.text,420)})),
   example:cut(learning.example,500),situation:cut(learning.situation||construction.story,600),
   roleplay:construction.roleplay?{question:cut(construction.roleplay.question,320),answers:construction.roleplay.options?.slice(0,3)}:null,
   phrases:construction.phrases?.slice(0,5).map((p:any)=>({language:cut(p.target,90),polish:cut(p.polish,110)})),
@@ -29,7 +50,7 @@ async function respondAsAnielka(name:string,lesson:any,text:string,history:any[]
  const guidance=[
   'Jesteś Anielką, naturalnie brzmiącą, serdeczną mentorką TRENERKI Academy. Prowadzisz krótki dialog z jednym uczniem w języku polskim.',
   'Zwracaj się wyłącznie po pierwszym imieniu: '+name+'. Nigdy nie używaj nazwiska. Nie przezywaj, nie infantylizuj i nie stosuj pustych pochwał.',
-  'Dostosuj każdą odpowiedź do rzeczywistych słów ucznia, jego poziomu i konkretnej lekcji. Żadnego schematu typu "świetnie" po każdej odpowiedzi.',
+  'Dostosuj każdą odpowiedź do rzeczywistych słów ucznia, jego poziomu, aktualnej lekcji i problemów z poprzednich lekcji. Żadnego schematu typu "świetnie" po każdej odpowiedzi.',
   'Nie wymagaj poprawnego rozwiązania z pamięci: jeśli uczeń pyta, nie rozumie lub myli pojęcia, wyjaśnij cierpliwie na przykładzie i zadaj jedno nowe, konkretne pytanie.',
   'meaningful=true tylko gdy uczeń odniósł się merytorycznie do zagadnienia i wykazał zrozumienie lub przedstawił sensowną, poprawianą próbę. Samo "tak", "ok", pusty tekst, bełkot, ogólny komplement lub pytanie bez odpowiedzi NIE wystarczą.',
   'Po co najmniej dwóch wartościowych, różnych wypowiedziach uczeń może przejść dalej. W tym zapytaniu dotychczasowa liczba wartościowych wypowiedzi wynosi '+meaningful+'.',
@@ -41,7 +62,7 @@ async function respondAsAnielka(name:string,lesson:any,text:string,history:any[]
   'Zwróć poprawny JSON wg schematu. reply: 2-5 naturalnych zdań, maks. 130 słów, z konkretną informacją zwrotną i podpowiedzią, kiedy jest potrzebna.',
   'question: krótkie pytanie o konkretny przykład lub decyzję z tej lekcji; jeśli temat jest opanowany, może być pustym tekstem.'
  ].join(' ');
- const body={model:Deno.env.get('TRENERKI_AI_MODEL')||'gpt-5-mini',store:false,max_output_tokens:500,
+ const body={model:Deno.env.get('TRENERKI_AI_MODEL')||'gpt-5-mini',store:false,max_output_tokens:750,reasoning:{effort:'low'},
   text:{format:{type:'json_schema',name:'mentor_dialogue',strict:true,schema:{
    type:'object',properties:{reply:{type:'string'},meaningful:{type:'boolean'},severe:{type:'boolean'},question:{type:'string'}},
    required:['reply','meaningful','severe','question'],additionalProperties:false}}},
@@ -97,7 +118,7 @@ Deno.serve(async(req:Request)=>{
  const state=(row:any,firstMsg?:string)=>({ok:true,ready:alreadyDone||!!row?.approved,already_completed:alreadyDone,
   first_name:name,count:row?.meaningful_count||0,turns:row?.turn_count||0,
   opening,history:visible,reply:firstMsg||null,
-  cooldown_until:row?.cooldown_until||null,available:!!Deno.env.get('OPENAI_API_KEY')});
+  cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!Deno.env.get('OPENAI_API_KEY')});
  if(action==='status')return respond(state(record));
  if(action==='complete'){
   if(alreadyDone)return respond({ok:true,completed:true,next:lessons.find(l=>l.lesson_no>no)?.lesson_no??null});
@@ -124,7 +145,6 @@ Deno.serve(async(req:Request)=>{
  const message=cut(payload.message,1000).replace(/\s+/g,' ');
  if(message.length<5)return respond({error:'message_too_short'},400);
  if(/\b(?:\d[ -]*?){13,16}\b/.test(message))return respond({error:'no_payment_details'},400);
- if(!Deno.env.get('OPENAI_API_KEY'))return respond({error:'ai_not_configured'},503);
  const day=new Date().toISOString().slice(0,10);
  const {data:quota,error:qe}=await db.from('ta_tutor_usage').select('request_count').eq('user_id',user.id).eq('usage_day',day).maybeSingle();
  if(qe)return respond({error:'quota_unavailable'},503);
@@ -138,8 +158,16 @@ Deno.serve(async(req:Request)=>{
   const {error:ie}=await db.from('ta_tutor_usage').insert({user_id:user.id,usage_day:day,request_count:1});
   if(ie)return respond({error:'retry_request'},409);
  }
- const evaluated=await respondAsAnielka(name,lesson,message,record?.messages||[],record?.meaningful_count||0);
- if(!evaluated)return respond({error:'ai_unavailable'},503);
+ const {data:recentDifficulties}=await db.from('ta_learning_attempts').select('lesson_no,correct').eq('user_id',user.id).eq('course_slug',slug).order('created_at',{ascending:false}).limit(40);
+ const {data:priorSessions}=await db.from('ta_lesson_dialogues').select('lesson_no,meaningful_count').eq('user_id',user.id).eq('course_slug',slug).order('updated_at',{ascending:false}).limit(12);
+ const hardNumbers=[...new Set((recentDifficulties||[]).filter((a:any)=>!a.correct).map((a:any)=>a.lesson_no))].slice(0,5);
+ const difficultyTitles=hardNumbers.map(num=>lessons.find(l=>l.lesson_no===num)?.title_pl).filter(Boolean);
+ const memory='Zaliczone lekcje: '+completeSet.size+'/'+lessons.length+
+   '. Tematy z ostatnimi błędami: '+difficultyTitles.join('; ')+
+   '. Wcześniejsze rozmowy: '+(priorSessions||[]).filter((r:any)=>r.lesson_no!==no).length+'.';
+ const aiResult=await respondAsAnielka(name,lesson,message,record?.messages||[],record?.meaningful_count||0,memory);
+ const agentOnline=!!aiResult;
+ const evaluated=aiResult||localLessonCoach(name,lesson,message,record?.messages||[],record?.meaningful_count||0);
  const turns=(record?.turn_count||0)+1;
  const severe=(record?.severe_count||0)+(evaluated.severe?1:0);
  const cooldown=severe>=3?new Date(Date.now()+30*60*1000).toISOString():null;
@@ -166,5 +194,5 @@ Deno.serve(async(req:Request)=>{
  if(!saved)return respond({error:'dialogue_conflict_retry'},409);
  return respond({ok:true,ready:approved,reply,count:cooldown?0:meaningful,turns:cooldown?0:turns,
   first_name:name,history:cooldown?[]:history.map((m:any)=>({role:m.role,text:m.text,created_at:m.created_at})),
-  cooldown_until:cooldown,available:true});
+  cooldown_until:cooldown,available:true,agent_online:agentOnline});
 });
