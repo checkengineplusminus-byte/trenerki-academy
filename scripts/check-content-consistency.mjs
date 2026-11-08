@@ -46,7 +46,8 @@ try{
   if(!p?.history||!('ended_year' in p.history)||!p.history.note||!p.history.source_url)fail(item.id+': historical evidence metadata missing');
   if(p?.history?.ended_year&&!p.history.source_url)fail(item.id+': ungrounded historical teaching end date');
  }
- if(!page.includes('Ostatni potwierdzony rok:'))fail('Missing historical teaching status in course preview');
+ if(!page.includes('Rzemiosło dawniej i dziś'))fail('Missing natural history of crafts');
+ if(page.includes('Ostatni potwierdzony rok:')||page.includes('Sprawdź źródło historyczne'))fail('Technical research notes exposed to learners');
  if(courses.some(c=>!Number.isFinite(c.price)||c.price<0))fail('Catalog includes a missing or invalid price');
  const construction=['norweski-na-budowie','angielski-na-budowie','niemiecki-na-budowie'];
  for(const slug of construction){
@@ -72,7 +73,7 @@ try{
   if(!courses.some(c=>c.id===name+'-skroty'))fail(name+': course missing from catalog');
   else ok(name+' has '+total+' illustrated shortcuts');
  }
- if(!component.includes('function Keycap')||!component.includes('function CommandCanvas')||!component.includes('runCommand')||!component.includes('Wykonaj w symulatorze')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
+ if(!component.includes('function Keycap')||!component.includes('SoftwarePlayground')||!component.includes('runCommand')||!component.includes('SPRAWDŹ, CZY ROZUMIESZ')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
  else ok('Protected lessons include working simulated Word and AutoCAD keyboard actions');
  for(const stale of ['Testy + egzamin','Przed egzaminem czeka Cię','Czytasz, podejmujesz decyzję, zapisujesz rozwiązanie i rozwiązujesz krótki quiz']){
   if(page.includes(stale))fail('Misleading unfinished-feature promise: '+stale);
@@ -81,6 +82,10 @@ try{
  if(!gift.includes("academyAction('create_gift'")||!gift.includes("academyAction('redeem_gift'")||!gift.includes('swiety-mikolaj'))fail('Gift card redemption/sharing missing');else ok('Gift card flow');
  if(!admin.includes("academyAction('admin_dashboard'")||!admin.includes('Jakość kursów'))fail('Protected administration or editorial view missing');else ok('Administrator content-review dashboard');
  if(!progress.includes(".in('status',['active','demo'])")||!progress.includes("setDone(")||!checkout.includes("review_status"))fail('Demo access, saved progress or editorial warnings missing');else ok('Demo lessons, progress and pre-purchase editorial review checks');
+ const sandbox=read('src/SoftwarePlayground.tsx'),cases=read('src/CaseLesson.tsx');
+ if(!sandbox.includes('mode===\'cad\'')||!sandbox.includes('mode===\'windows\'')||!sandbox.includes('isExcel')||!sandbox.includes('isWord'))fail('Virtual software screens missing');
+ if(!cases.includes('onPassed')||!progress.includes('const canFinish='))fail('Graded lesson checkpoint missing');
+ if(page.includes("'<span class=\\"pill\\">${c.outline?.length||8} lekcji i ćwiczenia</span>'"))fail('Raw ${...} interpolation text in course card');
  if(!academy.includes("functions.invoke('ta-academy'"))fail('Protected backend integration missing');
  if(/service_role|stripe_secret_key/i.test(checkout+academy+gift+admin))fail('Server secret name exposed in frontend, review required');
  if(!process.exitCode)console.log('All static integrity checks passed.');
