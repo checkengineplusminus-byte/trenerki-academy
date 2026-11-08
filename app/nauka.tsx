@@ -9,10 +9,11 @@ import GuidedDialogue from '../src/GuidedDialogue';
 import CourseIntro from '../src/CourseIntro';
 import ConceptAtlas from '../src/ConceptAtlas';
 import FinalExam from '../src/FinalExam';
+import LessonIllustratedSections,{type LearningSection} from '../src/LessonIllustratedSections';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
+ material:{raw?:string[],sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
@@ -176,12 +177,15 @@ export default function Learning(){
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
-   {!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
-     <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WIEDZA · PRZYKŁAD · BEZPIECZNA PRAKTYKA</Text>
-     {lesson.material.raw.slice(1,5).map((paragraph,i)=><View key={i} style={{gap:5}}>
-      <Text style={{fontWeight:'900',color:ink,fontSize:13}}>{['Zrozum zasadę','Przykład z życia','Co zrobisz','Błąd, którego unikamy'][i]}</Text>
-      <Text style={{color:'#365344',lineHeight:24,fontSize:15}}>{paragraph}</Text>
-     </View>)}
+   {(!!lesson.material?.sections?.length||!!lesson.material?.learning?.situation)&&
+    <LessonIllustratedSections
+     courseSlug={slug} lessonNo={module} title={lesson.title_pl}
+     sections={lesson.material?.sections} illustration={lesson.material?.illustration}
+     situation={lesson.material?.learning?.situation} example={lesson.material?.learning?.example}
+    />}
+   {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
+     <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
+     {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)).slice(0,7).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
