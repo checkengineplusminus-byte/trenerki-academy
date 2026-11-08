@@ -149,7 +149,14 @@ Deno.serve(async(req:Request)=>{
   if(e){console.error('attempt_save',e.code);return respond({error:'attempt_save_failed'},503);}
   return respond({ok:true,correct,lesson_no:no,mode});
  }
- if(action==='status')return respond(state(record));
+ if(action==='status'){
+  const usageDay=new Date().toISOString().slice(0,10);
+  const {data:usage}=await db.from('ta_tutor_usage').select('request_count')
+   .eq('user_id',user.id).eq('usage_day',usageDay).maybeSingle();
+  const availableToReply=(usage?.request_count||0)<120&&
+   !(record?.cooldown_until&&new Date(record.cooldown_until).getTime()>Date.now());
+  return respond({...state(record),can_reply:availableToReply});
+ }
  if(action==='complete'){
   if(alreadyDone)return respond({ok:true,completed:true,next:lessons.find(l=>l.lesson_no>no)?.lesson_no??null});
   // Conversation is voluntary support, never a prerequisite for lesson completion.
@@ -205,9 +212,14 @@ Deno.serve(async(req:Request)=>{
  const approved=!cooldown&&meaningful>=2;
  const requestedQuiz=/\b(przepytaj|quiz|zadaj mi pytanie|zadaj pytanie|sprawdź moją wiedzę|sprawdz mnie)\b/iu.test(message);
  const canReplyAgain=used<119&&!cooldown;
+ // Never leave a dangling question when the learner did not ask to be quizzed,
+ // or when the daily quota means the student cannot answer another turn.
+ const textBeforeFollowup=(!requestedQuiz||!canReplyAgain)&&/\?\s*$/.test(evaluated.reply)?
+  evaluated.reply.replace(/(?:^|[.!?]\s+)[^.!?]*\?\s*$/u,'').trim():evaluated.reply;
+ const safeAnswer=textBeforeFollowup||name+', wróć do wyjaśnienia i ćwiczenia z tej lekcji. Możesz kontynuować w swoim tempie.';
  const reply=cooldown?
   name+', ta rozmowa przekroczyła poważne granice bezpieczeństwa. Przerwijmy na chwilę. Wróć, gdy będzie spokojniej — tę lekcję zaczniemy od nowa.':
-  evaluated.reply+(requestedQuiz&&canReplyAgain&&evaluated.question?' '+evaluated.question:'')+
+  safeAnswer+(requestedQuiz&&canReplyAgain&&evaluated.question?' '+evaluated.question:'')+
   (!canReplyAgain?' Możesz spokojnie wrócić do ćwiczenia; nie musisz na nic więcej odpowiadać.':'');
  const now=new Date().toISOString();
  const history=[...(record?.messages||[]),{role:'student',text:message,created_at:now},{role:'anielka',text:reply,created_at:now}].slice(-24);
