@@ -55,7 +55,7 @@ function Speaker({text,locale}:{text:string;locale:string}){
   {!!message&&<Text style={{color:'#ad6633',fontSize:10,maxWidth:185,textAlign:'right'}}>{message}</Text>}
  </View>;
 }
-export default function ConstructionLesson({lesson,identity,onPassed}:{lesson?:ConstructionMaterial,identity?:string,onPassed?:(passed:boolean)=>void}){
+export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:{lesson?:ConstructionMaterial,identity?:string,onPassed?:(passed:boolean)=>void,onAttempt?:(index:number,correct:boolean)=>void}){
  const [selected,setSelected]=useState<number|null>(null);
  useEffect(()=>{setSelected(null);onPassed?.(false)},[identity]);
  if(!lesson)return null;
@@ -129,7 +129,7 @@ export default function ConstructionLesson({lesson,identity,onPassed}:{lesson?:C
   {!!quiz&&<View style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
    <Text style={{fontSize:12,color:'#bfe6b0',fontWeight:'900',letterSpacing:1}}>Z ŻYCIA BUDOWY · MAŁA SYMULACJA</Text>
    <Text style={{fontSize:20,color:'white',fontWeight:'900',lineHeight:28}}>{quiz.question}</Text>
-   {shuffled.map(({answer,original},i)=><Pressable key={i} onPress={()=>{setSelected(i);onPassed?.(original===quiz.correct)}} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
+   {shuffled.map(({answer,original},i)=><Pressable key={i} onPress={()=>{setSelected(i);onPassed?.(original===quiz.correct);onAttempt?.(original,original===quiz.correct)}} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
     <Text style={{color:ink,fontWeight:'800',lineHeight:21}}>{String.fromCharCode(65+i)}. {answer}</Text>
    </Pressable>)}
    {selected!==null&&<View style={{backgroundColor:choiceCorrect?'#d4ead2':'#fff0d9',padding:13,borderRadius:11}}>
