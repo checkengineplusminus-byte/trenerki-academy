@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="620" viewBox="0 0 1100 620">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff9ed"/><stop offset="1" stop-color="#e9f2df"/></linearGradient></defs>
+<rect width="1100" height="620" rx="24" fill="url(#bg)"/>
+<path d="M36 144H1064" stroke="#d8dfca" stroke-width="2"/>
+<text x="58" y="68" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#52705b" letter-spacing="3">TRENERKI ACADEMY · ZAPOMNIANE RZEMIOSŁA</text>
+<text x="58" y="120" font-family="Arial,sans-serif" font-size="39" font-weight="bold" fill="#173c2d">INTROLIGATOR</text>
+<rect x="48" y="174" width="450" height="361" rx="25" fill="#e5ead8"/>
+<ellipse cx="274" cy="466" rx="145" ry="20" fill="#c9d7c0" opacity=".7"/>
+<g transform="translate(275 344) scale(.95)"><path d="M-130 -111 Q-48 -129 0 -87 Q48 -129 130 -111 L130 137 Q49 118 0 153 Q-49 118 -130 137Z" fill="#f4e4b6" stroke="#654638" stroke-width="7"/><path d="M0 -87L0 153 M-117 -92Q-63 -107 -15 -71 M15 -71Q58 -107 117 -92 M-115 -55Q-65 -75 -17 -48 M17 -48Q62 -75 115 -55" fill="none" stroke="#b18c65" stroke-width="5"/><rect x="-135" y="-122" width="20" height="264" rx="7" fill="#8b583e"/></g>
+<rect x="530" y="178" width="519" height="346" rx="21" fill="#fffdf6" stroke="#d9e0cf" stroke-width="2"/>
+<text x="560" y="221" font-size="17" font-weight="bold" font-family="Arial,sans-serif" fill="#52705b">OD MATERIAŁU DO GOTOWEGO WYROBU</text>
+<rect x="554" y="250" width="470" height="69" rx="12" fill="#f0f3e9"/><text x="570" y="274" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">1 · MATERIAŁ</text><text x="570" y="301" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">PAPIER</text><rect x="554" y="332" width="470" height="69" rx="12" fill="#f0f3e9"/><text x="570" y="356" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">2 · WARSZTAT</text><text x="570" y="383" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">NICI I PRASA</text><rect x="554" y="414" width="470" height="69" rx="12" fill="#e0eedd"/><text x="570" y="438" font-family="Arial,sans-serif" font-weight="bold" font-size="14" fill="#66806a">3 · WYRÓB</text><text x="570" y="465" font-family="Arial,sans-serif" font-weight="bold" font-size="23" fill="#214c36">KSIĄŻKA</text>
+<text x="55" y="570" font-family="Arial,sans-serif" font-size="17" fill="#586e5e">Autorska ilustracja edukacyjna · poznawaj przedmioty i narzędzia krok po kroku</text>
+</svg>
