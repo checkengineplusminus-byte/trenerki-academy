@@ -653,10 +653,10 @@
         "issue": "sprężyny i części pod napięciem"
       },
       "history": {
-        "teaching_status": "MEN dokument kwalifikacji",
-        "last_verified_year": 2026,
+        "teaching_status": "MEN — opublikowany dokument kwalifikacji zegarmistrza, rok formalnego zakończenia nieustalony",
+        "last_verified_year": null,
         "ended_year": null,
-        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "note": "Dokument edukacyjny MEN opisuje zawód i kwalifikację zegarmistrza, ale nie potwierdza aktywnego naboru w konkretnej szkole w 2026 roku ani daty zakończenia kształcenia.",
         "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf"
       },
       "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf",
@@ -770,10 +770,10 @@
         "issue": "bezpieczne klejenie i obuwie ochronne"
       },
       "history": {
-        "teaching_status": "MEN profil zawodu",
-        "last_verified_year": 2026,
+        "teaching_status": "MEN — profil orientacji zawodowej szewca, brak potwierdzenia aktualnego naboru",
+        "last_verified_year": null,
         "ended_year": null,
-        "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
+        "note": "Profil w portalu MEN opisuje zawód szewca; nie jest dowodem prowadzenia konkretnej szkoły i nie daje podstaw do datowania końca nauczania.",
         "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc"
       },
       "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc",
