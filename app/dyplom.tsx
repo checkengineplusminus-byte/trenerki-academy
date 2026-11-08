@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 type Diploma={id:string;certificate_no:string;holder_name:string;title_pl:string;title_en:string;issued_at:string;is_demo:boolean};
 const ink='#17382b';
 export default function DiplomaPage(){
- const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const {course,preview}=useLocalSearchParams<{course?:string;preview?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const [cert,setCert]=useState<Diploma|null>(null),[busy,setBusy]=useState(true),[error,setError]=useState('');
  useEffect(()=>{let active=true;(async()=>{
   try{
@@ -15,8 +15,20 @@ export default function DiplomaPage(){
    const {data,error:ce}=await supabase.from('ta_certificates')
     .select('id,certificate_no,holder_name,title_pl,title_en,issued_at,is_demo')
     .eq('user_id',user.id).eq('course_slug',slug).is('revoked_at',null).maybeSingle();
-   if(ce)throw ce;if(!data)throw new Error('Dyplom nie został jeszcze wystawiony. Wróć do kursu i ukończ egzamin.');
-   if(active)setCert(data as Diploma);
+   if(ce)throw ce;
+   if(!data&&preview==='1'){
+    const {data:courseInfo,error:courseError}=await supabase.from('ta_courses').select('title_pl,certificate_pl,certificate_en').eq('slug',slug).maybeSingle();
+    if(courseError||!courseInfo)throw new Error('Nie znaleziono kursu do podglądu wzoru.');
+    const fullName=typeof user.user_metadata?.full_name==='string'?user.user_metadata.full_name.trim():'';
+    if(active)setCert({
+     id:'preview-only',certificate_no:'WZÓR — BEZ NUMERU',holder_name:fullName||'Imię i nazwisko kursanta',
+     title_pl:courseInfo.certificate_pl||courseInfo.title_pl,title_en:courseInfo.certificate_en||'',
+     issued_at:new Date().toISOString(),is_demo:true
+    });
+   }else{
+    if(!data)throw new Error('Dyplom nie został jeszcze wystawiony. Wróć do kursu i ukończ egzamin.');
+    if(active)setCert(data as Diploma);
+   }
   }catch(e:any){if(active)setError(e.message||'Nie udało się pobrać dokumentu.');}
   finally{if(active)setBusy(false);}
  })();return()=>{active=false};},[slug]);
