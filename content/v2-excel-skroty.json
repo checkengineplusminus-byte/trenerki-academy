@@ -41,7 +41,25 @@
           "task": "Wypróbuj na przykładowym kosztorysie: Wpisuję dane do tabeli i wykonuję kontrolowane obliczenie."
         },
         "editorial_status": "review_needed",
-        "illustration": "excel-interface"
+        "illustration": "excel-interface",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Microsoft Excel to elektroniczny arkusz kalkulacyjny. Pierwsza wersja została wydana we wrześniu 1985 roku na Apple Macintosh; wersja dla Windows pojawiła się w 1987 roku. Rozwijał wcześniejszą ideę tabel obliczeniowych, w których zmiana jednej liczby natychmiast przelicza wszystkie zależne wyniki. Dziś służy nie tylko księgowości: pracują w nim magazynierzy, kierownicy budów, handlowcy i analitycy."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "W arkuszu dane mają swoje miejsce. Każda kolumna może opisywać inną cechę, a każdy wiersz jedną pozycję kosztorysu. Formuła to instrukcja obliczenia, a nie zwykłe słowo. Dlatego zamiast obliczać ręcznie 20 iloczynów, zapisujesz =C2*D2 i kopiujesz działanie z kontrolą odwołań."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Zacznij od trzech pozycji: farba, taśma, transport. Podaj ilości i ceny, wykonaj mnożenie, a na końcu dodaj sumę. Zmień cenę farby i sprawdź, czy wynik końcowy się zmienił. To jest praktyczna korzyść z arkusza."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Dodaję ceny w pamięci bez zapisu danych.. Dlaczego: Excel to arkusz kalkulacyjny. Pomaga przechowywać dane, liczyć koszty, porównywać oferty i tworzyć wykresy. Nie zastępuje samodzielnej kontroli danych wejściowych."
+          }
+        ]
       }
     },
     {
@@ -78,7 +96,25 @@
           "task": "Wypróbuj na przykładowym kosztorysie: Tworzę trzy opisane arkusze we wspólnym skoroszycie."
         },
         "editorial_status": "review_needed",
-        "illustration": "excel-interface"
+        "illustration": "excel-interface",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Skoroszyt jest całym plikiem Excela, najczęściej z rozszerzeniem XLSX. Jeden skoroszyt może zawierać wiele arkuszy. Arkusze są jak oddzielne kartki w jednym segregatorze — każda ma własne komórki, nazwy i formuły, a dane mogą być między nimi łączone. Karty arkuszy zwykle widać na dole okna."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Wyobraź sobie budżet budowy: arkusz „Materiały” zawiera koszty dostaw, arkusz „Pracownicy” przepracowane godziny, a „Podsumowanie” sumuje wyniki. Takie rozdzielenie ułatwia kontrolę, ale bez nazw i konsekwentnych danych łatwo pomylić źródła."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "W otwartym Excelu zobacz karty arkuszy. Dodaj nowy arkusz, nazwij go Materiały i wpisz trzy pozycje. Sprawdź, czy plik nadal jest jednym skoroszytem i czy po przełączeniu karty dane nie znikają."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Tworzę trzy kolumny bez nagłówków i mieszam miesiące.. Dlaczego: Skoroszyt to plik XLSX, a arkusze to oddzielne karty w jego środku. Dane z kilku arkuszy można zestawiać, ale warto stosować czytelne nazwy."
+          }
+        ]
       }
     },
     {
@@ -114,7 +150,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Odnajduję komórkę D4 i sprawdzam jej zawartość."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Komórka jest przecięciem kolumny i wiersza. Kolumny mają oznaczenia A, B, C, a wiersze numery 1, 2, 3. Dlatego B3 to komórka w kolumnie B i trzecim wierszu, a nie trzeci arkusz. Aktywna komórka ma widoczne zaznaczenie, a jej adres pojawia się w polu nazwy."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Zakres A1:C10 oznacza prostokąt komórek od lewej górnej A1 do prawej dolnej C10. Nie myl adresu z zawartością: komórka B2 może zawierać nazwę Farba, mimo że jej adres to po prostu B2."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "W przykładzie znajdź C2 — liczbę sztuk materiału — i D2 — cenę. Odczytaj E2. Następnie kliknij inne pola i sprawdź ich adresy. W Anielce wyjaśnij różnicę między adresem komórki a liczbą w niej zapisaną."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Poprawiam D5 bez sprawdzenia.. Dlaczego: Komórka to przecięcie wiersza i kolumny. Kolumny mają litery, wiersze liczby, więc B3 oznacza konkretny adres; pomylenie adresu może zmienić wynik formuły."
+          }
+        ]
       }
     },
     {
@@ -150,7 +204,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Ustawiam właściwy typ tekstowy dla identyfikatora."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Excel rozpoznaje różne rodzaje danych: tekst, liczbę, datę, czas, wartość logiczną i formułę. Numer zamówienia „00125” jest identyfikatorem, a nie liczbą do dodawania; jeżeli potraktujesz go liczbowo, możesz utracić zera początkowe. Data z kolei ma własny format i pod spodem wartość wykorzystywaną do obliczeń."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Sprzedawca przesłał tabelę kodów produktów: 00123, 00124 i 01011. Po otwarciu pliku widzisz 123, 124 i 1011. To znak, że dane mogły zostać automatycznie potraktowane jak liczby. Nie naprawiaj tego dodawaniem przypadkowych zer, zanim sprawdzisz źródło."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Zrób tabelę z kolumnami Kod produktu, Ilość i Data. Ustaw kod jako tekst, ilość jako liczbę, datę jako datę. Wyjaśnij, po czym rozpoznasz, że format nie zamienił identyfikatora w liczbę."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Dodaję 100 do numeru produktu.. Dlaczego: Komórka może zawierać tekst, liczbę, datę lub formułę. Numer zamówienia z zerami na początku warto przechowywać jako tekst; data wymaga spójnego formatu."
+          }
+        ]
       }
     },
     {
@@ -186,7 +258,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Wybieram D3, sprawdzam wartość i wpisuję 135."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Kiedy klikniesz komórkę i zaczniesz pisać, wpis zastąpi jej poprzednią zawartość. F2 w wielu wersjach Excela uruchamia edycję istniejącej wartości, dzięki czemu można poprawić fragment tekstu albo formuły. Pasek formuły służy do kontrolowania pełnej zawartości, nawet jeśli w siatce widzisz tylko część."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "W komórce C2 jest liczba 2, a w D2 cena 350. Zmieniasz D2 na 400. Jeżeli E2 ma formułę =C2*D2, wynik powinien zmienić się z 700 na 800. Jeżeli wynik nie reaguje, zbadaj, czy w E2 jest rzeczywiście formuła, a nie wpisana ręcznie liczba."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Przeprowadź tę zmianę w symulatorze. Wróć do D2, ustaw poprzednią cenę i sprawdź, czy wynik wraca. Zwróć uwagę, że samo wybranie komórki nie oznacza jej zmodyfikowania."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Zmieniam losową komórkę z podobną liczbą.. Dlaczego: Wpis do komórki zatwierdzasz Enterem. Pasek formuły pozwala zobaczyć pełną treść, a F2 często przełącza edycję. Nie nadpisuj wartości bez sprawdzenia adresu."
+          }
+        ]
       }
     },
     {
@@ -222,7 +312,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Wpisuję ilość 2 i cenę 350, a wartość wyliczam =C2*D2."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Formułę w Excelu rozpoczynasz od znaku równości. Symbol gwiazdki * oznacza mnożenie, ukośnik / dzielenie, plus dodawanie, a minus odejmowanie. Zapis =C2*D2 bierze zawartość dwóch wskazanych komórek, dlatego jego wynik zmienia się, gdy poprawisz jedną z tych wartości."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "W kosztorysie kupujesz 2 puszki farby po 350 zł, więc E2 ma wynosić 700. Gdy cena wzrośnie do 380 zł, wpisanej ręcznie wartości 700 nic nie zmieni; formuła obliczy 760. Formuła jest narzędziem tylko wtedy, gdy adresy i dane wejściowe są poprawne."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wpisz w E2 =C2*D2 i sprawdź wynik. Następnie zmień C2 z 2 na 3. Powiedz Anielce, co się zmieniło i dlaczego. Nie zapisuj w E2 na stałe 1050 — wtedy utracisz automatyczne przeliczanie."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Wpisuję wynik 700 wszędzie ręcznie i nie aktualizuję zmian.. Dlaczego: Formuła zaczyna się od =. W kosztorysie =C2*D2 mnoży ilość z C2 przez cenę z D2; zmiana jednej wartości powoduje ponowne wyliczenie."
+          }
+        ]
       }
     },
     {
@@ -258,7 +366,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Używam =SUM(E2:E4) i porównuję wynik z ręcznym oszacowaniem."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Funkcja to gotowe działanie, które wykorzystujesz wewnątrz formuły. W polskim interfejsie często widzisz SUMA i ŚREDNIA, a w anglojęzycznym SUM i AVERAGE. Zakres E2:E4 oznacza kolejne komórki od E2 do E4 włącznie. Zapis =SUM(E2:E4) sumuje wynik trzech pozycji."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Pomyśl o magazynie: trzy dostawy po 700, 360 i 150 zł mają łączną wartość 1210 zł. Zamiast przepisywać trzy liczby do oddzielnego kalkulatora, liczysz je z prawdziwego zakresu. Po zmianie ilości materiału wynik sumy aktualizuje się sam."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Zaznacz obszar kosztorysu i uruchom dodawanie sumy. Sprawdź, czy funkcja rzeczywiście obejmuje E2, E3 i E4, ale nie komórkę E5, w której znajduje się suma. W przeciwnym razie możesz spowodować błąd odwołania cyklicznego."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Dodaję tylko pierwszą komórkę i nazywam to sumą.. Dlaczego: Zakres A1:A10 obejmuje dziesięć komórek. Funkcja SUMA lub SUM zlicza liczby; ŚREDNIA oblicza średnią, a jej wynik nie musi być sumą."
+          }
+        ]
       }
     },
     {
@@ -294,7 +420,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Stosuję format procentowy i sprawdzam, że oznacza 25%."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Formatowanie zmienia sposób wyświetlania liczby, ale zwykle nie jej wartość. Komórka o wartości 0,25 może wyświetlać 25%, a wartość 250 może być widoczna jako 250,00 zł. To nie oznacza, że Excel przeliczył wartość na inną kwotę albo wykonał wymianę waluty."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Jeśli pracownik wpisze 25 w polu stawki procentowej i zastosuje format procentowy, arkusz może wyświetlać 2500%. Dlatego musisz rozumieć, czy dane wejściowe to część jedności 0,25, czy liczba procentów 25. To częsta przyczyna błędów budżetowych."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wpisz 0,23 w przykładową komórkę i ustaw format procentowy. Wyjaśnij, dlaczego widzisz 23%, a potem sprawdź, co wyświetli wpis 23. Nie myl wyglądu z podstawową wartością obliczeń."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Wpisuję 25 do formuły oczekującej 0,25 bez kontroli.. Dlaczego: Wyświetlanie 25% lub 250 zł to format, nie nowa liczba. Zmiana formatu nie powinna służyć do ukrywania błędów obliczeń."
+          }
+        ]
       }
     },
     {
@@ -330,7 +474,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Zapisuję XLSX i sprawdzam, czy plik otwiera się poprawnie."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "XLSX zachowuje strukturę skoroszytu, arkusze, formuły i formatowanie. CSV jest prostym plikiem tekstowym zawierającym głównie wiersze i kolumny; często nie zachowuje formuł, wykresów ani formatów. PDF służy przede wszystkim do pokazania gotowego raportu."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Gdy kierownik prosi o raport do samodzielnej edycji, zachowaj XLSX. Gdy chce podpisany widok do wydruku, może potrzebować PDF. Gdy system magazynowy chce dane wejściowe, może wymagać CSV z konkretnym separatorem i kodowaniem. Nie wysyłaj jednego formatu do każdego celu."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Zapisz ćwiczebny skoroszyt pod czytelną nazwą. Wyeksportuj wersję PDF, a następnie zobacz różnicę: który plik można edytować, a w którym kontrolujesz wydruk. Zachowaj źródło oraz sprawdź, czy wszystkie kolumny PDF są widoczne."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Zamieniam nazwę .csv na .xlsx bez konwersji.. Dlaczego: Zapisujesz plik z nazwą, lokalizacją i właściwym formatem. CSV zachowuje głównie dane tabelaryczne, zwykle bez wszystkich funkcji i wielu arkuszy XLSX."
+          }
+        ]
       }
     },
     {
@@ -366,7 +528,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Poprawiam ilość i kontroluję przeliczoną wartość oraz sumę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wprowadzenie od podstaw",
+            "text": "Pierwszy budżet nie wymaga znajomości setek funkcji. Wystarczą właściwe dane, dobre nagłówki i przejrzyste formuły. Przygotuj kolumny Usługa, Ilość, Cena, Wartość, wypełnij trzy pozycje i oblicz wartości przez mnożenie. Na końcu dodaj sumę oraz sprawdź, czy wiersze nie są liczone podwójnie."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Jeżeli jedna pozycja jest w sztukach, a inna w godzinach, kolumna Ilość nadal może działać, ale trzeba opisać jednostkę. Sama liczba 3 bez znaczenia nie mówi, czy chodzi o trzy worki, trzy osoby czy trzy godziny. Prawdziwy budżet wymaga spójności także poza formułą."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Zbuduj 3-pozycyjny budżet remontu. Zmień jedną cenę, zrób podsumowanie i spróbuj znaleźć celowo wpisany błąd. Powiedz Anielce, jakie kontrole wykonasz przed wysłaniem budżetu klientowi."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Nadpisuję wynik sumy na oko.. Dlaczego: Ułóż nagłówki Usługa, Ilość, Cena, Wartość. Oblicz trzy wartości formułami, a potem sumę. Zmieniaj ilość, by zobaczyć automatyczną aktualizację kosztu."
+          }
+        ]
       }
     },
     {
@@ -476,7 +656,25 @@
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
         "editorial_status": "review_needed",
-        "illustration": "excel-interface"
+        "illustration": "excel-interface",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Ctrl+Home przenosi zwykle do początku, Ctrl+End do ostatniej używanej komórki. Skróty nawigacji zależą od zakresów danych i aktywnej edycji."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Masz kilkaset wierszy i potrzebujesz wrócić do początku. Zalecane rozwiązanie: Używam skrótu nawigacji, a następnie sprawdzam adres aktywnej komórki.. Ctrl+Home przenosi zwykle do początku, Ctrl+End do ostatniej używanej komórki. Skróty nawigacji zależą od zakresów danych i aktywnej edycji."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Używam skrótu nawigacji, a następnie sprawdzam adres aktywnej komórki. Skontroluj wynik w odniesieniu do: Używam skrótu nawigacji, a następnie sprawdzam adres aktywnej komórki."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Usuwam połowę tabeli, by szybciej przewinąć.. Dlaczego: Ctrl+Home przenosi zwykle do początku, Ctrl+End do ostatniej używanej komórki. Skróty nawigacji zależą od zakresów danych i aktywnej edycji."
+          }
+        ]
       }
     },
     {
@@ -584,7 +782,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "F2 umożliwia edycję, Ctrl+C/V kopiowanie i wklejanie, Ctrl+Z cofanie. Przed masową operacją zachowaj kopię i sprawdź pierwszy wiersz wyniku."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Kopiujesz obliczenie z E2 do E3. Zalecane rozwiązanie: Wklejam formułę i sprawdzam, czy odwołania przesunęły się na C3 i D3.. F2 umożliwia edycję, Ctrl+C/V kopiowanie i wklejanie, Ctrl+Z cofanie. Przed masową operacją zachowaj kopię i sprawdź pierwszy wiersz wyniku."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Wklejam formułę i sprawdzam, czy odwołania przesunęły się na C3 i D3. Skontroluj wynik w odniesieniu do: Wklejam formułę i sprawdzam, czy odwołania przesunęły się na C3 i D3."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Kopiuję liczbę 700 zamiast formuły i ignoruję różnicę.. Dlaczego: F2 umożliwia edycję, Ctrl+C/V kopiowanie i wklejanie, Ctrl+Z cofanie. Przed masową operacją zachowaj kopię i sprawdź pierwszy wiersz wyniku."
+          }
+        ]
       }
     },
     {
@@ -695,7 +911,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Pogrubienie nagłówków, format procentowy i ustawienia komórek ułatwiają kontrolę danych. Nie używaj koloru jako jedynego nośnika informacji."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Raport kosztów ma mieszankę liczb i opisów bez nagłówków. Zalecane rozwiązanie: Dodaję opisowe nagłówki, walutę i spójne formaty.. Pogrubienie nagłówków, format procentowy i ustawienia komórek ułatwiają kontrolę danych. Nie używaj koloru jako jedynego nośnika informacji."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Dodaję opisowe nagłówki, walutę i spójne formaty. Skontroluj wynik w odniesieniu do: Dodaję opisowe nagłówki, walutę i spójne formaty."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Ukrywam błędne komórki białym tekstem.. Dlaczego: Pogrubienie nagłówków, format procentowy i ustawienia komórek ułatwiają kontrolę danych. Nie używaj koloru jako jedynego nośnika informacji."
+          }
+        ]
       }
     },
     {
@@ -804,7 +1038,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Możesz dodawać i ukrywać wiersze, kolumny oraz arkusze; przed operacją skontroluj formuły zależne od sąsiednich zakresów."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Dodajesz kolejny materiał do kosztorysu. Zalecane rozwiązanie: Wstawiam wiersz i sprawdzam, czy SUMA nadal obejmuje wszystkie pozycje.. Możesz dodawać i ukrywać wiersze, kolumny oraz arkusze; przed operacją skontroluj formuły zależne od sąsiednich zakresów."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Wstawiam wiersz i sprawdzam, czy SUMA nadal obejmuje wszystkie pozycje. Skontroluj wynik w odniesieniu do: Wstawiam wiersz i sprawdzam, czy SUMA nadal obejmuje wszystkie pozycje."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Dopisuję materiał poza zakresem i zapominam o sumie.. Dlaczego: Możesz dodawać i ukrywać wiersze, kolumny oraz arkusze; przed operacją skontroluj formuły zależne od sąsiednich zakresów."
+          }
+        ]
       }
     },
     {
@@ -911,7 +1163,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Autosumowanie i powtarzanie formuł przyspiesza pracę. Odwołania względne przesuwają się po kopiowaniu; F4 może blokować adresy w formule."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "W każdej pozycji kosztorysu potrzebujesz tej samej stawki VAT zapisanej w osobnej komórce. Zalecane rozwiązanie: Używam odwołania bezwzględnego do jednej komórki ze stawką VAT.. Autosumowanie i powtarzanie formuł przyspiesza pracę. Odwołania względne przesuwają się po kopiowaniu; F4 może blokować adresy w formule."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Używam odwołania bezwzględnego do jednej komórki ze stawką VAT. Skontroluj wynik w odniesieniu do: Używam odwołania bezwzględnego do jednej komórki ze stawką VAT."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Wpisuję inne VAT w każdym wierszu bez wyjaśnienia.. Dlaczego: Autosumowanie i powtarzanie formuł przyspiesza pracę. Odwołania względne przesuwają się po kopiowaniu; F4 może blokować adresy w formule."
+          }
+        ]
       }
     },
     {
@@ -1022,7 +1292,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Tabela z nagłówkami pozwala filtrować, sortować i łatwiej dodawać nowe wiersze. Filtr tylko ukrywa część danych, nie usuwa ich."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Chcesz zobaczyć tylko koszty transportu. Zalecane rozwiązanie: Włączam filtr kategorii, liczę widoczne pozycje i pamiętam o ukrytych wierszach.. Tabela z nagłówkami pozwala filtrować, sortować i łatwiej dodawać nowe wiersze. Filtr tylko ukrywa część danych, nie usuwa ich."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Włączam filtr kategorii, liczę widoczne pozycje i pamiętam o ukrytych wierszach. Skontroluj wynik w odniesieniu do: Włączam filtr kategorii, liczę widoczne pozycje i pamiętam o ukrytych wierszach."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Kasuję wszystkie wiersze innych kategorii.. Dlaczego: Tabela z nagłówkami pozwala filtrować, sortować i łatwiej dodawać nowe wiersze. Filtr tylko ukrywa część danych, nie usuwa ich."
+          }
+        ]
       }
     },
     {
@@ -1130,7 +1418,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Zapisuj zmiany regularnie i stosuj nazwy z datą lub rewizją. Przy eksportowaniu do PDF upewnij się, że nie obcinasz kolumn."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Zamykasz wieloarkuszowy plik z budżetem i raportem. Zalecane rozwiązanie: Zapisuję wersję XLSX, sprawdzam nazwę oraz ewentualny wydruk PDF.. Zapisuj zmiany regularnie i stosuj nazwy z datą lub rewizją. Przy eksportowaniu do PDF upewnij się, że nie obcinasz kolumn."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Zapisuję wersję XLSX, sprawdzam nazwę oraz ewentualny wydruk PDF. Skontroluj wynik w odniesieniu do: Zapisuję wersję XLSX, sprawdzam nazwę oraz ewentualny wydruk PDF."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Zmieniając nazwę pliku uznaję go za zapisany.. Dlaczego: Zapisuj zmiany regularnie i stosuj nazwy z datą lub rewizją. Przy eksportowaniu do PDF upewnij się, że nie obcinasz kolumn."
+          }
+        ]
       }
     },
     {
@@ -1239,7 +1545,25 @@
           "Przed masowymi operacjami na danych zapisz kopię."
         ],
         "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Wykres wymaga wiarygodnych danych, czytelnych podpisów osi i skali. Barwy nie mogą maskować tego, że wartości są nieporównywalne."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Przedstawiasz koszty trzech materiałów kierownikowi. Zalecane rozwiązanie: Buduję prosty wykres z podpisanymi kategoriami i porównuję go z tabelą.. Wykres wymaga wiarygodnych danych, czytelnych podpisów osi i skali. Barwy nie mogą maskować tego, że wartości są nieporównywalne."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Buduję prosty wykres z podpisanymi kategoriami i porównuję go z tabelą. Skontroluj wynik w odniesieniu do: Buduję prosty wykres z podpisanymi kategoriami i porównuję go z tabelą."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Ukrywam najwyższy koszt, aby wykres wyglądał lepiej.. Dlaczego: Wykres wymaga wiarygodnych danych, czytelnych podpisów osi i skali. Barwy nie mogą maskować tego, że wartości są nieporównywalne."
+          }
+        ]
       }
     },
     {
@@ -1275,7 +1599,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Oznaczam brak i wyjaśniam, że suma jest niepełna."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "W jednej tabeli połącz ilości, ceny, formuły i filtry. Sprawdź skrajne wartości, puste komórki i błędne formaty."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Kosztorys zawiera 7 pozycji, jedna ma pustą cenę. Zalecane rozwiązanie: Oznaczam brak i wyjaśniam, że suma jest niepełna.. W jednej tabeli połącz ilości, ceny, formuły i filtry. Sprawdź skrajne wartości, puste komórki i błędne formaty."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Oznaczam brak i wyjaśniam, że suma jest niepełna. Skontroluj wynik w odniesieniu do: Oznaczam brak i wyjaśniam, że suma jest niepełna."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Wpisuję 0 bez informacji, by suma się zgadzała.. Dlaczego: W jednej tabeli połącz ilości, ceny, formuły i filtry. Sprawdź skrajne wartości, puste komórki i błędne formaty."
+          }
+        ]
       }
     },
     {
@@ -1311,7 +1653,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Sprawdzam, czy formuły i wykres uwzględniły nową cenę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Utwórz dane z nagłówkami, wyliczenia oraz wykres; poprawka wartości musi aktualizować wynik. Porównaj obliczenie z niezależnym przykładem."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Zmieniasz cenę jednego materiału i musisz odświeżyć raport. Zalecane rozwiązanie: Sprawdzam, czy formuły i wykres uwzględniły nową cenę.. Utwórz dane z nagłówkami, wyliczenia oraz wykres; poprawka wartości musi aktualizować wynik. Porównaj obliczenie z niezależnym przykładem."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Sprawdzam, czy formuły i wykres uwzględniły nową cenę. Skontroluj wynik w odniesieniu do: Sprawdzam, czy formuły i wykres uwzględniły nową cenę."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Wysyłam starszy PDF jako aktualny.. Dlaczego: Utwórz dane z nagłówkami, wyliczenia oraz wykres; poprawka wartości musi aktualizować wynik. Porównaj obliczenie z niezależnym przykładem."
+          }
+        ]
       }
     },
     {
@@ -1348,7 +1708,25 @@
           "task": "Wypróbuj na przykładowym kosztorysie: Oddzielam pola wejściowe od chronionych obliczeń i opisuję ich rolę."
         },
         "editorial_status": "review_needed",
-        "illustration": "excel-interface"
+        "illustration": "excel-interface",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Model kosztów wymaga rozdzielenia danych wejściowych, obliczeń i prezentacji. Dzięki temu można go audytować i bezpiecznie aktualizować."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Dwóch pracowników wpisuje ceny i nadpisuje wyniki formuł. Zalecane rozwiązanie: Oddzielam pola wejściowe od chronionych obliczeń i opisuję ich rolę.. Model kosztów wymaga rozdzielenia danych wejściowych, obliczeń i prezentacji. Dzięki temu można go audytować i bezpiecznie aktualizować."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Oddzielam pola wejściowe od chronionych obliczeń i opisuję ich rolę. Skontroluj wynik w odniesieniu do: Oddzielam pola wejściowe od chronionych obliczeń i opisuję ich rolę."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Pozwalam wszystkim poprawiać sumy ręcznie.. Dlaczego: Model kosztów wymaga rozdzielenia danych wejściowych, obliczeń i prezentacji. Dzięki temu można go audytować i bezpiecznie aktualizować."
+          }
+        ]
       }
     },
     {
@@ -1384,7 +1762,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Wprowadzam kontrolę danych i pokazuję komunikat o oczekiwanej liczbie."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Walidacja ogranicza błędne wpisy, np. niepożądany tekst w ilości lub datę poza zakresem. To pomoc, a nie pełna gwarancja poprawności."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Ktoś wpisał słowo trzy do kolumny z ilościami. Zalecane rozwiązanie: Wprowadzam kontrolę danych i pokazuję komunikat o oczekiwanej liczbie.. Walidacja ogranicza błędne wpisy, np. niepożądany tekst w ilości lub datę poza zakresem. To pomoc, a nie pełna gwarancja poprawności."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Wprowadzam kontrolę danych i pokazuję komunikat o oczekiwanej liczbie. Skontroluj wynik w odniesieniu do: Wprowadzam kontrolę danych i pokazuję komunikat o oczekiwanej liczbie."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Traktuję tekst trzy jako poprawne działanie mnożenia.. Dlaczego: Walidacja ogranicza błędne wpisy, np. niepożądany tekst w ilości lub datę poza zakresem. To pomoc, a nie pełna gwarancja poprawności."
+          }
+        ]
       }
     },
     {
@@ -1420,7 +1816,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Badam mianownik i poprawiam dane lub logikę obliczenia."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Błędy #DZIEL/0!, #ARG! czy #ADR! wskazują problemy w formule albo danych. Nie zamieniaj ich na zero bez zrozumienia przyczyny."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Raport pokazuje błąd dzielenia przez zero. Zalecane rozwiązanie: Badam mianownik i poprawiam dane lub logikę obliczenia.. Błędy #DZIEL/0!, #ARG! czy #ADR! wskazują problemy w formule albo danych. Nie zamieniaj ich na zero bez zrozumienia przyczyny."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Badam mianownik i poprawiam dane lub logikę obliczenia. Skontroluj wynik w odniesieniu do: Badam mianownik i poprawiam dane lub logikę obliczenia."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Ukrywam błąd białym kolorem.. Dlaczego: Błędy #DZIEL/0!, #ARG! czy #ADR! wskazują problemy w formule albo danych. Nie zamieniaj ich na zero bez zrozumienia przyczyny."
+          }
+        ]
       }
     },
     {
@@ -1456,7 +1870,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Odwołuję się do odpowiednich komórek i testuję sumę na kontrolnym przykładzie."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Linki między arkuszami oszczędzają ręczne kopiowanie, ale mają ryzyko zmiany nazw i zakresów. Oznacz źródła oraz sprawdzaj zależności."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Koszty miesięcy mają być sumowane w arkuszu Roczny. Zalecane rozwiązanie: Odwołuję się do odpowiednich komórek i testuję sumę na kontrolnym przykładzie.. Linki między arkuszami oszczędzają ręczne kopiowanie, ale mają ryzyko zmiany nazw i zakresów. Oznacz źródła oraz sprawdzaj zależności."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Odwołuję się do odpowiednich komórek i testuję sumę na kontrolnym przykładzie. Skontroluj wynik w odniesieniu do: Odwołuję się do odpowiednich komórek i testuję sumę na kontrolnym przykładzie."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Kopiuję same wartości co miesiąc bez śladu źródła.. Dlaczego: Linki między arkuszami oszczędzają ręczne kopiowanie, ale mają ryzyko zmiany nazw i zakresów. Oznacz źródła oraz sprawdzaj zależności."
+          }
+        ]
       }
     },
     {
@@ -1492,7 +1924,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Szukam po unikalnym numerze dokumentu, nie samej cenie."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Wyszukiwanie wartości po kluczu wymaga jednoznacznego identyfikatora. Duplikaty i różnice formatów mogą dać błędne dopasowanie."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Masz dwie faktury o tej samej kwocie, ale innych numerach. Zalecane rozwiązanie: Szukam po unikalnym numerze dokumentu, nie samej cenie.. Wyszukiwanie wartości po kluczu wymaga jednoznacznego identyfikatora. Duplikaty i różnice formatów mogą dać błędne dopasowanie."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Szukam po unikalnym numerze dokumentu, nie samej cenie. Skontroluj wynik w odniesieniu do: Szukam po unikalnym numerze dokumentu, nie samej cenie."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Uznaję tę samą kwotę za ten sam dokument.. Dlaczego: Wyszukiwanie wartości po kluczu wymaga jednoznacznego identyfikatora. Duplikaty i różnice formatów mogą dać błędne dopasowanie."
+          }
+        ]
       }
     },
     {
@@ -1528,7 +1978,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Grupuję dane po dostawcy, odświeżam zestawienie i porównuję sumę."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Tabela przestawna grupuje i podsumowuje wiersze według kategorii; przy zmianie danych może wymagać odświeżenia. Kontrola sumy nadal jest obowiązkowa."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Chcesz poznać łączny koszt materiałów według dostawcy. Zalecane rozwiązanie: Grupuję dane po dostawcy, odświeżam zestawienie i porównuję sumę.. Tabela przestawna grupuje i podsumowuje wiersze według kategorii; przy zmianie danych może wymagać odświeżenia. Kontrola sumy nadal jest obowiązkowa."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Grupuję dane po dostawcy, odświeżam zestawienie i porównuję sumę. Skontroluj wynik w odniesieniu do: Grupuję dane po dostawcy, odświeżam zestawienie i porównuję sumę."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Sumuję wyłącznie pierwszy wiersz każdej grupy.. Dlaczego: Tabela przestawna grupuje i podsumowuje wiersze według kategorii; przy zmianie danych może wymagać odświeżenia. Kontrola sumy nadal jest obowiązkowa."
+          }
+        ]
       }
     },
     {
@@ -1564,7 +2032,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Tworzę scenariusz bazowy i droższy, pokazując wpływ na całkowity koszt."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Dobry budżet pokazuje wariant podstawowy i zmianę ceny lub ilości; założenia mają być podpisane. Prognoza nie jest pewną przyszłością."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Cena materiału może wzrosnąć o 15%. Zalecane rozwiązanie: Tworzę scenariusz bazowy i droższy, pokazując wpływ na całkowity koszt.. Dobry budżet pokazuje wariant podstawowy i zmianę ceny lub ilości; założenia mają być podpisane. Prognoza nie jest pewną przyszłością."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Tworzę scenariusz bazowy i droższy, pokazując wpływ na całkowity koszt. Skontroluj wynik w odniesieniu do: Tworzę scenariusz bazowy i droższy, pokazując wpływ na całkowity koszt."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Podaję jedną liczbę jako gwarancję.. Dlaczego: Dobry budżet pokazuje wariant podstawowy i zmianę ceny lub ilości; założenia mają być podpisane. Prognoza nie jest pewną przyszłością."
+          }
+        ]
       }
     },
     {
@@ -1600,7 +2086,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Sprawdzam uprawnienia i udostępniam odpowiedni zakres."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Arkusz może zawierać dane osobowe, stawki i informacje finansowe. Dostęp i uprawnienia do edycji powinny wynikać z roli, a nie wygody."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Do raportu kosztów mają mieć dostęp tylko dwie upoważnione osoby. Zalecane rozwiązanie: Sprawdzam uprawnienia i udostępniam odpowiedni zakres.. Arkusz może zawierać dane osobowe, stawki i informacje finansowe. Dostęp i uprawnienia do edycji powinny wynikać z roli, a nie wygody."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Sprawdzam uprawnienia i udostępniam odpowiedni zakres. Skontroluj wynik w odniesieniu do: Sprawdzam uprawnienia i udostępniam odpowiedni zakres."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Publikuję dokument w ogólnodostępnym folderze.. Dlaczego: Arkusz może zawierać dane osobowe, stawki i informacje finansowe. Dostęp i uprawnienia do edycji powinny wynikać z roli, a nie wygody."
+          }
+        ]
       }
     },
     {
@@ -1636,7 +2140,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Wyjaśniam rozbieżność, przywracam pełne dane i poprawiam obliczenia."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Wykrywanie duplikatów, pustych danych, ukrytych filtrów i nieprawidłowych sum to część pracy eksperta. Raport powinien być odtwarzalny."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Przed wysłaniem arkusza widzisz filtr i sumę różną od kalkulatora. Zalecane rozwiązanie: Wyjaśniam rozbieżność, przywracam pełne dane i poprawiam obliczenia.. Wykrywanie duplikatów, pustych danych, ukrytych filtrów i nieprawidłowych sum to część pracy eksperta. Raport powinien być odtwarzalny."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Wyjaśniam rozbieżność, przywracam pełne dane i poprawiam obliczenia. Skontroluj wynik w odniesieniu do: Wyjaśniam rozbieżność, przywracam pełne dane i poprawiam obliczenia."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Wysyłam go mimo błędu, bo termin jest krótki.. Dlaczego: Wykrywanie duplikatów, pustych danych, ukrytych filtrów i nieprawidłowych sum to część pracy eksperta. Raport powinien być odtwarzalny."
+          }
+        ]
       }
     },
     {
@@ -1672,7 +2194,25 @@
           ],
           "task": "Wypróbuj na przykładowym kosztorysie: Pokazuję formułę, dane wejściowe i porównanie wariantów, zamiast zgadywać."
         },
-        "editorial_status": "review_needed"
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrozum zasadę krok po kroku",
+            "text": "Przygotuj arkusz z danymi, formułami, podsumowaniem, kontrolą błędów i wariantem ceny. W finale umiej objaśnić, skąd pochodzi każda ważna liczba."
+          },
+          {
+            "heading": "Jak działa to na przykładzie?",
+            "text": "Klient pyta, dlaczego koszt wzrósł po zmianie ilości. Zalecane rozwiązanie: Pokazuję formułę, dane wejściowe i porównanie wariantów, zamiast zgadywać.. Przygotuj arkusz z danymi, formułami, podsumowaniem, kontrolą błędów i wariantem ceny. W finale umiej objaśnić, skąd pochodzi każda ważna liczba."
+          },
+          {
+            "heading": "Przećwicz to samodzielnie",
+            "text": "Wypróbuj na przykładowym kosztorysie: Pokazuję formułę, dane wejściowe i porównanie wariantów, zamiast zgadywać. Skontroluj wynik w odniesieniu do: Pokazuję formułę, dane wejściowe i porównanie wariantów, zamiast zgadywać."
+          },
+          {
+            "heading": "Czego nie robić",
+            "text": "Obwiniam program, choć nie sprawdziłem formuł.. Dlaczego: Przygotuj arkusz z danymi, formułami, podsumowaniem, kontrolą błędów i wariantem ceny. W finale umiej objaśnić, skąd pochodzi każda ważna liczba."
+          }
+        ]
       }
     }
   ]
