@@ -1,0 +1,1334 @@
+{
+  "schema_version": 2,
+  "course_slug": "oracle-wms-cloud",
+  "title": "Oracle Warehouse Management Cloud — kompletny kurs WMS",
+  "intro": "Oracle Warehouse Management Cloud organizuje operacje magazynowe przez zamówienia, ASN, locations, LPN, wave i zadania mobilne. Kurs nie wymaga dostępu do prawdziwego środowiska Oracle i nie jest oficjalnym szkoleniem producenta.",
+  "source": "https://docs.oracle.com/en/cloud/saas/warehouse-management/",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Operacje magazynowe",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 0,
+      "title_pl": "Oracle WMS Cloud — czym jest",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Oracle WMS Cloud — czym jest",
+          "Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Kierownik prosi o sprawdzenie fizycznych stanów z ERP. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Weryfikuj WMS i jego integrację z ERP, a nie sam ekran zamówienia. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali.",
+          "situation": "Kierownik prosi o sprawdzenie fizycznych stanów z ERP.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Weryfikuj WMS i jego integrację z ERP, a nie sam ekran zamówienia.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Weryfikuj WMS i jego integrację z ERP, a nie sam ekran zamówienia.",
+          "explanation": "Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali.",
+          "feedback": [
+            "Tak. Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali.",
+            "Nie. Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Oracle WMS Cloud zarządza przyjęciem, przechowywaniem i wydaniem towaru, integrując zamówienia z operacjami hali. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Weryfikuj WMS i jego integrację z ERP, a nie sam ekran zamówienia."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Kierownik prosi o sprawdzenie fizycznych stanów z ERP. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 1,
+      "title_pl": "Interfejs: menu, ekrany i RF",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Interfejs: menu, ekrany i RF",
+          "Użytkownik ma ekran operacyjny albo terminal RF zależnie od roli; zadania wymagają poprawnych identyfikatorów. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Operator chce wykonać receiving, ale nie zna właściwego widoku. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź rolę i dostęp do funkcji przyjęć. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Użytkownik ma ekran operacyjny albo terminal RF zależnie od roli; zadania wymagają poprawnych identyfikatorów.",
+          "situation": "Operator chce wykonać receiving, ale nie zna właściwego widoku.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź rolę i dostęp do funkcji przyjęć.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rolę i dostęp do funkcji przyjęć.",
+          "explanation": "Użytkownik ma ekran operacyjny albo terminal RF zależnie od roli; zadania wymagają poprawnych identyfikatorów.",
+          "feedback": [
+            "Tak. Użytkownik ma ekran operacyjny albo terminal RF zależnie od roli; zadania wymagają poprawnych identyfikatorów.",
+            "Nie. Użytkownik ma ekran operacyjny albo terminal RF zależnie od roli; zadania wymagają poprawnych identyfikatorów. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Użytkownik ma ekran operacyjny albo terminal RF zależnie od roli; zadania wymagają poprawnych identyfikatorów. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź rolę i dostęp do funkcji przyjęć."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Operator chce wykonać receiving, ale nie zna właściwego widoku. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 2,
+      "title_pl": "Facility i location",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Facility i location",
+          "Facility to zarządzany obiekt magazynowy, location opisuje miejsce składowania; każdy skan dotyczy konkretnego adresu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Paleta trafiła do innego obiektu niż wynika z awiza. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Popraw identyfikację facility i location przed rejestracją. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Facility to zarządzany obiekt magazynowy, location opisuje miejsce składowania; każdy skan dotyczy konkretnego adresu.",
+          "situation": "Paleta trafiła do innego obiektu niż wynika z awiza.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Popraw identyfikację facility i location przed rejestracją.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Popraw identyfikację facility i location przed rejestracją.",
+          "explanation": "Facility to zarządzany obiekt magazynowy, location opisuje miejsce składowania; każdy skan dotyczy konkretnego adresu.",
+          "feedback": [
+            "Tak. Facility to zarządzany obiekt magazynowy, location opisuje miejsce składowania; każdy skan dotyczy konkretnego adresu.",
+            "Nie. Facility to zarządzany obiekt magazynowy, location opisuje miejsce składowania; każdy skan dotyczy konkretnego adresu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Facility to zarządzany obiekt magazynowy, location opisuje miejsce składowania; każdy skan dotyczy konkretnego adresu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Popraw identyfikację facility i location przed rejestracją."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Paleta trafiła do innego obiektu niż wynika z awiza. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 3,
+      "title_pl": "SKU i UOM",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "SKU i UOM",
+          "SKU identyfikuje pozycję, UOM jednostkę miary; sztuki i kartony nie są wymienne bez przelicznika. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Zamówiono 2 kartony po 24, w systemie widnieje 2 sztuki. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź UOM i przelicz 48 sztuk. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "SKU identyfikuje pozycję, UOM jednostkę miary; sztuki i kartony nie są wymienne bez przelicznika.",
+          "situation": "Zamówiono 2 kartony po 24, w systemie widnieje 2 sztuki.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź UOM i przelicz 48 sztuk.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź UOM i przelicz 48 sztuk.",
+          "explanation": "SKU identyfikuje pozycję, UOM jednostkę miary; sztuki i kartony nie są wymienne bez przelicznika.",
+          "feedback": [
+            "Tak. SKU identyfikuje pozycję, UOM jednostkę miary; sztuki i kartony nie są wymienne bez przelicznika.",
+            "Nie. SKU identyfikuje pozycję, UOM jednostkę miary; sztuki i kartony nie są wymienne bez przelicznika. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. SKU identyfikuje pozycję, UOM jednostkę miary; sztuki i kartony nie są wymienne bez przelicznika. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź UOM i przelicz 48 sztuk."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Zamówiono 2 kartony po 24, w systemie widnieje 2 sztuki. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 4,
+      "title_pl": "Order types i statusy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Order types i statusy",
+          "Purchase, sales i transfer mają różne znaczenie; status dokumentu wskazuje etap wykonania. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Widzisz zamówienie w statusie Created, ale nie na skanerze. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź status i operację alokacji przed rozpoczęciem pickingu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Purchase, sales i transfer mają różne znaczenie; status dokumentu wskazuje etap wykonania.",
+          "situation": "Widzisz zamówienie w statusie Created, ale nie na skanerze.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź status i operację alokacji przed rozpoczęciem pickingu.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź status i operację alokacji przed rozpoczęciem pickingu.",
+          "explanation": "Purchase, sales i transfer mają różne znaczenie; status dokumentu wskazuje etap wykonania.",
+          "feedback": [
+            "Tak. Purchase, sales i transfer mają różne znaczenie; status dokumentu wskazuje etap wykonania.",
+            "Nie. Purchase, sales i transfer mają różne znaczenie; status dokumentu wskazuje etap wykonania. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Purchase, sales i transfer mają różne znaczenie; status dokumentu wskazuje etap wykonania. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź status i operację alokacji przed rozpoczęciem pickingu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Widzisz zamówienie w statusie Created, ale nie na skanerze. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 5,
+      "title_pl": "ASN — Advanced Shipment Notice",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ASN — Advanced Shipment Notice",
+          "ASN zapowiada przyjazd towaru i umożliwia porównanie spodziewanej ilości z rzeczywistym rozładunkiem. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: ASN zawiera 12 palet, ciężarówka ma 11. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Przyjmij faktyczne 11 i zarejestruj niedobór. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "ASN zapowiada przyjazd towaru i umożliwia porównanie spodziewanej ilości z rzeczywistym rozładunkiem.",
+          "situation": "ASN zawiera 12 palet, ciężarówka ma 11.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Przyjmij faktyczne 11 i zarejestruj niedobór.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Przyjmij faktyczne 11 i zarejestruj niedobór.",
+          "explanation": "ASN zapowiada przyjazd towaru i umożliwia porównanie spodziewanej ilości z rzeczywistym rozładunkiem.",
+          "feedback": [
+            "Tak. ASN zapowiada przyjazd towaru i umożliwia porównanie spodziewanej ilości z rzeczywistym rozładunkiem.",
+            "Nie. ASN zapowiada przyjazd towaru i umożliwia porównanie spodziewanej ilości z rzeczywistym rozładunkiem. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. ASN zapowiada przyjazd towaru i umożliwia porównanie spodziewanej ilości z rzeczywistym rozładunkiem. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Przyjmij faktyczne 11 i zarejestruj niedobór."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: ASN zawiera 12 palet, ciężarówka ma 11. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 6,
+      "title_pl": "LPN — License Plate Number",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "LPN — License Plate Number",
+          "LPN identyfikuje nośnik, pudełko lub paletę; inna LPN może mieć ten sam SKU, ale inną historię. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwie podobne palety mają inne numery LPN. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Skanuj właściwy LPN i jego zawartość. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "LPN identyfikuje nośnik, pudełko lub paletę; inna LPN może mieć ten sam SKU, ale inną historię.",
+          "situation": "Dwie podobne palety mają inne numery LPN.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Skanuj właściwy LPN i jego zawartość.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Skanuj właściwy LPN i jego zawartość.",
+          "explanation": "LPN identyfikuje nośnik, pudełko lub paletę; inna LPN może mieć ten sam SKU, ale inną historię.",
+          "feedback": [
+            "Tak. LPN identyfikuje nośnik, pudełko lub paletę; inna LPN może mieć ten sam SKU, ale inną historię.",
+            "Nie. LPN identyfikuje nośnik, pudełko lub paletę; inna LPN może mieć ten sam SKU, ale inną historię. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. LPN identyfikuje nośnik, pudełko lub paletę; inna LPN może mieć ten sam SKU, ale inną historię. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Skanuj właściwy LPN i jego zawartość."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwie podobne palety mają inne numery LPN. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 7,
+      "title_pl": "Inventory status i alokacja",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Inventory status i alokacja",
+          "Nie każdy fizyczny zapas jest dostępny; rezerwacje, kwarantanna i uszkodzenia mogą blokować pobranie. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Stan wynosi 84, dostępne jest 60. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Analizuj blokady i rezerwacje zamiast wydawać całość. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Nie każdy fizyczny zapas jest dostępny; rezerwacje, kwarantanna i uszkodzenia mogą blokować pobranie.",
+          "situation": "Stan wynosi 84, dostępne jest 60.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Analizuj blokady i rezerwacje zamiast wydawać całość.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Analizuj blokady i rezerwacje zamiast wydawać całość.",
+          "explanation": "Nie każdy fizyczny zapas jest dostępny; rezerwacje, kwarantanna i uszkodzenia mogą blokować pobranie.",
+          "feedback": [
+            "Tak. Nie każdy fizyczny zapas jest dostępny; rezerwacje, kwarantanna i uszkodzenia mogą blokować pobranie.",
+            "Nie. Nie każdy fizyczny zapas jest dostępny; rezerwacje, kwarantanna i uszkodzenia mogą blokować pobranie. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Nie każdy fizyczny zapas jest dostępny; rezerwacje, kwarantanna i uszkodzenia mogą blokować pobranie. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Analizuj blokady i rezerwacje zamiast wydawać całość."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Stan wynosi 84, dostępne jest 60. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 8,
+      "title_pl": "Receipts i putaway",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Receipts i putaway",
+          "Po przyjęciu WMS może wskazać zadania odkładania do miejsc docelowych; rampa nie oznacza docelowego składowania. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Paleta została odebrana na rampie i czeka bez zadania. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź poprawne zatwierdzenie przyjęcia i powstanie putaway. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Po przyjęciu WMS może wskazać zadania odkładania do miejsc docelowych; rampa nie oznacza docelowego składowania.",
+          "situation": "Paleta została odebrana na rampie i czeka bez zadania.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź poprawne zatwierdzenie przyjęcia i powstanie putaway.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź poprawne zatwierdzenie przyjęcia i powstanie putaway.",
+          "explanation": "Po przyjęciu WMS może wskazać zadania odkładania do miejsc docelowych; rampa nie oznacza docelowego składowania.",
+          "feedback": [
+            "Tak. Po przyjęciu WMS może wskazać zadania odkładania do miejsc docelowych; rampa nie oznacza docelowego składowania.",
+            "Nie. Po przyjęciu WMS może wskazać zadania odkładania do miejsc docelowych; rampa nie oznacza docelowego składowania. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Po przyjęciu WMS może wskazać zadania odkładania do miejsc docelowych; rampa nie oznacza docelowego składowania. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź poprawne zatwierdzenie przyjęcia i powstanie putaway."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Paleta została odebrana na rampie i czeka bez zadania. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 9,
+      "title_pl": "Pierwsza dostawa: kontrola ilości",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsza dostawa: kontrola ilości",
+          "Ćwiczenie łączy dokument przyjęcia, SKU, LPN, ilość i miejsce. Każda różnica wymaga śladu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W awizo widnieje 50 sztuk, fizycznie 48. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Rejestruj 48 i zgłoś brak dwóch. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Ćwiczenie łączy dokument przyjęcia, SKU, LPN, ilość i miejsce. Każda różnica wymaga śladu.",
+          "situation": "W awizo widnieje 50 sztuk, fizycznie 48.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Rejestruj 48 i zgłoś brak dwóch.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Rejestruj 48 i zgłoś brak dwóch.",
+          "explanation": "Ćwiczenie łączy dokument przyjęcia, SKU, LPN, ilość i miejsce. Każda różnica wymaga śladu.",
+          "feedback": [
+            "Tak. Ćwiczenie łączy dokument przyjęcia, SKU, LPN, ilość i miejsce. Każda różnica wymaga śladu.",
+            "Nie. Ćwiczenie łączy dokument przyjęcia, SKU, LPN, ilość i miejsce. Każda różnica wymaga śladu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Ćwiczenie łączy dokument przyjęcia, SKU, LPN, ilość i miejsce. Każda różnica wymaga śladu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Rejestruj 48 i zgłoś brak dwóch."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W awizo widnieje 50 sztuk, fizycznie 48. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 10,
+      "title_pl": "Mobile RF: skanowanie przyjęć",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Mobile RF: skanowanie przyjęć",
+          "RF prowadzi po zdarzeniach, ale operator odpowiada za skan rzeczywistych etykiet. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Skaner proponuje adres docelowy, którego kod jest uszkodzony. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Oznacz problem i pozyskaj właściwą etykietę zamiast zgadywać adres. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "RF prowadzi po zdarzeniach, ale operator odpowiada za skan rzeczywistych etykiet.",
+          "situation": "Skaner proponuje adres docelowy, którego kod jest uszkodzony.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Oznacz problem i pozyskaj właściwą etykietę zamiast zgadywać adres.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Oznacz problem i pozyskaj właściwą etykietę zamiast zgadywać adres.",
+          "explanation": "RF prowadzi po zdarzeniach, ale operator odpowiada za skan rzeczywistych etykiet.",
+          "feedback": [
+            "Tak. RF prowadzi po zdarzeniach, ale operator odpowiada za skan rzeczywistych etykiet.",
+            "Nie. RF prowadzi po zdarzeniach, ale operator odpowiada za skan rzeczywistych etykiet. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. RF prowadzi po zdarzeniach, ale operator odpowiada za skan rzeczywistych etykiet. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Oznacz problem i pozyskaj właściwą etykietę zamiast zgadywać adres."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Skaner proponuje adres docelowy, którego kod jest uszkodzony. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 11,
+      "title_pl": "Putaway i ruch między lokacjami",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Putaway i ruch między lokacjami",
+          "Przemieszczenie może być wewnętrzne i nie musi zmieniać całego stanu magazynowego. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Towar jest na A01, trzeba przesunąć do B02. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wykonaj ruch lokalizacji, skanując źródło i cel. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Przemieszczenie może być wewnętrzne i nie musi zmieniać całego stanu magazynowego.",
+          "situation": "Towar jest na A01, trzeba przesunąć do B02.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wykonaj ruch lokalizacji, skanując źródło i cel.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Wykonaj ruch lokalizacji, skanując źródło i cel.",
+          "explanation": "Przemieszczenie może być wewnętrzne i nie musi zmieniać całego stanu magazynowego.",
+          "feedback": [
+            "Tak. Przemieszczenie może być wewnętrzne i nie musi zmieniać całego stanu magazynowego.",
+            "Nie. Przemieszczenie może być wewnętrzne i nie musi zmieniać całego stanu magazynowego. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Przemieszczenie może być wewnętrzne i nie musi zmieniać całego stanu magazynowego. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wykonaj ruch lokalizacji, skanując źródło i cel."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Towar jest na A01, trzeba przesunąć do B02. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 12,
+      "title_pl": "Allocation — przypisanie zapasu",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Allocation — przypisanie zapasu",
+          "Alokacja wiąże zamówienie z konkretnym zapasem, z uwzględnieniem priorytetów i reguł. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwa zamówienia konkurują o ostatnie 10 sztuk. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź priorytet i zasady alokacji, nie potwierdzaj dwóch pełnych kompletacji. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Alokacja wiąże zamówienie z konkretnym zapasem, z uwzględnieniem priorytetów i reguł.",
+          "situation": "Dwa zamówienia konkurują o ostatnie 10 sztuk.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź priorytet i zasady alokacji, nie potwierdzaj dwóch pełnych kompletacji.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź priorytet i zasady alokacji, nie potwierdzaj dwóch pełnych kompletacji.",
+          "explanation": "Alokacja wiąże zamówienie z konkretnym zapasem, z uwzględnieniem priorytetów i reguł.",
+          "feedback": [
+            "Tak. Alokacja wiąże zamówienie z konkretnym zapasem, z uwzględnieniem priorytetów i reguł.",
+            "Nie. Alokacja wiąże zamówienie z konkretnym zapasem, z uwzględnieniem priorytetów i reguł. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Alokacja wiąże zamówienie z konkretnym zapasem, z uwzględnieniem priorytetów i reguł. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź priorytet i zasady alokacji, nie potwierdzaj dwóch pełnych kompletacji."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwa zamówienia konkurują o ostatnie 10 sztuk. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 13,
+      "title_pl": "Wave template — zlecenia falami",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Wave template — zlecenia falami",
+          "Wave uwzględnia zamówienia i reguły tworzenia pracy; błędna konfiguracja może blokować pilny termin. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pilne zlecenie nie weszło do fali. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zweryfikuj kryteria wave i status order. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Wave uwzględnia zamówienia i reguły tworzenia pracy; błędna konfiguracja może blokować pilny termin.",
+          "situation": "Pilne zlecenie nie weszło do fali.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zweryfikuj kryteria wave i status order.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj kryteria wave i status order.",
+          "explanation": "Wave uwzględnia zamówienia i reguły tworzenia pracy; błędna konfiguracja może blokować pilny termin.",
+          "feedback": [
+            "Tak. Wave uwzględnia zamówienia i reguły tworzenia pracy; błędna konfiguracja może blokować pilny termin.",
+            "Nie. Wave uwzględnia zamówienia i reguły tworzenia pracy; błędna konfiguracja może blokować pilny termin. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Wave uwzględnia zamówienia i reguły tworzenia pracy; błędna konfiguracja może blokować pilny termin. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zweryfikuj kryteria wave i status order."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pilne zlecenie nie weszło do fali. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 14,
+      "title_pl": "Picking: units i LPNs",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking: units i LPNs",
+          "Kompletacja może odbywać się w sztukach lub całych nośnikach; oba sposoby wymagają zgodności SKU i ilości. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na zadaniu jest 24 sztuki, w koszu 23. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zgłoś brak jednej sztuki zgodnie z procesem short pick. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Kompletacja może odbywać się w sztukach lub całych nośnikach; oba sposoby wymagają zgodności SKU i ilości.",
+          "situation": "Na zadaniu jest 24 sztuki, w koszu 23.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zgłoś brak jednej sztuki zgodnie z procesem short pick.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zgłoś brak jednej sztuki zgodnie z procesem short pick.",
+          "explanation": "Kompletacja może odbywać się w sztukach lub całych nośnikach; oba sposoby wymagają zgodności SKU i ilości.",
+          "feedback": [
+            "Tak. Kompletacja może odbywać się w sztukach lub całych nośnikach; oba sposoby wymagają zgodności SKU i ilości.",
+            "Nie. Kompletacja może odbywać się w sztukach lub całych nośnikach; oba sposoby wymagają zgodności SKU i ilości. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Kompletacja może odbywać się w sztukach lub całych nośnikach; oba sposoby wymagają zgodności SKU i ilości. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zgłoś brak jednej sztuki zgodnie z procesem short pick."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na zadaniu jest 24 sztuki, w koszu 23. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 15,
+      "title_pl": "Pack station i etykieta",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Pack station i etykieta",
+          "Pakowanie weryfikuje zawartość oraz właściwą etykietę paczki; pomyłka może zostać zauważona dopiero u klienta. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwie przesyłki mają podobne produkty, ale innych odbiorców. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Przypisz skanowane pozycje do właściwego shipment i etykiety. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Pakowanie weryfikuje zawartość oraz właściwą etykietę paczki; pomyłka może zostać zauważona dopiero u klienta.",
+          "situation": "Dwie przesyłki mają podobne produkty, ale innych odbiorców.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Przypisz skanowane pozycje do właściwego shipment i etykiety.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Przypisz skanowane pozycje do właściwego shipment i etykiety.",
+          "explanation": "Pakowanie weryfikuje zawartość oraz właściwą etykietę paczki; pomyłka może zostać zauważona dopiero u klienta.",
+          "feedback": [
+            "Tak. Pakowanie weryfikuje zawartość oraz właściwą etykietę paczki; pomyłka może zostać zauważona dopiero u klienta.",
+            "Nie. Pakowanie weryfikuje zawartość oraz właściwą etykietę paczki; pomyłka może zostać zauważona dopiero u klienta. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Pakowanie weryfikuje zawartość oraz właściwą etykietę paczki; pomyłka może zostać zauważona dopiero u klienta. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Przypisz skanowane pozycje do właściwego shipment i etykiety."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwie przesyłki mają podobne produkty, ale innych odbiorców. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 16,
+      "title_pl": "Shipping i manifest",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Shipping i manifest",
+          "Zamknięcie wysyłki wymaga zgodnego statusu pakowania i dokumentów transportowych. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Przewoźnik czeka, ale jedna paczka nie ma etykiety. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wstrzymaj finalne potwierdzenie, dopóki paczka nie zostanie poprawnie oznaczona. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Zamknięcie wysyłki wymaga zgodnego statusu pakowania i dokumentów transportowych.",
+          "situation": "Przewoźnik czeka, ale jedna paczka nie ma etykiety.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wstrzymaj finalne potwierdzenie, dopóki paczka nie zostanie poprawnie oznaczona.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj finalne potwierdzenie, dopóki paczka nie zostanie poprawnie oznaczona.",
+          "explanation": "Zamknięcie wysyłki wymaga zgodnego statusu pakowania i dokumentów transportowych.",
+          "feedback": [
+            "Tak. Zamknięcie wysyłki wymaga zgodnego statusu pakowania i dokumentów transportowych.",
+            "Nie. Zamknięcie wysyłki wymaga zgodnego statusu pakowania i dokumentów transportowych. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Zamknięcie wysyłki wymaga zgodnego statusu pakowania i dokumentów transportowych. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wstrzymaj finalne potwierdzenie, dopóki paczka nie zostanie poprawnie oznaczona."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Przewoźnik czeka, ale jedna paczka nie ma etykiety. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 17,
+      "title_pl": "Cycle count i physical inventory",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Cycle count i physical inventory",
+          "Licz fizyczną ilość w miejscu i rejestruj rozbieżności; wynik wymagający korekty może być zatwierdzany odrębnie. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W binie jest 9, a system pokazuje 12. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zapisz 9 i skieruj różnicę do przeglądu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Licz fizyczną ilość w miejscu i rejestruj rozbieżności; wynik wymagający korekty może być zatwierdzany odrębnie.",
+          "situation": "W binie jest 9, a system pokazuje 12.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zapisz 9 i skieruj różnicę do przeglądu.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zapisz 9 i skieruj różnicę do przeglądu.",
+          "explanation": "Licz fizyczną ilość w miejscu i rejestruj rozbieżności; wynik wymagający korekty może być zatwierdzany odrębnie.",
+          "feedback": [
+            "Tak. Licz fizyczną ilość w miejscu i rejestruj rozbieżności; wynik wymagający korekty może być zatwierdzany odrębnie.",
+            "Nie. Licz fizyczną ilość w miejscu i rejestruj rozbieżności; wynik wymagający korekty może być zatwierdzany odrębnie. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Licz fizyczną ilość w miejscu i rejestruj rozbieżności; wynik wymagający korekty może być zatwierdzany odrębnie. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zapisz 9 i skieruj różnicę do przeglądu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W binie jest 9, a system pokazuje 12. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 18,
+      "title_pl": "Returns i kontrola jakości",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Returns i kontrola jakości",
+          "Zwrot nie oznacza automatycznie towaru nadającego się do sprzedaży; wymaga oceny i statusu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Klient odsyła uszkodzony produkt. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zarejestruj zwrot i nadaj status blokujący ponowną sprzedaż przed oceną. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Zwrot nie oznacza automatycznie towaru nadającego się do sprzedaży; wymaga oceny i statusu.",
+          "situation": "Klient odsyła uszkodzony produkt.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zarejestruj zwrot i nadaj status blokujący ponowną sprzedaż przed oceną.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj zwrot i nadaj status blokujący ponowną sprzedaż przed oceną.",
+          "explanation": "Zwrot nie oznacza automatycznie towaru nadającego się do sprzedaży; wymaga oceny i statusu.",
+          "feedback": [
+            "Tak. Zwrot nie oznacza automatycznie towaru nadającego się do sprzedaży; wymaga oceny i statusu.",
+            "Nie. Zwrot nie oznacza automatycznie towaru nadającego się do sprzedaży; wymaga oceny i statusu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Zwrot nie oznacza automatycznie towaru nadającego się do sprzedaży; wymaga oceny i statusu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zarejestruj zwrot i nadaj status blokujący ponowną sprzedaż przed oceną."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Klient odsyła uszkodzony produkt. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: pełna realizacja zamówienia",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: pełna realizacja zamówienia",
+          "Wykonaj od ASN, LPN, putaway do allocation, wave, pick, pack i ship. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Ostatnia paczka nie jest gotowa przed cut-off kuriera. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zdiagnozuj brakujące zadanie i podejmij decyzję zgodną z realnym terminem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Wykonaj od ASN, LPN, putaway do allocation, wave, pick, pack i ship.",
+          "situation": "Ostatnia paczka nie jest gotowa przed cut-off kuriera.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zdiagnozuj brakujące zadanie i podejmij decyzję zgodną z realnym terminem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zdiagnozuj brakujące zadanie i podejmij decyzję zgodną z realnym terminem.",
+          "explanation": "Wykonaj od ASN, LPN, putaway do allocation, wave, pick, pack i ship.",
+          "feedback": [
+            "Tak. Wykonaj od ASN, LPN, putaway do allocation, wave, pick, pack i ship.",
+            "Nie. Wykonaj od ASN, LPN, putaway do allocation, wave, pick, pack i ship. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Wykonaj od ASN, LPN, putaway do allocation, wave, pick, pack i ship. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zdiagnozuj brakujące zadanie i podejmij decyzję zgodną z realnym terminem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Ostatnia paczka nie jest gotowa przed cut-off kuriera. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 20,
+      "title_pl": "Expert: analiza ryzyka zamówień",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: analiza ryzyka zamówień",
+          "Order Analysis pozwala analizować at-risk orders, allocation percentage i termin wysyłki; ocena jest prognozą, nie pewnym wynikiem. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwa typy zamówień są zagrożone terminem. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zidentyfikuj krytyczne alokacje i priorytetowe działania przed uruchomieniem wave. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Order Analysis pozwala analizować at-risk orders, allocation percentage i termin wysyłki; ocena jest prognozą, nie pewnym wynikiem.",
+          "situation": "Dwa typy zamówień są zagrożone terminem.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zidentyfikuj krytyczne alokacje i priorytetowe działania przed uruchomieniem wave.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj krytyczne alokacje i priorytetowe działania przed uruchomieniem wave.",
+          "explanation": "Order Analysis pozwala analizować at-risk orders, allocation percentage i termin wysyłki; ocena jest prognozą, nie pewnym wynikiem.",
+          "feedback": [
+            "Tak. Order Analysis pozwala analizować at-risk orders, allocation percentage i termin wysyłki; ocena jest prognozą, nie pewnym wynikiem.",
+            "Nie. Order Analysis pozwala analizować at-risk orders, allocation percentage i termin wysyłki; ocena jest prognozą, nie pewnym wynikiem. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Order Analysis pozwala analizować at-risk orders, allocation percentage i termin wysyłki; ocena jest prognozą, nie pewnym wynikiem. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zidentyfikuj krytyczne alokacje i priorytetowe działania przed uruchomieniem wave."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwa typy zamówień są zagrożone terminem. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 21,
+      "title_pl": "Expert: short pick i wyjątki",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: short pick i wyjątki",
+          "Short pick musi być rozliczony w zamówieniu; ponowna fala nie naprawia automatycznie brakujących pozycji. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Picker zgłasza brak 3 z 20 sztuk. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź źródło braków i status alokacji, a następnie rozwiąż wyjątek. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Short pick musi być rozliczony w zamówieniu; ponowna fala nie naprawia automatycznie brakujących pozycji.",
+          "situation": "Picker zgłasza brak 3 z 20 sztuk.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź źródło braków i status alokacji, a następnie rozwiąż wyjątek.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź źródło braków i status alokacji, a następnie rozwiąż wyjątek.",
+          "explanation": "Short pick musi być rozliczony w zamówieniu; ponowna fala nie naprawia automatycznie brakujących pozycji.",
+          "feedback": [
+            "Tak. Short pick musi być rozliczony w zamówieniu; ponowna fala nie naprawia automatycznie brakujących pozycji.",
+            "Nie. Short pick musi być rozliczony w zamówieniu; ponowna fala nie naprawia automatycznie brakujących pozycji. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Short pick musi być rozliczony w zamówieniu; ponowna fala nie naprawia automatycznie brakujących pozycji. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź źródło braków i status alokacji, a następnie rozwiąż wyjątek."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Picker zgłasza brak 3 z 20 sztuk. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 22,
+      "title_pl": "Expert: wydajność obszarów",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: wydajność obszarów",
+          "Tempo kompletacji w strefie zależy od rzeczywistej liczby sztuk, LPN i czasu do cut-off. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Strefa A ma dużo zleceń przy zerowej wydajności w ostatniej godzinie. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Oznacz wysokie ryzyko i sprawdź operacyjne wąskie gardło. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Tempo kompletacji w strefie zależy od rzeczywistej liczby sztuk, LPN i czasu do cut-off.",
+          "situation": "Strefa A ma dużo zleceń przy zerowej wydajności w ostatniej godzinie.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Oznacz wysokie ryzyko i sprawdź operacyjne wąskie gardło.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Oznacz wysokie ryzyko i sprawdź operacyjne wąskie gardło.",
+          "explanation": "Tempo kompletacji w strefie zależy od rzeczywistej liczby sztuk, LPN i czasu do cut-off.",
+          "feedback": [
+            "Tak. Tempo kompletacji w strefie zależy od rzeczywistej liczby sztuk, LPN i czasu do cut-off.",
+            "Nie. Tempo kompletacji w strefie zależy od rzeczywistej liczby sztuk, LPN i czasu do cut-off. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Tempo kompletacji w strefie zależy od rzeczywistej liczby sztuk, LPN i czasu do cut-off. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Oznacz wysokie ryzyko i sprawdź operacyjne wąskie gardło."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Strefa A ma dużo zleceń przy zerowej wydajności w ostatniej godzinie. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 23,
+      "title_pl": "Expert: zone picking i batch picking",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: zone picking i batch picking",
+          "Różne strategie kompletacji mogą redukować przejścia, ale wymagają poprawnego przypisania zadań. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Jedna osoba zbiera kilka zamówień w strefie, a etykiety są podobne. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Stosuj identyfikację każdej jednostki i konsolidację zgodnie z procesem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Różne strategie kompletacji mogą redukować przejścia, ale wymagają poprawnego przypisania zadań.",
+          "situation": "Jedna osoba zbiera kilka zamówień w strefie, a etykiety są podobne.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Stosuj identyfikację każdej jednostki i konsolidację zgodnie z procesem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Stosuj identyfikację każdej jednostki i konsolidację zgodnie z procesem.",
+          "explanation": "Różne strategie kompletacji mogą redukować przejścia, ale wymagają poprawnego przypisania zadań.",
+          "feedback": [
+            "Tak. Różne strategie kompletacji mogą redukować przejścia, ale wymagają poprawnego przypisania zadań.",
+            "Nie. Różne strategie kompletacji mogą redukować przejścia, ale wymagają poprawnego przypisania zadań. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Różne strategie kompletacji mogą redukować przejścia, ale wymagają poprawnego przypisania zadań. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Stosuj identyfikację każdej jednostki i konsolidację zgodnie z procesem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Jedna osoba zbiera kilka zamówień w strefie, a etykiety są podobne. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 24,
+      "title_pl": "Expert: FEFO i kontrola batch",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: FEFO i kontrola batch",
+          "Partie z datą ważności wymagają decyzji o kolejności pobrań i statusie jakości. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Towar z krótszym terminem jest zablokowany. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Nie omijaj blokady wyłącznie dla uzyskania FEFO; najpierw rozwiąż kwestię jakości. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Partie z datą ważności wymagają decyzji o kolejności pobrań i statusie jakości.",
+          "situation": "Towar z krótszym terminem jest zablokowany.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Nie omijaj blokady wyłącznie dla uzyskania FEFO; najpierw rozwiąż kwestię jakości.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Nie omijaj blokady wyłącznie dla uzyskania FEFO; najpierw rozwiąż kwestię jakości.",
+          "explanation": "Partie z datą ważności wymagają decyzji o kolejności pobrań i statusie jakości.",
+          "feedback": [
+            "Tak. Partie z datą ważności wymagają decyzji o kolejności pobrań i statusie jakości.",
+            "Nie. Partie z datą ważności wymagają decyzji o kolejności pobrań i statusie jakości. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Partie z datą ważności wymagają decyzji o kolejności pobrań i statusie jakości. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Nie omijaj blokady wyłącznie dla uzyskania FEFO; najpierw rozwiąż kwestię jakości."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Towar z krótszym terminem jest zablokowany. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 25,
+      "title_pl": "Expert: serial tracking",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: serial tracking",
+          "Serial number pozwala śledzić indywidualną jednostkę, co jest istotne przy zwrotach i reklamacjach. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Klient zgłasza problem z jednym konkretnym urządzeniem. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Ustal serial i jego historię wydania oraz zwrotu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Serial number pozwala śledzić indywidualną jednostkę, co jest istotne przy zwrotach i reklamacjach.",
+          "situation": "Klient zgłasza problem z jednym konkretnym urządzeniem.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Ustal serial i jego historię wydania oraz zwrotu.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Ustal serial i jego historię wydania oraz zwrotu.",
+          "explanation": "Serial number pozwala śledzić indywidualną jednostkę, co jest istotne przy zwrotach i reklamacjach.",
+          "feedback": [
+            "Tak. Serial number pozwala śledzić indywidualną jednostkę, co jest istotne przy zwrotach i reklamacjach.",
+            "Nie. Serial number pozwala śledzić indywidualną jednostkę, co jest istotne przy zwrotach i reklamacjach. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Serial number pozwala śledzić indywidualną jednostkę, co jest istotne przy zwrotach i reklamacjach. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Ustal serial i jego historię wydania oraz zwrotu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Klient zgłasza problem z jednym konkretnym urządzeniem. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 26,
+      "title_pl": "Expert: interfejs WMS ↔ ERP",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: interfejs WMS ↔ ERP",
+          "Integracja asynchroniczna może powodować chwilowe rozbieżności; duplikat komunikatu zmieni stan. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: WMS potwierdził przesyłkę, ERP jeszcze nie. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź integrację i status dokumentu, zanim wyślesz transakcję ponownie. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Integracja asynchroniczna może powodować chwilowe rozbieżności; duplikat komunikatu zmieni stan.",
+          "situation": "WMS potwierdził przesyłkę, ERP jeszcze nie.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź integrację i status dokumentu, zanim wyślesz transakcję ponownie.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź integrację i status dokumentu, zanim wyślesz transakcję ponownie.",
+          "explanation": "Integracja asynchroniczna może powodować chwilowe rozbieżności; duplikat komunikatu zmieni stan.",
+          "feedback": [
+            "Tak. Integracja asynchroniczna może powodować chwilowe rozbieżności; duplikat komunikatu zmieni stan.",
+            "Nie. Integracja asynchroniczna może powodować chwilowe rozbieżności; duplikat komunikatu zmieni stan. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Integracja asynchroniczna może powodować chwilowe rozbieżności; duplikat komunikatu zmieni stan. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź integrację i status dokumentu, zanim wyślesz transakcję ponownie."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: WMS potwierdził przesyłkę, ERP jeszcze nie. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 27,
+      "title_pl": "Expert: audyt korekt zapasu",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: audyt korekt zapasu",
+          "Korekta stanu musi mieć przyczynę, uprawnienie, datę i punkt odniesienia. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pracownik proponuje ręcznie dopisać 100 sztuk, żeby raport się zgadzał. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Przeprowadź fizyczne liczenie i zatwierdzoną korektę z dowodami. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Korekta stanu musi mieć przyczynę, uprawnienie, datę i punkt odniesienia.",
+          "situation": "Pracownik proponuje ręcznie dopisać 100 sztuk, żeby raport się zgadzał.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Przeprowadź fizyczne liczenie i zatwierdzoną korektę z dowodami.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Przeprowadź fizyczne liczenie i zatwierdzoną korektę z dowodami.",
+          "explanation": "Korekta stanu musi mieć przyczynę, uprawnienie, datę i punkt odniesienia.",
+          "feedback": [
+            "Tak. Korekta stanu musi mieć przyczynę, uprawnienie, datę i punkt odniesienia.",
+            "Nie. Korekta stanu musi mieć przyczynę, uprawnienie, datę i punkt odniesienia. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Korekta stanu musi mieć przyczynę, uprawnienie, datę i punkt odniesienia. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Przeprowadź fizyczne liczenie i zatwierdzoną korektę z dowodami."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pracownik proponuje ręcznie dopisać 100 sztuk, żeby raport się zgadzał. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 28,
+      "title_pl": "Expert: awaria terminala podczas pack",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: awaria terminala podczas pack",
+          "W razie utraty połączenia trzeba ustalić, czy ostatni skan dotarł do serwera. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Terminal zgasł zaraz po skanie ostatniej pozycji. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zweryfikuj status pakowania przed ponownym skanem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "W razie utraty połączenia trzeba ustalić, czy ostatni skan dotarł do serwera.",
+          "situation": "Terminal zgasł zaraz po skanie ostatniej pozycji.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zweryfikuj status pakowania przed ponownym skanem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj status pakowania przed ponownym skanem.",
+          "explanation": "W razie utraty połączenia trzeba ustalić, czy ostatni skan dotarł do serwera.",
+          "feedback": [
+            "Tak. W razie utraty połączenia trzeba ustalić, czy ostatni skan dotarł do serwera.",
+            "Nie. W razie utraty połączenia trzeba ustalić, czy ostatni skan dotarł do serwera. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. W razie utraty połączenia trzeba ustalić, czy ostatni skan dotarł do serwera. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zweryfikuj status pakowania przed ponownym skanem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Terminal zgasł zaraz po skanie ostatniej pozycji. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Oracle WMS Cloud",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Oracle WMS Cloud",
+          "Połącz przyjęcie, LPN, alokację, wave, pakowanie, wysyłkę i kontrolę wyjątków. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: System informuje o za małej dostępności, choć hala ma wiele zapasu. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź status zapasu, rezerwacje, lokalizacje i reguły alokacji zamiast fałszować stan. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Połącz przyjęcie, LPN, alokację, wave, pakowanie, wysyłkę i kontrolę wyjątków.",
+          "situation": "System informuje o za małej dostępności, choć hala ma wiele zapasu.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź status zapasu, rezerwacje, lokalizacje i reguły alokacji zamiast fałszować stan.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź status zapasu, rezerwacje, lokalizacje i reguły alokacji zamiast fałszować stan.",
+          "explanation": "Połącz przyjęcie, LPN, alokację, wave, pakowanie, wysyłkę i kontrolę wyjątków.",
+          "feedback": [
+            "Tak. Połącz przyjęcie, LPN, alokację, wave, pakowanie, wysyłkę i kontrolę wyjątków.",
+            "Nie. Połącz przyjęcie, LPN, alokację, wave, pakowanie, wysyłkę i kontrolę wyjątków. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Połącz przyjęcie, LPN, alokację, wave, pakowanie, wysyłkę i kontrolę wyjątków. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź status zapasu, rezerwacje, lokalizacje i reguły alokacji zamiast fałszować stan."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: System informuje o za małej dostępności, choć hala ma wiele zapasu. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    }
+  ]
+}
