@@ -1,0 +1,44 @@
+[
+  {
+    "slug": "manhattan-active-wms",
+    "title": "Manhattan ActiveWarehouse — obsługa magazynu WMS",
+    "desc": "Manhattan Active Warehouse Management: stany, receiving, wave, picking, slotting, labor, yard, robotyka i wysyłki.",
+    "source": "https://www.manh.com/solutions/supply-chain-management-software/warehouse-management",
+    "price": 179
+  },
+  {
+    "slug": "blue-yonder-wms",
+    "title": "Blue Yonder WMS — magazyn, ludzie i automatyzacja",
+    "desc": "Blue Yonder: przyjęcia, strefy, kompletacja, WES, slotting, labor i orkiestracja automatyki.",
+    "source": "https://blueyonder.com/solutions/warehouse-management",
+    "price": 179
+  },
+  {
+    "slug": "infor-wms",
+    "title": "Infor CloudSuite WMS — profesjonalna gospodarka magazynowa",
+    "desc": "Infor: RF, zapasy, 3PL, flow-through, cross-dock, kitting, labor management i analiza 3D.",
+    "source": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system",
+    "price": 179
+  },
+  {
+    "slug": "ongoing-wms",
+    "title": "Ongoing WMS — magazyn, e-commerce i 3PL w Skandynawii",
+    "desc": "Ongoing WMS: przyjęcia, właściciele towarów, skanowanie, integracje z ERP/sklepami i przesyłki.",
+    "source": "https://docs.ongoingwarehouse.com/",
+    "price": 179
+  },
+  {
+    "slug": "astro-consafe-wms",
+    "title": "Consafe Astro WMS — magazyn i automatyka",
+    "desc": "Astro WMS: przyjęcia, stany, picking, kontrola przepływu, slotting, voice, automatyka i traceability.",
+    "source": "https://www.consafelogistics.com/solutions/astro-wms",
+    "price": 179
+  },
+  {
+    "slug": "sap-tm-transport",
+    "title": "SAP Transportation Management — planowanie transportu TMS",
+    "desc": "SAP TM: freight unit, planowanie tras, przewoźnicy, tendering, przewozy, statusy, koszty i dokumenty.",
+    "source": "https://help.sap.com/docs/SAP_S4HANA_ON-PREMISE/e3dc5400c1cc41d1bc0ae0e7fd9aa5a2/9c27c9535f267414e10000000a174cb4.html",
+    "price": 179
+  }
+]
