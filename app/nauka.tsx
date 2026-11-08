@@ -2,7 +2,8 @@ import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
-type Lesson={lesson_no:number,title_pl:string,material:{raw?:string[]}};
+import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
+type Lesson={lesson_no:number,title_pl:string,material:{raw?:string[],shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}};
 export default function Learning(){
  const {course}=useLocalSearchParams<{course:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),[notes,setNotes]=useState(''),[module,setModule]=useState(0),[user,setUser]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),[courseNote,setCourseNote]=useState(''),[reviewStatus,setReviewStatus]=useState(''),[busy,setBusy]=useState(true);
@@ -53,7 +54,10 @@ export default function Learning(){
     <Text style={{color:'#53765b'}}>Lekcja {module+1} z {items.length} · Ukończono {done.length}/{items.length} ({progress}%)</Text>
     <View style={{height:8,backgroundColor:'#e1e9dc',borderRadius:10,overflow:'hidden',marginTop:12}}><View style={{height:8,width:progress+'%',backgroundColor:'#83b978'}}/></View>
     <Text style={{color:'#173d30',fontSize:26,fontWeight:'800',marginVertical:25}}>{lesson.title_pl}</Text>
-    <View style={{backgroundColor:'white',borderRadius:18,padding:23,borderWidth:1,borderColor:'#dde9d7'}}>{(lesson.material?.raw||[]).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26,marginBottom:15}}>{line}</Text>)}</View>
+    <View style={{backgroundColor:'white',borderRadius:18,padding:23,borderWidth:1,borderColor:'#dde9d7'}}>
+     {(lesson.material?.raw||[]).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26,marginBottom:15}}>{line}</Text>)}
+    </View>
+    <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references}/>
     <Text style={{marginTop:25,fontWeight:'800',color:'#173d30'}}>Twoje notatki</Text>
     <TextInput multiline placeholder="Zapisz swoje przemyślenia…" value={notes} onChangeText={setNotes} style={{backgroundColor:'white',borderColor:'#dde9d7',borderWidth:1,borderRadius:12,padding:15,minHeight:120,marginTop:8,textAlignVertical:'top'}}/>
     <View style={{flexDirection:'row',gap:10,flexWrap:'wrap',marginTop:15}}>
