@@ -120,6 +120,8 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
    <Text style={{color:secondary,fontSize:12,marginTop:6}}>Działa w przeglądarce, jeśli system lub przeglądarka nie przechwyci kombinacji. Przycisk „Wykonaj” działa niezależnie.</Text>
   </Pressable>
   {!!feedback&&<Text style={{backgroundColor:'#eaf5e2',padding:11,borderRadius:9,color:ink}}>{feedback}</Text>}
+  {active&&<Text style={{color:secondary,fontSize:13,lineHeight:21}}>Po wykonaniu polecenia sprawdź jego efekt w warsztacie powyżej. Krótki sprawdzian znajduje się pod listą poleceń.</Text>}
+  {valid.map((item,i)=><ShortcutCard key={item.combo+'-'+i} item={item} index={i} onRun={run} active={active===item}/>)}
   {active&&answerOptions.length>=3&&<View style={{backgroundColor:'#193b2d',padding:19,borderRadius:15,gap:11}}>
     <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ, CZY ROZUMIESZ</Text>
     <Text style={{fontWeight:'900',color:'white',fontSize:18,lineHeight:26}}>Które polecenie daje taki efekt: {active.after}?</Text>
@@ -128,7 +130,6 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
     </Pressable>)}
     {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{answerOptions[quizAnswer]?.combo===active.combo?'Dobrze. Możesz zaliczyć tę lekcję.':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
   </View>}
-  {valid.map((item,i)=><ShortcutCard key={item.combo+'-'+i} item={item} index={i} onRun={run} active={active===item}/>)}
   {!!tips?.length&&<View style={{backgroundColor:'#edf5e9',borderRadius:15,padding:18,gap:8}}>
    <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>Małe triki</Text>
    {tips.map((t,i)=><Text key={i} style={{color:secondary,lineHeight:22}}>• {t}</Text>)}
