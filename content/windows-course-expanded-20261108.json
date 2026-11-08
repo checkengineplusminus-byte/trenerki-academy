@@ -1,0 +1,2417 @@
+{
+  "schema_version": 2,
+  "course_slug": "windows-skroty",
+  "sections": [
+    "PODSTAWY — od zera",
+    "PRAKTYKA — świadoma praca",
+    "EXPERT — samodzielne decyzje"
+  ],
+  "lessons": [
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 0,
+      "title_pl": "Windows: skąd się wziął i po co powstał?",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Windows: skąd się wziął i po co powstał?",
+          "System operacyjny jest pośrednikiem między sprzętem, aplikacjami i użytkownikiem. Sam system nie jest programem do pisania czy przeglądarką; umożliwia ich uruchomienie, obsługuje pamięć, dyski i konta.",
+          "Sytuacja z pracy lub domu: Nowy komputer się uruchamia; widzisz pulpit, ale nie wiesz, gdzie pisać dokument.",
+          "Dobra praktyka: Uruchamiam edytor tekstu z menu Start, bo pulpit nie jest dokumentem.",
+          "Typowy błąd, którego unikamy: Piszę tekst bezpośrednio na tapecie pulpitu."
+        ],
+        "learning": {
+          "intro": "Przed graficznym interfejsem wiele komputerów osobistych obsługiwano komendami wpisywanymi w MS-DOS. Microsoft pokazał pierwsze Windows w 1983 r., a Windows 1.0 trafił do użytkowników 20 listopada 1985 r. Pozwalał posługiwać się myszą, oknami i prostymi aplikacjami. Później pojawiły się Windows 3.x, Windows 95 z menu Start, Windows XP, 7, 10 i 11. Ważne: wcześniejsze Windows działały jako środowisko graficzne nad DOS-em; sposób budowania systemu zmieniał się w kolejnych generacjach.",
+          "situation": "Nowy komputer się uruchamia; widzisz pulpit, ale nie wiesz, gdzie pisać dokument.",
+          "example": "Uruchamiam edytor tekstu z menu Start, bo pulpit nie jest dokumentem.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Uruchamiam edytor tekstu z menu Start, bo pulpit nie jest dokumentem.",
+            "Piszę tekst bezpośrednio na tapecie pulpitu.",
+            "Szukam dokumentu wyłącznie w ustawieniach BIOS-u."
+          ],
+          "correct": 0,
+          "explanation": "Przed graficznym interfejsem wiele komputerów osobistych obsługiwano komendami wpisywanymi w MS-DOS. Microsoft pokazał pierwsze Windows w 1983 r., a Windows 1.0 trafił do użytkowników 20 listopada 1985 r. Pozwalał posługiwać się myszą, oknami i prostymi aplikacjami. Później pojawiły się Windows 3.x, Windows 95 z menu Start, Windows XP, 7, 10 i 11. Ważne: wcześniejsze Windows działały jako środowisko graficzne nad DOS-em; sposób budowania systemu zmieniał się w kolejnych generacjach.",
+          "feedback": [
+            "Dobrze. System operacyjny jest pośrednikiem między sprzętem, aplikacjami i użytkownikiem. Sam system nie jest programem do pisania czy przeglądarką; umożliwia ich uruchomienie, obsługuje pamięć, dyski i konta.",
+            "Nie. System operacyjny jest pośrednikiem między sprzętem, aplikacjami i użytkownikiem. Sam system nie jest programem do pisania czy przeglądarką; umożliwia ich uruchomienie, obsługuje pamięć, dyski i konta.",
+            "Nie. System operacyjny jest pośrednikiem między sprzętem, aplikacjami i użytkownikiem. Sam system nie jest programem do pisania czy przeglądarką; umożliwia ich uruchomienie, obsługuje pamięć, dyski i konta."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Uruchamiam edytor tekstu z menu Start, bo pulpit nie jest dokumentem."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Skąd wziął się Windows?",
+            "text": "Przed graficznym interfejsem wiele komputerów osobistych obsługiwano komendami wpisywanymi w MS-DOS. Microsoft pokazał pierwsze Windows w 1983 r., a Windows 1.0 trafił do użytkowników 20 listopada 1985 r. Pozwalał posługiwać się myszą, oknami i prostymi aplikacjami. Później pojawiły się Windows 3.x, Windows 95 z menu Start, Windows XP, 7, 10 i 11. Ważne: wcześniejsze Windows działały jako środowisko graficzne nad DOS-em; sposób budowania systemu zmieniał się w kolejnych generacjach."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "System operacyjny jest warstwą między sprzętem a programami. Windows obsługuje pamięć, urządzenia, pliki, konta użytkowników i uruchamianie aplikacji. Bez tego nie otworzysz zwykłego dokumentu tylko dlatego, że masz ekran i klawiaturę. Pulpit nie jest kartką do pisania — jest miejscem, z którego otwierasz odpowiednie programy."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Zobacz oś czasu. Odpowiedz: co wniósł Windows 1.0, a co Windows 95? Następnie otwórz menu Start, znajdź Notatnik, wpisz jedno zdanie i zapisz je jako pierwszy plik .txt."
+          }
+        ],
+        "illustration": "windows-history",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 1,
+      "title_pl": "Z czego składa się pulpit?",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Z czego składa się pulpit?",
+          "Pulpit to obszar roboczy. Ikony mogą być skrótami do aplikacji lub plikami; pasek zadań pokazuje uruchomione programy. Nie każde okno na pulpicie oznacza, że plik jest zapisany.",
+          "Sytuacja z pracy lub domu: Masz otwartą przeglądarkę i dokument, a okno dokumentu zniknęło za przeglądarką.",
+          "Dobra praktyka: Szukam jego ikony na pasku zadań i wybieram okno.",
+          "Typowy błąd, którego unikamy: Zamykam system, zakładając że dokument zniknął."
+        ],
+        "learning": {
+          "intro": "Pulpit to obszar roboczy. Ikony mogą być skrótami do aplikacji lub plikami; pasek zadań pokazuje uruchomione programy. Nie każde okno na pulpicie oznacza, że plik jest zapisany.",
+          "situation": "Masz otwartą przeglądarkę i dokument, a okno dokumentu zniknęło za przeglądarką.",
+          "example": "Szukam jego ikony na pasku zadań i wybieram okno.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Szukam jego ikony na pasku zadań i wybieram okno.",
+            "Zamykam system, zakładając że dokument zniknął.",
+            "Usuwam skrót z pulpitu, by przywrócić okno."
+          ],
+          "correct": 0,
+          "explanation": "Pulpit to obszar roboczy. Ikony mogą być skrótami do aplikacji lub plikami; pasek zadań pokazuje uruchomione programy. Nie każde okno na pulpicie oznacza, że plik jest zapisany.",
+          "feedback": [
+            "Dobrze. Pulpit to obszar roboczy. Ikony mogą być skrótami do aplikacji lub plikami; pasek zadań pokazuje uruchomione programy. Nie każde okno na pulpicie oznacza, że plik jest zapisany.",
+            "Nie. Pulpit to obszar roboczy. Ikony mogą być skrótami do aplikacji lub plikami; pasek zadań pokazuje uruchomione programy. Nie każde okno na pulpicie oznacza, że plik jest zapisany.",
+            "Nie. Pulpit to obszar roboczy. Ikony mogą być skrótami do aplikacji lub plikami; pasek zadań pokazuje uruchomione programy. Nie każde okno na pulpicie oznacza, że plik jest zapisany."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Szukam jego ikony na pasku zadań i wybieram okno."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Z czego składa się pulpit?",
+            "text": "Pulpit to ekran pracy po zalogowaniu. Tapeta to obraz tła; ikony mogą prowadzić do aplikacji, folderów, dokumentów lub Kosza. Pasek zadań pozwala przełączać otwarte programy. Okno ma tytuł, obszar treści oraz zwykle przyciski minimalizacji, powiększenia i zamknięcia."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Otwórz jednocześnie Notatnik i Eksplorator. Kliknij przycisk minimalizacji Notatnika: aplikacja nie jest zamknięta, tylko jej okno schowano. Kliknij ikonę programu na pasku zadań, by wrócić do dokumentu. Zwróć uwagę na różnicę między zamknięciem, wylogowaniem i uśpieniem."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Narysuj własną mapę pulpitu z pięcioma etykietami: Start, pasek zadań, ikona, aktywne okno, obszar powiadomień. Pokaż w praktyce, gdzie znajdziesz dokument po minimalizacji."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 2,
+      "title_pl": "Menu Start — pierwsze kroki",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Menu Start — pierwsze kroki",
+          "Menu Start służy do znajdowania aplikacji, wyszukiwania ustawień i bezpiecznego zamykania komputera. Wpisanie nazwy programu w wyszukiwarce Start nie oznacza pobrania go z internetu.",
+          "Sytuacja z pracy lub domu: Chcesz otworzyć Kalkulator, ale nie widzisz jego ikony na pulpicie.",
+          "Dobra praktyka: Otwieram Start i wpisuję Kalkulator, a następnie wybieram aplikację.",
+          "Typowy błąd, którego unikamy: Pobieram pierwszy plik EXE z przypadkowej reklamy."
+        ],
+        "learning": {
+          "intro": "Menu Start służy do znajdowania aplikacji, wyszukiwania ustawień i bezpiecznego zamykania komputera. Wpisanie nazwy programu w wyszukiwarce Start nie oznacza pobrania go z internetu.",
+          "situation": "Chcesz otworzyć Kalkulator, ale nie widzisz jego ikony na pulpicie.",
+          "example": "Otwieram Start i wpisuję Kalkulator, a następnie wybieram aplikację.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Otwieram Start i wpisuję Kalkulator, a następnie wybieram aplikację.",
+            "Pobieram pierwszy plik EXE z przypadkowej reklamy.",
+            "Zmieniam rozszerzenie innego pliku na .exe."
+          ],
+          "correct": 0,
+          "explanation": "Menu Start służy do znajdowania aplikacji, wyszukiwania ustawień i bezpiecznego zamykania komputera. Wpisanie nazwy programu w wyszukiwarce Start nie oznacza pobrania go z internetu.",
+          "feedback": [
+            "Dobrze. Menu Start służy do znajdowania aplikacji, wyszukiwania ustawień i bezpiecznego zamykania komputera. Wpisanie nazwy programu w wyszukiwarce Start nie oznacza pobrania go z internetu.",
+            "Nie. Menu Start służy do znajdowania aplikacji, wyszukiwania ustawień i bezpiecznego zamykania komputera. Wpisanie nazwy programu w wyszukiwarce Start nie oznacza pobrania go z internetu.",
+            "Nie. Menu Start służy do znajdowania aplikacji, wyszukiwania ustawień i bezpiecznego zamykania komputera. Wpisanie nazwy programu w wyszukiwarce Start nie oznacza pobrania go z internetu."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Otwieram Start i wpisuję Kalkulator, a następnie wybieram aplikację."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Menu Start — pierwsze kroki",
+            "text": "Od Windows 95 menu Start stało się jednym z najbardziej charakterystycznych sposobów odnajdywania aplikacji. Dziś funkcje zmieniają rozmieszczenie między wersjami, ale zasada jest podobna: Start pomaga wyszukiwać, uruchamiać i zarządzać programami oraz zasilaniem. Wynik wyszukania nie oznacza, że aplikacja na pewno jest zainstalowana."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Naciśnij klawisz Windows lub kliknij Start, wpisz „Kalkulator” i uruchom wynik oznaczony jako aplikacja. Następnie zamknij okno kalkulatora. Porównaj to z wyszukiwaniem strony w przeglądarce internetowej — oba pola mają inne cele i uprawnienia."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Otwórz Ustawienia bez szukania ikony na pulpicie. Wyjaśnij, dlaczego przypadkowy program pobrany z reklamy nie jest bezpiecznym zamiennikiem instalowanej aplikacji."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 3,
+      "title_pl": "Eksplorator plików od zera",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Eksplorator plików od zera",
+          "Eksplorator plików pokazuje foldery, dyski i ich zawartość. Lewa kolumna pomaga nawigować; górny pasek adresu opisuje aktualny folder. To nie przeglądarka internetowa.",
+          "Sytuacja z pracy lub domu: Ktoś mówi: plik jest w Pobranych. Musisz go odnaleźć.",
+          "Dobra praktyka: Otwieram Eksplorator (np. Win+E) i wybieram folder Pobrane.",
+          "Typowy błąd, którego unikamy: Wpisuję Pobrane wyłącznie jako adres strony WWW."
+        ],
+        "learning": {
+          "intro": "Eksplorator plików pokazuje foldery, dyski i ich zawartość. Lewa kolumna pomaga nawigować; górny pasek adresu opisuje aktualny folder. To nie przeglądarka internetowa.",
+          "situation": "Ktoś mówi: plik jest w Pobranych. Musisz go odnaleźć.",
+          "example": "Otwieram Eksplorator (np. Win+E) i wybieram folder Pobrane.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Otwieram Eksplorator (np. Win+E) i wybieram folder Pobrane.",
+            "Wpisuję Pobrane wyłącznie jako adres strony WWW.",
+            "Szukam pliku tylko w koszu, choć go nie usunięto."
+          ],
+          "correct": 0,
+          "explanation": "Eksplorator plików pokazuje foldery, dyski i ich zawartość. Lewa kolumna pomaga nawigować; górny pasek adresu opisuje aktualny folder. To nie przeglądarka internetowa.",
+          "feedback": [
+            "Dobrze. Eksplorator plików pokazuje foldery, dyski i ich zawartość. Lewa kolumna pomaga nawigować; górny pasek adresu opisuje aktualny folder. To nie przeglądarka internetowa.",
+            "Nie. Eksplorator plików pokazuje foldery, dyski i ich zawartość. Lewa kolumna pomaga nawigować; górny pasek adresu opisuje aktualny folder. To nie przeglądarka internetowa.",
+            "Nie. Eksplorator plików pokazuje foldery, dyski i ich zawartość. Lewa kolumna pomaga nawigować; górny pasek adresu opisuje aktualny folder. To nie przeglądarka internetowa."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Otwieram Eksplorator (np. Win+E) i wybieram folder Pobrane."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Eksplorator plików od zera",
+            "text": "Eksplorator plików to program do oglądania i organizowania danych zapisanych na dyskach oraz podłączonych lokalizacjach. Lewy panel pomaga znaleźć Dokumenty i Pobrane, pasek adresu pokazuje ścieżkę, a główna lista pokazuje foldery i pliki. Eksplorator nie jest tym samym co Edge czy Chrome — przeglądarka WWW otwiera strony internetowe."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Naciśnij Win+E, aby otworzyć Eksplorator. Wybierz Pobrane, odczytaj pasek adresu i wróć do Dokumentów. Utwórz bezpieczny folder ćwiczebny i zobacz, jak zmienia się ścieżka. Jeśli na ekranie zobaczysz „Ten komputer”, to nie jest internet, lecz skrót do miejsc i urządzeń."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Znajdź folder Dokumenty, sprawdź jego adres i wyjaśnij, co oznacza folder nadrzędny. Nie przenoś plików systemowych ani cudzych dokumentów w trakcie ćwiczenia."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 4,
+      "title_pl": "Plik, folder i ścieżka",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Plik, folder i ścieżka",
+          "Plik to konkretny zapis danych; folder grupuje pliki. Ścieżka określa jego lokalizację, np. Dokumenty/Oferty/2026. Przeniesienie pliku zmienia ścieżkę, ale nie powinno zmieniać jego treści.",
+          "Sytuacja z pracy lub domu: Masz 20 zdjęć z jednego zlecenia i chcesz do nich łatwo wrócić.",
+          "Dobra praktyka: Tworzę folder ze zrozumiałą nazwą i zapisuję tam zdjęcia.",
+          "Typowy błąd, którego unikamy: Zostawiam wszystko w Pobranych bez nazw."
+        ],
+        "learning": {
+          "intro": "Plik to konkretny zapis danych; folder grupuje pliki. Ścieżka określa jego lokalizację, np. Dokumenty/Oferty/2026. Przeniesienie pliku zmienia ścieżkę, ale nie powinno zmieniać jego treści.",
+          "situation": "Masz 20 zdjęć z jednego zlecenia i chcesz do nich łatwo wrócić.",
+          "example": "Tworzę folder ze zrozumiałą nazwą i zapisuję tam zdjęcia.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Tworzę folder ze zrozumiałą nazwą i zapisuję tam zdjęcia.",
+            "Zostawiam wszystko w Pobranych bez nazw.",
+            "Nazywam wszystkie zdjęcia identycznie, usuwając poprzednie."
+          ],
+          "correct": 0,
+          "explanation": "Plik to konkretny zapis danych; folder grupuje pliki. Ścieżka określa jego lokalizację, np. Dokumenty/Oferty/2026. Przeniesienie pliku zmienia ścieżkę, ale nie powinno zmieniać jego treści.",
+          "feedback": [
+            "Dobrze. Plik to konkretny zapis danych; folder grupuje pliki. Ścieżka określa jego lokalizację, np. Dokumenty/Oferty/2026. Przeniesienie pliku zmienia ścieżkę, ale nie powinno zmieniać jego treści.",
+            "Nie. Plik to konkretny zapis danych; folder grupuje pliki. Ścieżka określa jego lokalizację, np. Dokumenty/Oferty/2026. Przeniesienie pliku zmienia ścieżkę, ale nie powinno zmieniać jego treści.",
+            "Nie. Plik to konkretny zapis danych; folder grupuje pliki. Ścieżka określa jego lokalizację, np. Dokumenty/Oferty/2026. Przeniesienie pliku zmienia ścieżkę, ale nie powinno zmieniać jego treści."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Tworzę folder ze zrozumiałą nazwą i zapisuję tam zdjęcia."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Plik, folder i ścieżka",
+            "text": "Plik jest konkretną porcją zapisanych danych, np. raport.docx, zdjęcie.jpg czy budżet.xlsx. Folder organizuje pliki i podfoldery. Ścieżka wyjaśnia miejsce położenia. Rozszerzenie po kropce najczęściej pomaga rozpoznać format, ale zmiana końcówki nazwy nie konwertuje pliku."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "W folderze Dokumenty utwórz Ćwiczenia, następnie Oferty i zapisz tam próbny plik oferta.txt. Porównaj ścieżkę folderu z pełną nazwą pliku. Spróbuj przenieść kopię, a nie oryginał, do innego folderu i zobacz, który element ścieżki się zmienił."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wyjaśnij różnicę między plikiem, folderem i skrótem do pliku. Na przykładzie oferty opisz, co stanie się, gdy usuniesz tylko skrót z pulpitu."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 5,
+      "title_pl": "Klawiatura: Ctrl, Alt, Shift, Win",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Klawiatura: Ctrl, Alt, Shift, Win",
+          "Klawisze modyfikujące zmieniają zachowanie innych klawiszy. W Ctrl+C przytrzymujesz Ctrl i naciskasz C; klawisz Windows otwiera funkcje systemowe. Na laptopie dodatkowe Fn bywa potrzebne do F1–F12.",
+          "Sytuacja z pracy lub domu: Widzisz instrukcję Win+E, ale naciskasz Win, puszczasz go i naciskasz E.",
+          "Dobra praktyka: Przytrzymuję Win i naciskam E, a wynik sprawdzam w aktywnym systemie.",
+          "Typowy błąd, którego unikamy: Wpisuję słowo Win+E w wyszukiwarkę plików."
+        ],
+        "learning": {
+          "intro": "Klawisze modyfikujące zmieniają zachowanie innych klawiszy. W Ctrl+C przytrzymujesz Ctrl i naciskasz C; klawisz Windows otwiera funkcje systemowe. Na laptopie dodatkowe Fn bywa potrzebne do F1–F12.",
+          "situation": "Widzisz instrukcję Win+E, ale naciskasz Win, puszczasz go i naciskasz E.",
+          "example": "Przytrzymuję Win i naciskam E, a wynik sprawdzam w aktywnym systemie.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Przytrzymuję Win i naciskam E, a wynik sprawdzam w aktywnym systemie.",
+            "Wpisuję słowo Win+E w wyszukiwarkę plików.",
+            "Naciskam oba klawisze wyłącznie w losowej kolejności po kilka razy."
+          ],
+          "correct": 0,
+          "explanation": "Klawisze modyfikujące zmieniają zachowanie innych klawiszy. W Ctrl+C przytrzymujesz Ctrl i naciskasz C; klawisz Windows otwiera funkcje systemowe. Na laptopie dodatkowe Fn bywa potrzebne do F1–F12.",
+          "feedback": [
+            "Dobrze. Klawisze modyfikujące zmieniają zachowanie innych klawiszy. W Ctrl+C przytrzymujesz Ctrl i naciskasz C; klawisz Windows otwiera funkcje systemowe. Na laptopie dodatkowe Fn bywa potrzebne do F1–F12.",
+            "Nie. Klawisze modyfikujące zmieniają zachowanie innych klawiszy. W Ctrl+C przytrzymujesz Ctrl i naciskasz C; klawisz Windows otwiera funkcje systemowe. Na laptopie dodatkowe Fn bywa potrzebne do F1–F12.",
+            "Nie. Klawisze modyfikujące zmieniają zachowanie innych klawiszy. W Ctrl+C przytrzymujesz Ctrl i naciskasz C; klawisz Windows otwiera funkcje systemowe. Na laptopie dodatkowe Fn bywa potrzebne do F1–F12."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Przytrzymuję Win i naciskam E, a wynik sprawdzam w aktywnym systemie."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Klawiatura: Ctrl, Alt, Shift, Win",
+            "text": "Na klawiaturze istnieją klawisze znaku i klawisze modyfikujące. Ctrl zmienia działanie liter, Shift może wprowadzać wielkie litery i znaki dodatkowe, Alt obsługuje różne polecenia, a klawisz Windows wywołuje funkcje systemu. Kombinacja oznacza jednoczesne przytrzymanie jednego klawisza i naciśnięcie drugiego."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Wpisz krótkie zdanie w Notatniku, zaznacz je i skopiuj Ctrl+C. Ustaw kursor w nowym wierszu i wklej Ctrl+V. Pamiętaj: sekwencja „najpierw Ctrl, puść, potem C” nie uruchomi kopiowania. Na laptopach niektóre klawisze funkcyjne mogą wymagać Fn."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Pokaż, jak działa Ctrl+C i Ctrl+V na własnym tekście. Wyjaśnij, czym różni się kopiowanie tekstu od otwierania plików i od klawisza Win+E."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 6,
+      "title_pl": "Okno aktywne i kursor",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Okno aktywne i kursor",
+          "Aktywne okno odbiera wpisy i skróty. Migający kursor tekstowy mówi, gdzie wpisujesz litery; kursor myszy służy do wskazywania elementów. Przed skrótem upewnij się, które okno jest aktywne.",
+          "Sytuacja z pracy lub domu: Ctrl+A zaznacza treść wyszukiwarki, choć chciałeś zaznaczyć tekst dokumentu.",
+          "Dobra praktyka: Klikam w dokument, ustawiam w nim kursor i dopiero używam skrótu.",
+          "Typowy błąd, którego unikamy: Kasuję wynik wyszukiwarki w przekonaniu, że to dokument."
+        ],
+        "learning": {
+          "intro": "Aktywne okno odbiera wpisy i skróty. Migający kursor tekstowy mówi, gdzie wpisujesz litery; kursor myszy służy do wskazywania elementów. Przed skrótem upewnij się, które okno jest aktywne.",
+          "situation": "Ctrl+A zaznacza treść wyszukiwarki, choć chciałeś zaznaczyć tekst dokumentu.",
+          "example": "Klikam w dokument, ustawiam w nim kursor i dopiero używam skrótu.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Klikam w dokument, ustawiam w nim kursor i dopiero używam skrótu.",
+            "Kasuję wynik wyszukiwarki w przekonaniu, że to dokument.",
+            "Naciskam Ctrl+A aż wybierze losowy program."
+          ],
+          "correct": 0,
+          "explanation": "Aktywne okno odbiera wpisy i skróty. Migający kursor tekstowy mówi, gdzie wpisujesz litery; kursor myszy służy do wskazywania elementów. Przed skrótem upewnij się, które okno jest aktywne.",
+          "feedback": [
+            "Dobrze. Aktywne okno odbiera wpisy i skróty. Migający kursor tekstowy mówi, gdzie wpisujesz litery; kursor myszy służy do wskazywania elementów. Przed skrótem upewnij się, które okno jest aktywne.",
+            "Nie. Aktywne okno odbiera wpisy i skróty. Migający kursor tekstowy mówi, gdzie wpisujesz litery; kursor myszy służy do wskazywania elementów. Przed skrótem upewnij się, które okno jest aktywne.",
+            "Nie. Aktywne okno odbiera wpisy i skróty. Migający kursor tekstowy mówi, gdzie wpisujesz litery; kursor myszy służy do wskazywania elementów. Przed skrótem upewnij się, które okno jest aktywne."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Klikam w dokument, ustawiam w nim kursor i dopiero używam skrótu."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Okno aktywne i kursor",
+            "text": "Gdy kilka okien leży na sobie, klawiatura przekazuje większość wpisów do okna aktywnego. Migająca pionowa kreska oznacza pozycję wpisywania w polu tekstowym, a wskaźnik myszy służy do celowania w elementy. Część skrótów działa globalnie, inne jedynie w konkretnym programie."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Otwórz Notatnik i kalkulator. Najpierw kliknij tekst w Notatniku, wpisz słowo i spróbuj zaznaczyć je Ctrl+A. Następnie kliknij inne okno i porównaj zachowanie. Obserwuj zmianę podświetlenia aktywnego okna oraz położenie kursora."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Przed naciśnięciem Ctrl+A sprawdź, co jest aktywne. Wyjaśnij, dlaczego nie wolno bezmyślnie wciskać skrótów przy otwartym dokumencie z ważnymi danymi."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 7,
+      "title_pl": "Otwieranie, zapis i zamykanie",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Otwieranie, zapis i zamykanie",
+          "Uruchomienie programu i zapis pliku to dwie różne czynności. Przed zamknięciem okna sprawdź, czy masz zapisane zmiany i pod jaką nazwą. Rozszerzenie pliku pokazuje format, ale nie jest gwarancją bezpieczeństwa.",
+          "Sytuacja z pracy lub domu: Edytujesz raport od godziny i chcesz wyłączyć komputer.",
+          "Dobra praktyka: Zapisuję raport, sprawdzam lokalizację pliku i dopiero zamykam program.",
+          "Typowy błąd, którego unikamy: Wyłączam komputer bez sprawdzenia zmian."
+        ],
+        "learning": {
+          "intro": "Uruchomienie programu i zapis pliku to dwie różne czynności. Przed zamknięciem okna sprawdź, czy masz zapisane zmiany i pod jaką nazwą. Rozszerzenie pliku pokazuje format, ale nie jest gwarancją bezpieczeństwa.",
+          "situation": "Edytujesz raport od godziny i chcesz wyłączyć komputer.",
+          "example": "Zapisuję raport, sprawdzam lokalizację pliku i dopiero zamykam program.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Zapisuję raport, sprawdzam lokalizację pliku i dopiero zamykam program.",
+            "Wyłączam komputer bez sprawdzenia zmian.",
+            "Zmieniając nazwę pliku na .pdf, uznaję go za poprawnie wyeksportowany."
+          ],
+          "correct": 0,
+          "explanation": "Uruchomienie programu i zapis pliku to dwie różne czynności. Przed zamknięciem okna sprawdź, czy masz zapisane zmiany i pod jaką nazwą. Rozszerzenie pliku pokazuje format, ale nie jest gwarancją bezpieczeństwa.",
+          "feedback": [
+            "Dobrze. Uruchomienie programu i zapis pliku to dwie różne czynności. Przed zamknięciem okna sprawdź, czy masz zapisane zmiany i pod jaką nazwą. Rozszerzenie pliku pokazuje format, ale nie jest gwarancją bezpieczeństwa.",
+            "Nie. Uruchomienie programu i zapis pliku to dwie różne czynności. Przed zamknięciem okna sprawdź, czy masz zapisane zmiany i pod jaką nazwą. Rozszerzenie pliku pokazuje format, ale nie jest gwarancją bezpieczeństwa.",
+            "Nie. Uruchomienie programu i zapis pliku to dwie różne czynności. Przed zamknięciem okna sprawdź, czy masz zapisane zmiany i pod jaką nazwą. Rozszerzenie pliku pokazuje format, ale nie jest gwarancją bezpieczeństwa."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Zapisuję raport, sprawdzam lokalizację pliku i dopiero zamykam program."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Otwieranie, zapis i zamykanie",
+            "text": "Otworzyć dokument, wprowadzić zmianę, zapisać i zamknąć program to cztery różne czynności. Zapis może dotyczyć pliku lokalnego albo przestrzeni chmurowej; nazwa i lokalizacja zawsze wymagają kontroli. Niektóre programy informują o niezapisanych zmianach, ale nie polegaj wyłącznie na automatycznej ochronie."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Otwórz próbny plik .txt w Notatniku. Dopisz drugie zdanie, naciśnij Ctrl+S, zamknij i ponownie otwórz. Sprawdź, czy zdanie rzeczywiście pozostało. Następnie użyj Zapisz jako, aby utworzyć kopię, nie nadpisując oryginału."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wymień trzy rzeczy, które sprawdzasz przed zamknięciem ważnego raportu: właściwy plik, miejsce zapisu i zawartość po ponownym otwarciu."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 8,
+      "title_pl": "Bezpieczne pierwsze kliknięcia",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Bezpieczne pierwsze kliknięcia",
+          "Nieznany program i załącznik może być złośliwy. Sprawdzaj źródło, adres nadawcy i prośby o uprawnienia; nie ignoruj komunikatów ochrony. Aktualizacje systemu zmniejszają ryzyko wykorzystania luk.",
+          "Sytuacja z pracy lub domu: Pojawia się okno proszące o hasło administratora do nieznanej aplikacji.",
+          "Dobra praktyka: Wstrzymuję instalację i weryfikuję, skąd pochodzi plik oraz po co potrzebne są uprawnienia.",
+          "Typowy błąd, którego unikamy: Podaję hasło każdemu okienku bez czytania."
+        ],
+        "learning": {
+          "intro": "Nieznany program i załącznik może być złośliwy. Sprawdzaj źródło, adres nadawcy i prośby o uprawnienia; nie ignoruj komunikatów ochrony. Aktualizacje systemu zmniejszają ryzyko wykorzystania luk.",
+          "situation": "Pojawia się okno proszące o hasło administratora do nieznanej aplikacji.",
+          "example": "Wstrzymuję instalację i weryfikuję, skąd pochodzi plik oraz po co potrzebne są uprawnienia.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Wstrzymuję instalację i weryfikuję, skąd pochodzi plik oraz po co potrzebne są uprawnienia.",
+            "Podaję hasło każdemu okienku bez czytania.",
+            "Wyłączam ochronę systemu, by okno zniknęło."
+          ],
+          "correct": 0,
+          "explanation": "Nieznany program i załącznik może być złośliwy. Sprawdzaj źródło, adres nadawcy i prośby o uprawnienia; nie ignoruj komunikatów ochrony. Aktualizacje systemu zmniejszają ryzyko wykorzystania luk.",
+          "feedback": [
+            "Dobrze. Nieznany program i załącznik może być złośliwy. Sprawdzaj źródło, adres nadawcy i prośby o uprawnienia; nie ignoruj komunikatów ochrony. Aktualizacje systemu zmniejszają ryzyko wykorzystania luk.",
+            "Nie. Nieznany program i załącznik może być złośliwy. Sprawdzaj źródło, adres nadawcy i prośby o uprawnienia; nie ignoruj komunikatów ochrony. Aktualizacje systemu zmniejszają ryzyko wykorzystania luk.",
+            "Nie. Nieznany program i załącznik może być złośliwy. Sprawdzaj źródło, adres nadawcy i prośby o uprawnienia; nie ignoruj komunikatów ochrony. Aktualizacje systemu zmniejszają ryzyko wykorzystania luk."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Wstrzymuję instalację i weryfikuję, skąd pochodzi plik oraz po co potrzebne są uprawnienia."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Bezpieczne pierwsze kliknięcia",
+            "text": "Nie każdy plik jest tym, na co wygląda. Rozszerzenie .exe uruchamia program, a dokument może zawierać szkodliwą zawartość. Pobieraj aplikacje z wiarygodnych źródeł, czytaj prośby o uprawnienia, używaj aktualizacji i nie udostępniaj haseł. Sam napis „pilna aktualizacja” w reklamie nie jest dowodem wiarygodności."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Wyobraź sobie wiadomość e-mail z plikiem faktura.pdf.exe od nieznanego nadawcy. Nie uruchamiaj go. Sprawdź pełną nazwę, nadawcę i kanał kontaktu. Jeśli pracujesz na komputerze służbowym, zgłoś podejrzany załącznik zgodnie z procedurą firmy."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wytłumacz, dlaczego zmiana nazwy pliku na faktura.pdf nie robi z niego PDF-a oraz jakie dwie rzeczy zweryfikujesz przed instalacją programu."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 9,
+      "title_pl": "Pierwsze zadanie: własny folder",
+      "material": {
+        "level": "podstawy",
+        "section": 1,
+        "raw": [
+          "Pierwsze zadanie: własny folder",
+          "Łączymy podstawy: Start, Eksplorator, foldery i zapis. Dobry porządek na komputerze pozwala szybko odtworzyć działania. Utwórz katalog Ćwiczenia, podfolder Oferty i zapisz w nim próbny dokument.",
+          "Sytuacja z pracy lub domu: Musisz przekazać koledze ofertę i wskazać, gdzie ją znaleźć.",
+          "Dobra praktyka: Podaję czytelną ścieżkę i sprawdzam, czy właściwy plik istnieje w folderze.",
+          "Typowy błąd, którego unikamy: Mówię: gdzieś na komputerze, bez sprawdzenia."
+        ],
+        "learning": {
+          "intro": "Łączymy podstawy: Start, Eksplorator, foldery i zapis. Dobry porządek na komputerze pozwala szybko odtworzyć działania. Utwórz katalog Ćwiczenia, podfolder Oferty i zapisz w nim próbny dokument.",
+          "situation": "Musisz przekazać koledze ofertę i wskazać, gdzie ją znaleźć.",
+          "example": "Podaję czytelną ścieżkę i sprawdzam, czy właściwy plik istnieje w folderze.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Podaję czytelną ścieżkę i sprawdzam, czy właściwy plik istnieje w folderze.",
+            "Mówię: gdzieś na komputerze, bez sprawdzenia.",
+            "Wysyłam przypadkową wersję z Kosza."
+          ],
+          "correct": 0,
+          "explanation": "Łączymy podstawy: Start, Eksplorator, foldery i zapis. Dobry porządek na komputerze pozwala szybko odtworzyć działania. Utwórz katalog Ćwiczenia, podfolder Oferty i zapisz w nim próbny dokument.",
+          "feedback": [
+            "Dobrze. Łączymy podstawy: Start, Eksplorator, foldery i zapis. Dobry porządek na komputerze pozwala szybko odtworzyć działania. Utwórz katalog Ćwiczenia, podfolder Oferty i zapisz w nim próbny dokument.",
+            "Nie. Łączymy podstawy: Start, Eksplorator, foldery i zapis. Dobry porządek na komputerze pozwala szybko odtworzyć działania. Utwórz katalog Ćwiczenia, podfolder Oferty i zapisz w nim próbny dokument.",
+            "Nie. Łączymy podstawy: Start, Eksplorator, foldery i zapis. Dobry porządek na komputerze pozwala szybko odtworzyć działania. Utwórz katalog Ćwiczenia, podfolder Oferty i zapisz w nim próbny dokument."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Podaję czytelną ścieżkę i sprawdzam, czy właściwy plik istnieje w folderze."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Pierwsze zadanie: własny folder",
+            "text": "Czas połączyć podstawy w jedno zadanie. Dobry folder ma czytelną nazwę, jasną strukturę i miejsce przeznaczenia. Zapisanie tekstu w Notatniku udowadnia więcej niż samo wybranie odpowiedzi w quizie — pozwala sprawdzić, co faktycznie wykonałeś."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "W Eksploratorze otwórz Dokumenty, utwórz katalog TRENERKI, w nim podfolder Oferty. W Notatniku wpisz dwuzdaniowe potwierdzenie terminu i zapisz jako 2026-11-08-oferta.txt. Sprawdź plik w folderze, otwórz ponownie i zrób zrzut ekranu tylko z potrzebnym obszarem."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "W rozmowie z Anielką opisz ścieżkę pliku i powiedz, jak udowodnisz, że zapis się udał. Jeśli czegoś nie wiesz, opisz dokładnie, co widzisz na ekranie."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 10,
+      "title_pl": "Pulpit i menu — skróty w praktyce",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Pulpit i menu — skróty w praktyce",
+          "Win+D pokazuje pulpit, Win+Tab widok zadań, a wirtualne pulpity pomagają rozdzielać konteksty pracy. Odległość do pulpitu nie jest tym samym co zamykanie programów.",
+          "Sytuacja z pracy lub domu: Pod wieloma oknami jest plik na pulpicie. Chcesz go zobaczyć bez zamykania pracy.",
+          "Dobra praktyka: Używam Win+D, znajduję plik i wracam do pracy.",
+          "Typowy błąd, którego unikamy: Zamykam po kolei wszystkie programy."
+        ],
+        "learning": {
+          "intro": "Win+D pokazuje pulpit, Win+Tab widok zadań, a wirtualne pulpity pomagają rozdzielać konteksty pracy. Odległość do pulpitu nie jest tym samym co zamykanie programów.",
+          "situation": "Pod wieloma oknami jest plik na pulpicie. Chcesz go zobaczyć bez zamykania pracy.",
+          "example": "Używam Win+D, znajduję plik i wracam do pracy.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Używam Win+D, znajduję plik i wracam do pracy.",
+            "Zamykam po kolei wszystkie programy.",
+            "Wylogowuję się i tracę niezapisane zmiany."
+          ],
+          "correct": 0,
+          "explanation": "Win+D pokazuje pulpit, Win+Tab widok zadań, a wirtualne pulpity pomagają rozdzielać konteksty pracy. Odległość do pulpitu nie jest tym samym co zamykanie programów.",
+          "feedback": [
+            "Dobrze. Win+D pokazuje pulpit, Win+Tab widok zadań, a wirtualne pulpity pomagają rozdzielać konteksty pracy. Odległość do pulpitu nie jest tym samym co zamykanie programów.",
+            "Nie. Win+D pokazuje pulpit, Win+Tab widok zadań, a wirtualne pulpity pomagają rozdzielać konteksty pracy. Odległość do pulpitu nie jest tym samym co zamykanie programów.",
+            "Nie. Win+D pokazuje pulpit, Win+Tab widok zadań, a wirtualne pulpity pomagają rozdzielać konteksty pracy. Odległość do pulpitu nie jest tym samym co zamykanie programów."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Używam Win+D, znajduję plik i wracam do pracy."
+        },
+        "shortcuts": [
+          {
+            "combo": "Win+D",
+            "keys": [
+              "Win",
+              "D"
+            ],
+            "kind": "hotkey",
+            "label": "Pokaż lub ukryj pulpit",
+            "before": "Widzisz wiele otwartych okien",
+            "after": "Pulpit staje się widoczny",
+            "tip": "Naciśnij ponownie, aby wrócić do okien.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+M",
+            "keys": [
+              "Win",
+              "M"
+            ],
+            "kind": "hotkey",
+            "label": "Minimalizuj wszystkie okna",
+            "before": "Pulpit zasłonięty aplikacjami",
+            "after": "Okna zostają zminimalizowane",
+            "tip": "Nie zamyka aplikacji ani nie zapisuje plików.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Shift+M",
+            "keys": [
+              "Win",
+              "Shift",
+              "M"
+            ],
+            "kind": "hotkey",
+            "label": "Przywróć okna zminimalizowane kombinacją Win+M",
+            "before": "Okna są zminimalizowane",
+            "after": "Okna wracają na ekran",
+            "tip": "Dotyczy okien uprzednio zminimalizowanych poleceniem Win+M.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Tab",
+            "keys": [
+              "Win",
+              "Tab"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz widok zadań",
+            "before": "Trudno znaleźć właściwe okno",
+            "after": "Widzisz otwarte aplikacje i pulpity",
+            "tip": "Sprawdź, czy nie udostępniasz ekranu z poufnymi oknami.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Ctrl+D",
+            "keys": [
+              "Win",
+              "Ctrl",
+              "D"
+            ],
+            "kind": "hotkey",
+            "label": "Utwórz wirtualny pulpit",
+            "before": "Jeden pulpit pełen okien",
+            "after": "Powstaje nowy pulpit roboczy",
+            "tip": "Oddziel pracę od prywatnych aplikacji.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Ctrl+←",
+            "keys": [
+              "Win",
+              "Ctrl",
+              "←"
+            ],
+            "kind": "hotkey",
+            "label": "Przejdź na wirtualny pulpit po lewej",
+            "before": "Masz kilka pulpitów",
+            "after": "Przechodzisz do sąsiedniego pulpitu",
+            "tip": "Strzałka w prawo przechodzi w przeciwną stronę.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Pulpit i menu — skróty w praktyce",
+            "text": "Win+D może pokazywać pulpit bez zamykania aplikacji. Win+Tab wyświetla podgląd zadań, a wirtualne pulpity pomagają rozdzielić rodzaje pracy. Pulpit nie jest programem, więc nie każdy element na nim jest fizycznym plikiem."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Otwórz dwa okna ćwiczebne, użyj Win+D i sprawdź, czy zniknęły tylko z widoku. Następnie wróć do zadań i zobacz, które aplikacje pozostały aktywne."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wytłumacz różnicę między minimalizacją okna, wyświetleniem pulpitu i zamknięciem programu."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 11,
+      "title_pl": "Przełączanie i układ okien",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Przełączanie i układ okien",
+          "Alt+Tab zmienia aktywne okno, Win+strzałki ułatwiają podział ekranu. Zanim naciśniesz skrót, sprawdź, czy aktywne jest właściwe okno i czy aplikacja nie ma niezapisanych danych.",
+          "Sytuacja z pracy lub domu: Porównujesz dwie oferty i co chwilę klikasz między oknami.",
+          "Dobra praktyka: Ustawiam oba okna obok siebie i świadomie przełączam aktywne.",
+          "Typowy błąd, którego unikamy: Drukuję obie oferty za każdym porównaniem."
+        ],
+        "learning": {
+          "intro": "Alt+Tab zmienia aktywne okno, Win+strzałki ułatwiają podział ekranu. Zanim naciśniesz skrót, sprawdź, czy aktywne jest właściwe okno i czy aplikacja nie ma niezapisanych danych.",
+          "situation": "Porównujesz dwie oferty i co chwilę klikasz między oknami.",
+          "example": "Ustawiam oba okna obok siebie i świadomie przełączam aktywne.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Ustawiam oba okna obok siebie i świadomie przełączam aktywne.",
+            "Drukuję obie oferty za każdym porównaniem.",
+            "Zamykam pierwszy plik bez zapisu."
+          ],
+          "correct": 0,
+          "explanation": "Alt+Tab zmienia aktywne okno, Win+strzałki ułatwiają podział ekranu. Zanim naciśniesz skrót, sprawdź, czy aktywne jest właściwe okno i czy aplikacja nie ma niezapisanych danych.",
+          "feedback": [
+            "Dobrze. Alt+Tab zmienia aktywne okno, Win+strzałki ułatwiają podział ekranu. Zanim naciśniesz skrót, sprawdź, czy aktywne jest właściwe okno i czy aplikacja nie ma niezapisanych danych.",
+            "Nie. Alt+Tab zmienia aktywne okno, Win+strzałki ułatwiają podział ekranu. Zanim naciśniesz skrót, sprawdź, czy aktywne jest właściwe okno i czy aplikacja nie ma niezapisanych danych.",
+            "Nie. Alt+Tab zmienia aktywne okno, Win+strzałki ułatwiają podział ekranu. Zanim naciśniesz skrót, sprawdź, czy aktywne jest właściwe okno i czy aplikacja nie ma niezapisanych danych."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Ustawiam oba okna obok siebie i świadomie przełączam aktywne."
+        },
+        "shortcuts": [
+          {
+            "combo": "Alt+Tab",
+            "keys": [
+              "Alt",
+              "Tab"
+            ],
+            "kind": "hotkey",
+            "label": "Przełącz aplikację",
+            "before": "Zmieniasz okna myszą",
+            "after": "Wybierasz aplikację klawiaturą",
+            "tip": "Przytrzymanie Alt pokazuje listę otwartych okien.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Alt+F4",
+            "keys": [
+              "Alt",
+              "F4"
+            ],
+            "kind": "hotkey",
+            "label": "Zamknij aktywne okno",
+            "before": "Okno programu jest otwarte",
+            "after": "Program prosi o zapis lub zamyka okno",
+            "tip": "Zapisz niezapisane zmiany przed zamknięciem.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+↑",
+            "keys": [
+              "Win",
+              "↑"
+            ],
+            "kind": "hotkey",
+            "label": "Maksymalizuj okno",
+            "before": "Okno zajmuje tylko część ekranu",
+            "after": "Zajmuje większą powierzchnię",
+            "tip": "Działanie zależy od aktualnego stanu okna.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+↓",
+            "keys": [
+              "Win",
+              "↓"
+            ],
+            "kind": "hotkey",
+            "label": "Przywróć lub minimalizuj okno",
+            "before": "Okno jest zmaksymalizowane",
+            "after": "Przywraca rozmiar lub minimalizuje",
+            "tip": "Możliwe są dwa kolejne etapy.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+←",
+            "keys": [
+              "Win",
+              "←"
+            ],
+            "kind": "hotkey",
+            "label": "Przypnij okno do lewej strony",
+            "before": "Chcesz porównywać dwa dokumenty",
+            "after": "Okno zajmuje lewą część ekranu",
+            "tip": "Wybierz kolejne okno do prawej połowy.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+→",
+            "keys": [
+              "Win",
+              "→"
+            ],
+            "kind": "hotkey",
+            "label": "Przypnij okno do prawej strony",
+            "before": "Chcesz przenieść okno obok drugiego",
+            "after": "Okno zajmuje prawą część ekranu",
+            "tip": "Przydatne do kopiowania danych między aplikacjami.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Przełączanie i układ okien",
+            "text": "Alt+Tab pozwala zmieniać okno aktywne, a Win+strzałki pomagają układać okna obok siebie. Działanie może zależeć od konfiguracji i wersji Windows."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Ustaw obok siebie dwa dokumenty testowe i porównaj dwa fragmenty. Zwróć uwagę, do którego okna wpiszesz zmianę po użyciu Alt+Tab."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Pokaż, jak wrócić do poprzednio aktywnej aplikacji, nie zamykając innych."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 12,
+      "title_pl": "Zrzuty ekranu — prywatność",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Zrzuty ekranu — prywatność",
+          "Win+Shift+S pozwala zaznaczyć fragment do zrzutu. Zanim udostępnisz obraz, usuń z pola widzenia numery kont, adresy i dane osobowe. Zrzut nie musi automatycznie zapisywać się jako plik.",
+          "Sytuacja z pracy lub domu: Chcesz pokazać błąd programu działowi IT, ale na pulpicie jest lista klientów.",
+          "Dobra praktyka: Kadruję tylko komunikat i sprawdzam, czy nie widać poufnych informacji.",
+          "Typowy błąd, którego unikamy: Wysyłam zdjęcie całego ekranu do publicznej grupy."
+        ],
+        "learning": {
+          "intro": "Win+Shift+S pozwala zaznaczyć fragment do zrzutu. Zanim udostępnisz obraz, usuń z pola widzenia numery kont, adresy i dane osobowe. Zrzut nie musi automatycznie zapisywać się jako plik.",
+          "situation": "Chcesz pokazać błąd programu działowi IT, ale na pulpicie jest lista klientów.",
+          "example": "Kadruję tylko komunikat i sprawdzam, czy nie widać poufnych informacji.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Kadruję tylko komunikat i sprawdzam, czy nie widać poufnych informacji.",
+            "Wysyłam zdjęcie całego ekranu do publicznej grupy.",
+            "Zostawiam widoczny login i hasło, żeby informatyk miał łatwiej."
+          ],
+          "correct": 0,
+          "explanation": "Win+Shift+S pozwala zaznaczyć fragment do zrzutu. Zanim udostępnisz obraz, usuń z pola widzenia numery kont, adresy i dane osobowe. Zrzut nie musi automatycznie zapisywać się jako plik.",
+          "feedback": [
+            "Dobrze. Win+Shift+S pozwala zaznaczyć fragment do zrzutu. Zanim udostępnisz obraz, usuń z pola widzenia numery kont, adresy i dane osobowe. Zrzut nie musi automatycznie zapisywać się jako plik.",
+            "Nie. Win+Shift+S pozwala zaznaczyć fragment do zrzutu. Zanim udostępnisz obraz, usuń z pola widzenia numery kont, adresy i dane osobowe. Zrzut nie musi automatycznie zapisywać się jako plik.",
+            "Nie. Win+Shift+S pozwala zaznaczyć fragment do zrzutu. Zanim udostępnisz obraz, usuń z pola widzenia numery kont, adresy i dane osobowe. Zrzut nie musi automatycznie zapisywać się jako plik."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Kadruję tylko komunikat i sprawdzam, czy nie widać poufnych informacji."
+        },
+        "shortcuts": [
+          {
+            "combo": "Win+Shift+S",
+            "keys": [
+              "Win",
+              "Shift",
+              "S"
+            ],
+            "kind": "hotkey",
+            "label": "Wybierz fragment ekranu",
+            "before": "Chcesz pokazać konkretny błąd",
+            "after": "Włącza się narzędzie do zaznaczania zrzutu",
+            "tip": "Przed wysłaniem zdjęcia ukryj hasła i dane osobowe.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+PrtSc",
+            "keys": [
+              "Win",
+              "PrtSc"
+            ],
+            "kind": "hotkey",
+            "label": "Zapisz zrzut całego ekranu",
+            "before": "Musisz udokumentować wygląd pulpitu",
+            "after": "Zrzut zwykle zapisuje się w Obrazy → Zrzuty ekranu",
+            "tip": "Sprawdź, gdzie trafił plik w używanej konfiguracji.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Alt+PrtSc",
+            "keys": [
+              "Alt",
+              "PrtSc"
+            ],
+            "kind": "hotkey",
+            "label": "Skopiuj aktywne okno",
+            "before": "Potrzebujesz zrzutu jednego programu",
+            "after": "Do schowka trafia zrzut aktywnego okna",
+            "tip": "Wklej Ctrl+V do edytora; sprawdź zawartość przed wysyłką.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "PrtSc",
+            "keys": [
+              "PrtSc"
+            ],
+            "kind": "hotkey",
+            "label": "Wykonaj zrzut lub otwórz narzędzie wycinania",
+            "before": "Naciskasz klawisz Print Screen",
+            "after": "Zachowanie zależy od ustawień Windows",
+            "tip": "W Windows 11 może otwierać narzędzie wycinania.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+G",
+            "keys": [
+              "Win",
+              "G"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz pasek Xbox Game Bar",
+            "before": "Potrzebujesz narzędzi nagrywania",
+            "after": "Otwiera się panel Game Bar, jeśli jest dostępny",
+            "tip": "Na komputerze firmowym funkcja może być wyłączona.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Alt+R",
+            "keys": [
+              "Win",
+              "Alt",
+              "R"
+            ],
+            "kind": "hotkey",
+            "label": "Rozpocznij lub zatrzymaj nagrywanie",
+            "before": "Chcesz pokazać działanie aplikacji",
+            "after": "Może uruchomić nagranie przez Game Bar",
+            "tip": "Nie nagrywaj danych klientów lub cudzych rozmów bez podstawy.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Zrzuty ekranu — prywatność",
+            "text": "Win+Shift+S otwiera narzędzie do zaznaczenia fragmentu ekranu w nowszych wersjach Windows. Zrzut może trafić do schowka, a sposób automatycznego zapisu zależy od ustawień. Obraz może ujawniać dane osobowe."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Przygotuj próbny zrzut małego fragmentu okna z błędem, nie pokazując listy klientów ani danych finansowych."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Przed wysłaniem obrazu sprawdź: widoczny adres, otwarte zakładki, nazwiska i inne poufne informacje."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 13,
+      "title_pl": "Ustawienia i wyszukiwanie",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Ustawienia i wyszukiwanie",
+          "Win+I otwiera Ustawienia, a Win+S wyszukiwarkę. Wyszukiwanie Windows nie musi wyszukać treści wszystkich plików; wyniki zależą od indeksowania i uprawnień.",
+          "Sytuacja z pracy lub domu: Chcesz powiększyć tekst na ekranie, ale nie wiesz, gdzie znajduje się ta opcja.",
+          "Dobra praktyka: Otwieram Ustawienia i szukam sekcji wyświetlania oraz skali.",
+          "Typowy błąd, którego unikamy: Zmniejszam rozdzielczość losowo bez sprawdzenia efektu."
+        ],
+        "learning": {
+          "intro": "Win+I otwiera Ustawienia, a Win+S wyszukiwarkę. Wyszukiwanie Windows nie musi wyszukać treści wszystkich plików; wyniki zależą od indeksowania i uprawnień.",
+          "situation": "Chcesz powiększyć tekst na ekranie, ale nie wiesz, gdzie znajduje się ta opcja.",
+          "example": "Otwieram Ustawienia i szukam sekcji wyświetlania oraz skali.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Otwieram Ustawienia i szukam sekcji wyświetlania oraz skali.",
+            "Zmniejszam rozdzielczość losowo bez sprawdzenia efektu.",
+            "Instaluję nieznany program do zmiany czcionek systemu."
+          ],
+          "correct": 0,
+          "explanation": "Win+I otwiera Ustawienia, a Win+S wyszukiwarkę. Wyszukiwanie Windows nie musi wyszukać treści wszystkich plików; wyniki zależą od indeksowania i uprawnień.",
+          "feedback": [
+            "Dobrze. Win+I otwiera Ustawienia, a Win+S wyszukiwarkę. Wyszukiwanie Windows nie musi wyszukać treści wszystkich plików; wyniki zależą od indeksowania i uprawnień.",
+            "Nie. Win+I otwiera Ustawienia, a Win+S wyszukiwarkę. Wyszukiwanie Windows nie musi wyszukać treści wszystkich plików; wyniki zależą od indeksowania i uprawnień.",
+            "Nie. Win+I otwiera Ustawienia, a Win+S wyszukiwarkę. Wyszukiwanie Windows nie musi wyszukać treści wszystkich plików; wyniki zależą od indeksowania i uprawnień."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Otwieram Ustawienia i szukam sekcji wyświetlania oraz skali."
+        },
+        "shortcuts": [
+          {
+            "combo": "Win+I",
+            "keys": [
+              "Win",
+              "I"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz Ustawienia",
+            "before": "Szukasz konfiguracji urządzenia",
+            "after": "Otwiera się aplikacja Ustawienia",
+            "tip": "Możesz tam sprawdzić opcje klawiatury.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+S",
+            "keys": [
+              "Win",
+              "S"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz wyszukiwarkę",
+            "before": "Nie pamiętasz lokalizacji programu",
+            "after": "Wyszukujesz aplikacje, pliki i ustawienia",
+            "tip": "Wpisuj dokładną nazwę programu.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+R",
+            "keys": [
+              "Win",
+              "R"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz Uruchom",
+            "before": "Chcesz uruchomić znany program",
+            "after": "Otwiera się okno Uruchom",
+            "tip": "Nie wklejaj nieznanych poleceń od obcych osób.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+X",
+            "keys": [
+              "Win",
+              "X"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz szybkie menu systemowe",
+            "before": "Szukasz narzędzi administracyjnych",
+            "after": "Pojawia się menu systemowe",
+            "tip": "Nie zmieniaj ustawień, których znaczenia nie znasz.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+P",
+            "keys": [
+              "Win",
+              "P"
+            ],
+            "kind": "hotkey",
+            "label": "Wybierz sposób projekcji",
+            "before": "Podłączono drugi ekran",
+            "after": "Widzisz tryby wyświetlania",
+            "tip": "Przy prezentacji sprawdź, czy poufny ekran nie jest udostępniony.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+K",
+            "keys": [
+              "Win",
+              "K"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz połączenia przesyłania obrazu",
+            "before": "Chcesz połączyć bezprzewodowy ekran",
+            "after": "Pojawia się panel połączeń, jeśli sprzęt obsługuje",
+            "tip": "Działanie zależy od obsługi Miracast i urządzeń.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ustawienia i wyszukiwanie",
+            "text": "Win+I otwiera Ustawienia w współczesnych Windows, a wyszukiwanie Start pomaga znaleźć aplikacje i lokalizacje. Nie wszystkie pliki są indeksowane i nie każda aplikacja pojawi się w wynikach."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Zmień skalę tekstu w ustawieniach wyświetlania i wróć do poprzedniej wartości. Sprawdź, czy czytelność rzeczywiście się poprawiła."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wyjaśnij, czym różni się ustawienie skali od instalowania przypadkowego programu do „ulepszania” ekranu."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 14,
+      "title_pl": "Eksplorator i struktura folderów",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Eksplorator i struktura folderów",
+          "Win+E uruchamia Eksplorator; Ctrl+Shift+N w wielu lokalizacjach tworzy folder. Przy przenoszeniu sprawdzaj docelową lokalizację; przeciągnięcie pliku między dyskami może oznaczać kopiowanie, nie przeniesienie.",
+          "Sytuacja z pracy lub domu: Przygotowujesz foldery Rok/Projekt/Umowy dla nowego zlecenia.",
+          "Dobra praktyka: Tworzę strukturę i sprawdzam, czy nowy folder jest w zamierzonym miejscu.",
+          "Typowy błąd, którego unikamy: Usuwam foldery sąsiadów, żeby zrobić miejsce."
+        ],
+        "learning": {
+          "intro": "Win+E uruchamia Eksplorator; Ctrl+Shift+N w wielu lokalizacjach tworzy folder. Przy przenoszeniu sprawdzaj docelową lokalizację; przeciągnięcie pliku między dyskami może oznaczać kopiowanie, nie przeniesienie.",
+          "situation": "Przygotowujesz foldery Rok/Projekt/Umowy dla nowego zlecenia.",
+          "example": "Tworzę strukturę i sprawdzam, czy nowy folder jest w zamierzonym miejscu.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Tworzę strukturę i sprawdzam, czy nowy folder jest w zamierzonym miejscu.",
+            "Usuwam foldery sąsiadów, żeby zrobić miejsce.",
+            "Kopiuję wszystko do losowego katalogu systemowego."
+          ],
+          "correct": 0,
+          "explanation": "Win+E uruchamia Eksplorator; Ctrl+Shift+N w wielu lokalizacjach tworzy folder. Przy przenoszeniu sprawdzaj docelową lokalizację; przeciągnięcie pliku między dyskami może oznaczać kopiowanie, nie przeniesienie.",
+          "feedback": [
+            "Dobrze. Win+E uruchamia Eksplorator; Ctrl+Shift+N w wielu lokalizacjach tworzy folder. Przy przenoszeniu sprawdzaj docelową lokalizację; przeciągnięcie pliku między dyskami może oznaczać kopiowanie, nie przeniesienie.",
+            "Nie. Win+E uruchamia Eksplorator; Ctrl+Shift+N w wielu lokalizacjach tworzy folder. Przy przenoszeniu sprawdzaj docelową lokalizację; przeciągnięcie pliku między dyskami może oznaczać kopiowanie, nie przeniesienie.",
+            "Nie. Win+E uruchamia Eksplorator; Ctrl+Shift+N w wielu lokalizacjach tworzy folder. Przy przenoszeniu sprawdzaj docelową lokalizację; przeciągnięcie pliku między dyskami może oznaczać kopiowanie, nie przeniesienie."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Tworzę strukturę i sprawdzam, czy nowy folder jest w zamierzonym miejscu."
+        },
+        "shortcuts": [
+          {
+            "combo": "Win+E",
+            "keys": [
+              "Win",
+              "E"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz Eksplorator plików",
+            "before": "Szukasz folderu w menu Start",
+            "after": "Otwiera się Eksplorator plików",
+            "tip": "Przypnij najczęściej używane foldery do Szybkiego dostępu.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Shift+N",
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "N"
+            ],
+            "kind": "hotkey",
+            "label": "Utwórz nowy folder",
+            "before": "Jesteś w Eksploratorze plików",
+            "after": "Powstaje nowy folder",
+            "tip": "Nadaj mu nazwę opisującą zawartość.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "F2",
+            "keys": [
+              "F2"
+            ],
+            "kind": "hotkey",
+            "label": "Zmień nazwę zaznaczonego pliku",
+            "before": "Nazwa pliku jest nieczytelna",
+            "after": "Możesz edytować nazwę",
+            "tip": "Uważaj, aby nie zmienić rozszerzenia.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+C",
+            "keys": [
+              "Ctrl",
+              "C"
+            ],
+            "kind": "hotkey",
+            "label": "Kopiuj zaznaczone pliki",
+            "before": "Plik jest w jednym folderze",
+            "after": "Plik trafia do schowka do skopiowania",
+            "tip": "Kopiowanie nie przenosi oryginału.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+X",
+            "keys": [
+              "Ctrl",
+              "X"
+            ],
+            "kind": "hotkey",
+            "label": "Wytnij zaznaczony plik",
+            "before": "Chcesz przenieść plik",
+            "after": "Plik zostaje wybrany do przeniesienia",
+            "tip": "Po Ctrl+V sprawdź, czy plik pojawił się w celu.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+V",
+            "keys": [
+              "Ctrl",
+              "V"
+            ],
+            "kind": "hotkey",
+            "label": "Wklej ze schowka",
+            "before": "Masz wycięty albo skopiowany plik",
+            "after": "Plik lub tekst jest wklejany",
+            "tip": "Uważaj na kopiowanie poufnych danych.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Eksplorator i struktura folderów",
+            "text": "Win+E otwiera Eksplorator, a Ctrl+Shift+N tworzy nowy folder w wielu jego widokach. Przeniesienie pliku na inną lokalizację może działać inaczej niż kopiowanie — obserwuj ikonę i potwierdzenie."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Utwórz hierarchię Projekt/2026/Umowy w folderze ćwiczeniowym i porównaj ją z przypadkowo płaską listą 200 plików."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Sprawdź, czy wszystkie dokumenty trafiły do oczekiwanej lokalizacji i czy oryginał został zachowany."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 15,
+      "title_pl": "Schowek — kopiuj, wytnij i wklej",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Schowek — kopiuj, wytnij i wklej",
+          "Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja. Kopiowanie pozostawia oryginał, a wycinanie służy do przenoszenia; po operacji sprawdź, gdzie znajduje się plik. Historia Win+V wymaga odpowiedniej konfiguracji.",
+          "Sytuacja z pracy lub domu: Masz dokument wzorcowy i chcesz przygotować od niego nową ofertę.",
+          "Dobra praktyka: Kopiuję wzór i nadaję kopii nową nazwę, zachowując oryginał.",
+          "Typowy błąd, którego unikamy: Wycinam jedyny wzór i nadpisuję go przypadkowo."
+        ],
+        "learning": {
+          "intro": "Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja. Kopiowanie pozostawia oryginał, a wycinanie służy do przenoszenia; po operacji sprawdź, gdzie znajduje się plik. Historia Win+V wymaga odpowiedniej konfiguracji.",
+          "situation": "Masz dokument wzorcowy i chcesz przygotować od niego nową ofertę.",
+          "example": "Kopiuję wzór i nadaję kopii nową nazwę, zachowując oryginał.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Kopiuję wzór i nadaję kopii nową nazwę, zachowując oryginał.",
+            "Wycinam jedyny wzór i nadpisuję go przypadkowo.",
+            "Zamieniam wzór na skrót do pliku zamiast kopii."
+          ],
+          "correct": 0,
+          "explanation": "Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja. Kopiowanie pozostawia oryginał, a wycinanie służy do przenoszenia; po operacji sprawdź, gdzie znajduje się plik. Historia Win+V wymaga odpowiedniej konfiguracji.",
+          "feedback": [
+            "Dobrze. Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja. Kopiowanie pozostawia oryginał, a wycinanie służy do przenoszenia; po operacji sprawdź, gdzie znajduje się plik. Historia Win+V wymaga odpowiedniej konfiguracji.",
+            "Nie. Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja. Kopiowanie pozostawia oryginał, a wycinanie służy do przenoszenia; po operacji sprawdź, gdzie znajduje się plik. Historia Win+V wymaga odpowiedniej konfiguracji.",
+            "Nie. Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja. Kopiowanie pozostawia oryginał, a wycinanie służy do przenoszenia; po operacji sprawdź, gdzie znajduje się plik. Historia Win+V wymaga odpowiedniej konfiguracji."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Kopiuję wzór i nadaję kopii nową nazwę, zachowując oryginał."
+        },
+        "shortcuts": [
+          {
+            "combo": "Win+V",
+            "keys": [
+              "Win",
+              "V"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz historię schowka",
+            "before": "Kopiowałeś kilka elementów",
+            "after": "Pojawia się historia schowka, jeśli jest włączona",
+            "tip": "Nie włączaj historii na komputerze współdzielonym bez zastanowienia.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Z",
+            "keys": [
+              "Ctrl",
+              "Z"
+            ],
+            "kind": "hotkey",
+            "label": "Cofnij ostatnią czynność",
+            "before": "Pomyliłeś się przy edycji",
+            "after": "Ostatnia obsługiwana czynność jest cofnięta",
+            "tip": "Nie wszystkie operacje można cofnąć.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Y",
+            "keys": [
+              "Ctrl",
+              "Y"
+            ],
+            "kind": "hotkey",
+            "label": "Ponów cofniętą czynność",
+            "before": "Chcesz przywrócić zmianę",
+            "after": "Program może ponowić ostatnie polecenie",
+            "tip": "Działanie zależy od aplikacji.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+A",
+            "keys": [
+              "Ctrl",
+              "A"
+            ],
+            "kind": "hotkey",
+            "label": "Zaznacz wszystko",
+            "before": "Chcesz zaznaczyć cały tekst lub listę plików",
+            "after": "Wszystkie elementy aktywnego obszaru są zaznaczone",
+            "tip": "Zwróć uwagę, który program jest aktywny.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Backspace",
+            "keys": [
+              "Ctrl",
+              "Backspace"
+            ],
+            "kind": "hotkey",
+            "label": "Usuń poprzednie słowo",
+            "before": "Kasujesz litera po literze",
+            "after": "W wielu edytorach znika całe słowo",
+            "tip": "Działanie zależy od edytora tekstu.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Shift+Esc",
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "Esc"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz Menedżer zadań",
+            "before": "Aplikacja zawiesiła się",
+            "after": "Otwiera się Menedżer zadań",
+            "tip": "Nie kończ nieznanych procesów systemowych.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Schowek — kopiuj, wytnij i wklej",
+            "text": "Ctrl+C i Ctrl+V pracują ze schowkiem; Ctrl+X służy do przenoszenia. W niektórych systemach Win+V otwiera historię schowka, jeśli jest włączona. Wrażliwe dane w schowku wymagają ostrożności."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Kopiuj próbny dokument do nowego folderu, a drugi przenieś. Porównaj liczbę plików przed i po operacji."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Powiedz, dlaczego Ctrl+X może być ryzykowny dla jedynej kopii ważnego pliku."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 16,
+      "title_pl": "Nawigacja bez myszy",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Nawigacja bez myszy",
+          "Ctrl+Home i Ctrl+End przemieszczają kursor zależnie od aktywnej aplikacji; Ctrl+strzałki przeskakują między słowami. Działanie w polu tekstowym różni się od działania na pulpicie.",
+          "Sytuacja z pracy lub domu: Masz długi tekst i chcesz wrócić na jego początek.",
+          "Dobra praktyka: Klikam w pole edycji i używam odpowiedniego skrótu nawigacji.",
+          "Typowy błąd, którego unikamy: Zakładam, że każdy skrót jest globalny w całym systemie."
+        ],
+        "learning": {
+          "intro": "Ctrl+Home i Ctrl+End przemieszczają kursor zależnie od aktywnej aplikacji; Ctrl+strzałki przeskakują między słowami. Działanie w polu tekstowym różni się od działania na pulpicie.",
+          "situation": "Masz długi tekst i chcesz wrócić na jego początek.",
+          "example": "Klikam w pole edycji i używam odpowiedniego skrótu nawigacji.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Klikam w pole edycji i używam odpowiedniego skrótu nawigacji.",
+            "Zakładam, że każdy skrót jest globalny w całym systemie.",
+            "Usuwam tekst, bo poruszanie kursorem trwa zbyt długo."
+          ],
+          "correct": 0,
+          "explanation": "Ctrl+Home i Ctrl+End przemieszczają kursor zależnie od aktywnej aplikacji; Ctrl+strzałki przeskakują między słowami. Działanie w polu tekstowym różni się od działania na pulpicie.",
+          "feedback": [
+            "Dobrze. Ctrl+Home i Ctrl+End przemieszczają kursor zależnie od aktywnej aplikacji; Ctrl+strzałki przeskakują między słowami. Działanie w polu tekstowym różni się od działania na pulpicie.",
+            "Nie. Ctrl+Home i Ctrl+End przemieszczają kursor zależnie od aktywnej aplikacji; Ctrl+strzałki przeskakują między słowami. Działanie w polu tekstowym różni się od działania na pulpicie.",
+            "Nie. Ctrl+Home i Ctrl+End przemieszczają kursor zależnie od aktywnej aplikacji; Ctrl+strzałki przeskakują między słowami. Działanie w polu tekstowym różni się od działania na pulpicie."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Klikam w pole edycji i używam odpowiedniego skrótu nawigacji."
+        },
+        "shortcuts": [
+          {
+            "combo": "Ctrl+Home",
+            "keys": [
+              "Ctrl",
+              "Home"
+            ],
+            "kind": "hotkey",
+            "label": "Przejdź na początek",
+            "before": "Jesteś na końcu długiego tekstu",
+            "after": "Kursor może przejść na początek dokumentu",
+            "tip": "Działa w wielu edytorach, nie we wszystkich aplikacjach.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+End",
+            "keys": [
+              "Ctrl",
+              "End"
+            ],
+            "kind": "hotkey",
+            "label": "Przejdź na koniec",
+            "before": "Przewijasz dokument",
+            "after": "Kursor może przejść na koniec dokumentu",
+            "tip": "W Eksploratorze lub przeglądarce zachowanie może się różnić.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+←",
+            "keys": [
+              "Ctrl",
+              "←"
+            ],
+            "kind": "hotkey",
+            "label": "Przejdź o słowo w lewo",
+            "before": "Przesuwasz kursor znak po znaku",
+            "after": "Kursor przeskakuje do sąsiedniego słowa",
+            "tip": "Połącz z Shift, aby rozszerzyć zaznaczenie.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+→",
+            "keys": [
+              "Ctrl",
+              "→"
+            ],
+            "kind": "hotkey",
+            "label": "Przejdź o słowo w prawo",
+            "before": "Szukasz wybranego słowa",
+            "after": "Kursor przeskakuje do następnego słowa",
+            "tip": "Wpisz przykładowy tekst i przetestuj.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Shift+End",
+            "keys": [
+              "Shift",
+              "End"
+            ],
+            "kind": "hotkey",
+            "label": "Zaznacz do końca wiersza",
+            "before": "Chcesz poprawić końcówkę linii",
+            "after": "Zaznaczasz tekst do końca wiersza",
+            "tip": "Nie musisz używać myszy.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Shift+→",
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "→"
+            ],
+            "kind": "hotkey",
+            "label": "Zaznacz kolejne słowo",
+            "before": "Chcesz zmienić całe słowo",
+            "after": "W wielu edytorach zaznaczane jest kolejne słowo",
+            "tip": "Działanie zależy od aplikacji.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Nawigacja bez myszy",
+            "text": "Ctrl+Home i Ctrl+End pomagają nawigować w długich tekstach, a Ctrl+strzałki przesuwają kursor między słowami. Zachowanie zależy od aktywnego programu i pola edycji."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "W Notatniku przygotuj tekst na kilka akapitów. Przesuń kursor na koniec i początek, a potem między słowami bez przewijania myszy."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Upewnij się, że klawiatura steruje dokumentem, a nie innym aktywnym oknem."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 17,
+      "title_pl": "Bezpieczeństwo i dostępność",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Bezpieczeństwo i dostępność",
+          "Win+L blokuje ekran, a skróty do ułatwień dostępu mogą uruchamiać Narratora i lupę. Blokada chroni chwilowo stanowisko, ale nie zastępuje kopii zapasowej i dobrego hasła.",
+          "Sytuacja z pracy lub domu: Odchodzisz od firmowego komputera na pięć minut.",
+          "Dobra praktyka: Blokuję ekran Win+L, nie wyłączając potrzebnych programów.",
+          "Typowy błąd, którego unikamy: Pozostawiam otwarty ekran z danymi klientów."
+        ],
+        "learning": {
+          "intro": "Win+L blokuje ekran, a skróty do ułatwień dostępu mogą uruchamiać Narratora i lupę. Blokada chroni chwilowo stanowisko, ale nie zastępuje kopii zapasowej i dobrego hasła.",
+          "situation": "Odchodzisz od firmowego komputera na pięć minut.",
+          "example": "Blokuję ekran Win+L, nie wyłączając potrzebnych programów.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Blokuję ekran Win+L, nie wyłączając potrzebnych programów.",
+            "Pozostawiam otwarty ekran z danymi klientów.",
+            "Daję koledze swoje hasło, żeby pilnował stanowiska."
+          ],
+          "correct": 0,
+          "explanation": "Win+L blokuje ekran, a skróty do ułatwień dostępu mogą uruchamiać Narratora i lupę. Blokada chroni chwilowo stanowisko, ale nie zastępuje kopii zapasowej i dobrego hasła.",
+          "feedback": [
+            "Dobrze. Win+L blokuje ekran, a skróty do ułatwień dostępu mogą uruchamiać Narratora i lupę. Blokada chroni chwilowo stanowisko, ale nie zastępuje kopii zapasowej i dobrego hasła.",
+            "Nie. Win+L blokuje ekran, a skróty do ułatwień dostępu mogą uruchamiać Narratora i lupę. Blokada chroni chwilowo stanowisko, ale nie zastępuje kopii zapasowej i dobrego hasła.",
+            "Nie. Win+L blokuje ekran, a skróty do ułatwień dostępu mogą uruchamiać Narratora i lupę. Blokada chroni chwilowo stanowisko, ale nie zastępuje kopii zapasowej i dobrego hasła."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Blokuję ekran Win+L, nie wyłączając potrzebnych programów."
+        },
+        "shortcuts": [
+          {
+            "combo": "Win+L",
+            "keys": [
+              "Win",
+              "L"
+            ],
+            "kind": "hotkey",
+            "label": "Zablokuj komputer",
+            "before": "Odchodzisz od stanowiska",
+            "after": "Ekran zostaje zablokowany",
+            "tip": "Stosuj zawsze przed opuszczeniem komputera firmowego.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Ctrl+Alt+Del",
+            "keys": [
+              "Ctrl",
+              "Alt",
+              "Del"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz ekran zabezpieczeń",
+            "before": "Chcesz znaleźć opcje bezpieczeństwa",
+            "after": "Wyświetla się ekran zabezpieczeń Windows",
+            "tip": "Nie zastępuje ustawionego silnego hasła.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+U",
+            "keys": [
+              "Win",
+              "U"
+            ],
+            "kind": "hotkey",
+            "label": "Otwórz ustawienia ułatwień dostępu",
+            "before": "Chcesz zmienić czytelność systemu",
+            "after": "Otwierają się ustawienia dostępności",
+            "tip": "Znajdziesz m.in. narratora i lupę.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Ctrl+Enter",
+            "keys": [
+              "Win",
+              "Ctrl",
+              "Enter"
+            ],
+            "kind": "hotkey",
+            "label": "Włącz lub wyłącz Narratora",
+            "before": "Potrzebujesz czytnika ekranu",
+            "after": "Może włączyć funkcję Narrator",
+            "tip": "Działanie może wymagać potwierdzenia ustawień.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win++",
+            "keys": [
+              "Win",
+              "+"
+            ],
+            "kind": "hotkey",
+            "label": "Włącz lupę",
+            "before": "Tekst na ekranie jest za mały",
+            "after": "Włącza się Lupa systemowa",
+            "tip": "Win+Esc zazwyczaj zamyka Lupę.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          },
+          {
+            "combo": "Win+Esc",
+            "keys": [
+              "Win",
+              "Esc"
+            ],
+            "kind": "hotkey",
+            "label": "Zamknij Lupę",
+            "before": "Lupa jest aktywna",
+            "after": "Lupa zostaje wyłączona",
+            "tip": "Przydatne po powiększaniu fragmentów ekranu.",
+            "platform": "Windows 11 — standardowa konfiguracja"
+          }
+        ],
+        "quickTips": [
+          "Wybierz jeden skrót i użyj go trzy razy w prawdziwym zadaniu.",
+          "Wiele skrótów działa tylko wtedy, gdy aktywne jest właściwe okno.",
+          "Klawisze funkcyjne na laptopie mogą wymagać dodatkowego Fn."
+        ],
+        "exercise": "Powtórz dziś trzy wybrane kombinacje, zapisz efekt PRZED i PO, a następnie spróbuj wykonać to samo zadanie bez myszy.",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Bezpieczeństwo i dostępność",
+            "text": "Win+L blokuje sesję Windows, nie wyłącza komputera. Wbudowane ułatwienia dostępu, takie jak lupa czy narrator, mogą pomagać osobom potrzebującym wsparcia. Korzystanie z nich jest normalną praktyką."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Zablokuj testowy komputer Win+L, a po powrocie odblokuj go zgodnie z zasadami bezpieczeństwa konta."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wyjaśnij, dlaczego blokada ekranu nie jest kopią zapasową danych."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 18,
+      "title_pl": "Praktyka: odzyskiwanie pomyłek",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Praktyka: odzyskiwanie pomyłek",
+          "Ctrl+Z często cofa edycję, a Ctrl+Y ją ponawia, ale nie każda aplikacja obsługuje identyczną historię. Przed usuwaniem wielu plików zabezpiecz kopię.",
+          "Sytuacja z pracy lub domu: Przeniosłeś zły akapit w dokumencie i chcesz naprawić błąd.",
+          "Dobra praktyka: Korzystam z Cofnij i sprawdzam, czy prawidłowy tekst wrócił.",
+          "Typowy błąd, którego unikamy: Losowo usuwam kolejne akapity."
+        ],
+        "learning": {
+          "intro": "Ctrl+Z często cofa edycję, a Ctrl+Y ją ponawia, ale nie każda aplikacja obsługuje identyczną historię. Przed usuwaniem wielu plików zabezpiecz kopię.",
+          "situation": "Przeniosłeś zły akapit w dokumencie i chcesz naprawić błąd.",
+          "example": "Korzystam z Cofnij i sprawdzam, czy prawidłowy tekst wrócił.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Korzystam z Cofnij i sprawdzam, czy prawidłowy tekst wrócił.",
+            "Losowo usuwam kolejne akapity.",
+            "Wyłączam komputer licząc, że błąd sam się cofnie."
+          ],
+          "correct": 0,
+          "explanation": "Ctrl+Z często cofa edycję, a Ctrl+Y ją ponawia, ale nie każda aplikacja obsługuje identyczną historię. Przed usuwaniem wielu plików zabezpiecz kopię.",
+          "feedback": [
+            "Dobrze. Ctrl+Z często cofa edycję, a Ctrl+Y ją ponawia, ale nie każda aplikacja obsługuje identyczną historię. Przed usuwaniem wielu plików zabezpiecz kopię.",
+            "Nie. Ctrl+Z często cofa edycję, a Ctrl+Y ją ponawia, ale nie każda aplikacja obsługuje identyczną historię. Przed usuwaniem wielu plików zabezpiecz kopię.",
+            "Nie. Ctrl+Z często cofa edycję, a Ctrl+Y ją ponawia, ale nie każda aplikacja obsługuje identyczną historię. Przed usuwaniem wielu plików zabezpiecz kopię."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Korzystam z Cofnij i sprawdzam, czy prawidłowy tekst wrócił."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Praktyka: odzyskiwanie pomyłek",
+            "text": "Ctrl+Z cofa działanie w wielu aplikacjach, Ctrl+Y może je ponawiać. Historia cofania nie zawsze obejmuje usunięcia plików lub działania w chmurze. Korzystaj z wersjonowania i kopii, gdy dane mają znaczenie."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "W testowym dokumencie usuń akapit i spróbuj przywrócić go Cofnij. Następnie odtwórz poprzednią wersję z kopii kontrolnej."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wskaż różnicę między Cofnij, Koszem i kopią zapasową."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 19,
+      "title_pl": "Kontrola rozdziału: zadanie biurowe",
+      "material": {
+        "level": "praktyka",
+        "section": 2,
+        "raw": [
+          "Kontrola rozdziału: zadanie biurowe",
+          "Łączysz skróty do okien, folderów, zrzutów i zabezpieczeń. Ćwicz na plikach testowych, a wynik weryfikuj, zamiast tylko zapamiętywać kombinacje klawiszy.",
+          "Sytuacja z pracy lub domu: W zespole musisz przygotować folder z ofertą, pokazać błąd IT i zablokować ekran po pracy.",
+          "Dobra praktyka: Tworzę uporządkowany folder, kadruję zrzut bez danych wrażliwych i blokuję stanowisko.",
+          "Typowy błąd, którego unikamy: Wysyłam pełny ekran wszystkim i zostawiam konto odblokowane."
+        ],
+        "learning": {
+          "intro": "Łączysz skróty do okien, folderów, zrzutów i zabezpieczeń. Ćwicz na plikach testowych, a wynik weryfikuj, zamiast tylko zapamiętywać kombinacje klawiszy.",
+          "situation": "W zespole musisz przygotować folder z ofertą, pokazać błąd IT i zablokować ekran po pracy.",
+          "example": "Tworzę uporządkowany folder, kadruję zrzut bez danych wrażliwych i blokuję stanowisko.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Tworzę uporządkowany folder, kadruję zrzut bez danych wrażliwych i blokuję stanowisko.",
+            "Wysyłam pełny ekran wszystkim i zostawiam konto odblokowane.",
+            "Zapisuję ofertę w folderze systemowym i usuwam kopię."
+          ],
+          "correct": 0,
+          "explanation": "Łączysz skróty do okien, folderów, zrzutów i zabezpieczeń. Ćwicz na plikach testowych, a wynik weryfikuj, zamiast tylko zapamiętywać kombinacje klawiszy.",
+          "feedback": [
+            "Dobrze. Łączysz skróty do okien, folderów, zrzutów i zabezpieczeń. Ćwicz na plikach testowych, a wynik weryfikuj, zamiast tylko zapamiętywać kombinacje klawiszy.",
+            "Nie. Łączysz skróty do okien, folderów, zrzutów i zabezpieczeń. Ćwicz na plikach testowych, a wynik weryfikuj, zamiast tylko zapamiętywać kombinacje klawiszy.",
+            "Nie. Łączysz skróty do okien, folderów, zrzutów i zabezpieczeń. Ćwicz na plikach testowych, a wynik weryfikuj, zamiast tylko zapamiętywać kombinacje klawiszy."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Tworzę uporządkowany folder, kadruję zrzut bez danych wrażliwych i blokuję stanowisko."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Kontrola rozdziału: zadanie biurowe",
+            "text": "W pracy biurowej narzędzia łączą się: foldery, zapis, przełączanie okien, bezpieczeństwo i zrzuty ekranu. Nie uczysz się skrótów dla samych skrótów — mają pomóc doprowadzić zadanie do właściwego rezultatu."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Przygotuj katalog projektu, tekst oferty i zrzut komunikatu błędu. Zorganizuj dwie aplikacje na ekranie, a po wszystkim zablokuj komputer."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Przed zakończeniem sprawdź, czy wszystkie pliki mają jednoznaczne nazwy i nie zawierają danych innych osób."
+          }
+        ],
+        "illustration": "windows-folders",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 20,
+      "title_pl": "Ekspert: zarządzanie wersjami plików",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: zarządzanie wersjami plików",
+          "Nazwy typu final_final2 powodują pomyłki. Praktyczny schemat: data ISO, nazwa projektu, numer rewizji i właściciel. Nie zastępuje to wersjonowania w systemie zarządzania dokumentami.",
+          "Sytuacja z pracy lub domu: W obiegu masz trzy oferty z podobnymi nazwami i różnymi cenami.",
+          "Dobra praktyka: Oznaczam datę i rewizję, wskazuję wersję obowiązującą i archiwizuję starsze.",
+          "Typowy błąd, którego unikamy: Usuwam historię bez porównania zmian."
+        ],
+        "learning": {
+          "intro": "Nazwy typu final_final2 powodują pomyłki. Praktyczny schemat: data ISO, nazwa projektu, numer rewizji i właściciel. Nie zastępuje to wersjonowania w systemie zarządzania dokumentami.",
+          "situation": "W obiegu masz trzy oferty z podobnymi nazwami i różnymi cenami.",
+          "example": "Oznaczam datę i rewizję, wskazuję wersję obowiązującą i archiwizuję starsze.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Oznaczam datę i rewizję, wskazuję wersję obowiązującą i archiwizuję starsze.",
+            "Usuwam historię bez porównania zmian.",
+            "Wysyłam pierwszą przypadkową ofertę z Pobranych."
+          ],
+          "correct": 0,
+          "explanation": "Nazwy typu final_final2 powodują pomyłki. Praktyczny schemat: data ISO, nazwa projektu, numer rewizji i właściciel. Nie zastępuje to wersjonowania w systemie zarządzania dokumentami.",
+          "feedback": [
+            "Dobrze. Nazwy typu final_final2 powodują pomyłki. Praktyczny schemat: data ISO, nazwa projektu, numer rewizji i właściciel. Nie zastępuje to wersjonowania w systemie zarządzania dokumentami.",
+            "Nie. Nazwy typu final_final2 powodują pomyłki. Praktyczny schemat: data ISO, nazwa projektu, numer rewizji i właściciel. Nie zastępuje to wersjonowania w systemie zarządzania dokumentami.",
+            "Nie. Nazwy typu final_final2 powodują pomyłki. Praktyczny schemat: data ISO, nazwa projektu, numer rewizji i właściciel. Nie zastępuje to wersjonowania w systemie zarządzania dokumentami."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Oznaczam datę i rewizję, wskazuję wersję obowiązującą i archiwizuję starsze."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: zarządzanie wersjami plików",
+            "text": "Przy kilku wersjach dokumentu opisy „final2”, „final_poprawiony” i podobne prowadzą do niejasności. W praktyce stosuje się datę w formacie RRRR-MM-DD, nazwę projektu, rewizję i informację o odpowiedzialności."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Utwórz trzy wersje próbnej oferty i oznacz je datą oraz rewizjami V01, V02, V03. Wskaż tę, która została zatwierdzona."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Napisz, w jakim przypadku nie wystarczy zmiana nazwy pliku i potrzebne jest formalne wersjonowanie."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 21,
+      "title_pl": "Ekspert: rozwiązywanie zacięć",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: rozwiązywanie zacięć",
+          "Najpierw odróżnij problem jednego programu od problemu całego systemu. Menedżer zadań pomaga zobaczyć obciążenie; wymuszone zamknięcie może usunąć niezapisane dane.",
+          "Sytuacja z pracy lub domu: Program nie odpowiada przez minutę, ale inne okna działają.",
+          "Dobra praktyka: Sprawdzam stan aplikacji i dane, zanim rozważę zakończenie procesu.",
+          "Typowy błąd, którego unikamy: Natychmiast wyłączam zasilanie całego komputera."
+        ],
+        "learning": {
+          "intro": "Najpierw odróżnij problem jednego programu od problemu całego systemu. Menedżer zadań pomaga zobaczyć obciążenie; wymuszone zamknięcie może usunąć niezapisane dane.",
+          "situation": "Program nie odpowiada przez minutę, ale inne okna działają.",
+          "example": "Sprawdzam stan aplikacji i dane, zanim rozważę zakończenie procesu.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Sprawdzam stan aplikacji i dane, zanim rozważę zakończenie procesu.",
+            "Natychmiast wyłączam zasilanie całego komputera.",
+            "Usuwam wszystkie pliki użytkownika."
+          ],
+          "correct": 0,
+          "explanation": "Najpierw odróżnij problem jednego programu od problemu całego systemu. Menedżer zadań pomaga zobaczyć obciążenie; wymuszone zamknięcie może usunąć niezapisane dane.",
+          "feedback": [
+            "Dobrze. Najpierw odróżnij problem jednego programu od problemu całego systemu. Menedżer zadań pomaga zobaczyć obciążenie; wymuszone zamknięcie może usunąć niezapisane dane.",
+            "Nie. Najpierw odróżnij problem jednego programu od problemu całego systemu. Menedżer zadań pomaga zobaczyć obciążenie; wymuszone zamknięcie może usunąć niezapisane dane.",
+            "Nie. Najpierw odróżnij problem jednego programu od problemu całego systemu. Menedżer zadań pomaga zobaczyć obciążenie; wymuszone zamknięcie może usunąć niezapisane dane."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Sprawdzam stan aplikacji i dane, zanim rozważę zakończenie procesu."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: rozwiązywanie zacięć",
+            "text": "Jeśli jeden program nie odpowiada, nie zakładaj od razu awarii całego komputera. Menedżer zadań może pomóc zobaczyć zużycie pamięci i procesora. Wymuszone zamknięcie grozi utratą niezapisanych zmian."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Otwórz Menedżer zadań i sprawdź bez kończenia procesów, które programy zużywają najwięcej zasobów."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Ułóż bezpieczną kolejność: sprawdzenie programu, oczekiwanie, zapis innych zadań, dopiero potem rozważenie zakończenia."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 22,
+      "title_pl": "Ekspert: kopia, synchronizacja i archiwum",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: kopia, synchronizacja i archiwum",
+          "Synchronizacja przenosi zmiany między urządzeniami, w tym przypadkowe usunięcia; prawdziwa kopia zapasowa powinna pozwalać przywrócić wcześniejszy stan. Testuj odzyskiwanie.",
+          "Sytuacja z pracy lub domu: Masz dokumenty tylko w jednym folderze synchronizowanym z chmurą.",
+          "Dobra praktyka: Wykonuję niezależną kopię i testuję odzyskanie pliku.",
+          "Typowy błąd, którego unikamy: Zakładam, że synchronizacja automatycznie gwarantuje każdą wersję."
+        ],
+        "learning": {
+          "intro": "Synchronizacja przenosi zmiany między urządzeniami, w tym przypadkowe usunięcia; prawdziwa kopia zapasowa powinna pozwalać przywrócić wcześniejszy stan. Testuj odzyskiwanie.",
+          "situation": "Masz dokumenty tylko w jednym folderze synchronizowanym z chmurą.",
+          "example": "Wykonuję niezależną kopię i testuję odzyskanie pliku.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Wykonuję niezależną kopię i testuję odzyskanie pliku.",
+            "Zakładam, że synchronizacja automatycznie gwarantuje każdą wersję.",
+            "Polegając na ikonie chmury, kasuję oryginały i kosz."
+          ],
+          "correct": 0,
+          "explanation": "Synchronizacja przenosi zmiany między urządzeniami, w tym przypadkowe usunięcia; prawdziwa kopia zapasowa powinna pozwalać przywrócić wcześniejszy stan. Testuj odzyskiwanie.",
+          "feedback": [
+            "Dobrze. Synchronizacja przenosi zmiany między urządzeniami, w tym przypadkowe usunięcia; prawdziwa kopia zapasowa powinna pozwalać przywrócić wcześniejszy stan. Testuj odzyskiwanie.",
+            "Nie. Synchronizacja przenosi zmiany między urządzeniami, w tym przypadkowe usunięcia; prawdziwa kopia zapasowa powinna pozwalać przywrócić wcześniejszy stan. Testuj odzyskiwanie.",
+            "Nie. Synchronizacja przenosi zmiany między urządzeniami, w tym przypadkowe usunięcia; prawdziwa kopia zapasowa powinna pozwalać przywrócić wcześniejszy stan. Testuj odzyskiwanie."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Wykonuję niezależną kopię i testuję odzyskanie pliku."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: kopia, synchronizacja i archiwum",
+            "text": "Synchronizacja aktualizuje pliki między urządzeniami i może przenieść też przypadkowe usunięcie. Kopia zapasowa powinna pozwalać wrócić do wcześniejszego stanu. Archiwum chroni dokumentację długoterminowo, zgodnie z zasadami przechowywania."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Zrób kopię próbnego pliku w niezależnym miejscu i sprawdź, czy można ją otworzyć po usunięciu kopii roboczej."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wyjaśnij, dlaczego nie można uznać jednej zsynchronizowanej chmury za jedyną kopię zapasową."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 23,
+      "title_pl": "Ekspert: bezpieczna praca na koncie",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: bezpieczna praca na koncie",
+          "Konto standardowe ogranicza skutki pomyłek; administrator może zmieniać system. MFA i silne, odrębne hasła chronią dostęp do usług. Hasła nie powinny być przechowywane w pliku na pulpicie.",
+          "Sytuacja z pracy lub domu: Kolega prosi o hasło administratora, bo chce zainstalować drukarkę.",
+          "Dobra praktyka: Proszę o zatwierdzoną procedurę IT i instaluję tylko sprawdzony sterownik.",
+          "Typowy błąd, którego unikamy: Wysyłam swoje hasło komunikatorem."
+        ],
+        "learning": {
+          "intro": "Konto standardowe ogranicza skutki pomyłek; administrator może zmieniać system. MFA i silne, odrębne hasła chronią dostęp do usług. Hasła nie powinny być przechowywane w pliku na pulpicie.",
+          "situation": "Kolega prosi o hasło administratora, bo chce zainstalować drukarkę.",
+          "example": "Proszę o zatwierdzoną procedurę IT i instaluję tylko sprawdzony sterownik.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Proszę o zatwierdzoną procedurę IT i instaluję tylko sprawdzony sterownik.",
+            "Wysyłam swoje hasło komunikatorem.",
+            "Daję wszystkim dostęp administratora na stałe."
+          ],
+          "correct": 0,
+          "explanation": "Konto standardowe ogranicza skutki pomyłek; administrator może zmieniać system. MFA i silne, odrębne hasła chronią dostęp do usług. Hasła nie powinny być przechowywane w pliku na pulpicie.",
+          "feedback": [
+            "Dobrze. Konto standardowe ogranicza skutki pomyłek; administrator może zmieniać system. MFA i silne, odrębne hasła chronią dostęp do usług. Hasła nie powinny być przechowywane w pliku na pulpicie.",
+            "Nie. Konto standardowe ogranicza skutki pomyłek; administrator może zmieniać system. MFA i silne, odrębne hasła chronią dostęp do usług. Hasła nie powinny być przechowywane w pliku na pulpicie.",
+            "Nie. Konto standardowe ogranicza skutki pomyłek; administrator może zmieniać system. MFA i silne, odrębne hasła chronią dostęp do usług. Hasła nie powinny być przechowywane w pliku na pulpicie."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Proszę o zatwierdzoną procedurę IT i instaluję tylko sprawdzony sterownik."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: bezpieczna praca na koncie",
+            "text": "Konto zwykłego użytkownika ma inne uprawnienia niż administrator. Wieloskładnikowe uwierzytelnianie i osobne hasła do usług wzmacniają ochronę. Użytkownik nie powinien rozdawać haseł w zespole."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Wyjaśnij, które działanie wymaga praw administratora, a które można zrobić zwykłym kontem. Sprawdź w ustawieniach, jakie konto posiadasz."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Podaj przykład bezpiecznego udostępnienia dokumentu bez ujawniania hasła."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 24,
+      "title_pl": "Ekspert: diagnoza pliku i rozszerzenia",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: diagnoza pliku i rozszerzenia",
+          "Rozszerzenie .pdf, .docx czy .xlsx mówi o formacie, ale zmiana końcówki nie konwertuje pliku. Podejrzane podwójne rozszerzenia mogą ukrywać program wykonywalny.",
+          "Sytuacja z pracy lub domu: Otrzymujesz plik 'faktura.pdf.exe' od nieznanego nadawcy.",
+          "Dobra praktyka: Nie uruchamiam go i weryfikuję nadawcę bez otwierania załącznika.",
+          "Typowy błąd, którego unikamy: Otwieram go, bo widzę słowo PDF."
+        ],
+        "learning": {
+          "intro": "Rozszerzenie .pdf, .docx czy .xlsx mówi o formacie, ale zmiana końcówki nie konwertuje pliku. Podejrzane podwójne rozszerzenia mogą ukrywać program wykonywalny.",
+          "situation": "Otrzymujesz plik 'faktura.pdf.exe' od nieznanego nadawcy.",
+          "example": "Nie uruchamiam go i weryfikuję nadawcę bez otwierania załącznika.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Nie uruchamiam go i weryfikuję nadawcę bez otwierania załącznika.",
+            "Otwieram go, bo widzę słowo PDF.",
+            "Zmieniając nazwę na faktura.pdf, uznaję go za bezpieczny."
+          ],
+          "correct": 0,
+          "explanation": "Rozszerzenie .pdf, .docx czy .xlsx mówi o formacie, ale zmiana końcówki nie konwertuje pliku. Podejrzane podwójne rozszerzenia mogą ukrywać program wykonywalny.",
+          "feedback": [
+            "Dobrze. Rozszerzenie .pdf, .docx czy .xlsx mówi o formacie, ale zmiana końcówki nie konwertuje pliku. Podejrzane podwójne rozszerzenia mogą ukrywać program wykonywalny.",
+            "Nie. Rozszerzenie .pdf, .docx czy .xlsx mówi o formacie, ale zmiana końcówki nie konwertuje pliku. Podejrzane podwójne rozszerzenia mogą ukrywać program wykonywalny.",
+            "Nie. Rozszerzenie .pdf, .docx czy .xlsx mówi o formacie, ale zmiana końcówki nie konwertuje pliku. Podejrzane podwójne rozszerzenia mogą ukrywać program wykonywalny."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Nie uruchamiam go i weryfikuję nadawcę bez otwierania załącznika."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: diagnoza pliku i rozszerzenia",
+            "text": "Końcówka pliku pomaga identyfikować format, ale nie zmienia jego rzeczywistej zawartości. Nazwa faktura.pdf.exe może oznaczać program wykonywalny, mimo słowa PDF w środku."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "W testowym folderze włącz pokazywanie rozszerzeń. Porównaj nazwy .pdf, .docx i .exe bez otwierania nieznanych plików."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wytłumacz, dlaczego samodzielna zmiana .exe na .pdf nie czyni pliku bezpiecznym."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 25,
+      "title_pl": "Ekspert: przyspieszanie bez ryzyka",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: przyspieszanie bez ryzyka",
+          "Najpierw sprawdź, czy problemem jest dysk, pamięć czy obciążony proces. Nie instaluj agresywnych czyścicieli i nie usuwaj plików systemowych bez diagnostyki.",
+          "Sytuacja z pracy lub domu: Komputer długo się uruchamia po instalacji wielu aplikacji.",
+          "Dobra praktyka: Sprawdzam programy uruchamiane przy starcie i działam etapami.",
+          "Typowy błąd, którego unikamy: Kasuję przypadkowe pliki w folderze Windows."
+        ],
+        "learning": {
+          "intro": "Najpierw sprawdź, czy problemem jest dysk, pamięć czy obciążony proces. Nie instaluj agresywnych czyścicieli i nie usuwaj plików systemowych bez diagnostyki.",
+          "situation": "Komputer długo się uruchamia po instalacji wielu aplikacji.",
+          "example": "Sprawdzam programy uruchamiane przy starcie i działam etapami.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Sprawdzam programy uruchamiane przy starcie i działam etapami.",
+            "Kasuję przypadkowe pliki w folderze Windows.",
+            "Wyłączam wszystkie zabezpieczenia systemowe."
+          ],
+          "correct": 0,
+          "explanation": "Najpierw sprawdź, czy problemem jest dysk, pamięć czy obciążony proces. Nie instaluj agresywnych czyścicieli i nie usuwaj plików systemowych bez diagnostyki.",
+          "feedback": [
+            "Dobrze. Najpierw sprawdź, czy problemem jest dysk, pamięć czy obciążony proces. Nie instaluj agresywnych czyścicieli i nie usuwaj plików systemowych bez diagnostyki.",
+            "Nie. Najpierw sprawdź, czy problemem jest dysk, pamięć czy obciążony proces. Nie instaluj agresywnych czyścicieli i nie usuwaj plików systemowych bez diagnostyki.",
+            "Nie. Najpierw sprawdź, czy problemem jest dysk, pamięć czy obciążony proces. Nie instaluj agresywnych czyścicieli i nie usuwaj plików systemowych bez diagnostyki."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Sprawdzam programy uruchamiane przy starcie i działam etapami."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: przyspieszanie bez ryzyka",
+            "text": "Przed „optymalizacją” sprawdź, co rzeczywiście spowalnia komputer: zbyt wiele programów przy starcie, przeciążony dysk, mało wolnej pamięci lub problem aplikacji. Nie usuwaj przypadkowych plików systemowych."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "W Menedżerze zadań porównaj programy startowe i zużycie pamięci. Zanotuj zmianę przed i po wyłączeniu jednego zbędnego programu, bez ingerencji w usługi krytyczne."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Zdefiniuj, jak odróżnisz poprawę rzeczywistą od przypadkowego wrażenia, że komputer jest szybszy."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 26,
+      "title_pl": "Ekspert: współdzielenie dokumentów",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: współdzielenie dokumentów",
+          "Współpraca wymaga jednoznacznej wersji pliku, zakresu dostępu i odpowiedzialności. Samo przesłanie linku nie oznacza, że odbiorca może edytować lub że dostęp jest ograniczony.",
+          "Sytuacja z pracy lub domu: Klient ma przeczytać ofertę, ale nie powinien jej modyfikować.",
+          "Dobra praktyka: Przekazuję wersję do odczytu i sprawdzam uprawnienia odbiorcy.",
+          "Typowy błąd, którego unikamy: Udostępniam cały dysk firmowy publicznie."
+        ],
+        "learning": {
+          "intro": "Współpraca wymaga jednoznacznej wersji pliku, zakresu dostępu i odpowiedzialności. Samo przesłanie linku nie oznacza, że odbiorca może edytować lub że dostęp jest ograniczony.",
+          "situation": "Klient ma przeczytać ofertę, ale nie powinien jej modyfikować.",
+          "example": "Przekazuję wersję do odczytu i sprawdzam uprawnienia odbiorcy.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Przekazuję wersję do odczytu i sprawdzam uprawnienia odbiorcy.",
+            "Udostępniam cały dysk firmowy publicznie.",
+            "Nadaję anonimowej osobie uprawnienia administratora."
+          ],
+          "correct": 0,
+          "explanation": "Współpraca wymaga jednoznacznej wersji pliku, zakresu dostępu i odpowiedzialności. Samo przesłanie linku nie oznacza, że odbiorca może edytować lub że dostęp jest ograniczony.",
+          "feedback": [
+            "Dobrze. Współpraca wymaga jednoznacznej wersji pliku, zakresu dostępu i odpowiedzialności. Samo przesłanie linku nie oznacza, że odbiorca może edytować lub że dostęp jest ograniczony.",
+            "Nie. Współpraca wymaga jednoznacznej wersji pliku, zakresu dostępu i odpowiedzialności. Samo przesłanie linku nie oznacza, że odbiorca może edytować lub że dostęp jest ograniczony.",
+            "Nie. Współpraca wymaga jednoznacznej wersji pliku, zakresu dostępu i odpowiedzialności. Samo przesłanie linku nie oznacza, że odbiorca może edytować lub że dostęp jest ograniczony."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Przekazuję wersję do odczytu i sprawdzam uprawnienia odbiorcy."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: współdzielenie dokumentów",
+            "text": "Sama obecność przycisku Udostępnij nie oznacza, że każdy odbiorca powinien móc edytować. Sprawdź tożsamość, poziom dostępu, okres ważności i dane w dokumencie. W firmie obowiązują polityki dostępu."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Udostępnij próbny dokument do odczytu i sprawdź, czy odbiorca nie ma prawa jego edycji."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Przed wysłaniem wyjaśnij, dlaczego link „każdy z linkiem może edytować” może naruszać poufność."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 27,
+      "title_pl": "Ekspert: dostępność i ergonomia",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: dostępność i ergonomia",
+          "Kontrast, czytelna wielkość tekstu i nawigacja klawiaturą wspierają osoby o różnych potrzebach. Ułatwienia dostępu nie są oznaką braku umiejętności; to narzędzia pracy.",
+          "Sytuacja z pracy lub domu: Pracownik ma trudność z odczytaniem małych napisów w aplikacji.",
+          "Dobra praktyka: Zmieniam skalę wyświetlania lub uruchamiam lupę i sprawdzam czytelność.",
+          "Typowy błąd, którego unikamy: Mówię mu, że ma pracować wolniej bez dostosowań."
+        ],
+        "learning": {
+          "intro": "Kontrast, czytelna wielkość tekstu i nawigacja klawiaturą wspierają osoby o różnych potrzebach. Ułatwienia dostępu nie są oznaką braku umiejętności; to narzędzia pracy.",
+          "situation": "Pracownik ma trudność z odczytaniem małych napisów w aplikacji.",
+          "example": "Zmieniam skalę wyświetlania lub uruchamiam lupę i sprawdzam czytelność.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Zmieniam skalę wyświetlania lub uruchamiam lupę i sprawdzam czytelność.",
+            "Mówię mu, że ma pracować wolniej bez dostosowań.",
+            "Przestawiam kolory losowo, bez zgody użytkownika."
+          ],
+          "correct": 0,
+          "explanation": "Kontrast, czytelna wielkość tekstu i nawigacja klawiaturą wspierają osoby o różnych potrzebach. Ułatwienia dostępu nie są oznaką braku umiejętności; to narzędzia pracy.",
+          "feedback": [
+            "Dobrze. Kontrast, czytelna wielkość tekstu i nawigacja klawiaturą wspierają osoby o różnych potrzebach. Ułatwienia dostępu nie są oznaką braku umiejętności; to narzędzia pracy.",
+            "Nie. Kontrast, czytelna wielkość tekstu i nawigacja klawiaturą wspierają osoby o różnych potrzebach. Ułatwienia dostępu nie są oznaką braku umiejętności; to narzędzia pracy.",
+            "Nie. Kontrast, czytelna wielkość tekstu i nawigacja klawiaturą wspierają osoby o różnych potrzebach. Ułatwienia dostępu nie są oznaką braku umiejętności; to narzędzia pracy."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Zmieniam skalę wyświetlania lub uruchamiam lupę i sprawdzam czytelność."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: dostępność i ergonomia",
+            "text": "Skala interfejsu, kontrast, narrator i nawigacja klawiaturą pomagają pracować osobom o różnych potrzebach. Dostępność nie jest dodatkiem dla niewielkiej grupy — może przydać się każdemu przy słabym oświetleniu i zmęczeniu."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Sprawdź lupę systemową i wybierz czytelniejszy rozmiar tekstu na ekranie, zachowując możliwość powrotu do ustawień."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Opisz, jak dostosować interfejs dla współpracownika bez narzucania mu własnych preferencji."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 28,
+      "title_pl": "Ekspert: incydent z danymi",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Ekspert: incydent z danymi",
+          "Pomyłkowe udostępnienie pliku może być incydentem. W firmie liczy się szybkie zgłoszenie i ograniczenie szkód zgodnie z procedurą, a nie samodzielne ukrywanie błędu.",
+          "Sytuacja z pracy lub domu: Wysyłasz poufną listę do niewłaściwego odbiorcy.",
+          "Dobra praktyka: Zgłaszam błąd odpowiedzialnej osobie i wykonuję procedurę ograniczenia dostępu.",
+          "Typowy błąd, którego unikamy: Kasuję historię i nikomu nic nie mówię."
+        ],
+        "learning": {
+          "intro": "Pomyłkowe udostępnienie pliku może być incydentem. W firmie liczy się szybkie zgłoszenie i ograniczenie szkód zgodnie z procedurą, a nie samodzielne ukrywanie błędu.",
+          "situation": "Wysyłasz poufną listę do niewłaściwego odbiorcy.",
+          "example": "Zgłaszam błąd odpowiedzialnej osobie i wykonuję procedurę ograniczenia dostępu.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Zgłaszam błąd odpowiedzialnej osobie i wykonuję procedurę ograniczenia dostępu.",
+            "Kasuję historię i nikomu nic nie mówię.",
+            "Publikuję kolejną listę, żeby wyjaśnić sytuację."
+          ],
+          "correct": 0,
+          "explanation": "Pomyłkowe udostępnienie pliku może być incydentem. W firmie liczy się szybkie zgłoszenie i ograniczenie szkód zgodnie z procedurą, a nie samodzielne ukrywanie błędu.",
+          "feedback": [
+            "Dobrze. Pomyłkowe udostępnienie pliku może być incydentem. W firmie liczy się szybkie zgłoszenie i ograniczenie szkód zgodnie z procedurą, a nie samodzielne ukrywanie błędu.",
+            "Nie. Pomyłkowe udostępnienie pliku może być incydentem. W firmie liczy się szybkie zgłoszenie i ograniczenie szkód zgodnie z procedurą, a nie samodzielne ukrywanie błędu.",
+            "Nie. Pomyłkowe udostępnienie pliku może być incydentem. W firmie liczy się szybkie zgłoszenie i ograniczenie szkód zgodnie z procedurą, a nie samodzielne ukrywanie błędu."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Zgłaszam błąd odpowiedzialnej osobie i wykonuję procedurę ograniczenia dostępu."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspert: incydent z danymi",
+            "text": "Wysłanie poufnego pliku niewłaściwej osobie może być incydentem bezpieczeństwa. Liczy się szybkie ograniczenie szkody, zgłoszenie odpowiedzialnym osobom i udokumentowanie działań — nie próba ukrycia błędu."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Zaplanuj fikcyjny incydent: zły odbiorca dostał listę klientów. Zapisz trzy kroki ograniczenia ryzyka oraz kanał zgłoszenia w firmie."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Wyjaśnij, dlaczego usunięcie wiadomości tylko we własnej skrzynce nie cofa wysłania."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "windows-skroty",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny: samodzielny projekt",
+      "material": {
+        "level": "expert",
+        "section": 3,
+        "raw": [
+          "Egzamin próbny: samodzielny projekt",
+          "Poziom zaawansowany to połączenie wiedzy, decyzji i kontroli wyniku. Przygotuj strukturę plików dla małego projektu, opisz reguły nazewnictwa i wykonaj bezpieczne udostępnienie.",
+          "Sytuacja z pracy lub domu: Masz oddać nowemu współpracownikowi uporządkowaną dokumentację i instrukcję odzyskiwania plików.",
+          "Dobra praktyka: Przygotowuję strukturę, zasady dostępu, wersje i niezależną kopię do odtworzenia.",
+          "Typowy błąd, którego unikamy: Zgrywam przypadkowe pliki bez nazw i oddaję wszystkie hasła."
+        ],
+        "learning": {
+          "intro": "Poziom zaawansowany to połączenie wiedzy, decyzji i kontroli wyniku. Przygotuj strukturę plików dla małego projektu, opisz reguły nazewnictwa i wykonaj bezpieczne udostępnienie.",
+          "situation": "Masz oddać nowemu współpracownikowi uporządkowaną dokumentację i instrukcję odzyskiwania plików.",
+          "example": "Przygotowuję strukturę, zasady dostępu, wersje i niezależną kopię do odtworzenia.",
+          "question": "Jak postąpisz w opisanej sytuacji?",
+          "options": [
+            "Przygotowuję strukturę, zasady dostępu, wersje i niezależną kopię do odtworzenia.",
+            "Zgrywam przypadkowe pliki bez nazw i oddaję wszystkie hasła.",
+            "Opieram proces na jednym dysku bez kopii i bez testu odtworzenia."
+          ],
+          "correct": 0,
+          "explanation": "Poziom zaawansowany to połączenie wiedzy, decyzji i kontroli wyniku. Przygotuj strukturę plików dla małego projektu, opisz reguły nazewnictwa i wykonaj bezpieczne udostępnienie.",
+          "feedback": [
+            "Dobrze. Poziom zaawansowany to połączenie wiedzy, decyzji i kontroli wyniku. Przygotuj strukturę plików dla małego projektu, opisz reguły nazewnictwa i wykonaj bezpieczne udostępnienie.",
+            "Nie. Poziom zaawansowany to połączenie wiedzy, decyzji i kontroli wyniku. Przygotuj strukturę plików dla małego projektu, opisz reguły nazewnictwa i wykonaj bezpieczne udostępnienie.",
+            "Nie. Poziom zaawansowany to połączenie wiedzy, decyzji i kontroli wyniku. Przygotuj strukturę plików dla małego projektu, opisz reguły nazewnictwa i wykonaj bezpieczne udostępnienie."
+          ],
+          "task": "Na własnym przykładzie sprawdź decyzję: Przygotowuję strukturę, zasady dostępu, wersje i niezależną kopię do odtworzenia."
+        },
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Egzamin próbny: samodzielny projekt",
+            "text": "Ekspert łączy dobry system plików, kontrolę wersji, zabezpieczenie danych i umiejętność wyjaśnienia problemu innym. Samo zapamiętanie Win+E lub Ctrl+S nie oznacza gotowości do prowadzenia projektu."
+          },
+          {
+            "heading": "Przejdź przez ćwiczenie krok po kroku",
+            "text": "Utwórz testowy projekt: trzy foldery, dwie wersje raportu, kopię zapasową, udostępnienie tylko do odczytu i instrukcję odzyskania danych. Wszystkie kroki wykonaj bez danych klientów."
+          },
+          {
+            "heading": "Sprawdź, czy naprawdę rozumiesz",
+            "text": "Przed egzaminem z Anielką opisz, jak udowodnisz, że plik istnieje, jest aktualny, zabezpieczony i w razie potrzeby można go przywrócić."
+          }
+        ],
+        "illustration": "windows-security",
+        "sources": [
+          {
+            "label": "Microsoft — historia Windows",
+            "url": "https://www.microsoft.com/en-us/windows/learning-center/history-of-the-pc"
+          }
+        ]
+      }
+    }
+  ]
+}
