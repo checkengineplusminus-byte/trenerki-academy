@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform} from 'react-native';
+import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
@@ -21,6 +21,7 @@ type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
  const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
  const scrollRef=React.useRef<ScrollView>(null),exerciseYRef=React.useRef(0);
  function scrollToTop(){
   scrollRef.current?.scrollTo({y:0,animated:false});
@@ -148,9 +149,9 @@ export default function Learning(){
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
  }
- return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:18,paddingTop:25,paddingBottom:65,maxWidth:860,alignSelf:'center',width:'100%'}}>
+ return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
-  <Text style={{fontSize:31,fontWeight:'900',color:ink,marginTop:15,marginBottom:9}}>Moja nauka</Text>
+  <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>Moja nauka</Text>
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
   {!!items.length&&<>
@@ -204,7 +205,12 @@ export default function Learning(){
      <Text style={{fontWeight:'900',color:ink}}>{index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT'}</Text>
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
-   <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
+   <Text style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:6,marginBottom:16,alignItems:'center'}}>
+    <Text style={{color:'#366846',fontWeight:'900',fontSize:12,backgroundColor:'#e1efda',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
+    <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
+    <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
+   </View>
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
@@ -233,18 +239,17 @@ export default function Learning(){
    </View>
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
 
-   <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
-    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Rozwiąż zadanie, aby przejść dalej':next!==undefined?'Zalicz lekcję i przejdź dalej →':'Zakończ lekcje i przejdź do egzaminu →'}</Text>
+   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
+   <Pressable accessibilityRole="button" disabled={saving}
+    onPress={()=>{if(canFinish)void finishLesson();else returnToExercise()}}
+    style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
+    <Text style={{color:canFinish?'white':ink,fontWeight:'900',textAlign:'center',fontSize:17,lineHeight:25}}>
+     {saving?'Zapisuję…':!canFinish?'↑ Najpierw rozwiąż zadanie':next!==undefined?'Dalej · lekcja '+(index+2)+' →':'Przejdź do egzaminu →'}
+    </Text>
+    {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>
-   {!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Wybierz poprawną odpowiedź w ćwiczeniu. Kolejne lekcje otwierają się po kolei.</Text>}
-   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}
-    canMoveOn={canFinish}
-    onFinish={()=>{if(canFinish){void finishLesson()}else{returnToExercise()}}}/>
-   {next!==undefined&&<View style={{padding:13,marginTop:10,backgroundColor:'#f0f5ed',borderRadius:11}}>
-     <Text style={{color:'#648067',fontWeight:'800',fontSize:12}}>NASTĘPNA LEKCJA · {index+2}/{items.length}</Text>
-     <Text style={{color:ink,fontWeight:'800',fontSize:15,marginTop:5}}>{items[index+1]?.title_pl}</Text>
-    </View>}
-   <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:19,gap:12}}>
+   {!canFinish&&<Text style={{fontSize:12,color:'#647565',lineHeight:19,marginTop:7,textAlign:'center'}}>Po poprawnym rozwiązaniu przycisk „Dalej” odblokuje się automatycznie.</Text>}
+   <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:12,gap:12}}>
     <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
      <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
     </Pressable>
