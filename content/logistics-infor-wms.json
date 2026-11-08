@@ -1,0 +1,1333 @@
+{
+  "schema_version": 2,
+  "course_slug": "infor-wms",
+  "intro": "Infor CloudSuite WMS obsługuje magazyny dystrybucyjne, 3PL i e-commerce, łącząc RF, zapasy, cross-docking, kitting, labor management oraz analizy wizualne. Dokładny interfejs zależy od wdrożenia.",
+  "source": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Operacje magazynowe",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 0,
+      "title_pl": "Infor CloudSuite WMS od podstaw",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Infor CloudSuite WMS od podstaw",
+          "WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP.",
+          "Gdzie wykorzystasz tę wiedzę: Na początku pracy widzisz zamówienia, ale nie ruchy fizyczne. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Odszukaj funkcję operacji magazynowej, nie tylko kartotekę w ERP. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP.",
+          "situation": "Na początku pracy widzisz zamówienia, ale nie ruchy fizyczne.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Odszukaj funkcję operacji magazynowej, nie tylko kartotekę w ERP.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Odszukaj funkcję operacji magazynowej, nie tylko kartotekę w ERP.",
+          "explanation": "WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP.",
+          "feedback": [
+            "Tak. WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP.",
+            "Nie. WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP.",
+            "Nie. WMS wykonuje operacje hali, często zintegrowane z ERP Infor lub innym ERP."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Odszukaj funkcję operacji magazynowej, nie tylko kartotekę w ERP."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Na początku pracy widzisz zamówienia, ale nie ruchy fizyczne.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 1,
+      "title_pl": "Interfejs web i mobilny RF",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Interfejs web i mobilny RF",
+          "Infor WMS może działać przez ekrany operacyjne i terminale RF.",
+          "Gdzie wykorzystasz tę wiedzę: Operator nie widzi opcji przyjęcia. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź rolę, menu i stanowisko. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Infor WMS może działać przez ekrany operacyjne i terminale RF.",
+          "situation": "Operator nie widzi opcji przyjęcia.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź rolę, menu i stanowisko.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rolę, menu i stanowisko.",
+          "explanation": "Infor WMS może działać przez ekrany operacyjne i terminale RF.",
+          "feedback": [
+            "Tak. Infor WMS może działać przez ekrany operacyjne i terminale RF.",
+            "Nie. Infor WMS może działać przez ekrany operacyjne i terminale RF.",
+            "Nie. Infor WMS może działać przez ekrany operacyjne i terminale RF."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź rolę, menu i stanowisko."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Operator nie widzi opcji przyjęcia.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 2,
+      "title_pl": "Company, warehouse, owner",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Company, warehouse, owner",
+          "W środowisku multi-owner zapas należy do konkretnego właściciela; nie wolno mieszać klientów 3PL.",
+          "Gdzie wykorzystasz tę wiedzę: Dwie firmy mają identyczny SKU. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Identyfikuj owner oraz SKU przed ruchem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "W środowisku multi-owner zapas należy do konkretnego właściciela; nie wolno mieszać klientów 3PL.",
+          "situation": "Dwie firmy mają identyczny SKU.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Identyfikuj owner oraz SKU przed ruchem.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Identyfikuj owner oraz SKU przed ruchem.",
+          "explanation": "W środowisku multi-owner zapas należy do konkretnego właściciela; nie wolno mieszać klientów 3PL.",
+          "feedback": [
+            "Tak. W środowisku multi-owner zapas należy do konkretnego właściciela; nie wolno mieszać klientów 3PL.",
+            "Nie. W środowisku multi-owner zapas należy do konkretnego właściciela; nie wolno mieszać klientów 3PL.",
+            "Nie. W środowisku multi-owner zapas należy do konkretnego właściciela; nie wolno mieszać klientów 3PL."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Identyfikuj owner oraz SKU przed ruchem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwie firmy mają identyczny SKU.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 3,
+      "title_pl": "SKU, pack i jednostka",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "SKU, pack i jednostka",
+          "Opakowania jednostkowe, kartony i palety wymagają spójnych przeliczników.",
+          "Gdzie wykorzystasz tę wiedzę: Jedno opakowanie zbiorcze zawiera 16 sztuk. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Przelicz ilość i sprawdź kartotekę towaru. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Opakowania jednostkowe, kartony i palety wymagają spójnych przeliczników.",
+          "situation": "Jedno opakowanie zbiorcze zawiera 16 sztuk.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Przelicz ilość i sprawdź kartotekę towaru.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Przelicz ilość i sprawdź kartotekę towaru.",
+          "explanation": "Opakowania jednostkowe, kartony i palety wymagają spójnych przeliczników.",
+          "feedback": [
+            "Tak. Opakowania jednostkowe, kartony i palety wymagają spójnych przeliczników.",
+            "Nie. Opakowania jednostkowe, kartony i palety wymagają spójnych przeliczników.",
+            "Nie. Opakowania jednostkowe, kartony i palety wymagają spójnych przeliczników."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Przelicz ilość i sprawdź kartotekę towaru."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Jedno opakowanie zbiorcze zawiera 16 sztuk.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 4,
+      "title_pl": "Inventory status",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Inventory status",
+          "Towar w kwarantannie nie jest równoważny dostępnemu zapasowi.",
+          "Gdzie wykorzystasz tę wiedzę: Jedna partia została zatrzymana przez QA. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Nie wydawaj tej partii przed zwolnieniem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Towar w kwarantannie nie jest równoważny dostępnemu zapasowi.",
+          "situation": "Jedna partia została zatrzymana przez QA.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Nie wydawaj tej partii przed zwolnieniem.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Nie wydawaj tej partii przed zwolnieniem.",
+          "explanation": "Towar w kwarantannie nie jest równoważny dostępnemu zapasowi.",
+          "feedback": [
+            "Tak. Towar w kwarantannie nie jest równoważny dostępnemu zapasowi.",
+            "Nie. Towar w kwarantannie nie jest równoważny dostępnemu zapasowi.",
+            "Nie. Towar w kwarantannie nie jest równoważny dostępnemu zapasowi."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Nie wydawaj tej partii przed zwolnieniem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Jedna partia została zatrzymana przez QA.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 5,
+      "title_pl": "ASN i receiving",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ASN i receiving",
+          "Dokument awiza może zapowiadać przyjęcie ze wskazanym dostawcą i ilością.",
+          "Gdzie wykorzystasz tę wiedzę: W dostawie jest o karton mniej niż na awizie. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zarejestruj faktyczną ilość i rozbieżność. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Dokument awiza może zapowiadać przyjęcie ze wskazanym dostawcą i ilością.",
+          "situation": "W dostawie jest o karton mniej niż na awizie.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zarejestruj faktyczną ilość i rozbieżność.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj faktyczną ilość i rozbieżność.",
+          "explanation": "Dokument awiza może zapowiadać przyjęcie ze wskazanym dostawcą i ilością.",
+          "feedback": [
+            "Tak. Dokument awiza może zapowiadać przyjęcie ze wskazanym dostawcą i ilością.",
+            "Nie. Dokument awiza może zapowiadać przyjęcie ze wskazanym dostawcą i ilością.",
+            "Nie. Dokument awiza może zapowiadać przyjęcie ze wskazanym dostawcą i ilością."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zarejestruj faktyczną ilość i rozbieżność."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: W dostawie jest o karton mniej niż na awizie.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 6,
+      "title_pl": "Directed putaway",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Directed putaway",
+          "Przy odkładaniu system może kierować towar do odpowiedniej strefy.",
+          "Gdzie wykorzystasz tę wiedzę: Paleta jest zbyt duża do wskazanej lokacji. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Uruchom procedurę wyjątku i dozwolony adres. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przy odkładaniu system może kierować towar do odpowiedniej strefy.",
+          "situation": "Paleta jest zbyt duża do wskazanej lokacji.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Uruchom procedurę wyjątku i dozwolony adres.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Uruchom procedurę wyjątku i dozwolony adres.",
+          "explanation": "Przy odkładaniu system może kierować towar do odpowiedniej strefy.",
+          "feedback": [
+            "Tak. Przy odkładaniu system może kierować towar do odpowiedniej strefy.",
+            "Nie. Przy odkładaniu system może kierować towar do odpowiedniej strefy.",
+            "Nie. Przy odkładaniu system może kierować towar do odpowiedniej strefy."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Uruchom procedurę wyjątku i dozwolony adres."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Paleta jest zbyt duża do wskazanej lokacji.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 7,
+      "title_pl": "Lot/batch traceability",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Lot/batch traceability",
+          "Śledzenie partii wspiera rotację i reakcję na reklamacje.",
+          "Gdzie wykorzystasz tę wiedzę: Produkt z partii P23 ma wezwanie do kontroli. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Odszukaj i odseparuj właściwe partie. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Śledzenie partii wspiera rotację i reakcję na reklamacje.",
+          "situation": "Produkt z partii P23 ma wezwanie do kontroli.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Odszukaj i odseparuj właściwe partie.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Odszukaj i odseparuj właściwe partie.",
+          "explanation": "Śledzenie partii wspiera rotację i reakcję na reklamacje.",
+          "feedback": [
+            "Tak. Śledzenie partii wspiera rotację i reakcję na reklamacje.",
+            "Nie. Śledzenie partii wspiera rotację i reakcję na reklamacje.",
+            "Nie. Śledzenie partii wspiera rotację i reakcję na reklamacje."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Odszukaj i odseparuj właściwe partie."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Produkt z partii P23 ma wezwanie do kontroli.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 8,
+      "title_pl": "RF scanning i confirmation",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "RF scanning i confirmation",
+          "Skan potwierdza produkt, adres i pracę operatora.",
+          "Gdzie wykorzystasz tę wiedzę: Operator chce potwierdzić lokację bez sprawdzenia jej etykiety. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wymagaj fizycznego skanu i weryfikacji. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Skan potwierdza produkt, adres i pracę operatora.",
+          "situation": "Operator chce potwierdzić lokację bez sprawdzenia jej etykiety.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wymagaj fizycznego skanu i weryfikacji.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Wymagaj fizycznego skanu i weryfikacji.",
+          "explanation": "Skan potwierdza produkt, adres i pracę operatora.",
+          "feedback": [
+            "Tak. Skan potwierdza produkt, adres i pracę operatora.",
+            "Nie. Skan potwierdza produkt, adres i pracę operatora.",
+            "Nie. Skan potwierdza produkt, adres i pracę operatora."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wymagaj fizycznego skanu i weryfikacji."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Operator chce potwierdzić lokację bez sprawdzenia jej etykiety.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 9,
+      "title_pl": "Ćwiczenie: dostawa klienta 3PL",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Ćwiczenie: dostawa klienta 3PL",
+          "Przyjęcie musi przypisać owner, SKU, ilość i adres magazynu.",
+          "Gdzie wykorzystasz tę wiedzę: Przyjechały towary dwóch klientów na jednej ciężarówce. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Rozdziel dostawy i przypisz zapas właściwym właścicielom. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przyjęcie musi przypisać owner, SKU, ilość i adres magazynu.",
+          "situation": "Przyjechały towary dwóch klientów na jednej ciężarówce.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Rozdziel dostawy i przypisz zapas właściwym właścicielom.",
+            "Potwierdzam operację na podstawie domysłu, bez sprawdzenia identyfikatora i statusu.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Rozdziel dostawy i przypisz zapas właściwym właścicielom.",
+          "explanation": "Przyjęcie musi przypisać owner, SKU, ilość i adres magazynu.",
+          "feedback": [
+            "Tak. Przyjęcie musi przypisać owner, SKU, ilość i adres magazynu.",
+            "Nie. Przyjęcie musi przypisać owner, SKU, ilość i adres magazynu.",
+            "Nie. Przyjęcie musi przypisać owner, SKU, ilość i adres magazynu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Rozdziel dostawy i przypisz zapas właściwym właścicielom."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Przyjechały towary dwóch klientów na jednej ciężarówce.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 10,
+      "title_pl": "Putaway i location control",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Putaway i location control",
+          "Miejsca wysokiego i niskiego składowania mają inne ograniczenia.",
+          "Gdzie wykorzystasz tę wiedzę: Skaner kieruje ciężką paletę na niedopuszczalne miejsce. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zgłoś błąd i zmień przydział zgodnie z procedurą. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Miejsca wysokiego i niskiego składowania mają inne ograniczenia.",
+          "situation": "Skaner kieruje ciężką paletę na niedopuszczalne miejsce.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zgłoś błąd i zmień przydział zgodnie z procedurą.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zgłoś błąd i zmień przydział zgodnie z procedurą.",
+          "explanation": "Miejsca wysokiego i niskiego składowania mają inne ograniczenia.",
+          "feedback": [
+            "Tak. Miejsca wysokiego i niskiego składowania mają inne ograniczenia.",
+            "Nie. Miejsca wysokiego i niskiego składowania mają inne ograniczenia.",
+            "Nie. Miejsca wysokiego i niskiego składowania mają inne ograniczenia."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zgłoś błąd i zmień przydział zgodnie z procedurą."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Skaner kieruje ciężką paletę na niedopuszczalne miejsce.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 11,
+      "title_pl": "Allocation i order management",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Allocation i order management",
+          "Alokacja nie może przydzielić tego samego zapasu dwóm zamówieniom.",
+          "Gdzie wykorzystasz tę wiedzę: Dwa zamówienia walczą o jeden produkt. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź dostępność i reguły priorytetu. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Alokacja nie może przydzielić tego samego zapasu dwóm zamówieniom.",
+          "situation": "Dwa zamówienia walczą o jeden produkt.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź dostępność i reguły priorytetu.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź dostępność i reguły priorytetu.",
+          "explanation": "Alokacja nie może przydzielić tego samego zapasu dwóm zamówieniom.",
+          "feedback": [
+            "Tak. Alokacja nie może przydzielić tego samego zapasu dwóm zamówieniom.",
+            "Nie. Alokacja nie może przydzielić tego samego zapasu dwóm zamówieniom.",
+            "Nie. Alokacja nie może przydzielić tego samego zapasu dwóm zamówieniom."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź dostępność i reguły priorytetu."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwa zamówienia walczą o jeden produkt.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 12,
+      "title_pl": "Picking — każda pozycja ma znaczenie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking — każda pozycja ma znaczenie",
+          "Pomyłka jednego SKU może zmienić całą dostawę klienta.",
+          "Gdzie wykorzystasz tę wiedzę: Picker skanuje podobną etykietę produktu. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zatrzymaj pobranie i zweryfikuj SKU. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Pomyłka jednego SKU może zmienić całą dostawę klienta.",
+          "situation": "Picker skanuje podobną etykietę produktu.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zatrzymaj pobranie i zweryfikuj SKU.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj pobranie i zweryfikuj SKU.",
+          "explanation": "Pomyłka jednego SKU może zmienić całą dostawę klienta.",
+          "feedback": [
+            "Tak. Pomyłka jednego SKU może zmienić całą dostawę klienta.",
+            "Nie. Pomyłka jednego SKU może zmienić całą dostawę klienta.",
+            "Nie. Pomyłka jednego SKU może zmienić całą dostawę klienta."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zatrzymaj pobranie i zweryfikuj SKU."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Picker skanuje podobną etykietę produktu.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 13,
+      "title_pl": "Wave i batch operations",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Wave i batch operations",
+          "Grupowanie pracy może oszczędzać czas przy wielu zamówieniach.",
+          "Gdzie wykorzystasz tę wiedzę: Pilna paczka nie weszła do fali. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź status zamówienia i reguły wave. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Grupowanie pracy może oszczędzać czas przy wielu zamówieniach.",
+          "situation": "Pilna paczka nie weszła do fali.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź status zamówienia i reguły wave.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Sprawdź status zamówienia i reguły wave.",
+          "explanation": "Grupowanie pracy może oszczędzać czas przy wielu zamówieniach.",
+          "feedback": [
+            "Tak. Grupowanie pracy może oszczędzać czas przy wielu zamówieniach.",
+            "Nie. Grupowanie pracy może oszczędzać czas przy wielu zamówieniach.",
+            "Nie. Grupowanie pracy może oszczędzać czas przy wielu zamówieniach."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź status zamówienia i reguły wave."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Pilna paczka nie weszła do fali.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 14,
+      "title_pl": "Packing, kitting i etykiety",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Packing, kitting i etykiety",
+          "Kitting łączy elementy w zestaw i wymaga poprawnego rozchodu składników.",
+          "Gdzie wykorzystasz tę wiedzę: Zestaw składa się z 4 elementów, ale jeden jest niedostępny. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Nie potwierdzaj kompletnego kitu bez brakującego elementu. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Kitting łączy elementy w zestaw i wymaga poprawnego rozchodu składników.",
+          "situation": "Zestaw składa się z 4 elementów, ale jeden jest niedostępny.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Nie potwierdzaj kompletnego kitu bez brakującego elementu.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Nie potwierdzaj kompletnego kitu bez brakującego elementu.",
+          "explanation": "Kitting łączy elementy w zestaw i wymaga poprawnego rozchodu składników.",
+          "feedback": [
+            "Tak. Kitting łączy elementy w zestaw i wymaga poprawnego rozchodu składników.",
+            "Nie. Kitting łączy elementy w zestaw i wymaga poprawnego rozchodu składników.",
+            "Nie. Kitting łączy elementy w zestaw i wymaga poprawnego rozchodu składników."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Nie potwierdzaj kompletnego kitu bez brakującego elementu."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zestaw składa się z 4 elementów, ale jeden jest niedostępny.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 15,
+      "title_pl": "Cross-docking",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Cross-docking",
+          "Towar może przejść z przyjęcia do wydania bez długiego składowania.",
+          "Gdzie wykorzystasz tę wiedzę: Pilny produkt jest zamówiony i przyjeżdża tuż przed odbiorem auta. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zidentyfikuj bezpieczną ścieżkę cross-dock i kontrolę dokumentów. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Towar może przejść z przyjęcia do wydania bez długiego składowania.",
+          "situation": "Pilny produkt jest zamówiony i przyjeżdża tuż przed odbiorem auta.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zidentyfikuj bezpieczną ścieżkę cross-dock i kontrolę dokumentów.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zidentyfikuj bezpieczną ścieżkę cross-dock i kontrolę dokumentów.",
+          "explanation": "Towar może przejść z przyjęcia do wydania bez długiego składowania.",
+          "feedback": [
+            "Tak. Towar może przejść z przyjęcia do wydania bez długiego składowania.",
+            "Nie. Towar może przejść z przyjęcia do wydania bez długiego składowania.",
+            "Nie. Towar może przejść z przyjęcia do wydania bez długiego składowania."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zidentyfikuj bezpieczną ścieżkę cross-dock i kontrolę dokumentów."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Pilny produkt jest zamówiony i przyjeżdża tuż przed odbiorem auta.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 16,
+      "title_pl": "Flow-through",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Flow-through",
+          "Przepływ bez odkładania do długoterminowej lokalizacji ogranicza dodatkowe ruchy.",
+          "Gdzie wykorzystasz tę wiedzę: Towar ma od razu trafić do kilku punktów dystrybucji. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Rozdziel ilości według kierunków i potwierdź konsolidację. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przepływ bez odkładania do długoterminowej lokalizacji ogranicza dodatkowe ruchy.",
+          "situation": "Towar ma od razu trafić do kilku punktów dystrybucji.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Rozdziel ilości według kierunków i potwierdź konsolidację.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Rozdziel ilości według kierunków i potwierdź konsolidację.",
+          "explanation": "Przepływ bez odkładania do długoterminowej lokalizacji ogranicza dodatkowe ruchy.",
+          "feedback": [
+            "Tak. Przepływ bez odkładania do długoterminowej lokalizacji ogranicza dodatkowe ruchy.",
+            "Nie. Przepływ bez odkładania do długoterminowej lokalizacji ogranicza dodatkowe ruchy.",
+            "Nie. Przepływ bez odkładania do długoterminowej lokalizacji ogranicza dodatkowe ruchy."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Rozdziel ilości według kierunków i potwierdź konsolidację."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Towar ma od razu trafić do kilku punktów dystrybucji.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 17,
+      "title_pl": "Value-added services",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Value-added services",
+          "Klejenie etykiet i tworzenie zestawów mogą wymagać odrębnego rozliczenia.",
+          "Gdzie wykorzystasz tę wiedzę: Klient 3PL zamówił przepakowanie 250 sztuk. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zarejestruj usługę, czas i kontrolę jakości. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Klejenie etykiet i tworzenie zestawów mogą wymagać odrębnego rozliczenia.",
+          "situation": "Klient 3PL zamówił przepakowanie 250 sztuk.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zarejestruj usługę, czas i kontrolę jakości.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj usługę, czas i kontrolę jakości.",
+          "explanation": "Klejenie etykiet i tworzenie zestawów mogą wymagać odrębnego rozliczenia.",
+          "feedback": [
+            "Tak. Klejenie etykiet i tworzenie zestawów mogą wymagać odrębnego rozliczenia.",
+            "Nie. Klejenie etykiet i tworzenie zestawów mogą wymagać odrębnego rozliczenia.",
+            "Nie. Klejenie etykiet i tworzenie zestawów mogą wymagać odrębnego rozliczenia."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zarejestruj usługę, czas i kontrolę jakości."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Klient 3PL zamówił przepakowanie 250 sztuk.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 18,
+      "title_pl": "Cycle count",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Cycle count",
+          "Liczenie miejsca musi uwzględniać właściciela i partię.",
+          "Gdzie wykorzystasz tę wiedzę: System pokazuje 25, fizycznie 23. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zapisz 23 i zweryfikuj różnicę z odpowiedzialną osobą. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Liczenie miejsca musi uwzględniać właściciela i partię.",
+          "situation": "System pokazuje 25, fizycznie 23.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zapisz 23 i zweryfikuj różnicę z odpowiedzialną osobą.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Zapisz 23 i zweryfikuj różnicę z odpowiedzialną osobą.",
+          "explanation": "Liczenie miejsca musi uwzględniać właściciela i partię.",
+          "feedback": [
+            "Tak. Liczenie miejsca musi uwzględniać właściciela i partię.",
+            "Nie. Liczenie miejsca musi uwzględniać właściciela i partię.",
+            "Nie. Liczenie miejsca musi uwzględniać właściciela i partię."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zapisz 23 i zweryfikuj różnicę z odpowiedzialną osobą."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: System pokazuje 25, fizycznie 23.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: dwa zamówienia 3PL",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: dwa zamówienia 3PL",
+          "Przeprowadź od inbound owner przez putaway, picking, kitting do wydania.",
+          "Gdzie wykorzystasz tę wiedzę: Etykieta wysyłkowa zawiera dane drugiego klienta. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Popraw przypisanie shipment przed wydaniem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przeprowadź od inbound owner przez putaway, picking, kitting do wydania.",
+          "situation": "Etykieta wysyłkowa zawiera dane drugiego klienta.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Popraw przypisanie shipment przed wydaniem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Używam danych innego klienta albo innej dostawy, aby uzupełnić brakujące pola."
+          ],
+          "correct": 0,
+          "example": "Popraw przypisanie shipment przed wydaniem.",
+          "explanation": "Przeprowadź od inbound owner przez putaway, picking, kitting do wydania.",
+          "feedback": [
+            "Tak. Przeprowadź od inbound owner przez putaway, picking, kitting do wydania.",
+            "Nie. Przeprowadź od inbound owner przez putaway, picking, kitting do wydania.",
+            "Nie. Przeprowadź od inbound owner przez putaway, picking, kitting do wydania."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Popraw przypisanie shipment przed wydaniem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Etykieta wysyłkowa zawiera dane drugiego klienta.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 20,
+      "title_pl": "Expert: multi-owner access",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: multi-owner access",
+          "Dane właścicieli w 3PL muszą być rozdzielone uprawnieniami i raportami.",
+          "Gdzie wykorzystasz tę wiedzę: Pracownik klienta A może przeglądać stany klienta B. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Ogranicz dostęp do właściwego właściciela. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Dane właścicieli w 3PL muszą być rozdzielone uprawnieniami i raportami.",
+          "situation": "Pracownik klienta A może przeglądać stany klienta B.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Ogranicz dostęp do właściwego właściciela.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Ogranicz dostęp do właściwego właściciela.",
+          "explanation": "Dane właścicieli w 3PL muszą być rozdzielone uprawnieniami i raportami.",
+          "feedback": [
+            "Tak. Dane właścicieli w 3PL muszą być rozdzielone uprawnieniami i raportami.",
+            "Nie. Dane właścicieli w 3PL muszą być rozdzielone uprawnieniami i raportami.",
+            "Nie. Dane właścicieli w 3PL muszą być rozdzielone uprawnieniami i raportami."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Ogranicz dostęp do właściwego właściciela."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Pracownik klienta A może przeglądać stany klienta B.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 21,
+      "title_pl": "Expert: warehouse labor management",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: warehouse labor management",
+          "Pomiar pracy ocenia czas, wolumen i jakość, nie tylko liczbę skanów.",
+          "Gdzie wykorzystasz tę wiedzę: Zespół ma szybkie pobrania, ale błędy pakowania. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Dodaj jakość do KPI i analizę przyczyn. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Pomiar pracy ocenia czas, wolumen i jakość, nie tylko liczbę skanów.",
+          "situation": "Zespół ma szybkie pobrania, ale błędy pakowania.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Dodaj jakość do KPI i analizę przyczyn.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Dodaj jakość do KPI i analizę przyczyn.",
+          "explanation": "Pomiar pracy ocenia czas, wolumen i jakość, nie tylko liczbę skanów.",
+          "feedback": [
+            "Tak. Pomiar pracy ocenia czas, wolumen i jakość, nie tylko liczbę skanów.",
+            "Nie. Pomiar pracy ocenia czas, wolumen i jakość, nie tylko liczbę skanów.",
+            "Nie. Pomiar pracy ocenia czas, wolumen i jakość, nie tylko liczbę skanów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Dodaj jakość do KPI i analizę przyczyn."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zespół ma szybkie pobrania, ale błędy pakowania.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 22,
+      "title_pl": "Expert: analiza 3D magazynu",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: analiza 3D magazynu",
+          "Wizualizacja 3D pokazuje układ i przepływy, nie daje gwarancji poprawnego stanu.",
+          "Gdzie wykorzystasz tę wiedzę: Model regałów nie zgadza się z fizycznym rozplanowaniem. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź dane źródłowe i mapowanie miejsc. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Wizualizacja 3D pokazuje układ i przepływy, nie daje gwarancji poprawnego stanu.",
+          "situation": "Model regałów nie zgadza się z fizycznym rozplanowaniem.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź dane źródłowe i mapowanie miejsc.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź dane źródłowe i mapowanie miejsc.",
+          "explanation": "Wizualizacja 3D pokazuje układ i przepływy, nie daje gwarancji poprawnego stanu.",
+          "feedback": [
+            "Tak. Wizualizacja 3D pokazuje układ i przepływy, nie daje gwarancji poprawnego stanu.",
+            "Nie. Wizualizacja 3D pokazuje układ i przepływy, nie daje gwarancji poprawnego stanu.",
+            "Nie. Wizualizacja 3D pokazuje układ i przepływy, nie daje gwarancji poprawnego stanu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź dane źródłowe i mapowanie miejsc."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Model regałów nie zgadza się z fizycznym rozplanowaniem.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 23,
+      "title_pl": "Expert: przestrzeń i slotting",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: przestrzeń i slotting",
+          "Optymalizacja rozmieszczenia powinna uwzględnić rotację, masę i BHP.",
+          "Gdzie wykorzystasz tę wiedzę: Najczęściej wybierany towar jest poza bezpiecznym zasięgiem. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zaproponuj relokację z kontrolą ciężaru i dostępności. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Optymalizacja rozmieszczenia powinna uwzględnić rotację, masę i BHP.",
+          "situation": "Najczęściej wybierany towar jest poza bezpiecznym zasięgiem.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zaproponuj relokację z kontrolą ciężaru i dostępności.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zaproponuj relokację z kontrolą ciężaru i dostępności.",
+          "explanation": "Optymalizacja rozmieszczenia powinna uwzględnić rotację, masę i BHP.",
+          "feedback": [
+            "Tak. Optymalizacja rozmieszczenia powinna uwzględnić rotację, masę i BHP.",
+            "Nie. Optymalizacja rozmieszczenia powinna uwzględnić rotację, masę i BHP.",
+            "Nie. Optymalizacja rozmieszczenia powinna uwzględnić rotację, masę i BHP."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zaproponuj relokację z kontrolą ciężaru i dostępności."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Najczęściej wybierany towar jest poza bezpiecznym zasięgiem.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 24,
+      "title_pl": "Expert: returns i quality",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: returns i quality",
+          "Przyjęty zwrot może trafić do sprzedaży tylko po właściwej ocenie.",
+          "Gdzie wykorzystasz tę wiedzę: Zwrot jest otwarty, ale produkt ma ślady uszkodzeń. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Wstrzymaj dostępność do wyjaśnienia jakości. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Przyjęty zwrot może trafić do sprzedaży tylko po właściwej ocenie.",
+          "situation": "Zwrot jest otwarty, ale produkt ma ślady uszkodzeń.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Wstrzymaj dostępność do wyjaśnienia jakości.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj dostępność do wyjaśnienia jakości.",
+          "explanation": "Przyjęty zwrot może trafić do sprzedaży tylko po właściwej ocenie.",
+          "feedback": [
+            "Tak. Przyjęty zwrot może trafić do sprzedaży tylko po właściwej ocenie.",
+            "Nie. Przyjęty zwrot może trafić do sprzedaży tylko po właściwej ocenie.",
+            "Nie. Przyjęty zwrot może trafić do sprzedaży tylko po właściwej ocenie."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Wstrzymaj dostępność do wyjaśnienia jakości."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Zwrot jest otwarty, ale produkt ma ślady uszkodzeń.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 25,
+      "title_pl": "Expert: integracja z e-commerce",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: integracja z e-commerce",
+          "Zamówienia z wielu kanałów muszą zachować jednoznaczne identyfikatory i statusy.",
+          "Gdzie wykorzystasz tę wiedzę: Dwa kanały przesłały identyczny numer zlecenia. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Rozróżnij identyfikator z kanałem oraz unikaj podwójnego przyjęcia. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Zamówienia z wielu kanałów muszą zachować jednoznaczne identyfikatory i statusy.",
+          "situation": "Dwa kanały przesłały identyczny numer zlecenia.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Rozróżnij identyfikator z kanałem oraz unikaj podwójnego przyjęcia.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Rozróżnij identyfikator z kanałem oraz unikaj podwójnego przyjęcia.",
+          "explanation": "Zamówienia z wielu kanałów muszą zachować jednoznaczne identyfikatory i statusy.",
+          "feedback": [
+            "Tak. Zamówienia z wielu kanałów muszą zachować jednoznaczne identyfikatory i statusy.",
+            "Nie. Zamówienia z wielu kanałów muszą zachować jednoznaczne identyfikatory i statusy.",
+            "Nie. Zamówienia z wielu kanałów muszą zachować jednoznaczne identyfikatory i statusy."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Rozróżnij identyfikator z kanałem oraz unikaj podwójnego przyjęcia."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwa kanały przesłały identyczny numer zlecenia.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 26,
+      "title_pl": "Expert: automatyka i RF",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: automatyka i RF",
+          "Połączenie sortera i WMS wymaga spójnych potwierdzeń.",
+          "Gdzie wykorzystasz tę wiedzę: Sorter wykonał ruch, lecz RF pokazuje task Open. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Diagnozuj synchronizację przed ponownym ruchem. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Połączenie sortera i WMS wymaga spójnych potwierdzeń.",
+          "situation": "Sorter wykonał ruch, lecz RF pokazuje task Open.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Diagnozuj synchronizację przed ponownym ruchem.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Diagnozuj synchronizację przed ponownym ruchem.",
+          "explanation": "Połączenie sortera i WMS wymaga spójnych potwierdzeń.",
+          "feedback": [
+            "Tak. Połączenie sortera i WMS wymaga spójnych potwierdzeń.",
+            "Nie. Połączenie sortera i WMS wymaga spójnych potwierdzeń.",
+            "Nie. Połączenie sortera i WMS wymaga spójnych potwierdzeń."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Diagnozuj synchronizację przed ponownym ruchem."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Sorter wykonał ruch, lecz RF pokazuje task Open.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 27,
+      "title_pl": "Expert: analiza braków",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: analiza braków",
+          "Niedobory mogą wynikać z alokacji, statusu, błędnego SKU lub fizycznego braku.",
+          "Gdzie wykorzystasz tę wiedzę: Towar jest na hali, ale system nie pozwala go pobrać. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Sprawdź owner, status, partię i rezerwacje. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Niedobory mogą wynikać z alokacji, statusu, błędnego SKU lub fizycznego braku.",
+          "situation": "Towar jest na hali, ale system nie pozwala go pobrać.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Sprawdź owner, status, partię i rezerwacje.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Sprawdź owner, status, partię i rezerwacje.",
+          "explanation": "Niedobory mogą wynikać z alokacji, statusu, błędnego SKU lub fizycznego braku.",
+          "feedback": [
+            "Tak. Niedobory mogą wynikać z alokacji, statusu, błędnego SKU lub fizycznego braku.",
+            "Nie. Niedobory mogą wynikać z alokacji, statusu, błędnego SKU lub fizycznego braku.",
+            "Nie. Niedobory mogą wynikać z alokacji, statusu, błędnego SKU lub fizycznego braku."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Sprawdź owner, status, partię i rezerwacje."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Towar jest na hali, ale system nie pozwala go pobrać.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 28,
+      "title_pl": "Expert: bezpieczeństwo danych 3PL",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: bezpieczeństwo danych 3PL",
+          "Raporty i integracje mogą ujawniać poufne stany klientów.",
+          "Gdzie wykorzystasz tę wiedzę: Partner prosi o eksport wszystkich zapasów magazynu. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Udostępnij wyłącznie zakres zgodny z uprawnieniami. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Raporty i integracje mogą ujawniać poufne stany klientów.",
+          "situation": "Partner prosi o eksport wszystkich zapasów magazynu.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Udostępnij wyłącznie zakres zgodny z uprawnieniami.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Udostępnij wyłącznie zakres zgodny z uprawnieniami.",
+          "explanation": "Raporty i integracje mogą ujawniać poufne stany klientów.",
+          "feedback": [
+            "Tak. Raporty i integracje mogą ujawniać poufne stany klientów.",
+            "Nie. Raporty i integracje mogą ujawniać poufne stany klientów.",
+            "Nie. Raporty i integracje mogą ujawniać poufne stany klientów."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Udostępnij wyłącznie zakres zgodny z uprawnieniami."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Partner prosi o eksport wszystkich zapasów magazynu.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Infor WMS",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Infor WMS",
+          "Zrealizuj przepływ dla różnych owner i usług dodatkowych bez pomyłki stanu.",
+          "Gdzie wykorzystasz tę wiedzę: Dwie firmy mają podobny SKU i tę samą datę wysyłki. W praktyce należy porównać identyfikator zlecenia, SKU, jednostkę i właściwy etap procesu.",
+          "Zalecane postępowanie: Zweryfikuj właściciela, ilość, zlecenie i etykietę na każdym etapie. Po działaniu sprawdź, czy zapis w systemie odpowiada rzeczywistej operacji.",
+          "To ćwiczenie jest autorskie. Dostępność funkcji zależy od wersji i konfiguracji systemu w firmie."
+        ],
+        "learning": {
+          "intro": "Zrealizuj przepływ dla różnych owner i usług dodatkowych bez pomyłki stanu.",
+          "situation": "Dwie firmy mają podobny SKU i tę samą datę wysyłki.",
+          "question": "Które postępowanie najlepiej zabezpiecza poprawność danych?",
+          "options": [
+            "Zweryfikuj właściciela, ilość, zlecenie i etykietę na każdym etapie.",
+            "Wprowadzam korektę liczby lub statusu, mimo że fizyczna czynność nie została wykonana.",
+            "Pomijam kontrolę uprawnień i historię zmian, aby szybciej ukończyć zadanie."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj właściciela, ilość, zlecenie i etykietę na każdym etapie.",
+          "explanation": "Zrealizuj przepływ dla różnych owner i usług dodatkowych bez pomyłki stanu.",
+          "feedback": [
+            "Tak. Zrealizuj przepływ dla różnych owner i usług dodatkowych bez pomyłki stanu.",
+            "Nie. Zrealizuj przepływ dla różnych owner i usług dodatkowych bez pomyłki stanu.",
+            "Nie. Zrealizuj przepływ dla różnych owner i usług dodatkowych bez pomyłki stanu."
+          ],
+          "task": "Opisz dokument wejściowy, działanie i wynik: Zweryfikuj właściciela, ilość, zlecenie i etykietę na każdym etapie."
+        },
+        "exercise": "Rozpisz na fikcyjnych danych magazynowych, jak rozwiązać ten problem: Dwie firmy mają podobny SKU i tę samą datę wysyłki.",
+        "references": [
+          {
+            "label": "Oficjalny opis producenta (funkcje zależą od edycji)",
+            "url": "https://www.infor.com/pl-pl/solutions/scm/warehouse-management-system"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Materiał niezależny i edukacyjny, bez logowania do oprogramowania producenta."
+      }
+    }
+  ]
+}
