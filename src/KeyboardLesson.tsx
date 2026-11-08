@@ -67,8 +67,9 @@ function ShortcutCard({item,index,onRun,active}:{item:KeyboardShortcut,index:num
   </Pressable>
  </View>;
 }
-export default function KeyboardLesson({shortcuts,tips,exercise,references,onPracticed}:{
- shortcuts?:KeyboardShortcut[];tips?:string[];exercise?:string;references?:KeyboardReference[];onPracticed?:(verified:boolean)=>void;
+export default function KeyboardLesson({shortcuts,tips,exercise,references,onPracticed,onAttempt}:{
+ shortcuts?:KeyboardShortcut[];tips?:string[];exercise?:string;references?:KeyboardReference[];
+ onPracticed?:(verified:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>void;
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
  const [active,setActive]=useState<KeyboardShortcut|null>(null);
@@ -120,7 +121,7 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
   {active&&answerOptions.length>=3&&<View style={{backgroundColor:'#193b2d',padding:19,borderRadius:15,gap:11}}>
     <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ, CZY ROZUMIESZ</Text>
     <Text style={{fontWeight:'900',color:'white',fontSize:18,lineHeight:26}}>Które polecenie daje taki efekt: {active.after}?</Text>
-    {answerOptions.map((option,i)=><Pressable key={option.combo} onPress={()=>{setQuizAnswer(i);onPracticed?.(option.combo===active.combo)}} style={{padding:13,borderRadius:10,backgroundColor:quizAnswer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
+    {answerOptions.map((option,i)=><Pressable key={option.combo} onPress={()=>{setQuizAnswer(i);onPracticed?.(option.combo===active.combo);onAttempt?.(i,option.combo===active.combo)}} style={{padding:13,borderRadius:10,backgroundColor:quizAnswer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
       <Text style={{color:ink,fontWeight:'800'}}>{String.fromCharCode(65+i)}. {option.combo} — {option.label}</Text>
     </Pressable>)}
     {quizAnswer!==null&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{answerOptions[quizAnswer]?.combo===active.combo?'Dobrze. Możesz zaliczyć tę lekcję.':'Spójrz na wirtualny ekran i spróbuj ponownie. Zwróć uwagę na polecenie, które rzeczywiście wykonałeś.'}</Text>}
