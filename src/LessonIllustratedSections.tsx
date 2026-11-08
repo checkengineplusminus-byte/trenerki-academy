@@ -22,8 +22,8 @@ function FallbackDiagram({title,sections,example}:{title:string;sections:Learnin
  </View>;
 }
 export default function LessonIllustratedSections({courseSlug,lessonNo,title,sections,illustration,situation,example}:Props){
- const [failed,setFailed]=useState(false),[expanded,setExpanded]=useState(true);
- useEffect(()=>{setFailed(false);setExpanded(true)},[courseSlug,lessonNo]);
+ const [failed,setFailed]=useState(false);
+ useEffect(()=>{setFailed(false)},[courseSlug,lessonNo]);
  const named=Array.isArray(sections)&&sections.length>0?sections.filter(x=>x?.heading&&x?.text):[];
  const validIllustration=typeof illustration==='string'&&imageNames.has(illustration),showImage=validIllustration&&Platform.OS==='web'&&!failed;
  if(!named.length&&!validIllustration)return <FallbackDiagram title={title} sections={situation?[{heading:'Zadanie z lekcji',text:situation}]:[]} example={example}/>;
@@ -40,12 +40,10 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
   </View>}
   {!validIllustration&&named.length>0&&<FallbackDiagram title={title} sections={named} example={example}/>}
   {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
-   <Pressable accessibilityRole="button" onPress={()=>setExpanded(v=>!v)}
-    style={{backgroundColor:'#e8f3e3',padding:18,flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:12}}>
-    <Text style={{color:ink,fontWeight:'900',fontSize:19,flex:1}}>Poznaj temat naprawdę — teoria i praktyka</Text>
-    <Text style={{fontWeight:'900',color:'#426b47'}}>{expanded?'Zwiń':'Rozwiń'}</Text>
-   </Pressable>
-   {expanded&&<View style={{padding:19,gap:20}}>
+   <View style={{backgroundColor:'#e8f3e3',padding:15}}>
+    <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Wyjaśnienie krok po kroku</Text>
+   </View>
+   <View style={{padding:15,gap:18}}>
     {named.map((section,i)=><View key={i} style={{gap:9}}>
      <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
       <Text style={{width:29,height:29,lineHeight:29,textAlign:'center',backgroundColor:'#dfedd9',color:ink,borderRadius:9,overflow:'hidden',fontWeight:'900'}}>{i+1}</Text>
