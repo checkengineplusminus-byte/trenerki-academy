@@ -26,7 +26,7 @@ try{
  const individualGuides=JSON.parse(read('content/course-guides-individual.json'));
  const craftGuides=JSON.parse(read('content/craft-guides-individual.json'));
  const staticIntroductions=read('src/CourseIntro.tsx');
- const introSlugs=new Set([...staticIntroductions.matchAll(/^\\s*'([a-z0-9-]+)':\\s*\\{/gm)].map(x=>x[1]));
+ const introSlugs=new Set([...staticIntroductions.matchAll(/^\s*'([a-z0-9-]+)':\s*\{/gm)].map(x=>x[1]));
  const expandedSlugs=new Set(['norweski-na-budowie','angielski-na-budowie','niemiecki-na-budowie',
  'mierz-ponad-sily','opieka-seniorzy','wsparcie-adhd','poznaj-siebie','mocny-charakter','nie-lubie-ludzi',
  'zaczynam-od-zera','obowiazki-domowe','lepszy-cukiernik','lepszy-kucharz','jak-kupic-samochod',
