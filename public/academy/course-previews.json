@@ -322,5 +322,14 @@
     "outcome_2": "Znajdziesz małe sposoby na wspólny spokojny czas.",
     "outcome_3": "Przećwiczysz granice i proszenie o wsparcie.",
     "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+  },
+  "word-skroty": {
+    "course_slug": "word-skroty",
+    "curiosity": "Skróty w Wordzie to nie tylko szybkie kopiowanie — pomagają przygotować czytelne pismo bez szukania przycisków w menu.",
+    "scenario": "Piszesz podanie, masz dziesięć minut, a nagłówki, akapity i odstępy wyglądają inaczej na każdej stronie. Jak to uporządkować bez przeklikiwania wstążki?",
+    "outcome_1": "Sformatujesz pismo, CV lub notatkę za pomocą najczęściej używanych skrótów.",
+    "outcome_2": "Zobaczysz graficznie, które klawisze nacisnąć i jaki będzie rezultat.",
+    "outcome_3": "Poznasz wskazówki pozwalające uniknąć przypadkowego formatowania i przyspieszyć pracę.",
+    "source_url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
   }
 }
