@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image,Platform,Pressable,Text,View,Linking} from 'react-native';
+import {Image,Platform,Pressable,Text,View,Linking,useWindowDimensions} from 'react-native';
 import HandsOnLab from './HandsOnLab';
 import SoftwarePlayground from './SoftwarePlayground';
 import type {KeyboardShortcut} from './KeyboardLesson';
@@ -185,24 +185,25 @@ const walkthroughs:Record<string,string[]>={
  ]
 };
 const tabs:{key:Tab;label:string}[]=[
- {key:'interface',label:'Poznaj ekran'},{key:'history',label:'Historia i zastosowanie'},
- {key:'terms',label:'Słownik'},{key:'practice',label:'Ćwicz sam'}
+ {key:'practice',label:'Ćwicz sam'},{key:'interface',label:'Ekran programu'},
+ {key:'terms',label:'Pojęcia'},{key:'history',label:'Historia'}
 ];
 export default function SoftwareOrientation({slug}:{slug:string}){
+ const {width}=useWindowDimensions(),mobile=width<650;
  const p=programs[slug], [active,setActive]=useState<KeyboardShortcut|null>(null),[runId,setRunId]=useState(0);
  const [selectedTerm,setSelectedTerm]=useState(0),[selectedZone,setSelectedZone]=useState(0);
- const [tab,setTab]=useState<Tab>('interface'),[imageFailed,setImageFailed]=useState(false);
+ const [tab,setTab]=useState<Tab>(mobile?'practice':'interface'),[imageFailed,setImageFailed]=useState(false);
  if(!p)return null;
  function execute(a:Action){
   setActive({combo:a.combo,keys:[a.combo],kind:p.mode==='cad'?'alias':'hotkey',label:a.name,before:a.desc,after:a.desc,tip:a.desc});
   setRunId(n=>n+1);
  }
- return <View style={{backgroundColor:'#eef6e9',padding:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:15,marginBottom:22}}>
+ return <View style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
-  <Text style={{color:ink,fontSize:23,fontWeight:'900',lineHeight:30}}>{p.name} — poznaj ekran i wykonaj pierwsze zadanie</Text>
+  <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
   {Platform.OS==='web'&&!imageFailed?
    <Image source={{uri:'https://trenerki-academy.expo.app/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
-    resizeMode="contain" style={{width:'100%',height:290,backgroundColor:'white',borderRadius:12}}
+    resizeMode="contain" style={{width:'100%',height:mobile?210:290,backgroundColor:'white',borderRadius:12}}
     accessibilityLabel={'Ilustrowana mapa głównego ekranu '+p.name}/>:
    <View style={{backgroundColor:'white',borderRadius:12,padding:13,gap:10}}>
     <View style={{padding:10,backgroundColor:'#193c2d',borderRadius:8}}>
@@ -266,14 +267,14 @@ export default function SoftwareOrientation({slug}:{slug:string}){
    </View>
   </View>}
   {tab==='practice'&&<View style={{gap:12}}>
-   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Otwórz warsztat i sprawdź rezultat</Text>
+   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Dotknij i zobacz, co się zmieni</Text>
    <Text style={{color:'#3d624d',lineHeight:24}}>{p.today}</Text>
-   <View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>
+   {(!mobile||(p.mode!=='excel'&&p.mode!=='cad'))&&<View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>
     {p.actions.map((a,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>execute(a)}
-     style={{backgroundColor:ink,paddingHorizontal:12,paddingVertical:12,borderRadius:9}}>
-     <Text style={{color:'white',fontWeight:'900',fontSize:12}}>{a.name}</Text>
+     style={{backgroundColor:ink,paddingHorizontal:12,paddingVertical:12,borderRadius:9,minHeight:44,justifyContent:'center'}}>
+     <Text style={{color:'white',fontWeight:'900',fontSize:13}}>{a.name}</Text>
     </Pressable>)}
-   </View>
+   </View>}
    {(p.mode==='excel'||p.mode==='cad')?<HandsOnLab key={slug} mode={p.mode} active={active} runId={runId}/>:
     <SoftwarePlayground mode={p.mode} active={active}/>}
    <Text style={{color:'#4a7054',fontSize:12,lineHeight:21}}>Ćwiczenie nie zmienia Twoich rzeczywistych plików. Przejdź do kolejnych zadań, żeby sprawdzić umiejętności.</Text>
