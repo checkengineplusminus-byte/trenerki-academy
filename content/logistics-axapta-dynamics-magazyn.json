@@ -1,0 +1,1334 @@
+{
+  "schema_version": 2,
+  "course_slug": "axapta-dynamics-magazyn",
+  "title": "Axapta (Dynamics AX) i Dynamics 365 SCM — magazyn od zera",
+  "intro": "Axapta była potoczną nazwą systemu Microsoft Dynamics AX. Starsze środowiska, w tym AX 2012, różnią się od Dynamics 365 Supply Chain Management interfejsem i konfiguracją WMS. Ćwiczenia szkoleniowe wyjaśniają logikę procesów bez przedstawiania imitacji jako prawdziwej instalacji.",
+  "source": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Operacje magazynowe",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 0,
+      "title_pl": "Co to jest Axapta i dlaczego Dynamics 365 to nie ten sam ekran",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co to jest Axapta i dlaczego Dynamics 365 to nie ten sam ekran",
+          "Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pracownik pyta, czy instrukcja dla AX 2012 zadziała identycznie w D365. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Rozpoznaj wersję i właściwy moduł przed szukaniem przycisków. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu.",
+          "situation": "Pracownik pyta, czy instrukcja dla AX 2012 zadziała identycznie w D365.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Rozpoznaj wersję i właściwy moduł przed szukaniem przycisków.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Rozpoznaj wersję i właściwy moduł przed szukaniem przycisków.",
+          "explanation": "Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu.",
+          "feedback": [
+            "Tak. Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu.",
+            "Nie. Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Nazwa Axapta odnosi się historycznie do Dynamics AX; Dynamics 365 SCM to nowsza platforma, a nie prosta zmiana wyglądu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Rozpoznaj wersję i właściwy moduł przed szukaniem przycisków."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pracownik pyta, czy instrukcja dla AX 2012 zadziała identycznie w D365. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 1,
+      "title_pl": "ERP, WMS i TMS — podstawowe różnice",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "ERP, WMS i TMS — podstawowe różnice",
+          "ERP obejmuje procesy firmy, WMS realizuje ruch towaru w magazynie, a TMS planuje transport; jedno zamówienie może przechodzić przez wszystkie trzy. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W biurze widzisz zamówienie, ale magazyn nie dostał zadania kompletacji. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź stan zamówienia i czy przekazano je do właściwego procesu WMS. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "ERP obejmuje procesy firmy, WMS realizuje ruch towaru w magazynie, a TMS planuje transport; jedno zamówienie może przechodzić przez wszystkie trzy.",
+          "situation": "W biurze widzisz zamówienie, ale magazyn nie dostał zadania kompletacji.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź stan zamówienia i czy przekazano je do właściwego procesu WMS.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź stan zamówienia i czy przekazano je do właściwego procesu WMS.",
+          "explanation": "ERP obejmuje procesy firmy, WMS realizuje ruch towaru w magazynie, a TMS planuje transport; jedno zamówienie może przechodzić przez wszystkie trzy.",
+          "feedback": [
+            "Tak. ERP obejmuje procesy firmy, WMS realizuje ruch towaru w magazynie, a TMS planuje transport; jedno zamówienie może przechodzić przez wszystkie trzy.",
+            "Nie. ERP obejmuje procesy firmy, WMS realizuje ruch towaru w magazynie, a TMS planuje transport; jedno zamówienie może przechodzić przez wszystkie trzy. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. ERP obejmuje procesy firmy, WMS realizuje ruch towaru w magazynie, a TMS planuje transport; jedno zamówienie może przechodzić przez wszystkie trzy. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź stan zamówienia i czy przekazano je do właściwego procesu WMS."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W biurze widzisz zamówienie, ale magazyn nie dostał zadania kompletacji. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 2,
+      "title_pl": "Jak wygląda menu: moduły, obszary robocze i wyszukiwanie",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Jak wygląda menu: moduły, obszary robocze i wyszukiwanie",
+          "Dostępne moduły i obszary robocze zależą od roli oraz wersji systemu. Najpierw poznaj nawigację, a potem uprawnienia. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na terminalu nie widzisz obszaru Warehouse management. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zweryfikuj wersję, rolę i uprawnienia zamiast tworzyć kolejne konto. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Dostępne moduły i obszary robocze zależą od roli oraz wersji systemu. Najpierw poznaj nawigację, a potem uprawnienia.",
+          "situation": "Na terminalu nie widzisz obszaru Warehouse management.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zweryfikuj wersję, rolę i uprawnienia zamiast tworzyć kolejne konto.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj wersję, rolę i uprawnienia zamiast tworzyć kolejne konto.",
+          "explanation": "Dostępne moduły i obszary robocze zależą od roli oraz wersji systemu. Najpierw poznaj nawigację, a potem uprawnienia.",
+          "feedback": [
+            "Tak. Dostępne moduły i obszary robocze zależą od roli oraz wersji systemu. Najpierw poznaj nawigację, a potem uprawnienia.",
+            "Nie. Dostępne moduły i obszary robocze zależą od roli oraz wersji systemu. Najpierw poznaj nawigację, a potem uprawnienia. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Dostępne moduły i obszary robocze zależą od roli oraz wersji systemu. Najpierw poznaj nawigację, a potem uprawnienia. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zweryfikuj wersję, rolę i uprawnienia zamiast tworzyć kolejne konto."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na terminalu nie widzisz obszaru Warehouse management. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 3,
+      "title_pl": "Firma, zakład, magazyn i lokalizacja",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Firma, zakład, magazyn i lokalizacja",
+          "W hierarchii danych prawnych i magazynowych trzeba odróżniać firmę, zakład (site), magazyn (warehouse) oraz lokalizację. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Przyjęcie jest poprawne ilościowo, ale trafiło do niewłaściwego magazynu. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź firmę, site i warehouse przed zatwierdzeniem przyjęcia. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "W hierarchii danych prawnych i magazynowych trzeba odróżniać firmę, zakład (site), magazyn (warehouse) oraz lokalizację.",
+          "situation": "Przyjęcie jest poprawne ilościowo, ale trafiło do niewłaściwego magazynu.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź firmę, site i warehouse przed zatwierdzeniem przyjęcia.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź firmę, site i warehouse przed zatwierdzeniem przyjęcia.",
+          "explanation": "W hierarchii danych prawnych i magazynowych trzeba odróżniać firmę, zakład (site), magazyn (warehouse) oraz lokalizację.",
+          "feedback": [
+            "Tak. W hierarchii danych prawnych i magazynowych trzeba odróżniać firmę, zakład (site), magazyn (warehouse) oraz lokalizację.",
+            "Nie. W hierarchii danych prawnych i magazynowych trzeba odróżniać firmę, zakład (site), magazyn (warehouse) oraz lokalizację. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. W hierarchii danych prawnych i magazynowych trzeba odróżniać firmę, zakład (site), magazyn (warehouse) oraz lokalizację. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź firmę, site i warehouse przed zatwierdzeniem przyjęcia."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Przyjęcie jest poprawne ilościowo, ale trafiło do niewłaściwego magazynu. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 4,
+      "title_pl": "Kartoteka towarowa: item number i jednostki",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Kartoteka towarowa: item number i jednostki",
+          "Każdy produkt ma identyfikator, nazwę oraz jednostki magazynowe; mylenie sztuk, kartonów i palet powoduje rozbieżności. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dostawa ma 12 kartonów po 10 sztuk; zamówienie jest na sztuki. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Przelicz 12×10, potwierdź jednostkę i dopiero rejestruj 120 sztuk. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Każdy produkt ma identyfikator, nazwę oraz jednostki magazynowe; mylenie sztuk, kartonów i palet powoduje rozbieżności.",
+          "situation": "Dostawa ma 12 kartonów po 10 sztuk; zamówienie jest na sztuki.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Przelicz 12×10, potwierdź jednostkę i dopiero rejestruj 120 sztuk.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Przelicz 12×10, potwierdź jednostkę i dopiero rejestruj 120 sztuk.",
+          "explanation": "Każdy produkt ma identyfikator, nazwę oraz jednostki magazynowe; mylenie sztuk, kartonów i palet powoduje rozbieżności.",
+          "feedback": [
+            "Tak. Każdy produkt ma identyfikator, nazwę oraz jednostki magazynowe; mylenie sztuk, kartonów i palet powoduje rozbieżności.",
+            "Nie. Każdy produkt ma identyfikator, nazwę oraz jednostki magazynowe; mylenie sztuk, kartonów i palet powoduje rozbieżności. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Każdy produkt ma identyfikator, nazwę oraz jednostki magazynowe; mylenie sztuk, kartonów i palet powoduje rozbieżności. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Przelicz 12×10, potwierdź jednostkę i dopiero rejestruj 120 sztuk."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dostawa ma 12 kartonów po 10 sztuk; zamówienie jest na sztuki. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 5,
+      "title_pl": "Produkt zwolniony i grupy wymiarów magazynowych",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Produkt zwolniony i grupy wymiarów magazynowych",
+          "Released product może mieć grupę wymiarów śledzenia i magazynowania; część pozycji wymaga batch lub serial number. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Skanujesz towar ze śledzeniem numeru partii, ale nie masz etykiety. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wstrzymaj przyjęcie, ustal prawidłowy numer partii i wymagane dane. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Released product może mieć grupę wymiarów śledzenia i magazynowania; część pozycji wymaga batch lub serial number.",
+          "situation": "Skanujesz towar ze śledzeniem numeru partii, ale nie masz etykiety.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wstrzymaj przyjęcie, ustal prawidłowy numer partii i wymagane dane.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj przyjęcie, ustal prawidłowy numer partii i wymagane dane.",
+          "explanation": "Released product może mieć grupę wymiarów śledzenia i magazynowania; część pozycji wymaga batch lub serial number.",
+          "feedback": [
+            "Tak. Released product może mieć grupę wymiarów śledzenia i magazynowania; część pozycji wymaga batch lub serial number.",
+            "Nie. Released product może mieć grupę wymiarów śledzenia i magazynowania; część pozycji wymaga batch lub serial number. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Released product może mieć grupę wymiarów śledzenia i magazynowania; część pozycji wymaga batch lub serial number. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wstrzymaj przyjęcie, ustal prawidłowy numer partii i wymagane dane."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Skanujesz towar ze śledzeniem numeru partii, ale nie masz etykiety. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 6,
+      "title_pl": "Purchase order i sales order — dwa kierunki ruchu",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Purchase order i sales order — dwa kierunki ruchu",
+          "Purchase order zapowiada zakup i przyjęcie, sales order napędza sprzedaż i wydanie. Dokumenty mają różne skutki księgowe. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Klient zamawia 6 palet, a pracownik szuka ich w dostawach zakupowych. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Odszukaj zlecenie sprzedaży i weryfikuj gotowość wydania. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Purchase order zapowiada zakup i przyjęcie, sales order napędza sprzedaż i wydanie. Dokumenty mają różne skutki księgowe.",
+          "situation": "Klient zamawia 6 palet, a pracownik szuka ich w dostawach zakupowych.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Odszukaj zlecenie sprzedaży i weryfikuj gotowość wydania.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Odszukaj zlecenie sprzedaży i weryfikuj gotowość wydania.",
+          "explanation": "Purchase order zapowiada zakup i przyjęcie, sales order napędza sprzedaż i wydanie. Dokumenty mają różne skutki księgowe.",
+          "feedback": [
+            "Tak. Purchase order zapowiada zakup i przyjęcie, sales order napędza sprzedaż i wydanie. Dokumenty mają różne skutki księgowe.",
+            "Nie. Purchase order zapowiada zakup i przyjęcie, sales order napędza sprzedaż i wydanie. Dokumenty mają różne skutki księgowe. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Purchase order zapowiada zakup i przyjęcie, sales order napędza sprzedaż i wydanie. Dokumenty mają różne skutki księgowe. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Odszukaj zlecenie sprzedaży i weryfikuj gotowość wydania."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Klient zamawia 6 palet, a pracownik szuka ich w dostawach zakupowych. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 7,
+      "title_pl": "Status zapasu: on-hand, available i reserved",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Status zapasu: on-hand, available i reserved",
+          "Stan fizyczny nie zawsze jest dostępny do sprzedaży: część może być zarezerwowana, uszkodzona lub w blokadzie. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na stanie jest 50 sztuk, a dostępnych tylko 18. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź rezerwacje i status inventory zamiast wydawać 50. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Stan fizyczny nie zawsze jest dostępny do sprzedaży: część może być zarezerwowana, uszkodzona lub w blokadzie.",
+          "situation": "Na stanie jest 50 sztuk, a dostępnych tylko 18.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź rezerwacje i status inventory zamiast wydawać 50.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź rezerwacje i status inventory zamiast wydawać 50.",
+          "explanation": "Stan fizyczny nie zawsze jest dostępny do sprzedaży: część może być zarezerwowana, uszkodzona lub w blokadzie.",
+          "feedback": [
+            "Tak. Stan fizyczny nie zawsze jest dostępny do sprzedaży: część może być zarezerwowana, uszkodzona lub w blokadzie.",
+            "Nie. Stan fizyczny nie zawsze jest dostępny do sprzedaży: część może być zarezerwowana, uszkodzona lub w blokadzie. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Stan fizyczny nie zawsze jest dostępny do sprzedaży: część może być zarezerwowana, uszkodzona lub w blokadzie. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź rezerwacje i status inventory zamiast wydawać 50."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na stanie jest 50 sztuk, a dostępnych tylko 18. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 8,
+      "title_pl": "Mobilna aplikacja Warehouse Management",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Mobilna aplikacja Warehouse Management",
+          "Aplikacja skanera realizuje zadania przyjęcia, putaway, picking i liczenia; menu użytkownika zależy od konfiguracji administratora. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na terminalu brakuje opcji Receiving, która jest u kolegi. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź przypisane mobilne menu i rolę pracownika. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Aplikacja skanera realizuje zadania przyjęcia, putaway, picking i liczenia; menu użytkownika zależy od konfiguracji administratora.",
+          "situation": "Na terminalu brakuje opcji Receiving, która jest u kolegi.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź przypisane mobilne menu i rolę pracownika.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przypisane mobilne menu i rolę pracownika.",
+          "explanation": "Aplikacja skanera realizuje zadania przyjęcia, putaway, picking i liczenia; menu użytkownika zależy od konfiguracji administratora.",
+          "feedback": [
+            "Tak. Aplikacja skanera realizuje zadania przyjęcia, putaway, picking i liczenia; menu użytkownika zależy od konfiguracji administratora.",
+            "Nie. Aplikacja skanera realizuje zadania przyjęcia, putaway, picking i liczenia; menu użytkownika zależy od konfiguracji administratora. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Aplikacja skanera realizuje zadania przyjęcia, putaway, picking i liczenia; menu użytkownika zależy od konfiguracji administratora. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź przypisane mobilne menu i rolę pracownika."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na terminalu brakuje opcji Receiving, która jest u kolegi. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 9,
+      "title_pl": "Pierwsze ćwiczenie: bezpieczne przyjęcie palety",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsze ćwiczenie: bezpieczne przyjęcie palety",
+          "Ćwiczenie łączy PO, item, quantity, unit i warehouse. Rejestruj tylko faktycznie dostarczony towar. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na PO jest 10 palet, a przyjechało 9. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zarejestruj 9 i udokumentuj brak jednej palety, nie potwierdzaj 10. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Ćwiczenie łączy PO, item, quantity, unit i warehouse. Rejestruj tylko faktycznie dostarczony towar.",
+          "situation": "Na PO jest 10 palet, a przyjechało 9.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zarejestruj 9 i udokumentuj brak jednej palety, nie potwierdzaj 10.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj 9 i udokumentuj brak jednej palety, nie potwierdzaj 10.",
+          "explanation": "Ćwiczenie łączy PO, item, quantity, unit i warehouse. Rejestruj tylko faktycznie dostarczony towar.",
+          "feedback": [
+            "Tak. Ćwiczenie łączy PO, item, quantity, unit i warehouse. Rejestruj tylko faktycznie dostarczony towar.",
+            "Nie. Ćwiczenie łączy PO, item, quantity, unit i warehouse. Rejestruj tylko faktycznie dostarczony towar. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Ćwiczenie łączy PO, item, quantity, unit i warehouse. Rejestruj tylko faktycznie dostarczony towar. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zarejestruj 9 i udokumentuj brak jednej palety, nie potwierdzaj 10."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na PO jest 10 palet, a przyjechało 9. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 10,
+      "title_pl": "Receiving: rejestracja dostawy zakupu",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Receiving: rejestracja dostawy zakupu",
+          "Przyjęcie w D365 może wygenerować pracę odłożenia do miejsca docelowego. Fizyczne przyjęcie i postawienie na regale to nie zawsze jeden etap. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Towar jest na rampie, ale system pokazuje zadanie putaway. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wykonaj skan przyjęcia i właściwe zadanie odłożenia, nie pomijając rampy. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Przyjęcie w D365 może wygenerować pracę odłożenia do miejsca docelowego. Fizyczne przyjęcie i postawienie na regale to nie zawsze jeden etap.",
+          "situation": "Towar jest na rampie, ale system pokazuje zadanie putaway.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wykonaj skan przyjęcia i właściwe zadanie odłożenia, nie pomijając rampy.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Wykonaj skan przyjęcia i właściwe zadanie odłożenia, nie pomijając rampy.",
+          "explanation": "Przyjęcie w D365 może wygenerować pracę odłożenia do miejsca docelowego. Fizyczne przyjęcie i postawienie na regale to nie zawsze jeden etap.",
+          "feedback": [
+            "Tak. Przyjęcie w D365 może wygenerować pracę odłożenia do miejsca docelowego. Fizyczne przyjęcie i postawienie na regale to nie zawsze jeden etap.",
+            "Nie. Przyjęcie w D365 może wygenerować pracę odłożenia do miejsca docelowego. Fizyczne przyjęcie i postawienie na regale to nie zawsze jeden etap. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Przyjęcie w D365 może wygenerować pracę odłożenia do miejsca docelowego. Fizyczne przyjęcie i postawienie na regale to nie zawsze jeden etap. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wykonaj skan przyjęcia i właściwe zadanie odłożenia, nie pomijając rampy."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Towar jest na rampie, ale system pokazuje zadanie putaway. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 11,
+      "title_pl": "License plate — identyfikacja palety lub pojemnika",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "License plate — identyfikacja palety lub pojemnika",
+          "License plate to identyfikator jednostki logistycznej, nie fizyczny numer rejestracyjny auta. Łączy towar z nośnikiem. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwie palety tego samego SKU mają różne etykiety LP. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Skanuj właściwą LP, aby nie mieszać stanu i historii nośników. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "License plate to identyfikator jednostki logistycznej, nie fizyczny numer rejestracyjny auta. Łączy towar z nośnikiem.",
+          "situation": "Dwie palety tego samego SKU mają różne etykiety LP.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Skanuj właściwą LP, aby nie mieszać stanu i historii nośników.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Skanuj właściwą LP, aby nie mieszać stanu i historii nośników.",
+          "explanation": "License plate to identyfikator jednostki logistycznej, nie fizyczny numer rejestracyjny auta. Łączy towar z nośnikiem.",
+          "feedback": [
+            "Tak. License plate to identyfikator jednostki logistycznej, nie fizyczny numer rejestracyjny auta. Łączy towar z nośnikiem.",
+            "Nie. License plate to identyfikator jednostki logistycznej, nie fizyczny numer rejestracyjny auta. Łączy towar z nośnikiem. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. License plate to identyfikator jednostki logistycznej, nie fizyczny numer rejestracyjny auta. Łączy towar z nośnikiem. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Skanuj właściwą LP, aby nie mieszać stanu i historii nośników."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwie palety tego samego SKU mają różne etykiety LP. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 12,
+      "title_pl": "Putaway — gdzie odłożyć przyjęty towar",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Putaway — gdzie odłożyć przyjęty towar",
+          "Putaway oznacza odłożenie produktu do lokalizacji; lokalizacja docelowa może wynikać z reguł systemowych. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pracownik chce odłożyć paletę na wolny regał inny niż w terminalu. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wyjaśnij regułę lokalizacji i zatwierdzaj tylko miejsce dopuszczone przez system. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Putaway oznacza odłożenie produktu do lokalizacji; lokalizacja docelowa może wynikać z reguł systemowych.",
+          "situation": "Pracownik chce odłożyć paletę na wolny regał inny niż w terminalu.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wyjaśnij regułę lokalizacji i zatwierdzaj tylko miejsce dopuszczone przez system.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Wyjaśnij regułę lokalizacji i zatwierdzaj tylko miejsce dopuszczone przez system.",
+          "explanation": "Putaway oznacza odłożenie produktu do lokalizacji; lokalizacja docelowa może wynikać z reguł systemowych.",
+          "feedback": [
+            "Tak. Putaway oznacza odłożenie produktu do lokalizacji; lokalizacja docelowa może wynikać z reguł systemowych.",
+            "Nie. Putaway oznacza odłożenie produktu do lokalizacji; lokalizacja docelowa może wynikać z reguł systemowych. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Putaway oznacza odłożenie produktu do lokalizacji; lokalizacja docelowa może wynikać z reguł systemowych. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wyjaśnij regułę lokalizacji i zatwierdzaj tylko miejsce dopuszczone przez system."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pracownik chce odłożyć paletę na wolny regał inny niż w terminalu. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 13,
+      "title_pl": "Work template — etapy zadania",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Work template — etapy zadania",
+          "Szablon pracy definiuje kolejne czynności, np. Pick i Put; zadania mogą być powiązane z zamówieniem, uzupełnianiem lub liczeniem. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Przyjęcie generuje dwa etapy, lecz wykonano wyłącznie Pick. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zakończ odpowiadający mu etap Put po fizycznym odłożeniu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Szablon pracy definiuje kolejne czynności, np. Pick i Put; zadania mogą być powiązane z zamówieniem, uzupełnianiem lub liczeniem.",
+          "situation": "Przyjęcie generuje dwa etapy, lecz wykonano wyłącznie Pick.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zakończ odpowiadający mu etap Put po fizycznym odłożeniu.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zakończ odpowiadający mu etap Put po fizycznym odłożeniu.",
+          "explanation": "Szablon pracy definiuje kolejne czynności, np. Pick i Put; zadania mogą być powiązane z zamówieniem, uzupełnianiem lub liczeniem.",
+          "feedback": [
+            "Tak. Szablon pracy definiuje kolejne czynności, np. Pick i Put; zadania mogą być powiązane z zamówieniem, uzupełnianiem lub liczeniem.",
+            "Nie. Szablon pracy definiuje kolejne czynności, np. Pick i Put; zadania mogą być powiązane z zamówieniem, uzupełnianiem lub liczeniem. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Szablon pracy definiuje kolejne czynności, np. Pick i Put; zadania mogą być powiązane z zamówieniem, uzupełnianiem lub liczeniem. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zakończ odpowiadający mu etap Put po fizycznym odłożeniu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Przyjęcie generuje dwa etapy, lecz wykonano wyłącznie Pick. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 14,
+      "title_pl": "Location directive — zasada wyboru adresu",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Location directive — zasada wyboru adresu",
+          "Location directives wskazują miejsce pobrania lub odłożenia towaru w D365 WMS; sama zmiana pustego regału nie naprawia błędnej reguły. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Terminal konsekwentnie kieruje towary do niewłaściwej strefy. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź regułę lokalizacji i warunki wyboru, zamiast ręcznie omijać system. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Location directives wskazują miejsce pobrania lub odłożenia towaru w D365 WMS; sama zmiana pustego regału nie naprawia błędnej reguły.",
+          "situation": "Terminal konsekwentnie kieruje towary do niewłaściwej strefy.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź regułę lokalizacji i warunki wyboru, zamiast ręcznie omijać system.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź regułę lokalizacji i warunki wyboru, zamiast ręcznie omijać system.",
+          "explanation": "Location directives wskazują miejsce pobrania lub odłożenia towaru w D365 WMS; sama zmiana pustego regału nie naprawia błędnej reguły.",
+          "feedback": [
+            "Tak. Location directives wskazują miejsce pobrania lub odłożenia towaru w D365 WMS; sama zmiana pustego regału nie naprawia błędnej reguły.",
+            "Nie. Location directives wskazują miejsce pobrania lub odłożenia towaru w D365 WMS; sama zmiana pustego regału nie naprawia błędnej reguły. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Location directives wskazują miejsce pobrania lub odłożenia towaru w D365 WMS; sama zmiana pustego regału nie naprawia błędnej reguły. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź regułę lokalizacji i warunki wyboru, zamiast ręcznie omijać system."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Terminal konsekwentnie kieruje towary do niewłaściwej strefy. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 15,
+      "title_pl": "Release to warehouse — uruchomienie wydania",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Release to warehouse — uruchomienie wydania",
+          "Zamówienie sprzedaży nie musi od razu generować zadania magazynowego. Release to warehouse uruchamia proces realizacji. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Zamówienie sprzedaży ma status gotowy, ale picker nie widzi pracy. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź zwolnienie do magazynu i utworzenie odpowiedniej pracy. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Zamówienie sprzedaży nie musi od razu generować zadania magazynowego. Release to warehouse uruchamia proces realizacji.",
+          "situation": "Zamówienie sprzedaży ma status gotowy, ale picker nie widzi pracy.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź zwolnienie do magazynu i utworzenie odpowiedniej pracy.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź zwolnienie do magazynu i utworzenie odpowiedniej pracy.",
+          "explanation": "Zamówienie sprzedaży nie musi od razu generować zadania magazynowego. Release to warehouse uruchamia proces realizacji.",
+          "feedback": [
+            "Tak. Zamówienie sprzedaży nie musi od razu generować zadania magazynowego. Release to warehouse uruchamia proces realizacji.",
+            "Nie. Zamówienie sprzedaży nie musi od razu generować zadania magazynowego. Release to warehouse uruchamia proces realizacji. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Zamówienie sprzedaży nie musi od razu generować zadania magazynowego. Release to warehouse uruchamia proces realizacji. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź zwolnienie do magazynu i utworzenie odpowiedniej pracy."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Zamówienie sprzedaży ma status gotowy, ale picker nie widzi pracy. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 16,
+      "title_pl": "Picking i staging — przygotowanie do wysyłki",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking i staging — przygotowanie do wysyłki",
+          "Picker pobiera ilości z właściwych adresów, a strefa staging przechowuje skompletowane wydanie przed załadunkiem. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W zamówieniu jest 5 sztuk, a picker znalazł 4. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zarejestruj shortage i uruchom procedurę braków zamiast potwierdzać 5. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Picker pobiera ilości z właściwych adresów, a strefa staging przechowuje skompletowane wydanie przed załadunkiem.",
+          "situation": "W zamówieniu jest 5 sztuk, a picker znalazł 4.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zarejestruj shortage i uruchom procedurę braków zamiast potwierdzać 5.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj shortage i uruchom procedurę braków zamiast potwierdzać 5.",
+          "explanation": "Picker pobiera ilości z właściwych adresów, a strefa staging przechowuje skompletowane wydanie przed załadunkiem.",
+          "feedback": [
+            "Tak. Picker pobiera ilości z właściwych adresów, a strefa staging przechowuje skompletowane wydanie przed załadunkiem.",
+            "Nie. Picker pobiera ilości z właściwych adresów, a strefa staging przechowuje skompletowane wydanie przed załadunkiem. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Picker pobiera ilości z właściwych adresów, a strefa staging przechowuje skompletowane wydanie przed załadunkiem. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zarejestruj shortage i uruchom procedurę braków zamiast potwierdzać 5."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W zamówieniu jest 5 sztuk, a picker znalazł 4. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 17,
+      "title_pl": "Wave — grupowanie zleceń",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Wave — grupowanie zleceń",
+          "Wave może łączyć zlecenia według reguł procesu; parametry grupowania wpływają na wydajność i kolejność pracy. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W magazynie narasta kolejka pilnych zleceń. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź priorytety waves i terminy obiecanego załadunku. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Wave może łączyć zlecenia według reguł procesu; parametry grupowania wpływają na wydajność i kolejność pracy.",
+          "situation": "W magazynie narasta kolejka pilnych zleceń.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź priorytety waves i terminy obiecanego załadunku.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź priorytety waves i terminy obiecanego załadunku.",
+          "explanation": "Wave może łączyć zlecenia według reguł procesu; parametry grupowania wpływają na wydajność i kolejność pracy.",
+          "feedback": [
+            "Tak. Wave może łączyć zlecenia według reguł procesu; parametry grupowania wpływają na wydajność i kolejność pracy.",
+            "Nie. Wave może łączyć zlecenia według reguł procesu; parametry grupowania wpływają na wydajność i kolejność pracy. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Wave może łączyć zlecenia według reguł procesu; parametry grupowania wpływają na wydajność i kolejność pracy. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź priorytety waves i terminy obiecanego załadunku."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W magazynie narasta kolejka pilnych zleceń. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 18,
+      "title_pl": "Cycle counting — liczenie stanu",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Cycle counting — liczenie stanu",
+          "Cycle count pozwala przeliczać konkretne lokalizacje bez pełnej inwentaryzacji; różnice trafiają do przeglądu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W A-01 system pokazuje 20, fizycznie jest 18. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wpisz rzeczywistą liczbę 18 i skieruj różnicę do uprawnionego przeglądu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Cycle count pozwala przeliczać konkretne lokalizacje bez pełnej inwentaryzacji; różnice trafiają do przeglądu.",
+          "situation": "W A-01 system pokazuje 20, fizycznie jest 18.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wpisz rzeczywistą liczbę 18 i skieruj różnicę do uprawnionego przeglądu.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Wpisz rzeczywistą liczbę 18 i skieruj różnicę do uprawnionego przeglądu.",
+          "explanation": "Cycle count pozwala przeliczać konkretne lokalizacje bez pełnej inwentaryzacji; różnice trafiają do przeglądu.",
+          "feedback": [
+            "Tak. Cycle count pozwala przeliczać konkretne lokalizacje bez pełnej inwentaryzacji; różnice trafiają do przeglądu.",
+            "Nie. Cycle count pozwala przeliczać konkretne lokalizacje bez pełnej inwentaryzacji; różnice trafiają do przeglądu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Cycle count pozwala przeliczać konkretne lokalizacje bez pełnej inwentaryzacji; różnice trafiają do przeglądu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wpisz rzeczywistą liczbę 18 i skieruj różnicę do uprawnionego przeglądu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W A-01 system pokazuje 20, fizycznie jest 18. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 19,
+      "title_pl": "Zadanie: pełny przepływ PO → wydanie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Zadanie: pełny przepływ PO → wydanie",
+          "Ćwiczenie: zamówienie zakupu, przyjęcie, putaway, rezerwacja, picking, wysyłka i kontrola dokumentów. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Przyjęto 40 sztuk, sprzedano 28, a 5 jest w blokadzie jakościowej. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Rozróżnij stan fizyczny 12 i zapas dostępny 7 przed następnym zleceniem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Ćwiczenie: zamówienie zakupu, przyjęcie, putaway, rezerwacja, picking, wysyłka i kontrola dokumentów.",
+          "situation": "Przyjęto 40 sztuk, sprzedano 28, a 5 jest w blokadzie jakościowej.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Rozróżnij stan fizyczny 12 i zapas dostępny 7 przed następnym zleceniem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Rozróżnij stan fizyczny 12 i zapas dostępny 7 przed następnym zleceniem.",
+          "explanation": "Ćwiczenie: zamówienie zakupu, przyjęcie, putaway, rezerwacja, picking, wysyłka i kontrola dokumentów.",
+          "feedback": [
+            "Tak. Ćwiczenie: zamówienie zakupu, przyjęcie, putaway, rezerwacja, picking, wysyłka i kontrola dokumentów.",
+            "Nie. Ćwiczenie: zamówienie zakupu, przyjęcie, putaway, rezerwacja, picking, wysyłka i kontrola dokumentów. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Ćwiczenie: zamówienie zakupu, przyjęcie, putaway, rezerwacja, picking, wysyłka i kontrola dokumentów. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Rozróżnij stan fizyczny 12 i zapas dostępny 7 przed następnym zleceniem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Przyjęto 40 sztuk, sprzedano 28, a 5 jest w blokadzie jakościowej. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 20,
+      "title_pl": "Expert: migracja AX 2012 WMSII → D365",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: migracja AX 2012 WMSII → D365",
+          "Legacy WMSII nie jest obsługiwany identycznie w nowym module D365 WMS; przeniesienie danych wymaga planu i walidacji. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Firma przechodzi z AX 2012 na D365 i ma lokalizacje oparte na dawnych wymiarach. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Przeprowadź mapowanie wymiarów i testy migracji, zanim udostępnisz system produkcyjny. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Legacy WMSII nie jest obsługiwany identycznie w nowym module D365 WMS; przeniesienie danych wymaga planu i walidacji.",
+          "situation": "Firma przechodzi z AX 2012 na D365 i ma lokalizacje oparte na dawnych wymiarach.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Przeprowadź mapowanie wymiarów i testy migracji, zanim udostępnisz system produkcyjny.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Przeprowadź mapowanie wymiarów i testy migracji, zanim udostępnisz system produkcyjny.",
+          "explanation": "Legacy WMSII nie jest obsługiwany identycznie w nowym module D365 WMS; przeniesienie danych wymaga planu i walidacji.",
+          "feedback": [
+            "Tak. Legacy WMSII nie jest obsługiwany identycznie w nowym module D365 WMS; przeniesienie danych wymaga planu i walidacji.",
+            "Nie. Legacy WMSII nie jest obsługiwany identycznie w nowym module D365 WMS; przeniesienie danych wymaga planu i walidacji. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Legacy WMSII nie jest obsługiwany identycznie w nowym module D365 WMS; przeniesienie danych wymaga planu i walidacji. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Przeprowadź mapowanie wymiarów i testy migracji, zanim udostępnisz system produkcyjny."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Firma przechodzi z AX 2012 na D365 i ma lokalizacje oparte na dawnych wymiarach. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 21,
+      "title_pl": "Expert: wymiar magazynowy i śledzenie partii",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: wymiar magazynowy i śledzenie partii",
+          "Wymiary magazynowe, serial/batch i hierarchia rezerwacji wpływają na możliwość wyboru konkretnego zapasu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Operator chce wydać partię, której nie ma w zarezerwowanej lokalizacji. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zweryfikuj hierarchię i dokument rezerwacji, nie podmieniaj partii bez kontroli. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Wymiary magazynowe, serial/batch i hierarchia rezerwacji wpływają na możliwość wyboru konkretnego zapasu.",
+          "situation": "Operator chce wydać partię, której nie ma w zarezerwowanej lokalizacji.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zweryfikuj hierarchię i dokument rezerwacji, nie podmieniaj partii bez kontroli.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj hierarchię i dokument rezerwacji, nie podmieniaj partii bez kontroli.",
+          "explanation": "Wymiary magazynowe, serial/batch i hierarchia rezerwacji wpływają na możliwość wyboru konkretnego zapasu.",
+          "feedback": [
+            "Tak. Wymiary magazynowe, serial/batch i hierarchia rezerwacji wpływają na możliwość wyboru konkretnego zapasu.",
+            "Nie. Wymiary magazynowe, serial/batch i hierarchia rezerwacji wpływają na możliwość wyboru konkretnego zapasu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Wymiary magazynowe, serial/batch i hierarchia rezerwacji wpływają na możliwość wyboru konkretnego zapasu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zweryfikuj hierarchię i dokument rezerwacji, nie podmieniaj partii bez kontroli."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Operator chce wydać partię, której nie ma w zarezerwowanej lokalizacji. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 22,
+      "title_pl": "Expert: FIFO, FEFO i zasady pobrań",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: FIFO, FEFO i zasady pobrań",
+          "Strategia FEFO dąży do wydania partii z wcześniejszą datą ważności; FIFO dotyczy kolejności przyjęcia. Wdrożenie zależy od konfiguracji. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwie partie mają terminy 15.12 i 15.01. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź regułę FEFO i pobierz właściwą partię po kontroli statusu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Strategia FEFO dąży do wydania partii z wcześniejszą datą ważności; FIFO dotyczy kolejności przyjęcia. Wdrożenie zależy od konfiguracji.",
+          "situation": "Dwie partie mają terminy 15.12 i 15.01.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź regułę FEFO i pobierz właściwą partię po kontroli statusu.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź regułę FEFO i pobierz właściwą partię po kontroli statusu.",
+          "explanation": "Strategia FEFO dąży do wydania partii z wcześniejszą datą ważności; FIFO dotyczy kolejności przyjęcia. Wdrożenie zależy od konfiguracji.",
+          "feedback": [
+            "Tak. Strategia FEFO dąży do wydania partii z wcześniejszą datą ważności; FIFO dotyczy kolejności przyjęcia. Wdrożenie zależy od konfiguracji.",
+            "Nie. Strategia FEFO dąży do wydania partii z wcześniejszą datą ważności; FIFO dotyczy kolejności przyjęcia. Wdrożenie zależy od konfiguracji. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Strategia FEFO dąży do wydania partii z wcześniejszą datą ważności; FIFO dotyczy kolejności przyjęcia. Wdrożenie zależy od konfiguracji. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź regułę FEFO i pobierz właściwą partię po kontroli statusu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwie partie mają terminy 15.12 i 15.01. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 23,
+      "title_pl": "Expert: uzupełnianie stref pickingu",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: uzupełnianie stref pickingu",
+          "Replenishment przenosi zapas ze strefy rezerwowej do pickingowej na podstawie progów lub potrzeb. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Picker otrzymuje brak towaru w strefie A, choć rezerwa ma 50 sztuk. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zweryfikuj zadanie replenishment oraz jego priorytet przed raportowaniem braku globalnego. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Replenishment przenosi zapas ze strefy rezerwowej do pickingowej na podstawie progów lub potrzeb.",
+          "situation": "Picker otrzymuje brak towaru w strefie A, choć rezerwa ma 50 sztuk.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zweryfikuj zadanie replenishment oraz jego priorytet przed raportowaniem braku globalnego.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj zadanie replenishment oraz jego priorytet przed raportowaniem braku globalnego.",
+          "explanation": "Replenishment przenosi zapas ze strefy rezerwowej do pickingowej na podstawie progów lub potrzeb.",
+          "feedback": [
+            "Tak. Replenishment przenosi zapas ze strefy rezerwowej do pickingowej na podstawie progów lub potrzeb.",
+            "Nie. Replenishment przenosi zapas ze strefy rezerwowej do pickingowej na podstawie progów lub potrzeb. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Replenishment przenosi zapas ze strefy rezerwowej do pickingowej na podstawie progów lub potrzeb. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zweryfikuj zadanie replenishment oraz jego priorytet przed raportowaniem braku globalnego."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Picker otrzymuje brak towaru w strefie A, choć rezerwa ma 50 sztuk. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 24,
+      "title_pl": "Expert: rozliczenie rozbieżności i audyt",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: rozliczenie rozbieżności i audyt",
+          "Zmiana stanu magazynowego może mieć wpływ na koszty i odpowiedzialność. Rejestruj powód, użytkownika, datę i podstawę korekty. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pracownik chce ręcznie zwiększyć zapas o 17 sztuk, by zgadzał się raport. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Przeprowadź weryfikację oraz zatwierdzoną korektę z historią decyzji. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Zmiana stanu magazynowego może mieć wpływ na koszty i odpowiedzialność. Rejestruj powód, użytkownika, datę i podstawę korekty.",
+          "situation": "Pracownik chce ręcznie zwiększyć zapas o 17 sztuk, by zgadzał się raport.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Przeprowadź weryfikację oraz zatwierdzoną korektę z historią decyzji.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Przeprowadź weryfikację oraz zatwierdzoną korektę z historią decyzji.",
+          "explanation": "Zmiana stanu magazynowego może mieć wpływ na koszty i odpowiedzialność. Rejestruj powód, użytkownika, datę i podstawę korekty.",
+          "feedback": [
+            "Tak. Zmiana stanu magazynowego może mieć wpływ na koszty i odpowiedzialność. Rejestruj powód, użytkownika, datę i podstawę korekty.",
+            "Nie. Zmiana stanu magazynowego może mieć wpływ na koszty i odpowiedzialność. Rejestruj powód, użytkownika, datę i podstawę korekty. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Zmiana stanu magazynowego może mieć wpływ na koszty i odpowiedzialność. Rejestruj powód, użytkownika, datę i podstawę korekty. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Przeprowadź weryfikację oraz zatwierdzoną korektę z historią decyzji."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pracownik chce ręcznie zwiększyć zapas o 17 sztuk, by zgadzał się raport. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 25,
+      "title_pl": "Expert: test interfejsu i uprawnień",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: test interfejsu i uprawnień",
+          "Uprawnienia realizacji pracy powinny być oddzielone od administracyjnych zmian reguł magazynowych. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Nowy pracownik ma uprawnienia do edycji wszystkich location directives. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Ogranicz rolę do zadań operacyjnych i zleć zmianę konfiguracji administratorowi. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Uprawnienia realizacji pracy powinny być oddzielone od administracyjnych zmian reguł magazynowych.",
+          "situation": "Nowy pracownik ma uprawnienia do edycji wszystkich location directives.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Ogranicz rolę do zadań operacyjnych i zleć zmianę konfiguracji administratorowi.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Ogranicz rolę do zadań operacyjnych i zleć zmianę konfiguracji administratorowi.",
+          "explanation": "Uprawnienia realizacji pracy powinny być oddzielone od administracyjnych zmian reguł magazynowych.",
+          "feedback": [
+            "Tak. Uprawnienia realizacji pracy powinny być oddzielone od administracyjnych zmian reguł magazynowych.",
+            "Nie. Uprawnienia realizacji pracy powinny być oddzielone od administracyjnych zmian reguł magazynowych. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Uprawnienia realizacji pracy powinny być oddzielone od administracyjnych zmian reguł magazynowych. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Ogranicz rolę do zadań operacyjnych i zleć zmianę konfiguracji administratorowi."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Nowy pracownik ma uprawnienia do edycji wszystkich location directives. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 26,
+      "title_pl": "Expert: integracja ERP i skanerów",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: integracja ERP i skanerów",
+          "Brak synchronizacji skanera może dać pozorny brak towaru. Monitoruj kolejki i błędy bez podwójnego księgowania. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Terminal potwierdził pick, ale ERP jeszcze go nie pokazuje. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź status synchronizacji i identyfikator zadania przed powtórnym zapisem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Brak synchronizacji skanera może dać pozorny brak towaru. Monitoruj kolejki i błędy bez podwójnego księgowania.",
+          "situation": "Terminal potwierdził pick, ale ERP jeszcze go nie pokazuje.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź status synchronizacji i identyfikator zadania przed powtórnym zapisem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź status synchronizacji i identyfikator zadania przed powtórnym zapisem.",
+          "explanation": "Brak synchronizacji skanera może dać pozorny brak towaru. Monitoruj kolejki i błędy bez podwójnego księgowania.",
+          "feedback": [
+            "Tak. Brak synchronizacji skanera może dać pozorny brak towaru. Monitoruj kolejki i błędy bez podwójnego księgowania.",
+            "Nie. Brak synchronizacji skanera może dać pozorny brak towaru. Monitoruj kolejki i błędy bez podwójnego księgowania. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Brak synchronizacji skanera może dać pozorny brak towaru. Monitoruj kolejki i błędy bez podwójnego księgowania. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź status synchronizacji i identyfikator zadania przed powtórnym zapisem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Terminal potwierdził pick, ale ERP jeszcze go nie pokazuje. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 27,
+      "title_pl": "Expert: raport wydajności i terminowości",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: raport wydajności i terminowości",
+          "KPI to nie tylko liczba pobrań na godzinę; liczą się też pomyłki, reklamacje, bezpieczeństwo i termin wysyłki. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Zespół pracuje szybko, ale 7% zamówień ma brakujące pozycje. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Analizuj jakość wraz z wydajnością, nie premiuj bezrefleksyjnie samych skanów. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "KPI to nie tylko liczba pobrań na godzinę; liczą się też pomyłki, reklamacje, bezpieczeństwo i termin wysyłki.",
+          "situation": "Zespół pracuje szybko, ale 7% zamówień ma brakujące pozycje.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Analizuj jakość wraz z wydajnością, nie premiuj bezrefleksyjnie samych skanów.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Analizuj jakość wraz z wydajnością, nie premiuj bezrefleksyjnie samych skanów.",
+          "explanation": "KPI to nie tylko liczba pobrań na godzinę; liczą się też pomyłki, reklamacje, bezpieczeństwo i termin wysyłki.",
+          "feedback": [
+            "Tak. KPI to nie tylko liczba pobrań na godzinę; liczą się też pomyłki, reklamacje, bezpieczeństwo i termin wysyłki.",
+            "Nie. KPI to nie tylko liczba pobrań na godzinę; liczą się też pomyłki, reklamacje, bezpieczeństwo i termin wysyłki. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. KPI to nie tylko liczba pobrań na godzinę; liczą się też pomyłki, reklamacje, bezpieczeństwo i termin wysyłki. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Analizuj jakość wraz z wydajnością, nie premiuj bezrefleksyjnie samych skanów."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Zespół pracuje szybko, ale 7% zamówień ma brakujące pozycje. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 28,
+      "title_pl": "Expert: symulacja awarii podczas wysyłki",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: symulacja awarii podczas wysyłki",
+          "W razie awarii WMS procedura offline musi zabezpieczać numer zamówienia, ilości, etykiety i późniejszą rekoncyliację. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W systemie przestała działać rezerwacja na godzinę przed odbiorem auta. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Wstrzymaj ryzykowne wydania lub zastosuj zatwierdzoną procedurę awaryjną i pojedyncze rozliczenie. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "W razie awarii WMS procedura offline musi zabezpieczać numer zamówienia, ilości, etykiety i późniejszą rekoncyliację.",
+          "situation": "W systemie przestała działać rezerwacja na godzinę przed odbiorem auta.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Wstrzymaj ryzykowne wydania lub zastosuj zatwierdzoną procedurę awaryjną i pojedyncze rozliczenie.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Wstrzymaj ryzykowne wydania lub zastosuj zatwierdzoną procedurę awaryjną i pojedyncze rozliczenie.",
+          "explanation": "W razie awarii WMS procedura offline musi zabezpieczać numer zamówienia, ilości, etykiety i późniejszą rekoncyliację.",
+          "feedback": [
+            "Tak. W razie awarii WMS procedura offline musi zabezpieczać numer zamówienia, ilości, etykiety i późniejszą rekoncyliację.",
+            "Nie. W razie awarii WMS procedura offline musi zabezpieczać numer zamówienia, ilości, etykiety i późniejszą rekoncyliację. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. W razie awarii WMS procedura offline musi zabezpieczać numer zamówienia, ilości, etykiety i późniejszą rekoncyliację. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Wstrzymaj ryzykowne wydania lub zastosuj zatwierdzoną procedurę awaryjną i pojedyncze rozliczenie."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W systemie przestała działać rezerwacja na godzinę przed odbiorem auta. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Axapta / D365 SCM",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Axapta / D365 SCM",
+          "Pełna ścieżka obejmuje wersję systemu, zamówienie, miejsce, skaner, rezerwację, picking i rozbieżności. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Klient zgłasza brak jednej pozycji; log terminala pokazuje pick, ale fizyczna paczka jej nie ma. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Ustal źródło rozbieżności od dokumentu i skanu do pakowania, a dopiero potem wykonaj zatwierdzoną korektę. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Pełna ścieżka obejmuje wersję systemu, zamówienie, miejsce, skaner, rezerwację, picking i rozbieżności.",
+          "situation": "Klient zgłasza brak jednej pozycji; log terminala pokazuje pick, ale fizyczna paczka jej nie ma.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Ustal źródło rozbieżności od dokumentu i skanu do pakowania, a dopiero potem wykonaj zatwierdzoną korektę.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Ustal źródło rozbieżności od dokumentu i skanu do pakowania, a dopiero potem wykonaj zatwierdzoną korektę.",
+          "explanation": "Pełna ścieżka obejmuje wersję systemu, zamówienie, miejsce, skaner, rezerwację, picking i rozbieżności.",
+          "feedback": [
+            "Tak. Pełna ścieżka obejmuje wersję systemu, zamówienie, miejsce, skaner, rezerwację, picking i rozbieżności.",
+            "Nie. Pełna ścieżka obejmuje wersję systemu, zamówienie, miejsce, skaner, rezerwację, picking i rozbieżności. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Pełna ścieżka obejmuje wersję systemu, zamówienie, miejsce, skaner, rezerwację, picking i rozbieżności. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Ustal źródło rozbieżności od dokumentu i skanu do pakowania, a dopiero potem wykonaj zatwierdzoną korektę."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Klient zgłasza brak jednej pozycji; log terminala pokazuje pick, ale fizyczna paczka jej nie ma. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    }
+  ]
+}
