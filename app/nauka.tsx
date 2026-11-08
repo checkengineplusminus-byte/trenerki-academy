@@ -23,7 +23,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[dialogueReady,setDialogueReady]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[dialogueReady,setDialogueReady]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -153,8 +153,13 @@ export default function Learning(){
       <Text style={{fontSize:11,color:'#7b6548'}}>Powtórz ćwiczenie, aby sprawdzić zrozumienie.</Text>
     </Pressable>)}
    </View>}
-   <Text style={{fontWeight:'900',fontSize:17,color:ink,marginBottom:11}}>Program Twojego kursu</Text>
-   {(items.length===30?[
+   <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
+    style={{backgroundColor:'#eef6e9',padding:17,borderRadius:13,marginBottom:13,borderWidth:1,borderColor:'#d6e7d0',gap:7}}>
+     <Text style={{color:ink,fontWeight:'900',fontSize:18}}>{showProgram?'Zwiń plan kursu':'Plan kursu — zobacz wszystkie lekcje →'}</Text>
+     <Text style={{color:secondary,fontSize:13}}>Aktualnie: {items.length===30?'dział '+(Math.floor(index/10)+1)+' z 3 · ':''}lekcja {index+1} z {items.length}</Text>
+     <Text style={{color:ink,fontSize:15,fontWeight:'800'}}>{lesson?.title_pl}</Text>
+   </Pressable>
+   {showProgram&&(items.length===30?[
      {name:'DZIAŁ I · PODSTAWY',about:'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
      {name:'DZIAŁ II · PRAKTYKA',about:'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
      {name:'DZIAŁ III · EXPERT',about:'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
@@ -178,7 +183,7 @@ export default function Learning(){
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
-   {(!!lesson.material?.sections?.length||!!lesson.material?.learning?.situation)&&
+   {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
