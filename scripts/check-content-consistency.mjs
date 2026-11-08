@@ -31,7 +31,7 @@ try{
  'mierz-ponad-sily','opieka-seniorzy','wsparcie-adhd','poznaj-siebie','mocny-charakter','nie-lubie-ludzi',
  'zaczynam-od-zera','obowiazki-domowe','lepszy-cukiernik','lepszy-kucharz','jak-kupic-samochod',
  'google-ads-promocja','facebook-ads-promocja']);
- const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty']);
+ const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko']);
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
  const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.lastIndexOf('</script>');
