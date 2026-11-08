@@ -176,6 +176,7 @@ export default function Learning(){
     <Text style={{color:secondary,marginTop:6}}>Masz komplet lekcji. Teraz czeka Cię osobny egzamin Anielki. Dopiero jego zaliczenie umożliwia wystawienie autorskiego dyplomu.</Text>
    </View>}
   </>}
+  {progress===100&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
    <CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={index===0}/>
    {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug}/>}
@@ -210,7 +211,7 @@ export default function Learning(){
      </>
    }
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
-   {progress===100&&<FinalExam courseSlug={slug}/>}
+
    <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} onReady={setDialogueReady}/>
    <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
     <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Najpierw ćwiczenie i rozmowa z Anielką':next!==undefined?'Zalicz etap i przejdź dalej':'Zalicz ostatnią lekcję i przejdź do egzaminu'}</Text>
