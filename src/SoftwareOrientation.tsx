@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image,Platform,Pressable,Text,View} from 'react-native';
+import {Image,Platform,Pressable,Text,View,Linking} from 'react-native';
 import HandsOnLab from './HandsOnLab';
 import SoftwarePlayground from './SoftwarePlayground';
 import type {KeyboardShortcut} from './KeyboardLesson';
@@ -143,37 +143,144 @@ const programs:Record<string,Program>={
  }
 };
 export const hasSoftwareOrientation=(slug:string)=>Boolean(programs[slug]);
+type Tab='interface'|'history'|'terms'|'practice';
+const officialPages:Record<string,string>={
+ 'word-skroty':'https://support.microsoft.com/en-us/office/foundations-experiences/show-or-hide-the-ribbon-in-office',
+ 'excel-skroty':'https://support.microsoft.com/en-us/excel/show-the-ribbon',
+ 'autocad-skroty':'https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-OnBoarding/files/ACD_FOUNDATIONS_MAIN1.html',
+ 'windows-skroty':'https://support.microsoft.com/en-us/windows'
+};
+const walkthroughs:Record<string,string[]>={
+ 'word-skroty':[
+  'Otwórz Plik → Zapisz jako. Wybierz folder, nazwę i format DOCX. Po zapisie znajdź dokument w wybranej lokalizacji.',
+  'Zaznacz jeden tytuł. W Narzędziach głównych nadaj mu styl Nagłówek 1, a nie tylko pogrubienie. Dzięki temu zbudujesz spis treści.',
+  'Wybierz Wstawianie → Tabela. Ustaw dwie kolumny i trzy wiersze. Sprawdź, czy wszystkie informacje zmieściły się na stronie.',
+  'Otwórz Układ i sprawdź marginesy. Zobacz w podglądzie wydruku, czy tekst nie wychodzi poza kartkę.',
+  'Otwórz Recenzja i sprawdź komentarze oraz śledzenie zmian. Nie zatwierdzaj cudzej korekty bez zapoznania się z treścią.',
+  'Kliknij w środek dokumentu. Wpisz jedno zdanie, zaznacz je i popraw. Wskaźnik myszy i kursor tekstu to różne elementy.'
+ ],
+ 'excel-skroty':[
+  'Zapisz jeden plik XLSX i nazwij go Budżet. Nie twórz osobnego pliku dla każdej pozycji; w tym samym skoroszycie możesz dodać kolejne arkusze.',
+  'Otwórz kartę arkusza. Nazwij ją Materiały i wpisz trzy produkty. Przełącz na drugi arkusz i sprawdź, czy dane są niezależne.',
+  'Zaznacz komórkę E2. Wpisz =C2*D2. Następnie zmień C2 i zobacz, czy wynik sam się przelicza.',
+  'Kliknij na komórkę z formułą. Sprawdź jej pełną treść w pasku formuły. Nie myl wyświetlanego wyniku z zapisanym działaniem.',
+  'Znajdź Formuły i zapoznaj się z SUMA/SUM. Zsumuj zakres wartości, nie włączając do sumy komórki z wynikiem.',
+  'Sprawdź kartę arkusza na dole. Dodaj nową, nazwij Raport i wróć do Materiałów. To nadal jeden plik.'
+ ],
+ 'autocad-skroty':[
+  'W obszarze wstążki wybierz Home, a w nim Draw i Modify. Rozróżnij narzędzia tworzenia nowych obiektów i zmiany istniejących.',
+  'Rysuj w Model Space w uzgodnionych jednostkach. Wprowadź punkty narożników zamiast zgadywać ich położenie na ekranie.',
+  'Wpisz LINE w Command Line, ustaw pierwszy i kolejny punkt. Enter kończy etap, Esc przerywa polecenie. Wykonaj to w symulatorze.',
+  'Utwórz warstwy dla ścian i wymiarów. Ukryj jedną, a następnie przywróć — obiekty nie zostały fizycznie usunięte.',
+  'Layout służy do przygotowania widoku i wydruku, nie do przypadkowego przeskalowania modelu. Sprawdź wymiary w modelu przed eksportem.',
+  'Włącz i wyłącz funkcje Snap/Ortho w symulatorze. Zwróć uwagę, kiedy uzyskujesz poziome lub pionowe odcinki.'
+ ],
+ 'windows-skroty':[
+  'Wskaż ikonę programu na pulpicie. Pamiętaj, że ikona może być skrótem, nie samym plikiem z dokumentem.',
+  'Naciśnij klawisz Windows i wyszukaj Kalkulator. Uruchom aplikację i wróć do menu Start bez jej odinstalowywania.',
+  'Otwórz Eksplorator skrótem Win+E. Znajdź Dokumenty i Pobrane, a następnie odczytaj ścieżkę do pliku.',
+  'Zminimalizuj próbne okno, po czym przywróć je z paska zadań. Zobacz, że aplikacja nie została zamknięta.',
+  'Otwórz dwa okna. Użyj Alt+Tab do ich zmiany, a Win+D do pokazania pulpitu. Nie zamykaj żadnego bez potrzeby.',
+  'W Koszu znajdź próbny usunięty plik. Nie zakładaj, że każdy usunięty dokument lub plik na dysku sieciowym trafi właśnie tutaj.'
+ ]
+};
+const tabs:{key:Tab;label:string}[]=[
+ {key:'interface',label:'Poznaj ekran'},{key:'history',label:'Historia i zastosowanie'},
+ {key:'terms',label:'Słownik'},{key:'practice',label:'Ćwicz sam'}
+];
 export default function SoftwareOrientation({slug}:{slug:string}){
- const p=programs[slug], [active,setActive]=useState<KeyboardShortcut|null>(null),[runId,setRunId]=useState(0),[selectedTerm,setSelectedTerm]=useState(0);
+ const p=programs[slug], [active,setActive]=useState<KeyboardShortcut|null>(null),[runId,setRunId]=useState(0);
+ const [selectedTerm,setSelectedTerm]=useState(0),[selectedZone,setSelectedZone]=useState(0);
+ const [tab,setTab]=useState<Tab>('interface'),[imageFailed,setImageFailed]=useState(false);
  if(!p)return null;
- function execute(a:Action){setActive({combo:a.combo,keys:[a.combo],kind:p.mode==='cad'?'alias':'hotkey',label:a.name,before:a.desc,after:a.desc,tip:a.desc});setRunId(n=>n+1);}
- return <View style={{backgroundColor:'#f0f6ec',padding:17,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:16,marginBottom:22}}>
-  <Text style={{color:'#457054',fontWeight:'900',fontSize:12}}>PIERWSZY ROZDZIAŁ · POZNAJ PROGRAM OD ZERA</Text>
-  <Text style={{color:ink,fontSize:23,fontWeight:'900',lineHeight:29}}>{p.name}: skąd się wziął i co zobaczysz na ekranie?</Text>
-  {p.history.map((paragraph,i)=><Text key={i} style={{fontSize:15,lineHeight:26,color:'#355542'}}>{paragraph}</Text>)}
-  <View style={{backgroundColor:'#e0efdc',padding:15,borderRadius:12,gap:7}}>
-   <Text style={{fontSize:16,color:ink,fontWeight:'900'}}>Po co używamy tego programu?</Text>
-   <Text style={{fontSize:15,color:'#355542',lineHeight:25}}>{p.why}</Text>
+ function execute(a:Action){
+  setActive({combo:a.combo,keys:[a.combo],kind:p.mode==='cad'?'alias':'hotkey',label:a.name,before:a.desc,after:a.desc,tip:a.desc});
+  setRunId(n=>n+1);
+ }
+ return <View style={{backgroundColor:'#eef6e9',padding:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:15,marginBottom:22}}>
+  <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
+  <Text style={{color:ink,fontSize:23,fontWeight:'900',lineHeight:30}}>{p.name} — poznaj ekran i wykonaj pierwsze zadanie</Text>
+  {Platform.OS==='web'&&!imageFailed?
+   <Image source={{uri:'https://trenerki-academy.expo.app/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
+    resizeMode="contain" style={{width:'100%',height:290,backgroundColor:'white',borderRadius:12}}
+    accessibilityLabel={'Ilustrowana mapa głównego ekranu '+p.name}/>:
+   <View style={{backgroundColor:'white',borderRadius:12,padding:13,gap:10}}>
+    <View style={{padding:10,backgroundColor:'#193c2d',borderRadius:8}}>
+     <Text style={{fontWeight:'900',color:'white'}}>{p.name} · ekran pracy</Text>
+    </View>
+    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+     {p.zones.slice(0,5).map((z,i)=><Pressable key={i} onPress={()=>{setSelectedZone(i);setTab('interface')}} style={{padding:8,backgroundColor:'#e5f1e1',borderRadius:8}}>
+      <Text style={{color:ink,fontSize:12,fontWeight:'800'}}>{z.name}</Text>
+     </Pressable>)}
+    </View>
+    <View style={{backgroundColor:'#ecf2ed',padding:25,minHeight:90,borderRadius:9}}>
+     <Text style={{color:ink,fontWeight:'800'}}>{p.zones[selectedZone].name}</Text>
+     <Text style={{color:'#476a54',lineHeight:22}}>{p.zones[selectedZone].meaning}</Text>
+    </View>
+   </View>}
+  <Text style={{fontSize:11,color:'#647d66',lineHeight:18}}>Autorski schemat edukacyjny, nie zrzut ekranu producenta. Wygląd może się zmieniać zależnie od wersji programu.</Text>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+   {tabs.map(x=><Pressable key={x.key} onPress={()=>setTab(x.key)} accessibilityRole="button"
+    accessibilityState={{selected:tab===x.key}}
+    style={{paddingHorizontal:12,paddingVertical:11,backgroundColor:tab===x.key?ink:'white',borderRadius:10,borderColor:'#d4e4d0',borderWidth:1}}>
+    <Text style={{color:tab===x.key?'white':ink,fontWeight:'900',fontSize:13}}>{x.label}</Text>
+   </Pressable>)}
   </View>
-  <Text style={{fontWeight:'900',color:ink,fontSize:18}}>1. Zobacz główne okno aplikacji</Text>
-  <View style={{backgroundColor:'white',padding:9,borderWidth:1,borderColor:'#d6e5d2',borderRadius:13,gap:9}}>
-   {Platform.OS==='web'?<Image source={{uri:'https://trenerki-academy.expo.app/academy/assets/'+p.image+'.svg'}} resizeMode="contain" accessibilityLabel={'Schemat okna '+p.name} style={{width:'100%',height:285}}/>:
-    <Text style={{color:'#4e6f58'}}>Schemat interfejsu: {p.name}. Poniżej opisane są wszystkie ważne obszary.</Text>}
-   <Text style={{color:'#69806c',fontSize:11,lineHeight:17}}>Własny rysunek edukacyjny TRENERKI Academy, pokazujący przykładowe menu. Nie jest zrzutem rzeczywistej aplikacji.</Text>
-  </View>
-  <Text style={{fontWeight:'900',fontSize:18,color:ink}}>2. Poznaj menu i znaczenie każdego obszaru</Text>
-  <View style={{gap:9}}>{p.zones.map((z,i)=><View key={i} style={{backgroundColor:'white',borderRadius:11,padding:13,flexDirection:'row',gap:12}}>
-   <Text style={{fontWeight:'900',color:'#316849',fontSize:17,width:25}}>{i+1}.</Text>
-   <View style={{flex:1,gap:5}}><Text style={{color:ink,fontWeight:'900',fontSize:15}}>{z.name}</Text><Text style={{color:'#50715b',fontSize:14,lineHeight:22}}>{z.meaning}</Text></View>
-  </View>)}</View>
-  <Text style={{fontWeight:'900',fontSize:18,color:ink}}>3. Mała encyklopedia — poznaj nowe słowa</Text>
-  <View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>{p.terms.map((t,i)=><Pressable key={i} onPress={()=>setSelectedTerm(i)} style={{backgroundColor:i===selectedTerm?'#c8e3c2':'white',borderWidth:1,borderColor:'#c2d7c1',borderRadius:9,padding:10}}><Text style={{color:ink,fontWeight:'800',fontSize:12}}>{t.name}</Text></Pressable>)}</View>
-  <View style={{backgroundColor:'white',borderRadius:11,padding:16,gap:7}}><Text style={{fontSize:17,fontWeight:'900',color:ink}}>{p.terms[selectedTerm].name}</Text><Text style={{color:'#4a6450',fontSize:15,lineHeight:24}}>{p.terms[selectedTerm].description}</Text></View>
-  <Text style={{fontWeight:'900',fontSize:18,color:ink}}>4. Zrób coś samodzielnie — wirtualne ćwiczenie</Text>
-  <Text style={{color:'#45634c',lineHeight:24,fontSize:15}}>{p.today} Przyciski poniżej wykonują polecenie w ćwiczeniu, nie zmieniają Twoich prawdziwych plików.</Text>
-  <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>{p.actions.map((a,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>execute(a)} style={{backgroundColor:ink,paddingHorizontal:13,paddingVertical:11,borderRadius:9}}><Text style={{color:'white',fontWeight:'800',fontSize:12}}>{a.name}</Text></Pressable>)}</View>
-  {(p.mode==='excel'||p.mode==='cad')?<HandsOnLab key={slug} mode={p.mode} active={active} runId={runId}/>:
-   <SoftwarePlayground mode={p.mode} active={active}/>}
-  <Text style={{fontSize:13,color:'#53705c',lineHeight:21}}>Po ćwiczeniu opisz Anielce, co zrobiłeś i co się zmieniło. Dopiero potem przejdziesz do następnego etapu.</Text>
+  {tab==='interface'&&<>
+   <Text style={{color:ink,fontWeight:'900',fontSize:19}}>Kliknij część menu i przećwicz jej funkcję</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+    {p.zones.map((z,i)=><Pressable key={i} onPress={()=>setSelectedZone(i)} accessibilityRole="button" accessibilityState={{selected:i===selectedZone}}
+     style={{padding:11,borderRadius:9,backgroundColor:i===selectedZone?'#cde6c5':'white',borderWidth:1,borderColor:'#c8dcca'}}>
+     <Text style={{color:ink,fontWeight:'800',fontSize:13}}>{String(i+1)+'. '+z.name}</Text>
+    </Pressable>)}
+   </View>
+   <View style={{backgroundColor:'white',borderRadius:12,padding:17,gap:10}}>
+    <Text style={{color:'#3e8158',fontWeight:'900',fontSize:12}}>WYBRANA CZĘŚĆ EKRANU</Text>
+    <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>{p.zones[selectedZone].name}</Text>
+    <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{p.zones[selectedZone].meaning}</Text>
+    <Text style={{color:ink,fontWeight:'900'}}>Spróbuj na własnym komputerze:</Text>
+    <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{walkthroughs[slug][selectedZone]}</Text>
+   </View>
+   <Pressable onPress={()=>setTab('practice')} style={{padding:14,backgroundColor:ink,borderRadius:11}}>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Przejdź do wirtualnego programu →</Text>
+   </Pressable>
+  </>}
+  {tab==='history'&&<View style={{gap:13}}>
+   <Text style={{fontSize:18,fontWeight:'900',color:ink}}>Skąd pochodzi {p.name}?</Text>
+   {p.history.map((paragraph,i)=><Text key={i} style={{fontSize:15,lineHeight:26,color:'#355542'}}>{paragraph}</Text>)}
+   <View style={{backgroundColor:'white',padding:15,borderRadius:12,gap:8}}>
+    <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Gdzie wykorzystasz tę wiedzę?</Text>
+    <Text style={{fontSize:15,color:'#3e5f48',lineHeight:24}}>{p.why}</Text>
+   </View>
+  </View>}
+  {tab==='terms'&&<View style={{gap:12}}>
+   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Mała encyklopedia programu</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+    {p.terms.map((t,i)=><Pressable key={i} onPress={()=>setSelectedTerm(i)} style={{backgroundColor:i===selectedTerm?'#c9e7c5':'white',borderRadius:9,padding:11}}>
+     <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{t.name}</Text>
+    </Pressable>)}
+   </View>
+   <View style={{backgroundColor:'white',padding:16,borderRadius:12,gap:9}}>
+    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>{p.terms[selectedTerm].name}</Text>
+    <Text style={{color:'#3d604c',lineHeight:25,fontSize:15}}>{p.terms[selectedTerm].description}</Text>
+   </View>
+  </View>}
+  {tab==='practice'&&<View style={{gap:12}}>
+   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Otwórz warsztat i sprawdź rezultat</Text>
+   <Text style={{color:'#3d624d',lineHeight:24}}>{p.today}</Text>
+   <View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>
+    {p.actions.map((a,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>execute(a)}
+     style={{backgroundColor:ink,paddingHorizontal:12,paddingVertical:12,borderRadius:9}}>
+     <Text style={{color:'white',fontWeight:'900',fontSize:12}}>{a.name}</Text>
+    </Pressable>)}
+   </View>
+   {(p.mode==='excel'||p.mode==='cad')?<HandsOnLab key={slug} mode={p.mode} active={active} runId={runId}/>:
+    <SoftwarePlayground mode={p.mode} active={active}/>}
+   <Text style={{color:'#4a7054',fontSize:12,lineHeight:21}}>Ćwiczenie nie zmienia Twoich rzeczywistych plików. Przejdź do kolejnych zadań, żeby sprawdzić umiejętności.</Text>
+  </View>}
+  <Pressable onPress={()=>Linking.openURL(officialPages[slug])} accessibilityRole="link"
+   style={{borderTopWidth:1,borderColor:'#d0e1ce',paddingTop:14}}>
+   <Text style={{color:'#28684b',fontSize:13,fontWeight:'800',textDecorationLine:'underline'}}>Zobacz oryginalny interfejs i instrukcje producenta ↗</Text>
+  </Pressable>
  </View>;
 }
