@@ -63,7 +63,7 @@ export default function Purchase(){
    {busy&&<ActivityIndicator/>}
    {!!item&&<>
     <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#dbe8d9',padding:23,gap:11}}>
-     <Text style={{fontSize:12,color:'#6b8d70',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'} · 8 ETAPÓW</Text>
+     <Text style={{fontSize:12,color:'#6b8d70',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'} · {preview?.module_titles?.length||0} LEKCJI</Text>
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
      <Text style={{fontSize:15,color:muted,lineHeight:24}}>{item.description_pl}</Text>
      <Text style={{fontSize:27,fontWeight:'900',color:ink}}>{item.price_grosze===0?'GRATIS':price}</Text>
@@ -76,7 +76,7 @@ export default function Purchase(){
       <Text style={{fontSize:16,color:'#496851',lineHeight:25}}>{preview.scenario}</Text>
      </View>
      <View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#dfe8d9',padding:23,gap:14}}>
-      <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Z czym wyjdziesz z tego kursu?</Text>
+      <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Czego naprawdę się nauczysz?</Text>
       {[preview.outcome_1,preview.outcome_2,preview.outcome_3].map((t,i)=><View key={i} style={{flexDirection:'row',gap:12}}>
        <Text style={{fontSize:21,color:'#6d9e59',fontWeight:'900'}}>✓</Text><Text style={{color:'#3a5945',fontSize:15,flex:1,lineHeight:24}}>{t}</Text>
       </View>)}
@@ -90,9 +90,9 @@ export default function Purchase(){
       {preview.review_status!=='approved'&&<Text style={{fontSize:12,color:'#87622b'}}>Materiały są jeszcze w weryfikacji redakcyjnej. To wersja testowa szkolenia, a nie gotowa oferta sprzedaży.</Text>}
      </View>
      {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#dfe8d9',padding:23,gap:12}}>
-      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>8 kroków do praktycznej umiejętności</Text>
+      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>{preview.module_titles.length} lekcji · {preview.module_titles.length===30?'3 działy od zera do Expert':'program ćwiczeń'}</Text>
       {preview.module_titles.map((name,i)=><View key={String(i)} style={{flexDirection:'row',gap:12,alignItems:'center',paddingVertical:6,borderBottomWidth:i===preview.module_titles.length-1?0:1,borderColor:'#eff2ed'}}>
-       <Text style={{color:'#73945f',fontWeight:'800',fontSize:16}}>0{i+1}</Text><Text style={{fontSize:14,color:ink,flex:1}}>{name}</Text>
+       <Text style={{color:'#73945f',fontWeight:'800',fontSize:16}}>{String(i+1).padStart(2,'0')}</Text><Text style={{fontSize:14,color:ink,flex:1}}>{name}</Text>
       </View>)}
      </View>}
     </>}
