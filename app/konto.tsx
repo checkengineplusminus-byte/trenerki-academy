@@ -4,8 +4,12 @@ import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 const ink='#193b2a',pale='#e7f2da';
 export default function AccountPage(){
- const router=useRouter(),params=useLocalSearchParams<{course?:string}>(),course=typeof params.course==='string'?params.course:'';
- const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>('register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string}>(),course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'';
+ const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const continueToSelectedCourse=()=>{
+    if(course)router.replace({pathname:'/kup',params:{course}});
+    else router.replace('/moje-kursy');
+ };
  useEffect(()=>{
   let isCurrent=true;
   void supabase.auth.getUser().then(({data:{user},error})=>{
@@ -43,10 +47,10 @@ export default function AccountPage(){
      if(mode==='register'){
        if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
        const emailRedirectTo='https://trenerki-academy.expo.app/konto';
-       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim()}}});
+       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null}}});
        if(error)throw error;
-       if(data.session){router.replace('/moje-kursy');return;}
-       setMessage('Konto utworzone. Potwierdź adres e-mail (sprawdź także SPAM), a następnie zaloguj się do swojego konta.');return;
+       if(data.session){continueToSelectedCourse();return;}
+       setMessage('Konto utworzone. Potwierdź e-mail (również w SPAM), następnie zaloguj się. Wybrany kurs będzie czekał w koszyku.');return;
      }
      const {error}=await supabase.auth.signInWithPassword({email:email.trim().toLowerCase(),password});
      if(error){
@@ -54,7 +58,7 @@ export default function AccountPage(){
        if(error.code==='email_not_confirmed')throw new Error('Potwierdź adres e-mail w wiadomości od TRENERKI Academy.');
        throw error;
      }
-     router.replace('/moje-kursy');
+     continueToSelectedCourse();
    }catch(e:any){setMessage(e?.message||'Operacja nie powiodła się.');}finally{setBusy(false)}
  }
  const input={borderWidth:1,borderColor:'#c9d8c5',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
@@ -67,14 +71,14 @@ export default function AccountPage(){
  {!!activeEmail&&mode!=='new-password'&&<View style={{backgroundColor:'#e8f3dc',borderWidth:1,borderColor:'#d3e6c0',borderRadius:13,padding:16,marginVertical:12}}>
    <Text style={{fontWeight:'800',color:ink}}>Twoja sesja nadal jest aktywna</Text>
    <Text style={{color:'#45664f',marginTop:5,marginBottom:11}}>{activeEmail}</Text>
-   <Pressable onPress={()=>router.replace('/moje-kursy')} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
-     <Text style={{color:'#fff',fontWeight:'800'}}>Otwórz Moje kursy →</Text>
+   <Pressable onPress={()=>continueToSelectedCourse()} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
+     <Text style={{color:'#fff',fontWeight:'800'}}>{course?'Kontynuuj zakup wybranego kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
    <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
    </Pressable>
  </View>}
- <Text style={{color:'#53695d',lineHeight:22,marginBottom:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':course?'Załóż konto lub zaloguj się, żeby korzystać ze swojego panelu ucznia. Płatności za kursy uruchomimy w kolejnym etapie.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Płatności uruchomimy później.'}</Text>
+ <Text style={{color:'#53695d',lineHeight:22,marginBottom:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Płatności uruchomimy później.'}</Text>
  {mode==='register'&&<TextInput style={input} placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
  {mode!=='new-password'&&<TextInput style={input} placeholder="Adres e-mail" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address"/>}
  {mode!=='reset'&&<TextInput style={input} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'}/>}
@@ -84,6 +88,6 @@ export default function AccountPage(){
  <Pressable onPress={submit} disabled={busy} style={{backgroundColor:ink,padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'white',fontWeight:'800'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
  {mode!=='new-password'&&<Pressable onPress={()=>{setMode(mode==='register'?'login':'register');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{mode==='register'?'Mam już konto — zaloguj':'Utwórz nowe konto'}</Text></Pressable>}
  {mode==='login'&&<Pressable onPress={()=>{setMode('reset');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink}}>Nie pamiętam hasła</Text></Pressable>}
- <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja i logowanie już działają. Zakup kursów będzie dostępny po uruchomieniu płatności; samo założenie konta nie aktywuje płatnego kursu.</Text>
+ <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja jest bezpłatna. Dostęp do płatnego kursu pojawia się dopiero po skutecznej płatności. Darmowe kursy można odebrać po zalogowaniu.</Text>
  </View></ScrollView>
 }
