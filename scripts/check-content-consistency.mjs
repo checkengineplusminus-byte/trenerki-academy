@@ -104,6 +104,7 @@ try{
  if(!sandbox.includes('mode===\'cad\'')||!sandbox.includes('mode===\'windows\'')||!sandbox.includes('isExcel')||!sandbox.includes('isWord'))fail('Virtual software screens missing');
  if(!cases.includes('onPassed')||!progress.includes('const canFinish='))fail('Graded lesson checkpoint missing');
  if(!progress.includes('ta_learning_attempts')||!progress.includes("recordAttempt('case'")||!progress.includes("recordAttempt('construction'")||!progress.includes("recordAttempt('keyboard'"))fail('All graded exercise categories must save individual attempts');
+ const guideServer=read('supabase/functions/ta-lesson-guide/index.ts');
  const guideUI=read('src/GuidedDialogue.tsx');
  const finalExamUI=read('src/FinalExam.tsx');
  const caseQuiz=read('src/CaseLesson.tsx');
@@ -130,7 +131,7 @@ try{
     !softwareUI.includes('<HandsOnLab'))
   fail('Four-tab software interface with working Excel/CAD simulator missing');
  else ok('Interactive four-tab software navigation and hands-on labs available');
- const guideServer=read('supabase/functions/ta-lesson-guide/index.ts');
+
  if(!progress.includes("action:'attempt'")||progress.includes(".from('ta_learning_attempts').insert")||
     !guideServer.includes("if(action==='attempt')")||
     !guideServer.includes("correct=selected===answer")||
