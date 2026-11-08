@@ -55,7 +55,13 @@ export default function MyCourses(){
      <Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug}})} style={{alignSelf:'flex-start',backgroundColor:'#e8f3dc',padding:13,marginTop:10,borderRadius:10,borderWidth:1,borderColor:'#b7d9b0'}}>
       <Text style={{color:'#235e3b',fontWeight:'900'}}>{certificates[row.course_slug].is_demo?'Zobacz wzór dyplomu testowego →':'Zobacz autorski dyplom →'}</Text>
      </Pressable>:
-     row.progress===100&&<Text style={{fontSize:12,color:'#5d765e',marginTop:8}}>Lekcje ukończone. Do otrzymania autorskiego dyplomu wymagany jest egzamin końcowy.</Text>}
+     <View style={{gap:8,marginTop:9}}>
+      {row.progress===100&&<Text style={{fontSize:12,color:'#5d765e'}}>Lekcje ukończone. Otwórz kurs, aby zdać końcowy egzamin Anielki i wystawić właściwy dyplom.</Text>}
+      <Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug,preview:'1'}})}
+       style={{alignSelf:'flex-start',backgroundColor:'#f2f5ef',padding:12,borderWidth:1,borderColor:'#d1dfc9',borderRadius:9}}>
+       <Text style={{fontWeight:'800',color:'#4a6850'}}>Zobacz przykład dyplomu — tylko wzór testowy →</Text>
+      </Pressable>
+     </View>}
 
    </View>})}
   {isAdmin&&<Pressable onPress={()=>router.push('/admin')} style={{backgroundColor:'#173228',padding:15,marginTop:15,borderRadius:12,alignItems:'center'}}><Text style={{color:'white',fontWeight:'900'}}>Panel administratora TRENERKI →</Text></Pressable>}
