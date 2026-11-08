@@ -5,11 +5,11 @@ import {supabase} from './supabase';
 
 type Cert={id:string;certificate_no:string;holder_name:string;title_pl:string;issued_at:string;is_demo:boolean};
 type History={question:string;answer:string;correct:boolean;feedback:string};
-type Session={id?:string;phase?:string;step:number;correct:number;wrong:number;question:string;history:History[];holder_name:string;is_demo:boolean};
+type Session={id?:string;phase?:string;step:number;correct:number;wrong:number;question:string;history:History[];holder_name:string;is_demo:boolean;grading_mode?:'oral'|'choice';options?:string[]};
 type Api={ok?:boolean;state?:'ready'|'not_ready'|'in_progress'|'passed'|'failed';available?:boolean;
  completed?:number;total?:number;session?:Session|null;certificate?:Cert;
  question?:string;phase?:string;correct?:number;wrong?:number;feedback?:string;
- answer_correct?:boolean;announcement?:string;message?:string;error?:string};
+ answer_correct?:boolean;announcement?:string;message?:string;error?:string;grading_mode?:'oral'|'choice';options?:string[];fallback_available?:boolean};
 const ink='#173e2d';
 const mapError=(code:string)=>({
  course_not_owned:'Nie masz aktualnego dostępu do tego kursu.',
@@ -21,7 +21,9 @@ const mapError=(code:string)=>({
  exam_daily_limit:'Osiągnięto limit trzech pełnych prób dziennie. Wróć do materiałów i spróbuj później.',
  exam_answer_already_submitted:'Ta odpowiedź została już przetworzona. Odświeżam postęp egzaminu.',
  question_bank_incomplete:'Ten kurs wymaga jeszcze uzupełnienia pytań egzaminacyjnych.',
- certificate_issue_failed:'Egzamin został zapisany, ale nie udało się wystawić dyplomu. Nie rozpoczynaj nowego podejścia, zgłoś problem administratorowi.'
+ certificate_issue_failed:'Egzamin zapisano. Spróbuj odświeżyć stan — serwer ponowi wystawienie dyplomu bez nowego podejścia.',
+ invalid_choice:'Wybierz odpowiedź w zadaniu, zanim ją potwierdzisz.',
+ exam_switch_failed:'Nie można teraz zmienić trybu egzaminu. Odśwież stronę.'
 } as Record<string,string>)[code]||'Nie udało się teraz wykonać operacji egzaminacyjnej. Spróbuj ponownie.';
 export default function FinalExam({courseSlug}:{courseSlug:string}){
  const router=useRouter();
@@ -30,7 +32,8 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const [answer,setAnswer]=useState(''),[question,setQuestion]=useState(''),[phase,setPhase]=useState('practice');
  const [correct,setCorrect]=useState(0),[wrong,setWrong]=useState(0),[history,setHistory]=useState<History[]>([]);
  const [message,setMessage]=useState(''),[error,setError]=useState(''),[cert,setCert]=useState<Cert|null>(null);
- const call=async(action:'status'|'start'|'answer',fields:Record<string,unknown>={})=>{
+ const [gradingMode,setGradingMode]=useState<'oral'|'choice'>('oral'),[options,setOptions]=useState<string[]>([]),[selectedOption,setSelectedOption]=useState<number|null>(null);
+ const call=async(action:'status'|'start'|'answer'|'switch_mode',fields:Record<string,unknown>={})=>{
   const {data,error:e}=await supabase.functions.invoke<Api>('ta-exam',{body:{action,course_slug:courseSlug,...fields}});
   if(e||!data)throw new Error((data?.error&&mapError(data.error))||mapError('unavailable'));
   if(data.error)throw new Error(mapError(data.error));
@@ -43,8 +46,10 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
   if(r.session){
    const s=r.session;setQuestion(s.question);setPhase(s.phase||'practice');setCorrect(s.correct);
    setWrong(s.wrong);setHistory(s.history||[]);setName(s.holder_name||'');
+   setGradingMode(s.grading_mode||'oral');setOptions(s.options||[]);setSelectedOption(null);
   }else if(r.question){
    setQuestion(r.question);setPhase(r.phase||'practice');setCorrect(r.correct||0);setWrong(r.wrong||0);
+   setGradingMode(r.grading_mode||'oral');setOptions(r.options||[]);setSelectedOption(null);
   }
   if(r.announcement)setMessage(r.announcement);
   else if(r.message)setMessage(r.message);
@@ -69,13 +74,21 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
   finally{setBusy(false);}
  }
  async function send(){
-  if(busy||answer.trim().length<20)return;
+  if(busy||(gradingMode==='choice'?selectedOption===null:answer.trim().length<20))return;
   setBusy(true);setError('');setMessage('');
-  const sent=answer.trim();try{
-   const r=await call('answer',{answer:sent});
+  const sent=gradingMode==='choice'?(options[selectedOption??0]||''):answer.trim();
+  try{
+   const r=await call('answer',gradingMode==='choice'?{selected_index:selectedOption}:{answer:sent});
    setHistory(old=>[...old,{question,answer:sent,correct:!!r.answer_correct,feedback:r.feedback||''}]);
-   setAnswer('');apply(r);
+   setAnswer('');setSelectedOption(null);apply(r);
   }catch(e:any){setError(e.message||'Odpowiedź nie została oceniona.');}
+  finally{setBusy(false);}
+ }
+ async function switchMode(){
+  if(busy)return;
+  setBusy(true);setError('');
+  try{const r=await call('switch_mode');apply(r);setMessage('Teraz odpowiadasz na pytania wyboru, oceniane bezpośrednio na serwerze. Twoje wcześniejsze poprawne odpowiedzi zachowano.');}
+  catch(e:any){setError(e.message||'Nie udało się zmienić sposobu oceniania.');}
   finally{setBusy(false);}
  }
  const button=(label:string,onPress:()=>void,disabled=false)=><Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={{padding:15,backgroundColor:ink,borderRadius:11,opacity:disabled?.45:1}}>
@@ -84,7 +97,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  return <View style={{marginTop:25,padding:20,backgroundColor:'#e7f2e1',borderRadius:19,borderWidth:1,borderColor:'#cde5c6',gap:13}}>
   <Text style={{color:'#668466',fontSize:12,fontWeight:'900'}}>ETAP KOŃCOWY · OSOBNY OD POSTĘPU LEKCJI</Text>
   <Text style={{color:ink,fontWeight:'900',fontSize:24}}>Egzamin z Anielką</Text>
-  <Text style={{color:'#516e58',lineHeight:23}}>Po pięciu poprawnych odpowiedziach Anielka zada pytanie finałowe. Gdy się pomylisz w finale, dostaniesz jeszcze jedną szansę. Odpowiadasz własnymi słowami, a wynik i ewentualny dyplom są zapisywane po stronie serwera.</Text>
+  <Text style={{color:'#516e58',lineHeight:23}}>Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. W razie pomyłki dostaniesz jeszcze jedną szansę. Przy aktywnym modelu AI Anielka ocenia wyjaśnienia własnymi słowami; gdy dostawca nie jest dostępny, bezpieczny tryb pytań wyboru pozwala zdać egzamin bez utraty postępów. Dyplom wystawia wyłącznie serwer.</Text>
   {loading&&<ActivityIndicator color={ink}/>}
   {!loading&&state==='ready'&&<View style={{gap:12}}>
    {!available?<Text style={{color:'#8b5941',lineHeight:22}}>Egzamin nie jest obecnie aktywny. Serwer AI nie jest jeszcze skonfigurowany; nie wystawiamy automatycznych dyplomów bez ocenienia odpowiedzi.</Text>:<>
@@ -100,6 +113,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
   </View>}
   {!loading&&state==='in_progress'&&<View style={{gap:13}}>
    <Text style={{fontSize:14,fontWeight:'900',color:ink}}>Poprawne odpowiedzi: {correct}/5 · Błędy: {wrong}</Text>
+   <Text style={{color:'#4f7455',fontSize:12,fontWeight:'800'}}>{gradingMode==='choice'?'Tryb bezpiecznego egzaminu z pytaniami wyboru · wynik sprawdza serwer':'Rozmowa egzaminacyjna z Anielką · AI ocenia wyjaśnienia'}</Text>
    <View style={{height:9,backgroundColor:'#cadec4',borderRadius:7,overflow:'hidden'}}><View style={{height:9,width:Math.min(100,correct/5*100)+'%',backgroundColor:'#72ae79'}}/></View>
    {phase==='final'&&<Text style={{fontWeight:'900',color:'#316d42'}}>Gratulacje! Pięć poprawnych odpowiedzi — ostatnie pytanie przed zaliczeniem.</Text>}
    {phase==='extra'&&<Text style={{fontWeight:'900',color:'#98682b'}}>To dodatkowa szansa po pytaniu finałowym. Zastanów się dokładnie.</Text>}
@@ -113,8 +127,16 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
     <Text style={{color:'#53805c',fontWeight:'900'}}>PYTANIE ANIELKI</Text>
     <Text style={{color:ink,fontWeight:'800',fontSize:17,lineHeight:27}}>{question}</Text>
    </View>
-   <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/>
-   {button(busy?'Anielka sprawdza odpowiedź…':'Wyślij odpowiedź do oceny',send,busy||answer.trim().length<20)}
+   {gradingMode==='choice'?<View style={{gap:9}}>
+    {options.map((option,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>setSelectedOption(i)} style={{padding:15,backgroundColor:selectedOption===i?'#d2ebca':'white',borderWidth:selectedOption===i?2:1,borderColor:selectedOption===i?'#377746':'#c2d7b9',borderRadius:11}}>
+     <Text style={{color:ink,fontWeight:selectedOption===i?'900':'700',lineHeight:23}}>{String.fromCharCode(65+i)}. {option}</Text>
+    </Pressable>)}
+   </View>:
+   <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/>}
+   {button(busy?'Sprawdzanie odpowiedzi…':'Zatwierdź odpowiedź',send,busy||(gradingMode==='choice'?selectedOption===null:answer.trim().length<20))}
+   {gradingMode==='oral'&&<Pressable accessibilityRole="button" onPress={switchMode} disabled={busy} style={{padding:13,backgroundColor:'#f2f7ec',borderRadius:11,borderWidth:1,borderColor:'#c9ddc4'}}>
+    <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>Problemy z agentem AI? Przejdź na serwerowy test wiedzy bez utraty odpowiedzi</Text>
+   </Pressable>}
   </View>}
   {!loading&&state==='failed'&&<View style={{gap:12}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Tym razem nie udało się zaliczyć.</Text>
