@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
 export default function MyCourses(){
- const router=useRouter(),[items,setItems]=useState<(Enrollment&{progress:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
+ const router=useRouter(),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
  useEffect(()=>{void load()},[]);
  async function load(){
   setBusy(true);
@@ -18,7 +18,20 @@ export default function MyCourses(){
      supabase.from('ta_learning_progress').select('course_slug,lesson_no').eq('user_id',user.id)]);
    if(e||p)throw e||p;
    const done=new Map<string,Set<number>>();for(const row of passed||[]){if(!done.has(row.course_slug))done.set(row.course_slug,new Set());done.get(row.course_slug)!.add(row.lesson_no);}
-   setItems(((rows||[]) as unknown as Enrollment[]).map(row=>({...row,progress:Math.min(100,Math.round((done.get(row.course_slug)?.size||0)*12.5))})));
+   const enrolled=(rows||[]) as unknown as Enrollment[];
+   const slugs=[...new Set(enrolled.map(r=>r.course_slug))];
+   let counts=new Map<string,number>();
+   if(slugs.length){
+    // Jedynie lekcje kursów użytkownika: RLS nadal blokuje cudze materiały.
+    const {data:lessons,error:le}=await supabase.from('ta_lessons').select('course_slug,lesson_no').in('course_slug',slugs);
+    if(le)throw le;
+    for(const row of lessons||[])counts.set(row.course_slug,(counts.get(row.course_slug)||0)+1);
+   }
+   setItems(enrolled.map(row=>{
+    const lessonCount=counts.get(row.course_slug)||8;
+    const completedCount=Math.min(lessonCount,done.get(row.course_slug)?.size||0);
+    return {...row,lessonCount,completedCount,progress:Math.round(completedCount/lessonCount*100)};
+   }));
   }catch(e:any){setError(e.message||'Nie udało się wczytać kursów.');}finally{setBusy(false);}
  }
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:25,maxWidth:900,alignSelf:'center',width:'100%'}}>
@@ -30,7 +43,7 @@ export default function MyCourses(){
   {items.map((row,i)=>{const active=['active','demo'].includes(row.status)&&new Date(row.expires_at)>new Date();return <View key={row.course_slug+String(i)} style={{backgroundColor:'white',padding:20,marginBottom:13,borderRadius:15,borderWidth:1,borderColor:'#d8e9d6'}}>
     <Text style={{fontSize:20,fontWeight:'800',color:'#183d2c'}}>{row.ta_courses?.title_pl||row.course_slug}</Text>
     {row.status==='demo'&&<Text style={{fontWeight:'800',fontSize:12,color:'#886129',backgroundColor:'#fff3d5',padding:10,borderRadius:10,marginTop:10}}>DOSTĘP TESTOWY • 0 zł zapłacone • bez faktury</Text>}
-    <Text style={{marginTop:9,color:'#526f5b'}}>Postęp: {row.progress}% · Dostęp do: {new Date(row.expires_at).toLocaleDateString('pl-PL')} · {active?'aktywny':'zakończony'}</Text>
+    <Text style={{marginTop:9,color:'#526f5b'}}>Postęp: {row.progress}% ({row.completedCount}/{row.lessonCount} lekcji) · Dostęp do: {new Date(row.expires_at).toLocaleDateString('pl-PL')} · {active?'aktywny':'zakończony'}</Text>
     <View style={{backgroundColor:'#eaf1e6',height:8,borderRadius:8,overflow:'hidden',marginTop:12}}><View style={{backgroundColor:'#79a87d',width:row.progress+'%',height:8}}/></View>
     <Pressable disabled={!active} onPress={()=>router.push({pathname:'/nauka',params:{course:row.course_slug}})} style={{alignSelf:'flex-start',backgroundColor:'#1e5234',padding:13,marginTop:14,borderRadius:10,opacity:active?1:.5}}><Text style={{color:'white',fontWeight:'800'}}>Kontynuuj naukę →</Text></Pressable>
    </View>})}
