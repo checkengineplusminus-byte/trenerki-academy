@@ -251,10 +251,10 @@ try{
     !progress.includes('if(canFinish)void finishLesson();else returnToExercise()'))
   fail('Lesson transition must reset scroll and advance with one verified button');
  else ok('Automatic scroll reset and one-action lesson navigation connected');
- const craftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
- if(craftGuides.courses.length!==20||craftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
+ const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
+ if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
   fail('Every craft course must have eight individually illustrated/explained lessons');
- for(const c of craftGuides.courses){
+ for(const c of beginnerCraftGuides.courses){
   const asset='craft-'+c.slug;
   const svg=read('public/academy/assets/'+asset+'.svg');
   if(!svg.includes('<svg')||!svg.includes('</svg>')||!illustrated.includes("'"+asset+"'"))
