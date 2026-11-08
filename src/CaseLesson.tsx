@@ -6,7 +6,7 @@ export type LearningCase={
  options:string[];correct:number;explanation:string;feedback?:string[];task?:string;topic_kind?:string;
 };
 const ink='#183e2d',gray='#536858';
-export default function CaseLesson({data,identity,onPassed,onAttempt}:{data?:LearningCase;identity:string;onPassed:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>void}){
+export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituation=false}:{data?:LearningCase;identity:string;onPassed:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>void;hideSituation?:boolean}){
  const [chosen,setChosen]=useState<number|null>(null);
  const [tries,setTries]=useState(0);
  const [hint,setHint]=useState(false);
@@ -23,11 +23,10 @@ export default function CaseLesson({data,identity,onPassed,onAttempt}:{data?:Lea
   onPassed(index===data.correct);onAttempt?.(index,index===data.correct);
  }
  return <View style={{gap:14,marginTop:12}}>
-  <View style={{backgroundColor:'#e6f1df',borderRadius:18,padding:21,gap:12}}>
-   <Text style={{fontSize:12,color:'#55745c',fontWeight:'900'}}>NAUKA NA PRZYKŁADZIE</Text>
-   <Text style={{fontSize:20,fontWeight:'900',color:ink,lineHeight:29}}>Wyobraź sobie tę sytuację</Text>
+  {!hideSituation&&<View style={{backgroundColor:'#e6f1df',borderRadius:18,padding:21,gap:12}}>
+   <Text style={{fontSize:12,color:'#55745c',fontWeight:'900'}}>PRZYKŁAD Z ŻYCIA</Text>
    <Text style={{fontSize:17,color:ink,lineHeight:27}}>{data.situation}</Text>
-  </View>
+  </View>}
   <View style={{backgroundColor:'#19392b',borderRadius:17,padding:20,gap:13}}>
    <Text style={{fontSize:11,fontWeight:'900',color:'#d2eaba',letterSpacing:1}}>SPRAWDŹ SWOJE ROZUMIENIE</Text>
    <Text style={{fontSize:21,fontWeight:'900',color:'white',lineHeight:29}}>{data.question}</Text>
