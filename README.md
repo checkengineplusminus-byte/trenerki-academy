@@ -1,58 +1,58 @@
-# TRENERKI Academy v0.7.0 — Expo Hosting + Supabase
+# TRENERKI Academy v0.8.0 — Expo + Supabase
 
-Production preview: **https://trenerki-academy.expo.app**
+**Podgląd:** https://trenerki-academy.expo.app  
+**Pełny katalog HTML:** https://trenerki-academy.expo.app/academy/index.html  
+**Projekt Supabase:** `kcvvixcjuwglfvdpypzs`
 
-## Website layout
+## Stan: 8 listopada 2026
 
-The Expo web root (`app/index.tsx`) opens the original **TRENERKI Academy HTML design** from `public/academy/index.html`. The original layout, CSS, hero illustration, course cards, filtering, mobile styles, vector icons and course preview screens have been restored. This file contains **only public course metadata**, not paid lessons, quiz solutions or answer keys. The public catalog synchronizes titles, descriptions and prices from Supabase; it retains a public-only static fallback during an API outage.
+- **69 kursów** z ustalonymi cenami w złotych i 8 modułami każdy (**552 lekcje** w Supabase).
+- **69 kart kursów i opisów przed zakupem**, z ciekawostką, sytuacją z życia, efektami nauki, pełnym spisem modułów i odpowiednimi ostrzeżeniami.
+- **20 kursów rzadkich rzemiosł** w serii „Zapomniane rzemiosła”. Każdy ma status historyczny nauczania oparty na źródle. Gdy brak wiarygodnej daty zakończenia kształcenia w Polsce, pozostaje `null` i strona mówi to otwarcie. **Kowal, zdun i kaletnik nadal występują w materiałach MEN; nie wolno nazywać ich wymarłymi zawodami.**
+- **Angielski, norweski i niemiecki na budowie**, kurs o wspieraniu dziecka w pracach domowych, **Transport i logistyka**, **Windows — skróty**.
+- Windows, Word, Excel i AutoCAD: **8 modułów** każdy; rysowane w React klawisze, widok *PRZED/PO*, tipy i zadania. Windows **48 skrótów**, Word **48**, Excel **40**, AutoCAD **41**. Skróty mogą zależeć od wersji, języka, platformy i ustawień.
+- Zrealizowane również kursy bezpieczeństwa w relacjach, wsparcia bliskich osoby uzależnionej, ekonomii domowej, niemarnowania jedzenia i pielęgnacji trawnika. Dwa ostatnie kosztują **29,99 zł**; Windows, Word, Excel i AutoCAD po **10 zł**. Świąteczny kurs Mikołaja **gratis**.
+- Wszystkie nowe treści mają **status roboczy**, dopóki nie zostaną sprawdzone przez redaktora / specjalistę. Nie sprzedajemy ich jako ukończonej, certyfikowanej edukacji.
 
-Legal pages are available under `public/academy/`: `regulamin.html`, `prywatnosc.html` and `certyfikaty.html`. They are pre-launch drafts with clear disclosures; before charging consumers, the legally required operator identification and finalized policies must be supplied.
+## Przebieg testowego zakupu
 
-## v0.7.0 — purchase funnel and expanded catalog
+Katalog → opis kursu → **Kup kurs** → `/konto?course=<slug>` → logowanie lub rejestracja → `/kup?course=<slug>` → symulacja **wyłącznie dla administratora** z faktycznie pobraną kwotą **0 zł**. Dostęp DEMO ważny 14 dni, oznaczony w panelu `/moje-kursy`.
 
-- 34 courses are in the public catalog; 15 original + 19 newly requested courses.
-- Each course offers **Poznaj kurs** (public eight-module outline) and **Kup kurs** (redirects to `/konto?course=<slug>&next=kup`).
-- Successful login or an existing authenticated session with a selected course redirects to `/kup?course=<slug>`, where the user sees course, price and purchase button.
-- Two shortcuts mini-courses (Excel / AutoCAD) cost **10 PLN each**; **Uprawnienia Świętego Mikołaja** is explicitly fun and free, without formal qualifications.
-- Free course signup uses authenticated Supabase Edge Function `ta-enroll-free`, which checks server-side that price is actually zero before granting a 12-month enrollment.
-- Paid purchase invokes `ta-create-checkout` with a price read from Supabase, an authenticated/verified user, and explicit digital-content consents. Stripe payment cannot complete until required server secrets, legal details and webhook verification are configured.
-- Supabase has 272 lesson entries (34 x 8). Several new courses currently have **draft lesson outlines**, not completed professionally reviewed content; do not market them as fully finished or charge for them yet.
-- Prices for the 16 new full courses are **working proposals**, not owner-approved final prices. Only Excel = 10 PLN, AutoCAD = 10 PLN, and Santa = gratis were explicitly specified.
-- The original static HTML design is preserved. Frontend code has **no simulated purchases** and no paid material in the public bundle.
+Nie włączono rzeczywistego obciążania kart, faktur VAT ani automatycznego nadawania płatnego dostępu.
 
-## Authentication and protected content
+**Darmowy Mikołaj**: osobna chroniona funkcja `ta-enroll-free`; nie przyznaje zawodowych uprawnień.  
+**Gavekort / karta podarunkowa**: `/prezent`, wygenerowany kod jednorazowy, możliwość wysłania linku i odebrania prezentu po zalogowaniu. Płatne kursy dostępne wyłącznie jako voucher testowy administratora. Wysyłka Resend działa tylko po konfiguracji sekretów.  
+**Panel administratora**: `/admin`, autoryzacja serwerowa w `ta_admins`, użytkownicy, zamówienia DEMO, prezenty, wersje testowe dokumentów (nie faktury VAT), kontrola jakości kursów.
 
-- `/konto`: email/password registration, verification, login, login errors, session detection, password-reset form and changing password from an authenticated session. The site never creates local mock purchases.
-- `/moje-kursy`: fetches this user's enrollments and progress.
-- `/nauka`: gated by a live, paid enrollment; reads lesson content under Supabase RLS.
-- Supabase project `kcvvixcjuwglfvdpypzs`; publishable client key only. No `service_role`, Stripe or Resend secret in public code.
-- 15 published courses and 120 lessons are present in Supabase; payment remains unavailable in the frontend by design. A signed payment webhook must be tested before live charging.
+## Treści i bezpieczeństwo
 
-### Outstanding account configuration
+- Prywatne lekcje tylko przez Supabase RLS z aktywnym `active` lub `demo` na koncie użytkownika. Publiczny plik HTML zawiera wyłącznie katalog i opisy, **bez płatnych lekcji lub odpowiedzi**.
+- Kursy o relacjach, uzależnieniach i rodzicielstwie nie zastępują specjalisty ani pomocy alarmowej; nie nakazują pozostawania w przemocowym związku.
+- Kursy o dawnych rzemiosłach nie uprawniają do budowania pieców, pracy na wysokości, obsługi maszyn ani zawodowego wykonywania ryzykownych prac.
+- Historia zawodów: źródła MEN, ZRP, cechy i warsztaty. **Brak potwierdzonej daty zakończenia nauczania ≠ zawód przestał istnieć**.
+- **Dokument ukończenia kursu**, jeśli zostanie później wdrożony, będzie potwierdzeniem prywatnego szkolenia, a nie państwowym certyfikatem czy uprawnieniem zawodowym.
+- Zasady jakości `ta_course_previews.review_status` i `editorial_note` widoczne dla uczestników i administratora.
 
-Supabase's Authentication **URL Configuration** is stored in its Management settings, **not Postgres tables**. Configure these settings with an account-management capability before promoting to production:
+## Architektura
 
-- **Site URL:** `https://trenerki-academy.expo.app`
-- **Redirect URL:** `https://trenerki-academy.expo.app/konto`
+- `public/academy/index.html` — oryginalny styl HTML, 69 publicznych kursów, filtry, podglądy, historia rzemiosła.
+- `app/konto.tsx` — Supabase Auth i zachowanie kursu wybranego przed logowaniem.
+- `app/kup.tsx` — strona decyzji przed zakupem, serwerowo ograniczona symulacja.
+- `app/prezent.tsx` — podarunki, kody jednorazowe.
+- `app/admin.tsx` — panel z serwerową autoryzacją właściciela.
+- `app/nauka.tsx`, `src/KeyboardLesson.tsx` — nauka i wizualne skróty.
+- `supabase/functions/ta-academy/index.ts` — admin, prezenty, testy; sekrety wyłącznie po stronie serwera.
+- `content/` — źródłowe programy, materiały i informacje historyczne.
+- `scripts/check-content-consistency.mjs` — automatyczny test spójności kursów i cen.
+- `.github/workflows/course-consistency.yml` — CI testu treści.
+- `.eas/workflows/deploy-web.yml` — automatyczna publikacja Expo z gałęzi `main`.
 
-The connected Supabase integration supports database, functions and logs but currently does not provide an action to write project Auth URL settings. No backend change should falsely claim to have modified them. Some confirmation/recovery emails may still redirect to `localhost` until this project configuration is actually changed. This limitation is separate from `invalid_credentials`, which is returned when login email/password does not match. Already logged-in users may continue through the session prompt in `/konto` without resubmitting a password.
+## Nadal konieczne przed sprzedażą
 
-## Deploy
+1. **Osobna weryfikacja gotowych lekcji** przez odpowiednich specjalistów i poprawienie statusu `draft`/ `review_needed`.
+2. Potwierdzenie działania ostatniego workflow Expo oraz test w rzeczywistej przeglądarce na telefonie.
+3. W Supabase Auth `Site URL` = `https://trenerki-academy.expo.app` i redirect `https://trenerki-academy.expo.app/konto`. Podłączone narzędzie Supabase nadal nie udostępnia zapisu globalnych ustawień Auth; nie deklarować, że naprawiono redirecty e-mail.
+4. Weryfikacja Stripe, Resend, polityk i danych prawnych sprzedawcy oraz rzeczywistego procesu fakturowania.
+5. Bezpieczne serwerowe testy/egzaminy, weryfikowalne potwierdzenia ukończenia oraz reguły wykrywania nadużyć.
 
-`.eas/workflows/deploy-web.yml` automatically deploys the Expo project to the production hosting URL on pushes to `main`.
-
-```sh
-npm install
-npx expo export --platform web
-npx eas-cli@latest deploy --prod
-```
-
-## Pre-launch checklist
-
-- Verify final Expo workflow status, root redirect, catalog rendering and public legal pages in a browser.
-- Confirm Supabase Auth Site URL and redirect allow list, signup email confirmation, password recovery, and cross-device sessions.
-- Add actual business identity and approved legal policies before paid sales.
-- Add and test Stripe/Resend server secrets and authenticated payment webhook before enabling checkout.
-- Implement server-verified quizzes/exams and certificate issue/verification before selling them; do not expose answer banks to the browser.
-
-_7 November 2026 — original HTML design restored with public catalog and server-protected private materials._
+**Uwaga:** strony prawne są wersjami przedprodukcyjnymi. Płatności są wyłączone.
