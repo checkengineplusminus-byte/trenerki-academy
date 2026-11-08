@@ -21,10 +21,39 @@ export default function DiplomaPage(){
   finally{if(active)setBusy(false);}
  })();return()=>{active=false};},[slug]);
  const print=()=>{
-  if(Platform.OS==='web'){
-   const root=globalThis as any;
-   if(typeof root.window?.print==='function')root.window.print();
-  }
+  if(Platform.OS!=='web'||!cert)return;
+  const root=globalThis as any;
+  const escaped=(v:unknown)=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  const issuedAt=new Date(cert.issued_at).toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'});
+  const markup=[
+   '<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Dyplom TRENERKI Academy</title>',
+   '<style>@page{size:A4 portrait;margin:12mm}*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:#183d2d;background:#fff}',
+   '.paper{border:7px double #63936e;min-height:265mm;padding:20mm 14mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}',
+   '.brand{font:900 25px Arial;letter-spacing:7px}.sub{font:11px Arial;letter-spacing:2px;margin-top:8px;color:#567863}',
+   '.title{font-size:37px;letter-spacing:2px;font-weight:bold}.name{font-size:33px;font-weight:bold;margin:16px auto;max-width:160mm;overflow-wrap:anywhere}',
+   '.course{font-size:23px;font-weight:bold;line-height:1.4;max-width:165mm;margin:18px auto}',
+   '.note{font:13px/1.65 Arial;color:#586f5b;max-width:170mm}.line{border-top:1px solid #bacfb9;width:100%;padding-top:12px}',
+   '.demo{border:2px solid #b27336;color:#96501f;background:#fff4e5;font:900 18px Arial;padding:13px;margin:10px auto}',
+   'p{margin:7px 0}button{font:700 14px Arial;background:#184a32;color:white;border:0;border-radius:9px;padding:13px 20px;margin:10px}',
+   '@media print{button{display:none}.paper{border-width:7px}body{background:white}}</style></head><body>',
+   '<div class="paper"><div><div class="brand">TRENERKI</div><div class="sub">ACADEMY · INDEPENDENT EDUCATION</div></div>',
+   cert.is_demo?'<div class="demo">WZÓR TESTOWY — NIEWAŻNY</div>':'',
+   '<div><div class="title">AUTORSKI DYPLOM</div>',
+   '<p class="note">potwierdzenia ukończenia prywatnego kursu TRENERKI Academy</p>',
+   '<p class="note">TRENERKI ACADEMY POTWIERDZA</p>',
+   '<div class="name">'+escaped(cert.holder_name)+'</div>',
+   '<p class="note">ukończenie programu edukacyjnego i zaliczenie wewnętrznego egzaminu wiedzy:</p>',
+   '<div class="course">'+escaped(cert.title_pl.replace(/^Ukończenie (prywatnego )?kursu:\s*/i,''))+'</div></div>',
+   '<div><p>Data ukończenia: <strong>'+escaped(issuedAt)+'</strong></p>',
+   '<p>Numer dokumentu: '+escaped(cert.certificate_no)+'</p></div>',
+   '<div class="line"><p class="note">Dyplom jest autorskim potwierdzeniem ukończenia prywatnego programu nauki. Może stanowić dodatkową informację w CV, ale nie jest kwalifikacją zawodową, certyfikatem państwowym, licencją, fagbrev ani formalnym uprawnieniem.</p>',
+   '<p class="note"><strong>Wiedza i umiejętności są najważniejsze. Dyplom jest dodatkiem.</strong></p></div></div>',
+   '<button onclick="window.print()">Drukuj lub zapisz jako PDF</button></body></html>'
+  ].join('');
+  const popup=root.window?.open?.('','_blank');
+  if(!popup){setError('Przeglądarka zablokowała nową kartę dyplomu. Zezwól na wyskakujące okna i spróbuj ponownie.');return;}
+  popup.opener=null;popup.document.open();popup.document.write(markup);popup.document.close();popup.focus();
  };
  const issued=cert?new Date(cert.issued_at).toLocaleDateString('pl-PL',{day:'numeric',month:'long',year:'numeric'}):'';
  return <ScrollView style={{backgroundColor:'#fbfbf6',flex:1}} contentContainerStyle={{padding:20,maxWidth:880,width:'100%',alignSelf:'center',paddingBottom:70,gap:14}}>
