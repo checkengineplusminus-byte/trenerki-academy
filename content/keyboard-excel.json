@@ -1,0 +1,754 @@
+[
+  {
+    "lesson_no": 0,
+    "title_pl": "Poruszanie po arkuszu",
+    "material": {
+      "raw": [
+        "Poruszanie po arkuszu",
+        "Masz tabelę z setkami wierszy? Naucz się skakać po danych bez przewijania myszą.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+Home",
+          "keys": [
+            "Ctrl",
+            "Home"
+          ],
+          "kind": "hotkey",
+          "label": "Początek arkusza",
+          "before": "Kursor na komórce D500",
+          "after": "Zaznaczona komórka A1",
+          "tip": "Po otwarciu cudzego skoroszytu szybko wrócisz do początku.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+End",
+          "keys": [
+            "Ctrl",
+            "End"
+          ],
+          "kind": "hotkey",
+          "label": "Ostatnia użyta komórka",
+          "before": "Zaznaczona A1",
+          "after": "Kursor przechodzi do końca używanego zakresu",
+          "tip": "Jeśli Excel pokazuje bardzo odległą komórkę, sprawdź nadmiarowe formatowanie.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Right",
+          "keys": [
+            "Ctrl",
+            "Right"
+          ],
+          "kind": "hotkey",
+          "label": "Skok do granicy danych w prawo",
+          "before": "Kursor w pierwszej komórce wiersza",
+          "after": "Kursor przy końcu sąsiadującego zakresu",
+          "tip": "Puste komórki mogą zmienić miejsce zatrzymania.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Down",
+          "keys": [
+            "Ctrl",
+            "Down"
+          ],
+          "kind": "hotkey",
+          "label": "Skok do granicy danych w dół",
+          "before": "Kursor u góry tabeli",
+          "after": "Kursor u dołu spójnej kolumny",
+          "tip": "Nie pomyl końca danych z końcem arkusza.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+G",
+          "keys": [
+            "Ctrl",
+            "G"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź do adresu komórki",
+          "before": "Szukasz H240",
+          "after": "Otwiera się pole przejścia do H240",
+          "tip": "Możesz skoczyć także do nazwanego zakresu.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 1,
+    "title_pl": "Zaznaczanie i edycja komórek",
+    "material": {
+      "raw": [
+        "Zaznaczanie i edycja komórek",
+        "Przygotuj arkusz kosztów bez przypadkowego nadpisywania danych.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "F2",
+          "keys": [
+            "F2"
+          ],
+          "kind": "hotkey",
+          "label": "Edytuj aktywną komórkę",
+          "before": "Komórka zaznaczona",
+          "after": "Kursor wewnątrz treści komórki",
+          "tip": "Przydatne, gdy nie chcesz zastąpić całej zawartości.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+C",
+          "keys": [
+            "Ctrl",
+            "C"
+          ],
+          "kind": "hotkey",
+          "label": "Kopiuj zakres",
+          "before": "Zaznaczone dane",
+          "after": "Kopia danych w schowku",
+          "tip": "Po wklejeniu sprawdź czy skopiowano formuły.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+V",
+          "keys": [
+            "Ctrl",
+            "V"
+          ],
+          "kind": "hotkey",
+          "label": "Wklej",
+          "before": "Komórki docelowe puste",
+          "after": "Dane wklejone do tabeli",
+          "tip": "Uważaj na nadpisanie ważnych danych.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Z",
+          "keys": [
+            "Ctrl",
+            "Z"
+          ],
+          "kind": "hotkey",
+          "label": "Cofnij",
+          "before": "Przypadkowo wklejono dane",
+          "after": "Wklejenie cofnięte",
+          "tip": "Cofaj od razu przed następnymi działaniami.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Shift+Space",
+          "keys": [
+            "Shift",
+            "Space"
+          ],
+          "kind": "hotkey",
+          "label": "Zaznacz cały wiersz",
+          "before": "Wybrana jedna komórka",
+          "after": "Wybrany cały wiersz",
+          "tip": "Dobre przed formatowaniem lub kopiowaniem rekordów.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 2,
+    "title_pl": "Formatowanie i wklejanie",
+    "material": {
+      "raw": [
+        "Formatowanie i wklejanie",
+        "Dobrze sformatowana tabela pomaga rozpoznać kwoty, daty i procenty.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+B",
+          "keys": [
+            "Ctrl",
+            "B"
+          ],
+          "kind": "hotkey",
+          "label": "Pogrubienie",
+          "before": "Nagłówek tabeli zwykłym tekstem",
+          "after": "Nagłówek jest pogrubiony",
+          "tip": "Wystarczy wytłuścić nagłówki i podsumowania.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+1",
+          "keys": [
+            "Ctrl",
+            "1"
+          ],
+          "kind": "hotkey",
+          "label": "Formatuj komórki",
+          "before": "Liczby bez ustawionego formatu",
+          "after": "Okno opcji formatowania",
+          "tip": "Nie zamieniaj liczb na tekst tylko po to, by mieć złotówki.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Shift+5",
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "5"
+          ],
+          "kind": "hotkey",
+          "label": "Format procentowy",
+          "before": "0,25 widoczne jako liczba",
+          "after": "25% po formatowaniu",
+          "tip": "Skrót może zależeć od układu klawiatury.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Alt+V",
+          "keys": [
+            "Ctrl",
+            "Alt",
+            "V"
+          ],
+          "kind": "hotkey",
+          "label": "Wklej specjalnie",
+          "before": "Kopiujesz formułę, chcesz samą wartość",
+          "after": "Otwiera się Wklej specjalnie",
+          "tip": "Wybierz „Wartości”, gdy nie chcesz przenosić formuły.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+U",
+          "keys": [
+            "Ctrl",
+            "U"
+          ],
+          "kind": "hotkey",
+          "label": "Podkreślenie",
+          "before": "Ważny tekst w komórce",
+          "after": "Tekst jest podkreślony",
+          "tip": "Używaj spójnego wyróżnienia w całej tabeli.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 3,
+    "title_pl": "Wiersze, kolumny i arkusze",
+    "material": {
+      "raw": [
+        "Wiersze, kolumny i arkusze",
+        "Gdy tabela rośnie, organizacja zakresów ma znaczenie.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+Plus",
+          "keys": [
+            "Ctrl",
+            "+"
+          ],
+          "kind": "hotkey",
+          "label": "Wstaw zaznaczone komórki lub wiersze",
+          "before": "Brakuje wiersza",
+          "after": "Pojawia się nowy wiersz lub dialog wstawiania",
+          "tip": "Zaznacz cały wiersz, żeby mieć przewidywalny efekt.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Minus",
+          "keys": [
+            "Ctrl",
+            "-"
+          ],
+          "kind": "hotkey",
+          "label": "Usuń zaznaczone komórki lub wiersze",
+          "before": "Jest zbędny wiersz",
+          "after": "Wiersz znika lub pojawia się dialog usuwania",
+          "tip": "Sprawdź zakres przed usuwaniem.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+9",
+          "keys": [
+            "Ctrl",
+            "9"
+          ],
+          "kind": "hotkey",
+          "label": "Ukryj wiersze",
+          "before": "Wiersz widoczny",
+          "after": "Wiersz ukryty",
+          "tip": "Ukrywanie nie oznacza kasowania danych.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Shift+F11",
+          "keys": [
+            "Shift",
+            "F11"
+          ],
+          "kind": "hotkey",
+          "label": "Nowy arkusz",
+          "before": "Skoroszyt ma jeden arkusz",
+          "after": "Pojawia się nowy arkusz",
+          "tip": "Nazwij arkusze opisowo, np. Budżet i Faktury.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Space",
+          "keys": [
+            "Ctrl",
+            "Space"
+          ],
+          "kind": "hotkey",
+          "label": "Zaznacz całą kolumnę",
+          "before": "Wybrana jedna komórka",
+          "after": "Wybrana cała kolumna",
+          "tip": "Uważaj, gdy zamierzasz zastosować działanie masowe.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 4,
+    "title_pl": "Formuły i obliczenia",
+    "material": {
+      "raw": [
+        "Formuły i obliczenia",
+        "Rozwijaj własne arkusze wycen i raportów.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Alt+=",
+          "keys": [
+            "Alt",
+            "="
+          ],
+          "kind": "hotkey",
+          "label": "Autosuma",
+          "before": "Wynik pod kolumną jest pusty",
+          "after": "Excel proponuje sumę zakresu",
+          "tip": "Zawsze sprawdź, jaki zakres został zaproponowany.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "F4",
+          "keys": [
+            "F4"
+          ],
+          "kind": "hotkey",
+          "label": "Zmieniaj typ odwołania",
+          "before": "Formuła odwołuje się do A1",
+          "after": "Możesz otrzymać $A$1 / A$1 / $A1",
+          "tip": "Skrót działa w trakcie edycji odwołania w formule.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Shift+F3",
+          "keys": [
+            "Shift",
+            "F3"
+          ],
+          "kind": "hotkey",
+          "label": "Wstaw funkcję",
+          "before": "Chcesz znaleźć formułę",
+          "after": "Otwiera się okno Wstaw funkcję",
+          "tip": "Sprawdź argumenty zamiast kopiować formuły w ciemno.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "F9",
+          "keys": [
+            "F9"
+          ],
+          "kind": "hotkey",
+          "label": "Przelicz formuły",
+          "before": "Wynik przy ręcznym trybie obliczeń nieaktualny",
+          "after": "Formuły są przeliczone",
+          "tip": "Nie traktuj F9 jako gwarancji poprawnej logiki formuły.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+E",
+          "keys": [
+            "Ctrl",
+            "E"
+          ],
+          "kind": "hotkey",
+          "label": "Wypełnianie błyskawiczne",
+          "before": "Imię i nazwisko w jednej kolumnie",
+          "after": "Excel proponuje rozdzielony wzorzec",
+          "tip": "Sprawdź wynik na kilku przypadkach z nietypowymi danymi.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 5,
+    "title_pl": "Tabele i filtry",
+    "material": {
+      "raw": [
+        "Tabele i filtry",
+        "Dobry raport musi dać się szybko przefiltrować i porównać.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+T",
+          "keys": [
+            "Ctrl",
+            "T"
+          ],
+          "kind": "hotkey",
+          "label": "Utwórz tabelę",
+          "before": "Zwykły zakres z nagłówkami",
+          "after": "Tabela z filtrami i stylami",
+          "tip": "Przed zatwierdzeniem sprawdź, czy pierwszy wiersz to nagłówki.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Shift+L",
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "L"
+          ],
+          "kind": "hotkey",
+          "label": "Przełącz filtr",
+          "before": "Tabela bez filtrów",
+          "after": "Pojawiają się filtry w nagłówkach",
+          "tip": "Pozwala szybko znaleźć np. opóźnione płatności.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+Shift+Down",
+          "keys": [
+            "Ctrl",
+            "Shift",
+            "↓"
+          ],
+          "kind": "hotkey",
+          "label": "Zaznacz dane w dół",
+          "before": "Zaznaczona górna komórka",
+          "after": "Zaznaczenie rozszerza się do granicy danych",
+          "tip": "Puste komórki wpływają na zakres.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Alt+F1",
+          "keys": [
+            "Alt",
+            "F1"
+          ],
+          "kind": "hotkey",
+          "label": "Wstaw wykres osadzony",
+          "before": "Dane w tabeli bez wykresu",
+          "after": "Wykres w bieżącym arkuszu",
+          "tip": "Najpierw zaznacz czytelne dane z nagłówkami.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+F",
+          "keys": [
+            "Ctrl",
+            "F"
+          ],
+          "kind": "hotkey",
+          "label": "Znajdź w arkuszu",
+          "before": "Nie wiesz, gdzie jest klient",
+          "after": "Otwarte wyszukiwanie",
+          "tip": "Używaj unikatowych fragmentów tekstu.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 6,
+    "title_pl": "Praca z plikiem i wersjami",
+    "material": {
+      "raw": [
+        "Praca z plikiem i wersjami",
+        "Największą stratą czasu jest utrata poprawionego pliku.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+S",
+          "keys": [
+            "Ctrl",
+            "S"
+          ],
+          "kind": "hotkey",
+          "label": "Zapisz skoroszyt",
+          "before": "Niezapisane poprawki",
+          "after": "Plik zapisany",
+          "tip": "Zapisuj przed dużym sortowaniem lub importem danych.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+P",
+          "keys": [
+            "Ctrl",
+            "P"
+          ],
+          "kind": "hotkey",
+          "label": "Podgląd wydruku",
+          "before": "Nie znasz podziału stron",
+          "after": "Widzisz wygląd wydruku",
+          "tip": "Skontroluj orientację, nagłówki i skalowanie.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+N",
+          "keys": [
+            "Ctrl",
+            "N"
+          ],
+          "kind": "hotkey",
+          "label": "Nowy skoroszyt",
+          "before": "Otwarty jest stary plik",
+          "after": "Pojawia się nowy skoroszyt",
+          "tip": "Zaczynaj nowe projekty od wyraźnego szablonu.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+O",
+          "keys": [
+            "Ctrl",
+            "O"
+          ],
+          "kind": "hotkey",
+          "label": "Otwórz plik",
+          "before": "Nie ma otwartego raportu",
+          "after": "Możesz wskazać skoroszyt",
+          "tip": "Zwróć uwagę na rozszerzenie i pochodzenie pliku.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "F12",
+          "keys": [
+            "F12"
+          ],
+          "kind": "hotkey",
+          "label": "Zapisz jako",
+          "before": "Chcesz zachować stary plik",
+          "after": "Otwiera się dialog Zapisz jako",
+          "tip": "Nadaj nazwę zawierającą datę i numer wersji.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  },
+  {
+    "lesson_no": 7,
+    "title_pl": "Powtórka i praktyczna ściąga",
+    "material": {
+      "raw": [
+        "Powtórka i praktyczna ściąga",
+        "Połącz skróty w prawdziwą pracę z przykładowym budżetem.",
+        "Sprawdź zmiany na przykładowym arkuszu i porównaj widok „przed” i „po”. Skróty opisujemy dla Excela na Windows, z uwzględnieniem możliwych różnic układu klawiatury."
+      ],
+      "shortcuts": [
+        {
+          "combo": "Ctrl+Home",
+          "keys": [
+            "Ctrl",
+            "Home"
+          ],
+          "kind": "hotkey",
+          "label": "Przejdź na początek",
+          "before": "Jesteś na dole tabeli",
+          "after": "Wracasz do A1",
+          "tip": "Sprawdź, jak szybko wracasz do nagłówków.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+T",
+          "keys": [
+            "Ctrl",
+            "T"
+          ],
+          "kind": "hotkey",
+          "label": "Zrób tabelę",
+          "before": "Lista wydatków bez filtrów",
+          "after": "Tabela z nagłówkami i filtrami",
+          "tip": "Następnie przetestuj wyszukiwanie jednego kosztu.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Alt+=",
+          "keys": [
+            "Alt",
+            "="
+          ],
+          "kind": "hotkey",
+          "label": "Policz sumę",
+          "before": "Koszty bez podsumowania",
+          "after": "Pojawia się proponowana suma",
+          "tip": "Zweryfikuj, czy nie pominięto żadnego wiersza.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+1",
+          "keys": [
+            "Ctrl",
+            "1"
+          ],
+          "kind": "hotkey",
+          "label": "Sformatuj kwoty",
+          "before": "Liczby jako zwykłe wartości",
+          "after": "Waluta / liczby z poprawnym formatem",
+          "tip": "Zadbaj o spójność waluty i separatorów.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        },
+        {
+          "combo": "Ctrl+S",
+          "keys": [
+            "Ctrl",
+            "S"
+          ],
+          "kind": "hotkey",
+          "label": "Zapisz wynik",
+          "before": "Przykładowy budżet gotowy",
+          "after": "Plik zapisany",
+          "tip": "Zostaw kopię przed dalszymi testami.",
+          "platform": "Microsoft Excel dla Windows — domyślne ustawienia"
+        }
+      ],
+      "quickTips": [
+        "W Excelu ta sama kombinacja może działać inaczej podczas edycji komórki.",
+        "Skróty z cyframi i symbolami zależą od lokalnego układu klawiatury.",
+        "Przed masowymi operacjami na danych zapisz kopię."
+      ],
+      "exercise": "Utwórz prostą tabelę kosztów i wykonaj każde polecenie z tej lekcji, zapisując efekt w notatkach.",
+      "references": [
+        {
+          "label": "Microsoft Support — Excel Keyboard Shortcuts",
+          "url": "https://support.microsoft.com/pl-pl/accessibility/excel/keyboard-shortcuts-in-excel"
+        }
+      ],
+      "editorial_status": "review_needed",
+      "platform": "Windows Desktop",
+      "lesson_kind": "illustrated_keyboard_shortcuts",
+      "editorial_alignment": "TRENERKI-shortcuts-2026-11"
+    }
+  }
+]
