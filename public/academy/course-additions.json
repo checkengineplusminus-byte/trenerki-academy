@@ -454,5 +454,53 @@
     "flag": "Gratis · świąteczny",
     "certificate_title_pl": "Uprawnienia Świętego Mikołaja — kurs świąteczny",
     "certificate_title_en": "Uprawnienia Świętego Mikołaja — kurs świąteczny"
+  },
+  {
+    "id": "lepszy-tata",
+    "title": "Bądź lepszym tatą — obecność, rozmowa i zaufanie",
+    "short": "Bądź tatą, przy którym dziecko czuje się bezpiecznie. Słuchaj, wspieraj emocje, stawiaj granice i buduj więź na co dzień — również gdy mieszkacie osobno.",
+    "cat": "Relacje i rodzina",
+    "price": 99,
+    "emoji": "👨‍👧",
+    "accent": "#E4EDDF",
+    "duration": "Własne tempo",
+    "level": "Dla każdego taty",
+    "flag": "Nowość · rodzicielstwo",
+    "certificate_title_pl": "Świadome ojcostwo i budowanie więzi z dzieckiem",
+    "certificate_title_en": "Conscious Fatherhood and Building a Bond with a Child",
+    "outline": [
+      "Tata obecny, nie idealny",
+      "Zrozum potrzeby dziecka w różnym wieku",
+      "Słuchaj tak, by dziecko chciało mówić",
+      "Emocje i cierpliwość w trudnym momencie",
+      "Granice, zasady i szacunek",
+      "Wspólny czas i małe rytuały",
+      "Ojcostwo po rozstaniu i dwa domy",
+      "Mój plan lepszego ojcostwa na 30 dni"
+    ]
+  },
+  {
+    "id": "lepsza-mama",
+    "title": "Bądź lepszą mamą — bliskość, spokój i zaufanie",
+    "short": "Rozwijaj ciepłą i spokojną relację z dzieckiem bez presji bycia idealną. Ćwicz komunikację, regulację emocji, zdrowe granice i dbanie także o własne potrzeby.",
+    "cat": "Relacje i rodzina",
+    "price": 99,
+    "emoji": "👩‍👧",
+    "accent": "#F1E3E7",
+    "duration": "Własne tempo",
+    "level": "Dla każdej mamy",
+    "flag": "Nowość · rodzicielstwo",
+    "certificate_title_pl": "Świadome macierzyństwo i budowanie więzi z dzieckiem",
+    "certificate_title_en": "Conscious Motherhood and Building a Bond with a Child",
+    "outline": [
+      "Mama obecna, nie idealna",
+      "Dziecko ma potrzeby, mama też",
+      "Rozmowa i słuchanie bez oceniania",
+      "Emocje, zmęczenie i odzyskiwanie spokoju",
+      "Granice z życzliwością",
+      "Wspólne chwile i poczucie bezpieczeństwa",
+      "Współpraca rodziców i wychowanie w dwóch domach",
+      "Mój plan bliskości na 30 dni"
+    ]
   }
 ]
