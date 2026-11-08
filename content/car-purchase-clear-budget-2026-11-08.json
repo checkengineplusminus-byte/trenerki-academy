@@ -1,0 +1,110 @@
+{
+  "course_slug": "jak-kupic-samochod",
+  "editorial_note": "Illustrative PLN budgets; keep course price and owner records intact.",
+  "lessons": [
+    {
+      "lesson_no": 0,
+      "title_pl": "Ile masz na samochód? Budżet 40 000 zł krok po kroku",
+      "material": {
+        "raw": [
+          "Ile naprawdę możesz wydać na auto?",
+          "Masz dokładnie 40 000 zł wszystkich oszczędności przeznaczonych na zakup i uruchomienie używanego auta. To CAŁY budżet, a nie 40 000 zł na samo auto. Chcesz zachować 5 000 zł na ubezpieczenie, formalności i nieprzewidziany pierwszy serwis. Oznacza to, że na cenę samochodu możesz przeznaczyć najwyżej 35 000 zł. Samochód z ogłoszenia za 40 000 zł przekracza Twój bezpieczny limit o 5 000 zł. Wszystkie kwoty w zadaniu są przykładowe, a rzeczywiste wydatki zależą od pojazdu i miejsca zakupu.",
+          "Przykład: 40 000 zł całego budżetu − 5 000 zł rezerwy = 35 000 zł maksymalnej ceny zakupu.",
+          "Ogłoszenie za 40 000 zł przekracza limit na auto o 5 000 zł."
+        ],
+        "sections": [
+          {
+            "heading": "Ile masz pieniędzy — dokładnie?",
+            "text": "W tym przykładzie dysponujesz 40 000 zł gotówki łącznie. Nie masz dodatkowego konta oszczędnościowego, pożyczki ani oddzielnego budżetu na rejestrację i naprawy. Z tych 40 000 zł musisz pokryć zarówno zapłatę sprzedawcy, jak i początkowe wydatki związane z autem. To ważne: cena z ogłoszenia nie jest całkowitym kosztem bezpiecznego zakupu."
+          },
+          {
+            "heading": "Odejmij rezerwę, zanim zaczniesz negocjować",
+            "text": "Z pełnej kwoty 40 000 zł odkładasz 5 000 zł jako przykładową rezerwę na ubezpieczenie, formalności, ocenę mechanika i ewentualne naprawy. Obliczenie: 40 000 zł − 5 000 zł = 35 000 zł. Dlatego 35 000 zł to górny limit ceny pojazdu w tym ćwiczeniu, a nie 40 000 zł. Konkretne wydatki należy oszacować dla wybranego auta przed podpisaniem umowy."
+          },
+          {
+            "heading": "Co z ogłoszeniem za 40 000 zł?",
+            "text": "Jeżeli zapłacisz sprzedawcy całe 40 000 zł, zostanie Ci 0 zł. Nie opłacisz przewidzianych kosztów z własnego budżetu. Rozsądne możliwości: wybrać auto za maksymalnie 35 000 zł, negocjować cenę do tej kwoty albo odłożyć zakup i zwiększyć oszczędności. Nie podejmuj decyzji pod presją i nie zakładaj z góry, że po zakupie nic się nie zepsuje."
+          },
+          {
+            "heading": "Trik kupującego: trzy koperty",
+            "text": "Zanim obejrzysz samochód, zanotuj trzy liczby: (1) pełny budżet, (2) kwotę, której nie wolno wydać na cenę auta, (3) maksymalną ofertę dla sprzedawcy. W naszym przykładzie: 40 000 zł / 5 000 zł / 35 000 zł. Dodatkowo sprawdź ubezpieczenie, koszty eksploatacji, dokumenty oraz niezależny przegląd. Jeśli wyliczone koszty startowe przekraczają 5 000 zł, limit ceny musi być jeszcze niższy."
+          }
+        ],
+        "learning": {
+          "intro": "Masz dokładnie 40 000 zł wszystkich oszczędności przeznaczonych na zakup i uruchomienie używanego auta. To CAŁY budżet, a nie 40 000 zł na samo auto. Chcesz zachować 5 000 zł na ubezpieczenie, formalności i nieprzewidziany pierwszy serwis. Oznacza to, że na cenę samochodu możesz przeznaczyć najwyżej 35 000 zł. Samochód z ogłoszenia za 40 000 zł przekracza Twój bezpieczny limit o 5 000 zł. Wszystkie kwoty w zadaniu są przykładowe, a rzeczywiste wydatki zależą od pojazdu i miejsca zakupu.",
+          "situation": "Masz RAZEM 40 000 zł gotówki. Chcesz pozostawić 5 000 zł na ubezpieczenie, formalności i pierwszy serwis. Sprzedawca żąda 40 000 zł za samochód. Nie masz żadnych innych pieniędzy przeznaczonych na zakup.",
+          "question": "Ile maksymalnie możesz zapłacić za SAM samochód, aby zachować zaplanowaną rezerwę 5 000 zł?",
+          "options": [
+            "Maksymalnie 35 000 zł za auto, bo z 40 000 zł wszystkich oszczędności odkładam 5 000 zł na koszty początkowe.",
+            "40 000 zł za auto, bo tyle mam na koncie — rezerwę odłożę później.",
+            "45 000 zł za auto, bo rezerwę doliczam do pieniędzy, które posiadam."
+          ],
+          "correct": 0,
+          "example": "Maksymalnie 35 000 zł za auto, bo z 40 000 zł wszystkich oszczędności odkładam 5 000 zł na koszty początkowe.",
+          "explanation": "40 000 zł całego budżetu minus 5 000 zł rezerwy to 35 000 zł maksymalnej ceny zakupu. Auto wystawione za 40 000 zł nie mieści się w tym limicie. To przykład edukacyjny — realne koszty trzeba policzyć osobno.",
+          "feedback": [
+            "Tak. 40 000 − 5 000 = 35 000 zł. W ten sposób zostaje rezerwa na pierwsze wydatki.",
+            "Nie. Gdy wydasz całe 40 000 zł na auto, zostanie Ci 0 zł na przewidziane koszty. Odejmij 5 000 zł przed zakupem.",
+            "Nie. Nie masz 45 000 zł. Twoje wszystkie oszczędności to 40 000 zł, a 5 000 zł jest częścią tej kwoty."
+          ],
+          "task": "Oblicz własny maksymalny limit na cenę auta: wszystkie środki minus realnie oszacowane koszty startowe. Dla ćwiczenia: 40 000 − 5 000 = 35 000 zł.",
+          "topic_kind": "budget_math",
+          "quiz_version": 3
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "lesson_no": 1,
+      "title_pl": "Cena auta a koszt pierwszego roku — porównaj liczby",
+      "material": {
+        "raw": [
+          "Koszt zakupu to nie wszystko",
+          "Cena zakupu to dopiero początek. W tej lekcji porównujesz dwa przykładowe samochody w pierwszym roku użytkowania. Znamy konkretne kwoty, więc nie musisz zgadywać, co znaczy „droższy w utrzymaniu”.",
+          "Auto A: 43 000 zł w pierwszym roku.",
+          "Auto B: 41 300 zł w pierwszym roku."
+        ],
+        "sections": [
+          {
+            "heading": "Dwie oferty z konkretnymi cenami",
+            "text": "Auto A kosztuje 32 000 zł. Zakładamy na pierwszy rok: paliwo 6 000 zł, ubezpieczenie 2 000 zł, typowy serwis 3 000 zł. Auto B kosztuje 34 000 zł. Zakładamy: paliwo 3 500 zł, ubezpieczenie 1 800 zł, serwis 2 000 zł. To przykładowe założenia, nie prognoza dla każdego modelu."
+          },
+          {
+            "heading": "Policz koszt pierwszego roku",
+            "text": "Auto A: 32 000 + 6 000 + 2 000 + 3 000 = 43 000 zł. Auto B: 34 000 + 3 500 + 1 800 + 2 000 = 41 300 zł. Mimo że Auto B kosztuje o 2 000 zł więcej przy zakupie, w tym przykładzie jego łączny koszt pierwszego roku jest niższy o 1 700 zł."
+          },
+          {
+            "heading": "Nie pomijaj kosztów, które trudno przewidzieć",
+            "text": "Zawsze uwzględnij przebieg, zużycie, historię napraw, ogumienie, podatki i opłaty właściwe dla kraju zakupu. Większa naprawa może zmienić wynik porównania. Dlatego wyliczenie kosztu jest prognozą na podstawie założeń, a nie gwarancją."
+          },
+          {
+            "heading": "Ćwiczenie i praktyczny trik",
+            "text": "Przygotuj prostą tabelę: cena zakupu, paliwo, ubezpieczenie, serwis i suma pierwszego roku. Nie porównuj aut tylko po cenie z ogłoszenia. Wybierz ofertę dopiero wtedy, gdy obie sumy policzone są dla takiego samego okresu i podobnego przebiegu rocznego."
+          }
+        ],
+        "learning": {
+          "intro": "Cena zakupu to dopiero początek. W tej lekcji porównujesz dwa przykładowe samochody w pierwszym roku użytkowania. Znamy konkretne kwoty, więc nie musisz zgadywać, co znaczy „droższy w utrzymaniu”.",
+          "situation": "Dla dwóch aut wyliczasz koszt pierwszego roku. Auto A: cena 32 000 zł, paliwo 6 000 zł, ubezpieczenie 2 000 zł, serwis 3 000 zł. Auto B: cena 34 000 zł, paliwo 3 500 zł, ubezpieczenie 1 800 zł, serwis 2 000 zł.",
+          "question": "Który samochód ma niższy podany koszt CAŁEGO pierwszego roku, licząc cenę zakupu i wymienione wydatki?",
+          "options": [
+            "Auto B, bo 34 000 + 3 500 + 1 800 + 2 000 = 41 300 zł, a Auto A kosztuje łącznie 43 000 zł.",
+            "Auto A, bo jest tańsze o 2 000 zł w samym ogłoszeniu.",
+            "Oba kosztują tyle samo, ponieważ paliwo i serwis nie wliczają się do kosztów auta."
+          ],
+          "correct": 0,
+          "example": "Auto B, bo 34 000 + 3 500 + 1 800 + 2 000 = 41 300 zł, a Auto A kosztuje łącznie 43 000 zł.",
+          "explanation": "Auto A: 43 000 zł; Auto B: 41 300 zł. B jest tańsze o 1 700 zł w tym konkretnym scenariuszu, chociaż cena samego auta B jest wyższa.",
+          "feedback": [
+            "Zgadza się: 41 300 zł to mniej niż 43 000 zł.",
+            "To uwzględnia jedynie cenę zakupu. Dodaj paliwo, ubezpieczenie i serwis obu aut.",
+            "Nie. W ćwiczeniu koszty pierwszego roku obejmują także wszystkie wymienione wydatki."
+          ],
+          "task": "Policz sumę w swojej tabeli dla obu aut. Porównaj je po takim samym okresie. Dodaj ewentualny zapas na niespodziewaną naprawę.",
+          "topic_kind": "budget_math",
+          "quiz_version": 3
+        },
+        "editorial_status": "review_needed"
+      }
+    }
+  ]
+}
