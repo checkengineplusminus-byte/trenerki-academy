@@ -232,5 +232,11 @@
     "first": "Zaczynasz od zera: SAP TM planuje i nadzoruje transport od zlecenia do rozliczenia kosztów. Następnie poznasz wirtualny przebieg zamówienia i sprawdzisz, co oznaczają dokumenty oraz statusy.",
     "result": "Po 30 lekcjach przeanalizujesz procesy: Transport cockpit, Praktyka: od order do potwierdzenia, Egzamin próbny SAP TM. Przećwiczysz decyzje dotyczące błędów, dokumentów i odpowiedzialności.",
     "boundary": "To niezależny kurs edukacyjny na fikcyjnych danych; nie jest autoryzowanym szkoleniem producenta ani dostępem do prawdziwego systemu."
+  },
+  "jestem-eko": {
+    "what": "Ekologia to nie szukanie idealnego zielonego produktu. To rozumienie, skąd rzeczy się biorą, ile materiałów zużywamy i jakie decyzje naprawdę zmniejszają marnowanie. Poznasz hierarchię odpadów oraz lokalne zasady w Polsce i Norwegii. Nauczysz się rozpoznawać błędy i niebezpieczne odpady.",
+    "first": "Na początek prześledzisz historię zwykłej butelki i naprawę kurtki. Dopiero potem poznasz pięć polskich frakcji, norweskie nazwy odpadów i różnice między recyklingiem, naprawą i zapobieganiem.",
+    "result": "Po 30 lekcjach samodzielnie rozpoznasz typowe frakcje i wyjątki, ułożysz plan ograniczenia marnowania żywności, ocenisz ubrania, urządzenia i zakupy, a także nauczysz się sprawdzać deklaracje producentów zamiast wierzyć hasłom.",
+    "boundary": "To autorski kurs edukacyjny. Szczegóły segregacji sprawdzaj w swojej gminie; dokument nie jest państwową kwalifikacją zawodową."
   }
 }
