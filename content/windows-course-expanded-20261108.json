@@ -112,7 +112,7 @@
             "text": "Narysuj własną mapę pulpitu z pięcioma etykietami: Start, pasek zadań, ikona, aktywne okno, obszar powiadomień. Pokaż w praktyce, gdzie znajdziesz dokument po minimalizacji."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -169,7 +169,7 @@
             "text": "Otwórz Ustawienia bez szukania ikony na pulpicie. Wyjaśnij, dlaczego przypadkowy program pobrany z reklamy nie jest bezpiecznym zamiennikiem instalowanej aplikacji."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -226,7 +226,7 @@
             "text": "Znajdź folder Dokumenty, sprawdź jego adres i wyjaśnij, co oznacza folder nadrzędny. Nie przenoś plików systemowych ani cudzych dokumentów w trakcie ćwiczenia."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -283,7 +283,7 @@
             "text": "Wyjaśnij różnicę między plikiem, folderem i skrótem do pliku. Na przykładzie oferty opisz, co stanie się, gdy usuniesz tylko skrót z pulpitu."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -340,7 +340,7 @@
             "text": "Pokaż, jak działa Ctrl+C i Ctrl+V na własnym tekście. Wyjaśnij, czym różni się kopiowanie tekstu od otwierania plików i od klawisza Win+E."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -397,7 +397,7 @@
             "text": "Przed naciśnięciem Ctrl+A sprawdź, co jest aktywne. Wyjaśnij, dlaczego nie wolno bezmyślnie wciskać skrótów przy otwartym dokumencie z ważnymi danymi."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -454,7 +454,7 @@
             "text": "Wymień trzy rzeczy, które sprawdzasz przed zamknięciem ważnego raportu: właściwy plik, miejsce zapisu i zawartość po ponownym otwarciu."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -568,7 +568,7 @@
             "text": "W rozmowie z Anielką opisz ścieżkę pliku i powiedz, jak udowodnisz, że zapis się udał. Jeśli czegoś nie wiesz, opisz dokładnie, co widzisz na ekranie."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -714,7 +714,7 @@
             "text": "Wytłumacz różnicę między minimalizacją okna, wyświetleniem pulpitu i zamknięciem programu."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -857,7 +857,7 @@
             "text": "Pokaż, jak wrócić do poprzednio aktywnej aplikacji, nie zamykając innych."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1001,7 +1001,7 @@
             "text": "Przed wysłaniem obrazu sprawdź: widoczny adres, otwarte zakładki, nazwiska i inne poufne informacje."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-security",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1144,7 +1144,7 @@
             "text": "Wyjaśnij, czym różni się ustawienie skali od instalowania przypadkowego programu do „ulepszania” ekranu."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1287,7 +1287,7 @@
             "text": "Sprawdź, czy wszystkie dokumenty trafiły do oczekiwanej lokalizacji i czy oryginał został zachowany."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1431,7 +1431,7 @@
             "text": "Powiedz, dlaczego Ctrl+X może być ryzykowny dla jedynej kopii ważnego pliku."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1575,7 +1575,7 @@
             "text": "Upewnij się, że klawiatura steruje dokumentem, a nie innym aktywnym oknem."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1720,7 +1720,7 @@
             "text": "Wyjaśnij, dlaczego blokada ekranu nie jest kopią zapasową danych."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-desktop",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1777,7 +1777,7 @@
             "text": "Wskaż różnicę między Cofnij, Koszem i kopią zapasową."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-security",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1834,7 +1834,7 @@
             "text": "Przed zakończeniem sprawdź, czy wszystkie pliki mają jednoznaczne nazwy i nie zawierają danych innych osób."
           }
         ],
-        "illustration": "windows-folders",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -1891,7 +1891,7 @@
             "text": "Napisz, w jakim przypadku nie wystarczy zmiana nazwy pliku i potrzebne jest formalne wersjonowanie."
           }
         ],
-        "illustration": "windows-security",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -2005,7 +2005,7 @@
             "text": "Wyjaśnij, dlaczego nie można uznać jednej zsynchronizowanej chmury za jedyną kopię zapasową."
           }
         ],
-        "illustration": "windows-security",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -2233,7 +2233,7 @@
             "text": "Przed wysłaniem wyjaśnij, dlaczego link „każdy z linkiem może edytować” może naruszać poufność."
           }
         ],
-        "illustration": "windows-security",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
@@ -2404,7 +2404,7 @@
             "text": "Przed egzaminem z Anielką opisz, jak udowodnisz, że plik istnieje, jest aktualny, zabezpieczony i w razie potrzeby można go przywrócić."
           }
         ],
-        "illustration": "windows-security",
+        "illustration": "windows-explorer",
         "sources": [
           {
             "label": "Microsoft — historia Windows",
