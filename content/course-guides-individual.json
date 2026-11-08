@@ -1,0 +1,182 @@
+{
+  "brygadzista": {
+    "what": "Brygadzista organizuje pracę ludzi i reaguje na przeszkody, ale nie zastępuje projektanta, kierownika budowy ani osób z wymaganymi uprawnieniami.",
+    "first": "Masz sześć osób i dwie brygady czekają na materiał. Ustal bezpieczne priorytety i potwierdź odpowiedzialność za decyzje.",
+    "result": "Przeprowadzisz krótką odprawę, zaplanujesz zadania i zgłosisz problem, zanim przerodzi się w opóźnienie.",
+    "boundary": "Nie zgadzaj się na ryzykowne zmiany konstrukcyjne bez zatwierdzenia."
+  },
+  "kierownik-budowy": {
+    "what": "Zarządzanie budową wymaga kontroli dokumentacji, ludzi, harmonogramu i zgodności z przepisami. Ta nauka nie nadaje uprawnień budowlanych.",
+    "first": "Rozpoznasz, kto może zatwierdzić zmianę projektu i dlaczego aktualna wersja rysunku jest tak ważna.",
+    "result": "Nauczysz się przygotować odprawę, dokumentować decyzje i zarządzać ryzykiem bez przekraczania kompetencji.",
+    "boundary": "Formalne pełnienie funkcji wymaga uprawnień i warunków przewidzianych prawem."
+  },
+  "lepszy-szef": {
+    "what": "Dobry przełożony tworzy jasne zadania, usuwa przeszkody i daje informację zwrotną; nie musi wszystkiego robić osobiście.",
+    "first": "Pracownik nie rozumie, za co odpowiada. Przećwicz przekazanie zadania z terminem i kryterium wykonania.",
+    "result": "Będziesz prowadzić rozmowy, delegować i rozwiązywać nieporozumienia bez upokarzania ludzi.",
+    "boundary": "Nie utożsamiaj kontroli z ciągłą presją i pracą bez odpoczynku."
+  },
+  "apartamenty": {
+    "what": "Gość ocenia apartament przez czystość, dostępność informacji i sprawność wyposażenia. Standard musi być mierzalny, a nie oparty na obietnicy „luksusu”.",
+    "first": "Przed przyjazdem gościa sprawdź łazienkę, pościel, klucze i kontakt awaryjny według checklisty.",
+    "result": "Zorganizujesz przygotowanie lokalu, dokumentowanie usterek i reagowanie na reklamacje.",
+    "boundary": "Przestrzegaj prywatności gości, zasad bezpieczeństwa i lokalnych obowiązków."
+  },
+  "gpsr": {
+    "what": "GPSR reguluje ogólne bezpieczeństwo wielu produktów konsumenckich. Obowiązki zależą od rodzaju wyrobu i roli w łańcuchu sprzedaży.",
+    "first": "Sprzedajesz świecę wykonaną ręcznie. Najpierw określ, kto jest producentem i jakie ryzyka trzeba ocenić.",
+    "result": "Zrozumiesz podstawy dokumentacji, identyfikowalności produktu i informacji dla klienta.",
+    "boundary": "Nie deklaruj zgodności produktu wyłącznie na podstawie tego kursu; sprawdź przepisy szczególne."
+  },
+  "bdo": {
+    "what": "BDO dotyczy określonych obowiązków ewidencyjnych w Polsce związanych z odpadami, produktami i opakowaniami. Nie każda firma ma identyczne obowiązki.",
+    "first": "Pakujesz sprzedawany produkt w karton i folię. Sprawdź, co wprowadzasz na rynek i jakie obowiązki mogą dotyczyć Twojej działalności.",
+    "result": "Nauczysz się rozróżniać obowiązki rejestracyjne i dokumentacyjne oraz uporządkować dane.",
+    "boundary": "Obowiązki i wyjątki sprawdzaj w aktualnych polskich przepisach oraz w urzędzie."
+  },
+  "dostepne-pdf": {
+    "what": "Dobry PDF czyta się nie tylko wzrokiem i myszką: jego struktura pomaga czytnikom ekranu, osobom z dysfunkcjami i na telefonach.",
+    "first": "Zobacz dokument z nagłówkiem narysowanym dużym fontem, ale bez struktury nagłówka. Sprawdź, co trzeba poprawić.",
+    "result": "Nauczysz się tworzyć logiczne nagłówki, opisy ilustracji i czytelne tabele oraz testować dostępność.",
+    "boundary": "Nie opieraj przekazu wyłącznie na kolorze; sprawdzaj obowiązujące standardy dostępności."
+  },
+  "kgw": {
+    "what": "Koło Gospodyń Wiejskich powinno rozumieć zasady otrzymanej dotacji, dokumenty księgowe i termin sprawozdania.",
+    "first": "Masz rachunek za materiały i dokument programu dotacyjnego. Sprawdź, czy wydatek jest kwalifikowalny.",
+    "result": "Ułożysz budżet i rejestr dokumentów potrzebnych do rozliczenia projektu.",
+    "boundary": "Nie traktuj starego terminu lub kwoty dotacji jako aktualnie obowiązujących."
+  },
+  "festyn": {
+    "what": "Dobre stoisko na festynie powstaje z planu porcji, cen, ludzi i bezpieczeństwa żywności — nie z samej dekoracji.",
+    "first": "Oczekujesz 200 odwiedzających, ale nie każdy kupi. Zaplanuj ostrożny wariant popytu i koszty.",
+    "result": "Policzysz cenę porcji, zadbasz o higienę i podział obowiązków przy obsłudze.",
+    "boundary": "Unikaj obietnic sprzedaży bez oszacowania popytu i zasad sanitarnych."
+  },
+  "petsitter": {
+    "what": "Opieka nad kotem wymaga wiedzy o jego rutynie, stresie i zgodach właściciela. Nie polega jedynie na nakarmieniu.",
+    "first": "Przed pierwszą wizytą dowiesz się o karmieniu, lekach zleconych przez lekarza weterynarii i kontaktach awaryjnych.",
+    "result": "Przygotujesz kartę opieki, bezpieczne wizyty i rzetelne informacje dla właściciela.",
+    "boundary": "Nie diagnozuj sam chorób ani nie zmieniaj schematu leczenia."
+  },
+  "odbiory": {
+    "what": "Dokumentacja usterek polega na dokładnym opisaniu tego, co można zobaczyć lub zmierzyć, oraz wskazaniu miejsca i daty.",
+    "first": "Oglądasz mieszkanie. Przy oknie pojawia się wilgoć. Zapisz miejsce, zdjęcie i warunki obserwacji bez zgadywania przyczyny.",
+    "result": "Stworzysz listę odbiorową i czytelny protokół z fotografiami oraz priorytetami.",
+    "boundary": "Nie wydawaj opinii konstrukcyjnych bez uprawnień i odpowiedniego badania."
+  },
+  "wspolnota": {
+    "what": "Mała wspólnota mieszkaniowa podejmuje decyzje o nieruchomości wspólnej, kosztach i remontach zgodnie z prawem.",
+    "first": "Mieszkańcy zgłaszają przeciek w dachu. Ustal, co jest pilne, jak udokumentować problem i kto podejmuje decyzję.",
+    "result": "Nauczysz się planować zebrania, budżet i obieg uchwał oraz dokumentów.",
+    "boundary": "Zakres kompetencji i wymogi głosowania weryfikuj w aktualnym prawie."
+  },
+  "pasieka": {
+    "what": "Pszczoły tworzą złożoną rodzinę, a pasieka wymaga planu sezonu, ochrony zdrowia i uwzględnienia sąsiadów.",
+    "first": "Wybierasz miejsce na pierwszy ul. Sprawdź otoczenie, bezpieczeństwo innych ludzi i dostęp do wody.",
+    "result": "Zrozumiesz rytm sezonu, podstawowe obserwacje i moment, kiedy konieczna jest pomoc doświadczonego pszczelarza.",
+    "boundary": "Użądlenia, choroby i praca przy rodzinach pszczelich wymagają odpowiednich środków ostrożności."
+  },
+  "koordynator": {
+    "what": "Firma sprzątająca zarabia tylko wtedy, gdy zna zakres pracy, czas, środki i koszt dojazdu; rzetelna wycena chroni obie strony.",
+    "first": "Klient mówi „mieszkanie 50 m²”. Zapytaj o stan lokalu, okna, wyposażenie i oczekiwany standard.",
+    "result": "Sporządzisz ofertę, listę kontrolną i harmonogram bez ukrywania kosztów.",
+    "boundary": "Nie obiecuj usuwania substancji niebezpiecznych bez kwalifikacji."
+  },
+  "dziennik-kota": {
+    "what": "Hotelik dla kotów wymaga odpowiednich pomieszczeń, rutyny, bezpieczeństwa i jasnych zasad przyjęcia zwierząt.",
+    "first": "Opiekun chce zostawić kota na tydzień. Przeprowadź wywiad o zdrowiu, szczepieniach, zachowaniu i kontakcie awaryjnym.",
+    "result": "Zaplanujesz przyjęcia, opiekę i monitoring dobrostanu, a także postępowanie w nieprzewidzianej sytuacji.",
+    "boundary": "Sprawdź lokalne przepisy dotyczące działalności i nie podejmuj leczenia weterynaryjnego samodzielnie."
+  },
+  "poznaj-siebie": {
+    "what": "Własne wartości, emocje i umiejętności warto rozpoznawać przez konkretne zachowania, a nie etykiety czy szybkie testy osobowości.",
+    "first": "Pomyśl o trzech sytuacjach, w których dobrze sobie poradziłeś. Co rzeczywiście zrobiłeś?",
+    "result": "Zidentyfikujesz wspierające nawyki i przygotujesz jeden bezpieczny eksperyment zmiany.",
+    "boundary": "Unikaj traktowania internetowych etykiet jako diagnozy."
+  },
+  "mocny-charakter": {
+    "what": "Stanowczość oznacza jasne granice bez przemocy i zawstydzania innych.",
+    "first": "Kolega prosi Cię o nieodpłatną pracę w wolny weekend. Przećwicz uprzejmą odmowę.",
+    "result": "Będziesz podejmować decyzje zgodne z własnymi wartościami i reagować spokojniej na presję.",
+    "boundary": "Nie myl siły charakteru z agresją, ryzykiem ani dominacją."
+  },
+  "blizej-dziecka": {
+    "what": "Bliskość buduje się przez codzienne przewidywalne zainteresowanie dzieckiem, nie przez duże jednorazowe atrakcje.",
+    "first": "Dziecko wraca smutne ze szkoły. Sprawdź, jak zacząć rozmowę bez natychmiastowego oceniania.",
+    "result": "Nauczysz się słuchać, rozmawiać o emocjach i wspólnie ustalać proste rytuały.",
+    "boundary": "Nie zmuszaj dziecka do zwierzania się ani nie stosuj zawstydzania."
+  },
+  "rodzice-50-50": {
+    "what": "Opieka naprzemienna to organizowanie dwóch domów z perspektywy potrzeb i bezpieczeństwa dziecka.",
+    "first": "Dziecko ma podręcznik w drugim domu. Ustal spokojny sposób przekazywania rzeczy i informacji.",
+    "result": "Zaplanujesz komunikację, harmonogram i zmiany tak, aby dziecko nie było posłańcem dorosłych.",
+    "boundary": "Prawa opiekuńcze i decyzje sądu są indywidualne; nie nakładaj własnego planu na cudzą sytuację."
+  },
+  "obowiazki-domowe": {
+    "what": "Dom działa lepiej, gdy obowiązki są widoczne i wspólnie uzgodnione — także te, które polegają na pamiętaniu i planowaniu.",
+    "first": "Zobacz, kto kupuje środki czystości, planuje pranie i pamięta terminy, nie tylko kto sprząta.",
+    "result": "Ułożysz prosty tydzień prac dopasowanych do możliwości domowników.",
+    "boundary": "Zadania dla dzieci muszą być bezpieczne i odpowiednie do wieku."
+  },
+  "nie-lubie-ludzi": {
+    "what": "Potrzeba samotności nie jest sama w sobie problemem. Ważne, czy Twój dystans do ludzi jest wyborem, czy źródłem cierpienia.",
+    "first": "Zastanów się, czy po spotkaniach potrzebujesz spokoju, czy boisz się kontaktu.",
+    "result": "Nauczysz się ustalać granice i budować relacje w tempie, które Ci odpowiada.",
+    "boundary": "Nie zakładaj, że każdy musi być ekstrawertykiem."
+  },
+  "swiety-mikolaj": {
+    "what": "To lekki świąteczny kurs życzliwości, organizowania wizyt i rozmowy z dziećmi — nie zawodowe uprawnienia.",
+    "first": "Przygotuj powitanie i pytanie, które nie zawstydzi dziecka, nawet jeśli jest nieśmiałe.",
+    "result": "Zaplanujesz serdeczną wizytę z poszanowaniem zgody rodzica i komfortu dziecka.",
+    "boundary": "Unikaj ocen typu „grzeczny/niegrzeczny” i wymuszania zdjęć czy kontaktu fizycznego."
+  },
+  "lepszy-tata": {
+    "what": "Bycie tatą polega na przewidywalnej obecności, wspólnych ustaleniach i zdolności naprawiania błędów.",
+    "first": "Zamiast pytać wyłącznie o oceny, zapytaj dziecko, co dziś było dla niego ważne.",
+    "result": "Przećwiczysz komunikację, spokojne stawianie granic i czas wolny bez telefonu.",
+    "boundary": "Nie traktuj dziecka jako arbitra konfliktów dorosłych."
+  },
+  "lepsza-mama": {
+    "what": "Dobra mama nie musi być idealna. Dziecko potrzebuje bliskości, bezpieczeństwa, a rodzic także odpoczynku i wsparcia.",
+    "first": "Dziecko ma trudny dzień, a Ty jesteś wyczerpana. Znajdź mały krok, który zadba o oboje.",
+    "result": "Nauczysz się rozmowy bez zawstydzania, spokojnych granic i dbania o własne zasoby.",
+    "boundary": "Unikaj nieustannego poczucia winy i porównywania się z cudzym wizerunkiem rodzicielstwa."
+  },
+  "wyjdz-z-toksycznego-zwiazku": {
+    "what": "Kontrola, groźby, izolacja i przemoc nie są zwykłą kłótnią. Nauka zaczyna się od rozpoznawania sygnałów i bezpieczeństwa.",
+    "first": "Osoba bliska kontroluje telefon i pieniądze. Zastanów się, jak bezpiecznie szukać wsparcia.",
+    "result": "Poznasz podstawy planu bezpieczeństwa, granic i szukania pomocy bez nacisku na jedną decyzję.",
+    "boundary": "Nie zalecaj konfrontacji, jeśli może zwiększyć ryzyko przemocy."
+  },
+  "kryzys-po-40-bez-dlugow": {
+    "what": "Zmiana w życiu po czterdziestce nie wymaga kosztownego zakupu, by miała sens.",
+    "first": "Znajomy kupił drogie auto na kredyt. Sprawdź, jaki własny cel kryje się za chęcią podobnej zmiany.",
+    "result": "Rozpoznasz presję porównywania się i nauczysz się planować zmianę bez nadmiernego zadłużenia.",
+    "boundary": "Nie finansuj kryzysu emocjonalnego nowym kredytem bez analizy kosztów."
+  },
+  "partner-z-uzaleznieniem": {
+    "what": "Uzależnienie partnera nie usuwa Twojego prawa do bezpieczeństwa i granic. Nie możesz samotnie kontrolować leczenia drugiej osoby.",
+    "first": "Partner wraca pod wpływem i chce rozmawiać o trudnych sprawach. Ustal bezpieczny moment i własne granice.",
+    "result": "Dowiesz się, jak szukać wsparcia, chronić dzieci i siebie oraz rozmawiać bez udawania terapeuty.",
+    "boundary": "Przemoc lub pilne zagrożenie wymagają pomocy odpowiednich służb, a nie ryzykownej rozmowy."
+  },
+  "trawnik-jestem-ogrodnikiem": {
+    "what": "Dobry trawnik zależy od gleby, światła, gatunku traw, wody i sposobu użytkowania — nie od jednego „magicznego” nawozu.",
+    "first": "Część trawnika żółknie po upale. Najpierw sprawdź warunki, zamiast od razu kupować chemię.",
+    "result": "Nauczysz się rozpoznawać typowe problemy, planować koszenie i poprawiać warunki wzrostu.",
+    "boundary": "Uwzględniaj ograniczenia wody i bezpieczne stosowanie preparatów."
+  },
+  "pomagaj-dziecku-w-lekcjach": {
+    "what": "Pomaganie dziecku to wspieranie rozumienia, a nie podawanie gotowych odpowiedzi ani walka o oceny.",
+    "first": "Dziecko mówi „nie umiem”. Najpierw wspólnie ustalcie, które słowo lub krok sprawia trudność.",
+    "result": "Przećwiczysz dzielenie zadania na etapy, pytania naprowadzające i współpracę ze szkołą.",
+    "boundary": "Nie przekształcaj prac domowych w karę ani test wartości dziecka."
+  },
+  "transport-logistyka-praktycznie": {
+    "what": "Logistyka to plan przepływu towaru od zlecenia do odbioru: informacje, trasy, czas, dokumenty i koszty.",
+    "first": "Klient podaje adres dostawy, ale nie wagę ani wymiary. Nauczysz się zbierać dane do oferty.",
+    "result": "Będziesz planować trasę, zabezpieczenie ładunku, komunikację opóźnień i kalkulację marży.",
+    "boundary": "Szczególne ładunki i zasady transportu wymagają sprawdzenia aktualnych uprawnień i przepisów."
+  }
+}
