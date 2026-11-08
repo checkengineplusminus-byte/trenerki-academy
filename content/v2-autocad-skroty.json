@@ -168,7 +168,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Kasuję DWG po wygenerowaniu PDF.. Wyjaśnienie: DWG przechowuje edytowalny rysunek, DXF wymienia dane CAD, PDF pokazuje wydruk, ale nie jest tożsamy z plikiem źródłowym."
           }
-        ]
+        ],
+        "illustration": "autocad-filetypes"
       }
     },
     {
@@ -222,7 +223,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Zakładam na oko, że chodzi o metry.. Wyjaśnienie: W modelu rysujesz w prawdziwych jednostkach. Wpis 1200 jest niejednoznaczny, jeśli nie ustalono, czy chodzi o milimetry czy metry."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -276,7 +278,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Klikam w najbardziej zielone miejsce.. Wyjaśnienie: Punkty geometrii są położone w układzie współrzędnych; precyzyjny punkt podajesz liczbowo, nie trafiając myszą w przybliżeniu."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -330,7 +333,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Traktuję odrębne odcinki jako jeden obiekt.. Wyjaśnienie: LINE tworzy odcinki, PLINE połączony obiekt, CIRCLE okrąg; wybór typu wpływa na dalszą edycję."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -384,7 +388,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Klikam przypadkowy punkt docelowy.. Wyjaśnienie: Enter zatwierdza etap polecenia, Esc przerywa polecenie lub czyści wybór. Cofnięcie zmiany jest inną czynnością."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -438,7 +443,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Usuwam instalacje z projektu.. Wyjaśnienie: Warstwa pozwala oddzielić ściany, instalacje, balustrady i wymiary; ukrycie warstwy nie oznacza skasowania obiektów."
           }
-        ]
+        ],
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -492,7 +498,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Przeskalowuję cały budynek w modelu.. Wyjaśnienie: Model jest przestrzenią geometrii w rzeczywistych jednostkach, Layout przygotowuje arkusz wydruku z widokami w określonych skalach."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -546,7 +553,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Rysuję prostokąt na oko z podpisem 4×3.. Wyjaśnienie: Ustal mm, narysuj obrys 4000 × 3000, sprawdź długości i zapisz kopię DWG. Nigdy nie stosuj przypadkowej skali w modelu."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -801,7 +809,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Przenoszę jedyny słupek.. Wyjaśnienie: Przenoszenie i kopiowanie to dwa inne działania; obrót wymaga osi lub punktu bazowego, a skala zmienia geometrię."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -923,7 +932,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Klikam blisko narożnika na oko.. Wyjaśnienie: OSNAP przyciąga do końców i środków, ORTHO kontroluje kierunek. Precyzja wymaga właściwych ustawień."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -1050,7 +1060,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Przenoszę wszystko do jednej warstwy.. Wyjaśnienie: Karta warstw porządkuje kolory, widoczność i typy linii według uzgodnionej konwencji projektu."
           }
-        ]
+        ],
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -1177,7 +1188,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Skaluję budynek do monitora.. Wyjaśnienie: Zoom zmienia przybliżenie, Pan przesuwa widok. Nie powinny zmieniać geometrii ani wymiarów obiektów."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -1304,7 +1316,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Ignoruję ostrzeżenie.. Wyjaśnienie: Blok powtarza symbol, XREF łączy rysunki z zewnętrznych plików. Brakujący odnośnik zmienia kompletność projektu."
           }
-        ]
+        ],
+        "illustration": "autocad-filetypes"
       }
     },
     {
@@ -1430,7 +1443,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Nadpisuję etykietę na 1000.. Wyjaśnienie: Wymiar musi odnosić się do geometrii. Nie poprawia się konstrukcji samą zmianą etykiety."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -1569,7 +1583,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Wysyłam pierwszy przypadkowy podgląd.. Wyjaśnienie: Zapisz DWG, zachowaj rewizję i skontroluj PDF, skalę arkusza oraz widoczność warstw."
           }
-        ]
+        ],
+        "illustration": "autocad-filetypes"
       }
     },
     {
@@ -1623,7 +1638,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Dopisuję dowolną nośność.. Wyjaśnienie: Rysunek elementu wymaga obrysu, jednostek, powtarzalnych obiektów, warstw i poprawnych wymiarów; nośność zatwierdza projektant."
           }
-        ]
+        ],
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -1786,7 +1802,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Kasuję rurę z DWG.. Wyjaśnienie: Kolizja instalacji z elementem wymaga koordynacji projektantów, a nie wymazywania jej z rysunku."
           }
-        ]
+        ],
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -1840,7 +1857,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Ukrywam ostrzeżenia.. Wyjaśnienie: Przed użyciem obcego rysunku sprawdź jednostki, wersję, XREF, fonty, warstwy oraz wirujące błędy geometrii."
           }
-        ]
+        ],
+        "illustration": "autocad-filetypes"
       }
     },
     {
@@ -1894,7 +1912,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Nadpisuję jedyną kopię.. Wyjaśnienie: Wariant oznacza alternatywę, rewizja — kontrolowaną zmianę dokumentacji. Zmiany wymagają śladu decyzji i właściwego zatwierdzenia."
           }
-        ]
+        ],
+        "illustration": "autocad-filetypes"
       }
     },
     {
@@ -1948,7 +1967,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Skaluję obiekty budynku.. Wyjaśnienie: Skala wydruku i grubość linii wpływają na czytelność, ale nie mogą zmienić prawdziwych wymiarów modelu."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -2002,7 +2022,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Produkuję 3200 bez kontroli.. Wyjaśnienie: Budowa może różnić się od modelu przez tolerancje i zmiany; pomiar z natury wymaga porównania z dokumentacją."
           }
-        ]
+        ],
+        "illustration": "autocad-coordinates"
       }
     },
     {
@@ -2056,7 +2077,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Licząc tylko ikony, deklaruję 65.. Wyjaśnienie: Blok może mieć atrybuty i oznaczenia, ale automatyczne zliczanie wymaga spójnych definicji i kontroli ukrytych obiektów."
           }
-        ]
+        ],
+        "illustration": "autocad-layers"
       }
     },
     {
@@ -2110,7 +2132,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Kasuję przypadkową połowę rysunku.. Wyjaśnienie: Duplikaty linii i otwarte obrysy psują pomiary i eksport produkcyjny. Przed poprawą zapisz kopię kontrolną."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     },
     {
@@ -2164,7 +2187,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Zostawiam odbiorcy dowolny wybór.. Wyjaśnienie: Paczka obejmuje DWG, kontrolowany PDF, zależności, legendę i status zatwierdzeń. Brak jednego XREF może zmienić znaczenie całego rysunku."
           }
-        ]
+        ],
+        "illustration": "autocad-filetypes"
       }
     },
     {
@@ -2218,7 +2242,8 @@
             "heading": "Błąd, który trzeba rozpoznać",
             "text": "Ogłaszam dokument wykonawczym bez obliczeń.. Wyjaśnienie: Ekspert zna granice kompetencji: szkic edukacyjny nie jest projektem zatwierdzonym do wykonania. Dokumentuj jednostki, geometrię, kontrole i akceptacje."
           }
-        ]
+        ],
+        "illustration": "autocad-commands"
       }
     }
   ]
