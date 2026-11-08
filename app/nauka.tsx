@@ -67,8 +67,8 @@ export default function Learning(){
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
  const currentNotes=notes[String(module)]||'';
- async function recordAttempt(mode:'case'|'construction'|'keyboard',answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string){
-  if(!userId)return;
+ async function recordAttempt(mode:'case'|'construction'|'keyboard',answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string):Promise<boolean>{
+  if(!userId)return false;
   try{
    const {data,error:e}=await supabase.functions.invoke<{ok?:boolean;correct?:boolean;error?:string}>('ta-lesson-guide',{
     body:{action:'attempt',course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,
@@ -81,7 +81,11 @@ export default function Learning(){
     const k=String(module),t=v[k]||{correct:0,incorrect:0};
     return {...v,[k]:{correct:t.correct+(correct?1:0),incorrect:t.incorrect+(correct?0:1)}};
    });
-  }catch(e:any){setMsg('Serwer nie mógł zweryfikować odpowiedzi. '+String(e?.message||'').slice(0,150));}
+   return correct;
+  }catch(e:any){
+   setMsg('Nie udało się teraz potwierdzić odpowiedzi. Kliknij ją ponownie. '+String(e?.message||'').slice(0,100));
+   return false;
+  }
  }
  function changeModule(number:number){
   const firstPending=items.find(v=>!done.includes(v.lesson_no));
