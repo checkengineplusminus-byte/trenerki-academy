@@ -34,7 +34,7 @@ Deno.serve(async req=>{
  if(error||!user?.id||!user.email_confirmed_at)return response({error:'login_required'},401);
  let payload:any;try{payload=await req.json()}catch{return response({error:'invalid_json'},400)}
  const action=clip(payload?.action,20);
- const configured=!!Deno.env.get('OPENAI_API_KEY');
+ const configured=!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));
  if(action==='status')return response({ok:true,available:configured,limit_per_day:15});
  if(action!=='ask')return response({error:'invalid_action'},400);
  if(!configured)return response({error:'ai_not_configured'},503);
@@ -75,7 +75,7 @@ Deno.serve(async req=>{
  try{
   const signal=AbortSignal.timeout(14000);
   const ai=await fetch('https://api.openai.com/v1/responses',{
-    method:'POST',headers:{'authorization':'Bearer '+Deno.env.get('OPENAI_API_KEY'),'content-type':'application/json'},
+    method:'POST',headers:{'authorization':'Bearer '+(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API')),'content-type':'application/json'},
     body:JSON.stringify({model:'gpt-6-luna',store:false,max_output_tokens:650,reasoning:{effort:'low'},
       input:[{role:'developer',content:prompt+'\n'+instruction},{role:'user',content:question}]}),
     signal
