@@ -3,7 +3,7 @@ import {View,Text,Pressable} from 'react-native';
 
 export type LearningCase={
  intro?:string;situation:string;example:string;question:string;
- options:string[];correct:number;explanation:string;task?:string;topic_kind?:string;
+ options:string[];correct:number;explanation:string;feedback?:string[];task?:string;topic_kind?:string;
 };
 const ink='#183e2d',gray='#536858';
 export default function CaseLesson({data,identity,onPassed,onAttempt}:{data?:LearningCase;identity:string;onPassed:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>void}){
@@ -37,7 +37,7 @@ export default function CaseLesson({data,identity,onPassed,onAttempt}:{data?:Lea
    </Pressable>)}
    {chosen!==null&&<View style={{backgroundColor:passed?'#cfe8c7':'#ffefd8',borderRadius:11,padding:15,gap:7}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:16}}>{passed?'Dobrze. Rozumiesz najważniejszy krok.':'To nie rozwiązuje opisanego problemu.'}</Text>
-    <Text style={{color:ink,lineHeight:23,fontSize:14}}>{passed?data.explanation:'Sprawdź, które działanie odpowiada bezpośrednio na opisany problem. Po odpowiedzi zobaczysz przykład i wyjaśnienie.'}</Text>
+    <Text style={{color:ink,lineHeight:23,fontSize:14}}>{data.feedback?.[chosen]|| (passed?data.explanation:'Sprawdź, które działanie odpowiada bezpośrednio na opisany problem. Po odpowiedzi zobaczysz przykład i wyjaśnienie.')}</Text>
     {!passed&&tries>=2&&<Pressable onPress={()=>setHint(true)}><Text style={{color:'#4b674b',fontWeight:'800'}}>Pokaż podpowiedź →</Text></Pressable>}
     {hint&&!passed&&<Text style={{fontWeight:'700',color:ink}}>Zwróć uwagę na: {correctText}</Text>}
    </View>}
