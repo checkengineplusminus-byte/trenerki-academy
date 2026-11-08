@@ -1,0 +1,1334 @@
+{
+  "schema_version": 2,
+  "course_slug": "sap-ewm-magazyn",
+  "title": "SAP EWM — magazyn od pierwszego skanu do eksperta",
+  "intro": "SAP EWM jest rozbudowanym systemem WMS. Przyjęcie, warehouse task i finalne putaway to odrębne etapy; nazwy ekranów, transakcji i uprawnienia zależą od wersji oraz instalacji SAP.",
+  "source": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT",
+  "sections": [
+    "I · Zaczynam od zera",
+    "II · Operacje magazynowe",
+    "III · Poziom Expert"
+  ],
+  "lessons": [
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 0,
+      "title_pl": "Czym jest SAP i SAP EWM",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Czym jest SAP i SAP EWM",
+          "SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Firma używa SAP do faktur i pyta, gdzie wykonuje się picking. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Rozróżnij proces ERP i EWM oraz zlokalizuj właściwy moduł. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP.",
+          "situation": "Firma używa SAP do faktur i pyta, gdzie wykonuje się picking.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Rozróżnij proces ERP i EWM oraz zlokalizuj właściwy moduł.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Rozróżnij proces ERP i EWM oraz zlokalizuj właściwy moduł.",
+          "explanation": "SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP.",
+          "feedback": [
+            "Tak. SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP.",
+            "Nie. SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. SAP to rodzina oprogramowania biznesowego. EWM koncentruje się na pracy magazynu i różni się od ogólnego ERP. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Rozróżnij proces ERP i EWM oraz zlokalizuj właściwy moduł."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Firma używa SAP do faktur i pyta, gdzie wykonuje się picking. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 1,
+      "title_pl": "Co widać po zalogowaniu: menu i role",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Co widać po zalogowaniu: menu i role",
+          "SAP EWM może udostępniać ekrany SAP GUI, Fiori i RF. Zestaw widoków zależy od przypisanych ról. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Operator ma inne menu niż kierownik zmiany. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź przypisaną rolę i dostęp do funkcji, zamiast zgadywać kod transakcji. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "SAP EWM może udostępniać ekrany SAP GUI, Fiori i RF. Zestaw widoków zależy od przypisanych ról.",
+          "situation": "Operator ma inne menu niż kierownik zmiany.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź przypisaną rolę i dostęp do funkcji, zamiast zgadywać kod transakcji.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przypisaną rolę i dostęp do funkcji, zamiast zgadywać kod transakcji.",
+          "explanation": "SAP EWM może udostępniać ekrany SAP GUI, Fiori i RF. Zestaw widoków zależy od przypisanych ról.",
+          "feedback": [
+            "Tak. SAP EWM może udostępniać ekrany SAP GUI, Fiori i RF. Zestaw widoków zależy od przypisanych ról.",
+            "Nie. SAP EWM może udostępniać ekrany SAP GUI, Fiori i RF. Zestaw widoków zależy od przypisanych ról. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. SAP EWM może udostępniać ekrany SAP GUI, Fiori i RF. Zestaw widoków zależy od przypisanych ról. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź przypisaną rolę i dostęp do funkcji, zamiast zgadywać kod transakcji."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Operator ma inne menu niż kierownik zmiany. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 2,
+      "title_pl": "Warehouse number i storage type",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Warehouse number i storage type",
+          "Numer magazynu identyfikuje zarządzany obiekt, a storage type definiuje jego strefę, np. regały wysokie. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Towar trafił do strefy szybkiej kompletacji zamiast rezerwy. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź storage type i reguły przydziału zanim odłożysz paletę. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Numer magazynu identyfikuje zarządzany obiekt, a storage type definiuje jego strefę, np. regały wysokie.",
+          "situation": "Towar trafił do strefy szybkiej kompletacji zamiast rezerwy.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź storage type i reguły przydziału zanim odłożysz paletę.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź storage type i reguły przydziału zanim odłożysz paletę.",
+          "explanation": "Numer magazynu identyfikuje zarządzany obiekt, a storage type definiuje jego strefę, np. regały wysokie.",
+          "feedback": [
+            "Tak. Numer magazynu identyfikuje zarządzany obiekt, a storage type definiuje jego strefę, np. regały wysokie.",
+            "Nie. Numer magazynu identyfikuje zarządzany obiekt, a storage type definiuje jego strefę, np. regały wysokie. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Numer magazynu identyfikuje zarządzany obiekt, a storage type definiuje jego strefę, np. regały wysokie. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź storage type i reguły przydziału zanim odłożysz paletę."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Towar trafił do strefy szybkiej kompletacji zamiast rezerwy. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 3,
+      "title_pl": "Storage bin — adres lokacji",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Storage bin — adres lokacji",
+          "Storage bin to konkretne miejsce, nie typ magazynu. Etykieta miejsca jest podstawą skanowania i audytu. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pracownik skanuje A-12, choć ma polecenie B-12. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Potwierdź prawidłowy bin przed zatwierdzeniem ruchu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Storage bin to konkretne miejsce, nie typ magazynu. Etykieta miejsca jest podstawą skanowania i audytu.",
+          "situation": "Pracownik skanuje A-12, choć ma polecenie B-12.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Potwierdź prawidłowy bin przed zatwierdzeniem ruchu.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Potwierdź prawidłowy bin przed zatwierdzeniem ruchu.",
+          "explanation": "Storage bin to konkretne miejsce, nie typ magazynu. Etykieta miejsca jest podstawą skanowania i audytu.",
+          "feedback": [
+            "Tak. Storage bin to konkretne miejsce, nie typ magazynu. Etykieta miejsca jest podstawą skanowania i audytu.",
+            "Nie. Storage bin to konkretne miejsce, nie typ magazynu. Etykieta miejsca jest podstawą skanowania i audytu. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Storage bin to konkretne miejsce, nie typ magazynu. Etykieta miejsca jest podstawą skanowania i audytu. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Potwierdź prawidłowy bin przed zatwierdzeniem ruchu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pracownik skanuje A-12, choć ma polecenie B-12. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 4,
+      "title_pl": "Product master i jednostki",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Product master i jednostki",
+          "Dane podstawowe produktu zawierają SKU, jednostki i cechy, które wpływają na realizację zadania. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na zleceniu jest 3 kartony, a w paczce 36 sztuk. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź przelicznik jednostek i prawidłową ilość. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Dane podstawowe produktu zawierają SKU, jednostki i cechy, które wpływają na realizację zadania.",
+          "situation": "Na zleceniu jest 3 kartony, a w paczce 36 sztuk.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź przelicznik jednostek i prawidłową ilość.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przelicznik jednostek i prawidłową ilość.",
+          "explanation": "Dane podstawowe produktu zawierają SKU, jednostki i cechy, które wpływają na realizację zadania.",
+          "feedback": [
+            "Tak. Dane podstawowe produktu zawierają SKU, jednostki i cechy, które wpływają na realizację zadania.",
+            "Nie. Dane podstawowe produktu zawierają SKU, jednostki i cechy, które wpływają na realizację zadania. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Dane podstawowe produktu zawierają SKU, jednostki i cechy, które wpływają na realizację zadania. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź przelicznik jednostek i prawidłową ilość."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na zleceniu jest 3 kartony, a w paczce 36 sztuk. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 5,
+      "title_pl": "Handling Unit — HU od zera",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Handling Unit — HU od zera",
+          "Handling unit to identyfikowalna jednostka logistyczna z opakowaniem i zawartością, często paleta z etykietą. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwie palety mają różne numery HU mimo tego samego SKU. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Skanuj właściwy HU, nie tylko kod produktu. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Handling unit to identyfikowalna jednostka logistyczna z opakowaniem i zawartością, często paleta z etykietą.",
+          "situation": "Dwie palety mają różne numery HU mimo tego samego SKU.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Skanuj właściwy HU, nie tylko kod produktu.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Skanuj właściwy HU, nie tylko kod produktu.",
+          "explanation": "Handling unit to identyfikowalna jednostka logistyczna z opakowaniem i zawartością, często paleta z etykietą.",
+          "feedback": [
+            "Tak. Handling unit to identyfikowalna jednostka logistyczna z opakowaniem i zawartością, często paleta z etykietą.",
+            "Nie. Handling unit to identyfikowalna jednostka logistyczna z opakowaniem i zawartością, często paleta z etykietą. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Handling unit to identyfikowalna jednostka logistyczna z opakowaniem i zawartością, często paleta z etykietą. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Skanuj właściwy HU, nie tylko kod produktu."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwie palety mają różne numery HU mimo tego samego SKU. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 6,
+      "title_pl": "Inbound delivery — dokument dostawy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Inbound delivery — dokument dostawy",
+          "Inbound delivery uruchamia i monitoruje rozładunek, przyjęcie i odłożenie; nie oznacza od razu kompletnego ruchu na regał. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Samochód przyjechał, lecz dokument nie jest dostępny. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź inbound delivery lub notification przed rozpoczęciem przyjęcia. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Inbound delivery uruchamia i monitoruje rozładunek, przyjęcie i odłożenie; nie oznacza od razu kompletnego ruchu na regał.",
+          "situation": "Samochód przyjechał, lecz dokument nie jest dostępny.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź inbound delivery lub notification przed rozpoczęciem przyjęcia.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź inbound delivery lub notification przed rozpoczęciem przyjęcia.",
+          "explanation": "Inbound delivery uruchamia i monitoruje rozładunek, przyjęcie i odłożenie; nie oznacza od razu kompletnego ruchu na regał.",
+          "feedback": [
+            "Tak. Inbound delivery uruchamia i monitoruje rozładunek, przyjęcie i odłożenie; nie oznacza od razu kompletnego ruchu na regał.",
+            "Nie. Inbound delivery uruchamia i monitoruje rozładunek, przyjęcie i odłożenie; nie oznacza od razu kompletnego ruchu na regał. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Inbound delivery uruchamia i monitoruje rozładunek, przyjęcie i odłożenie; nie oznacza od razu kompletnego ruchu na regał. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź inbound delivery lub notification przed rozpoczęciem przyjęcia."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Samochód przyjechał, lecz dokument nie jest dostępny. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 7,
+      "title_pl": "Goods receipt a putaway",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Goods receipt a putaway",
+          "Goods receipt potwierdza przyjęcie towaru; putaway odłożenie na adres docelowy. Te statusy trzeba rozdzielić. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dostawa jest zaksięgowana, a paleta wciąż leży na rampie. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź i wykonaj oczekujący warehouse task putaway. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Goods receipt potwierdza przyjęcie towaru; putaway odłożenie na adres docelowy. Te statusy trzeba rozdzielić.",
+          "situation": "Dostawa jest zaksięgowana, a paleta wciąż leży na rampie.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź i wykonaj oczekujący warehouse task putaway.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź i wykonaj oczekujący warehouse task putaway.",
+          "explanation": "Goods receipt potwierdza przyjęcie towaru; putaway odłożenie na adres docelowy. Te statusy trzeba rozdzielić.",
+          "feedback": [
+            "Tak. Goods receipt potwierdza przyjęcie towaru; putaway odłożenie na adres docelowy. Te statusy trzeba rozdzielić.",
+            "Nie. Goods receipt potwierdza przyjęcie towaru; putaway odłożenie na adres docelowy. Te statusy trzeba rozdzielić. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Goods receipt potwierdza przyjęcie towaru; putaway odłożenie na adres docelowy. Te statusy trzeba rozdzielić. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź i wykonaj oczekujący warehouse task putaway."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dostawa jest zaksięgowana, a paleta wciąż leży na rampie. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 8,
+      "title_pl": "RF / skaner i potwierdzanie",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "RF / skaner i potwierdzanie",
+          "Urządzenie RF prowadzi po zadaniach i wymaga właściwych skanów; potwierdzanie bez fizycznej czynności fałszuje stan. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Terminal każe skanować bin docelowy, ale operator wpisał go z pamięci. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zweryfikuj fizyczną etykietę i zeskanuj wymagany adres. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Urządzenie RF prowadzi po zadaniach i wymaga właściwych skanów; potwierdzanie bez fizycznej czynności fałszuje stan.",
+          "situation": "Terminal każe skanować bin docelowy, ale operator wpisał go z pamięci.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zweryfikuj fizyczną etykietę i zeskanuj wymagany adres.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zweryfikuj fizyczną etykietę i zeskanuj wymagany adres.",
+          "explanation": "Urządzenie RF prowadzi po zadaniach i wymaga właściwych skanów; potwierdzanie bez fizycznej czynności fałszuje stan.",
+          "feedback": [
+            "Tak. Urządzenie RF prowadzi po zadaniach i wymaga właściwych skanów; potwierdzanie bez fizycznej czynności fałszuje stan.",
+            "Nie. Urządzenie RF prowadzi po zadaniach i wymaga właściwych skanów; potwierdzanie bez fizycznej czynności fałszuje stan. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Urządzenie RF prowadzi po zadaniach i wymaga właściwych skanów; potwierdzanie bez fizycznej czynności fałszuje stan. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zweryfikuj fizyczną etykietę i zeskanuj wymagany adres."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Terminal każe skanować bin docelowy, ale operator wpisał go z pamięci. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 9,
+      "title_pl": "Pierwsze ćwiczenie: przyjęcie pięciu HU",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsze ćwiczenie: przyjęcie pięciu HU",
+          "Przed startem uzgodnij dostawę, liczbę jednostek, stan plomb i miejsce rozładunku. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W dokumentach jest 5 HU, przyjechały 4. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zarejestruj 4 HU i zgłoś brak jednego. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Przed startem uzgodnij dostawę, liczbę jednostek, stan plomb i miejsce rozładunku.",
+          "situation": "W dokumentach jest 5 HU, przyjechały 4.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zarejestruj 4 HU i zgłoś brak jednego.",
+            "Potwierdzam wynik bez sprawdzenia identyfikatora, ilości i dokumentu.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj 4 HU i zgłoś brak jednego.",
+          "explanation": "Przed startem uzgodnij dostawę, liczbę jednostek, stan plomb i miejsce rozładunku.",
+          "feedback": [
+            "Tak. Przed startem uzgodnij dostawę, liczbę jednostek, stan plomb i miejsce rozładunku.",
+            "Nie. Przed startem uzgodnij dostawę, liczbę jednostek, stan plomb i miejsce rozładunku. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Przed startem uzgodnij dostawę, liczbę jednostek, stan plomb i miejsce rozładunku. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zarejestruj 4 HU i zgłoś brak jednego."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W dokumentach jest 5 HU, przyjechały 4. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 10,
+      "title_pl": "Warehouse task i warehouse order",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Warehouse task i warehouse order",
+          "WT określa konkretną operację pobrania lub odłożenia, a WO może grupować zadania dla pracownika. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwa WT są przydzielone jednej osobie, ale tylko jeden potwierdzono. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź WO oraz pozostałe WT przed zamknięciem pracy. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "WT określa konkretną operację pobrania lub odłożenia, a WO może grupować zadania dla pracownika.",
+          "situation": "Dwa WT są przydzielone jednej osobie, ale tylko jeden potwierdzono.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź WO oraz pozostałe WT przed zamknięciem pracy.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Sprawdź WO oraz pozostałe WT przed zamknięciem pracy.",
+          "explanation": "WT określa konkretną operację pobrania lub odłożenia, a WO może grupować zadania dla pracownika.",
+          "feedback": [
+            "Tak. WT określa konkretną operację pobrania lub odłożenia, a WO może grupować zadania dla pracownika.",
+            "Nie. WT określa konkretną operację pobrania lub odłożenia, a WO może grupować zadania dla pracownika. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. WT określa konkretną operację pobrania lub odłożenia, a WO może grupować zadania dla pracownika. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź WO oraz pozostałe WT przed zamknięciem pracy."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwa WT są przydzielone jednej osobie, ale tylko jeden potwierdzono. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 11,
+      "title_pl": "Putaway strategies",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Putaway strategies",
+          "Strategie odkładania mogą wybierać wolny bin lub przypisane miejsce; decyzja zależy od konfiguracji i ograniczeń. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Paleta nie mieści się w bin wskazanym przez system. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zgłoś wyjątek i znajdź dopuszczalne miejsce zgodnie ze strategią. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Strategie odkładania mogą wybierać wolny bin lub przypisane miejsce; decyzja zależy od konfiguracji i ograniczeń.",
+          "situation": "Paleta nie mieści się w bin wskazanym przez system.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zgłoś wyjątek i znajdź dopuszczalne miejsce zgodnie ze strategią.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zgłoś wyjątek i znajdź dopuszczalne miejsce zgodnie ze strategią.",
+          "explanation": "Strategie odkładania mogą wybierać wolny bin lub przypisane miejsce; decyzja zależy od konfiguracji i ograniczeń.",
+          "feedback": [
+            "Tak. Strategie odkładania mogą wybierać wolny bin lub przypisane miejsce; decyzja zależy od konfiguracji i ograniczeń.",
+            "Nie. Strategie odkładania mogą wybierać wolny bin lub przypisane miejsce; decyzja zależy od konfiguracji i ograniczeń. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Strategie odkładania mogą wybierać wolny bin lub przypisane miejsce; decyzja zależy od konfiguracji i ograniczeń. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zgłoś wyjątek i znajdź dopuszczalne miejsce zgodnie ze strategią."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Paleta nie mieści się w bin wskazanym przez system. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 12,
+      "title_pl": "Picking a outbound delivery order",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Picking a outbound delivery order",
+          "Zlecenie wychodzące generuje zadania pobrania i przygotowania do wysyłki. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Zamówienie ma 7 sztuk, a w bin jest 6. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zarejestruj short pick zgodnie z procedurą, zamiast potwierdzić 7. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Zlecenie wychodzące generuje zadania pobrania i przygotowania do wysyłki.",
+          "situation": "Zamówienie ma 7 sztuk, a w bin jest 6.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zarejestruj short pick zgodnie z procedurą, zamiast potwierdzić 7.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj short pick zgodnie z procedurą, zamiast potwierdzić 7.",
+          "explanation": "Zlecenie wychodzące generuje zadania pobrania i przygotowania do wysyłki.",
+          "feedback": [
+            "Tak. Zlecenie wychodzące generuje zadania pobrania i przygotowania do wysyłki.",
+            "Nie. Zlecenie wychodzące generuje zadania pobrania i przygotowania do wysyłki. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Zlecenie wychodzące generuje zadania pobrania i przygotowania do wysyłki. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zarejestruj short pick zgodnie z procedurą, zamiast potwierdzić 7."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Zamówienie ma 7 sztuk, a w bin jest 6. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 13,
+      "title_pl": "Packing i HU wyjściowa",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Packing i HU wyjściowa",
+          "Pakowanie łączy skompletowane pozycje w jednostkę wysyłkową, z odpowiednią etykietą i identyfikowalnością. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Dwie pozycje zamówienia muszą iść w jednej paczce. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Potwierdź zawartość i przypisz właściwe HU do wysyłki. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Pakowanie łączy skompletowane pozycje w jednostkę wysyłkową, z odpowiednią etykietą i identyfikowalnością.",
+          "situation": "Dwie pozycje zamówienia muszą iść w jednej paczce.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Potwierdź zawartość i przypisz właściwe HU do wysyłki.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Potwierdź zawartość i przypisz właściwe HU do wysyłki.",
+          "explanation": "Pakowanie łączy skompletowane pozycje w jednostkę wysyłkową, z odpowiednią etykietą i identyfikowalnością.",
+          "feedback": [
+            "Tak. Pakowanie łączy skompletowane pozycje w jednostkę wysyłkową, z odpowiednią etykietą i identyfikowalnością.",
+            "Nie. Pakowanie łączy skompletowane pozycje w jednostkę wysyłkową, z odpowiednią etykietą i identyfikowalnością. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Pakowanie łączy skompletowane pozycje w jednostkę wysyłkową, z odpowiednią etykietą i identyfikowalnością. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Potwierdź zawartość i przypisz właściwe HU do wysyłki."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Dwie pozycje zamówienia muszą iść w jednej paczce. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 14,
+      "title_pl": "Goods issue",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Goods issue",
+          "Goods issue to finalne potwierdzenie wydania; błędny GI może wymagać skomplikowanego odwrócenia. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Kierowca jeszcze nie odebrał palety, ale system prosi o GI. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Potwierdź etap zgodny z rzeczywistym przekazaniem według procedury. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Goods issue to finalne potwierdzenie wydania; błędny GI może wymagać skomplikowanego odwrócenia.",
+          "situation": "Kierowca jeszcze nie odebrał palety, ale system prosi o GI.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Potwierdź etap zgodny z rzeczywistym przekazaniem według procedury.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Potwierdź etap zgodny z rzeczywistym przekazaniem według procedury.",
+          "explanation": "Goods issue to finalne potwierdzenie wydania; błędny GI może wymagać skomplikowanego odwrócenia.",
+          "feedback": [
+            "Tak. Goods issue to finalne potwierdzenie wydania; błędny GI może wymagać skomplikowanego odwrócenia.",
+            "Nie. Goods issue to finalne potwierdzenie wydania; błędny GI może wymagać skomplikowanego odwrócenia. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Goods issue to finalne potwierdzenie wydania; błędny GI może wymagać skomplikowanego odwrócenia. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Potwierdź etap zgodny z rzeczywistym przekazaniem według procedury."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Kierowca jeszcze nie odebrał palety, ale system prosi o GI. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 15,
+      "title_pl": "Internal movement / transfer",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Internal movement / transfer",
+          "Przesunięcie między binami lub magazynami ma inny charakter niż sprzedaż albo przyjęcie dostawcy. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Przenosisz HU z rezerwy do strefy kompletacji. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Utwórz i potwierdź ruch wewnętrzny, nie fikcyjne wydanie. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Przesunięcie między binami lub magazynami ma inny charakter niż sprzedaż albo przyjęcie dostawcy.",
+          "situation": "Przenosisz HU z rezerwy do strefy kompletacji.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Utwórz i potwierdź ruch wewnętrzny, nie fikcyjne wydanie.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Utwórz i potwierdź ruch wewnętrzny, nie fikcyjne wydanie.",
+          "explanation": "Przesunięcie między binami lub magazynami ma inny charakter niż sprzedaż albo przyjęcie dostawcy.",
+          "feedback": [
+            "Tak. Przesunięcie między binami lub magazynami ma inny charakter niż sprzedaż albo przyjęcie dostawcy.",
+            "Nie. Przesunięcie między binami lub magazynami ma inny charakter niż sprzedaż albo przyjęcie dostawcy. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Przesunięcie między binami lub magazynami ma inny charakter niż sprzedaż albo przyjęcie dostawcy. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Utwórz i potwierdź ruch wewnętrzny, nie fikcyjne wydanie."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Przenosisz HU z rezerwy do strefy kompletacji. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 16,
+      "title_pl": "Deconsolidation",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Deconsolidation",
+          "Rozdzielenie dużej HU na jednostki docelowe umożliwia oddzielną obsługę różnych SKU lub stref. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na palecie mieszanej są towary do trzech stref. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Rozdziel HU, zachowując identyfikowalność i ilości. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Rozdzielenie dużej HU na jednostki docelowe umożliwia oddzielną obsługę różnych SKU lub stref.",
+          "situation": "Na palecie mieszanej są towary do trzech stref.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Rozdziel HU, zachowując identyfikowalność i ilości.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Rozdziel HU, zachowując identyfikowalność i ilości.",
+          "explanation": "Rozdzielenie dużej HU na jednostki docelowe umożliwia oddzielną obsługę różnych SKU lub stref.",
+          "feedback": [
+            "Tak. Rozdzielenie dużej HU na jednostki docelowe umożliwia oddzielną obsługę różnych SKU lub stref.",
+            "Nie. Rozdzielenie dużej HU na jednostki docelowe umożliwia oddzielną obsługę różnych SKU lub stref. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Rozdzielenie dużej HU na jednostki docelowe umożliwia oddzielną obsługę różnych SKU lub stref. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Rozdziel HU, zachowując identyfikowalność i ilości."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na palecie mieszanej są towary do trzech stref. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 17,
+      "title_pl": "Quality inspection",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Quality inspection",
+          "Produkty oczekujące na kontrolę jakości nie zawsze mogą zostać udostępnione do sprzedaży. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Partia towaru jest oznaczona jako zatrzymana do kontroli. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Nie zwalniaj jej do picking bez właściwego wyniku i autoryzacji. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Produkty oczekujące na kontrolę jakości nie zawsze mogą zostać udostępnione do sprzedaży.",
+          "situation": "Partia towaru jest oznaczona jako zatrzymana do kontroli.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Nie zwalniaj jej do picking bez właściwego wyniku i autoryzacji.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Nie zwalniaj jej do picking bez właściwego wyniku i autoryzacji.",
+          "explanation": "Produkty oczekujące na kontrolę jakości nie zawsze mogą zostać udostępnione do sprzedaży.",
+          "feedback": [
+            "Tak. Produkty oczekujące na kontrolę jakości nie zawsze mogą zostać udostępnione do sprzedaży.",
+            "Nie. Produkty oczekujące na kontrolę jakości nie zawsze mogą zostać udostępnione do sprzedaży. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Produkty oczekujące na kontrolę jakości nie zawsze mogą zostać udostępnione do sprzedaży. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Nie zwalniaj jej do picking bez właściwego wyniku i autoryzacji."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Partia towaru jest oznaczona jako zatrzymana do kontroli. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 18,
+      "title_pl": "Physical inventory i cycle count",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Physical inventory i cycle count",
+          "Inwentaryzacja wymaga liczenia fizycznego i uzgodnienia różnic; raport ERP nie zastępuje skanu miejsca. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Fizycznie jest 11 sztuk, system pokazuje 14. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zapisz rzeczywiste 11 i skieruj różnicę do weryfikacji. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Inwentaryzacja wymaga liczenia fizycznego i uzgodnienia różnic; raport ERP nie zastępuje skanu miejsca.",
+          "situation": "Fizycznie jest 11 sztuk, system pokazuje 14.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zapisz rzeczywiste 11 i skieruj różnicę do weryfikacji.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zapisz rzeczywiste 11 i skieruj różnicę do weryfikacji.",
+          "explanation": "Inwentaryzacja wymaga liczenia fizycznego i uzgodnienia różnic; raport ERP nie zastępuje skanu miejsca.",
+          "feedback": [
+            "Tak. Inwentaryzacja wymaga liczenia fizycznego i uzgodnienia różnic; raport ERP nie zastępuje skanu miejsca.",
+            "Nie. Inwentaryzacja wymaga liczenia fizycznego i uzgodnienia różnic; raport ERP nie zastępuje skanu miejsca. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Inwentaryzacja wymaga liczenia fizycznego i uzgodnienia różnic; raport ERP nie zastępuje skanu miejsca. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zapisz rzeczywiste 11 i skieruj różnicę do weryfikacji."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Fizycznie jest 11 sztuk, system pokazuje 14. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 19,
+      "title_pl": "Ćwiczenie: od rampy do GI",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Ćwiczenie: od rampy do GI",
+          "Pełen proces ma statusy inbound delivery, GR, WT, putaway, picking, packing i GI. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Paleta jest skompletowana, lecz brakuje etykiety wysyłkowej. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zatrzymaj ostateczne wydanie do weryfikacji pakowania i etykiety. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Pełen proces ma statusy inbound delivery, GR, WT, putaway, picking, packing i GI.",
+          "situation": "Paleta jest skompletowana, lecz brakuje etykiety wysyłkowej.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zatrzymaj ostateczne wydanie do weryfikacji pakowania i etykiety.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Kopiuję dane z innego zlecenia bez sprawdzenia, czy dotyczą tej samej dostawy."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj ostateczne wydanie do weryfikacji pakowania i etykiety.",
+          "explanation": "Pełen proces ma statusy inbound delivery, GR, WT, putaway, picking, packing i GI.",
+          "feedback": [
+            "Tak. Pełen proces ma statusy inbound delivery, GR, WT, putaway, picking, packing i GI.",
+            "Nie. Pełen proces ma statusy inbound delivery, GR, WT, putaway, picking, packing i GI. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Pełen proces ma statusy inbound delivery, GR, WT, putaway, picking, packing i GI. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zatrzymaj ostateczne wydanie do weryfikacji pakowania i etykiety."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Paleta jest skompletowana, lecz brakuje etykiety wysyłkowej. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 20,
+      "title_pl": "Expert: monitor magazynowy",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: monitor magazynowy",
+          "Warehouse Management Monitor pomaga diagnozować zaległe WT, niepotwierdzone HU i błędy statusów. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: W strefie staging stoi 6 palet, a monitor pokazuje 5. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Porównaj rzeczywiste HU, zadania i dokumenty zamiast fikcyjnie dopisywać paletę. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Warehouse Management Monitor pomaga diagnozować zaległe WT, niepotwierdzone HU i błędy statusów.",
+          "situation": "W strefie staging stoi 6 palet, a monitor pokazuje 5.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Porównaj rzeczywiste HU, zadania i dokumenty zamiast fikcyjnie dopisywać paletę.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Porównaj rzeczywiste HU, zadania i dokumenty zamiast fikcyjnie dopisywać paletę.",
+          "explanation": "Warehouse Management Monitor pomaga diagnozować zaległe WT, niepotwierdzone HU i błędy statusów.",
+          "feedback": [
+            "Tak. Warehouse Management Monitor pomaga diagnozować zaległe WT, niepotwierdzone HU i błędy statusów.",
+            "Nie. Warehouse Management Monitor pomaga diagnozować zaległe WT, niepotwierdzone HU i błędy statusów. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Warehouse Management Monitor pomaga diagnozować zaległe WT, niepotwierdzone HU i błędy statusów. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Porównaj rzeczywiste HU, zadania i dokumenty zamiast fikcyjnie dopisywać paletę."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: W strefie staging stoi 6 palet, a monitor pokazuje 5. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 21,
+      "title_pl": "Expert: wyjątki w RF",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: wyjątki w RF",
+          "Kody wyjątków pozwalają rejestrować brak, uszkodzenie lub niewłaściwą lokalizację; nie są skrótami do ominięcia kontroli. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Operator nie może pobrać zadanej partii. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Użyj właściwego kodu wyjątku i dokumentuj przyczynę. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Kody wyjątków pozwalają rejestrować brak, uszkodzenie lub niewłaściwą lokalizację; nie są skrótami do ominięcia kontroli.",
+          "situation": "Operator nie może pobrać zadanej partii.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Użyj właściwego kodu wyjątku i dokumentuj przyczynę.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Użyj właściwego kodu wyjątku i dokumentuj przyczynę.",
+          "explanation": "Kody wyjątków pozwalają rejestrować brak, uszkodzenie lub niewłaściwą lokalizację; nie są skrótami do ominięcia kontroli.",
+          "feedback": [
+            "Tak. Kody wyjątków pozwalają rejestrować brak, uszkodzenie lub niewłaściwą lokalizację; nie są skrótami do ominięcia kontroli.",
+            "Nie. Kody wyjątków pozwalają rejestrować brak, uszkodzenie lub niewłaściwą lokalizację; nie są skrótami do ominięcia kontroli. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Kody wyjątków pozwalają rejestrować brak, uszkodzenie lub niewłaściwą lokalizację; nie są skrótami do ominięcia kontroli. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Użyj właściwego kodu wyjątku i dokumentuj przyczynę."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Operator nie może pobrać zadanej partii. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 22,
+      "title_pl": "Expert: rezerwacje i alokacja",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: rezerwacje i alokacja",
+          "Brak dostępności bywa skutkiem statusu jakości, rezerwacji i daty ważności, nie tylko stanu fizycznego. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pallet label jest widoczna, ale system nie alokuje zapasu. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź ograniczenia alokacji i status partii, nie wymuszaj wydania. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Brak dostępności bywa skutkiem statusu jakości, rezerwacji i daty ważności, nie tylko stanu fizycznego.",
+          "situation": "Pallet label jest widoczna, ale system nie alokuje zapasu.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź ograniczenia alokacji i status partii, nie wymuszaj wydania.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź ograniczenia alokacji i status partii, nie wymuszaj wydania.",
+          "explanation": "Brak dostępności bywa skutkiem statusu jakości, rezerwacji i daty ważności, nie tylko stanu fizycznego.",
+          "feedback": [
+            "Tak. Brak dostępności bywa skutkiem statusu jakości, rezerwacji i daty ważności, nie tylko stanu fizycznego.",
+            "Nie. Brak dostępności bywa skutkiem statusu jakości, rezerwacji i daty ważności, nie tylko stanu fizycznego. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Brak dostępności bywa skutkiem statusu jakości, rezerwacji i daty ważności, nie tylko stanu fizycznego. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź ograniczenia alokacji i status partii, nie wymuszaj wydania."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pallet label jest widoczna, ale system nie alokuje zapasu. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 23,
+      "title_pl": "Expert: replenishment",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: replenishment",
+          "Przenoszenie z rezerwy do pickface utrzymuje dostępność strefy kompletacji. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pickface jest pusty, ale rezerwa ma 30 HU. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź przypisane uzupełnienie oraz priorytet i wykonalność WT. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Przenoszenie z rezerwy do pickface utrzymuje dostępność strefy kompletacji.",
+          "situation": "Pickface jest pusty, ale rezerwa ma 30 HU.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź przypisane uzupełnienie oraz priorytet i wykonalność WT.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź przypisane uzupełnienie oraz priorytet i wykonalność WT.",
+          "explanation": "Przenoszenie z rezerwy do pickface utrzymuje dostępność strefy kompletacji.",
+          "feedback": [
+            "Tak. Przenoszenie z rezerwy do pickface utrzymuje dostępność strefy kompletacji.",
+            "Nie. Przenoszenie z rezerwy do pickface utrzymuje dostępność strefy kompletacji. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Przenoszenie z rezerwy do pickface utrzymuje dostępność strefy kompletacji. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź przypisane uzupełnienie oraz priorytet i wykonalność WT."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pickface jest pusty, ale rezerwa ma 30 HU. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 24,
+      "title_pl": "Expert: zarządzanie pracą i kolejką",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: zarządzanie pracą i kolejką",
+          "Grupowanie WT w WO ma znaczenie dla ergonomii i kolejności pracy; KPI musi uwzględniać jakościowe błędy. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Wzrosły skany na godzinę, ale pojawia się więcej reklamacji. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Porównaj wydajność z błędami i zmianami obciążenia. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Grupowanie WT w WO ma znaczenie dla ergonomii i kolejności pracy; KPI musi uwzględniać jakościowe błędy.",
+          "situation": "Wzrosły skany na godzinę, ale pojawia się więcej reklamacji.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Porównaj wydajność z błędami i zmianami obciążenia.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Porównaj wydajność z błędami i zmianami obciążenia.",
+          "explanation": "Grupowanie WT w WO ma znaczenie dla ergonomii i kolejności pracy; KPI musi uwzględniać jakościowe błędy.",
+          "feedback": [
+            "Tak. Grupowanie WT w WO ma znaczenie dla ergonomii i kolejności pracy; KPI musi uwzględniać jakościowe błędy.",
+            "Nie. Grupowanie WT w WO ma znaczenie dla ergonomii i kolejności pracy; KPI musi uwzględniać jakościowe błędy. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Grupowanie WT w WO ma znaczenie dla ergonomii i kolejności pracy; KPI musi uwzględniać jakościowe błędy. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Porównaj wydajność z błędami i zmianami obciążenia."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Wzrosły skany na godzinę, ale pojawia się więcej reklamacji. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 25,
+      "title_pl": "Expert: traceability i batch",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: traceability i batch",
+          "Numery partii i serial wymagają zachowania historii odbioru i wydania dla reklamacji. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Klient zgłasza problem z partią z zeszłego tygodnia. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Odtwórz pochodzenie HU i historię ruchów dla wskazanej partii. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Numery partii i serial wymagają zachowania historii odbioru i wydania dla reklamacji.",
+          "situation": "Klient zgłasza problem z partią z zeszłego tygodnia.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Odtwórz pochodzenie HU i historię ruchów dla wskazanej partii.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Odtwórz pochodzenie HU i historię ruchów dla wskazanej partii.",
+          "explanation": "Numery partii i serial wymagają zachowania historii odbioru i wydania dla reklamacji.",
+          "feedback": [
+            "Tak. Numery partii i serial wymagają zachowania historii odbioru i wydania dla reklamacji.",
+            "Nie. Numery partii i serial wymagają zachowania historii odbioru i wydania dla reklamacji. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Numery partii i serial wymagają zachowania historii odbioru i wydania dla reklamacji. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Odtwórz pochodzenie HU i historię ruchów dla wskazanej partii."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Klient zgłasza problem z partią z zeszłego tygodnia. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 26,
+      "title_pl": "Expert: integracja ERP ↔ EWM",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: integracja ERP ↔ EWM",
+          "Dokumenty przechodzą między systemami, a błędne komunikaty mogą blokować realizację lub zdublować zapis. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: ERP pokazuje wysyłkę, EWM wciąż ma otwarty WT. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Sprawdź kolejki i logi integracji przed ponownym księgowaniem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Dokumenty przechodzą między systemami, a błędne komunikaty mogą blokować realizację lub zdublować zapis.",
+          "situation": "ERP pokazuje wysyłkę, EWM wciąż ma otwarty WT.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Sprawdź kolejki i logi integracji przed ponownym księgowaniem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Sprawdź kolejki i logi integracji przed ponownym księgowaniem.",
+          "explanation": "Dokumenty przechodzą między systemami, a błędne komunikaty mogą blokować realizację lub zdublować zapis.",
+          "feedback": [
+            "Tak. Dokumenty przechodzą między systemami, a błędne komunikaty mogą blokować realizację lub zdublować zapis.",
+            "Nie. Dokumenty przechodzą między systemami, a błędne komunikaty mogą blokować realizację lub zdublować zapis. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Dokumenty przechodzą między systemami, a błędne komunikaty mogą blokować realizację lub zdublować zapis. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Sprawdź kolejki i logi integracji przed ponownym księgowaniem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: ERP pokazuje wysyłkę, EWM wciąż ma otwarty WT. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 27,
+      "title_pl": "Expert: niezgodność dokumentów",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: niezgodność dokumentów",
+          "Dostawy over/under wymagają korekty na podstawie fizycznych ilości i procedury zakupowej. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Na awizo 200 sztuk, na rampie 192. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zarejestruj 192, opisz różnicę i uzgodnij jej rozliczenie. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Dostawy over/under wymagają korekty na podstawie fizycznych ilości i procedury zakupowej.",
+          "situation": "Na awizo 200 sztuk, na rampie 192.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zarejestruj 192, opisz różnicę i uzgodnij jej rozliczenie.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Zarejestruj 192, opisz różnicę i uzgodnij jej rozliczenie.",
+          "explanation": "Dostawy over/under wymagają korekty na podstawie fizycznych ilości i procedury zakupowej.",
+          "feedback": [
+            "Tak. Dostawy over/under wymagają korekty na podstawie fizycznych ilości i procedury zakupowej.",
+            "Nie. Dostawy over/under wymagają korekty na podstawie fizycznych ilości i procedury zakupowej. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Dostawy over/under wymagają korekty na podstawie fizycznych ilości i procedury zakupowej. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zarejestruj 192, opisz różnicę i uzgodnij jej rozliczenie."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Na awizo 200 sztuk, na rampie 192. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 28,
+      "title_pl": "Expert: symulacja przerwania skanowania",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: symulacja przerwania skanowania",
+          "Awaria terminala podczas potwierdzania WT może oznaczać niezakończoną transakcję; powtórzenie bez kontroli tworzy ryzyko dubla. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Skaner wyłączył się po skanowaniu HU. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Odczytaj status zadania i HU po ponownym logowaniu przed drugim skanem. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Awaria terminala podczas potwierdzania WT może oznaczać niezakończoną transakcję; powtórzenie bez kontroli tworzy ryzyko dubla.",
+          "situation": "Skaner wyłączył się po skanowaniu HU.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Odczytaj status zadania i HU po ponownym logowaniu przed drugim skanem.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Odczytaj status zadania i HU po ponownym logowaniu przed drugim skanem.",
+          "explanation": "Awaria terminala podczas potwierdzania WT może oznaczać niezakończoną transakcję; powtórzenie bez kontroli tworzy ryzyko dubla.",
+          "feedback": [
+            "Tak. Awaria terminala podczas potwierdzania WT może oznaczać niezakończoną transakcję; powtórzenie bez kontroli tworzy ryzyko dubla.",
+            "Nie. Awaria terminala podczas potwierdzania WT może oznaczać niezakończoną transakcję; powtórzenie bez kontroli tworzy ryzyko dubla. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Awaria terminala podczas potwierdzania WT może oznaczać niezakończoną transakcję; powtórzenie bez kontroli tworzy ryzyko dubla. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Odczytaj status zadania i HU po ponownym logowaniu przed drugim skanem."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Skaner wyłączył się po skanowaniu HU. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny SAP EWM",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny SAP EWM",
+          "Od inbound delivery do GI musisz wskazać statusy i uprawnienia, które blokują ryzykowne wydanie. W tym temacie uczysz się, jakie dane są wejściem do operacji i jaki zapis powinien pozostać w systemie po wykonaniu czynności.",
+          "Przykład: Pracownik chce wydać HU w blokadzie jakości, bo kierowca się spieszy. Zanim podejmiesz decyzję, odczytaj identyfikator dokumentu, produkt, jednostkę miary, lokalizację i aktualny status, jeśli mają zastosowanie.",
+          "Zalecane działanie: Zatrzymaj wydanie i przekaż sprawę do autoryzowanej kontroli jakości. Po operacji potwierdź, że stan systemowy odpowiada temu, co naprawdę wydarzyło się w magazynie.",
+          "Ważne: układ menu, dostępne statusy i zasady zatwierdzania zależą od wersji i konfiguracji wdrożonej w firmie."
+        ],
+        "learning": {
+          "intro": "Od inbound delivery do GI musisz wskazać statusy i uprawnienia, które blokują ryzykowne wydanie.",
+          "situation": "Pracownik chce wydać HU w blokadzie jakości, bo kierowca się spieszy.",
+          "question": "Co powinieneś zrobić w tej sytuacji?",
+          "options": [
+            "Zatrzymaj wydanie i przekaż sprawę do autoryzowanej kontroli jakości.",
+            "Zmieniam stan na zapas prawidłowy, chociaż faktycznej czynności nie wykonano.",
+            "Omijam uprawnienia i zatwierdzenia, żeby zdążyć przed terminem."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj wydanie i przekaż sprawę do autoryzowanej kontroli jakości.",
+          "explanation": "Od inbound delivery do GI musisz wskazać statusy i uprawnienia, które blokują ryzykowne wydanie.",
+          "feedback": [
+            "Tak. Od inbound delivery do GI musisz wskazać statusy i uprawnienia, które blokują ryzykowne wydanie.",
+            "Nie. Od inbound delivery do GI musisz wskazać statusy i uprawnienia, które blokują ryzykowne wydanie. W ten sposób rozbieżność będzie trudniejsza do wykrycia.",
+            "Nie. Od inbound delivery do GI musisz wskazać statusy i uprawnienia, które blokują ryzykowne wydanie. Nie wolno zastępować kontroli kopiowaniem danych."
+          ],
+          "task": "Narysuj lub zapisz przebieg: dokument → czynność fizyczna → potwierdzenie. Dla tego przypadku: Zatrzymaj wydanie i przekaż sprawę do autoryzowanej kontroli jakości."
+        },
+        "exercise": "Ćwiczenie na przykładowych danych: Pracownik chce wydać HU w blokadzie jakości, bo kierowca się spieszy. Wpisz właściwy stan przed i po operacji, wskaż punkt kontroli.",
+        "references": [
+          {
+            "label": "Dokumentacja producenta – sprawdź wersję",
+            "url": "https://help.sap.com/docs/SAP_EXTENDED_WAREHOUSE_MANAGEMENT"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "scope_note": "Uproszczony materiał edukacyjny — bez dostępu do systemu produkcyjnego. Ekrany różnią się według wdrożenia."
+      }
+    }
+  ]
+}
