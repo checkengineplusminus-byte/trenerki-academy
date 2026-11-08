@@ -1,1 +1,1841 @@
-{"schema_version":2,"course_slug":"word-skroty","sections":["PODSTAWY — OD ZERA","PRAKTYKA DOKUMENTÓW","EXPERT — PRACA PROFESJONALNA"],"lessons":[{"course_slug":"word-skroty","lesson_no":0,"title_pl":"Poznaj Word — edytor dokumentów","material":{"section":1,"level":"podstawy","raw":["Poznaj Word — edytor dokumentów","Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.","Przykład zawodowy: Firma prosi Cię o pismo, które będzie jeszcze poprawiane.","Prawidłowe postępowanie: Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.","situation":"Firma prosi Cię o pismo, które będzie jeszcze poprawiane.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.","explanation":"Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.","feedback":["Dobrze. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.","Nie. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.","Nie. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":1,"title_pl":"Mapa ekranu: wstążka, karty i strona","material":{"section":1,"level":"podstawy","raw":["Mapa ekranu: wstążka, karty i strona","W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.","Przykład zawodowy: Musisz dodać zdjęcie, ale nie znasz przycisków.","Prawidłowe postępowanie: Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.","situation":"Musisz dodać zdjęcie, ale nie znasz przycisków.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie.","explanation":"W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.","feedback":["Dobrze. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.","Nie. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.","Nie. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":2,"title_pl":"DOCX, PDF i szablon — podstawy","material":{"section":1,"level":"podstawy","raw":["DOCX, PDF i szablon — podstawy","DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.","Przykład zawodowy: Klient chce dokument do odczytu, a współpracownik do zmian.","Prawidłowe postępowanie: Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.","situation":"Klient chce dokument do odczytu, a współpracownik do zmian.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF.","explanation":"DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.","feedback":["Dobrze. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.","Nie. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.","Nie. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":3,"title_pl":"Kursor, zaznaczenie i pierwsze zdanie","material":{"section":1,"level":"podstawy","raw":["Kursor, zaznaczenie i pierwsze zdanie","Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.","Przykład zawodowy: Chcesz poprawić jedną datę w środku pisma.","Prawidłowe postępowanie: Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.","situation":"Chcesz poprawić jedną datę w środku pisma.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść.","explanation":"Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.","feedback":["Dobrze. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.","Nie. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.","Nie. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":4,"title_pl":"Enter, akapit i łamanie wiersza","material":{"section":1,"level":"podstawy","raw":["Enter, akapit i łamanie wiersza","Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.","Przykład zawodowy: Nagłówek zajmuje trzy linie i ma dziwne odstępy.","Prawidłowe postępowanie: Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.","situation":"Nagłówek zajmuje trzy linie i ma dziwne odstępy.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter.","explanation":"Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.","feedback":["Dobrze. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.","Nie. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.","Nie. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":5,"title_pl":"Czcionka, styl i czytelność","material":{"section":1,"level":"podstawy","raw":["Czcionka, styl i czytelność","Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.","Przykład zawodowy: Raport ma pięć różnych krojów i bardzo małe litery.","Prawidłowe postępowanie: Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.","situation":"Raport ma pięć różnych krojów i bardzo małe litery.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku.","explanation":"Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.","feedback":["Dobrze. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.","Nie. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.","Nie. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":6,"title_pl":"Wyrównanie, marginesy i orientacja","material":{"section":1,"level":"podstawy","raw":["Wyrównanie, marginesy i orientacja","Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.","Przykład zawodowy: Masz szerszą tabelę niż kartka A4.","Prawidłowe postępowanie: Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.","situation":"Masz szerszą tabelę niż kartka A4.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru.","explanation":"Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.","feedback":["Dobrze. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.","Nie. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.","Nie. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":7,"title_pl":"Zapisywanie i nazwy plików","material":{"section":1,"level":"podstawy","raw":["Zapisywanie i nazwy plików","Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.","Przykład zawodowy: Po godzinie pracy Word informuje o aktualizacji komputera.","Prawidłowe postępowanie: Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.","situation":"Po godzinie pracy Word informuje o aktualizacji komputera.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program.","explanation":"Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.","feedback":["Dobrze. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.","Nie. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.","Nie. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":8,"title_pl":"Cofanie i bezpieczna edycja","material":{"section":1,"level":"podstawy","raw":["Cofanie i bezpieczna edycja","Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.","Przykład zawodowy: Przypadkowo usunięto istotny akapit.","Prawidłowe postępowanie: Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.","situation":"Przypadkowo usunięto istotny akapit.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję.","explanation":"Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.","feedback":["Dobrze. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.","Nie. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.","Nie. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":9,"title_pl":"Pierwsze pismo: od pustej strony","material":{"section":1,"level":"podstawy","raw":["Pierwsze pismo: od pustej strony","Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.","Przykład zawodowy: Potwierdzasz termin spotkania 15 listopada i adres biura.","Prawidłowe postępowanie: Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.","situation":"Potwierdzasz termin spotkania 15 listopada i adres biura.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem.","explanation":"Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.","feedback":["Dobrze. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.","Nie. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.","Nie. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":10,"title_pl":"Nowy dokument i otwarcie pliku","material":{"section":2,"level":"praktyka","raw":["Nowy dokument i otwarcie pliku","Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.","Przykład zawodowy: Dostałeś wzór protokołu do uzupełnienia dla nowego klienta.","Prawidłowe postępowanie: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.","situation":"Dostałeś wzór protokołu do uzupełnienia dla nowego klienta.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.","explanation":"Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.","feedback":["Dobrze. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.","Nie. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.","Nie. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane."},"shortcuts":[{"keys":["Ctrl","N"],"combo":"Ctrl+N","kind":"hotkey","label":"Nowy dokument","before":"W programie otwarty stary dokument","after":"Pojawia się nowy pusty dokument","tip":"Stwórz osobny plik do ćwiczeń, by nie zmieniać ważnych pism.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","O"],"combo":"Ctrl+O","kind":"hotkey","label":"Otwórz plik","before":"Ekran edycji bez wybranego pliku","after":"Okno otwierania dokumentu","tip":"Nie otwieraj nieznanych załączników z podejrzanych wiadomości.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","S"],"combo":"Ctrl+S","kind":"hotkey","label":"Zapisz zmiany","before":"Praca od ostatniego zapisu może zniknąć","after":"Zmiany są zapisane w pliku","tip":"Nadaj plikowi czytelną nazwę przy pierwszym zapisie.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Z"],"combo":"Ctrl+Z","kind":"hotkey","label":"Cofnij ostatnią akcję","before":"Przypadkowo usunięty akapit","after":"Akapit wraca","tip":"Cofnięcie nie zawsze obejmuje każde działanie, np. wysłanie pliku.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Y"],"combo":"Ctrl+Y","kind":"hotkey","label":"Ponów akcję","before":"Dopiero co cofnięta zmiana","after":"Zmiana wykonana ponownie","tip":"Jeśli Ponów jest niedostępne, Word może powtórzyć ostatnią akcję.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","P"],"combo":"Ctrl+P","kind":"hotkey","label":"Drukuj / podgląd wydruku","before":"Nie wiadomo, jak pismo zmieści się na stronie","after":"Widzisz stronę w podglądzie drukowania","tip":"Przejrzyj marginesy i liczbę stron zanim wydrukujesz.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":11,"title_pl":"Zapis, Cofnij, Ponów i drukowanie","material":{"section":2,"level":"praktyka","raw":["Zapis, Cofnij, Ponów i drukowanie","Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.","Przykład zawodowy: Przed drukiem oferty pojawia się dodatkowa pusta strona.","Prawidłowe postępowanie: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.","situation":"Przed drukiem oferty pojawia się dodatkowa pusta strona.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.","explanation":"Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.","feedback":["Dobrze. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.","Nie. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.","Nie. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii."},"shortcuts":[{"keys":["Ctrl","B"],"combo":"Ctrl+B","kind":"hotkey","label":"Pogrub tekst","before":"ważna informacja","after":"WAŻNA informacja (pogrubiona)","tip":"Pogrubiaj hasła lub tytuły, nie całe długie akapity.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","I"],"combo":"Ctrl+I","kind":"hotkey","label":"Kursywa","before":"cytat zapisany zwykłym krojem","after":"cytat zapisany kursywą","tip":"Do cytatu użyj kursywy oszczędnie; czytelność jest ważniejsza od dekoracji.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","U"],"combo":"Ctrl+U","kind":"hotkey","label":"Podkreślenie","before":"termin zgłoszenia","after":"podkreślony termin zgłoszenia","tip":"Podkreślenie może być mylone z linkiem — stosuj świadomie.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Shift","F3"],"combo":"Shift+F3","kind":"hotkey","label":"Zmień wielkość liter","before":"JAN KOWALSKI","after":"Jan Kowalski","tip":"Skrót cyklicznie zmienia warianty; sprawdź polskie znaki.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Space"],"combo":"Ctrl+Space","kind":"hotkey","label":"Usuń ręczne formatowanie znaków","before":"jeden fragment ma przypadkowy kolor i rozmiar","after":"fragment wraca do formatowania ze stylu","tip":"Wciśnij po zaznaczeniu problematycznego fragmentu.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","D"],"combo":"Ctrl+D","kind":"hotkey","label":"Otwórz okno Czcionka","before":"Szukasz opcji czcionki na wstążce","after":"Otwiera się okno ustawień fontu","tip":"Korzystaj ze stylów zamiast ręcznie formatować każdą linijkę.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":12,"title_pl":"Kopiuj, wklej, wytnij i zaznacz","material":{"section":2,"level":"praktyka","raw":["Kopiuj, wklej, wytnij i zaznacz","Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.","Przykład zawodowy: Tekst z internetu ma dziwną czcionkę i odstępy.","Prawidłowe postępowanie: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.","situation":"Tekst z internetu ma dziwną czcionkę i odstępy.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.","explanation":"Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.","feedback":["Dobrze. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.","Nie. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.","Nie. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu."},"shortcuts":[{"keys":["Ctrl","L"],"combo":"Ctrl+L","kind":"hotkey","label":"Wyrównaj do lewej","before":"Akapit wyśrodkowany","after":"Akapit zaczyna się przy lewym marginesie","tip":"Najczęściej najlepsze ustawienie dla treści pisma.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","E"],"combo":"Ctrl+E","kind":"hotkey","label":"Wyśrodkuj","before":"Nagłówek zaczyna się od lewej","after":"Nagłówek na środku strony","tip":"Użyj do tytułu, nie do każdego akapitu.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","R"],"combo":"Ctrl+R","kind":"hotkey","label":"Wyrównaj do prawej","before":"Data przy lewym marginesie","after":"Data przy prawym marginesie","tip":"Przydatne dla daty w korespondencji.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","J"],"combo":"Ctrl+J","kind":"hotkey","label":"Wyjustuj","before":"Prawy brzeg akapitu nierówny","after":"Obie krawędzie akapitu są wyrównane","tip":"Sprawdź, czy nie powstały zbyt duże odstępy między wyrazami.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","M"],"combo":"Ctrl+M","kind":"hotkey","label":"Zwiększ wcięcie","before":"Akapit bez wcięcia","after":"Akapit odsunięty w prawo","tip":"Wcięć nie rób wieloma spacjami.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","M"],"combo":"Ctrl+Shift+M","kind":"hotkey","label":"Zmniejsz wcięcie","before":"Akapit za bardzo przesunięty","after":"Wcięcie akapitu mniejsze","tip":"Porządkuj długą listę argumentów tym skrótem.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":13,"title_pl":"Pogrubienie, kursywa i struktura nagłówków","material":{"section":2,"level":"praktyka","raw":["Pogrubienie, kursywa i struktura nagłówków","Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.","Przykład zawodowy: Potrzebujesz automatycznego spisu treści długiej instrukcji.","Prawidłowe postępowanie: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.","situation":"Potrzebujesz automatycznego spisu treści długiej instrukcji.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.","explanation":"Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.","feedback":["Dobrze. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.","Nie. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.","Nie. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły."},"shortcuts":[{"keys":["Ctrl","Alt","1"],"combo":"Ctrl+Alt+1","kind":"hotkey","label":"Nadaj styl Nagłówek 1","before":"Duży tekst wyglądający jak tytuł","after":"Semantyczny Nagłówek 1","tip":"Zamiast powiększać i pogrubiać, stosuj styl.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Alt","2"],"combo":"Ctrl+Alt+2","kind":"hotkey","label":"Nadaj styl Nagłówek 2","before":"Podrozdział bez struktury","after":"Podrozdział jako Nagłówek 2","tip":"Stosuj logiczną hierarchię: H2 pod H1.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Alt","3"],"combo":"Ctrl+Alt+3","kind":"hotkey","label":"Nadaj styl Nagłówek 3","before":"Podpunkt bez poziomu","after":"Podpunkt jako Nagłówek 3","tip":"Nie pomijaj poziomów nagłówków bez powodu.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","N"],"combo":"Ctrl+Shift+N","kind":"hotkey","label":"Ustaw styl Normalny","before":"Zaznaczony fragment jest nagłówkiem","after":"Fragment znów ma styl zwykłego akapitu","tip":"Przydatne po przypadkowym zastosowaniu stylu.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","L"],"combo":"Ctrl+Shift+L","kind":"hotkey","label":"Utwórz listę punktowaną","before":"Zakupy w osobnych liniach","after":"Lista z punktami","tip":"Nie wpisuj ręcznie znaków •, gdy Word może prowadzić listę.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","S"],"combo":"Ctrl+Shift+S","kind":"hotkey","label":"Panel Zastosuj style","before":"Nie pamiętasz nazwy stylu","after":"Możesz wyszukać i zastosować styl","tip":"W firmowym szablonie style mogą mieć własne nazwy.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":14,"title_pl":"Akapity, wyrównanie i tabulatory","material":{"section":2,"level":"praktyka","raw":["Akapity, wyrównanie i tabulatory","Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.","Przykład zawodowy: Kwoty i nazwiska mają być w dwóch równych kolumnach.","Prawidłowe postępowanie: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.","situation":"Kwoty i nazwiska mają być w dwóch równych kolumnach.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.","explanation":"Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.","feedback":["Dobrze. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.","Nie. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.","Nie. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji."},"shortcuts":[{"keys":["Ctrl","Home"],"combo":"Ctrl+Home","kind":"hotkey","label":"Przejdź na początek","before":"Kursor na stronie 27","after":"Kursor na początku dokumentu","tip":"Przydatne po zakończeniu redakcji.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","End"],"combo":"Ctrl+End","kind":"hotkey","label":"Przejdź na koniec","before":"Kursor na stronie 2","after":"Kursor na końcu dokumentu","tip":"Szybko dodasz zakończenie lub podpis.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","F"],"combo":"Ctrl+F","kind":"hotkey","label":"Otwórz wyszukiwanie","before":"Nie wiesz, gdzie występuje nazwa klienta","after":"Wyszukujesz frazę w dokumencie","tip":"Wpisuj charakterystyczne słowo, nie całe długie zdanie.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","H"],"combo":"Ctrl+H","kind":"hotkey","label":"Znajdź i zamień","before":"Stara nazwa firmy w wielu miejscach","after":"Możesz zamienić nazwę w całym pliku","tip":"Najpierw sprawdź znalezione wystąpienia, by nie uszkodzić innych słów.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","G"],"combo":"Ctrl+G","kind":"hotkey","label":"Przejdź do","before":"Szukasz strony 15","after":"Otwiera się okno przechodzenia","tip":"Wybierz numer strony, sekcję lub inną lokalizację.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","A"],"combo":"Ctrl+A","kind":"hotkey","label":"Zaznacz wszystko","before":"Zaznaczono jedno słowo","after":"Zaznaczona cała zawartość dokumentu","tip":"Przed masową zmianą zrób kopię pliku.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":15,"title_pl":"Znajdź i nawiguj w długim dokumencie","material":{"section":2,"level":"praktyka","raw":["Znajdź i nawiguj w długim dokumencie","Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.","Przykład zawodowy: W 50-stronicowej instrukcji zmieniła się nazwa urządzenia.","Prawidłowe postępowanie: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.","situation":"W 50-stronicowej instrukcji zmieniła się nazwa urządzenia.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.","explanation":"Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.","feedback":["Dobrze. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.","Nie. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.","Nie. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem."},"shortcuts":[{"keys":["Ctrl","Shift","→"],"combo":"Ctrl+Shift+Right","kind":"hotkey","label":"Zaznacz do końca następnego wyrazu","before":"Kursor przed słowem","after":"Następny wyraz zaznaczony","tip":"Przytrzymaj Shift i Ctrl, a potem naciskaj strzałkę.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","←"],"combo":"Ctrl+Shift+Left","kind":"hotkey","label":"Zaznacz poprzedni wyraz","before":"Kursor po słowie","after":"Poprzedni wyraz zaznaczony","tip":"Dobre do poprawiania końca zdania.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","C"],"combo":"Ctrl+C","kind":"hotkey","label":"Kopiuj","before":"Tekst zaznaczony, brak kopii","after":"Tekst w schowku","tip":"Po skopiowaniu nie musisz usuwać oryginału.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","V"],"combo":"Ctrl+V","kind":"hotkey","label":"Wklej","before":"Schowek zawiera tekst","after":"Tekst wklejony w miejscu kursora","tip":"Sprawdź formatowanie po wklejeniu z internetu.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","X"],"combo":"Ctrl+X","kind":"hotkey","label":"Wytnij","before":"Zaznaczony akapit w złym miejscu","after":"Akapit przeniesiony do schowka","tip":"Po wycięciu od razu wklej w docelowe miejsce.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Backspace"],"combo":"Ctrl+Backspace","kind":"hotkey","label":"Usuń poprzedni wyraz","before":"Kursor po błędnym wyrazie","after":"Cały poprzedni wyraz usunięty","tip":"Pracuj na kopii dokumentu, gdy ćwiczysz nowe skróty.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":16,"title_pl":"Obrazy i tabele w praktyce","material":{"section":2,"level":"praktyka","raw":["Obrazy i tabele w praktyce","Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.","Przykład zawodowy: Protokół odbioru wymaga zdjęć usterek i ich lokalizacji.","Prawidłowe postępowanie: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.","situation":"Protokół odbioru wymaga zdjęć usterek i ich lokalizacji.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.","explanation":"Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.","feedback":["Dobrze. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.","Nie. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.","Nie. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność."},"shortcuts":[{"keys":["Ctrl","Enter"],"combo":"Ctrl+Enter","kind":"hotkey","label":"Wstaw podział strony","before":"Nowy rozdział zaczyna się na dole strony","after":"Nowy rozdział zaczyna następną stronę","tip":"Nie zastępuj podziału strony kilkunastoma Enterami.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Shift","Enter"],"combo":"Shift+Enter","kind":"hotkey","label":"Złam wiersz bez nowego akapitu","before":"Dwie linie tworzą osobne akapity","after":"Następna linia w tym samym akapicie","tip":"Przydatne w adresie lub wersach, gdy nie chcesz nowego akapitu.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","8"],"combo":"Ctrl+Shift+8","kind":"hotkey","label":"Pokaż znaki niedrukowane","before":"Nie wiesz, skąd biorą się puste linie","after":"Widzisz znaczniki akapitów i spacji","tip":"Ponowne użycie skrótu ukrywa te znaki.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Shift","Space"],"combo":"Ctrl+Shift+Space","kind":"hotkey","label":"Spacja nierozdzielająca","before":"Liczba 10 i jednostka km rozdzielają się przy końcu linii","after":"Liczba i jednostka pozostają razem","tip":"Użyj między liczbą a jednostką lub inicjałem a nazwiskiem.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","P"],"combo":"Ctrl+P","kind":"hotkey","label":"Sprawdź wydruk","before":"Długi akapit przeskakuje na kolejną stronę","after":"Widzisz rozkład stron przed wydrukiem","tip":"Przejrzyj dokument zanim wyślesz PDF klientowi.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","S"],"combo":"Ctrl+S","kind":"hotkey","label":"Zachowaj ostatnie zmiany","before":"Poprawione pismo niezapisane","after":"Ostatnie poprawki zapisane","tip":"Stosuj krótką checklistę przed wysyłką: nazwa, data, podpis, załącznik.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":17,"title_pl":"Nagłówki i stopki dokumentu","material":{"section":2,"level":"praktyka","raw":["Nagłówki i stopki dokumentu","Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.","Przykład zawodowy: Dodajesz stronę do raportu i wszystkie numery się przesuwają.","Prawidłowe postępowanie: Włącz automatyczne numery stron i sprawdź ustawienia sekcji.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.","situation":"Dodajesz stronę do raportu i wszystkie numery się przesuwają.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Włącz automatyczne numery stron i sprawdź ustawienia sekcji.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Włącz automatyczne numery stron i sprawdź ustawienia sekcji.","explanation":"Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.","feedback":["Dobrze. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.","Nie. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.","Nie. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Włącz automatyczne numery stron i sprawdź ustawienia sekcji."},"shortcuts":[{"keys":["F7"],"combo":"F7","kind":"hotkey","label":"Sprawdź pisownię i gramatykę","before":"W dokumencie potencjalne błędy","after":"Otwiera się moduł Redaktor","tip":"Narzędzie pomaga, ale nie rozumie wszystkich nazw własnych.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","K"],"combo":"Ctrl+K","kind":"hotkey","label":"Wstaw hiperłącze","before":"Adres www zapisany jako zwykły tekst","after":"Okno wstawiania linku","tip":"Nadaj linkom opisowy tekst, nie samo „kliknij tutaj”.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Z"],"combo":"Ctrl+Z","kind":"hotkey","label":"Cofnij błędną zmianę","before":"Przypadkowo skasowane zdanie","after":"Zdanie przywrócone","tip":"Przećwicz na kopii dokumentu: usuń fragment, potem cofnij.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","S"],"combo":"Ctrl+S","kind":"hotkey","label":"Zapisz finalną wersję","before":"Tekst gotowy, ale niezapisany","after":"Dokument zapisany","tip":"W nazwie użyj wersji i daty, np. Oferta_2026-11-08.docx.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","P"],"combo":"Ctrl+P","kind":"hotkey","label":"Podgląd końcowy","before":"Nie wiesz, jak wygląda wynik","after":"Widzisz wszystkie strony","tip":"Sprawdź numerację i marginesy.","platform":"Microsoft Word dla Windows — domyślne ustawienia"},{"keys":["Ctrl","Home"],"combo":"Ctrl+Home","kind":"hotkey","label":"Kontrola od początku","before":"Jesteś na końcu dokumentu","after":"Wracasz na pierwszą stronę","tip":"Zrób końcową korektę od początku do końca.","platform":"Microsoft Word dla Windows — domyślne ustawienia"}],"quickTips":["Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.","Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.","Nie pracuj na jedynej kopii ważnego dokumentu."],"exercise":"Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.","references":[{"label":"Microsoft Support — skróty klawiaturowe w Word","url":"https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"}],"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":18,"title_pl":"Komentarze i śledzenie zmian","material":{"section":2,"level":"praktyka","raw":["Komentarze i śledzenie zmian","Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.","Przykład zawodowy: Współpracownik zmienił kilka istotnych zdań w umowie.","Prawidłowe postępowanie: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.","situation":"Współpracownik zmienił kilka istotnych zdań w umowie.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.","explanation":"Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.","feedback":["Dobrze. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.","Nie. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.","Nie. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":19,"title_pl":"Praktyka: raport z fotografiami","material":{"section":2,"level":"praktyka","raw":["Praktyka: raport z fotografiami","Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.","Przykład zawodowy: Raport z budowy ma trzy usterki bez przypisanej lokalizacji.","Prawidłowe postępowanie: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.","situation":"Raport z budowy ma trzy usterki bez przypisanej lokalizacji.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.","explanation":"Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.","feedback":["Dobrze. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.","Nie. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.","Nie. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":20,"title_pl":"Expert: sekcje i orientacja stron","material":{"section":3,"level":"expert","raw":["Expert: sekcje i orientacja stron","Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.","Przykład zawodowy: W długim raporcie jedna szeroka tabela potrzebuje układu poziomego.","Prawidłowe postępowanie: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.","situation":"W długim raporcie jedna szeroka tabela potrzebuje układu poziomego.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.","explanation":"Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.","feedback":["Dobrze. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.","Nie. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.","Nie. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":21,"title_pl":"Expert: automatyczny spis treści","material":{"section":3,"level":"expert","raw":["Expert: automatyczny spis treści","Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.","Przykład zawodowy: Po dodaniu nowego rozdziału spis pokazuje stare numery stron.","Prawidłowe postępowanie: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.","situation":"Po dodaniu nowego rozdziału spis pokazuje stare numery stron.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.","explanation":"Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.","feedback":["Dobrze. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.","Nie. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.","Nie. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":22,"title_pl":"Expert: szablony i pola","material":{"section":3,"level":"expert","raw":["Expert: szablony i pola","Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.","Przykład zawodowy: Masz przygotować 40 ofert na jednym wzorze.","Prawidłowe postępowanie: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.","situation":"Masz przygotować 40 ofert na jednym wzorze.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.","explanation":"Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.","feedback":["Dobrze. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.","Nie. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.","Nie. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":23,"title_pl":"Expert: korespondencja seryjna","material":{"section":3,"level":"expert","raw":["Expert: korespondencja seryjna","Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.","Przykład zawodowy: Przy wydruku zaproszeń nazwiska nie pasują do adresów.","Prawidłowe postępowanie: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.","situation":"Przy wydruku zaproszeń nazwiska nie pasują do adresów.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.","explanation":"Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.","feedback":["Dobrze. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.","Nie. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.","Nie. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":24,"title_pl":"Expert: dostępność dla każdego","material":{"section":3,"level":"expert","raw":["Expert: dostępność dla każdego","Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.","Przykład zawodowy: Plik PDF ma piękne strony, ale czytnik ekranu nie znajduje nagłówków.","Prawidłowe postępowanie: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.","situation":"Plik PDF ma piękne strony, ale czytnik ekranu nie znajduje nagłówków.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.","explanation":"Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.","feedback":["Dobrze. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.","Nie. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.","Nie. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":25,"title_pl":"Expert: prywatność i metadane","material":{"section":3,"level":"expert","raw":["Expert: prywatność i metadane","Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.","Przykład zawodowy: W ofercie nadal są komentarze o wewnętrznych cenach.","Prawidłowe postępowanie: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.","situation":"W ofercie nadal są komentarze o wewnętrznych cenach.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.","explanation":"Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.","feedback":["Dobrze. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.","Nie. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.","Nie. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":26,"title_pl":"Expert: rewizje i współpraca zespołowa","material":{"section":3,"level":"expert","raw":["Expert: rewizje i współpraca zespołowa","Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.","Przykład zawodowy: Dwie osoby wysłały różne pliki nazwane final.docx.","Prawidłowe postępowanie: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.","situation":"Dwie osoby wysłały różne pliki nazwane final.docx.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.","explanation":"Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.","feedback":["Dobrze. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.","Nie. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.","Nie. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":27,"title_pl":"Expert: eksport i kontrola PDF","material":{"section":3,"level":"expert","raw":["Expert: eksport i kontrola PDF","Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.","Przykład zawodowy: Tabela wygląda dobrze w Wordzie, ale ucieka poza margines w PDF.","Prawidłowe postępowanie: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.","situation":"Tabela wygląda dobrze w Wordzie, ale ucieka poza margines w PDF.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.","explanation":"Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.","feedback":["Dobrze. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.","Nie. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.","Nie. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":28,"title_pl":"Expert: odzyskiwanie po awarii","material":{"section":3,"level":"expert","raw":["Expert: odzyskiwanie po awarii","Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.","Przykład zawodowy: Po pracy offline Word zgłasza konflikt dwóch zapisów.","Prawidłowe postępowanie: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.","situation":"Po pracy offline Word zgłasza konflikt dwóch zapisów.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.","explanation":"Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.","feedback":["Dobrze. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.","Nie. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.","Nie. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki."},"editorial_status":"review_needed"}},{"course_slug":"word-skroty","lesson_no":29,"title_pl":"Egzamin próbny Word: samodzielny raport","material":{"section":3,"level":"expert","raw":["Egzamin próbny Word: samodzielny raport","Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.","Przykład zawodowy: Firma wymaga raportu z harmonogramem, zdjęciami, tabelą i podpisami.","Prawidłowe postępowanie: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.","Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."],"learning":{"intro":"Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.","situation":"Firma wymaga raportu z harmonogramem, zdjęciami, tabelą i podpisami.","question":"Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?","options":["Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.","Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.","Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."],"correct":0,"example":"Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.","explanation":"Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.","feedback":["Dobrze. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.","Nie. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.","Nie. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."],"task":"Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy."},"editorial_status":"review_needed"}}]}
+{
+  "schema_version": 2,
+  "course_slug": "word-skroty",
+  "sections": [
+    "PODSTAWY — OD ZERA",
+    "PRAKTYKA DOKUMENTÓW",
+    "EXPERT — PRACA PROFESJONALNA"
+  ],
+  "lessons": [
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 0,
+      "title_pl": "Poznaj Word — edytor dokumentów",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Poznaj Word — edytor dokumentów",
+          "Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+          "Przykład zawodowy: Firma prosi Cię o pismo, które będzie jeszcze poprawiane.",
+          "Prawidłowe postępowanie: Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+          "situation": "Firma prosi Cię o pismo, które będzie jeszcze poprawiane.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu.",
+          "explanation": "Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+          "feedback": [
+            "Dobrze. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+            "Nie. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku.",
+            "Nie. Word to program do pisania i formatowania dokumentów, nie arkusz obliczeniowy. Dokument zawiera tekst, obrazy, tabele, układ stron i informacje o pliku."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zachowaj edytowalną wersję DOCX, nie tylko zdjęcie ekranu."
+        },
+        "editorial_status": "review_needed",
+        "illustration": "word-interface"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 1,
+      "title_pl": "Mapa ekranu: wstążka, karty i strona",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Mapa ekranu: wstążka, karty i strona",
+          "W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.",
+          "Przykład zawodowy: Musisz dodać zdjęcie, ale nie znasz przycisków.",
+          "Prawidłowe postępowanie: Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.",
+          "situation": "Musisz dodać zdjęcie, ale nie znasz przycisków.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie.",
+          "explanation": "W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.",
+          "feedback": [
+            "Dobrze. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.",
+            "Nie. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron.",
+            "Nie. W Wordzie spotkasz karty Plik, Narzędzia główne, Wstawianie, Układ, Recenzja i Widok. Wstążka zawiera polecenia, biała strona treść, a pasek stanu pokazuje m.in. liczbę stron."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz kartę Wstawianie, wybierz obraz i sprawdź jego położenie."
+        },
+        "editorial_status": "review_needed",
+        "illustration": "word-interface"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 2,
+      "title_pl": "DOCX, PDF i szablon — podstawy",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "DOCX, PDF i szablon — podstawy",
+          "DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.",
+          "Przykład zawodowy: Klient chce dokument do odczytu, a współpracownik do zmian.",
+          "Prawidłowe postępowanie: Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.",
+          "situation": "Klient chce dokument do odczytu, a współpracownik do zmian.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF.",
+          "explanation": "DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.",
+          "feedback": [
+            "Dobrze. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.",
+            "Nie. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu.",
+            "Nie. DOCX umożliwia edycję, PDF zwykle zachowuje wygląd na różnych urządzeniach, a szablon pozwala powtarzać jednolity układ. Samo zmienienie końcówki pliku nie zmienia formatu."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz źródłowy DOCX i wyeksportuj sprawdzoną wersję PDF."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 3,
+      "title_pl": "Kursor, zaznaczenie i pierwsze zdanie",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Kursor, zaznaczenie i pierwsze zdanie",
+          "Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.",
+          "Przykład zawodowy: Chcesz poprawić jedną datę w środku pisma.",
+          "Prawidłowe postępowanie: Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.",
+          "situation": "Chcesz poprawić jedną datę w środku pisma.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść.",
+          "explanation": "Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.",
+          "feedback": [
+            "Dobrze. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.",
+            "Nie. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu.",
+            "Nie. Migająca pionowa kreska to miejsce wstawiania znaków. Zaznaczony fragment będzie celem operacji; kliknięcie myszą nie zawsze oznacza rozpoczęcie wpisywania w żądanym miejscu."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Kliknij obok daty, zaznacz dokładny fragment i wpisz właściwą treść."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 4,
+      "title_pl": "Enter, akapit i łamanie wiersza",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Enter, akapit i łamanie wiersza",
+          "Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.",
+          "Przykład zawodowy: Nagłówek zajmuje trzy linie i ma dziwne odstępy.",
+          "Prawidłowe postępowanie: Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.",
+          "situation": "Nagłówek zajmuje trzy linie i ma dziwne odstępy.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter.",
+          "explanation": "Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.",
+          "feedback": [
+            "Dobrze. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.",
+            "Nie. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie.",
+            "Nie. Enter kończy akapit; Shift+Enter zwykle łamie samą linię. Puste akapity nie służą do przesuwania treści na nową stronę, bo przy zmianie tekstu układ się rozsypie."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Włącz znaki formatowania i popraw ustawienia akapitu, a nie wielokrotnie naciskaj Enter."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 5,
+      "title_pl": "Czcionka, styl i czytelność",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Czcionka, styl i czytelność",
+          "Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.",
+          "Przykład zawodowy: Raport ma pięć różnych krojów i bardzo małe litery.",
+          "Prawidłowe postępowanie: Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.",
+          "situation": "Raport ma pięć różnych krojów i bardzo małe litery.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku.",
+          "explanation": "Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.",
+          "feedback": [
+            "Dobrze. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.",
+            "Nie. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów.",
+            "Nie. Rozmiar, krój, kolor i pogrubienie wpływają na czytelność. Jeden spójny styl treści i kilka wyraźnych nagłówków pomagają bardziej niż wiele dekoracyjnych fontów."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Ujednolić style, zadbać o kontrast i sprawdzić dokument na telefonie i wydruku."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 6,
+      "title_pl": "Wyrównanie, marginesy i orientacja",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Wyrównanie, marginesy i orientacja",
+          "Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.",
+          "Przykład zawodowy: Masz szerszą tabelę niż kartka A4.",
+          "Prawidłowe postępowanie: Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.",
+          "situation": "Masz szerszą tabelę niż kartka A4.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru.",
+          "explanation": "Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.",
+          "feedback": [
+            "Dobrze. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.",
+            "Nie. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn.",
+            "Nie. Marginesy określają przestrzeń tekstu, wyrównanie dotyczy akapitu, a orientacja pionowa i pozioma układu całej strony lub sekcji. Wielokrotne spacje nie są bezpiecznym sposobem układania kolumn."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Sprawdź orientację strony i szerokości kolumn zamiast zmniejszać czcionkę do nieczytelnego rozmiaru."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 7,
+      "title_pl": "Zapisywanie i nazwy plików",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Zapisywanie i nazwy plików",
+          "Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.",
+          "Przykład zawodowy: Po godzinie pracy Word informuje o aktualizacji komputera.",
+          "Prawidłowe postępowanie: Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.",
+          "situation": "Po godzinie pracy Word informuje o aktualizacji komputera.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program.",
+          "explanation": "Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.",
+          "feedback": [
+            "Dobrze. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.",
+            "Nie. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem.",
+            "Nie. Ctrl+S zapisuje zmiany w istniejącym pliku. Przy pierwszym zapisie trzeba wybrać czytelną nazwę, katalog i właściwy format. Synchronizacja w chmurze nie zastępuje kontroli przed wysłaniem."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz dokument, sprawdź lokalizację i bezpiecznie zamknij program."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 8,
+      "title_pl": "Cofanie i bezpieczna edycja",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Cofanie i bezpieczna edycja",
+          "Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.",
+          "Przykład zawodowy: Przypadkowo usunięto istotny akapit.",
+          "Prawidłowe postępowanie: Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.",
+          "situation": "Przypadkowo usunięto istotny akapit.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję.",
+          "explanation": "Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.",
+          "feedback": [
+            "Dobrze. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.",
+            "Nie. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości.",
+            "Nie. Ctrl+Z cofa wiele zmian, a Ctrl+Y może je ponawiać. Historia nie zawsze obejmuje wszystkie działania, dlatego ważne dokumenty powinny mieć kopię lub wersję. Cofnięcie nie odwołuje wysłanej wiadomości."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Użyj Cofnij, porównaj przywróconą treść z oryginałem i zachowaj właściwą wersję."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 9,
+      "title_pl": "Pierwsze pismo: od pustej strony",
+      "material": {
+        "section": 1,
+        "level": "podstawy",
+        "raw": [
+          "Pierwsze pismo: od pustej strony",
+          "Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.",
+          "Przykład zawodowy: Potwierdzasz termin spotkania 15 listopada i adres biura.",
+          "Prawidłowe postępowanie: Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.",
+          "situation": "Potwierdzasz termin spotkania 15 listopada i adres biura.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem.",
+          "explanation": "Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.",
+          "feedback": [
+            "Dobrze. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.",
+            "Nie. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy.",
+            "Nie. Przygotuj dokument z datą, odbiorcą, tematem, krótką treścią, zakończeniem i podpisem. Sprawdź nazwiska i terminy. Odbiorca musi rozumieć, o co prosisz, nawet bez wcześniejszej rozmowy."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zapisz krótkie pełne pismo i sprawdź wszystkie informacje przed wysłaniem."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 10,
+      "title_pl": "Nowy dokument i otwarcie pliku",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Nowy dokument i otwarcie pliku",
+          "Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.",
+          "Przykład zawodowy: Dostałeś wzór protokołu do uzupełnienia dla nowego klienta.",
+          "Prawidłowe postępowanie: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.",
+          "situation": "Dostałeś wzór protokołu do uzupełnienia dla nowego klienta.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane.",
+          "explanation": "Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.",
+          "feedback": [
+            "Dobrze. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.",
+            "Nie. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy.",
+            "Nie. Ctrl+N tworzy nowy dokument, Ctrl+O otwiera istniejący. Przed zmianą pliku klienta zapisz kopię; przypadkowe nadpisanie jedynego szablonu powoduje problemy."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz wzór, zapisz kopię pod nową nazwą i dopiero wprowadzaj dane."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "N"
+            ],
+            "combo": "Ctrl+N",
+            "kind": "hotkey",
+            "label": "Nowy dokument",
+            "before": "W programie otwarty stary dokument",
+            "after": "Pojawia się nowy pusty dokument",
+            "tip": "Stwórz osobny plik do ćwiczeń, by nie zmieniać ważnych pism.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "O"
+            ],
+            "combo": "Ctrl+O",
+            "kind": "hotkey",
+            "label": "Otwórz plik",
+            "before": "Ekran edycji bez wybranego pliku",
+            "after": "Okno otwierania dokumentu",
+            "tip": "Nie otwieraj nieznanych załączników z podejrzanych wiadomości.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "S"
+            ],
+            "combo": "Ctrl+S",
+            "kind": "hotkey",
+            "label": "Zapisz zmiany",
+            "before": "Praca od ostatniego zapisu może zniknąć",
+            "after": "Zmiany są zapisane w pliku",
+            "tip": "Nadaj plikowi czytelną nazwę przy pierwszym zapisie.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Z"
+            ],
+            "combo": "Ctrl+Z",
+            "kind": "hotkey",
+            "label": "Cofnij ostatnią akcję",
+            "before": "Przypadkowo usunięty akapit",
+            "after": "Akapit wraca",
+            "tip": "Cofnięcie nie zawsze obejmuje każde działanie, np. wysłanie pliku.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Y"
+            ],
+            "combo": "Ctrl+Y",
+            "kind": "hotkey",
+            "label": "Ponów akcję",
+            "before": "Dopiero co cofnięta zmiana",
+            "after": "Zmiana wykonana ponownie",
+            "tip": "Jeśli Ponów jest niedostępne, Word może powtórzyć ostatnią akcję.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "P"
+            ],
+            "combo": "Ctrl+P",
+            "kind": "hotkey",
+            "label": "Drukuj / podgląd wydruku",
+            "before": "Nie wiadomo, jak pismo zmieści się na stronie",
+            "after": "Widzisz stronę w podglądzie drukowania",
+            "tip": "Przejrzyj marginesy i liczbę stron zanim wydrukujesz.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed",
+        "illustration": "word-interface"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 11,
+      "title_pl": "Zapis, Cofnij, Ponów i drukowanie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Zapis, Cofnij, Ponów i drukowanie",
+          "Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.",
+          "Przykład zawodowy: Przed drukiem oferty pojawia się dodatkowa pusta strona.",
+          "Prawidłowe postępowanie: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.",
+          "situation": "Przed drukiem oferty pojawia się dodatkowa pusta strona.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii.",
+          "explanation": "Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.",
+          "feedback": [
+            "Dobrze. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.",
+            "Nie. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki.",
+            "Nie. Ctrl+S, Ctrl+Z, Ctrl+Y i Ctrl+P to podstawowe skróty pracy. Podgląd wydruku pokazuje, czy tekst i tabele mieszczą się na stronie oraz czy nie powstają puste kartki."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Otwórz podgląd i sprawdź podziały stron zamiast drukować wiele błędnych kopii."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "B"
+            ],
+            "combo": "Ctrl+B",
+            "kind": "hotkey",
+            "label": "Pogrub tekst",
+            "before": "ważna informacja",
+            "after": "WAŻNA informacja (pogrubiona)",
+            "tip": "Pogrubiaj hasła lub tytuły, nie całe długie akapity.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "I"
+            ],
+            "combo": "Ctrl+I",
+            "kind": "hotkey",
+            "label": "Kursywa",
+            "before": "cytat zapisany zwykłym krojem",
+            "after": "cytat zapisany kursywą",
+            "tip": "Do cytatu użyj kursywy oszczędnie; czytelność jest ważniejsza od dekoracji.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "U"
+            ],
+            "combo": "Ctrl+U",
+            "kind": "hotkey",
+            "label": "Podkreślenie",
+            "before": "termin zgłoszenia",
+            "after": "podkreślony termin zgłoszenia",
+            "tip": "Podkreślenie może być mylone z linkiem — stosuj świadomie.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Shift",
+              "F3"
+            ],
+            "combo": "Shift+F3",
+            "kind": "hotkey",
+            "label": "Zmień wielkość liter",
+            "before": "JAN KOWALSKI",
+            "after": "Jan Kowalski",
+            "tip": "Skrót cyklicznie zmienia warianty; sprawdź polskie znaki.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Space"
+            ],
+            "combo": "Ctrl+Space",
+            "kind": "hotkey",
+            "label": "Usuń ręczne formatowanie znaków",
+            "before": "jeden fragment ma przypadkowy kolor i rozmiar",
+            "after": "fragment wraca do formatowania ze stylu",
+            "tip": "Wciśnij po zaznaczeniu problematycznego fragmentu.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "D"
+            ],
+            "combo": "Ctrl+D",
+            "kind": "hotkey",
+            "label": "Otwórz okno Czcionka",
+            "before": "Szukasz opcji czcionki na wstążce",
+            "after": "Otwiera się okno ustawień fontu",
+            "tip": "Korzystaj ze stylów zamiast ręcznie formatować każdą linijkę.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 12,
+      "title_pl": "Kopiuj, wklej, wytnij i zaznacz",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Kopiuj, wklej, wytnij i zaznacz",
+          "Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.",
+          "Przykład zawodowy: Tekst z internetu ma dziwną czcionkę i odstępy.",
+          "Prawidłowe postępowanie: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.",
+          "situation": "Tekst z internetu ma dziwną czcionkę i odstępy.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu.",
+          "explanation": "Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.",
+          "feedback": [
+            "Dobrze. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.",
+            "Nie. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu.",
+            "Nie. Ctrl+A zaznacza, Ctrl+C kopiuje, Ctrl+X wycina, Ctrl+V wkleja w aktywnym miejscu. Wklejanie z innych źródeł może wnieść obce formatowanie; wówczas użyj opcji wklejania samego tekstu."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wklej go jako zwykły tekst i zastosuj właściwy styl dokumentu."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "L"
+            ],
+            "combo": "Ctrl+L",
+            "kind": "hotkey",
+            "label": "Wyrównaj do lewej",
+            "before": "Akapit wyśrodkowany",
+            "after": "Akapit zaczyna się przy lewym marginesie",
+            "tip": "Najczęściej najlepsze ustawienie dla treści pisma.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "E"
+            ],
+            "combo": "Ctrl+E",
+            "kind": "hotkey",
+            "label": "Wyśrodkuj",
+            "before": "Nagłówek zaczyna się od lewej",
+            "after": "Nagłówek na środku strony",
+            "tip": "Użyj do tytułu, nie do każdego akapitu.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "R"
+            ],
+            "combo": "Ctrl+R",
+            "kind": "hotkey",
+            "label": "Wyrównaj do prawej",
+            "before": "Data przy lewym marginesie",
+            "after": "Data przy prawym marginesie",
+            "tip": "Przydatne dla daty w korespondencji.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "J"
+            ],
+            "combo": "Ctrl+J",
+            "kind": "hotkey",
+            "label": "Wyjustuj",
+            "before": "Prawy brzeg akapitu nierówny",
+            "after": "Obie krawędzie akapitu są wyrównane",
+            "tip": "Sprawdź, czy nie powstały zbyt duże odstępy między wyrazami.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "M"
+            ],
+            "combo": "Ctrl+M",
+            "kind": "hotkey",
+            "label": "Zwiększ wcięcie",
+            "before": "Akapit bez wcięcia",
+            "after": "Akapit odsunięty w prawo",
+            "tip": "Wcięć nie rób wieloma spacjami.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "M"
+            ],
+            "combo": "Ctrl+Shift+M",
+            "kind": "hotkey",
+            "label": "Zmniejsz wcięcie",
+            "before": "Akapit za bardzo przesunięty",
+            "after": "Wcięcie akapitu mniejsze",
+            "tip": "Porządkuj długą listę argumentów tym skrótem.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 13,
+      "title_pl": "Pogrubienie, kursywa i struktura nagłówków",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Pogrubienie, kursywa i struktura nagłówków",
+          "Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.",
+          "Przykład zawodowy: Potrzebujesz automatycznego spisu treści długiej instrukcji.",
+          "Prawidłowe postępowanie: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.",
+          "situation": "Potrzebujesz automatycznego spisu treści długiej instrukcji.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły.",
+          "explanation": "Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.",
+          "feedback": [
+            "Dobrze. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.",
+            "Nie. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności.",
+            "Nie. Ctrl+B, Ctrl+I i Ctrl+U zmieniają wygląd, ale nie tworzą logicznej struktury dokumentu. Do tytułów rozdziałów używaj stylów Nagłówek 1, Nagłówek 2 — to podstawa spisu treści i dostępności."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Oznacz rozdziały stylami nagłówków zamiast ręcznie pogrubiać wszystkie tytuły."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "Alt",
+              "1"
+            ],
+            "combo": "Ctrl+Alt+1",
+            "kind": "hotkey",
+            "label": "Nadaj styl Nagłówek 1",
+            "before": "Duży tekst wyglądający jak tytuł",
+            "after": "Semantyczny Nagłówek 1",
+            "tip": "Zamiast powiększać i pogrubiać, stosuj styl.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Alt",
+              "2"
+            ],
+            "combo": "Ctrl+Alt+2",
+            "kind": "hotkey",
+            "label": "Nadaj styl Nagłówek 2",
+            "before": "Podrozdział bez struktury",
+            "after": "Podrozdział jako Nagłówek 2",
+            "tip": "Stosuj logiczną hierarchię: H2 pod H1.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Alt",
+              "3"
+            ],
+            "combo": "Ctrl+Alt+3",
+            "kind": "hotkey",
+            "label": "Nadaj styl Nagłówek 3",
+            "before": "Podpunkt bez poziomu",
+            "after": "Podpunkt jako Nagłówek 3",
+            "tip": "Nie pomijaj poziomów nagłówków bez powodu.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "N"
+            ],
+            "combo": "Ctrl+Shift+N",
+            "kind": "hotkey",
+            "label": "Ustaw styl Normalny",
+            "before": "Zaznaczony fragment jest nagłówkiem",
+            "after": "Fragment znów ma styl zwykłego akapitu",
+            "tip": "Przydatne po przypadkowym zastosowaniu stylu.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "L"
+            ],
+            "combo": "Ctrl+Shift+L",
+            "kind": "hotkey",
+            "label": "Utwórz listę punktowaną",
+            "before": "Zakupy w osobnych liniach",
+            "after": "Lista z punktami",
+            "tip": "Nie wpisuj ręcznie znaków •, gdy Word może prowadzić listę.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "S"
+            ],
+            "combo": "Ctrl+Shift+S",
+            "kind": "hotkey",
+            "label": "Panel Zastosuj style",
+            "before": "Nie pamiętasz nazwy stylu",
+            "after": "Możesz wyszukać i zastosować styl",
+            "tip": "W firmowym szablonie style mogą mieć własne nazwy.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 14,
+      "title_pl": "Akapity, wyrównanie i tabulatory",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Akapity, wyrównanie i tabulatory",
+          "Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.",
+          "Przykład zawodowy: Kwoty i nazwiska mają być w dwóch równych kolumnach.",
+          "Prawidłowe postępowanie: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.",
+          "situation": "Kwoty i nazwiska mają być w dwóch równych kolumnach.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji.",
+          "explanation": "Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.",
+          "feedback": [
+            "Dobrze. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.",
+            "Nie. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji.",
+            "Nie. Wyśrodkowanie i wyrównanie dotyczą całego akapitu. Tabulatory oraz tabele pomagają wyrównywać dane lepiej niż wstawianie dziesiątek spacji."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Użyj tabeli lub zdefiniowanych tabulatorów, nie ręcznych spacji."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "Home"
+            ],
+            "combo": "Ctrl+Home",
+            "kind": "hotkey",
+            "label": "Przejdź na początek",
+            "before": "Kursor na stronie 27",
+            "after": "Kursor na początku dokumentu",
+            "tip": "Przydatne po zakończeniu redakcji.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "End"
+            ],
+            "combo": "Ctrl+End",
+            "kind": "hotkey",
+            "label": "Przejdź na koniec",
+            "before": "Kursor na stronie 2",
+            "after": "Kursor na końcu dokumentu",
+            "tip": "Szybko dodasz zakończenie lub podpis.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "F"
+            ],
+            "combo": "Ctrl+F",
+            "kind": "hotkey",
+            "label": "Otwórz wyszukiwanie",
+            "before": "Nie wiesz, gdzie występuje nazwa klienta",
+            "after": "Wyszukujesz frazę w dokumencie",
+            "tip": "Wpisuj charakterystyczne słowo, nie całe długie zdanie.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "H"
+            ],
+            "combo": "Ctrl+H",
+            "kind": "hotkey",
+            "label": "Znajdź i zamień",
+            "before": "Stara nazwa firmy w wielu miejscach",
+            "after": "Możesz zamienić nazwę w całym pliku",
+            "tip": "Najpierw sprawdź znalezione wystąpienia, by nie uszkodzić innych słów.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "G"
+            ],
+            "combo": "Ctrl+G",
+            "kind": "hotkey",
+            "label": "Przejdź do",
+            "before": "Szukasz strony 15",
+            "after": "Otwiera się okno przechodzenia",
+            "tip": "Wybierz numer strony, sekcję lub inną lokalizację.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "A"
+            ],
+            "combo": "Ctrl+A",
+            "kind": "hotkey",
+            "label": "Zaznacz wszystko",
+            "before": "Zaznaczono jedno słowo",
+            "after": "Zaznaczona cała zawartość dokumentu",
+            "tip": "Przed masową zmianą zrób kopię pliku.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 15,
+      "title_pl": "Znajdź i nawiguj w długim dokumencie",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Znajdź i nawiguj w długim dokumencie",
+          "Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.",
+          "Przykład zawodowy: W 50-stronicowej instrukcji zmieniła się nazwa urządzenia.",
+          "Prawidłowe postępowanie: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.",
+          "situation": "W 50-stronicowej instrukcji zmieniła się nazwa urządzenia.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem.",
+          "explanation": "Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.",
+          "feedback": [
+            "Dobrze. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.",
+            "Nie. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu.",
+            "Nie. Ctrl+F znajduje słowo, a Ctrl+Home i Ctrl+End pomagają przeskakiwać po treści. Zanim masowo zastąpisz nazwę, sprawdź, czy nie pojawia się w innym znaczeniu."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wyszukaj wystąpienia i sprawdź kontekst każdego użycia przed zastąpieniem."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "→"
+            ],
+            "combo": "Ctrl+Shift+Right",
+            "kind": "hotkey",
+            "label": "Zaznacz do końca następnego wyrazu",
+            "before": "Kursor przed słowem",
+            "after": "Następny wyraz zaznaczony",
+            "tip": "Przytrzymaj Shift i Ctrl, a potem naciskaj strzałkę.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "←"
+            ],
+            "combo": "Ctrl+Shift+Left",
+            "kind": "hotkey",
+            "label": "Zaznacz poprzedni wyraz",
+            "before": "Kursor po słowie",
+            "after": "Poprzedni wyraz zaznaczony",
+            "tip": "Dobre do poprawiania końca zdania.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "C"
+            ],
+            "combo": "Ctrl+C",
+            "kind": "hotkey",
+            "label": "Kopiuj",
+            "before": "Tekst zaznaczony, brak kopii",
+            "after": "Tekst w schowku",
+            "tip": "Po skopiowaniu nie musisz usuwać oryginału.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "V"
+            ],
+            "combo": "Ctrl+V",
+            "kind": "hotkey",
+            "label": "Wklej",
+            "before": "Schowek zawiera tekst",
+            "after": "Tekst wklejony w miejscu kursora",
+            "tip": "Sprawdź formatowanie po wklejeniu z internetu.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "X"
+            ],
+            "combo": "Ctrl+X",
+            "kind": "hotkey",
+            "label": "Wytnij",
+            "before": "Zaznaczony akapit w złym miejscu",
+            "after": "Akapit przeniesiony do schowka",
+            "tip": "Po wycięciu od razu wklej w docelowe miejsce.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Backspace"
+            ],
+            "combo": "Ctrl+Backspace",
+            "kind": "hotkey",
+            "label": "Usuń poprzedni wyraz",
+            "before": "Kursor po błędnym wyrazie",
+            "after": "Cały poprzedni wyraz usunięty",
+            "tip": "Pracuj na kopii dokumentu, gdy ćwiczysz nowe skróty.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 16,
+      "title_pl": "Obrazy i tabele w praktyce",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Obrazy i tabele w praktyce",
+          "Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.",
+          "Przykład zawodowy: Protokół odbioru wymaga zdjęć usterek i ich lokalizacji.",
+          "Prawidłowe postępowanie: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.",
+          "situation": "Protokół odbioru wymaga zdjęć usterek i ich lokalizacji.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność.",
+          "explanation": "Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.",
+          "feedback": [
+            "Dobrze. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.",
+            "Nie. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku.",
+            "Nie. Obraz ma mieć podpis, właściwe osadzenie i — jeśli przekazuje ważną treść — tekst alternatywny. W tabeli zadbaj o nagłówki i odpowiedni układ na telefonie i w druku."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz tabelę pomieszczenie–usterka–zdjęcie–data i sprawdź czytelność."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "Ctrl",
+              "Enter"
+            ],
+            "combo": "Ctrl+Enter",
+            "kind": "hotkey",
+            "label": "Wstaw podział strony",
+            "before": "Nowy rozdział zaczyna się na dole strony",
+            "after": "Nowy rozdział zaczyna następną stronę",
+            "tip": "Nie zastępuj podziału strony kilkunastoma Enterami.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Shift",
+              "Enter"
+            ],
+            "combo": "Shift+Enter",
+            "kind": "hotkey",
+            "label": "Złam wiersz bez nowego akapitu",
+            "before": "Dwie linie tworzą osobne akapity",
+            "after": "Następna linia w tym samym akapicie",
+            "tip": "Przydatne w adresie lub wersach, gdy nie chcesz nowego akapitu.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "8"
+            ],
+            "combo": "Ctrl+Shift+8",
+            "kind": "hotkey",
+            "label": "Pokaż znaki niedrukowane",
+            "before": "Nie wiesz, skąd biorą się puste linie",
+            "after": "Widzisz znaczniki akapitów i spacji",
+            "tip": "Ponowne użycie skrótu ukrywa te znaki.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Shift",
+              "Space"
+            ],
+            "combo": "Ctrl+Shift+Space",
+            "kind": "hotkey",
+            "label": "Spacja nierozdzielająca",
+            "before": "Liczba 10 i jednostka km rozdzielają się przy końcu linii",
+            "after": "Liczba i jednostka pozostają razem",
+            "tip": "Użyj między liczbą a jednostką lub inicjałem a nazwiskiem.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "P"
+            ],
+            "combo": "Ctrl+P",
+            "kind": "hotkey",
+            "label": "Sprawdź wydruk",
+            "before": "Długi akapit przeskakuje na kolejną stronę",
+            "after": "Widzisz rozkład stron przed wydrukiem",
+            "tip": "Przejrzyj dokument zanim wyślesz PDF klientowi.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "S"
+            ],
+            "combo": "Ctrl+S",
+            "kind": "hotkey",
+            "label": "Zachowaj ostatnie zmiany",
+            "before": "Poprawione pismo niezapisane",
+            "after": "Ostatnie poprawki zapisane",
+            "tip": "Stosuj krótką checklistę przed wysyłką: nazwa, data, podpis, załącznik.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 17,
+      "title_pl": "Nagłówki i stopki dokumentu",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Nagłówki i stopki dokumentu",
+          "Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.",
+          "Przykład zawodowy: Dodajesz stronę do raportu i wszystkie numery się przesuwają.",
+          "Prawidłowe postępowanie: Włącz automatyczne numery stron i sprawdź ustawienia sekcji.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.",
+          "situation": "Dodajesz stronę do raportu i wszystkie numery się przesuwają.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Włącz automatyczne numery stron i sprawdź ustawienia sekcji.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Włącz automatyczne numery stron i sprawdź ustawienia sekcji.",
+          "explanation": "Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.",
+          "feedback": [
+            "Dobrze. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.",
+            "Nie. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ.",
+            "Nie. Automatyczna numeracja stron jest stabilniejsza niż ręczne wpisywanie numerów. W nagłówku lub stopce możesz umieścić nazwę projektu i numer rewizji. Pierwsza strona może mieć inny układ."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Włącz automatyczne numery stron i sprawdź ustawienia sekcji."
+        },
+        "shortcuts": [
+          {
+            "keys": [
+              "F7"
+            ],
+            "combo": "F7",
+            "kind": "hotkey",
+            "label": "Sprawdź pisownię i gramatykę",
+            "before": "W dokumencie potencjalne błędy",
+            "after": "Otwiera się moduł Redaktor",
+            "tip": "Narzędzie pomaga, ale nie rozumie wszystkich nazw własnych.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "K"
+            ],
+            "combo": "Ctrl+K",
+            "kind": "hotkey",
+            "label": "Wstaw hiperłącze",
+            "before": "Adres www zapisany jako zwykły tekst",
+            "after": "Okno wstawiania linku",
+            "tip": "Nadaj linkom opisowy tekst, nie samo „kliknij tutaj”.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Z"
+            ],
+            "combo": "Ctrl+Z",
+            "kind": "hotkey",
+            "label": "Cofnij błędną zmianę",
+            "before": "Przypadkowo skasowane zdanie",
+            "after": "Zdanie przywrócone",
+            "tip": "Przećwicz na kopii dokumentu: usuń fragment, potem cofnij.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "S"
+            ],
+            "combo": "Ctrl+S",
+            "kind": "hotkey",
+            "label": "Zapisz finalną wersję",
+            "before": "Tekst gotowy, ale niezapisany",
+            "after": "Dokument zapisany",
+            "tip": "W nazwie użyj wersji i daty, np. Oferta_2026-11-08.docx.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "P"
+            ],
+            "combo": "Ctrl+P",
+            "kind": "hotkey",
+            "label": "Podgląd końcowy",
+            "before": "Nie wiesz, jak wygląda wynik",
+            "after": "Widzisz wszystkie strony",
+            "tip": "Sprawdź numerację i marginesy.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          },
+          {
+            "keys": [
+              "Ctrl",
+              "Home"
+            ],
+            "combo": "Ctrl+Home",
+            "kind": "hotkey",
+            "label": "Kontrola od początku",
+            "before": "Jesteś na końcu dokumentu",
+            "after": "Wracasz na pierwszą stronę",
+            "tip": "Zrób końcową korektę od początku do końca.",
+            "platform": "Microsoft Word dla Windows — domyślne ustawienia"
+          }
+        ],
+        "quickTips": [
+          "Przytrzymaj klawisz Ctrl lub Shift, a drugi naciśnij krótko.",
+          "Jeśli skrót nie działa w Word Online, sprawdź dokumentację dla wersji przeglądarkowej.",
+          "Nie pracuj na jedynej kopii ważnego dokumentu."
+        ],
+        "exercise": "Wykonaj wszystkie 6 poleceń w pustym dokumencie, opisz które były dla Ciebie najważniejsze i spróbuj je powtórzyć bez patrzenia.",
+        "references": [
+          {
+            "label": "Microsoft Support — skróty klawiaturowe w Word",
+            "url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+          }
+        ],
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 18,
+      "title_pl": "Komentarze i śledzenie zmian",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Komentarze i śledzenie zmian",
+          "Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.",
+          "Przykład zawodowy: Współpracownik zmienił kilka istotnych zdań w umowie.",
+          "Prawidłowe postępowanie: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.",
+          "situation": "Współpracownik zmienił kilka istotnych zdań w umowie.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby.",
+          "explanation": "Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.",
+          "feedback": [
+            "Dobrze. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.",
+            "Nie. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane.",
+            "Nie. Tryb Śledź zmiany pozwala odczytać poprawki, a komentarze wspierają rozmowę nad dokumentem. Widoczna poprawka nie jest automatycznie zatwierdzona. Przed finalnym wydaniem usuń tylko to, co powinno zostać zaakceptowane."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przejrzyj każdą zmianę i dopilnuj formalnej akceptacji właściwej osoby."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 19,
+      "title_pl": "Praktyka: raport z fotografiami",
+      "material": {
+        "section": 2,
+        "level": "praktyka",
+        "raw": [
+          "Praktyka: raport z fotografiami",
+          "Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.",
+          "Przykład zawodowy: Raport z budowy ma trzy usterki bez przypisanej lokalizacji.",
+          "Prawidłowe postępowanie: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.",
+          "situation": "Raport z budowy ma trzy usterki bez przypisanej lokalizacji.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk.",
+          "explanation": "Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.",
+          "feedback": [
+            "Dobrze. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.",
+            "Nie. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji.",
+            "Nie. Przygotuj trzystronicowy raport z nagłówkami, opisami, tabelą, zdjęciem i numeracją. Sprawdź wersję DOCX i PDF. Rzetelny raport pozwala odtworzyć miejsce, datę i rodzaj obserwacji."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Dodaj adresy, opisy, zdjęcia i odpowiedzialność, a następnie sprawdź wydruk."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 20,
+      "title_pl": "Expert: sekcje i orientacja stron",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: sekcje i orientacja stron",
+          "Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.",
+          "Przykład zawodowy: W długim raporcie jedna szeroka tabela potrzebuje układu poziomego.",
+          "Prawidłowe postępowanie: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.",
+          "situation": "W długim raporcie jedna szeroka tabela potrzebuje układu poziomego.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację.",
+          "explanation": "Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.",
+          "feedback": [
+            "Dobrze. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.",
+            "Nie. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji.",
+            "Nie. Podziały sekcji umożliwiają różny format stron w jednym dokumencie. Trzeba pilnować połączeń nagłówków i stopek, by przypadkowo nie przejąć numeracji innej sekcji."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Wstaw kontrolowany podział sekcji, zmień orientację tylko tej części i sprawdź numerację."
+        },
+        "editorial_status": "review_needed",
+        "illustration": "word-interface"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 21,
+      "title_pl": "Expert: automatyczny spis treści",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: automatyczny spis treści",
+          "Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.",
+          "Przykład zawodowy: Po dodaniu nowego rozdziału spis pokazuje stare numery stron.",
+          "Prawidłowe postępowanie: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.",
+          "situation": "Po dodaniu nowego rozdziału spis pokazuje stare numery stron.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zaktualizuj cały spis i zweryfikuj strukturę nagłówków.",
+          "explanation": "Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.",
+          "feedback": [
+            "Dobrze. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.",
+            "Nie. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu.",
+            "Nie. Spis treści korzysta ze stylów, a po zmianach wymaga odświeżenia. Numer strony może się zmienić po dodaniu tabeli lub ilustracji; ręczne numery w spisie zwiększają ryzyko błędu."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zaktualizuj cały spis i zweryfikuj strukturę nagłówków."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 22,
+      "title_pl": "Expert: szablony i pola",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: szablony i pola",
+          "Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.",
+          "Przykład zawodowy: Masz przygotować 40 ofert na jednym wzorze.",
+          "Prawidłowe postępowanie: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.",
+          "situation": "Masz przygotować 40 ofert na jednym wzorze.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty.",
+          "explanation": "Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.",
+          "feedback": [
+            "Dobrze. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.",
+            "Nie. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy.",
+            "Nie. Szablon zapewnia spójny wygląd ofert i pism. Dynamiczne pola, np. data i numer strony, należy kontrolować przy wydruku. Przed ponownym użyciem trzeba usunąć dane poprzedniego odbiorcy."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Stwórz czysty szablon, uzupełniaj dane i przeprowadzaj kontrolę każdej oferty."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 23,
+      "title_pl": "Expert: korespondencja seryjna",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: korespondencja seryjna",
+          "Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.",
+          "Przykład zawodowy: Przy wydruku zaproszeń nazwiska nie pasują do adresów.",
+          "Prawidłowe postępowanie: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.",
+          "situation": "Przy wydruku zaproszeń nazwiska nie pasują do adresów.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką.",
+          "explanation": "Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.",
+          "feedback": [
+            "Dobrze. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.",
+            "Nie. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd.",
+            "Nie. Korespondencja seryjna łączy szablon z listą odbiorców. Błędne mapowanie kolumn może połączyć cudze nazwisko z innym adresem. Używaj zgodnych z prawem danych i zawsze sprawdzaj podgląd."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zatrzymaj druk i sprawdź mapowanie, źródło danych oraz podgląd przed wysyłką."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 24,
+      "title_pl": "Expert: dostępność dla każdego",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: dostępność dla każdego",
+          "Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.",
+          "Przykład zawodowy: Plik PDF ma piękne strony, ale czytnik ekranu nie znajduje nagłówków.",
+          "Prawidłowe postępowanie: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.",
+          "situation": "Plik PDF ma piękne strony, ale czytnik ekranu nie znajduje nagłówków.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem.",
+          "explanation": "Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.",
+          "feedback": [
+            "Dobrze. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.",
+            "Nie. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument.",
+            "Nie. Czytnik ekranu wymaga strukturalnych nagłówków, kolejności czytania, etykiet tabel i opisów obrazów. Sama duża pogrubiona czcionka nie zastępuje stylu. Przed publikacją testuj dokument."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Popraw style i teksty alternatywne w źródłowym dokumencie przed eksportem."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 25,
+      "title_pl": "Expert: prywatność i metadane",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: prywatność i metadane",
+          "Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.",
+          "Przykład zawodowy: W ofercie nadal są komentarze o wewnętrznych cenach.",
+          "Prawidłowe postępowanie: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.",
+          "situation": "W ofercie nadal są komentarze o wewnętrznych cenach.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę.",
+          "explanation": "Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.",
+          "feedback": [
+            "Dobrze. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.",
+            "Nie. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy.",
+            "Nie. Dokument może zawierać komentarze, historię poprawek, nazwy autorów i poufne dane. Kolor białej czcionki nie usuwa tych informacji. Przed przekazaniem na zewnątrz oczyść dokument zgodnie z polityką firmy."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Przygotuj czystą kopię i zweryfikuj ukrytą historię, dane autora i odbiorcę."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 26,
+      "title_pl": "Expert: rewizje i współpraca zespołowa",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: rewizje i współpraca zespołowa",
+          "Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.",
+          "Przykład zawodowy: Dwie osoby wysłały różne pliki nazwane final.docx.",
+          "Prawidłowe postępowanie: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.",
+          "situation": "Dwie osoby wysłały różne pliki nazwane final.docx.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię.",
+          "explanation": "Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.",
+          "feedback": [
+            "Dobrze. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.",
+            "Nie. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem.",
+            "Nie. Nazwy plików z datą i numerem rewizji pomagają ustalić aktualną wersję. Gdy dwóch autorów zmienia dokument, trzeba porównać poprawki i potwierdzić wydanie. Losowa nazwa final_final2 nie jest dobrym procesem."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj zmiany i wskaż zatwierdzoną rewizję, zachowując historię."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 27,
+      "title_pl": "Expert: eksport i kontrola PDF",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: eksport i kontrola PDF",
+          "Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.",
+          "Przykład zawodowy: Tabela wygląda dobrze w Wordzie, ale ucieka poza margines w PDF.",
+          "Prawidłowe postępowanie: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.",
+          "situation": "Tabela wygląda dobrze w Wordzie, ale ucieka poza margines w PDF.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę.",
+          "explanation": "Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.",
+          "feedback": [
+            "Dobrze. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.",
+            "Nie. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę.",
+            "Nie. Eksport do PDF zachowuje układ, lecz wymaga sprawdzenia tabel, marginesów, podziałów i zawartości. Wersja dostępna powinna zachować możliwą do odczytu strukturę."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Napraw układ w DOCX, ponownie eksportuj i skontroluj każdą stronę."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 28,
+      "title_pl": "Expert: odzyskiwanie po awarii",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Expert: odzyskiwanie po awarii",
+          "Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.",
+          "Przykład zawodowy: Po pracy offline Word zgłasza konflikt dwóch zapisów.",
+          "Prawidłowe postępowanie: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.",
+          "situation": "Po pracy offline Word zgłasza konflikt dwóch zapisów.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki.",
+          "explanation": "Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.",
+          "feedback": [
+            "Dobrze. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.",
+            "Nie. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją.",
+            "Nie. Autosave i historia wersji pomagają odzyskać dokument, ale nie zastępują niezależnej kopii i kontroli konfliktów synchronizacji. Przy konflikcie zachowaj obie wersje przed decyzją."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Porównaj obie kopie, zachowaj ich historię i połącz zatwierdzone poprawki."
+        },
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "word-skroty",
+      "lesson_no": 29,
+      "title_pl": "Egzamin próbny Word: samodzielny raport",
+      "material": {
+        "section": 3,
+        "level": "expert",
+        "raw": [
+          "Egzamin próbny Word: samodzielny raport",
+          "Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.",
+          "Przykład zawodowy: Firma wymaga raportu z harmonogramem, zdjęciami, tabelą i podpisami.",
+          "Prawidłowe postępowanie: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.",
+          "Czego unikamy: Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych."
+        ],
+        "learning": {
+          "intro": "Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.",
+          "situation": "Firma wymaga raportu z harmonogramem, zdjęciami, tabelą i podpisami.",
+          "question": "Jakie rozwiązanie zastosujesz, żeby wynik był poprawny?",
+          "options": [
+            "Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.",
+            "Wykonuję operację na przypadkowym pliku lub obiekcie, nie kontrolując danych wejściowych.",
+            "Pomijam sprawdzenie dokumentu i uznaję sam wygląd za dowód poprawności."
+          ],
+          "correct": 0,
+          "example": "Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy.",
+          "explanation": "Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.",
+          "feedback": [
+            "Dobrze. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.",
+            "Nie. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności.",
+            "Nie. Poziom Expert to zdolność samodzielnego przygotowania jasnego i dostępnego dokumentu, kontroli danych, poprawek i wydania. Szybkość klikania nie zastępuje jakości i odpowiedzialności."
+          ],
+          "task": "Samodzielnie otwórz dokument testowy i zastosuj zasadę: Zbuduj strukturalny DOCX, sprawdź daty i odbiorców, wygeneruj kontrolowany PDF i zachowaj plik źródłowy."
+        },
+        "editorial_status": "review_needed"
+      }
+    }
+  ]
+}
