@@ -68,9 +68,9 @@ function ShortcutCard({item,index,onRun,active}:{item:KeyboardShortcut,index:num
   </Pressable>
  </View>;
 }
-export default function KeyboardLesson({shortcuts,tips,exercise,references,onPracticed,onAttempt}:{
+export default function KeyboardLesson({shortcuts,tips,exercise,references,onPracticed,onAttempt,identity}:{
  shortcuts?:KeyboardShortcut[];tips?:string[];exercise?:string;references?:KeyboardReference[];
- onPracticed?:(verified:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>void;
+ identity?:string;onPracticed?:(verified:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>void;
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
  const [active,setActive]=useState<KeyboardShortcut|null>(null);
@@ -109,7 +109,7 @@ export default function KeyboardLesson({shortcuts,tips,exercise,references,onPra
    <Text style={{color:ink,fontSize:23,fontWeight:'900'}}>Sprawdź to samodzielnie ⌨️</Text>
    <Text style={{color:secondary,lineHeight:22}}>Wybierz skrót, zobacz jak zmienia się przykładowy dokument albo rysunek i powtórz to w swoim programie. Tutaj ćwiczysz bez ryzyka dla prawdziwych plików.</Text>
   </View>
-  {(mode==='excel'||mode==='cad')?<HandsOnLab mode={mode} active={active} runId={runId}/>:<SoftwarePlayground mode={mode} active={active}/>}
+  {(mode==='excel'||mode==='cad')?<HandsOnLab key={identity||mode} mode={mode} active={active} runId={runId}/>:<SoftwarePlayground mode={mode} active={active}/>}
   {aliases&&<View style={{backgroundColor:'#f5f8f1',padding:16,borderRadius:13,gap:8}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Wpisz polecenie AutoCAD i naciśnij Enter</Text>
    <TextInput value={command} autoCapitalize="characters" onChangeText={setCommand} onSubmitEditing={runCommand} returnKeyType="done" placeholder="Np. L, C, REC, PL…" style={{borderWidth:1,borderColor:'#bdcfba',borderRadius:10,padding:13,backgroundColor:'white',color:ink,fontWeight:'800'}}/>
