@@ -104,6 +104,14 @@ try{
  if(!sandbox.includes('mode===\'cad\'')||!sandbox.includes('mode===\'windows\'')||!sandbox.includes('isExcel')||!sandbox.includes('isWord'))fail('Virtual software screens missing');
  if(!cases.includes('onPassed')||!progress.includes('const canFinish='))fail('Graded lesson checkpoint missing');
  if(!progress.includes('ta_learning_attempts')||!progress.includes("recordAttempt('case'")||!progress.includes("recordAttempt('construction'")||!progress.includes("recordAttempt('keyboard'"))fail('All graded exercise categories must save individual attempts');
+ const guideServer=read('supabase/functions/ta-lesson-guide/index.ts');
+ if(!progress.includes("action:'attempt'")||progress.includes(".from('ta_learning_attempts').insert")||
+    !guideServer.includes("if(action==='attempt')")||
+    !guideServer.includes("correct=selected===answer")||
+    !guideServer.includes("active===chosen")||
+    !guideServer.includes("db.from('ta_learning_attempts').insert"))
+  fail('Quiz answers must be validated and recorded only by the authenticated server function');
+ else ok('Quiz completion protected against client-side correct flag forgery');
  if(page.includes("lekcji i ćwiczenia</span>'"))fail('Literal lesson-count bug in cards');
  if(!academy.includes("functions.invoke('ta-academy'"))fail('Protected backend integration missing');
  if(/service_role|stripe_secret_key/i.test(checkout+academy+gift+admin))fail('Server secret name exposed in frontend, review required');
