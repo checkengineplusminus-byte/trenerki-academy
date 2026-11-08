@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
-import AiTutor from '../src/AiTutor';
+import GuidedDialogue from '../src/GuidedDialogue';
 import CourseIntro from '../src/CourseIntro';
 import ConceptAtlas from '../src/ConceptAtlas';
 import FinalExam from '../src/FinalExam';
@@ -21,7 +21,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[dialogueReady,setDialogueReady]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -52,7 +52,7 @@ export default function Learning(){
     const state=draft.data?.notes||{};
     setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
     const resume=draft.data?.last_module;
-    const next=all.some(v=>v.lesson_no===resume&&!completed.includes(v.lesson_no))?resume:all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all[0]?.lesson_no??0;
+    const next=all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all[all.length-1]?.lesson_no??0; // resume always at earliest unfinished stage
     setModule(next);
    }
   }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
@@ -77,10 +77,20 @@ export default function Learning(){
    });
   }catch(e:any){setMsg('Odpowiedź sprawdzona, ale historia próby nie została zapisana. '+String(e?.message||'').slice(0,110));}
  }
- function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setVerified(false);setVerifiedKeyboard(false);setMsg('');}}
+ function changeModule(number:number){
+  const firstPending=items.find(v=>!done.includes(v.lesson_no));
+  if(!items.some(v=>v.lesson_no===number))return;
+  if(firstPending&&number>firstPending.lesson_no){setMsg('Ten etap jest jeszcze zamknięty. Najpierw ukończ wcześniejszą lekcję i rozmowę z Anielką.');return;}
+  setModule(number);setVerified(false);setVerifiedKeyboard(false);setDialogueReady(false);setMsg('');
+ }
+ const firstPending=items.find(v=>!done.includes(v.lesson_no));
+ const unlockedNo=firstPending?.lesson_no??Infinity;
  const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
- const canFinish=done.includes(module)||(!lesson?.material?.learning&&!lesson?.material?.construction&&!lesson?.material?.shortcuts?.length)||
-  ((!lesson?.material?.learning&&!lesson?.material?.construction||verified)&&(!lesson?.material?.shortcuts?.length||verifiedKeyboard));
+ const canFinish=done.includes(module)||(
+   dialogueReady&&
+   (!lesson?.material?.learning&&!lesson?.material?.construction||verified)&&
+   (!lesson?.material?.shortcuts?.length||verifiedKeyboard)
+ );
  async function persistDraft(target:number,noteState:NoteState){
   if(!userId)return;
   const {error:e}=await supabase.from('ta_drafts').upsert({
@@ -89,29 +99,29 @@ export default function Learning(){
   },{onConflict:'user_id,course_slug'});
   if(e)throw e;
  }
- async function saveNotes(){
-  if(saving||!userId)return;setSaving(true);setMsg('');
-  try{await persistDraft(module,notes);setMsg('Notatki zapisane.');}
-  catch(e:any){setMsg('Nie udało się zapisać notatek: '+(e?.message||'błąd sieci'));}
-  finally{setSaving(false);}
- }
  async function finishLesson(){
   if(saving||!userId||!lesson)return;
-  if(!canFinish){setMsg('Najpierw rozwiąż krótkie ćwiczenie i sprawdź odpowiedź. Potem możesz przejść dalej.');return;}
+  if(!canFinish){setMsg('Aby przejść dalej, wykonaj ćwiczenia i porozmawiaj z Anielką. Kolejność etapów jest obowiązkowa.');return;}
   setSaving(true);setMsg('');
   try{
    if(!done.includes(module)){
-    // Postęp zapisujemy NAJPIERW. Brak zapisu notatek nie może odebrać ukończenia lekcji.
-    const {error:pe}=await supabase.from('ta_learning_progress').upsert({
-     user_id:userId,course_slug:slug,lesson_no:module
-    },{onConflict:'user_id,course_slug,lesson_no'});
-    if(pe)throw pe;
+    // Server verifies the two-way dialogue, quiz attempts and chronological ordering.
+    const {data:result,error:pe}=await supabase.functions.invoke<{ok?:boolean;completed?:boolean;error?:string}>('ta-lesson-guide',{
+      body:{action:'complete',course_slug:slug,lesson_no:module}
+    });
+    if(pe||!result?.completed){
+      const msg=result?.error==='dialogue_required'?'Anielka musi jeszcze potwierdzić zrozumienie tematu.':
+       result?.error==='exercise_required'?'Wykonaj poprawnie ćwiczenie praktyczne, a potem spróbuj ponownie.':
+       result?.error==='previous_lessons_required'?'Najpierw ukończ poprzednie lekcje.':
+       'Nie udało się potwierdzić zaliczenia na serwerze. Spróbuj ponownie.';
+      throw new Error(msg);
+    }
     setDone(prev=>prev.includes(module)?prev:[...prev,module]);
    }
    const target=next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
+   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setDialogueReady(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
    else setMsg('Brawo! Ukończono wszystkie lekcje. Poniżej dostępny jest egzamin końcowy Anielki — postęp 100% to jeszcze nie zaliczenie kursu.');
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
@@ -130,7 +140,7 @@ export default function Learning(){
     <View style={{height:9,backgroundColor:'#cfddca',borderRadius:9,marginTop:10,overflow:'hidden'}}>
      <View style={{height:9,width:progress+'%',backgroundColor:'#7cae6e'}}/>
     </View>
-    <Text style={{fontSize:12,color:secondary,marginTop:9}}>Ukończono {completed} z {items.length} lekcji. Możesz wrócić do każdej lekcji.</Text>
+    <Text style={{fontSize:12,color:secondary,marginTop:9}}>Ukończono {completed} z {items.length} lekcji. Nowe etapy otwierają się wyłącznie po zaliczeniu poprzedniego.</Text>
     {practice.attempts>0&&<Text style={{fontSize:12,color:secondary,marginTop:7}}>Sprawdziany: {practice.correct} poprawnych odpowiedzi z {practice.attempts} prób. Błędy pomagają rozpoznać, co trzeba powtórzyć.</Text>}
    </View>
    {items.some(x=>(review[String(x.lesson_no)]?.incorrect||0)>0&&(review[String(x.lesson_no)]?.correct||0)===0)&&<View style={{backgroundColor:'#fff5e5',borderRadius:14,padding:16,marginBottom:15,gap:9}}>
@@ -149,8 +159,8 @@ export default function Learning(){
    ]:[{name:'DOSTĘPNE LEKCJE',about:'Program w trakcie rozbudowy',list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#dfe9dc',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
-     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#f8faf6',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
-      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':''}{v.lesson_no+1}</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} disabled={v.lesson_no>unlockedNo} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(v.lesson_no>unlockedNo?' — zablokowana':'')} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,opacity:v.lesson_no>unlockedNo?0.38:1,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#f8faf6',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':v.lesson_no>unlockedNo?'🔒 ':''}{v.lesson_no+1}</Text>
      </Pressable>)}</View>
    </View>)}
    {progress===100&&<View style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
@@ -189,24 +199,14 @@ export default function Learning(){
    }
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
    {progress===100&&<FinalExam courseSlug={slug}/>}
-   <AiTutor courseSlug={slug} lessonNo={module}/>
-   <View style={{marginTop:23,gap:9}}>
-    <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Moje notatki do tej lekcji</Text>
-    <TextInput multiline value={currentNotes} onChangeText={text=>setNotes(prev=>({...prev,[String(module)]:text}))} placeholder="Co zapamiętasz? Zapisz własny przykład…" style={{backgroundColor:'white',borderColor:line,borderWidth:1,borderRadius:13,padding:15,minHeight:95,textAlignVertical:'top'}}/>
-    <Pressable disabled={saving} onPress={saveNotes} style={{padding:13,backgroundColor:'#e2eddc',borderRadius:11,alignItems:'center',opacity:saving?0.55:1}}>
-     <Text style={{color:ink,fontWeight:'800'}}>Zapisz notatki</Text>
-    </Pressable>
-   </View>
+   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} onReady={setDialogueReady}/>
    <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
-    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Najpierw rozwiąż ćwiczenie':next!==undefined?'Ukończ i przejdź do następnej lekcji':'Zakończ kurs'}</Text>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Najpierw ćwiczenie i rozmowa z Anielką':next!==undefined?'Zalicz etap i przejdź dalej':'Zalicz ostatnią lekcję i przejdź do egzaminu'}</Text>
    </Pressable>
-   {hasExercise&&!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Aby zaliczyć tę lekcję, wykonaj symulację lub wybierz poprawną odpowiedź w zadaniu.</Text>}
+   {!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Zaliczenie wymaga rozmowy z Anielką, a jeśli lekcja zawiera ćwiczenie — również poprawnego rozwiązania. Nie ma opcji pomijania.</Text>}
    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:19,gap:12}}>
     <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
      <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
-    </Pressable>
-    <Pressable disabled={next===undefined} onPress={()=>next!==undefined&&changeModule(next)} style={{padding:11,opacity:next===undefined?0.4:1}}>
-     <Text style={{fontWeight:'800',color:ink}}>Pomiń na razie →</Text>
     </Pressable>
    </View>
   </>}
