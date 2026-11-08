@@ -80,7 +80,7 @@ function nextChoice(bank:Choice[],history:any[],phase:string):Choice|null{
 }
 
 async function gradeWithAi(question:string,expected:string,answer:string):Promise<Grade|null>{
- const apiKey=Deno.env.get('OPENAI_API_KEY');if(!apiKey)return null;
+ const apiKey=(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));if(!apiKey)return null;
  const rubric=[
  'Jesteś rzetelną egzaminatorką Anielką w niezależnej TRENERKI Academy.',
  'Masz ocenić sens, kolejność czynności i kontrolę poprawności odpowiedzi ucznia na praktyczne pytanie z kursu.',
@@ -168,7 +168,7 @@ Deno.serve(async(req:Request)=>{
  if(ce)return json({error:'db_unavailable'},503);
  const ready=(completed||0)>=lessons.length;
  const bank=choiceBank(lessons as Lesson[]);
- const hasAi=!!Deno.env.get('OPENAI_API_KEY');
+ const hasAi=!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));
  const available=hasAi||bank.length>=6;
  let {data:session,error:se}=await db.from('ta_exam_sessions').select('*')
  .eq('user_id',user.id).eq('course_slug',slug).eq('status','in_progress').order('created_at',{ascending:false}).limit(1).maybeSingle();
