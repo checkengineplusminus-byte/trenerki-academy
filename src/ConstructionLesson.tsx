@@ -55,15 +55,15 @@ function Speaker({text,locale}:{text:string;locale:string}){
   {!!message&&<Text style={{color:'#ad6633',fontSize:10,maxWidth:185,textAlign:'right'}}>{message}</Text>}
  </View>;
 }
-export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:{lesson?:ConstructionMaterial,identity?:string,onPassed?:(passed:boolean)=>void,onAttempt?:(index:number,correct:boolean)=>void}){
- const [selected,setSelected]=useState<number|null>(null);
- useEffect(()=>{setSelected(null);onPassed?.(false)},[identity]);
+export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:{lesson?:ConstructionMaterial,identity?:string,onPassed?:(passed:boolean)=>void,onAttempt?:(index:number,correct:boolean)=>Promise<boolean>|boolean}){
+ const [selected,setSelected]=useState<number|null>(null),[confirmed,setConfirmed]=useState(false),[verifying,setVerifying]=useState(false),[verificationError,setVerificationError]=useState('');
+ useEffect(()=>{setSelected(null);setConfirmed(false);setVerifying(false);setVerificationError('');onPassed?.(false)},[identity]);
  if(!lesson)return null;
  const quiz=lesson.roleplay;
  const lessonIndex=Number((identity||'0').split('-').slice(-1)[0])||0;
  const shift=quiz?.options?.length?lessonIndex%quiz.options.length:0;
  const shuffled=(quiz?.options||[]).map((_,i)=>({answer:quiz.options[(i+shift)%quiz.options.length],original:(i+shift)%quiz.options.length}));
- const choiceCorrect=selected!==null&&shuffled[selected]?.original===quiz.correct;
+ const choiceCorrect=selected!==null&&shuffled[selected]?.original===quiz.correct&&confirmed;
  const officialGov=(lesson.official||[]).filter(x=>{
   try{const address=new URL(x.url);return address.protocol==='https:'&&
    ['gov.uk','arbeidstilsynet.no','bmas.de','baua.de'].some(d=>address.hostname===d||address.hostname.endsWith('.'+d));}
@@ -134,11 +134,23 @@ export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:
   {!!quiz&&<View style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
    <Text style={{fontSize:12,color:'#bfe6b0',fontWeight:'900',letterSpacing:1}}>Z ŻYCIA BUDOWY · MAŁA SYMULACJA</Text>
    <Text style={{fontSize:20,color:'white',fontWeight:'900',lineHeight:28}}>{quiz.question}</Text>
-   {shuffled.map(({answer,original},i)=><Pressable key={i} onPress={()=>{setSelected(i);onPassed?.(original===quiz.correct);onAttempt?.(original,original===quiz.correct)}} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
+   {shuffled.map(({answer,original},i)=><Pressable key={i} disabled={verifying||choiceCorrect} onPress={async()=>{
+    if(verifying||choiceCorrect)return;
+    setSelected(i);setVerificationError('');setConfirmed(false);onPassed?.(false);setVerifying(true);
+    try{
+     const localCorrect=original===quiz.correct,accepted=onAttempt?await onAttempt(original,localCorrect):localCorrect;
+     const verified=localCorrect&&!!accepted;
+     setConfirmed(verified);onPassed?.(verified);
+     if(localCorrect&&!verified)setVerificationError('Poprawne rozwiązanie nie zostało zapisane. Wybierz odpowiedź ponownie.');
+    }catch{
+     setConfirmed(false);onPassed?.(false);setVerificationError('Nie udało się zapisać próby. Spróbuj ponownie.');
+    }finally{setVerifying(false)}
+   }} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
     <Text style={{color:ink,fontWeight:'800',lineHeight:21}}>{String.fromCharCode(65+i)}. {answer}</Text>
    </Pressable>)}
+   {!!verificationError&&<Text style={{color:'#f6d9a8',fontWeight:'800'}}>{verificationError}</Text>}
    {selected!==null&&<View style={{backgroundColor:choiceCorrect?'#d4ead2':'#fff0d9',padding:13,borderRadius:11}}>
-    <Text style={{color:ink,fontWeight:'900'}}>{choiceCorrect?'Świetnie — to bezpieczna odpowiedź.':'Spróbuj jeszcze raz. To ważne.'}</Text>
+    <Text style={{color:ink,fontWeight:'900'}}>{choiceCorrect?'Wynik zapisany — możesz przejść dalej.':selected!==null&&shuffled[selected]?.original===quiz.correct?'To prawidłowy wybór. Zapisuję wynik…':'Spróbuj jeszcze raz. To ważne.'}</Text>
     <Text style={{color:'#4e5f4d',marginTop:5,lineHeight:21}}>{quiz.why}</Text>
    </View>}
   </View>}
