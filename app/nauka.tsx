@@ -4,9 +4,10 @@ import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
+import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{raw?:string[],construction?:ConstructionMaterial,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
+ material:{raw?:string[],construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
@@ -15,7 +16,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[saving,setSaving]=useState(false);
+ [busy,setBusy]=useState(true),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false);
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
@@ -48,7 +49,9 @@ export default function Learning(){
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
  const currentNotes=notes[String(module)]||'';
- function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setMsg('');}}
+ function changeModule(number:number){if(items.some(v=>v.lesson_no===number)){setModule(number);setVerified(false);setMsg('');}}
+ const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
+ const canFinish=done.includes(module)||!hasExercise||verified;
  async function persistDraft(target:number,noteState:NoteState){
   if(!userId)return;
   const {error:e}=await supabase.from('ta_drafts').upsert({
@@ -65,6 +68,7 @@ export default function Learning(){
  }
  async function finishLesson(){
   if(saving||!userId||!lesson)return;
+  if(!canFinish){setMsg('Najpierw rozwiąż krótkie ćwiczenie i sprawdź odpowiedź. Potem możesz przejść dalej.');return;}
   setSaving(true);setMsg('');
   try{
    if(!done.includes(module)){
@@ -78,7 +82,7 @@ export default function Learning(){
    const target=next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setMsg(prev=>prev||'Brawo! Lekcja ukończona. Przechodzisz do następnej.');}
+   if(next!==undefined){setModule(next);setVerified(false);setMsg(prev=>prev||'Dobrze! Następna lekcja jest gotowa.');}
    else setMsg('Brawo! Ukończono ostatnią lekcję tego kursu. Możesz wrócić do dowolnego tematu.');
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
@@ -114,12 +118,13 @@ export default function Learning(){
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:26,fontWeight:'900',marginTop:11,marginBottom:17,lineHeight:33}}>{lesson.title_pl}</Text>
    {lesson.material?.construction?
-     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction}/>:
+     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified}/>:
      <>
-      <View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
-       {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/^Źródło:|^Status nauczania w Polsce:|^Wersja edukacyjna|^Historia i praktyczne znaczenie: Nie ma jednolitego/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
-      </View>
-      <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references}/>
+      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified}/>}
+      {!lesson.material?.learning&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
+       {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
+      </View>}
+      <KeyboardLesson shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerified}/>
      </>
    }
    <View style={{marginTop:23,gap:9}}>
@@ -130,8 +135,9 @@ export default function Learning(){
     </Pressable>
    </View>
    <Pressable disabled={saving} onPress={finishLesson} style={{backgroundColor:ink,padding:18,borderRadius:14,marginTop:18,opacity:saving?0.55:1}}>
-    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':next!==undefined?'Ukończ lekcję i przejdź dalej →':'Zakończ kurs ✓'}</Text>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{saving?'Zapisuję…':!canFinish?'Najpierw rozwiąż ćwiczenie':next!==undefined?'Ukończ i przejdź do następnej lekcji':'Zakończ kurs'}</Text>
    </Pressable>
+   {hasExercise&&!canFinish&&<Text style={{fontSize:13,color:'#647565',lineHeight:21,marginTop:10}}>Aby zaliczyć tę lekcję, wykonaj symulację lub wybierz poprawną odpowiedź w zadaniu.</Text>}
    <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:19,gap:12}}>
     <Pressable disabled={previous===undefined} onPress={()=>previous!==undefined&&changeModule(previous)} style={{padding:11,opacity:previous===undefined?0.4:1}}>
      <Text style={{fontWeight:'800',color:ink}}>← Poprzednia</Text>
