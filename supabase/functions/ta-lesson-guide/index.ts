@@ -170,7 +170,7 @@ Deno.serve(async(req:Request)=>{
   return respond({ok:true,completed:true,next:lessons.find(l=>l.lesson_no>no)?.lesson_no??null});
  }
  if(alreadyDone)return respond({error:'lesson_already_complete'},409);
- if(record?.approved)return respond(state(record));
+ // Mentor remains available for optional conversation after lesson readiness.
  if(record?.cooldown_until&&new Date(record.cooldown_until).getTime()>Date.now())return respond({error:'cooldown_active',cooldown_until:record.cooldown_until},429);
  const message=cut(payload.message,1000).replace(/\s+/g,' ');
  if(message.length<5)return respond({error:'message_too_short'},400);
@@ -205,7 +205,7 @@ Deno.serve(async(req:Request)=>{
  const approved=!cooldown&&meaningful>=2;
  const reply=cooldown?
   name+', ta rozmowa przekroczyła poważne granice bezpieczeństwa. Przerwijmy na chwilę. Wróć, gdy będzie spokojniej — tę lekcję zaczniemy od nowa.':
-  evaluated.reply+(approved?(' '+name+', widzę, że rozumiesz ten etap. Możemy przejść do następnego, gdy wykonasz także ćwiczenie.'):(evaluated.question?' '+evaluated.question:''));
+  evaluated.reply+(evaluated.question&&!approved?' '+evaluated.question:'');
  const now=new Date().toISOString();
  const history=[...(record?.messages||[]),{role:'student',text:message,created_at:now},{role:'anielka',text:reply,created_at:now}].slice(-24);
  const fields={messages:cooldown?[]:history,turn_count:cooldown?0:turns,meaningful_count:cooldown?0:meaningful,
@@ -213,7 +213,7 @@ Deno.serve(async(req:Request)=>{
  let saved=false;
  if(record){
   const {data:u,error:err}=await db.from('ta_lesson_dialogues').update(fields).eq('user_id',user.id).eq('course_slug',slug)
-   .eq('lesson_no',no).eq('turn_count',record.turn_count).eq('approved',false).select('lesson_no').maybeSingle();
+   .eq('lesson_no',no).eq('turn_count',record.turn_count).select('lesson_no').maybeSingle();
   if(err)return respond({error:'dialogue_save_failed'},503);
   saved=!!u;
  }else{
