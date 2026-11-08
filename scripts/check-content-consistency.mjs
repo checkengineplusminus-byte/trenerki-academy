@@ -178,11 +178,10 @@ try{
  }
  if(!illustrated.includes('if(!named.length&&!validIllustration)')||
    !illustrated.includes('imageNames.has(illustration)'))fail('Images must render even for old lessons without section structure');
+ else ok('Software illustrations work with and without long-form sections');
  for(const asset of Object.values(expectedVisualGroups).flat()){
   if(!illustrated.includes("'"+asset+"'"))fail('Renderer does not support course asset '+asset);
  }
-
- else ok('Software illustrations work with and without long-form sections');
  if(!examServer.includes('nextChoice(')||!examServer.includes("grading_mode:'choice'")||
    !exam.includes('switch_mode')||!exam.includes('selected_index')||!examServer.includes('correct_option'))
   fail('Exam server must support objective fallback with protected correct answer');
