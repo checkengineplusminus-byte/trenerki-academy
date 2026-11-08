@@ -86,6 +86,9 @@ try{
   if(!courses.some(c=>c.id===name+'-skroty'))fail(name+': course missing from catalog');
   else ok(name+' has '+total+' illustrated shortcuts');
  }
+ const handsOn=read('src/HandsOnLab.tsx');
+ if(!component.includes('HandsOnLab')||!component.includes('runId={runId}')||!handsOn.includes('setRows(')||!handsOn.includes('setShapes(')||!handsOn.includes("mode==='excel'"))fail('Hands-on Excel and AutoCAD workbench not connected');
+ else ok('Excel and AutoCAD visual practice connected to every command execution');
  if(!component.includes('function Keycap')||!component.includes('SoftwarePlayground')||!component.includes('runCommand')||!component.includes('SPRAWDŹ, CZY ROZUMIESZ')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
  else ok('Protected lessons include working simulated Word and AutoCAD keyboard actions');
  for(const stale of ['Testy + egzamin','Przed egzaminem czeka Cię','Czytasz, podejmujesz decyzję, zapisujesz rozwiązanie i rozwiązujesz krótki quiz']){
