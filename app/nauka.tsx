@@ -31,14 +31,15 @@ export default function Learning(){
   scrollRef.current?.scrollTo({y,animated:true});
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
- useEffect(()=>{
-  const afterLayout=setTimeout(scrollToTop,100);
-  return ()=>clearTimeout(afterLayout);
- },[slug,module,items.length]);
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ useEffect(()=>{
+  const afterLayout=setTimeout(scrollToTop,100);
+  return ()=>clearTimeout(afterLayout);
+ },[slug,module,items.length]);
+
  useEffect(()=>{let active=true;(async()=>{
   setBusy(true);setError('');
   try{
