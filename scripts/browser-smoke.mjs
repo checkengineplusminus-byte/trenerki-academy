@@ -41,9 +41,20 @@ async function verify(name,viewport,isMobile){
   await page.waitForFunction(()=>new URL(location.href).searchParams.get('course')==='excel-skroty',{timeout:6000});
   await page.waitForTimeout(200);
   assert((await page.locator('body').innerText()).includes('Excel'),'Course details did not open');
+  // Main navigation search must still function from the course detail page.
+  // It must navigate to the catalog and expose the new individual recommendation.
+  await field.fill('Chcę kupić używany samochód');
+  await page.locator('#anielka-peek [data-anielka-course="jak-kupic-samochod"]').waitFor({timeout:7000});
+  await page.waitForFunction(()=>new URL(location.href).searchParams.has('course')===false,{timeout:6000});
+  await page.locator('#course-cards .course-card').first().waitFor({state:'visible',timeout:6000});
+  assert((await page.locator('#anielka-output').innerText()).includes('samochód'),'Anielka forgot to render search results when leaving a course');
+  await page.locator('#anielka-peek [data-anielka-course="jak-kupic-samochod"]').click();
+  await page.waitForFunction(()=>new URL(location.href).searchParams.get('course')==='jak-kupic-samochod',{timeout:6000});
+  const fullText=await page.locator('body').innerText();
+  assert(fullText.includes('samochód'),'Second course did not open from the navigation search');
   await page.screenshot({path:'/tmp/trenerki-'+name+'.png',fullPage:false});
   assert.equal(errors.length,0,'Browser JS errors: '+errors.join(' | '));
-  console.log('✓ '+name+': searchable Anielka, personal AI reply, filtered catalog, visible SVG, course page and no overflow');
+  console.log('✓ '+name+': Anielka searches from home AND course detail, opens both courses, no JS errors or overflow');
  }catch(error){
   await page.screenshot({path:'/tmp/trenerki-'+name+'-error.png',fullPage:true}).catch(()=>{});
   problems.push(name+': '+String(error.message||error));
