@@ -1,0 +1,137 @@
+{
+  "source_note": "Original new educational content based on individual lesson topics; sources are references for expert review, not verbatim copied material.",
+  "curricula": {
+    "dostepne-pdf": [
+      [
+        "Zacznij od użytkownika korzystającego tylko z klawiatury lub czytnika ekranu. PDF jest dostępny wtedy, gdy można odtworzyć znaczenie i kolejność treści, a nie tylko przeczytać napis z obrazu. Dokument skanowany wymaga rozpoznawalnego tekstu i logicznej struktury.",
+        "Masz 12-stronicowy raport z wykresami. Odbiorca potrzebuje poruszać się po nagłówkach i znaleźć sekcję wyników bez przeglądania każdej strony. Sam podpis pod raportem nie tworzy nawigacji.",
+        "Przed przygotowaniem dokumentu wypisz grupy odbiorców, scenariusz odczytu na telefonie i z czytnikiem ekranu, język pliku oraz elementy nienadające się do odczytu bez obrazu."
+      ],
+      [
+        "Nagłówek jest informacją o hierarchii treści, nie tylko pogrubionym i dużym tekstem. Tagi H1/H2/H3 należy stosować według struktury, a kolejność odczytu powinna odpowiadać znaczeniu akapitów, list i tabel.",
+        "Raport zawiera tytuł, trzy rozdziały i po dwa podrozdziały. Zastosuj H1 raz, H2 trzy razy i H3 sześć razy. Nie przeskakuj poziomu wyłącznie dla mniejszej czcionki.",
+        "Stwórz mapę tagów i kolejności czytania jednej strony z dwiema kolumnami. W narzędziu kontroli tagów wskaż miejsce, w którym czytnik powinien odczytać tytuł tabeli."
+      ],
+      [
+        "Tekst alternatywny opisuje funkcję i istotną informację z obrazu; nie jest marketingowym podpisem. Grafika dekoracyjna, która nic nie dodaje, może zostać oznaczona jako artefakt, ale wykres niosący wynik wymaga danych lub tekstowego odpowiednika.",
+        "Wykres słupkowy pokazuje przychody 2025: 80 tys. zł i 2026: 120 tys. zł. Słaby opis: 'ładny wykres'. Dobry opis: 'Przychód wzrósł z 80 tys. do 120 tys. zł, czyli o 50%'.",
+        "Zapisz tekst alternatywny do schematu z czterema etapami, osobno do dekoracyjnego tła i wykresu porównującego dwie wartości. Uzasadnij, które treści powinny trafić do głównego tekstu."
+      ],
+      [
+        "Kontrast barw nie zastępuje tekstu, a kolor nie może być jedynym nośnikiem znaczenia. Dla zwykłego tekstu WCAG 2.2 AA przewiduje zwykle 4,5:1, a dla dużego tekstu co najmniej 3:1; nie wszystkie elementy mają te same wymagania.",
+        "Tabela statusów oznacza błędy tylko na czerwono, a sukces tylko zielono. Osoba nierozróżniająca kolorów traci informację. Dodaj tekst 'Błąd'/'Zaliczone' i czytelny symbol.",
+        "Przeanalizuj trzy kombinacje kolorów i sprawdź kontrast w wiarygodnym kalkulatorze. Uzupełnij legendę, tak by komunikat był zrozumiały po wydrukowaniu bez kolorów."
+      ],
+      [
+        "Link powinien opisywać cel, a nie brzmieć 'kliknij tutaj'. Zakładki i spis treści muszą wskazywać konkretne sekcje. Nawigacja jest użyteczna, jeżeli działa po eksporcie i nie wymaga myszki.",
+        "Dokument zawiera 30 stron. Zamiast 12 identycznych odnośników 'tutaj', dodaj 'Procedura reklamacji', 'Lista formularzy' i 'Kontakt do biura'. Sprawdź, czy zakładki otwierają odpowiednie strony.",
+        "Zaprojektuj spis treści dla 6 rozdziałów, wykonaj trzy linki wewnętrzne i dwa zewnętrzne, sprawdź ich treść w kolejności czytnika."
+      ],
+      [
+        "Formularz musi mieć przypisane etykiety pól, czytelną kolejność przejścia i komunikaty o błędach. Tabela powinna rozpoznawać nagłówki wierszy lub kolumn, a nie być jedynie siatką wizualnych linii.",
+        "Faktura zawiera kolumny produkt, ilość, cena i wartość. Gdy nagłówki są tylko pogrubione, czytnik może nie powiązać kwoty z odpowiednim towarem. Trzeba nadać semantykę nagłówków.",
+        "Przygotuj prosty formularz zgłoszenia z polami imię, e-mail i opis problemu. Sprawdź etykiety, wymagane pola, kolejność Tab oraz informację po błędnym wpisie."
+      ],
+      [
+        "Eksportowanie PDF nie gwarantuje zachowania tagów z dokumentu źródłowego. Sprawdź język dokumentu, tytuł w metadanych, kolejność tagów, odczytywalność fontów i poprawność eksportu z właściwym profilem.",
+        "W edytorze dokument ma H1 i H2, ale po wybraniu 'drukuj do PDF' plik traci strukturę. Porównaj eksport z zachowaniem tagów i zwykły wydruk, po czym otwórz oba w narzędziu inspekcji.",
+        "Wyeksportuj przykład z nagłówkiem, tabelą i obrazem. Zweryfikuj strukturę logiczną niezależnym narzędziem oraz ręcznie spróbuj nawigacji klawiaturą."
+      ],
+      [
+        "Audyt łączy test automatyczny i manualny; żaden automatyczny wynik '100%' nie zastępuje przejścia dokumentu z technologiami asystującymi. Kontrola obejmuje tagi, porządek odczytu, kontrast, alternatywy, formularze oraz zrozumiałość.",
+        "Audyt 12-stronicowego PDF ujawnia: 2 obrazy bez opisu, 1 tabelę bez tagów i 4 linki 'kliknij'. To 7 zgłoszeń, ale ich waga zależy od wpływu na użytkownika, a nie samej liczby.",
+        "Zbuduj kartę audytu z 10 kryteriami, wynikiem tak/nie, wskazaniem strony i sposobem naprawy. Ponownie wykonaj test i udokumentuj różnicę."
+      ]
+    ],
+    "apartamenty": [
+      [
+        "Odbiór obiektu przed pierwszym gościem zaczyna się od inwentaryzacji wyposażenia, oceny bezpieczeństwa i standardu czystości. Stan łóżka, wentylacji, ogrzewania, zamków, dróg ewakuacyjnych i instrukcji urządzeń musi być znany przed sprzedażą pobytu.",
+        "Apartament dla 4 gości ma tylko trzy zestawy pościeli, niesprawny czujnik oraz brak instrukcji ogrzewania. Zdjęcia reklamowe nie usuwają tych niezgodności. Wydanie lokalu trzeba wstrzymać do usunięcia istotnych zagrożeń.",
+        "Przygotuj kartę gotowości na 4 osoby: pościel, ręczniki, higiena, sprzęty, wejście, kontakt alarmowy, zdjęcia kontrolne i podpis osoby odbierającej."
+      ],
+      [
+        "Sprzątanie prowadzi się w logicznej kolejności, rozdzielając powierzchnie czyste i brudne. Rodzaj wykończenia decyduje o doborze preparatu: marmur, laminat, stal, drewno i szkło nie powinny być myte identycznie. Nie mieszaj środków chemicznych.",
+        "Na marmurowym blacie użyto kwaśnego odkamieniacza. Po zmatowieniu powierzchni nie wolno go ponownie 'doczyścić' tym samym środkiem. Zapisz rodzaj materiału, preparat, ekspozycję i zleć ocenę szkody.",
+        "Zaplanuj sekwencję pomieszczeń i kartę pięciu materiałów: zalecana metoda, niewskazany środek, narzędzie, kontrola efektu i osoba podpisująca odbiór."
+      ],
+      [
+        "Tekstylia należy rozróżniać według włókien, etykiet prania i wymagań higienicznych. Pranie, suszenie oraz magazynowanie czystej pościeli nie mogą prowadzić do wtórnego zanieczyszczenia. Materace wymagają odrębnej kontroli uszkodzeń i zapachu.",
+        "W komplecie pościeli jedna poszwa ma uszkodzony zamek, a dwa ręczniki są niedosuszone. Ułożenie ich na łóżku oznacza niewłaściwy odbiór, mimo że wizualnie pokój jest 'gotowy'.",
+        "Rozpisz dla 3 apartamentów po 4 miejsca zapotrzebowanie na 12 zestawów podstawowych oraz uzasadniony zapas rotacyjny. Dodaj etykietę 'czyste/brudne/do wymiany'."
+      ],
+      [
+        "Wyposażenie ma numer inwentaryzacyjny, lokalizację, stan i datę kontroli. Awaria może być kosmetyczna, funkcjonalna albo niebezpieczna. Należy rozróżnić naprawy dopuszczone dla personelu od prac wymagających fachowych uprawnień.",
+        "Gość zgłasza luźne gniazdko i niedziałający czajnik. Czajnik można wycofać z użycia, ale luźnego gniazdka nie naprawia się amatorsko; konieczne jest zabezpieczenie i wezwanie fachowca.",
+        "Utwórz rejestr 8 elementów wyposażenia z polami: ID, miejsce, wada, ryzyko, zdjęcie, decyzja i potwierdzenie naprawy."
+      ],
+      [
+        "Przekazanie kluczy wymaga autoryzacji gościa, kontroli uprawnień dostępu i bezpiecznego sposobu przesłania kodu. Informacje o godzinie przyjazdu, lokalizacji wejścia i numerze alarmowym powinny być jednoznaczne oraz aktualne.",
+        "Rezerwacja A kończy się o 11:00, B zaczyna o 15:00. Firma sprzątająca potrzebuje 2 h, kontrola 30 min, bufor wynosi 90 min. Przy opóźnieniu wyjazdu o 2 h plan przestaje być bezpieczny czasowo.",
+        "Zaprojektuj wiadomość przyjazdową oraz osobną procedurę przy zagubieniu klucza, nieuprawnionym wejściu lub niedziałającym zamku."
+      ],
+      [
+        "Protokół szkody zawiera datę, lokalizację, stan przed i po, zdjęcia oraz opis bez obwiniania gościa bez dowodów. Odpowiedzialność i potrącenia z depozytu zależą od regulaminu, umowy i prawa. Normalne zużycie nie jest automatycznie szkodą.",
+        "Po pobycie krzesło ma nową rysę, ale nie ma zdjęcia stanu sprzed pobytu. Nie da się wiarygodnie przypisać szkody konkretnemu gościowi tylko na podstawie przypuszczenia.",
+        "Sporządź neutralny protokół i listę dowodów dla wady stolika. Wskaż, jakie informacje mogą potwierdzić czas powstania oraz jakie wymagają dalszej weryfikacji."
+      ],
+      [
+        "Jakość odbioru powinna być mierzalna: higiena, kompletność, działanie wyposażenia, zapach, stan tekstyliów i gotowość wejścia. Czas pracy trzeba liczyć z uwzględnieniem powierzchni, zabrudzenia, liczby łóżek i czasu kontroli.",
+        "Ekipa otrzymuje 90 minut na 70 m² i trzy łóżka, ale sprzątanie zajęło 110 minut. Zamiast karać za opóźnienie, ustal realny standard i brakujące 20 minut w harmonogramie.",
+        "Przygotuj kartę odbioru 15 punktów, każdy z wynikiem zaliczone/niezaliczone, zdjęciem dla niezgodności i terminem poprawy."
+      ],
+      [
+        "Procedury awaryjne rozróżniają zagrożenie życia, awarię techniczną i niedogodność. Przy wycieku wody lub awarii elektryki w pierwszej kolejności trzeba zapewnić bezpieczeństwo i kontakt z właściwymi służbami, a dopiero potem ustalać rekompensatę.",
+        "W lokalu pojawił się duży wyciek spod umywalki i woda zbliża się do instalacji elektrycznej. Niedopuszczalne jest kierowanie nieprzeszkolonego gościa do manipulowania instalacją przy zalaniu.",
+        "Napisz 3 ścieżki: zalanie, zatrzaśnięte drzwi, brak ogrzewania zimą. Dla każdej: priorytet, kontakt, zabezpieczenie, dowód, komunikat do gościa."
+      ]
+    ],
+    "wspolnota": [
+      [
+        "Wspólnota mieszkaniowa zarządza nieruchomością wspólną właścicieli lokali. Trzeba odróżnić lokal prywatny od klatki, dachu, instalacji wspólnych i gruntu. Kompetencje zarządu oraz sposób podjęcia decyzji zależą od ustawy i przyjętego sposobu zarządu.",
+        "Mieszkaniec żąda pokrycia z funduszu wspólnoty remontu prywatnej kuchni. Najpierw rozdziel własność lokalu i część wspólną; sam fakt, że mieszkanie jest w budynku, nie przesądza kto płaci.",
+        "Narysuj prosty budynek i oznacz 10 elementów: własność lokalu, część wspólna, wymagające sprawdzenia dokumentacji. Nie podejmuj decyzji kosztowej bez podstawy."
+      ],
+      [
+        "Dane wspólnoty obejmują wykaz lokali, udziały, umowy, przeglądy, uchwały, protokoły i dokumentację finansową. Dostęp do danych musi respektować prywatność właścicieli. Nie każda informacja powinna być publikowana na ogólnodostępnej tablicy.",
+        "Zarząd ma 20 lokali i pięć umów serwisowych. Bez rejestru terminu przeglądów może przegapić obowiązek kontroli. Wymagany jest rejestr dokumentu, daty, osoby i miejsca bezpiecznego przechowywania.",
+        "Zaprojektuj kartotekę 20 lokali oraz rejestr pięciu umów z datami przeglądu. Oddziel dane potrzebne mieszkańcom od danych administracyjnych."
+      ],
+      [
+        "Zaliczka właściciela służy finansowaniu kosztów zarządu, a całkowity koszt nie jest równoznaczny z opłatą jednego lokalu. Przy kosztach obciążających właścicieli stosuje się właściwe udziały i zasady ustawy albo uchwał. Część kosztów może wymagać odmiennej metody rozliczenia.",
+        "Przykład: koszty 120 000 zł rocznie, brak innych wpływów, 12 równych udziałów: 10 000 zł/rok lub 833,33 zł/mies. na udział. To czysto matematyczny wariant, nie uniwersalna reguła dla wszystkich wspólnot.",
+        "Przygotuj budżet kosztów bieżących, napraw i rezerwy. Policz zaliczki dla udziałów 5%, 10% i 20%, wyraźnie zaznaczając przyjęte założenia."
+      ],
+      [
+        "Uchwała to formalna decyzja właścicieli. W polskiej ustawie o własności lokali odróżnia się czynności zwykłego zarządu i przekraczające go, a sposób głosowania i większość zależą od przewidzianych przepisów oraz szczególnych okoliczności. Nie jest tak, że zarząd może sam rozstrzygnąć każdą inwestycję.",
+        "Uchwała o kosztownej wymianie dachu wymaga poprawnego określenia zakresu, finansowania i trybu podjęcia. Przed głosowaniem przygotuj ofertę i analizę konieczności oraz sprawdź obowiązujący stan prawny.",
+        "Siedmiu właścicieli głosuje za uchwałą, trzech przeciw, ale ich udziały są nierówne. Sama liczba osób nie pozwala obliczyć wyniku w każdym trybie.",
+        "Zbuduj przykład z udziałami 20/15/15/10/10/10/10/10%. Oblicz łączny udział głosów 'za' i sprawdź właściwy tryb ustawowy."
+      ],
+      [
+        "Zebranie powinno mieć plan, dokumenty, osobę prowadzącą i protokół ustaleń. Protokół oddziela stanowiska i wnioski od podjętych uchwał oraz odpowiedzialności. Bez listy zadań zebranie zamienia się w rozmowę bez decyzji.",
+        "Spotkanie trwa 2 godziny; dyskusja o dachach zajmuje godzinę, lecz nikt nie zapisuje decyzji. Dobrze prowadzony protokół zawiera numer uchwały, wynik głosowania, termin i odpowiedzialnego.",
+        "Zaprojektuj agendę 60-minutową i protokół z czterema punktami. Każdemu przypisz wymagany dokument przed spotkaniem i sposób udokumentowania wyniku."
+      ],
+      [
+        "Utrzymanie obiektu obejmuje kontrole techniczne, konserwację, awarie, naprawy planowane i roboty modernizacyjne. Kalendarz przeglądów nie może być oparty na losowych datach; terminy i wymagane kwalifikacje ustala się według aktualnych przepisów oraz charakteru instalacji.",
+        "W marcu pojawia się przeciek, a w maju planowany jest remont elewacji. Zadanie awaryjne należy oddzielić od wielomiesięcznego projektu. Rejestr ma pokazać ryzyko, termin zabezpieczenia i osobę uprawnioną.",
+        "Przygotuj plan 12-miesięczny z kolumnami instalacja/obszar, wymagany przegląd, termin, wykonawca, protokół, usterki, decyzja i koszt."
+      ],
+      [
+        "Komunikacja z właścicielem powinna rozróżniać zgłoszenie awarii, wniosek, reklamację i skargę. Zgłoszenie powinno mieć numer, datę, opis, status, osobę odpowiedzialną i informację o zakończeniu. Dane osobowe nie powinny być ujawniane nieuprawnionym.",
+        "Zgłoszenie #124: zalewana klatka schodowa. Jeden mieszkaniec pisze do zarządu, drugi bezpośrednio do wykonawcy. Bez wspólnej ewidencji awaria może otrzymać sprzeczne terminy i podwójne zlecenie.",
+        "Zbuduj schemat przyjęcie → ocena pilności → wykonawca → potwierdzenie → odbiór. Napisz dwie wiadomości, jedną o podjęciu zgłoszenia, drugą o zamknięciu."
+      ],
+      [
+        "Sprawozdanie powinno zestawiać przychody, koszty, zadania, zaległości, stan środków i plan kolejnego roku. Porównanie budżetu z wykonaniem ujawnia odchylenia, lecz wymaga wyjaśnienia ich przyczyn. Przegląd dokumentów i uchwał powinien poprzedzać akceptację planu.",
+        "Plan napraw: 30 000 zł. Wykonanie: 42 000 zł. Odchylenie wynosi +12 000 zł, czyli 40% ponad plan. Sprawozdanie powinno wyjaśniać, czy to skutek awarii, zmiany zakresu czy ceny.",
+        "Stwórz tablicę finansową plan/wykonanie/różnica/przyczyna, a następnie listę trzech decyzji potrzebnych na następny rok."
+      ]
+    ]
+  },
+  "source_urls": {
+    "dostepne-pdf": "https://www.w3.org/TR/WCAG22/",
+    "wspolnota": "https://eli.gov.pl/eli/DU/2026/232/ogl",
+    "apartamenty": null
+  }
+}
