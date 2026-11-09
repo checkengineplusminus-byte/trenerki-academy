@@ -97,7 +97,7 @@ function DesktopWorkspace({slug}:{slug:string}){
   Data:'Sortowanie, filtrowanie, import i walidacja danych.',
   Review:'Komentarze i przegląd dokumentu.'
  };
- const n=parseSpreadsheetNumber(qty),v=parseSpreadsheetNumber(price),result=Number.isFinite(n)&&Number.isFinite(v)&&n>=0&&v>=0?(n*v).toFixed(2).replace('.',','):'Sprawdź liczby';
+ const n=parseSpreadsheetNumber(qty),v=parseSpreadsheetNumber(price),result=qty.trim()!==''&&price.trim()!==''&&Number.isFinite(n)&&Number.isFinite(v)&&n>=0&&v>=0?(n*v).toFixed(2).replace('.',','):'Sprawdź liczby';
  return <View style={{borderRadius:13,overflow:'hidden',borderWidth:1,borderColor:'#c3d8cb',marginBottom:13}}>
   <View style={{padding:13,backgroundColor:'#e9f3e7',gap:4}}>
    <Text style={{fontSize:16,fontWeight:'900',color:'#184d36'}}>Interfejs {excel?'Excela':'AutoCAD-a'} — ćwiczenie</Text>
