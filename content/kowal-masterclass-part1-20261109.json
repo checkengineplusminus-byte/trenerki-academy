@@ -1,0 +1,703 @@
+{
+  "course_slug": "kowal-tradycja",
+  "module": "I. Podstawy",
+  "source_urls": [
+    "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E",
+    "https://abana.org/education/national-curriculum/level-i/"
+  ],
+  "lessons": [
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 0,
+      "title_pl": "1. Zawód kowala: co naprawdę robi i czego musi się nauczyć",
+      "material": {
+        "learning": {
+          "question": "Co trzeba ustalić przed zaprojektowaniem codziennie używanego kutego uchwytu?",
+          "options": [
+            "Wymiary, obciążenia, mocowanie, środowisko pracy i wymagania klienta.",
+            "Wyłącznie kolor, ponieważ inne dane ustala się dopiero po kuciu.",
+            "Tylko wybór ciężkiego młota i paleniska.",
+            "Wyłącznie historyczne pochodzenie wzoru."
+          ],
+          "correct": 0,
+          "situation": "Klient pokazuje zdjęcie ozdobnego uchwytu. Przed zaprojektowaniem zapytaj o wielkość, sposób montażu, wilgoć, częstotliwość używania i wymagany efekt powierzchni. Sam wygląd nie wystarczy, by bezpiecznie dobrać materiał i konstrukcję.",
+          "example": "Wymiary, obciążenia, mocowanie, środowisko pracy i wymagania klienta.",
+          "explanation": "Warunki użytkowania wpływają na materiał, grubość i bezpieczeństwo mocowania.",
+          "intro": "Kowal nie jest tylko człowiekiem z młotem przy kowadle. Łączy znajomość metali, czytanie dokumentacji, planowanie kolejności operacji, kształtowanie, łączenie, wykańczanie i naprawę wyrobów. Może wytwarzać zawiasy, okucia, narzędzia i elementy architektoniczne; w produkcji przemysłowej wykorzystuje również urządzenia do kucia maszynowego. Podkuwnictwo ma dodatkowe wymagania dotyczące dobrostanu zwierząt.",
+          "task": "Zrób kartę wymagań dla uchwytu: funkcja, rozmiar, sposób zamocowania, otoczenie i sposób kontroli.",
+          "feedback": [
+            "Prawidłowo. Warunki użytkowania wpływają na materiał, grubość i bezpieczeństwo mocowania.",
+            "Nie. Warunki użytkowania wpływają na materiał, grubość i bezpieczeństwo mocowania.",
+            "Nie. Warunki użytkowania wpływają na materiał, grubość i bezpieczeństwo mocowania.",
+            "Nie. Warunki użytkowania wpływają na materiał, grubość i bezpieczeństwo mocowania."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Kowal nie jest tylko człowiekiem z młotem przy kowadle. Łączy znajomość metali, czytanie dokumentacji, planowanie kolejności operacji, kształtowanie, łączenie, wykańczanie i naprawę wyrobów. Może wytwarzać zawiasy, okucia, narzędzia i elementy architektoniczne; w produkcji przemysłowej wykorzystuje również urządzenia do kucia maszynowego. Podkuwnictwo ma dodatkowe wymagania dotyczące dobrostanu zwierząt."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Praca rozpoczyna się od ustalenia zastosowania wyrobu, obciążeń, wymiarów, materiału i kryteriów jakości. Dopiero potem dobiera się narzędzia, technologię oraz środki ochrony. Dwie podobne wizualnie klamki mogą wymagać innych przekrojów i mocowań, jeśli jedna jest tylko dekoracją, a druga ma pracować codziennie w drzwiach."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Klient pokazuje zdjęcie ozdobnego uchwytu. Przed zaprojektowaniem zapytaj o wielkość, sposób montażu, wilgoć, częstotliwość używania i wymagany efekt powierzchni. Sam wygląd nie wystarczy, by bezpiecznie dobrać materiał i konstrukcję."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Po tej lekcji powinieneś odróżniać wyrób użytkowy od ozdobnego, wskazać etapy od zapytania do odbioru i rozumieć, dlaczego kurs online nie zastąpi nadzorowanej praktyki ani formalnej kwalifikacji MEC.02.\n\nĆwiczenie: Zrób kartę wymagań dla uchwytu: funkcja, rozmiar, sposób zamocowania, otoczenie i sposób kontroli."
+          }
+        ],
+        "raw": [
+          "Zawód kowala: co naprawdę robi i czego musi się nauczyć",
+          "Kowal nie jest tylko człowiekiem z młotem przy kowadle. Łączy znajomość metali, czytanie dokumentacji, planowanie kolejności operacji, kształtowanie, łączenie, wykańczanie i naprawę wyrobów. Może wytwarzać zawiasy, okucia, narzędzia i elementy architektoniczne; w produkcji przemysłowej wykorzystuje również urządzenia do kucia maszynowego. Podkuwnictwo ma dodatkowe wymagania dotyczące dobrostanu zwierząt.",
+          "Praca rozpoczyna się od ustalenia zastosowania wyrobu, obciążeń, wymiarów, materiału i kryteriów jakości. Dopiero potem dobiera się narzędzia, technologię oraz środki ochrony. Dwie podobne wizualnie klamki mogą wymagać innych przekrojów i mocowań, jeśli jedna jest tylko dekoracją, a druga ma pracować codziennie w drzwiach.",
+          "Klient pokazuje zdjęcie ozdobnego uchwytu. Przed zaprojektowaniem zapytaj o wielkość, sposób montażu, wilgoć, częstotliwość używania i wymagany efekt powierzchni. Sam wygląd nie wystarczy, by bezpiecznie dobrać materiał i konstrukcję.",
+          "Po tej lekcji powinieneś odróżniać wyrób użytkowy od ozdobnego, wskazać etapy od zapytania do odbioru i rozumieć, dlaczego kurs online nie zastąpi nadzorowanej praktyki ani formalnej kwalifikacji MEC.02."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Zrób kartę wymagań dla uchwytu: funkcja, rozmiar, sposób zamocowania, otoczenie i sposób kontroli.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 1,
+      "title_pl": "2. Kuźnia i bezpieczeństwo: ogień, spaliny, urazy, pierwsza pomoc",
+      "material": {
+        "learning": {
+          "question": "Co jest właściwą reakcją na podejrzenie obecności tlenku węgla w kuźni?",
+          "options": [
+            "Otworzyć okno i kontynuować kucie, dopóki czuć tylko lekki dyskomfort.",
+            "Przerwać pracę, ewakuować ludzi, wezwać pomoc i nie wracać bez oceny zagrożenia.",
+            "Zdjąć okulary, aby sprawdzić, skąd pochodzi dym.",
+            "Poczekać aż metal ostygnie, pozostając obok paleniska."
+          ],
+          "correct": 1,
+          "situation": "W pracowni z paleniskiem na paliwo stałe pojawia się ból głowy i zawroty u pracownika. Nie jest to sygnał, by tylko zrobić przerwę przy kowadle; należy przerwać pracę, opuścić zagrożone miejsce, wezwać właściwą pomoc i sprawdzić wentylację przed ponownym uruchomieniem.",
+          "example": "Przerwać pracę, ewakuować ludzi, wezwać pomoc i nie wracać bez oceny zagrożenia.",
+          "explanation": "CO jest niewyczuwalny węchem, a zatrucie bywa śmiertelne.",
+          "intro": "Najważniejsze zagrożenia to oparzenia, odpryski zgorzeliny, urazy oczu i palców, hałas, pyły oraz spaliny z paleniska. Szczególnie niebezpieczny jest tlenek węgla: nie ma zapachu, więc nie można polegać na węchu. Stanowisko wymaga odpowiednio dobranej wentylacji, sprawnego odciągu, porządku i drożnych dróg ewakuacyjnych.",
+          "task": "Narysuj plan stanowiska i zaznacz strefę gorącą, odciąg, gaśnicę, apteczkę oraz drogę ewakuacji.",
+          "feedback": [
+            "Nie. CO jest niewyczuwalny węchem, a zatrucie bywa śmiertelne.",
+            "Prawidłowo. CO jest niewyczuwalny węchem, a zatrucie bywa śmiertelne.",
+            "Nie. CO jest niewyczuwalny węchem, a zatrucie bywa śmiertelne.",
+            "Nie. CO jest niewyczuwalny węchem, a zatrucie bywa śmiertelne."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Najważniejsze zagrożenia to oparzenia, odpryski zgorzeliny, urazy oczu i palców, hałas, pyły oraz spaliny z paleniska. Szczególnie niebezpieczny jest tlenek węgla: nie ma zapachu, więc nie można polegać na węchu. Stanowisko wymaga odpowiednio dobranej wentylacji, sprawnego odciągu, porządku i drożnych dróg ewakuacyjnych."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Zanim rozpocznie się kucie, osoba nadzorująca weryfikuje osłony, stabilność kowadła, stan szczypiec i młotów, warunki wentylacji, sprzęt gaśniczy i zasady postępowania awaryjnego. Okulary lub przyłbica, odzież niepalna, ochronniki słuchu oraz obuwie ochronne dobiera się do oceny ryzyka. Rozgrzany przedmiot może już nie świecić i nadal powodować poważne poparzenie."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "W pracowni z paleniskiem na paliwo stałe pojawia się ból głowy i zawroty u pracownika. Nie jest to sygnał, by tylko zrobić przerwę przy kowadle; należy przerwać pracę, opuścić zagrożone miejsce, wezwać właściwą pomoc i sprawdzić wentylację przed ponownym uruchomieniem."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Nie rozpalaj paleniska ani nie używaj prasy czy młota mechanicznego na podstawie samego kursu. Odróżnij środki ochrony indywidualnej od ochrony zbiorowej: okulary nie zastępują odciągu i wentylacji.\n\nĆwiczenie: Narysuj plan stanowiska i zaznacz strefę gorącą, odciąg, gaśnicę, apteczkę oraz drogę ewakuacji."
+          }
+        ],
+        "raw": [
+          "Kuźnia i bezpieczeństwo: ogień, spaliny, urazy, pierwsza pomoc",
+          "Najważniejsze zagrożenia to oparzenia, odpryski zgorzeliny, urazy oczu i palców, hałas, pyły oraz spaliny z paleniska. Szczególnie niebezpieczny jest tlenek węgla: nie ma zapachu, więc nie można polegać na węchu. Stanowisko wymaga odpowiednio dobranej wentylacji, sprawnego odciągu, porządku i drożnych dróg ewakuacyjnych.",
+          "Zanim rozpocznie się kucie, osoba nadzorująca weryfikuje osłony, stabilność kowadła, stan szczypiec i młotów, warunki wentylacji, sprzęt gaśniczy i zasady postępowania awaryjnego. Okulary lub przyłbica, odzież niepalna, ochronniki słuchu oraz obuwie ochronne dobiera się do oceny ryzyka. Rozgrzany przedmiot może już nie świecić i nadal powodować poważne poparzenie.",
+          "W pracowni z paleniskiem na paliwo stałe pojawia się ból głowy i zawroty u pracownika. Nie jest to sygnał, by tylko zrobić przerwę przy kowadle; należy przerwać pracę, opuścić zagrożone miejsce, wezwać właściwą pomoc i sprawdzić wentylację przed ponownym uruchomieniem.",
+          "Nie rozpalaj paleniska ani nie używaj prasy czy młota mechanicznego na podstawie samego kursu. Odróżnij środki ochrony indywidualnej od ochrony zbiorowej: okulary nie zastępują odciągu i wentylacji."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Narysuj plan stanowiska i zaznacz strefę gorącą, odciąg, gaśnicę, apteczkę oraz drogę ewakuacji."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 2,
+      "title_pl": "3. Stal, żelazo, węgiel i gatunki materiałów",
+      "material": {
+        "learning": {
+          "question": "Dlaczego nie należy projektować elementu nośnego z nieoznaczonego przypadkowego pręta?",
+          "options": [
+            "Ponieważ każdy pręt z odzysku jest z definicji zbyt miękki.",
+            "Ponieważ każdy pręt z odzysku jest stalą nierdzewną.",
+            "Nie znamy jego rzeczywistego składu i własności, więc nie potrafimy potwierdzić bezpieczeństwa.",
+            "Ponieważ kolor powierzchni zawsze wskazuje wytrzymałość."
+          ],
+          "correct": 2,
+          "situation": "Masz dwa pręty wyglądające identycznie: jeden z atestem materiałowym, drugi bez oznaczenia z odzysku. Do elementu odpowiadającego za bezpieczeństwo wybierasz udokumentowany materiał lub kierujesz decyzję do kompetentnego projektanta, zamiast zgadywać na podstawie iskier.",
+          "example": "Nie znamy jego rzeczywistego składu i własności, więc nie potrafimy potwierdzić bezpieczeństwa.",
+          "explanation": "Identyfikowalność materiału jest podstawą prawidłowego doboru technologii i kontroli jakości.",
+          "intro": "Stal to stop żelaza, w którym jednym z głównych dodatków jest węgiel. Jego zawartość wraz z innymi pierwiastkami i obróbką wpływa na twardość, ciągliwość i podatność na kucie. Stal niskowęglowa zwykle lepiej nadaje się do prostych form dekoracyjnych niż nieznany materiał ze złomu. Stale narzędziowe wymagają odrębnego doboru obróbki cieplnej.",
+          "task": "Porównaj dwie karty materiałowe: zapis gatunku, przekrój, dostawę oraz przeznaczenie.",
+          "feedback": [
+            "Nie. Identyfikowalność materiału jest podstawą prawidłowego doboru technologii i kontroli jakości.",
+            "Nie. Identyfikowalność materiału jest podstawą prawidłowego doboru technologii i kontroli jakości.",
+            "Prawidłowo. Identyfikowalność materiału jest podstawą prawidłowego doboru technologii i kontroli jakości.",
+            "Nie. Identyfikowalność materiału jest podstawą prawidłowego doboru technologii i kontroli jakości."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Stal to stop żelaza, w którym jednym z głównych dodatków jest węgiel. Jego zawartość wraz z innymi pierwiastkami i obróbką wpływa na twardość, ciągliwość i podatność na kucie. Stal niskowęglowa zwykle lepiej nadaje się do prostych form dekoracyjnych niż nieznany materiał ze złomu. Stale narzędziowe wymagają odrębnego doboru obróbki cieplnej."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Nie utożsamiaj masy elementu z jego wytrzymałością. W procesie planowania porównuje się oznaczenie gatunku, dokument dostawy, przekrój, tolerancję i przewidywane obciążenie. Galwanizowane, malowane lub powlekane elementy nie powinny być podgrzewane bez oceny ryzyka uwalniania niebezpiecznych oparów."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Masz dwa pręty wyglądające identycznie: jeden z atestem materiałowym, drugi bez oznaczenia z odzysku. Do elementu odpowiadającego za bezpieczeństwo wybierasz udokumentowany materiał lub kierujesz decyzję do kompetentnego projektanta, zamiast zgadywać na podstawie iskier."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Wytłumacz różnicę między twardością, plastycznością i udarnością oraz dlaczego sam kolor rozgrzanego metalu nie pozwala ustalić jego gatunku.\n\nĆwiczenie: Porównaj dwie karty materiałowe: zapis gatunku, przekrój, dostawę oraz przeznaczenie."
+          }
+        ],
+        "raw": [
+          "Stal, żelazo, węgiel i gatunki materiałów",
+          "Stal to stop żelaza, w którym jednym z głównych dodatków jest węgiel. Jego zawartość wraz z innymi pierwiastkami i obróbką wpływa na twardość, ciągliwość i podatność na kucie. Stal niskowęglowa zwykle lepiej nadaje się do prostych form dekoracyjnych niż nieznany materiał ze złomu. Stale narzędziowe wymagają odrębnego doboru obróbki cieplnej.",
+          "Nie utożsamiaj masy elementu z jego wytrzymałością. W procesie planowania porównuje się oznaczenie gatunku, dokument dostawy, przekrój, tolerancję i przewidywane obciążenie. Galwanizowane, malowane lub powlekane elementy nie powinny być podgrzewane bez oceny ryzyka uwalniania niebezpiecznych oparów.",
+          "Masz dwa pręty wyglądające identycznie: jeden z atestem materiałowym, drugi bez oznaczenia z odzysku. Do elementu odpowiadającego za bezpieczeństwo wybierasz udokumentowany materiał lub kierujesz decyzję do kompetentnego projektanta, zamiast zgadywać na podstawie iskier.",
+          "Wytłumacz różnicę między twardością, plastycznością i udarnością oraz dlaczego sam kolor rozgrzanego metalu nie pozwala ustalić jego gatunku."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Porównaj dwie karty materiałowe: zapis gatunku, przekrój, dostawę oraz przeznaczenie."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 3,
+      "title_pl": "4. Rysunek techniczny: widoki, przekroje, skale i symbole",
+      "material": {
+        "learning": {
+          "question": "Na wydruku w skali 1:2 linia ma długość 90 mm, a zapisany wymiar wynosi 180 mm. Jaki wymiar wykonuje kowal?",
+          "options": [
+            "90 mm, ponieważ miarka przyłożona do kartki jest najważniejsza.",
+            "360 mm, ponieważ trzeba podwoić zapis 180 mm.",
+            "Nie da się tego ustalić, nawet gdy rysunek zawiera liczbę 180 mm.",
+            "180 mm, ponieważ nadrukowany wymiar ma pierwszeństwo przed pomiarem papieru."
+          ],
+          "correct": 3,
+          "situation": "Na rysunku ozdobnej klamki jest wymiar całkowity 180 mm oraz skala 1:2. Oznacza to rzeczywisty wymiar 180 mm, niezależnie od tego, że odcinek na wydruku może mieć 90 mm. Zmiana skali drukowania nie zmienia podanego wymiaru.",
+          "example": "180 mm, ponieważ nadrukowany wymiar ma pierwszeństwo przed pomiarem papieru.",
+          "explanation": "Skala opisuje sposób przedstawienia, nie przelicza już zwymiarowanej wartości.",
+          "intro": "Rysunek techniczny to język między klientem, konstruktorem i kowalem. Zwykle obejmuje widok z przodu, z góry i z boku, a gdy potrzeba także przekrój, detale i zestawienie części. Wymiar nominalny, tolerancja, jednostka i skala są informacjami niezależnymi; nie wolno odczytywać wymiarów wyłącznie linijką z kartki.",
+          "task": "Zrób szkic dwóch widoków płytki 180 × 40 mm i oznacz położenie dwóch otworów.",
+          "feedback": [
+            "Nie. Skala opisuje sposób przedstawienia, nie przelicza już zwymiarowanej wartości.",
+            "Nie. Skala opisuje sposób przedstawienia, nie przelicza już zwymiarowanej wartości.",
+            "Nie. Skala opisuje sposób przedstawienia, nie przelicza już zwymiarowanej wartości.",
+            "Prawidłowo. Skala opisuje sposób przedstawienia, nie przelicza już zwymiarowanej wartości."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Rysunek techniczny to język między klientem, konstruktorem i kowalem. Zwykle obejmuje widok z przodu, z góry i z boku, a gdy potrzeba także przekrój, detale i zestawienie części. Wymiar nominalny, tolerancja, jednostka i skala są informacjami niezależnymi; nie wolno odczytywać wymiarów wyłącznie linijką z kartki."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Czytaj najpierw tabliczkę rysunkową: numer i rewizję, jednostki, skalę, materiał i uwagi. Następnie określ geometrię, średnice otworów, promienie gięcia, sposób łączenia i wykończenie. Przed kuciem należy rozstrzygnąć niejednoznaczności, np. brak średnicy osi zawiasu albo brak pozycji otworów mocujących."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Na rysunku ozdobnej klamki jest wymiar całkowity 180 mm oraz skala 1:2. Oznacza to rzeczywisty wymiar 180 mm, niezależnie od tego, że odcinek na wydruku może mieć 90 mm. Zmiana skali drukowania nie zmienia podanego wymiaru."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Wykonaj papierowy szkic prostej płytki z dwoma otworami: widok, odległość między osiami i jednostki. Wskaż trzy informacje, które musiałbyś doprecyzować przed produkcją.\n\nĆwiczenie: Zrób szkic dwóch widoków płytki 180 × 40 mm i oznacz położenie dwóch otworów."
+          }
+        ],
+        "raw": [
+          "Rysunek techniczny: widoki, przekroje, skale i symbole",
+          "Rysunek techniczny to język między klientem, konstruktorem i kowalem. Zwykle obejmuje widok z przodu, z góry i z boku, a gdy potrzeba także przekrój, detale i zestawienie części. Wymiar nominalny, tolerancja, jednostka i skala są informacjami niezależnymi; nie wolno odczytywać wymiarów wyłącznie linijką z kartki.",
+          "Czytaj najpierw tabliczkę rysunkową: numer i rewizję, jednostki, skalę, materiał i uwagi. Następnie określ geometrię, średnice otworów, promienie gięcia, sposób łączenia i wykończenie. Przed kuciem należy rozstrzygnąć niejednoznaczności, np. brak średnicy osi zawiasu albo brak pozycji otworów mocujących.",
+          "Na rysunku ozdobnej klamki jest wymiar całkowity 180 mm oraz skala 1:2. Oznacza to rzeczywisty wymiar 180 mm, niezależnie od tego, że odcinek na wydruku może mieć 90 mm. Zmiana skali drukowania nie zmienia podanego wymiaru.",
+          "Wykonaj papierowy szkic prostej płytki z dwoma otworami: widok, odległość między osiami i jednostki. Wskaż trzy informacje, które musiałbyś doprecyzować przed produkcją."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Zrób szkic dwóch widoków płytki 180 × 40 mm i oznacz położenie dwóch otworów."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 4,
+      "title_pl": "5. Pomiary i tolerancje: suwmiarka, kątownik, kontrola wymiarów",
+      "material": {
+        "learning": {
+          "question": "Jaki zakres jest zgodny z wymiarem 100 ±1 mm?",
+          "options": [
+            "Od 99 do 101 mm włącznie.",
+            "Od 90 do 110 mm.",
+            "Dokładnie 100 mm bez żadnego odchylenia.",
+            "Od 101 do 102 mm."
+          ],
+          "correct": 0,
+          "situation": "Dwa elementy zawiasu mają otwory, których osie miały być oddalone o 60 mm. W pierwszym rozstaw wynosi 60 mm, w drugim 63 mm przy tolerancji ±1 mm. Nie poprawiaj błędu siłą podczas montażu; drugi detal nie spełnia wymagania.",
+          "example": "Od 99 do 101 mm włącznie.",
+          "explanation": "Tolerancja ±1 oznacza odejmowanie i dodawanie jednej jednostki do wymiaru nominalnego.",
+          "intro": "Suwmiarka pozwala mierzyć średnice zewnętrzne, wewnętrzne i głębokości, ale jej odczyt jest wiarygodny tylko po sprawdzeniu zerowania i prawidłowego ustawienia szczęk. Kątownik sprawdza kąty proste, a przymiary i szablony pomagają mierzyć detale o skomplikowanym kształcie. Przy gorących elementach pomiar kontaktowy wymaga szczególnych środków ochrony i procedur.",
+          "task": "Oblicz zakresy dla 40 ±0,5 mm i 120 +2/-1 mm, zapisując jednostki.",
+          "feedback": [
+            "Prawidłowo. Tolerancja ±1 oznacza odejmowanie i dodawanie jednej jednostki do wymiaru nominalnego.",
+            "Nie. Tolerancja ±1 oznacza odejmowanie i dodawanie jednej jednostki do wymiaru nominalnego.",
+            "Nie. Tolerancja ±1 oznacza odejmowanie i dodawanie jednej jednostki do wymiaru nominalnego.",
+            "Nie. Tolerancja ±1 oznacza odejmowanie i dodawanie jednej jednostki do wymiaru nominalnego."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Suwmiarka pozwala mierzyć średnice zewnętrzne, wewnętrzne i głębokości, ale jej odczyt jest wiarygodny tylko po sprawdzeniu zerowania i prawidłowego ustawienia szczęk. Kątownik sprawdza kąty proste, a przymiary i szablony pomagają mierzyć detale o skomplikowanym kształcie. Przy gorących elementach pomiar kontaktowy wymaga szczególnych środków ochrony i procedur."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Tolerancja oznacza dozwolone odchylenie od wymiaru nominalnego. Jeśli detal ma 100 ±1 mm, akceptowany zakres wynosi od 99 do 101 mm. Wyrób może wyglądać atrakcyjnie, ale nie pasować do montażu przez błędny rozstaw otworów. Kontroluj najważniejsze wymiary przed wykończeniem, kiedy poprawki są jeszcze możliwe."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Dwa elementy zawiasu mają otwory, których osie miały być oddalone o 60 mm. W pierwszym rozstaw wynosi 60 mm, w drugim 63 mm przy tolerancji ±1 mm. Nie poprawiaj błędu siłą podczas montażu; drugi detal nie spełnia wymagania."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Przelicz trzy tolerancje, a następnie opisz, czym różni się pomiar od kontroli jakości. Wyjaśnij, jak wykryć błąd pomiaru spowodowany zabrudzonym narzędziem.\n\nĆwiczenie: Oblicz zakresy dla 40 ±0,5 mm i 120 +2/-1 mm, zapisując jednostki."
+          }
+        ],
+        "raw": [
+          "Pomiary i tolerancje: suwmiarka, kątownik, kontrola wymiarów",
+          "Suwmiarka pozwala mierzyć średnice zewnętrzne, wewnętrzne i głębokości, ale jej odczyt jest wiarygodny tylko po sprawdzeniu zerowania i prawidłowego ustawienia szczęk. Kątownik sprawdza kąty proste, a przymiary i szablony pomagają mierzyć detale o skomplikowanym kształcie. Przy gorących elementach pomiar kontaktowy wymaga szczególnych środków ochrony i procedur.",
+          "Tolerancja oznacza dozwolone odchylenie od wymiaru nominalnego. Jeśli detal ma 100 ±1 mm, akceptowany zakres wynosi od 99 do 101 mm. Wyrób może wyglądać atrakcyjnie, ale nie pasować do montażu przez błędny rozstaw otworów. Kontroluj najważniejsze wymiary przed wykończeniem, kiedy poprawki są jeszcze możliwe.",
+          "Dwa elementy zawiasu mają otwory, których osie miały być oddalone o 60 mm. W pierwszym rozstaw wynosi 60 mm, w drugim 63 mm przy tolerancji ±1 mm. Nie poprawiaj błędu siłą podczas montażu; drugi detal nie spełnia wymagania.",
+          "Przelicz trzy tolerancje, a następnie opisz, czym różni się pomiar od kontroli jakości. Wyjaśnij, jak wykryć błąd pomiaru spowodowany zabrudzonym narzędziem."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Oblicz zakresy dla 40 ±0,5 mm i 120 +2/-1 mm, zapisując jednostki."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 5,
+      "title_pl": "6. Stanowisko kowalskie: kowadło, palenisko i organizacja stref",
+      "material": {
+        "learning": {
+          "question": "Gdzie należy odkładać rozgrzane elementy po obróbce?",
+          "options": [
+            "Na wspólnym stole bez ostrzeżenia, kiedy przestają świecić.",
+            "W wydzielonej, czytelnie oznaczonej strefie dla gorących części.",
+            "Na drewnianej półce przy drzwiach.",
+            "Na podłodze w przejściu, by szybko ostygły."
+          ],
+          "correct": 1,
+          "situation": "Uczeń odkłada niedawno kuty pręt na wspólny stół bez oznaczenia. Drugi pracownik może go chwycić, bo metal nie świeci. Prawidłowy system obejmuje osobne miejsce odkładcze i czytelne oznaczenie strefy gorącej.",
+          "example": "W wydzielonej, czytelnie oznaczonej strefie dla gorących części.",
+          "explanation": "Oznaczenie i separacja eliminują ryzyko przypadkowego kontaktu z niewidocznym gorącem.",
+          "intro": "Kowadło ma płaskie lico do kształtowania, róg do promieni i otwory technologiczne do mocowania narzędzi pomocniczych. Palenisko lub piec kuźniczy służą do kontrolowanego ogrzewania materiału. Szczypce, stoły pomocnicze i miejsce na odkuwki muszą znajdować się tak, by ograniczać przenoszenie rozgrzanych przedmiotów przez ciągi piesze.",
+          "task": "Rozpisz mapę stanowiska: wejście, odciąg, kowadło, palenisko, miejsce gorących odkuwek, miejsce narzędzi.",
+          "feedback": [
+            "Nie. Oznaczenie i separacja eliminują ryzyko przypadkowego kontaktu z niewidocznym gorącem.",
+            "Prawidłowo. Oznaczenie i separacja eliminują ryzyko przypadkowego kontaktu z niewidocznym gorącem.",
+            "Nie. Oznaczenie i separacja eliminują ryzyko przypadkowego kontaktu z niewidocznym gorącem.",
+            "Nie. Oznaczenie i separacja eliminują ryzyko przypadkowego kontaktu z niewidocznym gorącem."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Kowadło ma płaskie lico do kształtowania, róg do promieni i otwory technologiczne do mocowania narzędzi pomocniczych. Palenisko lub piec kuźniczy służą do kontrolowanego ogrzewania materiału. Szczypce, stoły pomocnicze i miejsce na odkuwki muszą znajdować się tak, by ograniczać przenoszenie rozgrzanych przedmiotów przez ciągi piesze."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Stabilna podstawa kowadła redukuje ryzyko przewrócenia i poprawia pracę. Należy rozdzielić strefę gorących odpadów od zwykłego złomu, oznaczać rozgrzane części, utrzymywać suche otoczenie i dobrą widoczność. Wysokość stanowiska oraz położenie sprzętu dobiera się ergonomicznie do osoby i wykonywanej operacji."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Uczeń odkłada niedawno kuty pręt na wspólny stół bez oznaczenia. Drugi pracownik może go chwycić, bo metal nie świeci. Prawidłowy system obejmuje osobne miejsce odkładcze i czytelne oznaczenie strefy gorącej."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Rozpoznaj na schemacie lico, róg i otwory kowadła. Zaproponuj układ kuźni, w którym droga transportu gorącego metalu jest krótka i nie przecina wyjścia.\n\nĆwiczenie: Rozpisz mapę stanowiska: wejście, odciąg, kowadło, palenisko, miejsce gorących odkuwek, miejsce narzędzi."
+          }
+        ],
+        "raw": [
+          "Stanowisko kowalskie: kowadło, palenisko i organizacja stref",
+          "Kowadło ma płaskie lico do kształtowania, róg do promieni i otwory technologiczne do mocowania narzędzi pomocniczych. Palenisko lub piec kuźniczy służą do kontrolowanego ogrzewania materiału. Szczypce, stoły pomocnicze i miejsce na odkuwki muszą znajdować się tak, by ograniczać przenoszenie rozgrzanych przedmiotów przez ciągi piesze.",
+          "Stabilna podstawa kowadła redukuje ryzyko przewrócenia i poprawia pracę. Należy rozdzielić strefę gorących odpadów od zwykłego złomu, oznaczać rozgrzane części, utrzymywać suche otoczenie i dobrą widoczność. Wysokość stanowiska oraz położenie sprzętu dobiera się ergonomicznie do osoby i wykonywanej operacji.",
+          "Uczeń odkłada niedawno kuty pręt na wspólny stół bez oznaczenia. Drugi pracownik może go chwycić, bo metal nie świeci. Prawidłowy system obejmuje osobne miejsce odkładcze i czytelne oznaczenie strefy gorącej.",
+          "Rozpoznaj na schemacie lico, róg i otwory kowadła. Zaproponuj układ kuźni, w którym droga transportu gorącego metalu jest krótka i nie przecina wyjścia."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Rozpisz mapę stanowiska: wejście, odciąg, kowadło, palenisko, miejsce gorących odkuwek, miejsce narzędzi.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 6,
+      "title_pl": "7. Młotki i kleszcze: dobór do operacji i bezpieczny chwyt",
+      "material": {
+        "learning": {
+          "question": "Co sprawdzasz przede wszystkim przy doborze kleszczy do gorącego kwadratowego pręta?",
+          "options": [
+            "Czy kolor farby na rękojeści odpowiada kolorowi pręta.",
+            "Czy kleszcze są najdłuższe w warsztacie niezależnie od szczęk.",
+            "Czy profil szczęk pewnie utrzymuje konkretny przekrój i czy przegub jest sprawny.",
+            "Czy można zwiększyć siłę dłoni zamiast poprawić dopasowanie."
+          ],
+          "correct": 2,
+          "situation": "Masz kwadratowy pręt i szczypce przeznaczone do cienkiego okrągłego materiału. Choć da się go częściowo uchwycić, kontakt jest niestabilny. Dobierasz szczypce pasujące do pręta; nie próbujesz rekompensować złego chwytu zwiększaniem siły dłoni.",
+          "example": "Czy profil szczęk pewnie utrzymuje konkretny przekrój i czy przegub jest sprawny.",
+          "explanation": "Bezpieczny chwyt zależy od geometrii szczęk i stanu narzędzia.",
+          "intro": "Młot o płaskim bijaku służy do ogólnego kształtowania, a młot z rąbem może koncentrować odkształcenie w wybranym kierunku. Młotki i pobijaki różnią się masą, kształtem i zastosowaniem; nie każdy jest odpowiedni do każdego zadania. Kleszcze o szczękach płaskich, okrągłych lub profilowych muszą pewnie obejmować konkretny przekrój detalu.",
+          "task": "Opisz, jak rozpoznać źle dopasowane szczypce bez używania rozgrzanego metalu.",
+          "feedback": [
+            "Nie. Bezpieczny chwyt zależy od geometrii szczęk i stanu narzędzia.",
+            "Nie. Bezpieczny chwyt zależy od geometrii szczęk i stanu narzędzia.",
+            "Prawidłowo. Bezpieczny chwyt zależy od geometrii szczęk i stanu narzędzia.",
+            "Nie. Bezpieczny chwyt zależy od geometrii szczęk i stanu narzędzia."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Młot o płaskim bijaku służy do ogólnego kształtowania, a młot z rąbem może koncentrować odkształcenie w wybranym kierunku. Młotki i pobijaki różnią się masą, kształtem i zastosowaniem; nie każdy jest odpowiedni do każdego zadania. Kleszcze o szczękach płaskich, okrągłych lub profilowych muszą pewnie obejmować konkretny przekrój detalu."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Przed pracą sprawdza się stan trzonka, osadzenie głowicy, brak pęknięć i zadziorów na krawędziach bijaka. Przy kleszczach ważne są prawidłowe dopasowanie szczęk, działanie przegubu i brak luzów. Zbyt duża masa młotka pogarsza celność i szybko męczy operatora, a zbyt luźne szczypce mogą upuścić nagrzany element."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Masz kwadratowy pręt i szczypce przeznaczone do cienkiego okrągłego materiału. Choć da się go częściowo uchwycić, kontakt jest niestabilny. Dobierasz szczypce pasujące do pręta; nie próbujesz rekompensować złego chwytu zwiększaniem siły dłoni."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Przygotuj tabelę: rodzaj młota, typ szczypiec, przekrój materiału, typowe uszkodzenie i sposób kontroli. Wyjaśnij, dlaczego celny ruch jest ważniejszy niż duża masa.\n\nĆwiczenie: Opisz, jak rozpoznać źle dopasowane szczypce bez używania rozgrzanego metalu."
+          }
+        ],
+        "raw": [
+          "Młotki i kleszcze: dobór do operacji i bezpieczny chwyt",
+          "Młot o płaskim bijaku służy do ogólnego kształtowania, a młot z rąbem może koncentrować odkształcenie w wybranym kierunku. Młotki i pobijaki różnią się masą, kształtem i zastosowaniem; nie każdy jest odpowiedni do każdego zadania. Kleszcze o szczękach płaskich, okrągłych lub profilowych muszą pewnie obejmować konkretny przekrój detalu.",
+          "Przed pracą sprawdza się stan trzonka, osadzenie głowicy, brak pęknięć i zadziorów na krawędziach bijaka. Przy kleszczach ważne są prawidłowe dopasowanie szczęk, działanie przegubu i brak luzów. Zbyt duża masa młotka pogarsza celność i szybko męczy operatora, a zbyt luźne szczypce mogą upuścić nagrzany element.",
+          "Masz kwadratowy pręt i szczypce przeznaczone do cienkiego okrągłego materiału. Choć da się go częściowo uchwycić, kontakt jest niestabilny. Dobierasz szczypce pasujące do pręta; nie próbujesz rekompensować złego chwytu zwiększaniem siły dłoni.",
+          "Przygotuj tabelę: rodzaj młota, typ szczypiec, przekrój materiału, typowe uszkodzenie i sposób kontroli. Wyjaśnij, dlaczego celny ruch jest ważniejszy niż duża masa."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Opisz, jak rozpoznać źle dopasowane szczypce bez używania rozgrzanego metalu."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 7,
+      "title_pl": "8. Dziurownice, przebijaki i przecinaki — narzędzia do otworów i cięcia",
+      "material": {
+        "learning": {
+          "question": "Jaką rolę odgrywa trzpień kalibrujący po wykonaniu wstępnego otworu?",
+          "options": [
+            "Służy wyłącznie do polerowania farby na powierzchni.",
+            "Zastępuje każdy przecinak podczas przecinania pręta.",
+            "Służy do określenia temperatury po kolorze metalu.",
+            "Pomaga doprowadzić otwór do wymaganego kształtu i wymiaru."
+          ],
+          "correct": 3,
+          "situation": "Klient zamawia element z otworem 12 mm. Ktoś proponuje użycie przypadkowego przecinaka, bo 'też jest ostry'. Najpierw rozróżniasz operację cięcia od przebijania i dobierasz odpowiednie narzędzie i technologię do oczekiwanej geometrii.",
+          "example": "Pomaga doprowadzić otwór do wymaganego kształtu i wymiaru.",
+          "explanation": "Tworzenie otworu i jego wymiarowe wykończenie są odrębnymi etapami.",
+          "intro": "Przebijak (punch) lokalnie wypiera metal i tworzy wstępny otwór, który później można kalibrować trzpieniem; dziurownica pozwala uzyskać otwór o określonym kształcie w odpowiednio przygotowanym materiale. Przecinak służy do rozdzielania materiału, a geometria jego ostrza musi odpowiadać pracy na zimno lub na gorąco. Nie są to narzędzia zamienne.",
+          "task": "Dopasuj operację do narzędzia: cięcie, przebijanie, kalibracja otworu, kontrola jakości.",
+          "feedback": [
+            "Nie. Tworzenie otworu i jego wymiarowe wykończenie są odrębnymi etapami.",
+            "Nie. Tworzenie otworu i jego wymiarowe wykończenie są odrębnymi etapami.",
+            "Nie. Tworzenie otworu i jego wymiarowe wykończenie są odrębnymi etapami.",
+            "Prawidłowo. Tworzenie otworu i jego wymiarowe wykończenie są odrębnymi etapami."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Przebijak (punch) lokalnie wypiera metal i tworzy wstępny otwór, który później można kalibrować trzpieniem; dziurownica pozwala uzyskać otwór o określonym kształcie w odpowiednio przygotowanym materiale. Przecinak służy do rozdzielania materiału, a geometria jego ostrza musi odpowiadać pracy na zimno lub na gorąco. Nie są to narzędzia zamienne."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Przed doborem sprawdź grubość i gatunek pręta, planowaną średnicę otworu, możliwość podparcia materiału oraz stan powierzchni uderzanej. Spęczniała głowica przecinaka może odprysnąć; narzędzie z pęknięciem odkłada się do naprawy lub wycofuje. Przy pracy na gorąco wymagane są osłony i kontrola temperatury pod okiem instruktora."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Klient zamawia element z otworem 12 mm. Ktoś proponuje użycie przypadkowego przecinaka, bo 'też jest ostry'. Najpierw rozróżniasz operację cięcia od przebijania i dobierasz odpowiednie narzędzie i technologię do oczekiwanej geometrii."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Narysuj schemat 'pręta przed, w trakcie i po przebiciu' bez wykonywania operacji. Wyjaśnij, czym jest otwór wstępny, a czym kalibrowanie i od czego zależy dokładność.\n\nĆwiczenie: Dopasuj operację do narzędzia: cięcie, przebijanie, kalibracja otworu, kontrola jakości."
+          }
+        ],
+        "raw": [
+          "Dziurownice, przebijaki i przecinaki — narzędzia do otworów i cięcia",
+          "Przebijak (punch) lokalnie wypiera metal i tworzy wstępny otwór, który później można kalibrować trzpieniem; dziurownica pozwala uzyskać otwór o określonym kształcie w odpowiednio przygotowanym materiale. Przecinak służy do rozdzielania materiału, a geometria jego ostrza musi odpowiadać pracy na zimno lub na gorąco. Nie są to narzędzia zamienne.",
+          "Przed doborem sprawdź grubość i gatunek pręta, planowaną średnicę otworu, możliwość podparcia materiału oraz stan powierzchni uderzanej. Spęczniała głowica przecinaka może odprysnąć; narzędzie z pęknięciem odkłada się do naprawy lub wycofuje. Przy pracy na gorąco wymagane są osłony i kontrola temperatury pod okiem instruktora.",
+          "Klient zamawia element z otworem 12 mm. Ktoś proponuje użycie przypadkowego przecinaka, bo 'też jest ostry'. Najpierw rozróżniasz operację cięcia od przebijania i dobierasz odpowiednie narzędzie i technologię do oczekiwanej geometrii.",
+          "Narysuj schemat 'pręta przed, w trakcie i po przebiciu' bez wykonywania operacji. Wyjaśnij, czym jest otwór wstępny, a czym kalibrowanie i od czego zależy dokładność."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Dopasuj operację do narzędzia: cięcie, przebijanie, kalibracja otworu, kontrola jakości.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 8,
+      "title_pl": "9. Żłobniki, gładziki i odsadzaki: nadawanie profilu i krawędzi",
+      "material": {
+        "learning": {
+          "question": "Które narzędzie kojarzysz przede wszystkim z uzyskaniem wyraźnego stopnia w przekroju?",
+          "options": [
+            "Odsadzak, używany do formowania stopni i ramion odkuwki.",
+            "Gładzik, który wyłącznie mierzy temperaturę.",
+            "Kleszcze, które samodzielnie kalibrują otwór.",
+            "Suwmiarkę, która kształtuje rozgrzany metal."
+          ],
+          "correct": 0,
+          "situation": "Przy wyrobie ozdobnego zawiasu projekt przewiduje wyraźny stopień między płytką mocującą a częścią ruchomą. Odsadzak pozwala nadać stopień; gładzik stosuje się przy wykańczaniu powierzchni. Zastosowanie wyłącznie gładzika nie zapewnia odpowiedniej geometrii.",
+          "example": "Odsadzak, używany do formowania stopni i ramion odkuwki.",
+          "explanation": "Odsadzanie zmienia geometrię przekroju, a nie tylko gładkość powierzchni.",
+          "intro": "Żłobnik (fuller) koncentruje nacisk w wąskiej strefie, co pozwala tworzyć rowek lub miejscowe przewężenie. Gładzik (flatter) pomaga wyrównać powierzchnię po kuciu, ale nie zastępuje kontroli wymiaru. Odsadzak (set hammer) służy do formowania stopni i wyraźnych przejść przekroju. Narzędzia profilowe bywają dobierane w parach góra–dół.",
+          "task": "Sporządź kartę trzech narzędzi: przeznaczenie, przykład wyrobu, ryzyko błędnego użycia.",
+          "feedback": [
+            "Prawidłowo. Odsadzanie zmienia geometrię przekroju, a nie tylko gładkość powierzchni.",
+            "Nie. Odsadzanie zmienia geometrię przekroju, a nie tylko gładkość powierzchni.",
+            "Nie. Odsadzanie zmienia geometrię przekroju, a nie tylko gładkość powierzchni.",
+            "Nie. Odsadzanie zmienia geometrię przekroju, a nie tylko gładkość powierzchni."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Żłobnik (fuller) koncentruje nacisk w wąskiej strefie, co pozwala tworzyć rowek lub miejscowe przewężenie. Gładzik (flatter) pomaga wyrównać powierzchnię po kuciu, ale nie zastępuje kontroli wymiaru. Odsadzak (set hammer) służy do formowania stopni i wyraźnych przejść przekroju. Narzędzia profilowe bywają dobierane w parach góra–dół."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Różnica między estetyką a geometrią jest kluczowa: dobrze wyglądający rowek może mieć zbyt mały przekrój nośny. Analiza rysunku, podparcie odkuwki, dobór promieni i sprawdzenie wymiarów poprzedzają czynność kucia. Powierzchni nie powinno się wygładzać tak, by ukryć pęknięcie lub nadmierne przewężenie."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Przy wyrobie ozdobnego zawiasu projekt przewiduje wyraźny stopień między płytką mocującą a częścią ruchomą. Odsadzak pozwala nadać stopień; gładzik stosuje się przy wykańczaniu powierzchni. Zastosowanie wyłącznie gładzika nie zapewnia odpowiedniej geometrii."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Na szkicu zaznacz rowek, odsadzenie i powierzchnię płaską; do każdego dobierz odpowiednią rodzinę narzędzi oraz kryterium akceptacji po pomiarze.\n\nĆwiczenie: Sporządź kartę trzech narzędzi: przeznaczenie, przykład wyrobu, ryzyko błędnego użycia."
+          }
+        ],
+        "raw": [
+          "Żłobniki, gładziki i odsadzaki: nadawanie profilu i krawędzi",
+          "Żłobnik (fuller) koncentruje nacisk w wąskiej strefie, co pozwala tworzyć rowek lub miejscowe przewężenie. Gładzik (flatter) pomaga wyrównać powierzchnię po kuciu, ale nie zastępuje kontroli wymiaru. Odsadzak (set hammer) służy do formowania stopni i wyraźnych przejść przekroju. Narzędzia profilowe bywają dobierane w parach góra–dół.",
+          "Różnica między estetyką a geometrią jest kluczowa: dobrze wyglądający rowek może mieć zbyt mały przekrój nośny. Analiza rysunku, podparcie odkuwki, dobór promieni i sprawdzenie wymiarów poprzedzają czynność kucia. Powierzchni nie powinno się wygładzać tak, by ukryć pęknięcie lub nadmierne przewężenie.",
+          "Przy wyrobie ozdobnego zawiasu projekt przewiduje wyraźny stopień między płytką mocującą a częścią ruchomą. Odsadzak pozwala nadać stopień; gładzik stosuje się przy wykańczaniu powierzchni. Zastosowanie wyłącznie gładzika nie zapewnia odpowiedniej geometrii.",
+          "Na szkicu zaznacz rowek, odsadzenie i powierzchnię płaską; do każdego dobierz odpowiednią rodzinę narzędzi oraz kryterium akceptacji po pomiarze."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Sporządź kartę trzech narzędzi: przeznaczenie, przykład wyrobu, ryzyko błędnego użycia."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 9,
+      "title_pl": "10. Konserwacja i kontrola narzędzi kowalskich",
+      "material": {
+        "learning": {
+          "question": "Co robisz, gdy na głowicy uderzanego przecinaka widzisz wyraźne spęcznienie i pęknięcie?",
+          "options": [
+            "Używam go mocniej, by krawędzie same się wyrównały.",
+            "Wycofuję narzędzie z użytkowania i kieruję je do właściwej oceny lub wymiany.",
+            "Przyklejam taśmę na pęknięcie i kontynuuję.",
+            "Pozostawiam na wspólnym stanowisku bez oznaczenia."
+          ],
+          "correct": 1,
+          "situation": "Uczeń widzi grzybkowato zdeformowaną głowicę przecinaka. Szlifowanie 'na szybko' bez procedury nie jest prawidłową decyzją: narzędzie należy wycofać i skierować do kompetentnej oceny, ponieważ uszkodzona głowica może wytworzyć ostre odpryski.",
+          "example": "Wycofuję narzędzie z użytkowania i kieruję je do właściwej oceny lub wymiany.",
+          "explanation": "Odpryski uszkodzonej głowicy mogą spowodować poważne obrażenia.",
+          "intro": "Narzędzie kowalskie musi być nie tylko dobrane, ale również sprawne. Młotek z pękniętym trzonkiem, przecinak ze spęczniałą głowicą czy kleszcze z niestabilnym przegubem nie nadają się do normalnego użycia. Konserwacja obejmuje czyszczenie, kontrolę pęknięć, zabezpieczenie powierzchni przed korozją, konserwację części ruchomych zgodnie z instrukcją i właściwe przechowywanie.",
+          "task": "Zbuduj kartę przeglądu dla młotka, kleszczy i przecinaka z decyzją i datą następnej kontroli.",
+          "feedback": [
+            "Nie. Odpryski uszkodzonej głowicy mogą spowodować poważne obrażenia.",
+            "Prawidłowo. Odpryski uszkodzonej głowicy mogą spowodować poważne obrażenia.",
+            "Nie. Odpryski uszkodzonej głowicy mogą spowodować poważne obrażenia.",
+            "Nie. Odpryski uszkodzonej głowicy mogą spowodować poważne obrażenia."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zrozum podstawy",
+            "text": "Narzędzie kowalskie musi być nie tylko dobrane, ale również sprawne. Młotek z pękniętym trzonkiem, przecinak ze spęczniałą głowicą czy kleszcze z niestabilnym przegubem nie nadają się do normalnego użycia. Konserwacja obejmuje czyszczenie, kontrolę pęknięć, zabezpieczenie powierzchni przed korozją, konserwację części ruchomych zgodnie z instrukcją i właściwe przechowywanie."
+          },
+          {
+            "heading": "Jak wygląda to w prawdziwej pracy?",
+            "text": "Nie należy improwizować naprawy elementów poddawanych uderzeniom. Ocena, czy narzędzie nadaje się do ponownego użycia, wymaga wiedzy o materiale, przeznaczeniu i wytycznych producenta. W rejestrze warsztatu zapisz datę kontroli, zauważoną wadę, decyzję 'wycofać/naprawić/dopuścić' oraz osobę upoważnioną."
+          },
+          {
+            "heading": "Przeanalizuj sytuację",
+            "text": "Uczeń widzi grzybkowato zdeformowaną głowicę przecinaka. Szlifowanie 'na szybko' bez procedury nie jest prawidłową decyzją: narzędzie należy wycofać i skierować do kompetentnej oceny, ponieważ uszkodzona głowica może wytworzyć ostre odpryski."
+          },
+          {
+            "heading": "Sprawdź, czy rozumiesz",
+            "text": "Stwórz prostą checklistę pięciu narzędzi: mocowanie, pęknięcia, korozja, deformacja, czystość, przechowywanie. Dopisz jednoznaczne kryterium 'nie używać'.\n\nĆwiczenie: Zbuduj kartę przeglądu dla młotka, kleszczy i przecinaka z decyzją i datą następnej kontroli."
+          }
+        ],
+        "raw": [
+          "Konserwacja i kontrola narzędzi kowalskich",
+          "Narzędzie kowalskie musi być nie tylko dobrane, ale również sprawne. Młotek z pękniętym trzonkiem, przecinak ze spęczniałą głowicą czy kleszcze z niestabilnym przegubem nie nadają się do normalnego użycia. Konserwacja obejmuje czyszczenie, kontrolę pęknięć, zabezpieczenie powierzchni przed korozją, konserwację części ruchomych zgodnie z instrukcją i właściwe przechowywanie.",
+          "Nie należy improwizować naprawy elementów poddawanych uderzeniom. Ocena, czy narzędzie nadaje się do ponownego użycia, wymaga wiedzy o materiale, przeznaczeniu i wytycznych producenta. W rejestrze warsztatu zapisz datę kontroli, zauważoną wadę, decyzję 'wycofać/naprawić/dopuścić' oraz osobę upoważnioną.",
+          "Uczeń widzi grzybkowato zdeformowaną głowicę przecinaka. Szlifowanie 'na szybko' bez procedury nie jest prawidłową decyzją: narzędzie należy wycofać i skierować do kompetentnej oceny, ponieważ uszkodzona głowica może wytworzyć ostre odpryski.",
+          "Stwórz prostą checklistę pięciu narzędzi: mocowanie, pęknięcia, korozja, deformacja, czystość, przechowywanie. Dopisz jednoznaczne kryterium 'nie używać'."
+        ],
+        "references": [
+          {
+            "label": "Program zawodu MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – podstawy",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 1,
+        "learning_outcome": "Zbuduj kartę przeglądu dla młotka, kleszczy i przecinaka z decyzją i datą następnej kontroli."
+      }
+    }
+  ]
+}
