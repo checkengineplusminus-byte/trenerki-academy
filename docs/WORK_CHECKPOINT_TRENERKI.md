@@ -54,3 +54,11 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - Metadane programu i zajawka zostały zsynchronizowane w Supabase, status recenzji `review_needed`, bez zmiany `published`, postępów lub płatności.
 - Pozostaje: pełny test zalogowanego ucznia lekcje 1–16 → egzamin → dyplom, potwierdzenie grafiki z hostingu oraz recenzja profesjonalnego bednarza. **Nie przedstawiać jako formalnie ukończonego lub zawodowo zatwierdzonego kursu.**
 - Zasada następnego kursu: osobna treść i metodologia dopasowana do zawodu; po każdym kursie obowiązkowe DB verify + GitHub source + SQL patch + dopisanie checkpointu.
+
+
+**Kurs 2: Garncarz — przebudowa treści ukończona, wymaga recenzji i deployu**
+- Przed 8 lekcji; teraz 12 kolejnych lekcji `0..11` z pięcioma sekcjami każda, 12 różnymi pytaniami i czterema odpowiedziami. Supabase QA: `lessons=12, sections5=12, unique_q=12, four_choices=12, revised=12`.
+- Kurs indywidualny: gliny, szamot, plastyczność, centrowanie, płaty i wałki, obliczenia skurczu, suszenie, biskwit, szkliwienie i angoba, wymagania bezpieczeństwa oraz rozpoznawanie crazing/shivering.
+- GitHub: `content/garncarz-masterclass-20261109-part1.json` (`d83a0efc`), `part2.json` (`940caa8f`), schematy SVG i rejestr (`0996ee7d`), `database/patches/trenerki-garncarz-content-20261109.sql` (`f2408b35`), raport `docs/COURSE_REVIEW_GARNCARZ_20261109.md` (`e1ec9cc2`).
+- Metadane Supabase zaktualizowane; publikacji nie zmieniano. Nie dotykano postępów ani płatności.
+- **Nadal brak**: testu konta i egzaminu, recenzji fachowej, potwierdzenia grafik w Expo. Nie przedstawiać jako formalnego świadectwa zawodowego.
