@@ -1,0 +1,182 @@
+{
+  "course_slug": "odbiory",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Odbiór budynku lub lokalu to porównanie rzeczywistego stanu z zakresem umowy, zatwierdzoną dokumentacją, wymaganiami materiałowymi i możliwymi do zweryfikowania kryteriami jakości. Uczestnik nie powinien domyślać się tolerancji z wyglądu, a miejsce, data i wersja projektu muszą być zapisane."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Zanim wejdziesz do lokalu, przygotuj listę pomieszczeń, rysunek, specyfikację, latarkę, miarę, poziomicę, urządzenie do zdjęć i formularz usterek. Zapisz numery dostarczonych wyrobów i zakres, którego nie możesz ocenić bez odpowiednich uprawnień albo badań."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Kupujący rozpoczyna odbiór bez rysunku, przez co nie wie, czy otwór drzwiowy ma zgodny wymiar i czy pomieszczenie odpowiada umowie."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Zbuduj kartę odbioru: pomieszczenie, element, wymaganie, wynik pomiaru, tolerancja źródłowa, dokument i zdjęcie."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Metodyczne oględziny prowadzi się według stałej trasy, np. od wejścia i kolejnych pomieszczeń, od góry do dołu. Dzięki temu zmniejsza się ryzyko pominięcia elementów. Oświetlenie, czystość i dostęp do instalacji wpływają na możliwość oceny; niedostępny element trzeba zapisać jako niezweryfikowany."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Narysuj plan mieszkania i zaznacz osiem punktów kontrolnych. Dla każdego użyj identyfikatora np. P2-S3 (pomieszczenie 2, ściana 3). Nie polegaj wyłącznie na pamięci; dodaj datę, kierunek fotografii i miejsce obserwowanej usterki."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Fotografia plamy nie ma opisu miejsca ani skali, przez co wykonawca nie może jednoznacznie odnaleźć problemu."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Opracuj sekwencję odbioru mieszkania z trzema pomieszczeniami i system numeracji zdjęć oraz usterek."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Tynk, gładź, płytki, drewno, laminat i posadzka reagują odmiennie na wilgoć, uderzenia oraz temperaturę. Rysy mogą mieć różne przyczyny, od skurczu wykończenia po pracę podłoża. Nie każda rysa stanowi problem konstrukcyjny, ale pęknięcie w ważnej strefie wymaga odpowiedniej oceny."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Wykonaj oględziny przy równomiernym świetle oraz pomiary zgodne z projektem i przyjętymi kryteriami. Rozdziel estetykę (odcień, zabrudzenie), geometrię (pion, równość) i funkcję (trwałość, przyczepność). Sprawdź wilgotność metodą właściwą dla materiału, a nie przypadkowym miernikiem."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Przy podłodze drewnianej nie zachowano odpowiedniej szczeliny dylatacyjnej, a panele po kilku tygodniach się wybrzuszają."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Przygotuj tabelę pięciu wad wykończenia: objaw, możliwe przyczyny, badanie, kryterium i wymagane działanie."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Okno i drzwi składają się z profilu, skrzydła, okuć, uszczelek i sposobu zamocowania. Regulacja okuć może poprawić pracę skrzydła, ale nie naprawi wadliwego osadzenia lub uszkodzonej ramy. Odbiór powinien uwzględniać bezpieczeństwo, szczelność i zgodność z dokumentacją."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Wykonaj bezpieczny test otwierania, zamykania i ryglowania; obejrzyj uszczelki, okucia i przestrzeń dookoła ramy. Nie testuj zabezpieczeń antywłamaniowych lub ogniowych metodą improwizowaną — odpowiednie wyroby wymagają dokumentacji i prób przewidzianych przez producenta."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Skrzydło obciera o próg i nie rygluje się przy normalnej sile. Wpisz usterkę funkcjonalną, a nie wyłącznie kosmetyczną."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Ułóż protokół kontroli jednego okna i jednych drzwi: funkcja, uszczelnienia, mocowanie, dokument i zdjęcia."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Instalacje elektryczne, wodne, wentylacyjne, grzewcze i przeciwpożarowe wymagają kontroli przez osoby o właściwych kompetencjach. Przy zwykłym odbiorze można dostrzec brak kratek, wyciek lub nieczytelny opis, ale nie wolno na tej podstawie potwierdzać zgodności obwodów elektrycznych czy prób ciśnieniowych."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Porównaj wykaz instalacji z dokumentami odbiorowymi, oznacz dostępne elementy i zapisz wymagane wyniki specjalistycznych badań. Nie otwieraj rozdzielni elektrycznej bez odpowiedniej kompetencji i upoważnienia. W kwestiach wentylacji poproś o pomiary i protokół uruchomienia."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Gniazdo elektryczne wygląda estetycznie, ale brak protokołu wymaganych badań. Nie należy pisać, że cała instalacja jest bezpieczna."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Narysuj granicę: co może opisać oględzinami laik, a co wymaga protokołu i fachowca dla pięciu instalacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Zdjęcie jest użyteczne, gdy pozwala znaleźć wadę, ocenić jej skalę i przypisać do pomieszczenia oraz daty. Zbliżenie bez kontekstu może zniekształcać percepcję, a zdjęcie ogólne nie pokaże drobnego pęknięcia. Potrzebna jest para: lokalizacja i detal, najlepiej z miarą oraz właściwym światłem."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Dla jednej rysy wykonaj fotografię kontekstową z identyfikatorem ściany i zbliżenie z linijką, o ile jej użycie jest bezpieczne. Zapisz numer usterki, wymaganie, obserwację i osobę dokumentującą. Nie edytuj zdjęcia w sposób zmieniający jego znaczenie."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "W protokole wpisano 'uszkodzenie P-17', ale w galerii jest 200 zdjęć bez numerów. Nie da się połączyć dowodu z problemem."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Zaprojektuj nazewnictwo P02_S03_U17_20261109 i szablon opisu fotografii, bez ujawniania niepotrzebnych danych."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Protokół odbioru powinien odróżniać fakt, ocenę, wymaganie i ustalone działanie. Konieczne jest jasne wskazanie usterek, ich lokalizacji, zakresu prac, terminu i osoby odpowiedzialnej, a zakres prawnych skutków podpisu zależy od umowy i przepisów właściwego kraju."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Przygotuj dokument z czterema statusami: zgłoszone, potwierdzone, w trakcie, zamknięte z dowodem. Każda pozycja powinna zawierać zdjęcie, odniesienie do rysunku i kryterium odbioru. Przy sporze zapisuj dosłowne ustalenia i rozdzielaj je od propozycji."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Wykonawca mówi 'zrobimy to później', a w protokole brak terminu, lokalizacji i zakresu. To słaby ślad kontraktowy."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Zbuduj protokół trzech usterek z priorytetem, terminem, odpowiedzialnym i dowodem zamknięcia."
+        }
+      ]
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Materiał, konstrukcja i wymagania",
+          "text": "Raport powinien podsumowywać, co zostało ocenione, czego nie można było sprawdzić i jakie niezgodności pozostały. Archiwum jest przydatne tylko wtedy, gdy łatwo znaleźć powiązany rysunek, wersję protokołu i dowód rozwiązania. Zakończenie wszystkich wizualnych napraw niekoniecznie zamyka wymagane testy techniczne."
+        },
+        {
+          "heading": "Proces kontroli krok po kroku",
+          "text": "Stwórz spis: raport, dokumentacja projektowa, protokoły specjalistów, zdjęcia, korespondencja, potwierdzenia napraw i aktualny status. Oznacz wersję pliku i datę; nie nadpisuj oryginalnego dokumentu z podpisami bez historii zmian."
+        },
+        {
+          "heading": "Typowa niezgodność",
+          "text": "Po roku klient reklamuje usterkę, ale nie ma podpisanego protokołu ani informacji, czy wada istniała przy odbiorze."
+        },
+        {
+          "heading": "Protokół ćwiczeniowy",
+          "text": "Opracuj indeks archiwum z numerami dokumentów i tabelą 5 usterek, w tym dwóch zamkniętych i trzech wymagających działania."
+        }
+      ]
+    }
+  ]
+}
