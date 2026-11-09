@@ -1,0 +1,372 @@
+{
+  "slug": "gontarz",
+  "source_note": "Technologia i norma produktu zgodne ze źródłami; wzory i liczby są przykładami edukacyjnymi. Wymagana recenzja fachowa.",
+  "lessons": [
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 0,
+      "title_pl": "1. Drewniany dach od podstaw: gont, spån i warstwy",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Czym zajmuje się gontarz",
+            "text": "Gontarz przygotowuje elementy drewnianego pokrycia i rozumie, jak łączą się one w szczelny układ odprowadzający wodę. Nie należy mylić gontu drewnianego z bitumicznym gontem dachowym. W tradycji spotyka się różne odmiany: łupane, cięte i strugane, różniące się powierzchnią, grubością, geometrią i sposobem nakładania."
+          },
+          {
+            "heading": "Poznaj element i warstwy",
+            "text": "Pojedynczy gont ma grubszy koniec dolny (butt), cieńszy górny oraz powierzchnię zewnętrzną. Widoczna część gontu to ekspozycja (weather exposure), a reszta zostaje zakryta przez sąsiednie rzędy. Warstwy i zakłady przenoszą deszczówkę w dół, w kierunku okapu. Szczelność nie wynika z tego, że każdy styk boczny jest szczelnym klejonym połączeniem."
+          },
+          {
+            "heading": "Uwaga na języki i regionalne techniki",
+            "text": "W Norwegii określenia takspon, takflis, stikker i takshingel mają regionalną historię. Nie odnoszą się zawsze do identycznego detalu. Lokalny gont może być układany na zakład boczny, podczas gdy nowoczesny cięty cedar shingle bywa montowany z kontrolowaną szczeliną i przesunięciem styków. Ucz się rozpoznawać typ z rysunku, nie wyłącznie po nazwie."
+          },
+          {
+            "heading": "Przykład projektu",
+            "text": "Dwa dachy mają ten sam kąt nachylenia, lecz inny materiał: historyczne takspon na kościele i współczesne cięte cedar shingles na nowym domu. Ich mocowania i zakłady mogą być odmienne. Błędem byłoby skopiowanie jednego detalu na drugi bez informacji o konkretnym wyrobie."
+          },
+          {
+            "heading": "Ćwiczenie na rysunku",
+            "text": "Narysuj trzy kolejne rzędy gontów i strzałkami pokaż spływ wody. Podpisz okap, kalenicę, łatę, ekspozycję, zakład, łączenie gontów oraz podłoże. Dopisz, które elementy wymagają dokumentacji producenta lub projektu konstrukcyjnego."
+          }
+        ],
+        "illustration": "craft-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://snl.no/takspon"
+          }
+        ],
+        "learning": {
+          "intro": "Gontarz przygotowuje elementy drewnianego pokrycia i rozumie, jak łączą się one w szczelny układ odprowadzający wodę. Nie należy mylić gontu drewnianego z bitumicznym gontem dachowym. W tradycji spotyka się różne odmiany: łupane, cięte i strugane, różniące się powierzchnią, grubością, geometrią i sposobem nakładania.",
+          "situation": "Dwa dachy mają ten sam kąt nachylenia, lecz inny materiał: historyczne takspon na kościele i współczesne cięte cedar shingles na nowym domu. Ich mocowania i zakłady mogą być odmienne. Błędem byłoby skopiowanie jednego detalu na drugi bez informacji o konkretnym wyrobie.",
+          "task": "Narysuj trzy kolejne rzędy gontów i strzałkami pokaż spływ wody. Podpisz okap, kalenicę, łatę, ekspozycję, zakład, łączenie gontów oraz podłoże. Dopisz, które elementy wymagają dokumentacji producenta lub projektu konstrukcyjnego.",
+          "question": "Dlaczego gont drewniany nie musi mieć szczelnie sklejonych wszystkich styków bocznych?",
+          "options": [
+            "Ponieważ prawidłowe warstwy i zakłady kierują wodę ku okapowi.",
+            "Ponieważ drewno nigdy nie chłonie wody.",
+            "Ponieważ szczelność dachu zapewnia wyłącznie lakier.",
+            "Ponieważ zakład nie ma znaczenia, jeśli użyto gwoździ."
+          ],
+          "correct": 0,
+          "example": "Ponieważ prawidłowe warstwy i zakłady kierują wodę ku okapowi.",
+          "explanation": "Pracuje cały układ pokrycia: spadek, zakłady, układ styków i detale odprowadzania wody.",
+          "feedback": [
+            "Prawidłowo. Pracuje cały układ pokrycia: spadek, zakłady, układ styków i detale odprowadzania wody.",
+            "Wróć do zależności opisanej w zadaniu. Pracuje cały układ pokrycia: spadek, zakłady, układ styków i detale odprowadzania wody.",
+            "Wróć do zależności opisanej w zadaniu. Pracuje cały układ pokrycia: spadek, zakłady, układ styków i detale odprowadzania wody.",
+            "Wróć do zależności opisanej w zadaniu. Pracuje cały układ pokrycia: spadek, zakłady, układ styków i detale odprowadzania wody."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 1,
+      "title_pl": "2. Materiałoznawstwo gontu: włókna, sęki i wilgoć",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Dlaczego orientacja włókien ma znaczenie",
+            "text": "Drewno wchłania wodę i zmienia wymiary zależnie od wilgotności oraz kierunku anatomicznego. Najtrwalsze elementy pokrycia są zwykle dobierane pod kątem prostolinijnego przebiegu włókien, ograniczenia sęków, pęknięć i młodocianego drewna. Każda wada w obszarze narażonym na wodę może zwiększyć ryzyko odkształcenia lub przyspieszonej degradacji."
+          },
+          {
+            "heading": "Nie zawsze jeden gatunek",
+            "text": "W tradycyjnej Skandynawii występowały m.in. gonty z sosny, świerka, osiki i dębu, zależnie od regionu. W produkcji północnoamerykańskiej często używany jest czerwony cedr. Nie porównuj ich wyłącznie kolorem: istotne są struktura drewna, jakość partii, warunki klimatyczne, sposób wykonania i realna karta wyrobu."
+          },
+          {
+            "heading": "Łupanie kontra przecinanie włókien",
+            "text": "Łupanie wzdłuż naturalnych włókien może ograniczać odsłonięte przecięte włókna, przez które woda łatwiej wnika. Badania wskazują jednak, że wysoka jakość surowca i poprawny przebieg włókien mogą pozwolić także ciętemu drewnu osiągnąć dobrą trwałość. Hasło 'łupane zawsze lepsze' jest zbyt uproszczone."
+          },
+          {
+            "heading": "Przykład selekcji partii",
+            "text": "Masz trzy próbki: A bez sęków i z prostym przebiegiem włókien; B z dużym sękiem blisko cienkiej krawędzi; C z pęknięciem biegnącym wzdłuż i przez grubość. A jest lepszym kandydatem do dalszej oceny, a B i C wymagają odrzucenia lub kwalifikacji zgodnie z wymaganiami wyrobu. Sama obecność ładnej powierzchni nie wystarcza."
+          },
+          {
+            "heading": "Karta oceny drewna",
+            "text": "Dla sześciu próbek przygotuj tabelę: gatunek, metoda wytwarzania, przebieg włókien, sęki, pęknięcia, orientacja słojów, wilgotność, przeznaczenie, decyzja. Wpisz, których parametrów nie da się wiarygodnie ocenić jedynie wzrokiem."
+          }
+        ],
+        "illustration": "material-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.sciencedirect.com/org/science/article/pii/S2772318622000029"
+          }
+        ],
+        "learning": {
+          "intro": "Drewno wchłania wodę i zmienia wymiary zależnie od wilgotności oraz kierunku anatomicznego. Najtrwalsze elementy pokrycia są zwykle dobierane pod kątem prostolinijnego przebiegu włókien, ograniczenia sęków, pęknięć i młodocianego drewna. Każda wada w obszarze narażonym na wodę może zwiększyć ryzyko odkształcenia lub przyspieszonej degradacji.",
+          "situation": "Masz trzy próbki: A bez sęków i z prostym przebiegiem włókien; B z dużym sękiem blisko cienkiej krawędzi; C z pęknięciem biegnącym wzdłuż i przez grubość. A jest lepszym kandydatem do dalszej oceny, a B i C wymagają odrzucenia lub kwalifikacji zgodnie z wymaganiami wyrobu. Sama obecność ładnej powierzchni nie wystarcza.",
+          "task": "Dla sześciu próbek przygotuj tabelę: gatunek, metoda wytwarzania, przebieg włókien, sęki, pęknięcia, orientacja słojów, wilgotność, przeznaczenie, decyzja. Wpisz, których parametrów nie da się wiarygodnie ocenić jedynie wzrokiem.",
+          "question": "Która informacja najsilniej wspiera trwałość elementu gontu?",
+          "options": [
+            "Jednakowy ciemny kolor każdego elementu.",
+            "Prosty przebieg włókien i mało wad w wymaganej klasie materiału.",
+            "Jak najwięcej dużych sęków blisko cienkiej krawędzi.",
+            "Zdolność lakieru do ukrycia pęknięcia przez grubość."
+          ],
+          "correct": 1,
+          "example": "Prosty przebieg włókien i mało wad w wymaganej klasie materiału.",
+          "explanation": "Dobór drewna uwzględnia anatomię i wady; kolor nie stanowi klasy jakości.",
+          "feedback": [
+            "Wróć do zależności opisanej w zadaniu. Dobór drewna uwzględnia anatomię i wady; kolor nie stanowi klasy jakości.",
+            "Prawidłowo. Dobór drewna uwzględnia anatomię i wady; kolor nie stanowi klasy jakości.",
+            "Wróć do zależności opisanej w zadaniu. Dobór drewna uwzględnia anatomię i wady; kolor nie stanowi klasy jakości.",
+            "Wróć do zależności opisanej w zadaniu. Dobór drewna uwzględnia anatomię i wady; kolor nie stanowi klasy jakości."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 2,
+      "title_pl": "3. Warsztat gontarza: łupanie, ostrza i kontrola geometrii",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Poznaj trzy rodzaje wykonania",
+            "text": "Gont łupany rozdziela drewno wzdłuż jego naturalnych płaszczyzn. Gont cięty powstaje przy użyciu piły, a niektóre regionalne odmiany wykonuje się także przy użyciu strugów. Każdy proces pozostawia inne ślady na powierzchni i może wymagać innych kryteriów kontroli. Celem nie jest nauczenie się niebezpiecznego łupania wyłącznie z tekstu."
+          },
+          {
+            "heading": "Narzędzia mają określone funkcje",
+            "text": "Topór i klin służą do kontrolowanego dzielenia surowca w odpowiednim warsztacie. Nóż o szerokim ostrzu typu froe (rozszczepiak) może być używany do rozłupywania i korygowania elementów. Strug pomaga dopracować powierzchnię i grubość, a szablon, miara i kątownik sprawdzają kształt. Narzędzia pomiarowe nie zastępują mechanicznego zabezpieczenia obrabianej części."
+          },
+          {
+            "heading": "Co mierzy gontarz",
+            "text": "W dokumentacji elementu określa się długość, szerokość, grubość przy końcu grubszym i cienkim oraz zgodność z projektem. Istotne są także pęknięcia, kierunek włókien i powtarzalność w partii. Trzeba unikać pomiaru pojedynczej deszczułki i zakładania, że cała partia jest taka sama."
+          },
+          {
+            "heading": "Przykład wady cięcia",
+            "text": "W partii ciętych gontów o umownej długości 400 mm jeden element ma nieprzewidziane duże wykrzywienie i pęknięcie. Przykręcenie go siłą do łaty może zwiększyć naprężenie i nie rozwiązać problemu surowca; element powinien zostać oznaczony do oceny lub odrzutu."
+          },
+          {
+            "heading": "Ćwiczenie bez ostrych narzędzi",
+            "text": "Przygotuj rysunki gontu łupanego i ciętego. Zapisz cechy powierzchni, potencjalne wady i wymagane pomiary. Ułóż kartę 10 elementów z wynikami pomiarów i decyzją jakościową. Praktyczną obsługę ostrzy i rozłupywania pozostaw instruktorowi."
+          }
+        ],
+        "illustration": "technique-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://byggogbevar.no/pusse-opp/tak-og-tekking/artikler/tradisjonelle-tekkematerialer/"
+          }
+        ],
+        "learning": {
+          "intro": "Gont łupany rozdziela drewno wzdłuż jego naturalnych płaszczyzn. Gont cięty powstaje przy użyciu piły, a niektóre regionalne odmiany wykonuje się także przy użyciu strugów. Każdy proces pozostawia inne ślady na powierzchni i może wymagać innych kryteriów kontroli. Celem nie jest nauczenie się niebezpiecznego łupania wyłącznie z tekstu.",
+          "situation": "W partii ciętych gontów o umownej długości 400 mm jeden element ma nieprzewidziane duże wykrzywienie i pęknięcie. Przykręcenie go siłą do łaty może zwiększyć naprężenie i nie rozwiązać problemu surowca; element powinien zostać oznaczony do oceny lub odrzutu.",
+          "task": "Przygotuj rysunki gontu łupanego i ciętego. Zapisz cechy powierzchni, potencjalne wady i wymagane pomiary. Ułóż kartę 10 elementów z wynikami pomiarów i decyzją jakościową. Praktyczną obsługę ostrzy i rozłupywania pozostaw instruktorowi.",
+          "question": "Jaki jest główny cel szablonu w przygotowaniu serii gontów?",
+          "options": [
+            "Służy do usuwania pyłu z pomieszczenia.",
+            "Automatycznie określa gatunek drzewa.",
+            "Pozwala kontrolować powtarzalność zaprojektowanych wymiarów i profilu.",
+            "Gwarantuje brak pęknięć w całej długości drewna."
+          ],
+          "correct": 2,
+          "example": "Pozwala kontrolować powtarzalność zaprojektowanych wymiarów i profilu.",
+          "explanation": "Szablon wspiera kontrolę geometrii, lecz nie zastępuje oceny włókien i wad.",
+          "feedback": [
+            "Wróć do zależności opisanej w zadaniu. Szablon wspiera kontrolę geometrii, lecz nie zastępuje oceny włókien i wad.",
+            "Wróć do zależności opisanej w zadaniu. Szablon wspiera kontrolę geometrii, lecz nie zastępuje oceny włókien i wad.",
+            "Prawidłowo. Szablon wspiera kontrolę geometrii, lecz nie zastępuje oceny włókien i wad.",
+            "Wróć do zależności opisanej w zadaniu. Szablon wspiera kontrolę geometrii, lecz nie zastępuje oceny włókien i wad."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 3,
+      "title_pl": "4. Rysunek i nachylenie dachu: spadek, kąty i długość połaci",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Dwie miary tego samego dachu",
+            "text": "Spadek podaje się jako relację podniesienia do poziomego przesunięcia, np. 4:12 oznacza 4 jednostki wysokości na 12 jednostek poziomu. Kąt dachu jest związany ze spadkiem tangensem. Spadek 4:12 odpowiada kątowi arctan(4/12) ≈ 18,4°. Nie znaczy to, że każdy typ gontu wolno montować na takim dachu."
+          },
+          {
+            "heading": "Trójkąt prostokątny w pomiarze",
+            "text": "Jeśli pozioma odległość od okapu do kalenicy wynosi 3,0 m, a wznios 1,0 m, długość skośna wynosi √(3²+1²)=√10≈3,162 m. To długość geometryczna bez naddatków przy okapie i kalenicy. Powierzchnia połaci na planie nie jest powierzchnią połaci na nachyleniu."
+          },
+          {
+            "heading": "Sprawdź dokumentację producenta i kraju",
+            "text": "Amerykańskie wytyczne dotyczące certyfikowanych cedar shingles podają swoje wymagania dla spadku i ekspozycji; nie są automatycznie polską lub norweską normą. Lokalny projekt musi uwzględniać wiatr, śnieg, ochronę przeciwpożarową, podłoże i właściwy wyrób."
+          },
+          {
+            "heading": "Przykład błędu materiałowego",
+            "text": "Wykonawca liczy połacie 3 m na 4 m jak idealny prostokąt na rysunku poziomym: 12 m². Jeżeli rzeczywista skośna długość to 3,162 m, powierzchnia jednej połaci wynosi 3,162×4≈12,65 m² przed naddatkami i stratami. Pominięto ponad pół metra kwadratowego."
+          },
+          {
+            "heading": "Ćwiczenie obliczeniowe",
+            "text": "Narysuj połaciowy trójkąt o run=3 m i rise=1 m. Policz kąt, długość po skosie oraz powierzchnię jednej połaci o długości okapu 4 m. Dopisz, czego nie uwzględnia taki model: kosze, lukarny, nawisy, detale i odpady."
+          }
+        ],
+        "illustration": "mastery-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.cedarbureau.org/literature-education/installation-faq/"
+          }
+        ],
+        "learning": {
+          "intro": "Spadek podaje się jako relację podniesienia do poziomego przesunięcia, np. 4:12 oznacza 4 jednostki wysokości na 12 jednostek poziomu. Kąt dachu jest związany ze spadkiem tangensem. Spadek 4:12 odpowiada kątowi arctan(4/12) ≈ 18,4°. Nie znaczy to, że każdy typ gontu wolno montować na takim dachu.",
+          "situation": "Wykonawca liczy połacie 3 m na 4 m jak idealny prostokąt na rysunku poziomym: 12 m². Jeżeli rzeczywista skośna długość to 3,162 m, powierzchnia jednej połaci wynosi 3,162×4≈12,65 m² przed naddatkami i stratami. Pominięto ponad pół metra kwadratowego.",
+          "task": "Narysuj połaciowy trójkąt o run=3 m i rise=1 m. Policz kąt, długość po skosie oraz powierzchnię jednej połaci o długości okapu 4 m. Dopisz, czego nie uwzględnia taki model: kosze, lukarny, nawisy, detale i odpady.",
+          "question": "Dach ma odległość poziomą 3 m i wznios 1 m. Jaką długość połaci od okapu do kalenicy daje model prostokątny?",
+          "options": [
+            "3,000 m, zawsze bez względu na wznios.",
+            "4,000 m, bo należy dodać obie długości.",
+            "9,000 m, bo 3×3=9.",
+            "Około 3,162 m, bo √(3²+1²)=√10."
+          ],
+          "correct": 3,
+          "example": "Około 3,162 m, bo √(3²+1²)=√10.",
+          "explanation": "Twierdzenie Pitagorasa pozwala policzyć skośną długość; naddatki budowlane wymagają osobnych wymiarów.",
+          "feedback": [
+            "Wróć do zależności opisanej w zadaniu. Twierdzenie Pitagorasa pozwala policzyć skośną długość; naddatki budowlane wymagają osobnych wymiarów.",
+            "Wróć do zależności opisanej w zadaniu. Twierdzenie Pitagorasa pozwala policzyć skośną długość; naddatki budowlane wymagają osobnych wymiarów.",
+            "Wróć do zależności opisanej w zadaniu. Twierdzenie Pitagorasa pozwala policzyć skośną długość; naddatki budowlane wymagają osobnych wymiarów.",
+            "Prawidłowo. Twierdzenie Pitagorasa pozwala policzyć skośną długość; naddatki budowlane wymagają osobnych wymiarów."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 4,
+      "title_pl": "5. Zakład i ekspozycja: dlaczego trzy warstwy zatrzymują wodę",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Ekspozycja i zakład to nie to samo",
+            "text": "Ekspozycja E to odcinek gontu widoczny po ułożeniu kolejnego rzędu. Długość L gontu dzieli się na część widoczną oraz część zakrytą. W wielowarstwowym pokryciu stosunek L/E może pomagać oszacować liczbę zachodzących warstw w dowolnym przekroju, ale prawidłowe rozwiązanie zależy od szczegółów montażu i wyrobu."
+          },
+          {
+            "heading": "Przykład liczenia",
+            "text": "W ćwiczeniu L=400 mm, E=120 mm. Iloraz L/E=3,33; element rozciąga się więc na nieco ponad trzy wysokości ekspozycji. To ilustracja idei potrójnego pokrycia, nie zatwierdzony detal montażowy. Nie wolno z samego ilorazu przesądzić o wodoodporności, bo liczą się także styki boczne, układ rzędów i podłoże."
+          },
+          {
+            "heading": "Dlaczego nie można zwiększać ekspozycji bez końca",
+            "text": "Gdy E rośnie, mniej długości gontu pozostaje pod kolejnymi rzędami. Przy określonym spadku i jakości materiału może to prowadzić do zbyt małego zakrycia ścieżek spływu wody. Certyfikowane wytyczne określają dopuszczalną ekspozycję jako funkcję długości, klasy i kąta dachu."
+          },
+          {
+            "heading": "Przypadek dwóch ofert",
+            "text": "Firma A proponuje gont L=400 mm i ekspozycję 120 mm; firma B proponuje E=200 mm, żeby zużyć mniej elementów. W drugim przypadku L/E=2. Nie można wybrać tańszej oferty bez sprawdzenia, czy utrzymano wymagany układ i zalecenia dla dokładnego wyrobu."
+          },
+          {
+            "heading": "Ćwiczenie diagnostyczne",
+            "text": "Na przekroju narysuj 4 kolejne rzędy o umownej długości L=400 mm i E=120 mm. Zaznacz nakładanie się gontów i kierunek spływu. Oblicz L/E dla 100, 120 i 200 mm, a potem wyjaśnij, dlaczego wynik nie zastępuje projektu detalu."
+          }
+        ],
+        "illustration": "technique-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.cedarbureau.org/installation/roof-installation-manual/"
+          }
+        ],
+        "learning": {
+          "intro": "Ekspozycja E to odcinek gontu widoczny po ułożeniu kolejnego rzędu. Długość L gontu dzieli się na część widoczną oraz część zakrytą. W wielowarstwowym pokryciu stosunek L/E może pomagać oszacować liczbę zachodzących warstw w dowolnym przekroju, ale prawidłowe rozwiązanie zależy od szczegółów montażu i wyrobu.",
+          "situation": "Firma A proponuje gont L=400 mm i ekspozycję 120 mm; firma B proponuje E=200 mm, żeby zużyć mniej elementów. W drugim przypadku L/E=2. Nie można wybrać tańszej oferty bez sprawdzenia, czy utrzymano wymagany układ i zalecenia dla dokładnego wyrobu.",
+          "task": "Na przekroju narysuj 4 kolejne rzędy o umownej długości L=400 mm i E=120 mm. Zaznacz nakładanie się gontów i kierunek spływu. Oblicz L/E dla 100, 120 i 200 mm, a potem wyjaśnij, dlaczego wynik nie zastępuje projektu detalu.",
+          "question": "Gont ma 400 mm długości, a jego ekspozycja wynosi 120 mm. Jak interpretujesz stosunek L/E≈3,33?",
+          "options": [
+            "Jest to długość w mm gotowa do cięcia.",
+            "To orientacyjna liczba wysokości ekspozycji pokrywanych długością gontu, nie kompletna norma montażu.",
+            "To dowód, że można dowolnie przesuwać styki boczne.",
+            "To liczba gwoździ wymagana do każdego gontu."
+          ],
+          "correct": 1,
+          "example": "To orientacyjna liczba wysokości ekspozycji pokrywanych długością gontu, nie kompletna norma montażu.",
+          "explanation": "Iloraz mówi o zakładaniu pionowym, ale nie rozstrzyga doboru produktu ani konstrukcji i warunków lokalnych.",
+          "feedback": [
+            "Wróć do zależności opisanej w zadaniu. Iloraz mówi o zakładaniu pionowym, ale nie rozstrzyga doboru produktu ani konstrukcji i warunków lokalnych.",
+            "Prawidłowo. Iloraz mówi o zakładaniu pionowym, ale nie rozstrzyga doboru produktu ani konstrukcji i warunków lokalnych.",
+            "Wróć do zależności opisanej w zadaniu. Iloraz mówi o zakładaniu pionowym, ale nie rozstrzyga doboru produktu ani konstrukcji i warunków lokalnych.",
+            "Wróć do zależności opisanej w zadaniu. Iloraz mówi o zakładaniu pionowym, ale nie rozstrzyga doboru produktu ani konstrukcji i warunków lokalnych."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 5,
+      "title_pl": "6. Styki boczne i mocowanie: odchyłki, przesunięcie, gwoździe",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Nie układaj wszystkich styków w jednej linii",
+            "text": "W pokryciach układanych na przemian łączenia boczne są przesunięte między rzędami. Gdyby styki leżały jeden nad drugim, woda mogłaby łatwiej przenikać przez pokrycie. Pożądany minimalny offset wynika z systemu i klasy produktu. Nie stosuj na ślepo szczegółów amerykańskich dla lokalnego takspon."
+          },
+          {
+            "heading": "Mocowanie musi współpracować z drewnem",
+            "text": "Łączniki mocują gont do właściwego podłoża, ale nie powinny uniemożliwiać naturalnej pracy drewna ani go rozszczepiać. Ich liczba, położenie i materiał zależą od systemu, obciążenia, podłoża i lokalizacji. W wytycznych dla niektórych cedrowych pokryć stosuje się dwie sztuki na gont, ale to nie uniwersalna reguła dla każdej historycznej techniki."
+          },
+          {
+            "heading": "Korozyjność środowiska",
+            "text": "Przy wybrzeżu i agresywnym środowisku znaczenie mają odpowiednie gatunki stali i odporność łączników. Sam wygląd gwoździa po montażu nie potwierdza klasy odporności korozyjnej. Wykonawca musi dobierać rodzaj według projektu i instrukcji właściwego wyrobu."
+          },
+          {
+            "heading": "Przykład błędu",
+            "text": "Na zdjęciu dach ma pionowy pas styków z trzech kolejnych rzędów. Bez oględzin nie da się stwierdzić aktualnego przecieku, ale warto wskazać potencjalną drogę wody, porównać ją z wymaganiami wybranego systemu i zgłosić do fachowej oceny."
+          },
+          {
+            "heading": "Ćwiczenie z widokiem",
+            "text": "Na papierze narysuj trzy rzędy po pięć gontów. Wariant A: styki jeden nad drugim; wariant B: kontrolowany mijankowy układ. Zaznacz różnicę potencjalnej drogi wody i wypisz, jakie dane są niezbędne do doboru łączników w realnym projekcie."
+          }
+        ],
+        "illustration": "diagnosis-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://ibhs.org/guidance/ricowi-roof-guide-cedar-shingles-and-shakes/"
+          }
+        ],
+        "learning": {
+          "intro": "W pokryciach układanych na przemian łączenia boczne są przesunięte między rzędami. Gdyby styki leżały jeden nad drugim, woda mogłaby łatwiej przenikać przez pokrycie. Pożądany minimalny offset wynika z systemu i klasy produktu. Nie stosuj na ślepo szczegółów amerykańskich dla lokalnego takspon.",
+          "situation": "Na zdjęciu dach ma pionowy pas styków z trzech kolejnych rzędów. Bez oględzin nie da się stwierdzić aktualnego przecieku, ale warto wskazać potencjalną drogę wody, porównać ją z wymaganiami wybranego systemu i zgłosić do fachowej oceny.",
+          "task": "Na papierze narysuj trzy rzędy po pięć gontów. Wariant A: styki jeden nad drugim; wariant B: kontrolowany mijankowy układ. Zaznacz różnicę potencjalnej drogi wody i wypisz, jakie dane są niezbędne do doboru łączników w realnym projekcie.",
+          "question": "Dlaczego styki boczne w kolejnych rzędach zwykle przesuwa się względem siebie?",
+          "options": [
+            "Aby ograniczyć powstanie ciągłej potencjalnej drogi przenikania wody.",
+            "Aby wszystkie gwoździe były widoczne po montażu.",
+            "Aby pominąć projekt mocowań i podłoża.",
+            "Aby zrezygnować z kontroli zakładu pionowego."
+          ],
+          "correct": 0,
+          "example": "Aby ograniczyć powstanie ciągłej potencjalnej drogi przenikania wody.",
+          "explanation": "Przesunięcie styków współdziała z zakładami, aby nie tworzyć nieprzerwanej ścieżki dla wody.",
+          "feedback": [
+            "Prawidłowo. Przesunięcie styków współdziała z zakładami, aby nie tworzyć nieprzerwanej ścieżki dla wody.",
+            "Wróć do zależności opisanej w zadaniu. Przesunięcie styków współdziała z zakładami, aby nie tworzyć nieprzerwanej ścieżki dla wody.",
+            "Wróć do zależności opisanej w zadaniu. Przesunięcie styków współdziała z zakładami, aby nie tworzyć nieprzerwanej ścieżki dla wody.",
+            "Wróć do zależności opisanej w zadaniu. Przesunięcie styków współdziała z zakładami, aby nie tworzyć nieprzerwanej ścieżki dla wody."
+          ]
+        }
+      }
+    }
+  ]
+}
