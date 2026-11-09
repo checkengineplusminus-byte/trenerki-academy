@@ -1,0 +1,282 @@
+{
+  "course_slug": "lepszy-cukiernik",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 0,
+      "title_pl": "Stanowisko i bezpieczeństwo żywności",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Cukiernia wymaga kontroli surowców, temperatur, czystości i alergenów. Mąka może stanowić źródło pyłu, jajka wymagają bezpiecznego obchodzenia się, a orzechy i mleko mogą zanieczyszczać produkty przeznaczone dla osób z alergiami. Dekoracyjny wygląd wyrobu nie oznacza bezpieczeństwa."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Przygotuj stanowisko z wyodrębnioną strefą surowców, sprzętem do ważenia, miejscem chłodniczym i kartami receptur. Każdy składnik powinien być identyfikowalny z partii, daty i stanu opakowania. Sprawdź, czy urządzenia pomiarowe są sprawne."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Przygotowywano ciasto bez orzechów na stole z pozostałościami masy orzechowej. Sam brak orzechów w recepturze nie zapewnia braku kontaktu krzyżowego."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Narysuj plan stanowiska cukierniczego, oznacz alergeny, pomiary, punkt kontroli czystości i trzy błędy, które trzeba wychwycić przed produkcją."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 1,
+      "title_pl": "Ważenie i proporcje",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Receptura to zestaw ilości i proporcji składników, a nie tylko lista zakupów. Stosunek mąki, wody, tłuszczu i cukru wpływa na strukturę ciasta. W produkcji warto rozróżniać masę netto, brutto oraz jednostki g, kg, ml i litry; gęstość płynów może sprawiać, że ml nie jest równy g."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Gdy receptura na 8 sztuk wymaga 400 g mąki i 240 g płynu, na 20 sztuk mnożysz składniki przez 20/8 = 2,5. Otrzymasz 1000 g mąki i 600 g płynu. Jeżeli zmieniasz formę pieczenia lub grubość produktu, sam mnożnik może nie zachować czasu obróbki."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Uczeń pomnożył mąkę przez 2,5, a płyn zostawił bez zmian. Zmienia konsystencję, chociaż chciał tylko zwiększyć produkcję."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Przelicz recepturę na 12 porcji z 8, wylicz mnożnik 1,5, zapisz jednostki i sprawdź czy każde pole zostało przeliczone."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 2,
+      "title_pl": "Ciasta podstawowe i konsystencja",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Ciasto kruche, ucierane, biszkoptowe i drożdżowe różnią się mechanizmem tworzenia struktury. W kruchym istotne jest ograniczanie nadmiernego rozwijania glutenu, w biszkopcie spienianie i zatrzymywanie gazu, w drożdżowym fermentacja oraz budowa siatki glutenu. Nie są to zamienne metody."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Narysuj cztery tabele: surowiec, kolejność, sposób napowietrzenia, ryzyko i efekt. W małej próbie porównaj różne czasy mieszania tego samego ciasta, zachowując bezpieczną obróbkę surowych jaj i mąki. Nie próbuj surowego ciasta z tymi składnikami."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Biszkopt długo mieszano po dodaniu mąki i objętość piany spadła. Dodanie większej ilości proszku bez diagnozy nie musi naprawić technologii."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Dla czterech rodzajów ciasta wyjaśnij, co buduje jego strukturę oraz jaki błąd procesu może spowodować ciężki lub twardy wypiek."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 3,
+      "title_pl": "Kremy i stabilizacja",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Kremy mogą być emulsjami, pianami albo układami zagęszczonymi skrobią lub żelatyną. Stabilność zależy od temperatury, proporcji wody i tłuszczu, kwasowości, stopnia ubicia oraz czasu przechowywania. Zbyt ciepły tłuszcz lub niewłaściwe mieszanie może prowadzić do rozwarstwienia."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Dla kremu maślanego, budyniowego i śmietankowego opisz mechanizm zagęszczania oraz wymagania higieniczne. Wykonuj próbę na małej porcji, zanim zmienisz temperaturę lub skład całej partii. Rejestruj wszystkie modyfikacje receptury."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Krem rozdzielił się na fazę wodną i tłuszczową po połączeniu składników o bardzo różnych temperaturach."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Przygotuj kartę diagnostyczną kremu: obserwacja, trzy możliwe przyczyny, kontrola temperatury i bezpieczny sposób skorygowania procesu."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 4,
+      "title_pl": "Temperatura, czas i wilgotność",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Pieczenie obejmuje ogrzewanie, odparowanie wody, zmiany skrobi i białek, a czasem reakcje odpowiedzialne za zrumienienie. Dwa piece ustawione na tę samą temperaturę mogą piec inaczej ze względu na przepływ powietrza, wielkość wsadu i rzeczywisty pomiar. Wilgotność ma wpływ na skórkę i utratę masy."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Dla jednej receptury zapisuj nastawę urządzenia, rzeczywistą obserwowaną temperaturę, masę wsadu, rozmiar formy, czas oraz efekt. Zmieniaj pojedynczy czynnik w próbnej partii, aby zidentyfikować wpływ na produkt."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Spód ciasta jest zbyt ciemny, a środek niedopieczony. Sama zmiana ustawienia na maksymalną moc może pogorszyć wynik."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Zaprojektuj próbę A/B dla dwóch partii wypieku z identycznymi składnikami, ale innym położeniem formy; zapisz sposób obiektywnej kontroli."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 5,
+      "title_pl": "Dekoracja i estetyka",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Dekoracja spełnia funkcje wizualne i komunikacyjne, ale nie powinna ukrywać wad bezpieczeństwa ani błędów receptury. Owoce, kremy, barwniki i ozdoby mają własne wymagania przechowywania, alergenowe i trwałościowe. Równość porcji wpływa na ocenę zamówienia i koszt."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Zaplanuj szkic dekoracji, określ liczbę powtarzalnych elementów i gramaturę na porcję. Dla dziesięciu wyrobów po 15 g kremu dekoracyjnego potrzeba 150 g kremu bez strat. Kontroluj zanieczyszczenia, temperatury i oznaczenie alergenów."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Dwie identycznie wycenione porcje różnią się dwukrotnie ilością kremu i mają inne składniki dekoracyjne."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Opracuj standard dekoracji jednej porcji z widokiem, masą składników, alergennymi dodatkami i listą trzech punktów kontroli."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 6,
+      "title_pl": "Kalkulacja kosztu porcji",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Koszt porcji obejmuje zużycie surowców, uzysk po obróbce oraz opakowanie, energię i nakład pracy, jeśli obliczasz pełny koszt produkcji. Cena sprzedaży nie jest równa zyskowi, a marża nie jest tym samym co narzut. Przy porównaniu receptur trzeba stosować te same jednostki i liczbę porcji."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Przykład: składniki 80 zł, opakowania 20 zł i 20 gotowych porcji dają 5 zł kosztu bez innych wydatków. Przy cenie 10 zł za porcję zostaje 5 zł na pracę, energię, straty i wynik. Nie nazywaj całej różnicy zyskiem netto."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Uczestnik sprzedaje ciasto po 5 zł, bo składniki kosztują 3 zł, ale nie liczy pudełka i pracy. Nie zna prawdziwej rentowności."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Przygotuj kosztorys tortu: przelicz surowce, uzysk, pracę, opakowanie i ewentualny odpad; pokaż różnicę między narzutem a marżą."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 7,
+      "title_pl": "Plan produkcji i kontrola jakości",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Produkcja cukiernicza ma zależności: pieczenie przed chłodzeniem, chłodzenie przed dekorowaniem kremem, a kontrola alergenów przed wydaniem. Harmonogram uwzględnia czas aktywnej pracy, czas technologiczny oraz dostępność pieca i chłodni. Kontrola jakości dotyczy całej partii."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Przygotuj diagram dla 20 monoporcji: kompletacja surowców → ważenie → formowanie → obróbka → chłodzenie → dekorowanie → pakowanie. Pod każdym krokiem wpisz odpowiedzialną osobę i dowód wykonania; odróżnij przestój od procesu potrzebnego do uzyskania struktury."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Krem wyprodukowano przed zakończeniem chłodzenia biszkoptów, a stanowisko jest zbyt ciepłe. Pojawia się ryzyko rozwarstwienia i problem z planem."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Zbuduj harmonogram 12 porcji na jedno urządzenie grzewcze, zaznacz wszystkie miejsca, gdzie trzeba zmierzyć lub zatwierdzić wynik."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 8,
+      "title_pl": "Pierwsza własna receptura — kontrolowana zmiana",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Własna receptura powinna powstawać przez świadomą zmianę składników i dokumentowanie rezultatu. Zmiana ilości wody, tłuszczu lub cukru może jednocześnie wpłynąć na teksturę, smak, trwałość i bezpieczeństwo. Próba A/B pozwala oddzielić jeden wpływ od innych."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Zachowaj tę samą masę wsadu, sprzęt i metodę dla dwóch próbek. Zmień tylko jeden parametr, np. udział tłuszczu; potem porównaj masę końcową, objętość, konsystencję i koszt. Nie deklaruj bez badań dłuższej trwałości wyrobu."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Uczeń zmienił pięć składników naraz, a wypiek wyszedł ciężki. Nie wiadomo, która zmiana spowodowała problem."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Zaprojektuj eksperyment dwóch małych partii z jedną różnicą, tabelą obserwacji i kryterium przyjęcia receptury."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 9,
+      "title_pl": "Alergeny w zamówieniu",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Uczulenie jest kwestią bezpieczeństwa, a nie preferencji smakowej. Gluten, jaja, mleko czy orzechy mogą występować w składnikach, dodatkach i śladowo wskutek kontaktu krzyżowego. Nie można obiecać produktu bez danego alergenu, jeśli nie masz zweryfikowanej receptury, surowców i procedury."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Przejrzyj wszystkie etykiety składników, listę dostawców, stanowisko, rękawy cukiernicze i pojemniki. Przy braku możliwości bezpiecznego wykonania zamówienia wyraźnie o tym poinformuj. Oznaczenie alergenu w ofercie musi odpowiadać rzeczywistemu produktowi."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Klient z ciężką alergią na orzechy zamawia tort, a na stanowisku wcześniej mielono orzechy bez procedury czyszczenia."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Opracuj kartę alergenu dla jednej receptury: składniki, kontakt krzyżowy, sposób potwierdzenia i komunikat do klienta."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 10,
+      "title_pl": "Powtarzalność między partiami",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Powtarzalność oznacza, że dwie partie wykonane według tej samej specyfikacji mają porównywalną wielkość, konsystencję, smak i jakość. Trzeba mierzyć krytyczne elementy: temperaturę, masę wsadu, czas, gatunek mąki, wielkość formy i wynik końcowy. Różnice wymagają analizy przyczyny, nie ukrywania ich dekoracją."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Przygotuj kartę dwóch partii ciastek po 20 sztuk. Jeżeli partia A daje 900 g wypieku, a B 820 g, różnica wynosi 80 g. Nie utożsamiaj jej automatycznie z wadą — sprawdź masę wejściową, odparowanie, uszkodzenia i pomiary."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Partia B jest o 9% lżejsza, mimo tej samej liczby sztuk. Brakuje danych o wsadzie i temperaturze pieca."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Zapisz pięć mierników jakości oraz procedurę rozpoznania, czy różnica wynika ze składnika, procesu czy błędu ważenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 11,
+      "title_pl": "Zamówienie końcowe — od wyceny do odbioru",
+      "sections": [
+        {
+          "heading": "Poznaj technologię",
+          "text": "Realizacja zamówienia cukierniczego łączy ofertę, dane klienta, datę odbioru, gramaturę, alergeny, cenę, technologię i warunki transportu. Należy odróżniać estetyczną obietnicę od parametrów, które można zmierzyć oraz utrzymać do chwili przekazania wyrobu."
+        },
+        {
+          "heading": "Działania i kontrola procesu",
+          "text": "Dla tortu na 16 porcji zbuduj kartę: masa, smak, alergeny, projekt dekoracji, termin, sposób chłodzenia, koszt i instrukcję odbioru. Dla zmian w zamówieniu zapisz nową wycenę i potwierdzenie klienta. Przy odbiorze kontroluj kompletność i bezpieczny transport."
+        },
+        {
+          "heading": "Przykład z produkcji",
+          "text": "Klient zmienia datę odbioru na dzień wcześniej, ale potrzebne elementy nie zdążą się schłodzić i ustabilizować; termin wymaga ponownego potwierdzenia."
+        },
+        {
+          "heading": "Zadanie do rozwiązania",
+          "text": "Opracuj kompletną ofertę i protokół wydania tortu z listą pięciu kryteriów jakości i postępowaniem przy zmianie zamówienia."
+        }
+      ]
+    }
+  ]
+}
