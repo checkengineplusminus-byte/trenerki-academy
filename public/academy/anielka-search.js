@@ -212,13 +212,20 @@ function setPeek(query){
  peek.innerHTML='<strong>Anielka · dopasowanie na żywo</strong><p>'+esc(match.primary.title)+'</p><button type="button" data-anielka-course="'+esc(match.primary.id)+'">Otwórz ten kurs →</button>';
 }
 function show(query,scroll=false){
- const input=document.getElementById('anielka-question'),out=document.getElementById('anielka-output');
+ const input=document.getElementById('anielka-question');
  const v=String(query||'').trim().slice(0,250);
  if(input&&input.value!==v)input.value=v;
- if(v.length<3){resetAiRequest();if(out)out.innerHTML='';setPeek('');if(typeof searchCourses==='function')searchCourses('');return;}
+ if(v.length<3){
+  resetAiRequest();const out=document.getElementById('anielka-output');
+  if(out)out.innerHTML='';setPeek('');
+  if(typeof searchCourses==='function')searchCourses('');return;
+ }
+ // Searches remain available while viewing any course detail, not just the homepage.
+ // The catalog may need to render before Anielka can write to its output element.
+ if(typeof searchCourses==='function')searchCourses(v);
+ const out=document.getElementById('anielka-output');
  if(out)out.innerHTML=response(v);
  setPeek(v);
- if(typeof searchCourses==='function')searchCourses(v);
  lastQuery=v;
  if(find(v).found)lastIntent=v;
  scheduleAi(v);
