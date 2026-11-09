@@ -1,0 +1,249 @@
+{
+  "slug": "powroznik",
+  "lessons": [
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 4,
+      "title_pl": "5. Skrócenie podczas skrętu i masa liny — obliczenia",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Materiały i konstrukcja",
+            "text": "Przy skręcaniu przędz i pasm ich długość osiowa może się zmienić. W rzetelnym zamówieniu trzeba rozróżnić długość początkową pasma, długość gotowej liny, odpady końcowe i tolerancję wyrobu. Masa liniowa w kg/m opisuje masę na jednostkę długości, nie wytrzymałość."
+          },
+          {
+            "heading": "Metody pomiaru i dokumentacja",
+            "text": "W modelowym przykładzie przyjmij hipotetyczne skrócenie o 12%. Aby uzyskać 30 m gotowej liny, potrzebujesz 30/(1−0,12)=34,09 m długości przed skrętem. To parametr szkolny, nie nastawa maszyny. Prawdziwy zapas wynika z doświadczenia i kart procesu."
+          },
+          {
+            "heading": "Przykład obliczeniowy",
+            "text": "Dla gotowej liny 30 m o masie liniowej 0,18 kg/m teoretyczna masa wynosi 5,4 kg. Rachunek nie uwzględnia zmian wilgotności ani masy opakowania."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Zamówienie na 30 m liny ma tylko 30 m dostarczonych pasm. Warsztat bez danych o skróceniu i zakończeniach nie powinien gwarantować żądanej długości."
+          },
+          {
+            "heading": "Zadanie ucznia",
+            "text": "Oblicz długości przed skręceniem przy 8%, 12% i 15% hipotetycznego skrócenia oraz masę końcowego produktu. Zapisz jednostki, założenia i miejsca kontroli po wyprodukowaniu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://repository.library.noaa.gov/view/noaa/42456/noaa_42456_DS1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Przy skręcaniu przędz i pasm ich długość osiowa może się zmienić. W rzetelnym zamówieniu trzeba rozróżnić długość początkową pasma, długość gotowej liny, odpady końcowe i tolerancję wyrobu. Masa liniowa w kg/m opisuje masę na jednostkę długości, nie wytrzymałość.",
+          "situation": "Zamówienie na 30 m liny ma tylko 30 m dostarczonych pasm. Warsztat bez danych o skróceniu i zakończeniach nie powinien gwarantować żądanej długości.",
+          "task": "Oblicz długości przed skręceniem przy 8%, 12% i 15% hipotetycznego skrócenia oraz masę końcowego produktu. Zapisz jednostki, założenia i miejsca kontroli po wyprodukowaniu.",
+          "question": "Przy szkolnym skróceniu 12% ile długości początkowej potrzeba dla 30 m gotowej liny?",
+          "options": [
+            "26,4 m.",
+            "31,2 m.",
+            "34,09 m.",
+            "36,0 m."
+          ],
+          "correct": 2,
+          "example": "34,09 m.",
+          "explanation": "30/0,88≈34,09 m; to jedynie przykład matematyczny.",
+          "feedback": [
+            "Nie. 30/0,88≈34,09 m; to jedynie przykład matematyczny.",
+            "Nie. 30/0,88≈34,09 m; to jedynie przykład matematyczny.",
+            "Tak. 30/0,88≈34,09 m; to jedynie przykład matematyczny.",
+            "Nie. 30/0,88≈34,09 m; to jedynie przykład matematyczny."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 5,
+      "title_pl": "6. Lina skręcana, pleciona i rdzeniowa — różnice konstrukcji",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Materiały i konstrukcja",
+            "text": "Lina laid składa się ze skręconych pasm. Braided powstaje przez przeplatanie elementów na skos, a double-braid ma zwykle rdzeń i niezależny oplot. Lina o tej samej średnicy może mieć zupełnie inny materiał, masę liniową, wydłużenie i zachowanie przy pracy."
+          },
+          {
+            "heading": "Metody pomiaru i dokumentacja",
+            "text": "Przy porównaniu dwóch lin sprawdzaj nie tylko średnicę, ale budowę, materiał, minimalną siłę zrywającą, wydłużenie, dopuszczone środowisko oraz instrukcję zakończeń. Nie można stosować swobodnie splotów i węzłów z liny skręcanej na nowoczesnej linie rdzeniowej."
+          },
+          {
+            "heading": "Przykład obliczeniowy",
+            "text": "Dwie liny 10 mm mają inną konstrukcję: jedna to naturalna trójpasmowa, druga syntetyczna z rdzeniem. Nie wynika stąd żadna równość siły zrywającej czy bezpieczeństwa przy podnoszeniu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Klient prosi o ręcznie skręconą linę do podnoszenia ciężkiego silnika. Takiego zastosowania nie wolno rekomendować bez odpowiedniego udokumentowanego wyrobu i całego systemu podnoszenia."
+          },
+          {
+            "heading": "Zadanie ucznia",
+            "text": "Narysuj trzy przekroje: laid 3-strand, braid, core/sheath. Porównaj wymagane dane z kart, ryzyka uszkodzenia i zastosowania, których nie można uzasadnić samym wyglądem."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.iteh.asia/catalog/standards/sist/fb952e20-e8de-4d1a-9373c8917c22/sist-en-iso-9554-2019"
+          }
+        ],
+        "learning": {
+          "intro": "Lina laid składa się ze skręconych pasm. Braided powstaje przez przeplatanie elementów na skos, a double-braid ma zwykle rdzeń i niezależny oplot. Lina o tej samej średnicy może mieć zupełnie inny materiał, masę liniową, wydłużenie i zachowanie przy pracy.",
+          "situation": "Klient prosi o ręcznie skręconą linę do podnoszenia ciężkiego silnika. Takiego zastosowania nie wolno rekomendować bez odpowiedniego udokumentowanego wyrobu i całego systemu podnoszenia.",
+          "task": "Narysuj trzy przekroje: laid 3-strand, braid, core/sheath. Porównaj wymagane dane z kart, ryzyka uszkodzenia i zastosowania, których nie można uzasadnić samym wyglądem.",
+          "question": "Co można wnioskować z tej samej średnicy dwóch lin o innej konstrukcji?",
+          "options": [
+            "Mają ten sam udźwig.",
+            "Mają tę samą rozciągliwość.",
+            "Zastępują się we wszystkich zawiesiach.",
+            "Nie można przyjąć tej samej wytrzymałości bez danych producenta."
+          ],
+          "correct": 3,
+          "example": "Nie można przyjąć tej samej wytrzymałości bez danych producenta.",
+          "explanation": "Średnica nie wystarcza do określenia wytrzymałości, wydłużenia i dopuszczonego zastosowania.",
+          "feedback": [
+            "Nie. Średnica nie wystarcza do określenia wytrzymałości, wydłużenia i dopuszczonego zastosowania.",
+            "Nie. Średnica nie wystarcza do określenia wytrzymałości, wydłużenia i dopuszczonego zastosowania.",
+            "Nie. Średnica nie wystarcza do określenia wytrzymałości, wydłużenia i dopuszczonego zastosowania.",
+            "Tak. Średnica nie wystarcza do określenia wytrzymałości, wydłużenia i dopuszczonego zastosowania."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 6,
+      "title_pl": "7. Skok skrętu (lay length) i ocena równomierności",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Materiały i konstrukcja",
+            "text": "Skok skrętu, zwany lay length, to długość osiowa, na której pasmo wykonuje pełne okrążenie wokół osi liny. Jest jednym z mierzalnych parametrów konstrukcji. Zbyt nierówny skok może wskazywać na niestabilny proces, ale poprawny skok bez analizy materiału nie dowodzi nośności."
+          },
+          {
+            "heading": "Metody pomiaru i dokumentacja",
+            "text": "W przykładowej linie producent deklaruje skok 80 mm, mierzony na całej długości. Na odcinkach A i B odczytano odpowiednio 80 i 96 mm. Różnica względna wynosi (96−80)/80=20%. Czy jest dopuszczalna, określa dokument techniczny, a nie założona uniwersalna norma."
+          },
+          {
+            "heading": "Przykład obliczeniowy",
+            "text": "Jeśli wzdłuż 1 m liny rozpoznasz w przybliżeniu 12,5 pełnego obrotu pasma, skok wynosi 1000/12,5=80 mm. Jest to uproszczona interpretacja pomiaru, wymagająca prawidłowego zaznaczenia tego samego pasma."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Uczeń mierzy odległość między dwoma dowolnymi zwojami, bez śledzenia jednego pasma. Otrzymana liczba nie musi być rzeczywistym skokiem."
+          },
+          {
+            "heading": "Zadanie ucznia",
+            "text": "Narysuj linę z jednym pasmem oznaczonym kolorem. Odmierz jego pełne okrążenie wzdłuż osi. Policz skok z 1 m i 12,5 obrotów, a następnie zmianę 80→96 mm."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.exsil.be/en/rope-constructions/cable-laid-twisted/"
+          }
+        ],
+        "learning": {
+          "intro": "Skok skrętu, zwany lay length, to długość osiowa, na której pasmo wykonuje pełne okrążenie wokół osi liny. Jest jednym z mierzalnych parametrów konstrukcji. Zbyt nierówny skok może wskazywać na niestabilny proces, ale poprawny skok bez analizy materiału nie dowodzi nośności.",
+          "situation": "Uczeń mierzy odległość między dwoma dowolnymi zwojami, bez śledzenia jednego pasma. Otrzymana liczba nie musi być rzeczywistym skokiem.",
+          "task": "Narysuj linę z jednym pasmem oznaczonym kolorem. Odmierz jego pełne okrążenie wzdłuż osi. Policz skok z 1 m i 12,5 obrotów, a następnie zmianę 80→96 mm.",
+          "question": "Na 1000 mm liny wypada 12,5 pełnego obrotu jednego pasma. Jaki jest średni skok?",
+          "options": [
+            "12,5 mm.",
+            "80 mm.",
+            "96 mm.",
+            "125 mm."
+          ],
+          "correct": 1,
+          "example": "80 mm.",
+          "explanation": "1000 mm / 12,5≈80 mm na pełny obrót.",
+          "feedback": [
+            "Nie. 1000 mm / 12,5≈80 mm na pełny obrót.",
+            "Tak. 1000 mm / 12,5≈80 mm na pełny obrót.",
+            "Nie. 1000 mm / 12,5≈80 mm na pełny obrót.",
+            "Nie. 1000 mm / 12,5≈80 mm na pełny obrót."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 7,
+      "title_pl": "8. Uszkodzenia liny: przetarcie, przecięcie, skręt i deformacja",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Materiały i konstrukcja",
+            "text": "Przecięte włókna, miejscowe ścieranie, kinki i hockles, zgniecenie, uszkodzenia chemiczne, starzenie oraz nadmierne wydłużenie to różne kategorie wad. Zewnętrzny wygląd nie zawsze ujawnia całą utratę wytrzymałości. Procedura wycofania zależy od konstrukcji i zastosowania oraz dokumentów producenta."
+          },
+          {
+            "heading": "Metody pomiaru i dokumentacja",
+            "text": "Kontrola obejmuje identyfikator, materiał, datę, historię obciążeń, widoczne i niewidoczne podejrzenia uszkodzeń, łączenia i sposób przechowywania. Nie należy deklarować odnowionej wytrzymałości przez owinięcie taśmą ani oceniać szkodliwego przetarcia wyłącznie na podstawie wyglądu końców."
+          },
+          {
+            "heading": "Przykład obliczeniowy",
+            "text": "W partii 25 lin weryfikacja wykazała cztery z przeciętym pasmem i dwie z chemicznym przebarwieniem, przy czym jedna lina miała oba objawy. Liczba unikatowych lin z wykrytą wadą wynosi 4+2−1=5, czyli 20% partii."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Ktoś proponuje owinąć uszkodzony środek liny taśmą i ponownie podnosić nią ładunek. Bez oceny i odpowiedniego wyrobu takie działanie jest nieakceptowalne."
+          },
+          {
+            "heading": "Zadanie ucznia",
+            "text": "Sporządź tabelę pięciu typów wad ze źródłem, objawem, możliwą niewidoczną szkodą, kryterium wycofania i wymaganym dokumentem. Policz 20% wadliwych sztuk z podanego przykładu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.mazzellacompanies.com/solutions/product-warnings/cordage/"
+          }
+        ],
+        "learning": {
+          "intro": "Przecięte włókna, miejscowe ścieranie, kinki i hockles, zgniecenie, uszkodzenia chemiczne, starzenie oraz nadmierne wydłużenie to różne kategorie wad. Zewnętrzny wygląd nie zawsze ujawnia całą utratę wytrzymałości. Procedura wycofania zależy od konstrukcji i zastosowania oraz dokumentów producenta.",
+          "situation": "Ktoś proponuje owinąć uszkodzony środek liny taśmą i ponownie podnosić nią ładunek. Bez oceny i odpowiedniego wyrobu takie działanie jest nieakceptowalne.",
+          "task": "Sporządź tabelę pięciu typów wad ze źródłem, objawem, możliwą niewidoczną szkodą, kryterium wycofania i wymaganym dokumentem. Policz 20% wadliwych sztuk z podanego przykładu.",
+          "question": "W 25 linach są cztery z wadą A i dwie z B, ale jedna ma obie. Ile unikatowych lin ma wadę?",
+          "options": [
+            "6.",
+            "5.",
+            "4.",
+            "3."
+          ],
+          "correct": 1,
+          "example": "5.",
+          "explanation": "Z zasady włączeń i wyłączeń: 4+2−1=5, czyli 20% partii.",
+          "feedback": [
+            "Nie. Z zasady włączeń i wyłączeń: 4+2−1=5, czyli 20% partii.",
+            "Tak. Z zasady włączeń i wyłączeń: 4+2−1=5, czyli 20% partii.",
+            "Nie. Z zasady włączeń i wyłączeń: 4+2−1=5, czyli 20% partii.",
+            "Nie. Z zasady włączeń i wyłączeń: 4+2−1=5, czyli 20% partii."
+          ]
+        }
+      }
+    }
+  ]
+}
