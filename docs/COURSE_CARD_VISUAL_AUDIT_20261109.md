@@ -113,3 +113,21 @@ Nr | Kurs | Nowa ikona SVG | Wykorzystana ilustracja | Zasada
 - `npx expo export --platform web`
 
 **Uwaga do wdrożenia:** aktualizacja GitHub nie oznacza automatycznie publikacji. Wymagana jest poprawna konfiguracja `EXPO_TOKEN` w sekretach GitHub dla działania workflow Expo Hosting. Stan publikacji weryfikuj niezależnie po każdym wdrożeniu.
+
+
+## Korekta po kontroli znaczenia ikon (runda 2)
+
+Pierwsza runda audytu była niewystarczająca: 80 różnych identyfikatorów SVG nie oznaczało 80 różnych rysunków. Część `mastery-...` wyodrębniała dokładnie tę samą figurę przy niepowiązanych kursach (np. Excel/AutoCAD, brygadzista/kierownik budowy, dziewięć systemów WMS, kucharz/cukiernik).
+
+Naprawa: **58 ilustracji** zastąpiono układami przedmiotów bezpośrednio związanych z kursem; **20 oryginalnych zawodowych rysunków** zachowano; ikony **cieśli i Worda** zachowano po sprawdzeniu. W dalszej korekcie dopasowano opiekę senioralną, bliskość z dzieckiem, mamę i pomoc w lekcjach oraz rozróżniono angielski, norweski i niemiecki na budowie czytelnymi symbolami państw i języków. W kodzie testowym `scripts/test-course-icons.mjs` jest teraz kontrola powtarzanych **rysunków po usunięciu podpisów** (nie tylko nazw plików).
+
+### Nowe kierunki graficzne
+- Excel: arkusz z komórkami i sumą; AutoCAD: cyrkiel kreślarski z planem technicznym
+- Brygadzista: kask i ekipa; kierownik budowy: żuraw i rysunek konstrukcyjny
+- Kucharz: garnek; cukiernik: tort; ogrodnik: kosiarka
+- BDO: paczka i obieg odpadów; GPSR: tarcza bezpieczeństwa i dokument
+- Kursy językowe: kask budowlany + rozmowa + odrębne oznaczenie EN/NO/DE i flaga
+- Systemy logistyczne: różne czynności magazynowe, np. skanowanie, chmura, przenośnik, trasa transportu i automatyka
+- Rodzina: opieka/rozmowa/planowanie wspólnego czasu zamiast zamiennych figur
+
+**Ograniczenie:** test programistyczny wykrywa identyczną geometrię, ale nie zastępuje testu rozpoznawalności z rzeczywistymi użytkownikami. Publiczną jakość wizualną trzeba zweryfikować po publikacji Expo. Nie twierdzimy, że ta korekta już zwiększyła konwersję.
