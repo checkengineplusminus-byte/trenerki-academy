@@ -46,7 +46,7 @@ export function LogisticsAtlas({slug}:{slug:string}){
  if(!config)return null;
  return <View style={{backgroundColor:'#ecf5e8',borderColor:'#cfdfcb',borderWidth:1,borderRadius:16,padding:18,gap:12,marginBottom:18}}>
   <Text style={{fontWeight:'900',color:ink,fontSize:20}}>Mapa programu i encyklopedia logistyki</Text>
-  <Text style={{color:'#526c5b',fontSize:14,lineHeight:23}}>Najpierw poznaj pojęcia. Poniższy ekran to autorski schemat edukacyjny, nie oficjalna kopia interfejsu {config.name}.</Text>
+  <Text style={{color:'#526c5b',fontSize:14,lineHeight:23}}>Najpierw poznaj pojęcia i kolejność operacji. Układ menu może się różnić między wersjami {config.name}.</Text>
   <View style={{borderColor:'#cddacb',borderWidth:1,borderRadius:12,overflow:'hidden'}}>
    <View style={{backgroundColor:'#203d31',padding:13,flexDirection:'row',justifyContent:'space-between'}}>
     <Text style={{fontSize:12,color:'white',fontWeight:'900'}}>{config.name}</Text><Text style={{fontSize:12,color:'#cee2d0'}}>▣  ◻  ×</Text>
@@ -81,19 +81,38 @@ const scenario=[
  {title:'5. Zakończenie wysyłki',info:'Wszystkie 6 sztuk spakowano, numery etykiet są zgodne, a przewoźnik ma właściwe dokumenty.',
   options:['Potwierdzam 6 sztuk i zapisuję zdarzenie wydania','Wpisuję do wydania 9 sztuk, bo tyle było przyjętych','Usuwam historię przyjęcia'],correct:0,after:'Wydano 6 sztuk. Stan magazynu: 3 sztuki (w tym 2 zablokowane).'}
 ];
+const transportScenario=[
+ {title:'1. Freight Unit — sprawdź ładunek',info:'Masz trzy palety po 400 kg. Dostępny pojazd zabiera maksymalnie 1000 kg ładunku. Czy możesz skierować wszystkie trzy palety jednym przejazdem?',
+  options:['Tak, ponieważ trzy palety nie przekraczają czterech sztuk','Nie. Ładunek waży 1200 kg i przekracza limit 1000 kg o 200 kg','Tak, jeśli kierowca jedzie ostrożnie'],
+  correct:1,after:'Łącznie 1200 kg; o 200 kg za dużo. Potrzebujesz odpowiedniej pojemności lub planu podziału.'},
+ {title:'2. Freight Order — policz czas',info:'Pierwsza dostawa zaczyna się o 09:15. Rozładunek trwa 30 min, a przejazd do drugiego klienta 35 min. Drugi klient przyjmuje od 10:30. Co zaplanujesz?',
+  options:['Przyjazd o 10:20 i oczekiwanie do okna 10:30','Przyjazd o 09:50 bez liczenia przejazdu','Potwierdzenie dostawy o 09:15 dla obu klientów'],
+  correct:0,after:'09:15 + 30 + 35 = 10:20. Okno drugiego klienta zaczyna się o 10:30; plan przewiduje 10 min oczekiwania.'},
+ {title:'3. Capacity — objętość też się liczy',info:'Zlecenia zajmują 11 m³ i 9 m³. Pojazd ma 18 m³ użytecznej pojemności. Czy można połączyć oba ładunki?',
+  options:['Tak, ponieważ oba ważą mniej niż tonę','Tak, po wpisaniu 18 zamiast 20 w systemie','Nie: 11 + 9 = 20 m³, czyli przekroczenie o 2 m³'],
+  correct:2,after:'Suma 20 m³ przekracza limit 18 m³. Łączenie wymaga innego zasobu lub zmiany planu.'},
+ {title:'4. Carrier tendering — wybór oferty',info:'Przewoźnik A jest tańszy, lecz nie potwierdził chłodni. B jest droższy, ma potwierdzoną temperaturę przewozu i dostępne okno. Towar wymaga chłodni.',
+  options:['Wybrać A tylko na podstawie najniższej ceny','Wybrać ofertę spełniającą wymagania przewozu; potwierdzić warunki u B','Zrezygnować z kontroli temperatury, by zmieścić się w budżecie'],
+  correct:1,after:'Wybór musi respektować warunki przewozu, nawet jeśli cena nie jest najniższa.'},
+ {title:'5. Tracking — nowy czas dostawy',info:'W trakcie realizacji pojazd ma opóźnienie 45 min. Drugie okno dostawy może zostać przekroczone. Jaki ślad pozostawisz w TM?',
+  options:['Zmienię datę w historii tak, aby wyglądała na zgodną','Nie zgłoszę nic do chwili wystawienia faktury','Zapiszę zdarzenie, przeliczę ETA i przekażę aktualizację odpowiednim osobom'],
+  correct:2,after:'Opóźnienie jest udokumentowane, ETA przeliczone, klient lub dyspozytor otrzymuje aktualizację.'}
+];
 export function LogisticsWorkshop({slug,lessonNo}:{slug:string;lessonNo:number}){
  const cfg=systems[slug],[step,setStep]=useState(0),[mistakes,setMistakes]=useState(0),[log,setLog]=useState<string[]>([]),[feedback,setFeedback]=useState('');
  if(!cfg)return null;
- const stage=scenario[step];
+ const isTransport=slug==='sap-tm-transport';
+ const currentScenario=isTransport?transportScenario:scenario;
+ const stage=currentScenario[step];
  function choose(index:number){if(!stage)return;
   if(index!==stage.correct){setMistakes(n=>n+1);setFeedback('Ten ruch byłby błędny. Rzeczywisty stan, dokument i zatwierdzenie muszą odpowiadać sobie. Zastanów się, co magazyn rzeczywiście zrobił.');return;}
   setLog(old=>[...old,stage.after]);setStep(n=>n+1);setFeedback(stage.after);
  }
  return <View style={{marginVertical:19,borderWidth:1,borderColor:'#c9dbca',backgroundColor:'#fff',padding:17,borderRadius:17,gap:13}}>
-  <Text style={{color:'#4e7854',fontWeight:'900',fontSize:12}}>WARSZTAT WMS · LEKCJA {lessonNo+1} · BEZPIECZNE DANE PRÓBNE</Text>
-  <Text style={{color:ink,fontWeight:'900',fontSize:20}}>Od dostawy do wysyłki — praktyczna symulacja</Text>
-  <Text style={{color:'#607263',lineHeight:23}}>Pracujesz na przykładzie 10 sztuk. Sprawdzaj operacje jak w {cfg.name}. Każda dobra decyzja zmienia widoczny stan. To nie jest dostęp do rzeczywistego WMS producenta.</Text>
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{[cfg.inbound,cfg.storage,cfg.picking,cfg.outbound].map((v,i)=><View key={i} style={{backgroundColor:i<=step?'#e1f1dc':'#f4f5f0',borderRadius:8,padding:8}}><Text style={{fontSize:11,color:ink,fontWeight:'800'}}>{v}</Text></View>)}</View>
+  <Text style={{color:'#4e7854',fontWeight:'900',fontSize:12}}>{isTransport?'WARSZTAT TRANSPORTOWY':'WARSZTAT MAGAZYNOWY'} · LEKCJA {lessonNo+1} · DANE ĆWICZENIOWE</Text>
+  <Text style={{color:ink,fontWeight:'900',fontSize:20}}>{isTransport?'Od zamówienia do dostawy — plan przewozu':'Od dostawy do wysyłki — praktyczna symulacja'}</Text>
+  <Text style={{color:'#607263',lineHeight:23}}>{isTransport?'Planujesz ładunki, trasę i przewoźnika w scenariuszu z ograniczeniami masy, objętości oraz czasu.':'Pracujesz na przykładzie 10 sztuk. Każda dobra decyzja zmienia widoczny stan magazynu.'} To ćwiczenie, nie połączenie z systemem producenta.</Text>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{(isTransport?['Freight Unit','Freight Order','Carrier','Execution']:[cfg.inbound,cfg.storage,cfg.picking,cfg.outbound]).map((v,i)=><View key={i} style={{backgroundColor:i<=step?'#e1f1dc':'#f4f5f0',borderRadius:8,padding:8}}><Text style={{fontSize:11,color:ink,fontWeight:'800'}}>{v}</Text></View>)}</View>
   <View style={{backgroundColor:'#f0f6ed',padding:13,borderRadius:11,flexDirection:'row',justifyContent:'space-between'}}>
    <Text style={{color:ink,fontWeight:'800'}}>Krok {Math.min(step+1,5)} z 5</Text><Text style={{color:'#5b735c',fontWeight:'800'}}>Pomylone decyzje: {mistakes}</Text>
   </View>
@@ -105,7 +124,7 @@ export function LogisticsWorkshop({slug,lessonNo}:{slug:string;lessonNo:number})
    </Pressable>)}
   </View>:<View style={{padding:15,backgroundColor:'#dfefd7',borderRadius:11,gap:5}}>
    <Text style={{fontSize:18,fontWeight:'900',color:ink}}>Przepływ zakończony ✓</Text>
-   <Text style={{color:ink,lineHeight:23}}>Wiesz już, że dokument, faktyczny stan, lokalizacja i status wysyłki muszą być zgodne. Wróć do lekcji i sprawdź, jak ten proces nazywa się w Twoim systemie.</Text>
+   <Text style={{color:ink,lineHeight:23}}>{isTransport?'Potrafisz powiązać ładunek, planowaną trasę, ograniczenia pojazdu, wybór przewoźnika i aktualizację ETA.':'Dokument, faktyczny stan, lokacja i status wysyłki muszą być zgodne. Wróć do lekcji i sprawdź nazwy operacji w swoim systemie.'}</Text>
   </View>}
   {!!feedback&&<Text style={{padding:12,backgroundColor:'#e9f4e4',borderRadius:9,color:ink,fontWeight:'700',lineHeight:21}}>{feedback}</Text>}
   {!!log.length&&<View style={{gap:6}}><Text style={{fontWeight:'900',color:ink}}>Historia poprawnych operacji</Text>{log.map((x,i)=><Text key={i} style={{color:'#58725e',fontSize:12,lineHeight:18}}>{i+1}. {x}</Text>)}</View>}
