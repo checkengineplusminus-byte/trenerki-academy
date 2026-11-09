@@ -36,7 +36,6 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     resizeMode="contain"
     style={{width:'100%',height:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
    />:<FallbackDiagram title={title} sections={named} example={example}/>}
-   <Text style={{fontSize:11,color:'#65816d',paddingHorizontal:6,paddingBottom:4}}>Autorska ilustracja TRENERKI Academy · schemat dydaktyczny, nie zrzut ekranu producenta</Text>
   </View>}
   {!validIllustration&&named.length>0&&<FallbackDiagram title={title} sections={named} example={example}/>}
   {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
