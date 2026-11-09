@@ -71,3 +71,8 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - Zmieniono treść i metadane, nie resetowano postępów ani nie zmieniano flagi publikacji. Kurs ma nadal `review_needed`, wymaga eksperckiej recenzji i testu całości na opublikowanym Expo.
 
 **Następny kurs do podjęcia:** `gontarz` (obecnie 8 lekcji, 4 wymagają głębszej struktury), a potem pozostałe kursy z `docs/QUALITY_GAP_AUDIT_ALL_80_2026-11-09.md`. W każdej sesji w pierwszej kolejności odczytać świeży Supabase i checkpoint — nie zakładać niezmienności starej listy.
+
+
+## Harmonogram kontynuacji
+- 2026-11-09 utworzono automatyczne uruchomienie `Trenerki — kurs po kursie` od 2026-11-10 w porannym oknie czasu Europe/Oslo, codziennie, 77 iteracji (jedna docelowo na pozostały kurs).
+- Każde uruchomienie powinno pracować nad **jednym** jeszcze niezrealizowanym kursem oraz aktualizować ten checkpoint i SQL. Zapis harmonogramu nie gwarantuje powodzenia każdej iteracji ani 100% ukończenia bez ręcznego nadzoru. W przypadku błędu trzeba zachować status i ponowić po usunięciu przeszkody.
