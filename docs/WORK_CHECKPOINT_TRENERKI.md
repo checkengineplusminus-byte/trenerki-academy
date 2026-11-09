@@ -94,3 +94,12 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - GitHub: `content/kaletnik-masterclass-20261109.json` (`c0f02500`), odtwarzalny SQL `database/patches/trenerki-kaletnik-content-20261109.sql` (`989de973`), 4 nowe SVG i ich rejestr (`e68da302`), raport `docs/COURSE_REVIEW_KALETNIK_20261109.md` (`b8d7c472`).
 - Bez zmian kont, postępów, zakupów, RLS i publikacji. `review_status=review_needed`. **Nie wykonano** fachowej recenzji, testów E2E/egzaminu ani potwierdzenia deployu Expo. Ostatni CI był queued; nie twierdzić, że kompilacja przeszła.
 - **Następny kurs:** zweryfikuj w Supabase i audycie `kolodziej`; jeśli jeszcze nieprzebudowany, opracuj go indywidualnie. Nie powtarzaj kursów 1–5.
+
+
+**Kurs 6: Kołodziej — indywidualna przebudowa treści ukończona, recenzja i E2E nadal wymagane**
+- Poprzednio 8 powierzchownych lekcji, teraz **16** kolejnych (`lesson_no 0..15`) w 4 modułach. Uczeń poznaje piastę, szprychy, dzwona i obręcze, wiąz/dąb/jesion, rysunek, obwód, łuki, cięciwy, talerzowatość, narzędzia, gniazda i czopy, przyrząd traveler, metalową obręcz, obciążenia, bicie, konserwację, kosztorys i projekt końcowy.
+- **Zweryfikowane w Supabase**: `lessons=16`, `first=0`, `last=15`, `unique_questions=16`, `five_sections=16`, `four_choices=16`, `four_feedback=16`, `tasks=16`, `revision6=16`, `diagrams=16`.
+- GitHub: `content/kolodziej-masterclass-20261109-part1.json` i `part2.json`, aktualizacje pytań `0d04d281` i `309b7359`. Cztery techniczne SVG i rejestr nazw `9b259f05`. SQL odtworzeniowy `database/patches/trenerki-kolodziej-content-20261109.sql` (`f6cd35bf`), raport źródeł i braków `docs/COURSE_REVIEW_KOLODZIEJ_20261109.md` (`2573d9c7`).
+- W Supabase `review_status='review_needed'`, flaga publikacji bez zmian; NIE dotykano kont, płatności, postępów i uprawnień. Przykłady obliczeń są edukacyjne, a nie dopuszczeniem koła do ruchu.
+- **Nadal nieukończone**: recenzja specjalisty, test zalogowanego ucznia do egzaminu i certyfikatu, potwierdzenie publikacji schematów na Expo oraz ręczna weryfikacja dydaktyczna.
+- **Następny do weryfikacji**: `ludwisarz` (o ile aktualny Supabase i checkpoint nie potwierdzają wcześniejszej przebudowy). Nie rozpoczynaj ponownie kursów 1–6.
