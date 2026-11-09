@@ -6,6 +6,7 @@ import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../sr
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import GuidedDialogue from '../src/GuidedDialogue';
+import CarpentryPracticeLab,{hasCarpentryLab} from '../src/CarpentryPracticeLab';
 import CourseIntro from '../src/CourseIntro';
 import ConceptAtlas from '../src/ConceptAtlas';
 import EcoAtlas from '../src/EcoAtlas';
@@ -33,6 +34,7 @@ export default function Learning(){
   scrollRef.current?.scrollTo({y,animated:true});
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
+ const [carpentryLabPassed,setCarpentryLabPassed]=useState(false);
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
@@ -107,14 +109,15 @@ export default function Learning(){
   const firstPending=items.find(v=>!done.includes(v.lesson_no));
   if(!items.some(v=>v.lesson_no===number))return;
   if(firstPending&&number>firstPending.lesson_no){setMsg('Najpierw ukończ poprzednie lekcje i ich ćwiczenia.');return;}
-  setModule(number);setVerified(false);setVerifiedKeyboard(false);setMsg('');scrollToTop();
+  setModule(number);setVerified(false);setVerifiedKeyboard(false);setCarpentryLabPassed(false);setMsg('');scrollToTop();
  }
  const firstPending=items.find(v=>!done.includes(v.lesson_no));
  const unlockedNo=firstPending?.lesson_no??Infinity;
  const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
  const canFinish=done.includes(module)||(
    (!lesson?.material?.learning&&!lesson?.material?.construction||verified)&&
-   (!lesson?.material?.shortcuts?.length||verifiedKeyboard)
+   (!lesson?.material?.shortcuts?.length||verifiedKeyboard)&&
+   (slug!=='ciesla-przygotowanie-czeladnicze'||!hasCarpentryLab(module)||carpentryLabPassed)
  );
  async function persistDraft(target:number,noteState:NoteState){
   if(!userId)return;
@@ -145,7 +148,7 @@ export default function Learning(){
    const target=next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setMsg(prev=>prev||'Lekcja zaliczona. Oto następny etap.');scrollToTop();}
+   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setCarpentryLabPassed(false);setMsg(prev=>prev||'Lekcja zaliczona. Oto następny etap.');scrollToTop();}
    else {setMsg('Wszystkie lekcje ukończone. Egzamin Anielki jest teraz na początku strony.');scrollToTop();}
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
@@ -246,7 +249,8 @@ export default function Learning(){
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
-   <View onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
+   {slug==='ciesla-przygotowanie-czeladnicze'&&hasCarpentryLab(module)&&<CarpentryPracticeLab key={module} lessonNo={module} onPassed={setCarpentryLabPassed}/>}
+    <View onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
