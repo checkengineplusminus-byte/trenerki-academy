@@ -1,0 +1,283 @@
+{
+  "course_slug": "lepszy-kucharz",
+  "review_status": "review_needed",
+  "expert_review_required": true,
+  "lessons": [
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 0,
+      "title_pl": "Mise en place i porządek",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Mise en place oznacza przygotowanie stanowiska przed rozpoczęciem serwisu: receptury, składników, narzędzi, naczyń, kolejności działań i pojemników na odpady. Rozdziel operacje z surowym mięsem od produktów gotowych do jedzenia. Wydajność kuchni zależy nie tylko od szybkości krojenia, lecz także od ograniczenia zbędnych przejść."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Dla pięciu porcji zupy przygotuj kartę: składnik, ilość w gramach, wymagane chłodzenie i moment użycia. Oznacz oddzielne deski do produktów surowych i gotowych. Przed podaniem sprawdź kompletność mise en place oraz czystość stanowiska."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Zostało 15 minut do serwisu, a kucharz szuka cebuli i czystej deski. Zamiast rozpoczynać gorączkowe krojenie, trzeba wykryć brak przygotowania i zabezpieczyć higienę."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Zaprojektuj stanowisko do przygotowania pięciu porcji warzywnego dania: kolejność czynności, ilości, narzędzia i dwie kontrole czystości."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 1,
+      "title_pl": "Bezpieczeństwo i higiena kuchni",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Zanieczyszczenie krzyżowe może przenieść drobnoustroje z surowego mięsa, dłoni lub sprzętu na gotową potrawę. Alergeny mogą przenosić się także przez wspólne przybory. Mycie usuwa zabrudzenia, a dezynfekcja to odrębna czynność stosowana zgodnie z odpowiednią procedurą i preparatem."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Opisz strefę produktów surowych i gotowych, kolejność mycia rąk, zmianę rękawic gdy to potrzebne oraz zasady oznaczania pojemników. Termometr spożywczy powinien być czysty, sprawny i używany zgodnie z instrukcją; wartości graniczne przyjmuj z aktualnych wytycznych dla produktu i procesu."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Ten sam nóż po porcjowaniu surowego drobiu kroi gotowe do spożycia warzywa bez mycia. To bezpośrednia droga zanieczyszczenia krzyżowego."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Wskaż cztery miejsca przeniesienia zanieczyszczeń w kuchni i zaproponuj osobną czynność zapobiegawczą dla każdego."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 2,
+      "title_pl": "Techniki krojenia",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Krojenie na kostkę, plastry, julienne czy brunoise to różne geometrie. Równość rozmiarów ułatwia równomierną obróbkę cieplną oraz prezentację. Dobór techniki zależy od właściwości produktu: twardości, włóknistości, zawartości wody i celu potrawy."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Zacznij od stabilnej deski, chwytu i bezpiecznego ułożenia dłoni, a następnie wyznacz żądaną grubość. Przykład: marchew pokrojona w plastry 3 mm zmięknie zwykle szybciej niż kawałki 2 cm w tym samym procesie; grubość jest zmienną, którą trzeba kontrolować."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "W jednym garnku są kostki ziemniaka 5 mm i 25 mm. Po tym samym czasie mniejsze kawałki są miękkie, a większe mogą pozostać twarde."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Na kartce narysuj trzy kształty cięcia tego samego warzywa i wskaż, dla jakiego dania oraz dlaczego wybierzesz każdy z nich."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 3,
+      "title_pl": "Temperatura i obróbka cieplna",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Smażenie, duszenie, gotowanie w wodzie i pieczenie dostarczają ciepło różnymi drogami. Powierzchnia może się rumienić, gdy środek nie osiągnął jeszcze bezpiecznej temperatury. Barwa mięsa ani czas z przepisu nie zastępują wiarygodnego pomiaru termometrem w odpowiednim miejscu."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Porównaj trzy procesy: konwekcja w wodzie, przewodzenie na patelni i promieniowanie w piekarniku. Dla surowego drobiu stosuj aktualne wytyczne temperatury wewnętrznej i procedurę dla rodzaju produktu, sprawdzaną termometrem; monitoruj także czas przechowywania i chłodzenia."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Kurczak ma mocno zrumienioną skórkę, ale nie zmierzono środka. Nie potwierdzaj bezpieczeństwa wyłącznie na podstawie wyglądu."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Przygotuj kartę procesu dla jednej potrawy: surowiec, metoda obróbki, punkt pomiaru, kryterium zakończenia i dokument kontroli."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 4,
+      "title_pl": "Budowanie smaku i przyprawianie",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Smak potrawy zależy od równowagi słonego, kwaśnego, słodkiego, gorzkiego i umami, ale także od aromatów, temperatury i tekstury. Redukcja wody koncentruje składniki smakowe oraz sól — dlatego końcowe doprawianie mocno zredukowanego sosu wymaga ostrożności."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Ugotuj w bezpiecznej symulacji dwie próbki bulionu: jedną z dodatkiem niewielkiej ilości kwasu, drugą bez. Opisz sensorycznie różnicę bez automatycznego dosalania. Zapisuj ilości przypraw i moment ich dodania, aby móc odtworzyć rezultat."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Sos przed redukcją wydawał się mało słony, a po odparowaniu części wody stał się przesolony; błędem byłoby ponowne dodanie soli bez próbowania."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Sporządź tabelę korekty trzech potraw: za słona, za kwaśna, zbyt płaska w smaku. Zaproponuj ograniczoną zmianę i sposób jej oceny."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 5,
+      "title_pl": "Sosy, buliony i konsystencja",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Bulion to ekstrakt smakowy z surowców i wody, natomiast sos może być zagęszczany redukcją, skrobią, emulsją lub inną techniką. Emulsja zawiesza krople jednej fazy w drugiej; zbyt szybkie podgrzewanie lub zła proporcja składników może ją rozdzielić."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Na schemacie porównaj sos zagęszczany skrobią z emulsją. W skrobiowym wymagane są odpowiednie rozproszenie i obróbka zgodna z recepturą; przy emulsji istotne są prędkość łączenia, temperatura i stabilność faz. Nie łącz korekty smaku z korektą tekstury w jedną przypadkową czynność."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Sos na bazie tłuszczu i wody rozwarstwia się przy podgrzewaniu; zwiększanie ognia może pogłębić problem zamiast go rozwiązać."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Zapisz diagnozę: objaw, możliwa przyczyna, test małej próbki i metoda poprawy dla trzech rodzajów sosów."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 6,
+      "title_pl": "Menu, produkty i straty",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Plan menu zaczyna się od liczby gości, gramatury porcji, wydajności surowca, alergii i możliwości chłodniczych. Masa netto po obraniu może być niższa od zakupionej masy brutto. Ubytek podczas gotowania również zmienia koszt porcji i sposób planowania produkcji."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Przykład: zakup 5 kg warzyw, z których uzysk wynosi 80%, pozostawia 4 kg części użytkowej. Przy porcji 200 g można przygotować 20 porcji. Koszt zakupów 100 zł oznacza 5 zł surowca na jedną porcję przed pozostałymi składnikami i kosztami."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Zamówiono 5 kg surowca na 25 porcji po 200 g bez uwzględnienia obierek. Po obróbce jest tylko 4 kg i brakuje materiału na pięć porcji."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Oblicz potrzebną masę zakupową dla 30 porcji po 180 g przy zakładanym uzysku 90% i pokaż kontrolę odpadów."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 7,
+      "title_pl": "Serwis i jakość każdej porcji",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Jedna receptura powinna prowadzić do porównywalnych porcji: masy, temperatury podania, zestawu składników, alergenu i wyglądu. Powtarzalności nie ocenia się wyłącznie po zdjęciu — potrzebny jest standard wydania i punkt kontroli przed odebraniem talerza."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Ustal wzór porcji: 150 g składnika głównego, 200 g dodatków i 50 g sosu. Dla pięciu porcji potrzebujesz odpowiednio 750 g, 1000 g i 250 g części gotowych, z uwzględnieniem strat i uzysków. Przed serwisem sprawdź zamówienia z modyfikacjami."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Trzecia z pięciu porcji jest dużo mniejsza od pozostałych, choć każda ma taką samą cenę; wymaga korekty według standardu."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Zrób kartę wydania 5 porcji: gramatura, temperatura, alergeny, właściwy stolik i osoba zatwierdzająca jakość."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 8,
+      "title_pl": "Menu z trzech produktów",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Ograniczona liczba produktów nie oznacza prostego planowania: potrzebne są technika, bezpieczeństwo, kontrast tekstur i racjonalna wielkość porcji. Warto sprawdzić, czy każdy składnik pełni w potrawie określoną funkcję i czy można go przygotować w odpowiedniej kolejności."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Przykładowy zestaw to ziemniak, marchew i cebula. Możesz zaplanować pieczone warzywa oraz zupę, ale oba procesy wymagają oddzielnego opisania czasu, krojenia, wody lub tłuszczu i końcowej kontroli jakości. Nie podawaj automatycznych czasów bez grubości kawałków i sprzętu."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Uczestnik wybiera trzy produkty i przygotowuje cztery potrawy, ale nie zapisuje ilości i nie może odtworzyć smaku."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Przygotuj dwa różne dania z trzech składników, tabelę ilości i porównanie technik, z informacją o alergenach dodatków."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 9,
+      "title_pl": "Bezpieczne chłodzenie potraw",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Gorąca żywność nie powinna przebywać niekontrolowanie w zakresie temperatur sprzyjającym namnażaniu drobnoustrojów. Głęboki pojemnik chłodzi się inaczej niż szeroki, płytki. Nie wolno polegać wyłącznie na dotyku zewnętrznej powierzchni garnka; liczy się temperatura środka i czas."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Zaproponuj podział dużej porcji na mniejsze, płytkie pojemniki i kontrolę temperatury zgodnie z obowiązującą procedurą gastronomiczną. Chłodzenie powinno ograniczać ryzyko zanieczyszczenia; zapis zawiera czas, punkty pomiaru i identyfikację partii."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Dziesięć litrów gorącego sosu pozostawiono na noc w dużym, zakrytym garnku poza chłodnią. Sam fakt, że rano jest chłodny, nie dowodzi bezpieczeństwa."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Narysuj ścieżkę chłodzenia dla 10 litrów zupy z punktami pomiarowymi i zasadami przechowania oraz oznaczenia partii."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 10,
+      "title_pl": "Od smaku do korekty",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Diagnozowanie potrawy powinno oddzielać smak, aromat, teksturę i temperaturę. Zanim dodasz kolejny składnik, sprawdź, co rzeczywiście jest problemem: zbyt dużo soli, brak kwasowości, rozpad emulsji, niewłaściwa gęstość czy niedogotowanie."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Do korekty używaj małych prób i zapisuj zmiany. Jeżeli danie jest przesolone, samo intensywne mieszanie go nie naprawi; jeśli jest zbyt rzadkie, dodanie soli nie rozwiąże konsystencji. Oceniaj w tej samej temperaturze i przy podobnej wielkości próbki."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Sos wygląda zbyt rzadko i jednocześnie pachnie dobrze. Kucharz dodaje dużo soli, zamiast poprawić metodę zagęszczania."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Zaprojektuj kartę diagnostyki dla czterech błędów z opisem objawu, prawdopodobnej przyczyny, bezpiecznej próby i kryterium poprawy."
+        }
+      ]
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 11,
+      "title_pl": "Serwis — pięć porcji tej samej jakości",
+      "materialSections": [
+        {
+          "heading": "Zrozum technologię i składniki",
+          "text": "Przy pięciu identycznych zamówieniach jakość wymaga zsynchronizowania obróbki składników, porcji, czasu wydania i indywidualnych ograniczeń dietetycznych. To zadanie organizacyjne i technologiczne, nie tylko estetyczne. Wszystkie potrawy powinny przejść tę samą kontrolę gotowości."
+        },
+        {
+          "heading": "Proces krok po kroku",
+          "text": "Załóż pięć porcji po 350 g — razem 1,75 kg gotowej potrawy. Rozplanuj proces, biorąc pod uwagę rzeczywisty uzysk surowca, sprzęt i czasy partii. Wydawaj według identyfikatorów zamówienia i dokumentuj ewentualną modyfikację alergenu."
+        },
+        {
+          "heading": "Prawdziwy problem w kuchni",
+          "text": "Dwie porcje są gotowe o 12:00, trzy o 12:20, pierwsze dwie czekają bez kontroli temperatury. Trzeba poprawić harmonogram przygotowania."
+        },
+        {
+          "heading": "Ćwiczenie i sprawdzian umiejętności",
+          "text": "Ułóż harmonogram od przygotowania do wydania pięciu porcji, z kontrolą temperatury, ilości, alergenów i jakości."
+        }
+      ]
+    }
+  ]
+}
