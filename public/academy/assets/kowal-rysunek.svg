@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 670" role="img" aria-label="Rysunek techniczny — wymiary i osie">
+<rect width="1200" height="670" rx="28" fill="#f5f9f2"/>
+<rect x="26" y="25" width="1148" height="620" rx="24" fill="#fff" stroke="#d6e5d7" stroke-width="3"/>
+<text x="68" y="89" font-family="Arial,sans-serif" font-size="35" font-weight="bold" fill="#173e2d">Rysunek techniczny — wymiary i osie</text>
+<text x="68" y="123" font-family="Arial,sans-serif" font-size="20" fill="#587565">Przykład płytki 180 × 40 mm, dwa otwory Ø10</text>
+
+<rect x="120" y="230" width="690" height="165" rx="8" fill="#e3ebec" stroke="#2c545e" stroke-width="6"/>
+<circle cx="195" cy="312" r="22" fill="#fff" stroke="#2c545e" stroke-width="5"/><circle cx="735" cy="312" r="22" fill="#fff" stroke="#2c545e" stroke-width="5"/>
+<path d="M195 190v245 M735 190v245 M95 312h745" fill="none" stroke="#81a8a7" stroke-width="2" stroke-dasharray="14 8"/>
+<path d="M120 208v-46m690 46v-46M120 184h690" stroke="#2f665f" stroke-width="3"/><path d="M120 184l15-7v14zM810 184l-15-7v14z" fill="#2f665f"/>
+<text x="421" y="172" fill="#285f58" font-size="28" font-family="Arial" font-weight="bold">180 mm</text>
+<path d="M98 230H65 M98 395H65 M79 230v165" stroke="#2f665f" stroke-width="3"/>
+<text x="53" y="336" fill="#285f58" font-size="27" font-family="Arial" transform="rotate(-90 53 336)">40 mm</text>
+<path d="M195 405v57 M735 405v57 M195 443h540" stroke="#2f665f" stroke-width="3"/><text x="411" y="471" fill="#285f58" font-size="25" font-family="Arial">140 mm</text>
+<path d="M750 285l140-91" stroke="#ae6c41" stroke-width="4"/><text x="887" y="192" fill="#985d36" font-size="25" font-family="Arial" font-weight="bold">Ø10</text>
+<rect x="857" y="266" width="279" height="214" rx="17" fill="#eef5e9" stroke="#c6d9c7" stroke-width="3"/>
+<text x="878" y="305" fill="#1e5638" font-size="24" font-family="Arial" font-weight="bold">Zanim wykonasz:</text>
+<text x="878" y="345" fill="#3c5f4b" font-size="20" font-family="Arial">• określ materiał</text>
+<text x="878" y="383" fill="#3c5f4b" font-size="20" font-family="Arial">• sprawdź tolerancje</text>
+<text x="878" y="421" fill="#3c5f4b" font-size="20" font-family="Arial">• ustal mocowanie</text>
+<text x="878" y="460" fill="#3c5f4b" font-size="20" font-family="Arial">• sprawdź rewizję</text>
+<text x="68" y="616" font-family="Arial,sans-serif" font-size="16" fill="#54715d">TRENERKI Academy · autorski schemat edukacyjny · nie zastępuje szkolenia praktycznego</text>
+</svg>
