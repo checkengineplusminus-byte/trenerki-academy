@@ -62,3 +62,12 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - GitHub: `content/garncarz-masterclass-20261109-part1.json` (`d83a0efc`), `part2.json` (`940caa8f`), schematy SVG i rejestr (`0996ee7d`), `database/patches/trenerki-garncarz-content-20261109.sql` (`f2408b35`), raport `docs/COURSE_REVIEW_GARNCARZ_20261109.md` (`e1ec9cc2`).
 - Metadane Supabase zaktualizowane; publikacji nie zmieniano. Nie dotykano postępów ani płatności.
 - **Nadal brak**: testu konta i egzaminu, recenzji fachowej, potwierdzenia grafik w Expo. Nie przedstawiać jako formalnego świadectwa zawodowego.
+
+
+**Kurs 3: Introligator — przebudowa treści ukończona, czeka na recenzję i deploy**
+- Dawniej 8 krótkich lekcji, obecnie 12 indywidualnych (0–11). QA Supabase: `lessons=12, five_sections=12, unique_q=12, four_choices=12, revision=3`.
+- Własne działy: anatomia książki, kierunek włókien papieru i tektury, narzędzia, folio i składki, szycie, oprawa twarda i przegub, diagnostyka, kleje i pH, konserwacja, przechowywanie, budżet i projekt notesu.
+- GitHub: `content/introligator-masterclass-20261109-part1.json` (`b7f3aeec`), `part2.json` (`580b1e26`), schematy i ich rejestr (`ebb8625d`), SQL `database/patches/trenerki-introligator-content-20261109.sql` (`15370220`), raport `docs/COURSE_REVIEW_INTROLIGATOR_20261109.md` (`7a7da968`).
+- Zmieniono treść i metadane, nie resetowano postępów ani nie zmieniano flagi publikacji. Kurs ma nadal `review_needed`, wymaga eksperckiej recenzji i testu całości na opublikowanym Expo.
+
+**Następny kurs do podjęcia:** `gontarz` (obecnie 8 lekcji, 4 wymagają głębszej struktury), a potem pozostałe kursy z `docs/QUALITY_GAP_AUDIT_ALL_80_2026-11-09.md`. W każdej sesji w pierwszej kolejności odczytać świeży Supabase i checkpoint — nie zakładać niezmienności starej listy.
