@@ -62,8 +62,8 @@ export default function CarpentryPracticeLab({lessonNo,onPassed}:{lessonNo:numbe
  },[lessonNo]);
  if(!problem)return null;
  const readNumber=(s:string):number=>{
-  const cleaned=String(s||'').trim().replace(/\\s|\\u00a0/g,'').replace(',','.');
-  return cleaned!==''&&/^(?:\\d+(?:\\.\\d*)?|\\.\\d+)$/.test(cleaned)?Number(cleaned):NaN;
+  const cleaned=String(s||'').trim().replace(/\s|\u00a0/g,'').replace(',','.');
+  return cleaned!==''&&/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned)?Number(cleaned):NaN;
  };
  const format=(n:number)=>n.toLocaleString('pl-PL',{maximumFractionDigits:5});
  function currentValues():Record<string,number>|null{
