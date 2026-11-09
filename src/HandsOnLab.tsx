@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {View,Text,Pressable,TextInput,useWindowDimensions} from 'react-native';
 import type {KeyboardShortcut} from './KeyboardLesson';
+import {evaluateCell,parseSpreadsheetNumber} from './SpreadsheetFormula';
 
 /* Autorski, bezpieczny warsztat w przeglądarce. Nie uruchamia Excela/AutoCAD-a. */
 const ink='#173c2e', green='#e6f3df';
@@ -16,14 +17,8 @@ const initialRows=[
 ];
 const initialDrawing:Shape[]=[{id:1,kind:'rect',x:82,y:62,size:1,rotation:0,layer:1}];
 function pos(cell:string){const m=/^([A-E])(\d+)$/.exec(cell);return m?{r:Math.max(0,Math.min(5,Number(m[2])-1)),c:m[1].charCodeAt(0)-65}:{r:1,c:1}}
-function evaluate(rows:string[][],cell:string):string {
- const {r,c}=pos(cell),v=rows[r]?.[c]||'';
- if(/^=C[234]\*D[234]$/.test(v)){const n=Number(v[2])-1;return String(Number(rows[n][2])*Number(rows[n][3]));}
- if(v==='=SUM(E2:E4)'||v==='=SUM(E2:E4)'){return String([1,2,3].reduce((n,i)=>n+Number(rows[i][2])*Number(rows[i][3]),0));}
- if(v==='=E5*0.23')return (Number(evaluate(rows,'E5'))*.23).toFixed(2).replace('.',',');
- if(v==='=$C$2*$D$2')return String(Number(rows[1][2])*Number(rows[1][3]));
- return v;
-}
+function evaluate(rows:string[][],cell:string):string {return evaluateCell(rows,cell)}
+
 export default function HandsOnLab({mode,active,runId}:{mode:LabMode;active:KeyboardShortcut|null;runId:number}){
  const {width}=useWindowDimensions(),mobile=width<650;
  const [manualLabel,setManualLabel]=useState('');
@@ -130,7 +125,10 @@ export default function HandsOnLab({mode,active,runId}:{mode:LabMode;active:Keyb
   [{code:'FORMULA',title:'Formuła ×'},{code:'SUMA',title:'Suma ∑'},{code:'WYKRES',title:'Wykres ▥'},{code:'COFNIJ',title:'Cofnij ↶'},{code:'RESET',title:'Od nowa'}]:
   [{code:'LINIA',title:'Linia ╱'},{code:'OKRAG',title:'Okrąg ○'},{code:'PROSTOKAT',title:'Prostokąt ▭'},{code:'KOPIA',title:'Kopiuj ⧉'},{code:'COFNIJ',title:'Cofnij ↶'},{code:'RESET',title:'Od nowa'}];
  const selectedValue=evaluate(rows,selected);
- const chartValues=[Number(rows[1]?.[2]||0)*Number(rows[1]?.[3]||0),Number(rows[2]?.[2]||0)*Number(rows[2]?.[3]||0),Number(rows[3]?.[2]||0)*Number(rows[3]?.[3]||0)];
+ const chartValues=[1,2,3].map(i=>{
+  const qty=parseSpreadsheetNumber(rows[i]?.[2]),cost=parseSpreadsheetNumber(rows[i]?.[3]);
+  return Number.isFinite(qty*cost)?qty*cost:0;
+ });
  return <View style={{backgroundColor:'white',padding:16,borderRadius:16,borderWidth:1,borderColor:'#d5e4d2',gap:13}}>
   <Text style={{color:'#68816a',fontSize:12,fontWeight:'900'}}>WARSZTAT INTERAKTYWNY · {excel?'EXCEL':'AUTOCAD'}</Text>
   <Text style={{fontSize:20,fontWeight:'900',color:ink}}>{excel?'Kosztorys prac — ćwiczenie':'Szkic pomieszczenia — ćwiczenie'}</Text>
