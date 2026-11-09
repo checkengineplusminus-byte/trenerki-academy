@@ -1,0 +1,82 @@
+{
+  "bednarz": [
+    "Strugi proste i profilowe nadają klepkom dwa różne kształty: zewnętrzny obrys oraz przylegające do siebie krawędzie. Szablon sprawdza, czy kolejne klepki mają spójny promień; sam ostry strug nie zapewni szczelności.",
+    "Beczka jest zwykle szersza w środkowej części niż przy dnach, dlatego każda klepka ma specjalny obrys. Konstruktor musi rozróżnić średnicę przy dnie, średnicę największą i wysokość, a także położenie wręgi.",
+    "Przy montażu klepki współpracują pod dociskiem obręczy. Zbyt nierówna krawędź tworzy szczelinę na całej wysokości naczynia. Rozpoznaj, czym różni się błąd profilu od uszkodzenia drewna.",
+    "Przeciek przy dnie może wynikać z niedopasowanej wręgi, a przeciek w połowie wysokości ze źle ułożonej klepki. Oba objawy mają inne przyczyny; zalanie przypadkowym uszczelniaczem mogłoby ukryć wadę i skażać zawartość.",
+    "Konserwacja zabytkowej beczki zaczyna się od ustalenia, czy ma funkcję ekspozycyjną czy użytkową. Oryginalne drewno, metalowe obręcze i ślady narzędzi mogą być ważne dla wartości zabytku; wymiana każdej części niszczy historię.",
+    "Przed praktyką w bednarstwie uczeń powinien rozpoznawać rodzaje wad drewna, odczytać szablon klepki i wskazać punkty kontroli złożonej beczki. Dopiero później ćwiczy technikę na materiale pod nadzorem."
+  ],
+  "garncarz-tradycja": [
+    "Koło garncarskie obraca masę, ale to nacisk i położenie rąk kształtują ścianki. Gąbka reguluje wodę na powierzchni, a drewniane lub metalowe cykliny wygładzają profil. Nadmierna ilość wody osłabia świeżą formę.",
+    "Przy projekcie dzbana liczą się grubość ścianek, średnica podstawy, środek ciężkości i ergonomia uchwytu. Wylew musi umożliwiać kontrolowany strumień; sam ładny kształt nie dowodzi funkcjonalności.",
+    "Uformowany dzban nie może trafić bezpośrednio do maksymalnego wypału. Zbyt szybkie suszenie powoduje różnice skurczu i naprężenia. Wybór programu wypału zależy od rodzaju masy i glazury.",
+    "Pęknięcie przy uchu często sygnalizuje różną wilgotność łączonych części albo nieprawidłowe połączenie. Z kolei deformacja dna może wynikać ze zbyt cienkiej warstwy gliny; diagnoza powinna wskazać konkretny etap.",
+    "Przy naprawie zabytkowego naczynia klej i uzupełnienie powinny być dobrane do celu konserwatorskiego, odwracalności i materiału. Sklejone naczynie nie staje się automatycznie bezpieczne dla żywności.",
+    "Uczeń zaczyna od rozpoznawania stadiów: glina plastyczna, wyrób podsuszony, wysuszony, po wypale biskwitowym i po szkliwieniu. Każde stadium inaczej reaguje na nacisk i wilgoć."
+  ],
+  "gontarz": [
+    "Tradycyjne narzędzia do gontu obejmują siekierę, nóż do rozłupywania i przyrządy kształtujące krawędzie. Bezpieczne stanowisko musi stabilnie unieruchamiać drewno, a jakość zaczyna się od wyboru prostosłoistego surowca.",
+    "Projekt pokrycia określa długość i szerokość gontu, ilość zakładu, nachylenie połaci i sposób wykończenia okapu. Ułożenie elementów bez uwzględnienia spływu wody prowadzi do przecieków nawet przy dobrym drewnie.",
+    "Zachodzące na siebie rzędy kierują deszcz na zewnątrz połaci. Gont nie jest samodzielną wodoszczelną płytą: potrzebuje poprawnego układu, detali przy krawędziach i właściwej wentylacji.",
+    "Przeciek pojawiający się przy kominie może mieć źródło w obróbce blacharskiej, nie w samych gontach. Rozpoznanie miejsca wnikania i drogi spływu wody poprzedza wymianę materiału.",
+    "Podczas renowacji warto zachować zgodne z zabytkiem gatunki i wymiary gontów. Nowy produkt o innej geometrii może zmienić sposób odprowadzania wody i wygląd całego pokrycia.",
+    "Najpierw naucz się rozpoznawać sęki, pęknięcia, przebieg słojów i poprawny zakład na próbnym modelu. Praca na wysokości i wykonywanie dachów wymaga odrębnych umiejętności oraz zabezpieczeń."
+  ],
+  "introligator-tradycja": [
+    "Szydło przygotowuje otwory do szycia, igła prowadzi nić, a prasa stabilizuje blok podczas schnięcia i obróbki. Nie wszystkie książki mają szyty grzbiet; w oprawie klejonej kluczowa jest zgodność kleju z papierem.",
+    "Projekt oprawy rozdziela format stron, szerokość grzbietu, rodzaj okładki i sposób otwierania książki. Zbyt wąski zawias okładki powoduje duże naprężenia przy każdym rozłożeniu.",
+    "Po zszyciu składek trzeba sprawdzić, czy książka otwiera się bez wyrywania kartek. Papier klejony w poprzek niewłaściwego kierunku włókien może się falować, a zbyt sztywny klej może pękać.",
+    "Jeśli kartki wypadają, nie wystarczy mocniej docisnąć okładki. Rozpoznaj, czy pękł klej, puściła nić, czy papier został wyrwany przy zszyciu — każda wada oznacza inną naprawę.",
+    "Konserwacja cennej książki powinna zachować oryginalną oprawę tam, gdzie to możliwe. Kleje odwracalne i materiały o odpowiednim pH bywają ważniejsze niż mocne współczesne zamienniki.",
+    "Przed użyciem prawdziwych narzędzi opraw prosty zeszyt z papieru testowego: poznaj składkę, grzbiet i wyklejkę oraz przećwicz ich rozmieszczenie na suchym modelu."
+  ],
+  "kaletnik-tradycja": [
+    "Szydło wykonuje otwór pod ścieg, nóż wycina kształt, a radełko pomaga oznaczyć równy rozstaw ściegów. Krawędziarka wykańcza brzeg skóry. Zbyt gęste otwory mogą osłabić wąski pasek.",
+    "Portfel musi pomieścić karty bez nadmiernego ściskania, a kieszenie wymagają zapasu na szwy i grubość warstw. Wzór płaski po zszyciu może mieć mniejszą przestrzeń wewnętrzną.",
+    "Szew siodłowy prowadzony dwiema igłami tworzy charakterystyczny układ nici. Dobór nici i skoku ściegu powinien wynikać z grubości skóry i obciążenia, nie jedynie z dekoracji.",
+    "Jeśli pasek pęka obok dziurki, sprawdź odległość otworu od krawędzi, rozwarstwienie skóry i stan sprzączki. Dokładanie kolejnej dziurki bardzo blisko poprzedniej zwiększa ryzyko.",
+    "Stara skóra może wymagać czyszczenia i pielęgnacji odpowiednim preparatem, ale nie każde pęknięcie da się odwrócić natłuszczaniem. Naprawa okuć musi uwzględniać nośność i bezpieczeństwo.",
+    "Zacznij od papierowego wykroju portfela: ustal wymiary karty, zapas na ścieg i promienie narożników. Dopiero po sprawdzeniu modelu dobieraj skórę."
+  ],
+  "kolodziej": [
+    "Cyrkiel, szablony i narzędzia do czopowania pomagają zachować promień koła i właściwe gniazda szprych. Obręcz metalowa i drewniane dzwona nie są tylko ozdobą; współpracują w przenoszeniu obciążenia.",
+    "Projekt koła uwzględnia średnicę, liczbę szprych, szerokość obręczy, wymiar piasty i obciążenie pojazdu. Nawet małe odchylenie osi piasty wpływa na równomierność toczenia.",
+    "Piasta przenosi siły na szprychy, dzwona zamykają obwód, a obręcz utrzymuje całość razem. W modelu szkoleniowym prześledź drogę sił od osi do podłoża.",
+    "Wyraźne bicie promieniowe może wskazywać inną wadę niż bicie boczne. Najpierw kontroluje się osiowość, wymiary szprych i stan czopów; nie wyrównuje się koła przypadkowym spiłowaniem drewna.",
+    "Zabytkowe koło należy badać pod kątem pęknięć przy gniazdach i korozji okuć. Konserwacja musi odróżniać koło wystawowe od dopuszczonego do jazdy; eksponatu nie uznaje się za sprawny pojazd.",
+    "Ćwicz na rysunku złożeniowym: piasta, szprychy, dzwona, obręcz i oś. Potrafisz wskazać co najmniej trzy strefy, w których luz lub pęknięcie może być niebezpieczne."
+  ],
+  "ludwisarz": [
+    "Model dzwonu wyznacza kształt formy, rdzeń tworzy wnętrze, a kanały wlewowe służą doprowadzeniu metalu. Forma musi wytrzymać temperaturę i umożliwiać odprowadzanie gazów; odlewanie jest pracą wysokiego ryzyka.",
+    "Profil dzwonu nie jest przypadkowym kształtem. Grubość w poszczególnych miejscach wpływa na częstotliwości drgań i brzmienie; powiększenie dzwonu nie jest zwykłym przeskalowaniem dowolnego naczynia.",
+    "Podczas krzepnięcia metal zmniejsza objętość, co może tworzyć jamy skurczowe. Prawidłowy układ formy i zasilania odlewu służy ograniczaniu tych wad, ale wymaga fachowej technologii.",
+    "Porowatość i pęknięcie nie muszą być widoczne po polerowaniu. Dzwon trzeba ocenić nie tylko wizualnie, lecz także pod kątem integralności odlewu i charakterystyki dźwięku.",
+    "Przy restauracji historycznego dzwonu nie powinno się bez potrzeby usuwać dawnych napisów i śladów wykonania. Strukturalne pęknięcie i nadmierne zużycie mocowania wymagają oceny eksperta.",
+    "Praktykę zaczyna się od poznania przekroju formy, składników brązu i sposobów rozpoznawania wad. Nie ćwicz samodzielnie odlewania ciekłego metalu bez przeszkolonej ekipy i wyposażenia."
+  ],
+  "mlynarz-tradycyjny": [
+    "Żarna i walce rozdrabniają ziarno innym sposobem, a sita oddzielają frakcje. Elementy kontaktujące się z żywnością muszą być utrzymywane w czystości; nieodpowiednia powierzchnia może zanieczyścić mąkę.",
+    "Projekt pracy młyna obejmuje przewidywaną wydajność, odmianę zboża, wymagany typ mąki i przechowywanie. Im drobniejsza frakcja, tym większe znaczenie ma sposób rozdrabniania oraz odsiew.",
+    "Kolejne etapy to czyszczenie, kondycjonowanie, mielenie i odsiew zależnie od technologii. Dobre ziarno nie zapewni dobrej mąki, jeśli urządzenie miesza frakcje lub jest zabrudzone.",
+    "Obce cząstki w mące mogą pochodzić ze zboża lub zużytego urządzenia. Ocenia się całą drogę produktu, a nie tylko finalne sito; partie budzące wątpliwość należy odseparować.",
+    "Stary młyn wymaga równocześnie ochrony zabytkowych mechanizmów i współczesnej oceny zagrożeń pyłowych. Demonstracja ruchu bez osłon może być bardziej niebezpieczna niż sam eksponat.",
+    "Zrób model przepływu produktu od ziarna do mąki z punktami kontroli: czystość, wilgotność, rozdrobnienie i pakowanie. Prawdziwy młyn obsługuje się po szkoleniu."
+  ],
+  "plecionkarz": [
+    "Nóż i rozdzielacz wikliny przygotowują pędy o odpowiedniej grubości, a szydło ułatwia rozchylenie splotu. Ważny jest równy przekrój pędów; zbyt gruby pęd źle układa się w ciasnym narożniku.",
+    "Kosz wymaga zaplanowania średnicy dna, wysokości ścianek, osnowy i mocowania uchwytu. Uchwyt przenosi ciężar zawartości, więc nie może być tylko dekoracyjnie wpleciony.",
+    "Osnowa tworzy pionową konstrukcję, a cienkie pędy wątku przeplata się wokół niej. Każda zmiana kierunku splotu wpływa na kształt; symetria zaczyna się od równego rozstawu osnowy.",
+    "Jeśli kosz przechyla się przy stawianiu, sprawdź symetrię dna i napięcie splotu. Dekoracyjny obrzeż nie skoryguje konstrukcji, która od początku ma nierówną podstawę.",
+    "Zabytkowy kosz często ma określony charakterystyczny splot. Wymiana całych fragmentów bez jego rozpoznania może zatrzeć regionalny wzór; wilgotne przechowywanie sprzyja pleśni.",
+    "Na kartce narysuj osnowę i kolejne rzędy splotu. Z próbnych miękkich pasków papieru wykonaj prosty model, aby poznać geometrię bez używania ostrych narzędzi."
+  ],
+  "powroznik": [
+    "Haki i urządzenia do skręcania utrzymują oddzielne pasma pod równym naciągiem. Przy pracy tradycyjnej istotne jest bezpieczeństwo obracających się elementów i brak luźnych ubrań przy mechanizmie.",
+    "Projekt liny określa włókno, średnicę, liczbę pasm, kierunek skrętu i zastosowanie. Lina użytkowa musi być dobierana według wymagań, a dekoracyjny powróz nie nadaje się automatycznie do dźwigania.",
+    "Skręcone włókna łączy się w pasma, a pasma w linę, zwykle z odpowiednio przeciwnym kierunkiem skrętu. W ten sposób uzyskuje się bardziej stabilną konstrukcję; nierówny skręt daje słabe fragmenty.",
+    "Rozwarstwienie liny lub przetarcia pokazują, że włókna nie rozkładają obciążenia równomiernie. Nie wolno przywracać jej nośności na podstawie samego związania uszkodzonego końca.",
+    "Stare liny przechowywane w wilgoci mogą ulegać degradacji biologicznej. Konserwator odróżnia obiekt muzealny od liny do użytkowania; testowanej nośności nie wywnioskuje się z wieku.",
+    "Ćwicz wyłącznie na lekkich paskach papieru: pokaż dwa przeciwne kierunki skrętu i przeanalizuj, co dzieje się po puszczeniu końców bez obciążenia."
+  ]
+}
