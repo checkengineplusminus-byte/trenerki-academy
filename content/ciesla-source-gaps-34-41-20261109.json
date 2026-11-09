@@ -1,0 +1,389 @@
+{
+  "course_slug": "ciesla-przygotowanie-czeladnicze",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 34,
+      "title_pl": "35. Kleje zwierzęce i przygotowanie kleju glutynowego",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.1,11; cieśla 2 s.19",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Dostępny bank wyróżnia m.in. kleje glutynowe: skórne i kostne, kazeinowe (mleczne), a także inne historyczne spoiwa białkowe. Klej glutynowy w perełkach lub płytkach przygotowywano przez namoczenie, a następnie kontrolowane ogrzanie w naczyniu z płaszczem wodnym. Przegrzewanie może pogarszać właściwości spoiwa."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Porównaj zastosowanie przy renowacji tradycyjnej i elementach nośnych. Odwracalność złącza oraz wrażliwość na wodę mają znaczenie. Nie traktuj historycznego kleju jako automatycznego zamiennika certyfikowanego kleju konstrukcyjnego."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Warsztat remontuje historyczną oprawę i wykonuje nową belkę zewnętrzną. Dlaczego nie należy dobierać tego samego kleju do obu zastosowań?"
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Kleje zwierzęce i przygotowanie kleju glutynowego”. Wyjaśnij krok po kroku: Warsztat remontuje historyczną oprawę i wykonuje nową belkę zewnętrzną. Dlaczego nie należy dobierać tego samego kleju do obu zastosowań? Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Dostępny bank wyróżnia m.in. kleje glutynowe: skórne i kostne, kazeinowe (mleczne), a także inne historyczne spoiwa białkowe. Klej glutynowy w perełkach lub płytkach przygotowywano przez namoczenie, a następnie kontrolowane ogrzanie w naczyniu z płaszczem wodnym. Przegrzewanie może pogarszać właściwości spoiwa.",
+          "situation": "Warsztat remontuje historyczną oprawę i wykonuje nową belkę zewnętrzną. Dlaczego nie należy dobierać tego samego kleju do obu zastosowań?",
+          "question": "Jak przygotowuje się tradycyjny klej glutynowy z perełek?",
+          "options": [
+            "Namacza, a następnie kontrolowanie ogrzewa w kąpieli wodnej.",
+            "Ogrzewa bezpośrednio wysokim płomieniem do rozpuszczenia bez wody.",
+            "Rozciera na sucho i stosuje bez etapu przygotowania.",
+            "Miesza wyłącznie z olejem do łańcuchów."
+          ],
+          "correct": 0,
+          "example": "Namacza, a następnie kontrolowanie ogrzewa w kąpieli wodnej.",
+          "explanation": "Porównaj zastosowanie przy renowacji tradycyjnej i elementach nośnych. Odwracalność złącza oraz wrażliwość na wodę mają znaczenie. Nie traktuj historycznego kleju jako automatycznego zamiennika certyfikowanego kleju konstrukcyjnego.",
+          "feedback": [
+            "Dobrze. Porównaj zastosowanie przy renowacji tradycyjnej i elementach nośnych. Odwracalność złącza oraz wrażliwość na wodę mają znaczenie. Nie traktuj historycznego kleju jako automatycznego zamiennika certyfikowanego kleju konstrukcyjnego.",
+            "Przeanalizuj kryterium techniczne. Porównaj zastosowanie przy renowacji tradycyjnej i elementach nośnych. Odwracalność złącza oraz wrażliwość na wodę mają znaczenie. Nie traktuj historycznego kleju jako automatycznego zamiennika certyfikowanego kleju konstrukcyjnego.",
+            "Przeanalizuj kryterium techniczne. Porównaj zastosowanie przy renowacji tradycyjnej i elementach nośnych. Odwracalność złącza oraz wrażliwość na wodę mają znaczenie. Nie traktuj historycznego kleju jako automatycznego zamiennika certyfikowanego kleju konstrukcyjnego.",
+            "Przeanalizuj kryterium techniczne. Porównaj zastosowanie przy renowacji tradycyjnej i elementach nośnych. Odwracalność złącza oraz wrażliwość na wodę mają znaczenie. Nie traktuj historycznego kleju jako automatycznego zamiennika certyfikowanego kleju konstrukcyjnego."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 35,
+      "title_pl": "36. Lignoston i budowa wyrobów drewnopochodnych",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.5,15; cieśla 2 s.5,19",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "W źródle lignoston opisano jako zagęszczone drewno powstałe przez prasowanie wybranych gatunków pod ciśnieniem i w podwyższonej temperaturze. Nie jest to gatunek drzewa. Sklejka powstaje z warstw forniru, a OSB z ukierunkowanych wiórów; struktura materiału wpływa na zachowanie i zastosowanie."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Zbuduj zestawienie materiałowe: tarcica, lignoston, sklejka, OSB. Porównaj surowiec, proces produkcji, budowę i zastosowanie. Historyczne dane z egzaminu nie zastępują aktualnej karty produktu, zwłaszcza dla nośnych elementów."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Dostawca proponuje zamianę sklejki na OSB w poszyciu, bo grubość obu płyt to 18 mm. Które parametry trzeba porównać przed zgodą?"
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Lignoston i budowa wyrobów drewnopochodnych”. Wyjaśnij krok po kroku: Dostawca proponuje zamianę sklejki na OSB w poszyciu, bo grubość obu płyt to 18 mm. Które parametry trzeba porównać przed zgodą? Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "W źródle lignoston opisano jako zagęszczone drewno powstałe przez prasowanie wybranych gatunków pod ciśnieniem i w podwyższonej temperaturze. Nie jest to gatunek drzewa. Sklejka powstaje z warstw forniru, a OSB z ukierunkowanych wiórów; struktura materiału wpływa na zachowanie i zastosowanie.",
+          "situation": "Dostawca proponuje zamianę sklejki na OSB w poszyciu, bo grubość obu płyt to 18 mm. Które parametry trzeba porównać przed zgodą?",
+          "question": "Jak najlepiej sklasyfikować lignoston?",
+          "options": [
+            "Jako wyłącznie naturalny gatunek drzewa o wysokiej twardości.",
+            "Jako przemysłowy materiał z zagęszczonego drewna.",
+            "Jako zwykłą tarcicę obrzynaną bez dodatkowej obróbki.",
+            "Jako płytę wyłącznie z wiórów OSB."
+          ],
+          "correct": 1,
+          "example": "Jako przemysłowy materiał z zagęszczonego drewna.",
+          "explanation": "Zbuduj zestawienie materiałowe: tarcica, lignoston, sklejka, OSB. Porównaj surowiec, proces produkcji, budowę i zastosowanie. Historyczne dane z egzaminu nie zastępują aktualnej karty produktu, zwłaszcza dla nośnych elementów.",
+          "feedback": [
+            "Przeanalizuj kryterium techniczne. Zbuduj zestawienie materiałowe: tarcica, lignoston, sklejka, OSB. Porównaj surowiec, proces produkcji, budowę i zastosowanie. Historyczne dane z egzaminu nie zastępują aktualnej karty produktu, zwłaszcza dla nośnych elementów.",
+            "Dobrze. Zbuduj zestawienie materiałowe: tarcica, lignoston, sklejka, OSB. Porównaj surowiec, proces produkcji, budowę i zastosowanie. Historyczne dane z egzaminu nie zastępują aktualnej karty produktu, zwłaszcza dla nośnych elementów.",
+            "Przeanalizuj kryterium techniczne. Zbuduj zestawienie materiałowe: tarcica, lignoston, sklejka, OSB. Porównaj surowiec, proces produkcji, budowę i zastosowanie. Historyczne dane z egzaminu nie zastępują aktualnej karty produktu, zwłaszcza dla nośnych elementów.",
+            "Przeanalizuj kryterium techniczne. Zbuduj zestawienie materiałowe: tarcica, lignoston, sklejka, OSB. Porównaj surowiec, proces produkcji, budowę i zastosowanie. Historyczne dane z egzaminu nie zastępują aktualnej karty produktu, zwłaszcza dla nośnych elementów."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 36,
+      "title_pl": "37. Mechanizm posuwowy, napędowy i sprzęgło",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.13,17; cieśla 2 s.1,15,17",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Napęd przekazuje ruch i moment do narzędzia, mechanizm posuwowy reguluje przemieszczanie materiału lub głowicy względem obszaru skrawania, a sprzęgło może zależnie od maszyny rozłączać lub łączyć część układu napędowego. Nie myl obrotów wyrażanych w obr./min z posuwem np. w m/min."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Narysuj silnik, koło, pas, wał skrawający, rolki posuwu i sprzęgło. Opisz oddzielnie, co się zmieni po zwiększeniu posuwu, a co po zmianie obrotów; o jakości powierzchni decyduje też liczba ostrzy i gatunek drewna."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Na strugarce prędkość obrotowa wału jest stała, ale powierzchnia po obróbce pogorszyła się przy szybszym podawaniu deski."
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Mechanizm posuwowy, napędowy i sprzęgło”. Wyjaśnij krok po kroku: Na strugarce prędkość obrotowa wału jest stała, ale powierzchnia po obróbce pogorszyła się przy szybszym podawaniu deski. Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Napęd przekazuje ruch i moment do narzędzia, mechanizm posuwowy reguluje przemieszczanie materiału lub głowicy względem obszaru skrawania, a sprzęgło może zależnie od maszyny rozłączać lub łączyć część układu napędowego. Nie myl obrotów wyrażanych w obr./min z posuwem np. w m/min.",
+          "situation": "Na strugarce prędkość obrotowa wału jest stała, ale powierzchnia po obróbce pogorszyła się przy szybszym podawaniu deski.",
+          "question": "Które stwierdzenie rozróżnia posuw i napęd?",
+          "options": [
+            "Posuw przekazuje moc z silnika, napęd odpowiada wyłącznie za ruch deski.",
+            "Posuw i napęd są zawsze tym samym zespołem.",
+            "Napęd uruchamia narzędzie, a posuw reguluje ruch materiału względem niego.",
+            "Posuw mierzy się wyłącznie obrotami na minutę."
+          ],
+          "correct": 2,
+          "example": "Napęd uruchamia narzędzie, a posuw reguluje ruch materiału względem niego.",
+          "explanation": "Narysuj silnik, koło, pas, wał skrawający, rolki posuwu i sprzęgło. Opisz oddzielnie, co się zmieni po zwiększeniu posuwu, a co po zmianie obrotów; o jakości powierzchni decyduje też liczba ostrzy i gatunek drewna.",
+          "feedback": [
+            "Przeanalizuj kryterium techniczne. Narysuj silnik, koło, pas, wał skrawający, rolki posuwu i sprzęgło. Opisz oddzielnie, co się zmieni po zwiększeniu posuwu, a co po zmianie obrotów; o jakości powierzchni decyduje też liczba ostrzy i gatunek drewna.",
+            "Przeanalizuj kryterium techniczne. Narysuj silnik, koło, pas, wał skrawający, rolki posuwu i sprzęgło. Opisz oddzielnie, co się zmieni po zwiększeniu posuwu, a co po zmianie obrotów; o jakości powierzchni decyduje też liczba ostrzy i gatunek drewna.",
+            "Dobrze. Narysuj silnik, koło, pas, wał skrawający, rolki posuwu i sprzęgło. Opisz oddzielnie, co się zmieni po zwiększeniu posuwu, a co po zmianie obrotów; o jakości powierzchni decyduje też liczba ostrzy i gatunek drewna.",
+            "Przeanalizuj kryterium techniczne. Narysuj silnik, koło, pas, wał skrawający, rolki posuwu i sprzęgło. Opisz oddzielnie, co się zmieni po zwiększeniu posuwu, a co po zmianie obrotów; o jakości powierzchni decyduje też liczba ostrzy i gatunek drewna."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 37,
+      "title_pl": "38. Piły ręczne, rodzaje uzębienia i rozwarcie",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.5,19; cieśla 2 s.1,7,9",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Piła ramowa napina brzeszczot w ramie, a grzbietnica ma usztywnienie grzbietu, które wspiera precyzyjne cięcia. Geometria zębów zależy od cięcia wzdłuż lub w poprzek włókien. Rozwarcie zębów tworzy rzaz szerszy od brzeszczotu i ogranicza zakleszczanie podczas pracy."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Porównaj szkice brzeszczotów i znajdź w instrukcji przeznaczenie narzędzia. Zapisz kierunek włókien, pożądany rodzaj cięcia, sposób podparcia i kontrolę uszkodzeń. Nie rozginaj ani nie ostrz zębów na działającej maszynie."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Przy cięciu mokrej deski piła się klinuje. Wyjaśnij, co może zależeć od rodzaju zębów, rozwarcia i naprężeń w drewnie."
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Piły ręczne, rodzaje uzębienia i rozwarcie”. Wyjaśnij krok po kroku: Przy cięciu mokrej deski piła się klinuje. Wyjaśnij, co może zależeć od rodzaju zębów, rozwarcia i naprężeń w drewnie. Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Piła ramowa napina brzeszczot w ramie, a grzbietnica ma usztywnienie grzbietu, które wspiera precyzyjne cięcia. Geometria zębów zależy od cięcia wzdłuż lub w poprzek włókien. Rozwarcie zębów tworzy rzaz szerszy od brzeszczotu i ogranicza zakleszczanie podczas pracy.",
+          "situation": "Przy cięciu mokrej deski piła się klinuje. Wyjaśnij, co może zależeć od rodzaju zębów, rozwarcia i naprężeń w drewnie.",
+          "question": "Dlaczego zęby piły są rozwierane?",
+          "options": [
+            "By zwiększyć sztywność całego stołu roboczego.",
+            "By umożliwić tylko cięcie poprzeczne niezależnie od piły.",
+            "Aby obniżyć obroty piły podczas pracy.",
+            "Aby rzaz był szerszy od brzeszczotu i ograniczał zakleszczanie."
+          ],
+          "correct": 3,
+          "example": "Aby rzaz był szerszy od brzeszczotu i ograniczał zakleszczanie.",
+          "explanation": "Porównaj szkice brzeszczotów i znajdź w instrukcji przeznaczenie narzędzia. Zapisz kierunek włókien, pożądany rodzaj cięcia, sposób podparcia i kontrolę uszkodzeń. Nie rozginaj ani nie ostrz zębów na działającej maszynie.",
+          "feedback": [
+            "Przeanalizuj kryterium techniczne. Porównaj szkice brzeszczotów i znajdź w instrukcji przeznaczenie narzędzia. Zapisz kierunek włókien, pożądany rodzaj cięcia, sposób podparcia i kontrolę uszkodzeń. Nie rozginaj ani nie ostrz zębów na działającej maszynie.",
+            "Przeanalizuj kryterium techniczne. Porównaj szkice brzeszczotów i znajdź w instrukcji przeznaczenie narzędzia. Zapisz kierunek włókien, pożądany rodzaj cięcia, sposób podparcia i kontrolę uszkodzeń. Nie rozginaj ani nie ostrz zębów na działającej maszynie.",
+            "Przeanalizuj kryterium techniczne. Porównaj szkice brzeszczotów i znajdź w instrukcji przeznaczenie narzędzia. Zapisz kierunek włókien, pożądany rodzaj cięcia, sposób podparcia i kontrolę uszkodzeń. Nie rozginaj ani nie ostrz zębów na działającej maszynie.",
+            "Dobrze. Porównaj szkice brzeszczotów i znajdź w instrukcji przeznaczenie narzędzia. Zapisz kierunek włókien, pożądany rodzaj cięcia, sposób podparcia i kontrolę uszkodzeń. Nie rozginaj ani nie ostrz zębów na działającej maszynie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 38,
+      "title_pl": "39. Klin rozszczepiający i bezpieczeństwo pilarki",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 2 s.5",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Klin rozszczepiający właściwie dobranej pilarki tarczowej znajduje się za tarczą, zgodnie z konstrukcją maszyny. Jego zadaniem jest ograniczenie zaciskania przecinanego drewna na tylnej części tarczy i zmniejszenie ryzyka odrzutu. Nie zastępuje osłon, prowadnicy, popychacza i instrukcji producenta."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Na schemacie oznacz tarczę, kierunek posuwu, klin, osłonę i prowadnicę. Wymień trzy sytuacje, w których przerwałbyś pracę: brak klina mimo wymagania producenta, uszkodzona osłona, niestabilny materiał. Obsługa pilarki wymaga praktycznego nadzoru."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Monter chce zdjąć klin, ponieważ szeroki materiał nie przechodzi tak, jak sobie zaplanował. Jak powinna wyglądać decyzja?"
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Klin rozszczepiający i bezpieczeństwo pilarki”. Wyjaśnij krok po kroku: Monter chce zdjąć klin, ponieważ szeroki materiał nie przechodzi tak, jak sobie zaplanował. Jak powinna wyglądać decyzja? Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Klin rozszczepiający właściwie dobranej pilarki tarczowej znajduje się za tarczą, zgodnie z konstrukcją maszyny. Jego zadaniem jest ograniczenie zaciskania przecinanego drewna na tylnej części tarczy i zmniejszenie ryzyka odrzutu. Nie zastępuje osłon, prowadnicy, popychacza i instrukcji producenta.",
+          "situation": "Monter chce zdjąć klin, ponieważ szeroki materiał nie przechodzi tak, jak sobie zaplanował. Jak powinna wyglądać decyzja?",
+          "question": "Jaką funkcję pełni klin rozszczepiający?",
+          "options": [
+            "Pomaga ograniczyć zaciskanie rzazu na tarczy i odrzut.",
+            "Zwiększa prędkość obrotową silnika bez wymiany kół.",
+            "Zastępuje prowadnicę i osłonę w każdej operacji.",
+            "Automatycznie ustawia wilgotność materiału."
+          ],
+          "correct": 0,
+          "example": "Pomaga ograniczyć zaciskanie rzazu na tarczy i odrzut.",
+          "explanation": "Na schemacie oznacz tarczę, kierunek posuwu, klin, osłonę i prowadnicę. Wymień trzy sytuacje, w których przerwałbyś pracę: brak klina mimo wymagania producenta, uszkodzona osłona, niestabilny materiał. Obsługa pilarki wymaga praktycznego nadzoru.",
+          "feedback": [
+            "Dobrze. Na schemacie oznacz tarczę, kierunek posuwu, klin, osłonę i prowadnicę. Wymień trzy sytuacje, w których przerwałbyś pracę: brak klina mimo wymagania producenta, uszkodzona osłona, niestabilny materiał. Obsługa pilarki wymaga praktycznego nadzoru.",
+            "Przeanalizuj kryterium techniczne. Na schemacie oznacz tarczę, kierunek posuwu, klin, osłonę i prowadnicę. Wymień trzy sytuacje, w których przerwałbyś pracę: brak klina mimo wymagania producenta, uszkodzona osłona, niestabilny materiał. Obsługa pilarki wymaga praktycznego nadzoru.",
+            "Przeanalizuj kryterium techniczne. Na schemacie oznacz tarczę, kierunek posuwu, klin, osłonę i prowadnicę. Wymień trzy sytuacje, w których przerwałbyś pracę: brak klina mimo wymagania producenta, uszkodzona osłona, niestabilny materiał. Obsługa pilarki wymaga praktycznego nadzoru.",
+            "Przeanalizuj kryterium techniczne. Na schemacie oznacz tarczę, kierunek posuwu, klin, osłonę i prowadnicę. Wymień trzy sytuacje, w których przerwałbyś pracę: brak klina mimo wymagania producenta, uszkodzona osłona, niestabilny materiał. Obsługa pilarki wymaga praktycznego nadzoru."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 39,
+      "title_pl": "40. Strugnica, spust, ośnik i cykliny",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.1,7,9,11; cieśla 2 s.3,17",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Strugnica to warsztatowy stół z zaciskami i możliwością stabilnego mocowania. Strug typu spust pomaga prostować długie krawędzie i płaszczyzny, ośnik służy do ręcznej obróbki kształtu, a cykliny i skrobaki do zdejmowania cienkich warstw powierzchni. Nie są to nazwy tego samego narzędzia."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Rozpisz trzy czynności: wyprostowanie długiej krawędzi, kształtowanie detalu i końcowe zgarnianie cienkiej warstwy. Przypisz do każdej narzędzie i sposób bezpiecznego mocowania. Zwróć uwagę na kierunek włókien i prowadzenie ostrza z dala od dłoni."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Długa deska ma krzywą krawędź. Uczeń bierze tylko cyklinę, choć wymagana jest kontrola geometrii całego odcinka."
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Strugnica, spust, ośnik i cykliny”. Wyjaśnij krok po kroku: Długa deska ma krzywą krawędź. Uczeń bierze tylko cyklinę, choć wymagana jest kontrola geometrii całego odcinka. Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Strugnica to warsztatowy stół z zaciskami i możliwością stabilnego mocowania. Strug typu spust pomaga prostować długie krawędzie i płaszczyzny, ośnik służy do ręcznej obróbki kształtu, a cykliny i skrobaki do zdejmowania cienkich warstw powierzchni. Nie są to nazwy tego samego narzędzia.",
+          "situation": "Długa deska ma krzywą krawędź. Uczeń bierze tylko cyklinę, choć wymagana jest kontrola geometrii całego odcinka.",
+          "question": "Co jest podstawową funkcją strugnicy?",
+          "options": [
+            "Suszenie drewna w kontrolowanej temperaturze.",
+            "Stabilne mocowanie materiału podczas ręcznej obróbki.",
+            "Wyznaczanie przełożenia kół pasowych.",
+            "Pomiar wilgotności drewna."
+          ],
+          "correct": 1,
+          "example": "Stabilne mocowanie materiału podczas ręcznej obróbki.",
+          "explanation": "Rozpisz trzy czynności: wyprostowanie długiej krawędzi, kształtowanie detalu i końcowe zgarnianie cienkiej warstwy. Przypisz do każdej narzędzie i sposób bezpiecznego mocowania. Zwróć uwagę na kierunek włókien i prowadzenie ostrza z dala od dłoni.",
+          "feedback": [
+            "Przeanalizuj kryterium techniczne. Rozpisz trzy czynności: wyprostowanie długiej krawędzi, kształtowanie detalu i końcowe zgarnianie cienkiej warstwy. Przypisz do każdej narzędzie i sposób bezpiecznego mocowania. Zwróć uwagę na kierunek włókien i prowadzenie ostrza z dala od dłoni.",
+            "Dobrze. Rozpisz trzy czynności: wyprostowanie długiej krawędzi, kształtowanie detalu i końcowe zgarnianie cienkiej warstwy. Przypisz do każdej narzędzie i sposób bezpiecznego mocowania. Zwróć uwagę na kierunek włókien i prowadzenie ostrza z dala od dłoni.",
+            "Przeanalizuj kryterium techniczne. Rozpisz trzy czynności: wyprostowanie długiej krawędzi, kształtowanie detalu i końcowe zgarnianie cienkiej warstwy. Przypisz do każdej narzędzie i sposób bezpiecznego mocowania. Zwróć uwagę na kierunek włókien i prowadzenie ostrza z dala od dłoni.",
+            "Przeanalizuj kryterium techniczne. Rozpisz trzy czynności: wyprostowanie długiej krawędzi, kształtowanie detalu i końcowe zgarnianie cienkiej warstwy. Przypisz do każdej narzędzie i sposób bezpiecznego mocowania. Zwróć uwagę na kierunek włókien i prowadzenie ostrza z dala od dłoni."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 40,
+      "title_pl": "41. Wyrówniarka i grubościówka",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.3,19; cieśla 2 s.9,19",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Wyrówniarka pozwala wykonać płaską powierzchnię bazową i kontrolować krawędź, a grubościówka nadaje materiałowi określoną grubość względem tej bazy. Przygotowanie urządzenia wymaga sprawdzenia ostrzy, osłon, prowadnic, stołów i odpowiedniego mechanizmu posuwowego, zgodnie z instrukcją."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Narysuj sekwencję obróbki: ocena krzywizny → wyrównanie bazy → obróbka grubości → kontrola szerokości, kąta i powierzchni. Przeanalizuj, dlaczego samo grubościowanie skręconej deski nie musi dać prostego wyrobu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Deska ma niepłaską stronę; po przejściu przez grubościówkę nadal nie przylega do stołu montażowego."
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Wyrówniarka i grubościówka”. Wyjaśnij krok po kroku: Deska ma niepłaską stronę; po przejściu przez grubościówkę nadal nie przylega do stołu montażowego. Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Wyrówniarka pozwala wykonać płaską powierzchnię bazową i kontrolować krawędź, a grubościówka nadaje materiałowi określoną grubość względem tej bazy. Przygotowanie urządzenia wymaga sprawdzenia ostrzy, osłon, prowadnic, stołów i odpowiedniego mechanizmu posuwowego, zgodnie z instrukcją.",
+          "situation": "Deska ma niepłaską stronę; po przejściu przez grubościówkę nadal nie przylega do stołu montażowego.",
+          "question": "Dlaczego zwykle przygotowuje się bazę na wyrówniarce?",
+          "options": [
+            "Aby zwiększyć wilgotność deski przed grubościowaniem.",
+            "Aby zastąpić potrzebę pomiaru końcowego.",
+            "Aby uzyskać odniesienie geometryczne dla dalszej obróbki.",
+            "Aby osłabić wszystkie włókna drewna przed montażem."
+          ],
+          "correct": 2,
+          "example": "Aby uzyskać odniesienie geometryczne dla dalszej obróbki.",
+          "explanation": "Narysuj sekwencję obróbki: ocena krzywizny → wyrównanie bazy → obróbka grubości → kontrola szerokości, kąta i powierzchni. Przeanalizuj, dlaczego samo grubościowanie skręconej deski nie musi dać prostego wyrobu.",
+          "feedback": [
+            "Przeanalizuj kryterium techniczne. Narysuj sekwencję obróbki: ocena krzywizny → wyrównanie bazy → obróbka grubości → kontrola szerokości, kąta i powierzchni. Przeanalizuj, dlaczego samo grubościowanie skręconej deski nie musi dać prostego wyrobu.",
+            "Przeanalizuj kryterium techniczne. Narysuj sekwencję obróbki: ocena krzywizny → wyrównanie bazy → obróbka grubości → kontrola szerokości, kąta i powierzchni. Przeanalizuj, dlaczego samo grubościowanie skręconej deski nie musi dać prostego wyrobu.",
+            "Dobrze. Narysuj sekwencję obróbki: ocena krzywizny → wyrównanie bazy → obróbka grubości → kontrola szerokości, kąta i powierzchni. Przeanalizuj, dlaczego samo grubościowanie skręconej deski nie musi dać prostego wyrobu.",
+            "Przeanalizuj kryterium techniczne. Narysuj sekwencję obróbki: ocena krzywizny → wyrównanie bazy → obróbka grubości → kontrola szerokości, kąta i powierzchni. Przeanalizuj, dlaczego samo grubościowanie skręconej deski nie musi dać prostego wyrobu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 41,
+      "title_pl": "42. Łaty, kontrłaty i kratowe wiązary prefabrykowane",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.13,19; cieśla 2 s.5,7,19",
+        "sections": [
+          {
+            "heading": "Wiedza pojęciowa",
+            "text": "Kontrłaty układa się zwykle wzdłuż krokwi, a łaty poprzecznie, zgodnie z systemem pokrycia. Wspólnie tworzą układ podparcia pokrycia i często przestrzeń wentylacyjną. Prefabrykowane wiązary kratowe stanowią zaprojektowany układ pasów i krzyżulców, którego elementów nie można samowolnie przecinać."
+          },
+          {
+            "heading": "Technologia, kontrola i przykład",
+            "text": "Na rysunku dachu podpisz krokiew, kontrłatę, łatę, murłatę oraz kalenicę. W osobnym schemacie wiązara pokaż pas górny, dolny i krzyżulce. Sprawdź wpływ usunięcia krzyżulca na drogę obciążeń; zmiany wymagają konstruktora."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Właściciel poddasza chce przeciąć krzyżulce prefabrykowanego wiązara, by powiększyć pokój. Dlaczego nie jest to zwykła zmiana wykończenia?"
+          },
+          {
+            "heading": "Ćwiczenie do samodzielnego wykonania",
+            "text": "Narysuj schemat związany z tematem „Łaty, kontrłaty i kratowe wiązary prefabrykowane”. Wyjaśnij krok po kroku: Właściciel poddasza chce przeciąć krzyżulce prefabrykowanego wiązara, by powiększyć pokój. Dlaczego nie jest to zwykła zmiana wykończenia? Wskaż dwa niezbędne pomiary lub warunki bezpieczeństwa."
+          }
+        ],
+        "learning": {
+          "intro": "Kontrłaty układa się zwykle wzdłuż krokwi, a łaty poprzecznie, zgodnie z systemem pokrycia. Wspólnie tworzą układ podparcia pokrycia i często przestrzeń wentylacyjną. Prefabrykowane wiązary kratowe stanowią zaprojektowany układ pasów i krzyżulców, którego elementów nie można samowolnie przecinać.",
+          "situation": "Właściciel poddasza chce przeciąć krzyżulce prefabrykowanego wiązara, by powiększyć pokój. Dlaczego nie jest to zwykła zmiana wykończenia?",
+          "question": "Jak zwykle biegną łaty względem kontrłat?",
+          "options": [
+            "Równolegle do kontrłat, zawsze na tym samym poziomie.",
+            "Wzdłuż krokwi, a kontrłaty poprzecznie.",
+            "Bez ustalonej relacji — zależnie od koloru dachówki.",
+            "Poprzecznie do kontrłat, zgodnie z projektem pokrycia."
+          ],
+          "correct": 3,
+          "example": "Poprzecznie do kontrłat, zgodnie z projektem pokrycia.",
+          "explanation": "Na rysunku dachu podpisz krokiew, kontrłatę, łatę, murłatę oraz kalenicę. W osobnym schemacie wiązara pokaż pas górny, dolny i krzyżulce. Sprawdź wpływ usunięcia krzyżulca na drogę obciążeń; zmiany wymagają konstruktora.",
+          "feedback": [
+            "Przeanalizuj kryterium techniczne. Na rysunku dachu podpisz krokiew, kontrłatę, łatę, murłatę oraz kalenicę. W osobnym schemacie wiązara pokaż pas górny, dolny i krzyżulce. Sprawdź wpływ usunięcia krzyżulca na drogę obciążeń; zmiany wymagają konstruktora.",
+            "Przeanalizuj kryterium techniczne. Na rysunku dachu podpisz krokiew, kontrłatę, łatę, murłatę oraz kalenicę. W osobnym schemacie wiązara pokaż pas górny, dolny i krzyżulce. Sprawdź wpływ usunięcia krzyżulca na drogę obciążeń; zmiany wymagają konstruktora.",
+            "Przeanalizuj kryterium techniczne. Na rysunku dachu podpisz krokiew, kontrłatę, łatę, murłatę oraz kalenicę. W osobnym schemacie wiązara pokaż pas górny, dolny i krzyżulce. Sprawdź wpływ usunięcia krzyżulca na drogę obciążeń; zmiany wymagają konstruktora.",
+            "Dobrze. Na rysunku dachu podpisz krokiew, kontrłatę, łatę, murłatę oraz kalenicę. W osobnym schemacie wiązara pokaż pas górny, dolny i krzyżulce. Sprawdź wpływ usunięcia krzyżulca na drogę obciążeń; zmiany wymagają konstruktora."
+          ]
+        }
+      }
+    }
+  ]
+}
