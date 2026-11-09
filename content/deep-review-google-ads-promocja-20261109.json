@@ -1,0 +1,270 @@
+{
+  "course_slug": "google-ads-promocja",
+  "reference": "https://support.google.com/google-ads/answer/1704396",
+  "lessons": [
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Kampania nie zaczyna się od przycisku 'Opublikuj', lecz od celu biznesowego: sprzedaż, jakościowe zapytanie, rozmowa telefoniczna lub wizyta. Kliknięcie jest zachowaniem pośrednim, a nie zawsze konwersją. Persona klienta powinna być oparta na dostępnych danych i realnej potrzebie, nie stereotypie."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Ustal ofertę, obszar geograficzny, wymagany wynik i budżet. Dla warsztatu w Oslo możesz mierzyć ukończone formularze rezerwacji, ale najpierw sprawdź poprawność zdarzenia. Nie ustawiaj samej liczby wyświetleń jako jedynej miary sukcesu, jeśli firma potrzebuje zamówień."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Kampania osiąga 20 000 wyświetleń i 500 kliknięć, lecz żaden użytkownik nie wysyła formularza. Pytanie brzmi, czy mierzymy właściwy cel i czy strona działa."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Wybierz cel i dwie miary do analizy: jedna biznesowa, druga pomocnicza. Zapisz kryterium, po którym zmienisz decyzję."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Google Ads ma warstwy: konto, kampania i grupa reklam, natomiast w grupach mogą znajdować się reklamy i słowa kluczowe dla Search. Kampania zawiera budżet i podstawowe ustawienia kierowania. Nie wszystkie typy kampanii korzystają ze słów kluczowych w ten sam sposób."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Narysuj konto firmy z dwiema kampaniami: naprawa samochodów i sprzedaż części. W pierwszej utwórz grupy: hamulce i opony; w drugiej: oleje i filtry. Do każdej wpisz słowa odpowiadające tematyce i stronę docelową."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Wszystkie usługi firmy umieszczono w jednej grupie reklam z jednym tekstem o 'naprawach i wszystkim'. Trafność wyszukiwania może być niska."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Zbuduj drzewo konto → kampania → grupa → reklama i zaznacz, gdzie ustawisz budżet, a gdzie słowa."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Intencja wyszukiwania odpowiada na pytanie, po co użytkownik wpisuje daną frazę: informacja, porównanie czy zamiar zakupu. Dopasowanie i wykluczanie mogą wpływać na kwalifikowanie wyszukiwanych haseł; podobne słowa nie zawsze oznaczają to samo. W kampanii Search liczą się zapytania, reklama i strona docelowa."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Porównaj 'jak wymienić klocki hamulcowe' i 'serwis hamulców Oslo rezerwacja'. Pierwsze ma silny charakter informacyjny, drugie usługowy. Przeanalizuj dopasowanie, geolokalizację i raport rzeczywistych wyszukiwanych haseł; nie dodawaj wykluczeń bez sprawdzenia."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Ktoś szuka naprawy hamulców, a widzi ofertę sprzedaży nowego auta. To błąd zgodności intencji i reklamy."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Wypisz 10 fraz związanych z konkretną usługą, podziel je według intencji i uzasadnij dwa potencjalne wykluczenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Reklama powinna opisywać rzeczywistą ofertę i prowadzić do pasującej strony. Dobrze sformułowany nagłówek mówi co oferujesz, w jakiej lokalizacji i dlaczego użytkownik powinien przejść dalej. Sama atrakcyjna obietnica nie naprawi strony z niedziałającym formularzem."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Opracuj dwa warianty nagłówka dla usługi wymiany opon. Strona powinna umożliwiać znalezienie ceny lub sposobu jej ustalenia, terminu i warunków. Przed emisją przetestuj formularz mobilny, poprawność numeru telefonu i status ładowania."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Reklama obiecuje rezerwację w 30 sekund, lecz użytkownik musi przejść przez siedem ekranów i nie widzi potwierdzenia."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Napisz dwie reklamy oparte na konkretnych warunkach oferty i zaprojektuj checklistę strony docelowej."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Budżet dzienny to parametr wydatków, lecz nie jest automatycznie gwarancją równego wydatku każdego dnia; system reklamowy może zarządzać emisją według zasad produktu. CPC to koszt kliknięcia, CPA koszt konwersji, a ROAS porównuje przypisany przychód do wydatku. Nie należy utożsamiać tych wskaźników."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Przy budżecie 100 zł i CPC 2,50 zł model daje około 40 kliknięć. Przy hipotetycznej konwersji 5% odpowiada to średnio 2 działaniom i CPA około 50 zł. To przykład obliczeniowy — prawdziwa aukcja nie musi spełnić tych założeń."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Zwiększono budżet trzykrotnie, mimo że pomiar konwersji jest niesprawny. Firma nie potrafi obliczyć kosztu pozyskania."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Policz CPC i CPA przy dwóch budżetach. Zapisz, jak zmienisz decyzję, gdy wyniki mają mało danych."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Zdarzenie konwersji może dotyczyć zakupu, przesłania formularza lub połączenia. Aby ufać raportowi, trzeba sprawdzić implementację tagu, deduplikację zdarzeń, poprawny identyfikator oraz zgodność z wymaganiami ochrony danych. W EOG ustawienia zgód i trybu Consent Mode mogą wpływać na jakość pomiaru."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Przetestuj fikcyjną rezerwację: otwarcie strony → formularz → potwierdzenie. Jeśli tag liczy wyświetlenie strony zamiast wysłania formularza, raport zawyży wyniki. Przejrzyj oficjalne instrukcje: Goals → Conversions, zależnie od wersji interfejsu."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Google pokazuje 30 konwersji, ale firma ma 3 formularze — badanie powinno zacząć się od konfiguracji zdarzenia."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Zaprojektuj mapę zdarzeń i trzy testy, które wykażą, czy zakup/liczba formularzy są prawidłowo mierzone."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Wykluczające słowa kluczowe mogą ograniczać nietrafne zapytania w wybranych typach kampanii, ale nie zawsze działają identycznie we wszystkich produktach Google Ads. Optymalizacja wymaga odniesienia do danych: zapytań, kosztu, wyniku i strony docelowej, a nie tylko do subiektywnej oceny słowa."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Przeanalizuj raport wyszukiwań: 'darmowa naprawa hamulców' kosztuje 20 zł bez konwersji, 'serwis hamulców Oslo' 30 zł i daje dwa zgłoszenia. Zanim dodasz wykluczenie, ustal, czy szersze dopasowanie nie obsługuje wartościowych intencji."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Kampania generuje kliknięcia na frazę informacyjną, gdy firma sprzedaje tylko usługę płatną."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Wybierz trzy potencjalne wykluczenia i opisz ryzyko niezamierzonego ograniczenia wartościowych wyszukiwań."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Dobry raport rozdziela fakty, obliczenia i interpretacje. Liczba kliknięć bez liczby konwersji i wydatków nie pozwala ocenić efektywności. Trzeba uwzględnić okres, okno atrybucji, rodzaj konwersji, zmiany konfiguracji i liczbę próbek."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Przy 1000 kliknięć za 3000 zł i 30 konwersjach CPC = 3 zł, współczynnik konwersji 3%, CPA = 100 zł. Nie twierdź, że kampania jest zyskowna, dopóki nie znasz wartości pozyskanych zamówień i innych kosztów."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Raport mówi 'wzrost o 200%', ale nie podaje, że wynik zmienił się z jednej konwersji do trzech."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Sporządź tygodniowy raport z definicją metryk, liczbami, ograniczeniami i trzema decyzjami na kolejny test."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 8,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Kontrola przed publikacją powinna obejmować cel, budżet, geografię, harmonogram, kierowanie, kreację, stronę docelową, zdarzenie konwersji i zgodność z politykami platformy. Nie wystarczy poprawny podgląd reklamy na jednym urządzeniu."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Zrób checklistę testową: limit budżetu, język, region, formularz na telefonie, numer telefonu, śledzenie, polityka prywatności i ostatnie zatwierdzenie. Wyślij testową konwersję w dozwolonym środowisku, nie generuj sztucznych zamówień do raportu realnej kampanii."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Reklama lokalnego warsztatu kierowana jest przypadkiem na cały kraj, a budżet ustawiono zbyt wysoko."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Wykonaj próbny audyt kampanii z sześcioma błędami, zanim będzie można ją uruchomić."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 9,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Klient potrzebuje zrozumiałej odpowiedzi, jakie rezultaty osiągnięto, ile wydano i co można zmienić. Nie powinno się obiecywać pierwszego miejsca ani zysku na podstawie małej próby. Rozmowa ma wskazywać ograniczenia danych i kolejną decyzję, nie bronić kampanii za wszelką cenę."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Pokaż klientowi trzy liczby: koszt, liczbę prawidłowych zapytań i udział zapytań kończących się sprzedażą, jeśli takie dane istnieją. Wytłumacz, dlaczego po 10 kliknięciach nie można wyciągać stabilnych wniosków o CPA."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Klient pyta 'czy reklama zarobiła', a agencja pokazuje wyłącznie zasięg i liczbę lajków."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Przygotuj 90-sekundowe podsumowanie wyników i listę trzech danych, których jeszcze brakuje."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 10,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Nietypowy wzrost kliknięć może mieć wiele przyczyn: sezonowość, zmiana dopasowania, ruch botów, konkurencja albo błąd pomiaru. Sam wysoki CTR nie dowodzi nadużycia. Trzeba porównać źródła i statusy, użyć oficjalnych raportów oraz unikać arbitralnego blokowania potencjalnych klientów."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "W hipotetycznym dniu kliknięcia rosną z 40 do 400, a konwersje pozostają na poziomie 2. Sprawdź zmiany budżetu, lokalizacji, słów, logowania konwersji i jakość ruchu. Dokumentuj nieprawidłowości dla wsparcia platformy."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Ktoś twierdzi, że wszystkie kliknięcia bez zakupu to oszustwo, więc chce wykluczyć cały region."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Zrób plan diagnostyczny z pięcioma hipotezami i testem każdej, bez oskarżeń bez dowodów."
+        }
+      ]
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 11,
+      "sections": [
+        {
+          "heading": "Jak naprawdę działa mechanizm",
+          "text": "Raport końcowy ma pokazywać cele, daty, konfiguracje, dane ilościowe, działania i ograniczenia. Warto oddzielić wpływ reklamy od czynników niezależnych, takich jak ceny, dostępność towarów i jakość obsługi. Atrybucja reklamowa nie oznacza pewnego związku przyczynowego dla każdej transakcji."
+        },
+        {
+          "heading": "Praktyczna konfiguracja i liczby",
+          "text": "Załóż: 5000 zł wydatków, 100 konwersji i 40 sprzedaży o łącznym przychodzie 20 000 zł przypisanym według określonej metody. CPA za konwersję wynosi 50 zł, ale wynik finansowy wymaga kosztu produktów i innych wydatków."
+        },
+        {
+          "heading": "Błąd i jego skutek",
+          "text": "Raport podaje 400% ROAS jako '400% zysku', pomijając koszt towaru i koszty firmy. To myląca interpretacja."
+        },
+        {
+          "heading": "Zadanie samodzielne",
+          "text": "Zbuduj raport z wyraźnym podziałem: obserwacja, metoda pomiaru, wniosek i następny eksperyment."
+        }
+      ]
+    }
+  ]
+}
