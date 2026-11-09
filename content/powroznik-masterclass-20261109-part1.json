@@ -1,0 +1,249 @@
+{
+  "slug": "powroznik",
+  "lessons": [
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 0,
+      "title_pl": "1. Od włókna do liny: yarn, strand, laid rope",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Powróz składa się z włókien, z których skręca się przędze (yarns); przędze tworzą pasma (strands), a kilka pasm jest układanych w linę (laid rope). Lina pleciona (braided) ma inną konstrukcję niż lina skręcana. Różnica wpływa na zachowanie i sposób zakończenia, więc nie wystarczy patrzeć na średnicę."
+          },
+          {
+            "heading": "Proces i ograniczenia",
+            "text": "W typowej linie trójpasmowej obciążenie przenoszą współpracujące pasma, a nie pojedyncza zewnętrzna przędza. Sprawdź kolejność produkcji i rozpoznaj widoczną spiralę pasm. Kartę wyrobu uzupełnia się rodzajem włókna, konstrukcją i przeznaczeniem."
+          },
+          {
+            "heading": "Sprawdzalny przykład",
+            "text": "Trzy pasma po osiem przędz obejmują łącznie 3×8=24 przędze. Taka liczba nie oznacza 24 odrębnych certyfikowanych elementów ani nie pozwala obliczyć bezpiecznego udźwigu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Na końcu powrozu rozkręciły się dwie przędze. Przed naprawą trzeba rozpoznać, czy uszkodzone są pojedyncze przędze, całe pasmo czy układ zakończenia."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj cztery poziomy: włókno, przędza, pasmo i lina trójpasmowa. Oznacz, gdzie przebiega skręcanie, oraz porównaj linę plecioną i skręcaną."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://repository.library.noaa.gov/view/noaa/42456/noaa_42456_DS1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Powróz składa się z włókien, z których skręca się przędze (yarns); przędze tworzą pasma (strands), a kilka pasm jest układanych w linę (laid rope). Lina pleciona (braided) ma inną konstrukcję niż lina skręcana. Różnica wpływa na zachowanie i sposób zakończenia, więc nie wystarczy patrzeć na średnicę.",
+          "situation": "Na końcu powrozu rozkręciły się dwie przędze. Przed naprawą trzeba rozpoznać, czy uszkodzone są pojedyncze przędze, całe pasmo czy układ zakończenia.",
+          "task": "Narysuj cztery poziomy: włókno, przędza, pasmo i lina trójpasmowa. Oznacz, gdzie przebiega skręcanie, oraz porównaj linę plecioną i skręcaną.",
+          "question": "W jakiej kolejności tworzy się tradycyjną linę skręcaną?",
+          "options": [
+            "Włókna → przędza → pasma → lina.",
+            "Pasmo → lina → pojedyncze włókno → przędza.",
+            "Przędza → lina → pasmo → włókno.",
+            "Lina → włókno → przędza → pasmo."
+          ],
+          "correct": 0,
+          "example": "Włókna → przędza → pasma → lina.",
+          "explanation": "Włókna tworzą przędze, przędze pasma, a pasma linę.",
+          "feedback": [
+            "Tak. Włókna tworzą przędze, przędze pasma, a pasma linę.",
+            "Nie. Włókna tworzą przędze, przędze pasma, a pasma linę.",
+            "Nie. Włókna tworzą przędze, przędze pasma, a pasma linę.",
+            "Nie. Włókna tworzą przędze, przędze pasma, a pasma linę."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 1,
+      "title_pl": "2. Konopie, len, sizal i abaka: materiałoznawstwo powroźnika",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Konopie i len są roślinami włóknistymi; sizal jest pozyskiwany z agawy, a manila (abaka) z Musa textilis. Różnią się właściwościami włókien, odpornością na wilgoć, zużyciem i technologią przygotowania. Wybór musi odpowiadać środowisku oraz przeznaczeniu, a kolor nie wystarcza do identyfikacji."
+          },
+          {
+            "heading": "Proces i ograniczenia",
+            "text": "W historycznej stoczni Charlestown używano konopi i manili. Konopie do niektórych zastosowań pokrywano smołą, natomiast manila była ceniona za naturalną odporność na wodę. Nie można przenosić dawnej impregnacji jako automatycznego sposobu dopuszczenia współczesnej liny do pracy."
+          },
+          {
+            "heading": "Sprawdzalny przykład",
+            "text": "Do projektu ogrodowego i ekspozycyjnego można rozważyć różne włókna, ale dla liny przeznaczonej do dźwigania niezbędna jest odpowiednia specyfikacja i udokumentowana wytrzymałość całego wyrobu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Klient mówi 'chcę naturalną linę do wilgoci'. Zanim zamówisz materiał, ustal ekspozycję na wodę, częstotliwość wymiany, obciążenia i kwalifikację zastosowania."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Zbuduj porównanie czterech surowców: pochodzenie, wilgotność, ścieranie, zastosowanie, ograniczenia i sposób weryfikacji danych technicznych."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.nps.gov/places/ropewalk-cny.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Konopie i len są roślinami włóknistymi; sizal jest pozyskiwany z agawy, a manila (abaka) z Musa textilis. Różnią się właściwościami włókien, odpornością na wilgoć, zużyciem i technologią przygotowania. Wybór musi odpowiadać środowisku oraz przeznaczeniu, a kolor nie wystarcza do identyfikacji.",
+          "situation": "Klient mówi 'chcę naturalną linę do wilgoci'. Zanim zamówisz materiał, ustal ekspozycję na wodę, częstotliwość wymiany, obciążenia i kwalifikację zastosowania.",
+          "task": "Zbuduj porównanie czterech surowców: pochodzenie, wilgotność, ścieranie, zastosowanie, ograniczenia i sposób weryfikacji danych technicznych.",
+          "question": "Który surowiec powstaje z włókien agawy?",
+          "options": [
+            "Konopie.",
+            "Len.",
+            "Sizal.",
+            "Manila / abaka."
+          ],
+          "correct": 2,
+          "example": "Sizal.",
+          "explanation": "Sizal pochodzi z agawy; manila/abaka z Musa textilis.",
+          "feedback": [
+            "Nie. Sizal pochodzi z agawy; manila/abaka z Musa textilis.",
+            "Nie. Sizal pochodzi z agawy; manila/abaka z Musa textilis.",
+            "Tak. Sizal pochodzi z agawy; manila/abaka z Musa textilis.",
+            "Nie. Sizal pochodzi z agawy; manila/abaka z Musa textilis."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 2,
+      "title_pl": "3. Skręt S i Z: jak czytać kierunek spirali",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Kierunek skrętu rozpoznajemy po ukośnym przebiegu pasm, podobnym do środkowej kreski litery S lub Z. W typowej prawoskrętnej linie trójpasmowej przędze i pasma mogą mieć naprzemienne kierunki, np. przędza Z, pasmo S, lina Z. Konstrukcje specjalne i plecionki mają inne układy."
+          },
+          {
+            "heading": "Proces i ograniczenia",
+            "text": "Przeciwne skręty na kolejnych poziomach pomagają utrzymywać zrównoważoną konstrukcję. Sama nazwa Z nie określa wytrzymałości ani dopuszczalnego zastosowania. Normy podają szczegółowe warianty dla lin laid, braided i double braided."
+          },
+          {
+            "heading": "Sprawdzalny przykład",
+            "text": "Zwykła lina trójpasmowa Z może składać się z pasm S. Nie należy wnioskować, że wszystkie trzy poziomy mają identyczny kierunek tylko dlatego, że zewnętrzna powierzchnia ma spiralę Z."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Uczeń skręcił pasma i gotową linę w tym samym kierunku, co powoduje rozkręcanie modelu. Przeanalizuj gdzie należy odwrócić skręt, nie tworząc użytkowej liny do obciążeń."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj pięć skoków spirali S i Z i zrób papierowy model przędza Z → pasmo S → lina Z. Porównaj z tekstem normy, bez przykładania obciążenia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.iteh.asia/catalog/standards/sist/fb952e20-e8de-4d1a-9373-c8917c357c22/sist-en-iso-9554-2019"
+          }
+        ],
+        "learning": {
+          "intro": "Kierunek skrętu rozpoznajemy po ukośnym przebiegu pasm, podobnym do środkowej kreski litery S lub Z. W typowej prawoskrętnej linie trójpasmowej przędze i pasma mogą mieć naprzemienne kierunki, np. przędza Z, pasmo S, lina Z. Konstrukcje specjalne i plecionki mają inne układy.",
+          "situation": "Uczeń skręcił pasma i gotową linę w tym samym kierunku, co powoduje rozkręcanie modelu. Przeanalizuj gdzie należy odwrócić skręt, nie tworząc użytkowej liny do obciążeń.",
+          "task": "Narysuj pięć skoków spirali S i Z i zrób papierowy model przędza Z → pasmo S → lina Z. Porównaj z tekstem normy, bez przykładania obciążenia.",
+          "question": "Jaki typowy układ kierunków pasm i gotowej prawoskrętnej liny opisuje standard dla lin laid?",
+          "options": [
+            "Pasmo Z, gotowa lina Z.",
+            "Pasmo S, gotowa lina Z.",
+            "Pasmo S, gotowa lina S.",
+            "Pasmo Z, gotowa lina bez skrętu."
+          ],
+          "correct": 1,
+          "example": "Pasmo S, gotowa lina Z.",
+          "explanation": "Dla typowej prawoskrętnej liny laid pasma są S, a końcowa lina Z.",
+          "feedback": [
+            "Nie. Dla typowej prawoskrętnej liny laid pasma są S, a końcowa lina Z.",
+            "Tak. Dla typowej prawoskrętnej liny laid pasma są S, a końcowa lina Z.",
+            "Nie. Dla typowej prawoskrętnej liny laid pasma są S, a końcowa lina Z.",
+            "Nie. Dla typowej prawoskrętnej liny laid pasma są S, a końcowa lina Z."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 3,
+      "title_pl": "4. Ropewalk: długa hala, haki, traveler i top",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Ropewalk to podłużna przestrzeń produkcyjna dla długich lin. Historyczne urządzenia mogły mieć wirujące haki, mechanizm rozciągający pasma, blok prowadzący zwany top oraz ruchomy traveler utrzymujący naciąg podczas skręcania. To nie jest to samo co niewielkie ręczne szydełko do tkania."
+          },
+          {
+            "heading": "Proces i ograniczenia",
+            "text": "W trakcie skręcania zmienia się geometryczna długość pasm, dlatego potrzebny jest kontrolowany przesuw i naciąg. Dla historycznej maszyny nie podawaj uniwersalnych obrotów ani siły naciągu: zależą od włókna, grubości i procesu. Haki, wały i nawijarki wymagają osłon i szkolenia."
+          },
+          {
+            "heading": "Sprawdzalny przykład",
+            "text": "Dla zamówienia 12 m gotowej liny nie należy od razu przycinać wszystkich pasm do dokładnie 12 m. Rzeczywista długość początkowa zależy od skrócenia w procesie skrętu, odpadów i sposobu zakończenia."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Praktykant przechodzi przez strefę obracającego się mechanizmu, aby poprawić położenie pasa. Należy przerwać pracę i postępować zgodnie z procedurą zabezpieczenia napędu."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj halę ropewalk z hakami, pasmami, top i traveler. Zaznacz trzy strefy ryzyka pochwycenia, osobę uprawnioną i ruch wózka."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.nps.gov/places/ropewalk-cny.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Ropewalk to podłużna przestrzeń produkcyjna dla długich lin. Historyczne urządzenia mogły mieć wirujące haki, mechanizm rozciągający pasma, blok prowadzący zwany top oraz ruchomy traveler utrzymujący naciąg podczas skręcania. To nie jest to samo co niewielkie ręczne szydełko do tkania.",
+          "situation": "Praktykant przechodzi przez strefę obracającego się mechanizmu, aby poprawić położenie pasa. Należy przerwać pracę i postępować zgodnie z procedurą zabezpieczenia napędu.",
+          "task": "Narysuj halę ropewalk z hakami, pasmami, top i traveler. Zaznacz trzy strefy ryzyka pochwycenia, osobę uprawnioną i ruch wózka.",
+          "question": "Dlaczego podczas tworzenia długiej liny ważny jest kontrolowany naciąg oraz przesuw traveler?",
+          "options": [
+            "Bo skręcanie zmienia geometrię i długość pasm.",
+            "Bo każda przędza skraca się zawsze dokładnie o 1%.",
+            "Bo traveler służy wyłącznie do podgrzewania włókien.",
+            "Bo haki i pasma nie mogą zmieniać położenia podczas produkcji."
+          ],
+          "correct": 0,
+          "example": "Bo skręcanie zmienia geometrię i długość pasm.",
+          "explanation": "Skręt zmienia długość geometryczną pasm i wymaga kontroli naciągu.",
+          "feedback": [
+            "Tak. Skręt zmienia długość geometryczną pasm i wymaga kontroli naciągu.",
+            "Nie. Skręt zmienia długość geometryczną pasm i wymaga kontroli naciągu.",
+            "Nie. Skręt zmienia długość geometryczną pasm i wymaga kontroli naciągu.",
+            "Nie. Skręt zmienia długość geometryczną pasm i wymaga kontroli naciągu."
+          ]
+        }
+      }
+    }
+  ]
+}
