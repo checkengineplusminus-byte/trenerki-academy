@@ -14,7 +14,7 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
  useEffect(()=>{setChosen(null);setTries(0);setHint(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed(false)},[identity]);
  if(!data?.situation||!data?.options?.length)return null;
  const passed=chosen===data.correct&&accepted;
- const correctText=data.options[data.correct];
+ const feedbackForChoice=(index:number)=>data.feedback?.[index]?.trim()||'';
  const enabled=Array.isArray(data.options)&&data.correct>=0&&data.correct<data.options.length;
  if(!enabled)return null;
  const seed=identity.split('').reduce((n,c)=>n+c.charCodeAt(0),0)%data.options.length;
@@ -46,14 +46,14 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
    </Pressable>)}
    {chosen!==null&&<View style={{backgroundColor:passed?'#cfe8c7':'#ffefd8',borderRadius:11,padding:14,gap:7}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:16}}>{passed?'✓ Poprawna odpowiedź. Zapisano wynik.':verifying?'Sprawdzam odpowiedź…':chosen===data.correct?'Poprawna odpowiedź, trwa potwierdzanie.':'Jeszcze nie. Spróbuj raz jeszcze.'}</Text>
-    {!passed&&chosen!==data.correct&&<Text style={{color:ink,lineHeight:22,fontSize:14}}>Przyjrzyj się celowi zadania i wybierz rozwiązanie, które naprawdę prowadzi do wyniku.</Text>}
+    {!passed&&chosen!==data.correct&&<Text style={{color:ink,lineHeight:22,fontSize:14}}>{feedbackForChoice(chosen)||'Sprawdź, które kryterium w materiale decyduje o poprawnym rozwiązaniu.'}</Text>}
     {!!verifyError&&<Text style={{fontSize:13,color:'#95512f',fontWeight:'800'}}>{verifyError}</Text>}
     {!passed&&tries>=2&&!hint&&<Pressable accessibilityRole="button" onPress={()=>setHint(true)} style={{paddingVertical:6}}>
      <Text style={{color:'#4b674b',fontWeight:'900'}}>Potrzebuję podpowiedzi →</Text>
     </Pressable>}
-    {hint&&!passed&&<Text style={{fontWeight:'700',color:ink,lineHeight:22}}>Wskazówka: {correctText}</Text>}
-    {passed&&!!data.explanation&&!data.explanation.includes(data.example||'__NO_MATCH__')&&
-     <Text style={{color:ink,fontSize:14,lineHeight:22}}>{data.explanation}</Text>}
+    {hint&&!passed&&<Text style={{fontWeight:'700',color:ink,lineHeight:22}}>Wróć do przykładu: {data.intro||data.explanation||'porównaj warunki zadania z wymaganym rezultatem.'}</Text>}
+    {passed&&!!(feedbackForChoice(chosen)||data.explanation)&&
+     <Text style={{color:ink,fontSize:14,lineHeight:22}}>{feedbackForChoice(chosen)||data.explanation}</Text>}
    </View>}
   </View>
   {!!data.task&&!/^(W tym scenariuszu:|Zastosuj zasadę|Przygotuj własny plan|Powiedz Anielce)/i.test(data.task)&&
