@@ -1,0 +1,384 @@
+{
+  "lessons": [
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 1,
+      "question": "Który zestaw właściwości drewna ma znaczenie przy wykonaniu szczelnej klepki?",
+      "options": [
+        "Prosty przebieg włókien, brak pęknięć i dopasowanie wilgotności do technologii.",
+        "Wyłącznie kolor lakieru i liczba obręczy, niezależnie od pęknięć.",
+        "Dowolne sękate drewno wystarczy, gdy mocno dociśnie się obręcze.",
+        "Najważniejsza jest maksymalna wilgoć, nawet przy ryzyku pleśni."
+      ],
+      "correct": 0,
+      "explanation": "Klepki muszą współpracować geometrycznie, a obręcz nie naprawi pękniętego surowca.",
+      "example": "Prosty przebieg włókien, brak pęknięć i dopasowanie wilgotności do technologii.",
+      "feedback": [
+        "Dobrze. Klepki muszą współpracować geometrycznie, a obręcz nie naprawi pękniętego surowca.",
+        "Nie. Klepki muszą współpracować geometrycznie, a obręcz nie naprawi pękniętego surowca.",
+        "Nie. Klepki muszą współpracować geometrycznie, a obręcz nie naprawi pękniętego surowca.",
+        "Nie. Klepki muszą współpracować geometrycznie, a obręcz nie naprawi pękniętego surowca."
+      ]
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 1,
+      "question": "Co trzeba uwzględnić przy doborze gliny na gliniany dzban?",
+      "options": [
+        "Wyłącznie kolor mokrej gliny, bo skurcz nie występuje.",
+        "Plastyczność, skurcz podczas suszenia i zgodność masy z planowanym wypałem.",
+        "Każde szkliwo uszczelni pęknięcie powstałe podczas suszenia.",
+        "Szybkie suszenie zawsze zapobiega pęknięciom."
+      ],
+      "correct": 1,
+      "explanation": "Zmiana wymiarów w suszeniu i wypale jest kluczową właściwością ceramiki.",
+      "example": "Plastyczność, skurcz podczas suszenia i zgodność masy z planowanym wypałem.",
+      "feedback": [
+        "Nie. Zmiana wymiarów w suszeniu i wypale jest kluczową właściwością ceramiki.",
+        "Dobrze. Zmiana wymiarów w suszeniu i wypale jest kluczową właściwością ceramiki.",
+        "Nie. Zmiana wymiarów w suszeniu i wypale jest kluczową właściwością ceramiki.",
+        "Nie. Zmiana wymiarów w suszeniu i wypale jest kluczową właściwością ceramiki."
+      ]
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 1,
+      "question": "Co jest ważniejsze od samej grubości drewna przy doborze gontu?",
+      "options": [
+        "Wyłącznie gruba warstwa farby niezależnie od drewna.",
+        "Przypadkowy przebieg sęków, jeśli użyje się więcej gwoździ.",
+        "Przebieg włókien, wady drewna, wilgotność oraz planowany sposób krycia.",
+        "Brak zakładów i wentylacji, ponieważ drewno samo się uszczelnia."
+      ],
+      "correct": 2,
+      "explanation": "Przeciek i trwałość zależą od materiału oraz ułożenia na dachu.",
+      "example": "Przebieg włókien, wady drewna, wilgotność oraz planowany sposób krycia.",
+      "feedback": [
+        "Nie. Przeciek i trwałość zależą od materiału oraz ułożenia na dachu.",
+        "Nie. Przeciek i trwałość zależą od materiału oraz ułożenia na dachu.",
+        "Dobrze. Przeciek i trwałość zależą od materiału oraz ułożenia na dachu.",
+        "Nie. Przeciek i trwałość zależą od materiału oraz ułożenia na dachu."
+      ]
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 1,
+      "question": "Dlaczego w oprawie książki liczy się kierunek włókien papieru?",
+      "options": [
+        "Pozwala pominąć kontrolę grzbietu oraz sposobu klejenia.",
+        "Sprawia, że każdy klej staje się bezkwasowy.",
+        "Nie ma związku z pracą papieru, jeśli okładka jest gruba.",
+        "Wpływa na zginanie, falowanie i trwałość oprawy po klejeniu."
+      ],
+      "correct": 3,
+      "explanation": "Niezgodny kierunek włókien i wilgotność mogą deformować okładkę.",
+      "example": "Wpływa na zginanie, falowanie i trwałość oprawy po klejeniu.",
+      "feedback": [
+        "Nie. Niezgodny kierunek włókien i wilgotność mogą deformować okładkę.",
+        "Nie. Niezgodny kierunek włókien i wilgotność mogą deformować okładkę.",
+        "Nie. Niezgodny kierunek włókien i wilgotność mogą deformować okładkę.",
+        "Dobrze. Niezgodny kierunek włókien i wilgotność mogą deformować okładkę."
+      ]
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 1,
+      "question": "Jak dobrać materiał do mocno używanego paska lub portfela?",
+      "options": [
+        "Sprawdzić strukturę warstwy, zginanie, obciążenie szwów i dopasowanie okuć.",
+        "Wybrać tylko najgrubszą skórę, nie patrząc na jej rodzaj.",
+        "Umieścić szew w każdym miejscu największego zgięcia.",
+        "Dobór kleju i okuć nie ma znaczenia przy wytrzymałej skórze."
+      ],
+      "correct": 0,
+      "explanation": "Grubość sama nie określa trwałości; istotne są włókna i konstrukcja.",
+      "example": "Sprawdzić strukturę warstwy, zginanie, obciążenie szwów i dopasowanie okuć.",
+      "feedback": [
+        "Dobrze. Grubość sama nie określa trwałości; istotne są włókna i konstrukcja.",
+        "Nie. Grubość sama nie określa trwałości; istotne są włókna i konstrukcja.",
+        "Nie. Grubość sama nie określa trwałości; istotne są włókna i konstrukcja.",
+        "Nie. Grubość sama nie określa trwałości; istotne są włókna i konstrukcja."
+      ]
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 1,
+      "question": "Dlaczego w kole drewnianym nie wystarcza dobór drewna wyłącznie po kolorze?",
+      "options": [
+        "Jednakowe kolory dowodzą zgodnych własności drewna.",
+        "Piasta, szprychy i dzwona przenoszą różne obciążenia, więc ważne są włókna, wady i pasowanie.",
+        "Obręcz zawsze naprawi pęknięcia przy czopach.",
+        "Bicie koła nie jest wadą, jeśli koło wygląda symetrycznie."
+      ],
+      "correct": 1,
+      "explanation": "Koło wymaga właściwych materiałów i kontroli całej geometrii.",
+      "example": "Piasta, szprychy i dzwona przenoszą różne obciążenia, więc ważne są włókna, wady i pasowanie.",
+      "feedback": [
+        "Nie. Koło wymaga właściwych materiałów i kontroli całej geometrii.",
+        "Dobrze. Koło wymaga właściwych materiałów i kontroli całej geometrii.",
+        "Nie. Koło wymaga właściwych materiałów i kontroli całej geometrii.",
+        "Nie. Koło wymaga właściwych materiałów i kontroli całej geometrii."
+      ]
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 1,
+      "question": "Co decyduje o materiale i jakości tradycyjnego dzwonu?",
+      "options": [
+        "Wyłącznie wypolerowanie powierzchni po odlewie.",
+        "Większy udział przypadkowego metalu zawsze poprawia dźwięk.",
+        "Skład stopu miedzi i cyny, geometria odlewu i brak wad materiałowych.",
+        "Pęcherze i pęknięcia nie wpływają na trwałość dzwonu."
+      ],
+      "correct": 2,
+      "explanation": "Dźwięk i trwałość zależą jednocześnie od stopu, profilu i procesu odlewu.",
+      "example": "Skład stopu miedzi i cyny, geometria odlewu i brak wad materiałowych.",
+      "feedback": [
+        "Nie. Dźwięk i trwałość zależą jednocześnie od stopu, profilu i procesu odlewu.",
+        "Nie. Dźwięk i trwałość zależą jednocześnie od stopu, profilu i procesu odlewu.",
+        "Dobrze. Dźwięk i trwałość zależą jednocześnie od stopu, profilu i procesu odlewu.",
+        "Nie. Dźwięk i trwałość zależą jednocześnie od stopu, profilu i procesu odlewu."
+      ]
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 1,
+      "question": "Jakie właściwości ziarna trzeba sprawdzić przed przemiałem?",
+      "options": [
+        "Wyłącznie kolor worka, w którym przyjechało ziarno.",
+        "Zawsze mieszać ziarno z pleśnią z dobrym ziarnem.",
+        "Pył mączny jest obojętny, więc nie trzeba kontrolować wentylacji.",
+        "Wilgotność, czystość, stan ziarna i wymagania produktu końcowego."
+      ],
+      "correct": 3,
+      "explanation": "Właściwości zboża decydują o przemiale i bezpieczeństwie żywności.",
+      "example": "Wilgotność, czystość, stan ziarna i wymagania produktu końcowego.",
+      "feedback": [
+        "Nie. Właściwości zboża decydują o przemiale i bezpieczeństwie żywności.",
+        "Nie. Właściwości zboża decydują o przemiale i bezpieczeństwie żywności.",
+        "Nie. Właściwości zboża decydują o przemiale i bezpieczeństwie żywności.",
+        "Dobrze. Właściwości zboża decydują o przemiale i bezpieczeństwie żywności."
+      ]
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 1,
+      "question": "Co decyduje o przydatności wikliny na ciasno wygięte elementy kosza?",
+      "options": [
+        "Sprężystość, grubość, wilgotność oraz brak pęknięć pędów.",
+        "Im bardziej sucha i krucha wiklina, tym łatwiej ją zginać.",
+        "Wyłącznie kolor pędów, bez uwzględnienia ich długości.",
+        "Dowolny naciąg osnowy zapewnia identyczny kształt."
+      ],
+      "correct": 0,
+      "explanation": "Wilgotność i struktura pędu wpływają na zdolność do gięcia.",
+      "example": "Sprężystość, grubość, wilgotność oraz brak pęknięć pędów.",
+      "feedback": [
+        "Dobrze. Wilgotność i struktura pędu wpływają na zdolność do gięcia.",
+        "Nie. Wilgotność i struktura pędu wpływają na zdolność do gięcia.",
+        "Nie. Wilgotność i struktura pędu wpływają na zdolność do gięcia.",
+        "Nie. Wilgotność i struktura pędu wpływają na zdolność do gięcia."
+      ]
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 1,
+      "question": "Na co zwrócić uwagę przy doborze włókien do tradycyjnej liny?",
+      "options": [
+        "Sam duży przekrój gwarantuje nośność liny.",
+        "Rodzaj włókien, kierunek i równomierność skrętu oraz wymagana wytrzymałość.",
+        "Nie trzeba zabezpieczać końca liny przed rozkręcaniem.",
+        "Linę demonstracyjną można bez badań wykorzystać do dźwigania ludzi."
+      ],
+      "correct": 1,
+      "explanation": "Konstrukcja skrętu i materiał mają wpływ na wytrzymałość; zastosowania nośne wymagają odrębnych wymogów.",
+      "example": "Rodzaj włókien, kierunek i równomierność skrętu oraz wymagana wytrzymałość.",
+      "feedback": [
+        "Nie. Konstrukcja skrętu i materiał mają wpływ na wytrzymałość; zastosowania nośne wymagają odrębnych wymogów.",
+        "Dobrze. Konstrukcja skrętu i materiał mają wpływ na wytrzymałość; zastosowania nośne wymagają odrębnych wymogów.",
+        "Nie. Konstrukcja skrętu i materiał mają wpływ na wytrzymałość; zastosowania nośne wymagają odrębnych wymogów.",
+        "Nie. Konstrukcja skrętu i materiał mają wpływ na wytrzymałość; zastosowania nośne wymagają odrębnych wymogów."
+      ]
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 1,
+      "question": "Co sprawdza się przy wyborze skóry na pas uprzęży?",
+      "options": [
+        "Wyłącznie kolor skóry dopasowany do sierści.",
+        "Ostry brzeg metalowego okucia nie może powodować otarć.",
+        "Stan włókien, wytrzymałość, krawędzie, szwy i dopasowanie do zwierzęcia.",
+        "Pęknięcie przy otworach można zawsze zamaskować pastą."
+      ],
+      "correct": 2,
+      "explanation": "Zarówno integralność materiału, jak i komfort zwierzęcia są kryteriami.",
+      "example": "Stan włókien, wytrzymałość, krawędzie, szwy i dopasowanie do zwierzęcia.",
+      "feedback": [
+        "Nie. Zarówno integralność materiału, jak i komfort zwierzęcia są kryteriami.",
+        "Nie. Zarówno integralność materiału, jak i komfort zwierzęcia są kryteriami.",
+        "Dobrze. Zarówno integralność materiału, jak i komfort zwierzęcia są kryteriami.",
+        "Nie. Zarówno integralność materiału, jak i komfort zwierzęcia są kryteriami."
+      ]
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 1,
+      "question": "Jak dobrać materiał i oczko sita do przesiewanego produktu?",
+      "options": [
+        "Wielkość oczka nie ma wpływu na rozdzielanie frakcji.",
+        "Nierówny naciąg zawsze poprawia dokładność.",
+        "Rdzewiejąca siatka jest bez znaczenia przy kontakcie z jedzeniem.",
+        "Sprawdzić wielkość oczka, stan siatki, naciąg i zgodność materiału z zastosowaniem."
+      ],
+      "correct": 3,
+      "explanation": "Jakość sita zależy od geometrii oczek oraz stanu materiału i ramy.",
+      "example": "Sprawdzić wielkość oczka, stan siatki, naciąg i zgodność materiału z zastosowaniem.",
+      "feedback": [
+        "Nie. Jakość sita zależy od geometrii oczek oraz stanu materiału i ramy.",
+        "Nie. Jakość sita zależy od geometrii oczek oraz stanu materiału i ramy.",
+        "Nie. Jakość sita zależy od geometrii oczek oraz stanu materiału i ramy.",
+        "Dobrze. Jakość sita zależy od geometrii oczek oraz stanu materiału i ramy."
+      ]
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 1,
+      "question": "Dlaczego należy rozróżnić lipę i dąb przed rzeźbieniem detali?",
+      "options": [
+        "Mają odmienne twardości i układ włókien, co wpływa na skrawanie i ryzyko wyłamań.",
+        "Każde drewno tnie się identycznie pod dowolnym kątem.",
+        "Sęki zawsze poprawiają precyzję drobnego ornamentu.",
+        "Tępe dłuto gwarantuje czyste odcinanie włókien."
+      ],
+      "correct": 0,
+      "explanation": "Właściwości gatunku i kierunek słojów wpływają na dobór narzędzia.",
+      "example": "Mają odmienne twardości i układ włókien, co wpływa na skrawanie i ryzyko wyłamań.",
+      "feedback": [
+        "Dobrze. Właściwości gatunku i kierunek słojów wpływają na dobór narzędzia.",
+        "Nie. Właściwości gatunku i kierunek słojów wpływają na dobór narzędzia.",
+        "Nie. Właściwości gatunku i kierunek słojów wpływają na dobór narzędzia.",
+        "Nie. Właściwości gatunku i kierunek słojów wpływają na dobór narzędzia."
+      ]
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 1,
+      "question": "Co trzeba rozważyć przed przyklejeniem odchodzącej podeszwy?",
+      "options": [
+        "Każdy klej działa identycznie na gumę, skórę i tworzywo.",
+        "Materiał podeszwy i cholewki, zgodność kleju, przygotowanie powierzchni i strefy zginania.",
+        "Im twardszy naprawiany przód buta, tym lepiej zawsze znosi zginanie.",
+        "Nie trzeba oceniać przyczyny starego odklejenia."
+      ],
+      "correct": 1,
+      "explanation": "Połączenie musi wytrzymać wielokrotny ruch i być zgodne z tworzywami.",
+      "example": "Materiał podeszwy i cholewki, zgodność kleju, przygotowanie powierzchni i strefy zginania.",
+      "feedback": [
+        "Nie. Połączenie musi wytrzymać wielokrotny ruch i być zgodne z tworzywami.",
+        "Dobrze. Połączenie musi wytrzymać wielokrotny ruch i być zgodne z tworzywami.",
+        "Nie. Połączenie musi wytrzymać wielokrotny ruch i być zgodne z tworzywami.",
+        "Nie. Połączenie musi wytrzymać wielokrotny ruch i być zgodne z tworzywami."
+      ]
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 1,
+      "question": "Co decyduje o właściwościach ręcznie tkanej tkaniny?",
+      "options": [
+        "Osnowa i wątek to dokładnie ten sam kierunek nitek.",
+        "Naciąg nie wpływa na szerokość i regularność tkaniny.",
+        "Rodzaj włókna, skręt przędzy, naprężenie osnowy, splot i możliwy skurcz.",
+        "Każde włókno zachowuje ten sam skurcz po praniu."
+      ],
+      "correct": 2,
+      "explanation": "Dobór przędzy i struktury splotu zmienia gotowy wyrób.",
+      "example": "Rodzaj włókna, skręt przędzy, naprężenie osnowy, splot i możliwy skurcz.",
+      "feedback": [
+        "Nie. Dobór przędzy i struktury splotu zmienia gotowy wyrób.",
+        "Nie. Dobór przędzy i struktury splotu zmienia gotowy wyrób.",
+        "Dobrze. Dobór przędzy i struktury splotu zmienia gotowy wyrób.",
+        "Nie. Dobór przędzy i struktury splotu zmienia gotowy wyrób."
+      ]
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 1,
+      "question": "Które materiały i części pojazdu wymagają kontroli przed przejazdem?",
+      "options": [
+        "Wystarczy umyć bryczkę i sprawdzić jej kolor.",
+        "Pęknięcie dyszla nie ma znaczenia przy krótkiej trasie.",
+        "Otarcia od uprzęży są normalne i nie wymagają uwagi.",
+        "Stan drewna, połączeń metalowych, uprzęży oraz dopasowanie do konia."
+      ],
+      "correct": 3,
+      "explanation": "Bezpieczeństwo zależy od całego układu pojazd–uprząż–koń.",
+      "example": "Stan drewna, połączeń metalowych, uprzęży oraz dopasowanie do konia.",
+      "feedback": [
+        "Nie. Bezpieczeństwo zależy od całego układu pojazd–uprząż–koń.",
+        "Nie. Bezpieczeństwo zależy od całego układu pojazd–uprząż–koń.",
+        "Nie. Bezpieczeństwo zależy od całego układu pojazd–uprząż–koń.",
+        "Dobrze. Bezpieczeństwo zależy od całego układu pojazd–uprząż–koń."
+      ]
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 1,
+      "question": "Dlaczego do konstrukcji pieca nie można użyć dowolnej zaprawy?",
+      "options": [
+        "Materiały muszą mieć właściwą odporność ogniową, rozszerzalność i zgodność z projektem spalinowym.",
+        "Zwykły klej do płytek jest automatycznie odpowiedni na każdą temperaturę.",
+        "Kafle dekoracyjne gwarantują szczelność przewodu dymowego.",
+        "Pęknięcia przy wydobywającym się dymie nie wymagają wyłączenia pieca."
+      ],
+      "correct": 0,
+      "explanation": "Odporność ogniowa, dylatacja i szczelność to różne kryteria.",
+      "example": "Materiały muszą mieć właściwą odporność ogniową, rozszerzalność i zgodność z projektem spalinowym.",
+      "feedback": [
+        "Dobrze. Odporność ogniowa, dylatacja i szczelność to różne kryteria.",
+        "Nie. Odporność ogniowa, dylatacja i szczelność to różne kryteria.",
+        "Nie. Odporność ogniowa, dylatacja i szczelność to różne kryteria.",
+        "Nie. Odporność ogniowa, dylatacja i szczelność to różne kryteria."
+      ]
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 1,
+      "question": "Jakie zagrożenie materiałowe występowało przy tradycyjnym składzie metalowych czcionek?",
+      "options": [
+        "Ołów można bezpiecznie spożywać w małych ilościach.",
+        "Kontakt z toksycznymi składnikami stopów ołowiu wymaga higieny i kontroli narażenia.",
+        "Zużyte czcionki nie wpływają na jakość druku.",
+        "Przy pracy z metalem nie trzeba czyścić stanowiska."
+      ],
+      "correct": 1,
+      "explanation": "Historyczne stopy czcionkowe niosły realne ryzyko zdrowotne.",
+      "example": "Kontakt z toksycznymi składnikami stopów ołowiu wymaga higieny i kontroli narażenia.",
+      "feedback": [
+        "Nie. Historyczne stopy czcionkowe niosły realne ryzyko zdrowotne.",
+        "Dobrze. Historyczne stopy czcionkowe niosły realne ryzyko zdrowotne.",
+        "Nie. Historyczne stopy czcionkowe niosły realne ryzyko zdrowotne.",
+        "Nie. Historyczne stopy czcionkowe niosły realne ryzyko zdrowotne."
+      ]
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 1,
+      "question": "Jak dobrać materiał i smarowanie do mechanizmu zegarka?",
+      "options": [
+        "Im więcej oleju, tym precyzyjniejszy jest każdy zegarek.",
+        "Zabrudzenia i pył nie wpływają na działanie kół.",
+        "Uwzględnić materiały kół i czopów, tarcie, precyzję łożysk i odpowiedni olej.",
+        "Każdy metal ma identyczną odporność na zużycie."
+      ],
+      "correct": 2,
+      "explanation": "Różne elementy mechanizmu mają różne wymagania dotyczące tarcia.",
+      "example": "Uwzględnić materiały kół i czopów, tarcie, precyzję łożysk i odpowiedni olej.",
+      "feedback": [
+        "Nie. Różne elementy mechanizmu mają różne wymagania dotyczące tarcia.",
+        "Nie. Różne elementy mechanizmu mają różne wymagania dotyczące tarcia.",
+        "Dobrze. Różne elementy mechanizmu mają różne wymagania dotyczące tarcia.",
+        "Nie. Różne elementy mechanizmu mają różne wymagania dotyczące tarcia."
+      ]
+    }
+  ]
+}
