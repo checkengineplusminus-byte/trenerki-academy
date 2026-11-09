@@ -73,7 +73,7 @@
         "editorial_status": "review_needed",
         "module": 2,
         "learning_outcome": "Wypisz cztery pytania do instruktora przed ogrzewaniem nieznanego gatunku stali.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -142,7 +142,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Na papierze rozrysuj przekroje pręta przed i po wydłużaniu, zaznacz obszar wymagający pomiaru."
+        "learning_outcome": "Na papierze rozrysuj przekroje pręta przed i po wydłużaniu, zaznacz obszar wymagający pomiaru.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -211,7 +212,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Rozpoznaj na trzech szkicach spęcznienie prawidłowe, asymetryczne i wyboczone."
+        "learning_outcome": "Rozpoznaj na trzech szkicach spęcznienie prawidłowe, asymetryczne i wyboczone.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -280,7 +282,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Narysuj szablon kształtu uchwytu z trzema punktami kontrolnymi."
+        "learning_outcome": "Narysuj szablon kształtu uchwytu z trzema punktami kontrolnymi.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -349,7 +352,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Na szkicu ogrodzenia zaznacz woluty, skręcone pręty i elementy bez ozdób."
+        "learning_outcome": "Na szkicu ogrodzenia zaznacz woluty, skręcone pręty i elementy bez ozdób.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -418,7 +422,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Zaplanuj schemat cięcia 220 mm pręta z naddatkiem 3 mm na wykończenie."
+        "learning_outcome": "Zaplanuj schemat cięcia 220 mm pręta z naddatkiem 3 mm na wykończenie.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -488,7 +493,7 @@
         "editorial_status": "review_needed",
         "module": 2,
         "learning_outcome": "Rozrysuj wymiarowanie osi dwóch otworów i wskaż, jakie pomiary wykonać po kuciu.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -557,7 +562,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Porównaj szkice dwóch odsadzanych elementów, oznacz wymiar i ryzyko pęknięcia."
+        "learning_outcome": "Porównaj szkice dwóch odsadzanych elementów, oznacz wymiar i ryzyko pęknięcia.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -626,7 +632,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Zaprojektuj schemat zawiasu, zaznacz sworzeń, płytki i miejsca kontroli luzu."
+        "learning_outcome": "Zaprojektuj schemat zawiasu, zaznacz sworzeń, płytki i miejsca kontroli luzu.",
+        "illustration": "kowal-operacje"
       }
     },
     {
@@ -695,7 +702,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 2,
-        "learning_outcome": "Zrób mapę pojęć: hartowanie, odpuszczanie, wyżarzanie, twardość, udarność i naprężenia."
+        "learning_outcome": "Zrób mapę pojęć: hartowanie, odpuszczanie, wyżarzanie, twardość, udarność i naprężenia.",
+        "illustration": "kowal-operacje"
       }
     }
   ]
