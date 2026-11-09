@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Check curriculum and test-only sales
         run: node scripts/check-content-consistency.mjs
+      - name: Verify Anielka course discovery and consolidated sections
+        run: node scripts/test-anielka.mjs
   web_bundle:
     runs-on: ubuntu-latest
     permissions:
