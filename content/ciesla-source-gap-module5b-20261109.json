@@ -1,0 +1,197 @@
+{
+  "course_slug": "ciesla-przygotowanie-czeladnicze",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 46,
+      "title_pl": "47. Podwalina, oczep i izolacja pozioma",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.13,17; cieśla 2 s.11",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Podwalina jest dolnym elementem szkieletu ściany, a oczep spina elementy górne. Warstwa izolacji poziomej w odpowiednim miejscu ogranicza przechodzenie wilgoci z podłoża do drewna. Kotwy, wymiary oraz rodzaj izolacji muszą odpowiadać projektowi."
+          },
+          {
+            "heading": "Przebieg i kontrola",
+            "text": "Na przekroju oznacz fundament, izolację, podwalinę, słup i oczep. Sprawdź osie i przekątne przed mocowaniem oraz ciągłość izolacji, bo późniejsza naprawa przy zamkniętej ścianie jest trudniejsza."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Podwalina została ułożona bez przewidzianej izolacji nad wilgotnym fundamentem."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj detal „Podwalina, oczep i izolacja pozioma” i przeanalizuj: Podwalina została ułożona bez przewidzianej izolacji nad wilgotnym fundamentem. Wymień dwa punkty kontroli i wymagane dokumenty."
+          }
+        ],
+        "learning": {
+          "intro": "Podwalina jest dolnym elementem szkieletu ściany, a oczep spina elementy górne. Warstwa izolacji poziomej w odpowiednim miejscu ogranicza przechodzenie wilgoci z podłoża do drewna. Kotwy, wymiary oraz rodzaj izolacji muszą odpowiadać projektowi.",
+          "situation": "Podwalina została ułożona bez przewidzianej izolacji nad wilgotnym fundamentem.",
+          "question": "Do czego służy izolacja pozioma pod drewnianą podwaliną?",
+          "options": [
+            "Do dowolnego zwiększania rozstawu słupów.",
+            "Do zastąpienia kotew mocujących.",
+            "Do ograniczania przenikania wilgoci z podłoża.",
+            "Do zwiększania wytrzymałości wszystkich wkrętów."
+          ],
+          "correct": 2,
+          "example": "Do ograniczania przenikania wilgoci z podłoża.",
+          "explanation": "Na przekroju oznacz fundament, izolację, podwalinę, słup i oczep. Sprawdź osie i przekątne przed mocowaniem oraz ciągłość izolacji, bo późniejsza naprawa przy zamkniętej ścianie jest trudniejsza.",
+          "feedback": [
+            "Nie. Na przekroju oznacz fundament, izolację, podwalinę, słup i oczep. Sprawdź osie i przekątne przed mocowaniem oraz ciągłość izolacji, bo późniejsza naprawa przy zamkniętej ścianie jest trudniejsza.",
+            "Nie. Na przekroju oznacz fundament, izolację, podwalinę, słup i oczep. Sprawdź osie i przekątne przed mocowaniem oraz ciągłość izolacji, bo późniejsza naprawa przy zamkniętej ścianie jest trudniejsza.",
+            "Tak. Na przekroju oznacz fundament, izolację, podwalinę, słup i oczep. Sprawdź osie i przekątne przed mocowaniem oraz ciągłość izolacji, bo późniejsza naprawa przy zamkniętej ścianie jest trudniejsza.",
+            "Nie. Na przekroju oznacz fundament, izolację, podwalinę, słup i oczep. Sprawdź osie i przekątne przed mocowaniem oraz ciągłość izolacji, bo późniejsza naprawa przy zamkniętej ścianie jest trudniejsza."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 47,
+      "title_pl": "48. Płatew, jętka i wiatrownica",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.3,9,11,15; cieśla 2 s.3,15,17",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Płatew biegnie zwykle równolegle do kalenicy i jest elementem podpierającym krokwie. Jętka łączy parę krokwi zgodnie z projektem konstrukcyjnym. Wiatrownica bywa nazwą różnych detali, dlatego bez rysunku nie należy zakładać, co zamawiający ma na myśli."
+          },
+          {
+            "heading": "Przebieg i kontrola",
+            "text": "Na przekroju podpisz krokwie, murłatę, jętkę i płatew. Porównaj z widokiem krawędzi dachu i wyjaśnij, co jest elementem nośnym, a co wykończeniowym. Przy niejednoznacznej nazwie poproś o oznaczenie na rysunku."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Na budowie polecono przesunąć 'wiatrownicę', lecz bez numeru detalu lub rysunku."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj detal „Płatew, jętka i wiatrownica” i przeanalizuj: Na budowie polecono przesunąć 'wiatrownicę', lecz bez numeru detalu lub rysunku. Wymień dwa punkty kontroli i wymagane dokumenty."
+          }
+        ],
+        "learning": {
+          "intro": "Płatew biegnie zwykle równolegle do kalenicy i jest elementem podpierającym krokwie. Jętka łączy parę krokwi zgodnie z projektem konstrukcyjnym. Wiatrownica bywa nazwą różnych detali, dlatego bez rysunku nie należy zakładać, co zamawiający ma na myśli.",
+          "situation": "Na budowie polecono przesunąć 'wiatrownicę', lecz bez numeru detalu lub rysunku.",
+          "question": "Który element jest zwykle równoległy do kalenicy i podtrzymuje krokwie?",
+          "options": [
+            "Łata pokrycia.",
+            "Płatew.",
+            "Płyta OSB użyta jako opakowanie.",
+            "Klin rozszczepiający."
+          ],
+          "correct": 1,
+          "example": "Płatew.",
+          "explanation": "Na przekroju podpisz krokwie, murłatę, jętkę i płatew. Porównaj z widokiem krawędzi dachu i wyjaśnij, co jest elementem nośnym, a co wykończeniowym. Przy niejednoznacznej nazwie poproś o oznaczenie na rysunku.",
+          "feedback": [
+            "Nie. Na przekroju podpisz krokwie, murłatę, jętkę i płatew. Porównaj z widokiem krawędzi dachu i wyjaśnij, co jest elementem nośnym, a co wykończeniowym. Przy niejednoznacznej nazwie poproś o oznaczenie na rysunku.",
+            "Tak. Na przekroju podpisz krokwie, murłatę, jętkę i płatew. Porównaj z widokiem krawędzi dachu i wyjaśnij, co jest elementem nośnym, a co wykończeniowym. Przy niejednoznacznej nazwie poproś o oznaczenie na rysunku.",
+            "Nie. Na przekroju podpisz krokwie, murłatę, jętkę i płatew. Porównaj z widokiem krawędzi dachu i wyjaśnij, co jest elementem nośnym, a co wykończeniowym. Przy niejednoznacznej nazwie poproś o oznaczenie na rysunku.",
+            "Nie. Na przekroju podpisz krokwie, murłatę, jętkę i płatew. Porównaj z widokiem krawędzi dachu i wyjaśnij, co jest elementem nośnym, a co wykończeniowym. Przy niejednoznacznej nazwie poproś o oznaczenie na rysunku."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 48,
+      "title_pl": "49. Połączenia krokwi w kalenicy i wręby",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.5,9; cieśla 2 s.5,13",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Kalenicowe połączenia krokwi występują w różnych wariantach geometrycznych, zależnie od projektu i schematu przenoszenia sił. Wrąb lub zacios jest wycięciem w drewnie służącym m.in. dopasowaniu do oparcia. Zbyt duża głębokość osłabia przekrój krokwi."
+          },
+          {
+            "heading": "Przebieg i kontrola",
+            "text": "Narysuj połączenie dwóch krokwi w kalenicy i jeden wrąb nad podporą. Pokaż, gdzie mierzy się głębokość wycięcia i jaki fragment drewna pozostaje. Nie zwiększaj wymiarów wrębu bez uzgodnionej zmiany projektu."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Monter pogłębia wrąb, aby krokiew wygodniej weszła na murłatę; przekrój staje się zbyt mały."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj detal „Połączenia krokwi w kalenicy i wręby” i przeanalizuj: Monter pogłębia wrąb, aby krokiew wygodniej weszła na murłatę; przekrój staje się zbyt mały. Wymień dwa punkty kontroli i wymagane dokumenty."
+          }
+        ],
+        "learning": {
+          "intro": "Kalenicowe połączenia krokwi występują w różnych wariantach geometrycznych, zależnie od projektu i schematu przenoszenia sił. Wrąb lub zacios jest wycięciem w drewnie służącym m.in. dopasowaniu do oparcia. Zbyt duża głębokość osłabia przekrój krokwi.",
+          "situation": "Monter pogłębia wrąb, aby krokiew wygodniej weszła na murłatę; przekrój staje się zbyt mały.",
+          "question": "Dlaczego zbyt głęboki wrąb może być niebezpieczny?",
+          "options": [
+            "Może osłabić pozostający przekrój przenoszący obciążenie.",
+            "Powoduje powstanie większej liczby słojów rocznych.",
+            "Zawsze zwiększa nośność krokwi.",
+            "Wytwarza nową twardziel."
+          ],
+          "correct": 0,
+          "example": "Może osłabić pozostający przekrój przenoszący obciążenie.",
+          "explanation": "Narysuj połączenie dwóch krokwi w kalenicy i jeden wrąb nad podporą. Pokaż, gdzie mierzy się głębokość wycięcia i jaki fragment drewna pozostaje. Nie zwiększaj wymiarów wrębu bez uzgodnionej zmiany projektu.",
+          "feedback": [
+            "Tak. Narysuj połączenie dwóch krokwi w kalenicy i jeden wrąb nad podporą. Pokaż, gdzie mierzy się głębokość wycięcia i jaki fragment drewna pozostaje. Nie zwiększaj wymiarów wrębu bez uzgodnionej zmiany projektu.",
+            "Nie. Narysuj połączenie dwóch krokwi w kalenicy i jeden wrąb nad podporą. Pokaż, gdzie mierzy się głębokość wycięcia i jaki fragment drewna pozostaje. Nie zwiększaj wymiarów wrębu bez uzgodnionej zmiany projektu.",
+            "Nie. Narysuj połączenie dwóch krokwi w kalenicy i jeden wrąb nad podporą. Pokaż, gdzie mierzy się głębokość wycięcia i jaki fragment drewna pozostaje. Nie zwiększaj wymiarów wrębu bez uzgodnionej zmiany projektu.",
+            "Nie. Narysuj połączenie dwóch krokwi w kalenicy i jeden wrąb nad podporą. Pokaż, gdzie mierzy się głębokość wycięcia i jaki fragment drewna pozostaje. Nie zwiększaj wymiarów wrębu bez uzgodnionej zmiany projektu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 49,
+      "title_pl": "50. Deski podłogowe na legarach — mocowanie ukryte",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 2 s.9",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Prawidłowa podłoga na legarach wymaga właściwego rozstawu podparć, kontroli wilgotności i zgodnych z systemem dylatacji. W deskach z odpowiednim profilem pióro-wpust można stosować dopuszczone metody niewidocznego mocowania, ale nie jest to uniwersalne rozwiązanie dla dowolnej deski."
+          },
+          {
+            "heading": "Przebieg i kontrola",
+            "text": "Na przekroju narysuj legar, deskę, profil i miejsce łącznika. Sprawdź kartę montażową konkretnego wyrobu, wymagany rozstaw podpór i długość wkrętu. Po montażu oceń stabilność i możliwe skrzypienie."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Inwestor chce schować wkręty, ale dostarczone deski mają prosty profil bez przewidzianego ukrytego mocowania."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj detal „Deski podłogowe na legarach — mocowanie ukryte” i przeanalizuj: Inwestor chce schować wkręty, ale dostarczone deski mają prosty profil bez przewidzianego ukrytego mocowania. Wymień dwa punkty kontroli i wymagane dokumenty."
+          }
+        ],
+        "learning": {
+          "intro": "Prawidłowa podłoga na legarach wymaga właściwego rozstawu podparć, kontroli wilgotności i zgodnych z systemem dylatacji. W deskach z odpowiednim profilem pióro-wpust można stosować dopuszczone metody niewidocznego mocowania, ale nie jest to uniwersalne rozwiązanie dla dowolnej deski.",
+          "situation": "Inwestor chce schować wkręty, ale dostarczone deski mają prosty profil bez przewidzianego ukrytego mocowania.",
+          "question": "Co należy najpierw potwierdzić dla niewidocznego mocowania?",
+          "options": [
+            "Wyłącznie kolor impregnacji.",
+            "Tylko długość legara.",
+            "Samą nazwę gatunku drewna.",
+            "Czy profil i system producenta dopuszczają tę metodę."
+          ],
+          "correct": 3,
+          "example": "Czy profil i system producenta dopuszczają tę metodę.",
+          "explanation": "Na przekroju narysuj legar, deskę, profil i miejsce łącznika. Sprawdź kartę montażową konkretnego wyrobu, wymagany rozstaw podpór i długość wkrętu. Po montażu oceń stabilność i możliwe skrzypienie.",
+          "feedback": [
+            "Nie. Na przekroju narysuj legar, deskę, profil i miejsce łącznika. Sprawdź kartę montażową konkretnego wyrobu, wymagany rozstaw podpór i długość wkrętu. Po montażu oceń stabilność i możliwe skrzypienie.",
+            "Nie. Na przekroju narysuj legar, deskę, profil i miejsce łącznika. Sprawdź kartę montażową konkretnego wyrobu, wymagany rozstaw podpór i długość wkrętu. Po montażu oceń stabilność i możliwe skrzypienie.",
+            "Nie. Na przekroju narysuj legar, deskę, profil i miejsce łącznika. Sprawdź kartę montażową konkretnego wyrobu, wymagany rozstaw podpór i długość wkrętu. Po montażu oceń stabilność i możliwe skrzypienie.",
+            "Tak. Na przekroju narysuj legar, deskę, profil i miejsce łącznika. Sprawdź kartę montażową konkretnego wyrobu, wymagany rozstaw podpór i długość wkrętu. Po montażu oceń stabilność i możliwe skrzypienie."
+          ]
+        }
+      }
+    }
+  ]
+}
