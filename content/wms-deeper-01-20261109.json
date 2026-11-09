@@ -1,0 +1,98 @@
+{
+  "astro-consafe-wms": [
+    [
+      "Numer artykułu jest identyfikatorem produktu, a kod kreskowy może kodować ten identyfikator lub dane bardziej szczegółowe.",
+      "SKU powinno rozróżniać warianty artykułu, jednostki i dane potrzebne do śledzenia. Dwa kartony o podobnym wyglądzie nie muszą zawierać tego samego produktu; do prawidłowego przyjęcia potrzebne są również ilość i jednostka.",
+      "Na etykiecie widnieje 12 sztuk w kartonie. Operator skanuje SKU, po czym weryfikuje, czy zadanie dotyczy kartonów czy pojedynczych sztuk.",
+      "Porównaj dwa SKU i przelicz 4 kartony po 12 sztuk na jednostkę bazową."
+    ],
+    [
+      "Lokalizacja magazynowa jest adresem, a nie produktem. Jedna lokacja może mieć ograniczenia wysokości, nośności lub rodzaju towaru.",
+      "Strefa magazynu grupuje lokacje o określonej funkcji: przyjęcie, składowanie, kompletacja lub wysyłka. Adres lokacji powinien być jednoznaczny i czytelny przy skanowaniu; decyzja o odłożeniu wymaga sprawdzenia możliwości fizycznych miejsca.",
+      "Paleta ma wysokość 1,9 m, ale wskazana lokacja dopuszcza 1,6 m. Poprawne działanie polega na zgłoszeniu wyjątku i wybraniu dozwolonej lokacji.",
+      "Narysuj dwie strefy z czterema lokacjami i zaznacz ograniczenie wysokości."
+    ],
+    [
+      "Przyjęcie towaru nie kończy się na zobaczeniu samochodu przy rampie; potrzebny jest potwierdzony stan fizyczny.",
+      "Proces receiving łączy dokument awizacyjny, identyfikację towaru, kontrolę ilości, zgłaszanie braków oraz prawidłowy zapis zdarzenia. Uszkodzony lub niezgodny towar może wymagać separacji zgodnie z procedurą.",
+      "Awizacja zapowiada 20 kartonów, dostawa zawiera 19. Operator potwierdza 19 fizycznie otrzymanych i rejestruje różnicę, zamiast automatycznie zatwierdzać awizację.",
+      "Opisz dokument dostawy 20 kartonów z niedoborem 1 i sposób zgłoszenia rozbieżności."
+    ],
+    [
+      "WMS i WES mogą współpracować, ale nie muszą być osobnymi ekranami w każdej instalacji.",
+      "WMS zarządza m.in. stanami, lokalizacjami i zadaniami, natomiast WES może koordynować wykonanie pracy i automatykę. Dobór i dostępność modułów zależą od wdrożenia; nie należy zgadywać funkcjonalności tylko z nazwy produktu.",
+      "Sorter ma przestój, a WMS nadal pokazuje zamówienia do wysyłki. Nadzór operacyjny potrzebuje informacji o zablokowanym przepływie i zmianie kolejki pracy.",
+      "Rozdziel pięć funkcji na WMS, WES albo obszar wspólny; uzasadnij decyzję."
+    ],
+    [
+      "Towar na stanie nie zawsze jest towarem do dyspozycji sprzedaży.",
+      "Stan fizyczny, zarezerwowany i zablokowany jakościowo muszą być rozdzielane. Wprowadzona korekta nie powinna ukrywać prawdziwego braku towaru; każda różnica wymaga dokumentacji i wyjaśnienia.",
+      "Z 50 sztuk zapasu 20 jest zarezerwowanych, a 5 zablokowanych. Dostępny zapas wynosi 25, o ile nie występują inne ograniczenia.",
+      "Oblicz available dla 120 sztuk przy 35 rezerwacjach i 15 blokadach."
+    ]
+  ],
+  "axapta-dynamics-magazyn": [
+    [
+      "Współczesny interfejs Dynamics 365 może różnić się od ekranów AX 2012; znajomość procesu jest trwalsza niż pamięć konkretnego kliknięcia.",
+      "W obszarach roboczych i modułach systemu odnajduje się zakupy, zapasy, sprzedaż i magazyn. Zanim wprowadzisz zmianę, sprawdź jednostkę organizacyjną oraz uprawnienia. Wyszukiwarka nie zastępuje rozumienia relacji między dokumentami.",
+      "Użytkownik widzi dwa podobne magazyny w różnych firmach. Zapis dokumentu w złej jednostce prawnej może wpłynąć na zapasy i księgowość.",
+      "Sporządź mapę menu: zakup → pozycja zamówienia → przyjęcie → stan."
+    ],
+    [
+      "Firma prawna, zakład, magazyn i adres składowania nie oznaczają tego samego obiektu.",
+      "Dane organizacyjne opisują strukturę biznesową i logistyczną; magazyn może zawierać wiele lokalizacji, a zakłady i firmy różnią się odpowiedzialnością. Dokładne zastosowanie wymiarów zależy od konfiguracji Dynamics.",
+      "Firma A ma magazyn 01 i 02; ten sam SKU w tych miejscach tworzy dwa rekordy zapasu. Przeniesienie wymaga prawidłowego zdarzenia, a nie zmiany etykiety w arkuszu.",
+      "Narysuj drzewo firma → zakład → magazyn → lokalizacja z dwoma magazynami."
+    ],
+    [
+      "Jednostka magazynowa może być inna od jednostki sprzedaży: 1 karton nie musi oznaczać 1 sztuki.",
+      "Item number określa artykuł, ale przy operacji trzeba znać również jednostkę i przelicznik. Nieprawidłowy conversion factor wywołuje pomyłki w zakupach, stanach i fakturach.",
+      "Dostawca przysyła 6 kartonów po 24 sztuki; osoba wpisuje liczbę 6 w polu sztuk. Powstaje niedobór w systemie 138 sztuk względem rzeczywistości.",
+      "Oblicz ilość bazową i napisz, gdzie powinien znaleźć się przelicznik jednostek."
+    ],
+    [
+      "Nie każdy produkt istniejący w katalogu globalnym jest automatycznie dopuszczony do użycia we wszystkich jednostkach firmy.",
+      "W Dynamics rozróżnia się informacje o produktach i warunki ich użycia w odpowiedniej jednostce. Wymiary magazynowe oraz warianty pomagają ustalić, jak prowadzić zapas dla koloru, rozmiaru, partii i lokacji; zależy to od konfiguracji.",
+      "Produkt 'rękawice' występuje w rozmiarach M i L. Bez prawidłowego wymiaru wariantu system może pomylić stany, mimo zgodnego numeru katalogowego grupy produktu.",
+      "Ułóż tabelę produktu z kolorem, rozmiarem, magazynem, stanem i wymaganą jednostką."
+    ],
+    [
+      "Zamówienie zakupu i zamówienie sprzedaży kierują fizyczny ruch magazynu w przeciwnych kierunkach, lecz nie oznaczają automatycznie wykonania ruchu.",
+      "Purchase order opisuje zamiar nabycia, sales order zamiar sprzedaży. Potwierdzony fizyczny odbiór i wydanie są dalszymi etapami, które wymagają aktualizacji zapasów oraz dokumentów.",
+      "Zakup 10 palet jest zatwierdzony, ale dostawa jeszcze nie dotarła. Stanu fizycznego nie można powiększać tylko na podstawie zamówienia.",
+      "Rozróżnij zdarzenia: utworzenie PO, przyjęcie, utworzenie SO, kompletacja i wydanie."
+    ]
+  ],
+  "blue-yonder-wms": [
+    [
+      "Jednostka miary UOM decyduje, czy operator obsługuje sztuki, kartony czy palety, choć SKU pozostaje ten sam.",
+      "Przy identyfikacji produktu należy sprawdzić kod, wariant, podstawową UOM oraz regułę przeliczania. Lokacja ma ograniczenia gabarytowe, które muszą być zgodne z fizycznym towarem.",
+      "WMS kieruje do kompletacji 24 sztuk, ale operator widzi dwa pełne kartony po 12. Poprawna realizacja wymaga zastosowania właściwej jednostki i zapisu ilości.",
+      "Przelicz 3 kartony po 18 sztuk i 7 sztuk luzem na całkowity stan."
+    ],
+    [
+      "Widoczność zapasu nie jest równa pełnej dostępności do wysyłki.",
+      "Przy analizie zapasu należy oddzielić on-hand, available, reserved i quality hold oraz miejsce fizyczne. Szczegóły nazewnictwa w Blue Yonder zależą od wdrożenia, ale ta różnica pojęć jest podstawowa.",
+      "Na dashboardzie są 200 sztuk, w tym 80 zarezerwowanych i 20 na kontroli. Operator nie może przydzielić nowemu klientowi całych 200 sztuk.",
+      "Oblicz zapas dostępny i wypisz trzy powody, dla których może się zmniejszyć."
+    ],
+    [
+      "ASN zapowiada dostawę, ale nie potwierdza rzeczywiście przyjętej ilości.",
+      "Plan przyjęcia uwzględnia okno czasowe, dostawcę, artykuły, jednostki i spodziewaną ilość. Przy rampie porównuje się stan fizyczny z dokumentem i zapisuje wyjątki, zamiast automatycznie przenosić awizację na stan.",
+      "ASN informuje o 120 sztukach, lecz dostarczono 10 kartonów po 11. Rzeczywista ilość to 110, a rozbieżność wynosi 10 sztuk.",
+      "Wylicz przyjętą ilość i zarejestruj niedobór bez zmieniania historii ASN."
+    ],
+    [
+      "Quality hold może chronić przed wydaniem uszkodzonego lub niezgodnego produktu.",
+      "Dostawa przechodzi identyfikację, kontrolę ilości i zależnie od asortymentu ocenę jakości. Towar z uszkodzeniem opakowania nie powinien automatycznie trafiać do lokacji zbiórki; właściwy status zależy od procedury.",
+      "W kartonie z kosmetykami jest wyciek i brak etykiety partii. Poprawny proces wstrzymuje dostępność i kieruje sprawę do oceny, a nie tylko wymienia karton.",
+      "Zaprojektuj trzy statusy przyjęcia: poprawny, do sprawdzenia, niezgodny."
+    ],
+    [
+      "Reguły odkładania potrafią ograniczać liczbę zbędnych przejazdów, ale nie mogą łamać limitów bezpieczeństwa.",
+      "Putaway rules uwzględniają rozmiar, masę, rotację i wymagane warunki towaru oraz aktualną dostępność lokacji. Najbliższa lokacja nie zawsze jest najlepsza, gdy produkt wymaga chłodzenia lub konkretnego sposobu składowania.",
+      "Paleta chemikaliów jest kierowana do strefy spożywczej, ponieważ ma tam wolne miejsce. Należy zastosować ograniczenie rodzaju towaru i zgłosić niezgodność.",
+      "Zaproponuj zasady wyboru lokacji dla ciężkiej palety, artykułu szybko rotującego i produktu wymagającego osobnych warunków."
+    ]
+  ]
+}
