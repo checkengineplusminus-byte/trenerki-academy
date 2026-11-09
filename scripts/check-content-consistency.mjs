@@ -293,15 +293,24 @@ try{
   for(const slug of Object.keys(secondLessons)){
    if(!illustrated.includes("'second-"+slug+"'")||!read('public/academy/assets/second-'+slug+'.svg').includes('</svg>'))fail('Missing learning diagram '+slug);
   }
-  const cieslaModules=[1,2,3].map(i=>JSON.parse(read('content/ciesla-program-modul-'+i+'-20261109.json')).lessons);
-  const ciesla=cieslaModules.flat();
-  if(ciesla.length!==30||ciesla.some((l,i)=>l.lesson_no!==i||!l.material?.sections||l.material.sections.length!==4)||
-     new Set(ciesla.map(l=>l.material?.learning?.question)).size!==30)
-    fail('Ciesla: 30 individually authored lessons with sections and unique questions are required');
-  else ok('Ciesla exam preparation has 30 authored lessons and unique questions');
-  for(const name of ['ciesla-drewno','ciesla-wilgotnosc','ciesla-rysunek','ciesla-zlacze','ciesla-dach'])
-    if(!illustrated.includes("'"+name+"'")||!read('public/academy/assets/'+name+'.svg').includes('</svg>'))
-      fail('Ciesla diagram missing or unregistered: '+name);
+  const cieslaParts=['technology','machines','materials','written-exam'].map(part=>JSON.parse(read('content/ciesla-20261109-deep-'+part+'.json')).lessons);
+  const ciesla=cieslaParts.flat();
+  if(ciesla.length!==38||ciesla.some((lesson,i)=>lesson.lesson_no!==i||lesson.material?.sections?.length<6||
+       ![1,2,3,4].includes(lesson.material?.module)||lesson.material?.learning?.options?.length!==4||
+       lesson.material?.learning?.feedback?.length!==4||lesson.material?.editorial_status!=='review_needed'||lesson.material?.sections?.some(s=>s.text.length<75))||
+       new Set(ciesla.map(l=>l.material?.learning?.question)).size!==38)
+    fail('Ciesla: missing source-based module, individualized lesson, problem or assessment');
+  else ok('Ciesla: 38 detailed lessons / 4 modules / 38 distinct questions');
+  const cieslaImages=new Set(ciesla.map(l=>l.material?.illustration));
+  const legacyIllustrations=new Set(['ciesla-drewno','ciesla-wilgotnosc','ciesla-rysunek','ciesla-zlacze','ciesla-dach']);
+  for(const name of cieslaImages){
+    if(!name||(!illustrated.includes("'"+name+"'"))||!read('public/academy/assets/'+name+'.svg').includes('</svg>'))
+      fail('Ciesla missing registered technical image: '+name);
+  }
+  const learningNavigation=read('app/nauka.tsx');
+  if(!learningNavigation.includes('IV · EGZAMIN PISEMNY I PRÓBNY')||!learningNavigation.includes('ciesla-przygotowanie-czeladnicze'))
+    fail('Ciesla 38-lesson four-chapter mobile navigation is missing');
+  else ok('Ciesla four learning stages and '+cieslaImages.size+' illustration IDs registered');
   
   const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
