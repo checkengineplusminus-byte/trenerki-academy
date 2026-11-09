@@ -31,7 +31,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
  return <View style={{marginBottom:18,gap:14}}>
   {validIllustration&&<View style={{backgroundColor:'#f1f8ed',padding:9,borderWidth:1,borderColor:'#d9e7d5',borderRadius:16,gap:7}}>
    {showImage?<Image
-    accessibilityLabel={'Autorska ilustracja kursu '+courseSlug+': '+title}
+    accessibilityLabel={'Ilustracja objaśniająca temat: '+title}
     source={{uri:'https://trenerki-academy.expo.app/academy/assets/'+illustration+'.svg'}}
     onError={()=>setFailed(true)}
     resizeMode="contain"
