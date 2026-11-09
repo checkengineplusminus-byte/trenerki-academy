@@ -1,0 +1,494 @@
+{
+  "slug": "bednarz",
+  "lessons": [
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 0,
+      "title_pl": "1. Anatomia beczki: co utrzymuje kształt i szczelność",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Od przedmiotu do budowy",
+            "text": "Beczka jest naczyniem z kilkunastu lub kilkudziesięciu klepek — długich elementów drewnianych wyprofilowanych wzdłuż i na krawędziach. Klepki tworzą płaszcz, a obręcze utrzymują je w ścisku. W tradycyjnej beczce do cieczy szczelność wynika przede wszystkim z geometrii połączeń, właściwości drewna i docisku, nie z zalania wszystkich szpar klejem."
+          },
+          {
+            "heading": "Nazwy części na przekroju",
+            "text": "Płaszcz tworzą klepki; największe wybrzuszenie nazywa się brzuścem (ang. bilge). Obręcze są rozmieszczone na różnych wysokościach. Dno (ang. head) osadza się w rowku wykonanym od wewnątrz, zwanym croze lub wręgą. Krawędź końcowa beczki (chime) chroni strefę dna. Otwór szpuntowy, jeśli występuje, służy do napełniania albo opróżniania."
+          },
+          {
+            "heading": "Dlaczego beczka jest wybrzuszona",
+            "text": "Klepka nie jest zwykłą prostą deską. Szersza w okolicy brzuśca, węższa przy końcach i odpowiednio profilowana, po zestawieniu tworzy naczynie o obwodzie zmieniającym się z wysokością. Obręcze utrzymują tę geometrię. Przy złym kącie styku między klepkami może powstać wąska szczelina ciągnąca się wzdłuż naczynia."
+          },
+          {
+            "heading": "Zobacz zależność przyczynową",
+            "text": "Gdy obluzuje się obręcz, płaszcz może stracić odpowiedni docisk; gdy pęknie klepka, samo dociśnięcie nie zawsze pomoże. W przecieku przy dnie sprawdza się także strefę wręgi i krawędź denka. Te trzy rodzaje usterki wymagają różnych rozpoznań."
+          },
+          {
+            "heading": "Ćwiczenie projektowe",
+            "text": "Narysuj przekrój pionowy beczki. Podpisz: klepka, brzusiec, trzy obręcze, denko, wręga, krawędź chime i opcjonalny szpunt. Trzema strzałkami pokaż, co zapewnia docisk, co zamyka czoło naczynia i gdzie mogą pojawić się przecieki."
+          }
+        ],
+        "illustration": "craft-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://metc.org/decoding-the-past-cooper/"
+          }
+        ],
+        "learning": {
+          "intro": "Beczka jest naczyniem z kilkunastu lub kilkudziesięciu klepek — długich elementów drewnianych wyprofilowanych wzdłuż i na krawędziach. Klepki tworzą płaszcz, a obręcze utrzymują je w ścisku. W tradycyjnej beczce do cieczy szczelność wynika przede wszystkim z geometrii połączeń, właściwości drewna i docisku, nie z zalania wszystkich szpar klejem.",
+          "situation": "Gdy obluzuje się obręcz, płaszcz może stracić odpowiedni docisk; gdy pęknie klepka, samo dociśnięcie nie zawsze pomoże. W przecieku przy dnie sprawdza się także strefę wręgi i krawędź denka. Te trzy rodzaje usterki wymagają różnych rozpoznań.",
+          "question": "Woda pojawia się tuż przy styku dna z płaszczem. Który element należy rozpoznać na rysunku jako pierwszy?",
+          "options": [
+            "Wyłącznie szerokość obręczy środkowej.",
+            "Oznaczenie gatunku na powierzchni zewnętrznej.",
+            "Połączenie krawędzi denka z wewnętrzną wręgą (croze).",
+            "Kolor zewnętrznego wykończenia bez sprawdzenia wnętrza."
+          ],
+          "correct": 2,
+          "example": "Połączenie krawędzi denka z wewnętrzną wręgą (croze).",
+          "explanation": "Rowek croze utrzymuje krawędź dna; przeciek w tej strefie wymaga kontroli osadzenia denka, stanu drewna i docisku.",
+          "feedback": [
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Rowek croze utrzymuje krawędź dna; przeciek w tej strefie wymaga kontroli osadzenia denka, stanu drewna i docisku.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Rowek croze utrzymuje krawędź dna; przeciek w tej strefie wymaga kontroli osadzenia denka, stanu drewna i docisku.",
+            "Tak. Rowek croze utrzymuje krawędź dna; przeciek w tej strefie wymaga kontroli osadzenia denka, stanu drewna i docisku.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Rowek croze utrzymuje krawędź dna; przeciek w tej strefie wymaga kontroli osadzenia denka, stanu drewna i docisku."
+          ],
+          "task": "Narysuj przekrój pionowy beczki. Podpisz: klepka, brzusiec, trzy obręcze, denko, wręga, krawędź chime i opcjonalny szpunt. Trzema strzałkami pokaż, co zapewnia docisk, co zamyka czoło naczynia i gdzie mogą pojawić się przecieki."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 1,
+      "title_pl": "2. Materiałoznawstwo: dąb, włókna, porowatość i wilgotność",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Drewno jest materiałem anizotropowym",
+            "text": "Właściwości drewna zależą od kierunku względem włókien. Gdy klepka ma sęk, skręt włókien albo pęknięcie przecinające jej powierzchnię, ścieżka możliwego przecieku może przejść przez ścianę. Nie należy wybierać materiału tylko po kolorze. Przed oceną jakości istotne są gatunek, przebieg włókien, wilgotność, wady i przeznaczenie naczynia."
+          },
+          {
+            "heading": "Nie każdy dąb zachowuje się tak samo",
+            "text": "Amerykański biały dąb (Quercus alba) ma w twardzieli struktury zwane tylosami, które mogą ograniczać przepuszczalność naczyń. Europejskie dęby używane w beczkach do wina, np. Quercus robur i Q. petraea, często wymagają łupania wzdłuż włókien w procesie doboru klepek. Nie przenoś automatycznie technologii jednego gatunku na drugi."
+          },
+          {
+            "heading": "Biel, twardziel i warunki użycia",
+            "text": "Biel jest zewnętrzną strefą drewna żywego, a twardziel może mieć odmienną przepuszczalność i odporność. Dobór do beczek do napojów wymaga wymagań jakości i zgodności materiałowej: materiał powinien być znanego pochodzenia, czysty i odpowiednio sezonowany. Drewno dekoracyjne nie musi spełniać tych samych wymagań co naczynie użytkowe."
+          },
+          {
+            "heading": "Przykład z wadą materiału",
+            "text": "Porównaj trzy próbki: A ma wzdłużne, nieskręcone włókna bez pęknięć; B ma duży sęk na krawędzi; C ma widoczną szczelinę ciągnącą się przez grubość. Przy identycznym szablonie A jest lepszym kandydatem, ale dopiero komplet pomiarów i wymogów potwierdzi przydatność."
+          },
+          {
+            "heading": "Ćwiczenie z kontrolą dostawy",
+            "text": "Zbuduj kartę selekcji dla 12 klepek: numer, gatunek, pochodzenie, przebieg włókien, pęknięcia, sęki, wilgotność według właściwej metody, decyzja i uzasadnienie. Osobno zapisz, które wady można rozpoznać wizualnie, a które wymagają pomiaru lub specjalisty."
+          }
+        ],
+        "illustration": "material-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.bouchardcooperages.com/wine-barrels-faq"
+          }
+        ],
+        "learning": {
+          "intro": "Właściwości drewna zależą od kierunku względem włókien. Gdy klepka ma sęk, skręt włókien albo pęknięcie przecinające jej powierzchnię, ścieżka możliwego przecieku może przejść przez ścianę. Nie należy wybierać materiału tylko po kolorze. Przed oceną jakości istotne są gatunek, przebieg włókien, wilgotność, wady i przeznaczenie naczynia.",
+          "situation": "Porównaj trzy próbki: A ma wzdłużne, nieskręcone włókna bez pęknięć; B ma duży sęk na krawędzi; C ma widoczną szczelinę ciągnącą się przez grubość. Przy identycznym szablonie A jest lepszym kandydatem, ale dopiero komplet pomiarów i wymogów potwierdzi przydatność.",
+          "question": "Dlaczego proces doboru klepek z dębu europejskiego może preferować łupanie wzdłuż włókien?",
+          "options": [
+            "Ponieważ łupanie zawsze daje idealnie równą szerokość bez późniejszej obróbki.",
+            "Ponieważ przebieg włókien może mieć krytyczne znaczenie dla drogi przecieku przez drewno.",
+            "Ponieważ wszystkie dęby mają identyczną porowatość i konstrukcję naczyń.",
+            "Ponieważ obręcze zastępują konieczność kontroli pęknięć."
+          ],
+          "correct": 1,
+          "example": "Ponieważ przebieg włókien może mieć krytyczne znaczenie dla drogi przecieku przez drewno.",
+          "explanation": "Przecięcie włókien w niekorzystny sposób może utworzyć drogę przepływu; gatunki różnią się anatomią i technologią przygotowania.",
+          "feedback": [
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Przecięcie włókien w niekorzystny sposób może utworzyć drogę przepływu; gatunki różnią się anatomią i technologią przygotowania.",
+            "Tak. Przecięcie włókien w niekorzystny sposób może utworzyć drogę przepływu; gatunki różnią się anatomią i technologią przygotowania.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Przecięcie włókien w niekorzystny sposób może utworzyć drogę przepływu; gatunki różnią się anatomią i technologią przygotowania.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Przecięcie włókien w niekorzystny sposób może utworzyć drogę przepływu; gatunki różnią się anatomią i technologią przygotowania."
+          ],
+          "task": "Zbuduj kartę selekcji dla 12 klepek: numer, gatunek, pochodzenie, przebieg włókien, pęknięcia, sęki, wilgotność według właściwej metody, decyzja i uzasadnienie. Osobno zapisz, które wady można rozpoznać wizualnie, a które wymagają pomiaru lub specjalisty."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 2,
+      "title_pl": "3. Warsztat bednarza: narzędzia, przeznaczenie i konserwacja",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Rozpoznaj stanowisko",
+            "text": "Klepki obrabia się z użyciem stabilnego podparcia i przyrządów do ich unieruchomienia. Tradycyjne narzędzia obejmują m.in. ośnik (drawknife), strug, bednarkę/strug krawędziowy, dłuta i narzędzia do osadzania obręczy. Specjalne narzędzie croze wykonuje rowek na denko. Nie myl obręczy, będącej częścią wyrobu, z narzędziem do jej nasadzania."
+          },
+          {
+            "heading": "Dlaczego strug i croze nie są zamienne",
+            "text": "Strug przygotowuje powierzchnię lub krawędź klepki; croze tworzy rowek wewnątrz złożonego płaszcza na odpowiedniej wysokości. Nawet idealnie strugana klepka nie przyjmie denka bez właściwej geometrii rowka. Przy kontroli narzędzia pytaj: jaki kształt uzyskuje, od jakiej bazy pracuje i co mogę zmierzyć po operacji."
+          },
+          {
+            "heading": "Narzędzie do obręczy",
+            "text": "Młotek bednarski i odpowiednia nakładka/pobijak do obręczy pozwalają przekazywać siłę w przewidzianym miejscu. Uderzenie bezpośrednio ciężkim stalowym młotem w drewno może uszkodzić krawędź klepek. Zwróć uwagę na ergonomię, stabilne ustawienie i kierunek przenoszenia sił."
+          },
+          {
+            "heading": "Konserwacja i bezpieczna ocena",
+            "text": "Przed pracą kontroluj stan rękojeści, mocowania ostrza, pęknięcia, korozję, osłony i zgodność narzędzia z operacją. Przechowuj ostrza w osłonach i stosuj sposób ostrzenia przewidziany dla danego narzędzia. Ćwiczenia z ostrymi narzędziami lub obręczami wykonuje się wyłącznie w przygotowanym warsztacie pod nadzorem fachowca."
+          },
+          {
+            "heading": "Ćwiczenie rozpoznawcze",
+            "text": "Przygotuj tabelę sześciu narzędzi: nazwa polska/angielska, operacja, powierzchnia bazowa, rezultat, typowa wada i punkt kontroli. Dla croze wskaż rowek, dla ośnika wstępne kształtowanie, a dla pobijaka osadzanie obręczy."
+          }
+        ],
+        "illustration": "technique-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://metc.org/decoding-the-past-cooper/"
+          }
+        ],
+        "learning": {
+          "intro": "Klepki obrabia się z użyciem stabilnego podparcia i przyrządów do ich unieruchomienia. Tradycyjne narzędzia obejmują m.in. ośnik (drawknife), strug, bednarkę/strug krawędziowy, dłuta i narzędzia do osadzania obręczy. Specjalne narzędzie croze wykonuje rowek na denko. Nie myl obręczy, będącej częścią wyrobu, z narzędziem do jej nasadzania.",
+          "situation": "Przed pracą kontroluj stan rękojeści, mocowania ostrza, pęknięcia, korozję, osłony i zgodność narzędzia z operacją. Przechowuj ostrza w osłonach i stosuj sposób ostrzenia przewidziany dla danego narzędzia. Ćwiczenia z ostrymi narzędziami lub obręczami wykonuje się wyłącznie w przygotowanym warsztacie pod nadzorem fachowca.",
+          "question": "Jaka operacja odróżnia narzędzie croze od zwykłego struga do klepek?",
+          "options": [
+            "Wykonuje wewnętrzny rowek do osadzenia denka.",
+            "Mierzy wilgotność drewna metodą masową.",
+            "Zmienia skład chemiczny stali obręczy.",
+            "Rozpoznaje gatunek drewna po samym kolorze."
+          ],
+          "correct": 0,
+          "example": "Wykonuje wewnętrzny rowek do osadzenia denka.",
+          "explanation": "Croze służy do rowka pod denko, a strug do obróbki powierzchni lub krawędzi; to różne punkty technologiczne.",
+          "feedback": [
+            "Tak. Croze służy do rowka pod denko, a strug do obróbki powierzchni lub krawędzi; to różne punkty technologiczne.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Croze służy do rowka pod denko, a strug do obróbki powierzchni lub krawędzi; to różne punkty technologiczne.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Croze służy do rowka pod denko, a strug do obróbki powierzchni lub krawędzi; to różne punkty technologiczne.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Croze służy do rowka pod denko, a strug do obróbki powierzchni lub krawędzi; to różne punkty technologiczne."
+          ],
+          "task": "Przygotuj tabelę sześciu narzędzi: nazwa polska/angielska, operacja, powierzchnia bazowa, rezultat, typowa wada i punkt kontroli. Dla croze wskaż rowek, dla ośnika wstępne kształtowanie, a dla pobijaka osadzanie obręczy."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 3,
+      "title_pl": "4. Rysunek techniczny beczki: obwód, klepki i tolerancje",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Czytaj widoki, a nie tylko obrazek",
+            "text": "Rysunek beczki powinien określać co najmniej wysokość, średnicę w strefie brzuśca i przy denku, grubość klepki, położenie obręczy oraz szczegóły wręgi. Widok z boku pokazuje profil, rzut z góry obwód i podział na klepki, a przekrój pozwala oznaczyć grubości i rowek."
+          },
+          {
+            "heading": "Przykład: obwód i średnia szerokość",
+            "text": "Dla średnicy zewnętrznej D = 600 mm, obwód koła na tej wysokości wynosi C = π × D ≈ 1885 mm. Jeśli projekt przewiduje 20 klepek, orientacyjny średni udział jednej na obwodzie zewnętrznym wynosi 1885/20 ≈ 94,2 mm. To tylko kontrola szacunkowa, nie wymiar rozkroju: liczą się kąty, krzywizna, szerokości klepek i rzeczywisty przekrój."
+          },
+          {
+            "heading": "Dlaczego profil zmienia rachunek",
+            "text": "Na końcach beczka jest zwykle węższa niż przy brzuścu. Gdy w tym samym przykładzie średnica przy końcu wynosi 500 mm, tamtejszy obwód to około 1571 mm, czyli średnio 78,5 mm na klepkę przy założeniu 20 sztuk. Właśnie dlatego nie wytniesz dwudziestu idealnych prostokątów o jednej stałej szerokości."
+          },
+          {
+            "heading": "Wymiar nominalny i pomiar kontrolny",
+            "text": "Nie odczytuj wymiarów z przypadkowo zmniejszonego wydruku bez uwzględnienia skali. Rozróżniaj średnicę zewnętrzną i wewnętrzną; objętość użytkowa nie wynika z samej średnicy brzuśca. W dokumentacji określ także sposób pomiaru owalizacji i tolerancję dla wyrobu."
+          },
+          {
+            "heading": "Ćwiczenie na kartce",
+            "text": "Narysuj profil D_brzuśca = 600 mm, D_końca = 500 mm, wysokość 900 mm. Zaznacz 20 klepek, wylicz dwa obwody i porównaj średnie udziały szerokości. Napisz, których wymiarów jeszcze brakuje, aby projekt nadawał się do wykonania."
+          }
+        ],
+        "illustration": "mastery-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.saury.com/en/our-skills/the-stages-of-barrel-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Rysunek beczki powinien określać co najmniej wysokość, średnicę w strefie brzuśca i przy denku, grubość klepki, położenie obręczy oraz szczegóły wręgi. Widok z boku pokazuje profil, rzut z góry obwód i podział na klepki, a przekrój pozwala oznaczyć grubości i rowek.",
+          "situation": "Nie odczytuj wymiarów z przypadkowo zmniejszonego wydruku bez uwzględnienia skali. Rozróżniaj średnicę zewnętrzną i wewnętrzną; objętość użytkowa nie wynika z samej średnicy brzuśca. W dokumentacji określ także sposób pomiaru owalizacji i tolerancję dla wyrobu.",
+          "question": "Przy D=600 mm i 20 klepkach wartość C/20 ≈ 94 mm oznacza przede wszystkim...",
+          "options": [
+            "Gwarantowaną szerokość cięcia każdej klepki w całej długości.",
+            "Głębokość rowka na denko.",
+            "Grubość stalowej obręczy przy brzuścu.",
+            "Orientacyjny udział jednej klepki w zewnętrznym obwodzie tej wysokości."
+          ],
+          "correct": 3,
+          "example": "Orientacyjny udział jednej klepki w zewnętrznym obwodzie tej wysokości.",
+          "explanation": "Dzielenie obwodu przez liczbę klepek pomaga w oszacowaniu; nie uwzględnia geometrii styku, obróbki ani różnicy szerokości na wysokości.",
+          "feedback": [
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Dzielenie obwodu przez liczbę klepek pomaga w oszacowaniu; nie uwzględnia geometrii styku, obróbki ani różnicy szerokości na wysokości.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Dzielenie obwodu przez liczbę klepek pomaga w oszacowaniu; nie uwzględnia geometrii styku, obróbki ani różnicy szerokości na wysokości.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Dzielenie obwodu przez liczbę klepek pomaga w oszacowaniu; nie uwzględnia geometrii styku, obróbki ani różnicy szerokości na wysokości.",
+            "Tak. Dzielenie obwodu przez liczbę klepek pomaga w oszacowaniu; nie uwzględnia geometrii styku, obróbki ani różnicy szerokości na wysokości."
+          ],
+          "task": "Narysuj profil D_brzuśca = 600 mm, D_końca = 500 mm, wysokość 900 mm. Zaznacz 20 klepek, wylicz dwa obwody i porównaj średnie udziały szerokości. Napisz, których wymiarów jeszcze brakuje, aby projekt nadawał się do wykonania."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 4,
+      "title_pl": "5. Przygotowanie klepki: rozkrój, sezonowanie i styk",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Od kłody do elementu roboczego",
+            "text": "Przygotowanie zaczyna się od selekcji surowca, przetarcia lub łupania zależnie od gatunku, wstępnego wymiarowania i odpowiedniego sezonowania. Niektóre dębowe klepki do beczek spożywczych wymagają długiego przygotowania, aby uzyskać pożądaną wilgotność i właściwości. Nie ma jednej uniwersalnej liczby miesięcy dla wszystkich beczek."
+          },
+          {
+            "heading": "Trzy różne płaszczyzny klepki",
+            "text": "Klepka ma powierzchnię wewnętrzną, zewnętrzną i boczne krawędzie stykające się z sąsiadkami. Poprawny kształt wymaga kontroli po długości oraz właściwego kąta krawędzi. Nawet gdy powierzchnia zewnętrzna wygląda gładko, krawędź boczna może tworzyć szczelinę, której obręcz nie zniweluje."
+          },
+          {
+            "heading": "Przebieg włókien i obrabialność",
+            "text": "Przy przygotowaniu obserwuje się przebieg włókien, możliwe pęknięcia i zachowanie drewna podczas skrawania. W zależności od gatunku i przeznaczenia metoda łupania lub cięcia może ograniczać przecieki. Odchylenia w geometrii trzeba sprawdzać na szablonie i przy próbnym zestawieniu."
+          },
+          {
+            "heading": "Przykład błędu",
+            "text": "Dwie klepki mają identyczną szerokość pośrodku, ale jedna ma krawędź nierówną o 1,5 mm na długości 800 mm. Po zetknięciu może powstać widoczna szczelina lokalna. Przy ocenie liczą się pomiary odchyleń i rzeczywisty styk, nie średnia szerokość z jednej wysokości."
+          },
+          {
+            "heading": "Zadanie kontroli procesu",
+            "text": "Sporządź kartę procesu: oznaczenie partii → kontrola włókien i wad → sezonowanie → struganie zewnętrznej i wewnętrznej powierzchni → przygotowanie krawędzi → kontrola szablonem → dopuszczenie do zestawienia. Wpisz, po którym kroku odrzucisz klepkę z pęknięciem przez grubość."
+          }
+        ],
+        "illustration": "technique-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/jib.660"
+          }
+        ],
+        "learning": {
+          "intro": "Przygotowanie zaczyna się od selekcji surowca, przetarcia lub łupania zależnie od gatunku, wstępnego wymiarowania i odpowiedniego sezonowania. Niektóre dębowe klepki do beczek spożywczych wymagają długiego przygotowania, aby uzyskać pożądaną wilgotność i właściwości. Nie ma jednej uniwersalnej liczby miesięcy dla wszystkich beczek.",
+          "situation": "Dwie klepki mają identyczną szerokość pośrodku, ale jedna ma krawędź nierówną o 1,5 mm na długości 800 mm. Po zetknięciu może powstać widoczna szczelina lokalna. Przy ocenie liczą się pomiary odchyleń i rzeczywisty styk, nie średnia szerokość z jednej wysokości.",
+          "question": "Dwie klepki mają właściwy obwód w brzuścu, ale jedna ma krzywą krawędź wzdłużną. Dlaczego to ważne?",
+          "options": [
+            "Ponieważ kształt krawędzi wpływa na ciągłość styku z sąsiednią klepką.",
+            "Ponieważ każdy rowek na denko sam usuwa nierówność krawędzi.",
+            "Ponieważ liczba obręczy automatycznie naprawia pęknięcia włókien.",
+            "Ponieważ średnia szerokość obwodu gwarantuje szczelność każdego styku."
+          ],
+          "correct": 0,
+          "example": "Ponieważ kształt krawędzi wpływa na ciągłość styku z sąsiednią klepką.",
+          "explanation": "Szczelność wymaga dopasowania sąsiadujących krawędzi wzdłuż całej klepki, nie wyłącznie zgodnej średnicy w jednej strefie.",
+          "feedback": [
+            "Tak. Szczelność wymaga dopasowania sąsiadujących krawędzi wzdłuż całej klepki, nie wyłącznie zgodnej średnicy w jednej strefie.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Szczelność wymaga dopasowania sąsiadujących krawędzi wzdłuż całej klepki, nie wyłącznie zgodnej średnicy w jednej strefie.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Szczelność wymaga dopasowania sąsiadujących krawędzi wzdłuż całej klepki, nie wyłącznie zgodnej średnicy w jednej strefie.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Szczelność wymaga dopasowania sąsiadujących krawędzi wzdłuż całej klepki, nie wyłącznie zgodnej średnicy w jednej strefie."
+          ],
+          "task": "Sporządź kartę procesu: oznaczenie partii → kontrola włókien i wad → sezonowanie → struganie zewnętrznej i wewnętrznej powierzchni → przygotowanie krawędzi → kontrola szablonem → dopuszczenie do zestawienia. Wpisz, po którym kroku odrzucisz klepkę z pęknięciem przez grubość."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 5,
+      "title_pl": "6. Zestawianie i gięcie klepek: jak powstaje płaszcz",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Kolejność bez tajemnic",
+            "text": "Przy zestawianiu wstępnie przygotowane klepki ustawia się kolejno, utrzymując ich geometrię tymczasową obręczą. Powstaje otwarty płaszcz, zanim przeciwne końce zostaną ściągnięte do kształtu beczki. Metoda tradycyjna opiera się na stopniowym dostosowywaniu krzywizny z wykorzystaniem ciepła i wilgoci, ale konkretna procedura zależy od drewna i warsztatu."
+          },
+          {
+            "heading": "Co robi ciepło i wilgoć",
+            "text": "Drewno pod wpływem odpowiednich warunków cieplnych i wilgotnościowych jest bardziej podatne na formowanie. Przy zbyt gwałtownym lub nierównomiernym naprężeniu może dojść do pęknięcia albo trwałego uszkodzenia. Nie należy traktować ogrzewania jako sposobu na uratowanie klepki z wadą przez grubość."
+          },
+          {
+            "heading": "Obręcze jako część układu",
+            "text": "Obręcz wstępna stabilizuje rozstaw, kolejne odpowiadają za docisk na określonych wysokościach. Ich średnica i profil muszą odpowiadać wymiarom płaszcza. Zbyt luźna nie zapewni wymaganej stabilizacji, a nadmierny nacisk lub niewłaściwe narzędzie może uszkodzić drewno."
+          },
+          {
+            "heading": "Bezpieczeństwo etapu",
+            "text": "Gięcie z ogniem, parą lub gorącą wodą grozi oparzeniami, pożarem i pękaniem napinanych elementów. Nauka online powinna tłumaczyć proces, nie zastępować instruktażu stanowiskowego: pracę z temperaturą, obręczami i narzędziami prowadzi instruktor w przygotowanym warsztacie."
+          },
+          {
+            "heading": "Zadanie sekwencji",
+            "text": "Ułóż w kolejności: selekcja materiału, uformowanie klepek, wstępne zestawienie, kontrolowana obróbka umożliwiająca zginanie, ściągnięcie płaszcza, dopasowanie obręczy i pomiar. Wpisz po każdym etapie możliwą wadę oraz sposób jej zauważenia."
+          }
+        ],
+        "illustration": "craft-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.saury.com/en/our-skills/the-stages-of-barrel-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Przy zestawianiu wstępnie przygotowane klepki ustawia się kolejno, utrzymując ich geometrię tymczasową obręczą. Powstaje otwarty płaszcz, zanim przeciwne końce zostaną ściągnięte do kształtu beczki. Metoda tradycyjna opiera się na stopniowym dostosowywaniu krzywizny z wykorzystaniem ciepła i wilgoci, ale konkretna procedura zależy od drewna i warsztatu.",
+          "situation": "Gięcie z ogniem, parą lub gorącą wodą grozi oparzeniami, pożarem i pękaniem napinanych elementów. Nauka online powinna tłumaczyć proces, nie zastępować instruktażu stanowiskowego: pracę z temperaturą, obręczami i narzędziami prowadzi instruktor w przygotowanym warsztacie.",
+          "question": "Dlaczego klepki powinny być sprawdzone przed etapem gięcia?",
+          "options": [
+            "Ponieważ po gięciu drewno przestaje być materiałem higroskopijnym.",
+            "Ponieważ każdy defekt można usunąć przez bardzo mocne ściągnięcie obręczy.",
+            "Ponieważ pęknięcia i niezgodna geometria mogą się pogłębić przy naprężeniu.",
+            "Ponieważ poprawna obręcz zwalnia z oceny jakości drewna."
+          ],
+          "correct": 2,
+          "example": "Ponieważ pęknięcia i niezgodna geometria mogą się pogłębić przy naprężeniu.",
+          "explanation": "Naprężenie podczas formowania nie naprawia uszkodzeń; może je ujawnić lub pogłębić.",
+          "feedback": [
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Naprężenie podczas formowania nie naprawia uszkodzeń; może je ujawnić lub pogłębić.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Naprężenie podczas formowania nie naprawia uszkodzeń; może je ujawnić lub pogłębić.",
+            "Tak. Naprężenie podczas formowania nie naprawia uszkodzeń; może je ujawnić lub pogłębić.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Naprężenie podczas formowania nie naprawia uszkodzeń; może je ujawnić lub pogłębić."
+          ],
+          "task": "Ułóż w kolejności: selekcja materiału, uformowanie klepek, wstępne zestawienie, kontrolowana obróbka umożliwiająca zginanie, ściągnięcie płaszcza, dopasowanie obręczy i pomiar. Wpisz po każdym etapie możliwą wadę oraz sposób jej zauważenia."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 6,
+      "title_pl": "7. Denko i wręga (croze): zamykanie naczynia",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Jaka jest rola denka",
+            "text": "Dno beczki nie jest przymocowaną przypadkowo płytą. W tradycyjnym układzie tworzą je dopasowane elementy drewniane złączone w tarczę o odpowiednim profilu krawędzi. Brzeg denka jest osadzany w rowku wewnętrznym płaszcza. Jego usytuowanie musi współpracować z geometrią klepek oraz końcowym dociskiem."
+          },
+          {
+            "heading": "Różnica: croze i krawędź chime",
+            "text": "Croze oznacza rowek biegnący wewnątrz beczki, na którym opiera się lub w którym osadza się brzeg denka. Chime oznacza końcową strefę ściany przy dnie. Błąd położenia rowka może uniemożliwić właściwe wejście denka, a uszkodzona krawędź może być objawem niewłaściwego montażu lub użytkowania."
+          },
+          {
+            "heading": "Dlaczego sam okrąg nie wystarczy",
+            "text": "Kształt denka powinien wynikać z rzeczywistego obrysu i wybranej technologii. Połączenie wymaga poprawnego profilu krawędzi; samo narysowanie koła o średnicy zewnętrznej beczki nie uwzględnia rowka, grubości płaszcza ani tolerancji. Nie można też ocenić siły mocowania bez sprawdzenia obręczy."
+          },
+          {
+            "heading": "Przykład pomyłki na rysunku",
+            "text": "Projektant podał 500 mm średnicy zewnętrznej końca beczki, a wykonawca od razu wycina denko 500 mm. Taki wymiar nie wynika logicznie z rysunku; potrzebna jest średnica osadzenia oraz profil rowka i denka. W dobrym projekcie każdy ważny wymiar ma nazwę i bazę."
+          },
+          {
+            "heading": "Ćwiczenie z widokiem przekroju",
+            "text": "Narysuj fragment ścianki w przekroju, wskaż grubość klepki, rowek croze, krawędź chime, profil denka oraz kierunek docisku. Napisz trzy brakujące wymiary, o które zapytasz przed wykonaniem denka."
+          }
+        ],
+        "illustration": "diagnosis-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://metc.org/decoding-the-past-cooper/"
+          }
+        ],
+        "learning": {
+          "intro": "Dno beczki nie jest przymocowaną przypadkowo płytą. W tradycyjnym układzie tworzą je dopasowane elementy drewniane złączone w tarczę o odpowiednim profilu krawędzi. Brzeg denka jest osadzany w rowku wewnętrznym płaszcza. Jego usytuowanie musi współpracować z geometrią klepek oraz końcowym dociskiem.",
+          "situation": "Projektant podał 500 mm średnicy zewnętrznej końca beczki, a wykonawca od razu wycina denko 500 mm. Taki wymiar nie wynika logicznie z rysunku; potrzebna jest średnica osadzenia oraz profil rowka i denka. W dobrym projekcie każdy ważny wymiar ma nazwę i bazę.",
+          "question": "Masz tylko zewnętrzną średnicę końca beczki. Czego nie możesz z niej samodzielnie wyznaczyć?",
+          "options": [
+            "Przybliżonego obwodu zewnętrznego.",
+            "Średnicy i profilu osadzenia denka bez wymiarów wręgi i grubości.",
+            "Liczby milimetrów w metrze.",
+            "Położenia górnej krawędzi na rysunku."
+          ],
+          "correct": 1,
+          "example": "Średnicy i profilu osadzenia denka bez wymiarów wręgi i grubości.",
+          "explanation": "Osadzenie denka jest wewnątrz płaszcza; wymaga własnych wymiarów i profilu, a nie samej średnicy zewnętrznej.",
+          "feedback": [
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Osadzenie denka jest wewnątrz płaszcza; wymaga własnych wymiarów i profilu, a nie samej średnicy zewnętrznej.",
+            "Tak. Osadzenie denka jest wewnątrz płaszcza; wymaga własnych wymiarów i profilu, a nie samej średnicy zewnętrznej.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Osadzenie denka jest wewnątrz płaszcza; wymaga własnych wymiarów i profilu, a nie samej średnicy zewnętrznej.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Osadzenie denka jest wewnątrz płaszcza; wymaga własnych wymiarów i profilu, a nie samej średnicy zewnętrznej."
+          ],
+          "task": "Narysuj fragment ścianki w przekroju, wskaż grubość klepki, rowek croze, krawędź chime, profil denka oraz kierunek docisku. Napisz trzy brakujące wymiary, o które zapytasz przed wykonaniem denka."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 7,
+      "title_pl": "8. Kontrola szczelności i diagnoza przecieków",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Co właściwie kontrolujemy",
+            "text": "Kontrola użytkowej beczki obejmuje położenie obręczy, ciągłość klepek, dopasowanie styków, stan denek i zgodność materiałów z przeznaczeniem. Szczelność to wynik określonej próby przeprowadzonej właściwą metodą i w ustalonych warunkach; pojedyncza obserwacja suchego, pustego naczynia nie dowodzi gotowości do kontaktu z żywnością."
+          },
+          {
+            "heading": "Rozpoznaj miejsce usterki",
+            "text": "Przeciek wzdłuż klepki sugeruje problem drewna lub krawędzi sąsiednich elementów. Przy krawędzi dna podejrzewa się m.in. wręgę lub denko; w okolicy luźnej obręczy trzeba sprawdzić docisk i geometrię. Nie przyjmuj, że każda wilgotna plama pochodzi z identycznej przyczyny."
+          },
+          {
+            "heading": "Sucha beczka i pęcznienie",
+            "text": "Drewno może zmieniać wymiary przy zmianie wilgotności. Niektóre suche beczki użytkowe wymagają procedury kondycjonowania zgodnej z zaleceniami wytwórcy, ale długie moczenie, przypadkowe środki chemiczne albo użycie gorącej wody bez instrukcji mogą uszkodzić wyrób lub pogorszyć higienę."
+          },
+          {
+            "heading": "Przykład zapisu kontroli",
+            "text": "Beczka B-04: ślad przy dolnym denku, obręcz nie wykazuje wyraźnego przesunięcia, jedno miejsce ma uszkodzenie drewna. Zamiast wpisu 'beczka cieknie' wykonaj dokumentację miejsca, stanu surowca, numeru partii oraz decyzji: dalsza diagnoza, naprawa przez fachowca albo wycofanie."
+          },
+          {
+            "heading": "Zadanie diagnostyczne",
+            "text": "Przygotuj tabelę z trzema objawami: przeciek na styku dwóch klepek, przeciek przy denku i luźna obręcz. Dla każdego wpisz trzy możliwe przyczyny, obserwację potwierdzającą oraz działanie, którego nie wolno wykonać w ciemno."
+          }
+        ],
+        "illustration": "diagnosis-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://metc.org/decoding-the-past-cooper/"
+          }
+        ],
+        "learning": {
+          "intro": "Kontrola użytkowej beczki obejmuje położenie obręczy, ciągłość klepek, dopasowanie styków, stan denek i zgodność materiałów z przeznaczeniem. Szczelność to wynik określonej próby przeprowadzonej właściwą metodą i w ustalonych warunkach; pojedyncza obserwacja suchego, pustego naczynia nie dowodzi gotowości do kontaktu z żywnością.",
+          "situation": "Beczka B-04: ślad przy dolnym denku, obręcz nie wykazuje wyraźnego przesunięcia, jedno miejsce ma uszkodzenie drewna. Zamiast wpisu 'beczka cieknie' wykonaj dokumentację miejsca, stanu surowca, numeru partii oraz decyzji: dalsza diagnoza, naprawa przez fachowca albo wycofanie.",
+          "question": "Przeciek pojawia się wyłącznie przy denku, a nie wzdłuż ścian. Jaka hipoteza jest najbardziej związana z miejscem objawu?",
+          "options": [
+            "Nieprawidłowe osadzenie denka lub stan rowka croze.",
+            "Nieprawidłowa liczba stron w dokumentacji sprzedażowej.",
+            "Zbyt duża liczba znaków na etykiecie producenta.",
+            "Wyłącznie niska średnia szerokość obręczy przy brzuścu."
+          ],
+          "correct": 0,
+          "example": "Nieprawidłowe osadzenie denka lub stan rowka croze.",
+          "explanation": "Miejsce przy denku kieruje kontrolę w stronę połączenia denka z rowkiem oraz stanu krawędzi, choć ostateczna diagnoza wymaga oględzin.",
+          "feedback": [
+            "Tak. Miejsce przy denku kieruje kontrolę w stronę połączenia denka z rowkiem oraz stanu krawędzi, choć ostateczna diagnoza wymaga oględzin.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Miejsce przy denku kieruje kontrolę w stronę połączenia denka z rowkiem oraz stanu krawędzi, choć ostateczna diagnoza wymaga oględzin.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Miejsce przy denku kieruje kontrolę w stronę połączenia denka z rowkiem oraz stanu krawędzi, choć ostateczna diagnoza wymaga oględzin.",
+            "To nie odpowiada miejscu lub mechanizmowi opisanemu w zadaniu. Miejsce przy denku kieruje kontrolę w stronę połączenia denka z rowkiem oraz stanu krawędzi, choć ostateczna diagnoza wymaga oględzin."
+          ],
+          "task": "Przygotuj tabelę z trzema objawami: przeciek na styku dwóch klepek, przeciek przy denku i luźna obręcz. Dla każdego wpisz trzy możliwe przyczyny, obserwację potwierdzającą oraz działanie, którego nie wolno wykonać w ciemno."
+        }
+      }
+    }
+  ],
+  "source_note": "Museum of Early Trades & Crafts; Bouchard Cooperages; Saury; research article on oak staves. Original teaching copy, not an official professional qualification."
+}
