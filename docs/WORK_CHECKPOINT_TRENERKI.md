@@ -134,3 +134,12 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - Odnotowano konflikt równoległego zapisu: pierwotny patch GitHub opisywał tylko 8 lekcji, dlatego został zastąpiony pełnym idempotentnym patchem 16 lekcji. Unikaj nadpisywania nowszych danych niepełnymi wersjami.
 - Publikacja i dane uczniów bez zmian. **Nadal wymagane** recenzja eksperta, test konta do egzaminu, QA dystraktorów i wdrożenia Expo; nie deklarować pełnego zamknięcia.
 - Następny `powroznik`; przed edycją sprawdź aktualną DB i checkpoint, aby nie dublować równoległego uruchomienia.
+
+
+## Kurs 10: Powroźnik — 12 lekcji zapisanych i sprawdzonych (2026-11-09)
+- **Stan przed:** 8 ogólnych lekcji. **Stan po:** 12 osobnych lekcji `0..11` z pięcioma sekcjami, źródłami, przykładami i zadaniami. Supabase QA: `n=12`, `uq=12`, `five_sections=12`, `options4=12`, `feedback4=12`, `revised=12`.
+- Program: włókna konopie/len/sizal/manila; włókno→przędza→pasmo→lina; S/Z; ropewalk; skrócenie i masa; typy lin; skok skrętu; kontrola uszkodzeń; zakończenia; różnica MBL/obciążenie robocze; przechowywanie; projekt demonstracyjny. Brak deklaracji udźwigu bez dokumentacji i certyfikacji.
+- GitHub: `content/powroznik-masterclass-20261109-part1.json` (`8c9a5955`), `part2.json` (`58b370d2`), `part3.json` (`896ffa3d`). Cztery diagramy SVG i rejestr (`e146148c`), SQL `database/patches/trenerki-powroznik-content-20261109.sql` (`cc4d9770`), raport `docs/COURSE_REVIEW_POWROZNIK_20261109.md` (`bf4c3fed`).
+- Status `review_needed`. **Pozostało**: niezależna recenzja powroźnika i specjalisty od lin, test zalogowanego użytkownika (lekcje→egzamin→certyfikat), potwierdzenie Expo. CI pierwszych trzech części i SVG `success`; CI ostatnich patch/doc było jeszcze `in_progress` w chwili kontroli, nie oznaczaj ich jako zakończone.
+- Dane uczniów, postępy, konta, płatności, RLS i status publikacji pozostawiono bez zmian.
+- **Stan serii:** 10 z 80 indywidualnie przebudowanych kursów. Następny do sprawdzenia: `rymarz` (po odczycie aktualnego checkpointu i bazy). Cel automatyzacji: do 40 kursów w jednym uruchomieniu, bez obniżania jakości i bez fałszywych deklaracji.
