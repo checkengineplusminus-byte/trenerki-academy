@@ -1,0 +1,233 @@
+{
+  "course_slug": "mlynarz-tradycyjny",
+  "lessons": [
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 8,
+      "title_pl": "9. Magazynowanie ziarna: wilgotność, samonagrzewanie i identyfikowalność",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza i materiał",
+            "text": "Ziarno jest materiałem biologicznym. W nieodpowiednich warunkach wilgoć i temperatura mogą sprzyjać rozwojowi pleśni, szkodników i samonagrzewaniu. Magazynowanie wymaga identyfikacji partii, kontroli warunków, porządku oraz bezpiecznej organizacji przemieszczania surowca. Nie istnieje jedna optymalna wilgotność dla wszystkich zbóż i czasu składowania."
+          },
+          {
+            "heading": "Proces i obliczenie",
+            "text": "W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas."
+          },
+          {
+            "heading": "Zadanie zawodowe",
+            "text": "Przygotuj kartę magazynową dwóch partii: data, gatunek, masa, wilgotność, temperatura, lokalizacja, obserwacje, wynik kontroli i decyzja. Pokaż, co robisz przy oznakach samonagrzewania bez wchodzenia do wnętrza silosu."
+          },
+          {
+            "heading": "Kryteria kontroli",
+            "text": "Oceń jednostki, źródła danych i ryzyko; uzasadnij każdy etap. W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas."
+          },
+          {
+            "heading": "Co wynika z przykładu",
+            "text": "Nie zamieniaj przykładowych założeń na obowiązujące parametry techniczne. Ziarno jest materiałem biologicznym. W nieodpowiednich warunkach wilgoć i temperatura mogą sprzyjać rozwojowi pleśni, szkodników i samonagrzewaniu. Magazynowanie wymaga identyfikacji partii, kontroli warunków, porządku oraz bezpiecznej organizacji przemieszczania surowca. Nie istnieje jedna optymalna wilgotność dla wszystkich zbóż i czasu składowania."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.hse.gov.uk/food/safety-hazards/dustexplosion.htm"
+          }
+        ],
+        "learning": {
+          "question": "Która informacja pomaga ocenić ryzyko przechowywania ziarna?",
+          "options": [
+            "Wyłącznie kolor worka.",
+            "Tylko liczba pracowników zmiany.",
+            "Wilgotność, temperatura, gatunek i czas składowania.",
+            "Sama cena zakupu ziarna."
+          ],
+          "correct": 2,
+          "example": "Wilgotność, temperatura, gatunek i czas składowania.",
+          "explanation": "W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas.",
+          "task": "Przygotuj kartę magazynową dwóch partii: data, gatunek, masa, wilgotność, temperatura, lokalizacja, obserwacje, wynik kontroli i decyzja. Pokaż, co robisz przy oznakach samonagrzewania bez wchodzenia do wnętrza silosu.",
+          "feedback": [
+            "Nie. W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas.",
+            "Nie. W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas.",
+            "Tak. W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas.",
+            "Nie. W przykładowej partii 1000 kg ziarna zmierzono 14% wilgotności metodą uzgodnioną dla produktu, a w innej 18%. Nie wolno wywnioskować wyłącznie z masy, że oba zapasy można bezpiecznie przechowywać identycznie. Potrzebne są wymagania dla gatunku, temperatura, historia partii i czas."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 9,
+      "title_pl": "10. Kontrola mąki: wilgotność, typ, gluten i zastosowanie",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza i materiał",
+            "text": "Parametry mąki zależą od surowca, przemiału, odsiewania i przechowywania. Zawartość białka, właściwości glutenu w mące pszennej, popiół i wilgotność wpływają na możliwe zastosowania, ale jedna liczba nie przewiduje w pełni jakości wypiekowej. Mąka żytnia lub inne zboża nie powinny być oceniane identyczną procedurą jak pszenna."
+          },
+          {
+            "heading": "Proces i obliczenie",
+            "text": "Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej."
+          },
+          {
+            "heading": "Zadanie zawodowe",
+            "text": "Zaprojektuj kartę jakości mąki dla piekarni: partia, gatunek, wilgotność, popiół, parametry białka lub glutenu według rodzaju mąki, wynik próby i decyzja. Zaznacz trzy informacje, których nie da się ustalić tylko wzrokiem."
+          },
+          {
+            "heading": "Kryteria kontroli",
+            "text": "Oceń jednostki, źródła danych i ryzyko; uzasadnij każdy etap. Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej."
+          },
+          {
+            "heading": "Co wynika z przykładu",
+            "text": "Nie zamieniaj przykładowych założeń na obowiązujące parametry techniczne. Parametry mąki zależą od surowca, przemiału, odsiewania i przechowywania. Zawartość białka, właściwości glutenu w mące pszennej, popiół i wilgotność wpływają na możliwe zastosowania, ale jedna liczba nie przewiduje w pełni jakości wypiekowej. Mąka żytnia lub inne zboża nie powinny być oceniane identyczną procedurą jak pszenna."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://asbe.org/article/extraction-rate/"
+          }
+        ],
+        "learning": {
+          "question": "Dlaczego nie można określić przydatności każdej mąki wyłącznie po procentowej zawartości białka?",
+          "options": [
+            "Bo białko nie ma żadnego znaczenia w pieczeniu.",
+            "Bo liczą się także właściwości funkcjonalne, gatunek i wymagania produktu.",
+            "Bo każde zboże zawiera identyczną jakość glutenu.",
+            "Bo kolor opakowania rozstrzyga o wypieku."
+          ],
+          "correct": 1,
+          "example": "Bo liczą się także właściwości funkcjonalne, gatunek i wymagania produktu.",
+          "explanation": "Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej.",
+          "task": "Zaprojektuj kartę jakości mąki dla piekarni: partia, gatunek, wilgotność, popiół, parametry białka lub glutenu według rodzaju mąki, wynik próby i decyzja. Zaznacz trzy informacje, których nie da się ustalić tylko wzrokiem.",
+          "feedback": [
+            "Nie. Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej.",
+            "Tak. Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej.",
+            "Nie. Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej.",
+            "Nie. Partia A ma 11% białka, partia B 13%. Sam procent białka nie wystarcza do uznania B za lepszą do każdego chleba: potrzebne są cechy funkcjonalne, warunki testu i oczekiwany produkt. Przy odbiorze rozróżnij badanie laboratoryjne od oceny wizualnej."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 10,
+      "title_pl": "11. Usterki młyna: spadek wydajności, przegrzewanie i obce cząstki",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza i materiał",
+            "text": "Przy spadku wydajności młynarz rozróżnia problem dostawy ziarna, podajnika, napędu, kamieni, odsiewacza i magazynu. Zmieniony rozmiar cząstek, nietypowe wibracje lub wysoka temperatura są objawami, nie gotową diagnozą. Ruchomych elementów nie wolno kontrolować ręcznie podczas pracy bez właściwych zabezpieczeń i zatwierdzonej procedury."
+          },
+          {
+            "heading": "Proces i obliczenie",
+            "text": "Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo."
+          },
+          {
+            "heading": "Zadanie zawodowe",
+            "text": "Zrób drzewo diagnostyczne dla trzech objawów: pylenie, spadek wydajności i podejrzany pył kamienny. W każdej gałęzi uwzględnij bezpieczeństwo, dane kontrolne i możliwość zatrzymania procesu."
+          },
+          {
+            "heading": "Kryteria kontroli",
+            "text": "Oceń jednostki, źródła danych i ryzyko; uzasadnij każdy etap. Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo."
+          },
+          {
+            "heading": "Co wynika z przykładu",
+            "text": "Nie zamieniaj przykładowych założeń na obowiązujące parametry techniczne. Przy spadku wydajności młynarz rozróżnia problem dostawy ziarna, podajnika, napędu, kamieni, odsiewacza i magazynu. Zmieniony rozmiar cząstek, nietypowe wibracje lub wysoka temperatura są objawami, nie gotową diagnozą. Ruchomych elementów nie wolno kontrolować ręcznie podczas pracy bez właściwych zabezpieczeń i zatwierdzonej procedury."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.museum.com/audioguide/431/6/EN"
+          }
+        ],
+        "learning": {
+          "question": "Przemiał 200 kg trwał 4 godziny, a następnie 5 godzin. O ile procent zmalała wydajność godzinowa?",
+          "options": [
+            "10%.",
+            "15%.",
+            "20%.",
+            "25%."
+          ],
+          "correct": 2,
+          "example": "20%.",
+          "explanation": "Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo.",
+          "task": "Zrób drzewo diagnostyczne dla trzech objawów: pylenie, spadek wydajności i podejrzany pył kamienny. W każdej gałęzi uwzględnij bezpieczeństwo, dane kontrolne i możliwość zatrzymania procesu.",
+          "feedback": [
+            "Nie. Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo.",
+            "Nie. Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo.",
+            "Tak. Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo.",
+            "Nie. Zakład deklaruje 200 kg przemiału w 4 godziny, czyli 50 kg/h. Jeśli ten sam proces zajął 5 godzin, wydajność to 40 kg/h, spadek o 20% względem poprzedniej wartości. Trzeba zbadać przyczyny zamiast przyspieszać napęd na ślepo."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 11,
+      "title_pl": "12. Projekt końcowy młynarza: partia zboża, przemiał, bilans i BHP",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Wiedza i materiał",
+            "text": "Zadanie końcowe łączy przyjęcie partii, czyszczenie, dobór urządzeń, przemiał, odsiewanie, kontrolę mąki i bezpieczeństwo. Uczeń musi umieć wyjaśnić proces od ziarna do oznaczonego worka oraz rozdzielić dane zmierzone, wyliczone i niepotwierdzone. Celem jest projektowa analiza, nie pozwolenie na samodzielną obsługę czynnego młyna."
+          },
+          {
+            "heading": "Proces i obliczenie",
+            "text": "Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem)."
+          },
+          {
+            "heading": "Zadanie zawodowe",
+            "text": "Przygotuj schemat przepływu, bilans masowy, plan urządzeń, 10-punktową kartę jakości i 10-punktową SJA. Uzasadnij różnicę między wydajnością wsadu a wydajnością mąki i zaznacz ryzyko zapłonu pyłu."
+          },
+          {
+            "heading": "Kryteria kontroli",
+            "text": "Oceń jednostki, źródła danych i ryzyko; uzasadnij każdy etap. Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem)."
+          },
+          {
+            "heading": "Co wynika z przykładu",
+            "text": "Nie zamieniaj przykładowych założeń na obowiązujące parametry techniczne. Zadanie końcowe łączy przyjęcie partii, czyszczenie, dobór urządzeń, przemiał, odsiewanie, kontrolę mąki i bezpieczeństwo. Uczeń musi umieć wyjaśnić proces od ziarna do oznaczonego worka oraz rozdzielić dane zmierzone, wyliczone i niepotwierdzone. Celem jest projektowa analiza, nie pozwolenie na samodzielną obsługę czynnego młyna."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://asbe.org/article/extraction-rate/"
+          }
+        ],
+        "learning": {
+          "question": "Z 490 kg oczyszczonego ziarna otrzymano 367,5 kg mąki. Jaki jest wyciąg?",
+          "options": [
+            "65%.",
+            "70%.",
+            "75%.",
+            "85%."
+          ],
+          "correct": 2,
+          "example": "75%.",
+          "explanation": "Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem).",
+          "task": "Przygotuj schemat przepływu, bilans masowy, plan urządzeń, 10-punktową kartę jakości i 10-punktową SJA. Uzasadnij różnicę między wydajnością wsadu a wydajnością mąki i zaznacz ryzyko zapłonu pyłu.",
+          "feedback": [
+            "Nie. Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem).",
+            "Nie. Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem).",
+            "Tak. Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem).",
+            "Nie. Model: przyjęto 500 kg ziarna, usunięto 10 kg obcych zanieczyszczeń — pozostaje 490 kg. Uzyskano 367,5 kg mąki, czyli 367,5/490=75% wyciągu. Pozostałe frakcje i straty muszą sumować się do 122,5 kg. Przy czterech godzinach przemiału wydajność mąki to 91,875 kg/h, nie 125 kg/h (ta druga wartość odnosiłaby się do całego surowca przed przemiałem)."
+          ]
+        }
+      }
+    }
+  ]
+}
