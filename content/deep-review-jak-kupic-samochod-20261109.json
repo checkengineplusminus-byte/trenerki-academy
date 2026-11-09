@@ -1,0 +1,274 @@
+{
+  "course_slug": "jak-kupic-samochod",
+  "source": [
+    "https://www.gov.pl/web/gov/sprawdz-historie-pojazdu",
+    "https://www.vegvesen.no/en/vehicles/buy-and-sell/vehicle-information/find-owner/?lang=en"
+  ],
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Budżet na zakup pojazdu nie może oznaczać całej posiadanej gotówki. Poza ceną auta pojawią się koszty rejestracji, ubezpieczenia, przeglądu, opon i możliwych napraw. Rezerwa finansowa ogranicza ryzyko, że samochód natychmiast doprowadzi do zadłużenia."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przykład: masz 40 000 zł. Zachowujesz 6000 zł rezerwy i planujesz 3500 zł kosztów pierwszego roku poza paliwem. Na zakup zostaje 40 000 − 6000 − 3500 = 30 500 zł. Jeżeli oglądany pojazd kosztuje 35 000 zł, nie 'mieści się', nawet jeśli na koncie widnieje 40 000 zł."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Kupujący przeznacza pełne 40 000 zł na auto, a po miesiącu potrzebuje opon za 1800 zł i OC za 1600 zł."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Rozpisz budżet 25 000 zł w wariantach oszczędnym i ryzykownym. Rozdziel cenę, rezerwę i łączne koszty pierwszego roku."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Cena z ogłoszenia jest kosztem wejścia, nie całkowitym kosztem użytkowania. Porównywanie dwóch ofert wymaga uwzględnienia prawdopodobnych wydatków, historii napraw i zużycia, a także energii, podatków i ubezpieczenia. Koszt finansowania zależy od RRSO, czasu i dodatkowych opłat."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Auto A: cena 25 000 zł, znane konieczne naprawy 5000 zł i OC 1500 zł — 31 500 zł. Auto B: cena 29 000 zł, konieczny serwis 1200 zł i OC 1500 zł — 31 700 zł. Poziom ryzyka jest inny, ale same te liczby są porównywalne i pokazują, że tańsze w ogłoszeniu nie musi być tańsze w pierwszym roku."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Sprzedawca mówi, że samochód jest tańszy o 4000 zł, lecz wymaga niezwłocznego serwisu za 6500 zł."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Przygotuj tabelę dla dwóch ofert: cena, diagnostyka, naprawy, OC, finansowanie, roczna eksploatacja i rezerwa."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "VIN identyfikuje pojazd, a numer rejestracyjny, dokumenty i historia przeglądów pomagają ocenić zgodność danych. Polska usługa Historia Pojazdu wymaga numeru rejestracyjnego, VIN i daty pierwszej rejestracji. Raport może zawierać m.in. przebieg z badań technicznych, status OC i badania oraz dostępne dane historyczne, ale nie gwarantuje pełnej historii szkód."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przed wyjazdem poproś o VIN, numer rejestracyjny i datę pierwszej rejestracji, zweryfikuj dane i powiąż je z dokumentami na oględzinach. W Norwegii odpowiednie informacje o pojeździe można sprawdzać w Statens vegvesen. Nie uznawaj braku wpisu o szkodzie za dowód, że nigdy jej nie było."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "W ogłoszeniu rocznik 2018, na dokumencie pierwsza rejestracja 2020, a sprzedawca nie umie wskazać daty produkcji. To nie musi oznaczać oszustwa, ale wymaga wyjaśnienia różnych pojęć."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Stwórz kartę weryfikacji dokumentów i listę pięciu rzeczy do potwierdzenia bez udostępniania prywatnych danych osób trzecich."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Oględziny auta zaczynają się od zgodności VIN i stanu nadwozia, szyb, świateł, podwozia i wyposażenia. Różnice odcienia lakieru, spasowanie szczelin i nietypowe ślady napraw mogą wskazywać pracę blacharską, ale same w sobie nie dowodzą istotnej szkody konstrukcyjnej."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przy dobrym świetle wykonaj zdjęcia spójności szczelin, podłużnic dostępnych do legalnych oględzin, mocowań, progów, ognisk korozji i zużycia wnętrza. Miernik lakieru pomaga wykryć różnice, ale wynik wymaga interpretacji materiału i technologii, zwłaszcza przy aluminium lub tworzywie."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Jeden błotnik ma grubszą warstwę lakieru. Pytanie nie brzmi od razu 'czy to wrak', tylko co zostało naprawione, jak i czy istnieją dokumenty."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Narysuj pięciopunktową trasę oględzin auta: przód, boki, tył, podwozie, wnętrze; wskaż sygnały wymagające diagnosty."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Jazda próbna sprawdza funkcjonowanie hamulców, prowadzenia, napędu, ogrzewania i systemów wsparcia kierowcy w bezpiecznych, legalnych warunkach. Diagnostyka OBD może wykazać błędy sterowników, lecz brak kodów nie dowodzi doskonałego stanu mechanicznego; część usterek nie jest monitorowana elektronicznie."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przy legalnej jeździe z osobą uprawnioną zwróć uwagę na ostrzeżenia na desce, temperatury robocze, niepokojące dźwięki, wibracje i reakcje hamulców. W razie objawów niebezpiecznych nie kontynuuj testu. Poproś niezależny warsztat o kontrolę, zwłaszcza przy drogim pojeździe."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Sprzedający kasuje błędy przed oględzinami i mówi 'teraz nic nie świeci, więc jest bez awarii'. Nie daje to wystarczającej podstawy oceny."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Zaprojektuj protokół jazdy próbnej i diagnostyki z miejscem na wykryte objawy oraz pytania do warsztatu."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Wydatki po zakupie mogą obejmować łańcuch rozrządu, układ chłodzenia, turbosprężarkę, akumulator trakcyjny, opony czy elementy zawieszenia zależnie od modelu. Ogólne zapewnienie 'bezwypadkowy i serwisowany' wymaga rozróżnienia od dokumentowanych faktur i kontroli technicznej."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przy ofercie z nowymi oponami sprawdź ich oznaczenie i wiek oraz czy odpowiadają homologacji pojazdu. Dla auta elektrycznego rozważ test stanu baterii i warunków gwarancji, nie zakładaj, że sam deklarowany zasięg w aplikacji jest pełnym raportem SOH. Dla kredytu policz cały koszt odsetek."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Auto jest tańsze o 7000 zł, ale koszt wymiany jednej krytycznej części może przewyższać różnicę. Wycenę musi potwierdzić fachowiec, nie komentarz z internetu."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Zbuduj rejestr ryzyk dla dwóch konkretnych modeli: typ usterki, dowód, możliwy koszt, prawdopodobieństwo nieznane / potwierdzone."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Umowa powinna określać strony, pojazd, cenę, datę, stan licznika, elementy wyposażenia i znane ustalenia o stanie technicznym. Płatność bez weryfikacji tożsamości sprzedającego i jego prawa do rozporządzania pojazdem zwiększa ryzyko. Konkretną odpowiedzialność za wady i obowiązki rejestracyjne określają aktualne przepisy państwa i typ transakcji."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przygotuj checklistę przed przelewem: identyfikacja pojazdu, dokumenty, zgodność sprzedającego z właścicielem lub umocowanie, obciążenia prawne do sprawdzenia, forma zapłaty, potwierdzenie odbioru i komplet kluczy. Nie wpisuj w umowie fikcyjnej niższej ceny."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Kupujący wykonuje zaliczkę na rachunek osoby trzeciej bez potwierdzenia prawa sprzedawcy do pojazdu i bez uzgodnionych warunków zwrotu."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Napisz szkic protokołu przekazania samochodu z miejscem na VIN, licznik, dokumenty, kluczyki i zdjęcia stanu."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Kontrola zakupu powinna być niezależna od emocji związanych z wyglądem samochodu. Każdy etap ma własny dowód: historia dokumentów, oględziny, niezależny serwis, kosztorys i umowa. Kryteria wycofania się z transakcji należy ustalić wcześniej."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Podziel kartę oceny na: dokumenty, nadwozie, napęd, bezpieczeństwo, elektronika, koszty, sprzedawca i formalności. Przy każdym wpisz wynik 'potwierdzone', 'wymaga kontroli', 'niezgodne'. Brak faktury w jednym miejscu nie musi dyskwalifikować, ale suma niejasności zmienia profil ryzyka."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Sprzedawca nie udostępnia VIN przed jazdą, nie pozwala na wizytę w niezależnym warsztacie i wymaga pełnej wpłaty tego samego dnia."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Przygotuj własne trzy warunki 'odchodzę bez zakupu' i kryterium, kiedy potrzebujesz ekspertyzy."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 8,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Dobre pytania pomagają oszczędzić czas i ujawniają niespójności: kto jest właścicielem, jaki jest numer VIN, historia serwisu, liczba kluczy, usterki, sposób rozliczenia i zgoda na niezależną kontrolę. Odpowiedzi należy zapisywać, zamiast polegać na pamięci."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Przygotuj sześć pytań zamkniętych i dwa otwarte. Przykład: 'Czy pojazd ma dwa oryginalne kluczyki?' oraz 'Jakie prace blacharskie wykonywano od zakupu?'. Porównaj odpowiedzi z dokumentami i oględzinami, nie zakładając automatycznie nieuczciwości przy jednej niejasności."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Ogłoszenie podaje pełną historię serwisową, lecz sprzedawca nie ma żadnych potwierdzeń ani wpisów. To temat do wyjaśnienia przed podróżą."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Ułóż wiadomość z pytaniami do sprzedawcy, a następnie oznacz które odpowiedzi można sprawdzić zdalnie."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 9,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "OBD jest tylko jednym narzędziem: część uszkodzeń mechanicznych, korozja i niezgodne naprawy nie muszą generować kodu błędu. Z kolei niektóre zapisane kody mogą być nieaktywne i wymagać diagnostycznej interpretacji. Użycie skanera powinno opierać się na rozumieniu układu i objawów."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Na ćwiczeniowej liście masz 'brak kodów silnika', ślady korozji progów i nierównomierne zużycie opon. Nie wnioskuj, że auto jest sprawne. Dobierz odpowiednie kontrole: mechanika, nadwozie, geometria i dokumenty. Nie kasuj kodów jako sposobu rozwiązania problemu."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Kupujący otrzymuje zdjęcie ekranu 'no DTC' i rezygnuje z oględzin podwozia. Po zakupie odkrywa istotną korozję."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Zbuduj tabelę: układ pojazdu, co sprawdza OBD, co wymaga oględzin, kiedy konieczna jest diagnostyka warsztatowa."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 10,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Negocjowanie ceny jest skuteczniejsze i uczciwsze, gdy odnosi się do sprawdzonych kosztów, zamiast straszenia sprzedawcy wymyślonymi wadami. Oferta powinna uwzględniać porównywalne modele, stan techniczny i zakres znanych napraw. Nie każda usterka uzasadnia obniżkę o pełny koszt nowej części."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Auto kosztuje 30 000 zł. Serwis potwierdza naprawę za 2400 zł, a kupujący ma maksymalny budżet 29 000 zł na sam zakup. Może zaproponować 27 600 zł, jeśli uwzględnia naprawę, ale sprzedawca nie musi zaakceptować. Wyjaśnij podstawę propozycji bez presji."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Kupujący żąda 10 000 zł obniżki za rysę, którą można naprawić za 500 zł, bez dodatkowych uzasadnień."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Zaprojektuj dialog negocjacyjny z kosztorysem, granicą budżetu i gotowością rezygnacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "jak-kupic-samochod",
+      "lesson_no": 11,
+      "sections": [
+        {
+          "heading": "Fachowa wiedza i definicje",
+          "text": "Końcowa decyzja łączy potwierdzone dane, koszty, bezpieczeństwo, historię i własne potrzeby. Nie ma zasady, że samochód z jedną naprawą blacharską jest zawsze gorszy niż pojazd bez dokumentacji. Trzeba odróżnić ryzyko możliwe do oszacowania od nieznanych, potencjalnie dużych zobowiązań."
+        },
+        {
+          "heading": "Metoda z konkretnymi danymi",
+          "text": "Porównaj oferty A i B przez sześć kryteriów, np. budżet, koszty napraw, zgodność dokumentów, kontrola warsztatu, przewidywane użycie i możliwość rezygnacji. Zapisz warunek, przy którym odkładasz decyzję do dodatkowej ekspertyzy. Nie podpisuj umowy pod presją ograniczonej oferty."
+        },
+        {
+          "heading": "Studium przypadku",
+          "text": "Auto A jest tańsze, lecz sprzedający odmawia diagnostyki. Auto B jest droższe, lecz ma spójne dokumenty i zgodę na kontrolę. Sama cena nie rozstrzyga wyboru."
+        },
+        {
+          "heading": "Zadanie z weryfikacją",
+          "text": "Napisz raport kupującego jednej strony: co sprawdzono, co jest niepewne, wynik finansowy i decyzja z uzasadnieniem."
+        }
+      ]
+    }
+  ]
+}
