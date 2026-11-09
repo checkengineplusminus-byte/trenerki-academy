@@ -1,0 +1,495 @@
+{
+  "course_slug": "kolodziej",
+  "revision": 6,
+  "source_note": "Oryginalny materiał edukacyjny z odniesieniami do zbiorów muzealnych; wartości liczbowe są przykładami geometrycznymi, nie wymiarami produkcyjnymi.",
+  "lessons": [
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 0,
+      "title_pl": "1. Anatomia drewnianego koła: piasta, szprychy, dzwona i obręcz",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-przekroj",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Koło wozowe nie jest drewnianym dyskiem z ozdobnymi promieniami. Składa się z piasty (hub), szprych (spokes), segmentów drewnianego obwodu zwanych dzwonami (felloes) oraz zewnętrznej metalowej obręczy (tyre). Otwór w piaście współpracuje z osią, szprychy łączą piastę z obwodem, a obręcz chroni segmenty drewna i spina cały układ. Nie utożsamiaj żelaznej obręczy z piastą ani dzwona z pojedynczą szprychą."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Narysuj przekrój poprzeczny koła i jeden widok od przodu. Zaznacz czop szprychy w gnieździe piasty i drugi koniec szprychy w dzwonie. W rzeczywistym zabytkowym egzemplarzu liczba szprych i liczba dzwon może być inna: muzealny przykład z Walii zawiera 14 szprych i 7 jesionowych dzwon. Sam układ elementów trzeba odczytać, zanim cokolwiek zmierzysz."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Model z 14 szprychami i 7 dzwonami ma średnio 2 zakończenia szprych na jeden segment obwodu (14/7=2); to opis konkretnej konstrukcji, a nie reguła dotycząca wszystkich kół."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Klient mówi, że odpadła 'szprycha', lecz na fotografii widać szczelinę na połączeniu dwóch dzwon. Przed naprawą zidentyfikuj element i wyjaśnij, dlaczego postępowanie z pękniętym dzwonem różni się od wymiany szprychy."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Na schemacie podpisz 8 elementów: oś, otwór osiowy, piasta, gniazdo, czop szprychy, szprycha, dzwono i obręcz stalowa. Następnie pokaż strzałkami schematyczną drogę sił w kole obciążonym."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://museum.wales/collections/online/object/c92c1c74-5534-34bf-91d5-b6ade7331896/Cart-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Koło wozowe nie jest drewnianym dyskiem z ozdobnymi promieniami. Składa się z piasty (hub), szprych (spokes), segmentów drewnianego obwodu zwanych dzwonami (felloes) oraz zewnętrznej metalowej obręczy (tyre). Otwór w piaście współpracuje z osią, szprychy łączą piastę z obwodem, a obręcz chroni segmenty drewna i spina cały układ. Nie utożsamiaj żelaznej obręczy z piastą ani dzwona z pojedynczą szprychą.",
+          "situation": "Klient mówi, że odpadła 'szprycha', lecz na fotografii widać szczelinę na połączeniu dwóch dzwon. Przed naprawą zidentyfikuj element i wyjaśnij, dlaczego postępowanie z pękniętym dzwonem różni się od wymiany szprychy.",
+          "task": "Na schemacie podpisz 8 elementów: oś, otwór osiowy, piasta, gniazdo, czop szprychy, szprycha, dzwono i obręcz stalowa. Następnie pokaż strzałkami schematyczną drogę sił w kole obciążonym.",
+          "question": "Zabytkowe koło ma 14 szprych i 7 dzwon. Ile zakończeń szprych przypada średnio na jedno dzwono w tym konkretnym układzie?",
+          "options": [
+            "Jedno, bo 14/7=1.",
+            "Cztery, bo dzwono obejmuje pół koła.",
+            "Dwa, bo 14/7=2.",
+            "Siedem, bo każda szprycha łączy wszystkie dzwona."
+          ],
+          "correct": 2,
+          "example": "Dwa, bo 14/7=2.",
+          "explanation": "14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
+            "Przeanalizuj dane i funkcję elementu. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
+            "Poprawnie. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
+            "Przeanalizuj dane i funkcję elementu. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 1,
+      "title_pl": "2. Materiałoznawstwo: wiąz, dąb, jesion i dobór włókien",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-drewno",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Dobór drewna do koła zależy od funkcji elementu. W historycznych przykładach stosowano wiąz na piastę ze względu na odporność na rozłupywanie przy gniazdach, sezonowany dąb na szprychy o wymaganej sztywności, a jesion na dzwona łączące wytrzymałość z pewną elastycznością. To tradycyjne zestawienie, nie jedyny możliwy materiał dla każdego regionu czy pojazdu. Sama nazwa gatunku nie gwarantuje jakości: liczą się kierunek włókien, sęki, pęknięcia i warunki przechowywania."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Oznacz próbki A, B, C. Zapisz gatunek i dokumentację pochodzenia, przebieg słojów, możliwe pęknięcia czołowe, miejscowe skręcenie włókien i wilgotność zmierzoną odpowiednią metodą. W miejscach czopów i gniazd nieakceptowalne defekty mogą szybko przejść w uszkodzenie konstrukcyjne. Nie zastępuj kontroli klasy materiału malowaniem drewna."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Dwie szprychy wykonane z dębu mają identyczną długość i grubość, ale jedna ma duży sęk na wąskim przekroju przy czopie. Mimo równego wymiaru nie muszą mieć podobnej niezawodności. Celem kontroli jest zidentyfikowanie wady oraz porównanie z kryterium odbioru."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Dostawca proponuje drewno bez informacji o sezonowaniu, twierdząc, że jest 'bardzo twarde'. Wymień pytania o wilgotność, wady, włókna, przeznaczenie i wymagania zamawianego koła."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Przygotuj tabelę trzech elementów (piasta/szprycha/dzwono) z gatunkiem tradycyjnie stosowanym, własnością uzasadniającą wybór, możliwą wadą i sposobem jej sprawdzenia. Obok narysuj sęk i odchylenie włókien."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://www.hessenpark.de/en/lexikon/handwerk/vorfuehrungen/wagnerei/"
+          }
+        ],
+        "learning": {
+          "intro": "Dobór drewna do koła zależy od funkcji elementu. W historycznych przykładach stosowano wiąz na piastę ze względu na odporność na rozłupywanie przy gniazdach, sezonowany dąb na szprychy o wymaganej sztywności, a jesion na dzwona łączące wytrzymałość z pewną elastycznością. To tradycyjne zestawienie, nie jedyny możliwy materiał dla każdego regionu czy pojazdu. Sama nazwa gatunku nie gwarantuje jakości: liczą się kierunek włókien, sęki, pęknięcia i warunki przechowywania.",
+          "situation": "Dostawca proponuje drewno bez informacji o sezonowaniu, twierdząc, że jest 'bardzo twarde'. Wymień pytania o wilgotność, wady, włókna, przeznaczenie i wymagania zamawianego koła.",
+          "task": "Przygotuj tabelę trzech elementów (piasta/szprycha/dzwono) z gatunkiem tradycyjnie stosowanym, własnością uzasadniającą wybór, możliwą wadą i sposobem jej sprawdzenia. Obok narysuj sęk i odchylenie włókien.",
+          "question": "Który tradycyjny dobór materiałów jest potwierdzony w historycznej praktyce kołodziejskiej opisanej przez Hessenpark?",
+          "options": [
+            "Piasta z wiązu, szprychy z dębu, dzwona z jesionu.",
+            "Piasta z miękkiego papieru, szprychy z lipy, obręcz z żywicy.",
+            "Wszystkie elementy z przypadkowego drewna bez kontroli włókien.",
+            "Piasta z płyty pilśniowej, szprychy z tworzywa, dzwona z gipsu."
+          ],
+          "correct": 0,
+          "example": "Piasta z wiązu, szprychy z dębu, dzwona z jesionu.",
+          "explanation": "Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
+          "feedback": [
+            "Poprawnie. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
+            "Przeanalizuj dane i funkcję elementu. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
+            "Przeanalizuj dane i funkcję elementu. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
+            "Przeanalizuj dane i funkcję elementu. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 2,
+      "title_pl": "3. Geometria koła: średnica, obwód i rozstaw szprych",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-geometria",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Do zaprojektowania koła potrzebujesz wymiarów średnicy zewnętrznej, średnicy obwodu drewnianego, średnicy otworu osiowego, długości piasty i położenia szprych. Zależność C=πD pozwala oszacować obwód idealnego koła. Równe rozstawienie N szprych odpowiada podziałowi pełnego kąta 360° na N części, ale rzeczywisty układ może uwzględniać przestrzenną geometrię i różne profile czopów."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Dla przykładu dydaktycznego przyjmij D=900 mm i N=16. Obwód teoretyczny koła: π×900≈2827,43 mm. Rozstaw kątowy osi szprych: 360°/16=22,5°. Wynik nie jest długością metalowej obręczy produkcyjnej, ponieważ ta ma własny przekrój, średnicę osadzenia i wymagania pasowania. Wymiary z rysunku zapisuj w mm i zaznacz, na której powierzchni je mierzysz."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Koło o średnicy 900 mm nie może mieć obwodu 900 mm. Gdy monter poda do zamówienia 900 zamiast ~2827 mm, popełnia błąd mylenia średnicy z obwodem. Przy 16 szprychach nie wystarczy podzielić piastę na 16 części 'na oko'."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "W warsztacie masz projekt średnicy 900 mm, ale szablon dla koła 800 mm. Porównaj obwody: różnica to 100π≈314,16 mm. Wyjaśnij, dlaczego nie wystarczy dodać po 1 mm na każdy segment."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Policz obwody dla D=600, 900 i 1200 mm; dla 12, 14 i 16 szprych policz podział kątowy. W osobnej kolumnie zaznacz dane, których nie można wyznaczyć bez projektu (grubość dzwona, pasowanie obręczy, długość czopu)."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://metc.org/decoding-the-past-wheelwright/"
+          }
+        ],
+        "learning": {
+          "intro": "Do zaprojektowania koła potrzebujesz wymiarów średnicy zewnętrznej, średnicy obwodu drewnianego, średnicy otworu osiowego, długości piasty i położenia szprych. Zależność C=πD pozwala oszacować obwód idealnego koła. Równe rozstawienie N szprych odpowiada podziałowi pełnego kąta 360° na N części, ale rzeczywisty układ może uwzględniać przestrzenną geometrię i różne profile czopów.",
+          "situation": "W warsztacie masz projekt średnicy 900 mm, ale szablon dla koła 800 mm. Porównaj obwody: różnica to 100π≈314,16 mm. Wyjaśnij, dlaczego nie wystarczy dodać po 1 mm na każdy segment.",
+          "task": "Policz obwody dla D=600, 900 i 1200 mm; dla 12, 14 i 16 szprych policz podział kątowy. W osobnej kolumnie zaznacz dane, których nie można wyznaczyć bez projektu (grubość dzwona, pasowanie obręczy, długość czopu).",
+          "question": "Koło o średnicy 900 mm z 16 równo rozmieszczonymi szprychami ma teoretyczny obwód i rozstaw kątowy równy...",
+          "options": [
+            "900 mm i 16°.",
+            "Około 2827 mm i 22,5°. ",
+            "Około 1414 mm i 45°. ",
+            "3600 mm i 90°."
+          ],
+          "correct": 1,
+          "example": "Około 2827 mm i 22,5°. ",
+          "explanation": "C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
+            "Poprawnie. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
+            "Przeanalizuj dane i funkcję elementu. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
+            "Przeanalizuj dane i funkcję elementu. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 3,
+      "title_pl": "4. Rysunek techniczny i talerzowatość koła (dish)",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-dish",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Koło dawnego wozu bywa celowo 'talerzowate' (dished): szprychy nie leżą w jednej płaskiej tarczy, lecz tworzą geometryczne wychylenie. Ma ono związek z konstrukcją, obciążeniami i stabilnością całego zestawu. To nie to samo co przypadkowe boczne bicie koła. Rysunek musi pokazywać widok z przodu i przekrój przez piastę, a także stronę montażu koła względem pojazdu."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Na arkuszu narysuj oś koła pionowo w widoku od przodu, a w przekroju bocznym pokaż linię płaszczyzny zewnętrznego obwodu i położenie piasty. Wpisz osobno: średnicę, głębokość wychylenia, szerokość piasty i położenie środka. Bez wymiaru 'dish' nie można zakładać, że każdy punkt piasty i obwodu jest na tej samej płaszczyźnie."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Koło A ma projektowo wygięte szprychy i równe obwody przy obrocie; koło B ma bok koła przesuwający się względem stabilnego punktu pomiaru raz w lewo, raz w prawo. Pierwsze może być poprawną geometrią, a drugie objawem bicia bocznego."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Praktykant widzi, że piasta nie jest w tej samej płaszczyźnie co obręcz, więc chce prostować wszystkie szprychy. Ustal, czy widzi zaprojektowaną talerzowatość czy wadę i jakie przekroje są potrzebne."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Przygotuj trzywidokowy szkic: przód, bok i przekrój. Podpisz talerzowatość (dish), bicie boczne, bicie promieniowe, piastę i obręcz. Narysuj dwa odrębne przypadki: zaprojektowane wychylenie i deformację."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://merl.reading.ac.uk/explore/online-exhibitions/shoulder-to-the-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Koło dawnego wozu bywa celowo 'talerzowate' (dished): szprychy nie leżą w jednej płaskiej tarczy, lecz tworzą geometryczne wychylenie. Ma ono związek z konstrukcją, obciążeniami i stabilnością całego zestawu. To nie to samo co przypadkowe boczne bicie koła. Rysunek musi pokazywać widok z przodu i przekrój przez piastę, a także stronę montażu koła względem pojazdu.",
+          "situation": "Praktykant widzi, że piasta nie jest w tej samej płaszczyźnie co obręcz, więc chce prostować wszystkie szprychy. Ustal, czy widzi zaprojektowaną talerzowatość czy wadę i jakie przekroje są potrzebne.",
+          "task": "Przygotuj trzywidokowy szkic: przód, bok i przekrój. Podpisz talerzowatość (dish), bicie boczne, bicie promieniowe, piastę i obręcz. Narysuj dwa odrębne przypadki: zaprojektowane wychylenie i deformację.",
+          "question": "Które zdanie prawidłowo odróżnia talerzowatość koła od bicia bocznego?",
+          "options": [
+            "To dokładnie to samo zjawisko i można je naprawiać identycznie.",
+            "Talerzowatość to wyłącznie korozja metalowej obręczy.",
+            "Bicie boczne jest zawsze pożądanym elementem projektu.",
+            "Talerzowatość może być celową geometrią, a bicie boczne jest zmiennym odchyleniem w czasie obrotu."
+          ],
+          "correct": 3,
+          "example": "Talerzowatość może być celową geometrią, a bicie boczne jest zmiennym odchyleniem w czasie obrotu.",
+          "explanation": "W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
+            "Przeanalizuj dane i funkcję elementu. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
+            "Przeanalizuj dane i funkcję elementu. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
+            "Poprawnie. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 4,
+      "title_pl": "5. Narzędzia kołodzieja i bezpieczne stanowisko",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-narzedzia",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Warsztat kołodziejski łączy obróbkę drewna, pomiary i współpracę z kowalem. Tokarka kształtuje piastę, świder przygotowuje miejsca pod gniazda, dłuto je dopracowuje, a strug do szprych (spokeshave) wygładza jej kształt. Przyrząd typu traveler — małe koło pomiarowe — pozwala porównać drogę po obwodzie drewnianym i metalowym pasie. Trzeba rozróżniać narzędzia pomiarowe, skrawające i urządzenia do podnoszenia pojazdu."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Stół powinien mieć czyste strefy: rysunek i trasowanie, drewno i cięcie, kontrola geometrii, dokumentacja. Tokarki, prasy, podnośniki i gorące obręcze wymagają właściwej procedury, przeszkolenia i osłon. Ćwiczenie online ogranicza się do rozpoznania funkcji narzędzi i zaprojektowania bezpiecznej pracy — nie jest instruktażem obsługi tokarki ani pracy z gorącym metalem."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Uczeń ma przygotować kształt szprychy, ale wybiera traveler, którym mierzy się obwód. Narzędzie nie wykona operacji skrawania, choć jest związane z wytwarzaniem koła. Lepszą odpowiedzią do kształtowania będzie odpowiedni strug albo narzędzie specjalistyczne dobrane przez instruktora."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Na podłodze leżą ostrza obok podnośnika, a pracownik chce przesunąć ciężkie koło bez zabezpieczenia. Zaproponuj rozmieszczenie stanowiska i odpowiedzialności, zanim rozpocznie się praktyka."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Narysuj 8 narzędzi i przypisz im: funkcję, podstawowy pomiar lub rezultat, zagrożenie i punkt kontroli. Zaznacz wyraźnie, które narzędzia wymagają nadzoru instruktora oraz przeglądów bezpieczeństwa."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://metc.org/decoding-the-past-wheelwright/"
+          }
+        ],
+        "learning": {
+          "intro": "Warsztat kołodziejski łączy obróbkę drewna, pomiary i współpracę z kowalem. Tokarka kształtuje piastę, świder przygotowuje miejsca pod gniazda, dłuto je dopracowuje, a strug do szprych (spokeshave) wygładza jej kształt. Przyrząd typu traveler — małe koło pomiarowe — pozwala porównać drogę po obwodzie drewnianym i metalowym pasie. Trzeba rozróżniać narzędzia pomiarowe, skrawające i urządzenia do podnoszenia pojazdu.",
+          "situation": "Na podłodze leżą ostrza obok podnośnika, a pracownik chce przesunąć ciężkie koło bez zabezpieczenia. Zaproponuj rozmieszczenie stanowiska i odpowiedzialności, zanim rozpocznie się praktyka.",
+          "task": "Narysuj 8 narzędzi i przypisz im: funkcję, podstawowy pomiar lub rezultat, zagrożenie i punkt kontroli. Zaznacz wyraźnie, które narzędzia wymagają nadzoru instruktora oraz przeglądów bezpieczeństwa.",
+          "question": "Którego narzędzia używano historycznie do porównywania obwodu drewnianego koła z długością żelaznego pasa na obręcz?",
+          "options": [
+            "Struga do szprych.",
+            "Przyrządu traveler (koła pomiarowego).",
+            "Szydła do skóry.",
+            "Tylko kątomierza do dachu."
+          ],
+          "correct": 1,
+          "example": "Przyrządu traveler (koła pomiarowego).",
+          "explanation": "Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
+            "Poprawnie. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
+            "Przeanalizuj dane i funkcję elementu. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
+            "Przeanalizuj dane i funkcję elementu. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 5,
+      "title_pl": "6. Piasta: oś, gniazda i symetria połączeń",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-piasta",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Piasta łączy koło z osią i ma gniazda mocujące końce szprych. W dawnych konstrukcjach blok wiązu przygotowywano, formowano na tokarce, a otwory pod szprychy rozmieszczano według geometrii projektu. Gniazdo (mortise) i czop (tenon) muszą współpracować powierzchniami, a zbyt głębokie lub przypadkowo przesunięte wybranie może osłabić piastę. Nie należy kopiować rozstawu z innego koła bez sprawdzenia przeznaczenia."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Ćwiczenie rysunkowe dla 12 szprych: pełen obwód 360°/12=30°. W widoku przednim zaznacz dwanaście osi, osobno pokazując kształt gniazda na przekroju. Uwaga: 30° to tylko plan podziału kątowego; wykonawcza geometria gniazda zależy także od talerzowatości i czopa. W praktyce tokarka i dłuta wymagają fachowego nadzoru."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Jeśli w jednej z 12 pozycji środek gniazda jest przesunięty, szprycha nie będzie pracowała w zaplanowanym kierunku. Warto sprawdzić układ szablonem przed rozpoczęciem obróbki zamiast korygować gotowe otwory."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Zlecenie opisuje koło 14-szprychowe, ale gotowy wzór podziału na 12 pozycji. Wyjaśnij, dlaczego różnica kąta 30° i 360°/14≈25,71° uniemożliwia bezmyślne użycie szablonu."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Narysuj przód piasty dla 12 szprych i policz odstęp kątowy. Potem dla 14 szprych policz odstęp i wyjaśnij różnicę. Zaznacz położenie otworu osiowego, grubość ścianki i obszar gniazda bez podawania wymiarów pasowania bez projektu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://www.hessenpark.de/en/lexikon/handwerk/vorfuehrungen/wagnerei/"
+          }
+        ],
+        "learning": {
+          "intro": "Piasta łączy koło z osią i ma gniazda mocujące końce szprych. W dawnych konstrukcjach blok wiązu przygotowywano, formowano na tokarce, a otwory pod szprychy rozmieszczano według geometrii projektu. Gniazdo (mortise) i czop (tenon) muszą współpracować powierzchniami, a zbyt głębokie lub przypadkowo przesunięte wybranie może osłabić piastę. Nie należy kopiować rozstawu z innego koła bez sprawdzenia przeznaczenia.",
+          "situation": "Zlecenie opisuje koło 14-szprychowe, ale gotowy wzór podziału na 12 pozycji. Wyjaśnij, dlaczego różnica kąta 30° i 360°/14≈25,71° uniemożliwia bezmyślne użycie szablonu.",
+          "task": "Narysuj przód piasty dla 12 szprych i policz odstęp kątowy. Potem dla 14 szprych policz odstęp i wyjaśnij różnicę. Zaznacz położenie otworu osiowego, grubość ścianki i obszar gniazda bez podawania wymiarów pasowania bez projektu.",
+          "question": "W prostym modelu 12 szprych równomiernie rozmieszczonych wokół piasty odstęp kątowy wynosi...",
+          "options": [
+            "15°.",
+            "25,7°.",
+            "30°.",
+            "45°."
+          ],
+          "correct": 2,
+          "example": "30°.",
+          "explanation": "360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
+            "Przeanalizuj dane i funkcję elementu. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
+            "Poprawnie. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
+            "Przeanalizuj dane i funkcję elementu. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 6,
+      "title_pl": "7. Szprycha: włókna, czopy i kontrola jednakowego podparcia",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-szprychy",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Szprycha musi być poprawnie dopasowana do piasty i dzwona. Tradycyjnie wykorzystywano odpowiednio sezonowany dąb i formowano zgrubnie narzędziami ciesielskimi, następnie dopracowywano strugiem. Koniec piastowy ma czop odpowiadający gniazdu, a koniec zewnętrzny współpracuje z drewnianym obwodem. Kluczowe są ciągłość włókien, kontrola przekroju, kształt powierzchni oparcia oraz zgodność z projektową geometrią."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Nie zaczynaj od obcięcia wszystkich szprych 'na jeden wymiar', jeżeli projekt ma talerzowatość albo zróżnicowane miejsca podparcia. Ustal bazę pomiarową między gniazdem piasty a gniazdem w dzwonie, dodaj wymiary czopów zgodnie z rysunkiem oraz pomiaru po montażu. Model z papieru lub kartonu pozwala sprawdzić położenie końców bez pracy na maszynach."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Załóż dla lekcji 14 osi szprych. Równy podział to około 25,714°. Dwa sąsiednie czopy mają inny profil — sama równa odległość kątowa nie zapewnia powtarzalnego oparcia. Wady trzeba opisać i porównać ze specyfikacją."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Jedna szprycha ma duże pęknięcie blisko czopa, ale jej widoczna długość jest idealna. Ustal, dlaczego pomiar długości nie wystarcza do jej przyjęcia jako elementu nośnego."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Wykonaj kartę sześciu szprych z kolumnami: oś/rozstaw, gatunek i włókna, kształt czopa, widoczna wada, decyzja o przyjęciu, źródło wymiaru. Zapisz, co można pomierzyć na modelu, a co wymaga fachowej oceny obciążenia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://merl.reading.ac.uk/explore/online-exhibitions/shoulder-to-the-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Szprycha musi być poprawnie dopasowana do piasty i dzwona. Tradycyjnie wykorzystywano odpowiednio sezonowany dąb i formowano zgrubnie narzędziami ciesielskimi, następnie dopracowywano strugiem. Koniec piastowy ma czop odpowiadający gniazdu, a koniec zewnętrzny współpracuje z drewnianym obwodem. Kluczowe są ciągłość włókien, kontrola przekroju, kształt powierzchni oparcia oraz zgodność z projektową geometrią.",
+          "situation": "Jedna szprycha ma duże pęknięcie blisko czopa, ale jej widoczna długość jest idealna. Ustal, dlaczego pomiar długości nie wystarcza do jej przyjęcia jako elementu nośnego.",
+          "task": "Wykonaj kartę sześciu szprych z kolumnami: oś/rozstaw, gatunek i włókna, kształt czopa, widoczna wada, decyzja o przyjęciu, źródło wymiaru. Zapisz, co można pomierzyć na modelu, a co wymaga fachowej oceny obciążenia.",
+          "question": "Co jest najsilniejszym argumentem za odrzuceniem szprychy mimo prawidłowej długości?",
+          "options": [
+            "Drobna różnica koloru po olejowaniu.",
+            "Duże pęknięcie przechodzące przez strefę czopa.",
+            "Inny odcień rysunku technicznego.",
+            "Brak dekoracyjnego napisu producenta."
+          ],
+          "correct": 1,
+          "example": "Duże pęknięcie przechodzące przez strefę czopa.",
+          "explanation": "Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
+            "Poprawnie. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
+            "Przeanalizuj dane i funkcję elementu. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
+            "Przeanalizuj dane i funkcję elementu. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 7,
+      "title_pl": "8. Dzwona: segmenty łuku, połączenia i geometria obręczy",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-geometria",
+        "sections": [
+          {
+            "heading": "Fundamenty i pojęcia",
+            "text": "Dzwona to zakrzywione drewniane segmenty tworzące obwód koła. Są osadzane na końcach szprych i łączone między sobą zgodnie z historycznym rozwiązaniem. Na przykładzie muzealnego koła z 14 szprychami i 7 dzwonami widać, że liczba segmentów nie musi być równa liczbie szprych. Kształt segmentu trzeba określić na łuku, a nie wycinać proste odcinki o długości obliczonej z obwodu."
+          },
+          {
+            "heading": "Narzędzia, proces i metoda",
+            "text": "Dla idealnego koła D=900 mm i 8 dzwon obwód wynosi 900π≈2827,43 mm; długość łuku przypadająca na jeden segment to ~353,43 mm. Prosta cięciwa między końcami tego samego łuku ma długość 2R sin(π/8)=900 sin(22,5°)≈344,42 mm. Różnica około 9 mm pokazuje, że łuk i prosta cięciwa nie są tym samym. Są to wartości geometrii, nie szablon z naddatkami i wymiarami połączeń."
+          },
+          {
+            "heading": "Przykład z liczbami lub pomiarem",
+            "text": "Ktoś dzieli obwód przez 8 i odmierza po 353,4 mm prostej od linii do linii na desce, zakładając, że dostanie idealny ośmiobok. Zapomina o różnicy między łukiem, cięciwą i rzeczywistym profilem dzwona; po złożeniu mogą powstać niedopasowania."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Projekt ma 8 segmentów i 16 szprych, ale materiał na dwa segmenty ma pęknięcia czołowe. Wyjaśnij, dlaczego nie należy wymuszać dopasowania obręczą ani zamieniać ich na przypadkowe proste listwy."
+          },
+          {
+            "heading": "Praca ucznia i kryteria sprawdzenia",
+            "text": "Narysuj koło D=900 mm z 8 dzwonami. Porównaj teoretyczny łuk 353,43 mm z cięciwą 344,42 mm. Oznacz miejsca styku, gniazda szprych i części, których nadal brak do wykonania szablonu (szerokość, grubość, profil, czopy, naddatki)."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło fachowe lub muzealne",
+            "url": "https://museum.wales/collections/online/object/c92c1c74-5534-34bf-91d5-b6ade7331896/Cart-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Dzwona to zakrzywione drewniane segmenty tworzące obwód koła. Są osadzane na końcach szprych i łączone między sobą zgodnie z historycznym rozwiązaniem. Na przykładzie muzealnego koła z 14 szprychami i 7 dzwonami widać, że liczba segmentów nie musi być równa liczbie szprych. Kształt segmentu trzeba określić na łuku, a nie wycinać proste odcinki o długości obliczonej z obwodu.",
+          "situation": "Projekt ma 8 segmentów i 16 szprych, ale materiał na dwa segmenty ma pęknięcia czołowe. Wyjaśnij, dlaczego nie należy wymuszać dopasowania obręczą ani zamieniać ich na przypadkowe proste listwy.",
+          "task": "Narysuj koło D=900 mm z 8 dzwonami. Porównaj teoretyczny łuk 353,43 mm z cięciwą 344,42 mm. Oznacz miejsca styku, gniazda szprych i części, których nadal brak do wykonania szablonu (szerokość, grubość, profil, czopy, naddatki).",
+          "question": "Dla idealnego koła D=900 mm i 8 równych dzwon długość łuku i prostej cięciwy na jeden segment są...",
+          "options": [
+            "Jednakowe i równe 900/8=112,5 mm.",
+            "Łuk około 344,4 mm, a cięciwa około 353,4 mm.",
+            "Łuk i cięciwa po około 900 mm.",
+            "Łuk około 353,4 mm, cięciwa około 344,4 mm."
+          ],
+          "correct": 3,
+          "example": "Łuk około 353,4 mm, cięciwa około 344,4 mm.",
+          "explanation": "Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
+          "feedback": [
+            "Przeanalizuj dane i funkcję elementu. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
+            "Przeanalizuj dane i funkcję elementu. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
+            "Przeanalizuj dane i funkcję elementu. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
+            "Poprawnie. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne."
+          ]
+        }
+      }
+    }
+  ]
+}
