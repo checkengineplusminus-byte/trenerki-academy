@@ -1,0 +1,493 @@
+{
+  "slug": "plecionkarz",
+  "lessons": [
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 8,
+      "title_pl": "9. Zakończenie obrzeża: stabilizacja i bezpieczeństwo",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-obrzeze",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Obrzeże zamyka górne końce słupków i stabilizuje kosz. Nie jest tylko dekoracją. Wystające końcówki mogą skaleczyć ręce lub uszkodzić zawartość."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Przed zakończeniem kontroluj wysokość ścian, rozstaw słupków i elastyczność prętów. Różne wzory obrzeży wymagają odmiennego przeplatania końców."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "W koszu jeden słupek wystaje 12 mm i ma pęknięcie. To potencjalna wada użytkowa, nawet gdy obrzeże wygląda ładnie."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Klient zamawia kosz na drobne produkty. Przed odbiorem trzeba ocenić ostre końce, niedomknięte słupki i uszkodzenia."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj przekrój obrzeża i kartę pięciu usterek: lokalizacja, ryzyko, dowód, decyzja i sposób kontroli."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://englandarchive.org/glossary/basket-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Obrzeże zamyka górne końce słupków i stabilizuje kosz. Nie jest tylko dekoracją. Wystające końcówki mogą skaleczyć ręce lub uszkodzić zawartość.",
+          "situation": "Klient zamawia kosz na drobne produkty. Przed odbiorem trzeba ocenić ostre końce, niedomknięte słupki i uszkodzenia.",
+          "task": "Narysuj przekrój obrzeża i kartę pięciu usterek: lokalizacja, ryzyko, dowód, decyzja i sposób kontroli.",
+          "question": "Jaka jest konstrukcyjna rola obrzeża?",
+          "options": [
+            "Jedynie barwi pręty.",
+            "Zastępuje dno.",
+            "Zamyka i stabilizuje końce słupków.",
+            "Zastępuje osnowę."
+          ],
+          "correct": 2,
+          "example": "Zamyka i stabilizuje końce słupków.",
+          "explanation": "Zamyka słupki i stabilizuje górną krawędź.",
+          "feedback": [
+            "Niepoprawnie. Zamyka słupki i stabilizuje górną krawędź.",
+            "Niepoprawnie. Zamyka słupki i stabilizuje górną krawędź.",
+            "Poprawnie. Zamyka słupki i stabilizuje górną krawędź.",
+            "Niepoprawnie. Zamyka słupki i stabilizuje górną krawędź."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 9,
+      "title_pl": "10. Uchwyty: mocowanie, siły i ryzyko zerwania",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-uchwyt",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Uchwyt przenosi ciężar kosza oraz zawartości. Istotne są przekrój, ciągłość włókien i zakotwienie w konstrukcji, a nie tylko wygląd plecionego łuku."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Przy masie 4 kg modelowy statyczny ciężar wynosi 4×9,81=39,24 N. Dwa symetrycznie obciążone uchwyty mogą przenosić po 19,62 N. To nie jest zadeklarowana nośność."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Jeden uchwyt wysuwa się ze słupków, a pobliska krawędź pęka. Ozdobny oplot nie zastąpi wzmocnienia połączenia."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "W koszu z dwoma uchwytami jedna strona opada. Trzeba sprawdzić rozkład masy i oba mocowania, nie tylko dołożyć dekorację."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj drogę siły w koszu, policz ciężar 4 kg i podaj punkty kontroli. Wyjaśnij ryzyko dynamicznego szarpnięcia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://englandarchive.org/glossary/basket-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Uchwyt przenosi ciężar kosza oraz zawartości. Istotne są przekrój, ciągłość włókien i zakotwienie w konstrukcji, a nie tylko wygląd plecionego łuku.",
+          "situation": "W koszu z dwoma uchwytami jedna strona opada. Trzeba sprawdzić rozkład masy i oba mocowania, nie tylko dołożyć dekorację.",
+          "task": "Narysuj drogę siły w koszu, policz ciężar 4 kg i podaj punkty kontroli. Wyjaśnij ryzyko dynamicznego szarpnięcia.",
+          "question": "Ile w przybliżeniu wynosi statyczna siła ciężaru 4 kg?",
+          "options": [
+            "4 N.",
+            "39,2 N.",
+            "19,6 N dla całego kosza.",
+            "392 N."
+          ],
+          "correct": 1,
+          "example": "39,2 N.",
+          "explanation": "4×9,81≈39,2 N; w ruchu siła może być większa.",
+          "feedback": [
+            "Niepoprawnie. 4×9,81≈39,2 N; w ruchu siła może być większa.",
+            "Poprawnie. 4×9,81≈39,2 N; w ruchu siła może być większa.",
+            "Niepoprawnie. 4×9,81≈39,2 N; w ruchu siła może być większa.",
+            "Niepoprawnie. 4×9,81≈39,2 N; w ruchu siła może być większa."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 10,
+      "title_pl": "11. Geometria okrągłego i owalnego dna",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-dno",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Kosze o tej samej wysokości mogą mieć inną pojemność, jeśli dno jest owalne lub okrągłe. Geometria rozstawienia osnowy różni się w częściach prostszych i bardziej zakrzywionych."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Dla elipsy o półosiach 20 cm i 12 cm pole rzutu to π×20×12≈754 cm². Koło o promieniu 15 cm ma pole π×15²≈707 cm². Różnica wynosi około 47 cm²."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Dla 25 cm wysokości nie należy porównywać pojemności koszy wyłącznie przez wysokość. Trzeba uwzględnić dno, zwężenie i grubość ściany."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Projekt kosza owalnego bez wymiaru szerokości nie pozwala zweryfikować dopasowania do wnęki ani planowanego materiału."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj elipsę 40×24 cm i koło Ø30 cm, policz pola i wskaż, gdzie model geometryczny nie opisuje gotowego wyrobu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.basketryandbeyond.org.uk/wp-content/uploads/2013/10/Techniques-Panels-1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Kosze o tej samej wysokości mogą mieć inną pojemność, jeśli dno jest owalne lub okrągłe. Geometria rozstawienia osnowy różni się w częściach prostszych i bardziej zakrzywionych.",
+          "situation": "Projekt kosza owalnego bez wymiaru szerokości nie pozwala zweryfikować dopasowania do wnęki ani planowanego materiału.",
+          "task": "Narysuj elipsę 40×24 cm i koło Ø30 cm, policz pola i wskaż, gdzie model geometryczny nie opisuje gotowego wyrobu.",
+          "question": "Ile wynosi pole elipsy o półosiach 20 i 12 cm?",
+          "options": [
+            "377 cm².",
+            "640 cm².",
+            "1257 cm².",
+            "754 cm²."
+          ],
+          "correct": 3,
+          "example": "754 cm².",
+          "explanation": "πab≈754 cm².",
+          "feedback": [
+            "Niepoprawnie. πab≈754 cm².",
+            "Niepoprawnie. πab≈754 cm².",
+            "Niepoprawnie. πab≈754 cm².",
+            "Poprawnie. πab≈754 cm²."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 11,
+      "title_pl": "12. Diagnostyka: pęknięcia, luzy, skrzywienie i wilgoć",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-diagnoza",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Pęknięty słupek, luźny wątek, odkształcone dno i podejrzane plamy to różne objawy. Powodem mogą być wady materiału, błędne napięcie, skurcz przy suszeniu albo nieodpowiednie warunki przechowywania."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Zapisz partię, materiał, typ splotu, lokalizację usterki, warunki użytkowania i zdjęcia. Przy podejrzeniu pleśni nie ukrywaj śladów farbą; potrzebna jest fachowa ocena źródła wilgoci."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Jeśli w 20 koszach wykryto sześć wad, każdą w innej sztuce, 6/20=30% wyrobów ma niezgodność. Jeśli kilka wad nakłada się w jednej sztuce, odsetek może być niższy."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Kosz stojący w wilgotnym magazynie ma zapach stęchlizny i ciemne plamki. Przed wydaniem klientowi wymaga oceny."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Sporządź kartę sześciu usterek z dowodem i decyzją. Odróżnij liczbę wad od liczby wadliwych wyrobów."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/basketry-plant-materials.html"
+          }
+        ],
+        "learning": {
+          "intro": "Pęknięty słupek, luźny wątek, odkształcone dno i podejrzane plamy to różne objawy. Powodem mogą być wady materiału, błędne napięcie, skurcz przy suszeniu albo nieodpowiednie warunki przechowywania.",
+          "situation": "Kosz stojący w wilgotnym magazynie ma zapach stęchlizny i ciemne plamki. Przed wydaniem klientowi wymaga oceny.",
+          "task": "Sporządź kartę sześciu usterek z dowodem i decyzją. Odróżnij liczbę wad od liczby wadliwych wyrobów.",
+          "question": "W 20 koszach jest sześć usterek, każda w innej sztuce. Jaki udział sztuk ma wady?",
+          "options": [
+            "30%.",
+            "6%.",
+            "20%.",
+            "60%."
+          ],
+          "correct": 0,
+          "example": "30%.",
+          "explanation": "6/20=30% wadliwych sztuk.",
+          "feedback": [
+            "Poprawnie. 6/20=30% wadliwych sztuk.",
+            "Niepoprawnie. 6/20=30% wadliwych sztuk.",
+            "Niepoprawnie. 6/20=30% wadliwych sztuk.",
+            "Niepoprawnie. 6/20=30% wadliwych sztuk."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 12,
+      "title_pl": "13. Kosz historyczny: dokumentowanie przed konserwacją",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-material",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Stary kosz może zachowywać informacje o regionalnym splocie, pierwotnej barwie, śladach narzędzi i dawnych naprawach. Wymiana wszystkich prętów pozbawia go części informacji historycznej."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Dokumentuj wymiary, stan, dawne naprawy, miejsce pochodzenia i fotografie. Kontroluj wilgotność, światło i szkodniki. Zabytek nie powinien być moczony ani impregnowany bez decyzji konserwatora."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Odmiennie wybarwiona łata może być oryginalnym wzorem albo naprawą. Sam kolor nie wystarcza do datowania."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Muzeum chce całkowicie odnowić zabytkowe obrzeże 'jak nowe'. Wcześniejsza ocena wpływu na autentyczność jest konieczna."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Zrób dwie karty prac: nowy kosz użytkowy i eksponat. Wskaż różnice w dokumentacji, ocenie i dopuszczalnym działaniu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/basketry-plant-materials.html"
+          }
+        ],
+        "learning": {
+          "intro": "Stary kosz może zachowywać informacje o regionalnym splocie, pierwotnej barwie, śladach narzędzi i dawnych naprawach. Wymiana wszystkich prętów pozbawia go części informacji historycznej.",
+          "situation": "Muzeum chce całkowicie odnowić zabytkowe obrzeże 'jak nowe'. Wcześniejsza ocena wpływu na autentyczność jest konieczna.",
+          "task": "Zrób dwie karty prac: nowy kosz użytkowy i eksponat. Wskaż różnice w dokumentacji, ocenie i dopuszczalnym działaniu.",
+          "question": "Co należy zrobić przed ingerencją w zabytkowy kosz?",
+          "options": [
+            "Wymienić wszystkie końce.",
+            "Zanurzyć w gorącej wodzie.",
+            "Udokumentować stan i ocenić oryginalne materiały.",
+            "Pokryć farbą wszystkie przebarwienia."
+          ],
+          "correct": 2,
+          "example": "Udokumentować stan i ocenić oryginalne materiały.",
+          "explanation": "Dokumentacja i ocena stanu poprzedzają ingerencję.",
+          "feedback": [
+            "Niepoprawnie. Dokumentacja i ocena stanu poprzedzają ingerencję.",
+            "Niepoprawnie. Dokumentacja i ocena stanu poprzedzają ingerencję.",
+            "Poprawnie. Dokumentacja i ocena stanu poprzedzają ingerencję.",
+            "Niepoprawnie. Dokumentacja i ocena stanu poprzedzają ingerencję."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 13,
+      "title_pl": "14. Ergonomia i bezpieczeństwo pracy plecionkarza",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-narzedzia",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Przy pracy występują skaleczenia, ukłucia, powtarzalne ruchy dłoni, długotrwałe pochylenie, mokre podłoże i kontakt z materiałem biologicznym. Nawet lekki kosz może wymagać wielu obciążających ruchów."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Sekator i nóż wymagają zabezpieczenia i odpowiedniej techniki. Dopasowana wysokość stanowiska, łatwy dostęp do materiału, czystość i zmiana pozycji ograniczają niepotrzebne obciążenia."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Pracownik wykonuje osiem koszy dziennie w jednej wymuszonej pozycji. Zmęczenie nadgarstków wskazuje na konieczność przeglądu ergonomii."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Na podłodze leży mokra wiklina, a sekator ma odsłonięte ostrze przy nodze. Najpierw uporządkuj stanowisko."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj strefę przygotowania, wyplatania i odpadów. Przygotuj analizę ryzyka obejmującą osiem zagrożeń."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://heritagecrafts.org.uk/craft/basket-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Przy pracy występują skaleczenia, ukłucia, powtarzalne ruchy dłoni, długotrwałe pochylenie, mokre podłoże i kontakt z materiałem biologicznym. Nawet lekki kosz może wymagać wielu obciążających ruchów.",
+          "situation": "Na podłodze leży mokra wiklina, a sekator ma odsłonięte ostrze przy nodze. Najpierw uporządkuj stanowisko.",
+          "task": "Narysuj strefę przygotowania, wyplatania i odpadów. Przygotuj analizę ryzyka obejmującą osiem zagrożeń.",
+          "question": "Co ogranicza przeciążenia i zagrożenia organizacyjne?",
+          "options": [
+            "Brak przerw.",
+            "Właściwa wysokość stanowiska, porządek i przerwy.",
+            "Otwarte ostrza przy podłodze.",
+            "Ciągłe nachylanie się po pręty."
+          ],
+          "correct": 1,
+          "example": "Właściwa wysokość stanowiska, porządek i przerwy.",
+          "explanation": "Ergonomia i organizacja zmniejszają powtarzalne przeciążenia.",
+          "feedback": [
+            "Niepoprawnie. Ergonomia i organizacja zmniejszają powtarzalne przeciążenia.",
+            "Poprawnie. Ergonomia i organizacja zmniejszają powtarzalne przeciążenia.",
+            "Niepoprawnie. Ergonomia i organizacja zmniejszają powtarzalne przeciążenia.",
+            "Niepoprawnie. Ergonomia i organizacja zmniejszają powtarzalne przeciążenia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 14,
+      "title_pl": "15. Kosztorys: długość surowca, odrzuty i robocizna",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-koszt",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Koszt kosza zależy od rodzaju wikliny, ilości prętów, odrzutów, zużycia narzędzi, czasu pracy i kosztów pośrednich. Nie zakładaj takiego samego uzysku surowca w każdej partii."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "60 prętów po 1,2 m daje 72 m przydatnej długości. Przy uzysku 80% trzeba 72/0,8=90 m surowca. Materiał po 2 zł/m: 180 zł, trzy godziny pracy po 50 zł: 150 zł, koszty dodatkowe 20 zł, razem 350 zł bezpośrednio."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Sprzedaż za 420 zł przy kosztach 350 zł daje 70 zł przed innymi kosztami i podatkami, a nie potwierdzony zysk netto."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Klient oferuje 250 zł przy kosztach bezpośrednich 350 zł. Bez zmiany założeń taka transakcja daje stratę bezpośrednią."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Przygotuj arkusz dla uzysku 70%, 80% i 90%; policz zakup surowca oraz oddziel przychód od pozostałej kwoty."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://englandarchive.org/glossary/basket-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Koszt kosza zależy od rodzaju wikliny, ilości prętów, odrzutów, zużycia narzędzi, czasu pracy i kosztów pośrednich. Nie zakładaj takiego samego uzysku surowca w każdej partii.",
+          "situation": "Klient oferuje 250 zł przy kosztach bezpośrednich 350 zł. Bez zmiany założeń taka transakcja daje stratę bezpośrednią.",
+          "task": "Przygotuj arkusz dla uzysku 70%, 80% i 90%; policz zakup surowca oraz oddziel przychód od pozostałej kwoty.",
+          "question": "Ile surowca potrzeba przy 72 m materiału użytkowego i uzysku 80%?",
+          "options": [
+            "57,6 m.",
+            "72 m.",
+            "80 m.",
+            "90 m."
+          ],
+          "correct": 3,
+          "example": "90 m.",
+          "explanation": "72/0,8=90 m.",
+          "feedback": [
+            "Niepoprawnie. 72/0,8=90 m.",
+            "Niepoprawnie. 72/0,8=90 m.",
+            "Niepoprawnie. 72/0,8=90 m.",
+            "Poprawnie. 72/0,8=90 m."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 15,
+      "title_pl": "16. Projekt końcowy: kosz Ø30 cm z dwoma uchwytami",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-dno",
+        "sections": [
+          {
+            "heading": "Zasady materiałowe i konstrukcja",
+            "text": "Zaprojektuj kosz o średnicy dna 30 cm i wysokości 25 cm, z dwoma uchwytami. Opisz materiał, dno, osnowę, wątek, pas wzmacniający i obrzeże. Nie deklaruj nośności bez prób i oceny konstrukcji."
+          },
+          {
+            "heading": "Proces i obliczenia",
+            "text": "Obwód dna π×30≈94,25 cm, pole π×15²≈706,86 cm². Przy 24 punktach osnowy odstęp wzdłuż obwodu to 94,25/24≈3,93 cm. To jedynie geometria modelowa."
+          },
+          {
+            "heading": "Przykład zastosowania",
+            "text": "Jeśli góra ma średnicę 29 cm przy podstawie 30 cm, odchylenie wynosi (30−29)/30≈3,33%. Ocena zgodności wymaga tolerancji w zamówieniu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Wyrób ma poprawne dno, ale luźny uchwyt i pękniętą ścianę. Należy rozdzielić pozytywny wynik pomiaru od wad użytkowych."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Oddaj trzy widoki, przekrój, obliczenia, listę materiałów, kosztorys i dziesięciopunktowy protokół jakości."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.basketryandbeyond.org.uk/wp-content/uploads/2013/10/Techniques-Panels-1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Zaprojektuj kosz o średnicy dna 30 cm i wysokości 25 cm, z dwoma uchwytami. Opisz materiał, dno, osnowę, wątek, pas wzmacniający i obrzeże. Nie deklaruj nośności bez prób i oceny konstrukcji.",
+          "situation": "Wyrób ma poprawne dno, ale luźny uchwyt i pękniętą ścianę. Należy rozdzielić pozytywny wynik pomiaru od wad użytkowych.",
+          "task": "Oddaj trzy widoki, przekrój, obliczenia, listę materiałów, kosztorys i dziesięciopunktowy protokół jakości.",
+          "question": "Ile wynosi średni odstęp 24 pozycji osnowy przy średnicy 30 cm?",
+          "options": [
+            "1,25 cm.",
+            "3,93 cm.",
+            "7,85 cm.",
+            "12,5 cm."
+          ],
+          "correct": 1,
+          "example": "3,93 cm.",
+          "explanation": "π×30/24≈3,93 cm.",
+          "feedback": [
+            "Niepoprawnie. π×30/24≈3,93 cm.",
+            "Poprawnie. π×30/24≈3,93 cm.",
+            "Niepoprawnie. π×30/24≈3,93 cm.",
+            "Niepoprawnie. π×30/24≈3,93 cm."
+          ]
+        }
+      }
+    }
+  ]
+}
