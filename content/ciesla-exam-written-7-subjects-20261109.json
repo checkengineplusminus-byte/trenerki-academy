@@ -1,0 +1,342 @@
+{
+  "course_slug": "ciesla-przygotowanie-czeladnicze",
+  "lesson_kind": "written_exam_subjects",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 56,
+      "title_pl": "57. Rachunkowość zawodowa: procenty, stawki i koszt pracy",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.1",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Cieśla prowadzący zlecenie musi rozróżniać koszt materiału, robocizny, dodatków, rabatów i kwoty końcowej. Procent jest częścią liczby: wzrost o 18% oznacza przemnożenie wartości przez 1,18. Wynagrodzenie brutto przy stawce godzinowej to liczba godzin razy stawka, zanim zastosuje się właściwe potrącenia."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "Przykład własny: usługa 250 zł i dodatek 12% kosztują 250 × 1,12 = 280 zł. Pracownik mający 160 h po 25 zł brutto/h uzyskuje 4000 zł wynagrodzenia brutto. Dla trzech zespołów budżet trzeba rozdzielić zgodnie z określonym udziałem, nie według przeczucia."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "Firma otrzymała kosztorys 5000 zł netto z 8% dodatkiem logistycznym. Poprawna suma przed innymi podatkami to 5400 zł; odróżniaj wzrost procentowy od punktów procentowych."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: Firma otrzymała kosztorys 5000 zł netto z 8% dodatkiem logistycznym. Poprawna suma przed innymi podatkami to 5400 zł; odróżniaj wzrost procentowy od punktów procentowych. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Cieśla prowadzący zlecenie musi rozróżniać koszt materiału, robocizny, dodatków, rabatów i kwoty końcowej. Procent jest częścią liczby: wzrost o 18% oznacza przemnożenie wartości przez 1,18. Wynagrodzenie brutto przy stawce godzinowej to liczba godzin razy stawka, zanim zastosuje się właściwe potrącenia.",
+          "situation": "Firma otrzymała kosztorys 5000 zł netto z 8% dodatkiem logistycznym. Poprawna suma przed innymi podatkami to 5400 zł; odróżniaj wzrost procentowy od punktów procentowych.",
+          "question": "Jak obliczyć cenę 250 zł powiększoną o 12%?",
+          "options": [
+            "250 zł + 12 zł = 262 zł.",
+            "250 zł × 1,12 = 280 zł.",
+            "250 zł / 1,12 = 223,21 zł.",
+            "250 zł × 0,12 = 30 zł jako pełną cenę."
+          ],
+          "correct": 1,
+          "example": "250 zł × 1,12 = 280 zł.",
+          "explanation": "Przykład własny: usługa 250 zł i dodatek 12% kosztują 250 × 1,12 = 280 zł. Pracownik mający 160 h po 25 zł brutto/h uzyskuje 4000 zł wynagrodzenia brutto. Dla trzech zespołów budżet trzeba rozdzielić zgodnie z określonym udziałem, nie według przeczucia.",
+          "feedback": [
+            "Sprawdź wymagane dane. Przykład własny: usługa 250 zł i dodatek 12% kosztują 250 × 1,12 = 280 zł. Pracownik mający 160 h po 25 zł brutto/h uzyskuje 4000 zł wynagrodzenia brutto. Dla trzech zespołów budżet trzeba rozdzielić zgodnie z określonym udziałem, nie według przeczucia.",
+            "Prawidłowo. Przykład własny: usługa 250 zł i dodatek 12% kosztują 250 × 1,12 = 280 zł. Pracownik mający 160 h po 25 zł brutto/h uzyskuje 4000 zł wynagrodzenia brutto. Dla trzech zespołów budżet trzeba rozdzielić zgodnie z określonym udziałem, nie według przeczucia.",
+            "Sprawdź wymagane dane. Przykład własny: usługa 250 zł i dodatek 12% kosztują 250 × 1,12 = 280 zł. Pracownik mający 160 h po 25 zł brutto/h uzyskuje 4000 zł wynagrodzenia brutto. Dla trzech zespołów budżet trzeba rozdzielić zgodnie z określonym udziałem, nie według przeczucia.",
+            "Sprawdź wymagane dane. Przykład własny: usługa 250 zł i dodatek 12% kosztują 250 × 1,12 = 280 zł. Pracownik mający 160 h po 25 zł brutto/h uzyskuje 4000 zł wynagrodzenia brutto. Dla trzech zespołów budżet trzeba rozdzielić zgodnie z określonym udziałem, nie według przeczucia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 57,
+      "title_pl": "58. Dokumentacja firmy: biznesplan, pismo i dokumenty",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.2",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Biznesplan jest narzędziem do oceny przedsięwzięcia: jego celów, klientów, nakładów, kosztów, ryzyk i sposobu finansowania. Pismo oficjalne powinno umożliwiać identyfikację nadawcy, adresata, daty, przedmiotu i treści. Formularz podatkowy to nie to samo co plan finansowy, a dokumenty obowiązkowe zależą od kraju i aktualnych przepisów."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "Na przykładzie fikcyjnego warsztatu ciesielskiego przygotuj ofertę zawierającą zakres, materiał, termin, cenę i warunki zmiany. Potem sporządź krótkie pismo zgłoszenia wady materiału: data, dane stron, numer dostawy, opis, zdjęcie i oczekiwana odpowiedź."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "W ofercie napisano tylko 'wykonać dach tanio'. Brakuje rysunku, ilości, materiału, terminów i kryteriów odbioru, co uniemożliwia rzetelne rozliczenie."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: W ofercie napisano tylko 'wykonać dach tanio'. Brakuje rysunku, ilości, materiału, terminów i kryteriów odbioru, co uniemożliwia rzetelne rozliczenie. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Biznesplan jest narzędziem do oceny przedsięwzięcia: jego celów, klientów, nakładów, kosztów, ryzyk i sposobu finansowania. Pismo oficjalne powinno umożliwiać identyfikację nadawcy, adresata, daty, przedmiotu i treści. Formularz podatkowy to nie to samo co plan finansowy, a dokumenty obowiązkowe zależą od kraju i aktualnych przepisów.",
+          "situation": "W ofercie napisano tylko 'wykonać dach tanio'. Brakuje rysunku, ilości, materiału, terminów i kryteriów odbioru, co uniemożliwia rzetelne rozliczenie.",
+          "question": "Który zestaw informacji najlepiej nadaje się do oficjalnego zgłoszenia reklamacji?",
+          "options": [
+            "Wyłącznie emocjonalny komentarz bez daty.",
+            "Numer telefonu bez identyfikacji dostawy.",
+            "Daty, strony, przedmiot, opis wady i podpis lub identyfikacja osoby zgłaszającej.",
+            "Dowolny skrót bez opisu."
+          ],
+          "correct": 2,
+          "example": "Daty, strony, przedmiot, opis wady i podpis lub identyfikacja osoby zgłaszającej.",
+          "explanation": "Na przykładzie fikcyjnego warsztatu ciesielskiego przygotuj ofertę zawierającą zakres, materiał, termin, cenę i warunki zmiany. Potem sporządź krótkie pismo zgłoszenia wady materiału: data, dane stron, numer dostawy, opis, zdjęcie i oczekiwana odpowiedź.",
+          "feedback": [
+            "Sprawdź wymagane dane. Na przykładzie fikcyjnego warsztatu ciesielskiego przygotuj ofertę zawierającą zakres, materiał, termin, cenę i warunki zmiany. Potem sporządź krótkie pismo zgłoszenia wady materiału: data, dane stron, numer dostawy, opis, zdjęcie i oczekiwana odpowiedź.",
+            "Sprawdź wymagane dane. Na przykładzie fikcyjnego warsztatu ciesielskiego przygotuj ofertę zawierającą zakres, materiał, termin, cenę i warunki zmiany. Potem sporządź krótkie pismo zgłoszenia wady materiału: data, dane stron, numer dostawy, opis, zdjęcie i oczekiwana odpowiedź.",
+            "Prawidłowo. Na przykładzie fikcyjnego warsztatu ciesielskiego przygotuj ofertę zawierającą zakres, materiał, termin, cenę i warunki zmiany. Potem sporządź krótkie pismo zgłoszenia wady materiału: data, dane stron, numer dostawy, opis, zdjęcie i oczekiwana odpowiedź.",
+            "Sprawdź wymagane dane. Na przykładzie fikcyjnego warsztatu ciesielskiego przygotuj ofertę zawierającą zakres, materiał, termin, cenę i warunki zmiany. Potem sporządź krótkie pismo zgłoszenia wady materiału: data, dane stron, numer dostawy, opis, zdjęcie i oczekiwana odpowiedź."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 58,
+      "title_pl": "59. Rysunek zawodowy: szkic, rzutnia i skala",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.3",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Skala 1:1 oznacza wielkość rzeczywistą na rysunku, 1:2 zmniejszenie dwukrotne, a 2:1 powiększenie dwukrotne. Szkic może być odręczny i niekoniecznie w skali, ale powinien przekazywać istotne proporcje i informacje. Rzutnia jest płaszczyzną, na którą rzutuje się punkty i kształty."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "Ćwicz na belce długości 1200 mm. W skali 1:10 na papierze zajmie 120 mm, jednak wymiar napisany przy linii wymiarowej pozostaje 1200 mm. Odróżnij szkic koncepcyjny, rysunek wykonawczy, rzut i przekrój; podkreśl znaczenie rewizji rysunku."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "Uczeń mierzy linijką 10 cm na wydruku PDF pomniejszonym przez drukarkę i wykonuje 100 mm mimo wpisanego wymiaru 1250 mm."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: Uczeń mierzy linijką 10 cm na wydruku PDF pomniejszonym przez drukarkę i wykonuje 100 mm mimo wpisanego wymiaru 1250 mm. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Skala 1:1 oznacza wielkość rzeczywistą na rysunku, 1:2 zmniejszenie dwukrotne, a 2:1 powiększenie dwukrotne. Szkic może być odręczny i niekoniecznie w skali, ale powinien przekazywać istotne proporcje i informacje. Rzutnia jest płaszczyzną, na którą rzutuje się punkty i kształty.",
+          "situation": "Uczeń mierzy linijką 10 cm na wydruku PDF pomniejszonym przez drukarkę i wykonuje 100 mm mimo wpisanego wymiaru 1250 mm.",
+          "question": "Co ma pierwszeństwo przy wykonaniu belki z poprawnego rysunku technicznego?",
+          "options": [
+            "Wymiar podany liczbowo i wymagania dokumentacji.",
+            "Długość linii na przypadkowo wydrukowanej kartce.",
+            "Wielkość czcionki opisu.",
+            "Kolor oznaczenia bez legendy."
+          ],
+          "correct": 0,
+          "example": "Wymiar podany liczbowo i wymagania dokumentacji.",
+          "explanation": "Ćwicz na belce długości 1200 mm. W skali 1:10 na papierze zajmie 120 mm, jednak wymiar napisany przy linii wymiarowej pozostaje 1200 mm. Odróżnij szkic koncepcyjny, rysunek wykonawczy, rzut i przekrój; podkreśl znaczenie rewizji rysunku.",
+          "feedback": [
+            "Prawidłowo. Ćwicz na belce długości 1200 mm. W skali 1:10 na papierze zajmie 120 mm, jednak wymiar napisany przy linii wymiarowej pozostaje 1200 mm. Odróżnij szkic koncepcyjny, rysunek wykonawczy, rzut i przekrój; podkreśl znaczenie rewizji rysunku.",
+            "Sprawdź wymagane dane. Ćwicz na belce długości 1200 mm. W skali 1:10 na papierze zajmie 120 mm, jednak wymiar napisany przy linii wymiarowej pozostaje 1200 mm. Odróżnij szkic koncepcyjny, rysunek wykonawczy, rzut i przekrój; podkreśl znaczenie rewizji rysunku.",
+            "Sprawdź wymagane dane. Ćwicz na belce długości 1200 mm. W skali 1:10 na papierze zajmie 120 mm, jednak wymiar napisany przy linii wymiarowej pozostaje 1200 mm. Odróżnij szkic koncepcyjny, rysunek wykonawczy, rzut i przekrój; podkreśl znaczenie rewizji rysunku.",
+            "Sprawdź wymagane dane. Ćwicz na belce długości 1200 mm. W skali 1:10 na papierze zajmie 120 mm, jednak wymiar napisany przy linii wymiarowej pozostaje 1200 mm. Odróżnij szkic koncepcyjny, rysunek wykonawczy, rzut i przekrój; podkreśl znaczenie rewizji rysunku."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 59,
+      "title_pl": "60. BHP i ochrona przeciwpożarowa w warsztacie",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.4",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Przy maszynach do drewna zagrożenie obejmuje ruchome ostrza, odrzut, pył, hałas, energię elektryczną i pożar. Czyszczenie i konserwacja zasadniczo wymagają zatrzymania i zabezpieczenia maszyny przed uruchomieniem; wyjątki technologiczne muszą być wyraźnie przewidziane w dokumentacji sprzętu i bezpiecznych procedurach. Materiały szkoleniowe z 2025 r. mogą zawierać przepisy, które trzeba sprawdzić pod kątem aktualności."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "Na rysunku warsztatu zaznacz źródła zapłonu, miejsce odpylania, drogę ewakuacji i wyłącznik awaryjny. Przygotuj fikcyjną procedurę: zauważono wibracje → zatrzymaj → zabezpiecz energię → zgłoś → fachowa naprawa → dopuszczenie do pracy."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "Na osłonie pracującej piły gromadzą się trociny. Operator chce je wybrać ręką bez zatrzymywania maszyny."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: Na osłonie pracującej piły gromadzą się trociny. Operator chce je wybrać ręką bez zatrzymywania maszyny. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Przy maszynach do drewna zagrożenie obejmuje ruchome ostrza, odrzut, pył, hałas, energię elektryczną i pożar. Czyszczenie i konserwacja zasadniczo wymagają zatrzymania i zabezpieczenia maszyny przed uruchomieniem; wyjątki technologiczne muszą być wyraźnie przewidziane w dokumentacji sprzętu i bezpiecznych procedurach. Materiały szkoleniowe z 2025 r. mogą zawierać przepisy, które trzeba sprawdzić pod kątem aktualności.",
+          "situation": "Na osłonie pracującej piły gromadzą się trociny. Operator chce je wybrać ręką bez zatrzymywania maszyny.",
+          "question": "Jaka jest właściwa reakcja w takim scenariuszu?",
+          "options": [
+            "Szybko wybrać pył podczas ruchu tarczy.",
+            "Usunąć osłonę i kontynuować cięcie.",
+            "Ominąć wyłącznik, aby oszczędzić czas.",
+            "Zatrzymać i zabezpieczyć urządzenie oraz zastosować bezpieczną procedurę."
+          ],
+          "correct": 3,
+          "example": "Zatrzymać i zabezpieczyć urządzenie oraz zastosować bezpieczną procedurę.",
+          "explanation": "Na rysunku warsztatu zaznacz źródła zapłonu, miejsce odpylania, drogę ewakuacji i wyłącznik awaryjny. Przygotuj fikcyjną procedurę: zauważono wibracje → zatrzymaj → zabezpiecz energię → zgłoś → fachowa naprawa → dopuszczenie do pracy.",
+          "feedback": [
+            "Sprawdź wymagane dane. Na rysunku warsztatu zaznacz źródła zapłonu, miejsce odpylania, drogę ewakuacji i wyłącznik awaryjny. Przygotuj fikcyjną procedurę: zauważono wibracje → zatrzymaj → zabezpiecz energię → zgłoś → fachowa naprawa → dopuszczenie do pracy.",
+            "Sprawdź wymagane dane. Na rysunku warsztatu zaznacz źródła zapłonu, miejsce odpylania, drogę ewakuacji i wyłącznik awaryjny. Przygotuj fikcyjną procedurę: zauważono wibracje → zatrzymaj → zabezpiecz energię → zgłoś → fachowa naprawa → dopuszczenie do pracy.",
+            "Sprawdź wymagane dane. Na rysunku warsztatu zaznacz źródła zapłonu, miejsce odpylania, drogę ewakuacji i wyłącznik awaryjny. Przygotuj fikcyjną procedurę: zauważono wibracje → zatrzymaj → zabezpiecz energię → zgłoś → fachowa naprawa → dopuszczenie do pracy.",
+            "Prawidłowo. Na rysunku warsztatu zaznacz źródła zapłonu, miejsce odpylania, drogę ewakuacji i wyłącznik awaryjny. Przygotuj fikcyjną procedurę: zauważono wibracje → zatrzymaj → zabezpiecz energię → zgłoś → fachowa naprawa → dopuszczenie do pracy."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 60,
+      "title_pl": "61. Ochrona środowiska: odpady, recykling i emisje",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.5",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Odpady po obróbce drewna można dzielić na frakcje możliwe do odzysku, odpady opakowaniowe oraz materiały zanieczyszczone lub niebezpieczne. Recykling oznacza ponowne wykorzystanie materiału w procesie produkcyjnym, a odzysk energii to osobna kategoria. Spalanie impregnowanego drewna w przypadkowym piecu nie jest bezpiecznym gospodarowaniem odpadem."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "Przygotuj diagram stanowiska: czyste ścinki, opakowania, drewno z nieznaną powłoką, chemikalia i pył. Każdą kategorię oznacz procedurą magazynowania, identyfikacji i przekazania zgodnie z lokalnymi zasadami. Odróżnij źródła zanieczyszczeń powietrza od efektów ekologicznych."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "Na budowie obok czystych ścinków leżą deski z nieznaną starą impregnacją. Ktoś proponuje spalić wszystko jako opał."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: Na budowie obok czystych ścinków leżą deski z nieznaną starą impregnacją. Ktoś proponuje spalić wszystko jako opał. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Odpady po obróbce drewna można dzielić na frakcje możliwe do odzysku, odpady opakowaniowe oraz materiały zanieczyszczone lub niebezpieczne. Recykling oznacza ponowne wykorzystanie materiału w procesie produkcyjnym, a odzysk energii to osobna kategoria. Spalanie impregnowanego drewna w przypadkowym piecu nie jest bezpiecznym gospodarowaniem odpadem.",
+          "situation": "Na budowie obok czystych ścinków leżą deski z nieznaną starą impregnacją. Ktoś proponuje spalić wszystko jako opał.",
+          "question": "Dlaczego nie powinno się mieszać drewna o nieznanej impregnacji z czystym opałem?",
+          "options": [
+            "Ponieważ wszystkie odpady są identyczne.",
+            "Bo zanieczyszczenia mogą powodować emisje niebezpiecznych substancji.",
+            "Ponieważ recykling nie dotyczy drewna.",
+            "Bo wszystkie opakowania są odpadem chemicznym."
+          ],
+          "correct": 1,
+          "example": "Bo zanieczyszczenia mogą powodować emisje niebezpiecznych substancji.",
+          "explanation": "Przygotuj diagram stanowiska: czyste ścinki, opakowania, drewno z nieznaną powłoką, chemikalia i pył. Każdą kategorię oznacz procedurą magazynowania, identyfikacji i przekazania zgodnie z lokalnymi zasadami. Odróżnij źródła zanieczyszczeń powietrza od efektów ekologicznych.",
+          "feedback": [
+            "Sprawdź wymagane dane. Przygotuj diagram stanowiska: czyste ścinki, opakowania, drewno z nieznaną powłoką, chemikalia i pył. Każdą kategorię oznacz procedurą magazynowania, identyfikacji i przekazania zgodnie z lokalnymi zasadami. Odróżnij źródła zanieczyszczeń powietrza od efektów ekologicznych.",
+            "Prawidłowo. Przygotuj diagram stanowiska: czyste ścinki, opakowania, drewno z nieznaną powłoką, chemikalia i pył. Każdą kategorię oznacz procedurą magazynowania, identyfikacji i przekazania zgodnie z lokalnymi zasadami. Odróżnij źródła zanieczyszczeń powietrza od efektów ekologicznych.",
+            "Sprawdź wymagane dane. Przygotuj diagram stanowiska: czyste ścinki, opakowania, drewno z nieznaną powłoką, chemikalia i pył. Każdą kategorię oznacz procedurą magazynowania, identyfikacji i przekazania zgodnie z lokalnymi zasadami. Odróżnij źródła zanieczyszczeń powietrza od efektów ekologicznych.",
+            "Sprawdź wymagane dane. Przygotuj diagram stanowiska: czyste ścinki, opakowania, drewno z nieznaną powłoką, chemikalia i pył. Każdą kategorię oznacz procedurą magazynowania, identyfikacji i przekazania zgodnie z lokalnymi zasadami. Odróżnij źródła zanieczyszczeń powietrza od efektów ekologicznych."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 61,
+      "title_pl": "62. Prawo pracy: wynagrodzenie, młodociani i ryzyko",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.6",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Kursant powinien rozumieć sens wynagrodzenia za pracę, obowiązki stron i szczególną ochronę pracowników młodocianych. Archiwalne pytania o terminy szkolenia i szczegółowe normy nie mogą być bez weryfikacji uznane za stan prawny obowiązujący w 2026 r. Należy też odróżniać przepisy polskie od norweskich."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "W studium przypadku zapisz państwo zatrudnienia, wiek pracownika, plan godzin, stawkę, rodzaj stanowiska i wymagane szkolenia. Dopiero po ustaleniu jurysdykcji sprawdzaj aktualny przepis oraz ewentualne ograniczenia pracy nocnej i nadgodzin."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "Firma proponuje osobie niepełnoletniej zadania przy ciężkiej pilarce i pracę nocną, kierując się dawnym arkuszem bez sprawdzania wymagań."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: Firma proponuje osobie niepełnoletniej zadania przy ciężkiej pilarce i pracę nocną, kierując się dawnym arkuszem bez sprawdzania wymagań. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Kursant powinien rozumieć sens wynagrodzenia za pracę, obowiązki stron i szczególną ochronę pracowników młodocianych. Archiwalne pytania o terminy szkolenia i szczegółowe normy nie mogą być bez weryfikacji uznane za stan prawny obowiązujący w 2026 r. Należy też odróżniać przepisy polskie od norweskich.",
+          "situation": "Firma proponuje osobie niepełnoletniej zadania przy ciężkiej pilarce i pracę nocną, kierując się dawnym arkuszem bez sprawdzania wymagań.",
+          "question": "Jak właściwie ustalić, czy osoba młodociana może wykonywać dane zadanie?",
+          "options": [
+            "Na podstawie starej kartki bez daty.",
+            "Na podstawie zgody dowolnego pracownika.",
+            "Według aktualnych przepisów właściwego kraju, wieku, szkolenia i oceny ryzyka.",
+            "Według ceny usługi."
+          ],
+          "correct": 2,
+          "example": "Według aktualnych przepisów właściwego kraju, wieku, szkolenia i oceny ryzyka.",
+          "explanation": "W studium przypadku zapisz państwo zatrudnienia, wiek pracownika, plan godzin, stawkę, rodzaj stanowiska i wymagane szkolenia. Dopiero po ustaleniu jurysdykcji sprawdzaj aktualny przepis oraz ewentualne ograniczenia pracy nocnej i nadgodzin.",
+          "feedback": [
+            "Sprawdź wymagane dane. W studium przypadku zapisz państwo zatrudnienia, wiek pracownika, plan godzin, stawkę, rodzaj stanowiska i wymagane szkolenia. Dopiero po ustaleniu jurysdykcji sprawdzaj aktualny przepis oraz ewentualne ograniczenia pracy nocnej i nadgodzin.",
+            "Sprawdź wymagane dane. W studium przypadku zapisz państwo zatrudnienia, wiek pracownika, plan godzin, stawkę, rodzaj stanowiska i wymagane szkolenia. Dopiero po ustaleniu jurysdykcji sprawdzaj aktualny przepis oraz ewentualne ograniczenia pracy nocnej i nadgodzin.",
+            "Prawidłowo. W studium przypadku zapisz państwo zatrudnienia, wiek pracownika, plan godzin, stawkę, rodzaj stanowiska i wymagane szkolenia. Dopiero po ustaleniu jurysdykcji sprawdzaj aktualny przepis oraz ewentualne ograniczenia pracy nocnej i nadgodzin.",
+            "Sprawdź wymagane dane. W studium przypadku zapisz państwo zatrudnienia, wiek pracownika, plan godzin, stawkę, rodzaj stanowiska i wymagane szkolenia. Dopiero po ustaleniu jurysdykcji sprawdzaj aktualny przepis oraz ewentualne ograniczenia pracy nocnej i nadgodzin."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 62,
+      "title_pl": "63. Zakładanie i zarządzanie warsztatem ciesielskim",
+      "material": {
+        "module": 7,
+        "editorial_status": "review_needed",
+        "source_pages": "Test przykładowy s.7",
+        "sections": [
+          {
+            "heading": "Podstawy i definicje",
+            "text": "Działalność gospodarcza wymaga określenia produktu, klienta, ceny, kosztów, jakości, sposobu dokumentowania sprzedaży i obsługi reklamacji. Nazwa firmy to nie to samo co jej produkt, a obniżka ceny nie oznacza automatycznie rentownego zlecenia. Rzetelne zarządzanie wymaga obliczenia marży oraz ryzyka przestoju."
+          },
+          {
+            "heading": "Przykład przeanalizowany krok po kroku",
+            "text": "Przykład: materiały 4000 zł, robocizna 3000 zł i transport 1000 zł dają 8000 zł kosztu. Cena 10 000 zł oznacza 2000 zł nadwyżki przed pozostałymi kosztami i podatkami; to nie jest równoznaczne z zyskiem netto. Zapisz odrębnie koszt, przychód i wynik."
+          },
+          {
+            "heading": "Zastosowanie w zawodzie",
+            "text": "Firma daje klientowi 10% rabatu od wyceny 10 000 zł, otrzymuje 9000 zł przychodu przy kosztach bezpośrednich 8000 zł. Do pokrycia kosztów pozostało 1000 zł."
+          },
+          {
+            "heading": "Ćwiczenie z analizą",
+            "text": "Opracuj odpowiedź na zadanie: Firma daje klientowi 10% rabatu od wyceny 10 000 zł, otrzymuje 9000 zł przychodu przy kosztach bezpośrednich 8000 zł. Do pokrycia kosztów pozostało 1000 zł. Wskaż dane, obliczenia lub dokumenty, które muszą się pojawić w rozwiązaniu."
+          }
+        ],
+        "learning": {
+          "intro": "Działalność gospodarcza wymaga określenia produktu, klienta, ceny, kosztów, jakości, sposobu dokumentowania sprzedaży i obsługi reklamacji. Nazwa firmy to nie to samo co jej produkt, a obniżka ceny nie oznacza automatycznie rentownego zlecenia. Rzetelne zarządzanie wymaga obliczenia marży oraz ryzyka przestoju.",
+          "situation": "Firma daje klientowi 10% rabatu od wyceny 10 000 zł, otrzymuje 9000 zł przychodu przy kosztach bezpośrednich 8000 zł. Do pokrycia kosztów pozostało 1000 zł.",
+          "question": "Ile wyniesie przychód po 10% rabacie od 10 000 zł?",
+          "options": [
+            "9000 zł.",
+            "10 100 zł.",
+            "1000 zł.",
+            "11 000 zł."
+          ],
+          "correct": 0,
+          "example": "9000 zł.",
+          "explanation": "Przykład: materiały 4000 zł, robocizna 3000 zł i transport 1000 zł dają 8000 zł kosztu. Cena 10 000 zł oznacza 2000 zł nadwyżki przed pozostałymi kosztami i podatkami; to nie jest równoznaczne z zyskiem netto. Zapisz odrębnie koszt, przychód i wynik.",
+          "feedback": [
+            "Prawidłowo. Przykład: materiały 4000 zł, robocizna 3000 zł i transport 1000 zł dają 8000 zł kosztu. Cena 10 000 zł oznacza 2000 zł nadwyżki przed pozostałymi kosztami i podatkami; to nie jest równoznaczne z zyskiem netto. Zapisz odrębnie koszt, przychód i wynik.",
+            "Sprawdź wymagane dane. Przykład: materiały 4000 zł, robocizna 3000 zł i transport 1000 zł dają 8000 zł kosztu. Cena 10 000 zł oznacza 2000 zł nadwyżki przed pozostałymi kosztami i podatkami; to nie jest równoznaczne z zyskiem netto. Zapisz odrębnie koszt, przychód i wynik.",
+            "Sprawdź wymagane dane. Przykład: materiały 4000 zł, robocizna 3000 zł i transport 1000 zł dają 8000 zł kosztu. Cena 10 000 zł oznacza 2000 zł nadwyżki przed pozostałymi kosztami i podatkami; to nie jest równoznaczne z zyskiem netto. Zapisz odrębnie koszt, przychód i wynik.",
+            "Sprawdź wymagane dane. Przykład: materiały 4000 zł, robocizna 3000 zł i transport 1000 zł dają 8000 zł kosztu. Cena 10 000 zł oznacza 2000 zł nadwyżki przed pozostałymi kosztami i podatkami; to nie jest równoznaczne z zyskiem netto. Zapisz odrębnie koszt, przychód i wynik."
+          ]
+        }
+      }
+    }
+  ]
+}
