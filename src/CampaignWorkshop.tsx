@@ -27,7 +27,7 @@ export default function CampaignWorkshop({slug,lessonNo}:Props){
  const [step,setStep]=useState(0),[budget,setBudget]=useState('100'),[cpc,setCpc]=useState('2.50'),[conversion,setConversion]=useState('4'),[leadValue,setLeadValue]=useState('80'),[negative,setNegative]=useState(''),
  [checked,setChecked]=useState(false);
  const daily=number(budget),clickCost=number(cpc),rate=number(conversion),value=number(leadValue);
- const valid=[daily,clickCost,rate,value].every(Number.isFinite)&&daily>=0&&clickCost>0&&rate>=0&&rate<=100&&value>=0;
+ const valid=[budget,cpc,conversion,leadValue].every(x=>x.trim()!=='')&&[daily,clickCost,rate,value].every(Number.isFinite)&&daily>=0&&clickCost>0&&rate>=0&&rate<=100&&value>=0;
  const clicks=valid?daily/clickCost:0,leads=clicks*rate/100,cpa=valid&&leads>0?daily/leads:null,
  revenue=leads*value,net=revenue-daily;
  const options=groups[platform];
