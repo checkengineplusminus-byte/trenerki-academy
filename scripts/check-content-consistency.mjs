@@ -293,6 +293,16 @@ try{
   for(const slug of Object.keys(secondLessons)){
    if(!illustrated.includes("'second-"+slug+"'")||!read('public/academy/assets/second-'+slug+'.svg').includes('</svg>'))fail('Missing learning diagram '+slug);
   }
+  const cieslaModules=[1,2,3].map(i=>JSON.parse(read('content/ciesla-program-modul-'+i+'-20261109.json')).lessons);
+  const ciesla=cieslaModules.flat();
+  if(ciesla.length!==30||ciesla.some((l,i)=>l.lesson_no!==i||!l.material?.sections||l.material.sections.length!==4)||
+     new Set(ciesla.map(l=>l.material?.learning?.question)).size!==30)
+    fail('Ciesla: 30 individually authored lessons with sections and unique questions are required');
+  else ok('Ciesla exam preparation has 30 authored lessons and unique questions');
+  for(const name of ['ciesla-drewno','ciesla-wilgotnosc','ciesla-rysunek','ciesla-zlacze','ciesla-dach'])
+    if(!illustrated.includes("'"+name+"'")||!read('public/academy/assets/'+name+'.svg').includes('</svg>'))
+      fail('Ciesla diagram missing or unregistered: '+name);
+  
   const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
   fail('Every craft course must have eight individually illustrated/explained lessons');
