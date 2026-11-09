@@ -1,0 +1,274 @@
+{
+  "quizzes": {
+    "dostepne-pdf": [
+      [
+        "Który element PDF pomaga użytkownikowi czytnika ekranu przejść od razu do rozdziału wyników?",
+        [
+          "Prawidłowy nagłówek oznaczony tagiem strukturalnym.",
+          "Tekst tytułu zapisany wyłącznie jako obraz.",
+          "Dekoracyjna linia pod tytułem.",
+          "Powiększony font bez znacznika roli."
+        ],
+        0,
+        "Nagłówek strukturalny tworzy dostępny punkt nawigacji, nie tylko wygląd."
+      ],
+      [
+        "Jak oznaczysz hierarchię tytuł, rozdział, podrozdział?",
+        [
+          "H3, H1, H2 bez względu na układ.",
+          "H1, H2, H3 w logicznej kolejności.",
+          "Trzy pogrubione akapity bez tagów.",
+          "Trzy linki bez nazw."
+        ],
+        1,
+        "Struktura H1/H2/H3 powinna odzwierciedlać hierarchię dokumentu."
+      ],
+      [
+        "Wykres pokazuje wzrost przychodu z 80 do 120 tys. zł. Co najlepiej przekazuje jego istotną informację?",
+        [
+          "'Kolorowy wykres z dwiema kolumnami'.",
+          "'Ilustracja nr 3 z raportu'.",
+          "'Przychód wzrósł z 80 do 120 tys. zł, o 50%'.",
+          "'Obraz przedstawia dane'."
+        ],
+        2,
+        "Ważniejsze niż wygląd wykresu są wartości i relacja, którą przekazuje."
+      ],
+      [
+        "Jaki kontrast należy co do zasady zapewnić zwykłemu tekstowi według WCAG 2.2 AA?",
+        [
+          "2:1 niezależnie od treści.",
+          "3:1 dla każdego tekstu.",
+          "1:1, jeśli czcionka jest pogrubiona.",
+          "Co najmniej 4,5:1 z uwzględnieniem wyjątków standardu."
+        ],
+        3,
+        "Dla zwykłego tekstu standardowy próg AA wynosi 4,5:1, duży tekst ma zwykle próg 3:1."
+      ],
+      [
+        "Które oznaczenie linku jest najbardziej zrozumiałe bez czytania zdania wokół niego?",
+        [
+          "'Procedura zgłoszenia reklamacji'.",
+          "'Kliknij tutaj'.",
+          "'Więcej'.",
+          "'Ten link'."
+        ],
+        0,
+        "Opis celu linku działa także w liście linków czytnika ekranu."
+      ],
+      [
+        "Jak ułatwić odczyt tabeli z produktem, ilością i ceną?",
+        [
+          "Powiększyć tylko obramowanie komórek.",
+          "Oznaczyć komórki nagłówkowe i ich relacje z danymi.",
+          "Zastąpić wszystkie nagłówki kolorem.",
+          "Umieścić dane jako zrzut ekranu."
+        ],
+        1,
+        "Relacje nagłówków i danych są ważniejsze niż wygląd linii."
+      ],
+      [
+        "Jak zweryfikować, czy po eksporcie PDF nadal ma właściwą strukturę?",
+        [
+          "Wyłącznie sprawdzić plik na podglądzie miniatur.",
+          "Porównać rozmiar pliku z DOCX.",
+          "Przejrzeć tagi, kolejność odczytu i działanie nawigacji.",
+          "Sprawdzić tylko kolor tła."
+        ],
+        2,
+        "Eksport może zgubić tagi; potrzebna jest inspekcja, a nie sama kontrola wyglądu."
+      ],
+      [
+        "Co musi uzupełniać automatyczny test dostępności PDF?",
+        [
+          "Wyłącznie ponowne kliknięcie skanera.",
+          "Sprawdzenie koloru okładki.",
+          "Zwiększenie liczby stron.",
+          "Ręczna kontrola nawigacji, treści i zadań użytkownika."
+        ],
+        3,
+        "Automat nie oceni wszystkich aspektów znaczenia i użyteczności dokumentu."
+      ]
+    ],
+    "apartamenty": [
+      [
+        "W lokalu dla czterech osób są trzy zestawy pościeli i niedziałający czujnik. Która decyzja jest właściwa?",
+        [
+          "Odnotować i usunąć braki oraz zagrożenie przed wydaniem lokalu.",
+          "Przyjąć rezerwację i poinformować o tym dopiero po przyjeździe.",
+          "Zrobić zdjęcie gotowego łóżka i pominąć czujnik.",
+          "Zamienić brakujący zestaw na dodatkową poduszkę."
+        ],
+        0,
+        "Gotowość wymaga kompletności i bezpieczeństwa, nie samych zdjęć."
+      ],
+      [
+        "Na marmurze wystąpiły ślady po kwaśnym środku. Co powinien zrobić koordynator?",
+        [
+          "Powtórzyć zabieg tym samym preparatem.",
+          "Zatrzymać stosowanie środka, udokumentować i ocenić uszkodzenie.",
+          "Zwiększyć stężenie środka i tarcie.",
+          "Zakryć miejsce ręcznikiem bez raportu."
+        ],
+        1,
+        "Marmur i inne materiały wrażliwe wymagają zgodnych metod czyszczenia."
+      ],
+      [
+        "Który sposób obchodzenia się z pościelą ogranicza wtórne zanieczyszczenie?",
+        [
+          "Wspólny otwarty kosz dla czystego i brudnego.",
+          "Suszenie bez końcowej kontroli wilgoci.",
+          "Oddzielenie brudnego transportu od czystego składowania.",
+          "Wydanie niekompletnego zestawu bez zgłoszenia."
+        ],
+        2,
+        "Czyste tekstylia trzeba chronić od chwili prania do przygotowania łóżka."
+      ],
+      [
+        "Gość zgłasza luźne gniazdko elektryczne. Jak postąpić?",
+        [
+          "Poprosić gościa o dokręcenie śruby.",
+          "Przesunąć meble tak, by usterka była niewidoczna.",
+          "Oznaczyć usterkę jako kosmetyczną bez zdjęcia.",
+          "Zabezpieczyć i skierować do fachowej oceny, nie naprawiać amatorsko."
+        ],
+        3,
+        "Uszkodzenie instalacji elektrycznej jest potencjalnym zagrożeniem."
+      ],
+      [
+        "Wyjazd do 11:00, następny przyjazd od 15:00, sprzątanie 2 h i odbiór 30 min. Jaki jest bufor?",
+        [
+          "1,5 godziny.",
+          "0,5 godziny.",
+          "2,5 godziny.",
+          "3 godziny."
+        ],
+        0,
+        "Okno to 4 h; praca zajmuje 2,5 h, a bufor 1,5 h."
+      ],
+      [
+        "Jak udokumentować nową rysę na stoliku, nie przypisując automatycznie winy gościowi?",
+        [
+          "Zastosować potrącenie bez zdjęć.",
+          "Zebrać zdjęcia, datę, opis i porównać stan sprzed pobytu.",
+          "Wystawić rachunek na podstawie samego podejrzenia.",
+          "Usunąć wszystkie wcześniejsze protokoły."
+        ],
+        1,
+        "Decyzję o odpowiedzialności trzeba oprzeć na dowodach i zasadach umowy."
+      ],
+      [
+        "Koordynator planuje 90 minut na sprzątanie; faktyczny czas 110 minut. Jakie jest odchylenie?",
+        [
+          "10 minut.",
+          "40 minut.",
+          "20 minut.",
+          "30 minut."
+        ],
+        2,
+        "Różnica 110−90 wynosi 20 minut i wymaga sprawdzenia zakresu pracy."
+      ],
+      [
+        "Woda z wycieku zbliża się do instalacji elektrycznej. Co jest pierwszym priorytetem?",
+        [
+          "Ustalenie rabatu za pobyt.",
+          "Szybki remont kosmetyczny.",
+          "Poproszenie gościa o demontaż gniazdka.",
+          "Bezpieczeństwo osób i wezwanie odpowiedniej pomocy."
+        ],
+        3,
+        "Najpierw zabezpieczenie ludzi i ograniczenie zagrożenia, dopiero potem rekompensata."
+      ]
+    ],
+    "wspolnota": [
+      [
+        "Który element najczęściej wymaga rozróżnienia własności lokalu i części wspólnej?",
+        [
+          "Dach budynku i prywatne wyposażenie kuchni.",
+          "Dwie prywatne szafki w jednym mieszkaniu.",
+          "Dwie lampy na biurku właściciela.",
+          "Dwa rachunki za prywatne zakupy."
+        ],
+        0,
+        "Zarządzanie wymaga ustalenia, co należy do nieruchomości wspólnej."
+      ],
+      [
+        "Co powinien zawierać rejestr umów serwisowych, aby kontrolować terminy?",
+        [
+          "Tylko telefon wykonawcy.",
+          "Numer umowy, obiekt, termin, wykonawca i dokument odbioru.",
+          "Wyłącznie datę pierwszego kontaktu.",
+          "Kolor segregatora i wysokość zaliczki."
+        ],
+        1,
+        "Rejestr ma umożliwiać terminową kontrolę i odnalezienie dokumentów."
+      ],
+      [
+        "Przy rocznych kosztach 120 000 zł i 12 równych udziałach, jaka jest miesięczna kwota na udział (bez innych wpływów)?",
+        [
+          "1200 zł.",
+          "1000 zł.",
+          "Około 833,33 zł.",
+          "10 000 zł."
+        ],
+        2,
+        "120 000 / 12 / 12 = 833,33 zł; w prawdziwej wspólnocie udziały mogą być różne."
+      ],
+      [
+        "Właściciele głosują nad uchwałą, ale mają różne udziały. Co należy ustalić przed oceną wyniku?",
+        [
+          "Wyłącznie liczbę obecnych na zebraniu.",
+          "Kto najgłośniej zabierał głos.",
+          "Cenę wykonawcy przed głosowaniem.",
+          "Właściwy tryb głosowania i udziały głosujących."
+        ],
+        3,
+        "Zasada głosowania zależy od ustawy i ewentualnego trybu przewidzianego dla danej sprawy."
+      ],
+      [
+        "Co powinno znaleźć się w protokole po decyzji o naprawie dachu?",
+        [
+          "Decyzja, odpowiedzialny, termin i sposób kontroli wykonania.",
+          "Wyłącznie informacja, że temat omówiono.",
+          "Tylko lista obecności bez wyniku.",
+          "Opis opinii bez przypisanego zadania."
+        ],
+        0,
+        "Bez przypisanego działania zebranie nie rozwiązuje problemu."
+      ],
+      [
+        "W budynku wykryto pilną awarię instalacji. Jak prowadzić dokumentację?",
+        [
+          "Pominąć datę, jeśli wykonawca jest znany.",
+          "Zgłosić zagrożenie, podjąć właściwe zabezpieczenia i zapisać interwencję.",
+          "Zaczekać bez oceny do następnego dorocznego zebrania.",
+          "Usunąć starsze protokoły przeglądów."
+        ],
+        1,
+        "Priorytetem jest bezpieczeństwo, a zapis czynności pozwala sprawdzić zgodność działań."
+      ],
+      [
+        "Który zestaw informacji pozwala monitorować zgłoszenie mieszkańca?",
+        [
+          "Tylko imię osoby zgłaszającej.",
+          "Sama treść pierwszej wiadomości.",
+          "Numer sprawy, status, osoba odpowiedzialna, termin i wynik.",
+          "Lista niezwiązanych z awarią mieszkańców."
+        ],
+        2,
+        "Zgłoszenie musi mieć kontrolowany stan i sposób zamknięcia."
+      ],
+      [
+        "Koszt napraw zaplanowano na 30 000 zł, wykonanie wyniosło 42 000 zł. O ile procent przekroczono plan?",
+        [
+          "12%.",
+          "28,6%.",
+          "140%.",
+          "40%."
+        ],
+        3,
+        "(42 000−30 000)/30 000 = 40%; trzeba też wyjaśnić przyczynę odchylenia."
+      ]
+    ]
+  }
+}
