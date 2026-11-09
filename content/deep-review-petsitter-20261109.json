@@ -1,0 +1,182 @@
+{
+  "course_slug": "petsitter",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Petsitter zapewnia uzgodnione wsparcie i obserwację, ale nie zastępuje lekarza weterynarii ani formalnych kwalifikacji wymaganych do niektórych czynności. Obowiązki zależą od gatunku, temperamentu, środowiska i umowy. Bezpieczeństwo zwierzęcia i osób jest nadrzędne wobec krótkiego harmonogramu."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przed przyjęciem zlecenia ustal rodzaj zwierzęcia, wymagania, liczbę wizyt, umiejętność obsługi i kontakt awaryjny. Zapisz, których czynności nie wykonasz bez szczególnego przygotowania lub uprawnionych instrukcji."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Właściciel prosi o podanie nieznanego preparatu bez dawkowania i dokumentacji. Nie jest to polecenie, które należy realizować na podstawie domysłu."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Sporządź umowę zakresu usług z listą czynności, wyjątkiem zdrowotnym i warunkami kontaktu pilnego."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Wywiad ma zawierać karmę, miejsca misek, typ kuwety, zachowanie, alergie i ograniczenia, godziny wizyt oraz procedurę dostępu do mieszkania. Nie należy pomijać danych identyfikacyjnych i awaryjnych na rzecz ogólnego opisu 'kot lubi ludzi'."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Zbuduj kartę klienta z jasnym upoważnieniem do wejścia, kontaktem właściciela, weterynarza i zaufanej osoby, opisem diety, lekarstw wymagających nadzoru oraz preferencji zwierzęcia. Wpisz też, gdzie bezpiecznie pozostawić klucz."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Opiekun ma wejść do mieszkania, ale nie wie, czy kot ma wychodzić na balkon ani czy okna powinny być otwarte."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zaprojektuj formularz 12 pytań, rozdzielając zwyczaje, ryzyka i sytuacje awaryjne."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Otwarte okna, uchylne okiennice, balkon bez zabezpieczeń, rośliny i substancje chemiczne mogą stanowić zagrożenie dla zwierząt. Rodzaj ryzyka zależy od gatunku i warunków lokalu. Opiekun nie powinien wprowadzać zmian w instalacjach bez upoważnienia, ale musi umieć zauważyć i zgłosić niebezpieczną sytuację."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przy wejściu sprawdź drzwi, okna, miejsca schowania, dostęp do kabli i produktów chemicznych, wodę i temperaturę. Zrób uzgodnioną checklistę wyjścia, aby nie pozostawić zwierzęcia bez zamkniętego okna czy wody."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Właściciel zostawił uchylone okno, a kot ma zwyczaj wspinać się po zasłonach. Ryzyko wymaga działania według umowy i kontaktu."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Narysuj mapę 4 miejsc ryzyka w pokoju i zaproponuj bezpieczne, uzgodnione zabezpieczenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Zwierzęta mogą mieć odmienne diety, alergie i zalecenia. Samo dosypywanie karmy 'na oko' utrudnia ocenę, ile zjadły. Woda powinna być świeża i dostępna zgodnie z potrzebami gatunku, a nagła odmowa jedzenia może stanowić ważną obserwację zdrowotną."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Stosuj miarkę i ustaloną porcję, zapisz ilość zaoferowaną i pozostawioną. Nie zmieniaj karmy bez uzgodnienia, nie podawaj nieznanych suplementów i nie używaj przeterminowanego produktu. Zapisuj czas karmienia."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Kot miał zjeść 60 g karmy w dwóch porcjach, lecz po pierwszej pozostało 20 g. Nie zakładaj, że zjadł całe 30 g."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Ułóż kartę dwóch wizyt z kolumną zaoferowano, pozostało, zjedzono i obserwacje."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Stan kuwety jest informacją o dobrostanie kota, ale pojedyncza obserwacja nie stanowi diagnozy medycznej. Higiena wymaga bezpiecznego usuwania odchodów, czyszczenia łopatki i mycia rąk. Nie używaj silnie pachnącej chemii w strefie kuwety bez sprawdzenia bezpieczeństwa."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Podczas każdej wizyty sprawdź czystość, ilość i rodzaj odchodów w sposób nienaruszający dobrostanu. Przy niepokojących zmianach, zwłaszcza bezskutecznych próbach oddawania moczu, postępuj według planu pilnego kontaktu z weterynarzem."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Kot często wchodzi do kuwety, ale nie widać oddawanego moczu. Nie wolno założyć, że jedynie 'nie lubi żwirku'."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zapisz raport obserwacji kuwety z rozróżnieniem zwykłego czyszczenia i sygnału alarmowego."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Kot może reagować unikaniem, syczeniem lub chęcią zabawy, zależnie od sytuacji. Bezpieczna opieka szanuje możliwość schowania się i zakończenia kontaktu. Nie wolno wymuszać dotyku ani dopuszczać do niekontrolowanej zabawy przedmiotami niebezpiecznymi do połknięcia."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Podczas wizyty zaproponuj zabawę odpowiednią do zwierzęcia i obserwuj sygnały przerwania. Nie pozostawiaj bez nadzoru sznurków, małych odłączanych elementów i zabawek wymagających kontroli. Oceniaj, czy zwierzę samo wraca do kontaktu."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Nowy kot syczy i odwraca się. Opiekun próbuje go złapać na ręce, żeby zrobić zdjęcie klientowi."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Napisz plan 15-minutowej wizyty z opcjonalną zabawą, odczytywaniem sygnałów i bez wymuszonego kontaktu."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Dobry raport rozróżnia obserwację od opinii i opisuje istotne zdarzenia w czasie. Powinien zawierać karmienie, wodę, kuwetę, zachowanie oraz wszystkie wyjątki. Wysyłane zdjęcia nie zastępują informacji o stanie zwierzęcia i nie powinny ujawniać prywatnych danych właściciela."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Zapisz godzinę wejścia i wyjścia, wykonaną czynność, ilość podanej karmy, uwagę o wodzie i kuwetach, ewentualne niezgodności i następny termin. Nie oznaczaj wizyty jako wykonanej, zanim faktycznie do niej dojdzie."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Opiekun wysyła jedno zdjęcie kota i emoji, ale nie potwierdza karmienia ani zamknięcia drzwi."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Stwórz dwa raporty — standardowy i z niepokojącą obserwacją — bez stawiania diagnoz."
+        }
+      ]
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Zagrożenia takie jak ciężki oddech, uraz, silna apatia lub bezskuteczne próby oddawania moczu mogą wymagać natychmiastowej pomocy weterynaryjnej. Opiekun powinien znać adres i kontakt do właściwej pomocy oraz instrukcje właściciela, nie próbując leczyć zwierzęcia własnymi metodami."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przećwicz zgłoszenie: podaj gatunek, obserwowane objawy, czas początku, lokalizację i informacje z karty zwierzęcia. Ustal bezpieczny transport oraz sposób udokumentowania zdarzenia i kontaktu z właścicielem."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Kot ma nagłe wyraźne trudności w oddychaniu. Czekanie na następną wizytę nie jest odpowiednią reakcją."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Narysuj schemat działania alarmowego z trzema alternatywnymi kontaktami, adresem i zasadą bezpieczeństwa."
+        }
+      ]
+    }
+  ]
+}
