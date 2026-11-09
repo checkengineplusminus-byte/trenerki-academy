@@ -261,6 +261,16 @@ try{
   for(const asset of kowalAssets)
    if(!illustrated.includes("'"+asset+"'")||!read('public/academy/assets/'+asset+'.svg').includes('</svg>'))
     fail('Missing registered illustration '+asset);
+  const masteryBank=Object.assign({},...['content/mastery-crafts-materials-20261109.json','content/mastery-foundations-01-20261109.json','content/mastery-foundations-02-20261109.json','content/mastery-foundations-03-20261109.json'].map(p=>JSON.parse(read(p))));
+  if(Object.keys(masteryBank).length!==78)fail('Expected 78 individualized foundations beyond the completed Kowal course');
+  for(const [slug,entry] of Object.entries(masteryBank)){
+    if(!['topic','material','process','failure','task','icon'].every(x=>typeof entry[x]==='string'&&entry[x].length>=4)||
+       entry.material.length<145||entry.process.length<145)
+      fail('Insufficient individual material science knowledge for '+slug);
+    if(!illustrated.includes("'mastery-"+slug+"'")||!read('public/academy/assets/mastery-'+slug+'.svg').includes('</svg>'))
+      fail('Missing bespoke illustration '+slug);
+  }
+  elseIfMastery: {if(Object.keys(masteryBank).length===78)ok('78 per-course knowledge guides and diagrams found');}
   const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
   fail('Every craft course must have eight individually illustrated/explained lessons');
