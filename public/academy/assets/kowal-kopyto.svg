@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 670" role="img" aria-label="Kopyto konia — nazwy struktur">
+<rect width="1200" height="670" rx="28" fill="#f5f9f2"/>
+<rect x="26" y="25" width="1148" height="620" rx="24" fill="#fff" stroke="#d6e5d7" stroke-width="3"/>
+<text x="68" y="89" font-family="Arial,sans-serif" font-size="35" font-weight="bold" fill="#173e2d">Kopyto konia — nazwy struktur</text>
+<text x="68" y="123" font-family="Arial,sans-serif" font-size="20" fill="#587565">Poglądowy schemat rozpoznawania, nie instrukcja zabiegu</text>
+
+<rect x="85" y="168" width="465" height="381" rx="22" fill="#f0f4ef" stroke="#cbd7ca" stroke-width="3"/>
+<text x="112" y="209" fill="#215239" font-family="Arial" font-size="24" font-weight="bold">Widok od spodu — schemat</text>
+<path d="M320 240C225 220 170 299 205 393C234 489 414 490 444 393C481 295 415 222 320 240Z" fill="#cfb89c" stroke="#7a634c" stroke-width="8"/>
+<path d="M320 272C262 265 234 310 252 380C271 427 371 429 389 380C405 321 380 268 320 272Z" fill="#ead8bc" stroke="#8e775f" stroke-width="3"/>
+<path d="M320 307l-43 79 43-19 43 19z" fill="#927355"/>
+<path d="M445 270l62-45" stroke="#a26d51" stroke-width="3"/><text x="364" y="228" font-family="Arial" font-size="19" fill="#654f41">ŚCIANA KOPYTA</text>
+<path d="M369 359h100" stroke="#9b735b" stroke-width="3"/><text x="386" y="340" font-family="Arial" font-size="19" fill="#654f41">PODESZWA</text>
+<path d="M315 362l-83 95" stroke="#9b735b" stroke-width="3"/><text x="124" y="491" font-family="Arial" font-size="19" fill="#654f41">STRZAŁKA</text>
+<rect x="587" y="168" width="521" height="381" rx="22" fill="#e9f1e6" stroke="#c2d8c3" stroke-width="3"/>
+<text x="612" y="209" fill="#215239" font-family="Arial" font-size="25" font-weight="bold">Jak uczyć się bezpiecznie?</text>
+<text x="620" y="263" fill="#385f47" font-family="Arial" font-size="22">1. Poznaj nazwy i funkcję struktur.</text><text x="620" y="314" fill="#385f47" font-family="Arial" font-size="22">2. Zrozum mechanikę ruchu konia.</text><text x="620" y="365" fill="#385f47" font-family="Arial" font-size="22">3. Obserwuj pracę podkuwacza.</text><text x="620" y="416" fill="#385f47" font-family="Arial" font-size="22">4. Nie wykonuj zabiegów samodzielnie.</text><text x="620" y="467" fill="#385f47" font-family="Arial" font-size="22">5. W razie bólu konsultuj weterynarza.</text>
+<text x="112" y="578" fill="#705d4a" font-family="Arial" font-size="19">Rysunek uproszczony i nieanatomiczny — służy tylko nauce nazewnictwa.</text>
+<text x="68" y="616" font-family="Arial,sans-serif" font-size="16" fill="#54715d">TRENERKI Academy · autorski schemat edukacyjny · nie zastępuje szkolenia praktycznego</text>
+</svg>
