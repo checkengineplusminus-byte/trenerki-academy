@@ -42,6 +42,16 @@ assert.equal(parseSpreadsheetNumber('2,56'),2.56);
 assert(Number.isNaN(parseSpreadsheetNumber('2,56 zł')));
 console.log('✓ Excel: references, locale decimals, sums, dynamic recalc, error messages and cycle guard');
 const carpentry=read('src/CarpentryPracticeLab.tsx');
+const numberParser=carpentry.match(/const readNumber=\(s:string\):number=>\{([\s\S]*?)\n \};/);
+assert(numberParser,'Live calculation number parser missing');
+const readNumber=new Function('s',numberParser[1]);
+for(const [input,expected] of [['40',40],['200',200],['4000',4000],['80',80],['2,56',2.56],[' 4 000 ',4000]]){
+ assert.equal(readNumber(input),expected,'Rejected valid measurement: '+input);
+}
+assert(Number.isNaN(readNumber('')),'Empty answer must not silently count as zero');
+assert(Number.isNaN(readNumber('2,56 m³')),'Result field must accept a number without unit suffix');
+console.log('✓ Carpentry input field accepts 40, 200, 4000, 80 and answer 2,56');
+
 const formulaMap=new Map([...carpentry.matchAll(/(\d+):\{title:[^\n]*\n[\s\S]*?calculate:v=>([^\n]+),\n  solution:/g)].map(m=>[Number(m[1]),new Function('v','return ('+m[2]+');')]));
 assert.equal(formulaMap.size,6,'Six active calculation workshops required');
 const approx=(id,values,expected)=>{
