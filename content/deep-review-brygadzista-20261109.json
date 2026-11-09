@@ -1,0 +1,191 @@
+{
+  "course_slug": "brygadzista",
+  "review_status": "review_needed",
+  "reference": "https://www.dibk.no/regelverk/sak/1/1/1-2",
+  "lessons": [
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 0,
+      "title_pl": "Pierwszy dzień jako brygadzista",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Brygadzista koordynuje pracę zespołu i przekłada plan na wykonalne zadania; nie przejmuje automatycznie uprawnień projektanta, operatora dźwigu ani kierownika odpowiadającego formalnie za budowę. Przed zmianą ustala skład ekipy, wymagane kompetencje, front robót, dostęp do rysunków i zagrożenia."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Przygotuj kartę dnia: 6 pracowników, dwa fronty robót, jedna dostawa i jeden podnośnik. Sprawdź, kto ma przeszkolenie, czy stanowiska są gotowe i jak zgłosić blokadę. Odprawa powinna kończyć się informacją, kto robi co, z jakim wynikiem i do kiedy."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Czterech ludzi stoi pod budynkiem, bo nie ustalono dostępu do rusztowania. Problemem nie jest wyłącznie tempo pracy, ale brak przygotowania."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Zbuduj odprawę dla ekipy 6 osób z podziałem uprawnień, zasobów i potwierdzeniem odpowiedzialności."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 1,
+      "title_pl": "Odprawa 7 minut, która działa",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Krótka odprawa robocza ma dać konkretny rezultat, a nie odczytanie regulaminu. Najważniejsze tematy to: cel, zmiany względem wczoraj, zagrożenia, kolizje z innymi branżami, plan dostaw, sprzęt i zasada zgłaszania niezgodności."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Podziel siedem minut przykładowo na: 2 min plan i priorytety, 2 min ryzyka i SJA, 2 min dostęp oraz materiały, 1 min pytania i potwierdzenie. Czas jest przykładem ćwiczeniowym, nie normą narzuconą przepisami; gdy ryzyko jest złożone, odprawa musi trwać dłużej."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Brygada nie zna aktualnej rewizji rysunku, ale zaczyna montaż, ponieważ usłyszała tylko termin zakończenia."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Napisz skrypt odprawy z trzema pytaniami kontrolnymi: rysunek, dostęp, zabezpieczenie."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 2,
+      "title_pl": "Bezpieczny start i prawo do zatrzymania",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Bezpieczeństwo pracy wymaga oceny ryzyka przed czynnością i aktualizacji oceny, gdy zmienią się warunki. Nieosłonięta krawędź stropu, niepewne kotwienie albo prace kolizyjne to konkretne zagrożenia, które wymagają zatrzymania narażonej pracy i zgłoszenia. Brygadzista nie może zastąpić projektu własną decyzją."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Na szkicu stropu oznacz krawędź niezabezpieczoną, drogę dojścia i strefę podnoszenia. Ustal co należy wygrodzić, kto zatwierdza rozwiązanie i jakie dowody pozwalają ponownie rozpocząć prace. Nie zakładaj, że sam hełm zabezpiecza przed upadkiem."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "W piątek zdemontowano barierkę przy otworze. W poniedziałek ekipa otrzymuje polecenie kontynuacji bez zabezpieczenia."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Zrób krótką SJA: zagrożenie, skutek, bariera ochronna, osoba odpowiedzialna, warunek ponownego startu."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 3,
+      "title_pl": "Materiały, logistyka i blokady",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Sprawny montaż wymaga właściwego produktu, ilości, wersji rysunku, miejsca składowania i dostępu sprzętu. Zła dostawa nie staje się właściwa tylko dlatego, że pasuje wymiarami. Brak identyfikacji partii lub decyzji projektowej może spowodować powtórny montaż."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Dostawa obejmuje 20 uchwytów typu A, a projekt wymaga typu B. Przyjęcie fizyczne można zarejestrować jako niezgodność, wydzielić elementy i eskalować decyzję. Sprawdź etykietę, rewizję, liczbę, miejsce rozładunku i możliwość zwrotu. Nie montuj zamienników samowolnie."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Ciężarówka przywozi 20 uchwytów, ale z innym numerem niż na rysunku. Kierownik naciska na termin."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Opracuj kartę dostawy: oczekiwano, otrzymano, niezgodność, zdjęcie, decyzja, odpowiedzialny i aktualny termin."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 4,
+      "title_pl": "Jakość przed poprawkami",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Kontrola jakości przed zakryciem lub zamontowaniem następnego elementu bywa tańsza od naprawy. Wymagania wynikają z projektu, tolerancji i instrukcji montażowej, a nie wyłącznie z estetyki. Należy odróżnić wymiar nominalny, pomiar rzeczywisty i dopuszczalną odchyłkę."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "W ćwiczeniu przyjmij projektową tolerancję ±3 mm dla elementu o wymiarze 1000 mm. Pomiar 1004 mm oznacza przekroczenie o 1 mm. Przed naprawą zweryfikuj narzędzie, bazę, punkt pomiaru oraz obowiązujące wymaganie, potem zgłoś niezgodność."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Usterkę wykryto dopiero po osłonięciu elementu szkłem; dostęp do kotwy jest utrudniony."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Narysuj punkty kontroli przed zakryciem i policz dwie odchyłki na przykładowych wymiarach."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 5,
+      "title_pl": "Konflikty i trudne rozmowy",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Rozmowa o niezgodności ma oddzielać fakty od ocen osoby. Używaj opisu zdarzenia, wpływu na pracę, pytania o przyczynę i uzgodnionego działania. Inny tryb dotyczy przemocy, nękania lub niebezpiecznych praktyk — tu obowiązują firmowe procedury zgłoszeń."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Przykład: dwie osoby spierają się o cięższe zadania. Zapisz listę prac z ich obciążeniem i wymaganymi kwalifikacjami, wysłuchaj obu stron, uzgodnij podział i termin sprawdzenia. Nie rozwiązuj problemu publicznym zawstydzaniem."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Brygadzista w obecności ekipy mówi pracownikowi, że jest leniwy, choć przyczyną opóźnienia była niezgodna dostawa."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Zapisz dialog w czterech krokach: fakt, wpływ, pytanie, zobowiązanie, z neutralnym opisem osoby."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 6,
+      "title_pl": "Raport dnia i rozmowa z kierownictwem",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Raport nie jest pamiętnikiem, lecz dowodem postępu i przeszkód: co wykonano, ile, gdzie, przez kogo i według jakiej rewizji. Oddziel plan od rzeczywistego wyniku, godziny pracy od ilości wbudowanych elementów oraz roboty podstawowe od potencjalnych zmian zakresu."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Przykład: plan 40 m poręczy, wykonano 28 m, 12 m zablokowane przez niedostępne rusztowanie. Raport powinien zawierać 28/40 = 70% wykonania planu i przyczynę blokady, bez przypisywania 12 m do postępu. Dodaj zdjęcia i odpowiedzialnego za rozwiązanie."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Raport mówi tylko 'pracowaliśmy cały dzień', a klient kwestionuje postęp. Brakuje ilości i dowodów."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Opracuj raport 1 strony: plan, wykonano, zaległość, sprzęt, BHP, niezgodności, decyzje i zdjęcia."
+        }
+      ]
+    },
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 7,
+      "title_pl": "Twoja pierwsza samodzielna zmiana",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Kierowanie zmianą łączy plan prac, dostawy, ryzyko, wydajność, jakość i komunikację. Dobra decyzja uwzględnia zależności: przed montażem potrzebujesz właściwego materiału, aktualnego rysunku, bezpiecznego dostępu i możliwości odbioru."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Zaplanuj zmianę 6:30–15:00 z 6 osobami, dostawą o 9:00 i jednym urządzeniem podnoszącym. Zidentyfikuj konflikt sprzętowy i materiałowy, a następnie zdecyduj, które zadania mogą ruszyć niezależnie. Po zmianie porównaj plan z wynikiem i opisz przeszkody."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Dostawa opóźnia się o 3 h, ale na drugim froncie jest gotowa inna praca. Ekipa nie powinna bezczynnie czekać, jeśli zmianę planu można zrobić bezpiecznie."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Przygotuj harmonogram 30-minutowy i dwie wersje dnia: normalną oraz przy opóźnionej dostawie."
+        }
+      ]
+    }
+  ]
+}
