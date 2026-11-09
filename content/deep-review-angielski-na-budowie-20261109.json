@@ -1,0 +1,270 @@
+{
+  "course_slug": "angielski-na-budowie",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "Hello – cześć; My name is… – nazywam się…; Please – proszę; Thank you – dziękuję; I don't understand – nie rozumiem; Could you repeat that? – czy możesz powtórzyć?. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Hello, I'm Anna. B: Welcome to the site. Can you hear me? Tłumaczenie: A: Cześć, jestem Anna. B: Witamy na budowie. Słyszysz mnie?"
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'I'm' to skrót od 'I am'. Uprzejma prośba 'Could you…?' jest często bardziej naturalna niż samo słowo 'Repeat'. Ćwicz zrozumiałość, nie tylko akcent."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Przedstaw się w dwóch zdaniach i poproś, by ktoś powtórzył instrukcję wolniej. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "site induction – instruktaż na budowie; CSCS card – karta stosowana w określonych pracach w UK; supervisor – przełożony; sign in – zarejestrować wejście; training – szkolenie; site rules – regulamin budowy. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Have you completed your site induction? B: Not yet. Where do I sign in? Tłumaczenie: A: Ukończyłeś instruktaż budowy? B: Jeszcze nie. Gdzie się rejestruję?"
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "CSCS dotyczy określonych systemów kart kompetencji w Wielkiej Brytanii, nie jest uniwersalnym dokumentem dla wszystkich krajów anglojęzycznych. 'Have you completed…?' pyta o zakończone zadanie."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Odegraj rozmowę na wejściu: brak instruktażu, zapytaj o miejsce rejestracji i zasady budowy. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "entrance – wejście; site office – biuro budowy; toilet – toaleta; first-aid kit – apteczka; assembly point – miejsce zbiórki; emergency exit – wyjście awaryjne. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Where is the first-aid kit? B: It's in the site office, near the entrance. Tłumaczenie: A: Gdzie jest apteczka? B: Jest w biurze budowy, blisko wejścia."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'Where is…?' pyta o miejsce; 'near', 'behind', 'next to' pozwalają opisać drogę. Pierwsza pomoc i miejsce zbiórki powinny być rzeczywiście wskazane w instruktażu."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Narysuj plan budowy i użyj pięciu określeń lokalizacji podczas wskazywania drogi. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "PPE – personal protective equipment; RAMS – risk assessments and method statements; hazard – zagrożenie; risk – ryzyko; fall protection – zabezpieczenie przed upadkiem; report – zgłosić. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: We need to review the RAMS before lifting. B: Is the edge protected? Tłumaczenie: A: Musimy sprawdzić ocenę ryzyka i metodę pracy przed podnoszeniem. B: Czy krawędź jest zabezpieczona?"
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "PPE nie zastępuje zabezpieczeń zbiorowych. RAMS jest terminem używanym m.in. na brytyjskich budowach; znaczenie dokumentów należy sprawdzić w lokalnym systemie organizacji."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Przetłumacz cztery komunikaty: niezabezpieczona krawędź, nieznana masa, brak rękawic, potrzebujemy instrukcji. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "foreman – brygadzista; worker – pracownik; driver – kierowca; help – pomoc; finished – zakończone; not ready – niegotowe. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Can you help me move this board? B: We need another person and the right equipment. Tłumaczenie: A: Możesz mi pomóc przesunąć tę płytę? B: Potrzebujemy jeszcze jednej osoby i odpowiedniego sprzętu."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'Can you help me…?' to prośba; 'We need…' wskazuje wymagany zasób. Nie mów 'finished', gdy nadal brakuje kontroli lub mocowania."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Napisz rozmowę 4-zdaniową, w której prosisz o pomoc i wyjaśniasz, dlaczego nie wolno jeszcze ruszyć. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "tape measure – miara; drill – wiertarka; screw – wkręt/śruba zależnie od rodzaju; gloves – rękawice; steel – stal; timber – drewno konstrukcyjne. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Have you got the tape measure? B: Yes, but we're missing the correct screws. Tłumaczenie: A: Masz taśmę? B: Tak, ale brakuje właściwych śrub/wkrętów."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'Screw' odnosi się do konkretnego rodzaju łącznika, ale dla projektu trzeba podać jego klasę, średnicę i długość. 'Timber' bywa używane inaczej niż 'wood' zależnie od kontekstu."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Podpisz sześć przedmiotów i poproś o dokładnie 12 łączników o zadanych wymiarach. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "length – długość; width – szerokość; height – wysokość; millimetre – milimetr; metre – metr; eight o'clock – ósma. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: What's the width of the opening? B: One metre and twenty centimetres. Tłumaczenie: A: Jaka jest szerokość otworu? B: Jeden metr i dwadzieścia centymetrów."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "Przed podaniem liczby zawsze powiedz jednostkę. W brytyjskim angielskim stosuje się pisownię 'metre' i 'millimetre', a w USA częściej 'meter' i 'millimeter'. Unikaj samego 'twenty'."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Przetłumacz wymiary 2400 mm, 1200 mm i czas 08:30. Poproś o potwierdzenie odczytu. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "measure – mierzyć; install – montować; check – kontrolować; take a break – zrobić przerwę; start – zacząć; finish – skończyć. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: First, measure the opening. Then install the frame. B: I'll check the drawing. Tłumaczenie: A: Najpierw zmierz otwór, później zamontuj ramę. B: Sprawdzę rysunek."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'First, then, finally' porządkuje instrukcję. Tryb rozkazujący wymaga znajomości wymagań BHP; nie należy bezmyślnie wykonywać polecenia niewiadomego pochodzenia."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Napisz instrukcję w 4 krokach dotyczącą bezpiecznej kontroli wymiaru przed montażem. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 8,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "Stop work! – zatrzymaj pracę; injury – uraz; fire – pożar; call emergency services – wezwij służby ratunkowe; location – lokalizacja; first aid – pierwsza pomoc. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Stop work! Someone is injured. Call the emergency services! B: What is our address? Tłumaczenie: A: Zatrzymajcie pracę! Ktoś jest ranny. Wezwij służby! B: Jaki mamy adres?"
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "W Wielkiej Brytanii numerem alarmowym jest 999 lub 112; w innych krajach anglojęzycznych numery mogą się różnić. Podawaj dokładną lokalizację, zdarzenie i liczbę poszkodowanych."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Przećwicz krótkie zgłoszenie w języku angielskim z adresem budowy i rodzajem zdarzenia. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 9,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "employment contract – umowa o pracę; payslip – pasek wypłaty; wages – wynagrodzenie; overtime – nadgodziny; minimum wage – płaca minimalna; hours worked – przepracowane godziny. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: Could I see my payslip, please? B: Yes. Let's check the hours worked. Tłumaczenie: A: Czy mogę zobaczyć pasek wypłaty? B: Tak. Sprawdźmy przepracowane godziny."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "Stawki minimalne i reguły nadgodzin zależą od kraju, wieku i rodzaju zatrudnienia; nie należy uczyć jednej kwoty dla wszystkich. 'Could I…?' umożliwia uprzejme pytanie o dokument."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Przygotuj trzy pytania o liczbę godzin, nadgodziny i pisemne potwierdzenie warunków pracy. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 10,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "delivery – dostawa; delay – opóźnienie; drawing revision – rewizja rysunku; missing parts – brakujące części; variation – zmiana zakresu; non-conformity – niezgodność. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: We're missing two brackets. The latest drawing is revision C. B: I'll report the issue. Tłumaczenie: A: Brakuje dwóch uchwytów. Najnowszy rysunek to rewizja C. B: Zgłoszę problem."
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'We're missing…' nie oznacza, że towar jest już zamówiony. Podaj numer części, ilość, rewizję i wpływ na pracę. Nazwy 'variation' i 'change order' mają znaczenie kontraktowe zależne od umowy."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Napisz czterozdaniowy e-mail o dwóch brakujących elementach, nieaktualnym rysunku i blokadzie montażu. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 11,
+      "sections": [
+        {
+          "heading": "Słownictwo: słowo i znaczenie",
+          "text": "handover – przekazanie; daily report – raport dzienny; completed – zakończone; pending – oczekujące; approved – zatwierdzone; tomorrow – jutro. Powtarzaj każde słowo w pełnym zdaniu, zamiast zapamiętywać listę bez kontekstu."
+        },
+        {
+          "heading": "Dialog z tłumaczeniem",
+          "text": "A: We've installed twelve metres. Eight metres are still pending. B: Has the inspection been approved? Tłumaczenie: A: Zamontowaliśmy dwanaście metrów. Osiem nadal pozostaje. B: Czy kontrolę zatwierdzono?"
+        },
+        {
+          "heading": "Jak mówić poprawnie i bezpiecznie",
+          "text": "'Completed' i 'approved' to różne statusy. Raport powinien zawierać ilość i datę, a nie tylko opinię 'everything is fine'."
+        },
+        {
+          "heading": "Praktyka językowa",
+          "text": "Zapisz przekazanie zmiany: 12 z 20 m gotowe, 8 m pozostaje, podaj przyczynę opóźnienia i status kontroli. Nagraj własną wypowiedź, jeśli masz dostępne narzędzie, albo odegraj rozmowę na głos i sprawdź każde słowo z dialogiem."
+        }
+      ]
+    }
+  ]
+}
