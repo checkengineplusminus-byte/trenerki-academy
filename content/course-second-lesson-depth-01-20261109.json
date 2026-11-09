@@ -1,0 +1,92 @@
+{
+  "brygadzista": {
+    "curiosity": "Siedmiominutowa odprawa może zaoszczędzić znacznie więcej czasu, jeśli ujawni brak materiału lub kolizję ekip przed rozpoczęciem pracy.",
+    "explain": "Odprawa musi dać pracownikom trzy odpowiedzi: co dziś robimy, od czego zależy start i kto podejmuje decyzję, gdy pojawi się przeszkoda. Nie czyta się całego harmonogramu; wskazuje się zadania, dostęp do rusztowań, liftów oraz dostawy kluczowych materiałów.",
+    "example": "Montaż barierek ma się rozpocząć o 7:00, ale pomiar podłoża nie został zatwierdzony. Brygadzista wskazuje ten brak jako warunek rozpoczęcia, przekierowuje pracę na przygotowania i zgłasza decyzję kierownikowi.",
+    "task": "Napisz odprawę na 7 minut: cel dnia, dwie zależności, jedno zagrożenie i osobę odpowiedzialną za potwierdzenie."
+  },
+  "kierownik-budowy": {
+    "curiosity": "Nawet prawidłowo zamontowany element może wymagać przeróbki, jeżeli zrealizowano nieaktualną rewizję dokumentacji.",
+    "explain": "Każdy rysunek powinien mieć numer, datę i rewizję. Wersja A i C mogą wyglądać podobnie, lecz zawierać zmianę mocowania albo grubości konstrukcji. Zespół potrzebuje jednej uzgodnionej wersji do produkcji, montażu i odbioru; starszy plik nie staje się aktualny dlatego, że został wydrukowany.",
+    "example": "W rysunku C dodano odsunięcie balustrady o 25 mm, a produkcja pracuje na B. Kierownik wstrzymuje kolidującą czynność, sporządza listę zmian, sprawdza ilości i uzgadnia termin oraz koszt przed akceptacją nowej wersji.",
+    "task": "Porównaj hipotetyczne rewizje B i C: wymień skutki dla materiałów, harmonogramu, kosztów i jakości."
+  },
+  "dostepne-pdf": {
+    "curiosity": "Czytnik ekranu może odczytać nagłówek zwykłego tekstu tak samo jak akapit, jeżeli nadano mu tylko większą czcionkę.",
+    "explain": "Dostępny nagłówek jest elementem struktury H1/H2/H3. H1 określa główny temat, H2 wprowadza podtemat, a H3 część podtematu. Nie należy przeskakiwać poziomów tylko po to, by zmienić wygląd; styl wizualny i semantyka dokumentu muszą współpracować.",
+    "example": "W raporcie tytuł i trzy podrozdziały wyglądają poprawnie, ale każdy jest zwykłym tekstem pogrubionym. Po przypisaniu stylów nagłówków użytkownik czytnika może poruszać się między sekcjami zamiast przewijać cały dokument.",
+    "task": "Ułóż hierarchię nagłówków raportu: tytuł, zakres, metodologia, wyniki i wnioski. Sprawdź, czy kolejność jest logiczna."
+  },
+  "nie-marnuj-jedzenia": {
+    "curiosity": "Oznaczenie daty może dotyczyć bezpieczeństwa produktu albo przede wszystkim jakości — to dwa różne komunikaty.",
+    "explain": "Sformułowanie „należy spożyć do” dotyczy produktów szybko psujących się i ma znaczenie dla bezpieczeństwa. „Najlepiej spożyć przed” odnosi się zasadniczo do jakości produktu przechowywanego w odpowiednich warunkach. Nie wolno jednak próbować produktu podejrzanego, by testować jego bezpieczeństwo.",
+    "example": "Jogurt z datą „należy spożyć do” oraz sucha kasza z oznaczeniem „najlepiej spożyć przed” wymagają innego sposobu oceny. Przy produktach szybko psujących się nie wystarcza ocena zapachu; trzeba respektować warunki i terminy.",
+    "task": "Wymyśl pięć produktów z obu kategoriami dat i opisz bezpieczne postępowanie z każdym bez smakowania niepewnej żywności."
+  },
+  "obowiazki-domowe": {
+    "curiosity": "Nawet krótki obowiązek może generować chaos, jeśli jedna osoba wykonuje czynność, a nikt nie odpowiada za materiały i zakończenie procesu.",
+    "explain": "Lista domowych prac powinna zawierać zadanie, częstotliwość, czas i osobę odpowiedzialną za wynik. „Łazienka” nie jest zadaniem; osobno trzeba opisać umycie umywalki, wymianę ręczników i uzupełnienie środków. Bezpieczny dobór detergentów zależy od materiału powierzchni.",
+    "example": "W każdy poniedziałek jedna osoba wywozi odpady, a druga ma sprawdzić zapas worków. Zamiast dwóch ogólnych poleceń zapisuje się konkretne kryterium ukończenia i przypisuje odpowiedzialność.",
+    "task": "Wypisz 12 prac domowych, ich czas i częstotliwość. Ustal trzy zadania, których nie powinno samodzielnie wykonywać małe dziecko."
+  },
+  "ekonomia-domowa-bez-dlugow": {
+    "curiosity": "Rachunek płacony raz w roku może powodować miesięczne problemy, jeśli nie odkładasz na niego środków regularnie.",
+    "explain": "Koszty stałe są zwykle przewidywalne, np. czynsz i abonament, a zmienne zależą od sposobu życia, np. zakupy spożywcze. Wydatki nieregularne — serwis auta, ubezpieczenie, prezenty, podatki — trzeba przeliczać na miesięczną rezerwę. To właśnie one często zjadają pozorną nadwyżkę.",
+    "example": "Dochód wynosi 6 000 zł, koszty stałe 2 500 zł, zmienne 2 300 zł, a wydatki roczne 7 200 zł. Po odłożeniu 600 zł miesięcznie na koszty roczne zostaje 600 zł, nie 1 200 zł.",
+    "task": "Policz swój przykładowy budżet z rocznymi kosztami przeliczonymi na miesiące. Ustal, ile środków zostaje naprawdę."
+  },
+  "lepszy-cukiernik": {
+    "curiosity": "W cukiernictwie zamiana składników objętościowo zamiast wagowo może zmienić strukturę wypieku, nawet gdy przepis wygląda tak samo.",
+    "explain": "W recepturze kontroluje się masę składników, liczbę porcji, wielkość formy oraz stan surowców. Proporcje nie zawsze skalują się idealnie wraz z powierzchnią formy i czasem pieczenia. Dobre przepisy zawierają gramaturę, temperaturę oraz opis oczekiwanej konsystencji.",
+    "example": "Przepis na 8 porcji wymaga 240 g mąki i 160 g cukru. Przy 12 porcjach podstawowe przeliczenie daje 360 g i 240 g; warunki wypieku wymagają jednak osobnej oceny, zwłaszcza przy zmianie naczynia.",
+    "task": "Przelicz cztery składniki z 8 na 12 porcji i zapisz, które parametry pozostają do sprawdzenia podczas pieczenia."
+  },
+  "lepszy-kucharz": {
+    "curiosity": "Ta sama deska do krojenia może przenieść drobnoustroje z surowego mięsa na gotową sałatkę, nawet gdy wygląda na czystą.",
+    "explain": "Higiena obejmuje oddzielenie surowych produktów od gotowych do jedzenia, właściwe mycie rąk, dobór środków i kontrolę temperatur. Największe ryzyko to nie tylko zabrudzona powierzchnia, ale także połączenie złej kolejności prac i niewłaściwego przechowywania.",
+    "example": "Na jednej desce przygotowano surowego kurczaka, a potem pomidory do podania na zimno. Samo wytarcie deski ręcznikiem nie jest odpowiednią kontrolą. Należy stosować odrębne lub prawidłowo umyte i zdezynfekowane narzędzia.",
+    "task": "Ułóż przygotowanie posiłku z surowym mięsem i sałatką tak, aby ograniczyć ryzyko przeniesienia zanieczyszczeń."
+  },
+  "pasieka": {
+    "curiosity": "Sąsiedztwo uli może mieć znaczenie nie tylko dla zapylania, lecz także dla dostępu do wody, sąsiadów i bezpiecznej obsługi pasieki.",
+    "explain": "Lokalizację uli wybiera się, analizując pożytek, zacienienie, wiatr, dostęp do wody, ruch ludzi oraz możliwości dojazdu. Pasieka powinna dawać przestrzeń do bezpiecznego serwisu rodzin pszczelich i spełniać odpowiednie lokalne wymagania.",
+    "example": "Plan przewiduje ustawienie uli tuż przy chodniku na granicy posesji, aby było blisko domu. To zły punkt wyjścia; trzeba przeanalizować tor lotu pszczół, przechodniów, sąsiedztwo oraz alternatywne ustawienie.",
+    "task": "Narysuj plan działki z trzema możliwymi lokalizacjami uli i oceną: woda, wiatr, słońce, sąsiedzi, droga dojazdowa."
+  },
+  "swiety-mikolaj": {
+    "curiosity": "Duża broda i długa peleryna mogą ograniczać widoczność i zwiększać ryzyko potknięcia podczas wizyty u dzieci.",
+    "explain": "Strój animatora powinien pozwalać normalnie oddychać, widzieć i poruszać się. Należy sprawdzić mocowanie brody, długość tkanin, stabilność obuwia i dopasowanie czapki. Materiał nie powinien znajdować się w pobliżu otwartego ognia.",
+    "example": "Animator wchodzi po schodach z ciężkim workiem, a peleryna zahacza o stopnie. Lepiej zmienić sposób przenoszenia prezentów albo element stroju niż liczyć, że nie dojdzie do upadku.",
+    "task": "Ułóż checklistę stroju: widoczność, wentylacja, długość tkanin, stabilność obuwia i materiały łatwopalne."
+  },
+  "trawnik-jestem-ogrodnikiem": {
+    "curiosity": "Trawa dobrze znosząca częste deptanie może gorzej radzić sobie w silnym cieniu — nie istnieje jedna idealna mieszanka na każdą działkę.",
+    "explain": "Przy wyborze mieszanki rozpoznaje się nasłonecznienie, rodzaj gleby, użytkowanie, wilgotność oraz lokalne warunki klimatyczne. Wysiew wymaga przygotowanego podłoża, odpowiedniej struktury i kontaktu nasion z ziemią. Zalecenia dawek i terminów zależą od mieszanki.",
+    "example": "Rodzina planuje trawnik do gry w piłkę pod wysokimi drzewami. Mieszanka sportowa może nie poradzić sobie z brakiem światła; trzeba ustalić kompromis między użytkowaniem a warunkami miejsca.",
+    "task": "Na schemacie trawnika wskaż strefę słoneczną, cienistą i mocno deptaną; dobierz wymagane cechy nasion."
+  },
+  "angielski-na-budowie": {
+    "curiosity": "Na anglojęzycznej budowie słowo „induction” może oznaczać instruktaż przed rozpoczęciem pracy, a nie zatrudnienie.",
+    "explain": "Na wejściu do budowy trzeba umieć powiedzieć, kim jesteś, kogo szukasz i czy przeszedłeś wymagany instruktaż. „Where is the site office?”, „I need an induction” i „Who is my supervisor?” to podstawowe pytania. Dostęp i wymagane dokumenty zależą od miejsca pracy.",
+    "example": "Pracownik wchodzi na budowę i nie zna osoby odpowiedzialnej za przydział robót. Zamiast iść za innymi mówi: „I am new here. Where is the site office? Who is my supervisor?” i czeka na instrukcje.",
+    "task": "Przećwicz dialog powitalny po angielsku: przedstaw się, zapytaj o biuro i potwierdź, że potrzebujesz instruktażu."
+  },
+  "niemiecki-na-budowie": {
+    "curiosity": "„Unterweisung” oznacza instruktaż, a „Baustelle” budowę. Rozumienie obu słów pomaga poprawnie rozpocząć pierwszy dzień.",
+    "explain": "Podczas wejścia na budowę przydają się pytania „Wo ist das Baubüro?”, „Wer ist mein Ansprechpartner?” i „Brauche ich eine Unterweisung?”. Nie zakładaj, że podobieństwo słów w językach gwarantuje właściwy sens; w razie wątpliwości poproś o powtórzenie.",
+    "example": "Nowa osoba słyszy polecenie rozpoczęcia pracy w strefie oznaczonej zakazem. Może powiedzieć „Bitte wiederholen” i poprosić o wyjaśnienie zasad wejścia, zanim wykona czynność.",
+    "task": "Zapisz po niemiecku trzy pytania: o biuro, przełożonego i instruktaż. Przetłumacz każde na polski."
+  },
+  "norweski-na-budowie": {
+    "curiosity": "HMS-kort i opplæring to różne pojęcia. Posiadanie karty identyfikacyjnej nie zastępuje instruktażu stanowiskowego.",
+    "explain": "Pierwszego dnia pracownik powinien wiedzieć, gdzie się zgłosić, jakie zasady HMS obowiązują i kto odpowiada za instruktaż. Przydatne zdania: „Hvor er brakkeriggen?”, „Hvem er basen?” oraz „Jeg trenger opplæring før jeg begynner”. W razie niejasności należy zapytać.",
+    "example": "Pracownik otrzymuje kartę HMS, ale nie przeprowadzono SJA dla ryzykownej operacji. Sama karta nie oznacza, że może rozpocząć pracę; trzeba ustalić zagrożenia i zasady wykonania.",
+    "task": "Napisz po norwesku dialog pierwszego dnia: powitanie, pytanie o basen i instruktaż, potwierdzenie miejsca zbiórki."
+  },
+  "lepszy-szef": {
+    "curiosity": "Niejasne zadanie może wyglądać jak brak kompetencji pracownika, choć rzeczywistą przyczyną jest brak potrzebnych danych i uprawnień do decyzji.",
+    "explain": "Skuteczne delegowanie określa rezultat, termin, wymagane dane, zakres samodzielności i punkt kontroli. Warto poprosić pracownika, aby własnymi słowami opisał zadanie — to pozwala wykryć rozbieżności bez strofowania go.",
+    "example": "Szef mówi „załatw ofertę do piątku”, ale nie podaje klienta, zakresu ani ceny. Poprawna instrukcja ustala klienta, produkty, dane ofertowe, osobę akceptującą i oczekiwany termin.",
+    "task": "Przepisz niejasne polecenie w pięciu punktach: co, dla kogo, z jakich danych, do kiedy i kto zatwierdza."
+  }
+}
