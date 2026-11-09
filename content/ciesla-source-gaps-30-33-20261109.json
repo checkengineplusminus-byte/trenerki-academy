@@ -1,0 +1,193 @@
+{
+  "course_slug": "ciesla-przygotowanie-czeladnicze",
+  "lessons": [
+    {
+      "lesson_no": 30,
+      "title_pl": "31. Mur pruski i szachulcowy",
+      "material": {
+        "module": 4,
+        "learning": {
+          "correct": 0,
+          "example": "Rodzaj wypełnienia pól drewnianego szkieletu.",
+          "options": [
+            "Materiał wypełnienia pól drewnianego szkieletu.",
+            "Zwykle inne położenie jętki względem krokwi.",
+            "Konstrukcja z cegły bez żadnego drewnianego szkieletu.",
+            "Wyłącznie różna grubość tynku na tym samym materiale."
+          ],
+          "feedback": [
+            "Narysuj dwa przekroje, podpisz drewniany szkielet i oba rodzaje wypełnienia. Przy renowacji trzeba ocenić stan drewna i sposób odprowadzania wilgoci; zastąpienie tradycyjnego wypełnienia nieprzepuszczalnym materiałem może zmienić pracę przegrody.",
+            "Narysuj dwa przekroje, podpisz drewniany szkielet i oba rodzaje wypełnienia. Przy renowacji trzeba ocenić stan drewna i sposób odprowadzania wilgoci; zastąpienie tradycyjnego wypełnienia nieprzepuszczalnym materiałem może zmienić pracę przegrody.",
+            "Narysuj dwa przekroje, podpisz drewniany szkielet i oba rodzaje wypełnienia. Przy renowacji trzeba ocenić stan drewna i sposób odprowadzania wilgoci; zastąpienie tradycyjnego wypełnienia nieprzepuszczalnym materiałem może zmienić pracę przegrody.",
+            "Narysuj dwa przekroje, podpisz drewniany szkielet i oba rodzaje wypełnienia. Przy renowacji trzeba ocenić stan drewna i sposób odprowadzania wilgoci; zastąpienie tradycyjnego wypełnienia nieprzepuszczalnym materiałem może zmienić pracę przegrody."
+          ],
+          "question": "Co odróżnia tradycyjny mur pruski od szachulcowego?",
+          "situation": "Na budowie widzisz dwa podobne domy z widocznym szkieletem. Jeden ma cegły między belkami, drugi wypełnienie gliniane. Wyjaśnij ich nazwy i różnicę materiałową.",
+          "explanation": "Narysuj dwa przekroje, podpisz drewniany szkielet i oba rodzaje wypełnienia. Przy renowacji trzeba ocenić stan drewna i sposób odprowadzania wilgoci; zastąpienie tradycyjnego wypełnienia nieprzepuszczalnym materiałem może zmienić pracę przegrody."
+        },
+        "sections": [
+          {
+            "text": "W drewnianej konstrukcji szkieletowej pola między belkami mogą być wypełnione innymi materiałami. Materiały egzaminacyjne rozróżniają tradycyjny mur pruski z wypełnieniem ceglanym i szachulec z mieszaniną gliny i sieczki. W obu przypadkach elementami szkieletu są słupy, rygle, zastrzały i podwaliny.",
+            "heading": "Wyjaśnienie"
+          },
+          {
+            "text": "Narysuj dwa przekroje, podpisz drewniany szkielet i oba rodzaje wypełnienia. Przy renowacji trzeba ocenić stan drewna i sposób odprowadzania wilgoci; zastąpienie tradycyjnego wypełnienia nieprzepuszczalnym materiałem może zmienić pracę przegrody.",
+            "heading": "Technologia i przykład"
+          },
+          {
+            "text": "Na budowie widzisz dwa podobne domy z widocznym szkieletem. Jeden ma cegły między belkami, drugi wypełnienie gliniane. Wyjaśnij ich nazwy i różnicę materiałową.",
+            "heading": "Problem zawodowy"
+          },
+          {
+            "text": "Rozrysuj proces i wyjaśnij decyzję dla sytuacji: Na budowie widzisz dwa podobne domy z widocznym szkieletem. Jeden ma cegły między belkami, drugi wypełnienie gliniane. Wyjaśnij ich nazwy i różnicę materiałową.",
+            "heading": "Samodzielne zadanie"
+          }
+        ],
+        "source_pages": "cieśla 1 s.17; cieśla 2 s.9,15",
+        "editorial_status": "review_needed"
+      },
+      "course_slug": "ciesla-przygotowanie-czeladnicze"
+    },
+    {
+      "lesson_no": 31,
+      "title_pl": "32. Sztaplowanie i mygłowanie",
+      "material": {
+        "module": 4,
+        "learning": {
+          "correct": 1,
+          "example": "Mygłowanie.",
+          "options": [
+            "Dojrzewanie świeżego betonu w deskowaniu.",
+            "Składowanie dłużyc w większych pryzmach.",
+            "Ułożenie cienkich fornirów w jedną płytę.",
+            "Obróbka desek ręcznym strugiem."
+          ],
+          "feedback": [
+            "Zaplanowanie placu wymaga stabilnego podłoża, identyfikacji materiału, drogi odpływu wody, przewiewu i odpowiedniego sprzętu transportowego. Nie wolno przechodzić pod podnoszonymi dłużycami ani układać stosów bez zabezpieczenia przed przetoczeniem.",
+            "Zaplanowanie placu wymaga stabilnego podłoża, identyfikacji materiału, drogi odpływu wody, przewiewu i odpowiedniego sprzętu transportowego. Nie wolno przechodzić pod podnoszonymi dłużycami ani układać stosów bez zabezpieczenia przed przetoczeniem.",
+            "Zaplanowanie placu wymaga stabilnego podłoża, identyfikacji materiału, drogi odpływu wody, przewiewu i odpowiedniego sprzętu transportowego. Nie wolno przechodzić pod podnoszonymi dłużycami ani układać stosów bez zabezpieczenia przed przetoczeniem.",
+            "Zaplanowanie placu wymaga stabilnego podłoża, identyfikacji materiału, drogi odpływu wody, przewiewu i odpowiedniego sprzętu transportowego. Nie wolno przechodzić pod podnoszonymi dłużycami ani układać stosów bez zabezpieczenia przed przetoczeniem."
+          ],
+          "question": "Jak nazywa się składowanie dłużyc w pryzmach?",
+          "situation": "Dostawa zawiera mokre deski i dłużyce. Ustal oddzielne strefy, sposób ułożenia i ryzyka każdej partii.",
+          "explanation": "Zaplanowanie placu wymaga stabilnego podłoża, identyfikacji materiału, drogi odpływu wody, przewiewu i odpowiedniego sprzętu transportowego. Nie wolno przechodzić pod podnoszonymi dłużycami ani układać stosów bez zabezpieczenia przed przetoczeniem."
+        },
+        "sections": [
+          {
+            "text": "Sztaplowanie dotyczy układania tarcicy w stosach. Podczas suszenia naturalnego warstwy rozdziela się przekładkami, a ich pionowe ustawienie pomaga ograniczyć uginanie. Mygłowanie oznacza składowanie surowca okrągłego, np. dłużyc, w większych pryzmach. To odmienne procesy dla różnych postaci drewna.",
+            "heading": "Wyjaśnienie"
+          },
+          {
+            "text": "Zaplanowanie placu wymaga stabilnego podłoża, identyfikacji materiału, drogi odpływu wody, przewiewu i odpowiedniego sprzętu transportowego. Nie wolno przechodzić pod podnoszonymi dłużycami ani układać stosów bez zabezpieczenia przed przetoczeniem.",
+            "heading": "Technologia i przykład"
+          },
+          {
+            "text": "Dostawa zawiera mokre deski i dłużyce. Ustal oddzielne strefy, sposób ułożenia i ryzyka każdej partii.",
+            "heading": "Problem zawodowy"
+          },
+          {
+            "text": "Rozrysuj proces i wyjaśnij decyzję dla sytuacji: Dostawa zawiera mokre deski i dłużyce. Ustal oddzielne strefy, sposób ułożenia i ryzyka każdej partii.",
+            "heading": "Samodzielne zadanie"
+          }
+        ],
+        "source_pages": "cieśla 1 s.1,3; cieśla 2 s.7,17",
+        "editorial_status": "review_needed"
+      },
+      "course_slug": "ciesla-przygotowanie-czeladnicze"
+    },
+    {
+      "lesson_no": 32,
+      "title_pl": "33. Suszenie komorowe i hydrotermia",
+      "material": {
+        "module": 4,
+        "learning": {
+          "correct": 2,
+          "example": "Hydrotermia przygotowuje do obróbki, a suszenie obniża zawartość wody.",
+          "options": [
+            "Hydrotermia i suszenie służą tylko obniżeniu masy, bez zmiany podatności materiału.",
+            "Suszenie zawsze podnosi wilgotność, a hydrotermia ją usuwa.",
+            "Hydrotermia przygotowuje do obróbki, a suszenie obniża zawartość wody.",
+            "To dwa identyczne określenia zabiegu niezależnie od celu."
+          ],
+          "feedback": [
+            "Na schemacie opisz materiał wejściowy, kontrolowane parametry i efekt. Nie stosuj identycznej temperatury i czasu dla wszystkich gatunków. Odróżniaj potrzebę uzyskania właściwej wilgotności elementu od zmiękczenia drewna do dalszej obróbki.",
+            "Na schemacie opisz materiał wejściowy, kontrolowane parametry i efekt. Nie stosuj identycznej temperatury i czasu dla wszystkich gatunków. Odróżniaj potrzebę uzyskania właściwej wilgotności elementu od zmiękczenia drewna do dalszej obróbki.",
+            "Na schemacie opisz materiał wejściowy, kontrolowane parametry i efekt. Nie stosuj identycznej temperatury i czasu dla wszystkich gatunków. Odróżniaj potrzebę uzyskania właściwej wilgotności elementu od zmiękczenia drewna do dalszej obróbki.",
+            "Na schemacie opisz materiał wejściowy, kontrolowane parametry i efekt. Nie stosuj identycznej temperatury i czasu dla wszystkich gatunków. Odróżniaj potrzebę uzyskania właściwej wilgotności elementu od zmiękczenia drewna do dalszej obróbki."
+          ],
+          "question": "Co odróżnia hydrotermię od suszenia?",
+          "situation": "Producent ma osuszyć belki konstrukcyjne oraz przygotować fornir. Wskaż różne cele procesów.",
+          "explanation": "Na schemacie opisz materiał wejściowy, kontrolowane parametry i efekt. Nie stosuj identycznej temperatury i czasu dla wszystkich gatunków. Odróżniaj potrzebę uzyskania właściwej wilgotności elementu od zmiękczenia drewna do dalszej obróbki."
+        },
+        "sections": [
+          {
+            "text": "Suszenie komorowe kontroluje temperaturę, wilgotność i przepływ powietrza, aby obniżyć wilgotność drewna. Obróbka hydrotermiczna wykorzystuje ciepło i wilgoć lub parę do przygotowania drewna do skrawania lub gięcia. Materiały egzaminacyjne omawiają oba procesy osobno, więc nie należy nazywać ich jedną operacją.",
+            "heading": "Wyjaśnienie"
+          },
+          {
+            "text": "Na schemacie opisz materiał wejściowy, kontrolowane parametry i efekt. Nie stosuj identycznej temperatury i czasu dla wszystkich gatunków. Odróżniaj potrzebę uzyskania właściwej wilgotności elementu od zmiękczenia drewna do dalszej obróbki.",
+            "heading": "Technologia i przykład"
+          },
+          {
+            "text": "Producent ma osuszyć belki konstrukcyjne oraz przygotować fornir. Wskaż różne cele procesów.",
+            "heading": "Problem zawodowy"
+          },
+          {
+            "text": "Rozrysuj proces i wyjaśnij decyzję dla sytuacji: Producent ma osuszyć belki konstrukcyjne oraz przygotować fornir. Wskaż różne cele procesów.",
+            "heading": "Samodzielne zadanie"
+          }
+        ],
+        "source_pages": "cieśla 1 s.1,3,15; cieśla 2 s.3,5,13",
+        "editorial_status": "review_needed"
+      },
+      "course_slug": "ciesla-przygotowanie-czeladnicze"
+    },
+    {
+      "lesson_no": 33,
+      "title_pl": "34. Obliczanie przełożenia kół pasowych",
+      "material": {
+        "module": 4,
+        "learning": {
+          "correct": 3,
+          "example": "50 mm.",
+          "options": [
+            "100 mm.",
+            "200 mm.",
+            "25 mm.",
+            "50 mm."
+          ],
+          "feedback": [
+            "Przykład: silnik 1200 obr./min ma koło 100 mm; wał obrabiarki ma osiągać 2400 obr./min. Przekształć wzór: d₂ = (1200 × 100)/2400 = 50 mm. Podwojenie obrotów wymaga w tym uproszczonym modelu dwukrotnie mniejszego koła napędzanego.",
+            "Przykład: silnik 1200 obr./min ma koło 100 mm; wał obrabiarki ma osiągać 2400 obr./min. Przekształć wzór: d₂ = (1200 × 100)/2400 = 50 mm. Podwojenie obrotów wymaga w tym uproszczonym modelu dwukrotnie mniejszego koła napędzanego.",
+            "Przykład: silnik 1200 obr./min ma koło 100 mm; wał obrabiarki ma osiągać 2400 obr./min. Przekształć wzór: d₂ = (1200 × 100)/2400 = 50 mm. Podwojenie obrotów wymaga w tym uproszczonym modelu dwukrotnie mniejszego koła napędzanego.",
+            "Przykład: silnik 1200 obr./min ma koło 100 mm; wał obrabiarki ma osiągać 2400 obr./min. Przekształć wzór: d₂ = (1200 × 100)/2400 = 50 mm. Podwojenie obrotów wymaga w tym uproszczonym modelu dwukrotnie mniejszego koła napędzanego."
+          ],
+          "question": "Jaka średnica koła obrabiarki wynika z danych 1200 obr./min, 100 mm i 2400 obr./min?",
+          "situation": "Uczeń wybiera koło 200 mm na wał obrabiarki, sądząc, że zwiększy obroty. Sprawdź jego pomysł na liczbach.",
+          "explanation": "Przykład: silnik 1200 obr./min ma koło 100 mm; wał obrabiarki ma osiągać 2400 obr./min. Przekształć wzór: d₂ = (1200 × 100)/2400 = 50 mm. Podwojenie obrotów wymaga w tym uproszczonym modelu dwukrotnie mniejszego koła napędzanego."
+        },
+        "sections": [
+          {
+            "text": "W idealnym napędzie pasowym bez poślizgu iloczyn obrotów i średnicy koła napędowego jest równy iloczynowi obrotów i średnicy koła napędzanego: n₁ × d₁ = n₂ × d₂. To podstawa pytań o zmianę obrotów obrabiarki. W rzeczywistej maszynie obowiązują ograniczenia producenta, a poślizg zmienia wynik.",
+            "heading": "Wyjaśnienie"
+          },
+          {
+            "text": "Przykład: silnik 1200 obr./min ma koło 100 mm; wał obrabiarki ma osiągać 2400 obr./min. Przekształć wzór: d₂ = (1200 × 100)/2400 = 50 mm. Podwojenie obrotów wymaga w tym uproszczonym modelu dwukrotnie mniejszego koła napędzanego.",
+            "heading": "Technologia i przykład"
+          },
+          {
+            "text": "Uczeń wybiera koło 200 mm na wał obrabiarki, sądząc, że zwiększy obroty. Sprawdź jego pomysł na liczbach.",
+            "heading": "Problem zawodowy"
+          },
+          {
+            "text": "Rozrysuj proces i wyjaśnij decyzję dla sytuacji: Uczeń wybiera koło 200 mm na wał obrabiarki, sądząc, że zwiększy obroty. Sprawdź jego pomysł na liczbach.",
+            "heading": "Samodzielne zadanie"
+          }
+        ],
+        "source_pages": "cieśla 1 s.3; cieśla 2 s.13",
+        "editorial_status": "review_needed"
+      },
+      "course_slug": "ciesla-przygotowanie-czeladnicze"
+    }
+  ]
+}
