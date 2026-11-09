@@ -32,22 +32,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Klepki to długie, wygięte deszczułki. Różne gatunki drewna wpływają na zapach, trwałość i kontakt z przechowywaną zawartością. Metalowe obręcze ściągają klepki. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek. Dąb jest ceniony za trwałość i właściwości użytkowe; inne gatunki mogą być stosowane zależnie od przeznaczenia naczynia. Wilgotność i późniejsze pęcznienie zmieniają dopasowanie klepek, dlatego rozróżniaj naczynia do przechowywania cieczy i wyroby dekoracyjne."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Beczka ma denko, ścianki z klepek i obręcze. Używano jej do transportu i przechowywania różnych produktów. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Dno, kształt klepek, wręga i obręcze muszą współpracować. Obręcz zapewnia docisk, ale sama nie uszczelni naczynia z pękniętą klepką. Kontroluj owalizację, szczeliny w stykach, pozycję dna oraz powierzchnie mające kontakt z żywnością."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdza się szczelność połączeń, stan drewna, obręczy i dopasowanie denka. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Beczka przecieka przy jednym styku. Sprawdza się ciągłość włókien, dopasowanie krawędzi i stan obręczy; nie maskuje przecieku nieznanym klejem w naczyniu spożywczym."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Nie używaj ciężkich narzędzi ani nie naprawiaj szczelnych zbiorników bez przeszkolenia."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Porównaj trzy próbki deski: prostosłojną, sękatą i z pęknięciem. Zaznacz, która nadaje się na klepkę, i uzasadnij wybór."
             }
-          ]
+          ],
+          "illustration": "material-bednarz"
         },
         {
           "lesson_no": 2,
@@ -207,22 +208,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Glina to naturalny materiał plastyczny po dodaniu odpowiedniej ilości wody. Po wyschnięciu jest krucha, a wypalenie w piecu zmienia jej właściwości. Szkliwo jest osobną warstwą powierzchniową. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się. Szamot, czyli wcześniej wypalony i rozdrobniony materiał ceramiczny, bywa dodawany do masy, by kontrolować skurcz i zachowanie wyrobu. Szkliwo po wypaleniu tworzy powłokę, której bezpieczeństwo kontaktu z żywnością wymaga odpowiedniego składu i procedury."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Dzban ma brzusiec, szyjkę, wylew i często ucho. Grubość ścianki i stabilne dno wpływają na funkcję. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "O jakości decydują właściwe odpowietrzenie masy, grubość ścianek, równomierne suszenie i program wypału dopasowany do gliny i szkliwa. Pęknięcia w suszeniu często wynikają z nierównomiernego wysychania, nie z samego wyglądu koła garncarskiego."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Pęknięcia, odkształcenia i nierówny wypał mogą uniemożliwić użytkowanie naczynia. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Świeży dzban ma pęknięcie na dnie. Przed kolejną próbą sprawdź równomierność grubości i tempo suszenia. Nie zakładaj, że szkliwo naprawi wadę konstrukcyjną."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Pył ceramiczny i wysokie temperatury są zagrożeniem. Wypał wymaga odpowiednio przygotowanego stanowiska i opieki fachowca."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Wyjaśnij na rysunku różnicę między surową gliną, wysuszonym czerepem i gotowym szkliwionym naczyniem. Wskaż moment występowania skurczu."
             }
-          ]
+          ],
+          "illustration": "material-garncarz-tradycja"
         },
         {
           "lesson_no": 2,
@@ -382,22 +384,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Drewno iglaste wybiera się ze względu na jego strukturę i sposób obróbki. Ważne są kierunek włókien, wady drewna i wilgotność. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów. Gont łupany i cięty różnią się przebiegiem włókien oraz sposobem odprowadzania wody. Sęki, pęknięcia i nieprawidłowe składowanie mogą zmniejszać trwałość pokrycia."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Gont dachowy jest niewielkim elementem montowanym w rzędach, zachodzących na siebie jak łuski. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Na dachu znaczenie mają zakład, nachylenie połaci, wentylacja i elementy mocujące zgodne z projektem i lokalnymi wymogami. Kierunek ułożenia wpływa na spływ wody, a trwałe zawilgocenie sprzyja degradacji drewna."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Ocena obejmuje ciągłość pokrycia, zachodzenie elementów i sposób odprowadzania deszczu. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Dach przecieka przy połączeniach gontów mimo użycia grubego drewna. Trzeba ocenić zakłady, spadek, mocowania i obróbki, a nie wymieniać wyłącznie przypadkowej deszczułki."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Praca na wysokości oraz cięcie drewna są niebezpieczne. Kurs uczy rozpoznawania techniki, nie samodzielnego montażu na dachu."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Porównaj na schemacie gont z włóknami biegnącymi wzdłuż elementu oraz przeciętymi poprzecznie. Zaznacz drogę spływu wody."
             }
-          ]
+          ],
+          "illustration": "material-gontarz"
         },
         {
           "lesson_no": 2,
@@ -557,22 +560,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Papier tworzy strony, płótno lub skóra mogą pokrywać okładkę, a nici i kleje utrzymują blok książki. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Papier ma kierunek włókien wpływający na jego zginanie i falowanie. Papier i tektury bezkwasowe są cenione w oprawach przeznaczonych do długiego przechowywania. Klej należy dobrać do podłoża, czasu schnięcia i odwracalności wymaganej przy konserwacji."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Książka składa się z bloku stron, grzbietu i okładki. Każdy z tych elementów ma inną funkcję. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Blok książki, grzbiet, wyklejka, okładka i kapitałka pełnią inne funkcje. Po szyciu lub klejeniu kontroluje się otwieranie, trwałość połączenia, równoległość grzbietu i brak śladów kleju na kartkach."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Ocena obejmuje równe ułożenie stron, trwałość grzbietu i brak niepotrzebnego uszkodzenia oryginału. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Oprawa po wyschnięciu wygina się. Powodem bywa przeciwny kierunek włókien papieru i okładziny lub nierówna wilgotność kleju; mocniejszy ścisk nie zawsze usuwa przyczynę."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Noże, prasy i kleje wymagają bezpiecznej obsługi. Cenne historyczne księgi przekazuje się konserwatorowi."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Zaznacz kierunek włókien na dwóch arkuszach i zaprojektuj układ warstw okładki, który ograniczy falowanie."
             }
-          ]
+          ],
+          "illustration": "material-introligator-tradycja"
         },
         {
           "lesson_no": 2,
@@ -732,22 +736,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Skóra ma stronę licową i spodnią; jej grubość i elastyczność wpływają na przeznaczenie. Stosuje się też materiały zastępcze. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości. Znaczenie ma rodzaj wyprawy, elastyczność, wytrzymałość na rozciąganie i odporność szwów. Materiały syntetyczne mogą inaczej reagować na kleje, wilgoć i zginanie."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Portfel ma przegrody, miejsce na karty, szwy i zamknięcie. Projekt powinien uwzględniać liczbę przedmiotów i wytrzymałość. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Kaletnik projektuje wykroje z uwzględnieniem kierunku rozciągliwości, zapasu na szew, krawędzi i obciążenia okuć. Szew w miejscu wielokrotnego zginania wymaga szczególnej kontroli; okucie musi być dopasowane do grubości warstw."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdza się wykończenie krawędzi, równość szwów i trwałość części często zginanych. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Pasek pęka obok metalowej sprzączki. Sama zmiana nici nie rozwiąże złego wykroju, ostrych krawędzi okucia lub nieodpowiedniego materiału."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Cięcie ostrzami i stosowanie klejów wymaga odpowiednich warunków."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Rozpisz przekrój portfela: warstwa zewnętrzna, kieszenie, szew, krawędź i okucia. Określ, które miejsca pracują na zginanie."
             }
-          ]
+          ],
+          "illustration": "material-kaletnik-tradycja"
         },
         {
           "lesson_no": 2,
@@ -907,22 +912,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "W kole współpracują drewno piasty i szprych oraz obręcz. Każdy element przenosi inne siły. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą. Dobór gatunku, przebiegu włókien i sezonowania wpływa na trwałość połączeń. Stalowa obręcz wymaga właściwego pasowania, bo drewno i metal różnie reagują na temperaturę i wilgoć."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Koło wozu powinno obracać się równo i przenosić obciążenia bez luzów. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Konstrukcja musi pozostać osiowa, a połączenia wolne od nadmiernych luzów. Kontroluje się bicie koła, pęknięcia przy czopach szprych, zużycie tulei piasty i stan obręczy. Koło pojazdu nie jest wyrobem wyłącznie dekoracyjnym."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Obejrzyj symetrię, stan połączeń, pęknięcia i centryczność koła. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Koło ma wyraźne bicie boczne. Kontrola obejmuje ustawienie piasty, długości i osadzenie szprych oraz stan obręczy, zamiast ścinania przypadkowych wystających fragmentów."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Nie montuj historycznych kół w pojeździe użytkowym bez kontroli właściwego specjalisty."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Narysuj koło z podpisaną piastą, szprychą, dzwonem i obręczą. Strzałkami zaznacz drogę sił od osi do podłoża."
             }
-          ]
+          ],
+          "illustration": "material-kolodziej"
         },
         {
           "lesson_no": 2,
@@ -1257,22 +1263,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Brąz jest stopem na bazie miedzi. Różne stopy mają inne właściwości. Forma to przygotowana przestrzeń, do której wlewa się metal w profesjonalnej odlewni. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Brąz dzwonowy to stop miedzi i cyny. Skład stopu i geometria dzwonu wpływają na barwę i trwałość dźwięku; wysoka zawartość cyny może zwiększać kruchość. Forma odlewnicza musi mieć wytrzymałość i przepuszczalność gazów odpowiednie do procesu."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Dzwon ma czaszę, krawędź i element odpowiedzialny za wydawanie dźwięku. Jego wymiary i materiał wpływają na ton. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Projekt obejmuje profil ściany, model, rdzeń, formę, zasilanie odlewu, chłodzenie i strojenie. Wady, takie jak pęcherze gazowe, jamy skurczowe i pęknięcia, wymagają odrębnej diagnostyki. Praca z ciekłym metalem wymaga specjalistycznego nadzoru i zabezpieczeń."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Ocena obejmuje powierzchnię odlewu, pęknięcia i jakość brzmienia. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Dzwon ma piękny wygląd, ale zniekształcony ton i podejrzenie porowatości. Ocena nie może ograniczać się do szlifowania powierzchni; bada się geometrię i integralność materiału."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Ciekły metal i odlewnia to ekstremalne zagrożenia; nauka tutaj pozostaje wyłącznie obserwacyjna."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Narysuj przekrój modelu dzwonu: forma zewnętrzna, rdzeń, wnęka na ciekły metal. Zaznacz, gdzie może powstać wada skurczowa."
             }
-          ]
+          ],
+          "illustration": "material-ludwisarz"
         },
         {
           "lesson_no": 2,
@@ -1432,22 +1439,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Ziarna zbóż mają okrywę i wnętrze. Różne frakcje po przemiale wpływają na charakter mąki. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania. Przed mieleniem kontroluje się czystość, zapach, obecność szkodników i właściwe przygotowanie. Przy mące istotne są uziarnienie, popiół i zastosowanie kulinarne."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Mąka jest produktem przemiału, a nie gotowym wypiekiem. Wymaga odpowiedniego przechowywania. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Proces obejmuje przyjęcie, czyszczenie, kondycjonowanie zależnie od technologii, rozdrabnianie, odsiew i pakowanie. Pył mączny może tworzyć atmosferę wybuchową: instalacja wymaga odciągu i oceny ryzyka, nie improwizowanego zamiatania w pobliżu źródeł zapłonu."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdza się suchość, zanieczyszczenia i właściwe rozdrobnienie. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "W partii mąki pojawiają się ciemne cząstki. Ocenia się stan zboża, czystość odsiewacza i zużycie elementów mechanicznych; nie maskuje się problemu dodatkami."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Pył mączny w niewłaściwych warunkach stwarza zagrożenie pożarem lub wybuchem; urządzeń nie obsługuj bez nadzoru."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Ułóż schemat: ziarno — czyszczenie — mielenie — przesiewanie — mąka. Zaznacz punkty kontroli jakości i zagrożenia pyłowe."
             }
-          ]
+          ],
+          "illustration": "material-mlynarz-tradycyjny"
         },
         {
           "lesson_no": 2,
@@ -1607,22 +1615,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Wiklina to odpowiednio przygotowane pędy wierzbowe. Jej elastyczność pozwala tworzyć kształty bez wielu łączników. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością. Nawilżanie lub moczenie służy odzyskaniu podatności na zginanie, ale nadmiar wilgoci przy niewłaściwym przechowywaniu sprzyja pleśni. Pędy z pęknięciami i sękami mogą łamać się w ciasnych łukach."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Kosz ma dno, ścianki, brzeg i czasem uchwyt. Jego funkcja zależy od wytrzymałości splotu. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Kosz ma osnowę, splot i obrzeże. Osnowa stabilizuje kształt, a splot współpracuje z naprężeniem elementów; zbyt luźne rzędy prowadzą do deformacji, zbyt mocny naciąg do pęknięć."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Oceń gęstość splotu, regularność i brak wystających ostrych końców. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Dno kosza wygina się pod niewielkim obciążeniem. Trzeba sprawdzić rozstaw i sztywność elementów osnowy oraz splot, a nie tylko dodać ozdobny uchwyt."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Przygotowywanie surowca i praca nożem wymaga bezpiecznego stanowiska."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Porównaj trzy pędy: suchy, prawidłowo elastyczny i nadmiernie namoczony. Opisz ryzyko dla ich obróbki i trwałości."
             }
-          ]
+          ],
+          "illustration": "material-plecionkarz"
         },
         {
           "lesson_no": 2,
@@ -1782,22 +1791,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Tradycyjnie używano m.in. lnu, konopi i sizalu. Długość i jakość włókien wpływają na zachowanie liny. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi. Lina powstaje przez skręcanie pojedynczych pasm i dalsze łączenie ich w przeciwnych kierunkach, aby uzyskać stabilny splot. Sam duży przekrój nie gwarantuje nośności."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Powróz służy do wiązania, lecz jego zastosowanie zależy od materiału i właściwej wytrzymałości. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Na jakość wpływają równomierny naciąg, liczba pasm, ich skręt, połączenia i staranne zakończenie końców. Liny przeznaczone do podnoszenia ludzi i ładunków wymagają odpowiednich norm, oznaczeń i dopuszczeń; lina szkoleniowa nie może być do tego używana."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Oglądaj przetarcia, rozwarstwienia i nierówny skręt. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Lina na końcu zaczyna się rozkręcać. Najpierw ocenia się zabezpieczenie zakończenia i kierunek skrętu; nie uznaje jej za bezpieczną do dźwigania na podstawie samego wyglądu."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Nie używaj samodzielnie zrobionych lin do asekuracji, podnoszenia ładunków ani do pracy na wysokości."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Skręć na sucho papierowe paski w dwa kierunki i opisz, dlaczego w tradycyjnej linie ważna jest równowaga skrętów. Nie obciążaj takiego modelu."
             }
-          ]
+          ],
+          "illustration": "material-powroznik"
         },
         {
           "lesson_no": 2,
@@ -1957,22 +1967,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Skóra i metalowe okucia muszą współpracować bez powodowania otarć oraz uszkodzeń. Długość i elastyczność pasów mają znaczenie. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem. Dobór grubości, jakości włókien, wykończenia krawędzi i rodzaju okuć ma znaczenie dla trwałości oraz komfortu zwierzęcia. Zużyte szwy, ostre krawędzie metalowych okuć i krucha skóra mogą doprowadzić do zerwania połączenia."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Uprząż składa się z elementów rozkładających nacisk i przenoszących siły. Jest wyposażeniem użytkowym, nie wyłącznie ozdobą. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Szycie, mocowanie sprzączek i dobór długości pasów wymagają dopasowania do konkretnego zwierzęcia i użycia. Oprócz wytrzymałości ocenia się miejsca tarcia o ciało oraz symetrię uprzęży. Naprawy elementów krytycznych powinien wykonywać kompetentny rzemieślnik."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdzaj szwy, okucia, przetarcia i dopasowanie do zwierzęcia. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Koń ma obtarcie po zmianie uprzęży. Nie dokręca się ślepo pasków; sprawdza dopasowanie, krawędzie, materiały i ruch, a w razie obrażeń konsultuje weterynarza."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Nie zakładaj niezweryfikowanej uprzęży zwierzęciu; współpracuj z doświadczonym specjalistą od sprzętu i dobrostanu."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Narysuj pas uprzęży z otworami i sprzączką; wskaż strefę największego obciążenia i dwie potencjalne przyczyny otarcia."
             }
-          ]
+          ],
+          "illustration": "material-rymarz"
         },
         {
           "lesson_no": 2,
@@ -2132,22 +2143,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Drewniana rama utrzymuje siatkę, której oczka decydują o przesiewanej frakcji. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Rama może być drewniana lub metalowa, a materiał siatki dobiera się do cząstek i warunków pracy. Średnica drutu, wielkość oczka oraz powierzchnia otwarta wpływają na przepustowość i jakość rozdzielania materiału. Siatki stalowe mogą korodować; kontakt z żywnością wymaga właściwego materiału i higieny."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Sito ma obręcz lub ramę i część przesiewającą. Używano sit w gospodarstwach i wielu warsztatach. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Sito powinno mieć jednakową wielkość oczek, odpowiedni naciąg siatki i trwałe mocowanie do ramy. Jeśli naciąg jest nierówny, siatka faluje, a przesiewanie staje się mniej powtarzalne."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Oceń równomierność oczek, sztywność ramy i uszkodzenia siatki. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Drobiny większe od założonego wymiaru przechodzą przez sito. Sprawdź uszkodzone oczka, stan ramy i lokalne odkształcenia siatki, zamiast zwiększać szybkość przesiewania."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Przy przesiewaniu pylistych materiałów trzeba uwzględniać ochronę dróg oddechowych i właściwości substancji."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Na schemacie pokaż trzy wielkości oczek i narysuj, które ziarna przejdą przez każdą z nich."
             }
-          ]
+          ],
+          "illustration": "material-sitarz"
         },
         {
           "lesson_no": 2,
@@ -2307,22 +2319,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Drewno lipowe jest często wybierane do drobnego rzeźbienia, a dębowe do trwalszych wyrobów. Układ włókien wpływa na zachowanie materiału. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Lipa zwykle jest miękka i łatwa w obróbce szczegółów, natomiast dąb ma wyraźniejszy rysunek słojów i większy opór podczas cięcia. Znaczenie ma kierunek włókien, sęki, mikropęknięcia i odpowiednie sezonowanie. Narzędzie tnące pracujące w poprzek włókien może wyrywać fragmenty drewna."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Ornament może ozdabiać meble, drzwi i wnętrza. Powinien być proporcjonalny i czytelny. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Rzeźba powstaje od szkicu przez blokowanie bryły do detalu i wykończenia. W projekcie określa się głębokość ornamentu, ściany minimalne i widoczność wad; im drobniejszy detal, tym większe znaczenie ma stabilne mocowanie i ostrość dłuta."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Ocenia się symetrię, wykończenie powierzchni i brak niezamierzonych pęknięć. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Płatek rzeźbionego ornamentu wyłamuje się przy ostatnim cięciu. Analizuje się kierunek włókien i grubość mostka, a nie wyłącznie siłę dłuta."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Ostre narzędzia i źle zamocowany przedmiot mogą spowodować uraz; ćwiczenia praktyczne tylko pod odpowiednim nadzorem."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Porównaj rysunek słojów na dwóch deskach i wskaż kierunek, w którym dłuto może łatwiej wyrwać włókna."
             }
-          ]
+          ],
+          "illustration": "material-snycerz"
         },
         {
           "lesson_no": 2,
@@ -2482,22 +2495,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "But może łączyć skórę, tkaninę, gumę, wkładki i kleje. Właściwy materiał zależy od miejsca i sposobu użytkowania. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Cholewki mogą być skórzane, tekstylne lub syntetyczne, a podeszwy gumowe lub z tworzyw o różnych właściwościach. Dobór kleju wymaga zgodności z obydwoma materiałami i właściwego przygotowania powierzchni. Strefa przodostopia wielokrotnie się zgina, więc sztywny materiał naprawczy może szybko pęknąć."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. But ma cholewkę, podeszwę, wkładkę i zapięcie lub sznurowanie. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Ocenia się stan cholewki, połączenia z podeszwą, stabilność obcasa i zużycie bieżnika. Szycie, klejenie oraz wymiana części to różne metody, których trwałość trzeba oceniać przy realnym ruchu buta."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Ocenia się stabilność pięty, stan podeszwy i szczelność połączeń. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Po sklejeniu odchodzi czubek podeszwy. Sprawdza się przygotowanie powierzchni, zgodność kleju i obciążenia podczas chodzenia. Dodatkowa warstwa przypadkowego kleju nie daje gwarancji."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Pracę z ostrzami, rozpuszczalnikami i niektórymi klejami wykonuje się tylko przy właściwym zabezpieczeniu."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Narysuj but z podpisanymi elementami i zaznacz strefy zginania, ścierania i miejscowe połączenia klejone."
             }
-          ]
+          ],
+          "illustration": "material-szewc-tradycja"
         },
         {
           "lesson_no": 2,
@@ -2657,22 +2671,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Len i wełna mają różne właściwości. Grubość i napięcie włókien wpływają na wygląd oraz wytrzymałość tkaniny. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Osnowa to naprężone nitki biegnące wzdłuż tkaniny, a wątek przeplata się przez nie. Len zwykle mniej się rozciąga niż wełna, która sprężyście reaguje na naprężenia. Surowiec, skręt przędzy, gęstość tkania i wykończenie wpływają na grubość, elastyczność oraz skurcz gotowej tkaniny."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Tkanina powstaje z powtarzalnego przeplotu. Wzór zależy od sposobu prowadzenia nici. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Przed rozpoczęciem dobiera się długość osnowy z zapasem na straty i skurcz, a następnie kontroluje równe naprężenie. Zbyt małe napięcie daje nierówny splot; nadmierne napięcie może prowadzić do zrywania nitek."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdza się równomierność splotu, naprężenie i brak zerwanych nitek. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Tkanina zwęża się na brzegach. Sprawdź rozpiętość wątku, napięcie osnowy i liczbę przeplotów, nie tylko szerokość ramy krosna."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Ruchome części krosna i napięte elementy wymagają ostrożności."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Narysuj splot płócienny: cztery pionowe nitki osnowy i cztery poziome wątku. Zaznacz przejścia nad i pod."
             }
-          ]
+          ],
+          "illustration": "material-tkacz-reczny"
         },
         {
           "lesson_no": 2,
@@ -2832,22 +2847,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Uprząż łączy zwierzę z pojazdem, lejce służą do komunikacji, a wóz przenosi ładunek. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "W tradycyjnym pojeździe współpracują drewno, metal i skóra. Drewno narażone jest na pęknięcia i zawilgocenie, metalowe sworznie na zużycie, a skórzane pasy uprzęży na rozciąganie i przecieranie. Niewłaściwie dopasowana uprząż może powodować ból oraz utratę kontroli nad pojazdem."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Powóz lub wóz musi być dostosowany do zaprzęgu i przeznaczenia przewozu. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Przed przejazdem doświadczony woźnica ocenia stan pojazdu i zgodność uprzęży z koniem, warunki trasy, zachowanie zwierzęcia i sposób komunikacji z pomocnikiem. Trening powożenia wymaga realnej praktyki z instruktorem, nie wyłącznie wiedzy historycznej."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Ocena obejmuje stan wyposażenia, drogę i dobrostan zwierząt. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Dyszel wykazuje pęknięcie przy okuciu. Nie kontynuuje się przejazdu; pojazd wycofuje się do fachowej kontroli i naprawy."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Praktyczna nauka powożenia wymaga instruktora i odpowiednich warunków. Kurs nie uczy samodzielnego prowadzenia zwierzęcia."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Oznacz na rysunku koło, piastę, dyszel, pas uprzęży i lejce. Wskaż trzy punkty kontroli przed hipotetycznym przejazdem."
             }
-          ]
+          ],
+          "illustration": "material-woznica"
         },
         {
           "lesson_no": 2,
@@ -3007,22 +3023,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Kafle tworzą okładzinę, a materiały ogniotrwałe muszą znosić wymagane temperatury. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Piec kaflowy łączy elementy ceramiczne, materiały ogniotrwałe i spoiwa odporne na temperaturę. Cegły szamotowe i gliny ogniotrwałe różnią się od zwykłych zapraw budowlanych; rozszerzalność cieplna wymaga dopasowanych dylatacji i połączeń. Kafle są powłoką funkcjonalną i dekoracyjną, nie substytutem sprawnej drogi spalin."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Piec kaflowy ma palenisko, drogę spalin i zewnętrzną powierzchnię oddającą ciepło. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Projekt uwzględnia moc urządzenia, przewody dymowe, wentylację, odległości od materiałów palnych i odbiór przez uprawnione osoby zgodnie z przepisami. Nieszczelności mogą powodować wydostawanie się spalin, a tlenek węgla jest niewyczuwalny."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Kontrola obejmuje szczelność, ciąg kominowy i bezpieczeństwo użytkowania. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Piec ma pękniętą spoinę i czuć dym w pomieszczeniu. Nie rozpala się go ponownie do czasu fachowej oceny szczelności i przewodu spalinowego."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Nie buduj ani nie uruchamiaj pieców bez uprawnionego fachowca; błędy niosą ryzyko pożaru i zatrucia tlenkiem węgla."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Na przekroju pieca oznacz strefę spalania, kanał dymowy, materiał ogniotrwały, kafle i miejsce wymagające dylatacji."
             }
-          ]
+          ],
+          "illustration": "material-zdun-tradycja"
         },
         {
           "lesson_no": 2,
@@ -3182,22 +3199,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Czcionka metalowa przenosi pojedynczy znak, a papier odbiera obraz po wydrukowaniu. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "Tradycyjna czcionka drukarska mogła zawierać stop ołowiu z dodatkami antymonu i cyny. Kontakt z ołowiem i pyłem wymaga właściwej higieny oraz ograniczenia narażenia; jest to materiał toksyczny. Papier wpływa na wchłanianie farby i ostrość odbicia, a zużyty metalowy materiał może zniekształcać znaki."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Kolumna gazety musi zawierać czytelny układ tytułów, tekstu i odstępów. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Zecer układa znaki w wiersze i kolumny, stosuje odstępniki i kontroluje odbitkę próbną. Zła interlinia lub brak światła między znakami pogarszają czytelność; korekta materiału odbywa się przed właściwym nakładem."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdza się kolejność liter, skład akapitów i błędy w druku. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "W odbitce pojawiają się nierówne odstępy między wyrazami. Należy sprawdzić justowanie, skład i ustawienie formy, zamiast dopisywać farbę w miejscach przerw."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Historyczne stopy metali mogły zawierać ołów; eksponatów nie obrabiaj ani nie przetapiaj."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Ułóż z papierowych prostokątów wiersz tytułu, podtytułu i tekstu. Ustal hierarchię wielkości i odległości między znakami."
             }
-          ]
+          ],
+          "illustration": "material-zecer"
         },
         {
           "lesson_no": 2,
@@ -3357,22 +3375,23 @@
           "lesson_no": 1,
           "sections": [
             {
-              "heading": "Z czego powstaje wyrób?",
-              "text": "Sprężyna przechowuje energię, przekładnie ją przekazują, a element regulacyjny wpływa na dokładność działania. Materiał nie jest przypadkowy: jego kształt, masa, wilgotność lub trwałość mogą zmienić działanie wyrobu."
+              "heading": "Materiały i właściwości",
+              "text": "W mechanizmie często stosuje się mosiężne koła zębate, stalowe wałki i sprężyny oraz syntetyczne kamienie łożyskowe ograniczające zużycie. Dobór oleju zależy od miejsca smarowania, prędkości i obciążenia; zbyt duża ilość środka smarnego przyciąga zabrudzenia i może pogarszać działanie."
             },
             {
-              "heading": "Materiał przed obróbką i po niej",
-              "text": "Wyobraź sobie surowiec w warsztacie, a potem gotowy produkt. Zegar mechaniczny ma źródło energii, przekładnię i mechanizm regulacji. Wskazówki pokazują wynik działania. Spróbuj wskazać, co się zmieniło: kształt, ułożenie części albo rodzaj połączenia."
+              "heading": "Technologia i dobór",
+              "text": "Naprawa rozpoczyna się od udokumentowania stanu, bezpiecznego rozładowania energii sprężyny przez fachowca, czyszczenia, oceny luzów i właściwego montażu. Pył i przypadkowe narzędzia mogą uszkodzić małe czopy lub koła."
             },
             {
-              "heading": "Przykład jakości",
-              "text": "Sprawdza się płynność działania, zużycie części i punktualność wskazań. Jeśli materiał lub połączenia nie spełniają wymagań, nawet ładnie wyglądający przedmiot może nie nadawać się do użycia."
+              "heading": "Jak powstaje wada",
+              "text": "Zegar zatrzymuje się mimo nasmarowania wszystkich kół. Sprawdza się tarcie, zużycie czopów, zabrudzenia i stan źródła energii, zamiast dolewać oleju."
             },
             {
-              "heading": "Samodzielna obserwacja",
-              "text": "Wskaż na ilustracji materiał, a następnie zapisz, jakie pytanie zadałbyś mistrzowi o jego właściwości. Sprężyny pod napięciem i bardzo małe części wymagają fachowej obsługi."
+              "heading": "Zadanie materiałoznawcze",
+              "text": "Narysuj trzy połączone koła zębate i wskaż przekazywanie ruchu oraz dwa miejsca, w których tarcie może zatrzymać mechanizm."
             }
-          ]
+          ],
+          "illustration": "material-zegarmistrz-tradycja"
         },
         {
           "lesson_no": 2,
