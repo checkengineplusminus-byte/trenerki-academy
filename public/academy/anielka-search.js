@@ -1,127 +1,213 @@
-/* Anielka: client-side course recommendations. No chat messages leave the browser. */
+/* TRENERKI Anielka: one primary search, immediate contextual help.
+   Local, private, accessible suggestions. Not an AI-generated conversation. */
 (function(){
 'use strict';
-const stop=new Set(['chce','chcialbym','chcialabym','chcial','chcesz','chcialam','chcialem','nauczyc','sie','jak','zrobic','poznac','podstaw','podstawy','kurs','kursu','kursy','szukam','potrzebuje','prosze','mnie','mozna','moze','czy','jest','dla','pracy','praca','pracowac','temat','tego','te','tych','oraz','przez','troche','bardziej','dobrze','ktory','ktora','ktore','tak','bardzo','rozne','gdzie','moglbym','moglabym','nauka','umiem','umiec','zaczac','czego','chodzi','nowego','bede','byc']);
 const normalize=s=>String(s||'').toLocaleLowerCase('pl').replace(/ł/g,'l').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
-const words=s=>[...new Set(normalize(s).split(/\s+/).filter(t=>t.length>2&&!stop.has(t)))];
-const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+const stop=new Set(('chce chcialbym chcialabym chcial chcialam chcialem sie nauczyc nauka nauczyc kurs kursu kursy szukam szuka potrzebuje prosze pomoc jak gdzie ktory ktora ktore co zrobic dobrze lepiej chce potrafie umiem umiec mnie moj moje ten takie te tego tych od dla przy bez do na i oraz albo byc jestem zostac co').split(/\s+/));
+const terms=s=>[...new Set(normalize(s).split(' ').filter(t=>t.length>2&&!stop.has(t)))];
 const aliases=[
- ['ciesla-przygotowanie-czeladnicze',/\b(ciesl|ciesie|stolar|wiezb|krokwi|krokiew|drewno|ciesiel)/],
+ ['ciesla-przygotowanie-czeladnicze',/\b(ciesl|ciesiel|stolar|wiezb|krokwi|krokiew|drewnian|ciesio|konstrukcj drewna)/],
+ ['brygadzista',/\b(brygadz|majster|zarzadzac ekipa|prowadzic zespol na budowie)/],
+ ['kierownik-budowy',/\b(kierownik budow|prowadzic budow|nadzor budow|koordynacja budow)/],
+ ['lepszy-szef',/\b(szef|kierowac pracownik|zarzadzac lud|delegowac zadania)/],
+ ['apartamenty',/\b(apartament|airbnb|wynajem krotko|gosci hotel)/],
+ ['gpsr',/\b(gpsr|bezpieczenstw produkt|rekojmia recodzie)/],
+ ['bdo',/\b(bdo|ewidencj odpad|opakowan|odpady firm)/],
+ ['dostepne-pdf',/\b(pdf|dostepnosc cyfrow|wcag|dostepne dokument)/],
+ ['kgw',/\b(kgw|kolo gospodyn|dotacj|granty)/],
+ ['festyn',/\b(festyn|stoisk|jarmark|targach)/],
+ ['petsitter',/\b(petsitter|opieka nad zwierzet|opiekun kot|opieka nad kot)/],
+ ['odbiory',/\b(usterk|odbior mieszk|reklamacj mieszkania|deweloper)/],
+ ['wspolnota',/\b(wspolnot mieszk|zarzad nieruchomosc)/],
+ ['pasieka',/\b(pasiek|pszczol|miod|pszczelar)/],
+ ['koordynator',/\b(firma sprzataj|sprzatan|serwis sprzataj)/],
+ ['dziennik-kota',/\b(hotelik kot|hotel dla kot|organizacj hotelu zwierzat)/],
+ ['opieka-seniorzy',/\b(senior|starsz|opieka nad osoba)/],
+ ['wsparcie-adhd',/\b(adhd|nadpobudliw|koncentracj)/],
+ ['poznaj-siebie',/\b(poznaj siebie|mocn stron|samoocen|samopozn)/],
+ ['mocny-charakter',/\b(asertywn|stanowcz|pewnosc siebie|mocny charakter)/],
+ ['zwiazek-rozmowa',/\b(zwiazek|komunikacja w relacji|rozmow z partner)/],
+ ['blizej-dziecka',/\b(blizej dzieck|wiez z dzieck|relacj z dziec)/],
+ ['rodzice-50-50',/\b(opieka naprzemien|rodzic 50|po rozwodzie dziec)/],
+ ['zaczynam-od-zera',/\b(utrata majatk|zaczynam od zera|stracilem wszystko|odbudowac zycie)/],
+ ['obowiazki-domowe',/\b(obowiazk dom|porzadk w domu|organizacja domu)/],
+ ['lepszy-cukiernik',/\b(cukiernik|wypiek|tort|ciast|deser)/],
+ ['lepszy-kucharz',/\b(kuchar|gotowan|kuchni|przepis)/],
+ ['nie-lubie-ludzi',/\b(nie lubie ludzi|trudno z ludzmi|relacj z lud)/],
+ ['jak-kupic-samochod',/\b(samochod|kupno aut|kupic auto|uzywanego aut|motoryzacj)/],
+ ['mierz-ponad-sily',/\b(ambicj|bez szkoly|samorozwoj|zmienic swoje zycie)/],
+ ['excel-skroty',/\b(excel|arkusz|formul|komork|spreadsheet|tabeli przestawn)/],
+ ['autocad-skroty',/\b(autocad|rysunek techniczn|cad|warstw|model 2d)/],
+ ['google-ads-promocja',/\b(google ads|reklam w google|pozycjonowanie reklam|kampani google)/],
+ ['facebook-ads-promocja',/\b(facebook|meta ads|instagram|reklam w social|kampanie meta)/],
+ ['swiety-mikolaj',/\b(mikolaj|santa|prezent swiatecz)/],
+ ['lepszy-tata',/\b(tata|ojcem|ojcostw|tatus)/],
+ ['lepsza-mama',/\b(mama|matka|macierzynst)/],
+ ['word-skroty',/\b(word|edytor tekst|dokument tekstow|microsoft office)/],
+ ['wyjdz-z-toksycznego-zwiazku',/\b(toksyczn|przemoc w zwiazku|manipulacj|kontrolujac partner)/],
+ ['kryzys-po-40-bez-dlugow',/\b(kryzys po|czterdziest|dlug po 40)/],
+ ['partner-z-uzaleznieniem',/\b(alkohol|narkotyk|uzaleznien|partner pije)/],
+ ['nie-marnuj-jedzenia',/\b(nie marn|resztk jedzen|nie wyrzucac jedzen|gotowac z reszt)/],
+ ['trawnik-jestem-ogrodnikiem',/\b(trawnik|trawa|ogrod|ogrodnic)/],
+ ['ekonomia-domowa-bez-dlugow',/\b(budzet domow|oszczedz|dlug|finans domow|wydatki)/],
  ['angielski-na-budowie',/\b(angielsk|english|englis)/],
  ['norweski-na-budowie',/\b(norwesk|norsk|norweg)/],
  ['niemiecki-na-budowie',/\b(niemieck|deutsch|german)/],
- ['brygadzista',/\b(brygadz|majster|kierowac ekipa)/],
- ['kierownik-budowy',/\b(kierownik budow|prowadzic budow|zarzadzac budow)/],
- ['autocad-skroty',/\b(autocad|rysunek techniczn|cad|model 2d)/],
- ['excel-skroty',/\b(excel|arkusz|tabel|formula|formul|spreadsheet)/],
- ['word-skroty',/\b(word|dokument tekstow|edytor tekst)/],
+ ['pomagaj-dziecku-w-lekcjach',/\b(prace domowe dziec|odrabian|pomagac dziecku w nauce)/],
  ['windows-skroty',/\b(windows|obsluga komputer|folder|skroty klawiatur)/],
- ['dostepne-pdf',/\b(pdf|dostepnosc cyfrow|dokument dostepn)/],
- ['jak-kupic-samochod',/\b(samochod|kupno aut|kupic auto|motoryzacj|uzywanego aut)/],
- ['lepszy-tata',/\b(tata|ojcem|ojcostw|tatus)/],
- ['lepsza-mama',/\b(mama|matka|macierzynst)/],
- ['apartamenty',/\b(apartament|wynajem krotkoterminow|airbnb)/],
- ['trawnik-jestem-ogrodnikiem',/\b(trawnik|trawa|ogrod|ogrodnic)/],
- ['ekonomia-domowa-bez-dlugow',/\b(budzet domow|oszczedz|dlug|finans domow)/],
- ['transport-logistyka-praktycznie',/\b(logistyk|transport|spedycj|dostaw)/],
- ['sap-ewm-magazyn',/\b(sap|ewm)/],
- ['facebook-ads-promocja',/\b(facebook|meta ads|reklama facebook)/],
- ['google-ads-promocja',/\b(google ads|reklama google|kampania google)/],
- ['kowal-tradycja',/\b(kowal|kowalstw|kuznia|kucie)/],
+ ['transport-logistyka-praktycznie',/\b(logistyk|transport|spedycj|dostaw|kierowanie flota)/],
+ ['kowal-tradycja',/\b(kowal|kowalstw|kuznia|kucie|podkow)/],
+ ['zdun-tradycja',/\b(zdun|kaflow|budowa pieca|palenisk)/],
+ ['kolodziej',/\b(kolodziej|drewnian kole|drewnianych kol|wozow konnych)/],
+ ['bednarz',/\b(bednar|beczk|drewnian naczyn)/],
+ ['woznica',/\b(woznic|powoz|powozen)/],
+ ['rymarz',/\b(rymar|uprzez|siodl)/],
  ['garncarz-tradycja',/\b(garncar|ceramik|glina|toczenie na kole)/],
- ['szewc-tradycja',/\b(szewc|butow|obuwnic)/],
- ['lepszy-kucharz',/\b(kuchar|gotowan|kuchni)/],
- ['lepszy-cukiernik',/\b(cukiernik|wypiek|ciast|tortow)/],
- ['opieka-seniorzy',/\b(senior|starsz|opieka nad osoba)/],
- ['petsitter',/\b(petsitter|opiekun zwierzat|opieka nad zwierzet)/]
+ ['plecionkarz',/\b(plecionkar|wiklin|plecenie kosz)/],
+ ['powroznik',/\b(powroz|liny|sznur)/],
+ ['snycerz',/\b(snycer|rzezb w drewnie|ornament)/],
+ ['sitarz',/\b(sitarz|sita|sito reczn)/],
+ ['zecer',/\b(zecer|sklad druk|typograf)/],
+ ['ludwisarz',/\b(ludwisar|odlewan dzwon|dzwon)/],
+ ['introligator-tradycja',/\b(introligator|oprawa ksiazek|introligatorn)/],
+ ['tkacz-reczny',/\b(tkacz|krosn|tkani)/],
+ ['kaletnik-tradycja',/\b(kaletnik|portfel|torebk|skorzane torby)/],
+ ['zegarmistrz-tradycja',/\b(zegarmistrz|zegark|mechanizm zegar)/],
+ ['mlynarz-tradycyjny',/\b(mlynarz|mlyn|maka|ziarn)/],
+ ['gontarz',/\b(gontarz|gonty|drewnian dach)/],
+ ['szewc-tradycja',/\b(szewc|naprawa but|obuwi)/],
+ ['axapta-dynamics-magazyn',/\b(axapta|dynamics|d365|scm)/],
+ ['sap-ewm-magazyn',/\b(sap ewm|system ewm)/],
+ ['oracle-wms-cloud',/\b(oracle wms|oracle warehouse)/],
+ ['manhattan-active-wms',/\b(manhattan|active warehouse)/],
+ ['blue-yonder-wms',/\b(blue yonder|jda)/],
+ ['infor-wms',/\b(infor wms|cloudsuite)/],
+ ['ongoing-wms',/\b(ongoing wms|3pl)/],
+ ['astro-consafe-wms',/\b(consafe|astro wms)/],
+ ['sap-tm-transport',/\b(sap tm|transportation management)/],
+ ['jestem-eko',/\b(eko|ekolog|segregacj|recykling)/]
 ];
-const path={
- 'ciesla-przygotowanie-czeladnicze':['autocad-skroty','norweski-na-budowie','brygadzista'],
- 'autocad-skroty':['ciesla-przygotowanie-czeladnicze','excel-skroty','kierownik-budowy'],
- 'excel-skroty':['word-skroty','windows-skroty','transport-logistyka-praktycznie'],
- 'brygadzista':['kierownik-budowy','angielski-na-budowie','ciesla-przygotowanie-czeladnicze'],
- 'kierownik-budowy':['brygadzista','autocad-skroty','excel-skroty'],
- 'angielski-na-budowie':['brygadzista','norweski-na-budowie','ciesla-przygotowanie-czeladnicze'],
- 'norweski-na-budowie':['ciesla-przygotowanie-czeladnicze','angielski-na-budowie','brygadzista'],
- 'jak-kupic-samochod':['ekonomia-domowa-bez-dlugow','excel-skroty','mocny-charakter'],
- 'lepszy-tata':['blizej-dziecka','pomagaj-dziecku-w-lekcjach','mocny-charakter'],
- 'lepsza-mama':['blizej-dziecka','pomagaj-dziecku-w-lekcjach','mocny-charakter'],
- 'apartamenty':['odbiory','wspolnota','excel-skroty']
-};
-const bridges={
- 'Budownictwo':'autocad-skroty',
- 'Rzemiosło i hobby':'lepszy-szef',
- 'Technologie i logistyka':'lepszy-szef',
- 'Biznes i praca':'excel-skroty',
- 'Rodzina i rozwój':'mocny-charakter',
- 'Dom i codzienność':'ekonomia-domowa-bez-dlugow'
-};
-function rank(query){
- const q=normalize(query),tokens=words(query);
- return COURSES.map((c,index)=>{
-  const name=normalize(c.title),id=normalize(c.id.replace(/-/g,' ')),desc=normalize(c.short),outline=normalize((c.outline||[]).join(' ')),category=normalize(c.cat+' '+(c.originalCategory||''));
+const level=(q)=>/\b(od zera|poczatkuj|pierwszy raz|nie umiem|bez doswiadczen|od podstaw)/.test(q)?'beginner':/\b(doswiadcz|zaawansow|juz pracuj|znam podstaw|rozwinac|poglebic)/.test(q)?'advanced':null;
+const purpose=q=>/\b(prac|zawod|zarabia|etat|firma|awans|biznes)/.test(q)?'work':/\b(hobby|pasj|dla siebie|w domu|wolny czas)/.test(q)?'personal':null;
+let lastIntent='',lastQuery='';
+function contextualQuery(query){
+ const raw=String(query||'').trim().slice(0,250);
+ const norm=normalize(raw);
+ if(!raw)return '';
+ if(lastIntent&&raw.length<80&&/^(a |i |ale |tylko |bardziej |zupelnie |od zera|bez doswiadczen|w pracy|dla siebie|jestem poczatkujac|mam doswiadczen)/.test(norm)&&!aliases.some(([_,rx])=>rx.test(norm)))return (lastIntent+' '+raw).slice(0,250);
+ return raw;
+}
+function rank(question){
+ const q=normalize(question),tokens=terms(question);
+ return COURSES.map((course,index)=>{
+  const title=normalize(course.title),id=normalize(course.id.replace(/-/g,' ')),desc=normalize(course.short),
+   outline=normalize((course.outline||[]).join(' ')),cat=normalize(course.cat);
   let score=0;
-  if(q&&q===name)score+=110;
-  if(q.length>5&&(q.includes(name)||name.includes(q)))score+=65;
-  if(q.length>5&&q.includes(id))score+=65;
+  if(q&&q===title)score+=200;
+  if(q.length>4&&q.includes(title))score+=100;
+  if(q.length>4&&q.includes(id))score+=90;
   for(const t of tokens){
-   if(name.includes(t))score+=22;
-   if(id.includes(t))score+=23;
-   if(category.includes(t))score+=6;
-   if(desc.includes(t))score+=4;
+   if(title.includes(t))score+=30;
+   if(id.includes(t))score+=35;
+   if(cat.includes(t))score+=5;
+   if(desc.includes(t))score+=6;
    if(outline.includes(t))score+=2;
   }
-  for(const [slug,pattern] of aliases)if(slug===c.id&&pattern.test(q))score+=55;
-  return {course:c,score,index};
+  for(const [slug,pattern] of aliases)if(slug===course.id&&pattern.test(q))score+=75;
+  if(score&&/\b(kurs|szkoleni)/.test(q))score+=2;
+  return{course,score,index};
  }).sort((a,b)=>b.score-a.score||a.index-b.index);
 }
 function find(query){
- const scored=rank(query),primary=scored[0]?.score>0?scored[0].course:null;
- if(!primary)return {primary:null,similar:[],bonus:null,found:false,query};
- const pool=COURSES.filter(c=>c.id!==primary.id),ids=path[primary.id]||[];
- const related=ids.map(id=>pool.find(c=>c.id===id)).filter(Boolean);
- const similar=[...related,...pool.filter(c=>c.cat===primary.cat&&!related.some(v=>v.id===c.id))].slice(0,2);
- const bonus=ids.slice(2).map(id=>pool.find(c=>c.id===id)).find(c=>c&&!similar.some(v=>v.id===c.id))||
- pool.find(c=>c.id===bridges[primary.cat]&&!similar.some(v=>v.id===c.id))||
- pool.find(c=>c.cat!==primary.cat&&!similar.some(v=>v.id===c.id));
- return {primary,similar,bonus:bonus||null,found:true,query};
+ const q=contextualQuery(query);
+ const ordered=rank(q).filter(x=>x.score>0);
+ const head=ordered[0];
+ if(!head)return{primary:null,similar:[],bonus:null,found:false,query:q,scores:[]};
+ const related=ordered.slice(1).filter(x=>x.score>=Math.max(10,head.score*.23)&&x.score>0).slice(0,2).map(x=>x.course);
+ return{primary:head.course,similar:related,bonus:null,found:true,query:q,scores:ordered};
+}
+const price=c=>c.price===0?'bezpłatny podgląd':c.price.toLocaleString('pl-PL')+' zł';
+function reason(c,query){
+ const q=normalize(query),bits=[],mode=level(q),goal=purpose(q);
+ if(mode==='beginner')bits.push('Zaczynasz od podstaw');
+ if(mode==='advanced')bits.push('Chcesz rozwinąć to, co już potrafisz');
+ if(goal==='work')bits.push('Myślisz o zastosowaniu tej umiejętności w pracy');
+ if(goal==='personal')bits.push('Chcesz wykorzystać ją dla siebie');
+ const topic=normalize(c.title).split(' ').filter(x=>x.length>4).slice(0,3).join(' ');
+ if(!bits.length)return 'Najbliżej Twojego opisu jest temat '+topic+'.';
+ return bits.join('. ')+'. Ten kurs dotyczy właśnie tego obszaru.';
+}
+function keyQuestion(query,p){
+ const q=normalize(query);
+ if(level(q)==='beginner')return 'Co chcesz wykonać jako pierwszą praktyczną rzecz? Dopisz to w wyszukiwarce.';
+ if(level(q)==='advanced')return 'Która konkretna czynność sprawia Ci najwięcej trudności? Dopisz ją.';
+ if(purpose(q)==='work')return 'Szukasz nowego zawodu, awansu czy poprawy obecnej pracy? Dopisz ten szczegół.';
+ if(/dziec|rodzic|zwiazek/.test(normalize(p.title)))return 'W jakiej sytuacji najbardziej potrzebujesz poprawy? Opisz ją własnymi słowami.';
+ return 'Od czego chcesz zacząć i do czego wykorzystasz nową umiejętność? Możesz dopisać szczegóły.';
 }
 function card(c,label,note){
- return '<article class="anielka-choice"><span class="anielka-choice-label">'+esc(label)+'</span><h4>'+esc(c.title)+'</h4><p>'+esc(note)+'</p><div class="anielka-choice-footer"><span>'+esc(c.outline?.length||8)+' lekcji · '+esc(c.price===0?'bez opłat':c.price.toLocaleString('pl-PL')+' zł')+'</span><button type="button" data-anielka-course="'+esc(c.id)+'">Zobacz kurs →</button></div></article>';
+ return '<article class="anielka-choice"><span class="anielka-choice-label">'+esc(label)+'</span><h4>'+esc(c.title)+'</h4><p>'+esc(note)+'</p><div class="anielka-choice-footer"><span>'+esc(c.outline?.length||8)+' lekcji · '+esc(price(c))+'</span><button type="button" data-anielka-course="'+esc(c.id)+'">Zobacz program kursu →</button></div></article>';
 }
 function response(query){
- const match=find(query);
- if(!match.found){
-  const list=['ciesla-przygotowanie-czeladnicze','excel-skroty','lepszy-tata'].map(id=>COURSES.find(c=>c.id===id)).filter(Boolean);
-  return '<div class="anielka-message"><strong>Anielka:</strong> Nie widzę dokładnego kursu o „'+esc(query.slice(0,140))+'”. Napisz mi, jakie zadanie chcesz umieć wykonać, albo zobacz trzy różne kierunki.</div><div class="anielka-recommendations">'+list.map(c=>card(c,'Spróbuj odkryć','Zajrzyj do programu i zdecyduj, czy Cię zainteresuje.')).join('')+'</div>';
+ const result=find(query);
+ if(!result.found){
+  return '<div class="anielka-message"><strong>Anielka:</strong> Jeszcze nie widzę kursu, który pasuje do tego opisu. Nie będę proponować przypadkowego tematu. Powiedz mi, <strong>co dokładnie chcesz umieć zrobić</strong> — możesz dopisać zawód, program lub sytuację z życia.</div>';
  }
- const p=match.primary;
- const text='Szukasz sposobu, żeby nauczyć się: „'+esc(query.slice(0,140))+'”. Najpierw proponuję <strong>'+esc(p.title)+'</strong>. Nie musisz jednak kończyć na jednej rzeczy — zobacz moje kolejne propozycje.';
- const related=match.similar.map((c,i)=>card(c,i===0?'Podobna umiejętność':'Kolejny krok','Ten temat może uzupełnić Twój pierwszy wybór.')).join('');
- const bonus=match.bonus?card(match.bonus,'Coś dodatkowego od Anielki','Nieco inny kierunek, który może otworzyć Ci kolejne możliwości.'): '';
- return '<div class="anielka-message"><strong>Anielka:</strong> '+text+'</div><div class="anielka-recommendations">'+card(p,'Najlepsze dopasowanie','Zobacz dokładny program i zakres lekcji przed wyborem.')+related+bonus+'</div>';
+ const p=result.primary;
+ const intro='Z Twojego pytania rozumiem, że interesuje Cię <strong>'+esc(p.title)+'</strong>. '+esc(reason(p,result.query));
+ const related=result.similar.length?'<div class="anielka-recommendations">'+result.similar.map(c=>card(c,'Powiązany temat','To także nawiązuje do tego, co napisałeś.')).join('')+'</div>':'';
+ return '<div class="anielka-message"><strong>Anielka:</strong> '+intro+'<div class="anielka-followup">'+esc(keyQuestion(result.query,p))+'</div></div><div class="anielka-recommendations">'+card(p,'Najbliżej Twojego celu','Zobacz pełny program i sprawdź, czy obejmuje zadania, na których Ci zależy.')+'</div>'+related;
 }
-function show(query){
- const out=document.getElementById('anielka-output');
- const input=document.getElementById('anielka-question');
- if(!out)return;
- const value=String(query||'').trim().slice(0,250);
- if(!value){out.innerHTML='<p class="anielka-hint">Powiedz mi, czego chcesz się nauczyć.</p>';return;}
- if(input)input.value=value;
- out.innerHTML=response(value);
- out.scrollIntoView({behavior:'smooth',block:'nearest'});
+function setPeek(query){
+ const peek=document.getElementById('anielka-peek');if(!peek)return;
+ const q=String(query||'').trim();
+ if(q.length<3){peek.innerHTML='';return;}
+ const match=find(q);
+ if(!match.found){
+  peek.innerHTML='<strong>Anielka</strong><p>Rozumiem, że szukasz czegoś konkretnego. Dopisz, jaki problem chcesz rozwiązać.</p>';return;
+ }
+ peek.innerHTML='<strong>Anielka · dopasowanie na żywo</strong><p>'+esc(match.primary.title)+'</p><button type="button" data-anielka-course="'+esc(match.primary.id)+'">Otwórz ten kurs →</button><button type="button" class="anielka-peek-help" data-anielka-details="true">Pokaż, dlaczego pasuje</button>';
 }
-document.addEventListener('submit',event=>{
- if(event.target?.id!=='anielka-form')return;
- event.preventDefault();
- show(event.target.querySelector('#anielka-question')?.value||'');
+function show(query,scroll=false){
+ const input=document.getElementById('anielka-question'),out=document.getElementById('anielka-output');
+ const v=String(query||'').trim().slice(0,250);
+ if(input&&input.value!==v)input.value=v;
+ if(v.length<3){if(out)out.innerHTML='';setPeek('');if(typeof searchCourses==='function')searchCourses('');return;}
+ if(out)out.innerHTML=response(v);
+ setPeek(v);
+ if(typeof searchCourses==='function')searchCourses(v);
+ lastQuery=v;
+ if(find(v).found)lastIntent=v;
+ if(scroll&&out&&typeof out.scrollIntoView==='function')out.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.addEventListener('input',event=>{
+ if(event.target?.id!=='anielka-question')return;
+ show(event.target.value,false);
+});
+document.addEventListener('keydown',event=>{
+ if(event.target?.id!=='anielka-question')return;
+ if(event.key==='Enter'){event.preventDefault();show(event.target.value,true);const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';}
+ if(event.key==='Escape'){const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';}
 });
 document.addEventListener('click',event=>{
- const sample=event.target.closest?.('[data-anielka-query]');
- if(sample){show(sample.getAttribute('data-anielka-query'));return;}
- const item=event.target.closest?.('[data-anielka-course]');
- if(item&&typeof openCourse==='function')openCourse(item.getAttribute('data-anielka-course'));
+ const course=event.target.closest?.('[data-anielka-course]');
+ if(course){
+  const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';
+  if(typeof openCourse==='function')openCourse(course.getAttribute('data-anielka-course'));return;
+ }
+ const details=event.target.closest?.('[data-anielka-details]');
+ if(details){
+  const input=document.getElementById('anielka-question');
+  show(input?.value||'',true);
+  const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';
+  return;
+ }
+ if(!event.target.closest?.('.anielka-nav-search')){
+  const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';
+ }
 });
 window.anielkaFindCourses=find;
 window.anielkaShowRecommendations=show;
+window.anielkaCatalogIds=query=>String(query||'').trim().length<3?[]:rank(contextualQuery(query)).filter(x=>x.score>0).slice(0,15).map(x=>x.course.id);
 })();
