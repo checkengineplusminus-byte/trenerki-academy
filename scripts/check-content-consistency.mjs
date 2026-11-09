@@ -288,6 +288,11 @@ try{
      fail('Missing mapped technical illustration '+type+'-'+slug);
    }
   }
+  const secondLessons=Object.assign({},...['content/course-second-lesson-depth-01-20261109.json','content/course-second-lesson-depth-02-20261109.json','content/course-second-lesson-depth-03-20261109.json'].map(p=>JSON.parse(read(p))));
+  if(Object.keys(secondLessons).length!==53||Object.values(secondLessons).some(x=>!['curiosity','explain','example','task'].every(k=>x[k]?.length>=60)))fail('Expected 53 different second-lesson examples and explanations');
+  for(const slug of Object.keys(secondLessons)){
+   if(!illustrated.includes("'second-"+slug+"'")||!read('public/academy/assets/second-'+slug+'.svg').includes('</svg>'))fail('Missing learning diagram '+slug);
+  }
   const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
   fail('Every craft course must have eight individually illustrated/explained lessons');
