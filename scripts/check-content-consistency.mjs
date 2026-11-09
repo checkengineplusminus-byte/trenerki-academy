@@ -31,7 +31,7 @@ try{
  'mierz-ponad-sily','opieka-seniorzy','wsparcie-adhd','poznaj-siebie','mocny-charakter','nie-lubie-ludzi',
  'zaczynam-od-zera','obowiazki-domowe','lepszy-cukiernik','lepszy-kucharz','jak-kupic-samochod',
  'google-ads-promocja','facebook-ads-promocja']);
- const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko']);
+ const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko','kowal-tradycja']);
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
  const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.lastIndexOf('</script>');
@@ -251,7 +251,17 @@ try{
     !progress.includes('if(canFinish)void finishLesson();else returnToExercise()'))
   fail('Lesson transition must reset scroll and advance with one verified button');
  else ok('Automatic scroll reset and one-action lesson navigation connected');
- const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
+ const kowalParts=[1,2,3].flatMap(i=>JSON.parse(read('content/kowal-masterclass-part'+i+'-20261109.json')).lessons);
+  const kowalQuestions=new Set(kowalParts.map(l=>l.material?.learning?.question));
+  const kowalAssets=['kowal-stanowisko','kowal-narzedzia','kowal-rysunek','kowal-operacje','kowal-kopyto'];
+  if(kowalParts.length!==30||kowalParts.some((l,i)=>l.lesson_no!==i||(l.material.sections||[]).length!==4||
+       !kowalAssets.includes(l.material?.illustration))||kowalQuestions.size!==30)
+   fail('Kowal needs 30 lessons, 30 unique questions and illustrations');
+  else ok('Kowal: 3 chapters x 10 lessons, 30 unique questions and original graphics');
+  for(const asset of kowalAssets)
+   if(!illustrated.includes("'"+asset+"'")||!read('public/academy/assets/'+asset+'.svg').includes('</svg>'))
+    fail('Missing registered illustration '+asset);
+  const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
   fail('Every craft course must have eight individually illustrated/explained lessons');
  for(const c of beginnerCraftGuides.courses){
