@@ -1,0 +1,183 @@
+{
+  "course_slug": "bdo",
+  "source": "https://bdo.mos.gov.pl/zasady-rejestracji/",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "bdo",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "BDO to polski rejestr i system ewidencji związany z produktami, opakowaniami oraz gospodarką odpadami. Obowiązek wpisu zależy od rodzaju działalności, strumieni odpadów i przepisów przewidujących zwolnienia; sam fakt posiadania strony internetowej nie przesądza o wszystkich obowiązkach."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Zmapuj działalność firmy: co produkuje, co importuje, czy pakuje towar i jakie odpady powstają. Następnie przypisz obowiązki do właściwej roli na podstawie art. 50 i 51 ustawy oraz oficjalnej strony BDO. Weryfikuj zmianę obowiązków przy każdym nowym modelu działalności."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Warsztat montuje części, a sklep sprzedaje produkty w własnych opakowaniach. Każdy strumień wymaga osobnej analizy zamiast jednego zdania 'mamy BDO'."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Przygotuj mapę podmiotu: działalność, rola, produkt, odpad, przepis, dokument oraz status weryfikacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Karton, folia stretch, wypełnienie papierowe, koperta i taśma są różnymi materiałami. Ważne jest, czy przedsiębiorca wprowadza produkt w opakowaniu po raz pierwszy na polski rynek, czy jedynie odsprzedaje krajowy produkt oraz czy ma inne obowiązki wynikające z odpadów."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Dla jednego zamówienia zapisz masę każdego materiału na podstawie ważenia reprezentatywnych próbek. 200 g kartonu + 30 g folii + 15 g papieru daje 245 g opakowania, ale nie wolno automatycznie zsumować wszystkich tych frakcji do jednej kategorii raportowej."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Firma wysyła 1000 paczek i wpisuje masę tylko kartonów, ignorując folię. Zestawienie nie odzwierciedla rzeczywistego użycia materiałów."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zbuduj tabelę dla 10 paczek, policz sumę mas według materiałów oraz sprawdź status wprowadzania na rynek."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Numer wpisu w BDO nie oznacza, że każda działalność firmy jest poprawnie sklasyfikowana. Należy sprawdzić dział rejestrowy i zakres wpisu, aktualne dane podmiotu oraz wymagane czynności zgłoszeniowe. Obowiązki mogą różnić się w zależności od typu produktu i odpadu."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Przygotuj kartę danych: firma, działalność, numery kategorii, data weryfikacji i dokument z BDO. Nie używaj przypadkowego numeru innej firmy na dokumentach. Jeżeli rola wprowadzającego się zmienia, weryfikuj aktualizację zakresu w odpowiednim urzędzie."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Sklep zaczyna importować produkty w kartonach, choć wcześniej jedynie odsprzedawał produkty krajowe. Trzeba ponownie sprawdzić zakres obowiązków."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zaprojektuj checklistę pięciu etapów legalnej weryfikacji wpisu i oznacz, które informacje wymagają konsultacji urzędowej."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Dane o odpadach i opakowaniach powinny mieć podstawę: fakturę, wagę, protokół, dokument przekazania czy inną ewidencję. Szacunek bez opisanej metody nie jest równoważny pomiarowi. Przy grupowaniu ważna jest jednostka, materiał, data i rodzaj działalności."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Załóż: 120 przesyłek miesięcznie, przeciętnie 0,18 kg papieru i 0,03 kg tworzywa na paczkę. Otrzymasz 21,6 kg papieru i 3,6 kg tworzywa. To model ćwiczeniowy, wymagający potwierdzenia próbkami i zasadą klasyfikacji."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "W arkuszu ktoś wpisuje 180 jako kilogramy, choć wartość odnosiła się do gramów na paczkę. Wynik staje się tysiąckrotnie zawyżony."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Przygotuj kartę danych z kolumnami: źródło, ilość sztuk, masa jednostkowa, materiał, suma w kg, osoba sprawdzająca."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "BDO obejmuje różne moduły i formularze, a harmonogram, zwolnienia i opłaty zależą od kategorii obowiązku oraz aktualnego stanu prawnego. Trzeba odróżniać ewidencję od sprawozdania, a numer rejestrowy od automatycznego potwierdzenia wykonania każdego obowiązku."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Zapisz kalendarz terminów dla zweryfikowanych obowiązków firmy, numer modułu, zakres danych i osobę odpowiedzialną. Porównaj raport z dokumentami źródłowymi i stanem sprzedaży. Nigdy nie ucz starego terminu bez sprawdzenia aktualnego komunikatu BDO."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Firma gromadzi dokumenty przez rok, lecz nie wie, czy ma przygotować ewidencję odpadów, sprawozdanie z opakowań czy oba elementy."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zbuduj drzewo decyzyjne: rodzaj działalności → podstawa obowiązku → moduł → dane → termin i dowód wysłania."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Zwrot produktu do sklepu nie jest automatycznie odpadem; można go ponownie sprzedać, naprawić, zdemontować lub skierować do odpowiedniego strumienia odpadowego zgodnie ze stanem i przepisami. Dopiero kwalifikacja rzeczywistego przedmiotu i czynności pozwala ustalić właściwą dokumentację."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Dla pięciu zwrotów podziel produkty: nienaruszone, wymagające naprawy, uszkodzone i przeznaczone do przekazania jako odpady. Zachowaj identyfikator partii, historię i decyzję. Nie wpisuj wszystkich zwróconych sztuk automatycznie do ewidencji odpadów."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Klient oddaje w pełni sprawny nieużywany przedmiot, a sklep oznacza go jako odpad, mimo że może być legalnie ponownie sprzedany."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Opracuj procedurę przyjęcia, kontroli, kwalifikacji i przekazania produktu do właściwego strumienia."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Przekazanie odpadu kontrahentowi wymaga weryfikacji rodzaju odpadu, roli odbiorcy, jego uprawnień w odpowiednim zakresie i dokumentów wymaganych dla danej transakcji. Samo logo 'eko' na samochodzie nie potwierdza prawa do odbioru konkretnego materiału."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Sprawdź wpis i zakres działania podmiotu na oficjalnych danych, określ kod odpadu i sposób dokumentowania przekazania, jeśli obowiązuje. Zapisz datę kontroli i osobę weryfikującą; nie zakładaj, że umowa z podwykonawcą zwalnia z własnych obowiązków."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Firma transportowa ma ogólny numer, lecz nie potwierdziła możliwości przewozu konkretnego strumienia odpadu."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Stwórz formularz audytu podwykonawcy: dane, rola, zakres, ważność, dowód i pytanie do wyjaśnienia."
+        }
+      ]
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Regularna kontrola łączy ewidencję opakowań, przepływ odpadów, dokumenty sprzedaży i rejestr zdarzeń. Wykryte rozbieżności należy wyjaśniać u źródła, a nie poprawiać jedną liczbą, by zgadzała się suma. Trzeba zachować wersje i dowody korekt."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Porównaj 100 nadanych paczek z 96 wpisami w arkuszu. Brakują cztery rekordy, ale nie wiadomo, ile mają materiału. Najpierw ustal identyfikatory i rzeczywistą zawartość, dopiero potem oblicz brakujące masy."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "W raportach wynika 12 kg opakowań, a dokumenty pokazują 100 przesyłek średnio po 0,18 kg samego papieru. Niezgodność wymaga wyjaśnienia."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zaprojektuj miesięczny protokół: dane bazowe, suma, rozbieżność, metoda korekty, podpis i archiwum."
+        }
+      ]
+    }
+  ]
+}
