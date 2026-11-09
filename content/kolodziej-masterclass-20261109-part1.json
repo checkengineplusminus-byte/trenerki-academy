@@ -47,19 +47,19 @@
           "task": "Na schemacie podpisz 8 elementów: oś, otwór osiowy, piasta, gniazdo, czop szprychy, szprycha, dzwono i obręcz stalowa. Następnie pokaż strzałkami schematyczną drogę sił w kole obciążonym.",
           "question": "Zabytkowe koło ma 14 szprych i 7 dzwon. Ile zakończeń szprych przypada średnio na jedno dzwono w tym konkretnym układzie?",
           "options": [
-            "Jedno, bo 14/7=1.",
-            "Cztery, bo dzwono obejmuje pół koła.",
-            "Dwa, bo 14/7=2.",
-            "Siedem, bo każda szprycha łączy wszystkie dzwona."
+            "Siedem, ponieważ każdy segment obejmuje połowę obwodu.",
+            "Czternaście, ponieważ szprychy łączą się parami na wspólnym końcu.",
+            "Dwa, ponieważ 14/7=2.",
+            "Jedno, ponieważ liczba dzwon jest połową liczby szprych."
           ],
           "correct": 2,
-          "example": "Dwa, bo 14/7=2.",
+          "example": "Dwa, ponieważ 14/7=2.",
           "explanation": "14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
-            "Przeanalizuj dane i funkcję elementu. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
-            "Poprawnie. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji.",
-            "Przeanalizuj dane i funkcję elementu. 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji."
+            "Nie. Siedem to liczba samych dzwon, a nie końców szprych w jednym segmencie.",
+            "Nie. Czternaście jest liczbą szprych w całym kole, nie na jednym dzwonie.",
+            "Tak. 14/7=2; mówimy o średniej dla tego konkretnego koła.",
+            "Nie. Jedno odpowiadałoby przykładowo konstrukcji z taką samą liczbą dzwon i szprych."
           ]
         }
       }
@@ -108,19 +108,19 @@
           "task": "Przygotuj tabelę trzech elementów (piasta/szprycha/dzwono) z gatunkiem tradycyjnie stosowanym, własnością uzasadniającą wybór, możliwą wadą i sposobem jej sprawdzenia. Obok narysuj sęk i odchylenie włókien.",
           "question": "Który tradycyjny dobór materiałów jest potwierdzony w historycznej praktyce kołodziejskiej opisanej przez Hessenpark?",
           "options": [
-            "Piasta z wiązu, szprychy z dębu, dzwona z jesionu.",
-            "Piasta z miękkiego papieru, szprychy z lipy, obręcz z żywicy.",
-            "Wszystkie elementy z przypadkowego drewna bez kontroli włókien.",
-            "Piasta z płyty pilśniowej, szprychy z tworzywa, dzwona z gipsu."
+            "Wiąz na piastę, dąb na szprychy, jesion na dzwona.",
+            "Dąb na piastę, jesion na szprychy, wiąz na dzwona.",
+            "Jesion na piastę, wiąz na szprychy, dąb na dzwona.",
+            "Sosna na piastę, dąb na dzwona, jesion na szprychy."
           ],
           "correct": 0,
-          "example": "Piasta z wiązu, szprychy z dębu, dzwona z jesionu.",
+          "example": "Wiąz na piastę, dąb na szprychy, jesion na dzwona.",
           "explanation": "Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
           "feedback": [
-            "Poprawnie. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
-            "Przeanalizuj dane i funkcję elementu. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
-            "Przeanalizuj dane i funkcję elementu. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła.",
-            "Przeanalizuj dane i funkcję elementu. Wiąz, dąb i jesion są opisane jako tradycyjny zestaw dla różnych stref obciążenia, nie uniwersalna recepta dla każdego koła."
+            "Tak. Taką kombinację opisuje Hessenpark, z zastrzeżeniem wymagań konkretnego wyrobu.",
+            "Nie. To inne przypisanie gatunków niż w udokumentowanym przykładzie.",
+            "Nie. To przestawienie funkcji opisanych w historycznym źródle.",
+            "Nie. Sosna i układ pozostałych gatunków nie odpowiadają opisowi wybranej tradycji."
           ]
         }
       }
@@ -169,19 +169,19 @@
           "task": "Policz obwody dla D=600, 900 i 1200 mm; dla 12, 14 i 16 szprych policz podział kątowy. W osobnej kolumnie zaznacz dane, których nie można wyznaczyć bez projektu (grubość dzwona, pasowanie obręczy, długość czopu).",
           "question": "Koło o średnicy 900 mm z 16 równo rozmieszczonymi szprychami ma teoretyczny obwód i rozstaw kątowy równy...",
           "options": [
-            "900 mm i 16°.",
-            "Około 2827 mm i 22,5°. ",
-            "Około 1414 mm i 45°. ",
-            "3600 mm i 90°."
+            "Obwód około 2827 mm; podział kątowy 16°. ",
+            "Obwód około 2827 mm; podział kątowy 22,5°. ",
+            "Obwód około 1414 mm; podział kątowy 22,5°. ",
+            "Obwód około 3142 mm; podział kątowy 30°."
           ],
           "correct": 1,
-          "example": "Około 2827 mm i 22,5°. ",
+          "example": "Obwód około 2827 mm; podział kątowy 22,5°. ",
           "explanation": "C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
-            "Poprawnie. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
-            "Przeanalizuj dane i funkcję elementu. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy.",
-            "Przeanalizuj dane i funkcję elementu. C=π×900≈2827 mm; 360°/16=22,5°. Są to obliczenia geometryczne, nie parametry pasowania metalowej obręczy."
+            "Nie. Obwód jest poprawny, ale 360/16 to 22,5°, nie 16°. ",
+            "Tak. π×900≈2827 mm, a 360/16=22,5°. ",
+            "Nie. 1414 mm to mniej więcej połowa obwodu, a nie całość.",
+            "Nie. Wartości odpowiadają innym założeniom D i N niż podane."
           ]
         }
       }
@@ -195,7 +195,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-dish",
+        "illustration": "kolodziej-bicie",
         "sections": [
           {
             "heading": "Fundamenty i pojęcia",
@@ -230,19 +230,19 @@
           "task": "Przygotuj trzywidokowy szkic: przód, bok i przekrój. Podpisz talerzowatość (dish), bicie boczne, bicie promieniowe, piastę i obręcz. Narysuj dwa odrębne przypadki: zaprojektowane wychylenie i deformację.",
           "question": "Które zdanie prawidłowo odróżnia talerzowatość koła od bicia bocznego?",
           "options": [
-            "To dokładnie to samo zjawisko i można je naprawiać identycznie.",
-            "Talerzowatość to wyłącznie korozja metalowej obręczy.",
-            "Bicie boczne jest zawsze pożądanym elementem projektu.",
-            "Talerzowatość może być celową geometrią, a bicie boczne jest zmiennym odchyleniem w czasie obrotu."
+            "Talerzowatość opisuje promieniową zmianę średnicy podczas obrotu.",
+            "Oba pojęcia oznaczają tylko pochylenie osi pojazdu.",
+            "Bicie boczne jest pożądanym ukształtowaniem każdej szprychy.",
+            "Talerzowatość może być zamierzoną geometrią, a bicie boczne zmiennym odchyleniem w czasie obrotu."
           ],
           "correct": 3,
-          "example": "Talerzowatość może być celową geometrią, a bicie boczne jest zmiennym odchyleniem w czasie obrotu.",
+          "example": "Talerzowatość może być zamierzoną geometrią, a bicie boczne zmiennym odchyleniem w czasie obrotu.",
           "explanation": "W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
-            "Przeanalizuj dane i funkcję elementu. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
-            "Przeanalizuj dane i funkcję elementu. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu.",
-            "Poprawnie. W historycznym kole dish mógł być planowanym ukształtowaniem, a bicie trzeba mierzyć względem referencji podczas obrotu."
+            "Nie. Zmienne odchylenie promienia to bicie promieniowe, nie dish.",
+            "Nie. Opis osi pojazdu nie definiuje talerzowatości koła.",
+            "Nie. Bicie boczne jest mierzoną odchyłką, a nie automatycznym celem projektu.",
+            "Tak. Poprawnie: stała geometria przekroju różni się od zmiennego przesunięcia bocznego."
           ]
         }
       }
@@ -256,7 +256,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-narzedzia",
+        "illustration": "kolodziej-przekroj",
         "sections": [
           {
             "heading": "Fundamenty i pojęcia",
@@ -291,19 +291,19 @@
           "task": "Narysuj 8 narzędzi i przypisz im: funkcję, podstawowy pomiar lub rezultat, zagrożenie i punkt kontroli. Zaznacz wyraźnie, które narzędzia wymagają nadzoru instruktora oraz przeglądów bezpieczeństwa.",
           "question": "Którego narzędzia używano historycznie do porównywania obwodu drewnianego koła z długością żelaznego pasa na obręcz?",
           "options": [
-            "Struga do szprych.",
-            "Przyrządu traveler (koła pomiarowego).",
-            "Szydła do skóry.",
-            "Tylko kątomierza do dachu."
+            "Strugiem do szprych (spokeshave).",
+            "Przyrządem traveler, czyli kołem pomiarowym.",
+            "Świdrem do gniazd w piaście.",
+            "Kątomierzem do podziału szprych."
           ],
           "correct": 1,
-          "example": "Przyrządu traveler (koła pomiarowego).",
+          "example": "Przyrządem traveler, czyli kołem pomiarowym.",
           "explanation": "Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
-            "Poprawnie. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
-            "Przeanalizuj dane i funkcję elementu. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych.",
-            "Przeanalizuj dane i funkcję elementu. Traveler to koło pomiarowe toczone wzdłuż mierzonych obwodów; nie służy do strugania szprych."
+            "Nie. Spokeshave kształtuje drewno, nie przenosi obwodu na pas metalowy.",
+            "Tak. Traveler przetacza się po obwodzie i pozwala odtworzyć drogę pomiaru.",
+            "Nie. Świder przygotowuje otwory w piaście.",
+            "Nie. Kątomierz pomaga przy podziale, nie mierzy pełnej drogi po obwodzie."
           ]
         }
       }
@@ -317,7 +317,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-piasta",
+        "illustration": "kolodziej-przekroj",
         "sections": [
           {
             "heading": "Fundamenty i pojęcia",
@@ -352,19 +352,19 @@
           "task": "Narysuj przód piasty dla 12 szprych i policz odstęp kątowy. Potem dla 14 szprych policz odstęp i wyjaśnij różnicę. Zaznacz położenie otworu osiowego, grubość ścianki i obszar gniazda bez podawania wymiarów pasowania bez projektu.",
           "question": "W prostym modelu 12 szprych równomiernie rozmieszczonych wokół piasty odstęp kątowy wynosi...",
           "options": [
-            "15°.",
-            "25,7°.",
-            "30°.",
-            "45°."
+            "25,7°, bo 360° dzieli się przez 14.",
+            "22,5°, bo 360° dzieli się przez 16.",
+            "30°, bo 360° dzieli się przez 12.",
+            "45°, bo cztery osie dają ćwiartki koła."
           ],
           "correct": 2,
-          "example": "30°.",
+          "example": "30°, bo 360° dzieli się przez 12.",
           "explanation": "360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
-            "Przeanalizuj dane i funkcję elementu. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
-            "Poprawnie. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej.",
-            "Przeanalizuj dane i funkcję elementu. 360°/12=30°. Rzeczywisty profil gniazd wymaga niezależnej dokumentacji technicznej."
+            "Nie. To wynik dla 14 szprych.",
+            "Nie. To wynik dla 16 szprych.",
+            "Tak. Tak: 360/12=30°.",
+            "Nie. 45° odpowiada ośmiu równym pozycjom, nie dwunastu."
           ]
         }
       }
@@ -378,7 +378,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-szprychy",
+        "illustration": "kolodziej-drewno",
         "sections": [
           {
             "heading": "Fundamenty i pojęcia",
@@ -413,19 +413,19 @@
           "task": "Wykonaj kartę sześciu szprych z kolumnami: oś/rozstaw, gatunek i włókna, kształt czopa, widoczna wada, decyzja o przyjęciu, źródło wymiaru. Zapisz, co można pomierzyć na modelu, a co wymaga fachowej oceny obciążenia.",
           "question": "Co jest najsilniejszym argumentem za odrzuceniem szprychy mimo prawidłowej długości?",
           "options": [
-            "Drobna różnica koloru po olejowaniu.",
-            "Duże pęknięcie przechodzące przez strefę czopa.",
-            "Inny odcień rysunku technicznego.",
-            "Brak dekoracyjnego napisu producenta."
+            "Niewielka różnica barwy między odcinkami szprychy.",
+            "Pęknięcie przechodzące przez strefę czopa przenoszącego obciążenie.",
+            "Nieco odmienny odcień drewna po olejowaniu.",
+            "Widoczne słoje bez przerwania ciągłości materiału."
           ],
           "correct": 1,
-          "example": "Duże pęknięcie przechodzące przez strefę czopa.",
+          "example": "Pęknięcie przechodzące przez strefę czopa przenoszącego obciążenie.",
           "explanation": "Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
-            "Poprawnie. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
-            "Przeanalizuj dane i funkcję elementu. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy.",
-            "Przeanalizuj dane i funkcję elementu. Pęknięcie w strefie przenoszenia sił może osłabić połączenie, choć wymiar zewnętrzny pozostaje prawidłowy."
+            "Nie. Sam kolor jest słabą przesłanką do oceny wytrzymałości.",
+            "Tak. Pęknięcie w obszarze czopa może zagrozić całemu połączeniu.",
+            "Nie. Odcień po wykończeniu nie stanowi dowodu uszkodzenia strukturalnego.",
+            "Nie. Widoczne słoje są normalną cechą drewna, o ile nie towarzyszy im wada."
           ]
         }
       }
@@ -474,19 +474,19 @@
           "task": "Narysuj koło D=900 mm z 8 dzwonami. Porównaj teoretyczny łuk 353,43 mm z cięciwą 344,42 mm. Oznacz miejsca styku, gniazda szprych i części, których nadal brak do wykonania szablonu (szerokość, grubość, profil, czopy, naddatki).",
           "question": "Dla idealnego koła D=900 mm i 8 równych dzwon długość łuku i prostej cięciwy na jeden segment są...",
           "options": [
-            "Jednakowe i równe 900/8=112,5 mm.",
-            "Łuk około 344,4 mm, a cięciwa około 353,4 mm.",
-            "Łuk i cięciwa po około 900 mm.",
-            "Łuk około 353,4 mm, cięciwa około 344,4 mm."
+            "Łuk około 344,4 mm; cięciwa około 353,4 mm.",
+            "Oba odcinki są równe 353,4 mm.",
+            "Łuk 112,5 mm; cięciwa 900 mm.",
+            "Łuk około 353,4 mm; cięciwa około 344,4 mm."
           ],
           "correct": 3,
-          "example": "Łuk około 353,4 mm, cięciwa około 344,4 mm.",
+          "example": "Łuk około 353,4 mm; cięciwa około 344,4 mm.",
           "explanation": "Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
           "feedback": [
-            "Przeanalizuj dane i funkcję elementu. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
-            "Przeanalizuj dane i funkcję elementu. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
-            "Przeanalizuj dane i funkcję elementu. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne.",
-            "Poprawnie. Łuk 900π/8≈353,43 mm; cięciwa 900 sin(22,5°)≈344,42 mm. To dwa różne wymiary geometryczne."
+            "Nie. To odwrócenie obliczonych wielkości; łuk jest dłuższy od cięciwy.",
+            "Nie. Nie: odcinki krzywoliniowy i prosty między tymi samymi końcami nie są równe.",
+            "Nie. 112,5 pochodziłoby z błędnego podziału samej średnicy przez 8.",
+            "Tak. 900π/8≈353,4 mm; 900 sin 22,5°≈344,4 mm."
           ]
         }
       }
