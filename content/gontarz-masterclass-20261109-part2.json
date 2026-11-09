@@ -1,0 +1,372 @@
+{
+  "slug": "gontarz",
+  "source_note": "Wytyczne branżowe cedru służą jako porównanie, nie zastępują przepisów lokalnych. Projekt ma charakter dydaktyczny, wysokość i dach wymagają fachowego zabezpieczenia.",
+  "lessons": [
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 6,
+      "title_pl": "7. Okap, kalenica, kosz i obróbki: mapa spływu wody",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Najpierw rozpoznaj geometrię dachu",
+            "text": "Okap jest dolną krawędzią połaci, kalenica — najwyższą linią przecięcia połaci, a kosz to wewnętrzne przecięcie połaci, w którym gromadzi się większy strumień wody. Komin, ściana i okno dachowe tworzą dodatkowe strefy przejściowe. W żadnym z tych miejsc nie wystarczy po prostu dociąć gontu do przeszkody."
+          },
+          {
+            "heading": "Dlaczego okap wymaga uwagi",
+            "text": "Woda spływająca po pokryciu ma trafić poza konstrukcję lub do właściwej rynny. Detal okapu obejmuje także odpowiednie podparcie i ochronę krawędzi oraz rozwiązania na wiatr, śnieg i wilgoć. Wymagania pierwszych rzędów zależą od systemu — nie każdy historyczny układ stosuje to samo podwójne ułożenie."
+          },
+          {
+            "heading": "Kosz i komin",
+            "text": "W koszu zbiera się woda z dwóch połaci, dlatego detal odwodnienia i uszczelnienia musi odpowiadać zwiększonemu obciążeniu. W obrębie komina czy ściany stosuje się zaprojektowane obróbki i połączenia, aby woda nie wpływała pod pokrycie. Sam silikon albo przypadkowa taśma nie zastępują poprawnego detalu."
+          },
+          {
+            "heading": "Przykład oględzin",
+            "text": "Po deszczu zacieki pojawiają się na poddaszu blisko komina. Nie wystarczy policzyć uszkodzonych gontów: trzeba sprawdzić położenie zacieku względem obróbki, kierunku spływu, warstw podłoża i możliwej kondensacji. Woda wewnątrz może pojawić się niżej niż faktyczne miejsce nieszczelności."
+          },
+          {
+            "heading": "Ćwiczenie projektu",
+            "text": "Na rysunku dwuspadowego dachu z kominem i dobudowaną połacią zaznacz pięć stref wysokiego ryzyka. Strzałkami pokaż strumienie wody ku okapowi, wskaż kosz i kalenicę, a przy każdym detalu wpisz dokument, który musi określić rozwiązanie."
+          }
+        ],
+        "illustration": "mastery-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.cedarbureau.org/installation/roof-installation-manual/"
+          }
+        ],
+        "learning": {
+          "intro": "Okap jest dolną krawędzią połaci, kalenica — najwyższą linią przecięcia połaci, a kosz to wewnętrzne przecięcie połaci, w którym gromadzi się większy strumień wody. Komin, ściana i okno dachowe tworzą dodatkowe strefy przejściowe. W żadnym z tych miejsc nie wystarczy po prostu dociąć gontu do przeszkody.",
+          "situation": "Po deszczu zacieki pojawiają się na poddaszu blisko komina. Nie wystarczy policzyć uszkodzonych gontów: trzeba sprawdzić położenie zacieku względem obróbki, kierunku spływu, warstw podłoża i możliwej kondensacji. Woda wewnątrz może pojawić się niżej niż faktyczne miejsce nieszczelności.",
+          "task": "Na rysunku dwuspadowego dachu z kominem i dobudowaną połacią zaznacz pięć stref wysokiego ryzyka. Strzałkami pokaż strumienie wody ku okapowi, wskaż kosz i kalenicę, a przy każdym detalu wpisz dokument, który musi określić rozwiązanie.",
+          "question": "Który fragment dachu wymaga szczególnej kontroli z powodu spływu wody z dwóch sąsiednich połaci?",
+          "options": [
+            "Równy fragment połaci z dala od przejść.",
+            "Dekoracyjna deska w suchym pomieszczeniu.",
+            "Kosz dachowy, czyli wewnętrzna linia przecięcia połaci.",
+            "Wyłącznie numer ostatniego rzędu gontów."
+          ],
+          "correct": 2,
+          "example": "Kosz dachowy, czyli wewnętrzna linia przecięcia połaci.",
+          "explanation": "Kosz skupia wodę z obu połaci i wymaga detalu zgodnego z projektem i systemem.",
+          "feedback": [
+            "Sprawdź kontekst, liczby i kryteria zadania. Kosz skupia wodę z obu połaci i wymaga detalu zgodnego z projektem i systemem.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Kosz skupia wodę z obu połaci i wymaga detalu zgodnego z projektem i systemem.",
+            "Prawidłowo. Kosz skupia wodę z obu połaci i wymaga detalu zgodnego z projektem i systemem.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Kosz skupia wodę z obu połaci i wymaga detalu zgodnego z projektem i systemem."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 7,
+      "title_pl": "8. Wentylacja i wilgoć: dach jako cały układ",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Drewno musi mieć możliwość wysychania",
+            "text": "Żywotność dachu zależy nie tylko od jakości gontu, lecz także od warunków po obu stronach pokrycia. Wilgoć opadowa i wilgoć wewnętrzna mogą gromadzić się w przegrodzie, jeśli warstwy albo wentylacja nie odpowiadają przyjętemu rozwiązaniu. Długotrwale wilgotne drewno jest bardziej podatne na rozwój grzybów i deformacje."
+          },
+          {
+            "heading": "Trzy odrębne funkcje",
+            "text": "Pokrycie odprowadza większość deszczu. Warstwa podkładowa/undertak ma swoją funkcję ochronną, zależną od systemu. Wentylacja i zdolność wysychania pomagają ograniczać utrzymywanie się wilgoci. Nie każda szczelna folia może być włożona w dowolne miejsce bez wpływu na parę wodną i warunki wilgotnościowe."
+          },
+          {
+            "heading": "Co zmienia podłoże",
+            "text": "Gont montowany na ażurowych łatach pracuje w innych warunkach niż pokrycie na pełnym poszyciu. Instrukcja producenta może dopuszczać różne rozwiązania, ale wymaga sprawdzenia, czy wentylacja, mocowania i podkład współpracują. Nie wolno zakładać, że piana izolacyjna przyklejona do spodniej strony zawsze poprawia trwałość drewna."
+          },
+          {
+            "heading": "Przykład możliwej kondensacji",
+            "text": "Pod pokryciem po zimnej nocy pojawiają się krople, choć nie padał deszcz. Źródłem może być kondensacja, więc naprawa przez dokładanie zewnętrznego uszczelniacza może pogorszyć warunki suszenia. Fachowa diagnostyka rozdziela infiltrację opadu od przepływu ciepłego wilgotnego powietrza."
+          },
+          {
+            "heading": "Ćwiczenie na przekroju",
+            "text": "Narysuj trzy warianty podłoża: łaty ażurowe, pełne poszycie z przewidzianą wentylacją i pełne poszycie bez rozpoznanego rozwiązania wentylacyjnego. Wypisz pytania projektowe o wilgoć, temperaturę, przepływ powietrza i dopuszczone materiały."
+          }
+        ],
+        "illustration": "material-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.cedarbureau.org/literature-education/installation-faq/"
+          }
+        ],
+        "learning": {
+          "intro": "Żywotność dachu zależy nie tylko od jakości gontu, lecz także od warunków po obu stronach pokrycia. Wilgoć opadowa i wilgoć wewnętrzna mogą gromadzić się w przegrodzie, jeśli warstwy albo wentylacja nie odpowiadają przyjętemu rozwiązaniu. Długotrwale wilgotne drewno jest bardziej podatne na rozwój grzybów i deformacje.",
+          "situation": "Pod pokryciem po zimnej nocy pojawiają się krople, choć nie padał deszcz. Źródłem może być kondensacja, więc naprawa przez dokładanie zewnętrznego uszczelniacza może pogorszyć warunki suszenia. Fachowa diagnostyka rozdziela infiltrację opadu od przepływu ciepłego wilgotnego powietrza.",
+          "task": "Narysuj trzy warianty podłoża: łaty ażurowe, pełne poszycie z przewidzianą wentylacją i pełne poszycie bez rozpoznanego rozwiązania wentylacyjnego. Wypisz pytania projektowe o wilgoć, temperaturę, przepływ powietrza i dopuszczone materiały.",
+          "question": "Dlaczego dołożenie całkowicie nieprzepuszczalnej warstwy pod drewniane pokrycie nie zawsze jest dobrym pomysłem?",
+          "options": [
+            "Ponieważ może ograniczyć wysychanie konstrukcji, jeżeli warstwy i wentylacja nie są zaprojektowane jako układ.",
+            "Ponieważ każde drewno jest całkowicie niewrażliwe na wodę.",
+            "Ponieważ każdy dach ma obowiązkowo wyłącznie ażurowe podłoże.",
+            "Ponieważ kondensacja może wystąpić wyłącznie podczas deszczu."
+          ],
+          "correct": 0,
+          "example": "Ponieważ może ograniczyć wysychanie konstrukcji, jeżeli warstwy i wentylacja nie są zaprojektowane jako układ.",
+          "explanation": "Potrzebna jest analiza fizyki budowli i rzeczywistej konstrukcji, a nie dobór jednej folii do każdego dachu.",
+          "feedback": [
+            "Prawidłowo. Potrzebna jest analiza fizyki budowli i rzeczywistej konstrukcji, a nie dobór jednej folii do każdego dachu.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Potrzebna jest analiza fizyki budowli i rzeczywistej konstrukcji, a nie dobór jednej folii do każdego dachu.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Potrzebna jest analiza fizyki budowli i rzeczywistej konstrukcji, a nie dobór jednej folii do każdego dachu.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Potrzebna jest analiza fizyki budowli i rzeczywistej konstrukcji, a nie dobór jednej folii do każdego dachu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 8,
+      "title_pl": "9. Diagnostyka gontu: pęknięcia, wygięcie, zgnilizna i łączniki",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Rozpoznaj cztery kategorie objawów",
+            "text": "Pęknięcie przez grubość, wygięcie (cupping), podwijanie się (curling), miękki rozkładający się materiał i korozja łączników to różne objawy. Nie należy ich nazywać jednym słowem 'zużycie', bo mogą wynikać z odmiennych przyczyn: jakości surowca, wilgotności, wad montażu lub środowiska."
+          },
+          {
+            "heading": "Oględziny nie zastępują analizy",
+            "text": "W ocenie dokumentuj strefę połaci, kierunek pęknięcia, liczbę elementów, stan zakładów i obróbek. Ocena z poziomu ziemi może wykryć część nieprawidłowości, ale nie dowodzi stanu wszystkich warstw. Nie wchodź na stary dach bez potwierdzenia bezpieczeństwa i odpowiednich zabezpieczeń."
+          },
+          {
+            "heading": "Wygięcie i warunki wysychania",
+            "text": "Jeśli strona gontu jest dużo bardziej wilgotna niż druga albo materiał ma niekorzystny układ włókien, może dochodzić do deformacji. Zbyt mało wentylacji i niewłaściwy rodzaj podłoża mogą przyspieszyć problemy. Przy wygięciu nie wystarczy wymienić elementu, jeśli warunki są systemowo złe."
+          },
+          {
+            "heading": "Przykład klasyfikacji",
+            "text": "Na 20 m² widocznych jest 15 gontów z podwiniętymi dolnymi końcami, 2 pęknięte przy gwoździu i strefa mchu przy obróbce komina. Nie sumuj tego jako jednej przyczyny. Sporządź mapę wystąpień i oddziel mechaniczne uszkodzenia od trwałej wilgoci."
+          },
+          {
+            "heading": "Ćwiczenie kontrolne",
+            "text": "Zaprojektuj tabelę 20 zdjęć z pięcioma polami: lokalizacja, objaw, ryzyko, hipoteza i potrzebny dowód. Zaznacz, które ustalenia możliwe są ze zdjęcia, a które wymagają inspekcji konstrukcji przez specjalistę."
+          }
+        ],
+        "illustration": "diagnosis-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://byggogbevar.no/pusse-opp/tak-og-tekking/artikler/vedlikehold-av-flistak/"
+          }
+        ],
+        "learning": {
+          "intro": "Pęknięcie przez grubość, wygięcie (cupping), podwijanie się (curling), miękki rozkładający się materiał i korozja łączników to różne objawy. Nie należy ich nazywać jednym słowem 'zużycie', bo mogą wynikać z odmiennych przyczyn: jakości surowca, wilgotności, wad montażu lub środowiska.",
+          "situation": "Na 20 m² widocznych jest 15 gontów z podwiniętymi dolnymi końcami, 2 pęknięte przy gwoździu i strefa mchu przy obróbce komina. Nie sumuj tego jako jednej przyczyny. Sporządź mapę wystąpień i oddziel mechaniczne uszkodzenia od trwałej wilgoci.",
+          "task": "Zaprojektuj tabelę 20 zdjęć z pięcioma polami: lokalizacja, objaw, ryzyko, hipoteza i potrzebny dowód. Zaznacz, które ustalenia możliwe są ze zdjęcia, a które wymagają inspekcji konstrukcji przez specjalistę.",
+          "question": "Na wielu gontach występuje wygięcie, a podłoże nie ma rozpoznanej wentylacji. Jaka analiza jest najlepsza?",
+          "options": [
+            "Zamienić wszystkie łączniki na dłuższe bez projektu.",
+            "Uznać winę producenta bez sprawdzenia drewna i wilgoci.",
+            "Zamalować zewnętrzną stronę i zamknąć diagnostykę.",
+            "Sprawdzić wilgoć, przebieg włókien, podłoże i możliwość wysychania całego układu."
+          ],
+          "correct": 3,
+          "example": "Sprawdzić wilgoć, przebieg włókien, podłoże i możliwość wysychania całego układu.",
+          "explanation": "Wada może być systemowa, więc kontrola obejmuje materiał i warunki pracy przegrody.",
+          "feedback": [
+            "Sprawdź kontekst, liczby i kryteria zadania. Wada może być systemowa, więc kontrola obejmuje materiał i warunki pracy przegrody.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Wada może być systemowa, więc kontrola obejmuje materiał i warunki pracy przegrody.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Wada może być systemowa, więc kontrola obejmuje materiał i warunki pracy przegrody.",
+            "Prawidłowo. Wada może być systemowa, więc kontrola obejmuje materiał i warunki pracy przegrody."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 9,
+      "title_pl": "10. Zabytkowy dach drewniany: konserwacja i zgodność technologii",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Konserwacja to nie automatyczna modernizacja",
+            "text": "W zabytkowym dachu drewniane elementy mogą przenosić informacje o okresie powstania, regionalnej technice i wcześniejszych naprawach. Nie wolno bez oceny zamienić gontu łupanego na cięty, zmienić zakładów lub pokryć historycznej powierzchni przypadkową powłoką, nawet jeśli wydaje się to tańsze."
+          },
+          {
+            "heading": "Rozpoznaj technikę historyczną",
+            "text": "Norweski system flis lub spon bywał układany z bocznym zachodzeniem, a technika zależy od regionu. Dokumentacja konserwatorska powinna wykazać, jaki typ naprawdę jest na dachu, co jest oryginałem, które fragmenty później wymieniono i jakie materiały odpowiadają historycznym rozwiązaniom."
+          },
+          {
+            "heading": "Woda, grzyby i kontrola otoczenia",
+            "text": "Prace pielęgnacyjne uwzględniają zalegające liście, roślinność, ryzyka retencji wilgoci oraz detale odprowadzenia wody. Nie stosuj myjek wysokociśnieniowych ani agresywnych środków na starym gontowaniu bez procedury zatwierdzonej przez odpowiedniego specjalistę. Można naruszyć powierzchnię i przyspieszyć uszkodzenia."
+          },
+          {
+            "heading": "Przykład błędnej renowacji",
+            "text": "Właściciel zabytkowej stodoły zamawia gładko cięte, barwione elementy w miejsce oryginalnego łupanego pokrycia, bez oględzin. Wymiana może zmienić wygląd i sposób pracy warstw; potrzebna jest dokumentacja, projekt naprawy i wymagane uzgodnienia konserwatorskie."
+          },
+          {
+            "heading": "Ćwiczenie porównawcze",
+            "text": "Dla dwóch fotografii typów pokrycia sporządź kartę: metoda wykonania, krawędzie, przebieg włókien, sposób zakładania, ślady napraw, miejsca wnikania wody i pytania do konserwatora. Zaproponuj zakres minimalnej, nieinwazyjnej dokumentacji."
+          }
+        ],
+        "illustration": "craft-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://byggogbevar.no/pusse-opp/tak-og-tekking/artikler/vedlikehold-av-flistak/"
+          }
+        ],
+        "learning": {
+          "intro": "W zabytkowym dachu drewniane elementy mogą przenosić informacje o okresie powstania, regionalnej technice i wcześniejszych naprawach. Nie wolno bez oceny zamienić gontu łupanego na cięty, zmienić zakładów lub pokryć historycznej powierzchni przypadkową powłoką, nawet jeśli wydaje się to tańsze.",
+          "situation": "Właściciel zabytkowej stodoły zamawia gładko cięte, barwione elementy w miejsce oryginalnego łupanego pokrycia, bez oględzin. Wymiana może zmienić wygląd i sposób pracy warstw; potrzebna jest dokumentacja, projekt naprawy i wymagane uzgodnienia konserwatorskie.",
+          "task": "Dla dwóch fotografii typów pokrycia sporządź kartę: metoda wykonania, krawędzie, przebieg włókien, sposób zakładania, ślady napraw, miejsca wnikania wody i pytania do konserwatora. Zaproponuj zakres minimalnej, nieinwazyjnej dokumentacji.",
+          "question": "Dlaczego w zabytkowym dachu nie należy bez analizy zastąpić łupanych gontów ciętymi?",
+          "options": [
+            "Ponieważ nowy gont zawsze musi mieć ten sam kolor co stary.",
+            "Ponieważ można utracić cechy historycznej technologii i zmienić sposób pracy pokrycia.",
+            "Ponieważ każdy stary dach jest automatycznie całkowicie szczelny.",
+            "Ponieważ dokumentacja nie ma znaczenia, gdy drewno wygląda podobnie."
+          ],
+          "correct": 1,
+          "example": "Ponieważ można utracić cechy historycznej technologii i zmienić sposób pracy pokrycia.",
+          "explanation": "Wartość konserwatorska obejmuje materiał i technikę, a nie jedynie zbliżony wygląd.",
+          "feedback": [
+            "Sprawdź kontekst, liczby i kryteria zadania. Wartość konserwatorska obejmuje materiał i technikę, a nie jedynie zbliżony wygląd.",
+            "Prawidłowo. Wartość konserwatorska obejmuje materiał i technikę, a nie jedynie zbliżony wygląd.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Wartość konserwatorska obejmuje materiał i technikę, a nie jedynie zbliżony wygląd.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Wartość konserwatorska obejmuje materiał i technikę, a nie jedynie zbliżony wygląd."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 10,
+      "title_pl": "11. BHP na dachu: ocena ryzyka, rusztowanie i zabezpieczenia",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Praca na wysokości wymaga planu",
+            "text": "Praca na dachu może skończyć się ciężkim wypadkiem nawet przy niewielkiej wysokości, jeśli podłoże jest śliskie, kruche albo znajdują się w nim otwory. Ocena uwzględnia kąt połaci, największą wysokość upadku, konstrukcję i jej nośność, pogodę, drogę wejścia, transport gontów i zagrożenie dla osób pod dachem."
+          },
+          {
+            "heading": "Pierwszeństwo ochrony zbiorowej",
+            "text": "Norweski Arbeidstilsynet zaleca i wymaga odpowiednio dobranych zbiorowych zabezpieczeń przed upadkiem jako pierwszego rozwiązania. Ręczna uprząż nie zastępuje automatycznie rusztowania, poręczy czy właściwego rozwiązania dostępu. Szczegóły klasy zabezpieczeń i konieczność dodatkowych systemów zależą od kąta i ryzyka."
+          },
+          {
+            "heading": "Dach nie jest platformą roboczą",
+            "text": "Starych łat, pojedynczych gontów ani niezweryfikowanych płyt nie traktuj jako pewnego miejsca oparcia. Zapewnij dostęp zaprojektowaną drogą i sprawdź dokumentację rusztowania, systemu zabezpieczeń i nośności. Operator powinien mieć właściwe szkolenie, a plan ratunkowy musi wyjaśniać, jak udzielić pomocy po potencjalnym upadku."
+          },
+          {
+            "heading": "Przykład odmowy rozpoczęcia",
+            "text": "Ekipa przyjeżdża na zabytkowy dach, gdzie widoczne są miękkie elementy poszycia i nie ma potwierdzonego rusztowania. Zamiast rozpoczynać demontaż należy przerwać plan, zabezpieczyć strefę i zlecić ocenę oraz odpowiednie rozwiązania bezpieczeństwa."
+          },
+          {
+            "heading": "Ćwiczenie SJA/BHP",
+            "text": "Na kartce sporządź analizę ryzyka (SJA) dla wymiany pokrycia na pochyłym dachu: 10 zagrożeń, ocena ryzyka, działania zabezpieczające, kompetencje wykonawcy, plan ratunkowy i osoba zatwierdzająca. To zadanie dokumentacyjne — nie instrukcja samodzielnego wchodzenia na dach."
+          }
+        ],
+        "illustration": "mastery-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/unnga-fall-ved-arbeid-pa-tak/"
+          }
+        ],
+        "learning": {
+          "intro": "Praca na dachu może skończyć się ciężkim wypadkiem nawet przy niewielkiej wysokości, jeśli podłoże jest śliskie, kruche albo znajdują się w nim otwory. Ocena uwzględnia kąt połaci, największą wysokość upadku, konstrukcję i jej nośność, pogodę, drogę wejścia, transport gontów i zagrożenie dla osób pod dachem.",
+          "situation": "Ekipa przyjeżdża na zabytkowy dach, gdzie widoczne są miękkie elementy poszycia i nie ma potwierdzonego rusztowania. Zamiast rozpoczynać demontaż należy przerwać plan, zabezpieczyć strefę i zlecić ocenę oraz odpowiednie rozwiązania bezpieczeństwa.",
+          "task": "Na kartce sporządź analizę ryzyka (SJA) dla wymiany pokrycia na pochyłym dachu: 10 zagrożeń, ocena ryzyka, działania zabezpieczające, kompetencje wykonawcy, plan ratunkowy i osoba zatwierdzająca. To zadanie dokumentacyjne — nie instrukcja samodzielnego wchodzenia na dach.",
+          "question": "Co należy zrobić, gdy nośność starego podłoża i zabezpieczenie krawędzi nie są potwierdzone?",
+          "options": [
+            "Wejść ostrożnie bez sprzętu, bo dach jest niski.",
+            "Pracować szybciej, aby skrócić narażenie.",
+            "Wstrzymać pracę, ocenić konstrukcję i zapewnić właściwe zabezpieczenia zbiorowe oraz dostęp.",
+            "Traktować same pojedyncze gonty jako bezpieczne stopnie."
+          ],
+          "correct": 2,
+          "example": "Wstrzymać pracę, ocenić konstrukcję i zapewnić właściwe zabezpieczenia zbiorowe oraz dostęp.",
+          "explanation": "Ocenę ryzyka i rozwiązania zbiorowe trzeba ustalić przed pracą, a nie w trakcie.",
+          "feedback": [
+            "Sprawdź kontekst, liczby i kryteria zadania. Ocenę ryzyka i rozwiązania zbiorowe trzeba ustalić przed pracą, a nie w trakcie.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Ocenę ryzyka i rozwiązania zbiorowe trzeba ustalić przed pracą, a nie w trakcie.",
+            "Prawidłowo. Ocenę ryzyka i rozwiązania zbiorowe trzeba ustalić przed pracą, a nie w trakcie.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Ocenę ryzyka i rozwiązania zbiorowe trzeba ustalić przed pracą, a nie w trakcie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 11,
+      "title_pl": "12. Projekt końcowy: kosztorys, ilości i kontrola jakości",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 4,
+        "lesson_kind": "technical_curriculum",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Założenia projektu ćwiczeniowego",
+            "text": "Przyjmij jedną połaci dachu o wymiarach rzeczywistych 3 m po skosie i 4 m długości okapu, bez kominów i otworów. Powierzchnia wynosi 12 m². Przyjmij edukacyjny typ gontu o efektywnej szerokości 100 mm i ekspozycji 120 mm, bez nakładania tej wartości na realny dach bez aprobaty systemu."
+          },
+          {
+            "heading": "Policz orientacyjny materiał",
+            "text": "Efektywne pokrycie jednej sztuki w tej uproszczonej siatce to 0,10 m×0,12 m=0,012 m². 12/0,012=1000 gontów. Jeżeli założysz 10% odrzutu całkowitej przygotowanej partii, trzeba oszacować 1000/(1−0,10)=1111,12, czyli co najmniej 1112 kandydatów. To uproszczenie ignoruje docinki przy okapie, kalenicy i detale."
+          },
+          {
+            "heading": "Dodatkowe dane do prawdziwej wyceny",
+            "text": "Wycena wymaga rodzaju i jakości surowca, rzeczywistych wymiarów i efektywnej szerokości, układu startowego, zakładów, przerw, obróbek, nośności, wentylacji, łączników, transportu, usuwania odpadów oraz dostępu i zabezpieczeń. Nie wolno traktować 1112 jako zamówienia produkcyjnego na dach o nieznanym systemie."
+          },
+          {
+            "heading": "Przykład rozbieżności",
+            "text": "Wykonawca liczy wyłącznie geometryczne 1000 sztuk i pomija odrzuty, okap oraz kalenicę. Podczas pracy okazuje się, że materiału brakuje, a wykonawca proponuje zwiększyć ekspozycję bez weryfikacji systemu. To niewłaściwe rozwiązanie: należy poprawić obmiar i uzupełnić materiał zgodny z projektem."
+          },
+          {
+            "heading": "Praca końcowa",
+            "text": "Oddaj przekrój 3 kolejnych rzędów, schemat odprowadzenia wody, obliczenia 12 m² i 1112 sztuk, listę 12 wymagań odbiorczych, tabelę trzech potencjalnych usterek i ryzyk oraz projekt planu SJA. Wyjaśnij, które dane są przykładowe, a które musi dostarczyć uprawniony projektant i producent."
+          }
+        ],
+        "illustration": "mastery-gontarz",
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.cedarbureau.org/installation/roof-installation-manual/"
+          }
+        ],
+        "learning": {
+          "intro": "Przyjmij jedną połaci dachu o wymiarach rzeczywistych 3 m po skosie i 4 m długości okapu, bez kominów i otworów. Powierzchnia wynosi 12 m². Przyjmij edukacyjny typ gontu o efektywnej szerokości 100 mm i ekspozycji 120 mm, bez nakładania tej wartości na realny dach bez aprobaty systemu.",
+          "situation": "Wykonawca liczy wyłącznie geometryczne 1000 sztuk i pomija odrzuty, okap oraz kalenicę. Podczas pracy okazuje się, że materiału brakuje, a wykonawca proponuje zwiększyć ekspozycję bez weryfikacji systemu. To niewłaściwe rozwiązanie: należy poprawić obmiar i uzupełnić materiał zgodny z projektem.",
+          "task": "Oddaj przekrój 3 kolejnych rzędów, schemat odprowadzenia wody, obliczenia 12 m² i 1112 sztuk, listę 12 wymagań odbiorczych, tabelę trzech potencjalnych usterek i ryzyk oraz projekt planu SJA. Wyjaśnij, które dane są przykładowe, a które musi dostarczyć uprawniony projektant i producent.",
+          "question": "Połać ma 12 m², modelowa efektywna powierzchnia gontu to 0,012 m², a odrzut wynosi 10% całej przygotowanej partii. Ile kandydatów daje ten model?",
+          "options": [
+            "1000 sztuk, ponieważ odrzut nie zmienia zamówienia.",
+            "1100 sztuk, dokładnie, bo 10% oblicza się zawsze od 1000.",
+            "1200 sztuk, niezależnie od formatu.",
+            "1112 sztuk po zaokrągleniu 1000/0,9 w górę."
+          ],
+          "correct": 3,
+          "example": "1112 sztuk po zaokrągleniu 1000/0,9 w górę.",
+          "explanation": "Przy wydajności 90% 1000/0,9=1111,12, zaokrąglając do całych sztuk w górę otrzymujemy 1112; model pomija rzeczywiste detale.",
+          "feedback": [
+            "Sprawdź kontekst, liczby i kryteria zadania. Przy wydajności 90% 1000/0,9=1111,12, zaokrąglając do całych sztuk w górę otrzymujemy 1112; model pomija rzeczywiste detale.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Przy wydajności 90% 1000/0,9=1111,12, zaokrąglając do całych sztuk w górę otrzymujemy 1112; model pomija rzeczywiste detale.",
+            "Sprawdź kontekst, liczby i kryteria zadania. Przy wydajności 90% 1000/0,9=1111,12, zaokrąglając do całych sztuk w górę otrzymujemy 1112; model pomija rzeczywiste detale.",
+            "Prawidłowo. Przy wydajności 90% 1000/0,9=1111,12, zaokrąglając do całych sztuk w górę otrzymujemy 1112; model pomija rzeczywiste detale."
+          ]
+        }
+      }
+    }
+  ]
+}
