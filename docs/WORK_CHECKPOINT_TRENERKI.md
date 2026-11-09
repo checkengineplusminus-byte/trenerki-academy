@@ -125,3 +125,12 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - W Supabase poprawiono osiem istniejących lekcji: surowce i dobór wikliny, nawilżanie, dno, splot prosty, dwu- i trzyprętowy, geometria i obliczenia, brzeg i uchwyt, kontrola jakości i kosztorys. Każda ma pięć sekcji, zadanie praktyczne, indywidualne pytanie, cztery odpowiedzi i komentarze.
 - SQL odtwarzalny: `database/patches/trenerki-plecionkarz-content-20261109.sql` (commit `fe7277e56ea657cd9534b11c4daee40f55685420`). Zmiany zapisano w bazie; istniejące konta, zakupy, postępy i RLS pozostały nietknięte.
 - **Ograniczenia:** materiały są robocze i wymagają recenzji mistrza plecionkarstwa; brak nowych technicznych SVG, weryfikacji E2E egzaminu/certyfikatu, deployu Expo i fachowej kontroli źródeł. Nie oznaczać kursu jako ostatecznie ukończonego ani wszystkich 80 jako gotowych. Następny kurs `powroznik`.
+
+
+## Uaktualnienie: Plecionkarz i tryb przyspieszony (9 listopada 2026)
+- Żądanie użytkownika: **cel 40 kursów na godzinę**, bez sztucznego zatrzymywania pracy po jednym kursie. Zmodyfikowano włączoną automatyzację godzinową: **do 40 kursów na uruchomienie, ale wyłącznie faktycznie zapisanych i sprawdzonych**. Technicznie nie jest dostępny cykl startu częściej niż raz na godzinę. Nie gwarantować liczby 40, gdy jakość lub limity wykonania nie pozwalają. Zapis po KAŻDYM kursie.
+- **Kurs 9: Plecionkarz — 16 lekcji w Supabase, nie 8.** Pierwotny wpis niżej powstał w równoległej sesji po ośmiu lekcjach i jest już nieaktualny. Aktualny stan bazy: lekcje `0..15` z `curriculum_revision=9`, 16 pytań indywidualnych, po 5 sekcji, opcje i informacje zwrotne.
+- GitHub: `content/plecionkarz-masterclass-20261109-part1.json` (commit `b577bf33`), `part2.json` (`0093a435`), pięć autorskich schematów i rejestr `src/LessonIllustratedSections.tsx` (commit `22b50d34`), patch `database/patches/trenerki-plecionkarz-content-20261109.sql` (commit `141176bc`, **obowiązujący, 16 lekcji**), raport `docs/COURSE_REVIEW_PLECIONKARZ_20261109.md`.
+- Odnotowano konflikt równoległego zapisu: pierwotny patch GitHub opisywał tylko 8 lekcji, dlatego został zastąpiony pełnym idempotentnym patchem 16 lekcji. Unikaj nadpisywania nowszych danych niepełnymi wersjami.
+- Publikacja i dane uczniów bez zmian. **Nadal wymagane** recenzja eksperta, test konta do egzaminu, QA dystraktorów i wdrożenia Expo; nie deklarować pełnego zamknięcia.
+- Następny `powroznik`; przed edycją sprawdź aktualną DB i checkpoint, aby nie dublować równoległego uruchomienia.
