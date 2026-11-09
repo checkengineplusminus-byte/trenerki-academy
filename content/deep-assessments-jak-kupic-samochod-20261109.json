@@ -1,0 +1,221 @@
+{
+  "course_slug": "jak-kupic-samochod",
+  "quizzes": [
+    {
+      "lesson_no": 0,
+      "question": "Masz 40 000 zł. Chcesz zostawić 6000 zł rezerwy i 3500 zł na koszty po zakupie. Jaka jest maksymalna cena auta w tym planie?",
+      "options": [
+        "30 500 zł",
+        "34 000 zł",
+        "33 500 zł",
+        "36 500 zł"
+      ],
+      "correct": 0,
+      "explanation": "40 000 − 6000 − 3500 = 30 500 zł. Rezerwa i przewidywane wydatki nie są środkami na zakup.",
+      "feedback": [
+        "Poprawnie. 40 000 − 6000 − 3500 = 30 500 zł. Rezerwa i przewidywane wydatki nie są środkami na zakup.",
+        "Nie. 40 000 − 6000 − 3500 = 30 500 zł. Rezerwa i przewidywane wydatki nie są środkami na zakup.",
+        "Nie. 40 000 − 6000 − 3500 = 30 500 zł. Rezerwa i przewidywane wydatki nie są środkami na zakup.",
+        "Nie. 40 000 − 6000 − 3500 = 30 500 zł. Rezerwa i przewidywane wydatki nie są środkami na zakup."
+      ]
+    },
+    {
+      "lesson_no": 1,
+      "question": "Auto A kosztuje 25 000 zł, naprawy 5000 zł i OC 1500 zł. Auto B kosztuje 29 000 zł, serwis 1200 zł i OC 1500 zł. Które ma niższy policzony koszt wejścia?",
+      "options": [
+        "Auto B o 200 zł",
+        "Auto A o 200 zł",
+        "Oba mają koszt 31 700 zł",
+        "Auto A o 4000 zł"
+      ],
+      "correct": 1,
+      "explanation": "A: 25 000+5000+1500=31 500 zł. B: 29 000+1200+1500=31 700 zł. A jest o 200 zł tańsze w zakresie przyjętych danych.",
+      "feedback": [
+        "Nie. A: 25 000+5000+1500=31 500 zł. B: 29 000+1200+1500=31 700 zł. A jest o 200 zł tańsze w zakresie przyjętych danych.",
+        "Poprawnie. A: 25 000+5000+1500=31 500 zł. B: 29 000+1200+1500=31 700 zł. A jest o 200 zł tańsze w zakresie przyjętych danych.",
+        "Nie. A: 25 000+5000+1500=31 500 zł. B: 29 000+1200+1500=31 700 zł. A jest o 200 zł tańsze w zakresie przyjętych danych.",
+        "Nie. A: 25 000+5000+1500=31 500 zł. B: 29 000+1200+1500=31 700 zł. A jest o 200 zł tańsze w zakresie przyjętych danych."
+      ]
+    },
+    {
+      "lesson_no": 2,
+      "question": "Jakie dane są wymagane do bezpłatnego sprawdzenia historii pojazdu w polskim CEP?",
+      "options": [
+        "VIN, markę i adres warsztatu",
+        "VIN, datę produkcji i numer właściciela",
+        "Numer rejestracyjny, VIN i datę pierwszej rejestracji",
+        "Numer rejestracyjny i samą cenę"
+      ],
+      "correct": 2,
+      "explanation": "Historia Pojazdu wymaga numeru rejestracyjnego, VIN i daty pierwszej rejestracji. Brak szkód w bazie nie jest gwarancją bezwypadkowości.",
+      "feedback": [
+        "Nie. Historia Pojazdu wymaga numeru rejestracyjnego, VIN i daty pierwszej rejestracji. Brak szkód w bazie nie jest gwarancją bezwypadkowości.",
+        "Nie. Historia Pojazdu wymaga numeru rejestracyjnego, VIN i daty pierwszej rejestracji. Brak szkód w bazie nie jest gwarancją bezwypadkowości.",
+        "Poprawnie. Historia Pojazdu wymaga numeru rejestracyjnego, VIN i daty pierwszej rejestracji. Brak szkód w bazie nie jest gwarancją bezwypadkowości.",
+        "Nie. Historia Pojazdu wymaga numeru rejestracyjnego, VIN i daty pierwszej rejestracji. Brak szkód w bazie nie jest gwarancją bezwypadkowości."
+      ]
+    },
+    {
+      "lesson_no": 3,
+      "question": "Miernik pokazuje różną grubość lakieru na błotniku. Jaki wniosek jest uzasadniony na tym etapie?",
+      "options": [
+        "Pojazd na pewno ma uszkodzoną ramę",
+        "Każdy element musi mieć dokładnie identyczny pomiar",
+        "Różnica zawsze pochodzi z fabryki",
+        "To sygnał do dalszej oceny lakierowania i dokumentacji naprawy"
+      ],
+      "correct": 3,
+      "explanation": "Różny pomiar może wskazywać naprawę, ale trzeba uwzględnić materiał, technologię, lokalizację i niezależne oględziny.",
+      "feedback": [
+        "Nie. Różny pomiar może wskazywać naprawę, ale trzeba uwzględnić materiał, technologię, lokalizację i niezależne oględziny.",
+        "Nie. Różny pomiar może wskazywać naprawę, ale trzeba uwzględnić materiał, technologię, lokalizację i niezależne oględziny.",
+        "Nie. Różny pomiar może wskazywać naprawę, ale trzeba uwzględnić materiał, technologię, lokalizację i niezależne oględziny.",
+        "Poprawnie. Różny pomiar może wskazywać naprawę, ale trzeba uwzględnić materiał, technologię, lokalizację i niezależne oględziny."
+      ]
+    },
+    {
+      "lesson_no": 4,
+      "question": "Skaner OBD nie pokazuje kodów, ale podczas jazdy występują silne drgania hamowania. Jak postąpić?",
+      "options": [
+        "Zgłosić objaw i uzyskać niezależną ocenę układu hamulcowego",
+        "Uznać, że auto jest sprawne, bo OBD nic nie znalazł",
+        "Skasować wszystkie sterowniki i jechać dalej",
+        "Sprawdzić tylko radio i klimatyzację"
+      ],
+      "correct": 0,
+      "explanation": "Brak DTC nie wyklucza mechanicznej usterki hamulców. Jazda próbna i kontrola warsztatu sprawdzają inne informacje niż OBD.",
+      "feedback": [
+        "Poprawnie. Brak DTC nie wyklucza mechanicznej usterki hamulców. Jazda próbna i kontrola warsztatu sprawdzają inne informacje niż OBD.",
+        "Nie. Brak DTC nie wyklucza mechanicznej usterki hamulców. Jazda próbna i kontrola warsztatu sprawdzają inne informacje niż OBD.",
+        "Nie. Brak DTC nie wyklucza mechanicznej usterki hamulców. Jazda próbna i kontrola warsztatu sprawdzają inne informacje niż OBD.",
+        "Nie. Brak DTC nie wyklucza mechanicznej usterki hamulców. Jazda próbna i kontrola warsztatu sprawdzają inne informacje niż OBD."
+      ]
+    },
+    {
+      "lesson_no": 5,
+      "question": "Auto kosztuje 28 000 zł i wymaga naprawy za 7500 zł. Konkurencyjne auto za 33 000 zł nie wymaga potwierdzonych napraw. Które stwierdzenie jest prawdziwe?",
+      "options": [
+        "Pierwsze jest tańsze w znanych kosztach o 5000 zł",
+        "Drugie jest tańsze w znanych kosztach o 2500 zł",
+        "Koszty obu wynoszą 33 000 zł",
+        "Pierwsze jest tańsze o 2500 zł"
+      ],
+      "correct": 1,
+      "explanation": "Znane koszty pierwszego: 35 500 zł, drugiego 33 000 zł, czyli drugie jest tańsze o 2500 zł w analizowanym zakresie.",
+      "feedback": [
+        "Nie. Znane koszty pierwszego: 35 500 zł, drugiego 33 000 zł, czyli drugie jest tańsze o 2500 zł w analizowanym zakresie.",
+        "Poprawnie. Znane koszty pierwszego: 35 500 zł, drugiego 33 000 zł, czyli drugie jest tańsze o 2500 zł w analizowanym zakresie.",
+        "Nie. Znane koszty pierwszego: 35 500 zł, drugiego 33 000 zł, czyli drugie jest tańsze o 2500 zł w analizowanym zakresie.",
+        "Nie. Znane koszty pierwszego: 35 500 zł, drugiego 33 000 zł, czyli drugie jest tańsze o 2500 zł w analizowanym zakresie."
+      ]
+    },
+    {
+      "lesson_no": 6,
+      "question": "Sprzedawca żąda przelewu na rachunek obcej osoby przed okazaniem dokumentów. Co powinno poprzedzać płatność?",
+      "options": [
+        "Zapisanie niższej ceny w umowie",
+        "Zamiana przelewu na gotówkę bez potwierdzeń",
+        "Ustalenie tożsamości i umocowania do sprzedaży, zgodności auta i bezpiecznych warunków płatności",
+        "Sama wiadomość 'możesz mi zaufać'"
+      ],
+      "correct": 2,
+      "explanation": "Weryfikuj stronę transakcji, uprawnienie do rozporządzania pojazdem, identyfikację samochodu i warunki zapłaty.",
+      "feedback": [
+        "Nie. Weryfikuj stronę transakcji, uprawnienie do rozporządzania pojazdem, identyfikację samochodu i warunki zapłaty.",
+        "Nie. Weryfikuj stronę transakcji, uprawnienie do rozporządzania pojazdem, identyfikację samochodu i warunki zapłaty.",
+        "Poprawnie. Weryfikuj stronę transakcji, uprawnienie do rozporządzania pojazdem, identyfikację samochodu i warunki zapłaty.",
+        "Nie. Weryfikuj stronę transakcji, uprawnienie do rozporządzania pojazdem, identyfikację samochodu i warunki zapłaty."
+      ]
+    },
+    {
+      "lesson_no": 7,
+      "question": "W dokumentacji brak potwierdzonej historii serwisowej, a sprzedawca nie zgadza się na kontrolę warsztatową. Jak sklasyfikować sytuację?",
+      "options": [
+        "Jako dowód, że auto jest bezawaryjne",
+        "Jako drobny brak, który nie ma znaczenia dla ryzyka",
+        "Jako powód do pominięcia VIN",
+        "Jako wysoką niepewność wymagającą wyjaśnienia lub rezygnacji"
+      ],
+      "correct": 3,
+      "explanation": "Odmowa niezależnej weryfikacji i brak potwierdzeń zwiększają ryzyko. Należy ocenić możliwość dalszych dowodów lub zrezygnować.",
+      "feedback": [
+        "Nie. Odmowa niezależnej weryfikacji i brak potwierdzeń zwiększają ryzyko. Należy ocenić możliwość dalszych dowodów lub zrezygnować.",
+        "Nie. Odmowa niezależnej weryfikacji i brak potwierdzeń zwiększają ryzyko. Należy ocenić możliwość dalszych dowodów lub zrezygnować.",
+        "Nie. Odmowa niezależnej weryfikacji i brak potwierdzeń zwiększają ryzyko. Należy ocenić możliwość dalszych dowodów lub zrezygnować.",
+        "Poprawnie. Odmowa niezależnej weryfikacji i brak potwierdzeń zwiększają ryzyko. Należy ocenić możliwość dalszych dowodów lub zrezygnować."
+      ]
+    },
+    {
+      "lesson_no": 8,
+      "question": "Która informacja najlepiej sprawdza deklarację 'pełna historia serwisowa'?",
+      "options": [
+        "Chronologiczne faktury, książka lub dane serwisowe z możliwymi do potwierdzenia wpisami",
+        "Zdjęcie świeżo umytego silnika",
+        "Deklaracja bez dokumentów, powtórzona trzy razy",
+        "Niska cena z dopiskiem 'okazja'"
+      ],
+      "correct": 0,
+      "explanation": "Chronologia i weryfikowalność dokumentów dają podstawę sprawdzenia; marketingowe hasło nie.",
+      "feedback": [
+        "Poprawnie. Chronologia i weryfikowalność dokumentów dają podstawę sprawdzenia; marketingowe hasło nie.",
+        "Nie. Chronologia i weryfikowalność dokumentów dają podstawę sprawdzenia; marketingowe hasło nie.",
+        "Nie. Chronologia i weryfikowalność dokumentów dają podstawę sprawdzenia; marketingowe hasło nie.",
+        "Nie. Chronologia i weryfikowalność dokumentów dają podstawę sprawdzenia; marketingowe hasło nie."
+      ]
+    },
+    {
+      "lesson_no": 9,
+      "question": "Co wynika z wyświetlenia na skanerze komunikatu 'No DTC'?",
+      "options": [
+        "Brak jakichkolwiek usterek w aucie",
+        "Brak zgłoszonych kodów w sprawdzanym zakresie w tym momencie, nie pełny certyfikat sprawności",
+        "Potwierdzona geometria zawieszenia",
+        "Potwierdzona grubość blach i bezwypadkowość"
+      ],
+      "correct": 1,
+      "explanation": "No DTC opisuje tylko wynik sprawdzonych sterowników w danym momencie. Nie zastępuje inspekcji mechanicznej i nadwozia.",
+      "feedback": [
+        "Nie. No DTC opisuje tylko wynik sprawdzonych sterowników w danym momencie. Nie zastępuje inspekcji mechanicznej i nadwozia.",
+        "Poprawnie. No DTC opisuje tylko wynik sprawdzonych sterowników w danym momencie. Nie zastępuje inspekcji mechanicznej i nadwozia.",
+        "Nie. No DTC opisuje tylko wynik sprawdzonych sterowników w danym momencie. Nie zastępuje inspekcji mechanicznej i nadwozia.",
+        "Nie. No DTC opisuje tylko wynik sprawdzonych sterowników w danym momencie. Nie zastępuje inspekcji mechanicznej i nadwozia."
+      ]
+    },
+    {
+      "lesson_no": 10,
+      "question": "Cena 30 000 zł, potwierdzona naprawa 2400 zł. Kupujący chce maksymalnie wydać 30 000 zł łącznie na zakup i tę naprawę. Jaka cena zakupu mieści się w takim limicie?",
+      "options": [
+        "30 000 zł",
+        "28 400 zł",
+        "27 600 zł",
+        "32 400 zł"
+      ],
+      "correct": 2,
+      "explanation": "30 000 − 2400 = 27 600 zł. To matematyczna granica budżetu, nie gwarancja zgody sprzedawcy.",
+      "feedback": [
+        "Nie. 30 000 − 2400 = 27 600 zł. To matematyczna granica budżetu, nie gwarancja zgody sprzedawcy.",
+        "Nie. 30 000 − 2400 = 27 600 zł. To matematyczna granica budżetu, nie gwarancja zgody sprzedawcy.",
+        "Poprawnie. 30 000 − 2400 = 27 600 zł. To matematyczna granica budżetu, nie gwarancja zgody sprzedawcy.",
+        "Nie. 30 000 − 2400 = 27 600 zł. To matematyczna granica budżetu, nie gwarancja zgody sprzedawcy."
+      ]
+    },
+    {
+      "lesson_no": 11,
+      "question": "Auto A: cena 27 000 zł i brak zgody na diagnostykę. Auto B: 29 000 zł, dokumentacja spójna, zgoda na warsztat. Który wybór jest oparty na dowodach?",
+      "options": [
+        "Kup A, bo jest tańsze o 2000 zł",
+        "Kup A bez jakiejkolwiek kontroli i natychmiast zapłać",
+        "Kup B bez kontroli, bo sprzedawca się zgodził",
+        "Porównaj pełny koszt, przeprowadź kontrolę B i rozstrzygnij na podstawie wyników oraz budżetu"
+      ],
+      "correct": 3,
+      "explanation": "Zgoda na kontrolę to możliwość uzyskania dowodu, ale nie zastępuje samego wyniku. Cena sama nie wystarcza.",
+      "feedback": [
+        "Nie. Zgoda na kontrolę to możliwość uzyskania dowodu, ale nie zastępuje samego wyniku. Cena sama nie wystarcza.",
+        "Nie. Zgoda na kontrolę to możliwość uzyskania dowodu, ale nie zastępuje samego wyniku. Cena sama nie wystarcza.",
+        "Nie. Zgoda na kontrolę to możliwość uzyskania dowodu, ale nie zastępuje samego wyniku. Cena sama nie wystarcza.",
+        "Poprawnie. Zgoda na kontrolę to możliwość uzyskania dowodu, ale nie zastępuje samego wyniku. Cena sama nie wystarcza."
+      ]
+    }
+  ]
+}
