@@ -91,6 +91,46 @@ const aliases=[
 const level=(q)=>/\b(od zera|poczatkuj|pierwszy raz|nie umiem|bez doswiadczen|od podstaw)/.test(q)?'beginner':/\b(doswiadcz|zaawansow|juz pracuj|znam podstaw|rozwinac|poglebic)/.test(q)?'advanced':null;
 const purpose=q=>/\b(prac|zawod|zarabia|etat|firma|awans|biznes)/.test(q)?'work':/\b(hobby|pasj|dla siebie|w domu|wolny czas)/.test(q)?'personal':null;
 let lastIntent='',lastQuery='';
+const aiEndpoint='https://kcvvixcjuwglfvdpypzs.supabase.co/functions/v1/ta-anielka';
+const publicKey='sb_publishable_wpRp2JuWNW_WcjZdWXwIRQ_HfCPlxrj';
+let aiTimer=null,aiController=null,aiSerial=0;
+const dialogue=[];
+function resetAiRequest(){
+ if(aiTimer!==null&&typeof clearTimeout==='function')clearTimeout(aiTimer);
+ aiTimer=null;
+ if(aiController?.abort)aiController.abort();
+ aiController=null;
+ aiSerial++;
+}
+async function askIndividualAi(question,serial){
+ const output=document.getElementById('anielka-output');
+ if(!output||!question||serial!==aiSerial||typeof window.fetch!=='function')return;
+ const match=find(question);
+ const picks=[match.primary,...match.similar].filter(Boolean).slice(0,3);
+ aiController=typeof AbortController!=='undefined'?new AbortController():null;
+ try{
+  const response=await window.fetch(aiEndpoint,{
+   method:'POST',
+   headers:{'content-type':'application/json','apikey':publicKey},
+   body:JSON.stringify({question,candidates:picks.map(c=>c.id),history:dialogue.slice(-2)}),
+   signal:aiController?.signal
+  });
+  if(!response.ok)return;
+  const data=await response.json();
+  if(serial!==aiSerial||String(question)!==lastQuery||!data?.ok||typeof data.answer!=='string')return;
+  const message=output.querySelector?.('.anielka-message');
+  if(!message)return;
+  message.textContent='Anielka: '+data.answer.slice(0,1150);
+  dialogue.push({question:question.slice(0,180),answer:data.answer.slice(0,280)});
+  if(dialogue.length>3)dialogue.shift();
+ }catch{ /* Local matching remains available even if server AI is offline. */ }
+}
+function scheduleAi(question){
+ resetAiRequest();
+ if(question.length<12||typeof window.fetch!=='function'||typeof setTimeout!=='function')return;
+ const serial=aiSerial;
+ aiTimer=setTimeout(()=>{if(serial===aiSerial)void askIndividualAi(question,serial);},1650);
+}
 function contextualQuery(query){
  const raw=String(query||'').trim().slice(0,250);
  const norm=normalize(raw);
@@ -173,12 +213,13 @@ function show(query,scroll=false){
  const input=document.getElementById('anielka-question'),out=document.getElementById('anielka-output');
  const v=String(query||'').trim().slice(0,250);
  if(input&&input.value!==v)input.value=v;
- if(v.length<3){if(out)out.innerHTML='';setPeek('');if(typeof searchCourses==='function')searchCourses('');return;}
+ if(v.length<3){resetAiRequest();if(out)out.innerHTML='';setPeek('');if(typeof searchCourses==='function')searchCourses('');return;}
  if(out)out.innerHTML=response(v);
  setPeek(v);
  if(typeof searchCourses==='function')searchCourses(v);
  lastQuery=v;
  if(find(v).found)lastIntent=v;
+ scheduleAi(v);
  if(scroll&&out&&typeof out.scrollIntoView==='function')out.scrollIntoView({behavior:'smooth',block:'start'});
 }
 document.addEventListener('input',event=>{
