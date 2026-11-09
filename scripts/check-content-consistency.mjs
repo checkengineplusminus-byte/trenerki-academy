@@ -31,7 +31,7 @@ try{
  'mierz-ponad-sily','opieka-seniorzy','wsparcie-adhd','poznaj-siebie','mocny-charakter','nie-lubie-ludzi',
  'zaczynam-od-zera','obowiazki-domowe','lepszy-cukiernik','lepszy-kucharz','jak-kupic-samochod',
  'google-ads-promocja','facebook-ads-promocja']);
- const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko','kowal-tradycja']);
+ const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko']);
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
  const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.lastIndexOf('</script>');
@@ -39,7 +39,7 @@ try{
  else{new Script(page.slice(scriptStart+8,scriptEnd),{filename:'academy-index.js'});ok('Homepage JavaScript syntax');}
  if(courses.length===15+additions.length&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
  for(const c of courses){
-  const expected=(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id))?30:expandedSlugs.has(c.id)?12:8;
+  const expected=(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id)||c.id==='kowal-tradycja')?30:expandedSlugs.has(c.id)?12:8;
   if(!Array.isArray(c.outline)||c.outline.length!==expected)fail(c.id+': expected '+expected+' lessons');
   const guide=individualGuides[c.id]||craftGuides[c.id];
   if(!introSlugs.has(c.id)&&(!guide||!['what','first','result','boundary'].every(k=>typeof guide[k]==='string'&&guide[k].length>=30)))
