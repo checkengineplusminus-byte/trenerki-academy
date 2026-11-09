@@ -270,7 +270,16 @@ try{
     if(!illustrated.includes("'mastery-"+slug+"'")||!read('public/academy/assets/mastery-'+slug+'.svg').includes('</svg>'))
       fail('Missing bespoke illustration '+slug);
   }
-  elseIfMastery: {if(Object.keys(masteryBank).length===78)ok('78 per-course knowledge guides and diagrams found');}
+  if(Object.keys(masteryBank).length===78)ok('78 per-course knowledge guides and diagrams found');
+  const craftAssessments=JSON.parse(read('content/mastery-crafts-assessments-20261109.json')).lessons;
+  if(craftAssessments.length!==19||new Set(craftAssessments.map(x=>x.course_slug)).size!==19||
+     craftAssessments.some(x=>x.lesson_no!==1||x.options.length!==4||!Number.isInteger(x.correct)||
+       x.correct<0||x.correct>=4||x.feedback.length!==4||x.question.length<35))
+   fail('Material science quizzes must be specific and verifiable in 19 crafts');
+  const caseLessonUI=read('src/CaseLesson.tsx');
+  if(illustrated.includes('Autorska ilustracja TRENERKI Academy')||!caseLessonUI.includes('feedbackForChoice(chosen)'))
+   fail('Lesson screens must hide self-promotion and show individual quiz feedback');
+  else ok('19 craft quizzes and individual feedback are configured');
   const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
   fail('Every craft course must have eight individually illustrated/explained lessons');
