@@ -8,10 +8,24 @@ export default function AccountPage(){
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
  gift=typeof params.gift==='string' && /^TA-[0-9A-F]{32}$/i.test(params.gift)?params.gift:'';
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
- const continueToSelectedCourse=()=>{
-    if(gift)router.replace({pathname:'/prezent',params:{code:gift}});
-    else if(course)router.replace({pathname:'/kup',params:{course}});
-    else router.replace('/moje-kursy');
+ const continueToSelectedCourse=async()=>{
+    if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
+    if(course){router.replace({pathname:'/kup',params:{course}});return;}
+    // Email confirmation sends users back to /konto without original query params.
+    // Recover the chosen course from signup metadata for navigation only;
+    // enrollment authorization is always checked independently by the server.
+    const {data:{user}}=await supabase.auth.getUser();
+    const candidate=user?.user_metadata?.pending_course;
+    const selected=typeof candidate==='string'&&/^[a-z0-9][a-z0-9_-]{1,79}$/.test(candidate)?candidate:'';
+    const possibleGift=user?.user_metadata?.pending_gift;
+    const savedGift=typeof possibleGift==='string'&&/^TA-[0-9A-F]{32}$/i.test(possibleGift)?possibleGift:'';
+    if(selected||savedGift){
+      // Clear once consumed so future logins don't keep redirecting to old courses.
+      await supabase.auth.updateUser({data:{pending_course:null,pending_gift:null}});
+      if(savedGift){router.replace({pathname:'/prezent',params:{code:savedGift}});return;}
+      router.replace({pathname:'/kup',params:{course:selected}});return;
+    }
+    router.replace('/moje-kursy');
  };
  useEffect(()=>{
   let isCurrent=true;
@@ -52,7 +66,7 @@ export default function AccountPage(){
        const emailRedirectTo='https://trenerki-academy.expo.app/konto';
        const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null}}});
        if(error)throw error;
-       if(data.session){continueToSelectedCourse();return;}
+       if(data.session){await continueToSelectedCourse();return;}
        setMessage('Konto utworzone. Potwierdź e-mail (również w SPAM), następnie zaloguj się. Wybrany kurs będzie czekał w koszyku.');return;
      }
      const {error}=await supabase.auth.signInWithPassword({email:email.trim().toLowerCase(),password});
@@ -61,7 +75,7 @@ export default function AccountPage(){
        if(error.code==='email_not_confirmed')throw new Error('Potwierdź adres e-mail w wiadomości od TRENERKI Academy.');
        throw error;
      }
-     continueToSelectedCourse();
+     await continueToSelectedCourse();
    }catch(e:any){setMessage(e?.message||'Operacja nie powiodła się.');}finally{setBusy(false)}
  }
  const input={borderWidth:1,borderColor:'#c9d8c5',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
@@ -74,7 +88,7 @@ export default function AccountPage(){
  {!!activeEmail&&mode!=='new-password'&&<View style={{backgroundColor:'#e8f3dc',borderWidth:1,borderColor:'#d3e6c0',borderRadius:13,padding:16,marginVertical:12}}>
    <Text style={{fontWeight:'800',color:ink}}>Twoja sesja nadal jest aktywna</Text>
    <Text style={{color:'#45664f',marginTop:5,marginBottom:11}}>{activeEmail}</Text>
-   <Pressable onPress={()=>continueToSelectedCourse()} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
+   <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{gift?'Odbierz prezent →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
    <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
