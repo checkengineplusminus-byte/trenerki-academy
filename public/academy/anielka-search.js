@@ -121,6 +121,8 @@ async function askIndividualAi(question,serial){
   const message=output.querySelector?.('.anielka-message');
   if(!message)return;
   message.textContent='Anielka: '+data.answer.slice(0,1150);
+  const preview=document.getElementById('anielka-peek')?.querySelector?.('p');
+  if(preview)preview.textContent=data.answer.slice(0,340);
   dialogue.push({question:question.slice(0,180),answer:data.answer.slice(0,280)});
   if(dialogue.length>3)dialogue.shift();
  }catch{ /* Local matching remains available even if server AI is offline. */ }
@@ -207,7 +209,7 @@ function setPeek(query){
  if(!match.found){
   peek.innerHTML='<strong>Anielka</strong><p>Rozumiem, że szukasz czegoś konkretnego. Dopisz, jaki problem chcesz rozwiązać.</p>';return;
  }
- peek.innerHTML='<strong>Anielka · dopasowanie na żywo</strong><p>'+esc(match.primary.title)+'</p><button type="button" data-anielka-course="'+esc(match.primary.id)+'">Otwórz ten kurs →</button><button type="button" class="anielka-peek-help" data-anielka-details="true">Pokaż, dlaczego pasuje</button>';
+ peek.innerHTML='<strong>Anielka · dopasowanie na żywo</strong><p>'+esc(match.primary.title)+'</p><button type="button" data-anielka-course="'+esc(match.primary.id)+'">Otwórz ten kurs →</button>';
 }
 function show(query,scroll=false){
  const input=document.getElementById('anielka-question'),out=document.getElementById('anielka-output');
