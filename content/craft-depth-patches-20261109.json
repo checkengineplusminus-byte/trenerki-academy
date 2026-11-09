@@ -1,0 +1,2783 @@
+{
+  "meta": {
+    "courses": 19,
+    "lessons": 114,
+    "purpose": "Focused enrichment of traditional crafts, preserve existing assessment and progress"
+  },
+  "lessons": [
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Strugi proste i profilowe nadają klepkom dwa różne kształty: zewnętrzny obrys oraz przylegające do siebie krawędzie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Szablon sprawdza, czy kolejne klepki mają spójny promień; sam ostry strug nie zapewni szczelności."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek. Dąb jest ceniony za trwałość i właściwości użytkowe; inne gatunki mogą być stosowane zależnie od przeznaczenia naczynia. Wilgotność i późniejsze pęcznienie zmieniają dopasowanie klepek, dlatego rozróżniaj naczynia do przechowywania cieczy i wyroby dekoracyjne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-bednarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Beczka jest zwykle szersza w środkowej części niż przy dnach, dlatego każda klepka ma specjalny obrys.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Konstruktor musi rozróżnić średnicę przy dnie, średnicę największą i wysokość, a także położenie wręgi."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Dno, kształt klepek, wręga i obręcze muszą współpracować. Obręcz zapewnia docisk, ale sama nie uszczelni naczynia z pękniętą klepką. Kontroluj owalizację, szczeliny w stykach, pozycję dna oraz powierzchnie mające kontakt z żywnością."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-bednarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Przy montażu klepki współpracują pod dociskiem obręczy.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zbyt nierówna krawędź tworzy szczelinę na całej wysokości naczynia. Rozpoznaj, czym różni się błąd profilu od uszkodzenia drewna."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek. Dąb jest ceniony za trwałość i właściwości użytkowe; inne gatunki mogą być stosowane zależnie od przeznaczenia naczynia. Wilgotność i późniejsze pęcznienie zmieniają dopasowanie klepek, dlatego rozróżniaj naczynia do przechowywania cieczy i wyroby dekoracyjne."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Dno, kształt klepek, wręga i obręcze muszą współpracować. Obręcz zapewnia docisk, ale sama nie uszczelni naczynia z pękniętą klepką. Kontroluj owalizację, szczeliny w stykach, pozycję dna oraz powierzchnie mające kontakt z żywnością."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-bednarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Przeciek przy dnie może wynikać z niedopasowanej wręgi, a przeciek w połowie wysokości ze źle ułożonej klepki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Oba objawy mają inne przyczyny; zalanie przypadkowym uszczelniaczem mogłoby ukryć wadę i skażać zawartość."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Beczka przecieka przy jednym styku. Sprawdza się ciągłość włókien, dopasowanie krawędzi i stan obręczy; nie maskuje przecieku nieznanym klejem w naczyniu spożywczym."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek. Dąb jest ceniony za trwałość i właściwości użytkowe; inne gatunki mogą być stosowane zależnie od przeznaczenia naczynia. Wilgotność i późniejsze pęcznienie zmieniają dopasowanie klepek, dlatego rozróżniaj naczynia do przechowywania cieczy i wyroby dekoracyjne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-bednarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Konserwacja zabytkowej beczki zaczyna się od ustalenia, czy ma funkcję ekspozycyjną czy użytkową.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Oryginalne drewno, metalowe obręcze i ślady narzędzi mogą być ważne dla wartości zabytku; wymiana każdej części niszczy historię."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Dno, kształt klepek, wręga i obręcze muszą współpracować. Obręcz zapewnia docisk, ale sama nie uszczelni naczynia z pękniętą klepką. Kontroluj owalizację, szczeliny w stykach, pozycję dna oraz powierzchnie mające kontakt z żywnością."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-bednarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Przed praktyką w bednarstwie uczeń powinien rozpoznawać rodzaje wad drewna, odczytać szablon klepki i wskazać punkty kontroli złożonej beczki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Przed praktyką w bednarstwie uczeń powinien rozpoznawać rodzaje wad drewna, odczytać szablon klepki i wskazać punkty kontroli złożonej beczki. Dopiero później ćwiczy technikę na materiale pod nadzorem."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Porównaj trzy próbki deski: prostosłojną, sękatą i z pęknięciem. Zaznacz, która nadaje się na klepkę, i uzasadnij wybór."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-bednarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Koło garncarskie obraca masę, ale to nacisk i położenie rąk kształtują ścianki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Gąbka reguluje wodę na powierzchni, a drewniane lub metalowe cykliny wygładzają profil. Nadmierna ilość wody osłabia świeżą formę."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się. Szamot, czyli wcześniej wypalony i rozdrobniony materiał ceramiczny, bywa dodawany do masy, by kontrolować skurcz i zachowanie wyrobu. Szkliwo po wypaleniu tworzy powłokę, której bezpieczeństwo kontaktu z żywnością wymaga odpowiedniego składu i procedury."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-garncarz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Przy projekcie dzbana liczą się grubość ścianek, średnica podstawy, środek ciężkości i ergonomia uchwytu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Wylew musi umożliwiać kontrolowany strumień; sam ładny kształt nie dowodzi funkcjonalności."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "O jakości decydują właściwe odpowietrzenie masy, grubość ścianek, równomierne suszenie i program wypału dopasowany do gliny i szkliwa. Pęknięcia w suszeniu często wynikają z nierównomiernego wysychania, nie z samego wyglądu koła garncarskiego."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-garncarz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Uformowany dzban nie może trafić bezpośrednio do maksymalnego wypału.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zbyt szybkie suszenie powoduje różnice skurczu i naprężenia. Wybór programu wypału zależy od rodzaju masy i glazury."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się. Szamot, czyli wcześniej wypalony i rozdrobniony materiał ceramiczny, bywa dodawany do masy, by kontrolować skurcz i zachowanie wyrobu. Szkliwo po wypaleniu tworzy powłokę, której bezpieczeństwo kontaktu z żywnością wymaga odpowiedniego składu i procedury."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "O jakości decydują właściwe odpowietrzenie masy, grubość ścianek, równomierne suszenie i program wypału dopasowany do gliny i szkliwa. Pęknięcia w suszeniu często wynikają z nierównomiernego wysychania, nie z samego wyglądu koła garncarskiego."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-garncarz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Pęknięcie przy uchu często sygnalizuje różną wilgotność łączonych części albo nieprawidłowe połączenie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Z kolei deformacja dna może wynikać ze zbyt cienkiej warstwy gliny; diagnoza powinna wskazać konkretny etap."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Świeży dzban ma pęknięcie na dnie. Przed kolejną próbą sprawdź równomierność grubości i tempo suszenia. Nie zakładaj, że szkliwo naprawi wadę konstrukcyjną."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się. Szamot, czyli wcześniej wypalony i rozdrobniony materiał ceramiczny, bywa dodawany do masy, by kontrolować skurcz i zachowanie wyrobu. Szkliwo po wypaleniu tworzy powłokę, której bezpieczeństwo kontaktu z żywnością wymaga odpowiedniego składu i procedury."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-garncarz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Przy naprawie zabytkowego naczynia klej i uzupełnienie powinny być dobrane do celu konserwatorskiego, odwracalności i materiału.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Sklejone naczynie nie staje się automatycznie bezpieczne dla żywności."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "O jakości decydują właściwe odpowietrzenie masy, grubość ścianek, równomierne suszenie i program wypału dopasowany do gliny i szkliwa. Pęknięcia w suszeniu często wynikają z nierównomiernego wysychania, nie z samego wyglądu koła garncarskiego."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-garncarz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Uczeń zaczyna od rozpoznawania stadiów: glina plastyczna, wyrób podsuszony, wysuszony, po wypale biskwitowym i po szkliwieniu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Uczeń zaczyna od rozpoznawania stadiów: glina plastyczna, wyrób podsuszony, wysuszony, po wypale biskwitowym i po szkliwieniu. Każde stadium inaczej reaguje na nacisk i wilgoć."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Wyjaśnij na rysunku różnicę między surową gliną, wysuszonym czerepem i gotowym szkliwionym naczyniem. Wskaż moment występowania skurczu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-garncarz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Tradycyjne narzędzia do gontu obejmują siekierę, nóż do rozłupywania i przyrządy kształtujące krawędzie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Bezpieczne stanowisko musi stabilnie unieruchamiać drewno, a jakość zaczyna się od wyboru prostosłoistego surowca."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów. Gont łupany i cięty różnią się przebiegiem włókien oraz sposobem odprowadzania wody. Sęki, pęknięcia i nieprawidłowe składowanie mogą zmniejszać trwałość pokrycia."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-gontarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt pokrycia określa długość i szerokość gontu, ilość zakładu, nachylenie połaci i sposób wykończenia okapu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Ułożenie elementów bez uwzględnienia spływu wody prowadzi do przecieków nawet przy dobrym drewnie."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Na dachu znaczenie mają zakład, nachylenie połaci, wentylacja i elementy mocujące zgodne z projektem i lokalnymi wymogami. Kierunek ułożenia wpływa na spływ wody, a trwałe zawilgocenie sprzyja degradacji drewna."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-gontarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Zachodzące na siebie rzędy kierują deszcz na zewnątrz połaci.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Gont nie jest samodzielną wodoszczelną płytą: potrzebuje poprawnego układu, detali przy krawędziach i właściwej wentylacji."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów. Gont łupany i cięty różnią się przebiegiem włókien oraz sposobem odprowadzania wody. Sęki, pęknięcia i nieprawidłowe składowanie mogą zmniejszać trwałość pokrycia."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Na dachu znaczenie mają zakład, nachylenie połaci, wentylacja i elementy mocujące zgodne z projektem i lokalnymi wymogami. Kierunek ułożenia wpływa na spływ wody, a trwałe zawilgocenie sprzyja degradacji drewna."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-gontarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Przeciek pojawiający się przy kominie może mieć źródło w obróbce blacharskiej, nie w samych gontach.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Rozpoznanie miejsca wnikania i drogi spływu wody poprzedza wymianę materiału."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Dach przecieka przy połączeniach gontów mimo użycia grubego drewna. Trzeba ocenić zakłady, spadek, mocowania i obróbki, a nie wymieniać wyłącznie przypadkowej deszczułki."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów. Gont łupany i cięty różnią się przebiegiem włókien oraz sposobem odprowadzania wody. Sęki, pęknięcia i nieprawidłowe składowanie mogą zmniejszać trwałość pokrycia."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-gontarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Podczas renowacji warto zachować zgodne z zabytkiem gatunki i wymiary gontów.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nowy produkt o innej geometrii może zmienić sposób odprowadzania wody i wygląd całego pokrycia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Na dachu znaczenie mają zakład, nachylenie połaci, wentylacja i elementy mocujące zgodne z projektem i lokalnymi wymogami. Kierunek ułożenia wpływa na spływ wody, a trwałe zawilgocenie sprzyja degradacji drewna."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-gontarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gontarz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Najpierw naucz się rozpoznawać sęki, pęknięcia, przebieg słojów i poprawny zakład na próbnym modelu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Praca na wysokości i wykonywanie dachów wymaga odrębnych umiejętności oraz zabezpieczeń."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Porównaj na schemacie gont z włóknami biegnącymi wzdłuż elementu oraz przeciętymi poprzecznie. Zaznacz drogę spływu wody."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-gontarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Szydło przygotowuje otwory do szycia, igła prowadzi nić, a prasa stabilizuje blok podczas schnięcia i obróbki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nie wszystkie książki mają szyty grzbiet; w oprawie klejonej kluczowa jest zgodność kleju z papierem."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Papier ma kierunek włókien wpływający na jego zginanie i falowanie. Papier i tektury bezkwasowe są cenione w oprawach przeznaczonych do długiego przechowywania. Klej należy dobrać do podłoża, czasu schnięcia i odwracalności wymaganej przy konserwacji."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-introligator-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt oprawy rozdziela format stron, szerokość grzbietu, rodzaj okładki i sposób otwierania książki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zbyt wąski zawias okładki powoduje duże naprężenia przy każdym rozłożeniu."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Blok książki, grzbiet, wyklejka, okładka i kapitałka pełnią inne funkcje. Po szyciu lub klejeniu kontroluje się otwieranie, trwałość połączenia, równoległość grzbietu i brak śladów kleju na kartkach."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-introligator-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Po zszyciu składek trzeba sprawdzić, czy książka otwiera się bez wyrywania kartek.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Papier klejony w poprzek niewłaściwego kierunku włókien może się falować, a zbyt sztywny klej może pękać."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Papier ma kierunek włókien wpływający na jego zginanie i falowanie. Papier i tektury bezkwasowe są cenione w oprawach przeznaczonych do długiego przechowywania. Klej należy dobrać do podłoża, czasu schnięcia i odwracalności wymaganej przy konserwacji."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Blok książki, grzbiet, wyklejka, okładka i kapitałka pełnią inne funkcje. Po szyciu lub klejeniu kontroluje się otwieranie, trwałość połączenia, równoległość grzbietu i brak śladów kleju na kartkach."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-introligator-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli kartki wypadają, nie wystarczy mocniej docisnąć okładki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Rozpoznaj, czy pękł klej, puściła nić, czy papier został wyrwany przy zszyciu — każda wada oznacza inną naprawę."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Oprawa po wyschnięciu wygina się. Powodem bywa przeciwny kierunek włókien papieru i okładziny lub nierówna wilgotność kleju; mocniejszy ścisk nie zawsze usuwa przyczynę."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Papier ma kierunek włókien wpływający na jego zginanie i falowanie. Papier i tektury bezkwasowe są cenione w oprawach przeznaczonych do długiego przechowywania. Klej należy dobrać do podłoża, czasu schnięcia i odwracalności wymaganej przy konserwacji."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-introligator-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Konserwacja cennej książki powinna zachować oryginalną oprawę tam, gdzie to możliwe.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Kleje odwracalne i materiały o odpowiednim pH bywają ważniejsze niż mocne współczesne zamienniki."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Blok książki, grzbiet, wyklejka, okładka i kapitałka pełnią inne funkcje. Po szyciu lub klejeniu kontroluje się otwieranie, trwałość połączenia, równoległość grzbietu i brak śladów kleju na kartkach."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-introligator-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Przed użyciem prawdziwych narzędzi opraw prosty zeszyt z papieru testowego: poznaj składkę, grzbiet i wyklejkę oraz przećwicz ich rozmieszczenie na suchym modelu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Przed użyciem prawdziwych narzędzi opraw prosty zeszyt z papieru testowego: poznaj składkę, grzbiet i wyklejkę oraz przećwicz ich rozmieszczenie na suchym modelu."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Zaznacz kierunek włókien na dwóch arkuszach i zaprojektuj układ warstw okładki, który ograniczy falowanie."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-introligator-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Szydło wykonuje otwór pod ścieg, nóż wycina kształt, a radełko pomaga oznaczyć równy rozstaw ściegów.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Krawędziarka wykańcza brzeg skóry. Zbyt gęste otwory mogą osłabić wąski pasek."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości. Znaczenie ma rodzaj wyprawy, elastyczność, wytrzymałość na rozciąganie i odporność szwów. Materiały syntetyczne mogą inaczej reagować na kleje, wilgoć i zginanie."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-kaletnik-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Portfel musi pomieścić karty bez nadmiernego ściskania, a kieszenie wymagają zapasu na szwy i grubość warstw.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Portfel musi pomieścić karty bez nadmiernego ściskania, a kieszenie wymagają zapasu na szwy i grubość warstw. Wzór płaski po zszyciu może mieć mniejszą przestrzeń wewnętrzną."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Kaletnik projektuje wykroje z uwzględnieniem kierunku rozciągliwości, zapasu na szew, krawędzi i obciążenia okuć. Szew w miejscu wielokrotnego zginania wymaga szczególnej kontroli; okucie musi być dopasowane do grubości warstw."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-kaletnik-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Szew siodłowy prowadzony dwiema igłami tworzy charakterystyczny układ nici.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dobór nici i skoku ściegu powinien wynikać z grubości skóry i obciążenia, nie jedynie z dekoracji."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości. Znaczenie ma rodzaj wyprawy, elastyczność, wytrzymałość na rozciąganie i odporność szwów. Materiały syntetyczne mogą inaczej reagować na kleje, wilgoć i zginanie."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Kaletnik projektuje wykroje z uwzględnieniem kierunku rozciągliwości, zapasu na szew, krawędzi i obciążenia okuć. Szew w miejscu wielokrotnego zginania wymaga szczególnej kontroli; okucie musi być dopasowane do grubości warstw."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-kaletnik-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli pasek pęka obok dziurki, sprawdź odległość otworu od krawędzi, rozwarstwienie skóry i stan sprzączki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dokładanie kolejnej dziurki bardzo blisko poprzedniej zwiększa ryzyko."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Pasek pęka obok metalowej sprzączki. Sama zmiana nici nie rozwiąże złego wykroju, ostrych krawędzi okucia lub nieodpowiedniego materiału."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości. Znaczenie ma rodzaj wyprawy, elastyczność, wytrzymałość na rozciąganie i odporność szwów. Materiały syntetyczne mogą inaczej reagować na kleje, wilgoć i zginanie."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-kaletnik-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Stara skóra może wymagać czyszczenia i pielęgnacji odpowiednim preparatem, ale nie każde pęknięcie da się odwrócić natłuszczaniem.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Stara skóra może wymagać czyszczenia i pielęgnacji odpowiednim preparatem, ale nie każde pęknięcie da się odwrócić natłuszczaniem. Naprawa okuć musi uwzględniać nośność i bezpieczeństwo."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Kaletnik projektuje wykroje z uwzględnieniem kierunku rozciągliwości, zapasu na szew, krawędzi i obciążenia okuć. Szew w miejscu wielokrotnego zginania wymaga szczególnej kontroli; okucie musi być dopasowane do grubości warstw."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-kaletnik-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Zacznij od papierowego wykroju portfela: ustal wymiary karty, zapas na ścieg i promienie narożników.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zacznij od papierowego wykroju portfela: ustal wymiary karty, zapas na ścieg i promienie narożników. Dopiero po sprawdzeniu modelu dobieraj skórę."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Rozpisz przekrój portfela: warstwa zewnętrzna, kieszenie, szew, krawędź i okucia. Określ, które miejsca pracują na zginanie."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-kaletnik-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Cyrkiel, szablony i narzędzia do czopowania pomagają zachować promień koła i właściwe gniazda szprych.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Obręcz metalowa i drewniane dzwona nie są tylko ozdobą; współpracują w przenoszeniu obciążenia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą. Dobór gatunku, przebiegu włókien i sezonowania wpływa na trwałość połączeń. Stalowa obręcz wymaga właściwego pasowania, bo drewno i metal różnie reagują na temperaturę i wilgoć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-kolodziej",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt koła uwzględnia średnicę, liczbę szprych, szerokość obręczy, wymiar piasty i obciążenie pojazdu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nawet małe odchylenie osi piasty wpływa na równomierność toczenia."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Konstrukcja musi pozostać osiowa, a połączenia wolne od nadmiernych luzów. Kontroluje się bicie koła, pęknięcia przy czopach szprych, zużycie tulei piasty i stan obręczy. Koło pojazdu nie jest wyrobem wyłącznie dekoracyjnym."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-kolodziej",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Piasta przenosi siły na szprychy, dzwona zamykają obwód, a obręcz utrzymuje całość razem.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Piasta przenosi siły na szprychy, dzwona zamykają obwód, a obręcz utrzymuje całość razem. W modelu szkoleniowym prześledź drogę sił od osi do podłoża."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą. Dobór gatunku, przebiegu włókien i sezonowania wpływa na trwałość połączeń. Stalowa obręcz wymaga właściwego pasowania, bo drewno i metal różnie reagują na temperaturę i wilgoć."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Konstrukcja musi pozostać osiowa, a połączenia wolne od nadmiernych luzów. Kontroluje się bicie koła, pęknięcia przy czopach szprych, zużycie tulei piasty i stan obręczy. Koło pojazdu nie jest wyrobem wyłącznie dekoracyjnym."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-kolodziej",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Wyraźne bicie promieniowe może wskazywać inną wadę niż bicie boczne.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Najpierw kontroluje się osiowość, wymiary szprych i stan czopów; nie wyrównuje się koła przypadkowym spiłowaniem drewna."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Koło ma wyraźne bicie boczne. Kontrola obejmuje ustawienie piasty, długości i osadzenie szprych oraz stan obręczy, zamiast ścinania przypadkowych wystających fragmentów."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą. Dobór gatunku, przebiegu włókien i sezonowania wpływa na trwałość połączeń. Stalowa obręcz wymaga właściwego pasowania, bo drewno i metal różnie reagują na temperaturę i wilgoć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-kolodziej",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Zabytkowe koło należy badać pod kątem pęknięć przy gniazdach i korozji okuć.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Konserwacja musi odróżniać koło wystawowe od dopuszczonego do jazdy; eksponatu nie uznaje się za sprawny pojazd."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Konstrukcja musi pozostać osiowa, a połączenia wolne od nadmiernych luzów. Kontroluje się bicie koła, pęknięcia przy czopach szprych, zużycie tulei piasty i stan obręczy. Koło pojazdu nie jest wyrobem wyłącznie dekoracyjnym."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-kolodziej",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Ćwicz na rysunku złożeniowym: piasta, szprychy, dzwona, obręcz i oś.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Potrafisz wskazać co najmniej trzy strefy, w których luz lub pęknięcie może być niebezpieczne."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Narysuj koło z podpisaną piastą, szprychą, dzwonem i obręczą. Strzałkami zaznacz drogę sił od osi do podłoża."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-kolodziej",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Model dzwonu wyznacza kształt formy, rdzeń tworzy wnętrze, a kanały wlewowe służą doprowadzeniu metalu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Forma musi wytrzymać temperaturę i umożliwiać odprowadzanie gazów; odlewanie jest pracą wysokiego ryzyka."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Brąz dzwonowy to stop miedzi i cyny. Skład stopu i geometria dzwonu wpływają na barwę i trwałość dźwięku; wysoka zawartość cyny może zwiększać kruchość. Forma odlewnicza musi mieć wytrzymałość i przepuszczalność gazów odpowiednie do procesu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-ludwisarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Profil dzwonu nie jest przypadkowym kształtem.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Grubość w poszczególnych miejscach wpływa na częstotliwości drgań i brzmienie; powiększenie dzwonu nie jest zwykłym przeskalowaniem dowolnego naczynia."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Projekt obejmuje profil ściany, model, rdzeń, formę, zasilanie odlewu, chłodzenie i strojenie. Wady, takie jak pęcherze gazowe, jamy skurczowe i pęknięcia, wymagają odrębnej diagnostyki. Praca z ciekłym metalem wymaga specjalistycznego nadzoru i zabezpieczeń."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-ludwisarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Podczas krzepnięcia metal zmniejsza objętość, co może tworzyć jamy skurczowe.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Prawidłowy układ formy i zasilania odlewu służy ograniczaniu tych wad, ale wymaga fachowej technologii."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Brąz dzwonowy to stop miedzi i cyny. Skład stopu i geometria dzwonu wpływają na barwę i trwałość dźwięku; wysoka zawartość cyny może zwiększać kruchość. Forma odlewnicza musi mieć wytrzymałość i przepuszczalność gazów odpowiednie do procesu."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Projekt obejmuje profil ściany, model, rdzeń, formę, zasilanie odlewu, chłodzenie i strojenie. Wady, takie jak pęcherze gazowe, jamy skurczowe i pęknięcia, wymagają odrębnej diagnostyki. Praca z ciekłym metalem wymaga specjalistycznego nadzoru i zabezpieczeń."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-ludwisarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Porowatość i pęknięcie nie muszą być widoczne po polerowaniu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dzwon trzeba ocenić nie tylko wizualnie, lecz także pod kątem integralności odlewu i charakterystyki dźwięku."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Dzwon ma piękny wygląd, ale zniekształcony ton i podejrzenie porowatości. Ocena nie może ograniczać się do szlifowania powierzchni; bada się geometrię i integralność materiału."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Brąz dzwonowy to stop miedzi i cyny. Skład stopu i geometria dzwonu wpływają na barwę i trwałość dźwięku; wysoka zawartość cyny może zwiększać kruchość. Forma odlewnicza musi mieć wytrzymałość i przepuszczalność gazów odpowiednie do procesu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-ludwisarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Przy restauracji historycznego dzwonu nie powinno się bez potrzeby usuwać dawnych napisów i śladów wykonania.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Strukturalne pęknięcie i nadmierne zużycie mocowania wymagają oceny eksperta."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Projekt obejmuje profil ściany, model, rdzeń, formę, zasilanie odlewu, chłodzenie i strojenie. Wady, takie jak pęcherze gazowe, jamy skurczowe i pęknięcia, wymagają odrębnej diagnostyki. Praca z ciekłym metalem wymaga specjalistycznego nadzoru i zabezpieczeń."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-ludwisarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Praktykę zaczyna się od poznania przekroju formy, składników brązu i sposobów rozpoznawania wad.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nie ćwicz samodzielnie odlewania ciekłego metalu bez przeszkolonej ekipy i wyposażenia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Narysuj przekrój modelu dzwonu: forma zewnętrzna, rdzeń, wnęka na ciekły metal. Zaznacz, gdzie może powstać wada skurczowa."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-ludwisarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Żarna i walce rozdrabniają ziarno innym sposobem, a sita oddzielają frakcje.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Elementy kontaktujące się z żywnością muszą być utrzymywane w czystości; nieodpowiednia powierzchnia może zanieczyścić mąkę."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania. Przed mieleniem kontroluje się czystość, zapach, obecność szkodników i właściwe przygotowanie. Przy mące istotne są uziarnienie, popiół i zastosowanie kulinarne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-mlynarz-tradycyjny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt pracy młyna obejmuje przewidywaną wydajność, odmianę zboża, wymagany typ mąki i przechowywanie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Im drobniejsza frakcja, tym większe znaczenie ma sposób rozdrabniania oraz odsiew."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Proces obejmuje przyjęcie, czyszczenie, kondycjonowanie zależnie od technologii, rozdrabnianie, odsiew i pakowanie. Pył mączny może tworzyć atmosferę wybuchową: instalacja wymaga odciągu i oceny ryzyka, nie improwizowanego zamiatania w pobliżu źródeł zapłonu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-mlynarz-tradycyjny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Kolejne etapy to czyszczenie, kondycjonowanie, mielenie i odsiew zależnie od technologii.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dobre ziarno nie zapewni dobrej mąki, jeśli urządzenie miesza frakcje lub jest zabrudzone."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania. Przed mieleniem kontroluje się czystość, zapach, obecność szkodników i właściwe przygotowanie. Przy mące istotne są uziarnienie, popiół i zastosowanie kulinarne."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Proces obejmuje przyjęcie, czyszczenie, kondycjonowanie zależnie od technologii, rozdrabnianie, odsiew i pakowanie. Pył mączny może tworzyć atmosferę wybuchową: instalacja wymaga odciągu i oceny ryzyka, nie improwizowanego zamiatania w pobliżu źródeł zapłonu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-mlynarz-tradycyjny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Obce cząstki w mące mogą pochodzić ze zboża lub zużytego urządzenia.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Ocenia się całą drogę produktu, a nie tylko finalne sito; partie budzące wątpliwość należy odseparować."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "W partii mąki pojawiają się ciemne cząstki. Ocenia się stan zboża, czystość odsiewacza i zużycie elementów mechanicznych; nie maskuje się problemu dodatkami."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania. Przed mieleniem kontroluje się czystość, zapach, obecność szkodników i właściwe przygotowanie. Przy mące istotne są uziarnienie, popiół i zastosowanie kulinarne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-mlynarz-tradycyjny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Stary młyn wymaga równocześnie ochrony zabytkowych mechanizmów i współczesnej oceny zagrożeń pyłowych.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Demonstracja ruchu bez osłon może być bardziej niebezpieczna niż sam eksponat."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Proces obejmuje przyjęcie, czyszczenie, kondycjonowanie zależnie od technologii, rozdrabnianie, odsiew i pakowanie. Pył mączny może tworzyć atmosferę wybuchową: instalacja wymaga odciągu i oceny ryzyka, nie improwizowanego zamiatania w pobliżu źródeł zapłonu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-mlynarz-tradycyjny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Zrób model przepływu produktu od ziarna do mąki z punktami kontroli: czystość, wilgotność, rozdrobnienie i pakowanie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zrób model przepływu produktu od ziarna do mąki z punktami kontroli: czystość, wilgotność, rozdrobnienie i pakowanie. Prawdziwy młyn obsługuje się po szkoleniu."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Ułóż schemat: ziarno — czyszczenie — mielenie — przesiewanie — mąka. Zaznacz punkty kontroli jakości i zagrożenia pyłowe."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-mlynarz-tradycyjny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Nóż i rozdzielacz wikliny przygotowują pędy o odpowiedniej grubości, a szydło ułatwia rozchylenie splotu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Ważny jest równy przekrój pędów; zbyt gruby pęd źle układa się w ciasnym narożniku."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością. Nawilżanie lub moczenie służy odzyskaniu podatności na zginanie, ale nadmiar wilgoci przy niewłaściwym przechowywaniu sprzyja pleśni. Pędy z pęknięciami i sękami mogą łamać się w ciasnych łukach."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-plecionkarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Kosz wymaga zaplanowania średnicy dna, wysokości ścianek, osnowy i mocowania uchwytu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Uchwyt przenosi ciężar zawartości, więc nie może być tylko dekoracyjnie wpleciony."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Kosz ma osnowę, splot i obrzeże. Osnowa stabilizuje kształt, a splot współpracuje z naprężeniem elementów; zbyt luźne rzędy prowadzą do deformacji, zbyt mocny naciąg do pęknięć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-plecionkarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Osnowa tworzy pionową konstrukcję, a cienkie pędy wątku przeplata się wokół niej.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Każda zmiana kierunku splotu wpływa na kształt; symetria zaczyna się od równego rozstawu osnowy."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością. Nawilżanie lub moczenie służy odzyskaniu podatności na zginanie, ale nadmiar wilgoci przy niewłaściwym przechowywaniu sprzyja pleśni. Pędy z pęknięciami i sękami mogą łamać się w ciasnych łukach."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Kosz ma osnowę, splot i obrzeże. Osnowa stabilizuje kształt, a splot współpracuje z naprężeniem elementów; zbyt luźne rzędy prowadzą do deformacji, zbyt mocny naciąg do pęknięć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-plecionkarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli kosz przechyla się przy stawianiu, sprawdź symetrię dna i napięcie splotu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dekoracyjny obrzeż nie skoryguje konstrukcji, która od początku ma nierówną podstawę."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Dno kosza wygina się pod niewielkim obciążeniem. Trzeba sprawdzić rozstaw i sztywność elementów osnowy oraz splot, a nie tylko dodać ozdobny uchwyt."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością. Nawilżanie lub moczenie służy odzyskaniu podatności na zginanie, ale nadmiar wilgoci przy niewłaściwym przechowywaniu sprzyja pleśni. Pędy z pęknięciami i sękami mogą łamać się w ciasnych łukach."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-plecionkarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Zabytkowy kosz często ma określony charakterystyczny splot.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Wymiana całych fragmentów bez jego rozpoznania może zatrzeć regionalny wzór; wilgotne przechowywanie sprzyja pleśni."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Kosz ma osnowę, splot i obrzeże. Osnowa stabilizuje kształt, a splot współpracuje z naprężeniem elementów; zbyt luźne rzędy prowadzą do deformacji, zbyt mocny naciąg do pęknięć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-plecionkarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Na kartce narysuj osnowę i kolejne rzędy splotu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Z próbnych miękkich pasków papieru wykonaj prosty model, aby poznać geometrię bez używania ostrych narzędzi."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Porównaj trzy pędy: suchy, prawidłowo elastyczny i nadmiernie namoczony. Opisz ryzyko dla ich obróbki i trwałości."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-plecionkarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Haki i urządzenia do skręcania utrzymują oddzielne pasma pod równym naciągiem.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Przy pracy tradycyjnej istotne jest bezpieczeństwo obracających się elementów i brak luźnych ubrań przy mechanizmie."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi. Lina powstaje przez skręcanie pojedynczych pasm i dalsze łączenie ich w przeciwnych kierunkach, aby uzyskać stabilny splot. Sam duży przekrój nie gwarantuje nośności."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-powroznik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt liny określa włókno, średnicę, liczbę pasm, kierunek skrętu i zastosowanie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Lina użytkowa musi być dobierana według wymagań, a dekoracyjny powróz nie nadaje się automatycznie do dźwigania."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Na jakość wpływają równomierny naciąg, liczba pasm, ich skręt, połączenia i staranne zakończenie końców. Liny przeznaczone do podnoszenia ludzi i ładunków wymagają odpowiednich norm, oznaczeń i dopuszczeń; lina szkoleniowa nie może być do tego używana."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-powroznik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Skręcone włókna łączy się w pasma, a pasma w linę, zwykle z odpowiednio przeciwnym kierunkiem skrętu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "W ten sposób uzyskuje się bardziej stabilną konstrukcję; nierówny skręt daje słabe fragmenty."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi. Lina powstaje przez skręcanie pojedynczych pasm i dalsze łączenie ich w przeciwnych kierunkach, aby uzyskać stabilny splot. Sam duży przekrój nie gwarantuje nośności."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Na jakość wpływają równomierny naciąg, liczba pasm, ich skręt, połączenia i staranne zakończenie końców. Liny przeznaczone do podnoszenia ludzi i ładunków wymagają odpowiednich norm, oznaczeń i dopuszczeń; lina szkoleniowa nie może być do tego używana."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-powroznik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Rozwarstwienie liny lub przetarcia pokazują, że włókna nie rozkładają obciążenia równomiernie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nie wolno przywracać jej nośności na podstawie samego związania uszkodzonego końca."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Lina na końcu zaczyna się rozkręcać. Najpierw ocenia się zabezpieczenie zakończenia i kierunek skrętu; nie uznaje jej za bezpieczną do dźwigania na podstawie samego wyglądu."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi. Lina powstaje przez skręcanie pojedynczych pasm i dalsze łączenie ich w przeciwnych kierunkach, aby uzyskać stabilny splot. Sam duży przekrój nie gwarantuje nośności."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-powroznik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Stare liny przechowywane w wilgoci mogą ulegać degradacji biologicznej.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Konserwator odróżnia obiekt muzealny od liny do użytkowania; testowanej nośności nie wywnioskuje się z wieku."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Na jakość wpływają równomierny naciąg, liczba pasm, ich skręt, połączenia i staranne zakończenie końców. Liny przeznaczone do podnoszenia ludzi i ładunków wymagają odpowiednich norm, oznaczeń i dopuszczeń; lina szkoleniowa nie może być do tego używana."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-powroznik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Ćwicz wyłącznie na lekkich paskach papieru: pokaż dwa przeciwne kierunki skrętu i przeanalizuj, co dzieje się po puszczeniu końców bez obciążenia.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Ćwicz wyłącznie na lekkich paskach papieru: pokaż dwa przeciwne kierunki skrętu i przeanalizuj, co dzieje się po puszczeniu końców bez obciążenia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Skręć na sucho papierowe paski w dwa kierunki i opisz, dlaczego w tradycyjnej linie ważna jest równowaga skrętów. Nie obciążaj takiego modelu."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-powroznik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Szydło i igły do skóry pozwalają wykonywać otwory oraz przeszycia, a wykroje utrzymują powtarzalność pasów uprzęży.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Metalowe sprzączki i pierścienie trzeba oceniać pod kątem krawędzi i odporności na obciążenie."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem. Dobór grubości, jakości włókien, wykończenia krawędzi i rodzaju okuć ma znaczenie dla trwałości oraz komfortu zwierzęcia. Zużyte szwy, ostre krawędzie metalowych okuć i krucha skóra mogą doprowadzić do zerwania połączenia."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-rymarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt uprzęży musi uwzględniać wymiary zwierzęcia, położenie punktów nacisku i zakres ruchu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zbyt wąski pas może powodować otarcia, a zbyt szeroki utrudniać swobodny ruch w stawie."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Szycie, mocowanie sprzączek i dobór długości pasów wymagają dopasowania do konkretnego zwierzęcia i użycia. Oprócz wytrzymałości ocenia się miejsca tarcia o ciało oraz symetrię uprzęży. Naprawy elementów krytycznych powinien wykonywać kompetentny rzemieślnik."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-rymarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Połączenie pasa i okucia przenosi siłę cyklicznie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Rozstaw ściegów i odległość otworów od krawędzi muszą zapewniać trwałość; ścisły szew na kruchym skórzanym fragmencie nie poprawi jego wytrzymałości."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem. Dobór grubości, jakości włókien, wykończenia krawędzi i rodzaju okuć ma znaczenie dla trwałości oraz komfortu zwierzęcia. Zużyte szwy, ostre krawędzie metalowych okuć i krucha skóra mogą doprowadzić do zerwania połączenia."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Szycie, mocowanie sprzączek i dobór długości pasów wymagają dopasowania do konkretnego zwierzęcia i użycia. Oprócz wytrzymałości ocenia się miejsca tarcia o ciało oraz symetrię uprzęży. Naprawy elementów krytycznych powinien wykonywać kompetentny rzemieślnik."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-rymarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Gdy pas pęka przy sprzączce, sprawdź kondycję skóry, geometrię otworów i ostre krawędzie metalu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Objaw w jednym miejscu może wynikać ze złego rozkładu obciążenia całej uprzęży."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Koń ma obtarcie po zmianie uprzęży. Nie dokręca się ślepo pasków; sprawdza dopasowanie, krawędzie, materiały i ruch, a w razie obrażeń konsultuje weterynarza."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem. Dobór grubości, jakości włókien, wykończenia krawędzi i rodzaju okuć ma znaczenie dla trwałości oraz komfortu zwierzęcia. Zużyte szwy, ostre krawędzie metalowych okuć i krucha skóra mogą doprowadzić do zerwania połączenia."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-rymarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Skóra zabytkowej uprzęży może być krucha i niebezpieczna w użyciu mimo dobrego wyglądu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Konserwacja historycznego wyrobu nie jest równoznaczna z dopuszczeniem go do pracy ze zwierzęciem."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Szycie, mocowanie sprzączek i dobór długości pasów wymagają dopasowania do konkretnego zwierzęcia i użycia. Oprócz wytrzymałości ocenia się miejsca tarcia o ciało oraz symetrię uprzęży. Naprawy elementów krytycznych powinien wykonywać kompetentny rzemieślnik."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-rymarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rymarz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Pierwszym ćwiczeniem jest ocena papierowego wykroju pasa: kierunek siły, odległość od krawędzi i pozycja sprzączki.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Kontakt z końmi i naprawy uprzęży użytkowej wymagają nadzoru fachowca."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Narysuj pas uprzęży z otworami i sprzączką; wskaż strefę największego obciążenia i dwie potencjalne przyczyny otarcia."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-rymarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Rama utrzymuje kształt, a siatka odpowiada za rozdzielanie frakcji.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Igły, naciągacze i narzędzia do mocowania pomagają uzyskać równy naciąg; ostre końcówki drutu powinny być zabezpieczone."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Rama może być drewniana lub metalowa, a materiał siatki dobiera się do cząstek i warunków pracy. Średnica drutu, wielkość oczka oraz powierzchnia otwarta wpływają na przepustowość i jakość rozdzielania materiału. Siatki stalowe mogą korodować; kontakt z żywnością wymaga właściwego materiału i higieny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-sitarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt sita wymaga określenia wymiarów ramy, powierzchni otwartej, wielkości oczka i sposobu obsługi.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Drobne oczko bywa dokładniejsze dla małych frakcji, ale może szybciej się zapychać."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Sito powinno mieć jednakową wielkość oczek, odpowiedni naciąg siatki i trwałe mocowanie do ramy. Jeśli naciąg jest nierówny, siatka faluje, a przesiewanie staje się mniej powtarzalne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-sitarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Podczas przesiewania cząstki o wymiarach mniejszych od oczka mogą przechodzić, a większe zwykle pozostają.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Kształt cząstek i orientacja wpływają na rezultat, więc samo oczko nie gwarantuje idealnego podziału."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Rama może być drewniana lub metalowa, a materiał siatki dobiera się do cząstek i warunków pracy. Średnica drutu, wielkość oczka oraz powierzchnia otwarta wpływają na przepustowość i jakość rozdzielania materiału. Siatki stalowe mogą korodować; kontakt z żywnością wymaga właściwego materiału i higieny."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Sito powinno mieć jednakową wielkość oczek, odpowiedni naciąg siatki i trwałe mocowanie do ramy. Jeśli naciąg jest nierówny, siatka faluje, a przesiewanie staje się mniej powtarzalne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-sitarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli duże ziarna przechodzą przez sito, sprawdź rozciągnięte i uszkodzone oczka, nierówny naciąg lub prześwity przy ramie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Jeśli duże ziarna przechodzą przez sito, sprawdź rozciągnięte i uszkodzone oczka, nierówny naciąg lub prześwity przy ramie. Intensywniejsze potrząsanie nie naprawi uszkodzenia."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Drobiny większe od założonego wymiaru przechodzą przez sito. Sprawdź uszkodzone oczka, stan ramy i lokalne odkształcenia siatki, zamiast zwiększać szybkość przesiewania."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Rama może być drewniana lub metalowa, a materiał siatki dobiera się do cząstek i warunków pracy. Średnica drutu, wielkość oczka oraz powierzchnia otwarta wpływają na przepustowość i jakość rozdzielania materiału. Siatki stalowe mogą korodować; kontakt z żywnością wymaga właściwego materiału i higieny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-sitarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "W starym sicie istotne mogą być materiał siatki i sposób mocowania, charakterystyczne dla regionu lub zastosowania.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "W egzemplarzu spożywczym liczy się też higiena i zgodność materiału z kontaktem z żywnością."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Sito powinno mieć jednakową wielkość oczek, odpowiedni naciąg siatki i trwałe mocowanie do ramy. Jeśli naciąg jest nierówny, siatka faluje, a przesiewanie staje się mniej powtarzalne."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-sitarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sitarz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Zrób model z kartki z trzema wielkościami otworów.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Porównaj, przez które przejdą koła różnej średnicy, a następnie wyjaśnij wpływ wielkości oczka na wydajność."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Na schemacie pokaż trzy wielkości oczek i narysuj, które ziarna przejdą przez każdą z nich."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-sitarz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Dłuto płaskie nadaje powierzchnie, żłobak formuje zagłębienia, a nóż pomaga w małym detalu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Narzędzia wymagają ostrzenia i stabilnego mocowania drewna; cięcie w kierunku dłoni jest niebezpieczne."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Lipa zwykle jest miękka i łatwa w obróbce szczegółów, natomiast dąb ma wyraźniejszy rysunek słojów i większy opór podczas cięcia. Znaczenie ma kierunek włókien, sęki, mikropęknięcia i odpowiednie sezonowanie. Narzędzie tnące pracujące w poprzek włókien może wyrywać fragmenty drewna."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-snycerz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt ornamentu uwzględnia jego głębokość, grubość delikatnych elementów, rodzaj drewna i kierunek włókien.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Wąska część wyrzeźbiona w poprzek słojów może się wyłamać podczas wykańczania."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Rzeźba powstaje od szkicu przez blokowanie bryły do detalu i wykończenia. W projekcie określa się głębokość ornamentu, ściany minimalne i widoczność wad; im drobniejszy detal, tym większe znaczenie ma stabilne mocowanie i ostrość dłuta."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-snycerz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Rzeźba rozpoczyna się od głównych brył, a dopiero potem przechodzi do detalu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Kolejność zmniejsza ryzyko usunięcia materiału potrzebnego do podparcia cienkich części ornamentu."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Lipa zwykle jest miękka i łatwa w obróbce szczegółów, natomiast dąb ma wyraźniejszy rysunek słojów i większy opór podczas cięcia. Znaczenie ma kierunek włókien, sęki, mikropęknięcia i odpowiednie sezonowanie. Narzędzie tnące pracujące w poprzek włókien może wyrywać fragmenty drewna."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Rzeźba powstaje od szkicu przez blokowanie bryły do detalu i wykończenia. W projekcie określa się głębokość ornamentu, ściany minimalne i widoczność wad; im drobniejszy detal, tym większe znaczenie ma stabilne mocowanie i ostrość dłuta."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-snycerz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Wyrwanie krawędzi nie zawsze wynika z tępego dłuta; może też oznaczać niekorzystny kierunek włókien lub wadę drewna.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Wyrwanie krawędzi nie zawsze wynika z tępego dłuta; może też oznaczać niekorzystny kierunek włókien lub wadę drewna. Analizuj przecięcie słojów na uszkodzeniu."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Płatek rzeźbionego ornamentu wyłamuje się przy ostatnim cięciu. Analizuje się kierunek włókien i grubość mostka, a nie wyłącznie siłę dłuta."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Lipa zwykle jest miękka i łatwa w obróbce szczegółów, natomiast dąb ma wyraźniejszy rysunek słojów i większy opór podczas cięcia. Znaczenie ma kierunek włókien, sęki, mikropęknięcia i odpowiednie sezonowanie. Narzędzie tnące pracujące w poprzek włókien może wyrywać fragmenty drewna."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-snycerz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Renowacja historycznego ornamentu wymaga zachowania oryginalnego kształtu i śladów pracy.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Agresywne szlifowanie może zniszczyć detale, których później nie da się odtworzyć."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Rzeźba powstaje od szkicu przez blokowanie bryły do detalu i wykończenia. W projekcie określa się głębokość ornamentu, ściany minimalne i widoczność wad; im drobniejszy detal, tym większe znaczenie ma stabilne mocowanie i ostrość dłuta."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-snycerz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "snycerz",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Rozrysuj detal liścia w trzech etapach: bryła, rowek, krawędź.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Na rysunku zaznacz kierunek słojów i delikatne miejsca wymagające podparcia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Porównaj rysunek słojów na dwóch deskach i wskaż kierunek, w którym dłuto może łatwiej wyrwać włókna."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-snycerz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Kopyto szewskie utrzymuje kształt obuwia, szydło pozwala przygotować otwory, a szpatułka rozprowadzać odpowiedni klej.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Szczotka i papier ścierny służą do przygotowania powierzchni, ale nadmierne ścieranie może osłabić materiał."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Cholewki mogą być skórzane, tekstylne lub syntetyczne, a podeszwy gumowe lub z tworzyw o różnych właściwościach. Dobór kleju wymaga zgodności z obydwoma materiałami i właściwego przygotowania powierzchni. Strefa przodostopia wielokrotnie się zgina, więc sztywny materiał naprawczy może szybko pęknąć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-szewc-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Przed naprawą sprawdź rozmiar, sposób użytkowania, materiał podeszwy, stan cholewki i strefy zginania.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Podeszwa, która dobrze wygląda na półce, może być zbyt sztywna dla danego buta."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Ocenia się stan cholewki, połączenia z podeszwą, stabilność obcasa i zużycie bieżnika. Szycie, klejenie oraz wymiana części to różne metody, których trwałość trzeba oceniać przy realnym ruchu buta."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-szewc-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Trwała naprawa wymaga dopasowania metody łączenia do materiału i obciążenia.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Klej potrzebuje zgodnej chemii i właściwego przygotowania; szew może wymagać odpowiedniego rozstawu otworów."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Cholewki mogą być skórzane, tekstylne lub syntetyczne, a podeszwy gumowe lub z tworzyw o różnych właściwościach. Dobór kleju wymaga zgodności z obydwoma materiałami i właściwego przygotowania powierzchni. Strefa przodostopia wielokrotnie się zgina, więc sztywny materiał naprawczy może szybko pęknąć."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Ocenia się stan cholewki, połączenia z podeszwą, stabilność obcasa i zużycie bieżnika. Szycie, klejenie oraz wymiana części to różne metody, których trwałość trzeba oceniać przy realnym ruchu buta."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-szewc-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Pęknięcie podeszwy w miejscu zginania może oznaczać utratę elastyczności materiału.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Z kolei odklejenie na krawędzi częściej wskazuje problem powierzchni lub połączenia."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Po sklejeniu odchodzi czubek podeszwy. Sprawdza się przygotowanie powierzchni, zgodność kleju i obciążenia podczas chodzenia. Dodatkowa warstwa przypadkowego kleju nie daje gwarancji."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Cholewki mogą być skórzane, tekstylne lub syntetyczne, a podeszwy gumowe lub z tworzyw o różnych właściwościach. Dobór kleju wymaga zgodności z obydwoma materiałami i właściwego przygotowania powierzchni. Strefa przodostopia wielokrotnie się zgina, więc sztywny materiał naprawczy może szybko pęknąć."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-szewc-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Zabytkowe buty mogą zawierać stare materiały i kleje, dla których współczesne środki są nieodpowiednie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Przed renowacją rozróżnij potrzebę ekspozycji od faktycznego użytkowania."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Ocenia się stan cholewki, połączenia z podeszwą, stabilność obcasa i zużycie bieżnika. Szycie, klejenie oraz wymiana części to różne metody, których trwałość trzeba oceniać przy realnym ruchu buta."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-szewc-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "szewc-tradycja",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Ćwicz na rysunku przekroju buta: podeszwa, cholewka, wkładka, szew, klejenie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Oznacz strefę największego zginania i dobierz kryterium oceny naprawy."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Narysuj but z podpisanymi elementami i zaznacz strefy zginania, ścierania i miejscowe połączenia klejone."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-szewc-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Krosno utrzymuje osnowę pod napięciem, nicielnice pomagają tworzyć przesmyk, a czółenko prowadzi wątek.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Mechanizmy pełnią inne funkcje i nie należy ich mylić z elementami ozdobnymi gotowej tkaniny."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Osnowa to naprężone nitki biegnące wzdłuż tkaniny, a wątek przeplata się przez nie. Len zwykle mniej się rozciąga niż wełna, która sprężyście reaguje na naprężenia. Surowiec, skręt przędzy, gęstość tkania i wykończenie wpływają na grubość, elastyczność oraz skurcz gotowej tkaniny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-tkacz-reczny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Przed tkaniem ustala się liczbę nitek osnowy na centymetr, szerokość, rodzaj przędzy i zapas na skurcz.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zbyt mała liczba nitek może stworzyć luźną tkaninę, a zbyt duża utrudnić przejście wątku."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Przed rozpoczęciem dobiera się długość osnowy z zapasem na straty i skurcz, a następnie kontroluje równe naprężenie. Zbyt małe napięcie daje nierówny splot; nadmierne napięcie może prowadzić do zrywania nitek."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-tkacz-reczny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Przy splocie płóciennym wątek przechodzi na przemian nad i pod nitkami osnowy.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Inny wzór przeplotu zmienia nie tylko wygląd, ale też sprężystość i sposób odkształcenia tkaniny."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Osnowa to naprężone nitki biegnące wzdłuż tkaniny, a wątek przeplata się przez nie. Len zwykle mniej się rozciąga niż wełna, która sprężyście reaguje na naprężenia. Surowiec, skręt przędzy, gęstość tkania i wykończenie wpływają na grubość, elastyczność oraz skurcz gotowej tkaniny."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Przed rozpoczęciem dobiera się długość osnowy z zapasem na straty i skurcz, a następnie kontroluje równe naprężenie. Zbyt małe napięcie daje nierówny splot; nadmierne napięcie może prowadzić do zrywania nitek."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-tkacz-reczny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli boki tkaniny zwężają się, przyczyną może być zbyt mocne dociąganie wątku.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nierówny wzór może wynikać z różnego naciągu osnowy albo pominiętej nitki."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Tkanina zwęża się na brzegach. Sprawdź rozpiętość wątku, napięcie osnowy i liczbę przeplotów, nie tylko szerokość ramy krosna."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Osnowa to naprężone nitki biegnące wzdłuż tkaniny, a wątek przeplata się przez nie. Len zwykle mniej się rozciąga niż wełna, która sprężyście reaguje na naprężenia. Surowiec, skręt przędzy, gęstość tkania i wykończenie wpływają na grubość, elastyczność oraz skurcz gotowej tkaniny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-tkacz-reczny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Konserwacja starej tkaniny wymaga rozpoznania włókna i barwnika.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zbyt gorąca woda lub niewłaściwy preparat mogą spowodować skurcz i utratę koloru."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Przed rozpoczęciem dobiera się długość osnowy z zapasem na straty i skurcz, a następnie kontroluje równe naprężenie. Zbyt małe napięcie daje nierówny splot; nadmierne napięcie może prowadzić do zrywania nitek."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-tkacz-reczny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "tkacz-reczny",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Ucz się na papierowym schemacie: zaznacz pionową osnowę i poziomy wątek.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zastosuj dwa kolory, aby sprawdzić splot płócienny bez obsługi krosna."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Narysuj splot płócienny: cztery pionowe nitki osnowy i cztery poziome wątku. Zaznacz przejścia nad i pod."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-tkacz-reczny",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Lejce służą komunikacji z koniem, a uprząż przenosi siły pociągowe.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dyszel i okucia prowadzą lub łączą pojazd; sprawdzanie ich jest ważniejsze niż estetyka lakieru na bryczce."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "W tradycyjnym pojeździe współpracują drewno, metal i skóra. Drewno narażone jest na pęknięcia i zawilgocenie, metalowe sworznie na zużycie, a skórzane pasy uprzęży na rozciąganie i przecieranie. Niewłaściwie dopasowana uprząż może powodować ból oraz utratę kontroli nad pojazdem."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-woznica",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Plan przejazdu obejmuje masę pojazdu, warunki drogi, stan konia, dopasowanie uprzęży i doświadczenie woźnicy.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nie należy traktować bryczki jak zwykłego samochodu bez dodatkowych ograniczeń związanych z żywym zwierzęciem."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Przed przejazdem doświadczony woźnica ocenia stan pojazdu i zgodność uprzęży z koniem, warunki trasy, zachowanie zwierzęcia i sposób komunikacji z pomocnikiem. Trening powożenia wymaga realnej praktyki z instruktorem, nie wyłącznie wiedzy historycznej."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-woznica",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Powożenie wymaga czytelnej komunikacji oraz przewidywania reakcji konia na bodźce.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Regulacja uprzęży i kontrola pojazdu są elementem przygotowania pod okiem instruktora, nie improwizowanej próby."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "W tradycyjnym pojeździe współpracują drewno, metal i skóra. Drewno narażone jest na pęknięcia i zawilgocenie, metalowe sworznie na zużycie, a skórzane pasy uprzęży na rozciąganie i przecieranie. Niewłaściwie dopasowana uprząż może powodować ból oraz utratę kontroli nad pojazdem."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Przed przejazdem doświadczony woźnica ocenia stan pojazdu i zgodność uprzęży z koniem, warunki trasy, zachowanie zwierzęcia i sposób komunikacji z pomocnikiem. Trening powożenia wymaga realnej praktyki z instruktorem, nie wyłącznie wiedzy historycznej."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-woznica",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli koń zaczyna unikać ruchu albo pokazuje oznaki bólu, nie przyspiesza się przejazdu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Należy skontrolować stan zwierzęcia i dopasowanie uprzęży z kompetentną osobą."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Dyszel wykazuje pęknięcie przy okuciu. Nie kontynuuje się przejazdu; pojazd wycofuje się do fachowej kontroli i naprawy."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "W tradycyjnym pojeździe współpracują drewno, metal i skóra. Drewno narażone jest na pęknięcia i zawilgocenie, metalowe sworznie na zużycie, a skórzane pasy uprzęży na rozciąganie i przecieranie. Niewłaściwie dopasowana uprząż może powodować ból oraz utratę kontroli nad pojazdem."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-woznica",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Renowacja zabytkowej bryczki może obejmować wymianę drewna, okuć i elementów skórzanych, ale każdy element bezpieczeństwa wymaga odrębnej oceny przed powrotem pojazdu na drogę.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Renowacja zabytkowej bryczki może obejmować wymianę drewna, okuć i elementów skórzanych, ale każdy element bezpieczeństwa wymaga odrębnej oceny przed powrotem pojazdu na drogę."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Przed przejazdem doświadczony woźnica ocenia stan pojazdu i zgodność uprzęży z koniem, warunki trasy, zachowanie zwierzęcia i sposób komunikacji z pomocnikiem. Trening powożenia wymaga realnej praktyki z instruktorem, nie wyłącznie wiedzy historycznej."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-woznica",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "woznica",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Najpierw naucz się nazw i funkcji elementów pojazdu oraz zasad bezpieczeństwa w kontakcie z koniem.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Najpierw naucz się nazw i funkcji elementów pojazdu oraz zasad bezpieczeństwa w kontakcie z koniem. Samodzielne powożenie wymaga nauki z doświadczonym instruktorem."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Oznacz na rysunku koło, piastę, dyszel, pas uprzęży i lejce. Wskaż trzy punkty kontroli przed hipotetycznym przejazdem."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-woznica",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Kielnia i szablon pomagają formować spoiny, a przyrządy pomiarowe utrzymują geometrię pieca.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Kafle, cegły ogniotrwałe i zaprawy mają różne zadania; nie wolno zastępować nimi dowolnie elementów kanału spalinowego."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Piec kaflowy łączy elementy ceramiczne, materiały ogniotrwałe i spoiwa odporne na temperaturę. Cegły szamotowe i gliny ogniotrwałe różnią się od zwykłych zapraw budowlanych; rozszerzalność cieplna wymaga dopasowanych dylatacji i połączeń. Kafle są powłoką funkcjonalną i dekoracyjną, nie substytutem sprawnej drogi spalin."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-zdun-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt pieca uwzględnia moc, sposób akumulacji ciepła, kanały, dopływ powietrza, komin i odległości od materiałów palnych.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Projekt pieca uwzględnia moc, sposób akumulacji ciepła, kanały, dopływ powietrza, komin i odległości od materiałów palnych. Zbyt duża powierzchnia grzewcza nie naprawi złej drogi spalin."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Projekt uwzględnia moc urządzenia, przewody dymowe, wentylację, odległości od materiałów palnych i odbiór przez uprawnione osoby zgodnie z przepisami. Nieszczelności mogą powodować wydostawanie się spalin, a tlenek węgla jest niewyczuwalny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-zdun-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Materiał ogniotrwały musi wytrzymać temperaturę i zmiany wymiarów.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Kafle okładzinowe i wnętrze paleniska mogą wymagać innych właściwości i odpowiednich połączeń dylatacyjnych."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Piec kaflowy łączy elementy ceramiczne, materiały ogniotrwałe i spoiwa odporne na temperaturę. Cegły szamotowe i gliny ogniotrwałe różnią się od zwykłych zapraw budowlanych; rozszerzalność cieplna wymaga dopasowanych dylatacji i połączeń. Kafle są powłoką funkcjonalną i dekoracyjną, nie substytutem sprawnej drogi spalin."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Projekt uwzględnia moc urządzenia, przewody dymowe, wentylację, odległości od materiałów palnych i odbiór przez uprawnione osoby zgodnie z przepisami. Nieszczelności mogą powodować wydostawanie się spalin, a tlenek węgla jest niewyczuwalny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-zdun-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeżeli w pomieszczeniu pojawiają się spaliny lub podejrzenie tlenku węgla, urządzenie należy wyłączyć z użytkowania, a problem ocenić fachowo.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Jeżeli w pomieszczeniu pojawiają się spaliny lub podejrzenie tlenku węgla, urządzenie należy wyłączyć z użytkowania, a problem ocenić fachowo. Nie wolno maskować nieszczelności ozdobnym tynkiem."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Piec ma pękniętą spoinę i czuć dym w pomieszczeniu. Nie rozpala się go ponownie do czasu fachowej oceny szczelności i przewodu spalinowego."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Piec kaflowy łączy elementy ceramiczne, materiały ogniotrwałe i spoiwa odporne na temperaturę. Cegły szamotowe i gliny ogniotrwałe różnią się od zwykłych zapraw budowlanych; rozszerzalność cieplna wymaga dopasowanych dylatacji i połączeń. Kafle są powłoką funkcjonalną i dekoracyjną, nie substytutem sprawnej drogi spalin."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-zdun-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Naprawa starego pieca wymaga rozpoznania przebiegu kanałów, materiałów i aktualnych wymogów bezpieczeństwa.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Konserwowanie kafli nie jest wystarczające do przywrócenia możliwości palenia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Projekt uwzględnia moc urządzenia, przewody dymowe, wentylację, odległości od materiałów palnych i odbiór przez uprawnione osoby zgodnie z przepisami. Nieszczelności mogą powodować wydostawanie się spalin, a tlenek węgla jest niewyczuwalny."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-zdun-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zdun-tradycja",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Na bezpiecznym rysunku poznaj palenisko, przewód spalinowy, izolację, kafel i strefę dylatacji.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Prawdziwy piec projektuje i odbiera osoba z odpowiednimi kompetencjami."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Na przekroju pieca oznacz strefę spalania, kanał dymowy, materiał ogniotrwały, kafle i miejsce wymagające dylatacji."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-zdun-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Kaszta drukarska porządkuje znaki, a składnica i narzędzia justowania pomagają zbudować równy wiersz.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "W typografii metalowej trzeba jednocześnie uwzględniać ostre krawędzie i zagrożenie związane z ołowiem."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Tradycyjna czcionka drukarska mogła zawierać stop ołowiu z dodatkami antymonu i cyny. Kontakt z ołowiem i pyłem wymaga właściwej higieny oraz ograniczenia narażenia; jest to materiał toksyczny. Papier wpływa na wchłanianie farby i ostrość odbicia, a zużyty metalowy materiał może zniekształcać znaki."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-zecer",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt kolumny gazety obejmuje szerokość łamu, stopień pisma, interlinię i hierarchię tytułów.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Tekst może mieć poprawne litery, lecz być nieczytelny przez niewłaściwe odstępy."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Zecer układa znaki w wiersze i kolumny, stosuje odstępniki i kontroluje odbitkę próbną. Zła interlinia lub brak światła między znakami pogarszają czytelność; korekta materiału odbywa się przed właściwym nakładem."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-zecer",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Zecer układa znaki w formę, kontroluje wyrównanie i wykonuje odbitkę próbną.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Dopiero sprawdzenie błędów literowych oraz odstępów daje podstawę do zatwierdzenia większego nakładu."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Tradycyjna czcionka drukarska mogła zawierać stop ołowiu z dodatkami antymonu i cyny. Kontakt z ołowiem i pyłem wymaga właściwej higieny oraz ograniczenia narażenia; jest to materiał toksyczny. Papier wpływa na wchłanianie farby i ostrość odbicia, a zużyty metalowy materiał może zniekształcać znaki."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Zecer układa znaki w wiersze i kolumny, stosuje odstępniki i kontroluje odbitkę próbną. Zła interlinia lub brak światła między znakami pogarszają czytelność; korekta materiału odbywa się przed właściwym nakładem."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-zecer",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Jeśli wyrazy są nierówno rozmieszczone, sprawdź justowanie i skład wiersza.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Brak litery może oznaczać błąd składu, a nie uszkodzenie maszyny drukarskiej."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "W odbitce pojawiają się nierówne odstępy między wyrazami. Należy sprawdzić justowanie, skład i ustawienie formy, zamiast dopisywać farbę w miejscach przerw."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "Tradycyjna czcionka drukarska mogła zawierać stop ołowiu z dodatkami antymonu i cyny. Kontakt z ołowiem i pyłem wymaga właściwej higieny oraz ograniczenia narażenia; jest to materiał toksyczny. Papier wpływa na wchłanianie farby i ostrość odbicia, a zużyty metalowy materiał może zniekształcać znaki."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-zecer",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Przy konserwacji dawnej drukarni ważne jest zachowanie kaszt, czcionek i układu stanowisk, ale nie wolno pomijać zagrożenia związanego z toksycznymi metalami.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Przy konserwacji dawnej drukarni ważne jest zachowanie kaszt, czcionek i układu stanowisk, ale nie wolno pomijać zagrożenia związanego z toksycznymi metalami."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Zecer układa znaki w wiersze i kolumny, stosuje odstępniki i kontroluje odbitkę próbną. Zła interlinia lub brak światła między znakami pogarszają czytelność; korekta materiału odbywa się przed właściwym nakładem."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-zecer",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zecer",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Uczeń powinien najpierw budować układ z papierowych klocków: tytuł, podtytuł, tekst i odstępy.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nie trzeba dotykać starych stopów ołowiu, żeby zrozumieć zasady składu."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Ułóż z papierowych prostokątów wiersz tytułu, podtytułu i tekstu. Ustal hierarchię wielkości i odległości między znakami."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-zecer",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 2,
+      "material_patch": {
+        "curiosity": "Pęseta i lupa umożliwiają manipulowanie drobnymi elementami, a wkrętaki zegarmistrzowskie muszą pasować do łbów śrub.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Niewłaściwe narzędzie może uszkodzić czopy, gniazda i powierzchnie polerowane."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "W mechanizmie często stosuje się mosiężne koła zębate, stalowe wałki i sprężyny oraz syntetyczne kamienie łożyskowe ograniczające zużycie. Dobór oleju zależy od miejsca smarowania, prędkości i obciążenia; zbyt duża ilość środka smarnego przyciąga zabrudzenia i może pogarszać działanie."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Na schemacie nazwij narzędzia, określ ich funkcję i wskaż, jak sprawdzisz ich stan przed zastosowaniem."
+          }
+        ],
+        "illustration": "craft-zegarmistrz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 3,
+      "material_patch": {
+        "curiosity": "Projekt mechanizmu uwzględnia przełożenia, źródło energii, wychwyt i regulację.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Nawet gdy koła zębate pasują geometrycznie, nieprawidłowe tarcie może zatrzymać zegarek."
+          },
+          {
+            "heading": "Co wpływa na projekt?",
+            "text": "Naprawa rozpoczyna się od udokumentowania stanu, bezpiecznego rozładowania energii sprężyny przez fachowca, czyszczenia, oceny luzów i właściwego montażu. Pył i przypadkowe narzędzia mogą uszkodzić małe czopy lub koła."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Narysuj uproszczony projekt wyrobu; wskaż wymiar, materiał i warunek odbioru. Wyjaśnij, co trzeba uzgodnić z klientem."
+          }
+        ],
+        "illustration": "mastery-zegarmistrz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 4,
+      "material_patch": {
+        "curiosity": "Sprężyna magazynuje energię, koła przekazują ruch, a wychwyt reguluje jego uwalnianie.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zegar mechaniczny nie działa dlatego, że koła są jednakowo duże, lecz dzięki odpowiednim przełożeniom i kontroli ruchu."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "W mechanizmie często stosuje się mosiężne koła zębate, stalowe wałki i sprężyny oraz syntetyczne kamienie łożyskowe ograniczające zużycie. Dobór oleju zależy od miejsca smarowania, prędkości i obciążenia; zbyt duża ilość środka smarnego przyciąga zabrudzenia i może pogarszać działanie."
+          },
+          {
+            "heading": "Jak sprawdzić jakość?",
+            "text": "Naprawa rozpoczyna się od udokumentowania stanu, bezpiecznego rozładowania energii sprężyny przez fachowca, czyszczenia, oceny luzów i właściwego montażu. Pył i przypadkowe narzędzia mogą uszkodzić małe czopy lub koła."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Rozrysuj stan początkowy, zmianę materiału oraz stan końcowy. Napisz, jak poznasz, że technika dała oczekiwany efekt."
+          }
+        ],
+        "illustration": "technique-zegarmistrz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 5,
+      "material_patch": {
+        "curiosity": "Gdy zegarek zatrzymuje się po krótkim czasie, trzeba zbadać rezerwę chodu, zużycie czopów, zabrudzenia i stan wychwytu.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Gdy zegarek zatrzymuje się po krótkim czasie, trzeba zbadać rezerwę chodu, zużycie czopów, zabrudzenia i stan wychwytu. Dosmarowanie bez diagnozy często tylko zwiększa problem."
+          },
+          {
+            "heading": "Skąd bierze się wada?",
+            "text": "Zegar zatrzymuje się mimo nasmarowania wszystkich kół. Sprawdza się tarcie, zużycie czopów, zabrudzenia i stan źródła energii, zamiast dolewać oleju."
+          },
+          {
+            "heading": "Co sprawdzać przed decyzją?",
+            "text": "W mechanizmie często stosuje się mosiężne koła zębate, stalowe wałki i sprężyny oraz syntetyczne kamienie łożyskowe ograniczające zużycie. Dobór oleju zależy od miejsca smarowania, prędkości i obciążenia; zbyt duża ilość środka smarnego przyciąga zabrudzenia i może pogarszać działanie."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Wybierz jeden opisany objaw. Podaj dwie różne możliwe przyczyny i wskaż pomiar albo obserwację, która pomoże je odróżnić."
+          }
+        ],
+        "illustration": "diagnosis-zegarmistrz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 6,
+      "material_patch": {
+        "curiosity": "Renowacja historycznego mechanizmu wymaga dokumentacji przed rozebraniem.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zastępowanie oryginalnych części bez zachowania ich wymiarów może utrudnić przyszłą konserwację."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Naprawa rozpoczyna się od udokumentowania stanu, bezpiecznego rozładowania energii sprężyny przez fachowca, czyszczenia, oceny luzów i właściwego montażu. Pył i przypadkowe narzędzia mogą uszkodzić małe czopy lub koła."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Odróżnij zachowanie historycznego obiektu od przywrócenia bezpiecznej funkcji użytkowej. Wskaż, czego nie należy naprawiać metodą prób i błędów."
+          }
+        ],
+        "illustration": "material-zegarmistrz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zegarmistrz-tradycja",
+      "lesson_no": 7,
+      "material_patch": {
+        "curiosity": "Zacznij od schematu kół i strzałek kierunku obrotu; rozpoznaj źródło energii, przekładnię i wychwyt.",
+        "sections": [
+          {
+            "heading": "Co dzieje się w praktyce?",
+            "text": "Zacznij od schematu kół i strzałek kierunku obrotu; rozpoznaj źródło energii, przekładnię i wychwyt. Praca ze sprężyną pod napięciem wymaga praktycznego szkolenia."
+          },
+          {
+            "heading": "Powiązanie z materiałem i wyrobem",
+            "text": "Narysuj trzy połączone koła zębate i wskaż przekazywanie ruchu oraz dwa miejsca, w których tarcie może zatrzymać mechanizm."
+          },
+          {
+            "heading": "Przećwicz rozumowanie",
+            "text": "Przygotuj samodzielną kartę kompetencji: co umiesz wyjaśnić, jaki błąd potrafisz rozpoznać i które czynności wymagają nadzoru mistrza."
+          }
+        ],
+        "illustration": "mastery-zegarmistrz-tradycja",
+        "editorial_status": "review_needed"
+      }
+    }
+  ]
+}
