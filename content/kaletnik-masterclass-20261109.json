@@ -1,0 +1,726 @@
+{
+  "course_slug": "kaletnik-tradycja",
+  "lessons": [
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 0,
+      "title_pl": "1. Anatomia skóry: lico, mizdra i dwoina",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 1,
+        "illustration": "craft-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Przekrój próbki. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Narysuj trzy warstwy przekroju i oznacz, gdzie w skórze pełnoziarnistej znajduje się lico. Opisz, co zmienia rozdzielenie materiału na dwoinę."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Narysuj trzy warstwy przekroju i oznacz, gdzie w skórze pełnoziarnistej znajduje się lico. Opisz, co zmienia rozdzielenie materiału na dwoinę."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.ianatkinson.net/leather/learn/leatherguide.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju.",
+          "situation": "Przekrój próbki",
+          "task": "Narysuj trzy warstwy przekroju i oznacz, gdzie w skórze pełnoziarnistej znajduje się lico. Opisz, co zmienia rozdzielenie materiału na dwoinę.",
+          "question": "Dwie próbki mają tę samą grubość 1,6 mm. Jedna jest licowa, druga jest dwoiną pokrytą powłoką. Czy można bez dodatkowych badań uznać ich wytrzymałość za równą?",
+          "options": [
+            "Nie: struktura włókien, wykończenie i sposób produkcji mają znaczenie.",
+            "Tak: grubość jest jedynym parametrem.",
+            "Tak: powłoka gwarantuje tę samą odporność.",
+            "Nie: dwoina nigdy nie nadaje się do żadnego wyrobu."
+          ],
+          "correct": 0,
+          "example": "Nie: struktura włókien, wykończenie i sposób produkcji mają znaczenie.",
+          "explanation": "Prawidłowa decyzja: Nie: struktura włókien, wykończenie i sposób produkcji mają znaczenie. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju.",
+          "feedback": [
+            "Tak. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju.",
+            "Nie. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju.",
+            "Nie. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju.",
+            "Nie. Skóra pełnoziarnista zachowuje naturalne lico; skóra korygowana ma mechanicznie modyfikowaną powierzchnię. Dwoina pochodzi z dolnej warstwy po rozdzieleniu grubości i nie ma oryginalnej warstwy licowej. Nazwa handlowa nie zastępuje kontroli przekroju."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 1,
+      "title_pl": "2. Garbowanie i wykończenie: roślinne, chromowe, mieszane",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 1,
+        "illustration": "material-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Dobór do produktu. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Porównaj trzy karty próbek pod kątem sztywności, odporności na zginanie, podatności na wykończenie krawędzi i wymagań dotyczących środków chemicznych."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Porównaj trzy karty próbek pod kątem sztywności, odporności na zginanie, podatności na wykończenie krawędzi i wymagań dotyczących środków chemicznych."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.leatherworkinggroup.com/certification/leather-manufacturer-standard/"
+          }
+        ],
+        "learning": {
+          "intro": "Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie.",
+          "situation": "Dobór do produktu",
+          "task": "Porównaj trzy karty próbek pod kątem sztywności, odporności na zginanie, podatności na wykończenie krawędzi i wymagań dotyczących środków chemicznych.",
+          "question": "Projekt wymaga formowanego etui o wyraźnym tłoczeniu. Która decyzja jest uzasadniona?",
+          "options": [
+            "Wybrać partię sprawdzonej skóry roślinnie garbowanej i przetestować formowanie.",
+            "Wybrać dowolną skórę wyłącznie po kolorze.",
+            "Założyć, że wszystkie skóry chromowe są sztywne.",
+            "Pominąć próbę, jeśli sprzedawca napisał 'premium'."
+          ],
+          "correct": 0,
+          "example": "Wybrać partię sprawdzonej skóry roślinnie garbowanej i przetestować formowanie.",
+          "explanation": "Prawidłowa decyzja: Wybrać partię sprawdzonej skóry roślinnie garbowanej i przetestować formowanie. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie.",
+          "feedback": [
+            "Tak. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie.",
+            "Nie. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie.",
+            "Nie. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie.",
+            "Nie. Garbowanie stabilizuje kolagen i wpływa na charakter materiału. Skóra garbowana roślinnie bywa podatna na tłoczenie i formowanie po zwilżeniu, a chromowo garbowana często jest bardziej miękka i elastyczna; to tendencje, nie reguła dla każdej partii. Barwienie, powłoki i natłuszczenie również zmieniają zachowanie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 2,
+      "title_pl": "3. Grubość i jednostki: mm, oz oraz stos warstw",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 1,
+        "illustration": "technique-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Przeliczenie i tolerancja. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Policz grubość trzech warstw: 1,2+0,8+1,2=3,2 mm przed klejem i kompresją. Zmierz trzy miejsca na próbce suwmiarką z właściwym dociskiem."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Policz grubość trzech warstw: 1,2+0,8+1,2=3,2 mm przed klejem i kompresją. Zmierz trzy miejsca na próbce suwmiarką z właściwym dociskiem."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://tandyleather.com/fr/blogs/tandy-blog/leather-weight-thickness-chart"
+          }
+        ],
+        "learning": {
+          "intro": "W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach.",
+          "situation": "Przeliczenie i tolerancja",
+          "task": "Policz grubość trzech warstw: 1,2+0,8+1,2=3,2 mm przed klejem i kompresją. Zmierz trzy miejsca na próbce suwmiarką z właściwym dociskiem.",
+          "question": "W szwie spotykają się warstwy 1,2 mm, 0,8 mm i 1,2 mm. Jaka jest suma nominalna przed klejem i ściśnięciem?",
+          "options": [
+            "3,2 mm",
+            "2,4 mm",
+            "4,0 mm",
+            "1,6 mm"
+          ],
+          "correct": 0,
+          "example": "3,2 mm",
+          "explanation": "Prawidłowa decyzja: 3,2 mm W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach.",
+          "feedback": [
+            "Tak. W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach.",
+            "Nie. W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach.",
+            "Nie. W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach.",
+            "Nie. W branży 1 oz grubości skóry odpowiada około 0,396875 mm. Przykładowo 4 oz to około 1,59 mm, a 8 oz to około 3,18 mm. Jest to tradycyjna jednostka grubości, nie masa całej skóry. Grubość w partii jest zmienna, dlatego mierz w kilku miejscach."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 3,
+      "title_pl": "4. Rozkrój i kierunek rozciągliwości",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 2,
+        "illustration": "mastery-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Mapa rozkroju. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Na kartce narysuj nieregularny płat 60×40 cm i trzy prostokątne elementy 18×9 cm. Dodaj marginesy, zaznacz wady i policz obszar elementów: 3×162=486 cm², ale nie myl go z realną wydajnością rozkroju."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Na kartce narysuj nieregularny płat 60×40 cm i trzy prostokątne elementy 18×9 cm. Dodaj marginesy, zaznacz wady i policz obszar elementów: 3×162=486 cm², ale nie myl go z realną wydajnością rozkroju."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.ianatkinson.net/leather/learn/leatherguide.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad.",
+          "situation": "Mapa rozkroju",
+          "task": "Na kartce narysuj nieregularny płat 60×40 cm i trzy prostokątne elementy 18×9 cm. Dodaj marginesy, zaznacz wady i policz obszar elementów: 3×162=486 cm², ale nie myl go z realną wydajnością rozkroju.",
+          "question": "Dlaczego obliczenie 486 cm² nie wystarcza do zamówienia skóry?",
+          "options": [
+            "Bo kształt płata, wady, kierunek i odpady rozkroju zmieniają wykorzystanie.",
+            "Bo skórę zawsze zamawia się tylko w kilogramach.",
+            "Bo w każdym rozkroju odpad jest równy zero.",
+            "Bo obszar prostokąta nie daje się policzyć."
+          ],
+          "correct": 0,
+          "example": "Bo kształt płata, wady, kierunek i odpady rozkroju zmieniają wykorzystanie.",
+          "explanation": "Prawidłowa decyzja: Bo kształt płata, wady, kierunek i odpady rozkroju zmieniają wykorzystanie. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad.",
+          "feedback": [
+            "Tak. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad.",
+            "Nie. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad.",
+            "Nie. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad.",
+            "Nie. Skóra naturalna jest anizotropowa: rozciągliwość i jakość zależą od obszaru płata oraz kierunku włókien. Partie przy brzuchu mogą być luźniejsze niż fragmenty grzbietowe. Szablony układa się z uwzględnieniem osi obciążenia, wyglądu i omijania wad."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 4,
+      "title_pl": "5. Wykroje portfela: zagięcia, kieszenie i luz",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 2,
+        "illustration": "craft-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Prototyp papierowy. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Przygotuj papierowy prototyp portfela z dwoma kieszeniami. Zmierz rzeczywistą kartę, dodaj roboczy luz i sprawdź, czy da się ją wysunąć bez rozrywania papieru."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Przygotuj papierowy prototyp portfela z dwoma kieszeniami. Zmierz rzeczywistą kartę, dodaj roboczy luz i sprawdź, czy da się ją wysunąć bez rozrywania papieru."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.ianatkinson.net/leather/learn/leatherguide.htm"
+          }
+        ],
+        "learning": {
+          "intro": "W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry.",
+          "situation": "Prototyp papierowy",
+          "task": "Przygotuj papierowy prototyp portfela z dwoma kieszeniami. Zmierz rzeczywistą kartę, dodaj roboczy luz i sprawdź, czy da się ją wysunąć bez rozrywania papieru.",
+          "question": "Karta w prototypie wchodzi, ale przy złożeniu portfela mocno się wygina. Co poprawić jako pierwsze?",
+          "options": [
+            "Sprawdzić luz kieszeni i geometrię zagięcia z uwzględnieniem grubości warstw.",
+            "Dodać mocniejszy klej bez zmiany wymiarów.",
+            "Zmniejszyć kieszeń o 5 mm.",
+            "Wymienić wyłącznie kolor nici."
+          ],
+          "correct": 0,
+          "example": "Sprawdzić luz kieszeni i geometrię zagięcia z uwzględnieniem grubości warstw.",
+          "explanation": "Prawidłowa decyzja: Sprawdzić luz kieszeni i geometrię zagięcia z uwzględnieniem grubości warstw. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry.",
+          "feedback": [
+            "Tak. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry.",
+            "Nie. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry.",
+            "Nie. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry.",
+            "Nie. W portfelu trzeba uwzględnić grubość stosu, promień zagięcia, tolerancję wkładania kart i miejsce szwu. Szablon zewnętrzny nie może być automatycznie identyczny z wewnętrznym. Prototyp z papieru lub kartonu pozwala wykryć kolizję bez marnowania skóry."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 5,
+      "title_pl": "6. Narzędzia i stanowisko: cięcie, znaczenie, otwory",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 2,
+        "illustration": "material-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Kontrola procesu. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Zaprojektuj stanowisko na papierze: strefa cięcia, strefa pomiarów, strefa klejenia z wentylacją i odkładania ostrzy. Oznacz miejsca, w których nie powinny leżeć dłonie."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Zaprojektuj stanowisko na papierze: strefa cięcia, strefa pomiarów, strefa klejenia z wentylacją i odkładania ostrzy. Oznacz miejsca, w których nie powinny leżeć dłonie."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.leatherworkinggroup.com/certification/leather-manufacturer-standard/"
+          }
+        ],
+        "learning": {
+          "intro": "Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru.",
+          "situation": "Kontrola procesu",
+          "task": "Zaprojektuj stanowisko na papierze: strefa cięcia, strefa pomiarów, strefa klejenia z wentylacją i odkładania ostrzy. Oznacz miejsca, w których nie powinny leżeć dłonie.",
+          "question": "Przy wyznaczaniu linii szwu na nieregularnej krawędzi co jest ważniejsze niż samo ustawienie radełka?",
+          "options": [
+            "Stały odstęp od krawędzi i kontrola przebiegu linii względem wykroju.",
+            "Maksymalna siła uderzenia.",
+            "Losowe rozłożenie otworów.",
+            "Oznaczanie dopiero po sklejeniu bez pomiaru."
+          ],
+          "correct": 0,
+          "example": "Stały odstęp od krawędzi i kontrola przebiegu linii względem wykroju.",
+          "explanation": "Prawidłowa decyzja: Stały odstęp od krawędzi i kontrola przebiegu linii względem wykroju. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru.",
+          "feedback": [
+            "Tak. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru.",
+            "Nie. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru.",
+            "Nie. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru.",
+            "Nie. Kaletnik używa m.in. noża, liniału stalowego, maty do cięcia, cyrkla do krawędzi, radełka lub wybijaka do oznaczania ściegu, szydła, młotka i narzędzi do krawędzi. Każde narzędzie ma określone zadanie; ostre narzędzia wymagają stabilnego stanowiska i odpowiedniego nadzoru."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 6,
+      "title_pl": "7. Szycie siodlarskie: ścieg i naprężenie",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 3,
+        "illustration": "technique-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Symulacja na papierze. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Na kartonie zaznacz 12 punktów w odstępie 4 mm, przebij otwory bezpiecznym narzędziem pod nadzorem i przećwicz przeplot dwóch końców sznurka. Policz długość linii: 11×4=44 mm."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Na kartonie zaznacz 12 punktów w odstępie 4 mm, przebij otwory bezpiecznym narzędziem pod nadzorem i przećwicz przeplot dwóch końców sznurka. Policz długość linii: 11×4=44 mm."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://tandyleather.com/fr/blogs/tandy-blog/leather-weight-thickness-chart"
+          }
+        ],
+        "learning": {
+          "intro": "W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę.",
+          "situation": "Symulacja na papierze",
+          "task": "Na kartonie zaznacz 12 punktów w odstępie 4 mm, przebij otwory bezpiecznym narzędziem pod nadzorem i przećwicz przeplot dwóch końców sznurka. Policz długość linii: 11×4=44 mm.",
+          "question": "12 otworów rozstawionych co 4 mm tworzy jaką odległość od pierwszego do ostatniego?",
+          "options": [
+            "44 mm",
+            "48 mm",
+            "12 mm",
+            "36 mm"
+          ],
+          "correct": 0,
+          "example": "44 mm",
+          "explanation": "Prawidłowa decyzja: 44 mm W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę.",
+          "feedback": [
+            "Tak. W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę.",
+            "Nie. W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę.",
+            "Nie. W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę.",
+            "Nie. W ręcznym ściegu siodlarskim pracują dwie igły na jednej nici, przechodząc przez te same otwory z przeciwnych stron. Powtarzalność otworów i kontrola naprężenia wpływają na estetykę i trwałość. Zbyt bliskie krawędzi otwory mogą osłabiać skórę."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 7,
+      "title_pl": "8. Klejenie, wykończenie i bezpieczeństwo chemiczne",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 3,
+        "illustration": "mastery-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Próba połączenia. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Zaplanuj test porównawczy trzech pasków na papierze: różne przygotowanie powierzchni, jednakowa długość zakładki, obserwacja rozwarstwienia. Rzeczywiste klejenie prowadź tylko przy właściwej wentylacji i środkach ochrony."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Zaplanuj test porównawczy trzech pasków na papierze: różne przygotowanie powierzchni, jednakowa długość zakładki, obserwacja rozwarstwienia. Rzeczywiste klejenie prowadź tylko przy właściwej wentylacji i środkach ochrony."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.ianatkinson.net/leather/learn/leatherguide.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta.",
+          "situation": "Próba połączenia",
+          "task": "Zaplanuj test porównawczy trzech pasków na papierze: różne przygotowanie powierzchni, jednakowa długość zakładki, obserwacja rozwarstwienia. Rzeczywiste klejenie prowadź tylko przy właściwej wentylacji i środkach ochrony.",
+          "question": "Dlaczego nie należy oceniać kleju jedynie po szybkim 'złapaniu' materiału?",
+          "options": [
+            "Bo wytrzymałość po pełnym utwardzeniu, przygotowanie podłoża i warunki pracy są równie ważne.",
+            "Bo każdy klej osiąga natychmiast pełną wytrzymałość.",
+            "Bo powierzchnia nie ma znaczenia.",
+            "Bo rozpuszczalniki nie wymagają ostrożności."
+          ],
+          "correct": 0,
+          "example": "Bo wytrzymałość po pełnym utwardzeniu, przygotowanie podłoża i warunki pracy są równie ważne.",
+          "explanation": "Prawidłowa decyzja: Bo wytrzymałość po pełnym utwardzeniu, przygotowanie podłoża i warunki pracy są równie ważne. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta.",
+          "feedback": [
+            "Tak. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta.",
+            "Nie. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta.",
+            "Nie. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta.",
+            "Nie. Klej kontaktowy bywa używany do tymczasowego ustalenia warstw przed szyciem; wytrzymałość zależy od podłoża, przygotowania powierzchni, czasu odparowania i karty technicznej. Niektóre preparaty zawierają lotne rozpuszczalniki. Należy przestrzegać SDS, wentylacji i zaleceń producenta."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 8,
+      "title_pl": "9. Krawędzie: ścienianie, fazowanie, polerowanie",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 3,
+        "illustration": "craft-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Projekt przekroju. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Narysuj przekrój zawiniętej krawędzi: dwie warstwy 1,6 mm dają nominalnie 3,2 mm przed ścienianiem. Zaproponuj miejsce zmniejszenia grubości, bez podawania arbitralnej głębokości cięcia."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Narysuj przekrój zawiniętej krawędzi: dwie warstwy 1,6 mm dają nominalnie 3,2 mm przed ścienianiem. Zaproponuj miejsce zmniejszenia grubości, bez podawania arbitralnej głębokości cięcia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.ianatkinson.net/leather/learn/leatherguide.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu.",
+          "situation": "Projekt przekroju",
+          "task": "Narysuj przekrój zawiniętej krawędzi: dwie warstwy 1,6 mm dają nominalnie 3,2 mm przed ścienianiem. Zaproponuj miejsce zmniejszenia grubości, bez podawania arbitralnej głębokości cięcia.",
+          "question": "Zawinięta krawędź jest zbyt gruba. Jaka zmiana może rozwiązać problem bez zmiany zewnętrznego wykroju?",
+          "options": [
+            "Kontrolowane ścienianie w strefie zagięcia, po próbie na odpadzie.",
+            "Przeszycie dokładnie po brzegu bez marginesu.",
+            "Nałożenie grubszej farby na krawędź.",
+            "Zastosowanie dwóch kolejnych warstw tej samej skóry."
+          ],
+          "correct": 0,
+          "example": "Kontrolowane ścienianie w strefie zagięcia, po próbie na odpadzie.",
+          "explanation": "Prawidłowa decyzja: Kontrolowane ścienianie w strefie zagięcia, po próbie na odpadzie. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu.",
+          "feedback": [
+            "Tak. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu.",
+            "Nie. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu.",
+            "Nie. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu.",
+            "Nie. Ścienianie (skiving) zmniejsza lokalną grubość, np. przy podwinięciu, ale nadmierne osłabia materiał. Fazowanie usuwa ostrą krawędź. Polerowanie i farba krawędziowa to różne systemy wykończenia; dobór zależy od rodzaju skóry i zamierzonego wyglądu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 9,
+      "title_pl": "10. Okucia: nity, sprzączki i przenoszenie sił",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 4,
+        "illustration": "material-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Analiza uszkodzenia. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Na schemacie paska z otworem i sprzączką zaznacz kierunek siły, koncentrację naprężeń i potencjalne miejsca pęknięcia. Zaproponuj dwa warianty wzmocnienia do oceny przez instruktora."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Na schemacie paska z otworem i sprzączką zaznacz kierunek siły, koncentrację naprężeń i potencjalne miejsca pęknięcia. Zaproponuj dwa warianty wzmocnienia do oceny przez instruktora."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.leatherworkinggroup.com/certification/leather-manufacturer-standard/"
+          }
+        ],
+        "learning": {
+          "intro": "Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju.",
+          "situation": "Analiza uszkodzenia",
+          "task": "Na schemacie paska z otworem i sprzączką zaznacz kierunek siły, koncentrację naprężeń i potencjalne miejsca pęknięcia. Zaproponuj dwa warianty wzmocnienia do oceny przez instruktora.",
+          "question": "Pasek pęka stale przy otworze obok sprzączki. Które działanie ma największy sens?",
+          "options": [
+            "Sprawdzić geometrię otworu, krawędzie okucia, włókna i obciążenie, a nie tylko wymienić nit.",
+            "Wymienić jedynie nici na grubsze.",
+            "Zakryć pęknięcie farbą.",
+            "Zmniejszyć promień otworu do ostrego narożnika."
+          ],
+          "correct": 0,
+          "example": "Sprawdzić geometrię otworu, krawędzie okucia, włókna i obciążenie, a nie tylko wymienić nit.",
+          "explanation": "Prawidłowa decyzja: Sprawdzić geometrię otworu, krawędzie okucia, włókna i obciążenie, a nie tylko wymienić nit. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju.",
+          "feedback": [
+            "Tak. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju.",
+            "Nie. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju.",
+            "Nie. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju.",
+            "Nie. Nity, zatrzaski, karabińczyki i sprzączki przenoszą obciążenia punktowo. Przy mocowaniu paska ryzyko rozdarcia zależy od grubości i jakości skóry, odległości otworu od brzegu, promienia zagięcia i wykończenia metalu. Sam mocniejszy nit nie naprawia złego wykroju."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 10,
+      "title_pl": "11. Naprawa i kontrola jakości: test zginania i oględziny",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 4,
+        "illustration": "technique-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Karta kontroli. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Opracuj 10-punktową kartę odbioru portfela i zaprojektuj test powtarzalnego otwierania na próbce, z liczbą cykli jako własnym parametrem ćwiczenia, nie jako normą branżową."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Opracuj 10-punktową kartę odbioru portfela i zaprojektuj test powtarzalnego otwierania na próbce, z liczbą cykli jako własnym parametrem ćwiczenia, nie jako normą branżową."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://tandyleather.com/fr/blogs/tandy-blog/leather-weight-thickness-chart"
+          }
+        ],
+        "learning": {
+          "intro": "Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie.",
+          "situation": "Karta kontroli",
+          "task": "Opracuj 10-punktową kartę odbioru portfela i zaprojektuj test powtarzalnego otwierania na próbce, z liczbą cykli jako własnym parametrem ćwiczenia, nie jako normą branżową.",
+          "question": "W portfelu pęka skóra na zgięciu, a ścieg pozostaje cały. Co należy diagnozować najpierw?",
+          "options": [
+            "Właściwości materiału, grubość i promień zginania.",
+            "Wyłącznie kolor nici.",
+            "Tylko szerokość opakowania.",
+            "Wyłącznie jakość fotografii produktu."
+          ],
+          "correct": 0,
+          "example": "Właściwości materiału, grubość i promień zginania.",
+          "explanation": "Prawidłowa decyzja: Właściwości materiału, grubość i promień zginania. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie.",
+          "feedback": [
+            "Tak. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie.",
+            "Nie. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie.",
+            "Nie. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie.",
+            "Nie. Przed naprawą należy zidentyfikować przyczynę: pęknięcie włókien, prucie ściegu, odspojenie kleju, uszkodzenie powłoki czy korozję okucia. Kontrola jakości obejmuje pomiar wymiarów, równomierność szwu, pracę zagięć, działanie okuć i wykończenie krawędzi. Nie obiecuj przywrócenia pełnej nośności po powierzchownej naprawie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kaletnik-tradycja",
+      "lesson_no": 11,
+      "title_pl": "12. Projekt końcowy: portfel, koszt i dokumentacja",
+      "material": {
+        "curriculum_revision": 5,
+        "editorial_status": "review_needed",
+        "module": 4,
+        "illustration": "mastery-kaletnik",
+        "sections": [
+          {
+            "heading": "Co trzeba rozumieć",
+            "text": "Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków."
+          },
+          {
+            "heading": "Zastosowanie w warsztacie",
+            "text": "Obliczenie ceny. W praktyce najpierw określ funkcję wyrobu, kryteria pomiaru i potencjalne źródła uszkodzeń. Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków."
+          },
+          {
+            "heading": "Jak sprawdzić wynik",
+            "text": "Sprawdź rozumowanie na modelu, porównaj dwa warianty i zapisz co najmniej trzy kryteria jakości. Załóż materiał 42 zł, okucia i nić 8 zł, robocizna 2,5 h po 45 zł/h, koszty pośrednie 20 zł. Koszt modelowy wynosi 42+8+112,50+20=182,50 zł przed zyskiem i podatkami. Ustal cenę dopiero po określeniu marży i zasad sprzedaży."
+          },
+          {
+            "heading": "Przykład i decyzja",
+            "text": "Wybierz rozwiązanie dopiero po ustaleniu wymiarów, zachowania materiału i wymaganej trwałości. Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków."
+          },
+          {
+            "heading": "Ćwiczenie praktyczne",
+            "text": "Załóż materiał 42 zł, okucia i nić 8 zł, robocizna 2,5 h po 45 zł/h, koszty pośrednie 20 zł. Koszt modelowy wynosi 42+8+112,50+20=182,50 zł przed zyskiem i podatkami. Ustal cenę dopiero po określeniu marży i zasad sprzedaży."
+          }
+        ],
+        "references": [
+          {
+            "label": "Dokumentacja branżowa",
+            "url": "https://www.ianatkinson.net/leather/learn/leatherguide.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków.",
+          "situation": "Obliczenie ceny",
+          "task": "Załóż materiał 42 zł, okucia i nić 8 zł, robocizna 2,5 h po 45 zł/h, koszty pośrednie 20 zł. Koszt modelowy wynosi 42+8+112,50+20=182,50 zł przed zyskiem i podatkami. Ustal cenę dopiero po określeniu marży i zasad sprzedaży.",
+          "question": "Materiał kosztuje 42 zł, dodatki 8 zł, praca 2,5 h po 45 zł, pośrednie 20 zł. Jaki jest koszt przed zyskiem i podatkami?",
+          "options": [
+            "182,50 zł",
+            "162,50 zł",
+            "132,50 zł",
+            "202,50 zł"
+          ],
+          "correct": 0,
+          "example": "182,50 zł",
+          "explanation": "Prawidłowa decyzja: 182,50 zł Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków.",
+          "feedback": [
+            "Tak. Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków.",
+            "Nie. Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków.",
+            "Nie. Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków.",
+            "Nie. Przygotuj projekt dwukieszeniowego portfela z prototypem papierowym, wykrojem, doborem skóry i nici, analizą zgięć, planem operacji, kontrolą jakości i kosztorysem. Oddziel cenę materiału od robocizny, narzędzi, odpadu i podatków."
+          ]
+        }
+      }
+    }
+  ],
+  "review_required": true
+}
