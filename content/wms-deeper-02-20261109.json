@@ -1,0 +1,98 @@
+{
+  "infor-wms": [
+    [
+      "W magazynie 3PL numer artykułu bez ownera może nie wystarczyć do jednoznacznego wskazania właściciela zapasu.",
+      "Company, warehouse i goods owner opisują różne poziomy organizacji. Przy planowaniu przyjęcia lub wydania należy zapewnić, że SKU i ilość należą do właściwego klienta. Szczegóły pól i ekranów zależą od konfiguracji Infor.",
+      "Klienci A i B mają ten sam kod rękawic ochronnych. Po dostawie nie można zapisać wszystkich kartonów do stanu A tylko dlatego, że produkt wygląda identycznie.",
+      "Zaprojektuj rekord magazynu: owner, SKU, location, lot, status i ilość."
+    ],
+    [
+      "Pack i UOM mogą opisywać tę samą zawartość w różnych jednostkach, dlatego przelicznik jest elementem jakości danych.",
+      "Dane artykułu powinny określać sztukę bazową, karton, paletę i ich relacje. Nieprawidłowy przelicznik wpływa na przyjęcia, kompletację i wycenę usługi. Przy pracy operator potwierdza jednostkę pokazaną w zadaniu.",
+      "Jedna paleta zawiera 48 kartonów, każdy po 8 sztuk. Przyjęcie 2 palet daje 768 sztuk, nie 96 ani 2.",
+      "Przelicz 3 palety po 30 kartonów po 6 sztuk; zapisz wynik i trzy poziomy jednostek."
+    ],
+    [
+      "Stan inventory może być fizycznie obecny, ale niedostępny przez blokadę partii, ownera albo status kontroli jakości.",
+      "W WMS status wpływa na to, czy dana ilość nadaje się do alokacji. Wprowadzenie poprawnej ilości nie oznacza automatycznego dopuszczenia jej do wysyłki. Przy wyjątkach sprawdza się historię i powód statusu.",
+      "Przyjęto 100 sztuk, z których 20 wymaga kontroli. Przy braku innych blokad dostępne do sprzedaży może być 80 sztuk, a 20 musi pozostać odseparowane.",
+      "Narysuj stan 100 sztuk podzielony na available i hold; dopisz warunek zwolnienia hold."
+    ],
+    [
+      "Awizacja ASN ogranicza niespodzianki na rampie, ale nie zastępuje kontroli towaru przy samochodzie.",
+      "Przyjęcie powinno powiązać zapowiedź dostawy, faktyczną ilość, partię i właściwego właściciela. Osobna rejestracja różnicy pozwala ustalić, czy błąd powstał przy wysyłce, transporcie czy podczas odbioru.",
+      "ASN klienta B zawiera 6 palet, ale transport przywiózł 5 i jedną uszkodzoną etykietę. Operator zapisuje rzeczywistą dostawę i zgłasza brak do wyjaśnienia.",
+      "Przygotuj protokół przyjęcia: owner, ASN, expected, actual, damaged i osoba zgłaszająca."
+    ],
+    [
+      "Directed putaway nie oznacza, że system ma ignorować fizyczne ograniczenia lokacji.",
+      "Reguła odkładania powinna uwzględniać gabaryty, masę, dozwolony status zapasu i możliwość bezpiecznego dostępu. Zlecenie z nieprawidłową lokacją wymaga procedury wyjątku, a nie potwierdzenia ruchu, którego nie wykonano.",
+      "WMS wskazuje regał przeznaczony na 500 kg, a jednostka logistyczna waży 650 kg. Operator zatrzymuje czynność, sprawdza dane i zgłasza potrzebę innej lokacji.",
+      "Sporządź checklistę lokacji: wysokość, nośność, strefa, zgodność statusu i dostępność."
+    ]
+  ],
+  "manhattan-active-wms": [
+    [
+      "SKU może oznaczać konkretny wariant towaru, a lokalizacja adres magazynowy; nie są to pola zamienne.",
+      "Artykuł powinien mieć jednostkę, wariant i kod identyfikacyjny; lokacja ma oznaczenie, pojemność i ograniczenia. Ten sam SKU może być w kilku miejscach, a jedna strefa może zawierać wiele różnych SKU.",
+      "Artykuł SKU 123 jest dostępny w lokacjach A1 i B4, ale B4 przeznaczono dla zapasu rezerwowego. Wybór miejsca pobrania wymaga strategii systemu.",
+      "Narysuj strukturę: obiekt magazynowy, strefa, lokalizacja i dwa różne SKU."
+    ],
+    [
+      "Available jest często mniejszy od on-hand, nawet jeżeli żaden karton nie zniknął.",
+      "Ilość fizyczna może być objęta rezerwacją, kontrolą jakości lub innym ograniczeniem. Widoczność zapasu nie dowodzi możliwości jego alokacji; operator powinien sprawdzać odpowiedni status i decyzję systemu.",
+      "Na stanie jest 90 sztuk. 20 zarezerwowano dla zamówienia, a 10 jest niedostępnych jakościowo, więc przy tych założeniach available wynosi 60 sztuk.",
+      "Policz available dla 75 sztuk przy 15 rezerwacjach i 5 blokadach."
+    ],
+    [
+      "ASN jest informacją o spodziewanej dostawie, a receiving zapisuje rzeczywiście odebrane produkty.",
+      "Przyjęcie łączy skan, kontrolę ilości, identyfikację produktów i ewentualne wyjątki. Sam dokument ASN nie dowodzi, że towar jest już w magazynie lub może trafić do pickingu.",
+      "Dostawca zapowiada 12 kartonów, przyjeżdża 11. System rejestruje 11 oraz zgłoszenie różnicy; nie należy dopisywać brakującego kartonu dla wygody raportu.",
+      "Ułóż schemat przyjęcia, na którym jedna paleta wymaga weryfikacji ilości."
+    ],
+    [
+      "Putaway powinno kończyć się potwierdzeniem rzeczywistej lokalizacji, a nie wyłącznie zamknięciem zadania w systemie.",
+      "Po przyjęciu towar może zostać skierowany do strefy kontroli, zapasu rezerwowego lub lokacji kompletacyjnej. Wybór lokacji zależy od masy, wymiarów, rotacji i ewentualnych ograniczeń.",
+      "Pracownik otrzymuje zadanie odłożenia do lokacji A3, ale miejsce jest już zajęte. Nie powinien potwierdzić A3, jeśli odłożył paletę do B1 bez prawidłowego procesu zmiany.",
+      "Podaj kroki bezpiecznej obsługi niedostępnej lokacji: weryfikacja, wyjątek, nowe miejsce i potwierdzenie."
+    ],
+    [
+      "Numer seryjny identyfikuje pojedynczy egzemplarz, a partia grupę wyrobów z określonego przebiegu produkcyjnego.",
+      "Śledzenie lot/batch bywa konieczne dla ważności, jakości i ewentualnego wycofania. Numer seryjny ma inną granulację danych niż batch; system powinien zachowywać zależność między etykietą, miejscem i ruchem.",
+      "Producent wycofuje partię kosmetyków B-102. WMS musi pozwalać znaleźć ten batch nawet wtedy, gdy inne partie tego samego SKU pozostają bezpieczne.",
+      "Rozpisz trzy rekordy tego samego SKU z różnymi numerami partii i statusami."
+    ]
+  ],
+  "ongoing-wms": [
+    [
+      "W modelu 3PL goods owner jest kluczowym identyfikatorem: jeden magazyn może obsługiwać produkty o tym samym kodzie dla różnych firm.",
+      "Właściciel towaru, jego kartoteka oraz zamówienia przychodzące i wychodzące powinny pozostawać powiązane. Nie należy przenosić zapasu między ownerami bez uzgodnionego procesu, nawet jeśli produkty są fizycznie identyczne.",
+      "Sklep A i B sprzedają produkt SKU-1. Magazyn ma 15 sztuk A i 20 sztuk B; zamówienie A na 18 nie może wykorzystać trzech sztuk B bez właściwej dyspozycji.",
+      "Narysuj dwa niezależne bilanse zapasu dla właścicieli i spróbuj obsłużyć zamówienie A."
+    ],
+    [
+      "Article number może być identyczny u dwóch właścicieli, ale rzeczywiste rekordy towaru muszą pozostać rozróżnialne.",
+      "Kartoteka artykułu powinna uwzględniać identyfikator, jednostkę, kod kreskowy, wymiar opakowania i dane właściciela w odpowiedniej konfiguracji. Nie można zakładać, że widoczny opis produktu wystarcza do skanowania.",
+      "Dwa sklepy mają kod 100, lecz jeden sprzedaje rękawice, a drugi śruby. Integracja sklepu z WMS musi odróżnić ich dane, np. poprzez identyfikator ownera.",
+      "Zaprojektuj dwie kartoteki z takim samym kodem, ale innymi ownerami i nazwą towaru."
+    ],
+    [
+      "Warehouse location to nie tylko adres na etykiecie: system musi wiedzieć, jaki towar i w jakiej ilości w niej leży.",
+      "Lokacje mogą należeć do stref o różnych funkcjach. Przy potwierdzeniu przełożenia należy prawidłowo wskazać źródło i miejsce docelowe; w razie błędu skanu szuka się historii ruchu.",
+      "Operator przesuwa 7 kartonów z A-1 do B-2, ale potwierdza B-3. Fizyczny magazyn i zapis przestają się zgadzać, więc błąd wymaga korekty zgodnie z procedurą.",
+      "Narysuj trzy lokacje i prześledź przepływ siedmiu kartonów po jednym ruchu."
+    ],
+    [
+      "In order służy zwykle obsłudze przyjęcia, a out order przygotowaniu wysyłki — procesy mają odmienne zdarzenia i stany.",
+      "Zamówienie przychodzące powinno mieć ownera, SKU, ilość i powiązanie z przyjęciem, a wychodzące odbiorcę, alokację, kompletację i potwierdzenie wysyłki. Integracja może przekazywać inne statusy niż ekran magazyniera.",
+      "Sklep wysyła out order na 15 sztuk, ale dostępne jest tylko 12. Wymagana jest prawidłowa obsługa brakującej ilości, a nie potwierdzenie fikcyjnych trzech sztuk.",
+      "Przedstaw w dwóch kolumnach 5 kroków in order i out order wraz z punktami kontroli."
+    ],
+    [
+      "Integracja sklepu, ERP i WMS wymaga stabilnych identyfikatorów, aby po błędzie sieci nie powstało podwójne zlecenie.",
+      "W procesie wymiany danych śledzi się numer zamówienia, ownera, status oraz informację o potwierdzeniu. Ponowienie żądania powinno być bezpieczne; błędna synchronizacja nie może automatycznie prowadzić do drugiej wysyłki.",
+      "Sklep wysłał zamówienie 812, ale nie otrzymał odpowiedzi i ponowił wysyłkę. WMS powinien rozpoznać ten sam identyfikator zamiast bez weryfikacji utworzyć drugi out order.",
+      "Narysuj przepływ komunikacji z gałęzią: otrzymano potwierdzenie / brak odpowiedzi / bezpieczne ponowienie."
+    ]
+  ]
+}
