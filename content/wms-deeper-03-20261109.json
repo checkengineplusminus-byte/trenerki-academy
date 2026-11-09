@@ -1,0 +1,98 @@
+{
+  "oracle-wms-cloud": [
+    [
+      "Facility oznacza magazyn lub obiekt w konfiguracji, a location konkretny adres składowania; ich identyfikatory nie są zamienne.",
+      "W projekcie WMS określa się obiekt, strefy i lokacje. Adres może oznaczać miejsce paletowe, półkę lub obszar specjalny, a jego pojemność musi odpowiadać rzeczywistemu regałowi. Każdy ruch wymaga potwierdzenia miejsca docelowego.",
+      "Dwie lokacje mają podobne etykiety A1-01 i A1-10. Błędny skan przenosi zapis do innego miejsca, dlatego trzeba porównać adres pokazany w zadaniu z faktyczną etykietą.",
+      "Narysuj dwie strefy po cztery lokacje oraz kod każdej z nich."
+    ],
+    [
+      "SKU nie wystarcza do ilościowego zrozumienia zapasu bez UOM, czyli jednostki miary.",
+      "Jednostka bazowa może oznaczać sztukę, a jednostka obsługi karton lub paletę. Dobre dane pozwalają przeliczać ilości i kontrolować opakowania; błędna konwersja może prowadzić do pomyłek w alokacji i dokumentach.",
+      "Na magazyn trafia 5 kartonów po 20 sztuk. Jeśli UOM oznacza sztuki, zapis 5 zaniży stan względem faktycznych 100 sztuk.",
+      "Przelicz 7 kartonów po 15 sztuk i 4 pojedyncze sztuki na całkowity stan."
+    ],
+    [
+      "Typ zamówienia i status opisują różne informacje: kierunek procesu oraz jego aktualny etap.",
+      "Zamówienie może dotyczyć przyjęcia, przesunięcia lub wysyłki, a status pokazywać, czy zostało utworzone, rozpoczęte, częściowo wykonane lub zakończone. Nazwy i przejścia między statusami zależą od konfiguracji klienta.",
+      "Zlecenie na wysyłkę istnieje, ale kompletacja jeszcze nie ruszyła. System nie powinien deklarować, że towar opuścił magazyn.",
+      "Zaprojektuj prostą maszynę stanów: nowe, w pracy, wyjątek i zakończone."
+    ],
+    [
+      "ASN zapowiada towar, który powinien dotrzeć, a nie ilość automatycznie przyjętą na stan.",
+      "Dokument awizacyjny ułatwia planowanie rampy i przygotowanie danych. Przy rzeczywistym odbiorze operator potwierdza jednostki logistyczne, SKU, ilości i ewentualne różnice oraz stan uszkodzeń.",
+      "ASN zapowiada 100 sztuk, a przyjechało 4 kartony po 24. Fizyczna ilość wynosi 96; brak 4 sztuk jest odchyleniem do zgłoszenia.",
+      "Oblicz różnicę w dostawie i ułóż listę trzech kontroli przy rampie."
+    ],
+    [
+      "LPN identyfikuje jednostkę logistyczną, a nie pojedynczy produkt znajdujący się wewnątrz.",
+      "W WMS nośnik może zawierać jeden lub wiele SKU i ilości. Identyfikacja LPN umożliwia śledzenie przemieszczenia całego kontenera, ale zawartość musi nadal być prawidłowo odnotowana. Nie należy mieszać etykiety nośnika z etykietą produktu.",
+      "Paleta LPN-009 ma 3 SKU w łącznej liczbie 120 sztuk. Zeskanowanie samego kodu jednego SKU nie wystarczy do potwierdzenia całej palety.",
+      "Narysuj jedną paletę LPN i trzy SKU wraz z ilościami, a następnie wskaż, co identyfikuje każda etykieta."
+    ]
+  ],
+  "sap-ewm-magazyn": [
+    [
+      "Warehouse number jest nadrzędnym identyfikatorem magazynu w EWM, a storage type grupuje różne typy składowania.",
+      "Magazyn może zawierać strefę paletową, kompletacyjną i automatyczną. Każda storage type posiada lokalizacje, czyli storage bins. Ta hierarchia jest potrzebna do planowania operacji i prawidłowego wskazywania miejsca ruchu.",
+      "Warehouse 001 ma strefę PAL i PICK. Produkt może znajdować się w obu, ale każde pobranie musi wskazywać konkretny storage bin.",
+      "Narysuj warehouse 001 z dwiema storage types i trzema binami w każdej."
+    ],
+    [
+      "Storage bin to konkretny adres magazynowy, nie nazwa produktu ani numer transportu.",
+      "Storage bin identyfikuje fizyczne miejsce składowania. W EWM zadanie przemieszczenia towaru określa źródło i cel, a potwierdzenie musi odzwierciedlać rzeczywisty ruch. Lokacja zbyt mała lub zajęta wymaga obsługi wyjątku.",
+      "HU-55 ma zostać odłożona do A-01-02, ale operator widzi tam inny nośnik. Nie powinien potwierdzić A-01-02 bez rozwiązania konfliktu.",
+      "Zapisz dwa przykładowe adresy bin i wyjaśnij, jak sprawdzać ich zgodność ze skanerem."
+    ],
+    [
+      "Product master może zawierać jednostki, wymiary i dane potrzebne do bezpiecznego składowania, nie tylko nazwę handlową.",
+      "Dane produktu i informacje magazynowe muszą odpowiadać towarowi fizycznemu. Przeliczniki jednostek oraz gabaryty wpływają na wybór miejsca, kompletację i kontrolę nośności. Ustawienia różnią się w konkretnych wdrożeniach.",
+      "Kartoteka podaje wysokość palety 1,2 m, ale faktyczna jednostka ma 2,1 m. Wskazanie zbyt niskiej lokacji wymaga kontroli danych i zmiany decyzji.",
+      "Przygotuj rekord produktu: SKU, UOM, waga, objętość, wysokość i warunki składowania."
+    ],
+    [
+      "Handling Unit łączy opakowanie lub nośnik z zawartością; można ją identyfikować osobnym numerem.",
+      "HU może zawierać informacje o produkcie, ilości, partii oraz właściwościach jednostki logistycznej, a w określonych procesach zagnieżdżać inne HU. Warehouse task dla HU opisuje przeniesienie wskazanej jednostki ze źródła do celu.",
+      "HU-100 zawiera 10 kartonów po 12 sztuk. Przeniesienie HU nie powinno wymagać fikcyjnego potwierdzenia 120 osobnych ruchów, jeśli proces obsługuje nośnik jako całość.",
+      "Rozrysuj HU-100 z kartonami, SKU i dwoma adresami lokacji dla ruchu."
+    ],
+    [
+      "Inbound delivery jest dokumentem związanym z dostawą, a goods receipt potwierdza przyjęcie w odpowiednim procesie.",
+      "W EWM dostawa przychodząca pozwala organizować przyjęcie, kontrolę i dalsze zadania. Nie należy mylić istnienia dokumentu z faktycznym rozładunkiem ani z ukończonym putaway. Konkretne kolejności zależą od konfiguracji.",
+      "Inbound delivery obejmuje 5 HU, ale trzy dotarły do rampy, a dwie są nadal w trasie. Nie można potwierdzać całych 5 jako fizycznie odebranych tylko dlatego, że istnieje dokument.",
+      "Ułóż kolejność: zapowiedź, rozładunek, kontrola, goods receipt, putaway z uwzględnieniem zależności."
+    ]
+  ],
+  "sap-tm-transport": [
+    [
+      "SAP TM może przedstawiać plan transportu w różnych obszarach interfejsu zależnie od roli i wdrożenia.",
+      "Planista potrzebuje danych o zleceniach, nośnikach, trasach, przewoźnikach, kosztach i statusach. Nie każda rola ma prawo zmieniać przewoźnika czy zaakceptować koszt; podział uprawnień powinien być zgodny z odpowiedzialnością.",
+      "Planista widzi opóźniony freight order, ale nie może zmienić stawki przewoźnika. Powinien zgłosić decyzję osobie z właściwą rolą, zamiast obchodzić kontrolę kosztów.",
+      "Narysuj pulpity planisty i nadzoru: pola wspólne, odrębne zadania i zakres decyzji."
+    ],
+    [
+      "Freight unit opisuje potrzebę transportową, a niekoniecznie gotowy samochód ani przewoźnika.",
+      "Potrzeba zawiera informację o ładunku, miejscach, terminach oraz parametrach, które trzeba uwzględnić przy planowaniu. Kilka freight units może zostać zaplanowanych na jeden przewóz, jeśli pozwalają na to ograniczenia masy, objętości i czasu.",
+      "Dwie freight units mają ładunek po 8 m³, pojazd może pomieścić 20 m³. Sama objętość dopuszcza konsolidację, ale nadal trzeba sprawdzić masę i terminy.",
+      "Porównaj trzy freight units, wpisz ich wymiary i zdecyduj, które mogą pojechać razem."
+    ],
+    [
+      "Freight order organizuje wykonanie przewozu, dlatego zawiera więcej decyzji operacyjnych niż sama potrzeba transportowa.",
+      "W planowaniu określa się trasę, przewoźnika lub zasób, terminy i powiązane ładunki. Zmiana warunków może wymagać ponownej oceny dostępności pojazdu oraz aktualizacji statusów i komunikacji.",
+      "Zlecenie transportowe obejmuje dwa miejsca dostawy, ale drugi odbiorca zmienia okno czasowe. Planista powinien ponownie ocenić trasę i uzgodnić nowy termin.",
+      "Narysuj freight order z dwoma freight units, trzema punktami trasy i kolejnością dostaw."
+    ],
+    [
+      "Adres dostawy nie wystarcza do planowania, jeśli nie wiadomo, czy w miejscu może zatrzymać się ciężarówka.",
+      "Dane podstawowe lokalizacji obejmują identyfikację, adres, okna pracy i dodatkowe ograniczenia logistyczne. Wysokość bramy, zakaz wjazdu czy konieczność awizacji może całkowicie zmienić czas i koszt wykonania.",
+      "Trasa pokazuje 20 minut dojazdu, ale magazyn wymaga awizacji z godziną dostawy i nie obsługuje pojazdów powyżej określonej wysokości.",
+      "Zbuduj kartę lokalizacji: adres, okna czasowe, wysokość bramy, kontakt i zasady awizacji."
+    ],
+    [
+      "Pojazd może mieć wolną masę ładunkową, ale zbyt małą objętość na cały przewóz.",
+      "Przy doborze zasobu trzeba sprawdzić masę, objętość, gabaryty, rozmieszczenie ładunku i dopuszczalne obciążenia osi. Nie należy zakładać, że masa netto jest jedynym ograniczeniem pojazdu.",
+      "Ładunki A i B ważą łącznie 3 t, a limit pojazdu wynosi 5 t. Mają jednak objętość 24 m³ przy 20 m³ przestrzeni; plan jest niewykonalny bez zmian.",
+      "Policz dwa scenariusze: limit masy i limit objętości, wskaż ograniczenie decydujące."
+    ]
+  ]
+}
