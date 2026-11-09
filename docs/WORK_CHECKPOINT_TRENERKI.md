@@ -73,6 +73,16 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 **Następny kurs do podjęcia:** `gontarz` (obecnie 8 lekcji, 4 wymagają głębszej struktury), a potem pozostałe kursy z `docs/QUALITY_GAP_AUDIT_ALL_80_2026-11-09.md`. W każdej sesji w pierwszej kolejności odczytać świeży Supabase i checkpoint — nie zakładać niezmienności starej listy.
 
 
-## Harmonogram kontynuacji
-- 2026-11-09 utworzono automatyczne uruchomienie `Trenerki — kurs po kursie` od 2026-11-10 w porannym oknie czasu Europe/Oslo, codziennie, 77 iteracji (jedna docelowo na pozostały kurs).
-- Każde uruchomienie powinno pracować nad **jednym** jeszcze niezrealizowanym kursem oraz aktualizować ten checkpoint i SQL. Zapis harmonogramu nie gwarantuje powodzenia każdej iteracji ani 100% ukończenia bez ręcznego nadzoru. W przypadku błędu trzeba zachować status i ponowić po usunięciu przeszkody.
+## Harmonogram kontynuacji — aktualny stan
+- 2026-11-09 zmieniono istniejącą automatyzację „Trenerki — kurs po kursie” z codziennej na **co godzinę, bez automatycznego końca harmonogramu**. Aktualny RRULE `FREQ=HOURLY`, strefa `Europe/Oslo`.
+- Nie jest możliwe automatyczne samowznawianie po 10 minutach bezczynności — minimalna częstotliwość uruchamiania wynosi godzinę. Zawsze jednak po nowym uruchomieniu odczytaj ten checkpoint i DB, kontynuuj kolejny kurs, nie czekając na ręczne „kontynuuj”.
+- Każdy kurs dokumentuj osobno: GitHub content + odtwarzalny SQL + weryfikacja Supabase + ilustracje + aktualizacja tego checkpointu + status testów. Nie powtarzaj już opracowanych kursów.
+- **Powiadomienie końcowe:** Dopiero gdy rzeczywiście opracowano 80/80 indywidualnych kursów, wyślij użytkownikowi wiadomość z potwierdzeniem i listą niezakończonych recenzji oraz testów E2E/Expo. Nie traktuj numeru iteracji automatyzacji jako dowodu ukończenia.
+- Automatyczne uruchomienie może nie wykonać zadania, np. z powodu połączenia lub ograniczeń narzędzi. Zapisuj błędy w checkpoint zamiast twierdzić, że praca została wykonana.
+
+**Kurs 4: Gontarz — przebudowa treści zapisana, recenzja i E2E wymagane**
+- Przed 8 ogólnych lekcji, teraz **12** o numerach `0..11`; 12× pięć sekcji, 12 odrębnych pytań, 12 zestawów czterech odpowiedzi z feedbackiem i 12 zadań. QA Supabase potwierdziła `lessons=12`, `five_sections=12`, `unique_questions=12`, `four_options=12`, `four_feedback=12`, `tasks=12`, `revision4=12`.
+- Program indywidualny: rodzaje gontów, gatunki i włókna, łupanie/cięcie, rysunek i obliczanie połaci, ekspozycja, mijankowe styki, obróbki, wilgoć i wentylacja, diagnozowanie wad, renowacja zabytków, BHP na wysokości i obmiar.
+- GitHub `content/gontarz-masterclass-20261109-part1.json` (`0871fab3`), `part2.json` (`67cfa047`); cztery techniczne schematy i komponent (`62e4ac4b`); odtwarzalny patch `database/patches/trenerki-gontarz-content-20261109.sql` (`b5762f63`), audyt `docs/COURSE_REVIEW_GONTARZ_20261109.md` (`bdcc3710`).
+- Weryfikacja merytoryczna eksperta, przejście zalogowanego ucznia i potwierdzenie deployu Expo są nadal **niezakończone**. Nie zmieniano flag opublikowania, danych użytkownika, postępów ani płatności.
+- **Kolejny kurs:** sprawdź obecny stan `kaletnik-tradycja` w Supabase, a jeśli nadal nieprzebudowany, rozpocznij od jego specyficznego materiałoznawstwa, konstrukcji i pomiarów. Upewnij się, że licznik kursów odpowiada faktycznemu checkpointowi, nie tylko liczbie lekcji.
