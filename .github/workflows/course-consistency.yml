@@ -18,6 +18,8 @@ jobs:
         run: node scripts/check-content-consistency.mjs
       - name: Verify Anielka course discovery and consolidated sections
         run: node scripts/test-anielka.mjs
+      - name: Verify all 80 specific course illustrations and reduced motion
+        run: node scripts/test-course-icons.mjs
   web_bundle:
     runs-on: ubuntu-latest
     permissions:
