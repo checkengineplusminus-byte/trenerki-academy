@@ -1,0 +1,585 @@
+{
+  "scope": "machine_knowledge",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 10,
+      "title_pl": "11. Strugnica, imaki i tarniki: wyposażenie stanowiska",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Strugnica to stół roboczy z blatem, mechanizmami dociskowymi oraz elementami służącymi unieruchomieniu drewna. Imaki i zaciski utrzymują detal w pozycji do obróbki, ograniczając konieczność trzymania go ręką blisko ostrza. Solidność i stabilne ustawienie stołu wpływają na dokładność."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Tarniki rozpoznaje się po kształcie przekroju: płaskie, okrągłe i półokrągłe. Płaski nadaje się do powierzchni płaskich i łagodnie wypukłych, okrągły do powierzchni wklęsłych lub otworów, półokrągły łączy oba zastosowania. Dobór zależy od kształtu obrabianego miejsca i stopnia obróbki."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Sprawdź stabilność strugnicy, sposób docisku i brak luzów. Ustaw obrabiany element tak, by droga narzędzia omijała ciało. Wybierz tarnik pod kształt detalu i kontroluj efekt często, zamiast usunąć zbyt dużo materiału."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Trzeba dopracować zaokrąglone dno niewielkiego wgłębienia. Użycie szerokiego płaskiego tarnika grozi zniszczeniem krawędzi; narzędzie zaokrąglone lub półokrągłe pozwala dokładniej kontrolować profil."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Narysuj blat strugnicy, imak i zacisk. Porównaj trzy kształty tarnika, dopasowując je do powierzchni: płaska, wklęsła, mieszana."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Strugnica to stół roboczy z blatem, mechanizmami dociskowymi oraz elementami służącymi unieruchomieniu drewna. Imaki i zaciski utrzymują detal w pozycji do obróbki, ograniczając konieczność trzymania go ręką blisko ostrza. Solidność i stabilne ustawienie stołu wpływają na dokładność.",
+          "situation": "Trzeba dopracować zaokrąglone dno niewielkiego wgłębienia. Użycie szerokiego płaskiego tarnika grozi zniszczeniem krawędzi; narzędzie zaokrąglone lub półokrągłe pozwala dokładniej kontrolować profil.",
+          "example": "Narysuj blat strugnicy, imak i zacisk. Porównaj trzy kształty tarnika, dopasowując je do powierzchni: płaska, wklęsła, mieszana.",
+          "task": "Narysuj blat strugnicy, imak i zacisk. Porównaj trzy kształty tarnika, dopasowując je do powierzchni: płaska, wklęsła, mieszana.",
+          "question": "Który zestaw właściwie opisuje rozróżnienie tarników?",
+          "options": [
+            "Płaski do wszystkich otworów, okrągły tylko do powierzchni płaskich.",
+            "Płaski, okrągły i półokrągły — dobór zależy od geometrii obrabianej powierzchni.",
+            "Tylko drobnoziarnisty i gruboziarnisty — kształt nie ma znaczenia.",
+            "Tarniki służą wyłącznie do oznaczania wymiarów."
+          ],
+          "correct": 1,
+          "explanation": "Tarniki rozpoznaje się po kształcie przekroju: płaskie, okrągłe i półokrągłe. Płaski nadaje się do powierzchni płaskich i łagodnie wypukłych, okrągły do powierzchni wklęsłych lub otworów, półokrągły łączy oba zastosowania. Dobór zależy od kształtu obrabianego miejsca i stopnia obróbki.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. Tarniki rozpoznaje się po kształcie przekroju: płaskie, okrągłe i półokrągłe. Płaski nadaje się do powierzchni płaskich i łagodnie wypukłych, okrągły do powierzchni wklęsłych lub otworów, półokrągły łączy oba zastosowania. Dobór zależy od kształtu obrabianego miejsca i stopnia obróbki.",
+            "Dobrze. Tarniki rozpoznaje się po kształcie przekroju: płaskie, okrągłe i półokrągłe. Płaski nadaje się do powierzchni płaskich i łagodnie wypukłych, okrągły do powierzchni wklęsłych lub otworów, półokrągły łączy oba zastosowania. Dobór zależy od kształtu obrabianego miejsca i stopnia obróbki.",
+            "Rozważ funkcję podzespołu. Tarniki rozpoznaje się po kształcie przekroju: płaskie, okrągłe i półokrągłe. Płaski nadaje się do powierzchni płaskich i łagodnie wypukłych, okrągły do powierzchni wklęsłych lub otworów, półokrągły łączy oba zastosowania. Dobór zależy od kształtu obrabianego miejsca i stopnia obróbki.",
+            "Rozważ funkcję podzespołu. Tarniki rozpoznaje się po kształcie przekroju: płaskie, okrągłe i półokrągłe. Płaski nadaje się do powierzchni płaskich i łagodnie wypukłych, okrągły do powierzchni wklęsłych lub otworów, półokrągły łączy oba zastosowania. Dobór zależy od kształtu obrabianego miejsca i stopnia obróbki."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 11,
+      "title_pl": "12. Piła grzbietnica, ramowa i narzędzia do trasowania",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Grzbietnica ma stosunkowo cienki brzeszczot usztywniony od góry grzbietem, przez co pomaga wykonywać dokładne zacięcia, m.in. przy złączach. Piła ramowa utrzymuje brzeszczot w ramie z napinaniem. Obie mogą nadawać się do odmiennych prac, ale najważniejszy jest właściwy brzeszczot i sposób jego prowadzenia."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "W tradycyjnej pile ramowej pracują słupki, poprzeczka, naciąg i uchwyty brzeszczotu. Zmiana ustawienia uchwytów wpływa na orientację brzeszczotu. Do trasowania stosuje się miary, kątowniki, rysiki, sznury i przyrządy odpowiadające dokładności zadania."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Przed cięciem oznacz linię, ustaw i sprawdź brzeszczot oraz zamocuj materiał. Kontroluj, po której stronie linii ma być rzaz; odjęcie grubości rzazu od wymaganej długości powoduje błąd wymiarowy."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Masz wykonać dwa czopy o identycznej długości. Samo użycie precyzyjnej grzbietnicy nie wystarczy, jeśli przy drugim elemencie przeniesiesz bazę pomiaru na inną krawędź."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Sporządź szkic piły ramowej z naciągiem i dwoma uchwytami. Zaznacz grzbietnicę i porównaj zakres zastosowania. Zapisz, gdzie przebiega linia cięcia względem wymiaru końcowego."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Grzbietnica ma stosunkowo cienki brzeszczot usztywniony od góry grzbietem, przez co pomaga wykonywać dokładne zacięcia, m.in. przy złączach. Piła ramowa utrzymuje brzeszczot w ramie z napinaniem. Obie mogą nadawać się do odmiennych prac, ale najważniejszy jest właściwy brzeszczot i sposób jego prowadzenia.",
+          "situation": "Masz wykonać dwa czopy o identycznej długości. Samo użycie precyzyjnej grzbietnicy nie wystarczy, jeśli przy drugim elemencie przeniesiesz bazę pomiaru na inną krawędź.",
+          "example": "Sporządź szkic piły ramowej z naciągiem i dwoma uchwytami. Zaznacz grzbietnicę i porównaj zakres zastosowania. Zapisz, gdzie przebiega linia cięcia względem wymiaru końcowego.",
+          "task": "Sporządź szkic piły ramowej z naciągiem i dwoma uchwytami. Zaznacz grzbietnicę i porównaj zakres zastosowania. Zapisz, gdzie przebiega linia cięcia względem wymiaru końcowego.",
+          "question": "Co odróżnia grzbietnicę od tradycyjnej piły ramowej?",
+          "options": [
+            "Grzbietnica ma wzmocniony grzbiet brzeszczotu; piła ramowa utrzymuje brzeszczot naciągiem w ramie.",
+            "Grzbietnica ma tylko ruch silnikowy, a ramowa nie ma brzeszczotu.",
+            "Obie są urządzeniami wyłącznie do szlifowania.",
+            "Piła ramowa nie pozwala ustawiać brzeszczotu."
+          ],
+          "correct": 0,
+          "explanation": "W tradycyjnej pile ramowej pracują słupki, poprzeczka, naciąg i uchwyty brzeszczotu. Zmiana ustawienia uchwytów wpływa na orientację brzeszczotu. Do trasowania stosuje się miary, kątowniki, rysiki, sznury i przyrządy odpowiadające dokładności zadania.",
+          "feedback": [
+            "Dobrze. W tradycyjnej pile ramowej pracują słupki, poprzeczka, naciąg i uchwyty brzeszczotu. Zmiana ustawienia uchwytów wpływa na orientację brzeszczotu. Do trasowania stosuje się miary, kątowniki, rysiki, sznury i przyrządy odpowiadające dokładności zadania.",
+            "Rozważ funkcję podzespołu. W tradycyjnej pile ramowej pracują słupki, poprzeczka, naciąg i uchwyty brzeszczotu. Zmiana ustawienia uchwytów wpływa na orientację brzeszczotu. Do trasowania stosuje się miary, kątowniki, rysiki, sznury i przyrządy odpowiadające dokładności zadania.",
+            "Rozważ funkcję podzespołu. W tradycyjnej pile ramowej pracują słupki, poprzeczka, naciąg i uchwyty brzeszczotu. Zmiana ustawienia uchwytów wpływa na orientację brzeszczotu. Do trasowania stosuje się miary, kątowniki, rysiki, sznury i przyrządy odpowiadające dokładności zadania.",
+            "Rozważ funkcję podzespołu. W tradycyjnej pile ramowej pracują słupki, poprzeczka, naciąg i uchwyty brzeszczotu. Zmiana ustawienia uchwytów wpływa na orientację brzeszczotu. Do trasowania stosuje się miary, kątowniki, rysiki, sznury i przyrządy odpowiadające dokładności zadania."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 12,
+      "title_pl": "13. Piły: podziałka, rozwarcie i geometria zębów",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Podziałka zębów opisuje odległość między kolejnymi zębami, a rozwarcie oznacza odchylenie części zębów na boki, by powstający rzaz był szerszy od grubości brzeszczotu. Wpływa to na tarcie i ryzyko zakleszczenia. Uzębienie do cięcia wzdłuż włókien może różnić się od używanego poprzecznie."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Kąt natarcia, kąt ostrza, geometria zębów i liczba zębów nie są jedną uniwersalną wartością dla wszystkich pił i gatunków. Dobór zależy od rodzaju narzędzia, materiału i kierunku cięcia. Pojęcia trzeba rozumieć, a nie zapamiętywać jedną liczbę wyrwaną z kontekstu."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Rozpoznaj na schemacie: brzeszczot, ząb, podziałkę, rozwiedzenie i kierunek ruchu. Przy nieprawidłowej geometrii lub uszkodzeniu nie naprawiaj narzędzia improwizowaną metodą; kontrola i serwis wymagają właściwego wyposażenia."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Piła ma odpowiednio ostry ząb, ale klinuje się w rzazie. Przyczyną mogą być m.in. błędne rozwarcie, geometria lub nieprawidłowe prowadzenie materiału; sam nacisk nie usuwa źródła problemu."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Narysuj pięć kolejnych zębów i oznacz podziałkę. Następnie pokaż, jak rozwiedzenie zębów zmienia szerokość rzazu względem brzeszczotu."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Podziałka zębów opisuje odległość między kolejnymi zębami, a rozwarcie oznacza odchylenie części zębów na boki, by powstający rzaz był szerszy od grubości brzeszczotu. Wpływa to na tarcie i ryzyko zakleszczenia. Uzębienie do cięcia wzdłuż włókien może różnić się od używanego poprzecznie.",
+          "situation": "Piła ma odpowiednio ostry ząb, ale klinuje się w rzazie. Przyczyną mogą być m.in. błędne rozwarcie, geometria lub nieprawidłowe prowadzenie materiału; sam nacisk nie usuwa źródła problemu.",
+          "example": "Narysuj pięć kolejnych zębów i oznacz podziałkę. Następnie pokaż, jak rozwiedzenie zębów zmienia szerokość rzazu względem brzeszczotu.",
+          "task": "Narysuj pięć kolejnych zębów i oznacz podziałkę. Następnie pokaż, jak rozwiedzenie zębów zmienia szerokość rzazu względem brzeszczotu.",
+          "question": "Jaki jest zasadniczy cel rozwarcia zębów piły?",
+          "options": [
+            "Zwiększyć objętość drewna po cięciu.",
+            "Utworzyć rzaz zapewniający miejsce na brzeszczot i ograniczający zakleszczenie.",
+            "Zlikwidować różnice między drewnem miękkim i twardym.",
+            "Zastąpić ostrzenie każdego brzeszczotu."
+          ],
+          "correct": 1,
+          "explanation": "Kąt natarcia, kąt ostrza, geometria zębów i liczba zębów nie są jedną uniwersalną wartością dla wszystkich pił i gatunków. Dobór zależy od rodzaju narzędzia, materiału i kierunku cięcia. Pojęcia trzeba rozumieć, a nie zapamiętywać jedną liczbę wyrwaną z kontekstu.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. Kąt natarcia, kąt ostrza, geometria zębów i liczba zębów nie są jedną uniwersalną wartością dla wszystkich pił i gatunków. Dobór zależy od rodzaju narzędzia, materiału i kierunku cięcia. Pojęcia trzeba rozumieć, a nie zapamiętywać jedną liczbę wyrwaną z kontekstu.",
+            "Dobrze. Kąt natarcia, kąt ostrza, geometria zębów i liczba zębów nie są jedną uniwersalną wartością dla wszystkich pił i gatunków. Dobór zależy od rodzaju narzędzia, materiału i kierunku cięcia. Pojęcia trzeba rozumieć, a nie zapamiętywać jedną liczbę wyrwaną z kontekstu.",
+            "Rozważ funkcję podzespołu. Kąt natarcia, kąt ostrza, geometria zębów i liczba zębów nie są jedną uniwersalną wartością dla wszystkich pił i gatunków. Dobór zależy od rodzaju narzędzia, materiału i kierunku cięcia. Pojęcia trzeba rozumieć, a nie zapamiętywać jedną liczbę wyrwaną z kontekstu.",
+            "Rozważ funkcję podzespołu. Kąt natarcia, kąt ostrza, geometria zębów i liczba zębów nie są jedną uniwersalną wartością dla wszystkich pił i gatunków. Dobór zależy od rodzaju narzędzia, materiału i kierunku cięcia. Pojęcia trzeba rozumieć, a nie zapamiętywać jedną liczbę wyrwaną z kontekstu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 13,
+      "title_pl": "14. Pilarki tarczowe: rodzaje, prowadnice i klin",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Pilarki tarczowe można rozróżniać m.in. według kierunku cięcia względem włókien oraz według budowy i przeznaczenia: wzdłużne, poprzeczne, obrzynarki, rozdzielcze i inne urządzenia produkcyjne. Nazwa mówi o technologii, ale nie opisuje pełnej konfiguracji osłon czy możliwości konkretnego modelu."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Klin rozszczepiający (riving knife) znajduje się za tarczą w odpowiednich konstrukcjach pilarek i ogranicza zamykanie rzazu oraz ryzyko odrzutu. Jego położenie i kompatybilność muszą być zgodne z instrukcją producenta. Klin nie zastępuje pozostałych osłon i bezpiecznego prowadzenia."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Przed pracą sprawdź dokumentację i dopuszczalną tarczę, osłony, klin, prowadnicę, odciąg, stan zasilania i stabilność materiału. Wykonanie cięcia na urządzeniu rzeczywistym wymaga przeszkolenia, nie tylko przejścia testu online."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Pracownik chce zdjąć klin, bo w niektórych cięciach przeszkadza. Bez oceny zgodności sposobu pracy z instrukcją maszyny jest to niedopuszczalne obchodzenie zabezpieczenia."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Na schemacie pilarki zaznacz tarczę, klin, osłonę, prowadnicę i kierunek posuwu. Wyjaśnij, jak klin może ograniczyć ryzyko odrzutu materiału."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Pilarki tarczowe można rozróżniać m.in. według kierunku cięcia względem włókien oraz według budowy i przeznaczenia: wzdłużne, poprzeczne, obrzynarki, rozdzielcze i inne urządzenia produkcyjne. Nazwa mówi o technologii, ale nie opisuje pełnej konfiguracji osłon czy możliwości konkretnego modelu.",
+          "situation": "Pracownik chce zdjąć klin, bo w niektórych cięciach przeszkadza. Bez oceny zgodności sposobu pracy z instrukcją maszyny jest to niedopuszczalne obchodzenie zabezpieczenia.",
+          "example": "Na schemacie pilarki zaznacz tarczę, klin, osłonę, prowadnicę i kierunek posuwu. Wyjaśnij, jak klin może ograniczyć ryzyko odrzutu materiału.",
+          "task": "Na schemacie pilarki zaznacz tarczę, klin, osłonę, prowadnicę i kierunek posuwu. Wyjaśnij, jak klin może ograniczyć ryzyko odrzutu materiału.",
+          "question": "Co jest poprawnym stwierdzeniem o klinie rozszczepiającym?",
+          "options": [
+            "Zawsze zastępuje osłonę i prowadnicę.",
+            "Jest narzędziem do pomiaru wilgotności.",
+            "Ogranicza ryzyko zakleszczenia i odrzutu, jeśli jest prawidłowo dobrany oraz ustawiony.",
+            "Jego demontaż jest wymagany do każdego cięcia wzdłużnego."
+          ],
+          "correct": 2,
+          "explanation": "Klin rozszczepiający (riving knife) znajduje się za tarczą w odpowiednich konstrukcjach pilarek i ogranicza zamykanie rzazu oraz ryzyko odrzutu. Jego położenie i kompatybilność muszą być zgodne z instrukcją producenta. Klin nie zastępuje pozostałych osłon i bezpiecznego prowadzenia.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. Klin rozszczepiający (riving knife) znajduje się za tarczą w odpowiednich konstrukcjach pilarek i ogranicza zamykanie rzazu oraz ryzyko odrzutu. Jego położenie i kompatybilność muszą być zgodne z instrukcją producenta. Klin nie zastępuje pozostałych osłon i bezpiecznego prowadzenia.",
+            "Rozważ funkcję podzespołu. Klin rozszczepiający (riving knife) znajduje się za tarczą w odpowiednich konstrukcjach pilarek i ogranicza zamykanie rzazu oraz ryzyko odrzutu. Jego położenie i kompatybilność muszą być zgodne z instrukcją producenta. Klin nie zastępuje pozostałych osłon i bezpiecznego prowadzenia.",
+            "Dobrze. Klin rozszczepiający (riving knife) znajduje się za tarczą w odpowiednich konstrukcjach pilarek i ogranicza zamykanie rzazu oraz ryzyko odrzutu. Jego położenie i kompatybilność muszą być zgodne z instrukcją producenta. Klin nie zastępuje pozostałych osłon i bezpiecznego prowadzenia.",
+            "Rozważ funkcję podzespołu. Klin rozszczepiający (riving knife) znajduje się za tarczą w odpowiednich konstrukcjach pilarek i ogranicza zamykanie rzazu oraz ryzyko odrzutu. Jego położenie i kompatybilność muszą być zgodne z instrukcją producenta. Klin nie zastępuje pozostałych osłon i bezpiecznego prowadzenia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 14,
+      "title_pl": "15. Pilarka przenośna i łańcuchowa: napęd i smarowanie",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Pilarka ręczna tarczowa ma napęd, tarczę, osłony, podstawę/prowadzenie i mechanizmy regulacji. Pilarka łańcuchowa ma prowadnicę i łańcuch, a w urządzeniach spalinowych odpowiednio dobrany silnik. To różne maszyny, które wymagają osobnego przeszkolenia."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "W wielu spalinowych pilarkach łańcuchowych silnik dwusuwowy wymaga oleju do paliwa zgodnie z instrukcją, a osobny układ smaruje łańcuch oraz prowadnicę. Tych cieczy nie należy mylić. W modelach elektrycznych nie ma mieszanki paliwowej, lecz prowadnica może wymagać smarowania."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Przed pracą skontroluj dostępne osłony, stan łańcucha lub tarczy, właściwy materiał smarny, zabezpieczenie przed przypadkowym uruchomieniem i stan urządzenia. Nie ustalaj proporcji paliwa na pamięć — decyduje instrukcja danego modelu."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Użytkownik wlewa olej do smarowania łańcucha do układu, w którym producent przewidział inny olej do mieszanki dwusuwowej. Oba układy są odrębne i pomyłka może uszkodzić maszynę."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Zbuduj tabelę porównującą pilarkę tarczową przenośną, łańcuchową spalinową i elektryczną: element roboczy, źródło napędu, smarowanie i główne środki ochrony."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Pilarka ręczna tarczowa ma napęd, tarczę, osłony, podstawę/prowadzenie i mechanizmy regulacji. Pilarka łańcuchowa ma prowadnicę i łańcuch, a w urządzeniach spalinowych odpowiednio dobrany silnik. To różne maszyny, które wymagają osobnego przeszkolenia.",
+          "situation": "Użytkownik wlewa olej do smarowania łańcucha do układu, w którym producent przewidział inny olej do mieszanki dwusuwowej. Oba układy są odrębne i pomyłka może uszkodzić maszynę.",
+          "example": "Zbuduj tabelę porównującą pilarkę tarczową przenośną, łańcuchową spalinową i elektryczną: element roboczy, źródło napędu, smarowanie i główne środki ochrony.",
+          "task": "Zbuduj tabelę porównującą pilarkę tarczową przenośną, łańcuchową spalinową i elektryczną: element roboczy, źródło napędu, smarowanie i główne środki ochrony.",
+          "question": "Co odróżnia olej do smarowania łańcucha od oleju do mieszanki w silniku dwusuwowym?",
+          "options": [
+            "Są zawsze zamienne bez względu na instrukcję.",
+            "Olej łańcuchowy smaruje prowadnicę i łańcuch; inny, właściwy olej może być używany w paliwie silnika dwusuwowego.",
+            "Pierwszy służy do chłodzenia komory silnika, drugi do czyszczenia tarczy.",
+            "W pilarkach elektrycznych zawsze używa się mieszanki paliwowej."
+          ],
+          "correct": 1,
+          "explanation": "W wielu spalinowych pilarkach łańcuchowych silnik dwusuwowy wymaga oleju do paliwa zgodnie z instrukcją, a osobny układ smaruje łańcuch oraz prowadnicę. Tych cieczy nie należy mylić. W modelach elektrycznych nie ma mieszanki paliwowej, lecz prowadnica może wymagać smarowania.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. W wielu spalinowych pilarkach łańcuchowych silnik dwusuwowy wymaga oleju do paliwa zgodnie z instrukcją, a osobny układ smaruje łańcuch oraz prowadnicę. Tych cieczy nie należy mylić. W modelach elektrycznych nie ma mieszanki paliwowej, lecz prowadnica może wymagać smarowania.",
+            "Dobrze. W wielu spalinowych pilarkach łańcuchowych silnik dwusuwowy wymaga oleju do paliwa zgodnie z instrukcją, a osobny układ smaruje łańcuch oraz prowadnicę. Tych cieczy nie należy mylić. W modelach elektrycznych nie ma mieszanki paliwowej, lecz prowadnica może wymagać smarowania.",
+            "Rozważ funkcję podzespołu. W wielu spalinowych pilarkach łańcuchowych silnik dwusuwowy wymaga oleju do paliwa zgodnie z instrukcją, a osobny układ smaruje łańcuch oraz prowadnicę. Tych cieczy nie należy mylić. W modelach elektrycznych nie ma mieszanki paliwowej, lecz prowadnica może wymagać smarowania.",
+            "Rozważ funkcję podzespołu. W wielu spalinowych pilarkach łańcuchowych silnik dwusuwowy wymaga oleju do paliwa zgodnie z instrukcją, a osobny układ smaruje łańcuch oraz prowadnicę. Tych cieczy nie należy mylić. W modelach elektrycznych nie ma mieszanki paliwowej, lecz prowadnica może wymagać smarowania."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 15,
+      "title_pl": "16. Strugarka wyrówniarka, grubościówka i przygotowanie",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Wyrówniarka służy przede wszystkim uzyskaniu referencyjnej płaskiej powierzchni i właściwego kąta krawędzi, a grubościówka nadaje wymagany wymiar grubości względem powierzchni bazowej. Nie są to zamienne operacje: przepuszczenie krzywej deski przez grubościówkę bez ustalonej bazy nie gwarantuje jej wyprostowania."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Przygotowanie strugarki do pracy obejmuje stan ostrzy, mocowania i osłon, prowadnicy, stołów oraz mechanizmu posuwu. Ustawienia i konserwacja muszą odpowiadać instrukcji. Nie wykonuj regulacji przy niezabezpieczonym napędzie."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Zaplanuj obróbkę deski: najpierw wyznacz i przygotuj powierzchnię bazową, potem krawędź, następnie zgodnie z metodą i maszyną wymiar grubości. Po każdym etapie kontroluj płaskość, prostokątność i wymagany wymiar."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Zauważono, że po pracy na grubościówce deska wciąż ma skręt. Operator zamierza zdejmować kolejne warstwy materiału bez ustalenia bazy. Może tylko zmniejszyć jej grubość, nie rozwiązując przyczyny."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Zaprojektuj kartę dwóch maszyn: przeznaczenie, podstawowe elementy, przygotowanie, kontrola jakości. Wskaż, która operacja buduje płaszczyznę odniesienia."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Wyrówniarka służy przede wszystkim uzyskaniu referencyjnej płaskiej powierzchni i właściwego kąta krawędzi, a grubościówka nadaje wymagany wymiar grubości względem powierzchni bazowej. Nie są to zamienne operacje: przepuszczenie krzywej deski przez grubościówkę bez ustalonej bazy nie gwarantuje jej wyprostowania.",
+          "situation": "Zauważono, że po pracy na grubościówce deska wciąż ma skręt. Operator zamierza zdejmować kolejne warstwy materiału bez ustalenia bazy. Może tylko zmniejszyć jej grubość, nie rozwiązując przyczyny.",
+          "example": "Zaprojektuj kartę dwóch maszyn: przeznaczenie, podstawowe elementy, przygotowanie, kontrola jakości. Wskaż, która operacja buduje płaszczyznę odniesienia.",
+          "task": "Zaprojektuj kartę dwóch maszyn: przeznaczenie, podstawowe elementy, przygotowanie, kontrola jakości. Wskaż, która operacja buduje płaszczyznę odniesienia.",
+          "question": "Dlaczego krzywej deski nie powinno się uznawać za wyrównaną tylko po przejściu przez grubościówkę?",
+          "options": [
+            "Grubościówka może odwzorować nierówności, jeśli nie ma poprawnej bazy, a wyrównanie jest inną operacją.",
+            "Grubościówka zawsze sprawdza wilgotność, więc nie tworzy powierzchni.",
+            "Wyrówniarka nie jest urządzeniem mechanicznym.",
+            "Obie maszyny wyłącznie polerują drewno bez zdejmowania materiału."
+          ],
+          "correct": 0,
+          "explanation": "Przygotowanie strugarki do pracy obejmuje stan ostrzy, mocowania i osłon, prowadnicy, stołów oraz mechanizmu posuwu. Ustawienia i konserwacja muszą odpowiadać instrukcji. Nie wykonuj regulacji przy niezabezpieczonym napędzie.",
+          "feedback": [
+            "Dobrze. Przygotowanie strugarki do pracy obejmuje stan ostrzy, mocowania i osłon, prowadnicy, stołów oraz mechanizmu posuwu. Ustawienia i konserwacja muszą odpowiadać instrukcji. Nie wykonuj regulacji przy niezabezpieczonym napędzie.",
+            "Rozważ funkcję podzespołu. Przygotowanie strugarki do pracy obejmuje stan ostrzy, mocowania i osłon, prowadnicy, stołów oraz mechanizmu posuwu. Ustawienia i konserwacja muszą odpowiadać instrukcji. Nie wykonuj regulacji przy niezabezpieczonym napędzie.",
+            "Rozważ funkcję podzespołu. Przygotowanie strugarki do pracy obejmuje stan ostrzy, mocowania i osłon, prowadnicy, stołów oraz mechanizmu posuwu. Ustawienia i konserwacja muszą odpowiadać instrukcji. Nie wykonuj regulacji przy niezabezpieczonym napędzie.",
+            "Rozważ funkcję podzespołu. Przygotowanie strugarki do pracy obejmuje stan ostrzy, mocowania i osłon, prowadnicy, stołów oraz mechanizmu posuwu. Ustawienia i konserwacja muszą odpowiadać instrukcji. Nie wykonuj regulacji przy niezabezpieczonym napędzie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 16,
+      "title_pl": "17. Szlifierka taśmowa, cyklina, ośnik i materiały ścierne",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Szlifierka taśmowa wykorzystuje pas materiału ściernego prowadzony po kołach napędowym i napinającym. Do jej podstawowych elementów należą układ napędu, napinanie, prowadzenie taśmy, stół i osłony. Papier lub płótno ścierne różnią się nośnikiem i ziarnistością."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Cyklina i skrobak służą do usuwania cienkich warstw i wygładzania powierzchni, a ośnik z dwoma uchwytami może nadawać kształt belce lub służyć do zdejmowania kory. Dobór zależy od kierunku włókien i żądanej geometrii, nie tylko dostępności narzędzia."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Przy szlifowaniu rozróżnij obróbkę zgrubną od wykańczającej, zaplanuj właściwe ziarno i odpylanie. Sprawdź stan taśmy oraz jej prowadzenie. Do strugania ośnikiem mocuj materiał i utrzymuj bezpieczny tor ostrza."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Masz wyrównać drobny profil ręcznie. Nadmiernie agresywny tarnik może usunąć zbyt dużo, zaś cyklina służy bardziej do cienkiego zdejmowania i wygładzania, o ile geometria pozwala."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Narysuj szlifierkę taśmową z dwoma kołami i kierunkiem ruchu. Osobno przypisz zastosowanie cykliny, ośnika i trzech typów tarników."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Szlifierka taśmowa wykorzystuje pas materiału ściernego prowadzony po kołach napędowym i napinającym. Do jej podstawowych elementów należą układ napędu, napinanie, prowadzenie taśmy, stół i osłony. Papier lub płótno ścierne różnią się nośnikiem i ziarnistością.",
+          "situation": "Masz wyrównać drobny profil ręcznie. Nadmiernie agresywny tarnik może usunąć zbyt dużo, zaś cyklina służy bardziej do cienkiego zdejmowania i wygładzania, o ile geometria pozwala.",
+          "example": "Narysuj szlifierkę taśmową z dwoma kołami i kierunkiem ruchu. Osobno przypisz zastosowanie cykliny, ośnika i trzech typów tarników.",
+          "task": "Narysuj szlifierkę taśmową z dwoma kołami i kierunkiem ruchu. Osobno przypisz zastosowanie cykliny, ośnika i trzech typów tarników.",
+          "question": "Które narzędzie jest najbardziej kojarzone z ręcznym cienkim skrobaniem i wygładzaniem powierzchni drewna?",
+          "options": [
+            "Pilarka tarczowa wzdłużna.",
+            "Cyklina lub skrobak.",
+            "Trak pionowy ramowy.",
+            "Sprzęgło wału obrabiarki."
+          ],
+          "correct": 1,
+          "explanation": "Cyklina i skrobak służą do usuwania cienkich warstw i wygładzania powierzchni, a ośnik z dwoma uchwytami może nadawać kształt belce lub służyć do zdejmowania kory. Dobór zależy od kierunku włókien i żądanej geometrii, nie tylko dostępności narzędzia.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. Cyklina i skrobak służą do usuwania cienkich warstw i wygładzania powierzchni, a ośnik z dwoma uchwytami może nadawać kształt belce lub służyć do zdejmowania kory. Dobór zależy od kierunku włókien i żądanej geometrii, nie tylko dostępności narzędzia.",
+            "Dobrze. Cyklina i skrobak służą do usuwania cienkich warstw i wygładzania powierzchni, a ośnik z dwoma uchwytami może nadawać kształt belce lub służyć do zdejmowania kory. Dobór zależy od kierunku włókien i żądanej geometrii, nie tylko dostępności narzędzia.",
+            "Rozważ funkcję podzespołu. Cyklina i skrobak służą do usuwania cienkich warstw i wygładzania powierzchni, a ośnik z dwoma uchwytami może nadawać kształt belce lub służyć do zdejmowania kory. Dobór zależy od kierunku włókien i żądanej geometrii, nie tylko dostępności narzędzia.",
+            "Rozważ funkcję podzespołu. Cyklina i skrobak służą do usuwania cienkich warstw i wygładzania powierzchni, a ośnik z dwoma uchwytami może nadawać kształt belce lub służyć do zdejmowania kory. Dobór zależy od kierunku włókien i żądanej geometrii, nie tylko dostępności narzędzia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 17,
+      "title_pl": "18. Wiertarki, dłutarki, frezarki i tokarki do drewna",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Wiertarki wykonują otwory w materiale; mogą być ręczne, stołowe lub inne, zależnie od zastosowania. Dłutarki i frezarki potrafią mechanicznie wykonywać gniazda lub profile, które ręcznie formuje się dłutem. Rodzaj narzędzia i mocowania decyduje o dokładności oraz ograniczeniach kształtu."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Tokarki do drewna mają odmienne typy mocowania, m.in. między kłami i na tarczy. Obrabiany element obraca się podczas skrawania. Wybór urządzenia zależy od długości, kształtu, masy detalu i dopuszczalnych parametrów maszyny."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Ustal wymagany otwór lub profil, tolerancję, narzędzie oraz sposób bezpiecznego zamocowania. Nie zakładaj, że jedna wiertarka zastąpi dłutarkę do każdego gniazda. Kontroluj osiowość, głębokość i wymiary po obróbce."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Element ma gniazdo prostokątne. Zwykłe wiertło wytworzy otwór o przekroju określonym przez narzędzie; do gniazda o prostych krawędziach potrzeba innej technologii albo dodatkowej obróbki."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Porównaj pięć urządzeń w tabeli: wiertarka, dłutarka, frezarka, tokarka i strugarka. Dodaj typowy wyrób i sposób mocowania."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Wiertarki wykonują otwory w materiale; mogą być ręczne, stołowe lub inne, zależnie od zastosowania. Dłutarki i frezarki potrafią mechanicznie wykonywać gniazda lub profile, które ręcznie formuje się dłutem. Rodzaj narzędzia i mocowania decyduje o dokładności oraz ograniczeniach kształtu.",
+          "situation": "Element ma gniazdo prostokątne. Zwykłe wiertło wytworzy otwór o przekroju określonym przez narzędzie; do gniazda o prostych krawędziach potrzeba innej technologii albo dodatkowej obróbki.",
+          "example": "Porównaj pięć urządzeń w tabeli: wiertarka, dłutarka, frezarka, tokarka i strugarka. Dodaj typowy wyrób i sposób mocowania.",
+          "task": "Porównaj pięć urządzeń w tabeli: wiertarka, dłutarka, frezarka, tokarka i strugarka. Dodaj typowy wyrób i sposób mocowania.",
+          "question": "Jaki jest podstawowy cel operacji tokarskiej w drewnie?",
+          "options": [
+            "Przemieszczenie całego warsztatu do transportu.",
+            "Rozdzielenie surowca okrągłego na deski na trakach.",
+            "Obróbka skrawaniem obracającego się detalu o odpowiednim zamocowaniu.",
+            "Wyłącznie pomiar poziomu belki na budowie."
+          ],
+          "correct": 2,
+          "explanation": "Tokarki do drewna mają odmienne typy mocowania, m.in. między kłami i na tarczy. Obrabiany element obraca się podczas skrawania. Wybór urządzenia zależy od długości, kształtu, masy detalu i dopuszczalnych parametrów maszyny.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. Tokarki do drewna mają odmienne typy mocowania, m.in. między kłami i na tarczy. Obrabiany element obraca się podczas skrawania. Wybór urządzenia zależy od długości, kształtu, masy detalu i dopuszczalnych parametrów maszyny.",
+            "Rozważ funkcję podzespołu. Tokarki do drewna mają odmienne typy mocowania, m.in. między kłami i na tarczy. Obrabiany element obraca się podczas skrawania. Wybór urządzenia zależy od długości, kształtu, masy detalu i dopuszczalnych parametrów maszyny.",
+            "Dobrze. Tokarki do drewna mają odmienne typy mocowania, m.in. między kłami i na tarczy. Obrabiany element obraca się podczas skrawania. Wybór urządzenia zależy od długości, kształtu, masy detalu i dopuszczalnych parametrów maszyny.",
+            "Rozważ funkcję podzespołu. Tokarki do drewna mają odmienne typy mocowania, m.in. między kłami i na tarczy. Obrabiany element obraca się podczas skrawania. Wybór urządzenia zależy od długości, kształtu, masy detalu i dopuszczalnych parametrów maszyny."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 18,
+      "title_pl": "19. Mechanizmy napędowe i przełożenia pasowe",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Napęd przenosi energię z silnika na element roboczy, a mechanizm posuwu steruje ruchem materiału lub narzędzia względem siebie. Napęd bezpośredni i pośredni różnią się drogą przenoszenia ruchu. W napędzie pasowym przy braku poślizgu iloczyn średnicy i prędkości obrotowej koła napędowego jest zbliżony do iloczynu dla koła napędzanego."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Przykład ze źródłowego zestawu: silnik 1200 obr./min, koło na silniku 10 cm, wymagane obroty wału 2400 obr./min. Z zależności 1200 × 10 ≈ 2400 × d otrzymujemy d = 5 cm. To model teoretyczny bez poślizgu; rzeczywiste dopuszczalne obroty i parametry muszą określać projekt oraz producent urządzenia."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Zapisz znane wielkości wraz z jednostkami, narysuj dwa koła i oznacz kierunek przepływu napędu. Wyprowadź wzór, podstaw dane, sprawdź logicznie: mniejsze koło napędzane daje większą prędkość w idealnym układzie. Nie projektuj realnego układu wyłącznie na podstawie tego zadania."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "Uczniowi wychodzi koło o średnicy 20 cm i wał 2400 obr./min. Wynik przeczy zależności: większe koło napędzane przy takich danych obniżyłoby obroty. Brak kontroli sensowności może prowadzić do złych decyzji."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Policz na papierze n2 dla kół 8 i 16 cm przy n1 = 1400 obr./min. Wynik teoretyczny 700 obr./min. Wyjaśnij, dlaczego wynik nie jest dokładną specyfikacją prawdziwej maszyny."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Napęd przenosi energię z silnika na element roboczy, a mechanizm posuwu steruje ruchem materiału lub narzędzia względem siebie. Napęd bezpośredni i pośredni różnią się drogą przenoszenia ruchu. W napędzie pasowym przy braku poślizgu iloczyn średnicy i prędkości obrotowej koła napędowego jest zbliżony do iloczynu dla koła napędzanego.",
+          "situation": "Uczniowi wychodzi koło o średnicy 20 cm i wał 2400 obr./min. Wynik przeczy zależności: większe koło napędzane przy takich danych obniżyłoby obroty. Brak kontroli sensowności może prowadzić do złych decyzji.",
+          "example": "Policz na papierze n2 dla kół 8 i 16 cm przy n1 = 1400 obr./min. Wynik teoretyczny 700 obr./min. Wyjaśnij, dlaczego wynik nie jest dokładną specyfikacją prawdziwej maszyny.",
+          "task": "Policz na papierze n2 dla kół 8 i 16 cm przy n1 = 1400 obr./min. Wynik teoretyczny 700 obr./min. Wyjaśnij, dlaczego wynik nie jest dokładną specyfikacją prawdziwej maszyny.",
+          "question": "Silnik ma 1200 obr./min i koło pasowe 10 cm. Jakie koło na wale daje teoretycznie 2400 obr./min bez poślizgu?",
+          "options": [
+            "20 cm.",
+            "10 cm.",
+            "5 cm.",
+            "40 cm."
+          ],
+          "correct": 2,
+          "explanation": "Przykład ze źródłowego zestawu: silnik 1200 obr./min, koło na silniku 10 cm, wymagane obroty wału 2400 obr./min. Z zależności 1200 × 10 ≈ 2400 × d otrzymujemy d = 5 cm. To model teoretyczny bez poślizgu; rzeczywiste dopuszczalne obroty i parametry muszą określać projekt oraz producent urządzenia.",
+          "feedback": [
+            "Rozważ funkcję podzespołu. Przykład ze źródłowego zestawu: silnik 1200 obr./min, koło na silniku 10 cm, wymagane obroty wału 2400 obr./min. Z zależności 1200 × 10 ≈ 2400 × d otrzymujemy d = 5 cm. To model teoretyczny bez poślizgu; rzeczywiste dopuszczalne obroty i parametry muszą określać projekt oraz producent urządzenia.",
+            "Rozważ funkcję podzespołu. Przykład ze źródłowego zestawu: silnik 1200 obr./min, koło na silniku 10 cm, wymagane obroty wału 2400 obr./min. Z zależności 1200 × 10 ≈ 2400 × d otrzymujemy d = 5 cm. To model teoretyczny bez poślizgu; rzeczywiste dopuszczalne obroty i parametry muszą określać projekt oraz producent urządzenia.",
+            "Dobrze. Przykład ze źródłowego zestawu: silnik 1200 obr./min, koło na silniku 10 cm, wymagane obroty wału 2400 obr./min. Z zależności 1200 × 10 ≈ 2400 × d otrzymujemy d = 5 cm. To model teoretyczny bez poślizgu; rzeczywiste dopuszczalne obroty i parametry muszą określać projekt oraz producent urządzenia.",
+            "Rozważ funkcję podzespołu. Przykład ze źródłowego zestawu: silnik 1200 obr./min, koło na silniku 10 cm, wymagane obroty wału 2400 obr./min. Z zależności 1200 × 10 ≈ 2400 × d otrzymujemy d = 5 cm. To model teoretyczny bez poślizgu; rzeczywiste dopuszczalne obroty i parametry muszą określać projekt oraz producent urządzenia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 19,
+      "title_pl": "20. Posuw, sprzęgła, kontrola i konserwacja obrabiarek",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział maszynoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Co to jest i do czego służy",
+            "text": "Mechanizm posuwowy przemieszcza detal względem narzędzia, a napędowy przekazuje ruch roboczy. Sprzęgło może służyć do rozłączania lub łączenia części mechanizmu zgodnie z konstrukcją maszyny. Prędkość posuwu i prędkość skrawania to różne wielkości, dlatego nie można ich używać zamiennie."
+          },
+          {
+            "heading": "Budowa i zasada działania",
+            "text": "Przy przeglądzie sprawdza się stan osłon, prowadnic, łożysk, noży, mocowań, odpylania i układów napędowych. Nietypowe drgania, hałas, zapach przegrzania lub uszkodzony łącznik są powodami do wyłączenia maszyny z użycia do oceny. Regulacje wymagają bezpiecznego odłączenia energii."
+          },
+          {
+            "heading": "Przygotowanie do pracy i kontrola",
+            "text": "Ustal wymagany rezultat obróbki i wybierz maszynę, a następnie przeprowadź kontrolę przed użyciem. Po pracy oceń płaskość, wymiar, jakość krawędzi i brak uszkodzeń. Prace serwisowe wykonuje się wyłącznie według instrukcji i przez odpowiednio przygotowaną osobę."
+          },
+          {
+            "heading": "Przypadek praktyczny",
+            "text": "W warsztacie zwiększa się posuw, aby nadrobić opóźnienie. Na wyrobie pojawia się gorsza powierzchnia, a maszyna zaczyna wibrować. Zwiększanie obrotów bez diagnostyki nie jest rozwiązaniem."
+          },
+          {
+            "heading": "Ćwiczenie z odpowiedzią lub kryteriami",
+            "text": "Rozrysuj układ: silnik → napęd → element roboczy oraz osobno tor posuwu. Wymień pięć sytuacji, w których maszyna powinna zostać wycofana z użycia."
+          },
+          {
+            "heading": "Sprawdź kompetencję",
+            "text": "Pokaż na schemacie elementy narzędzia, opisz ich funkcje i porównaj wynik z wymaganiami. Umiejętność obsługi prawdziwej maszyny wymaga osobnego przeszkolenia."
+          }
+        ],
+        "learning": {
+          "intro": "Mechanizm posuwowy przemieszcza detal względem narzędzia, a napędowy przekazuje ruch roboczy. Sprzęgło może służyć do rozłączania lub łączenia części mechanizmu zgodnie z konstrukcją maszyny. Prędkość posuwu i prędkość skrawania to różne wielkości, dlatego nie można ich używać zamiennie.",
+          "situation": "W warsztacie zwiększa się posuw, aby nadrobić opóźnienie. Na wyrobie pojawia się gorsza powierzchnia, a maszyna zaczyna wibrować. Zwiększanie obrotów bez diagnostyki nie jest rozwiązaniem.",
+          "example": "Rozrysuj układ: silnik → napęd → element roboczy oraz osobno tor posuwu. Wymień pięć sytuacji, w których maszyna powinna zostać wycofana z użycia.",
+          "task": "Rozrysuj układ: silnik → napęd → element roboczy oraz osobno tor posuwu. Wymień pięć sytuacji, w których maszyna powinna zostać wycofana z użycia.",
+          "question": "Co przede wszystkim odróżnia posuw od napędu w obrabiarce?",
+          "options": [
+            "Posuw przemieszcza materiał/narzędzie względem siebie, napęd przenosi ruch roboczy.",
+            "Posuw smaruje łańcuch, a napęd przechowuje tarcicę.",
+            "Posuw i napęd oznaczają wyłącznie tę samą prędkość.",
+            "Napęd odpowiada za pomiar wilgotności, posuw za gęstość."
+          ],
+          "correct": 0,
+          "explanation": "Przy przeglądzie sprawdza się stan osłon, prowadnic, łożysk, noży, mocowań, odpylania i układów napędowych. Nietypowe drgania, hałas, zapach przegrzania lub uszkodzony łącznik są powodami do wyłączenia maszyny z użycia do oceny. Regulacje wymagają bezpiecznego odłączenia energii.",
+          "feedback": [
+            "Dobrze. Przy przeglądzie sprawdza się stan osłon, prowadnic, łożysk, noży, mocowań, odpylania i układów napędowych. Nietypowe drgania, hałas, zapach przegrzania lub uszkodzony łącznik są powodami do wyłączenia maszyny z użycia do oceny. Regulacje wymagają bezpiecznego odłączenia energii.",
+            "Rozważ funkcję podzespołu. Przy przeglądzie sprawdza się stan osłon, prowadnic, łożysk, noży, mocowań, odpylania i układów napędowych. Nietypowe drgania, hałas, zapach przegrzania lub uszkodzony łącznik są powodami do wyłączenia maszyny z użycia do oceny. Regulacje wymagają bezpiecznego odłączenia energii.",
+            "Rozważ funkcję podzespołu. Przy przeglądzie sprawdza się stan osłon, prowadnic, łożysk, noży, mocowań, odpylania i układów napędowych. Nietypowe drgania, hałas, zapach przegrzania lub uszkodzony łącznik są powodami do wyłączenia maszyny z użycia do oceny. Regulacje wymagają bezpiecznego odłączenia energii.",
+            "Rozważ funkcję podzespołu. Przy przeglądzie sprawdza się stan osłon, prowadnic, łożysk, noży, mocowań, odpylania i układów napędowych. Nietypowe drgania, hałas, zapach przegrzania lub uszkodzony łącznik są powodami do wyłączenia maszyny z użycia do oceny. Regulacje wymagają bezpiecznego odłączenia energii."
+          ]
+        }
+      }
+    }
+  ]
+}
