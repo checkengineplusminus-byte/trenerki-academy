@@ -1,0 +1,154 @@
+{
+  "bednarz": {
+    "topic": "Beczka drewniana: szczelność wynika z geometrii i włókien",
+    "material": "Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek. Dąb jest ceniony za trwałość i właściwości użytkowe; inne gatunki mogą być stosowane zależnie od przeznaczenia naczynia. Wilgotność i późniejsze pęcznienie zmieniają dopasowanie klepek, dlatego rozróżniaj naczynia do przechowywania cieczy i wyroby dekoracyjne.",
+    "process": "Dno, kształt klepek, wręga i obręcze muszą współpracować. Obręcz zapewnia docisk, ale sama nie uszczelni naczynia z pękniętą klepką. Kontroluj owalizację, szczeliny w stykach, pozycję dna oraz powierzchnie mające kontakt z żywnością.",
+    "failure": "Beczka przecieka przy jednym styku. Sprawdza się ciągłość włókien, dopasowanie krawędzi i stan obręczy; nie maskuje przecieku nieznanym klejem w naczyniu spożywczym.",
+    "task": "Porównaj trzy próbki deski: prostosłojną, sękatą i z pęknięciem. Zaznacz, która nadaje się na klepkę, i uzasadnij wybór.",
+    "icon": "wood"
+  },
+  "garncarz-tradycja": {
+    "topic": "Glina, szamot i szkliwo: trzy różne role",
+    "material": "Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się. Szamot, czyli wcześniej wypalony i rozdrobniony materiał ceramiczny, bywa dodawany do masy, by kontrolować skurcz i zachowanie wyrobu. Szkliwo po wypaleniu tworzy powłokę, której bezpieczeństwo kontaktu z żywnością wymaga odpowiedniego składu i procedury.",
+    "process": "O jakości decydują właściwe odpowietrzenie masy, grubość ścianek, równomierne suszenie i program wypału dopasowany do gliny i szkliwa. Pęknięcia w suszeniu często wynikają z nierównomiernego wysychania, nie z samego wyglądu koła garncarskiego.",
+    "failure": "Świeży dzban ma pęknięcie na dnie. Przed kolejną próbą sprawdź równomierność grubości i tempo suszenia. Nie zakładaj, że szkliwo naprawi wadę konstrukcyjną.",
+    "task": "Wyjaśnij na rysunku różnicę między surową gliną, wysuszonym czerepem i gotowym szkliwionym naczyniem. Wskaż moment występowania skurczu.",
+    "icon": "clay"
+  },
+  "gontarz": {
+    "topic": "Drewno na gont: kierunek włókien i odporność na wilgoć",
+    "material": "Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów. Gont łupany i cięty różnią się przebiegiem włókien oraz sposobem odprowadzania wody. Sęki, pęknięcia i nieprawidłowe składowanie mogą zmniejszać trwałość pokrycia.",
+    "process": "Na dachu znaczenie mają zakład, nachylenie połaci, wentylacja i elementy mocujące zgodne z projektem i lokalnymi wymogami. Kierunek ułożenia wpływa na spływ wody, a trwałe zawilgocenie sprzyja degradacji drewna.",
+    "failure": "Dach przecieka przy połączeniach gontów mimo użycia grubego drewna. Trzeba ocenić zakłady, spadek, mocowania i obróbki, a nie wymieniać wyłącznie przypadkowej deszczułki.",
+    "task": "Porównaj na schemacie gont z włóknami biegnącymi wzdłuż elementu oraz przeciętymi poprzecznie. Zaznacz drogę spływu wody.",
+    "icon": "roof"
+  },
+  "introligator-tradycja": {
+    "topic": "Papier, tektura, nici i klej: zgodność materiałów",
+    "material": "Papier ma kierunek włókien wpływający na jego zginanie i falowanie. Papier i tektury bezkwasowe są cenione w oprawach przeznaczonych do długiego przechowywania. Klej należy dobrać do podłoża, czasu schnięcia i odwracalności wymaganej przy konserwacji.",
+    "process": "Blok książki, grzbiet, wyklejka, okładka i kapitałka pełnią inne funkcje. Po szyciu lub klejeniu kontroluje się otwieranie, trwałość połączenia, równoległość grzbietu i brak śladów kleju na kartkach.",
+    "failure": "Oprawa po wyschnięciu wygina się. Powodem bywa przeciwny kierunek włókien papieru i okładziny lub nierówna wilgotność kleju; mocniejszy ścisk nie zawsze usuwa przyczynę.",
+    "task": "Zaznacz kierunek włókien na dwóch arkuszach i zaprojektuj układ warstw okładki, który ograniczy falowanie.",
+    "icon": "book"
+  },
+  "kaletnik-tradycja": {
+    "topic": "Skóra licowa, dwoina i materiały alternatywne",
+    "material": "Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości. Znaczenie ma rodzaj wyprawy, elastyczność, wytrzymałość na rozciąganie i odporność szwów. Materiały syntetyczne mogą inaczej reagować na kleje, wilgoć i zginanie.",
+    "process": "Kaletnik projektuje wykroje z uwzględnieniem kierunku rozciągliwości, zapasu na szew, krawędzi i obciążenia okuć. Szew w miejscu wielokrotnego zginania wymaga szczególnej kontroli; okucie musi być dopasowane do grubości warstw.",
+    "failure": "Pasek pęka obok metalowej sprzączki. Sama zmiana nici nie rozwiąże złego wykroju, ostrych krawędzi okucia lub nieodpowiedniego materiału.",
+    "task": "Rozpisz przekrój portfela: warstwa zewnętrzna, kieszenie, szew, krawędź i okucia. Określ, które miejsca pracują na zginanie.",
+    "icon": "leather"
+  },
+  "kolodziej": {
+    "topic": "Piasta, szprychy, dzwona i żelazna obręcz",
+    "material": "Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą. Dobór gatunku, przebiegu włókien i sezonowania wpływa na trwałość połączeń. Stalowa obręcz wymaga właściwego pasowania, bo drewno i metal różnie reagują na temperaturę i wilgoć.",
+    "process": "Konstrukcja musi pozostać osiowa, a połączenia wolne od nadmiernych luzów. Kontroluje się bicie koła, pęknięcia przy czopach szprych, zużycie tulei piasty i stan obręczy. Koło pojazdu nie jest wyrobem wyłącznie dekoracyjnym.",
+    "failure": "Koło ma wyraźne bicie boczne. Kontrola obejmuje ustawienie piasty, długości i osadzenie szprych oraz stan obręczy, zamiast ścinania przypadkowych wystających fragmentów.",
+    "task": "Narysuj koło z podpisaną piastą, szprychą, dzwonem i obręczą. Strzałkami zaznacz drogę sił od osi do podłoża.",
+    "icon": "wheel"
+  },
+  "ludwisarz": {
+    "topic": "Brąz dzwonowy, forma i ryzyko wad odlewniczych",
+    "material": "Brąz dzwonowy to stop miedzi i cyny. Skład stopu i geometria dzwonu wpływają na barwę i trwałość dźwięku; wysoka zawartość cyny może zwiększać kruchość. Forma odlewnicza musi mieć wytrzymałość i przepuszczalność gazów odpowiednie do procesu.",
+    "process": "Projekt obejmuje profil ściany, model, rdzeń, formę, zasilanie odlewu, chłodzenie i strojenie. Wady, takie jak pęcherze gazowe, jamy skurczowe i pęknięcia, wymagają odrębnej diagnostyki. Praca z ciekłym metalem wymaga specjalistycznego nadzoru i zabezpieczeń.",
+    "failure": "Dzwon ma piękny wygląd, ale zniekształcony ton i podejrzenie porowatości. Ocena nie może ograniczać się do szlifowania powierzchni; bada się geometrię i integralność materiału.",
+    "task": "Narysuj przekrój modelu dzwonu: forma zewnętrzna, rdzeń, wnęka na ciekły metal. Zaznacz, gdzie może powstać wada skurczowa.",
+    "icon": "bell"
+  },
+  "mlynarz-tradycyjny": {
+    "topic": "Ziarno: wilgotność, zanieczyszczenia i parametry mąki",
+    "material": "Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania. Przed mieleniem kontroluje się czystość, zapach, obecność szkodników i właściwe przygotowanie. Przy mące istotne są uziarnienie, popiół i zastosowanie kulinarne.",
+    "process": "Proces obejmuje przyjęcie, czyszczenie, kondycjonowanie zależnie od technologii, rozdrabnianie, odsiew i pakowanie. Pył mączny może tworzyć atmosferę wybuchową: instalacja wymaga odciągu i oceny ryzyka, nie improwizowanego zamiatania w pobliżu źródeł zapłonu.",
+    "failure": "W partii mąki pojawiają się ciemne cząstki. Ocenia się stan zboża, czystość odsiewacza i zużycie elementów mechanicznych; nie maskuje się problemu dodatkami.",
+    "task": "Ułóż schemat: ziarno — czyszczenie — mielenie — przesiewanie — mąka. Zaznacz punkty kontroli jakości i zagrożenia pyłowe.",
+    "icon": "grain"
+  },
+  "plecionkarz": {
+    "topic": "Wiklina i trzcina: elastyczność, wilgotność i trwałość",
+    "material": "Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością. Nawilżanie lub moczenie służy odzyskaniu podatności na zginanie, ale nadmiar wilgoci przy niewłaściwym przechowywaniu sprzyja pleśni. Pędy z pęknięciami i sękami mogą łamać się w ciasnych łukach.",
+    "process": "Kosz ma osnowę, splot i obrzeże. Osnowa stabilizuje kształt, a splot współpracuje z naprężeniem elementów; zbyt luźne rzędy prowadzą do deformacji, zbyt mocny naciąg do pęknięć.",
+    "failure": "Dno kosza wygina się pod niewielkim obciążeniem. Trzeba sprawdzić rozstaw i sztywność elementów osnowy oraz splot, a nie tylko dodać ozdobny uchwyt.",
+    "task": "Porównaj trzy pędy: suchy, prawidłowo elastyczny i nadmiernie namoczony. Opisz ryzyko dla ich obróbki i trwałości.",
+    "icon": "basket"
+  },
+  "powroznik": {
+    "topic": "Włókna, kierunek skrętu i wytrzymałość liny",
+    "material": "Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi. Lina powstaje przez skręcanie pojedynczych pasm i dalsze łączenie ich w przeciwnych kierunkach, aby uzyskać stabilny splot. Sam duży przekrój nie gwarantuje nośności.",
+    "process": "Na jakość wpływają równomierny naciąg, liczba pasm, ich skręt, połączenia i staranne zakończenie końców. Liny przeznaczone do podnoszenia ludzi i ładunków wymagają odpowiednich norm, oznaczeń i dopuszczeń; lina szkoleniowa nie może być do tego używana.",
+    "failure": "Lina na końcu zaczyna się rozkręcać. Najpierw ocenia się zabezpieczenie zakończenia i kierunek skrętu; nie uznaje jej za bezpieczną do dźwigania na podstawie samego wyglądu.",
+    "task": "Skręć na sucho papierowe paski w dwa kierunki i opisz, dlaczego w tradycyjnej linie ważna jest równowaga skrętów. Nie obciążaj takiego modelu.",
+    "icon": "rope"
+  },
+  "rymarz": {
+    "topic": "Skóra i okucia uprzęży: obciążenia oraz dobrostan zwierzęcia",
+    "material": "W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem. Dobór grubości, jakości włókien, wykończenia krawędzi i rodzaju okuć ma znaczenie dla trwałości oraz komfortu zwierzęcia. Zużyte szwy, ostre krawędzie metalowych okuć i krucha skóra mogą doprowadzić do zerwania połączenia.",
+    "process": "Szycie, mocowanie sprzączek i dobór długości pasów wymagają dopasowania do konkretnego zwierzęcia i użycia. Oprócz wytrzymałości ocenia się miejsca tarcia o ciało oraz symetrię uprzęży. Naprawy elementów krytycznych powinien wykonywać kompetentny rzemieślnik.",
+    "failure": "Koń ma obtarcie po zmianie uprzęży. Nie dokręca się ślepo pasków; sprawdza dopasowanie, krawędzie, materiały i ruch, a w razie obrażeń konsultuje weterynarza.",
+    "task": "Narysuj pas uprzęży z otworami i sprzączką; wskaż strefę największego obciążenia i dwie potencjalne przyczyny otarcia.",
+    "icon": "leather"
+  },
+  "sitarz": {
+    "topic": "Sito: wielkość oczka, materiał siatki i wydajność",
+    "material": "Rama może być drewniana lub metalowa, a materiał siatki dobiera się do cząstek i warunków pracy. Średnica drutu, wielkość oczka oraz powierzchnia otwarta wpływają na przepustowość i jakość rozdzielania materiału. Siatki stalowe mogą korodować; kontakt z żywnością wymaga właściwego materiału i higieny.",
+    "process": "Sito powinno mieć jednakową wielkość oczek, odpowiedni naciąg siatki i trwałe mocowanie do ramy. Jeśli naciąg jest nierówny, siatka faluje, a przesiewanie staje się mniej powtarzalne.",
+    "failure": "Drobiny większe od założonego wymiaru przechodzą przez sito. Sprawdź uszkodzone oczka, stan ramy i lokalne odkształcenia siatki, zamiast zwiększać szybkość przesiewania.",
+    "task": "Na schemacie pokaż trzy wielkości oczek i narysuj, które ziarna przejdą przez każdą z nich.",
+    "icon": "mesh"
+  },
+  "snycerz": {
+    "topic": "Drewno lipowe i dębowe: włókna, twardość i wykończenie",
+    "material": "Lipa zwykle jest miękka i łatwa w obróbce szczegółów, natomiast dąb ma wyraźniejszy rysunek słojów i większy opór podczas cięcia. Znaczenie ma kierunek włókien, sęki, mikropęknięcia i odpowiednie sezonowanie. Narzędzie tnące pracujące w poprzek włókien może wyrywać fragmenty drewna.",
+    "process": "Rzeźba powstaje od szkicu przez blokowanie bryły do detalu i wykończenia. W projekcie określa się głębokość ornamentu, ściany minimalne i widoczność wad; im drobniejszy detal, tym większe znaczenie ma stabilne mocowanie i ostrość dłuta.",
+    "failure": "Płatek rzeźbionego ornamentu wyłamuje się przy ostatnim cięciu. Analizuje się kierunek włókien i grubość mostka, a nie wyłącznie siłę dłuta.",
+    "task": "Porównaj rysunek słojów na dwóch deskach i wskaż kierunek, w którym dłuto może łatwiej wyrwać włókna.",
+    "icon": "wood"
+  },
+  "szewc-tradycja": {
+    "topic": "Cholewka, podeszwa i klej: strefy zginania obuwia",
+    "material": "Cholewki mogą być skórzane, tekstylne lub syntetyczne, a podeszwy gumowe lub z tworzyw o różnych właściwościach. Dobór kleju wymaga zgodności z obydwoma materiałami i właściwego przygotowania powierzchni. Strefa przodostopia wielokrotnie się zgina, więc sztywny materiał naprawczy może szybko pęknąć.",
+    "process": "Ocenia się stan cholewki, połączenia z podeszwą, stabilność obcasa i zużycie bieżnika. Szycie, klejenie oraz wymiana części to różne metody, których trwałość trzeba oceniać przy realnym ruchu buta.",
+    "failure": "Po sklejeniu odchodzi czubek podeszwy. Sprawdza się przygotowanie powierzchni, zgodność kleju i obciążenia podczas chodzenia. Dodatkowa warstwa przypadkowego kleju nie daje gwarancji.",
+    "task": "Narysuj but z podpisanymi elementami i zaznacz strefy zginania, ścierania i miejscowe połączenia klejone.",
+    "icon": "shoe"
+  },
+  "tkacz-reczny": {
+    "topic": "Osnowa, wątek, splot i właściwości włókien",
+    "material": "Osnowa to naprężone nitki biegnące wzdłuż tkaniny, a wątek przeplata się przez nie. Len zwykle mniej się rozciąga niż wełna, która sprężyście reaguje na naprężenia. Surowiec, skręt przędzy, gęstość tkania i wykończenie wpływają na grubość, elastyczność oraz skurcz gotowej tkaniny.",
+    "process": "Przed rozpoczęciem dobiera się długość osnowy z zapasem na straty i skurcz, a następnie kontroluje równe naprężenie. Zbyt małe napięcie daje nierówny splot; nadmierne napięcie może prowadzić do zrywania nitek.",
+    "failure": "Tkanina zwęża się na brzegach. Sprawdź rozpiętość wątku, napięcie osnowy i liczbę przeplotów, nie tylko szerokość ramy krosna.",
+    "task": "Narysuj splot płócienny: cztery pionowe nitki osnowy i cztery poziome wątku. Zaznacz przejścia nad i pod.",
+    "icon": "weave"
+  },
+  "woznica": {
+    "topic": "Powożenie: uprząż, koła, dyszel i komunikacja z koniem",
+    "material": "W tradycyjnym pojeździe współpracują drewno, metal i skóra. Drewno narażone jest na pęknięcia i zawilgocenie, metalowe sworznie na zużycie, a skórzane pasy uprzęży na rozciąganie i przecieranie. Niewłaściwie dopasowana uprząż może powodować ból oraz utratę kontroli nad pojazdem.",
+    "process": "Przed przejazdem doświadczony woźnica ocenia stan pojazdu i zgodność uprzęży z koniem, warunki trasy, zachowanie zwierzęcia i sposób komunikacji z pomocnikiem. Trening powożenia wymaga realnej praktyki z instruktorem, nie wyłącznie wiedzy historycznej.",
+    "failure": "Dyszel wykazuje pęknięcie przy okuciu. Nie kontynuuje się przejazdu; pojazd wycofuje się do fachowej kontroli i naprawy.",
+    "task": "Oznacz na rysunku koło, piastę, dyszel, pas uprzęży i lejce. Wskaż trzy punkty kontroli przed hipotetycznym przejazdem.",
+    "icon": "wheel"
+  },
+  "zdun-tradycja": {
+    "topic": "Kafle, szamot i materiały ogniotrwałe: praca w wysokiej temperaturze",
+    "material": "Piec kaflowy łączy elementy ceramiczne, materiały ogniotrwałe i spoiwa odporne na temperaturę. Cegły szamotowe i gliny ogniotrwałe różnią się od zwykłych zapraw budowlanych; rozszerzalność cieplna wymaga dopasowanych dylatacji i połączeń. Kafle są powłoką funkcjonalną i dekoracyjną, nie substytutem sprawnej drogi spalin.",
+    "process": "Projekt uwzględnia moc urządzenia, przewody dymowe, wentylację, odległości od materiałów palnych i odbiór przez uprawnione osoby zgodnie z przepisami. Nieszczelności mogą powodować wydostawanie się spalin, a tlenek węgla jest niewyczuwalny.",
+    "failure": "Piec ma pękniętą spoinę i czuć dym w pomieszczeniu. Nie rozpala się go ponownie do czasu fachowej oceny szczelności i przewodu spalinowego.",
+    "task": "Na przekroju pieca oznacz strefę spalania, kanał dymowy, materiał ogniotrwały, kafle i miejsce wymagające dylatacji.",
+    "icon": "kiln"
+  },
+  "zecer": {
+    "topic": "Czcionka metalowa, skład i próba drukarska",
+    "material": "Tradycyjna czcionka drukarska mogła zawierać stop ołowiu z dodatkami antymonu i cyny. Kontakt z ołowiem i pyłem wymaga właściwej higieny oraz ograniczenia narażenia; jest to materiał toksyczny. Papier wpływa na wchłanianie farby i ostrość odbicia, a zużyty metalowy materiał może zniekształcać znaki.",
+    "process": "Zecer układa znaki w wiersze i kolumny, stosuje odstępniki i kontroluje odbitkę próbną. Zła interlinia lub brak światła między znakami pogarszają czytelność; korekta materiału odbywa się przed właściwym nakładem.",
+    "failure": "W odbitce pojawiają się nierówne odstępy między wyrazami. Należy sprawdzić justowanie, skład i ustawienie formy, zamiast dopisywać farbę w miejscach przerw.",
+    "task": "Ułóż z papierowych prostokątów wiersz tytułu, podtytułu i tekstu. Ustal hierarchię wielkości i odległości między znakami.",
+    "icon": "type"
+  },
+  "zegarmistrz-tradycja": {
+    "topic": "Stal, mosiądz, kamienie łożyskowe i oleje zegarmistrzowskie",
+    "material": "W mechanizmie często stosuje się mosiężne koła zębate, stalowe wałki i sprężyny oraz syntetyczne kamienie łożyskowe ograniczające zużycie. Dobór oleju zależy od miejsca smarowania, prędkości i obciążenia; zbyt duża ilość środka smarnego przyciąga zabrudzenia i może pogarszać działanie.",
+    "process": "Naprawa rozpoczyna się od udokumentowania stanu, bezpiecznego rozładowania energii sprężyny przez fachowca, czyszczenia, oceny luzów i właściwego montażu. Pył i przypadkowe narzędzia mogą uszkodzić małe czopy lub koła.",
+    "failure": "Zegar zatrzymuje się mimo nasmarowania wszystkich kół. Sprawdza się tarcie, zużycie czopów, zabrudzenia i stan źródła energii, zamiast dolewać oleju.",
+    "task": "Narysuj trzy połączone koła zębate i wskaż przekazywanie ruchu oraz dwa miejsca, w których tarcie może zatrzymać mechanizm.",
+    "icon": "clock"
+  }
+}
