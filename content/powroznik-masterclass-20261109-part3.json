@@ -1,0 +1,249 @@
+{
+  "slug": "powroznik",
+  "lessons": [
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 8,
+      "title_pl": "9. Zakończenia: whipping, oczko i splot — różne funkcje",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Zastosowanie i ograniczenia",
+            "text": "Koniec liny skręcanej może się rozkręcać, dlatego stosuje się zabezpieczenia typu whipping/obszycie albo właściwe łączenia. Eye splice (zaplecenie oczka) polega na kontrolowanym przeprowadzeniu pasm zgodnie z konstrukcją, a zwykły węzeł to inna metoda. Nie każde zakończenie jest dozwolone przy określonym obciążeniu i zastosowaniu."
+          },
+          {
+            "heading": "Metoda i dokumentacja",
+            "text": "Przy opisie zakończenia rozdziel: materiał, liczbę pasm, kierunek skrętu, zalecaną metodę producenta, sposób oględzin i przeznaczenie. Samo zawiązanie supła lub oklejenie końca nie tworzy certyfikowanego zakończenia do podnoszenia ładunków."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Ktoś zrobił estetyczne oczko na linie, ale dokumentacja zakłada określone sploty wykonane przez fachowca. Brak odpowiedniego potwierdzenia oznacza brak podstaw do deklarowania wytrzymałości zakończenia."
+          },
+          {
+            "heading": "Decyzja zawodowa",
+            "text": "Klient chce zastąpić fabryczne zakończenie przypadkowym węzłem w linie przeznaczonej do pracy. Należy odmówić potwierdzenia bezpieczeństwa bez wymaganych danych i kwalifikacji."
+          },
+          {
+            "heading": "Praca końcowa",
+            "text": "Narysuj trzy metody: obszyte zakończenie, węzeł, splot oczka. Dla każdej wpisz cel i ograniczenia oraz dokumentację potrzebną w zastosowaniach nośnych."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.mazzellacompanies.com/solutions/product-warnings/cordage/"
+          }
+        ],
+        "learning": {
+          "intro": "Koniec liny skręcanej może się rozkręcać, dlatego stosuje się zabezpieczenia typu whipping/obszycie albo właściwe łączenia. Eye splice (zaplecenie oczka) polega na kontrolowanym przeprowadzeniu pasm zgodnie z konstrukcją, a zwykły węzeł to inna metoda. Nie każde zakończenie jest dozwolone przy określonym obciążeniu i zastosowaniu.",
+          "situation": "Klient chce zastąpić fabryczne zakończenie przypadkowym węzłem w linie przeznaczonej do pracy. Należy odmówić potwierdzenia bezpieczeństwa bez wymaganych danych i kwalifikacji.",
+          "task": "Narysuj trzy metody: obszyte zakończenie, węzeł, splot oczka. Dla każdej wpisz cel i ograniczenia oraz dokumentację potrzebną w zastosowaniach nośnych.",
+          "question": "Dlaczego zwykłe owinięcie końca liny taśmą nie potwierdza możliwości użycia jej jako zawiesia?",
+          "options": [
+            "Ponieważ taśma zawsze jest mocniejsza od liny.",
+            "Ponieważ zakończenie musi odpowiadać konstrukcji, obciążeniu i wymaganiom danego systemu.",
+            "Ponieważ liny skręcane nie mogą mieć żadnego zakończenia.",
+            "Ponieważ kolor taśmy musi być identyczny z kolorem włókna."
+          ],
+          "correct": 1,
+          "example": "Ponieważ zakończenie musi odpowiadać konstrukcji, obciążeniu i wymaganiom danego systemu.",
+          "explanation": "Wytrzymałość zakończenia wymaga właściwej technologii, kwalifikacji i oceny, nie kosmetycznego owinięcia.",
+          "feedback": [
+            "Nie. Wytrzymałość zakończenia wymaga właściwej technologii, kwalifikacji i oceny, nie kosmetycznego owinięcia.",
+            "Tak. Wytrzymałość zakończenia wymaga właściwej technologii, kwalifikacji i oceny, nie kosmetycznego owinięcia.",
+            "Nie. Wytrzymałość zakończenia wymaga właściwej technologii, kwalifikacji i oceny, nie kosmetycznego owinięcia.",
+            "Nie. Wytrzymałość zakończenia wymaga właściwej technologii, kwalifikacji i oceny, nie kosmetycznego owinięcia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 9,
+      "title_pl": "10. Siła zrywająca i obciążenie robocze — nie są tym samym",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Zastosowanie i ograniczenia",
+            "text": "Minimalna siła zrywająca (MBL) to parametr określany przez badanie i specyfikację liny, a obciążenie robocze zależy od zastosowania, współczynników bezpieczeństwa, stanu i całego układu połączeń. Nie istnieje jeden uniwersalny współczynnik bezpieczny dla każdego zastosowania."
+          },
+          {
+            "heading": "Metoda i dokumentacja",
+            "text": "W przykładzie czysto arytmetycznym lina z MBL=20 kN przy przyjętym przez właściwy system współczynniku 5 miałaby wynik 20/5=4 kN. Nie jest to upoważnienie do stosowania dowolnej liny z MBL=20 kN przy 4 kN obciążenia: trzeba znać przeznaczenie, normy, zakończenia i certyfikację."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Jeżeli założony roboczy model obciążenia wynosi 3 kN przy teoretycznym limicie 4 kN, margines wynosi 1 kN. Nie potwierdza to bezpieczeństwa systemu bez weryfikacji dynamicznych obciążeń i danych producenta."
+          },
+          {
+            "heading": "Decyzja zawodowa",
+            "text": "W warsztacie znaleziono ręcznie wykonaną linę bez znanej siły zrywającej. Pracownik chce nią podnieść pojazd. Nie wolno wyznaczyć udźwigu 'na oko' z liczby pasm."
+          },
+          {
+            "heading": "Praca końcowa",
+            "text": "Policz model 20/5=4 kN i porównaj z 3 kN. Wypisz 10 dokumentów lub warunków niezbędnych do rzeczywistej decyzji o dopuszczeniu liny do podnoszenia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.dco.uscg.mil/Our-Organization/Assistant-Commandant-for-Prevention-Policy-CG-5P/Traveling-Inspector-Staff-CG-5P-TI/Towing-Vessel-National-Center-of-Expertise/TugSafe/GGTowTermGear/"
+          }
+        ],
+        "learning": {
+          "intro": "Minimalna siła zrywająca (MBL) to parametr określany przez badanie i specyfikację liny, a obciążenie robocze zależy od zastosowania, współczynników bezpieczeństwa, stanu i całego układu połączeń. Nie istnieje jeden uniwersalny współczynnik bezpieczny dla każdego zastosowania.",
+          "situation": "W warsztacie znaleziono ręcznie wykonaną linę bez znanej siły zrywającej. Pracownik chce nią podnieść pojazd. Nie wolno wyznaczyć udźwigu 'na oko' z liczby pasm.",
+          "task": "Policz model 20/5=4 kN i porównaj z 3 kN. Wypisz 10 dokumentów lub warunków niezbędnych do rzeczywistej decyzji o dopuszczeniu liny do podnoszenia.",
+          "question": "Lina ma MBL 20 kN; w zadaniu matematycznym przyjęto dzielnik 5. Jaki jest wynik tego dzielenia?",
+          "options": [
+            "100 kN.",
+            "25 kN.",
+            "4 kN.",
+            "15 kN."
+          ],
+          "correct": 2,
+          "example": "4 kN.",
+          "explanation": "20/5=4 kN. Liczba nie zastępuje oceny rzeczywistego zastosowania ani certyfikatu.",
+          "feedback": [
+            "Nie. 20/5=4 kN. Liczba nie zastępuje oceny rzeczywistego zastosowania ani certyfikatu.",
+            "Nie. 20/5=4 kN. Liczba nie zastępuje oceny rzeczywistego zastosowania ani certyfikatu.",
+            "Tak. 20/5=4 kN. Liczba nie zastępuje oceny rzeczywistego zastosowania ani certyfikatu.",
+            "Nie. 20/5=4 kN. Liczba nie zastępuje oceny rzeczywistego zastosowania ani certyfikatu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 10,
+      "title_pl": "11. Pielęgnacja i przechowywanie: wilgoć, UV, chemia i deformacja",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Zastosowanie i ograniczenia",
+            "text": "Liny naturalne i syntetyczne wymagają różnych warunków magazynowania. Należy chronić je przed nieodpowiednią wilgotnością, wysoką temperaturą, promieniowaniem UV i zanieczyszczeniami niezgodnymi z materiałem. Nadmierne skręty, ostre krawędzie i przeciąganie po szorstkich powierzchniach przyspieszają zużycie."
+          },
+          {
+            "heading": "Metoda i dokumentacja",
+            "text": "Dla partii powinno się prowadzić identyfikację, historię użytkowania, terminy przeglądów i kryteria wycofania. Liny bez danych o pochodzeniu i wcześniejszym obciążeniu nie powinny być automatycznie dopuszczane do zadań wymagających potwierdzonej wytrzymałości."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Spośród 40 lin magazynowych 5 ma uszkodzenia mechaniczne, 4 ślady chemii, a 2 należą do obu grup. Unikalnych sztuk z oznakami niezgodności jest 5+4−2=7, czyli 17,5%."
+          },
+          {
+            "heading": "Decyzja zawodowa",
+            "text": "Stary powróz znaleziono w wilgotnym magazynie, z nieznanym przebiegiem użytkowania i bez etykiety. Może służyć do ekspozycji historycznej, ale nie można bez badań przywrócić mu statusu sprzętu nośnego."
+          },
+          {
+            "heading": "Praca końcowa",
+            "text": "Zbuduj rejestr 40 lin z numerem, materiałem, długością, stanem, warunkami przechowania, historią, datą kontroli i decyzją. Policz udział siedmiu niezgodnych sztuk."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.mazzellacompanies.com/solutions/product-warnings/cordage/"
+          }
+        ],
+        "learning": {
+          "intro": "Liny naturalne i syntetyczne wymagają różnych warunków magazynowania. Należy chronić je przed nieodpowiednią wilgotnością, wysoką temperaturą, promieniowaniem UV i zanieczyszczeniami niezgodnymi z materiałem. Nadmierne skręty, ostre krawędzie i przeciąganie po szorstkich powierzchniach przyspieszają zużycie.",
+          "situation": "Stary powróz znaleziono w wilgotnym magazynie, z nieznanym przebiegiem użytkowania i bez etykiety. Może służyć do ekspozycji historycznej, ale nie można bez badań przywrócić mu statusu sprzętu nośnego.",
+          "task": "Zbuduj rejestr 40 lin z numerem, materiałem, długością, stanem, warunkami przechowania, historią, datą kontroli i decyzją. Policz udział siedmiu niezgodnych sztuk.",
+          "question": "W 40 linach 5 ma wadę mechaniczną, 4 chemiczną, a 2 obie. Ile unikalnych sztuk ma widoczną wadę?",
+          "options": [
+            "9.",
+            "7.",
+            "5.",
+            "11."
+          ],
+          "correct": 1,
+          "example": "7.",
+          "explanation": "5+4−2=7, czyli 17,5% partii.",
+          "feedback": [
+            "Nie. 5+4−2=7, czyli 17,5% partii.",
+            "Tak. 5+4−2=7, czyli 17,5% partii.",
+            "Nie. 5+4−2=7, czyli 17,5% partii.",
+            "Nie. 5+4−2=7, czyli 17,5% partii."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "powroznik",
+      "lesson_no": 11,
+      "title_pl": "12. Projekt końcowy: lina demonstracyjna z kartą materiałową",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 10,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "craft-powroznik",
+        "sections": [
+          {
+            "heading": "Zastosowanie i ograniczenia",
+            "text": "Zadaniem końcowym jest zaprojektowanie modelu ekspozycyjnego trójpasmowej liny z włókien naturalnych. Nie jest to lina dopuszczona do dźwigania ani do asekuracji ludzi. Uczeń ma udokumentować materiał, warstwy konstrukcji, kierunki skrętu, długość, hipotetyczne skrócenie oraz właściwe ograniczenia zastosowania."
+          },
+          {
+            "heading": "Metoda i dokumentacja",
+            "text": "Załóż 30 m liny gotowej i szkolne skrócenie 12%: początkowa długość pasm 30/0,88≈34,09 m. Przy masie liniowej 0,18 kg/m gotowa lina waży teoretycznie 5,4 kg. Wymagana jest czytelna etykieta: wyłącznie model edukacyjny, bez dopuszczenia do podnoszenia."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Projekt zawiera trzy pasma, po osiem przędz, czyli 24 przędze łącznie; gotowa lina ma skręt Z, a pasma S. Model ma punkt odniesienia pomiaru lay length i kartę sześciu typowych wad."
+          },
+          {
+            "heading": "Decyzja zawodowa",
+            "text": "Klient chce po obejrzeniu demonstracji zastosować model do podnoszenia motocykla. Nie wolno zapewnić go o nośności ani sugerować zastosowania poza zakresem dokumentacji."
+          },
+          {
+            "heading": "Praca końcowa",
+            "text": "Oddaj widok liny i przekrój, schemat S/Z, BOM, rachunek długości i masy, kartę sześciu wad oraz dziesięć punktów odbioru. Dodaj wyjaśnienie, dlaczego model demonstracyjny nie może być używany do asekuracji i podnoszenia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło techniczne",
+            "url": "https://www.nps.gov/places/ropewalk-cny.htm"
+          }
+        ],
+        "learning": {
+          "intro": "Zadaniem końcowym jest zaprojektowanie modelu ekspozycyjnego trójpasmowej liny z włókien naturalnych. Nie jest to lina dopuszczona do dźwigania ani do asekuracji ludzi. Uczeń ma udokumentować materiał, warstwy konstrukcji, kierunki skrętu, długość, hipotetyczne skrócenie oraz właściwe ograniczenia zastosowania.",
+          "situation": "Klient chce po obejrzeniu demonstracji zastosować model do podnoszenia motocykla. Nie wolno zapewnić go o nośności ani sugerować zastosowania poza zakresem dokumentacji.",
+          "task": "Oddaj widok liny i przekrój, schemat S/Z, BOM, rachunek długości i masy, kartę sześciu wad oraz dziesięć punktów odbioru. Dodaj wyjaśnienie, dlaczego model demonstracyjny nie może być używany do asekuracji i podnoszenia.",
+          "question": "Dla 30 m liny i masy liniowej 0,18 kg/m jaka jest modelowa masa całej liny?",
+          "options": [
+            "0,54 kg.",
+            "1,8 kg.",
+            "18 kg.",
+            "5,4 kg."
+          ],
+          "correct": 3,
+          "example": "5,4 kg.",
+          "explanation": "30×0,18=5,4 kg; brak danych o rzeczywistym obciążeniu i certyfikacji.",
+          "feedback": [
+            "Nie. 30×0,18=5,4 kg; brak danych o rzeczywistym obciążeniu i certyfikacji.",
+            "Nie. 30×0,18=5,4 kg; brak danych o rzeczywistym obciążeniu i certyfikacji.",
+            "Nie. 30×0,18=5,4 kg; brak danych o rzeczywistym obciążeniu i certyfikacji.",
+            "Tak. 30×0,18=5,4 kg; brak danych o rzeczywistym obciążeniu i certyfikacji."
+          ]
+        }
+      }
+    }
+  ]
+}
