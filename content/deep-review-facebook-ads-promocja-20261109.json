@@ -1,0 +1,270 @@
+{
+  "course_slug": "facebook-ads-promocja",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Meta Ads Manager wykorzystuje strukturę kampania → zestaw reklam → reklama. Cel na poziomie kampanii powinien wynikać z działania, którego potrzebuje firma: wiadomości, jakościowe leady lub sprzedaż. Zasięg i aktywność nie są automatycznie sprzedażą. Reklamodawca powinien też ocenić politykę prywatności i zakres dopuszczalnego targetowania."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Zacznij od opisu produktu, geograficznego rynku, persony na podstawie rzeczywistych danych i budżetu. W przykładzie kursu lokalna firma obsługuje 30 km od Oslo, więc nie musi od razu reklamować się we wszystkich krajach. Sprawdź, czy cel ma weryfikowalne zdarzenie."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Reklama usług lokalnych dociera głównie do osób poza obszarem działania, ponieważ nikt nie sprawdził geografii."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Ułóż dwa warianty kampanii: pozyskanie zapytania i promocja postu. Wskaż, co naprawdę mierzy każdy z nich."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Meta wymaga właściwego zarządzania uprawnieniami do stron, kont reklamowych i zasobów biznesowych. Dostęp administratora nie powinien być udzielany przypadkowemu wykonawcy tylko dlatego, że obiecuje zasięgi. Potrzebne są uwierzytelnianie wieloskładnikowe, minimalne uprawnienia i historia zmian."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Zaprojektuj matrycę ról: właściciel biznesu, specjalista reklamowy, analityk. Dla każdej roli ustal zakres dostępu i czas jego obowiązywania. Weryfikuj, kto ma prawo zmieniać budżet i metodę płatności; nie udostępniaj loginów ani kodów 2FA."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Firma przekazała hasło do prywatnego profilu osobie, która miała jedynie przygotować jeden film reklamowy. Takie uprawnienia są nieproporcjonalne."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Przygotuj checklistę bezpieczeństwa konta, z kontrolą dostępu, płatności, uprawnień i planem odebrania dostępu."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Placement to miejsce prezentacji reklamy, np. różne powierzchnie Facebooka i Instagrama. Format materiału i zachowanie użytkownika mogą się różnić między feedem, relacjami i rolkami. Nie należy zakładać, że pionowy film i kwadratowa grafika bez sprawdzania dobrze wyglądają wszędzie."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Zaprojektuj formaty do feedu i Stories/Reels z czytelnym tekstem i widocznym najważniejszym elementem. Sprawdź podgląd każdego wybranego placementu, a wyniki oceniaj po mierzalnym celu, nie po subiektywnym wrażeniu samej miniatury."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Reklama ma długi tekst umieszczony tuż przy krawędzi pionowego kadru; przy wyświetleniu w relacji część informacji zasłania interfejs."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Narysuj dwie makiety kreacji, porównaj widoczne pola i opracuj checklistę podglądu mobilnego."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Dobra kreacja pokazuje problem odbiorcy, rzeczywistą ofertę, korzyść i jasne wezwanie do działania. Nie musi być krzykliwa: zbyt dużo ruchu i tekstu może utrudniać odczytanie komunikatu. Opis powinien być zgodny z produktem, a materiały powinny mieć prawa do wykorzystania."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Przygotuj dwa warianty 15-sekundowego filmu o usłudze serwisu auta: początek z konkretnym problemem, krótki proces, zakończenie ze sposobem kontaktu. Testuj jedną zmianę naraz, aby wiedzieć, co zadziałało."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Reklama obiecuje 'gwarantowaną naprawę każdego auta w godzinę', choć zakład nie ma takiej oferty."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Zapisz scenariusz krótkiego filmu i tabelę kontroli: prawdziwość twierdzeń, zgody, tekst, CTA i miejsce docelowe."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Budżet, harmonogram i reguły emisji wpływają na tempo pozyskiwania danych. Mały test z kilkoma wariantami pozwala sprawdzić komunikat, lecz wynik z niewielkiej liczby kliknięć bywa niestabilny. Nie zmieniaj jednocześnie kreacji, grupy odbiorców i oferty, jeśli chcesz przypisać różnicę do konkretnego czynnika."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Zaplanuj dwa warianty reklamy przy łącznym limicie 600 zł i równym podziale testu. Budżet 300 zł na wariant nie oznacza pewnej liczby konwersji. Zapisz czas testu, cel, dane wejściowe i kryterium przerwania, np. błąd formularza."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Kampania kosztuje już 500 zł, ale nie działa strona kontaktowa. Dalszy wydatek bez naprawy danych może być nieuzasadniony."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Opracuj test A/B dwóch kreacji i scenariusz zatrzymania wydatków, gdy zdarzenie nie jest poprawnie mierzone."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Meta może rejestrować zdarzenia przez właściwe rozwiązania pomiarowe, ale dane zależą od konfiguracji, zgód i sposobu przypisywania wyników. Kliknięcie nie jest automatycznie zakupem; samo otwarcie formularza nie oznacza jego wysłania. Pomiar wymaga testu prawidłowego zdarzenia i deduplikacji."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Narysuj łańcuch: użytkownik widzi reklamę → kliknięcie → formularz → potwierdzenie → zdarzenie lead. Zapisz identyfikator, typ, moment wywołania i narzędzie testujące. W EOG sprawdź wymagania zgód i ochrony danych."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Raport pokazuje 80 leadów, ale do firmy przyszło 8 formularzy, ponieważ system liczy otwarcie formularza zamiast wysłania."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Przygotuj plan testu pomiaru z jednym zdarzeniem prawdziwym, jednym nieprawidłowym i sprawdzeniem duplikatów."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Optymalizacja polega na analizie spójnych danych: koszt na wynik, liczba wyników, jakość zapytań, częstotliwość, kreacja i strona. Kliknięcia lub polubienia mogą być przydatnymi sygnałami, ale nie należy z nich automatycznie wyciągać wniosku o zysku. Zmiany wymagają okresu porównawczego i ostrożności przy małej próbie."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Przykład: reklama A kosztuje 400 zł i daje 8 prawidłowych leadów — 50 zł/lead. Reklama B kosztuje 300 zł i daje 3 leady — 100 zł/lead. Nie oznacza to jednak, że A zawsze jest lepsza: sprawdź jeszcze jakość i sprzedaż."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Reklama B ma więcej lajków, ale jej prawidłowe zapytania są droższe. Zmiana decyzji wyłącznie po polubieniach byłaby błędem."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Policz koszt na lead i zaproponuj trzy dodatkowe dane do sprawdzenia przed skalowaniem."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Skalowanie zwiększa zaangażowane środki i może zmienić zachowanie kampanii. Wynik testu na budżecie 100 zł nie gwarantuje zachowania identycznego CPA po zwiększeniu do 1000 zł. Przed skalowaniem weryfikuj zdolność firmy do obsługi kolejnych zamówień oraz możliwość mierzenia ich jakości."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Przy 10 leadach po 40 zł koszt pozyskania wynosi 400 zł. Jeśli firma może obsłużyć maksymalnie 15 nowych klientów tygodniowo, wzrost liczby leadów ponad tę pojemność może nie przełożyć się na wartość. Planuj test stopniowego zwiększenia i przegląd jakości."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Firma podwaja budżet, choć zespół nie odbiera telefonów od dotychczasowych klientów."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Zaprojektuj plan skalowania z limitami budżetu, pojemnością zespołu i progiem przerwania eksperymentu."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 8,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Test A/B wymaga jasnej hipotezy, jednego kluczowego elementu różniącego warianty i jednakowego sposobu pomiaru. Porównanie różnych kreacji wyświetlanych w zupełnie innych regionach może mieszać wpływ treści i odbiorców."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Wariant A: film pokazujący proces naprawy. Wariant B: opinia klienta za zgodą. Pozostałe warunki utrzymaj możliwie spójne. Zdefiniuj liczbę leadów, koszt i jakościowe kryterium oceny, a następnie sprawdź czy liczebność próby pozwala na sensowny wniosek."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Wariant A emitowano przez 7 dni, a B przez 2 dni z innym celem optymalizacji. Trudno przypisać różnicę tylko komunikatowi."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Zapisz hipotezę, niezależną zmienną, wspólne warunki i format tabeli wyników dwóch reklam."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 9,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Lead zawiera dane osoby, dlatego należy mieć właściwą podstawę prawną, informację o przetwarzaniu i ograniczony dostęp. Nie przenoś list kontaktowych do przypadkowych arkuszy i nie używaj ich do innych celów bez odpowiedniej podstawy. Przekazywanie danych między usługodawcami wymaga kontroli."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Dla formularza z imieniem, telefonem i preferowaną datą kontaktu zidentyfikuj cel każdego pola. Usuń dane, których nie potrzebujesz. Zaprojektuj retencję i uprawnienia dostępu, bez publikowania danych w grupach i arkuszach publicznych."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Osoba obsługująca reklamy pobiera pełną listę klientów na prywatny komputer, mimo że potrzebuje jedynie zagregowanego raportu."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Opracuj kartę danych: źródło, cel, pola, dostęp, przechowywanie i procedura usuwania."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 10,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Przy braku konwersji trzeba oddzielić problem emisji, kliknięć, strony, formularza, oferty i pomiaru. Wyłączenie reklamy z powodu jednej doby bez leadów może być pochopne, ale dalsze wydawanie pieniędzy przy niedziałającym formularzu jest również błędem."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Przykład diagnostyczny: 3000 wyświetleń, 100 kliknięć, 0 prawidłowo zarejestrowanych konwersji. W pierwszej kolejności wyślij testowy formularz i sprawdź tag oraz historię zgłoszeń; dopiero potem analizuj odbiorców, kreację i cel."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Reklama ma bardzo dobry CTR, lecz strona kontaktowa wyświetla błąd 404. Sama zmiana filmu nie pomoże."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Ułóż drzewo diagnostyczne od emisji do przychodu, zawierające sześć sprawdzalnych przyczyn."
+        }
+      ]
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 11,
+      "sections": [
+        {
+          "heading": "Zrozum system reklamowy",
+          "text": "Długotrwały rozwój reklam powinien obejmować budżet, proces obsługi leadów, kontrolę jakości sprzedaży i powtarzane testy. Poprzedni dobry wynik jest punktem odniesienia, a nie gwarancją. Dobrze zorganizowana firma potrafi oddzielić sezonowość, nowe kreacje i zmiany oferty."
+        },
+        {
+          "heading": "Jak skonfigurować i zmierzyć",
+          "text": "Zbuduj hipotetyczny plan 30 dni: tydzień 1 kontrola pomiaru, tydzień 2 test nowego komunikatu, tydzień 3 weryfikacja jakości leadów, tydzień 4 ostrożne zwiększenie budżetu z kontrolą CPA. Zapisz też scenariusz zatrzymania, jeśli wynik znacznie się pogorszy."
+        },
+        {
+          "heading": "Błąd w prawdziwej kampanii",
+          "text": "Kampania zwiększa zapytania, ale firma nie ma wolnych terminów przez miesiąc i klienci rezygnują."
+        },
+        {
+          "heading": "Ćwiczenie z decyzją",
+          "text": "Przygotuj końcowy plan kampanii z limitem finansowym, realną pojemnością obsługi i trzema miernikami efektywności."
+        }
+      ]
+    }
+  ]
+}
