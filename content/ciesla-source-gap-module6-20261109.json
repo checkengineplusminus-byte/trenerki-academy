@@ -1,0 +1,293 @@
+{
+  "course_slug": "ciesla-przygotowanie-czeladnicze",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 50,
+      "title_pl": "51. Kleszcze ciesielskie i narzędzia do trasowania",
+      "material": {
+        "module": 6,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.7; cieśla 2 s.11",
+        "sections": [
+          {
+            "heading": "Co oznacza pojęcie",
+            "text": "Kleszcze ciesielskie służą zależnie od typu do chwytania, wyciągania łączników lub operowania przy elementach. Przy trasowaniu używa się miary, kątownika, rysika, ołówka i sznura traserskiego. Narzędzie do oznaczania nie zastępuje przyrządu do sprawdzania pionu, poziomu lub kąta."
+          },
+          {
+            "heading": "Jak pracuje i kontroluje to cieśla",
+            "text": "Na szkicu belki o długości 2400 mm wyznacz punkt na 600 mm od bazy i wykonaj powtarzalne oznaczenie na kilku elementach. Sprawdź kątownikiem prostopadłość i zaznacz linię cięcia, nie myląc jej z linią wymiarową."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Podczas znakowania ekipa odmierzająca kolejny słupek zawsze mierzy od końca poprzedniego elementu, co kumuluje błędy."
+          },
+          {
+            "heading": "Ćwiczenie przed testem",
+            "text": "Przygotuj rysunek procesu „Kleszcze ciesielskie i narzędzia do trasowania”. Omów przypadek: Podczas znakowania ekipa odmierzająca kolejny słupek zawsze mierzy od końca poprzedniego elementu, co kumuluje błędy. Podaj niezbędną kontrolę techniczną oraz sposób udokumentowania wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Kleszcze ciesielskie służą zależnie od typu do chwytania, wyciągania łączników lub operowania przy elementach. Przy trasowaniu używa się miary, kątownika, rysika, ołówka i sznura traserskiego. Narzędzie do oznaczania nie zastępuje przyrządu do sprawdzania pionu, poziomu lub kąta.",
+          "situation": "Podczas znakowania ekipa odmierzająca kolejny słupek zawsze mierzy od końca poprzedniego elementu, co kumuluje błędy.",
+          "question": "Jak ograniczyć kumulację błędów przy trasowaniu wielu elementów?",
+          "options": [
+            "Ustalić wspólną bazę i kontrolować wymiarowanie przyrządami.",
+            "Mierzyć każdą następną sztukę od poprzedniej bez kontroli.",
+            "Używać tylko kolorowej kredy bez miary.",
+            "Nie porównywać wyników z rysunkiem."
+          ],
+          "correct": 0,
+          "example": "Ustalić wspólną bazę i kontrolować wymiarowanie przyrządami.",
+          "explanation": "Na szkicu belki o długości 2400 mm wyznacz punkt na 600 mm od bazy i wykonaj powtarzalne oznaczenie na kilku elementach. Sprawdź kątownikiem prostopadłość i zaznacz linię cięcia, nie myląc jej z linią wymiarową.",
+          "feedback": [
+            "Dobrze. Na szkicu belki o długości 2400 mm wyznacz punkt na 600 mm od bazy i wykonaj powtarzalne oznaczenie na kilku elementach. Sprawdź kątownikiem prostopadłość i zaznacz linię cięcia, nie myląc jej z linią wymiarową.",
+            "Ta odpowiedź nie spełnia warunków. Na szkicu belki o długości 2400 mm wyznacz punkt na 600 mm od bazy i wykonaj powtarzalne oznaczenie na kilku elementach. Sprawdź kątownikiem prostopadłość i zaznacz linię cięcia, nie myląc jej z linią wymiarową.",
+            "Ta odpowiedź nie spełnia warunków. Na szkicu belki o długości 2400 mm wyznacz punkt na 600 mm od bazy i wykonaj powtarzalne oznaczenie na kilku elementach. Sprawdź kątownikiem prostopadłość i zaznacz linię cięcia, nie myląc jej z linią wymiarową.",
+            "Ta odpowiedź nie spełnia warunków. Na szkicu belki o długości 2400 mm wyznacz punkt na 600 mm od bazy i wykonaj powtarzalne oznaczenie na kilku elementach. Sprawdź kątownikiem prostopadłość i zaznacz linię cięcia, nie myląc jej z linią wymiarową."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 51,
+      "title_pl": "52. Zalety i ograniczenia drewna w budownictwie",
+      "material": {
+        "module": 6,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.13; cieśla 2 s.13",
+        "sections": [
+          {
+            "heading": "Co oznacza pojęcie",
+            "text": "Drewno ma korzystny stosunek nośności do masy, jest obrabialne i może być surowcem odnawialnym przy właściwej gospodarce. Jednocześnie jest higroskopijne, palne i narażone na degradację biologiczną w nieodpowiednich warunkach. Nie istnieje uniwersalnie najlepszy materiał bez uwzględnienia projektu."
+          },
+          {
+            "heading": "Jak pracuje i kontroluje to cieśla",
+            "text": "Porównaj drewno z innymi materiałami dla małego elementu konstrukcyjnego: masa, obciążenie, wilgoć, ogień, transport, trwałość i koszty utrzymania. Zaznacz różnicę między własnością materiału a wymaganiem przepisów."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Klient twierdzi, że skoro drewno jest lekkie, nie trzeba sprawdzać fundamentu ani połączeń."
+          },
+          {
+            "heading": "Ćwiczenie przed testem",
+            "text": "Przygotuj rysunek procesu „Zalety i ograniczenia drewna w budownictwie”. Omów przypadek: Klient twierdzi, że skoro drewno jest lekkie, nie trzeba sprawdzać fundamentu ani połączeń. Podaj niezbędną kontrolę techniczną oraz sposób udokumentowania wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno ma korzystny stosunek nośności do masy, jest obrabialne i może być surowcem odnawialnym przy właściwej gospodarce. Jednocześnie jest higroskopijne, palne i narażone na degradację biologiczną w nieodpowiednich warunkach. Nie istnieje uniwersalnie najlepszy materiał bez uwzględnienia projektu.",
+          "situation": "Klient twierdzi, że skoro drewno jest lekkie, nie trzeba sprawdzać fundamentu ani połączeń.",
+          "question": "Które stwierdzenie o drewnie jest najbardziej poprawne?",
+          "options": [
+            "Drewno nigdy nie zmienia wymiarów po montażu.",
+            "Drewno łączy zalety obróbki i masy z wymaganiami ochrony przed wilgocią i ogniem.",
+            "Każde drewno ma identyczną klasę wytrzymałości.",
+            "Można pominąć obliczenia stateczności."
+          ],
+          "correct": 1,
+          "example": "Drewno łączy zalety obróbki i masy z wymaganiami ochrony przed wilgocią i ogniem.",
+          "explanation": "Porównaj drewno z innymi materiałami dla małego elementu konstrukcyjnego: masa, obciążenie, wilgoć, ogień, transport, trwałość i koszty utrzymania. Zaznacz różnicę między własnością materiału a wymaganiem przepisów.",
+          "feedback": [
+            "Ta odpowiedź nie spełnia warunków. Porównaj drewno z innymi materiałami dla małego elementu konstrukcyjnego: masa, obciążenie, wilgoć, ogień, transport, trwałość i koszty utrzymania. Zaznacz różnicę między własnością materiału a wymaganiem przepisów.",
+            "Dobrze. Porównaj drewno z innymi materiałami dla małego elementu konstrukcyjnego: masa, obciążenie, wilgoć, ogień, transport, trwałość i koszty utrzymania. Zaznacz różnicę między własnością materiału a wymaganiem przepisów.",
+            "Ta odpowiedź nie spełnia warunków. Porównaj drewno z innymi materiałami dla małego elementu konstrukcyjnego: masa, obciążenie, wilgoć, ogień, transport, trwałość i koszty utrzymania. Zaznacz różnicę między własnością materiału a wymaganiem przepisów.",
+            "Ta odpowiedź nie spełnia warunków. Porównaj drewno z innymi materiałami dla małego elementu konstrukcyjnego: masa, obciążenie, wilgoć, ogień, transport, trwałość i koszty utrzymania. Zaznacz różnicę między własnością materiału a wymaganiem przepisów."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 52,
+      "title_pl": "53. Napęd bezpośredni i pośredni w obrabiarce",
+      "material": {
+        "module": 6,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.17; cieśla 2 s.1,13",
+        "sections": [
+          {
+            "heading": "Co oznacza pojęcie",
+            "text": "Napęd bezpośredni przekazuje ruch z silnika do narzędzia bez pośredniego układu przekładniowego w rozpatrywanym schemacie. Napęd pośredni wykorzystuje np. pasy i koła albo przekładnie, które mogą zmieniać obroty i moment. Oba rozwiązania wymagają osłon i zgodnych z konstrukcją nastaw."
+          },
+          {
+            "heading": "Jak pracuje i kontroluje to cieśla",
+            "text": "Na dwóch schematach pokaż silnik, wał obrabiarki, układ pasowy i urządzenie robocze. Przy napędzie pośrednim zaznacz obydwa koła oraz sprawdź prędkość z właściwego równania. Przy zmianach w rzeczywistej maszynie obowiązują instrukcje i dopuszczalne parametry."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Monter widzi pas pomiędzy silnikiem a wałem obrabiarki i nazywa ten układ napędem bezpośrednim."
+          },
+          {
+            "heading": "Ćwiczenie przed testem",
+            "text": "Przygotuj rysunek procesu „Napęd bezpośredni i pośredni w obrabiarce”. Omów przypadek: Monter widzi pas pomiędzy silnikiem a wałem obrabiarki i nazywa ten układ napędem bezpośrednim. Podaj niezbędną kontrolę techniczną oraz sposób udokumentowania wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Napęd bezpośredni przekazuje ruch z silnika do narzędzia bez pośredniego układu przekładniowego w rozpatrywanym schemacie. Napęd pośredni wykorzystuje np. pasy i koła albo przekładnie, które mogą zmieniać obroty i moment. Oba rozwiązania wymagają osłon i zgodnych z konstrukcją nastaw.",
+          "situation": "Monter widzi pas pomiędzy silnikiem a wałem obrabiarki i nazywa ten układ napędem bezpośrednim.",
+          "question": "Który przykład opisuje napęd pośredni?",
+          "options": [
+            "Silnik i głowica na wspólnym wale bez dodatkowego przeniesienia.",
+            "Układ, w którym nie występuje przeniesienie energii.",
+            "Silnik, koło pasowe, pas i drugie koło na wale roboczym.",
+            "Rysunek przekroju belki bez maszyny."
+          ],
+          "correct": 2,
+          "example": "Silnik, koło pasowe, pas i drugie koło na wale roboczym.",
+          "explanation": "Na dwóch schematach pokaż silnik, wał obrabiarki, układ pasowy i urządzenie robocze. Przy napędzie pośrednim zaznacz obydwa koła oraz sprawdź prędkość z właściwego równania. Przy zmianach w rzeczywistej maszynie obowiązują instrukcje i dopuszczalne parametry.",
+          "feedback": [
+            "Ta odpowiedź nie spełnia warunków. Na dwóch schematach pokaż silnik, wał obrabiarki, układ pasowy i urządzenie robocze. Przy napędzie pośrednim zaznacz obydwa koła oraz sprawdź prędkość z właściwego równania. Przy zmianach w rzeczywistej maszynie obowiązują instrukcje i dopuszczalne parametry.",
+            "Ta odpowiedź nie spełnia warunków. Na dwóch schematach pokaż silnik, wał obrabiarki, układ pasowy i urządzenie robocze. Przy napędzie pośrednim zaznacz obydwa koła oraz sprawdź prędkość z właściwego równania. Przy zmianach w rzeczywistej maszynie obowiązują instrukcje i dopuszczalne parametry.",
+            "Dobrze. Na dwóch schematach pokaż silnik, wał obrabiarki, układ pasowy i urządzenie robocze. Przy napędzie pośrednim zaznacz obydwa koła oraz sprawdź prędkość z właściwego równania. Przy zmianach w rzeczywistej maszynie obowiązują instrukcje i dopuszczalne parametry.",
+            "Ta odpowiedź nie spełnia warunków. Na dwóch schematach pokaż silnik, wał obrabiarki, układ pasowy i urządzenie robocze. Przy napędzie pośrednim zaznacz obydwa koła oraz sprawdź prędkość z właściwego równania. Przy zmianach w rzeczywistej maszynie obowiązują instrukcje i dopuszczalne parametry."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 53,
+      "title_pl": "54. Piła ramowa i nastawianie kąta cięcia",
+      "material": {
+        "module": 6,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.5,7,19; cieśla 2 s.1",
+        "sections": [
+          {
+            "heading": "Co oznacza pojęcie",
+            "text": "Tradycyjna piła ramowa posiada elementy ramy oraz naciąg pozwalający napiąć brzeszczot. Ustawienie brzeszczotu względem ramy zależy od rozwiązania uchwytów. Przy nowoczesnych pilarkach kąty ustawia się wyłącznie zgodnie z instrukcją i kontroluje przyrządem lub próbnym detalem."
+          },
+          {
+            "heading": "Jak pracuje i kontroluje to cieśla",
+            "text": "Na schemacie piły ramowej oznacz brzeszczot, słupki, poprzeczkę, uchwyty i naciąg. Porównaj ustawienie narzędzia pod kątem z odczytem kątownika; rozróżniaj kąt cięcia od kształtu uzębienia."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Uczeń zmienia ustawienie piły bez zabezpieczenia i nie sprawdza kąta na gotowym elemencie."
+          },
+          {
+            "heading": "Ćwiczenie przed testem",
+            "text": "Przygotuj rysunek procesu „Piła ramowa i nastawianie kąta cięcia”. Omów przypadek: Uczeń zmienia ustawienie piły bez zabezpieczenia i nie sprawdza kąta na gotowym elemencie. Podaj niezbędną kontrolę techniczną oraz sposób udokumentowania wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Tradycyjna piła ramowa posiada elementy ramy oraz naciąg pozwalający napiąć brzeszczot. Ustawienie brzeszczotu względem ramy zależy od rozwiązania uchwytów. Przy nowoczesnych pilarkach kąty ustawia się wyłącznie zgodnie z instrukcją i kontroluje przyrządem lub próbnym detalem.",
+          "situation": "Uczeń zmienia ustawienie piły bez zabezpieczenia i nie sprawdza kąta na gotowym elemencie.",
+          "question": "Która czynność powinna towarzyszyć zmianie kąta cięcia?",
+          "options": [
+            "Sprawdzenie ustawienia oraz wymiaru próbnego detalu zgodnie z instrukcją.",
+            "Pomijanie kontroli, jeśli wygląda poprawnie.",
+            "Zwiększenie prędkości niezależnie od osprzętu.",
+            "Wyłączenie wszystkich osłon dla wygody."
+          ],
+          "correct": 0,
+          "example": "Sprawdzenie ustawienia oraz wymiaru próbnego detalu zgodnie z instrukcją.",
+          "explanation": "Na schemacie piły ramowej oznacz brzeszczot, słupki, poprzeczkę, uchwyty i naciąg. Porównaj ustawienie narzędzia pod kątem z odczytem kątownika; rozróżniaj kąt cięcia od kształtu uzębienia.",
+          "feedback": [
+            "Dobrze. Na schemacie piły ramowej oznacz brzeszczot, słupki, poprzeczkę, uchwyty i naciąg. Porównaj ustawienie narzędzia pod kątem z odczytem kątownika; rozróżniaj kąt cięcia od kształtu uzębienia.",
+            "Ta odpowiedź nie spełnia warunków. Na schemacie piły ramowej oznacz brzeszczot, słupki, poprzeczkę, uchwyty i naciąg. Porównaj ustawienie narzędzia pod kątem z odczytem kątownika; rozróżniaj kąt cięcia od kształtu uzębienia.",
+            "Ta odpowiedź nie spełnia warunków. Na schemacie piły ramowej oznacz brzeszczot, słupki, poprzeczkę, uchwyty i naciąg. Porównaj ustawienie narzędzia pod kątem z odczytem kątownika; rozróżniaj kąt cięcia od kształtu uzębienia.",
+            "Ta odpowiedź nie spełnia warunków. Na schemacie piły ramowej oznacz brzeszczot, słupki, poprzeczkę, uchwyty i naciąg. Porównaj ustawienie narzędzia pod kątem z odczytem kątownika; rozróżniaj kąt cięcia od kształtu uzębienia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 54,
+      "title_pl": "55. Materiały ścierne i kolejność obróbki",
+      "material": {
+        "module": 6,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 2 s.15",
+        "sections": [
+          {
+            "heading": "Co oznacza pojęcie",
+            "text": "Papier i płótno ścierne składają się z podłoża, ziarna ściernego oraz spoiwa. Gradacja ziarna decyduje o typowej wielkości rys po obróbce, ale istotne są także rodzaj materiału, kierunek włókien i docisk. Przechodzenie między gradacjami powinno odpowiadać oczekiwanemu wykończeniu."
+          },
+          {
+            "heading": "Jak pracuje i kontroluje to cieśla",
+            "text": "Na próbce drewna wykonaj teoretyczną sekwencję szlifowania z kontrolą rys. Zapisz, jak rozpoznasz przegrzanie, zatkanie materiału ściernego lub zbyt agresywny nacisk. Zadbaj o odciąg pyłu i zgodną z zastosowaniem ochronę dróg oddechowych."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Powierzchnia po bardzo drobnym papierze nadal ma głębokie rysy z wcześniejszego etapu; uczeń uważa, że drobna gradacja zawsze je natychmiast usunie."
+          },
+          {
+            "heading": "Ćwiczenie przed testem",
+            "text": "Przygotuj rysunek procesu „Materiały ścierne i kolejność obróbki”. Omów przypadek: Powierzchnia po bardzo drobnym papierze nadal ma głębokie rysy z wcześniejszego etapu; uczeń uważa, że drobna gradacja zawsze je natychmiast usunie. Podaj niezbędną kontrolę techniczną oraz sposób udokumentowania wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Papier i płótno ścierne składają się z podłoża, ziarna ściernego oraz spoiwa. Gradacja ziarna decyduje o typowej wielkości rys po obróbce, ale istotne są także rodzaj materiału, kierunek włókien i docisk. Przechodzenie między gradacjami powinno odpowiadać oczekiwanemu wykończeniu.",
+          "situation": "Powierzchnia po bardzo drobnym papierze nadal ma głębokie rysy z wcześniejszego etapu; uczeń uważa, że drobna gradacja zawsze je natychmiast usunie.",
+          "question": "Jak poprawić proces, gdy pozostały głębokie rysy po wcześniejszym etapie?",
+          "options": [
+            "Zwiększyć docisk bez ograniczeń.",
+            "Pominąć poprzednie czynności i od razu lakierować.",
+            "Używać wyłącznie jednego najdrobniejszego papieru.",
+            "Dobrać sekwencję gradacji i kontrolować usuwanie wcześniejszych rys."
+          ],
+          "correct": 3,
+          "example": "Dobrać sekwencję gradacji i kontrolować usuwanie wcześniejszych rys.",
+          "explanation": "Na próbce drewna wykonaj teoretyczną sekwencję szlifowania z kontrolą rys. Zapisz, jak rozpoznasz przegrzanie, zatkanie materiału ściernego lub zbyt agresywny nacisk. Zadbaj o odciąg pyłu i zgodną z zastosowaniem ochronę dróg oddechowych.",
+          "feedback": [
+            "Ta odpowiedź nie spełnia warunków. Na próbce drewna wykonaj teoretyczną sekwencję szlifowania z kontrolą rys. Zapisz, jak rozpoznasz przegrzanie, zatkanie materiału ściernego lub zbyt agresywny nacisk. Zadbaj o odciąg pyłu i zgodną z zastosowaniem ochronę dróg oddechowych.",
+            "Ta odpowiedź nie spełnia warunków. Na próbce drewna wykonaj teoretyczną sekwencję szlifowania z kontrolą rys. Zapisz, jak rozpoznasz przegrzanie, zatkanie materiału ściernego lub zbyt agresywny nacisk. Zadbaj o odciąg pyłu i zgodną z zastosowaniem ochronę dróg oddechowych.",
+            "Ta odpowiedź nie spełnia warunków. Na próbce drewna wykonaj teoretyczną sekwencję szlifowania z kontrolą rys. Zapisz, jak rozpoznasz przegrzanie, zatkanie materiału ściernego lub zbyt agresywny nacisk. Zadbaj o odciąg pyłu i zgodną z zastosowaniem ochronę dróg oddechowych.",
+            "Dobrze. Na próbce drewna wykonaj teoretyczną sekwencję szlifowania z kontrolą rys. Zapisz, jak rozpoznasz przegrzanie, zatkanie materiału ściernego lub zbyt agresywny nacisk. Zadbaj o odciąg pyłu i zgodną z zastosowaniem ochronę dróg oddechowych."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 55,
+      "title_pl": "56. Izolacje w budynku i ścianie szkieletowej",
+      "material": {
+        "module": 6,
+        "editorial_status": "review_needed",
+        "source_pages": "cieśla 1 s.11,13; cieśla 2 s.17,19",
+        "sections": [
+          {
+            "heading": "Co oznacza pojęcie",
+            "text": "Izolacja cieplna, przeciwwilgociowa, powietrznoszczelność i izolacja akustyczna spełniają odmienne funkcje. W ścianie szkieletowej należy rozróżniać wiatroizolację, ocieplenie, warstwę regulującą przepływ pary, szczeliny i warstwy wykończeniowe zgodnie z projektem fizyki budowli."
+          },
+          {
+            "heading": "Jak pracuje i kontroluje to cieśla",
+            "text": "Narysuj przekrój ściany, podpisz każdą warstwę i wyjaśnij, jak kontroluje się przejścia instalacyjne. Nie stosuj sztywnego jednego układu warstw dla każdego klimatu i materiału — o rozwiązaniu decyduje projekt."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Przy przejściu przewodu powstała nieszczelność, przez którą powietrze może przenosić parę do chłodniejszej części przegrody."
+          },
+          {
+            "heading": "Ćwiczenie przed testem",
+            "text": "Przygotuj rysunek procesu „Izolacje w budynku i ścianie szkieletowej”. Omów przypadek: Przy przejściu przewodu powstała nieszczelność, przez którą powietrze może przenosić parę do chłodniejszej części przegrody. Podaj niezbędną kontrolę techniczną oraz sposób udokumentowania wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Izolacja cieplna, przeciwwilgociowa, powietrznoszczelność i izolacja akustyczna spełniają odmienne funkcje. W ścianie szkieletowej należy rozróżniać wiatroizolację, ocieplenie, warstwę regulującą przepływ pary, szczeliny i warstwy wykończeniowe zgodnie z projektem fizyki budowli.",
+          "situation": "Przy przejściu przewodu powstała nieszczelność, przez którą powietrze może przenosić parę do chłodniejszej części przegrody.",
+          "question": "Dlaczego warstwa powietrznoszczelna powinna być ciągła?",
+          "options": [
+            "Ponieważ zawsze zastępuje izolację cieplną.",
+            "Aby ograniczyć niekontrolowany przepływ powietrza i ryzyko kondensacji.",
+            "Aby zwiększyć dowolnie rozstaw słupków.",
+            "Aby wyeliminować potrzebę wentylacji budynku."
+          ],
+          "correct": 1,
+          "example": "Aby ograniczyć niekontrolowany przepływ powietrza i ryzyko kondensacji.",
+          "explanation": "Narysuj przekrój ściany, podpisz każdą warstwę i wyjaśnij, jak kontroluje się przejścia instalacyjne. Nie stosuj sztywnego jednego układu warstw dla każdego klimatu i materiału — o rozwiązaniu decyduje projekt.",
+          "feedback": [
+            "Ta odpowiedź nie spełnia warunków. Narysuj przekrój ściany, podpisz każdą warstwę i wyjaśnij, jak kontroluje się przejścia instalacyjne. Nie stosuj sztywnego jednego układu warstw dla każdego klimatu i materiału — o rozwiązaniu decyduje projekt.",
+            "Dobrze. Narysuj przekrój ściany, podpisz każdą warstwę i wyjaśnij, jak kontroluje się przejścia instalacyjne. Nie stosuj sztywnego jednego układu warstw dla każdego klimatu i materiału — o rozwiązaniu decyduje projekt.",
+            "Ta odpowiedź nie spełnia warunków. Narysuj przekrój ściany, podpisz każdą warstwę i wyjaśnij, jak kontroluje się przejścia instalacyjne. Nie stosuj sztywnego jednego układu warstw dla każdego klimatu i materiału — o rozwiązaniu decyduje projekt.",
+            "Ta odpowiedź nie spełnia warunków. Narysuj przekrój ściany, podpisz każdą warstwę i wyjaśnij, jak kontroluje się przejścia instalacyjne. Nie stosuj sztywnego jednego układu warstw dla każdego klimatu i materiału — o rozwiązaniu decyduje projekt."
+          ]
+        }
+      }
+    }
+  ]
+}
