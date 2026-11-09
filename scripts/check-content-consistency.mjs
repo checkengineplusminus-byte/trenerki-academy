@@ -35,7 +35,7 @@ try{
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
  const betaSlugs=new Set(['ciesla-przygotowanie-czeladnicze']);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
- const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.lastIndexOf('</script>');
+ const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.indexOf('</script>',scriptStart);
  if(scriptStart<0||scriptEnd<0)fail('HTML script missing');
  else{new Script(page.slice(scriptStart+8,scriptEnd),{filename:'academy-index.js'});ok('Homepage JavaScript syntax');}
  if(courses.length===15+additions.length+betaSlugs.size&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
