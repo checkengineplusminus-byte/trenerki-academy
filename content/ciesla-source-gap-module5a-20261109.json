@@ -1,0 +1,197 @@
+{
+  "course_slug": "ciesla-przygotowanie-czeladnicze",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 42,
+      "title_pl": "43. Anatomia drewna: biel, twardziel, fałszywa twardziel",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.3,17; cieśla 2 s.5,19",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Anatomia i definicje",
+            "text": "Biel i twardziel są strefami pnia różniącymi się funkcją biologiczną i często zabarwieniem. Fałszywa twardziel jest odrębnym zjawiskiem barwnym występującym u niektórych gatunków. Nie wolno z samego koloru wnioskować o klasie wytrzymałości belki."
+          },
+          {
+            "heading": "Przykład i metoda kontroli",
+            "text": "Na przekroju narysuj rdzeń, biel, twardziel i słoje. Wyjaśnij, jak odróżnisz budowę anatomiczną od pęknięcia i zgnilizny oraz jak potwierdzisz przydatność nośną."
+          },
+          {
+            "heading": "Co zrobić w pracy",
+            "text": "Ktoś wybiera ciemniejszą belkę, ponieważ uważa, że będzie zawsze mocniejsza."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj omawiany przekrój lub proces. Oceń przypadek: Ktoś wybiera ciemniejszą belkę, ponieważ uważa, że będzie zawsze mocniejsza. Wskaż po dwa kryteria poprawności i niezgodności."
+          }
+        ],
+        "learning": {
+          "intro": "Biel i twardziel są strefami pnia różniącymi się funkcją biologiczną i często zabarwieniem. Fałszywa twardziel jest odrębnym zjawiskiem barwnym występującym u niektórych gatunków. Nie wolno z samego koloru wnioskować o klasie wytrzymałości belki.",
+          "situation": "Ktoś wybiera ciemniejszą belkę, ponieważ uważa, że będzie zawsze mocniejsza.",
+          "question": "Które stwierdzenie o twardzieli jest właściwe?",
+          "options": [
+            "Twardziel jest strefą drewna, a jej barwa sama nie dowodzi klasy wytrzymałości.",
+            "Każde ciemne drewno musi być mocniejsze od jasnego.",
+            "Biel to zawsze zgnilizna.",
+            "Fałszywa twardziel to ślad po tarczy piły."
+          ],
+          "correct": 0,
+          "example": "Twardziel jest strefą drewna, a jej barwa sama nie dowodzi klasy wytrzymałości.",
+          "explanation": "Na przekroju narysuj rdzeń, biel, twardziel i słoje. Wyjaśnij, jak odróżnisz budowę anatomiczną od pęknięcia i zgnilizny oraz jak potwierdzisz przydatność nośną.",
+          "feedback": [
+            "Tak. Na przekroju narysuj rdzeń, biel, twardziel i słoje. Wyjaśnij, jak odróżnisz budowę anatomiczną od pęknięcia i zgnilizny oraz jak potwierdzisz przydatność nośną.",
+            "Nie. Na przekroju narysuj rdzeń, biel, twardziel i słoje. Wyjaśnij, jak odróżnisz budowę anatomiczną od pęknięcia i zgnilizny oraz jak potwierdzisz przydatność nośną.",
+            "Nie. Na przekroju narysuj rdzeń, biel, twardziel i słoje. Wyjaśnij, jak odróżnisz budowę anatomiczną od pęknięcia i zgnilizny oraz jak potwierdzisz przydatność nośną.",
+            "Nie. Na przekroju narysuj rdzeń, biel, twardziel i słoje. Wyjaśnij, jak odróżnisz budowę anatomiczną od pęknięcia i zgnilizny oraz jak potwierdzisz przydatność nośną."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 43,
+      "title_pl": "44. Gęstość a właściwości mechaniczne drewna",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.1,9,15,19; cieśla 2 s.13,17",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Anatomia i definicje",
+            "text": "Gęstość w danym stanie to masa podzielona przez objętość. Właściwości drewna w ściskaniu, rozciąganiu i zginaniu zależą też od kierunku włókien, wilgotności i wad. Gęstość nie jest równoważna certyfikowanej klasie materiału konstrukcyjnego."
+          },
+          {
+            "heading": "Przykład i metoda kontroli",
+            "text": "Oblicz 12 kg / 0,020 m³ = 600 kg/m³. Następnie narysuj dwie belki obciążone w różnych kierunkach względem włókien i wyjaśnij, skąd mogą wziąć się różne rezultaty."
+          },
+          {
+            "heading": "Co zrobić w pracy",
+            "text": "Dwie belki mają inną masę, ale tylko jedna ma potwierdzoną klasę C24. Którą przyjmiesz do elementu projektowego?"
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj omawiany przekrój lub proces. Oceń przypadek: Dwie belki mają inną masę, ale tylko jedna ma potwierdzoną klasę C24. Którą przyjmiesz do elementu projektowego? Wskaż po dwa kryteria poprawności i niezgodności."
+          }
+        ],
+        "learning": {
+          "intro": "Gęstość w danym stanie to masa podzielona przez objętość. Właściwości drewna w ściskaniu, rozciąganiu i zginaniu zależą też od kierunku włókien, wilgotności i wad. Gęstość nie jest równoważna certyfikowanej klasie materiału konstrukcyjnego.",
+          "situation": "Dwie belki mają inną masę, ale tylko jedna ma potwierdzoną klasę C24. Którą przyjmiesz do elementu projektowego?",
+          "question": "Jaka jest gęstość próbki 12 kg o objętości 0,020 m³?",
+          "options": [
+            "60 kg/m³",
+            "240 kg/m³",
+            "600 kg/m³",
+            "1200 kg/m³"
+          ],
+          "correct": 2,
+          "example": "600 kg/m³",
+          "explanation": "Oblicz 12 kg / 0,020 m³ = 600 kg/m³. Następnie narysuj dwie belki obciążone w różnych kierunkach względem włókien i wyjaśnij, skąd mogą wziąć się różne rezultaty.",
+          "feedback": [
+            "Nie. Oblicz 12 kg / 0,020 m³ = 600 kg/m³. Następnie narysuj dwie belki obciążone w różnych kierunkach względem włókien i wyjaśnij, skąd mogą wziąć się różne rezultaty.",
+            "Nie. Oblicz 12 kg / 0,020 m³ = 600 kg/m³. Następnie narysuj dwie belki obciążone w różnych kierunkach względem włókien i wyjaśnij, skąd mogą wziąć się różne rezultaty.",
+            "Tak. Oblicz 12 kg / 0,020 m³ = 600 kg/m³. Następnie narysuj dwie belki obciążone w różnych kierunkach względem włókien i wyjaśnij, skąd mogą wziąć się różne rezultaty.",
+            "Nie. Oblicz 12 kg / 0,020 m³ = 600 kg/m³. Następnie narysuj dwie belki obciążone w różnych kierunkach względem włókien i wyjaśnij, skąd mogą wziąć się różne rezultaty."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 44,
+      "title_pl": "45. Części żywego drzewa i ich funkcje",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.9,11; cieśla 2 s.3,11,15",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Anatomia i definicje",
+            "text": "Drzewo jako organizm ma korzenie, pień i koronę. Korzenie pobierają wodę oraz sole mineralne i zakotwiczają roślinę. Liście lub igły w koronie uczestniczą w fotosyntezie i wymianie gazowej. Drewno użytkowe pozyskuje się z części pnia lub gałęzi i wymaga dalszego przygotowania."
+          },
+          {
+            "heading": "Przykład i metoda kontroli",
+            "text": "Na schemacie biologicznym podpisz korzenie, pień, koronę oraz strefy przekroju pnia. Nie utożsamiaj roli korzeni z funkcją wyciętej belki na budowie."
+          },
+          {
+            "heading": "Co zrobić w pracy",
+            "text": "Kursant potrafi nazwać twardziel, lecz nie umie wyjaśnić, dlaczego rosnące drzewo potrzebuje korony."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj omawiany przekrój lub proces. Oceń przypadek: Kursant potrafi nazwać twardziel, lecz nie umie wyjaśnić, dlaczego rosnące drzewo potrzebuje korony. Wskaż po dwa kryteria poprawności i niezgodności."
+          }
+        ],
+        "learning": {
+          "intro": "Drzewo jako organizm ma korzenie, pień i koronę. Korzenie pobierają wodę oraz sole mineralne i zakotwiczają roślinę. Liście lub igły w koronie uczestniczą w fotosyntezie i wymianie gazowej. Drewno użytkowe pozyskuje się z części pnia lub gałęzi i wymaga dalszego przygotowania.",
+          "situation": "Kursant potrafi nazwać twardziel, lecz nie umie wyjaśnić, dlaczego rosnące drzewo potrzebuje korony.",
+          "question": "Jaka jest podstawowa funkcja korony drzewa?",
+          "options": [
+            "Osadzanie łączników w więźbie.",
+            "Suszenie tarcicy w sztaplach.",
+            "Regulowanie prędkości wału pilarki.",
+            "Fotosynteza i wymiana gazowa."
+          ],
+          "correct": 3,
+          "example": "Fotosynteza i wymiana gazowa.",
+          "explanation": "Na schemacie biologicznym podpisz korzenie, pień, koronę oraz strefy przekroju pnia. Nie utożsamiaj roli korzeni z funkcją wyciętej belki na budowie.",
+          "feedback": [
+            "Nie. Na schemacie biologicznym podpisz korzenie, pień, koronę oraz strefy przekroju pnia. Nie utożsamiaj roli korzeni z funkcją wyciętej belki na budowie.",
+            "Nie. Na schemacie biologicznym podpisz korzenie, pień, koronę oraz strefy przekroju pnia. Nie utożsamiaj roli korzeni z funkcją wyciętej belki na budowie.",
+            "Nie. Na schemacie biologicznym podpisz korzenie, pień, koronę oraz strefy przekroju pnia. Nie utożsamiaj roli korzeni z funkcją wyciętej belki na budowie.",
+            "Tak. Na schemacie biologicznym podpisz korzenie, pień, koronę oraz strefy przekroju pnia. Nie utożsamiaj roli korzeni z funkcją wyciętej belki na budowie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 45,
+      "title_pl": "46. Wady kształtu i ochrona czół przed pękaniem",
+      "material": {
+        "module": 5,
+        "source_pages": "cieśla 1 s.5,7,13; cieśla 2 s.5,7,17",
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Anatomia i definicje",
+            "text": "Krzywizna, zbieżystość i skręt włókien to inne cechy niż pęknięcia uszkadzające ciągłość drewna. Zbyt szybkie schnięcie czół może sprzyjać pęknięciom; w określonych sortymentach stosuje się ochronę czołowych powierzchni. Sposób zależy od gatunku i technologii składowania."
+          },
+          {
+            "heading": "Przykład i metoda kontroli",
+            "text": "Sporządź kartę odbioru z nazwą wady, miejscem, wymiarem i decyzją. Odróżnij wadę barwy od ubytku przekroju. Przed wykorzystaniem konstrukcyjnym oceniaj materiał zgodnie z oznaczeniem i projektem."
+          },
+          {
+            "heading": "Co zrobić w pracy",
+            "text": "Na dostarczonej desce powstały pęknięcia od czoła, ale dostawca proponuje je po prostu zamalować."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj omawiany przekrój lub proces. Oceń przypadek: Na dostarczonej desce powstały pęknięcia od czoła, ale dostawca proponuje je po prostu zamalować. Wskaż po dwa kryteria poprawności i niezgodności."
+          }
+        ],
+        "learning": {
+          "intro": "Krzywizna, zbieżystość i skręt włókien to inne cechy niż pęknięcia uszkadzające ciągłość drewna. Zbyt szybkie schnięcie czół może sprzyjać pęknięciom; w określonych sortymentach stosuje się ochronę czołowych powierzchni. Sposób zależy od gatunku i technologii składowania.",
+          "situation": "Na dostarczonej desce powstały pęknięcia od czoła, ale dostawca proponuje je po prostu zamalować.",
+          "question": "Dlaczego można zabezpieczać czoła drewna przy suszeniu?",
+          "options": [
+            "Aby przyspieszyć schnięcie końców bez ograniczeń.",
+            "Aby ograniczyć zbyt szybkie wysychanie i pęknięcia czół.",
+            "Aby nadać automatycznie klasę wytrzymałości.",
+            "Aby całkowicie pominąć pomiar wilgotności."
+          ],
+          "correct": 1,
+          "example": "Aby ograniczyć zbyt szybkie wysychanie i pęknięcia czół.",
+          "explanation": "Sporządź kartę odbioru z nazwą wady, miejscem, wymiarem i decyzją. Odróżnij wadę barwy od ubytku przekroju. Przed wykorzystaniem konstrukcyjnym oceniaj materiał zgodnie z oznaczeniem i projektem.",
+          "feedback": [
+            "Nie. Sporządź kartę odbioru z nazwą wady, miejscem, wymiarem i decyzją. Odróżnij wadę barwy od ubytku przekroju. Przed wykorzystaniem konstrukcyjnym oceniaj materiał zgodnie z oznaczeniem i projektem.",
+            "Tak. Sporządź kartę odbioru z nazwą wady, miejscem, wymiarem i decyzją. Odróżnij wadę barwy od ubytku przekroju. Przed wykorzystaniem konstrukcyjnym oceniaj materiał zgodnie z oznaczeniem i projektem.",
+            "Nie. Sporządź kartę odbioru z nazwą wady, miejscem, wymiarem i decyzją. Odróżnij wadę barwy od ubytku przekroju. Przed wykorzystaniem konstrukcyjnym oceniaj materiał zgodnie z oznaczeniem i projektem.",
+            "Nie. Sporządź kartę odbioru z nazwą wady, miejscem, wymiarem i decyzją. Odróżnij wadę barwy od ubytku przekroju. Przed wykorzystaniem konstrukcyjnym oceniaj materiał zgodnie z oznaczeniem i projektem."
+          ]
+        }
+      }
+    }
+  ]
+}
