@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react';
+import {parseSpreadsheetNumber} from './SpreadsheetFormula';
 import {View,Text,Pressable,ScrollView,TextInput,useWindowDimensions} from 'react-native';
 
 type Item={tab:string;path:string;purpose:string;fields:string[];exercise:string;warning?:string};
@@ -96,7 +97,7 @@ function DesktopWorkspace({slug}:{slug:string}){
   Data:'Sortowanie, filtrowanie, import i walidacja danych.',
   Review:'Komentarze i przegląd dokumentu.'
  };
- const n=Number(qty.replace(',','.')),v=Number(price.replace(',','.')),result=Number.isFinite(n*v)?(n*v).toFixed(2):'BŁĄD';
+ const n=parseSpreadsheetNumber(qty),v=parseSpreadsheetNumber(price),result=Number.isFinite(n)&&Number.isFinite(v)&&n>=0&&v>=0?(n*v).toFixed(2).replace('.',','):'Sprawdź liczby';
  return <View style={{borderRadius:13,overflow:'hidden',borderWidth:1,borderColor:'#c3d8cb',marginBottom:13}}>
   <View style={{padding:13,backgroundColor:'#e9f3e7',gap:4}}>
    <Text style={{fontSize:16,fontWeight:'900',color:'#184d36'}}>Interfejs {excel?'Excela':'AutoCAD-a'} — ćwiczenie</Text>
@@ -131,7 +132,7 @@ function DesktopWorkspace({slug}:{slug:string}){
     {[1,2,3,4].map(r=><View key={r} style={{flexDirection:'row'}}>
      {Array.from({length:6},(_,c)=>{let val=r===1?['1','Materiał','Projekt','Ilość','Cena','Wartość'][c]:r===2?['2','Farba','Projekt','', '',result][c]:[String(r),'','','','',''][c];
       return <View key={c} style={{flex:1,borderWidth:.5,borderColor:'#d6dfd8',minHeight:mobile?35:42,padding:3,justifyContent:'center'}}>
-       {r===2&&c===3?<TextInput value={qty} keyboardType="numeric" onChangeText={setQty} style={{fontSize:12,color:'#173e29'}}/>:r===2&&c===4?<TextInput value={price} keyboardType="numeric" onChangeText={setPrice} style={{fontSize:12,color:'#173e29'}}/>:<Text numberOfLines={1} style={{color:'#2e4d37',fontSize:mobile?9:11}}>{val}</Text>}
+       {r===2&&c===3?<TextInput value={qty} keyboardType="decimal-pad" accessibilityLabel="Ilość w komórce D2" onChangeText={setQty} style={{fontSize:12,color:'#173e29'}}/>:r===2&&c===4?<TextInput value={price} keyboardType="decimal-pad" accessibilityLabel="Cena jednostkowa w komórce E2" onChangeText={setPrice} style={{fontSize:12,color:'#173e29'}}/>:<Text numberOfLines={1} style={{color:'#2e4d37',fontSize:mobile?9:11}}>{val}</Text>}
       </View>})}
     </View>)}
     <Text style={{fontSize:11,color:'#4e6958',padding:7}}>Sheet1    +    Zmień ilość i cenę: komórka E2 przelicza się automatycznie.</Text>
