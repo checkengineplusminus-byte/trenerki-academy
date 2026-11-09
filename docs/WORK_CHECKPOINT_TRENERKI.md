@@ -143,3 +143,12 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - Status `review_needed`. **Pozostało**: niezależna recenzja powroźnika i specjalisty od lin, test zalogowanego użytkownika (lekcje→egzamin→certyfikat), potwierdzenie Expo. CI pierwszych trzech części i SVG `success`; CI ostatnich patch/doc było jeszcze `in_progress` w chwili kontroli, nie oznaczaj ich jako zakończone.
 - Dane uczniów, postępy, konta, płatności, RLS i status publikacji pozostawiono bez zmian.
 - **Stan serii:** 10 z 80 indywidualnie przebudowanych kursów. Następny do sprawdzenia: `rymarz` (po odczycie aktualnego checkpointu i bazy). Cel automatyzacji: do 40 kursów w jednym uruchomieniu, bez obniżania jakości i bez fałszywych deklaracji.
+
+
+## Kurs 11: Rymarz — 12 lekcji zapisanych, kontrola bazy pozytywna (2026-11-09)
+- Przed: 8 ogólnych lekcji. Po: **12** indywidualnych lekcji `0..11`: wyroby rymarskie i obciążenia, anatomia skóry, garbowanie, grubość i przekrój, rozkrój, narzędzia, ścieg siodlarski, sprzączki i nity, dobrostan konia, konserwacja, diagnoza, projekt demonstracyjny i kosztorys.
+- Supabase QA po zapisie: `n=12`, `unique_questions=12`, `five_sections=12`, `options4=12`, `feedback4=12`, `revised=12`, `first=0`, `last=11`. `review_status=review_needed`.
+- GitHub: `content/rymarz-masterclass-20261109.json` (commit `6fc926dd`), odtwarzalny SQL `database/patches/trenerki-rymarz-content-20261109.sql` (commit `6b8d0ac3`), oryginalny diagram `assets/lessons/rymarz-pas.svg` (commit `aade57fc`).
+- **Braki:** diagram nie został jeszcze zarejestrowany i sprawdzony w UI Expo; potrzeba dodatkowych schematów narzędzi, niezależnej recenzji rymarza, potwierdzenia źródeł dla zastosowań jeździeckich, testu E2E zalogowanego ucznia (egzamin i certyfikat) oraz potwierdzenia CI/deployu. Materiał demonstracyjny nie jest certyfikacją bezpieczeństwa uprzęży.
+- Nie zmieniano danych uczniów, kont, postępów, zakupów, RLS ani flag publikacji. **Seria: 11/80 treści indywidualnie przebudowanych, nie 11/80 w pełni zweryfikowanych.**
+- **Następny kurs:** `sitarz`. Zawsze ponownie odczytaj checkpoint i Supabase przed zapisem, aby uniknąć konfliktów równoległych prac.
