@@ -264,7 +264,7 @@ try{
   const masteryBank=Object.assign({},...['content/mastery-crafts-materials-20261109.json','content/mastery-foundations-01-20261109.json','content/mastery-foundations-02-20261109.json','content/mastery-foundations-03-20261109.json'].map(p=>JSON.parse(read(p))));
   if(Object.keys(masteryBank).length!==78)fail('Expected 78 individualized foundations beyond the completed Kowal course');
   for(const [slug,entry] of Object.entries(masteryBank)){
-    if(!['topic','material','process','failure','task','icon'].every(x=>typeof entry[x]==='string'&&entry[x].length>=4)||
+    if(!['topic','material','process','failure','task'].every(x=>typeof entry[x]==='string'&&entry[x].length>=4)||typeof entry.icon!=='string'||entry.icon.length<3||
        entry.material.length<145||entry.process.length<145)
       fail('Insufficient individual material science knowledge for '+slug);
     if(!illustrated.includes("'mastery-"+slug+"'")||!read('public/academy/assets/mastery-'+slug+'.svg').includes('</svg>'))
