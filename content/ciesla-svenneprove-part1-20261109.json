@@ -541,7 +541,7 @@
         "module": 1,
         "lesson_kind": "competency",
         "editorial_status": "review_needed",
-        "learning_outcome": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,6 m. Dopisz straty rzazu, możliwe błędy oraz harmonogram: dostawa, przygotowanie, montaż, kontrola.",
+        "learning_outcome": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,8 m. Dopisz rzeczywisty rzaz, możliwe błędy cięcia i harmonogram: dostawa, przygotowanie, montaż, kontrola.",
         "sections": [
           {
             "heading": "Zrozum teorię",
@@ -553,33 +553,33 @@
           },
           {
             "heading": "Przeanalizuj przykład",
-            "text": "Potrzebujesz 12 elementów po 2,4 m, czyli 28,8 m długości netto. Przy elementach handlowych 4,8 m można uzyskać po dwa odcinki z jednej sztuki (z uwzględnieniem rzazu), czyli potrzeba co najmniej 6 sztuk 4,8 m, jeśli szczegóły projektu dopuszczają taki podział."
+            "text": "Potrzebujesz 12 elementów po 2,4 m, czyli 28,8 m netto. Z elementu handlowego długości 5,0 m można uzyskać dwa odcinki po 2,4 m, zostawiając miejsce na rzaz i niewielki odpad. Oznacza to co najmniej 6 sztuk 5,0 m, jeżeli wymagania i wady materiału nie zwiększają zapasu."
           },
           {
             "heading": "Zadanie do samodzielnego wykonania",
-            "text": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,6 m. Dopisz straty rzazu, możliwe błędy oraz harmonogram: dostawa, przygotowanie, montaż, kontrola."
+            "text": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,8 m. Dopisz rzeczywisty rzaz, możliwe błędy cięcia i harmonogram: dostawa, przygotowanie, montaż, kontrola."
           }
         ],
         "learning": {
           "intro": "Przedmiar wyraża ilości materiałów i robót w określonych jednostkach; kosztorys wiąże je z cenami i nakładem pracy. Plan nie może ignorować dostaw, dojrzewania i odbiorów etapów ani koniecznego sortowania odpadów. Przy obliczaniu zapasu należy odróżniać straty cięcia od materiału użytkowego.",
-          "situation": "Potrzebujesz 12 elementów po 2,4 m, czyli 28,8 m długości netto. Przy elementach handlowych 4,8 m można uzyskać po dwa odcinki z jednej sztuki (z uwzględnieniem rzazu), czyli potrzeba co najmniej 6 sztuk 4,8 m, jeśli szczegóły projektu dopuszczają taki podział.",
-          "question": "Ile sztuk materiału 4,8 m potrzeba na 12 elementów 2,4 m, jeśli długości po cięciu są dopuszczalne i uwzględniono rzaz?",
+          "situation": "Potrzebujesz 12 elementów po 2,4 m, czyli 28,8 m netto. Z elementu handlowego długości 5,0 m można uzyskać dwa odcinki po 2,4 m, zostawiając miejsce na rzaz i niewielki odpad. Oznacza to co najmniej 6 sztuk 5,0 m, jeżeli wymagania i wady materiału nie zwiększają zapasu.",
+          "question": "Ile sztuk drewna 5,0 m potrzeba na 12 odcinków po 2,4 m, jeżeli z każdej sztuki możesz bezpiecznie wyciąć dwa odcinki z uwzględnieniem rzazu?",
           "options": [
             "Co najmniej 6 sztuk, po dwa elementy z każdej, pod warunkiem poprawnej listy cięć.",
             "12 sztuk, bo nie można uzyskać dwóch odcinków z jednej długości.",
-            "3 sztuki, bo jeden pręt 4,8 m daje cztery elementy po 2,4 m.",
+            "3 sztuki, bo jedna belka 5,0 m daje cztery elementy po 2,4 m.",
             "Jedna sztuka, ponieważ długości sumują się automatycznie."
           ],
           "correct": 0,
-          "example": "Co najmniej 6 sztuk, po dwa elementy z każdej, pod warunkiem poprawnej listy cięć.",
+          "example": "Co najmniej 6 sztuk drewna 5,0 m, po dwa elementy 2,4 m z każdej, z uwzględnieniem rzazu.",
           "explanation": "Podział długości na odcinki jest ograniczony geometrią i rzeczywistym rzazem narzędzia.",
           "feedback": [
-            "Tak. Podział długości na odcinki jest ograniczony geometrią i rzeczywistym rzazem narzędzia.",
-            "Nie. Podział długości na odcinki jest ograniczony geometrią i rzeczywistym rzazem narzędzia. Poprawna zasada: Co najmniej 6 sztuk, po dwa elementy z każdej, pod warunkiem poprawnej listy cięć.",
-            "Nie. Podział długości na odcinki jest ograniczony geometrią i rzeczywistym rzazem narzędzia. Poprawna zasada: Co najmniej 6 sztuk, po dwa elementy z każdej, pod warunkiem poprawnej listy cięć.",
-            "Nie. Podział długości na odcinki jest ograniczony geometrią i rzeczywistym rzazem narzędzia. Poprawna zasada: Co najmniej 6 sztuk, po dwa elementy z każdej, pod warunkiem poprawnej listy cięć."
+            "Tak. Dwa odcinki po 2,4 m dają 4,8 m; przy długości 5,0 m pozostaje zapas na rzaz i odpad. Potrzeba sześciu sztuk.",
+            "Nie. Z drewna 5,0 m mogą powstać dwa odcinki 2,4 m po uwzględnieniu rzazu. Sześć sztuk daje 12 odcinków.",
+            "Nie. Z drewna 5,0 m mogą powstać dwa odcinki 2,4 m po uwzględnieniu rzazu. Sześć sztuk daje 12 odcinków.",
+            "Nie. Z drewna 5,0 m mogą powstać dwa odcinki 2,4 m po uwzględnieniu rzazu. Sześć sztuk daje 12 odcinków."
           ],
-          "task": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,6 m. Dopisz straty rzazu, możliwe błędy oraz harmonogram: dostawa, przygotowanie, montaż, kontrola."
+          "task": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,8 m. Dopisz rzeczywisty rzaz, możliwe błędy cięcia i harmonogram: dostawa, przygotowanie, montaż, kontrola."
         },
         "references": [
           {
