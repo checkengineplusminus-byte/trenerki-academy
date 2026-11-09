@@ -1,0 +1,116 @@
+{
+  "bdo": {
+    "curiosity": "Opakowanie przesyłki nie składa się tylko z kartonu: taśma, folia, wypełnienie i etykieta również mogą mieć znaczenie w ewidencji.",
+    "explain": "Mapa opakowań powinna rozdzielać rodzaj materiału, masę, liczbę użytych elementów i rolę firmy wobec opakowania. Sam numer produktu nie wystarcza. Obowiązki w BDO trzeba ustalić na podstawie aktualnego prawa i modelu działalności, nie automatycznie dla każdego sklepu.",
+    "example": "Do jednej przesyłki użyto kartonu 150 g, papieru 40 g i folii 20 g. W ewidencji materiałowej widać łącznie 210 g różnych tworzyw, ale sposób raportowania wymaga dodatkowej analizy prawnej.",
+    "task": "Stwórz tabelę dla pięciu rodzajów opakowań z kolumną masy, przeznaczenia i pytaniem o zakres obowiązku."
+  },
+  "gpsr": {
+    "curiosity": "Osoba sprzedająca produkt pod własną marką może mieć inne obowiązki niż sprzedawca, który tylko dystrybuuje wyrób innego producenta.",
+    "explain": "Trzeba ustalić, kto projektuje, produkuje, wprowadza i sprzedaje dany produkt oraz kto odpowiada za jego identyfikację i dokumentację. Rola prawna zależy od rzeczywistej działalności i przepisów szczególnych, a nie tylko od słowa 'rękodzieło'.",
+    "example": "Twórca wykonuje metalowy wieszak, oznacza go własną marką i sprzedaje online. Powinien rozpoznać zagrożenia ostrymi krawędziami i mocowaniem oraz własne obowiązki wobec kupującego, zamiast uznać wyrób za zwolniony z zasad bezpieczeństwa.",
+    "task": "Przygotuj matrycę ról producenta, importera, dystrybutora i sprzedawcy, zaznaczając jakie informacje trzeba zweryfikować dla danego modelu."
+  },
+  "koordynator": {
+    "curiosity": "Dwa lokale o tej samej powierzchni nie muszą wymagać tyle samo pracy: stan wykończenia i zabrudzenie mogą zmienić czas sprzątania bardziej niż różnica metrażu.",
+    "explain": "Kalkulacja usługi obejmuje powierzchnię, rodzaje materiałów, stopień zabrudzenia, dostęp do wody i prądu, czas dojazdu, środki i kontrolę jakości. Stawka za metr kwadratowy może być punktem wyjścia, lecz nie zastępuje oględzin i opisu zakresu.",
+    "example": "Lokal A ma 60 m² gładkich podłóg, a B także 60 m², ale szkło, kamienne blaty i zabrudzenia po remoncie. Ta sama cena i czas bez sprawdzenia warunków mogą spowodować stratę.",
+    "task": "Policz hipotetyczne zlecenie: 4 h pracy po 60 zł, materiały 35 zł, dojazd 40 zł; dopisz koszt kontroli jakości i rezerwę."
+  },
+  "dziennik-kota": {
+    "curiosity": "Dwa koty mogą potrzebować zupełnie różnych warunków w hoteliku, nawet gdy są zdrowe i tej samej rasy.",
+    "explain": "Wywiad powinien obejmować dietę, zachowanie, historię chorób, leki, tolerancję innych kotów, stres podczas podróży i kontakt awaryjny. Należy ustalić aktualne wymagania weterynaryjne i lokalne zasady przyjęcia. Nie wolno obiecywać wspólnej przestrzeni kotom, które mogą się stresować.",
+    "example": "Właściciel mówi, że kot 'nigdy nie chorował', ale nie pamięta ostatnich dokumentów i przyznaje, że zwierzę nie toleruje obcych kotów. Hotelik doprecyzowuje dane i organizuje odrębne, bezpieczne warunki.",
+    "task": "Napisz formularz przyjęcia kota z ośmioma pytaniami i zasadą reagowania na brak odpowiedzi ważnej dla dobrostanu."
+  },
+  "petsitter": {
+    "curiosity": "Brak apetytu może u kota wynikać z sytuacyjnego stresu, ale nie wolno zakładać, że zawsze jest nieszkodliwy.",
+    "explain": "Przed pierwszą wizytą ustal adres, dostęp do mieszkania, ilość i rodzaj pokarmu, miejsce kuwety, nawodnienie, stan zdrowia, leki oraz kontakt alarmowy. Najważniejsza jest obserwacja zmian, nie automatyczne wykonywanie listy bez spojrzenia na zwierzę.",
+    "example": "Opiekun ma tylko instrukcję 'nasyp suchą karmę'. Tymczasem kot ma chorobę wymagającą regularnej diety. Przed przyjęciem zlecenia trzeba doprecyzować informacje i uzgodnić granice odpowiedzialności.",
+    "task": "Ułóż formularz opieki: żywienie, woda, kuweta, obserwacja zdrowia, klucze, numer weterynarza i sposób raportowania."
+  },
+  "kryzys-po-40-bez-dlugow": {
+    "curiosity": "Duży zakup może wydawać się dostępny, jeśli patrzysz tylko na ratę, ale koszt utrzymania pojawia się także wtedy, gdy przedmiot nie jest używany.",
+    "explain": "Prawdziwy koszt życia obejmuje zarówno rachunki miesięczne, jak i wydatki roczne, serwis pojazdów, zdrowie i koszty utrzymania majątku. Do oceny płynności nie wystarczy deklarowany dochód; trzeba znać kwotę dostępną po obowiązkowych płatnościach.",
+    "example": "Dochód netto 8 000 zł, rachunki 4 400 zł, wydatki zmienne 2 100 zł i roczne rezerwy 900 zł pozostawiają 600 zł. Rata 1 500 zł nie jest bezpieczna tylko dlatego, że bank ją proponuje.",
+    "task": "Stwórz miesięczny bilans z trzema grupami wydatków i sprawdź hipotetyczne zwiększenie kosztów o 10%."
+  },
+  "lepsza-mama": {
+    "curiosity": "Rodzic może być zmęczony i nadal zapewniać dziecku bezpieczeństwo — pomocne jest rozpoznanie własnych potrzeb przed eskalacją konfliktu.",
+    "explain": "Zauważanie potrzeb dziecka nie oznacza automatycznego spełniania każdej prośby. Ważne są poczucie bezpieczeństwa, możliwość wyboru i jasne granice. Rodzic ma również prawo do snu, odpoczynku i wsparcia, a komunikowanie tych potrzeb może uczyć dziecko szacunku do innych.",
+    "example": "Mama jest po pracy, a dziecko chce długiej zabawy. Może powiedzieć 'widzę, że chcesz być razem, potrzebuję 10 minut odpoczynku, potem zagramy' i rzeczywiście wrócić zgodnie z obietnicą.",
+    "task": "Napisz trzy odpowiedzi na prośbę dziecka, gdy rodzic jest zmęczony: uznanie potrzeby, granica, konkretna propozycja."
+  },
+  "lepszy-tata": {
+    "curiosity": "Dziecko w wieku szkolnym może potrzebować więcej samodzielności niż przedszkolak, a nastolatek więcej szacunku do prywatności — choć każde nadal potrzebuje kontaktu.",
+    "explain": "Potrzeby rozwojowe zmieniają się wraz z wiekiem i temperamentem dziecka. Małe dzieci uczą się poprzez zabawę, dzieci starsze chcą rozumieć zasady, a nastolatki ćwiczą niezależność. Słuchaj konkretnego dziecka, zamiast zakładać, że wszyscy rówieśnicy potrzebują tego samego.",
+    "example": "Ojciec chce wybrać zajęcia 13-latka tak samo jak kilka lat wcześniej. Lepsze podejście to wspólnie omówić obowiązki i zainteresowania, pozostawiając nastolatkowi realny udział w decyzji.",
+    "task": "Ułóż trzy wersje rozmowy o planie weekendu dla dziecka 5-, 10- i 15-letniego."
+  },
+  "mierz-ponad-sily": {
+    "curiosity": "Portfolio konkretnych projektów pomaga pokazać kompetencje, których nie widać w samym opisie stanowiska na CV.",
+    "explain": "Wiele umiejętności można udowodnić rezultatem: działającą aplikacją, wykonaną analizą, dokumentacją lub projektem technicznym. Trzeba jednak rozdzielać kompetencje praktyczne od zawodowych uprawnień wymaganych prawem. Dobra próbka pracy pokazuje także proces, błędy i sposoby kontroli.",
+    "example": "Kandydat twierdzi, że zna Excela. Drugi pokazuje model kosztorysu z formułami, danymi i weryfikacją. Drugi dowód jest bardziej konkretny, ale nie daje automatycznie kwalifikacji księgowego.",
+    "task": "Zaplanuj portfolio z trzema pracami i opisz, jakie zadanie, wyniki i dowody jakości pokażesz dla każdej."
+  },
+  "mocny-charakter": {
+    "curiosity": "Zachowanie zgodne z własnymi wartościami może wymagać przyznania się do błędu, a nie tylko mocnego wypowiedzenia własnego zdania.",
+    "explain": "Wartości to zasady ważne przy podejmowaniu decyzji, a nie slogany. Przekładają się na działania w sytuacjach presji: uczciwość na zgłaszanie niezgodności, troska na wsparcie słabszego, samodzielność na odpowiedzialne wybory. Wartości mogą czasem wchodzić ze sobą w konflikt.",
+    "example": "Pracownik deklaruje 'zależy mi na bezpieczeństwie', ale nie zgłasza niesprawnego sprzętu z obawy przed opóźnieniem. Spójność wymaga działania zgodnego z zasadą, nawet jeśli jest niewygodne.",
+    "task": "Wybierz trzy wartości i dla każdej opisz trudną sytuację, konkretny wybór i koszt tego wyboru."
+  },
+  "nie-lubie-ludzi": {
+    "curiosity": "Chęć przebywania samemu nie jest sama w sobie problemem do leczenia. Ważne, czy taki styl życia odpowiada Twoim potrzebom i nie wynika z lęku lub cierpienia.",
+    "explain": "Introwersja, czasowe przeciążenie społeczne i unikanie kontaktu z lęku nie znaczą tego samego. Zmęczenie zmienia tolerancję na hałas i rozmowy, a nie świadczy o wartości innych ludzi. Nie trzeba zmieniać temperamentu, żeby nauczyć się skuteczniej stawiać granice.",
+    "example": "Po całym dniu spotkań ktoś nie chce kolejnej imprezy i uważa, że 'nie lubi ludzi'. Może po prostu potrzebować odpoczynku; warto obserwować powtarzalność sytuacji i własne potrzeby.",
+    "task": "Przez tydzień notuj trzy czynniki: ilość kontaktu, poziom energii i chęć rozmowy. Poszukaj wzoru bez stawiania diagnozy."
+  },
+  "partner-z-uzaleznieniem": {
+    "curiosity": "Rozmowa przeprowadzona podczas silnego odurzenia może być mało skuteczna, a w sytuacji agresji także niebezpieczna.",
+    "explain": "Temat uzależnienia wymaga rozróżnienia troski, granic i bezpieczeństwa. Można mówić o obserwowanym zachowaniu i konsekwencjach bez upokarzania, ale nie należy negocjować podczas przemocy lub zagrożenia. W takiej sytuacji właściwa jest ochrona siebie i dzieci oraz kontakt z pomocą.",
+    "example": "Partner wraca pijany, krzyczy i żąda natychmiastowego rozwiązania konfliktu. Zamiast podejmować trudną rozmowę w eskalacji, priorytetem jest bezpieczeństwo i możliwość wycofania się.",
+    "task": "Napisz bezpieczny komunikat o granicy na spokojny moment; osobno wypisz sygnały, przy których rozmowa nie powinna być podejmowana."
+  },
+  "pomagaj-dziecku-w-lekcjach": {
+    "curiosity": "Dziecko może znać definicję, a jednocześnie nie potrafić zastosować jej w nowym zadaniu. To dwie różne umiejętności.",
+    "explain": "Przed tłumaczeniem zadaj trzy pytania: co już rozumiesz, w którym miejscu utknąłeś i jakiej próby dokonałeś. Trudność może wynikać z niezrozumiałego polecenia, braku wcześniejszej wiedzy lub przeciążenia, dlatego nie ma jednej skutecznej odpowiedzi.",
+    "example": "Uczeń błędnie dzieli 36 przez 4. Zamiast natychmiast podać 9, można poprosić o rozłożenie 36 przedmiotów w cztery równe grupy i obserwować jego myślenie.",
+    "task": "Przygotuj po dwa pytania pomagające przy problemie matematycznym i przy zadaniu z czytania tekstu."
+  },
+  "poznaj-siebie": {
+    "curiosity": "To, co nazywamy mocną stroną, bywa zależne od środowiska: ta sama dokładność może pomagać w kontroli jakości i utrudniać pracę wymagającą szybkiej improwizacji.",
+    "explain": "Wartość opisuje, co uznajesz za ważne, a mocna strona — co zwykle potrafisz robić skutecznie. Pojedyncza decyzja nie definiuje całej osoby; obserwuj zachowania w wielu sytuacjach i porównuj rezultaty z własnymi potrzebami.",
+    "example": "Ktoś uważa się za 'niezorganizowanego', bo nie lubi kalendarza. W praktyce znakomicie przygotowuje materiały do projektów. Warto oddzielić narzędzie organizacji od faktycznej umiejętności planowania.",
+    "task": "Wypisz trzy wartości, trzy sytuacje, w których były ważne, oraz jedno działanie pozwalające je lepiej realizować."
+  },
+  "rodzice-50-50": {
+    "curiosity": "Harmonogram opieki powinien uwzględniać nie tylko dni, ale też punkt przekazania, szkołę, zajęcia, leczenie i wydarzenia jednorazowe.",
+    "explain": "Dziecko potrzebuje przewidywalności, a dorośli wspólnego sposobu zapisywania zmian. Kalendarz powinien pokazywać godzinę przekazania, miejsce, kto odpowiada za transport i jakie rzeczy są potrzebne. Szczegółowe zasady prawne zależą od ustaleń opiekunów i obowiązującego prawa.",
+    "example": "Zmienia się dzień szkolnej wycieczki, a informacje trafiają tylko do jednego rodzica. Wspólny rejestr i potwierdzenie odczytu pomagają uniknąć sytuacji, w której dziecko zostaje bez wyposażenia.",
+    "task": "Zaprojektuj tygodniowy kalendarz opieki z pięcioma polami, które ograniczą nieporozumienia."
+  },
+  "transport-logistyka-praktycznie": {
+    "curiosity": "Wybór transportu zależy nie tylko od kilometrów, ale od opakowania, wymaganej temperatury, czasu dostawy i możliwości rozładunku.",
+    "explain": "Transport drogowy bywa elastyczny na krótszych trasach, kolejowy korzystny przy wybranych dużych wolumenach, a morski przy przewozach międzynarodowych o innych wymaganiach czasowych. Każdy sposób ma ograniczenia masy, wymiarów i dokumentów; wybór wymaga danych konkretnego zlecenia.",
+    "example": "Masz przewieźć 30 małych paczek lokalnie i 10 kontenerów przez ocean. Jeden środek transportu nie będzie optymalny dla obu zadań; porównuje się termin, koszt, dostępność i obsługę ładunku.",
+    "task": "Zrób tabelę dla drogi, kolei, morza i lotnictwa: typowy atut, ograniczenie i potrzebne dane do wyceny."
+  },
+  "wyjdz-z-toksycznego-zwiazku": {
+    "curiosity": "Kontrola może pojawiać się stopniowo — jako żądanie haseł, ograniczanie kontaktów czy wydatków — zanim dojdzie do jawnych gróźb.",
+    "explain": "Nie każda trudna rozmowa oznacza przemoc, ale powtarzający się wzorzec kontroli i zastraszania jest sygnałem alarmowym. Pomocne jest rozróżnienie faktów od usprawiedliwień, ograniczania kontaktu od uzgodnionych granic oraz bezpiecznego planowania od konfrontacji.",
+    "example": "Osoba wymaga codziennych zdjęć potwierdzających miejsce pobytu i grozi, że zabierze pieniądze w razie odmowy. To zachowanie kontrolujące, a nie neutralny wyraz troski.",
+    "task": "Wypisz pięć sygnałów kontroli i bezpieczne osoby lub instytucje, z którymi można omówić sytuację."
+  },
+  "zaczynam-od-zera": {
+    "curiosity": "Po stracie majątku lista tego, co nadal posiadasz — dokumenty, umiejętności, kontakty i czas — może być bardziej użyteczna niż sama wycena utraconych rzeczy.",
+    "explain": "Rozdziel zasoby finansowe, użytkowe i ludzkie. Gotówka, mieszkanie, auto, umiejętności i możliwość podjęcia pracy mają różną dostępność oraz różne koszty. Część aktywów może być obciążona długiem i nie oznacza wolnej wartości do wydania.",
+    "example": "Osoba nie ma oszczędności, lecz ma narzędzia, uprawnienia zawodowe i kontakty do byłych klientów. Plan odbudowy może zacząć się od umiejętności i stabilnego przychodu, nie od ryzykownej pożyczki.",
+    "task": "Sporządź listę zasobów w czterech kategoriach: gotówka, majątek, umiejętności i wsparcie. Oszacuj realną dostępność każdego."
+  },
+  "zwiazek-rozmowa": {
+    "curiosity": "Powtórzenie własnymi słowami wypowiedzi partnera nie oznacza zgody z nią. To sprawdzenie, czy prawidłowo zrozumieliśmy znaczenie.",
+    "explain": "Aktywne słuchanie polega na daniu czasu, parafrazie i dopytaniu o to, co niejasne. W rozmowie warto oddzielać fakt od interpretacji i nie przygotowywać odpowiedzi w trakcie cudzej wypowiedzi. Jeśli występuje przemoc, sama technika rozmowy nie zastępuje bezpieczeństwa.",
+    "example": "Partner mówi 'jest mi trudno, kiedy wracasz późno', a druga osoba słyszy oskarżenie. Parafraza 'czy martwisz się, że nie mamy wspólnego czasu?' pozwala sprawdzić sens zanim pojawi się spór.",
+    "task": "Dla trzech trudnych wypowiedzi zapisz parafrazę i jedno pytanie otwarte bez oceniania."
+  }
+}
