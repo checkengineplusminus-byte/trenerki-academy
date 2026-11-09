@@ -1,0 +1,556 @@
+{
+  "course": "ciesla-przygotowanie-czeladnicze",
+  "module": 2,
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 10,
+      "title_pl": "11. Rysunek techniczny: osie, skala i przekroje",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Rysunek pokazuje widok, przekrój, osie, poziomy, wymiar i rodzaj materiału. Skala rysunku służy prezentacji; wymiar podany liczbą jest wartością do wykonania niezależnie od rozmiaru wydruku. Przed rozpoczęciem robót należy sprawdzić rewizję projektu."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Odczytaj z rysunku 1200 mm i przelicz na 1,2 m. Zaznacz bazę pomiaru, wymiar wysokości, długości, średnicy otworu i symbol przekroju. Zrób listę brakujących danych przed rozpoczęciem produkcji."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Na rysunku w skali 1:50 widnieje wymiar 1200 mm. Mierzona linijka długość na papierze nie ma pierwszeństwa przed wymiarem."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Rysunek techniczny: osie, skala i przekroje” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Rysunek pokazuje widok, przekrój, osie, poziomy, wymiar i rodzaj materiału. Skala rysunku służy prezentacji; wymiar podany liczbą jest wartością do wykonania niezależnie od rozmiaru wydruku. Przed rozpoczęciem robót należy sprawdzić rewizję projektu.",
+          "situation": "Na rysunku w skali 1:50 widnieje wymiar 1200 mm. Mierzona linijka długość na papierze nie ma pierwszeństwa przed wymiarem.",
+          "question": "Jaką długość wykonasz przy oznaczeniu 1200 mm w skali 1:50?",
+          "options": [
+            "24 mm.",
+            "60 m.",
+            "1200 mm.",
+            "50 mm."
+          ],
+          "correct": 2,
+          "example": "1200 mm.",
+          "explanation": "Odczytaj z rysunku 1200 mm i przelicz na 1,2 m. Zaznacz bazę pomiaru, wymiar wysokości, długości, średnicy otworu i symbol przekroju. Zrób listę brakujących danych przed rozpoczęciem produkcji.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj z rysunku 1200 mm i przelicz na 1,2 m. Zaznacz bazę pomiaru, wymiar wysokości, długości, średnicy otworu i symbol przekroju. Zrób listę brakujących danych przed rozpoczęciem produkcji.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj z rysunku 1200 mm i przelicz na 1,2 m. Zaznacz bazę pomiaru, wymiar wysokości, długości, średnicy otworu i symbol przekroju. Zrób listę brakujących danych przed rozpoczęciem produkcji.",
+            "Dobrze. Odczytaj z rysunku 1200 mm i przelicz na 1,2 m. Zaznacz bazę pomiaru, wymiar wysokości, długości, średnicy otworu i symbol przekroju. Zrób listę brakujących danych przed rozpoczęciem produkcji.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj z rysunku 1200 mm i przelicz na 1,2 m. Zaznacz bazę pomiaru, wymiar wysokości, długości, średnicy otworu i symbol przekroju. Zrób listę brakujących danych przed rozpoczęciem produkcji."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 11,
+      "title_pl": "12. Obmiary i plan cięcia drewna",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Ilość materiału w metrach sześciennych to iloczyn trzech wymiarów w metrach. Dla belki 50 × 200 mm o długości 6 m otrzymasz 0,05 × 0,20 × 6 = 0,06 m³. Naddatek na cięcie i odpad to dodatkowe założenie, a nie część samego wzoru."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Zamawiając 10 takich belek potrzebujesz 0,60 m³ teoretycznie. Przy naddatku 5% wynik planistyczny wynosi 0,63 m³. Zapisz osobno dokładny bilans elementów oraz rzeczywiste wymiary handlowe dostawcy."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Operator myli centymetry z metrami podczas obliczeń i zamawia stokrotnie za dużo materiału."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Obmiary i plan cięcia drewna” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Ilość materiału w metrach sześciennych to iloczyn trzech wymiarów w metrach. Dla belki 50 × 200 mm o długości 6 m otrzymasz 0,05 × 0,20 × 6 = 0,06 m³. Naddatek na cięcie i odpad to dodatkowe założenie, a nie część samego wzoru.",
+          "situation": "Operator myli centymetry z metrami podczas obliczeń i zamawia stokrotnie za dużo materiału.",
+          "question": "Ile drewna teoretycznie potrzeba na 10 belek 50 × 200 × 6000 mm?",
+          "options": [
+            "6,0 m³.",
+            "60 m³.",
+            "0,006 m³.",
+            "0,60 m³."
+          ],
+          "correct": 3,
+          "example": "0,60 m³.",
+          "explanation": "Zamawiając 10 takich belek potrzebujesz 0,60 m³ teoretycznie. Przy naddatku 5% wynik planistyczny wynosi 0,63 m³. Zapisz osobno dokładny bilans elementów oraz rzeczywiste wymiary handlowe dostawcy.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Zamawiając 10 takich belek potrzebujesz 0,60 m³ teoretycznie. Przy naddatku 5% wynik planistyczny wynosi 0,63 m³. Zapisz osobno dokładny bilans elementów oraz rzeczywiste wymiary handlowe dostawcy.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zamawiając 10 takich belek potrzebujesz 0,60 m³ teoretycznie. Przy naddatku 5% wynik planistyczny wynosi 0,63 m³. Zapisz osobno dokładny bilans elementów oraz rzeczywiste wymiary handlowe dostawcy.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zamawiając 10 takich belek potrzebujesz 0,60 m³ teoretycznie. Przy naddatku 5% wynik planistyczny wynosi 0,63 m³. Zapisz osobno dokładny bilans elementów oraz rzeczywiste wymiary handlowe dostawcy.",
+            "Dobrze. Zamawiając 10 takich belek potrzebujesz 0,60 m³ teoretycznie. Przy naddatku 5% wynik planistyczny wynosi 0,63 m³. Zapisz osobno dokładny bilans elementów oraz rzeczywiste wymiary handlowe dostawcy."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 12,
+      "title_pl": "13. Połączenia tradycyjne: czopy, wręby i nakładki",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Złącze czopowe, wrębowe oraz nakładkowe służą różnym układom geometrycznym. Usunięcie drewna w miejscu połączenia zmniejsza przekrój i może osłabiać konstrukcję. Nie wolno samodzielnie zmieniać głębokości złącza nośnego, kierując się jedynie tym, co łatwo wyciąć."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Na przekroju zaznacz czop, gniazdo, powierzchnie oparcia i element łączący. Porównaj kształt z wymiarem projektowym, sprawdź brak pęknięć przy krawędziach i poprawność przylegania. Wymagania nośności potwierdza projektant."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Wykonawca proponuje głębszy wrąb, który pozostawia tylko wąski pas drewna."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Połączenia tradycyjne: czopy, wręby i nakładki” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Złącze czopowe, wrębowe oraz nakładkowe służą różnym układom geometrycznym. Usunięcie drewna w miejscu połączenia zmniejsza przekrój i może osłabiać konstrukcję. Nie wolno samodzielnie zmieniać głębokości złącza nośnego, kierując się jedynie tym, co łatwo wyciąć.",
+          "situation": "Wykonawca proponuje głębszy wrąb, który pozostawia tylko wąski pas drewna.",
+          "question": "Jak wpływa nadmierne pogłębienie wrębu?",
+          "options": [
+            "Może zmniejszyć efektywny przekrój i nośność.",
+            "Zawsze poprawia nośność.",
+            "Zmienia wyłącznie kolor złącza.",
+            "Nie ma wpływu na belkę."
+          ],
+          "correct": 0,
+          "example": "Może zmniejszyć efektywny przekrój i nośność.",
+          "explanation": "Na przekroju zaznacz czop, gniazdo, powierzchnie oparcia i element łączący. Porównaj kształt z wymiarem projektowym, sprawdź brak pęknięć przy krawędziach i poprawność przylegania. Wymagania nośności potwierdza projektant.",
+          "feedback": [
+            "Dobrze. Na przekroju zaznacz czop, gniazdo, powierzchnie oparcia i element łączący. Porównaj kształt z wymiarem projektowym, sprawdź brak pęknięć przy krawędziach i poprawność przylegania. Wymagania nośności potwierdza projektant.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Na przekroju zaznacz czop, gniazdo, powierzchnie oparcia i element łączący. Porównaj kształt z wymiarem projektowym, sprawdź brak pęknięć przy krawędziach i poprawność przylegania. Wymagania nośności potwierdza projektant.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Na przekroju zaznacz czop, gniazdo, powierzchnie oparcia i element łączący. Porównaj kształt z wymiarem projektowym, sprawdź brak pęknięć przy krawędziach i poprawność przylegania. Wymagania nośności potwierdza projektant.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Na przekroju zaznacz czop, gniazdo, powierzchnie oparcia i element łączący. Porównaj kształt z wymiarem projektowym, sprawdź brak pęknięć przy krawędziach i poprawność przylegania. Wymagania nośności potwierdza projektant."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 13,
+      "title_pl": "14. Narzędzia ręczne: dłuta, strugi, świdry i piły",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Dłuto umożliwia wykonanie gniazda, strug wyrównuje powierzchnię, świder wykonuje otwór, a piła przecina materiał. Zęby do cięcia wzdłuż włókien i w poprzek mają różne cechy. Tępe narzędzie wymaga nadmiernej siły i utrudnia kontrolę pracy."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Przygotuj stół, stabilnie zamocuj detal i sprawdź ostrza oraz rękojeści. Wybierz narzędzie na podstawie żądanego kształtu i gatunku drewna. Kierunek cięcia powinien prowadzić od dłoni i ciała, a odpady należy usuwać dopiero po zatrzymaniu narzędzi."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Uczeń prowadzi dłuto bezpośrednio w kierunku dłoni, którą podtrzymuje belkę."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Narzędzia ręczne: dłuta, strugi, świdry i piły” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Dłuto umożliwia wykonanie gniazda, strug wyrównuje powierzchnię, świder wykonuje otwór, a piła przecina materiał. Zęby do cięcia wzdłuż włókien i w poprzek mają różne cechy. Tępe narzędzie wymaga nadmiernej siły i utrudnia kontrolę pracy.",
+          "situation": "Uczeń prowadzi dłuto bezpośrednio w kierunku dłoni, którą podtrzymuje belkę.",
+          "question": "Jak zapewnić bezpieczniejszą pracę dłutem?",
+          "options": [
+            "Wykonać cięcie szybciej.",
+            "Zamocować materiał i prowadzić narzędzie z dala od dłoni.",
+            "Chwycić ostrze blisko końcówki.",
+            "Nasmarować dłoń olejem."
+          ],
+          "correct": 1,
+          "example": "Zamocować materiał i prowadzić narzędzie z dala od dłoni.",
+          "explanation": "Przygotuj stół, stabilnie zamocuj detal i sprawdź ostrza oraz rękojeści. Wybierz narzędzie na podstawie żądanego kształtu i gatunku drewna. Kierunek cięcia powinien prowadzić od dłoni i ciała, a odpady należy usuwać dopiero po zatrzymaniu narzędzi.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Przygotuj stół, stabilnie zamocuj detal i sprawdź ostrza oraz rękojeści. Wybierz narzędzie na podstawie żądanego kształtu i gatunku drewna. Kierunek cięcia powinien prowadzić od dłoni i ciała, a odpady należy usuwać dopiero po zatrzymaniu narzędzi.",
+            "Dobrze. Przygotuj stół, stabilnie zamocuj detal i sprawdź ostrza oraz rękojeści. Wybierz narzędzie na podstawie żądanego kształtu i gatunku drewna. Kierunek cięcia powinien prowadzić od dłoni i ciała, a odpady należy usuwać dopiero po zatrzymaniu narzędzi.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Przygotuj stół, stabilnie zamocuj detal i sprawdź ostrza oraz rękojeści. Wybierz narzędzie na podstawie żądanego kształtu i gatunku drewna. Kierunek cięcia powinien prowadzić od dłoni i ciała, a odpady należy usuwać dopiero po zatrzymaniu narzędzi.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Przygotuj stół, stabilnie zamocuj detal i sprawdź ostrza oraz rękojeści. Wybierz narzędzie na podstawie żądanego kształtu i gatunku drewna. Kierunek cięcia powinien prowadzić od dłoni i ciała, a odpady należy usuwać dopiero po zatrzymaniu narzędzi."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 14,
+      "title_pl": "15. Pilarki tarczowe i taśmowe — mechanizmy",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "W maszynie napęd przenosi ruch na element tnący, a posuw zapewnia kontrolowane przemieszczanie materiału lub narzędzia. Pilarka tarczowa i taśmowa różnią się typem ostrza, prowadzeniem, dopuszczalnymi operacjami i ryzykiem. Ostrze i osłony muszą odpowiadać konkretnej maszynie."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Rozpoznaj części na schemacie: napęd, osłona, prowadnica, posuw, wyłącznik awaryjny. Przed uruchomieniem sprawdź instrukcję, odciąg, prawidłowe zamocowanie i brak uszkodzeń. Nie obchodź blokad i nie wymieniaj ostrza bez zabezpieczenia energii."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Piła wibruje mocniej niż zwykle, a operator planuje wykonać tylko ostatnie cięcie."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Pilarki tarczowe i taśmowe — mechanizmy” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "W maszynie napęd przenosi ruch na element tnący, a posuw zapewnia kontrolowane przemieszczanie materiału lub narzędzia. Pilarka tarczowa i taśmowa różnią się typem ostrza, prowadzeniem, dopuszczalnymi operacjami i ryzykiem. Ostrze i osłony muszą odpowiadać konkretnej maszynie.",
+          "situation": "Piła wibruje mocniej niż zwykle, a operator planuje wykonać tylko ostatnie cięcie.",
+          "question": "Jaka jest prawidłowa decyzja przy nietypowych wibracjach?",
+          "options": [
+            "Zwiększyć obroty.",
+            "Mocniej przytrzymać deskę.",
+            "Zatrzymać i zlecić kontrolę przed ponowną pracą.",
+            "Nie zgłaszać, jeśli ostrze się obraca."
+          ],
+          "correct": 2,
+          "example": "Zatrzymać i zlecić kontrolę przed ponowną pracą.",
+          "explanation": "Rozpoznaj części na schemacie: napęd, osłona, prowadnica, posuw, wyłącznik awaryjny. Przed uruchomieniem sprawdź instrukcję, odciąg, prawidłowe zamocowanie i brak uszkodzeń. Nie obchodź blokad i nie wymieniaj ostrza bez zabezpieczenia energii.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Rozpoznaj części na schemacie: napęd, osłona, prowadnica, posuw, wyłącznik awaryjny. Przed uruchomieniem sprawdź instrukcję, odciąg, prawidłowe zamocowanie i brak uszkodzeń. Nie obchodź blokad i nie wymieniaj ostrza bez zabezpieczenia energii.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Rozpoznaj części na schemacie: napęd, osłona, prowadnica, posuw, wyłącznik awaryjny. Przed uruchomieniem sprawdź instrukcję, odciąg, prawidłowe zamocowanie i brak uszkodzeń. Nie obchodź blokad i nie wymieniaj ostrza bez zabezpieczenia energii.",
+            "Dobrze. Rozpoznaj części na schemacie: napęd, osłona, prowadnica, posuw, wyłącznik awaryjny. Przed uruchomieniem sprawdź instrukcję, odciąg, prawidłowe zamocowanie i brak uszkodzeń. Nie obchodź blokad i nie wymieniaj ostrza bez zabezpieczenia energii.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Rozpoznaj części na schemacie: napęd, osłona, prowadnica, posuw, wyłącznik awaryjny. Przed uruchomieniem sprawdź instrukcję, odciąg, prawidłowe zamocowanie i brak uszkodzeń. Nie obchodź blokad i nie wymieniaj ostrza bez zabezpieczenia energii."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 15,
+      "title_pl": "16. Strugarki, frezarki i konserwacja maszyn",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Struganie usuwa warstwę materiału w celu uzyskania płaskiej powierzchni i wymiaru, a frezowanie może tworzyć profile oraz gniazda. Dobór narzędzia, prędkości i sposobu posuwu zależy od maszyny i materiału. Uszkodzona głowica lub niesprawna prowadnica może powodować odrzut."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Odczytaj instrukcję smarowania, zakres przeglądów i warunki wymiany narzędzi. Nigdy nie dobieraj losowego oleju ani nie naprawiaj wirujących ostrzy metodami niezatwierdzonymi. Kontrola jakości obejmuje płaskość, prostokątność i wymiary po obróbce."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Dwie deski przechodzą przez strugarkę z niesprawną prowadnicą i mają różne kąty krawędzi."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Strugarki, frezarki i konserwacja maszyn” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Struganie usuwa warstwę materiału w celu uzyskania płaskiej powierzchni i wymiaru, a frezowanie może tworzyć profile oraz gniazda. Dobór narzędzia, prędkości i sposobu posuwu zależy od maszyny i materiału. Uszkodzona głowica lub niesprawna prowadnica może powodować odrzut.",
+          "situation": "Dwie deski przechodzą przez strugarkę z niesprawną prowadnicą i mają różne kąty krawędzi.",
+          "question": "Co sprawdza się po struganiu?",
+          "options": [
+            "Wyłącznie liczbę przejść.",
+            "Kolor i zapach trocin.",
+            "Prędkość drukowania rysunku.",
+            "Wymiary, płaskość i kąt odpowiednich powierzchni."
+          ],
+          "correct": 3,
+          "example": "Wymiary, płaskość i kąt odpowiednich powierzchni.",
+          "explanation": "Odczytaj instrukcję smarowania, zakres przeglądów i warunki wymiany narzędzi. Nigdy nie dobieraj losowego oleju ani nie naprawiaj wirujących ostrzy metodami niezatwierdzonymi. Kontrola jakości obejmuje płaskość, prostokątność i wymiary po obróbce.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj instrukcję smarowania, zakres przeglądów i warunki wymiany narzędzi. Nigdy nie dobieraj losowego oleju ani nie naprawiaj wirujących ostrzy metodami niezatwierdzonymi. Kontrola jakości obejmuje płaskość, prostokątność i wymiary po obróbce.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj instrukcję smarowania, zakres przeglądów i warunki wymiany narzędzi. Nigdy nie dobieraj losowego oleju ani nie naprawiaj wirujących ostrzy metodami niezatwierdzonymi. Kontrola jakości obejmuje płaskość, prostokątność i wymiary po obróbce.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj instrukcję smarowania, zakres przeglądów i warunki wymiany narzędzi. Nigdy nie dobieraj losowego oleju ani nie naprawiaj wirujących ostrzy metodami niezatwierdzonymi. Kontrola jakości obejmuje płaskość, prostokątność i wymiary po obróbce.",
+            "Dobrze. Odczytaj instrukcję smarowania, zakres przeglądów i warunki wymiany narzędzi. Nigdy nie dobieraj losowego oleju ani nie naprawiaj wirujących ostrzy metodami niezatwierdzonymi. Kontrola jakości obejmuje płaskość, prostokątność i wymiary po obróbce."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 16,
+      "title_pl": "17. Ściana szkieletowa: podwalina, słupek, oczep",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Podwalina, słupki, oczep, nadproża i stężenia współpracują przy przekazywaniu obciążeń. Poszycie i połączenia mogą usztywniać ścianę zgodnie z projektem. Sama pionowość nie wystarczy, aby zapewnić odporność ściany na siły poziome i etapy montażowe."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Zidentyfikuj elementy na schemacie, sprawdź rozstaw słupków i miejsce otworów. Zanim podniesiesz ramę, ustal tymczasowe stężenia, miejsca zaczepienia oraz strefę wyłączenia. Po ustawieniu kontroluj przekątne i sposób zakotwienia."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Dobrze wypionowana ściana nie ma wymaganych stężeń, a w pobliżu przechodzą pracownicy."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Ściana szkieletowa: podwalina, słupek, oczep” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Podwalina, słupki, oczep, nadproża i stężenia współpracują przy przekazywaniu obciążeń. Poszycie i połączenia mogą usztywniać ścianę zgodnie z projektem. Sama pionowość nie wystarczy, aby zapewnić odporność ściany na siły poziome i etapy montażowe.",
+          "situation": "Dobrze wypionowana ściana nie ma wymaganych stężeń, a w pobliżu przechodzą pracownicy.",
+          "question": "Co jest niezbędne dla stateczności ściany?",
+          "options": [
+            "Zgodny z projektem układ stężeń, poszycia i łączników.",
+            "Wyłącznie poziomica przy słupkach.",
+            "Grubsza dekoracyjna listwa.",
+            "Malowanie oczepu."
+          ],
+          "correct": 0,
+          "example": "Zgodny z projektem układ stężeń, poszycia i łączników.",
+          "explanation": "Zidentyfikuj elementy na schemacie, sprawdź rozstaw słupków i miejsce otworów. Zanim podniesiesz ramę, ustal tymczasowe stężenia, miejsca zaczepienia oraz strefę wyłączenia. Po ustawieniu kontroluj przekątne i sposób zakotwienia.",
+          "feedback": [
+            "Dobrze. Zidentyfikuj elementy na schemacie, sprawdź rozstaw słupków i miejsce otworów. Zanim podniesiesz ramę, ustal tymczasowe stężenia, miejsca zaczepienia oraz strefę wyłączenia. Po ustawieniu kontroluj przekątne i sposób zakotwienia.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zidentyfikuj elementy na schemacie, sprawdź rozstaw słupków i miejsce otworów. Zanim podniesiesz ramę, ustal tymczasowe stężenia, miejsca zaczepienia oraz strefę wyłączenia. Po ustawieniu kontroluj przekątne i sposób zakotwienia.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zidentyfikuj elementy na schemacie, sprawdź rozstaw słupków i miejsce otworów. Zanim podniesiesz ramę, ustal tymczasowe stężenia, miejsca zaczepienia oraz strefę wyłączenia. Po ustawieniu kontroluj przekątne i sposób zakotwienia.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zidentyfikuj elementy na schemacie, sprawdź rozstaw słupków i miejsce otworów. Zanim podniesiesz ramę, ustal tymczasowe stężenia, miejsca zaczepienia oraz strefę wyłączenia. Po ustawieniu kontroluj przekątne i sposób zakotwienia."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 17,
+      "title_pl": "18. Strop drewniany: rozpiętość i ugięcie",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Belki stropowe przenoszą ciężar własny oraz obciążenia użytkowe do podpór. Nośność i ugięcia zależą od rozpiętości, przekroju, klasy drewna, sposobu oparcia i usztywnienia. Otwory oraz nacięcia mogą osłabiać newralgiczne strefy belki."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Odczytaj na projekcie rozstaw osi, przekrój i zakres oparcia. Porównaj z oznaczeniem dostarczonego materiału. Przy kolizji z instalacją zgłoś ją projektantowi, zanim wykonasz nacięcie lub otwór w elemencie nośnym."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Instalacja wentylacyjna wymaga wycięcia dużego fragmentu belki w pobliżu podpory."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Strop drewniany: rozpiętość i ugięcie” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Belki stropowe przenoszą ciężar własny oraz obciążenia użytkowe do podpór. Nośność i ugięcia zależą od rozpiętości, przekroju, klasy drewna, sposobu oparcia i usztywnienia. Otwory oraz nacięcia mogą osłabiać newralgiczne strefy belki.",
+          "situation": "Instalacja wentylacyjna wymaga wycięcia dużego fragmentu belki w pobliżu podpory.",
+          "question": "Kto powinien rozstrzygnąć zmianę przekroju belki?",
+          "options": [
+            "Dowolny monter na podstawie zdjęcia.",
+            "Uprawniony projektant lub osoba kompetentna zgodnie z wymaganiami.",
+            "Dostawca folii paroizolacyjnej.",
+            "Osoba malująca sufit."
+          ],
+          "correct": 1,
+          "example": "Uprawniony projektant lub osoba kompetentna zgodnie z wymaganiami.",
+          "explanation": "Odczytaj na projekcie rozstaw osi, przekrój i zakres oparcia. Porównaj z oznaczeniem dostarczonego materiału. Przy kolizji z instalacją zgłoś ją projektantowi, zanim wykonasz nacięcie lub otwór w elemencie nośnym.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj na projekcie rozstaw osi, przekrój i zakres oparcia. Porównaj z oznaczeniem dostarczonego materiału. Przy kolizji z instalacją zgłoś ją projektantowi, zanim wykonasz nacięcie lub otwór w elemencie nośnym.",
+            "Dobrze. Odczytaj na projekcie rozstaw osi, przekrój i zakres oparcia. Porównaj z oznaczeniem dostarczonego materiału. Przy kolizji z instalacją zgłoś ją projektantowi, zanim wykonasz nacięcie lub otwór w elemencie nośnym.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj na projekcie rozstaw osi, przekrój i zakres oparcia. Porównaj z oznaczeniem dostarczonego materiału. Przy kolizji z instalacją zgłoś ją projektantowi, zanim wykonasz nacięcie lub otwór w elemencie nośnym.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Odczytaj na projekcie rozstaw osi, przekrój i zakres oparcia. Porównaj z oznaczeniem dostarczonego materiału. Przy kolizji z instalacją zgłoś ją projektantowi, zanim wykonasz nacięcie lub otwór w elemencie nośnym."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 18,
+      "title_pl": "19. Więźba dachowa: krokwie, murłaty, płatwie i jętki",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Krokwie przenoszą obciążenia połaci, murłaty przekazują je na ściany, a płatwie lub jętki pełnią funkcje zgodnie z projektem układu dachu. Śnieg, wiatr, rozpiętość i geometria determinują rodzaj więźby. Elementu konstrukcyjnego nie można usunąć tylko dlatego, że utrudnia przejście."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Na przekroju oznacz kalenicę, krokwie, jętki, płatwie i murłaty. Ustal plan połączeń, kolejność podnoszenia oraz czasowe zabezpieczenie. Przy zmianie projektu sprawdź wpływ na reakcje podpór i połączenia."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Wykonawca chce pominąć płatew, ponieważ w innym budynku jej nie widział."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Więźba dachowa: krokwie, murłaty, płatwie i jętki” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Krokwie przenoszą obciążenia połaci, murłaty przekazują je na ściany, a płatwie lub jętki pełnią funkcje zgodnie z projektem układu dachu. Śnieg, wiatr, rozpiętość i geometria determinują rodzaj więźby. Elementu konstrukcyjnego nie można usunąć tylko dlatego, że utrudnia przejście.",
+          "situation": "Wykonawca chce pominąć płatew, ponieważ w innym budynku jej nie widział.",
+          "question": "Co zrobić przed pominięciem płatwi?",
+          "options": [
+            "Usunąć ją po położeniu membrany.",
+            "Zastąpić kolorem farby.",
+            "Uzyskać zatwierdzony projekt odpowiednio zmienionej konstrukcji.",
+            "Dodać cięższe dachówki."
+          ],
+          "correct": 2,
+          "example": "Uzyskać zatwierdzony projekt odpowiednio zmienionej konstrukcji.",
+          "explanation": "Na przekroju oznacz kalenicę, krokwie, jętki, płatwie i murłaty. Ustal plan połączeń, kolejność podnoszenia oraz czasowe zabezpieczenie. Przy zmianie projektu sprawdź wpływ na reakcje podpór i połączenia.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Na przekroju oznacz kalenicę, krokwie, jętki, płatwie i murłaty. Ustal plan połączeń, kolejność podnoszenia oraz czasowe zabezpieczenie. Przy zmianie projektu sprawdź wpływ na reakcje podpór i połączenia.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Na przekroju oznacz kalenicę, krokwie, jętki, płatwie i murłaty. Ustal plan połączeń, kolejność podnoszenia oraz czasowe zabezpieczenie. Przy zmianie projektu sprawdź wpływ na reakcje podpór i połączenia.",
+            "Dobrze. Na przekroju oznacz kalenicę, krokwie, jętki, płatwie i murłaty. Ustal plan połączeń, kolejność podnoszenia oraz czasowe zabezpieczenie. Przy zmianie projektu sprawdź wpływ na reakcje podpór i połączenia.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Na przekroju oznacz kalenicę, krokwie, jętki, płatwie i murłaty. Ustal plan połączeń, kolejność podnoszenia oraz czasowe zabezpieczenie. Przy zmianie projektu sprawdź wpływ na reakcje podpór i połączenia."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 19,
+      "title_pl": "20. Deskowania ścian, stropów i formy betonowe",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 2,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-kierownik-budowy",
+        "sections": [
+          {
+            "heading": "Wiedza techniczna",
+            "text": "Deskowanie utrzymuje świeżą mieszankę i przenosi parcie betonu oraz obciążenia montażowe. Rygiel, ściąg, podpora i panel spełniają osobne funkcje. Tempo betonowania, temperatura i wysokość mieszanki mają znaczenie dla parcia; nie wolno samodzielnie zmieniać kompletności podpór."
+          },
+          {
+            "heading": "Kolejność i sposób kontroli",
+            "text": "Zmontuj koncepcyjnie układ paneli na schemacie, zaznacz ściągi, stężenia i podparcia. Sprawdź instrukcję producenta, plan betonowania, nośność podłoża i odbiór przed zalaniem. Rozdeskowanie wykonuje się według zatwierdzonej procedury i stanu dojrzewania betonu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Przy betonowaniu pojawia się pomysł, by podwoić tempo bez aktualizacji planu deskowania."
+          },
+          {
+            "heading": "Zadanie praktyczne na papierze",
+            "text": "Narysuj lub rozpisz proces „Deskowania ścian, stropów i formy betonowe” i wskaż wymagania dokumentacyjne, dwa punkty kontroli i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Deskowanie utrzymuje świeżą mieszankę i przenosi parcie betonu oraz obciążenia montażowe. Rygiel, ściąg, podpora i panel spełniają osobne funkcje. Tempo betonowania, temperatura i wysokość mieszanki mają znaczenie dla parcia; nie wolno samodzielnie zmieniać kompletności podpór.",
+          "situation": "Przy betonowaniu pojawia się pomysł, by podwoić tempo bez aktualizacji planu deskowania.",
+          "question": "Co należy sprawdzić przy zwiększeniu tempa betonowania?",
+          "options": [
+            "Wyłącznie kolor paneli.",
+            "Czy łatwiej odkręcić ściągi.",
+            "Liczbę dostępnych mioteł.",
+            "Dopuszczalne parcie i zgodność z systemem oraz planem technologicznym."
+          ],
+          "correct": 3,
+          "example": "Dopuszczalne parcie i zgodność z systemem oraz planem technologicznym.",
+          "explanation": "Zmontuj koncepcyjnie układ paneli na schemacie, zaznacz ściągi, stężenia i podparcia. Sprawdź instrukcję producenta, plan betonowania, nośność podłoża i odbiór przed zalaniem. Rozdeskowanie wykonuje się według zatwierdzonej procedury i stanu dojrzewania betonu.",
+          "feedback": [
+            "Zwróć uwagę na proces i bezpieczeństwo. Zmontuj koncepcyjnie układ paneli na schemacie, zaznacz ściągi, stężenia i podparcia. Sprawdź instrukcję producenta, plan betonowania, nośność podłoża i odbiór przed zalaniem. Rozdeskowanie wykonuje się według zatwierdzonej procedury i stanu dojrzewania betonu.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zmontuj koncepcyjnie układ paneli na schemacie, zaznacz ściągi, stężenia i podparcia. Sprawdź instrukcję producenta, plan betonowania, nośność podłoża i odbiór przed zalaniem. Rozdeskowanie wykonuje się według zatwierdzonej procedury i stanu dojrzewania betonu.",
+            "Zwróć uwagę na proces i bezpieczeństwo. Zmontuj koncepcyjnie układ paneli na schemacie, zaznacz ściągi, stężenia i podparcia. Sprawdź instrukcję producenta, plan betonowania, nośność podłoża i odbiór przed zalaniem. Rozdeskowanie wykonuje się według zatwierdzonej procedury i stanu dojrzewania betonu.",
+            "Dobrze. Zmontuj koncepcyjnie układ paneli na schemacie, zaznacz ściągi, stężenia i podparcia. Sprawdź instrukcję producenta, plan betonowania, nośność podłoża i odbiór przed zalaniem. Rozdeskowanie wykonuje się według zatwierdzonej procedury i stanu dojrzewania betonu."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    }
+  ]
+}
