@@ -61,21 +61,50 @@ export default function CarpentryPracticeLab({lessonNo,onPassed}:{lessonNo:numbe
   setAnswer('');setMessage('');setPassed(false);setShowSolution(false);onPassed(false);
  },[lessonNo]);
  if(!problem)return null;
- const readNumber=(s:string)=>Number(s.trim().replace(',','.'));
- function check(){
+ const readNumber=(s:string):number=>{
+  const cleaned=String(s||'').trim().replace(/\\s|\\u00a0/g,'').replace(',','.');
+  return cleaned!==''&&/^(?:\\d+(?:\\.\\d*)?|\\.\\d+)$/.test(cleaned)?Number(cleaned):NaN;
+ };
+ const format=(n:number)=>n.toLocaleString('pl-PL',{maximumFractionDigits:5});
+ function currentValues():Record<string,number>|null{
   const values:Record<string,number>={};
   for(const field of problem.fields){
    const n=readNumber(inputs[field.key]||'');
-   if(!Number.isFinite(n)||n<=0){setMessage('Wprowadź poprawne dodatnie liczby do wszystkich pól.');return;}
+   if(!Number.isFinite(n)||n<=0)return null;
    values[field.key]=n;
   }
-  const entered=readNumber(answer);
-  if(!Number.isFinite(entered)){setMessage('Wpisz wynik w odpowiedniej jednostce.');return;}
-  if(lessonNo===23&&values.wet<values.dry){setMessage('Masa mokra nie może być mniejsza od masy suchej tej samej próbki.');return;}
+  if(lessonNo===1&&!Number.isInteger(values.count))return null;
+  if(lessonNo===23&&values.wet<values.dry)return null;
+  return values;
+ }
+ function explain(values:Record<string,number>,expected:number):string{
+  const v=values, f=format, result=f(expected)+' '+problem.unit;
+  if(lessonNo===1)return '('+f(v.thickness)+' ÷ 1000) × ('+f(v.width)+' ÷ 1000) × ('+f(v.length)+' ÷ 1000) × '+f(v.count)+' = '+result;
+  if(lessonNo===8||lessonNo===37)return '√('+f(v.a)+'² + '+f(v.b)+'²) = '+result;
+  if(lessonNo===18)return '('+f(v.rpmMotor)+' × '+f(v.diamMotor)+') ÷ '+f(v.rpmMachine)+' = '+result;
+  if(lessonNo===23)return '('+f(v.wet)+' − '+f(v.dry)+') ÷ '+f(v.dry)+' × 100 = '+result;
+  if(lessonNo===30)return f(v.base)+' × (1 + '+f(v.surcharge)+' ÷ 100) = '+result;
+  return result;
+ }
+ function reveal(){
+  const values=currentValues();
+  if(!values){setMessage('Sprawdź dane: wszystkie wartości muszą być dodatnie, liczba sztuk całkowita, a masa mokra nie mniejsza niż sucha.');return;}
   const expected=problem.calculate(values);
-  const tolerance=Math.max(0.005,Math.abs(expected)*0.002);
-  if(Math.abs(expected-entered)<=tolerance){setMessage('Dobrze! Zastosowałeś prawidłowe jednostki i obliczenia.');setPassed(true);onPassed(true);}
-  else{setMessage('Wynik jeszcze się nie zgadza. Sprawdź jednostki i zapis wzoru.');setPassed(false);onPassed(false);}
+  if(!Number.isFinite(expected)){setMessage('Wartości są zbyt duże do obliczenia.');return;}
+  setShowSolution(true);
+  setMessage('Obliczyłem wynik z aktualnie wpisanych wartości. Możesz teraz przećwiczyć wzór i samodzielnie wpisać odpowiedź.');
+ }
+ function check(){
+  const values=currentValues();
+  if(!values){setMessage('Sprawdź dane: podaj dodatnie liczby. Dla liczby sztuk użyj liczby całkowitej, a masa mokra nie może być mniejsza niż sucha.');return;}
+  if(!answer.trim()){setMessage('Wpisz obliczony wynik w polu poniżej albo wybierz „Pokaż wynik i wzór”.');return;}
+  const entered=readNumber(answer);
+  if(!Number.isFinite(entered)){setMessage('Wpisz samą liczbę, np. 2,56. Jednostka jest podana obok pola.');return;}
+  const expected=problem.calculate(values);
+  if(!Number.isFinite(expected)){setMessage('Wartości są zbyt duże do obliczenia.');return;}
+  const tolerance=Math.max(0.00001,Math.abs(expected)*0.0005);
+  if(Math.abs(expected-entered)<=tolerance){setMessage('Zgadza się! '+explain(values,expected));setPassed(true);onPassed(true);}
+  else{setMessage('To jeszcze nie ten wynik. Sprawdź kolejność działań i jednostki; możesz odsłonić obliczenie dla swoich wartości.');setPassed(false);onPassed(false);}
  }
  return <View style={{backgroundColor:'#eef6eb',borderRadius:15,padding:14,borderWidth:1,borderColor:'#d0e4cf',gap:11,marginBottom:15}}>
   <Text style={{fontSize:17,fontWeight:'900',color:'#224d35'}}>{problem.title}</Text>
@@ -84,24 +113,25 @@ export default function CarpentryPracticeLab({lessonNo,onPassed}:{lessonNo:numbe
    {problem.fields.map(x=><View key={x.key} style={{width:width<520?'47%':'30%',minWidth:125,gap:5}}>
     <Text style={{color:'#345a41',fontSize:12,fontWeight:'800'}}>{x.label} ({x.unit})</Text>
     <TextInput accessibilityLabel={x.label} keyboardType="decimal-pad" value={inputs[x.key]||''}
-     onChangeText={val=>{setInputs(prev=>({...prev,[x.key]:val}));setMessage('');setPassed(false);onPassed(false);}}
+     onChangeText={val=>{setInputs(prev=>({...prev,[x.key]:val}));setAnswer('');setShowSolution(false);setMessage('');setPassed(false);onPassed(false);}}
      style={{backgroundColor:'white',borderWidth:1,borderColor:'#a8c7aa',borderRadius:9,padding:10,fontSize:16,color:'#1c4830',minHeight:48}}/>
    </View>)}
   </View>
   <Text style={{color:'#31593e',fontSize:13,fontWeight:'900'}}>Twój wynik: {problem.expectedLabel} ({problem.unit})</Text>
-  <TextInput accessibilityLabel="Wpisz obliczony wynik" keyboardType="decimal-pad" placeholder={'Np. '+(lessonNo===18?'5':'4,0')} value={answer}
+  <TextInput accessibilityLabel="Wpisz obliczony wynik" keyboardType="decimal-pad" placeholder="Wpisz swój wynik (np. 2,56)" value={answer}
    onChangeText={v=>{setAnswer(v);setMessage('');setPassed(false);onPassed(false);}}
    style={{backgroundColor:'white',borderWidth:1,borderColor:'#a8c7aa',borderRadius:9,padding:13,fontSize:18,color:'#1c4830',minHeight:50}}/>
-  <Pressable accessibilityRole="button" onPress={check} style={{backgroundColor:'#1c5037',padding:14,borderRadius:10}}>
-   <Text style={{color:'white',fontSize:15,textAlign:'center',fontWeight:'900'}}>Sprawdź obliczenie</Text>
+  <Pressable accessibilityRole="button" onPress={check} style={{backgroundColor:'#1c5037',padding:14,borderRadius:10,minHeight:48,justifyContent:'center'}}>
+   <Text style={{color:'white',fontSize:15,textAlign:'center',fontWeight:'900'}}>Sprawdź mój wynik</Text>
   </Pressable>
-  {!!message&&<Text style={{color:passed?'#1c7349':'#86592e',lineHeight:21,fontSize:14,fontWeight:'700'}}>{message}</Text>}
-  <Pressable accessibilityRole="button" onPress={()=>setShowSolution(v=>!v)} style={{paddingVertical:7}}>
-   <Text style={{color:'#426f52',fontWeight:'800',fontSize:13}}>{showSolution?'Ukryj wyjaśnienie ↑':'Potrzebuję wskazówki / rozwiązania ↓'}</Text>
+  <Pressable accessibilityRole="button" onPress={reveal} style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#a8c7aa',padding:13,borderRadius:10,minHeight:48,justifyContent:'center'}}>
+   <Text style={{color:'#24563b',fontSize:14,textAlign:'center',fontWeight:'800'}}>Pokaż wynik i wzór dla tych danych</Text>
   </Pressable>
+  {!!message&&<Text accessibilityRole="text" style={{color:passed?'#1c7349':'#86592e',lineHeight:21,fontSize:14,fontWeight:'700'}}>{message}</Text>}
   {showSolution&&<View style={{backgroundColor:'white',padding:12,borderRadius:9,gap:7}}>
    <Text style={{fontSize:13,lineHeight:20,color:'#395841'}}>{problem.tip}</Text>
-   <Text style={{fontSize:14,lineHeight:21,fontWeight:'800',color:'#31523e'}}>{problem.solution}</Text>
+   {currentValues()&&<Text selectable style={{fontSize:14,lineHeight:24,fontWeight:'800',color:'#31523e'}}>{explain(currentValues()!,problem.calculate(currentValues()!))}</Text>}
+   <Text style={{fontSize:12,lineHeight:18,color:'#627766'}}>Ten wzór liczy na podstawie wartości, które masz teraz w polach — nie na podstawie przykładu z lekcji.</Text>
   </View>}
  </View>;
 }
