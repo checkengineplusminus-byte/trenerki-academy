@@ -12,6 +12,7 @@ import EcoAtlas from '../src/EcoAtlas';
 import FinalExam from '../src/FinalExam';
 import LessonIllustratedSections,{type LearningSection} from '../src/LessonIllustratedSections';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
+import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
@@ -214,6 +215,7 @@ export default function Learning(){
   {!!lesson&&<>
    {index===0&&!hasSoftwareOrientation(slug)&&!isLogisticsCourse(slug)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
    {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug}/>}
+   {index>=0&&index<=2&&hasSoftwareMenuLab(slug)&&<SoftwareMenuLab slug={slug}/>}
    {(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
    {items.length===30&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
      <Text style={{fontWeight:'900',color:ink}}>{index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT'}</Text>
