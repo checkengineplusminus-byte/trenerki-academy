@@ -74,7 +74,7 @@
         "editorial_status": "review_needed",
         "module": 3,
         "learning_outcome": "Sporządź kartę zlecenia klamki: pięć pytań do klienta, cztery wymiary i pięć punktów odbioru.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -143,7 +143,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Na schemacie zaznacz oś zawiasu, siły, punkty mocowania i miejsca możliwego zużycia."
+        "learning_outcome": "Na schemacie zaznacz oś zawiasu, siły, punkty mocowania i miejsca możliwego zużycia.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -212,7 +213,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Przygotuj listę dziesięciu informacji potrzebnych do wyceny kutych elementów balustrady."
+        "learning_outcome": "Przygotuj listę dziesięciu informacji potrzebnych do wyceny kutych elementów balustrady.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -281,7 +283,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Zrób protokół kontroli haczyka: pomiar, brak ostrych krawędzi, próba funkcjonalna pod fachowym nadzorem."
+        "learning_outcome": "Zrób protokół kontroli haczyka: pomiar, brak ostrych krawędzi, próba funkcjonalna pod fachowym nadzorem.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -350,7 +353,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Sporządź wzór raportu usterki bryczki: miejsce, objawy, ryzyko i decyzja eksploatacyjna."
+        "learning_outcome": "Sporządź wzór raportu usterki bryczki: miejsce, objawy, ryzyko i decyzja eksploatacyjna.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -424,7 +428,7 @@
         "editorial_status": "review_needed",
         "module": 3,
         "learning_outcome": "Zrób opisową mapę części kopyta i listę objawów wymagających profesjonalnej konsultacji.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-kopyto"
       }
     },
     {
@@ -498,7 +502,7 @@
         "editorial_status": "review_needed",
         "module": 3,
         "learning_outcome": "Zestaw trzy hipotetyczne profile koni i napisz, o co zapytasz podkuwacza przed doborem podków.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-kopyto"
       }
     },
     {
@@ -571,7 +575,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Przygotuj pięć pytań do podkuwacza o ocenę konia, dobór podków, kontrolę i postępowanie po zabiegu."
+        "learning_outcome": "Przygotuj pięć pytań do podkuwacza o ocenę konia, dobór podków, kontrolę i postępowanie po zabiegu.",
+        "illustration": "kowal-kopyto"
       }
     },
     {
@@ -640,7 +645,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Policz przykładową wycenę: materiał 180 zł, 5 h pracy po 90 zł i pozostałe koszty 120 zł; opisz założenia i wynik."
+        "learning_outcome": "Policz przykładową wycenę: materiał 180 zł, 5 h pracy po 90 zł i pozostałe koszty 120 zł; opisz założenia i wynik.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -709,7 +715,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 3,
-        "learning_outcome": "Opracuj teczkę projektu z klamką i zawiasem: rysunek, materiał, narzędzia, plan, BHP, kontrola, kosztorys."
+        "learning_outcome": "Opracuj teczkę projektu z klamką i zawiasem: rysunek, materiał, narzędzia, plan, BHP, kontrola, kosztorys.",
+        "illustration": "kowal-rysunek"
       }
     }
   ]
