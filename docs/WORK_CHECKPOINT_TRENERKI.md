@@ -111,3 +111,11 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - GitHub: `content/ludwisarz-masterclass-20261109-part1.json` i `part2.json` (druga `63b753b1`), odtwarzalny SQL `database/patches/trenerki-ludwisarz-content-20261109.sql` (`0967650d`), 6 SVG oraz rejestr (`ba4fad71`), audyt `docs/COURSE_REVIEW_LUDWISARZ_20261109.md` (`01e844fc`).
 - GitHub Actions dla ostatnich commitów **in_progress**. Nadal brak recenzji odlewnika i stroiciela, testu konta ucznia, egzaminu, certyfikatu i potwierdzenia widoczności SVG na Expo. Nie oznaczać kursu jako w pełni zweryfikowanego.
 - **Następny kurs do wybrania w kolejnym uruchomieniu**: `mlynarz-tradycyjny` po ponownym odczycie checkpointu i Supabase. Nie powtarzać kursów 1–7.
+
+
+**Kurs 8: Młynarz tradycyjny — opracowanie treści zapisane (2026-11-09)**
+- Z 8 ogólnych lekcji do **12 indywidualnych** z pięciosekcyjną strukturą: budowa ziarna, czyszczenie, kamienie, przekładnia, rowki i zużycie, wyciąg, popiół, wybuchowość pyłu, składowanie, jakość mąki, diagnostyka i projekt.
+- Zweryfikowano Supabase: `lessons=12`, `first=0`, `last=11`, `unique_questions=12`, `five_sections=12`, `four_options=12`, `revision8=12`. Status `review_needed`.
+- GitHub: `content/mlynarz-masterclass-20261109-part1.json` (commit `90cba171`), `part2.json` (`2abdf6be`); cztery oryginalne rysunki i rejestr (`1ddf2555`); idempotentny SQL `database/patches/trenerki-mlynarz-content-20261109.sql` (`46b1cc54`) oraz audyt `docs/COURSE_REVIEW_MLYNARZ_20261109.md` (`bde98a3c`).
+- Nie zmieniono uprawnień, kont, płatności, postępów ani flag publikacji. Wciąż potrzebne: recenzja ekspercka, test 1–12 do egzaminu na zalogowanym koncie, kontrola jakości dystraktorów i potwierdzenie deployu Expo. 
+- **Następny kurs**: zweryfikować aktualny stan `plecionkarz` i wybrać dopiero po odczycie najnowszego checkpointu i Supabase. Nie dublować kursów 1–8.
