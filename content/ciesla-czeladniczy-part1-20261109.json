@@ -1,0 +1,557 @@
+{
+  "course_slug": "ciesla-czeladniczy",
+  "module": 1,
+  "title": "Podstawy zawodu cieśli i przygotowanie do egzaminu czeladniczego",
+  "lessons": [
+    {
+      "lesson_no": 0,
+      "title_pl": "1. Jak wygląda egzamin czeladniczy cieśli i czego trzeba się nauczyć",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Przygotuj trzy kolumny: technologia, maszyny, materiały. Dla każdej wypisz co najmniej pięć umiejętności i sposób ich wykazania na budowie. Do tego rozpisz siedem zakresów części pisemnej.",
+        "sections": [
+          {
+            "heading": "Struktura egzaminu",
+            "text": "W egzaminie czeladniczym cieśli rozdziela się część praktyczną i teoretyczną. Część ustna sprawdza trzy obszary: technologię robót, maszynoznawstwo i materiałoznawstwo. Część pisemna obejmuje rachunkowość zawodową, dokumentację działalności, rysunek zawodowy, BHP i ochronę przeciwpożarową, ochronę środowiska, prawo pracy oraz podstawy przedsiębiorczości. Właściwa komisja i izba ustalają aktualne warunki dopuszczenia, czas i organizację egzaminu."
+          },
+          {
+            "heading": "Jak przygotować się rzetelnie",
+            "text": "Najpierw ucz się materiału i rozwiązywania zadań na przykładach z budowy, później ćwicz odpowiedzi ustne z uzasadnieniem i pisemne testy. Egzamin praktyczny oznacza rzeczywiste wykonanie zadania w odpowiednio przygotowanym warsztacie. Kurs internetowy pomaga się przygotować, ale nie jest sam w sobie egzaminem ani dokumentem kwalifikacyjnym."
+          },
+          {
+            "heading": "Przykład zestawu ustnego",
+            "text": "Przykładowy zestaw ustny zawiera trzy pytania o technologię, trzy o maszyny i trzy o materiały. Kandydat odpowiada własnymi słowami: czym jest operacja, kiedy się ją wykonuje, jakie są zagrożenia oraz jak ocenić efekt. Nie wystarcza samo pamiętanie nazw narzędzi."
+          },
+          {
+            "heading": "Zadanie na start",
+            "text": "Przygotuj trzy kolumny: technologia, maszyny, materiały. Dla każdej wypisz co najmniej pięć umiejętności i sposób ich wykazania na budowie. Do tego rozpisz siedem zakresów części pisemnej."
+          }
+        ],
+        "learning": {
+          "intro": "W egzaminie czeladniczym cieśli rozdziela się część praktyczną i teoretyczną. Część ustna sprawdza trzy obszary: technologię robót, maszynoznawstwo i materiałoznawstwo. Część pisemna obejmuje rachunkowość zawodową, dokumentację działalności, rysunek zawodowy, BHP i ochronę przeciwpożarową, ochronę środowiska, prawo pracy oraz podstawy przedsiębiorczości. Właściwa komisja i izba ustalają aktualne warunki dopuszczenia, czas i organizację egzaminu.",
+          "situation": "Przykładowy zestaw ustny zawiera trzy pytania o technologię, trzy o maszyny i trzy o materiały. Kandydat odpowiada własnymi słowami: czym jest operacja, kiedy się ją wykonuje, jakie są zagrożenia oraz jak ocenić efekt. Nie wystarcza samo pamiętanie nazw narzędzi.",
+          "question": "Jakie trzy dziedziny są typowo sprawdzane w części ustnej egzaminu czeladniczego cieśli?",
+          "options": [
+            "Wyłącznie historia drewna, księgowość i marketing.",
+            "Technologia, maszynoznawstwo i materiałoznawstwo.",
+            "Tylko rysowanie komputerowe, bez technologii i materiałów.",
+            "Wyłącznie rozpoznawanie narzędzi po kolorze."
+          ],
+          "correct": 1,
+          "example": "Technologia, maszynoznawstwo i materiałoznawstwo.",
+          "explanation": "Część ustna jest rozdzielona na zagadnienia technologii, maszyn i materiałów; część pisemna i praktyczna są oceniane odrębnie.",
+          "feedback": [
+            "Nie. Wróć do struktury części ustnej: technologia, maszyny, materiały.",
+            "Tak. Egzamin ustny obejmuje te trzy obszary.",
+            "Nie. Wróć do struktury części ustnej: technologia, maszyny, materiały.",
+            "Nie. Wróć do struktury części ustnej: technologia, maszyny, materiały."
+          ],
+          "task": "Przygotuj trzy kolumny: technologia, maszyny, materiały. Dla każdej wypisz co najmniej pięć umiejętności i sposób ich wykazania na budowie. Do tego rozpisz siedem zakresów części pisemnej."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 1,
+      "title_pl": "2. Czytanie rysunku: rzuty, przekroje, symbole i rewizje",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Narysuj prostą ścianę 3600 × 2400 mm z otworem 900 × 2100 mm. Dopisz jednostki i rewizję oraz wskaż element, którego nie wolno założyć bez projektu.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Rzut poziomy opisuje położenie ścian i otworów z góry, elewacja przedstawia wygląd zewnętrzny, a przekrój pokazuje warstwy i wysokości. Linia wymiarowa nie zawsze jest krawędzią materiału. Tabliczka rysunkowa podaje numer, rewizję, datę, skalę, jednostkę i odpowiedzialność dokumentu."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Przed pracą odczytaj ostatnią zatwierdzoną rewizję, oznaczenie osi, poziomy odniesienia i widoki. Porównaj detale konstrukcji z opisem materiałowym. Wymiar zapisany liczbowo ma pierwszeństwo przed pomiarem linijką z papieru; w razie kolizji nie zgaduj."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Na kartce rysunek ma skalę 1:50, a ściana oznaczenie 3600 mm. Na poprawnie wydrukowanym rysunku może mierzyć 72 mm, ale jej wymiar projektowy nadal wynosi 3600 mm. Po przypadkowym przeskalowaniu PDF miarka nie daje wiarygodnej wartości."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Narysuj prostą ścianę 3600 × 2400 mm z otworem 900 × 2100 mm. Dopisz jednostki i rewizję oraz wskaż element, którego nie wolno założyć bez projektu."
+          }
+        ],
+        "learning": {
+          "intro": "Rzut poziomy opisuje położenie ścian i otworów z góry, elewacja przedstawia wygląd zewnętrzny, a przekrój pokazuje warstwy i wysokości. Linia wymiarowa nie zawsze jest krawędzią materiału. Tabliczka rysunkowa podaje numer, rewizję, datę, skalę, jednostkę i odpowiedzialność dokumentu.",
+          "situation": "Na kartce rysunek ma skalę 1:50, a ściana oznaczenie 3600 mm. Na poprawnie wydrukowanym rysunku może mierzyć 72 mm, ale jej wymiar projektowy nadal wynosi 3600 mm. Po przypadkowym przeskalowaniu PDF miarka nie daje wiarygodnej wartości.",
+          "question": "Na rysunku w skali 1:50 widnieje wymiar 3600 mm. Jaką długość przyjmujesz do projektu?",
+          "options": [
+            "3600 mm, ponieważ wymiar zapisany na rysunku jest wartością projektową.",
+            "72 mm, bo tyle może mieć linia na kartce.",
+            "180000 mm, bo wszystkie zapisane wymiary trzeba jeszcze mnożyć przez skalę.",
+            "Długość zmierzoną na ekranie telefonu, niezależnie od ustawień wydruku."
+          ],
+          "correct": 0,
+          "example": "3600 mm, ponieważ wymiar zapisany na rysunku jest wartością projektową.",
+          "explanation": "Skala służy przedstawieniu geometrii, a nie ponownemu przeliczaniu już opisanych wymiarów.",
+          "feedback": [
+            "Tak. Skala służy przedstawieniu geometrii, a nie ponownemu przeliczaniu już opisanych wymiarów.",
+            "Nie. Skala służy przedstawieniu geometrii, a nie ponownemu przeliczaniu już opisanych wymiarów. Poprawna zasada: 3600 mm, ponieważ wymiar zapisany na rysunku jest wartością projektową.",
+            "Nie. Skala służy przedstawieniu geometrii, a nie ponownemu przeliczaniu już opisanych wymiarów. Poprawna zasada: 3600 mm, ponieważ wymiar zapisany na rysunku jest wartością projektową.",
+            "Nie. Skala służy przedstawieniu geometrii, a nie ponownemu przeliczaniu już opisanych wymiarów. Poprawna zasada: 3600 mm, ponieważ wymiar zapisany na rysunku jest wartością projektową."
+          ],
+          "task": "Narysuj prostą ścianę 3600 × 2400 mm z otworem 900 × 2100 mm. Dopisz jednostki i rewizję oraz wskaż element, którego nie wolno założyć bez projektu."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 2,
+      "title_pl": "3. Pomiary, kąty, pion i tolerancje montażowe",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Wylicz przekątną prostokąta 3 m × 4 m (5 m) i narysuj punkty pomiarowe. Podaj dwa błędy prowadzące do fałszywego wyniku.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Taśma miernicza, poziomica, laser, kątownik i sznur traserski służą do odrębnych kontroli. Pomiar długości nie jest pomiarem pionu, a równość przekątnych nie gwarantuje samodzielnie prawidłowych wszystkich kątów i wymiarów. Wymagane tolerancje pochodzą z projektu, standardu, instrukcji wyrobu i umowy."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Zdefiniuj punkty odniesienia i jednostki, wykonaj pomiar niezależnie dwukrotnie i zapisz warunki pomiaru. Dla prostokątnej ramy sprawdź długości boków i dwie przekątne. Zmiana rozstawu mocowań wymaga oceny, czy mieści się w dopuszczalnej tolerancji."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Metoda 3–4–5: trójkąt o przyprostokątnych 600 i 800 mm powinien mieć przeciwprostokątną 1000 mm. Jeżeli odczytasz 1040 mm, ustawienie wymaga weryfikacji, a nie założenia, że to dokładny kąt prosty."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Wylicz przekątną prostokąta 3 m × 4 m (5 m) i narysuj punkty pomiarowe. Podaj dwa błędy prowadzące do fałszywego wyniku."
+          }
+        ],
+        "learning": {
+          "intro": "Taśma miernicza, poziomica, laser, kątownik i sznur traserski służą do odrębnych kontroli. Pomiar długości nie jest pomiarem pionu, a równość przekątnych nie gwarantuje samodzielnie prawidłowych wszystkich kątów i wymiarów. Wymagane tolerancje pochodzą z projektu, standardu, instrukcji wyrobu i umowy.",
+          "situation": "Metoda 3–4–5: trójkąt o przyprostokątnych 600 i 800 mm powinien mieć przeciwprostokątną 1000 mm. Jeżeli odczytasz 1040 mm, ustawienie wymaga weryfikacji, a nie założenia, że to dokładny kąt prosty.",
+          "question": "Przy kontroli kąta metoda 3–4–5 daje boki 600 mm i 800 mm. Jaka powinna być przekątna?",
+          "options": [
+            "800 mm, bo jest to dłuższy bok.",
+            "1400 mm, czyli suma obu boków.",
+            "200 mm, czyli różnica boków.",
+            "1000 mm przy dokładnym kącie prostym."
+          ],
+          "correct": 3,
+          "example": "1000 mm przy dokładnym kącie prostym.",
+          "explanation": "Dla trójkąta prostokątnego 6²+8²=10²; zachowanie proporcji daje przekątną 1000 mm.",
+          "feedback": [
+            "Nie. Dla trójkąta prostokątnego 6²+8²=10²; zachowanie proporcji daje przekątną 1000 mm. Poprawna zasada: 1000 mm przy dokładnym kącie prostym.",
+            "Nie. Dla trójkąta prostokątnego 6²+8²=10²; zachowanie proporcji daje przekątną 1000 mm. Poprawna zasada: 1000 mm przy dokładnym kącie prostym.",
+            "Nie. Dla trójkąta prostokątnego 6²+8²=10²; zachowanie proporcji daje przekątną 1000 mm. Poprawna zasada: 1000 mm przy dokładnym kącie prostym.",
+            "Tak. Dla trójkąta prostokątnego 6²+8²=10²; zachowanie proporcji daje przekątną 1000 mm."
+          ],
+          "task": "Wylicz przekątną prostokąta 3 m × 4 m (5 m) i narysuj punkty pomiarowe. Podaj dwa błędy prowadzące do fałszywego wyniku."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 3,
+      "title_pl": "4. Materiałoznawstwo drewna: klasy, gatunki, wady i wytrzymałość",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Sporządź kartę kontroli dla czterech desek: oznaczenie, długość, przekrój, wilgotność, deformacje, wady i decyzja o odłożeniu do oceny.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Drewno konstrukcyjne i wykończeniowe ocenia się według innych kryteriów. Gatunek, wilgotność, sęki, przebieg włókien, pęknięcia i stopień wysortowania wpływają na przydatność. Oznaczenie klasy wytrzymałości, np. C24, nie jest nazwą gatunku drewna ani gwarancją odporności na każdą sytuację; elementy nośne wymagają dokumentowanego doboru przez właściwe osoby."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Na dostawie sprawdź oznaczenie wyrobu i klasę, dokumentację producenta, geometrię, uszkodzenia, wilgotność i sposób przechowywania. Nie stosuj nieoznaczonego drewna z odzysku w elementach konstrukcyjnych bez projektowej oceny. Oddziel błędy estetyczne od wad wpływających na wytrzymałość."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Na budowę przyjeżdżają dwa identycznie wyglądające elementy 48 × 198 mm: jeden ma czytelne oznaczenie klasy i dokumenty, drugi nie. Nie można uznać ich za równoważne tylko na podstawie przekroju."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Sporządź kartę kontroli dla czterech desek: oznaczenie, długość, przekrój, wilgotność, deformacje, wady i decyzja o odłożeniu do oceny."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno konstrukcyjne i wykończeniowe ocenia się według innych kryteriów. Gatunek, wilgotność, sęki, przebieg włókien, pęknięcia i stopień wysortowania wpływają na przydatność. Oznaczenie klasy wytrzymałości, np. C24, nie jest nazwą gatunku drewna ani gwarancją odporności na każdą sytuację; elementy nośne wymagają dokumentowanego doboru przez właściwe osoby.",
+          "situation": "Na budowę przyjeżdżają dwa identycznie wyglądające elementy 48 × 198 mm: jeden ma czytelne oznaczenie klasy i dokumenty, drugi nie. Nie można uznać ich za równoważne tylko na podstawie przekroju.",
+          "question": "Dlaczego napis C24 jest ważniejszy niż sam wygląd belki?",
+          "options": [
+            "Oznacza, że element na pewno ma dokładnie 24% wilgotności.",
+            "Oznacza gatunek drewna, niezależnie od badań i klasyfikacji.",
+            "Odnosi się do udokumentowanej klasy wytrzymałości, która jest częścią właściwego doboru konstrukcyjnego.",
+            "Dowodzi, że belkę można montować w dowolnym rozstawie bez projektu."
+          ],
+          "correct": 2,
+          "example": "Odnosi się do udokumentowanej klasy wytrzymałości, która jest częścią właściwego doboru konstrukcyjnego.",
+          "explanation": "Wytrzymałość drewna nie wynika wyłącznie z wyglądu ani wymiaru przekroju.",
+          "feedback": [
+            "Nie. Wytrzymałość drewna nie wynika wyłącznie z wyglądu ani wymiaru przekroju. Poprawna zasada: Odnosi się do udokumentowanej klasy wytrzymałości, która jest częścią właściwego doboru konstrukcyjnego.",
+            "Nie. Wytrzymałość drewna nie wynika wyłącznie z wyglądu ani wymiaru przekroju. Poprawna zasada: Odnosi się do udokumentowanej klasy wytrzymałości, która jest częścią właściwego doboru konstrukcyjnego.",
+            "Tak. Wytrzymałość drewna nie wynika wyłącznie z wyglądu ani wymiaru przekroju.",
+            "Nie. Wytrzymałość drewna nie wynika wyłącznie z wyglądu ani wymiaru przekroju. Poprawna zasada: Odnosi się do udokumentowanej klasy wytrzymałości, która jest częścią właściwego doboru konstrukcyjnego."
+          ],
+          "task": "Sporządź kartę kontroli dla czterech desek: oznaczenie, długość, przekrój, wilgotność, deformacje, wady i decyzja o odłożeniu do oceny."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 4,
+      "title_pl": "5. Wilgotność drewna: skurcz, pęcznienie, transport i składowanie",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Porównaj trzy scenariusze przechowywania: pod plandeką bez wentylacji, pod dachem na podkładkach i na mokrym gruncie. Zidentyfikuj zagrożenia każdej opcji.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Drewno jest higroskopijne: w zależności od otoczenia oddaje lub pobiera wilgoć, zmieniając wymiary. Skurcz w różnych kierunkach względem włókien jest nierówny. Zawilgocony materiał w zamkniętej przegrodzie może prowadzić do uszkodzeń, a nieodpowiednie składowanie do odkształceń i utraty jakości."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Sprawdź dokumentację wymaganego poziomu wilgotności dla zastosowania, dokonaj pomiaru odpowiednim narzędziem i uwzględnij jego ograniczenia. Przechowuj elementy na podkładkach i osłaniaj przed opadami bez pułapkowania wilgoci. Nie zamykaj nieznanego, mokrego materiału bez oceny."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Definicja wilgotności masowej drewna opiera się na masie wody względem masy absolutnie suchego drewna. Próbka 12 kg przed wysuszeniem i 10 kg w stanie suchym to (12–10)/10 × 100% = 20%. Nie jest to instrukcja domowego oznaczania zawilgocenia elementu konstrukcji."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Porównaj trzy scenariusze przechowywania: pod plandeką bez wentylacji, pod dachem na podkładkach i na mokrym gruncie. Zidentyfikuj zagrożenia każdej opcji."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno jest higroskopijne: w zależności od otoczenia oddaje lub pobiera wilgoć, zmieniając wymiary. Skurcz w różnych kierunkach względem włókien jest nierówny. Zawilgocony materiał w zamkniętej przegrodzie może prowadzić do uszkodzeń, a nieodpowiednie składowanie do odkształceń i utraty jakości.",
+          "situation": "Definicja wilgotności masowej drewna opiera się na masie wody względem masy absolutnie suchego drewna. Próbka 12 kg przed wysuszeniem i 10 kg w stanie suchym to (12–10)/10 × 100% = 20%. Nie jest to instrukcja domowego oznaczania zawilgocenia elementu konstrukcji.",
+          "question": "Drewno waży 12 kg, a po laboratoryjnym wysuszeniu 10 kg. Jaka jest jego wilgotność masowa?",
+          "options": [
+            "Około 16,7%, czyli stosunek wody do masy mokrej — to nie ta definicja wilgotności drewna.",
+            "20% liczona względem masy suchego drewna.",
+            "2%, bo ubyły dwa kilogramy.",
+            "120%, bo masa początkowa jest większa od końcowej."
+          ],
+          "correct": 1,
+          "example": "20% liczona względem masy suchego drewna.",
+          "explanation": "Wilgotność drewna odnosi masę wody do masy absolutnie suchego materiału.",
+          "feedback": [
+            "Nie. Wilgotność drewna odnosi masę wody do masy absolutnie suchego materiału. Poprawna zasada: 20% liczona względem masy suchego drewna.",
+            "Tak. Wilgotność drewna odnosi masę wody do masy absolutnie suchego materiału.",
+            "Nie. Wilgotność drewna odnosi masę wody do masy absolutnie suchego materiału. Poprawna zasada: 20% liczona względem masy suchego drewna.",
+            "Nie. Wilgotność drewna odnosi masę wody do masy absolutnie suchego materiału. Poprawna zasada: 20% liczona względem masy suchego drewna."
+          ],
+          "task": "Porównaj trzy scenariusze przechowywania: pod plandeką bez wentylacji, pod dachem na podkładkach i na mokrym gruncie. Zidentyfikuj zagrożenia każdej opcji."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 5,
+      "title_pl": "6. Fizyka budowli: ciepło, para wodna, powietrze i wiatr",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Narysuj ścianę warstwową z zaznaczeniem kierunku przepływu ciepła i miejsc, gdzie powietrze może uciekać. Wskaż trzy punkty kontroli wykonania.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "W przegrodzie budowlanej ciepło płynie dzięki różnicy temperatur, a wilgoć może się przemieszczać przez dyfuzję pary i przepływ nieszczelnego powietrza. Szczelność powietrzna, izolacja cieplna, ochrona przed wiatrem i kontrola wilgoci to funkcje różnych warstw. Żadna taśma nie naprawi źle zaprojektowanego układu przegrody."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Zidentyfikuj w dokumentacji poszczególne warstwy, ich kolejność, zgodność systemową i ciągłość na połączeniach. Oceń w szczególności narożniki, przejścia instalacyjne i styki okien. Nie montuj przypadkowej folii bez rozpoznania klimatu i kompletnego projektu."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "W izolowanej ścianie pozostawiona szczelina przy przepuście może umożliwić transport wilgotnego powietrza do zimnej strefy. Samo zwiększenie grubości izolacji nie naprawia nieszczelności powietrznej."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Narysuj ścianę warstwową z zaznaczeniem kierunku przepływu ciepła i miejsc, gdzie powietrze może uciekać. Wskaż trzy punkty kontroli wykonania."
+          }
+        ],
+        "learning": {
+          "intro": "W przegrodzie budowlanej ciepło płynie dzięki różnicy temperatur, a wilgoć może się przemieszczać przez dyfuzję pary i przepływ nieszczelnego powietrza. Szczelność powietrzna, izolacja cieplna, ochrona przed wiatrem i kontrola wilgoci to funkcje różnych warstw. Żadna taśma nie naprawi źle zaprojektowanego układu przegrody.",
+          "situation": "W izolowanej ścianie pozostawiona szczelina przy przepuście może umożliwić transport wilgotnego powietrza do zimnej strefy. Samo zwiększenie grubości izolacji nie naprawia nieszczelności powietrznej.",
+          "question": "Dlaczego sama gruba warstwa izolacji nie gwarantuje dobrej ściany?",
+          "options": [
+            "Bo trzeba też zapewnić właściwą kontrolę wilgoci, wiatru i szczelności połączeń zgodnie z projektem.",
+            "Ponieważ izolacja zawsze zastępuje konstrukcję nośną.",
+            "Ponieważ ruch powietrza nie ma wpływu na wilgoć w przegrodach.",
+            "Ponieważ dowolna folia od zewnątrz rozwiązuje każdy problem kondensacji."
+          ],
+          "correct": 0,
+          "example": "Bo trzeba też zapewnić właściwą kontrolę wilgoci, wiatru i szczelności połączeń zgodnie z projektem.",
+          "explanation": "Przepływ ciepła i wilgoci przez różne mechanizmy wymaga spójnej konstrukcji, nie jednego grubego materiału.",
+          "feedback": [
+            "Tak. Przepływ ciepła i wilgoci przez różne mechanizmy wymaga spójnej konstrukcji, nie jednego grubego materiału.",
+            "Nie. Przepływ ciepła i wilgoci przez różne mechanizmy wymaga spójnej konstrukcji, nie jednego grubego materiału. Poprawna zasada: Bo trzeba też zapewnić właściwą kontrolę wilgoci, wiatru i szczelności połączeń zgodnie z projektem.",
+            "Nie. Przepływ ciepła i wilgoci przez różne mechanizmy wymaga spójnej konstrukcji, nie jednego grubego materiału. Poprawna zasada: Bo trzeba też zapewnić właściwą kontrolę wilgoci, wiatru i szczelności połączeń zgodnie z projektem.",
+            "Nie. Przepływ ciepła i wilgoci przez różne mechanizmy wymaga spójnej konstrukcji, nie jednego grubego materiału. Poprawna zasada: Bo trzeba też zapewnić właściwą kontrolę wilgoci, wiatru i szczelności połączeń zgodnie z projektem."
+          ],
+          "task": "Narysuj ścianę warstwową z zaznaczeniem kierunku przepływu ciepła i miejsc, gdzie powietrze może uciekać. Wskaż trzy punkty kontroli wykonania."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 6,
+      "title_pl": "7. Łączniki, kotwy i przekazywanie obciążeń",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Dla trzech hipotetycznych połączeń: drewno–drewno, drewno–beton, drewno–stal przygotuj zestaw pytań do dokumentacji producenta, bez samodzielnego dobierania parametrów nośnych.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Gwoździe, wkręty, śruby, łączniki stalowe i kotwy nie są zamienne tylko dlatego, że wyglądają podobnie. Liczą się materiał, ochrona antykorozyjna, podłoże, kierunek i wielkość obciążenia, odległość od krawędzi oraz dokumentacja producenta. Zły łącznik może spowodować rozszczepienie drewna lub utratę nośności."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Przed montażem sprawdź detal projektu, typ i długość łącznika, warunki podłoża, wymagane narzędzie, sposób przygotowania otworu i sposób kontroli. Dobór do konstrukcji nośnej powinien wynikać z dokumentacji i odpowiedzialności właściwych specjalistów, nie z intuicji kursanta."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "W projekcie zapisano określony typ łącznika konstrukcyjnego, a na budowie ktoś proponuje tańszy wkręt do płyt g-k. Mimo podobnej długości nie można uznać go za konstrukcyjny zamiennik bez weryfikacji parametrów."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Dla trzech hipotetycznych połączeń: drewno–drewno, drewno–beton, drewno–stal przygotuj zestaw pytań do dokumentacji producenta, bez samodzielnego dobierania parametrów nośnych."
+          }
+        ],
+        "learning": {
+          "intro": "Gwoździe, wkręty, śruby, łączniki stalowe i kotwy nie są zamienne tylko dlatego, że wyglądają podobnie. Liczą się materiał, ochrona antykorozyjna, podłoże, kierunek i wielkość obciążenia, odległość od krawędzi oraz dokumentacja producenta. Zły łącznik może spowodować rozszczepienie drewna lub utratę nośności.",
+          "situation": "W projekcie zapisano określony typ łącznika konstrukcyjnego, a na budowie ktoś proponuje tańszy wkręt do płyt g-k. Mimo podobnej długości nie można uznać go za konstrukcyjny zamiennik bez weryfikacji parametrów.",
+          "question": "Czy można zastąpić projektowy łącznik konstrukcyjny zwykłym wkrętem o podobnej długości?",
+          "options": [
+            "Tak, jeśli oba mają srebrny kolor.",
+            "Tak, jeśli wkręt ma nieco dłuższy gwint.",
+            "Tak, jeśli montażysta ma doświadczenie, lecz nie ma dokumentacji.",
+            "Nie bez sprawdzenia parametrów wyrobu, podłoża i zatwierdzonego rozwiązania."
+          ],
+          "correct": 3,
+          "example": "Nie bez sprawdzenia parametrów wyrobu, podłoża i zatwierdzonego rozwiązania.",
+          "explanation": "Wygląd nie potwierdza nośności i kompatybilności łącznika z projektem.",
+          "feedback": [
+            "Nie. Wygląd nie potwierdza nośności i kompatybilności łącznika z projektem. Poprawna zasada: Nie bez sprawdzenia parametrów wyrobu, podłoża i zatwierdzonego rozwiązania.",
+            "Nie. Wygląd nie potwierdza nośności i kompatybilności łącznika z projektem. Poprawna zasada: Nie bez sprawdzenia parametrów wyrobu, podłoża i zatwierdzonego rozwiązania.",
+            "Nie. Wygląd nie potwierdza nośności i kompatybilności łącznika z projektem. Poprawna zasada: Nie bez sprawdzenia parametrów wyrobu, podłoża i zatwierdzonego rozwiązania.",
+            "Tak. Wygląd nie potwierdza nośności i kompatybilności łącznika z projektem."
+          ],
+          "task": "Dla trzech hipotetycznych połączeń: drewno–drewno, drewno–beton, drewno–stal przygotuj zestaw pytań do dokumentacji producenta, bez samodzielnego dobierania parametrów nośnych."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 7,
+      "title_pl": "8. HMS, SJA, praca na wysokości i pierwsza pomoc",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Przygotuj SJA dla przenoszenia długich elementów i użycia pilarki: co może się stać, jak temu zapobiec, kto zatwierdza start, kiedy wstrzymać pracę.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "HMS dotyczy identyfikacji zagrożeń, środków ochrony i zasad reagowania. Sikker Jobb Analyse (SJA) jest analizą konkretnej pracy, nie samym formularzem. Zagrożenia cieśli obejmują upadki z wysokości, kontakt z maszynami, pyły, hałas, ręczny transport i prace nad innymi osobami. Umiejętność uczestniczenia w montażu rusztowań w programie nauczania nie jest automatycznie pozwoleniem na samodzielny montaż."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Przed pracą zapisz czynność, zagrożenie, środek ograniczający ryzyko i osobę odpowiedzialną. Sprawdź dostęp, stabilność podestu, instrukcję narzędzia, odciąg pyłu i drogę ewakuacyjną. Przy niepewnych warunkach wstrzymaj pracę i wyjaśnij je z osobą odpowiedzialną."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Ekipa ma montować poszycie 3 m nad gruntem, a jedyną dostępną pomocą jest niestabilna drabina. Pośpiech nie upoważnia do rozpoczęcia; trzeba uzgodnić bezpieczne stanowisko, zabezpieczenia i procedury."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Przygotuj SJA dla przenoszenia długich elementów i użycia pilarki: co może się stać, jak temu zapobiec, kto zatwierdza start, kiedy wstrzymać pracę."
+          }
+        ],
+        "learning": {
+          "intro": "HMS dotyczy identyfikacji zagrożeń, środków ochrony i zasad reagowania. Sikker Jobb Analyse (SJA) jest analizą konkretnej pracy, nie samym formularzem. Zagrożenia cieśli obejmują upadki z wysokości, kontakt z maszynami, pyły, hałas, ręczny transport i prace nad innymi osobami. Umiejętność uczestniczenia w montażu rusztowań w programie nauczania nie jest automatycznie pozwoleniem na samodzielny montaż.",
+          "situation": "Ekipa ma montować poszycie 3 m nad gruntem, a jedyną dostępną pomocą jest niestabilna drabina. Pośpiech nie upoważnia do rozpoczęcia; trzeba uzgodnić bezpieczne stanowisko, zabezpieczenia i procedury.",
+          "question": "Co zrobić, gdy planowana praca na wysokości nie ma zapewnionego bezpiecznego dostępu?",
+          "options": [
+            "Kontynuować, jeśli pracownik pracował już kiedyś na drabinie.",
+            "Zwiększyć tempo, aby krócej przebywać w niebezpiecznym miejscu.",
+            "Wstrzymać rozpoczęcie, zgłosić zagrożenie i zorganizować odpowiednie zabezpieczenia.",
+            "Oznaczyć SJA jako wykonaną, nawet bez wdrożonych zabezpieczeń."
+          ],
+          "correct": 2,
+          "example": "Wstrzymać rozpoczęcie, zgłosić zagrożenie i zorganizować odpowiednie zabezpieczenia.",
+          "explanation": "Analiza ryzyka ma prowadzić do skutecznego zabezpieczenia, nie do formalnego podpisu.",
+          "feedback": [
+            "Nie. Analiza ryzyka ma prowadzić do skutecznego zabezpieczenia, nie do formalnego podpisu. Poprawna zasada: Wstrzymać rozpoczęcie, zgłosić zagrożenie i zorganizować odpowiednie zabezpieczenia.",
+            "Nie. Analiza ryzyka ma prowadzić do skutecznego zabezpieczenia, nie do formalnego podpisu. Poprawna zasada: Wstrzymać rozpoczęcie, zgłosić zagrożenie i zorganizować odpowiednie zabezpieczenia.",
+            "Tak. Analiza ryzyka ma prowadzić do skutecznego zabezpieczenia, nie do formalnego podpisu.",
+            "Nie. Analiza ryzyka ma prowadzić do skutecznego zabezpieczenia, nie do formalnego podpisu. Poprawna zasada: Wstrzymać rozpoczęcie, zgłosić zagrożenie i zorganizować odpowiednie zabezpieczenia."
+          ],
+          "task": "Przygotuj SJA dla przenoszenia długich elementów i użycia pilarki: co może się stać, jak temu zapobiec, kto zatwierdza start, kiedy wstrzymać pracę."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 8,
+      "title_pl": "9. Przyjęcie materiałów, logistyczny plan budowy i ślad jakości",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Stwórz tabelę dostawy: zamówione, dostarczone, zgodne, uszkodzone, brakujące, dokument producenta, miejsce składowania.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Odbiór materiału nie kończy się liczeniem pakietów: trzeba sprawdzić zgodność z zamówieniem i rysunkiem, klasę, wymiar, ilość, uszkodzenia, warunki transportu i dokumentację. Sposób składowania wpływa na kolejność pracy, bezpieczeństwo ludzi i utrzymanie jakości wyrobów."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Przygotuj riggplan z drogą dostaw, strefami składowania, przejściami i możliwością rozładunku. W protokole wpisz numer dostawy, pozycję, ilość oczekiwaną, rzeczywistą, dokumentację oraz zdjęcia wad. Materiały wątpliwe odseparuj do wyjaśnienia, nie ukrywaj ich w ścianie."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Zamówiono 120 elementów 48×98 mm, dostarczono 118. Brakują 2 sztuki, nawet jeżeli dwie inne deski mają identyczny przekrój, ale nieodpowiednią klasę. Licz osobno sztuki zgodne i sztuki wymagające wyjaśnienia."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Stwórz tabelę dostawy: zamówione, dostarczone, zgodne, uszkodzone, brakujące, dokument producenta, miejsce składowania."
+          }
+        ],
+        "learning": {
+          "intro": "Odbiór materiału nie kończy się liczeniem pakietów: trzeba sprawdzić zgodność z zamówieniem i rysunkiem, klasę, wymiar, ilość, uszkodzenia, warunki transportu i dokumentację. Sposób składowania wpływa na kolejność pracy, bezpieczeństwo ludzi i utrzymanie jakości wyrobów.",
+          "situation": "Zamówiono 120 elementów 48×98 mm, dostarczono 118. Brakują 2 sztuki, nawet jeżeli dwie inne deski mają identyczny przekrój, ale nieodpowiednią klasę. Licz osobno sztuki zgodne i sztuki wymagające wyjaśnienia.",
+          "question": "Kiedy można uznać dostawę drewna konstrukcyjnego za prawidłowo odebraną?",
+          "options": [
+            "Gdy liczba paczek pasuje, nawet jeśli pojedyncze elementy mają inną klasę.",
+            "Po kontroli ilości, oznaczeń, zgodności materiału, uszkodzeń i dokumentacji.",
+            "Gdy kierowca potwierdzi, że produkt jest wystarczająco podobny.",
+            "Gdy materiał zostanie odłożony do wilgotnego miejsca bez oględzin."
+          ],
+          "correct": 1,
+          "example": "Po kontroli ilości, oznaczeń, zgodności materiału, uszkodzeń i dokumentacji.",
+          "explanation": "Kontrola dostawy dotyczy jakości i identyfikowalności tak samo jak liczby sztuk.",
+          "feedback": [
+            "Nie. Kontrola dostawy dotyczy jakości i identyfikowalności tak samo jak liczby sztuk. Poprawna zasada: Po kontroli ilości, oznaczeń, zgodności materiału, uszkodzeń i dokumentacji.",
+            "Tak. Kontrola dostawy dotyczy jakości i identyfikowalności tak samo jak liczby sztuk.",
+            "Nie. Kontrola dostawy dotyczy jakości i identyfikowalności tak samo jak liczby sztuk. Poprawna zasada: Po kontroli ilości, oznaczeń, zgodności materiału, uszkodzeń i dokumentacji.",
+            "Nie. Kontrola dostawy dotyczy jakości i identyfikowalności tak samo jak liczby sztuk. Poprawna zasada: Po kontroli ilości, oznaczeń, zgodności materiału, uszkodzeń i dokumentacji."
+          ],
+          "task": "Stwórz tabelę dostawy: zamówione, dostarczone, zgodne, uszkodzone, brakujące, dokument producenta, miejsce składowania."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_no": 9,
+      "title_pl": "10. Harmonogram, przedmiar, koszty i gospodarowanie odpadami",
+      "material": {
+        "module": 1,
+        "lesson_kind": "competency",
+        "editorial_status": "review_needed",
+        "learning_outcome": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,8 m. Dopisz rzeczywisty rzaz, możliwe błędy cięcia i harmonogram: dostawa, przygotowanie, montaż, kontrola.",
+        "sections": [
+          {
+            "heading": "Zrozum teorię",
+            "text": "Przedmiar wyraża ilości materiałów i robót w określonych jednostkach; kosztorys wiąże je z cenami i nakładem pracy. Plan nie może ignorować dostaw, dojrzewania i odbiorów etapów ani koniecznego sortowania odpadów. Przy obliczaniu zapasu należy odróżniać straty cięcia od materiału użytkowego."
+          },
+          {
+            "heading": "Jak to wygląda w pracy",
+            "text": "Z rysunku wyznacz długości, pola i objętości, ułóż listę cięć, dodaj uzasadniony zapas i sprawdź, czy dostępne długości handlowe zmieniają odpady. Zaplanuj dostawę przed zadaniem, miejsce odpadu oraz punkt kontroli przed zakryciem robót."
+          },
+          {
+            "heading": "Przeanalizuj przykład",
+            "text": "Potrzebujesz 12 elementów po 2,4 m, czyli 28,8 m netto. Z elementu handlowego długości 5,0 m można uzyskać dwa odcinki po 2,4 m, zostawiając miejsce na rzaz i niewielki odpad. Oznacza to co najmniej 6 sztuk 5,0 m, jeżeli wymagania i wady materiału nie zwiększają zapasu."
+          },
+          {
+            "heading": "Zadanie do samodzielnego wykonania",
+            "text": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,8 m. Dopisz rzeczywisty rzaz, możliwe błędy cięcia i harmonogram: dostawa, przygotowanie, montaż, kontrola."
+          }
+        ],
+        "learning": {
+          "intro": "Przedmiar wyraża ilości materiałów i robót w określonych jednostkach; kosztorys wiąże je z cenami i nakładem pracy. Plan nie może ignorować dostaw, dojrzewania i odbiorów etapów ani koniecznego sortowania odpadów. Przy obliczaniu zapasu należy odróżniać straty cięcia od materiału użytkowego.",
+          "situation": "Potrzebujesz 12 elementów po 2,4 m, czyli 28,8 m netto. Z elementu handlowego długości 5,0 m można uzyskać dwa odcinki po 2,4 m, zostawiając miejsce na rzaz i niewielki odpad. Oznacza to co najmniej 6 sztuk 5,0 m, jeżeli wymagania i wady materiału nie zwiększają zapasu.",
+          "question": "Ile sztuk drewna 5,0 m potrzeba na 12 odcinków po 2,4 m, jeżeli z każdej sztuki możesz bezpiecznie wyciąć dwa odcinki z uwzględnieniem rzazu?",
+          "options": [
+            "Co najmniej 6 sztuk, po dwa elementy z każdej, pod warunkiem poprawnej listy cięć.",
+            "12 sztuk, bo nie można uzyskać dwóch odcinków z jednej długości.",
+            "3 sztuki, bo jedna belka 5,0 m daje cztery elementy po 2,4 m.",
+            "Jedna sztuka, ponieważ długości sumują się automatycznie."
+          ],
+          "correct": 0,
+          "example": "Co najmniej 6 sztuk drewna 5,0 m, po dwa elementy 2,4 m z każdej, z uwzględnieniem rzazu.",
+          "explanation": "Podział długości na odcinki jest ograniczony geometrią i rzeczywistym rzazem narzędzia.",
+          "feedback": [
+            "Tak. Dwa odcinki po 2,4 m dają 4,8 m; przy długości 5,0 m pozostaje zapas na rzaz i odpad. Potrzeba sześciu sztuk.",
+            "Nie. Z drewna 5,0 m mogą powstać dwa odcinki 2,4 m po uwzględnieniu rzazu. Sześć sztuk daje 12 odcinków.",
+            "Nie. Z drewna 5,0 m mogą powstać dwa odcinki 2,4 m po uwzględnieniu rzazu. Sześć sztuk daje 12 odcinków.",
+            "Nie. Z drewna 5,0 m mogą powstać dwa odcinki 2,4 m po uwzględnieniu rzazu. Sześć sztuk daje 12 odcinków."
+          ],
+          "task": "Policz listę zakupową dla 8 odcinków 1,8 m z materiału 3,8 m. Dopisz rzeczywisty rzaz, możliwe błędy cięcia i harmonogram: dostawa, przygotowanie, montaż, kontrola."
+        },
+        "references": [
+          {
+            "label": "Izba rzemieślnicza – etapy egzaminu czeladniczego",
+            "url": "https://izbarzemieslnicza.rzeszow.pl/egzaminy/egzamin-czeladniczy/etapy-egzaminu-czeladniczego/"
+          }
+        ]
+      }
+    }
+  ]
+}
