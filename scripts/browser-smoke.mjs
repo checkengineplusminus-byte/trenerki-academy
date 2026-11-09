@@ -52,6 +52,20 @@ async function verify(name,viewport,isMobile){
   await page.waitForFunction(()=>new URL(location.href).searchParams.get('course')==='jak-kupic-samochod',{timeout:6000});
   const fullText=await page.locator('body').innerText();
   assert(fullText.includes('samochód'),'Second course did not open from the navigation search');
+  if(!isMobile){
+   // Every single course program must open and paint without throwing.
+   const all=await page.evaluate(()=>COURSES.map(c=>({id:c.id,title:c.title})));
+   assert.equal(all.length,80);
+   for(const course of all){
+    const result=await page.evaluate(id=>{
+     openCourse(id,false);
+     return {title:document.title,body:document.querySelector('#app')?.textContent?.length||0};
+    },course.id);
+    assert(result.title.includes(course.title),'Incorrect course detail title: '+course.id);
+    assert(result.body>150,'Course detail is empty: '+course.id);
+   }
+   console.log('✓ desktop: all 80 course detail screens render with correct course titles');
+  }
   await page.screenshot({path:'/tmp/trenerki-'+name+'.png',fullPage:false});
   assert.equal(errors.length,0,'Browser JS errors: '+errors.join(' | '));
   console.log('✓ '+name+': Anielka searches from home AND course detail, opens both courses, no JS errors or overflow');
