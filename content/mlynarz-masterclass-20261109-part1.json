@@ -1,0 +1,461 @@
+{
+  "course_slug": "mlynarz-tradycyjny",
+  "lessons": [
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 0,
+      "title_pl": "1. Ziarno: bielmo, okrywa i zarodek",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Ziarno pszenicy zawiera skrobiowe bielmo, zewnętrzne okrywy oraz zarodek. Ich proporcje mają znaczenie dla składu mąki. Młynarz ocenia również wilgotność, gatunek i zanieczyszczenia, nie tylko kolor."
+          },
+          {
+            "heading": "Przykład",
+            "text": "W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj przekrój ziarna, podpisz trzy części i sporządź kartę przyjęcia partii."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Ziarno pszenicy zawiera skrobiowe bielmo, zewnętrzne okrywy oraz zarodek. Ich proporcje mają znaczenie dla składu mąki. Młynarz ocenia również wilgotność, gatunek i zanieczyszczenia, nie tylko kolor."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://asbe.org/article/extraction-rate/"
+          }
+        ],
+        "learning": {
+          "question": "Co jest głównymi częściami ziarna?",
+          "options": [
+            "Bielmo, okrywy, zarodek.",
+            "Bielmo, popiół, gluten jako organy.",
+            "Kora, rdzeń i łodyga.",
+            "Piasta, okrywa i zarodek."
+          ],
+          "correct": 0,
+          "example": "Bielmo, okrywy, zarodek.",
+          "explanation": "W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki.",
+          "task": "Narysuj przekrój ziarna, podpisz trzy części i sporządź kartę przyjęcia partii.",
+          "feedback": [
+            "Tak. W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki.",
+            "Nie. W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki.",
+            "Nie. W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki.",
+            "Nie. W 100 kg partii znajduje się 5 kg domieszek. Po ich usunięciu pozostaje 95 kg surowca, a nie 95 kg mąki."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 1,
+      "title_pl": "2. Czyszczenie: sita, magnes i separator kamieni",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Przed przemiałem usuwa się plewy, pył, kamienie i części metalowe. Magnes nie usuwa każdego obcego materiału, dlatego młyny używają kilku metod separacji i kontrolują strumień surowca."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Zaprojektuj proces od przyjęcia do młyna, dobierz separację metalu, kamieni, plew i pyłu."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Przed przemiałem usuwa się plewy, pył, kamienie i części metalowe. Magnes nie usuwa każdego obcego materiału, dlatego młyny używają kilku metod separacji i kontrolują strumień surowca."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.hse.gov.uk/food/safety-hazards/dustexplosion.htm"
+          }
+        ],
+        "learning": {
+          "question": "W partii są stalowe śruby. Co zrobić?",
+          "options": [
+            "Zwiększyć obroty.",
+            "Odseparować zanieczyszczenia i ocenić partię.",
+            "Zalać wodą, aby zmiękły.",
+            "Pominąć, jeśli śruby są małe."
+          ],
+          "correct": 1,
+          "example": "Odseparować zanieczyszczenia i ocenić partię.",
+          "explanation": "Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki.",
+          "task": "Zaprojektuj proces od przyjęcia do młyna, dobierz separację metalu, kamieni, plew i pyłu.",
+          "feedback": [
+            "Nie. Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki.",
+            "Tak. Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki.",
+            "Nie. Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki.",
+            "Nie. Z 500 kg ziarna odrzucono 12 kg zanieczyszczeń. Uzysk czystego surowca to 488/500=97,6%; to nie wyciąg mąki."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 2,
+      "title_pl": "3. Kamienie młyńskie: bedstone, runner i podajnik",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Dolny kamień (bedstone) jest nieruchomy, górny (runner) obraca się. Ziarno przechodzi z hopper do shoe, przez otwór i szczelinę między kamieniami. Damsel może rytmicznie poruszać podajnikiem; rowki furrows wspierają transport przemiału."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj przekrój młyna od kosza do worka i podpisz wszystkie sześć części."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Dolny kamień (bedstone) jest nieruchomy, górny (runner) obraca się. Ziarno przechodzi z hopper do shoe, przez otwór i szczelinę między kamieniami. Damsel może rytmicznie poruszać podajnikiem; rowki furrows wspierają transport przemiału."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.museum.com/audioguide/431/6/EN"
+          }
+        ],
+        "learning": {
+          "question": "Który kamień zwykle jest nieruchomy?",
+          "options": [
+            "Runner.",
+            "Damsel.",
+            "Bedstone.",
+            "Hopper."
+          ],
+          "correct": 2,
+          "example": "Bedstone.",
+          "explanation": "Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia.",
+          "task": "Narysuj przekrój młyna od kosza do worka i podpisz wszystkie sześć części.",
+          "feedback": [
+            "Nie. Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia.",
+            "Nie. Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia.",
+            "Tak. Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia.",
+            "Nie. Oddziel elementy ruchome, nieruchome i służące do podawania. Nie myl żłobienia roboczego z pęknięciem kamienia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 3,
+      "title_pl": "4. Przekładnie i obroty młyna wodnego",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Koło wodne przekazuje energię przez wały i koła zębate. Gdy większe koło napędza mniejsze, obroty wyjściowe mogą być wyższe przy zmianie momentu; rzeczywiste straty zależą od konstrukcji."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj wał i stone nut. Policz także wariant 60 zębów do 20 przy 12 obr./min."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Koło wodne przekazuje energię przez wały i koła zębate. Gdy większe koło napędza mniejsze, obroty wyjściowe mogą być wyższe przy zmianie momentu; rzeczywiste straty zależą od konstrukcji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.museum.com/audioguide/431/6/EN"
+          }
+        ],
+        "learning": {
+          "question": "72 zęby, 12 obr./min, napęd 18 zębów. Ile obrotów ma koło wyjściowe?",
+          "options": [
+            "3 obr./min.",
+            "12 obr./min.",
+            "24 obr./min.",
+            "48 obr./min."
+          ],
+          "correct": 3,
+          "example": "48 obr./min.",
+          "explanation": "Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu.",
+          "task": "Narysuj wał i stone nut. Policz także wariant 60 zębów do 20 przy 12 obr./min.",
+          "feedback": [
+            "Nie. Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu.",
+            "Nie. Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu.",
+            "Nie. Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu.",
+            "Tak. Koło 72-zębne z prędkością 12 obr./min napędza koło 18-zębne: 12×72/18=48 obr./min w uproszczonym modelu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 4,
+      "title_pl": "5. Rowki furrows i zużycie kamieni",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Powierzchnia kamienia ma rowki furrows i obszary lands. Ich geometria wpływa na mielenie i transport surowca. Zużycie, pęknięcie i przegrzewanie są różnymi problemami wymagającymi odrębnej diagnozy."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj przekrój powierzchni i tabelę czterech objawów z hipotezami i kontrolą."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Powierzchnia kamienia ma rowki furrows i obszary lands. Ich geometria wpływa na mielenie i transport surowca. Zużycie, pęknięcie i przegrzewanie są różnymi problemami wymagającymi odrębnej diagnozy."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.museum.com/audioguide/431/6/EN"
+          }
+        ],
+        "learning": {
+          "question": "Dlaczego sama średnica kamienia nie wystarcza do oceny jakości?",
+          "options": [
+            "Liczy się też geometria rowków i stan powierzchni.",
+            "Bo rowki nie wpływają na przemiał.",
+            "Bo dolny zawsze obraca się szybciej.",
+            "Bo ważny jest tylko kolor osłony."
+          ],
+          "correct": 0,
+          "example": "Liczy się też geometria rowków i stan powierzchni.",
+          "explanation": "Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych.",
+          "task": "Narysuj przekrój powierzchni i tabelę czterech objawów z hipotezami i kontrolą.",
+          "feedback": [
+            "Tak. Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych.",
+            "Nie. Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych.",
+            "Nie. Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych.",
+            "Nie. Przy kontroli trzeba rozróżniać zaprojektowane rowki od pęknięć. Podnoszenie ciężkiego runner oraz jego dressing należy do prac fachowych."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 5,
+      "title_pl": "6. Wyciąg mąki i bilans masy",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Wyciąg to procent masy oczyszczonego ziarna przechodzący do określonej frakcji mąki. Wysoki wyciąg może zwiększać udział składników okryw. Nie jest to to samo co popiół czy ilość domieszek."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Policz wyciąg dla 150/200 i 180/200; opisz różnice składu frakcji."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Wyciąg to procent masy oczyszczonego ziarna przechodzący do określonej frakcji mąki. Wysoki wyciąg może zwiększać udział składników okryw. Nie jest to to samo co popiół czy ilość domieszek."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://asbe.org/article/extraction-rate/"
+          }
+        ],
+        "learning": {
+          "question": "Jaki jest wyciąg 150 kg mąki z 200 kg ziarna?",
+          "options": [
+            "50%.",
+            "75%.",
+            "90%.",
+            "125%."
+          ],
+          "correct": 1,
+          "example": "75%.",
+          "explanation": "Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200.",
+          "task": "Policz wyciąg dla 150/200 i 180/200; opisz różnice składu frakcji.",
+          "feedback": [
+            "Nie. Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200.",
+            "Tak. Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200.",
+            "Nie. Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200.",
+            "Nie. Ze 200 kg ziarna otrzymano 150 kg mąki: 75% wyciągu. Bilans może obejmować 48 kg innych frakcji i 2 kg strat; 150+48+2=200."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 6,
+      "title_pl": "7. Odsiewanie i oznaczanie popiołu",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Sita rozdzielają przemiał według rozmiaru cząstek. Zawartość popiołu jest laboratoryjnym wskaźnikiem mineralnej pozostałości po kontrolowanym spaleniu mąki, a nie bezpośrednią masą otrąb."
+          },
+          {
+            "heading": "Przykład",
+            "text": "Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Narysuj rozdział mąki na sita i policz wskaźnik popiołu oraz wyciągu dla innych danych."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Sita rozdzielają przemiał według rozmiaru cząstek. Zawartość popiołu jest laboratoryjnym wskaźnikiem mineralnej pozostałości po kontrolowanym spaleniu mąki, a nie bezpośrednią masą otrąb."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://asbe.org/article/ash-in-flour/"
+          }
+        ],
+        "learning": {
+          "question": "Popiół 0,055 g z próbki 10 g to...",
+          "options": [
+            "0,055%.",
+            "0,11%.",
+            "0,55%.",
+            "5,5%."
+          ],
+          "correct": 2,
+          "example": "0,55%.",
+          "explanation": "Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności.",
+          "task": "Narysuj rozdział mąki na sita i policz wskaźnik popiołu oraz wyciągu dla innych danych.",
+          "feedback": [
+            "Nie. Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności.",
+            "Nie. Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności.",
+            "Tak. Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności.",
+            "Nie. Próbka 10 g pozostawia 0,055 g popiołu: 0,055/10×100%=0,55%. Porównania wymagają uzgodnionej metody i podstawy wilgotności."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "mlynarz-tradycyjny",
+      "lesson_no": 7,
+      "title_pl": "8. Pył mączny, zapłon i bezpieczeństwo młyna",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 8,
+        "editorial_status": "review_needed",
+        "sections": [
+          {
+            "heading": "Podstawy",
+            "text": "Pył mączny zawieszony w powietrzu jest palny i może tworzyć atmosferę wybuchową w obecności źródła zapłonu. Zagrożenie obejmuje również sprzęt odpylający, ruchome maszyny i przypadkowe metalowe części w materiale."
+          },
+          {
+            "heading": "Przykład",
+            "text": "HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj SJA z 10 zagrożeniami, kontrolą prac elektrycznych i sposobem bezpiecznego usuwania pyłu."
+          },
+          {
+            "heading": "Co sprawdzić",
+            "text": "Weryfikuj jednostki, założenia i wynik. HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu."
+          },
+          {
+            "heading": "Zastosowanie",
+            "text": "Wyjaśnij, jak ta wiedza zmienia decyzję w młynie. Pył mączny zawieszony w powietrzu jest palny i może tworzyć atmosferę wybuchową w obecności źródła zapłonu. Zagrożenie obejmuje również sprzęt odpylający, ruchome maszyny i przypadkowe metalowe części w materiale."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło",
+            "url": "https://www.hse.gov.uk/food/safety-hazards/dustexplosion.htm"
+          }
+        ],
+        "learning": {
+          "question": "Dlaczego zdmuchiwanie osadzonej mąki może zwiększyć ryzyko?",
+          "options": [
+            "Bo mąka jest niepalna.",
+            "Bo pył zamienia się w metal.",
+            "Bo wiatr neutralizuje zapłon.",
+            "Bo powstaje potencjalnie zapalna chmura pyłu."
+          ],
+          "correct": 3,
+          "example": "Bo powstaje potencjalnie zapalna chmura pyłu.",
+          "explanation": "HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu.",
+          "task": "Przygotuj SJA z 10 zagrożeniami, kontrolą prac elektrycznych i sposobem bezpiecznego usuwania pyłu.",
+          "feedback": [
+            "Nie. HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu.",
+            "Nie. HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu.",
+            "Nie. HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu.",
+            "Tak. HSE zaleca ocenę pylenia, odpowiednie odpylanie, usuwanie źródeł zapłonu i kontrolę porządku. Dmuchanie osadów sprężonym powietrzem może wzbić chmurę pyłu."
+          ]
+        }
+      }
+    }
+  ]
+}
