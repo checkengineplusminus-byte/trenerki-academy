@@ -1,0 +1,182 @@
+{
+  "course_slug": "dziennik-kota",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Hotel dla kotów wymaga bezpiecznych pomieszczeń, oddzielnych zasobów i realistycznego limitu liczby zwierząt. Dostępna liczba klatek nie wyznacza automatycznie dobrostanu. Znaczenie mają: zachowanie, możliwość ukrycia się, izolacja w razie choroby, higiena oraz opieka weterynaryjna."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Zaprojektuj schemat placówki z wejściem, strefą adaptacji, kwarantanną według procedury, pomieszczeniami pobytu, magazynem karmy i miejscem mycia. Dla każdego kota muszą być dostępne informacje żywieniowe i kontakt awaryjny."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Przychodzi pięć kotów, lecz brakuje odrębnej przestrzeni dla jednego zwierzęcia ze zgłoszonymi objawami choroby."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Przygotuj prosty biznesowy limit przyjęć oparty nie tylko na powierzchni, ale też zasobach, czasie obserwacji i możliwości izolacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Wywiad obejmuje dietę, stan zdrowia, wcześniejsze problemy, zachowanie, kontakty i ewentualne leczenie wymagające kompetentnego nadzoru. Osobniki mogą reagować silnym stresem na zmianę środowiska. Nie każde zwierzę nadaje się do pobytu w grupie z innymi."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przygotuj formularz przyjęcia: dane zwierzęcia, właściciel, opiekun awaryjny, zwykła karma, kuweta, kontakt weterynaryjny i warunki odmowy przyjęcia. Zapisuj fakty, bez samodzielnego diagnozowania chorób."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Właściciel informuje, że kot od dwóch dni nie je i wymiotuje, a mimo to chce go zostawić bez dodatkowej oceny."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Napisz listę pytań przy przyjęciu i granic usługi, z bezpiecznym przekierowaniem zwierzęcia do weterynarza przy niepokojących objawach."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Kot potrzebuje możliwości odpoczynku, schowania się i kontroli dystansu do innych zwierząt. Zasoby takie jak kuweta, miski i kryjówka nie powinny wymuszać ciągłego kontaktu z obcym kotem. Zapach, hałas i obecność obcych osób mogą zmieniać zachowanie."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Narysuj pomieszczenie: strefa karmienia, wody, kuwety, legowiska i miejsca ukrycia. Ogranicz ekspozycję na hałas, zapewnij higienę i procedurę obserwacji. Nie traktuj syczenia jako dowodu agresji wymagającej kary."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Nowy kot przez pierwszą dobę chowa się. Personel próbuje go wyciągnąć siłą, by 'przyzwyczaił się szybciej'."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zaproponuj plan spokojnej adaptacji z trzema obserwowalnymi wskaźnikami dobrostanu."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Zakażenia mogą przenosić się między kotami przez kontakt i skażone powierzchnie. Czyszczenie, dezynfekcja, zmiana odzieży ochronnej oraz prowadzenie odrębnych narzędzi w strefie izolacji ograniczają ryzyko. Preparaty muszą być bezpieczne dla zwierząt przy zastosowaniu zgodnym z etykietą."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Zorganizuj kolejność pracy: najpierw obszary bez objawów choroby, na końcu strefy objawowe według procedury. Zapisuj rodzaj produktu, czas kontaktu i sprawdzenie opłukania lub wyschnięcia zgodnie z instrukcją. Nie mieszaj środków chemicznych."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Pracownik używa tej samej łopatki do kuwet kilku kotów bez czyszczenia, przez co może przenosić zanieczyszczenia."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zaprojektuj checklistę higieny dwóch pokoi i izolacji z przypisanym osobnym sprzętem."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Zmiana diety i stres mogą wpływać na apetyt. Właściciel powinien przekazać uzgodnioną karmę, sposób podawania i istotne ograniczenia. Brak jedzenia, picia, oddawania moczu, wysiłek oddechowy lub nagła apatia mogą wymagać pilnej konsultacji weterynaryjnej."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Dla jednego kota zapisz plan karmienia, czas, ilość zaoferowaną i zjedzoną, wodę, obserwację kuwety i aktywności. Nie zmieniaj dawki leku ani nie podawaj nieznanych środków; przy odchyleniach uruchom wcześniej uzgodnioną procedurę."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Kot, który zwykle je dwa razy dziennie, nie zjadł żadnej porcji i wyraźnie się osłabił. Odraczanie kontaktu do końca pobytu jest niebezpieczne."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Sporządź kartę obserwacji 24 godzin bez diagnoz, z trzema sygnałami wymagającymi pilnego działania."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Raport powinien opisywać, co zaobserwowano, a nie co właściciel chce usłyszeć. 'Kot spokojny' jest mniej informacyjne niż 'zjadł połowę porcji, użył kuwety, ukrywał się po wizycie personelu'. Dokumentacja pomaga w przekazaniu problemu weterynarzowi."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przygotuj format wiadomości: czas, jedzenie, woda, kuweta, zachowanie, ewentualne zdjęcie i plan następnego kontaktu. Przy niepokojących objawach korzystaj z kanału pilnego kontaktu, a nie tylko ze zwykłego raportu dziennego."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Kot cały dzień ukrywa się, ale opiekun wysyła samą fotografię z podpisem 'wszystko super', bez podania braku apetytu."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Napisz dwa raporty dla właściciela: zwykły i alarmowy, z samymi faktami."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Rezerwacja powinna określać daty, rodzaj opieki, cenę, warunki odwołania i kontakt awaryjny. Przy przyjęciu nie wystarczy podpis; trzeba potwierdzić stan zwierzęcia, karmę, wymagania sanitarne i wyposażenie. Kalendarz nie może pozwalać na rezerwację ponad realną pojemność bezpiecznej opieki."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Zaprojektuj protokół wydania i odbioru: dane kota, przedmioty, ilość karmy, instrukcje, kontakt, godzina, stan obserwowany i zgoda na procedurę awaryjną. Przetestuj dwa nakładające się pobyty z wymaganiem izolacji."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Dwa zwierzęta mają przyjść do tego samego stanowiska w tych samych dniach, a jedno potrzebuje osobnej strefy."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Stwórz kalendarz z blokadą kolizji i checklistę dokumentów przy przyjęciu."
+        }
+      ]
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Działanie awaryjne wymaga wcześniejszego planu: numeru lekarza weterynarii, transportu, uprawnień do decyzji o leczeniu i sposobu kontaktu z właścicielem. Objawy takie jak ciężki oddech czy brak możliwości oddawania moczu mogą wymagać pilnej pomocy."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "W symulacji opisz zdarzenie, godzinę, zauważone objawy, numer kontaktu, podjęte działania i przekazanie informacji. Nie próbuj leczyć kota na własną rękę ani podawać mu leków przeznaczonych dla ludzi."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Kot od wielu godzin bezskutecznie próbuje oddać mocz i cierpi. Czekanie do jutrzejszego raportu może być niebezpieczne."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zrób plan alarmowy 1 strony: rozpoznanie sygnału, kontakt z weterynarzem, transport, właściciel, dokumentacja."
+        }
+      ]
+    }
+  ]
+}
