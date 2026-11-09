@@ -42,3 +42,15 @@ Status: PRACE TRWAJĄ. To zapis stanu, NIE raport ukończenia całej akademii.
 
 ## Zasada zapisu podczas kontynuacji
 Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik zapytaniem Supabase. Aktualizować TEN plik kolejnymi seriami (z nowym wynikiem audytu, commitami i listą braków), zamiast polegać na historii czatu. Przed kolejną sesją odczytać ten plik i aktualny stan DB; nie zakładać, że wszystko opisane jako plan zostało zrealizowane. Żadnych fikcyjnych deklaracji wdrożenia.
+
+
+## SERIA „JEDEN KURS PO DRUGIM” — zapis 2026-11-09
+
+**Kurs 1: Bednarz — przebudowa treści ukończona, wymaga recenzji i wdrożenia**
+- Przed: 8 lekcji; obecnie **16** kolejnych lekcji `0..15`; 16× po pięć rozbudowanych sekcji, 16× cztery odpowiedzi, 16 indywidualnych tematów i zadania samodzielne.
+- Potwierdzenie: odczyt Supabase `n=16`, `five_sections=16`, `questions=16`, `four_options=16`, `tasks=16`, `curriculum_revision=3`.
+- Nowe schematy: `bednarz-anatomia`, `bednarz-geometria`, `bednarz-wrega`, `bednarz-diagnoza`. Dodano rejestr odczytu SVG, ale **nie potwierdzono jeszcze publikacji najnowszych plików przez Expo**.
+- Rewizja: GitHub `content/bednarz-masterclass-20261109-part1.json` (commit `25ed980f`), `part2.json` (`ad12e409`), grafiki i rejestr (`19108af3`). Odtwarzalny SQL `database/patches/trenerki-bednarz-content-20261109.sql` (`4ea1bc85`). Szczegóły: `docs/COURSE_REVIEW_BEDNARZ_20261109.md` (`612c469c`).
+- Metadane programu i zajawka zostały zsynchronizowane w Supabase, status recenzji `review_needed`, bez zmiany `published`, postępów lub płatności.
+- Pozostaje: pełny test zalogowanego ucznia lekcje 1–16 → egzamin → dyplom, potwierdzenie grafiki z hostingu oraz recenzja profesjonalnego bednarza. **Nie przedstawiać jako formalnie ukończonego lub zawodowo zatwierdzonego kursu.**
+- Zasada następnego kursu: osobna treść i metodologia dopasowana do zawodu; po każdym kursie obowiązkowe DB verify + GitHub source + SQL patch + dopisanie checkpointu.
