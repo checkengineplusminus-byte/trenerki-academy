@@ -1,0 +1,494 @@
+{
+  "slug": "bednarz",
+  "lessons": [
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 8,
+      "title_pl": "9. Beczka do cieczy a naczynie dekoracyjne: wymagania wyrobu",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Najpierw poznaj zastosowanie",
+            "text": "Beczka do płynu i dekoracyjna osłona na kwiaty mogą wyglądać podobnie, ale ich wymagania nie są takie same. Dla naczynia użytkowego liczą się szczelność, stan materiału, możliwa interakcja drewna z zawartością, możliwość czyszczenia i identyfikowalność. W wersji wystawowej dopuszczalna może być patyna, która nie świadczy o gotowości do kontaktu z żywnością."
+          },
+          {
+            "heading": "Gatunek i kontakt z zawartością",
+            "text": "Dąb bywa używany do dojrzewania napojów ze względu na strukturę, wytrzymałość i związki chemiczne przechodzące z drewna. Nie oznacza to, że każde stare drewniane naczynie wolno napełnić napojem. Nieznane lakiery, impregnaty, pozostałości i historia użytkowania są istotnymi przeszkodami."
+          },
+          {
+            "heading": "Odbiór nie może być tylko wizualny",
+            "text": "Ocena obejmuje dokumentację materiału, oględziny, geometrię, obręcze, szczelność, czystość i warunki transportu. Procedura dopuszczenia do kontaktu z żywnością zależy od zamierzonej zawartości i przepisów. Pozytywna kontrola wymiarów nie zastępuje próby szczelności ani oceny higienicznej."
+          },
+          {
+            "heading": "Przykład dwóch zleceń",
+            "text": "Zlecenie A: ekspozycja w restauracji, beczka nie będzie używana do przechowywania produktów. Zlecenie B: nowa beczka do dojrzewania napoju. Dla B należy dodatkowo potwierdzić pochodzenie drewna, proces wytwarzania i bezpieczny stan powierzchni mających kontakt z zawartością."
+          },
+          {
+            "heading": "Zadanie porównawcze",
+            "text": "Zrób dwie karty wyrobu: dekoracja oraz pojemnik do napoju. Dla każdej wypisz: zastosowanie, materiały, informacje od klienta, wymagane kontrole, niedopuszczalne odstępstwa i dokument końcowy. Wyjaśnij, dlaczego renowacja zabytku nie nadaje automatycznie statusu wyrobu spożywczego."
+          }
+        ],
+        "illustration": "craft-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.awri.com.au/industry_support/winemaking_resources/storage-and-packaging/packaging-operations/barrel-cleaning-storage-and-maintenance/"
+          }
+        ],
+        "learning": {
+          "intro": "Beczka do płynu i dekoracyjna osłona na kwiaty mogą wyglądać podobnie, ale ich wymagania nie są takie same. Dla naczynia użytkowego liczą się szczelność, stan materiału, możliwa interakcja drewna z zawartością, możliwość czyszczenia i identyfikowalność. W wersji wystawowej dopuszczalna może być patyna, która nie świadczy o gotowości do kontaktu z żywnością.",
+          "situation": "Zlecenie A: ekspozycja w restauracji, beczka nie będzie używana do przechowywania produktów. Zlecenie B: nowa beczka do dojrzewania napoju. Dla B należy dodatkowo potwierdzić pochodzenie drewna, proces wytwarzania i bezpieczny stan powierzchni mających kontakt z zawartością.",
+          "question": "Klient chce przechowywać napój w zabytkowej beczce o nieznanej historii powłok. Co jest właściwą pierwszą decyzją?",
+          "options": [
+            "Uznać naczynie za bezpieczne, skoro ma metalowe obręcze.",
+            "Napełnić je próbnie i ocenić tylko kolor napoju.",
+            "Zastosować dowolny uszczelniacz bez sprawdzania jego przeznaczenia.",
+            "Nie dopuszczać do zastosowania spożywczego bez ustalenia pochodzenia, stanu i oceny bezpieczeństwa."
+          ],
+          "correct": 3,
+          "example": "Nie dopuszczać do zastosowania spożywczego bez ustalenia pochodzenia, stanu i oceny bezpieczeństwa.",
+          "explanation": "Zdolność do przechowywania żywności nie wynika z samego wyglądu; historia substancji i stan naczynia mogą być krytyczne.",
+          "feedback": [
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Zdolność do przechowywania żywności nie wynika z samego wyglądu; historia substancji i stan naczynia mogą być krytyczne.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Zdolność do przechowywania żywności nie wynika z samego wyglądu; historia substancji i stan naczynia mogą być krytyczne.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Zdolność do przechowywania żywności nie wynika z samego wyglądu; historia substancji i stan naczynia mogą być krytyczne.",
+            "Tak. Zdolność do przechowywania żywności nie wynika z samego wyglądu; historia substancji i stan naczynia mogą być krytyczne."
+          ],
+          "task": "Zrób dwie karty wyrobu: dekoracja oraz pojemnik do napoju. Dla każdej wypisz: zastosowanie, materiały, informacje od klienta, wymagane kontrole, niedopuszczalne odstępstwa i dokument końcowy. Wyjaśnij, dlaczego renowacja zabytku nie nadaje automatycznie statusu wyrobu spożywczego."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 9,
+      "title_pl": "10. Opalanie, prażenie i wpływ drewna na napój",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Nie każda beczka jest opalana",
+            "text": "Proces toasting polega na kontrolowanej obróbce cieplnej wewnętrznej powierzchni niektórych beczek, zwłaszcza używanych do dojrzewania napojów. Charring może prowadzić do silniejszego zwęglenia powierzchni. Dobór technologii zależy od zastosowania, rodzaju drewna i specyfikacji producenta; beczka dekoracyjna nie wymaga naśladowania tego procesu."
+          },
+          {
+            "heading": "Skąd pochodzi różnica aromatu",
+            "text": "W drewnie występują związki, które podczas ogrzewania mogą ulegać przekształceniom. Zależnie od warunków można uzyskać inne proporcje związków wpływających na zapach i smak przechowywanych napojów. Nie istnieje prosta zasada, że coraz mocniejsze opalanie zawsze oznacza lepszy efekt."
+          },
+          {
+            "heading": "Rozróżnij obrabianie od użytkowania",
+            "text": "Gięcie klepek z użyciem ciepła i wilgoci ma przede wszystkim na celu uzyskanie kształtu. Opalanie wnętrza ma odrębny cel sensoryczny i technologiczny. W praktyce operacje mogą być powiązane w produkcji, ale przy dokumentowaniu jakości powinny mieć osobne nazwy oraz parametry kontrolne."
+          },
+          {
+            "heading": "Przykład decyzji produkcyjnej",
+            "text": "Dwa zamówienia mają taki sam rozmiar beczki, lecz inne zastosowanie: jeden klient chce naczynie bez wpływu aromatycznego, drugi zamawia wyrób o określonym stopniu toast. Nie można potraktować obu sztuk identycznie tylko z powodu wspólnych wymiarów."
+          },
+          {
+            "heading": "Ćwiczenie naukowe",
+            "text": "Porównaj trzy opisy procesu: zginanie, toasting i charring. Zapisz cel, możliwą zmianę materiału, punkt kontroli i rodzaj ryzyka. Nie próbuj samodzielnie powtarzać procesów termicznych; to ćwiczenie teoretyczne w zakresie rozpoznawania technologii."
+          }
+        ],
+        "illustration": "technique-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13164676/"
+          }
+        ],
+        "learning": {
+          "intro": "Proces toasting polega na kontrolowanej obróbce cieplnej wewnętrznej powierzchni niektórych beczek, zwłaszcza używanych do dojrzewania napojów. Charring może prowadzić do silniejszego zwęglenia powierzchni. Dobór technologii zależy od zastosowania, rodzaju drewna i specyfikacji producenta; beczka dekoracyjna nie wymaga naśladowania tego procesu.",
+          "situation": "Dwa zamówienia mają taki sam rozmiar beczki, lecz inne zastosowanie: jeden klient chce naczynie bez wpływu aromatycznego, drugi zamawia wyrób o określonym stopniu toast. Nie można potraktować obu sztuk identycznie tylko z powodu wspólnych wymiarów.",
+          "question": "Co przede wszystkim odróżnia toasting od etapu gięcia klepek?",
+          "options": [
+            "Toasting może modyfikować skład i efekt sensoryczny wewnętrznej powierzchni, a gięcie nadaje kształt.",
+            "Toasting wyznacza średnicę obręczy bez zmiany drewna.",
+            "Gięcie służy wyłącznie do malowania gotowej beczki.",
+            "Toasting jest obowiązkowy dla wszystkich naczyń bednarskich."
+          ],
+          "correct": 0,
+          "example": "Toasting może modyfikować skład i efekt sensoryczny wewnętrznej powierzchni, a gięcie nadaje kształt.",
+          "explanation": "Procesy służą różnym celom: geometrycznemu lub chemiczno-sensorycznemu, choć obie technologie mogą wykorzystywać ciepło.",
+          "feedback": [
+            "Tak. Procesy służą różnym celom: geometrycznemu lub chemiczno-sensorycznemu, choć obie technologie mogą wykorzystywać ciepło.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Procesy służą różnym celom: geometrycznemu lub chemiczno-sensorycznemu, choć obie technologie mogą wykorzystywać ciepło.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Procesy służą różnym celom: geometrycznemu lub chemiczno-sensorycznemu, choć obie technologie mogą wykorzystywać ciepło.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Procesy służą różnym celom: geometrycznemu lub chemiczno-sensorycznemu, choć obie technologie mogą wykorzystywać ciepło."
+          ],
+          "task": "Porównaj trzy opisy procesu: zginanie, toasting i charring. Zapisz cel, możliwą zmianę materiału, punkt kontroli i rodzaj ryzyka. Nie próbuj samodzielnie powtarzać procesów termicznych; to ćwiczenie teoretyczne w zakresie rozpoznawania technologii."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 10,
+      "title_pl": "11. Czyszczenie i przechowywanie beczek użytkowych",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Drewno nie jest stalą nierdzewną",
+            "text": "Porowaty materiał może pochłaniać część zawartości. W szczelinach i wewnątrz warstwy drewna mogą pozostawać mikroorganizmy lub osady, dlatego ocena higieny beczki jest trudniejsza niż ocena gładkiego zbiornika metalowego. Sam brak widocznego brudu nie daje pewności, że naczynie jest bezpieczne."
+          },
+          {
+            "heading": "Odbiór i ślad partii",
+            "text": "Po dostawie ocenia się uszkodzenia transportowe, zapach wnętrza, czystość, ślady insektów, obręcze i ewentualne plamy. Beczka przeznaczona do wina lub żywności powinna mieć procedurę przygotowania i utrzymania, odpowiednią do historii naczynia i instrukcji producenta."
+          },
+          {
+            "heading": "Dlaczego nie podajemy jednej receptury",
+            "text": "Metody czyszczenia, nawilżania i dezynfekcji zależą od napoju, stanu drewna i dostępnego wyposażenia. Nie należy mieszać przypadkowych preparatów ani stosować samodzielnie wysokiego ciśnienia, pary lub chemikaliów. Niektóre zabiegi nie gwarantują usunięcia drobnoustrojów z głębszych warstw drewna."
+          },
+          {
+            "heading": "Przykład wady magazynowej",
+            "text": "Nowa beczka jest czysta z zewnątrz, ale wewnątrz czuć nieznany zapach po transporcie. Zamiast napełnienia i maskowania woni trzeba ją odseparować, opisać objaw, sprawdzić dokumentację i zwrócić się do producenta lub właściwego specjalisty."
+          },
+          {
+            "heading": "Zadanie z procedury jakości",
+            "text": "Zaprojektuj kartę przyjęcia beczki: ID, dostawca, przeznaczenie, stan powierzchni, zapach, ślady uszkodzeń, status izolacji, decyzja i osoba odpowiedzialna. Osobno stwórz schemat reakcji na podejrzenie zanieczyszczenia mikrobiologicznego."
+          }
+        ],
+        "illustration": "diagnosis-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.awri.com.au/industry_support/winemaking_resources/storage-and-packaging/packaging-operations/barrel-cleaning-storage-and-maintenance/"
+          }
+        ],
+        "learning": {
+          "intro": "Porowaty materiał może pochłaniać część zawartości. W szczelinach i wewnątrz warstwy drewna mogą pozostawać mikroorganizmy lub osady, dlatego ocena higieny beczki jest trudniejsza niż ocena gładkiego zbiornika metalowego. Sam brak widocznego brudu nie daje pewności, że naczynie jest bezpieczne.",
+          "situation": "Nowa beczka jest czysta z zewnątrz, ale wewnątrz czuć nieznany zapach po transporcie. Zamiast napełnienia i maskowania woni trzeba ją odseparować, opisać objaw, sprawdzić dokumentację i zwrócić się do producenta lub właściwego specjalisty.",
+          "question": "Dlaczego wizualnie czysta używana beczka nie musi być gotowa do ponownego napełnienia?",
+          "options": [
+            "Ponieważ każda beczka jest jednorazowa.",
+            "Ponieważ drewno może zatrzymywać osady i drobnoustroje także poza widoczną powierzchnią.",
+            "Ponieważ stalowe obręcze są zawsze źródłem zanieczyszczeń mikrobiologicznych.",
+            "Ponieważ wszystkie używane beczki mają identyczną historię przechowywania."
+          ],
+          "correct": 1,
+          "example": "Ponieważ drewno może zatrzymywać osady i drobnoustroje także poza widoczną powierzchnią.",
+          "explanation": "Porowatość i wcześniejsze użycie utrudniają ocenę higieniczną; wymagane są właściwe procedury czyszczenia i weryfikacji.",
+          "feedback": [
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Porowatość i wcześniejsze użycie utrudniają ocenę higieniczną; wymagane są właściwe procedury czyszczenia i weryfikacji.",
+            "Tak. Porowatość i wcześniejsze użycie utrudniają ocenę higieniczną; wymagane są właściwe procedury czyszczenia i weryfikacji.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Porowatość i wcześniejsze użycie utrudniają ocenę higieniczną; wymagane są właściwe procedury czyszczenia i weryfikacji.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Porowatość i wcześniejsze użycie utrudniają ocenę higieniczną; wymagane są właściwe procedury czyszczenia i weryfikacji."
+          ],
+          "task": "Zaprojektuj kartę przyjęcia beczki: ID, dostawca, przeznaczenie, stan powierzchni, zapach, ślady uszkodzeń, status izolacji, decyzja i osoba odpowiedzialna. Osobno stwórz schemat reakcji na podejrzenie zanieczyszczenia mikrobiologicznego."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 11,
+      "title_pl": "12. Kalkulacja materiału, obręczy i kosztu projektu",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Ilość części to dopiero początek",
+            "text": "Zestawienie materiałów zawiera liczbę i wymiary klepek, ilość elementów denka, liczbę obręczy, typ łączenia oraz naddatek technologiczny. Nie wystarczy policzyć samego drewna: w procesie występuje selekcja z wad, odrzuty przy rozkroju, struganie, gięcie, przygotowanie dna, próby i dokumentacja."
+          },
+          {
+            "heading": "Oblicz przykład liczby klepek",
+            "text": "Projekt zakłada 24 klepki. Przyjmij przykładowo, że 15% przygotowanych klepek może zostać odrzuconych przed montażem. Szacunkowe zamówienie to 24/0,85 = 28,24, więc w założeniu całych sztuk zaplanujesz co najmniej 29 kandydatów. To szacunek, nie deklaracja rzeczywistej wydajności każdej produkcji."
+          },
+          {
+            "heading": "Narzut, marża i robocizna",
+            "text": "Załóż 29 kandydatów po 25 zł (725 zł), obręcze 200 zł, inne materiały 75 zł i 6 godzin pracy po 80 zł (480 zł). Suma kosztów bezpośrednich w tym modelu wynosi 1480 zł. Jeśli cena sprzedaży wynosi 2000 zł, różnica 520 zł musi jeszcze pokryć koszty pośrednie, ryzyko oraz podatek zgodnie z przyjętą metodą."
+          },
+          {
+            "heading": "Zależności w harmonogramie",
+            "text": "Część operacji zależy od poprzedniej: bez odpowiednio przygotowanego drewna nie można przystąpić do zestawienia; bez zgodnej geometrii nie ma sensu osadzać denka. Sezonowanie może zajmować znacznie więcej niż czas ręcznego montażu, dlatego terminu realizacji nie ustala się z samej liczby roboczogodzin."
+          },
+          {
+            "heading": "Ćwiczenie w arkuszu",
+            "text": "Zbuduj tabelę: materiał, liczba jednostek, koszt jednostki, koszt łączny, odrzut, koszt robocizny, koszty dodatkowe. Przelicz wariant 10% odrzutu zamiast 15% i porównaj plan zakupów. Zaznacz koszty potwierdzone i przyjęte do symulacji."
+          }
+        ],
+        "illustration": "mastery-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.saury.com/en/our-skills/the-stages-of-barrel-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Zestawienie materiałów zawiera liczbę i wymiary klepek, ilość elementów denka, liczbę obręczy, typ łączenia oraz naddatek technologiczny. Nie wystarczy policzyć samego drewna: w procesie występuje selekcja z wad, odrzuty przy rozkroju, struganie, gięcie, przygotowanie dna, próby i dokumentacja.",
+          "situation": "Część operacji zależy od poprzedniej: bez odpowiednio przygotowanego drewna nie można przystąpić do zestawienia; bez zgodnej geometrii nie ma sensu osadzać denka. Sezonowanie może zajmować znacznie więcej niż czas ręcznego montażu, dlatego terminu realizacji nie ustala się z samej liczby roboczogodzin.",
+          "question": "Do beczki potrzeba 24 poprawnych klepek; planistyczny odrzut wynosi 15%. Ile kandydatów należy przygotować przy tym uproszczonym założeniu?",
+          "options": [
+            "25, bo wystarczy dodać jedną sztukę.",
+            "28, bo wynik 28,24 zawsze zaokrągla się w dół.",
+            "29, bo 24/0,85 ≈ 28,24 i liczymy całe sztuki.",
+            "35, bo 15% zawsze oznacza dołożenie jedenastu sztuk."
+          ],
+          "correct": 2,
+          "example": "29, bo 24/0,85 ≈ 28,24 i liczymy całe sztuki.",
+          "explanation": "Aby z planistyczną wydajnością 85% otrzymać 24 poprawne sztuki, 24/0,85≈28,24; potrzebna liczba całych kandydatów to minimum 29.",
+          "feedback": [
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Aby z planistyczną wydajnością 85% otrzymać 24 poprawne sztuki, 24/0,85≈28,24; potrzebna liczba całych kandydatów to minimum 29.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Aby z planistyczną wydajnością 85% otrzymać 24 poprawne sztuki, 24/0,85≈28,24; potrzebna liczba całych kandydatów to minimum 29.",
+            "Tak. Aby z planistyczną wydajnością 85% otrzymać 24 poprawne sztuki, 24/0,85≈28,24; potrzebna liczba całych kandydatów to minimum 29.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Aby z planistyczną wydajnością 85% otrzymać 24 poprawne sztuki, 24/0,85≈28,24; potrzebna liczba całych kandydatów to minimum 29."
+          ],
+          "task": "Zbuduj tabelę: materiał, liczba jednostek, koszt jednostki, koszt łączny, odrzut, koszt robocizny, koszty dodatkowe. Przelicz wariant 10% odrzutu zamiast 15% i porównaj plan zakupów. Zaznacz koszty potwierdzone i przyjęte do symulacji."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 12,
+      "title_pl": "13. Diagnostyka wad: od objawu do przyczyny",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Oddziel objaw od hipotezy",
+            "text": "Objawem jest np. mokra smuga na określonej wysokości, a hipotezą — niewłaściwy styk klepek, pęknięcie lub uszkodzenie rowka denka. Nie wolno uznać pierwszej hipotezy za potwierdzoną bez oględzin. Zamiast 'nie działa' używaj lokalizacji, czasu, warunków i historii naczynia."
+          },
+          {
+            "heading": "Mapa wad płaszcza",
+            "text": "Długie ślady wzdłuż styków mogą wskazywać niedopasowanie krawędzi, zmiany wilgotności lub stan obręczy. Punktowe wycieki przez drewno mogą sugerować pęknięcie albo lokalną wadę. Wady związane z końcem naczynia kierują uwagę na wręgę, denko i zewnętrzne krawędzie."
+          },
+          {
+            "heading": "Mapa wad obręczy",
+            "text": "Przesunięta, odkształcona lub uszkodzona obręcz może zmienić rozkład docisku. Nie oznacza to, że zawsze trzeba ją mocniej pobić: należy ocenić stan metalu, zgodność średnicy z płaszczem, położenie i ewentualne pęknięcia drewna. Nie podejmuj mechanicznej naprawy bez odpowiedniego stanowiska."
+          },
+          {
+            "heading": "Przykład dokumentacji",
+            "text": "Wyrób B-17: po wyschnięciu magazynowym pojawił się przeciek wzdłuż klepki nr 6, stwierdzono pęknięcie przez grubość. Opis 'dociśnięto obręcz, zniknął objaw' nie jest równoznaczny z bezpieczną naprawą; uszkodzoną klepkę ocenia specjalista, a wyrób wymaga ponownego odbioru."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Przygotuj drzewo decyzji dla czterech objawów: wilgotna smuga przy denku, podłużny przeciek, rdzewiejąca obręcz i nieznany zapach. Dla każdego: co zmierzyć, co sfotografować, jaką hipotezę sprawdzić i kiedy wyłączyć naczynie z użycia."
+          }
+        ],
+        "illustration": "diagnosis-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.enotools.com/uploads/2/3/9/7/2397754/barrel_associates_american_oak_quality_control_guidelines.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Objawem jest np. mokra smuga na określonej wysokości, a hipotezą — niewłaściwy styk klepek, pęknięcie lub uszkodzenie rowka denka. Nie wolno uznać pierwszej hipotezy za potwierdzoną bez oględzin. Zamiast 'nie działa' używaj lokalizacji, czasu, warunków i historii naczynia.",
+          "situation": "Wyrób B-17: po wyschnięciu magazynowym pojawił się przeciek wzdłuż klepki nr 6, stwierdzono pęknięcie przez grubość. Opis 'dociśnięto obręcz, zniknął objaw' nie jest równoznaczny z bezpieczną naprawą; uszkodzoną klepkę ocenia specjalista, a wyrób wymaga ponownego odbioru.",
+          "question": "Co jest prawidłową reakcją na podłużne pęknięcie klepki przechodzące przez jej grubość?",
+          "options": [
+            "Uznanie, że każda usterka zostanie trwale usunięta przez obręcz.",
+            "Zalanie pęknięcia dowolnym klejem i natychmiastowy odbiór higieniczny.",
+            "Pominięcie dokumentacji, jeżeli przeciek chwilowo zniknął.",
+            "Wycofanie do fachowej oceny, udokumentowanie uszkodzenia i ponowna kontrola po naprawie."
+          ],
+          "correct": 3,
+          "example": "Wycofanie do fachowej oceny, udokumentowanie uszkodzenia i ponowna kontrola po naprawie.",
+          "explanation": "Pęknięcie przez grubość jest wadą materiałową; poprawa docisku nie musi usunąć przyczyny ani zapewnić bezpieczeństwa.",
+          "feedback": [
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Pęknięcie przez grubość jest wadą materiałową; poprawa docisku nie musi usunąć przyczyny ani zapewnić bezpieczeństwa.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Pęknięcie przez grubość jest wadą materiałową; poprawa docisku nie musi usunąć przyczyny ani zapewnić bezpieczeństwa.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Pęknięcie przez grubość jest wadą materiałową; poprawa docisku nie musi usunąć przyczyny ani zapewnić bezpieczeństwa.",
+            "Tak. Pęknięcie przez grubość jest wadą materiałową; poprawa docisku nie musi usunąć przyczyny ani zapewnić bezpieczeństwa."
+          ],
+          "task": "Przygotuj drzewo decyzji dla czterech objawów: wilgotna smuga przy denku, podłużny przeciek, rdzewiejąca obręcz i nieznany zapach. Dla każdego: co zmierzyć, co sfotografować, jaką hipotezę sprawdzić i kiedy wyłączyć naczynie z użycia."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 13,
+      "title_pl": "14. Odbiór jakości: dokumentacja i ślad produkcji",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Co jest wynikiem jakości",
+            "text": "Dobry protokół nie kończy się zdaniem 'beczka gotowa'. Powinien łączyć wymaganie klienta z identyfikatorem wyrobu, partią drewna, stanem klepek, obręczy i denek, kontrolą geometrii oraz właściwą próbą dla przeznaczenia. Wymagania muszą być ustalone przed produkcją."
+          },
+          {
+            "heading": "Kontrola międzyoperacyjna",
+            "text": "Właściwości materiału sprawdza się przed obróbką, geometrię klepek przed zestawieniem, stan płaszcza po gięciu, rowek i denko przed zamknięciem oraz szczelność po złożeniu. Późna kontrola nie zastąpi etapowej: ukrytego uszkodzenia wewnątrz płaszcza może nie być widać z zewnątrz."
+          },
+          {
+            "heading": "Numer partii jest ważny",
+            "text": "Jeśli dwie beczki z tej samej partii mają zbliżoną wadę, informacje o dostawcy drewna, czasie przygotowania i zastosowanej technologii mogą pomóc ustalić wspólną przyczynę. Bez przypisania partii i dat jedynym dostępnym rozwiązaniem bywa chaotyczna naprawa każdej sztuki osobno."
+          },
+          {
+            "heading": "Przykład odchyleń",
+            "text": "Dla partii 12 beczek sprawdzono 12 razy stan obręczy i geometrię. Dwie nie przeszły próby szczelności, jedna miała pękniętą klepkę. Nie wolno obliczyć liczby niezgodnych sztuk jako 3 bez sprawdzenia, czy uszkodzenie dotyczyło jednej z dwóch nieszczelnych beczek."
+          },
+          {
+            "heading": "Zadanie protokołu",
+            "text": "Zaprojektuj kartę z 15 polami. Rozdziel dane identyfikacyjne, materiały, wynik kontroli, rodzaj niezgodności, działanie korygujące, re-test i zatwierdzenie. Dodaj kolumny 'wymaganie', 'wynik', 'dowód' i 'decyzja', aby uczeń mógł ocenić wyrób na podstawie faktów."
+          }
+        ],
+        "illustration": "mastery-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.enotools.com/uploads/2/3/9/7/2397754/barrel_associates_american_oak_quality_control_guidelines.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Dobry protokół nie kończy się zdaniem 'beczka gotowa'. Powinien łączyć wymaganie klienta z identyfikatorem wyrobu, partią drewna, stanem klepek, obręczy i denek, kontrolą geometrii oraz właściwą próbą dla przeznaczenia. Wymagania muszą być ustalone przed produkcją.",
+          "situation": "Dla partii 12 beczek sprawdzono 12 razy stan obręczy i geometrię. Dwie nie przeszły próby szczelności, jedna miała pękniętą klepkę. Nie wolno obliczyć liczby niezgodnych sztuk jako 3 bez sprawdzenia, czy uszkodzenie dotyczyło jednej z dwóch nieszczelnych beczek.",
+          "question": "W partii 12 beczek dwie nie przeszły próby szczelności, a jedna ma pękniętą klepkę. Dlaczego liczba wadliwych sztuk nie musi wynosić trzy?",
+          "options": [
+            "Bo prób szczelności nie zapisuje się w protokole.",
+            "Bo pęknięta klepka może znajdować się w jednej z dwóch już policzonych nieszczelnych beczek.",
+            "Bo każda beczka z obręczami jest z definicji szczelna.",
+            "Bo wynik jakości zależy tylko od koloru drewna."
+          ],
+          "correct": 1,
+          "example": "Bo pęknięta klepka może znajdować się w jednej z dwóch już policzonych nieszczelnych beczek.",
+          "explanation": "Bez identyfikatorów i przypisania usterek do sztuk nie można sumować liczby niezgodności jako liczby unikalnych wyrobów.",
+          "feedback": [
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Bez identyfikatorów i przypisania usterek do sztuk nie można sumować liczby niezgodności jako liczby unikalnych wyrobów.",
+            "Tak. Bez identyfikatorów i przypisania usterek do sztuk nie można sumować liczby niezgodności jako liczby unikalnych wyrobów.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Bez identyfikatorów i przypisania usterek do sztuk nie można sumować liczby niezgodności jako liczby unikalnych wyrobów.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Bez identyfikatorów i przypisania usterek do sztuk nie można sumować liczby niezgodności jako liczby unikalnych wyrobów."
+          ],
+          "task": "Zaprojektuj kartę z 15 polami. Rozdziel dane identyfikacyjne, materiały, wynik kontroli, rodzaj niezgodności, działanie korygujące, re-test i zatwierdzenie. Dodaj kolumny 'wymaganie', 'wynik', 'dowód' i 'decyzja', aby uczeń mógł ocenić wyrób na podstawie faktów."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 14,
+      "title_pl": "15. Renowacja: zabytek, naczynie użytkowe i granice naprawy",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Najpierw określ cel",
+            "text": "Konserwacja zabytkowej beczki może polegać na zachowaniu materiału, napisów i śladów użytkowania, a nie na przywróceniu jej szczelności. Odnowienie funkcji użytkowej to inny cel, wymagający oceny bezpieczeństwa i higieny. Dla historycznych przedmiotów ingerencja może usunąć informacje cenne dla muzeum."
+          },
+          {
+            "heading": "Mapa stanu przed pracą",
+            "text": "W dokumentacji zaznacz pęknięcia, ślady biologiczne, zużycie obręczy, deformacje, wcześniejsze naprawy i warstwy wykończeniowe. Zapisz datę, numer obiektu, zdjęcia z miarką oraz nieznane elementy historii. Nie myj, nie impregnuj i nie wymieniaj elementów tylko dlatego, że wyglądają staro."
+          },
+          {
+            "heading": "Czego nie naprawia klej",
+            "text": "Przypadkowy klej lub uszczelniacz może zmienić wygląd, utrudnić przyszłą konserwację i nie spełniać wymagań dla żywności. Warto rozróżniać naprawę strukturalną, konserwację powierzchni i uszczelnienie. Każde działanie ma odrębny warunek dopuszczenia i możliwość pozostawienia śladu w dokumentacji."
+          },
+          {
+            "heading": "Przykład zabytku",
+            "text": "Beczka z sygnaturą starego zakładu ma spękaną obręcz i przebarwienie. Właściciel chce ją wystawić, nie używać do napojów. Najważniejsze jest zabezpieczenie przed dalszym uszkodzeniem i zachowanie sygnatury, a nie pozbycie się wszystkich śladów wieku."
+          },
+          {
+            "heading": "Ćwiczenie konserwatorskie",
+            "text": "Sporządź dwa warianty planu dla tego samego obiektu: ekspozycja w muzeum i próba przywrócenia funkcji użytkowej. Wskaż, jakich dowodów wymaga każda decyzja oraz kiedy potrzebna jest ocena konserwatora albo producenta specjalistycznego."
+          }
+        ],
+        "illustration": "craft-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://metc.org/decoding-the-past-cooper/"
+          }
+        ],
+        "learning": {
+          "intro": "Konserwacja zabytkowej beczki może polegać na zachowaniu materiału, napisów i śladów użytkowania, a nie na przywróceniu jej szczelności. Odnowienie funkcji użytkowej to inny cel, wymagający oceny bezpieczeństwa i higieny. Dla historycznych przedmiotów ingerencja może usunąć informacje cenne dla muzeum.",
+          "situation": "Beczka z sygnaturą starego zakładu ma spękaną obręcz i przebarwienie. Właściciel chce ją wystawić, nie używać do napojów. Najważniejsze jest zabezpieczenie przed dalszym uszkodzeniem i zachowanie sygnatury, a nie pozbycie się wszystkich śladów wieku.",
+          "question": "Dlaczego zabytkowej beczki z oryginalną sygnaturą nie należy automatycznie zeszlifować do nowego drewna?",
+          "options": [
+            "Ponieważ wszystkie stare powłoki są bezpieczne do kontaktu z napojem.",
+            "Ponieważ każdy stary przedmiot powinien być bezwarunkowo szczelny.",
+            "Ponieważ mogłoby to nieodwracalnie usunąć wartościowe historycznie ślady.",
+            "Ponieważ po szlifowaniu drewno przestaje chłonąć wilgoć."
+          ],
+          "correct": 2,
+          "example": "Ponieważ mogłoby to nieodwracalnie usunąć wartościowe historycznie ślady.",
+          "explanation": "Celem konserwacji może być zachowanie autentycznych informacji o obiekcie, a nie jego wizualne odmłodzenie.",
+          "feedback": [
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Celem konserwacji może być zachowanie autentycznych informacji o obiekcie, a nie jego wizualne odmłodzenie.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Celem konserwacji może być zachowanie autentycznych informacji o obiekcie, a nie jego wizualne odmłodzenie.",
+            "Tak. Celem konserwacji może być zachowanie autentycznych informacji o obiekcie, a nie jego wizualne odmłodzenie.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Celem konserwacji może być zachowanie autentycznych informacji o obiekcie, a nie jego wizualne odmłodzenie."
+          ],
+          "task": "Sporządź dwa warianty planu dla tego samego obiektu: ekspozycja w muzeum i próba przywrócenia funkcji użytkowej. Wskaż, jakich dowodów wymaga każda decyzja oraz kiedy potrzebna jest ocena konserwatora albo producenta specjalistycznego."
+        }
+      }
+    },
+    {
+      "course_slug": "bednarz",
+      "lesson_no": 15,
+      "title_pl": "16. Projekt końcowy: specyfikacja i diagnoza beczki",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "curriculum_revision": 3,
+        "sections": [
+          {
+            "heading": "Twoje zlecenie",
+            "text": "Wyobraź sobie nową dekoracyjną beczkę o wysokości 900 mm, średnicy przy brzuścu 600 mm i średnicy końców 500 mm. Klient chce widoczne obręcze, jedno denko zdejmowane wyłącznie jako element ekspozycji i bez kontaktu z żywnością. Ma być bezpiecznie ustawiona w pomieszczeniu, a dokumentacja musi umożliwić ocenę wykonania."
+          },
+          {
+            "heading": "Pierwszy rachunek",
+            "text": "Obwód zewnętrzny przy brzuścu to 600π ≈ 1885 mm; przy końcu 500π ≈ 1571 mm. Przy 20 klepkach średni udział obwodu wynosi odpowiednio 94,25 i 78,55 mm. Nie podawaj tych liczb jako gotowego szablonu klepki: profil, grubość, kąty i obróbka muszą być doprojektowane."
+          },
+          {
+            "heading": "Lista materiału i ryzyk",
+            "text": "Przygotuj listę drewna z gatunkiem i cechami włókien, plan liczby klepek wraz z naddatkiem, zestaw obręczy, denko oraz ewentualny stabilny stojak. Zaznacz ryzyka: ostre krawędzie obręczy, niestabilność, pęknięcia i źle dopasowana geometria."
+          },
+          {
+            "heading": "Jak odebrać efekt",
+            "text": "Przed uznaniem za gotowy sprawdź wymiar zewnętrzny na kilku wysokościach, stan klepek, ostre krawędzie, rozmieszczenie obręczy, stabilność ustawienia i zgodność z rysunkiem. Nie wykonuj próby napojowej, ponieważ wyrób nie jest zamawiany do kontaktu z cieczami ani do żywności."
+          },
+          {
+            "heading": "Egzamin weryfikujący zrozumienie",
+            "text": "Oddaj szkic z trzema widokami, tabelę materiałów, obliczenia obu obwodów, punktowe kontrole i raport błędu. Dodatkowy scenariusz: po montażu pojawia się szczelina przy klepce nr 8. Wyjaśnij, jakie pomiary i oględziny wykonasz przed decyzją o poprawce."
+          }
+        ],
+        "illustration": "mastery-bednarz",
+        "references": [
+          {
+            "label": "Źródło techniczne do dalszej lektury",
+            "url": "https://www.saury.com/en/our-skills/the-stages-of-barrel-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Wyobraź sobie nową dekoracyjną beczkę o wysokości 900 mm, średnicy przy brzuścu 600 mm i średnicy końców 500 mm. Klient chce widoczne obręcze, jedno denko zdejmowane wyłącznie jako element ekspozycji i bez kontaktu z żywnością. Ma być bezpiecznie ustawiona w pomieszczeniu, a dokumentacja musi umożliwić ocenę wykonania.",
+          "situation": "Przed uznaniem za gotowy sprawdź wymiar zewnętrzny na kilku wysokościach, stan klepek, ostre krawędzie, rozmieszczenie obręczy, stabilność ustawienia i zgodność z rysunkiem. Nie wykonuj próby napojowej, ponieważ wyrób nie jest zamawiany do kontaktu z cieczami ani do żywności.",
+          "question": "Dlaczego w końcowym projekcie nie można przyjąć 94,25 mm jako szerokości każdej klepki na całej wysokości?",
+          "options": [
+            "Bo beczka ma różne obwody na wysokości, a wynik C/N jest tylko uśrednionym udziałem obwodu w jednej strefie.",
+            "Bo liczba klepek nie ma żadnego związku z obwodem.",
+            "Bo średnica końca zawsze równa się średnicy brzuśca.",
+            "Bo nie da się w ogóle określić średnicy beczki na rysunku."
+          ],
+          "correct": 0,
+          "example": "Bo beczka ma różne obwody na wysokości, a wynik C/N jest tylko uśrednionym udziałem obwodu w jednej strefie.",
+          "explanation": "Zmienna średnica i geometria sąsiadujących styków wymagają rzeczywistego szablonu, nie jednego średniego wymiaru.",
+          "feedback": [
+            "Tak. Zmienna średnica i geometria sąsiadujących styków wymagają rzeczywistego szablonu, nie jednego średniego wymiaru.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Zmienna średnica i geometria sąsiadujących styków wymagają rzeczywistego szablonu, nie jednego średniego wymiaru.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Zmienna średnica i geometria sąsiadujących styków wymagają rzeczywistego szablonu, nie jednego średniego wymiaru.",
+            "Przyjrzyj się wymaganiom technicznym w zadaniu. Zmienna średnica i geometria sąsiadujących styków wymagają rzeczywistego szablonu, nie jednego średniego wymiaru."
+          ],
+          "task": "Oddaj szkic z trzema widokami, tabelę materiałów, obliczenia obu obwodów, punktowe kontrole i raport błędu. Dodatkowy scenariusz: po montażu pojawia się szczelina przy klepce nr 8. Wyjaśnij, jakie pomiary i oględziny wykonasz przed decyzją o poprawce."
+        }
+      }
+    }
+  ],
+  "source_note": "Industry quality control sources, scientific reviews and cooperage training references. Not an authorized professional qualification."
+}
