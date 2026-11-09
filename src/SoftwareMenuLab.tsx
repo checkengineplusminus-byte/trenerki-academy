@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,Pressable,ScrollView} from 'react-native';
+import {View,Text,Pressable,ScrollView,TextInput,useWindowDimensions} from 'react-native';
 
 type Item={tab:string;path:string;purpose:string;fields:string[];exercise:string;warning?:string};
 type Menu={label:string;context:string;verified:boolean;items:Item[]};
@@ -73,6 +73,86 @@ const modules:Record<string,Menu>={
   {tab:'Settings',path:'Settings → Accounts / System',purpose:'Uprawnienia i preferencje.',fields:['System','Accounts','Privacy & security'],exercise:'Dlaczego nie należy zmieniać uprawnień konta bez potrzeby?'}
  ]}
 };
+
+function DesktopWorkspace({slug}:{slug:string}){
+ const excel=slug==='excel-skroty',cad=slug==='autocad-skroty';
+ const {width}=useWindowDimensions();
+ const mobile=width<560;
+ const [tab,setTab]=useState(0),[qty,setQty]=useState('3'),[price,setPrice]=useState('120'),[operation,setOperation]=useState(''),
+ [visible,setVisible]=useState(true);
+ if(!excel&&!cad)return null;
+ const names=excel?['Home','Insert','Page Layout','Formulas','Data','Review','View']:['Home','Insert','Annotate','Parametric','View','Manage','Output'];
+ const tools=excel?['Font','Alignment','Number','Format','AutoSum','Sort & Filter']:['Line','Polyline','Circle','Move','Copy','Rotate','Layers','Dimension'];
+ const descriptions:Record<string,string>={
+  Home:excel?'Podstawowe formaty, komórki i wyrównanie.':'Rysowanie, modyfikacja, warstwy i opisy.',
+  Insert:excel?'Tabele, wykresy i obiekty.':'Bloki i odnośniki zewnętrzne.',
+  Annotate:'Wymiary, tekst i strzałki opisowe.',
+  Parametric:'Więzy i warunki geometrii w wersjach obsługujących funkcję.',
+  View:'Sterowanie widokiem bez zmiany wymiarów w modelu.',
+  Manage:'Warstwy, ustawienia i organizacja projektu.',
+  Output:'Wydruk i eksport arkusza z kontrolą skali.',
+  'Page Layout':'Układ strony, marginesy i wydruk.',
+  Formulas:'Wpisywanie i kontrola formuł oraz zależności między komórkami.',
+  Data:'Sortowanie, filtrowanie, import i walidacja danych.',
+  Review:'Komentarze i przegląd dokumentu.'
+ };
+ const n=Number(qty.replace(',','.')),v=Number(price.replace(',','.')),result=Number.isFinite(n*v)?(n*v).toFixed(2):'BŁĄD';
+ return <View style={{borderRadius:13,overflow:'hidden',borderWidth:1,borderColor:'#c3d8cb',marginBottom:13}}>
+  <View style={{padding:13,backgroundColor:'#e9f3e7',gap:4}}>
+   <Text style={{fontSize:16,fontWeight:'900',color:'#184d36'}}>Interfejs {excel?'Excela':'AutoCAD-a'} — ćwiczenie</Text>
+   <Text style={{fontSize:12,color:'#476450',lineHeight:19}}>Klikaj zakładki i narzędzia, aby poznać ich funkcje. Poniższe pole robocze służy do ćwiczeń.</Text>
+  </View>
+  <View style={{backgroundColor:excel?'#ecf0ed':'#1e2a35',padding:10,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+   <Text style={{color:excel?'#265338':'#d6e6ef',fontWeight:'800',fontSize:12}}>{excel?'Excel · Book1.xlsx':'AutoCAD LT 2025 · Project.dwg'}</Text>
+   <Pressable accessibilityRole="button" onPress={()=>setVisible(x=>!x)} style={{paddingHorizontal:7,paddingVertical:3}}>
+    <Text style={{color:excel?'#265338':'#d6e6ef'}}>{visible?'−':'+'}</Text>
+   </Pressable>
+  </View>
+  {visible&&<>
+   <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{backgroundColor:excel?'#f7faf6':'#2d394a'}} contentContainerStyle={{paddingHorizontal:6,alignItems:'center'}}>
+    {names.map((t,i)=><Pressable key={t} accessibilityRole="button" onPress={()=>{setTab(i);setOperation('Zakładka '+t)}} style={{padding:11,borderBottomWidth:tab===i?3:0,borderColor:excel?'#27804e':'#b9d0e5'}}>
+     <Text style={{color:excel?'#263f31':'#e8f1f6',fontWeight:tab===i?'900':'500',fontSize:mobile?10:12}}>{t}</Text>
+    </Pressable>)}
+   </ScrollView>
+   <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{backgroundColor:excel?'#edf2ed':'#40516a'}} contentContainerStyle={{gap:5,padding:7}}>
+    {tools.map(t=><Pressable key={t} accessibilityRole="button" onPress={()=>setOperation(t)} style={{padding:10,minWidth:mobile?58:83,backgroundColor:excel?'white':'#4f6580',borderRadius:4,borderWidth:1,borderColor:excel?'#d1dcd3':'#6a7891'}}>
+     <Text style={{color:excel?'#2f533b':'#fff',textAlign:'center',fontSize:11,fontWeight:'700'}}>{t}</Text>
+    </Pressable>)}
+   </ScrollView>
+   {excel?<View style={{backgroundColor:'#fff',padding:7,gap:5}}>
+    <View style={{flexDirection:'row',alignItems:'center',gap:8}}>
+     <Text style={{fontSize:12,color:'#244d36',backgroundColor:'#e8f1e9',padding:9,fontWeight:'800'}}>E2</Text>
+     <Text style={{fontSize:15,fontWeight:'900',color:'#346e4e'}}>fx</Text>
+     <Text style={{flex:1,borderWidth:1,borderColor:'#dce6df',padding:9,fontSize:12,color:'#28513b'}}>=C2*D2 → {result}</Text>
+    </View>
+    <View style={{flexDirection:'row'}}>
+     {['','A','B','C','D','E'].map((x,i)=><View key={i} style={{flex:1,backgroundColor:'#e4ede6',paddingVertical:8,borderWidth:.5,borderColor:'#d0ddd3'}}><Text style={{textAlign:'center',color:'#31543d',fontSize:11,fontWeight:'800'}}>{x}</Text></View>)}
+    </View>
+    {[1,2,3,4].map(r=><View key={r} style={{flexDirection:'row'}}>
+     {Array.from({length:6},(_,c)=>{let val=r===1?['1','Materiał','Projekt','Ilość','Cena','Wartość'][c]:r===2?['2','Farba','Projekt','', '',result][c]:[String(r),'','','','',''][c];
+      return <View key={c} style={{flex:1,borderWidth:.5,borderColor:'#d6dfd8',minHeight:mobile?35:42,padding:3,justifyContent:'center'}}>
+       {r===2&&c===3?<TextInput value={qty} keyboardType="numeric" onChangeText={setQty} style={{fontSize:12,color:'#173e29'}}/>:r===2&&c===4?<TextInput value={price} keyboardType="numeric" onChangeText={setPrice} style={{fontSize:12,color:'#173e29'}}/>:<Text numberOfLines={1} style={{color:'#2e4d37',fontSize:mobile?9:11}}>{val}</Text>}
+      </View>})}
+    </View>)}
+    <Text style={{fontSize:11,color:'#4e6958',padding:7}}>Sheet1    +    Zmień ilość i cenę: komórka E2 przelicza się automatycznie.</Text>
+   </View>:<View style={{backgroundColor:'#202730',padding:8}}>
+    <Pressable onPress={()=>setOperation('Model Space: tu rysujesz geometrię w jednostkach projektu.')} accessibilityRole="button" style={{height:mobile?180:230,backgroundColor:'#1c242c',alignItems:'center',justifyContent:'center',borderColor:'#42586a',borderWidth:1}}>
+     <View style={{width:'63%',height:'56%',borderWidth:2,borderColor:'#85bce0',alignItems:'center',justifyContent:'center'}}><View style={{width:'60%',height:'50%',borderWidth:1,borderColor:'#f1b16e'}}/></View>
+     <Text style={{color:'#b9d4dc',fontSize:11,position:'absolute',bottom:7,left:7}}>Model Space    X →  Y ↑</Text>
+    </Pressable>
+    <Pressable onPress={()=>setOperation('Command line: wpisz polecenie LINE i wskaż współrzędne punktów.')} style={{backgroundColor:'#aeb9bd',padding:10,marginTop:7}}><Text style={{color:'#202c34',fontSize:11}}>Command: {operation||'Type a command'}</Text></Pressable>
+    <View style={{flexDirection:'row',gap:6,marginTop:6}}>
+     {['MODEL','LAYOUT 1'].map(x=><Pressable key={x} onPress={()=>setOperation(x==='MODEL'?'Model: rzeczywista geometria':'Layout: przygotowanie arkusza i skali wydruku')} style={{backgroundColor:'#42576b',padding:8,borderRadius:3}}><Text style={{color:'white',fontSize:11}}>{x}</Text></Pressable>)}
+    </View>
+   </View>}
+   <View style={{padding:12,backgroundColor:'#f0f5ef',gap:5}}>
+    <Text style={{fontSize:13,color:'#26533a',fontWeight:'900'}}>{operation?'Wybrano: '+operation:'Wybierz kartę albo narzędzie'}</Text>
+    <Text style={{fontSize:12,color:'#45634e',lineHeight:18}}>{descriptions[names[tab]]||'Przypisz polecenie do celu i sprawdź wynik.'}</Text>
+    <Text style={{fontSize:12,color:'#345943',lineHeight:18}}>{excel?'Zadanie: ustaw C2 = 3, D2 = 120 i sprawdź, dlaczego E2 daje 360.':'Zadanie: znajdź Line, Layers, Command line oraz zakładki Model i Layout. Wykonaj prostokąt w skali rzeczywistej.'}</Text>
+   </View>
+  </>}
+ </View>;
+}
 export const hasSoftwareMenuLab=(slug:string)=>Object.prototype.hasOwnProperty.call(modules,slug);
 export default function SoftwareMenuLab({slug}:{slug:string}){
  const m=modules[slug];const [selected,setSelected]=useState(0);
@@ -93,6 +173,7 @@ export default function SoftwareMenuLab({slug}:{slug:string}){
     <Text style={{fontSize:13,fontWeight:'800',color:'#234733'}}>{x.tab}</Text>
    </Pressable>)}
   </ScrollView>
+  <DesktopWorkspace slug={slug}/>
   <View style={{padding:15,gap:11}}>
    <Text style={{fontWeight:'900',color:'#214c34',fontSize:15}}>{v.path}</Text>
    <Text style={{color:'#365947',fontSize:14,lineHeight:22}}>{v.purpose}</Text>
