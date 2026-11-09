@@ -1,0 +1,371 @@
+{
+  "slug": "introligator-tradycja",
+  "lessons": [
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 0,
+      "title_pl": "1. Budowa książki: blok, składki, grzbiet, okładki i wyklejki",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Książka to układ współpracujących części",
+            "text": "Blok książki (text block) zawiera zszyte lub inaczej połączone karty. Składka (signature) to zespół złożonych arkuszy. Grzbiet stanowi krawędź łączenia; okładka twarda składa się z tektury i materiału pokryciowego. Wyklejki łączą lub wykańczają blok i oprawę, ale ich funkcja zależy od konstrukcji książki."
+          },
+          {
+            "heading": "Rozpoznaj przegub i zewnętrzny staw",
+            "text": "Przegub (hinge) to elastyczna strefa wewnętrzna między okładką a blokiem, dzięki której książka może się otwierać. Zewnętrzny joint jest jego odpowiednikiem w oprawie. Kiedy brakuje odpowiedniego miejsca na ruch, otwieranie okładki obciąża wyklejki lub zewnętrzną okleinę."
+          },
+          {
+            "heading": "Zrozum krawędzie i margines",
+            "text": "Krawędź przednia (fore-edge) jest przeciwna do grzbietu, head to góra bloku, tail to dół. Gutter to wewnętrzny margines widoczny po otwarciu książki. Przy projekcie trzeba przewidzieć, ile treści zostanie blisko grzbietu, aby druk nie znikał w zagłębieniu."
+          },
+          {
+            "heading": "Sytuacja z naprawy",
+            "text": "Czytelnik mówi 'kartki odpadają', ale po oględzinach okazuje się, że blok jest dobrze zszyty, a odpadła jedna okładka przy przegubie. To nie jest ta sama usterka co rozerwany grzbiet bloku: diagnoza musi wskazywać konkretną część."
+          },
+          {
+            "heading": "Ćwiczenie podstawowe",
+            "text": "Narysuj książkę w trzech widokach: zamkniętą z boku, otwartą i przekrój grzbietu. Podpisz 10 terminów, a następnie zaznacz różnymi kolorami części podtrzymujące blok, łączące z okładką i umożliwiające ruch."
+          }
+        ],
+        "illustration": "craft-introligator-tradycja",
+        "references": [
+          {
+            "label": "Materiały do dalszego sprawdzenia",
+            "url": "https://guides.library.utoronto.ca/c.php?g=747378&p=5418809"
+          }
+        ],
+        "learning": {
+          "intro": "Blok książki (text block) zawiera zszyte lub inaczej połączone karty. Składka (signature) to zespół złożonych arkuszy. Grzbiet stanowi krawędź łączenia; okładka twarda składa się z tektury i materiału pokryciowego. Wyklejki łączą lub wykańczają blok i oprawę, ale ich funkcja zależy od konstrukcji książki.",
+          "situation": "Czytelnik mówi 'kartki odpadają', ale po oględzinach okazuje się, że blok jest dobrze zszyty, a odpadła jedna okładka przy przegubie. To nie jest ta sama usterka co rozerwany grzbiet bloku: diagnoza musi wskazywać konkretną część.",
+          "question": "Okładka odchyla się, lecz blok pozostaje zszyty. Która strefa konstrukcji prawdopodobnie wymaga oględzin?",
+          "options": [
+            "Głównie barwa papieru na przedniej krawędzi.",
+            "Wyłącznie numeracja ostatniej strony.",
+            "Przegub między blokiem a okładką i jego elementy łączące.",
+            "Wyłącznie wysokość liter na tytułowej stronie."
+          ],
+          "correct": 2,
+          "example": "Przegub między blokiem a okładką i jego elementy łączące.",
+          "explanation": "Przegub odpowiada za ruch i połączenie okładki z blokiem; sama integralność szycia nie gwarantuje stanu przegubu.",
+          "feedback": [
+            "Nie. Przegub odpowiada za ruch i połączenie okładki z blokiem; sama integralność szycia nie gwarantuje stanu przegubu.",
+            "Nie. Przegub odpowiada za ruch i połączenie okładki z blokiem; sama integralność szycia nie gwarantuje stanu przegubu.",
+            "Tak. Przegub odpowiada za ruch i połączenie okładki z blokiem; sama integralność szycia nie gwarantuje stanu przegubu.",
+            "Nie. Przegub odpowiada za ruch i połączenie okładki z blokiem; sama integralność szycia nie gwarantuje stanu przegubu."
+          ],
+          "task": "Narysuj książkę w trzech widokach: zamkniętą z boku, otwartą i przekrój grzbietu. Podpisz 10 terminów, a następnie zaznacz różnymi kolorami części podtrzymujące blok, łączące z okładką i umożliwiające ruch."
+        }
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 1,
+      "title_pl": "2. Materiałoznawstwo: kierunek włókien, papier, tektura i płótno",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Kierunek włókien naprawdę ma znaczenie",
+            "text": "W papierze i tekturze włókna mają dominujący kierunek, który wpływa na zachowanie przy zginaniu oraz zmianach wilgotności. W oprawie zwykle dąży się do ułożenia kierunku włókien równolegle do grzbietu. Przy nietrafionym układzie karty mogą trudniej się otwierać, a okładka wykazywać wypaczenie."
+          },
+          {
+            "heading": "Tektura, papier i płótno pracują inaczej",
+            "text": "Tektura introligatorska nadaje sztywność, papier wyklejkowy jest elastyczną częścią bloku, a płótno pokryciowe współpracuje z podłożem przez warstwę kleju. Grubość i sztywność dobiera się do formatu i ciężaru książki; nadmiernie sztywna okładka może nie współpracować z delikatnym blokiem."
+          },
+          {
+            "heading": "Jak rozpoznać kierunek w prostym teście",
+            "text": "Do bezpiecznej próbki papieru wykonaj delikatne zgięcie w obu kierunkach bez tworzenia trwałego zagięcia. Kierunek łatwiejszego uginania może wskazać przebieg włókien, ale dla krytycznych prac dane dostawcy i wiarygodna metoda testu są ważniejsze niż zgadywanie."
+          },
+          {
+            "heading": "Przykład źle dobranej tektury",
+            "text": "Dwie okładki mają 220 × 160 mm, ale w jednej kierunek włókien biegnie poprzecznie do grzbietu. Pod wpływem zmian wilgotności może wykazywać inne odkształcenie i stawiać opór przy otwieraniu. Oznaczenie kierunku w magazynie zmniejsza liczbę takich pomyłek."
+          },
+          {
+            "heading": "Ćwiczenie materiałowe",
+            "text": "Porównaj trzy próbki: papier o znanym kierunku włókien, tekturę introligatorską i płótno. Zaznacz strzałką kierunek w każdym materiale, zapisz jego funkcję w książce i zaproponuj kryterium odrzucenia, np. deformację lub niewłaściwą sztywność."
+          }
+        ],
+        "illustration": "material-introligator-tradycja",
+        "references": [
+          {
+            "label": "Materiały do dalszego sprawdzenia",
+            "url": "https://guides.library.utoronto.ca/c.php?g=747378&p=5418809"
+          }
+        ],
+        "learning": {
+          "intro": "W papierze i tekturze włókna mają dominujący kierunek, który wpływa na zachowanie przy zginaniu oraz zmianach wilgotności. W oprawie zwykle dąży się do ułożenia kierunku włókien równolegle do grzbietu. Przy nietrafionym układzie karty mogą trudniej się otwierać, a okładka wykazywać wypaczenie.",
+          "situation": "Dwie okładki mają 220 × 160 mm, ale w jednej kierunek włókien biegnie poprzecznie do grzbietu. Pod wpływem zmian wilgotności może wykazywać inne odkształcenie i stawiać opór przy otwieraniu. Oznaczenie kierunku w magazynie zmniejsza liczbę takich pomyłek.",
+          "question": "Jak zwykle orientuje się kierunek włókien papieru i tektury w oprawie książkowej?",
+          "options": [
+            "Równolegle do grzbietu, by materiał odpowiednio pracował przy otwieraniu.",
+            "Poprzecznie do grzbietu, bo zawsze daje mniejszą deformację.",
+            "Losowo, bo kierunek włókien nie wpływa na sztywność i zachowanie.",
+            "Wyłącznie według koloru zewnętrznej okleiny."
+          ],
+          "correct": 0,
+          "example": "Równolegle do grzbietu, by materiał odpowiednio pracował przy otwieraniu.",
+          "explanation": "W większości prac introligatorskich orientacja równoległa do grzbietu ogranicza problemy z otwieraniem i odkształcaniem bloku.",
+          "feedback": [
+            "Tak. W większości prac introligatorskich orientacja równoległa do grzbietu ogranicza problemy z otwieraniem i odkształcaniem bloku.",
+            "Nie. W większości prac introligatorskich orientacja równoległa do grzbietu ogranicza problemy z otwieraniem i odkształcaniem bloku.",
+            "Nie. W większości prac introligatorskich orientacja równoległa do grzbietu ogranicza problemy z otwieraniem i odkształcaniem bloku.",
+            "Nie. W większości prac introligatorskich orientacja równoległa do grzbietu ogranicza problemy z otwieraniem i odkształcaniem bloku."
+          ],
+          "task": "Porównaj trzy próbki: papier o znanym kierunku włókien, tekturę introligatorską i płótno. Zaznacz strzałką kierunek w każdym materiale, zapisz jego funkcję w książce i zaproponuj kryterium odrzucenia, np. deformację lub niewłaściwą sztywność."
+        }
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 2,
+      "title_pl": "3. Narzędzia introligatora: kostka, szydło, igła, prasa",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Narzędzia to etapy procesu",
+            "text": "Kostka introligatorska (bone folder) służy do dokładnego zaginania i wygładzania. Szydło umożliwia przygotowanie otworów pod szycie składek, igła i nić wykonują połączenie, prasa stabilizuje elementy podczas właściwych operacji. Nóż lub gilotyna służy do cięcia, ale stanowi osobną kategorię ryzyka."
+          },
+          {
+            "heading": "Nie myl docisku z cięciem",
+            "text": "Prasa może utrzymywać równą geometrię lub pomagać w odpowiednio zaplanowanym procesie klejenia. Nie zastępuje noża do obrównania bloku. Zbyt silny docisk na niewłaściwych podkładkach może pozostawić ślad na powierzchni okładki i uszkodzić delikatny papier."
+          },
+          {
+            "heading": "Kleje i pędzle",
+            "text": "Pędzel służy do równomiernego rozprowadzania dobranego kleju na określonej powierzchni. Wybór kleju zależy od materiałów, elastyczności i przeznaczenia. Kleje stosowane do tanich notesów nie są automatycznie odpowiednie do konserwacji historycznego obiektu."
+          },
+          {
+            "heading": "Bezpieczeństwo ręcznej pracy",
+            "text": "Narzędzia z ostrzami i szydła przechowuj tak, aby ostrze nie było skierowane do dłoni. Papier powinien mieć stabilne podparcie, a cięcie z odpowiednią prowadnicą. Duże gilotyny i prasy mechaniczne obsługują jedynie osoby przygotowane, zgodnie z procedurą pracowni."
+          },
+          {
+            "heading": "Ćwiczenie z etapami",
+            "text": "Przygotuj kartę siedmiu narzędzi: nazwa, operacja, rezultat, punkt kontroli, sposób przechowywania. Na osobnym rysunku opisz kolejność formowania zagięcia, przygotowania otworów i zszycia prostej składki z papieru ćwiczeniowego."
+          }
+        ],
+        "illustration": "technique-introligator-tradycja",
+        "references": [
+          {
+            "label": "Materiały do dalszego sprawdzenia",
+            "url": "https://chinapreservationtutorial.library.cornell.edu/content/basic-remedial-treatment/"
+          }
+        ],
+        "learning": {
+          "intro": "Kostka introligatorska (bone folder) służy do dokładnego zaginania i wygładzania. Szydło umożliwia przygotowanie otworów pod szycie składek, igła i nić wykonują połączenie, prasa stabilizuje elementy podczas właściwych operacji. Nóż lub gilotyna służy do cięcia, ale stanowi osobną kategorię ryzyka.",
+          "situation": "Narzędzia z ostrzami i szydła przechowuj tak, aby ostrze nie było skierowane do dłoni. Papier powinien mieć stabilne podparcie, a cięcie z odpowiednią prowadnicą. Duże gilotyny i prasy mechaniczne obsługują jedynie osoby przygotowane, zgodnie z procedurą pracowni.",
+          "question": "Które narzędzie jest przeznaczone do wykonywania wyraźnych, kontrolowanych zagięć papieru?",
+          "options": [
+            "Prasa do okładek.",
+            "Kostka introligatorska.",
+            "Igła do szycia składek.",
+            "Szydło do otworów."
+          ],
+          "correct": 1,
+          "example": "Kostka introligatorska.",
+          "explanation": "Kostka introligatorska pomaga kontrolować linię i gładkość zgięcia; pozostałe narzędzia służą innym operacjom.",
+          "feedback": [
+            "Nie. Kostka introligatorska pomaga kontrolować linię i gładkość zgięcia; pozostałe narzędzia służą innym operacjom.",
+            "Tak. Kostka introligatorska pomaga kontrolować linię i gładkość zgięcia; pozostałe narzędzia służą innym operacjom.",
+            "Nie. Kostka introligatorska pomaga kontrolować linię i gładkość zgięcia; pozostałe narzędzia służą innym operacjom.",
+            "Nie. Kostka introligatorska pomaga kontrolować linię i gładkość zgięcia; pozostałe narzędzia służą innym operacjom."
+          ],
+          "task": "Przygotuj kartę siedmiu narzędzi: nazwa, operacja, rezultat, punkt kontroli, sposób przechowywania. Na osobnym rysunku opisz kolejność formowania zagięcia, przygotowania otworów i zszycia prostej składki z papieru ćwiczeniowego."
+        }
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 3,
+      "title_pl": "4. Folio i składka: oblicz liczbę arkuszy i stron",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Strona to nie karta",
+            "text": "Jedna karta ma dwie strony (recto i verso). Jeden arkusz złożony raz tworzy dwie karty, czyli cztery strony. Gdy kilka takich arkuszy włożymy jeden w drugi, powstanie składka. W zależności od formatu i konstrukcji trzeba kontrolować kolejność stron przed szyciem."
+          },
+          {
+            "heading": "Obliczenie na konkretnej książce",
+            "text": "Załóż 64 strony wyraźnie ponumerowane. Jeden arkusz po jednokrotnym złożeniu daje cztery strony, więc potrzeba 64/4 = 16 arkuszy. Jeżeli w każdej składce znajdują się cztery arkusze, otrzymasz cztery składki po 16 stron. To przykład dla określonego sposobu składania, nie uniwersalna reguła dla każdego procesu drukarskiego."
+          },
+          {
+            "heading": "Dlaczego układ stron przed złożeniem jest inny",
+            "text": "W druku do składania numery stron muszą być rozmieszczone tak, aby po złożeniu i zszyciu tworzyły prawidłową kolejność. Nie należy drukować po prostu stron 1–64 kolejno na jednej stronie dużego arkusza. To zagadnienie impozycji (imposition), czyli rozplanowania stron na arkuszu."
+          },
+          {
+            "heading": "Przykład pomyłki",
+            "text": "Uczeń liczy 64 strony jako 64 arkusze i kupuje cztery razy za dużo papieru. Innym błędem jest ułożenie pojedynczych arkuszy tak, że po zszyciu strony 8 i 9 znajdują się w złej kolejności. Właśnie dlatego przed produkcją wykonuje się dummy, czyli makietę złożoną z pustych kartek."
+          },
+          {
+            "heading": "Ćwiczenie na papierze",
+            "text": "Przygotuj makietę jednej składki z czterech arkuszy A4 złożonych na pół. Ponumeruj po złożeniu 16 stron, następnie rozłóż i zaznacz, gdzie numery znajdują się na arkuszach. Powtórz obliczenie dla książki 96-stronicowej (24 arkusze po cztery strony)."
+          }
+        ],
+        "illustration": "mastery-introligator-tradycja",
+        "references": [
+          {
+            "label": "Materiały do dalszego sprawdzenia",
+            "url": "https://www.ibookbinding.com/wp-content/uploads/2014/10/July-2014-Inroductory-Lesson.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Jedna karta ma dwie strony (recto i verso). Jeden arkusz złożony raz tworzy dwie karty, czyli cztery strony. Gdy kilka takich arkuszy włożymy jeden w drugi, powstanie składka. W zależności od formatu i konstrukcji trzeba kontrolować kolejność stron przed szyciem.",
+          "situation": "Uczeń liczy 64 strony jako 64 arkusze i kupuje cztery razy za dużo papieru. Innym błędem jest ułożenie pojedynczych arkuszy tak, że po zszyciu strony 8 i 9 znajdują się w złej kolejności. Właśnie dlatego przed produkcją wykonuje się dummy, czyli makietę złożoną z pustych kartek.",
+          "question": "Książka ma 64 strony, a jeden arkusz złożony raz daje cztery strony. Ile arkuszy potrzeba w tym uproszczonym projekcie?",
+          "options": [
+            "8 arkuszy.",
+            "32 arkusze.",
+            "64 arkusze.",
+            "16 arkuszy."
+          ],
+          "correct": 3,
+          "example": "16 arkuszy.",
+          "explanation": "64/4=16 arkuszy; po jednym złożeniu każdy tworzy dwie karty, czyli cztery strony.",
+          "feedback": [
+            "Nie. 64/4=16 arkuszy; po jednym złożeniu każdy tworzy dwie karty, czyli cztery strony.",
+            "Nie. 64/4=16 arkuszy; po jednym złożeniu każdy tworzy dwie karty, czyli cztery strony.",
+            "Nie. 64/4=16 arkuszy; po jednym złożeniu każdy tworzy dwie karty, czyli cztery strony.",
+            "Tak. 64/4=16 arkuszy; po jednym złożeniu każdy tworzy dwie karty, czyli cztery strony."
+          ],
+          "task": "Przygotuj makietę jednej składki z czterech arkuszy A4 złożonych na pół. Ponumeruj po złożeniu 16 stron, następnie rozłóż i zaznacz, gdzie numery znajdują się na arkuszach. Powtórz obliczenie dla książki 96-stronicowej (24 arkusze po cztery strony)."
+        }
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 4,
+      "title_pl": "5. Szycie składek: grzbiet i punkty połączenia",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Blok musi być otwieralny i trwały",
+            "text": "Szycie łączy składki w jeden blok. Punkty szycia (sewing stations) rozmieszcza się z uwzględnieniem wysokości bloku i rodzaju oprawy. Materiał nici oraz sposób przechodzenia między składkami wpływają na trwałość i możliwość otwierania; to nie jest zwykłe przypadkowe przewlekanie kilku kartek."
+          },
+          {
+            "heading": "Od kolejności do geometrii",
+            "text": "Przed szyciem kontroluj liczbę składek, ich kolejność, kierunek włókien i prawidłową pozycję każdego zagięcia. Zbyt bliskie krawędzi dziurki mogą osłabić papier. Rozmieszczenie otworów musi być przewidziane w projekcie, a nie nanoszone na każdej składce zupełnie inaczej."
+          },
+          {
+            "heading": "Nie wszystkie książki są szyte",
+            "text": "Oprawy klejone łączą luźne kartki inaczej niż oprawy szyte. Nie należy twierdzić, że jedna technika jest zawsze najlepsza niezależnie od nakładu, formatu i sposobu użytkowania. Dla książki, która ma być często otwierana płasko, konstrukcja musi to umożliwiać."
+          },
+          {
+            "heading": "Przykład błędu",
+            "text": "W notesie z czterema składkami otwory w jednej wykonano przesunięte względem pozostałych. Po zszyciu grzbiet jest skręcony. Właściwa kontrola polega na porównaniu osi i punktów szycia przed rozpoczęciem łączenia."
+          },
+          {
+            "heading": "Ćwiczenie z makietą",
+            "text": "Na schemacie czterech składek zaznacz miejsce grzbietu, trzy punkty szycia i kierunek przebiegu nici. Porównaj ten projekt z blokiem klejonym z pojedynczych kartek. Wskaż po dwa zalety, ograniczenia i sytuacje typowego zastosowania obu konstrukcji."
+          }
+        ],
+        "illustration": "technique-introligator-tradycja",
+        "references": [
+          {
+            "label": "Materiały do dalszego sprawdzenia",
+            "url": "https://guides.library.utoronto.ca/c.php?g=747378&p=5418809"
+          }
+        ],
+        "learning": {
+          "intro": "Szycie łączy składki w jeden blok. Punkty szycia (sewing stations) rozmieszcza się z uwzględnieniem wysokości bloku i rodzaju oprawy. Materiał nici oraz sposób przechodzenia między składkami wpływają na trwałość i możliwość otwierania; to nie jest zwykłe przypadkowe przewlekanie kilku kartek.",
+          "situation": "W notesie z czterema składkami otwory w jednej wykonano przesunięte względem pozostałych. Po zszyciu grzbiet jest skręcony. Właściwa kontrola polega na porównaniu osi i punktów szycia przed rozpoczęciem łączenia.",
+          "question": "Dlaczego punkty szycia składek należy wyznaczać ze wspólnego szablonu?",
+          "options": [
+            "Aby poprawić kolor tuszu na stronach.",
+            "Aby uzyskać zgodne położenie otworów i prawidłowe ułożenie grzbietu.",
+            "Aby wyeliminować konieczność kontroli kolejności stron.",
+            "Aby zamienić szycie w technikę klejenia."
+          ],
+          "correct": 1,
+          "example": "Aby uzyskać zgodne położenie otworów i prawidłowe ułożenie grzbietu.",
+          "explanation": "Powtarzalne pozycje otworów pozwalają prawidłowo złożyć i zszyć blok bez jego skręcania.",
+          "feedback": [
+            "Nie. Powtarzalne pozycje otworów pozwalają prawidłowo złożyć i zszyć blok bez jego skręcania.",
+            "Tak. Powtarzalne pozycje otworów pozwalają prawidłowo złożyć i zszyć blok bez jego skręcania.",
+            "Nie. Powtarzalne pozycje otworów pozwalają prawidłowo złożyć i zszyć blok bez jego skręcania.",
+            "Nie. Powtarzalne pozycje otworów pozwalają prawidłowo złożyć i zszyć blok bez jego skręcania."
+          ],
+          "task": "Na schemacie czterech składek zaznacz miejsce grzbietu, trzy punkty szycia i kierunek przebiegu nici. Porównaj ten projekt z blokiem klejonym z pojedynczych kartek. Wskaż po dwa zalety, ograniczenia i sytuacje typowego zastosowania obu konstrukcji."
+        }
+      }
+    },
+    {
+      "course_slug": "introligator-tradycja",
+      "lesson_no": 5,
+      "title_pl": "6. Oprawa twarda: tektura, grzbietówka, wyklejka i okleina",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Case binding to konstrukcja osobnej okładki",
+            "text": "W typowej oprawie twardej okładka (case) powstaje osobno z tekturowych okładzin, grzbietówki i materiału pokryciowego. Następnie łączy się ją z przygotowanym blokiem, często za pomocą wyklejek. To inne rozwiązanie niż przyklejenie jednej sztywnej tektury bezpośrednio na grzbiet."
+          },
+          {
+            "heading": "Przegub musi mieć przestrzeń do ruchu",
+            "text": "Tekturowe okładziny nie powinny blokować otwierania książki. Między okładziną a strefą grzbietu przewiduje się miejsce na pracę przegubu, zależne od grubości tektury i projektu. Ustawienie pokrycia i kierunku włókien ma znaczenie dla zachowania kształtu."
+          },
+          {
+            "heading": "Rozpoznaj rolę wyklejki",
+            "text": "Wyklejka może pomagać przy połączeniu bloku z okładką i estetycznie wykańczać wnętrze oprawy. Nie jest tym samym co karta tytułowa. Niewłaściwy klej, nadmierna ilość wilgoci albo złe ułożenie wyklejki mogą spowodować odkształcenia, fałdy lub wyrywanie papieru przy otwieraniu."
+          },
+          {
+            "heading": "Przykład z wadą",
+            "text": "Wykonana okładka ma prawidłowy format, ale okładziny umieszczono zbyt blisko grzbietu. Po sklejeniu książka otwiera się z oporem, a wyklejka jest ciągnięta. Wymiar zewnętrzny nie wystarcza — trzeba sprawdzić ruch przegubu."
+          },
+          {
+            "heading": "Ćwiczenie rysunkowe",
+            "text": "Narysuj osobno blok i rozłożoną twardą oprawę. Zaznacz dwie okładziny, grzbietówkę, przerwy przegubowe, materiał pokryciowy i wyklejkę. Przygotuj protokół odbioru: geometria, czytelność, ruch, stan klejenia i krawędzie."
+          }
+        ],
+        "illustration": "mastery-introligator-tradycja",
+        "references": [
+          {
+            "label": "Materiały do dalszego sprawdzenia",
+            "url": "https://guides.library.utoronto.ca/c.php?g=747378&p=5418809"
+          }
+        ],
+        "learning": {
+          "intro": "W typowej oprawie twardej okładka (case) powstaje osobno z tekturowych okładzin, grzbietówki i materiału pokryciowego. Następnie łączy się ją z przygotowanym blokiem, często za pomocą wyklejek. To inne rozwiązanie niż przyklejenie jednej sztywnej tektury bezpośrednio na grzbiet.",
+          "situation": "Wykonana okładka ma prawidłowy format, ale okładziny umieszczono zbyt blisko grzbietu. Po sklejeniu książka otwiera się z oporem, a wyklejka jest ciągnięta. Wymiar zewnętrzny nie wystarcza — trzeba sprawdzić ruch przegubu.",
+          "question": "Oprawa wygląda równo, ale książkę trudno otworzyć, a wyklejka się napina. Co jest prawdopodobną przyczyną?",
+          "options": [
+            "Zbyt szeroka strefa przegubu w każdej możliwej książce.",
+            "Niedopasowanie konstrukcji przegubu lub odległości okładzin od grzbietu.",
+            "Zawsze zbyt mała liczba stron w bloku.",
+            "Wyłącznie błędny kolor okleiny."
+          ],
+          "correct": 1,
+          "example": "Niedopasowanie konstrukcji przegubu lub odległości okładzin od grzbietu.",
+          "explanation": "Połączenie bloku z okładką musi zostawić możliwość ruchu; prawidłowy wymiar zewnętrzny nie gwarantuje prawidłowego przegubu.",
+          "feedback": [
+            "Nie. Połączenie bloku z okładką musi zostawić możliwość ruchu; prawidłowy wymiar zewnętrzny nie gwarantuje prawidłowego przegubu.",
+            "Tak. Połączenie bloku z okładką musi zostawić możliwość ruchu; prawidłowy wymiar zewnętrzny nie gwarantuje prawidłowego przegubu.",
+            "Nie. Połączenie bloku z okładką musi zostawić możliwość ruchu; prawidłowy wymiar zewnętrzny nie gwarantuje prawidłowego przegubu.",
+            "Nie. Połączenie bloku z okładką musi zostawić możliwość ruchu; prawidłowy wymiar zewnętrzny nie gwarantuje prawidłowego przegubu."
+          ],
+          "task": "Narysuj osobno blok i rozłożoną twardą oprawę. Zaznacz dwie okładziny, grzbietówkę, przerwy przegubowe, materiał pokryciowy i wyklejkę. Przygotuj protokół odbioru: geometria, czytelność, ruch, stan klejenia i krawędzie."
+        }
+      }
+    }
+  ]
+}
