@@ -1,0 +1,149 @@
+{
+  "course_slug": "ekonomia-domowa-bez-dlugow",
+  "quiz": [
+    {
+      "lesson_no": 0,
+      "question": "Masz stałą wypłatę 6000 zł netto i 800 zł regularnej pracy dodatkowej. Zwrot podatku 2000 zł dostałeś raz w roku. Jaki wpływ jest najbezpieczniejszą podstawą miesięcznych stałych zobowiązań?",
+      "options": [
+        "8800 zł, bo zwrot także wpływa na konto",
+        "6000 zł, bo każda dodatkowa praca jest automatycznie niemożliwa",
+        "6800 zł, jeśli dodatkowy dochód rzeczywiście jest regularny i przewidywalny",
+        "2000 zł, bo zwrot podatku jest jedyną pewną kwotą"
+      ],
+      "correct": 2,
+      "explanation": "Stały dochód 6800 zł można przyjąć po zweryfikowaniu jego regularności; jednorazowego zwrotu nie należy traktować jako gwarantowanego miesięcznego wpływu.",
+      "feedback": [
+        "Nie. Stały dochód 6800 zł można przyjąć po zweryfikowaniu jego regularności; jednorazowego zwrotu nie należy traktować jako gwarantowanego miesięcznego wpływu.",
+        "Nie. Stały dochód 6800 zł można przyjąć po zweryfikowaniu jego regularności; jednorazowego zwrotu nie należy traktować jako gwarantowanego miesięcznego wpływu.",
+        "Tak. Stały dochód 6800 zł można przyjąć po zweryfikowaniu jego regularności; jednorazowego zwrotu nie należy traktować jako gwarantowanego miesięcznego wpływu.",
+        "Nie. Stały dochód 6800 zł można przyjąć po zweryfikowaniu jego regularności; jednorazowego zwrotu nie należy traktować jako gwarantowanego miesięcznego wpływu."
+      ]
+    },
+    {
+      "lesson_no": 1,
+      "question": "Koszty miesięczne: 2400 zł mieszkanie, 300 zł prąd, 1200 zł żywność, 600 zł transport. Ubezpieczenie wynosi 1200 zł rocznie. Jaki średni koszt miesięczny uwzględnia wszystkie te kwoty?",
+      "options": [
+        "4500 zł",
+        "4700 zł",
+        "5600 zł",
+        "4600 zł"
+      ],
+      "correct": 3,
+      "explanation": "Koszty bez ubezpieczenia to 4500 zł. 1200/12=100 zł, więc razem 4600 zł miesięcznie.",
+      "feedback": [
+        "Nie. Koszty bez ubezpieczenia to 4500 zł. 1200/12=100 zł, więc razem 4600 zł miesięcznie.",
+        "Nie. Koszty bez ubezpieczenia to 4500 zł. 1200/12=100 zł, więc razem 4600 zł miesięcznie.",
+        "Nie. Koszty bez ubezpieczenia to 4500 zł. 1200/12=100 zł, więc razem 4600 zł miesięcznie.",
+        "Tak. Koszty bez ubezpieczenia to 4500 zł. 1200/12=100 zł, więc razem 4600 zł miesięcznie."
+      ]
+    },
+    {
+      "lesson_no": 2,
+      "question": "Dwie oferty dotyczą pożyczki 10 000 zł. A: 10 rat × 1100 zł. B: 12 rat × 940 zł. Co można ustalić bez znajomości innych opłat?",
+      "options": [
+        "A wymaga łącznej spłaty niższej o 280 zł, mimo większej raty",
+        "B jest zawsze korzystniejsza, bo miesięczna rata jest niższa",
+        "A ma automatycznie niższe RRSO bez potrzeby obliczania",
+        "Obie mają identyczny koszt, bo kapitał jest ten sam"
+      ],
+      "correct": 0,
+      "explanation": "A: 11 000 zł. B: 11 280 zł. Różnica to 280 zł. Pełne porównanie RRSO i warunków wymaga dalszych danych.",
+      "feedback": [
+        "Tak. A: 11 000 zł. B: 11 280 zł. Różnica to 280 zł. Pełne porównanie RRSO i warunków wymaga dalszych danych.",
+        "Nie. A: 11 000 zł. B: 11 280 zł. Różnica to 280 zł. Pełne porównanie RRSO i warunków wymaga dalszych danych.",
+        "Nie. A: 11 000 zł. B: 11 280 zł. Różnica to 280 zł. Pełne porównanie RRSO i warunków wymaga dalszych danych.",
+        "Nie. A: 11 000 zł. B: 11 280 zł. Różnica to 280 zł. Pełne porównanie RRSO i warunków wymaga dalszych danych."
+      ]
+    },
+    {
+      "lesson_no": 3,
+      "question": "Produkt A: 750 g za 12 zł. Produkt B: 1 kg za 17 zł. Co wynika z porównania cen jednostkowych?",
+      "options": [
+        "B tańszy o 1 zł/kg",
+        "A tańszy o 1 zł/kg, pod warunkiem że produkt wykorzystamy",
+        "Oba kosztują 12 zł/kg",
+        "A kosztuje 9 zł/kg"
+      ],
+      "correct": 1,
+      "explanation": "A: 12/0,75=16 zł/kg. B:17 zł/kg. Jeżeli część A się zmarnuje, realny koszt wykorzystanej masy może być wyższy.",
+      "feedback": [
+        "Nie. A: 12/0,75=16 zł/kg. B:17 zł/kg. Jeżeli część A się zmarnuje, realny koszt wykorzystanej masy może być wyższy.",
+        "Tak. A: 12/0,75=16 zł/kg. B:17 zł/kg. Jeżeli część A się zmarnuje, realny koszt wykorzystanej masy może być wyższy.",
+        "Nie. A: 12/0,75=16 zł/kg. B:17 zł/kg. Jeżeli część A się zmarnuje, realny koszt wykorzystanej masy może być wyższy.",
+        "Nie. A: 12/0,75=16 zł/kg. B:17 zł/kg. Jeżeli część A się zmarnuje, realny koszt wykorzystanej masy może być wyższy."
+      ]
+    },
+    {
+      "lesson_no": 4,
+      "question": "Niezbędne koszty wynoszą 4500 zł/mies. Jaka rezerwa pokryje teoretycznie 3 miesiące takich kosztów?",
+      "options": [
+        "4500 zł",
+        "9000 zł",
+        "13 500 zł",
+        "27 000 zł"
+      ],
+      "correct": 2,
+      "explanation": "4500×3=13 500 zł. Wielkość poduszki to założenie planistyczne; odpowiedni poziom zależy od sytuacji osoby.",
+      "feedback": [
+        "Nie. 4500×3=13 500 zł. Wielkość poduszki to założenie planistyczne; odpowiedni poziom zależy od sytuacji osoby.",
+        "Nie. 4500×3=13 500 zł. Wielkość poduszki to założenie planistyczne; odpowiedni poziom zależy od sytuacji osoby.",
+        "Tak. 4500×3=13 500 zł. Wielkość poduszki to założenie planistyczne; odpowiedni poziom zależy od sytuacji osoby.",
+        "Nie. 4500×3=13 500 zł. Wielkość poduszki to założenie planistyczne; odpowiedni poziom zależy od sytuacji osoby."
+      ]
+    },
+    {
+      "lesson_no": 5,
+      "question": "Dwie osoby zarabiają 5000 i 3000 zł netto. Wspólne koszty 4000 zł dzielą proporcjonalnie do dochodu. Ile wynoszą wkłady?",
+      "options": [
+        "2000 i 2000 zł",
+        "3000 i 1000 zł",
+        "1500 i 2500 zł przypisane odpowiednio pierwszej i drugiej osobie",
+        "2500 i 1500 zł, odpowiednio dla pierwszej i drugiej osoby"
+      ],
+      "correct": 3,
+      "explanation": "Udziały to 5/8 i 3/8, więc 2500 i 1500 zł. To tylko jeden możliwy model porozumienia.",
+      "feedback": [
+        "Nie. Udziały to 5/8 i 3/8, więc 2500 i 1500 zł. To tylko jeden możliwy model porozumienia.",
+        "Nie. Udziały to 5/8 i 3/8, więc 2500 i 1500 zł. To tylko jeden możliwy model porozumienia.",
+        "Nie. Udziały to 5/8 i 3/8, więc 2500 i 1500 zł. To tylko jeden możliwy model porozumienia.",
+        "Tak. Udziały to 5/8 i 3/8, więc 2500 i 1500 zł. To tylko jeden możliwy model porozumienia."
+      ]
+    },
+    {
+      "lesson_no": 6,
+      "question": "Dochód 5300 zł, niezbędne koszty 4600 zł, raty 1200 zł. Jaki jest wynik miesięczny przed wydatkami opcjonalnymi?",
+      "options": [
+        "Deficyt 500 zł",
+        "Nadwyżka 700 zł",
+        "Nadwyżka 500 zł",
+        "Deficyt 1200 zł"
+      ],
+      "correct": 0,
+      "explanation": "5300−4600−1200=−500 zł. Nie należy maskować deficytu nowym kredytem bez planu wyjścia.",
+      "feedback": [
+        "Tak. 5300−4600−1200=−500 zł. Nie należy maskować deficytu nowym kredytem bez planu wyjścia.",
+        "Nie. 5300−4600−1200=−500 zł. Nie należy maskować deficytu nowym kredytem bez planu wyjścia.",
+        "Nie. 5300−4600−1200=−500 zł. Nie należy maskować deficytu nowym kredytem bez planu wyjścia.",
+        "Nie. 5300−4600−1200=−500 zł. Nie należy maskować deficytu nowym kredytem bez planu wyjścia."
+      ]
+    },
+    {
+      "lesson_no": 7,
+      "question": "Budżet na żywność: 1200 zł, wydatki rzeczywiste: 1450 zł. O ile przekroczono plan w % budżetu?",
+      "options": [
+        "O 17,2%",
+        "O około 20,8%",
+        "O 25,0%",
+        "O około 8,3%"
+      ],
+      "correct": 1,
+      "explanation": "Różnica 250 zł, a 250/1200≈20,83%. Odchylenie trzeba zapisać i wyjaśnić, nie ukrywać.",
+      "feedback": [
+        "Nie. Różnica 250 zł, a 250/1200≈20,83%. Odchylenie trzeba zapisać i wyjaśnić, nie ukrywać.",
+        "Tak. Różnica 250 zł, a 250/1200≈20,83%. Odchylenie trzeba zapisać i wyjaśnić, nie ukrywać.",
+        "Nie. Różnica 250 zł, a 250/1200≈20,83%. Odchylenie trzeba zapisać i wyjaśnić, nie ukrywać.",
+        "Nie. Różnica 250 zł, a 250/1200≈20,83%. Odchylenie trzeba zapisać i wyjaśnić, nie ukrywać."
+      ]
+    }
+  ]
+}
