@@ -1,0 +1,283 @@
+{
+  "course_slug": "opieka-seniorzy",
+  "review_status": "review_needed",
+  "reference": "https://www.helsenorge.no/medisiner/sikker-bruk-av-medisiner-nar-du-er-eldre",
+  "lessons": [
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 0,
+      "title_pl": "Potrzeby seniora i szacunek",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Starsza osoba nie jest jednorodną kategorią: różnią ją stan zdrowia, wartości, sprawność i oczekiwania. Pomoc powinna wspierać samodzielne decyzje, a nie odbierać kontrolę nad codziennym życiem. Ograniczenia słuchu lub wzroku mogą wymagać innego sposobu komunikacji, bez infantylizowania."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Przy pierwszym spotkaniu zapytaj o preferowaną formę zwracania się, zwyczaje, trudności i priorytety. Zapisuj ustalenia za zgodą zainteresowanej osoby; odróżniaj obserwację od diagnozy. Wyjaśnij zakres własnej roli oraz sytuacje wymagające kontaktu ze specjalistą."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Senior sam chce zdecydować o kolejności porannych czynności. Opiekun próbuje wszystko ustalić bez rozmowy, ponieważ uważa, że jest szybciej."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zbuduj formularz pierwszego kontaktu: potrzeby, decyzje pozostawione seniorowi, ograniczenia i zgody."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 1,
+      "title_pl": "Komunikacja i aktywne słuchanie",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Dobra rozmowa wymaga dostosowania tempa, głośności i jednoznaczności przekazu. Przy trudnościach słuchowych najpierw sprawdź czy senior widzi rozmówcę i ma potrzebne urządzenie. Powtarzanie głośniej bez zmiany sposobu mówienia nie zawsze pomaga, a zawstydzanie może ograniczać zaufanie."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Przećwicz trzy wersje jednego komunikatu: polecenie, otwarte pytanie i uzgodniona propozycja. Daj czas na odpowiedź, unikaj kończenia zdań za rozmówcę, sprawdź własnymi słowami czy ustalenie zostało dobrze zrozumiane."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Senior pyta trzeci raz o plan dnia. Opiekun mówi 'już mówiłem', zamiast sprawdzić, czy informacja dotarła i czy potrzebna jest pisemna przypominajka."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Napisz scenariusz spokojnej rozmowy przy zmianie planu wizyty, z jednym pytaniem kontrolnym i możliwością odmowy."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 2,
+      "title_pl": "Bezpieczeństwo w domu",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Upadki mogą być związane z przeszkodami, złym oświetleniem, nieodpowiednim obuwiem i trudnościami w poruszaniu, ale nie wolno sprowadzać ich do jednego powodu. Dodatkowo trzeba rozpoznawać zagrożenia związane z kuchenką, schodami, przewodami i dostępem do pomocy."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Zrób mapę mieszkania z punktami ryzyka: przejścia, łazienka, oświetlenie nocne i telefon alarmowy. Zmiany uzgadniaj z seniorem; trening równowagi czy dobór pomocy technicznych powinien odpowiadać jego możliwościom i zaleceniom fachowym."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "W korytarzu leży luźny chodnik, o który senior już się potknął. Sama prośba, żeby uważał, nie usuwa źródła ryzyka."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Sporządź przegląd pięciu miejsc i przypisz do każdego zmianę otoczenia, właściciela zadania i termin."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 3,
+      "title_pl": "Rytm dnia i samodzielność",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Utrzymanie sprawczości może obejmować samodzielne ubieranie się, wybór jedzenia i planowanie odpoczynku. Wykonanie czynności trwa czasami dłużej, ale pośpiech opiekuna nie zawsze uzasadnia wyręczanie. Jednocześnie należy rozpoznać sytuacje, gdy czynność może grozić upadkiem lub innym urazem."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Zaproponuj poranny plan obejmujący wybór ubioru, śniadanie i krótki spacer lub odpoczynek. Zostaw możliwość zmiany harmonogramu i dostosuj wyposażenie. Gdy pojawia się nowe ograniczenie funkcji, nie stawiaj diagnozy samodzielnie, lecz zgłoś obserwację właściwej osobie."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Babcia chce przygotować sobie śniadanie, lecz opiekun automatycznie odbiera jej wszystkie składniki i wykonuje zadanie za nią."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zaprojektuj trzy stopnie wsparcia przy przygotowaniu śniadania — od samego przygotowania otoczenia do większej pomocy."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 4,
+      "title_pl": "Odżywianie, nawodnienie i obserwacja",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Woda i posiłki mają znaczenie dla codziennego funkcjonowania, ale potrzeby są indywidualne i mogą zależeć od chorób, leków i ograniczeń połykania. Opiekun nie powinien samodzielnie narzucać uniwersalnych norm płynów ani diet leczniczych. Warto obserwować zmiany apetytu i masy ciała zgodnie z uzgodnionym planem."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Prowadź prosty dziennik z uzgodnionymi informacjami: godzina posiłku, co zjedzono, napoje, nowe trudności. Przy nagłych trudnościach z połykaniem, oznakach odwodnienia lub pogorszeniu stanu zwróć się o pomoc medyczną według pilności. Nie podawaj jedzenia osobie, która nie może bezpiecznie przełykać."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Senior dotychczas jadł normalnie, a od dwóch dni niemal nie pije i jest znacznie bardziej senny. Nie zakładaj, że to zwykły brak apetytu."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Ułóż wzór obserwacji żywienia bez stawiania diagnozy: co zanotować, kogo poinformować i kiedy działać pilnie."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 5,
+      "title_pl": "Wsparcie rodziny i opiekunów",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Długotrwała opieka wpływa na czas, sen, finanse i relacje opiekunów rodzinnych. Przeciążenie nie oznacza braku troski, ale może zwiększać liczbę błędów. Plan wsparcia powinien uwzględniać możliwości każdej osoby i regularnie ocenianą potrzebę profesjonalnej pomocy."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Przygotuj grafik tygodniowy z dyżurami, przerwami i kontaktem awaryjnym. Rozdziel zadania codzienne, logistyczne i związane z decyzjami medycznymi; osoba bez kompetencji nie powinna podejmować za lekarza decyzji o leczeniu."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Jedna osoba od miesiąca opiekuje się seniorem bez dnia wolnego i zaczyna pomijać ważne informacje przy przekazywaniu obowiązków."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zbuduj tabelę obowiązków na 7 dni z zastępstwem i punktem cotygodniowej oceny potrzeb."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 6,
+      "title_pl": "Sytuacje alarmowe i wzywanie pomocy",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Nagłe zaburzenia świadomości, ciężkie trudności w oddychaniu, silny ból w klatce piersiowej lub objawy udaru wymagają pilnej profesjonalnej pomocy. Opiekun nie powinien sam diagnozować ani opóźniać zgłoszenia, żeby najpierw wypełnić formularz. Numery alarmowe zależą od kraju."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Ustal aktualny numer ratunkowy kraju, adres i sposób wejścia do mieszkania. Podczas zgłoszenia podaj miejsce, co się dzieje, kiedy zaczęły się objawy i stan przytomności zgodnie z pytaniami dyspozytora. Postępuj według jego instrukcji."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Senior nagle przestaje wyraźnie mówić i ma osłabienie jednej strony ciała. Nie umawiaj spokojnej wizyty za tydzień."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Napisz bezpieczny schemat rozmowy z dyspozytorem i listę informacji o lokalizacji oraz rozpoczęciu objawów."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 7,
+      "title_pl": "Plan wsparcia i granice opiekuna",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Zakres opiekuna domowego może obejmować rozmowę, posiłki, organizację otoczenia i wspieranie codziennych zadań. Leki, czynności medyczne, decyzje o leczeniu i przetwarzanie wrażliwych danych wymagają właściwej podstawy, zgody, przeszkolenia i często profesjonalnych kompetencji."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Dla pięciu działań — zakupy, spacer, przypomnienie o umówionej wizycie, zmiana dawki leku, wykonanie iniekcji — oznacz, które są organizacyjne, a które wymagają medycznej odpowiedzialności. Zapisz granice umowy i procedurę przekazania niejasnych sytuacji."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Rodzina prosi opiekuna o zwiększenie dawki leku 'bo ostatnio pomagało'. Nie jest to samodzielna decyzja opiekuna."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przygotuj kartę zakresu usługi z przykładami zadań dozwolonych i wymagających skierowania do fachowca."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 8,
+      "title_pl": "Rozmowa o pomocy bez odbierania wyboru",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Przy proponowaniu wsparcia ważne są zgoda, możliwość odmowy, jasne informacje i poszanowanie codziennych preferencji. Stwierdzenie 'zrobimy tak, bo jesteś stary' nie jest uzasadnieniem. Trzeba jednak odróżniać zwykły wybór od sytuacji, w której istnieje bezpośrednie zagrożenie."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Ćwicz komunikat: 'Zauważyłem, że światło w korytarzu jest słabe; czy możemy wspólnie sprawdzić inne rozwiązanie?'. Następnie poproś o własny pomysł seniora i zaplanuj sprawdzenie, czy rozwiązanie jest wygodne."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Senior nie chce usunąć ulubionego dywanika, mimo ryzyka potknięcia. Jednostronne wyrzucenie rzeczy może wywołać utratę zaufania."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zaproponuj trzy kompromisy: stabilizacja, przemieszczenie albo alternatywne wyposażenie, oceniane wspólnie z seniorem."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 9,
+      "title_pl": "Leki i obowiązki opiekuna",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Wielolekowość zwiększa ryzyko pomyłek i interakcji. Aktualna lista leków od lekarza i prawidłowe oznaczenie preparatów są ważniejsze niż pamięć opiekuna. Zmianę dawkowania, odstawianie i łączenie leków z innymi środkami należy uzgadniać z uprawnionym fachowcem."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Ustal, gdzie przechowuje się aktualną listę i numery kontaktowe do lekarza lub apteki. Nie przekładaj tabletek do anonimowych pojemników ani nie domyślaj się dawki z koloru. Przy rozbieżności między opakowaniem a listą wstrzymaj nieuprawnione działanie i wyjaśnij sytuację."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Na kartce widnieje dawka '1 tabletka', a rodzina poleca dwie. Opiekun nie powinien sam rozstrzygać zmiany leczenia."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Wypełnij fikcyjny formularz rozbieżności: data, lek, zapis źródłowy, problem, kontakt z uprawnioną osobą, wynik."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 10,
+      "title_pl": "Kryzys opiekuna — szukaj wsparcia",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Wyczerpanie opiekuna może objawiać się zaburzeniami snu, drażliwością lub trudnościami z koncentracją. Nie jest rzetelne diagnozowanie wypalenia na podstawie jednego pytania. Potrzebna jest ocena bezpieczeństwa, odpowiedzialny podział obowiązków i dostęp do profesjonalnego wsparcia."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Na prostym tygodniowym planie zaznacz czas opieki, przerwy i obowiązki nieprzewidziane. Zdecyduj, które zadanie można przekazać, jaki kontakt awaryjny uruchomić oraz kiedy zaplanować konsultację. Nie opieraj planu wyłącznie na kolejnym wysiłku jednej osoby."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Opiekun od wielu tygodni śpi po cztery godziny, a następnie ma prowadzić seniora samochodem. Należy rozważyć bezpieczne zastępstwo."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przygotuj plan 48 godzin: bezpieczne przekazanie pilnych obowiązków, kontakty i odpoczynek."
+        }
+      ]
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 11,
+      "title_pl": "Plan wsparcia na kolejny miesiąc",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Plan wsparcia powinien uwzględniać preferencje seniora, jego możliwości, uzgodnione cele, osobę odpowiedzialną i sposób sprawdzenia postępu. Zbyt ogólny cel 'senior ma być szczęśliwy' nie pozwala ocenić skuteczności; jednocześnie nie należy sprowadzać jakości życia do jednej liczby."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Zaprojektuj trzy mierzalne działania, np. poprawa oświetlenia do konkretnej daty, ustalony kontakt ze specjalistą, spokojna codzienna aktywność zgodna z preferencjami. Co tydzień sprawdź wraz z seniorem, co działa, a co warto zmienić."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Plan zawiera 12 zadań, lecz żadna osoba nie odpowiada za ich wykonanie. Po miesiącu nadal nic nie zostało uzgodnione."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Stwórz tabelę: działanie, zgoda, osoba, termin, miernik oraz kolejny przegląd, z uwzględnieniem prawa do zmiany decyzji."
+        }
+      ]
+    }
+  ]
+}
