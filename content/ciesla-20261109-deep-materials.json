@@ -1,0 +1,585 @@
+{
+  "scope": "materials_science",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 20,
+      "title_pl": "21. Drzewo i drewno: korzenie, korona i przekrój pnia",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Drzewo jest żywym organizmem z korzeniami, pniem i koroną, drewno zaś materiałem powstającym w procesach wzrostu. Korzenie stabilizują roślinę i pobierają wodę oraz składniki mineralne, a korona uczestniczy w procesach fotosyntezy. Jako cieśla poznajesz ten związek, by rozumieć, dlaczego pień ma określoną budowę."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Na przekroju pnia można rozpoznać korę, łyko, kambium, drewno i rdzeń. W makroskopowej analizie widoczne są m.in. słoje i promienie rdzeniowe. Mikroskopowa budowa dotyczy komórek i ich funkcji; w drewnie liściastym ważne są naczynia przewodzące oraz włókna mechaniczne."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Ułóż trzy rysunki: całe drzewo, przekrój poprzeczny pnia i schemat komórek drewna. Oddziel to, co można rozpoznać gołym okiem, od struktur wymagających powiększenia. W przypadku drewna konstrukcyjnego liczy się również przebieg włókien."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Na przekroju dębu zauważasz wyraźne promienie rdzeniowe i strefy o różnej barwie. Sama barwa nie identyfikuje jednak wiarygodnie wszystkich parametrów konstrukcyjnych."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Narysuj przekrój kłody dębowej i podpisz korę, miazgę, słoje, biel, twardziel i rdzeń. W osobnej tabeli opisz funkcję korzenia oraz korony drzewa."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Drzewo jest żywym organizmem z korzeniami, pniem i koroną, drewno zaś materiałem powstającym w procesach wzrostu. Korzenie stabilizują roślinę i pobierają wodę oraz składniki mineralne, a korona uczestniczy w procesach fotosyntezy. Jako cieśla poznajesz ten związek, by rozumieć, dlaczego pień ma określoną budowę.",
+          "situation": "Na przekroju dębu zauważasz wyraźne promienie rdzeniowe i strefy o różnej barwie. Sama barwa nie identyfikuje jednak wiarygodnie wszystkich parametrów konstrukcyjnych.",
+          "example": "Narysuj przekrój kłody dębowej i podpisz korę, miazgę, słoje, biel, twardziel i rdzeń. W osobnej tabeli opisz funkcję korzenia oraz korony drzewa.",
+          "task": "Narysuj przekrój kłody dębowej i podpisz korę, miazgę, słoje, biel, twardziel i rdzeń. W osobnej tabeli opisz funkcję korzenia oraz korony drzewa.",
+          "question": "Które struktury należą do makroskopowej, widocznej budowy drewna?",
+          "options": [
+            "Wyłącznie chloroplasty komórki liścia.",
+            "Wyłącznie cząsteczki celulozy.",
+            "Rdzeń, słoje i promienie rdzeniowe widoczne w odpowiednim przekroju.",
+            "Wyłącznie czynniki pogodowe."
+          ],
+          "correct": 2,
+          "explanation": "Na przekroju pnia można rozpoznać korę, łyko, kambium, drewno i rdzeń. W makroskopowej analizie widoczne są m.in. słoje i promienie rdzeniowe. Mikroskopowa budowa dotyczy komórek i ich funkcji; w drewnie liściastym ważne są naczynia przewodzące oraz włókna mechaniczne.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Na przekroju pnia można rozpoznać korę, łyko, kambium, drewno i rdzeń. W makroskopowej analizie widoczne są m.in. słoje i promienie rdzeniowe. Mikroskopowa budowa dotyczy komórek i ich funkcji; w drewnie liściastym ważne są naczynia przewodzące oraz włókna mechaniczne.",
+            "To nie odpowiada właściwościom opisanego materiału. Na przekroju pnia można rozpoznać korę, łyko, kambium, drewno i rdzeń. W makroskopowej analizie widoczne są m.in. słoje i promienie rdzeniowe. Mikroskopowa budowa dotyczy komórek i ich funkcji; w drewnie liściastym ważne są naczynia przewodzące oraz włókna mechaniczne.",
+            "Tak. Na przekroju pnia można rozpoznać korę, łyko, kambium, drewno i rdzeń. W makroskopowej analizie widoczne są m.in. słoje i promienie rdzeniowe. Mikroskopowa budowa dotyczy komórek i ich funkcji; w drewnie liściastym ważne są naczynia przewodzące oraz włókna mechaniczne.",
+            "To nie odpowiada właściwościom opisanego materiału. Na przekroju pnia można rozpoznać korę, łyko, kambium, drewno i rdzeń. W makroskopowej analizie widoczne są m.in. słoje i promienie rdzeniowe. Mikroskopowa budowa dotyczy komórek i ich funkcji; w drewnie liściastym ważne są naczynia przewodzące oraz włókna mechaniczne."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 21,
+      "title_pl": "22. Biel, twardziel, fałszywa twardziel i gatunki",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Biel jest zewnętrzną strefą drewna, która w żywym drzewie uczestniczy w przewodzeniu i magazynowaniu, a twardziel tworzy się wewnątrz u części gatunków. Odmienna barwa i naturalna trwałość nie oznaczają automatycznie odrębnej klasy wytrzymałości konstrukcyjnej. W gatunkach bielastych rozróżnienie stref może być mniej wyraźne."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Fałszywa twardziel występuje u niektórych gatunków, przykładowo w buku, i nie jest dokładnie tym samym procesem co naturalne powstawanie twardzieli. Przy ocenie tarcicy należy rozpoznać, czy zmiana barwy jest wyłącznie cechą materiału, czy towarzyszy jej wada jakościowa."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Porównaj przekroje gatunków używanych w ciesielstwie: sosny, świerka, jodły oraz przykładowych gatunków liściastych. Nie dobieraj belek nośnych wyłącznie po gatunku, bez oznaczonej klasy i zgodności z projektem."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Nieoznakowaną belkę o ciemniejszej barwie ktoś uznaje za automatycznie mocniejszą niż jasną belkę z dokumentacją. Barwa twardzieli nie zastępuje danych technicznych."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Wpisz w tabeli: gatunek, typ budowy biel/twardziel, typowe zastosowanie i ważne ograniczenie. Rozpoznaj na ilustracji fałszywą twardziel jako odrębne zjawisko, nie automatyczny dowód zgnilizny."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Biel jest zewnętrzną strefą drewna, która w żywym drzewie uczestniczy w przewodzeniu i magazynowaniu, a twardziel tworzy się wewnątrz u części gatunków. Odmienna barwa i naturalna trwałość nie oznaczają automatycznie odrębnej klasy wytrzymałości konstrukcyjnej. W gatunkach bielastych rozróżnienie stref może być mniej wyraźne.",
+          "situation": "Nieoznakowaną belkę o ciemniejszej barwie ktoś uznaje za automatycznie mocniejszą niż jasną belkę z dokumentacją. Barwa twardzieli nie zastępuje danych technicznych.",
+          "example": "Wpisz w tabeli: gatunek, typ budowy biel/twardziel, typowe zastosowanie i ważne ograniczenie. Rozpoznaj na ilustracji fałszywą twardziel jako odrębne zjawisko, nie automatyczny dowód zgnilizny.",
+          "task": "Wpisz w tabeli: gatunek, typ budowy biel/twardziel, typowe zastosowanie i ważne ograniczenie. Rozpoznaj na ilustracji fałszywą twardziel jako odrębne zjawisko, nie automatyczny dowód zgnilizny.",
+          "question": "Co jest prawidłowe przy doborze drewna konstrukcyjnego?",
+          "options": [
+            "Wystarczy określić, czy kolor jest ciemny.",
+            "Trzeba połączyć rozpoznanie gatunku z udokumentowaną klasą i wymaganiami projektu.",
+            "Każda twardziel ma zawsze identyczną nośność.",
+            "Drewno bielaste zawsze nadaje się tylko do ozdób."
+          ],
+          "correct": 1,
+          "explanation": "Fałszywa twardziel występuje u niektórych gatunków, przykładowo w buku, i nie jest dokładnie tym samym procesem co naturalne powstawanie twardzieli. Przy ocenie tarcicy należy rozpoznać, czy zmiana barwy jest wyłącznie cechą materiału, czy towarzyszy jej wada jakościowa.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Fałszywa twardziel występuje u niektórych gatunków, przykładowo w buku, i nie jest dokładnie tym samym procesem co naturalne powstawanie twardzieli. Przy ocenie tarcicy należy rozpoznać, czy zmiana barwy jest wyłącznie cechą materiału, czy towarzyszy jej wada jakościowa.",
+            "Tak. Fałszywa twardziel występuje u niektórych gatunków, przykładowo w buku, i nie jest dokładnie tym samym procesem co naturalne powstawanie twardzieli. Przy ocenie tarcicy należy rozpoznać, czy zmiana barwy jest wyłącznie cechą materiału, czy towarzyszy jej wada jakościowa.",
+            "To nie odpowiada właściwościom opisanego materiału. Fałszywa twardziel występuje u niektórych gatunków, przykładowo w buku, i nie jest dokładnie tym samym procesem co naturalne powstawanie twardzieli. Przy ocenie tarcicy należy rozpoznać, czy zmiana barwy jest wyłącznie cechą materiału, czy towarzyszy jej wada jakościowa.",
+            "To nie odpowiada właściwościom opisanego materiału. Fałszywa twardziel występuje u niektórych gatunków, przykładowo w buku, i nie jest dokładnie tym samym procesem co naturalne powstawanie twardzieli. Przy ocenie tarcicy należy rozpoznać, czy zmiana barwy jest wyłącznie cechą materiału, czy towarzyszy jej wada jakościowa."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 22,
+      "title_pl": "23. Słoje, drewno wczesne i późne, gęstość",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Słój roczny powstaje w przebiegu wzrostu drzewa; w wielu gatunkach można wyróżnić drewno wczesne i późne, które różnią się budową komórkową. Zmieniający się udział tych stref może wpływać na gęstość i własności wytrzymałościowe. Nie należy jednak automatycznie przyznawać klasy konstrukcyjnej na podstawie samych szerokości słojów."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Gęstość jest stosunkiem masy do objętości. Dla drewna warto podawać stan wilgotności przy pomiarze, bo zmienia się zarówno masa wody, jak i wymiary. Wytrzymałość na zginanie, rozciąganie, ściskanie i twardość to różne właściwości mechaniczne."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Jeśli próbka waży 5,0 kg i ma objętość 0,008 m³, to gęstość w danym stanie wilgotności wynosi 625 kg/m³. Bez informacji o wilgotności i jakości próbki nie można przenieść wyniku bezpośrednio na wymiarowanie konstrukcji."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Porównujesz próbki z różnym udziałem drewna późnego. Sam wynik ważenia nie rozstrzyga o odporności na wszystkie obciążenia — ważny jest kierunek włókien i rodzaj wymaganej cechy."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Policz gęstość dwóch próbek: 4,8 kg/0,008 m³ = 600 kg/m³; 5,6 kg/0,008 m³ = 700 kg/m³. Wyjaśnij, dlaczego wyższa gęstość nie pozwala pominąć dokumentacji klasy drewna."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Słój roczny powstaje w przebiegu wzrostu drzewa; w wielu gatunkach można wyróżnić drewno wczesne i późne, które różnią się budową komórkową. Zmieniający się udział tych stref może wpływać na gęstość i własności wytrzymałościowe. Nie należy jednak automatycznie przyznawać klasy konstrukcyjnej na podstawie samych szerokości słojów.",
+          "situation": "Porównujesz próbki z różnym udziałem drewna późnego. Sam wynik ważenia nie rozstrzyga o odporności na wszystkie obciążenia — ważny jest kierunek włókien i rodzaj wymaganej cechy.",
+          "example": "Policz gęstość dwóch próbek: 4,8 kg/0,008 m³ = 600 kg/m³; 5,6 kg/0,008 m³ = 700 kg/m³. Wyjaśnij, dlaczego wyższa gęstość nie pozwala pominąć dokumentacji klasy drewna.",
+          "task": "Policz gęstość dwóch próbek: 4,8 kg/0,008 m³ = 600 kg/m³; 5,6 kg/0,008 m³ = 700 kg/m³. Wyjaśnij, dlaczego wyższa gęstość nie pozwala pominąć dokumentacji klasy drewna.",
+          "question": "Co jest niezbędne do poprawnego porównania gęstości dwóch próbek drewna?",
+          "options": [
+            "Wyłącznie jednakowy kolor próbek.",
+            "Znajomość masy, objętości oraz warunków, w tym wilgotności.",
+            "Wyłącznie liczba słojów na końcu belki.",
+            "Porównanie ceny za metr bieżący."
+          ],
+          "correct": 1,
+          "explanation": "Gęstość jest stosunkiem masy do objętości. Dla drewna warto podawać stan wilgotności przy pomiarze, bo zmienia się zarówno masa wody, jak i wymiary. Wytrzymałość na zginanie, rozciąganie, ściskanie i twardość to różne właściwości mechaniczne.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Gęstość jest stosunkiem masy do objętości. Dla drewna warto podawać stan wilgotności przy pomiarze, bo zmienia się zarówno masa wody, jak i wymiary. Wytrzymałość na zginanie, rozciąganie, ściskanie i twardość to różne właściwości mechaniczne.",
+            "Tak. Gęstość jest stosunkiem masy do objętości. Dla drewna warto podawać stan wilgotności przy pomiarze, bo zmienia się zarówno masa wody, jak i wymiary. Wytrzymałość na zginanie, rozciąganie, ściskanie i twardość to różne właściwości mechaniczne.",
+            "To nie odpowiada właściwościom opisanego materiału. Gęstość jest stosunkiem masy do objętości. Dla drewna warto podawać stan wilgotności przy pomiarze, bo zmienia się zarówno masa wody, jak i wymiary. Wytrzymałość na zginanie, rozciąganie, ściskanie i twardość to różne właściwości mechaniczne.",
+            "To nie odpowiada właściwościom opisanego materiału. Gęstość jest stosunkiem masy do objętości. Dla drewna warto podawać stan wilgotności przy pomiarze, bo zmienia się zarówno masa wody, jak i wymiary. Wytrzymałość na zginanie, rozciąganie, ściskanie i twardość to różne właściwości mechaniczne."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 23,
+      "title_pl": "24. Higroskopijność, woda związana, skurcz i pęcznienie",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-wilgotnosc",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Drewno ma zdolność wymiany wilgoci z otoczeniem. Woda wolna występuje m.in. w przestrzeniach komórkowych, a woda związana w ścianach komórkowych. Skurcz jest związany przede wszystkim z utratą wody związanej poniżej stanu nasycenia ścian komórkowych. Zwiększenie wilgotności może prowadzić do pęcznienia."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Skurcz jest anizotropowy: wzdłuż włókien zwykle mniejszy niż w kierunkach poprzecznych, a skurcz styczny i promieniowy różnią się. Dlatego deski z innym układem słojów mogą zmieniać kształt w odmienny sposób. Samo ogrzanie drewna nie gwarantuje trwałego ustabilizowania wymiarów."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Wilgotność w metodzie wagowej liczy się względem suchej masy: (masa mokra − masa sucha) / masa sucha × 100%. Dla 11,8 kg i 10,0 kg otrzymujemy 18%. Wilgotnościomierze ręczne mogą mieć błędy zależne od gatunku i temperatury."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Po montażu mokrego elementu w ogrzewanym wnętrzu pojawiają się szpary. Trzeba sprawdzić pierwotną i końcową wilgotność, orientację włókien i sposób mocowania, a nie zakładać, że gwoździe były zawsze zbyt krótkie."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Oblicz wilgotność próbki 12,4 kg przed suszeniem i 10,0 kg suchej: 24%. Wyjaśnij, dlaczego wynik nie oznacza, że woda stanowi 24% masy mokrej próbki."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno ma zdolność wymiany wilgoci z otoczeniem. Woda wolna występuje m.in. w przestrzeniach komórkowych, a woda związana w ścianach komórkowych. Skurcz jest związany przede wszystkim z utratą wody związanej poniżej stanu nasycenia ścian komórkowych. Zwiększenie wilgotności może prowadzić do pęcznienia.",
+          "situation": "Po montażu mokrego elementu w ogrzewanym wnętrzu pojawiają się szpary. Trzeba sprawdzić pierwotną i końcową wilgotność, orientację włókien i sposób mocowania, a nie zakładać, że gwoździe były zawsze zbyt krótkie.",
+          "example": "Oblicz wilgotność próbki 12,4 kg przed suszeniem i 10,0 kg suchej: 24%. Wyjaśnij, dlaczego wynik nie oznacza, że woda stanowi 24% masy mokrej próbki.",
+          "task": "Oblicz wilgotność próbki 12,4 kg przed suszeniem i 10,0 kg suchej: 24%. Wyjaśnij, dlaczego wynik nie oznacza, że woda stanowi 24% masy mokrej próbki.",
+          "question": "Jaką wilgotność ma próbka ważąca 12,4 kg przy masie suchej 10,0 kg?",
+          "options": [
+            "19,4%, bo wodę odnosi się do masy mokrej.",
+            "24%, bo (12,4 − 10,0)/10,0 × 100%.",
+            "2,4%, bo wystarczy odjąć masy.",
+            "124%, bo należy dzielić masę mokrą przez suchą."
+          ],
+          "correct": 1,
+          "explanation": "Skurcz jest anizotropowy: wzdłuż włókien zwykle mniejszy niż w kierunkach poprzecznych, a skurcz styczny i promieniowy różnią się. Dlatego deski z innym układem słojów mogą zmieniać kształt w odmienny sposób. Samo ogrzanie drewna nie gwarantuje trwałego ustabilizowania wymiarów.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Skurcz jest anizotropowy: wzdłuż włókien zwykle mniejszy niż w kierunkach poprzecznych, a skurcz styczny i promieniowy różnią się. Dlatego deski z innym układem słojów mogą zmieniać kształt w odmienny sposób. Samo ogrzanie drewna nie gwarantuje trwałego ustabilizowania wymiarów.",
+            "Tak. Skurcz jest anizotropowy: wzdłuż włókien zwykle mniejszy niż w kierunkach poprzecznych, a skurcz styczny i promieniowy różnią się. Dlatego deski z innym układem słojów mogą zmieniać kształt w odmienny sposób. Samo ogrzanie drewna nie gwarantuje trwałego ustabilizowania wymiarów.",
+            "To nie odpowiada właściwościom opisanego materiału. Skurcz jest anizotropowy: wzdłuż włókien zwykle mniejszy niż w kierunkach poprzecznych, a skurcz styczny i promieniowy różnią się. Dlatego deski z innym układem słojów mogą zmieniać kształt w odmienny sposób. Samo ogrzanie drewna nie gwarantuje trwałego ustabilizowania wymiarów.",
+            "To nie odpowiada właściwościom opisanego materiału. Skurcz jest anizotropowy: wzdłuż włókien zwykle mniejszy niż w kierunkach poprzecznych, a skurcz styczny i promieniowy różnią się. Dlatego deski z innym układem słojów mogą zmieniać kształt w odmienny sposób. Samo ogrzanie drewna nie gwarantuje trwałego ustabilizowania wymiarów."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 24,
+      "title_pl": "25. Pęknięcia, wady kształtu i kierunek włókien",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Do wad kształtu drewna mogą należeć krzywizna, zbieżystość, spłaszczenie lub nieregularne narośle. Pęknięcia są rozdzieleniami tkanki, często biegnącymi wzdłuż włókien; ich przyczyny obejmują nierównomierne schnięcie, naprężenia wzrostowe i oddziaływanie temperatury. Wada jest opisywana przez lokalizację, głębokość i przebieg."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Naturalne sęki, skręt włókien czy pęknięcia nie mają identycznych konsekwencji dla każdego wyrobu. W belce nośnej trzeba się oprzeć na sortowaniu i dokumencie, a nie wyłącznie oględzinach. Usunięcie kory może ograniczać warunki sprzyjające szkodnikom pod korą, ale nie zastępuje ogólnej ochrony drewna."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Podczas odbioru zmierz wymiary, oznacz pęknięcia na rysunku i odrzuć elementy niezgodne z projektem. Jeśli wady dotyczą istniejącej konstrukcji, najpierw zapewnij fachową ocenę, zanim rozpoczniesz nacięcia lub naprawy."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Belka z widocznym pęknięciem przy podporze została skierowana do montażu, bo na ścianie po zakryciu nie będzie widoczna. To nie jest metoda oceny nośności."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Narysuj dwie belki: prostą i zbieżystą. Oznacz na nich krzywiznę, pęknięcie, sęk i kierunek włókien. Opisz, które dane wymagają pomiaru przed przyjęciem."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Do wad kształtu drewna mogą należeć krzywizna, zbieżystość, spłaszczenie lub nieregularne narośle. Pęknięcia są rozdzieleniami tkanki, często biegnącymi wzdłuż włókien; ich przyczyny obejmują nierównomierne schnięcie, naprężenia wzrostowe i oddziaływanie temperatury. Wada jest opisywana przez lokalizację, głębokość i przebieg.",
+          "situation": "Belka z widocznym pęknięciem przy podporze została skierowana do montażu, bo na ścianie po zakryciu nie będzie widoczna. To nie jest metoda oceny nośności.",
+          "example": "Narysuj dwie belki: prostą i zbieżystą. Oznacz na nich krzywiznę, pęknięcie, sęk i kierunek włókien. Opisz, które dane wymagają pomiaru przed przyjęciem.",
+          "task": "Narysuj dwie belki: prostą i zbieżystą. Oznacz na nich krzywiznę, pęknięcie, sęk i kierunek włókien. Opisz, które dane wymagają pomiaru przed przyjęciem.",
+          "question": "Co jest właściwym postępowaniem przy istotnym pęknięciu belki nośnej?",
+          "options": [
+            "Zamaskować pęknięcie powłoką wykończeniową.",
+            "Ocenić zgodność i skutki wady przed montażem, w razie potrzeby z projektantem.",
+            "Zamienić belkę na inny gatunek o podobnym kolorze.",
+            "Dobić losowy łącznik w miejscu pęknięcia."
+          ],
+          "correct": 1,
+          "explanation": "Naturalne sęki, skręt włókien czy pęknięcia nie mają identycznych konsekwencji dla każdego wyrobu. W belce nośnej trzeba się oprzeć na sortowaniu i dokumencie, a nie wyłącznie oględzinach. Usunięcie kory może ograniczać warunki sprzyjające szkodnikom pod korą, ale nie zastępuje ogólnej ochrony drewna.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Naturalne sęki, skręt włókien czy pęknięcia nie mają identycznych konsekwencji dla każdego wyrobu. W belce nośnej trzeba się oprzeć na sortowaniu i dokumencie, a nie wyłącznie oględzinach. Usunięcie kory może ograniczać warunki sprzyjające szkodnikom pod korą, ale nie zastępuje ogólnej ochrony drewna.",
+            "Tak. Naturalne sęki, skręt włókien czy pęknięcia nie mają identycznych konsekwencji dla każdego wyrobu. W belce nośnej trzeba się oprzeć na sortowaniu i dokumencie, a nie wyłącznie oględzinach. Usunięcie kory może ograniczać warunki sprzyjające szkodnikom pod korą, ale nie zastępuje ogólnej ochrony drewna.",
+            "To nie odpowiada właściwościom opisanego materiału. Naturalne sęki, skręt włókien czy pęknięcia nie mają identycznych konsekwencji dla każdego wyrobu. W belce nośnej trzeba się oprzeć na sortowaniu i dokumencie, a nie wyłącznie oględzinach. Usunięcie kory może ograniczać warunki sprzyjające szkodnikom pod korą, ale nie zastępuje ogólnej ochrony drewna.",
+            "To nie odpowiada właściwościom opisanego materiału. Naturalne sęki, skręt włókien czy pęknięcia nie mają identycznych konsekwencji dla każdego wyrobu. W belce nośnej trzeba się oprzeć na sortowaniu i dokumencie, a nie wyłącznie oględzinach. Usunięcie kory może ograniczać warunki sprzyjające szkodnikom pod korą, ale nie zastępuje ogólnej ochrony drewna."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 25,
+      "title_pl": "26. Surowiec okrągły, deski nieobrzynane i objętość",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Surowiec okrągły obejmuje drewno w formie kłód i dłużyc przygotowanych do przetarcia. Tarcica obrzynana ma regularnie opracowane krawędzie; nieobrzynana może mieć oflisy i zmienną szerokość. Zasada pomiaru desek nieobrzynanych zależy od uzgodnionej metody obmiaru."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Miąższość to objętość drewna. Dla deski o wymiarach 40 × 200 × 4000 mm objętość wynosi 0,04 × 0,20 × 4 = 0,032 m³. Przy desce nieobrzynanej nie wolno przyjmować maksymalnej przypadkowej szerokości, jeśli wymagania wskazują inne miejsce lub średnią pomiarową."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Najpierw ustal, czy wyceniasz jedną sztukę, metr bieżący, metr kwadratowy czy metr sześcienny. Zapisz długość, grubość i mierzoną szerokość. Oddziel wynik teoretyczny od dodatku na rzaz i odpad."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Zakład zamawia '1 m³ desek' bez określenia wymiarów, a później oczekuje ściśle 20 elementów o konkretnej długości. Sama objętość nie gwarantuje właściwego zestawienia sztuk."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Policz objętość 10 desek 30 × 150 × 5000 mm: 0,225 m³. Dopisz listę cięcia i wymiar zakupowy, bo tego nie rozstrzyga sama liczba m³."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Surowiec okrągły obejmuje drewno w formie kłód i dłużyc przygotowanych do przetarcia. Tarcica obrzynana ma regularnie opracowane krawędzie; nieobrzynana może mieć oflisy i zmienną szerokość. Zasada pomiaru desek nieobrzynanych zależy od uzgodnionej metody obmiaru.",
+          "situation": "Zakład zamawia '1 m³ desek' bez określenia wymiarów, a później oczekuje ściśle 20 elementów o konkretnej długości. Sama objętość nie gwarantuje właściwego zestawienia sztuk.",
+          "example": "Policz objętość 10 desek 30 × 150 × 5000 mm: 0,225 m³. Dopisz listę cięcia i wymiar zakupowy, bo tego nie rozstrzyga sama liczba m³.",
+          "task": "Policz objętość 10 desek 30 × 150 × 5000 mm: 0,225 m³. Dopisz listę cięcia i wymiar zakupowy, bo tego nie rozstrzyga sama liczba m³.",
+          "question": "Jaka jest objętość dziesięciu desek 30 × 150 × 5000 mm?",
+          "options": [
+            "0,225 m³.",
+            "2,25 m³.",
+            "0,0225 m³.",
+            "22,5 m³."
+          ],
+          "correct": 0,
+          "explanation": "Miąższość to objętość drewna. Dla deski o wymiarach 40 × 200 × 4000 mm objętość wynosi 0,04 × 0,20 × 4 = 0,032 m³. Przy desce nieobrzynanej nie wolno przyjmować maksymalnej przypadkowej szerokości, jeśli wymagania wskazują inne miejsce lub średnią pomiarową.",
+          "feedback": [
+            "Tak. Miąższość to objętość drewna. Dla deski o wymiarach 40 × 200 × 4000 mm objętość wynosi 0,04 × 0,20 × 4 = 0,032 m³. Przy desce nieobrzynanej nie wolno przyjmować maksymalnej przypadkowej szerokości, jeśli wymagania wskazują inne miejsce lub średnią pomiarową.",
+            "To nie odpowiada właściwościom opisanego materiału. Miąższość to objętość drewna. Dla deski o wymiarach 40 × 200 × 4000 mm objętość wynosi 0,04 × 0,20 × 4 = 0,032 m³. Przy desce nieobrzynanej nie wolno przyjmować maksymalnej przypadkowej szerokości, jeśli wymagania wskazują inne miejsce lub średnią pomiarową.",
+            "To nie odpowiada właściwościom opisanego materiału. Miąższość to objętość drewna. Dla deski o wymiarach 40 × 200 × 4000 mm objętość wynosi 0,04 × 0,20 × 4 = 0,032 m³. Przy desce nieobrzynanej nie wolno przyjmować maksymalnej przypadkowej szerokości, jeśli wymagania wskazują inne miejsce lub średnią pomiarową.",
+            "To nie odpowiada właściwościom opisanego materiału. Miąższość to objętość drewna. Dla deski o wymiarach 40 × 200 × 4000 mm objętość wynosi 0,04 × 0,20 × 4 = 0,032 m³. Przy desce nieobrzynanej nie wolno przyjmować maksymalnej przypadkowej szerokości, jeśli wymagania wskazują inne miejsce lub średnią pomiarową."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 26,
+      "title_pl": "27. Sklejka, OSB, fornir i lignoston",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Sklejka powstaje z połączonych warstw forniru, których kierunki włókien są odpowiednio rozmieszczone. OSB ma ukierunkowane wióry; rodzaj płyty i warunki użytkowania wpływają na zastosowanie. Lignoston jest historycznie opisywanym zagęszczonym drewnem uzyskiwanym przez prasowanie odpowiednio przygotowanego surowca."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Obróbka hydrotermiczna może zmiękczać drewno przed skrawaniem forniru. Dla sklejki ważne są właściwości warstw, kleju i warunki pracy, natomiast dla OSB — rodzaj płyty, kierunek, podparcie i wilgoć. Wyroby drewnopochodne nie są zamienne wyłącznie dlatego, że mają identyczną grubość."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Przed wyborem płyty odczytaj typ, klasę użytkowania, wymiary i informacje o nośności oraz mocowaniach. Element nośny wymaga materiału przewidzianego w projekcie. Do nauki wykonaj schemat przekroju sklejki i OSB, pokazujący orientację warstw."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Sprzedawca oferuje płytę meblową o tej samej grubości co wymagane poszycie konstrukcyjne OSB. Podobna grubość nie oznacza takich samych parametrów i dopuszczalnego zastosowania."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Zestaw w tabeli pięć wyrobów: tarcica, fornir, sklejka, OSB i lignoston. Podaj z czego są zbudowane, do czego mogą służyć i jakiej informacji o jakości nie zastąpi wygląd."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Sklejka powstaje z połączonych warstw forniru, których kierunki włókien są odpowiednio rozmieszczone. OSB ma ukierunkowane wióry; rodzaj płyty i warunki użytkowania wpływają na zastosowanie. Lignoston jest historycznie opisywanym zagęszczonym drewnem uzyskiwanym przez prasowanie odpowiednio przygotowanego surowca.",
+          "situation": "Sprzedawca oferuje płytę meblową o tej samej grubości co wymagane poszycie konstrukcyjne OSB. Podobna grubość nie oznacza takich samych parametrów i dopuszczalnego zastosowania.",
+          "example": "Zestaw w tabeli pięć wyrobów: tarcica, fornir, sklejka, OSB i lignoston. Podaj z czego są zbudowane, do czego mogą służyć i jakiej informacji o jakości nie zastąpi wygląd.",
+          "task": "Zestaw w tabeli pięć wyrobów: tarcica, fornir, sklejka, OSB i lignoston. Podaj z czego są zbudowane, do czego mogą służyć i jakiej informacji o jakości nie zastąpi wygląd.",
+          "question": "Co jest prawidłowym kryterium doboru sklejki zamiast OSB w elemencie konstrukcyjnym?",
+          "options": [
+            "Jedynie podobieństwo barwy i ceny.",
+            "Potwierdzona zgodność właściwości oraz wymaganych zastosowań z projektem.",
+            "Wyłącznie możliwość przycięcia ręczną piłą.",
+            "Dowolna marka, jeśli grubość jest podobna."
+          ],
+          "correct": 1,
+          "explanation": "Obróbka hydrotermiczna może zmiękczać drewno przed skrawaniem forniru. Dla sklejki ważne są właściwości warstw, kleju i warunki pracy, natomiast dla OSB — rodzaj płyty, kierunek, podparcie i wilgoć. Wyroby drewnopochodne nie są zamienne wyłącznie dlatego, że mają identyczną grubość.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Obróbka hydrotermiczna może zmiękczać drewno przed skrawaniem forniru. Dla sklejki ważne są właściwości warstw, kleju i warunki pracy, natomiast dla OSB — rodzaj płyty, kierunek, podparcie i wilgoć. Wyroby drewnopochodne nie są zamienne wyłącznie dlatego, że mają identyczną grubość.",
+            "Tak. Obróbka hydrotermiczna może zmiękczać drewno przed skrawaniem forniru. Dla sklejki ważne są właściwości warstw, kleju i warunki pracy, natomiast dla OSB — rodzaj płyty, kierunek, podparcie i wilgoć. Wyroby drewnopochodne nie są zamienne wyłącznie dlatego, że mają identyczną grubość.",
+            "To nie odpowiada właściwościom opisanego materiału. Obróbka hydrotermiczna może zmiękczać drewno przed skrawaniem forniru. Dla sklejki ważne są właściwości warstw, kleju i warunki pracy, natomiast dla OSB — rodzaj płyty, kierunek, podparcie i wilgoć. Wyroby drewnopochodne nie są zamienne wyłącznie dlatego, że mają identyczną grubość.",
+            "To nie odpowiada właściwościom opisanego materiału. Obróbka hydrotermiczna może zmiękczać drewno przed skrawaniem forniru. Dla sklejki ważne są właściwości warstw, kleju i warunki pracy, natomiast dla OSB — rodzaj płyty, kierunek, podparcie i wilgoć. Wyroby drewnopochodne nie są zamienne wyłącznie dlatego, że mają identyczną grubość."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 27,
+      "title_pl": "28. Kleje zwierzęce i dobór spoiny",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Do dawnych klejów pochodzenia zwierzęcego zaliczano kleje skórne i kostne (glutynowe), kazeinowe z białka mleka, albuminowe oraz rybie. Różnią się surowcem, przygotowaniem, właściwościami i odpornością na wilgoć. To ważna wiedza historyczna i materiałoznawcza, ale klej tradycyjny nie jest automatycznie dopuszczony do konstrukcji nośnej."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Przy klejeniu drewna liczą się przygotowanie powierzchni, wilgotność, czas otwarty, docisk, temperatura i proces utwardzania. Specjalistyczne kleje konstrukcyjne wymagają udokumentowanego systemu i kontroli technologii. Nie wolno podawać przypadkowej receptury jako odpowiedniej dla nośnego złącza."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Rozpoznaj rodzaj spoiny i jej warunki pracy. Odczytaj kartę kleju, wymagane przygotowanie, docisk i odporność na wodę. Do zastosowania w elementach nośnych uzyskaj potwierdzenie zgodności z projektem i normami."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Uczeń rozpoznaje klej glutynowy na podstawie opisu historycznego i proponuje go do zawsze wilgotnej konstrukcji zewnętrznej, nie sprawdzając dopuszczenia. Znajomość pochodzenia nie wystarcza do wyboru technologii."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Zbuduj mapę pięciu rodzin dawnych klejów i ich surowców. W drugim kroku opisz różnice między przyczepnością, odpornością na wodę i formalnym dopuszczeniem do połączeń konstrukcyjnych."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Do dawnych klejów pochodzenia zwierzęcego zaliczano kleje skórne i kostne (glutynowe), kazeinowe z białka mleka, albuminowe oraz rybie. Różnią się surowcem, przygotowaniem, właściwościami i odpornością na wilgoć. To ważna wiedza historyczna i materiałoznawcza, ale klej tradycyjny nie jest automatycznie dopuszczony do konstrukcji nośnej.",
+          "situation": "Uczeń rozpoznaje klej glutynowy na podstawie opisu historycznego i proponuje go do zawsze wilgotnej konstrukcji zewnętrznej, nie sprawdzając dopuszczenia. Znajomość pochodzenia nie wystarcza do wyboru technologii.",
+          "example": "Zbuduj mapę pięciu rodzin dawnych klejów i ich surowców. W drugim kroku opisz różnice między przyczepnością, odpornością na wodę i formalnym dopuszczeniem do połączeń konstrukcyjnych.",
+          "task": "Zbuduj mapę pięciu rodzin dawnych klejów i ich surowców. W drugim kroku opisz różnice między przyczepnością, odpornością na wodę i formalnym dopuszczeniem do połączeń konstrukcyjnych.",
+          "question": "Która odpowiedź poprawnie opisuje klej kazeinowy?",
+          "options": [
+            "Historyczny klej oparty na białkach mleka, wymagający odpowiedniego przygotowania i doboru zastosowania.",
+            "Klej pochodzący wyłącznie z rozdrobnionego drewna.",
+            "Uniwersalny współczesny klej konstrukcyjny bez potrzeby atestów.",
+            "Klej zawsze wykonany ze stali i spoiwa mineralnego."
+          ],
+          "correct": 0,
+          "explanation": "Przy klejeniu drewna liczą się przygotowanie powierzchni, wilgotność, czas otwarty, docisk, temperatura i proces utwardzania. Specjalistyczne kleje konstrukcyjne wymagają udokumentowanego systemu i kontroli technologii. Nie wolno podawać przypadkowej receptury jako odpowiedniej dla nośnego złącza.",
+          "feedback": [
+            "Tak. Przy klejeniu drewna liczą się przygotowanie powierzchni, wilgotność, czas otwarty, docisk, temperatura i proces utwardzania. Specjalistyczne kleje konstrukcyjne wymagają udokumentowanego systemu i kontroli technologii. Nie wolno podawać przypadkowej receptury jako odpowiedniej dla nośnego złącza.",
+            "To nie odpowiada właściwościom opisanego materiału. Przy klejeniu drewna liczą się przygotowanie powierzchni, wilgotność, czas otwarty, docisk, temperatura i proces utwardzania. Specjalistyczne kleje konstrukcyjne wymagają udokumentowanego systemu i kontroli technologii. Nie wolno podawać przypadkowej receptury jako odpowiedniej dla nośnego złącza.",
+            "To nie odpowiada właściwościom opisanego materiału. Przy klejeniu drewna liczą się przygotowanie powierzchni, wilgotność, czas otwarty, docisk, temperatura i proces utwardzania. Specjalistyczne kleje konstrukcyjne wymagają udokumentowanego systemu i kontroli technologii. Nie wolno podawać przypadkowej receptury jako odpowiedniej dla nośnego złącza.",
+            "To nie odpowiada właściwościom opisanego materiału. Przy klejeniu drewna liczą się przygotowanie powierzchni, wilgotność, czas otwarty, docisk, temperatura i proces utwardzania. Specjalistyczne kleje konstrukcyjne wymagają udokumentowanego systemu i kontroli technologii. Nie wolno podawać przypadkowej receptury jako odpowiedniej dla nośnego złącza."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 28,
+      "title_pl": "29. Konserwacja drewna i ochrona przed pękaniem",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Ochrona biologiczna drewna uwzględnia ograniczenie zawilgocenia, właściwe detale odprowadzania wody, przewiew i ocenę szkodników. Środki konserwujące mogą mieć odmienne składy i zakresy zastosowania; w tradycyjnych materiałach opisywano preparaty solowe, olejowe i złożone, ale współczesne dopuszczenia trzeba sprawdzać indywidualnie."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Cenne sortymenty drewna mogą pękać podczas nierównomiernego schnięcia, zwłaszcza na końcach, gdzie parowanie bywa intensywne. Przechowywanie, ograniczanie szybkiej utraty wilgoci z końców i odpowiednie warunki sezonowania pomagają kontrolować ryzyko. Zabiegi ochronne nie mogą maskować istniejącej zgnilizny."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Rozpoznaj klasę użytkowania i źródło wilgoci, ustal rodzaj zabezpieczenia na podstawie dokumentacji produktu. Przy drewnie przeznaczonym do kontaktu z ludźmi lub żywnością zachowaj specjalne wymagania. Zapisz, gdzie można stosować dany preparat i jak kontroluje się jego działanie."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Przy starym budynku uszczelniono mokrą belkę i pokryto ją preparatem, pozostawiając przeciek z dachu. Problem wróci, bo nie usunięto źródła wody."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Zrób plan konserwacji dla trzech sytuacji: drewno pod dachem, narażone na deszcz i stary element z pęknięciami. Wskaż najpierw działania konstrukcyjne, potem materiał i kontrolę efektu."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Ochrona biologiczna drewna uwzględnia ograniczenie zawilgocenia, właściwe detale odprowadzania wody, przewiew i ocenę szkodników. Środki konserwujące mogą mieć odmienne składy i zakresy zastosowania; w tradycyjnych materiałach opisywano preparaty solowe, olejowe i złożone, ale współczesne dopuszczenia trzeba sprawdzać indywidualnie.",
+          "situation": "Przy starym budynku uszczelniono mokrą belkę i pokryto ją preparatem, pozostawiając przeciek z dachu. Problem wróci, bo nie usunięto źródła wody.",
+          "example": "Zrób plan konserwacji dla trzech sytuacji: drewno pod dachem, narażone na deszcz i stary element z pęknięciami. Wskaż najpierw działania konstrukcyjne, potem materiał i kontrolę efektu.",
+          "task": "Zrób plan konserwacji dla trzech sytuacji: drewno pod dachem, narażone na deszcz i stary element z pęknięciami. Wskaż najpierw działania konstrukcyjne, potem materiał i kontrolę efektu.",
+          "question": "Co powinno mieć pierwszeństwo przy zawilgoconej belce pod przeciekającym dachem?",
+          "options": [
+            "Nałożenie grubej powłoki na mokre drewno.",
+            "Usunięcie źródła wilgoci, ocena stanu i dopiero dobór zabezpieczeń.",
+            "Zakrycie drewna folią bez wentylacji.",
+            "Wyłącznie intensywne szlifowanie widocznej plamy."
+          ],
+          "correct": 1,
+          "explanation": "Cenne sortymenty drewna mogą pękać podczas nierównomiernego schnięcia, zwłaszcza na końcach, gdzie parowanie bywa intensywne. Przechowywanie, ograniczanie szybkiej utraty wilgoci z końców i odpowiednie warunki sezonowania pomagają kontrolować ryzyko. Zabiegi ochronne nie mogą maskować istniejącej zgnilizny.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Cenne sortymenty drewna mogą pękać podczas nierównomiernego schnięcia, zwłaszcza na końcach, gdzie parowanie bywa intensywne. Przechowywanie, ograniczanie szybkiej utraty wilgoci z końców i odpowiednie warunki sezonowania pomagają kontrolować ryzyko. Zabiegi ochronne nie mogą maskować istniejącej zgnilizny.",
+            "Tak. Cenne sortymenty drewna mogą pękać podczas nierównomiernego schnięcia, zwłaszcza na końcach, gdzie parowanie bywa intensywne. Przechowywanie, ograniczanie szybkiej utraty wilgoci z końców i odpowiednie warunki sezonowania pomagają kontrolować ryzyko. Zabiegi ochronne nie mogą maskować istniejącej zgnilizny.",
+            "To nie odpowiada właściwościom opisanego materiału. Cenne sortymenty drewna mogą pękać podczas nierównomiernego schnięcia, zwłaszcza na końcach, gdzie parowanie bywa intensywne. Przechowywanie, ograniczanie szybkiej utraty wilgoci z końców i odpowiednie warunki sezonowania pomagają kontrolować ryzyko. Zabiegi ochronne nie mogą maskować istniejącej zgnilizny.",
+            "To nie odpowiada właściwościom opisanego materiału. Cenne sortymenty drewna mogą pękać podczas nierównomiernego schnięcia, zwłaszcza na końcach, gdzie parowanie bywa intensywne. Przechowywanie, ograniczanie szybkiej utraty wilgoci z końców i odpowiednie warunki sezonowania pomagają kontrolować ryzyko. Zabiegi ochronne nie mogą maskować istniejącej zgnilizny."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 29,
+      "title_pl": "30. Własności mechaniczne: zginanie, ściskanie i nośność",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "source_basis": "D&A Spesialistene 2025 — dział materiałoznawstwo, opracowanie dydaktyczne",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Poznaj materiał",
+            "text": "Drewno jest materiałem anizotropowym: jego zachowanie zależy od kierunku włókien. Wytrzymałość na zginanie, rozciąganie i ściskanie oraz sztywność i twardość są różnymi właściwościami. Gęstość, wilgotność, udział drewna wczesnego i późnego oraz wady mogą na nie wpływać, ale nie tworzą prostego uniwersalnego przelicznika."
+          },
+          {
+            "heading": "Właściwości i procesy",
+            "text": "Przekrój belki, długość przęsła, warunki oparcia i obciążenie decydują o jej zachowaniu. Ugięcie nie jest tym samym co zniszczenie, a rysa w pobliżu podpory może mieć inny wpływ niż wada na powierzchni wykończeniowej. Nośność elementu ocenia się według projektu i dokumentacji klasy drewna."
+          },
+          {
+            "heading": "Zasady doboru i kontroli",
+            "text": "Zadanie teoretyczne: porównaj dwie belki 50 × 200 mm i 50 × 100 mm przy jednakowej długości, gatunku i orientacji, ale nie podawaj arbitralnych nośności. Zapisz, jakie parametry jeszcze trzeba znać i dlaczego sama waga belek nie wystarcza do oceny."
+          },
+          {
+            "heading": "Przykład i diagnostyka",
+            "text": "Dwóch uczniów wybiera belkę. Pierwszy mierzy tylko gęstość, drugi odczytuje oznaczoną klasę, wymiary, rozpiętość i projekt. W realnej konstrukcji podejście drugiego ma podstawę techniczną."
+          },
+          {
+            "heading": "Ćwiczenie do wykonania",
+            "text": "Przygotuj odpowiedź ustną w czterech częściach: czym są właściwości mechaniczne, co je zmienia, jak rozpoznać wadę i kto ocenia nośność. Pokaż różnicę między zginaniem a ściskaniem na schemacie."
+          },
+          {
+            "heading": "Sprawdź wiedzę w praktyce",
+            "text": "Rozpoznaj materiał na schemacie, opisz jego podstawowe własności, wskaż ryzyko błędnego zastosowania i uzasadnij własną decyzję na podstawie danych, a nie wyglądu."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno jest materiałem anizotropowym: jego zachowanie zależy od kierunku włókien. Wytrzymałość na zginanie, rozciąganie i ściskanie oraz sztywność i twardość są różnymi właściwościami. Gęstość, wilgotność, udział drewna wczesnego i późnego oraz wady mogą na nie wpływać, ale nie tworzą prostego uniwersalnego przelicznika.",
+          "situation": "Dwóch uczniów wybiera belkę. Pierwszy mierzy tylko gęstość, drugi odczytuje oznaczoną klasę, wymiary, rozpiętość i projekt. W realnej konstrukcji podejście drugiego ma podstawę techniczną.",
+          "example": "Przygotuj odpowiedź ustną w czterech częściach: czym są właściwości mechaniczne, co je zmienia, jak rozpoznać wadę i kto ocenia nośność. Pokaż różnicę między zginaniem a ściskaniem na schemacie.",
+          "task": "Przygotuj odpowiedź ustną w czterech częściach: czym są właściwości mechaniczne, co je zmienia, jak rozpoznać wadę i kto ocenia nośność. Pokaż różnicę między zginaniem a ściskaniem na schemacie.",
+          "question": "Który zestaw danych jest potrzebny do rzetelnej oceny belki stropowej?",
+          "options": [
+            "Wyłącznie gatunek i wizualna barwa.",
+            "Projektowe obciążenie, rozpiętość, przekrój, podparcie i udokumentowana klasa drewna.",
+            "Jedynie liczba słojów w dowolnym miejscu.",
+            "Wyłącznie masa gotowej belki."
+          ],
+          "correct": 1,
+          "explanation": "Przekrój belki, długość przęsła, warunki oparcia i obciążenie decydują o jej zachowaniu. Ugięcie nie jest tym samym co zniszczenie, a rysa w pobliżu podpory może mieć inny wpływ niż wada na powierzchni wykończeniowej. Nośność elementu ocenia się według projektu i dokumentacji klasy drewna.",
+          "feedback": [
+            "To nie odpowiada właściwościom opisanego materiału. Przekrój belki, długość przęsła, warunki oparcia i obciążenie decydują o jej zachowaniu. Ugięcie nie jest tym samym co zniszczenie, a rysa w pobliżu podpory może mieć inny wpływ niż wada na powierzchni wykończeniowej. Nośność elementu ocenia się według projektu i dokumentacji klasy drewna.",
+            "Tak. Przekrój belki, długość przęsła, warunki oparcia i obciążenie decydują o jej zachowaniu. Ugięcie nie jest tym samym co zniszczenie, a rysa w pobliżu podpory może mieć inny wpływ niż wada na powierzchni wykończeniowej. Nośność elementu ocenia się według projektu i dokumentacji klasy drewna.",
+            "To nie odpowiada właściwościom opisanego materiału. Przekrój belki, długość przęsła, warunki oparcia i obciążenie decydują o jej zachowaniu. Ugięcie nie jest tym samym co zniszczenie, a rysa w pobliżu podpory może mieć inny wpływ niż wada na powierzchni wykończeniowej. Nośność elementu ocenia się według projektu i dokumentacji klasy drewna.",
+            "To nie odpowiada właściwościom opisanego materiału. Przekrój belki, długość przęsła, warunki oparcia i obciążenie decydują o jej zachowaniu. Ugięcie nie jest tym samym co zniszczenie, a rysa w pobliżu podpory może mieć inny wpływ niż wada na powierzchni wykończeniowej. Nośność elementu ocenia się według projektu i dokumentacji klasy drewna."
+          ]
+        }
+      }
+    }
+  ]
+}
