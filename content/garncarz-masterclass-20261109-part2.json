@@ -1,0 +1,371 @@
+{
+  "slug": "garncarz-tradycja",
+  "lessons": [
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 6,
+      "title_pl": "7. Pierwszy wypał (biskwit): cele, etapy i typowe błędy",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "curriculum_revision": 3,
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Po co wykonuje się pierwszy wypał",
+            "text": "Biskwit to naczynie po pierwszym wypale, często nadal porowate na tyle, aby przyjąć szkliwo w przewidzianej technologii. Wypał zmienia strukturę masy i usuwa część składników lotnych; nie zastępuje prawidłowego suszenia przed włożeniem do pieca. Konkretny program zależy od masy i urządzenia."
+          },
+          {
+            "heading": "Mokra masa w piecu jest zagrożeniem",
+            "text": "Jeżeli wewnątrz wyrobu pozostaje wilgoć, para powstająca podczas ogrzewania może doprowadzić do pęknięć lub gwałtownego rozpadu elementu. Nie można uznać dużej rzeźby za suchą wyłącznie na podstawie powierzchni. Grube miejsca i zamknięte objętości wymagają szczególnej oceny stanu przed wypałem."
+          },
+          {
+            "heading": "Wykres czasu i temperatury",
+            "text": "Program wypału to nie tylko wartość końcowej temperatury. Ma etapy wzrostu, ewentualne przetrzymanie i chłodzenie. Nie należy podawać jednego uniwersalnego programu wszystkim uczniom: trzeba czytać instrukcję pieca, kartę masy i uzasadnienie technologiczne zatwierdzone przez instruktora."
+          },
+          {
+            "heading": "Przykład odbioru partii",
+            "text": "Trzy kubki z jednej partii są suche z zewnątrz; jeden ma bardzo grube dno. Bez potwierdzenia dostatecznego wyschnięcia dna nie należy wkładać go wraz z pozostałymi w zwykłym cyklu. W protokole zapisuje się decyzję o odłożeniu sztuki do dalszej kontroli."
+          },
+          {
+            "heading": "Ćwiczenie dokumentacyjne",
+            "text": "Narysuj prosty wykres: temperatura na osi pionowej, czas na poziomej. Zaznacz etapy programu bez wprowadzania konkretnych parametrów do rzeczywistego pieca. Przygotuj checklistę przyjęcia wyrobów do wypału: identyfikator, masa, grubość, stan wysuszenia, instrukcja, operator i decyzja."
+          }
+        ],
+        "illustration": "diagnosis-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://openlearning.aalto.fi/course/view.php?id=110&section=13"
+          }
+        ],
+        "learning": {
+          "intro": "Biskwit to naczynie po pierwszym wypale, często nadal porowate na tyle, aby przyjąć szkliwo w przewidzianej technologii. Wypał zmienia strukturę masy i usuwa część składników lotnych; nie zastępuje prawidłowego suszenia przed włożeniem do pieca. Konkretny program zależy od masy i urządzenia.",
+          "situation": "Trzy kubki z jednej partii są suche z zewnątrz; jeden ma bardzo grube dno. Bez potwierdzenia dostatecznego wyschnięcia dna nie należy wkładać go wraz z pozostałymi w zwykłym cyklu. W protokole zapisuje się decyzję o odłożeniu sztuki do dalszej kontroli.",
+          "question": "Która sytuacja jest szczególnie ryzykowna przed pierwszym wypałem?",
+          "options": [
+            "Jednolita dokumentacja partii.",
+            "Sprawdzenie instrukcji masy i pieca.",
+            "Grube, wilgotne wnętrze wyrobu, choć powierzchnia wydaje się sucha.",
+            "Odkładanie niepewnej sztuki do dodatkowej kontroli."
+          ],
+          "correct": 2,
+          "example": "Grube, wilgotne wnętrze wyrobu, choć powierzchnia wydaje się sucha.",
+          "explanation": "Para wytwarzana wewnątrz niedosuszonego wyrobu może powodować poważne pęknięcia lub rozpad podczas wypału.",
+          "feedback": [
+            "Nie. Para wytwarzana wewnątrz niedosuszonego wyrobu może powodować poważne pęknięcia lub rozpad podczas wypału.",
+            "Nie. Para wytwarzana wewnątrz niedosuszonego wyrobu może powodować poważne pęknięcia lub rozpad podczas wypału.",
+            "Tak. Para wytwarzana wewnątrz niedosuszonego wyrobu może powodować poważne pęknięcia lub rozpad podczas wypału.",
+            "Nie. Para wytwarzana wewnątrz niedosuszonego wyrobu może powodować poważne pęknięcia lub rozpad podczas wypału."
+          ],
+          "task": "Narysuj prosty wykres: temperatura na osi pionowej, czas na poziomej. Zaznacz etapy programu bez wprowadzania konkretnych parametrów do rzeczywistego pieca. Przygotuj checklistę przyjęcia wyrobów do wypału: identyfikator, masa, grubość, stan wysuszenia, instrukcja, operator i decyzja."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 7,
+      "title_pl": "8. Szkliwo, angoba i powierzchnia: co daje każda warstwa",
+      "material": {
+        "module": 2,
+        "editorial_status": "review_needed",
+        "curriculum_revision": 3,
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Nie myl szkliwa z angobą",
+            "text": "Szkliwo jest powłoką, która podczas właściwego wypału tworzy warstwę szklistą na powierzchni. Angoba to cienka warstwa materiału ceramicznego o składzie i zastosowaniu zależnym od technologii; może służyć zmianie barwy lub faktury. Farba dekoracyjna nie jest automatycznie szkliwem ani powłoką dopuszczoną do żywności."
+          },
+          {
+            "heading": "Zgodność masy i szkliwa",
+            "text": "Szkliwo musi pasować do masy pod kątem właściwości termicznych i warunków wypału. Sam fakt, że produkt ma etykietę 'szkliwo przezroczyste', nie gwarantuje przydatności do każdej gliny ani możliwości zastosowania na powierzchniach mających kontakt z jedzeniem."
+          },
+          {
+            "heading": "Grubość i czystość podstawy",
+            "text": "Nierównomiernie nałożone szkliwo może zaciekać, gromadzić się lub tworzyć niepożądane defekty. W pracowni wykonuje się próby zestawu masa–szkliwo, dokumentuje produkt, dostawcę, sposób nakładania i wynik wypału. Warunki zależą od konkretnych receptur, nie od intuicyjnej zasady 'im więcej, tym lepiej'."
+          },
+          {
+            "heading": "Przykład problemu",
+            "text": "Uczeń ma biskwit po wypale, ale wybiera szkliwo z innego systemu i nie sprawdza zakresu jego zastosowania. Po wypale powstają wady. Właściwa analiza zaczyna się od danych producenta, zgodności masy i szkliwa oraz historii zastosowanego programu."
+          },
+          {
+            "heading": "Ćwiczenie bezpiecznej analizy",
+            "text": "Porównaj trzy etykiety hipotetycznych materiałów: szkliwo, angoba i farba dekoracyjna. Uzupełnij tabelę: skład/typ, etap nakładania, wymagana technologia, przeznaczenie, ograniczenia i wymagane testy. Rozdziel zastosowanie dekoracyjne od kontaktu z żywnością."
+          }
+        ],
+        "illustration": "material-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.digitalfire.com/glossary/glaze%2Bfit"
+          }
+        ],
+        "learning": {
+          "intro": "Szkliwo jest powłoką, która podczas właściwego wypału tworzy warstwę szklistą na powierzchni. Angoba to cienka warstwa materiału ceramicznego o składzie i zastosowaniu zależnym od technologii; może służyć zmianie barwy lub faktury. Farba dekoracyjna nie jest automatycznie szkliwem ani powłoką dopuszczoną do żywności.",
+          "situation": "Uczeń ma biskwit po wypale, ale wybiera szkliwo z innego systemu i nie sprawdza zakresu jego zastosowania. Po wypale powstają wady. Właściwa analiza zaczyna się od danych producenta, zgodności masy i szkliwa oraz historii zastosowanego programu.",
+          "question": "Co jest najważniejszym kryterium przy doborze szkliwa do naczynia użytkowego?",
+          "options": [
+            "Wyłącznie podobny kolor surowego proszku.",
+            "Zgodność z masą i zakresem wypału oraz potwierdzona przydatność do kontaktu z żywnością.",
+            "Największa możliwa grubość każdej warstwy.",
+            "To, że szkliwo ma taką samą nazwę handlową jak glina."
+          ],
+          "correct": 1,
+          "example": "Zgodność z masą i zakresem wypału oraz potwierdzona przydatność do kontaktu z żywnością.",
+          "explanation": "Właściwości szkliwa i masy oraz bezpieczeństwo zastosowania muszą być potwierdzone dla konkretnego układu, nie oceniane po kolorze.",
+          "feedback": [
+            "Nie. Właściwości szkliwa i masy oraz bezpieczeństwo zastosowania muszą być potwierdzone dla konkretnego układu, nie oceniane po kolorze.",
+            "Tak. Właściwości szkliwa i masy oraz bezpieczeństwo zastosowania muszą być potwierdzone dla konkretnego układu, nie oceniane po kolorze.",
+            "Nie. Właściwości szkliwa i masy oraz bezpieczeństwo zastosowania muszą być potwierdzone dla konkretnego układu, nie oceniane po kolorze.",
+            "Nie. Właściwości szkliwa i masy oraz bezpieczeństwo zastosowania muszą być potwierdzone dla konkretnego układu, nie oceniane po kolorze."
+          ],
+          "task": "Porównaj trzy etykiety hipotetycznych materiałów: szkliwo, angoba i farba dekoracyjna. Uzupełnij tabelę: skład/typ, etap nakładania, wymagana technologia, przeznaczenie, ograniczenia i wymagane testy. Rozdziel zastosowanie dekoracyjne od kontaktu z żywnością."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 8,
+      "title_pl": "9. Piec ceramiczny i bezpieczeństwo: wentylacja, pył, temperatura",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "curriculum_revision": 3,
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Dwa różne zagrożenia",
+            "text": "W pracowni występują co najmniej dwa niezależne rodzaje ryzyka: wdychanie drobnego pyłu zawierającego krystaliczną krzemionkę oraz praca z gorącym piecem, energią elektryczną lub gazem. Ochrona przed jednym zagrożeniem nie usuwa drugiego; potrzebny jest plan bezpieczeństwa oparty na rzeczywistym procesie."
+          },
+          {
+            "heading": "Pył ceramiczny",
+            "text": "Suche zamiatanie, szlifowanie i dozowanie proszków może zwiększać narażenie. Procedura powinna ograniczać emisję u źródła, używać właściwej wentylacji i metod sprzątania na mokro, a wymagane środki ochrony dobierać po ocenie ryzyka. Kurs online nie upoważnia do samodzielnej pracy w zapylonym stanowisku."
+          },
+          {
+            "heading": "Piec i przestrzeń wokół",
+            "text": "Piec musi mieć odpowiednie odstępy od materiałów palnych i elementów konstrukcyjnych, skuteczną wentylację oraz zabezpieczenia zgodne z instrukcją producenta. Nie należy składować kartonów lub drewna blisko jego powierzchni. Występują gorące powierzchnie i ryzyko pożaru, zwłaszcza przy wadliwym ustawieniu albo kontroli."
+          },
+          {
+            "heading": "Przykład awarii organizacyjnej",
+            "text": "W pracowni piec stoi przy drewnianej zabudowie, a obok odmierza się suchą masę szkliwną bez kontroli pyłu. Nie wystarczy kupić rękawic żaroodpornych — trzeba oddzielnie rozwiązać układ przestrzeni, wentylację, pylenie i procedurę pracy."
+          },
+          {
+            "heading": "Ćwiczenie BHP",
+            "text": "Narysuj plan warsztatu z kołem, strefą mokrą, składowaniem suchych surowców, miejscem odpylania, piecem i drogą ewakuacji. Dla każdej strefy zapisz zagrożenie, środek kontroli i odpowiedzialną osobę. Nie podawaj uniwersalnego odstępu pieca bez znajomości jego modelu."
+          }
+        ],
+        "illustration": "mastery-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.hse.gov.uk/non-metallic-minerals/kilns-in-schools.htm"
+          }
+        ],
+        "learning": {
+          "intro": "W pracowni występują co najmniej dwa niezależne rodzaje ryzyka: wdychanie drobnego pyłu zawierającego krystaliczną krzemionkę oraz praca z gorącym piecem, energią elektryczną lub gazem. Ochrona przed jednym zagrożeniem nie usuwa drugiego; potrzebny jest plan bezpieczeństwa oparty na rzeczywistym procesie.",
+          "situation": "W pracowni piec stoi przy drewnianej zabudowie, a obok odmierza się suchą masę szkliwną bez kontroli pyłu. Nie wystarczy kupić rękawic żaroodpornych — trzeba oddzielnie rozwiązać układ przestrzeni, wentylację, pylenie i procedurę pracy.",
+          "question": "Dlaczego same rękawice termiczne nie rozwiązują problemu bezpieczeństwa pieca i glazury?",
+          "options": [
+            "Ponieważ ochronę przed pyłem, wentylację i odległości od materiałów palnych trzeba ocenić niezależnie.",
+            "Ponieważ piece ceramiczne nie wytwarzają ciepła zewnętrznego.",
+            "Ponieważ każda glina jest wolna od krzemionki.",
+            "Ponieważ zwiększenie liczby rękawic zastępuje system wentylacji."
+          ],
+          "correct": 0,
+          "example": "Ponieważ ochronę przed pyłem, wentylację i odległości od materiałów palnych trzeba ocenić niezależnie.",
+          "explanation": "Zagrożenia pyłowe, cieplne, elektryczne i pożarowe wymagają odrębnych środków technicznych i organizacyjnych.",
+          "feedback": [
+            "Tak. Zagrożenia pyłowe, cieplne, elektryczne i pożarowe wymagają odrębnych środków technicznych i organizacyjnych.",
+            "Nie. Zagrożenia pyłowe, cieplne, elektryczne i pożarowe wymagają odrębnych środków technicznych i organizacyjnych.",
+            "Nie. Zagrożenia pyłowe, cieplne, elektryczne i pożarowe wymagają odrębnych środków technicznych i organizacyjnych.",
+            "Nie. Zagrożenia pyłowe, cieplne, elektryczne i pożarowe wymagają odrębnych środków technicznych i organizacyjnych."
+          ],
+          "task": "Narysuj plan warsztatu z kołem, strefą mokrą, składowaniem suchych surowców, miejscem odpylania, piecem i drogą ewakuacji. Dla każdej strefy zapisz zagrożenie, środek kontroli i odpowiedzialną osobę. Nie podawaj uniwersalnego odstępu pieca bez znajomości jego modelu."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 9,
+      "title_pl": "10. Wady szkliwa: spękania (crazing) i odpryski (shivering)",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "curriculum_revision": 3,
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Dwa objawy, inne mechanizmy",
+            "text": "Crazing to sieć drobnych spękań szkliwa często związana z jego zbyt dużym współczynnikiem rozszerzalności cieplnej względem czerepu. Shivering to odpryskiwanie fragmentów szkliwa z krawędzi, możliwe przy zbyt dużych naprężeniach ściskających. Te zjawiska nie są identyczne i wymagają innych kierunków korekty."
+          },
+          {
+            "heading": "Zrozum zmianę wymiaru",
+            "text": "Podczas ogrzewania i chłodzenia masa ceramiczna oraz szkliwo rozszerzają się i kurczą. Ponieważ są połączone, różnica ich reakcji powoduje naprężenia. Problemu nie rozwiązuje zawsze ponowne ogrzanie tej samej sztuki; należy przetestować zgodność konkretnego układu i program technologiczny."
+          },
+          {
+            "heading": "Dlaczego odprysk jest poważny",
+            "text": "Płatek szkliwa odrywający się od krawędzi naczynia może być ostry i trafić do żywności. Naczynia z takimi wadami nie należy dopuszczać do użytkowania spożywczego. Crazing również wymaga oceny, ponieważ nieprawidłowe dopasowanie może pogarszać trwałość i higienę."
+          },
+          {
+            "heading": "Przykład rozpoznania",
+            "text": "Na kubku A widoczna jest gęsta siateczka cienkich pęknięć; na kubku B brakuje fragmentów szkliwa przy brzegu. W protokole zapisz osobno crazing dla A i shivering dla B, a następnie sprawdź materiały i wyniki próbek."
+          },
+          {
+            "heading": "Ćwiczenie diagnozy",
+            "text": "Przygotuj rysunki powierzchni: siatka pęknięć i odprysk z krawędzi. Zestaw dla nich objaw, mechanizm prawdopodobny, dowód wymagający potwierdzenia, skutek i decyzję o wycofaniu wyrobu."
+          }
+        ],
+        "illustration": "diagnosis-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.digitalfire.com/glossary/glaze%2Bfit"
+          }
+        ],
+        "learning": {
+          "intro": "Crazing to sieć drobnych spękań szkliwa często związana z jego zbyt dużym współczynnikiem rozszerzalności cieplnej względem czerepu. Shivering to odpryskiwanie fragmentów szkliwa z krawędzi, możliwe przy zbyt dużych naprężeniach ściskających. Te zjawiska nie są identyczne i wymagają innych kierunków korekty.",
+          "situation": "Na kubku A widoczna jest gęsta siateczka cienkich pęknięć; na kubku B brakuje fragmentów szkliwa przy brzegu. W protokole zapisz osobno crazing dla A i shivering dla B, a następnie sprawdź materiały i wyniki próbek.",
+          "question": "Na krawędzi kubka odrywają się drobne płatki szkliwa. Którą wadę należy rozważyć?",
+          "options": [
+            "Crazing, wyłącznie siateczka pęknięć bez odprysku.",
+            "Poprawne stopienie szkliwa potwierdzające trwałość.",
+            "Shivering — odpryski w wyniku niedopasowania termicznego szkliwa i masy.",
+            "Wyłącznie nierównomierne suszenie jeszcze mokrej gliny."
+          ],
+          "correct": 2,
+          "example": "Shivering — odpryski w wyniku niedopasowania termicznego szkliwa i masy.",
+          "explanation": "Shivering może dawać ostre odpryski szkliwa na krawędziach i stanowić istotne ryzyko dla naczynia użytkowego.",
+          "feedback": [
+            "Nie. Shivering może dawać ostre odpryski szkliwa na krawędziach i stanowić istotne ryzyko dla naczynia użytkowego.",
+            "Nie. Shivering może dawać ostre odpryski szkliwa na krawędziach i stanowić istotne ryzyko dla naczynia użytkowego.",
+            "Tak. Shivering może dawać ostre odpryski szkliwa na krawędziach i stanowić istotne ryzyko dla naczynia użytkowego.",
+            "Nie. Shivering może dawać ostre odpryski szkliwa na krawędziach i stanowić istotne ryzyko dla naczynia użytkowego."
+          ],
+          "task": "Przygotuj rysunki powierzchni: siatka pęknięć i odprysk z krawędzi. Zestaw dla nich objaw, mechanizm prawdopodobny, dowód wymagający potwierdzenia, skutek i decyzję o wycofaniu wyrobu."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 10,
+      "title_pl": "11. Naczynia użytkowe: nasiąkliwość, pęknięcia i kontrola jakości",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "curriculum_revision": 3,
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Wygląd to tylko początek",
+            "text": "Gotowy produkt musi odpowiadać zadeklarowanemu przeznaczeniu. Miska ozdobna nie podlega tym samym wymaganiom co kubek do gorących napojów. Dla funkcji użytkowej liczy się prawidłowy wypał, odporność na normalne warunki, czystość, nieszkodliwość materiałów i zgodność z wymaganiami kontaktu z żywnością."
+          },
+          {
+            "heading": "Co zapisuje kontrola",
+            "text": "Protokół powinien wskazywać masę ceramiczną, dostawcę, szkliwo, serię wypału, kontrolę wymiaru, pęknięcia, odpryski i decyzję o dopuszczeniu. Przy produkcji żywnościowej należy prowadzić stosowne testy i dokumenty zgodności. 'Nie zawiera ołowiu' na jednym składniku nie oznacza automatycznie, że całe naczynie jest bezpieczne."
+          },
+          {
+            "heading": "Prosty przykład pomiaru",
+            "text": "W partii 10 kubków projekt przewiduje wysokość 100±3 mm. Pomiar pierwszej sztuki wynosi 104 mm — przekracza dopuszczalny zakres 97–103 mm. Nie można uznać wymiaru za zgodny, nawet jeżeli szkliwo wygląda perfekcyjnie."
+          },
+          {
+            "heading": "Kiedy wycofać wyrób",
+            "text": "Pęknięcie przez ściankę, odpryskujące szkliwo, ostre krawędzie lub niepotwierdzone bezpieczeństwo materiału są powodami do wstrzymania wydania zgodnie z ustalonymi kryteriami. Należy oddzielić naprawę kosmetyczną od wady mogącej naruszać bezpieczeństwo produktu."
+          },
+          {
+            "heading": "Ćwiczenie odbiorowe",
+            "text": "Zbuduj protokół dla partii 10 naczyń z 10 kryteriami. Wprowadź trzy niezgodności: wymiar 104 mm zamiast dopuszczalnych 97–103 mm, odprysk szkliwa i brak karty zastosowanego szkliwa. Wskaż, które sztuki wymagają zatrzymania i jakich dowodów brakuje."
+          }
+        ],
+        "illustration": "mastery-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.digitalfire.com/glossary/glaze%2Bfit"
+          }
+        ],
+        "learning": {
+          "intro": "Gotowy produkt musi odpowiadać zadeklarowanemu przeznaczeniu. Miska ozdobna nie podlega tym samym wymaganiom co kubek do gorących napojów. Dla funkcji użytkowej liczy się prawidłowy wypał, odporność na normalne warunki, czystość, nieszkodliwość materiałów i zgodność z wymaganiami kontaktu z żywnością.",
+          "situation": "Pęknięcie przez ściankę, odpryskujące szkliwo, ostre krawędzie lub niepotwierdzone bezpieczeństwo materiału są powodami do wstrzymania wydania zgodnie z ustalonymi kryteriami. Należy oddzielić naprawę kosmetyczną od wady mogącej naruszać bezpieczeństwo produktu.",
+          "question": "Projekt kubka zakłada 100 ±3 mm. Czy sztuka o wysokości 104 mm spełnia tolerancję wymiarową?",
+          "options": [
+            "Tak, ponieważ różnica 4 mm jest mniejsza niż 5%.",
+            "Tak, jeżeli kolor szkliwa jest zgodny.",
+            "Nie da się tego ocenić, bo tolerancja nie określa granic.",
+            "Nie: przedział dopuszczalny to 97–103 mm."
+          ],
+          "correct": 3,
+          "example": "Nie: przedział dopuszczalny to 97–103 mm.",
+          "explanation": "100±3 mm oznacza granice 97 i 103 mm; 104 mm jest poza przedziałem.",
+          "feedback": [
+            "Nie. 100±3 mm oznacza granice 97 i 103 mm; 104 mm jest poza przedziałem.",
+            "Nie. 100±3 mm oznacza granice 97 i 103 mm; 104 mm jest poza przedziałem.",
+            "Nie. 100±3 mm oznacza granice 97 i 103 mm; 104 mm jest poza przedziałem.",
+            "Tak. 100±3 mm oznacza granice 97 i 103 mm; 104 mm jest poza przedziałem."
+          ],
+          "task": "Zbuduj protokół dla partii 10 naczyń z 10 kryteriami. Wprowadź trzy niezgodności: wymiar 104 mm zamiast dopuszczalnych 97–103 mm, odprysk szkliwa i brak karty zastosowanego szkliwa. Wskaż, które sztuki wymagają zatrzymania i jakich dowodów brakuje."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 11,
+      "title_pl": "12. Projekt końcowy: od rysunku kubka do karty jakości",
+      "material": {
+        "module": 3,
+        "editorial_status": "review_needed",
+        "curriculum_revision": 3,
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Zdefiniuj wymaganie",
+            "text": "Masz zaprojektować kubek o wysokości 100 mm i średnicy zewnętrznej 90 mm po wypale, z wygodną krawędzią i uchwytem. W ćwiczeniu przyjmij hipotetyczny skurcz liniowy 12%, ale przed realnym wykonaniem musisz odczytać zakres masy i przetestować próbkę. Wyrób docelowy ma spełniać wymagania dla zamierzonego kontaktu z żywnością."
+          },
+          {
+            "heading": "Wymiary w stanie mokrym",
+            "text": "Dla obu wymiarów zastosuj formułę X_początkowy=X_końcowy/(1−0,12). Wysokość: 100/0,88≈113,6 mm; średnica: 90/0,88≈102,3 mm. Rzeczywisty projekt musi ponadto wskazywać grubość ściany, dno, mocowanie ucha i przyjętą metodę formowania."
+          },
+          {
+            "heading": "Plan procesu i jakości",
+            "text": "W dokumencie rozdziel: przygotowanie masy, formowanie, łączenie ucha, suszenie, ocena przed biskwitem, pierwszy wypał, ewentualne szkliwienie, drugi wypał oraz odbiór. Dla każdego etapu wskaż ryzyko: pył, pęknięcie suszenia, niedosuszenie, niezgodność szkliwa lub wada użytkowa."
+          },
+          {
+            "heading": "Scenariusz z wadą",
+            "text": "Po wypale kubek ma prawidłową wysokość, ale przy krawędzi odrywa się mały płatek szkliwa. Pomimo zgodnego wymiaru trzeba wyrób wycofać z użytkowania spożywczego i sprawdzić przyczynę w dopasowaniu szkliwa i masy. Kontrola wymiaru nie zastępuje kontroli bezpieczeństwa."
+          },
+          {
+            "heading": "Praca końcowa",
+            "text": "Oddaj przekrój z dwoma wymiarami docelowymi, rachunek skurczu, kartę masy i szkliwa z polami na dokumentację, plan procesu oraz dziesięciopunktowy protokół odbioru. Odpowiedz pisemnie: co zrobiłbyś z kubkiem z odpryskiem i jak zmienisz proces w następnej próbie."
+          }
+        ],
+        "illustration": "mastery-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://openlearning.aalto.fi/course/view.php?id=110&section=13"
+          }
+        ],
+        "learning": {
+          "intro": "Masz zaprojektować kubek o wysokości 100 mm i średnicy zewnętrznej 90 mm po wypale, z wygodną krawędzią i uchwytem. W ćwiczeniu przyjmij hipotetyczny skurcz liniowy 12%, ale przed realnym wykonaniem musisz odczytać zakres masy i przetestować próbkę. Wyrób docelowy ma spełniać wymagania dla zamierzonego kontaktu z żywnością.",
+          "situation": "Po wypale kubek ma prawidłową wysokość, ale przy krawędzi odrywa się mały płatek szkliwa. Pomimo zgodnego wymiaru trzeba wyrób wycofać z użytkowania spożywczego i sprawdzić przyczynę w dopasowaniu szkliwa i masy. Kontrola wymiaru nie zastępuje kontroli bezpieczeństwa.",
+          "question": "W zadaniu skurcz przyjęto jako 12%; jaka średnica początkowa daje teoretycznie 90 mm po wypale?",
+          "options": [
+            "79,2 mm.",
+            "Około 102,3 mm.",
+            "90 mm, bo skurcz dotyczy wyłącznie wysokości.",
+            "112 mm dokładnie, niezależnie od danych."
+          ],
+          "correct": 1,
+          "example": "Około 102,3 mm.",
+          "explanation": "90/0,88 ≈ 102,27 mm; model dotyczy obu wymiarów liniowych, ale musi być zweryfikowany próbą.",
+          "feedback": [
+            "Nie. 90/0,88 ≈ 102,27 mm; model dotyczy obu wymiarów liniowych, ale musi być zweryfikowany próbą.",
+            "Tak. 90/0,88 ≈ 102,27 mm; model dotyczy obu wymiarów liniowych, ale musi być zweryfikowany próbą.",
+            "Nie. 90/0,88 ≈ 102,27 mm; model dotyczy obu wymiarów liniowych, ale musi być zweryfikowany próbą.",
+            "Nie. 90/0,88 ≈ 102,27 mm; model dotyczy obu wymiarów liniowych, ale musi być zweryfikowany próbą."
+          ],
+          "task": "Oddaj przekrój z dwoma wymiarami docelowymi, rachunek skurczu, kartę masy i szkliwa z polami na dokumentację, plan procesu oraz dziesięciopunktowy protokół odbioru. Odpowiedz pisemnie: co zrobiłbyś z kubkiem z odpryskiem i jak zmienisz proces w następnej próbie."
+        }
+      }
+    }
+  ]
+}
