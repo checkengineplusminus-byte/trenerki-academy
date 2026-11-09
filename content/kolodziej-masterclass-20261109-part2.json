@@ -1,0 +1,494 @@
+{
+  "course_slug": "kolodziej",
+  "revision": 6,
+  "lessons": [
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 8,
+      "title_pl": "9. Obręcz żelazna: rozszerzalność i pasowanie skurczowe",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-obrecz",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Zewnętrzna metalowa obręcz chroni dzwona i może utrzymywać drewniane segmenty koła w docisku. Historycznie przygotowywano ciągły pierścień metalowy, a kowal nagrzewał go, aby umożliwić osadzenie na drewnianym obwodzie. Przy chłodzeniu metal kurczył się, obejmując koło. To nie jest jedynie malowana taśma ochronna ani dowolnie dobrany pierścień."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "Narysuj trzy stany: zimna obręcz, rozszerzona pod wpływem ciepła, ponownie schłodzona. Sprawdź, dlaczego wynik zależy od realnego obwodu, stanu dzwon, metalu i warunków technicznych. Wartości temperatur, spoiny i interferencji nie można przenosić z przypadkowego przykładu: konieczne jest doświadczenie kowala oraz ocena konstrukcji."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Dla idealnego D=900 mm teoretyczne C≈2827 mm. Nie jest to długość produkcyjna metalowej obręczy, ponieważ brakuje wymiaru osadzenia, właściwości materiału i wymaganego pasowania."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Obręcz starego koła jest luźna po latach magazynowania; ktoś proponuje ją bez badań mocno nagrzać. Rozpoznaj ryzyko pęknięcia drewna, poparzeń i niekontrolowanego docisku."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Narysuj stan przed, w trakcie i po montażu. Podpisz zmianę wymiaru, docisk i cztery ryzyka. Wypisz, jakie dane musi posiadać fachowiec, by rozstrzygnąć sposób naprawy."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://templetonmuseum.com/portfolio-items/blacksmith-shop/"
+          }
+        ],
+        "learning": {
+          "intro": "Zewnętrzna metalowa obręcz chroni dzwona i może utrzymywać drewniane segmenty koła w docisku. Historycznie przygotowywano ciągły pierścień metalowy, a kowal nagrzewał go, aby umożliwić osadzenie na drewnianym obwodzie. Przy chłodzeniu metal kurczył się, obejmując koło. To nie jest jedynie malowana taśma ochronna ani dowolnie dobrany pierścień.",
+          "situation": "Obręcz starego koła jest luźna po latach magazynowania; ktoś proponuje ją bez badań mocno nagrzać. Rozpoznaj ryzyko pęknięcia drewna, poparzeń i niekontrolowanego docisku.",
+          "task": "Narysuj stan przed, w trakcie i po montażu. Podpisz zmianę wymiaru, docisk i cztery ryzyka. Wypisz, jakie dane musi posiadać fachowiec, by rozstrzygnąć sposób naprawy.",
+          "question": "Dlaczego gorącą obręcz można było nałożyć, a po ostygnięciu uzyskać docisk?",
+          "options": [
+            "Ponieważ na gorąco metal zawsze kurczy się.",
+            "Ponieważ drewno nigdy nie zmienia wymiarów.",
+            "Ponieważ nagrzanie zwiększa rozmiar pierścienia, a schłodzenie go zmniejsza.",
+            "Ponieważ dowolna średnica obręczy pasuje do każdego koła."
+          ],
+          "correct": 2,
+          "example": "Ponieważ nagrzanie zwiększa rozmiar pierścienia, a schłodzenie go zmniejsza.",
+          "explanation": "To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
+          "feedback": [
+            "Nie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
+            "Nie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
+            "Poprawnie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
+            "Nie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 9,
+      "title_pl": "10. Traveler — przyrząd do pomiaru i porównania obwodu",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-obwod",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Traveler, zwany też kołem pomiarowym kołodzieja, był toczony wzdłuż drewnianego obwodu, a następnie po pasie żelaza. Znacznik punktu startowego i liczba pełnych oraz niepełnych obrotów pozwalały przenosić pomiar. Rzeczywiste koło bywa mniej idealne niż model C=πD; oba sposoby dostarczają informacji do porównania."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "W dydaktycznym modelu przyrząd o średnicy 100 mm przebywa w jednym obrocie π×100≈314,16 mm. Pięć obrotów bez poślizgu to około 1571 mm. Podczas praktycznego pomiaru zapisuje się początek, kierunek toczenia, poślizg i błędy odczytu; realnej obręczy nie wymiaruje się jedynie na podstawie szkolnego równania."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Dla D=900 mm teoretyczne C≈2827,4 mm, lecz przyrząd na nierównym kole pokazuje 2818 mm. Różnica około 9,4 mm jest sygnałem do ponownego pomiaru, a nie gotowym parametrem docisku."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Praktykant pomylił liczbę pełnych obrotów travelera z liczbą obrotów koła wozu. Zaprojektuj zapis pomiarowy, który rozdziela oba pojęcia."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Narysuj traveler i jego znacznik. Policz dystans 5 obrotów dla d=100 mm oraz porównaj obwód teoretyczny i zmierzony. Podaj trzy źródła możliwego błędu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://dominycollections.winterthur.org/tools-of-the-trade/woodworking/traveler/"
+          }
+        ],
+        "learning": {
+          "intro": "Traveler, zwany też kołem pomiarowym kołodzieja, był toczony wzdłuż drewnianego obwodu, a następnie po pasie żelaza. Znacznik punktu startowego i liczba pełnych oraz niepełnych obrotów pozwalały przenosić pomiar. Rzeczywiste koło bywa mniej idealne niż model C=πD; oba sposoby dostarczają informacji do porównania.",
+          "situation": "Praktykant pomylił liczbę pełnych obrotów travelera z liczbą obrotów koła wozu. Zaprojektuj zapis pomiarowy, który rozdziela oba pojęcia.",
+          "task": "Narysuj traveler i jego znacznik. Policz dystans 5 obrotów dla d=100 mm oraz porównaj obwód teoretyczny i zmierzony. Podaj trzy źródła możliwego błędu.",
+          "question": "Traveler o średnicy 100 mm przetoczył się bez poślizgu przez pięć pełnych obrotów. Jaka jest droga?",
+          "options": [
+            "500 mm.",
+            "Około 1571 mm.",
+            "314 mm.",
+            "Około 3142 mm."
+          ],
+          "correct": 1,
+          "example": "Około 1571 mm.",
+          "explanation": "5×π×100≈1571 mm.",
+          "feedback": [
+            "Nie. 5×π×100≈1571 mm.",
+            "Poprawnie. 5×π×100≈1571 mm.",
+            "Nie. 5×π×100≈1571 mm.",
+            "Nie. 5×π×100≈1571 mm."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 10,
+      "title_pl": "11. Piasta, oś i statyczna droga obciążeń",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-przekroj",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Piasta współpracuje z osią i tworzy centralną strefę przenoszenia sił. Dawne rozwiązania miały różne tuleje, czopy i zabezpieczenia. Nie zakładaj, że każde historyczne koło ma identyczne smarowanie, łożyskowanie i luz. Obciążenie przechodzi przez konstrukcję do podłoża, a nierówna droga i zakręty dodatkowo obciążają połączenia."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "Na schemacie zaznacz oś, piastę, otwór, szprychy i reakcję podłoża. W uproszczonym modelu masy 600 kg równomiernie rozłożonej na 4 koła przypada 150 kg na koło. Przy g=9,81 m/s² jest to około 1472 N statycznej siły ciężaru. Prawdziwy nacisk może być wyższy podczas jazdy lub nierównego rozłożenia ładunku."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Model 600/4=150 kg nie wyznacza dopuszczalnej nośności piasty. Wartość 1472 N jest tylko wycinkiem obliczeń, bez dynamicznego obciążenia i kontroli zużycia osi."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "W piaście istnieje pęknięcie przy otworze i widoczny luz. Sama wymiana metalowej obręczy nie rozwiązuje problemu łożyskowania ani oceny bezpieczeństwa pojazdu."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Zapisz pięć punktów kontroli osi i piasty: luz osiowy, promieniowy, ślady zużycia, pęknięcia i zabezpieczenie. Oblicz statyczny model 1472 N i wyjaśnij jego ograniczenia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://museum.wales/collections/online/object/c92c1c74-5534-34bf-91d5-b6ade7331896/Cart-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Piasta współpracuje z osią i tworzy centralną strefę przenoszenia sił. Dawne rozwiązania miały różne tuleje, czopy i zabezpieczenia. Nie zakładaj, że każde historyczne koło ma identyczne smarowanie, łożyskowanie i luz. Obciążenie przechodzi przez konstrukcję do podłoża, a nierówna droga i zakręty dodatkowo obciążają połączenia.",
+          "situation": "W piaście istnieje pęknięcie przy otworze i widoczny luz. Sama wymiana metalowej obręczy nie rozwiązuje problemu łożyskowania ani oceny bezpieczeństwa pojazdu.",
+          "task": "Zapisz pięć punktów kontroli osi i piasty: luz osiowy, promieniowy, ślady zużycia, pęknięcia i zabezpieczenie. Oblicz statyczny model 1472 N i wyjaśnij jego ograniczenia.",
+          "question": "Masa 600 kg równomiernie podzielona na 4 koła oznacza modelową statyczną siłę na koło równą...",
+          "options": [
+            "Około 1472 N.",
+            "600 N.",
+            "Około 5886 N.",
+            "150 N."
+          ],
+          "correct": 0,
+          "example": "Około 1472 N.",
+          "explanation": "600/4×9,81≈1471,5 N.",
+          "feedback": [
+            "Poprawnie. 600/4×9,81≈1471,5 N.",
+            "Nie. 600/4×9,81≈1471,5 N.",
+            "Nie. 600/4×9,81≈1471,5 N.",
+            "Nie. 600/4×9,81≈1471,5 N."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 11,
+      "title_pl": "12. Bicie boczne i promieniowe — pomiar odchyłek",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-bicie",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Bicie promieniowe opisuje różnice promienia przy obrocie względem osi, bicie boczne — zmienne przesuwanie obręczy w bok. Nie myl ich z zaprojektowaną talerzowatością, która jest stałą cechą geometrii koła. Każdy pomiar wymaga stabilnego punktu odniesienia, identyfikacji miejsca i zapisu wartości maksymalnej oraz minimalnej."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "W ćwiczeniu promień maksymalny wynosi 451 mm, minimalny 446 mm; rozrzut to 5 mm. Pomiar boczny od -2 do +3 mm także daje całkowity rozrzut 5 mm. To odczyty opisujące geometrię; bez dokumentacji producenta lub historycznych kryteriów nie można twierdzić, że 5 mm jest dopuszczalne lub niedopuszczalne."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Koło ma założony dish 20 mm i jednocześnie zmienne bicie boczne 5 mm. Nie prostuj zaprojektowanej talerzowatości w ramach eliminowania zmiennego bicia."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Operator obserwuje zmianę odległości od wskaźnika promieniowego, ale chce regulować boczne ustawienie piasty. Oceń, czy jego działanie odpowiada rodzajowi wady."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Na rysunku koła oznacz kierunek radialny i boczny. Oblicz dwie różnice 451−446 i 3−(-2). Zapisz, jak odróżnia się stały offset od zmiennego bicia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://merl.reading.ac.uk/explore/online-exhibitions/shoulder-to-the-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Bicie promieniowe opisuje różnice promienia przy obrocie względem osi, bicie boczne — zmienne przesuwanie obręczy w bok. Nie myl ich z zaprojektowaną talerzowatością, która jest stałą cechą geometrii koła. Każdy pomiar wymaga stabilnego punktu odniesienia, identyfikacji miejsca i zapisu wartości maksymalnej oraz minimalnej.",
+          "situation": "Operator obserwuje zmianę odległości od wskaźnika promieniowego, ale chce regulować boczne ustawienie piasty. Oceń, czy jego działanie odpowiada rodzajowi wady.",
+          "task": "Na rysunku koła oznacz kierunek radialny i boczny. Oblicz dwie różnice 451−446 i 3−(-2). Zapisz, jak odróżnia się stały offset od zmiennego bicia.",
+          "question": "Odchyłki boczne wynoszą od -2 mm do +3 mm. Ile wynosi cały rozrzut?",
+          "options": [
+            "1 mm.",
+            "2 mm.",
+            "3 mm.",
+            "5 mm."
+          ],
+          "correct": 3,
+          "example": "5 mm.",
+          "explanation": "3−(-2)=5 mm.",
+          "feedback": [
+            "Nie. 3−(-2)=5 mm.",
+            "Nie. 3−(-2)=5 mm.",
+            "Nie. 3−(-2)=5 mm.",
+            "Poprawnie. 3−(-2)=5 mm."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 12,
+      "title_pl": "13. Wilgotność, luźna obręcz i konserwacja koła",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-drewno",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Drewno pracuje pod wpływem zmian wilgotności, co może wpływać na napięcie połączeń. Wysuszenie drewnianego obwodu bywa historycznie wskazywaną przyczyną poluzowania metalowej obręczy. Woda i zmiany otoczenia mogą także przyspieszać korozję, odkształcenia i degradację drewna. Ocena wymaga obserwacji całego układu, a nie tylko samej powierzchni."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "Karta przeglądu uwzględnia stan dzwon, szprych i czopów, miejscowe pęknięcia, luz obręczy, ślady korozji, stan powierzchni łożyskowania oraz warunki składowania. Prace przy stalowej obręczy i czynnej bryczce pozostaw fachowcom. Zmoczenie drewna bez planu może spowodować nowe problemy."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Pemberton Museum opisuje narzędzie do skracania luźnej obręczy (tire upsetter), używane np. po wysychaniu koła. To świadectwo historii techniki, nie instrukcja współczesnej naprawy dla początkującego."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Po suchym lecie obręcz obraca się lekko względem drewnianego obwodu. Właściciel chce tylko nasmarować piastę. Wyjaśnij, dlaczego to inny problem i dlaczego koła nie należy używać przed kontrolą."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Opracuj checklistę dwunastu punktów: część, objaw, podejrzenie, pomiar, zdjęcie, decyzja. Odróżnij luźną obręcz od luzu piasty i pęknięcia szprychy."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://www.pembertonmuseum.org/objects/tire-upsetter/"
+          }
+        ],
+        "learning": {
+          "intro": "Drewno pracuje pod wpływem zmian wilgotności, co może wpływać na napięcie połączeń. Wysuszenie drewnianego obwodu bywa historycznie wskazywaną przyczyną poluzowania metalowej obręczy. Woda i zmiany otoczenia mogą także przyspieszać korozję, odkształcenia i degradację drewna. Ocena wymaga obserwacji całego układu, a nie tylko samej powierzchni.",
+          "situation": "Po suchym lecie obręcz obraca się lekko względem drewnianego obwodu. Właściciel chce tylko nasmarować piastę. Wyjaśnij, dlaczego to inny problem i dlaczego koła nie należy używać przed kontrolą.",
+          "task": "Opracuj checklistę dwunastu punktów: część, objaw, podejrzenie, pomiar, zdjęcie, decyzja. Odróżnij luźną obręcz od luzu piasty i pęknięcia szprychy.",
+          "question": "Jaka hipoteza jest sensowna przy poluzowanej obręczy po długim okresie wysychania?",
+          "options": [
+            "Drewno mogło zmienić wymiary i osłabić docisk obręczy.",
+            "Wysuszenie drewna zawsze zwiększa jego rozmiar.",
+            "Wszystkie czopy stają się automatycznie dłuższe.",
+            "Metalowa obręcz nie ma żadnej funkcji mechanicznej."
+          ],
+          "correct": 0,
+          "example": "Drewno mogło zmienić wymiary i osłabić docisk obręczy.",
+          "explanation": "Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
+          "feedback": [
+            "Poprawnie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
+            "Nie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
+            "Nie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
+            "Nie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 13,
+      "title_pl": "14. Konserwacja eksponatu a bezpieczny pojazd użytkowy",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-przekroj",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Restauracja historycznego obiektu nie oznacza automatycznego przywrócenia sprawności do przewozu osób. Zabytkowe koło ma cechy dokumentujące dawną technikę: ślady narzędzi, sygnatury, oryginalne powłoki i naprawy. Nierozważna wymiana wszystkich szprych lub intensywne szlifowanie może usunąć te informacje. Koło przeznaczone do ruchu wymaga osobnej oceny konstrukcji, osi, obciążeń i przepisów."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "W protokole konserwacji zapisz numer obiektu, stan przed pracą, zdjęcia, wymiary, materiały, ślady napraw, cel właściciela i niepewności. Odróżnij stabilizację eksponatu od naprawy funkcjonalnej. Dla przewozu ludzi niezbędna jest fachowa ocena całego pojazdu — rysunek edukacyjny nie nadaje dopuszczenia do jazdy."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Dwa koła wyglądają podobnie; pierwsze ma wisieć w muzeum, drugie ma pracować w zaprzęgu. W pierwszym ważne jest zachowanie autentyczności, w drugim dodatkowo potwierdzenie bezpieczeństwa ruchu i nośności."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Na starym kole znaleziono pęknięty czop, korozję i ślad wcześniejszego spawu. Klient chce po odbiorze zabrać pasażerów. Należy odmówić potwierdzenia sprawności do czasu kompetentnej oceny."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Przygotuj dwie karty zlecenia: ekspozycja i jazda. Wypisz cel, dokument, kryteria odbioru, wymagany specjalista i zakres odpowiedzialności."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://research.colonialwilliamsburg.org/Foundation/journal/Winter04-05/wheel.cfm"
+          }
+        ],
+        "learning": {
+          "intro": "Restauracja historycznego obiektu nie oznacza automatycznego przywrócenia sprawności do przewozu osób. Zabytkowe koło ma cechy dokumentujące dawną technikę: ślady narzędzi, sygnatury, oryginalne powłoki i naprawy. Nierozważna wymiana wszystkich szprych lub intensywne szlifowanie może usunąć te informacje. Koło przeznaczone do ruchu wymaga osobnej oceny konstrukcji, osi, obciążeń i przepisów.",
+          "situation": "Na starym kole znaleziono pęknięty czop, korozję i ślad wcześniejszego spawu. Klient chce po odbiorze zabrać pasażerów. Należy odmówić potwierdzenia sprawności do czasu kompetentnej oceny.",
+          "task": "Przygotuj dwie karty zlecenia: ekspozycja i jazda. Wypisz cel, dokument, kryteria odbioru, wymagany specjalista i zakres odpowiedzialności.",
+          "question": "Dlaczego estetycznie odnowione koło nie musi być bezpieczne do jazdy?",
+          "options": [
+            "Bo stare koła nigdy nie mają wartości muzealnej.",
+            "Bo wygląd nie potwierdza nośności połączeń, osi i całej konstrukcji.",
+            "Bo lakier zawsze usuwa pęknięcia.",
+            "Bo geometria koła nie ma wpływu na pracę pojazdu."
+          ],
+          "correct": 1,
+          "example": "Bo wygląd nie potwierdza nośności połączeń, osi i całej konstrukcji.",
+          "explanation": "Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
+          "feedback": [
+            "Nie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
+            "Poprawnie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
+            "Nie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
+            "Nie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 14,
+      "title_pl": "15. Kosztorys: materiał, uzysk i robocizna kołodzieja",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-geometria",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Kołodziej powinien umieć przygotować listę materiałów (BOM) oraz harmonogram. W przykładowym kole potrzeba jednej piasty, 16 szprych, 8 dzwon oraz metalowej obręczy. Wycena obejmuje nie tylko drewno i metal, ale również selekcję z wad, formowanie, obróbkę gniazd i czopów, pracę kowala, transport, odbiór i rezerwę na poprawki. Koszt bezpośredni to nie zawsze koszt całkowity."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "Przyjmij wyłącznie dla szkolnego przykładu: piasta 250 zł, szprychy 16×35=560 zł, dzwona 8×55=440 zł, obręcz 650 zł, materiały dodatkowe 100 zł i 16 h pracy×80=1280 zł. Suma wynosi 3280 zł. Gdy z 20 kandydatów na szprychy 4 odrzucono, uzysk wynosi 16/20=80%; przy wymaganych 16 dobrych sztukach modelowe zamówienie to 16/0,8=20 kandydatów."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Przy sprzedaży za 3500 zł i kosztach 3280 zł zostaje 220 zł na dalsze koszty, podatki, zysk lub ryzyko reklamacji. To nie jest zysk netto potwierdzony raportem."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Osoba planująca remont podała cenę 3500 zł jako swój zysk, bo nie rozdzieliła przychodu od kosztów. Zweryfikuj jej rachunek, dodając nieujęte koszty i status niepotwierdzonych cen."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Utwórz tabelę BOM: pozycja, ilość, koszt jednostkowy, koszt, odrzut, termin, właściciel zadania. Porównaj wariant z 12 i 16 szprychami i zaznacz, że ceny są hipotetyczne."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://www.hessenpark.de/en/lexikon/handwerk/vorfuehrungen/wagnerei/"
+          }
+        ],
+        "learning": {
+          "intro": "Kołodziej powinien umieć przygotować listę materiałów (BOM) oraz harmonogram. W przykładowym kole potrzeba jednej piasty, 16 szprych, 8 dzwon oraz metalowej obręczy. Wycena obejmuje nie tylko drewno i metal, ale również selekcję z wad, formowanie, obróbkę gniazd i czopów, pracę kowala, transport, odbiór i rezerwę na poprawki. Koszt bezpośredni to nie zawsze koszt całkowity.",
+          "situation": "Osoba planująca remont podała cenę 3500 zł jako swój zysk, bo nie rozdzieliła przychodu od kosztów. Zweryfikuj jej rachunek, dodając nieujęte koszty i status niepotwierdzonych cen.",
+          "task": "Utwórz tabelę BOM: pozycja, ilość, koszt jednostkowy, koszt, odrzut, termin, właściciel zadania. Porównaj wariant z 12 i 16 szprychami i zaznacz, że ceny są hipotetyczne.",
+          "question": "Cena sprzedaży 3500 zł, przykładowe koszty 3280 zł. Jaka pozostaje kwota przed pozostałymi kosztami i podatkami?",
+          "options": [
+            "3280 zł.",
+            "3500 zł.",
+            "220 zł.",
+            "780 zł."
+          ],
+          "correct": 2,
+          "example": "220 zł.",
+          "explanation": "3500−3280=220 zł, ale to niekoniecznie zysk netto.",
+          "feedback": [
+            "Nie. 3500−3280=220 zł, ale to niekoniecznie zysk netto.",
+            "Nie. 3500−3280=220 zł, ale to niekoniecznie zysk netto.",
+            "Poprawnie. 3500−3280=220 zł, ale to niekoniecznie zysk netto.",
+            "Nie. 3500−3280=220 zł, ale to niekoniecznie zysk netto."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "kolodziej",
+      "lesson_no": 15,
+      "title_pl": "16. Egzamin projektowy: koło do ekspozycji z kartą odbioru",
+      "material": {
+        "module": 4,
+        "curriculum_revision": 6,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "kolodziej-bicie",
+        "sections": [
+          {
+            "heading": "Zrozum zjawisko",
+            "text": "Zadanie końcowe integruje budowę, materiałoznawstwo, geometrię i kontrolę jakości. Projektuj wyłącznie model edukacyjny lub ekspozycyjny: D=900 mm, 16 szprych, 8 dzwon i jedna zewnętrzna obręcz. Uczeń przygotowuje widoki z przodu, z boku i przekrój przez piastę, listę części, tabelę ryzyk i projekt przeglądu. Brak danych o pasowaniu, tolerancjach i nośności trzeba jawnie wskazać zamiast wymyślać."
+          },
+          {
+            "heading": "Przeanalizuj technologię i dane",
+            "text": "Oblicz obwód C=900π≈2827,43 mm, rozstaw osi szprych 360/16=22,5°, łuk jednego dzwona C/8≈353,43 mm i odpowiadającą cięciwę 900 sin 22,5°≈344,42 mm. Wyjaśnij, dlaczego te liczby nie tworzą kompletnego rysunku wykonawczego ani instrukcji instalacji gorącej obręczy."
+          },
+          {
+            "heading": "Przykład techniczny",
+            "text": "Przy odbiorze widać pęknięcie czopa szprychy nr 4 i odczyt rozrzutu bicia bocznego 5 mm. Pierwszy objaw wymaga oceny materiału i przenoszenia sił; drugi odniesienia do przyjętych tolerancji. Nie można sumować ich w jedną kategorię wad."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Muzealny model ma zostać następnego dnia wykorzystany w czynnej bryczce. Uczeń ma wyraźnie wycofać zgodę na taki zamiar i wskazać, że konieczna jest profesjonalna ocena całego pojazdu."
+          },
+          {
+            "heading": "Zadanie z kryteriami",
+            "text": "Oddaj trzy widoki, cztery obliczenia, BOM, mapę co najmniej czterech usterek, 12-punktowy protokół odbioru oraz obronę decyzji o przeznaczeniu eksponatu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło muzealne / techniczne",
+            "url": "https://museum.wales/collections/online/object/c92c1c74-5534-34bf-91d5-b6ade7331896/Cart-wheel/"
+          }
+        ],
+        "learning": {
+          "intro": "Zadanie końcowe integruje budowę, materiałoznawstwo, geometrię i kontrolę jakości. Projektuj wyłącznie model edukacyjny lub ekspozycyjny: D=900 mm, 16 szprych, 8 dzwon i jedna zewnętrzna obręcz. Uczeń przygotowuje widoki z przodu, z boku i przekrój przez piastę, listę części, tabelę ryzyk i projekt przeglądu. Brak danych o pasowaniu, tolerancjach i nośności trzeba jawnie wskazać zamiast wymyślać.",
+          "situation": "Muzealny model ma zostać następnego dnia wykorzystany w czynnej bryczce. Uczeń ma wyraźnie wycofać zgodę na taki zamiar i wskazać, że konieczna jest profesjonalna ocena całego pojazdu.",
+          "task": "Oddaj trzy widoki, cztery obliczenia, BOM, mapę co najmniej czterech usterek, 12-punktowy protokół odbioru oraz obronę decyzji o przeznaczeniu eksponatu.",
+          "question": "Który komplet wyników odpowiada modelowi D=900 mm, 16 szprych i 8 dzwon?",
+          "options": [
+            "Obwód 900 mm i kąt 45°. ",
+            "Obwód 1800 mm i kąt 16°. ",
+            "Łuk 900 mm i kąt 30°. ",
+            "Obwód około 2827 mm i kąt 22,5°."
+          ],
+          "correct": 3,
+          "example": "Obwód około 2827 mm i kąt 22,5°.",
+          "explanation": "π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
+          "feedback": [
+            "Nie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
+            "Nie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
+            "Nie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
+            "Poprawnie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu."
+          ]
+        }
+      }
+    }
+  ]
+}
