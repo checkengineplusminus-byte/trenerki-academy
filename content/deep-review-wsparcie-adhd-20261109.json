@@ -1,0 +1,283 @@
+{
+  "course_slug": "wsparcie-adhd",
+  "review_status": "review_needed",
+  "reference": "https://www.nhs.uk/conditions/adhd-children-teenagers/",
+  "lessons": [
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 0,
+      "title_pl": "Czym jest ADHD i czym nie jest",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "ADHD jest zaburzeniem neurorozwojowym związanym z funkcjonowaniem uwagi, aktywności i kontroli impulsów. Nie jest synonimem lenistwa, złego wychowania ani jednolitej cechy każdej osoby. Objawy i ich wpływ różnią się z wiekiem i sytuacją, a diagnozę ustala wykwalifikowany specjalista."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Zamiast przyklejać etykietę opisz obserwację: 'uczeń trzy razy zgubił kolejny etap instrukcji w ciągu zadania'. Następnie sprawdź, czy podział zadania, jasne polecenie i materiał wizualny pomagają. Nie zamieniaj ćwiczenia kursowego w test diagnostyczny."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Dorosły mówi dziecku, że jest 'niegrzeczne', bo nie kończy długiego wieloetapowego zadania. Taka ocena nie tłumaczy mechanizmu trudności."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zapisz pięć obserwacji opisanych neutralnym językiem, bez diagnozowania i bez ocen charakteru."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 1,
+      "title_pl": "Uwaga, impulsywność i emocje",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Trudność z podtrzymaniem uwagi, wyborem priorytetu lub odroczeniem reakcji nie zawsze wygląda tak samo. Niekiedy osoba jest bardzo zaangażowana w ciekawą czynność, a traci wątek przy monotonnym zadaniu. Emocje mogą nasilać trudność, ale nie należy zakładać, że każda silna emocja wynika z ADHD."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Porównaj sytuacje: wieloetapowa instrukcja ustna i instrukcja podzielona na trzy zapisane kroki. Zapisz, kiedy pojawia się rozproszenie i jakie warunki otoczenia je wzmacniają. Uzgodnij z osobą, jakiej pomocy potrzebuje."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Uczeń umie rozwiązać zadanie matematyczne, lecz przepisując je traci numer strony i nie potrafi odnaleźć kolejnego kroku."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zaprojektuj kartę trzech kroków z miejscem odhaczania i bez kar za konieczność powtórzenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 2,
+      "title_pl": "Jasna komunikacja bez oceniania",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Polecenie 'ogarnij wszystko i się skup' nie wskazuje, co ma zostać zrobione. Pomocne może być jedno krótkie zadanie, konkretny punkt startowy i wizualny dowód ukończenia. Osoba z ADHD powinna uczestniczyć w wyborze systemu, który działa dla niej, a nie podporządkowywać się nieustannie zmieniającym się metodom."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Zamień ogólny komunikat na: 'Otwórz zeszyt na stronie 18, przeczytaj pierwsze polecenie i zaznacz, co jest niejasne'. Po wykonaniu zaproponuj następny etap. Sprawdź zrozumienie bez publicznego egzaminowania i porównywania z innymi."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Nauczyciel mówi: 'zrób całą pracę', a uczeń nie zaczyna, chociaż potrafi wykonać poszczególne części."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przepisz pięć wieloznacznych komunikatów na proste polecenia z czasem i sprawdzalnym wynikiem."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 3,
+      "title_pl": "Przyjazna organizacja dnia",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Rutyna ma zmniejszać liczbę decyzji i obciążeń pamięci roboczej, a nie wymuszać idealną punktualność w każdej sytuacji. Jedna stała lokalizacja rzeczy, czytelny kalendarz i ograniczenie liczby przypomnień mogą pomagać, gdy są regularnie używane."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Przygotuj tablicę: 'dziś', 'teraz', 'skończone'. Wybierz trzy czynności i umieść je w kolejności. Zadbaj o rezerwę na nieprzewidzianą zmianę. Jeśli system przestaje działać, sprawdź przyczynę, zamiast mnożyć nowe aplikacje."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Na telefonie ustawiono 18 alarmów, które dzwonią co pięć minut; osoba zaczyna je ignorować."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przygotuj uproszczony rozkład dnia z trzema stałymi kotwicami i jednym miejscem na elastyczność."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 4,
+      "title_pl": "Pomoc w rozpoczynaniu zadań",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Rozpoczęcie zadania wymaga rozpoznania celu, znalezienia pierwszej czynności i ograniczenia dystraktorów. Osoba może znać temat, ale mieć trudność z wejściem w pracę. Pomaga czasem wspólny start albo przygotowanie wszystkich potrzebnych materiałów, bez przejmowania całego zadania."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Rozbij 'napisz raport' na: otwórz plik, wpisz nagłówek, wklej listę danych, napisz pierwsze zdanie. Ustal, czy pierwsza czynność jest wykonalna w 2–5 minut; nie traktuj tego czasu jak nakazu terapeutycznego."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Pracownik odkłada zadanie od godziny, bo nie wie, gdzie ma rozpocząć przygotowanie prezentacji."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zaprojektuj ścieżkę pierwszych czterech kroków dla konkretnego zadania z punktem potwierdzenia startu."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 5,
+      "title_pl": "Przeciążenie i regulacja bodźców",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Hałas, ostre światło, wielozadaniowość lub ciągłe przerwania mogą zwiększać przeciążenie. Nie wszystkie osoby z ADHD mają ten sam profil wrażliwości; ustalenia muszą opierać się na preferencjach i obserwacjach, a nie na uniwersalnej liście zakazów."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Na mapie klasy lub biura zaznacz bodźce: rozmowy, ekran, przechodzących ludzi i oświetlenie. Ustal jedno niewielkie dostosowanie, np. spokojniejsze miejsce lub słuchawki, jeśli sytuacja i bezpieczeństwo pozwalają, a po tygodniu oceniaj efekt."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Dziecko odmawia pracy w głośnym pomieszczeniu, ale potrafi ją wykonać przy mniejszej liczbie przerw. Trzeba przeanalizować środowisko."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zbuduj kartę obserwacji bodziec → reakcja → zmiana → wynik, bez domyślnego przypisywania diagnozy."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 6,
+      "title_pl": "Współpraca z rodziną i specjalistami",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Rodzina, szkoła i specjaliści mogą mieć różne obserwacje tej samej osoby, ponieważ wymagania sytuacji się różnią. Wspólny plan powinien określać, kto odpowiada za wsparcie, jakie dane wolno przekazywać i jakie cele są realistyczne. Nie udziela się porad dotyczących zmiany leków w kursie ogólnym."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Na spotkanie przynieś trzy neutralne obserwacje zamiast etykiet. Ustal jeden cel na tydzień oraz kanał komunikacji, który nie obciąża dziecka codziennymi raportami o błędach. Zgoda i prywatność są ważne przy udostępnianiu informacji."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Szkoła i rodzice stosują sprzeczne sposoby przypominania, a dziecko dostaje kilka list dziennie."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przygotuj jedną kartę uzgodnień: zadanie, wsparcie, odpowiedzialny, zgoda, termin przeglądu."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 7,
+      "title_pl": "Indywidualny plan wsparcia",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Dobry plan nie jest katalogiem wszystkich możliwych technik. Wybiera jedną lub dwie trudności, określa obserwowalny efekt i weryfikuje, czy zastosowana pomoc działa. Należy unikać stawiania obietnic, że określona metoda 'wyleczy' ADHD."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Wybierz cel: samodzielne przygotowanie materiałów do pierwszej lekcji przez cztery dni z pięciu. Zaproponuj stałe miejsce rzeczy i krótką checklistę. Po tygodniu porównaj wynik i zapytaj osobę, co było dla niej pomocne."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Ustalono cel 'nigdy się nie rozpraszać'. Takiego celu nie można uczciwie ocenić ani uznać za realistyczny."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Napisz plan jednego tygodnia: cel, wsparcie, sposób sprawdzania, pytanie do uczestnika i kryterium modyfikacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 8,
+      "title_pl": "Zadanie w czterech małych etapach",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Podział zadania działa tylko wtedy, gdy każdy etap ma czytelny rezultat i nie wymaga pamiętania wszystkich kolejnych punktów. Nadmierne rozbicie prostego zadania może też przeszkadzać — zakres dostosowujemy do osoby, a nie do sztywnego szablonu."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Ćwiczenie: uporządkuj 12 dokumentów w folderze. Kroki: (1) wybierz miejsce, (2) utwórz foldery, (3) przenieś dokumenty, (4) sprawdź liczbę i nazwy. Po etapie sprawdź rezultat przed kolejnym, zamiast oceniać samą motywację."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Uczeń uporządkował połowę plików i utknął, bo nie zna numeru następnego kroku."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przygotuj checklistę czterech etapów zadania szkolnego z wizualnym sygnałem ukończenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 9,
+      "title_pl": "Plan przerw bez karania",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Przerwy mogą ułatwiać powrót uwagi lub zmniejszać przeciążenie, lecz ich rytm powinien uwzględniać wiek, zadanie i indywidualne możliwości. Nie należy używać przerwy wyłącznie jako kary za objaw; celem jest poprawa warunków uczenia i pracy."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Uzgodnij przed zadaniem sygnał przerwy, bezpieczne miejsce, orientacyjny czas i sposób powrotu. Porównaj dwa bloki pracy i zapisz rzeczywistą koncentrację, zamiast narzucać sztywne interwały dla wszystkich."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Uczeń potrzebuje krótkiej pauzy, ale nauczyciel odpowiada odebraniem mu reszty przerw na cały dzień."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Zaprojektuj dwie opcje planu nauki z przerwami i pytaniem pozwalającym ocenić, która mniej przeciąża."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 10,
+      "title_pl": "Nauka współpracy zamiast kontrolowania",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Wsparcie ma zwiększać samodzielność, a nie tworzyć zależność od stałego nadzoru dorosłego. Pomoc warto stopniowo wycofywać, gdy uczeń potrafi wykonać dany krok sam. Informacja zwrotna powinna dotyczyć konkretnej czynności, nie wartości osoby."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Przykład: w pierwszym tygodniu opiekun pomaga utworzyć listę, w drugim tylko przypomina o jej sprawdzeniu, w trzecim uczeń sam decyduje o godzinie. Postęp zależy od rzeczywistych potrzeb i wymaga wspólnego uzgodnienia."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Rodzic codziennie poprawia całe zadanie dziecka, bo boi się jednego błędu; dziecko nie ma okazji sprawdzić własnej metody."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Ułóż plan stopniowego przekazywania odpowiedzialności na trzy tygodnie z zachowaniem możliwości uzyskania pomocy."
+        }
+      ]
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 11,
+      "title_pl": "Sprawdzian — indywidualny plan na tydzień",
+      "sections": [
+        {
+          "heading": "Rozumienie potrzeb i zjawiska",
+          "text": "Podsumowanie kursu powinno sprawdzić zastosowanie wiedzy w wybranej sytuacji, a nie pamięciowe odtwarzanie definicji. Indywidualny plan musi opisywać potrzeby, cele, środowisko, narzędzia i możliwe sygnały przeciążenia. Nie jest medyczną diagnozą ani zaleceniem leczenia."
+        },
+        {
+          "heading": "Działanie i wsparcie krok po kroku",
+          "text": "Przygotuj plan na pięć dni dla fikcyjnej osoby, która ma trudność z rozpoczynaniem zadań i gubi rzeczy. Zapisz stałe miejsce wyposażenia, kartę czterech kroków, sygnał przerwy i codzienne pytanie oceny. Po tygodniu opisz, co zmienić."
+        },
+        {
+          "heading": "Sytuacja do przeanalizowania",
+          "text": "Plan działa dwa dni, później przestaje być używany. Zamiast oskarżać o brak konsekwencji, przeanalizuj trudność zastosowania."
+        },
+        {
+          "heading": "Ćwiczenie praktyczne",
+          "text": "Przedstaw dwie wersje planu z innym poziomem wsparcia i uzasadnij dobór dla konkretnej sytuacji."
+        }
+      ]
+    }
+  ]
+}
