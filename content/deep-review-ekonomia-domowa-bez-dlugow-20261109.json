@@ -1,0 +1,182 @@
+{
+  "course_slug": "ekonomia-domowa-bez-dlugow",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Przychód brutto, dochód na rękę i przepływ gotówki to nie to samo. Budżet opiera się na realnych, dostępnych środkach, nie na obiecanej podwyżce ani wartości posiadanego mieszkania. Wpływy jednorazowe trzeba rozdzielić od powtarzalnych, a kwoty ujmować w tym samym okresie."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "Przykład: wypłata 6000 zł netto, dodatkowa praca 800 zł i zwrot podatku 2000 zł rocznie. Miesięczny stabilny wpływ 6800 zł; roczny zwrot może służyć rezerwie, ale nie jest co miesiąc gwarantowany. Podziel dochody na pewne, sezonowe i niepowtarzalne."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Ktoś wpisuje przyszłą premię 12 000 zł jako 1000 zł miesięcznie do opłacenia stałej raty, choć premia nie jest gwarantowana."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Zbuduj 12-miesięczną tabelę wpływów; oddziel stabilną pensję, sezonowy dochód i jednorazowe zwroty."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Koszty stałe to zobowiązania występujące regularnie, np. czynsz czy rata; koszty zmienne to wydatki zależne od zużycia i decyzji. Roczne rachunki trzeba uwzględniać w budżecie przez rozliczenie ich częstotliwości, zamiast reagować dopiero w dniu płatności."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "Załóż: mieszkanie 2400 zł, energia 300 zł, żywność 1200 zł, transport 600 zł, ubezpieczenia 1200 zł rocznie. Miesięczny koszt wynosi 2400+300+1200+600+100 = 4600 zł. Dodaj osobny fundusz na wymianę opon czy naprawę sprzętu."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Osoba ma 500 zł miesięcznej nadwyżki, lecz raz na rok płaci 2400 zł ubezpieczenia i 3600 zł innych kosztów nieregularnych. Rzeczywista nadwyżka wynosi zero."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Wypisz 20 wydatków, sklasyfikuj i przelicz roczne koszty na równoważne miesięczne."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Rata kredytu zawiera zazwyczaj kapitał, koszt odsetek i ewentualne dodatkowe opłaty. RRSO uwzględnia odpowiednie koszty kredytu w ujęciu rocznym, dzięki czemu pozwala porównywać oferty na wspólnej podstawie, ale nie zastępuje sumy kosztów i warunków umowy. Odroczona płatność nadal jest zobowiązaniem."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "W ćwiczeniu porównaj oferty: A — 10 rat po 1100 zł, razem 11 000 zł, B — 12 rat po 940 zł, razem 11 280 zł, przy tym samym kapitale 10 000 zł i bez innych opłat. B ma niższą ratę, ale wyższą łączną kwotę o 280 zł. Sam przykład nie wystarcza do policzenia RRSO."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Dłużnik wybiera wyłącznie najniższą ratę bez sprawdzania długości spłaty i sumy opłat, po czym zaciąga kolejny kredyt, aby utrzymać płynność."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "W tabeli wpisz kapitał, liczbę rat, sumę rat, opłaty, RRSO podane przez kredytodawcę i konsekwencje opóźnienia."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Ceny za opakowanie nie mówią, czy towar jest tani: trzeba porównywać cenę na kilogram, litr lub sztukę oraz faktyczne zużycie. W rachunkach energii ważne są zarówno ilość kWh, jak i opłaty stałe i sieciowe. Plan ograniczania kosztu nie może prowadzić do niebezpiecznego oszczędzania na ogrzewaniu, higienie lub jedzeniu."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "Produkt A: 750 g za 12 zł = 16 zł/kg. Produkt B: 1 kg za 17 zł = 17 zł/kg. A jest tańszy za kilogram, ale tylko jeśli cała ilość zostanie wykorzystana. Energia: 500 kWh × 0,80 zł/kWh = 400 zł za część zmienną, nie całą fakturę."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "W domu kupiono dużą paczkę, ale połowa zepsuła się przed użyciem. Najniższa cena jednostkowa nie dała oszczędności."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Porównaj trzy oferty żywności i oblicz miesięczny koszt prądu wraz z przykładową opłatą stałą."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Rezerwa awaryjna powinna pokrywać niezbędne koszty w okresie kryzysu, a jej rozmiar zależy od sytuacji: stabilności zatrudnienia, rodziny, zdrowia i rodzaju zobowiązań. Pieniądze potrzebne na najbliższy czynsz lub jedzenie nie powinny być inwestowane w spekulacyjne produkty."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "Przykład: niezbędne wydatki 4500 zł/miesiąc. Rezerwa na trzy takie miesiące wynosi 13 500 zł, na sześć 27 000 zł. To przykładowe cele planistyczne, nie gwarancja bezpieczeństwa. Ustal najpierw rachunki krytyczne, potem realistyczny plan odkładania."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Osoba chce przeznaczyć całe 8000 zł wolnej gotówki na ryzykowną inwestycję, choć za dwa tygodnie ma ważną opłatę 3000 zł."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Stwórz ranking: żywność, mieszkanie, rachunki krytyczne, długi, rezerwa, wydatki opcjonalne, z uzasadnieniem."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Wspólny budżet wymaga uzgodnienia, które środki pokrywają wydatki wspólne i indywidualne. Rozdzielenie zarządzania nie jest tym samym co ukrywanie zobowiązań. Porównując wkład dwóch osób, trzeba ustalić, czy rozliczacie kwoty, proporcje dochodów czy inne uzgodnione zasady."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "W przykładzie jedna osoba zarabia 5000 zł netto, druga 3000 zł. Koszty wspólne 4000 zł można hipotetycznie podzielić proporcjonalnie: 2500 zł i 1500 zł. To sposób matematyczny, nie nakaz prawny czy jedyny uczciwy model. Ustal zasady i kontrolę wspólnych rachunków."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Para kłóci się o rachunki, bo każda strona inaczej liczy wydatki wspólne, a część opłat nie jest zapisana."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Przygotuj neutralny skrypt rozmowy budżetowej, tabelę kategorii i dwa możliwe modele podziału."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Ujemny przepływ gotówki oznacza, że dostępne wpływy nie wystarczają na planowane wydatki. Braku nie naprawia samo przesunięcie kosztu na kartę kredytową, jeśli nie istnieje plan spłaty. W kryzysie ważna jest ochrona niezbędnych potrzeb i wczesny kontakt z wierzycielami oraz kompetentnym doradcą."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "Przykład: dochód 5300 zł, niezbędne wydatki 4600 zł, raty 1200 zł. Deficyt 500 zł. Ustal listę opłat według terminów i skutków, szukaj możliwości uzgodnienia warunków z wierzycielami i redukcji kosztów niekrytycznych. Nie zakładaj, że odroczenie automatycznie znosi odsetki."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Osoba płaci minimalną kwotę na trzy karty i finansuje jedzenie kolejną. Całkowite zadłużenie może rosnąć mimo comiesięcznych wpłat."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Narysuj 30-dniowy plan kryzysowy z deficytem 500 zł, terminami i konkretnymi kontaktami pomocowymi."
+        }
+      ]
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Podstawy ekonomiczne",
+          "text": "Budżet działa, jeśli plan jest konfrontowany z rzeczywistymi przepływami, a różnica między prognozą i wynikiem jest analizowana. Każdy miesiąc wymaga aktualizacji kategorii, zwłaszcza nieregularnych kosztów. Celem jest rozumienie własnych decyzji, a nie perfekcyjny wykres."
+        },
+        {
+          "heading": "Liczby i metoda liczenia",
+          "text": "Dla planu żywności 1200 zł i wydatków rzeczywistych 1450 zł odchylenie wynosi +250 zł, czyli około 20,8% ponad plan. Zapisz przyczynę i podejmij decyzję, czy zmienić plan, ograniczyć wydatki czy skorygować inną kategorię. Nie ukrywaj nadwyżki w przypadkowym wierszu."
+        },
+        {
+          "heading": "Typowy błąd",
+          "text": "Uczestnik wpisuje na koniec miesiąca dane tak, żeby zgadzały się z pierwotnym budżetem, zamiast pokazać rzeczywiste odchylenie."
+        },
+        {
+          "heading": "Praktyczne zadanie",
+          "text": "Przygotuj arkusz 12 miesięcy: plan, wykonanie, różnica, powód zmiany, decyzja i data przeglądu."
+        }
+      ]
+    }
+  ]
+}
