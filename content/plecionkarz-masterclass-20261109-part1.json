@@ -1,0 +1,493 @@
+{
+  "slug": "plecionkarz",
+  "lessons": [
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 0,
+      "title_pl": "1. Budowa kosza: dno, osnowa, wątek, obrzeże, uchwyt",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-anatomia",
+        "sections": [
+          {
+            "heading": "Odróżnij element nośny od ozdobnego",
+            "text": "Dno (base/slath) tworzy podstawę, żebra lub słupki osnowy (stakes) wyznaczają kształt ścian, a cieńsze pręty wątku (weavers) przeplata się między nimi. Obrzeże (border) stabilizuje górną krawędź, a uchwyt (handle/bow) wymaga solidnego połączenia z częścią nośną. Te role są ważniejsze niż sam wygląd splotu."
+          },
+          {
+            "heading": "Jak czytać konstrukcję",
+            "text": "Kosz wiklinowy z osnową i wątkiem (stake-and-strand) pracuje inaczej niż kosz zwijany spiralnie (coiling). W pierwszym przypadku pasywne słupki są utrzymywane przez aktywnie przeplatany wątek; w drugim forma powstaje ze spiralnie układanych wiązek i wiązań. Nie przenoś bezmyślnie etapów jednej konstrukcji na drugą."
+          },
+          {
+            "heading": "Przykład z warsztatu",
+            "text": "Dno jest mocne, ale uchwyt przy podniesieniu rozchyla górną krawędź. Problem nie musi dotyczyć całego dna: sprawdź przejście siły z uchwytu przez obrzeże do słupków i sposób zakotwienia końców uchwytu."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Klient zamawia kosz na zakupy, który będzie często podnoszony. Projekt zawiera cienkie dekoracyjne obrzeże i bardzo sztywny uchwyt bez wyraźnego mocowania. Wyjaśnij, dlaczego taki projekt nie jest jeszcze gotowy do wykonania."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj kosz z przodu, od góry i w przekroju. Podpisz dno, osnowę, wątek, obrzeże i mocowanie uchwytu, a strzałkami pokaż drogę obciążenia podczas podnoszenia."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://englandarchive.org/glossary/basket-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Dno (base/slath) tworzy podstawę, żebra lub słupki osnowy (stakes) wyznaczają kształt ścian, a cieńsze pręty wątku (weavers) przeplata się między nimi. Obrzeże (border) stabilizuje górną krawędź, a uchwyt (handle/bow) wymaga solidnego połączenia z częścią nośną. Te role są ważniejsze niż sam wygląd splotu.",
+          "situation": "Klient zamawia kosz na zakupy, który będzie często podnoszony. Projekt zawiera cienkie dekoracyjne obrzeże i bardzo sztywny uchwyt bez wyraźnego mocowania. Wyjaśnij, dlaczego taki projekt nie jest jeszcze gotowy do wykonania.",
+          "task": "Narysuj kosz z przodu, od góry i w przekroju. Podpisz dno, osnowę, wątek, obrzeże i mocowanie uchwytu, a strzałkami pokaż drogę obciążenia podczas podnoszenia.",
+          "question": "W koszu typu stake-and-strand co stanowi osnowę, a co wątek?",
+          "options": [
+            "Osnowa to aktywne pręty poziome, wątek to wyłącznie uchwyt.",
+            "Osnowa to pionowe elementy kształtu, a wątek to przeplatane wokół nich pręty.",
+            "Osnowa oznacza metalowe okucia, wątek oznacza klej.",
+            "Nie ma rozróżnienia, bo wszystkie elementy są zawsze równorzędne."
+          ],
+          "correct": 1,
+          "example": "Osnowa to pionowe elementy kształtu, a wątek to przeplatane wokół nich pręty.",
+          "explanation": "Osnowa (stakes) tworzy bazowy układ słupków, zaś wątek (weavers) przeplata się przez nie.",
+          "feedback": [
+            "Nie. Osnowa (stakes) tworzy bazowy układ słupków, zaś wątek (weavers) przeplata się przez nie.",
+            "Tak. Osnowa (stakes) tworzy bazowy układ słupków, zaś wątek (weavers) przeplata się przez nie.",
+            "Nie. Osnowa (stakes) tworzy bazowy układ słupków, zaś wątek (weavers) przeplata się przez nie.",
+            "Nie. Osnowa (stakes) tworzy bazowy układ słupków, zaś wątek (weavers) przeplata się przez nie."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 1,
+      "title_pl": "2. Materiałoznawstwo: wierzba, leszczyna, rattan i trzcina",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-material",
+        "sections": [
+          {
+            "heading": "Wiklina to nie pojedynczy gatunek",
+            "text": "Wyroby wiklinowe wykonuje się z odpowiednich elastycznych pędów wierzb (Salix), często rocznych przyrostów. Leszczyna bywa rozszczepiana na taśmy, a rattan pochodzi z palm i ma inną strukturę oraz sposób przygotowania. Trzcina również nie jest automatycznym zamiennikiem każdego pręta wiklinowego."
+          },
+          {
+            "heading": "Różnice w zachowaniu",
+            "text": "Istotne są gatunek, długość pędu, średnica przy podstawie i wierzchołku, prostolinijność, liczba pędów bocznych, pęknięcia oraz wilgotność. Naturalne pręty zwężają się ku końcowi, więc nie możesz traktować całej długości jak walca o jednolitym przekroju."
+          },
+          {
+            "heading": "Przykład selekcji",
+            "text": "Masz trzy materiały: jednoroczny pęd wierzby z małą liczbą odrostów, rozszczepioną taśmę leszczyny i twardą suchą trzcinę. Do konkretnego kosza z ciasnymi skrętami dobór zależy od elastyczności po przygotowaniu i geometrii splotu; wygląd koloru nie wystarcza."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Dostawca proponuje tanie, poskręcane i spękane pędy jako materiał do uchwytów. Zanim je zaakceptujesz, rozpoznaj miejsca załamań i odcinki o nadmiernej średnicy, które mogą ograniczać wytrzymałość."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Zrób kartę 12 prętów: rodzaj materiału, długość, średnica przy podstawie, średnica przy końcu, wady, stan wilgotności i przeznaczenie. Narysuj jeden pręt zwężający się i podpisz część grubą oraz cienką."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://heritagecrafts.org.uk/craft/basket-making/"
+          }
+        ],
+        "learning": {
+          "intro": "Wyroby wiklinowe wykonuje się z odpowiednich elastycznych pędów wierzb (Salix), często rocznych przyrostów. Leszczyna bywa rozszczepiana na taśmy, a rattan pochodzi z palm i ma inną strukturę oraz sposób przygotowania. Trzcina również nie jest automatycznym zamiennikiem każdego pręta wiklinowego.",
+          "situation": "Dostawca proponuje tanie, poskręcane i spękane pędy jako materiał do uchwytów. Zanim je zaakceptujesz, rozpoznaj miejsca załamań i odcinki o nadmiernej średnicy, które mogą ograniczać wytrzymałość.",
+          "task": "Zrób kartę 12 prętów: rodzaj materiału, długość, średnica przy podstawie, średnica przy końcu, wady, stan wilgotności i przeznaczenie. Narysuj jeden pręt zwężający się i podpisz część grubą oraz cienką.",
+          "question": "Dlaczego dwa pręty o tej samej długości mogą różnić się przydatnością do ciasnego splotu?",
+          "options": [
+            "Bo liczy się tylko kolor kory.",
+            "Bo identyczna długość zawsze oznacza identyczną sprężystość.",
+            "Bo średnica, przebieg włókien, wady i stan przygotowania zmieniają zachowanie materiału.",
+            "Bo gatunek i wilgotność nie wpływają na zginanie."
+          ],
+          "correct": 2,
+          "example": "Bo średnica, przebieg włókien, wady i stan przygotowania zmieniają zachowanie materiału.",
+          "explanation": "Długość to tylko jedna cecha; w plecionkarstwie ważne są również średnica, elastyczność i stan włókien.",
+          "feedback": [
+            "Nie. Długość to tylko jedna cecha; w plecionkarstwie ważne są również średnica, elastyczność i stan włókien.",
+            "Nie. Długość to tylko jedna cecha; w plecionkarstwie ważne są również średnica, elastyczność i stan włókien.",
+            "Tak. Długość to tylko jedna cecha; w plecionkarstwie ważne są również średnica, elastyczność i stan włókien.",
+            "Nie. Długość to tylko jedna cecha; w plecionkarstwie ważne są również średnica, elastyczność i stan włókien."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 2,
+      "title_pl": "3. Wiklina biała, buff, brown i zielona — obróbka materiału",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-material",
+        "sections": [
+          {
+            "heading": "Nazwy handlowe nie opisują tylko barwy",
+            "text": "W tradycji wyplatania 'brown' to sucha wiklina z zachowaną korą, 'buff' powstaje przez odpowiednią obróbkę cieplną i usunięcie kory, 'white' przez korowanie w odpowiednim sezonie, a 'green' może oznaczać materiał świeży/nieprzygotowany. Ostateczna terminologia bywa zależna od dostawcy; odczytuj jego opis technologii."
+          },
+          {
+            "heading": "Jak wybór zmienia pracę",
+            "text": "Pręty z korą, korowane i wcześniej gotowane różnią się warunkami ponownego nawodnienia i giętkością. Należy rozdzielić przygotowanie surowca, sezonowanie, moczenie i odpoczynek materiału. Bezpieczny warsztat nie stosuje gorącej wody i źródeł ciepła bez właściwej procedury."
+          },
+          {
+            "heading": "Przykład doboru",
+            "text": "Do nauki precyzyjnego splotu prowadzący dysponuje materiałem buff i brown o podobnej długości. Nie wolno założyć, że oba wymagają identycznego czasu moczenia; wpływ ma także grubość pędów, temperatura wody i sposób przechowywania."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Uczniowie kupili surowiec z opisem 'zielona wiklina' i nie wiedzą, czy oznacza świeżo ścięte, czy wysuszone z korą. W pierwszej kolejności ustal specyfikację dostawcy, aby nie zastosować nieodpowiedniej technologii."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "W tabeli porównaj brown, buff, white i green: obecność kory, obróbka przed sprzedażą, potencjalne zastosowania, sposób przygotowania według dostawcy i ryzyko błędnego nazewnictwa."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://www.basketryandbeyond.org.uk/willow-basketmaking-structures/"
+          }
+        ],
+        "learning": {
+          "intro": "W tradycji wyplatania 'brown' to sucha wiklina z zachowaną korą, 'buff' powstaje przez odpowiednią obróbkę cieplną i usunięcie kory, 'white' przez korowanie w odpowiednim sezonie, a 'green' może oznaczać materiał świeży/nieprzygotowany. Ostateczna terminologia bywa zależna od dostawcy; odczytuj jego opis technologii.",
+          "situation": "Uczniowie kupili surowiec z opisem 'zielona wiklina' i nie wiedzą, czy oznacza świeżo ścięte, czy wysuszone z korą. W pierwszej kolejności ustal specyfikację dostawcy, aby nie zastosować nieodpowiedniej technologii.",
+          "task": "W tabeli porównaj brown, buff, white i green: obecność kory, obróbka przed sprzedażą, potencjalne zastosowania, sposób przygotowania według dostawcy i ryzyko błędnego nazewnictwa.",
+          "question": "Które zdanie najlepiej wyjaśnia różnicę między wikliną brown i buff w typowej angielskiej terminologii?",
+          "options": [
+            "Brown jest zawsze pozbawiona kory, a buff pozostaje niekorowana.",
+            "Buff to wyłącznie farbowana na biało trzcina.",
+            "Brown i buff to nazwy dwóch gatunków drzew, nie stanów materiału.",
+            "Brown jest zwykle z korą, a buff przechodzi obróbkę i korowanie."
+          ],
+          "correct": 3,
+          "example": "Brown jest zwykle z korą, a buff przechodzi obróbkę i korowanie.",
+          "explanation": "Te określenia w rzemiośle opisują sposób obróbki i stan prętów, nie po prostu kolor.",
+          "feedback": [
+            "Nie. Te określenia w rzemiośle opisują sposób obróbki i stan prętów, nie po prostu kolor.",
+            "Nie. Te określenia w rzemiośle opisują sposób obróbki i stan prętów, nie po prostu kolor.",
+            "Nie. Te określenia w rzemiośle opisują sposób obróbki i stan prętów, nie po prostu kolor.",
+            "Tak. Te określenia w rzemiośle opisują sposób obróbki i stan prętów, nie po prostu kolor."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 3,
+      "title_pl": "4. Moczenie i mellowing: giętkość bez pękania",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-moczenie",
+        "sections": [
+          {
+            "heading": "Dlaczego suche pręty trzeba przygotować",
+            "text": "Wysuszona wiklina jest zwykle zbyt sztywna, aby przejść przez ciasne łuki bez uszkodzenia. Moczenie w wodzie pozwala przywrócić giętkość, a etap odpoczynku po moczeniu (mellowing) wyrównuje stan wilgotności. Przesadne moczenie może pogarszać własności i zwiększać ryzyko problemów z przechowywaniem."
+          },
+          {
+            "heading": "Nie ucz się jednej magicznej liczby godzin",
+            "text": "Czas zależy od typu surowca, długości, grubości, warunków oraz temperatury wody. Cieńsze korowane pręty mogą wymagać innego przygotowania niż grube pędy z korą. Najpierw odczytaj informację dostawcy, a potem oceń na próbkach elastyczność bez łamania."
+          },
+          {
+            "heading": "Przykład testu",
+            "text": "Masz pręty A i B tej samej długości, ale B jest wyraźnie grubszy. Test delikatnego gięcia na niekrytycznej próbce pokazuje, że A jest już podatny, a B nadal ma tendencję do załamywania. To sygnał do dalszej kontroli B, nie do wymuszania kształtu."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "W pracowni namoczono zapas na kilka dni i pozostawiono go w zamkniętym pojemniku; pojawia się zapach stęchlizny. Nie ukrywaj problemu w gotowym wyrobie — oceń materiał i warunki higieniczne, a wadliwą partię odsuń."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Przygotuj dziennik przygotowania trzech prętów: typ, średnica, data moczenia, warunki, wynik próby zginania, obserwowane wady i decyzja. Nie zapisuj uniwersalnej temperatury ani czasu bez źródła."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://www.basketryandbeyond.org.uk/willow-basketmaking-structures/"
+          }
+        ],
+        "learning": {
+          "intro": "Wysuszona wiklina jest zwykle zbyt sztywna, aby przejść przez ciasne łuki bez uszkodzenia. Moczenie w wodzie pozwala przywrócić giętkość, a etap odpoczynku po moczeniu (mellowing) wyrównuje stan wilgotności. Przesadne moczenie może pogarszać własności i zwiększać ryzyko problemów z przechowywaniem.",
+          "situation": "W pracowni namoczono zapas na kilka dni i pozostawiono go w zamkniętym pojemniku; pojawia się zapach stęchlizny. Nie ukrywaj problemu w gotowym wyrobie — oceń materiał i warunki higieniczne, a wadliwą partię odsuń.",
+          "task": "Przygotuj dziennik przygotowania trzech prętów: typ, średnica, data moczenia, warunki, wynik próby zginania, obserwowane wady i decyzja. Nie zapisuj uniwersalnej temperatury ani czasu bez źródła.",
+          "question": "Co najlepiej określa etap mellowing po moczeniu wikliny?",
+          "options": [
+            "Kontrolowany odpoczynek materiału umożliwiający wyrównanie jego nawilżenia.",
+            "Wyłącznie mechaniczne polerowanie gotowego kosza.",
+            "Przypalanie końców prętów po montażu uchwytu.",
+            "Trwałe klejenie każdej pary słupków."
+          ],
+          "correct": 0,
+          "example": "Kontrolowany odpoczynek materiału umożliwiający wyrównanie jego nawilżenia.",
+          "explanation": "Mellowing to etap odpoczynku/przygotowania po moczeniu przed wyplataniem.",
+          "feedback": [
+            "Tak. Mellowing to etap odpoczynku/przygotowania po moczeniu przed wyplataniem.",
+            "Nie. Mellowing to etap odpoczynku/przygotowania po moczeniu przed wyplataniem.",
+            "Nie. Mellowing to etap odpoczynku/przygotowania po moczeniu przed wyplataniem.",
+            "Nie. Mellowing to etap odpoczynku/przygotowania po moczeniu przed wyplataniem."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 4,
+      "title_pl": "5. Geometria dna: krzyżak, rozstaw prętów i stabilność",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-dno",
+        "sections": [
+          {
+            "heading": "Dno decyduje o kształcie całego kosza",
+            "text": "W koszu o dnie wyplatanym od środka często zaczyna się od krzyżaka z prętów bazowych, przez który prowadzi się pierwsze okrążenia i następnie rozszerza układ promieni. Dno powinno leżeć stabilnie bez nadmiernego wygięcia, a jego średnica i regularność mają wpływ na późniejszy rozstaw słupków ściany."
+          },
+          {
+            "heading": "Liczenie rozstawu",
+            "text": "Dla uproszczonego kosza o średnicy dna 24 cm obwód geometryczny wynosi π×24≈75,4 cm. Jeśli wokół obwodu rozmieszczono 24 główne punkty osnowy, średnia odległość wzdłuż łuku wyniesie około 75,4/24≈3,14 cm. To model orientacyjny, nie instrukcja liczby słupków dla każdego splotu."
+          },
+          {
+            "heading": "Przykład nierówności",
+            "text": "Jeżeli przy owalnym dnie ktoś rozmieszcza pręty w równych odległościach na prostej, ale nie bierze pod uwagę łuku krzywizny, boczne ściany mogą wypaść nierówno. Ostateczny układ wymaga rzeczywistego rysunku dna."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Kosz kołysze się na płaskim stole mimo poprawnej średnicy. Sprawdź, czy dno ma jednolitą płaszczyznę, jak mocowano promienie i czy nie ma miejscowego podwójnego zgrubienia."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj krzyżak, oznacz osie, rozkład promieni i przykładowe 24 pozycje na obwodzie 24 cm. Policz obwód i średni odstęp oraz wskaż ograniczenia tego modelu."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://www.basketryandbeyond.org.uk/wp-content/uploads/2013/10/Techniques-Panels-1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "W koszu o dnie wyplatanym od środka często zaczyna się od krzyżaka z prętów bazowych, przez który prowadzi się pierwsze okrążenia i następnie rozszerza układ promieni. Dno powinno leżeć stabilnie bez nadmiernego wygięcia, a jego średnica i regularność mają wpływ na późniejszy rozstaw słupków ściany.",
+          "situation": "Kosz kołysze się na płaskim stole mimo poprawnej średnicy. Sprawdź, czy dno ma jednolitą płaszczyznę, jak mocowano promienie i czy nie ma miejscowego podwójnego zgrubienia.",
+          "task": "Narysuj krzyżak, oznacz osie, rozkład promieni i przykładowe 24 pozycje na obwodzie 24 cm. Policz obwód i średni odstęp oraz wskaż ograniczenia tego modelu.",
+          "question": "Dno ma średnicę 24 cm i 24 równomierne pozycje na obwodzie. Jaki jest przybliżony odstęp wzdłuż łuku?",
+          "options": [
+            "0,76 cm.",
+            "3,14 cm.",
+            "7,54 cm.",
+            "24 cm."
+          ],
+          "correct": 1,
+          "example": "3,14 cm.",
+          "explanation": "π×24 cm≈75,4 cm; dzieląc przez 24 otrzymujemy około 3,14 cm.",
+          "feedback": [
+            "Nie. π×24 cm≈75,4 cm; dzieląc przez 24 otrzymujemy około 3,14 cm.",
+            "Tak. π×24 cm≈75,4 cm; dzieląc przez 24 otrzymujemy około 3,14 cm.",
+            "Nie. π×24 cm≈75,4 cm; dzieląc przez 24 otrzymujemy około 3,14 cm.",
+            "Nie. π×24 cm≈75,4 cm; dzieląc przez 24 otrzymujemy około 3,14 cm."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 5,
+      "title_pl": "6. Wstawianie słupków i upset: przejście z dna do ścian",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-anatomia",
+        "sections": [
+          {
+            "heading": "Upstake i upset to nie to samo",
+            "text": "Słupki ścian (stakes/uprights) są wsuwane lub mocowane do dna, a później odginane do planowanego kształtu. Początkowy odcinek mocnego przeplotu przy dnie, często zwany upsett, stabilizuje przejście z podstawy do ściany. Bez niego konstrukcja może rozchylać się w miejscu największej zmiany kierunku włókien."
+          },
+          {
+            "heading": "Funkcja waling",
+            "text": "Waling z kilku prętów przeplatanych w określonym rytmie daje sztywniejszy pas i pomaga utrzymać pozycje osnowy. Ważne jest równomierne napięcie: nadmierna siła może przesunąć słupki i odkształcić dno, zbyt mała pozostawia luzy."
+          },
+          {
+            "heading": "Przykład zbyt mocnego ściągnięcia",
+            "text": "Słupki są ustawione równomiernie, lecz po pierwszych rzędach kosz ma węższą średnicę na dole niż zakłada projekt. Przyczyną może być nierównomierny docisk i pochylenie osnowy, a nie błąd samej długości wątku."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Kosz zachowuje kształt przy pustym dnie, ale przy nacisku dłoni widoczny jest luz na styku dna i ścian. W planie kontroli najpierw sprawdź mocowanie słupków i początkowy waling, nie dorabiaj dekoracyjnej opaski na ślepo."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Przygotuj przekrój pokazujący dno, punkt osadzenia słupka, odgięcie do pionu i pas upsett. Oznacz miejsca potencjalnej utraty sztywności."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://www.basketryandbeyond.org.uk/wp-content/uploads/2013/10/Techniques-Panels-1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Słupki ścian (stakes/uprights) są wsuwane lub mocowane do dna, a później odginane do planowanego kształtu. Początkowy odcinek mocnego przeplotu przy dnie, często zwany upsett, stabilizuje przejście z podstawy do ściany. Bez niego konstrukcja może rozchylać się w miejscu największej zmiany kierunku włókien.",
+          "situation": "Kosz zachowuje kształt przy pustym dnie, ale przy nacisku dłoni widoczny jest luz na styku dna i ścian. W planie kontroli najpierw sprawdź mocowanie słupków i początkowy waling, nie dorabiaj dekoracyjnej opaski na ślepo.",
+          "task": "Przygotuj przekrój pokazujący dno, punkt osadzenia słupka, odgięcie do pionu i pas upsett. Oznacz miejsca potencjalnej utraty sztywności.",
+          "question": "Jaką rolę pełni pas waling/upsett na przejściu dna i ściany?",
+          "options": [
+            "Wyłącznie nadaje brązowy kolor słupkom.",
+            "Zastępuje potrzebę jakiejkolwiek osnowy.",
+            "Stabilizuje słupki i pomaga wyznaczyć kształt początku ściany.",
+            "Służy wyłącznie do przyklejenia pokrywki."
+          ],
+          "correct": 2,
+          "example": "Stabilizuje słupki i pomaga wyznaczyć kształt początku ściany.",
+          "explanation": "Mocniejszy przeplot na początku ściany wiąże osnowę i podtrzymuje przejście konstrukcyjne.",
+          "feedback": [
+            "Nie. Mocniejszy przeplot na początku ściany wiąże osnowę i podtrzymuje przejście konstrukcyjne.",
+            "Nie. Mocniejszy przeplot na początku ściany wiąże osnowę i podtrzymuje przejście konstrukcyjne.",
+            "Tak. Mocniejszy przeplot na początku ściany wiąże osnowę i podtrzymuje przejście konstrukcyjne.",
+            "Nie. Mocniejszy przeplot na początku ściany wiąże osnowę i podtrzymuje przejście konstrukcyjne."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 6,
+      "title_pl": "7. Randing, pairing i waling: trzy odmienne przeploty",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-splot",
+        "sections": [
+          {
+            "heading": "Jednoprzętowe randing",
+            "text": "Randing przeplata wątek złożony z pojedynczego pręta na przemian przed i za słupkami. Uczeń powinien umieć śledzić drogę pręta, ocenić rozstaw i rozpoznać, gdzie kończy się jedna długość oraz zaczyna kolejna. Nazwa splotu nie mówi sama o wytrzymałości całego kosza."
+          },
+          {
+            "heading": "Pairing i waling",
+            "text": "Pairing prowadzi dwa pręty w określonym wzorze wokół osnowy, a waling używa trzech lub większej liczby prętów do tworzenia mocniejszego pasa. W praktyce warianty i nazewnictwo różnią się regionalnie. Przede wszystkim odróżniaj liczbę aktywnych prętów i ich drogę."
+          },
+          {
+            "heading": "Przykład schematu",
+            "text": "Na papierze narysuj pięć słupków. W randing pręt A idzie naprzemiennie przód/tył. W pairing pręty A i B przeplatają się, tworząc inną kontrolę słupków. Trójprętowy waling ma odmienną sekwencję podkładania, której nie wolno utożsamiać z trzema przypadkowymi poziomymi pasmami."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Dół kosza wymaga mocnego pasa, ale uczeń kontynuuje cienki luźny randing i uzyskuje odkształcenie. Oceń zasadność użycia bardziej stabilnego przeplotu, a następnie kontrolę naprężenia i geometrii."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Przygotuj trzy mini-rysunki na 6 słupkach: randing (1 wątek), pairing (2), waling (3). Podpisz przód/tył i wskaż, które miejsca należy kontrolować, aby nie zmienić szerokości kosza."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://www.basketryandbeyond.org.uk/wp-content/uploads/2013/10/Techniques-Panels-1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Randing przeplata wątek złożony z pojedynczego pręta na przemian przed i za słupkami. Uczeń powinien umieć śledzić drogę pręta, ocenić rozstaw i rozpoznać, gdzie kończy się jedna długość oraz zaczyna kolejna. Nazwa splotu nie mówi sama o wytrzymałości całego kosza.",
+          "situation": "Dół kosza wymaga mocnego pasa, ale uczeń kontynuuje cienki luźny randing i uzyskuje odkształcenie. Oceń zasadność użycia bardziej stabilnego przeplotu, a następnie kontrolę naprężenia i geometrii.",
+          "task": "Przygotuj trzy mini-rysunki na 6 słupkach: randing (1 wątek), pairing (2), waling (3). Podpisz przód/tył i wskaż, które miejsca należy kontrolować, aby nie zmienić szerokości kosza.",
+          "question": "Co najlepiej odróżnia pairing od randing w typowej terminologii wikliniarskiej?",
+          "options": [
+            "Randing zawsze wymaga trzech prętów, pairing żadnego.",
+            "Pairing to tylko metoda barwienia zewnętrznego.",
+            "Obie nazwy oznaczają wyłącznie rodzaj kory.",
+            "Randing prowadzi zwykle jeden aktywny pręt, pairing dwa przeplatane pręty."
+          ],
+          "correct": 3,
+          "example": "Randing prowadzi zwykle jeden aktywny pręt, pairing dwa przeplatane pręty.",
+          "explanation": "Randing wykorzystuje pojedynczy aktywny wątek, pairing zazwyczaj dwa, waling zaś mocniejszy pas z większej liczby.",
+          "feedback": [
+            "Nie. Randing wykorzystuje pojedynczy aktywny wątek, pairing zazwyczaj dwa, waling zaś mocniejszy pas z większej liczby.",
+            "Nie. Randing wykorzystuje pojedynczy aktywny wątek, pairing zazwyczaj dwa, waling zaś mocniejszy pas z większej liczby.",
+            "Nie. Randing wykorzystuje pojedynczy aktywny wątek, pairing zazwyczaj dwa, waling zaś mocniejszy pas z większej liczby.",
+            "Tak. Randing wykorzystuje pojedynczy aktywny wątek, pairing zazwyczaj dwa, waling zaś mocniejszy pas z większej liczby."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "plecionkarz",
+      "lesson_no": 7,
+      "title_pl": "8. Równomierny splot i stożkowatość prętów: bez deformacji",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 9,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "illustration": "plecionkarz-splot",
+        "sections": [
+          {
+            "heading": "Problem zwężającego się pręta",
+            "text": "Pręt wikliny ma grubszą podstawę (butt) i cieńszy koniec (tip). Jeśli w obrębie jednej ściany zbyt wiele grubych podstaw zostanie skupionych po jednej stronie, wzrośnie miejscowa grubość splotu i kosz może się skrzywić. Rozkład początków nowych prętów i ich kierunku wymaga świadomego planu."
+          },
+          {
+            "heading": "Kontrola napięcia",
+            "text": "Zbyt mocno ciągnięty wątek wygina słupki do środka, a zbyt luźny może nie zapewnić ich stabilności. Przy koszu na zakupy po każdym obiegu kontroluje się rozstaw słupków, średnicę na kilku wysokościach i regularność ściany. Wykonanie pierwszego pięknego pasa nie oznacza poprawności całego kosza."
+          },
+          {
+            "heading": "Przykład ilościowy",
+            "text": "Kosz miał mieć średnicę 30 cm na całej wysokości. Po trzech pasach mierzysz 30 cm przy dnie, 28 cm w połowie i 25 cm przy górze. Jeśli projekt był walcowy, oznacza to istotne zwężenie; różnica góra–dół to 5 cm, czyli około 16,7% średnicy dna."
+          },
+          {
+            "heading": "Sytuacja do rozwiązania",
+            "text": "Klient zamówił prosty kosz cylindryczny, a przy brzegu słupki są wyraźnie zbieżne. Nie należy poprawiać wyłącznie dekoracją obrzeża — problem może pochodzić z poprzednich rzędów i niewłaściwego naprężenia."
+          },
+          {
+            "heading": "Praca ucznia",
+            "text": "Narysuj pomiar średnicy na wysokościach 0, 10 i 20 cm. Dla wyników 30, 28 i 25 cm oblicz różnice i zaproponuj kontrolę po każdym rzędzie. Zaznacz, gdzie wprowadzane są nowe pręty podstawą i końcówką."
+          }
+        ],
+        "references": [
+          {
+            "label": "Źródło metody lub materiału",
+            "url": "https://www.basketryandbeyond.org.uk/wp-content/uploads/2013/10/Techniques-Panels-1.pdf"
+          }
+        ],
+        "learning": {
+          "intro": "Pręt wikliny ma grubszą podstawę (butt) i cieńszy koniec (tip). Jeśli w obrębie jednej ściany zbyt wiele grubych podstaw zostanie skupionych po jednej stronie, wzrośnie miejscowa grubość splotu i kosz może się skrzywić. Rozkład początków nowych prętów i ich kierunku wymaga świadomego planu.",
+          "situation": "Klient zamówił prosty kosz cylindryczny, a przy brzegu słupki są wyraźnie zbieżne. Nie należy poprawiać wyłącznie dekoracją obrzeża — problem może pochodzić z poprzednich rzędów i niewłaściwego naprężenia.",
+          "task": "Narysuj pomiar średnicy na wysokościach 0, 10 i 20 cm. Dla wyników 30, 28 i 25 cm oblicz różnice i zaproponuj kontrolę po każdym rzędzie. Zaznacz, gdzie wprowadzane są nowe pręty podstawą i końcówką.",
+          "question": "Kosz walcowy miał średnicę 30 cm, a u góry ma 25 cm. Jaka jest procentowa różnica w stosunku do średnicy podstawy?",
+          "options": [
+            "5%.",
+            "10%.",
+            "16,7%.",
+            "25%."
+          ],
+          "correct": 2,
+          "example": "16,7%.",
+          "explanation": "(30−25)/30×100%≈16,7%, więc nie jest to drobny błąd przy zamówieniu walcowym.",
+          "feedback": [
+            "Nie. (30−25)/30×100%≈16,7%, więc nie jest to drobny błąd przy zamówieniu walcowym.",
+            "Nie. (30−25)/30×100%≈16,7%, więc nie jest to drobny błąd przy zamówieniu walcowym.",
+            "Tak. (30−25)/30×100%≈16,7%, więc nie jest to drobny błąd przy zamówieniu walcowym.",
+            "Nie. (30−25)/30×100%≈16,7%, więc nie jest to drobny błąd przy zamówieniu walcowym."
+          ]
+        }
+      }
+    }
+  ]
+}
