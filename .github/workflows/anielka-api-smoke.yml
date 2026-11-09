@@ -1,0 +1,21 @@
+name: TRENERKI Academy — Anielka AI e2e
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/anielka-api-smoke.yml'
+      - 'scripts/smoke-anielka-api.mjs'
+      - 'supabase/functions/ta-anielka/index.ts'
+  workflow_dispatch:
+jobs:
+  anielka_api:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify public Anielka server and actual individual AI response
+        run: node scripts/smoke-anielka-api.mjs
