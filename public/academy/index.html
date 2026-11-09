@@ -102,7 +102,7 @@ const button=(label,func,klass='btn-dark')=>`<button class="btn ${klass}" onclic
 function avatarSVG(size=48){return `<svg class="coach-svg" width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="46" fill="#d8f69b"/><path d="M22 57Q23 19 50 19Q77 19 78 57V72Q68 88 50 88Q31 88 22 72Z" fill="#275642"/><path d="M31 50Q31 32 50 31Q69 32 69 50V61Q67 78 50 79Q33 78 31 61Z" fill="#ffe7cd"/><path d="M32 45Q38 28 54 32Q68 29 70 45L66 38Q47 43 32 45" fill="#275642"/><circle cx="41" cy="54" r="3" fill="#224b3c"/><circle cx="59" cy="54" r="3" fill="#224b3c"/><path d="M43 65Q50 71 57 65" stroke="#b86d66" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M25 91Q29 76 40 75L50 84L60 75Q71 76 75 91" fill="#76a85e"/></svg>`}
 function courseIllustration(c){const build=c.cat==='Budownictwo';return `<svg class="course-illustration" viewBox="0 0 190 90" aria-hidden="true"><circle cx="150" cy="28" r="26" fill="#ffffff77"/><path d="M15 75H178" stroke="#315846" stroke-opacity=".3" stroke-width="2"/>${build?`<path d="M51 73V22H67V73M51 35H67M51 50H67M51 63H67M59 22H143M118 22L139 16M140 15V61" stroke="#34624c" stroke-width="3" fill="none" stroke-linejoin="round"/><path d="M135 61H145V68H135Z" fill="#789f61"/><path d="M89 72V45H127V72M98 45V38H118V45" fill="#fdfdf4" stroke="#34624c" stroke-width="2"/>`:`<rect x="38" y="17" width="113" height="58" rx="10" fill="#fcfff4" stroke="#527e5f" stroke-width="3"/><path d="M51 34H117M51 46H138M51 58H108" stroke="#9eb993" stroke-width="5" stroke-linecap="round"/><circle cx="141" cy="30" r="10" fill="#d8f69b"/>`}</svg>`}
 
-function homeHTML(){return `<section class="hero"><div class="wrap hero-in"><div><div class="eyebrow"><i class="dot"></i> TRENERKI • nauka bez zadęcia</div><h1>Nie tylko przeczytaj.<br/><span>Naucz się naprawdę.</span></h1><p class="hero-desc">Poznaj temat, poćwicz na sytuacjach z życia i sprawdź, czy naprawdę umiesz podjąć dobrą decyzję. W nauce towarzyszy Ci Anielka — Twoja trenerka życiowych przemian i sukcesów. Spokojnie, po ludzku i bez zawstydzania.</p><div class="hero-actions">${button('Wybierz, czego chcesz się nauczyć →',`scrollToSection('kursy')`,'btn-dark')}${button('Zobacz jak uczymy ↗',`scrollToSection('jak-dziala')`,'btn-outline')}</div><div class="trust-strip"><span>Praktyczne sytuacje</span><span>Ćwiczenia po każdej lekcji</span><span>Potwierdzenia ukończenia w przygotowaniu</span></div></div><div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="art-core"><div class="art-letters">T.</div><div><div class="art-label">TRENERKI</div><div class="line"></div><br/><div class="line short"></div></div><div style="font-weight:800;font-size:12px;color:#c6ebac">ODKRYJ • PRZEĆWICZ • ZROZUM</div></div></div><div class="float-card one"><span class="bubble">${avatarSVG(46)}</span><div><strong>Cześć, to ja Anielka!</strong><small>Twoja trenerka przemian i sukcesów w życiu.</small></div></div><div class="float-card two"><span class="bubble">✦</span><div><strong>To coś więcej niż test</strong><small>Problemy z pracy, decyzje, rozmowy</small></div></div></div></div></section><section class="section" id="kursy"><div class="wrap"><div class="section-head"><div><div class="overline">Wybierz swój kierunek</div><h2>To przyda Ci się w prawdziwym życiu.</h2><p>Nie uczymy na pamięć. Uczymy rozpoznawać problemy i działać z głową.</p></div></div><div class="filter-line"><div class="search"><span>⌕</span><input aria-label="Szukaj kursu" id="course-search" placeholder="Czego chcesz się nauczyć?" value="${esc(query)}" oninput="searchCourses(this.value)"/></div><div class="chips" id="chips"></div></div><div class="cards" id="course-cards"></div></div></section><section class="section features" id="jak-dziala"><div class="wrap"><div class="section-head"><div><div class="overline">Jak uczymy?</div><h2>Przećwicz to, zanim spotka Cię naprawdę.</h2></div></div><div class="feature-grid"><div class="feature"><div class="feature-ico">✎</div><h3>Zaczynamy od zaskoczenia</h3><p>Krótka ciekawostka i prosty przykład pokazują, dlaczego temat jest ważny. Potem konkretne wskazówki i trudności, o których zwykle się nie mówi.</p></div><div class="feature"><div class="feature-ico">↗</div><h3>Uczysz się krok po kroku</h3><p>Poznajesz temat, rozwiązujesz sytuację z życia i zapisujesz własne wnioski. Do lekcji możesz wracać we własnym tempie; w ćwiczeniach od razu zobaczysz, co zrozumiałeś.</p></div><div class="feature"><div class="feature-ico">☺</div><h3>Rozmawiasz z Anielką</h3><p>Po każdym przykładzie podejmiesz decyzję i sprawdzisz jej rezultat. Uczysz się we własnym tempie.</p></div></div></div></section><section class="section" id="certyfikat"><div class="wrap"><div class="cta-band"><div><div class="overline" style="color:#d1ed9d">TRENERKI ACADEMY</div><h2>Najpierw wiedza.<br/>Autorski dyplom to dodatek.</h2><p>Nasze kursy i dyplomy są autorskimi opracowaniami TRENERKI Academy. Po ukończeniu lekcji i zaliczeniu egzaminu kursant będzie mógł otrzymać dokument z imieniem, nazwiskiem i datą zakończenia. Taki dyplom można wpisać do CV jako szkolenie dodatkowe. Nie jest państwowym certyfikatem ani kwalifikacją zawodową. Automatyczne wystawianie jest obecnie testowane.</p></div>${button('Otwórz kursy →',`scrollToSection('kursy')`,'btn-lime')}</div><div class="legal-notice"><strong>Autorskie szkolenia i dyplomy.</strong> Wiedza zdobyta podczas nauki jest najważniejsza. Dyplom TRENERKI jest autorskim potwierdzeniem ukończenia prywatnego kursu i zaliczenia wewnętrznego egzaminu — można go wymienić w CV, ale nie jest kwalifikacją zawodową, licencją ani oficjalnym uprawnieniem. Płatności pozostają wyłączone; dokumenty testowe są oznaczone jako nieważne.</div></div></section>`}
+function homeHTML(){return `<section class="hero"><div class="wrap hero-in"><div><div class="eyebrow"><i class="dot"></i> TRENERKI • nauka bez zadęcia</div><h1>Nie tylko przeczytaj.<br/><span>Naucz się naprawdę.</span></h1><p class="hero-desc">Poznaj temat, poćwicz na sytuacjach z życia i sprawdź, czy naprawdę umiesz podjąć dobrą decyzję. W nauce towarzyszy Ci Anielka — Twoja trenerka życiowych przemian i sukcesów. Spokojnie, po ludzku i bez zawstydzania.</p><div class="hero-actions">${button('Wybierz, czego chcesz się nauczyć →',`scrollToSection('kursy')`,'btn-dark')}${button('Zobacz jak uczymy ↗',`scrollToSection('jak-dziala')`,'btn-outline')}</div><div class="trust-strip"><span>Praktyczne sytuacje</span><span>Ćwiczenia po każdej lekcji</span><span>Potwierdzenia ukończenia w przygotowaniu</span></div></div><div class="hero-art" aria-hidden="true"><div class="art-circle"><div class="art-core"><div class="art-letters">T.</div><div><div class="art-label">TRENERKI</div><div class="line"></div><br/><div class="line short"></div></div><div style="font-weight:800;font-size:12px;color:#c6ebac">ODKRYJ • PRZEĆWICZ • ZROZUM</div></div></div><div class="float-card one"><span class="bubble">${avatarSVG(46)}</span><div><strong>Cześć, to ja Anielka!</strong><small>Twoja trenerka przemian i sukcesów w życiu.</small></div></div><div class="float-card two"><span class="bubble">✦</span><div><strong>To coś więcej niż test</strong><small>Problemy z pracy, decyzje, rozmowy</small></div></div></div></div></section><section class="section" id="kursy"><div class="wrap"><div class="section-head"><div><div class="overline">Wybierz swój kierunek</div><h2>To przyda Ci się w prawdziwym życiu.</h2><p>Nie uczymy na pamięć. Uczymy rozpoznawać problemy i działać z głową.</p></div></div><div class="filter-line"><div class="search"><span>⌕</span><input aria-label="Szukaj kursu" id="course-search" placeholder="Czego chcesz się nauczyć?" value="${esc(query)}" oninput="searchCourses(this.value)"/></div><div class="chips" id="chips"></div></div><p id="catalog-sync-note" role="status" aria-live="polite" style="font-size:12px;color:#627568;margin:0 0 14px">Sprawdzam aktualny program kursów…</p><div class="cards" id="course-cards"></div></div></section><section class="section features" id="jak-dziala"><div class="wrap"><div class="section-head"><div><div class="overline">Jak uczymy?</div><h2>Przećwicz to, zanim spotka Cię naprawdę.</h2></div></div><div class="feature-grid"><div class="feature"><div class="feature-ico">✎</div><h3>Zaczynamy od zaskoczenia</h3><p>Krótka ciekawostka i prosty przykład pokazują, dlaczego temat jest ważny. Potem konkretne wskazówki i trudności, o których zwykle się nie mówi.</p></div><div class="feature"><div class="feature-ico">↗</div><h3>Uczysz się krok po kroku</h3><p>Poznajesz temat, rozwiązujesz sytuację z życia i zapisujesz własne wnioski. Do lekcji możesz wracać we własnym tempie; w ćwiczeniach od razu zobaczysz, co zrozumiałeś.</p></div><div class="feature"><div class="feature-ico">☺</div><h3>Rozmawiasz z Anielką</h3><p>Po każdym przykładzie podejmiesz decyzję i sprawdzisz jej rezultat. Uczysz się we własnym tempie.</p></div></div></div></section><section class="section" id="certyfikat"><div class="wrap"><div class="cta-band"><div><div class="overline" style="color:#d1ed9d">TRENERKI ACADEMY</div><h2>Najpierw wiedza.<br/>Autorski dyplom to dodatek.</h2><p>Nasze kursy i dyplomy są autorskimi opracowaniami TRENERKI Academy. Po ukończeniu lekcji i zaliczeniu egzaminu kursant będzie mógł otrzymać dokument z imieniem, nazwiskiem i datą zakończenia. Taki dyplom można wpisać do CV jako szkolenie dodatkowe. Nie jest państwowym certyfikatem ani kwalifikacją zawodową. Automatyczne wystawianie jest obecnie testowane.</p></div>${button('Otwórz kursy →',`scrollToSection('kursy')`,'btn-lime')}</div><div class="legal-notice"><strong>Autorskie szkolenia i dyplomy.</strong> Wiedza zdobyta podczas nauki jest najważniejsza. Dyplom TRENERKI jest autorskim potwierdzeniem ukończenia prywatnego kursu i zaliczenia wewnętrznego egzaminu — można go wymienić w CV, ale nie jest kwalifikacją zawodową, licencją ani oficjalnym uprawnieniem. Płatności pozostają wyłączone; dokumenty testowe są oznaczone jako nieważne.</div></div></section>`}
 
 function cardHTML(c){let st=courseState(c.id);let progress=hasAccess(c.id)?st.done.length:0;return `<article class="course-card"><div class="card-media" style="background:${c.accent}"><span class="card-flag">${esc(c.flag)}</span><span class="card-emoji" role="img" aria-label="Ikona kursu">${c.emoji}</span>${courseIllustration(c)}</div><div class="card-body"><div class="card-category">${esc(c.cat)} • ${c.outline?.length||8} lekcji</div><h3 class="card-title">${esc(c.title)}</h3><p class="card-desc">${esc(c.short)}</p><div style="display:flex;gap:7px;flex-wrap:wrap">${hasAccess(c.id)&&st.passed?'<span class="pill">🏆 Egzamin zaliczony</span>':progress?`<span class="pill">${progress}/${c.outline?.length||8} lekcji zaliczonych</span>`:`<span class="pill">${c.outline?.length||8} lekcji i ćwiczenia</span>`}<span class="pill">${esc(c.duration)}</span></div><div class="card-foot"><span class="price">${money(c.price)} <small>${c.price===0?'/ bezpłatnie':'/ kurs'}</small></span><button class="btn-inline" onclick="openCourse('${c.id}')">Poznaj kurs</button></div><button class="btn btn-dark btn-buy-card" onclick="startPurchase('${c.id}')">${c.price===0?'Odbierz za darmo':'Kup kurs'}</button></div></article>`}
 
@@ -161,23 +161,57 @@ const initialCourse=new URLSearchParams(window.location.search).get('course');
 if(initialCourse&&COURSES.some(c=>c.id===initialCourse))openCourse(initialCourse,false);
 else render();
 
-const _catalogEndpoint='https://kcvvixcjuwglfvdpypzs.supabase.co/rest/v1/ta_courses?select=slug,title_pl,description_pl,price_grosze&published=eq.true';
-fetch(_catalogEndpoint,{headers:{apikey:'sb_publishable_wpRp2JuWNW_WcjZdWXwIRQ_HfCPlxrj',accept:'application/json'}})
- .then(async res=>{if(!res.ok)throw new Error('catalog_fetch_failed');return res.json()})
- .then(rows=>{
-  if(!Array.isArray(rows))return;
+// Public descriptions and module lists are synced with the current Supabase catalog.
+// The complete lessons remain private behind the enrolled learner's Supabase RLS.
+const _base='https://kcvvixcjuwglfvdpypzs.supabase.co/rest/v1/';
+const _headers={apikey:'sb_publishable_wpRp2JuWNW_WcjZdWXwIRQ_HfCPlxrj',accept:'application/json'};
+async function syncLiveCatalog(){
+ const status=()=>document.getElementById('catalog-sync-note');
+ try{
+  const get=async path=>{
+   const response=await fetch(_base+path,{headers:_headers,cache:'no-store'});
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!Array.isArray(data))throw new Error('invalid catalog response');
+   return data;
+  };
+  const [rows,previews]=await Promise.all([
+   get('ta_courses?select=slug,title_pl,description_pl,price_grosze,category_pl,certificate_pl,certificate_en&published=eq.true&limit=500'),
+   get('ta_course_previews?select=course_slug,curiosity,scenario,outcome_1,outcome_2,outcome_3,editorial_note,review_status,module_titles&limit=500')
+  ]);
+  if(!rows.length)throw new Error('empty catalog');
   const bySlug=new Map(rows.map(row=>[row.slug,row]));
+  // A withdrawn course is no longer offered even if it exists in the static offline snapshot.
+  for(let i=COURSES.length-1;i>=0;i--)if(!bySlug.has(COURSES[i].id))COURSES.splice(i,1);
   for(const c of COURSES){
-   const row=bySlug.get(c.id);
-   if(!row)continue;
-   if(typeof row.title_pl==='string'&&row.title_pl.trim())c.title=row.title_pl;
-   if(typeof row.description_pl==='string'&&row.description_pl.trim())c.short=row.description_pl;
-   if(Number.isInteger(row.price_grosze)&&row.price_grosze>=0)c.price=row.price_grosze/100;
+   const item=bySlug.get(c.id);
+   if(typeof item.title_pl==='string'&&item.title_pl.trim())c.title=item.title_pl;
+   if(typeof item.description_pl==='string'&&item.description_pl.trim())c.short=item.description_pl;
+   if(typeof item.category_pl==='string'&&item.category_pl.trim())c.cat=item.category_pl;
+   if(typeof item.certificate_pl==='string'&&item.certificate_pl.trim())c.certificate_title_pl=item.certificate_pl;
+   if(typeof item.certificate_en==='string'&&item.certificate_en.trim())c.certificate_title_en=item.certificate_en;
+   if(Number.isInteger(item.price_grosze)&&item.price_grosze>=0)c.price=item.price_grosze/100;
   }
-  if(page==='home')updateCatalog();
+  for(const item of previews){
+   const course=COURSES.find(c=>c.id===item.course_slug);
+   if(!course)continue;
+   PREVIEWS[item.course_slug]={...(PREVIEWS[item.course_slug]||{}),...item};
+   if(Array.isArray(item.module_titles)){
+    const titles=item.module_titles.filter(t=>typeof t==='string'&&t.trim()).slice(0,200);
+    if(titles.length)course.outline=titles;
+   }
+  }
+  if(selectedCourse&&!COURSES.includes(selectedCourse)){showCatalog();}
+  else if(page==='home')updateCatalog();
   else if(selectedCourse)render();
- })
- .catch(()=>{}); // Render original course catalog as a safe fallback during outages.
+  if(status())status().textContent='Program i ceny zaktualizowane z katalogu akademii.';
+ }catch(err){
+  // Offline fallback never grants course access or attempts to load protected lessons.
+  if(status())status().textContent='Nie udało się odświeżyć katalogu. Wyświetlamy zapisany podgląd; aktualny program sprawdzisz po ponownym otwarciu strony.';
+  console.warn('TRENERKI catalog refresh failed:',err);
+ }
+}
+void syncLiveCatalog();
 
 </script>
 </body>
