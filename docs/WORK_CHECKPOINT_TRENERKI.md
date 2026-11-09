@@ -86,3 +86,11 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - GitHub `content/gontarz-masterclass-20261109-part1.json` (`0871fab3`), `part2.json` (`67cfa047`); cztery techniczne schematy i komponent (`62e4ac4b`); odtwarzalny patch `database/patches/trenerki-gontarz-content-20261109.sql` (`b5762f63`), audyt `docs/COURSE_REVIEW_GONTARZ_20261109.md` (`bdcc3710`).
 - Weryfikacja merytoryczna eksperta, przejście zalogowanego ucznia i potwierdzenie deployu Expo są nadal **niezakończone**. Nie zmieniano flag opublikowania, danych użytkownika, postępów ani płatności.
 - **Kolejny kurs:** sprawdź obecny stan `kaletnik-tradycja` w Supabase, a jeśli nadal nieprzebudowany, rozpocznij od jego specyficznego materiałoznawstwa, konstrukcji i pomiarów. Upewnij się, że licznik kursów odpowiada faktycznemu checkpointowi, nie tylko liczbie lekcji.
+
+
+**Kurs 5: Kaletnik — przebudowa treści w Supabase, wymagane recenzja i E2E**
+- Wcześniej 8 lekcji, teraz **12** (0–11) o anatomii skóry, garbowaniu, grubości, rozkroju, portfelach, narzędziach, szyciu, klejach, wykończeniu, okuciach, diagnostyce i kosztorysie.
+- Potwierdzenie Supabase: `lessons=12`, `five_sections=12`, `unique_questions=12`, `four_options=12`, `four_feedback=12`, `tasks=12`, `revision5=12`, rozłożenie prawidłowych odpowiedzi `[2,3,1,0,2,1,3,2,0,1,3,2]`.
+- GitHub: `content/kaletnik-masterclass-20261109.json` (`c0f02500`), odtwarzalny SQL `database/patches/trenerki-kaletnik-content-20261109.sql` (`989de973`), 4 nowe SVG i ich rejestr (`e68da302`), raport `docs/COURSE_REVIEW_KALETNIK_20261109.md` (`b8d7c472`).
+- Bez zmian kont, postępów, zakupów, RLS i publikacji. `review_status=review_needed`. **Nie wykonano** fachowej recenzji, testów E2E/egzaminu ani potwierdzenia deployu Expo. Ostatni CI był queued; nie twierdzić, że kompilacja przeszła.
+- **Następny kurs:** zweryfikuj w Supabase i audycie `kolodziej`; jeśli jeszcze nieprzebudowany, opracuj go indywidualnie. Nie powtarzaj kursów 1–5.
