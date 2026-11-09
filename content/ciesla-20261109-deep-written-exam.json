@@ -1,0 +1,469 @@
+{
+  "scope": "general_written_exam",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 30,
+      "title_pl": "31. Rachunkowość zawodowa: procent, koszt, wynagrodzenie",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Procent to część liczby odniesiona do 100. Jeśli usługa kosztuje 35 zł i dodatek wynosi 18% wartości podstawowej, obliczasz 35 × 0,18 = 6,30 zł, a potem 35 + 6,30 = 41,30 zł. Taki wynik jest inny niż rabat 18% i inny niż udział procentowy w kwocie łącznej."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Wynagrodzenie brutto za 168 godzin przy stawce 9,50 zł/h wynosi 168 × 9,50 = 1596 zł. Przy podziale 7200 zł na dwie zmiany, z których pierwsza otrzymuje 3/5, otrzyma ona 4320 zł, a druga pozostałe 2880 zł. Każdy wynik zapisuj z jednostką, a w praktyce rozróżniaj wartość brutto i netto."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Przygotuj kosztorys z kolumnami: ilość, jednostka, cena jednostkowa, kwota i suma. Sprawdzaj wynik na prostym przykładzie, zanim przejdziesz do złożonej wyceny. Jeśli 20 m materiału kosztuje 12 zł/m, to koszt pozycji wynosi 240 zł."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Klient chce 18% dodatku do wyceny. Nie można automatycznie wpisać 18 zł niezależnie od wartości podstawowej. Najpierw trzeba ustalić podstawę procentu."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Oblicz 8% dodatku do usługi 250 zł (270 zł łącznie), wynagrodzenie 160 h × 18 zł/h (2880 zł) oraz 2/5 z 6000 zł (2400 zł). Wyjaśnij wszystkie kroki."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Procent to część liczby odniesiona do 100. Jeśli usługa kosztuje 35 zł i dodatek wynosi 18% wartości podstawowej, obliczasz 35 × 0,18 = 6,30 zł, a potem 35 + 6,30 = 41,30 zł. Taki wynik jest inny niż rabat 18% i inny niż udział procentowy w kwocie łącznej.",
+          "situation": "Klient chce 18% dodatku do wyceny. Nie można automatycznie wpisać 18 zł niezależnie od wartości podstawowej. Najpierw trzeba ustalić podstawę procentu.",
+          "example": "Oblicz 8% dodatku do usługi 250 zł (270 zł łącznie), wynagrodzenie 160 h × 18 zł/h (2880 zł) oraz 2/5 z 6000 zł (2400 zł). Wyjaśnij wszystkie kroki.",
+          "task": "Oblicz 8% dodatku do usługi 250 zł (270 zł łącznie), wynagrodzenie 160 h × 18 zł/h (2880 zł) oraz 2/5 z 6000 zł (2400 zł). Wyjaśnij wszystkie kroki.",
+          "question": "Usługa bazowa kosztuje 35 zł, a dodatki 18%. Ile płaci klient?",
+          "options": [
+            "38,50 zł, ponieważ 18% oznacza stałe 3,50 zł.",
+            "41,30 zł, bo dodatek wynosi 6,30 zł.",
+            "42,00 zł, bo 18% to zawsze 7 zł.",
+            "53,00 zł, bo należy dodać 18 zł."
+          ],
+          "correct": 1,
+          "explanation": "Wynagrodzenie brutto za 168 godzin przy stawce 9,50 zł/h wynosi 168 × 9,50 = 1596 zł. Przy podziale 7200 zł na dwie zmiany, z których pierwsza otrzymuje 3/5, otrzyma ona 4320 zł, a druga pozostałe 2880 zł. Każdy wynik zapisuj z jednostką, a w praktyce rozróżniaj wartość brutto i netto.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Wynagrodzenie brutto za 168 godzin przy stawce 9,50 zł/h wynosi 168 × 9,50 = 1596 zł. Przy podziale 7200 zł na dwie zmiany, z których pierwsza otrzymuje 3/5, otrzyma ona 4320 zł, a druga pozostałe 2880 zł. Każdy wynik zapisuj z jednostką, a w praktyce rozróżniaj wartość brutto i netto.",
+            "Prawidłowo. Wynagrodzenie brutto za 168 godzin przy stawce 9,50 zł/h wynosi 168 × 9,50 = 1596 zł. Przy podziale 7200 zł na dwie zmiany, z których pierwsza otrzymuje 3/5, otrzyma ona 4320 zł, a druga pozostałe 2880 zł. Każdy wynik zapisuj z jednostką, a w praktyce rozróżniaj wartość brutto i netto.",
+            "To nie odpowiada warunkom zadania. Wynagrodzenie brutto za 168 godzin przy stawce 9,50 zł/h wynosi 168 × 9,50 = 1596 zł. Przy podziale 7200 zł na dwie zmiany, z których pierwsza otrzymuje 3/5, otrzyma ona 4320 zł, a druga pozostałe 2880 zł. Każdy wynik zapisuj z jednostką, a w praktyce rozróżniaj wartość brutto i netto.",
+            "To nie odpowiada warunkom zadania. Wynagrodzenie brutto za 168 godzin przy stawce 9,50 zł/h wynosi 168 × 9,50 = 1596 zł. Przy podziale 7200 zł na dwie zmiany, z których pierwsza otrzymuje 3/5, otrzyma ona 4320 zł, a druga pozostałe 2880 zł. Każdy wynik zapisuj z jednostką, a w praktyce rozróżniaj wartość brutto i netto."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 31,
+      "title_pl": "32. Dokumenty działalności: oferta, biznesplan i pismo",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Biznesplan pomaga oceniać wykonalność i opłacalność przedsięwzięcia, w tym klientów, koszty, przychody i ryzyka. Nie jest listą codziennych obowiązków ani gwarancją sukcesu. W działalności cieśli używa się ofert, zamówień, kosztorysów, protokołów odbioru i dokumentów sprzedaży, które pełnią różne funkcje."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Pismo urzędowe powinno identyfikować adresata i nadawcę, sprawę, treść żądania lub informacji oraz datę, podpis i załączniki, jeśli są wymagane. Notatka wewnętrzna może mieć inną strukturę niż dokument umowny. Badanie klientów ankietą daje dane obarczone możliwą stronniczością i wymaga ostrożnej interpretacji."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Przyjmując zlecenie, oddziel życzenie klienta od uzgodnionego zakresu. Zapisz projekt, wymiary, jakość materiału, cenę, termin i zasady zmiany zamówienia. Po robocie sporządź protokół zgodnie z ustaleniami. Nie mieszaj szkicu z dokumentem odbiorowym."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Klient po ustnej rozmowie uważa, że w cenie była jeszcze nowa balustrada. W ofercie brak dokładnego zakresu; potrzebne jest wyjaśnienie i pisemne potwierdzenie zmiany, a nie zgadywanie intencji."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Ułóż jednokartkową ofertę na wykonanie drewnianej ramy: zakres, materiał, rysunek, termin, wynagrodzenie, koszt dodatkowy i podpis. Przygotuj także neutralne pismo o zmianie ilości elementów."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Biznesplan pomaga oceniać wykonalność i opłacalność przedsięwzięcia, w tym klientów, koszty, przychody i ryzyka. Nie jest listą codziennych obowiązków ani gwarancją sukcesu. W działalności cieśli używa się ofert, zamówień, kosztorysów, protokołów odbioru i dokumentów sprzedaży, które pełnią różne funkcje.",
+          "situation": "Klient po ustnej rozmowie uważa, że w cenie była jeszcze nowa balustrada. W ofercie brak dokładnego zakresu; potrzebne jest wyjaśnienie i pisemne potwierdzenie zmiany, a nie zgadywanie intencji.",
+          "example": "Ułóż jednokartkową ofertę na wykonanie drewnianej ramy: zakres, materiał, rysunek, termin, wynagrodzenie, koszt dodatkowy i podpis. Przygotuj także neutralne pismo o zmianie ilości elementów.",
+          "task": "Ułóż jednokartkową ofertę na wykonanie drewnianej ramy: zakres, materiał, rysunek, termin, wynagrodzenie, koszt dodatkowy i podpis. Przygotuj także neutralne pismo o zmianie ilości elementów.",
+          "question": "Który zestaw najlepiej rozróżnia biznesplan i ofertę dla klienta?",
+          "options": [
+            "Biznesplan ocenia model przedsięwzięcia, a oferta określa proponowany zakres i warunki danego zlecenia.",
+            "Biznesplan jest zawsze dokumentem potwierdzającym odbiór robót.",
+            "Oferta zastępuje wszystkie dokumenty księgowe.",
+            "Biznesplan zawiera wyłącznie rozkład pracy jednej zmiany."
+          ],
+          "correct": 0,
+          "explanation": "Pismo urzędowe powinno identyfikować adresata i nadawcę, sprawę, treść żądania lub informacji oraz datę, podpis i załączniki, jeśli są wymagane. Notatka wewnętrzna może mieć inną strukturę niż dokument umowny. Badanie klientów ankietą daje dane obarczone możliwą stronniczością i wymaga ostrożnej interpretacji.",
+          "feedback": [
+            "Prawidłowo. Pismo urzędowe powinno identyfikować adresata i nadawcę, sprawę, treść żądania lub informacji oraz datę, podpis i załączniki, jeśli są wymagane. Notatka wewnętrzna może mieć inną strukturę niż dokument umowny. Badanie klientów ankietą daje dane obarczone możliwą stronniczością i wymaga ostrożnej interpretacji.",
+            "To nie odpowiada warunkom zadania. Pismo urzędowe powinno identyfikować adresata i nadawcę, sprawę, treść żądania lub informacji oraz datę, podpis i załączniki, jeśli są wymagane. Notatka wewnętrzna może mieć inną strukturę niż dokument umowny. Badanie klientów ankietą daje dane obarczone możliwą stronniczością i wymaga ostrożnej interpretacji.",
+            "To nie odpowiada warunkom zadania. Pismo urzędowe powinno identyfikować adresata i nadawcę, sprawę, treść żądania lub informacji oraz datę, podpis i załączniki, jeśli są wymagane. Notatka wewnętrzna może mieć inną strukturę niż dokument umowny. Badanie klientów ankietą daje dane obarczone możliwą stronniczością i wymaga ostrożnej interpretacji.",
+            "To nie odpowiada warunkom zadania. Pismo urzędowe powinno identyfikować adresata i nadawcę, sprawę, treść żądania lub informacji oraz datę, podpis i załączniki, jeśli są wymagane. Notatka wewnętrzna może mieć inną strukturę niż dokument umowny. Badanie klientów ankietą daje dane obarczone możliwą stronniczością i wymaga ostrożnej interpretacji."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 32,
+      "title_pl": "33. Rysunek zawodowy: skala, szkic, przekrój i wymiar",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-rysunek",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Skala 1:1 oznacza, że długość na rysunku jest taka jak rzeczywista w przyjętych jednostkach; 1:2 oznacza pomniejszenie do połowy, a 2:1 powiększenie dwukrotne. Jeśli bok kwadratu wynosi 90 mm w rzeczywistości i 90 mm na rysunku, skala wynosi 1:1. W praktyce wymiar podany cyfrowo ma pierwszeństwo przed pomiarem linijką z przypadkowego wydruku."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Szkic to uproszczony zapis kształtu lub rozwiązania, a rysunek wykonawczy wymaga odpowiednich informacji, wymiarów i oznaczeń. Wymiary liniowe, przekroje, widoki i skale muszą być odczytywane razem. Rewizja rysunku wskazuje wersję, na podstawie której planuje się roboty."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Najpierw ustal jednostkę i numer dokumentu; potem odczytaj widok, przekrój, bazę wymiarową, osie i wymiary. Jeśli na przekroju widnieje 1200 mm w skali 1:50, wykonawczy wymiar pozostaje 1200 mm, nie 24 mm z papieru."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Zdjęcie rysunku z telefonu zostało powiększone na ekranie dwukrotnie. Odczytywanie wymiarów linijką z ekranu bez sprawdzenia skali może zniekształcić długość roboczą."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Narysuj kwadrat 90 × 90 mm w skali 1:2 na papierze (bok 45 mm) i opisz go wymiarem 90 mm. Obok narysuj schemat 2:1, uwzględniając miejsce na arkuszu."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Skala 1:1 oznacza, że długość na rysunku jest taka jak rzeczywista w przyjętych jednostkach; 1:2 oznacza pomniejszenie do połowy, a 2:1 powiększenie dwukrotne. Jeśli bok kwadratu wynosi 90 mm w rzeczywistości i 90 mm na rysunku, skala wynosi 1:1. W praktyce wymiar podany cyfrowo ma pierwszeństwo przed pomiarem linijką z przypadkowego wydruku.",
+          "situation": "Zdjęcie rysunku z telefonu zostało powiększone na ekranie dwukrotnie. Odczytywanie wymiarów linijką z ekranu bez sprawdzenia skali może zniekształcić długość roboczą.",
+          "example": "Narysuj kwadrat 90 × 90 mm w skali 1:2 na papierze (bok 45 mm) i opisz go wymiarem 90 mm. Obok narysuj schemat 2:1, uwzględniając miejsce na arkuszu.",
+          "task": "Narysuj kwadrat 90 × 90 mm w skali 1:2 na papierze (bok 45 mm) i opisz go wymiarem 90 mm. Obok narysuj schemat 2:1, uwzględniając miejsce na arkuszu.",
+          "question": "Kwadrat ma rzeczywisty bok 90 mm, a na rysunku 45 mm. Jaką skalę zastosowano?",
+          "options": [
+            "2:1, ponieważ rysunek jest dwa razy większy.",
+            "1:1, ponieważ wymiary są podane w milimetrach.",
+            "1:2, ponieważ rysunek jest dwukrotnie mniejszy.",
+            "1:4, ponieważ pole kwadratu zmalało czterokrotnie."
+          ],
+          "correct": 2,
+          "explanation": "Szkic to uproszczony zapis kształtu lub rozwiązania, a rysunek wykonawczy wymaga odpowiednich informacji, wymiarów i oznaczeń. Wymiary liniowe, przekroje, widoki i skale muszą być odczytywane razem. Rewizja rysunku wskazuje wersję, na podstawie której planuje się roboty.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Szkic to uproszczony zapis kształtu lub rozwiązania, a rysunek wykonawczy wymaga odpowiednich informacji, wymiarów i oznaczeń. Wymiary liniowe, przekroje, widoki i skale muszą być odczytywane razem. Rewizja rysunku wskazuje wersję, na podstawie której planuje się roboty.",
+            "To nie odpowiada warunkom zadania. Szkic to uproszczony zapis kształtu lub rozwiązania, a rysunek wykonawczy wymaga odpowiednich informacji, wymiarów i oznaczeń. Wymiary liniowe, przekroje, widoki i skale muszą być odczytywane razem. Rewizja rysunku wskazuje wersję, na podstawie której planuje się roboty.",
+            "Prawidłowo. Szkic to uproszczony zapis kształtu lub rozwiązania, a rysunek wykonawczy wymaga odpowiednich informacji, wymiarów i oznaczeń. Wymiary liniowe, przekroje, widoki i skale muszą być odczytywane razem. Rewizja rysunku wskazuje wersję, na podstawie której planuje się roboty.",
+            "To nie odpowiada warunkom zadania. Szkic to uproszczony zapis kształtu lub rozwiązania, a rysunek wykonawczy wymaga odpowiednich informacji, wymiarów i oznaczeń. Wymiary liniowe, przekroje, widoki i skale muszą być odczytywane razem. Rewizja rysunku wskazuje wersję, na podstawie której planuje się roboty."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 33,
+      "title_pl": "34. BHP i ochrona przeciwpożarowa",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Bezpieczeństwo pracy obejmuje ocenę ryzyka, szkolenie, instrukcję stanowiskową, organizację miejsca i stosowanie osłon maszyn. Pożar może powstać w związku z zapłonem odpadów, pyłu lub chemikaliów; prace gorące i instalacje elektryczne wymagają szczególnej kontroli. Instrukcja producenta i lokalna dokumentacja stanowiska są podstawowe."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Historyczny arkusz pyta o okresy szkoleń i definicje wynikające z prawa. Nie ucz się samych liczb bez weryfikacji obecnie obowiązujących przepisów. Pytania prawne zależą od daty i kraju. W materiale teoretycznym odróżniamy zagrożenie, środek ochronny i działanie awaryjne."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Przed uruchomieniem narzędzi skontroluj osłony, odciąg pyłu, drogi przejścia, ochronę słuchu i oczu oraz dostęp do wyłącznika. Przy niesprawnej maszynie zatrzymaj pracę i zgłoś problem. Nie kieruj się wyłącznie presją terminową."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Na stanowisku składowane są pył i odpady przy źródle zapłonu. Zamiast rozpoczynać pracę, trzeba rozpoznać zagrożenie i usunąć je zgodnie z procedurą, w tym wymaganiami ochrony przeciwpożarowej."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Przygotuj krótką SJA dla cięcia drewna i montażu ramy: pięć zagrożeń, działania zapobiegawcze, osoba odpowiedzialna i warunek przerwania pracy."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Bezpieczeństwo pracy obejmuje ocenę ryzyka, szkolenie, instrukcję stanowiskową, organizację miejsca i stosowanie osłon maszyn. Pożar może powstać w związku z zapłonem odpadów, pyłu lub chemikaliów; prace gorące i instalacje elektryczne wymagają szczególnej kontroli. Instrukcja producenta i lokalna dokumentacja stanowiska są podstawowe.",
+          "situation": "Na stanowisku składowane są pył i odpady przy źródle zapłonu. Zamiast rozpoczynać pracę, trzeba rozpoznać zagrożenie i usunąć je zgodnie z procedurą, w tym wymaganiami ochrony przeciwpożarowej.",
+          "example": "Przygotuj krótką SJA dla cięcia drewna i montażu ramy: pięć zagrożeń, działania zapobiegawcze, osoba odpowiedzialna i warunek przerwania pracy.",
+          "task": "Przygotuj krótką SJA dla cięcia drewna i montażu ramy: pięć zagrożeń, działania zapobiegawcze, osoba odpowiedzialna i warunek przerwania pracy.",
+          "question": "Użytkownik pilarki zauważa niesprawną osłonę. Jaka jest właściwa decyzja?",
+          "options": [
+            "Przyspieszyć pracę i skrócić kontakt z urządzeniem.",
+            "Zastąpić osłonę grubszymi rękawicami.",
+            "Użyć maszyny tylko raz, jeśli element jest krótki.",
+            "Wyłączyć urządzenie z użytkowania i zapewnić naprawę lub wymianę."
+          ],
+          "correct": 3,
+          "explanation": "Historyczny arkusz pyta o okresy szkoleń i definicje wynikające z prawa. Nie ucz się samych liczb bez weryfikacji obecnie obowiązujących przepisów. Pytania prawne zależą od daty i kraju. W materiale teoretycznym odróżniamy zagrożenie, środek ochronny i działanie awaryjne.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Historyczny arkusz pyta o okresy szkoleń i definicje wynikające z prawa. Nie ucz się samych liczb bez weryfikacji obecnie obowiązujących przepisów. Pytania prawne zależą od daty i kraju. W materiale teoretycznym odróżniamy zagrożenie, środek ochronny i działanie awaryjne.",
+            "To nie odpowiada warunkom zadania. Historyczny arkusz pyta o okresy szkoleń i definicje wynikające z prawa. Nie ucz się samych liczb bez weryfikacji obecnie obowiązujących przepisów. Pytania prawne zależą od daty i kraju. W materiale teoretycznym odróżniamy zagrożenie, środek ochronny i działanie awaryjne.",
+            "To nie odpowiada warunkom zadania. Historyczny arkusz pyta o okresy szkoleń i definicje wynikające z prawa. Nie ucz się samych liczb bez weryfikacji obecnie obowiązujących przepisów. Pytania prawne zależą od daty i kraju. W materiale teoretycznym odróżniamy zagrożenie, środek ochronny i działanie awaryjne.",
+            "Prawidłowo. Historyczny arkusz pyta o okresy szkoleń i definicje wynikające z prawa. Nie ucz się samych liczb bez weryfikacji obecnie obowiązujących przepisów. Pytania prawne zależą od daty i kraju. W materiale teoretycznym odróżniamy zagrożenie, środek ochronny i działanie awaryjne."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 34,
+      "title_pl": "35. Środowisko: odpady, odzysk, pył i chemikalia",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Recykling polega na przetwarzaniu odpowiednio zebranych materiałów w surowce do nowych produktów. Nie jest tym samym co każde ponowne użycie elementu. Odpady drewna czystego, impregnowanego i pokrytego nieznanymi powłokami mogą wymagać różnego postępowania. Pył drzewny wymaga kontroli również z powodów zdrowotnych i pożarowych."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Arkusz egzaminacyjny obejmuje także zagadnienia ogólne, takie jak kwaśne opady i warstwa ozonowa. Kwaśne opady są związane między innymi z emisjami tlenków siarki i azotu, ale w codziennej pracy cieśli ważniejsze jest rozpoznanie odpadów i bezpieczne gospodarowanie substancjami."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Na budowie najpierw ustal rodzaj odpadu, możliwość ponownego użycia, wymagania segregacji i odbioru. Odczytaj oznaczenie chemikaliów oraz kartę charakterystyki. Nie spalaj starego drewna o nieznanej impregnacji ani nie traktuj go automatycznie jak czystej biomasy."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Rozebrano stare elementy malowane i impregnowane, po czym pracownik wrzuca je do kontenera na czyste drewno. Potrzebne jest rozpoznanie materiału i postępowanie zgodne z lokalnymi zasadami."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Zaproponuj plan segregacji dla czystych ścinków, elementów z metalowymi łącznikami, starego drewna z nieznaną powłoką i opakowań po środkach chemicznych. Przy każdym wpisz, co musisz sprawdzić."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Recykling polega na przetwarzaniu odpowiednio zebranych materiałów w surowce do nowych produktów. Nie jest tym samym co każde ponowne użycie elementu. Odpady drewna czystego, impregnowanego i pokrytego nieznanymi powłokami mogą wymagać różnego postępowania. Pył drzewny wymaga kontroli również z powodów zdrowotnych i pożarowych.",
+          "situation": "Rozebrano stare elementy malowane i impregnowane, po czym pracownik wrzuca je do kontenera na czyste drewno. Potrzebne jest rozpoznanie materiału i postępowanie zgodne z lokalnymi zasadami.",
+          "example": "Zaproponuj plan segregacji dla czystych ścinków, elementów z metalowymi łącznikami, starego drewna z nieznaną powłoką i opakowań po środkach chemicznych. Przy każdym wpisz, co musisz sprawdzić.",
+          "task": "Zaproponuj plan segregacji dla czystych ścinków, elementów z metalowymi łącznikami, starego drewna z nieznaną powłoką i opakowań po środkach chemicznych. Przy każdym wpisz, co musisz sprawdzić.",
+          "question": "Co należy zrobić ze starym drewnem pokrytym nieznaną substancją?",
+          "options": [
+            "Traktować automatycznie jak czyste drewno opałowe.",
+            "Rozpoznać rodzaj odpadu i przekazać go zgodnie z wymaganiami.",
+            "Zmieszać je z czystymi ścinkami dla ułatwienia transportu.",
+            "Spalić na budowie, by uniknąć dokumentacji."
+          ],
+          "correct": 1,
+          "explanation": "Arkusz egzaminacyjny obejmuje także zagadnienia ogólne, takie jak kwaśne opady i warstwa ozonowa. Kwaśne opady są związane między innymi z emisjami tlenków siarki i azotu, ale w codziennej pracy cieśli ważniejsze jest rozpoznanie odpadów i bezpieczne gospodarowanie substancjami.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Arkusz egzaminacyjny obejmuje także zagadnienia ogólne, takie jak kwaśne opady i warstwa ozonowa. Kwaśne opady są związane między innymi z emisjami tlenków siarki i azotu, ale w codziennej pracy cieśli ważniejsze jest rozpoznanie odpadów i bezpieczne gospodarowanie substancjami.",
+            "Prawidłowo. Arkusz egzaminacyjny obejmuje także zagadnienia ogólne, takie jak kwaśne opady i warstwa ozonowa. Kwaśne opady są związane między innymi z emisjami tlenków siarki i azotu, ale w codziennej pracy cieśli ważniejsze jest rozpoznanie odpadów i bezpieczne gospodarowanie substancjami.",
+            "To nie odpowiada warunkom zadania. Arkusz egzaminacyjny obejmuje także zagadnienia ogólne, takie jak kwaśne opady i warstwa ozonowa. Kwaśne opady są związane między innymi z emisjami tlenków siarki i azotu, ale w codziennej pracy cieśli ważniejsze jest rozpoznanie odpadów i bezpieczne gospodarowanie substancjami.",
+            "To nie odpowiada warunkom zadania. Arkusz egzaminacyjny obejmuje także zagadnienia ogólne, takie jak kwaśne opady i warstwa ozonowa. Kwaśne opady są związane między innymi z emisjami tlenków siarki i azotu, ale w codziennej pracy cieśli ważniejsze jest rozpoznanie odpadów i bezpieczne gospodarowanie substancjami."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 35,
+      "title_pl": "36. Prawo pracy: wynagrodzenie, bezpieczeństwo i odpowiedzialność",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Stosunek pracy regulują prawa i obowiązki obu stron. W polskim systemie pracownik co do zasady nie może zrzec się prawa do wynagrodzenia za wykonaną pracę. Obowiązki w zakresie bezpieczeństwa i odpowiedzialność za organizację procesu pracy wymagają znajomości aktualnych przepisów. Zasady pracy młodocianych mają osobne ograniczenia."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Archiwalne pytania egzaminacyjne o termin odwołania lub częstotliwość szkoleń mogą nie odpowiadać aktualnemu prawu. Dlatego ćwiczenie polega na rozpoznaniu typu zagadnienia i znalezieniu obowiązującej podstawy prawnej, a nie bezrefleksyjnym zapamiętaniu starej liczby."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Przyjmując pracownika, ustal zakres obowiązków, warunki wynagrodzenia, wymagane szkolenia i sposób zgłaszania zagrożeń. Przy sporze o termin lub rozwiązanie umowy odwołuj się do bieżącego prawa i właściwej instytucji, nie do starej ulotki."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Pracownik otrzymuje propozycję 'rezygnacji z wynagrodzenia za tydzień, żeby firma nie miała straty'. Taką sytuację należy ocenić w świetle praw pracowniczych, a nie samego uzgodnienia ustnego."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Porównaj umowę, zakres obowiązków, listę obecności i potwierdzenie wypłaty. Napisz, które informacje należy sprawdzić w aktualnym Kodeksie pracy przy urlopie, wypowiedzeniu i pracy młodocianego."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Stosunek pracy regulują prawa i obowiązki obu stron. W polskim systemie pracownik co do zasady nie może zrzec się prawa do wynagrodzenia za wykonaną pracę. Obowiązki w zakresie bezpieczeństwa i odpowiedzialność za organizację procesu pracy wymagają znajomości aktualnych przepisów. Zasady pracy młodocianych mają osobne ograniczenia.",
+          "situation": "Pracownik otrzymuje propozycję 'rezygnacji z wynagrodzenia za tydzień, żeby firma nie miała straty'. Taką sytuację należy ocenić w świetle praw pracowniczych, a nie samego uzgodnienia ustnego.",
+          "example": "Porównaj umowę, zakres obowiązków, listę obecności i potwierdzenie wypłaty. Napisz, które informacje należy sprawdzić w aktualnym Kodeksie pracy przy urlopie, wypowiedzeniu i pracy młodocianego.",
+          "task": "Porównaj umowę, zakres obowiązków, listę obecności i potwierdzenie wypłaty. Napisz, które informacje należy sprawdzić w aktualnym Kodeksie pracy przy urlopie, wypowiedzeniu i pracy młodocianego.",
+          "question": "Co najlepiej opisuje naukę prawa pracy z archiwalnego testu?",
+          "options": [
+            "Przepisów nie trzeba sprawdzać po dacie testu.",
+            "Trzeba rozumieć zasadę oraz zweryfikować aktualne brzmienie przepisów i terminy.",
+            "Wszystkie dawne wartości liczbowe obowiązują bezterminowo.",
+            "Prawo pracy jest jedynie częścią kosztorysu materiałów."
+          ],
+          "correct": 1,
+          "explanation": "Archiwalne pytania egzaminacyjne o termin odwołania lub częstotliwość szkoleń mogą nie odpowiadać aktualnemu prawu. Dlatego ćwiczenie polega na rozpoznaniu typu zagadnienia i znalezieniu obowiązującej podstawy prawnej, a nie bezrefleksyjnym zapamiętaniu starej liczby.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Archiwalne pytania egzaminacyjne o termin odwołania lub częstotliwość szkoleń mogą nie odpowiadać aktualnemu prawu. Dlatego ćwiczenie polega na rozpoznaniu typu zagadnienia i znalezieniu obowiązującej podstawy prawnej, a nie bezrefleksyjnym zapamiętaniu starej liczby.",
+            "Prawidłowo. Archiwalne pytania egzaminacyjne o termin odwołania lub częstotliwość szkoleń mogą nie odpowiadać aktualnemu prawu. Dlatego ćwiczenie polega na rozpoznaniu typu zagadnienia i znalezieniu obowiązującej podstawy prawnej, a nie bezrefleksyjnym zapamiętaniu starej liczby.",
+            "To nie odpowiada warunkom zadania. Archiwalne pytania egzaminacyjne o termin odwołania lub częstotliwość szkoleń mogą nie odpowiadać aktualnemu prawu. Dlatego ćwiczenie polega na rozpoznaniu typu zagadnienia i znalezieniu obowiązującej podstawy prawnej, a nie bezrefleksyjnym zapamiętaniu starej liczby.",
+            "To nie odpowiada warunkom zadania. Archiwalne pytania egzaminacyjne o termin odwołania lub częstotliwość szkoleń mogą nie odpowiadać aktualnemu prawu. Dlatego ćwiczenie polega na rozpoznaniu typu zagadnienia i znalezieniu obowiązującej podstawy prawnej, a nie bezrefleksyjnym zapamiętaniu starej liczby."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 36,
+      "title_pl": "37. Przedsiębiorstwo: produkt, firma, klient i zarządzanie",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-drewno",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Produkt jest ofertą wartości dla odbiorcy — wyrób, usługa albo ich połączenie. Nazwa firmy identyfikuje działalność, lecz nie stanowi sama w sobie planu produkcji ani gwarancji jakości. Prowadzenie zakładu cieśli wymaga zrozumienia kosztu materiałów, pracy, ryzyka, dokumentacji i obsługi klienta."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Oferta powinna definiować zakres, użyte materiały, termin, cenę, warunki odbioru i zasady zmian. W praktyce planuj zasoby oraz proces kontroli. Rentowność zlecenia ocenia się po wszystkich kosztach, a nie po różnicy między kwotą faktury a ceną samych desek."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Zbuduj prosty model: przychód 8000 zł, materiał 3500 zł, robocizna 2500 zł, transport 500 zł i inne koszty 500 zł. Zostaje 1000 zł przed dodatkowymi obowiązkami i podatkami. Sprawdź, czy nie pominięto opłat oraz kosztów narzędzi."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Firma wycenia dach tylko według ceny drewna i zapomina o transporcie, sprzęcie, odpadach i czasie zespołu. Zlecenie może przynieść stratę mimo wysokiej ceny na fakturze."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Wykonaj tabelę kosztów hipotetycznego zlecenia na 8000 zł i oblicz pozostałą kwotę. Dopisz trzy ryzyka, które mogą ją zmienić."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Produkt jest ofertą wartości dla odbiorcy — wyrób, usługa albo ich połączenie. Nazwa firmy identyfikuje działalność, lecz nie stanowi sama w sobie planu produkcji ani gwarancji jakości. Prowadzenie zakładu cieśli wymaga zrozumienia kosztu materiałów, pracy, ryzyka, dokumentacji i obsługi klienta.",
+          "situation": "Firma wycenia dach tylko według ceny drewna i zapomina o transporcie, sprzęcie, odpadach i czasie zespołu. Zlecenie może przynieść stratę mimo wysokiej ceny na fakturze.",
+          "example": "Wykonaj tabelę kosztów hipotetycznego zlecenia na 8000 zł i oblicz pozostałą kwotę. Dopisz trzy ryzyka, które mogą ją zmienić.",
+          "task": "Wykonaj tabelę kosztów hipotetycznego zlecenia na 8000 zł i oblicz pozostałą kwotę. Dopisz trzy ryzyka, które mogą ją zmienić.",
+          "question": "Przychód 8000 zł, koszty 3500 + 2500 + 500 + 500 zł. Ile pozostaje przed dalszymi obciążeniami?",
+          "options": [
+            "1500 zł.",
+            "2000 zł.",
+            "1000 zł.",
+            "500 zł."
+          ],
+          "correct": 2,
+          "explanation": "Oferta powinna definiować zakres, użyte materiały, termin, cenę, warunki odbioru i zasady zmian. W praktyce planuj zasoby oraz proces kontroli. Rentowność zlecenia ocenia się po wszystkich kosztach, a nie po różnicy między kwotą faktury a ceną samych desek.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Oferta powinna definiować zakres, użyte materiały, termin, cenę, warunki odbioru i zasady zmian. W praktyce planuj zasoby oraz proces kontroli. Rentowność zlecenia ocenia się po wszystkich kosztach, a nie po różnicy między kwotą faktury a ceną samych desek.",
+            "To nie odpowiada warunkom zadania. Oferta powinna definiować zakres, użyte materiały, termin, cenę, warunki odbioru i zasady zmian. W praktyce planuj zasoby oraz proces kontroli. Rentowność zlecenia ocenia się po wszystkich kosztach, a nie po różnicy między kwotą faktury a ceną samych desek.",
+            "Prawidłowo. Oferta powinna definiować zakres, użyte materiały, termin, cenę, warunki odbioru i zasady zmian. W praktyce planuj zasoby oraz proces kontroli. Rentowność zlecenia ocenia się po wszystkich kosztach, a nie po różnicy między kwotą faktury a ceną samych desek.",
+            "To nie odpowiada warunkom zadania. Oferta powinna definiować zakres, użyte materiały, termin, cenę, warunki odbioru i zasady zmian. W praktyce planuj zasoby oraz proces kontroli. Rentowność zlecenia ocenia się po wszystkich kosztach, a nie po różnicy między kwotą faktury a ceną samych desek."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 37,
+      "title_pl": "38. Próbny egzamin łączony i projekt końcowy",
+      "material": {
+        "module": 4,
+        "editorial_status": "review_needed",
+        "source_basis": "Test przykładowy DA Spesialistene 2025: 7 tematów i karta odpowiedzi — autorski program, prawo weryfikować na dzień egzaminu",
+        "illustration": "ciesla-rysunek",
+        "sections": [
+          {
+            "heading": "Zasada i definicje",
+            "text": "Przygotowanie do egzaminu wymaga nie tylko wyboru odpowiedzi, lecz również wyjaśnienia zjawiska, wykonania prostego obliczenia, rozpoznania elementu na rysunku oraz uzasadnienia działania. Dwa materiały o podobnym wyglądzie mogą mieć odmienne własności, a dwa narzędzia podobną nazwę i inne przeznaczenie."
+          },
+          {
+            "heading": "Wiedza potrzebna przy rozwiązywaniu",
+            "text": "Próbny arkusz powinien oddzielnie sprawdzać technologię, maszynoznawstwo, materiałoznawstwo i wiedzę ogólną. Ocena przydatności zawodowej nie wynika z jednego testu internetowego; zadanie praktyczne powinno zostać wykonane i ocenione w bezpiecznym warsztacie przez uprawnionego specjalistę."
+          },
+          {
+            "heading": "Jak rozwiązać zadanie krok po kroku",
+            "text": "Zadanie łączone: z rysunku odczytaj ramę 3 × 4 m; oblicz przekątną 5 m; oblicz objętość 10 belek 50 × 200 × 6000 mm = 0,60 m³; wybierz właściwe punkty kontroli drewna i narzędzi; opisz postępowanie przy pęknięciu belki. Każdy wynik musi mieć uzasadnienie."
+          },
+          {
+            "heading": "Przypadek do oceny",
+            "text": "Uczeń zna nazwę 'płatew', ale myli ją z jętką na przekroju. Zna też wzór na objętość, lecz nie przelicza milimetrów na metry. Oba błędy wykazują, że test pamięciowy nie potwierdza zrozumienia."
+          },
+          {
+            "heading": "Zadanie przed testem",
+            "text": "Przygotuj mini teczkę: szkic 3 × 4 m, obmiar drewna, ocena wilgotności, rozpoznanie trzech narzędzi, trzy działania BHP i kosztorys. Wytłumacz każdy krok własnymi słowami, potem zweryfikuj z fachowcem."
+          },
+          {
+            "heading": "Kiedy uznasz, że rozumiesz",
+            "text": "Potrafisz samodzielnie odtworzyć przykład, nazwać użyte dokumenty lub jednostki, wyjaśnić źródło pomyłki i wskazać, które zasady wymagają sprawdzenia w aktualnych przepisach."
+          }
+        ],
+        "learning": {
+          "intro": "Przygotowanie do egzaminu wymaga nie tylko wyboru odpowiedzi, lecz również wyjaśnienia zjawiska, wykonania prostego obliczenia, rozpoznania elementu na rysunku oraz uzasadnienia działania. Dwa materiały o podobnym wyglądzie mogą mieć odmienne własności, a dwa narzędzia podobną nazwę i inne przeznaczenie.",
+          "situation": "Uczeń zna nazwę 'płatew', ale myli ją z jętką na przekroju. Zna też wzór na objętość, lecz nie przelicza milimetrów na metry. Oba błędy wykazują, że test pamięciowy nie potwierdza zrozumienia.",
+          "example": "Przygotuj mini teczkę: szkic 3 × 4 m, obmiar drewna, ocena wilgotności, rozpoznanie trzech narzędzi, trzy działania BHP i kosztorys. Wytłumacz każdy krok własnymi słowami, potem zweryfikuj z fachowcem.",
+          "task": "Przygotuj mini teczkę: szkic 3 × 4 m, obmiar drewna, ocena wilgotności, rozpoznanie trzech narzędzi, trzy działania BHP i kosztorys. Wytłumacz każdy krok własnymi słowami, potem zweryfikuj z fachowcem.",
+          "question": "Co najlepiej dowodzi zrozumienia zagadnień przez kandydata na cieślę?",
+          "options": [
+            "Szybkie zapamiętanie liter odpowiedzi bez sprawdzania problemu.",
+            "Poprawne użycie pojęć, obliczeń, rysunku, kontroli materiałów i uzasadnienia decyzji.",
+            "Zapamiętanie jednej nazwy maszyny bez znajomości jej funkcji.",
+            "Ukończenie testu bez porównania z wymaganiami zadania."
+          ],
+          "correct": 1,
+          "explanation": "Próbny arkusz powinien oddzielnie sprawdzać technologię, maszynoznawstwo, materiałoznawstwo i wiedzę ogólną. Ocena przydatności zawodowej nie wynika z jednego testu internetowego; zadanie praktyczne powinno zostać wykonane i ocenione w bezpiecznym warsztacie przez uprawnionego specjalistę.",
+          "feedback": [
+            "To nie odpowiada warunkom zadania. Próbny arkusz powinien oddzielnie sprawdzać technologię, maszynoznawstwo, materiałoznawstwo i wiedzę ogólną. Ocena przydatności zawodowej nie wynika z jednego testu internetowego; zadanie praktyczne powinno zostać wykonane i ocenione w bezpiecznym warsztacie przez uprawnionego specjalistę.",
+            "Prawidłowo. Próbny arkusz powinien oddzielnie sprawdzać technologię, maszynoznawstwo, materiałoznawstwo i wiedzę ogólną. Ocena przydatności zawodowej nie wynika z jednego testu internetowego; zadanie praktyczne powinno zostać wykonane i ocenione w bezpiecznym warsztacie przez uprawnionego specjalistę.",
+            "To nie odpowiada warunkom zadania. Próbny arkusz powinien oddzielnie sprawdzać technologię, maszynoznawstwo, materiałoznawstwo i wiedzę ogólną. Ocena przydatności zawodowej nie wynika z jednego testu internetowego; zadanie praktyczne powinno zostać wykonane i ocenione w bezpiecznym warsztacie przez uprawnionego specjalistę.",
+            "To nie odpowiada warunkom zadania. Próbny arkusz powinien oddzielnie sprawdzać technologię, maszynoznawstwo, materiałoznawstwo i wiedzę ogólną. Ocena przydatności zawodowej nie wynika z jednego testu internetowego; zadanie praktyczne powinno zostać wykonane i ocenione w bezpiecznym warsztacie przez uprawnionego specjalistę."
+          ]
+        }
+      }
+    }
+  ]
+}
