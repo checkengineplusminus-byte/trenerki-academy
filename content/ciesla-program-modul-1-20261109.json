@@ -1,0 +1,556 @@
+{
+  "course": "ciesla-przygotowanie-czeladnicze",
+  "module": 1,
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 0,
+      "title_pl": "1. Zawód cieśli i cztery obszary kwalifikacji BUD.02",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Cieśla przygotowuje materiał z drewna, wykonuje i montuje konstrukcje, tworzy deskowania i formy dla betonu oraz naprawia i rozbiera istniejące elementy. Do każdej operacji potrzebuje dokumentacji, pomiarów, właściwego materiału i oceny zagrożeń."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Podziel zadanie montażu drewnianego stropu na przygotowanie, transport, montaż i odbiór. Wskaż, które operacje wymagają projektu konstrukcyjnego i kiedy trzeba wstrzymać prace."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Klient pokazuje tylko zdjęcie dachu i chce od razu zamówić przekroje belek. Brakuje danych o rozpiętości, obciążeniach i łączeniach."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Zawód cieśli i cztery obszary kwalifikacji BUD.02”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Cieśla przygotowuje materiał z drewna, wykonuje i montuje konstrukcje, tworzy deskowania i formy dla betonu oraz naprawia i rozbiera istniejące elementy. Do każdej operacji potrzebuje dokumentacji, pomiarów, właściwego materiału i oceny zagrożeń.",
+          "situation": "Klient pokazuje tylko zdjęcie dachu i chce od razu zamówić przekroje belek. Brakuje danych o rozpiętości, obciążeniach i łączeniach.",
+          "question": "Co jest podstawą doboru przekrojów konstrukcji?",
+          "options": [
+            "Projekt, obciążenia i udokumentowane właściwości drewna.",
+            "Wyłącznie zdjęcie podobnego dachu.",
+            "Kolor użytej impregnacji.",
+            "Liczba narzędzi w warsztacie."
+          ],
+          "correct": 0,
+          "example": "Projekt, obciążenia i udokumentowane właściwości drewna.",
+          "explanation": "Podziel zadanie montażu drewnianego stropu na przygotowanie, transport, montaż i odbiór. Wskaż, które operacje wymagają projektu konstrukcyjnego i kiedy trzeba wstrzymać prace.",
+          "feedback": [
+            "Prawidłowo. Podziel zadanie montażu drewnianego stropu na przygotowanie, transport, montaż i odbiór. Wskaż, które operacje wymagają projektu konstrukcyjnego i kiedy trzeba wstrzymać prace.",
+            "Sprawdź warunki techniczne. Podziel zadanie montażu drewnianego stropu na przygotowanie, transport, montaż i odbiór. Wskaż, które operacje wymagają projektu konstrukcyjnego i kiedy trzeba wstrzymać prace.",
+            "Sprawdź warunki techniczne. Podziel zadanie montażu drewnianego stropu na przygotowanie, transport, montaż i odbiór. Wskaż, które operacje wymagają projektu konstrukcyjnego i kiedy trzeba wstrzymać prace.",
+            "Sprawdź warunki techniczne. Podziel zadanie montażu drewnianego stropu na przygotowanie, transport, montaż i odbiór. Wskaż, które operacje wymagają projektu konstrukcyjnego i kiedy trzeba wstrzymać prace."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 1,
+      "title_pl": "2. Bezpieczeństwo: pilarki, pył i praca na wysokości",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Przy cięciu drewna występują odpryski, pył, hałas i ryzyko kontaktu z ostrzem. Podczas pracy na wysokości potrzebne są odpowiednie zabezpieczenia, plan dostępu i ocena ryzyka. Ochronniki słuchu nie zastępują osłony pilarki ani odciągu pyłu."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Sprawdź osłony, odciąg, stan przewodów, stabilne podparcie materiału oraz drogi ewakuacji. Stosuj ocenę ryzyka lub SJA i przerywaj pracę przy awarii. Ćwiczenia z urządzeniami odbywają się tylko pod fachowym nadzorem."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Operator chce dokończyć jedno cięcie pilarką z uszkodzoną osłoną, bo brakuje czasu."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Bezpieczeństwo: pilarki, pył i praca na wysokości”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Przy cięciu drewna występują odpryski, pył, hałas i ryzyko kontaktu z ostrzem. Podczas pracy na wysokości potrzebne są odpowiednie zabezpieczenia, plan dostępu i ocena ryzyka. Ochronniki słuchu nie zastępują osłony pilarki ani odciągu pyłu.",
+          "situation": "Operator chce dokończyć jedno cięcie pilarką z uszkodzoną osłoną, bo brakuje czasu.",
+          "question": "Co zrobić z pilarką z niesprawną osłoną?",
+          "options": [
+            "Pracować wolniej bez osłony.",
+            "Wycofać z użycia do naprawy lub wymiany.",
+            "Zasłonić wadę deską.",
+            "Zwiększyć obroty pilarki."
+          ],
+          "correct": 1,
+          "example": "Wycofać z użycia do naprawy lub wymiany.",
+          "explanation": "Sprawdź osłony, odciąg, stan przewodów, stabilne podparcie materiału oraz drogi ewakuacji. Stosuj ocenę ryzyka lub SJA i przerywaj pracę przy awarii. Ćwiczenia z urządzeniami odbywają się tylko pod fachowym nadzorem.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Sprawdź osłony, odciąg, stan przewodów, stabilne podparcie materiału oraz drogi ewakuacji. Stosuj ocenę ryzyka lub SJA i przerywaj pracę przy awarii. Ćwiczenia z urządzeniami odbywają się tylko pod fachowym nadzorem.",
+            "Prawidłowo. Sprawdź osłony, odciąg, stan przewodów, stabilne podparcie materiału oraz drogi ewakuacji. Stosuj ocenę ryzyka lub SJA i przerywaj pracę przy awarii. Ćwiczenia z urządzeniami odbywają się tylko pod fachowym nadzorem.",
+            "Sprawdź warunki techniczne. Sprawdź osłony, odciąg, stan przewodów, stabilne podparcie materiału oraz drogi ewakuacji. Stosuj ocenę ryzyka lub SJA i przerywaj pracę przy awarii. Ćwiczenia z urządzeniami odbywają się tylko pod fachowym nadzorem.",
+            "Sprawdź warunki techniczne. Sprawdź osłony, odciąg, stan przewodów, stabilne podparcie materiału oraz drogi ewakuacji. Stosuj ocenę ryzyka lub SJA i przerywaj pracę przy awarii. Ćwiczenia z urządzeniami odbywają się tylko pod fachowym nadzorem."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 2,
+      "title_pl": "3. Budowa pnia: włókna, słoje, biel i twardziel",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Drewno nie ma identycznych właściwości w każdym kierunku. Włókna, słoje, rdzeń, biel i twardziel wyjaśniają wiele cech wytrzymałościowych i zmian wymiaru. Sęki i skręt włókien mogą osłabiać element, ale ich ocena zależy od lokalizacji i klasy sortowniczej."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Narysuj przekrój pnia i zaznacz kierunki wzdłużny, promieniowy i styczny. Porównaj dwa przekroje deski z różnym kierunkiem słojów i przewiduj, gdzie mogą wystąpić odkształcenia."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Dwie deski tego samego gatunku po schnięciu wyginają się w różne strony, mimo podobnych wymiarów."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Budowa pnia: włókna, słoje, biel i twardziel”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno nie ma identycznych właściwości w każdym kierunku. Włókna, słoje, rdzeń, biel i twardziel wyjaśniają wiele cech wytrzymałościowych i zmian wymiaru. Sęki i skręt włókien mogą osłabiać element, ale ich ocena zależy od lokalizacji i klasy sortowniczej.",
+          "situation": "Dwie deski tego samego gatunku po schnięciu wyginają się w różne strony, mimo podobnych wymiarów.",
+          "question": "Co oznacza anizotropia drewna?",
+          "options": [
+            "Własności są jednakowe w każdą stronę.",
+            "Drewno jest zawsze wodoodporne.",
+            "Własności drewna zależą od kierunku względem włókien.",
+            "Gatunek można rozpoznać po cenie."
+          ],
+          "correct": 2,
+          "example": "Własności drewna zależą od kierunku względem włókien.",
+          "explanation": "Narysuj przekrój pnia i zaznacz kierunki wzdłużny, promieniowy i styczny. Porównaj dwa przekroje deski z różnym kierunkiem słojów i przewiduj, gdzie mogą wystąpić odkształcenia.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Narysuj przekrój pnia i zaznacz kierunki wzdłużny, promieniowy i styczny. Porównaj dwa przekroje deski z różnym kierunkiem słojów i przewiduj, gdzie mogą wystąpić odkształcenia.",
+            "Sprawdź warunki techniczne. Narysuj przekrój pnia i zaznacz kierunki wzdłużny, promieniowy i styczny. Porównaj dwa przekroje deski z różnym kierunkiem słojów i przewiduj, gdzie mogą wystąpić odkształcenia.",
+            "Prawidłowo. Narysuj przekrój pnia i zaznacz kierunki wzdłużny, promieniowy i styczny. Porównaj dwa przekroje deski z różnym kierunkiem słojów i przewiduj, gdzie mogą wystąpić odkształcenia.",
+            "Sprawdź warunki techniczne. Narysuj przekrój pnia i zaznacz kierunki wzdłużny, promieniowy i styczny. Porównaj dwa przekroje deski z różnym kierunkiem słojów i przewiduj, gdzie mogą wystąpić odkształcenia."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 3,
+      "title_pl": "4. Gatunki i klasy drewna konstrukcyjnego",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Sosna i świerk są powszechne, ale sam gatunek nie oznacza wymaganej klasy wytrzymałości. Drewno konstrukcyjne musi mieć odpowiednie sortowanie, oznaczenie i dokumentację. Drewno przypadkowe z odzysku może mieć nieznaną historię uszkodzeń, wilgoci i obciążeń."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Porównuj oznaczenie dostawy, przekrój, wymiary, klasę, rodzaj zastosowania i stan powierzchni. Gdy projekt wymaga konkretnej klasy, uzgodnij każdą zmianę z osobą odpowiedzialną za konstrukcję."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Nieoznakowana belka z demontażu wygląda na zdrową i jest tańsza od materiału wskazanego w projekcie."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Gatunki i klasy drewna konstrukcyjnego”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Sosna i świerk są powszechne, ale sam gatunek nie oznacza wymaganej klasy wytrzymałości. Drewno konstrukcyjne musi mieć odpowiednie sortowanie, oznaczenie i dokumentację. Drewno przypadkowe z odzysku może mieć nieznaną historię uszkodzeń, wilgoci i obciążeń.",
+          "situation": "Nieoznakowana belka z demontażu wygląda na zdrową i jest tańsza od materiału wskazanego w projekcie.",
+          "question": "Na jakiej podstawie przyjmiesz materiał do elementu nośnego?",
+          "options": [
+            "Wyłącznie na barwie i wadze.",
+            "Na zapewnieniu przypadkowego sprzedawcy.",
+            "Na wyglądzie po pomalowaniu.",
+            "Na potwierdzonych parametrach i zgodności z projektem."
+          ],
+          "correct": 3,
+          "example": "Na potwierdzonych parametrach i zgodności z projektem.",
+          "explanation": "Porównuj oznaczenie dostawy, przekrój, wymiary, klasę, rodzaj zastosowania i stan powierzchni. Gdy projekt wymaga konkretnej klasy, uzgodnij każdą zmianę z osobą odpowiedzialną za konstrukcję.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Porównuj oznaczenie dostawy, przekrój, wymiary, klasę, rodzaj zastosowania i stan powierzchni. Gdy projekt wymaga konkretnej klasy, uzgodnij każdą zmianę z osobą odpowiedzialną za konstrukcję.",
+            "Sprawdź warunki techniczne. Porównuj oznaczenie dostawy, przekrój, wymiary, klasę, rodzaj zastosowania i stan powierzchni. Gdy projekt wymaga konkretnej klasy, uzgodnij każdą zmianę z osobą odpowiedzialną za konstrukcję.",
+            "Sprawdź warunki techniczne. Porównuj oznaczenie dostawy, przekrój, wymiary, klasę, rodzaj zastosowania i stan powierzchni. Gdy projekt wymaga konkretnej klasy, uzgodnij każdą zmianę z osobą odpowiedzialną za konstrukcję.",
+            "Prawidłowo. Porównuj oznaczenie dostawy, przekrój, wymiary, klasę, rodzaj zastosowania i stan powierzchni. Gdy projekt wymaga konkretnej klasy, uzgodnij każdą zmianę z osobą odpowiedzialną za konstrukcję."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 4,
+      "title_pl": "5. Wilgotność, suszenie i skurcz drewna",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Drewno chłonie i oddaje wodę. Poniżej stanu nasycenia włókien zmiana wilgotności może powodować skurcz lub pęcznienie, szczególnie poprzecznie do włókien. Nierównomierne suszenie powoduje paczenie i pęknięcia, a wilgoć sprzyja rozwojowi grzybów."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Składuj tarcicę na podkładkach zapewniających równomierne podparcie i przewiew. Wilgotność mierz metodą odpowiednią do gatunku i warunków; wynik z urządzenia ręcznego ma ograniczenia. Przed montażem uwzględnij środowisko przyszłej pracy."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Do ogrzewanego wnętrza wbudowano wilgotną deskę; po kilku tygodniach powstały szpary."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Wilgotność, suszenie i skurcz drewna”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Drewno chłonie i oddaje wodę. Poniżej stanu nasycenia włókien zmiana wilgotności może powodować skurcz lub pęcznienie, szczególnie poprzecznie do włókien. Nierównomierne suszenie powoduje paczenie i pęknięcia, a wilgoć sprzyja rozwojowi grzybów.",
+          "situation": "Do ogrzewanego wnętrza wbudowano wilgotną deskę; po kilku tygodniach powstały szpary.",
+          "question": "Jaka jest możliwa przyczyna pojawienia się szpar po montażu?",
+          "options": [
+            "Zmiana wymiaru drewna podczas wysychania.",
+            "Zbyt duża liczba podkładek w magazynie.",
+            "Za mały nacisk podczas malowania.",
+            "Zmiana nazwy gatunku."
+          ],
+          "correct": 0,
+          "example": "Zmiana wymiaru drewna podczas wysychania.",
+          "explanation": "Składuj tarcicę na podkładkach zapewniających równomierne podparcie i przewiew. Wilgotność mierz metodą odpowiednią do gatunku i warunków; wynik z urządzenia ręcznego ma ograniczenia. Przed montażem uwzględnij środowisko przyszłej pracy.",
+          "feedback": [
+            "Prawidłowo. Składuj tarcicę na podkładkach zapewniających równomierne podparcie i przewiew. Wilgotność mierz metodą odpowiednią do gatunku i warunków; wynik z urządzenia ręcznego ma ograniczenia. Przed montażem uwzględnij środowisko przyszłej pracy.",
+            "Sprawdź warunki techniczne. Składuj tarcicę na podkładkach zapewniających równomierne podparcie i przewiew. Wilgotność mierz metodą odpowiednią do gatunku i warunków; wynik z urządzenia ręcznego ma ograniczenia. Przed montażem uwzględnij środowisko przyszłej pracy.",
+            "Sprawdź warunki techniczne. Składuj tarcicę na podkładkach zapewniających równomierne podparcie i przewiew. Wilgotność mierz metodą odpowiednią do gatunku i warunków; wynik z urządzenia ręcznego ma ograniczenia. Przed montażem uwzględnij środowisko przyszłej pracy.",
+            "Sprawdź warunki techniczne. Składuj tarcicę na podkładkach zapewniających równomierne podparcie i przewiew. Wilgotność mierz metodą odpowiednią do gatunku i warunków; wynik z urządzenia ręcznego ma ograniczenia. Przed montażem uwzględnij środowisko przyszłej pracy."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 5,
+      "title_pl": "6. Wady tarcicy: pęknięcia, sęki i zgnilizna",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Pęknięcia, sęki, zgnilizna, skręt włókien i odkształcenia nie mają jednakowego wpływu na przydatność elementu. Wada estetyczna może być dopuszczalna w wyrobie dekoracyjnym, ale element nośny musi spełniać wymagania sortowania i projektu."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Podczas odbioru zidentyfikuj i opisz wadę, zaznacz jej położenie, oszacuj wymiar i zgłoś niezgodność. Nie przypisuj samodzielnie klasy wytrzymałości na podstawie jednego zdjęcia."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "W pobliżu podpory belki pojawiło się wyraźne pęknięcie. Monter zamierza je ukryć poszyciem."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Wady tarcicy: pęknięcia, sęki i zgnilizna”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Pęknięcia, sęki, zgnilizna, skręt włókien i odkształcenia nie mają jednakowego wpływu na przydatność elementu. Wada estetyczna może być dopuszczalna w wyrobie dekoracyjnym, ale element nośny musi spełniać wymagania sortowania i projektu.",
+          "situation": "W pobliżu podpory belki pojawiło się wyraźne pęknięcie. Monter zamierza je ukryć poszyciem.",
+          "question": "Co należy zrobić przed użyciem takiej belki?",
+          "options": [
+            "Zamalować pęknięcie.",
+            "Wyjaśnić wpływ wady i zgodność z projektem przed montażem.",
+            "Przesunąć belkę, nie pytając projektanta.",
+            "Obrócić belkę i ukryć wadę."
+          ],
+          "correct": 1,
+          "example": "Wyjaśnić wpływ wady i zgodność z projektem przed montażem.",
+          "explanation": "Podczas odbioru zidentyfikuj i opisz wadę, zaznacz jej położenie, oszacuj wymiar i zgłoś niezgodność. Nie przypisuj samodzielnie klasy wytrzymałości na podstawie jednego zdjęcia.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Podczas odbioru zidentyfikuj i opisz wadę, zaznacz jej położenie, oszacuj wymiar i zgłoś niezgodność. Nie przypisuj samodzielnie klasy wytrzymałości na podstawie jednego zdjęcia.",
+            "Prawidłowo. Podczas odbioru zidentyfikuj i opisz wadę, zaznacz jej położenie, oszacuj wymiar i zgłoś niezgodność. Nie przypisuj samodzielnie klasy wytrzymałości na podstawie jednego zdjęcia.",
+            "Sprawdź warunki techniczne. Podczas odbioru zidentyfikuj i opisz wadę, zaznacz jej położenie, oszacuj wymiar i zgłoś niezgodność. Nie przypisuj samodzielnie klasy wytrzymałości na podstawie jednego zdjęcia.",
+            "Sprawdź warunki techniczne. Podczas odbioru zidentyfikuj i opisz wadę, zaznacz jej położenie, oszacuj wymiar i zgłoś niezgodność. Nie przypisuj samodzielnie klasy wytrzymałości na podstawie jednego zdjęcia."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 6,
+      "title_pl": "7. Tarcica i wyroby drewnopochodne: OSB, sklejka, płyty",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Deska, belka, kantówka i płyta konstrukcyjna różnią się zastosowaniem. OSB ma ukierunkowane wióry, sklejka warstwy forniru; ich własności zależą od rodzaju wyrobu, kierunku i warunków wilgotności. Grubość płyty nie wystarczy do oceny nośności poszycia."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Odczytaj oznaczenia i kartę produktu. Sprawdź, jakie podpory, rozstawy, mocowania i warunki użytkowania przewiduje projekt. Nie zastępuj płyt konstrukcyjnych płytą meblową o podobnej grubości."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Dostawca proponuje płytę dekoracyjną zamiast projektowej płyty usztywniającej ścianę."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Tarcica i wyroby drewnopochodne: OSB, sklejka, płyty”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Deska, belka, kantówka i płyta konstrukcyjna różnią się zastosowaniem. OSB ma ukierunkowane wióry, sklejka warstwy forniru; ich własności zależą od rodzaju wyrobu, kierunku i warunków wilgotności. Grubość płyty nie wystarczy do oceny nośności poszycia.",
+          "situation": "Dostawca proponuje płytę dekoracyjną zamiast projektowej płyty usztywniającej ścianę.",
+          "question": "Co jest najważniejsze przed zamianą płyty?",
+          "options": [
+            "Identyczny kolor powierzchni.",
+            "Podobne opakowanie w sklepie.",
+            "Zgodność właściwości i zastosowania z dokumentacją konstrukcyjną.",
+            "To, że płyta jest łatwa do cięcia."
+          ],
+          "correct": 2,
+          "example": "Zgodność właściwości i zastosowania z dokumentacją konstrukcyjną.",
+          "explanation": "Odczytaj oznaczenia i kartę produktu. Sprawdź, jakie podpory, rozstawy, mocowania i warunki użytkowania przewiduje projekt. Nie zastępuj płyt konstrukcyjnych płytą meblową o podobnej grubości.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Odczytaj oznaczenia i kartę produktu. Sprawdź, jakie podpory, rozstawy, mocowania i warunki użytkowania przewiduje projekt. Nie zastępuj płyt konstrukcyjnych płytą meblową o podobnej grubości.",
+            "Sprawdź warunki techniczne. Odczytaj oznaczenia i kartę produktu. Sprawdź, jakie podpory, rozstawy, mocowania i warunki użytkowania przewiduje projekt. Nie zastępuj płyt konstrukcyjnych płytą meblową o podobnej grubości.",
+            "Prawidłowo. Odczytaj oznaczenia i kartę produktu. Sprawdź, jakie podpory, rozstawy, mocowania i warunki użytkowania przewiduje projekt. Nie zastępuj płyt konstrukcyjnych płytą meblową o podobnej grubości.",
+            "Sprawdź warunki techniczne. Odczytaj oznaczenia i kartę produktu. Sprawdź, jakie podpory, rozstawy, mocowania i warunki użytkowania przewiduje projekt. Nie zastępuj płyt konstrukcyjnych płytą meblową o podobnej grubości."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 7,
+      "title_pl": "8. Grzyby, owady i zabezpieczenia biologiczne",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Do degradacji drewna przyczyniają się m.in. zawilgocenie, niekorzystne detale konstrukcyjne i aktywność biologiczna. Zabezpieczenie materiału zaczyna się od odwodnienia, wentylacji i oddzielenia drewna od wody. Preparaty chemiczne mają ograniczenia i nie zastępują usunięcia źródła wilgoci."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Zlokalizuj przeciek, oceń stan drewna, sprawdź wymagania dotyczące impregnacji i klasy użytkowania. Nie stosuj preparatu o nieznanym składzie w pomieszczeniu mieszkalnym lub przy kontakcie z żywnością."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Pod nieszczelnym pokryciem dachowym pojawia się zagrzybienie belek."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Grzyby, owady i zabezpieczenia biologiczne”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Do degradacji drewna przyczyniają się m.in. zawilgocenie, niekorzystne detale konstrukcyjne i aktywność biologiczna. Zabezpieczenie materiału zaczyna się od odwodnienia, wentylacji i oddzielenia drewna od wody. Preparaty chemiczne mają ograniczenia i nie zastępują usunięcia źródła wilgoci.",
+          "situation": "Pod nieszczelnym pokryciem dachowym pojawia się zagrzybienie belek.",
+          "question": "Co należy zrobić przede wszystkim?",
+          "options": [
+            "Pomalować belkę bez naprawy dachu.",
+            "Zamknąć mokre drewno szczelną folią.",
+            "Użyć dowolnego środka bez instrukcji.",
+            "Usunąć źródło wilgoci i ocenić konstrukcję."
+          ],
+          "correct": 3,
+          "example": "Usunąć źródło wilgoci i ocenić konstrukcję.",
+          "explanation": "Zlokalizuj przeciek, oceń stan drewna, sprawdź wymagania dotyczące impregnacji i klasy użytkowania. Nie stosuj preparatu o nieznanym składzie w pomieszczeniu mieszkalnym lub przy kontakcie z żywnością.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Zlokalizuj przeciek, oceń stan drewna, sprawdź wymagania dotyczące impregnacji i klasy użytkowania. Nie stosuj preparatu o nieznanym składzie w pomieszczeniu mieszkalnym lub przy kontakcie z żywnością.",
+            "Sprawdź warunki techniczne. Zlokalizuj przeciek, oceń stan drewna, sprawdź wymagania dotyczące impregnacji i klasy użytkowania. Nie stosuj preparatu o nieznanym składzie w pomieszczeniu mieszkalnym lub przy kontakcie z żywnością.",
+            "Sprawdź warunki techniczne. Zlokalizuj przeciek, oceń stan drewna, sprawdź wymagania dotyczące impregnacji i klasy użytkowania. Nie stosuj preparatu o nieznanym składzie w pomieszczeniu mieszkalnym lub przy kontakcie z żywnością.",
+            "Prawidłowo. Zlokalizuj przeciek, oceń stan drewna, sprawdź wymagania dotyczące impregnacji i klasy użytkowania. Nie stosuj preparatu o nieznanym składzie w pomieszczeniu mieszkalnym lub przy kontakcie z żywnością."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 8,
+      "title_pl": "9. Łączniki i kleje: odpowiednie połączenie",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Czopy, nakładki, śruby, wkręty, gwoździe i kleje działają w odmienny sposób. Połączenie klejowe ma wymagania wilgotności, docisku i rodzaju obciążenia. W elementach nośnych parametry łącznika, rozstaw i odległości od krawędzi wynikają z projektu."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Porównaj cel połączenia, obciążenie i warunki środowiskowe. Korzystaj z kart technicznych produktów, projektu i detali; nie zastępuj wskazanych łączników dowolnymi elementami o podobnej długości."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Drewno stale narażone na wilgoć sklejono preparatem przeznaczonym do suchych mebli."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Łączniki i kleje: odpowiednie połączenie”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Czopy, nakładki, śruby, wkręty, gwoździe i kleje działają w odmienny sposób. Połączenie klejowe ma wymagania wilgotności, docisku i rodzaju obciążenia. W elementach nośnych parametry łącznika, rozstaw i odległości od krawędzi wynikają z projektu.",
+          "situation": "Drewno stale narażone na wilgoć sklejono preparatem przeznaczonym do suchych mebli.",
+          "question": "Jak rozpoznać prawidłowy klej?",
+          "options": [
+            "Po udokumentowanej zgodności z materiałem i warunkami użytkowania.",
+            "Wyłącznie po szybkości wiązania.",
+            "Po kolorze etykiety.",
+            "Po najniższej cenie w sklepie."
+          ],
+          "correct": 0,
+          "example": "Po udokumentowanej zgodności z materiałem i warunkami użytkowania.",
+          "explanation": "Porównaj cel połączenia, obciążenie i warunki środowiskowe. Korzystaj z kart technicznych produktów, projektu i detali; nie zastępuj wskazanych łączników dowolnymi elementami o podobnej długości.",
+          "feedback": [
+            "Prawidłowo. Porównaj cel połączenia, obciążenie i warunki środowiskowe. Korzystaj z kart technicznych produktów, projektu i detali; nie zastępuj wskazanych łączników dowolnymi elementami o podobnej długości.",
+            "Sprawdź warunki techniczne. Porównaj cel połączenia, obciążenie i warunki środowiskowe. Korzystaj z kart technicznych produktów, projektu i detali; nie zastępuj wskazanych łączników dowolnymi elementami o podobnej długości.",
+            "Sprawdź warunki techniczne. Porównaj cel połączenia, obciążenie i warunki środowiskowe. Korzystaj z kart technicznych produktów, projektu i detali; nie zastępuj wskazanych łączników dowolnymi elementami o podobnej długości.",
+            "Sprawdź warunki techniczne. Porównaj cel połączenia, obciążenie i warunki środowiskowe. Korzystaj z kart technicznych produktów, projektu i detali; nie zastępuj wskazanych łączników dowolnymi elementami o podobnej długości."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 9,
+      "title_pl": "10. Pomiary, kąty i proste obliczenia",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 1,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Zrozum fachową wiedzę",
+            "text": "Prawidłowy pomiar wymaga punktu odniesienia, jednostki, narzędzia i tolerancji. Błąd jednego wymiaru może się skumulować. W prostokącie o bokach 3 i 4 m przekątna ma 5 m zgodnie z twierdzeniem Pitagorasa; jest to użyteczna kontrola prostokątności."
+          },
+          {
+            "heading": "Praca i kontrola",
+            "text": "Zapisz wymiary w mm i przelicz na m. Wybierz bazę, zmierz kąt lub przekątne, sprawdź zgodność z rysunkiem. Dla tolerancji 100 ±1 mm dopuszczalny przedział wynosi 99–101 mm."
+          },
+          {
+            "heading": "Przykład zawodowy",
+            "text": "Rama 3 × 4 m ma przekątne 5,00 i 5,12 m. Należy sprawdzić prostokątność oraz przyczynę odchylenia."
+          },
+          {
+            "heading": "Ćwiczenie",
+            "text": "Przygotuj szkic lub kartę kontroli dotyczącą tematu „Pomiary, kąty i proste obliczenia”. Zapisz co najmniej trzy kryteria jakości i jedną sytuację wymagającą przerwania pracy."
+          }
+        ],
+        "learning": {
+          "intro": "Prawidłowy pomiar wymaga punktu odniesienia, jednostki, narzędzia i tolerancji. Błąd jednego wymiaru może się skumulować. W prostokącie o bokach 3 i 4 m przekątna ma 5 m zgodnie z twierdzeniem Pitagorasa; jest to użyteczna kontrola prostokątności.",
+          "situation": "Rama 3 × 4 m ma przekątne 5,00 i 5,12 m. Należy sprawdzić prostokątność oraz przyczynę odchylenia.",
+          "question": "Jaka jest przekątna idealnego prostokąta 3 × 4 m?",
+          "options": [
+            "7 m.",
+            "5 m.",
+            "12 m.",
+            "3,5 m."
+          ],
+          "correct": 1,
+          "example": "5 m.",
+          "explanation": "Zapisz wymiary w mm i przelicz na m. Wybierz bazę, zmierz kąt lub przekątne, sprawdź zgodność z rysunkiem. Dla tolerancji 100 ±1 mm dopuszczalny przedział wynosi 99–101 mm.",
+          "feedback": [
+            "Sprawdź warunki techniczne. Zapisz wymiary w mm i przelicz na m. Wybierz bazę, zmierz kąt lub przekątne, sprawdź zgodność z rysunkiem. Dla tolerancji 100 ±1 mm dopuszczalny przedział wynosi 99–101 mm.",
+            "Prawidłowo. Zapisz wymiary w mm i przelicz na m. Wybierz bazę, zmierz kąt lub przekątne, sprawdź zgodność z rysunkiem. Dla tolerancji 100 ±1 mm dopuszczalny przedział wynosi 99–101 mm.",
+            "Sprawdź warunki techniczne. Zapisz wymiary w mm i przelicz na m. Wybierz bazę, zmierz kąt lub przekątne, sprawdź zgodność z rysunkiem. Dla tolerancji 100 ±1 mm dopuszczalny przedział wynosi 99–101 mm.",
+            "Sprawdź warunki techniczne. Zapisz wymiary w mm i przelicz na m. Wybierz bazę, zmierz kąt lub przekątne, sprawdź zgodność z rysunkiem. Dla tolerancji 100 ±1 mm dopuszczalny przedział wynosi 99–101 mm."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    }
+  ]
+}
