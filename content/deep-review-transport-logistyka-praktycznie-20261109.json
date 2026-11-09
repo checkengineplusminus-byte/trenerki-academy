@@ -1,0 +1,182 @@
+{
+  "course_slug": "transport-logistyka-praktycznie",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Zlecenie transportowe określa miejsca, daty, charakter ładunku, jednostki, ograniczenia i wymagane dokumenty. Zakończenie zlecenia nie oznacza tylko dojechania do klienta — trzeba potwierdzić ilość i stan ładunku, czas oraz odbiorcę."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Dla palety 600 kg i 1,2 m wysokości ustal wymagany samochód, dostęp do rampy i możliwość bezpiecznego rozładunku. Zaplanuj przyjęcie dokumentów, załadunek, przewóz, potwierdzenie dostawy i ewentualne zgłoszenie niezgodności."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Samochód dotarł na czas, lecz nie ma możliwości zdjęcia palety, bo klient nie posiada wózka i nie zamówiono właściwego rozładunku."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Wypełnij kartę transportu: skąd, dokąd, co, ile, czym, kiedy, sposób rozładunku i dowód doręczenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Przewóz drogowy, kolejowy, morski i lotniczy różnią się kosztem, dostępnością, wielkością partii i ryzykiem. Istotny jest również ostatni odcinek od terminalu do odbiorcy. Dobór środka przewozu powinien opierać się na masie, gabarytach, czasie i specjalnych wymaganiach towaru."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Porównaj przesyłkę 20 kg wymagającą dostawy jutro z 20-tonową partią towaru o dłuższym terminie. Wypisz ograniczenia czasu, przeładunku i ochrony przed uszkodzeniem. Nie porównuj kosztów bez określenia jednostki: zł/kg lub zł/paleta."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Klient proponuje transport lotniczy taniego ciężkiego kruszywa, a nikt nie policzył ceny za tonę."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Przygotuj macierz 4 rodzajów transportu i wybierz uzasadniony wariant dla dwóch przesyłek."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Trasa wymaga uwzględnienia czasu przejazdu, obsługi na miejscu, ograniczeń pojazdu, odpoczynku kierowcy i okien czasowych klienta. Sam dystans w kilometrach nie wystarczy do oceny wykonalności. Wraz z przystankami i zakłóceniami rośnie ryzyko spóźnienia."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Załóż pierwszy punkt 09:00, 30 minut rozładunku, 40 minut przejazdu i drugie okno od 10:15. Przyjazd 10:10 oznacza pięć minut czekania przed oknem. Zweryfikuj dostęp do rampy i zapas czasu."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Dyspozytor wpisuje drugi rozładunek na 09:30, choć pierwszy kończy się właśnie o 09:30 i trzeba jeszcze przejechać 40 minut."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Narysuj harmonogram z dwoma punktami, oblicz najwcześniejszy przyjazd i ograniczenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Ładunek może mieścić się wagowo, ale być zbyt wysoki lub zbyt długi; środek ciężkości, naciski osi i sposób mocowania wpływają na bezpieczeństwo. Liczba pasów bez obliczenia i rodzaju zabezpieczenia nie określa, czy ładunek jest poprawnie zamocowany."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przygotuj plan: masa, gabaryty, opakowanie, punkty mocowania, ładowność pojazdu, naciski, możliwość rozładunku. Właściwy dobór zabezpieczenia jest pracą wymagającą aktualnych norm i instrukcji transportowych."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Pojazd ma 1000 kg ładowności, a trzy palety po 400 kg każda. Zsumowane 1200 kg przekracza limit o 200 kg."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zbuduj kontrolę ładunku na liczbach oraz listę danych potrzebnych do obliczenia i oceny zabezpieczenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Dokumenty przewozowe identyfikują przewoźnika, nadawcę, odbiorcę, towar, ilości i warunki dostawy. W transporcie międzynarodowym może być potrzebny właściwy dokument, np. CMR w sytuacjach objętych jego zakresem. Nie należy traktować każdego papieru magazynowego jako dokumentu transportowego."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Dla jednego zlecenia przygotuj fikcyjne dane nadawcy, odbiorcy, pojazdu, towaru i 3 palet. Porównaj dokument przed załadunkiem z fizyczną liczbą jednostek oraz potwierdzeniem przy odbiorze. Zapisz uwagi o uszkodzeniu lub braku."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Towar fizycznie obejmuje 2 palety, ale dokument wskazuje 3. Wydanie bez wyjaśnienia generuje spór o brakującą jednostkę."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Opracuj listę kontroli dokumentu przy załadunku i rozładunku z osobnym miejscem na zastrzeżenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Koszt przejazdu obejmuje paliwo lub energię, czas pracy, opłaty drogowe, amortyzację i inne koszty przypisywane do zlecenia. Cena dla klienta nie jest równa zyskowi, a narzut na koszt różni się od marży liczonej w przychodzie."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przykład: przychód 3000 zł i koszt realizacji 2400 zł daje nadwyżkę 600 zł. Marża względem przychodu wynosi 600/3000 = 20%, a narzut na koszt to 600/2400 = 25%. Nie należy pomijać kosztów stałych przy ocenie wyniku firmy."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Oferta jest o 10% tańsza od konkurenta, ale po doliczeniu postoju i opłat drogowych firma ponosi stratę."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Zbuduj arkusz dwóch wariantów z różnym dystansem, czasem postoju i kosztem oraz policz marżę."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "Opóźnienie może wynikać z planu, ruchu drogowego, awarii, braku dostępu lub danych klienta. Trzeba oddzielać przyczynę, skutek, odpowiedzialność i wymagany dokument. Zgłoszenie reklamacji powinno zawierać identyfikator transportu, zdjęcia, czas zdarzenia i opis szkody."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Przy opóźnieniu 60 minut przelicz ETA oraz powiadom właściwą osobę zgodnie z umową. W razie uszkodzenia zabezpiecz dowody i zapisz stan opakowania oraz liczbę jednostek przy odbiorze. Nie wpisuj fikcyjnego czasu doręczenia, aby ukryć problem."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Pojazd przyjeżdża po zamknięciu magazynu odbiorcy; dokument nie opisuje opóźnienia ani ustaleń ponownej dostawy."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Przygotuj raport reklamacji z chronologią, dowodami i planem dalszych działań."
+        }
+      ]
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Podstawy i mechanizmy",
+          "text": "KPI musi mieć jasno określony licznik, mianownik, okres i definicję. Terminowość 45/50 dostaw = 90%, ale nie mówi sama w sobie o uszkodzeniach, kosztach i satysfakcji klientów. Nie można porównywać przewozów o zupełnie innych ładunkach wyłącznie jedną miarą."
+        },
+        {
+          "heading": "Realna procedura",
+          "text": "Dla 50 dostaw policz: 45 terminowych = 90%. Osobno sprawdź 3 reklamacje = 6%. Ustal przyczyny niezgodności: zły plan, brak dokumentów, uszkodzenie. Zaproponuj miernik i działanie naprawcze zamiast podnoszenia celu bez analizy."
+        },
+        {
+          "heading": "Błąd i jego konsekwencja",
+          "text": "Przewoźnik poprawił terminowość, ale liczba uszkodzonych paczek się podwoiła. Jedno KPI ukryło drugi problem."
+        },
+        {
+          "heading": "Ćwiczenie do wykonania",
+          "text": "Opracuj tablicę: terminowość, reklamacje, koszt na dostawę, liczba wyjątków i plan działania."
+        }
+      ]
+    }
+  ]
+}
