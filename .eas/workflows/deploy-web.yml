@@ -9,3 +9,11 @@ jobs:
     environment: production
     params:
       prod: true
+    hooks:
+      after_install_node_modules:
+        - name: Verify content, exercises and protected demo flow
+          run: node scripts/check-content-consistency.mjs
+        - name: Verify course finding with Anielka
+          run: node scripts/test-anielka.mjs
+        - name: Verify meaning and uniqueness of all 80 icons
+          run: node scripts/test-course-icons.mjs
