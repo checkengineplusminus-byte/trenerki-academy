@@ -1,0 +1,31 @@
+
+/* Anielka's accessible catalog finder */
+.anielka-finder{padding:27px 30px;margin:0 0 28px;border:1px solid #d3e5c8;border-radius:23px;background:linear-gradient(117deg,#f2f7e9 0%,#f8faef 66%,#eef4df 100%);box-shadow:0 9px 25px rgba(31,68,37,.05)}
+.anielka-finder-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.anielka-avatar{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border:3px solid white;background:#d8f69b;border-radius:50%;font-weight:900;font-size:26px;color:#254634;box-shadow:0 3px 10px #1d39251c}
+.anielka-finder-header h3{font:800 23px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.04em;color:#1a3b27;margin:0 0 5px}
+.anielka-finder-header p{font-size:14px;line-height:1.6;color:#58705e;margin:0}
+.anielka-finder label{display:block;font-weight:800;color:#244734;font-size:13px;margin-bottom:8px}
+.anielka-input-row{display:flex;gap:10px}
+.anielka-input-row input{flex:1;min-width:0;padding:16px 18px;border:1px solid #cbdcc5;border-radius:13px;background:white;font-size:16px;line-height:1.4;color:#1a3828;box-shadow:inset 0 1px 1px #112b1710}
+.anielka-input-row input:focus-visible{outline:3px solid #93b766;outline-offset:2px}
+.anielka-input-row button{border:0;background:#153e29;color:white;font-weight:800;padding:14px 20px;border-radius:13px;white-space:nowrap}
+.anielka-input-row button:hover{background:#2d6044}
+.anielka-examples{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:12px}
+.anielka-examples span{font-size:12px;color:#617a64;font-weight:700;margin-right:2px}
+.anielka-examples button{border:1px solid #d3e1ca;border-radius:22px;background:#fff;padding:7px 11px;color:#355c43;font-weight:700;font-size:12px}
+.anielka-examples button:hover{background:#e5efd8}
+.anielka-output:not(:empty){margin-top:21px}
+.anielka-message{padding:16px 18px;border-radius:14px;background:#fff;border-left:4px solid #9cbf64;color:#385343;font-size:15px;line-height:1.75}
+.anielka-message strong{color:#173c29}
+.anielka-recommendations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:12px}
+.anielka-choice{display:flex;flex-direction:column;gap:8px;padding:17px;border-radius:14px;border:1px solid #dce8d5;background:white}
+.anielka-choice-label{color:#548056;font-weight:900;letter-spacing:.065em;text-transform:uppercase;font-size:10px}
+.anielka-choice h4{font-size:17px;line-height:1.35;letter-spacing:-.02em;margin:0;color:#1b402e}
+.anielka-choice p{color:#5e7564;font-size:12px;line-height:1.6;margin:0}
+.anielka-choice-footer{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding-top:10px}
+.anielka-choice-footer span{font-size:12px;color:#4d7155;font-weight:750}
+.anielka-choice-footer button{border:0;border-radius:9px;background:#d8f69b;color:#1c412d;padding:9px 12px;font-size:12px;font-weight:900}
+.anielka-choice-footer button:hover{background:#c5ec82}
+.anielka-privacy{display:block;margin:15px 0 0;color:#738679;font-size:11px}
+@media(max-width:680px){.anielka-finder{padding:18px 16px;border-radius:17px;margin-bottom:20px}.anielka-finder-header{gap:11px}.anielka-avatar{width:45px;height:45px;flex-basis:45px;font-size:20px}.anielka-finder-header h3{font-size:19px}.anielka-finder-header p{font-size:13px}.anielka-input-row{flex-direction:column}.anielka-input-row button{min-height:48px}.anielka-recommendations{grid-template-columns:1fr}.anielka-choice{padding:14px}}
