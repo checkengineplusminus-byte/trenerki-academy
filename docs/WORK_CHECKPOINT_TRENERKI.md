@@ -119,3 +119,9 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - GitHub: `content/mlynarz-masterclass-20261109-part1.json` (commit `90cba171`), `part2.json` (`2abdf6be`); cztery oryginalne rysunki i rejestr (`1ddf2555`); idempotentny SQL `database/patches/trenerki-mlynarz-content-20261109.sql` (`46b1cc54`) oraz audyt `docs/COURSE_REVIEW_MLYNARZ_20261109.md` (`bde98a3c`).
 - Nie zmieniono uprawnień, kont, płatności, postępów ani flag publikacji. Wciąż potrzebne: recenzja ekspercka, test 1–12 do egzaminu na zalogowanym koncie, kontrola jakości dystraktorów i potwierdzenie deployu Expo. 
 - **Następny kurs**: zweryfikować aktualny stan `plecionkarz` i wybrać dopiero po odczycie najnowszego checkpointu i Supabase. Nie dublować kursów 1–8.
+
+
+**Kurs 9: Plecionkarz — osiem lekcji merytorycznie przebudowanych (2026-11-09)**
+- W Supabase poprawiono osiem istniejących lekcji: surowce i dobór wikliny, nawilżanie, dno, splot prosty, dwu- i trzyprętowy, geometria i obliczenia, brzeg i uchwyt, kontrola jakości i kosztorys. Każda ma pięć sekcji, zadanie praktyczne, indywidualne pytanie, cztery odpowiedzi i komentarze.
+- SQL odtwarzalny: `database/patches/trenerki-plecionkarz-content-20261109.sql` (commit `fe7277e56ea657cd9534b11c4daee40f55685420`). Zmiany zapisano w bazie; istniejące konta, zakupy, postępy i RLS pozostały nietknięte.
+- **Ograniczenia:** materiały są robocze i wymagają recenzji mistrza plecionkarstwa; brak nowych technicznych SVG, weryfikacji E2E egzaminu/certyfikatu, deployu Expo i fachowej kontroli źródeł. Nie oznaczać kursu jako ostatecznie ukończonego ani wszystkich 80 jako gotowych. Następny kurs `powroznik`.
