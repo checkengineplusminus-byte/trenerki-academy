@@ -1,0 +1,556 @@
+{
+  "course": "ciesla-przygotowanie-czeladnicze",
+  "module": 3,
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 20,
+      "title_pl": "21. Montaż i praca zespołowa: tymczasowe stężenia",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Element może być stabilny po ukończeniu konstrukcji, ale niebezpieczny w trakcie podnoszenia i montażu. Plan montażowy uwzględnia masę, środek ciężkości, punkty podnoszenia, warunki wiatru i kolejność połączeń. Tymczasowe stężenia oraz strefy wyłączenia są częścią procesu."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Przed operacją wykonaj odprawę i ocenę ryzyka, uzgodnij sygnały, podparcia i odpowiedzialność. Sprawdź, czy sprzęt jest dopuszczony do ciężaru oraz czy nikt nie stoi pod ładunkiem. Zakończ podnoszenie dopiero po uzyskaniu przewidzianej stateczności."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Ściana drewniana stoi pionowo, ale brak ukończonych połączeń i tymczasowych stężeń. Ktoś planuje przejść pod nią."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Montaż i praca zespołowa: tymczasowe stężenia”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Ściana drewniana stoi pionowo, ale brak ukończonych połączeń i tymczasowych stężeń. Ktoś planuje przejść pod nią."
+          }
+        ],
+        "learning": {
+          "intro": "Element może być stabilny po ukończeniu konstrukcji, ale niebezpieczny w trakcie podnoszenia i montażu. Plan montażowy uwzględnia masę, środek ciężkości, punkty podnoszenia, warunki wiatru i kolejność połączeń. Tymczasowe stężenia oraz strefy wyłączenia są częścią procesu.",
+          "situation": "Ściana drewniana stoi pionowo, ale brak ukończonych połączeń i tymczasowych stężeń. Ktoś planuje przejść pod nią.",
+          "question": "Co powinno obowiązywać w tej sytuacji?",
+          "options": [
+            "Wygrodzenie i zabezpieczenie konstrukcji zgodnie z planem montażu.",
+            "Wystarczy zmierzyć pion.",
+            "Wolno przejść, jeśli wiatr jest mały.",
+            "Należy przyspieszyć usunięcie stężeń."
+          ],
+          "correct": 0,
+          "example": "Wygrodzenie i zabezpieczenie konstrukcji zgodnie z planem montażu.",
+          "explanation": "Przed operacją wykonaj odprawę i ocenę ryzyka, uzgodnij sygnały, podparcia i odpowiedzialność. Sprawdź, czy sprzęt jest dopuszczony do ciężaru oraz czy nikt nie stoi pod ładunkiem. Zakończ podnoszenie dopiero po uzyskaniu przewidzianej stateczności.",
+          "feedback": [
+            "Poprawnie. Przed operacją wykonaj odprawę i ocenę ryzyka, uzgodnij sygnały, podparcia i odpowiedzialność. Sprawdź, czy sprzęt jest dopuszczony do ciężaru oraz czy nikt nie stoi pod ładunkiem. Zakończ podnoszenie dopiero po uzyskaniu przewidzianej stateczności.",
+            "Nie pomijaj warunków. Przed operacją wykonaj odprawę i ocenę ryzyka, uzgodnij sygnały, podparcia i odpowiedzialność. Sprawdź, czy sprzęt jest dopuszczony do ciężaru oraz czy nikt nie stoi pod ładunkiem. Zakończ podnoszenie dopiero po uzyskaniu przewidzianej stateczności.",
+            "Nie pomijaj warunków. Przed operacją wykonaj odprawę i ocenę ryzyka, uzgodnij sygnały, podparcia i odpowiedzialność. Sprawdź, czy sprzęt jest dopuszczony do ciężaru oraz czy nikt nie stoi pod ładunkiem. Zakończ podnoszenie dopiero po uzyskaniu przewidzianej stateczności.",
+            "Nie pomijaj warunków. Przed operacją wykonaj odprawę i ocenę ryzyka, uzgodnij sygnały, podparcia i odpowiedzialność. Sprawdź, czy sprzęt jest dopuszczony do ciężaru oraz czy nikt nie stoi pod ładunkiem. Zakończ podnoszenie dopiero po uzyskaniu przewidzianej stateczności."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 21,
+      "title_pl": "22. Fizyka budowli: izolacja, para wodna i szczelność",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Ciepło przepływa przez materiały i mostki, a wilgoć może przemieszczać się na drodze dyfuzji i przez nieszczelności powietrzne. Wiatroizolacja, paroizolacja lub warstwa regulująca opór dyfuzyjny oraz izolacja cieplna pełnią różne role. Błędny układ może prowadzić do kondensacji i degradacji drewna."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Na przekroju ściany nazwij warstwy i położenie szczeliny wentylacyjnej. Zapisz, gdzie muszą być ciągłe połączenia oraz przejścia instalacyjne. Rzeczywisty układ zależy od projektu, klimatu i materiałów; nie wolno stosować jednego schematu w każdych warunkach."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Przepust instalacyjny ma szczelinę w warstwie powietrznoszczelnej, przez którą wilgotne powietrze może wnikać w przegrodę."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Fizyka budowli: izolacja, para wodna i szczelność”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Przepust instalacyjny ma szczelinę w warstwie powietrznoszczelnej, przez którą wilgotne powietrze może wnikać w przegrodę."
+          }
+        ],
+        "learning": {
+          "intro": "Ciepło przepływa przez materiały i mostki, a wilgoć może przemieszczać się na drodze dyfuzji i przez nieszczelności powietrzne. Wiatroizolacja, paroizolacja lub warstwa regulująca opór dyfuzyjny oraz izolacja cieplna pełnią różne role. Błędny układ może prowadzić do kondensacji i degradacji drewna.",
+          "situation": "Przepust instalacyjny ma szczelinę w warstwie powietrznoszczelnej, przez którą wilgotne powietrze może wnikać w przegrodę.",
+          "question": "Jakie ryzyko stwarza taki przepust?",
+          "options": [
+            "Automatyczne wysuszenie drewna.",
+            "Zawilgocenie i kondensacja w niekorzystnych warunkach.",
+            "Zwiększenie nośności ściany.",
+            "Usunięcie wszystkich mostków."
+          ],
+          "correct": 1,
+          "example": "Zawilgocenie i kondensacja w niekorzystnych warunkach.",
+          "explanation": "Na przekroju ściany nazwij warstwy i położenie szczeliny wentylacyjnej. Zapisz, gdzie muszą być ciągłe połączenia oraz przejścia instalacyjne. Rzeczywisty układ zależy od projektu, klimatu i materiałów; nie wolno stosować jednego schematu w każdych warunkach.",
+          "feedback": [
+            "Nie pomijaj warunków. Na przekroju ściany nazwij warstwy i położenie szczeliny wentylacyjnej. Zapisz, gdzie muszą być ciągłe połączenia oraz przejścia instalacyjne. Rzeczywisty układ zależy od projektu, klimatu i materiałów; nie wolno stosować jednego schematu w każdych warunkach.",
+            "Poprawnie. Na przekroju ściany nazwij warstwy i położenie szczeliny wentylacyjnej. Zapisz, gdzie muszą być ciągłe połączenia oraz przejścia instalacyjne. Rzeczywisty układ zależy od projektu, klimatu i materiałów; nie wolno stosować jednego schematu w każdych warunkach.",
+            "Nie pomijaj warunków. Na przekroju ściany nazwij warstwy i położenie szczeliny wentylacyjnej. Zapisz, gdzie muszą być ciągłe połączenia oraz przejścia instalacyjne. Rzeczywisty układ zależy od projektu, klimatu i materiałów; nie wolno stosować jednego schematu w każdych warunkach.",
+            "Nie pomijaj warunków. Na przekroju ściany nazwij warstwy i położenie szczeliny wentylacyjnej. Zapisz, gdzie muszą być ciągłe połączenia oraz przejścia instalacyjne. Rzeczywisty układ zależy od projektu, klimatu i materiałów; nie wolno stosować jednego schematu w każdych warunkach."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 22,
+      "title_pl": "23. Naprawa i renowacja uszkodzonych konstrukcji",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Uszkodzenie konstrukcji może wynikać z wilgoci, korozji biologicznej, przeciążenia lub błędnego połączenia. Nie każde pęknięcie oznacza to samo. Cieśla powinien umieć opisać objawy i rozpoznać, kiedy potrzebna jest ocena projektanta oraz czasowe podparcie."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Zrób dokumentację zdjęciową z miarą, lokalizacją i datą. Sprawdź przyczynę wilgoci, drogę obciążeń i stan sąsiadujących elementów. Nie maskuj zgnilizny okładziną ani nie wykonuj naprawy nośnego przekroju bez właściwej decyzji."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "W ścianie zabytkowego budynku drewno przy podstawie słupa jest miękkie i mocno zawilgocone."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Naprawa i renowacja uszkodzonych konstrukcji”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: W ścianie zabytkowego budynku drewno przy podstawie słupa jest miękkie i mocno zawilgocone."
+          }
+        ],
+        "learning": {
+          "intro": "Uszkodzenie konstrukcji może wynikać z wilgoci, korozji biologicznej, przeciążenia lub błędnego połączenia. Nie każde pęknięcie oznacza to samo. Cieśla powinien umieć opisać objawy i rozpoznać, kiedy potrzebna jest ocena projektanta oraz czasowe podparcie.",
+          "situation": "W ścianie zabytkowego budynku drewno przy podstawie słupa jest miękkie i mocno zawilgocone.",
+          "question": "Jaka jest właściwa kolejność?",
+          "options": [
+            "Pomalować i zamknąć okładzinę.",
+            "Dobić dodatkową listwę dekoracyjną.",
+            "Usunąć przyczynę wody, ocenić stan i dopiero zaplanować naprawę.",
+            "Pominąć pomiar wilgotności."
+          ],
+          "correct": 2,
+          "example": "Usunąć przyczynę wody, ocenić stan i dopiero zaplanować naprawę.",
+          "explanation": "Zrób dokumentację zdjęciową z miarą, lokalizacją i datą. Sprawdź przyczynę wilgoci, drogę obciążeń i stan sąsiadujących elementów. Nie maskuj zgnilizny okładziną ani nie wykonuj naprawy nośnego przekroju bez właściwej decyzji.",
+          "feedback": [
+            "Nie pomijaj warunków. Zrób dokumentację zdjęciową z miarą, lokalizacją i datą. Sprawdź przyczynę wilgoci, drogę obciążeń i stan sąsiadujących elementów. Nie maskuj zgnilizny okładziną ani nie wykonuj naprawy nośnego przekroju bez właściwej decyzji.",
+            "Nie pomijaj warunków. Zrób dokumentację zdjęciową z miarą, lokalizacją i datą. Sprawdź przyczynę wilgoci, drogę obciążeń i stan sąsiadujących elementów. Nie maskuj zgnilizny okładziną ani nie wykonuj naprawy nośnego przekroju bez właściwej decyzji.",
+            "Poprawnie. Zrób dokumentację zdjęciową z miarą, lokalizacją i datą. Sprawdź przyczynę wilgoci, drogę obciążeń i stan sąsiadujących elementów. Nie maskuj zgnilizny okładziną ani nie wykonuj naprawy nośnego przekroju bez właściwej decyzji.",
+            "Nie pomijaj warunków. Zrób dokumentację zdjęciową z miarą, lokalizacją i datą. Sprawdź przyczynę wilgoci, drogę obciążeń i stan sąsiadujących elementów. Nie maskuj zgnilizny okładziną ani nie wykonuj naprawy nośnego przekroju bez właściwej decyzji."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 23,
+      "title_pl": "24. Rozbiórka i bezpieczne odzyskiwanie drewna",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Rozbiórka zmienia sposób przenoszenia sił w układzie. Usunięcie słupa, belki lub stężenia może destabilizować pozostałe części. Drewno z odzysku może mieć uszkodzenia i nieznane impregnaty; użycie go konstrukcyjne wymaga oceny i udokumentowania parametrów."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Opracuj kolejność odciążania, podparcia, odłączenia instalacji i segregacji materiałów. Wybierz odpowiednie narzędzia i wygrodzenie miejsca. Rozpoznawaj ryzyka kontaktu z nieznanymi powłokami i nie spalaj odpadów impregnacyjnych."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Pracownik chce odciąć słup, nie sprawdzając, czy podtrzymuje strop."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Rozbiórka i bezpieczne odzyskiwanie drewna”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Pracownik chce odciąć słup, nie sprawdzając, czy podtrzymuje strop."
+          }
+        ],
+        "learning": {
+          "intro": "Rozbiórka zmienia sposób przenoszenia sił w układzie. Usunięcie słupa, belki lub stężenia może destabilizować pozostałe części. Drewno z odzysku może mieć uszkodzenia i nieznane impregnaty; użycie go konstrukcyjne wymaga oceny i udokumentowania parametrów.",
+          "situation": "Pracownik chce odciąć słup, nie sprawdzając, czy podtrzymuje strop.",
+          "question": "Co jest pierwszym krokiem?",
+          "options": [
+            "Natychmiastowe cięcie.",
+            "Zasłonięcie słupa folią.",
+            "Wymiana farby na słupie.",
+            "Analiza układu sił i plan tymczasowego podparcia."
+          ],
+          "correct": 3,
+          "example": "Analiza układu sił i plan tymczasowego podparcia.",
+          "explanation": "Opracuj kolejność odciążania, podparcia, odłączenia instalacji i segregacji materiałów. Wybierz odpowiednie narzędzia i wygrodzenie miejsca. Rozpoznawaj ryzyka kontaktu z nieznanymi powłokami i nie spalaj odpadów impregnacyjnych.",
+          "feedback": [
+            "Nie pomijaj warunków. Opracuj kolejność odciążania, podparcia, odłączenia instalacji i segregacji materiałów. Wybierz odpowiednie narzędzia i wygrodzenie miejsca. Rozpoznawaj ryzyka kontaktu z nieznanymi powłokami i nie spalaj odpadów impregnacyjnych.",
+            "Nie pomijaj warunków. Opracuj kolejność odciążania, podparcia, odłączenia instalacji i segregacji materiałów. Wybierz odpowiednie narzędzia i wygrodzenie miejsca. Rozpoznawaj ryzyka kontaktu z nieznanymi powłokami i nie spalaj odpadów impregnacyjnych.",
+            "Nie pomijaj warunków. Opracuj kolejność odciążania, podparcia, odłączenia instalacji i segregacji materiałów. Wybierz odpowiednie narzędzia i wygrodzenie miejsca. Rozpoznawaj ryzyka kontaktu z nieznanymi powłokami i nie spalaj odpadów impregnacyjnych.",
+            "Poprawnie. Opracuj kolejność odciążania, podparcia, odłączenia instalacji i segregacji materiałów. Wybierz odpowiednie narzędzia i wygrodzenie miejsca. Rozpoznawaj ryzyka kontaktu z nieznanymi powłokami i nie spalaj odpadów impregnacyjnych."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 24,
+      "title_pl": "25. Kosztorys, harmonogram i protokół jakości",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Cena wyrobu obejmuje materiał, robociznę, transport, sprzęt, odpady, kontrolę jakości i uzasadnione koszty pośrednie. Harmonogram łączy zależności; brak jednej belki może zatrzymać cały montaż. Protokół odbioru powinien opierać się na mierzalnych kryteriach, nie wyłącznie wizualnej ocenie."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Dla 8 belek i 6 dostarczonych wpisz brak 2 sztuk, zgłoś zmianę dostawy i zaktualizuj plan. Zbuduj tabelę: czynność, odpowiedzialny, materiał, czas, kryterium odbioru i dokument odniesienia."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Producent wysłał drewno innej klasy niż projektowana. Ekipa ma wolny termin, lecz brak zatwierdzonej zmiany."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Kosztorys, harmonogram i protokół jakości”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Producent wysłał drewno innej klasy niż projektowana. Ekipa ma wolny termin, lecz brak zatwierdzonej zmiany."
+          }
+        ],
+        "learning": {
+          "intro": "Cena wyrobu obejmuje materiał, robociznę, transport, sprzęt, odpady, kontrolę jakości i uzasadnione koszty pośrednie. Harmonogram łączy zależności; brak jednej belki może zatrzymać cały montaż. Protokół odbioru powinien opierać się na mierzalnych kryteriach, nie wyłącznie wizualnej ocenie.",
+          "situation": "Producent wysłał drewno innej klasy niż projektowana. Ekipa ma wolny termin, lecz brak zatwierdzonej zmiany.",
+          "question": "Co ma pierwszeństwo?",
+          "options": [
+            "Zgodność materiału z dokumentacją lub uzgodniona zmiana.",
+            "Sam wolny termin montażu.",
+            "Kolor opakowania.",
+            "Liczba osób w ekipie."
+          ],
+          "correct": 0,
+          "example": "Zgodność materiału z dokumentacją lub uzgodniona zmiana.",
+          "explanation": "Dla 8 belek i 6 dostarczonych wpisz brak 2 sztuk, zgłoś zmianę dostawy i zaktualizuj plan. Zbuduj tabelę: czynność, odpowiedzialny, materiał, czas, kryterium odbioru i dokument odniesienia.",
+          "feedback": [
+            "Poprawnie. Dla 8 belek i 6 dostarczonych wpisz brak 2 sztuk, zgłoś zmianę dostawy i zaktualizuj plan. Zbuduj tabelę: czynność, odpowiedzialny, materiał, czas, kryterium odbioru i dokument odniesienia.",
+            "Nie pomijaj warunków. Dla 8 belek i 6 dostarczonych wpisz brak 2 sztuk, zgłoś zmianę dostawy i zaktualizuj plan. Zbuduj tabelę: czynność, odpowiedzialny, materiał, czas, kryterium odbioru i dokument odniesienia.",
+            "Nie pomijaj warunków. Dla 8 belek i 6 dostarczonych wpisz brak 2 sztuk, zgłoś zmianę dostawy i zaktualizuj plan. Zbuduj tabelę: czynność, odpowiedzialny, materiał, czas, kryterium odbioru i dokument odniesienia.",
+            "Nie pomijaj warunków. Dla 8 belek i 6 dostarczonych wpisz brak 2 sztuk, zgłoś zmianę dostawy i zaktualizuj plan. Zbuduj tabelę: czynność, odpowiedzialny, materiał, czas, kryterium odbioru i dokument odniesienia."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 25,
+      "title_pl": "26. Egzamin ustny: technologia i suszenie drewna",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Na egzaminie można być pytanym o drewno składowane na przekładkach, metody suszenia, złącza i przygotowanie materiału. Dobre wyjaśnienie zawiera definicję, cel, przykład i warunek kontroli. Uczeń powinien sam rozróżniać suszenie naturalne i komorowe oraz rozumieć ryzyko nierównomiernej wilgotności."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Wypowiedz na głos odpowiedź na pytanie o suszenie: jak układamy drewno, jak kontrolujemy powietrze i wilgotność, skąd bierze się paczenie. Następnie porównaj swoją odpowiedź z celami lekcji i wskaż brakujący element."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Pytanie ustne: dlaczego przekładki muszą dobrze podpierać kolejne warstwy tarcicy?"
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Egzamin ustny: technologia i suszenie drewna”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Pytanie ustne: dlaczego przekładki muszą dobrze podpierać kolejne warstwy tarcicy?"
+          }
+        ],
+        "learning": {
+          "intro": "Na egzaminie można być pytanym o drewno składowane na przekładkach, metody suszenia, złącza i przygotowanie materiału. Dobre wyjaśnienie zawiera definicję, cel, przykład i warunek kontroli. Uczeń powinien sam rozróżniać suszenie naturalne i komorowe oraz rozumieć ryzyko nierównomiernej wilgotności.",
+          "situation": "Pytanie ustne: dlaczego przekładki muszą dobrze podpierać kolejne warstwy tarcicy?",
+          "question": "Po co stosuje się przekładki podczas suszenia?",
+          "options": [
+            "Aby całkowicie usunąć wszystkie sęki.",
+            "Pomagają równomiernie podpierać i przewietrzać materiał.",
+            "Żeby uniknąć sortowania.",
+            "Wyłącznie dla zmiany koloru."
+          ],
+          "correct": 1,
+          "example": "Pomagają równomiernie podpierać i przewietrzać materiał.",
+          "explanation": "Wypowiedz na głos odpowiedź na pytanie o suszenie: jak układamy drewno, jak kontrolujemy powietrze i wilgotność, skąd bierze się paczenie. Następnie porównaj swoją odpowiedź z celami lekcji i wskaż brakujący element.",
+          "feedback": [
+            "Nie pomijaj warunków. Wypowiedz na głos odpowiedź na pytanie o suszenie: jak układamy drewno, jak kontrolujemy powietrze i wilgotność, skąd bierze się paczenie. Następnie porównaj swoją odpowiedź z celami lekcji i wskaż brakujący element.",
+            "Poprawnie. Wypowiedz na głos odpowiedź na pytanie o suszenie: jak układamy drewno, jak kontrolujemy powietrze i wilgotność, skąd bierze się paczenie. Następnie porównaj swoją odpowiedź z celami lekcji i wskaż brakujący element.",
+            "Nie pomijaj warunków. Wypowiedz na głos odpowiedź na pytanie o suszenie: jak układamy drewno, jak kontrolujemy powietrze i wilgotność, skąd bierze się paczenie. Następnie porównaj swoją odpowiedź z celami lekcji i wskaż brakujący element.",
+            "Nie pomijaj warunków. Wypowiedz na głos odpowiedź na pytanie o suszenie: jak układamy drewno, jak kontrolujemy powietrze i wilgotność, skąd bierze się paczenie. Następnie porównaj swoją odpowiedź z celami lekcji i wskaż brakujący element."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 26,
+      "title_pl": "27. Egzamin ustny: maszynoznawstwo i mechanizmy",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Ustne pytanie o mechanizm posuwowy wymaga wyjaśnienia, że steruje on ruchem materiału lub narzędzia, a mechanizm napędowy zapewnia energię i ruch roboczy. Trzeba rozpoznawać strugarkę, pilarkę, szlifierkę i ich najważniejsze zespoły bez zgadywania po wyglądzie."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "W karcie maszyny zapisz element roboczy, posuw, napęd, osłony, sposób sprawdzenia i typową wadę. Wypowiedz odpowiedź w 60 sekund, a następnie spróbuj opisać awarię i powód wycofania maszyny z użycia."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Operator twierdzi, że większa prędkość posuwu zawsze poprawia jakość powierzchni."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Egzamin ustny: maszynoznawstwo i mechanizmy”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Operator twierdzi, że większa prędkość posuwu zawsze poprawia jakość powierzchni."
+          }
+        ],
+        "learning": {
+          "intro": "Ustne pytanie o mechanizm posuwowy wymaga wyjaśnienia, że steruje on ruchem materiału lub narzędzia, a mechanizm napędowy zapewnia energię i ruch roboczy. Trzeba rozpoznawać strugarkę, pilarkę, szlifierkę i ich najważniejsze zespoły bez zgadywania po wyglądzie.",
+          "situation": "Operator twierdzi, że większa prędkość posuwu zawsze poprawia jakość powierzchni.",
+          "question": "Co reguluje mechanizm posuwowy?",
+          "options": [
+            "Skład chemiczny drewna.",
+            "Barwę okleiny.",
+            "Kontrolowany ruch obrabianego materiału lub narzędzia.",
+            "Numer rysunku konstrukcyjnego."
+          ],
+          "correct": 2,
+          "example": "Kontrolowany ruch obrabianego materiału lub narzędzia.",
+          "explanation": "W karcie maszyny zapisz element roboczy, posuw, napęd, osłony, sposób sprawdzenia i typową wadę. Wypowiedz odpowiedź w 60 sekund, a następnie spróbuj opisać awarię i powód wycofania maszyny z użycia.",
+          "feedback": [
+            "Nie pomijaj warunków. W karcie maszyny zapisz element roboczy, posuw, napęd, osłony, sposób sprawdzenia i typową wadę. Wypowiedz odpowiedź w 60 sekund, a następnie spróbuj opisać awarię i powód wycofania maszyny z użycia.",
+            "Nie pomijaj warunków. W karcie maszyny zapisz element roboczy, posuw, napęd, osłony, sposób sprawdzenia i typową wadę. Wypowiedz odpowiedź w 60 sekund, a następnie spróbuj opisać awarię i powód wycofania maszyny z użycia.",
+            "Poprawnie. W karcie maszyny zapisz element roboczy, posuw, napęd, osłony, sposób sprawdzenia i typową wadę. Wypowiedz odpowiedź w 60 sekund, a następnie spróbuj opisać awarię i powód wycofania maszyny z użycia.",
+            "Nie pomijaj warunków. W karcie maszyny zapisz element roboczy, posuw, napęd, osłony, sposób sprawdzenia i typową wadę. Wypowiedz odpowiedź w 60 sekund, a następnie spróbuj opisać awarię i powód wycofania maszyny z użycia."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 27,
+      "title_pl": "28. Egzamin ustny: materiałoznawstwo — skutki wilgoci",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Wiedza o surowcach obejmuje włókna, wilgotność, skurcz, wady, kleje, środki ochrony i właściwości płyt. Zapamiętanie jednej definicji nie zastępuje zrozumienia, jak wysychanie i ułożenie słojów wpływa na wyrób. W konstrukcji liczy się oznaczona klasa materiału."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Porównaj deskę ułożoną stycznie i promieniowo do słojów. Wyjaśnij własnymi słowami różnicę skurczu i możliwe deformacje, a następnie wskaż sposób kontroli wilgotności i przechowywania."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Dwie deski tej samej długości po składowaniu mają inny przekrój i nierówne krawędzie."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Egzamin ustny: materiałoznawstwo — skutki wilgoci”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Dwie deski tej samej długości po składowaniu mają inny przekrój i nierówne krawędzie."
+          }
+        ],
+        "learning": {
+          "intro": "Wiedza o surowcach obejmuje włókna, wilgotność, skurcz, wady, kleje, środki ochrony i właściwości płyt. Zapamiętanie jednej definicji nie zastępuje zrozumienia, jak wysychanie i ułożenie słojów wpływa na wyrób. W konstrukcji liczy się oznaczona klasa materiału.",
+          "situation": "Dwie deski tej samej długości po składowaniu mają inny przekrój i nierówne krawędzie.",
+          "question": "Dlaczego drewno może zmieniać szerokość podczas schnięcia?",
+          "options": [
+            "Ponieważ każda deska zmienia gatunek.",
+            "Wyłącznie na skutek zmiany nazwy producenta.",
+            "Ponieważ im starszy rysunek, tym krótsza deska.",
+            "Na skutek zmian wilgotności i anizotropowego skurczu."
+          ],
+          "correct": 3,
+          "example": "Na skutek zmian wilgotności i anizotropowego skurczu.",
+          "explanation": "Porównaj deskę ułożoną stycznie i promieniowo do słojów. Wyjaśnij własnymi słowami różnicę skurczu i możliwe deformacje, a następnie wskaż sposób kontroli wilgotności i przechowywania.",
+          "feedback": [
+            "Nie pomijaj warunków. Porównaj deskę ułożoną stycznie i promieniowo do słojów. Wyjaśnij własnymi słowami różnicę skurczu i możliwe deformacje, a następnie wskaż sposób kontroli wilgotności i przechowywania.",
+            "Nie pomijaj warunków. Porównaj deskę ułożoną stycznie i promieniowo do słojów. Wyjaśnij własnymi słowami różnicę skurczu i możliwe deformacje, a następnie wskaż sposób kontroli wilgotności i przechowywania.",
+            "Nie pomijaj warunków. Porównaj deskę ułożoną stycznie i promieniowo do słojów. Wyjaśnij własnymi słowami różnicę skurczu i możliwe deformacje, a następnie wskaż sposób kontroli wilgotności i przechowywania.",
+            "Poprawnie. Porównaj deskę ułożoną stycznie i promieniowo do słojów. Wyjaśnij własnymi słowami różnicę skurczu i możliwe deformacje, a następnie wskaż sposób kontroli wilgotności i przechowywania."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 28,
+      "title_pl": "29. Egzamin pisemny: dokumenty, ekonomika i prawo pracy",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Część ogólna egzaminu może obejmować dokumenty przedsiębiorstwa, rachunki, kosztorysy oraz zasady zatrudnienia. Nie należy uczyć się na pamięć przepisów z archiwalnego arkusza bez sprawdzenia aktualnego prawa. Oferta, kosztorys i faktura pełnią różne role."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "W scenariuszu zlecenia przygotuj kosztorys na podstawie materiału 1000 zł, robocizny 800 zł i transportu 200 zł. Wynik kosztu przed marżą to 2000 zł. Zapisz podstawę wyceny, datę, zakres i sposób potwierdzenia przez klienta."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Klient traktuje wstępny kosztorys jako rachunek końcowy mimo późniejszej zmiany zakresu."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Egzamin pisemny: dokumenty, ekonomika i prawo pracy”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Klient traktuje wstępny kosztorys jako rachunek końcowy mimo późniejszej zmiany zakresu."
+          }
+        ],
+        "learning": {
+          "intro": "Część ogólna egzaminu może obejmować dokumenty przedsiębiorstwa, rachunki, kosztorysy oraz zasady zatrudnienia. Nie należy uczyć się na pamięć przepisów z archiwalnego arkusza bez sprawdzenia aktualnego prawa. Oferta, kosztorys i faktura pełnią różne role.",
+          "situation": "Klient traktuje wstępny kosztorys jako rachunek końcowy mimo późniejszej zmiany zakresu.",
+          "question": "Jaki jest koszt 1000 + 800 + 200 zł przed marżą?",
+          "options": [
+            "2000 zł.",
+            "1800 zł.",
+            "1200 zł.",
+            "2400 zł."
+          ],
+          "correct": 0,
+          "example": "2000 zł.",
+          "explanation": "W scenariuszu zlecenia przygotuj kosztorys na podstawie materiału 1000 zł, robocizny 800 zł i transportu 200 zł. Wynik kosztu przed marżą to 2000 zł. Zapisz podstawę wyceny, datę, zakres i sposób potwierdzenia przez klienta.",
+          "feedback": [
+            "Poprawnie. W scenariuszu zlecenia przygotuj kosztorys na podstawie materiału 1000 zł, robocizny 800 zł i transportu 200 zł. Wynik kosztu przed marżą to 2000 zł. Zapisz podstawę wyceny, datę, zakres i sposób potwierdzenia przez klienta.",
+            "Nie pomijaj warunków. W scenariuszu zlecenia przygotuj kosztorys na podstawie materiału 1000 zł, robocizny 800 zł i transportu 200 zł. Wynik kosztu przed marżą to 2000 zł. Zapisz podstawę wyceny, datę, zakres i sposób potwierdzenia przez klienta.",
+            "Nie pomijaj warunków. W scenariuszu zlecenia przygotuj kosztorys na podstawie materiału 1000 zł, robocizny 800 zł i transportu 200 zł. Wynik kosztu przed marżą to 2000 zł. Zapisz podstawę wyceny, datę, zakres i sposób potwierdzenia przez klienta.",
+            "Nie pomijaj warunków. W scenariuszu zlecenia przygotuj kosztorys na podstawie materiału 1000 zł, robocizny 800 zł i transportu 200 zł. Wynik kosztu przed marżą to 2000 zł. Zapisz podstawę wyceny, datę, zakres i sposób potwierdzenia przez klienta."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 29,
+      "title_pl": "30. Próbny projekt i egzamin końcowy: rama 3 × 4 m",
+      "material": {
+        "editorial_status": "review_needed",
+        "module": 3,
+        "lesson_kind": "exam_preparation",
+        "illustration": "mastery-brygadzista",
+        "sections": [
+          {
+            "heading": "Wiedza do egzaminu i pracy",
+            "text": "Podsumowujący projekt teoretyczny łączy rysunek, materiałoznawstwo, technologię, BHP, plan cięcia i kontrolę geometrii. Rama o wymiarach 3 × 4 m ma przekątną 5 m przy prawidłowych kątach prostych. W projekcie trzeba wyznaczyć tolerancje oraz plan wykonania pod nadzorem w warsztacie."
+          },
+          {
+            "heading": "Sposób rozwiązywania zadań",
+            "text": "Stwórz teczkę zadania: szkic z bazami wymiarów, przekrój elementu, dokument doboru materiału, obmiar w m³, plan cięcia, punkty odbioru, ocenę ryzyka i wykaz narzędzi. Po wykonaniu próbnego testu przeanalizuj nie tylko wynik, ale przyczynę każdej pomyłki."
+          },
+          {
+            "heading": "Sytuacja do przeanalizowania",
+            "text": "Uczeń chce ukryć pęknięcie konstrukcyjnej belki pod poszyciem, by zmieścić się w czasie egzaminu."
+          },
+          {
+            "heading": "Ćwiczenie sprawdzające",
+            "text": "W zeszycie przygotuj cztery odpowiedzi dotyczące „Próbny projekt i egzamin końcowy: rama 3 × 4 m”: co to jest, do czego służy, jak kontrolujesz wynik i kiedy wymagana jest pomoc fachowca. Na koniec opisz rozwiązanie sytuacji: Uczeń chce ukryć pęknięcie konstrukcyjnej belki pod poszyciem, by zmieścić się w czasie egzaminu."
+          }
+        ],
+        "learning": {
+          "intro": "Podsumowujący projekt teoretyczny łączy rysunek, materiałoznawstwo, technologię, BHP, plan cięcia i kontrolę geometrii. Rama o wymiarach 3 × 4 m ma przekątną 5 m przy prawidłowych kątach prostych. W projekcie trzeba wyznaczyć tolerancje oraz plan wykonania pod nadzorem w warsztacie.",
+          "situation": "Uczeń chce ukryć pęknięcie konstrukcyjnej belki pod poszyciem, by zmieścić się w czasie egzaminu.",
+          "question": "Co powinien zrobić kandydat przygotowany do prawdziwej pracy?",
+          "options": [
+            "Ukryć wadę przed komisją.",
+            "Zgłosić niezgodność, zadbać o bezpieczeństwo i zapewnić właściwą ocenę.",
+            "Przyspieszyć montaż.",
+            "Zrezygnować z dokumentowania."
+          ],
+          "correct": 1,
+          "example": "Zgłosić niezgodność, zadbać o bezpieczeństwo i zapewnić właściwą ocenę.",
+          "explanation": "Stwórz teczkę zadania: szkic z bazami wymiarów, przekrój elementu, dokument doboru materiału, obmiar w m³, plan cięcia, punkty odbioru, ocenę ryzyka i wykaz narzędzi. Po wykonaniu próbnego testu przeanalizuj nie tylko wynik, ale przyczynę każdej pomyłki.",
+          "feedback": [
+            "Nie pomijaj warunków. Stwórz teczkę zadania: szkic z bazami wymiarów, przekrój elementu, dokument doboru materiału, obmiar w m³, plan cięcia, punkty odbioru, ocenę ryzyka i wykaz narzędzi. Po wykonaniu próbnego testu przeanalizuj nie tylko wynik, ale przyczynę każdej pomyłki.",
+            "Poprawnie. Stwórz teczkę zadania: szkic z bazami wymiarów, przekrój elementu, dokument doboru materiału, obmiar w m³, plan cięcia, punkty odbioru, ocenę ryzyka i wykaz narzędzi. Po wykonaniu próbnego testu przeanalizuj nie tylko wynik, ale przyczynę każdej pomyłki.",
+            "Nie pomijaj warunków. Stwórz teczkę zadania: szkic z bazami wymiarów, przekrój elementu, dokument doboru materiału, obmiar w m³, plan cięcia, punkty odbioru, ocenę ryzyka i wykaz narzędzi. Po wykonaniu próbnego testu przeanalizuj nie tylko wynik, ale przyczynę każdej pomyłki.",
+            "Nie pomijaj warunków. Stwórz teczkę zadania: szkic z bazami wymiarów, przekrój elementu, dokument doboru materiału, obmiar w m³, plan cięcia, punkty odbioru, ocenę ryzyka i wykaz narzędzi. Po wykonaniu próbnego testu przeanalizuj nie tylko wynik, ale przyczynę każdej pomyłki."
+          ]
+        },
+        "references": [
+          {
+            "label": "CKE BUD.02",
+            "url": "https://bip.cke.gov.pl/attachments/download/8416"
+          }
+        ]
+      }
+    }
+  ]
+}
