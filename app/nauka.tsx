@@ -178,9 +178,9 @@ export default function Learning(){
      <Text style={{color:secondary,fontSize:12}}>Lekcja {index+1}/{items.length}</Text>
    </Pressable>
    {showProgram&&(items.length===30?[
-     {name:'DZIAŁ I · PODSTAWY',about:'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
-     {name:'DZIAŁ II · PRAKTYKA',about:'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
-     {name:'DZIAŁ III · EXPERT',about:'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
+     {name:slug==='kowal-tradycja'?'DZIAŁ I · WARSZTAT I PODSTAWY':'DZIAŁ I · PODSTAWY',about:slug==='kowal-tradycja'?'Lekcje 1–10 · BHP, stal, rysunek techniczny, pomiary i narzędzia':'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
+     {name:slug==='kowal-tradycja'?'DZIAŁ II · TECHNIKI KUCIA':'DZIAŁ II · PRAKTYKA',about:slug==='kowal-tradycja'?'Lekcje 11–20 · wydłużanie, spęcznianie, gięcie, przebijanie, łączenie i obróbka cieplna':'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
+     {name:slug==='kowal-tradycja'?'DZIAŁ III · PROJEKTY I NAPRAWY':'DZIAŁ III · EXPERT',about:slug==='kowal-tradycja'?'Lekcje 21–30 · wyroby, bryczki, podkuwnictwo i projekt końcowy':'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
    ]:[{name:'DOSTĘPNE LEKCJE',about:'Program w trakcie rozbudowy',list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#dfe9dc',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
