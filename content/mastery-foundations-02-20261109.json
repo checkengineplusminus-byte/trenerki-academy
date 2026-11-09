@@ -1,0 +1,162 @@
+{
+  "astro-consafe-wms": {
+    "topic": "Astro WMS: przepływ od awizacji do wysyłki",
+    "material": "Towar musi mieć identyfikator artykułu, jednostkę miary, lokalizację i status zapasu. W systemach WMS bardzo ważne są rozdzielenie fizycznej ilości od ilości dostępnej oraz kontrola partii i numerów seryjnych; konkretna konfiguracja zależy od wdrożenia.",
+    "process": "Przećwicz: awizacja dostawy → przyjęcie → kontrola jakości → odkładanie → kompletacja → pakowanie → wysyłka. Każdy ruch RF powinien pozostawiać identyfikowalny ślad, a wyjątki należy rozliczać, nie ukrywać.",
+    "failure": "Na półce jest 12 sztuk, ale system pokazuje 9 dostępnych. Sprawdza się rezerwacje, blokady jakości i niezatwierdzone ruchy zamiast ręcznie dopisywać 3 sztuki.",
+    "task": "Rozrysuj przepływ 10 kartonów przez 4 statusy zapasu i zaplanuj przyczynę rozbieżności w systemie demonstracyjnym.",
+    "icon": "warehouse"
+  },
+  "axapta-dynamics-magazyn": {
+    "topic": "Dynamics AX/D365: oddziel dane podstawowe od ruchów magazynu",
+    "material": "Artykuł, wariant, jednostka, magazyn i lokalizacja to odrębne dane. ERP i WMS mają różne cele: księgowanie gospodarcze i operacyjne wykonywanie zadań. Ekrany AX 2012 i Dynamics 365 Supply Chain Management różnią się, więc nie wolno obiecywać zgodności klik-po-kliku.",
+    "process": "W scenariuszu testowym zapisuj: zamówienie zakupu, awizacja, przyjęcie, rozmieszczenie, status zapasu i korekta. Porównuj ilości w sztukach, kartonach i paletach z użyciem przeliczników jednostek.",
+    "failure": "W kartotece towar ma 1 karton = 12 sztuk, operator zapisuje 10 kartonów jako 10 sztuk. Powstaje błędny stan, którego nie naprawi zmiana położenia palety.",
+    "task": "Policz 5 kartonów po 12 sztuk i 8 luzem; pokaż jednostki bazowe i magazynowe oraz wynik 68 sztuk.",
+    "icon": "warehouse"
+  },
+  "blue-yonder-wms": {
+    "topic": "Blue Yonder: SKU, slotting i zadania wykonawcze",
+    "material": "SKU oznacza konkretny artykuł i wariant, nie tylko nazwę handlową. Lokalizacja jest zasobem z ograniczeniami pojemności, wysokości i klasy towaru. Slotting przydziela asortyment do miejsc, uwzględniając rotację, gabaryty i ergonomię.",
+    "process": "Porównaj przyjęcie towaru, directed putaway, uzupełnienie miejsc zbiórki, picking i wydanie. System WES może koordynować kolejki zadań i automatykę, ale dostępne moduły zależą od instalacji.",
+    "failure": "Szybkorotujący SKU jest daleko od strefy pakowania. Pracownicy wykonują wiele niepotrzebnych przejść; warto rozważyć relokację na podstawie danych i ograniczeń bezpieczeństwa.",
+    "task": "Ułóż 6 SKU o różnej rotacji w trzech strefach i uzasadnij rozstawienie, zachowując strefy ciężkich ładunków.",
+    "icon": "warehouse"
+  },
+  "infor-wms": {
+    "topic": "Infor WMS: owner, lot, status i reguły odkładania",
+    "material": "W modelu 3PL ten sam produkt może należeć do różnych właścicieli towaru. Sam numer SKU nie wystarcza, gdy stan rozdzielają owner, partia, data ważności i status jakości. Błędne mieszanie własności może wywołać reklamację i błędy rozliczenia.",
+    "process": "Przy przyjęciu powiąż ASN, ownera, jednostkę, partię i etykietę nośnika. Następnie zadanie odkładania powinno uwzględniać warunki magazynowania oraz wyjątki; lokalne procesy mogą różnić się od standardowych przykładów.",
+    "failure": "Dwie partie chemii mają ten sam SKU, ale inne daty ważności. Nie wolno połączyć ich w jeden stan bez zachowania śledzenia partii.",
+    "task": "Zaprojektuj kartę zapasu z owner, SKU, lot, expiry, status, location i ilością; pokaż dwa rozdzielone rekordy.",
+    "icon": "warehouse"
+  },
+  "manhattan-active-wms": {
+    "topic": "Manhattan: fizyczny zapas a możliwość przydziału",
+    "material": "On-hand oznacza ilość fizyczną w systemie, a available może uwzględniać rezerwacje, blokady i zasady alokacji. Kompleksowe WMS śledzi również kontener, lokalizację i zdarzenia; poprawny zapis ilości nie jest równoznaczny z gotowością do wysyłki.",
+    "process": "Zlecenie przechodzi przez alokację, picking, pakowanie, kontrolę i wydanie. Supervisor powinien analizować zdarzenie, które zatrzymało wysyłkę, zamiast ręcznie zmieniać dostępność bez dowodu.",
+    "failure": "Na stanie 40 szt., 25 zarezerwowanych i 5 w kontroli jakości. Do nowej sprzedaży dostępne jest najwyżej 10 szt., o ile nie istnieją inne blokady.",
+    "task": "Wylicz dostępny zapas z podanych wartości i uzasadnij, dlaczego nie należy brać samego on-hand.",
+    "icon": "warehouse"
+  },
+  "ongoing-wms": {
+    "topic": "Ongoing WMS: rozdział właścicieli i zamówień",
+    "material": "W 3PL istotne są osobne kartoteki właścicieli (goods owners), artykułów i zamówień. Nazwy SKU dwóch klientów nie muszą oznaczać tego samego towaru. Stany, lokalizacje i opłaty logistyczne powinny zachowywać przypisanie do właściciela.",
+    "process": "W integracji e-commerce zamówienie powinno przejść przez walidację danych, alokację, kompletację i potwierdzenie wysyłki. Dla błędów synchronizacji ważne są identyfikatory i zasady ponownego przetwarzania, żeby nie wysłać towaru dwukrotnie.",
+    "failure": "Sklep wysyła ponownie ten sam identyfikator zlecenia po timeout. System powinien rozpoznać powtórzenie, a nie traktować je automatycznie jako nową sprzedaż.",
+    "task": "Narysuj przepływ zamówienia między sklepem, integracją, WMS i przewoźnikiem z miejscem na status błędu.",
+    "icon": "warehouse"
+  },
+  "oracle-wms-cloud": {
+    "topic": "Oracle WMS: ASN, LPN i śledzenie nośnika",
+    "material": "ASN zapowiada dostawę, LPN identyfikuje kontener logistyczny lub nośnik, a SKU określa produkt. Nie należy mylić etykiety palety z numerem artykułu. Dobra historia ruchów zachowuje relację między jednostką logistyczną, lokalizacją i zdarzeniem.",
+    "process": "Przykładowy proces: otrzymanie ASN → skanowanie LPN → weryfikacja ilości → odłożenie → picking → pakowanie. Status i rzeczywiste menu zależą od konfiguracji klienta, a nie jednego uniwersalnego ekranu.",
+    "failure": "Dwa kartony są pod jednym LPN, ale operator skanuje etykietę produktu zamiast nośnika. System może utracić spójność śledzenia; należy potwierdzić typ kodu.",
+    "task": "Zaprojektuj etykiety: 1 LPN dla palety i 3 SKU, pokaż ich relację i miejsce kontroli odbioru.",
+    "icon": "warehouse"
+  },
+  "sap-ewm-magazyn": {
+    "topic": "SAP EWM: warehouse number, storage type i HU",
+    "material": "Warehouse number identyfikuje magazyn w modelu systemu, storage type grupuje obszary, a storage bin oznacza konkretną lokację. Handling Unit (HU) wiąże opakowanie z zawartością; warehouse task opisuje zlecony ruch. Jednostki i statusy trzeba rozumieć przed próbą obsługi terminala RF.",
+    "process": "Symuluj inbound delivery, tworzenie lub identyfikację HU, putaway i potwierdzanie warehouse task. Każde potwierdzenie powinno odzwierciedlać rzeczywisty fizyczny ruch, nie tylko zamykać zadanie w systemie.",
+    "failure": "Zadanie prowadzi paletę do lokacji zbyt niskiej dla jej wymiarów. Operator powinien zgłosić wyjątek i bezpieczną alternatywę, zamiast potwierdzać fikcyjne odłożenie.",
+    "task": "Narysuj magazyn z dwiema storage types i czterema bin; umieść HU i pokaż ruch po potwierdzeniu zadania.",
+    "icon": "warehouse"
+  },
+  "sap-tm-transport": {
+    "topic": "SAP TM: freight unit, freight order i ograniczenia",
+    "material": "Freight unit opisuje zapotrzebowanie transportowe, a freight order organizuje wykonanie przewozu. Plan wymaga masy, objętości, okien czasowych, ograniczeń pojazdu oraz zgodności dokumentów przewozowych. Wartości nie można sumować bez zgodnych jednostek.",
+    "process": "Od zapotrzebowania przechodzi się do konsolidacji ładunków, wyboru przewoźnika, planowania, tenderingu, realizacji i rozliczenia. Integracja z ERP i EWM wpływa na statusy i kolejność zdarzeń, ale szczegóły zależą od konfiguracji.",
+    "failure": "Dwie dostawy mieszczą się wagowo, ale objętość przekracza pojemność naczepy. Nie wolno uznać trasy za wykonalną tylko na podstawie masy.",
+    "task": "Zaplanuj dwa transporty: ładunki 10 i 15 m³ przy przestrzeni 20 m³; wskaż, dlaczego nie wejdą razem bez zmian.",
+    "icon": "warehouse"
+  },
+  "facebook-ads-promocja": {
+    "topic": "Meta Ads: cel, budżet i rzetelny pomiar",
+    "material": "Wyświetlenie, kliknięcie, lead i zakup to różne zdarzenia. CPM, CPC i koszt pozyskania klienta nie znaczą tego samego; nawet tanie kliknięcia nie gwarantują rentowności. Trzeba rozdzielić wyniki przypisywane reklamie od faktycznego wpływu kampanii.",
+    "process": "Określ cel biznesowy, grupę odbiorców, komunikat, koszt testu, zdarzenie konwersji i czas analizy. Kreacja musi uczciwie przedstawiać produkt; dynamiczne narzędzia platformy zmieniają się i wymagają weryfikacji w bieżącym interfejsie.",
+    "failure": "1000 kliknięć bez zamówień wygląda dobrze w zasięgu, ale słabo w sprzedaży. Weryfikuj stronę docelową, zdarzenia i jakość ruchu przed zwiększeniem budżetu.",
+    "task": "Oblicz CPC dla 200 zł i 100 kliknięć oraz koszt leada przy 5 poprawnych zgłoszeniach.",
+    "icon": "marketing"
+  },
+  "google-ads-promocja": {
+    "topic": "Intencja wyszukiwania i koszt konwersji",
+    "material": "Dopasowanie zapytania do intencji klienta bywa ważniejsze od samego wolumenu. CTR mówi o kliknięciach względem wyświetleń, a współczynnik konwersji o zachowaniu po wejściu. Konwersja musi być mierzona na odpowiednim etapie, żeby nie oceniać kampanii po przypadkowych wejściach.",
+    "process": "Podziel słowa na zamiar informacyjny i zakupowy, zastosuj wykluczające frazy, zapisz cel, budżet i warunki testu. Tekst reklamy i strona docelowa powinny odpowiadać temu samemu problemowi użytkownika.",
+    "failure": "Reklama usługi taksówkowej trafia na zapytania o film 'Taxi' i generuje koszty. Negatywne słowa kluczowe i analiza zapytań pomagają usunąć nietrafiony ruch.",
+    "task": "Dla 100 kliknięć, kosztu 250 zł i 5 zamówień policz CPC oraz koszt zamówienia.",
+    "icon": "marketing"
+  },
+  "jak-kupic-samochod": {
+    "topic": "Materiałoznawstwo pojazdu i koszt zakupu",
+    "material": "Karoseria może łączyć stal o różnych klasach wytrzymałości, aluminium i tworzywa. Sam magnes, grubość lakieru i połysk nie wystarczają do oceny napraw powypadkowych. W aucie elektrycznym stan akumulatora, układu chłodzenia i historia ładowania są osobnym obszarem analizy.",
+    "process": "Najpierw budżet całkowity z rezerwą, później historia VIN, dokumenty, geometria nadwozia, hamulce, zawieszenie, opony, diagnostyka i jazda próbna. Zgodność numerów, wiarygodne faktury i niezależne oględziny zmniejszają ryzyko.",
+    "failure": "Auto kosztuje 40 000 zł, ale masz tylko 40 000 zł i planujesz na nim codzienne dojazdy. W tej sytuacji rezerwa na ubezpieczenie i serwis jest warunkiem decyzji, nie opcją.",
+    "task": "Zestaw 3 auta o różnych przebiegach i oszacuj całkowity koszt pierwszego roku z rezerwą; nie oceniaj wyłącznie ceny ogłoszenia.",
+    "icon": "vehicle"
+  },
+  "apartamenty": {
+    "topic": "Materiały wykończeniowe i właściwe metody sprzątania",
+    "material": "Kamień naturalny, laminat, drewno, szkło i stal nierdzewna wymagają różnych metod pielęgnacji. Kwaśny środek może uszkodzić wrażliwy kamień wapienny, a nadmiar wody drewnianą podłogę. Tekstylia mają oznaczenia prania, których nie należy ignorować.",
+    "process": "Przed przyjęciem gościa wykonaj przegląd materiałów, powierzchni, środków, uszkodzeń i rzeczy wymagających uzupełnienia. Standard premium oznacza powtarzalny odbiór oraz dokumentację, nie tylko intensywny zapach detergentu.",
+    "failure": "Po czyszczeniu blatu powstają matowe plamy. Zamiast mocniej szorować, sprawdź materiał powierzchni, kartę produktu i wcześniejsze użyte środki.",
+    "task": "Zaprojektuj matrycę: powierzchnia → dozwolona metoda → środek → ryzyko → kontrola po sprzątaniu.",
+    "icon": "home"
+  },
+  "odbiory": {
+    "topic": "Diagnostyka materiałów: rysy, wilgoć, tolerancje",
+    "material": "Rysa w tynku nie jest tym samym co rysa w betonie konstrukcyjnym. Panele, parkiet, płytki i wylewki różnie reagują na wilgoć i odkształcenia. Odbiór wymaga wskazania miejsca, pomiaru, normy lub dokumentacji oraz ustalenia, czy obserwacja wykracza poza kompetencje osoby oceniającej.",
+    "process": "Dokumentuj usterkę zdjęciem ogólnym i detalem ze skalą, opisz lokalizację, cechę wady i wpływ na użytkowanie. Nie orzekaj zdalnie o bezpieczeństwie konstrukcji; w razie podejrzeń zleć fachową ocenę.",
+    "failure": "Na ścianie pojawia się zawilgocenie, ale jego źródło nie jest jasne. Zapisz zakres uszkodzenia i warunki zamiast przypisywać winę jednej instalacji bez badań.",
+    "task": "Dla pięciu wad przygotuj opis: lokalizacja, materiał, objaw, sposób pomiaru i zalecany specjalista.",
+    "icon": "home"
+  },
+  "wspolnota": {
+    "topic": "Utrzymanie budynku: materiały, instalacje i plan kosztów",
+    "material": "W dachu, elewacji, hydroizolacji i instalacjach starzenie materiałów zachodzi w różnym tempie. Przeglądy muszą uwzględniać ryzyko dla bezpieczeństwa, nie tylko wygląd części wspólnych. Fundusz remontowy nie jest równy gotówce do dowolnego wydania bez uchwał i planu.",
+    "process": "Prowadź rejestr usterek, przeglądów i decyzji, a roczny plan prac powiąż z budżetem oraz terminami. Wymagania prawne i uprawnienia organów należy weryfikować według aktualnego stanu prawnego i statutu.",
+    "failure": "Zarząd odkłada naprawę przeciekającego dachu, bo chce najpierw pomalować korytarz. Priorytety powinny uwzględniać ryzyko szkód i koszt narastającej awarii.",
+    "task": "Zbuduj mapę priorytetów: 10 usterek, ocena ryzyka, koszt, termin i wymóg fachowej kontroli.",
+    "icon": "home"
+  },
+  "opieka-seniorzy": {
+    "topic": "Otoczenie, nawodnienie i samodzielność osoby starszej",
+    "material": "Zbyt śliska podłoga, luźne dywany, słabe oświetlenie i brak uchwytów zwiększają ryzyko upadku. Posiłki i nawodnienie trzeba dopasować do indywidualnych zaleceń i możliwości; odgórne normy bez kontekstu mogą być mylące.",
+    "process": "Przed wsparciem zapytaj o preferencje, poziom samodzielności, dostępne pomoce i kontakt do bliskich. Opiekun obserwuje zmiany stanu, dokumentuje je zgodnie z zasadami i kieruje do personelu medycznego, gdy są niepokojące.",
+    "failure": "Senior po upadku jest splątany i ma nowy ból. Nie należy go automatycznie stawiać i prowadzić dalej; potrzebna jest pilna ocena medyczna stosownie do objawów.",
+    "task": "Narysuj pokój z pięcioma punktami ryzyka upadku i zaproponuj konkretne zmiany, respektując wybór seniora.",
+    "icon": "care"
+  },
+  "wsparcie-adhd": {
+    "topic": "ADHD: funkcje wykonawcze i dopasowanie środowiska",
+    "material": "Trudności z rozpoczynaniem, podtrzymywaniem uwagi i organizacją zadań nie dowodzą braku motywacji. Zmienność objawów zależy także od snu, stresu, obciążenia bodźcami i kontekstu. Strategie organizacyjne są wsparciem, a nie zastępują diagnozy i leczenia.",
+    "process": "Podziel zadanie na małe konkretne działania, ustal widoczny początek i przerwy, ogranicz rozpraszacze oraz uzgodnij preferowany sposób przypominania. Zachowaj szacunek do autonomii osoby i unikaj obietnic jednej metody dla wszystkich.",
+    "failure": "Uczeń jest przeciążony pięcioma poleceniami naraz. Zmniejsz liczbę instrukcji i pomóż ustalić jeden najbliższy krok zamiast oceniać jego charakter.",
+    "task": "Zamień zadanie 'posprzątaj pokój' na pięć weryfikowalnych kroków z wizualną listą.",
+    "icon": "care"
+  },
+  "festyn": {
+    "topic": "Stanowisko sprzedaży: materiały, łańcuch chłodniczy i wydajność",
+    "material": "Opakowania powinny nadawać się do kontaktu z żywnością, a temperatura przechowywania odpowiadać produktowi. Różne składniki mogą zawierać alergeny; etykieta i informacja dla kupującego są częścią usługi. Wielkość porcji i masa surowca wpływają na koszt.",
+    "process": "Przed wydarzeniem policz przepustowość stanowiska, dostęp do wody, energii, chłodzenia i wydawania reszty. Zaprojektuj kolejkę, rozdziel surowe produkty od gotowych, zapisuj czas i ilość sprzedanych porcji.",
+    "failure": "Stoiska nie da się obsłużyć, bo grill produkuje 20 porcji na godzinę, a plan sprzedaży zakłada 50. Liczy się realne wąskie gardło, nie sam popyt.",
+    "task": "Przy koszcie porcji 7 zł i cenie 12 zł policz marżę kwotową przed kosztami stałymi i punkt rentowności po doliczeniu stałych 250 zł.",
+    "icon": "food"
+  },
+  "kgw": {
+    "topic": "Dotacja: kwalifikowalność, dokument, budżet i dowód realizacji",
+    "material": "Faktura, paragon, umowa i potwierdzenie płatności dokumentują różne zdarzenia. Sam dowód zakupu nie oznacza, że wydatek jest kwalifikowalny w danym programie. Zasady konkretnej dotacji trzeba czytać w aktualnym regulaminie.",
+    "process": "Do wydatku przypisz pozycję budżetu, działanie, datę, dokument, źródło finansowania i rezultat. Prowadź rejestr korekt, unikaj podwójnego finansowania tych samych kosztów i archiwizuj zgodnie z wymaganiami programu.",
+    "failure": "KGW kupuje wyposażenie poza zatwierdzonym zakresem i oczekuje refundacji. Najpierw należy zweryfikować zgodność, ewentualną możliwość zmian i dokumenty.",
+    "task": "Zrób tabelę 5 wydatków z kolumnami: kwota, pozycja, regulamin, dokument, status kwalifikowalności.",
+    "icon": "finance"
+  },
+  "blizej-dziecka": {
+    "topic": "Więź: przewidywalność, słuchanie i potrzeby dziecka",
+    "material": "Dziecko może potrzebować obecności, bezpieczeństwa, autonomii i odpoczynku w różnym stopniu zależnie od wieku i sytuacji. Słuchanie polega na zrozumieniu przeżycia, a nie od razu na rozwiązaniu problemu. Zabawa i rutyny mogą być sposobem budowania kontaktu.",
+    "process": "Zacznij od krótkiego czasu bez telefonu; pytaj o uczucia i potrzeby bez przesłuchiwania. Daj dziecku wybór w sprawach, w których może decydować, i ustal czytelne granice dotyczące bezpieczeństwa.",
+    "failure": "Dziecko wraca ze szkoły rozdrażnione, rodzic natychmiast pyta o oceny. Najpierw warto sprawdzić emocje i potrzebę odpoczynku.",
+    "task": "Ułóż trzy pytania otwarte i plan 15 minut wspólnego czasu dopasowanego do dziecka, bez narzucania aktywności.",
+    "icon": "family"
+  }
+}
