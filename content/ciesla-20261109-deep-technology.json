@@ -1,0 +1,585 @@
+{
+  "scope": "technology",
+  "lessons": [
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 0,
+      "title_pl": "1. Mur pruski, szachulec, podwalina i oczep",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Mur pruski oraz szachulec mają drewniany szkielet z polami wypełnionymi innym materiałem. W polskiej tradycji nazwą mur pruski zazwyczaj określa się wypełnienie ceglane, a szachulec — gliniane lub gliniano-roślinne. W praktyce historycznej nazwy bywają stosowane niejednoznacznie; przy remoncie rozpoznaje się rzeczywistą budowę."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Podwalina opiera się na konstrukcji podstawy ściany i wymaga rozwiązania ograniczającego zawilgocenie od podłoża. Słupki pionowe dochodzą do oczepu. Stężenie, łącznik i wypełnienie mają różne zadania: nie wolno uznać wypełnienia za zamiennik elementu nośnego."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Na rysunku oznacz podwalinę, dwa słupki, oczep, stężenie oraz pola wypełnienia. Sprawdź izolację od fundamentu, przekątne i wilgoć, zanim zamkniesz powierzchnie. Odróżniaj ocenę starej ściany od projektu jej naprawy."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "W jednym polu ściany odnajdujesz cegłę, w drugim glinę ze słomą. Najpierw dokumentujesz obydwa rodzaje, rozpoznajesz stan drewna i dopiero dobierasz technologię naprawy."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Zrób dwa przekroje ściany historycznej i podpisz funkcję każdego elementu. Wyjaśnij, dlaczego nie można zastąpić słupka samym wypełnieniem."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Mur pruski oraz szachulec mają drewniany szkielet z polami wypełnionymi innym materiałem. W polskiej tradycji nazwą mur pruski zazwyczaj określa się wypełnienie ceglane, a szachulec — gliniane lub gliniano-roślinne. W praktyce historycznej nazwy bywają stosowane niejednoznacznie; przy remoncie rozpoznaje się rzeczywistą budowę.",
+          "situation": "W jednym polu ściany odnajdujesz cegłę, w drugim glinę ze słomą. Najpierw dokumentujesz obydwa rodzaje, rozpoznajesz stan drewna i dopiero dobierasz technologię naprawy.",
+          "example": "Zrób dwa przekroje ściany historycznej i podpisz funkcję każdego elementu. Wyjaśnij, dlaczego nie można zastąpić słupka samym wypełnieniem.",
+          "task": "Zrób dwa przekroje ściany historycznej i podpisz funkcję każdego elementu. Wyjaśnij, dlaczego nie można zastąpić słupka samym wypełnieniem.",
+          "question": "Jak podejść do rozpoznania konstrukcji szachulcowej podczas remontu?",
+          "options": [
+            "Sprawdzić rzeczywiste wypełnienie, drewno i połączenia osobno w każdym polu.",
+            "Z góry przyjąć identyczne wypełnienie we wszystkich polach.",
+            "Zdjąć nośne słupki, pozostawiając cegłę.",
+            "Zacząć od szczelnego pokrycia powierzchni bez oględzin."
+          ],
+          "correct": 0,
+          "explanation": "Podwalina opiera się na konstrukcji podstawy ściany i wymaga rozwiązania ograniczającego zawilgocenie od podłoża. Słupki pionowe dochodzą do oczepu. Stężenie, łącznik i wypełnienie mają różne zadania: nie wolno uznać wypełnienia za zamiennik elementu nośnego.",
+          "feedback": [
+            "Tak. Podwalina opiera się na konstrukcji podstawy ściany i wymaga rozwiązania ograniczającego zawilgocenie od podłoża. Słupki pionowe dochodzą do oczepu. Stężenie, łącznik i wypełnienie mają różne zadania: nie wolno uznać wypełnienia za zamiennik elementu nośnego.",
+            "To nie rozwiązuje problemu. Podwalina opiera się na konstrukcji podstawy ściany i wymaga rozwiązania ograniczającego zawilgocenie od podłoża. Słupki pionowe dochodzą do oczepu. Stężenie, łącznik i wypełnienie mają różne zadania: nie wolno uznać wypełnienia za zamiennik elementu nośnego.",
+            "To nie rozwiązuje problemu. Podwalina opiera się na konstrukcji podstawy ściany i wymaga rozwiązania ograniczającego zawilgocenie od podłoża. Słupki pionowe dochodzą do oczepu. Stężenie, łącznik i wypełnienie mają różne zadania: nie wolno uznać wypełnienia za zamiennik elementu nośnego.",
+            "To nie rozwiązuje problemu. Podwalina opiera się na konstrukcji podstawy ściany i wymaga rozwiązania ograniczającego zawilgocenie od podłoża. Słupki pionowe dochodzą do oczepu. Stężenie, łącznik i wypełnienie mają różne zadania: nie wolno uznać wypełnienia za zamiennik elementu nośnego."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 1,
+      "title_pl": "2. Surowiec okrągły, tarcica, mygłowanie i manipulacja",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Surowiec okrągły powstaje z pnia przed przetarciem; tarcica to materiał uzyskany po przepiłowaniu, obrzynany lub z pozostawionym oflisem. Mygłowanie oznacza organizowanie i układanie kłód czy dłużyc w pryzmach. Manipulacja surowca obejmuje decyzje o jego rozdziale na sortymenty według wymiarów i wad."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Przy tarcicy nieobrzynanej szerokość może być zmienna. Nie należy brać przypadkowego największego wymiaru. Sposób pomiaru ustala dokumentacja lub wymagania handlowe. Objętość prostopadłościennej deski w m³ oblicza się po przeliczeniu milimetrów i centymetrów na metry."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Zidentyfikuj stan materiału: kłoda, dłużyca, belka lub deska. Zapisz długość, wymagany wymiar pomiarowy, grubość, wady i jednostki. Rozdziel organizację placu składowego od planowania cięć i ewidencji magazynowej."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Deska o długości 4 m, grubości 40 mm i szerokości pomiarowej 200 mm ma objętość 4 × 0,04 × 0,20 = 0,032 m³. Przy desce nieobrzynanej trzeba najpierw ustalić przyjętą metodę wyznaczenia szerokości."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Wylicz objętość sześciu jednakowych desek 40 × 200 × 4000 mm: 0,192 m³. Narysuj plan składowania kłód i osobno sztapel tarcicy."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Surowiec okrągły powstaje z pnia przed przetarciem; tarcica to materiał uzyskany po przepiłowaniu, obrzynany lub z pozostawionym oflisem. Mygłowanie oznacza organizowanie i układanie kłód czy dłużyc w pryzmach. Manipulacja surowca obejmuje decyzje o jego rozdziale na sortymenty według wymiarów i wad.",
+          "situation": "Deska o długości 4 m, grubości 40 mm i szerokości pomiarowej 200 mm ma objętość 4 × 0,04 × 0,20 = 0,032 m³. Przy desce nieobrzynanej trzeba najpierw ustalić przyjętą metodę wyznaczenia szerokości.",
+          "example": "Wylicz objętość sześciu jednakowych desek 40 × 200 × 4000 mm: 0,192 m³. Narysuj plan składowania kłód i osobno sztapel tarcicy.",
+          "task": "Wylicz objętość sześciu jednakowych desek 40 × 200 × 4000 mm: 0,192 m³. Narysuj plan składowania kłód i osobno sztapel tarcicy.",
+          "question": "Co odróżnia mygłowanie drewna od składowania świeżej tarcicy na przekładkach?",
+          "options": [
+            "Oba terminy opisują tylko sztuczne suszenie.",
+            "Mygłowanie organizuje drewno okrągłe w pryzmach, sztaplowanie na przekładkach dotyczy przetartej tarcicy.",
+            "Sztaplowanie służy do zmiany gatunku drewna.",
+            "Mygłowanie jest wyłącznie pomiarem wilgotności."
+          ],
+          "correct": 1,
+          "explanation": "Przy tarcicy nieobrzynanej szerokość może być zmienna. Nie należy brać przypadkowego największego wymiaru. Sposób pomiaru ustala dokumentacja lub wymagania handlowe. Objętość prostopadłościennej deski w m³ oblicza się po przeliczeniu milimetrów i centymetrów na metry.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Przy tarcicy nieobrzynanej szerokość może być zmienna. Nie należy brać przypadkowego największego wymiaru. Sposób pomiaru ustala dokumentacja lub wymagania handlowe. Objętość prostopadłościennej deski w m³ oblicza się po przeliczeniu milimetrów i centymetrów na metry.",
+            "Tak. Przy tarcicy nieobrzynanej szerokość może być zmienna. Nie należy brać przypadkowego największego wymiaru. Sposób pomiaru ustala dokumentacja lub wymagania handlowe. Objętość prostopadłościennej deski w m³ oblicza się po przeliczeniu milimetrów i centymetrów na metry.",
+            "To nie rozwiązuje problemu. Przy tarcicy nieobrzynanej szerokość może być zmienna. Nie należy brać przypadkowego największego wymiaru. Sposób pomiaru ustala dokumentacja lub wymagania handlowe. Objętość prostopadłościennej deski w m³ oblicza się po przeliczeniu milimetrów i centymetrów na metry.",
+            "To nie rozwiązuje problemu. Przy tarcicy nieobrzynanej szerokość może być zmienna. Nie należy brać przypadkowego największego wymiaru. Sposób pomiaru ustala dokumentacja lub wymagania handlowe. Objętość prostopadłościennej deski w m³ oblicza się po przeliczeniu milimetrów i centymetrów na metry."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 2,
+      "title_pl": "3. Sztaple, suszenie naturalne i magazynowanie tarcicy",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Świeżą tarcicę do suszenia naturalnego układa się warstwowo na przekładkach. Przekładki znajdujące się pionowo jedna nad drugą tworzą stabilne podparcie i ograniczają wygięcia. Stos powinien być uniesiony ponad grunt, osłonięty od deszczu i jednocześnie przewiewny."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Drewno już wysuszone można przechowywać w inny sposób niż świeże, ale trzeba zabezpieczyć je przed powrotem wilgoci. Oceniając warunki, odróżniaj parowanie wody z powierzchni od wyrównywania wilgotności wewnątrz przekroju."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Przed rozpoczęciem sprawdź płaskość podstawy, przekładki i stabilność stosu. Oznacz gatunek i datę, kontroluj stan przykrycia i powietrza między warstwami. Przyjęty sposób składowania ma współpracować z późniejszym przeznaczeniem materiału."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Przekładki w czterech warstwach są porozrzucane i nie tworzą pionowych linii podparcia. Po kilku tygodniach część desek się wygina. Rozwiązanie wymaga poprawy podparcia i kontroli schnięcia, nie maskowania wygięcia strugarką."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Narysuj przekrój pięciowarstwowego sztapla z trzema liniami przekładek. Zaznacz dopływ powietrza, ochronę przed opadami i podparcie od spodu."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Świeżą tarcicę do suszenia naturalnego układa się warstwowo na przekładkach. Przekładki znajdujące się pionowo jedna nad drugą tworzą stabilne podparcie i ograniczają wygięcia. Stos powinien być uniesiony ponad grunt, osłonięty od deszczu i jednocześnie przewiewny.",
+          "situation": "Przekładki w czterech warstwach są porozrzucane i nie tworzą pionowych linii podparcia. Po kilku tygodniach część desek się wygina. Rozwiązanie wymaga poprawy podparcia i kontroli schnięcia, nie maskowania wygięcia strugarką.",
+          "example": "Narysuj przekrój pięciowarstwowego sztapla z trzema liniami przekładek. Zaznacz dopływ powietrza, ochronę przed opadami i podparcie od spodu.",
+          "task": "Narysuj przekrój pięciowarstwowego sztapla z trzema liniami przekładek. Zaznacz dopływ powietrza, ochronę przed opadami i podparcie od spodu.",
+          "question": "Jaki układ przekładek pomaga ograniczyć odkształcenie tarcicy podczas składowania?",
+          "options": [
+            "Przekładki umieszczone jedna nad drugą w kolejnych warstwach.",
+            "Przekładki wyłącznie na końcach jednej deski.",
+            "Warstwy całkowicie szczelnie owinięte folią.",
+            "Przypadkowe podparcie każdej deski w innym miejscu."
+          ],
+          "correct": 0,
+          "explanation": "Drewno już wysuszone można przechowywać w inny sposób niż świeże, ale trzeba zabezpieczyć je przed powrotem wilgoci. Oceniając warunki, odróżniaj parowanie wody z powierzchni od wyrównywania wilgotności wewnątrz przekroju.",
+          "feedback": [
+            "Tak. Drewno już wysuszone można przechowywać w inny sposób niż świeże, ale trzeba zabezpieczyć je przed powrotem wilgoci. Oceniając warunki, odróżniaj parowanie wody z powierzchni od wyrównywania wilgotności wewnątrz przekroju.",
+            "To nie rozwiązuje problemu. Drewno już wysuszone można przechowywać w inny sposób niż świeże, ale trzeba zabezpieczyć je przed powrotem wilgoci. Oceniając warunki, odróżniaj parowanie wody z powierzchni od wyrównywania wilgotności wewnątrz przekroju.",
+            "To nie rozwiązuje problemu. Drewno już wysuszone można przechowywać w inny sposób niż świeże, ale trzeba zabezpieczyć je przed powrotem wilgoci. Oceniając warunki, odróżniaj parowanie wody z powierzchni od wyrównywania wilgotności wewnątrz przekroju.",
+            "To nie rozwiązuje problemu. Drewno już wysuszone można przechowywać w inny sposób niż świeże, ale trzeba zabezpieczyć je przed powrotem wilgoci. Oceniając warunki, odróżniaj parowanie wody z powierzchni od wyrównywania wilgotności wewnątrz przekroju."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 3,
+      "title_pl": "4. Suszarnie i hydrotermiczna obróbka drewna",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Suszenie komorowe reguluje temperaturę, wilgotność względną i przepływ powietrza w czasie, aby obniżyć wilgotność materiału do wymaganego poziomu. Program musi odpowiadać gatunkowi i wymiarom. Zbyt szybka utrata wody może wywoływać pękanie i naprężenia."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Obróbka hydrotermiczna wykorzystuje gorącą wodę lub parę do czasowej zmiany podatności drewna na obróbkę. Może ułatwiać gięcie, skrawanie i przygotowanie forniru. Nie oznacza automatycznie takiego samego procesu jak suszenie — oba mają różne cele i punkty kontroli."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Przy suszeniu zapisujesz wilgotność początkową, program urządzenia, warunki w komorze oraz kontrolę końcową. Przy uplastycznianiu sprawdzasz technologię dobraną do wyrobu i bezpieczeństwo pracy z parą. Parametry procesu wynikają z urządzenia i instrukcji, nie z uniwersalnego przepisu."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Warsztat chce wygiąć element przez możliwie mocne wysuszenie go w komorze. To błędne utożsamienie suszenia z uplastycznianiem cieplno-wilgotnościowym."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Przygotuj dwie karty technologii: suszenie desek przed montażem i uplastycznienie drewna przed gięciem. W każdej podaj cel, kontrolowane parametry oraz możliwą wadę."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Suszenie komorowe reguluje temperaturę, wilgotność względną i przepływ powietrza w czasie, aby obniżyć wilgotność materiału do wymaganego poziomu. Program musi odpowiadać gatunkowi i wymiarom. Zbyt szybka utrata wody może wywoływać pękanie i naprężenia.",
+          "situation": "Warsztat chce wygiąć element przez możliwie mocne wysuszenie go w komorze. To błędne utożsamienie suszenia z uplastycznianiem cieplno-wilgotnościowym.",
+          "example": "Przygotuj dwie karty technologii: suszenie desek przed montażem i uplastycznienie drewna przed gięciem. W każdej podaj cel, kontrolowane parametry oraz możliwą wadę.",
+          "task": "Przygotuj dwie karty technologii: suszenie desek przed montażem i uplastycznienie drewna przed gięciem. W każdej podaj cel, kontrolowane parametry oraz możliwą wadę.",
+          "question": "Co najlepiej rozróżnia suszenie sztuczne i obróbkę hydrotermiczną?",
+          "options": [
+            "W obu przypadkach celem jest tylko zmniejszenie długości drewna.",
+            "Pierwsza obniża wilgotność według programu, druga może ułatwiać gięcie lub skrawanie przez wodę i ciepło.",
+            "Druga zawsze służy do całkowitego odwodnienia.",
+            "Pierwsza nie wymaga pomiarów."
+          ],
+          "correct": 1,
+          "explanation": "Obróbka hydrotermiczna wykorzystuje gorącą wodę lub parę do czasowej zmiany podatności drewna na obróbkę. Może ułatwiać gięcie, skrawanie i przygotowanie forniru. Nie oznacza automatycznie takiego samego procesu jak suszenie — oba mają różne cele i punkty kontroli.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Obróbka hydrotermiczna wykorzystuje gorącą wodę lub parę do czasowej zmiany podatności drewna na obróbkę. Może ułatwiać gięcie, skrawanie i przygotowanie forniru. Nie oznacza automatycznie takiego samego procesu jak suszenie — oba mają różne cele i punkty kontroli.",
+            "Tak. Obróbka hydrotermiczna wykorzystuje gorącą wodę lub parę do czasowej zmiany podatności drewna na obróbkę. Może ułatwiać gięcie, skrawanie i przygotowanie forniru. Nie oznacza automatycznie takiego samego procesu jak suszenie — oba mają różne cele i punkty kontroli.",
+            "To nie rozwiązuje problemu. Obróbka hydrotermiczna wykorzystuje gorącą wodę lub parę do czasowej zmiany podatności drewna na obróbkę. Może ułatwiać gięcie, skrawanie i przygotowanie forniru. Nie oznacza automatycznie takiego samego procesu jak suszenie — oba mają różne cele i punkty kontroli.",
+            "To nie rozwiązuje problemu. Obróbka hydrotermiczna wykorzystuje gorącą wodę lub parę do czasowej zmiany podatności drewna na obróbkę. Może ułatwiać gięcie, skrawanie i przygotowanie forniru. Nie oznacza automatycznie takiego samego procesu jak suszenie — oba mają różne cele i punkty kontroli."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 4,
+      "title_pl": "5. Dach: murłata, płatew, krokiew i jętka",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-dach",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Murłata współpracuje z podparciem więźby na ścianie, płatew biegnie zazwyczaj równolegle do kalenicy i może pośrednio podpierać krokwie. Krokiew to element pochyły połaci; jętka łączy krokwie w danym układzie konstrukcyjnym. Nie można traktować każdego poziomego elementu dachu jako tej samej belki."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Więźba może mieć układ krokwiowy, krokwiowo-jętkowy lub płatwiowo-kleszczowy. Poszczególne rozwiązania przenoszą obciążenia inaczej; sposób łączenia jętki z krokwią oraz usytuowanie podpór muszą wynikać z projektu."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Czytaj razem rzut dachu i przekrój. Oznacz kalenicę, murłaty, płatwie, jętki, krokwie i stężenia. Zaznacz strzałkami, w jaki sposób obciążenia trafiają do podpór, a następnie sprawdź detale połączeń."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Na rysunku wzdłuż dachu biegnie belka podpierająca krokwie. Uczeń nazywa ją jętką, bo jest pozioma. Kierunek i funkcja wskazują na płatew; trzeba zweryfikować oznaczenie."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Narysuj dwie pary krokwi, płatew biegnącą wzdłuż nich i poprzeczną jętkę. Wskaż, czym różnią się te elementy w konstrukcji."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Murłata współpracuje z podparciem więźby na ścianie, płatew biegnie zazwyczaj równolegle do kalenicy i może pośrednio podpierać krokwie. Krokiew to element pochyły połaci; jętka łączy krokwie w danym układzie konstrukcyjnym. Nie można traktować każdego poziomego elementu dachu jako tej samej belki.",
+          "situation": "Na rysunku wzdłuż dachu biegnie belka podpierająca krokwie. Uczeń nazywa ją jętką, bo jest pozioma. Kierunek i funkcja wskazują na płatew; trzeba zweryfikować oznaczenie.",
+          "example": "Narysuj dwie pary krokwi, płatew biegnącą wzdłuż nich i poprzeczną jętkę. Wskaż, czym różnią się te elementy w konstrukcji.",
+          "task": "Narysuj dwie pary krokwi, płatew biegnącą wzdłuż nich i poprzeczną jętkę. Wskaż, czym różnią się te elementy w konstrukcji.",
+          "question": "Który element zazwyczaj biegnie równolegle do kalenicy, podpierając krokwie?",
+          "options": [
+            "Jętka łącząca parę krokwi w przekroju.",
+            "Płatew zgodnie z układem projektowym.",
+            "Podwalina ściany szkieletowej.",
+            "Łata podłogi na legarach."
+          ],
+          "correct": 1,
+          "explanation": "Więźba może mieć układ krokwiowy, krokwiowo-jętkowy lub płatwiowo-kleszczowy. Poszczególne rozwiązania przenoszą obciążenia inaczej; sposób łączenia jętki z krokwią oraz usytuowanie podpór muszą wynikać z projektu.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Więźba może mieć układ krokwiowy, krokwiowo-jętkowy lub płatwiowo-kleszczowy. Poszczególne rozwiązania przenoszą obciążenia inaczej; sposób łączenia jętki z krokwią oraz usytuowanie podpór muszą wynikać z projektu.",
+            "Tak. Więźba może mieć układ krokwiowy, krokwiowo-jętkowy lub płatwiowo-kleszczowy. Poszczególne rozwiązania przenoszą obciążenia inaczej; sposób łączenia jętki z krokwią oraz usytuowanie podpór muszą wynikać z projektu.",
+            "To nie rozwiązuje problemu. Więźba może mieć układ krokwiowy, krokwiowo-jętkowy lub płatwiowo-kleszczowy. Poszczególne rozwiązania przenoszą obciążenia inaczej; sposób łączenia jętki z krokwią oraz usytuowanie podpór muszą wynikać z projektu.",
+            "To nie rozwiązuje problemu. Więźba może mieć układ krokwiowy, krokwiowo-jętkowy lub płatwiowo-kleszczowy. Poszczególne rozwiązania przenoszą obciążenia inaczej; sposób łączenia jętki z krokwią oraz usytuowanie podpór muszą wynikać z projektu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 5,
+      "title_pl": "6. Połączenia kalenicowe, zaciosy, wręby i wiatrownice",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-dach",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Zacios i wrąb kształtują powierzchnię oparcia lub dopasowania, ale usunięcie drewna zmniejsza lokalny przekrój elementu. Połączenia krokwi w kalenicy mogą być projektowane w różny sposób, z określonymi łącznikami i ewentualnym elementem pośrednim. Nie ma bezpiecznej uniwersalnej głębokości wrębu dla każdej belki."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Słowo wiatrownica bywa stosowane do elementu związanego z usztywnianiem konstrukcji albo do deski krawędziowej dachu. W dokumentacji trzeba ustalić funkcję, zamiast przyjmować, że deska osłaniająca szczyt zastępuje stężenia."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Przygotuj szablon złącza według obowiązującego rysunku, wyznacz bazę pomiarową, kierunek włókien i punkty kontroli. Przed cięciem oceń, czy zmiana wymiaru nie osłabi belki. W razie kolizji uzyskaj uzgodnienie projektowe."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Na budowie ktoś proponuje głębszy wrąb, bo krokiew nie pasuje. Przycięcie może zmniejszyć przekrój w krytycznym miejscu i nie powinno być samodzielną korektą."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Narysuj wrąb i zaznacz pełny oraz pozostały przekrój krokwi. Opisz różnicę między deską wiatrową a stężeniem połaci."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Zacios i wrąb kształtują powierzchnię oparcia lub dopasowania, ale usunięcie drewna zmniejsza lokalny przekrój elementu. Połączenia krokwi w kalenicy mogą być projektowane w różny sposób, z określonymi łącznikami i ewentualnym elementem pośrednim. Nie ma bezpiecznej uniwersalnej głębokości wrębu dla każdej belki.",
+          "situation": "Na budowie ktoś proponuje głębszy wrąb, bo krokiew nie pasuje. Przycięcie może zmniejszyć przekrój w krytycznym miejscu i nie powinno być samodzielną korektą.",
+          "example": "Narysuj wrąb i zaznacz pełny oraz pozostały przekrój krokwi. Opisz różnicę między deską wiatrową a stężeniem połaci.",
+          "task": "Narysuj wrąb i zaznacz pełny oraz pozostały przekrój krokwi. Opisz różnicę między deską wiatrową a stężeniem połaci.",
+          "question": "Co zrobić, gdy projektowy wrąb nie pasuje na budowie?",
+          "options": [
+            "Samodzielnie powiększyć go maksymalnie do połowy wysokości.",
+            "Sprawdzić pomiary i projekt oraz uzgodnić zmianę przed dalszym cięciem.",
+            "Pominąć punkt kontroli, jeśli belka wygląda dobrze.",
+            "Dodać osłonę krawędziową i zrezygnować z łącznika."
+          ],
+          "correct": 1,
+          "explanation": "Słowo wiatrownica bywa stosowane do elementu związanego z usztywnianiem konstrukcji albo do deski krawędziowej dachu. W dokumentacji trzeba ustalić funkcję, zamiast przyjmować, że deska osłaniająca szczyt zastępuje stężenia.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Słowo wiatrownica bywa stosowane do elementu związanego z usztywnianiem konstrukcji albo do deski krawędziowej dachu. W dokumentacji trzeba ustalić funkcję, zamiast przyjmować, że deska osłaniająca szczyt zastępuje stężenia.",
+            "Tak. Słowo wiatrownica bywa stosowane do elementu związanego z usztywnianiem konstrukcji albo do deski krawędziowej dachu. W dokumentacji trzeba ustalić funkcję, zamiast przyjmować, że deska osłaniająca szczyt zastępuje stężenia.",
+            "To nie rozwiązuje problemu. Słowo wiatrownica bywa stosowane do elementu związanego z usztywnianiem konstrukcji albo do deski krawędziowej dachu. W dokumentacji trzeba ustalić funkcję, zamiast przyjmować, że deska osłaniająca szczyt zastępuje stężenia.",
+            "To nie rozwiązuje problemu. Słowo wiatrownica bywa stosowane do elementu związanego z usztywnianiem konstrukcji albo do deski krawędziowej dachu. W dokumentacji trzeba ustalić funkcję, zamiast przyjmować, że deska osłaniająca szczyt zastępuje stężenia."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 6,
+      "title_pl": "7. Wiązar prefabrykowany i poddasze nieużytkowe",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-dach",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Prefabrykowana kratownica składa się z pasów i elementów wewnętrznych współpracujących w przenoszeniu obciążeń. Może zapewniać powtarzalność produkcji i szybki montaż, lecz stawia wymagania dotyczące transportu, składowania, podnoszenia i tymczasowego zabezpieczenia."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Układy kratowe często ograniczają możliwość zagospodarowania poddasza, a ich krzyżulców nie wolno usuwać według uznania. Z kolei więźba wykonywana na miejscu może lepiej dopasowywać się do niestandardowej geometrii, ale zwykle wymaga więcej robót montażowych."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Przygotuj porównanie wariantów dla tego samego budynku: funkcja poddasza, obciążenia, rozpiętość, czas, dźwig, ograniczenia transportowe, miejsca składowania i późniejsze zmiany. Dobór musi wynikać z projektu."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Właściciel domu chce wyciąć część krzyżulców wiązara, żeby zrobić pokój. To nie jest nieszkodliwa przeróbka stolarska: zmieni się droga przenoszenia sił."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Porównaj dwa rozwiązania dachu na nieużytkowym poddaszu i wypisz po trzy zalety oraz ograniczenia. Wyjaśnij, dlaczego nie można usunąć krzyżulca bez przeprojektowania."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Prefabrykowana kratownica składa się z pasów i elementów wewnętrznych współpracujących w przenoszeniu obciążeń. Może zapewniać powtarzalność produkcji i szybki montaż, lecz stawia wymagania dotyczące transportu, składowania, podnoszenia i tymczasowego zabezpieczenia.",
+          "situation": "Właściciel domu chce wyciąć część krzyżulców wiązara, żeby zrobić pokój. To nie jest nieszkodliwa przeróbka stolarska: zmieni się droga przenoszenia sił.",
+          "example": "Porównaj dwa rozwiązania dachu na nieużytkowym poddaszu i wypisz po trzy zalety oraz ograniczenia. Wyjaśnij, dlaczego nie można usunąć krzyżulca bez przeprojektowania.",
+          "task": "Porównaj dwa rozwiązania dachu na nieużytkowym poddaszu i wypisz po trzy zalety oraz ograniczenia. Wyjaśnij, dlaczego nie można usunąć krzyżulca bez przeprojektowania.",
+          "question": "Jak ocenić możliwość usunięcia krzyżulca z prefabrykowanego wiązara?",
+          "options": [
+            "Wystarczy sprawdzić, czy przeszkadza w przejściu.",
+            "Potrzebna jest ocena konstrukcyjna i zatwierdzony projekt zmian.",
+            "Wiązar nie przenosi obciążeń poziomych, więc zmiana jest obojętna.",
+            "Dodanie płyty gipsowej usuwa potrzebę analizy."
+          ],
+          "correct": 1,
+          "explanation": "Układy kratowe często ograniczają możliwość zagospodarowania poddasza, a ich krzyżulców nie wolno usuwać według uznania. Z kolei więźba wykonywana na miejscu może lepiej dopasowywać się do niestandardowej geometrii, ale zwykle wymaga więcej robót montażowych.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Układy kratowe często ograniczają możliwość zagospodarowania poddasza, a ich krzyżulców nie wolno usuwać według uznania. Z kolei więźba wykonywana na miejscu może lepiej dopasowywać się do niestandardowej geometrii, ale zwykle wymaga więcej robót montażowych.",
+            "Tak. Układy kratowe często ograniczają możliwość zagospodarowania poddasza, a ich krzyżulców nie wolno usuwać według uznania. Z kolei więźba wykonywana na miejscu może lepiej dopasowywać się do niestandardowej geometrii, ale zwykle wymaga więcej robót montażowych.",
+            "To nie rozwiązuje problemu. Układy kratowe często ograniczają możliwość zagospodarowania poddasza, a ich krzyżulców nie wolno usuwać według uznania. Z kolei więźba wykonywana na miejscu może lepiej dopasowywać się do niestandardowej geometrii, ale zwykle wymaga więcej robót montażowych.",
+            "To nie rozwiązuje problemu. Układy kratowe często ograniczają możliwość zagospodarowania poddasza, a ich krzyżulców nie wolno usuwać według uznania. Z kolei więźba wykonywana na miejscu może lepiej dopasowywać się do niestandardowej geometrii, ale zwykle wymaga więcej robót montażowych."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 7,
+      "title_pl": "8. Łaty, kontrłaty, izolacja pozioma i podłoga na legarach",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Łaty zwykle biegną poprzecznie do krokwi i podpierają pokrycie dachowe. Kontrłaty biegną wzdłuż spadku i mogą tworzyć przestrzeń wentylacyjną pod pokryciem. To różne zadania. Przy ścianie drewnianej izolacja pozioma ogranicza podciąganie wilgoci z podłoża do podwaliny."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Podłoga z desek na legarach wymaga właściwego rozstawu, podparcia i wentylacji zgodnie z projektem. Ukryte mocowanie może wykorzystać złącza desek, lecz nie wolno zmniejszać wymaganej liczby łączników ani tworzyć pęknięć w krawędzi."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Czytając przekrój, podpisz warstwy oddzielnie dla dachu, ściany i podłogi. Ustal, które zapobiegają wodzie, które ograniczają przepływ powietrza, a które mają funkcję mechaniczną. Nie zamieniaj ich na podstawie podobnego wyglądu."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Monter pomija kontrłaty mimo wymagania wentylacji pod pokryciem. Prowadzi to do innego układu przegrody niż na projekcie i może pogorszyć warunki wilgotnościowe."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Narysuj trzy krótkie przekroje: pokrycie z łatą i kontrłatą, podwalina na izolacji oraz podłoga na legarach. Oznacz funkcję każdego elementu."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Łaty zwykle biegną poprzecznie do krokwi i podpierają pokrycie dachowe. Kontrłaty biegną wzdłuż spadku i mogą tworzyć przestrzeń wentylacyjną pod pokryciem. To różne zadania. Przy ścianie drewnianej izolacja pozioma ogranicza podciąganie wilgoci z podłoża do podwaliny.",
+          "situation": "Monter pomija kontrłaty mimo wymagania wentylacji pod pokryciem. Prowadzi to do innego układu przegrody niż na projekcie i może pogorszyć warunki wilgotnościowe.",
+          "example": "Narysuj trzy krótkie przekroje: pokrycie z łatą i kontrłatą, podwalina na izolacji oraz podłoga na legarach. Oznacz funkcję każdego elementu.",
+          "task": "Narysuj trzy krótkie przekroje: pokrycie z łatą i kontrłatą, podwalina na izolacji oraz podłoga na legarach. Oznacz funkcję każdego elementu.",
+          "question": "Dlaczego w typowym dachu wentylowanym układa się kontrłaty pod łatami?",
+          "options": [
+            "Ponieważ są jedynym elementem przenoszącym wszystkie obciążenia.",
+            "Aby stworzyć przewidzianą przestrzeń wentylacyjną i podparcie układu łat.",
+            "Żeby zastąpić izolację poziomą podwaliny.",
+            "Aby wyeliminować konieczność sprawdzania rozstawu łat."
+          ],
+          "correct": 1,
+          "explanation": "Podłoga z desek na legarach wymaga właściwego rozstawu, podparcia i wentylacji zgodnie z projektem. Ukryte mocowanie może wykorzystać złącza desek, lecz nie wolno zmniejszać wymaganej liczby łączników ani tworzyć pęknięć w krawędzi.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Podłoga z desek na legarach wymaga właściwego rozstawu, podparcia i wentylacji zgodnie z projektem. Ukryte mocowanie może wykorzystać złącza desek, lecz nie wolno zmniejszać wymaganej liczby łączników ani tworzyć pęknięć w krawędzi.",
+            "Tak. Podłoga z desek na legarach wymaga właściwego rozstawu, podparcia i wentylacji zgodnie z projektem. Ukryte mocowanie może wykorzystać złącza desek, lecz nie wolno zmniejszać wymaganej liczby łączników ani tworzyć pęknięć w krawędzi.",
+            "To nie rozwiązuje problemu. Podłoga z desek na legarach wymaga właściwego rozstawu, podparcia i wentylacji zgodnie z projektem. Ukryte mocowanie może wykorzystać złącza desek, lecz nie wolno zmniejszać wymaganej liczby łączników ani tworzyć pęknięć w krawędzi.",
+            "To nie rozwiązuje problemu. Podłoga z desek na legarach wymaga właściwego rozstawu, podparcia i wentylacji zgodnie z projektem. Ukryte mocowanie może wykorzystać złącza desek, lecz nie wolno zmniejszać wymaganej liczby łączników ani tworzyć pęknięć w krawędzi."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 8,
+      "title_pl": "9. Trasowanie i prostopadłość podwalin",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-rysunek",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Trasowanie to przenoszenie wymiarów i kształtu z dokumentacji na materiał przed obróbką. Potrzebne są wspólne punkty bazowe, kontrola jednostek i grubości rzazu. Przenoszenie kolejnych wymiarów bez jednej bazy może zwiększać błąd."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Prostopadłość narożnika można sprawdzić metodą 3–4–5: dla odcinków 0,6 m i 0,8 m odległość między ich końcami wynosi 1,0 m. Dla prostokąta 2,4 × 3,2 m przekątna powinna wynosić 4,0 m, jeśli boki i kąty odpowiadają zadaniu."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Przed ustawieniem oczepu skontroluj podwaliny, osie, rozstaw słupków, pion i tymczasowe stężenia. Gdy przekątne różnią się, najpierw wyjaśnij geometrię i punkty pomiaru, nie poprawiaj elementu przypadkowym przycięciem."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Rama ma nominalnie boki 2,4 i 3,2 m, ale jedna przekątna 4,0 m, a druga 4,08 m. Prawidłowe obliczenie 4,0 m nie kończy kontroli: trzeba sprawdzić rzeczywistą prostokątność i długości boków."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Oblicz przekątną ramy 3 × 4 m (5 m) oraz 2,4 × 3,2 m (4 m). Na schemacie pokaż bazę pomiarową i kolejność sprawdzania podwalin."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Trasowanie to przenoszenie wymiarów i kształtu z dokumentacji na materiał przed obróbką. Potrzebne są wspólne punkty bazowe, kontrola jednostek i grubości rzazu. Przenoszenie kolejnych wymiarów bez jednej bazy może zwiększać błąd.",
+          "situation": "Rama ma nominalnie boki 2,4 i 3,2 m, ale jedna przekątna 4,0 m, a druga 4,08 m. Prawidłowe obliczenie 4,0 m nie kończy kontroli: trzeba sprawdzić rzeczywistą prostokątność i długości boków.",
+          "example": "Oblicz przekątną ramy 3 × 4 m (5 m) oraz 2,4 × 3,2 m (4 m). Na schemacie pokaż bazę pomiarową i kolejność sprawdzania podwalin.",
+          "task": "Oblicz przekątną ramy 3 × 4 m (5 m) oraz 2,4 × 3,2 m (4 m). Na schemacie pokaż bazę pomiarową i kolejność sprawdzania podwalin.",
+          "question": "Jaka jest przekątna idealnie prostokątnej ramy 2,4 × 3,2 m?",
+          "options": [
+            "3,6 m, bo to średnia długości.",
+            "4,0 m, ponieważ 2,4² + 3,2² = 4,0².",
+            "5,6 m, bo sumuje się długości.",
+            "7,68 m, bo mnoży się boki."
+          ],
+          "correct": 1,
+          "explanation": "Prostopadłość narożnika można sprawdzić metodą 3–4–5: dla odcinków 0,6 m i 0,8 m odległość między ich końcami wynosi 1,0 m. Dla prostokąta 2,4 × 3,2 m przekątna powinna wynosić 4,0 m, jeśli boki i kąty odpowiadają zadaniu.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Prostopadłość narożnika można sprawdzić metodą 3–4–5: dla odcinków 0,6 m i 0,8 m odległość między ich końcami wynosi 1,0 m. Dla prostokąta 2,4 × 3,2 m przekątna powinna wynosić 4,0 m, jeśli boki i kąty odpowiadają zadaniu.",
+            "Tak. Prostopadłość narożnika można sprawdzić metodą 3–4–5: dla odcinków 0,6 m i 0,8 m odległość między ich końcami wynosi 1,0 m. Dla prostokąta 2,4 × 3,2 m przekątna powinna wynosić 4,0 m, jeśli boki i kąty odpowiadają zadaniu.",
+            "To nie rozwiązuje problemu. Prostopadłość narożnika można sprawdzić metodą 3–4–5: dla odcinków 0,6 m i 0,8 m odległość między ich końcami wynosi 1,0 m. Dla prostokąta 2,4 × 3,2 m przekątna powinna wynosić 4,0 m, jeśli boki i kąty odpowiadają zadaniu.",
+            "To nie rozwiązuje problemu. Prostopadłość narożnika można sprawdzić metodą 3–4–5: dla odcinków 0,6 m i 0,8 m odległość między ich końcami wynosi 1,0 m. Dla prostokąta 2,4 × 3,2 m przekątna powinna wynosić 4,0 m, jeśli boki i kąty odpowiadają zadaniu."
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 9,
+      "title_pl": "10. Złącza cieśli: czopy, wręby, pióra i łączniki",
+      "material": {
+        "module": 1,
+        "editorial_status": "review_needed",
+        "source_basis": "Pytania i karty odpowiedzi DA Spesialistene 2025 — samodzielnie opracowane",
+        "illustration": "ciesla-zlacze",
+        "sections": [
+          {
+            "heading": "Podstawy zawodowe",
+            "text": "Czop wchodzi w gniazdo, wrąb tworzy powierzchnię oparcia lub spasowania, a pióro-wpust łączy odpowiednio profilowane krawędzie. Istnieją także zamki ciesielskie, połączenia klejowe i stalowe łączniki. Dobór zależy od przekazywanych sił oraz obciążeń i nie może wynikać wyłącznie z wyglądu tradycyjnego detalu."
+          },
+          {
+            "heading": "Elementy, funkcje i właściwości",
+            "text": "Skuteczność złącza zależy od dopasowania, jakości drewna, odległości od końców i krawędzi oraz właściwego materiału łącznika. Zbyt głębokie gniazdo albo wrąb mogą osłabiać przekrój. Wymiary połączeń nośnych określa projekt."
+          },
+          {
+            "heading": "Kolejność postępowania",
+            "text": "Przygotuj szkic przed cięciem: powierzchnie oparcia, włókna, łącznik, wymiar i miejsce kontroli. Przy montażu porównaj faktyczne pasowanie z projektem, nie wymuszaj go brutalnie przez uderzenia w osłabiony element."
+          },
+          {
+            "heading": "Przykład przeanalizowany",
+            "text": "Przy nakładce wykonano nacięcie tak głębokie, że pozostaje niewielka część belki. Nie można uznać połączenia za mocniejsze tylko dlatego, że elementy 'ładnie się schodzą'."
+          },
+          {
+            "heading": "Ćwiczenie z wynikiem",
+            "text": "Narysuj połączenie czop–gniazdo i połączenie pióro–wpust. Dla każdego opisz, gdzie przenosi obciążenia i jak wykryć nieprawidłowe dopasowanie."
+          },
+          {
+            "heading": "Co musisz umieć przed testem",
+            "text": "Wyjaśnij zagadnienia własnymi słowami, wskaż właściwy materiał albo element na rysunku, opisz kontrolę wyniku i uzasadnij swoją decyzję techniczną. Nie wystarcza odgadnięcie odpowiedzi."
+          }
+        ],
+        "learning": {
+          "intro": "Czop wchodzi w gniazdo, wrąb tworzy powierzchnię oparcia lub spasowania, a pióro-wpust łączy odpowiednio profilowane krawędzie. Istnieją także zamki ciesielskie, połączenia klejowe i stalowe łączniki. Dobór zależy od przekazywanych sił oraz obciążeń i nie może wynikać wyłącznie z wyglądu tradycyjnego detalu.",
+          "situation": "Przy nakładce wykonano nacięcie tak głębokie, że pozostaje niewielka część belki. Nie można uznać połączenia za mocniejsze tylko dlatego, że elementy 'ładnie się schodzą'.",
+          "example": "Narysuj połączenie czop–gniazdo i połączenie pióro–wpust. Dla każdego opisz, gdzie przenosi obciążenia i jak wykryć nieprawidłowe dopasowanie.",
+          "task": "Narysuj połączenie czop–gniazdo i połączenie pióro–wpust. Dla każdego opisz, gdzie przenosi obciążenia i jak wykryć nieprawidłowe dopasowanie.",
+          "question": "Co trzeba ocenić przed pogłębieniem gniazda złącza w elemencie konstrukcyjnym?",
+          "options": [
+            "Tylko to, czy łatwiej będzie pomalować drewno.",
+            "Wpływ zmiany na przekrój, obciążenia i zgodność z projektem.",
+            "Wyłącznie koszt papieru ściernego.",
+            "Czy cieśla ma ostry ołówek."
+          ],
+          "correct": 1,
+          "explanation": "Skuteczność złącza zależy od dopasowania, jakości drewna, odległości od końców i krawędzi oraz właściwego materiału łącznika. Zbyt głębokie gniazdo albo wrąb mogą osłabiać przekrój. Wymiary połączeń nośnych określa projekt.",
+          "feedback": [
+            "To nie rozwiązuje problemu. Skuteczność złącza zależy od dopasowania, jakości drewna, odległości od końców i krawędzi oraz właściwego materiału łącznika. Zbyt głębokie gniazdo albo wrąb mogą osłabiać przekrój. Wymiary połączeń nośnych określa projekt.",
+            "Tak. Skuteczność złącza zależy od dopasowania, jakości drewna, odległości od końców i krawędzi oraz właściwego materiału łącznika. Zbyt głębokie gniazdo albo wrąb mogą osłabiać przekrój. Wymiary połączeń nośnych określa projekt.",
+            "To nie rozwiązuje problemu. Skuteczność złącza zależy od dopasowania, jakości drewna, odległości od końców i krawędzi oraz właściwego materiału łącznika. Zbyt głębokie gniazdo albo wrąb mogą osłabiać przekrój. Wymiary połączeń nośnych określa projekt.",
+            "To nie rozwiązuje problemu. Skuteczność złącza zależy od dopasowania, jakości drewna, odległości od końców i krawędzi oraz właściwego materiału łącznika. Zbyt głębokie gniazdo albo wrąb mogą osłabiać przekrój. Wymiary połączeń nośnych określa projekt."
+          ]
+        }
+      }
+    }
+  ]
+}
