@@ -1,0 +1,204 @@
+{
+  "review_status": "review_needed",
+  "note": "These are educational schematics, not exact vendor UI screenshots; use versioned manuals for live menus.",
+  "lessons": [
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "Stanowisko operatora, pulpit lidera i konfiguracja administratora rozwiązują różne zadania. Operator widzi zwykle konkretny krok procesu, identyfikator nośnika i lokalizację; osoba nadzorująca pracę analizuje zaległości, przyczyny wyjątków i dostępność zasobów. Układ ekranów Astro WMS należy zestawić z wersją i konfiguracją używaną przez klienta."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "W ćwiczeniowym ekranie zbuduj ścieżkę: zadanie → skan LPN → skan lokacji → ilość → potwierdzenie. Następnie zaprojektuj pulpit supervisor: zadania otwarte, odchylenia, blokady lokacji, priorytet realizacji. Nigdy nie wpisuj korekty magazynowej jako zamiennika niewykonanego skanu."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Operator miał pobrać 24 sztuki z lokacji B-12-01, znalazł 19. Brak wynosi 5. Utwórz zgłoszenie wyjątku i wskaż, które pola powinny zostać sprawdzone przez osobę uprawnioną."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „astro-consafe-wms”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "W Dynamics 365 Supply Chain Management procesy magazynowe można konfigurować w modułach zarządzania magazynem i urządzeń mobilnych. Zamówienie zakupu w ERP, praca magazynowa w WMS i zlecenie transportowe mają inne jednostki odpowiedzialności; nie wolno uznawać zapisu w jednym module za dowód wykonania w drugim."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Rozrysuj trzy widoki ćwiczebne: Purchases z zamówieniem, Warehouse management z listą prac oraz Transportation management z wysyłką. Dla przyjęcia sprawdź SKU, jednostkę, numer nośnika, lokalizację i liczbę fizyczną. Własny ekran symulacyjny nie zastępuje aktualnego interfejsu producenta."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "ERP oczekuje 12 kartonów po 10 sztuk, operator potwierdza 11 kartonów. Różnica 10 sztuk musi zostać wyjaśniona przed planowaniem wydania 120 sztuk."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „axapta-dynamics-magazyn”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "Role operacyjne i nadzorcze pomagają rozdzielić wykonanie fizycznej pracy od decyzji dotyczących priorytetów i korekt. Zakres widocznych menu, funkcji RF i kart pulpitu Blue Yonder zależy od konkretnego wdrożenia i wersji. Kursant powinien rozumieć, co dzieje się z zadaniem, gdy lokacja jest niedostępna."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Zaprojektuj interfejs RF: numer zadania, SKU, ilość, lokacja, potwierdzenie. Drugi widok pokazuje pulpit: zadania zaległe, wyjątki, obciążenie stref i status uzupełnienia. Przećwicz scenariusz alternatywnego planu dopiero po dopuszczonej zmianie zadania."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Dla 40 zleceń dziennych 10 jest opóźnionych. Odsetek opóźnionych to 25%. Jak odróżnisz rzeczywisty brak zapasu od braku dostępu do alejki?"
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „blue-yonder-wms”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "W rozwiązaniach WMS operator RF skanuje obiekt wymagany przez aktualny krok, natomiast przeglądarkowy ekran administracyjny może służyć do kontroli zamówień i wyjątków. Ważna jest zgodność ownera, SKU, partii, LPN, lokacji i ilości. Dwie firmy mogą używać tego samego oznaczenia towaru, ale mieć osobne stany."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Na ekranie ćwiczebnym zapisz pola: Owner, Item, Lot, LPN, Location, Qty, Status. Dla dwóch właścicieli towaru skontroluj, czy program nie łączy ich stanów. Odpowiedź z terminala RF musi zostać powiązana z faktycznym ruchem i uprawnionym operatorem."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Owner A ma SKU-1: 18 sztuk; Owner B ma SKU-1: 27 sztuk. Zamówienie klienta A na 20 sztuk nie powinno automatycznie otrzymać 2 sztuk z zapasu B."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „infor-wms”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "Pulpit zarządzania magazynem ma znaczenie, gdy pokazuje nie tylko licznik operacji, ale ich przyczyny i wpływ na terminowość. W Manhattan Active funkcje zależą od roli i konfiguracji. Zadania mogą wymagać kontroli zgodności stanów, dostępności ludzi oraz urządzeń, a nie samego usunięcia alertu."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Narysuj widok operatora z kolejką zadań oraz pulpit lidera z metrykami: otwarte, wykonane, opóźnione i wyjątki. Dla każdej metryki podaj definicję licznika i mianownika. Rozdziel zadania przeznaczone do działania przez magazyniera i przez osobę zarządzającą zapasem."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Z 100 zleceń 82 ukończono w terminie, 18 po terminie. Terminowość to 82%, ale przed zmianą planu trzeba ustalić przyczyny 18 opóźnień."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „manhattan-active-wms”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "Ongoing WMS obsługuje m.in. wielu właścicieli towarów, procesy picking, packing i integracje z systemami sklepów. Dla nauki trzeba odróżniać Goods Owner, Article, Order, Warehouse i operację skanowania. Konkretne zakładki i uprawnienia zależą od konfiguracji oraz bieżącego interfejsu."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Zbuduj ćwiczebny widok: Goods Owner → Order → Picking → Packing → Shipment. W każdym kroku potwierdź identyfikator właściciela. Przy wielu klientach nie łącz stanów tylko dlatego, że oba produkty mają jednakowy numer artykułu."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Owner Alfa ma produkt 001: 12 sztuk, Owner Beta 001: 8. Zamówienie Alfy na 15 wymaga decyzji o braku 3 sztuk, nie pobrania z zapasu Bety."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „ongoing-wms”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "Oracle WMS Cloud może prowadzić operacje przez interfejs webowy i RF; w niektórych procesach LPN identyfikuje jednostkę logistyczną, natomiast SKU artykuł. Skan produktu w polu wymagającym LPN nie dowodzi tożsamości nośnika. Należy też rozróżniać status odbioru, odłożenia i wysyłki."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "W symulowanym terminalu przygotuj pola: Activity, Facility, LPN, Item, Quantity, Location i Confirmation. Zaznacz, które pole wymaga identyfikatora jednostki, a które artykułu. Przy błędzie wróć do wskazanego kroku, zamiast wpisywać dowolny kod tylko po to, by przejść dalej."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Paleta LPN-451 zawiera dwa SKU po 12 i 8 sztuk. Skan LPN-451 nie oznacza, że wszystkie 20 sztuk należą do jednego SKU."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „oracle-wms-cloud”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "SAP EWM rozdziela Warehouse Number, Storage Type, Storage Bin, Handling Unit, Warehouse Task i Warehouse Order. Warehouse Task opisuje pracę magazynową, a potwierdzenie musi odpowiadać rzeczywistemu ruchowi. EWM Monitor służy nadzorowi, natomiast używane menu i transakcje zależą od środowiska SAP i wersji."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Przećwicz w schemacie: Warehouse Number → Storage Type → Storage Bin oraz HU → Warehouse Task → Confirmation. Na terminalu RF skanowany kod musi odpowiadać polu w bieżącym kroku. Jeśli lokalizacja jest zajęta albo nośnik niezgodny, zgłoś wyjątek, nie potwierdzaj fikcyjnego ruchu."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "Zadanie kieruje HU-82 do Bin A-01-03, lecz lokacja ma blokadę. Wybierz prawidłową ścieżkę wyjaśnienia statusu i nie księguj ruchu przed fizycznym wykonaniem."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „sap-ewm-magazyn”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Prawidłowe pojęcia i role systemowe",
+          "text": "SAP TM organizuje potrzeby transportowe przez obiekty takie jak Freight Unit i Freight Order oraz planowanie, wybór przewoźnika, realizację i koszt. ERP i EWM mogą przekazywać różne dane, ale plan przewozu musi bazować na aktualnej liczbie przygotowanych jednostek oraz parametrach ładunku."
+        },
+        {
+          "heading": "Wariant interfejsu i przebieg operacji",
+          "text": "Narysuj proces: ERP Sales Order → EWM Ready for Shipping → TM Freight Unit → Freight Order → Carrier → Execution/ETA. W szkoleniowej symulacji przejdź od potrzeb do planu pojazdu, okien czasowych i potwierdzenia. Nie utożsamiaj Freight Unit z fizyczną paletą bez sprawdzenia struktury danych."
+        },
+        {
+          "heading": "Zadanie na danych magazynowych",
+          "text": "ERP zamówił transport 12 palet, lecz EWM potwierdza gotowość 10. TM musi rozliczyć różnicę 2 palet, zanim przejdzie do ostatecznego przydziału zasobu."
+        },
+        {
+          "heading": "Kontrola rezultatu i błąd do wykrycia",
+          "text": "Sprawdź w zadaniu „sap-tm-transport”, czy dokument źródłowy, obiekt, właściciel lub nośnik, jednostka, ilość i status są zgodne. Wpisz, który krok został fizycznie wykonany, a który pozostaje w systemie jako otwarty. Zaznacz rolę uprawnioną do korekty."
+        }
+      ]
+    }
+  ]
+}
