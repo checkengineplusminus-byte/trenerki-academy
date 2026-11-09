@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 670" role="img" aria-label="Kuźnia: strefy i przepływ pracy">
+<rect width="1200" height="670" rx="28" fill="#f5f9f2"/>
+<rect x="26" y="25" width="1148" height="620" rx="24" fill="#fff" stroke="#d6e5d7" stroke-width="3"/>
+<text x="68" y="89" font-family="Arial,sans-serif" font-size="35" font-weight="bold" fill="#173e2d">Kuźnia: strefy i przepływ pracy</text>
+<text x="68" y="123" font-family="Arial,sans-serif" font-size="20" fill="#587565">Schemat poglądowy — oddziel gorący metal od ruchu ludzi</text>
+
+<rect x="77" y="166" width="385" height="205" rx="21" fill="#fce7d6" stroke="#d59263" stroke-width="4"/>
+<text x="101" y="208" fill="#864926" font-size="27" font-family="Arial" font-weight="bold">STREFA GORĄCA</text>
+<circle cx="184" cy="280" r="62" fill="#c66b3b"/><circle cx="184" cy="280" r="40" fill="#f4a752"/><text x="264" y="266" font-family="Arial" font-size="22" fill="#633f31">Palenisko</text><text x="264" y="292" font-family="Arial" font-size="17" fill="#633f31">+ odciąg spalin</text>
+<rect x="536" y="166" width="305" height="205" rx="21" fill="#e5eee9" stroke="#789c89" stroke-width="4"/>
+<text x="563" y="206" fill="#285744" font-size="26" font-family="Arial" font-weight="bold">KOWADŁO</text>
+<path d="M600 267h95l52-34v27l-52 35h-95z" fill="#566d74"/><rect x="625" y="295" width="58" height="42" fill="#6f7f7a"/>
+<rect x="904" y="166" width="208" height="205" rx="21" fill="#e2ebfb" stroke="#87a4ca" stroke-width="4"/>
+<text x="923" y="205" fill="#33577c" font-size="24" font-family="Arial" font-weight="bold">NARZĘDZIA</text>
+<rect x="939" y="238" width="130" height="13" fill="#8297ac"/><rect x="959" y="258" width="12" height="67" fill="#b28c68"/><rect x="1010" y="258" width="12" height="67" fill="#b28c68"/><rect x="1040" y="258" width="12" height="67" fill="#b28c68"/>
+<path d="M462 275h73" stroke="#be714b" stroke-width="9" stroke-linecap="round"/><path d="M520 260l16 15-16 15" fill="none" stroke="#be714b" stroke-width="9"/>
+<path d="M842 275h59" stroke="#789c89" stroke-width="7" stroke-dasharray="13 10"/>
+<rect x="100" y="426" width="748" height="98" rx="16" fill="#e5f2e7" stroke="#8db8a0" stroke-width="3"/>
+<text x="133" y="468" fill="#2a664b" font-size="25" font-family="Arial" font-weight="bold">DROGA EWAKUACJI — WOLNA OD PRZESZKÓD</text>
+<path d="M877 474h166" stroke="#2a865b" stroke-width="10"/><path d="M1023 451l25 23-25 23" fill="none" stroke="#2a865b" stroke-width="10"/>
+<text x="105" y="570" fill="#744e33" font-size="19" font-family="Arial">Gorące odkuwki odkładaj tylko w oznaczonym miejscu.</text>
+<text x="68" y="616" font-family="Arial,sans-serif" font-size="16" fill="#54715d">TRENERKI Academy · autorski schemat edukacyjny · nie zastępuje szkolenia praktycznego</text>
+</svg>
