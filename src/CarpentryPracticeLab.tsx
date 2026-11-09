@@ -118,7 +118,7 @@ export default function CarpentryPracticeLab({lessonNo,onPassed}:{lessonNo:numbe
    </View>)}
   </View>
   <Text style={{color:'#31593e',fontSize:13,fontWeight:'900'}}>Twój wynik: {problem.expectedLabel} ({problem.unit})</Text>
-  <TextInput accessibilityLabel="Wpisz obliczony wynik" keyboardType="decimal-pad" placeholder="Wpisz swój wynik (np. 2,56)" value={answer}
+  <TextInput accessibilityLabel="Wpisz obliczony wynik" keyboardType="decimal-pad" placeholder={'Wpisz wynik w '+problem.unit} value={answer}
    onChangeText={v=>{setAnswer(v);setMessage('');setPassed(false);onPassed(false);}}
    style={{backgroundColor:'white',borderWidth:1,borderColor:'#a8c7aa',borderRadius:9,padding:13,fontSize:18,color:'#1c4830',minHeight:50}}/>
   <Pressable accessibilityRole="button" onPress={check} style={{backgroundColor:'#1c5037',padding:14,borderRadius:10,minHeight:48,justifyContent:'center'}}>
