@@ -14,7 +14,7 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
  useEffect(()=>{setChosen(null);setTries(0);setHint(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed(false)},[identity]);
  if(!data?.situation||!data?.options?.length)return null;
  const passed=chosen===data.correct&&accepted;
- const feedbackForChoice=(index:number)=>data.feedback?.[index]?.trim()||'';
+ const feedbackForChoice=(index:number|null)=>index===null?'':data.feedback?.[index]?.trim()||'';
  const enabled=Array.isArray(data.options)&&data.correct>=0&&data.correct<data.options.length;
  if(!enabled)return null;
  const seed=identity.split('').reduce((n,c)=>n+c.charCodeAt(0),0)%data.options.length;
