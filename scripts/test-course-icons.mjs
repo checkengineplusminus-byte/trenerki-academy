@@ -1,40 +1,55 @@
 #!/usr/bin/env node
-// Visual integrity: exactly one semantic vector symbol for each public course.
-import {readFileSync} from 'node:fs';
+// Every training card must use a genuinely distinct and meaningful illustration.
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const html=read('public/academy/index.html');
 const marker='const COURSES=';
-const begin=html.indexOf(marker)+marker.length;
-assert(begin>=marker.length,'Courses must exist');
-const courses=JSON.parse(html.slice(begin,html.indexOf('];',begin)+1));
-const ids=new Set(courses.map(c=>c.id)),images=new Map();
-assert.equal(courses.length,80);
-assert.equal(ids.size,courses.length);
-for(let bundle=1;bundle<=5;bundle++){
- const svg=read('public/academy/course-icons-'+bundle+'.svg');
- assert(svg.includes('xmlns="http://www.w3.org/2000/svg"'));
- assert(svg.includes('<defs>')&&svg.includes('</defs>'));
- assert.equal((svg.match(/<g(?:\s|>)/g)||[]).length,(svg.match(/<\/g>/g)||[]).length,'Unbalanced SVG g tag in bundle '+bundle);
- const matches=[...svg.matchAll(/<symbol id="course-([a-z0-9-]+)" viewBox="0 0 256 256">/g)];
- assert.equal(matches.length,16,'Bundle '+bundle+' must contain 16 symbols');
- for(const match of matches){
-  assert(!images.has(match[1]),'Duplicate icon for '+match[1]);
-  images.set(match[1],bundle);
+const start=html.indexOf(marker)+marker.length;
+assert(start>=marker.length,'Course catalog missing');
+const courses=JSON.parse(html.slice(start,html.indexOf('];',start)+1));
+assert.equal(courses.length,80,'Expected complete 80-course catalog');
+assert.equal(new Set(courses.map(c=>c.id)).size,80,'Course IDs must be unique');
+const ids=new Map(),bodies=new Map(),fingerprints=new Map();
+for(let n=1;n<=5;n++){
+ const raw=read('public/academy/course-icons-'+n+'.svg');
+ assert(raw.includes('xmlns="http://www.w3.org/2000/svg"'),'Broken SVG namespace');
+ assert(raw.includes('<defs>')&&raw.includes('</defs>'),'Sprite definitions missing');
+ assert.equal((raw.match(/<g(?:\s|>)/g)||[]).length,(raw.match(/<\/g>/g)||[]).length,'Unbalanced SVG grouping in sprite '+n);
+ const sprites=[...raw.matchAll(/<symbol id="course-([a-z0-9-]+)" viewBox="0 0 256 256">([\s\S]*?)<\/symbol>/g)];
+ assert.equal(sprites.length,16,'Expected 16 illustrations in sprite '+n);
+ for(const m of sprites){
+  const slug=m[1],drawing=m[2];
+  assert(!ids.has(slug),'Duplicate illustration ID '+slug);
+  ids.set(slug,n);
+  bodies.set(slug,drawing);
+  const visual=drawing
+   .replace(/<title>[\s\S]*?<\/title>/g,'')
+   .replace(/<rect x="19" y="220"[\s\S]*?<\/text>/g,'')
+   .replace(/<text[^>]*>[^<]*<\/text>/g,'');
+  assert(!fingerprints.has(visual),'Same picture reused under different captions: '+fingerprints.get(visual)+' and '+slug);
+  fingerprints.set(visual,slug);
  }
- console.log('✓ Icon bundle '+bundle+': '+matches.length+' distinct SVG symbols');
+ console.log('✓ SVG set '+n+': 16 distinct illustrations');
 }
-assert.equal(images.size,80);
-for(const c of courses){
- assert.equal(images.get(c.id),c.iconBundle,'Incorrect image for '+c.id);
+assert.equal(ids.size,80,'80 unique illustration IDs required');
+assert.equal(fingerprints.size,80,'80 distinct visual artworks required');
+for(const c of courses)assert.equal(ids.get(c.id),c.iconBundle,'Missing/wrong icon for '+c.id);
+const examples={
+ 'excel-skroty':'EXCEL','autocad-skroty':'RYSUNEK CAD','bdo':'ODPADY',
+ 'lepszy-cukiernik':'WYPIEKI','lepszy-kucharz':'KUCHNIA',
+ 'angielski-na-budowie':'ENGLISH','norweski-na-budowie':'NORSK',
+ 'niemiecki-na-budowie':'DEUTSCH','sap-ewm-magazyn':'SAP EWM',
+ 'blue-yonder-wms':'AUTOMATYKA','oracle-wms-cloud':'WMS CLOUD'
+};
+for(const [id,label] of Object.entries(examples)){
+ assert(bodies.get(id).includes(label),'Missing subject cue for '+id);
 }
-const crafts=read('public/academy/course-icons-4.svg');
-assert(crafts.includes('id="course-kolodziej"')&&crafts.includes('stroke="#9a6138"')&&crafts.includes('szprych')===false,'Kołodziej must use wooden wheel vector, not vehicle emoji');
-const word=read('public/academy/course-icons-3.svg');
-assert(word.includes('id="course-word-skroty"')&&word.includes('>W</text>'),'Word must use document icon, not Excel sheet');
+assert(bodies.get('kolodziej').includes('stroke="#9a6138"'),'Wheelwright must show a wooden wheel');
+assert(bodies.get('word-skroty').includes('>W</text>'),'Word must show a document icon');
+assert(!html.includes('<span class="card-emoji" role="img"'),'Generic emoji cards must be absent');
 assert(html.includes('class="course-icon-art"')&&html.includes('.svg#course-'));
-assert(!html.includes('<span class="card-emoji" role="img"'),'Generic card emojis must not be visible');
-assert(html.includes('@media(prefers-reduced-motion:reduce)')&&html.includes('.course-icon-art{'),'Accessible motion is required');
-console.log('✓ All 80 courses have exact one topic-specific illustration');
-console.log('✓ Kołodziej wooden wheel and Word document regression safeguards');
-console.log('✓ No generic emoji or infinite catalog illustration animation');
+assert(html.includes('@media(prefers-reduced-motion:reduce)'),'Reduced-motion support required');
+console.log('✓ 80 course cards, 80 visually distinct drawings, 0 repeated marketing-only variants');
+console.log('✓ Profession, software and construction-language semantic safeguards');
+console.log('✓ No generic emoji cards; accessible motion controls preserved');
