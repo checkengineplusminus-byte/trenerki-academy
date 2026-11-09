@@ -1,0 +1,371 @@
+{
+  "slug": "garncarz-tradycja",
+  "lessons": [
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 0,
+      "title_pl": "1. Od gliny do ceramiki: etapy przemiany materiału",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Co robi garncarz",
+            "text": "Garncarz projektuje i formuje naczynia z odpowiednio dobranej masy ceramicznej, kontroluje suszenie, wypał i ewentualne szkliwienie. Świeża glina jest plastyczna, wysuszony wyrób (greenware) jest kruchy, a po właściwym wypale zachodzą zmiany strukturalne, których nie cofnie proste dodanie wody. To nie jest jeden nieprzerwany etap pracy na kole."
+          },
+          {
+            "heading": "Cztery stany, cztery decyzje",
+            "text": "Masa plastyczna nadaje się do kształtowania. W stanie skórzastej twardości (leather-hard) można w zależności od wyrobu dopracować detal; całkowicie suche greenware trzeba chronić przed uszkodzeniem. Biskwit, czyli wyrób po pierwszym wypale, może przyjmować szkliwo. Wyrób po docelowym wypale ma inne parametry niż biskwit."
+          },
+          {
+            "heading": "Co decyduje o zastosowaniu",
+            "text": "Miska dekoracyjna, donica i kubek do napojów wymagają innych właściwości. O użytkowości decydują: nasiąkliwość, szczelność, zachowanie szkliwa, zgodność składników z kontaktem z żywnością, trwałość i wykonanie. Sam połysk szkliwa nie jest dowodem bezpieczeństwa naczynia."
+          },
+          {
+            "heading": "Przypadek z pracowni",
+            "text": "Ktoś uformował kubek, wysuszył go na parapecie i od razu chce nalewać gorącą herbatę. Wysuszenie nie zamieniło gliny w wypaloną ceramikę. Przed użytkowaniem trzeba przejść właściwy proces i udokumentować przydatność wyrobu do danego celu."
+          },
+          {
+            "heading": "Ćwiczenie początkującego",
+            "text": "Narysuj oś procesu: masa → formowanie → suszenie → pierwszy wypał → szkliwienie (jeżeli przewidziano) → wypał końcowy → kontrola. Przy każdym etapie wpisz: co zmienia się w materiale, jaki defekt można zauważyć i czego jeszcze nie wolno robić z wyrobem."
+          }
+        ],
+        "illustration": "craft-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://openlearning.aalto.fi/course/view.php?id=110&section=13"
+          }
+        ],
+        "learning": {
+          "intro": "Garncarz projektuje i formuje naczynia z odpowiednio dobranej masy ceramicznej, kontroluje suszenie, wypał i ewentualne szkliwienie. Świeża glina jest plastyczna, wysuszony wyrób (greenware) jest kruchy, a po właściwym wypale zachodzą zmiany strukturalne, których nie cofnie proste dodanie wody. To nie jest jeden nieprzerwany etap pracy na kole.",
+          "situation": "Ktoś uformował kubek, wysuszył go na parapecie i od razu chce nalewać gorącą herbatę. Wysuszenie nie zamieniło gliny w wypaloną ceramikę. Przed użytkowaniem trzeba przejść właściwy proces i udokumentować przydatność wyrobu do danego celu.",
+          "question": "Co odróżnia wysuszone greenware od ceramiki po odpowiednim wypale?",
+          "options": [
+            "Greenware jest zawsze wodoodporne po wyschnięciu.",
+            "W wypale zachodzą przemiany struktury; samo suszenie ich nie zastępuje.",
+            "Samo wysuszenie automatycznie zapewnia szkliwo.",
+            "Przy greenware nie występuje skurcz ani kruche pękanie."
+          ],
+          "correct": 1,
+          "example": "W wypale zachodzą przemiany struktury; samo suszenie ich nie zastępuje.",
+          "explanation": "Proces wypalania prowadzi do zmian trwałych w strukturze ceramicznej; wysuszone greenware pozostaje kruche i podatne na działanie wody.",
+          "feedback": [
+            "Sprawdź mechanizm przedstawiony w lekcji. Proces wypalania prowadzi do zmian trwałych w strukturze ceramicznej; wysuszone greenware pozostaje kruche i podatne na działanie wody.",
+            "Tak. Proces wypalania prowadzi do zmian trwałych w strukturze ceramicznej; wysuszone greenware pozostaje kruche i podatne na działanie wody.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Proces wypalania prowadzi do zmian trwałych w strukturze ceramicznej; wysuszone greenware pozostaje kruche i podatne na działanie wody.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Proces wypalania prowadzi do zmian trwałych w strukturze ceramicznej; wysuszone greenware pozostaje kruche i podatne na działanie wody."
+          ],
+          "task": "Narysuj oś procesu: masa → formowanie → suszenie → pierwszy wypał → szkliwienie (jeżeli przewidziano) → wypał końcowy → kontrola. Przy każdym etapie wpisz: co zmienia się w materiale, jaki defekt można zauważyć i czego jeszcze nie wolno robić z wyrobem."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 1,
+      "title_pl": "2. Materiałoznawstwo: glina, szamot, masy i nasiąkliwość",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Nie każda glina jest tą samą masą",
+            "text": "Masa ceramiczna może zawierać różne minerały ilaste, składniki nieplastyczne i dodatki. Gliny do ceramiki porowatej, kamionki czy porcelany różnią się zachowaniem w obróbce i podczas wypału. Dobór musi odpowiadać temperaturze dojrzewania masy oraz przewidywanemu zastosowaniu, a nie jedynie kolorowi w stanie surowym."
+          },
+          {
+            "heading": "Plastyczność i szamot",
+            "text": "Plastyczność ułatwia formowanie i utrzymanie kształtu, ale bardzo plastyczna masa może wykazywać znaczący skurcz. Szamot to wypalony i rozdrobniony materiał ceramiczny stosowany jako domieszka w wybranych masach. Może wpływać na zachowanie podczas suszenia i fakturę, lecz nie rozwiązuje automatycznie wszystkich wad."
+          },
+          {
+            "heading": "Nasiąkliwość i dojrzałość wypału",
+            "text": "Po wypale porowatość i nasiąkliwość zależą od składu oraz historii wypału. Masy porowate i bardziej spieczone zachowują się inaczej. Nie ma jednego zakresu temperatur pasującego do każdej gliny; producent określa dopuszczalny zakres. Sam kolor ciemny lub jasny nie wystarcza do rozpoznania właściwości."
+          },
+          {
+            "heading": "Przykład zamiany masy",
+            "text": "Masz szkliwo przeznaczone do określonego zakresu wypału i producent zamienia masę na inną, dojrzewającą w innej temperaturze. Użycie starego programu bez sprawdzenia kompatybilności może skończyć się odkształceniem, nieprawidłowym spiekiem lub wadą szkliwa."
+          },
+          {
+            "heading": "Karta materiałowa",
+            "text": "Zaprojektuj zestawienie dla trzech mas: przewidywany wyrób, plastyczność, zawartość szamotu, skurcz z karty technicznej, zakres wypału, sposób kontroli i ograniczenia. Dodaj pole 'dane niepotwierdzone', aby nie zastępować badania intuicją."
+          }
+        ],
+        "illustration": "material-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://openlearning.aalto.fi/course/view.php?id=110&section=13"
+          }
+        ],
+        "learning": {
+          "intro": "Masa ceramiczna może zawierać różne minerały ilaste, składniki nieplastyczne i dodatki. Gliny do ceramiki porowatej, kamionki czy porcelany różnią się zachowaniem w obróbce i podczas wypału. Dobór musi odpowiadać temperaturze dojrzewania masy oraz przewidywanemu zastosowaniu, a nie jedynie kolorowi w stanie surowym.",
+          "situation": "Masz szkliwo przeznaczone do określonego zakresu wypału i producent zamienia masę na inną, dojrzewającą w innej temperaturze. Użycie starego programu bez sprawdzenia kompatybilności może skończyć się odkształceniem, nieprawidłowym spiekiem lub wadą szkliwa.",
+          "question": "Dlaczego nie należy stosować jednego programu wypału do dowolnych dwóch mas ceramicznych?",
+          "options": [
+            "Ponieważ kolor surowej masy wyznacza automatycznie idealną temperaturę.",
+            "Ponieważ każdy dodatek szamotu usuwa potrzebę kontroli wypału.",
+            "Ponieważ program wypału służy tylko do suszenia.",
+            "Ponieważ skład i zakres dojrzewania masy mogą się istotnie różnić."
+          ],
+          "correct": 3,
+          "example": "Ponieważ skład i zakres dojrzewania masy mogą się istotnie różnić.",
+          "explanation": "Masy ceramiczne różnią się składem, skurczem i zakresem spiekania; program ma odpowiadać producentowi i wyrobowi.",
+          "feedback": [
+            "Sprawdź mechanizm przedstawiony w lekcji. Masy ceramiczne różnią się składem, skurczem i zakresem spiekania; program ma odpowiadać producentowi i wyrobowi.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Masy ceramiczne różnią się składem, skurczem i zakresem spiekania; program ma odpowiadać producentowi i wyrobowi.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Masy ceramiczne różnią się składem, skurczem i zakresem spiekania; program ma odpowiadać producentowi i wyrobowi.",
+            "Tak. Masy ceramiczne różnią się składem, skurczem i zakresem spiekania; program ma odpowiadać producentowi i wyrobowi."
+          ],
+          "task": "Zaprojektuj zestawienie dla trzech mas: przewidywany wyrób, plastyczność, zawartość szamotu, skurcz z karty technicznej, zakres wypału, sposób kontroli i ograniczenia. Dodaj pole 'dane niepotwierdzone', aby nie zastępować badania intuicją."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 2,
+      "title_pl": "3. Pracownia i narzędzia: koło, drut, oczko, nerka",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Nie zaczynamy od uruchamiania pieca",
+            "text": "W pracowni oddziela się strefę przygotowania masy, formowania, suszenia, szkliwienia i pieca. Mieszanie suchego proszku czy zamiatanie na sucho może zwiększać stężenie pyłu zawierającego krzemionkę. Potrzebne są odpowiednie rozwiązania organizacyjne, czyszczenie na mokro i kontrola pylenia zgodnie z oceną ryzyka."
+          },
+          {
+            "heading": "Poznaj narzędzia według działania",
+            "text": "Koło garncarskie obraca materiał wokół osi i pomaga tworzyć formy osiowo symetryczne. Drut służy do oddzielania wyrobu od podłoża; oczko i narzędzia pętlowe usuwają masę podczas toczenia wykończeniowego. Nerka garncarska wygładza i kształtuje ściany. Gąbka pozwala kontrolować powierzchnię i ilość wody."
+          },
+          {
+            "heading": "Co pokazuje centrum obrotu",
+            "text": "Gdy masa nie jest wycentrowana, podczas obrotu jej kształt zmienia się względem nieruchomego punktu obserwacji. Utrudnia to uzyskanie równomiernej grubości ściany. Samo zwiększenie prędkości nie usuwa błędu centrowania; ważna jest stabilność i odpowiednia technika pracy."
+          },
+          {
+            "heading": "Kontrole przed praktyką",
+            "text": "Weryfikuj osłony i zasilanie urządzeń, suchą strefę elektroniki, stabilność podstawy, czyste narzędzia, brak pęknięć, włosów i luźnej odzieży przy ruchu obrotowym. Z piecem i techniką elektryczną pracuje wyłącznie osoba przeszkolona."
+          },
+          {
+            "heading": "Ćwiczenie na ilustracji",
+            "text": "Narysuj rzut warsztatu z drogą materiału i pięcioma narzędziami. Dla każdego wpisz nazwę, rezultat, potencjalny błąd oraz bezpieczną metodę przechowywania. Wyjaśnij różnicę między centrowaniem, formowaniem a wykończeniem wyrobu."
+          }
+        ],
+        "illustration": "technique-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.hse.gov.uk/coshh/essentials/direct-advice/ceramics-silica.htm"
+          }
+        ],
+        "learning": {
+          "intro": "W pracowni oddziela się strefę przygotowania masy, formowania, suszenia, szkliwienia i pieca. Mieszanie suchego proszku czy zamiatanie na sucho może zwiększać stężenie pyłu zawierającego krzemionkę. Potrzebne są odpowiednie rozwiązania organizacyjne, czyszczenie na mokro i kontrola pylenia zgodnie z oceną ryzyka.",
+          "situation": "Weryfikuj osłony i zasilanie urządzeń, suchą strefę elektroniki, stabilność podstawy, czyste narzędzia, brak pęknięć, włosów i luźnej odzieży przy ruchu obrotowym. Z piecem i techniką elektryczną pracuje wyłącznie osoba przeszkolona.",
+          "question": "Do czego służy nerka garncarska podczas pracy na kole?",
+          "options": [
+            "Do zmiany programu temperatury pieca.",
+            "Do wykonywania testów chemicznych szkliwa.",
+            "Do wygładzania i kształtowania powierzchni gliny.",
+            "Do obniżania zawartości pyłu w wentylacji."
+          ],
+          "correct": 2,
+          "example": "Do wygładzania i kształtowania powierzchni gliny.",
+          "explanation": "Nerka garncarska (rib) pomaga kontrolować kształt i wygładzać powierzchnię plastycznej masy, nie służy do sterowania piecem.",
+          "feedback": [
+            "Sprawdź mechanizm przedstawiony w lekcji. Nerka garncarska (rib) pomaga kontrolować kształt i wygładzać powierzchnię plastycznej masy, nie służy do sterowania piecem.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Nerka garncarska (rib) pomaga kontrolować kształt i wygładzać powierzchnię plastycznej masy, nie służy do sterowania piecem.",
+            "Tak. Nerka garncarska (rib) pomaga kontrolować kształt i wygładzać powierzchnię plastycznej masy, nie służy do sterowania piecem.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Nerka garncarska (rib) pomaga kontrolować kształt i wygładzać powierzchnię plastycznej masy, nie służy do sterowania piecem."
+          ],
+          "task": "Narysuj rzut warsztatu z drogą materiału i pięcioma narzędziami. Dla każdego wpisz nazwę, rezultat, potencjalny błąd oraz bezpieczną metodę przechowywania. Wyjaśnij różnicę między centrowaniem, formowaniem a wykończeniem wyrobu."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 3,
+      "title_pl": "4. Projekt kubka: skurcz, grubość i dokumentacja",
+      "material": {
+        "module": 1,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Najpierw wyznacz gotowy wymiar",
+            "text": "Wymiary w formie mokrej nie są wymiarami po wyschnięciu i wypale. Skurcz całkowity zależy od masy i procesu, dlatego zanim wykonasz seryjny wyrób, potrzebujesz próbek i karty materiału. Przekrój projektu powinien pokazywać wysokość, średnicę, grubość ściany, dno oraz sposób mocowania ucha."
+          },
+          {
+            "heading": "Przykład rachunku",
+            "text": "Załóżmy wyłącznie do ćwiczenia, że skurcz liniowy od wymiaru przed suszeniem do po wypale wynosi 12%. Aby uzyskać po wypale wysokość 100 mm, potrzebny wymiar początkowy to 100/(1−0,12)=113,64 mm. Nie wolno dodawać tylko 12 mm do wymiaru gotowego: procent liczy się od wymiaru początkowego."
+          },
+          {
+            "heading": "Dobór kształtu do funkcji",
+            "text": "Kubek przeznaczony do picia wymaga m.in. stabilnej podstawy, wygodnej krawędzi, odpowiedniego ucha i trwałej powierzchni. Grubość ścianki wpływa na masę i proces suszenia. Przy projekcie ważne jest również przewidzenie połączenia ucha i sposób uniknięcia lokalnego naprężenia podczas schnięcia."
+          },
+          {
+            "heading": "Przykład błędu",
+            "text": "Projektant przygotował kubek dokładnie 100 mm przed wypałem, mimo rzeczywistego skurczu 12%. Po wypale osiągnął około 88 mm. Błąd nie polega na 'źle ustawionym linijce', tylko na pominięciu skurczu we wzorze i braku próbki."
+          },
+          {
+            "heading": "Zadanie z obliczeniem",
+            "text": "Przyjmij skurcz 10% i docelową średnicę zewnętrzną 90 mm. Oblicz średnicę początkową: 90/0,90=100 mm. Zrób tabelę dla trzech wymiarów i zanotuj, że są to wartości planistyczne, które trzeba potwierdzić na próbach danej masy."
+          }
+        ],
+        "illustration": "mastery-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://openlearning.aalto.fi/course/view.php?id=110&section=13"
+          }
+        ],
+        "learning": {
+          "intro": "Wymiary w formie mokrej nie są wymiarami po wyschnięciu i wypale. Skurcz całkowity zależy od masy i procesu, dlatego zanim wykonasz seryjny wyrób, potrzebujesz próbek i karty materiału. Przekrój projektu powinien pokazywać wysokość, średnicę, grubość ściany, dno oraz sposób mocowania ucha.",
+          "situation": "Projektant przygotował kubek dokładnie 100 mm przed wypałem, mimo rzeczywistego skurczu 12%. Po wypale osiągnął około 88 mm. Błąd nie polega na 'źle ustawionym linijce', tylko na pominięciu skurczu we wzorze i braku próbki.",
+          "question": "Chcesz uzyskać kubek o wysokości 100 mm przy planistycznym skurczu liniowym 12%. Jaki początkowy wymiar wynika z modelu?",
+          "options": [
+            "88 mm.",
+            "112 mm.",
+            "100 mm.",
+            "Około 113,6 mm."
+          ],
+          "correct": 3,
+          "example": "Około 113,6 mm.",
+          "explanation": "Wymiar końcowy = początkowy × 0,88, zatem początkowy = 100/0,88 ≈ 113,6 mm.",
+          "feedback": [
+            "Sprawdź mechanizm przedstawiony w lekcji. Wymiar końcowy = początkowy × 0,88, zatem początkowy = 100/0,88 ≈ 113,6 mm.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Wymiar końcowy = początkowy × 0,88, zatem początkowy = 100/0,88 ≈ 113,6 mm.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Wymiar końcowy = początkowy × 0,88, zatem początkowy = 100/0,88 ≈ 113,6 mm.",
+            "Tak. Wymiar końcowy = początkowy × 0,88, zatem początkowy = 100/0,88 ≈ 113,6 mm."
+          ],
+          "task": "Przyjmij skurcz 10% i docelową średnicę zewnętrzną 90 mm. Oblicz średnicę początkową: 90/0,90=100 mm. Zrób tabelę dla trzech wymiarów i zanotuj, że są to wartości planistyczne, które trzeba potwierdzić na próbach danej masy."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 4,
+      "title_pl": "5. Przygotowanie masy i formowanie: płaty, wałki i koło",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Czym jest przygotowanie masy",
+            "text": "Przed formowaniem trzeba upewnić się, że glina ma odpowiednią konsystencję i jest jednorodna. Nierównomierna zawartość wody może prowadzić do różnych odkształceń. Pojęcia takie jak odpowietrzanie i wyrabianie masy mają znaczenie, ale nie zastępują kontroli wilgotności, rodzaju masy i jej stanu."
+          },
+          {
+            "heading": "Trzy techniki, różne możliwości",
+            "text": "Lepienie z wałeczków (coiling) pozwala budować ścianki z kolejnych pasm. Technika płatów (slab building) opiera się na rozwałkowanych elementach łączonych w określonym stanie wilgotności. Toczenie na kole umożliwia osiową symetrię, ale wymaga centrowania i stałej kontroli grubości. Dla każdego projektu wybierz technikę z uwzględnieniem geometrii."
+          },
+          {
+            "heading": "Dlaczego łączenia mogą pękać",
+            "text": "Łączone elementy o różnym stopniu wyschnięcia kurczą się w różnym tempie. Jeśli ucho jest mocowane do znacznie bardziej suchego korpusu albo odwrotnie, w miejscu połączenia mogą powstać naprężenia i pęknięcia. Nie zastępuj prawidłowego połączenia nakładaniem grubej warstwy szkliwa."
+          },
+          {
+            "heading": "Przykład projektu",
+            "text": "Zlecenie to prostokątna osłona na roślinę o prostych ścianach. Technika płatów może być bardziej uzasadniona niż koło, ponieważ nie wymaga obracania kształtu osiowego. Przy projektowaniu uwzględnij suszenie naroży i miejsce styku płatów."
+          },
+          {
+            "heading": "Ćwiczenie projektowe",
+            "text": "Dla kubka, talerza i prostokątnego pojemnika wybierz spośród wałków, płatów lub koła technikę i uzasadnij ją. Narysuj przekrój i dwa punkty możliwego pęknięcia dla każdego przedmiotu."
+          }
+        ],
+        "illustration": "technique-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.digitalfire.com/glossary/drying%2Bcrack"
+          }
+        ],
+        "learning": {
+          "intro": "Przed formowaniem trzeba upewnić się, że glina ma odpowiednią konsystencję i jest jednorodna. Nierównomierna zawartość wody może prowadzić do różnych odkształceń. Pojęcia takie jak odpowietrzanie i wyrabianie masy mają znaczenie, ale nie zastępują kontroli wilgotności, rodzaju masy i jej stanu.",
+          "situation": "Zlecenie to prostokątna osłona na roślinę o prostych ścianach. Technika płatów może być bardziej uzasadniona niż koło, ponieważ nie wymaga obracania kształtu osiowego. Przy projektowaniu uwzględnij suszenie naroży i miejsce styku płatów.",
+          "question": "Dlaczego ucho z bardzo mokrej masy może pękać po dołączeniu do znacznie suchszego kubka?",
+          "options": [
+            "Elementy mogą kurczyć się inaczej, tworząc naprężenia w połączeniu.",
+            "Ponieważ każde ucho musi być wypalane osobno od kubka.",
+            "Ponieważ grubość szkliwa zawsze eliminuje różnice wilgotności.",
+            "Ponieważ koło automatycznie wyrównuje wilgotność dowolnego połączenia."
+          ],
+          "correct": 0,
+          "example": "Elementy mogą kurczyć się inaczej, tworząc naprężenia w połączeniu.",
+          "explanation": "Różna zawartość wody i etap schnięcia powodują nierównomierny skurcz oraz ryzyko pękania w strefie łączenia.",
+          "feedback": [
+            "Tak. Różna zawartość wody i etap schnięcia powodują nierównomierny skurcz oraz ryzyko pękania w strefie łączenia.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Różna zawartość wody i etap schnięcia powodują nierównomierny skurcz oraz ryzyko pękania w strefie łączenia.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Różna zawartość wody i etap schnięcia powodują nierównomierny skurcz oraz ryzyko pękania w strefie łączenia.",
+            "Sprawdź mechanizm przedstawiony w lekcji. Różna zawartość wody i etap schnięcia powodują nierównomierny skurcz oraz ryzyko pękania w strefie łączenia."
+          ],
+          "task": "Dla kubka, talerza i prostokątnego pojemnika wybierz spośród wałków, płatów lub koła technikę i uzasadnij ją. Narysuj przekrój i dwa punkty możliwego pęknięcia dla każdego przedmiotu."
+        }
+      }
+    },
+    {
+      "course_slug": "garncarz-tradycja",
+      "lesson_no": 5,
+      "title_pl": "6. Suszenie greenware: skąd biorą się pęknięcia i wypaczenia",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 3,
+        "editorial_status": "review_needed",
+        "lesson_kind": "technical_curriculum",
+        "sections": [
+          {
+            "heading": "Suszenie nie jest równoznaczne z wypałem",
+            "text": "Podczas suszenia z masy odparowuje woda, a element może zmniejszać wymiary. Świeżo uformowane naczynie ma różną grubość, więc jego części mogą schnąć w różnym tempie. Szybsza utrata wody przez cienki brzeg niż przez grube dno sprzyja powstawaniu naprężeń."
+          },
+          {
+            "heading": "Co jest oznaką problemu",
+            "text": "Pęknięcie przy uchu może sugerować różnicę wilgotności elementów w chwili połączenia, a rysa przy grubym dnie — nierównomierne wysychanie. Krzywizna dużego płata może wynikać z różnic skurczu i nieprawidłowego podparcia. Sama lokalizacja nie stanowi jeszcze pewnej diagnozy."
+          },
+          {
+            "heading": "Jak dokumentować proces",
+            "text": "Zapisuj masę ceramiczną, wymiary, sposób formowania, warunki suszenia i dostrzeżone defekty. Unikaj gwałtownego suszenia na gorącym grzejniku bez uzasadnionego planu. Przed wypałem stan wysuszenia musi być odpowiedni do bezpieczeństwa procesu; wilgotny wyrób może pękać pod wpływem pary."
+          },
+          {
+            "heading": "Przykład z pomiarem",
+            "text": "Płytka przed suszeniem ma 200 mm długości, po wyschnięciu 188 mm. Skurcz na tym etapie to (200−188)/200×100%=6%. Wynik nie jest jeszcze całkowitym skurczem do końca wypału. Właśnie dlatego trzeba przechowywać oba wymiary w karcie próbki."
+          },
+          {
+            "heading": "Zadanie kontrolne",
+            "text": "Ułóż kartę pięciu próbek z pomiarami przed suszeniem i po nim, policz skurcz procentowy oraz zanotuj miejsca pęknięć. Wybierz najbardziej prawdopodobne przyczyny i proponowane zmiany w następnym doświadczeniu."
+          }
+        ],
+        "illustration": "diagnosis-garncarz-tradycja",
+        "references": [
+          {
+            "label": "Źródło wiedzy technicznej",
+            "url": "https://www.digitalfire.com/glossary/drying%2Bcrack"
+          }
+        ],
+        "learning": {
+          "intro": "Podczas suszenia z masy odparowuje woda, a element może zmniejszać wymiary. Świeżo uformowane naczynie ma różną grubość, więc jego części mogą schnąć w różnym tempie. Szybsza utrata wody przez cienki brzeg niż przez grube dno sprzyja powstawaniu naprężeń.",
+          "situation": "Płytka przed suszeniem ma 200 mm długości, po wyschnięciu 188 mm. Skurcz na tym etapie to (200−188)/200×100%=6%. Wynik nie jest jeszcze całkowitym skurczem do końca wypału. Właśnie dlatego trzeba przechowywać oba wymiary w karcie próbki.",
+          "question": "Płytka ma 200 mm długości w stanie mokrym, a 188 mm po suszeniu. Jaki skurcz liniowy nastąpił na tym etapie?",
+          "options": [
+            "12%.",
+            "Około 6%.",
+            "Około 0,6%.",
+            "Wynik jest zerowy, ponieważ płytka nie została wypalona."
+          ],
+          "correct": 1,
+          "example": "Około 6%.",
+          "explanation": "(200−188)/200×100%=6%. Suszenie powoduje skurcz przed wypałem.",
+          "feedback": [
+            "Sprawdź mechanizm przedstawiony w lekcji. (200−188)/200×100%=6%. Suszenie powoduje skurcz przed wypałem.",
+            "Tak. (200−188)/200×100%=6%. Suszenie powoduje skurcz przed wypałem.",
+            "Sprawdź mechanizm przedstawiony w lekcji. (200−188)/200×100%=6%. Suszenie powoduje skurcz przed wypałem.",
+            "Sprawdź mechanizm przedstawiony w lekcji. (200−188)/200×100%=6%. Suszenie powoduje skurcz przed wypałem."
+          ],
+          "task": "Ułóż kartę pięciu próbek z pomiarami przed suszeniem i po nim, policz skurcz procentowy oraz zanotuj miejsca pęknięć. Wybierz najbardziej prawdopodobne przyczyny i proponowane zmiany w następnym doświadczeniu."
+        }
+      }
+    }
+  ]
+}
