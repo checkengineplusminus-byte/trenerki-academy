@@ -11,7 +11,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-obrecz",
+        "illustration": "kolodziej-przekroj",
         "sections": [
           {
             "heading": "Zrozum zjawisko",
@@ -46,19 +46,19 @@
           "task": "Narysuj stan przed, w trakcie i po montażu. Podpisz zmianę wymiaru, docisk i cztery ryzyka. Wypisz, jakie dane musi posiadać fachowiec, by rozstrzygnąć sposób naprawy.",
           "question": "Dlaczego gorącą obręcz można było nałożyć, a po ostygnięciu uzyskać docisk?",
           "options": [
-            "Ponieważ na gorąco metal zawsze kurczy się.",
-            "Ponieważ drewno nigdy nie zmienia wymiarów.",
-            "Ponieważ nagrzanie zwiększa rozmiar pierścienia, a schłodzenie go zmniejsza.",
-            "Ponieważ dowolna średnica obręczy pasuje do każdego koła."
+            "Wstępne ogrzanie usuwa potrzebę pomiaru obwodu.",
+            "Metal ma taki sam wymiar przy każdej temperaturze.",
+            "Obręcz rozszerza się podczas nagrzania, a po chłodzeniu może docisnąć drewniany obwód.",
+            "Drewno podczas chłodzenia metalu musi skurczyć się dokładnie o tyle samo."
           ],
           "correct": 2,
-          "example": "Ponieważ nagrzanie zwiększa rozmiar pierścienia, a schłodzenie go zmniejsza.",
+          "example": "Obręcz rozszerza się podczas nagrzania, a po chłodzeniu może docisnąć drewniany obwód.",
           "explanation": "To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
           "feedback": [
-            "Nie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
-            "Nie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
-            "Poprawnie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści.",
-            "Nie. To zasada rozszerzalności cieplnej metalu i skurczu po ochłodzeniu. Wymiary muszą dobrać specjaliści."
+            "Nie. Pasowanie i wymiar obręczy nadal wymagają kontroli.",
+            "Nie. Wymiary metalu zmieniają się z temperaturą.",
+            "Tak. Tak: to podstawowy mechanizm pasowania skurczowego.",
+            "Nie. Różne materiały pracują inaczej; nie ma takiej konieczności."
           ]
         }
       }
@@ -72,7 +72,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-obwod",
+        "illustration": "kolodziej-geometria",
         "sections": [
           {
             "heading": "Zrozum zjawisko",
@@ -107,19 +107,19 @@
           "task": "Narysuj traveler i jego znacznik. Policz dystans 5 obrotów dla d=100 mm oraz porównaj obwód teoretyczny i zmierzony. Podaj trzy źródła możliwego błędu.",
           "question": "Traveler o średnicy 100 mm przetoczył się bez poślizgu przez pięć pełnych obrotów. Jaka jest droga?",
           "options": [
-            "500 mm.",
-            "Około 1571 mm.",
-            "314 mm.",
-            "Około 3142 mm."
+            "500 mm — pięć obrotów oznacza pięć średnic.",
+            "Około 1571 mm — pięć razy π×100 mm.",
+            "Około 314 mm — tyle samo niezależnie od liczby obrotów.",
+            "Około 2827 mm — odpowiada kołu o średnicy 900 mm."
           ],
           "correct": 1,
-          "example": "Około 1571 mm.",
+          "example": "Około 1571 mm — pięć razy π×100 mm.",
           "explanation": "5×π×100≈1571 mm.",
           "feedback": [
-            "Nie. 5×π×100≈1571 mm.",
-            "Poprawnie. 5×π×100≈1571 mm.",
-            "Nie. 5×π×100≈1571 mm.",
-            "Nie. 5×π×100≈1571 mm."
+            "Nie. Na jeden obrót przypada obwód koła pomiarowego, nie jego średnica.",
+            "Tak. Pięć razy około 314,16 mm daje około 1571 mm.",
+            "Nie. 314 mm dotyczy jednego, nie pięciu obrotów.",
+            "Nie. 2827 mm to obwód innego koła, podanego dla porównania."
           ]
         }
       }
@@ -168,19 +168,19 @@
           "task": "Zapisz pięć punktów kontroli osi i piasty: luz osiowy, promieniowy, ślady zużycia, pęknięcia i zabezpieczenie. Oblicz statyczny model 1472 N i wyjaśnij jego ograniczenia.",
           "question": "Masa 600 kg równomiernie podzielona na 4 koła oznacza modelową statyczną siłę na koło równą...",
           "options": [
-            "Około 1472 N.",
-            "600 N.",
-            "Około 5886 N.",
-            "150 N."
+            "Około 1472 N na koło przy rozłożeniu masy 600 kg na cztery.",
+            "Około 5886 N na każde koło, bo 600×9,81.",
+            "Około 600 N na koło, bo masa ma 600 kg.",
+            "Około 150 N na koło, bo na koło przypada 150 kg."
           ],
           "correct": 0,
-          "example": "Około 1472 N.",
+          "example": "Około 1472 N na koło przy rozłożeniu masy 600 kg na cztery.",
           "explanation": "600/4×9,81≈1471,5 N.",
           "feedback": [
-            "Poprawnie. 600/4×9,81≈1471,5 N.",
-            "Nie. 600/4×9,81≈1471,5 N.",
-            "Nie. 600/4×9,81≈1471,5 N.",
-            "Nie. 600/4×9,81≈1471,5 N."
+            "Tak. 150 kg×9,81≈1472 N, przy idealnym równym podziale obciążenia.",
+            "Nie. 5886 N to suma ciężaru dla 600 kg, a nie jedna czwarta.",
+            "Nie. Masa w kg nie jest wartością siły w niutonach.",
+            "Nie. 150 kg to masa przypadająca na koło, a siła to około 1472 N."
           ]
         }
       }
@@ -229,19 +229,19 @@
           "task": "Na rysunku koła oznacz kierunek radialny i boczny. Oblicz dwie różnice 451−446 i 3−(-2). Zapisz, jak odróżnia się stały offset od zmiennego bicia.",
           "question": "Odchyłki boczne wynoszą od -2 mm do +3 mm. Ile wynosi cały rozrzut?",
           "options": [
-            "1 mm.",
-            "2 mm.",
-            "3 mm.",
-            "5 mm."
+            "1 mm — dodajemy wartości z przeciwnymi znakami bez ich uwzględniania.",
+            "2 mm — tylko wartość minimalnego odchylenia.",
+            "3 mm — tylko wartość maksymalnego odchylenia.",
+            "5 mm — różnica między +3 a -2."
           ],
           "correct": 3,
-          "example": "5 mm.",
+          "example": "5 mm — różnica między +3 a -2.",
           "explanation": "3−(-2)=5 mm.",
           "feedback": [
-            "Nie. 3−(-2)=5 mm.",
-            "Nie. 3−(-2)=5 mm.",
-            "Nie. 3−(-2)=5 mm.",
-            "Poprawnie. 3−(-2)=5 mm."
+            "Nie. Rozrzut obejmuje pełny zakres między przeciwległymi znakami.",
+            "Nie. 2 mm to tylko odległość min od zera.",
+            "Nie. 3 mm to tylko odległość max od zera.",
+            "Tak. Różnica 3-(-2)=5 mm."
           ]
         }
       }
@@ -290,19 +290,19 @@
           "task": "Opracuj checklistę dwunastu punktów: część, objaw, podejrzenie, pomiar, zdjęcie, decyzja. Odróżnij luźną obręcz od luzu piasty i pęknięcia szprychy.",
           "question": "Jaka hipoteza jest sensowna przy poluzowanej obręczy po długim okresie wysychania?",
           "options": [
-            "Drewno mogło zmienić wymiary i osłabić docisk obręczy.",
-            "Wysuszenie drewna zawsze zwiększa jego rozmiar.",
-            "Wszystkie czopy stają się automatycznie dłuższe.",
-            "Metalowa obręcz nie ma żadnej funkcji mechanicznej."
+            "Drewno mogło wyschnąć i zmniejszyć wymiary poprzeczne, osłabiając docisk obręczy.",
+            "Metalowa obręcz musi wtedy zwiększyć średnicę dokładnie o 10%.",
+            "Obręcz nie ma wpływu na połączenia dzwon.",
+            "Luz zawsze dowodzi pęknięcia osi pojazdu."
           ],
           "correct": 0,
-          "example": "Drewno mogło zmienić wymiary i osłabić docisk obręczy.",
+          "example": "Drewno mogło wyschnąć i zmniejszyć wymiary poprzeczne, osłabiając docisk obręczy.",
           "explanation": "Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
           "feedback": [
-            "Poprawnie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
-            "Nie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
-            "Nie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy.",
-            "Nie. Zmiany wilgotności drewna mogą wpłynąć na pasowanie i docisk obręczy."
+            "Tak. To prawdopodobny mechanizm wymagający pomiaru i oceny.",
+            "Nie. Nie ma podstaw do założenia konkretnego 10-procentowego przyrostu obręczy.",
+            "Nie. Obręcz może stabilizować i dociskać drewniany obwód.",
+            "Nie. Luz obręczy i pęknięcie osi to odrębne zjawiska."
           ]
         }
       }
@@ -351,19 +351,19 @@
           "task": "Przygotuj dwie karty zlecenia: ekspozycja i jazda. Wypisz cel, dokument, kryteria odbioru, wymagany specjalista i zakres odpowiedzialności.",
           "question": "Dlaczego estetycznie odnowione koło nie musi być bezpieczne do jazdy?",
           "options": [
-            "Bo stare koła nigdy nie mają wartości muzealnej.",
-            "Bo wygląd nie potwierdza nośności połączeń, osi i całej konstrukcji.",
-            "Bo lakier zawsze usuwa pęknięcia.",
-            "Bo geometria koła nie ma wpływu na pracę pojazdu."
+            "Przewóz ludzi wymaga jedynie odmalowania zewnętrznej powierzchni.",
+            "Ocena estetyczna nie potwierdza nośności osi, piasty, czopów i obręczy.",
+            "Po odnowieniu koło jest zawsze konstrukcyjnie identyczne z nowym.",
+            "Badanie geometrii jest wystarczające bez analizy drewna."
           ],
           "correct": 1,
-          "example": "Bo wygląd nie potwierdza nośności połączeń, osi i całej konstrukcji.",
+          "example": "Ocena estetyczna nie potwierdza nośności osi, piasty, czopów i obręczy.",
           "explanation": "Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
           "feedback": [
-            "Nie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
-            "Poprawnie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
-            "Nie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi.",
-            "Nie. Ocena wizualna i konstrukcyjna to odrębne kryteria, szczególnie przy przewozie ludzi."
+            "Nie. Wygląd nie potwierdza bezpieczeństwa konstrukcji.",
+            "Tak. Właśnie dlatego potrzebna jest fachowa ocena całego pojazdu.",
+            "Nie. Naprawa może zmienić materiały, geometrię i stan połączeń.",
+            "Nie. Prawidłowa geometria nie dowodzi braku pęknięć albo zużycia."
           ]
         }
       }
@@ -412,19 +412,19 @@
           "task": "Utwórz tabelę BOM: pozycja, ilość, koszt jednostkowy, koszt, odrzut, termin, właściciel zadania. Porównaj wariant z 12 i 16 szprychami i zaznacz, że ceny są hipotetyczne.",
           "question": "Cena sprzedaży 3500 zł, przykładowe koszty 3280 zł. Jaka pozostaje kwota przed pozostałymi kosztami i podatkami?",
           "options": [
-            "3280 zł.",
-            "3500 zł.",
-            "220 zł.",
-            "780 zł."
+            "3280 zł — to suma kosztów, nie pozostała kwota.",
+            "3500 zł — to przychód przed kosztami.",
+            "220 zł — różnica ceny i wskazanych kosztów.",
+            "780 zł — nie wynika z danych zadania."
           ],
           "correct": 2,
-          "example": "220 zł.",
+          "example": "220 zł — różnica ceny i wskazanych kosztów.",
           "explanation": "3500−3280=220 zł, ale to niekoniecznie zysk netto.",
           "feedback": [
-            "Nie. 3500−3280=220 zł, ale to niekoniecznie zysk netto.",
-            "Nie. 3500−3280=220 zł, ale to niekoniecznie zysk netto.",
-            "Poprawnie. 3500−3280=220 zł, ale to niekoniecznie zysk netto.",
-            "Nie. 3500−3280=220 zł, ale to niekoniecznie zysk netto."
+            "Nie. To wartość kosztów w modelu.",
+            "Nie. To przychód, nie pozostała kwota.",
+            "Tak. 3500−3280=220 zł przed innymi kosztami i podatkami.",
+            "Nie. Nie ma takiej różnicy między podanymi wartościami."
           ]
         }
       }
@@ -438,7 +438,7 @@
         "curriculum_revision": 6,
         "editorial_status": "review_needed",
         "lesson_kind": "technical_curriculum",
-        "illustration": "kolodziej-bicie",
+        "illustration": "kolodziej-geometria",
         "sections": [
           {
             "heading": "Zrozum zjawisko",
@@ -473,19 +473,19 @@
           "task": "Oddaj trzy widoki, cztery obliczenia, BOM, mapę co najmniej czterech usterek, 12-punktowy protokół odbioru oraz obronę decyzji o przeznaczeniu eksponatu.",
           "question": "Który komplet wyników odpowiada modelowi D=900 mm, 16 szprych i 8 dzwon?",
           "options": [
-            "Obwód 900 mm i kąt 45°. ",
-            "Obwód 1800 mm i kąt 16°. ",
-            "Łuk 900 mm i kąt 30°. ",
-            "Obwód około 2827 mm i kąt 22,5°."
+            "Obwód około 900 mm i podział 45°. ",
+            "Obwód około 1800 mm i podział 16°. ",
+            "Obwód około 2827 mm i podział 30°. ",
+            "Obwód około 2827 mm i podział 22,5°."
           ],
           "correct": 3,
-          "example": "Obwód około 2827 mm i kąt 22,5°.",
+          "example": "Obwód około 2827 mm i podział 22,5°.",
           "explanation": "π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
           "feedback": [
-            "Nie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
-            "Nie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
-            "Nie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu.",
-            "Poprawnie. π×900≈2827 mm, 360/16=22,5°. Dalsze wymiary muszą pochodzić z projektu."
+            "Nie. 900 mm jest średnicą; 45° dotyczy 8 pozycji.",
+            "Nie. Obwód 900π nie wynosi 1800, a 16° nie jest 360/16.",
+            "Nie. Obwód jest poprawny, ale 30° dotyczyłoby 12 szprych.",
+            "Tak. C=π×900≈2827 mm i 360/16=22,5°."
           ]
         }
       }
