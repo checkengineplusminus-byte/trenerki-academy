@@ -1,0 +1,42 @@
+name: TRENERKI Academy — przeglądarka mobilna i desktop
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/browser-smoke.yml'
+      - 'scripts/browser-smoke.mjs'
+      - 'public/academy/index.html'
+      - 'public/academy/anielka-search.js'
+      - 'public/academy/anielka-search.css'
+  workflow_dispatch:
+jobs:
+  browser_ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 13
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install app dependencies and Chromium test runner
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Export public site
+        run: npx expo export --platform web --output-dir /tmp/trenerki-browser
+      - name: Check desktop and mobile browser experience
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
+          sleep 2
+          node scripts/browser-smoke.mjs http://127.0.0.1:8787
+      - name: Save screenshots for manual inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-browser-screenshots
+          path: /tmp/trenerki-*.png
+          if-no-files-found: ignore
+          retention-days: 7
