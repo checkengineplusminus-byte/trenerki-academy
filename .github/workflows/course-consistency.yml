@@ -34,5 +34,7 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Verify production web bundle
         run: npx expo export --platform web --output-dir /tmp/trenerki-smoke
+      - name: Check actual exported Academy assets and all 80 course icons
+        run: node scripts/test-exported-academy.mjs /tmp/trenerki-smoke
         env:
           EXPO_NO_TELEMETRY: '1'
