@@ -1,0 +1,162 @@
+{
+  "brygadzista": {
+    "topic": "Dzienna odprawa jako mapa zależności",
+    "material": "Przed rozdzieleniem zadań brygadzista potwierdza rysunek z właściwą rewizją, dostępność materiałów, wymagane atesty i miejsce składowania. Zły wyrób albo brak mocowania może zatrzymać całą ekipę niezależnie od liczby pracowników.",
+    "process": "Na odprawie ustala się kolejność robót, odpowiedzialnych, strefy kolizji i warunek rozpoczęcia. Przykład: montaż balustrady nie zaczyna się przed potwierdzeniem podłoża, pomiarów, zakotwień i dostępu do bezpiecznego stanowiska.",
+    "failure": "Siedmioosobowa ekipa dostaje trzy zadania, ale dwa wymagają tego samego podnośnika. Najpierw usuwa się konflikt zasobów i aktualizuje plan; presja czasu nie usprawiedliwia pracy bez zabezpieczeń.",
+    "task": "Narysuj mini harmonogram dla trzech ekip i jednego podnośnika. Dopisz dwa punkty kontroli jakości i jeden stop-work trigger.",
+    "icon": "construction"
+  },
+  "kierownik-budowy": {
+    "topic": "Zmiany, materiały, dokumentacja i odpowiedzialność",
+    "material": "W projekcie musi być wiadomo, jaki wyrób zamówiono, na jakiej podstawie technicznej i do jakiej rewizji rysunku. Dla betonu znaczenie mają klasa wytrzymałości, otulina, dojrzewanie i warunki wykonania; dla elementów stalowych gatunek, zabezpieczenie przed korozją i sposób łączenia.",
+    "process": "Zestaw dokument: zakres umowy → rysunek → zamówienie → kontrola dostawy → odbiór. Zmiana grubości stropu może wymagać ponownej weryfikacji długości zakotwienia i pozycji mocowań, nie tylko aktualizacji kalendarza.",
+    "failure": "Rysunek montażowy wydano w wersji C, produkcja pracuje na B. Wstrzymuje się niewłaściwą operację, dokumentuje różnice i uzgadnia odpowiedzialność za zmianę.",
+    "task": "Na dwóch wersjach fikcyjnego rysunku zaznacz trzy różnice i wypisz skutki dla materiałów, kosztu i terminu.",
+    "icon": "construction"
+  },
+  "autocad-skroty": {
+    "topic": "CAD: geometria, jednostki i kontrola pliku",
+    "material": "W rysunku wektorowym elementy są obiektami o współrzędnych. Jednostki i skala wydruku to odrębne pojęcia; rysunek w milimetrach nie powinien być bezmyślnie wklejany do pliku w metrach. Warstwa nadaje porządek, nie zastępuje wymiarowania.",
+    "process": "Przed pracą ustal jednostki, punkt odniesienia, dokładność i strukturę warstw. Po zakończeniu sprawdź odległość kontrolną, ciągłość polilinii i prawidłowy wydruk PDF. Skrót klawiszowy jest narzędziem, a nie celem rysowania.",
+    "failure": "Użytkownik rysuje 1000 jednostek, przekonany, że to 1000 mm, lecz model jest opisany jako metry. Kontrola jednostek zapobiega kosztownej pomyłce.",
+    "task": "W symulatorze utwórz kwadrat 100 × 100 mm i sprawdź wymiar niezależnym narzędziem pomiaru.",
+    "icon": "software"
+  },
+  "dostepne-pdf": {
+    "topic": "Dostępny dokument: semantyka, kontrast i test",
+    "material": "Nagłówek powinien być oznaczony strukturą dokumentu, nie tylko pogrubioną dużą czcionką. Obraz niosący wiedzę wymaga opisu alternatywnego, a wykres powinien mieć zrozumiały tekstowy odpowiednik. Poprawny wygląd PDF nie dowodzi poprawnego porządku odczytu.",
+    "process": "Zbuduj kolejność H1/H2, opisz tabele i linki, sprawdź kontrast oraz nawigację klawiaturą i czytnikiem ekranu. Eksport z edytora nie gwarantuje, że tagi i odczyt będą poprawne.",
+    "failure": "W pliku jest piękna tabela, ale czytnik głosowy nie rozpoznaje nagłówków kolumn. Trzeba naprawić semantykę tabeli i sprawdzić ją w teście użytkowym.",
+    "task": "Zaprojektuj jednostronicową instrukcję z nagłówkiem, obrazem z opisem i tabelą, a następnie przeprowadź checklistę WCAG.",
+    "icon": "software"
+  },
+  "excel-skroty": {
+    "topic": "Arkusz to model danych, nie tylko klawiatura",
+    "material": "Wartość liczbowa i format są odrębne: 0,25 może być wyświetlone jako 25%. Formuła =B2*C2 liczy na danych, ale wynik jest wiarygodny tylko wtedy, gdy jednostki i wartości wejściowe są poprawne. Daty, tekst i liczby wymagają właściwego typu.",
+    "process": "Przed obliczeniami ustal kolumny: ilość, jednostka, cena jednostkowa, kwota. Potem sprawdź formuły na ręcznie policzonym przykładzie i zabezpiecz przed przypadkowym nadpisaniem. Skróty powinny przyspieszać istniejący proces.",
+    "failure": "W tabeli kosztorysu jedne ceny podano w NOK, a drugie w PLN. SUMA nie wykryje tej pomyłki — potrzebna jest walidacja waluty i kursu.",
+    "task": "Wpisz trzy materiały, oblicz kwoty oraz łączną sumę, a potem sprawdź jeden wiersz bez arkusza.",
+    "icon": "software"
+  },
+  "windows-skroty": {
+    "topic": "System, pliki, uprawnienia i kopia zapasowa",
+    "material": "Plik ma nazwę, rozszerzenie, lokalizację i uprawnienia. Skrót na pulpicie nie jest tym samym co kopia pliku. Synchronizacja chmurowa może przenosić przypadkowe usunięcia, dlatego niezależny backup musi mieć własne zasady odzyskiwania.",
+    "process": "Ćwicz tworzenie folderów, porównywanie ścieżek, kopiowanie i przenoszenie z weryfikacją. Naucz się rozpoznawać rozszerzenia, uprawnienia i ryzyko nieznanego pliku wykonywalnego. Skróty są wtórne wobec rozumienia danych.",
+    "failure": "Ktoś usuwa dokument z folderu synchronizowanego z chmurą i zakłada, że kopia w chmurze przetrwała. Trzeba sprawdzić wersjonowanie, kosz i niezależny backup.",
+    "task": "Stwórz przykładową strukturę Praca/2026/Umowy i ćwicz odzyskiwanie testowego pliku z osobnej kopii.",
+    "icon": "software"
+  },
+  "word-skroty": {
+    "topic": "Dokument: semantyka, styl i przejrzysty wynik",
+    "material": "Akapit, styl nagłówka, podział strony i sekcja to różne elementy dokumentu. Wcięcia zrobione wieloma spacjami niszczą układ po edycji; style i tabulatory są stabilniejszym rozwiązaniem. PDF jest zwykle formatem prezentacji, a DOCX zachowuje edycję.",
+    "process": "Ustal przeznaczenie dokumentu, strukturę nagłówków i wzorzec formatowania przed wpisaniem obszernej treści. Zastosuj style, numerację i spis treści, a następnie sprawdź wydruk oraz dostępność.",
+    "failure": "Po zmianie jednej czcionki cała oferta 'rozjeżdża się', bo marginesy zbudowano spacjami. Poprawa wymaga stylów i właściwych odstępów akapitowych.",
+    "task": "Utwórz protokół z H1, H2, tabelą i listą, a potem wygeneruj spis treści.",
+    "icon": "software"
+  },
+  "nie-marnuj-jedzenia": {
+    "topic": "Trwałość i bezpieczeństwo składników",
+    "material": "Nie myl 'najlepiej spożyć przed' z 'należy spożyć do'. Ocena wyglądu i zapachu nie pozwala wykryć wszystkich zagrożeń mikrobiologicznych. Największy zysk z planowania resztek nie może odbywać się kosztem bezpieczeństwa żywności.",
+    "process": "Planuj dania od zapasów z terminem bliskim końca, zapisuj czas przechowywania i utrzymuj odpowiednią temperaturę chłodzenia. Rozdziel surowe mięso od żywności gotowej do jedzenia; nie próbuj 'ratować' produktu o przekroczonym terminie przydatności.",
+    "failure": "Ryż po ugotowaniu stoi całą noc w temperaturze pokojowej. Samo ponowne podgrzanie nie gwarantuje bezpieczeństwa; nie należy go beztrosko używać jako składnika następnego obiadu.",
+    "task": "Zaprojektuj plan wykorzystania pięciu produktów z lodówki z uwzględnieniem terminów i ryzyka, bez używania podejrzanych resztek.",
+    "icon": "food"
+  },
+  "obowiazki-domowe": {
+    "topic": "System obowiązków: czas, odpowiedzialność i materiały",
+    "material": "Nie wszystkie zadania mają ten sam czas, wysiłek i częstotliwość. 'Sprzątanie łazienki' obejmuje dobór środków zgodnych z powierzchnią, wentylację, sprzęt i bezpieczne przechowywanie chemii. Nie miesza się przypadkowych detergentów, szczególnie chlorowych i kwaśnych.",
+    "process": "Zapisz konkretne zadanie, osobę odpowiedzialną, częstotliwość i kryterium wykonania. Dopasuj obowiązki dzieci do wieku i możliwości, zamiast przydzielać chemikalia lub pracę na wysokości.",
+    "failure": "Jedna osoba 'pomaga', ale nikt nie jest właścicielem kosza na odpady. Rozwiązaniem jest przypisanie całego procesu, łącznie z wyniesieniem i uzupełnieniem worków.",
+    "task": "Przygotuj tygodniową matrycę: zadanie, czas, osoba, materiały, kontrola — bez niebezpiecznych środków dla dzieci.",
+    "icon": "plan"
+  },
+  "jestem-eko": {
+    "topic": "Materiały i cykl życia produktu",
+    "material": "Wpływ przedmiotu nie wynika tylko z rodzaju opakowania: liczą się surowce, produkcja, transport, użytkowanie i koniec życia. Aluminium, szkło, drewno i plastik mają różne właściwości, możliwość odzysku i wymogi segregacji. Najbardziej ekologiczny zakup nie zawsze oznacza nowy produkt z etykietą 'eco'.",
+    "process": "Przed zakupem zapytaj: czy potrzebuję nowego przedmiotu, ile razy go użyję, czy naprawa jest możliwa i jak pozbędę się odpadu. W segregacji sprawdzaj lokalne zasady; pozornie podobne tworzywa nie zawsze trafiają do tego samego strumienia.",
+    "failure": "Ktoś kupuje wielokrotnego użytku torbę i wymienia ją co tydzień. Deklaracja 'wielorazowa' nie zastępuje rzeczywistej liczby użyć.",
+    "task": "Porównaj dwa opakowania w pięciu etapach cyklu życia i wypisz, jakie dane są niezbędne do uczciwego wniosku.",
+    "icon": "eco"
+  },
+  "ekonomia-domowa-bez-dlugow": {
+    "topic": "Dochód, płynność i realny koszt długu",
+    "material": "Koszt raty jest czymś innym niż całkowity koszt kredytu. Porównując oferty, uwzględniaj RRSO, prowizję, ubezpieczenia i okres spłaty, a w budżecie rozdziel wydatki niezbędne od opcjonalnych. Pieniądze na rachunku przed terminami płatności to niekoniecznie wolna gotówka.",
+    "process": "Zacznij od dochodu netto, kosztów stałych, zmiennych, rocznych przeliczonych na miesiące i realnej rezerwy. Przykład: 30 000 zł przychodów rocznych nie oznacza 2 500 zł dostępnych co miesiąc, gdy dochód jest sezonowy.",
+    "failure": "Ktoś kupuje samochód za całą gotówkę, ignorując ubezpieczenie i naprawy. Po zakupie nie ma środków na podstawowe rachunki.",
+    "task": "Policz budżet 6 000 zł netto przy kosztach: 3 000 stałych, 1 800 zmiennych i 600 rocznej rezerwy miesięcznej. Wyznacz bezpieczny margines.",
+    "icon": "finance"
+  },
+  "lepszy-cukiernik": {
+    "topic": "Mąka, tłuszcz, cukier i temperatura: właściwości receptury",
+    "material": "Gluten wpływa na strukturę ciasta, tłuszcz na kruchość i napowietrzenie, a cukier na słodycz, wilgotność i barwienie. Jajka mogą stabilizować pianę lub emulsję. Zamiana mąki bez oceny zawartości białka i chłonności wody często zmienia efekt, mimo tej samej masy składników.",
+    "process": "Dokładnie waż składniki, zapisuj gramaturę, temperaturę oraz wynik po pieczeniu. Kremy i wyroby z jajami lub nabiałem wymagają szczególnej higieny i chłodzenia. Kontrola alergenów jest częścią produkcji.",
+    "failure": "Biszkopt opada. Możliwe przyczyny to niewłaściwe ubijanie, zbyt gwałtowne mieszanie, proporcje lub nieprawidłowy wypiek; dodanie proszku 'na oko' nie jest kontrolą procesu.",
+    "task": "Dla receptury na 8 porcji przelicz składniki na 12; wyjaśnij, co może zmienić wilgotność mąki i wielkość jaj.",
+    "icon": "food"
+  },
+  "lepszy-kucharz": {
+    "topic": "Produkt, temperatura i bezpieczeństwo żywności",
+    "material": "Mięso, skrobia, warzywa i tłuszcz reagują inaczej na ogrzewanie. Białka denaturują, skrobia kleikuje, a tłuszcze mają odmienne właściwości w wysokiej temperaturze. Bezpieczeństwo potrawy ocenia się nie tylko po kolorze, lecz również przez odpowiednią kontrolę procesu i temperatury produktu.",
+    "process": "Zaplanuj mise en place, oddziel surowe produkty od gotowych, kontroluj czas i temperaturę oraz alergeny. Dobieraj technikę do oczekiwanej tekstury, np. gotowanie na parze w porównaniu z pieczeniem.",
+    "failure": "Kurczak ma zrumienioną skórę, ale nie potwierdzono właściwego ogrzania środka. Kolor nie zastępuje bezpiecznej oceny temperatury i procesu.",
+    "task": "Porównaj gotowanie, pieczenie i smażenie dla warzywa i mięsa: tekstura, straty wilgoci, kontrola bezpieczeństwa.",
+    "icon": "food"
+  },
+  "pasieka": {
+    "topic": "Ul, materiały i dobrostan rodziny pszczelej",
+    "material": "Drewno ula musi być bezpieczne dla pszczół i odporne na pogodę, a ramki oraz węza zgodne z systemem ula. Woszczyna i plastry są elementem biologicznym — higiena sprzętu i stan rodziny wpływają na zdrowie pasieki. Źle dobrana wentylacja i wilgoć mogą sprzyjać problemom zimą.",
+    "process": "Pierwsza pasieka wymaga planu sezonu, źródeł pożytku, monitorowania chorób i postępowania w razie rojenia. Zabiegi zdrowotne i weterynaryjne należy planować zgodnie z aktualnymi zaleceniami oraz przepisami.",
+    "failure": "Na dennicy pojawia się wilgoć. Trzeba przeanalizować wentylację, kondensację, siłę rodziny i lokalizację ula, nie tylko zwiększyć grubość ścian.",
+    "task": "Rozrysuj ul z korpusem, ramką, dennicą i daszkiem. Zaznacz drogę powietrza i obszary kontroli wilgoci.",
+    "icon": "nature"
+  },
+  "swiety-mikolaj": {
+    "topic": "Bezpieczna i życzliwa rola animacyjna",
+    "material": "Strój powinien umożliwiać swobodne oddychanie, widzenie i chodzenie. Materiały łatwopalne, niedopasowana broda czy luźne elementy mogą stwarzać zagrożenie. Oczekiwania rodziców i prywatność dziecka są ważniejsze od efektu scenicznego.",
+    "process": "Przed wizytą ustal czas, liczbę dzieci, zgodę opiekunów i zasady kontaktu. Dziecko może odmówić przytulenia, zdjęcia i rozmowy; animator to respektuje.",
+    "failure": "Dziecko płacze i chowa się za rodzicem. Nie namawia się na siłę — można zaproponować obserwację z dystansu lub zostawić prezent rodzicowi.",
+    "task": "Przygotuj scenariusz 5-minutowej wizyty z trzema wariantami: dziecko śmiałe, nieśmiałe i przerażone strojem.",
+    "icon": "plan"
+  },
+  "trawnik-jestem-ogrodnikiem": {
+    "topic": "Gleba, pH, struktura i mieszanki traw",
+    "material": "Trawy różnią się tolerancją cienia, suszy i deptania. Gleba piaszczysta szybko przepuszcza wodę, a ciężka gliniasta zatrzymuje ją dłużej; struktura, pH i zwięzłość gleby wpływają na rozwój korzeni. Sam wygląd chwastów nie zastępuje oceny warunków.",
+    "process": "Przed wysiewem oceń nasłonecznienie, zagęszczenie gleby i drenaż, a następnie dobierz mieszankę i sposób użytkowania. Podlewanie powinno nawilżać strefę korzeniową, nie tylko powierzchnię.",
+    "failure": "Trawnik w cieniu stale żółknie mimo nawożenia. Przyczyną może być gatunek niedostosowany do miejsca lub zagęszczenie podłoża, a nie niedobór dodatkowego nawozu.",
+    "task": "Zrób mapę działki: słońce, cień, skarpa, wilgotne miejsce i częste chodzenie. Do każdej strefy dobierz cechy mieszanki.",
+    "icon": "nature"
+  },
+  "angielski-na-budowie": {
+    "topic": "Komunikacja na placu budowy: polecenie, potwierdzenie, ostrzeżenie",
+    "material": "Słownictwo techniczne musi precyzyjnie rozróżniać materiały i narzędzia: timber vs steel, drill vs driver, concrete vs mortar. Błędne podobieństwo nazw może zmienić czynność lub zamówienie.",
+    "process": "Ćwicz cztery kroki: wysłuchaj polecenia, powtórz je własnymi słowami, potwierdź obszar i czas, zgłoś niejasność. 'Stop work', 'keep clear' i 'do not enter' mają znaczenie bezpieczeństwa; nie zgaduj ich sensu.",
+    "failure": "Kierownik mówi 'Do not remove the guard', a pracownik rozumie 'remove the guard'. Należy poprosić o powtórzenie i potwierdzić zakaz.",
+    "task": "Ułóż dialog: pytanie o cement, zapytanie o miejsce składowania i potwierdzenie polecenia 'Do not enter'.",
+    "icon": "language"
+  },
+  "niemiecki-na-budowie": {
+    "topic": "Niemiecki budowlany: materiały i zakazy",
+    "material": "Rozróżniaj 'Holz', 'Stahl', 'Beton', 'Mörtel', a także 'Bohrer' i 'Schraubendreher'. Precyzja słów materiałowych jest ważna, bo błędny zakup lub użycie produktu może wpłynąć na jakość i bezpieczeństwo.",
+    "process": "Po usłyszeniu polecenia powtórz je i potwierdź miejsce pracy. 'Nicht betreten' oznacza zakaz wejścia, 'Vorsicht' wymaga ostrożności, a 'Bitte wiederholen' pozwala bezpiecznie poprosić o powtórzenie.",
+    "failure": "Pracownik nie zna słowa 'Absturzsicherung' i zaczyna pracę na wysokości. Należy zatrzymać czynność i ustalić wymagane zabezpieczenie przed startem.",
+    "task": "Przećwicz dialog: gdzie jest biuro, co oznacza zakaz, jak potwierdzić rodzaj zamawianego materiału.",
+    "icon": "language"
+  },
+  "norweski-na-budowie": {
+    "topic": "Norweski budowlany: konkretne materiały, wymagania i potwierdzenie",
+    "material": "Lær å skille między 'betong', 'mørtel', 'armering', 'treverk' i 'stål'. Nazwa materiału nie mówi jeszcze o jego klasie, wymiarze ani atestach; przy zamówieniu konieczne jest wskazanie dokumentu i ilości.",
+    "process": "W Norwegii ważne są podstawy komunikacji HMS/SJA i prośba o doprecyzowanie. 'Stopp arbeidet', 'sperret område' i 'kan du gjenta?' to praktyczne zwroty służące bezpieczeństwu.",
+    "failure": "Pracownik słyszy prośbę o przeniesienie stali, ale nie zna wymiarów i miejsca. Zamiast zgadywać prosi: 'Hvilken dimensjon og hvor skal det leveres?'.",
+    "task": "Zbuduj trzyzdaniowy dialog po norwesku o zamówieniu rekkverk: materiał, ilość, termin dostawy i potwierdzenie.",
+    "icon": "language"
+  },
+  "lepszy-szef": {
+    "topic": "Delegowanie: rezultat, zasoby i granice odpowiedzialności",
+    "material": "Pracownik musi znać cel, potrzebne informacje, narzędzia i ograniczenia. 'Zrób to dobrze' nie opisuje standardu jakości, a 'zrób szybko' nie ustala priorytetu przy ograniczonych zasobach.",
+    "process": "Skuteczne przekazanie zadania określa rezultat, termin, uprawnienia, kryterium ukończenia i moment zgłoszenia ryzyka. Feedback dotyczy obserwowalnego zachowania i wpływu, nie cech osoby.",
+    "failure": "Szef przerzuca zadanie bez dostępu do danych i obwinia pracownika za opóźnienie. Właściwa korekta obejmuje usunięcie blokady i zmianę sposobu zlecenia.",
+    "task": "Napisz polecenie delegujące z pięcioma elementami: wynik, dane wejściowe, termin, prawo decyzji i punkt kontrolny.",
+    "icon": "plan"
+  }
+}
