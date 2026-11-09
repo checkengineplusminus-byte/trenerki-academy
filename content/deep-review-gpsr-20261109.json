@@ -1,0 +1,183 @@
+{
+  "course_slug": "gpsr",
+  "source": "https://eur-lex.europa.eu/eli/reg/2023/988/oj?locale=pl",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Rozporządzenie UE 2023/988 dotyczy ogólnego bezpieczeństwa produktów konsumenckich, ale może współistnieć z przepisami szczególnymi dla określonych kategorii. Analiza zaczyna się od określenia produktu, przeznaczenia, użytkowników i tego, czy podlega odrębnej regulacji. Sam napis 'produkt bezpieczny' nie spełnia obowiązków."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Wybierz prosty wyrób: brelok z metalowym kółkiem. Zapisz możliwe zagrożenia — ostre krawędzie, małe odłączalne elementy — i zastanów się, jak jego przewidziane użycie wpływa na ocenę. Rozpoznaj, czy występuje inna norma lub regulacja dla danego zastosowania."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Sprzedawca oznacza drobną ozdobę jako 'bezpieczną dla wszystkich dzieci', mimo że ma małą odłączalną część i brak analizy."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Wypełnij kartę zakresu: produkt, przewidywany użytkownik, ryzyko, przepisy szczególne i dowody."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Producent, importer, dystrybutor i operator platformy mogą mieć odmienne obowiązki. Sprowadzenie wyrobu pod własnym oznaczeniem albo jego istotna modyfikacja może zmienić przypisanie odpowiedzialności, zależnie od warunków regulacji. Nie należy utożsamiać roli sprzedawcy z rolą producenta."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Na dwóch łańcuchach dostaw wskaż: wytwórca → importer → dystrybutor → klient oraz wytwórca krajowy → sklep → klient. Zidentyfikuj, kto przygotowuje dokumentację, kto przekazuje ostrzeżenia i kto jest osobą kontaktową w razie niebezpiecznego produktu."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Sklep sprowadza rzecz z zagranicy, zastępuje opakowanie i sprzedaje pod własnym znakiem. Sama faktura nie rozstrzyga wszystkich obowiązków."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Opracuj matrycę ról dla dwóch dostawców, wpisując podstawę ustalenia obowiązków."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Ryzyko produktu zależy od zagrożenia, prawdopodobieństwa kontaktu i ciężkości skutku, a także typowych użytkowników oraz rozsądnie przewidywalnego sposobu użycia. Nie wolno traktować wszystkich wad jako równoważnych. Ocena powinna prowadzić do konkretnego działania ograniczającego ryzyko."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Dla drewnianej zabawki albo dekoracji opisz trzy zagrożenia: pękający element, odprysk i niebezpieczna powłoka. Każdemu przypisz, jak można je zmniejszyć przez projekt, materiał, test lub ostrzeżenie. Jeśli to zabawka, pamiętaj o szczególnych wymaganiach tej kategorii."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Element, który po kilku użyciach może odpaść i zostać połknięty przez dziecko, nie staje się bezpieczny dlatego, że ryzyko występuje rzadko."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zbuduj tabelę: zagrożenie, użytkownik, prawdopodobieństwo, skutek, środek, dowód weryfikacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Dokumentacja musi pozwalać identyfikować wyrób i rozumieć, jak oceniono jego bezpieczeństwo. Potrzebna bywa historia materiałów, wyniki właściwych kontroli, identyfikator partii i procedury reakcji. Wymagania konkretnych dokumentów zależą od kategorii produktu i roli podmiotu."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Dla serii 100 breloków zapisuj dostawcę materiału, proces, datę produkcji, numer partii oraz skargi. Stwórz system, w którym po zgłoszeniu wady partii B-26 można sprawdzić, kto otrzymał jej sztuki."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Produkt zgłoszony jako ostry nie ma oznaczenia partii; sklep nie potrafi ustalić, czy wada dotyczy jednej serii czy wszystkich."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zaprojektuj kartę produktu z wersją, materiałem, procesem kontroli i zasadą wycofania partii."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Oznaczenia i ostrzeżenia nie mogą zastąpić bezpiecznego projektu. Muszą być zrozumiałe, widoczne i adekwatne do zagrożeń oraz użytkownika. Informacje identyfikujące producenta i produkt mają znaczenie dla śledzenia i kontaktu w razie potrzeby."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Na przykładowym opakowaniu wskaż miejsca na identyfikator produktu, partię, dane właściwego podmiotu i ostrzeżenia. Nie stosuj przypadkowego symbolu CE tam, gdzie nie wynika on z właściwych przepisów; GPSR sam nie oznacza automatycznie obowiązku CE."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Sklep dodaje znak CE do każdego rękodzieła, sądząc, że jest ogólną pieczęcią bezpieczeństwa. To może wprowadzać konsumenta w błąd."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Zaprojektuj poprawną listę oznaczeń dla hipotetycznego wyrobu i uzasadnij, czego nie możesz twierdzić bez dowodów."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Sprzedaż na odległość wymaga przedstawienia określonych informacji w sposób jasny i widoczny. Art. 19 GPSR obejmuje m.in. dane identyfikacyjne właściwych podmiotów, identyfikację produktu oraz odpowiednie ostrzeżenia i informacje bezpieczeństwa. Nie wystarczy ukryć wszystkich tych danych w długim regulaminie."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Na karcie produktu wskaż: nazwę i zdjęcie, typ/model/identyfikator, producenta, wymagane dane kontaktowe oraz ostrzeżenia i informacje o bezpieczeństwie w odpowiednim języku. Sprawdź obowiązujący tekst art. 19 dla konkretnej roli i kategorii."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Oferta prezentuje cenę i zdjęcie, ale brak identyfikacji modelu i podstawowych informacji o ryzyku wyrobu."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Przygotuj makietę mobilnej karty produktu i oznacz, które informacje muszą być widoczne przed zakupem."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Zwykła reklamacja jakościowa nie zawsze oznacza niebezpieczny produkt, ale skarga dotycząca poważnego zagrożenia wymaga odpowiedniej oceny i może uruchamiać obowiązki informacyjne, wycofanie lub odzyskanie produktu. Nie należy czekać na dużą liczbę urazów, jeśli istnieją istotne sygnały ryzyka."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Opracuj proces: zgłoszenie → identyfikacja partii → ocena zagrożenia → decyzja o działaniach → informacja dla klientów i właściwych organów, jeżeli wymagana → zapis zakończenia. Nie kasuj historii skarg i nie obiecuj automatycznie zwrotu do sprzedaży."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Klient zgłasza, że z zabawki odpada mały magnes. Sklep odpowiada 'proszę go przykleić' bez oceny ryzyka połknięcia."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Narysuj procedurę bezpieczeństwa z rolami, terminami i dokumentami dowodowymi dla jednego zgłoszenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Regulacja i zakres",
+          "text": "Gotowość sklepu nie polega na obecności jednej polityki PDF. Potrzebny jest system identyfikacji produktów, odpowiedzialności, dokumentacji ryzyka, informacji na stronie i reagowania na skargi. Produkty różnych kategorii mogą podlegać odmiennym dodatkowym przepisom."
+        },
+        {
+          "heading": "Jak pracować zgodnie z wymaganiami",
+          "text": "Przetestuj trzy oferty: brelok, zabawka i urządzenie elektroniczne. Dla każdej ustal przepisy właściwe, producenta/importera, oznaczenia, dowody i procedurę reklamacji. W audycie zaznacz braki i przypisz osobę oraz termin ich usunięcia."
+        },
+        {
+          "heading": "Przykład z działalności",
+          "text": "Sprzedawca kopiuje te same oznaczenia na wszystkie produkty, ignorując różnice regulacyjne i identyfikacyjne."
+        },
+        {
+          "heading": "Zadanie z dokumentacją",
+          "text": "Przygotuj protokół gotowości dla 3 produktów, z wynikiem nie 'tak/nie', ale listą brakujących dowodów."
+        }
+      ]
+    }
+  ]
+}
