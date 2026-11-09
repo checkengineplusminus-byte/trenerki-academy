@@ -103,3 +103,11 @@ Po każdej serii zmian zapisać źródła w repozytorium i potwierdzić wynik za
 - W Supabase `review_status='review_needed'`, flaga publikacji bez zmian; NIE dotykano kont, płatności, postępów i uprawnień. Przykłady obliczeń są edukacyjne, a nie dopuszczeniem koła do ruchu.
 - **Nadal nieukończone**: recenzja specjalisty, test zalogowanego ucznia do egzaminu i certyfikatu, potwierdzenie publikacji schematów na Expo oraz ręczna weryfikacja dydaktyczna.
 - **Następny do weryfikacji**: `ludwisarz` (o ile aktualny Supabase i checkpoint nie potwierdzają wcześniejszej przebudowy). Nie rozpoczynaj ponownie kursów 1–6.
+
+
+**Kurs 7: Ludwisarz — treść przebudowana, recenzja i E2E wymagane (2026-11-09)**
+- Przed: 8 lekcji, w tym 2 stare. Teraz: **12 lekcji (0–11)** z pełną strukturą, materiałoznawstwem, formą, skurczem, BHP, wadami, akustyką, strojeniem, zawieszeniem i projektem.
+- Zweryfikowany Supabase: `n=12, unique_q=12, sections5=12, options4=12, feedback4=12, revised=12`. Zapis nie zmieniał kont, postępów, płatności, RLS ani flag publikacji.
+- GitHub: `content/ludwisarz-masterclass-20261109-part1.json` i `part2.json` (druga `63b753b1`), odtwarzalny SQL `database/patches/trenerki-ludwisarz-content-20261109.sql` (`0967650d`), 6 SVG oraz rejestr (`ba4fad71`), audyt `docs/COURSE_REVIEW_LUDWISARZ_20261109.md` (`01e844fc`).
+- GitHub Actions dla ostatnich commitów **in_progress**. Nadal brak recenzji odlewnika i stroiciela, testu konta ucznia, egzaminu, certyfikatu i potwierdzenia widoczności SVG na Expo. Nie oznaczać kursu jako w pełni zweryfikowanego.
+- **Następny kurs do wybrania w kolejnym uruchomieniu**: `mlynarz-tradycyjny` po ponownym odczycie checkpointu i Supabase. Nie powtarzać kursów 1–7.
