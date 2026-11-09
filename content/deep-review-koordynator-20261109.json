@@ -1,0 +1,182 @@
+{
+  "course_slug": "koordynator",
+  "review_status": "review_needed",
+  "lessons": [
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 0,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Koordynator usługi sprzątania powinien ustalić dokładny zakres, powierzchnie i ich materiał, częstotliwość, wymagany rezultat oraz warunki dostępu. 'Posprzątaj apartament' nie jest mierzalną specyfikacją: szkło, drewno olejowane, płytki i kamień naturalny wymagają różnych środków i metod."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Na planie lokalu 60 m² rozdziel strefy: kuchnia, łazienka, sypialnia, podłoga, szkło. Przy każdej opisz materiał i poziom zabrudzenia. Uzgodnij, co klient zapewnia, kto odpowiada za delikatne przedmioty i kiedy jest odbiór."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Oferta obejmuje 'dokładne sprzątanie', lecz klient oczekuje mycia okien wysoko nad podłogą bez zapewnionego bezpiecznego dostępu."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Przygotuj formularz zakresu dla pięciu powierzchni: rodzaj, metoda, ryzyko, dostęp, czas i dowód odbioru."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 1,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Koszt usługi zależy od wielkości i rodzaju powierzchni, stanu zabrudzenia, liczby osób, czasu przygotowania i transportu, chemii, narzędzi oraz kosztów pośrednich. Nie można przyjmować jednej wydajności m²/h dla wszystkich pomieszczeń, bo łazienka i otwarty korytarz wymagają innych czynności."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Przykład: 2 osoby po 3 h każda = 6 roboczogodzin. Przy wewnętrznej stawce kosztowej 160 zł/h robocizna wynosi 960 zł, a środki 80 zł i dojazd 60 zł dają 1100 zł kosztu bez innych wydatków i marży. Ustal cenę po zweryfikowaniu rzeczywistych warunków."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Koordynator wycenia 60 m² przez jedno tempo, chociaż apartament ma 4 łazienki i trudny dostęp do szyb."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Zaprojektuj kalkulator kosztu z czasem na pomieszczenie, liczbą osób, stawką i kosztem środków."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 2,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Materiały różnie reagują na odczyn i ścieranie: marmur lub wapień mogą ulegać uszkodzeniu po kontakcie z kwaśnym odkamieniaczem, a lakierowane drewno może nie tolerować nadmiaru wody. Środki o różnych składach nie powinny być mieszane bez dopuszczonej procedury, a karta charakterystyki i etykieta są podstawą pracy."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Przed użyciem rozpoznaj powierzchnię, rodzaj zabrudzenia i zalecaną metodę przez producenta. Sprawdź piktogramy, rozcieńczenie, środki ochrony, wentylację i punkt przechowywania. Próbę wykonuj na niewidocznej powierzchni zgodnie z instrukcją, nie kosztem zabytkowego elementu."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Ktoś usuwa osad z kamienia naturalnego silnym kwaśnym preparatem, po czym powstają matowe plamy."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Przygotuj pięciowierszową tabelę: materiał, zabrudzenie, zgodny środek, środek zakazany, sposób kontroli."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 3,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Kolejność czynności ogranicza ponowne zabrudzanie: od stref względnie czystych do brudniejszych, od górnych elementów do podłogi i od prac suchych do mokrych, jeśli warunki to uzasadniają. Inna kolejność może być potrzebna przy dezynfekcji, alergiach lub specjalnych procedurach sanitarnych."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Przygotuj plan dla 3 osób i 6 pomieszczeń. Przed startem rozdziel czyste i używane ścierki, dostęp do wody, wywóz odpadów i sprzęt. Zaznacz zależności — np. podłogi wykonuje się dopiero po czynnościach, które mogą je ponownie zabrudzić."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Pracownik myje podłogę, a inny dopiero potem czyści szafki i zrzuca kurz na świeżo umytą powierzchnię."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Narysuj sekwencję operacji w kuchni i łazience z czasem oraz kryterium jakości dla każdego kroku."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 4,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Jasna komunikacja obejmuje zakres, cenę, sposób zgłaszania dodatkowych prac i dostępność klienta podczas odbioru. Koordynator powinien unikać obietnic 'wyczyścimy wszystko' bez sprawdzenia powierzchni, chemii i możliwego ryzyka uszkodzenia."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Podczas oględzin zapisuj wszystkie istotne elementy i odstępstwa, wykonuj zdjęcia tylko za zgodą. Gdy klient zgłasza dodatkowe pomieszczenie, przygotuj wycenę i termin, a nie obciążaj zespołu nieuzgodnioną pracą."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Klient w trakcie usługi prosi o czyszczenie drogiej skórzanej kanapy, choć wcześniej umowa dotyczyła wyłącznie podłóg."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Przećwicz dialog o zmianie zakresu oraz sporządź pisemne potwierdzenie nowej ceny i ryzyka."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 5,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Odbiór powinien porównywać wynik z konkretnym kryterium: czy powierzchnia jest bez widocznego osadu, czy wyposażenie jest kompletne, czy nie ma smug na szkle i czy rzeczy nie uszkodzono. Samo podpisanie czasu pracy nie potwierdza jakości każdej powierzchni."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Ustal checklistę po pomieszczeniach z polami 'wykonane', 'nie wykonano', 'wymaga powtórzenia' i 'nie dotyczy'. Zapisz miejsce i zdjęcie niezgodności oraz osobę odpowiedzialną. Nie fotografuj prywatnych dokumentów klienta dla dowodu sprzątania."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Usługa została oznaczona jako zakończona, ale na szklanym blacie są smugi, a klient nie wiedział, że zmywanie naczyń wyłączono z zakresu."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Przygotuj protokół 12 punktów z obiektywnym kryterium i sposobem usunięcia niezgodności."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 6,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Zgłoszenie szkody może dotyczyć pęknięcia, odbarwienia, zarysowania lub uszkodzenia wyposażenia. Trzeba zebrać dowody, rozpoznać materiał i ustalić, jakie działanie było wykonywane; nie wolno usuwać szkody agresywnym kolejnym środkiem bez diagnostyki."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Zapisz moment, stanowisko, materiał, użyty produkt, rozcieńczenie, czas ekspozycji, zdjęcia i osoby obecne. Oddziel zgłoszenie reklamacji od potwierdzonej odpowiedzialności. Jeżeli uszkodzenie wymaga specjalistycznej renowacji, nie podejmuj nieautoryzowanych prób."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Po użyciu odkamieniacza na marmurze powstają trwałe matowe ślady. Personel chce użyć kolejnego kwasu, by 'dokończyć' czyszczenie."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Opracuj raport incydentu z przyczyną możliwą, dowodami, kontaktem z klientem i procedurą zabezpieczenia."
+        }
+      ]
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 7,
+      "sections": [
+        {
+          "heading": "Powierzchnie i wiedza zawodowa",
+          "text": "Powtarzalna usługa nie oznacza, że każdy lokal czyści się identycznie. Standard określa sposób przyjęcia zlecenia, rozpoznania materiałów, planowania sprzętu, wykonania, kontroli i reakcji na wyjątek. Wskaźniki powinny odróżniać terminowość, jakość i koszt."
+        },
+        {
+          "heading": "Technologia oraz obliczenia",
+          "text": "Przy 50 zleceniach i 4 reklamacjach wskaźnik reklamacji wynosi 8%, ale nie mówi jeszcze o ich ważności. Analizuj rodzaj i powtarzalność problemu, nie tylko sam procent. Przy nowych pracownikach zastosuj próbny odbiór i nadzór."
+        },
+        {
+          "heading": "Błąd w wykonaniu usługi",
+          "text": "Firma rośnie z 5 do 20 zleceń tygodniowo, ale kontrola jakości pozostaje tylko w pamięci jednej osoby."
+        },
+        {
+          "heading": "Dokument lub ćwiczenie",
+          "text": "Zbuduj tygodniową tablicę KPI: czas, reklamacje, poprawki, koszt i plan szkolenia zespołu."
+        }
+      ]
+    }
+  ]
+}
