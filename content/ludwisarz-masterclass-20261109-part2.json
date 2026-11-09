@@ -1,0 +1,365 @@
+{
+  "course_slug": "ludwisarz",
+  "lessons": [
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 6,
+      "title_pl": "7. BHP ciekłego metalu i kontrola wilgoci",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 7,
+        "editorial_status": "review_needed",
+        "illustration": "Wilgoć może powodować eksplozję parową.",
+        "sections": [
+          {
+            "heading": "Definicje i materiał",
+            "text": "Woda we wsadzie lub formie może gwałtownie zamienić się w parę i rozprysnąć ciekły metal. Praktyka wymaga wykwalifikowanej załogi, planu awaryjnego i kontroli stanowiska."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "W zakładzie znaleziono wilgotny wsad po deszczu. Pracę należy wstrzymać i zgłosić problem."
+          },
+          {
+            "heading": "Ćwiczenie bezpieczne",
+            "text": "Sporządź na papierze analizę SJA dziesięciu zagrożeń: ryzyko, prewencja, odpowiedzialny, decyzja."
+          },
+          {
+            "heading": "Analiza ryzyka i weryfikacja",
+            "text": "Uczeń musi uzasadnić wynik, wskazać dane brakujące oraz oddzielić ćwiczenie edukacyjne od pracy w odlewni."
+          },
+          {
+            "heading": "Ograniczenia",
+            "text": "Realny odlew, strojenie mechaniczne i montaż wymagają wykwalifikowanego specjalisty oraz odpowiedniej dokumentacji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Heritage Crafts",
+            "url": "https://heritagecrafts.org.uk/craft/bell-founding/"
+          }
+        ],
+        "learning": {
+          "intro": "Woda we wsadzie lub formie może gwałtownie zamienić się w parę i rozprysnąć ciekły metal. Praktyka wymaga wykwalifikowanej załogi, planu awaryjnego i kontroli stanowiska.",
+          "situation": "W zakładzie znaleziono wilgotny wsad po deszczu. Pracę należy wstrzymać i zgłosić problem.",
+          "task": "Sporządź na papierze analizę SJA dziesięciu zagrożeń: ryzyko, prewencja, odpowiedzialny, decyzja.",
+          "question": "Dlaczego wilgotny wsad jest zagrożeniem?",
+          "options": [
+            "Może spowodować gwałtowny rozprysk przez parę.",
+            "Zmienia wyłącznie kolor metalu.",
+            "Automatycznie zmniejsza masę odlewu.",
+            "Zastępuje odpowietrzenie formy."
+          ],
+          "correct": 0,
+          "example": "Może spowodować gwałtowny rozprysk przez parę.",
+          "explanation": "ludwisarz-bhp",
+          "feedback": [
+            "Poprawnie. ludwisarz-bhp",
+            "Błędnie. ludwisarz-bhp",
+            "Błędnie. ludwisarz-bhp",
+            "Błędnie. ludwisarz-bhp"
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 7,
+      "title_pl": "8. Porowatość, jamy skurczowe i pęknięcia",
+      "material": {
+        "module": 2,
+        "curriculum_revision": 7,
+        "editorial_status": "review_needed",
+        "illustration": "Pory wewnętrzne mogą wymagać badań nieniszczących.",
+        "sections": [
+          {
+            "heading": "Definicje i materiał",
+            "text": "Wady odlewu to różne nieciągłości: pory, pustki skurczowe, wtrącenia i pęknięcia. Gładka powierzchnia nie gwarantuje braku wad wewnętrznych."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Odlew ma idealny wygląd, ale badanie wykazało pustkę. Należy udokumentować wskazanie i ocenić według kryteriów."
+          },
+          {
+            "heading": "Ćwiczenie bezpieczne",
+            "text": "Na schemacie przekroju narysuj cztery wady i kartę kontroli ośmiu fikcyjnych odlewów."
+          },
+          {
+            "heading": "Analiza ryzyka i weryfikacja",
+            "text": "Uczeń musi uzasadnić wynik, wskazać dane brakujące oraz oddzielić ćwiczenie edukacyjne od pracy w odlewni."
+          },
+          {
+            "heading": "Ograniczenia",
+            "text": "Realny odlew, strojenie mechaniczne i montaż wymagają wykwalifikowanego specjalisty oraz odpowiedniej dokumentacji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Heritage Crafts",
+            "url": "https://heritagecrafts.org.uk/craft/bell-founding/"
+          }
+        ],
+        "learning": {
+          "intro": "Wady odlewu to różne nieciągłości: pory, pustki skurczowe, wtrącenia i pęknięcia. Gładka powierzchnia nie gwarantuje braku wad wewnętrznych.",
+          "situation": "Odlew ma idealny wygląd, ale badanie wykazało pustkę. Należy udokumentować wskazanie i ocenić według kryteriów.",
+          "task": "Na schemacie przekroju narysuj cztery wady i kartę kontroli ośmiu fikcyjnych odlewów.",
+          "question": "Co może pozostać niewidoczne po polerowaniu?",
+          "options": [
+            "Wypukły napis.",
+            "Porowatość wewnętrzna.",
+            "Dekoracja zewnętrzna.",
+            "Ślad narzędzia na zewnątrz."
+          ],
+          "correct": 1,
+          "example": "Porowatość wewnętrzna.",
+          "explanation": "ludwisarz-wady",
+          "feedback": [
+            "Błędnie. ludwisarz-wady",
+            "Poprawnie. ludwisarz-wady",
+            "Błędnie. ludwisarz-wady",
+            "Błędnie. ludwisarz-wady"
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 8,
+      "title_pl": "9. Akustyka: hum, prime, tierce, quint i nominal",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 7,
+        "editorial_status": "review_needed",
+        "illustration": "Oktawa oznacza stosunek częstotliwości 2:1.",
+        "sections": [
+          {
+            "heading": "Definicje i materiał",
+            "text": "Dzwon wytwarza kilka rezonansów. Analizuje się hum, prime, tierce, quint i nominal. Proporcje zależą od profilu i stopu, a nie wyłącznie średnicy."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Model prime=500 Hz, hum=250 Hz, nominal=1000 Hz, quint około 750 Hz i tierce około 600 Hz jest wyłącznie dydaktyczny."
+          },
+          {
+            "heading": "Ćwiczenie bezpieczne",
+            "text": "Narysuj wykres pięciu składowych i oblicz stosunek nominal/prime."
+          },
+          {
+            "heading": "Analiza ryzyka i weryfikacja",
+            "text": "Uczeń musi uzasadnić wynik, wskazać dane brakujące oraz oddzielić ćwiczenie edukacyjne od pracy w odlewni."
+          },
+          {
+            "heading": "Ograniczenia",
+            "text": "Realny odlew, strojenie mechaniczne i montaż wymagają wykwalifikowanego specjalisty oraz odpowiedniej dokumentacji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Heritage Crafts",
+            "url": "https://heritagecrafts.org.uk/craft/bell-founding/"
+          }
+        ],
+        "learning": {
+          "intro": "Dzwon wytwarza kilka rezonansów. Analizuje się hum, prime, tierce, quint i nominal. Proporcje zależą od profilu i stopu, a nie wyłącznie średnicy.",
+          "situation": "Model prime=500 Hz, hum=250 Hz, nominal=1000 Hz, quint około 750 Hz i tierce około 600 Hz jest wyłącznie dydaktyczny.",
+          "task": "Narysuj wykres pięciu składowych i oblicz stosunek nominal/prime.",
+          "question": "Jeżeli prime=500 Hz, nominal oktawę wyżej ma...",
+          "options": [
+            "750 Hz.",
+            "250 Hz.",
+            "1000 Hz.",
+            "1500 Hz."
+          ],
+          "correct": 2,
+          "example": "1000 Hz.",
+          "explanation": "ludwisarz-akustyka",
+          "feedback": [
+            "Błędnie. ludwisarz-akustyka",
+            "Błędnie. ludwisarz-akustyka",
+            "Poprawnie. ludwisarz-akustyka",
+            "Błędnie. ludwisarz-akustyka"
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 9,
+      "title_pl": "10. Strojenie: widmo, profil i granice korekty",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 7,
+        "editorial_status": "review_needed",
+        "illustration": "Geometria wpływa na wiele składowych jednocześnie.",
+        "sections": [
+          {
+            "heading": "Definicje i materiał",
+            "text": "Strojenie polega na analizie rezonansów i fachowej zmianie profilu. Usunięcie metalu może inaczej wpłynąć na różne składowe i nie jest odwracalne."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Prime docelowe 500 Hz, zmierzone 493 Hz: różnica +7 Hz. Nominal 1000 vs 992 Hz: +8 Hz. Nie wynika z tego miejsce skrawania."
+          },
+          {
+            "heading": "Ćwiczenie bezpieczne",
+            "text": "Ułóż tabelę pięciu składowych: cel, pomiar, różnica, decyzja, brakujące dane. Nie obrabiaj metalu."
+          },
+          {
+            "heading": "Analiza ryzyka i weryfikacja",
+            "text": "Uczeń musi uzasadnić wynik, wskazać dane brakujące oraz oddzielić ćwiczenie edukacyjne od pracy w odlewni."
+          },
+          {
+            "heading": "Ograniczenia",
+            "text": "Realny odlew, strojenie mechaniczne i montaż wymagają wykwalifikowanego specjalisty oraz odpowiedniej dokumentacji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Heritage Crafts",
+            "url": "https://heritagecrafts.org.uk/craft/bell-founding/"
+          }
+        ],
+        "learning": {
+          "intro": "Strojenie polega na analizie rezonansów i fachowej zmianie profilu. Usunięcie metalu może inaczej wpłynąć na różne składowe i nie jest odwracalne.",
+          "situation": "Prime docelowe 500 Hz, zmierzone 493 Hz: różnica +7 Hz. Nominal 1000 vs 992 Hz: +8 Hz. Nie wynika z tego miejsce skrawania.",
+          "task": "Ułóż tabelę pięciu składowych: cel, pomiar, różnica, decyzja, brakujące dane. Nie obrabiaj metalu.",
+          "question": "Dlaczego pomiar jedynie prime nie wystarcza do strojenia?",
+          "options": [
+            "Bo skrawanie może zmienić wiele rezonansów.",
+            "Bo dzwon ma tylko jedną składową.",
+            "Bo częstotliwości nie da się zmierzyć.",
+            "Bo skrawanie nigdy nie zmienia profilu."
+          ],
+          "correct": 0,
+          "example": "Bo skrawanie może zmienić wiele rezonansów.",
+          "explanation": "ludwisarz-akustyka",
+          "feedback": [
+            "Poprawnie. ludwisarz-akustyka",
+            "Błędnie. ludwisarz-akustyka",
+            "Błędnie. ludwisarz-akustyka",
+            "Błędnie. ludwisarz-akustyka"
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 10,
+      "title_pl": "11. Zawieszenie, korona, jarzmo i serce",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 7,
+        "editorial_status": "review_needed",
+        "illustration": "Ruch i uderzenia zwiększają oraz zmieniają kierunki sił.",
+        "sections": [
+          {
+            "heading": "Definicje i materiał",
+            "text": "Zawieszenie przenosi ciężar i obciążenia dynamiczne. Sama masa nie określa nośności korony, jarzma, ramy i zamocowań."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "Dla 200 kg statyczny ciężar to około 1962 N. Kołysanie i uderzenia wymagają dodatkowej analizy konstrukcji."
+          },
+          {
+            "heading": "Ćwiczenie bezpieczne",
+            "text": "Narysuj tor sił i wskaż brakujące parametry do projektu zawieszenia."
+          },
+          {
+            "heading": "Analiza ryzyka i weryfikacja",
+            "text": "Uczeń musi uzasadnić wynik, wskazać dane brakujące oraz oddzielić ćwiczenie edukacyjne od pracy w odlewni."
+          },
+          {
+            "heading": "Ograniczenia",
+            "text": "Realny odlew, strojenie mechaniczne i montaż wymagają wykwalifikowanego specjalisty oraz odpowiedniej dokumentacji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Heritage Crafts",
+            "url": "https://heritagecrafts.org.uk/craft/bell-founding/"
+          }
+        ],
+        "learning": {
+          "intro": "Zawieszenie przenosi ciężar i obciążenia dynamiczne. Sama masa nie określa nośności korony, jarzma, ramy i zamocowań.",
+          "situation": "Dla 200 kg statyczny ciężar to około 1962 N. Kołysanie i uderzenia wymagają dodatkowej analizy konstrukcji.",
+          "task": "Narysuj tor sił i wskaż brakujące parametry do projektu zawieszenia.",
+          "question": "Dlaczego 1962 N nie wystarcza do projektu mocowania dzwonu ruchomego?",
+          "options": [
+            "Bo nie ma grawitacji.",
+            "Bo dochodzą obciążenia dynamiczne.",
+            "Bo liczy się tylko kolor stopu.",
+            "Bo masa nie wpływa na siły."
+          ],
+          "correct": 1,
+          "example": "Bo dochodzą obciążenia dynamiczne.",
+          "explanation": "ludwisarz-anatomia",
+          "feedback": [
+            "Błędnie. ludwisarz-anatomia",
+            "Poprawnie. ludwisarz-anatomia",
+            "Błędnie. ludwisarz-anatomia",
+            "Błędnie. ludwisarz-anatomia"
+          ]
+        }
+      }
+    },
+    {
+      "course_slug": "ludwisarz",
+      "lesson_no": 11,
+      "title_pl": "12. Projekt dzwonu ekspozycyjnego i protokół odbioru",
+      "material": {
+        "module": 3,
+        "curriculum_revision": 7,
+        "editorial_status": "review_needed",
+        "illustration": "0,22×30=6,6 kg.",
+        "sections": [
+          {
+            "heading": "Definicje i materiał",
+            "text": "Projekt dydaktyczny obejmuje profil, skład, geometrię formy, wady, akustykę i ryzyka. Nie jest projektem odlewniczym ani dopuszczeniem do montażu."
+          },
+          {
+            "heading": "Sytuacja zawodowa",
+            "text": "30 kg stopu 78% Cu i 22% Sn to nominalnie 23,4 kg Cu i 6,6 kg Sn. Dla średnic 240/210 mm ścianka ma 15 mm."
+          },
+          {
+            "heading": "Ćwiczenie bezpieczne",
+            "text": "Oddaj przekrój, trzy obliczenia, kartę dziesięciu ryzyk i protokół oceny wad. Wyjaśnij, czego nie można wywnioskować."
+          },
+          {
+            "heading": "Analiza ryzyka i weryfikacja",
+            "text": "Uczeń musi uzasadnić wynik, wskazać dane brakujące oraz oddzielić ćwiczenie edukacyjne od pracy w odlewni."
+          },
+          {
+            "heading": "Ograniczenia",
+            "text": "Realny odlew, strojenie mechaniczne i montaż wymagają wykwalifikowanego specjalisty oraz odpowiedniej dokumentacji."
+          }
+        ],
+        "references": [
+          {
+            "label": "Heritage Crafts",
+            "url": "https://heritagecrafts.org.uk/craft/bell-founding/"
+          }
+        ],
+        "learning": {
+          "intro": "Projekt dydaktyczny obejmuje profil, skład, geometrię formy, wady, akustykę i ryzyka. Nie jest projektem odlewniczym ani dopuszczeniem do montażu.",
+          "situation": "30 kg stopu 78% Cu i 22% Sn to nominalnie 23,4 kg Cu i 6,6 kg Sn. Dla średnic 240/210 mm ścianka ma 15 mm.",
+          "task": "Oddaj przekrój, trzy obliczenia, kartę dziesięciu ryzyk i protokół oceny wad. Wyjaśnij, czego nie można wywnioskować.",
+          "question": "Ile cyny w modelowych 30 kg stopu o udziale 22% Sn?",
+          "options": [
+            "23,4 kg.",
+            "7,8 kg.",
+            "6,6 kg.",
+            "22 kg."
+          ],
+          "correct": 2,
+          "example": "6,6 kg.",
+          "explanation": "ludwisarz-stop",
+          "feedback": [
+            "Błędnie. ludwisarz-stop",
+            "Błędnie. ludwisarz-stop",
+            "Poprawnie. ludwisarz-stop",
+            "Błędnie. ludwisarz-stop"
+          ]
+        }
+      }
+    }
+  ]
+}
