@@ -1,0 +1,191 @@
+{
+  "course_slug": "kierownik-budowy",
+  "review_status": "review_needed",
+  "reference": "https://www.dibk.no/regelverk/sak/1/1/1-2",
+  "lessons": [
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 0,
+      "title_pl": "Funkcja a uprawnienia",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Nazwa stanowiska 'kierownik budowy' nie jest uniwersalnym określeniem formalnej odpowiedzialności we wszystkich krajach. W Polsce samodzielne funkcje techniczne mają ustawowe wymagania uprawnień. W Norwegii odróżnia się odpowiedzialne przedsiębiorstwa z funkcjami søker, prosjekterende, utførende i kontrollerende. Kurs nie nadaje żadnych uprawnień."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Na studium przypadku rozpisz cztery funkcje według SAK10, a następnie porównaj je z kontraktowym kierownikiem projektu i osobą prowadzącą montaż. Zaznacz kto projektuje, kto wykonuje, kto kontroluje i kto komunikuje się z urzędem."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Wykonawca chce zmienić przekrój elementu nośnego, a osoba prowadząca montaż uważa, że sama może zatwierdzić nowy projekt."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Przygotuj macierz uprawnień i decyzji, zaznaczając, której kompetencji nie wolno delegować bez odpowiednich podstaw."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 1,
+      "title_pl": "Dokumentacja i wersje rysunków",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Projekt budowlany obejmuje wiele dokumentów, a rysunki wykonawcze mogą mieć kolejne rewizje. Dokument w formacie DWG/PDF nie daje pewności, że jest aktualny. Kontrola obiegu informacji wymaga numeru, daty, autora, rewizji, statusu zatwierdzenia i listy odbiorców."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Zbuduj rejestr z rysunkami R-100-A, R-100-B i R-100-C. Podpisz datę wydania i zakres zmiany, ustaw wersję C jako aktualną dopiero po formalnym zatwierdzeniu. Wycofane wersje archiwizuj, ale nie przekazuj produkcji jako obowiązujących."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Montażysta otrzymał stare DWG, podczas gdy projektant zmienił kotwy w nowszej rewizji. Bez sprawdzenia numeru powstanie niezgodność."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Zaprojektuj formularz RFI do wyjaśnienia kolizji i tabelę kontroli aktualnych rewizji dla pięciu rysunków."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 2,
+      "title_pl": "Harmonogram zależności",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Harmonogram to sieć czynności powiązanych logicznie. Montaż elementu nie ruszy, dopóki nie zakończono pomiaru, zatwierdzenia projektu, produkcji, dostawy i przygotowania dostępu. Wykres Gantta pokazuje terminy, ale dopiero powiązania pozwalają ocenić skutek opóźnienia."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Przykład: pomiar 1 dzień, projektowanie 5 dni, zatwierdzenie 3 dni, produkcja 10 dni, transport 2 dni, montaż 2 dni — 23 dni kalendarzowego ciągu bez nakładania. Jeżeli produkcja ruszy dopiero po zatwierdzeniu, nie można jej rozpocząć w pierwszym tygodniu bez zmiany zasad."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Dostawa przyszła zgodnie z planem, ale teren nie jest przygotowany do rozładunku. Harmonogram nie uwzględniał dostępności placu."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Narysuj sześć zależności i znajdź ścieżkę krytyczną dla przykładowego procesu, z opóźnieniem zatwierdzenia o 3 dni."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 3,
+      "title_pl": "BHP jako codzienny proces",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "BHP na budowie obejmuje identyfikację zagrożeń, zabezpieczenia zbiorowe, odpowiedni sprzęt, koordynację branż, procedury alarmowe i udokumentowane działania. Ocena ryzyka jest procesem żywym; przestaje być adekwatna, gdy zmieniają się warunki otoczenia lub sprzęt."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Przed podnoszeniem ciężkiego elementu sprawdź plan, nośność urządzenia, operatora, sygnalistę, miejsce odkładania i strefy niebezpieczne. Jeśli nie można potwierdzić bezpieczeństwa, wstrzymaj zadanie i zgłoś potrzebę rozwiązania właściwym osobom."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Dwie ekipy mają jednocześnie pracować pod dźwigiem i na rusztowaniu przy tej samej ścianie. Plan wymaga koordynacji oraz oceny kolizji."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Przygotuj protokół SJA z pięcioma zagrożeniami i podpisami osób odpowiedzialnych za ograniczenia ryzyka."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 4,
+      "title_pl": "Jakość, odbiory i dowody",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Odbiór jakości musi porównywać rzeczywisty rezultat z projektem, tolerancjami i zatwierdzonymi wymaganiami. Dokumentacja może zawierać protokół, wyniki pomiarów, zdjęcia, certyfikaty materiałów, zapisy kontroli i rejestr usterek. Zdjęcie estetycznie zamontowanego wyrobu nie dowodzi nośności jego kotew."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Na przykładzie balustrady przygotuj rejestr: rodzaj łącznika, rysunek, dokument dostawy, punkty kontroli, protokół mocowania i odbiór. Rozdziel usterkę kosmetyczną od potencjalnego problemu bezpieczeństwa. Wnioski zapisuj wraz z osobą odpowiedzialną i terminem."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "W odbiorze wykryto brak numerów użytych kotew; nie można zweryfikować zgodności materiału. Potrzebny jest dowód, nie zapewnienie słowne."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Stwórz matrycę kontroli pięciu robót z wymaganiem, dowodem, odpowiedzialnym i warunkiem zamknięcia niezgodności."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 5,
+      "title_pl": "Zmiany zakresu i koszty",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Zmiana projektowa, zmiana ilości, opóźnienie dostępu i dodatkowa robota mogą mieć różne podstawy kontraktowe. Nie wystarczy nazwać każdą trudność 'dodatkową'. Potrzebne są dokumenty źródłowe, opis skutku, wpływ na cenę, czas i tryb zatwierdzenia według umowy."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Załóż 20 mb balustrady po 1500 zł/mb, bazowo 30 000 zł. Klient pisemnie żąda kolejnych 8 mb. Wartość liniowa zmiany to 12 000 zł, o ile warunki stawki i zakresu pozwalają ją zastosować. Zapisz uzasadnienie, wersję rysunku, termin i zatwierdzenie."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Produkcja rozpoczęła pracę nad nową wersją bez decyzji kontraktowej, a zespół utracił ślad wcześniejszej wyceny."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Sporządź wzór VO/zmiany zakresu z ilością, ceną, dowodem instrukcji, wpływem na harmonogram i statusami akceptacji."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 6,
+      "title_pl": "Rozwiązywanie sporów i komunikacja",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Rozwiązywanie sporu zaczyna się od ustalenia faktycznej treści umowy, projektu, korespondencji i protokołów, nie od oceny charakteru uczestników. Ustalenia z narady powinny być spisane: co uzgodniono, kto odpowiada, do kiedy i jak potwierdzi decyzję. Bez tego powstają sprzeczne oczekiwania."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Na przykładzie kolizji instalacji z balustradą przygotuj RFI, zdjęcie z miarą, alternatywne scenariusze i protokół decyzji. Oddziel zmianę techniczną od wyceny i terminów. W dokumentach nie zapisuj założeń jako już zatwierdzonych decyzji."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Na spotkaniu klient mówi 'rozwiążcie na miejscu', lecz nie zatwierdza żadnego wariantu. Kierownik nie może uznać takiej wypowiedzi za kompletny projekt."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Napisz neutralną notatkę ze spotkania: problem, trzy decyzje do podjęcia, właściciele i terminy."
+        }
+      ]
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 7,
+      "title_pl": "Symulacja dnia kierownika",
+      "sections": [
+        {
+          "heading": "Zrozum role, wymagania i pojęcia",
+          "text": "Kierownik musi jednocześnie kontrolować ryzyko, zależności harmonogramu, dokumenty oraz przepływ decyzji. Ćwiczenie końcowe powinno sprawdzać łączenie tych danych: niewłaściwa dostawa może być blokadą jakości, a brak dostępu powodować opóźnienie, lecz żadnej z tych sytuacji nie rozwiązuje samo zwiększenie presji."
+        },
+        {
+          "heading": "Metoda działania z konkretnymi danymi",
+          "text": "Przykład: o 08:00 przyjeżdża materiał niezgodny z rewizją, o 10:00 zgłasza się kolizja instalacji, o 13:00 klient chce przyspieszenia. Ułóż rejestr trzech spraw, przypisz uprawnione osoby, wpływ na termin i dokument potwierdzenia."
+        },
+        {
+          "heading": "Przykład z budowy",
+          "text": "Jeśli wszystkie trzy zdarzenia wpiszesz jako 'opóźnienie wykonawcy', utracisz przyczyny, ślady decyzji i możliwość sensownego planowania."
+        },
+        {
+          "heading": "Zadanie zawodowe",
+          "text": "Przygotuj 1-stronicowy raport dnia i harmonogram naprawczy zawierający trzy osobne ryzyka oraz działania kontrolne."
+        }
+      ]
+    }
+  ]
+}
