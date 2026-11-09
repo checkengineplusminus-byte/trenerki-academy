@@ -1,0 +1,716 @@
+{
+  "course_slug": "kowal-tradycja",
+  "module": "III. Projekty, naprawy i konie",
+  "source_urls": [
+    "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E",
+    "https://abana.org/education/national-curriculum/level-i/",
+    "https://www.farrier-reg.gov.uk/becoming-a-farrier/registration/gb-registration-requirements-applications/"
+  ],
+  "lessons": [
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 20,
+      "title_pl": "21. Projekt końcowy A: od zamówienia do kutej klamki",
+      "material": {
+        "learning": {
+          "question": "Klient pokazuje zdjęcie klamki, ale nie podaje rozstawu mocowań. Co robisz?",
+          "options": [
+            "Ustalam wymiary i sposób montażu, zatwierdzam szkic, dopiero potem planuję wykonanie.",
+            "Wykonuję klamkę na oko i dopasowuję drzwi do gotowego wyrobu.",
+            "Dobieram najtańszy pręt bez ustalenia funkcji.",
+            "Wystawiam fakturę końcową bez sprawdzenia dopasowania."
+          ],
+          "correct": 0,
+          "situation": "Klient zleca klamkę na drzwi ogrodowe. Dostarcza zdjęcie, ale nie podaje wymiarów otworów. Zamiast wykuć 'standard', przygotowujesz prosty formularz pomiarów i prosisz o potwierdzenie wymagań. Dopiero wtedy powstaje szkic i kosztorys.",
+          "example": "Ustalam wymiary i sposób montażu, zatwierdzam szkic, dopiero potem planuję wykonanie.",
+          "explanation": "Dobry projekt powstaje z warunków użytkowania i zwymiarowanego uzgodnienia.",
+          "intro": "Realne zlecenie zaczyna się od funkcji klamki: czy jest stała, obrotowa, czy pracuje z zamkiem, w jakich drzwiach i jakie ma mocowanie. Ozdobna forma jest dopiero jednym z wymagań. Szkic musi przedstawiać długość części chwytowej, rozstaw i średnice mocowań, przestrzeń na dłoń oraz zgodność z zawiasami i innymi okuciami.",
+          "task": "Sporządź kartę zlecenia klamki: pięć pytań do klienta, cztery wymiary i pięć punktów odbioru.",
+          "feedback": [
+            "Prawidłowo. Dobry projekt powstaje z warunków użytkowania i zwymiarowanego uzgodnienia.",
+            "Nie. Dobry projekt powstaje z warunków użytkowania i zwymiarowanego uzgodnienia.",
+            "Nie. Dobry projekt powstaje z warunków użytkowania i zwymiarowanego uzgodnienia.",
+            "Nie. Dobry projekt powstaje z warunków użytkowania i zwymiarowanego uzgodnienia."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Realne zlecenie zaczyna się od funkcji klamki: czy jest stała, obrotowa, czy pracuje z zamkiem, w jakich drzwiach i jakie ma mocowanie. Ozdobna forma jest dopiero jednym z wymagań. Szkic musi przedstawiać długość części chwytowej, rozstaw i średnice mocowań, przestrzeń na dłoń oraz zgodność z zawiasami i innymi okuciami."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Plan produkcji obejmuje wybór gatunku materiału, przygotowanie półfabrykatu, uzyskanie geometrii, otwory i połączenia, wyrównanie powierzchni, wykończenie antykorozyjne i odbiór. Każdy etap wymaga kryterium: przedmiot może być piękny, ale jego ostre krawędzie, luźne mocowanie albo zbyt mały prześwit dłoni stanowią wadę użytkową."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Klient zleca klamkę na drzwi ogrodowe. Dostarcza zdjęcie, ale nie podaje wymiarów otworów. Zamiast wykuć 'standard', przygotowujesz prosty formularz pomiarów i prosisz o potwierdzenie wymagań. Dopiero wtedy powstaje szkic i kosztorys."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Rezultat nauki: umiesz napisać kartę technologiczno-kontrolną z funkcją, widokami, wymiarami, materiałem, punktami pomiaru i sposobem sprawdzenia dopasowania przed wydaniem produktu.\n\nĆwiczenie: Sporządź kartę zlecenia klamki: pięć pytań do klienta, cztery wymiary i pięć punktów odbioru."
+          }
+        ],
+        "raw": [
+          "Projekt końcowy A: od zamówienia do kutej klamki",
+          "Realne zlecenie zaczyna się od funkcji klamki: czy jest stała, obrotowa, czy pracuje z zamkiem, w jakich drzwiach i jakie ma mocowanie. Ozdobna forma jest dopiero jednym z wymagań. Szkic musi przedstawiać długość części chwytowej, rozstaw i średnice mocowań, przestrzeń na dłoń oraz zgodność z zawiasami i innymi okuciami.",
+          "Plan produkcji obejmuje wybór gatunku materiału, przygotowanie półfabrykatu, uzyskanie geometrii, otwory i połączenia, wyrównanie powierzchni, wykończenie antykorozyjne i odbiór. Każdy etap wymaga kryterium: przedmiot może być piękny, ale jego ostre krawędzie, luźne mocowanie albo zbyt mały prześwit dłoni stanowią wadę użytkową.",
+          "Klient zleca klamkę na drzwi ogrodowe. Dostarcza zdjęcie, ale nie podaje wymiarów otworów. Zamiast wykuć 'standard', przygotowujesz prosty formularz pomiarów i prosisz o potwierdzenie wymagań. Dopiero wtedy powstaje szkic i kosztorys.",
+          "Rezultat nauki: umiesz napisać kartę technologiczno-kontrolną z funkcją, widokami, wymiarami, materiałem, punktami pomiaru i sposobem sprawdzenia dopasowania przed wydaniem produktu."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Sporządź kartę zlecenia klamki: pięć pytań do klienta, cztery wymiary i pięć punktów odbioru.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 21,
+      "title_pl": "22. Zawiasy, haki i okucia: mechanika ruchu i montaż",
+      "material": {
+        "learning": {
+          "question": "Co należy sprawdzić, gdy zawias bramy pracuje nierówno pod obciążeniem?",
+          "options": [
+            "Wyłącznie kolor farby na sworzniu.",
+            "Osiowość, mocowania, luzy oraz rzeczywiste obciążenie skrzydła.",
+            "Tylko liczbę ozdobnych zwojów.",
+            "Wyłącznie masę młota użytego przy kuciu."
+          ],
+          "correct": 1,
+          "situation": "Brama po montażu opada, chociaż zawiasy są ozdobne i wyglądają solidnie. Weryfikujesz osiowość obu zawiasów, mocowanie do słupa, obciążenie skrzydła i luzy, zamiast automatycznie zacieśniać sworzeń.",
+          "example": "Osiowość, mocowania, luzy oraz rzeczywiste obciążenie skrzydła.",
+          "explanation": "Mechanika działania połączenia jest ważniejsza od dekoracji.",
+          "intro": "Zawias składa się z części mocujących i osi lub sworznia; jego działanie zależy od osiowości, luzu i sposobu przeniesienia obciążenia. Hak musi uwzględniać kierunek obciążenia, geometrię i warunki montażu. Kute okucia podlegają jednocześnie wymaganiom estetycznym i mechanicznym.",
+          "task": "Na schemacie zaznacz oś zawiasu, siły, punkty mocowania i miejsca możliwego zużycia.",
+          "feedback": [
+            "Nie. Mechanika działania połączenia jest ważniejsza od dekoracji.",
+            "Prawidłowo. Mechanika działania połączenia jest ważniejsza od dekoracji.",
+            "Nie. Mechanika działania połączenia jest ważniejsza od dekoracji.",
+            "Nie. Mechanika działania połączenia jest ważniejsza od dekoracji."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Zawias składa się z części mocujących i osi lub sworznia; jego działanie zależy od osiowości, luzu i sposobu przeniesienia obciążenia. Hak musi uwzględniać kierunek obciążenia, geometrię i warunki montażu. Kute okucia podlegają jednocześnie wymaganiom estetycznym i mechanicznym."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Przy planowaniu należy wskazać ruchome i nieruchome części, miejsca tarcia, rodzaj mocowania do podłoża oraz możliwość konserwacji. Otwór sworznia musi mieć właściwy luz i powierzchnię. Nie każda dekoracyjna forma jest dopuszczalna w konstrukcji obciążanej; projekt wytrzymałościowy wymaga odpowiednich obliczeń i zatwierdzenia."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Brama po montażu opada, chociaż zawiasy są ozdobne i wyglądają solidnie. Weryfikujesz osiowość obu zawiasów, mocowanie do słupa, obciążenie skrzydła i luzy, zamiast automatycznie zacieśniać sworzeń."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Umiem wyjaśnić, dlaczego zawias obracający się swobodnie bez obciążenia może działać źle pod ciężarem bramy, oraz wskazać elementy wymagające pomiaru.\n\nĆwiczenie: Na schemacie zaznacz oś zawiasu, siły, punkty mocowania i miejsca możliwego zużycia."
+          }
+        ],
+        "raw": [
+          "Zawiasy, haki i okucia: mechanika ruchu i montaż",
+          "Zawias składa się z części mocujących i osi lub sworznia; jego działanie zależy od osiowości, luzu i sposobu przeniesienia obciążenia. Hak musi uwzględniać kierunek obciążenia, geometrię i warunki montażu. Kute okucia podlegają jednocześnie wymaganiom estetycznym i mechanicznym.",
+          "Przy planowaniu należy wskazać ruchome i nieruchome części, miejsca tarcia, rodzaj mocowania do podłoża oraz możliwość konserwacji. Otwór sworznia musi mieć właściwy luz i powierzchnię. Nie każda dekoracyjna forma jest dopuszczalna w konstrukcji obciążanej; projekt wytrzymałościowy wymaga odpowiednich obliczeń i zatwierdzenia.",
+          "Brama po montażu opada, chociaż zawiasy są ozdobne i wyglądają solidnie. Weryfikujesz osiowość obu zawiasów, mocowanie do słupa, obciążenie skrzydła i luzy, zamiast automatycznie zacieśniać sworzeń.",
+          "Umiem wyjaśnić, dlaczego zawias obracający się swobodnie bez obciążenia może działać źle pod ciężarem bramy, oraz wskazać elementy wymagające pomiaru."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Na schemacie zaznacz oś zawiasu, siły, punkty mocowania i miejsca możliwego zużycia."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 22,
+      "title_pl": "23. Balustrady i elementy ozdobne: estetyka nie zastępuje obliczeń",
+      "material": {
+        "learning": {
+          "question": "Czy można wykonać i zamontować nośną balustradę wyłącznie na podstawie zdjęcia?",
+          "options": [
+            "Tak, jeżeli ozdobne końcówki wyglądają masywnie.",
+            "Tak, jeżeli stal jest ciemna i ma widoczne ślady kucia.",
+            "Nie, wymagane są odpowiednie wymiary, projekt i weryfikacja wymagań konstrukcyjnych.",
+            "Tak, jeśli zastosuje się więcej farby."
+          ],
+          "correct": 2,
+          "situation": "Klient życzy sobie odkuwek do barierki na balkonie, lecz ma jedynie zdjęcie z internetu. Można przedstawić wzór, jednak nie należy deklarować zgodności konstrukcyjnej bez zwymiarowanego projektu, doboru mocowań i właściwego sprawdzenia.",
+          "example": "Nie, wymagane są odpowiednie wymiary, projekt i weryfikacja wymagań konstrukcyjnych.",
+          "explanation": "Wyroby bezpieczeństwa wymagają niezależnej oceny geometrii, obciążeń i połączeń.",
+          "intro": "Balustrady, kraty, poręcze i bramy należą do wyrobów, w których niewłaściwy rozstaw prętów, mocowania lub przekrój może zagrażać użytkownikom. Kowal może wykonywać elementy dekoracyjne, jednak obciążenia, wysokości, szczeliny i wymagania budowlane trzeba ustalić zgodnie z projektem oraz przepisami właściwymi dla kraju i rodzaju obiektu.",
+          "task": "Przygotuj listę dziesięciu informacji potrzebnych do wyceny kutych elementów balustrady.",
+          "feedback": [
+            "Nie. Wyroby bezpieczeństwa wymagają niezależnej oceny geometrii, obciążeń i połączeń.",
+            "Nie. Wyroby bezpieczeństwa wymagają niezależnej oceny geometrii, obciążeń i połączeń.",
+            "Prawidłowo. Wyroby bezpieczeństwa wymagają niezależnej oceny geometrii, obciążeń i połączeń.",
+            "Nie. Wyroby bezpieczeństwa wymagają niezależnej oceny geometrii, obciążeń i połączeń."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Balustrady, kraty, poręcze i bramy należą do wyrobów, w których niewłaściwy rozstaw prętów, mocowania lub przekrój może zagrażać użytkownikom. Kowal może wykonywać elementy dekoracyjne, jednak obciążenia, wysokości, szczeliny i wymagania budowlane trzeba ustalić zgodnie z projektem oraz przepisami właściwymi dla kraju i rodzaju obiektu."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Przed produkcją porównuje się powtarzalność elementów, osie mocowania, spoiny lub nity, sposób zabezpieczenia antykorozyjnego i możliwość odprowadzania wody. Wzór ozdobny powinien mieć powtarzalną geometrię bez ostrych zakończeń w strefie kontaktu. Kontrola wizualna nie zastępuje sprawdzenia połączeń konstrukcyjnych."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Klient życzy sobie odkuwek do barierki na balkonie, lecz ma jedynie zdjęcie z internetu. Można przedstawić wzór, jednak nie należy deklarować zgodności konstrukcyjnej bez zwymiarowanego projektu, doboru mocowań i właściwego sprawdzenia."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Rozróżniasz element dekoracyjny od konstrukcyjnego i potrafisz przygotować pytania do projektanta: obciążenie, wysokość, rozstaw, rodzaj podłoża i trwałość zabezpieczenia.\n\nĆwiczenie: Przygotuj listę dziesięciu informacji potrzebnych do wyceny kutych elementów balustrady."
+          }
+        ],
+        "raw": [
+          "Balustrady i elementy ozdobne: estetyka nie zastępuje obliczeń",
+          "Balustrady, kraty, poręcze i bramy należą do wyrobów, w których niewłaściwy rozstaw prętów, mocowania lub przekrój może zagrażać użytkownikom. Kowal może wykonywać elementy dekoracyjne, jednak obciążenia, wysokości, szczeliny i wymagania budowlane trzeba ustalić zgodnie z projektem oraz przepisami właściwymi dla kraju i rodzaju obiektu.",
+          "Przed produkcją porównuje się powtarzalność elementów, osie mocowania, spoiny lub nity, sposób zabezpieczenia antykorozyjnego i możliwość odprowadzania wody. Wzór ozdobny powinien mieć powtarzalną geometrię bez ostrych zakończeń w strefie kontaktu. Kontrola wizualna nie zastępuje sprawdzenia połączeń konstrukcyjnych.",
+          "Klient życzy sobie odkuwek do barierki na balkonie, lecz ma jedynie zdjęcie z internetu. Można przedstawić wzór, jednak nie należy deklarować zgodności konstrukcyjnej bez zwymiarowanego projektu, doboru mocowań i właściwego sprawdzenia.",
+          "Rozróżniasz element dekoracyjny od konstrukcyjnego i potrafisz przygotować pytania do projektanta: obciążenie, wysokość, rozstaw, rodzaj podłoża i trwałość zabezpieczenia."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Przygotuj listę dziesięciu informacji potrzebnych do wyceny kutych elementów balustrady."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 23,
+      "title_pl": "24. Narzędzia i wyroby użytkowe: ergonomia oraz jakość",
+      "material": {
+        "learning": {
+          "question": "Co należy uwzględnić przy ocenie gotowego prostego narzędzia?",
+          "options": [
+            "Wyłącznie cenę i kolor opakowania.",
+            "Tylko liczbę wykonanych uderzeń.",
+            "Wyłącznie to, czy trzonek jest długi.",
+            "Wymiary, wady powierzchni, właściwości materiału i działanie zgodne z przeznaczeniem."
+          ],
+          "correct": 3,
+          "situation": "Użytkownik reklamuje haczyk, który wygina się pod niewielkim obciążeniem. Przyczyną może być niewłaściwy przekrój, promień gięcia, materiał lub sposób mocowania. Rzetelna reklamacja polega na zebraniu danych, oględzinach i ocenie, a nie na obietnicy 'mocniej uderzę młotem'.",
+          "example": "Wymiary, wady powierzchni, właściwości materiału i działanie zgodne z przeznaczeniem.",
+          "explanation": "Jakość to zgodność z funkcją, a nie sam wygląd.",
+          "intro": "Mały haczyk, skrobak lub prosty przyrząd też wymaga świadomego projektu. Istotne są krawędzie robocze, miejsce chwytu, rozkład sił, odporność na zużycie i możliwość konserwacji. Ostrzejsze nie zawsze znaczy lepsze; profil elementu powinien odpowiadać funkcji, a krawędzie chwytne nie mogą ranić użytkownika.",
+          "task": "Zrób protokół kontroli haczyka: pomiar, brak ostrych krawędzi, próba funkcjonalna pod fachowym nadzorem.",
+          "feedback": [
+            "Nie. Jakość to zgodność z funkcją, a nie sam wygląd.",
+            "Nie. Jakość to zgodność z funkcją, a nie sam wygląd.",
+            "Nie. Jakość to zgodność z funkcją, a nie sam wygląd.",
+            "Prawidłowo. Jakość to zgodność z funkcją, a nie sam wygląd."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Mały haczyk, skrobak lub prosty przyrząd też wymaga świadomego projektu. Istotne są krawędzie robocze, miejsce chwytu, rozkład sił, odporność na zużycie i możliwość konserwacji. Ostrzejsze nie zawsze znaczy lepsze; profil elementu powinien odpowiadać funkcji, a krawędzie chwytne nie mogą ranić użytkownika."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Prosta karta jakości opisuje wymiar nominalny, tolerancję, prostopadłość, brak pęknięć, wykończenie powierzchni i próbę funkcjonalną w bezpiecznych warunkach. Dla narzędzi uderzanych dodatkowo znaczenie mają gatunek stali, prawidłowa obróbka cieplna i odporność na uszkodzenie. Nie wolno oceniać ich wyłącznie po dźwięku lub kolorze."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Użytkownik reklamuje haczyk, który wygina się pod niewielkim obciążeniem. Przyczyną może być niewłaściwy przekrój, promień gięcia, materiał lub sposób mocowania. Rzetelna reklamacja polega na zebraniu danych, oględzinach i ocenie, a nie na obietnicy 'mocniej uderzę młotem'."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Wskaż różnicę między odbiorem wizualnym, wymiarowym i funkcjonalnym. Przygotuj protokół oceny małego narzędzia uwzględniający zagrożenia.\n\nĆwiczenie: Zrób protokół kontroli haczyka: pomiar, brak ostrych krawędzi, próba funkcjonalna pod fachowym nadzorem."
+          }
+        ],
+        "raw": [
+          "Narzędzia i wyroby użytkowe: ergonomia oraz jakość",
+          "Mały haczyk, skrobak lub prosty przyrząd też wymaga świadomego projektu. Istotne są krawędzie robocze, miejsce chwytu, rozkład sił, odporność na zużycie i możliwość konserwacji. Ostrzejsze nie zawsze znaczy lepsze; profil elementu powinien odpowiadać funkcji, a krawędzie chwytne nie mogą ranić użytkownika.",
+          "Prosta karta jakości opisuje wymiar nominalny, tolerancję, prostopadłość, brak pęknięć, wykończenie powierzchni i próbę funkcjonalną w bezpiecznych warunkach. Dla narzędzi uderzanych dodatkowo znaczenie mają gatunek stali, prawidłowa obróbka cieplna i odporność na uszkodzenie. Nie wolno oceniać ich wyłącznie po dźwięku lub kolorze.",
+          "Użytkownik reklamuje haczyk, który wygina się pod niewielkim obciążeniem. Przyczyną może być niewłaściwy przekrój, promień gięcia, materiał lub sposób mocowania. Rzetelna reklamacja polega na zebraniu danych, oględzinach i ocenie, a nie na obietnicy 'mocniej uderzę młotem'.",
+          "Wskaż różnicę między odbiorem wizualnym, wymiarowym i funkcjonalnym. Przygotuj protokół oceny małego narzędzia uwzględniający zagrożenia."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Zrób protokół kontroli haczyka: pomiar, brak ostrych krawędzi, próba funkcjonalna pod fachowym nadzorem."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 24,
+      "title_pl": "25. Wozy i bryczki: zasady napraw metalowych części pojazdów konnych",
+      "material": {
+        "learning": {
+          "question": "Co zrobić z wykrytym luźnym połączeniem elementu sterującego lub ciągnącego bryczkę?",
+          "options": [
+            "Wycofać pojazd z użycia do fachowej kontroli i zaplanowania bezpiecznej naprawy.",
+            "Ukryć luz pod grubą warstwą farby.",
+            "Podłożyć przypadkową podkładkę i natychmiast jechać.",
+            "Sprawdzić wyłącznie dekorację koła."
+          ],
+          "correct": 0,
+          "situation": "Podczas przeglądu bryczki odkrywasz luźny sworzeń w połączeniu przy dyszlu. Doraźne zaklepanie bez oceny może ukryć zużycie. Najpierw unieruchamiasz pojazd, dokumentujesz wadę i ocenisz mechanikę połączenia z fachowcem.",
+          "example": "Wycofać pojazd z użycia do fachowej kontroli i zaplanowania bezpiecznej naprawy.",
+          "explanation": "Połączenia w pojeździe mogą być krytyczne dla bezpieczeństwa ludzi i zwierzęcia.",
+          "intro": "Tradycyjny kowal pracował również przy pojazdach konnych: wozach i bryczkach, wykonując obręcze, okucia, sworznie, elementy hamulców, mocowania i zawiasy. Pojazd jest zespołem współpracujących części metalowych i drewnianych, a jego bezpieczeństwo zależy od stanu całej konstrukcji, nie tylko jednej odkuwki.",
+          "task": "Sporządź wzór raportu usterki bryczki: miejsce, objawy, ryzyko i decyzja eksploatacyjna.",
+          "feedback": [
+            "Prawidłowo. Połączenia w pojeździe mogą być krytyczne dla bezpieczeństwa ludzi i zwierzęcia.",
+            "Nie. Połączenia w pojeździe mogą być krytyczne dla bezpieczeństwa ludzi i zwierzęcia.",
+            "Nie. Połączenia w pojeździe mogą być krytyczne dla bezpieczeństwa ludzi i zwierzęcia.",
+            "Nie. Połączenia w pojeździe mogą być krytyczne dla bezpieczeństwa ludzi i zwierzęcia."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Tradycyjny kowal pracował również przy pojazdach konnych: wozach i bryczkach, wykonując obręcze, okucia, sworznie, elementy hamulców, mocowania i zawiasy. Pojazd jest zespołem współpracujących części metalowych i drewnianych, a jego bezpieczeństwo zależy od stanu całej konstrukcji, nie tylko jednej odkuwki."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Przegląd zaczyna się od dokumentacji, widocznych pęknięć, luzów, korozji, zużycia osi i stanu mocowania części. Naprawę części niosącej obciążenia należy zaplanować zgodnie z oceną specjalisty i wymaganiami użytkowania. Zabytkowe elementy mogą wymagać zachowania oryginalnej technologii i konsultacji konserwatorskiej."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Podczas przeglądu bryczki odkrywasz luźny sworzeń w połączeniu przy dyszlu. Doraźne zaklepanie bez oceny może ukryć zużycie. Najpierw unieruchamiasz pojazd, dokumentujesz wadę i ocenisz mechanikę połączenia z fachowcem."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Umiesz odróżnić naprawę kosmetyczną od dotyczącą bezpieczeństwa jazdy. Wiesz, jakie dane zebrać: miejsce usterki, objawy, fotografię, wymiar, sposób obciążania.\n\nĆwiczenie: Sporządź wzór raportu usterki bryczki: miejsce, objawy, ryzyko i decyzja eksploatacyjna."
+          }
+        ],
+        "raw": [
+          "Wozy i bryczki: zasady napraw metalowych części pojazdów konnych",
+          "Tradycyjny kowal pracował również przy pojazdach konnych: wozach i bryczkach, wykonując obręcze, okucia, sworznie, elementy hamulców, mocowania i zawiasy. Pojazd jest zespołem współpracujących części metalowych i drewnianych, a jego bezpieczeństwo zależy od stanu całej konstrukcji, nie tylko jednej odkuwki.",
+          "Przegląd zaczyna się od dokumentacji, widocznych pęknięć, luzów, korozji, zużycia osi i stanu mocowania części. Naprawę części niosącej obciążenia należy zaplanować zgodnie z oceną specjalisty i wymaganiami użytkowania. Zabytkowe elementy mogą wymagać zachowania oryginalnej technologii i konsultacji konserwatorskiej.",
+          "Podczas przeglądu bryczki odkrywasz luźny sworzeń w połączeniu przy dyszlu. Doraźne zaklepanie bez oceny może ukryć zużycie. Najpierw unieruchamiasz pojazd, dokumentujesz wadę i ocenisz mechanikę połączenia z fachowcem.",
+          "Umiesz odróżnić naprawę kosmetyczną od dotyczącą bezpieczeństwa jazdy. Wiesz, jakie dane zebrać: miejsce usterki, objawy, fotografię, wymiar, sposób obciążania."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Sporządź wzór raportu usterki bryczki: miejsce, objawy, ryzyko i decyzja eksploatacyjna."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 25,
+      "title_pl": "26. Kopyto konia: anatomia, funkcja i granice samodzielnych działań",
+      "material": {
+        "learning": {
+          "question": "Jak zareagować na bolesność kopyta i wyraźnie nierówny chód konia?",
+          "options": [
+            "Samodzielnie zetrzeć więcej rogu kopytowego bez oceny.",
+            "Przerwać planowane zabiegi i zwrócić się do wykwalifikowanego podkuwacza oraz odpowiednio weterynarza.",
+            "Zastosować dłuższe podkowiaki dla mocniejszego trzymania podkowy.",
+            "Zignorować objawy, skoro zwierzę stoi."
+          ],
+          "correct": 1,
+          "situation": "Właściciel zauważa skrócony wykrok i ciepłe, bolesne kopyto. Nie przystępujesz do samodzielnego przycinania lub podkuwania na podstawie kursu internetowego; kontaktujesz wykwalifikowanego podkuwacza i, jeśli objawy wskazują na problem zdrowotny, lekarza weterynarii.",
+          "example": "Przerwać planowane zabiegi i zwrócić się do wykwalifikowanego podkuwacza oraz odpowiednio weterynarza.",
+          "explanation": "Dobrostan konia wymaga fachowej diagnostyki i kontroli biomechaniki.",
+          "intro": "Kopyto to żywa, wyspecjalizowana struktura współpracująca z kośćmi, ścięgnami i aparatem ruchu konia. W jego budowie wyróżnia się m.in. ścianę kopyta, podeszwę, strzałkę, linię białą i koronkę. Mechanika kończyny, podłoże, sposób użytkowania oraz stan zdrowia wpływają na potrzeby pielęgnacji i ewentualnego podkucia.",
+          "task": "Zrób opisową mapę części kopyta i listę objawów wymagających profesjonalnej konsultacji.",
+          "feedback": [
+            "Nie. Dobrostan konia wymaga fachowej diagnostyki i kontroli biomechaniki.",
+            "Prawidłowo. Dobrostan konia wymaga fachowej diagnostyki i kontroli biomechaniki.",
+            "Nie. Dobrostan konia wymaga fachowej diagnostyki i kontroli biomechaniki.",
+            "Nie. Dobrostan konia wymaga fachowej diagnostyki i kontroli biomechaniki."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Kopyto to żywa, wyspecjalizowana struktura współpracująca z kośćmi, ścięgnami i aparatem ruchu konia. W jego budowie wyróżnia się m.in. ścianę kopyta, podeszwę, strzałkę, linię białą i koronkę. Mechanika kończyny, podłoże, sposób użytkowania oraz stan zdrowia wpływają na potrzeby pielęgnacji i ewentualnego podkucia."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Podkuwnictwo nie sprowadza się do przybicia podkowy: obejmuje obserwację chodu, ocenę równowagi kopyta, dobór ochrony i współpracę z lekarzem weterynarii. Błędy podczas usuwania starej podkowy, werkowania lub wbijania podkowiaków mogą powodować ból, zakażenia i trwałe urazy. Ta lekcja uczy rozpoznawania pojęć, nie upoważnia do zabiegów na żywym zwierzęciu."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Właściciel zauważa skrócony wykrok i ciepłe, bolesne kopyto. Nie przystępujesz do samodzielnego przycinania lub podkuwania na podstawie kursu internetowego; kontaktujesz wykwalifikowanego podkuwacza i, jeśli objawy wskazują na problem zdrowotny, lekarza weterynarii."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Wskaż na schemacie ścianę, podeszwę, strzałkę i koronkę. Wytłumacz, dlaczego nierówny chód jest sygnałem do fachowej oceny, nie do przypadkowej korekty kopyta.\n\nĆwiczenie: Zrób opisową mapę części kopyta i listę objawów wymagających profesjonalnej konsultacji."
+          }
+        ],
+        "raw": [
+          "Kopyto konia: anatomia, funkcja i granice samodzielnych działań",
+          "Kopyto to żywa, wyspecjalizowana struktura współpracująca z kośćmi, ścięgnami i aparatem ruchu konia. W jego budowie wyróżnia się m.in. ścianę kopyta, podeszwę, strzałkę, linię białą i koronkę. Mechanika kończyny, podłoże, sposób użytkowania oraz stan zdrowia wpływają na potrzeby pielęgnacji i ewentualnego podkucia.",
+          "Podkuwnictwo nie sprowadza się do przybicia podkowy: obejmuje obserwację chodu, ocenę równowagi kopyta, dobór ochrony i współpracę z lekarzem weterynarii. Błędy podczas usuwania starej podkowy, werkowania lub wbijania podkowiaków mogą powodować ból, zakażenia i trwałe urazy. Ta lekcja uczy rozpoznawania pojęć, nie upoważnia do zabiegów na żywym zwierzęciu.",
+          "Właściciel zauważa skrócony wykrok i ciepłe, bolesne kopyto. Nie przystępujesz do samodzielnego przycinania lub podkuwania na podstawie kursu internetowego; kontaktujesz wykwalifikowanego podkuwacza i, jeśli objawy wskazują na problem zdrowotny, lekarza weterynarii.",
+          "Wskaż na schemacie ścianę, podeszwę, strzałkę i koronkę. Wytłumacz, dlaczego nierówny chód jest sygnałem do fachowej oceny, nie do przypadkowej korekty kopyta."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          },
+          {
+            "label": "FRC – podkuwnictwo i kwalifikacje",
+            "url": "https://www.farrier-reg.gov.uk/becoming-a-farrier/registration/gb-registration-requirements-applications/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Zrób opisową mapę części kopyta i listę objawów wymagających profesjonalnej konsultacji.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 26,
+      "title_pl": "27. Rodzaje podków i ich zastosowanie: sport, praca, nawierzchnia",
+      "material": {
+        "learning": {
+          "question": "Co jest właściwą podstawą doboru typu podkowy dla konia?",
+          "options": [
+            "Wyłącznie kolor sierści i rasa.",
+            "Najpopularniejszy rozmiar sprzedawany w sklepie.",
+            "Indywidualna ocena kopyt, biomechaniki, obciążenia i podłoża przez specjalistę.",
+            "Podkowa z najdłuższymi podkowiakami niezależnie od kopyta."
+          ],
+          "correct": 2,
+          "situation": "Właściciel chce automatycznie zastosować podkowy znajomego konia wyścigowego u swojego konia pociągowego. Prawidłowo odmawiasz kopiowania rozwiązania bez oceny kopyt, chodu, rodzaju pracy i podłoża przez właściwego specjalistę.",
+          "example": "Indywidualna ocena kopyt, biomechaniki, obciążenia i podłoża przez specjalistę.",
+          "explanation": "Podkowa musi być dopasowana do konkretnego zwierzęcia i warunków użytkowania.",
+          "intro": "Podkowy różnią się kształtem, materiałem, przyczepnością i przeznaczeniem. Koń używany do sportu na określonej nawierzchni może wymagać innych rozwiązań niż koń pracujący w terenie. Nie istnieje jednak uniwersalna 'podkowa wyścigowa' ani 'podkowa rolnicza' odpowiednia dla wszystkich zwierząt: o doborze decyduje indywidualna biomechanika, stan kopyta, obciążenie i warunki.",
+          "task": "Zestaw trzy hipotetyczne profile koni i napisz, o co zapytasz podkuwacza przed doborem podków.",
+          "feedback": [
+            "Nie. Podkowa musi być dopasowana do konkretnego zwierzęcia i warunków użytkowania.",
+            "Nie. Podkowa musi być dopasowana do konkretnego zwierzęcia i warunków użytkowania.",
+            "Prawidłowo. Podkowa musi być dopasowana do konkretnego zwierzęcia i warunków użytkowania.",
+            "Nie. Podkowa musi być dopasowana do konkretnego zwierzęcia i warunków użytkowania."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Podkowy różnią się kształtem, materiałem, przyczepnością i przeznaczeniem. Koń używany do sportu na określonej nawierzchni może wymagać innych rozwiązań niż koń pracujący w terenie. Nie istnieje jednak uniwersalna 'podkowa wyścigowa' ani 'podkowa rolnicza' odpowiednia dla wszystkich zwierząt: o doborze decyduje indywidualna biomechanika, stan kopyta, obciążenie i warunki."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Rozpoznawaj elementy podkowy: gałęzie, nosek, otwory na podkowiaki i ewentualne dodatki trakcyjne. Wybór powinien uwzględniać ryzyko poślizgu, przeciążenia i dyskomfortu oraz ustalenia z właścicielem i podkuwaczem. Różne materiały wymagają odrębnych zasad doboru i kontroli."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Właściciel chce automatycznie zastosować podkowy znajomego konia wyścigowego u swojego konia pociągowego. Prawidłowo odmawiasz kopiowania rozwiązania bez oceny kopyt, chodu, rodzaju pracy i podłoża przez właściwego specjalistę."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Potrafisz rozróżnić trzy kryteria doboru: stan i kształt kopyta, charakter ruchu oraz nawierzchnię. Wiesz, że samo przeznaczenie konia nie wystarcza.\n\nĆwiczenie: Zestaw trzy hipotetyczne profile koni i napisz, o co zapytasz podkuwacza przed doborem podków."
+          }
+        ],
+        "raw": [
+          "Rodzaje podków i ich zastosowanie: sport, praca, nawierzchnia",
+          "Podkowy różnią się kształtem, materiałem, przyczepnością i przeznaczeniem. Koń używany do sportu na określonej nawierzchni może wymagać innych rozwiązań niż koń pracujący w terenie. Nie istnieje jednak uniwersalna 'podkowa wyścigowa' ani 'podkowa rolnicza' odpowiednia dla wszystkich zwierząt: o doborze decyduje indywidualna biomechanika, stan kopyta, obciążenie i warunki.",
+          "Rozpoznawaj elementy podkowy: gałęzie, nosek, otwory na podkowiaki i ewentualne dodatki trakcyjne. Wybór powinien uwzględniać ryzyko poślizgu, przeciążenia i dyskomfortu oraz ustalenia z właścicielem i podkuwaczem. Różne materiały wymagają odrębnych zasad doboru i kontroli.",
+          "Właściciel chce automatycznie zastosować podkowy znajomego konia wyścigowego u swojego konia pociągowego. Prawidłowo odmawiasz kopiowania rozwiązania bez oceny kopyt, chodu, rodzaju pracy i podłoża przez właściwego specjalistę.",
+          "Potrafisz rozróżnić trzy kryteria doboru: stan i kształt kopyta, charakter ruchu oraz nawierzchnię. Wiesz, że samo przeznaczenie konia nie wystarcza."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          },
+          {
+            "label": "FRC – podkuwnictwo i kwalifikacje",
+            "url": "https://www.farrier-reg.gov.uk/becoming-a-farrier/registration/gb-registration-requirements-applications/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Zestaw trzy hipotetyczne profile koni i napisz, o co zapytasz podkuwacza przed doborem podków.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 27,
+      "title_pl": "28. Zdejmowanie i mocowanie podków: obserwacja pracy fachowca",
+      "material": {
+        "learning": {
+          "question": "Jaka jest najważniejsza zasada podczas pierwszego kontaktu z podkuwaniem konia?",
+          "options": [
+            "Wbić próbny podkowiak na podstawie zdjęcia kopyta.",
+            "Usunąć starą podkowę bez uzgodnienia z opiekunem.",
+            "Dobrać podkowę wyłącznie po rozmiarze innego konia.",
+            "Obserwować i uczyć się pod nadzorem kompetentnego podkuwacza, bez samodzielnych zabiegów na koniu."
+          ],
+          "correct": 3,
+          "situation": "Przyglądasz się, jak podkuwacz pracuje przy niespokojnym koniu. Twoim zadaniem jest zapewnić bezpieczne warunki obserwacji, nie chwytać nogi ani narzędzi bez polecenia. Zadajesz pytania o przyczyny wyboru podkowy i kryteria komfortu po zabiegu.",
+          "example": "Obserwować i uczyć się pod nadzorem kompetentnego podkuwacza, bez samodzielnych zabiegów na koniu.",
+          "explanation": "Błędy podkuwania mogą poważnie uszkodzić żywe tkanki i zaburzyć ruch zwierzęcia.",
+          "intro": "W pracy podkuwacza występują narzędzia do zdejmowania podkowy, kontroli i obróbki rogu kopytowego oraz mocowania nowego podkucia. Podkowiaki to specjalne gwoździe; ich położenie jest kwestią anatomii i bezpieczeństwa żywych tkanek, a nie tylko mechanicznej siły połączenia. Niewłaściwe działanie może wywołać bolesność i uraz.",
+          "task": "Przygotuj pięć pytań do podkuwacza o ocenę konia, dobór podków, kontrolę i postępowanie po zabiegu.",
+          "feedback": [
+            "Nie. Błędy podkuwania mogą poważnie uszkodzić żywe tkanki i zaburzyć ruch zwierzęcia.",
+            "Nie. Błędy podkuwania mogą poważnie uszkodzić żywe tkanki i zaburzyć ruch zwierzęcia.",
+            "Nie. Błędy podkuwania mogą poważnie uszkodzić żywe tkanki i zaburzyć ruch zwierzęcia.",
+            "Prawidłowo. Błędy podkuwania mogą poważnie uszkodzić żywe tkanki i zaburzyć ruch zwierzęcia."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "W pracy podkuwacza występują narzędzia do zdejmowania podkowy, kontroli i obróbki rogu kopytowego oraz mocowania nowego podkucia. Podkowiaki to specjalne gwoździe; ich położenie jest kwestią anatomii i bezpieczeństwa żywych tkanek, a nie tylko mechanicznej siły połączenia. Niewłaściwe działanie może wywołać bolesność i uraz."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Proces można omawiać na poziomie obserwacji: ocena stanu zwierzęcia i zużycia podkowy, decyzja fachowca o dalszym postępowaniu, kontrola funkcjonalna i udokumentowanie pracy. Nie podajemy tu samodzielnej procedury werkowania, wbijania podkowiaków ani zdejmowania podków; te czynności wymagają szkolenia praktycznego, nadzoru i przestrzegania lokalnych zasad zawodowych."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Przyglądasz się, jak podkuwacz pracuje przy niespokojnym koniu. Twoim zadaniem jest zapewnić bezpieczne warunki obserwacji, nie chwytać nogi ani narzędzi bez polecenia. Zadajesz pytania o przyczyny wyboru podkowy i kryteria komfortu po zabiegu."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Umiesz objaśnić nazwę podkowiak, zakres współpracy z weterynarzem i dlaczego bez fachowej praktyki nie można traktować kursu online jako uprawnienia do podkuwania.\n\nĆwiczenie: Przygotuj pięć pytań do podkuwacza o ocenę konia, dobór podków, kontrolę i postępowanie po zabiegu."
+          }
+        ],
+        "raw": [
+          "Zdejmowanie i mocowanie podków: obserwacja pracy fachowca",
+          "W pracy podkuwacza występują narzędzia do zdejmowania podkowy, kontroli i obróbki rogu kopytowego oraz mocowania nowego podkucia. Podkowiaki to specjalne gwoździe; ich położenie jest kwestią anatomii i bezpieczeństwa żywych tkanek, a nie tylko mechanicznej siły połączenia. Niewłaściwe działanie może wywołać bolesność i uraz.",
+          "Proces można omawiać na poziomie obserwacji: ocena stanu zwierzęcia i zużycia podkowy, decyzja fachowca o dalszym postępowaniu, kontrola funkcjonalna i udokumentowanie pracy. Nie podajemy tu samodzielnej procedury werkowania, wbijania podkowiaków ani zdejmowania podków; te czynności wymagają szkolenia praktycznego, nadzoru i przestrzegania lokalnych zasad zawodowych.",
+          "Przyglądasz się, jak podkuwacz pracuje przy niespokojnym koniu. Twoim zadaniem jest zapewnić bezpieczne warunki obserwacji, nie chwytać nogi ani narzędzi bez polecenia. Zadajesz pytania o przyczyny wyboru podkowy i kryteria komfortu po zabiegu.",
+          "Umiesz objaśnić nazwę podkowiak, zakres współpracy z weterynarzem i dlaczego bez fachowej praktyki nie można traktować kursu online jako uprawnienia do podkuwania."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          },
+          {
+            "label": "FRC – podkuwnictwo i kwalifikacje",
+            "url": "https://www.farrier-reg.gov.uk/becoming-a-farrier/registration/gb-registration-requirements-applications/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Przygotuj pięć pytań do podkuwacza o ocenę konia, dobór podków, kontrolę i postępowanie po zabiegu."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 28,
+      "title_pl": "29. Wycena i prowadzenie zlecenia kowalskiego",
+      "material": {
+        "learning": {
+          "question": "Co trzeba uwzględnić przy cenie trzech ręcznie kutych zawiasów?",
+          "options": [
+            "Materiał, robociznę, przygotowanie, kontrolę, wykończenie i inne rzeczywiste koszty.",
+            "Wyłącznie cenę kilograma najtańszej stali.",
+            "Wyłącznie czas uderzania młotem.",
+            "Wyłącznie cenę opakowania ozdobnego."
+          ],
+          "correct": 0,
+          "situation": "Przyjmujesz zamówienie na trzy identyczne zawiasy. Klient zmienia po wykonaniu pierwszej sztuki rozstaw otworów. Bez aktualizacji rysunku i potwierdzenia kosztów powstanie konflikt przy odbiorze; właściwy proces wymaga udokumentowanej zmiany.",
+          "example": "Materiał, robociznę, przygotowanie, kontrolę, wykończenie i inne rzeczywiste koszty.",
+          "explanation": "Pełna wycena bierze pod uwagę całe zlecenie i ryzyko zmian.",
+          "intro": "Wycena obejmuje nie tylko wagę stali. Znaczenie mają projekt i konsultacje, materiał z naddatkiem, czas przygotowania, kucie, pomiary, wykończenie, transport, montaż, kontrola jakości i przewidziane ryzyko. Koszt musi być czytelny dla klienta; zmiany projektu po akceptacji powinny być dokumentowane.",
+          "task": "Policz przykładową wycenę: materiał 180 zł, 5 h pracy po 90 zł i pozostałe koszty 120 zł; opisz założenia i wynik.",
+          "feedback": [
+            "Prawidłowo. Pełna wycena bierze pod uwagę całe zlecenie i ryzyko zmian.",
+            "Nie. Pełna wycena bierze pod uwagę całe zlecenie i ryzyko zmian.",
+            "Nie. Pełna wycena bierze pod uwagę całe zlecenie i ryzyko zmian.",
+            "Nie. Pełna wycena bierze pod uwagę całe zlecenie i ryzyko zmian."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Wycena obejmuje nie tylko wagę stali. Znaczenie mają projekt i konsultacje, materiał z naddatkiem, czas przygotowania, kucie, pomiary, wykończenie, transport, montaż, kontrola jakości i przewidziane ryzyko. Koszt musi być czytelny dla klienta; zmiany projektu po akceptacji powinny być dokumentowane."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Wprowadź prostą kartę procesu: numer zlecenia, wersję rysunku, planowany czas, listę materiałów, punkty kontroli, koszt i odpowiedzialną osobę. Nie utożsamiaj narzutu z marżą. Cena sprzedaży powinna uwzględniać koszty stałe, straty materiałowe oraz zasadną rezerwę na poprawki i reklamacje."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Przyjmujesz zamówienie na trzy identyczne zawiasy. Klient zmienia po wykonaniu pierwszej sztuki rozstaw otworów. Bez aktualizacji rysunku i potwierdzenia kosztów powstanie konflikt przy odbiorze; właściwy proces wymaga udokumentowanej zmiany."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Rozumiesz różnicę między kosztem materiału a pełnym kosztem wytworzenia. Potrafisz wskazać, jakie dane powinny znaleźć się w pisemnym potwierdzeniu zamówienia.\n\nĆwiczenie: Policz przykładową wycenę: materiał 180 zł, 5 h pracy po 90 zł i pozostałe koszty 120 zł; opisz założenia i wynik."
+          }
+        ],
+        "raw": [
+          "Wycena i prowadzenie zlecenia kowalskiego",
+          "Wycena obejmuje nie tylko wagę stali. Znaczenie mają projekt i konsultacje, materiał z naddatkiem, czas przygotowania, kucie, pomiary, wykończenie, transport, montaż, kontrola jakości i przewidziane ryzyko. Koszt musi być czytelny dla klienta; zmiany projektu po akceptacji powinny być dokumentowane.",
+          "Wprowadź prostą kartę procesu: numer zlecenia, wersję rysunku, planowany czas, listę materiałów, punkty kontroli, koszt i odpowiedzialną osobę. Nie utożsamiaj narzutu z marżą. Cena sprzedaży powinna uwzględniać koszty stałe, straty materiałowe oraz zasadną rezerwę na poprawki i reklamacje.",
+          "Przyjmujesz zamówienie na trzy identyczne zawiasy. Klient zmienia po wykonaniu pierwszej sztuki rozstaw otworów. Bez aktualizacji rysunku i potwierdzenia kosztów powstanie konflikt przy odbiorze; właściwy proces wymaga udokumentowanej zmiany.",
+          "Rozumiesz różnicę między kosztem materiału a pełnym kosztem wytworzenia. Potrafisz wskazać, jakie dane powinny znaleźć się w pisemnym potwierdzeniu zamówienia."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Policz przykładową wycenę: materiał 180 zł, 5 h pracy po 90 zł i pozostałe koszty 120 zł; opisz założenia i wynik."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 29,
+      "title_pl": "30. Projekt mistrzowski: zawias, klamka i raport jakości",
+      "material": {
+        "learning": {
+          "question": "Co powinno stanowić dowód ukończenia teoretycznego projektu kowalskiego?",
+          "options": [
+            "Sam plik ze zdjęciem przypadkowego młotka.",
+            "Spójna dokumentacja, uzasadnienie procesu, kontrola bezpieczeństwa i kryteria jakości wyrobu.",
+            "Zapamiętanie trzech nazw narzędzi bez rozumienia ich użycia.",
+            "Zaznaczenie tej samej odpowiedzi w każdym teście."
+          ],
+          "correct": 1,
+          "situation": "Klient chce komplet kutych okuć do zabytkowych drzwi. W rozmowie zlecenie zmienia się: klamka ma być używana codziennie, zawias umożliwiać łatwą konserwację, a wygląd pozostać zgodny z oryginałem. Uczeń musi poprawić szkic i kontrolować funkcjonalność zamiast kierować się tylko fotografią.",
+          "example": "Spójna dokumentacja, uzasadnienie procesu, kontrola bezpieczeństwa i kryteria jakości wyrobu.",
+          "explanation": "Ocena sprawdza umiejętność planowania, rozumowania i weryfikowania rezultatu.",
+          "intro": "Końcowy projekt łączy treści całego kursu: dokumentację, materiałoznawstwo, wybór narzędzi, operacje kucia, połączenia, kontrolę wymiarową i bezpieczne wykończenie. Celem nie jest przypadkowe 'zrób coś z metalu', ale świadomy proces od wymagania klienta do odebranego, funkcjonalnego produktu. Projekt nie zastępuje praktycznego egzaminu zawodowego.",
+          "task": "Opracuj teczkę projektu z klamką i zawiasem: rysunek, materiał, narzędzia, plan, BHP, kontrola, kosztorys.",
+          "feedback": [
+            "Nie. Ocena sprawdza umiejętność planowania, rozumowania i weryfikowania rezultatu.",
+            "Prawidłowo. Ocena sprawdza umiejętność planowania, rozumowania i weryfikowania rezultatu.",
+            "Nie. Ocena sprawdza umiejętność planowania, rozumowania i weryfikowania rezultatu.",
+            "Nie. Ocena sprawdza umiejętność planowania, rozumowania i weryfikowania rezultatu."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Zdobądź fachową wiedzę",
+            "text": "Końcowy projekt łączy treści całego kursu: dokumentację, materiałoznawstwo, wybór narzędzi, operacje kucia, połączenia, kontrolę wymiarową i bezpieczne wykończenie. Celem nie jest przypadkowe 'zrób coś z metalu', ale świadomy proces od wymagania klienta do odebranego, funkcjonalnego produktu. Projekt nie zastępuje praktycznego egzaminu zawodowego."
+          },
+          {
+            "heading": "Proces, decyzje i standard pracy",
+            "text": "Na podstawie hipotetycznego zlecenia opracuj komplet dokumentacji: opis funkcji zawiasu i klamki, dwa zwymiarowane szkice, uzasadnienie materiałów, proponowane procesy, checklistę BHP, punkty odbioru i kosztorys. Wykonanie fizyczne dopuszczalne wyłącznie w przygotowanym warsztacie pod fachowym nadzorem."
+          },
+          {
+            "heading": "Zlecenie do przeanalizowania",
+            "text": "Klient chce komplet kutych okuć do zabytkowych drzwi. W rozmowie zlecenie zmienia się: klamka ma być używana codziennie, zawias umożliwiać łatwą konserwację, a wygląd pozostać zgodny z oryginałem. Uczeń musi poprawić szkic i kontrolować funkcjonalność zamiast kierować się tylko fotografią."
+          },
+          {
+            "heading": "Wymagania i ćwiczenie",
+            "text": "Twoja praca przechodzi odbiór, jeśli zawiera komplet wymiarów i tolerancji, wykaz materiałów, uzasadnienie metod, analizę ryzyka, kryteria kontroli oraz jasne rozróżnienie między wiedzą teoretyczną a wymaganą praktyką. Egzamin pyta o zastosowanie tej wiedzy w nowych scenariuszach.\n\nĆwiczenie: Opracuj teczkę projektu z klamką i zawiasem: rysunek, materiał, narzędzia, plan, BHP, kontrola, kosztorys."
+          }
+        ],
+        "raw": [
+          "Projekt mistrzowski: zawias, klamka i raport jakości",
+          "Końcowy projekt łączy treści całego kursu: dokumentację, materiałoznawstwo, wybór narzędzi, operacje kucia, połączenia, kontrolę wymiarową i bezpieczne wykończenie. Celem nie jest przypadkowe 'zrób coś z metalu', ale świadomy proces od wymagania klienta do odebranego, funkcjonalnego produktu. Projekt nie zastępuje praktycznego egzaminu zawodowego.",
+          "Na podstawie hipotetycznego zlecenia opracuj komplet dokumentacji: opis funkcji zawiasu i klamki, dwa zwymiarowane szkice, uzasadnienie materiałów, proponowane procesy, checklistę BHP, punkty odbioru i kosztorys. Wykonanie fizyczne dopuszczalne wyłącznie w przygotowanym warsztacie pod fachowym nadzorem.",
+          "Klient chce komplet kutych okuć do zabytkowych drzwi. W rozmowie zlecenie zmienia się: klamka ma być używana codziennie, zawias umożliwiać łatwą konserwację, a wygląd pozostać zgodny z oryginałem. Uczeń musi poprawić szkic i kontrolować funkcjonalność zamiast kierować się tylko fotografią.",
+          "Twoja praca przechodzi odbiór, jeśli zawiera komplet wymiarów i tolerancji, wykaz materiałów, uzasadnienie metod, analizę ryzyka, kryteria kontroli oraz jasne rozróżnienie między wiedzą teoretyczną a wymaganą praktyką. Egzamin pyta o zastosowanie tej wiedzy w nowych scenariuszach."
+        ],
+        "references": [
+          {
+            "label": "Program MEC.02",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – standard kowalstwa",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 3,
+        "learning_outcome": "Opracuj teczkę projektu z klamką i zawiasem: rysunek, materiał, narzędzia, plan, BHP, kontrola, kosztorys."
+      }
+    }
+  ]
+}
