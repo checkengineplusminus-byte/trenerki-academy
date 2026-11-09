@@ -1,0 +1,1223 @@
+{
+  "lessons": [
+    {
+      "course_slug": "brygadzista",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Siedmiominutowa odprawa może zaoszczędzić znacznie więcej czasu, jeśli ujawni brak materiału lub kolizję ekip przed rozpoczęciem pracy.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Odprawa musi dać pracownikom trzy odpowiedzi: co dziś robimy, od czego zależy start i kto podejmuje decyzję, gdy pojawi się przeszkoda. Nie czyta się całego harmonogramu; wskazuje się zadania, dostęp do rusztowań, liftów oraz dostawy kluczowych materiałów."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Montaż barierek ma się rozpocząć o 7:00, ale pomiar podłoża nie został zatwierdzony. Brygadzista wskazuje ten brak jako warunek rozpoczęcia, przekierowuje pracę na przygotowania i zgłasza decyzję kierownikowi."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Napisz odprawę na 7 minut: cel dnia, dwie zależności, jedno zagrożenie i osobę odpowiedzialną za potwierdzenie."
+          }
+        ],
+        "illustration": "second-brygadzista",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kierownik-budowy",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Nawet prawidłowo zamontowany element może wymagać przeróbki, jeżeli zrealizowano nieaktualną rewizję dokumentacji.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Każdy rysunek powinien mieć numer, datę i rewizję. Wersja A i C mogą wyglądać podobnie, lecz zawierać zmianę mocowania albo grubości konstrukcji. Zespół potrzebuje jednej uzgodnionej wersji do produkcji, montażu i odbioru; starszy plik nie staje się aktualny dlatego, że został wydrukowany."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "W rysunku C dodano odsunięcie balustrady o 25 mm, a produkcja pracuje na B. Kierownik wstrzymuje kolidującą czynność, sporządza listę zmian, sprawdza ilości i uzgadnia termin oraz koszt przed akceptacją nowej wersji."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Porównaj hipotetyczne rewizje B i C: wymień skutki dla materiałów, harmonogramu, kosztów i jakości."
+          }
+        ],
+        "illustration": "second-kierownik-budowy",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "dostepne-pdf",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Czytnik ekranu może odczytać nagłówek zwykłego tekstu tak samo jak akapit, jeżeli nadano mu tylko większą czcionkę.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Dostępny nagłówek jest elementem struktury H1/H2/H3. H1 określa główny temat, H2 wprowadza podtemat, a H3 część podtematu. Nie należy przeskakiwać poziomów tylko po to, by zmienić wygląd; styl wizualny i semantyka dokumentu muszą współpracować."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "W raporcie tytuł i trzy podrozdziały wyglądają poprawnie, ale każdy jest zwykłym tekstem pogrubionym. Po przypisaniu stylów nagłówków użytkownik czytnika może poruszać się między sekcjami zamiast przewijać cały dokument."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż hierarchię nagłówków raportu: tytuł, zakres, metodologia, wyniki i wnioski. Sprawdź, czy kolejność jest logiczna."
+          }
+        ],
+        "illustration": "second-dostepne-pdf",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "nie-marnuj-jedzenia",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Oznaczenie daty może dotyczyć bezpieczeństwa produktu albo przede wszystkim jakości — to dwa różne komunikaty.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Sformułowanie „należy spożyć do” dotyczy produktów szybko psujących się i ma znaczenie dla bezpieczeństwa. „Najlepiej spożyć przed” odnosi się zasadniczo do jakości produktu przechowywanego w odpowiednich warunkach. Nie wolno jednak próbować produktu podejrzanego, by testować jego bezpieczeństwo."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Jogurt z datą „należy spożyć do” oraz sucha kasza z oznaczeniem „najlepiej spożyć przed” wymagają innego sposobu oceny. Przy produktach szybko psujących się nie wystarcza ocena zapachu; trzeba respektować warunki i terminy."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Wymyśl pięć produktów z obu kategoriami dat i opisz bezpieczne postępowanie z każdym bez smakowania niepewnej żywności."
+          }
+        ],
+        "illustration": "second-nie-marnuj-jedzenia",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "obowiazki-domowe",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Nawet krótki obowiązek może generować chaos, jeśli jedna osoba wykonuje czynność, a nikt nie odpowiada za materiały i zakończenie procesu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Lista domowych prac powinna zawierać zadanie, częstotliwość, czas i osobę odpowiedzialną za wynik. „Łazienka” nie jest zadaniem; osobno trzeba opisać umycie umywalki, wymianę ręczników i uzupełnienie środków. Bezpieczny dobór detergentów zależy od materiału powierzchni."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "W każdy poniedziałek jedna osoba wywozi odpady, a druga ma sprawdzić zapas worków. Zamiast dwóch ogólnych poleceń zapisuje się konkretne kryterium ukończenia i przypisuje odpowiedzialność."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Wypisz 12 prac domowych, ich czas i częstotliwość. Ustal trzy zadania, których nie powinno samodzielnie wykonywać małe dziecko."
+          }
+        ],
+        "illustration": "second-obowiazki-domowe",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ekonomia-domowa-bez-dlugow",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Rachunek płacony raz w roku może powodować miesięczne problemy, jeśli nie odkładasz na niego środków regularnie.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Koszty stałe są zwykle przewidywalne, np. czynsz i abonament, a zmienne zależą od sposobu życia, np. zakupy spożywcze. Wydatki nieregularne — serwis auta, ubezpieczenie, prezenty, podatki — trzeba przeliczać na miesięczną rezerwę. To właśnie one często zjadają pozorną nadwyżkę."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Dochód wynosi 6 000 zł, koszty stałe 2 500 zł, zmienne 2 300 zł, a wydatki roczne 7 200 zł. Po odłożeniu 600 zł miesięcznie na koszty roczne zostaje 600 zł, nie 1 200 zł."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Policz swój przykładowy budżet z rocznymi kosztami przeliczonymi na miesiące. Ustal, ile środków zostaje naprawdę."
+          }
+        ],
+        "illustration": "second-ekonomia-domowa-bez-dlugow",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "lepszy-cukiernik",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "W cukiernictwie zamiana składników objętościowo zamiast wagowo może zmienić strukturę wypieku, nawet gdy przepis wygląda tak samo.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "W recepturze kontroluje się masę składników, liczbę porcji, wielkość formy oraz stan surowców. Proporcje nie zawsze skalują się idealnie wraz z powierzchnią formy i czasem pieczenia. Dobre przepisy zawierają gramaturę, temperaturę oraz opis oczekiwanej konsystencji."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Przepis na 8 porcji wymaga 240 g mąki i 160 g cukru. Przy 12 porcjach podstawowe przeliczenie daje 360 g i 240 g; warunki wypieku wymagają jednak osobnej oceny, zwłaszcza przy zmianie naczynia."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przelicz cztery składniki z 8 na 12 porcji i zapisz, które parametry pozostają do sprawdzenia podczas pieczenia."
+          }
+        ],
+        "illustration": "second-lepszy-cukiernik",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "lepszy-kucharz",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Ta sama deska do krojenia może przenieść drobnoustroje z surowego mięsa na gotową sałatkę, nawet gdy wygląda na czystą.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Higiena obejmuje oddzielenie surowych produktów od gotowych do jedzenia, właściwe mycie rąk, dobór środków i kontrolę temperatur. Największe ryzyko to nie tylko zabrudzona powierzchnia, ale także połączenie złej kolejności prac i niewłaściwego przechowywania."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Na jednej desce przygotowano surowego kurczaka, a potem pomidory do podania na zimno. Samo wytarcie deski ręcznikiem nie jest odpowiednią kontrolą. Należy stosować odrębne lub prawidłowo umyte i zdezynfekowane narzędzia."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż przygotowanie posiłku z surowym mięsem i sałatką tak, aby ograniczyć ryzyko przeniesienia zanieczyszczeń."
+          }
+        ],
+        "illustration": "second-lepszy-kucharz",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "pasieka",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Sąsiedztwo uli może mieć znaczenie nie tylko dla zapylania, lecz także dla dostępu do wody, sąsiadów i bezpiecznej obsługi pasieki.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Lokalizację uli wybiera się, analizując pożytek, zacienienie, wiatr, dostęp do wody, ruch ludzi oraz możliwości dojazdu. Pasieka powinna dawać przestrzeń do bezpiecznego serwisu rodzin pszczelich i spełniać odpowiednie lokalne wymagania."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Plan przewiduje ustawienie uli tuż przy chodniku na granicy posesji, aby było blisko domu. To zły punkt wyjścia; trzeba przeanalizować tor lotu pszczół, przechodniów, sąsiedztwo oraz alternatywne ustawienie."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Narysuj plan działki z trzema możliwymi lokalizacjami uli i oceną: woda, wiatr, słońce, sąsiedzi, droga dojazdowa."
+          }
+        ],
+        "illustration": "second-pasieka",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "swiety-mikolaj",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Duża broda i długa peleryna mogą ograniczać widoczność i zwiększać ryzyko potknięcia podczas wizyty u dzieci.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Strój animatora powinien pozwalać normalnie oddychać, widzieć i poruszać się. Należy sprawdzić mocowanie brody, długość tkanin, stabilność obuwia i dopasowanie czapki. Materiał nie powinien znajdować się w pobliżu otwartego ognia."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Animator wchodzi po schodach z ciężkim workiem, a peleryna zahacza o stopnie. Lepiej zmienić sposób przenoszenia prezentów albo element stroju niż liczyć, że nie dojdzie do upadku."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż checklistę stroju: widoczność, wentylacja, długość tkanin, stabilność obuwia i materiały łatwopalne."
+          }
+        ],
+        "illustration": "second-swiety-mikolaj",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "trawnik-jestem-ogrodnikiem",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Trawa dobrze znosząca częste deptanie może gorzej radzić sobie w silnym cieniu — nie istnieje jedna idealna mieszanka na każdą działkę.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Przy wyborze mieszanki rozpoznaje się nasłonecznienie, rodzaj gleby, użytkowanie, wilgotność oraz lokalne warunki klimatyczne. Wysiew wymaga przygotowanego podłoża, odpowiedniej struktury i kontaktu nasion z ziemią. Zalecenia dawek i terminów zależą od mieszanki."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Rodzina planuje trawnik do gry w piłkę pod wysokimi drzewami. Mieszanka sportowa może nie poradzić sobie z brakiem światła; trzeba ustalić kompromis między użytkowaniem a warunkami miejsca."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Na schemacie trawnika wskaż strefę słoneczną, cienistą i mocno deptaną; dobierz wymagane cechy nasion."
+          }
+        ],
+        "illustration": "second-trawnik-jestem-ogrodnikiem",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "angielski-na-budowie",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Na anglojęzycznej budowie słowo „induction” może oznaczać instruktaż przed rozpoczęciem pracy, a nie zatrudnienie.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Na wejściu do budowy trzeba umieć powiedzieć, kim jesteś, kogo szukasz i czy przeszedłeś wymagany instruktaż. „Where is the site office?”, „I need an induction” i „Who is my supervisor?” to podstawowe pytania. Dostęp i wymagane dokumenty zależą od miejsca pracy."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Pracownik wchodzi na budowę i nie zna osoby odpowiedzialnej za przydział robót. Zamiast iść za innymi mówi: „I am new here. Where is the site office? Who is my supervisor?” i czeka na instrukcje."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przećwicz dialog powitalny po angielsku: przedstaw się, zapytaj o biuro i potwierdź, że potrzebujesz instruktażu."
+          }
+        ],
+        "illustration": "second-angielski-na-budowie",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "niemiecki-na-budowie",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "„Unterweisung” oznacza instruktaż, a „Baustelle” budowę. Rozumienie obu słów pomaga poprawnie rozpocząć pierwszy dzień.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Podczas wejścia na budowę przydają się pytania „Wo ist das Baubüro?”, „Wer ist mein Ansprechpartner?” i „Brauche ich eine Unterweisung?”. Nie zakładaj, że podobieństwo słów w językach gwarantuje właściwy sens; w razie wątpliwości poproś o powtórzenie."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Nowa osoba słyszy polecenie rozpoczęcia pracy w strefie oznaczonej zakazem. Może powiedzieć „Bitte wiederholen” i poprosić o wyjaśnienie zasad wejścia, zanim wykona czynność."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zapisz po niemiecku trzy pytania: o biuro, przełożonego i instruktaż. Przetłumacz każde na polski."
+          }
+        ],
+        "illustration": "second-niemiecki-na-budowie",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "norweski-na-budowie",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "HMS-kort i opplæring to różne pojęcia. Posiadanie karty identyfikacyjnej nie zastępuje instruktażu stanowiskowego.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Pierwszego dnia pracownik powinien wiedzieć, gdzie się zgłosić, jakie zasady HMS obowiązują i kto odpowiada za instruktaż. Przydatne zdania: „Hvor er brakkeriggen?”, „Hvem er basen?” oraz „Jeg trenger opplæring før jeg begynner”. W razie niejasności należy zapytać."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Pracownik otrzymuje kartę HMS, ale nie przeprowadzono SJA dla ryzykownej operacji. Sama karta nie oznacza, że może rozpocząć pracę; trzeba ustalić zagrożenia i zasady wykonania."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Napisz po norwesku dialog pierwszego dnia: powitanie, pytanie o basen i instruktaż, potwierdzenie miejsca zbiórki."
+          }
+        ],
+        "illustration": "second-norweski-na-budowie",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "lepszy-szef",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Niejasne zadanie może wyglądać jak brak kompetencji pracownika, choć rzeczywistą przyczyną jest brak potrzebnych danych i uprawnień do decyzji.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Skuteczne delegowanie określa rezultat, termin, wymagane dane, zakres samodzielności i punkt kontroli. Warto poprosić pracownika, aby własnymi słowami opisał zadanie — to pozwala wykryć rozbieżności bez strofowania go."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Szef mówi „załatw ofertę do piątku”, ale nie podaje klienta, zakresu ani ceny. Poprawna instrukcja ustala klienta, produkty, dane ofertowe, osobę akceptującą i oczekiwany termin."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przepisz niejasne polecenie w pięciu punktach: co, dla kogo, z jakich danych, do kiedy i kto zatwierdza."
+          }
+        ],
+        "illustration": "second-lepszy-szef",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "astro-consafe-wms",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "WMS może pokazywać różne funkcje operatorowi i supervisorowi, choć oboje pracują na tych samych artykułach i lokalizacjach.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Rola pracownika zwykle ogranicza się do zadań operacyjnych: skanowania, potwierdzania i zgłaszania wyjątku. Supervisor nadzoruje zlecenia, zaległości, blokady i odchylenia. Konkretne menu zależy od wersji i wdrożonej konfiguracji systemu."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Operator stwierdza brak pięciu sztuk podczas kompletacji. Zamiast samodzielnie zwiększać stan, zgłasza rozbieżność właściwą ścieżką; upoważniona osoba sprawdza ruchy i status zapasu."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przypisz do ról: potwierdzenie skanu, analiza rezerwacji, korekta zapasu i weryfikacja przyczyny błędu."
+          }
+        ],
+        "illustration": "second-astro-consafe-wms",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "axapta-dynamics-magazyn",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "ERP może znać wartość towaru w księgach, choć nie prowadzi szczegółowej ścieżki każdego skanu w magazynie.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "ERP obsługuje szerszy proces gospodarczy: zamówienia, zakupy, sprzedaż i finanse. WMS koncentruje się na wykonaniu fizycznych czynności magazynowych, a TMS na przewozie. W Dynamics funkcje mogą się nakładać, ale pojęcia nadal opisują różne cele biznesowe."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Zakup 12 kartonów jest zapisany w ERP. Przyjęcie do WMS wymaga jednak ustalenia jednostek, ilości, lokalizacji i ewentualnych blokad jakości. Transport z magazynu organizuje kolejny proces."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Narysuj relację zamówienie zakupu → przyjęcie WMS → dostawa TMS i zapisz, gdzie powstaje każda informacja."
+          }
+        ],
+        "illustration": "second-axapta-dynamics-magazyn",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "blue-yonder-wms",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dwie osoby na tym samym magazynie mogą mieć inne ekrany, bo jedna kompletuje towary, a druga zarządza wyjątkiem i przepływem zadań.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Operator potrzebuje listy zadań i szybkiej informacji zwrotnej o poprawności skanu. Supervisor obserwuje obciążenie stref, nietypowe statusy i zadania opóźnione. Uprawnienia powinny być zgodne z odpowiedzialnością, by przypadkowe korekty nie omijały kontroli."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Skaner prowadzi pracownika do niedostępnej alejki. Operator zgłasza wyjątek; supervisor analizuje blokadę i może zmienić kolejność zadań zgodnie z zasadami instalacji."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Rozdziel pięć operacji między role i wyjaśnij, które wymagają dodatkowego uprawnienia."
+          }
+        ],
+        "illustration": "second-blue-yonder-wms",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "infor-wms",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Terminal RF służy do rejestrowania fizycznych czynności, ale o poprawności zapasu decyduje także logika właściciela, partii i statusu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Interfejs webowy może służyć planowaniu i nadzorowi, a RF prowadzi operatora po skanach. Każde potwierdzenie powinno zgadzać się z rzeczywistym towarem i jednostką. Rola, status i lokalizacja mogą wpływać na dostępne polecenia."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Operator widzi dwie palety tego samego SKU należące do różnych klientów. Poprawny wybór wymaga sprawdzenia ownera i etykiety, nie tylko dopasowania numeru artykułu."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż formularz kontroli skanu: owner, SKU, lot, LPN, location, quantity i status."
+          }
+        ],
+        "illustration": "second-infor-wms",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "manhattan-active-wms",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "To, że na pulpicie wyświetla się 100 sztuk zapasu, nie oznacza, że użytkownik ma prawo zamienić tę liczbę bez śladu audytowego.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Role w WMS rozdzielają obsługę operacji od zarządzania wyjątkami, stanem i priorytetami. Pulpit prezentuje zadania, alerty i KPI, ale zakres pól zależy od wdrożenia. Historia zdarzeń ma umożliwiać wyjaśnienie skąd wziął się dany wynik."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Kierownik zmiany widzi wysoką liczbę opóźnionych kompletacji. Zamiast usuwać alerty, sprawdza brakujące nośniki, dostępność zapasu i awarie urządzeń."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Narysuj pulpit z trzema metrykami: zadania w toku, wyjątki i opóźnione zamówienia; dopisz bezpieczne działania."
+          }
+        ],
+        "illustration": "second-manhattan-active-wms",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "ongoing-wms",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Magazyn dla wielu sklepów musi rozpoznać właściciela towaru nawet wtedy, gdy dwa sklepy używają tego samego numeru produktu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Role i uprawnienia chronią dane klientów oraz limitują operacje, takie jak korekta stanów czy dostęp do zamówień. Obsługa operatora powinna prowadzić przez ruch zlecenia i skan, a panel administracyjny pozwalać analizować integracje i wyjątki. Szczegóły zależą od konfiguracji klienta."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Klient A i B sprzedają produkt o kodzie 001, ale mają osobny zapas. Operator musi zobaczyć odpowiedniego goods ownera podczas przyjęcia, by nie przypisać kartonu niewłaściwemu sprzedawcy."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zbuduj tabelę dwóch klientów z identycznym SKU, różnymi stanami i dwoma zamówieniami. Pokaż, dlaczego nie wolno ich mieszać."
+          }
+        ],
+        "illustration": "second-ongoing-wms",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "oracle-wms-cloud",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Zeskanowanie etykiety kontenera (LPN) nie jest tym samym co zeskanowanie pojedynczego produktu (SKU).",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Menu WMS zależy od roli i etapu procesu: przyjęcie, odkładanie, kompletacja i wysyłka. Urządzenie RF powinno wymagać właściwego identyfikatora w odpowiednim kroku, aby powiązać czynność z nośnikiem, ilością i lokalizacją. Nie każdy ekran wygląda identycznie we wszystkich instalacjach."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Podczas przyjęcia kartonu operator skanuje SKU zamiast wymaganej etykiety LPN. System nie może potwierdzić jednostki logistycznej; pracownik wraca do właściwego kodu i weryfikuje zawartość."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Rozróżnij trzy etykiety: SKU, LPN i lokalizacja. Zaznacz kiedy skanuje się każdą z nich w przykładowym procesie."
+          }
+        ],
+        "illustration": "second-oracle-wms-cloud",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sap-ewm-magazyn",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "W SAP EWM nazwa storage bin oznacza lokalizację, a warehouse task — czynność do wykonania; ich pomylenie zmienia sens procesu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Role i obszary pracy pozwalają obsługiwać przyjęcia, zapas, warehouse tasks i monitor magazynu. RF służy wykonaniu określonej czynności, a webowy lub desktopowy interfejs może wspierać nadzór. Uprawnienia i używane transakcje zależą od konfiguracji wdrożenia."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Pracownik otrzymuje zadanie odłożenia HU do lokacji A-01-03, ale widzi tam inną paletę. Nie powinien potwierdzać zadania fikcyjnie; zgłasza konflikt lokacji zgodnie z procedurą."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Na schemacie rozdziel: warehouse number, storage type, storage bin, HU i warehouse task. Wyjaśnij związek każdego z nich."
+          }
+        ],
+        "illustration": "second-sap-ewm-magazyn",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "sap-tm-transport",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Ta sama dostawa może występować w kilku systemach jako różne obiekty: zamówienie w ERP, wydanie towaru w EWM i potrzeba przewozu w TM.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "ERP utrzymuje proces handlowy, EWM realizuje operacje fizyczne, a TM planuje i rozlicza przewozy. Między systemami przekazuje się statusy, masę, objętość, okna czasowe i dokumenty. Błędy jednostek lub identyfikatorów mogą psuć plan mimo poprawnej trasy na mapie."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "ERP zapisuje zamówienie 12 palet, EWM fizycznie przygotowuje 10, a TM planuje przewóz 12. Przed wysyłką trzeba uzgodnić status faktycznej gotowości i zaktualizować dane."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zbuduj przepływ zamówienie → przygotowanie w EWM → plan TM → potwierdzenie dostawy. Przy każdym kroku wpisz dane wejściowe."
+          }
+        ],
+        "illustration": "second-sap-tm-transport",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "facebook-ads-promocja",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dwustopniowe uwierzytelnianie może chronić konto reklamowe przed przejęciem, które poza utratą profilu grozi również nieautoryzowanymi wydatkami.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Reklama wymaga odpowiednich ról dostępu, zabezpieczenia konta i zasad rozliczenia. Przed uruchomieniem kampanii sprawdź, kto ma uprawnienie do wydawania budżetu, edycji reklam i dostępu do danych klientów. Uprawnienia powinny odpowiadać zakresowi pracy."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Agencja potrzebuje analizować raporty, ale nie musi znać hasła właściciela. Bezpieczniejszy proces polega na przydzieleniu właściwej roli i ograniczeniu uprawnień do potrzebnego konta."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zrób checklistę bezpieczeństwa konta: 2FA, administratorzy, role, płatności, dostępy i przegląd zmian."
+          }
+        ],
+        "illustration": "second-facebook-ads-promocja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "google-ads-promocja",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Jeden reklamodawca może mieć wiele kampanii, a każda kilka grup reklam, dzięki czemu budżet i tematyka nie mieszają się przypadkowo.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Hierarchia obejmuje konto, kampanię, grupę reklam, reklamy i powiązane słowa kluczowe. Na poziomie kampanii zwykle ustala się cel i budżet, a na poziomie grupy temat i dopasowanie komunikatu do intencji. Struktura powinna wynikać z oferty, nie z liczby dostępnych przycisków."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Firma świadczy mycie dachów i sprzątanie biur. Jedna grupa reklam z obydwoma usługami prowadzi do niejasnego tekstu. Rozdzielenie tematów pozwala dopasować reklamę i stronę do zapytania."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż strukturę konta dla dwóch usług z odrębnymi grupami reklam, budżetami i intencjami słów kluczowych."
+          }
+        ],
+        "illustration": "second-google-ads-promocja",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "apartamenty",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Przy sprzątaniu ważne jest, aby nie przenosić zanieczyszczeń z łazienki na powierzchnie mające kontakt z żywnością.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Kolejność obejmuje oględziny i dokumentowanie usterek, usuwanie odpadów, pracę od czystszych stref do bardziej zabrudzonych, wymianę tekstyliów i kontrolę końcową. Narzędzia powinny mieć przypisane przeznaczenie, a środki być zgodne z powierzchnią."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Pracownik najpierw myje toaletę, a potem używa tej samej ściereczki do kuchennego blatu. Plan sprzątania musi rozdzielać wyposażenie i przewidywać higieniczną kolejność zadań."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zapisz kolejność sprzątania apartamentu 40 m² z kuchnią i łazienką oraz trzy punkty kontroli."
+          }
+        ],
+        "illustration": "second-apartamenty",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "odbiory",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Zdjęcie rysy bez skali może wprowadzać w błąd: na dwóch fotografiach ta sama wada może wyglądać na znacznie większą lub mniejszą.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Oględziny wykonuje się według stałej trasy: ściany, posadzki, stolarka, instalacje dostępne do oceny i elementy wspólne. Należy notować lokalizację, materiał, objaw, pomiar i dokumentację odniesienia. Nie wolno przypisywać przyczyn bez dowodów."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Przy oknie widoczna jest wilgotna plama. Odbierający dokumentuje jej pozycję, zasięg i warunki, zamiast od razu uznawać, że przyczyną jest nieszczelny parapet."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przygotuj formularz usterki: pomieszczenie, materiał, objaw, zdjęcie ogólne i detal, rozmiar oraz wymagane dalsze sprawdzenie."
+          }
+        ],
+        "illustration": "second-odbiory",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "wspolnota",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Nawet niewielka wspólnota może potrzebować odrębnych rejestrów uchwał, przeglądów technicznych i wydatków, bo każdy z nich dokumentuje inny rodzaj decyzji.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Dokumentacja zarządcza obejmuje właścicieli, uchwały, umowy, ewidencję wpływów i kosztów, przeglądy oraz zgłoszenia usterek. Dostęp do danych osobowych powinien być ograniczony, a terminy przeglądów i obowiązki prawne zweryfikowane dla właściwej jurysdykcji."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Po awarii dachu zarząd otrzymuje ofertę naprawy, ale nie ma protokołów wcześniejszych usterek. Uporządkowany rejestr ułatwia ocenę historii problemu i podjęcie decyzji."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zaprojektuj pięć rejestrów wspólnoty, ich minimalne pola i osobę odpowiedzialną za aktualizację."
+          }
+        ],
+        "illustration": "second-wspolnota",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "opieka-seniorzy",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dobre słuchanie osoby starszej to nie tylko potwierdzanie słów; oznacza także danie czasu na odpowiedź bez kończenia wypowiedzi za nią.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Komunikacja powinna uwzględniać możliwości słuchowe, wzrokowe, stan zdrowia i preferencje rozmówcy. Mów wyraźnie, sprawdzaj zrozumienie i nie traktuj osoby dorosłej jak dziecka. Przed podjęciem decyzji zapytaj, jakie wsparcie senior rzeczywiście chce otrzymać."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Senior długo odpowiada na pytanie o posiłek, więc opiekun zaczyna mówić za niego. Lepiej dać czas, zadać prostsze pytanie i sprawdzić, czy pomoc jest potrzebna."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przeredaguj trzy protekcjonalne zwroty na pytania, które zachowują szacunek i autonomię."
+          }
+        ],
+        "illustration": "second-opieka-seniorzy",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "wsparcie-adhd",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Osoba może potrafić długo koncentrować się na pasjonującym zadaniu, a mimo to mieć duże trudności z rozpoczęciem mniej atrakcyjnego obowiązku.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "ADHD wiąże się m.in. z regulacją uwagi, impulsywności i funkcji wykonawczych, ale objawy są różne u różnych osób. Przeciążenie bodźcami, brak snu i stres mogą pogarszać funkcjonowanie. Ocena i leczenie należą do kompetentnych specjalistów."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Uczeń rozwiązuje trudne zadanie komputerowe przez godzinę, ale nie potrafi zacząć krótkiego formularza. Zamiast oskarżać go o lenistwo, można przygotować pierwszy mały krok i wyraźny termin."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Rozbij uciążliwy obowiązek na pięć działań, określ pierwszy ruch oraz sposób sprawdzenia postępu."
+          }
+        ],
+        "illustration": "second-wsparcie-adhd",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "festyn",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Zmiana wielkości porcji o 10% może znacząco zwiększyć koszt dużej imprezy, nawet gdy jednostkowo różnica wygląda niewinnie.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Recepturę zapisuje się w gramach na porcję wraz z przewidywanym odpadem, alergenami i wymaganiami przechowywania. Powtarzalność umożliwia porównanie planowanego zużycia z rzeczywistym. Wydajność sprzętu wyznacza, ile porcji można bezpiecznie przygotować w danym czasie."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Na 100 porcji potrzeba 120 g składnika głównego na porcję, czyli 12 kg bez zapasu na ubytki. Jeśli obsługa wydaje 150 g, zapas wystarczy na 80 porcji."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Oblicz zapotrzebowanie dla 80 porcji po 150 g i zapisz, co jeszcze trzeba uwzględnić w zakupach."
+          }
+        ],
+        "illustration": "second-festyn",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kgw",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Wydatek może być rzeczywisty i dobrze udokumentowany, ale nadal nie kwalifikować się do zwrotu z konkretnego programu dotacyjnego.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Budżet dzieli wydatki na kategorie zgodnie z zatwierdzonym projektem. Przy każdej pozycji warto zapisać limit, dokument, termin, cel i status rozliczenia. Przesunięcia między kategoriami mogą wymagać zgody według obowiązującego regulaminu."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Koło ma 5 000 zł na materiały, lecz chce wydać 1 000 zł z tej kategorii na sprzęt. Nie wystarczy nazwać wydatku materiałem; trzeba sprawdzić dopuszczalne zmiany budżetu."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zbuduj tabelę: kategoria, limit, wydatek, pozostało, dowód, warunek kwalifikowalności."
+          }
+        ],
+        "illustration": "second-kgw",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "blizej-dziecka",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dziecko może uznać krótką, przewidywalną wspólną aktywność za bardziej wartościową niż długi czas bez rzeczywistej uwagi.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Czas jakościowy to wspólna obecność z uwagą skierowaną na dziecko, bez presji na 'wielkie atrakcje'. Dobrze sprawdza się wybór aktywności przez dziecko i zachowanie regularności. Różne grupy wiekowe mogą potrzebować innych form kontaktu."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Rodzic proponuje drogi wyjazd, lecz dziecko chce po prostu wspólnie naprawić rower. Lepsze słuchanie oznacza potraktowanie tej propozycji poważnie."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zaplanuj trzy proste aktywności po 15 minut: w domu, na spacerze i podczas wspólnego obowiązku."
+          }
+        ],
+        "illustration": "second-blizej-dziecka",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "bdo",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Opakowanie przesyłki nie składa się tylko z kartonu: taśma, folia, wypełnienie i etykieta również mogą mieć znaczenie w ewidencji.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Mapa opakowań powinna rozdzielać rodzaj materiału, masę, liczbę użytych elementów i rolę firmy wobec opakowania. Sam numer produktu nie wystarcza. Obowiązki w BDO trzeba ustalić na podstawie aktualnego prawa i modelu działalności, nie automatycznie dla każdego sklepu."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Do jednej przesyłki użyto kartonu 150 g, papieru 40 g i folii 20 g. W ewidencji materiałowej widać łącznie 210 g różnych tworzyw, ale sposób raportowania wymaga dodatkowej analizy prawnej."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Stwórz tabelę dla pięciu rodzajów opakowań z kolumną masy, przeznaczenia i pytaniem o zakres obowiązku."
+          }
+        ],
+        "illustration": "second-bdo",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "gpsr",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Osoba sprzedająca produkt pod własną marką może mieć inne obowiązki niż sprzedawca, który tylko dystrybuuje wyrób innego producenta.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Trzeba ustalić, kto projektuje, produkuje, wprowadza i sprzedaje dany produkt oraz kto odpowiada za jego identyfikację i dokumentację. Rola prawna zależy od rzeczywistej działalności i przepisów szczególnych, a nie tylko od słowa 'rękodzieło'."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Twórca wykonuje metalowy wieszak, oznacza go własną marką i sprzedaje online. Powinien rozpoznać zagrożenia ostrymi krawędziami i mocowaniem oraz własne obowiązki wobec kupującego, zamiast uznać wyrób za zwolniony z zasad bezpieczeństwa."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przygotuj matrycę ról producenta, importera, dystrybutora i sprzedawcy, zaznaczając jakie informacje trzeba zweryfikować dla danego modelu."
+          }
+        ],
+        "illustration": "second-gpsr",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "koordynator",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dwa lokale o tej samej powierzchni nie muszą wymagać tyle samo pracy: stan wykończenia i zabrudzenie mogą zmienić czas sprzątania bardziej niż różnica metrażu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Kalkulacja usługi obejmuje powierzchnię, rodzaje materiałów, stopień zabrudzenia, dostęp do wody i prądu, czas dojazdu, środki i kontrolę jakości. Stawka za metr kwadratowy może być punktem wyjścia, lecz nie zastępuje oględzin i opisu zakresu."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Lokal A ma 60 m² gładkich podłóg, a B także 60 m², ale szkło, kamienne blaty i zabrudzenia po remoncie. Ta sama cena i czas bez sprawdzenia warunków mogą spowodować stratę."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Policz hipotetyczne zlecenie: 4 h pracy po 60 zł, materiały 35 zł, dojazd 40 zł; dopisz koszt kontroli jakości i rezerwę."
+          }
+        ],
+        "illustration": "second-koordynator",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "dziennik-kota",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dwa koty mogą potrzebować zupełnie różnych warunków w hoteliku, nawet gdy są zdrowe i tej samej rasy.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Wywiad powinien obejmować dietę, zachowanie, historię chorób, leki, tolerancję innych kotów, stres podczas podróży i kontakt awaryjny. Należy ustalić aktualne wymagania weterynaryjne i lokalne zasady przyjęcia. Nie wolno obiecywać wspólnej przestrzeni kotom, które mogą się stresować."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Właściciel mówi, że kot 'nigdy nie chorował', ale nie pamięta ostatnich dokumentów i przyznaje, że zwierzę nie toleruje obcych kotów. Hotelik doprecyzowuje dane i organizuje odrębne, bezpieczne warunki."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Napisz formularz przyjęcia kota z ośmioma pytaniami i zasadą reagowania na brak odpowiedzi ważnej dla dobrostanu."
+          }
+        ],
+        "illustration": "second-dziennik-kota",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "petsitter",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Brak apetytu może u kota wynikać z sytuacyjnego stresu, ale nie wolno zakładać, że zawsze jest nieszkodliwy.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Przed pierwszą wizytą ustal adres, dostęp do mieszkania, ilość i rodzaj pokarmu, miejsce kuwety, nawodnienie, stan zdrowia, leki oraz kontakt alarmowy. Najważniejsza jest obserwacja zmian, nie automatyczne wykonywanie listy bez spojrzenia na zwierzę."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Opiekun ma tylko instrukcję 'nasyp suchą karmę'. Tymczasem kot ma chorobę wymagającą regularnej diety. Przed przyjęciem zlecenia trzeba doprecyzować informacje i uzgodnić granice odpowiedzialności."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż formularz opieki: żywienie, woda, kuweta, obserwacja zdrowia, klucze, numer weterynarza i sposób raportowania."
+          }
+        ],
+        "illustration": "second-petsitter",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "kryzys-po-40-bez-dlugow",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Duży zakup może wydawać się dostępny, jeśli patrzysz tylko na ratę, ale koszt utrzymania pojawia się także wtedy, gdy przedmiot nie jest używany.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Prawdziwy koszt życia obejmuje zarówno rachunki miesięczne, jak i wydatki roczne, serwis pojazdów, zdrowie i koszty utrzymania majątku. Do oceny płynności nie wystarczy deklarowany dochód; trzeba znać kwotę dostępną po obowiązkowych płatnościach."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Dochód netto 8 000 zł, rachunki 4 400 zł, wydatki zmienne 2 100 zł i roczne rezerwy 900 zł pozostawiają 600 zł. Rata 1 500 zł nie jest bezpieczna tylko dlatego, że bank ją proponuje."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Stwórz miesięczny bilans z trzema grupami wydatków i sprawdź hipotetyczne zwiększenie kosztów o 10%."
+          }
+        ],
+        "illustration": "second-kryzys-po-40-bez-dlugow",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "lepsza-mama",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Rodzic może być zmęczony i nadal zapewniać dziecku bezpieczeństwo — pomocne jest rozpoznanie własnych potrzeb przed eskalacją konfliktu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Zauważanie potrzeb dziecka nie oznacza automatycznego spełniania każdej prośby. Ważne są poczucie bezpieczeństwa, możliwość wyboru i jasne granice. Rodzic ma również prawo do snu, odpoczynku i wsparcia, a komunikowanie tych potrzeb może uczyć dziecko szacunku do innych."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Mama jest po pracy, a dziecko chce długiej zabawy. Może powiedzieć 'widzę, że chcesz być razem, potrzebuję 10 minut odpoczynku, potem zagramy' i rzeczywiście wrócić zgodnie z obietnicą."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Napisz trzy odpowiedzi na prośbę dziecka, gdy rodzic jest zmęczony: uznanie potrzeby, granica, konkretna propozycja."
+          }
+        ],
+        "illustration": "second-lepsza-mama",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "lepszy-tata",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dziecko w wieku szkolnym może potrzebować więcej samodzielności niż przedszkolak, a nastolatek więcej szacunku do prywatności — choć każde nadal potrzebuje kontaktu.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Potrzeby rozwojowe zmieniają się wraz z wiekiem i temperamentem dziecka. Małe dzieci uczą się poprzez zabawę, dzieci starsze chcą rozumieć zasady, a nastolatki ćwiczą niezależność. Słuchaj konkretnego dziecka, zamiast zakładać, że wszyscy rówieśnicy potrzebują tego samego."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Ojciec chce wybrać zajęcia 13-latka tak samo jak kilka lat wcześniej. Lepsze podejście to wspólnie omówić obowiązki i zainteresowania, pozostawiając nastolatkowi realny udział w decyzji."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Ułóż trzy wersje rozmowy o planie weekendu dla dziecka 5-, 10- i 15-letniego."
+          }
+        ],
+        "illustration": "second-lepszy-tata",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mierz-ponad-sily",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Portfolio konkretnych projektów pomaga pokazać kompetencje, których nie widać w samym opisie stanowiska na CV.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Wiele umiejętności można udowodnić rezultatem: działającą aplikacją, wykonaną analizą, dokumentacją lub projektem technicznym. Trzeba jednak rozdzielać kompetencje praktyczne od zawodowych uprawnień wymaganych prawem. Dobra próbka pracy pokazuje także proces, błędy i sposoby kontroli."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Kandydat twierdzi, że zna Excela. Drugi pokazuje model kosztorysu z formułami, danymi i weryfikacją. Drugi dowód jest bardziej konkretny, ale nie daje automatycznie kwalifikacji księgowego."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zaplanuj portfolio z trzema pracami i opisz, jakie zadanie, wyniki i dowody jakości pokażesz dla każdej."
+          }
+        ],
+        "illustration": "second-mierz-ponad-sily",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "mocny-charakter",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Zachowanie zgodne z własnymi wartościami może wymagać przyznania się do błędu, a nie tylko mocnego wypowiedzenia własnego zdania.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Wartości to zasady ważne przy podejmowaniu decyzji, a nie slogany. Przekładają się na działania w sytuacjach presji: uczciwość na zgłaszanie niezgodności, troska na wsparcie słabszego, samodzielność na odpowiedzialne wybory. Wartości mogą czasem wchodzić ze sobą w konflikt."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Pracownik deklaruje 'zależy mi na bezpieczeństwie', ale nie zgłasza niesprawnego sprzętu z obawy przed opóźnieniem. Spójność wymaga działania zgodnego z zasadą, nawet jeśli jest niewygodne."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Wybierz trzy wartości i dla każdej opisz trudną sytuację, konkretny wybór i koszt tego wyboru."
+          }
+        ],
+        "illustration": "second-mocny-charakter",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "nie-lubie-ludzi",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Chęć przebywania samemu nie jest sama w sobie problemem do leczenia. Ważne, czy taki styl życia odpowiada Twoim potrzebom i nie wynika z lęku lub cierpienia.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Introwersja, czasowe przeciążenie społeczne i unikanie kontaktu z lęku nie znaczą tego samego. Zmęczenie zmienia tolerancję na hałas i rozmowy, a nie świadczy o wartości innych ludzi. Nie trzeba zmieniać temperamentu, żeby nauczyć się skuteczniej stawiać granice."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Po całym dniu spotkań ktoś nie chce kolejnej imprezy i uważa, że 'nie lubi ludzi'. Może po prostu potrzebować odpoczynku; warto obserwować powtarzalność sytuacji i własne potrzeby."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przez tydzień notuj trzy czynniki: ilość kontaktu, poziom energii i chęć rozmowy. Poszukaj wzoru bez stawiania diagnozy."
+          }
+        ],
+        "illustration": "second-nie-lubie-ludzi",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "partner-z-uzaleznieniem",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Rozmowa przeprowadzona podczas silnego odurzenia może być mało skuteczna, a w sytuacji agresji także niebezpieczna.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Temat uzależnienia wymaga rozróżnienia troski, granic i bezpieczeństwa. Można mówić o obserwowanym zachowaniu i konsekwencjach bez upokarzania, ale nie należy negocjować podczas przemocy lub zagrożenia. W takiej sytuacji właściwa jest ochrona siebie i dzieci oraz kontakt z pomocą."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Partner wraca pijany, krzyczy i żąda natychmiastowego rozwiązania konfliktu. Zamiast podejmować trudną rozmowę w eskalacji, priorytetem jest bezpieczeństwo i możliwość wycofania się."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Napisz bezpieczny komunikat o granicy na spokojny moment; osobno wypisz sygnały, przy których rozmowa nie powinna być podejmowana."
+          }
+        ],
+        "illustration": "second-partner-z-uzaleznieniem",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "pomagaj-dziecku-w-lekcjach",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Dziecko może znać definicję, a jednocześnie nie potrafić zastosować jej w nowym zadaniu. To dwie różne umiejętności.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Przed tłumaczeniem zadaj trzy pytania: co już rozumiesz, w którym miejscu utknąłeś i jakiej próby dokonałeś. Trudność może wynikać z niezrozumiałego polecenia, braku wcześniejszej wiedzy lub przeciążenia, dlatego nie ma jednej skutecznej odpowiedzi."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Uczeń błędnie dzieli 36 przez 4. Zamiast natychmiast podać 9, można poprosić o rozłożenie 36 przedmiotów w cztery równe grupy i obserwować jego myślenie."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Przygotuj po dwa pytania pomagające przy problemie matematycznym i przy zadaniu z czytania tekstu."
+          }
+        ],
+        "illustration": "second-pomagaj-dziecku-w-lekcjach",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "poznaj-siebie",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "To, co nazywamy mocną stroną, bywa zależne od środowiska: ta sama dokładność może pomagać w kontroli jakości i utrudniać pracę wymagającą szybkiej improwizacji.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Wartość opisuje, co uznajesz za ważne, a mocna strona — co zwykle potrafisz robić skutecznie. Pojedyncza decyzja nie definiuje całej osoby; obserwuj zachowania w wielu sytuacjach i porównuj rezultaty z własnymi potrzebami."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Ktoś uważa się za 'niezorganizowanego', bo nie lubi kalendarza. W praktyce znakomicie przygotowuje materiały do projektów. Warto oddzielić narzędzie organizacji od faktycznej umiejętności planowania."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Wypisz trzy wartości, trzy sytuacje, w których były ważne, oraz jedno działanie pozwalające je lepiej realizować."
+          }
+        ],
+        "illustration": "second-poznaj-siebie",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "rodzice-50-50",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Harmonogram opieki powinien uwzględniać nie tylko dni, ale też punkt przekazania, szkołę, zajęcia, leczenie i wydarzenia jednorazowe.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Dziecko potrzebuje przewidywalności, a dorośli wspólnego sposobu zapisywania zmian. Kalendarz powinien pokazywać godzinę przekazania, miejsce, kto odpowiada za transport i jakie rzeczy są potrzebne. Szczegółowe zasady prawne zależą od ustaleń opiekunów i obowiązującego prawa."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Zmienia się dzień szkolnej wycieczki, a informacje trafiają tylko do jednego rodzica. Wspólny rejestr i potwierdzenie odczytu pomagają uniknąć sytuacji, w której dziecko zostaje bez wyposażenia."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zaprojektuj tygodniowy kalendarz opieki z pięcioma polami, które ograniczą nieporozumienia."
+          }
+        ],
+        "illustration": "second-rodzice-50-50",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "transport-logistyka-praktycznie",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Wybór transportu zależy nie tylko od kilometrów, ale od opakowania, wymaganej temperatury, czasu dostawy i możliwości rozładunku.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Transport drogowy bywa elastyczny na krótszych trasach, kolejowy korzystny przy wybranych dużych wolumenach, a morski przy przewozach międzynarodowych o innych wymaganiach czasowych. Każdy sposób ma ograniczenia masy, wymiarów i dokumentów; wybór wymaga danych konkretnego zlecenia."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Masz przewieźć 30 małych paczek lokalnie i 10 kontenerów przez ocean. Jeden środek transportu nie będzie optymalny dla obu zadań; porównuje się termin, koszt, dostępność i obsługę ładunku."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Zrób tabelę dla drogi, kolei, morza i lotnictwa: typowy atut, ograniczenie i potrzebne dane do wyceny."
+          }
+        ],
+        "illustration": "second-transport-logistyka-praktycznie",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "wyjdz-z-toksycznego-zwiazku",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Kontrola może pojawiać się stopniowo — jako żądanie haseł, ograniczanie kontaktów czy wydatków — zanim dojdzie do jawnych gróźb.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Nie każda trudna rozmowa oznacza przemoc, ale powtarzający się wzorzec kontroli i zastraszania jest sygnałem alarmowym. Pomocne jest rozróżnienie faktów od usprawiedliwień, ograniczania kontaktu od uzgodnionych granic oraz bezpiecznego planowania od konfrontacji."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Osoba wymaga codziennych zdjęć potwierdzających miejsce pobytu i grozi, że zabierze pieniądze w razie odmowy. To zachowanie kontrolujące, a nie neutralny wyraz troski."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Wypisz pięć sygnałów kontroli i bezpieczne osoby lub instytucje, z którymi można omówić sytuację."
+          }
+        ],
+        "illustration": "second-wyjdz-z-toksycznego-zwiazku",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zaczynam-od-zera",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Po stracie majątku lista tego, co nadal posiadasz — dokumenty, umiejętności, kontakty i czas — może być bardziej użyteczna niż sama wycena utraconych rzeczy.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Rozdziel zasoby finansowe, użytkowe i ludzkie. Gotówka, mieszkanie, auto, umiejętności i możliwość podjęcia pracy mają różną dostępność oraz różne koszty. Część aktywów może być obciążona długiem i nie oznacza wolnej wartości do wydania."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Osoba nie ma oszczędności, lecz ma narzędzia, uprawnienia zawodowe i kontakty do byłych klientów. Plan odbudowy może zacząć się od umiejętności i stabilnego przychodu, nie od ryzykownej pożyczki."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Sporządź listę zasobów w czterech kategoriach: gotówka, majątek, umiejętności i wsparcie. Oszacuj realną dostępność każdego."
+          }
+        ],
+        "illustration": "second-zaczynam-od-zera",
+        "editorial_status": "review_needed"
+      }
+    },
+    {
+      "course_slug": "zwiazek-rozmowa",
+      "lesson_no": 1,
+      "material_patch": {
+        "curiosity": "Powtórzenie własnymi słowami wypowiedzi partnera nie oznacza zgody z nią. To sprawdzenie, czy prawidłowo zrozumieliśmy znaczenie.",
+        "sections": [
+          {
+            "heading": "Zrozum temat",
+            "text": "Aktywne słuchanie polega na daniu czasu, parafrazie i dopytaniu o to, co niejasne. W rozmowie warto oddzielać fakt od interpretacji i nie przygotowywać odpowiedzi w trakcie cudzej wypowiedzi. Jeśli występuje przemoc, sama technika rozmowy nie zastępuje bezpieczeństwa."
+          },
+          {
+            "heading": "Przykład z prawdziwej sytuacji",
+            "text": "Partner mówi 'jest mi trudno, kiedy wracasz późno', a druga osoba słyszy oskarżenie. Parafraza 'czy martwisz się, że nie mamy wspólnego czasu?' pozwala sprawdzić sens zanim pojawi się spór."
+          },
+          {
+            "heading": "Twoje zadanie",
+            "text": "Dla trzech trudnych wypowiedzi zapisz parafrazę i jedno pytanie otwarte bez oceniania."
+          }
+        ],
+        "illustration": "second-zwiazek-rozmowa",
+        "editorial_status": "review_needed"
+      }
+    }
+  ]
+}
