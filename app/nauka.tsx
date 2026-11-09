@@ -15,7 +15,7 @@ import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrienta
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{raw?:string[],sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
+ material:{raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
@@ -220,6 +220,10 @@ export default function Learning(){
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
+   {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#eff5e9',borderLeftWidth:3,borderLeftColor:'#87af73',borderRadius:9,gap:4}}>
+    <Text style={{fontSize:12,color:'#3b6a46',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
+    <Text style={{fontSize:15,color:'#2b4b35',lineHeight:23}}>{lesson.material.curiosity}</Text>
+   </View>}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:6,marginBottom:16,alignItems:'center'}}>
     <Text style={{color:'#366846',fontWeight:'900',fontSize:12,backgroundColor:'#e1efda',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
