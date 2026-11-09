@@ -308,9 +308,9 @@ try{
       fail('Ciesla missing registered technical image: '+name);
   }
   const learningNavigation=read('app/nauka.tsx');
-  if(!learningNavigation.includes('IV · EGZAMIN PISEMNY I PRÓBNY')||!learningNavigation.includes('ciesla-przygotowanie-czeladnicze'))
-    fail('Ciesla 38-lesson four-chapter mobile navigation is missing');
-  else ok('Ciesla four learning stages and '+cieslaImages.size+' illustration IDs registered');
+  if(!learningNavigation.includes('VII · PRZYGOTOWANIE DO EGZAMINU PISEMNEGO')||!learningNavigation.includes('items.slice(56,63)')||!learningNavigation.includes('ciesla-przygotowanie-czeladnicze'))
+    fail('Ciesla seven-module navigation for lessons 1–63 is missing');
+  else ok('Ciesla seven learning stages and '+cieslaImages.size+' illustration IDs registered');
   
   const beginnerCraftGuides=JSON.parse(read('content/craft-guides-beginner-20.json'));
  if(beginnerCraftGuides.courses.length!==20||beginnerCraftGuides.courses.some(c=>c.lessons.length!==8||c.lessons.some(l=>l.sections.length!==4)))
