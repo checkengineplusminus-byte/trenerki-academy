@@ -172,6 +172,23 @@ export default function Learning(){
       <Text style={{fontSize:11,color:'#7b6548'}}>Powtórz ćwiczenie, aby sprawdzić zrozumienie.</Text>
     </Pressable>)}
    </View>}
+   {slug==='kowal-tradycja'&&items.length===30&&<View style={{gap:7,marginBottom:14}}>
+    {[
+     {name:'I · WARSZTAT I PODSTAWY',description:'BHP, stal, rysunek, narzędzia i konserwacja',start:0},
+     {name:'II · TECHNIKI KUCIA',description:'Kształtowanie, przebijanie, łączenie, obróbka cieplna',start:10},
+     {name:'III · PROJEKTY I NAPRAWY',description:'Wyroby, bryczki, podkuwnictwo i projekt końcowy',start:20}
+    ].map(part=>{
+     const n=items.filter(x=>x.lesson_no>=part.start&&x.lesson_no<part.start+10&&done.includes(x.lesson_no)).length;
+     const current=module>=part.start&&module<part.start+10;
+     return <View key={part.start} style={{backgroundColor:current?'#e5f2e0':'#f7faf4',borderWidth:1,borderColor:current?'#9bc39a':'#dae8d6',paddingVertical:10,paddingHorizontal:13,borderRadius:12}}>
+      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:7}}>
+       <Text style={{color:ink,fontSize:13,fontWeight:'900',flex:1}}>{part.name}</Text>
+       <Text style={{color:'#446b4f',fontSize:12,fontWeight:'900'}}>{n}/10</Text>
+      </View>
+      <Text style={{color:secondary,fontSize:12,lineHeight:19,marginTop:4}}>{part.description}</Text>
+     </View>;
+    })}
+   </View>}
    <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
     style={{backgroundColor:'#f1f6ed',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#d6e7d0',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
