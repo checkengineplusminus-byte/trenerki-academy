@@ -199,10 +199,13 @@ export default function Learning(){
      <Text style={{color:secondary,fontSize:12}}>Lekcja {index+1}/{items.length}</Text>
    </Pressable>
    {showProgram&&((slug==='ciesla-przygotowanie-czeladnicze')?[
-      {name:'I · TECHNOLOGIA CIESIELSKA',about:'Lekcje 1–10 · konstrukcje szkieletowe, tarcica, suszenie, więźby, złącza i pomiary',list:items.slice(0,10)},
-      {name:'II · MASZYNOZNAWSTWO',about:'Lekcje 11–20 · narzędzia, pilarki, strugarki, obrabiarki, napędy i konserwacja',list:items.slice(10,20)},
-      {name:'III · MATERIAŁOZNAWSTWO',about:'Lekcje 21–30 · drewno, wilgotność, wady, gęstość, płyty, kleje i ochrona',list:items.slice(20,30)},
-      {name:'IV · EGZAMIN PISEMNY I PRÓBNY',about:'Lekcje 31–38 · rachunkowość, dokumenty, rysunek, BHP, środowisko, prawo i zadanie końcowe',list:items.slice(30)}
+      {name:'I · TECHNOLOGIA CIESIELSKA',about:'Lekcje 1–10 · tarcica, suszenie, więźby, złącza, pomiary',list:items.slice(0,10)},
+      {name:'II · MASZYNOZNAWSTWO',about:'Lekcje 11–20 · piły, obrabiarki, napędy, konserwacja',list:items.slice(10,20)},
+      {name:'III · MATERIAŁOZNAWSTWO',about:'Lekcje 21–30 · anatomia drewna, wilgotność, wady, kleje',list:items.slice(20,30)},
+      {name:'IV · TECHNOLOGIE I NARZĘDZIA',about:'Lekcje 31–42 · szachulec, hydrotermia, lignoston, przekładnie i narzędzia',list:items.slice(30,42)},
+      {name:'V · ANATOMIA I DETALE KONSTRUKCJI',about:'Lekcje 43–50 · budowa drewna, podwalina, krokwie i połączenia',list:items.slice(42,50)},
+      {name:'VI · WARSZTAT I IZOLACJE',about:'Lekcje 51–56 · trasowanie, napędy, powierzchnie i izolacje',list:items.slice(50,56)},
+      {name:'VII · PRZYGOTOWANIE DO EGZAMINU PISEMNEGO',about:'Lekcje 57–63 · rachunkowość, dokumenty, rysunek, BHP, środowisko i prawo',list:items.slice(56,63)}
     ]:items.length===30?[
      {name:slug==='kowal-tradycja'?'DZIAŁ I · WARSZTAT I PODSTAWY':'DZIAŁ I · PODSTAWY',about:slug==='kowal-tradycja'?'Lekcje 1–10 · BHP, stal, rysunek techniczny, pomiary i narzędzia':'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
      {name:slug==='kowal-tradycja'?'DZIAŁ II · TECHNIKI KUCIA':'DZIAŁ II · PRAKTYKA',about:slug==='kowal-tradycja'?'Lekcje 11–20 · wydłużanie, spęcznianie, gięcie, przebijanie, łączenie i obróbka cieplna':'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
@@ -226,7 +229,7 @@ export default function Learning(){
    {index>=0&&index<=2&&hasSoftwareMenuLab(slug)&&<SoftwareMenuLab slug={slug}/>}
    {slug!=='ciesla-przygotowanie-czeladnicze'&&(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
    {(items.length===30||slug==='ciesla-przygotowanie-czeladnicze')&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
-     <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':'IV · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT')}</Text>
+     <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT')}</Text>
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
