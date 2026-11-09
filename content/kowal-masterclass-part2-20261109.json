@@ -1,0 +1,702 @@
+{
+  "course_slug": "kowal-tradycja",
+  "module": "II. Techniki kucia",
+  "source_urls": [
+    "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E",
+    "https://abana.org/education/national-curriculum/level-i/"
+  ],
+  "lessons": [
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 10,
+      "title_pl": "11. Temperatura, nagrzewanie i rozpoznawanie stanu materiału",
+      "material": {
+        "learning": {
+          "question": "Dlaczego nie można określić bezpiecznego zakresu kucia wyłącznie z koloru żarzenia?",
+          "options": [
+            "Ponieważ wszystkie metale nagrzewają się zawsze do tej samej temperatury.",
+            "Ponieważ podczas kucia temperatura w ogóle nie ma znaczenia.",
+            "Ponieważ zależy on od gatunku stali, warunków obserwacji i technologii, którą trzeba potwierdzić.",
+            "Ponieważ tylko masa młota decyduje o zachowaniu stali."
+          ],
+          "correct": 2,
+          "situation": "Uczeń twierdzi, że dwie odkuwki świecą tak samo, więc można je kuć identycznie. Jedna jest stalą niskowęglową, druga stopową o nieznanym oznaczeniu. Prawidłowe rozumowanie wymaga potwierdzenia gatunków i właściwej technologii, a nie przyjęcia równej temperatury z obserwacji.",
+          "example": "Ponieważ zależy on od gatunku stali, warunków obserwacji i technologii, którą trzeba potwierdzić.",
+          "explanation": "Dobór temperatury do gatunku jest częścią procesu technologicznego.",
+          "intro": "Podczas kucia temperatura wpływa na opór odkształcenia i ryzyko uszkodzeń. Różne gatunki stali mają odmienne dopuszczalne zakresy kucia i obróbki cieplnej. Kolor żarzenia bywa wskazówką, ale zależy od oświetlenia i powierzchni; nie zastępuje dokumentacji materiałowej ani właściwego pomiaru. Zbyt zimny detal może pękać, a przegrzany tracić pożądane własności.",
+          "task": "Wypisz cztery pytania do instruktora przed ogrzewaniem nieznanego gatunku stali.",
+          "feedback": [
+            "Nie. Dobór temperatury do gatunku jest częścią procesu technologicznego.",
+            "Nie. Dobór temperatury do gatunku jest częścią procesu technologicznego.",
+            "Prawidłowo. Dobór temperatury do gatunku jest częścią procesu technologicznego.",
+            "Nie. Dobór temperatury do gatunku jest częścią procesu technologicznego."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Podczas kucia temperatura wpływa na opór odkształcenia i ryzyko uszkodzeń. Różne gatunki stali mają odmienne dopuszczalne zakresy kucia i obróbki cieplnej. Kolor żarzenia bywa wskazówką, ale zależy od oświetlenia i powierzchni; nie zastępuje dokumentacji materiałowej ani właściwego pomiaru. Zbyt zimny detal może pękać, a przegrzany tracić pożądane własności."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Plan ogrzewania uwzględnia wymiary i masę elementu, rodzaj paleniska, jednorodność nagrzania oraz bezpieczny transport do kowadła. Nagrzewanie punktowe może wywoływać niepożądane gradienty temperatury. Podczas szkolenia praktycznego instruktor pokazuje różnicę między ogrzewaniem do kucia a ogrzewaniem do hartowania: mają odmienne cele i wymagają sprawdzonych parametrów."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Uczeń twierdzi, że dwie odkuwki świecą tak samo, więc można je kuć identycznie. Jedna jest stalą niskowęglową, druga stopową o nieznanym oznaczeniu. Prawidłowe rozumowanie wymaga potwierdzenia gatunków i właściwej technologii, a nie przyjęcia równej temperatury z obserwacji."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Potrafisz wyjaśnić, dlaczego 'czerwony' nie oznacza jednej pewnej temperatury? Odróżniasz etap nagrzania do plastycznego kształtowania od procesu modyfikowania struktury materiału.\n\nĆwiczenie: Wypisz cztery pytania do instruktora przed ogrzewaniem nieznanego gatunku stali."
+          }
+        ],
+        "raw": [
+          "Temperatura, nagrzewanie i rozpoznawanie stanu materiału",
+          "Podczas kucia temperatura wpływa na opór odkształcenia i ryzyko uszkodzeń. Różne gatunki stali mają odmienne dopuszczalne zakresy kucia i obróbki cieplnej. Kolor żarzenia bywa wskazówką, ale zależy od oświetlenia i powierzchni; nie zastępuje dokumentacji materiałowej ani właściwego pomiaru. Zbyt zimny detal może pękać, a przegrzany tracić pożądane własności.",
+          "Plan ogrzewania uwzględnia wymiary i masę elementu, rodzaj paleniska, jednorodność nagrzania oraz bezpieczny transport do kowadła. Nagrzewanie punktowe może wywoływać niepożądane gradienty temperatury. Podczas szkolenia praktycznego instruktor pokazuje różnicę między ogrzewaniem do kucia a ogrzewaniem do hartowania: mają odmienne cele i wymagają sprawdzonych parametrów.",
+          "Uczeń twierdzi, że dwie odkuwki świecą tak samo, więc można je kuć identycznie. Jedna jest stalą niskowęglową, druga stopową o nieznanym oznaczeniu. Prawidłowe rozumowanie wymaga potwierdzenia gatunków i właściwej technologii, a nie przyjęcia równej temperatury z obserwacji.",
+          "Potrafisz wyjaśnić, dlaczego 'czerwony' nie oznacza jednej pewnej temperatury? Odróżniasz etap nagrzania do plastycznego kształtowania od procesu modyfikowania struktury materiału."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Wypisz cztery pytania do instruktora przed ogrzewaniem nieznanego gatunku stali.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 11,
+      "title_pl": "12. Wydłużanie i zwężanie pręta — przepływ materiału",
+      "material": {
+        "learning": {
+          "question": "Co zwykle dzieje się z przekrojem pręta podczas jego wydłużania przez kucie?",
+          "options": [
+            "Rośnie bez dodawania materiału, a długość pozostaje ta sama.",
+            "Nie zmienia się, bo młot wygładza tylko powierzchnię.",
+            "Znaczenie ma wyłącznie połysk metalu.",
+            "Maleje, podczas gdy długość kształtowanego odcinka rośnie."
+          ],
+          "correct": 3,
+          "situation": "Chcesz wykonać dekoracyjny haczyk z długim zwężeniem. Projekt wymaga płynnego przejścia od grubszego trzonu do cieńszego końca. Zbyt agresywne kucie w jednym miejscu może spowodować karb i późniejsze pęknięcie.",
+          "example": "Maleje, podczas gdy długość kształtowanego odcinka rośnie.",
+          "explanation": "Odkształcenie plastyczne przemieszcza materiał i zmienia proporcje przekroju oraz długości.",
+          "intro": "Wydłużanie (drawing out) to zmniejszanie pola przekroju i zwiększanie długości wskutek plastycznego przemieszczania metalu. W prostym przybliżeniu objętość materiału pozostaje stała, choć występują straty na zgorzelinę i wykończenie. To wyjaśnia, dlaczego cieńsza końcówka pręta staje się dłuższa, a nie 'znika'.",
+          "task": "Na papierze rozrysuj przekroje pręta przed i po wydłużaniu, zaznacz obszar wymagający pomiaru.",
+          "feedback": [
+            "Nie. Odkształcenie plastyczne przemieszcza materiał i zmienia proporcje przekroju oraz długości.",
+            "Nie. Odkształcenie plastyczne przemieszcza materiał i zmienia proporcje przekroju oraz długości.",
+            "Nie. Odkształcenie plastyczne przemieszcza materiał i zmienia proporcje przekroju oraz długości.",
+            "Prawidłowo. Odkształcenie plastyczne przemieszcza materiał i zmienia proporcje przekroju oraz długości."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Wydłużanie (drawing out) to zmniejszanie pola przekroju i zwiększanie długości wskutek plastycznego przemieszczania metalu. W prostym przybliżeniu objętość materiału pozostaje stała, choć występują straty na zgorzelinę i wykończenie. To wyjaśnia, dlaczego cieńsza końcówka pręta staje się dłuższa, a nie 'znika'."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Po ustaleniu końcowego wymiaru wybiera się obszar odkształcenia, narzędzia i kolejność kontroli. Przy kuciu ręcznym znaczenie mają podparcie, dokładność uderzeń i wielokrotna kontrola przekroju. Końcówkę można kształtować w stożek lub płaski język, lecz przy zmianach przekroju trzeba uważać na ostre przejścia i nadmierne pocienienie."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Chcesz wykonać dekoracyjny haczyk z długim zwężeniem. Projekt wymaga płynnego przejścia od grubszego trzonu do cieńszego końca. Zbyt agresywne kucie w jednym miejscu może spowodować karb i późniejsze pęknięcie."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Wyjaśnij zachowanie objętości na modelu z plasteliny: gdy wydłużasz fragment bez dokładania materiału, przekrój maleje. Wymień dwa kryteria jakości gotowego zwężenia.\n\nĆwiczenie: Na papierze rozrysuj przekroje pręta przed i po wydłużaniu, zaznacz obszar wymagający pomiaru."
+          }
+        ],
+        "raw": [
+          "Wydłużanie i zwężanie pręta — przepływ materiału",
+          "Wydłużanie (drawing out) to zmniejszanie pola przekroju i zwiększanie długości wskutek plastycznego przemieszczania metalu. W prostym przybliżeniu objętość materiału pozostaje stała, choć występują straty na zgorzelinę i wykończenie. To wyjaśnia, dlaczego cieńsza końcówka pręta staje się dłuższa, a nie 'znika'.",
+          "Po ustaleniu końcowego wymiaru wybiera się obszar odkształcenia, narzędzia i kolejność kontroli. Przy kuciu ręcznym znaczenie mają podparcie, dokładność uderzeń i wielokrotna kontrola przekroju. Końcówkę można kształtować w stożek lub płaski język, lecz przy zmianach przekroju trzeba uważać na ostre przejścia i nadmierne pocienienie.",
+          "Chcesz wykonać dekoracyjny haczyk z długim zwężeniem. Projekt wymaga płynnego przejścia od grubszego trzonu do cieńszego końca. Zbyt agresywne kucie w jednym miejscu może spowodować karb i późniejsze pęknięcie.",
+          "Wyjaśnij zachowanie objętości na modelu z plasteliny: gdy wydłużasz fragment bez dokładania materiału, przekrój maleje. Wymień dwa kryteria jakości gotowego zwężenia."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Na papierze rozrysuj przekroje pręta przed i po wydłużaniu, zaznacz obszar wymagający pomiaru."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 12,
+      "title_pl": "13. Spęcznianie: zwiększanie przekroju bez dokładania stali",
+      "material": {
+        "learning": {
+          "question": "Jakie są typowe zmiany geometryczne w spęcznianym fragmencie pręta?",
+          "options": [
+            "Maleje długość, a zwiększa się pole przekroju.",
+            "Rośnie długość i maleje przekrój.",
+            "Zawsze powstaje otwór przelotowy.",
+            "Zmienia się jedynie faktura powierzchni."
+          ],
+          "correct": 0,
+          "situation": "Projekt zakłada pogrubienie końca trzonu zawiasu na główkę mocującą. Początkujący proponuje spiłowanie całego pręta poza główką. Można byłoby stracić dużo materiału; rozważasz spęczenie, jeżeli geometria i stal na to pozwalają.",
+          "example": "Maleje długość, a zwiększa się pole przekroju.",
+          "explanation": "Spęcznianie służy do miejscowego pogrubiania, nie do wydłużania.",
+          "intro": "Spęcznianie (upsetting) polega na skróceniu odcinka i zwiększeniu jego przekroju. Jest przeciwieństwem wydłużania. Wykorzystuje się je m.in. do wykonywania pogrubionych końcówek, główek i miejsc, które mają później przyjąć otwór lub połączenie. Mechanika procesu wymaga kontroli osiowości oraz równomiernej temperatury.",
+          "task": "Rozpoznaj na trzech szkicach spęcznienie prawidłowe, asymetryczne i wyboczone.",
+          "feedback": [
+            "Prawidłowo. Spęcznianie służy do miejscowego pogrubiania, nie do wydłużania.",
+            "Nie. Spęcznianie służy do miejscowego pogrubiania, nie do wydłużania.",
+            "Nie. Spęcznianie służy do miejscowego pogrubiania, nie do wydłużania.",
+            "Nie. Spęcznianie służy do miejscowego pogrubiania, nie do wydłużania."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Spęcznianie (upsetting) polega na skróceniu odcinka i zwiększeniu jego przekroju. Jest przeciwieństwem wydłużania. Wykorzystuje się je m.in. do wykonywania pogrubionych końcówek, główek i miejsc, które mają później przyjąć otwór lub połączenie. Mechanika procesu wymaga kontroli osiowości oraz równomiernej temperatury."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Zbyt długi smukły odcinek ściskany osiowo może się wyboczyć, tworząc nierównomierne zgrubienie. Dlatego instruktor dobiera proporcje odcinka i sposób podparcia do materiału. Po spęczeniu należy sprawdzić symetrię, wysokość pogrubienia i czy nie powstały fałdy lub pęknięcia."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Projekt zakłada pogrubienie końca trzonu zawiasu na główkę mocującą. Początkujący proponuje spiłowanie całego pręta poza główką. Można byłoby stracić dużo materiału; rozważasz spęczenie, jeżeli geometria i stal na to pozwalają."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Wyjaśnij, dlaczego podczas spęczniania maleje długość obszaru, a rośnie jego szerokość. Opisz, co oznacza wyboczenie i jak je rozpoznać na ilustracji.\n\nĆwiczenie: Rozpoznaj na trzech szkicach spęcznienie prawidłowe, asymetryczne i wyboczone."
+          }
+        ],
+        "raw": [
+          "Spęcznianie: zwiększanie przekroju bez dokładania stali",
+          "Spęcznianie (upsetting) polega na skróceniu odcinka i zwiększeniu jego przekroju. Jest przeciwieństwem wydłużania. Wykorzystuje się je m.in. do wykonywania pogrubionych końcówek, główek i miejsc, które mają później przyjąć otwór lub połączenie. Mechanika procesu wymaga kontroli osiowości oraz równomiernej temperatury.",
+          "Zbyt długi smukły odcinek ściskany osiowo może się wyboczyć, tworząc nierównomierne zgrubienie. Dlatego instruktor dobiera proporcje odcinka i sposób podparcia do materiału. Po spęczeniu należy sprawdzić symetrię, wysokość pogrubienia i czy nie powstały fałdy lub pęknięcia.",
+          "Projekt zakłada pogrubienie końca trzonu zawiasu na główkę mocującą. Początkujący proponuje spiłowanie całego pręta poza główką. Można byłoby stracić dużo materiału; rozważasz spęczenie, jeżeli geometria i stal na to pozwalają.",
+          "Wyjaśnij, dlaczego podczas spęczniania maleje długość obszaru, a rośnie jego szerokość. Opisz, co oznacza wyboczenie i jak je rozpoznać na ilustracji."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Rozpoznaj na trzech szkicach spęcznienie prawidłowe, asymetryczne i wyboczone."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 13,
+      "title_pl": "14. Gięcie łuków i kątów — od szkicu do szablonu",
+      "material": {
+        "learning": {
+          "question": "Dlaczego dla dwóch identycznych kutych łuków warto wykonać szablon?",
+          "options": [
+            "Ponieważ zastępuje on cały rysunek i kontrolę jakości.",
+            "Umożliwia powtarzalne porównanie kształtu, promienia i wymiarów.",
+            "Ponieważ każdy łuk wykonany ręcznie musi mieć identyczny kolor.",
+            "Ponieważ podczas gięcia stal nie zmienia przekroju."
+          ],
+          "correct": 1,
+          "situation": "Projekt uchwytu wymaga dwóch identycznych łuków na końcach. Pierwszy wykonany 'na oko' jest o kilka milimetrów węższy. Rozwiązaniem jest dokumentacja i szablon odniesienia, a nie przypadkowe doginanie kolejnych sztuk.",
+          "example": "Umożliwia powtarzalne porównanie kształtu, promienia i wymiarów.",
+          "explanation": "Szablon pomaga kontrolować geometrię, ale nie zastępuje kontroli uszkodzeń i wymiarów.",
+          "intro": "Gięcie wytwarza zakrzywienie bez rozcinania detalu. W przekroju zewnętrzna strona łuku jest rozciągana, a wewnętrzna ściskana; przy zbyt małym promieniu może wystąpić pocienienie lub pęknięcie. Rysunek wymiarowy musi określać nie tylko kąt, ale również promień i położenie łuku.",
+          "task": "Narysuj szablon kształtu uchwytu z trzema punktami kontrolnymi.",
+          "feedback": [
+            "Nie. Szablon pomaga kontrolować geometrię, ale nie zastępuje kontroli uszkodzeń i wymiarów.",
+            "Prawidłowo. Szablon pomaga kontrolować geometrię, ale nie zastępuje kontroli uszkodzeń i wymiarów.",
+            "Nie. Szablon pomaga kontrolować geometrię, ale nie zastępuje kontroli uszkodzeń i wymiarów.",
+            "Nie. Szablon pomaga kontrolować geometrię, ale nie zastępuje kontroli uszkodzeń i wymiarów."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Gięcie wytwarza zakrzywienie bez rozcinania detalu. W przekroju zewnętrzna strona łuku jest rozciągana, a wewnętrzna ściskana; przy zbyt małym promieniu może wystąpić pocienienie lub pęknięcie. Rysunek wymiarowy musi określać nie tylko kąt, ale również promień i położenie łuku."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Profesjonalny warsztat korzysta z prostych szablonów, przymiarów i wzorników. Po gięciu należy sprawdzić rzeczywisty kąt, promień, brak skręcenia płaszczyzny oraz zgodność z wymiarem montażowym. Sprężynowanie zależy od materiału i sposobu obróbki, dlatego nie można go ignorować w gotowej konstrukcji."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Projekt uchwytu wymaga dwóch identycznych łuków na końcach. Pierwszy wykonany 'na oko' jest o kilka milimetrów węższy. Rozwiązaniem jest dokumentacja i szablon odniesienia, a nie przypadkowe doginanie kolejnych sztuk."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Potrafisz wyjaśnić, po której stronie łuku materiał jest rozciągany? Wskaż na szkicu kąt, promień, wymiar zewnętrzny i bazę kontroli.\n\nĆwiczenie: Narysuj szablon kształtu uchwytu z trzema punktami kontrolnymi."
+          }
+        ],
+        "raw": [
+          "Gięcie łuków i kątów — od szkicu do szablonu",
+          "Gięcie wytwarza zakrzywienie bez rozcinania detalu. W przekroju zewnętrzna strona łuku jest rozciągana, a wewnętrzna ściskana; przy zbyt małym promieniu może wystąpić pocienienie lub pęknięcie. Rysunek wymiarowy musi określać nie tylko kąt, ale również promień i położenie łuku.",
+          "Profesjonalny warsztat korzysta z prostych szablonów, przymiarów i wzorników. Po gięciu należy sprawdzić rzeczywisty kąt, promień, brak skręcenia płaszczyzny oraz zgodność z wymiarem montażowym. Sprężynowanie zależy od materiału i sposobu obróbki, dlatego nie można go ignorować w gotowej konstrukcji.",
+          "Projekt uchwytu wymaga dwóch identycznych łuków na końcach. Pierwszy wykonany 'na oko' jest o kilka milimetrów węższy. Rozwiązaniem jest dokumentacja i szablon odniesienia, a nie przypadkowe doginanie kolejnych sztuk.",
+          "Potrafisz wyjaśnić, po której stronie łuku materiał jest rozciągany? Wskaż na szkicu kąt, promień, wymiar zewnętrzny i bazę kontroli."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Narysuj szablon kształtu uchwytu z trzema punktami kontrolnymi."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 14,
+      "title_pl": "15. Skręcanie i woluty ozdobne — symetria i rytm",
+      "material": {
+        "learning": {
+          "question": "Czym różni się woluta od skręcania pręta?",
+          "options": [
+            "Obie techniki zawsze oznaczają nacinanie pręta przecinakiem.",
+            "Woluta jest odmianą wiercenia otworu przelotowego.",
+            "Woluta powstaje przez gięcie w zwój, a skręcanie obraca przekroje pręta wokół jego osi.",
+            "Skręcanie służy tylko do lakierowania stali."
+          ],
+          "correct": 2,
+          "situation": "W ozdobnej furtce mają powstać dwa elementy lustrzane. Jedna woluta musi być lewa, a druga prawa. Powielenie tego samego elementu dwa razy zniszczy symetrię kompozycji mimo bardzo dobrego wykończenia powierzchni.",
+          "example": "Woluta powstaje przez gięcie w zwój, a skręcanie obraca przekroje pręta wokół jego osi.",
+          "explanation": "Są to różne procesy, których wyniki i ryzyka należy odrębnie oceniać.",
+          "intro": "Skręcanie tworzy spiralny wzór na pręcie, a woluta to ozdobny ślimakowaty zwój wykonywany przez gięcie. Są to odmienne operacje. W dekoracji liczy się świadoma geometria: liczbę obrotów, kierunek, długość zdobionego fragmentu i powtarzalność elementów określa projekt, nie przypadek.",
+          "task": "Na szkicu ogrodzenia zaznacz woluty, skręcone pręty i elementy bez ozdób.",
+          "feedback": [
+            "Nie. Są to różne procesy, których wyniki i ryzyka należy odrębnie oceniać.",
+            "Nie. Są to różne procesy, których wyniki i ryzyka należy odrębnie oceniać.",
+            "Prawidłowo. Są to różne procesy, których wyniki i ryzyka należy odrębnie oceniać.",
+            "Nie. Są to różne procesy, których wyniki i ryzyka należy odrębnie oceniać."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Skręcanie tworzy spiralny wzór na pręcie, a woluta to ozdobny ślimakowaty zwój wykonywany przez gięcie. Są to odmienne operacje. W dekoracji liczy się świadoma geometria: liczbę obrotów, kierunek, długość zdobionego fragmentu i powtarzalność elementów określa projekt, nie przypadek."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Skręcanie może lokalnie zmienić przekrój i wprowadzić naprężenia; zbyt silne odkształcenie sprzyja wadom. Projektanci używają osi i siatki pomocniczej, aby zachować symetrię wzoru. Przy wyrobach nośnych dekoracja nie może naruszać wymagań wytrzymałościowych."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "W ozdobnej furtce mają powstać dwa elementy lustrzane. Jedna woluta musi być lewa, a druga prawa. Powielenie tego samego elementu dwa razy zniszczy symetrię kompozycji mimo bardzo dobrego wykończenia powierzchni."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Zaprojektuj na papierze dwie lustrzane woluty, podpisz kierunek skrętu i osie symetrii. Opisz, jak porównać obie odkuwki przed malowaniem.\n\nĆwiczenie: Na szkicu ogrodzenia zaznacz woluty, skręcone pręty i elementy bez ozdób."
+          }
+        ],
+        "raw": [
+          "Skręcanie i woluty ozdobne — symetria i rytm",
+          "Skręcanie tworzy spiralny wzór na pręcie, a woluta to ozdobny ślimakowaty zwój wykonywany przez gięcie. Są to odmienne operacje. W dekoracji liczy się świadoma geometria: liczbę obrotów, kierunek, długość zdobionego fragmentu i powtarzalność elementów określa projekt, nie przypadek.",
+          "Skręcanie może lokalnie zmienić przekrój i wprowadzić naprężenia; zbyt silne odkształcenie sprzyja wadom. Projektanci używają osi i siatki pomocniczej, aby zachować symetrię wzoru. Przy wyrobach nośnych dekoracja nie może naruszać wymagań wytrzymałościowych.",
+          "W ozdobnej furtce mają powstać dwa elementy lustrzane. Jedna woluta musi być lewa, a druga prawa. Powielenie tego samego elementu dwa razy zniszczy symetrię kompozycji mimo bardzo dobrego wykończenia powierzchni.",
+          "Zaprojektuj na papierze dwie lustrzane woluty, podpisz kierunek skrętu i osie symetrii. Opisz, jak porównać obie odkuwki przed malowaniem."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Na szkicu ogrodzenia zaznacz woluty, skręcone pręty i elementy bez ozdób."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 15,
+      "title_pl": "16. Rozcinanie, odcinanie i rozszczepianie materiału",
+      "material": {
+        "learning": {
+          "question": "Kiedy szczególnie istotne jest pozostawienie naddatku materiału podczas cięcia?",
+          "options": [
+            "Gdy chcemy pominąć wszystkie kontrole wymiarowe.",
+            "Gdy projekt wymaga cięcia przypadkowo wybranej długości.",
+            "Gdy barwa metalu ma zastąpić wymiar.",
+            "Gdy potrzebna będzie późniejsza obróbka końca do dokładnego wymiaru."
+          ],
+          "correct": 3,
+          "situation": "Chcesz wykonać ozdobne rozgałęzienie zakończenia zawiasu. Wzór pokazuje dwa ramiona, ale rysunek nie określa długości rozcięcia. Trzeba doprecyzować wymiar i sposób wykończenia, zanim rozpocznie się rozdzielanie pręta.",
+          "example": "Gdy potrzebna będzie późniejsza obróbka końca do dokładnego wymiaru.",
+          "explanation": "Naddatek zapewnia miejsce na wyrównanie, czyszczenie i dokładne wykończenie.",
+          "intro": "Cięcie kowalskie może oznaczać odcięcie fragmentu lub rozszczepienie części pręta, np. pod dwie gałęzie dekoracyjne. Geometria ostrza i podparcie zależą od rodzaju materiału oraz operacji. Nacięcie tworzy koncentrację naprężeń, dlatego miejsce i długość rozcięcia trzeba świadomie zaplanować.",
+          "task": "Zaplanuj schemat cięcia 220 mm pręta z naddatkiem 3 mm na wykończenie.",
+          "feedback": [
+            "Nie. Naddatek zapewnia miejsce na wyrównanie, czyszczenie i dokładne wykończenie.",
+            "Nie. Naddatek zapewnia miejsce na wyrównanie, czyszczenie i dokładne wykończenie.",
+            "Nie. Naddatek zapewnia miejsce na wyrównanie, czyszczenie i dokładne wykończenie.",
+            "Prawidłowo. Naddatek zapewnia miejsce na wyrównanie, czyszczenie i dokładne wykończenie."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Cięcie kowalskie może oznaczać odcięcie fragmentu lub rozszczepienie części pręta, np. pod dwie gałęzie dekoracyjne. Geometria ostrza i podparcie zależą od rodzaju materiału oraz operacji. Nacięcie tworzy koncentrację naprężeń, dlatego miejsce i długość rozcięcia trzeba świadomie zaplanować."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Przy odcinaniu istotna jest ochrona przed odpryskami i niekontrolowanym odpadnięciem gorącej części. W procesie planuje się też naddatek na końcowe wyrównanie i usunięcie ostrych krawędzi. Rozcinanie elementu nośnego bez sprawdzenia projektu może obniżyć jego wytrzymałość."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Chcesz wykonać ozdobne rozgałęzienie zakończenia zawiasu. Wzór pokazuje dwa ramiona, ale rysunek nie określa długości rozcięcia. Trzeba doprecyzować wymiar i sposób wykończenia, zanim rozpocznie się rozdzielanie pręta."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Rozróżnij na trzech rysunkach odcinanie, nacinanie i rozszczepienie. Wymień dwa zagrożenia związane z odpryskami lub odpadnięciem elementu.\n\nĆwiczenie: Zaplanuj schemat cięcia 220 mm pręta z naddatkiem 3 mm na wykończenie."
+          }
+        ],
+        "raw": [
+          "Rozcinanie, odcinanie i rozszczepianie materiału",
+          "Cięcie kowalskie może oznaczać odcięcie fragmentu lub rozszczepienie części pręta, np. pod dwie gałęzie dekoracyjne. Geometria ostrza i podparcie zależą od rodzaju materiału oraz operacji. Nacięcie tworzy koncentrację naprężeń, dlatego miejsce i długość rozcięcia trzeba świadomie zaplanować.",
+          "Przy odcinaniu istotna jest ochrona przed odpryskami i niekontrolowanym odpadnięciem gorącej części. W procesie planuje się też naddatek na końcowe wyrównanie i usunięcie ostrych krawędzi. Rozcinanie elementu nośnego bez sprawdzenia projektu może obniżyć jego wytrzymałość.",
+          "Chcesz wykonać ozdobne rozgałęzienie zakończenia zawiasu. Wzór pokazuje dwa ramiona, ale rysunek nie określa długości rozcięcia. Trzeba doprecyzować wymiar i sposób wykończenia, zanim rozpocznie się rozdzielanie pręta.",
+          "Rozróżnij na trzech rysunkach odcinanie, nacinanie i rozszczepienie. Wymień dwa zagrożenia związane z odpryskami lub odpadnięciem elementu."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Zaplanuj schemat cięcia 220 mm pręta z naddatkiem 3 mm na wykończenie."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 16,
+      "title_pl": "17. Przebijanie i kalibrowanie otworów w odkuwkach",
+      "material": {
+        "learning": {
+          "question": "Jakie dane są najważniejsze przy odbiorze otworu pod sworzeń zawiasu?",
+          "options": [
+            "Średnica, położenie osi, prostopadłość i stan krawędzi.",
+            "Wyłącznie połysk i kolor powierzchni.",
+            "Tylko masa całej odkuwki.",
+            "Wyłącznie długość używanego młotka."
+          ],
+          "correct": 0,
+          "situation": "Klient zgłasza, że sworzeń zawiasu nie mieści się w wykutym otworze. Jedną z przyczyn może być błąd kalibracji lub nieosiowość; przypadkowe poszerzanie młotkiem bez pomiaru może pogorszyć dopasowanie.",
+          "example": "Średnica, położenie osi, prostopadłość i stan krawędzi.",
+          "explanation": "Otwór musi być nie tylko widoczny, ale też zwymiarowany i zgodny z pasowaniem.",
+          "intro": "Przebijanie tworzy w materiale otwór przez lokalne przemieszczenie lub usunięcie metalu. Trzpień do rozkalibrowania (drift) nadaje otworowi ostateczny profil. Dobór średnicy otworu zależy od funkcji: otwór pod sworzeń obracającego się zawiasu wymaga innego pasowania niż otwór na śrubę z luzem montażowym.",
+          "task": "Rozrysuj wymiarowanie osi dwóch otworów i wskaż, jakie pomiary wykonać po kuciu.",
+          "feedback": [
+            "Prawidłowo. Otwór musi być nie tylko widoczny, ale też zwymiarowany i zgodny z pasowaniem.",
+            "Nie. Otwór musi być nie tylko widoczny, ale też zwymiarowany i zgodny z pasowaniem.",
+            "Nie. Otwór musi być nie tylko widoczny, ale też zwymiarowany i zgodny z pasowaniem.",
+            "Nie. Otwór musi być nie tylko widoczny, ale też zwymiarowany i zgodny z pasowaniem."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Przebijanie tworzy w materiale otwór przez lokalne przemieszczenie lub usunięcie metalu. Trzpień do rozkalibrowania (drift) nadaje otworowi ostateczny profil. Dobór średnicy otworu zależy od funkcji: otwór pod sworzeń obracającego się zawiasu wymaga innego pasowania niż otwór na śrubę z luzem montażowym."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Przed operacją ustala się położenie osi otworu względem baz rysunkowych i odpowiednią ilość materiału dookoła. Po wykonaniu otworu trzeba skontrolować średnicę, odległość od krawędzi, prostopadłość osi oraz obecność pęknięć i ostrych zadziorów. Na podstawie samego koloru nie można ocenić jakości otworu."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Klient zgłasza, że sworzeń zawiasu nie mieści się w wykutym otworze. Jedną z przyczyn może być błąd kalibracji lub nieosiowość; przypadkowe poszerzanie młotkiem bez pomiaru może pogorszyć dopasowanie."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Wykonaj bezpieczny papierowy projekt płytki 60 × 40 mm z otworem Ø10. Oblicz położenie jego środka, jeśli wymagany jest równy margines po obu stronach.\n\nĆwiczenie: Rozrysuj wymiarowanie osi dwóch otworów i wskaż, jakie pomiary wykonać po kuciu."
+          }
+        ],
+        "raw": [
+          "Przebijanie i kalibrowanie otworów w odkuwkach",
+          "Przebijanie tworzy w materiale otwór przez lokalne przemieszczenie lub usunięcie metalu. Trzpień do rozkalibrowania (drift) nadaje otworowi ostateczny profil. Dobór średnicy otworu zależy od funkcji: otwór pod sworzeń obracającego się zawiasu wymaga innego pasowania niż otwór na śrubę z luzem montażowym.",
+          "Przed operacją ustala się położenie osi otworu względem baz rysunkowych i odpowiednią ilość materiału dookoła. Po wykonaniu otworu trzeba skontrolować średnicę, odległość od krawędzi, prostopadłość osi oraz obecność pęknięć i ostrych zadziorów. Na podstawie samego koloru nie można ocenić jakości otworu.",
+          "Klient zgłasza, że sworzeń zawiasu nie mieści się w wykutym otworze. Jedną z przyczyn może być błąd kalibracji lub nieosiowość; przypadkowe poszerzanie młotkiem bez pomiaru może pogorszyć dopasowanie.",
+          "Wykonaj bezpieczny papierowy projekt płytki 60 × 40 mm z otworem Ø10. Oblicz położenie jego środka, jeśli wymagany jest równy margines po obu stronach."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Rozrysuj wymiarowanie osi dwóch otworów i wskaż, jakie pomiary wykonać po kuciu.",
+        "illustration": "craft-kowal-tradycja"
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 17,
+      "title_pl": "18. Rowkowanie, odsadzanie i wygładzanie bez osłabiania wyrobu",
+      "material": {
+        "learning": {
+          "question": "Co jest najważniejsze przy ocenie odsadzenia pod połączenie?",
+          "options": [
+            "Wyłącznie barwa i dekoracyjny połysk.",
+            "Zgodność wymiaru stopnia i promieni przejść z dokumentacją oraz brak wad.",
+            "To, czy narzędzie było najcięższe.",
+            "Liczba uderzeń niezależnie od rezultatu."
+          ],
+          "correct": 1,
+          "situation": "W zawiasie z projektu połączenie wymaga stopnia 6 mm, a rzemieślnik wykonał 4 mm. Polerowanie i wygładzanie nie rozwiązuje braku wymiaru. Najpierw trzeba porównać detal z rysunkiem i ocenić możliwość prawidłowej korekty.",
+          "example": "Zgodność wymiaru stopnia i promieni przejść z dokumentacją oraz brak wad.",
+          "explanation": "Jakość geometryczna i brak karbów są ważniejsze od samego wykończenia wizualnego.",
+          "intro": "Rowek, odsadzenie i wygładzenie to trzy osobne efekty technologiczne. Rowkowanie tworzy miejscowe zagłębienie, odsadzanie stopniowaną zmianę przekroju, a gładzik poprawia kształt i jakość powierzchni. Nie należy mylić rowka dekoracyjnego z rowkiem funkcjonalnym, np. pod osadzenie innego elementu.",
+          "task": "Porównaj szkice dwóch odsadzanych elementów, oznacz wymiar i ryzyko pęknięcia.",
+          "feedback": [
+            "Nie. Jakość geometryczna i brak karbów są ważniejsze od samego wykończenia wizualnego.",
+            "Prawidłowo. Jakość geometryczna i brak karbów są ważniejsze od samego wykończenia wizualnego.",
+            "Nie. Jakość geometryczna i brak karbów są ważniejsze od samego wykończenia wizualnego.",
+            "Nie. Jakość geometryczna i brak karbów są ważniejsze od samego wykończenia wizualnego."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Rowek, odsadzenie i wygładzenie to trzy osobne efekty technologiczne. Rowkowanie tworzy miejscowe zagłębienie, odsadzanie stopniowaną zmianę przekroju, a gładzik poprawia kształt i jakość powierzchni. Nie należy mylić rowka dekoracyjnego z rowkiem funkcjonalnym, np. pod osadzenie innego elementu."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Przy każdym przewężeniu analizuje się wymiar minimalny, promień przejścia i możliwość powstania karbu. Gładzik może wygładzić nierówności, ale nie naprawia pęknięć ani nie zastępuje pomiaru. Narzędzia profilowe wymagają kontroli podparcia i zgodności wzajemnej elementów."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "W zawiasie z projektu połączenie wymaga stopnia 6 mm, a rzemieślnik wykonał 4 mm. Polerowanie i wygładzanie nie rozwiązuje braku wymiaru. Najpierw trzeba porównać detal z rysunkiem i ocenić możliwość prawidłowej korekty."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Wyjaśnij różnicę między błędem wymiaru a wadą powierzchni. Opisz trzy objawy, które dyskwalifikują wyrób mimo ładnego wyglądu.\n\nĆwiczenie: Porównaj szkice dwóch odsadzanych elementów, oznacz wymiar i ryzyko pęknięcia."
+          }
+        ],
+        "raw": [
+          "Rowkowanie, odsadzanie i wygładzanie bez osłabiania wyrobu",
+          "Rowek, odsadzenie i wygładzenie to trzy osobne efekty technologiczne. Rowkowanie tworzy miejscowe zagłębienie, odsadzanie stopniowaną zmianę przekroju, a gładzik poprawia kształt i jakość powierzchni. Nie należy mylić rowka dekoracyjnego z rowkiem funkcjonalnym, np. pod osadzenie innego elementu.",
+          "Przy każdym przewężeniu analizuje się wymiar minimalny, promień przejścia i możliwość powstania karbu. Gładzik może wygładzić nierówności, ale nie naprawia pęknięć ani nie zastępuje pomiaru. Narzędzia profilowe wymagają kontroli podparcia i zgodności wzajemnej elementów.",
+          "W zawiasie z projektu połączenie wymaga stopnia 6 mm, a rzemieślnik wykonał 4 mm. Polerowanie i wygładzanie nie rozwiązuje braku wymiaru. Najpierw trzeba porównać detal z rysunkiem i ocenić możliwość prawidłowej korekty.",
+          "Wyjaśnij różnicę między błędem wymiaru a wadą powierzchni. Opisz trzy objawy, które dyskwalifikują wyrób mimo ładnego wyglądu."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Porównaj szkice dwóch odsadzanych elementów, oznacz wymiar i ryzyko pęknięcia."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 18,
+      "title_pl": "19. Łączenie wyrobów: nity, sworznie, śruby i zgrzewanie",
+      "material": {
+        "learning": {
+          "question": "Który typ połączenia najbardziej naturalnie pasuje do osi obrotowego zawiasu?",
+          "options": [
+            "Przypadkowy klej w miejscu osi bez analizy obciążeń.",
+            "Pełne sztywne zespolenie obu skrzydeł zawiasu.",
+            "Dobrany sworzeń zapewniający wymagany obrót i kontrolowany luz.",
+            "Wyłącznie warstwa farby pomiędzy elementami."
+          ],
+          "correct": 2,
+          "situation": "Klient chce naprawić zawias starej bramy, ale wymaga, by można go było później rozebrać. Zamiast stosować trwały nit we wszystkich miejscach, należy rozważyć odpowiedni sworzeń lub inne kontrolowane rozłączne połączenie.",
+          "example": "Dobrany sworzeń zapewniający wymagany obrót i kontrolowany luz.",
+          "explanation": "Oś zawiasu musi umożliwiać ruch zgodny z funkcją wyrobu.",
+          "intro": "Kowal dobiera połączenia rozłączne i nierozłączne do funkcji wyrobu. Sworzeń pozwala na obrót zawiasu, śruba ułatwia demontaż, a nit tworzy trwałe połączenie. Zgrzewanie kowalskie jest historyczną metodą łączenia nagrzanych elementów i wymaga dużej wprawy; nie należy utożsamiać go ze spawaniem łukowym.",
+          "task": "Zaprojektuj schemat zawiasu, zaznacz sworzeń, płytki i miejsca kontroli luzu.",
+          "feedback": [
+            "Nie. Oś zawiasu musi umożliwiać ruch zgodny z funkcją wyrobu.",
+            "Nie. Oś zawiasu musi umożliwiać ruch zgodny z funkcją wyrobu.",
+            "Prawidłowo. Oś zawiasu musi umożliwiać ruch zgodny z funkcją wyrobu.",
+            "Nie. Oś zawiasu musi umożliwiać ruch zgodny z funkcją wyrobu."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Kowal dobiera połączenia rozłączne i nierozłączne do funkcji wyrobu. Sworzeń pozwala na obrót zawiasu, śruba ułatwia demontaż, a nit tworzy trwałe połączenie. Zgrzewanie kowalskie jest historyczną metodą łączenia nagrzanych elementów i wymaga dużej wprawy; nie należy utożsamiać go ze spawaniem łukowym."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Projekt połączenia opisuje wymiary otworów, rodzaj łącznika, wymagany luz, odporność na korozję i sposób odbioru. W elementach konstrukcyjnych nie można dobierać techniki łączenia wyłącznie według wyglądu. Niedopasowany nit może uszkodzić płytkę, a zbyt ciasny sworzeń utrudni obrót."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Klient chce naprawić zawias starej bramy, ale wymaga, by można go było później rozebrać. Zamiast stosować trwały nit we wszystkich miejscach, należy rozważyć odpowiedni sworzeń lub inne kontrolowane rozłączne połączenie."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Porównaj w tabeli trzy łączniki: co przenoszą, czy umożliwiają obrót, czy są rozbieralne oraz jak kontrolować luz.\n\nĆwiczenie: Zaprojektuj schemat zawiasu, zaznacz sworzeń, płytki i miejsca kontroli luzu."
+          }
+        ],
+        "raw": [
+          "Łączenie wyrobów: nity, sworznie, śruby i zgrzewanie",
+          "Kowal dobiera połączenia rozłączne i nierozłączne do funkcji wyrobu. Sworzeń pozwala na obrót zawiasu, śruba ułatwia demontaż, a nit tworzy trwałe połączenie. Zgrzewanie kowalskie jest historyczną metodą łączenia nagrzanych elementów i wymaga dużej wprawy; nie należy utożsamiać go ze spawaniem łukowym.",
+          "Projekt połączenia opisuje wymiary otworów, rodzaj łącznika, wymagany luz, odporność na korozję i sposób odbioru. W elementach konstrukcyjnych nie można dobierać techniki łączenia wyłącznie według wyglądu. Niedopasowany nit może uszkodzić płytkę, a zbyt ciasny sworzeń utrudni obrót.",
+          "Klient chce naprawić zawias starej bramy, ale wymaga, by można go było później rozebrać. Zamiast stosować trwały nit we wszystkich miejscach, należy rozważyć odpowiedni sworzeń lub inne kontrolowane rozłączne połączenie.",
+          "Porównaj w tabeli trzy łączniki: co przenoszą, czy umożliwiają obrót, czy są rozbieralne oraz jak kontrolować luz."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Zaprojektuj schemat zawiasu, zaznacz sworzeń, płytki i miejsca kontroli luzu."
+      }
+    },
+    {
+      "course_slug": "kowal-tradycja",
+      "lesson_no": 19,
+      "title_pl": "20. Hartowanie, odpuszczanie, wyżarzanie — co i po co",
+      "material": {
+        "learning": {
+          "question": "Po co po odpowiednio dobranym hartowaniu narzędzia stosuje się często odpuszczanie?",
+          "options": [
+            "Aby zawsze całkowicie zamienić stal w czyste żelazo.",
+            "Aby zastąpić wszystkie pomiary wymiarów.",
+            "Aby nie trzeba było znać gatunku użytej stali.",
+            "Aby skorygować jego własności, ograniczając nadmierną kruchość."
+          ],
+          "correct": 3,
+          "situation": "Warsztat otrzymuje zlecenie na przecinak, który ma zachować ostrze, ale nie kruszyć się przy uderzeniu. Samo maksymalne zwiększanie twardości byłoby błędem; wymagane jest świadome połączenie odpowiedniego materiału, hartowania, odpuszczania i kontroli rezultatu.",
+          "example": "Aby skorygować jego własności, ograniczając nadmierną kruchość.",
+          "explanation": "Obróbka cieplna jest kompromisem między własnościami, nie pojedynczym trikiem.",
+          "intro": "Obróbka cieplna zmienia strukturę i własności stali przez zaplanowane ogrzewanie i chłodzenie. Hartowanie może zwiększać twardość wybranych stali, ale często zwiększa także kruchość; odpuszczanie pomaga uzyskać korzystniejszy kompromis twardości i odporności na pękanie. Wyżarzanie służy innym celom, m.in. poprawie obrabialności lub redukcji naprężeń.",
+          "task": "Zrób mapę pojęć: hartowanie, odpuszczanie, wyżarzanie, twardość, udarność i naprężenia.",
+          "feedback": [
+            "Nie. Obróbka cieplna jest kompromisem między własnościami, nie pojedynczym trikiem.",
+            "Nie. Obróbka cieplna jest kompromisem między własnościami, nie pojedynczym trikiem.",
+            "Nie. Obróbka cieplna jest kompromisem między własnościami, nie pojedynczym trikiem.",
+            "Prawidłowo. Obróbka cieplna jest kompromisem między własnościami, nie pojedynczym trikiem."
+          ],
+          "quiz_version": 3,
+          "topic_kind": "blacksmith_masterclass"
+        },
+        "sections": [
+          {
+            "heading": "Wiedza fachowa",
+            "text": "Obróbka cieplna zmienia strukturę i własności stali przez zaplanowane ogrzewanie i chłodzenie. Hartowanie może zwiększać twardość wybranych stali, ale często zwiększa także kruchość; odpuszczanie pomaga uzyskać korzystniejszy kompromis twardości i odporności na pękanie. Wyżarzanie służy innym celom, m.in. poprawie obrabialności lub redukcji naprężeń."
+          },
+          {
+            "heading": "Zastosowanie i przebieg pracy",
+            "text": "Nie istnieje jeden uniwersalny zestaw temperatur i chłodziw dla każdej stali. Obróbkę planuje się według gatunku, przekroju, wymaganych własności i dokumentacji technologicznej. Wykonuje się ją w kontrolowanych warunkach, z uwzględnieniem ryzyka zapłonu medium, oparzeń i odkształceń."
+          },
+          {
+            "heading": "Prawdziwa sytuacja zawodowa",
+            "text": "Warsztat otrzymuje zlecenie na przecinak, który ma zachować ostrze, ale nie kruszyć się przy uderzeniu. Samo maksymalne zwiększanie twardości byłoby błędem; wymagane jest świadome połączenie odpowiedniego materiału, hartowania, odpuszczania i kontroli rezultatu."
+          },
+          {
+            "heading": "Kontrola i zadanie",
+            "text": "Zrozum: twardość i odporność na pękanie nie oznaczają tego samego. Rozpoznaj sytuacje, w których potrzebna jest dokumentacja technologiczna, a nie 'ogólna receptura z internetu'.\n\nĆwiczenie: Zrób mapę pojęć: hartowanie, odpuszczanie, wyżarzanie, twardość, udarność i naprężenia."
+          }
+        ],
+        "raw": [
+          "Hartowanie, odpuszczanie, wyżarzanie — co i po co",
+          "Obróbka cieplna zmienia strukturę i własności stali przez zaplanowane ogrzewanie i chłodzenie. Hartowanie może zwiększać twardość wybranych stali, ale często zwiększa także kruchość; odpuszczanie pomaga uzyskać korzystniejszy kompromis twardości i odporności na pękanie. Wyżarzanie służy innym celom, m.in. poprawie obrabialności lub redukcji naprężeń.",
+          "Nie istnieje jeden uniwersalny zestaw temperatur i chłodziw dla każdej stali. Obróbkę planuje się według gatunku, przekroju, wymaganych własności i dokumentacji technologicznej. Wykonuje się ją w kontrolowanych warunkach, z uwzględnieniem ryzyka zapłonu medium, oparzeń i odkształceń.",
+          "Warsztat otrzymuje zlecenie na przecinak, który ma zachować ostrze, ale nie kruszyć się przy uderzeniu. Samo maksymalne zwiększanie twardości byłoby błędem; wymagane jest świadome połączenie odpowiedniego materiału, hartowania, odpuszczania i kontroli rezultatu.",
+          "Zrozum: twardość i odporność na pękanie nie oznaczają tego samego. Rozpoznaj sytuacje, w których potrzebna jest dokumentacja technologiczna, a nie 'ogólna receptura z internetu'."
+        ],
+        "references": [
+          {
+            "label": "MEC.02 – podstawowe operacje kowalskie",
+            "url": "https://zpe.gov.pl/a/przewodnik-dla-nauczyciela/D198hnh3E"
+          },
+          {
+            "label": "ABANA – program kucia",
+            "url": "https://abana.org/education/national-curriculum/level-i/"
+          }
+        ],
+        "lesson_kind": "practical_theory",
+        "editorial_status": "review_needed",
+        "module": 2,
+        "learning_outcome": "Zrób mapę pojęć: hartowanie, odpuszczanie, wyżarzanie, twardość, udarność i naprężenia."
+      }
+    }
+  ]
+}
