@@ -73,7 +73,7 @@
         "editorial_status": "review_needed",
         "module": 1,
         "learning_outcome": "Zrób kartę wymagań dla uchwytu: funkcja, rozmiar, sposób zamocowania, otoczenie i sposób kontroli.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-stanowisko"
       }
     },
     {
@@ -142,7 +142,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Narysuj plan stanowiska i zaznacz strefę gorącą, odciąg, gaśnicę, apteczkę oraz drogę ewakuacji."
+        "learning_outcome": "Narysuj plan stanowiska i zaznacz strefę gorącą, odciąg, gaśnicę, apteczkę oraz drogę ewakuacji.",
+        "illustration": "kowal-stanowisko"
       }
     },
     {
@@ -211,7 +212,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Porównaj dwie karty materiałowe: zapis gatunku, przekrój, dostawę oraz przeznaczenie."
+        "learning_outcome": "Porównaj dwie karty materiałowe: zapis gatunku, przekrój, dostawę oraz przeznaczenie.",
+        "illustration": "kowal-narzedzia"
       }
     },
     {
@@ -280,7 +282,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Zrób szkic dwóch widoków płytki 180 × 40 mm i oznacz położenie dwóch otworów."
+        "learning_outcome": "Zrób szkic dwóch widoków płytki 180 × 40 mm i oznacz położenie dwóch otworów.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -349,7 +352,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Oblicz zakresy dla 40 ±0,5 mm i 120 +2/-1 mm, zapisując jednostki."
+        "learning_outcome": "Oblicz zakresy dla 40 ±0,5 mm i 120 +2/-1 mm, zapisując jednostki.",
+        "illustration": "kowal-rysunek"
       }
     },
     {
@@ -419,7 +423,7 @@
         "editorial_status": "review_needed",
         "module": 1,
         "learning_outcome": "Rozpisz mapę stanowiska: wejście, odciąg, kowadło, palenisko, miejsce gorących odkuwek, miejsce narzędzi.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-stanowisko"
       }
     },
     {
@@ -488,7 +492,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Opisz, jak rozpoznać źle dopasowane szczypce bez używania rozgrzanego metalu."
+        "learning_outcome": "Opisz, jak rozpoznać źle dopasowane szczypce bez używania rozgrzanego metalu.",
+        "illustration": "kowal-narzedzia"
       }
     },
     {
@@ -558,7 +563,7 @@
         "editorial_status": "review_needed",
         "module": 1,
         "learning_outcome": "Dopasuj operację do narzędzia: cięcie, przebijanie, kalibracja otworu, kontrola jakości.",
-        "illustration": "craft-kowal-tradycja"
+        "illustration": "kowal-narzedzia"
       }
     },
     {
@@ -627,7 +632,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Sporządź kartę trzech narzędzi: przeznaczenie, przykład wyrobu, ryzyko błędnego użycia."
+        "learning_outcome": "Sporządź kartę trzech narzędzi: przeznaczenie, przykład wyrobu, ryzyko błędnego użycia.",
+        "illustration": "kowal-narzedzia"
       }
     },
     {
@@ -696,7 +702,8 @@
         "lesson_kind": "practical_theory",
         "editorial_status": "review_needed",
         "module": 1,
-        "learning_outcome": "Zbuduj kartę przeglądu dla młotka, kleszczy i przecinaka z decyzją i datą następnej kontroli."
+        "learning_outcome": "Zbuduj kartę przeglądu dla młotka, kleszczy i przecinaka z decyzją i datą następnej kontroli.",
+        "illustration": "kowal-narzedzia"
       }
     }
   ]
