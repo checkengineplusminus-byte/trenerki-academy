@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 670" role="img" aria-label="Cztery podstawowe operacje kucia">
+<rect width="1200" height="670" rx="28" fill="#f5f9f2"/>
+<rect x="26" y="25" width="1148" height="620" rx="24" fill="#fff" stroke="#d6e5d7" stroke-width="3"/>
+<text x="68" y="89" font-family="Arial,sans-serif" font-size="35" font-weight="bold" fill="#173e2d">Cztery podstawowe operacje kucia</text>
+<text x="68" y="123" font-family="Arial,sans-serif" font-size="20" fill="#587565">Geometria przed / po — bez procedury pracy na gorąco</text>
+
+<rect x="74" y="174" width="504" height="169" rx="19" fill="#eef4ee" stroke="#c8dac9" stroke-width="3"/>
+<text x="92" y="211" fill="#174c35" font-size="25" font-family="Arial" font-weight="bold">WYDŁUŻANIE</text>
+<rect x="99" y="249" width="96" height="39" rx="4" fill="#788c8d"/>
+<path d="M211 269h87" stroke="#bd7545" stroke-width="7"/><path d="M282 257l18 12-18 12" stroke="#bd7545" stroke-width="7" fill="none"/>
+<rect x="323" y="260" width="178" height="21" rx="4" fill="#59777b"/>
+<text x="93" y="326" fill="#547063" font-size="17" font-family="Arial">Mniejszy przekrój • większa długość</text></rect><rect x="610" y="174" width="504" height="169" rx="19" fill="#eef4ee" stroke="#c8dac9" stroke-width="3"/>
+<text x="628" y="211" fill="#174c35" font-size="25" font-family="Arial" font-weight="bold">SPĘCZNIANIE</text>
+<rect x="635" y="249" width="96" height="39" rx="4" fill="#788c8d"/>
+<path d="M747 269h87" stroke="#bd7545" stroke-width="7"/><path d="M818 257l18 12-18 12" stroke="#bd7545" stroke-width="7" fill="none"/>
+<rect x="885" y="232" width="68" height="88" rx="4" fill="#59777b"/>
+<text x="629" y="326" fill="#547063" font-size="17" font-family="Arial">Większy przekrój • mniejsza długość</text></rect><rect x="74" y="371" width="504" height="169" rx="19" fill="#eef4ee" stroke="#c8dac9" stroke-width="3"/>
+<text x="92" y="408" fill="#174c35" font-size="25" font-family="Arial" font-weight="bold">GIĘCIE</text>
+<rect x="99" y="446" width="96" height="39" rx="4" fill="#788c8d"/>
+<path d="M211 466h87" stroke="#bd7545" stroke-width="7"/><path d="M282 454l18 12-18 12" stroke="#bd7545" stroke-width="7" fill="none"/>
+<path d="M328 491v-28q0-24 30-24h120" stroke="#59777b" stroke-width="26" fill="none" stroke-linecap="round"/>
+<text x="93" y="523" fill="#547063" font-size="17" font-family="Arial">Zmiana kierunku i promienia</text></rect><rect x="610" y="371" width="504" height="169" rx="19" fill="#eef4ee" stroke="#c8dac9" stroke-width="3"/>
+<text x="628" y="408" fill="#174c35" font-size="25" font-family="Arial" font-weight="bold">PRZEBIJANIE</text>
+<rect x="635" y="446" width="96" height="39" rx="4" fill="#788c8d"/>
+<path d="M747 466h87" stroke="#bd7545" stroke-width="7"/><path d="M818 454l18 12-18 12" stroke="#bd7545" stroke-width="7" fill="none"/>
+<rect x="885" y="446" width="125" height="40" rx="3" fill="#59777b"/><circle cx="947" cy="466" r="12" fill="#eef4ee"/>
+<text x="629" y="523" fill="#547063" font-size="17" font-family="Arial">Otwór z późniejszą kalibracją</text></rect>
+<text x="68" y="616" font-family="Arial,sans-serif" font-size="16" fill="#54715d">TRENERKI Academy · autorski schemat edukacyjny · nie zastępuje szkolenia praktycznego</text>
+</svg>
