@@ -1,0 +1,154 @@
+{
+  "lepsza-mama": {
+    "topic": "Uważne rodzicielstwo bez presji doskonałości",
+    "material": "Potrzeby dziecka zmieniają się z wiekiem; bezpieczeństwo, przewidywalność, autonomia i prawo do emocji mogą współistnieć z granicami. Żadna pojedyncza metoda wychowawcza nie działa jednakowo dla każdej rodziny. Dbanie o własny odpoczynek nie jest przeciwieństwem troski o dziecko.",
+    "process": "W trudnej sytuacji nazwij emocję, zatrzymaj niebezpieczne zachowanie bez poniżania i wróć do rozmowy po uspokojeniu. Pytaj o konkretną potrzebę zamiast zakładać złą intencję.",
+    "failure": "Dziecko krzyczy przy wyłączaniu ekranu. Sam krzyk nie oznacza, że potrzebuje kolejnej godziny; najpierw należy utrzymać wcześniej ustaloną zasadę i pomóc znieść frustrację.",
+    "task": "Zaprojektuj jedną codzienną rutynę: zapowiedź zmiany, wybór dziecka, granica, reakcja na emocje i naprawa relacji po konflikcie.",
+    "icon": "family"
+  },
+  "lepszy-tata": {
+    "topic": "Obecność i więź: rytuały, rozmowa i granice",
+    "material": "Poczucie bezpieczeństwa budują przewidywalne zachowania rodzica, nie drogie prezenty. Wspólna aktywność, słuchanie i utrzymywanie słowa pomagają budować zaufanie. Dziecko ma prawo do odrębnych uczuć wobec drugiego rodzica.",
+    "process": "Zaplanuj regularny czas bez telefonu, rozmowy dostosowane do wieku i prosty rytuał po powrocie dziecka ze szkoły. Przy rozstaniu dorosłych nie wykorzystuj dziecka do przekazywania wiadomości ani oceniania drugiego rodzica.",
+    "failure": "Ojciec spóźnia się na umówioną rozmowę i tłumaczy, że dziecko 'przesadza'. Lepsze jest przyjęcie odpowiedzialności i zaproponowanie konkretnej poprawy.",
+    "task": "Zapisz dwie wersje rozmowy po konflikcie: obronną i naprawczą, uwzględniając szczere przeprosiny.",
+    "icon": "family"
+  },
+  "nie-lubie-ludzi": {
+    "topic": "Granice, przeciążenie społeczne i realistyczne oczekiwania",
+    "material": "Introwersja, nieufność i potrzeba samotności nie są tym samym. Zmęczenie, stres oraz wcześniejsze doświadczenia mogą nasilać niechęć do kontaktu, ale nie stanowią diagnozy. Celem kursu jest wybór satysfakcjonującego kontaktu, a nie przymus bycia towarzyskim.",
+    "process": "Przeanalizuj konkretne sytuacje: co wydarzyło się naprawdę, jakie było moje przypuszczenie i czego potrzebuję. Ćwicz krótkie rozmowy i prawo do uprzejmej odmowy.",
+    "failure": "Jedna przykra rozmowa powoduje przekonanie, że 'wszyscy ludzie są fałszywi'. Oddziel przypadek od uogólnienia i poszukaj innych możliwych wyjaśnień.",
+    "task": "Wypełnij tabelę: zdarzenie, myśl, emocja, dowód za, dowód przeciw i jeden bezpieczny mały krok.",
+    "icon": "care"
+  },
+  "partner-z-uzaleznieniem": {
+    "topic": "Uzależnienie: granice wsparcia, bezpieczeństwo i fachowa pomoc",
+    "material": "Uzależnienie może wpływać na zachowanie, zdrowie i finanse, ale nie odbiera drugiej osobie odpowiedzialności za agresję i własne decyzje. Partner osoby uzależnionej nie powinien być traktowany jako domowy terapeuta. W sytuacji przemocy lub zagrożenia priorytetem jest bezpieczeństwo dzieci i dorosłych.",
+    "process": "Oddziel wsparcie leczenia od tolerowania przemocy. Przygotuj kontakty pomocowe, bezpieczny dostęp do dokumentów i pieniędzy oraz plan, komu powiedzieć o zagrożeniu. Szczegóły medyczne wymagają profesjonalnej konsultacji.",
+    "failure": "Partner obiecuje zmianę, ale po raz kolejny prowadzi pojazd po alkoholu z dzieckiem. Granica musi dotyczyć realnego bezpieczeństwa, nie tylko słów przeprosin.",
+    "task": "Sporządź własny bezpieczny plan: czerwone flagi, miejsca schronienia, zaufana osoba i odpowiednie służby w razie zagrożenia.",
+    "icon": "care"
+  },
+  "pomagaj-dziecku-w-lekcjach": {
+    "topic": "Nauka: samodzielne rozumowanie i informacja zwrotna",
+    "material": "Pomyłka w zadaniu to informacja o brakującym kroku, nie ocena wartości dziecka. Powtarzanie aktywne i rozłożone w czasie pomaga utrwalać wiedzę, ale tempo uczenia powinno uwzględniać możliwości oraz zmęczenie. Podpowiedź ma uruchamiać myślenie, a nie podawać gotowe rozwiązanie.",
+    "process": "Najpierw poproś dziecko, by powiedziało, co już rozumie; potem wspólnie znajdź pierwszy brakujący krok. Oceniaj sposób rozwiązania i dopiero po próbie pokaż przykład. Dłuższa sesja nie oznacza automatycznie lepszego uczenia.",
+    "failure": "Rodzic rozwiązuje pięć przykładów za dziecko, żeby szybko skończyć. Praca domowa wygląda idealnie, lecz dziecko nie potrafi zrobić szóstego zadania samodzielnie.",
+    "task": "Zapisz cztery pytania pomagające dziecku policzyć 3 × 4 bez wypowiadania wyniku.",
+    "icon": "family"
+  },
+  "rodzice-50-50": {
+    "topic": "Dwa domy: stabilność dziecka i przepływ informacji",
+    "material": "Opieka naprzemienna wymaga harmonogramu, spójnych informacji o zdrowiu i szkole oraz planu rzeczy przechodzących między domami. Takie same zasady w każdym domu nie są konieczne, ale dziecko nie powinno płacić emocjonalnej ceny za brak komunikacji dorosłych.",
+    "process": "Stosuj kalendarz z terminami, neutralne przekazanie informacji i jasną listę spraw do potwierdzenia. Przy sporach oddzielaj decyzje dotyczące dziecka od konfliktu partnerskiego. Konkretnych uprawnień i zasad prawnych nie należy zakładać bez sprawdzenia lokalnego prawa i orzeczeń.",
+    "failure": "W obu domach przyjęto inny termin zebrania szkolnego. Zamiast obwiniania, popraw wspólny system informacji i potwierdzania odczytu.",
+    "task": "Zbuduj tygodniowy plan przekazywania dziecka z miejscem na szkołę, zdrowie, leki, rzeczy i wyjątkowe wydarzenia.",
+    "icon": "family"
+  },
+  "wyjdz-z-toksycznego-zwiazku": {
+    "topic": "Rozpoznawanie przemocy i bezpieczny plan działania",
+    "material": "Kontrola dostępu do pieniędzy, izolowanie od znajomych, groźby i śledzenie mogą być oznakami przemocy. Trzeba odróżniać zwykły konflikt od wzorca zastraszania i ograniczania autonomii. Nie każdy plan 'szczerej rozmowy' jest bezpieczny, zwłaszcza przy groźbach.",
+    "process": "W przypadku zagrożenia zaplanuj kontakt z odpowiednimi służbami, zaufaną osobą oraz dostęp do dokumentów i bezpiecznego urządzenia. Nie ujawniaj planu odejścia osobie, która może zareagować przemocą; decyzje o bezpieczeństwie dostosuj do konkretnej sytuacji ze specjalistami.",
+    "failure": "Osoba stosująca kontrolę żąda hasła do telefonu 'na dowód miłości'. To sygnał ograniczania prywatności, a nie obowiązkowy element relacji.",
+    "task": "W bezpiecznych warunkach przygotuj listę kontaktów pomocowych oraz rzeczy, które trzeba chronić; nie udostępniaj jej osobie zagrażającej.",
+    "icon": "care"
+  },
+  "zwiazek-rozmowa": {
+    "topic": "Komunikacja: potrzeba, fakt, interpretacja i prośba",
+    "material": "Stwierdzenie 'Nigdy mnie nie słuchasz' jest uogólnieniem, a nie obserwacją. Rozmowa zwykle staje się bardziej konkretna, gdy oddziela się zdarzenie, własne uczucie, potrzebę i możliwą prośbę. Granice i zgoda na przerwę chronią przed eskalacją.",
+    "process": "Ustal czas na rozmowę, parafrazuj wypowiedź partnera i pytaj o znaczenie zamiast dopowiadać intencję. Jeśli pojawia się przemoc, technika komunikacji nie jest substytutem planu bezpieczeństwa.",
+    "failure": "Partner mówi 'zawsze zostawiasz mnie samego', bo w tym tygodniu dwa razy odwołano spotkanie. Lepszą drogą jest opis konkretów i uzgodnienie kalendarza.",
+    "task": "Zamień trzy oceniające zdania na obserwację + uczucie + konkretną prośbę.",
+    "icon": "family"
+  },
+  "mierz-ponad-sily": {
+    "topic": "Ambicja: kompetencje, ryzyko i plan etapów",
+    "material": "Duży cel wymaga rozróżnienia umiejętności, uprawnień i zasobów. Można uczyć się praktycznie bez dyplomu w wielu obszarach, ale zawody regulowane mają odrębne wymagania. Dobre planowanie uwzględnia koszt błędu i granice bezpiecznego eksperymentowania.",
+    "process": "Rozpisz cel na dowody postępu: projekt, próbkę pracy, praktykę, feedback i warunki następnego kroku. Przy wysokim ryzyku finansowym albo prawnym stosuj małe testy przed dużymi zobowiązaniami.",
+    "failure": "Ktoś chce zostać elektrykiem i bez szkolenia przyjmuje prace przy instalacji. Ambicja nie zastępuje wymaganych kwalifikacji i zasad bezpieczeństwa.",
+    "task": "Wybierz ambitny cel i przygotuj trzy etapy po 30 dni: kompetencja, mały test, kryterium decyzji.",
+    "icon": "plan"
+  },
+  "mocny-charakter": {
+    "topic": "Asertywność: wyraźne granice bez agresji",
+    "material": "Stanowczość oznacza jasne wyrażanie potrzeb i odmowy z poszanowaniem drugiej osoby. Agresja polega na przekraczaniu cudzych granic, a uległość na rezygnacji z własnych. Rozróżnienie opiera się na treści i skutkach zachowania, a nie sile głosu.",
+    "process": "Ćwicz zdania: 'Nie mogę przyjąć tego terminu', 'Potrzebuję dwóch dni', 'Mogę zrobić A, ale nie B'. Gdy sytuacja wywołuje silny stres, przerwa i powrót do tematu bywa bardziej skuteczny niż natychmiastowa odpowiedź.",
+    "failure": "Pracownik akceptuje nierealny termin, by nie odmawiać, a potem obwinia innych. Lepsze jest wczesne wyjaśnienie zależności i zaoferowanie wykonalnej alternatywy.",
+    "task": "Zapisz asertywną odmowę dla trzech sytuacji: nadgodziny, pożyczka i naruszenie prywatności.",
+    "icon": "plan"
+  },
+  "poznaj-siebie": {
+    "topic": "Wartości, zachowanie i źródła informacji o sobie",
+    "material": "Samookreślenie na podstawie jednego testu osobowości jest uproszczeniem. Lepiej obserwować zachowania i decyzje w różnych sytuacjach, odróżniać wartości od chwilowego nastroju i zauważać, które środowiska wspierają mocne strony.",
+    "process": "Zapisz trzy zdarzenia z ostatniego miesiąca, swoją decyzję, koszt i zadowolenie po czasie. Poproś zaufaną osobę o konkretny przykład Twojej umiejętności zamiast ogólnej pochwały.",
+    "failure": "Jedna porażka w wystąpieniu publicznym prowadzi do wniosku 'nie umiem rozmawiać z ludźmi'. Pojedynczy epizod nie dowodzi stałej cechy.",
+    "task": "Zbuduj mapę: sytuacja → decyzja → wartość → efekt → czego chcę spróbować inaczej.",
+    "icon": "care"
+  },
+  "bdo": {
+    "topic": "BDO: obowiązki zależą od roli i rzeczywistych strumieni",
+    "material": "Opakowanie wysyłkowe, produkt i odpad mogą podlegać odmiennym obowiązkom. Status wytwórcy lub wprowadzającego produkty w opakowaniach zależy od modelu działalności i aktualnych przepisów; sam fakt posiadania sklepu online nie przesądza automatycznie wszystkich obowiązków.",
+    "process": "Zmapuj materiały opakowaniowe, sposób ich wprowadzenia do obrotu, powstające odpady i dokumenty. Następnie sprawdź aktualne wymogi rejestracji i sprawozdawczości u właściwego organu, zamiast korzystać ze starego ogólnego artykułu.",
+    "failure": "Firma raportuje jedynie kartony, ignorując folię i wypełnienie przesyłki. Rejestr materiałów musi obejmować odpowiednie strumienie, jeżeli podlegają ewidencji.",
+    "task": "Zrób kartę jednego zamówienia: karton, papier, taśma, etykieta, ich masa oraz pytanie o kwalifikację prawną.",
+    "icon": "legal"
+  },
+  "gpsr": {
+    "topic": "Bezpieczeństwo produktu: materiał, ryzyko i identyfikowalność",
+    "material": "Dla wyrobów rękodzielniczych skład materiałowy, ostre krawędzie, małe odłączalne elementy i odporność na obciążenia mogą mieć znaczenie bezpieczeństwa. Wymagania GPSR należy interpretować razem z przepisami szczególnymi dla danej kategorii produktu, a nie zamiast nich.",
+    "process": "Opisz przeznaczenie, użytkowników, rozsądnie przewidywalne użycie, zagrożenia, środki ograniczające ryzyko, oznaczenia i sposób wycofania produktu. Numer partii i dane kontaktowe ułatwiają reakcję na skargę.",
+    "failure": "Ręcznie wykonany brelok ma mały magnes odpadający po kilku użyciach, ale sprzedawca oznacza go po prostu 'produkt bezpieczny'. Należy rozpoznać zagrożenie i zastosować wymagane środki, a nie ukrywać skargę.",
+    "task": "Zbuduj analizę ryzyka prostego rękodzieła: zagrożenie, prawdopodobieństwo, skutek, działanie, dowód kontroli.",
+    "icon": "legal"
+  },
+  "transport-logistyka-praktycznie": {
+    "topic": "Towar, trasa, pojazd i rzeczywisty koszt dostawy",
+    "material": "Masa, objętość, gabaryty, opakowanie i wymagania temperaturowe determinują wybór środka transportu. Zabezpieczenie ładunku musi uwzględniać rzeczywiste siły i odpowiednie wymagania prawne; nie jest wyłącznie kwestią liczby pasów.",
+    "process": "Po przyjęciu zlecenia weryfikuj adresy, okna czasowe, ograniczenia pojazdu, możliwości załadunku i rozładunku, dokumenty oraz ryzyko opóźnień. Dopiero po sprawdzeniu wykonalności oblicz koszt.",
+    "failure": "Ładunek mieści się wagowo, ale przekracza wymiary drzwi pojazdu. Plan pozostaje niewykonalny, niezależnie od korzystnej ceny za kilometr.",
+    "task": "Porównaj dwie palety: masa i gabaryty. Dobierz hipotetyczny samochód oraz listę danych potrzebnych do bezpiecznego załadunku.",
+    "icon": "transport"
+  },
+  "koordynator": {
+    "topic": "Usługa sprzątania: powierzchnie, preparaty i odbiór jakości",
+    "material": "Drewno, płytka ceramiczna, stal nierdzewna, szkło, kamień naturalny i laminat różnie reagują na pH, tarcie i wilgoć. Dobór środków musi uwzględniać kartę charakterystyki oraz zalecenia producenta powierzchni. Mieszanie środków bez procedury bywa niebezpieczne.",
+    "process": "Najpierw wykonaj inwentaryzację pomieszczeń i typów materiałów, potem oszacuj wydajność na m², potrzebne narzędzia, środki i czas kontroli. Umowa powinna zawierać mierzalny standard odbioru, nie tylko 'posprzątane'.",
+    "failure": "Na marmurze powstają matowe ślady po kwaśnym odkamieniaczu. Samo ponowne mycie nie jest odpowiedzią; potrzebna jest identyfikacja materiału i ocena szkody.",
+    "task": "Zbuduj checklistę pięciu powierzchni: rodzaj, metoda, zakazany środek, narzędzie i kryterium odbioru.",
+    "icon": "home"
+  },
+  "dziennik-kota": {
+    "topic": "Hotelik dla kotów: dobrostan, higiena i separacja",
+    "material": "Koty mogą silnie reagować na zapach, hałas i zmianę otoczenia. Materiały wyposażenia powinny umożliwiać skuteczne czyszczenie bez pozostawiania substancji szkodliwych. Miski, kuwety i miejsca odpoczynku muszą umożliwiać higieniczną obsługę, a osobniki chore mogą wymagać separacji.",
+    "process": "Przyjęcie obejmuje wywiad, instrukcje żywienia, stan zdrowia, dokumenty wymagane lokalnie i kontakt awaryjny. Regularnie zapisuj pobieranie pokarmu i wody, korzystanie z kuwety oraz oznaki stresu; nie zmuszaj kotów do wspólnej przestrzeni.",
+    "failure": "Nowo przyjęty kot nie je i ukrywa się przez dłuższy czas. Zamiast go wyciągać, ogranicz bodźce i podejmij kontakt z właścicielem lub weterynarzem według stanu zwierzęcia.",
+    "task": "Zaprojektuj plan stanowiska: strefa izolacji, kuweta, woda, odpoczynek, ciche miejsce i punkt higieny.",
+    "icon": "animal"
+  },
+  "petsitter": {
+    "topic": "Wizyta opiekuna kota: nawodnienie, leki i reakcja na zagrożenia",
+    "material": "Zachowanie kota, jedzenie, woda, kuweta i oddech są ważnymi danymi obserwacyjnymi. Chemikalia domowe oraz niektóre rośliny mogą być dla kotów szkodliwe. Podawanie leków wymaga jasnych instrukcji właściciela i właściwego nadzoru weterynaryjnego.",
+    "process": "Sprawdź przed pierwszą wizytą dietę, lokalizację kuwety, zamknięcie okien i balkonów, dostęp do kluczy i numer awaryjny. W raporcie zapisuj obserwacje faktograficzne, nie diagnozy.",
+    "failure": "Kot nagle oddycha z wyraźnym wysiłkiem. Nie czeka się do kolejnej planowej wizyty; to sytuacja wymagająca pilnej pomocy weterynaryjnej.",
+    "task": "Przygotuj wzór raportu wizyty: godzina, woda, jedzenie, kuweta, zachowanie, zdjęcia i ewentualny alarm.",
+    "icon": "animal"
+  },
+  "kryzys-po-40-bez-dlugow": {
+    "topic": "Kryzys i finanse: zrozumienie kosztów przed dużą zmianą",
+    "material": "Presja porównywania się może prowadzić do zakupów, które nie zwiększają bezpieczeństwa. Rata to tylko część całkowitego kosztu auta lub domu. Utrata płynności może wydarzyć się nawet przy wysokich dochodach, gdy duże zobowiązania są nieelastyczne.",
+    "process": "Zapisz dochód netto, niezbędne wydatki, spłaty, rezerwę i koszt utrzymania nowych zobowiązań. Dopiero po sprawdzeniu przepływu pieniężnego oceniaj, czy zakup albo zmiana pracy ma rozsądny margines bezpieczeństwa.",
+    "failure": "Po stresującym tygodniu ktoś zaciąga kredyt na sportowy samochód, bez wiedzy ile zostanie po ratach i ubezpieczeniu. Najpierw sprawdza się liczby i opóźnia nieodwracalną decyzję.",
+    "task": "Dla 50 000 zł oszczędności i wydatków 8 000 zł miesięcznie porównaj dwa scenariusze zakupu auta, zachowując awaryjną rezerwę.",
+    "icon": "finance"
+  },
+  "zaczynam-od-zera": {
+    "topic": "Odbudowa majątku: płynność, zobowiązania i wiarygodny plan",
+    "material": "Po stracie majątku trzeba oddzielić obecny stan gotówki, majątek możliwy do spieniężenia i zobowiązania z terminami. Budżet to nie ocena charakteru, lecz narzędzie do unikania kolejnego kryzysu. Długi o wyższych kosztach mogą wymagać priorytetu, ale decyzje zależą od całego obrazu i prawa.",
+    "process": "Pierwsze działania: zapewnić niezbędne potrzeby, spisać dokumenty i terminy, skontaktować się z wierzycielami i uprawnionymi doradcami, ustalić realny plan 30/90 dni. Nie obiecuj szybkiego zwrotu inwestycji bez danych.",
+    "failure": "Osoba chce odzyskać wszystkie pieniądze w miesiąc przez ryzykowną inwestycję. Taki skrót może pogłębić zadłużenie; priorytetem jest ochrona płynności.",
+    "task": "Opracuj tablicę: zasób, miesięczny wpływ, wydatek, dług, termin, ryzyko i pierwszy możliwy bezpieczny krok.",
+    "icon": "finance"
+  }
+}
