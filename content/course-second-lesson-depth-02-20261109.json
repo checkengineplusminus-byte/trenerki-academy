@@ -1,0 +1,116 @@
+{
+  "astro-consafe-wms": {
+    "curiosity": "WMS może pokazywać różne funkcje operatorowi i supervisorowi, choć oboje pracują na tych samych artykułach i lokalizacjach.",
+    "explain": "Rola pracownika zwykle ogranicza się do zadań operacyjnych: skanowania, potwierdzania i zgłaszania wyjątku. Supervisor nadzoruje zlecenia, zaległości, blokady i odchylenia. Konkretne menu zależy od wersji i wdrożonej konfiguracji systemu.",
+    "example": "Operator stwierdza brak pięciu sztuk podczas kompletacji. Zamiast samodzielnie zwiększać stan, zgłasza rozbieżność właściwą ścieżką; upoważniona osoba sprawdza ruchy i status zapasu.",
+    "task": "Przypisz do ról: potwierdzenie skanu, analiza rezerwacji, korekta zapasu i weryfikacja przyczyny błędu."
+  },
+  "axapta-dynamics-magazyn": {
+    "curiosity": "ERP może znać wartość towaru w księgach, choć nie prowadzi szczegółowej ścieżki każdego skanu w magazynie.",
+    "explain": "ERP obsługuje szerszy proces gospodarczy: zamówienia, zakupy, sprzedaż i finanse. WMS koncentruje się na wykonaniu fizycznych czynności magazynowych, a TMS na przewozie. W Dynamics funkcje mogą się nakładać, ale pojęcia nadal opisują różne cele biznesowe.",
+    "example": "Zakup 12 kartonów jest zapisany w ERP. Przyjęcie do WMS wymaga jednak ustalenia jednostek, ilości, lokalizacji i ewentualnych blokad jakości. Transport z magazynu organizuje kolejny proces.",
+    "task": "Narysuj relację zamówienie zakupu → przyjęcie WMS → dostawa TMS i zapisz, gdzie powstaje każda informacja."
+  },
+  "blue-yonder-wms": {
+    "curiosity": "Dwie osoby na tym samym magazynie mogą mieć inne ekrany, bo jedna kompletuje towary, a druga zarządza wyjątkiem i przepływem zadań.",
+    "explain": "Operator potrzebuje listy zadań i szybkiej informacji zwrotnej o poprawności skanu. Supervisor obserwuje obciążenie stref, nietypowe statusy i zadania opóźnione. Uprawnienia powinny być zgodne z odpowiedzialnością, by przypadkowe korekty nie omijały kontroli.",
+    "example": "Skaner prowadzi pracownika do niedostępnej alejki. Operator zgłasza wyjątek; supervisor analizuje blokadę i może zmienić kolejność zadań zgodnie z zasadami instalacji.",
+    "task": "Rozdziel pięć operacji między role i wyjaśnij, które wymagają dodatkowego uprawnienia."
+  },
+  "infor-wms": {
+    "curiosity": "Terminal RF służy do rejestrowania fizycznych czynności, ale o poprawności zapasu decyduje także logika właściciela, partii i statusu.",
+    "explain": "Interfejs webowy może służyć planowaniu i nadzorowi, a RF prowadzi operatora po skanach. Każde potwierdzenie powinno zgadzać się z rzeczywistym towarem i jednostką. Rola, status i lokalizacja mogą wpływać na dostępne polecenia.",
+    "example": "Operator widzi dwie palety tego samego SKU należące do różnych klientów. Poprawny wybór wymaga sprawdzenia ownera i etykiety, nie tylko dopasowania numeru artykułu.",
+    "task": "Ułóż formularz kontroli skanu: owner, SKU, lot, LPN, location, quantity i status."
+  },
+  "manhattan-active-wms": {
+    "curiosity": "To, że na pulpicie wyświetla się 100 sztuk zapasu, nie oznacza, że użytkownik ma prawo zamienić tę liczbę bez śladu audytowego.",
+    "explain": "Role w WMS rozdzielają obsługę operacji od zarządzania wyjątkami, stanem i priorytetami. Pulpit prezentuje zadania, alerty i KPI, ale zakres pól zależy od wdrożenia. Historia zdarzeń ma umożliwiać wyjaśnienie skąd wziął się dany wynik.",
+    "example": "Kierownik zmiany widzi wysoką liczbę opóźnionych kompletacji. Zamiast usuwać alerty, sprawdza brakujące nośniki, dostępność zapasu i awarie urządzeń.",
+    "task": "Narysuj pulpit z trzema metrykami: zadania w toku, wyjątki i opóźnione zamówienia; dopisz bezpieczne działania."
+  },
+  "ongoing-wms": {
+    "curiosity": "Magazyn dla wielu sklepów musi rozpoznać właściciela towaru nawet wtedy, gdy dwa sklepy używają tego samego numeru produktu.",
+    "explain": "Role i uprawnienia chronią dane klientów oraz limitują operacje, takie jak korekta stanów czy dostęp do zamówień. Obsługa operatora powinna prowadzić przez ruch zlecenia i skan, a panel administracyjny pozwalać analizować integracje i wyjątki. Szczegóły zależą od konfiguracji klienta.",
+    "example": "Klient A i B sprzedają produkt o kodzie 001, ale mają osobny zapas. Operator musi zobaczyć odpowiedniego goods ownera podczas przyjęcia, by nie przypisać kartonu niewłaściwemu sprzedawcy.",
+    "task": "Zbuduj tabelę dwóch klientów z identycznym SKU, różnymi stanami i dwoma zamówieniami. Pokaż, dlaczego nie wolno ich mieszać."
+  },
+  "oracle-wms-cloud": {
+    "curiosity": "Zeskanowanie etykiety kontenera (LPN) nie jest tym samym co zeskanowanie pojedynczego produktu (SKU).",
+    "explain": "Menu WMS zależy od roli i etapu procesu: przyjęcie, odkładanie, kompletacja i wysyłka. Urządzenie RF powinno wymagać właściwego identyfikatora w odpowiednim kroku, aby powiązać czynność z nośnikiem, ilością i lokalizacją. Nie każdy ekran wygląda identycznie we wszystkich instalacjach.",
+    "example": "Podczas przyjęcia kartonu operator skanuje SKU zamiast wymaganej etykiety LPN. System nie może potwierdzić jednostki logistycznej; pracownik wraca do właściwego kodu i weryfikuje zawartość.",
+    "task": "Rozróżnij trzy etykiety: SKU, LPN i lokalizacja. Zaznacz kiedy skanuje się każdą z nich w przykładowym procesie."
+  },
+  "sap-ewm-magazyn": {
+    "curiosity": "W SAP EWM nazwa storage bin oznacza lokalizację, a warehouse task — czynność do wykonania; ich pomylenie zmienia sens procesu.",
+    "explain": "Role i obszary pracy pozwalają obsługiwać przyjęcia, zapas, warehouse tasks i monitor magazynu. RF służy wykonaniu określonej czynności, a webowy lub desktopowy interfejs może wspierać nadzór. Uprawnienia i używane transakcje zależą od konfiguracji wdrożenia.",
+    "example": "Pracownik otrzymuje zadanie odłożenia HU do lokacji A-01-03, ale widzi tam inną paletę. Nie powinien potwierdzać zadania fikcyjnie; zgłasza konflikt lokacji zgodnie z procedurą.",
+    "task": "Na schemacie rozdziel: warehouse number, storage type, storage bin, HU i warehouse task. Wyjaśnij związek każdego z nich."
+  },
+  "sap-tm-transport": {
+    "curiosity": "Ta sama dostawa może występować w kilku systemach jako różne obiekty: zamówienie w ERP, wydanie towaru w EWM i potrzeba przewozu w TM.",
+    "explain": "ERP utrzymuje proces handlowy, EWM realizuje operacje fizyczne, a TM planuje i rozlicza przewozy. Między systemami przekazuje się statusy, masę, objętość, okna czasowe i dokumenty. Błędy jednostek lub identyfikatorów mogą psuć plan mimo poprawnej trasy na mapie.",
+    "example": "ERP zapisuje zamówienie 12 palet, EWM fizycznie przygotowuje 10, a TM planuje przewóz 12. Przed wysyłką trzeba uzgodnić status faktycznej gotowości i zaktualizować dane.",
+    "task": "Zbuduj przepływ zamówienie → przygotowanie w EWM → plan TM → potwierdzenie dostawy. Przy każdym kroku wpisz dane wejściowe."
+  },
+  "facebook-ads-promocja": {
+    "curiosity": "Dwustopniowe uwierzytelnianie może chronić konto reklamowe przed przejęciem, które poza utratą profilu grozi również nieautoryzowanymi wydatkami.",
+    "explain": "Reklama wymaga odpowiednich ról dostępu, zabezpieczenia konta i zasad rozliczenia. Przed uruchomieniem kampanii sprawdź, kto ma uprawnienie do wydawania budżetu, edycji reklam i dostępu do danych klientów. Uprawnienia powinny odpowiadać zakresowi pracy.",
+    "example": "Agencja potrzebuje analizować raporty, ale nie musi znać hasła właściciela. Bezpieczniejszy proces polega na przydzieleniu właściwej roli i ograniczeniu uprawnień do potrzebnego konta.",
+    "task": "Zrób checklistę bezpieczeństwa konta: 2FA, administratorzy, role, płatności, dostępy i przegląd zmian."
+  },
+  "google-ads-promocja": {
+    "curiosity": "Jeden reklamodawca może mieć wiele kampanii, a każda kilka grup reklam, dzięki czemu budżet i tematyka nie mieszają się przypadkowo.",
+    "explain": "Hierarchia obejmuje konto, kampanię, grupę reklam, reklamy i powiązane słowa kluczowe. Na poziomie kampanii zwykle ustala się cel i budżet, a na poziomie grupy temat i dopasowanie komunikatu do intencji. Struktura powinna wynikać z oferty, nie z liczby dostępnych przycisków.",
+    "example": "Firma świadczy mycie dachów i sprzątanie biur. Jedna grupa reklam z obydwoma usługami prowadzi do niejasnego tekstu. Rozdzielenie tematów pozwala dopasować reklamę i stronę do zapytania.",
+    "task": "Ułóż strukturę konta dla dwóch usług z odrębnymi grupami reklam, budżetami i intencjami słów kluczowych."
+  },
+  "apartamenty": {
+    "curiosity": "Przy sprzątaniu ważne jest, aby nie przenosić zanieczyszczeń z łazienki na powierzchnie mające kontakt z żywnością.",
+    "explain": "Kolejność obejmuje oględziny i dokumentowanie usterek, usuwanie odpadów, pracę od czystszych stref do bardziej zabrudzonych, wymianę tekstyliów i kontrolę końcową. Narzędzia powinny mieć przypisane przeznaczenie, a środki być zgodne z powierzchnią.",
+    "example": "Pracownik najpierw myje toaletę, a potem używa tej samej ściereczki do kuchennego blatu. Plan sprzątania musi rozdzielać wyposażenie i przewidywać higieniczną kolejność zadań.",
+    "task": "Zapisz kolejność sprzątania apartamentu 40 m² z kuchnią i łazienką oraz trzy punkty kontroli."
+  },
+  "odbiory": {
+    "curiosity": "Zdjęcie rysy bez skali może wprowadzać w błąd: na dwóch fotografiach ta sama wada może wyglądać na znacznie większą lub mniejszą.",
+    "explain": "Oględziny wykonuje się według stałej trasy: ściany, posadzki, stolarka, instalacje dostępne do oceny i elementy wspólne. Należy notować lokalizację, materiał, objaw, pomiar i dokumentację odniesienia. Nie wolno przypisywać przyczyn bez dowodów.",
+    "example": "Przy oknie widoczna jest wilgotna plama. Odbierający dokumentuje jej pozycję, zasięg i warunki, zamiast od razu uznawać, że przyczyną jest nieszczelny parapet.",
+    "task": "Przygotuj formularz usterki: pomieszczenie, materiał, objaw, zdjęcie ogólne i detal, rozmiar oraz wymagane dalsze sprawdzenie."
+  },
+  "wspolnota": {
+    "curiosity": "Nawet niewielka wspólnota może potrzebować odrębnych rejestrów uchwał, przeglądów technicznych i wydatków, bo każdy z nich dokumentuje inny rodzaj decyzji.",
+    "explain": "Dokumentacja zarządcza obejmuje właścicieli, uchwały, umowy, ewidencję wpływów i kosztów, przeglądy oraz zgłoszenia usterek. Dostęp do danych osobowych powinien być ograniczony, a terminy przeglądów i obowiązki prawne zweryfikowane dla właściwej jurysdykcji.",
+    "example": "Po awarii dachu zarząd otrzymuje ofertę naprawy, ale nie ma protokołów wcześniejszych usterek. Uporządkowany rejestr ułatwia ocenę historii problemu i podjęcie decyzji.",
+    "task": "Zaprojektuj pięć rejestrów wspólnoty, ich minimalne pola i osobę odpowiedzialną za aktualizację."
+  },
+  "opieka-seniorzy": {
+    "curiosity": "Dobre słuchanie osoby starszej to nie tylko potwierdzanie słów; oznacza także danie czasu na odpowiedź bez kończenia wypowiedzi za nią.",
+    "explain": "Komunikacja powinna uwzględniać możliwości słuchowe, wzrokowe, stan zdrowia i preferencje rozmówcy. Mów wyraźnie, sprawdzaj zrozumienie i nie traktuj osoby dorosłej jak dziecka. Przed podjęciem decyzji zapytaj, jakie wsparcie senior rzeczywiście chce otrzymać.",
+    "example": "Senior długo odpowiada na pytanie o posiłek, więc opiekun zaczyna mówić za niego. Lepiej dać czas, zadać prostsze pytanie i sprawdzić, czy pomoc jest potrzebna.",
+    "task": "Przeredaguj trzy protekcjonalne zwroty na pytania, które zachowują szacunek i autonomię."
+  },
+  "wsparcie-adhd": {
+    "curiosity": "Osoba może potrafić długo koncentrować się na pasjonującym zadaniu, a mimo to mieć duże trudności z rozpoczęciem mniej atrakcyjnego obowiązku.",
+    "explain": "ADHD wiąże się m.in. z regulacją uwagi, impulsywności i funkcji wykonawczych, ale objawy są różne u różnych osób. Przeciążenie bodźcami, brak snu i stres mogą pogarszać funkcjonowanie. Ocena i leczenie należą do kompetentnych specjalistów.",
+    "example": "Uczeń rozwiązuje trudne zadanie komputerowe przez godzinę, ale nie potrafi zacząć krótkiego formularza. Zamiast oskarżać go o lenistwo, można przygotować pierwszy mały krok i wyraźny termin.",
+    "task": "Rozbij uciążliwy obowiązek na pięć działań, określ pierwszy ruch oraz sposób sprawdzenia postępu."
+  },
+  "festyn": {
+    "curiosity": "Zmiana wielkości porcji o 10% może znacząco zwiększyć koszt dużej imprezy, nawet gdy jednostkowo różnica wygląda niewinnie.",
+    "explain": "Recepturę zapisuje się w gramach na porcję wraz z przewidywanym odpadem, alergenami i wymaganiami przechowywania. Powtarzalność umożliwia porównanie planowanego zużycia z rzeczywistym. Wydajność sprzętu wyznacza, ile porcji można bezpiecznie przygotować w danym czasie.",
+    "example": "Na 100 porcji potrzeba 120 g składnika głównego na porcję, czyli 12 kg bez zapasu na ubytki. Jeśli obsługa wydaje 150 g, zapas wystarczy na 80 porcji.",
+    "task": "Oblicz zapotrzebowanie dla 80 porcji po 150 g i zapisz, co jeszcze trzeba uwzględnić w zakupach."
+  },
+  "kgw": {
+    "curiosity": "Wydatek może być rzeczywisty i dobrze udokumentowany, ale nadal nie kwalifikować się do zwrotu z konkretnego programu dotacyjnego.",
+    "explain": "Budżet dzieli wydatki na kategorie zgodnie z zatwierdzonym projektem. Przy każdej pozycji warto zapisać limit, dokument, termin, cel i status rozliczenia. Przesunięcia między kategoriami mogą wymagać zgody według obowiązującego regulaminu.",
+    "example": "Koło ma 5 000 zł na materiały, lecz chce wydać 1 000 zł z tej kategorii na sprzęt. Nie wystarczy nazwać wydatku materiałem; trzeba sprawdzić dopuszczalne zmiany budżetu.",
+    "task": "Zbuduj tabelę: kategoria, limit, wydatek, pozostało, dowód, warunek kwalifikowalności."
+  },
+  "blizej-dziecka": {
+    "curiosity": "Dziecko może uznać krótką, przewidywalną wspólną aktywność za bardziej wartościową niż długi czas bez rzeczywistej uwagi.",
+    "explain": "Czas jakościowy to wspólna obecność z uwagą skierowaną na dziecko, bez presji na 'wielkie atrakcje'. Dobrze sprawdza się wybór aktywności przez dziecko i zachowanie regularności. Różne grupy wiekowe mogą potrzebować innych form kontaktu.",
+    "example": "Rodzic proponuje drogi wyjazd, lecz dziecko chce po prostu wspólnie naprawić rower. Lepsze słuchanie oznacza potraktowanie tej propozycji poważnie.",
+    "task": "Zaplanuj trzy proste aktywności po 15 minut: w domu, na spacerze i podczas wspólnego obowiązku."
+  }
+}
