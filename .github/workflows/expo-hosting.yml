@@ -1,0 +1,36 @@
+name: TRENERKI Academy — publish Expo Hosting
+on:
+  workflow_run:
+    workflows: ['TRENERKI Academy — spójność kursów']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  publish_web:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      EXPO_NO_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm Expo deployment authorization
+        shell: bash
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "::error::Expo deployment blocked: set the EXPO_TOKEN repository secret or connect the repository to Expo EAS Workflows."
+            exit 1
+          fi
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Export web bundle
+        run: npx expo export --platform web
+      - name: Publish production website to Expo Hosting
+        run: npx --yes eas-cli@latest deploy --prod --non-interactive
