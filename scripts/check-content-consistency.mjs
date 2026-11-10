@@ -110,7 +110,7 @@ try{
  for(const stale of ['Testy + egzamin','Przed egzaminem czeka Cię','Czytasz, podejmujesz decyzję, zapisujesz rozwiązanie i rozwiązujesz krótki quiz']){
   if(page.includes(stale))fail('Misleading unfinished-feature promise: '+stale);
  }
- if(!checkout.includes("academyAction('demo_checkout'")||checkout.includes("ta-create-checkout")||!checkout.includes('TRYB TESTOWY'))fail('Checkout not strictly marked DEMO');else ok('No-charge test purchasing');
+ if(!checkout.includes("functions.invoke('ta-create-checkout'")||!checkout.includes('termsAccepted')||!checkout.includes('earlyAccessConsent')||checkout.includes("academyAction('demo_checkout'"))fail('Secure Stripe checkout or mandatory digital content consent missing');else ok('Stripe-only paid checkout with consent');
  if(!gift.includes("academyAction('create_gift'")||!gift.includes("academyAction('redeem_gift'")||!gift.includes('swiety-mikolaj'))fail('Gift card redemption/sharing missing');else ok('Gift card flow');
  if(!admin.includes("academyAction('admin_dashboard'")||!admin.includes('Jakość kursów'))fail('Protected administration or editorial view missing');else ok('Administrator content-review dashboard');
  if(!progress.includes(".in('status',['active','demo'])")||!progress.includes("setDone(")||!checkout.includes("review_status"))fail('Demo access, saved progress or editorial warnings missing');else ok('Demo lessons, progress and pre-purchase editorial review checks');
