@@ -29,8 +29,19 @@ export default function GiftPage(){
     if(error||typeof data?.url!=='string'||!data.url.startsWith('https://checkout.stripe.com/')){
      let reason='';
      try{reason=(await (error as any)?.context?.json())?.error||'';}catch{}
-     if(reason==='invalid_recipient_email')throw new Error('Wpisz poprawny e-mail obdarowanej osoby.');
-     throw new Error('Nie udało się rozpocząć płatności. Spróbuj ponownie później.');
+     const errors:Record<string,string>={
+      invalid_recipient_email:'Wpisz poprawny e-mail obdarowanej osoby.',
+      payments_not_configured:'Płatności za karty podarunkowe są jeszcze zablokowane w konfiguracji serwera. Administrator może sprawdzić szczegóły w panelu TRENERKI.',
+      payments_not_live:'Serwer nie ma poprawnego klucza Stripe LIVE. Zakup jest wstrzymany.',
+      email_not_configured:'Brakuje konfiguracji Resend do wysyłania płatnych kart podarunkowych.',
+      confirmed_login_required:'Zaloguj się i potwierdź adres e-mail, aby kupić prezent.',
+      gift_creation_failed:'Nie udało się przygotować karty podarunkowej. Nie pobrano pieniędzy.',
+      consent_required:'Zaakceptuj regulamin i warunki zakupu prezentu.',
+      payment_provider_unavailable:'Stripe chwilowo nie przyjmuje tej płatności. Nie pobrano pieniędzy.',
+      already_purchased:'Ten kurs jest już na Twoim koncie.',
+      database_unavailable:'Chwilowy problem z bazą danych. Nie pobrano pieniędzy.'
+     };
+     throw new Error(errors[reason]||'Nie udało się rozpocząć płatności za prezent. Nie pobrano pieniędzy.');
     }
     if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(data.url);
     else await Linking.openURL(data.url);
