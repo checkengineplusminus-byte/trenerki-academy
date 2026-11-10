@@ -6,7 +6,7 @@ import {academyAction} from '../src/academyApi';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 export default function MyCourses(){
- const {width}=useWindowDimensions(),columns=width>=1080?4:width>=730?3:2,availableWidth=Math.min(width,1150)-40,cardWidth=Math.max(130,Math.floor((availableWidth-(columns-1)*12)/columns));
+ const {width}=useWindowDimensions(),columns=width>=1120?5:width>=850?4:width>=640?3:2,availableWidth=Math.min(width,1150)-40,cardWidth=Math.max(130,Math.floor((availableWidth-(columns-1)*12)/columns));
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
  const router=useRouter(),[certificates,setCertificates]=useState<Record<string,Diploma>>({}),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
  useEffect(()=>{void load()},[]);
@@ -52,10 +52,10 @@ export default function MyCourses(){
  ];
  const courseCard=(row:typeof items[number])=>{
   const cert=certificates[row.course_slug],hasDiploma=!!cert&&!cert.is_demo,active=valid(row),done=finished(row);
-  return <View key={row.course_slug} style={{width:cardWidth,backgroundColor:'white',borderRadius:15,borderWidth:1,borderColor:'#dbe8d9',padding:12,minHeight:210,justifyContent:'space-between',gap:9}}>
+  return <View key={row.course_slug} style={{width:cardWidth,backgroundColor:'white',borderRadius:15,borderWidth:1,borderColor:'#dbe8d9',padding:10,minHeight:192,justifyContent:'space-between',gap:9}}>
    <View style={{gap:7}}>
-    <View style={{width:38,height:38,backgroundColor:done?'#dceeca':'#eaf2e7',borderRadius:11,justifyContent:'center',alignItems:'center'}}>
-     <Text style={{fontSize:18,fontWeight:'900',color:'#173228'}}>{done?'✓':'T.'}</Text>
+    <View style={{width:31,height:31,backgroundColor:done?'#dceeca':'#eaf2e7',borderRadius:11,justifyContent:'center',alignItems:'center'}}>
+     <Text style={{fontSize:15,fontWeight:'900',color:'#173228'}}>{done?'✓':'T.'}</Text>
     </View>
     <Text style={{fontSize:columns===2?13:15,lineHeight:columns===2?18:21,color:'#173228',fontWeight:'800',minHeight:columns===2?54:44}} numberOfLines={3}>{row.ta_courses?.title_pl||row.course_slug}</Text>
     <Text style={{fontSize:11,color:'#667b68'}}>{row.lessonCount?String(row.completedCount)+' / '+String(row.lessonCount)+' lekcji':'Postęp niedostępny'}</Text>
@@ -97,15 +97,15 @@ export default function MyCourses(){
    <Pressable onPress={()=>router.push('/')} style={{backgroundColor:'#173228',padding:13,borderRadius:10}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Przeglądaj kursy</Text></Pressable>
   </View>}
   {sections.filter(section=>section.rows.length>0).map(section=>{
-   const limit=visibleSections[section.title]||4;
+   const limit=visibleSections[section.title]||columns;
    const subset=section.rows.slice(0,limit),remaining=section.rows.length-subset.length;
    return <View key={section.title} style={{marginVertical:14,gap:11}}>
     <Text style={{fontSize:21,fontWeight:'900',color:'#173228'}}>{section.title} ({section.rows.length})</Text>
     <Text style={{color:'#617866',fontSize:12,lineHeight:19}}>{section.description}</Text>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>{subset.map(courseCard)}</View>
-    {remaining>0&&<Pressable onPress={()=>setVisibleSections(prev=>({...prev,[section.title]:(prev[section.title]||4)+4}))} accessibilityRole="button"
+    {remaining>0&&<Pressable onPress={()=>setVisibleSections(prev=>({...prev,[section.title]:(prev[section.title]||columns)+columns}))} accessibilityRole="button"
      style={{alignSelf:'center',backgroundColor:'#e8f3dc',borderRadius:12,paddingHorizontal:18,paddingVertical:11,marginTop:2}}>
-     <Text style={{color:'#173228',fontSize:13,fontWeight:'800'}}>Pokaż kolejne {Math.min(4,remaining)} • pozostało {remaining}</Text>
+     <Text style={{color:'#173228',fontSize:13,fontWeight:'800'}}>Pokaż kolejne {Math.min(columns,remaining)} • pozostało {remaining}</Text>
     </Pressable>}
    </View>;
   })}
