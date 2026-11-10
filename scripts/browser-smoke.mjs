@@ -25,7 +25,7 @@ async function verify(name,viewport,isMobile){
   assert.equal(prices.length,80,'Public catalogue should contain all courses');
   assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug),['swiety-mikolaj']);
   assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),99);
-  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),1,'Only the free course can be obtained before payments launch');
+  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),80,'All courses must show the purchase button');
   assert.equal(await page.locator('#course-search').count(),0,'Duplicate search field');
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');
