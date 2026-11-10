@@ -64,7 +64,7 @@ try{
  else ok('80 matching catalogue amounts in PLN; only Mikołaj is free');
  if(courses.some(c=>!Array.isArray(previews[c.id].module_titles)||JSON.stringify(c.outline)!==JSON.stringify(previews[c.id].module_titles)))
   fail('Preview and detailed course outline differ');
- if(!page.includes('Cześć, to ja Anielka!'))fail('Anielka greeting missing');
+ if(!page.includes('id="anielka-szukaj"')||!page.includes('id="anielka-question"'))fail('Anielka catalogue search must remain accessible');
  const history=JSON.parse(read('content/traditional-crafts-20-20261108.json')).courses;
  if(history.length!==20)fail('Expected 20 traditional crafts');
  for(const item of history){
