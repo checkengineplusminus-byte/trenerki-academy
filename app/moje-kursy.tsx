@@ -79,6 +79,9 @@ export default function MyCourses(){
  };
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:20,maxWidth:1150,alignSelf:'center',width:'100%',paddingBottom:55}}>
   <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800',marginBottom:15}}>← Katalog kursów</Text></Pressable>
+  {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'stretch',backgroundColor:'#183b2c',padding:14,borderRadius:13,marginBottom:15}}>
+    <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>Panel administratora TRENERKI →</Text>
+   </Pressable>}
   <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228',marginBottom:7}}>Moje kursy</Text>
   <Text style={{color:'#5c7460',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
   {!busy&&<View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginBottom:18}}>
