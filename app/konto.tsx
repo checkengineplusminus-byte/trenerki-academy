@@ -98,7 +98,7 @@ export default function AccountPage(){
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
    </Pressable>
  </View>}
- <Text style={{color:'#53695d',lineHeight:22,marginBottom:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Płatności uruchomimy później.'}</Text>
+ <Text style={{color:'#53695d',lineHeight:22,marginBottom:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
  {mode==='register'&&<TextInput style={input} placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
  {mode!=='new-password'&&<TextInput style={input} placeholder="Adres e-mail" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address"/>}
  {mode!=='reset'&&<TextInput style={input} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'}/>}
@@ -116,6 +116,6 @@ export default function AccountPage(){
    <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
   </View>
  </View>
- <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja jest bezpłatna. Obecnie zakupy płatnych kursów mają wyłącznie tryb DEMO na koncie administratora, bez pobierania pieniędzy. Darmowe kursy i prezenty można odbierać po zalogowaniu.</Text>
+ <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja jest bezpłatna. Dostęp do płatnego kursu jest nadawany dopiero po potwierdzeniu zapłaty Stripe i obowiązuje przez 12 miesięcy. Darmowy kurs można odebrać po zalogowaniu.</Text>
  </View></ScrollView>
 }
