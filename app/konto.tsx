@@ -3,6 +3,9 @@ import {View,Text,TextInput,Pressable,ScrollView,Linking} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 const ink='#193b2a',pale='#e7f2da';
+// Keep Expo preview authentication working until custom DNS and Supabase Auth allowlist are configured.
+const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
+ ? window.location.origin : 'https://trenerki.com';
 export default function AccountPage(){
  const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
@@ -56,14 +59,14 @@ export default function AccountPage(){
      }
      if(!email.trim().includes('@'))throw new Error('Wpisz prawidłowy adres e-mail.');
      if(mode==='reset'){
-       const redirectTo='https://trenerki-academy.expo.app/konto';
+       const redirectTo=siteUrl+'/konto';
        const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo});if(error)throw error;
        setMessage('Sprawdź pocztę e-mail i folder SPAM.');return;
      }
      if(password.length<8)throw new Error('Hasło powinno mieć minimum 8 znaków.');
      if(mode==='register'){
        if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
-       const emailRedirectTo='https://trenerki-academy.expo.app/konto';
+       const emailRedirectTo=siteUrl+'/konto';
        const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null}}});
        if(error)throw error;
        if(data.session){await continueToSelectedCourse();return;}
@@ -108,9 +111,9 @@ export default function AccountPage(){
  <View style={{marginTop:17,marginBottom:6,gap:8}}>
   <Text style={{color:'#55705e',fontSize:12,lineHeight:20}}>TRENERKI oferuje autorskie kursy i autorskie dyplomy potwierdzające naukę. Dyplom można wpisać do CV jako szkolenie dodatkowe; nie jest kwalifikacją zawodową ani oficjalnym uprawnieniem.</Text>
   <View style={{flexDirection:'row',gap:17,flexWrap:'wrap'}}>
-   <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/regulamin.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Regulamin</Text></Pressable>
-   <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/prywatnosc.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Polityka prywatności</Text></Pressable>
-   <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/regulamin.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Regulamin</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/prywatnosc.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Polityka prywatności</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
   </View>
  </View>
  <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja jest bezpłatna. Obecnie zakupy płatnych kursów mają wyłącznie tryb DEMO na koncie administratora, bez pobierania pieniędzy. Darmowe kursy i prezenty można odbierać po zalogowaniu.</Text>
