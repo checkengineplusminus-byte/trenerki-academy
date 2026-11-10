@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /konto
+Disallow: /kup
+Disallow: /moje-kursy
+Disallow: /nauka
+Disallow: /dyplom
+Sitemap: https://trenerki.com/sitemap.xml
