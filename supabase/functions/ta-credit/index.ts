@@ -6,6 +6,7 @@ const mailValid=(m:string)=>/^[^@\s]{1,70}@[^@\s]{1,100}\.[^@\s]{2,20}$/.test(m)
 const courseValid=(slug:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(slug);
 const sum=(values:{wallet_grosze:number}[])=>(values||[]).reduce((acc,r)=>acc+Number(r.wallet_grosze||0),0);
 const fullCode=(id:string)=>'TW-'+id.replaceAll('-','').toUpperCase();
+const escape=(text:string)=>text.replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]||x));
 async function hash(code:string){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code));return Array.from(new Uint8Array(buf),b=>b.toString(16).padStart(2,'0')).join('')}
 async function checkout(secret:string,params:URLSearchParams){
  const res=await fetch('https://api.stripe.com/v1/checkout/sessions',{method:'POST',headers:{Authorization:'Bearer '+secret,'content-type':'application/x-www-form-urlencoded'},body:params,signal:AbortSignal.timeout(14000)});
@@ -52,7 +53,7 @@ Deno.serve(async(req)=>{
      headers:{Authorization:'Bearer '+api,'content-type':'application/json'},
      body:JSON.stringify({from,to:[recipient],subject:'TRENERKI Academy — karta podarunkowa '+pln,
       html:'<h2>Masz prezent!</h2><p>Otrzymujesz kartę TRENERKI Academy o wartości <strong>'+pln+'</strong>.</p>'+
-       '<p>Twój kod: <strong>'+code+'</strong></p><p><a href="'+link+'">Odbierz środki na swoje konto</a></p>'+
+       (msg?'<p>'+escape(msg)+'</p>':'')+'<p>Twój kod: <strong>'+code+'</strong></p><p><a href="'+link+'">Odbierz środki na swoje konto</a></p>'+
        '<p>Po wykorzystaniu części środków pozostałe saldo pozostanie na Twoim koncie.</p>'}),
      signal:AbortSignal.timeout(12000)});
     email_sent=sent.ok;
