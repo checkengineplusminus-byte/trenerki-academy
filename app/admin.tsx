@@ -25,15 +25,24 @@ const card={padding:20,borderWidth:1,borderColor:'#e0eadb',backgroundColor:'whit
 export default function AdminPage(){
  const router=useRouter();
  const [authorized,setAuthorized]=useState(false);
+ const [accessState,setAccessState]=useState<'checking'|'denied'|'error'|'granted'>('checking');
+ const [accessAttempt,setAccessAttempt]=useState(0);
  useEffect(()=>{
   let mounted=true;
-  void academyAction('whoami').then(r=>{
-   if(!mounted)return;
-   if(r?.is_admin===true)setAuthorized(true);
-   else router.replace('/moje-kursy');
-  }).catch(()=>{if(mounted)router.replace('/moje-kursy')});
+  setAuthorized(false);setAccessState('checking');
+  void (async()=>{
+   try{
+    const {data:{user},error:authError}=await supabase.auth.getUser();
+    if(!mounted)return;
+    if(authError||!user){setAccessState('denied');return;}
+    const role=await academyAction('whoami');
+    if(!mounted)return;
+    if(role?.is_admin===true){setAuthorized(true);setAccessState('granted');}
+    else setAccessState('denied');
+   }catch{if(mounted)setAccessState('error')}
+  })();
   return()=>{mounted=false};
- },[]);
+ },[accessAttempt]);
  async function logout(){
   await supabase.auth.signOut();
   router.replace('/konto');
@@ -164,7 +173,12 @@ export default function AdminPage(){
  const count=(label:string,val:any)=><View style={{backgroundColor:'white',borderWidth:1,borderColor:'#dce8d7',borderRadius:14,padding:16,minWidth:140,flexGrow:1}}>
   <Text style={{fontSize:13,color:muted,marginBottom:6}}>{label}</Text><Text style={{fontSize:28,color:ink,fontWeight:'900'}}>{val??'—'}</Text>
  </View>;
- if(!authorized)return <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator/><Text style={{color:ink,marginTop:14}}>Sprawdzam dostęp administratora…</Text></View>;
+ if(!authorized)return <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'#fcfcf7',padding:25,gap:14}}>
+  {accessState==='checking'&&<ActivityIndicator size="large" color={ink}/>}
+  <Text style={{color:ink,fontWeight:'900',fontSize:20,textAlign:'center'}}>{accessState==='checking'?'Sprawdzam dostęp Staff…':accessState==='error'?'Nie udało się zweryfikować sesji':'Panel tylko dla właściciela TRENERKI'}</Text>
+  {accessState==='error'&&<Pressable accessibilityRole="button" onPress={()=>setAccessAttempt(v=>v+1)} style={{backgroundColor:ink,padding:14,borderRadius:11}}><Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie</Text></Pressable>}
+  {accessState!=='checking'&&<Pressable accessibilityRole="button" onPress={()=>router.replace('/konto')} style={{backgroundColor:'#e6f1dc',padding:14,borderRadius:11}}><Text style={{color:ink,fontWeight:'800'}}>Otwórz moje konto / zaloguj się</Text></Pressable>}
+ </View>;
  return <ScrollView style={{backgroundColor:'#fcfcf7',flex:1}} contentContainerStyle={{padding:22,paddingBottom:80}}>
   <View style={{maxWidth:1050,alignSelf:'center',width:'100%',gap:18}}>
    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:12,flexWrap:'wrap'}}>
