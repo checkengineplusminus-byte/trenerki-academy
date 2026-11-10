@@ -75,6 +75,17 @@ export default function AccountPage(){
   void academyAction('whoami').then(data=>{if(mounted)setIsAdmin(data.is_admin===true)}).catch(()=>{if(mounted)setIsAdmin(false)});
   return()=>{mounted=false};
  },[activeEmail]);
+ async function logout(){
+  setBusy(true);
+  try{
+   const {error}=await supabase.auth.signOut({scope:'local'});
+   if(error)throw error;
+   setActiveEmail('');setIsAdmin(false);setPassword('');setConfirmPassword('');
+   setMode('login');setMessage('Wylogowano pomyślnie.');
+   router.replace('/konto');
+  }catch{setMessage('Nie udało się wylogować. Spróbuj ponownie.')}
+  finally{setBusy(false);}
+ }
  async function submit(){
    setBusy(true);setMessage('');
    try{
@@ -142,6 +153,9 @@ export default function AccountPage(){
    <Text style={{color:'#45664f',marginTop:5,marginBottom:11}}>{activeEmail}</Text>
    <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{gift?'Odbierz prezent →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
+   </Pressable>
+   <Pressable accessibilityRole="button" onPress={logout} style={{backgroundColor:'#eef2ec',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
+     <Text style={{color:'#325a3d',fontWeight:'800'}}>Wyloguj się</Text>
    </Pressable>
    <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
