@@ -91,7 +91,7 @@ export default function AdminPage(){
   setWorking('discount');setDiscountError('');
   try{
    const percent=Number(discountPercent);
-   if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(discountDay)||!Number.isInteger(percent)||percent<0||percent>80)
+   if(!/^\d{4}-\d{2}-\d{2}$/.test(discountDay)||!Number.isInteger(percent)||percent<0||percent>80)
     throw new Error('Podaj datę RRRR-MM-DD i rabat od 0 do 80%.');
    const {data,error}=await supabase.functions.invoke('ta-admin-gifts',{body:{action:'set_discount',day:discountDay,percent}});
    if(error||!data?.ok)throw new Error('Nie udało się zapisać rabatu. Sprawdź datę i spróbuj ponownie.');
