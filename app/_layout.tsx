@@ -3,53 +3,43 @@ import {View,ActivityIndicator} from 'react-native';
 import {Stack} from 'expo-router';
 import {supabase} from '../src/supabase';
 
-/* Navigation guard only; real authorization is also enforced by Supabase RLS. */
+/**
+ * Route visibility is a convenience, NOT the authorization boundary.
+ * /admin always renders only its access-check screen until the verified
+ * Supabase owner role is established; Edge Functions enforce that role.
+ *
+ * Avoid making the entire site wait for ta-academy/whoami: if a network
+ * request stalls, a global guard must never lock users out of /konto.
+ */
 export default function RootLayout(){
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
- const [userId,setUserId]=useState('');
- const [isAdmin,setIsAdmin]=useState(false);
- const [adminReady,setAdminReady]=useState(false);
  useEffect(()=>{
   let mounted=true;
-  const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
+  const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
    if(!mounted)return;
-   if(event==='SIGNED_OUT'){setSignedIn(false);setUserId('');setReady(true);}
-   else if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'||event==='INITIAL_SESSION'){
-    setSignedIn(!!session?.user);
-    setUserId(session?.user?.id||'');
-    setReady(true);
-   }
+   setSignedIn(!!session?.user);
+   setReady(true);
   });
-  void supabase.auth.getUser().then(({data,error})=>{
-   if(mounted){setSignedIn(!error&&!!data.user);setUserId(!error?data.user?.id||'':'');setReady(true);}
-  }).catch(()=>{if(mounted){setSignedIn(false);setUserId('');setReady(true);}});
-  return()=>{mounted=false;subscription.unsubscribe();};
+  void supabase.auth.getSession().then(({data})=>{
+   if(!mounted)return;
+   setSignedIn(!!data.session?.user);
+   setReady(true);
+  }).catch(()=>{if(mounted){setSignedIn(false);setReady(true)}});
+  return()=>{mounted=false;subscription.unsubscribe()};
  },[]);
- useEffect(()=>{
-  let active=true;
-  if(!signedIn||!userId){setIsAdmin(false);setAdminReady(true);return()=>{active=false};}
-  setAdminReady(false);
-  setIsAdmin(false);
-  void supabase.functions.invoke('ta-academy',{body:{action:'whoami'}}).then(({data,error})=>{
-   if(active){setIsAdmin(!error&&data?.is_admin===true);setAdminReady(true);}
-  }).catch(()=>{if(active){setIsAdmin(false);setAdminReady(true)}});
-  return()=>{active=false};
- },[signedIn,userId]);
- if(!ready||(signedIn&&!adminReady))return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
+ if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
  return <Stack screenOptions={{headerShown:false}}>
-   <Stack.Screen name="index"/>
-   <Stack.Screen name="konto"/>
-   <Stack.Screen name="kup"/>
-   <Stack.Screen name="prezent"/>
-   <Stack.Screen name="firma"/>
-   <Stack.Protected guard={signedIn} redirectTo="/konto">
-    <Stack.Screen name="moje-kursy"/>
-    <Stack.Screen name="nauka"/>
-    <Stack.Screen name="dyplom"/>
-   </Stack.Protected>
-   <Stack.Protected guard={signedIn&&isAdmin} redirectTo="/moje-kursy">
-    <Stack.Screen name="admin"/>
-   </Stack.Protected>
-  </Stack>;
+  <Stack.Screen name="index"/>
+  <Stack.Screen name="konto"/>
+  <Stack.Screen name="kup"/>
+  <Stack.Screen name="prezent"/>
+  <Stack.Screen name="firma"/>
+  <Stack.Screen name="admin"/>
+  <Stack.Protected guard={signedIn} redirectTo="/konto">
+   <Stack.Screen name="moje-kursy"/>
+   <Stack.Screen name="nauka"/>
+   <Stack.Screen name="dyplom"/>
+  </Stack.Protected>
+ </Stack>;
 }
