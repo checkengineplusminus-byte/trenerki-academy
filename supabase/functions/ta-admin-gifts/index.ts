@@ -29,7 +29,7 @@ Deno.serve(async request=>{
  const db=createClient(url,secret,{auth:{persistSession:false,autoRefreshToken:false}});
  const {data:admin,error:adminError}=await db.from('ta_admins').select('role').eq('user_id',user.id).maybeSingle();
  if(adminError)return send({error:'admin_verification_failed'},503);
- if(!admin?.role)return send({error:'admin_only'},403);
+ if(!['owner','admin'].includes(admin?.role||''))return send({error:'admin_only'},403);
  let body:any;try{body=await request.json()}catch{return send({error:'invalid_json'},400)}
  if(body?.action!=='issue')return send({error:'invalid_action'},400);
  const slugs=body?.course_slugs;
@@ -39,6 +39,8 @@ Deno.serve(async request=>{
  if(destination&&!validMail(destination))return send({error:'invalid_recipient_email'},400);
  const bind=body?.bind_to_recipient===true;
  if(bind&&!destination)return send({error:'recipient_required'},400);
+ const companyMode=body?.company_mode===true;
+ if(companyMode&&!destination)return send({error:'recipient_required'},400);
  const {data:available,error:courseError}=await db.from('ta_courses').select('slug,title_pl,published').in('slug',[...new Set(slugs)]).eq('published',true);
  if(courseError)return send({error:'courses_unavailable'},503);
  const bySlug=new Map((available||[]).map((c:any)=>[c.slug,c]));
@@ -48,7 +50,35 @@ Deno.serve(async request=>{
   .gte('created_at',new Date(Date.now()-24*60*60*1000).toISOString());
  if(countError)return send({error:'gift_rate_check_failed'},503);
  if((recentCount||0)+slugs.length>200)return send({error:'admin_daily_limit'},429);
- const codes=slugs.map(()=>makeCode());
+ if(companyMode){
+  const name=String(body?.company_name||'').trim().slice(0,150);
+  const {data:bundle,error:bundleError}=await db.rpc('ta_company_create_bundle',{
+   p_admin:user.id,p_email:destination,p_name:name,p_courses:slugs
+  });
+  if(bundleError||bundle?.error||!bundle?.ok){
+   console.error('ta_company_grant_failed',bundleError?.code);
+   return send({error:bundle?.error||'company_grant_failed'},503);
+  }
+  const dashboard='https://trenerki.com/firma';
+  let emailSent=false;
+  const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
+  if(api&&from){
+   const summary=slugs.reduce((o:Record<string,number>,slug:string)=>(o[slug]=(o[slug]||0)+1,o),{});
+   const entries=Object.entries(summary).map(([slug,n])=>'<li>'+esc(String(n))+' × '+esc((bySlug.get(slug) as any).title_pl)+'</li>').join('');
+   const html='<h2>Twoja firma otrzymała kursy TRENERKI</h2><p>Przydzielono '+slugs.length+' miejsc szkoleniowych.</p><ul>'+entries+'</ul>'+
+    '<p><a href="'+esc(dashboard)+'">Otwórz panel firmy</a></p>'+
+    '<p>Załóż konto lub zaloguj się używając dokładnie tego adresu e-mail. W panelu wybierasz pracowników, przesyłasz im kursy i widzisz, które zostały odebrane.</p>';
+   try{
+    const res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{authorization:'Bearer '+api,'content-type':'application/json'},
+     body:JSON.stringify({from,to:[destination],subject:'TRENERKI Academy — panel firmy i '+slugs.length+' kursów',html}),
+     signal:AbortSignal.timeout(12000)});
+    emailSent=res.ok;
+   }catch{emailSent=false}
+  }
+  return send({ok:true,company_panel:true,company_email:destination,company_name:name,dashboard_url:dashboard,
+   seats:slugs.length,email_sent:emailSent,bundle_id:bundle.bundle_id});
+ }
+  const codes=slugs.map(()=>makeCode());
  const hashes=await Promise.all(codes.map(hash));
  const rows=slugs.map((slug:string,index:number)=>({
   code_hash:hashes[index],course_slug:slug,created_by:user.id,
