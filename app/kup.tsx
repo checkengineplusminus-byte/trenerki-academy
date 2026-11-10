@@ -48,7 +48,10 @@ export default function Purchase(){
     let code='';
     try{if((error as any).context?.json)code=String((await (error as any).context.json())?.error||'')}catch{}
     const message:Record<string,string>={
-      payments_not_configured:'Płatności Stripe nie są jeszcze aktywowane. Spróbuj ponownie później.',
+      payments_not_configured:'Sprzedaż jest wyłączona w konfiguracji serwera. Administrator może sprawdzić cztery wymagane ustawienia w panelu TRENERKI.',
+      payments_not_live:'Serwer wymaga produkcyjnego klucza Stripe LIVE. Nie pobrano pieniędzy.',
+      server_not_ready:'Brakuje konfiguracji serwera płatności. Nie pobrano pieniędzy.',
+      database_unavailable:'Baza płatności jest tymczasowo niedostępna. Nie pobrano pieniędzy.',
       email_not_configured:'Potwierdzenia e-mail są chwilowo niedostępne. Spróbuj ponownie później.',
       confirmed_login_required:'Potwierdź adres e-mail przed zakupem.',
       already_purchased:'Masz już aktywny dostęp do tego kursu — otwórz Moje kursy.',
