@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {View,Text,TextInput,Pressable,ScrollView,Linking} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag} from '../src/supabase';
+import {academyAction} from '../src/academyApi';
 const ink='#193b2a',pale='#e7f2da';
 // Keep Expo preview authentication working until custom DNS and Supabase Auth allowlist are configured.
 const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
@@ -10,6 +11,7 @@ export default function AccountPage(){
  const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
  gift=typeof params.gift==='string' && /^TA-[0-9A-F]{32}$/i.test(params.gift)?params.gift:'';
+ const [isAdmin,setIsAdmin]=useState(false);
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const continueToSelectedCourse=async()=>{
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
@@ -67,6 +69,12 @@ export default function AccountPage(){
   });
   return()=>{isCurrent=false;subscription.unsubscribe();};
  },[]);
+ useEffect(()=>{
+  if(!activeEmail){setIsAdmin(false);return;}
+  let mounted=true;
+  void academyAction('whoami').then(data=>{if(mounted)setIsAdmin(data.is_admin===true)}).catch(()=>{if(mounted)setIsAdmin(false)});
+  return()=>{mounted=false};
+ },[activeEmail]);
  async function submit(){
    setBusy(true);setMessage('');
    try{
@@ -135,6 +143,9 @@ export default function AccountPage(){
    <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{gift?'Odbierz prezent →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
+   {isAdmin&&<Pressable onPress={()=>router.push('/admin')} accessibilityRole="button" style={{backgroundColor:'#e1f1d7',borderRadius:10,borderWidth:1,borderColor:'#b3d4b0',padding:14,alignItems:'center',marginTop:10}}>
+     <Text style={{color:ink,fontWeight:'900'}}>Panel administratora TRENERKI →</Text>
+   </Pressable>}
    <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
    </Pressable>
