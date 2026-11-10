@@ -51,7 +51,7 @@ export default function MyCourses(){
     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Odkryj kursy i rozpocznij naukę →</Text>
    </Pressable>
   </View>}
-  {items.map((row,i)=>{const active=['active','demo'].includes(row.status)&&new Date(row.expires_at)>new Date();return <View key={row.course_slug+String(i)} style={{backgroundColor:'white',padding:20,marginBottom:13,borderRadius:15,borderWidth:1,borderColor:'#d8e9d6'}}>
+  {items.map((row,i)=>{const active=row.status==='active'&&new Date(row.expires_at)>new Date();return <View key={row.course_slug+String(i)} style={{backgroundColor:'white',padding:20,marginBottom:13,borderRadius:15,borderWidth:1,borderColor:'#d8e9d6'}}>
     <Text style={{fontSize:20,fontWeight:'800',color:'#183d2c'}}>{row.ta_courses?.title_pl||row.course_slug}</Text>
     {row.status==='demo'&&<Text style={{fontWeight:'800',fontSize:12,color:'#886129',backgroundColor:'#fff3d5',padding:10,borderRadius:10,marginTop:10}}>DOSTĘP TESTOWY • 0 zł zapłacone • bez faktury</Text>}
     <Text style={{marginTop:9,color:'#526f5b'}}>Postęp: {row.progress}% ({row.completedCount}/{row.lessonCount} lekcji) · Dostęp do: {new Date(row.expires_at).toLocaleDateString('pl-PL')} · {active?'aktywny':'zakończony'}</Text>

@@ -9,13 +9,13 @@ const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
 type Course={slug:string,title_pl:string,price_grosze:number};
 type Draft={id:string,course_slug:string,recipient_email:string,amount_grosze:number,doc_status:string,created_at:string,sent_at?:string|null};
-type Metrics={new_users:number,purchases:number,revenue_grosze:number,unique_buyers:number};
+type Metrics={new_users:number,purchases:number,gifts?:number,revenue_grosze:number,unique_buyers:number};
 type SalesAnalytics={
  timezone:string;
- totals:{users:number,purchases:number,revenue_grosze:number};
+ totals:{users:number,purchases:number,gifts?:number,revenue_grosze:number};
  today:Metrics;current_month:Metrics;current_year:Metrics;
  daily:(Metrics&{period:string})[];monthly:(Metrics&{period:string})[];yearly:(Metrics&{period:string})[];
- stripe_configuration?:{secret_key_present:boolean,webhook_secret_present:boolean};
+ stripe_configuration?:{secret_key_present:boolean,webhook_secret_present:boolean,resend_configured?:boolean,sales_enabled?:boolean};
  orders:{course_slug:string,amount_grosze:number,purchased_at:string,status:string}[];
 };
 const money=(cents:number)=>Number(cents||0).toLocaleString('pl-PL',{style:'currency',currency:'PLN',maximumFractionDigits:2,minimumFractionDigits:2}) .replace(/\u00a0/g,' ');
@@ -91,7 +91,7 @@ export default function AdminPage(){
      {count('Kupione kursy',analytics?.totals.purchases??'—')}
      {count('Sprzedaż',analytics?money(analytics.totals.revenue_grosze):'—')}
      {count('Zamówienia DEMO',stats.counts?.demo_orders)}
-     {count('Karty podarunkowe',stats.counts?.gift_codes)}
+     {count('Sprzedane karty',analytics?.totals.gifts??'—')}
      {count('Przychód z testów','0 zł')}
      {count('Kursy czekające na weryfikację',reviews.filter(r=>r.review_status!=='approved').length)}
     </View>
@@ -112,7 +112,7 @@ export default function AdminPage(){
         <View key={label} style={{backgroundColor:'#f4f7f1',padding:15,borderRadius:12,flexGrow:1,minWidth:180,gap:6}}>
          <Text style={{color:ink,fontWeight:'900',fontSize:17}}>{label}</Text>
          <Text style={{color:muted}}>Nowi użytkownicy: {period.new_users}</Text>
-         <Text style={{color:muted}}>Zakupione kursy: {period.purchases}</Text>
+         <Text style={{color:muted}}>Kursy: {period.purchases} · Karty: {period.gifts??0}</Text>
          <Text style={{color:ink,fontWeight:'900'}}>Wpływy: {money(period.revenue_grosze)}</Text>
         </View>)}
       </View>
@@ -125,25 +125,25 @@ export default function AdminPage(){
       <View style={{flexDirection:'row',paddingVertical:11,borderBottomWidth:2,borderColor:'#d3e2d0',gap:4}}>
        <Text style={{flex:2,fontWeight:'900',color:ink}}>Okres</Text>
        <Text style={{flex:1,fontWeight:'900',color:ink,textAlign:'right'}}>Nowi</Text>
-       <Text style={{flex:1,fontWeight:'900',color:ink,textAlign:'right'}}>Zakupy</Text>
+       <Text style={{flex:1,fontWeight:'900',color:ink,textAlign:'right'}}>Kursy / karty</Text>
        <Text style={{flex:2,fontWeight:'900',color:ink,textAlign:'right'}}>PLN</Text>
       </View>
       {[...analytics[salesInterval]].reverse().map(item=>
        <View key={item.period} style={{flexDirection:'row',paddingVertical:10,borderBottomWidth:1,borderColor:'#edf1e9',gap:4}}>
         <Text style={{flex:2,color:ink,fontWeight:'700'}}>{item.period}</Text>
         <Text style={{flex:1,color:muted,textAlign:'right'}}>{item.new_users}</Text>
-        <Text style={{flex:1,color:muted,textAlign:'right'}}>{item.purchases}</Text>
+        <Text style={{flex:1,color:muted,textAlign:'right'}}>{item.purchases} / {item.gifts??0}</Text>
         <Text style={{flex:2,color:ink,textAlign:'right',fontWeight:'700'}}>{money(item.revenue_grosze)}</Text>
        </View>)}
-      <Text style={{fontSize:18,fontWeight:'900',color:ink,marginTop:24,marginBottom:11}}>Ostatnie opłacone kursy</Text>
+      <Text style={{fontSize:18,fontWeight:'900',color:ink,marginTop:24,marginBottom:11}}>Ostatnie opłacone zamówienia</Text>
       {!analytics.orders.length&&<Text style={{color:muted}}>Nie ma jeszcze potwierdzonych zakupów.</Text>}
       {analytics.orders.slice(0,20).map((order,i)=>
        <View key={order.course_slug+order.purchased_at+String(i)} style={{paddingVertical:11,borderBottomWidth:1,borderColor:'#edf1e9'}}>
         <Text style={{color:ink,fontWeight:'800'}}>{order.course_slug} · {money(order.amount_grosze)}</Text>
         <Text style={{color:muted,fontSize:12}}>{new Date(order.purchased_at).toLocaleString('pl-PL',{timeZone:'Europe/Warsaw'})}</Text>
        </View>)}
-      {analytics.stripe_configuration&&(!analytics.stripe_configuration.secret_key_present||!analytics.stripe_configuration.webhook_secret_present)&&
-       <Text style={{marginTop:16,color:'#87622b',backgroundColor:'#fff3df',padding:12,borderRadius:10}}>Uwaga: brakuje konfiguracji klucza Stripe lub sekretu webhooka w Supabase. Zakupy nie będą jeszcze działały produkcyjnie.</Text>}
+      {analytics.stripe_configuration&&(!analytics.stripe_configuration.secret_key_present||!analytics.stripe_configuration.webhook_secret_present||!analytics.stripe_configuration.resend_configured||!analytics.stripe_configuration.sales_enabled)&&
+       <Text style={{marginTop:16,color:'#87622b',backgroundColor:'#fff3df',padding:12,borderRadius:10}}>Sprzedaż oczekuje na aktywację Stripe i potwierdzeń e-mail przez Resend.</Text>}
      </>}
     </View>}
     {tab==='users'&&<View style={card}>
@@ -171,8 +171,8 @@ export default function AdminPage(){
     {tab==='gifts'&&<View style={card}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:12}}>Karty podarunkowe</Text>
      {(stats.gifts||[]).map((g:any)=><View key={g.id} style={{paddingVertical:13,borderBottomWidth:1,borderColor:'#e8ece4'}}>
-      <Text style={{fontWeight:'800',color:ink}}>{g.course_slug} · {g.mode==='demo'?'DEMO':'GRATIS'}</Text>
-      <Text style={{color:muted}}>{g.status==='redeemed'?'Wykorzystany':g.status==='issued'?'Do wykorzystania':'Anulowany'} · {g.recipient_email||'Bez przypisanego e-maila'}</Text>
+      <Text style={{fontWeight:'800',color:ink}}>{g.course_slug} · {g.mode==='stripe'?'STRIPE':g.mode==='demo'?'DEMO':'GRATIS'}</Text>
+      <Text style={{color:muted}}>{g.status==='pending'?'Oczekuje na płatność':g.status==='redeemed'?'Wykorzystany':g.status==='issued'?'Do wykorzystania':'Anulowany'} · {g.recipient_email||'Bez przypisanego e-maila'}</Text>
       <Text style={{color:muted,fontSize:12}}>Wystawiono {formatDate(g.created_at)}</Text>
      </View>)}
      {!(stats.gifts||[]).length&&<Text style={{color:muted}}>Brak kart podarunkowych.</Text>}

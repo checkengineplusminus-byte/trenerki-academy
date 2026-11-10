@@ -15,7 +15,7 @@ function keys(interval:'day'|'month'|'year',n:number){
  }
  return [...new Set(result)];
 }
-type Payment={user_id:string;course_slug:string;amount_grosze:number;status:string;purchased_at:string;stripe_checkout_session_id:string};
+type Payment={user_id:string;course_slug:string;amount_grosze:number;status:string;purchased_at:string;stripe_checkout_session_id:string;is_gift?:boolean};
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return send({ok:true});
  if(req.method!=='POST')return send({error:'method_not_allowed'},405);
@@ -50,24 +50,38 @@ Deno.serve(async req=>{
    if((data||[]).length<1000)break;
    if(start===49000)throw new Error('order_page_limit');
   }
+  for(let start=0;start<50000;start+=1000){
+   const {data,error}=await admin.from('ta_gift_cards')
+    .select('created_by,course_slug,amount_grosze,status,paid_at,stripe_checkout_session_id')
+    .eq('mode','stripe').in('status',['issued','redeemed']).not('paid_at','is',null)
+    .order('paid_at',{ascending:false}).order('id').range(start,start+999);
+   if(error)throw error;
+   for(const gift of data||[])orders.push({
+    user_id:gift.created_by,course_slug:gift.course_slug,amount_grosze:gift.amount_grosze,
+    status:gift.status,purchased_at:gift.paid_at,stripe_checkout_session_id:gift.stripe_checkout_session_id,is_gift:true
+   });
+   if((data||[]).length<1000)break;
+   if(start===49000)throw new Error('gift_page_limit');
+  }
+  orders.sort((a,b)=>b.purchased_at.localeCompare(a.purchased_at));
   const stats=(interval:'day'|'month'|'year',n:number)=>{
    const labels=keys(interval,n);
    return labels.map(label=>{
     const us=users.filter(u=>bucket(u.created_at,interval)===label);
     const os=orders.filter(o=>bucket(o.purchased_at,interval)===label);
-    return {period:label,new_users:us.length,purchases:os.length,revenue_grosze:os.reduce((sum,o)=>sum+o.amount_grosze,0),unique_buyers:new Set(os.map(o=>o.user_id)).size};
+    return {period:label,new_users:us.length,purchases:os.filter(o=>!o.is_gift).length,gifts:os.filter(o=>o.is_gift).length,revenue_grosze:os.reduce((sum,o)=>sum+o.amount_grosze,0),unique_buyers:new Set(os.map(o=>o.user_id)).size};
    });
   };
   const today=day(new Date()),month=today.slice(0,7),year=today.slice(0,4);
   const summarize=(interval:'day'|'month'|'year',label:string)=>{
    const us=users.filter(u=>bucket(u.created_at,interval)===label),os=orders.filter(o=>bucket(o.purchased_at,interval)===label);
-   return {new_users:us.length,purchases:os.length,revenue_grosze:os.reduce((sum,o)=>sum+o.amount_grosze,0),unique_buyers:new Set(os.map(o=>o.user_id)).size};
+   return {new_users:us.length,purchases:os.filter(o=>!o.is_gift).length,gifts:os.filter(o=>o.is_gift).length,revenue_grosze:os.reduce((sum,o)=>sum+o.amount_grosze,0),unique_buyers:new Set(os.map(o=>o.user_id)).size};
   };
   return send({ok:true,timezone:'Europe/Warsaw',
-   totals:{users:users.length,purchases:orders.length,revenue_grosze:orders.reduce((v,o)=>v+o.amount_grosze,0)},
+   totals:{users:users.length,purchases:orders.filter(o=>!o.is_gift).length,gifts:orders.filter(o=>o.is_gift).length,revenue_grosze:orders.reduce((v,o)=>v+o.amount_grosze,0)},
    today:summarize('day',today),current_month:summarize('month',month),current_year:summarize('year',year),
    daily:stats('day',30),monthly:stats('month',12),yearly:stats('year',5),
-   stripe_configuration:{secret_key_present:!!Deno.env.get('STRIPE_SECRET_KEY'),webhook_secret_present:!!Deno.env.get('STRIPE_WEBHOOK_SECRET')},
-   orders:orders.slice(0,100).map(o=>({course_slug:o.course_slug,amount_grosze:o.amount_grosze,purchased_at:o.purchased_at,status:o.status}))});
+   stripe_configuration:{secret_key_present:!!Deno.env.get('STRIPE_SECRET_KEY'),webhook_secret_present:!!Deno.env.get('STRIPE_WEBHOOK_SECRET'),resend_configured:!!Deno.env.get('RESEND_API_KEY')&&!!Deno.env.get('RESEND_FROM_EMAIL'),sales_enabled:Deno.env.get('TA_SALES_ENABLED')==='true'},
+   orders:orders.slice(0,100).map(o=>({course_slug:o.course_slug,amount_grosze:o.amount_grosze,purchased_at:o.purchased_at,status:o.status,is_gift:!!o.is_gift}))});
  }catch(e){console.error('ta-admin-analytics failed',e instanceof Error?e.message:'unknown');return send({error:'analytics_unavailable'},503);}
 });

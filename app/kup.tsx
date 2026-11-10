@@ -19,7 +19,7 @@ export default function Purchase(){
    const [courseResult,previewResult,enrollmentResult]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
     supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status,study_minutes,workshop_count').eq('course_slug',slug).maybeSingle(),
-    supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1),
+    supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1),
    ]);
    if(courseResult.error||!courseResult.data)throw courseResult.error||new Error('Nie odnaleziono kursu.');
    if(previewResult.error)throw previewResult.error;
@@ -49,6 +49,7 @@ export default function Purchase(){
     try{if((error as any).context?.json)code=String((await (error as any).context.json())?.error||'')}catch{}
     const message:Record<string,string>={
       payments_not_configured:'Płatności Stripe nie są jeszcze aktywowane. Spróbuj ponownie później.',
+      email_not_configured:'Potwierdzenia e-mail są chwilowo niedostępne. Spróbuj ponownie później.',
       confirmed_login_required:'Potwierdź adres e-mail przed zakupem.',
       already_purchased:'Masz już aktywny dostęp do tego kursu — otwórz Moje kursy.',
       course_unavailable_or_free:'Kurs nie jest obecnie dostępny do zakupu.',
@@ -126,9 +127,9 @@ export default function Purchase(){
      </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent)))?0.5:1}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':'Kupuję i płacę '+price+' →'}</Text>
      </Pressable>}
-     {item.price_grosze===0&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
-      <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj darmowy kurs</Text>
-     </Pressable>}
+     <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
+      <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs</Text>
+     </Pressable>
      <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}>
       <Text style={{fontSize:13,color:muted,textDecorationLine:'underline',textAlign:'center'}}>Regulamin i zasady dostępu ↗</Text>
      </Pressable>

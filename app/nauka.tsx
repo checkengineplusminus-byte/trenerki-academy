@@ -55,7 +55,7 @@ export default function Learning(){
    if(!slug)throw new Error('Wybierz kurs z listy.');
    const {data:{user:u},error:ue}=await supabase.auth.getUser();
    if(ue||!u){router.replace('/konto');return;}
-   const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
+   const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
    if(ee)throw ee;
    if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
    const [lessons,draft,progress,details,attempts]=await Promise.all([

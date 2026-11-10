@@ -11,7 +11,7 @@ jobs:
       prod: true
     hooks:
       after_install_node_modules:
-        - name: Verify content, exercises and protected demo flow
+        - name: Verify content, exercises and protected course access
           run: node scripts/check-content-consistency.mjs
         - name: Verify course finding with Anielka
           run: node scripts/test-anielka.mjs

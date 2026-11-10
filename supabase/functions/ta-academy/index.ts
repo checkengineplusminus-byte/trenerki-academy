@@ -12,7 +12,6 @@ const validSlug=v=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(v);
 const validMail=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
 const htmlEsc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const afterDays=d=>new Date(Date.now()+d*86400e3).toISOString();
-const afterYear=()=>{const d=new Date();d.setUTCFullYear(d.getUTCFullYear()+1);return d.toISOString()};
 async function codeHash(code){
  const buf=new TextEncoder().encode(code);
  return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',buf)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -71,24 +70,13 @@ Deno.serve(async request=>{
   const code=cleanText(payload?.code,90).toUpperCase().replace(/\s/g,'');
   if(!/^TA-[0-9A-F]{32}$/.test(code))return reply({error:'invalid_gift_code'},400);
   const hash=await codeHash(code);
-  const {data:g,error:ge}=await db.from('ta_gift_cards').select('id,course_slug,recipient_email,mode,status,expires_at').eq('code_hash',hash).maybeSingle();
-  if(ge||!g)return reply({error:'invalid_gift_code'},404);
-  if(g.mode!=='free')return reply({error:'paid_gifts_disabled'},403);
-  if(g.status!=='issued'||new Date(g.expires_at)<new Date())return reply({error:'gift_used_or_expired'},409);
-  if(g.recipient_email&&g.recipient_email.toLowerCase()!==String(user.email||'').toLowerCase())return reply({error:'gift_for_another_email'},403);
-  const {data:existing}=await db.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',g.course_slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
-  if(existing?.length)return reply({error:'course_already_active'},409);
-  const {data:locked,error:lockedError}=await db.from('ta_gift_cards').update({status:'redeemed',redeemed_by:user.id,redeemed_at:new Date().toISOString()}).eq('id',g.id).eq('status','issued').select('id').maybeSingle();
-  if(lockedError||!locked)return reply({error:'gift_already_redeemed'},409);
-  const exp=g.mode==='free'?afterYear():afterDays(14);
-  const now=new Date().toISOString();
-  const {error:ie}=await db.from('ta_enrollments').insert({user_id:user.id,course_slug:g.course_slug,stripe_checkout_session_id:'gift:'+g.id,amount_grosze:0,currency:'PLN',status:g.mode==='free'?'active':'demo',purchased_at:now,expires_at:exp});
-  if(ie){await db.from('ta_gift_cards').update({status:'issued',redeemed_by:null,redeemed_at:null}).eq('id',g.id).eq('redeemed_by',user.id);return reply({error:'gift_redemption_failed'},500)}
-  if(g.mode==='demo')await db.from('ta_demo_orders').insert({user_id:user.id,course_slug:g.course_slug,list_price_grosze:0,actual_paid_grosze:0,source:'gift',gift_card_id:g.id,expires_at:exp});
-  return reply({ok:true,course_slug:g.course_slug,mode:g.mode,expires_at:exp,money_collected:false});
+  const {data,error}=await db.rpc('ta_redeem_gift',{p_hash:hash,p_user:user.id});
+  if(error)return reply({error:'gift_redemption_failed'},500);
+  const codes={invalid_gift_code:404,gift_used_or_expired:409,gift_for_another_email:403,course_already_active:409};
+  return reply(data,data.error?(codes[data.error]||400):200);
  }
  if(action==='my_gifts'){
-  const {data,error}=await db.from('ta_gift_cards').select('id,course_slug,mode,status,recipient_email,created_at,expires_at,redeemed_at').eq('created_by',user.id).order('created_at',{ascending:false}).limit(50);
+  const {data,error}=await db.from('ta_gift_cards').select('id,course_slug,mode,status,recipient_email,created_at,expires_at,redeemed_at').eq('created_by',user.id).neq('status','pending').order('created_at',{ascending:false}).limit(50);
   if(error)return reply({error:'gifts_unavailable'},503);
   return reply({gifts:data||[]});
  }

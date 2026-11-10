@@ -13,20 +13,21 @@ export default function AccountPage(){
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const continueToSelectedCourse=async()=>{
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
-    if(course){router.replace({pathname:'/kup',params:{course}});return;}
+    if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course}});return;}
     // Email confirmation sends users back to /konto without original query params.
     // Recover the chosen course from signup metadata for navigation only;
     // enrollment authorization is always checked independently by the server.
     const {data:{user}}=await supabase.auth.getUser();
     const candidate=user?.user_metadata?.pending_course;
     const selected=typeof candidate==='string'&&/^[a-z0-9][a-z0-9_-]{1,79}$/.test(candidate)?candidate:'';
+    const next=user?.user_metadata?.pending_checkout==='gift'?'/prezent':'/kup';
     const possibleGift=user?.user_metadata?.pending_gift;
     const savedGift=typeof possibleGift==='string'&&/^TA-[0-9A-F]{32}$/i.test(possibleGift)?possibleGift:'';
     if(selected||savedGift){
       // Clear once consumed so future logins don't keep redirecting to old courses.
-      await supabase.auth.updateUser({data:{pending_course:null,pending_gift:null}});
+      await supabase.auth.updateUser({data:{pending_course:null,pending_gift:null,pending_checkout:null}});
       if(savedGift){router.replace({pathname:'/prezent',params:{code:savedGift}});return;}
-      router.replace({pathname:'/kup',params:{course:selected}});return;
+      router.replace({pathname:next,params:{course:selected}});return;
     }
     router.replace('/moje-kursy');
  };
@@ -67,7 +68,7 @@ export default function AccountPage(){
      if(mode==='register'){
        if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
        const emailRedirectTo=siteUrl+'/konto';
-       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null}}});
+       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null}}});
        if(error)throw error;
        if(data.session){await continueToSelectedCourse();return;}
        setMessage('Konto utworzone. Potwierdź e-mail (również w SPAM), następnie zaloguj się. Wybrany kurs będzie czekał w koszyku.');return;

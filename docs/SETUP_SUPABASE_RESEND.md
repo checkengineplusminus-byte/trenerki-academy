@@ -6,7 +6,7 @@
 - Oficjalny adres kontaktu, reklamacji, odstąpień i RODO: `trenerki.pl@gmail.com`. To adres wskazany przez właściciela; trzeba niezależnie utworzyć/zweryfikować skrzynkę i przetestować wysyłkę oraz odbiór wiadomości. Nie jest potrzebne konto pocztowe we własnej domenie.
 - Expo obsługuje stronę i aplikację; projekt TRENERKI Supabase: `kcvvixcjuwglfvdpypzs`. Zmiany kodu nie oznaczają, że DNS i certyfikat TLS zostały już ustawione.
 - W GitHubie dodano publiczne dokumenty `/academy/regulamin.html`, `/academy/prywatnosc.html`, `/academy/kontakt.html`, `/academy/odstapienie.html` i `/academy/certyfikaty.html`.
-- Płatności nie są aktywowane. Operator płatności docelowo Autopay po odrębnej weryfikacji; istniejące funkcje Stripe pozostają nieaktywne i nie powinny być prezentowane użytkownikom jako dostępna płatność.
+- Stripe obsługuje zakup kursów i kart podarunkowych. Produkcyjny checkout jest kontrolowany przez sekret TA_SALES_ENABLED.
 
 ## Nieodzowne kroki ręczne przed przełączeniem na oficjalną domenę
 
