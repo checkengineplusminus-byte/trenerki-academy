@@ -8,6 +8,7 @@ export default function RootLayout(){
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  const [isAdmin,setIsAdmin]=useState(false);
+ const [adminReady,setAdminReady]=useState(false);
  useEffect(()=>{
   let mounted=true;
   const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
@@ -25,14 +26,15 @@ export default function RootLayout(){
  },[]);
  useEffect(()=>{
   let active=true;
-  if(!signedIn){setIsAdmin(false);return()=>{active=false};}
+  if(!signedIn){setIsAdmin(false);setAdminReady(true);return()=>{active=false};}
+  setAdminReady(false);
   setIsAdmin(false);
   void supabase.functions.invoke('ta-academy',{body:{action:'whoami'}}).then(({data,error})=>{
-   if(active)setIsAdmin(!error&&data?.is_admin===true);
-  }).catch(()=>{if(active)setIsAdmin(false)});
+   if(active){setIsAdmin(!error&&data?.is_admin===true);setAdminReady(true);}
+  }).catch(()=>{if(active){setIsAdmin(false);setAdminReady(true)}});
   return()=>{active=false};
  },[signedIn]);
- if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
+ if(!ready||(signedIn&&!adminReady))return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
  return <Stack screenOptions={{headerShown:false}}>
    <Stack.Screen name="index"/>
    <Stack.Screen name="konto"/>
