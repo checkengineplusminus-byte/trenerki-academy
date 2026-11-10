@@ -35,7 +35,7 @@ export default function GiftPage(){
   setBusy(true);setNotice('');
   try{
    const {data:{user}}=await supabase.auth.getUser();
-   if(!user?.email_confirmed_at){router.push('/konto');return;}
+   if(!user?.email_confirmed_at){router.push({pathname:'/konto',params:{next:'valuegift'}});return;}
    const amount=Number(valueAmount.replace(',','.'));
    if(!Number.isFinite(amount)||amount<25||amount>1000||Math.round(amount*100)!==amount*100)
     throw new Error('Wpisz kwotę od 25 do 1000 zł (maksymalnie dwa miejsca po przecinku).');
