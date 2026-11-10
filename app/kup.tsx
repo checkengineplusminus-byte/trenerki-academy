@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
-type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,source_url:string|null,module_titles:string[],editorial_note:string,review_status:string};
+type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string,review_status:string};
 const ink='#193a2c',muted='#5b7563',lime='#e6f3d6';
 export default function Purchase(){
  const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
@@ -19,7 +19,7 @@ export default function Purchase(){
    if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
    const [courseResult,previewResult,enrollmentResult,profile]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
-    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,source_url,module_titles,editorial_note,review_status').eq('course_slug',slug).maybeSingle(),
+    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status').eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1),
     academyAction('whoami')
    ]);
@@ -80,9 +80,6 @@ export default function Purchase(){
       {[preview.outcome_1,preview.outcome_2,preview.outcome_3].map((t,i)=><View key={i} style={{flexDirection:'row',gap:12}}>
        <Text style={{fontSize:21,color:'#6d9e59',fontWeight:'900'}}>✓</Text><Text style={{color:'#3a5945',fontSize:15,flex:1,lineHeight:24}}>{t}</Text>
       </View>)}
-      {!!preview.source_url&&<Pressable onPress={()=>Linking.openURL(preview.source_url!)}>
-       <Text style={{color:'#3e6b4e',fontSize:13,textDecorationLine:'underline'}}>Więcej wiedzy: źródło i materiały do sprawdzenia ↗</Text>
-      </Pressable>}
      </View>
      <View style={{backgroundColor:'#f0f5eb',padding:18,borderRadius:12,gap:8}}>
       <Text style={{fontWeight:'900',color:ink}}>Ważne zasady tego kursu</Text>

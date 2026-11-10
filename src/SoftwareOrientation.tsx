@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image,Platform,Pressable,Text,View,Linking,useWindowDimensions} from 'react-native';
+import {Image,Platform,Pressable,Text,View,useWindowDimensions} from 'react-native';
 import HandsOnLab from './HandsOnLab';
 import SoftwarePlayground from './SoftwarePlayground';
 import type {KeyboardShortcut} from './KeyboardLesson';
@@ -144,12 +144,6 @@ const programs:Record<string,Program>={
 };
 export const hasSoftwareOrientation=(slug:string)=>Boolean(programs[slug]);
 type Tab='interface'|'history'|'terms'|'practice';
-const officialPages:Record<string,string>={
- 'word-skroty':'https://support.microsoft.com/en-us/office/foundations-experiences/show-or-hide-the-ribbon-in-office',
- 'excel-skroty':'https://support.microsoft.com/en-us/excel/show-the-ribbon',
- 'autocad-skroty':'https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-OnBoarding/files/ACD_FOUNDATIONS_MAIN1.html',
- 'windows-skroty':'https://support.microsoft.com/en-us/windows'
-};
 const walkthroughs:Record<string,string[]>={
  'word-skroty':[
   'Otwórz Plik → Zapisz jako. Wybierz folder, nazwę i format DOCX. Po zapisie znajdź dokument w wybranej lokalizacji.',
@@ -202,7 +196,7 @@ export default function SoftwareOrientation({slug}:{slug:string}){
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
   <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
   {Platform.OS==='web'&&!imageFailed?
-   <Image source={{uri:'https://trenerki-academy.expo.app/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
+   <Image source={{uri:'/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
     resizeMode="contain" style={{width:'100%',height:mobile?210:290,backgroundColor:'white',borderRadius:12}}
     accessibilityLabel={'Ilustrowana mapa głównego ekranu '+p.name}/>:
    <View style={{backgroundColor:'white',borderRadius:12,padding:13,gap:10}}>
@@ -279,9 +273,5 @@ export default function SoftwareOrientation({slug}:{slug:string}){
     <SoftwarePlayground mode={p.mode} active={active}/>}
    <Text style={{color:'#4a7054',fontSize:12,lineHeight:21}}>Ćwiczenie nie zmienia Twoich rzeczywistych plików. Przejdź do kolejnych zadań, żeby sprawdzić umiejętności.</Text>
   </View>}
-  <Pressable onPress={()=>Linking.openURL(officialPages[slug])} accessibilityRole="link"
-   style={{borderTopWidth:1,borderColor:'#d0e1ce',paddingTop:14}}>
-   <Text style={{color:'#28684b',fontSize:13,fontWeight:'800',textDecorationLine:'underline'}}>Zobacz oryginalny interfejs i instrukcje producenta ↗</Text>
-  </Pressable>
  </View>;
 }

@@ -66,8 +66,8 @@ try{
  if(history.length!==20)fail('Expected 20 traditional crafts');
  for(const item of history){
   const p=previews[item.id];
-  if(!p?.history||!('ended_year' in p.history)||!p.history.note||!p.history.source_url)fail(item.id+': historical evidence metadata missing');
-  if(p?.history?.ended_year&&!p.history.source_url)fail(item.id+': ungrounded historical teaching end date');
+  if(!p?.history||!('ended_year' in p.history)||!p.history.note||!item.history?.source_url)fail(item.id+': historical evidence metadata missing');
+  if(p?.history?.ended_year&&!item.history?.source_url)fail(item.id+': ungrounded historical teaching end date');
  }
  if(!page.includes('Rzemiosło dawniej i dziś'))fail('Missing natural history of crafts');
  if(page.includes('Ostatni potwierdzony rok:')||page.includes('Sprawdź źródło historyczne'))fail('Technical research notes exposed to learners');
@@ -228,8 +228,13 @@ try{
  if(!examServer.includes('nextChoice(')||!examServer.includes("grading_mode:'choice'")||
    !exam.includes('switch_mode')||!exam.includes('selected_index')||!examServer.includes('correct_option'))
   fail('Exam server must support objective fallback with protected correct answer');
- if(!diploma.includes('window.print()')||!diploma.includes('Data ukończenia:'))
-  fail('Certificate A4 printable output missing');
+ const diplomaPdf=read('supabase/functions/ta-diplomas/lib/pdf.ts');
+ if(!diploma.includes('downloadDiploma')||!diplomaPdf.includes('addPage([842, 595])')||
+    !diplomaPdf.includes('Certificate of Completion')||!diplomaPdf.includes('Dyplom ukończenia'))
+  fail('Certificate PDF in both languages is missing');
+ if(/(?:https?:\/\/|www\.)/i.test(JSON.stringify([courses,previews,additions]))||
+    /Linking\.openURL\((?:officialPages|preview\.source_url|o\.url)/.test(read('app/kup.tsx')+read('src/SoftwareOrientation.tsx')+languageViewer))
+  fail('External learning links exposed in the application');
  const agentServer=read('supabase/functions/ta-lesson-guide/index.ts');
  if(!agentServer.includes('learnerSummary')||!agentServer.includes('localLessonCoach')||!agentServer.includes('agent_online'))
   fail('Adaptive mentor and declared offline mode missing');

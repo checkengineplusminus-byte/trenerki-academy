@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Rama prostokątna i dwie przekątne</title>
+  <desc id="desc">Rama o bokach 2400 i 1800 milimetrów. Teoretyczna długość obu przekątnych to 3000 milimetrów.</desc>
+  <rect width="960" height="540" rx="18" fill="#f4f8ef"/>
+  <g font-family="system-ui,sans-serif" fill="#173b2b">
+    <text x="44" y="61" font-size="32" font-weight="700">Sprawdź boki i dwie przekątne</text>
+    <text x="44" y="95" font-size="17">Makieta w skali 1:20 ma 120 × 90 mm.</text>
+    <path d="M126 163h392v294H126z" fill="#f9ebd8" stroke="#9b6e47" stroke-width="14"/>
+    <path d="M126 163l392 294" stroke="#306c5c" stroke-width="4" stroke-dasharray="11 7"/>
+    <path d="M126 457l392-294" stroke="#9a4c2b" stroke-width="4" stroke-dasharray="11 7"/>
+    <path d="M126 138h392m-392-8v16m392-16v16M99 163v294m-8-294h16m-16 294h16" stroke="#476753" stroke-width="2"/>
+    <text x="322" y="129" text-anchor="middle" font-size="18" font-weight="700">2 400 mm</text>
+    <text x="84" y="311" text-anchor="middle" transform="rotate(-90 84 311)" font-size="18" font-weight="700">1 800 mm</text>
+    <circle cx="126" cy="457" r="8" fill="#173b2b"/>
+    <text x="140" y="493" font-size="17">Punkt odniesienia</text>
+    <rect x="575" y="165" width="329" height="235" rx="18" fill="#fff" stroke="#d1e1cb" stroke-width="2"/>
+    <text x="601" y="208" font-size="19" font-weight="700">Wymiar obliczony</text>
+    <text x="601" y="247" font-size="20">√(2 400² + 1 800²)</text>
+    <text x="601" y="285" font-size="26" font-weight="700">3 000 mm</text>
+    <text x="601" y="326" font-size="17">Zapisz obie przekątne.</text>
+    <text x="601" y="353" font-size="17">Sprawdź także długości boków.</text>
+  </g>
+</svg>

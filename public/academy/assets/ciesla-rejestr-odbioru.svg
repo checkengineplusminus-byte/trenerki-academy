@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Karta odbioru makiety ciesielskiej</title>
+  <desc id="desc">Przykład odchyłki. Różnica przekątnych 7 mm przy dopuszczalnych 5 mm oznacza potrzebę wstrzymania odbioru i ponownego pomiaru.</desc>
+  <rect width="960" height="540" rx="18" fill="#f4f8ef"/>
+  <g font-family="system-ui,sans-serif" fill="#173b2b">
+    <text x="44" y="62" font-size="32" font-weight="700">Jak zapisać wynik odbioru</text>
+    <text x="44" y="99" font-size="17">Przykład z nieobciążanej makiety. Wymaganie przyjęto wyłącznie do zadania.</text>
+    <rect x="48" y="143" width="864" height="325" rx="16" fill="#fff" stroke="#cbdcc7" stroke-width="2"/>
+    <path d="M48 208h864m-864 64h864m-864 64h864m-864 64h864M425 143v325" stroke="#d6e3d2" stroke-width="2"/>
+    <text x="74" y="184" font-size="20" font-weight="700">Sprawdzenie</text>
+    <text x="451" y="184" font-size="20" font-weight="700">Wynik i decyzja</text>
+    <g font-size="19">
+      <text x="74" y="248">Dwie przekątne</text><text x="451" y="248">1 001 mm i 1 008 mm</text>
+      <text x="74" y="312">Różnica i limit w zadaniu</text><text x="451" y="312">7 mm · dopuszczalne 5 mm</text>
+      <text x="74" y="376">Status</text><text x="451" y="376" fill="#8a402b" font-weight="700">Niezgodność · odbiór wstrzymany</text>
+      <text x="74" y="440">Następny krok</text><text x="451" y="440">Sprawdź bazę i powtórz pomiar.</text>
+    </g>
+  </g>
+</svg>

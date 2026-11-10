@@ -3,6 +3,7 @@ import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator} from 'react-
 import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
+import DiplomaRegistry from '../src/DiplomaRegistry';
 
 const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
@@ -15,7 +16,7 @@ export default function AdminPage(){
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'users'|'orders'|'gifts'|'drafts'|'quality'>('users');
+ const [tab,setTab]=useState<'users'|'orders'|'gifts'|'drafts'|'quality'|'diplomas'>('users');
  const students:Student[]=stats?.users||[];
  const filteredStudents=useMemo(()=>students.filter(u=>(u.email||'').toLowerCase().includes(filter.trim().toLowerCase())),[students,filter]);
  useEffect(()=>{void refresh()},[]);
@@ -78,7 +79,7 @@ export default function AdminPage(){
      {count('Kursy czekające na weryfikację',reviews.filter(r=>r.review_status!=='approved').length)}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe'],['quality','Jakość kursów']] as const).map(([key,label])=>
+     {([['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -118,6 +119,7 @@ export default function AdminPage(){
       <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Podaruj kurs Świętego Mikołaja</Text>
      </Pressable>
     </View>}
+    {tab==='diplomas'&&<DiplomaRegistry/>}
     {tab==='quality'&&<View style={card}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:10}}>Spójność materiałów</Text>
      <Text style={{color:muted,lineHeight:23,marginBottom:15}}>Status dotyczy weryfikacji redakcyjnej. Kursy robocze służą do testów, nie do płatnej sprzedaży. Każda lekcja musi respektować wspólne zasady bezpieczeństwa, zakres kompetencji i rzeczywiste możliwości platformy.</Text>

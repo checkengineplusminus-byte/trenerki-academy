@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Deski i legary · widok z góry oraz przekrój</title>
+  <desc id="desc">Deski poszycia przebiegają prostopadle do trzech legarów. Po prawej przekrój pokazuje oddzielnie deskę i podpory.</desc>
+  <rect width="960" height="540" rx="18" fill="#f4f8ef"/>
+  <g font-family="system-ui,sans-serif" fill="#173b2b">
+    <text x="44" y="61" font-size="32" font-weight="700">Podłoga na legarach</text>
+    <text x="44" y="98" font-size="17">Przykładowy układ do nauki czytania rysunku.</text>
+    <text x="59" y="155" font-size="20" font-weight="700">RZUT Z GÓRY</text>
+    <text x="524" y="155" font-size="20" font-weight="700">PRZEKRÓJ WZDŁUŻ DESKI</text>
+    <rect x="59" y="176" width="405" height="242" fill="#e5c191" stroke="#9b6e47" stroke-width="3"/>
+    <path d="M60 224h404M60 273h404M60 321h404M60 370h404" stroke="#aa7951" stroke-width="3"/>
+    <path d="M126 176v242m132-242v242m132-242v242" stroke="#386b56" stroke-width="19" stroke-dasharray="12 6" opacity=".86"/>
+    <path d="M70 298h369" stroke="#7f462a" stroke-width="3"/>
+    <path d="M434 291l9 7-9 7" fill="none" stroke="#7f462a" stroke-width="3"/>
+    <rect x="524" y="248" width="382" height="32" fill="#e5c191" stroke="#9b6e47" stroke-width="3"/>
+    <path d="M570 281h34v98h-34zm128 0h34v98h-34zm128 0h34v98h-34z" fill="#598171" stroke="#386b56" stroke-width="3"/>
+    <path d="M521 380h389" stroke="#a8afa0" stroke-width="4"/>
+    <text x="62" y="459" font-size="17">Linie zielone: legary pod deskami</text>
+    <text x="525" y="421" font-size="17">Deska oparta na trzech legarach</text>
+    <text x="525" y="453" font-size="17">Rozstaw i mocowanie podaje projekt.</text>
+  </g>
+</svg>

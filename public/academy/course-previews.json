@@ -5,8 +5,7 @@
     "scenario": "Dwóch pracowników czeka na materiał, a inna ekipa już chce wejść na ten sam podest. Kto i co ustala najpierw?",
     "outcome_1": "Przydzielisz pracę tak, żeby nikt nie zgadywał, za co odpowiada.",
     "outcome_2": "Poprowadzisz konkretną odprawę i zauważysz ryzyko przed rozpoczęciem pracy.",
-    "outcome_3": "Zapiszesz opóźnienia i ustalenia bez obwiniania ludzi.",
-    "source_url": null
+    "outcome_3": "Zapiszesz opóźnienia i ustalenia bez obwiniania ludzi."
   },
   "kierownik-budowy": {
     "course_slug": "kierownik-budowy",
@@ -14,8 +13,7 @@
     "scenario": "Produkcja pracuje według starego rysunku, a na budowie jest już nowa rewizja. Co robisz?",
     "outcome_1": "Ułożysz plan zależności zamiast listy życzeń.",
     "outcome_2": "Nauczysz się rozpoznawać zmianę, która wymaga pisemnego potwierdzenia.",
-    "outcome_3": "Przećwiczysz rozmowę o opóźnieniu bez szukania winnych.",
-    "source_url": null
+    "outcome_3": "Przećwiczysz rozmowę o opóźnieniu bez szukania winnych."
   },
   "lepszy-szef": {
     "course_slug": "lepszy-szef",
@@ -23,8 +21,7 @@
     "scenario": "Mówisz „zrób to dobrze”, ale trzy osoby rozumieją to inaczej. Co zmienisz?",
     "outcome_1": "Zaczniesz delegować wynik, termin i odpowiedzialność.",
     "outcome_2": "Przećwiczysz trudny feedback bez upokarzania.",
-    "outcome_3": "Ułożysz plan rozmowy, gdy zespół traci zaufanie.",
-    "source_url": null
+    "outcome_3": "Ułożysz plan rozmowy, gdy zespół traci zaufanie."
   },
   "apartamenty": {
     "course_slug": "apartamenty",
@@ -32,8 +29,7 @@
     "scenario": "Gość przyjeżdża za 40 minut, a poprzedni zostawił uszkodzoną lampę.",
     "outcome_1": "Zbudujesz listę kontroli gotowości apartamentu.",
     "outcome_2": "Nauczysz się dokumentować szkody i zmiany stanu lokalu.",
-    "outcome_3": "Przećwiczysz spokojną komunikację z gościem.",
-    "source_url": null
+    "outcome_3": "Przećwiczysz spokojną komunikację z gościem."
   },
   "gpsr": {
     "course_slug": "gpsr",
@@ -41,8 +37,7 @@
     "scenario": "Sprzedajesz świeczkę online i klient pyta o bezpieczne użytkowanie. Jakie informacje przygotujesz?",
     "outcome_1": "Zrozumiesz własną rolę w łańcuchu sprzedaży.",
     "outcome_2": "Sporządzisz praktyczny szkic analizy ryzyka.",
-    "outcome_3": "Sprawdzisz opisy i oznakowanie produktu.",
-    "source_url": null
+    "outcome_3": "Sprawdzisz opisy i oznakowanie produktu."
   },
   "bdo": {
     "course_slug": "bdo",
@@ -50,8 +45,7 @@
     "scenario": "Kupujesz pudełka i wysyłasz towar do klientów. Czy wiesz, co musisz udokumentować?",
     "outcome_1": "Odróżnisz obowiązki zależne od rodzaju działalności.",
     "outcome_2": "Przygotujesz listę dokumentów i prosty obieg danych.",
-    "outcome_3": "Nauczysz się weryfikować aktualne wymagania zamiast zgadywać.",
-    "source_url": null
+    "outcome_3": "Nauczysz się weryfikować aktualne wymagania zamiast zgadywać."
   },
   "dostepne-pdf": {
     "course_slug": "dostepne-pdf",
@@ -59,8 +53,7 @@
     "scenario": "Dostajesz PDF, który na telefonie wygląda ładnie, ale nie da się po nim wygodnie poruszać.",
     "outcome_1": "Zbudujesz logiczną hierarchię nagłówków.",
     "outcome_2": "Napiszesz sensowne opisy grafik i tabel.",
-    "outcome_3": "Sprawdzisz dokument przed publikacją.",
-    "source_url": null
+    "outcome_3": "Sprawdzisz dokument przed publikacją."
   },
   "kgw": {
     "course_slug": "kgw",
@@ -68,8 +61,7 @@
     "scenario": "Koło organizuje wydarzenie, a faktury przynoszą różne osoby i w różnym czasie.",
     "outcome_1": "Rozpiszesz budżet zgodnie z kategoriami wydatków.",
     "outcome_2": "Przygotujesz prosty rejestr dokumentów.",
-    "outcome_3": "Wychwycisz brakujące załączniki przed rozliczeniem.",
-    "source_url": null
+    "outcome_3": "Wychwycisz brakujące załączniki przed rozliczeniem."
   },
   "festyn": {
     "course_slug": "festyn",
@@ -77,8 +69,7 @@
     "scenario": "Na festynie nagle zaczyna padać, a przy stoisku ustawia się dwadzieścia osób.",
     "outcome_1": "Oszacujesz porcje i niezbędne zapasy.",
     "outcome_2": "Podzielisz obowiązki i przygotujesz stanowisko.",
-    "outcome_3": "Uwzględnisz higienę żywności i plan awaryjny.",
-    "source_url": null
+    "outcome_3": "Uwzględnisz higienę żywności i plan awaryjny."
   },
   "petsitter": {
     "course_slug": "petsitter",
@@ -86,8 +77,7 @@
     "scenario": "Wchodzisz do mieszkania, a kota nigdzie nie widać. Co sprawdzasz w pierwszej kolejności?",
     "outcome_1": "Przygotujesz wywiad z opiekunem zwierzęcia.",
     "outcome_2": "Zadbasz o bezpieczeństwo podczas wizyty.",
-    "outcome_3": "Nauczysz się dokumentować obserwacje bez diagnozowania.",
-    "source_url": null
+    "outcome_3": "Nauczysz się dokumentować obserwacje bez diagnozowania."
   },
   "odbiory": {
     "course_slug": "odbiory",
@@ -95,8 +85,7 @@
     "scenario": "Widzisz rysę na szybie. Jak ją opiszesz, żeby można ją było później odnaleźć?",
     "outcome_1": "Ułożysz metodę oględzin pomieszczenie po pomieszczeniu.",
     "outcome_2": "Zrobisz czytelne zdjęcia i opisy lokalizacji.",
-    "outcome_3": "Oddzielisz obserwację od oceny przyczyny.",
-    "source_url": null
+    "outcome_3": "Oddzielisz obserwację od oceny przyczyny."
   },
   "wspolnota": {
     "course_slug": "wspolnota",
@@ -104,8 +93,7 @@
     "scenario": "Jeden mieszkaniec zgłasza awarię, drugi chce znać koszty, a termin zebrania się zbliża.",
     "outcome_1": "Przygotujesz prosty rejestr spraw.",
     "outcome_2": "Zrozumiesz różnicę między budżetem a rozliczeniem.",
-    "outcome_3": "Ułatwisz komunikację z właścicielami lokali.",
-    "source_url": null
+    "outcome_3": "Ułatwisz komunikację z właścicielami lokali."
   },
   "pasieka": {
     "course_slug": "pasieka",
@@ -113,8 +101,7 @@
     "scenario": "Masz miejsce na ule, ale obok jest ścieżka i sąsiedzi. Co sprawdzić przed zakupem rodzin?",
     "outcome_1": "Przygotujesz plan sezonu i wyposażenia.",
     "outcome_2": "Zrozumiesz podstawowe zasady bezpiecznej pracy.",
-    "outcome_3": "Nauczysz się obserwować i notować zmiany w pasiece.",
-    "source_url": null
+    "outcome_3": "Nauczysz się obserwować i notować zmiany w pasiece."
   },
   "koordynator": {
     "course_slug": "koordynator",
@@ -122,8 +109,7 @@
     "scenario": "Klient prosi o wycenę bez zdjęć i bez metrażu. Jak unikniesz zgadywania?",
     "outcome_1": "Ułożysz wywiad przed wyceną.",
     "outcome_2": "Policzysz czas, materiały i koszty dojazdu.",
-    "outcome_3": "Przygotujesz protokół odbioru i komunikację z klientem.",
-    "source_url": null
+    "outcome_3": "Przygotujesz protokół odbioru i komunikację z klientem."
   },
   "dziennik-kota": {
     "course_slug": "dziennik-kota",
@@ -131,8 +117,7 @@
     "scenario": "Opiekun informuje o specjalnej diecie dopiero przy przyjęciu kota. Co powinieneś zrobić?",
     "outcome_1": "Przygotujesz checklistę przyjęcia.",
     "outcome_2": "Zorganizujesz bezpieczną przestrzeń i rutynę.",
-    "outcome_3": "Nauczysz się przekazywać właścicielowi rzetelne obserwacje.",
-    "source_url": null
+    "outcome_3": "Nauczysz się przekazywać właścicielowi rzetelne obserwacje."
   },
   "opieka-seniorzy": {
     "course_slug": "opieka-seniorzy",
@@ -141,7 +126,6 @@
     "outcome_1": "Porozmawiasz z szacunkiem, bez wyręczania na siłę.",
     "outcome_2": "Zaplanujesz bezpieczną codzienną rutynę.",
     "outcome_3": "Rozpoznasz granice obowiązków opiekuna i sytuacje wymagające pomocy specjalistycznej.",
-    "source_url": null,
     "module_titles": [
       "Potrzeby seniora i szacunek",
       "Komunikacja i aktywne słuchanie",
@@ -164,7 +148,6 @@
     "outcome_1": "Rozbijesz duże zadanie na konkretne kroki.",
     "outcome_2": "Ułożysz prostą rutynę, która zmniejsza chaos.",
     "outcome_3": "Przećwiczysz spokojne komunikaty i dostosowanie otoczenia.",
-    "source_url": "https://www.cdc.gov/adhd/treatment/behavior-therapy.html",
     "module_titles": [
       "Czym jest ADHD i czym nie jest",
       "Uwaga, impulsywność i emocje",
@@ -187,7 +170,6 @@
     "outcome_1": "Rozpoznasz swoje mocne strony poza etykietami.",
     "outcome_2": "Nazwiesz potrzeby, które często odkładasz.",
     "outcome_3": "Zrobisz mapę decyzji opartą na własnych wartościach.",
-    "source_url": null,
     "module_titles": [
       "Kim jestem poza rolami",
       "Wartości i ważne wybory",
@@ -210,7 +192,6 @@
     "outcome_1": "Przećwiczysz odmawianie bez agresji.",
     "outcome_2": "Odróżnisz własne zasady od presji otoczenia.",
     "outcome_3": "Zbudujesz prosty plan konsekwentnych działań.",
-    "source_url": null,
     "module_titles": [
       "Stanowczość zamiast agresji",
       "Twoje zasady i wartości",
@@ -232,8 +213,7 @@
     "scenario": "Jedno mówi o zmęczeniu, drugie słyszy pretensję. Jak zatrzymać spiralę?",
     "outcome_1": "Nauczysz się słuchać bez gotowej riposty.",
     "outcome_2": "Powiesz o potrzebach bez oskarżeń.",
-    "outcome_3": "Przećwiczysz rozmowę po konflikcie.",
-    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+    "outcome_3": "Przećwiczysz rozmowę po konflikcie."
   },
   "blizej-dziecka": {
     "course_slug": "blizej-dziecka",
@@ -241,8 +221,7 @@
     "scenario": "Dziecko wraca ze szkoły milczące. Chcesz pomóc, ale każde pytanie kończy się „nic”.",
     "outcome_1": "Zaczniesz rozmowy bez przesłuchania.",
     "outcome_2": "Stworzysz małe rytuały wspólnego czasu.",
-    "outcome_3": "Nauczysz się reagować na emocje bez zawstydzania.",
-    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+    "outcome_3": "Nauczysz się reagować na emocje bez zawstydzania."
   },
   "rodzice-50-50": {
     "course_slug": "rodzice-50-50",
@@ -250,8 +229,7 @@
     "scenario": "Zbliża się zmiana opieki; brakuje stroju na WF i informacji o sprawdzianie.",
     "outcome_1": "Przygotujesz spokojny harmonogram dwóch domów.",
     "outcome_2": "Ułożysz neutralną komunikację między rodzicami.",
-    "outcome_3": "Ograniczysz sytuacje, w których dziecko staje się posłańcem.",
-    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+    "outcome_3": "Ograniczysz sytuacje, w których dziecko staje się posłańcem."
   },
   "zaczynam-od-zera": {
     "course_slug": "zaczynam-od-zera",
@@ -260,7 +238,6 @@
     "outcome_1": "Rozdzielisz sprawy pilne od ważnych.",
     "outcome_2": "Zbudujesz prostą mapę kosztów i dostępnych zasobów.",
     "outcome_3": "Ułożysz bezpieczny plan małych kroków bez obietnic szybkiego wzbogacenia.",
-    "source_url": null,
     "module_titles": [
       "Uznanie faktów bez katastrofizowania",
       "Co zostało po stracie",
@@ -283,7 +260,6 @@
     "outcome_1": "Zrobisz jasną listę obowiązków.",
     "outcome_2": "Podzielisz zadania odpowiednio do możliwości domowników.",
     "outcome_3": "Utrzymasz prosty system bez ciągłych przypomnień.",
-    "source_url": null,
     "module_titles": [
       "Dlaczego obowiązki się piętrzą",
       "Lista zadań w całym domu",
@@ -306,7 +282,6 @@
     "outcome_1": "Nauczysz się kontrolować proporcje i proces.",
     "outcome_2": "Zorganizujesz pracę w bezpieczny sposób.",
     "outcome_3": "Policzysz koszt porcji i ograniczysz straty.",
-    "source_url": null,
     "module_titles": [
       "Stanowisko i bezpieczeństwo żywności",
       "Ważenie i proporcje",
@@ -329,7 +304,6 @@
     "outcome_1": "Zorganizujesz mise en place.",
     "outcome_2": "Przećwiczysz podstawy temperatury i technik.",
     "outcome_3": "Zbudujesz smak bez niepotrzebnego chaosu.",
-    "source_url": null,
     "module_titles": [
       "Mise en place i porządek",
       "Bezpieczeństwo i higiena kuchni",
@@ -352,7 +326,6 @@
     "outcome_1": "Rozpoznasz, co naprawdę Cię męczy w kontaktach.",
     "outcome_2": "Nauczysz się granic bez poczucia winy.",
     "outcome_3": "Spróbujesz małych, bezpiecznych kroków w budowaniu relacji.",
-    "source_url": null,
     "module_titles": [
       "Dystans do ludzi — skąd się bierze",
       "Introwersja, zmęczenie i przeciążenie",
@@ -375,7 +348,6 @@
     "outcome_1": "Zrobisz listę kosztów poza ceną zakupu.",
     "outcome_2": "Sprawdzisz dokumenty i przygotujesz oględziny.",
     "outcome_3": "Zbudujesz własną checklistę jazdy próbnej.",
-    "source_url": null,
     "module_titles": [
       "Potrzeby i budżet zakupu",
       "Cena zakupu kontra koszt użytkowania",
@@ -398,7 +370,6 @@
     "outcome_1": "Rozpoznasz kompetencje, które już masz.",
     "outcome_2": "Rozłożysz ambitny cel na możliwe kroki.",
     "outcome_3": "Zaczniesz budować portfolio zamiast tylko opowiadać o planach.",
-    "source_url": null,
     "module_titles": [
       "Ambicja i realistyczne ryzyko",
       "Wartość umiejętności poza dyplomem",
@@ -420,8 +391,7 @@
     "scenario": "Masz 500 wierszy danych i codziennie ręcznie przewijasz arkusz.",
     "outcome_1": "Poznasz najpraktyczniejsze skróty poruszania się.",
     "outcome_2": "Przećwiczysz szybką edycję i formatowanie.",
-    "outcome_3": "Zapiszesz własną ściągę do pracy.",
-    "source_url": "https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f"
+    "outcome_3": "Zapiszesz własną ściągę do pracy."
   },
   "autocad-skroty": {
     "course_slug": "autocad-skroty",
@@ -429,8 +399,7 @@
     "scenario": "Rysujesz serię jednakowych detali i wciąż wracasz do panelu narzędzi.",
     "outcome_1": "Poznasz podstawowe komendy i aliasy.",
     "outcome_2": "Przećwiczysz kopiowanie, modyfikację i nawigację.",
-    "outcome_3": "Przygotujesz własną listę skrótów do projektów.",
-    "source_url": null
+    "outcome_3": "Przygotujesz własną listę skrótów do projektów."
   },
   "google-ads-promocja": {
     "course_slug": "google-ads-promocja",
@@ -439,7 +408,6 @@
     "outcome_1": "Dobierzesz cel kampanii do realnej potrzeby.",
     "outcome_2": "Nauczysz się mierzyć sensowne konwersje.",
     "outcome_3": "Przygotujesz listę słów i wykluczeń.",
-    "source_url": null,
     "module_titles": [
       "Cel reklamy i klient",
       "Struktura konta i kampanii",
@@ -462,7 +430,6 @@
     "outcome_1": "Dobierzesz odbiorców i komunikat.",
     "outcome_2": "Przygotujesz proste testy dwóch reklam.",
     "outcome_3": "Sprawdzisz wynik przed podniesieniem budżetu.",
-    "source_url": null,
     "module_titles": [
       "Cel kampanii i grupa odbiorców",
       "Konto reklamowe i bezpieczeństwo",
@@ -484,8 +451,7 @@
     "scenario": "Dziecko boi się brody i nie chce podejść. Jak zachowasz świąteczny nastrój bez naciskania?",
     "outcome_1": "Przygotujesz bezpieczną wizytę.",
     "outcome_2": "Przećwiczysz ciepłe rozmowy z dziećmi.",
-    "outcome_3": "Ułożysz listę małych dobrych uczynków.",
-    "source_url": null
+    "outcome_3": "Ułożysz listę małych dobrych uczynków."
   },
   "lepszy-tata": {
     "course_slug": "lepszy-tata",
@@ -493,8 +459,7 @@
     "scenario": "Odbierasz dziecko po tygodniu rozłąki, a ono zamiast przytulenia mówi tylko „cześć”.",
     "outcome_1": "Zaczniesz rozmawiać bez naciskania na odpowiedź.",
     "outcome_2": "Zbudujesz wspólne rytuały nawet w dwóch domach.",
-    "outcome_3": "Przećwiczysz spokojne granice i naprawianie relacji.",
-    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+    "outcome_3": "Przećwiczysz spokojne granice i naprawianie relacji."
   },
   "lepsza-mama": {
     "course_slug": "lepsza-mama",
@@ -502,8 +467,7 @@
     "scenario": "Po trudnym dniu dziecko potrzebuje uwagi właśnie wtedy, gdy Ty nie masz już siły.",
     "outcome_1": "Nauczysz się mówić o emocjach bez obwiniania.",
     "outcome_2": "Znajdziesz małe sposoby na wspólny spokojny czas.",
-    "outcome_3": "Przećwiczysz granice i proszenie o wsparcie.",
-    "source_url": "https://www.unicef.org/parenting/child-care/11-tips-communicating-your-teen"
+    "outcome_3": "Przećwiczysz granice i proszenie o wsparcie."
   },
   "word-skroty": {
     "course_slug": "word-skroty",
@@ -511,8 +475,7 @@
     "scenario": "Piszesz podanie, masz dziesięć minut, a nagłówki, akapity i odstępy wyglądają inaczej na każdej stronie. Jak to uporządkować bez przeklikiwania wstążki?",
     "outcome_1": "Sformatujesz pismo, CV lub notatkę za pomocą najczęściej używanych skrótów.",
     "outcome_2": "Zobaczysz graficznie, które klawisze nacisnąć i jaki będzie rezultat.",
-    "outcome_3": "Poznasz wskazówki pozwalające uniknąć przypadkowego formatowania i przyspieszyć pracę.",
-    "source_url": "https://support.microsoft.com/pl-pl/accessibility/word/keyboard-shortcuts-in-word"
+    "outcome_3": "Poznasz wskazówki pozwalające uniknąć przypadkowego formatowania i przyspieszyć pracę."
   },
   "wyjdz-z-toksycznego-zwiazku": {
     "course_slug": "wyjdz-z-toksycznego-zwiazku",
@@ -521,7 +484,6 @@
     "outcome_1": "Odróżnisz konflikt od wzorca kontroli i przemocy.",
     "outcome_2": "Przećwiczysz stawianie granic i szukanie wsparcia bez ryzykownej konfrontacji.",
     "outcome_3": "Ułożysz indywidualny, bezpieczny plan kolejnych kroków.",
-    "source_url": "https://www.gov.pl/web/gov/skorzystaj-z-pomocy-dla-osob-dotknietych-przemoca-w-rodzinie",
     "editorial_note": "Twoje bezpieczeństwo i autonomia są pierwsze. Nie zalecamy konfrontacji z osobą stosującą przemoc bez oceny ryzyka ani nie nakazujemy pozostawania czy odchodzenia. W bezpośrednim zagrożeniu dzwoń 112; w Polsce Niebieska Linia 800 120 002 (całodobowo). Kurs nie zastępuje pomocy prawnej i psychologicznej."
   },
   "kryzys-po-40-bez-dlugow": {
@@ -531,7 +493,6 @@
     "outcome_1": "Policzysz pełny koszt decyzji, a nie tylko pierwszą ratę.",
     "outcome_2": "Rozpoznasz presję porównywania się i impulsywne zakupy.",
     "outcome_3": "Ułożysz bezpieczny plan zmiany na 90 dni.",
-    "source_url": "https://uokik.gov.pl/public/kupie-teraz-zaplace-pozniej-jak-wyprzedaze-zadluzaja-porady-uokik",
     "editorial_note": "Ambicja jest ważna, ale zdrowie i stabilność finansowa mają pierwszeństwo. Nie pożyczaj pod wpływem presji, nie poręczaj zobowiązań bez analizy. Materiał edukacyjny, nie spersonalizowana porada inwestycyjna ani kredytowa."
   },
   "partner-z-uzaleznieniem": {
@@ -541,7 +502,6 @@
     "outcome_1": "Poznasz różnicę między pomocą a przejmowaniem cudzych obowiązków.",
     "outcome_2": "Przećwiczysz spokojną rozmowę i przygotujesz listę instytucji wsparcia.",
     "outcome_3": "Ocenisz swoje opcje, bezpieczeństwo i potrzeby dzieci bez presji pozostania w związku.",
-    "source_url": "https://www.niaaa.nih.gov/publications/brochures-and-fact-sheets/treatment-alcohol-problems-finding-and-getting-help",
     "editorial_note": "Nie obciążamy bliskich winą za uzależnienie drugiej osoby. Bezpieczeństwo dorosłych i dzieci jest ważniejsze niż utrzymanie relacji za wszelką cenę. Odstawianie alkoholu po długim intensywnym piciu może wymagać pomocy medycznej. Kurs nie jest terapią ani instrukcją odstawiania substancji; w niebezpieczeństwie wzywaj służby ratunkowe."
   },
   "nie-marnuj-jedzenia": {
@@ -551,7 +511,6 @@
     "outcome_1": "Odróżnisz datę jakości od terminu bezpieczeństwa żywności.",
     "outcome_2": "Ułożysz trzy proste przepisy z produktów, które już masz.",
     "outcome_3": "Policzysz koszt porcji i ograniczysz przypadkowe zakupy.",
-    "source_url": "https://www.gov.pl/web/gis/najlepiej-spozyc-przed-nalezy-spozyc-do-co-to-oznacza-i-do-kiedy-produkt-moze-znajdowac-sie-w-obrocie",
     "editorial_note": "Oszczędzanie nie może zagrażać zdrowiu. Produktów po terminie „należy spożyć do” nie używaj. W razie nieprawidłowego przechowywania lub oznak zepsucia wyrzuć żywność; nie polegaj wyłącznie na zapachu. Uwzględniaj alergeny i higienę."
   },
   "trawnik-jestem-ogrodnikiem": {
@@ -561,7 +520,6 @@
     "outcome_1": "Rozpoznasz wpływ gleby, cienia i pogody na trawę.",
     "outcome_2": "Ułożysz rozsądny plan koszenia i podlewania dla lokalnych warunków.",
     "outcome_3": "Zdiagnozujesz częste problemy bez kupowania preparatów w ciemno.",
-    "source_url": "https://www.rhs.org.uk/lawns/mowing",
     "editorial_note": "Pielęgnację dopasuj do gatunku trawy, klimatu, gleby, suszy oraz lokalnych ograniczeń wody i środków ochrony roślin. Nie kosimy mokrego ani zamarzniętego trawnika. Chemia nie zastępuje diagnozy; wspieramy bioróżnorodność i zapylacze."
   },
   "ekonomia-domowa-bez-dlugow": {
@@ -571,7 +529,6 @@
     "outcome_1": "Sporządzisz realny budżet z podziałem na konieczne i odraczalne wydatki.",
     "outcome_2": "Porównasz koszt pożyczki, rat i odroczonej płatności.",
     "outcome_3": "Przygotujesz plan awaryjny na gorszy miesiąc i listę źródeł bezpłatnej pomocy.",
-    "source_url": "https://uokik.gov.pl/public/kupie-teraz-zaplace-pozniej-jak-wyprzedaze-zadluzaja-porady-uokik",
     "editorial_note": "Kurs nie oferuje produktów finansowych ani gwarancji wyjścia z zadłużenia. Przed decyzją sprawdzaj pełny koszt kredytu, RRSO i aktualne warunki. W kryzysie warto wcześnie kontaktować się z wierzycielem oraz niezależnym, bezpłatnym doradztwem; nie zaciągaj kolejnego długu bez oceny możliwości spłaty."
   },
   "angielski-na-budowie": {
@@ -581,7 +538,6 @@
     "outcome_1": "Zaczniesz od alfabetu i prostych zdań z wymową oraz przyciskiem odsłuchu.",
     "outcome_2": "Przejdziesz przez zwykły dzień na budowie — od wejścia po uporządkowanie stanowiska.",
     "outcome_3": "Poznasz zasady bezpieczeństwa, podstawowe skróty, oficjalne stawki i miejsca uzyskania pomocy.",
-    "source_url": "https://www.hse.gov.uk/construction/",
     "editorial_note": "Nie zgaduj przy poleceniach bezpieczeństwa. Gdy nie rozumiesz instrukcji, poproś o tłumacza lub ponowne wyjaśnienie; słownik nie zastępuje szkolenia BHP.",
     "history": null,
     "module_titles": [
@@ -606,7 +562,6 @@
     "outcome_1": "Zaczniesz od alfabetu i prostych zdań z wymową oraz przyciskiem odsłuchu.",
     "outcome_2": "Przejdziesz przez zwykły dzień na budowie — od wejścia po uporządkowanie stanowiska.",
     "outcome_3": "Poznasz zasady bezpieczeństwa, podstawowe skróty, oficjalne stawki i miejsca uzyskania pomocy.",
-    "source_url": "https://www.arbeidstilsynet.no/",
     "editorial_note": "W sprawach HMS, SJA, podnoszenia ładunków i pracy na wysokości stosuj aktualne wymagania norweskie; nauka języka nie zastępuje wymaganych kursów.",
     "history": null,
     "module_titles": [
@@ -631,7 +586,6 @@
     "outcome_1": "Zaczniesz od alfabetu i prostych zdań z wymową oraz przyciskiem odsłuchu.",
     "outcome_2": "Przejdziesz przez zwykły dzień na budowie — od wejścia po uporządkowanie stanowiska.",
     "outcome_3": "Poznasz zasady bezpieczeństwa, podstawowe skróty, oficjalne stawki i miejsca uzyskania pomocy.",
-    "source_url": "https://www.bgbau.de/",
     "editorial_note": "Niemieckie zasady BHP i wymagania do pracy mogą różnić się od polskich; tłumaczenie polecenia nie jest dowodem uprawnienia.",
     "history": null,
     "module_titles": [
@@ -656,7 +610,6 @@
     "outcome_1": "Przećwiczysz: jak poznać prawdziwą trudność.",
     "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: pomagaj bez podawania odpowiedzi.",
     "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
-    "source_url": "https://www.unicef.org/parenting/child-care/9-tips-for-better-communication",
     "editorial_note": "Nie wykonuj zadań za dziecko, nie zawstydzaj go i nie uzależniaj miłości od ocen. Stosuj wymagania szkolne odpowiednie do wieku i potrzeb, szczególnie przy ADHD lub trudnościach w nauce.",
     "history": null
   },
@@ -667,7 +620,6 @@
     "outcome_1": "Przećwiczysz: szybka zmiana aplikacji.",
     "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: ustawienia i wyszukiwanie.",
     "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
-    "source_url": "https://support.microsoft.com/pl-pl/windows/skróty-klawiaturowe-w-systemie-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec",
     "editorial_note": "Skróty zależą od wersji systemu i ustawień klawiatury. Pokazujemy Windows 11 na standardowym układzie; nie udostępniaj poufnych zrzutów ani zawartości schowka.",
     "history": null
   },
@@ -678,7 +630,6 @@
     "outcome_1": "Przećwiczysz: rodzaje transportu.",
     "outcome_2": "Nauczysz się stosować wiedzę w sytuacjach: dokumenty przewozowe.",
     "outcome_3": "Zaplanujesz własne ćwiczenie i sprawdzisz, kiedy potrzebna jest pomoc specjalisty lub instruktora.",
-    "source_url": "https://pisil.pl/jesien-2026-kurs-spedycyjny-on-line/",
     "editorial_note": "Nie obiecujemy uprawnień przewoźnika ani certyfikatu kompetencji zawodowych. Przy transporcie i zabezpieczaniu ładunku przestrzegaj prawa, mas, ograniczeń, dokumentów i wymogów przewozu towarów niebezpiecznych.",
     "history": null
   },
@@ -689,14 +640,12 @@
     "outcome_1": "Rozpoznasz zastosowanie młotków, kleszczy, przebijaków, dziurownic, przecinaków, żłobników, odsadzaka i gładzika; poznasz ich konserwację.",
     "outcome_2": "Zrozumiesz rysunek techniczny, stal i łączenia; zaplanujesz wydłużanie, spęcznianie, gięcie, przebijanie i kontrolę odkuwki.",
     "outcome_3": "Zaprojektujesz teoretycznie komplet okuć, nauczysz się oceniać naprawy bryczek i podstawy podkuwnictwa pod nadzorem fachowca.",
-    "source_url": "https://infozawodowe.men.gov.pl/zawody/kowal",
     "editorial_note": "Program ma 30 lekcji w trzech działach. Nie stanowi uprawnień zawodowych ani instrukcji samodzielnej pracy z gorącym metalem, maszynami czy żywymi końmi. Wymaga recenzji eksperta przed zatwierdzeniem.",
     "history": {
       "teaching_status": "MEN 2026",
       "last_verified_year": 2026,
       "ended_year": null,
-      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
-      "source_url": "https://infozawodowe.men.gov.pl/zawody/kowal"
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole."
     },
     "review_status": "review_needed",
     "module_titles": [
@@ -739,14 +688,12 @@
     "outcome_1": "Piec kaflowy łączy elementy ceramiczne, materiały ogniotrwałe i spoiwa odporne na temperaturę.",
     "outcome_2": "Projekt uwzględnia moc urządzenia, przewody dymowe, wentylację, odległości od materiałów palnych i odbiór przez uprawnione osoby zgodnie z przepisami.",
     "outcome_3": "Na przekroju pieca oznacz strefę spalania, kanał dymowy, materiał ogniotrwały, kafle i miejsce wymagające dylatacji.",
-    "source_url": "https://infozawodowe.men.gov.pl/zawody/zdun",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "MEN 2026",
       "last_verified_year": 2026,
       "ended_year": null,
-      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
-      "source_url": "https://infozawodowe.men.gov.pl/zawody/zdun"
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole."
     }
   },
   "kolodziej": {
@@ -756,14 +703,12 @@
     "outcome_1": "Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą.",
     "outcome_2": "Konstrukcja musi pozostać osiowa, a połączenia wolne od nadmiernych luzów.",
     "outcome_3": "Narysuj koło z podpisaną piastą, szprychą, dzwonem i obręczą. Strzałkami zaznacz drogę sił od osi do podłoża.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "bednarz": {
@@ -773,14 +718,12 @@
     "outcome_1": "Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek.",
     "outcome_2": "Dno, kształt klepek, wręga i obręcze muszą współpracować.",
     "outcome_3": "Porównaj trzy próbki deski: prostosłojną, sękatą i z pęknięciem. Zaznacz, która nadaje się na klepkę, i uzasadnij wybór.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "woznica": {
@@ -790,14 +733,12 @@
     "outcome_1": "W tradycyjnym pojeździe współpracują drewno, metal i skóra.",
     "outcome_2": "Przed przejazdem doświadczony woźnica ocenia stan pojazdu i zgodność uprzęży z koniem, warunki trasy, zachowanie zwierzęcia i sposób komunikacji z pomocnikiem.",
     "outcome_3": "Oznacz na rysunku koło, piastę, dyszel, pas uprzęży i lejce. Wskaż trzy punkty kontroli przed hipotetycznym przejazdem.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "rymarz": {
@@ -807,14 +748,12 @@
     "outcome_1": "W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem.",
     "outcome_2": "Szycie, mocowanie sprzączek i dobór długości pasów wymagają dopasowania do konkretnego zwierzęcia i użycia.",
     "outcome_3": "Narysuj pas uprzęży z otworami i sprzączką; wskaż strefę największego obciążenia i dwie potencjalne przyczyny otarcia.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "garncarz-tradycja": {
@@ -824,14 +763,12 @@
     "outcome_1": "Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się.",
     "outcome_2": "O jakości decydują właściwe odpowietrzenie masy, grubość ścianek, równomierne suszenie i program wypału dopasowany do gliny i szkliwa.",
     "outcome_3": "Wyjaśnij na rysunku różnicę między surową gliną, wysuszonym czerepem i gotowym szkliwionym naczyniem. Wskaż moment występowania skurczu.",
-    "source_url": "https://garncarnia.pl/oferta/szkola-garncarska/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "warsztaty 2026",
       "last_verified_year": 2026,
       "ended_year": null,
-      "note": "Potwierdzone warsztaty w 2026, zatem zawód nie przestał być nauczany. Brak daty zakończenia.",
-      "source_url": "https://garncarnia.pl/oferta/szkola-garncarska/"
+      "note": "Potwierdzone warsztaty w 2026, zatem zawód nie przestał być nauczany. Brak daty zakończenia."
     }
   },
   "plecionkarz": {
@@ -841,14 +778,12 @@
     "outcome_1": "Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością.",
     "outcome_2": "Kosz ma osnowę, splot i obrzeże.",
     "outcome_3": "Porównaj trzy pędy: suchy, prawidłowo elastyczny i nadmiernie namoczony. Opisz ryzyko dla ich obróbki i trwałości.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "powroznik": {
@@ -858,14 +793,12 @@
     "outcome_1": "Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi.",
     "outcome_2": "Na jakość wpływają równomierny naciąg, liczba pasm, ich skręt, połączenia i staranne zakończenie końców.",
     "outcome_3": "Skręć na sucho papierowe paski w dwa kierunki i opisz, dlaczego w tradycyjnej linie ważna jest równowaga skrętów. Nie obciążaj takiego modelu.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "snycerz": {
@@ -875,14 +808,12 @@
     "outcome_1": "Lipa zwykle jest miękka i łatwa w obróbce szczegółów, natomiast dąb ma wyraźniejszy rysunek słojów i większy opór podczas cięcia.",
     "outcome_2": "Rzeźba powstaje od szkicu przez blokowanie bryły do detalu i wykończenia.",
     "outcome_3": "Porównaj rysunek słojów na dwóch deskach i wskaż kierunek, w którym dłuto może łatwiej wyrwać włókna.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "sitarz": {
@@ -892,14 +823,12 @@
     "outcome_1": "Rama może być drewniana lub metalowa, a materiał siatki dobiera się do cząstek i warunków pracy.",
     "outcome_2": "Sito powinno mieć jednakową wielkość oczek, odpowiedni naciąg siatki i trwałe mocowanie do ramy.",
     "outcome_3": "Na schemacie pokaż trzy wielkości oczek i narysuj, które ziarna przejdą przez każdą z nich.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "zecer": {
@@ -909,14 +838,12 @@
     "outcome_1": "Tradycyjna czcionka drukarska mogła zawierać stop ołowiu z dodatkami antymonu i cyny.",
     "outcome_2": "Zecer układa znaki w wiersze i kolumny, stosuje odstępniki i kontroluje odbitkę próbną.",
     "outcome_3": "Ułóż z papierowych prostokątów wiersz tytułu, podtytułu i tekstu. Ustal hierarchię wielkości i odległości między znakami.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "ludwisarz": {
@@ -926,14 +853,12 @@
     "outcome_1": "Brąz dzwonowy to stop miedzi i cyny.",
     "outcome_2": "Projekt obejmuje profil ściany, model, rdzeń, formę, zasilanie odlewu, chłodzenie i strojenie.",
     "outcome_3": "Narysuj przekrój modelu dzwonu: forma zewnętrzna, rdzeń, wnęka na ciekły metal. Zaznacz, gdzie może powstać wada skurczowa.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "introligator-tradycja": {
@@ -943,14 +868,12 @@
     "outcome_1": "Papier ma kierunek włókien wpływający na jego zginanie i falowanie.",
     "outcome_2": "Blok książki, grzbiet, wyklejka, okładka i kapitałka pełnią inne funkcje.",
     "outcome_3": "Zaznacz kierunek włókien na dwóch arkuszach i zaprojektuj układ warstw okładki, który ograniczy falowanie.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "tkacz-reczny": {
@@ -960,14 +883,12 @@
     "outcome_1": "Osnowa to naprężone nitki biegnące wzdłuż tkaniny, a wątek przeplata się przez nie.",
     "outcome_2": "Przed rozpoczęciem dobiera się długość osnowy z zapasem na straty i skurcz, a następnie kontroluje równe naprężenie.",
     "outcome_3": "Narysuj splot płócienny: cztery pionowe nitki osnowy i cztery poziome wątku. Zaznacz przejścia nad i pod.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "kaletnik-tradycja": {
@@ -977,14 +898,12 @@
     "outcome_1": "Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości.",
     "outcome_2": "Kaletnik projektuje wykroje z uwzględnieniem kierunku rozciągliwości, zapasu na szew, krawędzi i obciążenia okuć.",
     "outcome_3": "Rozpisz przekrój portfela: warstwa zewnętrzna, kieszenie, szew, krawędź i okucia. Określ, które miejsca pracują na zginanie.",
-    "source_url": "https://infozawodowe.men.gov.pl/zawody/kaletnik",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "MEN 2026",
       "last_verified_year": 2026,
       "ended_year": null,
-      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole.",
-      "source_url": "https://infozawodowe.men.gov.pl/zawody/kaletnik"
+      "note": "Zawód figuruje w materiałach MEN lub ma opis kwalifikacji. Brak potwierdzonej daty zakończenia nauczania; sam katalog nie dowodzi naboru w konkretnej szkole."
     }
   },
   "zegarmistrz-tradycja": {
@@ -994,14 +913,12 @@
     "outcome_1": "W mechanizmie często stosuje się mosiężne koła zębate, stalowe wałki i sprężyny oraz syntetyczne kamienie łożyskowe ograniczające zużycie.",
     "outcome_2": "Naprawa rozpoczyna się od udokumentowania stanu, bezpiecznego rozładowania energii sprężyny przez fachowca, czyszczenia, oceny luzów i właściwego montażu.",
     "outcome_3": "Narysuj trzy połączone koła zębate i wskaż przekazywanie ruchu oraz dwa miejsca, w których tarcie może zatrzymać mechanizm.",
-    "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "MEN — opublikowany dokument kwalifikacji zegarmistrza, rok formalnego zakończenia nieustalony",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Dokument edukacyjny MEN opisuje zawód i kwalifikację zegarmistrza, ale nie potwierdza aktywnego naboru w konkretnej szkole w 2026 roku ani daty zakończenia kształcenia.",
-      "source_url": "https://infozawodowe.men.gov.pl/uploads/pdf/323c01439be31a151ffb084f02ff541b.pdf"
+      "note": "Dokument edukacyjny MEN opisuje zawód i kwalifikację zegarmistrza, ale nie potwierdza aktywnego naboru w konkretnej szkole w 2026 roku ani daty zakończenia kształcenia."
     }
   },
   "mlynarz-tradycyjny": {
@@ -1011,14 +928,12 @@
     "outcome_1": "Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania.",
     "outcome_2": "Proces obejmuje przyjęcie, czyszczenie, kondycjonowanie zależnie od technologii, rozdrabnianie, odsiew i pakowanie.",
     "outcome_3": "Ułóż schemat: ziarno — czyszczenie — mielenie — przesiewanie — mąka. Zaznacz punkty kontroli jakości i zagrożenia pyłowe.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "gontarz": {
@@ -1028,14 +943,12 @@
     "outcome_1": "Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów.",
     "outcome_2": "Na dachu znaczenie mają zakład, nachylenie połaci, wentylacja i elementy mocujące zgodne z projektem i lokalnymi wymogami.",
     "outcome_3": "Porównaj na schemacie gont z włóknami biegnącymi wzdłuż elementu oraz przeciętymi poprzecznie. Zaznacz drogę spływu wody.",
-    "source_url": "https://zrp.pl/o-nas/historia/",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "brak potwierdzonego jednolitego roku zakończenia",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia.",
-      "source_url": "https://zrp.pl/o-nas/historia/"
+      "note": "Nie można wiarygodnie podać ostatniego roku nauki w całej Polsce. Umiejętności bywały przekazywane w cechach i warsztatach; brak daty nie oznacza wymarcia."
     }
   },
   "szewc-tradycja": {
@@ -1045,14 +958,12 @@
     "outcome_1": "Cholewki mogą być skórzane, tekstylne lub syntetyczne, a podeszwy gumowe lub z tworzyw o różnych właściwościach.",
     "outcome_2": "Ocenia się stan cholewki, połączenia z podeszwą, stabilność obcasa i zużycie bieżnika.",
     "outcome_3": "Narysuj but z podpisanymi elementami i zaznacz strefy zginania, ścierania i miejscowe połączenia klejone.",
-    "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc",
     "editorial_note": "To kurs poznawczy i historyczny, nie daje uprawnień zawodowych. Samodzielnej pracy z gorącym metalem, piecami, maszynami, narzędziami, zwierzętami lub na wysokości nie rozpoczynaj bez fachowego nadzoru, wymaganych szkoleń i środków ochrony.",
     "history": {
       "teaching_status": "MEN — profil orientacji zawodowej szewca, brak potwierdzenia aktualnego naboru",
       "last_verified_year": null,
       "ended_year": null,
-      "note": "Profil w portalu MEN opisuje zawód szewca; nie jest dowodem prowadzenia konkretnej szkoły i nie daje podstaw do datowania końca nauczania.",
-      "source_url": "https://infozawodowe.men.gov.pl/zawody/szewc"
+      "note": "Profil w portalu MEN opisuje zawód szewca; nie jest dowodem prowadzenia konkretnej szkoły i nie daje podstaw do datowania końca nauczania."
     }
   }
 }

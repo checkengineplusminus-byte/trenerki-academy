@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,Image,Pressable,Linking,Platform} from 'react-native';
+import {View,Text,Image,Pressable,Platform} from 'react-native';
 
 type Phrase={target:string;polish:string;approx?:string;tip?:string};
 type Sound={symbol:string;how:string;example:string};
@@ -64,11 +64,6 @@ export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:
  const shift=quiz?.options?.length?lessonIndex%quiz.options.length:0;
  const shuffled=(quiz?.options||[]).map((_,i)=>({answer:quiz.options[(i+shift)%quiz.options.length],original:(i+shift)%quiz.options.length}));
  const choiceCorrect=selected!==null&&shuffled[selected]?.original===quiz.correct&&confirmed;
- const officialGov=(lesson.official||[]).filter(x=>{
-  try{const address=new URL(x.url);return address.protocol==='https:'&&
-   ['gov.uk','arbeidstilsynet.no','bmas.de','baua.de'].some(d=>address.hostname===d||address.hostname.endsWith('.'+d));}
-  catch{return false}
- });
  const picture='/academy/illustrations/'+(['wejscie','bezpieczenstwo','narzedzia','placa','zgloszenie','koniec'].includes(lesson.scene)?lesson.scene:'wejscie')+'.svg';
  return <View style={{gap:17}}>
   <View style={{backgroundColor:'#e9f2e2',borderRadius:18,overflow:'hidden',borderWidth:1,borderColor:'#d5e8ce'}}>
@@ -153,14 +148,6 @@ export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:
     <Text style={{color:ink,fontWeight:'900'}}>{choiceCorrect?'Wynik zapisany — możesz przejść dalej.':selected!==null&&shuffled[selected]?.original===quiz.correct?'To prawidłowy wybór. Zapisuję wynik…':'Spróbuj jeszcze raz. To ważne.'}</Text>
     <Text style={{color:'#4e5f4d',marginTop:5,lineHeight:21}}>{quiz.why}</Text>
    </View>}
-  </View>}
-  {!!officialGov.length&&<View style={{...sec,backgroundColor:cream}}>
-   <Text style={{fontWeight:'900',fontSize:21,color:ink}}>Gdzie sprawdzić to w urzędzie?</Text>
-   <Text style={{fontSize:13,color:secondary}}>Otworzysz oficjalną stronę danego kraju. Stawki i przepisy mogą się zmienić.</Text>
-   {officialGov.map((o,i)=><Pressable key={i} onPress={()=>Linking.openURL(o.url)} accessibilityRole="link" style={{borderWidth:1,borderColor:'#d5e4d0',borderRadius:12,padding:14,gap:5,backgroundColor:'white'}}>
-    <Text style={{fontWeight:'900',color:'#285c42'}}>{o.title}</Text>
-    {!!o.note&&<Text style={{fontSize:13,color:secondary,lineHeight:21}}>{o.note}</Text>}
-   </Pressable>)}
   </View>}
   {!!lesson.takeaway&&<Text style={{fontSize:14,color:secondary,fontWeight:'700',lineHeight:22,padding:9}}>{lesson.takeaway}</Text>}
  </View>;

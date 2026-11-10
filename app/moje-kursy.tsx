@@ -29,7 +29,7 @@ export default function MyCourses(){
     for(const row of lessons||[])counts.set(row.course_slug,(counts.get(row.course_slug)||0)+1);
    }
    const {data:diplomas,error:de}=await supabase.from('ta_certificates')
-     .select('course_slug,certificate_no,is_demo,issued_at').eq('user_id',user.id).is('revoked_at',null);
+     .select('course_slug,certificate_no,is_demo,issued_at').eq('user_id',user.id).is('revoked_at',null).order('is_demo',{ascending:false});
    if(de)throw de;
    setCertificates(Object.fromEntries((diplomas||[]).map(d=>[d.course_slug,d as Diploma])));
    setItems(enrolled.map(row=>{

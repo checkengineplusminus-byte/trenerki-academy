@@ -8,6 +8,7 @@ import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import GuidedDialogue from '../src/GuidedDialogue';
 import CarpentryPracticeLab,{hasCarpentryLab} from '../src/CarpentryPracticeLab';
 import CourseIntro from '../src/CourseIntro';
+import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
 import EcoAtlas from '../src/EcoAtlas';
 import FinalExam from '../src/FinalExam';
@@ -18,7 +19,7 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
+ material:{study_project?:StudyProject,practice?:{diagram?:string[]},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
@@ -81,6 +82,7 @@ export default function Learning(){
   }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
   finally{if(active)setBusy(false);}
  })();return()=>{active=false};},[slug]);
+ const study=items[0]?.material.study_project;
  const lesson=items.find(x=>x.lesson_no===module),index=items.findIndex(x=>x.lesson_no===module);
  const completed=items.filter(x=>done.includes(x.lesson_no)).length;
  const progress=items.length?Math.round(completed/items.length*100):0;
@@ -194,6 +196,7 @@ export default function Learning(){
      </View>;
     })}
    </View>}
+   {!!study&&<CourseStudyPlan key={slug} project={study}/>}
    <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
     style={{backgroundColor:'#f1f6ed',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#d6e7d0',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
@@ -248,7 +251,7 @@ export default function Learning(){
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
      sections={index===0&&hasSoftwareOrientation(slug)?lesson.material?.sections?.slice(1):lesson.material?.sections} illustration={lesson.material?.illustration}
-     situation={lesson.material?.learning?.situation} example={lesson.material?.learning?.example}
+     situation={lesson.material?.learning?.situation} example={lesson.material?.learning?.example} diagram={lesson.material.practice?.diagram}
     />}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>

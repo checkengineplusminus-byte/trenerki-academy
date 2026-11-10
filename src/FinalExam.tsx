@@ -8,7 +8,7 @@ type History={question:string;answer:string;correct:boolean;feedback:string};
 type Session={id?:string;phase?:string;step:number;correct:number;wrong:number;question:string;history:History[];holder_name:string;is_demo:boolean;grading_mode?:'oral'|'choice';options?:string[]};
 type Api={ok?:boolean;state?:'ready'|'not_ready'|'in_progress'|'passed'|'failed';available?:boolean;
  completed?:number;total?:number;session?:Session|null;certificate?:Cert;
- question?:string;phase?:string;correct?:number;wrong?:number;feedback?:string;
+ session_id?:string;step?:number;question?:string;phase?:string;correct?:number;wrong?:number;feedback?:string;
  answer_correct?:boolean;announcement?:string;message?:string;error?:string;grading_mode?:'oral'|'choice';options?:string[];fallback_available?:boolean};
 const ink='#173e2d';
 const mapError=(code:string)=>({
@@ -28,6 +28,7 @@ const mapError=(code:string)=>({
 export default function FinalExam({courseSlug}:{courseSlug:string}){
  const router=useRouter();
  const [loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[state,setState]=useState('ready');
+ const [attempt,setAttempt]=useState<{id:string;step:number}|null>(null);
  const [available,setAvailable]=useState(false),[name,setName]=useState('');
  const [answer,setAnswer]=useState(''),[question,setQuestion]=useState(''),[phase,setPhase]=useState('practice');
  const [correct,setCorrect]=useState(0),[wrong,setWrong]=useState(0),[history,setHistory]=useState<History[]>([]);
@@ -35,7 +36,13 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const [gradingMode,setGradingMode]=useState<'oral'|'choice'>('oral'),[options,setOptions]=useState<string[]>([]),[selectedOption,setSelectedOption]=useState<number|null>(null);
  const call=async(action:'status'|'start'|'answer'|'switch_mode',fields:Record<string,unknown>={})=>{
   const {data,error:e}=await supabase.functions.invoke<Api>('ta-exam',{body:{action,course_slug:courseSlug,...fields}});
-  if(e||!data)throw new Error((data?.error&&mapError(data.error))||mapError('unavailable'));
+  if(e||!data){
+   let code=data?.error;
+   if(!code&&typeof e?.context?.json==='function'){
+    try{code=(await e.context.json()).error;}catch{}
+   }
+   throw new Error(mapError(code||'unavailable'));
+  }
   if(data.error)throw new Error(mapError(data.error));
   return data;
  };
@@ -44,10 +51,11 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
   if(r.available!==undefined)setAvailable(r.available);
   if(r.certificate)setCert(r.certificate);
   if(r.session){
-   const s=r.session;setQuestion(s.question);setPhase(s.phase||'practice');setCorrect(s.correct);
+   const s=r.session;if(s.id)setAttempt({id:s.id,step:s.step});setQuestion(s.question);setPhase(s.phase||'practice');setCorrect(s.correct);
    setWrong(s.wrong);setHistory(s.history||[]);setName(s.holder_name||'');
    setGradingMode(s.grading_mode||'oral');setOptions(s.options||[]);setSelectedOption(null);
   }else if(r.question){
+   if(r.session_id&&r.step!==undefined)setAttempt({id:r.session_id,step:r.step});
    setQuestion(r.question);setPhase(r.phase||'practice');setCorrect(r.correct||0);setWrong(r.wrong||0);
    setGradingMode(r.grading_mode||'oral');setOptions(r.options||[]);setSelectedOption(null);
   }
@@ -78,7 +86,8 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
   setBusy(true);setError('');setMessage('');
   const sent=gradingMode==='choice'?(options[selectedOption??0]||''):answer.trim();
   try{
-   const r=await call('answer',gradingMode==='choice'?{selected_index:selectedOption}:{answer:sent});
+   const fields=gradingMode==='choice'?{selected_index:selectedOption}:{answer:sent};
+   const r=await call('answer',{...fields,...(attempt?{session_id:attempt.id,step:attempt.step}:{})});
    setHistory(old=>[...old,{question,answer:sent,correct:!!r.answer_correct,feedback:r.feedback||''}]);
    setAnswer('');setSelectedOption(null);apply(r);
   }catch(e:any){setError(e.message||'Odpowiedź nie została oceniona.');}
@@ -104,7 +113,6 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
     <Text style={{fontWeight:'900',color:ink}}>Imię i nazwisko na dyplomie</Text>
     <TextInput value={name} maxLength={120} onChangeText={setName} placeholder="Imię i nazwisko" style={{backgroundColor:'white',color:ink,borderColor:'#b8d3b7',borderWidth:1,borderRadius:11,padding:13,fontSize:16}}/>
     <Text style={{fontSize:12,color:'#647b69',lineHeight:20}}>Dane na dokumencie są deklarowane przez użytkownika; nie stanowią potwierdzenia tożsamości.</Text>
->
     {button('Rozpocznij egzamin',start,busy||name.trim().length<3)}
    </>}
   </View>}

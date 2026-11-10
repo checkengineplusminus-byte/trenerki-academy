@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+  <title id="title">Funkcje warstw ściany szkieletowej</title>
+  <desc id="desc">Przekrój koncepcyjny od okładziny zewnętrznej przez przestrzeń odwadniającą, ochronę przeciwwiatrową i izolację cieplną do warstwy powietrznoszczelnej.</desc>
+  <rect width="960" height="540" rx="18" fill="#f4f8ef"/>
+  <g font-family="system-ui,sans-serif" fill="#173b2b">
+    <text x="44" y="61" font-size="32" font-weight="700">Przekrój ściany · co robi każda warstwa</text>
+    <text x="44" y="98" font-size="17">Schemat funkcji. Dokładny układ i materiały wynikają z projektu.</text>
+    <text x="55" y="148" font-size="17" font-weight="700">ZEWNĄTRZ</text>
+    <text x="383" y="148" font-size="17" font-weight="700">WNĘTRZE</text>
+    <rect x="75" y="172" width="30" height="262" rx="4" fill="#aa7750"/>
+    <rect x="106" y="172" width="49" height="262" fill="#dceef1"/>
+    <rect x="157" y="172" width="9" height="262" fill="#3d7a78"/>
+    <rect x="169" y="172" width="216" height="262" fill="#f2deb0" stroke="#ae8e46" stroke-width="2"/>
+    <path d="M174 192l203 38-203 38 203 38-203 38 203 38-203 38" fill="none" stroke="#c59d47" stroke-width="3"/>
+    <rect x="388" y="172" width="8" height="262" fill="#a04d42"/>
+    <rect x="402" y="172" width="28" height="262" fill="#dedfd6"/>
+    <path d="M130 193v214m-8-12 8 12 8-12" stroke="#306885" fill="none" stroke-width="3"/>
+    <g font-size="19">
+      <path d="M90 182h392M130 231h352M162 281h320M279 329h203M391 384h91" stroke="#687c67" stroke-width="1.4" stroke-dasharray="5 5"/>
+      <text x="498" y="187">01 · Okładzina zewnętrzna</text>
+      <text x="498" y="236">02 · Droga odprowadzenia wody</text>
+      <text x="498" y="286">03 · Ochrona przeciwwiatrowa</text>
+      <text x="498" y="334">04 · Izolacja cieplna między elementami</text>
+      <text x="498" y="389">05 · Warstwa powietrznoszczelna</text>
+    </g>
+    <text x="55" y="490" font-size="17" font-weight="700">Przy narożach, oknach i przepustach prześledź każdą funkcję oddzielnie.</text>
+  </g>
+</svg>

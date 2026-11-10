@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title">
+  <title id="title">Przydział pracy w warsztacie · zakres, przygotowanie, bezpieczeństwo</title>
+  <rect width="960" height="540" rx="18" fill="#f4f8ef"/>
+  <g font-family="system-ui,sans-serif" fill="#173b2b">
+    <text x="48" y="65" font-size="32" font-weight="700">Zanim przydzielisz zadanie</text>
+    <text x="48" y="102" font-size="17">Ocena zależy od zakresu pracy, osoby i zasad obowiązujących na stanowisku.</text>
+    <path d="M85 160v289" stroke="#b5cbb4" stroke-width="4"/>
+    <g fill="#fff" stroke="#cddcc9">
+      <rect x="127" y="142" width="785" height="95" rx="13"/>
+      <rect x="127" y="258" width="785" height="95" rx="13"/>
+      <rect x="127" y="374" width="785" height="95" rx="13"/>
+    </g>
+    <g fill="#315d48">
+      <circle cx="85" cy="190" r="23"/><circle cx="85" cy="306" r="23"/><circle cx="85" cy="422" r="23"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-size="18" font-weight="700">
+      <text x="85" y="196">1</text><text x="85" y="312">2</text><text x="85" y="428">3</text>
+    </g>
+    <g font-size="19" font-weight="700">
+      <text x="150" y="178">Zakres i warunki pracy</text>
+      <text x="150" y="294">Instruktaż, ograniczenia i nadzór</text>
+      <text x="150" y="410">Sprawdzenie przed startem</text>
+    </g>
+    <g font-size="16">
+      <text x="150" y="207">Ustal czynność, formę zatrudnienia i kto odpowiada za zadanie.</text>
+      <text x="150" y="323">W przypadku osoby młodocianej zweryfikuj wymagania dla tej czynności.</text>
+      <text x="150" y="439">Przy braku potwierdzenia odłóż przydział i wyjaśnij warunki z odpowiedzialną osobą.</text>
+    </g>
+  </g>
+</svg>
