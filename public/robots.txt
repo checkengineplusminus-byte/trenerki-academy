@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /firma
+Disallow: /staff
 Disallow: /konto
 Disallow: /kup
 Disallow: /moje-kursy

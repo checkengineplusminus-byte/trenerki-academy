@@ -5,6 +5,11 @@ on:
     paths:
       - '.github/workflows/browser-smoke.yml'
       - 'scripts/browser-smoke.mjs'
+      - 'scripts/seo-structure-test.mjs'
+      - 'public/academy/kursy/**'
+      - 'public/academy/kategorie/**'
+      - 'public/sitemap.xml'
+      - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
       - 'app/nauka.tsx'
       - 'src/**'
@@ -37,6 +42,7 @@ jobs:
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2
           node scripts/browser-smoke.mjs http://127.0.0.1:8787
+          node scripts/seo-structure-test.mjs /tmp/trenerki-browser
           node scripts/learning-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()
