@@ -31,6 +31,22 @@ Deno.serve(async request=>{
  if(adminError)return send({error:'admin_verification_failed'},503);
  if(!['owner','admin'].includes(admin?.role||''))return send({error:'admin_only'},403);
  let body:any;try{body=await request.json()}catch{return send({error:'invalid_json'},400)}
+ if(body?.action==='set_discount'){
+  if(admin.role!=='owner')return send({error:'owner_only'},403);
+  const day=String(body?.day||''),percent=Number(body?.percent);
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isInteger(percent)||percent<0||percent>80)
+   return send({error:'invalid_discount'},400);
+  const parsed=new Date(day+'T12:00:00Z');
+  if(Number.isNaN(parsed.getTime())||parsed.toISOString().slice(0,10)!==day)
+   return send({error:'invalid_discount'},400);
+  const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  if(day<today)return send({error:'past_discount_date'},400);
+  const {data:saved,error:saveError}=await db.from('ta_daily_discounts')
+   .upsert({day,percent,created_by:user.id,updated_at:new Date().toISOString()},{onConflict:'day'})
+   .select('day,percent').single();
+  if(saveError){console.error('discount_save_failed',saveError.code);return send({error:'discount_save_failed'},503);}
+  return send({ok:true,discount:saved});
+ }
  if(body?.action!=='issue')return send({error:'invalid_action'},400);
  const slugs=body?.course_slugs;
  if(!Array.isArray(slugs)||slugs.length<1||slugs.length>10||!slugs.every((s:any)=>typeof s==='string'&&validSlug(s)))
