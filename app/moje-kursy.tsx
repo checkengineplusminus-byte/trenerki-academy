@@ -8,13 +8,16 @@ type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at
 export default function MyCourses(){
  const {width}=useWindowDimensions(),columns=width>=1120?5:width>=850?4:width>=640?3:2,availableWidth=Math.min(width,1150)-40,cardWidth=Math.max(130,Math.floor((availableWidth-(columns-1)*12)/columns));
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
- const router=useRouter(),[certificates,setCertificates]=useState<Record<string,Diploma>>({}),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
+ const router=useRouter(),[creditBalance,setCreditBalance]=useState(0),[creditHistory,setCreditHistory]=useState<any[]>([]),[showCreditHistory,setShowCreditHistory]=useState(false),[certificates,setCertificates]=useState<Record<string,Diploma>>({}),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
  useEffect(()=>{void load()},[]);
  async function load(){
   setBusy(true);
   try{
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.replace('/konto');return;}
+   void supabase.functions.invoke('ta-credit',{body:{action:'balance'}}).then(({data,error})=>{
+    if(!error&&data?.ok){setCreditBalance(Number(data.balance_grosze||0));setCreditHistory(data.history||[])}
+   }).catch(()=>{});
    void academyAction('whoami').then(info=>setAdmin(!!info.is_admin)).catch(()=>setAdmin(false));
    const [{data:rows,error:e},{data:passed,error:p}]=await Promise.all([
      supabase.from('ta_enrollments').select('course_slug,expires_at,status,ta_courses(title_pl)').eq('user_id',user.id),
@@ -81,6 +84,18 @@ export default function MyCourses(){
   <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800',marginBottom:15}}>← Katalog kursów</Text></Pressable>
   <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228',marginBottom:7}}>Moje kursy</Text>
   <Text style={{color:'#5c7460',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
+  <View style={{backgroundColor:'#e8f3dc',padding:16,borderRadius:13,gap:10,marginVertical:12}}>
+   <Text style={{color:'#56725c',fontWeight:'700',fontSize:12}}>Saldo kart podarunkowych</Text>
+   <Text style={{fontSize:29,color:'#173228',fontWeight:'900'}}>{(creditBalance/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})} zł</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:12}}>
+    <Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#173228',borderRadius:10,padding:11}}><Text style={{color:'white',fontWeight:'800'}}>Odbierz kartę / wpisz kod</Text></Pressable>
+    {!!creditHistory.length&&<Pressable onPress={()=>setShowCreditHistory(v=>!v)} style={{padding:9}}><Text style={{color:'#356d43',fontWeight:'800'}}>{showCreditHistory?'Ukryj historię':'Historia salda'}</Text></Pressable>}
+   </View>
+   {showCreditHistory&&creditHistory.slice(0,10).map((h:any,i:number)=><View key={String(i)} style={{borderTopWidth:1,borderColor:'#cfdfc6',paddingVertical:7,gap:3}}>
+    <Text style={{color:'#173228',fontSize:12,fontWeight:'700'}}>{h.kind==='redeemed_card'?'Doładowanie karty':h.kind==='paid_course'?'Zakup kursu':h.kind==='refunded_course'?'Zwrot za kurs':'Operacja na saldzie'} · {(Number(h.amount_grosze)/100).toLocaleString('pl-PL',{minimumFractionDigits:2})} zł</Text>
+    <Text style={{color:'#667d6b',fontSize:11}}>{new Date(h.created_at).toLocaleDateString('pl-PL')}</Text>
+   </View>)}
+  </View>
   {!busy&&<View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginBottom:18}}>
    <Text style={{backgroundColor:'#edf5e9',borderRadius:9,padding:10,color:'#173228',fontSize:12,fontWeight:'800'}}>Kursy: {items.length}</Text>
    <Text style={{backgroundColor:'#edf5e9',borderRadius:9,padding:10,color:'#173228',fontSize:12,fontWeight:'800'}}>Zaliczone lekcje: {items.reduce((sum,row)=>sum+row.completedCount,0)}</Text>
