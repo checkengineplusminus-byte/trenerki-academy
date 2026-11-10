@@ -143,9 +143,6 @@ export default function AccountPage(){
    <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{gift?'Odbierz prezent →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
-   {isAdmin&&<Pressable onPress={()=>router.push('/admin')} accessibilityRole="button" style={{backgroundColor:'#e1f1d7',borderRadius:10,borderWidth:1,borderColor:'#b3d4b0',padding:14,alignItems:'center',marginTop:10}}>
-     <Text style={{color:ink,fontWeight:'900'}}>Panel administratora TRENERKI →</Text>
-   </Pressable>}
    <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
    </Pressable>
@@ -168,6 +165,7 @@ export default function AccountPage(){
    <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
   </View>
  </View>
+ {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:15}}><Text style={{color:'#718779',fontSize:11}}>Staff</Text></Pressable>}
  <Text style={{fontSize:12,color:'#708778',marginTop:14}}>Rejestracja jest bezpłatna. Dostęp do płatnego kursu jest nadawany dopiero po potwierdzeniu zapłaty Stripe i obowiązuje przez 12 miesięcy. Darmowy kurs można odebrać po zalogowaniu.</Text>
  </View></ScrollView>
 }
