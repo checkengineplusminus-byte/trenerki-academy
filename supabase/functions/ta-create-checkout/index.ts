@@ -25,6 +25,10 @@ Deno.serve(async req=>{
   const {data:course,error:courseError}=await admin.from('ta_courses').select('slug,title_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle();
   if(courseError)return reply({error:'database_unavailable'},503);
   if(!course||!Number.isInteger(course.price_grosze)||course.price_grosze<=0)return reply({error:'course_unavailable_or_free'},404);
+  const {data:pricing,error:priceError}=await admin.rpc('ta_effective_course_price',{p_slug:slug});
+  const checkoutAmount=Number(pricing?.effective_price_grosze);
+  if(priceError||!Number.isInteger(checkoutAmount)||checkoutAmount<200||checkoutAmount>course.price_grosze)
+   return reply({error:'pricing_unavailable'},503);
   if(!isGift){
   const {data:already,error:alreadyError}=await admin.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
   if(alreadyError)return reply({error:'database_unavailable'},503);
@@ -42,7 +46,7 @@ Deno.serve(async req=>{
    const {error}=await admin.from('ta_gift_cards').insert({
     id:giftId,code_hash:codeHash,course_slug:slug,created_by:user.id,recipient_email:recipient,
     gift_message:typeof body?.message==='string'?body.message.trim().slice(0,300):null,
-    mode:'stripe',status:'pending',amount_grosze:course.price_grosze
+    mode:'stripe',status:'pending',amount_grosze:checkoutAmount
    });
    if(error)return reply({error:'gift_creation_failed'},503);
   }
@@ -55,12 +59,12 @@ Deno.serve(async req=>{
    customer_email:user.email,
    client_reference_id:user.id,
    'line_items[0][price_data][currency]':'pln',
-   'line_items[0][price_data][unit_amount]':String(course.price_grosze),
+   'line_items[0][price_data][unit_amount]':String(checkoutAmount),
    'line_items[0][price_data][product_data][name]':(giftId?'Karta podarunkowa – ':'')+course.title_pl,
    'line_items[0][quantity]':'1',
    'metadata[user_id]':user.id,
    'metadata[course_slug]':slug,
-   'metadata[unit_amount_grosze]':String(course.price_grosze),
+   'metadata[unit_amount_grosze]':String(checkoutAmount),
    'metadata[terms_version]':'2026-11-10',
    'metadata[terms_accepted_at]':consentDate,
    'metadata[immediate_content_consent]':String(!giftId)
