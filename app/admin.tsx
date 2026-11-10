@@ -45,7 +45,7 @@ export default function AdminPage(){
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
  const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'drafts'|'quality'|'diplomas'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
- const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false);
+ const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
  const [issuedGifts,setIssuedGifts]=useState<{course_slug:string;title_pl:string;code:string;link:string}[]>([]);
  const [giftError,setGiftError]=useState('');
  const giftTotal=Object.values(giftQty).reduce((sum,count)=>sum+count,0);
@@ -61,13 +61,13 @@ export default function AdminPage(){
  }
  async function issueAdminGifts(){
   if(!!working||giftTotal<1||giftTotal>10)return;
-  setWorking('admin-gifts');setGiftError('');setMessage('');setIssuedGifts([]);setGiftSent(false);
+  setWorking('admin-gifts');setGiftError('');setMessage('');setIssuedGifts([]);setGiftSent(false);setGiftCompanyPanel('');
   try{
-   if(!giftCompany&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(giftEmail.trim()))throw new Error('Wpisz poprawny adres e-mail odbiorcy.');
+   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(giftEmail.trim()))throw new Error('Wpisz poprawny adres e-mail odbiorcy lub osoby zarządzającej kursami w firmie.');
    const course_slugs=selectedGifts.flatMap(c=>Array(giftQty[c.slug]).fill(c.slug));
    const {data,error}=await supabase.functions.invoke('ta-admin-gifts',{body:{
     action:'issue',course_slugs,destination_email:giftEmail.trim().toLowerCase(),
-    bind_to_recipient:!giftCompany
+    bind_to_recipient:!giftCompany,company_mode:giftCompany,company_name:giftCompanyName.trim()
    }});
    if(error||!data?.ok){
     let detail='';
@@ -83,7 +83,12 @@ export default function AdminPage(){
     throw new Error(messages[detail]||'Nie udało się wygenerować prezentów. Spróbuj ponownie.');
    }
    setIssuedGifts(data.gifts||[]);setGiftSent(!!data.email_sent);setGiftQty({});
-   setMessage(data.email_sent?'Prezent został wysłany na wskazany e-mail.':'Kody zostały utworzone, ale wysyłka e-mail nie została potwierdzona. Skopiuj linki i prześlij je odbiorcy.');
+   if(data.company_panel===true){
+    setGiftCompanyPanel(data.dashboard_url||'https://trenerki.com/firma');
+    setMessage(data.email_sent?'Przydzielono kursy firmie i wysłano zaproszenie do jej panelu.':'Pakiet firmowy utworzony. Wyślij opiekunowi firmy link do panelu (wiadomość e-mail nie została potwierdzona).');
+   }else{
+    setMessage(data.email_sent?'Prezent został wysłany na wskazany e-mail.':'Kody zostały utworzone, ale wysyłka e-mail nie została potwierdzona. Skopiuj linki i prześlij je odbiorcy.');
+   }
    await refresh();setTab('giveaway');
   }catch(e:any){setGiftError(String(e?.message||'Błąd tworzenia pakietu.'));}
   finally{setWorking('')}
@@ -273,10 +278,15 @@ export default function AdminPage(){
        <Text style={{fontSize:13,fontWeight:'900',color:giftCompany?'white':ink}}>Pakiet dla firmy / pracowników</Text>
       </Pressable>
      </View>
-     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail osoby koordynującej (opcjonalnie)':'E-mail odbiorcy'}</Text>
+     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail opiekuna firmy':'E-mail odbiorcy'}</Text>
      <TextInput placeholder={giftCompany?'np. szkolenia@firma.pl':'np. odbiorca@example.com'} value={giftEmail} onChangeText={setGiftEmail}
       autoCapitalize="none" keyboardType="email-address" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,backgroundColor:'white',color:ink,fontSize:15,marginTop:7,marginBottom:7}}/>
-     <Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>{giftCompany?'Kody nie będą przypisane do firmowego e-maila. Firma przekaże każdy kod innemu pracownikowi.':'Kody będą przypisane do adresu odbiorcy, więc nie można przekazać ich innym osobom.'}</Text>
+     <Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>{giftCompany?'Firma otrzyma prywatny panel, w którym samodzielnie przydzieli kursy pracownikom i sprawdzi, które zostały odebrane.':'Kody będą przypisane do adresu odbiorcy, więc nie można przekazać ich innym osobom.'}</Text>
+     {giftCompany&&<View style={{gap:7,marginBottom:14}}>
+      <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>Nazwa firmy (opcjonalnie)</Text>
+      <TextInput placeholder="Np. Firma ABC" value={giftCompanyName} onChangeText={setGiftCompanyName}
+       style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,fontSize:15,backgroundColor:'white',color:ink}}/>
+     </View>}
      <Text style={{color:ink,fontSize:16,fontWeight:'900',marginBottom:9}}>Wybierz kursy ({giftTotal}/10 kodów)</Text>
      {!!selectedGifts.length&&<View style={{gap:5,marginBottom:13,backgroundColor:'#f3f8f0',padding:12,borderRadius:10}}>
       {selectedGifts.map(c=><Text key={c.slug} style={{fontSize:12,color:ink}}>{giftQty[c.slug]} × {c.title_pl}</Text>)}
@@ -304,6 +314,11 @@ export default function AdminPage(){
       <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='admin-gifts'?'Tworzę pakiet…':'Wyślij prezent — '+giftTotal+' '+(giftTotal===1?'kurs':'kursów')}</Text>
      </Pressable>
      {!!giftError&&<Text style={{color:'#a52626',padding:11}}>{giftError}</Text>}
+     {!!giftCompanyPanel&&<View style={{backgroundColor:'#ecf6e8',borderRadius:12,padding:16,gap:9,marginTop:14}}>
+      <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Firma ma swój panel</Text>
+      <Text style={{fontSize:13,lineHeight:21,color:muted}}>Opiekun firmy loguje się swoim e-mailem i przekazuje kursy pracownikom. Pracownicy mają osobne konta.</Text>
+      <Text selectable style={{color:'#286d49',fontSize:14,fontWeight:'800'}}>{giftCompanyPanel}</Text>
+     </View>}
      {!!issuedGifts.length&&<View style={{padding:14,backgroundColor:'#eff7e9',marginTop:15,borderRadius:11,gap:10}}>
       <Text style={{color:ink,fontSize:18,fontWeight:'900'}}>Pakiet gotowy — {issuedGifts.length} kodów</Text>
       <Text style={{fontSize:12,color:muted}}>{giftSent?'Wiadomość została przekazana do Resend.':'Wyślij linki samodzielnie albo skopiuj je do wiadomości dla firmy.'}</Text>
