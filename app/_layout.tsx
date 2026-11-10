@@ -7,6 +7,7 @@ import {supabase} from '../src/supabase';
 export default function RootLayout(){
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
+ const [isAdmin,setIsAdmin]=useState(false);
  useEffect(()=>{
   let mounted=true;
   const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
@@ -22,6 +23,15 @@ export default function RootLayout(){
   }).catch(()=>{if(mounted){setSignedIn(false);setReady(true);}});
   return()=>{mounted=false;subscription.unsubscribe();};
  },[]);
+ useEffect(()=>{
+  let active=true;
+  if(!signedIn){setIsAdmin(false);return()=>{active=false};}
+  setIsAdmin(false);
+  void supabase.functions.invoke('ta-academy',{body:{action:'whoami'}}).then(({data,error})=>{
+   if(active)setIsAdmin(!error&&data?.is_admin===true);
+  }).catch(()=>{if(active)setIsAdmin(false)});
+  return()=>{active=false};
+ },[signedIn]);
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
  return <Stack screenOptions={{headerShown:false}}>
    <Stack.Screen name="index"/>
@@ -32,6 +42,9 @@ export default function RootLayout(){
     <Stack.Screen name="moje-kursy"/>
     <Stack.Screen name="nauka"/>
     <Stack.Screen name="dyplom"/>
+    <Stack.Screen name="firma"/>
+   </Stack.Protected>
+   <Stack.Protected guard={signedIn&&isAdmin} redirectTo="/moje-kursy">
     <Stack.Screen name="admin"/>
    </Stack.Protected>
   </Stack>;
