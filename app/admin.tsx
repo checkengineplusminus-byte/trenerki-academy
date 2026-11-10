@@ -24,6 +24,21 @@ const formatDate=(s?:string|null)=>s?new Date(s).toLocaleDateString('pl-PL'):'�
 const card={padding:20,borderWidth:1,borderColor:'#e0eadb',backgroundColor:'white',borderRadius:16} as const;
 export default function AdminPage(){
  const router=useRouter();
+ const [authorized,setAuthorized]=useState(false);
+ useEffect(()=>{
+  let mounted=true;
+  void academyAction('whoami').then(r=>{
+   if(!mounted)return;
+   if(r?.is_admin===true)setAuthorized(true);
+   else router.replace('/moje-kursy');
+  }).catch(()=>{if(mounted)router.replace('/moje-kursy')});
+  return()=>{mounted=false};
+ },[]);
+ async function logout(){
+  await supabase.auth.signOut();
+  router.replace('/konto');
+ }
+
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
@@ -125,9 +140,13 @@ export default function AdminPage(){
  const count=(label:string,val:any)=><View style={{backgroundColor:'white',borderWidth:1,borderColor:'#dce8d7',borderRadius:14,padding:16,minWidth:140,flexGrow:1}}>
   <Text style={{fontSize:13,color:muted,marginBottom:6}}>{label}</Text><Text style={{fontSize:28,color:ink,fontWeight:'900'}}>{val??'—'}</Text>
  </View>;
+ if(!authorized)return <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator/><Text style={{color:ink,marginTop:14}}>Sprawdzam dostęp administratora…</Text></View>;
  return <ScrollView style={{backgroundColor:'#fcfcf7',flex:1}} contentContainerStyle={{padding:22,paddingBottom:80}}>
   <View style={{maxWidth:1050,alignSelf:'center',width:'100%',gap:18}}>
-   <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← TRENERKI Academy</Text></Pressable>
+   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:12,flexWrap:'wrap'}}>
+    <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← TRENERKI Academy</Text></Pressable>
+    <Pressable accessibilityRole="button" onPress={logout} style={{backgroundColor:'#e4eee0',borderRadius:10,paddingVertical:10,paddingHorizontal:14}}><Text style={{color:ink,fontWeight:'800'}}>Wyloguj się</Text></Pressable>
+   </View>
    <Text style={{fontSize:12,fontWeight:'800',color:'#72906d',letterSpacing:1.8}}>ADMINISTRACJA · TRENERKI ACADEMY</Text>
    <Text style={{fontSize:36,color:ink,fontWeight:'900'}}>Panel administratora</Text>
    <Pressable accessibilityRole="button" onPress={()=>setTab('giveaway')} style={{backgroundColor:ink,padding:16,borderRadius:13}}>
