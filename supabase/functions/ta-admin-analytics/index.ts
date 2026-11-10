@@ -63,6 +63,20 @@ Deno.serve(async req=>{
    if((data||[]).length<1000)break;
    if(start===49000)throw new Error('gift_page_limit');
   }
+  // Amount-based gift cards are live Stripe sales too, even before redemption.
+  for(let start=0;start<50000;start+=1000){
+   const {data,error}=await admin.from('ta_credit_vouchers')
+    .select('created_by,amount_grosze,status,paid_at,stripe_checkout_session_id')
+    .in('status',['issued','redeemed']).not('paid_at','is',null)
+    .order('paid_at',{ascending:false}).range(start,start+999);
+   if(error)throw error;
+   for(const gift of data||[])if(typeof gift.stripe_checkout_session_id==='string'&&gift.stripe_checkout_session_id.startsWith('cs_live_')){
+    orders.push({user_id:gift.created_by,course_slug:'Karta na kwotę',amount_grosze:gift.amount_grosze,
+     status:gift.status,purchased_at:gift.paid_at,stripe_checkout_session_id:gift.stripe_checkout_session_id,is_gift:true});
+   }
+   if((data||[]).length<1000)break;
+   if(start===49000)throw new Error('credit_gift_page_limit');
+  }
   orders.sort((a,b)=>b.purchased_at.localeCompare(a.purchased_at));
   const stats=(interval:'day'|'month'|'year',n:number)=>{
    const labels=keys(interval,n);
