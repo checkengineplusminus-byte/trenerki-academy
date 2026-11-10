@@ -116,31 +116,54 @@
 @media(max-width:760px){.head-in{height:auto;min-height:110px;flex-wrap:wrap;column-gap:8px;row-gap:5px;padding-top:7px;padding-bottom:8px}.header .brand{flex:1}.nav-end{flex:0 0 100%;order:3;min-width:0;width:100%;display:flex}.anielka-nav-search{max-width:none}.demo-tag{position:absolute;top:15px;right:18px}.anielka-peek:not(:empty){max-height:60vh;overflow:auto}.anielka-finder{scroll-margin-top:138px}}
 @media(max-width:360px){.demo-tag{font-size:8px;padding:6px}.header .brand{font-size:14px}.anielka-nav-search input{font-size:13px}}
 
-/* Compact, grouped course catalogue: four cards per topic, with progressive disclosure. */
+/* Compact, responsive course grid: one row per topic until expanded. */
 #course-cards{display:block}
-.catalog-category{margin:0 0 36px}
-.catalog-category-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 14px}
-.catalog-category-head h3{font-size:clamp(18px,2.1vw,23px);color:#173228;line-height:1.25;margin:0}
-.catalog-category-head small{font-size:12px;color:#708572;font-weight:700;white-space:nowrap}
-.catalog-category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
-.catalog-category-grid .course-card{border-radius:15px}
-.catalog-category-grid .card-media{height:116px;min-height:116px}
-.catalog-category-grid .card-media:before{width:140px;height:140px}
-.catalog-category-grid .course-icon-art{width:92px;height:92px;flex-basis:92px;transform:translateY(3px)}
-.catalog-category-grid .card-flag{top:8px;left:9px;padding:4px 7px;font-size:9px}
-.catalog-category-grid .card-body{padding:14px;gap:8px}
-.catalog-category-grid .card-title{font-size:15px;line-height:1.28;min-height:38px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.catalog-category-grid .card-desc{font-size:12px;line-height:1.4;min-height:34px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.catalog-category-grid .card-category{font-size:9px;letter-spacing:.07em}
-.catalog-category-grid .card-foot{gap:6px;padding-top:8px;flex-wrap:wrap}
-.catalog-category-grid .price{font-size:19px}
-.catalog-category-grid .btn-inline{font-size:12px}
-.catalog-category-grid .btn-buy-card{font-size:12px;min-height:39px;padding:8px}
-.catalog-more{display:block;margin:15px auto 0;padding:11px 20px;border:1px solid #bfd4bb;background:#eff6e9;color:#193d2b;border-radius:13px;cursor:pointer;font-weight:800;font-size:13px}
+#kursy{padding-top:45px;padding-bottom:50px}
+#kursy .section-head{margin-bottom:17px}
+#kursy .section-head h2{font-size:clamp(25px,3vw,34px);line-height:1.2}
+#kursy .section-head p{margin-top:7px;font-size:14px;line-height:1.5}
+#kursy .filter-line{margin-bottom:12px}
+#kursy .chips{gap:6px}
+#kursy .chip{font-size:12px;padding:7px 10px}
+.catalog-category{margin:0 0 24px}
+.catalog-category-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 10px}
+.catalog-category-head h3{font-size:clamp(17px,1.75vw,20px);color:#173228;line-height:1.25;margin:0}
+.catalog-category-head small{font-size:11px;color:#708572;font-weight:700;white-space:nowrap}
+.catalog-category-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.catalog-category-grid .course-card{border-radius:13px;min-width:0}
+.catalog-category-grid .card-media{height:90px;min-height:90px}
+.catalog-category-grid .card-media:before{width:115px;height:115px}
+.catalog-category-grid .course-icon-art{width:65px;height:65px;flex-basis:65px;transform:translateY(1px)}
+.catalog-category-grid .card-flag{top:6px;left:7px;padding:3px 6px;font-size:9px}
+.catalog-category-grid .card-body{padding:10px;gap:6px}
+.catalog-category-grid .card-category{font-size:9px;letter-spacing:.035em;line-height:1.35}
+.catalog-category-grid .card-title{font-size:13px;line-height:1.3;min-height:34px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.catalog-category-grid .card-desc{font-size:11px;line-height:1.4;min-height:31px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.catalog-category-grid .card-body .pill{font-size:9px;padding:3px 6px}
+.catalog-category-grid .card-foot{gap:5px;padding-top:6px;flex-wrap:wrap}
+.catalog-category-grid .price{font-size:16px}
+.catalog-category-grid .price small{font-size:10px}
+.catalog-category-grid .btn-inline{font-size:11px;padding:7px 9px;min-height:36px}
+.catalog-category-grid .btn-buy-card{font-size:12px;min-height:42px;padding:10px 7px;width:100%}
+.catalog-more{display:block;margin:11px auto 0;padding:10px 17px;border:1px solid #bfd4bb;background:#eff6e9;color:#193d2b;border-radius:11px;cursor:pointer;font-weight:800;font-size:12px;min-height:42px}
 .catalog-more:hover,.catalog-more:focus-visible{background:#e0efd9;border-color:#7ea776}
-@media(max-width:1050px){.catalog-category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:760px){.catalog-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.catalog-category-grid .card-media{height:94px;min-height:94px}.catalog-category-grid .course-icon-art{width:75px;height:75px;flex-basis:75px}.catalog-category-grid .card-body{padding:11px;gap:6px}.catalog-category-grid .card-title{font-size:13px;min-height:34px}.catalog-category-grid .card-desc{font-size:11px;min-height:31px}.catalog-category-grid .card-foot{gap:6px}.catalog-category-grid .price{font-size:16px}.catalog-category-grid .price small{font-size:10px}.catalog-category-grid .card-body .pill{font-size:10px}.catalog-category-grid .card-flag{font-size:8px}.catalog-category-grid .btn-inline{font-size:11px}}
-@media(max-width:380px){.catalog-category-grid .card-body{padding:9px}.catalog-category-grid .card-title{font-size:12px}.catalog-category-grid .btn-buy-card{font-size:11px}}
+@media(min-width:900px){.hero-in{padding-top:50px;padding-bottom:65px;gap:35px}.hero-actions{margin:19px 0}.hero-desc{margin-top:17px}}
+@media(max-width:1179px){.catalog-category-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:839px){.catalog-category-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:589px){
+ .catalog-category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ #kursy{padding-top:27px;padding-bottom:35px}
+ #kursy .section-head{margin-bottom:13px}
+ .catalog-category{margin-bottom:20px}
+ .catalog-category-grid .card-media{height:77px;min-height:77px}
+ .catalog-category-grid .course-icon-art{width:58px;height:58px;flex-basis:58px}
+ .catalog-category-grid .card-body{padding:9px;gap:5px}
+ .catalog-category-grid .card-title{font-size:12px;min-height:32px}
+ .catalog-category-grid .card-desc{font-size:11px;min-height:30px}
+ .catalog-category-grid .price{font-size:15px}
+ .catalog-category-grid .btn-inline{min-height:36px}
+ .catalog-category-grid .btn-buy-card{min-height:42px}
+}
 @media(prefers-reduced-motion:reduce){.catalog-category-grid .course-card,.catalog-category-grid .course-icon-art{transition:none!important;animation:none!important}}
 </style>
 <link rel="canonical" href="https://trenerki.com/academy/index.html" />
@@ -188,6 +211,7 @@ function cardHTML(c){let st=courseState(c.id);let progress=hasAccess(c.id)?st.do
 
 let catalogVisibleByCategory={};
 let catalogRenderCategories=[];
+function catalogPageSize(){return window.innerWidth>=1180?6:window.innerWidth>=840?4:window.innerWidth>=590?3:2;}
 function updateCatalog(){
  const allCats=["Budownictwo","Rzemiosło i hobby","Technologie i logistyka","Biznes i praca","Rodzina i rozwój","Dom i codzienność"];
  const cats=["Wszystkie",...allCats].filter(cat=>cat==='Wszystkie'||COURSES.some(c=>c.cat===cat));
@@ -200,15 +224,15 @@ function updateCatalog(){
  if(other.length)catalogRenderCategories.push("Pozostałe");
  const sections=catalogRenderCategories.map((cat,index)=>{
   const courses=cat==="Pozostałe"?other:result.filter(c=>c.cat===cat);
-  const visible=Math.min(courses.length,catalogVisibleByCategory[cat]||4);
+  const visible=Math.min(courses.length,catalogVisibleByCategory[cat]||catalogPageSize());
   const remaining=courses.length-visible;
-  return `<section class="catalog-category" aria-label="${esc(cat)}"><div class="catalog-category-head"><h3>${esc(cat)}</h3><small>${courses.length} ${courses.length===1?'kurs':'kursów'}</small></div><div class="catalog-category-grid">${courses.slice(0,visible).map(cardHTML).join('')}</div>${remaining>0?`<button class="catalog-more" onclick="showMoreCourses(${index})" aria-label="Pokaż kolejne kursy z kategorii ${esc(cat)}">Pokaż kolejne ${Math.min(4,remaining)} • jeszcze ${remaining}</button>`:''}</section>`;
+  return `<section class="catalog-category" aria-label="${esc(cat)}"><div class="catalog-category-head"><h3>${esc(cat)}</h3><small>${courses.length} ${courses.length===1?'kurs':'kursów'}</small></div><div class="catalog-category-grid">${courses.slice(0,visible).map(cardHTML).join('')}</div>${remaining>0?`<button class="catalog-more" onclick="showMoreCourses(${index})" aria-label="Pokaż kolejne kursy z kategorii ${esc(cat)}">Pokaż kolejne ${Math.min(catalogPageSize(),remaining)} • jeszcze ${remaining}</button>`:''}</section>`;
  });
  $('#course-cards').innerHTML=sections.length?sections.join(''):'<div class="empty">Nie znaleziono takiego tematu. Spróbuj innych słów.</div>';
 }
 function showMoreCourses(index){
  const cat=catalogRenderCategories[index];if(!cat)return;
- catalogVisibleByCategory[cat]=(catalogVisibleByCategory[cat]||4)+4;
+ catalogVisibleByCategory[cat]=(catalogVisibleByCategory[cat]||catalogPageSize())+catalogPageSize();
  updateCatalog();
 }
 function startPurchase(id){const c=COURSES.find(x=>x.id===id);if(!c)return;window.location.assign('/konto?course='+encodeURIComponent(id)+'&next=kup');}
