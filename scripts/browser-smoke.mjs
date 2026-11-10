@@ -28,7 +28,8 @@ async function verify(name,viewport,isMobile){
   const sections=page.locator('#course-cards .catalog-category');
   assert((await sections.count())>=4,'Courses must be grouped into clear subject sections');
   const initialCounts=await sections.evaluateAll(nodes=>nodes.map(section=>section.querySelectorAll('.course-card').length));
-  assert(initialCounts.every(count=>count>=1&&count<=4),'Show at most four cards in each collapsed section');
+  const pageSize=await page.evaluate(()=>catalogPageSize());
+  assert(initialCounts.every(count=>count>=1&&count<=pageSize),'Show one responsive row of courses per category');
   const initialVisible=await page.locator('#course-cards .btn-buy-card').count();
   assert(initialVisible>0&&initialVisible<80,'The compact catalogue must not display all 80 courses before expansion');
   const firstMore=page.locator('#course-cards .catalog-more').first();
