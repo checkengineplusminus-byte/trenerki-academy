@@ -10,7 +10,7 @@ const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\
 export default function AccountPage(){
  const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
- gift=typeof params.gift==='string' && /^TA-[0-9A-F]{32}$/i.test(params.gift)?params.gift:'';
+ gift=typeof params.gift==='string' && /^(TA|TW)-[0-9A-F]{32}$/i.test(params.gift)?params.gift:'';
  const [isAdmin,setIsAdmin]=useState(false);
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const isCompanyLogin=params.next==='company';
@@ -30,7 +30,7 @@ export default function AccountPage(){
     const selected=typeof candidate==='string'&&/^[a-z0-9][a-z0-9_-]{1,79}$/.test(candidate)?candidate:'';
     const next=user?.user_metadata?.pending_checkout==='gift'?'/prezent':'/kup';
     const possibleGift=user?.user_metadata?.pending_gift;
-    const savedGift=typeof possibleGift==='string'&&/^TA-[0-9A-F]{32}$/i.test(possibleGift)?possibleGift:'';
+    const savedGift=typeof possibleGift==='string'&&/^(TA|TW)-[0-9A-F]{32}$/i.test(possibleGift)?possibleGift:'';
     if(selected||savedGift){
       // Clear once consumed so future logins don't keep redirecting to old courses.
       await supabase.auth.updateUser({data:{pending_course:null,pending_gift:null,pending_checkout:null}});
