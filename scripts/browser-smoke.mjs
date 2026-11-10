@@ -25,7 +25,22 @@ async function verify(name,viewport,isMobile){
   assert.equal(prices.length,80,'Public catalogue should contain all courses');
   assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug),['swiety-mikolaj']);
   assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),99);
-  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),80,'All courses must show the purchase button');
+  const sections=page.locator('#course-cards .catalog-category');
+  assert((await sections.count())>=4,'Courses must be grouped into clear subject sections');
+  const initialCounts=await sections.evaluateAll(nodes=>nodes.map(section=>section.querySelectorAll('.course-card').length));
+  assert(initialCounts.every(count=>count>=1&&count<=4),'Show at most four cards in each collapsed section');
+  const initialVisible=await page.locator('#course-cards .btn-buy-card').count();
+  assert(initialVisible>0&&initialVisible<80,'The compact catalogue must not display all 80 courses before expansion');
+  const firstMore=page.locator('#course-cards .catalog-more').first();
+  assert(await firstMore.count(),'Sections must offer a way to reveal more courses');
+  await firstMore.click();
+  assert((await page.locator('#course-cards .btn-buy-card').count())>initialVisible,'Pokaż kolejne must reveal more courses');
+  // Expand all categories to ensure every course is still reachable and purchasable.
+  await page.evaluate(()=>{
+   for(const category of catalogRenderCategories)catalogVisibleByCategory[category]=1000;
+   updateCatalog();
+  });
+  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),80,'All 80 courses must remain available after expansion');
   assert.equal(await page.locator('#course-search').count(),0,'Duplicate search field');
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');
