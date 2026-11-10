@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
+import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share} from 'react-native';
 import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
@@ -28,7 +28,60 @@ export default function AdminPage(){
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'drafts'|'quality'|'diplomas'>('sales');
+ const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'drafts'|'quality'|'diplomas'>('sales');
+ const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
+ const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false);
+ const [issuedGifts,setIssuedGifts]=useState<{course_slug:string;title_pl:string;code:string;link:string}[]>([]);
+ const [giftError,setGiftError]=useState('');
+ const giftTotal=Object.values(giftQty).reduce((sum,count)=>sum+count,0);
+ const selectedGifts=courses.filter(c=>(giftQty[c.slug]||0)>0);
+ const giftText=issuedGifts.map((g,i)=>(i+1)+'. '+g.title_pl+'\n'+g.link).join('\n\n');
+ function adjustGiftQuantity(slug:string,delta:number){
+  setGiftQty(old=>{
+   const total=Object.values(old).reduce((sum,v)=>sum+v,0);
+   const next=Math.max(0,Math.min(10,(old[slug]||0)+delta));
+   if(delta>0&&total>=10)return old;
+   return {...old,[slug]:next};
+  });
+ }
+ async function issueAdminGifts(){
+  if(!!working||giftTotal<1||giftTotal>10)return;
+  setWorking('admin-gifts');setGiftError('');setMessage('');setIssuedGifts([]);setGiftSent(false);
+  try{
+   if(!giftCompany&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(giftEmail.trim()))throw new Error('Wpisz poprawny adres e-mail odbiorcy.');
+   const course_slugs=selectedGifts.flatMap(c=>Array(giftQty[c.slug]).fill(c.slug));
+   const {data,error}=await supabase.functions.invoke('ta-admin-gifts',{body:{
+    action:'issue',course_slugs,destination_email:giftEmail.trim().toLowerCase(),
+    bind_to_recipient:!giftCompany
+   }});
+   if(error||!data?.ok){
+    let detail='';
+    try{detail=(await (error as any)?.context?.json())?.error||data?.error||''}catch{}
+    const messages:Record<string,string>={
+     admin_only:'Brak uprawnień administratora.',
+     choose_1_to_10_courses:'Wybierz od 1 do 10 kursów.',
+     unpublished_or_invalid_course:'Jeden z wybranych kursów nie jest dostępny.',
+     invalid_recipient_email:'Adres e-mail jest niepoprawny.',
+     admin_daily_limit:'Wykorzystano limit dzienny wydawania bezpłatnych prezentów.',
+     gift_create_failed:'Nie udało się wydać kodów. Nic nie zapisano.'
+    };
+    throw new Error(messages[detail]||'Nie udało się wygenerować prezentów. Spróbuj ponownie.');
+   }
+   setIssuedGifts(data.gifts||[]);setGiftSent(!!data.email_sent);setGiftQty({});
+   setMessage(data.email_sent?'Pakiet kursów został utworzony i wysłany e-mailem.':'Pakiet kursów został utworzony. Skopiuj linki poniżej i przekaż je odbiorcy.');
+   await refresh();setTab('giveaway');
+  }catch(e:any){setGiftError(String(e?.message||'Błąd tworzenia pakietu.'));}
+  finally{setWorking('')}
+ }
+ async function shareAdminGifts(){
+  if(!giftText)return;
+  try{
+   if(Platform.OS==='web'&&typeof navigator!=='undefined'&&navigator.clipboard?.writeText){
+    await navigator.clipboard.writeText(giftText);setMessage('Skopiowano linki do wszystkich kursów.');return;
+   }
+   await Share.share({message:giftText});
+  }catch{setMessage('Zaznacz i skopiuj linki z listy poniżej.')}
+ }
  const students:Student[]=stats?.users||[];
  const filteredStudents=useMemo(()=>students.filter(u=>(u.email||'').toLowerCase().includes(filter.trim().toLowerCase())),[students,filter]);
  useEffect(()=>{void refresh()},[]);
@@ -96,7 +149,7 @@ export default function AdminPage(){
      {count('Kursy czekające na weryfikację',reviews.filter(r=>r.review_status!=='approved').length)}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
+     {([['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['giveaway','Rozdaj kursy za darmo'],['drafts','Dokumenty testowe'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -192,6 +245,55 @@ export default function AdminPage(){
      <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:'swiety-mikolaj'}})} style={{marginTop:16,backgroundColor:pale,padding:15,borderRadius:11}}>
       <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Podaruj kurs Świętego Mikołaja</Text>
      </Pressable>
+    </View>}
+    {tab==='giveaway'&&<View style={card}>
+     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kursy za darmo</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wybierz od 1 do 10 kursów. Każdy kod jest jednorazowy i daje 12 miesięcy nauki od momentu odbioru. To prezenty od administratora — Stripe nie pobiera opłaty.</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:15}}>
+      <Pressable accessibilityRole="button" onPress={()=>{setGiftCompany(false);setIssuedGifts([])}} style={{backgroundColor:!giftCompany?ink:pale,padding:12,borderRadius:10}}>
+       <Text style={{fontSize:13,fontWeight:'900',color:!giftCompany?'white':ink}}>Dla jednej osoby</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button" onPress={()=>{setGiftCompany(true);setIssuedGifts([])}} style={{backgroundColor:giftCompany?ink:pale,padding:12,borderRadius:10}}>
+       <Text style={{fontSize:13,fontWeight:'900',color:giftCompany?'white':ink}}>Pakiet dla firmy / pracowników</Text>
+      </Pressable>
+     </View>
+     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail osoby koordynującej (opcjonalnie)':'E-mail odbiorcy'}</Text>
+     <TextInput placeholder={giftCompany?'np. szkolenia@firma.pl':'np. odbiorca@example.com'} value={giftEmail} onChangeText={setGiftEmail}
+      autoCapitalize="none" keyboardType="email-address" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,backgroundColor:'white',color:ink,fontSize:15,marginTop:7,marginBottom:7}}/>
+     <Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>{giftCompany?'Kody nie będą przypisane do firmowego e-maila. Firma przekaże każdy kod innemu pracownikowi.':'Kody będą przypisane do adresu odbiorcy, więc nie można przekazać ich innym osobom.'}</Text>
+     <Text style={{color:ink,fontSize:16,fontWeight:'900',marginBottom:9}}>Wybierz kursy ({giftTotal}/10 kodów)</Text>
+     {!!selectedGifts.length&&<View style={{gap:5,marginBottom:13,backgroundColor:'#f3f8f0',padding:12,borderRadius:10}}>
+      {selectedGifts.map(c=><Text key={c.slug} style={{fontSize:12,color:ink}}>{giftQty[c.slug]} × {c.title_pl}</Text>)}
+     </View>}
+     <TextInput placeholder="Znajdź kurs po nazwie…" value={giftSearch} onChangeText={setGiftSearch}
+      style={{padding:12,borderWidth:1,borderColor:'#d5e3d1',borderRadius:10,color:ink,marginBottom:10}}/>
+     <View style={{gap:6}}>
+      {courses.filter(c=>c.title_pl.toLocaleLowerCase('pl').includes(giftSearch.toLocaleLowerCase('pl').trim())).slice(0,25).map(c=><View key={c.slug} style={{borderBottomWidth:1,borderColor:'#edf1e9',paddingVertical:9,flexDirection:'row',gap:8,alignItems:'center'}}>
+       <Text style={{flex:1,fontSize:12,color:ink,fontWeight:'700'}}>{c.title_pl}</Text>
+       <Pressable accessibilityRole="button" accessibilityLabel={'Usuń jeden kod: '+c.title_pl} onPress={()=>adjustGiftQuantity(c.slug,-1)}
+        style={{padding:9,backgroundColor:'#e6eee0',borderRadius:9}}><Text style={{color:ink,fontWeight:'900'}}>−</Text></Pressable>
+       <Text style={{fontSize:14,fontWeight:'900',color:ink,minWidth:18,textAlign:'center'}}>{giftQty[c.slug]||0}</Text>
+       <Pressable accessibilityRole="button" accessibilityLabel={'Dodaj jeden kod: '+c.title_pl} disabled={giftTotal>=10} onPress={()=>adjustGiftQuantity(c.slug,1)}
+        style={{padding:9,backgroundColor:'#e6eee0',borderRadius:9,opacity:giftTotal>=10?.5:1}}><Text style={{color:ink,fontWeight:'900'}}>+</Text></Pressable>
+      </View>)}
+     </View>
+     <Text style={{color:muted,fontSize:12,marginTop:11}}>Wyszukiwarka pokazuje do 25 wyników. Możesz wybrać kilka kodów tego samego kursu.</Text>
+     <Pressable accessibilityRole="button" disabled={!!working||giftTotal<1||(!giftCompany&&!giftEmail.trim())} onPress={issueAdminGifts}
+      style={{backgroundColor:ink,marginTop:19,borderRadius:12,padding:16,opacity:!!working||giftTotal<1||(!giftCompany&&!giftEmail.trim())?.5:1}}>
+      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='admin-gifts'?'Tworzę pakiet…':'Utwórz i wyślij '+giftTotal+' bezpłatnych '+(giftTotal===1?'kurs':'kodów')}</Text>
+     </Pressable>
+     {!!giftError&&<Text style={{color:'#a52626',padding:11}}>{giftError}</Text>}
+     {!!issuedGifts.length&&<View style={{padding:14,backgroundColor:'#eff7e9',marginTop:15,borderRadius:11,gap:10}}>
+      <Text style={{color:ink,fontSize:18,fontWeight:'900'}}>Pakiet gotowy — {issuedGifts.length} kodów</Text>
+      <Text style={{fontSize:12,color:muted}}>{giftSent?'Wiadomość została przekazana do Resend.':'Wyślij linki samodzielnie albo skopiuj je do wiadomości dla firmy.'}</Text>
+      {issuedGifts.map((g,i)=><View key={g.code} style={{borderBottomWidth:1,borderColor:'#d0e4ca',paddingBottom:9}}>
+       <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{i+1}. {g.title_pl}</Text>
+       <Text selectable style={{color:'#245b3a',fontSize:12,marginTop:4}}>{g.link}</Text>
+      </View>)}
+      <Pressable accessibilityRole="button" onPress={shareAdminGifts} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
+       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Kopiuj / udostępnij wszystkie linki</Text>
+      </Pressable>
+     </View>}
     </View>}
     {tab==='diplomas'&&<DiplomaRegistry/>}
     {tab==='quality'&&<View style={card}>
