@@ -5,7 +5,7 @@ export type AcademyAction=
 const messages:Record<string,string>={
  login_required:'Zaloguj się, żeby kontynuować.',
  confirmed_login_required:'Najpierw potwierdź swój adres e-mail.',
- demo_reserved_for_admin:'Symulacja zakupów jest obecnie dostępna tylko na koncie testowym właściciela. Prawdziwe płatności nie są jeszcze aktywne.',
+ demo_reserved_for_admin:'Ta funkcja testowa jest wyłączona. Zakupu dokonaj standardowo przez Stripe.',
  invalid_course:'Nie odnaleziono wybranego kursu.',
  course_unavailable:'Ten kurs nie jest teraz dostępny.',
  daily_gift_limit:'Dziś utworzono już maksymalną liczbę prezentów.',
@@ -17,9 +17,9 @@ const messages:Record<string,string>={
  gift_already_redeemed:'Ten prezent został właśnie wykorzystany.',
  course_already_active:'Masz już dostęp do tego kursu. Otwórz Moje kursy.',
  admin_only:'Ta sekcja jest dostępna tylko dla administratora TRENERKI.',
- email_not_configured:'Wysyłka e-mail przez Resend nie jest jeszcze skonfigurowana. Dokument pozostał w panelu jako wersja testowa.',
+ email_not_configured:'Nie udało się wysłać wiadomości. Sprawdź konfigurację powiadomień.',
  email_provider_unavailable:'Usługa wysyłki wiadomości jest chwilowo niedostępna.',
- server_not_ready:'Usługa jest jeszcze przygotowywana. Spróbuj ponownie później.',
+ server_not_ready:'Usługa jest chwilowo niedostępna. Spróbuj ponownie.',
 };
 export function academyMessage(code:string){return messages[code]||'Nie udało się wykonać operacji ('+code+').';}
 export async function academyAction(action:AcademyAction,body:Record<string,unknown>={}):Promise<any>{
