@@ -7,33 +7,35 @@ import {supabase} from '../src/supabase';
 export default function RootLayout(){
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
+ const [userId,setUserId]=useState('');
  const [isAdmin,setIsAdmin]=useState(false);
  const [adminReady,setAdminReady]=useState(false);
  useEffect(()=>{
   let mounted=true;
   const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
    if(!mounted)return;
-   if(event==='SIGNED_OUT'){setSignedIn(false);setReady(true);}
+   if(event==='SIGNED_OUT'){setSignedIn(false);setUserId('');setReady(true);}
    else if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'||event==='INITIAL_SESSION'){
     setSignedIn(!!session?.user);
+    setUserId(session?.user?.id||'');
     setReady(true);
    }
   });
   void supabase.auth.getUser().then(({data,error})=>{
-   if(mounted){setSignedIn(!error&&!!data.user);setReady(true);}
-  }).catch(()=>{if(mounted){setSignedIn(false);setReady(true);}});
+   if(mounted){setSignedIn(!error&&!!data.user);setUserId(!error?data.user?.id||'':'');setReady(true);}
+  }).catch(()=>{if(mounted){setSignedIn(false);setUserId('');setReady(true);}});
   return()=>{mounted=false;subscription.unsubscribe();};
  },[]);
  useEffect(()=>{
   let active=true;
-  if(!signedIn){setIsAdmin(false);setAdminReady(true);return()=>{active=false};}
+  if(!signedIn||!userId){setIsAdmin(false);setAdminReady(true);return()=>{active=false};}
   setAdminReady(false);
   setIsAdmin(false);
   void supabase.functions.invoke('ta-academy',{body:{action:'whoami'}}).then(({data,error})=>{
    if(active){setIsAdmin(!error&&data?.is_admin===true);setAdminReady(true);}
   }).catch(()=>{if(active){setIsAdmin(false);setAdminReady(true)}});
   return()=>{active=false};
- },[signedIn]);
+ },[signedIn,userId]);
  if(!ready||(signedIn&&!adminReady))return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
  return <Stack screenOptions={{headerShown:false}}>
    <Stack.Screen name="index"/>
