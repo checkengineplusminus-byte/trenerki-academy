@@ -134,7 +134,6 @@ export default function Purchase(){
      <View style={{backgroundColor:'#f0f5eb',padding:18,borderRadius:12,gap:8}}>
       <Text style={{fontWeight:'900',color:ink}}>Ważne zasady tego kursu</Text>
       <Text style={{color:'#3f5b49',lineHeight:22}}>{preview.editorial_note}</Text>
-      {preview.review_status!=='approved'&&<Text style={{fontSize:12,color:'#87622b'}}>Weryfikacja redakcyjna materiału trwa.</Text>}
      </View>
      {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#dfe8d9',padding:23,gap:12}}>
       <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>{preview.module_titles.length} lekcji · {preview.module_titles.length===30?'3 działy od zera do Expert':'program ćwiczeń'}</Text>
