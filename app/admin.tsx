@@ -43,11 +43,30 @@ export default function AdminPage(){
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'drafts'|'quality'|'diplomas'>('giveaway');
+ const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'drafts'|'quality'|'diplomas'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
  const [issuedGifts,setIssuedGifts]=useState<{course_slug:string;title_pl:string;code:string;link:string}[]>([]);
  const [giftError,setGiftError]=useState('');
+ const [promoEmail,setPromoEmail]=useState(''),[promoAmount,setPromoAmount]=useState('100'),[promoMessage,setPromoMessage]=useState('');
+ const [promoResult,setPromoResult]=useState<{code:string;link:string;email_sent:boolean;amount_grosze:number}|null>(null),[promoError,setPromoError]=useState('');
+ async function issuePromo(){
+  if(working)return;
+  setWorking('promo');setPromoError('');setPromoResult(null);
+  try{
+   const amount=Number(promoAmount.replace(',','.'));
+   if(!Number.isFinite(amount)||amount<25||amount>1000||Math.round(amount*100)!==amount*100)
+    throw new Error('Wpisz kwotę od 25 do 1000 zł.');
+   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(promoEmail.trim()))throw new Error('Podaj poprawny e-mail odbiorcy.');
+   const {data,error}=await supabase.functions.invoke('ta-credit',{body:{
+    action:'admin_issue_promo',recipient_email:promoEmail.trim(),amount_grosze:Math.round(amount*100),message:promoMessage.trim()
+   }});
+   if(error||!data?.ok)throw new Error(data?.error==='daily_limit'?'Osiągnięto dzienny limit kart promocyjnych.':'Nie udało się wydać karty. Sprawdź uprawnienia konta.');
+   setPromoResult(data);
+   setMessage(data.email_sent?'Karta została utworzona i wysłana odbiorcy.':'Karta została utworzona, ale nie potwierdzono wysyłki e-mail. Przekaż link odbiorcy.');
+  }catch(e:any){setPromoError(e?.message||'Błąd karty podarunkowej.')}
+  finally{setWorking('')}
+ }
  const giftTotal=Object.values(giftQty).reduce((sum,count)=>sum+count,0);
  const selectedGifts=courses.filter(c=>(giftQty[c.slug]||0)>0);
  const giftText=issuedGifts.map((g,i)=>(i+1)+'. '+g.title_pl+'\n'+g.link).join('\n\n');
@@ -170,7 +189,7 @@ export default function AdminPage(){
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['giveaway','🎁 Rozdaj kursy'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['diplomas','Dyplomy'],['orders','Archiwum DEMO'],['drafts','Dokumenty testowe']] as const).map(([key,label])=>
+     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['diplomas','Dyplomy'],['orders','Archiwum DEMO'],['drafts','Dokumenty testowe']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -266,6 +285,32 @@ export default function AdminPage(){
      <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:'swiety-mikolaj'}})} style={{marginTop:16,backgroundColor:pale,padding:15,borderRadius:11}}>
       <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Podaruj kurs Świętego Mikołaja</Text>
      </Pressable>
+    </View>}
+    {tab==='credit-card'&&<View style={card}>
+     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kartę na dowolną kwotę</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:13}}>Jako właściciel możesz wysłać bezpłatną kartę o wartości 25–1000 zł. Odbiorca zobaczy saldo na swoim koncie, wykorzysta je na dowolne kursy i dopłaci, jeśli zabraknie środków. Takie karty nie są liczone jako sprzedaż Stripe.</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:11}}>
+      {[50,100,200,500].map(x=><Pressable key={x} onPress={()=>setPromoAmount(String(x))} style={{padding:11,backgroundColor:promoAmount===String(x)?ink:pale,borderRadius:10}}>
+       <Text style={{color:promoAmount===String(x)?'white':ink,fontWeight:'800'}}>{x} zł</Text>
+      </Pressable>)}
+     </View>
+     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>Kwota karty (zł)</Text>
+     <TextInput value={promoAmount} onChangeText={setPromoAmount} keyboardType="decimal-pad" placeholder="100" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
+     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>E-mail odbiorcy</Text>
+     <TextInput value={promoEmail} onChangeText={setPromoEmail} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
+     <TextInput value={promoMessage} onChangeText={setPromoMessage} multiline maxLength={300} placeholder="Dedykacja (opcjonalnie)" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,minHeight:74,marginVertical:9,fontSize:15,color:ink}}/>
+     <Pressable accessibilityRole="button" disabled={!!working} onPress={issuePromo} style={{backgroundColor:ink,borderRadius:12,padding:16,opacity:working?.5:1}}>
+      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='promo'?'Tworzę kartę…':'Wystaw i wyślij kartę podarunkową'}</Text>
+     </Pressable>
+     {!!promoError&&<Text style={{color:'#a52626',paddingVertical:11}}>{promoError}</Text>}
+     {!!promoResult&&<View style={{backgroundColor:'#edf7e8',padding:15,borderRadius:11,marginTop:13,gap:8}}>
+      <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Karta gotowa · {(promoResult.amount_grosze/100).toLocaleString('pl-PL')} zł</Text>
+      <Text style={{fontSize:12,color:muted}}>{promoResult.email_sent?'Wysłano e-mail do odbiorcy.':'Wysyłka e-mail niepotwierdzona — prześlij link samodzielnie.'}</Text>
+      <Text selectable style={{color:'#245c37',fontWeight:'800'}}>{promoResult.link}</Text>
+      <Pressable onPress={async()=>{try{if(Platform.OS==='web'&&typeof navigator!=='undefined'&&navigator.clipboard?.writeText){await navigator.clipboard.writeText(promoResult.link);setMessage('Skopiowano link.')}else await Share.share({message:promoResult.link});}catch{}}} style={{backgroundColor:ink,padding:13,borderRadius:10}}>
+       <Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Kopiuj / udostępnij kartę</Text>
+      </Pressable>
+     </View>}
     </View>}
     {tab==='giveaway'&&<View style={card}>
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kursy za darmo</Text>
