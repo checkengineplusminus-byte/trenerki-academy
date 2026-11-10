@@ -79,9 +79,6 @@ export default function MyCourses(){
  };
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:20,maxWidth:1150,alignSelf:'center',width:'100%',paddingBottom:55}}>
   <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800',marginBottom:15}}>← Katalog kursów</Text></Pressable>
-  {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'stretch',backgroundColor:'#183b2c',padding:14,borderRadius:13,marginBottom:15}}>
-    <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>Panel administratora TRENERKI →</Text>
-   </Pressable>}
   <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228',marginBottom:7}}>Moje kursy</Text>
   <Text style={{color:'#5c7460',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
   {!busy&&<View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginBottom:18}}>
@@ -110,10 +107,11 @@ export default function MyCourses(){
    </View>;
   })}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:10,marginTop:20}}>
-   {isAdmin&&<Pressable onPress={()=>router.push('/admin')} style={{backgroundColor:'#173228',padding:13,borderRadius:11}}><Text style={{color:'white',fontWeight:'800'}}>Panel administratora</Text></Pressable>}
+   
    <Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#e8f3dc',padding:13,borderRadius:11}}><Text style={{color:'#173228',fontWeight:'800'}}>🎁 Karty podarunkowe</Text></Pressable>
    <Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#e8f3dc',padding:13,borderRadius:11}}><Text style={{color:'#173228',fontWeight:'800'}}>Przeglądaj kursy</Text></Pressable>
   </View>
+  {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:17}}><Text style={{fontSize:11,color:'#718779'}}>Staff</Text></Pressable>}
   <Pressable onPress={async()=>{await supabase.auth.signOut();router.replace('/konto')}} style={{alignSelf:'flex-start',padding:13,marginTop:12}}><Text style={{color:'#476d50',fontWeight:'700'}}>Wyloguj się</Text></Pressable>
  </ScrollView>;
 }
