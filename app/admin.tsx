@@ -18,7 +18,7 @@ type SalesAnalytics={
  stripe_configuration?:{secret_key_present:boolean,webhook_secret_present:boolean,resend_configured?:boolean,sales_enabled?:boolean};
  orders:{course_slug:string,amount_grosze:number,purchased_at:string,status:string}[];
 };
-const money=(cents:number)=>Number(cents||0).toLocaleString('pl-PL',{style:'currency',currency:'PLN',maximumFractionDigits:2,minimumFractionDigits:2}) .replace(/\u00a0/g,' ');
+const money=(grosze:number)=>((Number(grosze)||0)/100).toLocaleString('pl-PL',{style:'currency',currency:'PLN',maximumFractionDigits:2,minimumFractionDigits:2}) .replace(/\u00a0/g,' ');
 
 const formatDate=(s?:string|null)=>s?new Date(s).toLocaleDateString('pl-PL'):'—';
 const card={padding:20,borderWidth:1,borderColor:'#e0eadb',backgroundColor:'white',borderRadius:16} as const;
@@ -28,7 +28,7 @@ export default function AdminPage(){
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'drafts'|'quality'|'diplomas'>('sales');
+ const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'drafts'|'quality'|'diplomas'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false);
  const [issuedGifts,setIssuedGifts]=useState<{course_slug:string;title_pl:string;code:string;link:string}[]>([]);
@@ -68,7 +68,7 @@ export default function AdminPage(){
     throw new Error(messages[detail]||'Nie udało się wygenerować prezentów. Spróbuj ponownie.');
    }
    setIssuedGifts(data.gifts||[]);setGiftSent(!!data.email_sent);setGiftQty({});
-   setMessage(data.email_sent?'Pakiet kursów został utworzony i wysłany e-mailem.':'Pakiet kursów został utworzony. Skopiuj linki poniżej i przekaż je odbiorcy.');
+   setMessage(data.email_sent?'Prezent został wysłany na wskazany e-mail.':'Kody zostały utworzone, ale wysyłka e-mail nie została potwierdzona. Skopiuj linki i prześlij je odbiorcy.');
    await refresh();setTab('giveaway');
   }catch(e:any){setGiftError(String(e?.message||'Błąd tworzenia pakietu.'));}
   finally{setWorking('')}
@@ -130,26 +130,23 @@ export default function AdminPage(){
    <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← TRENERKI Academy</Text></Pressable>
    <Text style={{fontSize:12,fontWeight:'800',color:'#72906d',letterSpacing:1.8}}>ADMINISTRACJA · TRENERKI ACADEMY</Text>
    <Text style={{fontSize:36,color:ink,fontWeight:'900'}}>Panel administratora</Text>
-   <View style={{backgroundColor:'#fff0d5',padding:17,borderRadius:13}}>
-    <Text style={{color:'#755c2d',fontWeight:'900'}}>STATYSTYKI STRIPE — TYLKO POTWIERDZONE WPŁYWY</Text>
-    <Text style={{color:'#806a3d',marginTop:7,lineHeight:22}}>Raport sprzedaży pokazuje tylko prawdziwe potwierdzone płatności Stripe. Starsze zamówienia testowe są odseparowane i nie powiększają przychodów.</Text>
-   </View>
+   <Pressable accessibilityRole="button" onPress={()=>setTab('giveaway')} style={{backgroundColor:ink,padding:16,borderRadius:13}}>
+    <Text style={{color:'white',fontSize:17,fontWeight:'900',textAlign:'center'}}>🎁 Rozdaj do 10 kursów za darmo</Text>
+    <Text style={{color:'#dcefdc',fontSize:12,marginTop:5,textAlign:'center'}}>Wpisz e-mail, zaznacz kursy i wyślij prezent.</Text>
+   </Pressable>
    {busy&&<ActivityIndicator/>}
    {!!error&&<Text style={{backgroundColor:'#ffefdf',padding:16,borderRadius:12,color:'#8c462c'}}>{error}</Text>}
    {!!stats&&<>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:10}}>
      {count('Użytkownicy',analytics?.totals.users??stats.counts?.users)}
      {count('Kursy',stats.counts?.courses)}
-     {count('Dostępy aktywne / demo',stats.counts?.active_or_demo_access)}
+     {count('Aktywne dostępy',stats.counts?.active_or_demo_access)}
      {count('Kupione kursy',analytics?.totals.purchases??'—')}
      {count('Sprzedaż',analytics?money(analytics.totals.revenue_grosze):'—')}
-     {count('Zamówienia DEMO',stats.counts?.demo_orders)}
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
-     {count('Przychód z testów','0 zł')}
-     {count('Kursy czekające na weryfikację',reviews.filter(r=>r.review_status!=='approved').length)}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['giveaway','Rozdaj kursy za darmo'],['drafts','Dokumenty testowe'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
+     {([['giveaway','🎁 Rozdaj kursy'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['diplomas','Dyplomy'],['orders','Archiwum DEMO'],['drafts','Dokumenty testowe']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -248,7 +245,7 @@ export default function AdminPage(){
     </View>}
     {tab==='giveaway'&&<View style={card}>
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kursy za darmo</Text>
-     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wybierz od 1 do 10 kursów. Każdy kod jest jednorazowy i daje 12 miesięcy nauki od momentu odbioru. To prezenty od administratora — Stripe nie pobiera opłaty.</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wpisz e-mail, wybierz do 10 kursów i wyślij prezent. Każdy kurs ma własny jednorazowy link, ważny przez trzy lata. Dostęp do nauki trwa 12 miesięcy od odbioru.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:15}}>
       <Pressable accessibilityRole="button" onPress={()=>{setGiftCompany(false);setIssuedGifts([])}} style={{backgroundColor:!giftCompany?ink:pale,padding:12,borderRadius:10}}>
        <Text style={{fontSize:13,fontWeight:'900',color:!giftCompany?'white':ink}}>Dla jednej osoby</Text>
@@ -268,8 +265,13 @@ export default function AdminPage(){
      <TextInput placeholder="Znajdź kurs po nazwie…" value={giftSearch} onChangeText={setGiftSearch}
       style={{padding:12,borderWidth:1,borderColor:'#d5e3d1',borderRadius:10,color:ink,marginBottom:10}}/>
      <View style={{gap:6}}>
-      {courses.filter(c=>c.title_pl.toLocaleLowerCase('pl').includes(giftSearch.toLocaleLowerCase('pl').trim())).slice(0,25).map(c=><View key={c.slug} style={{borderBottomWidth:1,borderColor:'#edf1e9',paddingVertical:9,flexDirection:'row',gap:8,alignItems:'center'}}>
-       <Text style={{flex:1,fontSize:12,color:ink,fontWeight:'700'}}>{c.title_pl}</Text>
+      {courses.filter(c=>c.title_pl.toLocaleLowerCase('pl').includes(giftSearch.toLocaleLowerCase('pl').trim())).slice(0,giftSearch.trim()?80:25).map(c=><View key={c.slug} style={{borderBottomWidth:1,borderColor:'#edf1e9',paddingVertical:9,flexDirection:'row',gap:8,alignItems:'center'}}>
+        <Pressable accessibilityRole="checkbox" accessibilityState={{checked:(giftQty[c.slug]||0)>0}} onPress={()=>adjustGiftQuantity(c.slug,(giftQty[c.slug]||0)>0?-(giftQty[c.slug]||0):1)} style={{flex:1,flexDirection:'row',gap:9,alignItems:'center',paddingVertical:7}}>
+         <View style={{width:22,height:22,borderRadius:6,borderWidth:2,borderColor:(giftQty[c.slug]||0)>0?'#29663b':'#afc5ae',backgroundColor:(giftQty[c.slug]||0)>0?'#29663b':'white',justifyContent:'center',alignItems:'center'}}>
+          {(giftQty[c.slug]||0)>0&&<Text style={{color:'white',fontWeight:'900'}}>✓</Text>}
+         </View>
+         <Text style={{flex:1,fontSize:13,color:ink,fontWeight:(giftQty[c.slug]||0)>0?'900':'600'}}>{c.title_pl}</Text>
+        </Pressable>
        <Pressable accessibilityRole="button" accessibilityLabel={'Usuń jeden kod: '+c.title_pl} onPress={()=>adjustGiftQuantity(c.slug,-1)}
         style={{padding:9,backgroundColor:'#e6eee0',borderRadius:9}}><Text style={{color:ink,fontWeight:'900'}}>−</Text></Pressable>
        <Text style={{fontSize:14,fontWeight:'900',color:ink,minWidth:18,textAlign:'center'}}>{giftQty[c.slug]||0}</Text>
@@ -277,10 +279,10 @@ export default function AdminPage(){
         style={{padding:9,backgroundColor:'#e6eee0',borderRadius:9,opacity:giftTotal>=10?.5:1}}><Text style={{color:ink,fontWeight:'900'}}>+</Text></Pressable>
       </View>)}
      </View>
-     <Text style={{color:muted,fontSize:12,marginTop:11}}>Wyszukiwarka pokazuje do 25 wyników. Możesz wybrać kilka kodów tego samego kursu.</Text>
+     <Text style={{color:muted,fontSize:12,marginTop:11}}>Kliknij nazwę kursu, aby go zaznaczyć. Użyj + i −, jeśli chcesz wysłać więcej niż jeden kod tego samego kursu.</Text>
      <Pressable accessibilityRole="button" disabled={!!working||giftTotal<1||(!giftCompany&&!giftEmail.trim())} onPress={issueAdminGifts}
       style={{backgroundColor:ink,marginTop:19,borderRadius:12,padding:16,opacity:!!working||giftTotal<1||(!giftCompany&&!giftEmail.trim())?.5:1}}>
-      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='admin-gifts'?'Tworzę pakiet…':'Utwórz i wyślij '+giftTotal+' bezpłatnych '+(giftTotal===1?'kurs':'kodów')}</Text>
+      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='admin-gifts'?'Tworzę pakiet…':'Wyślij prezent — '+giftTotal+' '+(giftTotal===1?'kurs':'kursów')}</Text>
      </Pressable>
      {!!giftError&&<Text style={{color:'#a52626',padding:11}}>{giftError}</Text>}
      {!!issuedGifts.length&&<View style={{padding:14,backgroundColor:'#eff7e9',marginTop:15,borderRadius:11,gap:10}}>
