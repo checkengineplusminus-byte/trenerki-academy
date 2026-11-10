@@ -34,6 +34,11 @@ Deno.serve(async req=>{
    if(charge.amount_refunded>=charge.amount&&typeof charge.payment_intent==='string'){
     const {error}=await db.rpc('ta_refund_stripe_payment',{p_payment:charge.payment_intent});
     if(error)throw error;
+    const [{error:splitError},{error:voucherError}]=await Promise.all([
+     db.rpc('ta_credit_refund_split',{p_payment:charge.payment_intent}),
+     db.rpc('ta_credit_refund_voucher',{p_payment:charge.payment_intent})
+    ]);
+    if(splitError||voucherError)throw splitError||voucherError;
    }
    return reply();
   }
@@ -43,11 +48,64 @@ Deno.serve(async req=>{
     const {error}=await db.from('ta_gift_cards').update({status:'cancelled'}).eq('id',id).eq('status','pending');
     if(error)throw error;
    }
+   const creditHoldId=event.data.object.metadata?.ta_credit_hold_id;
+   if(creditHoldId){
+    const {error:holdError}=await db.rpc('ta_credit_cancel_hold',{p_hold:creditHoldId,p_session:event.data.object.id});
+    if(holdError)throw holdError;
+   }
+   const creditVoucherId=event.data.object.metadata?.ta_credit_voucher_id;
+   if(creditVoucherId){
+    const {error:cancelError}=await db.from('ta_credit_vouchers').update({status:'cancelled'})
+      .eq('id',creditVoucherId).eq('status','pending');
+    if(cancelError)throw cancelError;
+   }
    return reply();
   }
   if(!['checkout.session.completed','checkout.session.async_payment_succeeded'].includes(event.type))return reply();
   const s=event.data.object as Stripe.Checkout.Session;
   if(s.payment_status!=='paid'||s.mode!=='payment'||!s.id)return reply();
+  const voucherId=s.metadata?.ta_credit_voucher_id;
+  if(voucherId){
+   const uid=s.metadata?.user_id||'',amount=Number(s.metadata?.credit_amount_grosze);
+   const payment=s.payment_intent;
+   if(!uid||s.client_reference_id!==uid||!Number.isSafeInteger(amount)||amount<2500||amount>100000||
+    s.amount_total!==amount||s.currency!=='pln'||typeof payment!=='string')return reply(400);
+   const {data:issued,error:issueError}=await db.rpc('ta_credit_issue_voucher',{
+    p_id:voucherId,p_user:uid,p_session:s.id,p_payment:payment,p_amount:amount,p_paid_at:new Date(event.created*1000).toISOString()
+   });
+   if(issueError||issued?.error)throw new Error('value_gift_confirmation_failed');
+   const {data:gift,error:giftError}=await db.from('ta_credit_vouchers')
+    .select('status,recipient_email,gift_message,buyer_email_sent_at,recipient_email_sent_at')
+    .eq('id',voucherId).eq('stripe_checkout_session_id',s.id).single();
+   if(giftError)throw giftError;
+   const {data:refunded,error:re}=await db.from('ta_stripe_refunds').select('payment_id').eq('payment_id',payment).maybeSingle();
+   if(re)throw re;
+   if(refunded){await db.rpc('ta_credit_refund_voucher',{p_payment:payment});return reply();}
+   if(gift.status!=='issued')return reply();
+   const {data:{user},error:userError}=await db.auth.admin.getUserById(uid);
+   if(userError||!user?.email)return reply(500);
+   const amountStr=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(amount/100);
+   const giftCode='TW-'+voucherId.replaceAll('-','').toUpperCase();
+   const giftLink=site+'/prezent?code='+giftCode;
+   if(!gift.buyer_email_sent_at){
+    await sendMail('trenerki-value-buyer-'+s.id,user.email,'TRENERKI Academy — karta podarunkowa '+amountStr,
+     '<p>Zakupiono kartę podarunkową o wartości <strong>'+escape(amountStr)+'</strong>.</p>'+
+     '<p>Odbiorca: '+escape(gift.recipient_email)+'. Kod odbioru: <strong>'+escape(giftCode)+'</strong>.</p>'+
+     '<p>Po odebraniu kodu saldo pojawi się na koncie odbiorcy.</p>');
+    const {error}=await db.from('ta_credit_vouchers').update({buyer_email_sent_at:new Date().toISOString()}).eq('id',voucherId);
+    if(error)throw error;
+   }
+   if(!gift.recipient_email_sent_at){
+    await sendMail('trenerki-value-recipient-'+s.id,gift.recipient_email,'TRENERKI Academy — otrzymujesz '+amountStr+' na kursy',
+     '<h2>Masz prezent!</h2><p>Twoja karta podarunkowa ma wartość <strong>'+escape(amountStr)+'</strong>.</p>'+
+     '<p>'+escape(gift.gift_message||'Wybierz kurs, który Cię zainteresuje.')+'</p>'+
+     '<p>Kod: <strong>'+escape(giftCode)+'</strong></p>'+
+     '<p><a href="'+escape(giftLink)+'">Odbierz środki na swoje konto</a>. Resztę salda możesz wykorzystać przy kolejnych zakupach.</p>');
+    const {error}=await db.from('ta_credit_vouchers').update({recipient_email_sent_at:new Date().toISOString()}).eq('id',voucherId);
+    if(error)throw error;
+   }
+   return reply();
+  }
   const slug=s.metadata?.course_slug||'',uid=s.metadata?.user_id||'';
   if(!slug||!uid)return reply(); // Other Checkout integrations may share this Stripe account.
   const paymentId=s.payment_intent;
@@ -70,6 +128,35 @@ Deno.serve(async req=>{
    const {error:refundError}=await db.rpc('ta_refund_stripe_payment',{p_payment:paymentId});
    if(refundError)throw refundError;
    return true;
+  }
+  const splitHoldId=s.metadata?.ta_credit_hold_id;
+  if(splitHoldId){
+   const {data:applied,error:finalizeError}=await db.rpc('ta_credit_finalize_split',{
+    p_hold:splitHoldId,p_user:uid,p_course:slug,p_session:s.id,p_payment:paymentId,p_paid:amount
+   });
+   if(finalizeError||applied?.error)throw new Error('split_course_payment_not_finalized');
+   const {data:refunded,error:re}=await db.from('ta_stripe_refunds').select('payment_id').eq('payment_id',paymentId).maybeSingle();
+   if(re)throw re;
+   if(refunded){
+    const {error:refundEnrollment}=await db.rpc('ta_refund_stripe_payment',{p_payment:paymentId});
+    const {error:refundWallet}=await db.rpc('ta_credit_refund_split',{p_payment:paymentId});
+    if(refundEnrollment||refundWallet)throw refundEnrollment||refundWallet;
+    return reply();
+   }
+   const {data:order,error:orderError}=await db.from('ta_enrollments')
+    .select('buyer_email_sent_at').eq('stripe_checkout_session_id',s.id).single();
+   if(orderError)throw orderError;
+   if(!order.buyer_email_sent_at){
+    const walletUsed=Number(s.metadata?.course_price_grosze)-amount;
+    const walletStr=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(walletUsed/100);
+    await sendMail('trenerki-split-buyer-'+s.id,email,'TRENERKI Academy — zakup kursu',
+     '<p>Odblokowano kurs <strong>'+title+'</strong>.</p>'+
+     '<p>Wykorzystane saldo karty: '+escape(walletStr)+'. Dopłata Stripe: '+escape(cost)+'.</p>'+
+     '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a></p>');
+    const {error}=await db.from('ta_enrollments').update({buyer_email_sent_at:new Date().toISOString()}).eq('stripe_checkout_session_id',s.id);
+    if(error)throw error;
+   }
+   return reply();
   }
   const giftId=s.metadata?.gift_id;
   if(giftId){
