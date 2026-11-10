@@ -12,6 +12,7 @@ export default function GiftPage(){
  const [catalog,setCatalog]=useState<Course[]>([]),[query,setQuery]=useState(''),[category,setCategory]=useState('Wszystkie'),[visible,setVisible]=useState(8);
  const p=useLocalSearchParams<{course?:string;code?:string;checkout?:string}>(),router=useRouter();
  const course=typeof p.course==='string'?p.course:'',linkCode=typeof p.code==='string'?p.code:'';
+ const [valueCardMode,setValueCardMode]=useState(false),[valueAmount,setValueAmount]=useState('100'),[valueRecipient,setValueRecipient]=useState(''),[valueMessage,setValueMessage]=useState(''),[valueTerms,setValueTerms]=useState(false);
  const [recipient,setRecipient]=useState(''),[message,setMessage]=useState(''),[code,setCode]=useState(linkCode),[item,setItem]=useState<Course|null>(null),
  [ready,setReady]=useState(false),[terms,setTerms]=useState(false),[busy,setBusy]=useState(false),
  [link,setLink]=useState(''),[notice,setNotice]=useState(''),[sent,setSent]=useState(false);
@@ -29,6 +30,29 @@ export default function GiftPage(){
   }catch(e:any){if(mounted)setNotice(e?.message||'Nie udało się pobrać listy kursów.');}
   finally{if(mounted)setReady(true);}
  })();return()=>{mounted=false};},[course]);
+ async function createValueGift(){
+  if(busy)return;
+  setBusy(true);setNotice('');
+  try{
+   const {data:{user}}=await supabase.auth.getUser();
+   if(!user?.email_confirmed_at){router.push('/konto');return;}
+   const amount=Number(valueAmount.replace(',','.'));
+   if(!Number.isFinite(amount)||amount<25||amount>1000||Math.round(amount*100)!==amount*100)
+    throw new Error('Wpisz kwotę od 25 do 1000 zł (maksymalnie dwa miejsca po przecinku).');
+   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueRecipient.trim()))
+    throw new Error('Wpisz poprawny e-mail odbiorcy.');
+   if(!valueTerms)throw new Error('Przed zakupem zaakceptuj regulamin.');
+   const {data,error}=await supabase.functions.invoke('ta-credit',{body:{
+    action:'create_voucher',amount_grosze:Math.round(amount*100),recipient_email:valueRecipient.trim(),
+    message:valueMessage.trim(),accepted_terms:true
+   }});
+   if(error||!data?.ok||typeof data?.url!=='string'||!data.url.startsWith('https://checkout.stripe.com/'))
+    throw new Error('Nie udało się utworzyć bezpiecznej płatności. Nie pobrano pieniędzy.');
+   if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(data.url);
+   else await Linking.openURL(data.url);
+  }catch(e:any){setNotice(e?.message||'Nie udało się utworzyć karty podarunkowej.');}
+  finally{setBusy(false);}
+ }
  async function createGift(){
   if(!item||busy)return;setBusy(true);setNotice('');
   try{
@@ -71,8 +95,17 @@ export default function GiftPage(){
   try{
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.push({pathname:'/konto',params:{gift:code.trim()}});return;}
-   await academyAction('redeem_gift',{code:code.trim()});
-   setNotice('Prezent odebrany! Kurs czeka już na Twoim koncie.');
+   if(/^TW-[0-9A-F]{32}$/i.test(code.trim())){
+    const {data,error}=await supabase.functions.invoke('ta-credit',{body:{action:'redeem',code:code.trim().toUpperCase()}});
+    if(error||!data?.ok){
+     const err=data?.error||'';
+     throw new Error(err==='wrong_email'?'Ta karta jest przypisana do innego adresu e-mail.':err==='code_used_or_expired'?'Ten kod został już użyty lub stracił ważność.':'Nie udało się odebrać karty. Sprawdź kod.');
+    }
+    setNotice('Karta odebrana. Saldo zostało dodane do Twojego konta.');
+   }else{
+    await academyAction('redeem_gift',{code:code.trim()});
+    setNotice('Prezent odebrany! Kurs czeka już na Twoim koncie.');
+   }
    router.replace('/moje-kursy');
   }catch(e:any){setNotice(e?.message||'Nie udało się odebrać prezentu.');}
   finally{setBusy(false)}
@@ -102,7 +135,35 @@ export default function GiftPage(){
    {!ready&&<ActivityIndicator/>}
    {p.checkout==='success'&&<Text style={{color:ink}}>Czekamy na potwierdzenie płatności ze Stripe. Po jego otrzymaniu wyślemy wiadomość do Ciebie i odbiorcy.</Text>}
    {!item&&!ready&&<Text style={{color:'#5e7b62'}}>Wczytuję kursy do wyboru…</Text>}
-   {!!item&&<View style={{alignSelf:'stretch',maxWidth:740,width:'100%',backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#e2e9d8',borderRadius:18,gap:12}}>
+   <View style={{flexDirection:'row',gap:9,flexWrap:'wrap',marginBottom:4}}>
+    <Pressable accessibilityRole="button" onPress={()=>setValueCardMode(false)} style={{backgroundColor:!valueCardMode?ink:pale,paddingVertical:13,paddingHorizontal:18,borderRadius:12,flexGrow:1}}>
+     <Text style={{color:!valueCardMode?'white':ink,textAlign:'center',fontWeight:'900'}}>🎁 Podaruj kurs</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={()=>setValueCardMode(true)} style={{backgroundColor:valueCardMode?ink:pale,paddingVertical:13,paddingHorizontal:18,borderRadius:12,flexGrow:1}}>
+     <Text style={{color:valueCardMode?'white':ink,textAlign:'center',fontWeight:'900'}}>💳 Karta na kwotę</Text>
+    </Pressable>
+   </View>
+   {valueCardMode&&<View style={{backgroundColor:'white',borderRadius:17,borderWidth:1,borderColor:'#dce9d9',padding:width<540?16:23,gap:13}}>
+    <Text style={{fontSize:23,fontWeight:'900',color:ink}}>Podaruj środki na dowolny kurs</Text>
+    <Text style={{color:'#54705a',lineHeight:22,fontSize:14}}>Odbiorca dostanie kartę z saldem na swoim koncie. Może kupić kilka kursów, a jeśli zabraknie środków — dopłaci różnicę.</Text>
+    <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
+     {[50,100,200,500].map(amount=><Pressable key={amount} onPress={()=>setValueAmount(String(amount))} style={{backgroundColor:valueAmount===String(amount)?ink:pale,borderRadius:10,paddingVertical:10,paddingHorizontal:14}}>
+      <Text style={{color:valueAmount===String(amount)?'white':ink,fontWeight:'800'}}>{amount} zł</Text>
+     </Pressable>)}
+    </View>
+    <Text style={{fontSize:13,fontWeight:'800',color:ink}}>Kwota karty (25–1000 zł)</Text>
+    <TextInput accessibilityLabel="Kwota karty podarunkowej w złotych" value={valueAmount} onChangeText={setValueAmount} keyboardType="decimal-pad" placeholder="100" style={[input,{marginTop:0}]}/>
+    <Text style={{fontSize:13,fontWeight:'800',color:ink}}>E-mail odbiorcy</Text>
+    <TextInput accessibilityLabel="E-mail odbiorcy karty" value={valueRecipient} onChangeText={setValueRecipient} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={[input,{marginTop:0}]}/>
+    <TextInput accessibilityLabel="Dedykacja" value={valueMessage} onChangeText={setValueMessage} maxLength={300} multiline placeholder="Dodaj dedykację (opcjonalnie)" style={[input,{minHeight:82,textAlignVertical:'top',marginTop:0}]}/>
+    <Pressable accessibilityRole="checkbox" accessibilityState={{checked:valueTerms}} onPress={()=>setValueTerms(v=>!v)}><Text style={{color:ink,fontSize:14}}>{valueTerms?'☑':'☐'} Akceptuję regulamin zakupu karty podarunkowej.</Text></Pressable>
+    <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}><Text style={{color:'#47795b',textDecorationLine:'underline',fontSize:12}}>Przeczytaj regulamin</Text></Pressable>
+    <Pressable accessibilityRole="button" onPress={createValueGift} disabled={busy||!valueTerms} style={{backgroundColor:ink,borderRadius:11,padding:16,opacity:busy||!valueTerms?.5:1}}>
+     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Kup kartę podarunkową →</Text>
+    </Pressable>
+   </View>}
+
+   {!valueCardMode&&!!item&&<View style={{alignSelf:'stretch',maxWidth:740,width:'100%',backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#e2e9d8',borderRadius:18,gap:12}}>
     <Text style={{color:'#73816c',fontWeight:'800',fontSize:12}}>TWÓJ WYBÓR — KURS NA PREZENT</Text>
     <Pressable onPress={()=>{setItem(null);setNotice('')}} accessibilityRole="button" style={{alignSelf:'flex-end',padding:6}}><Text style={{color:'#4b7456',fontSize:12,fontWeight:'800'}}>Zmień kurs ↓</Text></Pressable>
     <Text style={{fontSize:23,fontWeight:'800',color:ink,lineHeight:30}}>{item.title_pl}</Text>
@@ -118,7 +179,7 @@ export default function GiftPage(){
      <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{busy?'Chwileczkę…':item.price_grosze===0?'Utwórz kartę podarunkową →':'Kupuję i płacę '+(item.price_grosze/100).toLocaleString('pl-PL')+' zł →'}</Text>
     </Pressable>
    </View>}
-   <View style={{marginTop:12,gap:13}}>
+   {!valueCardMode&&<View style={{marginTop:12,gap:13}}>
     <View style={{gap:5}}>
      <Text style={{fontSize:24,color:ink,fontWeight:'900'}}>Wybierz kurs na prezent</Text>
      <Text style={{color:'#5b745e',fontSize:14}}>Do wyboru {gifts.length} płatnych kursów. Znajdź coś, co naprawdę zainteresuje obdarowaną osobę.</Text>
@@ -146,7 +207,7 @@ export default function GiftPage(){
     {matching.length>visible&&<Pressable accessibilityRole="button" onPress={()=>setVisible(v=>v+4)} style={{alignSelf:'center',backgroundColor:pale,borderRadius:12,paddingVertical:11,paddingHorizontal:20}}>
      <Text style={{color:ink,fontWeight:'800'}}>Pokaż kolejne 4 kursy ({matching.length-visible} pozostało)</Text>
     </Pressable>}
-   </View>
+   </View>}
    {!!link&&<View style={{backgroundColor:pale,borderRadius:18,padding:22,gap:10}}>
     <Text style={{color:ink,fontSize:20,fontWeight:'900'}}>Prezent gotowy!</Text>
     <Text style={{color:ink,fontWeight:'800'}}>Twój kod: {code}</Text>
