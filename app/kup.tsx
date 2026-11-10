@@ -5,7 +5,7 @@ import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
-type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string,review_status:string};
+type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string,review_status:string,study_minutes:number|null,workshop_count:number|null};
 const ink='#193a2c',muted='#5b7563',lime='#e6f3d6';
 export default function Purchase(){
  const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
@@ -19,7 +19,7 @@ export default function Purchase(){
    if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
    const [courseResult,previewResult,enrollmentResult,profile]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
-    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status').eq('course_slug',slug).maybeSingle(),
+    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status,study_minutes,workshop_count').eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1),
     academyAction('whoami')
    ]);
@@ -64,6 +64,7 @@ export default function Purchase(){
    {!!item&&<>
     <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#dbe8d9',padding:23,gap:11}}>
      <Text style={{fontSize:12,color:'#6b8d70',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'} · {preview?.module_titles?.length||0} LEKCJI</Text>
+     {!!preview?.study_minutes&&<Text style={{color:muted,fontWeight:'800'}}>Około {Math.floor(preview.study_minutes/60)} godz.{preview.study_minutes%60?' '+preview.study_minutes%60+' min':''} · {preview.workshop_count} {preview.workshop_count===4?'pracownie':'pracowni'}</Text>}
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
      <Text style={{fontSize:15,color:muted,lineHeight:24}}>{item.description_pl}</Text>
      <Text style={{fontSize:27,fontWeight:'900',color:ink}}>{item.price_grosze===0?'GRATIS':price}</Text>
