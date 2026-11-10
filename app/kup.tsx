@@ -11,11 +11,15 @@ export default function Purchase(){
  const router=useRouter(),[item,setItem]=useState<Course|null>(null),[preview,setPreview]=useState<Preview|null>(null),
  [email,setEmail]=useState(''),[termsAccepted,setTermsAccepted]=useState(false),[earlyAccessConsent,setEarlyAccessConsent]=useState(false),[busy,setBusy]=useState(true),
  [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState('');
+ const [creditBalance,setCreditBalance]=useState(0),[applyCredit,setApplyCredit]=useState(true);
  useEffect(()=>{let active=true;void (async()=>{
   if(!slug){setMessage('Wybierz kurs w katalogu.');setBusy(false);return;}
   try{
    const {data:{user},error:authError}=await supabase.auth.getUser();
    if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
+   void supabase.functions.invoke('ta-credit',{body:{action:'balance'}})
+    .then(({data,error})=>{if(active&&!error&&data?.ok)setCreditBalance(Math.max(0,Number(data.available_grosze||0)))})
+    .catch(()=>{});
    const [courseResult,previewResult,enrollmentResult]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
     supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status,study_minutes,workshop_count').eq('course_slug',slug).maybeSingle(),
@@ -40,6 +44,33 @@ export default function Purchase(){
     router.replace('/moje-kursy');return;
    }
    if(!termsAccepted||!earlyAccessConsent)throw new Error('Zaznacz obie wymagane zgody przed płatnością.');
+   // The server atomically reserves wallet funds, or grants a fully covered course.
+   if(applyCredit&&creditBalance>0){
+    const {data:wallet,error:walletError}=await supabase.functions.invoke('ta-credit',{body:{
+     action:'purchase_course',course_slug:slug,accepted_terms:true,immediate_content_consent:true
+    }});
+    if(!walletError&&wallet?.ok){
+     if(wallet.mode==='covered'){router.replace('/moje-kursy');return;}
+     if(wallet.mode==='split'&&typeof wallet.url==='string'&&wallet.url.startsWith('https://checkout.stripe.com/')){
+      if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(wallet.url);
+      else await Linking.openURL(wallet.url);
+      return;
+     }
+     throw new Error('Nie udało się przygotować dopłaty z karty. Spróbuj ponownie.');
+    }
+    let reason=String(wallet?.error||'');
+    try{reason=String((await (walletError as any)?.context?.json())?.error||reason)}catch{}
+    if(reason!=='no_balance'){
+     const messages:Record<string,string>={
+      already_owned:'Masz już dostęp do tego kursu.',
+      purchase_in_progress:'Masz rozpoczętą płatność za ten kurs. Dokończ ją lub spróbuj ponownie później.',
+      payments_not_ready:'Dopłata Stripe jest chwilowo niedostępna.',
+      invalid_course:'Ten kurs nie jest dostępny.',
+      consent_required:'Zaakceptuj regulamin i warunki zakupu.'
+     };
+     throw new Error(messages[reason]||'Nie udało się użyć salda. Spróbuj ponownie.');
+    }
+   }
    // Price, account ownership and course publication are re-checked by the server.
    const {data,error}=await supabase.functions.invoke('ta-create-checkout',{
     body:{course_slug:slug,accepted_terms:true,immediate_content_consent:true}
@@ -69,6 +100,9 @@ export default function Purchase(){
   finally{setPaying(false);}
  }
  const price=item?(item.price_grosze/100).toLocaleString('pl-PL')+' zł':'';
+ const effectiveCredit=item&&applyCredit?(creditBalance>=item.price_grosze?item.price_grosze:Math.min(creditBalance,Math.max(0,item.price_grosze-200))):0;
+ const toPay=item?item.price_grosze-effectiveCredit:0;
+ const pln=(grosze:number)=>(grosze/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł';
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:22,paddingBottom:60}}>
   <View style={{maxWidth:820,width:'100%',alignSelf:'center',gap:18}}>
    <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← Wróć do katalogu</Text></Pressable>
@@ -114,7 +148,15 @@ export default function Purchase(){
      <Text style={{color:muted}}>Zalogowano: {email}</Text>
      <Text style={{fontSize:23,fontWeight:'900',color:ink}}>Cena katalogowa: {item.price_grosze===0?'0 zł':price}</Text>
      {item.price_grosze>0&&!owned&&<View style={{backgroundColor:'#f6f7f0',borderRadius:12,padding:15,gap:13}}>
-       <Text style={{color:ink,fontWeight:'900'}}>Bezpieczna płatność Stripe · jednorazowo {price}</Text>
+       {creditBalance>0&&<View style={{padding:12,borderRadius:11,backgroundColor:'#e7f2dd',gap:8}}>
+        <Text style={{color:ink,fontWeight:'900'}}>Twoje saldo kart: {pln(creditBalance)}</Text>
+        <Pressable accessibilityRole="checkbox" accessibilityState={{checked:applyCredit}} onPress={()=>setApplyCredit(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'center',paddingVertical:5}}>
+         <Text style={{fontSize:19,color:ink}}>{applyCredit?'☑':'☐'}</Text>
+         <Text style={{flex:1,color:ink,fontWeight:'700'}}>Wykorzystaj moje saldo przy zakupie</Text>
+        </Pressable>
+        {applyCredit&&<Text style={{color:ink,fontSize:13}}>Z salda: {pln(effectiveCredit)} · {toPay===0?'Bez dopłaty':('Dopłata Stripe: '+pln(toPay))}</Text>}
+       </View>}
+       <Text style={{color:ink,fontWeight:'900'}}>{applyCredit&&creditBalance>0?toPay===0?'Zapłata w całości ze środków na koncie':'Do dopłaty przez Stripe: '+pln(toPay):'Bezpieczna płatność Stripe · jednorazowo '+price}</Text>
        <Text style={{color:muted,fontSize:13,lineHeight:20}}>Dostęp na 12 miesięcy po potwierdzonej płatności. Brak automatycznego odnawiania. Kurs odblokowuje się na Twoim koncie.</Text>
        <Pressable accessibilityRole="checkbox" accessibilityState={{checked:termsAccepted}} onPress={()=>setTermsAccepted(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6}}>
         <Text style={{fontSize:20,color:ink}}>{termsAccepted?'☑':'☐'}</Text>
@@ -128,7 +170,7 @@ export default function Purchase(){
      {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
      </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent)))?0.5:1}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':'Kupuję i płacę '+price+' →'}</Text>
+      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':(applyCredit&&creditBalance>0?(toPay===0?'Kupuję z salda':'Dopłacam '+pln(toPay)):'Kupuję i płacę '+price)+' →'}</Text>
      </Pressable>}
      <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs</Text>
