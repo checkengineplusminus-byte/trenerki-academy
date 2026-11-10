@@ -29,3 +29,10 @@
 .anielka-choice-footer button:hover{background:#c5ec82}
 .anielka-privacy{display:block;margin:15px 0 0;color:#647c6a;font-size:11px;line-height:1.65}
 @media(max-width:680px){.anielka-finder{padding:18px 16px;border-radius:17px;margin-bottom:20px}.anielka-finder-header{gap:11px}.anielka-avatar{width:45px;height:45px;flex-basis:45px;font-size:20px}.anielka-finder-header h3{font-size:19px;line-height:1.4}.anielka-finder-header p{font-size:13px}.anielka-input-row{flex-direction:column}.anielka-input-row button{min-height:48px}.anielka-recommendations{grid-template-columns:1fr}.anielka-choice{padding:14px}}
+
+/* One Anielka search input: prominent inside catalogue, reuses nav field on course details. */
+.anielka-finder>.anielka-nav-search{width:100%;max-width:none;min-width:0;flex:initial;position:relative;margin:10px 0 5px;padding:7px 12px;background:#fff;border:1px solid #a8cfa7;border-radius:14px;box-shadow:0 4px 16px rgba(17,51,27,.06)}
+.anielka-finder>.anielka-nav-search input{font-size:16px;line-height:1.55;padding:13px 4px}
+.anielka-finder>.anielka-nav-search .anielka-nav-avatar{width:41px;height:41px;flex-basis:41px;border-radius:11px}
+.anielka-finder>.anielka-nav-search .anielka-peek:not(:empty){z-index:90;max-height:55vh;overflow:auto}
+@media(max-width:680px){.anielka-finder>.anielka-nav-search{padding:5px 8px}.anielka-finder>.anielka-nav-search input{font-size:15px;padding:11px 3px}}
