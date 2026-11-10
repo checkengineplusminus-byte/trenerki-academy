@@ -86,7 +86,7 @@ export default function GiftPage(){
    }
    const result=await academyAction('create_gift',{course_slug:item.slug,recipient_email:recipient.trim(),message:message.trim()});
    setCode(result.code);setLink(result.link);setSent(!!result.email_sent);
-   setNotice(result.email_sent?'Prezent utworzony i wysłany na podany e-mail.':'Prezent gotowy! Skopiuj link lub udostępnij go samodzielnie. Automatyczna wysyłka e-mail nie jest jeszcze skonfigurowana.');
+   setNotice(result.email_sent?'Prezent utworzony i wysłany na podany e-mail.':'Prezent gotowy! Nie otrzymaliśmy potwierdzenia wysyłki e-mail — możesz skopiować link i przesłać go samodzielnie.');
   }catch(e:any){setNotice(e?.message||'Nie udało się utworzyć prezentu.');}
   finally{setBusy(false)}
  }
