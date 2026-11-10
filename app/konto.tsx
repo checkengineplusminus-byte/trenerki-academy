@@ -14,6 +14,7 @@ export default function AccountPage(){
  const [isAdmin,setIsAdmin]=useState(false);
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const continueToSelectedCourse=async()=>{
+    if(params.next==='company'){router.replace('/firma');return;}
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
     if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course}});return;}
     // Email confirmation sends users back to /konto without original query params.
