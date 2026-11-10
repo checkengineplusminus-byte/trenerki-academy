@@ -1,8 +1,7 @@
 import React,{useEffect,useState} from 'react';
-import {ScrollView,View,Text,Pressable,ActivityIndicator,Linking} from 'react-native';
+import {ScrollView,View,Text,Pressable,ActivityIndicator,Linking,Platform} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
-import {academyAction} from '../src/academyApi';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
 type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string,review_status:string,study_minutes:number|null,workshop_count:number|null};
@@ -10,24 +9,23 @@ const ink='#193a2c',muted='#5b7563',lime='#e6f3d6';
 export default function Purchase(){
  const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
  const router=useRouter(),[item,setItem]=useState<Course|null>(null),[preview,setPreview]=useState<Preview|null>(null),
- [email,setEmail]=useState(''),[isAdmin,setIsAdmin]=useState(false),[busy,setBusy]=useState(true),
+ [email,setEmail]=useState(''),[termsAccepted,setTermsAccepted]=useState(false),[earlyAccessConsent,setEarlyAccessConsent]=useState(false),[busy,setBusy]=useState(true),
  [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState('');
  useEffect(()=>{let active=true;void (async()=>{
   if(!slug){setMessage('Wybierz kurs w katalogu.');setBusy(false);return;}
   try{
    const {data:{user},error:authError}=await supabase.auth.getUser();
    if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
-   const [courseResult,previewResult,enrollmentResult,profile]=await Promise.all([
+   const [courseResult,previewResult,enrollmentResult]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
     supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status,study_minutes,workshop_count').eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1),
-    academyAction('whoami')
    ]);
    if(courseResult.error||!courseResult.data)throw courseResult.error||new Error('Nie odnaleziono kursu.');
    if(previewResult.error)throw previewResult.error;
    if(active){
     setItem(courseResult.data);setPreview(previewResult.data);setEmail(user.email||'');
-    setOwned(enrollmentResult.data?.[0]?.status||'');setIsAdmin(!!profile.is_admin);
+    setOwned(enrollmentResult.data?.[0]?.status||'');
    }
   }catch(e:any){if(active)setMessage(e?.message||'Nie udało się pobrać danych kursu.');}
   finally{if(active)setBusy(false);}
@@ -38,20 +36,33 @@ export default function Purchase(){
   try{
    if(item.price_grosze===0){
     const {data,error}=await supabase.functions.invoke('ta-enroll-free',{body:{course_slug:slug}});
-    if(error){
-     let code='';try{const context=(error as any).context;if(context?.json)code=String((await context.json()).error||'');}catch{}
-     if(code==='already_enrolled_or_expired')throw new Error('Kurs jest już zapisany na Twoim koncie. Otwórz „Moje kursy”.');
-     throw new Error('Nie udało się odebrać darmowego kursu. Spróbuj ponownie.');
-    }
-    if(!data?.ok)throw new Error('Nie udało się odebrać darmowego kursu.');
-   }else{
-    if(!isAdmin)throw new Error('Symulacja zakupu jest dostępna wyłącznie na koncie administratora. Na razie nie pobieramy prawdziwych płatności.');
-    const result=await academyAction('demo_checkout',{course_slug:slug});
-    if(!result?.ok)throw new Error('Nie udało się zakończyć symulacji.');
+    if(error||!data?.ok)throw new Error('Nie udało się odebrać darmowego kursu. Sprawdź konto i spróbuj ponownie.');
+    router.replace('/moje-kursy');return;
    }
-   router.replace('/moje-kursy');
+   if(!termsAccepted||!earlyAccessConsent)throw new Error('Zaznacz obie wymagane zgody przed płatnością.');
+   // Price, account ownership and course publication are re-checked by the server.
+   const {data,error}=await supabase.functions.invoke('ta-create-checkout',{
+    body:{course_slug:slug,accepted_terms:true,immediate_content_consent:true}
+   });
+   if(error){
+    let code='';
+    try{if((error as any).context?.json)code=String((await (error as any).context.json())?.error||'')}catch{}
+    const message:Record<string,string>={
+      payments_not_configured:'Płatności Stripe nie są jeszcze aktywowane. Spróbuj ponownie później.',
+      confirmed_login_required:'Potwierdź adres e-mail przed zakupem.',
+      already_purchased:'Masz już aktywny dostęp do tego kursu — otwórz Moje kursy.',
+      course_unavailable_or_free:'Kurs nie jest obecnie dostępny do zakupu.',
+      consent_required:'Potwierdź regulamin i zgodę na rozpoczęcie nauki.',
+      payment_provider_unavailable:'Nie można teraz połączyć się ze Stripe. Spróbuj ponownie.'
+    };
+    throw new Error(message[code]||'Nie udało się rozpocząć bezpiecznej płatności. Nie pobrano pieniędzy.');
+   }
+   if(typeof data?.url!=='string'||!data.url.startsWith('https://checkout.stripe.com/'))
+    throw new Error('Brak bezpiecznego linku płatności Stripe. Nie pobrano pieniędzy.');
+   if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(data.url);
+   else await Linking.openURL(data.url);
   }catch(e:any){setMessage(e?.message||'Operacja nie powiodła się.');}
-  finally{setPaying(false)}
+  finally{setPaying(false);}
  }
  const price=item?(item.price_grosze/100).toLocaleString('pl-PL')+' zł':'';
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:22,paddingBottom:60}}>
@@ -98,17 +109,25 @@ export default function Purchase(){
      <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Twój wybór</Text>
      <Text style={{color:muted}}>Zalogowano: {email}</Text>
      <Text style={{fontSize:23,fontWeight:'900',color:ink}}>Cena katalogowa: {item.price_grosze===0?'0 zł':price}</Text>
-     {item.price_grosze>0&&!owned&&<View style={{backgroundColor:'#f6f0dc',borderRadius:12,padding:14}}>
-      <Text style={{color:'#765d25',fontWeight:'900'}}>{isAdmin?'TRYB TESTOWY · 0 ZŁ POBRANE':'Zapisy na płatne kursy są w przygotowaniu'}</Text>
-      {isAdmin&&<Text style={{color:'#786337',fontSize:13,marginTop:6,lineHeight:20}}>Po symulacji kurs pojawi się w „Moich kursach” jako DEMO na 14 dni.</Text>}
-     </View>}
+     {item.price_grosze>0&&!owned&&<View style={{backgroundColor:'#f6f7f0',borderRadius:12,padding:15,gap:13}}>
+       <Text style={{color:ink,fontWeight:'900'}}>Bezpieczna płatność Stripe · jednorazowo {price}</Text>
+       <Text style={{color:muted,fontSize:13,lineHeight:20}}>Dostęp na 12 miesięcy po potwierdzonej płatności. Brak automatycznego odnawiania. Kurs odblokowuje się na Twoim koncie.</Text>
+       <Pressable accessibilityRole="checkbox" accessibilityState={{checked:termsAccepted}} onPress={()=>setTermsAccepted(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6}}>
+        <Text style={{fontSize:20,color:ink}}>{termsAccepted?'☑':'☐'}</Text>
+        <Text style={{flex:1,color:ink,lineHeight:21}}>Zapoznałem się z regulaminem, warunkami zakupu i polityką prywatności.</Text>
+       </Pressable>
+       <Pressable accessibilityRole="checkbox" accessibilityState={{checked:earlyAccessConsent}} onPress={()=>setEarlyAccessConsent(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6}}>
+        <Text style={{fontSize:20,color:ink}}>{earlyAccessConsent?'☑':'☐'}</Text>
+        <Text style={{flex:1,color:ink,lineHeight:21}}>Wyraźnie zgadzam się na rozpoczęcie dostarczania treści cyfrowych przed upływem 14 dni i przyjmuję do wiadomości, że po rozpoczęciu dostarczania tracę ustawowe prawo odstąpienia od umowy.</Text>
+       </Pressable>
+      </View>}
      {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
-     </Pressable>:(item.price_grosze===0||isAdmin)&&<Pressable disabled={paying} onPress={checkout} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:paying?0.5:1}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Zapisuję dostęp…':item.price_grosze===0?'Odbierz za darmo →':'Symuluj zakup · 0 zł pobrane →'}</Text>
+     </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent)))?0.5:1}}>
+      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':'Kupuję i płacę '+price+' →'}</Text>
      </Pressable>}
-     {(item.price_grosze===0||isAdmin)&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
-      <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs komuś bliskiemu</Text>
+     {item.price_grosze===0&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
+      <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj darmowy kurs</Text>
      </Pressable>}
      <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}>
       <Text style={{fontSize:13,color:muted,textDecorationLine:'underline',textAlign:'center'}}>Regulamin i zasady dostępu ↗</Text>
