@@ -5,7 +5,7 @@ export default function useLabKeys(testId:string,handle:(event:KeyboardEvent)=>b
  useEffect(()=>{
   if(Platform.OS!=='web'||typeof document==='undefined')return;
   function onKey(event:KeyboardEvent){
-   if(event.defaultPrevented||event.isComposing||!(event.target instanceof HTMLElement))return;
+   if(event.defaultPrevented||event.isComposing||!(event.target instanceof Element))return;
    if(event.target.closest('[data-testid="'+testId+'"]')&&handle(event))event.preventDefault();
   }
   document.addEventListener('keydown',onKey);

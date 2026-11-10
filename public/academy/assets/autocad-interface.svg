@@ -1,23 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="AutoCAD — rysunek, komendy i warstwy">
-<rect width="1200" height="720" rx="26" fill="#f4f8f1"/>
-<text x="45" y="59" fill="#173d2a" font-size="30" font-weight="900" font-family="Arial, sans-serif">AutoCAD — rysunek, komendy i warstwy</text>
-<text x="45" y="90" fill="#627b64" font-size="17" font-family="Arial, sans-serif">Autorska wizualizacja funkcji programu — schemat edukacyjny, wygląd może różnić się w zależności od wersji.</text>
-
-<rect x="45" y="115" width="1110" height="530" rx="17" fill="#173134" stroke="#335b5b"/>
-<rect x="45" y="115" width="1110" height="65" rx="14" fill="#253e41" stroke="none"/>
-<text x="73" y="154" font-size="23" fill="white" font-weight="600" font-family="Arial, sans-serif">AutoCAD — Rysunek.dwg</text>
-<rect x="66" y="193" width="94" height="39" rx="9" fill="#e3e9e4" stroke="none"/><text x="78" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Home</text><rect x="171" y="193" width="91" height="39" rx="9" fill="#d6e2df" stroke="none"/><text x="183" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Insert</text><rect x="273" y="193" width="120" height="39" rx="9" fill="#d6e2df" stroke="none"/><text x="285" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Annotate</text><rect x="407" y="193" width="76" height="39" rx="9" fill="#d6e2df" stroke="none"/><text x="419" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">View</text><rect x="497" y="193" width="100" height="39" rx="9" fill="#d6e2df" stroke="none"/><text x="509" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Manage</text>
-<rect x="611" y="193" width="91" height="39" rx="9" fill="#b7dfb8" stroke="none"/><text x="623" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">LINE</text><rect x="712" y="193" width="112" height="39" rx="9" fill="#b7dfb8" stroke="none"/><text x="724" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">CIRCLE</text><rect x="839" y="193" width="105" height="39" rx="9" fill="#b7dfb8" stroke="none"/><text x="851" y="219" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">LAYER</text>
-<rect x="67" y="250" width="1067" height="323" rx="8" fill="#133536" stroke="none"/>
-<line x1="70" y1="254" x2="70" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="158" y1="254" x2="158" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="246" y1="254" x2="246" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="334" y1="254" x2="334" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="422" y1="254" x2="422" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="510" y1="254" x2="510" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="598" y1="254" x2="598" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="686" y1="254" x2="686" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="774" y1="254" x2="774" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="862" y1="254" x2="862" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="950" y1="254" x2="950" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="1038" y1="254" x2="1038" y2="571" stroke="#2b4a49" stroke-width="1"/><line x1="1126" y1="254" x2="1126" y2="571" stroke="#2b4a49" stroke-width="1"/>
-<line x1="70" y1="260" x2="1134" y2="260" stroke="#2b4a49" stroke-width="1"/><line x1="70" y1="335" x2="1134" y2="335" stroke="#2b4a49" stroke-width="1"/><line x1="70" y1="410" x2="1134" y2="410" stroke="#2b4a49" stroke-width="1"/><line x1="70" y1="485" x2="1134" y2="485" stroke="#2b4a49" stroke-width="1"/><line x1="70" y1="560" x2="1134" y2="560" stroke="#2b4a49" stroke-width="1"/>
-<rect x="315" y="310" width="500" height="210" fill="none" stroke="#e4ed95" stroke-width="4"/>
-<circle cx="840" cy="410" r="77" fill="none" stroke="#8dcad1" stroke-width="3"/>
-<path d="M 570 260 V 556 M 420 417 H 730" stroke="#93bfbd" stroke-width="1" stroke-dasharray="5 5"/>
-<rect x="68" y="582" width="1064" height="45" rx="7" fill="#dde8df" stroke="none"/><text x="83" y="611" font-size="17" fill="#274b46" font-weight="600" font-family="Arial, sans-serif">Command: LINE   Specify first point:</text>
-<circle cx="90" cy="303" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="84" y="310" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">1</text><text x="119" y="309" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Przestrzeń modelu</text>
-<circle cx="76" cy="645" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="70" y="652" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">2</text><text x="105" y="651" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Wiersz poleceń</text>
-<circle cx="1015" cy="214" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="1009" y="221" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">3</text><text x="1044" y="220" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Narzędzia i warstwy</text>
-<text x="49" y="694" font-family="Arial, sans-serif" font-size="15" fill="#607b67">TRENERKI ACADEMY · oryginalna ilustracja edukacyjna</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 700" width="1120" height="700" role="img" aria-labelledby="t d">
+<title id="t">AutoCAD 2D — wstążka, Model, wiersz poleceń, arkusz i pasek stanu</title>
+<desc id="d">Schemat ekranu pokazuje panele Draw, Modify i Layers, prostokąt 4200 na 3000, oś X i Y, komendę RECTANG oraz przełączniki siatki, OSNAP i ORTHO.</desc>
+<defs>
+ <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#344a59" stroke-width="1"/></pattern>
+ <pattern id="hatch" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M0 12L12 0M-4 4L4-4M8 16L16 8" stroke="#739697"/></pattern>
+ <marker id="arrow" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto-start-reverse"><path d="M0 0L5 2.5 0 5Z" fill="#c9e19d"/></marker>
+</defs>
+<rect width="1120" height="700" rx="24" fill="#f0f5ec"/>
+<g font-family="Arial, sans-serif">
+<text x="34" y="51" font-size="27" font-weight="bold" fill="#173c2b">AutoCAD 2D · gdzie pracujesz i co widzisz</text>
+<text x="34" y="81" font-size="16" fill="#48614e">Schemat dydaktyczny oparty na układzie Drafting &amp; Annotation</text>
+<rect x="33" y="103" width="1054" height="547" rx="15" fill="#1c2932"/>
+<rect x="33" y="103" width="1054" height="43" rx="12" fill="#304351"/>
+<g font-size="15" font-weight="bold" fill="#dce8ee">
+<text x="58" y="131">Home</text><text x="132" y="131">Insert</text><text x="208" y="131">Annotate</text><text x="305" y="131">View</text><text x="369" y="131">Manage</text><text x="462" y="131">Output</text>
+</g>
+<path d="M51 143H110" stroke="#abdb98" stroke-width="3"/>
+<rect x="48" y="153" width="1019" height="67" rx="6" fill="#253745" stroke="#48606c"/>
+<path d="M405 160V213M745 160V213" stroke="#5a7380"/>
+<g font-size="14" fill="#dce8ec">
+ <text x="64" y="180">Line · Polyline · Rectangle · Circle · Hatch</text><text x="64" y="203" fill="#a6c1cd">1 · Draw / Rysuj</text>
+ <text x="422" y="180">Move · Copy · Offset · Trim</text><text x="422" y="203" fill="#a6c1cd">Modify / Zmień</text>
+ <text x="763" y="180">● Obrys</text><text x="763" y="203" fill="#a6c1cd">Layers / Warstwy</text>
+</g>
+<rect x="48" y="230" width="1019" height="306" fill="url(#grid)"/>
+<g fill="none" stroke="#8cabb8" stroke-width="1.5">
+<path d="M166 496H224M166 496V437"/><path d="M236 515H572" stroke="#c9e19d" marker-start="url(#arrow)" marker-end="url(#arrow)"/><path d="M236 498V521M572 498V521" stroke="#c9e19d"/>
+</g>
+<g fill="#b8d2da" font-size="13"><text x="230" y="501">X</text><text x="162" y="430">Y</text><text x="143" y="519">0,0</text></g>
+<rect x="236" y="258" width="336" height="240" fill="url(#hatch)" stroke="#b8e5bf" stroke-width="2"/>
+<g font-size="16" fill="#e5f1ee"><text x="388" y="510" fill="#d1e7aa">4200</text>
+<text x="675" y="287" font-weight="bold">2 · Model 2D</text><text x="675" y="315">Współrzędne X,Y i geometria</text>
+<text x="675" y="342">Podgląd kreskowania w obrysie</text>
+<text x="675" y="394" fill="#9fb7c4">Widok można powiększać</text><text x="675" y="420" fill="#9fb7c4">bez zmiany wymiarów.</text></g>
+<rect x="48" y="543" width="1019" height="42" rx="6" fill="#e6ecee"/>
+<text x="64" y="570" fill="#253c48" font-family="monospace" font-size="15">3 · Command: RECTANG → 0,0 → @4200,3000</text>
+<g fill="#e8f2f2" font-size="14"><text x="65" y="618">4 · Model</text><text x="167" y="618">Layout 1</text>
+<text x="475" y="618">5 · GRID F7</text><text x="621" y="618">OSNAP F3</text><text x="757" y="618">ORTHO F8</text><text x="900" y="618">DYN F12</text></g>
+<path d="M64 626H137" stroke="#a9d999" stroke-width="2"/>
+<text x="35" y="681" fill="#3e6550" font-weight="bold" font-size="14">TRENERKI ACADEMY · AUTORSKA ILUSTRACJA</text>
+</g>
 </svg>

@@ -126,10 +126,10 @@ export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:
     <Text style={{fontSize:15,color:secondary,lineHeight:23,flex:1}}>{s}</Text>
    </View>)}
   </View>}
-  {!!quiz&&<View style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
+  {!!quiz&&<View testID="construction-checkpoint" style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
    <Text style={{fontSize:12,color:'#bfe6b0',fontWeight:'900',letterSpacing:1}}>Z ŻYCIA BUDOWY · MAŁA SYMULACJA</Text>
    <Text style={{fontSize:20,color:'white',fontWeight:'900',lineHeight:28}}>{quiz.question}</Text>
-   {shuffled.map(({answer,original},i)=><Pressable key={i} disabled={verifying||choiceCorrect} onPress={async()=>{
+   {shuffled.map(({answer,original},i)=><Pressable key={i} accessibilityRole="button" disabled={verifying||choiceCorrect} onPress={async()=>{
     if(verifying||choiceCorrect)return;
     setSelected(i);setVerificationError('');setConfirmed(false);onPassed?.(false);setVerifying(true);
     try{

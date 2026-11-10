@@ -33,34 +33,37 @@ try{
  'google-ads-promocja','facebook-ads-promocja']);
  const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko']);
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
- const betaSlugs=new Set(['ciesla-przygotowanie-czeladnicze']);
+ const carpentrySlug='ciesla-przygotowanie-czeladnicze';
+ const craftExpanded=new Map([['bednarz',16],['kolodziej',16],['plecionkarz',16],['garncarz-tradycja',12],['gontarz',12],['introligator-tradycja',12],['kaletnik-tradycja',12],['ludwisarz',12],['mlynarz-tradycyjny',12],['powroznik',12],['rymarz',12]]);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
  const scriptStart=page.lastIndexOf('<script>'),scriptEnd=page.indexOf('</script>',scriptStart);
  if(scriptStart<0||scriptEnd<0)fail('HTML script missing');
  else{new Script(page.slice(scriptStart+8,scriptEnd),{filename:'academy-index.js'});ok('Homepage JavaScript syntax');}
- if(courses.length===15+additions.length+betaSlugs.size&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
+ if(courses.length===15+additions.length+1&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
  for(const c of courses){
-  const expected=betaSlugs.has(c.id)?63:(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id)||c.id==='kowal-tradycja')?30:expandedSlugs.has(c.id)?12:8;
+  const expected=c.id===carpentrySlug?63:craftExpanded.has(c.id)?craftExpanded.get(c.id):(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id)||c.id==='kowal-tradycja')?30:expandedSlugs.has(c.id)?12:8;
   if(!Array.isArray(c.outline)||c.outline.length!==expected)fail(c.id+': expected '+expected+' lessons');
   const guide=individualGuides[c.id]||craftGuides[c.id];
   if(!introSlugs.has(c.id)&&(!guide||!['what','first','result','boundary'].every(k=>typeof guide[k]==='string'&&guide[k].length>=30)))
     fail(c.id+': missing specific course guide');
   if(!previews[c.id]||!['curiosity','scenario','outcome_1','outcome_2','outcome_3'].every(k=>typeof previews[c.id][k]==='string'&&previews[c.id][k].length>20))fail(c.id+': missing life-based preview');
  }
- if(Object.keys(previews).length===courses.length&&additions.length===courses.length-15-betaSlugs.size)ok(courses.length+' practical previews and '+additions.length+' added courses');else fail('Preview/addition count mismatch');
+ if(Object.keys(previews).length===courses.length&&additions.length===courses.length-16)ok(courses.length+' practical previews and '+additions.length+' added courses');else fail('Preview/addition count mismatch');
  const uniqueGuides=Object.keys(individualGuides).concat(Object.keys(craftGuides));
  if(uniqueGuides.length!==courses.length-introSlugs.size||new Set(uniqueGuides).size!==uniqueGuides.length)fail('Course guides missing or duplicated');else ok(courses.length+' individual course introductions covered');
- // A publicly visible training beta must advertise the real lesson count and be explicitly non-certified.
- for(const slug of betaSlugs){
-  const beta=courses.find(c=>c.id===slug),preview=previews[slug];
-  if(!beta||beta.price!==0||beta.outline?.length!==63||preview?.module_titles?.length!==63||preview.review_status!=='review_needed'||!String(preview.editorial_note||'').includes('Nie publikować jako kurs gotowy do sprzedaży'))
-   fail('Ciesla: beta visibility, program length or editorial guardrails incorrect');
-  else ok('Ciesla: 63-lesson no-charge beta and editorial guardrails');
- }
- const price=new Map(courses.map(c=>[c.id,c.price]));
- for(const [id,expected] of [['excel-skroty',10],['autocad-skroty',10],['word-skroty',10],['windows-skroty',10],['swiety-mikolaj',0],['lepszy-tata',99],['lepsza-mama',99],['nie-marnuj-jedzenia',29.99],['trawnik-jestem-ogrodnikiem',29.99],['angielski-na-budowie',149],['norweski-na-budowie',149],['niemiecki-na-budowie',149]]){
-  if(price.get(id)!==expected)fail('Price mismatch '+id);else ok(id+' '+expected+' PLN');
- }
+ const carpentry=courses.find(c=>c.id===carpentrySlug);
+ if(!carpentry||carpentry.outline?.length!==63||previews[carpentrySlug]?.module_titles?.length!==63)fail('Carpentry course program length is incorrect');
+ const free=courses.filter(c=>c.price===0).map(c=>c.id);
+ if(free.join(',')!=='swiety-mikolaj'||Math.min(...courses.filter(c=>c.price>0).map(c=>c.price))!==99||
+    courses.some(c=>!Number.isInteger(c.price)||c.price<0||(c.price>0&&c.price<99)))
+  fail('Mikołaj must be the only free course and the paid catalogue must start at PLN 99');
+ const prices=read('database/patches/trenerki-catalog-release-20261110.sql');
+ const fromSql=new Map([...prices.matchAll(/\('([a-z0-9-]+)', (\d+)\)/g)].map(row=>[row[1],Number(row[2])]));
+ if(fromSql.size!==courses.length||courses.some(c=>fromSql.get(c.id)!==c.price*100))
+  fail('Public fallback catalogue prices must match the production SQL amounts');
+ else ok('80 matching catalogue amounts in PLN; only Mikołaj is free');
+ if(courses.some(c=>!Array.isArray(previews[c.id].module_titles)||JSON.stringify(c.outline)!==JSON.stringify(previews[c.id].module_titles)))
+  fail('Preview and detailed course outline differ');
  if(!page.includes('Cześć, to ja Anielka!'))fail('Anielka greeting missing');
  const history=JSON.parse(read('content/traditional-crafts-20-20261108.json')).courses;
  if(history.length!==20)fail('Expected 20 traditional crafts');

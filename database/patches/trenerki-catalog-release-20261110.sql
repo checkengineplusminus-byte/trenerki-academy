@@ -1,0 +1,97 @@
+-- Catalogue amounts in grosze.
+with prices(slug,grosze) as (values
+ ('angielski-na-budowie', 26500),
+ ('apartamenty', 22400),
+ ('astro-consafe-wms', 23900),
+ ('autocad-skroty', 11600),
+ ('axapta-dynamics-magazyn', 23900),
+ ('bdo', 26700),
+ ('bednarz', 17900),
+ ('blizej-dziecka', 16400),
+ ('blue-yonder-wms', 23900),
+ ('brygadzista', 22400),
+ ('ciesla-przygotowanie-czeladnicze', 24600),
+ ('dostepne-pdf', 13400),
+ ('dziennik-kota', 26900),
+ ('ekonomia-domowa-bez-dlugow', 13400),
+ ('excel-skroty', 16600),
+ ('facebook-ads-promocja', 17300),
+ ('festyn', 15600),
+ ('garncarz-tradycja', 17900),
+ ('gontarz', 17900),
+ ('google-ads-promocja', 17300),
+ ('gpsr', 26700),
+ ('infor-wms', 23900),
+ ('introligator-tradycja', 17900),
+ ('jak-kupic-samochod', 13400),
+ ('jestem-eko', 13400),
+ ('kaletnik-tradycja', 17900),
+ ('kgw', 15600),
+ ('kierownik-budowy', 23900),
+ ('kolodziej', 17900),
+ ('koordynator', 15600),
+ ('kowal-tradycja', 17900),
+ ('kryzys-po-40-bez-dlugow', 13400),
+ ('lepsza-mama', 16400),
+ ('lepszy-cukiernik', 14900),
+ ('lepszy-kucharz', 14900),
+ ('lepszy-szef', 15600),
+ ('lepszy-tata', 16400),
+ ('ludwisarz', 17900),
+ ('manhattan-active-wms', 23900),
+ ('mierz-ponad-sily', 15600),
+ ('mlynarz-tradycyjny', 17900),
+ ('mocny-charakter', 15600),
+ ('nie-lubie-ludzi', 15600),
+ ('nie-marnuj-jedzenia', 13400),
+ ('niemiecki-na-budowie', 26500),
+ ('norweski-na-budowie', 26500),
+ ('obowiazki-domowe', 9900),
+ ('odbiory', 23900),
+ ('ongoing-wms', 23900),
+ ('opieka-seniorzy', 17700),
+ ('oracle-wms-cloud', 23900),
+ ('partner-z-uzaleznieniem', 15600),
+ ('pasieka', 15600),
+ ('petsitter', 26900),
+ ('plecionkarz', 17900),
+ ('pomagaj-dziecku-w-lekcjach', 16400),
+ ('powroznik', 17900),
+ ('poznaj-siebie', 15600),
+ ('rodzice-50-50', 16400),
+ ('rymarz', 17900),
+ ('sap-ewm-magazyn', 23900),
+ ('sap-tm-transport', 23900),
+ ('sitarz', 15600),
+ ('snycerz', 15600),
+ ('swiety-mikolaj', 0),
+ ('szewc-tradycja', 15600),
+ ('tkacz-reczny', 15600),
+ ('transport-logistyka-praktycznie', 20100),
+ ('trawnik-jestem-ogrodnikiem', 15600),
+ ('windows-skroty', 16000),
+ ('word-skroty', 13400),
+ ('woznica', 15600),
+ ('wsparcie-adhd', 16400),
+ ('wspolnota', 23900),
+ ('wyjdz-z-toksycznego-zwiazku', 15600),
+ ('zaczynam-od-zera', 15600),
+ ('zdun-tradycja', 15600),
+ ('zecer', 15600),
+ ('zegarmistrz-tradycja', 15600),
+ ('zwiazek-rozmowa', 15600)
+)
+update public.ta_courses c set price_grosze=prices.grosze,currency='PLN'
+from prices where c.slug=prices.slug and c.published and
+ (c.price_grosze,c.currency) is distinct from (prices.grosze,'PLN');
+
+with actual as (
+ select l.course_slug,jsonb_agg(l.title_pl order by l.lesson_no) titles
+ from public.ta_lessons l join public.ta_courses c on c.slug=l.course_slug and c.published
+ group by l.course_slug
+)
+update public.ta_course_previews p set module_titles=actual.titles,updated_at=now()
+from actual where p.course_slug=actual.course_slug and p.module_titles is distinct from actual.titles;
+
+update public.ta_course_previews set editorial_note=$note$Program przygotowawczy obejmuje teorię, rysunki i ćwiczenia. Egzamin czeladniczy odbywa się osobno przed właściwą komisją.$note$,updated_at=now()
+where course_slug='ciesla-przygotowanie-czeladnicze' and editorial_note is distinct from $note$Program przygotowawczy obejmuje teorię, rysunki i ćwiczenia. Egzamin czeladniczy odbywa się osobno przed właściwą komisją.$note$;

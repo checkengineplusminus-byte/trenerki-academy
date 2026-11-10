@@ -10,6 +10,7 @@ async function verify(name,viewport,isMobile){
  const page=await ctx.newPage();
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
+ await page.route('**/rest/v1/**',route=>route.fulfill({status:503,contentType:'application/json',body:'[]'}));
  await page.route('**/functions/v1/ta-anielka',route=>route.fulfill({
   status:200,contentType:'application/json',
   headers:{'access-control-allow-origin':'*','access-control-allow-headers':'apikey,content-type'},
@@ -20,6 +21,11 @@ async function verify(name,viewport,isMobile){
   assert(r&&r.status()===200,'Academy HTML route failed');
   const field=page.locator('#anielka-question');
   await field.waitFor({state:'visible'});
+  const prices=await page.evaluate(()=>COURSES.map(c=>({slug:c.id,price:c.price})));
+  assert.equal(prices.length,80,'Public catalogue should contain all courses');
+  assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug),['swiety-mikolaj']);
+  assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),99);
+  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),1,'Only the free course can be obtained before payments launch');
   assert.equal(await page.locator('#course-search').count(),0,'Duplicate search field');
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');

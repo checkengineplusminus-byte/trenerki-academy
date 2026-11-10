@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Exercise the exported /nauka route using synthetic learners and isolated API responses.
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 
 const {chromium}=await import(process.env.TRENERKI_PLAYWRIGHT_MODULE||'playwright');
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
@@ -10,10 +11,10 @@ const quiz={situation:'Próba na danych ćwiczebnych.',example:'Sprawdź wynik n
 const shortcuts=['L','PL','C'].map((combo,i)=>({combo,keys:[combo,'Enter'],kind:'alias',label:['Linia','Polilinia','Okrąg'][i],before:'Sprawdź wiersz poleceń.',after:'Przygotuj punkty figury '+combo+'.',tip:'Potwierdź Enterem.',platform:'AutoCAD Windows'}));
 const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
 
-async function installFixture(page){
- const progress=new Map(),finished=[];
+async function installFixture(page,catalog){
+ const progress=new Map(),finished=[],answers=[];
  const completed=(slug)=>{
-  if(!progress.has(slug))progress.set(slug,[0]);
+  if(!progress.has(slug))progress.set(slug,catalog?[]:[0]);
   return progress.get(slug);
  };
  await page.addInitScript(({user})=>{
@@ -34,6 +35,10 @@ async function installFixture(page){
   if(method==='OPTIONS')return route.fulfill({headers,status:204});
   if(url.pathname==='/auth/v1/user')return json(user);
   if(table==='ta_enrollments')return json([{id:'demo'}]);
+  if(table==='ta_lessons'&&catalog){
+   const course=catalog.byId.get(slug);
+   return json(course.outline.map((title_pl,lesson_no)=>({lesson_no,title_pl,material:lesson_no===0?catalog.sample(slug):{learning:quiz}})));
+  }
   if(table==='ta_lessons')return json([0,1,2].map(n=>({
    lesson_no:n,title_pl:'Lekcja testowa '+(n+1),material:{sections:[{heading:'Praktyka',text:'Własny przykład w bezpiecznym środowisku testowym.'}],
     ...(n===1?{learning:quiz}:{}),...(slug==='autocad-skroty'&&n===0?{shortcuts}:{}),
@@ -42,15 +47,23 @@ async function installFixture(page){
   if(table==='ta_drafts')return method==='POST'?route.fulfill({headers,status:201}):json([]);
   if(table==='ta_learning_progress')return json(completed(slug).map(lesson_no=>({lesson_no})));
   if(table==='ta_courses')return json([{title_pl:'Kurs testowy '+slug,description_pl:'Dane demonstracyjne'}]);
-  if(table==='ta_learning_attempts')return json([{lesson_no:1,mode:'case',correct:true}]);
+  if(table==='ta_learning_attempts')return json(catalog?answers.filter(x=>x.course_slug===slug):[{lesson_no:1,mode:'case',correct:true}]);
   if(table==='ta-lesson-guide'){
    const input=req.postDataJSON();
    if(input.action==='complete'){
+    if(catalog&&!answers.some(row=>row.course_slug===input.course_slug&&row.lesson_no===input.lesson_no&&row.correct))
+     return json({error:'exercise_required'},409);
     completed(input.course_slug).push(input.lesson_no);
     finished.push([input.course_slug,input.lesson_no]);
     return json({ok:true,completed:true});
    }
-   if(input.action==='attempt')return json({ok:true,correct:input.active_combo===input.selected_combo});
+   if(input.action==='attempt'){
+    const material=catalog?.sample(input.course_slug);
+    const q=input.mode==='construction'?material?.construction?.roleplay:material?.learning;
+    const correct=catalog?Number(q?.correct)===input.selected_index:input.active_combo===input.selected_combo;
+    if(catalog)answers.push({...input,correct});
+    return json({ok:true,correct});
+   }
    return json({ok:true,can_reply:true});
   }
   return json({ok:true});
@@ -75,26 +88,56 @@ async function verifyCad(page,mobile){
  await lab.waitFor();
  assert.equal(await lab.count(),1);
  const send=async command=>{await input.fill(command);await input.press('Enter');};
- await send('REC');await send('100,100');await send('@500,300');
- await waitText(summary,'Obiekty: 1');
- await lab.getByRole('button',{name:'Kreskowanie · HATCH'}).click();
- const canvas=lab.getByTestId('cad-canvas'),bounds=await canvas.boundingBox();
- const position={x:bounds.width*.33,y:bounds.height*.58};
- if(mobile)await canvas.tap({position});else await canvas.click({position});
- await waitText(summary,'Wypełnienia: 1');
- await send('PL');await send('700,50');await send('950,50');await send('825,200');await send('C');
- await waitText(summary,'Obiekty: 2');
- await send('H');await send('825,100');await waitText(summary,'Wypełnienia: 2');
- await send('CIRCLE');await send('830,400');await send('70');
- await waitText(summary,'Obiekty: 3');
- await lab.getByRole('button',{name:'Cofnij · Ctrl+Z'}).click();
- await waitText(summary,'Obiekty: 2');
+ const click=name=>lab.getByRole('button',{name,exact:true}).click();
+ const canvas=lab.getByTestId('cad-canvas');
+ await send('_.RECTANG');await send('-1000,-800');await send('@4200,3000');
+ await waitText(summary,'Obiekty: 1');await lab.getByText('Prostokąt · 4200 × 3000',{exact:true}).waitFor();
+ await click('Dopasuj widok');
+ const first=await canvas.locator('polygon').getAttribute('points');
+ assert(first&&first.split(' ').length===4,'The model shows the typed rectangle');
+ const screenPick=async(fx,fy)=>{
+  const bounds=await canvas.boundingBox(),position={x:bounds.width*fx,y:bounds.height*fy};
+  if(mobile)await canvas.tap({position});else await canvas.click({position});
+ };
+ await click('Kreskowanie · HATCH');await screenPick(.48,.48);
+ await waitText(summary,'Wypełnienia: 0');
+ await click('Enter ↵');await waitText(summary,'Wypełnienia: 1');
+ await send('CIRCLE');await send('400,400');await send('D');await send('600');
+ await waitText(summary,'Obiekty: 2');await lab.getByText('Okrąg · R 300 · Ø 600',{exact:true}).waitFor();
+ await click('Linia · LINE');await send('0,0');await send('@1000<0');
+ await waitText(summary,'Obiekty: 3');await send('@1000<90');await waitText(summary,'Obiekty: 4');
+ await send('U');await waitText(summary,'Obiekty: 3');
+ await send('ESC');await waitText(summary,'Obiekty: 3');
+ await click('Cofnij · Ctrl+Z');await waitText(summary,'Obiekty: 2');
+ await click('Ponów · Ctrl+Y');await waitText(summary,'Obiekty: 3');
+ await send('DI');await send('-1000,-800');await send('3200,-800');
+ await lab.getByText('Odległość 4200 · ΔX 4200 · ΔY 0',{exact:true}).waitFor();
+ await click('Layers / Warstwy');await click('Nowa warstwa');
+ await lab.getByRole('textbox',{name:'Nazwa warstwy'}).fill('Wymiary');
+ await click('Dodaj warstwę');
+ await click('Annotate / Opisz');await click('Wymiar liniowy · DIMLINEAR');
+ await send('-1000,-800');await send('3200,-800');await send('1000,-1450');
+ await waitText(summary,'Obiekty: 4');
+ await canvas.getByText('4200',{exact:true}).waitFor({state:'attached'});
+ await click('Layout 1 / Arkusz');
+ await canvas.getByText('Arkusz 1 · Model 2D',{exact:true}).waitFor({state:'attached'});
+ await click('Model');await click('Dopasuj widok');
+ await click('View / Widok');const before=await canvas.locator('polygon').getAttribute('points');
+ await click('Przybliż +');const after=await canvas.locator('polygon').getAttribute('points');
+ assert.notEqual(after,before,'Zoom changes the screen view');
+ await click('Home / Narzędzia główne');await click('Draw / Rysuj');
+ await click('Linia · LINE');await click('ORTHO · F8');
+ await screenPick(.13,.25);
+ await screenPick(.30,.31);await waitText(summary,'Obiekty: 5');
+ const coords=(await canvas.locator('polyline[data-cad-object]:not([data-cad-object=preview])').last().getAttribute('points')).split(' ').map(x=>x.split(',').map(Number));
+ assert(Math.abs(coords[0][1]-coords[1][1])<1e-5,'ORTHO did not align picked points: '+JSON.stringify(coords));
+ await click('Zakończ rysowanie');
  await page.getByRole('button',{name:'L · Linia',exact:true}).click();
  await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).click();
- await waitText(lab.getByText(/Wskaż pierwszy punkt/),'Wskaż pierwszy punkt');
+ await lab.getByText(/Wskaż pierwszy punkt/).first().waitFor();
  await page.getByRole('button',{name:/^[A-C]\. L · Linia$/}).click();
  await page.getByText('Wynik zapisany.',{exact:true}).waitFor();
- console.log('✓ '+(mobile?'mobile':'desktop')+' CAD: entered geometry, pointer hatch, closed polyline, circle, undo and shortcut checkpoint');
+ console.log('✓ '+(mobile?'mobile':'desktop')+' CAD: real-size typed drawing, pointer ORTHO, hatch commit, circle diameter, dimensions, layers, zoom, layout, undo/redo');
 }
 
 async function verifyExcel(page,mobile){
@@ -218,6 +261,60 @@ async function verifyNavigation(page,finished,mobile){
  console.log('✓ '+(mobile?'mobile':'desktop')+' lessons: back, reload, resume, recorded quiz and chronological completion');
 }
 
+async function verifyAllCourses(ctx){
+ const page=await ctx.newPage();
+ page.setDefaultTimeout(11000);
+ const html=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+ const courses=JSON.parse(html.match(/^const COURSES=(.+);$/m)[1]);
+ assert.equal(courses.length,80);
+ const samples=process.env.TRENERKI_ACTUAL_SAMPLES?JSON.parse(readFileSync(process.env.TRENERKI_ACTUAL_SAMPLES,'utf8')):null;
+ if(samples)assert.equal(Object.keys(samples).length,courses.length);
+ const byId=new Map(courses.map(course=>[course.id,course]));
+ const sample=slug=>{
+  const actual=samples?.[slug];
+  if(actual)return {...actual,sections:(actual.sections||[]).filter(Boolean)};
+  const learning=slug==='mlynarz-tradycyjny'?{...quiz,situation:undefined}:quiz;
+  return {raw:[byId.get(slug).title,'Zacznij od sytuacji i porównaj możliwe decyzje.','Sytuacja: '+quiz.situation],learning};
+ };
+ const finished=await installFixture(page,{byId,sample});
+ const errors=[];
+ page.on('pageerror',error=>errors.push(error.message));
+ for(const course of courses){
+  await page.goto(origin+'/nauka?course='+course.id,{waitUntil:'domcontentloaded'});
+  const heading=page.getByTestId('lesson-heading');
+  await heading.waitFor();
+  assert.equal(await heading.innerText(),course.outline[0],course.id+': opening title');
+  const material=sample(course.id);
+  const q=material.construction?.roleplay??material.learning;
+  assert(q?.options?.[q.correct],course.id+': valid first checkpoint');
+  if(!samples&&q.situation)await page.getByText(q.situation,{exact:true}).waitFor();
+  const exercise=page.getByTestId(material.construction?'construction-checkpoint':'case-checkpoint');
+  const candidates=await exercise.getByRole('button').all();
+  const correct=q.options[q.correct].replace(/\s+/g,' ').trim();
+  let choice;
+  for(const candidate of candidates){
+   const label=(await candidate.innerText()).replace(/\s+/g,' ').trim();
+   if(label.slice(3)===correct){choice=candidate;break;}
+  }
+  assert(choice,course.id+': correct choice must be visible');
+  await choice.click();
+  await page.getByText('✓ Odpowiedź do zadania zapisana',{exact:true}).waitFor();
+  await page.getByRole('button',{name:'Dalej · lekcja 2 →'}).click();
+  await page.waitForURL(url=>url.searchParams.get('lesson')==='2');
+  await heading.filter({hasText:course.outline[1]}).waitFor();
+  await page.getByTestId('lesson-nav-top').getByRole('button',{name:'Poprzednia lekcja'}).click();
+  await page.waitForURL(url=>url.searchParams.get('lesson')==='1');
+  await heading.filter({hasText:course.outline[0]}).waitFor();
+  await page.getByText(/Lekcja 1 z .*Ukończona/).waitFor();
+  assert.deepEqual(finished.at(-1),[course.id,0]);
+  console.log('✓ '+course.id+' · '+course.outline.length+' lessons · course opened, checkpoint accepted, next and back');
+ }
+ assert.equal(finished.length,80);
+ assert.deepEqual(errors,[],'Course pages must render without browser errors');
+ console.log('✓ All 80 course paths checked');
+ await page.close();
+}
+
 const options=process.env.TRENERKI_CHROMIUM_BINARY?{executablePath:process.env.TRENERKI_CHROMIUM_BINARY,args:JSON.parse(process.env.TRENERKI_CHROMIUM_ARGS||'[]')}:undefined;
 const selections=process.env.TRENERKI_VIEWPORT==='desktop'?[false]:process.env.TRENERKI_VIEWPORT==='mobile'?[true]:[false,true];
 for(const mobile of selections){
@@ -235,6 +332,7 @@ for(const mobile of selections){
   await verifyExplorer(page,mobile);
   await verifyCarpentry(page,mobile);
   await verifyNavigation(page,finished,mobile);
+  if(!mobile&&process.env.TRENERKI_SKIP_FULL_CATALOG!=='1')await verifyAllCourses(ctx);
   const size=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:document.documentElement.clientWidth}));
   assert(size.scroll<=size.view+3,'Learning route has horizontal overflow');
   assert.deepEqual(errors,[],'No browser runtime errors');

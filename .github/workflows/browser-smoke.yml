@@ -11,6 +11,8 @@ on:
       - 'public/academy/index.html'
       - 'public/academy/anielka-search.js'
       - 'public/academy/anielka-search.css'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 jobs:
   browser_ui:

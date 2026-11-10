@@ -99,3 +99,24 @@ for(const shape of [rect,circle,poly]){
  }
 }
 console.log('✓ CAD: typed points, exact outlines and hatch clipped to three geometry types');
+
+const advanced=await load('src/CadGeometry.ts');
+const near=(a,b)=>assert(Math.abs(a-b)<1e-7,'Expected '+b+', got '+a);
+assert.deepEqual(readCadPoint('@4200,3000',{x:-1000,y:-800}),{x:3200,y:2200});
+const polar=readCadPoint('@500<90',{x:-1000,y:-800});
+near(polar.x,-1000);near(polar.y,-300);
+const size={width:420,height:310},camera=advanced.fitDrawing([rect],size),point={x:177,y:38};
+const zoomed=advanced.zoomCamera(camera,size,.8,point);
+near(distance(advanced.worldPoint(point,camera,size),advanced.worldPoint(point,zoomed,size)),0);
+near(distance(advanced.screenPoint(advanced.worldPoint(point,camera,size),camera,size),point),0);
+assert.equal(advanced.snapPoint({x:103,y:99},[rect],10).label,'Koniec');
+const arc=advanced.arcData([{x:-100,y:0},{x:0,y:100},{x:100,y:0}]);
+near(arc.radius,100);near(arc.sweep,-Math.PI);
+const line=(id,a,b)=>({id,kind:'line',layer:0,points:[a,b]});
+const long=line(1,{x:0,y:0},{x:1000,y:0}),a=line(2,{x:300,y:-150},{x:300,y:200}),b=line(3,{x:650,y:-150},{x:650,y:200});
+const trimmed=advanced.trimLine(long,[long,a,b],{x:500,y:0});
+assert.equal(trimmed.length,2);
+near(trimmed[0].points[1].x,300);near(trimmed[1].points[0].x,650);
+assert.deepEqual(advanced.offsetShape(long,50,{x:100,y:-5}).points,[{x:0,y:-50},{x:1000,y:-50}]);
+assert.equal(advanced.dimensionGeometry({id:4,kind:'dimension',layer:0,points:[{x:-1000,y:-800},{x:3200,y:-800},{x:1000,y:-1450}]}).label,'4200');
+console.log('✓ CAD: real dimensions, polar points, anchored zoom, OSNAP, trim and offset');

@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {View,Text,Pressable} from 'react-native';
 
 export type LearningCase={
- intro?:string;situation:string;example:string;question:string;
+ intro?:string;situation?:string;example:string;question:string;
  options:string[];correct:number;explanation:string;feedback?:string[];task?:string;topic_kind?:string;
 };
 const ink='#183e2d',gray='#536858';
@@ -12,7 +12,7 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
  const [hint,setHint]=useState(false);
  const [accepted,setAccepted]=useState(false),[verifying,setVerifying]=useState(false),[verifyError,setVerifyError]=useState('');
  useEffect(()=>{setChosen(null);setTries(0);setHint(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed?.(false)},[identity]);
- if(!data?.situation||!data?.options?.length)return null;
+ if(!data?.question?.trim()||!data.options?.length)return null;
  const passed=chosen===data.correct&&accepted;
  const feedbackForChoice=(index:number|null)=>index===null?'':data.feedback?.[index]?.trim()||'';
  const enabled=Array.isArray(data.options)&&data.correct>=0&&data.correct<data.options.length;
@@ -34,11 +34,11 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
   }finally{setVerifying(false)}
  }
  return <View style={{gap:14,marginTop:12}}>
-  {!hideSituation&&<View style={{backgroundColor:'#e6f1df',borderRadius:18,padding:21,gap:12}}>
+  {!hideSituation&&!!data.situation&&<View style={{backgroundColor:'#e6f1df',borderRadius:18,padding:21,gap:12}}>
    <Text style={{fontSize:12,color:'#55745c',fontWeight:'900'}}>PRZYKŁAD Z ŻYCIA</Text>
    <Text style={{fontSize:17,color:ink,lineHeight:27}}>{data.situation}</Text>
   </View>}
-  <View style={{backgroundColor:'#19392b',borderRadius:17,padding:20,gap:13}}>
+  <View testID="case-checkpoint" style={{backgroundColor:'#19392b',borderRadius:17,padding:20,gap:13}}>
    <Text style={{fontSize:11,fontWeight:'900',color:'#d2eaba',letterSpacing:1}}>SPRAWDŹ SWOJE ROZUMIENIE</Text>
    <Text style={{fontSize:21,fontWeight:'900',color:'white',lineHeight:29}}>{data.question}</Text>
    {order.map(({value,original},position)=><Pressable key={position} accessibilityRole="button" onPress={()=>void choose(original)} disabled={passed||verifying}

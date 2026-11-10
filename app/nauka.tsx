@@ -297,7 +297,7 @@ export default function Learning(){
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
-      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} hideSituation={!!lesson.material?.sections?.some(x=>x.text.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))||!!lesson.material?.raw?.some(p=>p.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
+      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} hideSituation={!!lesson.material?.sections?.some(x=>x?.text?.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}

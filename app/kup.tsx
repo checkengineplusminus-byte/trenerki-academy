@@ -85,7 +85,7 @@ export default function Purchase(){
      <View style={{backgroundColor:'#f0f5eb',padding:18,borderRadius:12,gap:8}}>
       <Text style={{fontWeight:'900',color:ink}}>Ważne zasady tego kursu</Text>
       <Text style={{color:'#3f5b49',lineHeight:22}}>{preview.editorial_note}</Text>
-      {preview.review_status!=='approved'&&<Text style={{fontSize:12,color:'#87622b'}}>Materiały są jeszcze w weryfikacji redakcyjnej. To wersja testowa szkolenia, a nie gotowa oferta sprzedaży.</Text>}
+      {preview.review_status!=='approved'&&<Text style={{fontSize:12,color:'#87622b'}}>Weryfikacja redakcyjna materiału trwa.</Text>}
      </View>
      {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#dfe8d9',padding:23,gap:12}}>
       <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>{preview.module_titles.length} lekcji · {preview.module_titles.length===30?'3 działy od zera do Expert':'program ćwiczeń'}</Text>
@@ -98,18 +98,18 @@ export default function Purchase(){
      <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Twój wybór</Text>
      <Text style={{color:muted}}>Zalogowano: {email}</Text>
      <Text style={{fontSize:23,fontWeight:'900',color:ink}}>Cena katalogowa: {item.price_grosze===0?'0 zł':price}</Text>
-     {item.price_grosze>0&&<View style={{backgroundColor:'#f6f0dc',borderRadius:12,padding:14}}>
-      <Text style={{color:'#765d25',fontWeight:'900'}}>TRYB TESTOWY — NIE POBIERAMY PIENIĘDZY</Text>
-      <Text style={{color:'#786337',fontSize:13,marginTop:6,lineHeight:20}}>Po symulacji kurs pojawi się w „Moich kursach” na 14 dni. Nie otrzymasz faktury za zakup, którego nie było. Dostęp będzie wyraźnie oznaczony jako DEMO.</Text>
+     {item.price_grosze>0&&!owned&&<View style={{backgroundColor:'#f6f0dc',borderRadius:12,padding:14}}>
+      <Text style={{color:'#765d25',fontWeight:'900'}}>{isAdmin?'TRYB TESTOWY · 0 ZŁ POBRANE':'Zapisy na płatne kursy są w przygotowaniu'}</Text>
+      {isAdmin&&<Text style={{color:'#786337',fontSize:13,marginTop:6,lineHeight:20}}>Po symulacji kurs pojawi się w „Moich kursach” jako DEMO na 14 dni.</Text>}
      </View>}
      {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
-     </Pressable>:<Pressable disabled={paying||(!isAdmin&&item.price_grosze>0)} onPress={checkout} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(!isAdmin&&item.price_grosze>0))?0.5:1}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Zapisuję testowy zakup…':item.price_grosze===0?'Odbierz za darmo →':isAdmin?'Symuluj zakup · 0 zł pobrane →':'Zakupy testowe tylko dla administratora'}</Text>
+     </Pressable>:(item.price_grosze===0||isAdmin)&&<Pressable disabled={paying} onPress={checkout} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:paying?0.5:1}}>
+      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Zapisuję dostęp…':item.price_grosze===0?'Odbierz za darmo →':'Symuluj zakup · 0 zł pobrane →'}</Text>
      </Pressable>}
-     <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
+     {(item.price_grosze===0||isAdmin)&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs komuś bliskiemu</Text>
-     </Pressable>
+     </Pressable>}
      <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/regulamin.html')}>
       <Text style={{fontSize:13,color:muted,textDecorationLine:'underline',textAlign:'center'}}>Regulamin i zasady dostępu ↗</Text>
      </Pressable>
