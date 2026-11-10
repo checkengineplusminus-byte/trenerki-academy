@@ -1,10 +1,10 @@
 
 /* Anielka's accessible catalog finder */
-.anielka-finder{padding:27px 30px;margin:0 0 28px;border:1px solid #d3e5c8;border-radius:23px;background:linear-gradient(117deg,#f2f7e9 0%,#f8faef 66%,#eef4df 100%);box-shadow:0 9px 25px rgba(31,68,37,.05)}
+.anielka-finder{padding:24px 27px;margin:0 0 24px;border:1px solid #d3e5c8;border-radius:19px;background:linear-gradient(117deg,#f2f7e9 0%,#f8faef 66%,#eef4df 100%);box-shadow:0 9px 25px rgba(31,68,37,.05)}
 .anielka-finder-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
 .anielka-avatar{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border:3px solid white;background:#d8f69b;border-radius:50%;font-weight:900;font-size:26px;color:#254634;box-shadow:0 3px 10px #1d39251c}
-.anielka-finder-header h3{font:800 23px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.04em;color:#1a3b27;margin:0 0 5px}
-.anielka-finder-header p{font-size:14px;line-height:1.6;color:#58705e;margin:0}
+.anielka-finder-header h3{font:700 23px/1.35 system-ui,Arial,sans-serif;letter-spacing:-.015em;color:#1a3b27;margin:0 0 9px;text-shadow:none!important;-webkit-text-stroke:0!important}
+.anielka-finder-header p{font-size:15px;line-height:1.65;color:#4d6954;margin:0;max-width:850px}
 .anielka-finder label{display:block;font-weight:800;color:#244734;font-size:13px;margin-bottom:8px}
 .anielka-input-row{display:flex;gap:10px}
 .anielka-input-row input{flex:1;min-width:0;padding:16px 18px;border:1px solid #cbdcc5;border-radius:13px;background:white;font-size:16px;line-height:1.4;color:#1a3828;box-shadow:inset 0 1px 1px #112b1710}
@@ -27,5 +27,5 @@
 .anielka-choice-footer span{font-size:12px;color:#4d7155;font-weight:750}
 .anielka-choice-footer button{border:0;border-radius:9px;background:#d8f69b;color:#1c412d;padding:9px 12px;font-size:12px;font-weight:900}
 .anielka-choice-footer button:hover{background:#c5ec82}
-.anielka-privacy{display:block;margin:15px 0 0;color:#738679;font-size:11px}
-@media(max-width:680px){.anielka-finder{padding:18px 16px;border-radius:17px;margin-bottom:20px}.anielka-finder-header{gap:11px}.anielka-avatar{width:45px;height:45px;flex-basis:45px;font-size:20px}.anielka-finder-header h3{font-size:19px}.anielka-finder-header p{font-size:13px}.anielka-input-row{flex-direction:column}.anielka-input-row button{min-height:48px}.anielka-recommendations{grid-template-columns:1fr}.anielka-choice{padding:14px}}
+.anielka-privacy{display:block;margin:15px 0 0;color:#647c6a;font-size:11px;line-height:1.65}
+@media(max-width:680px){.anielka-finder{padding:18px 16px;border-radius:17px;margin-bottom:20px}.anielka-finder-header{gap:11px}.anielka-avatar{width:45px;height:45px;flex-basis:45px;font-size:20px}.anielka-finder-header h3{font-size:19px;line-height:1.4}.anielka-finder-header p{font-size:13px}.anielka-input-row{flex-direction:column}.anielka-input-row button{min-height:48px}.anielka-recommendations{grid-template-columns:1fr}.anielka-choice{padding:14px}}
