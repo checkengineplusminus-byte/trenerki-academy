@@ -142,8 +142,21 @@ export default function AdminPage(){
         <Text style={{color:ink,fontWeight:'800'}}>{order.course_slug} · {money(order.amount_grosze)}</Text>
         <Text style={{color:muted,fontSize:12}}>{new Date(order.purchased_at).toLocaleString('pl-PL',{timeZone:'Europe/Warsaw'})}</Text>
        </View>)}
-      {analytics.stripe_configuration&&(!analytics.stripe_configuration.secret_key_present||!analytics.stripe_configuration.webhook_secret_present||!analytics.stripe_configuration.resend_configured||!analytics.stripe_configuration.sales_enabled)&&
-       <Text style={{marginTop:16,color:'#87622b',backgroundColor:'#fff3df',padding:12,borderRadius:10}}>Sprzedaż oczekuje na aktywację Stripe i potwierdzeń e-mail przez Resend.</Text>}
+      {analytics.stripe_configuration&&<View style={{marginTop:20,padding:17,borderRadius:12,backgroundColor:'#f3f7ef',gap:9}}>
+       <Text style={{fontSize:18,fontWeight:'900',color:ink}}>Diagnostyka płatności i kart podarunkowych</Text>
+       <Text style={{color:muted,lineHeight:20}}>Te cztery warunki muszą być spełnione, aby działały zakupy i prezenty. Statusy pokazują tylko obecność ustawień — nigdy kluczy.</Text>
+       {[
+        ['STRIPE_SECRET_KEY (klucz produkcyjny)',analytics.stripe_configuration.secret_key_present],
+        ['STRIPE_WEBHOOK_SECRET (potwierdzenie płatności)',analytics.stripe_configuration.webhook_secret_present],
+        ['RESEND_API_KEY i RESEND_FROM_EMAIL (potwierdzenia zakupu)',analytics.stripe_configuration.resend_configured],
+        ['TA_SALES_ENABLED = true (włączenie sprzedaży)',analytics.stripe_configuration.sales_enabled]
+       ].map(([label,ok])=><View key={String(label)} style={{flexDirection:'row',gap:9,paddingVertical:5}}>
+        <Text style={{fontWeight:'900',color:ok?'#2e7b46':'#a34725'}}>{ok?'✓':'✕'}</Text>
+        <Text style={{color:ink,flex:1}}>{String(label)}</Text>
+       </View>)}
+       {(!analytics.stripe_configuration.secret_key_present||!analytics.stripe_configuration.webhook_secret_present||!analytics.stripe_configuration.resend_configured||!analytics.stripe_configuration.sales_enabled)&&
+        <Text style={{color:'#8d492b',lineHeight:20,fontWeight:'700'}}>Płatności pozostają wyłączone, dopóki wszystkie cztery warunki nie będą spełnione. SMTP resetu hasła to oddzielna konfiguracja od API Resend.</Text>}
+      </View>}
      </>}
     </View>}
     {tab==='users'&&<View style={card}>
