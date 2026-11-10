@@ -28,6 +28,38 @@ Deno.serve(async(req)=>{
  let body:any;try{body=await req.json()}catch{return reply({error:'invalid_body'},400)}
  const action=String(body?.action||'');
  const email=user.email.trim().toLowerCase();
+ if(action==='admin_issue_promo'){
+  const {data:roleData,error:roleError}=await db.from('ta_admins').select('role').eq('user_id',user.id).maybeSingle();
+  if(roleError)return reply({error:'role_verification_failed'},503);
+  if(roleData?.role!=='owner')return reply({error:'owner_only'},403);
+  const amount=Number(body?.amount_grosze);
+  const recipient=String(body?.recipient_email||'').trim().toLowerCase();
+  const msg=String(body?.message||'').trim().slice(0,300);
+  if(!Number.isSafeInteger(amount)||amount<2500||amount>100000||!mailValid(recipient))return reply({error:'invalid_input'},400);
+  const id=crypto.randomUUID(),code=fullCode(id),code_hash=await hash(code);
+  const {data,error}=await db.rpc('ta_credit_issue_promo',{
+   p_id:id,p_admin:user.id,p_email:recipient,p_amount:amount,p_hash:code_hash,p_message:msg
+  });
+  if(error){console.error('admin_promo_grant_failed',error.code);return reply({error:'promo_grant_failed'},503)}
+  if(!data?.ok)return reply({error:data?.error||'promo_grant_failed'},data?.error==='daily_limit'?429:403);
+  let email_sent=false;
+  const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
+  const pln=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(amount/100);
+  const link=site+'/prezent?code='+code;
+  if(api&&from){
+   try{
+    const sent=await fetch('https://api.resend.com/emails',{method:'POST',
+     headers:{Authorization:'Bearer '+api,'content-type':'application/json'},
+     body:JSON.stringify({from,to:[recipient],subject:'TRENERKI Academy — karta podarunkowa '+pln,
+      html:'<h2>Masz prezent!</h2><p>Otrzymujesz kartę TRENERKI Academy o wartości <strong>'+pln+'</strong>.</p>'+
+       '<p>Twój kod: <strong>'+code+'</strong></p><p><a href="'+link+'">Odbierz środki na swoje konto</a></p>'+
+       '<p>Po wykorzystaniu części środków pozostałe saldo pozostanie na Twoim koncie.</p>'}),
+     signal:AbortSignal.timeout(12000)});
+    email_sent=sent.ok;
+   }catch{email_sent=false}
+  }
+  return reply({ok:true,code,link,recipient_email:recipient,amount_grosze:amount,email_sent});
+ }
  if(action==='balance'){
   const [{data:wallet,error:we},{data:entries,error:le},{data:holds,error:he}]=await Promise.all([
    db.from('ta_credit_wallets').select('balance_grosze').eq('user_id',user.id).maybeSingle(),
