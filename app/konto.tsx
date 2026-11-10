@@ -103,7 +103,24 @@ export default function AccountPage(){
        throw error;
      }
      await continueToSelectedCourse();
-   }catch(e:any){setMessage(e?.message||'Operacja nie powiodła się.');}finally{setBusy(false)}
+   }catch(e:any){
+     const raw=String(e?.message||'');
+     const code=String(e?.code||'');
+     const translations:Record<string,string>={
+       'Error sending recovery email':'Nie udało się wysłać wiadomości do zmiany hasła. Spróbuj ponownie za chwilę.',
+       'Email rate limit exceeded':'Zbyt wiele prób wysłania wiadomości. Spróbuj ponownie później.',
+       'New password should be different from the old password.':'Nowe hasło musi różnić się od poprzedniego.',
+       'Auth session missing!':'Sesja wygasła. Poproś o nowy link zmiany hasła.',
+     };
+     const friendly=translations[raw]||
+       (code==='over_email_send_rate_limit'?'Zbyt wiele prób wysłania wiadomości. Spróbuj ponownie później.':
+        code==='email_not_confirmed'?'Najpierw potwierdź adres e-mail.':
+        code==='same_password'?'Nowe hasło musi różnić się od poprzedniego.':
+        code==='weak_password'?'Wybierz silniejsze hasło.':
+        code==='unexpected_failure'?'Nie udało się wykonać operacji. Spróbuj ponownie za chwilę.':
+        'Nie udało się wykonać operacji. Spróbuj ponownie.');
+     setMessage(friendly);
+   }finally{setBusy(false)}
  }
  const input={borderWidth:1,borderColor:'#c9d8c5',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
  const heading=mode==='register'?'Rozpocznij naukę.':mode==='login'?'Witaj ponownie!':mode==='reset'?'Odzyskaj konto':'Ustaw nowe hasło';
