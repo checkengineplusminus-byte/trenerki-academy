@@ -110,7 +110,7 @@ export default function Purchase(){
      {(item.price_grosze===0||isAdmin)&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs komuś bliskiemu</Text>
      </Pressable>}
-     <Pressable onPress={()=>Linking.openURL('https://trenerki-academy.expo.app/academy/regulamin.html')}>
+     <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}>
       <Text style={{fontSize:13,color:muted,textDecorationLine:'underline',textAlign:'center'}}>Regulamin i zasady dostępu ↗</Text>
      </Pressable>
     </View>
