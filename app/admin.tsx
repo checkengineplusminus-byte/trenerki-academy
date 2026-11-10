@@ -78,8 +78,8 @@ export default function AdminPage(){
    <Text style={{fontSize:12,fontWeight:'800',color:'#72906d',letterSpacing:1.8}}>ADMINISTRACJA · TRENERKI ACADEMY</Text>
    <Text style={{fontSize:36,color:ink,fontWeight:'900'}}>Panel administratora</Text>
    <View style={{backgroundColor:'#fff0d5',padding:17,borderRadius:13}}>
-    <Text style={{color:'#755c2d',fontWeight:'900'}}>TRYB TESTOWY — 0 zł wpływów z symulacji</Text>
-    <Text style={{color:'#806a3d',marginTop:7,lineHeight:22}}>Widzisz rzeczywiste konta użytkowników i oddzielnie próbne zamówienia, prezenty i dokumenty. Symulacje nie tworzą przychodów, płatności ani prawdziwych faktur.</Text>
+    <Text style={{color:'#755c2d',fontWeight:'900'}}>STATYSTYKI STRIPE — TYLKO POTWIERDZONE WPŁYWY</Text>
+    <Text style={{color:'#806a3d',marginTop:7,lineHeight:22}}>Raport sprzedaży pokazuje tylko prawdziwe potwierdzone płatności Stripe. Starsze zamówienia testowe są odseparowane i nie powiększają przychodów.</Text>
    </View>
    {busy&&<ActivityIndicator/>}
    {!!error&&<Text style={{backgroundColor:'#ffefdf',padding:16,borderRadius:12,color:'#8c462c'}}>{error}</Text>}
