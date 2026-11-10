@@ -106,7 +106,11 @@ export default function AdminPage(){
      unpublished_or_invalid_course:'Jeden z wybranych kursów nie jest dostępny.',
      invalid_recipient_email:'Adres e-mail jest niepoprawny.',
      admin_daily_limit:'Wykorzystano limit dzienny wydawania bezpłatnych prezentów.',
-     gift_create_failed:'Nie udało się wydać kodów. Nic nie zapisano.'
+     gift_create_failed:'Nie udało się wydać kodów. Nic nie zapisano.',
+     company_grant_failed:'Nie udało się przygotować pakietu firmowego.',
+     admin_verification_failed:'Nie udało się potwierdzić uprawnień administratora.',
+     gift_rate_check_failed:'Nie udało się sprawdzić limitu prezentów.',
+     email_not_configured:'Kursy utworzono, ale wysyłka e-mail nie jest skonfigurowana.'
     };
     throw new Error(messages[detail]||'Nie udało się wygenerować prezentów. Spróbuj ponownie.');
    }
@@ -296,8 +300,8 @@ export default function AdminPage(){
       <Text style={{color:muted,fontSize:12}}>Wystawiono {formatDate(g.created_at)}</Text>
      </View>)}
      {!(stats.gifts||[]).length&&<Text style={{color:muted}}>Brak kart podarunkowych.</Text>}
-     <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:'swiety-mikolaj'}})} style={{marginTop:16,backgroundColor:pale,padding:15,borderRadius:11}}>
-      <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Podaruj kurs Świętego Mikołaja</Text>
+     <Pressable onPress={()=>{setTab('giveaway');setGiftSearch('Mikołaj')}} style={{marginTop:16,backgroundColor:pale,padding:15,borderRadius:11}}>
+      <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Rozdaj kurs Świętego Mikołaja za darmo</Text>
      </Pressable>
     </View>}
     {tab==='credit-card'&&<View style={card}>
