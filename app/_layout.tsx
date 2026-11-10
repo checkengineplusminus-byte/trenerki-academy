@@ -38,11 +38,11 @@ export default function RootLayout(){
    <Stack.Screen name="konto"/>
    <Stack.Screen name="kup"/>
    <Stack.Screen name="prezent"/>
+   <Stack.Screen name="firma"/>
    <Stack.Protected guard={signedIn} redirectTo="/konto">
     <Stack.Screen name="moje-kursy"/>
     <Stack.Screen name="nauka"/>
     <Stack.Screen name="dyplom"/>
-    <Stack.Screen name="firma"/>
    </Stack.Protected>
    <Stack.Protected guard={signedIn&&isAdmin} redirectTo="/moje-kursy">
     <Stack.Screen name="admin"/>
