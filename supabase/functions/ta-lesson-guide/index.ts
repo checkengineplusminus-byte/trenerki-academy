@@ -1,7 +1,7 @@
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
 const cors={
- 'access-control-allow-origin':'https://trenerki-academy.expo.app',
+ 'access-control-allow-origin':'*',
  'access-control-allow-headers':'authorization,apikey,content-type,x-client-info',
  'access-control-allow-methods':'POST,OPTIONS','vary':'Origin'
 };
