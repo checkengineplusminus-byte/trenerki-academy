@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react';
 import {Platform,View,Text,Pressable,Linking} from 'react-native';
+import {getInitialRecoveryHash} from '../src/supabase';
 
 const LEGACY_SITE='/academy/index.html';
 
@@ -8,6 +9,13 @@ const LEGACY_SITE='/academy/index.html';
 export default function Home(){
   useEffect(()=>{
     if(Platform.OS==='web' && typeof window!=='undefined'){
+      // Recovery links accidentally landing on the root must reach the account page
+      // with their original fragment, before Supabase consumes the one-time token.
+      const recoveryHash=getInitialRecoveryHash();
+      if(recoveryHash){
+        window.location.replace('/konto'+window.location.search+recoveryHash);
+        return;
+      }
       const target=LEGACY_SITE+window.location.search+window.location.hash;
       window.location.replace(target);
     }
