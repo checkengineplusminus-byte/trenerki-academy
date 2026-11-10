@@ -9,7 +9,7 @@ export function parseSpreadsheetNumber(value:unknown):number{
  if(!/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s))return NaN;
  return Number(s);
 }
-function refPosition(ref:string):{row:number;column:number}|null{
+export function refPosition(ref:string):{row:number;column:number}|null{
  const match=/^([A-E])([1-6])$/.exec(ref.toUpperCase().replace(/\$/g,''));
  return match?{row:Number(match[2])-1,column:match[1].charCodeAt(0)-65}:null;
 }
@@ -34,15 +34,18 @@ export function evaluateCell(rows:string[][],reference:string):string{
   return calculate(value.slice(1),seen);
  }
  function calculate(raw:string,visited:Set<string>):number{
-  const expr=raw.trim().toUpperCase().replace(/\$/g,'').replace(/(?<=\d),(?=\d)/g,'.');
+  const expr=raw.toUpperCase().replace(/[\s$]/g,'').replace(/(?<=\d),(?=\d)/g,'.');
+  if(expr==='#ADR!')throw new CellError('#ADR!');
   if(expr.length>110)throw new CellError('#BŁĄD!');
   const sum=/^(?:SUM|SUMA)\(([A-E][1-6]):([A-E][1-6])\)$/.exec(expr);
   if(sum){
    const a=refPosition(sum[1])!,b=refPosition(sum[2])!;
    if(a.row>b.row||a.column>b.column)throw new CellError('#ADR!');
    let total=0;
-   for(let row=a.row;row<=b.row;row++)for(let column=a.column;column<=b.column;column++)
-    total+=numberAt(String.fromCharCode(65+column)+(row+1),visited);
+   for(let row=a.row;row<=b.row;row++)for(let column=a.column;column<=b.column;column++){
+    const raw=rows[row]?.[column]?.trim()??'';
+    if(raw.startsWith('=')||Number.isFinite(parseSpreadsheetNumber(raw)))total+=numberAt(cellAddress(row,column),visited);
+   }
    return total;
   }
   const tokens=expr.match(/[A-E][1-6]|\d+(?:\.\d+)?|\.\d+|[()+\-*/]/g)||[];
@@ -90,4 +93,30 @@ export function evaluateCell(rows:string[][],reference:string):string{
   if(!value.trim().startsWith('='))return value;
   return format(numberAt(reference,new Set()));
  }catch(e){return e instanceof CellError?e.code:'#BŁĄD!';}
+}
+
+export function cellAddress(row:number,column:number){
+ return String.fromCharCode(65+column)+(row+1);
+}
+
+export function shiftFormula(value:string,rowOffset:number,columnOffset:number):string{
+ if(!value.trimStart().startsWith('='))return value;
+ let outOfBounds=false;
+ const result=value.replace(/(\$?)([A-E])(\$?)([1-6])\b/gi,(_,lockCol:string,col:string,lockRow:string,row:string)=>{
+  const r=Number(row)-1+(lockRow?0:rowOffset);
+  const c=col.toUpperCase().charCodeAt(0)-65+(lockCol?0:columnOffset);
+  if(r<0||r>=6||c<0||c>=5)outOfBounds=true;
+  return lockCol+String.fromCharCode(65+c)+lockRow+(r+1);
+ });
+ return outOfBounds?'=#ADR!':result;
+}
+
+export function cycleCellReference(value:string,cursor:number){
+ if(!value.trimStart().startsWith('='))return value;
+ const refs=[...value.matchAll(/(\$?)([A-E])(\$?)([1-6])\b/gi)];
+ const ref=refs.find(x=>cursor>=x.index!&&cursor<=x.index!+x[0].length)??refs[0];
+ if(!ref)return value;
+ const [match,lockColumn,col,lockRow,row]=ref;
+ const next=lockColumn?lockRow?col+'$'+row:col+row:lockRow?'$'+col+row:'$'+col+'$'+row;
+ return value.slice(0,ref.index)+next+value.slice(ref.index!+match.length);
 }

@@ -1,20 +1,15 @@
 import React,{useState} from 'react';
 import {Image,Platform,Pressable,Text,View,useWindowDimensions} from 'react-native';
-import HandsOnLab from './HandsOnLab';
-import SoftwarePlayground from './SoftwarePlayground';
-import type {KeyboardShortcut} from './KeyboardLesson';
 
 type Term={name:string;description:string};
-type Action={name:string;combo:string;desc:string};
 type Program={
  name:string;image:string;history:string[];why:string;today:string;
- zones:{name:string;meaning:string}[];terms:Term[];actions:Action[];
- mode:'excel'|'cad'|'word'|'windows';
+ zones:{name:string;meaning:string}[];terms:Term[];
 };
 const ink='#183c2b';
 const programs:Record<string,Program>={
  'word-skroty':{
-  name:'Microsoft Word',image:'word-interface',mode:'word',
+  name:'Microsoft Word',image:'word-interface',
   history:[
    'Word jest edytorem tekstu — programem, w którym piszesz i poprawiasz dokumenty. To nie jest program do obliczeń, a dokument Worda nie jest automatycznie plikiem PDF.',
    'Program powstał w firmie Microsoft. Nad wczesną wersją pracowali m.in. Charles Simonyi i Richard Brodie. W 1983 roku ukazał się pod nazwą Multi-Tool Word; Microsoft podaje 25 października 1983 r. jako premierę Worda. Wersję Word dla Windows udostępniono w 1989 roku.',
@@ -37,15 +32,10 @@ const programs:Record<string,Program>={
    {name:'Styl',description:'Nazwany zestaw formatowania, np. Nagłówek 1, umożliwiający spis treści.'},
    {name:'Wstążka',description:'Górny obszar z kartami oraz poleceniami programu.'},
    {name:'Kursor',description:'Migająca pionowa kreska, w której miejscu pojawią się litery.'}
-  ],
-  actions:[
-   {name:'Pogrub nagłówek',combo:'CTRL+B',desc:'Zaznacz tytuł i zastosuj pogrubienie.'},
-   {name:'Zapisz dokument',combo:'CTRL+S',desc:'Zapis ma znaczenie dopiero po sprawdzeniu lokalizacji.'},
-   {name:'Cofnij zmianę',combo:'CTRL+Z',desc:'Sprawdź, czy odzyskano właściwą treść.'}
   ]
  },
  'excel-skroty':{
-  name:'Microsoft Excel',image:'excel-interface',mode:'excel',
+  name:'Microsoft Excel',image:'excel-interface',
   history:[
    'Excel jest arkuszem kalkulacyjnym, czyli programem do organizowania danych, obliczeń i analiz. W odróżnieniu od Worda pracuje przede wszystkim na komórkach, formułach, zakresach, tabelach i wykresach.',
    'Microsoft zaprezentował Excel w 1985 roku na komputerach Apple Macintosh. Wersja dla Windows pojawiła się w 1987 roku. Był następcą wcześniejszych prób Microsoftu na rynku arkuszy, w tym Multiplana.',
@@ -68,17 +58,10 @@ const programs:Record<string,Program>={
    {name:'XLSX',description:'Współczesny format skoroszytu Excela, zawierający arkusze i ich dane.'},
    {name:'Zakres',description:'Grupa komórek, np. B2:B20.'},
    {name:'Wykres',description:'Wizualne porównanie danych, np. kosztów trzech materiałów.'}
-  ],
-  actions:[
-   {name:'Przejdź na początek',combo:'CTRL+HOME',desc:'Zaznacza komórkę na początku arkusza.'},
-   {name:'Policz sumę',combo:'ALT+=',desc:'Wprowadza funkcję SUM do wiersza wartości.'},
-   {name:'Zamień dane w tabelę',combo:'CTRL+T',desc:'Włącza widok uporządkowanej tabeli.'},
-   {name:'Narysuj wykres',combo:'ALT+F1',desc:'Pokazuje wizualizację kosztów usług.'},
-   {name:'Wpisz i przelicz formułę',combo:'F2',desc:'Po wybraniu komórki możesz edytować jej zawartość.'}
   ]
  },
  'autocad-skroty':{
-  name:'Autodesk AutoCAD',image:'autocad-interface',mode:'cad',
+  name:'Autodesk AutoCAD',image:'autocad-interface',
   history:[
    'AutoCAD to program CAD — Computer-Aided Design, czyli projektowanie wspomagane komputerowo. Pomaga narysować obiekt w zadanej geometrii i skali, kontrolować wymiary i przekazywać dokumentację wykonawczą.',
    'Firmę Autodesk założono w 1982 roku, a pierwsza wersja AutoCAD pojawiła się w tym samym roku. Jednym z założycieli Autodesk był John Walker. Wcześniej rysunki techniczne wykonywano ręcznie na deskach kreślarskich; ich poprawianie często wymagało żmudnego przerysowywania.',
@@ -101,18 +84,10 @@ const programs:Record<string,Program>={
    {name:'Warstwa',description:'Sposób organizowania obiektów według funkcji, koloru i widoczności.'},
    {name:'OSNAP',description:'Przyciąganie do charakterystycznych punktów obiektów.'},
    {name:'Jednostki',description:'Miara geometrii: np. mm albo m. Nie zakładaj jej bez sprawdzenia projektu.'}
-  ],
-  actions:[
-   {name:'Narysuj linię',combo:'L',desc:'Dodaje linię do wirtualnego rysunku.'},
-   {name:'Dodaj okrąg',combo:'C',desc:'Dodaje okrąg i pozwala zobaczyć geometrię.'},
-   {name:'Dodaj prostokąt',combo:'REC',desc:'Tworzy obrys ściany lub pomieszczenia.'},
-   {name:'Skopiuj obiekt',combo:'CP',desc:'Powiela ostatni element rysunku.'},
-   {name:'Przesuń obiekt',combo:'M',desc:'Zmienia położenie ostatniego elementu.'},
-   {name:'Warstwa',combo:'LA',desc:'Zmienia kolor i aktywną warstwę rysowania.'}
   ]
  },
  'windows-skroty':{
-  name:'Microsoft Windows',image:'windows-desktop',mode:'windows',
+  name:'Microsoft Windows',image:'windows-desktop',
   history:[
    'Windows jest systemem operacyjnym, a nie pojedynczym edytorem tekstu. Pozwala uruchamiać aplikacje, zarządzać urządzeniami, zapisywać pliki oraz korzystać z kont użytkowników.',
    'W 1981 roku komputery IBM PC korzystały m.in. z MS-DOS. Microsoft przedstawił koncepcję Windows w 1983 roku, a Windows 1.0 trafił do użytkowników 20 listopada 1985 roku. Graficzne okna i mysz pomogły zastępować wpisywanie trudnych komend.',
@@ -135,10 +110,6 @@ const programs:Record<string,Program>={
    {name:'Plik',description:'Zapisane dane — np. oferta.docx albo zdjęcie.jpg.'},
    {name:'Skrót',description:'Odnośnik do programu lub pliku; nie zawsze jest samym plikiem.'},
    {name:'Eksplorator plików',description:'Wbudowany program do przeglądania lokalizacji i porządkowania danych.'}
-  ],
-  actions:[
-   {name:'Pokaż pulpit',combo:'WIN+D',desc:'Pokazuje pulpit bez zamykania aplikacji.'},
-   {name:'Otwórz Eksplorator',combo:'WIN+E',desc:'Otwiera okno do pracy z plikami.'}
   ]
  }
 };
@@ -182,16 +153,12 @@ const tabs:{key:Tab;label:string}[]=[
  {key:'practice',label:'Ćwicz sam'},{key:'interface',label:'Ekran programu'},
  {key:'terms',label:'Pojęcia'},{key:'history',label:'Historia'}
 ];
-export default function SoftwareOrientation({slug}:{slug:string}){
+export default function SoftwareOrientation({slug,openPractice}:{slug:string;openPractice:()=>void}){
  const {width}=useWindowDimensions(),mobile=width<650;
- const p=programs[slug], [active,setActive]=useState<KeyboardShortcut|null>(null),[runId,setRunId]=useState(0);
+ const p=programs[slug];
  const [selectedTerm,setSelectedTerm]=useState(0),[selectedZone,setSelectedZone]=useState(0);
  const [tab,setTab]=useState<Tab>(mobile?'practice':'interface'),[imageFailed,setImageFailed]=useState(false);
  if(!p)return null;
- function execute(a:Action){
-  setActive({combo:a.combo,keys:[a.combo],kind:p.mode==='cad'?'alias':'hotkey',label:a.name,before:a.desc,after:a.desc,tip:a.desc});
-  setRunId(n=>n+1);
- }
  return <View style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
   <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
@@ -236,7 +203,7 @@ export default function SoftwareOrientation({slug}:{slug:string}){
     <Text style={{color:ink,fontWeight:'900'}}>Spróbuj na własnym komputerze:</Text>
     <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{walkthroughs[slug][selectedZone]}</Text>
    </View>
-   <Pressable onPress={()=>setTab('practice')} style={{padding:14,backgroundColor:ink,borderRadius:11}}>
+   <Pressable onPress={openPractice} accessibilityRole="button" style={{padding:14,backgroundColor:ink,borderRadius:11}}>
     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Przejdź do wirtualnego programu →</Text>
    </Pressable>
   </>}
@@ -261,17 +228,11 @@ export default function SoftwareOrientation({slug}:{slug:string}){
    </View>
   </View>}
   {tab==='practice'&&<View style={{gap:12}}>
-   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Dotknij i zobacz, co się zmieni</Text>
+   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Twoje pierwsze ćwiczenie</Text>
    <Text style={{color:'#3d624d',lineHeight:24}}>{p.today}</Text>
-   {(!mobile||(p.mode!=='excel'&&p.mode!=='cad'))&&<View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>
-    {p.actions.map((a,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>execute(a)}
-     style={{backgroundColor:ink,paddingHorizontal:12,paddingVertical:12,borderRadius:9,minHeight:44,justifyContent:'center'}}>
-     <Text style={{color:'white',fontWeight:'900',fontSize:13}}>{a.name}</Text>
-    </Pressable>)}
-   </View>}
-   {(p.mode==='excel'||p.mode==='cad')?<HandsOnLab key={slug} mode={p.mode} active={active} runId={runId}/>:
-    <SoftwarePlayground mode={p.mode} active={active}/>}
-   <Text style={{color:'#4a7054',fontSize:12,lineHeight:21}}>Ćwiczenie nie zmienia Twoich rzeczywistych plików. Przejdź do kolejnych zadań, żeby sprawdzić umiejętności.</Text>
+   <Pressable accessibilityRole="button" onPress={openPractice} style={{padding:14,backgroundColor:ink,borderRadius:11}}>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Otwórz warsztat →</Text>
+   </Pressable>
   </View>}
  </View>;
 }

@@ -80,7 +80,7 @@ try{
  }
  const languageViewer=read('src/ConstructionLesson.tsx');
  if(!languageViewer.includes('speechSynthesis')||!languageViewer.includes('roleplay')||!languageViewer.includes('academy/illustrations/'))fail('Pronunciation, illustrated scenes or interactive exercise missing');
- if(!progress.includes('finishLesson')||!progress.includes('setModule(next)')||!progress.includes('ConstructionLesson'))fail('Auto-advance from completed lesson missing');
+ if(!progress.includes('finishLesson')||!progress.includes('openModule(target)')||!progress.includes('ConstructionLesson'))fail('Auto-advance from completed lesson missing');
  const dashboard=read('app/moje-kursy.tsx');
  if(dashboard.includes('*12.5')||!dashboard.includes('lessonCount'))fail('Progress calculation must use real lesson counts');
  const shortcutModules=['word','autocad','excel','windows'];
@@ -97,10 +97,13 @@ try{
   else ok(name+' has '+total+' illustrated shortcuts');
  }
  const handsOn=read('src/HandsOnLab.tsx');
- if(!component.includes('HandsOnLab')||!component.includes('runId={runId}')||!handsOn.includes('setRows(')||!handsOn.includes('setShapes(')||!handsOn.includes("mode==='excel'"))fail('Hands-on Excel and AutoCAD workbench not connected');
- else ok('Excel and AutoCAD visual practice connected to every command execution');
- if(!component.includes('function Keycap')||!component.includes('SoftwarePlayground')||!component.includes('runCommand')||!component.includes('2. SPRAWDŹ WIEDZĘ')||!progress.includes('<KeyboardLesson'))fail('Interactive keyboard simulator missing');
- else ok('Protected lessons include working simulated Word and AutoCAD keyboard actions');
+ const workspaces=['CadWorkspace','SpreadsheetWorkspace','WordWorkspace','ExplorerWorkspace'];
+ if(!component.includes('<HandsOnLab')||!component.includes('runId={runId}')||
+    !workspaces.every(name=>handsOn.includes(name)&&read('src/'+name+'.tsx').includes('useLabKeys')))
+  fail('Four hands-on software workbenches and their keyboard controls must be connected');
+ else ok('CAD, spreadsheet, document and Explorer workbenches use the normal lesson entry point');
+ if(!component.includes('function Keycap')||!component.includes('SPRAWDŹ WIEDZĘ')||!progress.includes('<KeyboardLesson'))
+  fail('Keyboard explanations and graded exercise missing');
  for(const stale of ['Testy + egzamin','Przed egzaminem czeka Cię','Czytasz, podejmujesz decyzję, zapisujesz rozwiązanie i rozwiązujesz krótki quiz']){
   if(page.includes(stale))fail('Misleading unfinished-feature promise: '+stale);
  }
@@ -108,9 +111,9 @@ try{
  if(!gift.includes("academyAction('create_gift'")||!gift.includes("academyAction('redeem_gift'")||!gift.includes('swiety-mikolaj'))fail('Gift card redemption/sharing missing');else ok('Gift card flow');
  if(!admin.includes("academyAction('admin_dashboard'")||!admin.includes('Jakość kursów'))fail('Protected administration or editorial view missing');else ok('Administrator content-review dashboard');
  if(!progress.includes(".in('status',['active','demo'])")||!progress.includes("setDone(")||!checkout.includes("review_status"))fail('Demo access, saved progress or editorial warnings missing');else ok('Demo lessons, progress and pre-purchase editorial review checks');
- const sandbox=read('src/SoftwarePlayground.tsx'),cases=read('src/CaseLesson.tsx');
- if(!sandbox.includes('mode===\'cad\'')||!sandbox.includes('mode===\'windows\'')||!sandbox.includes('isExcel')||!sandbox.includes('isWord'))fail('Virtual software screens missing');
- if(!cases.includes('onPassed')||!progress.includes('const canFinish='))fail('Graded lesson checkpoint missing');
+ const cases=read('src/CaseLesson.tsx');
+ if(!cases.includes('onAttempt')||!progress.includes('const canFinish=')||!progress.includes("select('lesson_no,mode,correct')"))
+  fail('Graded lesson checkpoint or restoration missing');
  if(!progress.includes('ta_learning_attempts')||!progress.includes("recordAttempt('case'")||!progress.includes("recordAttempt('construction'")||!progress.includes("recordAttempt('keyboard'"))fail('All graded exercise categories must save individual attempts');
  const guideServer=read('supabase/functions/ta-lesson-guide/index.ts');
  const guideUI=read('src/GuidedDialogue.tsx');
@@ -136,7 +139,7 @@ try{
  else ok('All three exercise types wait for server confirmation and permit retries');
  if(!softwareUI.includes("tab==='interface'")||!softwareUI.includes("tab==='history'")||
     !softwareUI.includes("tab==='terms'")||!softwareUI.includes("tab==='practice'")||
-    !softwareUI.includes('<HandsOnLab'))
+    !softwareUI.includes('onPress={openPractice}'))
   fail('Four-tab software interface with working Excel/CAD simulator missing');
  else ok('Interactive four-tab software navigation and hands-on labs available');
 
@@ -186,13 +189,10 @@ try{
  }
  const orientation=read('src/SoftwareOrientation.tsx');
  const illustrated=read('src/LessonIllustratedSections.tsx');
- const lab=read('src/HandsOnLab.tsx');
- if(!progress.includes('<SoftwareOrientation slug={slug}/>')||
-   !orientation.includes('<HandsOnLab key={slug}')||
-   !orientation.includes("p.mode==='excel'||p.mode==='cad'")||
-   !lab.includes('setShapes(')||!lab.includes('setRows('))
-  fail('First software lesson lost its interactive Excel/AutoCAD laboratory');
- else ok('Real stateful Excel/CAD practice visible on first software lesson');
+ if(!progress.includes('<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>')||
+    !orientation.includes('onPress={openPractice}')||!progress.includes('<KeyboardLesson key={slug+'))
+  fail('First software lesson must lead to the same workspace used in later lessons');
+ else ok('One software workbench per lesson, reachable from the illustrated orientation');
  if(!orientation.includes("1983 roku")||!orientation.includes("1985 roku")||
    !orientation.includes("1982 roku")||!orientation.includes('p.zones.map'))
   fail('Historical program orientation and labeled interface zones missing');
@@ -334,8 +334,8 @@ try{
   if(!svg.includes('<svg')||!svg.includes('</svg>')||!illustrated.includes("'"+asset+"'"))
    fail('Missing or unregistered profession illustration '+asset);
  }
- if(!handsOn.includes('function tapCommand(')||!handsOn.includes("mobile&&")||
-    !component.includes('minHeight:48')||!chatUI.includes('Zapytaj Anielkę'))
+ if(!read('src/LabControls.tsx').includes('minHeight:44')||!read('scripts/learning-browser.mjs').includes('canvas.tap')||
+    !chatUI.includes('Zapytaj Anielkę'))
   fail('Touchscreen software practice and single-action mentor interface missing');
  else ok('Touchscreen buttons, automatic Anielka and all 20 profession illustrations verified');
  if(!process.exitCode)console.log('All static integrity checks passed.');

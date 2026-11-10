@@ -21,7 +21,7 @@ function FallbackDiagram({title,sections,example}:{title:string;sections:Learnin
     <Text style={{fontWeight:'900',color:ink,fontSize:12}}>{b.label}</Text>
     <Text style={{color:body,fontSize:11,lineHeight:16}}>{b.info}</Text>
    </View>)}
-  </View>}
+  </View>
  </View>;
 }
 export default function LessonIllustratedSections({courseSlug,lessonNo,title,sections,illustration,situation,example,diagram}:Props){
@@ -67,7 +67,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
       </Pressable>:<Text style={{color:body,fontSize:15.5,lineHeight:27}}>{section.text}</Text>}
 
     </View>)}
-   </View>}
+   </View>
   </View>}
  </View>;
 }

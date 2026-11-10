@@ -2,11 +2,11 @@ import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
-import KeyboardLesson,{type KeyboardShortcut,type KeyboardReference} from '../src/KeyboardLesson';
+import KeyboardLesson,{type KeyboardShortcut} from '../src/KeyboardLesson';
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import GuidedDialogue from '../src/GuidedDialogue';
-import CarpentryPracticeLab,{hasCarpentryLab} from '../src/CarpentryPracticeLab';
+import CarpentryPracticeLab,{CarpentryCalculatorDirectory,hasCarpentryLab} from '../src/CarpentryPracticeLab';
 import CourseIntro from '../src/CourseIntro';
 import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
@@ -19,14 +19,16 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{study_project?:StudyProject,practice?:{diagram?:string[]},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,references?:KeyboardReference[],editorial_status?:string}
+ material:{study_project?:StudyProject,practice?:{diagram?:string[]},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
+type AttemptMode='case'|'construction'|'keyboard';
+type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
- const {course}=useLocalSearchParams<{course?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const {course,lesson:lessonParam}=useLocalSearchParams<{course?:string;lesson?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
- const scrollRef=React.useRef<ScrollView>(null),exerciseYRef=React.useRef(0);
+ const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),workshopYRef=React.useRef(0);
  function scrollToTop(){
   scrollRef.current?.scrollTo({y:0,animated:false});
   if(Platform.OS==='web'&&typeof window!=='undefined')window.scrollTo(0,0);
@@ -36,18 +38,19 @@ export default function Learning(){
   scrollRef.current?.scrollTo({y,animated:true});
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
- const [carpentryLabPassed,setCarpentryLabPassed]=useState(false);
+ function openWorkshop(){scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});}
+ const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[verified,setVerified]=useState(false),[verifiedKeyboard,setVerifiedKeyboard]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[practice,setPractice]=useState({attempts:0,correct:0}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{
   const afterLayout=setTimeout(scrollToTop,100);
   return ()=>clearTimeout(afterLayout);
  },[slug,module,items.length]);
 
  useEffect(()=>{let active=true;(async()=>{
-  setBusy(true);setError('');
+  setBusy(true);setError('');setItems([]);setDone([]);setChecks({});setMsg('');setShowProgram(false);
   try{
    if(!slug)throw new Error('Wybierz kurs z listy.');
    const {data:{user:u},error:ue}=await supabase.auth.getUser();
@@ -60,24 +63,30 @@ export default function Learning(){
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
     supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle(),
-    supabase.from('ta_learning_attempts').select('lesson_no,correct').eq('user_id',u.id).eq('course_slug',slug)
+    supabase.from('ta_learning_attempts').select('lesson_no,mode,correct').eq('user_id',u.id).eq('course_slug',slug)
    ]);
    if(lessons.error||draft.error||progress.error||details.error)throw lessons.error||draft.error||progress.error||details.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
    if(active){
     setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
-    setPractice({attempts:attempts.data?.length||0,correct:(attempts.data||[]).filter(x=>x.correct).length});
+    const passed:Record<number,Checks>={};
     const perLesson:Record<string,{correct:number,incorrect:number}>={};
     for(const attempt of attempts.data||[]){
      const k=String(attempt.lesson_no);if(!perLesson[k])perLesson[k]={correct:0,incorrect:0};
-     if(attempt.correct)perLesson[k].correct++;else perLesson[k].incorrect++;
+     if(attempt.correct){
+      perLesson[k].correct++;
+      if(['case','construction','keyboard'].includes(attempt.mode)){
+       const mode=attempt.mode as AttemptMode;
+       passed[attempt.lesson_no]={...passed[attempt.lesson_no],[mode]:true};
+      }
+     }else perLesson[k].incorrect++;
     }
-    setReview(perLesson);
+    setReview(perLesson);setChecks(passed);
     const state=draft.data?.notes||{};
     setNotes(state.byLesson||{[String(draft.data?.last_module||0)]:String(state.text||'')});
-    const resume=draft.data?.last_module;
-    const next=all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all[all.length-1]?.lesson_no??0; // resume always at earliest unfinished stage
-    setModule(next);
+    const next=all.find(v=>!completed.includes(v.lesson_no))?.lesson_no??all.at(-1)?.lesson_no??0;
+    const requested=Number(lessonParam)-1;
+    setModule(all.some(v=>v.lesson_no===requested)&&(requested<=next||completed.includes(requested))?requested:next);
    }
   }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
   finally{if(active)setBusy(false);}
@@ -87,8 +96,7 @@ export default function Learning(){
  const completed=items.filter(x=>done.includes(x.lesson_no)).length;
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
- const currentNotes=notes[String(module)]||'';
- async function recordAttempt(mode:'case'|'construction'|'keyboard',answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string):Promise<boolean>{
+ async function recordAttempt(mode:AttemptMode,answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string):Promise<boolean>{
   if(!userId)return false;
   try{
    const {data,error:e}=await supabase.functions.invoke<{ok?:boolean;correct?:boolean;error?:string}>('ta-lesson-guide',{
@@ -97,7 +105,7 @@ export default function Learning(){
    });
    if(e||!data?.ok)throw new Error(data?.error||e?.message||'Brak odpowiedzi serwera');
    const correct=!!data.correct;
-   setPractice(v=>({attempts:v.attempts+1,correct:v.correct+(correct?1:0)}));
+   if(correct)markPassed(module,mode);
    setReview(v=>{
     const k=String(module),t=v[k]||{correct:0,incorrect:0};
     return {...v,[k]:{correct:t.correct+(correct?1:0),incorrect:t.incorrect+(correct?0:1)}};
@@ -108,19 +116,26 @@ export default function Learning(){
    return false;
   }
  }
- function changeModule(number:number){
-  const firstPending=items.find(v=>!done.includes(v.lesson_no));
-  if(!items.some(v=>v.lesson_no===number))return;
-  if(firstPending&&number>firstPending.lesson_no){setMsg('Najpierw ukończ poprzednie lekcje i ich ćwiczenia.');return;}
-  setModule(number);setVerified(false);setVerifiedKeyboard(false);setCarpentryLabPassed(false);setMsg('');scrollToTop();
+ function markPassed(number:number,mode:keyof Checks){
+  setChecks(current=>({...current,[number]:{...current[number],[mode]:true}}));
  }
  const firstPending=items.find(v=>!done.includes(v.lesson_no));
  const unlockedNo=firstPending?.lesson_no??Infinity;
- const hasExercise=!!(lesson?.material?.learning||lesson?.material?.construction||lesson?.material?.shortcuts?.length);
+ const canVisit=(number:number)=>number<=unlockedNo||done.includes(number);
+ function openModule(number:number){
+  setModule(number);router.setParams({lesson:String(number+1)});scrollToTop();
+ }
+ function changeModule(number:number){
+  if(saving||!items.some(v=>v.lesson_no===number)||!canVisit(number))return;
+  setMsg('');openModule(number);
+ }
+ const passed=checks[module]||{};
+ const objective=lesson?.material?.construction?'construction':lesson?.material?.learning?'case':undefined;
+ const carpentry=slug==='ciesla-przygotowanie-czeladnicze'&&hasCarpentryLab(module);
  const canFinish=done.includes(module)||(
-   (!lesson?.material?.learning&&!lesson?.material?.construction||verified)&&
-   (!lesson?.material?.shortcuts?.length||verifiedKeyboard)&&
-   (slug!=='ciesla-przygotowanie-czeladnicze'||!hasCarpentryLab(module)||carpentryLabPassed)
+   (!objective||passed[objective])&&
+   (!lesson?.material?.shortcuts?.length||passed.keyboard)&&
+   (!carpentry||passed.carpentry)
  );
  async function persistDraft(target:number,noteState:NoteState){
   if(!userId)return;
@@ -136,7 +151,7 @@ export default function Learning(){
   setSaving(true);setMsg('');
   try{
    if(!done.includes(module)){
-    // Server verifies the two-way dialogue, quiz attempts and chronological ordering.
+    // Server verifies objective attempts and chronological ordering.
     const {data:result,error:pe}=await supabase.functions.invoke<{ok?:boolean;completed?:boolean;error?:string}>('ta-lesson-guide',{
       body:{action:'complete',course_slug:slug,lesson_no:module}
     });
@@ -148,13 +163,30 @@ export default function Learning(){
     }
     setDone(prev=>prev.includes(module)?prev:[...prev,module]);
    }
-   const target=next??module;
+   const target=done.includes(module)&&firstPending&&(next===undefined||!canVisit(next))?unlockedNo:next??module;
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
-   if(next!==undefined){setModule(next);setVerified(false);setVerifiedKeyboard(false);setCarpentryLabPassed(false);setMsg(prev=>prev||'Lekcja zaliczona. Oto następny etap.');scrollToTop();}
+   if(target!==module){openModule(target);setMsg(prev=>prev||'Otworzono następną lekcję.');}
    else {setMsg('Wszystkie lekcje ukończone. Egzamin Anielki jest teraz na początku strony.');scrollToTop();}
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
+ }
+ function lessonNavigation(position:'top'|'bottom'){
+  const hasNext=next!==undefined&&canVisit(next);
+  return <View testID={'lesson-nav-'+position} style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginVertical:10}}>
+   <Pressable accessibilityRole="button" accessibilityLabel="Poprzednia lekcja" disabled={saving||previous===undefined}
+    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9',opacity:previous===undefined?0.48:1}}>
+    <Text style={{color:ink,fontWeight:'800'}}>← Poprzednia lekcja</Text>
+   </Pressable>
+   {firstPending&&module!==unlockedNo&&<Pressable accessibilityRole="button" disabled={saving} onPress={()=>changeModule(unlockedNo)}
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#dfeeda'}}>
+    <Text style={{color:ink,fontWeight:'800'}}>Wróć do miejsca nauki</Text>
+   </Pressable>}
+   {hasNext&&<Pressable accessibilityRole="button" accessibilityLabel="Następna dostępna lekcja" disabled={saving} onPress={()=>changeModule(next)}
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9'}}>
+    <Text style={{color:ink,fontWeight:'800'}}>Następna lekcja →</Text>
+   </Pressable>}
+  </View>;
  }
  return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
@@ -171,6 +203,8 @@ export default function Learning(){
      <View style={{height:8,width:progress+'%',backgroundColor:'#7cae6e'}}/>
     </View>
    </View>
+   {lessonNavigation('top')}
+   {slug==='ciesla-przygotowanie-czeladnicze'&&<CarpentryCalculatorDirectory/>}
    {items.some(x=>(review[String(x.lesson_no)]?.incorrect||0)>0&&(review[String(x.lesson_no)]?.correct||0)===0)&&<View style={{backgroundColor:'#fff5e5',borderRadius:14,padding:16,marginBottom:15,gap:9}}>
     <Text style={{color:'#604722',fontWeight:'900',fontSize:16}}>Warto powtórzyć</Text>
     <Text style={{color:'#7d663d',fontSize:12,lineHeight:20}}>W tych lekcjach pojawiły się trudności. Możesz wrócić do przykładu i przećwiczyć zadanie jeszcze raz.</Text>
@@ -217,8 +251,8 @@ export default function Learning(){
    ]:[{name:'DOSTĘPNE LEKCJE',about:'Program w trakcie rozbudowy',list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#dfe9dc',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
-     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} disabled={v.lesson_no>unlockedNo} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(v.lesson_no>unlockedNo?' — zablokowana':'')} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,opacity:v.lesson_no>unlockedNo?0.38:1,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#f8faf6',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
-      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':v.lesson_no>unlockedNo?'🔒 ':''}{v.lesson_no+1}</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} disabled={saving||!canVisit(v.lesson_no)} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,opacity:!canVisit(v.lesson_no)?0.38:1,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#f8faf6',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':!canVisit(v.lesson_no)?'🔒 ':''}{v.lesson_no+1}</Text>
      </Pressable>)}</View>
    </View>)}
    {progress===100&&<View style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
@@ -229,7 +263,7 @@ export default function Learning(){
   {progress===100&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
    {index===0&&!hasSoftwareOrientation(slug)&&!isLogisticsCourse(slug)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
-   {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug}/>}
+   {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
    {index>=0&&index<=2&&hasSoftwareMenuLab(slug)&&<SoftwareMenuLab slug={slug}/>}
     {hasCampaignLab(slug)&&index>=0&&[0,2,4,5,7,10,11].includes(index)&&<CampaignWorkshop slug={slug} lessonNo={module}/>}
    {slug!=='ciesla-przygotowanie-czeladnicze'&&(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
@@ -237,7 +271,7 @@ export default function Learning(){
      <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT')}</Text>
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
-   <Text style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
+   <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
    {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#eff5e9',borderLeftWidth:3,borderLeftColor:'#87af73',borderRadius:9,gap:4}}>
     <Text style={{fontSize:12,color:'#3b6a46',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
     <Text style={{fontSize:15,color:'#2b4b35',lineHeight:23}}>{lesson.material.curiosity}</Text>
@@ -250,19 +284,20 @@ export default function Learning(){
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
-     sections={index===0&&hasSoftwareOrientation(slug)?lesson.material?.sections?.slice(1):lesson.material?.sections} illustration={lesson.material?.illustration}
+     sections={lesson.material?.sections} illustration={lesson.material?.illustration}
      situation={lesson.material?.learning?.situation} example={lesson.material?.learning?.example} diagram={lesson.material.practice?.diagram}
     />}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
-   {slug==='ciesla-przygotowanie-czeladnicze'&&hasCarpentryLab(module)&&<CarpentryPracticeLab key={module} lessonNo={module} onPassed={setCarpentryLabPassed}/>}
+   {carpentry&&<CarpentryPracticeLab key={module} lessonNo={module} alreadyPassed={passed.carpentry} onPassed={()=>markPassed(module,'carpentry')}/>}
     <View onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
+   {!!objective&&!!passed[objective]&&<Text style={{color:ink,marginVertical:8,fontWeight:'800'}}>✓ Odpowiedź do zadania zapisana</Text>}
    {lesson.material?.construction?
-     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onPassed={setVerified} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
+     <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
      <>
-      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} onPassed={setVerified} hideSituation={!!lesson.material?.sections?.some(x=>x.text.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))||!!lesson.material?.raw?.some(p=>p.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
+      {lesson.material?.learning&&<CaseLesson data={lesson.material.learning} identity={slug+'-'+String(module)} hideSituation={!!lesson.material?.sections?.some(x=>x.text.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))||!!lesson.material?.raw?.some(p=>p.includes(lesson.material?.learning?.situation||'____NO_MATCH____'))} onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}
@@ -270,7 +305,10 @@ export default function Learning(){
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
-      <KeyboardLesson identity={slug+'-'+String(module)} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise} references={lesson.material?.references} onPracticed={setVerifiedKeyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
+      <View onLayout={event=>{workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;}}>
+       <KeyboardLesson key={slug+'-'+module} slug={slug} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise}
+        alreadyVerified={passed.keyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
+      </View>
      </>
    }
    </View>
@@ -286,10 +324,7 @@ export default function Learning(){
     {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>
    {!canFinish&&<Text style={{fontSize:12,color:'#647565',lineHeight:19,marginTop:7,textAlign:'center'}}>Po poprawnym rozwiązaniu przycisk „Dalej” odblokuje się automatycznie.</Text>}
-   {previous!==undefined&&<Pressable accessibilityRole="button" onPress={()=>changeModule(previous)}
-    style={{alignSelf:'flex-start',paddingVertical:12,paddingHorizontal:5,marginTop:8}}>
-    <Text style={{color:secondary,fontSize:14,fontWeight:'800'}}>← Wróć do poprzedniej lekcji</Text>
-   </Pressable>}
+   {lessonNavigation('bottom')}
   </>}
   {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#eaf2e0'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
  </ScrollView>;

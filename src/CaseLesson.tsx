@@ -6,30 +6,31 @@ export type LearningCase={
  options:string[];correct:number;explanation:string;feedback?:string[];task?:string;topic_kind?:string;
 };
 const ink='#183e2d',gray='#536858';
-export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituation=false}:{data?:LearningCase;identity:string;onPassed:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>Promise<boolean>|boolean;hideSituation?:boolean}){
+export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituation=false}:{data?:LearningCase;identity:string;onPassed?:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>Promise<boolean>|boolean;hideSituation?:boolean}){
  const [chosen,setChosen]=useState<number|null>(null);
  const [tries,setTries]=useState(0);
  const [hint,setHint]=useState(false);
  const [accepted,setAccepted]=useState(false),[verifying,setVerifying]=useState(false),[verifyError,setVerifyError]=useState('');
- useEffect(()=>{setChosen(null);setTries(0);setHint(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed(false)},[identity]);
+ useEffect(()=>{setChosen(null);setTries(0);setHint(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed?.(false)},[identity]);
  if(!data?.situation||!data?.options?.length)return null;
  const passed=chosen===data.correct&&accepted;
  const feedbackForChoice=(index:number|null)=>index===null?'':data.feedback?.[index]?.trim()||'';
  const enabled=Array.isArray(data.options)&&data.correct>=0&&data.correct<data.options.length;
+ const correctAnswer=data.correct;
  if(!enabled)return null;
  const seed=identity.split('').reduce((n,c)=>n+c.charCodeAt(0),0)%data.options.length;
  const order=data.options.map((_,i)=>({value:data.options[(i+seed)%data.options.length],original:(i+seed)%data.options.length}));
  async function choose(index:number){
   if(verifying||passed)return;
-  setChosen(index);setTries(n=>n+1);setVerifyError('');setAccepted(false);onPassed(false);setVerifying(true);
+  setChosen(index);setTries(n=>n+1);setVerifyError('');setAccepted(false);onPassed?.(false);setVerifying(true);
   try{
-   const localCorrect=index===data.correct;
+   const localCorrect=index===correctAnswer;
    const approved=onAttempt?await onAttempt(index,localCorrect):localCorrect;
    const confirmed=localCorrect&&!!approved;
-   setAccepted(confirmed);onPassed(confirmed);
+   setAccepted(confirmed);onPassed?.(confirmed);
    if(localCorrect&&!confirmed)setVerifyError('Odpowiedź jest poprawna, ale zapis się nie powiódł. Kliknij tę samą odpowiedź ponownie.');
   }catch{
-   setAccepted(false);onPassed(false);setVerifyError('Nie udało się zapisać wyniku. Spróbuj nacisnąć odpowiedź ponownie.');
+   setAccepted(false);onPassed?.(false);setVerifyError('Nie udało się zapisać wyniku. Spróbuj nacisnąć odpowiedź ponownie.');
   }finally{setVerifying(false)}
  }
  return <View style={{gap:14,marginTop:12}}>
