@@ -9,14 +9,26 @@ const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
 type Course={slug:string,title_pl:string,price_grosze:number};
 type Draft={id:string,course_slug:string,recipient_email:string,amount_grosze:number,doc_status:string,created_at:string,sent_at?:string|null};
+type Metrics={new_users:number,purchases:number,revenue_grosze:number,unique_buyers:number};
+type SalesAnalytics={
+ timezone:string;
+ totals:{users:number,purchases:number,revenue_grosze:number};
+ today:Metrics;current_month:Metrics;current_year:Metrics;
+ daily:(Metrics&{period:string})[];monthly:(Metrics&{period:string})[];yearly:(Metrics&{period:string})[];
+ stripe_configuration?:{secret_key_present:boolean,webhook_secret_present:boolean};
+ orders:{course_slug:string,amount_grosze:number,purchased_at:string,status:string}[];
+};
+const money=(cents:number)=>Number(cents||0).toLocaleString('pl-PL',{style:'currency',currency:'PLN',maximumFractionDigits:2,minimumFractionDigits:2}) .replace(/\u00a0/g,' ');
+
 const formatDate=(s?:string|null)=>s?new Date(s).toLocaleDateString('pl-PL'):'—';
 const card={padding:20,borderWidth:1,borderColor:'#e0eadb',backgroundColor:'white',borderRadius:16} as const;
 export default function AdminPage(){
  const router=useRouter();
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
+ const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'users'|'orders'|'gifts'|'drafts'|'quality'|'diplomas'>('users');
+ const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'drafts'|'quality'|'diplomas'>('sales');
  const students:Student[]=stats?.users||[];
  const filteredStudents=useMemo(()=>students.filter(u=>(u.email||'').toLowerCase().includes(filter.trim().toLowerCase())),[students,filter]);
  useEffect(()=>{void refresh()},[]);
@@ -25,13 +37,16 @@ export default function AdminPage(){
   try{
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.replace('/konto');return;}
-   const [r,allCourses,allReviews]=await Promise.all([
+   const [r,allCourses,allReviews,sales]=await Promise.all([
     academyAction('admin_dashboard'),
     supabase.from('ta_courses').select('slug,title_pl,price_grosze').eq('published',true).order('title_pl'),
-    supabase.from('ta_course_previews').select('course_slug,review_status')
+    supabase.from('ta_course_previews').select('course_slug,review_status'),
+    supabase.functions.invoke('ta-admin-analytics', {body:{}})
    ]);
    if(allCourses.error||allReviews.error)throw allCourses.error||allReviews.error;
    setCourses(allCourses.data||[]);setReviews(allReviews.data||[]);setStats(r);
+   if(sales.error||!sales.data?.ok){setAnalytics(null);setAnalyticsError('Nie można teraz załadować raportu sprzedaży.');}
+   else{setAnalytics(sales.data as SalesAnalytics);setAnalyticsError('');}
   }catch(e:any){setError(e?.message||'Panel nie jest dostępny.');}
   finally{setBusy(false)}
  }
@@ -70,21 +85,67 @@ export default function AdminPage(){
    {!!error&&<Text style={{backgroundColor:'#ffefdf',padding:16,borderRadius:12,color:'#8c462c'}}>{error}</Text>}
    {!!stats&&<>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:10}}>
-     {count('Użytkownicy',stats.counts?.users)}
+     {count('Użytkownicy',analytics?.totals.users??stats.counts?.users)}
      {count('Kursy',stats.counts?.courses)}
      {count('Dostępy aktywne / demo',stats.counts?.active_or_demo_access)}
+     {count('Kupione kursy',analytics?.totals.purchases??'—')}
+     {count('Sprzedaż',analytics?money(analytics.totals.revenue_grosze):'—')}
      {count('Zamówienia DEMO',stats.counts?.demo_orders)}
      {count('Karty podarunkowe',stats.counts?.gift_codes)}
      {count('Przychód z testów','0 zł')}
      {count('Kursy czekające na weryfikację',reviews.filter(r=>r.review_status!=='approved').length)}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
+     {([['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['orders','Zamówienia DEMO'],['gifts','Prezenty'],['drafts','Dokumenty testowe'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
      )}
     </View>
+    {tab==='sales'&&<View style={card}>
+     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:12}}>Sprzedaż i rejestracje — Stripe</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:20,marginBottom:15}}>Potwierdzone zakupy (bez symulacji, zwróconych płatności i darmowych zapisów). Okresy według czasu polskiego. Dane aktualizują się po potwierdzeniu Stripe webhook.</Text>
+     {!!analyticsError&&<Text style={{color:'#a52626',marginBottom:13}}>{analyticsError}</Text>}
+     {!!analytics&&<>
+      <View style={{flexDirection:'row',flexWrap:'wrap',gap:10}}>
+       {([['Dzisiaj',analytics.today],['W tym miesiącu',analytics.current_month],['W tym roku',analytics.current_year]] as const).map(([label,period])=>
+        <View key={label} style={{backgroundColor:'#f4f7f1',padding:15,borderRadius:12,flexGrow:1,minWidth:180,gap:6}}>
+         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>{label}</Text>
+         <Text style={{color:muted}}>Nowi użytkownicy: {period.new_users}</Text>
+         <Text style={{color:muted}}>Zakupione kursy: {period.purchases}</Text>
+         <Text style={{color:ink,fontWeight:'900'}}>Wpływy: {money(period.revenue_grosze)}</Text>
+        </View>)}
+      </View>
+      <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:18,marginBottom:10}}>
+       {([['daily','Ostatnie 30 dni'],['monthly','Ostatnie 12 miesięcy'],['yearly','Ostatnie 5 lat']] as const).map(([key,label])=>
+        <Pressable key={key} onPress={()=>setSalesInterval(key)} style={{padding:11,backgroundColor:salesInterval===key?ink:pale,borderRadius:10}}>
+         <Text style={{color:salesInterval===key?'#fff':ink,fontWeight:'800'}}>{label}</Text>
+        </Pressable>)}
+      </View>
+      <View style={{flexDirection:'row',paddingVertical:11,borderBottomWidth:2,borderColor:'#d3e2d0',gap:4}}>
+       <Text style={{flex:2,fontWeight:'900',color:ink}}>Okres</Text>
+       <Text style={{flex:1,fontWeight:'900',color:ink,textAlign:'right'}}>Nowi</Text>
+       <Text style={{flex:1,fontWeight:'900',color:ink,textAlign:'right'}}>Zakupy</Text>
+       <Text style={{flex:2,fontWeight:'900',color:ink,textAlign:'right'}}>PLN</Text>
+      </View>
+      {[...analytics[salesInterval]].reverse().map(item=>
+       <View key={item.period} style={{flexDirection:'row',paddingVertical:10,borderBottomWidth:1,borderColor:'#edf1e9',gap:4}}>
+        <Text style={{flex:2,color:ink,fontWeight:'700'}}>{item.period}</Text>
+        <Text style={{flex:1,color:muted,textAlign:'right'}}>{item.new_users}</Text>
+        <Text style={{flex:1,color:muted,textAlign:'right'}}>{item.purchases}</Text>
+        <Text style={{flex:2,color:ink,textAlign:'right',fontWeight:'700'}}>{money(item.revenue_grosze)}</Text>
+       </View>)}
+      <Text style={{fontSize:18,fontWeight:'900',color:ink,marginTop:24,marginBottom:11}}>Ostatnie opłacone kursy</Text>
+      {!analytics.orders.length&&<Text style={{color:muted}}>Nie ma jeszcze potwierdzonych zakupów.</Text>}
+      {analytics.orders.slice(0,20).map((order,i)=>
+       <View key={order.course_slug+order.purchased_at+String(i)} style={{paddingVertical:11,borderBottomWidth:1,borderColor:'#edf1e9'}}>
+        <Text style={{color:ink,fontWeight:'800'}}>{order.course_slug} · {money(order.amount_grosze)}</Text>
+        <Text style={{color:muted,fontSize:12}}>{new Date(order.purchased_at).toLocaleString('pl-PL',{timeZone:'Europe/Warsaw'})}</Text>
+       </View>)}
+      {analytics.stripe_configuration&&(!analytics.stripe_configuration.secret_key_present||!analytics.stripe_configuration.webhook_secret_present)&&
+       <Text style={{marginTop:16,color:'#87622b',backgroundColor:'#fff3df',padding:12,borderRadius:10}}>Uwaga: brakuje konfiguracji klucza Stripe lub sekretu webhooka w Supabase. Zakupy nie będą jeszcze działały produkcyjnie.</Text>}
+     </>}
+    </View>}
     {tab==='users'&&<View style={card}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:10}}>Lista kont</Text>
      <TextInput placeholder="Szukaj po e-mailu" value={filter} onChangeText={setFilter} style={{borderWidth:1,borderColor:'#d5e3d1',borderRadius:10,padding:13,color:ink,marginBottom:15}}/>
@@ -144,7 +205,7 @@ export default function AdminPage(){
       <Text style={{color:muted,fontWeight:'800'}}>Wybierz kurs do zestawienia:</Text>
       <TextInput placeholder="Filtruj kursy" value={filter} onChangeText={setFilter} style={{borderWidth:1,borderColor:'#d5e3d1',borderRadius:10,padding:12,color:ink}}/>
       <View style={{maxHeight:220,overflow:'hidden',gap:5}}>
-       {courses.filter(c=>c.title_pl.toLowerCase().includes(filter.trim().toLowerCase())).slice(0,10).map(c=><Pressable key={c.slug} onPress={()=>setSelectedCourse(c)} style={{padding:10,backgroundColor:selectedCourse?.slug===c.slug?bg:'#f7f9f5',borderRadius:9}}>
+       {courses.filter(c=>c.title_pl.toLowerCase().includes(filter.trim().toLowerCase())).slice(0,10).map(c=><Pressable key={c.slug} onPress={()=>setSelectedCourse(c)} style={{padding:10,backgroundColor:selectedCourse?.slug===c.slug?pale:'#f7f9f5',borderRadius:9}}>
         <Text style={{fontWeight:selectedCourse?.slug===c.slug?'900':'500',color:ink}}>{c.title_pl} — {(c.price_grosze/100).toFixed(0)} zł</Text>
        </Pressable>)}
       </View>
