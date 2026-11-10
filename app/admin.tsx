@@ -146,7 +146,7 @@ export default function AdminPage(){
        <Text style={{fontSize:18,fontWeight:'900',color:ink}}>Diagnostyka płatności i kart podarunkowych</Text>
        <Text style={{color:muted,lineHeight:20}}>Te cztery warunki muszą być spełnione, aby działały zakupy i prezenty. Statusy pokazują tylko obecność ustawień — nigdy kluczy.</Text>
        {[
-        ['STRIPE_SECRET_KEY (klucz produkcyjny)',analytics.stripe_configuration.secret_key_present],
+        ['Klucz prywatny Stripe LIVE — obecny w Supabase',analytics.stripe_configuration.secret_key_present],
         ['STRIPE_WEBHOOK_SECRET (potwierdzenie płatności)',analytics.stripe_configuration.webhook_secret_present],
         ['RESEND_API_KEY i RESEND_FROM_EMAIL (potwierdzenia zakupu)',analytics.stripe_configuration.resend_configured],
         ['TA_SALES_ENABLED = true (włączenie sprzedaży)',analytics.stripe_configuration.sales_enabled]
