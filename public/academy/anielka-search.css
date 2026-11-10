@@ -1,9 +1,9 @@
 
 /* Anielka's accessible catalog finder */
-.anielka-finder{padding:24px 27px;margin:0 0 24px;border:1px solid #d3e5c8;border-radius:19px;background:linear-gradient(117deg,#f2f7e9 0%,#f8faef 66%,#eef4df 100%);box-shadow:0 9px 25px rgba(31,68,37,.05)}
-.anielka-finder-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.anielka-finder{padding:18px 22px;margin:0 0 20px;border:1px solid #d3e5c8;border-radius:19px;background:linear-gradient(117deg,#f2f7e9 0%,#f8faef 66%,#eef4df 100%);box-shadow:0 9px 25px rgba(31,68,37,.05)}
+.anielka-finder-header{display:flex;align-items:center;gap:10px;margin-bottom:7px}
 .anielka-avatar{width:58px;height:58px;flex:0 0 58px;display:grid;place-items:center;border:3px solid white;background:#d8f69b;border-radius:50%;font-weight:900;font-size:26px;color:#254634;box-shadow:0 3px 10px #1d39251c}
-.anielka-finder-header h3{font:700 23px/1.35 system-ui,Arial,sans-serif;letter-spacing:-.015em;color:#1a3b27;margin:0 0 9px;text-shadow:none!important;-webkit-text-stroke:0!important}
+.anielka-finder-header h3{font:700 22px/1.35 system-ui,Arial,sans-serif;letter-spacing:-.015em;color:#1a3b27;margin:0;text-shadow:none!important;-webkit-text-stroke:0!important}
 .anielka-finder-header p{font-size:15px;line-height:1.65;color:#4d6954;margin:0;max-width:850px}
 .anielka-finder label{display:block;font-weight:800;color:#244734;font-size:13px;margin-bottom:8px}
 .anielka-input-row{display:flex;gap:10px}
@@ -31,7 +31,7 @@
 @media(max-width:680px){.anielka-finder{padding:18px 16px;border-radius:17px;margin-bottom:20px}.anielka-finder-header{gap:11px}.anielka-avatar{width:45px;height:45px;flex-basis:45px;font-size:20px}.anielka-finder-header h3{font-size:19px;line-height:1.4}.anielka-finder-header p{font-size:13px}.anielka-input-row{flex-direction:column}.anielka-input-row button{min-height:48px}.anielka-recommendations{grid-template-columns:1fr}.anielka-choice{padding:14px}}
 
 /* One Anielka search input: prominent inside catalogue, reuses nav field on course details. */
-.anielka-finder>.anielka-nav-search{width:100%;max-width:none;min-width:0;flex:initial;position:relative;margin:10px 0 5px;padding:7px 12px;background:#fff;border:1px solid #a8cfa7;border-radius:14px;box-shadow:0 4px 16px rgba(17,51,27,.06)}
+.anielka-finder>.anielka-nav-search{width:100%;max-width:none;min-width:0;flex:initial;position:relative;margin:5px 0 2px;padding:7px 12px;background:#fff;border:1px solid #a8cfa7;border-radius:14px;box-shadow:0 4px 16px rgba(17,51,27,.06)}
 .anielka-finder>.anielka-nav-search input{font-size:16px;line-height:1.55;padding:13px 4px}
 .anielka-finder>.anielka-nav-search .anielka-nav-avatar{width:41px;height:41px;flex-basis:41px;border-radius:11px}
 .anielka-finder>.anielka-nav-search .anielka-peek:not(:empty){z-index:90;max-height:55vh;overflow:auto}
