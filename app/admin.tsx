@@ -52,7 +52,7 @@ export default function AdminPage(){
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'drafts'|'quality'|'diplomas'>('giveaway');
+ const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'diplomas'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
  const [issuedGifts,setIssuedGifts]=useState<{course_slug:string;title_pl:string;code:string;link:string}[]>([]);
@@ -74,6 +74,30 @@ export default function AdminPage(){
    setPromoResult(data);
    setMessage(data.email_sent?'Karta została utworzona i wysłana odbiorcy.':'Karta została utworzona, ale nie potwierdzono wysyłki e-mail. Przekaż link odbiorcy.');
   }catch(e:any){setPromoError(e?.message||'Błąd karty podarunkowej.')}
+  finally{setWorking('')}
+ }
+
+ const todayPoland=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ const [discountDay,setDiscountDay]=useState(todayPoland),[discountPercent,setDiscountPercent]=useState('10');
+ const [discountRows,setDiscountRows]=useState<{day:string;percent:number}[]>([]),[discountError,setDiscountError]=useState('');
+ async function loadDiscounts(){
+  const {data,error}=await supabase.from('ta_daily_discounts').select('day,percent').gte('day',todayPoland()).order('day',{ascending:true}).limit(45);
+  if(error)setDiscountError('Nie udało się odczytać terminarza rabatów.');
+  else setDiscountRows(data||[]);
+ }
+ useEffect(()=>{void loadDiscounts()},[]);
+ async function saveDiscount(){
+  if(working)return;
+  setWorking('discount');setDiscountError('');
+  try{
+   const percent=Number(discountPercent);
+   if(!/^\\d{4}-\\d{2}-\\d{2}$/.test(discountDay)||!Number.isInteger(percent)||percent<0||percent>80)
+    throw new Error('Podaj datę RRRR-MM-DD i rabat od 0 do 80%.');
+   const {data,error}=await supabase.functions.invoke('ta-admin-gifts',{body:{action:'set_discount',day:discountDay,percent}});
+   if(error||!data?.ok)throw new Error('Nie udało się zapisać rabatu. Sprawdź datę i spróbuj ponownie.');
+   await loadDiscounts();
+   setMessage(percent===0?'Wyłączono rabat na '+discountDay+'.':'Ustawiono rabat '+percent+'% na '+discountDay+'.');
+  }catch(e:any){setDiscountError(e?.message||'Błąd zapisu rabatu.')}
   finally{setWorking('')}
  }
  const giftTotal=Object.values(giftQty).reduce((sum,count)=>sum+count,0);
@@ -136,7 +160,7 @@ export default function AdminPage(){
  }
  const students:Student[]=stats?.users||[];
  const filteredStudents=useMemo(()=>students.filter(u=>(u.email||'').toLowerCase().includes(filter.trim().toLowerCase())),[students,filter]);
- useEffect(()=>{void refresh()},[]);
+ useEffect(()=>{if(authorized)void refresh();},[authorized]);
  async function refresh(){
   setBusy(true);setError('');
   try{
@@ -207,7 +231,7 @@ export default function AdminPage(){
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
+     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['discount','Rabaty dzienne'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['diplomas','Dyplomy']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -303,6 +327,32 @@ export default function AdminPage(){
      <Pressable onPress={()=>{setTab('giveaway');setGiftSearch('Mikołaj')}} style={{marginTop:16,backgroundColor:pale,padding:15,borderRadius:11}}>
       <Text style={{fontWeight:'800',color:ink,textAlign:'center'}}>🎁 Rozdaj kurs Świętego Mikołaja za darmo</Text>
      </Pressable>
+    </View>}
+
+    {tab==='discount'&&<View style={card}>
+     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Rabaty na kursy TRENERKI</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wybierz konkretny dzień i procent rabatu dla wszystkich płatnych kursów. Cena zmieni się automatycznie o północy czasu polskiego, także przy zakupie w Stripe. Rabat nie obejmuje kart podarunkowych na kwotę, żeby nie można było kupić salda poniżej jego wartości.</Text>
+     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>Dzień promocji (RRRR-MM-DD)</Text>
+     <TextInput accessibilityLabel="Dzień rabatu w Polsce" value={discountDay} onChangeText={setDiscountDay} placeholder="2026-11-10" autoCapitalize="none"
+      style={{marginVertical:8,padding:13,borderWidth:1,borderColor:'#ccdcca',borderRadius:10,fontSize:15,color:ink}}/>
+     <Text style={{color:ink,fontSize:13,fontWeight:'800',marginTop:8}}>Rabat (0–80%)</Text>
+     <TextInput accessibilityLabel="Procent rabatu" value={discountPercent} onChangeText={setDiscountPercent} keyboardType="number-pad" placeholder="10"
+      style={{marginVertical:8,padding:13,borderWidth:1,borderColor:'#ccdcca',borderRadius:10,fontSize:15,color:ink}}/>
+     <View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginVertical:7}}>
+      {[0,10,15,20,30,50].map(n=><Pressable key={n} onPress={()=>setDiscountPercent(String(n))} style={{padding:11,borderRadius:10,backgroundColor:discountPercent===String(n)?ink:pale}}>
+       <Text style={{fontWeight:'800',color:discountPercent===String(n)?'white':ink}}>{n===0?'Bez rabatu':n+'%'}</Text>
+      </Pressable>)}
+     </View>
+     <Pressable accessibilityRole="button" onPress={saveDiscount} disabled={!!working} style={{padding:15,backgroundColor:ink,borderRadius:11,opacity:!!working?.5:1,marginTop:8}}>
+      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='discount'?'Zapisuję…':'Zapisz rabat na wybrany dzień'}</Text>
+     </Pressable>
+     {!!discountError&&<Text style={{color:'#a52626',marginTop:9}}>{discountError}</Text>}
+     <Text style={{color:ink,fontSize:16,fontWeight:'900',marginTop:22,marginBottom:9}}>Zaplanowane rabaty</Text>
+     {!discountRows.length&&<Text style={{color:muted}}>Brak zaplanowanych rabatów.</Text>}
+     {discountRows.map(d=><Pressable key={d.day} onPress={()=>{setDiscountDay(d.day);setDiscountPercent(String(d.percent));}} style={{padding:12,borderTopWidth:1,borderColor:'#e5eddf',flexDirection:'row',justifyContent:'space-between'}}>
+      <Text style={{color:ink,fontSize:13,fontWeight:'700'}}>{d.day}</Text>
+      <Text style={{color:d.percent>0?'#266b40':muted,fontWeight:'900'}}>{d.percent>0?'-'+d.percent+'%':'Brak rabatu'}</Text>
+     </Pressable>)}
     </View>}
     {tab==='credit-card'&&<View style={card}>
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kartę na dowolną kwotę</Text>
