@@ -6,10 +6,15 @@ const validSlug=(s:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(s);
 type Grade={correct:boolean;feedback:string};
 type Lesson={lesson_no:number;title_pl:string;material:any};
 function pick<T>(arr:T[]):T{const b=new Uint32Array(1);crypto.getRandomValues(b);return arr[b[0]%arr.length];}
+function lessonAnswer(source:any){
+ const correct=Number(source?.correct);
+ const selected=Array.isArray(source?.options)&&Number.isInteger(correct)?trim(source.options[correct],750):'';
+ return selected||trim(source?.example,750);
+}
 function questionFrom(lessons:Lesson[],history:any[],phase:string){
  const used=new Set(history.map(x=>Number(x.lesson_no)));
  const relevant=lessons.filter(l=>
-  (l?.material?.learning?.situation&&l?.material?.learning?.example)||
+  (l?.material?.learning?.situation&&lessonAnswer(l.material.learning))||
   (l?.material?.construction?.roleplay?.question&&l?.material?.construction?.roleplay?.options?.length)||
   (Array.isArray(l?.material?.shortcuts)&&l.material.shortcuts.length>0));
  if(relevant.length<4)return null;
@@ -20,10 +25,11 @@ function questionFrom(lessons:Lesson[],history:any[],phase:string){
  const unused=preferred.length?preferred:relevant.filter(l=>!used.has(l.lesson_no));
  const l=pick(unused.length?unused:relevant);
  const mat=l.material;
- if(mat?.learning?.situation&&mat?.learning?.example){
+ if(mat?.learning?.situation&&lessonAnswer(mat.learning)){
   const source=mat.learning;
-  const question='Sytuacja z kursu „'+l.title_pl+'”: '+trim(source.situation,700)+' Jak konkretnie postąpisz i co sprawdzisz, zanim uznasz zadanie za zakończone?';
-  const expected=trim(source.example,750)+' Zasada: '+trim(source.explanation||source.intro,1100);
+  const prompt=trim(source.question,600)||'Jak postąpisz w opisanej sytuacji?';
+  const question=[trim(source.situation,700),prompt,'Krótko uzasadnij odpowiedź.'].join('\n\n');
+  const expected=[lessonAnswer(source),trim(source.explanation||source.intro,1100)].filter(Boolean).join('\n\n');
   return {lesson_no:l.lesson_no,question,expected_answer:expected};
  }
  if(mat?.construction?.roleplay?.question&&mat?.construction?.roleplay?.options?.length){
@@ -47,7 +53,7 @@ function choiceBank(lessons:Lesson[]):Choice[]{
   const m=l.material||{},q=m.learning?.options?.length>=2?m.learning:m.construction?.roleplay?.options?.length>=2?m.construction.roleplay:null;
   if(!q||!Array.isArray(q.options))continue;
   const arr=q.options.map((v:any)=>trim(v,450)),correct=Number(q.correct);
-  if(arr.length<2||arr.length>6||!arr.every((x:string)=>x.length>=3)||new Set(arr).size!==arr.length||!Number.isInteger(correct)||correct<0||correct>=arr.length)continue;
+  if(arr.length<2||arr.length>6||!arr.every((x:string)=>x.length>0)||new Set(arr).size!==arr.length||!Number.isInteger(correct)||correct<0||correct>=arr.length)continue;
   bank.push({
    lesson_no:l.lesson_no,
    question:trim(m.learning===q?'Sytuacja: '+trim(m.learning.situation,500)+' '+trim(q.question,360):'Zadanie językowe „'+l.title_pl+'”: '+trim(q.question,780),1150),
