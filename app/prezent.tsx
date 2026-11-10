@@ -58,17 +58,17 @@ export default function GiftPage(){
     <Text style={{fontSize:23,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
     <Text style={{color:ink,fontWeight:'900',fontSize:23}}>{item.price_grosze===0?'GRATIS':'Cena katalogowa '+(item.price_grosze/100).toFixed(0)+' zł'}</Text>
     {item.price_grosze>0&&<View style={{backgroundColor:'#fff2dc',padding:14,borderRadius:12}}>
-     <Text style={{color:'#7e6229',fontWeight:'800'}}>Voucher testowy — bez płatności</Text>
-     <Text style={{color:'#7e6229',marginTop:5}}>Taki prezent może tworzyć tylko administrator; odbiorca będzie mógł przetestować kurs przez 14 dni. Nie ma wartości pieniężnej.</Text>
+     <Text style={{color:'#7e6229',fontWeight:'800'}}>Płatna karta podarunkowa niedostępna</Text>
+     <Text style={{color:'#7e6229',marginTop:5}}>Płatne kursy są odblokowywane tylko po potwierdzonym zakupie Stripe. Obecnie można podarować wyłącznie bezpłatny kurs.</Text>
     </View>}
-    {(item.price_grosze===0||isAdmin)&&<>
+    {item.price_grosze===0&&<>
      <TextInput style={input} placeholder="E-mail obdarowanej osoby (opcjonalnie)" value={recipient} onChangeText={setRecipient} autoCapitalize="none" keyboardType="email-address"/>
      <TextInput style={[input,{minHeight:86,textAlignVertical:'top'}]} multiline value={message} maxLength={300} onChangeText={setMessage} placeholder="Kilka słów od Ciebie, np. „Pomyślałem o Tobie”"/>
      <Pressable disabled={busy} onPress={createGift} style={{backgroundColor:ink,borderRadius:12,padding:17,opacity:busy?0.6:1}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{busy?'Tworzę prezent…':'Utwórz kartę podarunkową →'}</Text>
      </Pressable>
     </>}
-    {item.price_grosze>0&&!isAdmin&&<Text style={{color:'#806b41'}}>Płatne karty podarunkowe włączymy po uruchomieniu płatności. Darmowy kurs Mikołaja możesz wysłać już teraz.</Text>}
+    {item.price_grosze>0&&<Text style={{color:'#806b41'}}>Obsługa płatnych kart podarunkowych będzie osobnym etapem. Darmowy kurs Mikołaja możesz wysłać już teraz.</Text>}
    </View>}
    {!!link&&<View style={{backgroundColor:pale,borderRadius:18,padding:22,gap:10}}>
     <Text style={{color:ink,fontSize:20,fontWeight:'900'}}>Prezent gotowy!</Text>
