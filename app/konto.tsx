@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,TextInput,Pressable,ScrollView,Linking} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
-import {supabase} from '../src/supabase';
+import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag} from '../src/supabase';
 const ink='#193b2a',pale='#e7f2da';
 // Keep Expo preview authentication working until custom DNS and Supabase Auth allowlist are configured.
 const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
@@ -10,7 +10,7 @@ export default function AccountPage(){
  const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
  gift=typeof params.gift==='string' && /^TA-[0-9A-F]{32}$/i.test(params.gift)?params.gift:'';
- const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const continueToSelectedCourse=async()=>{
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
     if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course}});return;}
@@ -33,15 +33,37 @@ export default function AccountPage(){
  };
  useEffect(()=>{
   let isCurrent=true;
-  void supabase.auth.getUser().then(({data:{user},error})=>{
-    if(isCurrent && !error && user?.email)setActiveEmail(user.email);
-  }).catch(()=>{});
+  const showRecovery=()=>{
+    if(!isCurrent)return;
+    setMode('new-password');
+    setMessage('Link potwierdzony. Ustaw nowe hasło do swojego konta.');
+  };
+  // Subscribe before reading the session; the redirect event can race with screen mounting.
   const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
-   if(event==='PASSWORD_RECOVERY'){
-     setMode('new-password');setMessage('Podaj nowe hasło do swojego konta.');
-   }else if(event==='SIGNED_IN' || event==='TOKEN_REFRESHED'){
-     if(session?.user?.email)setActiveEmail(session.user.email);
-   }else if(event==='SIGNED_OUT')setActiveEmail('');
+    if(!isCurrent)return;
+    if(event==='PASSWORD_RECOVERY')showRecovery();
+    else if(event==='SIGNED_IN'||event==='TOKEN_REFRESHED'){
+      if(session?.user?.email)setActiveEmail(session.user.email);
+    }else if(event==='SIGNED_OUT')setActiveEmail('');
+  });
+  // Handle PASSWORD_RECOVERY already captured by the early listener in src/supabase.ts.
+  void supabase.auth.getUser().then(({data:{user},error})=>{
+    if(!isCurrent)return;
+    if(!error&&user?.email)setActiveEmail(user.email);
+    if(isPasswordRecoveryRedirect()){
+      if(!error&&user)showRecovery();
+      else{
+        setMode('reset');
+        setMessage('Link odzyskiwania wygasł lub jest nieważny. Poproś o nową wiadomość.');
+        clearPasswordRecoveryFlag();
+      }
+    }
+  }).catch(()=>{
+    if(isCurrent&&isPasswordRecoveryRedirect()){
+      setMode('reset');
+      setMessage('Nie udało się zweryfikować linku. Wyślij nową prośbę.');
+      clearPasswordRecoveryFlag();
+    }
   });
   return()=>{isCurrent=false;subscription.unsubscribe();};
  },[]);
@@ -53,6 +75,7 @@ export default function AccountPage(){
        if(password!==confirmPassword)throw new Error('Podane hasła różnią się.');
        const {error}=await supabase.auth.updateUser({password});
        if(error)throw error;
+       clearPasswordRecoveryFlag();
        await supabase.auth.signOut();
        setMode('login');setPassword('');setConfirmPassword('');
        setMessage('Hasło zostało zmienione. Zaloguj się teraz nowym hasłem.');
