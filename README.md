@@ -1,8 +1,13 @@
 # TRENERKI Academy v0.8.0 — Expo + Supabase
 
-**Podgląd:** https://trenerki-academy.expo.app  
-**Pełny katalog HTML:** https://trenerki-academy.expo.app/academy/index.html  
+**Nowa oficjalna domena (zakupiona; DNS/Expo/SSL do zweryfikowania):** https://trenerki.com  
+**Oficjalny e-mail kontaktowy, reklamacje i RODO:** trenerki.pl@gmail.com *(wymaga aktywnej skrzynki i testu dostarczania)*  
+**Podgląd techniczny Expo:** https://trenerki-academy.expo.app  
+**Pełny katalog HTML po podłączeniu domeny:** https://trenerki.com/academy/index.html  
 **Projekt Supabase:** `kcvvixcjuwglfvdpypzs`
+
+**Aktualizacja 10.11.2026:** strony prawne, kontakt, odstąpienia, canonical, sitemap, logowanie i CORS API dyplomów przygotowane pod trenerki.com. Domena nie jest jeszcze zweryfikowana produkcyjnie, a sprzedaż nie została uruchomiona. Szczegóły w `docs/SETUP_SUPABASE_RESEND.md`.
+
 
 ## Stan: 8 listopada 2026
 
@@ -53,8 +58,8 @@ Nie włączono rzeczywistego obciążania kart, faktur VAT ani automatycznego na
 
 1. **Osobna weryfikacja gotowych lekcji** przez odpowiednich specjalistów i poprawienie statusu `draft`/ `review_needed`.
 2. Potwierdzenie działania ostatniego workflow Expo oraz test w rzeczywistej przeglądarce na telefonie.
-3. W Supabase Auth `Site URL` = `https://trenerki-academy.expo.app` i redirect `https://trenerki-academy.expo.app/konto`. Podłączone narzędzie Supabase nadal nie udostępnia zapisu globalnych ustawień Auth; nie deklarować, że naprawiono redirecty e-mail.
-4. Weryfikacja Stripe, Resend, polityk i danych prawnych sprzedawcy oraz rzeczywistego procesu fakturowania.
+3. Po skonfigurowaniu DNS i SSL w Supabase Auth ustawić `Site URL` = `https://trenerki.com` oraz redirect `https://trenerki.com/konto`. Zachować przekierowanie podglądowe Expo na czas testów. Podłączony interfejs Supabase nie udostępnia zapisu globalnych ustawień Auth.
+4. Zweryfikować skrzynkę `trenerki.pl@gmail.com`, uzupełnić numer telefonu firmy, wybrać i skonfigurować operatora płatności Autopay oraz rzeczywisty proces fakturowania i potwierdzeń. Stare funkcje Stripe pozostają nieaktywne.
 5. Bezpieczne serwerowe testy/egzaminy, weryfikowalne potwierdzenia ukończenia oraz reguły wykrywania nadużyć.
 
 **Uwaga:** strony prawne są wersjami przedprodukcyjnymi. Płatności są wyłączone.
