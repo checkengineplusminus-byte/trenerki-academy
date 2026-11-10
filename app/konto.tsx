@@ -16,6 +16,7 @@ export default function AccountPage(){
  const isCompanyLogin=params.next==='company';
  const continueToSelectedCourse=async()=>{
     if(params.next==='company'){router.replace('/firma');return;}
+    if(params.next==='valuegift'){router.replace('/prezent');return;}
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
     if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course}});return;}
     // Email confirmation sends users back to /konto without original query params.
@@ -23,6 +24,10 @@ export default function AccountPage(){
     // enrollment authorization is always checked independently by the server.
     const {data:{user}}=await supabase.auth.getUser();
     const candidate=user?.user_metadata?.pending_course;
+    if(user?.user_metadata?.pending_valuegift===true){
+      await supabase.auth.updateUser({data:{pending_valuegift:null}});
+      router.replace('/prezent');return;
+    }
     if(user?.user_metadata?.pending_company===true){
       await supabase.auth.updateUser({data:{pending_company:null}});
       router.replace('/firma');return;
@@ -116,7 +121,7 @@ export default function AccountPage(){
      if(mode==='register'){
        if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
        const emailRedirectTo=siteUrl+'/konto';
-       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null,pending_company:isCompanyLogin}}});
+       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null,pending_company:isCompanyLogin,pending_valuegift:params.next==='valuegift'}}});
        if(error)throw error;
        if(data.session){await continueToSelectedCourse();return;}
        setMessage('Konto utworzone. Potwierdź e-mail (również w SPAM), następnie zaloguj się. Wybrany kurs będzie czekał w koszyku.');return;
