@@ -2,7 +2,7 @@ import { createClient, type SupabaseClient } from 'npm:@supabase/supabase-js@2.8
 import { buildDiplomaPdf, diplomaFilename, pdfBase64, type Diploma } from './lib/pdf.ts';
 
 const allowedOrigins = new Set([
-  'https://trenerki.academy', 'https://www.trenerki.academy', 'https://trenerki-academy.expo.app',
+  'https://trenerki.com', 'https://www.trenerki.com', 'https://trenerki-academy.expo.app',
 ]);
 const fields = 'id,user_id,course_slug,certificate_no,holder_name,title_pl,title_en,issued_at,is_demo,revoked_at';
 const registryFields = `${fields},ta_diploma_mail(status,sent_at,last_error)` as const;
