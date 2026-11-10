@@ -6,7 +6,7 @@ const cors={
  'access-control-allow-headers':'authorization,x-client-info,apikey,content-type,x-retry-count,traceparent,tracestate,baggage'
 };
 const reply=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,'content-type':'application/json','cache-control':'no-store'}});
-const baseUrl='https://trenerki-academy.expo.app';
+const baseUrl='https://trenerki.com';
 const cleanText=(v,n=200)=>String(v||'').trim().slice(0,n);
 const validSlug=v=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(v);
 const validMail=v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);
@@ -48,27 +48,13 @@ Deno.serve(async request=>{
  const isAdmin=!!adminRec?.role;
  try{
  if(action==='whoami')return reply({is_admin:isAdmin,email:user.email});
- if(action==='demo_checkout'){
-  if(!isAdmin)return reply({error:'demo_reserved_for_admin'},403);
-  if(!validSlug(slug))return reply({error:'invalid_course'},400);
-  const {data:c,error:e}=await db.from('ta_courses').select('slug,title_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle();
-  if(e||!c)return reply({error:'course_unavailable'},404);
-  const {data:active}=await db.from('ta_enrollments').select('id,status').eq('user_id',user.id).eq('course_slug',slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
-  if(active?.length)return reply({ok:true,already_active:true,status:active[0].status});
-  const expires=afterDays(14),now=new Date().toISOString();
-  const {data:order,error:oe}=await db.from('ta_demo_orders').insert({user_id:user.id,course_slug:slug,list_price_grosze:c.price_grosze,actual_paid_grosze:0,source:'checkout',expires_at:expires}).select('id').single();
-  if(oe)return reply({error:'demo_order_failed'},500);
-  const session='demo:'+crypto.randomUUID();
-  const {error:ie}=await db.from('ta_enrollments').insert({user_id:user.id,course_slug:slug,stripe_checkout_session_id:session,amount_grosze:0,currency:'PLN',status:'demo',purchased_at:now,expires_at:expires});
-  if(ie){await db.from('ta_demo_orders').delete().eq('id',order.id);return reply({error:'demo_enrollment_failed'},500)}
-  return reply({ok:true,order_id:order.id,status:'demo',expires_at:expires,money_collected:false});
- }
+ if(action==='demo_checkout')return reply({error:'demo_checkout_disabled'},403);
  if(action==='create_gift'){
   if(!validSlug(slug))return reply({error:'invalid_course'},400);
   const {data:c,error:ce}=await db.from('ta_courses').select('slug,title_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle();
   if(ce||!c)return reply({error:'course_unavailable'},404);
   const mode=c.price_grosze===0?'free':'demo';
-  if(mode==='demo'&&!isAdmin)return reply({error:'paid_gifts_demo_admin_only'},403);
+  if(mode==='demo')return reply({error:'paid_gifts_disabled'},403);
   const email=cleanText(payload?.recipient_email,190).toLowerCase();
   if(email&&!validMail(email))return reply({error:'invalid_recipient_email'},400);
   const message=cleanText(payload?.message,300);
@@ -87,6 +73,7 @@ Deno.serve(async request=>{
   const hash=await codeHash(code);
   const {data:g,error:ge}=await db.from('ta_gift_cards').select('id,course_slug,recipient_email,mode,status,expires_at').eq('code_hash',hash).maybeSingle();
   if(ge||!g)return reply({error:'invalid_gift_code'},404);
+  if(g.mode!=='free')return reply({error:'paid_gifts_disabled'},403);
   if(g.status!=='issued'||new Date(g.expires_at)<new Date())return reply({error:'gift_used_or_expired'},409);
   if(g.recipient_email&&g.recipient_email.toLowerCase()!==String(user.email||'').toLowerCase())return reply({error:'gift_for_another_email'},403);
   const {data:existing}=await db.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',g.course_slug).in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
