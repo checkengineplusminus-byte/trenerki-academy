@@ -166,7 +166,7 @@ try{
  if(!terms.includes('CV')||!certificateRules.includes('CV')||!account.includes('regulamin.html')||!account.includes('prywatnosc.html'))fail('Autorski dyplom and privacy terms missing at registration');
  else ok('Original independent courses, CV wording and privacy notices in legal pages and registration');
  if(!progress.includes('<FinalExam')||!exam.includes('ta-exam')||!exam.includes('holder_name')||
-    !diploma.includes('WZÓR TESTOWY')||!diploma.includes('is_demo')||!myCourses.includes('ta_certificates')||!routes.includes('name="dyplom"'))fail('Final exam and private diploma flow missing');
+    !diploma.includes('WZÓR — NIEWAŻNY')||!diploma.includes('is_demo')||!myCourses.includes('ta_certificates')||!routes.includes('name="dyplom"')||!routes.includes('name="moje-dyplomy"'))fail('Final exam and private diploma flow missing');
  else ok('Exam, learner dashboard and personal sample-safe diploma route wired');
  if(!examServer.includes("phase==='final'")||!examServer.includes("phase==='extra'")||
     !examServer.includes('correctCount>=5')||!examServer.includes('ta_exam_results')||
@@ -234,7 +234,7 @@ try{
   fail('Exam server must support objective fallback with protected correct answer');
  const diplomaPdf=read('supabase/functions/ta-diplomas/lib/pdf.ts');
  if(!diploma.includes('downloadDiploma')||!diplomaPdf.includes('addPage([842, 595])')||
-    !diplomaPdf.includes('Certificate of Completion')||!diplomaPdf.includes('Dyplom ukończenia'))
+    !diplomaPdf.includes('DIPLOMA')||!diplomaPdf.includes('DYPLOM')||!diplomaPdf.includes('t(terms.founder,612,37,6'))
   fail('Certificate PDF in both languages is missing');
  if(/(?:https?:\/\/|www\.)/i.test(JSON.stringify([courses,previews,additions]))||
     /Linking\.openURL\((?:officialPages|preview\.source_url|o\.url)/.test(read('app/kup.tsx')+read('src/SoftwareOrientation.tsx')+languageViewer))
