@@ -2,6 +2,7 @@ import React,{useEffect,useRef,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share,Linking,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
 import {academyAction} from '../src/academyApi';
 const ink='#173d2c',pale='#e9f4dc';
 type Course={slug:string;title_pl:string;price_grosze:number;category_pl:string|null};
@@ -157,7 +158,7 @@ export default function GiftPage(){
     <TextInput accessibilityLabel="E-mail odbiorcy karty" value={valueRecipient} onChangeText={setValueRecipient} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={[input,{marginTop:0}]}/>
     <TextInput accessibilityLabel="Dedykacja" value={valueMessage} onChangeText={setValueMessage} maxLength={300} multiline placeholder="Dodaj dedykację (opcjonalnie)" style={[input,{minHeight:82,textAlignVertical:'top',marginTop:0}]}/>
     <Pressable accessibilityRole="checkbox" accessibilityState={{checked:valueTerms}} onPress={()=>setValueTerms(v=>!v)}><Text style={{color:ink,fontSize:14}}>{valueTerms?'☑':'☐'} Akceptuję regulamin zakupu karty podarunkowej.</Text></Pressable>
-    <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}><Text style={{color:'#47795b',textDecorationLine:'underline',fontSize:12}}>Przeczytaj regulamin</Text></Pressable>
+    <PurchaseLegalLinks/>
     <Pressable accessibilityRole="button" onPress={createValueGift} disabled={busy||!valueTerms} style={{backgroundColor:ink,borderRadius:11,padding:16,opacity:busy||!valueTerms?.5:1}}>
      <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Kup kartę podarunkową →</Text>
     </Pressable>
@@ -173,10 +174,10 @@ export default function GiftPage(){
     {item.price_grosze>0&&<>
      <Text style={{color:ink}}>Po potwierdzeniu płatności wyślemy prezent odbiorcy, a Tobie potwierdzenie zakupu. Odbiorca odbierze kurs na koncie z podanym adresem e-mail i dostanie dostęp na 12 miesięcy.</Text>
      <Pressable accessibilityRole="checkbox" accessibilityState={{checked:terms}} onPress={()=>setTerms(value=>!value)}><Text style={{color:ink}}>{terms?'☑':'☐'} Akceptuję regulamin i warunki zakupu karty.</Text></Pressable>
-     <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}><Text style={{color:ink,textDecorationLine:'underline'}}>Przeczytaj regulamin</Text></Pressable>
+     <PurchaseLegalLinks/>
     </>}
     <Pressable disabled={busy||(item.price_grosze>0&&(!terms||!recipient.trim()))} onPress={createGift} style={{backgroundColor:ink,borderRadius:12,padding:17,opacity:busy||(item.price_grosze>0&&(!terms||!recipient.trim()))?0.5:1}}>
-     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{busy?'Chwileczkę…':item.price_grosze===0?'Utwórz kartę podarunkową →':'Kupuję i płacę '+(item.price_grosze/100).toLocaleString('pl-PL')+' zł →'}</Text>
+     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{busy?'Chwileczkę…':item.price_grosze===0?'Utwórz kartę podarunkową →':'Przejdź do płatności Stripe →'}</Text>
     </Pressable>
    </View>}
    {!valueCardMode&&<View style={{marginTop:12,gap:13}}>
@@ -227,7 +228,7 @@ export default function GiftPage(){
     <Text style={{textAlign:'center',color:ink,fontWeight:'900'}}>🎅 Bezpłatny prezent: kurs Świętego Mikołaja</Text>
    </Pressable>
    {!!notice&&<Text style={{backgroundColor:'#f4efdd',color:'#6c603b',padding:16,borderRadius:12}}>{notice}</Text>}
-   <Text style={{color:'#6f816f',fontSize:12,lineHeight:20}}>Karta jest przypisana do wybranego kursu i można ją wykorzystać raz.</Text>
+   <Text style={{color:'#6f816f',fontSize:12,lineHeight:20}}>Kod karty można aktywować raz. Karta kwotowa pozwala wykorzystać saldo przy kilku zakupach.</Text>
   </View>
  </ScrollView>
 }

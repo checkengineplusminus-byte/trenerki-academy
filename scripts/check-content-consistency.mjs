@@ -161,9 +161,18 @@ try{
  const exam=read('src/FinalExam.tsx'),diploma=read('app/dyplom.tsx'),examServer=read('supabase/functions/ta-exam/index.ts');
  const routes=read('app/_layout.tsx'),account=read('app/konto.tsx'),myCourses=read('app/moje-kursy.tsx');
  const terms=read('public/academy/regulamin.html'),privacy=read('public/academy/prywatnosc.html'),certificateRules=read('public/academy/certyfikaty.html');
- for(const [name,body] of [['regulamin',terms],['polityka',privacy],['dyplomy',certificateRules]]){
-  if(!body.includes('autors')||!body.includes('kwalifikacj')||!body.includes('2026'))fail('Outdated legal page '+name);
+ for(const [name,body] of [['regulamin',terms],['dyplomy',certificateRules]]){
+  if(!body.toLowerCase().includes('autors')||!body.includes('kwalifikacj')||!body.includes('2026'))fail('Outdated legal page '+name);
  }
+ const legalLinks=read('src/PurchaseLegalLinks.tsx'),contact=read('public/academy/kontakt.html'),withdrawal=read('public/academy/odstapienie.html');
+ const phone='tel:+48795676553';
+ if(![terms,contact,withdrawal,legalLinks].every(body=>body.includes(phone))||![checkout,gift].every(body=>body.includes('<PurchaseLegalLinks/>')))
+  fail('Verified consumer telephone and legal information must be available before checkout');
+ if(!['art. 29','art. 38','art. 43o','7aa'].every(article=>terms.includes(article))||
+    !['OpenAI','24 wypowiedzi','sprzeciw','kopię odpowiednich zabezpieczeń','opiekuna firmy'].every(phrase=>privacy.includes(phrase)))
+  fail('Consumer rights and privacy disclosures are incomplete');
+ if(['Autorskie kursy i dyplomy TRENERKI.</strong>','Program i ceny zaktualizowane z katalogu akademii.','80 kursów w 6 kategoriach · wybierz kategorię powyżej','Widzisz program przed wyborem','Szukasz zawodu?'].some(phrase=>page.includes(phrase)))
+  fail('Removed homepage copy is still present');
  if(!terms.includes('CV')||!certificateRules.includes('CV')||!account.includes('regulamin.html')||!account.includes('prywatnosc.html'))fail('Autorski dyplom and privacy terms missing at registration');
  else ok('Original independent courses, CV wording and privacy notices in legal pages and registration');
  if(!progress.includes('<FinalExam')||!exam.includes('ta-exam')||!exam.includes('holder_name')||

@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,Pressable,ActivityIndicator,Linking,Platform} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
 type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string};
@@ -152,30 +153,29 @@ export default function Purchase(){
          <Text style={{fontSize:19,color:ink}}>{applyCredit?'☑':'☐'}</Text>
          <Text style={{flex:1,color:ink,fontWeight:'700'}}>Wykorzystaj moje saldo przy zakupie</Text>
         </Pressable>
-        {applyCredit&&<Text style={{color:ink,fontSize:13}}>Z salda: {pln(effectiveCredit)} · {toPay===0?'Bez dopłaty':('Dopłata Stripe: '+pln(toPay))}</Text>}
+        {applyCredit&&<Text style={{color:ink,fontSize:13}}>Szacunkowo z salda: {pln(effectiveCredit)} · {toPay===0?'Bez dopłaty':('Dopłata Stripe: '+pln(toPay))}</Text>}
        </View>}
-       <Text style={{color:ink,fontWeight:'900'}}>{applyCredit&&creditBalance>0?toPay===0?'Zapłata w całości ze środków na koncie':'Do dopłaty przez Stripe: '+pln(toPay):'Bezpieczna płatność Stripe · jednorazowo '+price}</Text>
+       <Text style={{color:ink,fontWeight:'900'}}>{applyCredit&&creditBalance>0?toPay===0?'Planowana zapłata z salda':'Szacunkowa dopłata przez Stripe: '+pln(toPay):'Płatność jednorazowa przez Stripe'}</Text>
        <Text style={{color:muted,fontSize:13,lineHeight:20}}>Dostęp na 12 miesięcy po potwierdzonej płatności. Brak automatycznego odnawiania. Kurs odblokowuje się na Twoim koncie.</Text>
+       <PurchaseLegalLinks/>
        <Pressable accessibilityRole="checkbox" accessibilityState={{checked:termsAccepted}} onPress={()=>setTermsAccepted(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6}}>
         <Text style={{fontSize:20,color:ink}}>{termsAccepted?'☑':'☐'}</Text>
-        <Text style={{flex:1,color:ink,lineHeight:21}}>Zapoznałem się z regulaminem, warunkami zakupu i polityką prywatności.</Text>
+        <Text style={{flex:1,color:ink,lineHeight:21}}>Zapoznałem się z regulaminem i akceptuję warunki zakupu.</Text>
        </Pressable>
        <Pressable accessibilityRole="checkbox" accessibilityState={{checked:earlyAccessConsent}} onPress={()=>setEarlyAccessConsent(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6}}>
         <Text style={{fontSize:20,color:ink}}>{earlyAccessConsent?'☑':'☐'}</Text>
-        <Text style={{flex:1,color:ink,lineHeight:21}}>Wyraźnie zgadzam się na rozpoczęcie dostarczania treści cyfrowych przed upływem 14 dni i przyjmuję do wiadomości, że po rozpoczęciu dostarczania tracę ustawowe prawo odstąpienia od umowy.</Text>
+        <Text style={{flex:1,color:ink,lineHeight:21}}>Wyraźnie zgadzam się na rozpoczęcie dostarczania treści cyfrowych przed upływem 14 dni i przyjmuję do wiadomości, że po rozpoczęciu dostarczania mogę utracić prawo odstąpienia, jeżeli spełniono wszystkie warunki ustawowe opisane w regulaminie.</Text>
        </Pressable>
       </View>}
      {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
      </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent)))?0.5:1}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':(applyCredit&&creditBalance>0?(toPay===0?'Kupuję z salda':'Dopłacam '+pln(toPay)):'Kupuję i płacę '+price)+' →'}</Text>
+      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':(applyCredit&&creditBalance>0?(toPay===0?'Kupuję z salda':'Kupuję z salda i dopłacam'):'Przejdź do płatności Stripe')+' →'}</Text>
      </Pressable>}
      <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs</Text>
      </Pressable>
-     <Pressable onPress={()=>Linking.openURL('https://trenerki.com/academy/regulamin.html')}>
-      <Text style={{fontSize:13,color:muted,textDecorationLine:'underline',textAlign:'center'}}>Regulamin i zasady dostępu ↗</Text>
-     </Pressable>
+
     </View>
    </>}
    {!!message&&<View style={{backgroundColor:'#fff2dc',padding:17,borderRadius:12}}><Text style={{color:'#805f2e'}}>{message}</Text></View>}

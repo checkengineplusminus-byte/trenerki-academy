@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
+import {View,Text,TextInput,Pressable,ActivityIndicator,Linking} from 'react-native';
 import {useRouter} from 'expo-router';
 import {supabase} from './supabase';
 
@@ -136,8 +136,9 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
     {options.map((option,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>setSelectedOption(i)} style={{padding:15,backgroundColor:selectedOption===i?'#d2ebca':'white',borderWidth:selectedOption===i?2:1,borderColor:selectedOption===i?'#377746':'#c2d7b9',borderRadius:11}}>
      <Text style={{color:ink,fontWeight:selectedOption===i?'900':'700',lineHeight:23}}>{String.fromCharCode(65+i)}. {option}</Text>
     </Pressable>)}
-   </View>:
-   <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/>}
+   </View>:<>
+   <Text style={{color:'#516e58',fontSize:12}}>OpenAI może oceniać treść Twojej odpowiedzi. Pomiń dane osobowe i wrażliwe.</Text>
+   <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/></>}
    {button(busy?'Sprawdzanie odpowiedzi…':'Zatwierdź odpowiedź',send,busy||(gradingMode==='choice'?selectedOption===null:answer.trim().length<20))}
    {gradingMode==='oral'&&<Pressable accessibilityRole="button" onPress={switchMode} disabled={busy} style={{padding:13,backgroundColor:'#f2f7ec',borderRadius:11,borderWidth:1,borderColor:'#c9ddc4'}}>
     <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>Wolę pytania jednokrotnego wyboru — zachowaj mój postęp</Text>
@@ -158,6 +159,9 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
    <Text style={{color:'#984d34',lineHeight:21}}>{error}</Text>
    <Pressable onPress={()=>void refresh()}><Text style={{fontWeight:'900',color:ink}}>Odśwież stan egzaminu</Text></Pressable>
   </View>}
-  <Text style={{color:'#768a75',fontSize:12,lineHeight:19}}>Niezależny dyplom TRENERKI nie jest kwalifikacją zawodową. Ocena automatyczna może zawierać błędy; w razie wątpliwości można zgłosić potrzebę weryfikacji wyniku.</Text>
+  <Text style={{color:'#768a75',fontSize:12,lineHeight:19}}>Niezależny dyplom TRENERKI nie jest kwalifikacją zawodową. Ocena automatyczna może zawierać błędy.</Text>
+  <Pressable accessibilityRole="link" onPress={()=>Linking.openURL('mailto:trenerki.pl@gmail.com?subject=Weryfikacja%20wyniku%20egzaminu')}>
+   <Text style={{color:'#286043',fontSize:13,textDecorationLine:'underline'}}>Poproś o sprawdzenie wyniku przez człowieka</Text>
+  </Pressable>
  </View>;
 }

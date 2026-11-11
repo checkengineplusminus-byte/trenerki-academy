@@ -87,6 +87,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
    <HelpLink>Wszystkie bezpłatne kontakty</HelpLink>
   </View>}
   {allowed&&<View style={{gap:8}}>
+   <Text style={{color:muted,fontSize:12,lineHeight:19}}>Rozmowa zapisuje się przy koncie. Pytanie może trafić do OpenAI. Pomiń dane osobowe i wrażliwe.</Text>
    <TextInput value={input} onChangeText={setInput} multiline maxLength={1000} placeholder="Np. Nie rozumiem, skąd ta kwota. Wyjaśnij na liczbach."
     placeholderTextColor="#728576" textAlignVertical="top" accessibilityLabel="Twoje pytanie do Anielki"
     style={{backgroundColor:'white',borderColor:'#c4d7c2',borderWidth:1,borderRadius:11,minHeight:74,padding:13,color:ink,fontSize:16}}/>
