@@ -65,13 +65,13 @@ export default function DiplomaPage(){
      <Text style={{fontSize:font(7),letterSpacing:2*scale,fontWeight:'700',color:gold}}>A C A D E M Y</Text>
     </View>
     <View style={{alignItems:'center',gap:Math.max(3,5*scale),width:'100%'}}>
-     <Text style={{fontSize:font(32),fontFamily:'serif',letterSpacing:2*scale,color:ink}}>{pl?'DYPLOM':'DIPLOMA'}</Text>
+     <Text style={{fontSize:font(30),fontFamily:'serif',letterSpacing:2*scale,color:ink}}>{pl?'DYPLOM':'DIPLOMA'}</Text>
      <View style={{width:'20%',height:1,backgroundColor:gold}}/>
      <Text style={{fontSize:font(12),fontFamily:'serif',color:ink}}>{pl?'Niniejszym potwierdza się, że':'This certifies that'}</Text>
-     <Text adjustsFontSizeToFit numberOfLines={2} style={{fontSize:font(28),fontWeight:'700',fontFamily:'serif',color:ink,textAlign:'center'}}>{cert.holder_name||'—'}</Text>
+     <Text adjustsFontSizeToFit numberOfLines={2} style={{fontSize:font(26),fontWeight:'700',fontFamily:'serif',color:ink,textAlign:'center'}}>{cert.holder_name||'—'}</Text>
      <View style={{width:'65%',height:1,backgroundColor:soft}}/>
      <Text style={{fontSize:font(11),color:'#555'}}>{pl?'ukończył(a) kurs':'has successfully completed the course'}</Text>
-     <Text adjustsFontSizeToFit numberOfLines={2} style={{fontSize:font(20),fontFamily:'serif',fontWeight:'700',color:ink,textAlign:'center',maxWidth:'92%'}}>{title}</Text>
+     <Text adjustsFontSizeToFit numberOfLines={2} style={{fontSize:font(18),fontFamily:'serif',fontWeight:'700',color:ink,textAlign:'center',maxWidth:'92%'}}>{title}</Text>
     </View>
     <View style={{width:'80%',height:1,backgroundColor:soft}}/>
     <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',alignItems:'center',paddingHorizontal:Math.max(6,25*scale)}}>
