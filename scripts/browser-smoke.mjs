@@ -24,8 +24,14 @@ async function verify(name,viewport,isMobile){
   assert.equal(await help.getAttribute('href'),'/pomoc');
   await help.waitFor({state:'visible'});
   assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
-  const helpBounds=await help.boundingBox(),searchBounds=await field.boundingBox();
-  assert(helpBounds&&searchBounds&&helpBounds.x+helpBounds.width<=searchBounds.x,'Help link overlaps the Anielka search');
+  const helpBounds=await help.boundingBox();
+  for(const neighbor of [field,page.locator('header .demo-tag')]){
+   const bounds=await neighbor.boundingBox();
+   assert(helpBounds&&bounds);
+   const overlap=helpBounds.x<bounds.x+bounds.width&&helpBounds.x+helpBounds.width>bounds.x&&
+    helpBounds.y<bounds.y+bounds.height&&helpBounds.y+helpBounds.height>bounds.y;
+   assert(!overlap,'Help link overlaps a neighboring control');
+  }
   await field.waitFor({state:'visible'});
   const prices=await page.evaluate(()=>COURSES.map(c=>({slug:c.id,price:c.price})));
   assert.equal(prices.length,80,'Public catalogue should contain all courses');
