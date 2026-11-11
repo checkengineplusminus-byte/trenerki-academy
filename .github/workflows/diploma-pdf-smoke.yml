@@ -18,4 +18,4 @@ jobs:
         with:
           deno-version: v2.x
       - name: Verify Polish/English printable PDF without issuing certificates or emails
-        run: deno test --allow-net scripts/diploma-pdf-smoke.test.ts
+        run: deno test --node-modules-dir=auto --allow-net scripts/diploma-pdf-smoke.test.ts
