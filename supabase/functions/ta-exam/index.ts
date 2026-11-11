@@ -1,6 +1,6 @@
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
-const origins=new Set(['https://trenerki-academy.expo.app','https://trenerki.academy','https://www.trenerki.academy']);
+const origins=new Set(['https://trenerki.com','https://www.trenerki.com','https://trenerki-academy.expo.app','https://trenerki.academy','https://www.trenerki.academy']);
 const trim=(v:unknown,n=200)=>typeof v==='string'?v.trim().slice(0,n):'';
 const validSlug=(s:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(s);
 type Grade={correct:boolean;feedback:string};
@@ -64,13 +64,20 @@ function choiceBank(lessons:Lesson[]):Choice[]{
  return bank;
 }
 function nextChoice(bank:Choice[],history:any[],phase:string):Choice|null{
- const used=new Set((history||[]).map((x:any)=>Number(x.lesson_no)));
+ const usedQuestions=new Set((history||[]).map((x:any)=>String(x.question||'').trim().toLocaleLowerCase('pl')));
+ const usedLessons=new Set((history||[]).map((x:any)=>Number(x.lesson_no)));
  const expertMin=Math.max(0,...bank.map(x=>x.lesson_no))-9;
  const experts=bank.filter(x=>x.lesson_no>=expertMin);
  const target=(phase==='final'||phase==='extra')&&experts.length>=2?experts:bank;
- let available=target.filter(x=>!used.has(x.lesson_no));
- if(!available.length)available=bank.filter(x=>!used.has(x.lesson_no));
- if(!available.length)available=bank;
+ // Prefer brand-new questions from different lessons. Repeat only when the entire
+ // bank is exhausted: legacy 8-lesson courses must not lose an ongoing exam.
+ const fresh=bank.filter(x=>!usedQuestions.has(x.question.trim().toLocaleLowerCase('pl')));
+ const byStage=target.filter(x=>!usedQuestions.has(x.question.trim().toLocaleLowerCase('pl')));
+ let available=byStage.filter(x=>!usedLessons.has(x.lesson_no));
+ if(!available.length)available=fresh.filter(x=>!usedLessons.has(x.lesson_no));
+ if(!available.length)available=byStage;
+ if(!available.length)available=fresh;
+ if(!available.length)available=target;
  if(!available.length)return null;
  const chosen=pick(available),shuffled=chosen.question_options.map((answer,index)=>({answer,index}));
  for(let i=shuffled.length-1;i>0;i--){
@@ -176,7 +183,14 @@ Deno.serve(async(req:Request)=>{
    :[];
  });
  const legacyBank=choiceBank(lessons as Lesson[]);
- const bank=privateBank.length>=6?privateBank:[...privateBank,...legacyBank.map(q=>({...q,lesson_no:q.lesson_no+8}))];
+ // Never discard the other 30–63 course lessons just because eight authored
+ // exam questions exist. Combine both banks, removing duplicate question stems.
+ const seenPrompts=new Set<string>();
+ const bank=[...privateBank,...legacyBank].filter(q=>{
+  const normalized=q.question.trim().replace(/\s+/g,' ').toLocaleLowerCase('pl');
+  if(!normalized||seenPrompts.has(normalized))return false;
+  seenPrompts.add(normalized);return true;
+ });
  const hasAi=!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));
  const available=hasAi||bank.length>=6;
  let {data:session,error:se}=await db.from('ta_exam_sessions').select('*')
