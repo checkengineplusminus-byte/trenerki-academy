@@ -33,6 +33,7 @@ try{
  'google-ads-promocja','facebook-ads-promocja']);
  const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko']);
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
+ const validated20CourseExtensions=new Set(['obowiazki-domowe','brygadzista','lepszy-tata','swiety-mikolaj']);
  const carpentrySlug='ciesla-przygotowanie-czeladnicze';
  const craftExpanded=new Map([['bednarz',16],['kolodziej',16],['plecionkarz',16],['garncarz-tradycja',12],['gontarz',12],['introligator-tradycja',12],['kaletnik-tradycja',12],['ludwisarz',12],['mlynarz-tradycyjny',12],['powroznik',12],['rymarz',12]]);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
@@ -41,7 +42,7 @@ try{
  else{new Script(page.slice(scriptStart+8,scriptEnd),{filename:'academy-index.js'});ok('Homepage JavaScript syntax');}
  if(courses.length===15+additions.length+1&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
  for(const c of courses){
-  const expected=c.id===carpentrySlug?63:craftExpanded.has(c.id)?craftExpanded.get(c.id):(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id)||c.id==='kowal-tradycja')?30:expandedSlugs.has(c.id)?12:8;
+  const expected=validated20CourseExtensions.has(c.id)?20:c.id===carpentrySlug?63:craftExpanded.has(c.id)?craftExpanded.get(c.id):(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id)||c.id==='kowal-tradycja')?30:expandedSlugs.has(c.id)?12:8;
   if(!Array.isArray(c.outline)||c.outline.length!==expected)fail(c.id+': expected '+expected+' lessons');
   const guide=individualGuides[c.id]||craftGuides[c.id];
   if(!introSlugs.has(c.id)&&(!guide||!['what','first','result','boundary'].every(k=>typeof guide[k]==='string'&&guide[k].length>=30)))
