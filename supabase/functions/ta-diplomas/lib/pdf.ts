@@ -66,10 +66,10 @@ export async function buildDiplomaPdf(d:Diploma, language:DiplomaLanguage){
   page.drawLine({start:{x,y:33},end:{x:x+22*dir,y:33},thickness:1.3,color:gold});
   page.drawLine({start:{x,y:33},end:{x,y:55},thickness:1.3,color:gold});
  }
- // Small academic emblem and restrained laurels.
- page.drawSvgPath('M0 16 L23 27 L46 16 L23 5 Z',{x:398,y:501,color:navy});
- page.drawSvgPath('M12 7 L12 -1 Q23 -8 34 -1 L34 7',{x:398,y:501,borderColor:navy,borderWidth:1.5});
- page.drawLine({start:{x:446,y:520},end:{x:446,y:495},thickness:1,color:gold});
+ // Keep the academic emblem clear of the wordmark below it.
+ page.drawSvgPath('M0 16 L23 27 L46 16 L23 5 Z',{x:398,y:534,color:navy});
+ page.drawSvgPath('M12 7 L12 -1 Q23 -8 34 -1 L34 7',{x:398,y:534,borderColor:navy,borderWidth:1.5});
+ page.drawLine({start:{x:444,y:518},end:{x:444,y:505},thickness:1,color:gold});
  line(293,373,516,.65,lightGold);line(468,549,516,.65,lightGold);
  t('T R E N E R K I',center,476,19,display,navy);
  t('A  C  A  D  E  M  Y',center,457,8,body,gold);
@@ -94,9 +94,9 @@ export async function buildDiplomaPdf(d:Diploma, language:DiplomaLanguage){
  page.drawCircle({x:128,y:91,size:27,borderWidth:.8,borderColor:gold});
  page.drawSvgPath('M0 11 L20 20 L40 11 L20 2 Z',{x:108,y:82,color:gold});
  page.drawLine({start:{x:110,y:77},end:{x:146,y:77},thickness:.9,color:gold});
- // A modest original stylized signature, anchored above the founder label.
+ // Keep the handwritten signature above the rule and the printed name.
  const signature='M0 4 C10 27 13 20 19 3 M5 13 C18 16 29 16 39 16 M25 6 C37 14 36 9 44 14 C50 18 48 6 53 10 C62 18 67 4 73 10 C79 15 83 8 87 9 C93 17 98 8 104 7 M106 5 C113 24 119 25 121 4 M112 13 C123 19 130 11 135 12 C144 22 143 6 150 9 C158 15 162 6 168 10 C176 17 184 7 190 8 M184 4 C198 9 202 7 211 5';
- page.drawSvgPath(signature,{x:523,y:64,scale:.85,borderColor:blueInk,borderWidth:1.65});
+ page.drawSvgPath(signature,{x:523,y:92,scale:.85,borderColor:blueInk,borderWidth:1.65});
  line(507,717,68,.6,gold);
  t('Adrian Flaga',612,49,9,display,navy);
  // Deliberately half the usual 12-pt caption size.
