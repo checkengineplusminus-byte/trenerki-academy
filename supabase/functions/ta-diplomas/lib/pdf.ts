@@ -73,14 +73,14 @@ export async function buildDiplomaPdf(d:Diploma, language:DiplomaLanguage){
  line(293,373,516,.65,lightGold);line(468,549,516,.65,lightGold);
  t('T R E N E R K I',center,476,19,display,navy);
  t('A  C  A  D  E  M  Y',center,457,8,body,gold);
- t(terms.heading,center,385,34,display,navy);
+ t(terms.heading,center,385,31,display,navy);
  line(309,394,367,.75,gold);line(448,533,367,.75,gold);
  page.drawSvgPath('M0 5 L5 10 L10 5 L5 0 Z',{x:416,y:362,color:gold});
  t(terms.lead,center,333,13,display,navy);
- fit(d.holder_name?.normalize('NFC')?.trim()||'—',281,29,672,2,display);
+ fit(d.holder_name?.normalize('NFC')?.trim()||'—',281,26,672,2,display);
  line(204,638,267,.5,lightGold);
  t(terms.complete,center,238,12,body,muted);
- fit(cleanTitle(d,language),205,21,660,2,display);
+ fit(cleanTitle(d,language),205,19,660,2,display);
  line(230,612,145,.65,lightGold);
  const date=new Intl.DateTimeFormat(language==='pl'?'pl-PL':'en-GB',
   {day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Warsaw'}).format(stamp);
