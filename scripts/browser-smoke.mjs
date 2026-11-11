@@ -20,6 +20,12 @@ async function verify(name,viewport,isMobile){
   const r=await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded',timeout:30000});
   assert(r&&r.status()===200,'Academy HTML route failed');
   const field=page.locator('#anielka-question');
+  const help=page.locator('header .nav-help');
+  assert.equal(await help.getAttribute('href'),'/pomoc');
+  await help.waitFor({state:'visible'});
+  assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
+  const helpBounds=await help.boundingBox(),searchBounds=await field.boundingBox();
+  assert(helpBounds&&searchBounds&&helpBounds.x+helpBounds.width<=searchBounds.x,'Help link overlaps the Anielka search');
   await field.waitFor({state:'visible'});
   const prices=await page.evaluate(()=>COURSES.map(c=>({slug:c.id,price:c.price})));
   assert.equal(prices.length,80,'Public catalogue should contain all courses');

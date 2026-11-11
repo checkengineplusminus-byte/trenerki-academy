@@ -32,7 +32,11 @@ const root=new URL('../public/academy/',import.meta.url);
 const pages=readdirSync(root,{recursive:true}).filter(path=>path.endsWith('.html'));
 for(const path of pages){
  const html=readFileSync(new URL(path,root),'utf8');
- assert.match(html,/href="\/pomoc"/,path);
+ if(path==='index.html'){
+  assert.match(html,/<header\b[^>]*>.*Moje kursy<\/a><\/nav><a class="nav-help" href="\/pomoc"/s);
+ }else{
+  assert.match(html,/<footer\b[^>]*>.*href="\/pomoc"/s,path);
+ }
 }
 assert.match(readFileSync(new URL('../public/sitemap.xml',import.meta.url),'utf8'),/<loc>https:\/\/trenerki\.com\/pomoc<\/loc>/);
-console.log(`✓ 11 scenarios, 5 non-crisis queries, contextual follow-up, sitemap and ${pages.length} public footers`);
+console.log(`✓ 11 scenarios, 5 non-crisis queries, contextual follow-up, sitemap and help links on ${pages.length} public pages`);
