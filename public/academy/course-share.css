@@ -1,0 +1,61 @@
+.course-actions {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.course-share {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.buy-card .course-share {
+  margin-top: 9px;
+}
+
+.course-share-button {
+  display: block;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #a9c5af;
+  border-radius: 11px;
+  background: #fff;
+  color: #173e2c;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+}
+
+.buy-card .course-share-button {
+  width: 100%;
+}
+
+.course-share-button:hover:not(:disabled) {
+  background: #eff6e9;
+}
+
+.course-share-button:focus-visible,
+.course-share-status input:focus-visible {
+  outline: 2px solid #397a4d;
+  outline-offset: 2px;
+}
+
+.course-share-status:not(:empty) {
+  margin-top: 5px;
+  color: #325743;
+  font-size: 13px;
+}
+
+.course-share-status input {
+  display: block;
+  width: min(100%, 310px);
+  min-height: 36px;
+  margin-top: 4px;
+  padding: 5px 7px;
+  border: 1px solid #a9c5af;
+  border-radius: 6px;
+  background: #fff;
+  color: #173e2c;
+  font: inherit;
+}
