@@ -36,6 +36,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Test six carpentry calculators and real Excel formula engine
         run: node scripts/test-formulas.mjs
+      - name: Exclude test and promotional records from sales
+        run: node scripts/test-sales-analytics.mjs
       - name: Verify production web bundle
         run: npx expo export --platform web --output-dir /tmp/trenerki-smoke
       - name: Check actual exported Academy assets and all 80 course icons

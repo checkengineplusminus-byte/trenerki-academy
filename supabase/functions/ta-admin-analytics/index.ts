@@ -46,7 +46,7 @@ Deno.serve(async req=>{
     .select('user_id,course_slug,amount_grosze,status,purchased_at,stripe_checkout_session_id')
     .gt('amount_grosze',0).range(start,start+999).order('purchased_at',{ascending:false});
    if(error)throw error;
-   for(const o of data||[])if(typeof o.stripe_checkout_session_id==='string'&&o.stripe_checkout_session_id.startsWith('cs_')&&['active','expired'].includes(o.status))orders.push(o as Payment);
+   for(const o of data||[])if(typeof o.stripe_checkout_session_id==='string'&&o.stripe_checkout_session_id.startsWith('cs_live_')&&['active','expired'].includes(o.status))orders.push(o as Payment);
    if((data||[]).length<1000)break;
    if(start===49000)throw new Error('order_page_limit');
   }
@@ -56,7 +56,7 @@ Deno.serve(async req=>{
     .eq('mode','stripe').in('status',['issued','redeemed']).not('paid_at','is',null)
     .order('paid_at',{ascending:false}).order('id').range(start,start+999);
    if(error)throw error;
-   for(const gift of data||[])orders.push({
+   for(const gift of data||[])if(typeof gift.stripe_checkout_session_id==='string'&&gift.stripe_checkout_session_id.startsWith('cs_live_')&&gift.amount_grosze>0)orders.push({
     user_id:gift.created_by,course_slug:gift.course_slug,amount_grosze:gift.amount_grosze,
     status:gift.status,purchased_at:gift.paid_at,stripe_checkout_session_id:gift.stripe_checkout_session_id,is_gift:true
    });
