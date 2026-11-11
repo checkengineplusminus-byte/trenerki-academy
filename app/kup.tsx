@@ -4,7 +4,7 @@ import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
-type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string,review_status:string,study_minutes:number|null,workshop_count:number|null};
+type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string};
 const ink='#193a2c',muted='#5b7563',lime='#e6f3d6';
 export default function Purchase(){
  const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
@@ -22,7 +22,7 @@ export default function Purchase(){
     .catch(()=>{});
    const [courseResult,previewResult,enrollmentResult]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
-    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note,review_status,study_minutes,workshop_count').eq('course_slug',slug).maybeSingle(),
+    supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note').eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_enrollments').select('id,status').eq('course_slug',slug).eq('user_id',user.id).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1),
    ]);
    if(courseResult.error||!courseResult.data)throw courseResult.error||new Error('Nie odnaleziono kursu.');
@@ -112,8 +112,7 @@ export default function Purchase(){
    {busy&&<ActivityIndicator/>}
    {!!item&&<>
     <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#dbe8d9',padding:23,gap:11}}>
-     <Text style={{fontSize:12,color:'#6b8d70',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'} · {preview?.module_titles?.length||0} LEKCJI</Text>
-     {!!preview?.study_minutes&&<Text style={{color:muted,fontWeight:'800'}}>Około {Math.floor(preview.study_minutes/60)} godz.{preview.study_minutes%60?' '+preview.study_minutes%60+' min':''} · {preview.workshop_count} {preview.workshop_count===4?'pracownie':'pracowni'}</Text>}
+     <Text style={{fontSize:12,color:'#6b8d70',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'}</Text>
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
      <Text style={{fontSize:15,color:muted,lineHeight:24}}>{item.description_pl}</Text>
      <Text style={{fontSize:27,fontWeight:'900',color:ink}}>{item.price_grosze===0?'GRATIS':price}</Text>
@@ -136,7 +135,7 @@ export default function Purchase(){
       <Text style={{color:'#3f5b49',lineHeight:22}}>{preview.editorial_note}</Text>
      </View>
      {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#dfe8d9',padding:23,gap:12}}>
-      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>{preview.module_titles.length} lekcji · {preview.module_titles.length===30?'3 działy od zera do Expert':'program ćwiczeń'}</Text>
+      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>Program kursu</Text>
       {preview.module_titles.map((name,i)=><View key={String(i)} style={{flexDirection:'row',gap:12,alignItems:'center',paddingVertical:6,borderBottomWidth:i===preview.module_titles.length-1?0:1,borderColor:'#eff2ed'}}>
        <Text style={{color:'#73945f',fontWeight:'800',fontSize:16}}>{String(i+1).padStart(2,'0')}</Text><Text style={{fontSize:14,color:ink,flex:1}}>{name}</Text>
       </View>)}

@@ -27,6 +27,8 @@ async function verify(name,viewport,isMobile){
   assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),99);
   assert.equal(await page.locator('.category-tiles .category-tile').count(),6,'Six clickable category cards must appear on homepage');
   assert.equal(await page.locator('#course-cards .course-card').count(),12,'Homepage should show twelve featured courses');
+  assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
+  assert.doesNotMatch(await page.locator('.hero').innerText(),/\b\d+\s+lekcj\w*/i,'Hero should omit lesson counts');
   assert.equal(await page.locator('.catalog-more').count(),0,'No more-courses buttons');
   await page.locator('.category-tiles .category-tile').first().click();
   assert.equal(await page.locator('#course-cards .course-card').count(),9,'Selecting construction must show all nine courses');

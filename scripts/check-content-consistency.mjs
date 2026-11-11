@@ -114,7 +114,7 @@ try{
  if(!checkout.includes("functions.invoke('ta-create-checkout'")||!checkout.includes('termsAccepted')||!checkout.includes('earlyAccessConsent')||checkout.includes("academyAction('demo_checkout'"))fail('Secure Stripe checkout or mandatory digital content consent missing');else ok('Stripe-only paid checkout with consent');
  if(!gift.includes("academyAction('create_gift'")||!gift.includes("academyAction('redeem_gift'")||!gift.includes('swiety-mikolaj'))fail('Gift card redemption/sharing missing');else ok('Gift card flow');
  if(!admin.includes("academyAction('admin_dashboard'")||!admin.includes('Jakość kursów'))fail('Protected administration or editorial view missing');else ok('Administrator content-review dashboard');
- if(!progress.includes(".eq('status','active')")||!progress.includes("setDone(")||!checkout.includes("review_status"))fail('Paid access, saved progress or editorial warnings missing');else ok('Protected lessons, progress and pre-purchase editorial review checks');
+ if(!progress.includes(".eq('status','active')")||!progress.includes("setDone(")||!checkout.includes("preview.editorial_note"))fail('Paid access, saved progress or editorial warnings missing');else ok('Protected lessons, progress and pre-purchase editorial review checks');
  const cases=read('src/CaseLesson.tsx');
  if(!cases.includes('onAttempt')||!progress.includes('const canFinish=')||!progress.includes("select('lesson_no,mode,correct')"))
   fail('Graded lesson checkpoint or restoration missing');
@@ -223,8 +223,8 @@ try{
    fail(slug+': fewer than nine substantive lessons with theory exceeding 220 characters');
   else ok(slug+': 30 illustrated lessons, '+seen.size+' themed visual families, substantial introductory theory');
  }
- if(!illustrated.includes('if(!named.length&&!validIllustration)')||
-   !illustrated.includes('imageNames.has(illustration)'))fail('Images must render even for old lessons without section structure');
+ if(!illustrated.includes('{showImage&&<View')||!illustrated.includes('imageNames.has(illustration)')||
+    !illustrated.includes('<Visual {...visual}/>'))fail('Existing and course-specific illustrations must render independently of the text sections');
  else ok('Software illustrations work with and without long-form sections');
  for(const asset of Object.values(expectedVisualGroups).flat()){
   if(!illustrated.includes("'"+asset+"'"))fail('Renderer does not support course asset '+asset);

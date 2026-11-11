@@ -12,14 +12,14 @@ import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
 import EcoAtlas from '../src/EcoAtlas';
 import FinalExam from '../src/FinalExam';
-import LessonIllustratedSections,{type LearningSection} from '../src/LessonIllustratedSections';
+import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '../src/LessonIllustratedSections';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{study_project?:StudyProject,practice?:{diagram?:string[]},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,editorial_status?:string}
+ material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard';
@@ -285,7 +285,7 @@ export default function Learning(){
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
-     situation={lesson.material?.learning?.situation} example={lesson.material?.learning?.example} diagram={lesson.material.practice?.diagram}
+     diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
