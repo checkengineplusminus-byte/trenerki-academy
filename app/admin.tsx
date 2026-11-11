@@ -75,7 +75,7 @@ export default function AdminPage(){
     const response=error instanceof FunctionsHttpError?await error.context.json().catch(()=>null):null;
     const code=response?.error??data?.error;
     const messages:Record<string,string>={
-     daily_limit:'Ta karta przekroczyłaby limit 5 000 zł łącznej wartości kart promocyjnych w ciągu 24 godzin. Limit zwalnia się 24 godziny po wystawieniu każdej karty.',
+     daily_limit:'Ta karta przekroczyłaby limit 10 000 zł łącznej wartości kart promocyjnych w ciągu 24 godzin. Limit zwalnia się 24 godziny po wystawieniu każdej karty.',
      owner_only:'Karty promocyjne może wystawiać właściciel platformy.',
      confirmed_login_required:'Zaloguj się na konto z potwierdzonym adresem e-mail.',
      invalid_input:'Sprawdź kwotę karty i adres e-mail odbiorcy.',
@@ -368,7 +368,7 @@ export default function AdminPage(){
     </View>}
     {tab==='credit-card'&&<View style={card}>
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Wystaw kartę promocyjną</Text>
-     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:13}}>Wartość karty wynosi od 25 do 1 000 zł. Łączny limit wynosi 5 000 zł w ciągu 24 godzin. Odbiorca może zapłacić saldem za kursy i dopłacić brakującą kwotę. Takie karty nie są liczone jako sprzedaż Stripe.</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:13}}>Wartość karty wynosi od 25 do 1 000 zł. Łączny limit wynosi 10 000 zł w ciągu 24 godzin. Odbiorca może zapłacić saldem za kursy i dopłacić brakującą kwotę. Takie karty nie są liczone jako sprzedaż Stripe.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:11}}>
       {[50,100,200,500].map(x=><Pressable key={x} onPress={()=>setPromoAmount(String(x))} style={{padding:11,backgroundColor:promoAmount===String(x)?ink:pale,borderRadius:10}}>
        <Text style={{color:promoAmount===String(x)?'white':ink,fontWeight:'800'}}>{x} zł</Text>
