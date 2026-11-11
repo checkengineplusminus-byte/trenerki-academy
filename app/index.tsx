@@ -4,6 +4,13 @@ import {getInitialRecoveryHash} from '../src/supabase';
 
 const LEGACY_SITE='/academy/index.html';
 
+export function generateMetadata(){
+  return {
+    title:'Trenerki Academy — kursy online i praktyczna nauka',
+    description:'Poznaj kursy online Trenerki Academy: budownictwo, technologie, biznes, rzemiosło i codzienne umiejętności. Ucz się we własnym tempie.',
+  };
+}
+
 // Expo Hosting serves the original, fully restored HTML design from /public/academy.
 // The course material remains protected by Supabase RLS; this public entry only shows a catalog.
 export default function Home(){

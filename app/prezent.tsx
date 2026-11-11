@@ -6,6 +6,12 @@ import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
 import {coursePrice,termsVersion} from '../src/courseQuote';
 import {academyAction} from '../src/academyApi';
 const ink='#173d2c',pale='#e9f4dc';
+export function generateMetadata(){
+ return {
+  title:'Kurs online na prezent i karty podarunkowe — Trenerki Academy',
+  description:'Podaruj wybrany kurs online lub kartę kwotową Trenerki Academy. Wybierz prezent, wpisz odbiorcę i dodaj osobistą wiadomość.',
+ };
+}
 type Course={slug:string;title_pl:string;price_grosze:number;category_pl:string|null};
 export default function GiftPage(){
  const {width}=useWindowDimensions(),scroll=useRef<ScrollView>(null);

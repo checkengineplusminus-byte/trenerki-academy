@@ -33,3 +33,14 @@ for(const slug of ['budownictwo','rzemioslo-i-hobby','technologie-i-logistyka','
 }
 assert(!main.includes('class="catalog-more"'),'More buttons should not remain');
 console.log('✓ 80 public SEO course pages, 6 category pages, Polish metadata, unique URLs and sitemap verified');
+
+// Inspect the export, not only source JSX: metadata must precede hydration.
+if(root!=='public'){
+ for(const route of ['index.html','prezent.html','pomoc.html']){
+  const html=readFileSync(join(root,route),'utf8');
+  assert(/<html[^>]*lang="pl"/.test(html),'Wrong document language '+route);
+  assert(/<title>[^<]+<\/title>/.test(html),'Missing initial title '+route);
+  assert(/<meta[^>]*name="description"[^>]*content="[^"]+"/.test(html),'Missing initial description '+route);
+ }
+ console.log('✓ Entry, gifts and support include Polish language and metadata before JavaScript');
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // TRENERKI editorial dashboard: reporting only, never silently fill courses with placeholder lessons.
-// It is intentionally nonblocking while 64 legacy courses are being written and reviewed.
+// Protect the completed catalogue against accidental removal of chapters.
 import {readFileSync} from 'node:fs';
 const html=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
 const start=html.indexOf('const COURSES=');
@@ -9,7 +9,7 @@ const open=html.indexOf('[',start),end=html.indexOf('];',open);
 if(open<0||end<0)throw new Error('Catalog JSON malformed');
 const courses=JSON.parse(html.slice(open,end+1));
 if(courses.length!==80)throw new Error('Expected 80 courses, found '+courses.length);
-const min=20;
+const min=30;
 const incomplete=[];
 for(const course of courses){
  if(!course.id||!Array.isArray(course.outline))throw new Error('Missing curriculum: '+course?.id);

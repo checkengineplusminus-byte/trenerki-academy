@@ -11,6 +11,8 @@ jobs:
       prod: true
     hooks:
       after_install_node_modules:
+        - name: Protect minimum thirty chapters per course
+          run: node scripts/audit-course-standards.mjs --enforce
         - name: Verify content, exercises and protected course access
           run: node scripts/check-content-consistency.mjs
         - name: Verify course finding with Anielka
