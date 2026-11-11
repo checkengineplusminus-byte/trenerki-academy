@@ -173,6 +173,9 @@ export default function AccountPage(){
    <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{isCompanyLogin?'Otwórz panel firmy →':gift?'Odbierz prezent →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
+   <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#eaf2e5',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
+     <Text style={{color:'#214c36',fontWeight:'800'}}>Moje dyplomy →</Text>
+   </Pressable>
    <Pressable accessibilityRole="button" onPress={logout} style={{backgroundColor:'#eef2ec',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
      <Text style={{color:'#325a3d',fontWeight:'800'}}>Wyloguj się</Text>
    </Pressable>
