@@ -5,7 +5,8 @@ const allowedOrigins = new Set([
   'https://trenerki.com', 'https://www.trenerki.com', 'https://trenerki-academy.expo.app',
 ]);
 const fields = 'id,user_id,course_slug,certificate_no,holder_name,title_pl,title_en,issued_at,is_demo,revoked_at';
-const registryFields = `${fields},ta_diploma_mail(status,sent_at,last_error)` as const;
+const mailFields = 'status,sent_at,last_error';
+const registryFields = `${fields},ta_diploma_mail(${mailFields})` as const;
 const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i;
 type MailJob = { certificate_id: string; request_key: string; attempts: number };
 
@@ -134,8 +135,22 @@ Deno.serve(async request => {
   }
   if (input.action === 'resend') {
     if (!(await isAdmin())) return reply({ error: 'not_authorized' }, 403);
-    const { data, error } = await db.rpc('ta_diploma_mail_resend', { p_certificate: input.id });
-    return error ? reply({ error: 'database_unavailable' }, 503) : reply({ queued: !!data });
+    const { data: queued, error } = await db.rpc('ta_diploma_mail_resend', { p_certificate: input.id });
+    if (error) return reply({ error: 'database_unavailable' }, 503);
+    if (queued) {
+      // The same lease protects this attempt and the scheduled delivery worker.
+      try {
+        const { data: jobs, error: claimError } = await db.rpc('ta_diploma_mail_claim', { p_certificate: input.id, p_limit: 1 });
+        if (claimError) console.error('diploma_resend_claim_failed', claimError.code);
+        else if (jobs?.length) await sendDiploma(db, jobs[0] as MailJob);
+      } catch {
+        console.error('diploma_resend_attempt_incomplete');
+      }
+    }
+    const { data: mail, error: mailError } = await db.from('ta_diploma_mail').select(mailFields)
+      .eq('certificate_id', input.id).maybeSingle();
+    if (mailError && !queued) return reply({ error: 'database_unavailable' }, 503);
+    return reply({ queued: !!queued, mail: mail ?? null });
   }
   if (input.language !== 'pl' && input.language !== 'en') return reply({ error: 'invalid_language' }, 400);
   const { data: diploma, error } = await db.from('ta_certificates').select(fields)

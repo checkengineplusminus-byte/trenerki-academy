@@ -1,15 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, TextInput, View } from 'react-native';
-import { diplomaAction, downloadDiploma, type DiplomaLanguage, type RegistryEntry } from './diplomaApi';
+import { diplomaAction, downloadDiploma, type DiplomaLanguage, type DiplomaMail, type RegistryEntry } from './diplomaApi';
 
 const ink = '#183b2c';
 const muted = '#52705a';
-const labels: Record<string, string> = {
+const labels: Record<DiplomaMail['status'], string> = {
   pending: 'W kolejce do wysłania',
-  sending: 'Przekazywanie do wysłania',
-  sent: 'Przyjęto do wysłania',
+  sending: 'Wysyłanie',
+  sent: 'Wysłano e-mail',
   failed: 'Wysyłka wymaga ponowienia',
 };
+type RegistryPage = { certificates: RegistryEntry[]; more: string | null };
+
+function updateMail(items: RegistryEntry[], id: string, mail: DiplomaMail) {
+  return items.map(item => item.id === id ? { ...item, ta_diploma_mail: mail } : item);
+}
+
+function deliveryNotice(mail: DiplomaMail, sentEarlier = false) {
+  switch (mail.status) {
+    case 'sent':
+      return sentEarlier ? 'Obie wersje dyplomu zostały już wysłane.' : 'Wysłano obie wersje dyplomu na adres uczestnika.';
+    case 'failed':
+      return mail.last_error === 'recipient_unavailable' ? 'Brakuje potwierdzonego adresu e-mail uczestnika.' : 'Nie udało się wysłać dyplomu. Możesz ponowić wysyłkę.';
+    case 'sending':
+      return 'Trwa wysyłka obu wersji dyplomu.';
+    case 'pending':
+      return mail.last_error ? 'Wysyłka czeka na kolejną automatyczną próbę.' : 'Obie wersje dyplomu czekają na wysłanie.';
+  }
+}
+
+function deliveryLabel(item: RegistryEntry) {
+  if (item.revoked_at) return 'Unieważniony';
+  if (item.is_demo) return 'Wzór testowy';
+  const mail = item.ta_diploma_mail;
+  if (!mail) return 'Brak zapisu wysyłki';
+  const when = mail.status === 'sent' && mail.sent_at
+    ? ' · ' + new Date(mail.sent_at).toLocaleString('pl-PL', { dateStyle: 'short', timeStyle: 'short', timeZone: 'Europe/Warsaw' })
+    : '';
+  return labels[mail.status] + when;
+}
 
 export default function DiplomaRegistry() {
   const [items, setItems] = useState<RegistryEntry[]>([]);
@@ -18,12 +47,14 @@ export default function DiplomaRegistry() {
   const [more, setMore] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [notice, setNotice] = useState('');
+  const [pendingNumber, setPendingNumber] = useState<string | null>(null);
 
   async function load(lookup = '', cursor: string | null = null) {
     setBusy(true);
     setNotice('');
+    setPendingNumber(null);
     try {
-      const result = await diplomaAction<{ certificates: RegistryEntry[]; more: string | null }>('list', {
+      const result = await diplomaAction<RegistryPage>('list', {
         number: lookup.trim(), ...(cursor ? { before: cursor } : {}),
       });
       setApplied(lookup);
@@ -34,19 +65,54 @@ export default function DiplomaRegistry() {
     } finally { setBusy(false); }
   }
   useEffect(() => { void load(); }, []);
+  useEffect(() => {
+    const numberToWatch = pendingNumber;
+    if (!numberToWatch) return;
+    let active = true;
+    let remaining = 24;
+    let timer: ReturnType<typeof setTimeout>;
+
+    async function refresh() {
+      try {
+        const { certificates } = await diplomaAction<RegistryPage>('list', { number: numberToWatch });
+        if (!active) return;
+        const item = certificates.find(entry => entry.certificate_no === numberToWatch);
+        const mail = item?.ta_diploma_mail;
+        if (item && mail) {
+          setItems(old => updateMail(old, item.id, mail));
+          setNotice(deliveryNotice(mail));
+          if (mail.status === 'sent' || mail.status === 'failed') {
+            setPendingNumber(null);
+            return;
+          }
+        }
+      } catch {
+        // A short connection failure leaves the last confirmed status visible.
+      }
+      if (!active) return;
+      if (--remaining > 0) timer = setTimeout(refresh, 6000);
+      else setPendingNumber(null);
+    }
+
+    timer = setTimeout(refresh, 6000);
+    return () => { active = false; clearTimeout(timer); };
+  }, [pendingNumber]);
 
   async function act(diploma: RegistryEntry, language?: DiplomaLanguage) {
     setBusy(true);
-    setNotice('');
+    setNotice(language ? '' : 'Wysyłam obie wersje dyplomu…');
     try {
       if (language) await downloadDiploma(diploma.id, language);
       else {
-        const result = await diplomaAction<{ queued: boolean }>('resend', { id: diploma.id });
-        if (result.queued) {
-          setItems(old => old.map(item => item.id === diploma.id
-            ? { ...item, ta_diploma_mail: { status: 'pending', sent_at: null, last_error: null } } : item));
-          setNotice('Obie wersje dyplomu trafiły do kolejki ponownej wysyłki.');
-        } else setNotice('Wysyłka jest już w kolejce lub dyplom wysłano przed chwilą.');
+        setPendingNumber(null);
+        const result = await diplomaAction<{ queued: boolean; mail?: DiplomaMail | null }>('resend', { id: diploma.id });
+        const mail: DiplomaMail | null = result.mail ?? (result.queued
+          ? { status: 'pending', sent_at: null, last_error: null } : null);
+        if (mail) {
+          setItems(old => updateMail(old, diploma.id, mail));
+          setNotice(deliveryNotice(mail, !result.queued));
+          if (mail.status === 'pending' || mail.status === 'sending') setPendingNumber(diploma.certificate_no);
+        } else setNotice('Odśwież rejestr, aby sprawdzić stan wysyłki tego dyplomu.');
       }
     } catch (error) {
       setNotice(error instanceof Error ? error.message : 'Nie udało się wykonać operacji.');
@@ -73,9 +139,7 @@ export default function DiplomaRegistry() {
     {items.map(item => <View key={item.id} style={{ borderTopWidth: 1, borderColor: '#e1e8dd', paddingTop: 11, gap: 7 }}>
       <Text style={{ color: ink, fontWeight: '900' }}>{item.certificate_no} · {item.holder_name}</Text>
       <Text style={{ color: muted }}>{item.title_pl}</Text>
-      <Text style={{ color: muted }}>{new Date(item.issued_at).toLocaleDateString('pl-PL', { timeZone: 'Europe/Warsaw' })} · {
-        item.revoked_at ? 'Unieważniony' : item.is_demo ? 'Wzór testowy' : labels[item.ta_diploma_mail?.status || ''] || 'Brak zapisu wysyłki'
-      }</Text>
+      <Text style={{ color: muted }}>{new Date(item.issued_at).toLocaleDateString('pl-PL', { timeZone: 'Europe/Warsaw' })} · {deliveryLabel(item)}</Text>
       {!item.revoked_at ? <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
         {Platform.OS === 'web' && button('PDF PL', () => void act(item, 'pl'))}
         {Platform.OS === 'web' && button('PDF EN', () => void act(item, 'en'))}

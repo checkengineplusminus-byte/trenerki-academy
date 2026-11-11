@@ -5,8 +5,13 @@ export type Diploma = {
   id: string; certificate_no: string; holder_name: string; title_pl: string; title_en: string;
   issued_at: string; is_demo: boolean; revoked_at?: string | null;
 };
+export type DiplomaMail = {
+  status: 'pending' | 'sending' | 'sent' | 'failed';
+  sent_at: string | null;
+  last_error: string | null;
+};
 export type RegistryEntry = Diploma & {
-  ta_diploma_mail?: { status: string; sent_at: string | null; last_error: string | null } | null;
+  ta_diploma_mail?: DiplomaMail | null;
 };
 
 export async function diplomaAction<T>(action: string, fields: Record<string, string> = {}) {
