@@ -83,9 +83,14 @@ export default function MyCourses(){
  return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:20,maxWidth:1150,alignSelf:'center',width:'100%',paddingBottom:55}}>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10,flexWrap:'wrap',marginBottom:15}}>
    <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800'}}>← Katalog kursów</Text></Pressable>
-   <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut();if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}>
-    <Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Wyloguj się</Text>
-   </Pressable>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+    <Pressable accessibilityRole="link" onPress={()=>router.push('/ustawienia')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}>
+     <Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Ustawienia konta</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut();if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}>
+     <Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Wyloguj się</Text>
+    </Pressable>
+   </View>
   </View>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:8,flexWrap:'wrap',marginBottom:9}}>
    <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228'}}>Moje kursy</Text>
