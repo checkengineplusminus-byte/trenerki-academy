@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,TextInput,Pressable,ActivityIndicator,Linking} from 'react-native';
+import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {useRouter} from 'expo-router';
 import {supabase} from './supabase';
 
@@ -105,7 +105,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  </Pressable>;
  return <View style={{marginTop:25,padding:20,backgroundColor:'#e7f2e1',borderRadius:19,borderWidth:1,borderColor:'#cde5c6',gap:13}}>
   <Text style={{color:'#668466',fontSize:12,fontWeight:'900'}}>ETAP KOŃCOWY · OSOBNY OD POSTĘPU LEKCJI</Text>
-  <Text style={{color:ink,fontWeight:'900',fontSize:24}}>Egzamin z Anielką</Text>
+  <Text style={{color:ink,fontWeight:'900',fontSize:24}}>Egzamin końcowy</Text>
   <Text style={{color:'#516e58',lineHeight:23}}>Sprawdzimy, czego nauczyłeś się podczas kursu. Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. Jeżeli się pomylisz, dostaniesz jeszcze jedną szansę. Po zaliczeniu otrzymasz autorski dyplom z imieniem, nazwiskiem i datą ukończenia.</Text>
   {loading&&<ActivityIndicator color={ink}/>}
   {!loading&&state==='ready'&&<View style={{gap:12}}>
@@ -129,7 +129,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
     </View>)}
    </View>}
    <View style={{backgroundColor:'white',padding:17,borderRadius:12,gap:9}}>
-    <Text style={{color:'#53805c',fontWeight:'900'}}>PYTANIE ANIELKI</Text>
+    <Text style={{color:'#53805c',fontWeight:'900'}}>PYTANIE EGZAMINACYJNE</Text>
     <Text style={{color:ink,fontWeight:'800',fontSize:17,lineHeight:27}}>{question}</Text>
    </View>
    {gradingMode==='choice'?<View style={{gap:9}}>
@@ -158,9 +158,6 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
    <Text style={{color:'#984d34',lineHeight:21}}>{error}</Text>
    <Pressable onPress={()=>void refresh()}><Text style={{fontWeight:'900',color:ink}}>Odśwież stan egzaminu</Text></Pressable>
   </View>}
-  <Text style={{color:'#768a75',fontSize:12,lineHeight:19}}>Niezależny dyplom TRENERKI nie jest kwalifikacją zawodową. Ocena automatyczna może zawierać błędy.</Text>
-  <Pressable accessibilityRole="link" onPress={()=>Linking.openURL('mailto:trenerki.pl@gmail.com?subject=Weryfikacja%20wyniku%20egzaminu')}>
-   <Text style={{color:'#286043',fontSize:13,textDecorationLine:'underline'}}>Poproś o sprawdzenie wyniku przez człowieka</Text>
-  </Pressable>
+  <Text style={{color:'#768a75',fontSize:12,lineHeight:19}}>Niezależny dyplom TRENERKI nie jest kwalifikacją zawodową.</Text>
  </View>;
 }

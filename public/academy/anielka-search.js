@@ -251,11 +251,12 @@ function show(query,scroll=false){
  // The catalog may need to render before Anielka can write to its output element.
  if(typeof searchCourses==='function')searchCourses(v);
  const out=document.getElementById('anielka-output');
- if(out)out.innerHTML=response(v);
+ const opensChat=scroll&&globalThis.TrenerkiSupport&&v.length>=12;
+ if(out)out.innerHTML=(opensChat?'<small>Rozmawiasz z asystentką AI. Pomiń dane osobowe.</small>':'')+response(v);
  setPeek(v);
  lastQuery=v;
  if(find(v).found)lastIntent=v;
- if(scroll&&globalThis.TrenerkiSupport)scheduleAi(v);
+ if(opensChat)scheduleAi(v);
  if(scroll&&out&&typeof out.scrollIntoView==='function')out.scrollIntoView({behavior:'smooth',block:'start'});
 }
 document.addEventListener('input',event=>{

@@ -20,6 +20,7 @@ const names:Record<string,string>={
 };
 export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  const [history,setHistory]=useState<Line[]>([]),[opening,setOpening]=useState(''),[input,setInput]=useState('');
+ const [chatOpened,setChatOpened]=useState(false);
  const [support,setSupport]=useState<SupportResult|null>(null);
  const [loading,setLoading]=useState(true),[sending,setSending]=useState(false),[canReply,setCanReply]=useState(true);
  const [error,setError]=useState(''),[showOlder,setShowOlder]=useState(false),[cooldown,setCooldown]=useState<string|null>(null);
@@ -87,10 +88,10 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
    <HelpLink>Wszystkie bezpłatne kontakty</HelpLink>
   </View>}
   {allowed&&<View style={{gap:8}}>
-   <Text style={{color:muted,fontSize:12,lineHeight:19}}>Rozmowa zapisuje się przy koncie. Pytanie może trafić do OpenAI. Pomiń dane osobowe i wrażliwe.</Text>
-   <TextInput value={input} onChangeText={setInput} multiline maxLength={1000} placeholder="Np. Nie rozumiem, skąd ta kwota. Wyjaśnij na liczbach."
+   <TextInput value={input} onFocus={()=>setChatOpened(true)} onChangeText={setInput} multiline maxLength={1000} placeholder="Np. Nie rozumiem, skąd ta kwota. Wyjaśnij na liczbach."
     placeholderTextColor="#728576" textAlignVertical="top" accessibilityLabel="Twoje pytanie do Anielki"
     style={{backgroundColor:'white',borderColor:'#c4d7c2',borderWidth:1,borderRadius:11,minHeight:74,padding:13,color:ink,fontSize:16}}/>
+   {(chatOpened||!!input)&&<Text style={{color:muted,fontSize:12,lineHeight:19}}>Rozmawiasz z asystentką AI. Pomiń dane osobowe i wrażliwe.</Text>}
    <Pressable accessibilityRole="button" onPress={()=>void send()} disabled={sending||input.trim().length<5}
     style={{backgroundColor:ink,borderRadius:11,padding:15,opacity:sending||input.trim().length<5?.5:1}}>
     <Text style={{color:'white',textAlign:'center',fontWeight:'900',fontSize:15}}>{sending?'Odpowiadam…':'Zapytaj Anielkę →'}</Text>
