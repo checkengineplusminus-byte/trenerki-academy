@@ -1,8 +1,12 @@
+import '../../../public/academy/support-routing.js';
+const routeSupport=(globalThis as any).TrenerkiSupport.route;
 // TRENERKI Academy — public, budget-limited AI course consultant.
 // Never exposes the OpenAI key; the browser receives only a short, vetted answer.
 // The caller's IP is salted/hashed for daily throttling; no question history is stored.
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const allowed=new Set([
+ 'https://trenerki.com',
+ 'https://www.trenerki.com',
  'https://trenerki-academy.expo.app',
  'https://trenerki.academy',
  'https://www.trenerki.academy'
@@ -28,10 +32,16 @@ Deno.serve(async(request:Request)=>{
  // additionally bounded by strict per-visitor/global quotas in Postgres.
  if(!allowed.has(origin))return reply({error:'origin_not_allowed'},403,origin);
  if(!request.headers.get('apikey')?.startsWith('sb_publishable_'))return reply({error:'invalid_client'},401,origin);
- if(!apiKey)return reply({error:'ai_not_configured'},503,origin);
  if(Number(request.headers.get('content-length')||0)>6000)return reply({error:'request_too_large'},413,origin);
  let payload:any;try{payload=await request.json()}catch{return reply({error:'invalid_json'},400,origin)}
  const question=clip(payload?.question,350);
+ let prior=null;
+ if(Array.isArray(payload?.history)){
+  for(const turn of payload.history.slice(-2))prior=routeSupport(clip(turn?.question,350),prior);
+ }
+ const support=routeSupport(question,prior);
+ if(support)return reply({ok:true,answer:support.text,support,candidate_ids:[]},200,origin);
+ if(!apiKey)return reply({error:'ai_not_configured'},503,origin);
  if(question.length<8||question.length>350)return reply({error:'invalid_question'},400,origin);
  if(/\b[\w.+-]+@[\w.-]+\.[a-z]{2,}\b/i.test(question)||/\b\d{11,}\b/.test(question))
   return reply({error:'no_personal_contact_info'},400,origin);
@@ -63,6 +73,7 @@ Deno.serve(async(request:Request)=>{
   }));
  }
  const instructions=[
+  'Gdy kontekst może dotyczyć osobistego kryzysu, przemocy, samookaleczenia, uzależnienia, poważnych długów lub zagrożenia dziecka, odpowiedz wyłącznie słowem POMOC. Edukacyjny temat sam w sobie nie świadczy o kryzysie.',
   'Jesteś Anielką, doradcą kursów TRENERKI Academy. Rozmawiasz po polsku, naturalnie i indywidualnie.',
   'Każdorazowo odnieś się do konkretnego celu rozmówcy. Nie powtarzaj jego słów mechanicznie. Zamiast gotowego sloganu pokaż, w czym kurs może pomóc i jak użyć go w życiu.',
   'Bierz pod uwagę poziom doświadczenia, zmianę pracy, hobby i przeszkody — wyłącznie gdy wynikają z treści rozmowy.',
@@ -88,6 +99,10 @@ Deno.serve(async(request:Request)=>{
   const answerJson=await answerResponse.json();
   const answer=clip(answerJson?.output_text||
    (answerJson?.output||[]).flatMap((o:any)=>o.content||[]).filter((x:any)=>x.type==='output_text').map((x:any)=>x.text).join('\n'),1200);
+  if(/^POMOC[.!\s]*$/i.test(answer)){
+   const support=routeSupport('Potrzebuję pomocy');
+   return reply({ok:true,answer:support.text,support,candidate_ids:[]},200,origin);
+  }
   if(!answer)return reply({error:'ai_unavailable'},503,origin);
   return reply({ok:true,answer,candidate_ids:candidates.map(c=>c.slug)},200,origin);
  }catch{return reply({error:'ai_unavailable'},503,origin)}

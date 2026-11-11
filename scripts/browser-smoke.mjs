@@ -44,7 +44,8 @@ async function verify(name,viewport,isMobile){
   await page.locator('#anielka-peek [data-anielka-course="excel-skroty"]').waitFor({timeout:7000});
   const count=await page.locator('#course-cards .course-card').count();
   assert(count>=1&&count<80,'Course recommendations must actually filter the catalog');
-  await page.waitForFunction(()=>document.querySelector('#anielka-peek p')?.textContent?.includes('Ponieważ chcesz używać Excela'),{timeout:9000});
+  await field.press('Enter');
+  await page.waitForFunction(()=>document.querySelector('#anielka-output')?.textContent?.includes('Ponieważ chcesz używać Excela'),{timeout:9000});
   const icon=page.locator('#course-cards .course-icon-art').first();
   assert(await icon.count(),'Course icon missing');
   const usable=await icon.evaluate(node=>{
@@ -53,7 +54,7 @@ async function verify(name,viewport,isMobile){
   assert(usable,'SVG course icon is not rendered');
   const width=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(width.scroll<=width.client+3,'Horizontal overflow: '+JSON.stringify(width));
-  await page.locator('#anielka-peek [data-anielka-course="excel-skroty"]').click();
+  await page.locator('#anielka-output [data-anielka-course="excel-skroty"]').first().click();
   await page.waitForFunction(()=>new URL(location.href).searchParams.get('course')==='excel-skroty',{timeout:6000});
   await page.waitForTimeout(200);
   assert((await page.locator('body').innerText()).includes('Excel'),'Course details did not open');
@@ -82,6 +83,25 @@ async function verify(name,viewport,isMobile){
    }
    console.log('✓ desktop: all 80 course detail screens render with correct course titles');
   }
+  await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded'});
+  let submitted=0;
+  page.on('request',request=>{if(request.method()==='POST'&&request.url().includes('/ta-anielka'))submitted++;});
+  await field.fill('Mam myśli samobójcze i mam plan');
+  await field.press('Enter');
+  await page.locator('#anielka-output a[href="tel:112"]').waitFor();
+  assert.equal(await page.locator('#anielka-output [data-anielka-course]').count(),0,'A crisis response must never sell a course');
+  await page.locator('#anielka-output a[href="/pomoc#kryzys"]').waitFor();
+  await page.waitForTimeout(1800);
+  assert.equal(submitted,0,'Recognized crisis text must stay on the device');
+  const support=await page.goto(root+'/pomoc.html',{waitUntil:'domcontentloaded'});
+  assert.equal(support?.status(),200,'Public help route must render');
+  await page.getByRole('heading',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).waitFor();
+  await page.getByRole('button',{name:'Uzależnienia',exact:true}).focus();
+  await page.keyboard.press('Enter');
+  await page.waitForFunction(()=>document.querySelectorAll('.support-category').length===1&&document.querySelector('#uzaleznienia'));
+  assert.equal(await page.locator('a[href="tel:112"]').count(),1,'Emergency number must stay visible under filtering');
+  const supportWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+  assert(supportWidth.scroll<=supportWidth.client+3,'Public help page horizontal overflow');
   await page.screenshot({path:'/tmp/trenerki-'+name+'.png',fullPage:false});
   assert.equal(errors.length,0,'Browser JS errors: '+errors.join(' | '));
   console.log('✓ '+name+': Anielka searches from home AND course detail, opens both courses, no JS errors or overflow');

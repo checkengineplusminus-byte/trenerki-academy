@@ -5,6 +5,9 @@ on:
     paths:
       - '.github/workflows/browser-smoke.yml'
       - 'scripts/browser-smoke.mjs'
+      - 'scripts/test-support.mjs'
+      - 'app/pomoc.tsx'
+      - 'public/academy/support*'
       - 'scripts/seo-structure-test.mjs'
       - 'public/academy/kursy/**'
       - 'public/academy/kategorie/**'
@@ -41,6 +44,7 @@ jobs:
         run: |
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2
+          node scripts/test-support.mjs
           node scripts/browser-smoke.mjs http://127.0.0.1:8787
           node scripts/seo-structure-test.mjs /tmp/trenerki-browser
           node scripts/learning-browser.mjs http://127.0.0.1:8787

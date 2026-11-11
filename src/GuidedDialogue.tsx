@@ -1,9 +1,11 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {supabase} from './supabase';
+import {categoryLabel,routeSupport,type SupportResult} from './support/routing';
+import {HelpLink} from './support/links';
 
 type Line={role:'student'|'anielka';text:string;created_at?:string};
-type Session={ok?:boolean;error?:string;history?:Line[];opening?:string;reply?:string;cooldown_until?:string|null;can_reply?:boolean};
+type Session={support?:SupportResult;ok?:boolean;error?:string;history?:Line[];opening?:string;reply?:string;cooldown_until?:string|null;can_reply?:boolean};
 type Props={courseSlug:string;lessonNo:number;canMoveOn?:boolean;onFinish?:()=>void};
 const ink='#183c2b', muted='#58705f';
 const names:Record<string,string>={
@@ -18,6 +20,7 @@ const names:Record<string,string>={
 };
 export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  const [history,setHistory]=useState<Line[]>([]),[opening,setOpening]=useState(''),[input,setInput]=useState('');
+ const [support,setSupport]=useState<SupportResult|null>(null);
  const [loading,setLoading]=useState(true),[sending,setSending]=useState(false),[canReply,setCanReply]=useState(true);
  const [error,setError]=useState(''),[showOlder,setShowOlder]=useState(false),[cooldown,setCooldown]=useState<string|null>(null);
  const request=async(action:'status'|'dialogue',message?:string)=>{
@@ -35,7 +38,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  };
  useEffect(()=>{
   let active=true;
-  setHistory([]);setInput('');setOpening('');setError('');setShowOlder(false);
+  setHistory([]);setInput('');setSupport(null);setOpening('');setError('');setShowOlder(false);
   setCooldown(null);setCanReply(true);setLoading(true);
   void request('status').then(d=>{if(active)apply(d)})
    .catch(e=>{if(active)setError(String(e?.message||'Połączenie chwilowo niedostępne.'))})
@@ -44,9 +47,12 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  },[courseSlug,lessonNo]);
  async function send(){
   const message=input.trim();
-  if(sending||!canReply||message.length<5)return;
+  if(sending||message.length<2)return;
+  const help=routeSupport(message,support);
+  if(help){setSupport(help);setInput('');setError('');return;}
+  if(!canReply||message.length<5)return;
   setSending(true);setError('');
-  try{apply(await request('dialogue',message));setInput('')}
+  try{const data=await request('dialogue',message);if(data.support)setSupport(data.support);else apply(data);setInput('')}
   catch(e:any){setError(e?.message||'Nie udało się wysłać pytania.')}
   finally{setSending(false)}
  }
@@ -74,6 +80,12 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
    <Text style={{color:'#3c7652',fontSize:11,fontWeight:'900'}}>{m.role==='student'?'Ty':'Anielka'}</Text>
    <Text style={{color:ink,fontSize:14,lineHeight:23}}>{m.text}</Text>
   </View>)}
+  {!!support&&<View accessibilityLiveRegion="polite" style={{gap:7,backgroundColor:'white',borderRadius:9,padding:12}}>
+   <Text style={{color:ink,lineHeight:22}}>{support.text}</Text>
+   {(support.urgent||support.atRisk)&&<HelpLink href="tel:112">Zadzwoń pod 112 w nagłym zagrożeniu</HelpLink>}
+   {support.categories.map(id=><HelpLink key={id} href={'/pomoc#'+id}>{categoryLabel(id)}</HelpLink>)}
+   <HelpLink>Wszystkie bezpłatne kontakty</HelpLink>
+  </View>}
   {allowed&&<View style={{gap:8}}>
    <TextInput value={input} onChangeText={setInput} multiline maxLength={1000} placeholder="Np. Nie rozumiem, skąd ta kwota. Wyjaśnij na liczbach."
     placeholderTextColor="#728576" textAlignVertical="top" accessibilityLabel="Twoje pytanie do Anielki"

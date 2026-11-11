@@ -1,0 +1,8 @@
+.footer-help{display:flex;flex-direction:column;align-items:flex-start;gap:.12rem;background:#edf5e9;color:#17392a;border:1px solid #d5e5d3;border-radius:.7rem;padding:.65rem .9rem;margin:.8rem auto 0;width:fit-content;max-width:calc(100% - 1rem);line-height:1.45;text-align:left}
+.footer-help a{color:#17392a;font-weight:800;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}
+.footer-help small{color:#365440}
+.footer-help a:focus-visible{outline:3px solid #14583a;outline-offset:3px}
+.anielka-support-links{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:.65rem}
+.anielka-support-links a,.anielka-support-links button{min-height:44px;display:inline-flex;align-items:center;padding:.45rem .7rem;border-radius:.45rem;border:1px solid #92a991;background:#fff;color:#17392a;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.anielka-support-links a[href="tel:112"]{background:#702c23;color:white;border-color:#702c23}
+.anielka-support-mode #course-cards,.anielka-support-mode .filter-line,.anielka-support-mode #catalog-sync-note,.anielka-support-mode .hero,.anielka-support-mode #jak-dziala,.anielka-support-mode #certyfikat{display:none!important}

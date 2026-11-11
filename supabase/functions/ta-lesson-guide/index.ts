@@ -1,3 +1,5 @@
+import '../../../public/academy/support-routing.js';
+const routeSupport=(globalThis as any).TrenerkiSupport.route;
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
 const cors={
@@ -94,6 +96,10 @@ Deno.serve(async(req:Request)=>{
  let payload:any;try{payload=await req.json()}catch{return respond({error:'invalid_json'},400)}
  const action=cut(payload?.action,30),slug=cut(payload?.course_slug,80),no=Number(payload.lesson_no);
  if(!['status','dialogue','complete','attempt'].includes(action)||!slugOK(slug)||!Number.isInteger(no)||no<0||no>199)return respond({error:'invalid_input'},400);
+ if(action==='dialogue'){
+  const support=routeSupport(cut(payload.message,1000));
+  if(support)return respond({ok:true,support,reply:support.text});
+ }
  const db=createClient(url,secret,{auth:{persistSession:false,autoRefreshToken:false}});
  const {data:access,error:ae}=await db.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',slug)
   .in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);

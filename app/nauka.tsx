@@ -1,3 +1,4 @@
+import {LessonHelp} from '../src/support/links';
 import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
@@ -319,6 +320,7 @@ export default function Learning(){
    </View>
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
 
+   <LessonHelp slug={slug} title={lesson.title_pl}/>
    <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
    <Pressable accessibilityRole="button" disabled={saving}
     onPress={()=>{if(canFinish)void finishLesson();else returnToExercise()}}

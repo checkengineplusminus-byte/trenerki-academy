@@ -95,6 +95,7 @@ const aiEndpoint='https://kcvvixcjuwglfvdpypzs.supabase.co/functions/v1/ta-aniel
 const publicKey='sb_publishable_wpRp2JuWNW_WcjZdWXwIRQ_HfCPlxrj';
 let aiTimer=null,aiController=null,aiSerial=0;
 const dialogue=[];
+let supportContext=null;
 function resetAiRequest(){
  if(aiTimer!==null&&typeof clearTimeout==='function')clearTimeout(aiTimer);
  aiTimer=null;
@@ -118,6 +119,7 @@ async function askIndividualAi(question,serial){
   if(!response.ok)return;
   const data=await response.json();
   if(serial!==aiSerial||String(question)!==lastQuery||!data?.ok||typeof data.answer!=='string')return;
+  if(data.support){showSupport(data.support,true);return;}
   const message=output.querySelector?.('.anielka-message');
   if(!message)return;
   message.textContent='Anielka: '+data.answer.slice(0,1150);
@@ -211,10 +213,35 @@ function setPeek(query){
  }
  peek.innerHTML='<strong>Anielka · dopasowanie na żywo</strong><p>'+esc(match.primary.title)+'</p><button type="button" data-anielka-course="'+esc(match.primary.id)+'">Otwórz ten kurs →</button>';
 }
+function showSupport(result,scroll){
+ resetAiRequest();
+ dialogue.length=0;
+ lastIntent='';lastQuery='';
+ supportContext=result;
+ document.body?.classList?.add('anielka-support-mode');
+ if(!document.getElementById('anielka-output')&&typeof goHome==='function')goHome(null,null,false);
+ const labels={kryzys:'Wsparcie w kryzysie',mlodzi:'Pomoc dla dzieci i młodzieży',przemoc:'Wsparcie przy przemocy domowej',
+  rodzina:'Pomoc w sprawie dziecka',uzaleznienia:'Wsparcie przy uzależnieniu',finanse:'Bezpłatna pomoc w sprawie zadłużenia',
+  przestepstwo:'Pomoc dla osób pokrzywdzonych'};
+ const links=(result.categories||[]).filter(id=>Object.hasOwn(labels,id)).map(id=>'<a href="/pomoc#'+id+'">'+labels[id]+'</a>').join('');
+ const emergency=(result.urgent||result.atRisk)?'<a href="tel:112">Zadzwoń pod 112 w nagłym zagrożeniu</a>':'';
+ const panel='<div class="anielka-message"><strong>Anielka:</strong> '+esc(result.text)+'</div>'+
+  '<div class="anielka-support-links">'+emergency+links+'<a href="/pomoc">Wszystkie bezpłatne kontakty</a>'+
+  '<button type="button" data-anielka-support-reset>Wróć do wyszukiwania kursów</button></div>';
+ const output=document.getElementById('anielka-output');
+ const peek=document.getElementById('anielka-peek');
+ if(output)output.innerHTML=panel;
+ if(peek)peek.innerHTML=scroll&&output?'':panel;
+ if(scroll&&output)output.scrollIntoView?.({block:'nearest'});
+}
 function show(query,scroll=false){
  const input=document.getElementById('anielka-question');
  const v=String(query||'').trim().slice(0,250);
  if(input&&input.value!==v)input.value=v;
+ const support=globalThis.TrenerkiSupport?.route(v,supportContext);
+ if(support){showSupport(support,scroll);return;}
+ // Search is local while typing. Only a deliberate submission can contact the AI.
+ resetAiRequest();
  if(v.length<3){
   resetAiRequest();const out=document.getElementById('anielka-output');
   if(out)out.innerHTML='';setPeek('');
@@ -228,7 +255,7 @@ function show(query,scroll=false){
  setPeek(v);
  lastQuery=v;
  if(find(v).found)lastIntent=v;
- scheduleAi(v);
+ if(scroll&&globalThis.TrenerkiSupport)scheduleAi(v);
  if(scroll&&out&&typeof out.scrollIntoView==='function')out.scrollIntoView({behavior:'smooth',block:'start'});
 }
 document.addEventListener('input',event=>{
@@ -241,6 +268,11 @@ document.addEventListener('keydown',event=>{
  if(event.key==='Escape'){const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';}
 });
 document.addEventListener('click',event=>{
+ const clear=event.target.closest?.('[data-anielka-support-reset]');
+ if(clear){
+  supportContext=null;document.body?.classList?.remove('anielka-support-mode');
+  show('',false);document.getElementById('anielka-question')?.focus();return;
+ }
  const course=event.target.closest?.('[data-anielka-course]');
  if(course){
   const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';
@@ -259,5 +291,5 @@ document.addEventListener('click',event=>{
 });
 window.anielkaFindCourses=find;
 window.anielkaShowRecommendations=show;
-window.anielkaCatalogIds=query=>String(query||'').trim().length<3?[]:rank(contextualQuery(query)).filter(x=>x.score>0).slice(0,15).map(x=>x.course.id);
+window.anielkaCatalogIds=query=>supportContext||globalThis.TrenerkiSupport?.route(query)||String(query||'').trim().length<3?[]:rank(contextualQuery(query)).filter(x=>x.score>0).slice(0,15).map(x=>x.course.id);
 })();

@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {View,ActivityIndicator} from 'react-native';
-import {Stack} from 'expo-router';
+import {Slot,Stack,usePathname} from 'expo-router';
+import {HelpFooter} from '../src/support/links';
 import {supabase} from '../src/supabase';
 
 /**
@@ -12,6 +13,12 @@ import {supabase} from '../src/supabase';
  * request stalls, a global guard must never lock users out of /konto.
  */
 export default function RootLayout(){
+ const pathname=usePathname();
+ if(pathname==='/pomoc')return <Slot/>;
+ return <AccountLayout/>;
+}
+
+function AccountLayout(){
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  useEffect(()=>{
@@ -29,7 +36,7 @@ export default function RootLayout(){
   return()=>{mounted=false;subscription.unsubscribe()};
  },[]);
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
- return <Stack screenOptions={{headerShown:false}}>
+ return <View style={{flex:1}}><View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>
   <Stack.Screen name="kup"/>
@@ -43,5 +50,5 @@ export default function RootLayout(){
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>
- </Stack>;
+ </Stack></View><HelpFooter/></View>;
 }

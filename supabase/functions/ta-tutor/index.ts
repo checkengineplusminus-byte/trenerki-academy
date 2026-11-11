@@ -1,3 +1,5 @@
+import '../../../public/academy/support-routing.js';
+const routeSupport=(globalThis as any).TrenerkiSupport.route;
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={
  'access-control-allow-origin':'https://trenerki-academy.expo.app',
@@ -37,8 +39,10 @@ Deno.serve(async req=>{
  const configured=!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));
  if(action==='status')return response({ok:true,available:configured,limit_per_day:15});
  if(action!=='ask')return response({error:'invalid_action'},400);
- if(!configured)return response({error:'ai_not_configured'},503);
  const slug=clip(payload.course_slug,80),question=clip(payload.question,700),lessonNo=Number(payload.lesson_no);
+ const support=routeSupport(question);
+ if(support)return response({ok:true,support,answer:support.text});
+ if(!configured)return response({error:'ai_not_configured'},503);
  if(!slugOk(slug)||!Number.isInteger(lessonNo)||lessonNo<0||lessonNo>199||question.length<4)return response({error:'invalid_input'},400);
  if(/\b(?:\d[ -]*?){13,16}\b/.test(question))return response({error:'no_payment_details'},400);
  const db=createClient(apiUrl,service,{auth:{persistSession:false,autoRefreshToken:false}});
