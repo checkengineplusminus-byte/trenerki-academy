@@ -6,19 +6,3 @@
 .anielka-support-links a,.anielka-support-links button{min-height:44px;display:inline-flex;align-items:center;padding:.45rem .7rem;border-radius:.45rem;border:1px solid #92a991;background:#fff;color:#17392a;font-weight:750;text-decoration:underline;text-underline-offset:3px}
 .anielka-support-links a[href="tel:112"]{background:#702c23;color:white;border-color:#702c23}
 .anielka-support-mode #course-cards,.anielka-support-mode .filter-line,.anielka-support-mode #catalog-sync-note,.anielka-support-mode .hero,.anielka-support-mode #jak-dziala,.anielka-support-mode #certyfikat{display:none!important}
-
-.head-in>.nav-help{display:inline-flex;align-items:center;gap:7px;min-height:44px;flex:none;color:#294637;line-height:1.15;white-space:nowrap;text-decoration:none}
-.nav-help-heart{display:grid;place-items:center;flex:none;width:27px;height:27px;border-radius:50%;background:#f8e7e5;color:#a14d5c;font:16px/1 system-ui,sans-serif}
-.nav-help strong,.nav-help small{display:block}
-.nav-help strong{font-size:13px;font-weight:800}
-.nav-help small{margin-top:2px;font-size:11px;color:#52665a}
-.head-in>.nav-help:hover strong{text-decoration:underline;text-underline-offset:3px}
-.head-in>.nav-help:focus-visible{outline:2px solid #37644a;outline-offset:3px;border-radius:5px}
-@media(max-width:1050px){.head-in>.nav-end,.nav-end>.anielka-nav-search{min-width:0}}
-@media(min-width:761px) and (max-width:900px){.header .head-in,.head-in>.nav{gap:8px}}
-@media(max-width:760px){
- .header .head-in>.brand{flex:0 0 100%}
- .head-in>.nav-help{order:2}
- .head-in>.nav-end{flex:1 1 0;width:auto}
- .nav-help strong{font-size:12px}
-}

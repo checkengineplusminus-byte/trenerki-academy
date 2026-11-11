@@ -24,6 +24,16 @@ async function verify(name,viewport,isMobile){
   assert.equal(await help.getAttribute('href'),'/pomoc');
   await help.waitFor({state:'visible'});
   assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
+  assert.equal(await help.locator('.nav-help-heart').innerText(),'❤️');
+  const supportStyle=await help.evaluate(el=>{
+   const menuStyle=getComputedStyle(document.querySelector('header .nav a'));
+   const style=getComputedStyle(el);
+   const copy=el.querySelector('.nav-help-copy');
+   return {matched:['fontFamily','fontSize','fontWeight','color'].every(key=>style[key]===menuStyle[key]),
+    stacked:getComputedStyle(copy).display==='grid',
+    small:parseFloat(getComputedStyle(copy.querySelector('small')).fontSize)<parseFloat(style.fontSize)};
+  });
+  assert.deepEqual(supportStyle,{matched:true,stacked:true,small:true});
   const helpBounds=await help.boundingBox();
   for(const neighbor of [field,page.locator('header .demo-tag')]){
    const bounds=await neighbor.boundingBox();
