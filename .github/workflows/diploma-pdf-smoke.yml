@@ -1,0 +1,21 @@
+name: TRENERKI Academy — PDF diplomas smoke test
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/ta-diplomas/**'
+      - 'scripts/diploma-pdf-smoke.test.ts'
+      - '.github/workflows/diploma-pdf-smoke.yml'
+  workflow_dispatch:
+jobs:
+  diploma_pdf:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Verify Polish/English printable PDF without issuing certificates or emails
+        run: deno test --allow-net scripts/diploma-pdf-smoke.test.ts
