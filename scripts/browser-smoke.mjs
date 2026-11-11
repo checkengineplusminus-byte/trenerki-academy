@@ -34,8 +34,12 @@ async function verify(name,viewport,isMobile){
     small:parseFloat(getComputedStyle(copy.querySelector('small')).fontSize)<parseFloat(style.fontSize)};
   });
   assert.deepEqual(supportStyle,{matched:true,stacked:true,small:true});
-  const helpBounds=await help.boundingBox();
-  for(const neighbor of [field,page.locator('header .demo-tag')]){
+  const account=page.locator('header .demo-tag');
+  const helpBounds=await help.boundingBox(),accountBounds=await account.boundingBox();
+  assert(helpBounds&&accountBounds,'Help and account links must both be visible');
+  assert(accountBounds.x>=helpBounds.x+helpBounds.width&&accountBounds.x-helpBounds.x-helpBounds.width<=20,'Help must be immediately to the left of My account');
+  assert(Math.abs(helpBounds.y+helpBounds.height/2-accountBounds.y-accountBounds.height/2)<=2,'Help and account must share a row');
+  for(const neighbor of [field,account]){
    const bounds=await neighbor.boundingBox();
    assert(helpBounds&&bounds);
    const overlap=helpBounds.x<bounds.x+bounds.width&&helpBounds.x+helpBounds.width>bounds.x&&
