@@ -27,7 +27,7 @@ Aktualizacja: 11.11.2026. Dokument określa **cel jakościowy**; nie jest potwie
 
 ## Stan podczas audytu 11.11.2026
 - 80 kursów w katalogu.
-- 34 ma 8 lekcji, 23 mają 12, 7 ma 20, 15 ma 30, 1 ma 63.
-- **57 kursów nadal wymaga rozbudowy do minimum 20 lekcji** (stan 11.11.2026, po dopisaniu 56 lekcji do siedmiu kursów).
+- 34 ma 8 lekcji, 22 mają 12, 8 ma 20, 15 ma 30, 1 ma 63.
+- **56 kursów nadal wymaga rozbudowy do minimum 20 lekcji** (stan 11.11.2026, po dodaniu 64 nowych lekcji do ośmiu kursów).
 - Prywatna pula pytań egzaminacyjnych ma obecnie maksymalnie 8 pytań na kurs i jest niekompletna; część pytań pochodzi z ćwiczeń lekcyjnych.
 - Nie wolno oznaczać warunku 20+ ani całego audytu jako ukończonych na podstawie tych danych.

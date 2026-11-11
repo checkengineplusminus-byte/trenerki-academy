@@ -33,7 +33,7 @@ try{
  'google-ads-promocja','facebook-ads-promocja']);
  const thirtyLessonSlugs=new Set(['windows-skroty','excel-skroty','autocad-skroty','word-skroty','jestem-eko']);
  const logisticsSlugs=new Set(['axapta-dynamics-magazyn','sap-ewm-magazyn','oracle-wms-cloud','manhattan-active-wms','blue-yonder-wms','infor-wms','ongoing-wms','astro-consafe-wms','sap-tm-transport']);
- const validated20CourseExtensions=new Set(['obowiazki-domowe','brygadzista','lepszy-tata','swiety-mikolaj','bednarz','kolodziej','plecionkarz']);
+ const validated20CourseExtensions=new Set(['obowiazki-domowe','brygadzista','lepszy-tata','swiety-mikolaj','bednarz','kolodziej','plecionkarz','jak-kupic-samochod']);
  const carpentrySlug='ciesla-przygotowanie-czeladnicze';
  const craftExpanded=new Map([['bednarz',16],['kolodziej',16],['plecionkarz',16],['garncarz-tradycja',12],['gontarz',12],['introligator-tradycja',12],['kaletnik-tradycja',12],['ludwisarz',12],['mlynarz-tradycyjny',12],['powroznik',12],['rymarz',12]]);
  const checkout=read('app/kup.tsx'),academy=read('src/academyApi.ts'),gift=read('app/prezent.tsx'),admin=read('app/admin.tsx'),progress=read('app/nauka.tsx');
