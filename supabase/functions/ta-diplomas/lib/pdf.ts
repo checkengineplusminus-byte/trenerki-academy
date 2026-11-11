@@ -1,4 +1,4 @@
-import { PDFDocument, rgb, type PDFFont } from 'npm:pdf-lib@1.17.1';
+import { PDFDocument, LineCapStyle, LineJoinStyle, popGraphicsState, pushGraphicsState, rgb, setLineJoin, type PDFFont } from 'npm:pdf-lib@1.17.1';
 import fontkit from 'npm:@pdf-lib/fontkit@1.1.1';
 import { sans, serif } from './fonts.ts';
 
@@ -97,17 +97,19 @@ export async function buildDiplomaPdf(d:Diploma, language:DiplomaLanguage){
  // Keep the handwritten signature above the rule and the printed name.
  const signature=[
   // Adrian
-  'M2 24 C8 20 13 9 19 4 C21 2 22 3 23 6 L27 19 C28 22 29 22 31 20 M9 17 C14 17 20 16 26 16',
+  'M2 23.8 C8.8 20.5 13.4 9.2 18.8 4.7 C21 2.9 22.4 3.8 23.6 7.4 C25 11.5 26 16.8 27.5 20.1 C28.6 22.4 29.8 21.5 31 20.3 M9.4 17.1 C13.6 17.4 19.3 16.1 25.6 16',
   'M30 21 C32 20 33 15 37 15 C41 15 38 21 35 22 C31 23 31 19 34 16 C36 14 38 15 40 15 C42 10 43 4 46 3 C48 2 46 8 44 13 C41 19 40 23 44 21',
-  'C47 20 48 16 50 15 C52 13 53 15 52 17 C54 17 55 16 57 16 C55 19 55 23 59 21 C62 20 64 17 65 15 C64 18 62 22 66 22 C68 21 69 19 71 18 M65 11 L65.8 10',
-  'M69 20 C72 16 74 14 78 15 C82 16 77 22 74 22 C70 23 70 20 72 17 C74 14 77 14 80 15 C78 19 77 23 81 21 C84 20 86 17 87 15 L86 21 C89 16 92 14 95 15 C98 16 92 22 96 22 C98 21 101 20 103 18',
+  'C47 20 48 16 50 15 C52 13 53 15 52 17 C54 17 55 16 57 16 C55 19 55 23 59 21 C62 20 64 17 65 15 C64 18 62 22 66 22 C68 21 69 19 71 18 M65.15 10.65 C65.2 10.6 65.27 10.55 65.32 10.5',
+  'M69 20 C72 16 74 14 78 15 C82 16 77 22 74 22 C70 23 70 20 72 17 C74 14 77 14 80 15 C78 19 77 23 81 21 C84 20.3 86 16.7 87.6 15.2 C89 14 88.5 16.3 88 17.8 C87.5 19.1 87 20.5 87.2 20.4 C89 17.2 92.3 14.3 94.9 15.3 C97.8 16.4 92.8 22.2 96.3 21.9 C98.5 21.7 101 19.9 103 18.3',
   // Flaga
-  'M112 7 C119 4 132 3 144 4 M129 4 C126 10 124 17 120 24 M120 13 C124 12 131 12 137 12',
+  'M112.4 7 C120.7 4.2 131.6 2.9 144 4.1 M129 4.3 C126.7 8.5 125.7 12.7 123.5 17.6 C122.4 20 121.2 22.2 119.8 23.9 M120.8 13 C125 12.2 131.2 12 136.7 12.2',
   'M127 22 C133 21 136 16 139 11 C142 6 146 3 148 4 C150 6 145 13 140 17 C138 19 138 23 143 21 C146 20 148 16 152 15 C156 14 159 16 157 19 C155 22 151 23 149 21 C147 18 151 14 158 15 C156 19 155 23 160 21',
   'C163 19 166 15 170 15 C174 15 176 17 173 20 C171 23 166 23 165 21 C163 18 167 14 174 15 C172 21 170 27 165 31 C161 34 157 33 158 30 C159 27 163 25 172 22',
   'C177 20 178 16 182 15 C186 14 189 16 187 19 C185 22 181 23 179 21 C177 18 182 14 188 15 C186 19 186 22 191 21 C197 21 202 17 209 17',
  ].join(' ');
- page.drawSvgPath(signature,{x:523,y:100,scale:.85,borderColor:blueInk,borderWidth:1.65});
+ page.pushOperators(pushGraphicsState(),setLineJoin(LineJoinStyle.Round));
+ page.drawSvgPath(signature,{x:523,y:100,scale:.85,borderColor:blueInk,borderWidth:1.52,borderLineCap:LineCapStyle.Round});
+ page.pushOperators(popGraphicsState());
  line(507,717,68,.6,gold);
  t('Adrian Flaga',612,49,9,display,navy);
  // Deliberately half the usual 12-pt caption size.
