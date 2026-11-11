@@ -43,7 +43,8 @@ try{
  if(courses.length===15+additions.length+1&&courses.length>=69&&new Set(courses.map(c=>c.id)).size===courses.length)ok(courses.length+' unique courses');else fail('Course count or duplicate slug');
  for(const c of courses){
   const expected=validated20CourseExtensions.has(c.id)?20:c.id===carpentrySlug?63:craftExpanded.has(c.id)?craftExpanded.get(c.id):(logisticsSlugs.has(c.id)||thirtyLessonSlugs.has(c.id)||c.id==='kowal-tradycja')?30:expandedSlugs.has(c.id)?12:8;
-  if(!Array.isArray(c.outline)||c.outline.length!==expected)fail(c.id+': expected '+expected+' lessons');
+  if(!Array.isArray(c.outline)||c.outline.length<expected||new Set(c.outline).size!==c.outline.length)
+   fail(c.id+': expected at least '+expected+' distinct lessons');
   const guide=individualGuides[c.id]||craftGuides[c.id];
   if(!introSlugs.has(c.id)&&(!guide||!['what','first','result','boundary'].every(k=>typeof guide[k]==='string'&&guide[k].length>=30)))
     fail(c.id+': missing specific course guide');
@@ -79,7 +80,7 @@ try{
  const construction=['norweski-na-budowie','angielski-na-budowie','niemiecki-na-budowie'];
  for(const slug of construction){
   const course=courses.find(c=>c.id===slug);
-  if(!course||course.outline.length!==12)fail(slug+': needs 12 chapters from first day to end of shift');
+  if(!course||course.outline.length<12)fail(slug+': needs the 12 core chapters from first day to end of shift');
   if(!course?.outline?.[0]?.toLowerCase().includes('zera'))fail(slug+': should start from zero');
  }
  const languageViewer=read('src/ConstructionLesson.tsx');

@@ -270,9 +270,15 @@ async function verifyAllCourses(ctx){
  const samples=process.env.TRENERKI_ACTUAL_SAMPLES?JSON.parse(readFileSync(process.env.TRENERKI_ACTUAL_SAMPLES,'utf8')):null;
  if(samples)assert.equal(Object.keys(samples).length,courses.length);
  const byId=new Map(courses.map(course=>[course.id,course]));
+ const exercise='Porównaj dwa wpisy na karcie dostawy.';
  const sample=slug=>{
   const actual=samples?.[slug];
   if(actual)return {...actual,sections:(actual.sections||[]).filter(Boolean)};
+  if(slug==='bdo')return {
+   learning:{...quiz,task:exercise},
+   sections:[{heading:'Zadanie',text:exercise},{heading:'Sprawdź wynik po wykonaniu',text:'Każdy wpis ma identyfikator i datę.'}],
+   practice:{visual:{title:'Dwie pozycje karty',kind:'comparison',entries:[{label:'Dostawa',detail:'20 sztuk'},{label:'Zwrot',detail:'2 sztuki'}]}},
+  };
   const learning=slug==='mlynarz-tradycyjny'?{...quiz,situation:undefined}:quiz;
   return {raw:[byId.get(slug).title,'Zacznij od sytuacji i porównaj możliwe decyzje.','Sytuacja: '+quiz.situation],learning};
  };
@@ -288,8 +294,14 @@ async function verifyAllCourses(ctx){
   const q=material.construction?.roleplay??material.learning;
   assert(q?.options?.[q.correct],course.id+': valid first checkpoint');
   if(!samples&&q.situation)await page.getByText(q.situation,{exact:true}).waitFor();
-  const exercise=page.getByTestId(material.construction?'construction-checkpoint':'case-checkpoint');
-  const candidates=await exercise.getByRole('button').all();
+  if(!samples&&course.id==='bdo'){
+   await page.getByTestId('lesson-visual').getByText('20 sztuk',{exact:true}).waitFor();
+   assert.equal(await page.getByText(exercise,{exact:true}).count(),1,'Exercise must not be repeated below the quiz');
+   await page.getByRole('button',{name:'Pokaż rozwiązanie i kryteria'}).click();
+   await page.getByText('Każdy wpis ma identyfikator i datę.',{exact:true}).waitFor();
+  }
+  const checkpoint=page.getByTestId(material.construction?'construction-checkpoint':'case-checkpoint');
+  const candidates=await checkpoint.getByRole('button').all();
   const correct=q.options[q.correct].replace(/\s+/g,' ').trim();
   let choice;
   for(const candidate of candidates){

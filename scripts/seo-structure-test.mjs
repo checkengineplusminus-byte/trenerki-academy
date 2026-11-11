@@ -8,6 +8,7 @@ const courses=JSON.parse(main.slice(main.indexOf('const COURSES=')+14,main.index
 assert.equal(courses.length,80);
 const xml=readFileSync(join(root,'sitemap.xml'),'utf8');
 const seen=new Set();
+const escapeText=value=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const entries=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 assert(entries.length>=87,'Sitemap must include all courses and categories');
 for(const u of entries){assert(!seen.has(u),'Duplicate sitemap URL '+u);seen.add(u)}
@@ -20,6 +21,9 @@ for(const c of courses){
  assert(html.includes('application/ld+json'),'Missing Course schema '+c.id);
  assert(seen.has('https://trenerki.com/'+path),'Not in sitemap '+c.id);
  assert(!html.includes('material_json')&&!html.includes('answer_key'),'Private learning data exposed '+c.id);
+ const program=html.match(/<ol class="program">([\s\S]*?)<\/ol>/)?.[1]??'';
+ assert.deepEqual([...program.matchAll(/<li>([^<]*)<\/li>/g)].map(match=>match[1].replaceAll('&#x27;',"'").replaceAll('&quot;','"')),
+  c.outline.map(escapeText),'Public course program differs from the catalogue: '+c.id);
 }
 for(const slug of ['budownictwo','rzemioslo-i-hobby','technologie-i-logistyka','biznes-i-praca','rodzina-i-rozwoj','dom-i-codziennosc']){
  const p='academy/kategorie/'+slug+'.html';

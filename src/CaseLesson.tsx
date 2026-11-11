@@ -6,7 +6,7 @@ export type LearningCase={
  options:string[];correct:number;explanation:string;feedback?:string[];task?:string;topic_kind?:string;
 };
 const ink='#183e2d',gray='#536858';
-export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituation=false}:{data?:LearningCase;identity:string;onPassed?:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>Promise<boolean>|boolean;hideSituation?:boolean}){
+export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituation=false,hideTask=false}:{data?:LearningCase;identity:string;onPassed?:(ok:boolean)=>void;onAttempt?:(index:number,correct:boolean)=>Promise<boolean>|boolean;hideSituation?:boolean;hideTask?:boolean}){
  const [chosen,setChosen]=useState<number|null>(null);
  const [tries,setTries]=useState(0);
  const [hint,setHint]=useState(false);
@@ -68,7 +68,7 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
      <Text style={{color:ink,fontSize:14,lineHeight:22}}>{feedbackForChoice(chosen)||data.explanation}</Text>}
    </View>}
   </View>
-  {!!data.task&&!/^(W tym scenariuszu:|Zastosuj zasadę|Przygotuj własny plan|Powiedz Anielce)/i.test(data.task)&&
+  {!hideTask&&!!data.task&&!/^(W tym scenariuszu:|Zastosuj zasadę|Przygotuj własny plan|Powiedz Anielce)/i.test(data.task)&&
    <View style={{backgroundColor:'#f0f5ec',borderRadius:13,padding:14,gap:6}}>
     <Text style={{fontWeight:'900',fontSize:14,color:ink}}>Chcesz spróbować więcej?</Text>
     <Text style={{color:gray,fontSize:14,lineHeight:22}}>{data.task}</Text>
