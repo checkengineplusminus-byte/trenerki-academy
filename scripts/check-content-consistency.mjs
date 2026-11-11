@@ -233,7 +233,7 @@ try{
    !exam.includes('switch_mode')||!exam.includes('selected_index')||!examServer.includes('correct_option'))
   fail('Exam server must support objective fallback with protected correct answer');
  const diplomaPdf=read('supabase/functions/ta-diplomas/lib/pdf.ts');
- if(!diploma.includes('downloadDiploma')||!diplomaPdf.includes('addPage([842, 595])')||
+ if(!diploma.includes('downloadDiploma')||!/addPage\(\[\s*842\s*,\s*595\s*\]\)/.test(diplomaPdf)||
     !diplomaPdf.includes('DIPLOMA')||!diplomaPdf.includes('DYPLOM')||!diplomaPdf.includes('t(terms.founder,612,37,6'))
   fail('Certificate PDF in both languages is missing');
  if(/(?:https?:\/\/|www\.)/i.test(JSON.stringify([courses,previews,additions]))||
