@@ -87,7 +87,12 @@ export default function MyCourses(){
     <Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Wyloguj się</Text>
    </Pressable>
   </View>
-  <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228',marginBottom:7}}>Moje kursy</Text>
+  <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:8,flexWrap:'wrap',marginBottom:9}}>
+   <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228'}}>Moje kursy</Text>
+   <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#e7f0df',borderRadius:10,paddingVertical:11,paddingHorizontal:14}}>
+    <Text style={{color:'#214c36',fontWeight:'900'}}>Moje dyplomy</Text>
+   </Pressable>
+  </View>
   <Text style={{color:'#5c7460',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
   <View style={{backgroundColor:'#e8f3dc',padding:16,borderRadius:13,gap:10,marginVertical:12}}>
    <Text style={{color:'#56725c',fontWeight:'700',fontSize:12}}>Saldo kart podarunkowych</Text>
