@@ -40,6 +40,7 @@ export default function RootLayout(){
    <Stack.Screen name="moje-kursy"/>
    <Stack.Screen name="nauka"/>
    <Stack.Screen name="dyplom"/>
+   <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>
  </Stack>;
 }
