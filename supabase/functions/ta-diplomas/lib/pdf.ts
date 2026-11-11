@@ -1,4 +1,4 @@
-import { PDFDocument, LineCapStyle, LineJoinStyle, popGraphicsState, pushGraphicsState, rgb, setLineJoin, type PDFFont } from 'npm:pdf-lib@1.17.1';
+import { PDFDocument, LineCapStyle, LineJoinStyle, degrees, popGraphicsState, pushGraphicsState, rgb, setLineJoin, type PDFFont } from 'npm:pdf-lib@1.17.1';
 import fontkit from 'npm:@pdf-lib/fontkit@1.1.1';
 import { sans, serif } from './fonts.ts';
 
@@ -89,26 +89,47 @@ export async function buildDiplomaPdf(d:Diploma, language:DiplomaLanguage){
  t(date,274,106,11.5,display,navy);
  t(terms.number,572,124,8,body,muted);
  t(d.certificate_no,572,106,11.5,display,navy);
- // Gold seal: decorative, not an official state seal.
- page.drawCircle({x:128,y:91,size:35,color:rgb(.92,.82,.57),borderWidth:1.6,borderColor:gold});
- page.drawCircle({x:128,y:91,size:27,borderWidth:.8,borderColor:gold});
- page.drawSvgPath('M0 11 L20 20 L40 11 L20 2 Z',{x:108,y:82,color:gold});
- page.drawLine({start:{x:110,y:77},end:{x:146,y:77},thickness:.9,color:gold});
+ // The issuer's company stamp uses both halves of the outer ring.
+ const sealX=128,sealY=91,sealInk=rgb(.36,.25,.12);
+ page.drawCircle({x:sealX,y:sealY,size:43,color:rgb(.977,.946,.847),borderWidth:1.15,borderColor:gold});
+ page.drawCircle({x:sealX,y:sealY,size:40.9,borderWidth:.45,borderColor:lightGold});
+ page.drawCircle({x:sealX,y:sealY,size:27.8,borderWidth:.7,borderColor:gold});
+ const stampArc=(label:string,top:boolean)=>{
+  const size=5.7,radius=top?33.4:37.3,tracking=.57,mid=top?Math.PI/2:3*Math.PI/2;
+  const glyphs=Array.from(label,ch=>({ch,width:body.widthOfTextAtSize(ch,size)}));
+  const span=glyphs.reduce((width,glyph)=>width+glyph.width,0)+(glyphs.length-1)*tracking;
+  let advance=-span/2;
+  for(const {ch,width} of glyphs){
+   const angle=mid+(top?-1:1)*(advance+width/2)/radius;
+   const slope=angle+(top?-Math.PI/2:Math.PI/2);
+   page.drawText(ch,{
+    x:sealX+radius*Math.cos(angle)-width/2*Math.cos(slope),
+    y:sealY+radius*Math.sin(angle)-width/2*Math.sin(slope),
+    size,font:body,color:sealInk,rotate:degrees(slope*180/Math.PI)
+   });
+   advance+=width+tracking;
+  }
+ };
+ stampArc('TRENERKI SP. Z O.O.',true);
+ stampArc('WARSZAWA · POLSKA',false);
+ for(const x of [94,162])page.drawCircle({x,y:sealY,size:1.1,color:gold});
+ line(120,136,105,.55,gold);
+ t('NIP 5272961874',sealX,96,5.85,body,sealInk);
+ t('KRS 0000907332',sealX,87.5,5.5,body,sealInk);
+ t('REGON 389245852',sealX,79,5.35,body,sealInk);
  // Keep the handwritten signature above the rule and the printed name.
- const signature=[
-  // Adrian
-  'M2 23.8 C8.8 20.5 13.4 9.2 18.8 4.7 C21 2.9 22.4 3.8 23.6 7.4 C25 11.5 26 16.8 27.5 20.1 C28.6 22.4 29.8 21.5 31 20.3 M9.4 17.1 C13.6 17.4 19.3 16.1 25.6 16',
-  'M30 21 C32 20 33 15 37 15 C41 15 38 21 35 22 C31 23 31 19 34 16 C36 14 38 15 40 15 C42 10 43 4 46 3 C48 2 46 8 44 13 C41 19 40 23 44 21',
-  'C47 20 48 16 50 15 C52 13 53 15 52 17 C54 17 55 16 57 16 C55 19 55 23 59 21 C62 20 64 17 65 15 C64 18 62 22 66 22 C68 21 69 19 71 18 M65.15 10.65 C65.2 10.6 65.27 10.55 65.32 10.5',
-  'M69 20 C72 16 74 14 78 15 C82 16 77 22 74 22 C70 23 70 20 72 17 C74 14 77 14 80 15 C78 19 77 23 81 21 C84 20.3 86 16.7 87.6 15.2 C89 14 88.5 16.3 88 17.8 C87.5 19.1 87 20.5 87.2 20.4 C89 17.2 92.3 14.3 94.9 15.3 C97.8 16.4 92.8 22.2 96.3 21.9 C98.5 21.7 101 19.9 103 18.3',
-  // Flaga
-  'M112.4 7 C120.7 4.2 131.6 2.9 144 4.1 M129 4.3 C126.7 8.5 125.7 12.7 123.5 17.6 C122.4 20 121.2 22.2 119.8 23.9 M120.8 13 C125 12.2 131.2 12 136.7 12.2',
-  'M127 22 C133 21 136 16 139 11 C142 6 146 3 148 4 C150 6 145 13 140 17 C138 19 138 23 143 21 C146 20 148 16 152 15 C156 14 159 16 157 19 C155 22 151 23 149 21 C147 18 151 14 158 15 C156 19 155 23 160 21',
-  'C163 19 166 15 170 15 C174 15 176 17 173 20 C171 23 166 23 165 21 C163 18 167 14 174 15 C172 21 170 27 165 31 C161 34 157 33 158 30 C159 27 163 25 172 22',
-  'C177 20 178 16 182 15 C186 14 189 16 187 19 C185 22 181 23 179 21 C177 18 182 14 188 15 C186 19 186 22 191 21 C197 21 202 17 209 17',
- ].join(' ');
+ const signatureStrokes=[
+  // A and a compressed, connected first name.
+  {weight:1.55,path:'M1 24 C9 26 14 16 20 7 C24 1 28 -1 30 2 C32 6 29 14 28 20 C27 25 31 25 37 19 C42 13 46 15 44 19 C42 24 36 25 36 21 C37 16 45 15 49 11 C54 6 54 2 51 3 C47 4 43 16 44 21 C45 25 50 22 55 17 C58 13 61 14 59 18 C62 16 65 16 67 17 C65 20 66 23 70 21 C74 19 77 15 81 15 C86 15 79 23 77 21 C75 19 81 16 85 17 C83 21 85 23 89 20 C93 17 97 14 100 16 C103 18 98 21 101 21 C104 21 107 19 109 18'},
+  {weight:.98,path:'M13 17 C19 14 25 15 34 14 C39 14 41 13 45 12'},
+  // F, a loose surname ligature and a rising exit stroke.
+  {weight:1.55,path:'M112 9 C125 2 141 -1 157 3 C162 4 162 6 158 7 M140 3 C137 10 133 17 128 24 C126 28 120 29 120 25 C120 23 123 21 128 21 C136 21 145 19 151 12 C157 5 156 2 152 5 C147 9 142 20 146 23 C150 26 158 18 164 16 C169 15 170 18 166 21 C161 25 158 23 160 20 C162 17 169 16 172 17 C170 20 169 23 174 21 C178 19 181 15 186 15 C191 15 188 21 184 22 C180 23 179 20 182 18 C185 16 189 16 191 17 C188 24 186 31 180 34 C176 36 173 33 177 29 C182 24 191 23 196 19 C202 15 204 17 201 20 C198 23 195 22 196 20 C198 17 204 16 207 17 C205 21 207 23 214 19 C220 15 222 14 228 14'},
+  {weight:.94,path:'M126 14 C133 11 142 12 149 11 M197 26 C207 25 219 21 233 21'},
+ ];
  page.pushOperators(pushGraphicsState(),setLineJoin(LineJoinStyle.Round));
- page.drawSvgPath(signature,{x:523,y:100,scale:.85,borderColor:blueInk,borderWidth:1.52,borderLineCap:LineCapStyle.Round});
+ for(const stroke of signatureStrokes){
+  page.drawSvgPath(stroke.path,{x:523,y:100,scale:.79,borderColor:blueInk,borderWidth:stroke.weight,borderLineCap:LineCapStyle.Round});
+ }
  page.pushOperators(popGraphicsState());
  line(507,717,68,.6,gold);
  t('Adrian Flaga',612,49,9,display,navy);
