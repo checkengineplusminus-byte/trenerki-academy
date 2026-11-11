@@ -93,7 +93,8 @@ async function verify(name,viewport,isMobile){
   await page.locator('#anielka-output a[href="/pomoc#kryzys"]').waitFor();
   await page.waitForTimeout(1800);
   assert.equal(submitted,0,'Recognized crisis text must stay on the device');
-  const support=await page.goto(root+'/pomoc.html',{waitUntil:'domcontentloaded'});
+  await page.route(root+'/pomoc',async route=>route.fulfill({response:await route.fetch({url:root+'/pomoc.html'})}));
+  const support=await page.goto(root+'/pomoc',{waitUntil:'domcontentloaded'});
   assert.equal(support?.status(),200,'Public help route must render');
   await page.getByRole('heading',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).waitFor();
   await page.getByRole('button',{name:'Uzależnienia',exact:true}).focus();
