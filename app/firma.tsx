@@ -6,6 +6,7 @@ import {supabase} from '../src/supabase';
 type Seat={id:string;bundle_id:string;course_slug:string;title_pl:string;state:'available'|'assigned';assigned_email:string|null;email_sent_at:string|null;redeemed:boolean};
 type Link={title_pl:string;link:string;email_sent:boolean;recipient:string};
 const ink='#183b2c',muted='#5a7463',pale='#ecf5e7';
+const courseCount=(count:number)=>count+' '+(count===1?'kurs':count>=2&&count<=4?'kursy':'kursów');
 export default function CompanyPortal(){
  const router=useRouter(),{width}=useWindowDimensions();
  const [loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[signedIn,setSignedIn]=useState(false),[authorized,setAuthorized]=useState(false);
@@ -16,14 +17,17 @@ export default function CompanyPortal(){
  const visible=useMemo(()=>seats.filter(s=>filter==='all'||s.state===filter),[seats,filter]);
  const card={backgroundColor:'white',borderWidth:1,borderColor:'#dce8d8',borderRadius:16,padding:width<600?16:22} as const;
  async function load(){
-  setLoading(true);setError('');
+  setLoading(true);
   try{
    const {data:{user},error:authError}=await supabase.auth.getUser();
    if(authError||!user?.email_confirmed_at){setSignedIn(false);setAuthorized(false);return;}
    setSignedIn(true);setEmail(user.email||'');
    const {data,error}=await supabase.functions.invoke('ta-company',{body:{action:'dashboard'}});
    if(error||!data?.ok)throw new Error('Nie udało się odczytać danych firmy.');
-   setAuthorized(data.authorized===true);setSeats(data.seats||[]);
+   const currentSeats:Seat[]=data.seats||[];
+   const availableIds=new Set(currentSeats.filter(seat=>seat.state==='available').map(seat=>seat.id));
+   setAuthorized(data.authorized===true);setSeats(currentSeats);
+   setSelected(current=>current.filter(id=>availableIds.has(id)));
   }catch(e:any){setError(e?.message||'Panel jest chwilowo niedostępny.')}
   finally{setLoading(false)}
  }
@@ -36,11 +40,12 @@ export default function CompanyPortal(){
     const {data,error}=await supabase.functions.invoke('ta-company',{body:{action:'assign',seat_id,employee_email:recipient.trim().toLowerCase()}});
     if(error||!data?.ok)throw new Error('Nie wszystkie kursy udało się przydzielić. Sprawdź listę.');
     outputs.push({title_pl:data.title_pl,recipient:data.recipient,link:data.link,email_sent:!!data.email_sent});
+    setSelected(current=>current.filter(id=>id!==seat_id));
    }
    setSelected([]);setRecipient('');
-   setMessage('Przydzielono '+outputs.length+' kursów. '+(outputs.every(x=>x.email_sent)?'Zaproszenia wysłano.':'Skopiuj linki, których wysyłka nie została potwierdzona.'));
+   setMessage('Przydzielono '+courseCount(outputs.length)+'. '+(outputs.every(x=>x.email_sent)?'Zaproszenia wysłano.':'Skopiuj linki, których wysyłka nie została potwierdzona.'));
   }catch(e:any){setError(e?.message||'Błąd przydziału.')}
-  finally{setLinks(outputs);setBusy(false);await load();}
+  finally{setLinks(outputs);await load();setBusy(false);}
  }
  async function copy(){
   const text=links.map((x,i)=>(i+1)+'. '+x.title_pl+'\n'+x.link).join('\n\n');
@@ -88,10 +93,10 @@ export default function CompanyPortal(){
     <View style={card}>
      <Text style={{fontSize:21,fontWeight:'900',color:ink,marginBottom:7}}>Przekaż kurs pracownikowi</Text>
      <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:12}}>Podaj e-mail pracownika i zaznacz kursy. Każde miejsce można wykorzystać tylko raz.</Text>
-     <TextInput placeholder="pracownik@firma.pl" accessibilityLabel="E-mail pracownika" value={recipient} onChangeText={setRecipient} autoCapitalize="none" keyboardType="email-address"
+     <TextInput placeholder="pracownik@firma.pl" accessibilityLabel="E-mail pracownika" value={recipient} onChangeText={setRecipient} editable={!busy} autoCapitalize="none" keyboardType="email-address"
       style={{borderWidth:1,borderColor:'#cbdcc6',padding:13,borderRadius:10,fontSize:15,color:ink,marginBottom:13}}/>
      {free.length===0?<Text style={{color:muted}}>Wszystkie dostępne kursy zostały już przydzielone.</Text>:
-      free.map(seat=><Pressable key={seat.id} accessibilityRole="checkbox" accessibilityState={{checked:selected.includes(seat.id)}} onPress={()=>select(seat)}
+      free.map(seat=><Pressable key={seat.id} accessibilityRole="checkbox" accessibilityState={{checked:selected.includes(seat.id),disabled:busy}} disabled={busy} onPress={()=>select(seat)}
        style={{flexDirection:'row',alignItems:'center',gap:10,borderWidth:1,borderColor:'#e0eadd',padding:11,borderRadius:10,marginBottom:7,backgroundColor:selected.includes(seat.id)?pale:'white'}}>
        <View style={{width:22,height:22,borderWidth:2,borderColor:'#559268',borderRadius:5,alignItems:'center',justifyContent:'center',backgroundColor:selected.includes(seat.id)?'#276a40':'white'}}>
         {selected.includes(seat.id)&&<Text style={{color:'white',fontWeight:'900'}}>✓</Text>}
@@ -100,7 +105,7 @@ export default function CompanyPortal(){
       </Pressable>)}
      <Pressable accessibilityRole="button" disabled={busy||!selected.length||!recipient.trim()} onPress={send}
       style={{backgroundColor:ink,padding:15,borderRadius:11,opacity:busy||!selected.length||!recipient.trim()?.45:1,marginTop:13}}>
-      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{busy?'Wysyłam…':'Przydziel '+selected.length+' '+(selected.length===1?'kurs':'kursów')}</Text>
+      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{busy?'Wysyłam…':'Przydziel '+courseCount(selected.length)}</Text>
      </Pressable>
     </View>
     {!!links.length&&<View style={card}>

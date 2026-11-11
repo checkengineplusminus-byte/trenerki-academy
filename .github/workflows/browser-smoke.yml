@@ -14,7 +14,9 @@ on:
       - 'public/sitemap.xml'
       - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
+      - 'scripts/company-browser.mjs'
       - 'app/nauka.tsx'
+      - 'app/firma.tsx'
       - 'src/**'
       - 'public/academy/index.html'
       - 'public/academy/anielka-search.js'
@@ -48,6 +50,7 @@ jobs:
           node scripts/browser-smoke.mjs http://127.0.0.1:8787
           node scripts/seo-structure-test.mjs /tmp/trenerki-browser
           node scripts/learning-browser.mjs http://127.0.0.1:8787
+          node scripts/company-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()
         uses: actions/upload-artifact@v4
