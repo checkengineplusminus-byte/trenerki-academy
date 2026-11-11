@@ -249,7 +249,7 @@ export default function Learning(){
     ]:items.length===30?[
      {name:slug==='kowal-tradycja'?'DZIAŁ I · WARSZTAT I PODSTAWY':'DZIAŁ I · PODSTAWY',about:slug==='kowal-tradycja'?'Lekcje 1–10 · BHP, stal, rysunek techniczny, pomiary i narzędzia':'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
      {name:slug==='kowal-tradycja'?'DZIAŁ II · TECHNIKI KUCIA':'DZIAŁ II · PRAKTYKA',about:slug==='kowal-tradycja'?'Lekcje 11–20 · wydłużanie, spęcznianie, gięcie, przebijanie, łączenie i obróbka cieplna':'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
-     {name:slug==='kowal-tradycja'?'DZIAŁ III · PROJEKTY I NAPRAWY':'DZIAŁ III · EXPERT',about:slug==='kowal-tradycja'?'Lekcje 21–30 · wyroby, bryczki, podkuwnictwo i projekt końcowy':'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
+     {name:slug==='kowal-tradycja'?'DZIAŁ III · PROJEKTY I NAPRAWY':'DZIAŁ III · ZAAWANSOWANE',about:slug==='kowal-tradycja'?'Lekcje 21–30 · wyroby, bryczki, podkuwnictwo i projekt końcowy':'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
    ]:[{name:'DOSTĘPNE LEKCJE',about:`${items.length} lekcji i ćwiczenia praktyczne`,list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#dfe9dc',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
@@ -270,7 +270,7 @@ export default function Learning(){
     {hasCampaignLab(slug)&&index>=0&&[0,2,4,5,7,10,11].includes(index)&&<CampaignWorkshop slug={slug} lessonNo={module}/>}
    {slug!=='ciesla-przygotowanie-czeladnicze'&&(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
    {(items.length===30||slug==='ciesla-przygotowanie-czeladnicze')&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
-     <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · EXPERT')}</Text>
+     <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · ZAAWANSOWANE')}</Text>
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>

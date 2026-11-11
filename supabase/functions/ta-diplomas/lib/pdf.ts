@@ -24,7 +24,7 @@ const copy={
 
 function cleanTitle(d:Diploma,language:DiplomaLanguage){
  return (language==='pl'?d.title_pl:d.title_en)
- .replace(/^Ukończenie (?:prywatnego )?(?:kursu|programu)\s*:\s*/i,'')
+ .replace(/^Ukończenie (?:prywatnego )?(?:kursu(?: teoretycznego)?|szkolenia(?: teoretycznego)?|programu)\s*:\s*/i,'')
  .replace(/^(?:Completion of (?:the )?(?:private )?(?:course|programme)|Certificate of completion)\s*:\s*/i,'')
  .trim();
 }

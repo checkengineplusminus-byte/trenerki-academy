@@ -22,11 +22,11 @@ export default function DiplomaPage(){
     .order('is_demo',{ascending:true}).order('issued_at',{ascending:false}).limit(1).maybeSingle();
    if(dbError)throw dbError;
    if(!data&&params.preview==='1'){
-    const {data:info,error:ce}=await supabase.from('ta_courses').select('title_pl,certificate_pl,certificate_en').eq('slug',slug).maybeSingle();
+    const {data:info,error:ce}=await supabase.from('ta_courses').select('title_pl,title_en,certificate_pl,certificate_en').eq('slug',slug).maybeSingle();
     if(ce||!info)throw new Error('Nie znaleziono programu kursu.');
     const name=String(user.user_metadata?.full_name||'').trim();
     if(active)setCert({id:'preview-only',certificate_no:'WZÓR',holder_name:name||'Imię i nazwisko',
-      title_pl:info.certificate_pl||info.title_pl,title_en:info.certificate_en||info.title_pl,
+      title_pl:info.certificate_pl||info.title_pl,title_en:info.certificate_en||info.title_en||info.title_pl,
       issued_at:new Date().toISOString(),is_demo:true});
    }else{
     if(!data)throw new Error('Dyplom będzie dostępny po ukończeniu kursu i zaliczeniu egzaminu.');
@@ -43,7 +43,7 @@ export default function DiplomaPage(){
  }
  const date=cert?new Date(cert.issued_at).toLocaleDateString(pl?'pl-PL':'en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Warsaw'}):'';
  const raw=cert?(pl?cert.title_pl:cert.title_en):'';
- const title=raw.replace(/^Ukończenie (?:prywatnego )?(?:kursu|programu)\s*:\s*/i,'')
+ const title=raw.replace(/^Ukończenie (?:prywatnego )?(?:kursu(?: teoretycznego)?|szkolenia(?: teoretycznego)?|programu)\s*:\s*/i,'')
  .replace(/^(?:Completion of (?:the )?(?:private )?(?:course|programme)|Certificate of completion)\s*:\s*/i,'');
  return <ScrollView style={{flex:1,backgroundColor:'#fbfbf7'}} contentContainerStyle={{alignSelf:'center',width:'100%',maxWidth:940,padding:18,paddingBottom:64,gap:14}}>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:8}}>

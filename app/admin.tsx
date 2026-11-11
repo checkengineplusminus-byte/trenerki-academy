@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share} from 'react-native';
 import {useRouter} from 'expo-router';
+import {FunctionsHttpError} from '@supabase/supabase-js';
 import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 import DiplomaRegistry from '../src/DiplomaRegistry';
@@ -70,7 +71,18 @@ export default function AdminPage(){
    const {data,error}=await supabase.functions.invoke('ta-credit',{body:{
     action:'admin_issue_promo',recipient_email:promoEmail.trim(),amount_grosze:Math.round(amount*100),message:promoMessage.trim()
    }});
-   if(error||!data?.ok)throw new Error(data?.error==='daily_limit'?'Osiągnięto dzienny limit kart promocyjnych.':'Nie udało się wydać karty. Sprawdź uprawnienia konta.');
+   if(error||!data?.ok){
+    const response=error instanceof FunctionsHttpError?await error.context.json().catch(()=>null):null;
+    const code=response?.error??data?.error;
+    const messages:Record<string,string>={
+     daily_limit:'Ta karta przekroczyłaby limit 5 000 zł łącznej wartości kart promocyjnych w ciągu 24 godzin. Limit zwalnia się 24 godziny po wystawieniu każdej karty.',
+     owner_only:'Karty promocyjne może wystawiać właściciel platformy.',
+     confirmed_login_required:'Zaloguj się na konto z potwierdzonym adresem e-mail.',
+     invalid_input:'Sprawdź kwotę karty i adres e-mail odbiorcy.',
+     role_verification_failed:'Nie udało się potwierdzić uprawnień. Spróbuj ponownie.'
+    };
+    throw new Error(messages[code]||'Nie udało się wystawić karty. Spróbuj ponownie.');
+   }
    setPromoResult(data);
    setMessage(data.email_sent?'Karta została utworzona i wysłana odbiorcy.':'Karta została utworzona, ale nie potwierdzono wysyłki e-mail. Przekaż link odbiorcy.');
   }catch(e:any){setPromoError(e?.message||'Błąd karty podarunkowej.')}
@@ -355,8 +367,8 @@ export default function AdminPage(){
      </Pressable>)}
     </View>}
     {tab==='credit-card'&&<View style={card}>
-     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kartę na dowolną kwotę</Text>
-     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:13}}>Jako właściciel możesz wysłać bezpłatną kartę o wartości 25–1000 zł. Odbiorca zobaczy saldo na swoim koncie, wykorzysta je na dowolne kursy i dopłaci, jeśli zabraknie środków. Takie karty nie są liczone jako sprzedaż Stripe.</Text>
+     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Wystaw kartę promocyjną</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:13}}>Wartość karty wynosi od 25 do 1 000 zł. Łączny limit wynosi 5 000 zł w ciągu 24 godzin. Odbiorca może zapłacić saldem za kursy i dopłacić brakującą kwotę. Takie karty nie są liczone jako sprzedaż Stripe.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:11}}>
       {[50,100,200,500].map(x=><Pressable key={x} onPress={()=>setPromoAmount(String(x))} style={{padding:11,backgroundColor:promoAmount===String(x)?ink:pale,borderRadius:10}}>
        <Text style={{color:promoAmount===String(x)?'white':ink,fontWeight:'800'}}>{x} zł</Text>
@@ -370,7 +382,7 @@ export default function AdminPage(){
      <Pressable accessibilityRole="button" disabled={!!working} onPress={issuePromo} style={{backgroundColor:ink,borderRadius:12,padding:16,opacity:working?.5:1}}>
       <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='promo'?'Tworzę kartę…':'Wystaw i wyślij kartę podarunkową'}</Text>
      </Pressable>
-     {!!promoError&&<Text style={{color:'#a52626',paddingVertical:11}}>{promoError}</Text>}
+     {!!promoError&&<Text accessibilityRole="alert" style={{color:'#a52626',paddingVertical:11}}>{promoError}</Text>}
      {!!promoResult&&<View style={{backgroundColor:'#edf7e8',padding:15,borderRadius:11,marginTop:13,gap:8}}>
       <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Karta gotowa · {(promoResult.amount_grosze/100).toLocaleString('pl-PL')} zł</Text>
       <Text style={{fontSize:12,color:muted}}>{promoResult.email_sent?'Wysłano e-mail do odbiorcy.':'Wysyłka e-mail niepotwierdzona — prześlij link samodzielnie.'}</Text>
