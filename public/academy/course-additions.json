@@ -1,12 +1,12 @@
 [
   {
     "id": "opieka-seniorzy",
-    "title": "Opieka nad osobami starszymi",
+    "title": "Codzienne wsparcie osób starszych",
     "cat": "Rodzina i rozwój",
     "price": 177,
     "emoji": "👵",
     "accent": "#EBE4D9",
-    "short": "Bezpieczne wsparcie seniora: godność, rozmowa, codzienna rutyna, granice kompetencji i reagowanie w sytuacjach trudnych.",
+    "short": "Kurs o codziennej pomocy seniorowi, rozmowie, rutynie i granicach odpowiedzialności. Omówiono zasady reagowania na trudne sytuacje. Kurs nie nadaje kwalifikacji opiekuna medycznego.",
     "outline": [
       "Potrzeby seniora i szacunek",
       "Komunikacja i aktywne słuchanie",
@@ -24,12 +24,12 @@
     "duration": "12 lekcji",
     "level": "Praktyczny",
     "flag": "Nowe przykłady · 12 lekcji",
-    "certificate_title_pl": "Opieka nad osobami starszymi",
-    "certificate_title_en": "Opieka nad osobami starszymi"
+    "certificate_title_pl": "Codzienne wsparcie osób starszych",
+    "certificate_title_en": "Codzienne wsparcie osób starszych"
   },
   {
     "id": "wsparcie-adhd",
-    "title": "Opieka i wsparcie osób z ADHD",
+    "title": "Codzienne wsparcie osób z ADHD",
     "cat": "Rodzina i rozwój",
     "price": 164,
     "emoji": "🧩",
@@ -52,8 +52,8 @@
     "duration": "12 lekcji",
     "level": "Praktyczny",
     "flag": "Nowe przykłady · 12 lekcji",
-    "certificate_title_pl": "Opieka i wsparcie osób z ADHD",
-    "certificate_title_en": "Opieka i wsparcie osób z ADHD"
+    "certificate_title_pl": "Codzienne wsparcie osób z ADHD",
+    "certificate_title_en": "Codzienne wsparcie osób z ADHD"
   },
   {
     "id": "poznaj-siebie",
@@ -381,7 +381,7 @@
   },
   {
     "id": "excel-skroty",
-    "title": "Excel — wszystkie najważniejsze skróty klawiszowe",
+    "title": "Excel — skróty klawiszowe w praktyce",
     "cat": "Technologie i logistyka",
     "price": 166,
     "emoji": "📊",
@@ -422,12 +422,12 @@
     "duration": "Własne tempo",
     "level": "Praktyczny",
     "flag": "Mini-kurs",
-    "certificate_title_pl": "Excel — wszystkie najważniejsze skróty klawiszowe",
-    "certificate_title_en": "Excel — wszystkie najważniejsze skróty klawiszowe"
+    "certificate_title_pl": "Excel — skróty klawiszowe w praktyce",
+    "certificate_title_en": "Excel — skróty klawiszowe w praktyce"
   },
   {
     "id": "autocad-skroty",
-    "title": "AutoCAD — wszystkie najważniejsze skróty i komendy",
+    "title": "AutoCAD — skróty i komendy w praktyce",
     "cat": "Technologie i logistyka",
     "price": 116,
     "emoji": "📐",
@@ -468,8 +468,8 @@
     "duration": "Własne tempo",
     "level": "Praktyczny",
     "flag": "Mini-kurs",
-    "certificate_title_pl": "AutoCAD — wszystkie najważniejsze skróty i komendy",
-    "certificate_title_en": "AutoCAD — wszystkie najważniejsze skróty i komendy"
+    "certificate_title_pl": "AutoCAD — skróty i komendy w praktyce",
+    "certificate_title_en": "AutoCAD — skróty i komendy w praktyce"
   },
   {
     "id": "google-ads-promocja",
@@ -529,12 +529,12 @@
   },
   {
     "id": "swiety-mikolaj",
-    "title": "Uprawnienia Świętego Mikołaja — kurs świąteczny",
+    "title": "Wizyta Świętego Mikołaja — kurs świąteczny",
     "cat": "Rzemiosło i hobby",
     "price": 0,
     "emoji": "🎅",
     "accent": "#F5D9D9",
-    "short": "Darmowy, żartobliwy kurs świąteczny: rozmowa z dziećmi, prezenty, logistyka i magia dobrych uczynków. Bez formalnych uprawnień.",
+    "short": "Scenariusz wizyty Świętego Mikołaja, rozmowa z dziećmi i organizacja świątecznego wydarzenia. Bezpłatny kurs w konwencji zabawy.",
     "outline": [
       "Kodeks życzliwego Mikołaja",
       "Strój, czapka i broda",
@@ -548,8 +548,8 @@
     "duration": "Własne tempo",
     "level": "Praktyczny",
     "flag": "Bezpłatny kurs świąteczny",
-    "certificate_title_pl": "Uprawnienia Świętego Mikołaja — kurs świąteczny",
-    "certificate_title_en": "Uprawnienia Świętego Mikołaja — kurs świąteczny"
+    "certificate_title_pl": "Wizyta Świętego Mikołaja — kurs świąteczny",
+    "certificate_title_en": "Wizyta Świętego Mikołaja — kurs świąteczny"
   },
   {
     "id": "lepszy-tata",
@@ -647,7 +647,7 @@
   },
   {
     "id": "wyjdz-z-toksycznego-zwiazku",
-    "title": "Wyjdź z toksycznego związku i nie daj się manipulować",
+    "title": "Trudna relacja — granice, bezpieczeństwo i wsparcie",
     "short": "Rozpoznawaj kontrolę i manipulację, odzyskuj własne granice i przygotuj bezpieczny plan dalszych kroków. Bez zawstydzania i bez presji na decyzję.",
     "cat": "Rodzina i rozwój",
     "price": 156,
@@ -671,7 +671,7 @@
   },
   {
     "id": "kryzys-po-40-bez-dlugow",
-    "title": "Kryzys po czterdziestce — jak nie wpaść w długi",
+    "title": "Kryzys po czterdziestce — finanse w okresie zmian",
     "short": "Gdy po czterdziestce pojawia się potrzeba wielkiej zmiany, naucz się spokojnie policzyć koszty, zatrzymać impulsy i podjąć decyzję bez niepotrzebnego zadłużenia.",
     "cat": "Rodzina i rozwój",
     "price": 134,
@@ -767,7 +767,7 @@
   },
   {
     "id": "ekonomia-domowa-bez-dlugow",
-    "title": "Ekonomia domowa — wybory, które chronią przed długami",
+    "title": "Ekonomia domowa — budżet, wydatki i zadłużenie",
     "short": "Zaplanuj domowe pieniądze, rozpoznaj ukryte koszty, porównaj kredyty i rachunki oraz przygotuj plan na trudniejsze miesiące — bez wstydu i nierealnych obietnic.",
     "cat": "Dom i codzienność",
     "price": 134,
@@ -875,7 +875,7 @@
   },
   {
     "id": "pomagaj-dziecku-w-lekcjach",
-    "title": "Bądź dobrym nauczycielem swojego dziecka — prace domowe bez kłótni",
+    "title": "Jak wspierać dziecko w nauce i odrabianiu lekcji",
     "short": "Pomagaj dziecku myśleć i samodzielnie rozwiązywać zadania, nie odrabiając lekcji za nie. Przyjazny plan także dla dziecka, które łatwo się rozprasza.",
     "cat": "Rodzina i rozwój",
     "price": 164,
@@ -894,8 +894,8 @@
       "Kontakt ze szkołą bez wstydu",
       "Rutyna, która szanuje dziecko"
     ],
-    "certificate_title_pl": "Ukończenie prywatnego kursu: Bądź dobrym nauczycielem swojego dziecka — prace domowe bez kłótni",
-    "certificate_title_en": "Private Course Completion: Bądź dobrym nauczycielem swojego dziecka — prace domowe bez kłótni"
+    "certificate_title_pl": "Ukończenie prywatnego kursu: Jak wspierać dziecko w nauce i odrabianiu lekcji",
+    "certificate_title_en": "Private Course Completion: Jak wspierać dziecko w nauce i odrabianiu lekcji"
   },
   {
     "id": "windows-skroty",
@@ -969,7 +969,7 @@
   },
   {
     "id": "kowal-tradycja",
-    "title": "Kowal — ogień, stal i tradycja kuźni",
+    "title": "Kowalstwo od podstaw — ogień, stal i tradycja kuźni",
     "short": "Od zera poznasz prawdziwą pracę kowala: bezpieczeństwo, rysunek techniczny, stale, narzędzia i ich konserwację, procesy kucia oraz projekt, naprawy wozów i podstawy podkuwnictwa. 30 lekcji w 3 działach, autorskie ilustracje i osobne zadania. Kurs teoretyczny; praktykę prowadzi mistrz w warsztacie.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1015,7 +1015,7 @@
   },
   {
     "id": "zdun-tradycja",
-    "title": "Zdun — piece kaflowe i mistrzowie ciepła",
+    "title": "Zduństwo od podstaw — budowa i działanie pieców kaflowych",
     "short": "Rozpoznaj kafle, palenisko, wymianę ciepła i drogę spalin. Na schematach przećwicz ocenę objawów, zgłoszenie zagrożenia i kartę przeglądu bez rozpalania pieca.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1034,12 +1034,12 @@
       "Ochrona starego pieca",
       "Projekt końcowy karty przeglądu"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Zdun — piece kaflowe i mistrzowie ciepła",
-    "certificate_title_en": "Completion of independent theory course: Zdun — piece kaflowe i mistrzowie ciepła"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Zduństwo od podstaw — budowa i działanie pieców kaflowych",
+    "certificate_title_en": "Completion of independent theory course: Zduństwo od podstaw — budowa i działanie pieców kaflowych"
   },
   {
     "id": "kolodziej",
-    "title": "Kołodziej — drewniane koła dawnych wozów",
+    "title": "Kołodziejstwo od podstaw — drewniane koła dawnych wozów",
     "short": "Piasta, szprychy, dzwona i żelazna obręcz. Tradycyjne koło łączy drewno o różnych wymaganiach: piasta musi stabilnie osadzać szprychy, a szprychy przenoszą obciążenia między piastą i obręczą. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1066,12 +1066,12 @@
       "15. Kosztorys: materiał, uzysk i robocizna kołodzieja",
       "16. Egzamin projektowy: koło do ekspozycji z kartą odbioru"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Kołodziej — drewniane koła dawnych wozów",
-    "certificate_title_en": "Completion of independent theory course: Kołodziej — drewniane koła dawnych wozów"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Kołodziejstwo od podstaw — drewniane koła dawnych wozów",
+    "certificate_title_en": "Completion of independent theory course: Kołodziejstwo od podstaw — drewniane koła dawnych wozów"
   },
   {
     "id": "bednarz",
-    "title": "Bednarz — beczki i drewniane naczynia",
+    "title": "Bednarstwo od podstaw — beczki i drewniane naczynia",
     "short": "Beczka drewniana: szczelność wynika z geometrii i włókien. Na klepki wybiera się drewno o możliwie prostym przebiegu włókien i bez wad, które tworzą przeciek. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1098,12 +1098,12 @@
       "15. Renowacja: zabytek, naczynie użytkowe i granice naprawy",
       "16. Projekt końcowy: specyfikacja i diagnoza beczki"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Bednarz — beczki i drewniane naczynia",
-    "certificate_title_en": "Completion of independent theory course: Bednarz — beczki i drewniane naczynia"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Bednarstwo od podstaw — beczki i drewniane naczynia",
+    "certificate_title_en": "Completion of independent theory course: Bednarstwo od podstaw — beczki i drewniane naczynia"
   },
   {
     "id": "woznica",
-    "title": "Woźnica — dawna sztuka powożenia",
+    "title": "Powożenie zaprzęgiem — podstawy teoretyczne",
     "short": "Poznaj historyczne pojazdy zaprzęgowe, funkcje uprzęży i zasady dobrostanu konia. Zbuduj mapę elementów i przeanalizuj decyzje na makiecie bez pracy z koniem.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1122,12 +1122,12 @@
       "Eksponat a pojazd użytkowy",
       "Projekt końcowy bez konia"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Woźnica — dawna sztuka powożenia",
-    "certificate_title_en": "Completion of independent theory course: Woźnica — dawna sztuka powożenia"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Powożenie zaprzęgiem — podstawy teoretyczne",
+    "certificate_title_en": "Completion of independent theory course: Powożenie zaprzęgiem — podstawy teoretyczne"
   },
   {
     "id": "rymarz",
-    "title": "Rymarz — skórzane uprzęże i naprawy",
+    "title": "Rymarstwo od podstaw — uprzęże i wyroby skórzane",
     "short": "Skóra i okucia uprzęży: obciążenia oraz dobrostan zwierzęcia. W uprzęży skóra pracuje pod cyklicznym obciążeniem i zginaniem. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1150,12 +1150,12 @@
       "11. Diagnostyka i decyzja: naprawa czy wycofanie",
       "12. Projekt końcowy: pasek demonstracyjny i kosztorys"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Rymarz — skórzane uprzęże i naprawy",
-    "certificate_title_en": "Completion of independent theory course: Rymarz — skórzane uprzęże i naprawy"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Rymarstwo od podstaw — uprzęże i wyroby skórzane",
+    "certificate_title_en": "Completion of independent theory course: Rymarstwo od podstaw — uprzęże i wyroby skórzane"
   },
   {
     "id": "garncarz-tradycja",
-    "title": "Garncarz — glina i koło garncarskie",
+    "title": "Garncarstwo od podstaw — glina i koło garncarskie",
     "short": "Glina, szamot i szkliwo: trzy różne role. Glina z dodatkiem wody staje się plastyczna, ale podczas suszenia i wypału kurczy się. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1178,12 +1178,12 @@
       "11. Naczynia użytkowe: nasiąkliwość, pęknięcia i kontrola jakości",
       "12. Projekt końcowy: od rysunku kubka do karty jakości"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Garncarz — glina i koło garncarskie",
-    "certificate_title_en": "Completion of independent theory course: Garncarz — glina i koło garncarskie"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Garncarstwo od podstaw — glina i koło garncarskie",
+    "certificate_title_en": "Completion of independent theory course: Garncarstwo od podstaw — glina i koło garncarskie"
   },
   {
     "id": "plecionkarz",
-    "title": "Plecionkarz — kosze z wikliny",
+    "title": "Plecionkarstwo od podstaw — kosze z wikliny",
     "short": "Wiklina i trzcina: elastyczność, wilgotność i trwałość. Pędy wierzbowe używane do plecionkarstwa różnią się grubością, długością, korą i sprężystością. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1210,12 +1210,12 @@
       "15. Kosztorys: długość surowca, odrzuty i robocizna",
       "16. Projekt końcowy: kosz Ø30 cm z dwoma uchwytami"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Plecionkarz — kosze z wikliny",
-    "certificate_title_en": "Completion of independent theory course: Plecionkarz — kosze z wikliny"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Plecionkarstwo od podstaw — kosze z wikliny",
+    "certificate_title_en": "Completion of independent theory course: Plecionkarstwo od podstaw — kosze z wikliny"
   },
   {
     "id": "powroznik",
-    "title": "Powroźnik — tradycyjne liny i powrozy",
+    "title": "Powroźnictwo od podstaw — tradycyjne liny i powrozy",
     "short": "Włókna, kierunek skrętu i wytrzymałość liny. Len, konopie i sizal różnią się strukturą włókien, odpornością na ścieranie i wodę oraz właściwościami użytkowymi. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1238,12 +1238,12 @@
       "11. Pielęgnacja i przechowywanie: wilgoć, UV, chemia i deformacja",
       "12. Projekt końcowy: lina demonstracyjna z kartą materiałową"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Powroźnik — tradycyjne liny i powrozy",
-    "certificate_title_en": "Completion of independent theory course: Powroźnik — tradycyjne liny i powrozy"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Powroźnictwo od podstaw — tradycyjne liny i powrozy",
+    "certificate_title_en": "Completion of independent theory course: Powroźnictwo od podstaw — tradycyjne liny i powrozy"
   },
   {
     "id": "snycerz",
-    "title": "Snycerz — ornament i rzeźba w drewnie",
+    "title": "Snycerstwo od podstaw — ornament i rzeźba w drewnie",
     "short": "Rozpoznaj ornament, kierunek włókien i rolę dłut. Zaprojektuj relief, zbuduj bezpieczną makietę i opracuj kartę oględzin drewnianego detalu.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1262,12 +1262,12 @@
       "Polichromia, stan i decyzja konserwatorska",
       "Projekt końcowy reliefu"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Snycerz — ornament i rzeźba w drewnie",
-    "certificate_title_en": "Completion of independent theory course: Snycerz — ornament i rzeźba w drewnie"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Snycerstwo od podstaw — ornament i rzeźba w drewnie",
+    "certificate_title_en": "Completion of independent theory course: Snycerstwo od podstaw — ornament i rzeźba w drewnie"
   },
   {
     "id": "sitarz",
-    "title": "Sitarz — sztuka ręcznej produkcji sit",
+    "title": "Sitarstwo od podstaw — ręczne wykonywanie sit",
     "short": "Poznaj dawne sita, dobór oczek i budowę drewnianej obręczy. Na prostym modelu rozdzielisz frakcje, wyjaśnisz przyczynę usterki i przygotujesz kartę odbioru.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1286,12 +1286,12 @@
       "Oględziny starego sita",
       "Projekt końcowy i karta odbioru"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Sitarz — sztuka ręcznej produkcji sit",
-    "certificate_title_en": "Completion of independent theory course: Sitarz — sztuka ręcznej produkcji sit"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Sitarstwo od podstaw — ręczne wykonywanie sit",
+    "certificate_title_en": "Completion of independent theory course: Sitarstwo od podstaw — ręczne wykonywanie sit"
   },
   {
     "id": "zecer",
-    "title": "Zecer — skład gazet przed komputerem",
+    "title": "Zecerstwo od podstaw — ręczny skład drukarski",
     "short": "Poznaj ręczny skład, kasztę i wierszownik. Ułóż papierową kolumnę, przeprowadź korektę odbitki i rozpoznaj zagrożenia historycznego stanowiska.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1310,12 +1310,12 @@
       "Ewidencja i konserwacja kaszty",
       "Projekt końcowy kolumny"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Zecer — skład gazet przed komputerem",
-    "certificate_title_en": "Completion of independent theory course: Zecer — skład gazet przed komputerem"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Zecerstwo od podstaw — ręczny skład drukarski",
+    "certificate_title_en": "Completion of independent theory course: Zecerstwo od podstaw — ręczny skład drukarski"
   },
   {
     "id": "ludwisarz",
-    "title": "Ludwisarz — dzwony i tradycyjne odlewnictwo",
+    "title": "Ludwisarstwo od podstaw — dzwony i tradycyjne odlewnictwo",
     "short": "Brąz dzwonowy, forma i ryzyko wad odlewniczych. Brąz dzwonowy to stop miedzi i cyny. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1338,12 +1338,12 @@
       "11. Zawieszenie, korona, jarzmo i serce",
       "12. Projekt dzwonu ekspozycyjnego i protokół odbioru"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Ludwisarz — dzwony i tradycyjne odlewnictwo",
-    "certificate_title_en": "Completion of independent theory course: Ludwisarz — dzwony i tradycyjne odlewnictwo"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Ludwisarstwo od podstaw — dzwony i tradycyjne odlewnictwo",
+    "certificate_title_en": "Completion of independent theory course: Ludwisarstwo od podstaw — dzwony i tradycyjne odlewnictwo"
   },
   {
     "id": "introligator-tradycja",
-    "title": "Introligator — oprawa książek ręcznie",
+    "title": "Introligatorstwo od podstaw — ręczna oprawa książek",
     "short": "Papier, tektura, nici i klej: zgodność materiałów. Papier ma kierunek włókien wpływający na jego zginanie i falowanie. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1366,12 +1366,12 @@
       "11. Kosztorys i plan prac oprawy: materiał, odpady i czas",
       "12. Praca końcowa: zaprojektuj i skontroluj notes szyty"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Introligator — oprawa książek ręcznie",
-    "certificate_title_en": "Completion of independent theory course: Introligator — oprawa książek ręcznie"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Introligatorstwo od podstaw — ręczna oprawa książek",
+    "certificate_title_en": "Completion of independent theory course: Introligatorstwo od podstaw — ręczna oprawa książek"
   },
   {
     "id": "tkacz-reczny",
-    "title": "Tkacz ręczny — krosno i dawne tkaniny",
+    "title": "Tkactwo ręczne od podstaw — krosno i dawne tkaniny",
     "short": "Poznaj osnowę, wątek i pracę krosna. Wykonaj papierowe próbki splotu, policz zmianę wymiarów i przygotuj projekt tkaniny z kartą jakości.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1390,12 +1390,12 @@
       "Oględziny starej tkaniny",
       "Projekt końcowy dwóch próbek"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Tkacz ręczny — krosno i dawne tkaniny",
-    "certificate_title_en": "Completion of independent theory course: Tkacz ręczny — krosno i dawne tkaniny"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Tkactwo ręczne od podstaw — krosno i dawne tkaniny",
+    "certificate_title_en": "Completion of independent theory course: Tkactwo ręczne od podstaw — krosno i dawne tkaniny"
   },
   {
     "id": "kaletnik-tradycja",
-    "title": "Kaletnik — torby, paski i portfele",
+    "title": "Kaletnictwo od podstaw — torby, paski i portfele",
     "short": "Skóra licowa, dwoina i materiały alternatywne. Skóra licowa i dwoina różnią się strukturą warstw oraz zastosowaniami; nie powinno się oceniać trwałości wyłącznie na podstawie grubości. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1418,12 +1418,12 @@
       "11. Naprawa i kontrola jakości: test zginania i oględziny",
       "12. Projekt końcowy: portfel, koszt i dokumentacja"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Kaletnik — torby, paski i portfele",
-    "certificate_title_en": "Completion of independent theory course: Kaletnik — torby, paski i portfele"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Kaletnictwo od podstaw — torby, paski i portfele",
+    "certificate_title_en": "Completion of independent theory course: Kaletnictwo od podstaw — torby, paski i portfele"
   },
   {
     "id": "zegarmistrz-tradycja",
-    "title": "Zegarmistrz — serce mechanicznego zegarka",
+    "title": "Zegarmistrzostwo od podstaw — mechanizmy zegarków",
     "short": "Rozpoznaj źródło energii, przekładnię, regulator i wychwyt zegara mechanicznego. Na modelu policz odchyłkę i przygotuj kartę diagnostyczną bez otwierania mechanizmu.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1442,12 +1442,12 @@
       "Stan zabytku i decyzja o naprawie",
       "Projekt końcowy karty diagnostycznej"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Zegarmistrz — serce mechanicznego zegarka",
-    "certificate_title_en": "Completion of independent theory course: Zegarmistrz — serce mechanicznego zegarka"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Zegarmistrzostwo od podstaw — mechanizmy zegarków",
+    "certificate_title_en": "Completion of independent theory course: Zegarmistrzostwo od podstaw — mechanizmy zegarków"
   },
   {
     "id": "mlynarz-tradycyjny",
-    "title": "Młynarz — od ziarna do mąki",
+    "title": "Młynarstwo od podstaw — od ziarna do mąki",
     "short": "Ziarno: wilgotność, zanieczyszczenia i parametry mąki. Właściwości zboża wpływają na przemiał: ziarno zbyt wilgotne sprzyja problemom ze składowaniem, a zbyt suche może inaczej zachowywać się podczas rozdrabniania. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1470,12 +1470,12 @@
       "11. Usterki młyna: spadek wydajności, przegrzewanie i obce cząstki",
       "12. Projekt końcowy młynarza: partia zboża, przemiał, bilans i BHP"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Młynarz — od ziarna do mąki",
-    "certificate_title_en": "Completion of independent theory course: Młynarz — od ziarna do mąki"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Młynarstwo od podstaw — od ziarna do mąki",
+    "certificate_title_en": "Completion of independent theory course: Młynarstwo od podstaw — od ziarna do mąki"
   },
   {
     "id": "gontarz",
-    "title": "Gontarz — drewniane dachy",
+    "title": "Gontarstwo od podstaw — drewniane pokrycia dachowe",
     "short": "Drewno na gont: kierunek włókien i odporność na wilgoć. Gont tradycyjnie wykonywano z odpowiednio dobranych gatunków drewna, zwykle o prostym przebiegu słojów. Kurs teoretyczny z ćwiczeniami, bez uprawnień do samodzielnej pracy.",
     "cat": "Rzemiosło i hobby",
     "price": 179,
@@ -1498,12 +1498,12 @@
       "11. BHP na dachu: ocena ryzyka, rusztowanie i zabezpieczenia",
       "12. Projekt końcowy: kosztorys, ilości i kontrola jakości"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Gontarz — drewniane dachy",
-    "certificate_title_en": "Completion of independent theory course: Gontarz — drewniane dachy"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Gontarstwo od podstaw — drewniane pokrycia dachowe",
+    "certificate_title_en": "Completion of independent theory course: Gontarstwo od podstaw — drewniane pokrycia dachowe"
   },
   {
     "id": "szewc-tradycja",
-    "title": "Szewc — uratuj i napraw stare buty",
+    "title": "Podstawy szewstwa — ocena i naprawa obuwia",
     "short": "Poznaj budowę obuwia, właściwości skóry, tkanin i materiałów spodowych. Przygotuj diagnozę trzech uszkodzeń oraz kosztorys bezpiecznej naprawy.",
     "cat": "Rzemiosło i hobby",
     "price": 156,
@@ -1522,8 +1522,8 @@
       "Renowacja i kontrola pary",
       "Projekt końcowy i przyjęcie zlecenia"
     ],
-    "certificate_title_pl": "Ukończenie kursu teoretycznego: Szewc — uratuj i napraw stare buty",
-    "certificate_title_en": "Completion of independent theory course: Szewc — uratuj i napraw stare buty"
+    "certificate_title_pl": "Ukończenie kursu teoretycznego: Podstawy szewstwa — ocena i naprawa obuwia",
+    "certificate_title_en": "Completion of independent theory course: Podstawy szewstwa — ocena i naprawa obuwia"
   },
   {
     "id": "axapta-dynamics-magazyn",
@@ -1573,7 +1573,7 @@
   },
   {
     "id": "sap-ewm-magazyn",
-    "title": "SAP EWM — magazyn od pierwszego skanu do eksperta",
+    "title": "SAP EWM — od pierwszego skanu do obsługi procesów magazynowych",
     "short": "Przyjęcia, handling unit, warehouse tasks, RF, kompletacja, wydanie, zapasy i monitor magazynu.",
     "cat": "Technologie i logistyka",
     "price": 239,
@@ -1582,8 +1582,8 @@
     "duration": "30 lekcji",
     "level": "Od podstaw do zagadnień zaawansowanych",
     "flag": "Nowość · 3 działy / 30 lekcji",
-    "certificate_title_pl": "Ukończenie szkolenia: SAP EWM — magazyn od pierwszego skanu do eksperta",
-    "certificate_title_en": "Private course completion: SAP EWM — magazyn od pierwszego skanu do eksperta",
+    "certificate_title_pl": "Ukończenie szkolenia: SAP EWM — od pierwszego skanu do obsługi procesów magazynowych",
+    "certificate_title_en": "Private course completion: SAP EWM — od pierwszego skanu do obsługi procesów magazynowych",
     "outline": [
       "Czym jest SAP i SAP EWM",
       "Co widać po zalogowaniu: menu i role",
@@ -1619,7 +1619,7 @@
   },
   {
     "id": "oracle-wms-cloud",
-    "title": "Oracle Warehouse Management Cloud — kompletny kurs WMS",
+    "title": "Oracle Warehouse Management Cloud — procesy magazynowe",
     "short": "Oracle WMS Cloud od ASN i LPN, przez lokalizacje i wave picking, do pakowania i wysyłki.",
     "cat": "Technologie i logistyka",
     "price": 239,
@@ -1628,8 +1628,8 @@
     "duration": "30 lekcji",
     "level": "Od podstaw do zagadnień zaawansowanych",
     "flag": "Nowość · 3 działy / 30 lekcji",
-    "certificate_title_pl": "Ukończenie szkolenia: Oracle Warehouse Management Cloud — kompletny kurs WMS",
-    "certificate_title_en": "Private course completion: Oracle Warehouse Management Cloud — kompletny kurs WMS",
+    "certificate_title_pl": "Ukończenie szkolenia: Oracle Warehouse Management Cloud — procesy magazynowe",
+    "certificate_title_en": "Private course completion: Oracle Warehouse Management Cloud — procesy magazynowe",
     "outline": [
       "Oracle WMS Cloud — czym jest",
       "Interfejs: menu, ekrany i RF",
@@ -1665,7 +1665,7 @@
   },
   {
     "id": "manhattan-active-wms",
-    "title": "Manhattan ActiveWarehouse — obsługa magazynu WMS",
+    "title": "Manhattan Active Warehouse Management — procesy magazynowe",
     "short": "Manhattan Active Warehouse Management: stany, receiving, wave, picking, slotting, labor, yard, robotyka i wysyłki.",
     "cat": "Technologie i logistyka",
     "price": 239,
@@ -1674,8 +1674,8 @@
     "duration": "30 lekcji",
     "level": "Od podstaw do zagadnień zaawansowanych",
     "flag": "Nowość · 3 działy / 30 lekcji",
-    "certificate_title_pl": "Ukończenie szkolenia: Manhattan ActiveWarehouse — obsługa magazynu WMS",
-    "certificate_title_en": "Private course completion: Manhattan ActiveWarehouse — obsługa magazynu WMS",
+    "certificate_title_pl": "Ukończenie szkolenia: Manhattan Active Warehouse Management — procesy magazynowe",
+    "certificate_title_en": "Private course completion: Manhattan Active Warehouse Management — procesy magazynowe",
     "outline": [
       "Czym jest Manhattan ActiveWarehouse",
       "Użytkownik, rola i pulpit",
