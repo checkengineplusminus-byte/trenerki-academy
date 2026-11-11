@@ -10,8 +10,9 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
  const [chosen,setChosen]=useState<number|null>(null);
  const [tries,setTries]=useState(0);
  const [hint,setHint]=useState(false);
+ const [methodOpen,setMethodOpen]=useState(false);
  const [accepted,setAccepted]=useState(false),[verifying,setVerifying]=useState(false),[verifyError,setVerifyError]=useState('');
- useEffect(()=>{setChosen(null);setTries(0);setHint(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed?.(false)},[identity]);
+ useEffect(()=>{setChosen(null);setTries(0);setHint(false);setMethodOpen(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed?.(false)},[identity]);
  if(!data?.question?.trim()||!data.options?.length)return null;
  const passed=chosen===data.correct&&accepted;
  const feedbackForChoice=(index:number|null)=>index===null?'':data.feedback?.[index]?.trim()||'';
@@ -41,6 +42,16 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
   <View testID="case-checkpoint" style={{backgroundColor:'#19392b',borderRadius:17,padding:20,gap:13}}>
    <Text style={{fontSize:11,fontWeight:'900',color:'#d2eaba',letterSpacing:1}}>SPRAWDŹ SWOJE ROZUMIENIE</Text>
    <Text style={{fontSize:21,fontWeight:'900',color:'white',lineHeight:29}}>{data.question}</Text>
+   <Pressable accessibilityRole="button" accessibilityState={{expanded:methodOpen}} onPress={()=>setMethodOpen(v=>!v)} style={{alignSelf:'flex-start',paddingVertical:7,paddingHorizontal:10,borderRadius:9,backgroundColor:'#2a5540'}}>
+    <Text style={{fontSize:12,fontWeight:'800',color:'#e3f2e2'}}>{methodOpen?'Ukryj metodę ↑':'Jak przeanalizować zadanie? ↓'}</Text>
+   </Pressable>
+   {methodOpen&&<View style={{backgroundColor:'#e8f2e3',padding:14,borderRadius:11,gap:7}}>
+    <Text style={{fontWeight:'900',color:ink,fontSize:13}}>Metoda: fakt → wybór → skutek → kontrola</Text>
+    <Text style={{color:ink,fontSize:13,lineHeight:20}}>1. Wskaż konkretne dane z opisu. Co wiadomo, a czego jeszcze nie sprawdzono?</Text>
+    <Text style={{color:ink,fontSize:13,lineHeight:20}}>2. Porównaj dwie realne decyzje. Która spełnia wymagania i uwzględnia ograniczenia?</Text>
+    <Text style={{color:ink,fontSize:13,lineHeight:20}}>3. Przewidź skutek błędnego wyboru. Nie utożsamiaj szybkiego działania z poprawnym wynikiem.</Text>
+    <Text style={{color:ink,fontSize:13,lineHeight:20}}>4. Wybierz odpowiedź, którą da się sprawdzić na podstawie faktów.</Text>
+   </View>}
    {order.map(({value,original},position)=><Pressable key={position} accessibilityRole="button" onPress={()=>void choose(original)} disabled={passed||verifying}
     style={{borderRadius:11,padding:14,backgroundColor:chosen===original?(passed?'#d9f0c9':'#fff0db'):'#f7faf4',borderWidth:chosen===original?2:1,borderColor:chosen===original?(passed?'#6aa365':'#c8a06c'):'#d9e3d6'}}>
     <Text style={{fontSize:15,color:ink,fontWeight:'700',lineHeight:23}}>{String.fromCharCode(65+position)}. {value}</Text>
