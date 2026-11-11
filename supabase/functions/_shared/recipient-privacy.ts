@@ -1,0 +1,1 @@
+export const privacyNotice = '<p>TRENERKI Sp. z o.o. używa Twojego adresu otrzymanego od osoby przekazującej prezent lub od opiekuna firmy, aby przekazać zaproszenie i chronić jego odbiór. Możesz zgłosić pomyłkę lub sprzeciw na trenerki.pl@gmail.com. <a href="https://trenerki.com/academy/prywatnosc.html#s3">Źródło danych, podstawy i Twoje prawa</a>.</p>';

@@ -1,3 +1,4 @@
+import {privacyNotice} from '../_shared/recipient-privacy.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
 const cors={
@@ -63,7 +64,7 @@ Deno.serve(async request=>{
   if(ge)return reply({error:'gift_creation_failed'},500);
   const giftUrl=baseUrl+'/prezent?code='+encodeURIComponent(code);
   let delivered={sent:false,reason:'share_link'};
-  if(email){const html='<h2>Prezent od bliskiej osoby 🎁</h2><p>Otrzymujesz dostęp do kursu: <b>'+htmlEsc(c.title_pl)+'</b>.</p><p>'+htmlEsc(message)+'</p><p><a href="'+htmlEsc(giftUrl)+'">Otwórz prezent w TRENERKI Academy</a></p><p>'+(mode==='demo'?'To testowa karta podarunkowa, bez wpłaty i wartości pieniężnej.':'To prezent do bezpłatnego kursu.')+'</p>';delivered=await sendViaResend(email,'TRENERKI Academy — prezent dla Ciebie',html)}
+  if(email){const html='<h2>Prezent od bliskiej osoby 🎁</h2><p>Otrzymujesz dostęp do kursu: <b>'+htmlEsc(c.title_pl)+'</b>.</p><p>'+htmlEsc(message)+'</p><p><a href="'+htmlEsc(giftUrl)+'">Otwórz prezent w TRENERKI Academy</a></p><p>'+(mode==='demo'?'To testowa karta podarunkowa, bez wpłaty i wartości pieniężnej.':'To prezent do bezpłatnego kursu.')+'</p>';delivered=await sendViaResend(email,'TRENERKI Academy — prezent dla Ciebie',html+privacyNotice)}
   return reply({ok:true,code,link:giftUrl,gift_id:gift.id,expires_at:gift.expires_at,mode,email_sent:delivered.sent,email_message:delivered.reason||null});
  }
  if(action==='redeem_gift'){

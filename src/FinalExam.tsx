@@ -137,7 +137,6 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
      <Text style={{color:ink,fontWeight:selectedOption===i?'900':'700',lineHeight:23}}>{String.fromCharCode(65+i)}. {option}</Text>
     </Pressable>)}
    </View>:<>
-   <Text style={{color:'#516e58',fontSize:12}}>OpenAI może oceniać treść Twojej odpowiedzi. Pomiń dane osobowe i wrażliwe.</Text>
    <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/></>}
    {button(busy?'Sprawdzanie odpowiedzi…':'Zatwierdź odpowiedź',send,busy||(gradingMode==='choice'?selectedOption===null:answer.trim().length<20))}
    {gradingMode==='oral'&&<Pressable accessibilityRole="button" onPress={switchMode} disabled={busy} style={{padding:13,backgroundColor:'#f2f7ec',borderRadius:11,borderWidth:1,borderColor:'#c9ddc4'}}>

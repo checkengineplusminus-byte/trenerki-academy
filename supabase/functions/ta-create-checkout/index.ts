@@ -1,3 +1,4 @@
+import {termsVersion} from '../_shared/order-confirmation.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const headers={'content-type':'application/json','access-control-allow-origin':'*','access-control-allow-headers':'authorization, x-client-info, apikey, content-type','access-control-allow-methods':'POST, OPTIONS'};
 const giftCode=(id:string)=>'TA-'+id.replaceAll('-','').toUpperCase();
@@ -29,6 +30,7 @@ Deno.serve(async req=>{
   const checkoutAmount=Number(pricing?.effective_price_grosze);
   if(priceError||!Number.isInteger(checkoutAmount)||checkoutAmount<200||checkoutAmount>course.price_grosze)
    return reply({error:'pricing_unavailable'},503);
+  if(body?.terms_version!==termsVersion||body?.expected_price_grosze!==checkoutAmount)return reply({error:'quote_changed'},409);
   if(!isGift){
   const {data:already,error:alreadyError}=await admin.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
   if(alreadyError)return reply({error:'database_unavailable'},503);
@@ -53,7 +55,7 @@ Deno.serve(async req=>{
   const site='https://trenerki.com';
   const consentDate=new Date().toISOString();
   const p=new URLSearchParams({
-   mode:'payment',
+   mode:'payment',locale:'pl',submit_type:'pay',
    success_url:site+(giftId?'/prezent?checkout=success':'/moje-kursy?checkout=success'),
    cancel_url:site+(giftId?'/prezent':'/kup')+'?course='+encodeURIComponent(slug),
    customer_email:user.email,
@@ -64,8 +66,9 @@ Deno.serve(async req=>{
    'line_items[0][quantity]':'1',
    'metadata[user_id]':user.id,
    'metadata[course_slug]':slug,
+   'metadata[course_title]':course.title_pl.slice(0,300),
    'metadata[unit_amount_grosze]':String(checkoutAmount),
-   'metadata[terms_version]':'2026-11-10',
+   'metadata[terms_version]':termsVersion,
    'metadata[terms_accepted_at]':consentDate,
    'metadata[immediate_content_consent]':String(!giftId)
   });

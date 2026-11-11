@@ -1,3 +1,4 @@
+import {privacyNotice} from '../_shared/recipient-privacy.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={'access-control-allow-origin':'*','access-control-allow-methods':'POST,OPTIONS','access-control-allow-headers':'authorization,apikey,content-type,x-client-info','content-type':'application/json','cache-control':'no-store'};
 const send=(x:any,status=200)=>new Response(JSON.stringify(x),{status,headers:cors});
@@ -72,7 +73,7 @@ Deno.serve(async request=>{
      body:JSON.stringify({from,to:[recipient],subject:'TRENERKI Academy — otrzymujesz kurs od swojej firmy',
       html:'<h2>Masz nowy kurs!</h2><p>Twoja firma przekazała Ci kurs <strong>'+esc(assigned.title_pl||assigned.course_slug)+'</strong>.</p>'+
        '<p><a href="'+esc(link)+'">Odbierz kurs na swoim koncie TRENERKI</a></p>'+
-       '<p>Kod jednorazowy: <strong>'+esc(code)+'</strong>. Kurs można odebrać wyłącznie na adres e-mail, na który dotarła ta wiadomość.</p>'}),
+       '<p>Kod jednorazowy: <strong>'+esc(code)+'</strong>. Kurs można odebrać wyłącznie na adres e-mail, na który dotarła ta wiadomość.</p>'+privacyNotice}),
      signal:AbortSignal.timeout(12000)});
     emailSent=resp.ok;
     if(emailSent)await db.from('ta_company_seats').update({email_sent_at:new Date().toISOString()}).eq('id',seatId).eq('state','assigned');

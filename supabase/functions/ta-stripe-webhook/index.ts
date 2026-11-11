@@ -1,3 +1,5 @@
+import {privacyNotice} from '../_shared/recipient-privacy.ts';
+import {contractAttachments,termsVersion} from '../_shared/order-confirmation.ts';
 import Stripe from 'npm:stripe@17.7.0';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
@@ -5,13 +7,13 @@ const site='https://trenerki.com';
 const reply=(status=200)=>new Response(null,{status});
 const escape=(value:string)=>value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]??c));
 
-async function sendMail(key:string,to:string,subject:string,html:string){
+async function sendMail(key:string,to:string,subject:string,html:string,version?:string){
  const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
  if(!api||!from)throw new Error('resend_not_configured');
  const result=await fetch('https://api.resend.com/emails',{
   method:'POST',
   headers:{Authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':key},
-  body:JSON.stringify({from,to:[to],reply_to:'trenerki.pl@gmail.com',subject,html})
+  body:JSON.stringify({from,to:[to],reply_to:'trenerki.pl@gmail.com',subject,html,attachments:contractAttachments(version)})
  });
  if(!result.ok)throw new Error('resend_http_'+result.status);
 }
@@ -64,7 +66,12 @@ Deno.serve(async req=>{
   if(!['checkout.session.completed','checkout.session.async_payment_succeeded'].includes(event.type))return reply();
   const s=event.data.object as Stripe.Checkout.Session;
   if(s.payment_status!=='paid'||s.mode!=='payment'||!s.id)return reply();
-  const voucherId=s.metadata?.ta_credit_voucher_id;
+  const version=s.metadata?.terms_version;
+ const newTerms=version===termsVersion;
+ const termsNotice=newTerms?'<p>W załączniku znajduje się wersja warunków zamówienia, dane kontaktowe spółki i instrukcja odstąpienia.</p>':'';
+ const purchaseDate=new Intl.DateTimeFormat('pl-PL',{dateStyle:'long',timeStyle:'short',timeZone:'Europe/Warsaw'}).format(new Date(event.created*1000));
+ const earlyAccess='<p>Potwierdzamy oświadczenie o rozpoczęciu dostarczania treści przed upływem 14 dni i przyjęcie informacji o możliwej utracie prawa odstąpienia, gdy spełniono warunki ustawowe.</p>';
+ const voucherId=s.metadata?.ta_credit_voucher_id;
   if(voucherId){
    const uid=s.metadata?.user_id||'',amount=Number(s.metadata?.credit_amount_grosze);
    const payment=s.payment_intent;
@@ -91,7 +98,7 @@ Deno.serve(async req=>{
     await sendMail('trenerki-value-buyer-'+s.id,user.email,'TRENERKI Academy — karta podarunkowa '+amountStr,
      '<p>Zakupiono kartę podarunkową o wartości <strong>'+escape(amountStr)+'</strong>.</p>'+
      '<p>Odbiorca: '+escape(gift.recipient_email)+'. Kod odbioru: <strong>'+escape(giftCode)+'</strong>.</p>'+
-     '<p>Po odebraniu kodu saldo pojawi się na koncie odbiorcy.</p>');
+     '<p>Po odebraniu kodu saldo pojawi się na koncie odbiorcy.</p>'+(newTerms?'<p>Numer zamówienia '+escape(s.id)+'. Data '+purchaseDate+'.</p>'+termsNotice:''),version);
     const {error}=await db.from('ta_credit_vouchers').update({buyer_email_sent_at:new Date().toISOString()}).eq('id',voucherId);
     if(error)throw error;
    }
@@ -100,7 +107,7 @@ Deno.serve(async req=>{
      '<h2>Masz prezent!</h2><p>Twoja karta podarunkowa ma wartość <strong>'+escape(amountStr)+'</strong>.</p>'+
      '<p>'+escape(gift.gift_message||'Wybierz kurs, który Cię zainteresuje.')+'</p>'+
      '<p>Kod: <strong>'+escape(giftCode)+'</strong></p>'+
-     '<p><a href="'+escape(giftLink)+'">Odbierz środki na swoje konto</a>. Resztę salda możesz wykorzystać przy kolejnych zakupach.</p>');
+     '<p><a href="'+escape(giftLink)+'">Odbierz środki na swoje konto</a>. Resztę salda możesz wykorzystać przy kolejnych zakupach.</p>'+(newTerms?privacyNotice:''));
     const {error}=await db.from('ta_credit_vouchers').update({recipient_email_sent_at:new Date().toISOString()}).eq('id',voucherId);
     if(error)throw error;
    }
@@ -118,9 +125,9 @@ Deno.serve(async req=>{
   if(userError||!user?.email_confirmed_at)throw new Error('buyer_lookup_failed');
   const email=s.customer_email||user.email;
   if(!email)throw new Error('buyer_email_missing');
-  const title=escape(course.title_pl),paid=new Date(event.created*1000);
+  const title=escape(s.metadata?.course_title||course.title_pl),paid=new Date(event.created*1000);
   const cost=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(amount/100);
-  const orderInfo='<p>Zapłacono '+escape(cost)+'. Numer zamówienia: '+escape(s.id)+'.</p>';
+  const orderInfo='<p>Zapłacono '+escape(cost)+'. Numer zamówienia: '+escape(s.id)+'.'+(newTerms?' Data zawarcia umowy '+purchaseDate+'.':'')+'</p>';
   async function wasRefunded(){
    const {data,error}=await db.from('ta_stripe_refunds').select('payment_id').eq('payment_id',paymentId).maybeSingle();
    if(error)throw error;
@@ -152,7 +159,7 @@ Deno.serve(async req=>{
     await sendMail('trenerki-split-buyer-'+s.id,email,'TRENERKI Academy — zakup kursu',
      '<p>Odblokowano kurs <strong>'+title+'</strong>.</p>'+
      '<p>Wykorzystane saldo karty: '+escape(walletStr)+'. Dopłata Stripe: '+escape(cost)+'.</p>'+
-     '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a></p>');
+     '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a></p>'+(newTerms?orderInfo+termsNotice+earlyAccess:''),version);
     const {error}=await db.from('ta_enrollments').update({buyer_email_sent_at:new Date().toISOString()}).eq('stripe_checkout_session_id',s.id);
     if(error)throw error;
    }
@@ -174,13 +181,13 @@ Deno.serve(async req=>{
    if(!gift.buyer_email_sent_at){
     await sendMail('trenerki-buyer-'+s.id,email,'TRENERKI Academy — zakup karty podarunkowej',
      '<p>Kupiono kartę podarunkową na kurs <strong>'+title+'</strong>.</p>'+orderInfo+
-     '<p>Odbiorca: '+escape(gift.recipient_email)+'.</p><p><a href="'+giftLink+'">Link do karty podarunkowej</a></p>');
+     '<p>Odbiorca: '+escape(gift.recipient_email)+'.</p><p><a href="'+giftLink+'">Link do karty podarunkowej</a></p>'+termsNotice,version);
     const {error}=await db.from('ta_gift_cards').update({buyer_email_sent_at:new Date().toISOString()}).eq('id',giftId);
     if(error)throw error;
    }
    if(!gift.recipient_email_sent_at){
     await sendMail('trenerki-gift-'+s.id,gift.recipient_email,'TRENERKI Academy — masz prezent',
-     '<p>Otrzymujesz kurs <strong>'+title+'</strong>.</p><p>'+escape(gift.gift_message||'')+'</p><p><a href="'+giftLink+'">Odbierz prezent</a> po zalogowaniu na ten adres e-mail. Twój kod: '+code+'.</p>');
+     '<p>Otrzymujesz kurs <strong>'+title+'</strong>.</p><p>'+escape(gift.gift_message||'')+'</p><p><a href="'+giftLink+'">Odbierz prezent</a> po zalogowaniu na ten adres e-mail. Twój kod: '+code+'.</p>'+(newTerms?privacyNotice:''));
     const {error}=await db.from('ta_gift_cards').update({recipient_email_sent_at:new Date().toISOString()}).eq('id',giftId);
     if(error)throw error;
    }
@@ -198,8 +205,8 @@ Deno.serve(async req=>{
   if(order.status==='refunded'||await wasRefunded()||order.buyer_email_sent_at)return reply();
   await sendMail('trenerki-buyer-'+s.id,email,'TRENERKI Academy — potwierdzenie zakupu',
    '<p>Kupiono kurs <strong>'+title+'</strong> z dostępem na 12 miesięcy.</p>'+orderInfo+
-   '<p>Potwierdzamy Twoją zgodę na dostarczenie treści cyfrowych przed upływem 14 dni i przyjęcie do wiadomości utraty prawa odstąpienia po rozpoczęciu dostarczania.</p>'+
-   '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a> · <a href="'+site+'/academy/regulamin.html">Regulamin</a></p>');
+   (newTerms?earlyAccess+termsNotice:'<p>Potwierdzamy Twoją zgodę na dostarczenie treści cyfrowych przed upływem 14 dni i przyjęcie do wiadomości utraty prawa odstąpienia po rozpoczęciu dostarczania.</p>')+
+   '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a> · <a href="'+site+'/academy/regulamin.html">Regulamin</a></p>',version);
   const {error}=await db.from('ta_enrollments').update({buyer_email_sent_at:new Date().toISOString()}).eq('stripe_checkout_session_id',s.id);
   if(error)throw error;
   return reply();

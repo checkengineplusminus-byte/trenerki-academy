@@ -1,3 +1,5 @@
+import {privacyNotice} from '../_shared/recipient-privacy.ts';
+import {termsVersion} from '../_shared/order-confirmation.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const site='https://trenerki.com';
 const headers={'content-type':'application/json','access-control-allow-origin':'*','access-control-allow-headers':'authorization,apikey,content-type,x-client-info','access-control-allow-methods':'POST,OPTIONS','cache-control':'no-store'};
@@ -54,7 +56,7 @@ Deno.serve(async(req)=>{
      body:JSON.stringify({from,to:[recipient],subject:'TRENERKI Academy — karta podarunkowa '+pln,
       html:'<h2>Masz prezent!</h2><p>Otrzymujesz kartę TRENERKI Academy o wartości <strong>'+pln+'</strong>.</p>'+
        (msg?'<p>'+escape(msg)+'</p>':'')+'<p>Twój kod: <strong>'+code+'</strong></p><p><a href="'+link+'">Odbierz środki na swoje konto</a></p>'+
-       '<p>Po wykorzystaniu części środków pozostałe saldo pozostanie na Twoim koncie.</p>'}),
+       '<p>Po wykorzystaniu części środków pozostałe saldo pozostanie na Twoim koncie.</p>'+privacyNotice}),
      signal:AbortSignal.timeout(12000)});
     email_sent=sent.ok;
    }catch{email_sent=false}
@@ -87,6 +89,7 @@ Deno.serve(async(req)=>{
   if(!Number.isSafeInteger(amount)||amount<2500||amount>100000)return reply({error:'invalid_amount'},400);
   if(!mailValid(recipient))return reply({error:'invalid_recipient_email'},400);
   if(body?.accepted_terms!==true)return reply({error:'consent_required'},400);
+  if(body?.terms_version!==termsVersion)return reply({error:'quote_changed'},409);
   const secret=Deno.env.get('STRIPE_SECRET_KEY');
   if(!secret||!/^sk_live_/.test(secret)||Deno.env.get('TA_SALES_ENABLED')!=='true')return reply({error:'payments_not_ready'},503);
   if(!Deno.env.get('RESEND_API_KEY')||!Deno.env.get('RESEND_FROM_EMAIL'))return reply({error:'email_not_configured'},503);
@@ -95,7 +98,7 @@ Deno.serve(async(req)=>{
   if(saveErr){console.error('value_voucher_insert',saveErr.code);return reply({error:'voucher_not_ready'},503)}
   const price=(amount/100).toFixed(2);
   const params=new URLSearchParams({
-   mode:'payment',customer_email:email,client_reference_id:user.id,
+   mode:'payment',locale:'pl',submit_type:'pay',customer_email:email,client_reference_id:user.id,
    success_url:site+'/prezent?checkout=success',cancel_url:site+'/prezent',
    'line_items[0][price_data][currency]':'pln',
    'line_items[0][price_data][unit_amount]':String(amount),
@@ -104,7 +107,8 @@ Deno.serve(async(req)=>{
    'metadata[ta_credit_voucher_id]':id,
    'metadata[user_id]':user.id,
    'metadata[credit_amount_grosze]':String(amount),
-   'metadata[terms_version]':'2026-11-10'
+   'metadata[terms_version]':termsVersion,
+   'metadata[terms_accepted_at]':new Date().toISOString()
   });
   try{return reply({ok:true,...await checkout(secret,params)})}catch(e){console.error('value_voucher_checkout',e instanceof Error?e.message:'error');return reply({error:'stripe_unavailable'},502)}
  }
@@ -112,9 +116,13 @@ Deno.serve(async(req)=>{
   const slug=String(body?.course_slug||'');
   if(!courseValid(slug))return reply({error:'invalid_course'},400);
   if(body?.accepted_terms!==true||body?.immediate_content_consent!==true)return reply({error:'consent_required'},400);
-  const {data:reservation,error:rerr}=await db.rpc('ta_credit_begin_purchase',{p_user:user.id,p_course:slug});
+  if(body?.terms_version!==termsVersion||!Number.isSafeInteger(body?.expected_price_grosze)||!Number.isSafeInteger(body?.expected_credit_grosze))return reply({error:'quote_changed'},409);
+  if(!Deno.env.get('RESEND_API_KEY')||!Deno.env.get('RESEND_FROM_EMAIL'))return reply({error:'email_not_configured'},503);
+  const {data:reservation,error:rerr}=await db.rpc('ta_credit_confirm_purchase',{
+   p_user:user.id,p_course:slug,p_price:body.expected_price_grosze,p_credit:body.expected_credit_grosze,p_terms_version:termsVersion
+  });
   if(rerr){console.error('credit_purchase_prepare',rerr.code);return reply({error:'purchase_not_ready'},503)}
-  if(reservation?.error)return reply({error:reservation.error},reservation.error==='no_balance'?409:reservation.error==='purchase_in_progress'?409:400);
+  if(reservation?.error)return reply({error:reservation.error},['no_balance','purchase_in_progress','quote_changed'].includes(reservation.error)?409:400);
   if(reservation?.mode==='covered')return reply({ok:true,mode:'covered',balance_grosze:reservation.balance_grosze});
   if(reservation?.mode!=='split')return reply({error:'purchase_not_ready'},503);
   const secret=Deno.env.get('STRIPE_SECRET_KEY');
@@ -125,7 +133,7 @@ Deno.serve(async(req)=>{
   }
   const {data:course}=await db.from('ta_courses').select('title_pl').eq('slug',slug).single();
   const params=new URLSearchParams({
-   mode:'payment',customer_email:email,client_reference_id:user.id,
+   mode:'payment',locale:'pl',submit_type:'pay',customer_email:email,client_reference_id:user.id,
    success_url:site+'/moje-kursy?checkout=success',
    cancel_url:site+'/kup?course='+encodeURIComponent(slug),
    expires_at:String(Math.floor(Date.now()/1000)+45*60),
@@ -135,10 +143,12 @@ Deno.serve(async(req)=>{
    'line_items[0][quantity]':'1',
    'metadata[user_id]':user.id,
    'metadata[course_slug]':slug,
+   'metadata[course_title]':String(course?.title_pl||slug).slice(0,300),
    'metadata[unit_amount_grosze]':String(reservation.stripe_grosze),
    'metadata[course_price_grosze]':String(reservation.course_price_grosze),
    'metadata[ta_credit_hold_id]':hold,
-   'metadata[terms_version]':'2026-11-10',
+   'metadata[terms_version]':termsVersion,
+   'metadata[terms_accepted_at]':new Date().toISOString(),
    'metadata[immediate_content_consent]':'true'
   });
   try{

@@ -1,3 +1,4 @@
+import {privacyNotice} from '../_shared/recipient-privacy.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={
  'access-control-allow-origin':'*',
@@ -86,7 +87,7 @@ Deno.serve(async request=>{
     '<p>Załóż konto lub zaloguj się używając dokładnie tego adresu e-mail. W panelu wybierasz pracowników, przesyłasz im kursy i widzisz, które zostały odebrane.</p>';
    try{
     const res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{authorization:'Bearer '+api,'content-type':'application/json'},
-     body:JSON.stringify({from,to:[destination],subject:'TRENERKI Academy — panel firmy i '+slugs.length+' kursów',html}),
+     body:JSON.stringify({from,to:[destination],subject:'TRENERKI Academy — panel firmy i '+slugs.length+' kursów',html:html+privacyNotice}),
      signal:AbortSignal.timeout(12000)});
     emailSent=res.ok;
    }catch{emailSent=false}
@@ -117,7 +118,7 @@ Deno.serve(async request=>{
    const entries=gifts.map((gift,i)=>'<li style="padding:8px 0"><strong>'+esc((i+1)+'. '+gift.title_pl)+'</strong><br><a href="'+esc(gift.link)+'">'+esc(gift.link)+'</a></li>').join('');
    const html='<h2>Twoje kursy od TRENERKI Academy</h2><p>Otrzymujesz '+gifts.length+' bezpłatnych '+(gifts.length===1?'kurs':'kodów do kursów')+'. Każdy kod można wykorzystać jeden raz. '+(bind?'Te kody są przypisane do Twojego adresu e-mail.':'Możesz przekazać każdy link wybranemu pracownikowi lub znajomemu.')+'</p><ol>'+entries+'</ol><p>Po odebraniu kodu dostęp do nauki trwa 12 miesięcy. <a href="https://trenerki.com">TRENERKI Academy</a>.</p>';
    try{
-    const res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{authorization:'Bearer '+api,'content-type':'application/json'},body:JSON.stringify({from,to:[destination],subject:'TRENERKI Academy — '+gifts.length+' bezpłatnych kursów',html}),signal:AbortSignal.timeout(12000)});
+    const res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{authorization:'Bearer '+api,'content-type':'application/json'},body:JSON.stringify({from,to:[destination],subject:'TRENERKI Academy — '+gifts.length+' bezpłatnych kursów',html:html+privacyNotice}),signal:AbortSignal.timeout(12000)});
     emailSent=res.ok;if(!res.ok)emailError='email_provider_unavailable';
    }catch{emailError='email_provider_unavailable'}
   }else emailError='email_not_configured';

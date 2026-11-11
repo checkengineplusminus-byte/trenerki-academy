@@ -3,6 +3,7 @@ import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Shar
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
+import {coursePrice,termsVersion} from '../src/courseQuote';
 import {academyAction} from '../src/academyApi';
 const ink='#173d2c',pale='#e9f4dc';
 type Course={slug:string;title_pl:string;price_grosze:number;category_pl:string|null};
@@ -17,6 +18,13 @@ export default function GiftPage(){
  const [recipient,setRecipient]=useState(''),[message,setMessage]=useState(''),[code,setCode]=useState(linkCode),[item,setItem]=useState<Course|null>(null),
  [ready,setReady]=useState(false),[terms,setTerms]=useState(false),[busy,setBusy]=useState(false),
  [link,setLink]=useState(''),[notice,setNotice]=useState(''),[sent,setSent]=useState(false);
+ const [giftQuote,setGiftQuote]=useState<{slug:string;price:number}|null>(null);
+ async function loadGiftPrice(slug:string){
+  setGiftQuote(null);
+  try{setGiftQuote({slug,price:await coursePrice(slug)});}
+  catch(e:any){setNotice(e.message);}
+ }
+ useEffect(()=>{if(item?.price_grosze)void loadGiftPrice(item.slug);},[item?.slug]);
  useEffect(()=>{let mounted=true;void (async()=>{
   try{
    const {data:all,error}=await supabase.from('ta_courses').select('slug,title_pl,price_grosze,category_pl').eq('published',true).order('title_pl');
@@ -37,15 +45,16 @@ export default function GiftPage(){
   try{
    const {data:{user}}=await supabase.auth.getUser();
    if(!user?.email_confirmed_at){router.push({pathname:'/konto',params:{next:'valuegift'}});return;}
-   const amount=Number(valueAmount.replace(',','.'));
-   if(!Number.isFinite(amount)||amount<25||amount>1000||Math.round(amount*100)!==amount*100)
+   const inputAmount=valueAmount.trim();
+   const amount=Math.round(Number(inputAmount.replace(',','.'))*100);
+   if(!/^\d{1,4}([,.]\d{1,2})?$/.test(inputAmount)||amount<2500||amount>100000)
     throw new Error('Wpisz kwotę od 25 do 1000 zł (maksymalnie dwa miejsca po przecinku).');
    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valueRecipient.trim()))
     throw new Error('Wpisz poprawny e-mail odbiorcy.');
    if(!valueTerms)throw new Error('Przed zakupem zaakceptuj regulamin.');
    const {data,error}=await supabase.functions.invoke('ta-credit',{body:{
-    action:'create_voucher',amount_grosze:Math.round(amount*100),recipient_email:valueRecipient.trim(),
-    message:valueMessage.trim(),accepted_terms:true
+    action:'create_voucher',amount_grosze:amount,recipient_email:valueRecipient.trim(),
+    message:valueMessage.trim(),accepted_terms:true,terms_version:termsVersion
    }});
    if(error||!data?.ok||typeof data?.url!=='string'||!data.url.startsWith('https://checkout.stripe.com/'))
     throw new Error('Nie udało się utworzyć bezpiecznej płatności. Nie pobrano pieniędzy.');
@@ -61,12 +70,14 @@ export default function GiftPage(){
    if(!user){router.push({pathname:'/konto',params:{course:item.slug,next:'gift'}});return;}
    if(!user.email_confirmed_at)throw new Error('Potwierdź adres e-mail, aby kupić prezent.');
    if(item.price_grosze>0){
+    if(!giftQuote||giftQuote.slug!==item.slug)throw new Error('Sprawdź aktualną cenę przed zakupem.');
     const {data,error}=await supabase.functions.invoke('ta-create-checkout',{body:{
-     kind:'gift',course_slug:item.slug,recipient_email:recipient.trim(),message:message.trim(),accepted_terms:terms
+     kind:'gift',course_slug:item.slug,recipient_email:recipient.trim(),message:message.trim(),accepted_terms:terms,terms_version:termsVersion,expected_price_grosze:giftQuote.price
     }});
     if(error||typeof data?.url!=='string'||!data.url.startsWith('https://checkout.stripe.com/')){
      let reason='';
      try{reason=(await (error as any)?.context?.json())?.error||'';}catch{}
+     if(reason==='quote_changed'){await loadGiftPrice(item.slug);throw new Error('Cena się zmieniła. Sprawdź nową kwotę i potwierdź ponownie.');}
      const errors:Record<string,string>={
       invalid_recipient_email:'Wpisz poprawny e-mail obdarowanej osoby.',
       payments_not_configured:'Płatności za karty podarunkowe są jeszcze zablokowane w konfiguracji serwera. Administrator może sprawdzić szczegóły w panelu TRENERKI.',
@@ -172,11 +183,12 @@ export default function GiftPage(){
     <TextInput style={input} placeholder={item.price_grosze>0?'E-mail obdarowanej osoby':'E-mail obdarowanej osoby (opcjonalnie)'} value={recipient} onChangeText={setRecipient} autoCapitalize="none" keyboardType="email-address"/>
     <TextInput style={[input,{minHeight:86,textAlignVertical:'top'}]} multiline value={message} maxLength={300} onChangeText={setMessage} placeholder="Dodaj krótką dedykację (opcjonalnie)"/>
     {item.price_grosze>0&&<>
+     {giftQuote?.slug===item.slug?<Text style={{color:ink,fontWeight:'900'}}>Cena brutto {(giftQuote.price/100).toLocaleString('pl-PL')} zł</Text>:<Pressable onPress={()=>void loadGiftPrice(item.slug)}><Text style={{color:ink}}>Sprawdź aktualną cenę</Text></Pressable>}
      <Text style={{color:ink}}>Po potwierdzeniu płatności wyślemy prezent odbiorcy, a Tobie potwierdzenie zakupu. Odbiorca odbierze kurs na koncie z podanym adresem e-mail i dostanie dostęp na 12 miesięcy.</Text>
      <Pressable accessibilityRole="checkbox" accessibilityState={{checked:terms}} onPress={()=>setTerms(value=>!value)}><Text style={{color:ink}}>{terms?'☑':'☐'} Akceptuję regulamin i warunki zakupu karty.</Text></Pressable>
      <PurchaseLegalLinks/>
     </>}
-    <Pressable disabled={busy||(item.price_grosze>0&&(!terms||!recipient.trim()))} onPress={createGift} style={{backgroundColor:ink,borderRadius:12,padding:17,opacity:busy||(item.price_grosze>0&&(!terms||!recipient.trim()))?0.5:1}}>
+    <Pressable disabled={busy||(item.price_grosze>0&&(!terms||!recipient.trim()||giftQuote?.slug!==item.slug))} onPress={createGift} style={{backgroundColor:ink,borderRadius:12,padding:17,opacity:busy||(item.price_grosze>0&&(!terms||!recipient.trim()||giftQuote?.slug!==item.slug))?0.5:1}}>
      <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{busy?'Chwileczkę…':item.price_grosze===0?'Utwórz kartę podarunkową →':'Przejdź do płatności Stripe →'}</Text>
     </Pressable>
    </View>}
