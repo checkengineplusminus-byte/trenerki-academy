@@ -1,6 +1,5 @@
 import React,{useEffect,useState} from 'react';
 import {Platform,ScrollView,Text} from 'react-native';
-import Head from 'expo-router/head';
 import {supabase} from '../src/supabase';
 import {categories,defaults,dial,emergency,safeContact,type Contact} from '../src/support/directory';
 import {HelpLink,helpTitle} from '../src/support/links';
@@ -37,14 +36,12 @@ export default function SupportPage(){
  const sections=categories.filter(([id])=>id!=='alarm'&&(!filter||filter===id)).slice()
   .sort(([a],[b])=>(rows.find(x=>x.category===a)?.sort_order||0)-(rows.find(x=>x.category===b)?.sort_order||0));
  return <div className="support-page" lang="pl">
-  <Head>
    <title>{title}</title>
    <meta name="description" content={description}/>
    <meta property="og:title" content={title}/>
    <meta property="og:description" content={description}/>
    <link rel="canonical" href="https://trenerki.com/pomoc"/>
-   <link rel="stylesheet" href="/academy/support.css"/>
-  </Head>
+   <link rel="stylesheet" href="/academy/support.css" precedence="default"/>
   <a className="support-skip" href="#tresc">Przejdź do treści</a>
   <header className="support-header"><div className="support-wrap"><a href="/academy/index.html"><span aria-hidden="true">T.</span> TRENERKI Academy</a></div></header>
   <main className="support-wrap" id="tresc">

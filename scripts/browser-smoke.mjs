@@ -97,6 +97,9 @@ async function verify(name,viewport,isMobile){
   const support=await page.goto(root+'/pomoc',{waitUntil:'domcontentloaded'});
   assert.equal(support?.status(),200,'Public help route must render');
   await page.getByRole('heading',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).waitFor();
+  assert.equal(await page.title(),'Bezpłatna pomoc i telefony zaufania – Trenerki.com');
+  await page.waitForFunction(()=>getComputedStyle(document.querySelector('.support-grid')).display==='grid');
+  assert.equal(await page.locator('.support-grid').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),isMobile?1:2);
   await page.getByRole('button',{name:'Uzależnienia',exact:true}).focus();
   await page.keyboard.press('Enter');
   await page.waitForFunction(()=>document.querySelectorAll('.support-category').length===1&&document.querySelector('#uzaleznienia'));
