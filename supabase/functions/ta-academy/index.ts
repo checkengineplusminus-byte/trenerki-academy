@@ -69,9 +69,10 @@ Deno.serve(async request=>{
  if(action==='redeem_gift'){
   const code=cleanText(payload?.code,90).toUpperCase().replace(/\s/g,'');
   if(!/^TA-[0-9A-F]{32}$/.test(code))return reply({error:'invalid_gift_code'},400);
+  if(!user.email)return reply({error:'confirmed_login_required'},401);
   const hash=await codeHash(code);
-  const {data,error}=await db.rpc('ta_redeem_gift',{p_hash:hash,p_user:user.id});
-  if(error)return reply({error:'gift_redemption_failed'},500);
+  const {data,error}=await db.rpc('ta_redeem_gift',{p_hash:hash,p_user:user.id,p_verified_email:user.email});
+  if(error){console.error('course_gift_redemption_failed',error.code);return reply({error:'gift_redemption_failed'},500);}
   const codes={invalid_gift_code:404,gift_used_or_expired:409,gift_for_another_email:403,course_already_active:409};
   return reply(data,data.error?(codes[data.error]||400):200);
  }
