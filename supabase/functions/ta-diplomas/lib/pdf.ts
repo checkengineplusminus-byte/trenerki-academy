@@ -117,22 +117,21 @@ export async function buildDiplomaPdf(d:Diploma, language:DiplomaLanguage){
  t('NIP 5272961874',sealX,96,5.85,body,sealInk);
  t('KRS 0000907332',sealX,87.5,5.5,body,sealInk);
  t('REGON 389245852',sealX,79,5.35,body,sealInk);
- // Keep the handwritten signature above the rule and the printed name.
+ line(507,717,68,.6,gold);
+ t('Adrian Flaga',612,49,9,display,navy);
+ // Draw the ballpoint strokes last so the lower loop can touch the typeset name.
  const signatureStrokes=[
-  // A and a compressed, connected first name.
-  {weight:1.55,path:'M1 24 C9 26 14 16 20 7 C24 1 28 -1 30 2 C32 6 29 14 28 20 C27 25 31 25 37 19 C42 13 46 15 44 19 C42 24 36 25 36 21 C37 16 45 15 49 11 C54 6 54 2 51 3 C47 4 43 16 44 21 C45 25 50 22 55 17 C58 13 61 14 59 18 C62 16 65 16 67 17 C65 20 66 23 70 21 C74 19 77 15 81 15 C86 15 79 23 77 21 C75 19 81 16 85 17 C83 21 85 23 89 20 C93 17 97 14 100 16 C103 18 98 21 101 21 C104 21 107 19 109 18'},
-  {weight:.98,path:'M13 17 C19 14 25 15 34 14 C39 14 41 13 45 12'},
-  // F, a loose surname ligature and a rising exit stroke.
-  {weight:1.55,path:'M112 9 C125 2 141 -1 157 3 C162 4 162 6 158 7 M140 3 C137 10 133 17 128 24 C126 28 120 29 120 25 C120 23 123 21 128 21 C136 21 145 19 151 12 C157 5 156 2 152 5 C147 9 142 20 146 23 C150 26 158 18 164 16 C169 15 170 18 166 21 C161 25 158 23 160 20 C162 17 169 16 172 17 C170 20 169 23 174 21 C178 19 181 15 186 15 C191 15 188 21 184 22 C180 23 179 20 182 18 C185 16 189 16 191 17 C188 24 186 31 180 34 C176 36 173 33 177 29 C182 24 191 23 196 19 C202 15 204 17 201 20 C198 23 195 22 196 20 C198 17 204 16 207 17 C205 21 207 23 214 19 C220 15 222 14 228 14'},
-  {weight:.94,path:'M126 14 C133 11 142 12 149 11 M197 26 C207 25 219 21 233 21'},
+  {weight:1.12,path:'M0 26 C12 29 14 19 27 8 C35 1 42 -3 42 4 C43 10 33 22 34 26 C35 31 48 19 54 17 C60 15 56 22 52 24 C48 27 47 23 51 20 C54 17 61 14 64 8 C67 2 61 5 58 10 C53 19 58 28 63 24 C68 20 73 16 75 18 C78 19 70 26 75 25 C80 23 82 18 87 18 C92 18 84 25 89 24 C95 22 97 17 102 18 C106 19 102 24 108 22 C112 21 116 18 121 17'},
+  {weight:.66,path:'M14 21 C22 17 32 17 44 15 C49 14 52 13 55 12'},
+  {weight:1.17,path:'M115 13 C128 5 148 -1 166 2 C178 4 171 8 166 8 M149 3 C145 10 141 21 134 29 C130 34 123 33 124 29 C125 24 141 24 151 18 C158 14 166 5 163 3 C159 1 151 11 152 19 C152 28 163 26 171 19 C176 14 181 15 178 20 C174 26 169 27 172 21 C176 16 184 17 185 19 C184 23 179 25 185 25 C190 25 196 18 201 18 C205 19 200 25 205 23 C210 21 214 16 220 17 C225 18 227 17 232 14'},
+  {weight:.82,path:'M134 16 C140 12 150 13 159 11 M193 22 C189 31 176 42 155 50 C143 55 129 58 115 57 C107 56 111 52 124 50 C143 45 163 43 183 39 C203 35 215 31 227 26'},
+  {weight:.53,path:'M48 25 C51 25 55 22 57 21 M181 40 C192 38 202 36 211 32'},
  ];
  page.pushOperators(pushGraphicsState(),setLineJoin(LineJoinStyle.Round));
  for(const stroke of signatureStrokes){
-  page.drawSvgPath(stroke.path,{x:523,y:100,scale:.79,borderColor:blueInk,borderWidth:stroke.weight,borderLineCap:LineCapStyle.Round});
+  page.drawSvgPath(stroke.path,{x:523,y:99,scale:.79,borderColor:blueInk,borderWidth:stroke.weight,borderLineCap:LineCapStyle.Round});
  }
  page.pushOperators(popGraphicsState());
- line(507,717,68,.6,gold);
- t('Adrian Flaga',612,49,9,display,navy);
  // Deliberately half the usual 12-pt caption size.
  t(terms.founder,612,37,6,body,muted);
  if(d.is_demo){
