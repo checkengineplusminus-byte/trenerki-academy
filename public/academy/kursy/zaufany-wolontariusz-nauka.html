@@ -1375,6 +1375,7 @@ fieldset{padding:.85rem .95rem;border:1px solid var(--line);border-radius:.55rem
       exam.querySelector('input').focus();
     });
   }
+  const storedNotes = read('-notes', {});
   const notes = storedNotes && typeof storedNotes === 'object' && !Array.isArray(storedNotes) ? storedNotes : {};
   for (const area of document.querySelectorAll('[data-note]')) {
     area.value = notes[area.id] || '';
