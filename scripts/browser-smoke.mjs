@@ -56,6 +56,18 @@ async function verify(name,viewport,isMobile){
  try{
   const r=await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded',timeout:30000});
   assert(r&&r.status()===200,'Academy HTML route failed');
+  await page.waitForFunction(()=>{
+   const card=document.getElementById('hero-course-spotlight');
+   const img=card?.querySelector('.spotlight-photo');
+   if(!card||!img)return false;
+   const slug=card.getAttribute('href')?.match(/\\/academy\\/kursy\\/([a-z0-9-]+)\\.html$/)?.[1];
+   return !!slug&&img.getAttribute('src')==='/academy/photos/'+slug+'.webp'&&img.complete&&img.naturalWidth>0;
+  },null,{timeout:15000});
+  assert(await page.locator('#hero-course-spotlight').evaluate(card=>{
+   const title=card.querySelector('.spotlight-title')?.getBoundingClientRect();
+   const photo=card.querySelector('.spotlight-illustration')?.getBoundingClientRect();
+   return title&&photo&&(title.right<=photo.left+3||title.bottom<=photo.top||title.top>=photo.bottom);
+  }),'The rotating course photo must not overlap its title');
   const field=page.locator('#anielka-question');
   const help=page.locator('header .nav-help');
   assert.equal(await help.getAttribute('href'),'/pomoc');
