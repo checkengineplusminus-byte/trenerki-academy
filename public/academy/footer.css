@@ -280,6 +280,7 @@
 @media (prefers-reduced-motion: reduce) {
   .developer-credit .terminal-cursor {
     animation: none;
+    opacity: 1 !important;
   }
 
   .academy-footer__links a,
