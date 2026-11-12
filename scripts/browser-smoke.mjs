@@ -57,6 +57,9 @@ async function verify(name,viewport,isMobile){
   const staff=footer.getByRole('link',{name:'Panel personelu',exact:true});
   assert.equal(await staff.getAttribute('href'),'/admin');
   assert.equal((await staff.innerText()).trim(),'','Staff access should be visible only as an icon');
+  assert(await staff.locator('.academy-footer__gear').evaluate(el=>
+   el.getBoundingClientRect().width===14&&getComputedStyle(el).clipPath.startsWith('polygon')),
+   'Staff access icon must render at its intended size');
   const credit=footer.locator('.developer-credit');
   assert.match(await credit.innerText(),/Website created by\s+www\.adrianflaga\.com/);
   assert.equal(await credit.getByRole('link',{name:'www.adrianflaga.com',exact:true}).getAttribute('href'),'https://www.adrianflaga.com/');
