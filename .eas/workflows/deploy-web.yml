@@ -25,3 +25,5 @@ jobs:
           run: node --experimental-default-type=module --test scripts/test-accounting-reader.mjs
         - name: Sprawdz dane stron i historie identyfikatorow
           run: node --experimental-default-type=module --test scripts/test-accounting-identities.mjs
+        - name: Sprawdz wejscie i postep encyklopedii
+          run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
