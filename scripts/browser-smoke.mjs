@@ -62,7 +62,7 @@ async function verify(name,viewport,isMobile){
    if(!card||!img)return false;
    const href=card.getAttribute('href')||'';
    const slug=href.startsWith('/academy/kursy/')&&href.endsWith('.html')?href.split('/').pop().slice(0,-5):'';
-   return !!slug&&img.getAttribute('src')==='/academy/photos/'+slug+'.webp'&&img.complete&&img.naturalWidth>0;
+   return !!slug&&img.dataset.courseId===slug&&img.getAttribute('src')?.startsWith('/academy/photos/')&&img.complete&&img.naturalWidth>0;
   },null,{timeout:15000});
   assert(await page.locator('#hero-course-spotlight').evaluate(card=>{
    const title=card.querySelector('.spotlight-title')?.getBoundingClientRect();
