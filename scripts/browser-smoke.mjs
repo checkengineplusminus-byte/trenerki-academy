@@ -46,6 +46,40 @@ async function verify(name,viewport,isMobile){
     helpBounds.y<bounds.y+bounds.height&&helpBounds.y+helpBounds.height>bounds.y;
    assert(!overlap,'Help link overlaps a neighboring control');
   }
+  const footer=page.locator('footer.academy-footer');
+  await footer.waitFor({state:'visible'});
+  const footerHelp=footer.locator('.academy-footer__help');
+  assert.equal(await footerHelp.getAttribute('href'),'/pomoc');
+  await footer.getByRole('link',{name:'Kontakt i reklamacje',exact:true}).waitFor({state:'visible'});
+  await footer.getByRole('link',{name:'Regulamin',exact:true}).waitFor({state:'visible'});
+  await footer.getByRole('link',{name:'Polityka prywatności',exact:true}).waitFor({state:'visible'});
+  assert.match(await footer.innerText(),/NIP 5272961874/,'Company registration details must be visible');
+  const readHeart=locator=>locator.evaluate(el=>({
+   heart:getComputedStyle(el,'::before').animationName,
+   halo:getComputedStyle(el,'::after').animationName,
+   copyDecoration:getComputedStyle(el.closest('a')).textDecorationLine,
+  }));
+  const headerHeart=help.locator('.nav-help-heart');
+  assert.equal((await readHeart(headerHeart)).heart,'none','The support heart should be calm at rest');
+  if(!isMobile){
+   await help.hover();
+   assert.equal((await readHeart(headerHeart)).heart,'academy-heartbeat');
+   assert.equal((await readHeart(headerHeart)).halo,'academy-heart-halo');
+   assert.equal(await help.locator('.nav-help-copy').evaluate(el=>getComputedStyle(el).textDecorationLine),'none');
+   await account.focus();
+   await page.keyboard.press('Shift+Tab');
+   assert(await help.evaluate(el=>el.matches(':focus-visible')),'Keyboard navigation must visibly focus the support link');
+   await page.emulateMedia({reducedMotion:'reduce'});
+   assert.deepEqual(await readHeart(headerHeart),{heart:'none',halo:'none',copyDecoration:'none'});
+   await page.emulateMedia({reducedMotion:'no-preference'});
+   await footerHelp.hover();
+   const footerHeart=footerHelp.locator('.support-heart');
+   assert.equal((await readHeart(footerHeart)).heart,'academy-heartbeat');
+   assert.equal((await readHeart(footerHeart)).copyDecoration,'none');
+  }
+  const footerWidth=await footer.evaluate(el=>({scroll:el.scrollWidth,client:el.clientWidth}));
+  assert(footerWidth.scroll<=footerWidth.client+2,'Footer overflows: '+JSON.stringify(footerWidth));
+  await footer.screenshot({path:'/tmp/trenerki-'+name+'-footer.png'});
   await field.waitFor({state:'visible'});
   const prices=await page.evaluate(()=>COURSES.map(c=>({slug:c.id,price:c.price})));
   assert.equal(prices.length,81,'Public catalogue should contain all courses');
@@ -125,6 +159,15 @@ async function verify(name,viewport,isMobile){
   assert.equal(support?.status(),200,'Public help route must render');
   await page.getByRole('heading',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).waitFor();
   assert.equal(await page.title(),'Bezpłatna pomoc i telefony zaufania – Trenerki.com');
+  const appHelp=page.locator('footer.ta-app-footer .ta-app-footer-help');
+  await appHelp.waitFor({state:'visible'});
+  assert.equal(await appHelp.getAttribute('href'),'/pomoc');
+  await page.waitForFunction(()=>getComputedStyle(document.querySelector('.ta-app-footer-help')).display==='inline-flex');
+  if(!isMobile){
+   await appHelp.hover();
+   assert.equal(await appHelp.locator('.ta-app-footer-heart-fill').evaluate(el=>getComputedStyle(el).animationName),'ta-app-heart-beat');
+   assert.equal(await appHelp.evaluate(el=>getComputedStyle(el).textDecorationLine),'none');
+  }
   await page.waitForFunction(()=>getComputedStyle(document.querySelector('.support-grid')).display==='grid');
   assert.equal(await page.locator('.support-grid').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),isMobile?1:2);
   await page.getByRole('button',{name:'Uzależnienia',exact:true}).focus();

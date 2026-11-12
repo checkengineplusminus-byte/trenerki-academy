@@ -15,6 +15,8 @@ function required(relative){
 const academy=required('academy/index.html');
 required('academy/anielka-search.js');
 required('academy/anielka-search.css');
+required('academy/footer.css');
+required('academy/app-footer.css');
 const catalog=JSON.parse(academy.split('const COURSES=')[1].split('];')[0]+']');
 assert.equal(catalog.length,81,'Expected 81 exported courses');
 assert(academy.includes('class="course-icon-art"'),'Catalog does not render topic-specific icons');

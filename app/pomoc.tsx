@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {Platform,ScrollView,Text} from 'react-native';
 import {supabase} from '../src/supabase';
 import {categories,defaults,dial,emergency,safeContact,type Contact} from '../src/support/directory';
-import {HelpLink,helpTitle} from '../src/support/links';
+import {HelpFooter,HelpLink,helpTitle} from '../src/support/links';
 
 const title='Bezpłatna pomoc i telefony zaufania – Trenerki.com';
 const description='Zweryfikowane bezpłatne telefony zaufania w Polsce, wsparcie w kryzysie psychicznym, pomoc dla dzieci i rodzin oraz poradnictwo prawne i obywatelskie.';
@@ -83,6 +83,6 @@ export default function SupportPage(){
     </div>
    </section>
   </main>
-  <footer className="support-bottom"><div className="support-wrap"><a href="/pomoc">{helpTitle}<small>Bezpłatne telefony zaufania i profesjonalne wsparcie</small></a><a href="/academy/kontakt.html">Kontakt</a><a href="/academy/regulamin.html">Regulamin</a><a href="/academy/prywatnosc.html">Polityka prywatności</a></div></footer>
+  <HelpFooter/>
  </div>;
 }

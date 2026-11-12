@@ -1,7 +1,150 @@
-.footer-help{display:flex;flex-direction:column;align-items:flex-start;gap:.12rem;background:#edf5e9;color:#17392a;border:1px solid #d5e5d3;border-radius:.7rem;padding:.65rem .9rem;margin:.8rem auto 0;width:fit-content;max-width:calc(100% - 1rem);line-height:1.45;text-align:left}
-.footer-help a{color:#17392a;font-weight:800;text-decoration:underline;text-underline-offset:3px;min-height:32px;display:inline-flex;align-items:center}
-.footer-help small{color:#365440}
-.footer-help a:focus-visible{outline:3px solid #14583a;outline-offset:3px}
+.nav-help-heart,
+.support-heart {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  pointer-events: none;
+}
+
+.nav-help-heart::before,
+.support-heart::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  content: "♥";
+  color: transparent;
+  font: 19px/1 system-ui, sans-serif;
+  -webkit-text-stroke: 1px var(--support-heart-accent, #ad536c);
+  transition: color .18s ease;
+}
+
+.nav-help-heart::after,
+.support-heart::after,
+.footer-help a::before {
+  position: absolute;
+  content: "";
+  border: 1px solid var(--support-heart-accent, #ad536c);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-help-heart::after,
+.support-heart::after {
+  inset: 2px;
+}
+
+.nav-help:is(:hover, :focus-visible) .nav-help-heart::before,
+.academy-footer__help:is(:hover, :focus-visible) .support-heart::before {
+  color: var(--support-heart-accent, #ad536c);
+  animation: academy-heartbeat 1.5s ease-in-out infinite;
+}
+
+.nav-help:is(:hover, :focus-visible) .nav-help-heart::after,
+.academy-footer__help:is(:hover, :focus-visible) .support-heart::after,
+.footer-help a:is(:hover, :focus-visible)::before {
+  animation: academy-heart-halo 1.5s ease-out infinite;
+}
+
+@keyframes academy-heartbeat {
+  0%, 100% { transform: scale(1); }
+  17% { transform: scale(1.25); }
+  32% { transform: scale(1.03); }
+  48% { transform: scale(1.13); }
+  64% { transform: scale(1); }
+}
+
+@keyframes academy-heart-halo {
+  0% { transform: scale(.8); opacity: .72; }
+  75%, 100% { transform: scale(1.65); opacity: 0; }
+}
+
+.footer-help {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .12rem;
+  width: fit-content;
+  max-width: calc(100% - 1rem);
+  margin: .8rem auto 0;
+  padding: .65rem .9rem;
+  color: #17392a;
+  background: #edf5e9;
+  border: 1px solid #d5e5d3;
+  border-radius: .7rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.footer-help a {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  min-height: 32px;
+  color: #17392a;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.footer-help a::before {
+  width: 21px;
+  height: 21px;
+  inset-inline-start: -3px;
+  top: calc(50% - 11px);
+}
+
+.footer-help small {
+  color: #365440;
+}
+
+.footer-help a:focus-visible {
+  outline: 3px solid #14583a;
+  outline-offset: 3px;
+  border-radius: .3rem;
+}
+
+@media (hover: none) {
+  .nav-help-heart::before,
+  .support-heart::before {
+    color: var(--support-heart-accent, #ad536c);
+  }
+
+  .nav-help:hover:not(:focus-visible) .nav-help-heart::before,
+  .nav-help:hover:not(:focus-visible) .nav-help-heart::after,
+  .academy-footer__help:hover:not(:focus-visible) .support-heart::before,
+  .academy-footer__help:hover:not(:focus-visible) .support-heart::after,
+  .footer-help a:hover:not(:focus-visible)::before {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-help-heart::before,
+  .support-heart::before {
+    transition: none;
+  }
+
+  .nav-help:is(:hover, :focus-visible) .nav-help-heart::before,
+  .nav-help:is(:hover, :focus-visible) .nav-help-heart::after,
+  .academy-footer__help:is(:hover, :focus-visible) .support-heart::before,
+  .academy-footer__help:is(:hover, :focus-visible) .support-heart::after,
+  .footer-help a:is(:hover, :focus-visible)::before {
+    animation: none;
+  }
+
+  .nav-help:is(:hover, :focus-visible) .nav-help-heart::after,
+  .academy-footer__help:is(:hover, :focus-visible) .support-heart::after,
+  .footer-help a:is(:hover, :focus-visible)::before {
+    opacity: .45;
+  }
+}
+
 .anielka-support-links{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin-top:.65rem}
 .anielka-support-links a,.anielka-support-links button{min-height:44px;display:inline-flex;align-items:center;padding:.45rem .7rem;border-radius:.45rem;border:1px solid #92a991;background:#fff;color:#17392a;font-weight:750;text-decoration:underline;text-underline-offset:3px}
 .anielka-support-links a[href="tel:112"]{background:#702c23;color:white;border-color:#702c23}

@@ -1,29 +1,77 @@
 import React from 'react';
-import {Linking,Platform,Pressable,Text,View} from 'react-native';
+import {Linking,Platform,Pressable,StyleSheet,Text,View} from 'react-native';
 
 export const helpTitle='Potrzebujesz pomocy? Nie jesteś sam';
 export const helpDescription='Bezpłatne telefony zaufania i profesjonalne wsparcie';
 const ink='#17392a';
+const footerLinks=[
+ {label:'Kontakt',href:'/academy/kontakt.html'},
+ {label:'Regulamin',href:'/academy/regulamin.html'},
+ {label:'Prywatność',href:'/academy/prywatnosc.html'},
+];
+
+function openSupportLink(href:string){
+ void Linking.openURL(href.startsWith('/')?'https://trenerki.com'+href:href);
+}
 
 export function HelpLink({children,href='/pomoc'}:{children:React.ReactNode;href?:string}){
  return Platform.OS==='web'
   ? <a href={href} style={{color:ink,fontWeight:700,textDecoration:'underline',textUnderlineOffset:3}}>{children}</a>
-  : <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL(href.startsWith('/')?'https://trenerki.com'+href:href)}>
+  : <Pressable accessibilityRole="link" onPress={()=>openSupportLink(href)}>
      <Text style={{color:ink,fontWeight:'800',textDecorationLine:'underline'}}>{children}</Text>
     </Pressable>;
 }
 export function HelpFooter(){
- return <View role="contentinfo" style={{backgroundColor:'#edf5e9',borderTopWidth:1,borderColor:'#d3e4d0',paddingHorizontal:16,paddingVertical:9}}>
-  <View style={{width:'100%',maxWidth:1000,alignSelf:'center',flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',columnGap:20,rowGap:5}}>
-   <View><HelpLink>❤️ {helpTitle}</HelpLink><Text style={{color:'#385743',fontSize:12}}>{helpDescription}</Text></View>
-   <View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>
-    <HelpLink href="/academy/kontakt.html">Kontakt</HelpLink>
-    <HelpLink href="/academy/regulamin.html">Regulamin</HelpLink>
-    <HelpLink href="/academy/prywatnosc.html">Prywatność</HelpLink>
+ if(Platform.OS==='web')return <footer className="ta-app-footer">
+  <link rel="stylesheet" href="/academy/app-footer.css" precedence="default"/>
+  <div className="ta-app-footer-inner">
+   <a className="ta-app-footer-help" href="/pomoc" aria-label={helpTitle} aria-describedby="ta-app-footer-help-description">
+    <span className="ta-app-footer-heart" aria-hidden="true">
+     <span className="ta-app-footer-heart-outline">♡</span>
+     <span className="ta-app-footer-heart-fill">♥</span>
+    </span>
+    <span className="ta-app-footer-help-copy">
+     <strong>Nie jesteś sam</strong>
+     <span id="ta-app-footer-help-description">{helpDescription}</span>
+    </span>
+   </a>
+   <nav className="ta-app-footer-links" aria-label="Informacje i kontakt">
+    {footerLinks.map(({href,label})=><a href={href} key={href}>{label}</a>)}
+   </nav>
+  </div>
+ </footer>;
+ return <View role="contentinfo" style={footerStyles.root}>
+  <View style={footerStyles.inner}>
+   <Pressable accessibilityRole="link" accessibilityLabel={helpTitle} accessibilityHint={helpDescription}
+    onPress={()=>openSupportLink('/pomoc')} style={({pressed})=>[footerStyles.help,pressed&&footerStyles.pressed]}>
+    <View accessible={false} style={footerStyles.heart}><Text style={footerStyles.heartText}>♡</Text></View>
+    <View style={footerStyles.copy}>
+     <Text style={footerStyles.title}>Nie jesteś sam</Text>
+     <Text style={footerStyles.description}>{helpDescription}</Text>
+    </View>
+   </Pressable>
+   <View style={footerStyles.links}>
+    {footerLinks.map(({href,label})=><Pressable key={href} accessibilityRole="link" onPress={()=>openSupportLink(href)}
+     style={({pressed})=>[footerStyles.link,pressed&&footerStyles.pressed]}><Text style={footerStyles.linkText}>{label}</Text></Pressable>)}
    </View>
   </View>
  </View>;
 }
+
+const footerStyles=StyleSheet.create({
+ root:{backgroundColor:'#102820',borderTopWidth:1,borderColor:'#2c463b',paddingHorizontal:16,paddingVertical:10},
+ inner:{width:'100%',maxWidth:1100,alignSelf:'center',flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',columnGap:20,rowGap:4},
+ help:{maxWidth:'100%',minHeight:48,flexDirection:'row',alignItems:'center',gap:10,padding:8,paddingRight:13,borderRadius:14,borderWidth:1,borderColor:'#355448',backgroundColor:'#18372d'},
+ heart:{width:34,height:34,borderRadius:17,justifyContent:'center',alignItems:'center',backgroundColor:'#2d4237'},
+ heartText:{fontSize:23,color:'#e9a6b0',lineHeight:27},
+ copy:{flexShrink:1},
+ title:{color:'#f1ede0',fontSize:14,fontWeight:'700'},
+ description:{color:'#b7c8bd',fontSize:12,marginTop:2},
+ links:{flexDirection:'row',flexWrap:'wrap',gap:6},
+ link:{minHeight:44,justifyContent:'center',paddingHorizontal:8},
+ linkText:{color:'#f1ede0',fontSize:13,fontWeight:'700'},
+ pressed:{opacity:.76},
+});
 
 const courses:Record<string,string>={
  'partner-z-uzaleznieniem':'uzaleznienia','wyjdz-z-toksycznego-zwiazku':'przemoc',

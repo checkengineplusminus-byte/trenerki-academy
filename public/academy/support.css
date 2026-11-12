@@ -32,8 +32,4 @@
 .support-call{background:#1c4835;color:white}
 .support-emergency .support-call{background:#702c23;color:white}
 .support-visit{border:1px solid #8fae96;color:#173d2c;background:#f7faf5}
-.support-bottom{border-top:1px solid #dce8da;background:#fff;padding:1rem 0}
-.support-bottom .support-wrap{display:flex;flex-wrap:wrap;gap:.65rem 1.4rem}
-.support-bottom a{color:#173d2c;text-underline-offset:3px}
 @media(max-width:680px){.support-grid{grid-template-columns:1fr}}
-.support-bottom small{display:block;color:#3d594a}
