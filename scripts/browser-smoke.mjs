@@ -5,6 +5,43 @@ import assert from 'node:assert/strict';
 const root=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
 const browser=await chromium.launch({headless:true});
 let problems=[];
+
+async function verifyAllCataloguePhotos(ctx,expectedSlugs){
+ const page=await ctx.newPage();
+ try{
+  await page.route('**/rest/v1/**',route=>route.fulfill({status:503,contentType:'application/json',body:'[]'}));
+  await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded'});
+  const categories=page.locator('.category-tiles .category-tile');
+  await categories.first().waitFor();
+  const seen=[];
+  for(const tile of await categories.all()){
+   const category=await tile.getAttribute('data-course-category');
+   await tile.click();
+   const cards=page.locator('#course-cards .course-card');
+   assert(await cards.count()>0,category+': category cards must be present');
+   const images=cards.locator('.card-photo');
+   await images.first().waitFor();
+   await images.evaluateAll(nodes=>nodes.forEach(img=>{img.loading='eager';}));
+   await page.waitForFunction(()=>{
+    const courseCards=[...document.querySelectorAll('#course-cards .course-card')];
+    return courseCards.length>0&&courseCards.every(card=>{
+     const img=card.querySelector('.has-course-photo .card-photo');
+     return img?.complete&&img.naturalWidth>0;
+    });
+   },null,{timeout:10000});
+   for(const {slug,file,width,height} of await images.evaluateAll(nodes=>nodes.map(img=>({
+    slug:img.closest('.course-card').dataset.courseId,file:new URL(img.currentSrc).pathname,
+    width:img.naturalWidth,height:img.naturalHeight,
+   })))){
+    assert.equal(file,'/academy/photos/'+slug+'.webp',slug+': course card photo path');
+    assert.equal(width*9,height*16,slug+': course card photo ratio');
+    seen.push(slug);
+   }
+  }
+  assert.deepEqual(seen.sort(),expectedSlugs.slice().sort(),'Every published course card must load its own photo');
+ }finally{await page.close();}
+}
+
 async function verify(name,viewport,isMobile){
  const ctx=await browser.newContext({viewport,isMobile,deviceScaleFactor:1,hasTouch:isMobile});
  const page=await ctx.newPage();
@@ -120,6 +157,15 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('.category-tiles .category-tile').count(),6,'Six clickable category cards must appear on homepage');
   assert.equal(await page.locator('#course-cards .course-card').count(),12,'Homepage should show twelve featured courses');
   assert.equal(await page.locator('#course-cards .course-card .card-title').first().innerText(),'Zaufany wolontariusz');
+  const firstMedia=page.locator('#course-cards .card-media').first();
+  await firstMedia.scrollIntoViewIfNeeded();
+  const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="zaufany-wolontariusz"]');
+  await firstPhoto.waitFor({state:'visible',timeout:7000});
+  assert(await firstPhoto.evaluate(img=>
+   img.naturalWidth>0&&img.naturalWidth*9===img.naturalHeight*16&&
+   img.getAttribute('alt')===''&&img.loading==='lazy'&&getComputedStyle(img).opacity==='1'),
+   'The featured course photo must render in 16:9 without duplicating the heading for assistive technology');
+  assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'rodzina-i-rozwoj');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
   assert.doesNotMatch(await page.locator('.hero').innerText(),/\b\d+\s+lekcj\w*/i,'Hero should omit lesson counts');
   assert.equal(await page.locator('.catalog-more').count(),0,'No more-courses buttons');
@@ -133,18 +179,21 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');
   assert.equal(await page.locator('#anielka-question').count(),1,'Search field must be unique');
+  await page.route('**/academy/photos/excel-skroty.webp',route=>route.fulfill({status:404,body:''}));
   await field.fill('Chcę używać Excela do kosztorysów w pracy');
   await page.locator('#anielka-peek [data-anielka-course="excel-skroty"]').waitFor({timeout:7000});
   const count=await page.locator('#course-cards .course-card').count();
   assert(count>=1&&count<prices.length,'Course recommendations must actually filter the catalog');
   await field.press('Enter');
   await page.waitForFunction(()=>document.querySelector('#anielka-output')?.textContent?.includes('Ponieważ chcesz używać Excela'),{timeout:9000});
-  const icon=page.locator('#course-cards .course-icon-art').first();
-  assert(await icon.count(),'Course icon missing');
+  const excelCard=page.locator('#course-cards [data-course-id="excel-skroty"]');
+  await excelCard.locator('.card-media').scrollIntoViewIfNeeded();
+  const icon=excelCard.locator('.course-icon-art');
+  await icon.waitFor({state:'visible',timeout:7000});
   const usable=await icon.evaluate(node=>{
    try{const b=node.getBBox();return b.width>0&&b.height>0;}catch{return false;}
   });
-  assert(usable,'SVG course icon is not rendered');
+  assert(usable,'Missing photo must show its course-specific SVG fallback');
   const width=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(width.scroll<=width.client+3,'Horizontal overflow: '+JSON.stringify(width));
   await page.locator('#anielka-output [data-anielka-course="excel-skroty"]').first().click();
@@ -212,6 +261,7 @@ async function verify(name,viewport,isMobile){
   assert(supportWidth.scroll<=supportWidth.client+3,'Public help page horizontal overflow');
   await page.screenshot({path:'/tmp/trenerki-'+name+'.png',fullPage:false});
   assert.equal(errors.length,0,'Browser JS errors: '+errors.join(' | '));
+  if(!isMobile)await verifyAllCataloguePhotos(ctx,prices.map(course=>course.slug));
   console.log('✓ '+name+': Anielka searches from home AND course detail, opens both courses, no JS errors or overflow');
  }catch(error){
   await page.screenshot({path:'/tmp/trenerki-'+name+'-error.png',fullPage:true}).catch(()=>{});

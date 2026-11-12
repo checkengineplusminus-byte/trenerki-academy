@@ -2,6 +2,7 @@
 // Verify the actual Expo export contains the Academy, all five icon sprites,
 // and the interactive assets referenced from the catalog. Run AFTER expo export.
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFileSync, existsSync} from 'node:fs';
 import {resolve, join} from 'node:path';
 const root=resolve(process.argv[2]||'dist');
@@ -19,7 +20,22 @@ required('academy/footer.css');
 required('academy/app-footer.css');
 const catalog=JSON.parse(academy.split('const COURSES=')[1].split('];')[0]+']');
 assert.equal(catalog.length,81,'Expected 81 exported courses');
-assert(academy.includes('class="course-icon-art"'),'Catalog does not render topic-specific icons');
+assert(academy.includes('class="course-icon-art"'),'Catalog does not preserve topic-specific fallback icons');
+const photoManifest=JSON.parse(required('academy/course-photo-manifest.json'));
+assert.equal(photoManifest.version,1,'Unsupported course photo manifest version');
+assert.deepEqual(Object.keys(photoManifest.courses).sort(),catalog.map(course=>course.id).sort(),'Photo manifest must match the exported catalog');
+const photoDigests=new Set();
+for(const course of catalog){
+ const photo=photoManifest.courses[course.id];
+ assert.equal(photo.file,course.id+'.webp','Unexpected photo filename for '+course.id);
+ assert.equal(photo.iconBundle,course.iconBundle,'Incorrect fallback icon bundle for '+course.id);
+ assert(typeof photo.alt==='string'&&photo.alt.trim(),'Missing photo description for '+course.id);
+ const image=readFileSync(join(root,'academy/photos',photo.file));
+ assert(image.length>100&&image.toString('ascii',0,4)==='RIFF'&&image.toString('ascii',8,12)==='WEBP','Invalid WebP photo for '+course.id);
+ const digest=createHash('sha256').update(image).digest('hex');
+ assert(!photoDigests.has(digest),'The same photo is used on more than one course: '+course.id);
+ photoDigests.add(digest);
+}
 assert(!academy.includes('<span class="card-emoji" role="img"'),'Obsolete emoji icons are still in use');
 for(let i=1;i<=5;i++){
  const sprite=required('academy/course-icons-'+i+'.svg');
@@ -39,5 +55,5 @@ assert(volunteerLegacy.includes('/materialy-wolontariusza'),'Legacy material URL
 assert(volunteerLegacy.length<4000&&!/<fieldset|data-answer|data-view|<textarea/.test(volunteerLegacy),
  'Private volunteer lessons and answers must not be shipped as public HTML');
 console.log('✓ Expo export includes the academy catalog, search assets and course visuals');
-console.log('✓ All '+catalog.length+' referenced course icons are shipped in the exported site');
+console.log('✓ All '+photoDigests.size+' distinct course photos and their SVG fallbacks are shipped in the exported site');
 console.log('✓ Reference illustrations for wooden wheel and timber roof included');

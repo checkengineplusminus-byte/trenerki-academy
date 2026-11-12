@@ -10,6 +10,47 @@ const user={id:'00000000-0000-4000-a000-000000000001',email:'learner@example.tes
 const quiz={situation:'Próba na danych ćwiczebnych.',example:'Sprawdź wynik na dwóch danych.',question:'Jak zaczynasz?',options:['Sprawdzam dane','Pomijam dane','Zamykam okno'],correct:0,explanation:'Dane wpływają na wynik.'};
 const shortcuts=['L','PL','C'].map((combo,i)=>({combo,keys:[combo,'Enter'],kind:'alias',label:['Linia','Polilinia','Okrąg'][i],before:'Sprawdź wiersz poleceń.',after:'Przygotuj punkty figury '+combo+'.',tip:'Potwierdź Enterem.',platform:'AutoCAD Windows'}));
 const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const photos=JSON.parse(readFileSync(new URL('../public/academy/course-photo-manifest.json',import.meta.url),'utf8')).courses;
+
+async function serveExportedRoutes(page,routes){
+ await page.route(url=>url.origin===origin&&routes.includes(url.pathname),async route=>{
+  const response=await route.fetch({url:origin+new URL(route.request().url()).pathname+'.html'});
+  await route.fulfill({response});
+ });
+}
+
+async function verifyAnonymousCourse(ctx){
+ const page=await ctx.newPage();
+ const courseRequests=[];
+ try{
+  await serveExportedRoutes(page,['/nauka','/konto']);
+  await page.route(url=>url.origin===apiOrigin,route=>{
+   const req=route.request();
+   const path=new URL(req.url()).pathname;
+   if(path.startsWith('/rest/v1/ta_'))courseRequests.push(path);
+   if(req.method()==='OPTIONS')return route.fulfill({headers,status:204});
+   return route.fulfill({headers,status:401,contentType:'application/json',body:'{}'});
+  });
+  await page.goto(origin+'/nauka?course=zaufany-wolontariusz',{waitUntil:'domcontentloaded'});
+  await page.waitForURL(url=>url.pathname==='/konto',{timeout:11000});
+  await page.getByPlaceholder('Adres e-mail',{exact:true}).waitFor();
+  assert.equal(await page.getByTestId('lesson-heading').count(),0);
+  assert.equal(await page.getByTestId('course-intro-photo').count(),0);
+  assert.deepEqual(courseRequests,[],'Anonymous entry must redirect before requesting course data');
+ }finally{await page.close();}
+}
+
+async function verifyIntroPhoto(page,slug){
+ const photo=page.getByTestId('course-intro-photo').locator('img');
+ await photo.waitFor();
+ const actual=await photo.evaluate(async img=>{
+  await img.decode();
+  return {file:new URL(img.currentSrc).pathname,alt:img.alt,width:img.naturalWidth,height:img.naturalHeight};
+ });
+ assert.deepEqual(actual,{
+  file:'/academy/photos/'+photos[slug].file,alt:photos[slug].alt,width:960,height:540,
+ },slug+': authenticated opening must render its shared catalogue photo');
+}
 
 async function installFixture(page,catalog){
  const progress=new Map(),finished=[],answers=[];
@@ -23,10 +64,7 @@ async function installFixture(page,catalog){
    expires_in:3600,token_type:'bearer',user,
   }));
  },{user});
- await page.route(url=>url.origin===origin&&url.pathname==='/nauka',async route=>{
-  const response=await route.fetch({url:origin+'/nauka.html'});
-  await route.fulfill({response});
- });
+ await serveExportedRoutes(page,['/nauka']);
  await page.route(url=>url.origin===apiOrigin,async route=>{
   const req=route.request(),url=new URL(req.url());
   const table=url.pathname.split('/').at(-1);
@@ -290,6 +328,7 @@ async function verifyAllCourses(ctx){
   const heading=page.getByTestId('lesson-heading');
   await heading.waitFor();
   assert.equal(await heading.innerText(),course.outline[0],course.id+': opening title');
+  await verifyIntroPhoto(page,course.id);
   const material=sample(course.id);
   const q=material.construction?.roleplay??material.learning;
   assert(q?.options?.[q.correct],course.id+': valid first checkpoint');
@@ -314,6 +353,7 @@ async function verifyAllCourses(ctx){
   await page.getByRole('button',{name:'Dalej · lekcja 2 →'}).click();
   await page.waitForURL(url=>url.searchParams.get('lesson')==='2');
   await heading.filter({hasText:course.outline[1]}).waitFor();
+  assert.equal(await page.getByTestId('course-intro-photo').count(),0,course.id+': introductory photo must appear on the first lesson only');
   await page.getByTestId('lesson-nav-top').getByRole('button',{name:'Poprzednia lekcja'}).click();
   await page.waitForURL(url=>url.searchParams.get('lesson')==='1');
   await heading.filter({hasText:course.outline[0]}).waitFor();
@@ -336,8 +376,11 @@ for(const mobile of selections){
  page.setDefaultTimeout(9000);
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
- const finished=await installFixture(page);
  try{
+  await verifyAnonymousCourse(ctx);
+  const finished=await installFixture(page);
+  await openCourse(page,'zaufany-wolontariusz');
+  await verifyIntroPhoto(page,'zaufany-wolontariusz');
   await verifyCad(page,mobile);
   await verifyExcel(page,mobile);
   await verifyWord(page,mobile);

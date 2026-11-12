@@ -9,6 +9,7 @@ import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import GuidedDialogue from '../src/GuidedDialogue';
 import CarpentryPracticeLab,{CarpentryCalculatorDirectory,hasCarpentryLab} from '../src/CarpentryPracticeLab';
 import CourseIntro from '../src/CourseIntro';
+import CourseIntroPhoto from '../src/CourseIntroPhoto';
 import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
 import EcoAtlas from '../src/EcoAtlas';
@@ -44,7 +45,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  React.useLayoutEffect(()=>{
   if(Platform.OS==='web'){
    scrollToTop();
@@ -73,7 +74,7 @@ export default function Learning(){
    if(lessons.error||draft.error||progress.error||details.error)throw lessons.error||draft.error||progress.error||details.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
    if(active){
-    setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
+    setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({slug,title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
     const passed:Record<number,Checks>={};
     const perLesson:Record<string,{correct:number,incorrect:number}>={};
     for(const attempt of attempts.data||[]){
@@ -201,6 +202,7 @@ export default function Learning(){
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
   {!!items.length&&<>
+   {!busy&&courseInfo.slug===slug&&index===0&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
    <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Postęp · {completed}/{items.length} lekcji</Text>

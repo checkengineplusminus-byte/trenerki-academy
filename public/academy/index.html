@@ -135,11 +135,21 @@
 .catalog-category-head small{font-size:11px;color:#708572;font-weight:700;white-space:nowrap}
 .catalog-category-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
 .catalog-category-grid .course-card{border-radius:13px;min-width:0}
-.catalog-category-grid .card-media{height:90px;min-height:90px}
+.catalog-category-grid .card-media{height:auto;min-height:0;aspect-ratio:16/9}
 .catalog-category-grid .card-media:before{width:115px;height:115px}
+.catalog-category-grid .card-media.has-course-photo:before{display:none}
+.catalog-category-grid .card-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;opacity:0}
+.catalog-category-grid .has-course-photo .card-photo{opacity:1}
+[data-course-category="budownictwo"]{--course-category-tint:#f3e6d5;--course-category-ink:#69411f}
+[data-course-category="rzemioslo-i-hobby"]{--course-category-tint:#f6e4df;--course-category-ink:#763f31}
+[data-course-category="technologie-i-logistyka"]{--course-category-tint:#e0ebf4;--course-category-ink:#244f67}
+[data-course-category="biznes-i-praca"]{--course-category-tint:#ebe5f3;--course-category-ink:#53416d}
+[data-course-category="rodzina-i-rozwoj"]{--course-category-tint:#f4e5eb;--course-category-ink:#74465d}
+[data-course-category="dom-i-codziennosc"]{--course-category-tint:#deeee9;--course-category-ink:#24574d}
+.category-tile[data-course-category] .category-tile-icon{background:var(--course-category-tint,#e8f4df)}
 .catalog-category-grid .course-icon-art{width:65px;height:65px;flex-basis:65px;transform:translateY(1px)}
 .catalog-category-grid .card-body{padding:10px;gap:6px}
-.catalog-category-grid .card-category{font-size:9px;letter-spacing:.035em;line-height:1.35}
+.catalog-category-grid .card-category{align-self:flex-start;max-width:100%;border-radius:5px;padding:3px 6px;background:var(--course-category-tint,#edf5e9);color:var(--course-category-ink,#36553d);font-size:10px;letter-spacing:.02em;line-height:1.35}
 .catalog-category-grid .card-title{font-size:13px;line-height:1.3;min-height:34px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .catalog-category-grid .card-desc{font-size:11px;line-height:1.4;min-height:31px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .catalog-category-grid .card-foot{gap:5px;padding-top:6px;flex-wrap:wrap}
@@ -157,7 +167,6 @@
  #kursy{padding-top:27px;padding-bottom:35px}
  #kursy .section-head{margin-bottom:13px}
  .catalog-category{margin-bottom:20px}
- .catalog-category-grid .card-media{height:77px;min-height:77px}
  .catalog-category-grid .course-icon-art{width:58px;height:58px;flex-basis:58px}
  .catalog-category-grid .card-body{padding:9px;gap:5px}
  .catalog-category-grid .card-title{font-size:12px;min-height:32px}
@@ -255,6 +264,7 @@
         NIP 5272961874 · KRS 0000907332
       </p>
       <a class="academy-footer__company-link" href="kontakt.html">Dane spółki</a>
+      <a class="academy-footer__company-link" href="zrodla-zdjec.html">Źródła zdjęć</a>
     </div>
 
     <nav class="academy-footer__nav" aria-labelledby="footer-academy">
@@ -325,9 +335,63 @@ function courseIllustration(c){
 
 
 const CATEGORY_TILES=[{"name":"Budownictwo","slug":"budownictwo","icon":"🏗️","headline":"Od planu do budowy","sub":"Organizacja robót, rysunki i praktyczne umiejętności","count":9},{"name":"Rzemiosło i hobby","slug":"rzemioslo-i-hobby","icon":"🛠️","headline":"Zrób to samodzielnie","sub":"Poznaj materiały, narzędzia i techniki od podstaw","count":25},{"name":"Technologie i logistyka","slug":"technologie-i-logistyka","icon":"💻","headline":"Technologia bez stresu","sub":"Excel, AutoCAD, programy i codzienna organizacja","count":15},{"name":"Biznes i praca","slug":"biznes-i-praca","icon":"📊","headline":"Więcej umiejętności w pracy","sub":"Zarządzanie, organizacja i praktyka zawodowa","count":8},{"name":"Rodzina i rozwój","slug":"rodzina-i-rozwoj","icon":"🌱","headline":"Zadbaj o siebie i bliskich","sub":"Relacje, komunikacja i codzienny rozwój","count":17},{"name":"Dom i codzienność","slug":"dom-i-codziennosc","icon":"🏡","headline":"Dom pod kontrolą","sub":"Przydatne umiejętności, proste decyzje i domowe projekty","count":7}];
+let coursePhotos=null;
+const coursePhotoFile=slug=>{
+ const file=coursePhotos?.get(slug)?.file;
+ return typeof file==='string'&&/^[a-z0-9-]+\.webp$/.test(file)?file:null;
+};
+
+function usePhotoFallback(img){
+ const fallback=img.parentElement?.querySelector('.card-photo-fallback');
+ if(fallback){
+  fallback.before(fallback.content);
+  fallback.remove();
+ }
+ img.remove();
+}
+
+function isCourseCardPhoto(element){
+ return element instanceof HTMLImageElement&&element.classList.contains('card-photo');
+}
+
+document.addEventListener('load',event=>{
+ const img=event.target;
+ if(!isCourseCardPhoto(img))return;
+ img.parentElement?.classList.add('has-course-photo');
+ img.parentElement?.querySelector('.card-photo-fallback')?.remove();
+},true);
+document.addEventListener('error',event=>{
+ if(isCourseCardPhoto(event.target))usePhotoFallback(event.target);
+},true);
+
+async function loadCoursePhotoManifest(){
+ try{
+  const response=await fetch('/academy/course-photo-manifest.json');
+  if(!response.ok)throw new Error('Photo manifest unavailable');
+  const payload=await response.json();
+  if(payload?.version!==1||!payload.courses||typeof payload.courses!=='object'||Array.isArray(payload.courses))throw new Error('Invalid photo manifest');
+  coursePhotos=new Map(Object.entries(payload.courses));
+ }catch{
+  coursePhotos=new Map();
+ }
+ for(const img of document.querySelectorAll('.card-photo:not([src])')){
+  const file=coursePhotoFile(img.dataset.coursePhoto);
+  if(file)img.src='/academy/photos/'+file;
+  else usePhotoFallback(img);
+ }
+}
+
+function courseCardMedia(c){
+ const file=coursePhotoFile(c.id);
+ if(coursePhotos&&!file)return courseIllustration(c);
+ const source=file?' src="/academy/photos/'+file+'"':'';
+ return `<img class="card-photo" data-course-photo="${esc(c.id)}"${source} alt="" width="960" height="540" loading="lazy" decoding="async">
+ <template class="card-photo-fallback">${courseIllustration(c)}</template>`;
+}
+
 function categoryTilesHTML(){
  return '<div class="category-tiles" aria-label="Wybierz temat nauki">'+CATEGORY_TILES.map(c=>
- '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" onclick="setFilter(\''+c.name+'\');return false" aria-label="'+esc(c.name)+' — zobacz '+c.count+' kursów">'+
+ '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" data-course-category="'+c.slug+'" onclick="setFilter(\''+c.name+'\');return false" aria-label="'+esc(c.name)+' — zobacz '+c.count+' kursów">'+
  '<span class="category-tile-icon" aria-hidden="true">'+c.icon+'</span><span class="category-tile-copy"><strong>'+esc(c.headline)+'</strong>'+
  '<small>'+esc(c.name)+' · '+c.count+' kursów</small><span>'+esc(c.sub)+'</span></span><b aria-hidden="true">↗</b></a>'
  ).join('')+'</div>';
@@ -339,8 +403,9 @@ function homeHTML(){return `<section class="hero"><div class="wrap hero-in"><div
 </section><div class="filter-line"><div class="chips" id="chips"></div></div><p id="catalog-sync-note" role="status" aria-live="polite" style="font-size:12px;color:#627568;margin:0 0 14px" hidden></p><div class="cards" id="course-cards"></div></div></section><section class="section features" id="jak-dziala"><div class="wrap"><div class="section-head"><div><div class="overline">Co znajdziesz w kursie?</div><h2>Od „nie wiem jak” do „umiem to zrobić”.</h2></div></div><div class="feature-grid"><div class="feature"><div class="feature-ico">✎</div><h3>Najpierw rozumiesz, po co</h3><p>Bez długich wstępów. Na przykładach zobaczysz, gdzie przydaje się dana umiejętność i czego warto nauczyć się najpierw.</p></div><div class="feature"><div class="feature-ico">↗</div><h3>Sprawdzasz to w praktyce</h3><p>Czytasz, próbujesz, rozwiązujesz zadania i widzisz, do czego wrócić. Wiedza ma być czymś, z czego korzystasz, a nie tylko czymś, co zapamiętujesz.</p></div><div class="feature"><div class="feature-ico">☺</div><h3>Wybierasz własne tempo</h3><p>Jedna lekcja po pracy albo kilka w wolny dzień. Tam, gdzie kurs zapisuje postęp, wrócisz do swojego miejsca po zalogowaniu.</p></div></div></div></section><section class="section" id="certyfikat"><div class="wrap"><div class="cta-band"><div><div class="overline" style="color:#d1ed9d">TRENERKI ACADEMY</div><h2>Od pomysłu do pierwszej<br/>opanowanej umiejętności.</h2><p>Nie musisz od razu znać wszystkich odpowiedzi. Zajrzyj do programu, sprawdź, czego się nauczysz, i wybierz coś ważnego dla siebie. Najpierw liczy się wiedza i ćwiczenia. Autorskie dyplomy potwierdzają ukończenie nauki i egzaminu wewnętrznego, ale nie nadają kwalifikacji zawodowych.</p></div>${button('Zobacz, czego możesz się nauczyć →',`scrollToSection('kursy')`,'btn-lime')}</div></div></section>`}
 
 function cardHTML(c){
- return `<article class="course-card">
-  <div class="card-media" style="background:${c.accent}">${courseIllustration(c)}</div>
+ const category=CATEGORY_TILES.find(tile=>tile.name===c.cat)?.slug||'';
+ return `<article class="course-card" data-course-id="${esc(c.id)}" data-course-category="${category}">
+  <div class="card-media" style="background:${c.accent}">${courseCardMedia(c)}</div>
   <div class="card-body">
    <div class="card-category">${esc(c.cat)}</div>
    <h3 class="card-title">${esc(c.title)}</h3>
@@ -456,6 +521,7 @@ window.addEventListener('popstate',()=>{
 const initialCourse=new URLSearchParams(window.location.search).get('course');
 if(initialCourse&&COURSES.some(c=>c.id===initialCourse))openCourse(initialCourse,false);
 else render();
+void loadCoursePhotoManifest();
 
 // Public descriptions and module lists are synced with the current Supabase catalog.
 // The complete lessons remain private behind the enrolled learner's Supabase RLS.
