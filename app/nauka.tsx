@@ -198,7 +198,7 @@ export default function Learning(){
  }
  return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
-  <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>Moja nauka</Text>
+  <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>{!busy&&courseInfo.slug===slug&&index===0?courseInfo.title:'Moja nauka'}</Text>
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
   {!!items.length&&<>

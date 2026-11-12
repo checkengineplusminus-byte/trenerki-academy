@@ -165,6 +165,10 @@ async function verify(name,viewport,isMobile){
    img.naturalWidth>0&&img.naturalWidth*9===img.naturalHeight*16&&
    img.getAttribute('alt')===''&&img.loading==='lazy'&&getComputedStyle(img).opacity==='1'),
    'The featured course photo must render in 16:9 without duplicating the heading for assistive technology');
+  assert(await page.locator('#course-cards .btn-buy-card').evaluateAll(buttons=>buttons.every(button=>{
+   const card=button.closest('.course-card').getBoundingClientRect(), action=button.getBoundingClientRect();
+   return action.left>=card.left&&action.right<=card.right;
+  })),'Course purchase buttons must fit inside their cards');
   assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'rodzina-i-rozwoj');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
   assert.doesNotMatch(await page.locator('.hero').innerText(),/\b\d+\s+lekcj\w*/i,'Hero should omit lesson counts');

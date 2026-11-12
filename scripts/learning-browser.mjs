@@ -45,6 +45,8 @@ async function verifyIntroPhoto(page,slug){
  await photo.waitFor();
  const actual=await photo.evaluate(async img=>{
   await img.decode();
+  const frame=img.getBoundingClientRect();
+  if(Math.abs(frame.width*9-frame.height*16)>38)throw new Error('Course cover frame crops the 16:9 photo');
   return {file:new URL(img.currentSrc).pathname,alt:img.alt,width:img.naturalWidth,height:img.naturalHeight};
  });
  assert.deepEqual(actual,{
