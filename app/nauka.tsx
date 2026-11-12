@@ -45,7 +45,11 @@ export default function Learning(){
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
- useEffect(()=>{
+ React.useLayoutEffect(()=>{
+  if(Platform.OS==='web'){
+   scrollToTop();
+   return;
+  }
   const afterLayout=setTimeout(scrollToTop,100);
   return ()=>clearTimeout(afterLayout);
  },[slug,module,items.length]);
@@ -209,6 +213,7 @@ export default function Learning(){
    {lessonNavigation('top')}
    {slug==='zaufany-wolontariusz'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:14,marginBottom:14}}>
     <HelpLink href="/academy/kursy/zaufany-wolontariusz-nauka.html#karty">Karty pracy</HelpLink>
+    <HelpLink href="/academy/kursy/zaufany-wolontariusz-nauka.html#test-zbiorek">Test zabezpieczenia zbiórki</HelpLink>
     <HelpLink href="/academy/kursy/zaufany-wolontariusz-nauka.html#sprawdzian">Sprawdzian sytuacyjny</HelpLink>
    </View>}
    {slug==='ciesla-przygotowanie-czeladnicze'&&<CarpentryCalculatorDirectory/>}
