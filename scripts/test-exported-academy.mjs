@@ -16,19 +16,22 @@ const academy=required('academy/index.html');
 required('academy/anielka-search.js');
 required('academy/anielka-search.css');
 const catalog=JSON.parse(academy.split('const COURSES=')[1].split('];')[0]+']');
-assert.equal(catalog.length,80,'Expected 80 exported courses');
+assert.equal(catalog.length,81,'Expected 81 exported courses');
 assert(academy.includes('class="course-icon-art"'),'Catalog does not render topic-specific icons');
 assert(!academy.includes('<span class="card-emoji" role="img"'),'Obsolete emoji icons are still in use');
 for(let i=1;i<=5;i++){
  const sprite=required('academy/course-icons-'+i+'.svg');
  const ids=[...sprite.matchAll(/<symbol id="course-([^"]+)"/g)];
- assert.equal(ids.length,16,'Expected 16 exported icons in bundle '+i);
- for(const {id,iconBundle} of catalog.filter(c=>c.iconBundle===i)){
+ const courses=catalog.filter(c=>c.iconBundle===i);
+ assert.equal(ids.length,courses.length,'Icon count in exported bundle '+i);
+ for(const {id} of courses){
    assert(sprite.includes('id="course-'+id+'"'),'Course icon missing from exported bundle: '+id);
  }
 }
 required('academy/assets/craft-kolodziej.svg');
 required('academy/assets/ciesla-dach.svg');
+required('academy/kursy/zaufany-wolontariusz.html');
+required('academy/kursy/zaufany-wolontariusz-nauka.html');
 console.log('✓ Expo export includes the academy catalog, search assets and course visuals');
-console.log('✓ All 80 referenced course icons are shipped in the exported site');
+console.log('✓ All '+catalog.length+' referenced course icons are shipped in the exported site');
 console.log('✓ Reference illustrations for wooden wheel and timber roof included');

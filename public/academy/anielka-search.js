@@ -7,6 +7,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const stop=new Set(('chce chcialbym chcialabym chcial chcialam chcialem sie nauczyc nauka nauczyc kurs kursu kursy szukam szuka potrzebuje prosze pomoc jak gdzie ktory ktora ktore co zrobic dobrze lepiej chce potrafie umiem umiec mnie moj moje ten takie te tego tych od dla przy bez do na i oraz albo byc jestem zostac co').split(/\s+/));
 const terms=s=>[...new Set(normalize(s).split(' ').filter(t=>t.length>2&&!stop.has(t)))];
 const aliases=[
+ ['zaufany-wolontariusz',/\b(wolontar|deeskalacj)/],
  ['ciesla-przygotowanie-czeladnicze',/\b(ciesl|ciesiel|stolar|wiezb|krokwi|krokiew|drewnian|ciesio|konstrukcj drewna)/],
  ['brygadzista',/\b(brygadz|majster|zarzadzac ekipa|prowadzic zespol na budowie)/],
  ['kierownik-budowy',/\b(kierownik budow|prowadzic budow|nadzor budow|koordynacja budow)/],

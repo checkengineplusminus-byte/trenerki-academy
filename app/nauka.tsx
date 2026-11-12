@@ -1,4 +1,4 @@
-import {LessonHelp} from '../src/support/links';
+import {HelpLink,LessonHelp} from '../src/support/links';
 import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
@@ -207,6 +207,10 @@ export default function Learning(){
     </View>
    </View>
    {lessonNavigation('top')}
+   {slug==='zaufany-wolontariusz'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:14,marginBottom:14}}>
+    <HelpLink href="/academy/kursy/zaufany-wolontariusz-nauka.html#karty">Karty pracy</HelpLink>
+    <HelpLink href="/academy/kursy/zaufany-wolontariusz-nauka.html#sprawdzian">Sprawdzian sytuacyjny</HelpLink>
+   </View>}
    {slug==='ciesla-przygotowanie-czeladnicze'&&<CarpentryCalculatorDirectory/>}
    {items.some(x=>(review[String(x.lesson_no)]?.incorrect||0)>0&&(review[String(x.lesson_no)]?.correct||0)===0)&&<View style={{backgroundColor:'#fff5e5',borderRadius:14,padding:16,marginBottom:15,gap:9}}>
     <Text style={{color:'#604722',fontWeight:'900',fontSize:16}}>Warto powtórzyć</Text>

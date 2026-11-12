@@ -120,7 +120,7 @@ export default function Purchase(){
    <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← Wróć do katalogu</Text></Pressable>
    <Text style={{fontSize:11,color:'#618067',letterSpacing:2,fontWeight:'800'}}>TRENERKI ACADEMY · TWOJA DECYZJA</Text>
    <Text style={{fontSize:37,fontWeight:'900',color:ink}}>Najpierw poznaj. Potem zdecyduj.</Text>
-   <Text style={{fontSize:16,color:muted,lineHeight:25}}>Nie kupujesz w ciemno. Zobacz, czego nauczysz się na przykładach z prawdziwego życia — i dopiero wtedy wybierz kurs.</Text>
+   <Text style={{fontSize:16,color:muted,lineHeight:25}}>{item?.price_grosze===0?'Zobacz program i dodaj bezpłatny kurs do zakładki Moje kursy.':'Nie kupujesz w ciemno. Zobacz, czego nauczysz się na przykładach z prawdziwego życia — i dopiero wtedy wybierz kurs.'}</Text>
    {busy&&<ActivityIndicator/>}
    {!!item&&<>
     <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#dbe8d9',padding:23,gap:11}}>
@@ -185,11 +185,11 @@ export default function Purchase(){
      {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
      </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null)))?0.5:1}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?'Przechodzę do płatności…':item.price_grosze===0?'Odbierz za darmo →':(effectiveCredit>0?(toPay===0?'Kupuję i płacę z salda '+pln(effectiveCredit):'Przejdź do płatności '+pln(toPay)):'Przejdź do płatności Stripe')+' →'}</Text>
+      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?(item.price_grosze===0?'Zapisuję na kurs…':'Przechodzę do płatności…'):item.price_grosze===0?'Odbierz za darmo →':(effectiveCredit>0?(toPay===0?'Kupuję i płacę z salda '+pln(effectiveCredit):'Przejdź do płatności '+pln(toPay)):'Przejdź do płatności Stripe')+' →'}</Text>
      </Pressable>}
-     <Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
+     {slug!=='zaufany-wolontariusz'&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs</Text>
-     </Pressable>
+     </Pressable>}
 
     </View>
    </>}

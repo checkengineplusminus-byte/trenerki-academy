@@ -5,12 +5,12 @@ import {join} from 'node:path';
 const root=process.argv[2]||'public';
 const main=readFileSync(join(root,'academy/index.html'),'utf8');
 const courses=JSON.parse(main.slice(main.indexOf('const COURSES=')+14,main.indexOf('];',main.indexOf('const COURSES='))+1));
-assert.equal(courses.length,80);
+assert.equal(courses.length,81);
 const xml=readFileSync(join(root,'sitemap.xml'),'utf8');
 const seen=new Set();
 const escapeText=value=>value.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 const entries=[...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert(entries.length>=87,'Sitemap must include all courses and categories');
+assert(entries.length>=courses.length+7,'Sitemap must include all courses and categories');
 for(const u of entries){assert(!seen.has(u),'Duplicate sitemap URL '+u);seen.add(u)}
 for(const c of courses){
  const path='academy/kursy/'+c.id+'.html';
@@ -32,7 +32,7 @@ for(const slug of ['budownictwo','rzemioslo-i-hobby','technologie-i-logistyka','
  assert(body.includes('ItemList')&&body.includes('<h1>'),'Bad category SEO '+p);
 }
 assert(!main.includes('class="catalog-more"'),'More buttons should not remain');
-console.log('✓ 80 public SEO course pages, 6 category pages, Polish metadata, unique URLs and sitemap verified');
+console.log('✓ '+courses.length+' public SEO course pages, 6 category pages, Polish metadata, unique URLs and sitemap verified');
 
 // Inspect the export, not only source JSX: metadata must precede hydration.
 if(root!=='public'){

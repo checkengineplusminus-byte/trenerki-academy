@@ -266,7 +266,7 @@ async function verifyAllCourses(ctx){
  page.setDefaultTimeout(11000);
  const html=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
  const courses=JSON.parse(html.match(/^const COURSES=(.+);$/m)[1]);
- assert.equal(courses.length,80);
+ assert.equal(courses.length,81);
  const samples=process.env.TRENERKI_ACTUAL_SAMPLES?JSON.parse(readFileSync(process.env.TRENERKI_ACTUAL_SAMPLES,'utf8')):null;
  if(samples)assert.equal(Object.keys(samples).length,courses.length);
  const byId=new Map(courses.map(course=>[course.id,course]));
@@ -321,9 +321,9 @@ async function verifyAllCourses(ctx){
   assert.deepEqual(finished.at(-1),[course.id,0]);
   console.log('✓ '+course.id+' · '+course.outline.length+' lessons · course opened, checkpoint accepted, next and back');
  }
- assert.equal(finished.length,80);
+ assert.equal(finished.length,courses.length);
  assert.deepEqual(errors,[],'Course pages must render without browser errors');
- console.log('✓ All 80 course paths checked');
+ console.log('✓ All '+courses.length+' course paths checked');
  await page.close();
 }
 

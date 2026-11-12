@@ -48,11 +48,12 @@ async function verify(name,viewport,isMobile){
   }
   await field.waitFor({state:'visible'});
   const prices=await page.evaluate(()=>COURSES.map(c=>({slug:c.id,price:c.price})));
-  assert.equal(prices.length,80,'Public catalogue should contain all courses');
-  assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug),['swiety-mikolaj']);
+  assert.equal(prices.length,81,'Public catalogue should contain all courses');
+  assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug).sort(),['swiety-mikolaj','zaufany-wolontariusz']);
   assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),99);
   assert.equal(await page.locator('.category-tiles .category-tile').count(),6,'Six clickable category cards must appear on homepage');
   assert.equal(await page.locator('#course-cards .course-card').count(),12,'Homepage should show twelve featured courses');
+  assert.equal(await page.locator('#course-cards .course-card .card-title').first().innerText(),'Zaufany wolontariusz');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
   assert.doesNotMatch(await page.locator('.hero').innerText(),/\b\d+\s+lekcj\w*/i,'Hero should omit lesson counts');
   assert.equal(await page.locator('.catalog-more').count(),0,'No more-courses buttons');
@@ -69,7 +70,7 @@ async function verify(name,viewport,isMobile){
   await field.fill('Chcę używać Excela do kosztorysów w pracy');
   await page.locator('#anielka-peek [data-anielka-course="excel-skroty"]').waitFor({timeout:7000});
   const count=await page.locator('#course-cards .course-card').count();
-  assert(count>=1&&count<80,'Course recommendations must actually filter the catalog');
+  assert(count>=1&&count<prices.length,'Course recommendations must actually filter the catalog');
   await field.press('Enter');
   await page.waitForFunction(()=>document.querySelector('#anielka-output')?.textContent?.includes('Ponieważ chcesz używać Excela'),{timeout:9000});
   const icon=page.locator('#course-cards .course-icon-art').first();
@@ -98,7 +99,7 @@ async function verify(name,viewport,isMobile){
   if(!isMobile){
    // Every single course program must open and paint without throwing.
    const all=await page.evaluate(()=>COURSES.map(c=>({id:c.id,title:c.title})));
-   assert.equal(all.length,80);
+   assert.equal(all.length,81);
    for(const course of all){
     const result=await page.evaluate(id=>{
      openCourse(id,false);
@@ -107,7 +108,7 @@ async function verify(name,viewport,isMobile){
     assert(result.title.includes(course.title),'Incorrect course detail title: '+course.id);
     assert(result.body>150,'Course detail is empty: '+course.id);
    }
-   console.log('✓ desktop: all 80 course detail screens render with correct course titles');
+   console.log('✓ desktop: all '+all.length+' course detail screens render with correct course titles');
   }
   await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded'});
   let submitted=0;

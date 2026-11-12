@@ -7,7 +7,7 @@ const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const text=read('public/academy/index.html');
 const start=text.indexOf('const COURSES=')+'const COURSES='.length,end=text.indexOf('];',start)+1;
 const COURSES=JSON.parse(text.slice(start,end));
-assert.equal(COURSES.length,80);
+assert.equal(COURSES.length,81);
 assert.equal(new Set(COURSES.map(c=>c.cat)).size,6);
 assert.equal(COURSES.find(c=>c.id==='ciesla-przygotowanie-czeladnicze').outline.length,63);
 assert(text.includes('id="anielka-question"'),'Primary Anielka navigation input is required');
@@ -21,6 +21,7 @@ const env={COURSES,document:{addEventListener(name,fn){handlers[name]=fn;},getEl
 createContext(env);
 new Script(read('public/academy/anielka-search.js'),{filename:'anielka-search.js'}).runInContext(env);
 const cases=[
+ ['Jak zostać wolontariuszem i przygotować się na pierwszy dyżur?','zaufany-wolontariusz'],
  ['Chcę zostać cieślą, umieć czytać więźby','ciesla-przygotowanie-czeladnicze'],
  ['Chcę się nauczyć Excela','excel-skroty'],
  ['Jak dobrze mówić po norwesku na budowie?','norweski-na-budowie'],

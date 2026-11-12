@@ -8,7 +8,7 @@ if(start<0)throw new Error('Course data missing from catalog');
 const open=html.indexOf('[',start),end=html.indexOf('];',open);
 if(open<0||end<0)throw new Error('Catalog JSON malformed');
 const courses=JSON.parse(html.slice(open,end+1));
-if(courses.length!==80)throw new Error('Expected 80 courses, found '+courses.length);
+if(courses.length!==81)throw new Error('Expected 81 courses, found '+courses.length);
 const min=30;
 const incomplete=[];
 for(const course of courses){
