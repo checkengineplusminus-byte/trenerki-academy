@@ -181,7 +181,7 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('#course-cards .course-card .card-title').first().innerText(),'Zaufany wolontariusz');
   const firstMedia=page.locator('#course-cards .card-media').first();
   await firstMedia.scrollIntoViewIfNeeded();
-  const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="zaufany-wolontariusz"]');
+  const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="ongoing-wms"]');
   await firstPhoto.waitFor({state:'visible',timeout:7000});
   assert(await firstPhoto.evaluate(img=>
    img.naturalWidth>0&&img.naturalWidth*9===img.naturalHeight*16&&
