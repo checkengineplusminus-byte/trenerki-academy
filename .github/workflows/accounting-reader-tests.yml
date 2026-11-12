@@ -1,0 +1,25 @@
+name: Czytnik ksiegowosci — testy
+on:
+  push:
+    paths:
+      - 'app/ksiegowosc.tsx'
+      - 'src/accounting/reader-core.js'
+      - 'scripts/test-accounting-reader.mjs'
+      - '.github/workflows/accounting-reader-tests.yml'
+  pull_request:
+    paths:
+      - 'app/ksiegowosc.tsx'
+      - 'src/accounting/reader-core.js'
+      - 'scripts/test-accounting-reader.mjs'
+      - '.github/workflows/accounting-reader-tests.yml'
+permissions:
+  contents: read
+jobs:
+  czytnik:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --experimental-default-type=module --test scripts/test-accounting-reader.mjs

@@ -21,3 +21,5 @@ jobs:
           run: node scripts/test-course-icons.mjs
         - name: Sprawdz obliczenia i import pracowni ksiegowej
           run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+        - name: Sprawdz odpowiedzi i szkice czytnika ksiegowosci
+          run: node --experimental-default-type=module --test scripts/test-accounting-reader.mjs

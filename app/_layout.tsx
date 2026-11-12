@@ -55,6 +55,7 @@ function AccountLayout(){
    <Stack.Screen name="nauka"/>
    <Stack.Screen name="biuro-ksiegowe"/>
    <Stack.Screen name="slownik-ksiegowego"/>
+   <Stack.Screen name="ksiegowosc"/>
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>

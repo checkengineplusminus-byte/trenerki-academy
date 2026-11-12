@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {lessonNumber,parsePolishNumber,checkExercise,sourceURL,noteDraftKey,resumeNoteDraft} from '../src/accounting/reader-core.js';
+test('Prawidłowy zakres lekcji',()=>{assert.equal(lessonNumber('1'),1);assert.equal(lessonNumber('100000'),100000);for(const x of ['0','01','100001','1.5','1x','',undefined,'-1'])assert.equal(lessonNumber(x),null);});
+test('Pusta odpowiedź nie jest zerem',()=>{for(const x of ['', ' ',null,undefined])assert.equal(parsePolishNumber(x),null);assert.equal(checkExercise({type:'number',expected:0},'').correct,false);});
+test('Przecinek, kropka i ujemna liczba',()=>{assert.equal(parsePolishNumber('1230,50'),1230.5);assert.equal(parsePolishNumber('-12.25'),-12.25);assert.equal(parsePolishNumber('+5'),5);});
+test('Grupy tysięczne muszą być pełne',()=>{assert.equal(parsePolishNumber('1 234,56'),1234.56);assert.equal(parsePolishNumber('1\u00a0234,56'),1234.56);assert.equal(parsePolishNumber('1 2'),null);assert.equal(parsePolishNumber('12 34'),null);});
+test('Nie przyjmujemy kodu, jednostek, Infinity, mieszanych separatorów',()=>{for(const x of ['=1+2','Infinity','1e3','1.234,56','12 zł','0x10','1;2','1_000'])assert.equal(parsePolishNumber(x),null);});
+test('Zero oraz jawna tolerancja działają',()=>{assert.equal(checkExercise({type:'number',expected:0},'0').correct,true);assert.equal(checkExercise({type:'number',expected:10,tolerance:0},'10,01').correct,false);assert.equal(checkExercise({type:'number',expected:10,tolerance:.01},'10,01').correct,true);});
+test('Wybór nie jest koercją pustego pola',()=>{const q={type:'choice',choices:['a','b','c'],correctIndex:1,explanation:'Wyjaśnienie'};assert.equal(checkExercise(q,'1').correct,true);assert.equal(checkExercise(q,'0').correct,false);for(const a of ['','-1','9','x',null])assert.equal(checkExercise(q,a).valid,false);});
+test('Błędny klucz nie daje pozornego zaliczenia',()=>{assert.equal(checkExercise({type:'choice',choices:['a'],correctIndex:5},'0').valid,false);assert.equal(checkExercise({type:'number',expected:'0'},'0').valid,false);});
+test('Źródła nie mogą uruchamiać JavaScript',()=>{assert.equal(sourceURL('javascript:alert(1)'),null);assert.equal(sourceURL('http://example.com'),null);assert.equal(sourceURL('https://a:b@example.com'),null);assert.equal(sourceURL('https://eli.gov.pl/'), 'https://eli.gov.pl/');});
+test('Klucz szkicu jest rozdzielony według użytkownika i lekcji',()=>{assert.notEqual(noteDraftKey('u1',11),noteDraftKey('u2',11));assert.notEqual(noteDraftKey('u1',11),noteDraftKey('u1',12));});
+test('Powrót do niezapisanego szkicu zachowuje tekst',()=>{const x=resumeNoteDraft(JSON.stringify({text:'Mój szkic',base:'t1'}),{note:'Stary zapis',updated_at:'t1'});assert.equal(x.text,'Mój szkic');assert.equal(x.conflict,false);assert.equal(x.dirty,true);});
+test('Nowsza zdalna notatka wymaga porównania, nie nadpisania',()=>{const x=resumeNoteDraft({text:'Lokalnie',base:'t1'},{note:'Z innego okna',updated_at:'t2'});assert.equal(x.conflict,true);assert.equal(x.base,'t1');});
+test('Uszkodzony szkic jest odrzucany',()=>{assert.equal(resumeNoteDraft('{',null),null);assert.equal(resumeNoteDraft({text:'x'.repeat(10001),base:null},null),null);});
