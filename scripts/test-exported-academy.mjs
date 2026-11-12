@@ -30,8 +30,12 @@ for(let i=1;i<=5;i++){
 }
 required('academy/assets/craft-kolodziej.svg');
 required('academy/assets/ciesla-dach.svg');
-required('academy/kursy/zaufany-wolontariusz.html');
-required('academy/kursy/zaufany-wolontariusz-nauka.html');
+const volunteerLanding=required('academy/kursy/zaufany-wolontariusz.html');
+const volunteerLegacy=required('academy/kursy/zaufany-wolontariusz-nauka.html');
+assert(!volunteerLanding.includes('bez konta'),'Volunteer landing promises access without an account');
+assert(volunteerLegacy.includes('/materialy-wolontariusza'),'Legacy material URL must lead to authenticated materials');
+assert(volunteerLegacy.length<4000&&!/<fieldset|data-answer|data-view|<textarea/.test(volunteerLegacy),
+ 'Private volunteer lessons and answers must not be shipped as public HTML');
 console.log('✓ Expo export includes the academy catalog, search assets and course visuals');
 console.log('✓ All '+catalog.length+' referenced course icons are shipped in the exported site');
 console.log('✓ Reference illustrations for wooden wheel and timber roof included');

@@ -45,6 +45,7 @@ function AccountLayout(){
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>
   <Stack.Screen name="kup"/>
+  <Stack.Screen name="materialy-wolontariusza"/>
   <Stack.Screen name="prezent"/>
   <Stack.Screen name="firma"/>
   <Stack.Screen name="admin"/>
