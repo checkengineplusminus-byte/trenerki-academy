@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,ActivityIndicator} from 'react-native';
+import {View,ActivityIndicator,Platform} from 'react-native';
 import {Slot,Stack,usePathname} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import {supabase} from '../src/supabase';
@@ -14,6 +14,11 @@ import {supabase} from '../src/supabase';
  */
 export default function RootLayout(){
  const pathname=usePathname();
+ useEffect(()=>{
+  if(Platform.OS!=='web'||typeof document==='undefined'||document.querySelector('script[data-trenerki-google-ads]'))return;
+  const script=document.createElement('script');script.src='/academy/google-ads.js';script.async=true;
+  script.setAttribute('data-trenerki-google-ads','true');document.head.appendChild(script);
+ },[]);
  if(pathname==='/pomoc')return <Slot/>;
  return <AccountLayout/>;
 }
