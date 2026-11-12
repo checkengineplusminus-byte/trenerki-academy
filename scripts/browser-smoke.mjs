@@ -54,6 +54,12 @@ async function verify(name,viewport,isMobile){
   await footer.getByRole('link',{name:'Regulamin',exact:true}).waitFor({state:'visible'});
   await footer.getByRole('link',{name:'Polityka prywatności',exact:true}).waitFor({state:'visible'});
   assert.match(await footer.innerText(),/NIP 5272961874/,'Company registration details must be visible');
+  const staff=footer.getByRole('link',{name:'Panel personelu',exact:true});
+  assert.equal(await staff.getAttribute('href'),'/admin');
+  assert.equal((await staff.innerText()).trim(),'','Staff access should be visible only as an icon');
+  const credit=footer.locator('.developer-credit');
+  assert.match(await credit.innerText(),/Website created by\s+www\.adrianflaga\.com/);
+  assert.equal(await credit.getByRole('link',{name:'www.adrianflaga.com',exact:true}).getAttribute('href'),'https://www.adrianflaga.com/');
   const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   if(await consent.isVisible())await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   const cookieSettings=footer.locator('.academy-footer__utility').getByRole('button',{name:'Ustawienia plików cookie',exact:true});

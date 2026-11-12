@@ -79,7 +79,7 @@ function ready(){
  if(utility){
   settings.className='trenerki-footer-cookie';
   settings.style.cssText='';
-  utility.appendChild(settings);
+  utility.insertBefore(settings,utility.querySelector('.academy-footer__staff'));
  }else{
   settings.style.margin='10px';settings.style.fontSize='12px';
   (footer||document.body).appendChild(settings);
