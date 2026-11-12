@@ -6,7 +6,7 @@ export function balanceReport(s){
  for(const j of s.journals.filter(j=>j.status==='posted'))for(const l of j.lines){const a=map[l.account];if(!a)throw new Error('Nieznane konto w zestawieniu.');a.debit+=l.debit;a.credit+=l.credit;a.balance=a.debit-a.credit;if(!Number.isSafeInteger(a.debit)||!Number.isSafeInteger(a.credit))throw new Error('Obroty przekraczają dokładny zakres tego modelu.');}
  const accounts=Object.values(map),debit=accounts.reduce((n,a)=>n+a.debit,0),credit=accounts.reduce((n,a)=>n+a.credit,0);
  if(!Number.isSafeInteger(debit)||!Number.isSafeInteger(credit))throw new Error('Suma obrotów przekracza zakres modelu.');
- return {...out,accounts,debit,credit,profit:-map['700'].balance-map['400'].balance-map['401'].balance-map['761'].balance,assetCost:map['010'].balance,assetAccumulated:-map['071'].balance,assetCarrying:map['010'].balance+map['071'].balance};
+ return {...out,accounts,debit,credit,profit:0-map['700'].balance-map['400'].balance-map['401'].balance-map['761'].balance,assetCost:map['010'].balance,assetAccumulated:0-map['071'].balance,assetCarrying:map['010'].balance+map['071'].balance};
 }
 export function inspect(s){
  const acquisitions=livePostings(s).filter(j=>j.asset_action==='acquire'&&(s.assets||[]).some(a=>a.id===j.asset_id&&a.status==='active'));
