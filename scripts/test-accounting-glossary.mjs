@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {TERM_LABELS,validKey,safeSourceURL,speechText,speechChunks,checkPractice} from '../src/accounting/glossary-core.js';
+test('Dwanaście nazw i bezpieczne klucze',()=>{assert.equal(Object.keys(TERM_LABELS).length,12);for(const k of Object.keys(TERM_LABELS))assert.ok(validKey(k));});
+test('Odrzucone klucze z obcym prefiksem i HTML',()=>{for(const v of [null,'nip','slownik-','slownik-<script>','../slownik-nip'])assert.equal(validKey(v),false);});
+test('Źródła polskich urzędów i instytucji UE',()=>{for(const u of ['https://ksef.podatki.gov.pl/a','https://stat.gov.pl/a','https://isap.sejm.gov.pl/a','https://europa.eu/a'])assert.equal(safeSourceURL(u),u);});
+test('Brak wykonywalnych i obcych adresów',()=>{for(const u of ['javascript:alert(1)','http://gov.pl','https://gov.pl.evil.example/','https://evilgov.pl/','https://user:pass@gov.pl','https://gov.pl:444/'])assert.equal(safeSourceURL(u),null);});
+test('Odsłuch nie czyta klucza odpowiedzi ani odnośników',()=>{const r={material:{glossary:{term:'NIP',plain:'Numer podatnika.',exercise:{explanation:'TAJNA_ODPOWIEDŹ'},examples:[{situation:'Sytuacja.',explanation:'Wyjaśnienie.'}]},sources:[{url:'https://gov.pl'}]}};const s=speechText(r);assert.ok(s.includes('Numer podatnika'));assert.ok(s.includes('Wyjaśnienie'));assert.ok(!s.includes('TAJNA_ODPOWIEDŹ'));assert.ok(!s.includes('https:'));});
+test('Brak pustych fragmentów dla pustego tekstu',()=>assert.deepEqual(speechChunks('  '),[]));
+test('Cały polski tekst zostaje zachowany',()=>{const t='Zażółć gęślą jaźń. '.repeat(100).trim();const a=speechChunks(t);assert.ok(a.every(x=>x.length<=220));assert.equal(a.join(' '),t);});
+test('Długie słowo nie przekracza limitu',()=>assert.ok(speechChunks('a'.repeat(900)).every(x=>x.length<=220)));
+test('Nieprawidłowy limit zgłasza błąd',()=>assert.throws(()=>speechChunks('Tekst',0)));
+test('Poprawna odpowiedź ma wyjaśnienie',()=>assert.deepEqual(checkPractice({choices:['A','B'],correctIndex:1,explanation:'Dlaczego B'},1),{correct:true,explanation:'Dlaczego B'}));
+test('Błędna odpowiedź nadal daje wyjaśnienie',()=>assert.equal(checkPractice({choices:['A','B'],correctIndex:1,explanation:'Czytaj dalej'},0).correct,false));
+test('Uszkodzone pytanie nie daje pozornego wyniku',()=>{assert.equal(checkPractice({choices:['A'],correctIndex:4},0),null);assert.equal(checkPractice({choices:['A'],correctIndex:0},4),null);});
