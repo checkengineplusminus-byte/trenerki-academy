@@ -33,7 +33,16 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
     slug:img.closest('.course-card').dataset.courseId,file:new URL(img.currentSrc).pathname,
     width:img.naturalWidth,height:img.naturalHeight,
    })))){
-    assert.equal(file,'/academy/photos/'+slug+'.webp',slug+': course card photo path');
+    const photoOverride={
+     'zaufany-wolontariusz':'ongoing-wms',
+     'ciesla-przygotowanie-czeladnicze':'kolodziej',
+     'brygadzista':'angielski-na-budowie',
+     'kierownik-budowy':'niemiecki-na-budowie',
+     'lepszy-szef':'zaczynam-od-zera',
+     'bdo':'oracle-wms-cloud',
+     'kgw':'lepszy-cukiernik'
+    };
+    assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
     assert.equal(width*9,height*16,slug+': course card photo ratio');
     seen.push(slug);
    }

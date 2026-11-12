@@ -3,27 +3,27 @@
   "courses": {
     "zaufany-wolontariusz": {
       "file": "zaufany-wolontariusz.webp",
-      "alt": "Osoba przygotowuje karton i dokumenty przy laptopie",
+      "alt": "Zespół wolontariuszy pakuje dary do kartonów",
       "iconBundle": 5
     },
     "ciesla-przygotowanie-czeladnicze": {
       "file": "ciesla-przygotowanie-czeladnicze.webp",
-      "alt": "Praca z drewnianą konstrukcją koła w warsztacie stolarskim",
+      "alt": "Pomiar drewnianej belki w warsztacie",
       "iconBundle": 1
     },
     "brygadzista": {
       "file": "brygadzista.webp",
-      "alt": "Dwie osoby w kaskach omawiają zadania na placu budowy",
+      "alt": "Dwie osoby w kamizelkach roboczych omawiają pracę na budowie",
       "iconBundle": 1
     },
     "kierownik-budowy": {
       "file": "kierownik-budowy.webp",
-      "alt": "Ekipa w kaskach analizuje rysunek techniczny na laptopie",
+      "alt": "Zespół w kaskach i kamizelkach nad dokumentacją budowy",
       "iconBundle": 1
     },
     "lepszy-szef": {
       "file": "lepszy-szef.webp",
-      "alt": "Osoba organizuje dokumentację i pracę przy laptopie",
+      "alt": "Rozmowa zespołu przy wspólnym stole",
       "iconBundle": 1
     },
     "apartamenty": {
@@ -38,7 +38,7 @@
     },
     "bdo": {
       "file": "bdo.webp",
-      "alt": "Pracownik magazynu sprawdza dane na tablecie wśród produktów",
+      "alt": "Pakowanie produktów z użyciem papierowych wypełnień",
       "iconBundle": 1
     },
     "dostepne-pdf": {
@@ -48,7 +48,7 @@
     },
     "kgw": {
       "file": "kgw.webp",
-      "alt": "Dekorowanie wypieku rękawem cukierniczym",
+      "alt": "Dłonie wyrabiające ciasto na blacie",
       "iconBundle": 1
     },
     "festyn": {
