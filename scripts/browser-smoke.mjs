@@ -63,6 +63,19 @@ async function verify(name,viewport,isMobile){
   const credit=footer.locator('.developer-credit');
   assert.match(await credit.innerText(),/Website created by\s+www\.adrianflaga\.com/);
   assert.equal(await credit.getByRole('link',{name:'www.adrianflaga.com',exact:true}).getAttribute('href'),'https://www.adrianflaga.com/');
+  const cursor=credit.locator('.terminal-cursor');
+  assert.equal(await cursor.getAttribute('aria-hidden'),'true');
+  assert.deepEqual(await cursor.evaluate(el=>{
+   const animation=el.getAnimations().find(item=>item.animationName==='academy-cursor-blink');
+   if(!animation)return null;
+   animation.pause();
+   animation.currentTime=100;
+   const visible=getComputedStyle(el).opacity;
+   animation.currentTime=700;
+   const hidden=getComputedStyle(el).opacity;
+   animation.play();
+   return {visible,hidden};
+  }),{visible:'1',hidden:'0'},'The signature cursor must visibly blink');
   const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   if(await consent.isVisible())await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   const cookieSettings=footer.locator('.academy-footer__utility').getByRole('button',{name:'Ustawienia plików cookie',exact:true});
@@ -86,6 +99,10 @@ async function verify(name,viewport,isMobile){
    assert(await help.evaluate(el=>el.matches(':focus-visible')),'Keyboard navigation must visibly focus the support link');
    await page.emulateMedia({reducedMotion:'reduce'});
    assert.deepEqual(await readHeart(headerHeart),{heart:'none',halo:'none',copyDecoration:'none'});
+   assert.deepEqual(await cursor.evaluate(el=>{
+    const style=getComputedStyle(el);
+    return {animation:style.animationName,opacity:style.opacity};
+   }),{animation:'none',opacity:'1'},'Reduced motion must leave the signature cursor steadily visible');
    await page.emulateMedia({reducedMotion:'no-preference'});
    await footerHelp.hover();
    const footerHeart=footerHelp.locator('.support-heart');

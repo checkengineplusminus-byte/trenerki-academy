@@ -192,6 +192,12 @@
 .developer-credit .terminal-cursor {
   color: #9bcead;
   font-weight: 700;
+  animation: academy-cursor-blink 1.05s step-end infinite;
+}
+
+@keyframes academy-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .academy-footer__utility .academy-footer__staff {
@@ -272,6 +278,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .developer-credit .terminal-cursor {
+    animation: none;
+  }
+
   .academy-footer__links a,
   .academy-footer__company-link,
   .academy-footer__utility a,
