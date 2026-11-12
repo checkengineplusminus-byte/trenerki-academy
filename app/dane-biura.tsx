@@ -1,0 +1,3 @@
+import React from 'react';
+import {View,Text,Pressable,Linking} from 'react-native';
+export default function WorkspaceIdentity(){return <View style={{flex:1,padding:24,justifyContent:'center',gap:16,backgroundColor:'#f6f8f1'}}><Text style={{fontSize:28,fontWeight:'800',color:'#193d2d'}}>Dane biura i stron faktury</Text><Text style={{fontSize:16,lineHeight:25}}>Otwórz kartę w przeglądarce i zaloguj się na to samo konto. NIP, REGON, KRS, adresy i dokumenty ćwiczeniowe zapisują się w Twoim biurze.</Text><Pressable onPress={()=>void Linking.openURL('https://trenerki.com/dane-biura')} style={{padding:16,backgroundColor:'#193d2d',borderRadius:12}}><Text style={{color:'white',fontWeight:'800'}}>Otwórz kartę danych</Text></Pressable></View>;}
