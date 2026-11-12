@@ -14,6 +14,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Verify exam question rotation and scoring
+        run: node --experimental-strip-types scripts/test-exam-rotation.mjs
       - name: Check curriculum and test-only sales
         run: node scripts/check-content-consistency.mjs
       - name: Enforce minimum thirty chapters in every course

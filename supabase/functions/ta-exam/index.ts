@@ -1,11 +1,10 @@
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
+import {examAttemptWindow,maxExamQuestions,nextChoice,questionKey,type Choice} from './selection.ts';
 
 const origins=new Set(['https://trenerki.com','https://www.trenerki.com','https://trenerki-academy.expo.app','https://trenerki.academy','https://www.trenerki.academy']);
 const trim=(v:unknown,n=200)=>typeof v==='string'?v.trim().slice(0,n):'';
 const validSlug=(s:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(s);
 type Lesson={lesson_no:number;title_pl:string;material:any};
-function pick<T>(arr:T[]):T{const b=new Uint32Array(1);crypto.getRandomValues(b);return arr[b[0]%arr.length];}
-type Choice={lesson_no:number;question:string;expected_answer:string;question_options:string[];correct_option:number};
 function choiceBank(lessons:Lesson[]):Choice[]{
  const bank:Choice[]=[];
  for(const l of lessons){
@@ -22,30 +21,6 @@ function choiceBank(lessons:Lesson[]):Choice[]{
  }
  return bank;
 }
-function nextChoice(bank:Choice[],history:any[],phase:string):Choice|null{
- const usedQuestions=new Set((history||[]).map((x:any)=>String(x.question||'').trim().toLocaleLowerCase('pl')));
- const usedLessons=new Set((history||[]).map((x:any)=>Number(x.lesson_no)));
- const expertMin=Math.max(0,...bank.map(x=>x.lesson_no))-9;
- const experts=bank.filter(x=>x.lesson_no>=expertMin);
- const target=(phase==='final'||phase==='extra')&&experts.length>=2?experts:bank;
- // Prefer brand-new questions from different lessons. Repeat only when the entire
- // bank is exhausted: legacy 8-lesson courses must not lose an ongoing exam.
- const fresh=bank.filter(x=>!usedQuestions.has(x.question.trim().toLocaleLowerCase('pl')));
- const byStage=target.filter(x=>!usedQuestions.has(x.question.trim().toLocaleLowerCase('pl')));
- let available=byStage.filter(x=>!usedLessons.has(x.lesson_no));
- if(!available.length)available=fresh.filter(x=>!usedLessons.has(x.lesson_no));
- if(!available.length)available=byStage;
- if(!available.length)available=fresh;
- if(!available.length)available=target;
- if(!available.length)return null;
- const chosen=pick(available),shuffled=chosen.question_options.map((answer,index)=>({answer,index}));
- for(let i=shuffled.length-1;i>0;i--){
-  const a=new Uint32Array(1);crypto.getRandomValues(a);const j=a[0]%(i+1);
-  [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
- }
- return {...chosen,question_options:shuffled.map(x=>x.answer),correct_option:shuffled.findIndex(x=>x.index===chosen.correct_option)};
-}
-
 Deno.serve(async(req:Request)=>{
  const origin=req.headers.get('origin')||'';
  const cors={
@@ -86,7 +61,7 @@ Deno.serve(async(req:Request)=>{
    return json({error:'certificate_issue_failed'},503);
   }
   if(certificate.revoked_at)return json({error:'certificate_revoked'},409);
-  return json({ok:true,state:'passed',feedback,certificate,
+  return json({ok:true,state:'passed',feedback,...(feedback?{answer_correct:true}:{}),certificate,
    message:certificate.is_demo?'Gratulacje, egzamin zaliczony. Twój dyplom jest oznaczony jako wzór testowy.':
     'Gratulacje, egzamin zaliczony. Obie wersje dyplomu są gotowe do pobrania. Przekazaliśmy je też do kolejki wysyłki.'});
  }
@@ -107,7 +82,7 @@ Deno.serve(async(req:Request)=>{
  const privateBank:Choice[]=(storedBank||[]).flatMap((row:any)=>{
   const question=trim(row.question_text,1150),options=Array.isArray(row.options)?row.options.map((item:unknown)=>trim(item,450)):[];
   const correct=Number(row.correct_option);
-  return question&&options.length===4&&options.every(Boolean)&&Number.isInteger(correct)&&options[correct]
+  return question&&options.length===4&&options.every(Boolean)&&new Set(options).size===options.length&&Number.isInteger(correct)&&options[correct]
    ?[{lesson_no:Number(row.module_no),question,question_options:options,correct_option:correct,expected_answer:trim(row.explanation,1100)}]
    :[];
  });
@@ -116,11 +91,11 @@ Deno.serve(async(req:Request)=>{
  // exam questions exist. Combine both banks, removing duplicate question stems.
  const seenPrompts=new Set<string>();
  const bank=[...privateBank,...legacyBank].filter(q=>{
-  const normalized=q.question.trim().replace(/\s+/g,' ').toLocaleLowerCase('pl');
+  const normalized=questionKey(q.question);
   if(!normalized||seenPrompts.has(normalized))return false;
   seenPrompts.add(normalized);return true;
  });
- const available=bank.length>=6;
+ const available=bank.length>=maxExamQuestions;
  let {data:session,error:se}=await db.from('ta_exam_sessions').select('*')
  .eq('user_id',user.id).eq('course_slug',slug).eq('status','in_progress').order('created_at',{ascending:false}).limit(1).maybeSingle();
  if(se)return json({error:'db_unavailable'},503);
@@ -128,12 +103,21 @@ Deno.serve(async(req:Request)=>{
   await db.from('ta_exam_sessions').update({status:'failed',phase:'failed',updated_at:new Date().toISOString()}).eq('id',session.id).eq('status','in_progress');
   session=null;
  }
+ async function previousAttempts(sessionId?:string){
+  const query=db.from('ta_exam_sessions').select('history,question')
+   .eq('user_id',user!.id).eq('course_slug',slug)
+   .order('created_at',{ascending:false}).order('id',{ascending:false}).limit(examAttemptWindow-1);
+  if(sessionId)query.neq('id',sessionId);
+  return query;
+ }
  const present=(s:any)=>({ok:true,state:s?'in_progress':ready?'ready':'not_ready',available,completed:completed||0,total:lessons.length,
   session:s?{id:s.id,phase:s.phase,question:s.question,step:s.step,correct:s.correct_count,wrong:s.wrong_count,
   history:(s.history||[]).map((v:any)=>({question:v.question,answer:v.answer,correct:v.correct,feedback:v.feedback})),
   holder_name:s.holder_name,is_demo:s.is_demo,grading_mode:s.grading_mode||'oral',options:(s.grading_mode==='choice'?s.question_options||[]:[])}:null});
  if(session&&session.grading_mode!=='choice'&&ready&&available){
-  const first=nextChoice(bank,session.history||[],session.phase);
+  const {data:previous,error:historyError}=await previousAttempts(session.id);
+  if(historyError)return json({error:'db_unavailable'},503);
+  const first=nextChoice(bank,session.history||[],session.phase,previous||[]);
   if(!first)return json({error:'question_bank_incomplete'},422);
   const {data:changed,error:e}=await db.from('ta_exam_sessions').update({
    grading_mode:'choice',question:first.question,question_lesson_no:first.lesson_no,
@@ -157,7 +141,9 @@ Deno.serve(async(req:Request)=>{
    .eq('user_id',user.id).eq('course_slug',slug).gte('assessed_at',today.toISOString());
   if(ae)return json({error:'db_unavailable'},503);
   if((failedAttempts||0)>=3)return json({error:'exam_daily_limit'},429);
-  const first=nextChoice(bank,[],'practice');
+  const {data:previous,error:historyError}=await previousAttempts();
+  if(historyError)return json({error:'db_unavailable'},503);
+  const first=nextChoice(bank,[],'practice',previous||[]);
   if(!first)return json({error:'question_bank_incomplete'},422);
   const isDemo=!requireReal;
   const {data:s,error:e}=await db.from('ta_exam_sessions').insert({
@@ -166,6 +152,11 @@ Deno.serve(async(req:Request)=>{
    grading_mode:'choice',question_options:first.question_options,correct_option:first.correct_option,
    history:[],status:'in_progress',is_demo:isDemo
   }).select('*').single();
+  if(e?.code==='23505'){
+   const {data:active,error:activeError}=await db.from('ta_exam_sessions').select('*')
+    .eq('user_id',user.id).eq('course_slug',slug).eq('status','in_progress').maybeSingle();
+   if(!activeError&&active)return json(present(active));
+  }
   if(e)return json({error:'exam_start_failed'},409);
   return json(present(s));
  }
@@ -193,8 +184,13 @@ Deno.serve(async(req:Request)=>{
  }
  const history=[...(session.history||[]),{
   lesson_no:session.question_lesson_no,question:session.question,answer,correct:evaluation.correct,feedback:evaluation.feedback,
-  answered_at:new Date().toISOString()}];
- const next=status==='in_progress'?nextChoice(bank,history,phase):null;
+  correct_option:session.correct_option,answered_at:new Date().toISOString()}];
+ let next:Choice|null=null;
+ if(status==='in_progress'){
+  const {data:previous,error:historyError}=await previousAttempts(session.id);
+  if(historyError)return json({error:'db_unavailable'},503);
+  next=nextChoice(bank,history,phase,previous||[]);
+ }
  if(status==='in_progress'&&!next)return json({error:'question_bank_incomplete'},422);
  const now=new Date().toISOString();
  const {data:changed,error:saveError}=await db.from('ta_exam_sessions').update({
@@ -217,6 +213,6 @@ Deno.serve(async(req:Request)=>{
   user_id:user.id,course_slug:slug,exam_session_id:session.id,score_percent:score,passed:false,assessed_at:now
  });
  if(resultError){console.error('exam_results_insert_failed',resultError.code);return json({error:'exam_result_save_failed'},503);}
- return json({ok:true,state:'failed',feedback:evaluation.feedback,correct:correctCount,wrong:wrongCount,
+ return json({ok:true,state:'failed',feedback:evaluation.feedback,answer_correct:evaluation.correct,correct:correctCount,wrong:wrongCount,
   message:'Tym razem nie udało się zaliczyć. Możesz wrócić do lekcji i spróbować ponownie (do trzech pełnych podejść dziennie).'});
 });

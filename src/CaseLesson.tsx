@@ -1,5 +1,6 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useMemo,useState} from 'react';
 import {View,Text,Pressable} from 'react-native';
+import {optionOrder} from './quizOrder';
 
 export type LearningCase={
  intro?:string;situation?:string;example:string;question:string;
@@ -13,14 +14,14 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
  const [methodOpen,setMethodOpen]=useState(false);
  const [accepted,setAccepted]=useState(false),[verifying,setVerifying]=useState(false),[verifyError,setVerifyError]=useState('');
  useEffect(()=>{setChosen(null);setTries(0);setHint(false);setMethodOpen(false);setAccepted(false);setVerifying(false);setVerifyError('');onPassed?.(false)},[identity]);
+ const optionCount=data?.options?.length??0;
+ const order=useMemo(()=>optionOrder(optionCount),[identity,optionCount]);
  if(!data?.question?.trim()||!data.options?.length)return null;
  const passed=chosen===data.correct&&accepted;
  const feedbackForChoice=(index:number|null)=>index===null?'':data.feedback?.[index]?.trim()||'';
  const enabled=Array.isArray(data.options)&&data.correct>=0&&data.correct<data.options.length;
  const correctAnswer=data.correct;
  if(!enabled)return null;
- const seed=identity.split('').reduce((n,c)=>n+c.charCodeAt(0),0)%data.options.length;
- const order=data.options.map((_,i)=>({value:data.options[(i+seed)%data.options.length],original:(i+seed)%data.options.length}));
  async function choose(index:number){
   if(verifying||passed)return;
   setChosen(index);setTries(n=>n+1);setVerifyError('');setAccepted(false);onPassed?.(false);setVerifying(true);
@@ -52,9 +53,9 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
     <Text style={{color:ink,fontSize:13,lineHeight:20}}>3. Przewidź skutek błędnego wyboru. Nie utożsamiaj szybkiego działania z poprawnym wynikiem.</Text>
     <Text style={{color:ink,fontSize:13,lineHeight:20}}>4. Wybierz odpowiedź, którą da się sprawdzić na podstawie faktów.</Text>
    </View>}
-   {order.map(({value,original},position)=><Pressable key={position} accessibilityRole="button" onPress={()=>void choose(original)} disabled={passed||verifying}
+   {order.map((original,position)=><Pressable key={position} accessibilityRole="button" onPress={()=>void choose(original)} disabled={passed||verifying}
     style={{borderRadius:11,padding:14,backgroundColor:chosen===original?(passed?'#d9f0c9':'#fff0db'):'#f7faf4',borderWidth:chosen===original?2:1,borderColor:chosen===original?(passed?'#6aa365':'#c8a06c'):'#d9e3d6'}}>
-    <Text style={{fontSize:15,color:ink,fontWeight:'700',lineHeight:23}}>{String.fromCharCode(65+position)}. {value}</Text>
+    <Text style={{fontSize:15,color:ink,fontWeight:'700',lineHeight:23}}>{String.fromCharCode(65+position)}. {data.options[original]}</Text>
    </Pressable>)}
    {chosen!==null&&<View style={{backgroundColor:passed?'#cfe8c7':'#ffefd8',borderRadius:11,padding:14,gap:7}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:16}}>{passed?'✓ Poprawna odpowiedź. Zapisano wynik.':verifying?'Sprawdzam odpowiedź…':chosen===data.correct?'Poprawna odpowiedź, trwa potwierdzanie.':'Jeszcze nie. Spróbuj raz jeszcze.'}</Text>

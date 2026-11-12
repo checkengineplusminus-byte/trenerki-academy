@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {ActivityIndicator,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import {shuffled} from '../src/quizOrder';
 import {HelpLink} from '../src/support/links';
 
 const course='zaufany-wolontariusz';
@@ -185,7 +186,18 @@ function Cards({userId,cards}:{userId:string;cards:Card[]}){
  </View>;
 }
 
-function Quiz({title,questions,minimum,openLesson}:{title:string;questions:Question[];minimum:number;openLesson:(lesson:number)=>void}){
+function orderQuiz(questions:Question[]):Question[]{
+ const positions=shuffled(questions.map((_,index)=>index%3));
+ return questions.map((question,index)=>{
+  const answer=positions[index];
+  const options=shuffled(question.options.filter((_,option)=>option!==question.answer));
+  options.splice(answer,0,question.options[question.answer]);
+  return {...question,options,answer};
+ });
+}
+
+function Quiz({title,questions:source,minimum,openLesson}:{title:string;questions:Question[];minimum:number;openLesson:(lesson:number)=>void}){
+ const [questions,setQuestions]=useState(()=>orderQuiz(source));
  const [answers,setAnswers]=useState<Record<number,number>>({});
  const [submitted,setSubmitted]=useState(false);
  const criticalCount=questions.filter(question=>question.critical).length;
@@ -222,7 +234,7 @@ function Quiz({title,questions,minimum,openLesson}:{title:string;questions:Quest
     onPress={()=>setSubmitted(true)} style={[styles.primary,!complete&&styles.disabled]}>
     <Text style={styles.primaryText}>Sprawdź wynik</Text>
    </Pressable>
-   <Pressable accessibilityRole="button" onPress={()=>{setAnswers({});setSubmitted(false);}} style={styles.tab}>
+   <Pressable accessibilityRole="button" onPress={()=>{setQuestions(orderQuiz(source));setAnswers({});setSubmitted(false);}} style={styles.tab}>
     <Text style={styles.tabText}>Zacznij od nowa</Text>
    </Pressable>
   </View>

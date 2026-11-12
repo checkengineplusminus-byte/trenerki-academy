@@ -1,4 +1,5 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useMemo,useState} from 'react';
+import {optionOrder} from './quizOrder';
 import {View,Text,Image,Pressable,Platform} from 'react-native';
 
 type Phrase={target:string;polish:string;approx?:string;tip?:string};
@@ -58,12 +59,11 @@ function Speaker({text,locale}:{text:string;locale:string}){
 export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:{lesson?:ConstructionMaterial,identity?:string,onPassed?:(passed:boolean)=>void,onAttempt?:(index:number,correct:boolean)=>Promise<boolean>|boolean}){
  const [selected,setSelected]=useState<number|null>(null),[confirmed,setConfirmed]=useState(false),[verifying,setVerifying]=useState(false),[verificationError,setVerificationError]=useState('');
  useEffect(()=>{setSelected(null);setConfirmed(false);setVerifying(false);setVerificationError('');onPassed?.(false)},[identity]);
+ const quiz=lesson?.roleplay;
+ const optionCount=quiz?.options?.length??0;
+ const order=useMemo(()=>optionOrder(optionCount),[identity,optionCount]);
  if(!lesson)return null;
- const quiz=lesson.roleplay;
- const lessonIndex=Number((identity||'0').split('-').slice(-1)[0])||0;
- const shift=quiz?.options?.length?lessonIndex%quiz.options.length:0;
- const shuffled=(quiz?.options||[]).map((_,i)=>({answer:quiz.options[(i+shift)%quiz.options.length],original:(i+shift)%quiz.options.length}));
- const choiceCorrect=selected!==null&&shuffled[selected]?.original===quiz.correct&&confirmed;
+ const choiceCorrect=!!quiz&&selected!==null&&order[selected]===quiz.correct&&confirmed;
  const picture='/academy/illustrations/'+(['wejscie','bezpieczenstwo','narzedzia','placa','zgloszenie','koniec'].includes(lesson.scene)?lesson.scene:'wejscie')+'.svg';
  return <View style={{gap:17}}>
   <View style={{backgroundColor:'#e9f2e2',borderRadius:18,overflow:'hidden',borderWidth:1,borderColor:'#d5e8ce'}}>
@@ -129,7 +129,7 @@ export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:
   {!!quiz&&<View testID="construction-checkpoint" style={{backgroundColor:'#193b2d',padding:20,borderRadius:18,gap:12}}>
    <Text style={{fontSize:12,color:'#bfe6b0',fontWeight:'900',letterSpacing:1}}>Z ŻYCIA BUDOWY · MAŁA SYMULACJA</Text>
    <Text style={{fontSize:20,color:'white',fontWeight:'900',lineHeight:28}}>{quiz.question}</Text>
-   {shuffled.map(({answer,original},i)=><Pressable key={i} accessibilityRole="button" disabled={verifying||choiceCorrect} onPress={async()=>{
+   {order.map((original,i)=><Pressable key={i} accessibilityRole="button" disabled={verifying||choiceCorrect} onPress={async()=>{
     if(verifying||choiceCorrect)return;
     setSelected(i);setVerificationError('');setConfirmed(false);onPassed?.(false);setVerifying(true);
     try{
@@ -141,11 +141,11 @@ export default function ConstructionLesson({lesson,identity,onPassed,onAttempt}:
      setConfirmed(false);onPassed?.(false);setVerificationError('Nie udało się zapisać próby. Spróbuj ponownie.');
     }finally{setVerifying(false)}
    }} style={{padding:14,borderRadius:12,backgroundColor:selected===i?(original===quiz.correct?'#d5edc8':'#fff0d8'):'#f1f6ee',borderWidth:selected===i?2:0,borderColor:selected===i?(original===quiz.correct?'#80b177':'#bd8643'):'transparent'}}>
-    <Text style={{color:ink,fontWeight:'800',lineHeight:21}}>{String.fromCharCode(65+i)}. {answer}</Text>
+    <Text style={{color:ink,fontWeight:'800',lineHeight:21}}>{String.fromCharCode(65+i)}. {quiz.options[original]}</Text>
    </Pressable>)}
    {!!verificationError&&<Text style={{color:'#f6d9a8',fontWeight:'800'}}>{verificationError}</Text>}
    {selected!==null&&<View style={{backgroundColor:choiceCorrect?'#d4ead2':'#fff0d9',padding:13,borderRadius:11}}>
-    <Text style={{color:ink,fontWeight:'900'}}>{choiceCorrect?'Wynik zapisany — możesz przejść dalej.':selected!==null&&shuffled[selected]?.original===quiz.correct?'To prawidłowy wybór. Zapisuję wynik…':'Spróbuj jeszcze raz. To ważne.'}</Text>
+    <Text style={{color:ink,fontWeight:'900'}}>{choiceCorrect?'Wynik zapisany — możesz przejść dalej.':selected!==null&&order[selected]===quiz.correct?'To prawidłowy wybór. Zapisuję wynik…':'Spróbuj jeszcze raz. To ważne.'}</Text>
     <Text style={{color:'#4e5f4d',marginTop:5,lineHeight:21}}>{quiz.why}</Text>
    </View>}
   </View>}

@@ -1,5 +1,6 @@
 import React,{useMemo,useState} from 'react';
 import {View,Text,Pressable} from 'react-native';
+import {shuffled} from './quizOrder';
 import HandsOnLab,{softwareMode} from './HandsOnLab';
 import {LabButton,LabGroup,labInk,labStyles} from './LabControls';
 
@@ -18,14 +19,16 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
 }){
  const valid=useMemo(()=>Array.isArray(shortcuts)?shortcuts.filter(s=>s.keys?.length>0&&s.label&&s.before&&s.after):[],[shortcuts]);
  const [active,setActive]=useState<KeyboardShortcut>(),[runId,setRunId]=useState(0);
+ const [options,setOptions]=useState<KeyboardShortcut[]>([]);
  const [answer,setAnswer]=useState<number|null>(null),[verifying,setVerifying]=useState(false),[quizConfirmed,setQuizConfirmed]=useState(false),[error,setError]=useState('');
  const mode=softwareMode(slug);
  if(!mode&&!valid.length)return null;
 
  function showShortcut(item:KeyboardShortcut){
+  const alternatives=shuffled(valid.filter(x=>x.combo!==item.combo)).slice(0,2);
+  setOptions(shuffled([item,...alternatives]));
   setActive(item);setAnswer(null);setQuizConfirmed(false);setError('');
  }
- const options=active?[active,...valid.filter(x=>x.combo!==active.combo).slice(0,2)].sort((a,b)=>a.combo.localeCompare(b.combo)):[];
  async function verify(option:KeyboardShortcut,index:number){
   if(!active||verifying||quizConfirmed)return;
   const correct=option.combo===active.combo;
