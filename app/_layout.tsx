@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {View,ActivityIndicator,Platform} from 'react-native';
-import {Slot,Stack,usePathname} from 'expo-router';
+import {Link,Slot,Stack,usePathname} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import {supabase} from '../src/supabase';
 
@@ -24,6 +24,7 @@ export default function RootLayout(){
 }
 
 function AccountLayout(){
+ const pathname=usePathname();
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  useEffect(()=>{
@@ -41,7 +42,9 @@ function AccountLayout(){
   return()=>{mounted=false;subscription.unsubscribe()};
  },[]);
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
- return <View style={{flex:1}}><View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
+ return <View style={{flex:1}}>
+  {signedIn&&['/ksiegowosc','/biuro-ksiegowe','/slownik-ksiegowego'].includes(pathname)&&<View style={{paddingVertical:10,paddingHorizontal:20,backgroundColor:'#eaf3df'}}><Link href="/formularze-ksiegowego" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Formularze — bezpłatne oryginały i ćwiczenia →</Link></View>}
+  <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>
   <Stack.Screen name="kup"/>
@@ -56,6 +59,7 @@ function AccountLayout(){
    <Stack.Screen name="biuro-ksiegowe"/>
    <Stack.Screen name="slownik-ksiegowego"/>
    <Stack.Screen name="ksiegowosc"/>
+   <Stack.Screen name="formularze-ksiegowego"/>
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>

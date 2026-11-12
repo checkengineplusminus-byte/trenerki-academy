@@ -1,0 +1,25 @@
+name: Formularze ksiegowe — testy
+on:
+  push:
+    paths:
+      - 'src/accounting/forms-core.js'
+      - 'app/formularze-ksiegowego.tsx'
+      - 'scripts/test-accounting-forms.mjs'
+      - '.github/workflows/accounting-forms-tests.yml'
+  pull_request:
+    paths:
+      - 'src/accounting/forms-core.js'
+      - 'app/formularze-ksiegowego.tsx'
+      - 'scripts/test-accounting-forms.mjs'
+      - '.github/workflows/accounting-forms-tests.yml'
+permissions:
+  contents: read
+jobs:
+  formularze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --experimental-default-type=module --test scripts/test-accounting-forms.mjs
