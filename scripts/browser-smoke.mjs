@@ -205,7 +205,7 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');
   assert.equal(await page.locator('#anielka-question').count(),1,'Search field must be unique');
-  await page.route('**/academy/photos/excel-skroty.webp',route=>route.fulfill({status:404,body:''}));
+  await page.route('**/academy/photos/excel-skroty.webp**',route=>route.fulfill({status:404,body:''}));
   await field.fill('Chcę używać Excela do kosztorysów w pracy');
   await page.locator('#anielka-peek [data-anielka-course="excel-skroty"]').waitFor({timeout:7000});
   const count=await page.locator('#course-cards .course-card').count();
