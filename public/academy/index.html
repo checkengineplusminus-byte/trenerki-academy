@@ -198,7 +198,7 @@
 .category-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 22px}
 .category-tile{display:flex;gap:12px;min-height:117px;padding:15px 14px;background:#fff;border:1px solid #dae6d6;border-radius:16px;align-items:center;position:relative;transition:transform .15s,border-color .15s,background .15s}
 .category-tile:hover,.category-tile:focus-visible{transform:translateY(-2px);border-color:#94b688;background:#f6faef}
-.category-tile-icon{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;font-size:25px;background:#e8f4df;border-radius:12px}
+.category-tile-icon{width:70px;height:70px;flex-shrink:0;display:grid;place-items:center;font-size:27px;background:#e8f4df;border-radius:15px;overflow:hidden;position:relative;box-shadow:0 2px 9px #183c2b1a;border:1px solid #ffffffa6}.category-tile-icon .category-tile-fallback{position:absolute;inset:0;display:grid;place-items:center}.category-tile-icon img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .3s ease}.category-tile:hover .category-tile-icon img,.category-tile:focus-visible .category-tile-icon img{transform:scale(1.1)}
 .category-tile-copy{display:flex;flex-direction:column;min-width:0;gap:3px}
 .category-tile-copy strong{font-size:14px;line-height:1.2;font-weight:900;color:#173b28}
 .category-tile-copy small{font-size:11px;font-weight:800;color:#4f7857}
@@ -207,9 +207,9 @@
 .catalog-category-head small{white-space:normal;text-align:right;line-height:1.4}
 .catalog-category-grid .btn-inline{display:inline-flex;align-items:center;justify-content:center;text-align:center;text-decoration:none}
 @media(max-width:900px){.hero-in{grid-template-columns:1fr 1fr}.category-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{min-height:210px}.hero-course-spotlight{min-height:210px}}
-@media(max-width:610px){.hero-in{grid-template-columns:1fr;gap:10px;padding-top:20px!important;padding-bottom:19px!important}.hero h1{font-size:clamp(29px,7vw,39px)}.hero-desc{font-size:13px;line-height:1.55}.hero-art{min-height:140px}.hero-course-spotlight{width:100%;min-height:142px;gap:5px;padding:13px 16px;box-shadow:none}.spotlight-title{font-size:16px;-webkit-line-clamp:2}.spotlight-pricing{font-size:16px}.spotlight-cta{padding:5px 10px;font-size:11px}.spotlight-disclaimer{display:none}.category-tiles{gap:8px}.category-tile{min-height:105px;padding:10px;gap:8px}.category-tile-icon{width:33px;height:33px;font-size:19px;border-radius:9px}.category-tile-copy strong{font-size:12px}.category-tile-copy small,.category-tile-copy>span{font-size:10px;line-height:1.25}.category-tile>b{display:none}.hero .trust-strip{font-size:10px}.hero-actions{margin:12px 0!important}.hero-course-link{font-size:10px}}
+@media(max-width:610px){.hero-in{grid-template-columns:1fr;gap:10px;padding-top:20px!important;padding-bottom:19px!important}.hero h1{font-size:clamp(29px,7vw,39px)}.hero-desc{font-size:13px;line-height:1.55}.hero-art{min-height:140px}.hero-course-spotlight{width:100%;min-height:142px;gap:5px;padding:13px 16px;box-shadow:none}.spotlight-title{font-size:16px;-webkit-line-clamp:2}.spotlight-pricing{font-size:16px}.spotlight-cta{padding:5px 10px;font-size:11px}.spotlight-disclaimer{display:none}.category-tiles{gap:8px}.category-tile{min-height:105px;padding:10px;gap:8px}.category-tile-icon{width:47px;height:47px;font-size:19px;border-radius:11px}.category-tile-copy strong{font-size:12px}.category-tile-copy small,.category-tile-copy>span{font-size:10px;line-height:1.25}.category-tile>b{display:none}.hero .trust-strip{font-size:10px}.hero-actions{margin:12px 0!important}.hero-course-link{font-size:10px}}
 @media(max-width:340px){.category-tiles{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){.hero-course-spotlight,.category-tile{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.hero-course-spotlight,.category-tile,.category-tile-icon img{transition:none!important}}
 
 </style>
 <link rel="canonical" href="https://trenerki.com/academy/index.html" />
@@ -334,7 +334,7 @@ function courseIllustration(c){
 }
 
 
-const CATEGORY_TILES=[{"name":"Budownictwo","slug":"budownictwo","icon":"🏗️","headline":"Od planu do budowy","sub":"Organizacja robót, rysunki i praktyczne umiejętności","count":9},{"name":"Rzemiosło i hobby","slug":"rzemioslo-i-hobby","icon":"🛠️","headline":"Zrób to samodzielnie","sub":"Poznaj materiały, narzędzia i techniki od podstaw","count":25},{"name":"Technologie i logistyka","slug":"technologie-i-logistyka","icon":"💻","headline":"Technologia bez stresu","sub":"Excel, AutoCAD, programy i codzienna organizacja","count":15},{"name":"Biznes i praca","slug":"biznes-i-praca","icon":"📊","headline":"Więcej umiejętności w pracy","sub":"Zarządzanie, organizacja i praktyka zawodowa","count":8},{"name":"Rodzina i rozwój","slug":"rodzina-i-rozwoj","icon":"🌱","headline":"Zadbaj o siebie i bliskich","sub":"Relacje, komunikacja i codzienny rozwój","count":17},{"name":"Dom i codzienność","slug":"dom-i-codziennosc","icon":"🏡","headline":"Dom pod kontrolą","sub":"Przydatne umiejętności, proste decyzje i domowe projekty","count":7}];
+const CATEGORY_TILES=[{"name":"Budownictwo","slug":"budownictwo","icon":"🏗️","photo":"brygadzista","headline":"Od planu do budowy","sub":"Organizacja robót, rysunki i praktyczne umiejętności","count":9},{"name":"Rzemiosło i hobby","slug":"rzemioslo-i-hobby","icon":"🛠️","photo":"kowal-tradycja","headline":"Zrób to samodzielnie","sub":"Poznaj materiały, narzędzia i techniki od podstaw","count":25},{"name":"Technologie i logistyka","slug":"technologie-i-logistyka","icon":"💻","photo":"autocad-skroty","headline":"Technologia bez stresu","sub":"Excel, AutoCAD, programy i codzienna organizacja","count":15},{"name":"Biznes i praca","slug":"biznes-i-praca","icon":"📊","photo":"koordynator","headline":"Więcej umiejętności w pracy","sub":"Zarządzanie, organizacja i praktyka zawodowa","count":8},{"name":"Rodzina i rozwój","slug":"rodzina-i-rozwoj","icon":"🌱","photo":"blizej-dziecka","headline":"Zadbaj o siebie i bliskich","sub":"Relacje, komunikacja i codzienny rozwój","count":17},{"name":"Dom i codzienność","slug":"dom-i-codziennosc","icon":"🏡","photo":"obowiazki-domowe","headline":"Dom pod kontrolą","sub":"Przydatne umiejętności, proste decyzje i domowe projekty","count":7}];
 let coursePhotos=null;
 const coursePhotoFile=slug=>{
  const file=coursePhotos?.get(slug)?.file;
@@ -392,7 +392,7 @@ function courseCardMedia(c){
 function categoryTilesHTML(){
  return '<div class="category-tiles" aria-label="Wybierz temat nauki">'+CATEGORY_TILES.map(c=>
  '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" data-course-category="'+c.slug+'" onclick="setFilter(\''+c.name+'\');return false" aria-label="'+esc(c.name)+' — zobacz '+c.count+' kursów">'+
- '<span class="category-tile-icon" aria-hidden="true">'+c.icon+'</span><span class="category-tile-copy"><strong>'+esc(c.headline)+'</strong>'+
+ '<span class="category-tile-icon" aria-hidden="true"><span class="category-tile-fallback">'+c.icon+'</span><img src="/academy/photos/'+c.photo+'.webp" alt="" loading="lazy" decoding="async" width="140" height="140"></span><span class="category-tile-copy"><strong>'+esc(c.headline)+'</strong>'+
  '<small>'+esc(c.name)+' · '+c.count+' kursów</small><span>'+esc(c.sub)+'</span></span><b aria-hidden="true">↗</b></a>'
  ).join('')+'</div>';
 }
