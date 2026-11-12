@@ -1,0 +1,3 @@
+import React from 'react';
+import {View,Text,Pressable,Linking} from 'react-native';
+export default function AssetWorkshop(){return <View style={{flex:1,padding:24,justifyContent:'center',gap:16,backgroundColor:'#f8faf3'}}><Text style={{fontSize:28,fontWeight:'800',color:'#183c2b'}}>Kartoteka majątku</Text><Text style={{fontSize:16,lineHeight:25}}>Przyjęcie, amortyzacja i likwidacja są dostępne w przeglądarce. Zaloguj się na to samo konto, aby odczytać zapisane biuro.</Text><Pressable onPress={()=>Linking.openURL('https://trenerki.com/majatek-ksiegowy')} style={{backgroundColor:'#183c2b',padding:16,borderRadius:12}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Otwórz kartotekę</Text></Pressable></View>;}

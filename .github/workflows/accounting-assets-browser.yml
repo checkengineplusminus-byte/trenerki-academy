@@ -1,0 +1,47 @@
+name: Majatek — ekran w przegladarce testowej
+on:
+  push:
+    paths:
+      - 'app/majatek-ksiegowy*'
+      - 'src/accounting/**'
+      - 'scripts/assets-browser.mjs'
+      - '.github/workflows/accounting-assets-browser.yml'
+  pull_request:
+    paths:
+      - 'app/majatek-ksiegowy*'
+      - 'src/accounting/**'
+      - 'scripts/assets-browser.mjs'
+      - '.github/workflows/accounting-assets-browser.yml'
+permissions:
+  contents: read
+jobs:
+  assets_browser_mock:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Zainstaluj aplikacje i przegladarke testowa
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Zbuduj lokalny eksport
+        run: npx expo export --platform web --output-dir /tmp/trenerki-assets-web
+        env:
+          EXPO_NO_TELEMETRY: '1'
+      - name: Sprawdz ekran z calkowicie przechwyconym API
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-assets-web >/tmp/trenerki-assets-http.log 2>&1 &
+          sleep 2
+          node --experimental-default-type=module scripts/assets-browser.mjs http://127.0.0.1:8787
+      - name: Zachowaj obrazy testowe
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accounting-assets-mock-screens
+          path: /tmp/trenerki-assets-*.png
+          if-no-files-found: ignore
+          retention-days: 7
