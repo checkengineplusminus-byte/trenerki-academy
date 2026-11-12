@@ -4,6 +4,7 @@ import {examAttemptWindow,maxExamQuestions,nextChoice,questionKey,type Choice} f
 const origins=new Set(['https://trenerki.com','https://www.trenerki.com','https://trenerki-academy.expo.app','https://trenerki.academy','https://www.trenerki.academy']);
 const trim=(v:unknown,n=200)=>typeof v==='string'?v.trim().slice(0,n):'';
 const validSlug=(s:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(s);
+const advancedModuleStart=5;
 type Lesson={lesson_no:number;title_pl:string;material:any};
 function choiceBank(lessons:Lesson[]):Choice[]{
  const bank:Choice[]=[];
@@ -81,9 +82,9 @@ Deno.serve(async(req:Request)=>{
  if(bankError)return json({error:'db_unavailable'},503);
  const privateBank:Choice[]=(storedBank||[]).flatMap((row:any)=>{
   const question=trim(row.question_text,1150),options=Array.isArray(row.options)?row.options.map((item:unknown)=>trim(item,450)):[];
-  const correct=Number(row.correct_option);
+  const correct=Number(row.correct_option),moduleNo=Number(row.module_no);
   return question&&options.length===4&&options.every(Boolean)&&new Set(options).size===options.length&&Number.isInteger(correct)&&options[correct]
-   ?[{lesson_no:Number(row.module_no),question,question_options:options,correct_option:correct,expected_answer:trim(row.explanation,1100)}]
+   ?[{lesson_no:moduleNo,advanced:moduleNo>=advancedModuleStart,question,question_options:options,correct_option:correct,expected_answer:trim(row.explanation,1100)}]
    :[];
  });
  const legacyBank=choiceBank(lessons as Lesson[]);

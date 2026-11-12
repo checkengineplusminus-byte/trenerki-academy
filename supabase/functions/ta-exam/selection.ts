@@ -1,5 +1,6 @@
 export type Choice = {
   lesson_no: number
+  advanced?: boolean
   question: string
   expected_answer: string
   question_options: string[]
@@ -50,9 +51,9 @@ export function nextChoice(
   // A short bank still uses all fresh prompts before it can reuse the oldest ones.
   const oldest = Math.max(...remaining.map(age))
   const available = remaining.filter(choice => age(choice) === oldest)
-  const expertMin = Math.max(0, ...bank.map(choice => choice.lesson_no)) - 9
+  const legacyExpertMin = Math.max(0, ...bank.filter(choice => choice.advanced === undefined).map(choice => choice.lesson_no)) - 9
   const experts = phase === 'final' || phase === 'extra'
-    ? available.filter(choice => choice.lesson_no >= expertMin)
+    ? available.filter(choice => choice.advanced ?? (choice.lesson_no >= legacyExpertMin))
     : []
   const newLesson = available.filter(choice => !usedLessons.has(choice.lesson_no))
   const newExpertLesson = experts.filter(choice => !usedLessons.has(choice.lesson_no))
