@@ -53,6 +53,7 @@ function AccountLayout(){
    <Stack.Screen name="moje-kursy"/>
    <Stack.Screen name="ustawienia"/>
    <Stack.Screen name="nauka"/>
+   <Stack.Screen name="biuro-ksiegowe"/>
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>

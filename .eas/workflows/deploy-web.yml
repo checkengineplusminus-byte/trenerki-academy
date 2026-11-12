@@ -19,3 +19,5 @@ jobs:
           run: node scripts/test-anielka.mjs
         - name: Verify meaning and uniqueness of all 80 icons
           run: node scripts/test-course-icons.mjs
+        - name: Sprawdz obliczenia i import pracowni ksiegowej
+          run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
