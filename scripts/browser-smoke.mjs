@@ -60,7 +60,8 @@ async function verify(name,viewport,isMobile){
    const card=document.getElementById('hero-course-spotlight');
    const img=card?.querySelector('.spotlight-photo');
    if(!card||!img)return false;
-   const slug=card.getAttribute('href')?.match(/\\/academy\\/kursy\\/([a-z0-9-]+)\\.html$/)?.[1];
+   const href=card.getAttribute('href')||'';
+   const slug=href.startsWith('/academy/kursy/')&&href.endsWith('.html')?href.split('/').pop().slice(0,-5):'';
    return !!slug&&img.getAttribute('src')==='/academy/photos/'+slug+'.webp'&&img.complete&&img.naturalWidth>0;
   },null,{timeout:15000});
   assert(await page.locator('#hero-course-spotlight').evaluate(card=>{
