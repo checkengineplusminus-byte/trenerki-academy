@@ -28,7 +28,7 @@ export function HelpFooter(){
    <a className="ta-app-footer-help" href="/pomoc" aria-label={helpTitle} aria-describedby="ta-app-footer-help-description">
     <span className="ta-app-footer-heart" aria-hidden="true">
      <span className="ta-app-footer-heart-outline">♡</span>
-     <span className="ta-app-footer-heart-fill">♥</span>
+     <span className="ta-app-footer-heart-fill">♥︎</span>
     </span>
     <span className="ta-app-footer-help-copy">
      <strong>Nie jesteś sam</strong>

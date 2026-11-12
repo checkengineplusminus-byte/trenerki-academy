@@ -54,6 +54,12 @@ async function verify(name,viewport,isMobile){
   await footer.getByRole('link',{name:'Regulamin',exact:true}).waitFor({state:'visible'});
   await footer.getByRole('link',{name:'Polityka prywatności',exact:true}).waitFor({state:'visible'});
   assert.match(await footer.innerText(),/NIP 5272961874/,'Company registration details must be visible');
+  const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
+  if(await consent.isVisible())await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
+  const cookieSettings=footer.locator('.academy-footer__utility').getByRole('button',{name:'Ustawienia plików cookie',exact:true});
+  await cookieSettings.click();
+  await consent.waitFor({state:'visible'});
+  await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   const readHeart=locator=>locator.evaluate(el=>({
    heart:getComputedStyle(el,'::before').animationName,
    halo:getComputedStyle(el,'::after').animationName,

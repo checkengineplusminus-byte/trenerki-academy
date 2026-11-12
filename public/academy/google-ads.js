@@ -74,8 +74,16 @@ function banner(){
 function ready(){
  if(!document.body)return;
  var settings=btn('Ustawienia plików cookie',banner,false);
- settings.style.margin='10px';settings.style.fontSize='12px';
- (document.querySelector('footer')||document.body).appendChild(settings);
+ var footer=document.querySelector('footer');
+ var utility=footer&&footer.querySelector('.academy-footer__utility,.ta-app-footer-links');
+ if(utility){
+  settings.className='trenerki-footer-cookie';
+  settings.style.cssText='';
+  utility.appendChild(settings);
+ }else{
+  settings.style.margin='10px';settings.style.fontSize='12px';
+  (footer||document.body).appendChild(settings);
+ }
  if(!choice)banner();
 }
 if(choice==='yes')load();

@@ -17,9 +17,9 @@
   z-index: 1;
   display: grid;
   place-items: center;
-  content: "♥";
+  content: "♥︎";
   color: transparent;
-  font: 19px/1 system-ui, sans-serif;
+  font: 19px/1 Arial, system-ui, sans-serif;
   -webkit-text-stroke: 1px var(--support-heart-accent, #ad536c);
   transition: color .18s ease;
 }
