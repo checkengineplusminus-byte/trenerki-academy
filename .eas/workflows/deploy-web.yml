@@ -27,3 +27,5 @@ jobs:
           run: node --experimental-default-type=module --test scripts/test-accounting-identities.mjs
         - name: Sprawdz wejscie i postep encyklopedii
           run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+        - name: Sprawdz kolejnosc nauki i zachowanie postepow
+          run: node --experimental-default-type=module --test scripts/test-accounting-study-path.mjs

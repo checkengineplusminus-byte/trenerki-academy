@@ -43,7 +43,7 @@ function AccountLayout(){
  },[]);
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
  return <View style={{flex:1}}>
-  {signedIn&&['/ksiegowosc','/biuro-ksiegowe','/slownik-ksiegowego','/dane-biura'].includes(pathname)&&<View style={{paddingVertical:10,paddingHorizontal:20,backgroundColor:'#eaf3df',gap:8}}><Link href="/formularze-ksiegowego" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Formularze — bezpłatne oryginały i ćwiczenia →</Link><Link href="/dane-biura" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Dane firmy, NIP, REGON, KRS i faktura z danymi stron →</Link></View>}
+  {signedIn&&['/ksiegowosc','/biuro-ksiegowe','/slownik-ksiegowego','/dane-biura','/formularze-ksiegowego'].includes(pathname)&&<View style={{paddingVertical:10,paddingHorizontal:20,backgroundColor:'#eaf3df',gap:8}}><Link href="/sciezka-ksiegowosci" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Od czego zacząć? Ścieżka nauki krok po kroku →</Link><Link href="/formularze-ksiegowego" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Formularze — bezpłatne oryginały i ćwiczenia →</Link><Link href="/dane-biura" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Dane firmy, NIP, REGON, KRS i faktura z danymi stron →</Link></View>}
   <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>
@@ -60,6 +60,7 @@ function AccountLayout(){
    <Stack.Screen name="dane-biura"/>
    <Stack.Screen name="slownik-ksiegowego"/>
    <Stack.Screen name="ksiegowosc"/>
+   <Stack.Screen name="sciezka-ksiegowosci"/>
    <Stack.Screen name="formularze-ksiegowego"/>
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
