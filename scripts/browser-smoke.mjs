@@ -162,7 +162,9 @@ async function verify(name,viewport,isMobile){
   const appHelp=page.locator('footer.ta-app-footer .ta-app-footer-help');
   await appHelp.waitFor({state:'visible'});
   assert.equal(await appHelp.getAttribute('href'),'/pomoc');
-  await page.waitForFunction(()=>getComputedStyle(document.querySelector('.ta-app-footer-help')).display==='inline-flex');
+  // A flex item blockifies an inline-flex child's computed display.
+  await page.waitForFunction(()=>getComputedStyle(document.querySelector('footer.ta-app-footer')).backgroundColor==='rgb(16, 40, 32)',null,{timeout:10000});
+  assert.match(await appHelp.evaluate(el=>getComputedStyle(el).display),/^(?:inline-)?flex$/);
   if(!isMobile){
    await appHelp.hover();
    assert.equal(await appHelp.locator('.ta-app-footer-heart-fill').evaluate(el=>getComputedStyle(el).animationName),'ta-app-heart-beat');
