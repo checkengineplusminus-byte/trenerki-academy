@@ -21,10 +21,36 @@ function load(){
  tag.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(ID);
  document.head.appendChild(tag);
 }
+
+var pendingPurchase=null;
+var SEND_TO='AW-16892618214/_x1jCOy86rYdEObLg_c-';
+function deliverPurchase(purchase){
+ if(choice!=='yes'||!purchase)return;
+ var id=String(purchase.transaction_id||'');
+ var amount=Number(purchase.amount_grosze);
+ if(!/^cs_live_[A-Za-z0-9]+$/.test(id)||!Number.isSafeInteger(amount)||amount<=0||purchase.currency!=='PLN')return;
+ var storageKey='trenerki_google_ads_purchase_'+id;
+ try{if(localStorage.getItem(storageKey)==='sent')return;}catch(_){}
+ load();
+ window.gtag('event','conversion',{
+  send_to:SEND_TO,
+  value:amount/100,
+  currency:'PLN',
+  transaction_id:id
+ });
+ try{localStorage.setItem(storageKey,'sent')}catch(_){}
+ pendingPurchase=null;
+}
+function recordPurchase(purchase){
+ if(!purchase||typeof purchase!=='object')return;
+ pendingPurchase=purchase;
+ if(choice==='yes')deliverPurchase(pendingPurchase);
+}
+window.TrenerkiAds={recordPurchase:recordPurchase};
 function save(value){
  choice=value;
  try{localStorage.setItem(KEY,value)}catch(_){}
- if(value==='yes')load();else consent('denied');
+ if(value==='yes'){load();deliverPurchase(pendingPurchase)}else{consent('denied');pendingPurchase=null;}
  var banner=document.getElementById('trenerki-ads-banner');if(banner)banner.remove();
 }
 function btn(text,fn,primary){

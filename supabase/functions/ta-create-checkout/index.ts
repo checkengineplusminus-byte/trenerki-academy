@@ -56,7 +56,7 @@ Deno.serve(async req=>{
   const consentDate=new Date().toISOString();
   const p=new URLSearchParams({
    mode:'payment',locale:'pl',submit_type:'pay',
-   success_url:site+(giftId?'/prezent?checkout=success':'/moje-kursy?checkout=success'),
+   success_url:site+(giftId?'/prezent?checkout=success':'/moje-kursy?checkout=success&session_id={CHECKOUT_SESSION_ID}'),
    cancel_url:site+(giftId?'/prezent':'/kup')+'?course='+encodeURIComponent(slug),
    customer_email:user.email,
    client_reference_id:user.id,

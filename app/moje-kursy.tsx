@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
-import {ScrollView,View,Text,Pressable,ActivityIndicator,useWindowDimensions} from 'react-native';
-import {useRouter} from 'expo-router';
+import {ScrollView,View,Text,Pressable,ActivityIndicator,useWindowDimensions,Platform} from 'react-native';
+import {useRouter,useLocalSearchParams} from 'expo-router';
 import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
@@ -8,6 +8,45 @@ type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at
 export default function MyCourses(){
  const {width}=useWindowDimensions(),columns=width>=1120?5:width>=850?4:width>=640?3:2,availableWidth=Math.min(width,1150)-40,cardWidth=Math.max(130,Math.floor((availableWidth-(columns-1)*12)/columns));
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
+ const {checkout,session_id:sessionId}=useLocalSearchParams<{checkout?:string;session_id?:string}>();
+ // Count a Google Ads purchase only after Stripe's verified webhook has
+ // created the buyer-owned, active enrollment in Supabase (RLS-protected).
+ useEffect(()=>{
+  if(Platform.OS!=='web'||checkout!=='success'||!/^cs_live_[A-Za-z0-9]+$/.test(sessionId))return;
+  let mounted=true,queryAttempts=0,sendAttempts=0;
+  let timer:ReturnType<typeof setTimeout>|undefined;
+  function publish(order:{stripe_checkout_session_id:string;amount_grosze:number;currency:string}){
+   if(!mounted)return;
+   const ads=(window as any).TrenerkiAds;
+   if(ads&&typeof ads.recordPurchase==='function'){
+    ads.recordPurchase({transaction_id:order.stripe_checkout_session_id,amount_grosze:order.amount_grosze,currency:'PLN'});
+   }else if(sendAttempts++<30){
+    timer=setTimeout(()=>publish(order),500);
+   }
+  }
+  async function confirmPaid(){
+   if(!mounted)return;
+   try{
+    const {data:{user}}=await supabase.auth.getUser();
+    if(user){
+     const {data:order,error:orderError}=await supabase.from('ta_enrollments')
+      .select('stripe_checkout_session_id,stripe_payment_intent_id,amount_grosze,currency,status')
+      .eq('user_id',user.id).eq('stripe_checkout_session_id',sessionId).maybeSingle();
+     if(!orderError&&order){
+      if(order.status==='active'&&typeof order.stripe_payment_intent_id==='string'&&order.stripe_payment_intent_id.startsWith('pi_')&&
+       Number.isSafeInteger(order.amount_grosze)&&order.amount_grosze>0&&String(order.currency).trim().toUpperCase()==='PLN')
+       publish(order);
+      return; // Never track refunded, cancelled, free or malformed orders.
+     }
+    }
+   }catch{}
+   // Stripe's webhook can finish a little later than the checkout redirect.
+   if(mounted&&queryAttempts++<30)timer=setTimeout(()=>void confirmPaid(),2000);
+  }
+  void confirmPaid();
+  return()=>{mounted=false;if(timer)clearTimeout(timer)};
+ },[checkout,sessionId]);
+
  const router=useRouter(),[creditBalance,setCreditBalance]=useState(0),[creditHistory,setCreditHistory]=useState<any[]>([]),[showCreditHistory,setShowCreditHistory]=useState(false),[certificates,setCertificates]=useState<Record<string,Diploma>>({}),[items,setItems]=useState<(Enrollment&{progress:number,completedCount:number,lessonCount:number})[]>([]),[error,setError]=useState(''),[busy,setBusy]=useState(true),[isAdmin,setAdmin]=useState(false);
  useEffect(()=>{void load()},[]);
  async function load(){

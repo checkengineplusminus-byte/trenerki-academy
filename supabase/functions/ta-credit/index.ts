@@ -134,7 +134,7 @@ Deno.serve(async(req)=>{
   const {data:course}=await db.from('ta_courses').select('title_pl').eq('slug',slug).single();
   const params=new URLSearchParams({
    mode:'payment',locale:'pl',submit_type:'pay',customer_email:email,client_reference_id:user.id,
-   success_url:site+'/moje-kursy?checkout=success',
+   success_url:site+'/moje-kursy?checkout=success&session_id={CHECKOUT_SESSION_ID}',
    cancel_url:site+'/kup?course='+encodeURIComponent(slug),
    expires_at:String(Math.floor(Date.now()/1000)+45*60),
    'line_items[0][price_data][currency]':'pln',
