@@ -21,3 +21,14 @@ test('Komunikat nie udaje akceptacji ZUS',()=>assert.equal(feedbackTitle({all_co
 test('Rok przykładu nie jest datą pobrania',()=>assert.equal(periodLabel({verified_tax_years:[2025],verified_at:'2026-11-12'}),'Zweryfikowany rok przykładu: 2025'));
 test('Klucz dokumentu odrzuca tekst zapytania',()=>assert.equal(formKey('formularz?x=1'),false));
 test('Uszkodzony typ odpowiedzi w szkicu jest odrzucony',()=>assert.equal(restoreDraft(JSON.stringify({inputs:{p:{zle:1}},baseVersion:0,revision:'r'}),'r',null),null));
+// Regresje dla dostępności wzoru i dokładnie dozwolonych domen.
+test('Oficjalny PDF MF z prefiksem www nie jest blokowany',()=>assert.ok(officialURL('https://www.podatki.gov.pl/media/10330/form-nip-8.pdf')));
+test('Domena podszywająca się pod MF pozostaje zablokowana',()=>assert.equal(officialURL('https://www.podatki.gov.pl.example.org/druki.pdf'),null));
+test('Dane logowania nie mogą maskować innego adresu',()=>assert.equal(officialURL('https://www.podatki.gov.pl@evil.example/druki.pdf'),null));
+test('Zwykłe HTTP nie jest adresem do pobrania',()=>assert.equal(officialURL('http://www.podatki.gov.pl/druki.pdf'),null));
+test('Weryfikacja dostępności nie udaje daty obowiązywania',()=>assert.equal(periodLabel({period_mode:'verified_current',availability_checked_at:'2026-11-12',verified_at:'2026-11-12'}),'Bieżąca dostępność wzoru sprawdzona: 2026-11-12'));
+test('Nieistniejąca data dostępności wymaga sprawdzenia',()=>assert.equal(periodLabel({period_mode:'verified_current',availability_checked_at:'2026-02-30',verified_at:'2026-02-30'}),'Okres wymaga sprawdzenia'));
+test('Dostępności nie mieszamy z datą obowiązywania',()=>assert.equal(periodLabel({period_mode:'verified_current',availability_checked_at:'2026-11-12',verified_at:'2026-11-12',valid_from:'2021-01-01'}),'Okres wymaga sprawdzenia'));
+test('Dwie różne daty weryfikacji wymagają sprawdzenia',()=>assert.equal(periodLabel({period_mode:'verified_current',availability_checked_at:'2026-11-11',verified_at:'2026-11-12'}),'Okres wymaga sprawdzenia'));
+test('Znany początek stosowania pozostaje osobnym trybem',()=>assert.equal(periodLabel({valid_from:'2021-05-16'}),'Zakres wskazany od: 2021-05-16'));
+test('Brak metadanych okresu nie powoduje awarii',()=>assert.equal(periodLabel(null),'Okres wymaga sprawdzenia'));
