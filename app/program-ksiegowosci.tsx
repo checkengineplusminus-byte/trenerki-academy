@@ -33,6 +33,7 @@ const statusLabels:Record<Topic['status'],string>={
 export default function ProgramKsiegowosci(){
  const router=useRouter();
  const [topics,setTopics]=useState<Topic[]>([]);
+ const [availableCore,setAvailableCore]=useState<number[]>([]);
  const [expanded,setExpanded]=useState<number|null>(1);
  const [busy,setBusy]=useState(true);
  const [error,setError]=useState('');
@@ -50,6 +51,8 @@ export default function ProgramKsiegowosci(){
       .select('topic_no,section_no,topic_in_section,title_pl,status,lesson_no').order('topic_no');
     if(result.error)throw new Error('Nie udało się odczytać nowego programu. Spróbuj ponownie.');
     if(active)setTopics((result.data||[]) as Topic[]);
+    const material=await supabase.from('ta_accounting_core_materials_v3').select('topic_no').order('topic_no');
+    if(!material.error&&active)setAvailableCore((material.data||[]).map((row:any)=>row.topic_no));
    }catch(e:any){if(active)setError(e?.message||'Nie udało się wczytać programu.');}
    finally{if(active)setBusy(false);}
   })();
@@ -77,6 +80,8 @@ export default function ProgramKsiegowosci(){
     {open&&rows.map(topic=><View key={topic.topic_no} style={s.topic}>
      <Text style={s.body}>{topic.topic_no}. {topic.title_pl}</Text>
      <Text style={s.small}>{statusLabels[topic.status]||'Status nieznany'}</Text>
+     {availableCore.includes(topic.topic_no)&&
+      <Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>{topic.status==='review_needed'?'Otwórz opracowanie do recenzji':'Otwórz opracowanie'}</Link>}
      {topic.status==='complete'&&topic.lesson_no!==null&&
       <Link href={{pathname:'/ksiegowosc',params:{lesson:String(topic.lesson_no)}}} style={s.link}>Otwórz sprawdzoną lekcję</Link>}
     </View>)}
