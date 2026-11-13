@@ -1,7 +1,7 @@
 import {termsVersion} from '../_shared/order-confirmation.ts';
+import {giftCodeHash,shortGiftCode} from '../_shared/gift-code.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const headers={'content-type':'application/json','access-control-allow-origin':'*','access-control-allow-headers':'authorization, x-client-info, apikey, content-type','access-control-allow-methods':'POST, OPTIONS'};
-const giftCode=(id:string)=>'TA-'+id.replaceAll('-','').toUpperCase();
 const reply=(data:unknown,status=200)=>new Response(JSON.stringify(data),{status,headers});
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return reply({ok:true});
@@ -43,8 +43,7 @@ Deno.serve(async req=>{
   if(!Deno.env.get('RESEND_API_KEY')||!Deno.env.get('RESEND_FROM_EMAIL'))return reply({error:'email_not_configured'},503);
   const giftId=isGift?crypto.randomUUID():null;
   if(giftId){
-   const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(giftCode(giftId)));
-   const codeHash=Array.from(new Uint8Array(digest),byte=>byte.toString(16).padStart(2,'0')).join('');
+   const codeHash=await giftCodeHash(await shortGiftCode('TA',giftId));
    const {error}=await admin.from('ta_gift_cards').insert({
     id:giftId,code_hash:codeHash,course_slug:slug,created_by:user.id,recipient_email:recipient,
     gift_message:typeof body?.message==='string'?body.message.trim().slice(0,300):null,

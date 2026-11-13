@@ -1,6 +1,7 @@
 import { PDFDocument, PDFString, rgb, type PDFFont } from 'npm:pdf-lib@1.17.1';
 import fontkit from 'npm:@pdf-lib/fontkit@1.1.1';
 import { sans, serif } from '../ta-diplomas/lib/fonts.ts';
+import { isGiftCode, normalizeGiftCode } from './gift-code.ts';
 
 export type GiftCard = {
   id: string;
@@ -34,6 +35,16 @@ const muted = rgb(0.34, 0.43, 0.36);
 const lineColor = rgb(0.78, 0.83, 0.73);
 const decode = (value: string) => Uint8Array.from(atob(value), (c) => c.charCodeAt(0));
 const clean = (value: string) => value.normalize('NFC').replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim();
+
+/** The stored expiry is the source of truth; never substitute the issue date. */
+export function giftCardExpiryLabel(value: string) {
+  const date = new Date(value);
+  if (!Number.isFinite(date.valueOf())) throw new Error('invalid_gift_card_dates');
+  const formatted = new Intl.DateTimeFormat('pl-PL', {
+    timeZone: 'Europe/Warsaw', day: 'numeric', month: 'long', year: 'numeric',
+  }).format(date);
+  return 'Karta ważna do: ' + formatted + ' r.';
+}
 
 // Split long unbroken words as well as natural prose. Nothing is truncated to fit.
 function wrap(value: string, font: PDFFont, size: number, width: number) {
@@ -77,12 +88,12 @@ function fitLines(value: string, font: PDFFont, maxSize: number, width: number, 
 }
 
 export async function buildGiftCardPdf(card: GiftCard): Promise<Uint8Array> {
-  const code = clean(card.code).toUpperCase();
+  const code = normalizeGiftCode(card.code);
   const message = clean(card.gift_message || '');
   const recipient = clean(card.recipient_email);
   const issued = new Date(card.created_at);
   const expiry = new Date(card.expires_at);
-  if (!/^TW-[0-9A-F]{32}$/.test(code)) throw new Error('invalid_gift_card_code');
+  if (!isGiftCode(code, 'TW')) throw new Error('invalid_gift_card_code');
   if (!Number.isSafeInteger(card.amount_grosze) || card.amount_grosze < 2500 || card.amount_grosze > 100000) {
     throw new Error('invalid_gift_card_amount');
   }
@@ -102,9 +113,7 @@ export async function buildGiftCardPdf(card: GiftCard): Promise<Uint8Array> {
     minimumFractionDigits: card.amount_grosze % 100 ? 2 : 0,
     maximumFractionDigits: 2,
   }).format(card.amount_grosze / 100).replace(/\u00a0/g, ' ') + ' zł';
-  const validTo = new Intl.DateTimeFormat('pl-PL', {
-    timeZone: 'Europe/Warsaw', day: '2-digit', month: '2-digit', year: 'numeric',
-  }).format(expiry);
+  const validTo = giftCardExpiryLabel(card.expires_at);
   pdf.setTitle('Karta podarunkowa ' + amount + ' | TRENERKI Academy');
   pdf.setAuthor('TRENERKI Academy');
   pdf.setSubject('Karta do wydruku. Jednorazowy kod do zasilenia salda kursów.');
@@ -151,8 +160,8 @@ export async function buildGiftCardPdf(card: GiftCard): Promise<Uint8Array> {
   center(code, 297.5, 160, codeSize, body);
 
   const policy = card.transferable
-    ? 'Możesz przekazać tę kartę innej osobie. Kod zasila konto tylko raz.'
-    : 'Do odebrania na koncie: ' + recipient;
+    ? 'Przekaż kartę wybranej osobie. Kod można aktywować na dowolnym potwierdzonym koncie. Kod jest jednorazowy.'
+    : 'Ta karta jest przypisana do adresu: ' + recipient;
   const policyText = fitLines(policy, body, 8.4, 515, 2, 6.25);
   policyText.lines.forEach((part, i) => text(part, 40, 132 - i * (policyText.size + 2), policyText.size, body, muted));
   rule(40, 555, 109);
@@ -170,7 +179,7 @@ export async function buildGiftCardPdf(card: GiftCard): Promise<Uint8Array> {
   });
   text('Niewykorzystane środki pozostają na koncie na kolejne kursy.', 41, 60, 7.4, body, muted);
   rule(40, 555, 51);
-  text('KARTĘ ODBIERZ DO ' + validTo, 41, 36, 7.4, body, muted);
+  text(validTo, 41, 36, 8.5, body);
   text('www.trenerki.com/prezent', 388, 35, 9.5, body);
 
   const target = 'https://trenerki.com/prezent?code=' + encodeURIComponent(code);
@@ -189,14 +198,14 @@ export function giftCardFilename(card: GiftCard) {
 
 /** Printable access to one specific course. A course gift has no face-value amount. */
 export async function buildCourseGiftCardPdf(card: CourseGiftCard): Promise<Uint8Array> {
-  const code = clean(card.code).toUpperCase();
+  const code = normalizeGiftCode(card.code);
   const title = clean(card.course_title);
   const message = clean(card.gift_message || '');
   const recipient = clean(card.recipient_email || '');
   const transferable = card.recipient_email === null;
   const issued = new Date(card.created_at);
   const expiry = new Date(card.expires_at);
-  if (!/^TA-[0-9A-F]{32}$/.test(code)) throw new Error('invalid_course_gift_code');
+  if (!isGiftCode(code, 'TA')) throw new Error('invalid_course_gift_code');
   if (!title || Array.from(title).length > 300) throw new Error('invalid_course_gift_title');
   if (!Number.isFinite(issued.valueOf()) || !Number.isFinite(expiry.valueOf()) || expiry <= issued) {
     throw new Error('invalid_gift_card_dates');
@@ -210,9 +219,7 @@ export async function buildCourseGiftCardPdf(card: CourseGiftCard): Promise<Uint
     pdf.embedFont(decode(sans), { subset: true }),
     pdf.embedFont(decode(serif), { subset: true }),
   ]);
-  const validTo = new Intl.DateTimeFormat('pl-PL', {
-    timeZone: 'Europe/Warsaw', day: '2-digit', month: '2-digit', year: 'numeric',
-  }).format(expiry);
+  const validTo = giftCardExpiryLabel(card.expires_at);
   const demo = card.is_demo === true;
   pdf.setTitle((demo ? 'DEMO - NIEWAŻNY | ' : '') + 'Karta podarunkowa: ' + title + ' | TRENERKI Academy');
   pdf.setAuthor('TRENERKI Academy');
@@ -262,14 +269,14 @@ export async function buildCourseGiftCardPdf(card: CourseGiftCard): Promise<Uint
   while (body.widthOfTextAtSize(code, codeSize) > 488) codeSize -= 0.25;
   center(code, 297.5, 105, codeSize, body);
   const policy = transferable
-    ? 'Możesz przekazać tę kartę innej osobie. Kod umożliwia jednorazowy odbiór kursu.'
-    : 'Do odebrania na koncie: ' + recipient;
+    ? 'Przekaż kartę wybranej osobie. Kod można aktywować na dowolnym potwierdzonym koncie. Kod jest jednorazowy.'
+    : 'Ta karta jest przypisana do adresu: ' + recipient;
   const policyText = fitLines(policy, body, 7.8, 515, 2, 6.25);
   policyText.lines.forEach((part, i) => text(part, 40, 82 - i * (policyText.size + 1.5), policyText.size, body, muted));
   rule(40, 555, 66);
   text('Dostęp do kursu przez 12 miesięcy od odbioru.', 41, 53, 8.5, body);
   text('Załóż konto lub zaloguj się, wpisz kod na stronie prezentu i rozpocznij naukę.', 41, 42, 7.3, body, muted);
-  text('KARTĘ ODBIERZ DO ' + validTo, 41, 30, 7.4, body, muted);
+  text(validTo, 41, 30, 8.5, body);
   text('www.trenerki.com/prezent', 388, 30, 9.5, body);
 
   const target = 'https://trenerki.com/prezent?code=' + encodeURIComponent(code);

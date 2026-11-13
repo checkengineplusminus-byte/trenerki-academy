@@ -7,6 +7,7 @@ import {academyAction} from '../src/academyApi';
 import DiplomaRegistry from '../src/DiplomaRegistry';
 import ContactEditor from '../src/support/ContactEditor';
 import {downloadGiftPdf,saveGiftPdf} from '../src/giftPdf';
+import {formatGiftCode} from '../src/giftCode';
 
 const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
@@ -64,11 +65,11 @@ export default function AdminPage(){
  const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'diplomas'|'support'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
- const [giftTransferable,setGiftTransferable]=useState(false),[giftDedication,setGiftDedication]=useState('');
+ const [giftTransferable,setGiftTransferable]=useState(true),[giftDedication,setGiftDedication]=useState('');
  const [issuedGifts,setIssuedGifts]=useState<CourseGift[]>([]);
  const [giftError,setGiftError]=useState('');
  const [promoEmail,setPromoEmail]=useState(''),[promoAmount,setPromoAmount]=useState('100'),[promoMessage,setPromoMessage]=useState('');
- const [promoQuantity,setPromoQuantity]=useState('1'),[promoTransferable,setPromoTransferable]=useState(false);
+ const [promoQuantity,setPromoQuantity]=useState('1'),[promoTransferable,setPromoTransferable]=useState(true);
  const [promoResult,setPromoResult]=useState<PromoResult|null>(null),[promoError,setPromoError]=useState('');
  const [promoHistory,setPromoHistory]=useState<PromoBatch[]>([]),[promoHistoryBusy,setPromoHistoryBusy]=useState(false),[promoHistoryError,setPromoHistoryError]=useState('');
  const [promoHistoryOpen,setPromoHistoryOpen]=useState(false),[promoOpenBatch,setPromoOpenBatch]=useState('');
@@ -186,7 +187,7 @@ export default function AdminPage(){
    <Text style={{color:ink,fontWeight:'900',fontSize:16}}>Karta {index+1} · {money(item.amount_grosze)}</Text>
    <Text style={{color:muted,fontSize:12}}>{promoCardStatus(item)}</Text>
   </View>
-  <Text selectable style={{fontFamily:Platform.OS==='web'?'monospace':undefined,color:ink,fontSize:12,lineHeight:19}}>{item.code.replace(/^(TW-)(.{8})(.{8})(.{8})(.{8})$/,'$1$2 $3 $4 $5')}</Text>
+  <Text selectable style={{fontFamily:Platform.OS==='web'?'monospace':undefined,color:ink,fontSize:12,lineHeight:19}}>{formatGiftCode(item.code)}</Text>
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
    <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF karty '+(index+1)} disabled={!!working||!promoActive(item)} onPress={()=>void downloadPromoPdf(item)} style={{backgroundColor:ink,paddingVertical:11,paddingHorizontal:14,borderRadius:9,opacity:working||!promoActive(item)?.5:1}}>
     <Text style={{color:'white',fontWeight:'800',fontSize:13}}>{working==='pdf:'+item.id?'Przygotowuję PDF…':'Pobierz PDF'}</Text>
@@ -486,7 +487,7 @@ export default function AdminPage(){
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Karty podarunkowe do wydruku</Text>
      <Text style={{fontSize:14,color:muted,lineHeight:22,marginBottom:16}}>Odbiorca dostanie jeden e-mail z osobnym plikiem PDF dla każdej karty. Na karcie znajdą się kwota, jednorazowy kod, dedykacja i termin ważności.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:10}}>
-      {([[false,'Dla wskazanej osoby'],[true,'Do przekazania dalej']] as const).map(([transferable,label])=><Pressable key={label} accessibilityRole="radio" accessibilityState={{checked:promoTransferable===transferable}} disabled={!!working} onPress={()=>setPromoTransferable(transferable)} style={{flexGrow:1,backgroundColor:promoTransferable===transferable?ink:pale,padding:13,borderRadius:11}}>
+      {([[true,'Do przekazania dalej'],[false,'Dla wskazanej osoby']] as const).map(([transferable,label])=><Pressable key={label} accessibilityRole="radio" accessibilityState={{checked:promoTransferable===transferable}} disabled={!!working} onPress={()=>setPromoTransferable(transferable)} style={{flexGrow:1,backgroundColor:promoTransferable===transferable?ink:pale,padding:13,borderRadius:11}}>
        <Text style={{fontSize:13,fontWeight:'900',color:promoTransferable===transferable?'white':ink,textAlign:'center'}}>{label}</Text>
       </Pressable>)}
      </View>
@@ -509,8 +510,9 @@ export default function AdminPage(){
       <Text style={{color:ink,fontSize:17,fontWeight:'900'}}>Łączna wartość: {money(promoTotal)}</Text>
       <Text style={{color:muted,fontSize:12,lineHeight:19}}>{Number.isInteger(promoPayload.quantity)&&promoPayload.quantity>=1&&promoPayload.quantity<=10?promoPayload.quantity:'—'} × {money(promoPayload.amount_grosze)} · 25–1 000 zł na kartę · limit 15 000 zł / 24 h</Text>
      </View>
-     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>{promoTransferable?'E-mail fundacji, firmy lub osoby odbierającej pliki':'E-mail obdarowanej osoby'}</Text>
-     <TextInput accessibilityLabel="E-mail odbiorcy kart PDF" editable={!working} value={promoEmail} onChangeText={setPromoEmail} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
+     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>{promoTransferable?'E-mail do wysyłki karty':'E-mail obdarowanej osoby'}</Text>
+     <TextInput accessibilityLabel={promoTransferable?'E-mail do wysyłki kart PDF':'E-mail obdarowanej osoby'} editable={!working} value={promoEmail} onChangeText={setPromoEmail} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
+     {promoTransferable&&<Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:4}}>Adres służy do wysyłki plików PDF. Osoba korzystająca z karty może mieć inne konto i inny e-mail.</Text>}
      <TextInput accessibilityLabel="Dedykacja na kartach" editable={!working} value={promoMessage} onChangeText={setPromoMessage} multiline maxLength={300} placeholder="Dedykacja na każdej karcie (opcjonalnie)" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,minHeight:84,marginVertical:9,fontSize:15,color:ink,textAlignVertical:'top'}}/>
      <Pressable accessibilityRole="button" disabled={!!working||currentPromoIssued} onPress={issuePromo} style={{backgroundColor:ink,borderRadius:12,padding:16,opacity:working||currentPromoIssued?.5:1}}>
       <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='promo'?'Tworzę karty i pliki PDF…':currentPromoIssued?'Ten pakiet jest już wystawiony':'Wystaw i wyślij karty PDF'}</Text>
@@ -551,20 +553,21 @@ export default function AdminPage(){
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kursy za darmo</Text>
      <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wybierz do 10 kursów i podaruj je bezpłatnie. Każdy kurs otrzyma własną kartę PDF z nazwą i jednorazowym kodem, ważnym przez trzy lata. Dostęp do nauki trwa 12 miesięcy od odbioru.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:15}}>
+      <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(false);setGiftTransferable(true);setIssuedGifts([])}} style={{backgroundColor:giftTransferable?ink:pale,padding:12,borderRadius:10}}>
+       <Text style={{fontSize:13,fontWeight:'900',color:giftTransferable?'white':ink}}>Do przekazania dalej / fundacji</Text>
+      </Pressable>
       <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(false);setGiftTransferable(false);setIssuedGifts([])}} style={{backgroundColor:!giftCompany&&!giftTransferable?ink:pale,padding:12,borderRadius:10}}>
        <Text style={{fontSize:13,fontWeight:'900',color:!giftCompany&&!giftTransferable?'white':ink}}>Dla jednej osoby</Text>
       </Pressable>
       <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(true);setGiftTransferable(false);setIssuedGifts([])}} style={{backgroundColor:giftCompany?ink:pale,padding:12,borderRadius:10}}>
        <Text style={{fontSize:13,fontWeight:'900',color:giftCompany?'white':ink}}>Pakiet dla firmy / pracowników</Text>
       </Pressable>
-      <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(false);setGiftTransferable(true);setIssuedGifts([])}} style={{backgroundColor:giftTransferable?ink:pale,padding:12,borderRadius:10}}>
-       <Text style={{fontSize:13,fontWeight:'900',color:giftTransferable?'white':ink}}>Do przekazania dalej / fundacji</Text>
-      </Pressable>
      </View>
-     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail opiekuna firmy':giftTransferable?'E-mail fundacji lub osoby odbierającej PDF-y':'E-mail odbiorcy'}</Text>
-     <TextInput accessibilityLabel="E-mail odbiorcy kursów" editable={!working} placeholder={giftCompany?'np. szkolenia@firma.pl':'np. odbiorca@example.com'} value={giftEmail} onChangeText={setGiftEmail}
+     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail opiekuna firmy':giftTransferable?'E-mail do wysyłki karty':'E-mail obdarowanej osoby'}</Text>
+     <TextInput accessibilityLabel={giftCompany?'E-mail opiekuna firmy':giftTransferable?'E-mail do wysyłki kart kursów':'E-mail obdarowanej osoby'} editable={!working} placeholder={giftCompany?'np. szkolenia@firma.pl':'np. odbiorca@example.com'} value={giftEmail} onChangeText={setGiftEmail}
       autoCapitalize="none" keyboardType="email-address" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,backgroundColor:'white',color:ink,fontSize:15,marginTop:7,marginBottom:7}}/>
      <Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>{giftCompany?'Firma otrzyma prywatny panel, w którym przydzieli kursy na adresy pracowników. Po przydziale kartę PDF można pobrać w panelu firmy.':giftTransferable?'Fundacja otrzyma oddzielne karty PDF. Może je wydrukować i przekazać innym osobom. Każdy kod może odebrać jedna osoba na swoim potwierdzonym koncie.':'Kody będą przypisane do adresu odbiorcy. Otrzyma on karty PDF z nazwami wybranych kursów.'}</Text>
+     {giftTransferable&&<Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>Podany e-mail służy do wysyłki plików PDF. Obdarowana osoba może odebrać kurs na koncie z innym adresem e-mail.</Text>}
      {!giftCompany&&<TextInput accessibilityLabel="Dedykacja na kartach kursów" editable={!working} value={giftDedication} onChangeText={setGiftDedication} multiline maxLength={300} placeholder="Dedykacja na kartach kursów (opcjonalnie)" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,minHeight:76,marginBottom:14,fontSize:14,color:ink,textAlignVertical:'top'}}/>}
      {giftCompany&&<View style={{gap:7,marginBottom:14}}>
       <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>Nazwa firmy (opcjonalnie)</Text>
@@ -608,6 +611,7 @@ export default function AdminPage(){
       <Text style={{fontSize:12,color:muted}}>{giftSent?'Wiadomość z kartami PDF przyjęto do wysyłki.':'Pobierz karty PDF do wydruku albo skopiuj linki i przekaż je odbiorcy.'}</Text>
       {issuedGifts.map((g,i)=><View key={g.code} style={{borderBottomWidth:1,borderColor:'#d0e4ca',paddingBottom:9}}>
        <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{i+1}. {g.title_pl}</Text>
+       <Text selectable style={{color:ink,fontSize:12,lineHeight:19,marginTop:5}}>{formatGiftCode(g.code)}</Text>
        <Text selectable style={{color:'#245b3a',fontSize:12,marginTop:4}}>{g.link}</Text>
        {!!g.expires_at&&<Text style={{fontSize:12,color:muted,marginTop:5}}>Termin odbioru: {formatDate(g.expires_at)}</Text>}
        <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF kursu '+g.title_pl} disabled={!!working} onPress={()=>void downloadCourseGift(g)} style={{alignSelf:'flex-start',backgroundColor:ink,padding:11,borderRadius:9,marginTop:8,opacity:working?.5:1}}>

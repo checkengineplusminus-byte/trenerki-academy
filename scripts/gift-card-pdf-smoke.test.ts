@@ -1,7 +1,19 @@
-import { PDFDocument } from 'npm:pdf-lib@1.17.1';
-import { buildGiftCardPdf, bytesBase64, giftCardFilename, buildCourseGiftCardPdf, courseGiftCardFilename, type GiftCard, type CourseGiftCard } from '../supabase/functions/_shared/gift-card-pdf.ts';
+import { PDFDocument, PDFDict, PDFName, PDFString } from 'npm:pdf-lib@1.17.1';
+import { buildGiftCardPdf, bytesBase64, giftCardFilename, buildCourseGiftCardPdf, courseGiftCardFilename, giftCardExpiryLabel, type GiftCard, type CourseGiftCard } from '../supabase/functions/_shared/gift-card-pdf.ts';
 
 const check = (value: unknown, message: string) => { if (!value) throw new Error(message); };
+async function checkActivationLink(bytes: Uint8Array, code: string) {
+  const document = await PDFDocument.load(bytes);
+  const annotations = document.getPage(0).node.Annots();
+  check(annotations?.size() === 1, 'Exactly one clickable activation link is required');
+  const annotation = annotations!.lookup(0, PDFDict);
+  check(annotation.lookup(PDFName.of('Subtype'), PDFName).asString() === '/Link', 'PDF annotation is not a link');
+  const action = annotation.lookup(PDFName.of('A'), PDFDict);
+  check(action.lookup(PDFName.of('S'), PDFName).asString() === '/URI', 'PDF action is not a URI');
+  const target = new URL(action.lookup(PDFName.of('URI'), PDFString).decodeText());
+  check(target.origin === 'https://trenerki.com' && target.pathname === '/prezent', 'Activation link leaves TRENERKI');
+  check(target.searchParams.get('code') === code && [...target.searchParams].length === 1, 'Activation link lost or changed the voucher code');
+}
 const card: GiftCard = {
   id: '00000000-0000-4000-8000-000000000001',
   code: 'TW-00000000000040008000000000000001',
@@ -24,6 +36,7 @@ Deno.test('value gift PDF uses a single A5 page, embedded fonts and an activatio
   const size = document.getPage(0).getSize();
   check(size.width === 595.276 && size.height === 419.528, 'Expected A5 landscape');
   check(document.getPage(0).node.Annots()?.size() === 1, 'Activation link missing');
+  await checkActivationLink(bytes, card.code);
   check(document.getTitle()?.includes('100 zł'), 'Face value missing from metadata');
   const roundTrip = Uint8Array.from(atob(bytesBase64(bytes)), c => c.charCodeAt(0));
   check(roundTrip.every((byte, i) => byte === bytes[i]), 'Attachment encoding changed bytes');
@@ -67,6 +80,7 @@ Deno.test('free and paid course gift PDF carries a course title without an inven
     const document = await PDFDocument.load(bytes);
     check(document.getPageCount() === 1, 'Course card must have one page');
     check(document.getPage(0).node.Annots()?.size() === 1, 'Course activation link missing');
+    await checkActivationLink(bytes, input.code);
     check(document.getTitle()?.includes(courseCard.course_title), 'Course title missing');
     check(!document.getTitle()?.includes(' zł'), 'Course card has an invented face value');
     check(courseGiftCardFilename(input).endsWith(input.id + '.pdf'), 'Course filename is not unique');
@@ -91,4 +105,23 @@ Deno.test('demo course card is clearly labelled and cannot accept a value-card c
   let rejected = false;
   try { await buildCourseGiftCardPdf({ ...courseCard, code: card.code }); } catch { rejected = true; }
   check(rejected, 'A money card code was accepted by the course renderer');
+});
+
+Deno.test('validity label clearly identifies the stored future year in Polish', () => {
+  check(giftCardExpiryLabel(card.expires_at) === 'Karta ważna do: 13 listopada 2029 r.', 'Validity date is not explicit');
+  check(!giftCardExpiryLabel(card.expires_at).includes('2026'), 'Issue year replaced the expiry year');
+  check(giftCardExpiryLabel('2029-11-13T23:30:00Z') === 'Karta ważna do: 14 listopada 2029 r.', 'Expiry ignores the Polish timezone');
+  let rejected = false;
+  try { giftCardExpiryLabel(''); } catch { rejected = true; }
+  check(rejected, 'Missing expiry silently became a current date');
+});
+
+Deno.test('short codes and legacy codes keep their exact clickable PDF destination', async () => {
+  for (const code of ['TW-0123456789ABCDEF', card.code]) {
+    await checkActivationLink(await buildGiftCardPdf({ ...card, code }), code);
+  }
+  for (const code of ['TA-0123456789ABCDEF', courseCard.code]) {
+    await checkActivationLink(await buildCourseGiftCardPdf({ ...courseCard, code }), code);
+  }
+  await checkActivationLink(await buildGiftCardPdf({ ...card, code: 'tw-0123 4567 89ab cdef' }), 'TW-0123456789ABCDEF');
 });

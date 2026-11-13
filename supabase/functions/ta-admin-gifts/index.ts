@@ -1,5 +1,6 @@
 import {privacyNotice} from '../_shared/recipient-privacy.ts';
 import {courseGiftMailContent} from '../_shared/gift-card-mail.ts';
+import {giftCodeHash,shortGiftCode} from '../_shared/gift-code.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={
  'access-control-allow-origin':'*',
@@ -10,11 +11,6 @@ const send=(data:unknown,status=200)=>new Response(JSON.stringify(data),{status,
 const validSlug=(slug:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(slug);
 const validMail=(email:string)=>/^[^@\s]{1,70}@[^@\s]{1,120}\.[^@\s]{2,20}$/.test(email);
 const esc=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c));
-const codeForGift=(id:string)=>'TA-'+id.replaceAll('-','').toUpperCase();
-async function hash(code:string){
- const bytes=new TextEncoder().encode(code),digest=await crypto.subtle.digest('SHA-256',bytes);
- return Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,'0')).join('');
-}
 Deno.serve(async request=>{
  if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
  if(request.method!=='POST')return send({error:'method_not_allowed'},405);
@@ -94,10 +90,10 @@ Deno.serve(async request=>{
    seats:slugs.length,email_sent:emailSent,bundle_id:bundle.bundle_id});
  }
  const ids=slugs.map(()=>crypto.randomUUID());
- const codes=ids.map(codeForGift);
- const hashes=await Promise.all(codes.map(hash));
+ const codes=await Promise.all(ids.map(id=>shortGiftCode('TA',id)));
+ const hashes=await Promise.all(codes.map(giftCodeHash));
  const giftMessage=String(body?.message||'').trim().slice(0,300)||
-  (bind?'Bezpłatny prezent od TRENERKI Academy':'Pakiet kursów dla odbiorcy wskazanego przez administratora');
+  'Prezent od TRENERKI Academy. Życzymy Ci przyjemnej nauki!';
  const rows=slugs.map((slug:string,index:number)=>({
   id:ids[index],code_hash:hashes[index],course_slug:slug,created_by:user.id,
   recipient_email:bind?destination:null,
@@ -129,7 +125,7 @@ Deno.serve(async request=>{
      created_at:issuedById.get(gift.gift_id)!.created_at,expires_at:gift.expires_at
     })));
     const res=await fetch('https://api.resend.com/emails',{method:'POST',
-     headers:{authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-free-pdf-v1-'+ids[0]+'-'+ids.length},
+     headers:{authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-free-pdf-v2-'+ids[0]+'-'+ids.length},
      body:JSON.stringify({from,to:[destination],reply_to:'trenerki.pl@gmail.com',...content}),signal:AbortSignal.timeout(15000)});
     emailSent=res.ok;if(!res.ok)emailError='email_provider_unavailable';
     if(res.ok){

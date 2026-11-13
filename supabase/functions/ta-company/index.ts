@@ -1,16 +1,9 @@
 import {courseGiftMailContent} from '../_shared/gift-card-mail.ts';
+import {giftCodeHash,shortGiftCode} from '../_shared/gift-code.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={'access-control-allow-origin':'*','access-control-allow-methods':'POST,OPTIONS','access-control-allow-headers':'authorization,apikey,content-type,x-client-info','content-type':'application/json','cache-control':'no-store'};
 const send=(x:any,status=200)=>new Response(JSON.stringify(x),{status,headers:cors});
 const validMail=(s:string)=>/^[^@\s]{1,70}@[^@\s]{1,110}\.[^@\s]{2,20}$/.test(s);
-function voucherCode(){
- const x=new Uint8Array(16);crypto.getRandomValues(x);
- return 'TA-'+Array.from(x,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
-}
-async function codeHash(code:string){
- const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code));
- return Array.from(new Uint8Array(hash),b=>b.toString(16).padStart(2,'0')).join('');
-}
 const esc=(s:string)=>s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]||ch));
 Deno.serve(async request=>{
  if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
@@ -56,9 +49,11 @@ Deno.serve(async request=>{
   const seatId=String(body?.seat_id||'');
   const recipient=String(body?.employee_email||'').trim().toLowerCase();
   if(!/^[a-f0-9-]{36}$/i.test(seatId)||!validMail(recipient))return send({error:'invalid_recipient'},400);
-  const code=voucherCode();
+  // Company assignment creates its own gift ID in SQL; possession of this
+  // independent code and the manager/recipient checks still protect printing.
+  const code=await shortGiftCode('TA',crypto.randomUUID());
   const {data:assigned,error:assignError}=await db.rpc('ta_company_assign',{
-   p_seat:seatId,p_manager:user.id,p_employee:recipient,p_hash:await codeHash(code)
+   p_seat:seatId,p_manager:user.id,p_employee:recipient,p_hash:await giftCodeHash(code)
   });
   if(assignError){console.error('company_assignment_error',assignError.code);return send({error:'assignment_unavailable'},503)}
   if(assigned?.error)return send({error:assigned.error},assigned.error==='already_assigned'?409:assigned.error==='forbidden'?403:422);
@@ -72,7 +67,7 @@ Deno.serve(async request=>{
     if(giftError||!gift)throw new Error('gift_lookup_failed');
     const content=await courseGiftMailContent([{...gift,code,course_title:assigned.title_pl||assigned.course_slug}]);
     const resp=await fetch('https://api.resend.com/emails',{method:'POST',
-     headers:{authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-company-pdf-v1-'+assigned.gift_card_id+'-'+code},
+     headers:{authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-company-pdf-v2-'+assigned.gift_card_id+'-'+code},
      body:JSON.stringify({from,to:[recipient],reply_to:'trenerki.pl@gmail.com',...content}),
      signal:AbortSignal.timeout(12000)});
     emailSent=resp.ok;

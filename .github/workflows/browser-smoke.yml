@@ -10,6 +10,7 @@ on:
       - 'app/+html.tsx'
       - 'app/index.tsx'
       - 'app/prezent.tsx'
+      - 'app/konto.tsx'
       - 'app/admin.tsx'
       - 'scripts/gift-card-browser.mjs'
       - 'scripts/gift-card-ui-state.test.mjs'

@@ -1,10 +1,10 @@
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 import {buildGiftCardPdf,buildCourseGiftCardPdf,giftCardFilename,courseGiftCardFilename,bytesBase64} from '../_shared/gift-card-pdf.ts';
+import {giftCodeHash,isGiftCode,normalizeGiftCode,resolveGiftCode} from '../_shared/gift-code.ts';
 
 const headers={'content-type':'application/json','access-control-allow-origin':'*','access-control-allow-headers':'authorization,apikey,content-type,x-client-info','access-control-allow-methods':'POST,OPTIONS','cache-control':'no-store'};
 const reply=(data:unknown,status=200)=>new Response(JSON.stringify(data),{status,headers});
 const uuid=(v:unknown):v is string=>typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);
-const hash=async(code:string)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code))),b=>b.toString(16).padStart(2,'0')).join('');
 
 Deno.serve(async req=>{
  if(req.method==='OPTIONS')return reply({ok:true});
@@ -18,15 +18,14 @@ Deno.serve(async req=>{
  if(authError||!user?.email_confirmed_at||!user.email)return reply({error:'confirmed_login_required'},401);
  let body:any;try{body=await req.json();}catch{return reply({error:'invalid_body'},400);}
  if(body?.action!=='pdf')return reply({error:'unknown_action'},400);
- let code=String(body?.code||'').trim().toUpperCase().replace(/\s/g,'');
+ let code=normalizeGiftCode(body?.code);
  const byId=!code&&uuid(body?.gift_id);
- if(byId)code='TA-'+body.gift_id.replaceAll('-','').toUpperCase();
- if(!/^T[AW]-[0-9A-F]{32}$/.test(code))return reply({error:'invalid_gift_code'},400);
+ if(!byId&&!isGiftCode(code))return reply({error:'invalid_gift_code'},400);
  const db=createClient(url,role,{auth:{persistSession:false,autoRefreshToken:false}});
  const email=user.email.toLowerCase();
  try{
   if(code.startsWith('TW-')){
-   const {data:card,error}=await db.from('ta_credit_vouchers').select('id,created_by,recipient_email,gift_message,amount_grosze,status,is_promo,transferable,created_at,expires_at,paid_at').eq('code_hash',await hash(code)).maybeSingle();
+   const {data:card,error}=await db.from('ta_credit_vouchers').select('id,created_by,recipient_email,gift_message,amount_grosze,status,is_promo,transferable,created_at,expires_at,paid_at').eq('code_hash',await giftCodeHash(code)).maybeSingle();
    if(error)return reply({error:'pdf_not_ready'},503);
    if(!card)return reply({error:'card_not_found'},404);
    if(card.created_by!==user.id&&card.recipient_email.toLowerCase()!==email&&!(card.is_promo&&card.transferable))return reply({error:'gift_for_another_email'},403);
@@ -34,9 +33,17 @@ Deno.serve(async req=>{
    const printable={...card,code};
    return reply({ok:true,pdf_base64:bytesBase64(await buildGiftCardPdf(printable)),filename:giftCardFilename(printable)});
   }
-  const {data:card,error}=await db.from('ta_gift_cards').select('id,code_hash,course_slug,created_by,recipient_email,gift_message,mode,status,created_at,expires_at,paid_at').eq('code_hash',await hash(code)).maybeSingle();
+  let query=db.from('ta_gift_cards').select('id,code_hash,course_slug,created_by,recipient_email,gift_message,mode,status,created_at,expires_at,paid_at');
+  // Match stored hashes when reprinting by ID; a pending Stripe gift or older
+  // batch can legitimately retain its original 32-character code after rollout.
+  query=byId?query.eq('id',body.gift_id).eq('created_by',user.id):query.eq('code_hash',await giftCodeHash(code));
+  const {data:card,error}=await query.maybeSingle();
   if(error)return reply({error:'pdf_not_ready'},503);
   if(!card)return reply({error:'card_not_found'},404);
+  if(byId){
+   code=await resolveGiftCode('TA',card.id,card.code_hash)||'';
+   if(!code)return reply({error:'card_not_found'},404);
+  }
   // ID-only lookup is restricted to the creator. A full unpredictable gift code
   // is required for the recipient or the holder of a transferable gift.
   let allowed=byId?card.created_by===user.id:card.created_by===user.id||!card.recipient_email||card.recipient_email.toLowerCase()===email;

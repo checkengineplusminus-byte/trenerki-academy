@@ -7,6 +7,7 @@ import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
 import {coursePrice,termsVersion} from '../src/courseQuote';
 import {academyAction} from '../src/academyApi';
 import {downloadGiftPdf} from '../src/giftPdf';
+import {formatGiftCode,giftCodeEntryError,normalizeGiftCode,validGiftCode} from '../src/giftCode';
 const ink='#173d2c',pale='#e9f4dc';
 export function generateMetadata(){
  return {
@@ -22,7 +23,7 @@ export default function GiftPage(){
  const cardWidth=Math.max(135,Math.floor((Math.min(width,1070)-44-(cols-1)*12)/cols));
  const [catalog,setCatalog]=useState<Course[]>([]),[query,setQuery]=useState(''),[category,setCategory]=useState('Wszystkie'),[visible,setVisible]=useState(8);
  const p=useLocalSearchParams<{course?:string;code?:string;checkout?:string}>(),router=useRouter();
- const course=typeof p.course==='string'?p.course:'',linkCode=typeof p.code==='string'?p.code:'';
+ const course=typeof p.course==='string'?p.course:'',linkCode=normalizeGiftCode(p.code);
  const [valueCardMode,setValueCardMode]=useState(false),[valueAmount,setValueAmount]=useState('100'),[valueRecipient,setValueRecipient]=useState(''),[valueMessage,setValueMessage]=useState(''),[valueTerms,setValueTerms]=useState(false);
  const [recipient,setRecipient]=useState(''),[message,setMessage]=useState(''),[code,setCode]=useState(linkCode),[item,setItem]=useState<Course|null>(null),
  [ready,setReady]=useState(false),[terms,setTerms]=useState(false),[busy,setBusy]=useState(false),
@@ -30,6 +31,7 @@ export default function GiftPage(){
  const [giftQuote,setGiftQuote]=useState<{slug:string;price:number}|null>(null);
  const [createdGift,setCreatedGift]=useState<{code:string;gift_id?:string}|null>(null),[pdfBusy,setPdfBusy]=useState('');
  const pdfLock=useRef(false);
+ useEffect(()=>{if(linkCode)setCode(linkCode);},[linkCode]);
  const [giftHistory,setGiftHistory]=useState<GiftHistory[]>([]),[giftHistoryOpen,setGiftHistoryOpen]=useState(false),[giftHistoryBusy,setGiftHistoryBusy]=useState(false),[giftHistoryError,setGiftHistoryError]=useState('');
  async function loadGiftHistory(){
   setGiftHistoryBusy(true);setGiftHistoryError('');
@@ -129,12 +131,12 @@ export default function GiftPage(){
  async function redeem(){
   if(busy)return;setBusy(true);setNotice('');
   try{
-   const normalizedCode=code.trim().replace(/\s/g,'').toUpperCase();
+   const normalizedCode=validGiftCode(code);
+   if(!normalizedCode)throw new Error(giftCodeEntryError);
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.push({pathname:'/konto',params:{gift:normalizedCode}});return;}
    if(!user.email_confirmed_at)throw new Error('Potwierdź adres e-mail swojego konta, aby odebrać prezent.');
    if(normalizedCode.startsWith('TW-')){
-    if(!/^TW-[0-9A-F]{32}$/.test(normalizedCode))throw new Error('Sprawdź cały kod karty. Zaczyna się od TW- i zawiera 32 znaki.');
     const {data,error}=await supabase.functions.invoke('ta-credit',{body:{action:'redeem',code:normalizedCode}});
     if(error||!data?.ok){
      const response=error instanceof FunctionsHttpError?await error.context.json().catch(()=>null):null;
@@ -161,7 +163,8 @@ export default function GiftPage(){
   if(busy||pdfLock.current)return;
   pdfLock.current=true;setPdfBusy(source);setNotice('');
   try{
-   const normalized=(gift.code||'').trim().replace(/\s/g,'').toUpperCase();
+   const normalized=normalizeGiftCode(gift.code);
+   if(normalized&&!validGiftCode(normalized))throw new Error(giftCodeEntryError);
    const {data:{user}}=await supabase.auth.getUser();
    if(!user){router.push(normalized?{pathname:'/konto',params:{gift:normalized}}:'/konto');return;}
    if(!user.email_confirmed_at)throw new Error('Potwierdź adres e-mail konta, aby pobrać kartę PDF.');
@@ -271,7 +274,7 @@ export default function GiftPage(){
    </View>}
    {!!link&&<View style={{backgroundColor:pale,borderRadius:18,padding:22,gap:10}}>
     <Text style={{color:ink,fontSize:20,fontWeight:'900'}}>Prezent gotowy!</Text>
-    <Text style={{color:ink,fontWeight:'800'}}>Twój kod: {createdGift?.code||code}</Text>
+    <Text selectable style={{color:ink,fontWeight:'800'}}>Twój kod: {formatGiftCode(createdGift?.code||code)}</Text>
     <Text style={{color:'#57775c'}} selectable>{link}</Text>
     <Pressable onPress={share} style={{backgroundColor:ink,padding:15,borderRadius:12}}><Text style={{color:'white',textAlign:'center',fontWeight:'800'}}>Udostępnij / skopiuj link →</Text></Pressable>
     {!!createdGift&&<Pressable accessibilityRole="button" onPress={()=>void printGift(createdGift,'created')} disabled={busy||!!pdfBusy} style={{borderWidth:1,borderColor:ink,padding:14,borderRadius:12,opacity:busy||pdfBusy?.5:1}}><Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>{pdfBusy==='created'?'Przygotowuję PDF…':'Pobierz kartę PDF do wydruku'}</Text></Pressable>}

@@ -6,6 +6,16 @@ on:
       - 'supabase/functions/ta-diplomas/**'
       - 'scripts/diploma-pdf-smoke.test.ts'
       - 'supabase/functions/_shared/gift-card-*.ts'
+      - 'supabase/functions/_shared/gift-code.ts'
+      - 'scripts/gift-code.test.ts'
+      - 'scripts/gift-code-backend.test.ts'
+      - 'supabase/functions/ta-credit/**'
+      - 'supabase/functions/ta-admin-gifts/**'
+      - 'supabase/functions/ta-academy/**'
+      - 'supabase/functions/ta-company/**'
+      - 'supabase/functions/ta-create-checkout/**'
+      - 'supabase/functions/ta-stripe-webhook/**'
+      - 'supabase/functions/ta-gift-print/**'
       - 'scripts/gift-card-pdf-smoke.test.ts'
       - 'scripts/gift-card-mail.test.ts'
       - '.github/workflows/diploma-pdf-smoke.yml'
@@ -23,4 +33,4 @@ jobs:
       - name: Verify Polish/English printable PDF without issuing certificates or emails
         run: deno test --node-modules-dir=auto --allow-net scripts/diploma-pdf-smoke.test.ts
       - name: Verify printable gift cards and email attachments without sending messages
-        run: deno test --node-modules-dir=none --no-lock --allow-read --allow-net scripts/gift-card-pdf-smoke.test.ts scripts/gift-card-mail.test.ts
+        run: deno test --node-modules-dir=none --no-lock --allow-read --allow-net scripts/gift-code.test.ts scripts/gift-card-pdf-smoke.test.ts scripts/gift-card-mail.test.ts scripts/gift-code-backend.test.ts

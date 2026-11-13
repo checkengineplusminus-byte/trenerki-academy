@@ -7,13 +7,20 @@ import {webcrypto} from 'node:crypto';
 import ts from 'typescript';
 const user={id:'00000000-0000-4000-a000-000000000001',email:'owner@example.test',email_confirmed_at:'2026-11-13T00:00:00Z'};
 class FunctionsHttpError extends Error{constructor(code){super(code);this.context={json:async()=>({error:code})};}}
-const storage=new Map(),issues=[],resends=[],pdfs=[],redemptions=[],downloads=[],printRequests=[],giveaways=[],assignments=[];
-const freeCode='TA-'+'A'.repeat(32),companyCode='TA-'+'B'.repeat(32);
+const storage=new Map(),issues=[],resends=[],pdfs=[],redemptions=[],courseRedemptions=[],downloads=[],printRequests=[],giveaways=[],assignments=[],signIns=[],signUps=[],metadataUpdates=[];
+const freeCode='TA-'+'A'.repeat(16),companyCode='TA-'+'B'.repeat(16);
 const courses=[{slug:'test-free-course',title_pl:'Kurs testowy',price_grosze:0,category_pl:null}];
-let companyAssigned=false;let historyRecords=[];
+let activeUser=user,companyAssigned=false;let historyRecords=[];
 let firstIssue=true,batch=null,redeemError='wrong_email';
 function queryRows(rows){const chain=new Proxy({then:(resolve,reject)=>Promise.resolve({data:rows,error:null}).then(resolve,reject)},{get(target,key){return key==='then'?target.then:()=>chain;}});return chain;}
-const supabase={auth:{getUser:async()=>({data:{user},error:null}),signOut:async()=>({})},from:table=>queryRows(table==='ta_courses'?courses:[]),functions:{invoke:async(name,{body})=>{
+const supabase={auth:{
+ getUser:async()=>({data:{user:activeUser},error:null}),
+ signOut:async()=>{activeUser=null;return {error:null};},
+ onAuthStateChange:()=>({data:{subscription:{unsubscribe:()=>{}}}}),
+ signInWithPassword:async body=>{signIns.push(body);activeUser=user;return {data:{user,session:{user}},error:null};},
+ signUp:async body=>{signUps.push(body);return {data:{user:null,session:null},error:null};},
+ updateUser:async body=>{metadataUpdates.push(body);if(activeUser&&body.data)activeUser={...activeUser,user_metadata:{...activeUser.user_metadata,...body.data}};return {data:{user:activeUser},error:null};},
+},from:table=>queryRows(table==='ta_courses'?courses:[]),functions:{invoke:async(name,{body})=>{
  if(name==='ta-admin-analytics')return {data:{ok:true,totals:{users:1,purchases:0,gifts:0,revenue_grosze:0}},error:null};
  if(name==='ta-gift-print'){printRequests.push(body);return {data:{ok:true,pdf_base64:Buffer.from('%PDF-1.7\n').toString('base64'),filename:'TRENERKI-kurs-test.pdf'},error:null};}
  if(name==='ta-admin-gifts'){
@@ -29,7 +36,7 @@ const supabase={auth:{getUser:async()=>({data:{user},error:null}),signOut:async(
  if(body.action==='admin_list_promo')return {data:{ok:true,batches:batch?[batch]:[]},error:null};
  if(body.action==='admin_issue_promo'){
   issues.push(body);
-  if(!batch||batch.id!==body.request_id)batch={id:body.request_id,...body,created_at:'2026-11-13T10:00:00Z',recipient_email_sent_at:null,cards:Array.from({length:body.quantity},(_,i)=>({id:'card-'+i,code:'TW-'+String(i+1).padStart(32,'0'),link:'https://trenerki.com/prezent?code=mock-'+i,amount_grosze:body.amount_grosze,transferable:body.transferable,expires_at:'2036-11-13T10:00:00Z',status:'issued'}))};
+  if(!batch||batch.id!==body.request_id)batch={id:body.request_id,...body,created_at:'2026-11-13T10:00:00Z',recipient_email_sent_at:null,cards:Array.from({length:body.quantity},(_,i)=>({id:'card-'+i,code:'TW-'+String(i+1).padStart(16,'0'),link:'https://trenerki.com/prezent?code=mock-'+i,amount_grosze:body.amount_grosze,transferable:body.transferable,expires_at:'2036-11-13T10:00:00Z',status:'issued'}))};
   if(firstIssue){firstIssue=false;return {data:null,error:new FunctionsHttpError('temporary_error')};}
   return {data:{ok:true,batch_id:batch.id,recipient_email:batch.recipient_email,quantity:batch.quantity,total_grosze:batch.amount_grosze*batch.quantity,email_sent:!!batch.recipient_email_sent_at,cards:batch.cards},error:null};
  }
@@ -39,7 +46,7 @@ const supabase={auth:{getUser:async()=>({data:{user},error:null}),signOut:async(
  throw new Error('Unexpected action '+body.action);
 }}};
 function createScreen(path,params={}){
- const hooks=[];let hookIndex=0,dirty=true,effects=[],tree;
+ const hooks=[],navigation=[];let hookIndex=0,dirty=true,effects=[],tree;
  const same=(a,b)=>Array.isArray(a)&&Array.isArray(b)&&a.length===b.length&&a.every((v,i)=>Object.is(v,b[i]));
  const react={
   useState(initial){const i=hookIndex++;if(!hooks[i])hooks[i]={value:typeof initial==='function'?initial():initial};return [hooks[i].value,value=>{const next=typeof value==='function'?value(hooks[i].value):value;if(!Object.is(next,hooks[i].value)){hooks[i].value=next;dirty=true;}}];},
@@ -54,14 +61,18 @@ function createScreen(path,params={}){
  const require=name=>{
   if(name==='react')return {__esModule:true,default:react,...react};
   if(name==='react-native')return rn;
-  if(name==='expo-router')return {useRouter:()=>({replace:()=>{},push:()=>{}}),useLocalSearchParams:()=>params};
+  if(name==='expo-router')return {useRouter:()=>({replace:to=>navigation.push({method:'replace',to:JSON.parse(JSON.stringify(to))}),push:to=>navigation.push({method:'push',to:JSON.parse(JSON.stringify(to))})}),useLocalSearchParams:()=>params};
   if(name==='@supabase/supabase-js')return {FunctionsHttpError};
-  if(name==='../src/supabase'||name==='./supabase')return {supabase};
-  if(name==='../src/academyApi')return {academyAction:async action=>action==='whoami'?{is_admin:true}:action==='create_gift'?{code:freeCode,link:'https://trenerki.com/prezent?code='+freeCode,gift_id:'free-gift-id',email_sent:true}:action==='my_gifts'?{gifts:historyRecords}:{users:[],counts:{users:1,courses:1}}};
-  if(name==='../src/giftPdf'){
+  if(name==='../src/supabase'||name==='./supabase')return {supabase,isPasswordRecoveryRedirect:()=>false,clearPasswordRecoveryFlag:()=>{}};
+  if(name==='../src/academyApi')return {academyAction:async (action,body)=>{
+   if(action==='redeem_gift'){courseRedemptions.push(body);return {ok:true};}
+   return action==='whoami'?{is_admin:true}:action==='create_gift'?{code:freeCode,link:'https://trenerki.com/prezent?code='+freeCode,gift_id:'free-gift-id',email_sent:true}:action==='my_gifts'?{gifts:historyRecords}:{users:[],counts:{users:1,courses:1}};
+  }};
+  if(['../src/giftPdf','../src/giftCode','./giftCode'].includes(name)){
+   const helperPath=name.endsWith('giftPdf')?'src/giftPdf.ts':'src/giftCode.ts';
    const helperModule={exports:{}};
-   const helper=ts.transpileModule(readFileSync('src/giftPdf.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}});
-   vm.runInNewContext(helper.outputText,{...context,module:helperModule,exports:helperModule.exports},{filename:'src/giftPdf.ts'});
+   const helper=ts.transpileModule(readFileSync(helperPath,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}});
+   vm.runInNewContext(helper.outputText,{...context,module:helperModule,exports:helperModule.exports},{filename:helperPath});
    return helperModule.exports;
   }
   if(name==='../src/courseQuote')return {coursePrice:async()=>10000,termsVersion:'2026-11-11'};
@@ -79,12 +90,15 @@ function createScreen(path,params={}){
  const button=label=>find('Pressable',node=>text(node)===label);
  async function press(label){const node=button(label);assert.equal(!!node.props.disabled,false,'button disabled: '+label);await node.props.onPress();await flush();}
  async function fill(label,value){find('TextInput',node=>node.props.accessibilityLabel===label).props.onChangeText(value);await flush();}
- return {flush,press,fill,button,find,findAll,text:()=>text(tree)};
+ async function fillPlaceholder(placeholder,value){find('TextInput',node=>node.props.placeholder===placeholder).props.onChangeText(value);await flush();}
+ return {flush,press,fill,fillPlaceholder,button,find,findAll,navigation,text:()=>text(tree)};
 }
 async function fillPromo(screen){
- await screen.press('Karta na kwotę');await screen.press('Do przekazania dalej');
+ await screen.press('Karta na kwotę');
+ assert.equal(screen.button('Do przekazania dalej').props.accessibilityState.checked,true,'new value cards must default to transferable');
+ assert.ok(screen.text().includes('Osoba korzystająca z karty może mieć inne konto i inny e-mail.'));
  await screen.fill('Liczba kart','3');await screen.fill('Wartość jednej karty w złotych','100');
- await screen.fill('E-mail odbiorcy kart PDF','foundation@example.test');await screen.fill('Dedykacja na kartach','Na nowe umiejętności!');
+ await screen.fill('E-mail do wysyłki kart PDF','foundation@example.test');await screen.fill('Dedykacja na kartach','Na nowe umiejętności!');
  assert.ok(screen.text().includes('Łączna wartość: 300,00 zł'));
 }
 let screen=createScreen('app/admin.tsx');await screen.flush();await fillPromo(screen);
@@ -112,7 +126,8 @@ assert.ok(gift.text().includes('Ten kod został już odebrany lub stracił ważn
 await gift.press('Pobierz PDF tego kodu');
 assert.equal(printRequests.at(-1).code,'TW-00000000000000000000000000000001');assert.equal(redemptions.length,2,'printing must not redeem a code');
 const giver=createScreen('app/admin.tsx');await giver.flush();
-await giver.press('Do przekazania dalej / fundacji');await giver.fill('E-mail odbiorcy kursów','foundation@example.test');await giver.fill('Dedykacja na kartach kursów','Dla fundacji');
+assert.ok(giver.text().includes('Obdarowana osoba może odebrać kurs na koncie z innym adresem e-mail.'));
+await giver.fill('E-mail do wysyłki kart kursów','foundation@example.test');await giver.fill('Dedykacja na kartach kursów','Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();
 await giver.press('Wyślij prezent — 1 kurs');assert.equal(giveaways.at(-1).bind_to_recipient,false);assert.equal(giveaways.at(-1).company_mode,false);assert.equal(giveaways.at(-1).message,'Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityLabel==='Pobierz PDF kursu Kurs testowy').props.onPress();await giver.flush();assert.equal(printRequests.at(-1).code,freeCode);
@@ -132,4 +147,72 @@ const history=createScreen('app/prezent.tsx');await history.flush();await histor
 const historyButtons=history.findAll('Pressable',node=>node.props.accessibilityLabel==='Pobierz PDF wysłanego prezentu Kurs testowy');assert.equal(historyButtons.length,1,'legacy random-code cards must not expose gift-ID printing');
 await historyButtons[0].props.onPress();await history.flush();assert.equal(printRequests.at(-1).gift_id,'history-new-id');assert.equal(printRequests.at(-1).code,undefined);
 assert.ok(history.text().includes('Aby wydrukować tę starszą kartę, wpisz jej kod'));
-console.log('Gift card screen state tests passed: value batches and retries; free course, foundation and company modes; PDF downloads without redemption; created-code isolation; inactive cards and HTTP errors.');
+
+// Exercise the actual entry, sign-in, signup-confirmation and active-session handlers.
+// Opening a link, logging in, recovering saved metadata and printing must never redeem.
+const samples=[
+ {input:' \t ta-wgv9-znq8 gx6q-hkmx\n',canonical:'TA-WGV9ZNQ8GX6QHKMX'},
+ {input:' tw-eg0b-sm08 s7jd-4vfy ',canonical:'TW-EG0BSM08S7JD4VFY'},
+ {input:'ta-12345678 1234 4234-9234-123456789abc',canonical:'TA-12345678123442349234123456789ABC'},
+ {input:'tw-12345678 1234 4234-9234-123456789abc',canonical:'TW-12345678123442349234123456789ABC'},
+];
+const redeemedCount=()=>redemptions.length+courseRedemptions.length;
+const enteredCode=screen=>screen.find('TextInput',node=>node.props.accessibilityLabel==='Kod karty podarunkowej').props.value;
+for(const sample of samples){
+ const before=redeemedCount();activeUser=null;
+ const incoming=createScreen('app/prezent.tsx',{code:sample.input});await incoming.flush();
+ assert.equal(enteredCode(incoming),sample.canonical,'the link must prefill a canonical code');
+ assert.equal(redeemedCount(),before,'opening a link must not redeem');
+ await incoming.press('Odbierz prezent →');
+ assert.deepEqual(incoming.navigation.at(-1),{method:'push',to:{pathname:'/konto',params:{gift:sample.canonical}}});
+ assert.equal(redeemedCount(),before,'signed-out entry must only navigate to login');
+
+ const account=createScreen('app/konto.tsx',{gift:sample.input});await account.flush();
+ await account.press('Mam już konto — zaloguj');
+ await account.fillPlaceholder('Adres e-mail','Recipient@Example.test');await account.fillPlaceholder('Hasło (minimum 8 znaków)','test-password');
+ await account.press('Zaloguj się');
+ assert.equal(signIns.at(-1).email,'recipient@example.test');
+ assert.deepEqual(account.navigation.at(-1),{method:'replace',to:{pathname:'/prezent',params:{code:sample.canonical}}},'sign-in must preserve short and legacy codes');
+ assert.equal(redeemedCount(),before,'sign-in must not redeem');
+ const returned=createScreen('app/prezent.tsx',{code:sample.canonical});await returned.flush();
+ assert.equal(enteredCode(returned),sample.canonical);
+ assert.equal(redeemedCount(),before,'returning from login must wait for explicit redemption');
+ await returned.press('Pobierz PDF tego kodu');
+ assert.equal(printRequests.at(-1).code,sample.canonical);assert.equal(redeemedCount(),before,'printing must not redeem');
+ await returned.press('Odbierz prezent →');
+ assert.equal(redeemedCount(),before+1,'only the explicit receive action may redeem');
+ assert.equal((sample.canonical.startsWith('TW-')?redemptions:courseRedemptions).at(-1).code,sample.canonical);
+
+ const afterExplicit=redeemedCount();activeUser=null;
+ const signup=createScreen('app/konto.tsx',{gift:sample.input});await signup.flush();
+ await signup.fillPlaceholder('Imię i nazwisko','Test Recipient');await signup.fillPlaceholder('Adres e-mail','recipient@example.test');
+ await signup.fillPlaceholder('Hasło (minimum 8 znaków)','test-password');await signup.press('Załóż konto');
+ assert.equal(signUps.at(-1).options.data.pending_gift,sample.canonical,'signup must save canonical short and legacy codes');
+ assert.ok(signup.text().includes('Twoja karta będzie czekać na odbiór.'));
+ assert.equal(signup.navigation.length,0,'signup without a confirmed session must wait for email confirmation');
+ activeUser={...user,user_metadata:{...signUps.at(-1).options.data}};
+ const confirmed=createScreen('app/konto.tsx');await confirmed.flush();
+ assert.equal(confirmed.navigation.length,0,'an existing session must wait for the continuation button');
+ await confirmed.press('Otwórz Moje kursy →');
+ assert.deepEqual(confirmed.navigation.at(-1),{method:'replace',to:{pathname:'/prezent',params:{code:sample.canonical}}},'bare confirmation URL must recover the saved gift');
+ assert.equal(metadataUpdates.at(-1).data.pending_gift,null,'consumed navigation metadata must be cleared');
+ const confirmedGift=createScreen('app/prezent.tsx',{code:sample.canonical});await confirmedGift.flush();
+ assert.equal(enteredCode(confirmedGift),sample.canonical);assert.equal(redeemedCount(),afterExplicit,'confirmation and active-session continuation must not redeem');
+}
+
+activeUser=user;
+const retained=createScreen('app/konto.tsx',{gift:samples[0].input});await retained.flush();
+await retained.press('Konto prywatne');
+assert.deepEqual(retained.navigation.at(-1).to,{pathname:'/konto',params:{gift:samples[0].canonical}});
+await retained.press('Wyloguj się');
+assert.deepEqual(retained.navigation.at(-1).to,{pathname:'/konto',params:{gift:samples[0].canonical}},'switching accounts must retain the gift');
+activeUser=user;
+const malformed=createScreen('app/prezent.tsx');await malformed.flush();
+const beforeMalformed=redeemedCount(),beforeMalformedPrint=printRequests.length;
+for(const invalid of ['TA-0123456789ABCDE','TW-0123456789ABCDEFG','TA-0123456789ABCDEI','TA-0123456789ABCDEO','TA-0123456789ABCDEL','TA-0123456789ABCDEU','XX-WGV9ZNQ8GX6QHKMX']){
+ await malformed.fill('Kod karty podarunkowej',invalid);await malformed.press('Odbierz prezent →');
+ assert.ok(malformed.text().includes('Nowe kody mają 16 znaków po prefiksie'));
+ await malformed.press('Pobierz PDF tego kodu');
+}
+assert.equal(redeemedCount(),beforeMalformed);assert.equal(printRequests.length,beforeMalformedPrint,'malformed codes must never reach the API');
+console.log('Gift card screen state tests passed: transfer defaults, protected personal/company modes, batch retries, PDF downloads; short and legacy TA/TW codes through sign-in, signup metadata, confirmed sessions and logout; explicit redemption only.');

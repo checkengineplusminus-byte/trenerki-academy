@@ -1,6 +1,7 @@
 import {Platform} from 'react-native';
 import {FunctionsHttpError} from '@supabase/supabase-js';
 import {supabase} from './supabase';
+import {giftCodeEntryError,normalizeGiftCode,validGiftCode} from './giftCode';
 
 export function saveGiftPdf(data:{pdf_base64?:unknown;filename?:unknown}){
  if(Platform.OS!=='web'||typeof document==='undefined')throw new Error('Otwórz trenerki.com w przeglądarce, aby pobrać kartę PDF.');
@@ -15,8 +16,8 @@ export function saveGiftPdf(data:{pdf_base64?:unknown;filename?:unknown}){
 }
 
 export async function downloadGiftPdf(input:{code?:string;gift_id?:string}){
- const code=input.code?.trim().replace(/\s/g,'').toUpperCase();
- if(code&&!/^(?:TA|TW)-[0-9A-F]{32}$/.test(code))throw new Error('Przepisz cały kod karty zaczynający się od TA- lub TW-.');
+ const code=normalizeGiftCode(input.code);
+ if(code&&!validGiftCode(code))throw new Error(giftCodeEntryError);
  if(!code&&!input.gift_id)throw new Error('Podaj kod karty do wydruku.');
  const {data,error}=await supabase.functions.invoke('ta-gift-print',{body:{action:'pdf',...(code?{code}:{gift_id:input.gift_id})}});
  if(error||!data?.ok){
