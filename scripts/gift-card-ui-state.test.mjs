@@ -96,6 +96,13 @@ function createScreen(path,params={}){
 async function fillPromo(screen){
  await screen.press('Karta na kwotę');
  assert.equal(screen.button('Do przekazania dalej').props.accessibilityState.checked,true,'new value cards must default to transferable');
+ assert.equal(screen.button('Do przekazania dalej').props['aria-checked'],true,'web must expose the selected transfer mode');
+ assert.equal(screen.button('Dla wskazanej osoby').props['aria-checked'],false,'the personal mode must be exposed as unselected');
+ await screen.press('Dla wskazanej osoby');
+ assert.equal(screen.button('Dla wskazanej osoby').props['aria-checked'],true);
+ assert.equal(screen.button('Do przekazania dalej').props['aria-checked'],false);
+ await screen.press('Do przekazania dalej');
+ assert.equal(screen.button('Do przekazania dalej').props['aria-checked'],true);
  assert.ok(screen.text().includes('Osoba korzystająca z karty może mieć inne konto i inny e-mail.'));
  await screen.fill('Liczba kart','3');await screen.fill('Wartość jednej karty w złotych','100');
  await screen.fill('E-mail do wysyłki kart PDF','foundation@example.test');await screen.fill('Dedykacja na kartach','Na nowe umiejętności!');

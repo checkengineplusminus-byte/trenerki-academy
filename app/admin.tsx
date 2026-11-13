@@ -487,7 +487,7 @@ export default function AdminPage(){
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Karty podarunkowe do wydruku</Text>
      <Text style={{fontSize:14,color:muted,lineHeight:22,marginBottom:16}}>Odbiorca dostanie jeden e-mail z osobnym plikiem PDF dla każdej karty. Na karcie znajdą się kwota, jednorazowy kod, dedykacja i termin ważności.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:10}}>
-      {([[true,'Do przekazania dalej'],[false,'Dla wskazanej osoby']] as const).map(([transferable,label])=><Pressable key={label} accessibilityRole="radio" accessibilityState={{checked:promoTransferable===transferable}} disabled={!!working} onPress={()=>setPromoTransferable(transferable)} style={{flexGrow:1,backgroundColor:promoTransferable===transferable?ink:pale,padding:13,borderRadius:11}}>
+      {([[true,'Do przekazania dalej'],[false,'Dla wskazanej osoby']] as const).map(([transferable,label])=><Pressable key={label} accessibilityRole="radio" accessibilityState={{checked:promoTransferable===transferable}} aria-checked={promoTransferable===transferable} disabled={!!working} onPress={()=>setPromoTransferable(transferable)} style={{flexGrow:1,backgroundColor:promoTransferable===transferable?ink:pale,padding:13,borderRadius:11}}>
        <Text style={{fontSize:13,fontWeight:'900',color:promoTransferable===transferable?'white':ink,textAlign:'center'}}>{label}</Text>
       </Pressable>)}
      </View>
