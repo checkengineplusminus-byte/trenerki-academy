@@ -95,7 +95,7 @@ export default function TematKsiegowosci(){
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie lekcji"/>}
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
   {!!warning&&<Text style={s.warning}>{warning}</Text>}
-  {lesson&&<View>
+  {!busy&&lesson&&!error&&<View>
    <View style={s.header}>
     <Text style={s.eyebrow}>TEMAT {lesson.topic_no} Z 100</Text>
     <Text accessibilityRole="header" style={s.h1}>{lesson.title_pl}</Text>
