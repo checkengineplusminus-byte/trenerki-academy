@@ -1,4 +1,4 @@
-import React,{useEffect,useMemo,useState} from 'react';
+import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share} from 'react-native';
 import {useRouter} from 'expo-router';
 import {FunctionsHttpError} from '@supabase/supabase-js';
@@ -6,12 +6,18 @@ import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 import DiplomaRegistry from '../src/DiplomaRegistry';
 import ContactEditor from '../src/support/ContactEditor';
+import {downloadGiftPdf,saveGiftPdf} from '../src/giftPdf';
 
 const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
 type Course={slug:string,title_pl:string,price_grosze:number};
 type Draft={id:string,course_slug:string,recipient_email:string,amount_grosze:number,doc_status:string,created_at:string,sent_at?:string|null};
 type Metrics={new_users:number,purchases:number,gifts?:number,revenue_grosze:number,unique_buyers:number};
+type PromoCard={id:string;code:string;link:string;amount_grosze:number;transferable:boolean;expires_at:string;status:string};
+type PromoBatch={id:string;recipient_email:string;amount_grosze:number;quantity:number;transferable:boolean;created_at:string;recipient_email_sent_at?:string|null;cards:PromoCard[]};
+type PromoResult={batch_id:string;recipient_email:string;quantity:number;total_grosze:number;email_sent:boolean;cards:PromoCard[]};
+type PromoRequest={id:string;signature:string};
+type CourseGift={gift_id?:string;course_slug:string;title_pl:string;code:string;link:string;expires_at?:string};
 type SalesAnalytics={
  timezone:string;
  totals:{users:number,purchases:number,gifts?:number,revenue_grosze:number};
@@ -27,6 +33,7 @@ const card={padding:20,borderWidth:1,borderColor:'#e0eadb',backgroundColor:'whit
 export default function AdminPage(){
  const router=useRouter();
  const [authorized,setAuthorized]=useState(false);
+ const [ownerId,setOwnerId]=useState('');
  const [accessState,setAccessState]=useState<'checking'|'denied'|'error'|'granted'>('checking');
  const [accessAttempt,setAccessAttempt]=useState(0);
  useEffect(()=>{
@@ -39,7 +46,7 @@ export default function AdminPage(){
     if(authError||!user){setAccessState('denied');return;}
     const role=await academyAction('whoami');
     if(!mounted)return;
-    if(role?.is_admin===true){setAuthorized(true);setAccessState('granted');}
+    if(role?.is_admin===true){setOwnerId(user.id);setAuthorized(true);setAccessState('granted');}
     else setAccessState('denied');
    }catch{if(mounted)setAccessState('error')}
   })();
@@ -57,38 +64,138 @@ export default function AdminPage(){
  const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'diplomas'|'support'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
- const [issuedGifts,setIssuedGifts]=useState<{course_slug:string;title_pl:string;code:string;link:string}[]>([]);
+ const [giftTransferable,setGiftTransferable]=useState(false),[giftDedication,setGiftDedication]=useState('');
+ const [issuedGifts,setIssuedGifts]=useState<CourseGift[]>([]);
  const [giftError,setGiftError]=useState('');
  const [promoEmail,setPromoEmail]=useState(''),[promoAmount,setPromoAmount]=useState('100'),[promoMessage,setPromoMessage]=useState('');
- const [promoResult,setPromoResult]=useState<{code:string;link:string;email_sent:boolean;amount_grosze:number}|null>(null),[promoError,setPromoError]=useState('');
- async function issuePromo(){
-  if(working)return;
-  setWorking('promo');setPromoError('');setPromoResult(null);
-  try{
-   const amount=Number(promoAmount.replace(',','.'));
-   if(!Number.isFinite(amount)||amount<25||amount>1000||Math.round(amount*100)!==amount*100)
-    throw new Error('Wpisz kwotę od 25 do 1000 zł.');
-   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(promoEmail.trim()))throw new Error('Podaj poprawny e-mail odbiorcy.');
-   const {data,error}=await supabase.functions.invoke('ta-credit',{body:{
-    action:'admin_issue_promo',recipient_email:promoEmail.trim(),amount_grosze:Math.round(amount*100),message:promoMessage.trim()
-   }});
-   if(error||!data?.ok){
-    const response=error instanceof FunctionsHttpError?await error.context.json().catch(()=>null):null;
-    const code=response?.error??data?.error;
-    const messages:Record<string,string>={
-     daily_limit:'Ta karta przekroczyłaby limit 15 000 zł łącznej wartości kart promocyjnych w ciągu 24 godzin. Limit zwalnia się 24 godziny po wystawieniu każdej karty.',
-     owner_only:'Karty promocyjne może wystawiać właściciel platformy.',
-     confirmed_login_required:'Zaloguj się na konto z potwierdzonym adresem e-mail.',
-     invalid_input:'Sprawdź kwotę karty i adres e-mail odbiorcy.',
-     role_verification_failed:'Nie udało się potwierdzić uprawnień. Spróbuj ponownie.'
-    };
-    throw new Error(messages[code]||'Nie udało się wystawić karty. Spróbuj ponownie.');
-   }
-   setPromoResult(data);
-   setMessage(data.email_sent?'Karta została utworzona i wysłana odbiorcy.':'Karta została utworzona, ale nie potwierdzono wysyłki e-mail. Przekaż link odbiorcy.');
-  }catch(e:any){setPromoError(e?.message||'Błąd karty podarunkowej.')}
-  finally{setWorking('')}
+ const [promoQuantity,setPromoQuantity]=useState('1'),[promoTransferable,setPromoTransferable]=useState(false);
+ const [promoResult,setPromoResult]=useState<PromoResult|null>(null),[promoError,setPromoError]=useState('');
+ const [promoHistory,setPromoHistory]=useState<PromoBatch[]>([]),[promoHistoryBusy,setPromoHistoryBusy]=useState(false),[promoHistoryError,setPromoHistoryError]=useState('');
+ const [promoHistoryOpen,setPromoHistoryOpen]=useState(false),[promoOpenBatch,setPromoOpenBatch]=useState('');
+ const [promoIssuedSignature,setPromoIssuedSignature]=useState('');
+ const promoRequest=useRef<PromoRequest|null>(null),promoLock=useRef(false),promoHistoryLock=useRef(false);
+ const promoStorageKey='trenerki-promo-request:'+ownerId;
+ const promoPayload={recipient_email:promoEmail.trim().toLowerCase(),amount_grosze:Math.round(Number(promoAmount.trim().replace(',','.'))*100),quantity:Number(promoQuantity),message:promoMessage.trim(),transferable:promoTransferable};
+ const promoSignature=JSON.stringify(promoPayload);
+ const currentPromoIssued=!!promoResult&&promoIssuedSignature===promoSignature;
+ const promoTotal=Number.isSafeInteger(promoPayload.amount_grosze)&&Number.isInteger(promoPayload.quantity)?promoPayload.amount_grosze*promoPayload.quantity:0;
+ const promoErrors:Record<string,string>={
+  daily_limit:'Ten pakiet przekroczyłby limit 15 000 zł łącznej wartości kart promocyjnych w ciągu 24 godzin. Limit zwalnia się 24 godziny po wystawieniu każdej karty.',
+  owner_only:'Karty promocyjne może wystawiać właściciel platformy.',
+  confirmed_login_required:'Zaloguj się na konto z potwierdzonym adresem e-mail.',
+  invalid_input:'Sprawdź kwotę, liczbę kart i adres e-mail odbiorcy.',
+  invalid_quantity:'Wpisz liczbę kart od 1 do 10.',
+  invalid_request_id:'Nie udało się rozpoznać pakietu. Odśwież stronę i spróbuj ponownie.',
+  request_conflict:'Ten pakiet jest już zapisany z innymi danymi. Sprawdź ostatnio wystawione karty i wybierz „Nowy pakiet”, aby wystawić kolejne.',
+  idempotency_conflict:'Ten pakiet jest już zapisany z innymi danymi. Sprawdź ostatnio wystawione karty i wybierz „Nowy pakiet”, aby wystawić kolejne.',
+  role_verification_failed:'Nie udało się potwierdzić uprawnień. Spróbuj ponownie.',
+  card_not_found:'Nie znaleziono tej karty.',
+  batch_not_found:'Nie znaleziono tego pakietu.',
+  not_found:'Nie znaleziono karty lub pakietu.',
+  pdf_generation_failed:'Nie udało się przygotować PDF. Karta pozostaje ważna. Spróbuj pobrać ją ponownie.',
+  pdf_not_ready:'Nie udało się przygotować PDF. Karta pozostaje zapisana. Spróbuj pobrać ją ponownie.',
+  card_inactive:'Ta karta została już odebrana, anulowana lub wygasła. Odśwież historię, aby sprawdzić jej status.',
+  batch_lookup_failed:'Nie udało się odczytać pakietu. Spróbuj ponownie za chwilę.',
+  card_lookup_failed:'Nie udało się odczytać karty. Spróbuj ponownie za chwilę.',
+  invalid_cards:'Nie udało się przygotować kodów kart. Odśwież historię i spróbuj ponownie.',
+  card_conflict:'Nie udało się zapisać kodów kart. Sprawdź ostatnio wystawione pakiety przed ponowieniem.',
+  email_not_configured:'Karty są zapisane, ale wysyłka e-mail jest chwilowo niedostępna. Pobierz pliki PDF z listy kart.',
+  resend_too_soon:'Wiadomość jest właśnie wysyłana. Sprawdź status za chwilę.'
+ };
+ async function promoAction(body:Record<string,unknown>){
+  const {data,error}=await supabase.functions.invoke('ta-credit',{body});
+  if(error||!data?.ok){
+   const response=error instanceof FunctionsHttpError?await error.context.json().catch(()=>null):null;
+   throw new Error(promoErrors[response?.error??data?.error]||'Nie udało się wykonać operacji. Sprawdź ostatnio wystawione karty i spróbuj ponownie.');
+  }
+  return data;
  }
+ async function loadPromoHistory(){
+  if(!authorized||promoHistoryLock.current)return;
+  promoHistoryLock.current=true;setPromoHistoryBusy(true);setPromoHistoryError('');
+  try{const data=await promoAction({action:'admin_list_promo'});setPromoHistory(Array.isArray(data.batches)?data.batches.slice(0,10):[]);}
+  catch(e:any){setPromoHistoryError(e?.message||'Nie udało się pobrać historii kart.');}
+  finally{promoHistoryLock.current=false;setPromoHistoryBusy(false);}
+ }
+ useEffect(()=>{if(authorized&&tab==='credit-card')void loadPromoHistory();},[authorized,tab]);
+ function startNewPromo(){
+  if(working||promoLock.current)return;
+  promoRequest.current=null;setPromoResult(null);setPromoIssuedSignature('');setPromoError('');setMessage('');
+  try{if(Platform.OS==='web')sessionStorage.removeItem(promoStorageKey);}catch{}
+ }
+ async function issuePromo(){
+  if(working||promoLock.current||currentPromoIssued)return;
+  promoLock.current=true;setWorking('promo');setPromoError('');setMessage('');
+  try{
+   if(!/^\d{1,4}([,.]\d{1,2})?$/.test(promoAmount.trim())||promoPayload.amount_grosze<2500||promoPayload.amount_grosze>100000)
+    throw new Error('Wpisz kwotę od 25 do 1000 zł (maksymalnie dwa miejsca po przecinku).');
+   if(!/^\d{1,2}$/.test(promoQuantity)||!Number.isInteger(promoPayload.quantity)||promoPayload.quantity<1||promoPayload.quantity>10)
+    throw new Error('Wpisz liczbę kart od 1 do 10.');
+   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(promoPayload.recipient_email))throw new Error('Podaj poprawny e-mail odbiorcy.');
+   if(!ownerId)throw new Error('Odśwież stronę i zaloguj się ponownie.');
+   if(!promoRequest.current){
+    try{
+     const saved=Platform.OS==='web'?JSON.parse(sessionStorage.getItem(promoStorageKey)||'null'):null;
+     if(saved&&typeof saved.id==='string'&&typeof saved.signature==='string'&&/^[0-9a-f-]{36}$/i.test(saved.id))promoRequest.current=saved;
+    }catch{}
+   }
+   if(promoRequest.current?.signature!==promoSignature){
+    if(typeof globalThis.crypto?.randomUUID!=='function')throw new Error('Otwórz panel w aktualnej przeglądarce, aby bezpiecznie wystawić karty.');
+    promoRequest.current={id:globalThis.crypto.randomUUID(),signature:promoSignature};
+    try{if(Platform.OS==='web')sessionStorage.setItem(promoStorageKey,JSON.stringify(promoRequest.current));}catch{}
+   }
+   const data=await promoAction({action:'admin_issue_promo',request_id:promoRequest.current.id,...promoPayload});
+   setPromoResult(data as PromoResult);setPromoIssuedSignature(promoSignature);
+   setMessage(data.email_sent?'Karty zostały wystawione. Wiadomość z plikami PDF przyjęto do wysyłki.':'Karty zostały wystawione. Pobierz PDF lub ponów wysyłkę tych samych kart poniżej.');
+   await loadPromoHistory();
+  }catch(e:any){setPromoError(e?.message||'Błąd karty podarunkowej.')}
+  finally{promoLock.current=false;setWorking('')}
+ }
+ async function downloadPromoPdf(item:PromoCard){
+  if(working||promoLock.current)return;
+  promoLock.current=true;setWorking('pdf:'+item.id);setPromoError('');
+  try{
+   if(Platform.OS!=='web'||typeof document==='undefined')throw new Error('Pobierz PDF w przeglądarce na trenerki.com/admin.');
+   const data=await promoAction({action:'admin_card_pdf',card_id:item.id});
+   saveGiftPdf(data);
+   setMessage('PDF karty jest gotowy do zapisania i wydruku.');
+  }catch(e:any){setPromoError(e?.message||'Nie udało się pobrać PDF.');}
+  finally{promoLock.current=false;setWorking('');}
+ }
+ async function resendPromo(batchId:string){
+  if(working||promoLock.current)return;
+  promoLock.current=true;setWorking('resend:'+batchId);setPromoError('');
+  try{
+   const data=await promoAction({action:'admin_resend_promo',batch_id:batchId});
+   setPromoResult(old=>old?.batch_id===batchId?{...old,email_sent:!!data.email_sent}:old);
+   setMessage(data.email_sent?'Wiadomość z tymi samymi kartami PDF przyjęto do wysyłki.':'Wysyłka e-mail nie została potwierdzona. Pobierz PDF lub spróbuj ponownie za chwilę.');
+   await loadPromoHistory();
+  }catch(e:any){setPromoError(e?.message||'Nie udało się ponowić wysyłki.');}
+  finally{promoLock.current=false;setWorking('');}
+ }
+ async function sharePromo(item:PromoCard){
+  try{
+   if(Platform.OS==='web'&&typeof navigator!=='undefined'&&navigator.clipboard?.writeText){await navigator.clipboard.writeText(item.link);setMessage('Skopiowano link do karty.');}
+   else await Share.share({message:item.link});
+  }catch{setPromoError('Zaznacz i skopiuj kod karty lub spróbuj ponownie.');}
+ }
+ const promoActive=(item:PromoCard)=>item.status==='issued'&&Date.parse(item.expires_at)>Date.now();
+ const promoCardStatus=(item:PromoCard)=>({redeemed:'Odebrana',cancelled:'Anulowana',refund_review:'W trakcie rozliczenia zwrotu',pending:'Oczekuje na wystawienie'}[item.status]||(promoActive(item)?'Ważna do '+formatDate(item.expires_at):'Termin ważności minął'));
+ const promoCardRow=(item:PromoCard,index:number)=><View key={item.id} style={{borderWidth:1,borderColor:'#d5e2cd',borderRadius:12,padding:13,backgroundColor:'white',gap:9}}>
+  <View style={{flexDirection:'row',justifyContent:'space-between',gap:8,flexWrap:'wrap'}}>
+   <Text style={{color:ink,fontWeight:'900',fontSize:16}}>Karta {index+1} · {money(item.amount_grosze)}</Text>
+   <Text style={{color:muted,fontSize:12}}>{promoCardStatus(item)}</Text>
+  </View>
+  <Text selectable style={{fontFamily:Platform.OS==='web'?'monospace':undefined,color:ink,fontSize:12,lineHeight:19}}>{item.code.replace(/^(TW-)(.{8})(.{8})(.{8})(.{8})$/,'$1$2 $3 $4 $5')}</Text>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+   <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF karty '+(index+1)} disabled={!!working||!promoActive(item)} onPress={()=>void downloadPromoPdf(item)} style={{backgroundColor:ink,paddingVertical:11,paddingHorizontal:14,borderRadius:9,opacity:working||!promoActive(item)?.5:1}}>
+    <Text style={{color:'white',fontWeight:'800',fontSize:13}}>{working==='pdf:'+item.id?'Przygotowuję PDF…':'Pobierz PDF'}</Text>
+   </Pressable>
+   <Pressable accessibilityRole="button" disabled={!promoActive(item)} onPress={()=>void sharePromo(item)} style={{backgroundColor:pale,paddingVertical:11,paddingHorizontal:14,borderRadius:9,opacity:promoActive(item)?1:.5}}>
+    <Text style={{color:ink,fontWeight:'800',fontSize:13}}>Kopiuj link</Text>
+   </Pressable>
+  </View>
+ </View>;
 
  const todayPoland=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
  const [discountDay,setDiscountDay]=useState(todayPoland),[discountPercent,setDiscountPercent]=useState('10');
@@ -125,14 +232,15 @@ export default function AdminPage(){
   });
  }
  async function issueAdminGifts(){
-  if(!!working||giftTotal<1||giftTotal>10)return;
+  if(!!working||promoLock.current||giftTotal<1||giftTotal>10)return;
+  promoLock.current=true;
   setWorking('admin-gifts');setGiftError('');setMessage('');setIssuedGifts([]);setGiftSent(false);setGiftCompanyPanel('');
   try{
    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(giftEmail.trim()))throw new Error('Wpisz poprawny adres e-mail odbiorcy lub osoby zarządzającej kursami w firmie.');
    const course_slugs=selectedGifts.flatMap(c=>Array(giftQty[c.slug]).fill(c.slug));
    const {data,error}=await supabase.functions.invoke('ta-admin-gifts',{body:{
     action:'issue',course_slugs,destination_email:giftEmail.trim().toLowerCase(),
-    bind_to_recipient:!giftCompany,company_mode:giftCompany,company_name:giftCompanyName.trim()
+    bind_to_recipient:!giftCompany&&!giftTransferable,company_mode:giftCompany,company_name:giftCompanyName.trim(),message:giftCompany?'':giftDedication.trim()
    }});
    if(error||!data?.ok){
     let detail='';
@@ -156,11 +264,18 @@ export default function AdminPage(){
     setGiftCompanyPanel(data.dashboard_url||'https://trenerki.com/firma');
     setMessage(data.email_sent?'Przydzielono kursy firmie i wysłano zaproszenie do jej panelu.':'Pakiet firmowy utworzony. Wyślij opiekunowi firmy link do panelu (wiadomość e-mail nie została potwierdzona).');
    }else{
-    setMessage(data.email_sent?'Prezent został wysłany na wskazany e-mail.':'Kody zostały utworzone, ale wysyłka e-mail nie została potwierdzona. Skopiuj linki i prześlij je odbiorcy.');
+    setMessage(data.email_sent?'Wiadomość z kartami PDF przyjęto do wysyłki na wskazany e-mail.':'Kody zostały utworzone. Pobierz karty PDF lub skopiuj linki i przekaż je odbiorcy.');
    }
    await refresh();setTab('giveaway');
   }catch(e:any){setGiftError(String(e?.message||'Błąd tworzenia pakietu.'));}
-  finally{setWorking('')}
+  finally{promoLock.current=false;setWorking('')}
+ }
+ async function downloadCourseGift(gift:CourseGift){
+  if(working||promoLock.current)return;
+  promoLock.current=true;setWorking('gift-pdf:'+gift.code);setGiftError('');
+  try{await downloadGiftPdf({code:gift.code,gift_id:gift.gift_id});setMessage('Karta kursu PDF jest gotowa do wydruku.');}
+  catch(e:any){setGiftError(e?.message||'Nie udało się pobrać karty kursu.');}
+  finally{promoLock.current=false;setWorking('');}
  }
  async function shareAdminGifts(){
   if(!giftText)return;
@@ -368,46 +483,89 @@ export default function AdminPage(){
      </Pressable>)}
     </View>}
     {tab==='credit-card'&&<View style={card}>
-     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Wystaw kartę promocyjną</Text>
-     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:13}}>Wartość karty wynosi od 25 do 1 000 zł. Łączny limit wynosi 15 000 zł w ciągu 24 godzin. Odbiorca może zapłacić saldem za kursy i dopłacić brakującą kwotę. Takie karty nie są liczone jako sprzedaż Stripe.</Text>
-     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginBottom:11}}>
-      {[50,100,200,500].map(x=><Pressable key={x} onPress={()=>setPromoAmount(String(x))} style={{padding:11,backgroundColor:promoAmount===String(x)?ink:pale,borderRadius:10}}>
+     <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Karty podarunkowe do wydruku</Text>
+     <Text style={{fontSize:14,color:muted,lineHeight:22,marginBottom:16}}>Odbiorca dostanie jeden e-mail z osobnym plikiem PDF dla każdej karty. Na karcie znajdą się kwota, jednorazowy kod, dedykacja i termin ważności.</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:10}}>
+      {([[false,'Dla wskazanej osoby'],[true,'Do przekazania dalej']] as const).map(([transferable,label])=><Pressable key={label} accessibilityRole="radio" accessibilityState={{checked:promoTransferable===transferable}} disabled={!!working} onPress={()=>setPromoTransferable(transferable)} style={{flexGrow:1,backgroundColor:promoTransferable===transferable?ink:pale,padding:13,borderRadius:11}}>
+       <Text style={{fontSize:13,fontWeight:'900',color:promoTransferable===transferable?'white':ink,textAlign:'center'}}>{label}</Text>
+      </Pressable>)}
+     </View>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:17}}>{promoTransferable?'Dla fundacji, firmy lub na prezent. Odbiorca e-maila może wydrukować karty i przekazać je różnym osobom. Każdy kod odbierze jedna osoba na swoim potwierdzonym koncie.':'Karty odbierze wyłącznie osoba zalogowana na konto z podanym niżej adresem e-mail.'}</Text>
+     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>Wartość jednej karty (zł)</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:8,marginBottom:3}}>
+      {[50,100,200,500].map(x=><Pressable key={x} disabled={!!working} onPress={()=>setPromoAmount(String(x))} style={{padding:11,backgroundColor:promoAmount===String(x)?ink:pale,borderRadius:10}}>
        <Text style={{color:promoAmount===String(x)?'white':ink,fontWeight:'800'}}>{x} zł</Text>
       </Pressable>)}
      </View>
-     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>Kwota karty (zł)</Text>
-     <TextInput value={promoAmount} onChangeText={setPromoAmount} keyboardType="decimal-pad" placeholder="100" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
-     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>E-mail odbiorcy</Text>
-     <TextInput value={promoEmail} onChangeText={setPromoEmail} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
-     <TextInput value={promoMessage} onChangeText={setPromoMessage} multiline maxLength={300} placeholder="Dedykacja (opcjonalnie)" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,minHeight:74,marginVertical:9,fontSize:15,color:ink}}/>
-     <Pressable accessibilityRole="button" disabled={!!working} onPress={issuePromo} style={{backgroundColor:ink,borderRadius:12,padding:16,opacity:working?.5:1}}>
-      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='promo'?'Tworzę kartę…':'Wystaw i wyślij kartę podarunkową'}</Text>
+     <TextInput accessibilityLabel="Wartość jednej karty w złotych" editable={!working} value={promoAmount} onChangeText={setPromoAmount} keyboardType="decimal-pad" placeholder="100" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
+     <Text style={{fontSize:13,color:ink,fontWeight:'800',marginTop:4}}>Liczba kart (1–10)</Text>
+     <View style={{flexDirection:'row',gap:8,marginVertical:8,alignItems:'center'}}>
+      <Pressable accessibilityRole="button" accessibilityLabel="Zmniejsz liczbę kart" disabled={!!working||Number(promoQuantity)<=1} onPress={()=>setPromoQuantity(String(Math.max(1,(Number(promoQuantity)||1)-1)))} style={{backgroundColor:pale,padding:14,borderRadius:10,opacity:working||Number(promoQuantity)<=1?.5:1}}><Text style={{color:ink,fontWeight:'900',fontSize:17}}>−</Text></Pressable>
+      <TextInput accessibilityLabel="Liczba kart" editable={!working} value={promoQuantity} onChangeText={setPromoQuantity} keyboardType="number-pad" maxLength={2} style={{width:70,padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,fontSize:16,textAlign:'center',color:ink}}/>
+      <Pressable accessibilityRole="button" accessibilityLabel="Zwiększ liczbę kart" disabled={!!working||Number(promoQuantity)>=10} onPress={()=>setPromoQuantity(String(Math.min(10,(Number(promoQuantity)||0)+1)))} style={{backgroundColor:pale,padding:14,borderRadius:10,opacity:working||Number(promoQuantity)>=10?.5:1}}><Text style={{color:ink,fontWeight:'900',fontSize:17}}>+</Text></Pressable>
+      <Text style={{color:muted,fontSize:12,flex:1,lineHeight:18}}>Osobny kod i PDF dla każdej osoby.</Text>
+     </View>
+     <View style={{backgroundColor:'#f2f7ec',padding:14,borderRadius:11,marginBottom:17,gap:5}}>
+      <Text style={{color:ink,fontSize:17,fontWeight:'900'}}>Łączna wartość: {money(promoTotal)}</Text>
+      <Text style={{color:muted,fontSize:12,lineHeight:19}}>{Number.isInteger(promoPayload.quantity)&&promoPayload.quantity>=1&&promoPayload.quantity<=10?promoPayload.quantity:'—'} × {money(promoPayload.amount_grosze)} · 25–1 000 zł na kartę · limit 15 000 zł / 24 h</Text>
+     </View>
+     <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>{promoTransferable?'E-mail fundacji, firmy lub osoby odbierającej pliki':'E-mail obdarowanej osoby'}</Text>
+     <TextInput accessibilityLabel="E-mail odbiorcy kart PDF" editable={!working} value={promoEmail} onChangeText={setPromoEmail} keyboardType="email-address" autoCapitalize="none" placeholder="odbiorca@example.com" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,marginVertical:8,fontSize:15,color:ink}}/>
+     <TextInput accessibilityLabel="Dedykacja na kartach" editable={!working} value={promoMessage} onChangeText={setPromoMessage} multiline maxLength={300} placeholder="Dedykacja na każdej karcie (opcjonalnie)" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,minHeight:84,marginVertical:9,fontSize:15,color:ink,textAlignVertical:'top'}}/>
+     <Pressable accessibilityRole="button" disabled={!!working||currentPromoIssued} onPress={issuePromo} style={{backgroundColor:ink,borderRadius:12,padding:16,opacity:working||currentPromoIssued?.5:1}}>
+      <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{working==='promo'?'Tworzę karty i pliki PDF…':currentPromoIssued?'Ten pakiet jest już wystawiony':'Wystaw i wyślij karty PDF'}</Text>
      </Pressable>
+     <Text style={{fontSize:12,color:muted,lineHeight:19,marginTop:9}}>Karty promocyjne są bezpłatne dla odbiorcy. Ich wartość nie jest liczona jako sprzedaż Stripe. Po odebraniu kodu niewykorzystane saldo pozostaje na koncie.</Text>
      {!!promoError&&<Text accessibilityRole="alert" style={{color:'#a52626',paddingVertical:11}}>{promoError}</Text>}
-     {!!promoResult&&<View style={{backgroundColor:'#edf7e8',padding:15,borderRadius:11,marginTop:13,gap:8}}>
-      <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Karta gotowa · {(promoResult.amount_grosze/100).toLocaleString('pl-PL')} zł</Text>
-      <Text style={{fontSize:12,color:muted}}>{promoResult.email_sent?'Wysłano e-mail do odbiorcy.':'Wysyłka e-mail niepotwierdzona — prześlij link samodzielnie.'}</Text>
-      <Text selectable style={{color:'#245c37',fontWeight:'800'}}>{promoResult.link}</Text>
-      <Pressable onPress={async()=>{try{if(Platform.OS==='web'&&typeof navigator!=='undefined'&&navigator.clipboard?.writeText){await navigator.clipboard.writeText(promoResult.link);setMessage('Skopiowano link.')}else await Share.share({message:promoResult.link});}catch{}}} style={{backgroundColor:ink,padding:13,borderRadius:10}}>
-       <Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Kopiuj / udostępnij kartę</Text>
-      </Pressable>
+     {!!promoResult&&<View style={{backgroundColor:'#edf7e8',padding:15,borderRadius:12,marginTop:17,gap:11}}>
+      <Text style={{fontWeight:'900',fontSize:19,color:ink}}>{promoResult.quantity===1?'Karta gotowa':'Karty gotowe'} · {money(promoResult.total_grosze)}</Text>
+      <Text style={{fontSize:13,color:muted,lineHeight:21}}>{promoResult.email_sent?'Wiadomość z PDF-ami przyjęto do wysyłki na '+promoResult.recipient_email+'.':'Karty są zapisane. Wysyłka na '+promoResult.recipient_email+' nie została potwierdzona. Pobierz PDF lub ponów wysyłkę tych samych kart.'}</Text>
+      {(promoResult.cards||[]).map(promoCardRow)}
+      {!promoResult.email_sent&&<Pressable accessibilityRole="button" disabled={!!working} onPress={()=>void resendPromo(promoResult.batch_id)} style={{backgroundColor:ink,padding:13,borderRadius:10,opacity:working?.5:1}}>
+       <Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>{working==='resend:'+promoResult.batch_id?'Wysyłam…':'Ponów wysyłkę tych samych kart'}</Text>
+      </Pressable>}
+      <Pressable accessibilityRole="button" disabled={!!working} onPress={startNewPromo} style={{padding:10,alignSelf:'flex-start'}}><Text style={{color:ink,fontWeight:'800'}}>Nowy pakiet →</Text></Pressable>
      </View>}
+     {!promoResult&&<Pressable accessibilityRole="button" disabled={!!working} onPress={startNewPromo} style={{paddingVertical:11,alignSelf:'flex-start'}}><Text style={{color:muted,fontSize:12,textDecorationLine:'underline'}}>Nowy pakiet — nowe kody</Text></Pressable>}
+     <View style={{marginTop:22,borderTopWidth:1,borderColor:'#e1e9db',paddingTop:15,gap:10}}>
+      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10,flexWrap:'wrap'}}>
+       <Pressable accessibilityRole="button" accessibilityState={{expanded:promoHistoryOpen}} onPress={()=>setPromoHistoryOpen(v=>!v)}><Text style={{fontSize:14,color:ink,fontWeight:'800'}}>Ostatnio wystawione pakiety {promoHistoryOpen?'↑':'↓'}</Text></Pressable>
+       <Pressable accessibilityRole="button" disabled={promoHistoryBusy} onPress={()=>void loadPromoHistory()} style={{padding:7}}><Text style={{color:muted,fontSize:12,fontWeight:'800'}}>{promoHistoryBusy?'Wczytuję…':'Odśwież historię'}</Text></Pressable>
+      </View>
+      {!!promoHistoryError&&<Text accessibilityRole="alert" style={{fontSize:12,color:'#a52626'}}>{promoHistoryError}</Text>}
+      {promoHistoryOpen&&!promoHistoryBusy&&!promoHistory.length&&!promoHistoryError&&<Text style={{fontSize:13,color:muted}}>Nie ma jeszcze wystawionych pakietów.</Text>}
+      {promoHistoryOpen&&promoHistory.map(batch=><View key={batch.id} style={{borderWidth:1,borderColor:'#e1e9db',borderRadius:11,padding:13,gap:10}}>
+       <Pressable accessibilityRole="button" accessibilityState={{expanded:promoOpenBatch===batch.id}} onPress={()=>setPromoOpenBatch(v=>v===batch.id?'':batch.id)} style={{gap:5}}>
+        <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>{batch.quantity} × {money(batch.amount_grosze)} · {formatDate(batch.created_at)}</Text>
+        <Text style={{fontSize:12,color:muted}}>{batch.recipient_email}</Text>
+        <Text style={{fontSize:12,color:muted}}>{batch.transferable?'Do przekazania dalej':'Dla wskazanego e-maila'} · {batch.recipient_email_sent_at?'E-mail wysłany':'E-mail niepotwierdzony'} · {promoOpenBatch===batch.id?'Zwiń ↑':'Pokaż karty ↓'}</Text>
+       </Pressable>
+       {promoOpenBatch===batch.id&&<>
+        {(batch.cards||[]).map(promoCardRow)}
+        {!batch.recipient_email_sent_at&&<Pressable accessibilityRole="button" disabled={!!working} onPress={()=>void resendPromo(batch.id)} style={{backgroundColor:pale,padding:12,borderRadius:9,opacity:working?.5:1}}><Text style={{color:ink,fontWeight:'800',fontSize:13}}>{working==='resend:'+batch.id?'Wysyłam…':'Ponów e-mail z tymi kartami'}</Text></Pressable>}
+       </>}
+      </View>)}
+     </View>
     </View>}
     {tab==='giveaway'&&<View style={card}>
      <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:8}}>Podaruj kursy za darmo</Text>
-     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wpisz e-mail, wybierz do 10 kursów i wyślij prezent. Każdy kurs ma własny jednorazowy link, ważny przez trzy lata. Dostęp do nauki trwa 12 miesięcy od odbioru.</Text>
+     <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:15}}>Wybierz do 10 kursów i podaruj je bezpłatnie. Każdy kurs otrzyma własną kartę PDF z nazwą i jednorazowym kodem, ważnym przez trzy lata. Dostęp do nauki trwa 12 miesięcy od odbioru.</Text>
      <View style={{flexDirection:'row',flexWrap:'wrap',gap:9,marginBottom:15}}>
-      <Pressable accessibilityRole="button" onPress={()=>{setGiftCompany(false);setIssuedGifts([])}} style={{backgroundColor:!giftCompany?ink:pale,padding:12,borderRadius:10}}>
-       <Text style={{fontSize:13,fontWeight:'900',color:!giftCompany?'white':ink}}>Dla jednej osoby</Text>
+      <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(false);setGiftTransferable(false);setIssuedGifts([])}} style={{backgroundColor:!giftCompany&&!giftTransferable?ink:pale,padding:12,borderRadius:10}}>
+       <Text style={{fontSize:13,fontWeight:'900',color:!giftCompany&&!giftTransferable?'white':ink}}>Dla jednej osoby</Text>
       </Pressable>
-      <Pressable accessibilityRole="button" onPress={()=>{setGiftCompany(true);setIssuedGifts([])}} style={{backgroundColor:giftCompany?ink:pale,padding:12,borderRadius:10}}>
+      <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(true);setGiftTransferable(false);setIssuedGifts([])}} style={{backgroundColor:giftCompany?ink:pale,padding:12,borderRadius:10}}>
        <Text style={{fontSize:13,fontWeight:'900',color:giftCompany?'white':ink}}>Pakiet dla firmy / pracowników</Text>
       </Pressable>
+      <Pressable accessibilityRole="button" disabled={!!working} onPress={()=>{setGiftCompany(false);setGiftTransferable(true);setIssuedGifts([])}} style={{backgroundColor:giftTransferable?ink:pale,padding:12,borderRadius:10}}>
+       <Text style={{fontSize:13,fontWeight:'900',color:giftTransferable?'white':ink}}>Do przekazania dalej / fundacji</Text>
+      </Pressable>
      </View>
-     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail opiekuna firmy':'E-mail odbiorcy'}</Text>
-     <TextInput placeholder={giftCompany?'np. szkolenia@firma.pl':'np. odbiorca@example.com'} value={giftEmail} onChangeText={setGiftEmail}
+     <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{giftCompany?'E-mail opiekuna firmy':giftTransferable?'E-mail fundacji lub osoby odbierającej PDF-y':'E-mail odbiorcy'}</Text>
+     <TextInput accessibilityLabel="E-mail odbiorcy kursów" editable={!working} placeholder={giftCompany?'np. szkolenia@firma.pl':'np. odbiorca@example.com'} value={giftEmail} onChangeText={setGiftEmail}
       autoCapitalize="none" keyboardType="email-address" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,backgroundColor:'white',color:ink,fontSize:15,marginTop:7,marginBottom:7}}/>
-     <Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>{giftCompany?'Firma otrzyma prywatny panel, w którym samodzielnie przydzieli kursy pracownikom i sprawdzi, które zostały odebrane.':'Kody będą przypisane do adresu odbiorcy, więc nie można przekazać ich innym osobom.'}</Text>
+     <Text style={{color:muted,fontSize:12,lineHeight:19,marginBottom:14}}>{giftCompany?'Firma otrzyma prywatny panel, w którym przydzieli kursy na adresy pracowników. Po przydziale kartę PDF można pobrać w panelu firmy.':giftTransferable?'Fundacja otrzyma oddzielne karty PDF. Może je wydrukować i przekazać innym osobom. Każdy kod może odebrać jedna osoba na swoim potwierdzonym koncie.':'Kody będą przypisane do adresu odbiorcy. Otrzyma on karty PDF z nazwami wybranych kursów.'}</Text>
+     {!giftCompany&&<TextInput accessibilityLabel="Dedykacja na kartach kursów" editable={!working} value={giftDedication} onChangeText={setGiftDedication} multiline maxLength={300} placeholder="Dedykacja na kartach kursów (opcjonalnie)" style={{padding:13,borderWidth:1,borderColor:'#cbdcc5',borderRadius:11,minHeight:76,marginBottom:14,fontSize:14,color:ink,textAlignVertical:'top'}}/>}
      {giftCompany&&<View style={{gap:7,marginBottom:14}}>
       <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>Nazwa firmy (opcjonalnie)</Text>
       <TextInput placeholder="Np. Firma ABC" value={giftCompanyName} onChangeText={setGiftCompanyName}
@@ -447,10 +605,14 @@ export default function AdminPage(){
      </View>}
      {!!issuedGifts.length&&<View style={{padding:14,backgroundColor:'#eff7e9',marginTop:15,borderRadius:11,gap:10}}>
       <Text style={{color:ink,fontSize:18,fontWeight:'900'}}>Pakiet gotowy — {issuedGifts.length} kodów</Text>
-      <Text style={{fontSize:12,color:muted}}>{giftSent?'Wiadomość została przekazana do Resend.':'Wyślij linki samodzielnie albo skopiuj je do wiadomości dla firmy.'}</Text>
+      <Text style={{fontSize:12,color:muted}}>{giftSent?'Wiadomość z kartami PDF przyjęto do wysyłki.':'Pobierz karty PDF do wydruku albo skopiuj linki i przekaż je odbiorcy.'}</Text>
       {issuedGifts.map((g,i)=><View key={g.code} style={{borderBottomWidth:1,borderColor:'#d0e4ca',paddingBottom:9}}>
        <Text style={{color:ink,fontSize:13,fontWeight:'800'}}>{i+1}. {g.title_pl}</Text>
        <Text selectable style={{color:'#245b3a',fontSize:12,marginTop:4}}>{g.link}</Text>
+       {!!g.expires_at&&<Text style={{fontSize:12,color:muted,marginTop:5}}>Termin odbioru: {formatDate(g.expires_at)}</Text>}
+       <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF kursu '+g.title_pl} disabled={!!working} onPress={()=>void downloadCourseGift(g)} style={{alignSelf:'flex-start',backgroundColor:ink,padding:11,borderRadius:9,marginTop:8,opacity:working?.5:1}}>
+        <Text style={{color:'white',fontWeight:'800',fontSize:13}}>{working==='gift-pdf:'+g.code?'Przygotowuję PDF…':'Pobierz kartę PDF'}</Text>
+       </Pressable>
       </View>)}
       <Pressable accessibilityRole="button" onPress={shareAdminGifts} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
        <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Kopiuj / udostępnij wszystkie linki</Text>

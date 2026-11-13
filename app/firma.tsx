@@ -1,10 +1,11 @@
-import React,{useEffect,useMemo,useState} from 'react';
+import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {View,Text,TextInput,ScrollView,Pressable,ActivityIndicator,Share,Platform,useWindowDimensions} from 'react-native';
 import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import {downloadGiftPdf} from '../src/giftPdf';
 
 type Seat={id:string;bundle_id:string;course_slug:string;title_pl:string;state:'available'|'assigned';assigned_email:string|null;email_sent_at:string|null;redeemed:boolean};
-type Link={title_pl:string;link:string;email_sent:boolean;recipient:string};
+type Link={title_pl:string;link:string;code?:string;gift_id?:string;email_sent:boolean;recipient:string};
 const ink='#183b2c',muted='#5a7463',pale='#ecf5e7';
 const courseCount=(count:number)=>count+' '+(count===1?'kurs':count>=2&&count<=4?'kursy':'kursów');
 export default function CompanyPortal(){
@@ -12,6 +13,7 @@ export default function CompanyPortal(){
  const [loading,setLoading]=useState(true),[busy,setBusy]=useState(false),[signedIn,setSignedIn]=useState(false),[authorized,setAuthorized]=useState(false);
  const [email,setEmail]=useState(''),[seats,setSeats]=useState<Seat[]>([]),[recipient,setRecipient]=useState(''),[selected,setSelected]=useState<string[]>([]);
  const [links,setLinks]=useState<Link[]>([]),[error,setError]=useState(''),[message,setMessage]=useState(''),[filter,setFilter]=useState<'all'|'available'|'assigned'>('available');
+ const [pdfBusy,setPdfBusy]=useState(''),pdfLock=useRef(false);
  const free=useMemo(()=>seats.filter(s=>s.state==='available'),[seats]);
  const assigned=useMemo(()=>seats.filter(s=>s.state==='assigned'),[seats]);
  const visible=useMemo(()=>seats.filter(s=>filter==='all'||s.state===filter),[seats,filter]);
@@ -39,13 +41,23 @@ export default function CompanyPortal(){
    for(const seat_id of selected){
     const {data,error}=await supabase.functions.invoke('ta-company',{body:{action:'assign',seat_id,employee_email:recipient.trim().toLowerCase()}});
     if(error||!data?.ok)throw new Error('Nie wszystkie kursy udało się przydzielić. Sprawdź listę.');
-    outputs.push({title_pl:data.title_pl,recipient:data.recipient,link:data.link,email_sent:!!data.email_sent});
+    outputs.push({title_pl:data.title_pl,recipient:data.recipient,link:data.link,code:data.code,gift_id:data.gift_id,email_sent:!!data.email_sent});
     setSelected(current=>current.filter(id=>id!==seat_id));
    }
    setSelected([]);setRecipient('');
    setMessage('Przydzielono '+courseCount(outputs.length)+'. '+(outputs.every(x=>x.email_sent)?'Zaproszenia wysłano.':'Skopiuj linki, których wysyłka nie została potwierdzona.'));
   }catch(e:any){setError(e?.message||'Błąd przydziału.')}
   finally{setLinks(outputs);await load();setBusy(false);}
+ }
+ async function printInvitation(item:Link){
+  if(busy||pdfLock.current)return;
+  pdfLock.current=true;setPdfBusy(item.link);setError('');
+  try{
+   const code=item.code||new URL(item.link).searchParams.get('code')||'';
+   await downloadGiftPdf({code,gift_id:item.gift_id});
+   setMessage('Karta kursu PDF jest gotowa do wydruku i przekazania wskazanemu pracownikowi.');
+  }catch(e:any){setError(e?.message||'Nie udało się pobrać karty kursu.');}
+  finally{pdfLock.current=false;setPdfBusy('');}
  }
  async function copy(){
   const text=links.map((x,i)=>(i+1)+'. '+x.title_pl+'\n'+x.link).join('\n\n');
@@ -114,6 +126,9 @@ export default function CompanyPortal(){
       <Text style={{color:ink,fontWeight:'800'}}>{i+1}. {item.title_pl}</Text>
       <Text style={{color:muted,fontSize:12}}>{item.recipient} · {item.email_sent?'Wysłano e-mail':'Wysyłka e-mail niepotwierdzona'}</Text>
       <Text selectable style={{color:'#2e7950',fontSize:12}}>{item.link}</Text>
+      <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF kursu '+item.title_pl} disabled={busy||!!pdfBusy} onPress={()=>void printInvitation(item)} style={{alignSelf:'flex-start',backgroundColor:pale,padding:11,borderRadius:9,opacity:busy||pdfBusy?.5:1}}>
+       <Text style={{color:ink,fontWeight:'800',fontSize:13}}>{pdfBusy===item.link?'Przygotowuję PDF…':'Pobierz kartę PDF'}</Text>
+      </Pressable>
      </View>)}
      <Pressable onPress={copy} style={{backgroundColor:ink,padding:13,borderRadius:10,marginTop:13}}><Text style={{color:'white',textAlign:'center',fontWeight:'800'}}>Kopiuj / udostępnij zaproszenia</Text></Pressable>
     </View>}

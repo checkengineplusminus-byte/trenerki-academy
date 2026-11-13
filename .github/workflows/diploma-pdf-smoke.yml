@@ -5,6 +5,9 @@ on:
     paths:
       - 'supabase/functions/ta-diplomas/**'
       - 'scripts/diploma-pdf-smoke.test.ts'
+      - 'supabase/functions/_shared/gift-card-*.ts'
+      - 'scripts/gift-card-pdf-smoke.test.ts'
+      - 'scripts/gift-card-mail.test.ts'
       - '.github/workflows/diploma-pdf-smoke.yml'
   workflow_dispatch:
 jobs:
@@ -19,3 +22,5 @@ jobs:
           deno-version: v2.x
       - name: Verify Polish/English printable PDF without issuing certificates or emails
         run: deno test --node-modules-dir=auto --allow-net scripts/diploma-pdf-smoke.test.ts
+      - name: Verify printable gift cards and email attachments without sending messages
+        run: deno test --node-modules-dir=none --no-lock --allow-read --allow-net scripts/gift-card-pdf-smoke.test.ts scripts/gift-card-mail.test.ts

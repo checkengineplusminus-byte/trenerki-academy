@@ -1,4 +1,5 @@
 import {privacyNotice} from '../_shared/recipient-privacy.ts';
+import {courseGiftMailContent} from '../_shared/gift-card-mail.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
 const cors={
@@ -21,14 +22,23 @@ function randomCode(){
  const a=new Uint8Array(16);crypto.getRandomValues(a);
  return 'TA-'+Array.from(a,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
 }
-async function sendViaResend(to,subject,html){
+async function sendViaResend(to,subject,html,attachments?:{filename:string;content:string}[],text?:string,idempotencyKey?:string){
  const api=Deno.env.get('RESEND_API_KEY');
  const from=Deno.env.get('RESEND_FROM_EMAIL');
  if(!api||!from)return {sent:false,reason:'email_not_configured'};
- const r=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'authorization':'Bearer '+api,'content-type':'application/json'},
-  body:JSON.stringify({from,to:[to],subject,html})});
+ const r=await fetch('https://api.resend.com/emails',{method:'POST',headers:{'authorization':'Bearer '+api,'content-type':'application/json',...(idempotencyKey?{'Idempotency-Key':idempotencyKey}:{})},
+  body:JSON.stringify({from,to:[to],reply_to:'trenerki.pl@gmail.com',subject,html,attachments,text})});
  if(!r.ok)return {sent:false,reason:'email_provider_unavailable'};
  return {sent:true};
+}
+async function printableGifts(rows:any[],creatorId:string){
+ return Promise.all((rows||[]).map(async row=>{
+  const {code_hash,created_by,paid_at,...safe}=row;
+  const printable=created_by===creatorId&&row.status==='issued'&&row.mode!=='demo'&&
+   (row.mode!=='stripe'||!!paid_at)&&new Date(row.expires_at).getTime()>Date.now()&&
+   code_hash===await codeHash('TA-'+row.id.replaceAll('-','').toUpperCase());
+  return {...safe,printable};
+ }));
 }
 Deno.serve(async request=>{
  if(request.method==='OPTIONS')return reply({ok:true});
@@ -41,7 +51,7 @@ Deno.serve(async request=>{
  const {data:{user},error:authError}=await auth.auth.getUser(token);
  if(authError||!user?.id||!user.email_confirmed_at)return reply({error:'confirmed_login_required'},401);
  const db=createClient(url,secret,{auth:{persistSession:false,autoRefreshToken:false}});
- let payload={};try{payload=await request.json();}catch{return reply({error:'invalid_json'},400)}
+ let payload:any={};try{payload=await request.json();}catch{return reply({error:'invalid_json'},400)}
  const action=cleanText(payload?.action,40),slug=cleanText(payload?.course_slug,80);
  const {data:adminRec,error:adminError}=await db.from('ta_admins').select('role').eq('user_id',user.id).maybeSingle();
  if(adminError)return reply({error:'role_check_failed'},503);
@@ -59,12 +69,18 @@ Deno.serve(async request=>{
   if(email&&!validMail(email))return reply({error:'invalid_recipient_email'},400);
   const message=cleanText(payload?.message,300);
   if(!isAdmin){const {count}=await db.from('ta_gift_cards').select('id',{count:'exact',head:true}).eq('created_by',user.id).gte('created_at',afterDays(-1));if((count||0)>=10)return reply({error:'daily_gift_limit'},429)}
-  const code=randomCode(),hash=await codeHash(code);
-  const {data:gift,error:ge}=await db.from('ta_gift_cards').insert({code_hash:hash,course_slug:slug,created_by:user.id,recipient_email:email||null,gift_message:message||null,mode}).select('id,expires_at').single();
+  const giftId=crypto.randomUUID(),code='TA-'+giftId.replaceAll('-','').toUpperCase(),hash=await codeHash(code);
+  const {data:gift,error:ge}=await db.from('ta_gift_cards').insert({id:giftId,code_hash:hash,course_slug:slug,created_by:user.id,recipient_email:email||null,gift_message:message||null,mode}).select('id,created_at,expires_at').single();
   if(ge)return reply({error:'gift_creation_failed'},500);
   const giftUrl=baseUrl+'/prezent?code='+encodeURIComponent(code);
-  let delivered={sent:false,reason:'share_link'};
-  if(email){const html='<h2>Prezent od bliskiej osoby 🎁</h2><p>Otrzymujesz dostęp do kursu: <b>'+htmlEsc(c.title_pl)+'</b>.</p><p>'+htmlEsc(message)+'</p><p><a href="'+htmlEsc(giftUrl)+'">Otwórz prezent w TRENERKI Academy</a></p><p>'+(mode==='demo'?'To testowa karta podarunkowa, bez wpłaty i wartości pieniężnej.':'To prezent do bezpłatnego kursu.')+'</p>';delivered=await sendViaResend(email,'TRENERKI Academy — prezent dla Ciebie',html+privacyNotice)}
+  let delivered:{sent:boolean;reason?:string}={sent:false,reason:'share_link'};
+  if(email){
+   try{
+    const content=await courseGiftMailContent([{...gift,code,course_title:c.title_pl,gift_message:message,recipient_email:email,is_demo:false}]);
+    delivered=await sendViaResend(email,content.subject,content.html,content.attachments,content.text,'trenerki-free-gift-pdf-v1-'+gift.id);
+    if(delivered.sent)await db.from('ta_gift_cards').update({recipient_email_sent_at:new Date().toISOString()}).eq('id',gift.id).eq('created_by',user.id);
+   }catch{delivered={sent:false,reason:'email_provider_unavailable'};}
+  }
   return reply({ok:true,code,link:giftUrl,gift_id:gift.id,expires_at:gift.expires_at,mode,email_sent:delivered.sent,email_message:delivered.reason||null});
  }
  if(action==='redeem_gift'){
@@ -78,22 +94,22 @@ Deno.serve(async request=>{
   return reply(data,data.error?(codes[data.error]||400):200);
  }
  if(action==='my_gifts'){
-  const {data,error}=await db.from('ta_gift_cards').select('id,course_slug,mode,status,recipient_email,created_at,expires_at,redeemed_at').eq('created_by',user.id).neq('status','pending').order('created_at',{ascending:false}).limit(50);
+  const {data,error}=await db.from('ta_gift_cards').select('id,code_hash,created_by,paid_at,course_slug,mode,status,recipient_email,created_at,expires_at,redeemed_at').eq('created_by',user.id).neq('status','pending').order('created_at',{ascending:false}).limit(50);
   if(error)return reply({error:'gifts_unavailable'},503);
-  return reply({gifts:data||[]});
+  return reply({gifts:await printableGifts(data||[],user.id)});
  }
  if(action==='admin_dashboard'){
   if(!isAdmin)return reply({error:'admin_only'},403);
   const [users,orders,gifts,documents,courses,enrollments]=await Promise.all([
    db.auth.admin.listUsers({page:1,perPage:100}),
    db.from('ta_demo_orders').select('id,user_id,course_slug,list_price_grosze,actual_paid_grosze,source,created_at,expires_at').order('created_at',{ascending:false}).limit(40),
-   db.from('ta_gift_cards').select('id,course_slug,mode,status,recipient_email,created_at,redeemed_at').order('created_at',{ascending:false}).limit(40),
+   db.from('ta_gift_cards').select('id,code_hash,created_by,paid_at,course_slug,mode,status,recipient_email,created_at,expires_at,redeemed_at').order('created_at',{ascending:false}).limit(40),
    db.from('ta_invoice_drafts').select('id,user_id,course_slug,recipient_email,amount_grosze,doc_status,created_at,sent_at').order('created_at',{ascending:false}).limit(40),
    db.from('ta_courses').select('slug',{count:'exact',head:true}).eq('published',true),
    db.from('ta_enrollments').select('id',{count:'exact',head:true}).in('status',['active','demo'])
   ]);
   if(users.error||orders.error||gifts.error||documents.error)return reply({error:'admin_data_unavailable'},503);
-  return reply({is_admin:true,counts:{users:users.data?.total??users.data?.users?.length??0,courses:courses.count??0,active_or_demo_access:enrollments.count??0,demo_orders:orders.data?.length??0,gift_codes:gifts.data?.length??0},users:(users.data?.users||[]).map(u=>({id:u.id,email:u.email,created_at:u.created_at,last_sign_in_at:u.last_sign_in_at,confirmed:!!u.email_confirmed_at})),orders:orders.data||[],gifts:gifts.data||[],invoice_drafts:documents.data||[],money_received:0});
+  return reply({is_admin:true,counts:{users:(users.data as any)?.total??users.data?.users?.length??0,courses:courses.count??0,active_or_demo_access:enrollments.count??0,demo_orders:orders.data?.length??0,gift_codes:gifts.data?.length??0},users:(users.data?.users||[]).map(u=>({id:u.id,email:u.email,created_at:u.created_at,last_sign_in_at:u.last_sign_in_at,confirmed:!!u.email_confirmed_at})),orders:orders.data||[],gifts:await printableGifts(gifts.data||[],user.id),invoice_drafts:documents.data||[],money_received:0});
  }
  if(action==='create_invoice_draft'){
   if(!isAdmin)return reply({error:'admin_only'},403);

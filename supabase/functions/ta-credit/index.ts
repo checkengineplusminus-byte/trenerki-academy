@@ -1,6 +1,7 @@
-import {privacyNotice} from '../_shared/recipient-privacy.ts';
 import {termsVersion} from '../_shared/order-confirmation.ts';
-import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
+import {buildGiftCardPdf,bytesBase64,giftCardFilename,type GiftCard} from '../_shared/gift-card-pdf.ts';
+import {giftCardMailContent,giftCardLink} from '../_shared/gift-card-mail.ts';
+import {createClient,type SupabaseClient} from 'npm:@supabase/supabase-js@2.86.0';
 const site='https://trenerki.com';
 const headers={'content-type':'application/json','access-control-allow-origin':'*','access-control-allow-headers':'authorization,apikey,content-type,x-client-info','access-control-allow-methods':'POST,OPTIONS','cache-control':'no-store'};
 const reply=(data:unknown,status=200)=>new Response(JSON.stringify(data),{status,headers});
@@ -8,7 +9,38 @@ const mailValid=(m:string)=>/^[^@\s]{1,70}@[^@\s]{1,100}\.[^@\s]{2,20}$/.test(m)
 const courseValid=(slug:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(slug);
 const sum=(values:{wallet_grosze:number}[])=>(values||[]).reduce((acc,r)=>acc+Number(r.wallet_grosze||0),0);
 const fullCode=(id:string)=>'TW-'+id.replaceAll('-','').toUpperCase();
-const escape=(text:string)=>text.replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]||x));
+const uuidValid=(value:unknown):value is string=>typeof value==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
+const voucherFields='id,batch_id,batch_position,recipient_email,amount_grosze,gift_message,transferable,created_at,expires_at,status,recipient_email_sent_at';
+type PromoCard=GiftCard&{batch_id:string;batch_position:number;status:string;recipient_email_sent_at:string|null};
+const printableCard=(row:any):GiftCard=>({...row,code:fullCode(row.id),transferable:row.transferable===true});
+const publicCard=(row:any)=>({id:row.id,code:fullCode(row.id),link:giftCardLink(fullCode(row.id)),amount_grosze:row.amount_grosze,
+ transferable:row.transferable===true,expires_at:row.expires_at,status:row.status});
+async function loadPromoBatch(db:SupabaseClient,batchId:string,adminId:string){
+ const {data:batch,error:batchError}=await db.from('ta_credit_promo_batches').select('*').eq('id',batchId).eq('created_by',adminId).maybeSingle();
+ if(batchError)throw new Error('batch_lookup_failed');
+ if(!batch)return null;
+ const {data:cards,error:cardsError}=await db.from('ta_credit_vouchers').select(voucherFields).eq('batch_id',batchId).eq('created_by',adminId).eq('is_promo',true).order('batch_position');
+ if(cardsError||cards?.length!==batch.quantity)throw new Error('batch_lookup_failed');
+ return {batch,cards:cards as PromoCard[]};
+}
+async function sendPromoBatch(db:SupabaseClient,batch:any,cards:PromoCard[]){
+ if(batch.recipient_email_sent_at)return {email_sent:true};
+ if(cards.some(card=>card.status!=='issued'||new Date(card.expires_at).getTime()<=Date.now()))return {email_sent:false,email_error:'card_inactive'};
+ const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
+ if(!api||!from)return {email_sent:false,email_error:'email_not_configured'};
+ try{
+  const content=await giftCardMailContent(cards.map(printableCard));
+  const result=await fetch('https://api.resend.com/emails',{method:'POST',
+   headers:{Authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-promo-pdf-v1-'+batch.id},
+   body:JSON.stringify({from,to:[batch.recipient_email],reply_to:'trenerki.pl@gmail.com',...content}),signal:AbortSignal.timeout(15000)});
+  if(!result.ok){console.error('promo_email_failed',result.status);return {email_sent:false,email_error:'email_send_failed'};}
+  const stamp=new Date().toISOString();
+  const {error:cardStampError}=await db.from('ta_credit_vouchers').update({recipient_email_sent_at:stamp}).eq('batch_id',batch.id).eq('created_by',batch.created_by);
+  const {error:batchStampError}=await db.from('ta_credit_promo_batches').update({recipient_email_sent_at:stamp}).eq('id',batch.id).eq('created_by',batch.created_by);
+  if(cardStampError||batchStampError)console.error('promo_email_status_failed');
+  return {email_sent:true};
+ }catch{console.error('promo_email_or_pdf_failed');return {email_sent:false,email_error:'email_send_failed'};}
+}
 async function hash(code:string){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(code));return Array.from(new Uint8Array(buf),b=>b.toString(16).padStart(2,'0')).join('')}
 async function checkout(secret:string,params:URLSearchParams){
  const res=await fetch('https://api.stripe.com/v1/checkout/sessions',{method:'POST',headers:{Authorization:'Bearer '+secret,'content-type':'application/x-www-form-urlencoded'},body:params,signal:AbortSignal.timeout(14000)});
@@ -31,37 +63,67 @@ Deno.serve(async(req)=>{
  let body:any;try{body=await req.json()}catch{return reply({error:'invalid_body'},400)}
  const action=String(body?.action||'');
  const email=user.email.trim().toLowerCase();
- if(action==='admin_issue_promo'){
+ if(['admin_issue_promo','admin_list_promo','admin_card_pdf','admin_resend_promo'].includes(action)){
   const {data:roleData,error:roleError}=await db.from('ta_admins').select('role').eq('user_id',user.id).maybeSingle();
   if(roleError)return reply({error:'role_verification_failed'},503);
   if(roleData?.role!=='owner')return reply({error:'owner_only'},403);
+  if(action==='admin_list_promo'){
+   const {data:batches,error:batchError}=await db.from('ta_credit_promo_batches').select('id,recipient_email,amount_grosze,quantity,gift_message,transferable,created_at,recipient_email_sent_at').eq('created_by',user.id).order('created_at',{ascending:false}).limit(10);
+   if(batchError)return reply({error:'batch_lookup_failed'},503);
+   if(!batches?.length)return reply({ok:true,batches:[]});
+   const {data:cards,error:cardsError}=await db.from('ta_credit_vouchers').select(voucherFields).eq('created_by',user.id).eq('is_promo',true).in('batch_id',batches.map(b=>b.id)).order('batch_position');
+   if(cardsError)return reply({error:'batch_lookup_failed'},503);
+   return reply({ok:true,batches:batches.map(batch=>({...batch,cards:(cards||[]).filter(c=>c.batch_id===batch.id).map(publicCard)}))});
+  }
+  if(action==='admin_card_pdf'){
+   if(!uuidValid(body?.card_id))return reply({error:'invalid_input'},400);
+   const {data:card,error:cardError}=await db.from('ta_credit_vouchers').select(voucherFields).eq('id',body.card_id).eq('created_by',user.id).eq('is_promo',true).maybeSingle();
+   if(cardError)return reply({error:'card_lookup_failed'},503);
+   if(!card)return reply({error:'card_not_found'},404);
+   if(card.status!=='issued'||new Date(card.expires_at).getTime()<=Date.now())return reply({error:'card_inactive'},409);
+   try{
+    const printable=printableCard(card);
+    return reply({ok:true,pdf_base64:bytesBase64(await buildGiftCardPdf(printable)),filename:giftCardFilename(printable)});
+   }catch{return reply({error:'pdf_not_ready'},503);}
+  }
+  if(action==='admin_resend_promo'){
+   if(!uuidValid(body?.batch_id))return reply({error:'invalid_input'},400);
+   try{
+    const found=await loadPromoBatch(db,body.batch_id,user.id);
+    if(!found)return reply({error:'batch_not_found'},404);
+    if(found.batch.recipient_email_sent_at)return reply({ok:true,email_sent:true,already_sent:true});
+    if(found.cards.some(card=>card.status!=='issued'||new Date(card.expires_at).getTime()<=Date.now()))return reply({error:'card_inactive'},409);
+    return reply({ok:true,...await sendPromoBatch(db,found.batch,found.cards)});
+   }catch{return reply({error:'batch_lookup_failed'},503);}
+  }
   const amount=Number(body?.amount_grosze);
   const recipient=String(body?.recipient_email||'').trim().toLowerCase();
   const msg=String(body?.message||'').trim().slice(0,300);
-  if(!Number.isSafeInteger(amount)||amount<2500||amount>100000||!mailValid(recipient))return reply({error:'invalid_input'},400);
-  const id=crypto.randomUUID(),code=fullCode(id),code_hash=await hash(code);
-  const {data,error}=await db.rpc('ta_credit_issue_promo',{
-   p_id:id,p_admin:user.id,p_email:recipient,p_amount:amount,p_hash:code_hash,p_message:msg
+  const quantity=body?.quantity===undefined?1:Number(body.quantity);
+  const transferable=body?.transferable===true;
+  if(!Number.isSafeInteger(amount)||amount<2500||amount>100000||!mailValid(recipient)||!Number.isInteger(quantity)||quantity<1||quantity>10||
+   (body?.transferable!==undefined&&typeof body.transferable!=='boolean')||
+   (body?.request_id!==undefined&&!uuidValid(body.request_id)))return reply({error:'invalid_input'},400);
+  // Older deployed clients can still issue one restricted card. New clients keep
+  // this request ID until a definitive response to avoid duplicate funds on retry.
+  const requestId=body?.request_id||crypto.randomUUID();
+  const candidateCards=await Promise.all(Array.from({length:quantity},async()=>{
+   const id=crypto.randomUUID();return {id,code_hash:await hash(fullCode(id))};
+  }));
+  const {data,error}=await db.rpc('ta_credit_issue_promo_batch',{
+   p_request_id:requestId,p_admin:user.id,p_email:recipient,p_amount:amount,p_quantity:quantity,p_message:msg,p_transferable:transferable,p_cards:candidateCards
   });
   if(error){console.error('admin_promo_grant_failed',error.code);return reply({error:'promo_grant_failed'},503)}
-  if(!data?.ok)return reply({error:data?.error||'promo_grant_failed'},data?.error==='daily_limit'?429:403);
-  let email_sent=false;
-  const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
-  const pln=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(amount/100);
-  const link=site+'/prezent?code='+code;
-  if(api&&from){
-   try{
-    const sent=await fetch('https://api.resend.com/emails',{method:'POST',
-     headers:{Authorization:'Bearer '+api,'content-type':'application/json'},
-     body:JSON.stringify({from,to:[recipient],subject:'TRENERKI Academy — karta podarunkowa '+pln,
-      html:'<h2>Masz prezent!</h2><p>Otrzymujesz kartę TRENERKI Academy o wartości <strong>'+pln+'</strong>.</p>'+
-       (msg?'<p>'+escape(msg)+'</p>':'')+'<p>Twój kod: <strong>'+code+'</strong></p><p><a href="'+link+'">Odbierz środki na swoje konto</a></p>'+
-       '<p>Po wykorzystaniu części środków pozostałe saldo pozostanie na Twoim koncie.</p>'+privacyNotice}),
-     signal:AbortSignal.timeout(12000)});
-    email_sent=sent.ok;
-   }catch{email_sent=false}
+  if(!data?.ok){
+   const status=data?.error==='daily_limit'?429:data?.error==='owner_only'?403:['request_conflict','card_conflict'].includes(data?.error)?409:400;
+   return reply({error:data?.error||'promo_grant_failed'},status);
   }
-  return reply({ok:true,code,link,recipient_email:recipient,amount_grosze:amount,email_sent});
+  const cards=(data.cards||[]) as PromoCard[];
+  const delivery=await sendPromoBatch(db,data.batch,cards);
+  return reply({ok:true,batch_id:data.batch.id,quantity:cards.length,total_grosze:cards.reduce((total,c)=>total+c.amount_grosze,0),
+   recipient_email:data.batch.recipient_email,cards:cards.map(publicCard),replayed:data.replayed,...delivery,
+   // Retain the response fields consumed by the previous one-card admin screen.
+   code:cards[0]?fullCode(cards[0].id):null,link:cards[0]?giftCardLink(fullCode(cards[0].id)):null,amount_grosze:data.batch.amount_grosze});
  }
  if(action==='balance'){
   const [{data:wallet,error:we},{data:entries,error:le},{data:holds,error:he}]=await Promise.all([

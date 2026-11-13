@@ -1,4 +1,5 @@
 import {privacyNotice} from '../_shared/recipient-privacy.ts';
+import {courseGiftMailContent} from '../_shared/gift-card-mail.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={
  'access-control-allow-origin':'*',
@@ -9,10 +10,7 @@ const send=(data:unknown,status=200)=>new Response(JSON.stringify(data),{status,
 const validSlug=(slug:string)=>/^[a-z0-9][a-z0-9_-]{1,79}$/.test(slug);
 const validMail=(email:string)=>/^[^@\s]{1,70}@[^@\s]{1,120}\.[^@\s]{2,20}$/.test(email);
 const esc=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c));
-function makeCode(){
- const values=new Uint8Array(16);crypto.getRandomValues(values);
- return 'TA-'+Array.from(values,v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
-}
+const codeForGift=(id:string)=>'TA-'+id.replaceAll('-','').toUpperCase();
 async function hash(code:string){
  const bytes=new TextEncoder().encode(code),digest=await crypto.subtle.digest('SHA-256',bytes);
  return Array.from(new Uint8Array(digest),v=>v.toString(16).padStart(2,'0')).join('');
@@ -33,7 +31,7 @@ Deno.serve(async request=>{
  if(!['owner','admin'].includes(admin?.role||''))return send({error:'admin_only'},403);
  let body:any;try{body=await request.json()}catch{return send({error:'invalid_json'},400)}
  if(body?.action==='set_discount'){
-  if(admin.role!=='owner')return send({error:'owner_only'},403);
+  if(admin?.role!=='owner')return send({error:'owner_only'},403);
   const day=String(body?.day||''),percent=Number(body?.percent);
   if(!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isInteger(percent)||percent<0||percent>80)
    return send({error:'invalid_discount'},400);
@@ -95,31 +93,50 @@ Deno.serve(async request=>{
   return send({ok:true,company_panel:true,company_email:destination,company_name:name,dashboard_url:dashboard,
    seats:slugs.length,email_sent:emailSent,bundle_id:bundle.bundle_id});
  }
-  const codes=slugs.map(()=>makeCode());
+ const ids=slugs.map(()=>crypto.randomUUID());
+ const codes=ids.map(codeForGift);
  const hashes=await Promise.all(codes.map(hash));
+ const giftMessage=String(body?.message||'').trim().slice(0,300)||
+  (bind?'Bezpłatny prezent od TRENERKI Academy':'Pakiet kursów dla odbiorcy wskazanego przez administratora');
  const rows=slugs.map((slug:string,index:number)=>({
-  code_hash:hashes[index],course_slug:slug,created_by:user.id,
+  id:ids[index],code_hash:hashes[index],course_slug:slug,created_by:user.id,
   recipient_email:bind?destination:null,
-  gift_message:bind?'Bezpłatny prezent od TRENERKI Academy':'Pakiet kursów dla odbiorcy wskazanego przez administratora',
+  gift_message:giftMessage,
   mode:'free',status:'issued'
  }));
  // Bulk insert is one Postgres statement: either all vouchers are created or none.
- const {data:issued,error:insertError}=await db.from('ta_gift_cards').insert(rows).select('id,expires_at');
- if(insertError||issued?.length!==rows.length){console.error('admin_gift_insert_failed',insertError?.code);return send({error:'gift_create_failed'},500);}
+ const {data:issued,error:insertError}=await db.from('ta_gift_cards').insert(rows).select('id,created_at,expires_at,code_hash');
+ // PostgREST does not promise insert-return ordering. Match each generated code
+ // to its persisted ID and hash before building any link or printable attachment.
+ const issuedById=new Map((issued||[]).map(row=>[row.id,row]));
+ if(insertError||issued?.length!==rows.length||issuedById.size!==rows.length||
+    rows.some(row=>issuedById.get(row.id)?.code_hash!==row.code_hash)){
+  console.error('admin_gift_insert_failed',insertError?.code);return send({error:'gift_create_failed'},500);
+ }
  const gifts=slugs.map((slug:string,index:number)=>({
-  course_slug:slug,title_pl:(bySlug.get(slug) as any).title_pl,
+  gift_id:ids[index],course_slug:slug,title_pl:(bySlug.get(slug) as any).title_pl,
   code:codes[index],link:'https://trenerki.com/prezent?code='+codes[index],
-  expires_at:issued[index]?.expires_at
+  expires_at:issuedById.get(ids[index])!.expires_at
  }));
  let emailSent=false,emailError='';
  if(destination){
   const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
   if(api&&from){
-   const entries=gifts.map((gift,i)=>'<li style="padding:8px 0"><strong>'+esc((i+1)+'. '+gift.title_pl)+'</strong><br><a href="'+esc(gift.link)+'">'+esc(gift.link)+'</a></li>').join('');
-   const html='<h2>Twoje kursy od TRENERKI Academy</h2><p>Otrzymujesz '+gifts.length+' bezpłatnych '+(gifts.length===1?'kurs':'kodów do kursów')+'. Każdy kod można wykorzystać jeden raz. '+(bind?'Te kody są przypisane do Twojego adresu e-mail.':'Możesz przekazać każdy link wybranemu pracownikowi lub znajomemu.')+'</p><ol>'+entries+'</ol><p>Po odebraniu kodu dostęp do nauki trwa 12 miesięcy. <a href="https://trenerki.com">TRENERKI Academy</a>.</p>';
    try{
-    const res=await fetch('https://api.resend.com/emails',{method:'POST',headers:{authorization:'Bearer '+api,'content-type':'application/json'},body:JSON.stringify({from,to:[destination],subject:'TRENERKI Academy — '+gifts.length+' bezpłatnych kursów',html:html+privacyNotice}),signal:AbortSignal.timeout(12000)});
+    const content=await courseGiftMailContent(gifts.map(gift=>({
+     id:gift.gift_id,code:gift.code,course_title:gift.title_pl,gift_message:giftMessage,
+     recipient_email:bind?destination:null,
+     created_at:issuedById.get(gift.gift_id)!.created_at,expires_at:gift.expires_at
+    })));
+    const res=await fetch('https://api.resend.com/emails',{method:'POST',
+     headers:{authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-free-pdf-v1-'+ids[0]+'-'+ids.length},
+     body:JSON.stringify({from,to:[destination],reply_to:'trenerki.pl@gmail.com',...content}),signal:AbortSignal.timeout(15000)});
     emailSent=res.ok;if(!res.ok)emailError='email_provider_unavailable';
+    if(res.ok){
+     const {error:stampError}=await db.from('ta_gift_cards').update({recipient_email_sent_at:new Date().toISOString()})
+      .in('id',ids).eq('created_by',user.id).eq('mode','free');
+     if(stampError)console.error('admin_gift_email_status_failed',stampError.code);
+    }
    }catch{emailError='email_provider_unavailable'}
   }else emailError='email_not_configured';
  }

@@ -1,5 +1,6 @@
 import {privacyNotice} from '../_shared/recipient-privacy.ts';
 import {contractAttachments,termsVersion} from '../_shared/order-confirmation.ts';
+import {giftCardMailContent,courseGiftMailContent,type GiftCardAttachment} from '../_shared/gift-card-mail.ts';
 import Stripe from 'npm:stripe@17.7.0';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 
@@ -7,13 +8,14 @@ const site='https://trenerki.com';
 const reply=(status=200)=>new Response(null,{status});
 const escape=(value:string)=>value.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]??c));
 
-async function sendMail(key:string,to:string,subject:string,html:string,version?:string){
+async function sendMail(key:string,to:string,subject:string,html:string,version?:string,giftAttachments:GiftCardAttachment[]=[],text?:string){
  const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
  if(!api||!from)throw new Error('resend_not_configured');
+ const attachments=[...(contractAttachments(version)||[]),...giftAttachments];
  const result=await fetch('https://api.resend.com/emails',{
   method:'POST',
   headers:{Authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':key},
-  body:JSON.stringify({from,to:[to],reply_to:'trenerki.pl@gmail.com',subject,html,attachments:contractAttachments(version)})
+  body:JSON.stringify({from,to:[to],reply_to:'trenerki.pl@gmail.com',subject,html,text,attachments:attachments.length?attachments:undefined})
  });
  if(!result.ok)throw new Error('resend_http_'+result.status);
 }
@@ -82,7 +84,7 @@ Deno.serve(async req=>{
    });
    if(issueError||issued?.error)throw new Error('value_gift_confirmation_failed');
    const {data:gift,error:giftError}=await db.from('ta_credit_vouchers')
-    .select('status,recipient_email,gift_message,buyer_email_sent_at,recipient_email_sent_at')
+    .select('status,recipient_email,gift_message,buyer_email_sent_at,recipient_email_sent_at,created_at,expires_at,transferable')
     .eq('id',voucherId).eq('stripe_checkout_session_id',s.id).single();
    if(giftError)throw giftError;
    const {data:refunded,error:re}=await db.from('ta_stripe_refunds').select('payment_id').eq('payment_id',payment).maybeSingle();
@@ -93,21 +95,19 @@ Deno.serve(async req=>{
    if(userError||!user?.email)return reply(500);
    const amountStr=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(amount/100);
    const giftCode='TW-'+voucherId.replaceAll('-','').toUpperCase();
-   const giftLink=site+'/prezent?code='+giftCode;
+   const printableMail=(!gift.buyer_email_sent_at||!gift.recipient_email_sent_at)
+    ?await giftCardMailContent([{...gift,id:voucherId,code:giftCode,amount_grosze:amount,transferable:false}]):null;
    if(!gift.buyer_email_sent_at){
     await sendMail('trenerki-value-buyer-'+s.id,user.email,'TRENERKI Academy — karta podarunkowa '+amountStr,
      '<p>Zakupiono kartę podarunkową o wartości <strong>'+escape(amountStr)+'</strong>.</p>'+
      '<p>Odbiorca: '+escape(gift.recipient_email)+'. Kod odbioru: <strong>'+escape(giftCode)+'</strong>.</p>'+
-     '<p>Po odebraniu kodu saldo pojawi się na koncie odbiorcy.</p>'+(newTerms?'<p>Numer zamówienia '+escape(s.id)+'. Data '+purchaseDate+'.</p>'+termsNotice:''),version);
+     '<p>W załączniku znajduje się karta PDF do wydruku. Po odebraniu kodu saldo pojawi się na koncie odbiorcy.</p>'+(newTerms?'<p>Numer zamówienia '+escape(s.id)+'. Data '+purchaseDate+'.</p>'+termsNotice:''),version,printableMail?.attachments);
     const {error}=await db.from('ta_credit_vouchers').update({buyer_email_sent_at:new Date().toISOString()}).eq('id',voucherId);
     if(error)throw error;
    }
    if(!gift.recipient_email_sent_at){
     await sendMail('trenerki-value-recipient-'+s.id,gift.recipient_email,'TRENERKI Academy — otrzymujesz '+amountStr+' na kursy',
-     '<h2>Masz prezent!</h2><p>Twoja karta podarunkowa ma wartość <strong>'+escape(amountStr)+'</strong>.</p>'+
-     '<p>'+escape(gift.gift_message||'Wybierz kurs, który Cię zainteresuje.')+'</p>'+
-     '<p>Kod: <strong>'+escape(giftCode)+'</strong></p>'+
-     '<p><a href="'+escape(giftLink)+'">Odbierz środki na swoje konto</a>. Resztę salda możesz wykorzystać przy kolejnych zakupach.</p>'+(newTerms?privacyNotice:''));
+     printableMail!.html,undefined,printableMail!.attachments,printableMail!.text);
     const {error}=await db.from('ta_credit_vouchers').update({recipient_email_sent_at:new Date().toISOString()}).eq('id',voucherId);
     if(error)throw error;
    }
@@ -172,22 +172,24 @@ Deno.serve(async req=>{
    }).eq('id',giftId).eq('created_by',uid).eq('course_slug',slug).eq('amount_grosze',amount).eq('mode','stripe').eq('status','pending');
    if(issueError)throw issueError;
    const {data:gift,error:giftError}=await db.from('ta_gift_cards')
-    .select('status,recipient_email,gift_message,recipient_email_sent_at,buyer_email_sent_at')
+    .select('status,recipient_email,gift_message,recipient_email_sent_at,buyer_email_sent_at,created_at,expires_at')
     .eq('id',giftId).eq('stripe_checkout_session_id',s.id).single();
    if(giftError)throw giftError;
    if(gift.status==='cancelled'||await wasRefunded())return reply();
    const code='TA-'+giftId.replaceAll('-','').toUpperCase();
    const giftLink=site+'/prezent?code='+code;
+   const courseCard=(!gift.buyer_email_sent_at||!gift.recipient_email_sent_at)
+    ?await courseGiftMailContent([{...gift,id:giftId,code,course_title:course.title_pl,is_demo:false}]):null;
    if(!gift.buyer_email_sent_at){
     await sendMail('trenerki-buyer-'+s.id,email,'TRENERKI Academy — zakup karty podarunkowej',
      '<p>Kupiono kartę podarunkową na kurs <strong>'+title+'</strong>.</p>'+orderInfo+
-     '<p>Odbiorca: '+escape(gift.recipient_email)+'.</p><p><a href="'+giftLink+'">Link do karty podarunkowej</a></p>'+termsNotice,version);
+     '<p>Odbiorca: '+escape(gift.recipient_email)+'.</p><p><a href="'+giftLink+'">Link do karty podarunkowej</a></p><p>W załączniku karta PDF do wydruku.</p>'+termsNotice,version,courseCard?.attachments);
     const {error}=await db.from('ta_gift_cards').update({buyer_email_sent_at:new Date().toISOString()}).eq('id',giftId);
     if(error)throw error;
    }
    if(!gift.recipient_email_sent_at){
     await sendMail('trenerki-gift-'+s.id,gift.recipient_email,'TRENERKI Academy — masz prezent',
-     '<p>Otrzymujesz kurs <strong>'+title+'</strong>.</p><p>'+escape(gift.gift_message||'')+'</p><p><a href="'+giftLink+'">Odbierz prezent</a> po zalogowaniu na ten adres e-mail. Twój kod: '+code+'.</p>'+(newTerms?privacyNotice:''));
+     courseCard!.html,undefined,courseCard!.attachments,courseCard!.text);
     const {error}=await db.from('ta_gift_cards').update({recipient_email_sent_at:new Date().toISOString()}).eq('id',giftId);
     if(error)throw error;
    }

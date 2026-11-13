@@ -1,10 +1,12 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share,Linking,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
+import {FunctionsHttpError} from '@supabase/supabase-js';
 import {supabase} from '../src/supabase';
 import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
 import {coursePrice,termsVersion} from '../src/courseQuote';
 import {academyAction} from '../src/academyApi';
+import {downloadGiftPdf} from '../src/giftPdf';
 const ink='#173d2c',pale='#e9f4dc';
 export function generateMetadata(){
  return {
@@ -13,8 +15,9 @@ export function generateMetadata(){
  };
 }
 type Course={slug:string;title_pl:string;price_grosze:number;category_pl:string|null};
+type GiftHistory={id:string;course_slug:string;status:string;recipient_email:string|null;created_at:string;expires_at:string;printable:boolean};
 export default function GiftPage(){
- const {width}=useWindowDimensions(),scroll=useRef<ScrollView>(null);
+ const {width}=useWindowDimensions(),scroll=useRef<React.ComponentRef<typeof ScrollView>>(null);
  const cols=width>=1050?4:width>=720?3:2;
  const cardWidth=Math.max(135,Math.floor((Math.min(width,1070)-44-(cols-1)*12)/cols));
  const [catalog,setCatalog]=useState<Course[]>([]),[query,setQuery]=useState(''),[category,setCategory]=useState('Wszystkie'),[visible,setVisible]=useState(8);
@@ -25,6 +28,19 @@ export default function GiftPage(){
  [ready,setReady]=useState(false),[terms,setTerms]=useState(false),[busy,setBusy]=useState(false),
  [link,setLink]=useState(''),[notice,setNotice]=useState(''),[sent,setSent]=useState(false);
  const [giftQuote,setGiftQuote]=useState<{slug:string;price:number}|null>(null);
+ const [createdGift,setCreatedGift]=useState<{code:string;gift_id?:string}|null>(null),[pdfBusy,setPdfBusy]=useState('');
+ const pdfLock=useRef(false);
+ const [giftHistory,setGiftHistory]=useState<GiftHistory[]>([]),[giftHistoryOpen,setGiftHistoryOpen]=useState(false),[giftHistoryBusy,setGiftHistoryBusy]=useState(false),[giftHistoryError,setGiftHistoryError]=useState('');
+ async function loadGiftHistory(){
+  setGiftHistoryBusy(true);setGiftHistoryError('');
+  try{
+   const {data:{user}}=await supabase.auth.getUser();
+   if(!user?.email_confirmed_at){setGiftHistory([]);return;}
+   const result=await academyAction('my_gifts');setGiftHistory(Array.isArray(result.gifts)?result.gifts:[]);
+  }catch{setGiftHistoryError('Nie udało się odczytać historii prezentów. Spróbuj ponownie.');}
+  finally{setGiftHistoryBusy(false);}
+ }
+ useEffect(()=>{void loadGiftHistory();},[]);
  async function loadGiftPrice(slug:string){
   setGiftQuote(null);
   try{setGiftQuote({slug,price:await coursePrice(slug)});}
@@ -104,29 +120,55 @@ export default function GiftPage(){
    }
    const result=await academyAction('create_gift',{course_slug:item.slug,recipient_email:recipient.trim(),message:message.trim()});
    setCode(result.code);setLink(result.link);setSent(!!result.email_sent);
+   setCreatedGift({code:result.code,gift_id:result.gift_id});
    setNotice(result.email_sent?'Prezent utworzony i wysłany na podany e-mail.':'Prezent gotowy! Nie otrzymaliśmy potwierdzenia wysyłki e-mail — możesz skopiować link i przesłać go samodzielnie.');
+   await loadGiftHistory();
   }catch(e:any){setNotice(e?.message||'Nie udało się utworzyć prezentu.');}
   finally{setBusy(false)}
  }
  async function redeem(){
   if(busy)return;setBusy(true);setNotice('');
   try{
+   const normalizedCode=code.trim().replace(/\s/g,'').toUpperCase();
    const {data:{user}}=await supabase.auth.getUser();
-   if(!user){router.push({pathname:'/konto',params:{gift:code.trim()}});return;}
-   if(/^TW-[0-9A-F]{32}$/i.test(code.trim())){
-    const {data,error}=await supabase.functions.invoke('ta-credit',{body:{action:'redeem',code:code.trim().toUpperCase()}});
+   if(!user){router.push({pathname:'/konto',params:{gift:normalizedCode}});return;}
+   if(!user.email_confirmed_at)throw new Error('Potwierdź adres e-mail swojego konta, aby odebrać prezent.');
+   if(normalizedCode.startsWith('TW-')){
+    if(!/^TW-[0-9A-F]{32}$/.test(normalizedCode))throw new Error('Sprawdź cały kod karty. Zaczyna się od TW- i zawiera 32 znaki.');
+    const {data,error}=await supabase.functions.invoke('ta-credit',{body:{action:'redeem',code:normalizedCode}});
     if(error||!data?.ok){
-     const err=data?.error||'';
-     throw new Error(err==='wrong_email'?'Ta karta jest przypisana do innego adresu e-mail.':err==='code_used_or_expired'?'Ten kod został już użyty lub stracił ważność.':'Nie udało się odebrać karty. Sprawdź kod.');
+     const response=error instanceof FunctionsHttpError?await error.context.json().catch(()=>null):null;
+     const err=response?.error??data?.error??'';
+     const errors:Record<string,string>={
+      wrong_email:'Ta karta jest przypisana do innego adresu e-mail. Zaloguj się na konto z adresem podanym na karcie lub w wiadomości.',
+      code_used_or_expired:'Ten kod został już odebrany lub stracił ważność. Jeśli karta była odebrana przez Ciebie, sprawdź saldo na swoim koncie.',
+      confirmed_login_required:'Zaloguj się na konto z potwierdzonym adresem e-mail, aby odebrać kartę.',
+      invalid_code:'Nie znaleziono takiego kodu. Sprawdź kod na karcie.',
+      invalid_value_code:'Kod karty ma niepoprawny format. Przepisz cały kod zaczynający się od TW-.'
+     };
+     throw new Error(errors[err]||'Nie udało się odebrać karty. Spróbuj ponownie za chwilę.');
     }
     setNotice('Karta odebrana. Saldo zostało dodane do Twojego konta.');
    }else{
-    await academyAction('redeem_gift',{code:code.trim()});
+    await academyAction('redeem_gift',{code:normalizedCode});
     setNotice('Prezent odebrany! Kurs czeka już na Twoim koncie.');
    }
    router.replace('/moje-kursy');
   }catch(e:any){setNotice(e?.message||'Nie udało się odebrać prezentu.');}
   finally{setBusy(false)}
+ }
+ async function printGift(gift:{code?:string;gift_id?:string},source:string){
+  if(busy||pdfLock.current)return;
+  pdfLock.current=true;setPdfBusy(source);setNotice('');
+  try{
+   const normalized=(gift.code||'').trim().replace(/\s/g,'').toUpperCase();
+   const {data:{user}}=await supabase.auth.getUser();
+   if(!user){router.push(normalized?{pathname:'/konto',params:{gift:normalized}}:'/konto');return;}
+   if(!user.email_confirmed_at)throw new Error('Potwierdź adres e-mail konta, aby pobrać kartę PDF.');
+   await downloadGiftPdf({code:normalized,gift_id:gift.gift_id});
+   setNotice('Karta PDF jest gotowa do wydruku. Kod zostanie odebrany dopiero po naciśnięciu „Odbierz prezent”.');
+  }catch(e:any){setNotice(e?.message||'Nie udało się pobrać karty PDF.');}
+  finally{pdfLock.current=false;setPdfBusy('');}
  }
  async function share(){
   if(!link)return;
@@ -229,19 +271,42 @@ export default function GiftPage(){
    </View>}
    {!!link&&<View style={{backgroundColor:pale,borderRadius:18,padding:22,gap:10}}>
     <Text style={{color:ink,fontSize:20,fontWeight:'900'}}>Prezent gotowy!</Text>
-    <Text style={{color:ink,fontWeight:'800'}}>Twój kod: {code}</Text>
+    <Text style={{color:ink,fontWeight:'800'}}>Twój kod: {createdGift?.code||code}</Text>
     <Text style={{color:'#57775c'}} selectable>{link}</Text>
     <Pressable onPress={share} style={{backgroundColor:ink,padding:15,borderRadius:12}}><Text style={{color:'white',textAlign:'center',fontWeight:'800'}}>Udostępnij / skopiuj link →</Text></Pressable>
+    {!!createdGift&&<Pressable accessibilityRole="button" onPress={()=>void printGift(createdGift,'created')} disabled={busy||!!pdfBusy} style={{borderWidth:1,borderColor:ink,padding:14,borderRadius:12,opacity:busy||pdfBusy?.5:1}}><Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>{pdfBusy==='created'?'Przygotowuję PDF…':'Pobierz kartę PDF do wydruku'}</Text></Pressable>}
     <Text style={{color:'#607863',fontSize:12}}>Kod pokazujemy przy tworzeniu. Przechowuj link w bezpiecznym miejscu. {sent?'Wysłano również e-mail.':'Jeśli podałeś adres odbiorcy, można wysłać mu link samodzielnie.'}</Text>
    </View>}
    <View style={{backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#e2e9d8',borderRadius:18,gap:12}}>
-    <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Masz kod od znajomego?</Text>
-    <Text style={{color:'#5b755e'}}>Wpisz kod i odbierz wybrany kurs na swoim koncie. Jedna karta może zostać wykorzystana tylko raz.</Text>
-    <TextInput style={input} value={code} onChangeText={setCode} autoCapitalize="characters" placeholder="TA-..."/>
+    <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Masz kartę podarunkową?</Text>
+    <Text style={{color:'#5b755e',lineHeight:22}}>Wpisz kod, aby odebrać kurs lub środki na swoim koncie. Kartę „do przekazania dalej” może odebrać osoba, która ma jej kod i potwierdzone konto. Pozostałe karty odbiera się na wskazanym adresie e-mail.</Text>
+    <TextInput accessibilityLabel="Kod karty podarunkowej" style={input} value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false} placeholder="TW-… lub TA-…"/>
     <Pressable onPress={redeem} disabled={busy||!code.trim()} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(busy||!code.trim())?0.5:1}}>
      <Text style={{textAlign:'center',fontWeight:'900',color:'white'}}>Odbierz prezent →</Text>
     </Pressable>
+    <Pressable accessibilityRole="button" onPress={()=>void printGift({code},'entered')} disabled={busy||!!pdfBusy||!code.trim()} style={{borderWidth:1,borderColor:'#bfd4b8',padding:14,borderRadius:12,opacity:busy||pdfBusy||!code.trim()?.5:1}}>
+     <Text style={{textAlign:'center',fontWeight:'800',color:ink}}>{pdfBusy==='entered'?'Przygotowuję PDF…':'Pobierz PDF tego kodu'}</Text>
+    </Pressable>
+    <Text style={{fontSize:12,lineHeight:19,color:'#5b755e'}}>Po zalogowaniu możesz pobrać kartę z kodem TA- lub TW-. Pobranie PDF nie aktywuje prezentu.</Text>
    </View>
+   {(giftHistory.length>0||!!giftHistoryError)&&<View style={{backgroundColor:'white',padding:19,borderWidth:1,borderColor:'#e2e9d8',borderRadius:16,gap:12}}>
+    <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center',flexWrap:'wrap'}}>
+     <Pressable accessibilityRole="button" accessibilityState={{expanded:giftHistoryOpen}} onPress={()=>setGiftHistoryOpen(v=>!v)}><Text style={{color:ink,fontWeight:'900',fontSize:17}}>Twoje wysłane prezenty {giftHistoryOpen?'↑':'↓'}</Text></Pressable>
+     <Pressable accessibilityRole="button" disabled={giftHistoryBusy} onPress={()=>void loadGiftHistory()}><Text style={{color:'#5b755e',fontWeight:'800',fontSize:12}}>{giftHistoryBusy?'Wczytuję…':'Odśwież prezenty'}</Text></Pressable>
+    </View>
+    {!!giftHistoryError&&<Text style={{color:'#a52626',fontSize:13}}>{giftHistoryError}</Text>}
+    {giftHistoryOpen&&giftHistory.map(g=>{
+     const active=g.status==='issued'&&Date.parse(g.expires_at)>Date.now();
+     const title=catalog.find(c=>c.slug===g.course_slug)?.title_pl||'Karta kursu';
+     return <View key={g.id} style={{borderTopWidth:1,borderColor:'#e2e9d8',paddingTop:12,gap:7}}>
+      <Text style={{color:ink,fontWeight:'800',fontSize:14}}>{title}</Text>
+      <Text style={{color:'#5b755e',fontSize:12}}>{g.recipient_email||'Do przekazania dalej'} · {new Date(g.created_at).toLocaleDateString('pl-PL')}</Text>
+      <Text style={{color:'#5b755e',fontSize:12}}>{active?'Ważna do '+new Date(g.expires_at).toLocaleDateString('pl-PL'):g.status==='redeemed'?'Prezent odebrany':g.status==='cancelled'?'Karta anulowana':'Karta nieaktywna'}</Text>
+      {active&&g.printable&&<Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF wysłanego prezentu '+title} disabled={busy||!!pdfBusy} onPress={()=>void printGift({gift_id:g.id},'history:'+g.id)} style={{alignSelf:'flex-start',backgroundColor:pale,padding:11,borderRadius:9,opacity:busy||pdfBusy?.5:1}}><Text style={{color:ink,fontWeight:'800',fontSize:13}}>{pdfBusy==='history:'+g.id?'Przygotowuję PDF…':'Pobierz kartę PDF'}</Text></Pressable>}
+      {active&&!g.printable&&<Text style={{color:'#5b755e',fontSize:12,lineHeight:19}}>Aby wydrukować tę starszą kartę, wpisz jej kod w polu odbioru prezentu i wybierz pobranie PDF.</Text>}
+     </View>;
+    })}
+   </View>}
    <Pressable onPress={()=>router.replace({pathname:'/prezent',params:{course:'swiety-mikolaj'}})} style={{backgroundColor:pale,padding:17,borderRadius:14}}>
     <Text style={{textAlign:'center',color:ink,fontWeight:'900'}}>🎅 Bezpłatny prezent: kurs Świętego Mikołaja</Text>
    </Pressable>

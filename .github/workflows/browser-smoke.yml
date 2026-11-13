@@ -10,6 +10,9 @@ on:
       - 'app/+html.tsx'
       - 'app/index.tsx'
       - 'app/prezent.tsx'
+      - 'app/admin.tsx'
+      - 'scripts/gift-card-browser.mjs'
+      - 'scripts/gift-card-ui-state.test.mjs'
       - 'public/academy/*.html'
       - 'public/academy/support*'
       - 'scripts/seo-structure-test.mjs'
@@ -48,6 +51,7 @@ jobs:
         run: npx expo export --platform web --output-dir /tmp/trenerki-browser
       - name: Check desktop and mobile browser experience
         run: |
+          node scripts/gift-card-ui-state.test.mjs
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2
           node scripts/test-support.mjs
@@ -55,6 +59,7 @@ jobs:
           node scripts/seo-structure-test.mjs /tmp/trenerki-browser
           node scripts/learning-browser.mjs http://127.0.0.1:8787
           node scripts/company-browser.mjs http://127.0.0.1:8787
+          node scripts/gift-card-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()
         uses: actions/upload-artifact@v4

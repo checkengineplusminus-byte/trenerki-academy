@@ -1,4 +1,4 @@
-import {privacyNotice} from '../_shared/recipient-privacy.ts';
+import {courseGiftMailContent} from '../_shared/gift-card-mail.ts';
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 const cors={'access-control-allow-origin':'*','access-control-allow-methods':'POST,OPTIONS','access-control-allow-headers':'authorization,apikey,content-type,x-client-info','content-type':'application/json','cache-control':'no-store'};
 const send=(x:any,status=200)=>new Response(JSON.stringify(x),{status,headers:cors});
@@ -68,18 +68,18 @@ Deno.serve(async request=>{
   const api=Deno.env.get('RESEND_API_KEY'),from=Deno.env.get('RESEND_FROM_EMAIL');
   if(api&&from){
    try{
+    const {data:gift,error:giftError}=await db.from('ta_gift_cards').select('id,recipient_email,gift_message,created_at,expires_at').eq('id',assigned.gift_card_id).single();
+    if(giftError||!gift)throw new Error('gift_lookup_failed');
+    const content=await courseGiftMailContent([{...gift,code,course_title:assigned.title_pl||assigned.course_slug}]);
     const resp=await fetch('https://api.resend.com/emails',{method:'POST',
-     headers:{authorization:'Bearer '+api,'content-type':'application/json'},
-     body:JSON.stringify({from,to:[recipient],subject:'TRENERKI Academy — otrzymujesz kurs od swojej firmy',
-      html:'<h2>Masz nowy kurs!</h2><p>Twoja firma przekazała Ci kurs <strong>'+esc(assigned.title_pl||assigned.course_slug)+'</strong>.</p>'+
-       '<p><a href="'+esc(link)+'">Odbierz kurs na swoim koncie TRENERKI</a></p>'+
-       '<p>Kod jednorazowy: <strong>'+esc(code)+'</strong>. Kurs można odebrać wyłącznie na adres e-mail, na który dotarła ta wiadomość.</p>'+privacyNotice}),
+     headers:{authorization:'Bearer '+api,'content-type':'application/json','Idempotency-Key':'trenerki-company-pdf-v1-'+assigned.gift_card_id+'-'+code},
+     body:JSON.stringify({from,to:[recipient],reply_to:'trenerki.pl@gmail.com',...content}),
      signal:AbortSignal.timeout(12000)});
     emailSent=resp.ok;
     if(emailSent)await db.from('ta_company_seats').update({email_sent_at:new Date().toISOString()}).eq('id',seatId).eq('state','assigned');
    }catch{emailSent=false}
   }
-  return send({ok:true,course_slug:assigned.course_slug,title_pl:assigned.title_pl,recipient,code,link,email_sent:emailSent});
+  return send({ok:true,gift_id:assigned.gift_card_id,course_slug:assigned.course_slug,title_pl:assigned.title_pl,recipient,code,link,email_sent:emailSent});
  }
  return send({error:'unknown_action'},400);
 });
