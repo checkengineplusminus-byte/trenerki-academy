@@ -36,6 +36,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Test walidacji ćwiczeń nowego kursu księgowości
+        run: node scripts/test-accounting-core-v3.mjs
       - name: Test six carpentry calculators and real Excel formula engine
         run: node scripts/test-formulas.mjs
       - name: Exclude test and promotional records from sales
