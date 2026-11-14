@@ -54,3 +54,18 @@ Wzorcowa dekretacja i ćwiczeniowy plan kont są zapisane wyłącznie w chronion
 Niezależny odczyt SQL referencji wykazał 36 dokumentów: 29 wymagających dekretu i 7 bez nowego dekretu; sumy Wn=Ma po 220 900 zł. Modelowy bank 60 100 zł, należności 4 000 zł, zapasy 3 000 zł i maszyna netto 9 000 zł dają aktywa 76 100 zł; zobowiązania 12 000 zł oraz kapitał z wynikiem 64 100 zł. Wynik modelu przed podatkiem wynosi 4 100 zł.
 
 Wszystkie kwoty, konta i zdarzenia są **fikcyjnym uproszczeniem szkoleniowym bez naliczania VAT, PIT, CIT ani ZUS**. Nie wykonywać żadnych rzeczywistych wysyłek. Nadal są wymagane: recenzja polskiego prawa i metod księgowych, autoryzowane E2E dwóch kont, praktyczny test początkującego, integracja pełnego dziennika i niezależna próba odtworzenia kopii zapasowej. Żaden etap nie potwierdza gotowości do uruchomienia sprzedaży.
+
+
+## Etap 5 — kontrola przekrojowa D01–D36
+
+Do etapu 4 dodano **etap 5: kontrolę przekrojową** własnego miesiąca kursanta, opartą na zapisanych wynikach wcześniejszych zadań. Zestawia pięć warunków:
+
+1. Prawidłowo rozpoznane wszystkie 36 dokumentów.
+2. Wpływy, wypływy i ich różnicę poprawnie obliczone z fikcyjnych dowodów.
+3. Poprawne decyzje Wn/Ma (także świadomy brak dekretacji) dla 36 dokumentów.
+4. Bank z własnego dziennika zgodny ze zmianą wynikającą z ćwiczeniowych dowodów; przy różnicy system wskazuje kwotę.
+5. Bilans, rozrachunki i wynik modelowy uzgodnione z chronionym wzorcem.
+
+Dzięki temu poprawny bilans przy błędnym wyciągu, zgodny wyciąg przy błędnych kontach lub błędna klasyfikacja nie przechodzą jako bezbłędny miesiąc. Odczyt jest tylko kontrolą, **nie zapisuje nowych księgowań i nie oznacza kursu jako ukończonego**. Wszystkie źródłowe odpowiedzi pozostają w prywatnym Supabase; repo przechowuje jedynie reguły, interfejs i syntetyczne testy.
+
+Testy regresyjne obejmują miesiąc poprawny, stan pusty, błędny bank, błędną klasyfikację i przypadek zbilansowanych, ale nieprawidłowych dekretów. Do pełnego odbioru nadal niezbędne są rzeczywiste sesje dwóch kont, test początkującego kursanta, recenzja księgowo-prawna oraz niezależny restore. Sukces automatycznych testów nie jest dowodem tych bramek.
