@@ -817,3 +817,36 @@ test('Płace: zmieniona kartoteka blokuje podpowiedź księgową i nie udaje zgo
  const result=payrollJournalPreview(changed,'P01');
  assert.equal(result.ready,false);assert.equal(result.ledger_posted,false);
 });
+
+
+test('Duplikat dekretu aktywnej faktury jest wykrywany bez zmiany dziennika',()=>{
+ const s=fullScenario(),before=JSON.stringify(s);
+ s.journals.push({...s.journals[0],id:'drugi-zapis-faktury'});
+ const snapshot=JSON.stringify(s);
+ assert.ok(inspect(s).some(i=>i.code==='duplicate_invoice_posting'&&i.id==='sale'));
+ assert.equal(JSON.stringify(s),snapshot);
+ assert.notEqual(snapshot,before);
+});
+test('Duplikat dekretu jednego przelewu jest wykrywany nawet gdy oba Wn/Ma się bilansują',()=>{
+ const s=fullScenario();
+ s.journals.push({...s.journals[2],id:'drugi-zapis-bankowy'});
+ assert.ok(inspect(s).some(i=>i.code==='duplicate_bank_posting'&&i.id===s.bank[0].id));
+});
+test('Osierocony dekret faktury i przelewu zgłasza brak dowodu',()=>{
+ const s=fullScenario();
+ s.journals.push({id:'obca-fv',status:'posted',source_type:'invoice',source_id:'NIE-ISTNIEJE',
+  lines:[{account:'201',debit:100,credit:0},{account:'700',debit:0,credit:100}]});
+ s.journals.push({id:'obcy-bank',status:'posted',source_type:'bank',source_id:'NIE-ISTNIEJE',
+  lines:[{account:'130',debit:100,credit:0},{account:'201',debit:0,credit:100}]});
+ const codes=inspect(s).map(i=>i.code);
+ assert.ok(codes.includes('orphan_invoice_posting'));
+ assert.ok(codes.includes('orphan_bank_posting'));
+});
+test('Jawne storno wyklucza zapis z aktywnych duplikatów',()=>{
+ const s=fullScenario();
+ s.journals.push({...s.journals[0],id:'drugi-zapis-faktury'});
+ assert.ok(inspect(s).some(i=>i.code==='duplicate_invoice_posting'));
+ s.journals.push({id:'storno-drugiego',status:'posted',reversal_of:'drugi-zapis-faktury',
+  source_type:'manual',source_id:'',lines:s.journals[0].lines.map(x=>({account:x.account,debit:x.credit,credit:x.debit}))});
+ assert.ok(!inspect(s).some(i=>i.code==='duplicate_invoice_posting'));
+});
