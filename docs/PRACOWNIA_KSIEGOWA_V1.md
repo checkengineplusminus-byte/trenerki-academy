@@ -39,3 +39,18 @@ Osobna funkcja serwerowa `ta-accounting-coach` została wdrożona z weryfikacją
 4. Kontynuować pełne lekcje od pierwszej nieopracowanej pozycji; nie przedstawiać 100000 pozycji programu jako gotowych lekcji.
 
 Cena kursu 999 zł i jego stan nieopublikowany nie zostały zmienione. Źródła SQL pozostają w historii migracji Supabase. Przed odtworzeniem nowej bazy pobrać migrację i zależności `ta_accounting_internal`, nie zgadywać definicji.
+
+
+## Etapy D01–D36 (14 listopada 2026)
+
+Do istniejącej pracowni dodano ćwiczenie księgowania Wn/Ma po pojedynczych dowodach oraz próbny raport zamknięcia miesiąca. Po zalogowaniu kursant otwiera własne fikcyjne biuro i kartę „Miesiąc firmy D01–D36”. Kolejne części:
+1. Rozpoznanie rodzaju dokumentu.
+2. Samodzielne obliczenie wpływów, wypływów oraz zmiany rachunku bankowego.
+3. Wybór ćwiczeniowych kont Wn i Ma, kwot oraz świadomej decyzji „brak księgowania” dla każdego dowodu. Możliwe jest 8 wierszy na dokument; system wykrywa niezgodność kont nawet przy zbilansowanych kwotach. Własne odpowiedzi i poprawki są zapisywane w wersjonowanym stanie biura jako \`simulator_journal_attempts_v1\`, a nie dopisywane automatycznie do zatwierdzonego dziennika.
+4. Po zapisaniu decyzji dla wszystkich 36 dowodów pojawia się próbne zestawienie rachunku, należności, magazynu, maszyny, zobowiązań, pożyczki i wyniku. Równe sumy Wn/Ma nie zastępują uzgodnienia ze stanem referencyjnym.
+
+Wzorcowa dekretacja i ćwiczeniowy plan kont są zapisane wyłącznie w chronionym manifeście Supabase (temat 96, \`scenario.journal_practice_v1\`). Nie umieszczać wzorcowych zapisów w repozytorium publicznym. Każda próba i jej odpowiedź należą do biura kursanta; zapis korzysta z istniejącego RPC z kontrolą wersji, a RLS ogranicza odczyt do właściciela. W tym zakresie nie wykonano autoryzowanego testu z dwoma kontami, więc nie twierdzimy, że został zaliczony.
+
+Niezależny odczyt SQL referencji wykazał 36 dokumentów: 29 wymagających dekretu i 7 bez nowego dekretu; sumy Wn=Ma po 220 900 zł. Modelowy bank 60 100 zł, należności 4 000 zł, zapasy 3 000 zł i maszyna netto 9 000 zł dają aktywa 76 100 zł; zobowiązania 12 000 zł oraz kapitał z wynikiem 64 100 zł. Wynik modelu przed podatkiem wynosi 4 100 zł.
+
+Wszystkie kwoty, konta i zdarzenia są **fikcyjnym uproszczeniem szkoleniowym bez naliczania VAT, PIT, CIT ani ZUS**. Nie wykonywać żadnych rzeczywistych wysyłek. Nadal są wymagane: recenzja polskiego prawa i metod księgowych, autoryzowane E2E dwóch kont, praktyczny test początkującego, integracja pełnego dziennika i niezależna próba odtworzenia kopii zapasowej. Żaden etap nie potwierdza gotowości do uruchomienia sprzedaży.
