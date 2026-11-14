@@ -12,7 +12,7 @@ const select=(group,key,label,value,options)=>`<div><label for="${group}-${key}"
 const button=(action,label,id='',cls='')=>`<button type="button" data-action="${action}" data-id="${e(id)}" class="${cls}">${e(label)}</button>`;
 const download=(name,text,type='application/json')=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 export function mountLab(root,db){
- let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null;
+ let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null,conflictSnapshot=null;
  const key=()=>`trenerki-lab-draft-v1:${user?.id}:${ws?.id}`;
  function blankDrafts(){return {invoice:invBlank(ws.name,'sale',ws.state.invoices.filter(i=>i.kind==='sale').length+1),journal:journalBlank(),match:{bank_id:'',invoice_id:'',amount:''},question:{text:''}};}
  function restoreDrafts(){drafts=blankDrafts();try{const raw=localStorage.getItem(key());if(raw){const old=JSON.parse(raw);if(old?.invoice?.lines&&old?.journal?.lines)drafts={...drafts,...old};}}catch{localWarning='Nie udało się odczytać lokalnego szkicu. Dane zapisane w bazie pozostają dostępne.';}}
@@ -33,7 +33,16 @@ export function mountLab(root,db){
  async function commit(next){
   if(!canWrite)throw new Error('Brak aktywnego dostępu do zapisu.');
   const r=await db.rpc('ta_accounting_lab_save',{workspace_id:ws.id,expected_version:ws.version,next_state:next});
-  if(r.error)throw new Error(r.error.code==='40001'?'Ktoś zapisał nowszą wersję w innym oknie. Twój formularz został lokalnie. Pobierz najnowszy zapis przed ponowieniem.':r.error.message);
+  if(r.error){
+   if(r.error.code==='40001'){
+    // Utrwal tylko w pamięci karty to, czego serwer nie przyjął.
+    // Nie nadpisuj nowszej wersji i nie przechowuj całego biura w localStorage.
+    conflictSnapshot={user_id:user?.id,workspace_id:ws.id,expected_version:ws.version,
+     captured_at:new Date().toISOString(),next_state:JSON.parse(JSON.stringify(next))};
+    throw new Error('Zapis odrzucony: inne okno ma nowszą wersję. Twoje niezapisane dane można teraz pobrać do pliku. Pobierz kopię PRZED odświeżeniem i porównaj zmiany; nie wykonujemy automatycznego nadpisania.');
+   }
+   throw new Error(r.error.message||'Nie udało się zapisać danych.');
+  }
   if(disposed)return;ws=r.data;workspaces=workspaces.map(w=>w.id===ws.id?{...w,version:ws.version,updated_at:ws.updated_at}:w);status=`Zapisano w bazie · wersja ${ws.version} · ${new Date(ws.updated_at).toLocaleTimeString('pl-PL')}`;history=[];answer='';
  }
  function table(headers,rows){return `<div class="scroll"><table><thead><tr>${headers.map(h=>`<th>${e(h)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`;}
@@ -310,8 +319,14 @@ export function mountLab(root,db){
    '</section>';
  }
  function coach(){const list=inspect(ws.state);return `<aside class="card"><span class="eyebrow">ANIELKA · KONTROLA ĆWICZENIA</span><h2>Sprawdźmy Twoją pracę</h2><p class="muted">Wskazuję różnice i podpowiadam tok rozwiązania. Nie zmieniam za Ciebie dokumentów.</p>${!list.length?'<p class="notice">Nie widzę problemów objętych kontrolami tego modelu. To nie jest pełna kontrola podatkowa ani potwierdzenie ukończenia całego kursu.</p>':list.slice(0,12).map(h=>`<div class="hint"><span class="pill">${e(h.severity)}</span><h3>${e(h.title)}</h3><p>${e(h.text)}</p></div>`).join('')}${list.length>12?`<p class="small">Łącznie ${list.length} uwag. Kolejne pojawią się po uporządkowaniu pierwszych.</p>`:''}<details><summary>Jak działa sprawdzanie?</summary><p class="small">Kontrole kwot i stron są wykonywane według reguł tego scenariusza. Nie dobierają aktualnej stawki VAT do dowolnego produktu. Dalsza rozmowa z Anielką nie blokuje pracy i nie zatwierdza za Ciebie zapisów.</p></details><form data-form="coach"><label for="question-text">Zapytaj o błąd w swoim ćwiczeniu</label><textarea id="question-text" data-group="question" data-field="text" maxlength="700" placeholder="Np. Dlaczego zapłata nie jest drugą sprzedażą?">${e(drafts.question.text)}</textarea><div class="actions"><button type="submit" ${!canWrite||busy?'disabled':''}>Poproś o wyjaśnienie</button></div></form>${answer?`<p class="notice">${e(answer).replace(/\n/g,'<br>')}</p>`:''}</aside>`;}
+ function conflictNotice(){
+  const c=conflictSnapshot;
+  if(!c||c.user_id!==user?.id||c.workspace_id!==ws?.id)return '';
+  return '<section class="card"><p class="error">Wykryto konflikt wersji: ostatni zapis nie został przyjęty. Pobierz kopię niezapisanych zmian, zanim odświeżysz biuro. Nie łączymy danych automatycznie.</p><div class="actions">'+
+   button('download-conflict','Pobierz niezapisane zmiany')+'</div></section>';
+ }
  function render(){if(disposed)return;
-  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice()+closingScreen()+integratedAuditScreen(),personnel,payroll,invoices,bank,journal,matches,report,history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
+  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${conflictNotice()}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice()+closingScreen()+integratedAuditScreen(),personnel,payroll,invoices,bank,journal,matches,report,history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
   if(busy)root.querySelectorAll('button').forEach(b=>b.disabled=true);
   if(!canWrite)root.querySelectorAll('[data-action="create"],[data-action="reverse"],[data-action="unmatch"],[data-action="sim-save"],[data-action="sim-bank-save"],[data-action="hr-save"],[data-action="payroll-save"],[data-action="sim-journal-save"],[data-action="sim-journal-none"],[data-action="sim-journal-add"],[data-action="sim-journal-remove"]').forEach(b=>b.disabled=true);
  }
@@ -409,6 +424,19 @@ export function mountLab(root,db){
      await commit(withJournalAttempt(ws.state,scenario,selected,lines));
     });
     return;
+   }
+   if(a==='download-conflict'){
+    const c=conflictSnapshot;
+    if(!c||c.user_id!==user?.id||c.workspace_id!==ws?.id){
+     error='Nie ma niezapisanej kopii dla bieżącego konta i biura.';render();return;
+    }
+    download('trenerki-konflikt-'+c.workspace_id+'.json',JSON.stringify({
+     format:'trenerki-unsaved-conflict-v1',workspace_id:c.workspace_id,
+     expected_version:c.expected_version,captured_at:c.captured_at,
+     next_state:c.next_state
+    },null,2));
+    status='Pobrano kopię niezapisanych zmian. Możesz porównać ją z najnowszym zapisem z bazy.';
+    render();return;
    }
    if(a==='template'){download('wyciag-cwiczeniowy.csv','\uFEFF'+BANK_TEMPLATE,'text/csv;charset=utf-8');return;}
   if(a==='export'){download('trenerki-biuro-'+ws.id+'.json',JSON.stringify({format:'trenerki-lab-backup-v1',exported_at:new Date().toISOString(),workspace:ws},null,2));return;}
