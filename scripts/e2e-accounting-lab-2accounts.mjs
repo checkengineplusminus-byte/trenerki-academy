@@ -31,6 +31,7 @@ if(missing.length||!ack||
  process.exit(2);
 }
 const {createClient}=await import('@supabase/supabase-js');
+const {readScenario,inspectReferenceMonth}=await import('../src/accounting/simulator-core.js');
 const mk=()=>createClient(e.EXPO_PUBLIC_SUPABASE_URL,e.EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY,{
  auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}
 });
@@ -47,6 +48,20 @@ async function login(db,email,password,label){
  const r=data(await db.auth.signInWithPassword({email,password}),label);
  assert.ok(r?.user?.id,'Brak sesji testowej');
  return r.user.id;
+}
+/** Before touching any test workspace, verify both testers can actually read
+ * the protected month they are expected to exercise. No policy bypass.
+ * An enrolled non-editor may legitimately be blocked while drafts await review.
+ */
+async function checkProtectedMonth(db,label){
+ const reply=await db.from('ta_accounting_core_materials_v3')
+  .select('material').eq('topic_no',96).maybeSingle();
+ if(reply.error||!reply.data?.material)
+  throw new Error(label+'_CORE96_NOT_VISIBLE_RLS_OR_REVIEW_PENDING');
+ const scenario=readScenario(reply.data.material);
+ passed(label+'_CORE96_PROTECTED_MANIFEST_VISIBLE',scenario.documents.length===36);
+ const integrity=inspectReferenceMonth(scenario);
+ passed(label+'_CORE96_REFERENCE_INTEGRITY',integrity.ok&&integrity.checked_documents===36);
 }
 async function ownFixture(db,name,id){
  const rows=data(await db.from(table)
@@ -78,6 +93,8 @@ try{
  assert.equal(idA,idA2);assert.notEqual(idA,idB);
  data(await a.rpc('ta_accounting_overview'),'A_course_access');
  data(await b.rpc('ta_accounting_overview'),'B_course_access');
+ // No fixture writes until protected D01–D36 material passes authenticated reads.
+ await Promise.all([checkProtectedMonth(a,'A'),checkProtectedMonth(b,'B')]);
  const [wa,wb]=await Promise.all([
   ownFixture(a,'__TA_ACCOUNTING_E2E_RLS_A__',idA),
   ownFixture(b,'__TA_ACCOUNTING_E2E_RLS_B__',idB)
