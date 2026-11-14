@@ -100,3 +100,80 @@ export function checkBankExercise(scenario,entry){
  return {attempted:true,correct:checks.every(c=>c.correct),
   consistent:entry.bank_in_cents-entry.bank_out_cents===entry.bank_net_cents,checks};
 }
+
+
+/**
+ * Etap 3 D01–D36: kursant samodzielnie dekretuje Wn/Ma.
+ * Wzorcowe zapisy i plan kont są odczytywane wyłącznie z prywatnego manifestu
+ * w Supabase. Ćwiczenie nie księguje dokumentów w rzeczywistym dzienniku,
+ * nie oblicza VAT/ZUS/CIT i nie potwierdza końcowego odbioru kursu.
+ */
+const JOURNAL_KEY='simulator_journal_attempts_v1';
+const isJournalCent=n=>Number.isSafeInteger(n)&&n>=0&&n<=10000000000;
+const journalId=id=>/^D(?:0[1-9]|[12][0-9]|3[0-6])$/.test(id);
+function validJournalLines(lines,accounts){
+ if(!Array.isArray(lines)||lines.length>8)return false;
+ return lines.every(x=>x&&typeof x.account==='string'&&Object.prototype.hasOwnProperty.call(accounts,x.account)&&
+  isJournalCent(x.debit_cents)&&isJournalCent(x.credit_cents)&&
+  ((x.debit_cents>0&&x.credit_cents===0)||(x.credit_cents>0&&x.debit_cents===0)));
+}
+function journalTotalsCents(lines){
+ return {debit:lines.reduce((s,x)=>s+x.debit_cents,0),
+  credit:lines.reduce((s,x)=>s+x.credit_cents,0)};
+}
+const lineSignature=lines=>lines.map(x=>x.account+':'+x.debit_cents+':'+x.credit_cents).sort().join('|');
+export function readJournalPractice(scenario){
+ const data=readScenario(scenario);
+ const practice=data.journal_practice_v1;
+ if(!practice||practice.version!==1||practice.currency!=='PLN'||!practice.accounts||
+  typeof practice.accounts!=='object'||Array.isArray(practice.accounts)||
+  !practice.entries||typeof practice.entries!=='object'||Array.isArray(practice.entries)||
+  Object.keys(practice.entries).length!==36)throw new Error('Brak kompletnego, chronionego wzorca dekretacji.');
+ const accounts=practice.accounts;
+ if(Object.keys(accounts).length<3||Object.entries(accounts).some(([k,v])=>!/^\d{3}$/.test(k)||typeof v!=='string'||v.length<2||v.length>120))
+  throw new Error('Niepoprawny ćwiczeniowy plan kont.');
+ for(const doc of data.documents){
+  const task=practice.entries[doc.id];
+  if(!task||typeof task.explanation!=='string'||task.explanation.length<15||
+   !validJournalLines(task.lines,accounts))throw new Error('Niekompletny wzorzec dla '+doc.id+'.');
+  const totals=journalTotalsCents(task.lines);
+  if(totals.debit!==totals.credit)throw new Error('Niezbilansowany wzorzec dla '+doc.id+'.');
+ }
+ return practice;
+}
+export function readJournalAttempts(state,scenario){
+ const practice=readJournalPractice(scenario);
+ const saved=state?.[JOURNAL_KEY];
+ if(saved?.scenario_id!==SCENARIO_ID||!saved.entries||typeof saved.entries!=='object'||Array.isArray(saved.entries))return {};
+ return Object.fromEntries(Object.entries(saved.entries).filter(([id,entry])=>
+  journalId(id)&&practice.entries[id]&&entry&&validJournalLines(entry.lines,practice.accounts)&&
+  Number.isSafeInteger(entry.tries)&&entry.tries>=1&&entry.tries<=99999));
+}
+export function withJournalAttempt(state,scenario,docId,lines){
+ const practice=readJournalPractice(scenario);
+ if(!journalId(docId)||!practice.entries[docId]||!validJournalLines(lines,practice.accounts))
+  throw new Error('Uzupełnij poprawne konta i kwoty Wn/Ma; do 8 wierszy na dokument.');
+ const prev=readJournalAttempts(state,scenario);
+ const ownLines=lines.map(x=>({account:x.account,debit_cents:x.debit_cents,credit_cents:x.credit_cents}));
+ return {...state,[JOURNAL_KEY]:{scenario_id:SCENARIO_ID,entries:{...prev,
+  [docId]:{lines:ownLines,tries:Math.min(99999,(prev[docId]?.tries||0)+1)}}}};
+}
+export function checkJournalAttempt(scenario,docId,entry){
+ const practice=readJournalPractice(scenario);
+ const reference=practice.entries[docId];
+ if(!reference||!entry||!validJournalLines(entry.lines,practice.accounts))
+  return {attempted:false,correct:false,balanced:false,debit_cents:0,credit_cents:0};
+ const {debit,credit}=journalTotalsCents(entry.lines);
+ return {attempted:true,correct:lineSignature(entry.lines)===lineSignature(reference.lines),
+  balanced:debit===credit,debit_cents:debit,credit_cents:credit,
+  no_entry:entry.lines.length===0};
+}
+export function journalPracticeSummary(scenario,attempts){
+ const practice=readJournalPractice(scenario);
+ let attempted=0,correct=0;
+ for(const id of Object.keys(practice.entries)){
+  const result=checkJournalAttempt(scenario,id,attempts?.[id]);
+  if(result.attempted){attempted++;if(result.correct)correct++;}
+ }
+ return {total:36,attempted,correct,reference_posts:Object.values(practice.entries).filter(x=>x.lines.length>0).length};
+}
