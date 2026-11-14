@@ -1,5 +1,5 @@
 import {ACCOUNTS,EMPTY,uid,money,decimal,cents,scaled,invoiceTotals,expectedInvoiceLines,journalTotals,balanceReport,inspect,reverseJournal,parseBankCSV,BANK_TEMPLATE,escapeHTML as e,invoiceHTML} from './lab-core.js';
-import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise} from './simulator-core.js';
+import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary} from './simulator-core.js';
 const css=`.tlab{font:15px/1.55 system-ui,sans-serif;color:#183c2b;background:#f6f8f0;min-height:100vh;padding:24px}.tlab *{box-sizing:border-box}.tlab main{max-width:1280px;margin:auto}.tlab h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:12px 0}.tlab h2{font-size:22px;margin:0 0 14px}.tlab h3{font-size:17px;margin:0 0 8px}.tlab a{color:inherit}.tlab header{background:#183c2b;color:#fff;border-radius:22px;padding:28px;margin:18px 0}.tlab .eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px}.tlab .muted{color:#627567;font-size:13px}.tlab header .muted{color:#c9dcc9}.tlab .card{background:white;border:1px solid #dbe5d5;border-radius:16px;padding:20px;margin:14px 0}.tlab .notice{background:#edf3df;border-left:4px solid #6c8e47;padding:14px;border-radius:9px}.tlab .error{background:#fff0e9;color:#8d331f;border-left:4px solid #a3462b;padding:14px;border-radius:9px;white-space:pre-wrap}.tlab .grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px}.tlab .row{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.tlab .row>*{flex:1;min-width:120px}.tlab label{display:block;font-size:13px;font-weight:700;margin-bottom:4px}.tlab input,.tlab select,.tlab textarea{font:inherit;color:inherit;background:white;border:1px solid #bbceb6;border-radius:9px;padding:10px;max-width:100%;width:100%}.tlab textarea{min-height:90px}.tlab input:focus,.tlab select:focus,.tlab button:focus-visible{outline:3px solid #adc793;outline-offset:2px}.tlab button{font:inherit;font-weight:700;cursor:pointer;border:1px solid #bbceb6;background:#edf4e4;color:#183c2b;border-radius:9px;padding:10px 14px}.tlab button.primary{background:#183c2b;color:white;border-color:#183c2b}.tlab button:disabled{opacity:.45;cursor:not-allowed}.tlab .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tlab nav{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}.tlab nav button.active{background:#183c2b;color:white}.tlab .scroll{overflow:auto;max-width:100%}.tlab table{border-collapse:collapse;width:100%;font-size:13px}.tlab th,.tlab td{padding:10px 8px;text-align:left;border-bottom:1px solid #e5ecdf;vertical-align:top}.tlab th{background:#eff4e8;white-space:nowrap}.tlab td.amount,.tlab th.amount{text-align:right;white-space:nowrap}.tlab .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tlab .stat{background:#edf4e4;border-radius:12px;padding:14px}.tlab .stat strong{display:block;font-size:23px}.tlab .pill{display:inline-block;border-radius:15px;background:#edf4e4;padding:3px 9px;font-size:12px;font-weight:700}.tlab .hint{border-top:1px solid #dbe5d5;padding:14px 0}.tlab .hint p{font-size:13px;margin:4px 0}.tlab details{margin:12px 0}.tlab summary{cursor:pointer;font-weight:700}.tlab .line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .journal-line{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .small{font-size:12px}.tlab ol{padding-left:22px}.tlab aside{align-self:start}.tlab .grid>*{min-width:0}.tlab .scroll table{min-width:510px}.tlab .status{min-height:28px;font-size:13px}.tlab fieldset{border:0;margin:0;padding:0;min-width:0}.tlab pre{white-space:pre-wrap;word-break:break-word;font-size:12px}.tlab .empty{padding:25px;text-align:center;color:#627567}@media(max-width:980px){.tlab .grid{grid-template-columns:1fr}.tlab aside{order:2}}@media(max-width:600px){.tlab{padding:12px}.tlab header{padding:22px 18px}.tlab .card{padding:14px}.tlab .stats{grid-template-columns:1fr}.tlab .line,.tlab .journal-line{grid-template-columns:1fr 1fr}.tlab .line>div:first-child,.tlab .journal-line>div:first-child{grid-column:1/-1}.tlab nav button{font-size:13px;padding:9px}.tlab h2{font-size:20px}}`;
 const tabs={start:'Twoja rola',simulator:'Miesiąc firmy D01–D36',invoices:'Faktury',bank:'Wyciąg bankowy',journal:'Dziennik Wn/Ma',matches:'Rozrachunki',report:'Zestawienia',history:'Historia'};
 const invBlank=(name,kind='sale',number=1)=>({id:uid(),kind,number:`CW/${kind==='sale'?'FV':'ZAK'}/${number}`,party:'',seller:name,date:'2026-11-01',due:'2026-11-15',lines:[{label:'Usługa ćwiczeniowa',qty:'1',price:kind==='sale'?'1000,00':'200,00',code:'23'}]});
@@ -9,7 +9,7 @@ const select=(group,key,label,value,options)=>`<div><label for="${group}-${key}"
 const button=(action,label,id='',cls='')=>`<button type="button" data-action="${action}" data-id="${e(id)}" class="${cls}">${e(label)}</button>`;
 const download=(name,text,type='application/json')=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 export function mountLab(root,db){
- let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null;
+ let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={};
  const key=()=>`trenerki-lab-draft-v1:${user?.id}:${ws?.id}`;
  function blankDrafts(){return {invoice:invBlank(ws.name,'sale',ws.state.invoices.filter(i=>i.kind==='sale').length+1),journal:journalBlank(),match:{bank_id:'',invoice_id:'',amount:''},question:{text:''}};}
  function restoreDrafts(){drafts=blankDrafts();try{const raw=localStorage.getItem(key());if(raw){const old=JSON.parse(raw);if(old?.invoice?.lines&&old?.journal?.lines)drafts={...drafts,...old};}}catch{localWarning='Nie udało się odczytać lokalnego szkicu. Dane zapisane w bazie pozostają dostępne.';}}
@@ -26,7 +26,7 @@ export function mountLab(root,db){
     if(workspaces.length)await open(workspaces[0].id);
   }catch(x){error=x.message||'Nie udało się wczytać biura.';}finally{render();}
  }
- async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
+ async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;journalDrafts={};journalDoc='D01';status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
  async function commit(next){
   if(!canWrite)throw new Error('Brak aktywnego dostępu do zapisu.');
   const r=await db.rpc('ta_accounting_lab_save',{workspace_id:ws.id,expected_version:ws.version,next_state:next});
@@ -68,6 +68,49 @@ export function mountLab(root,db){
    '<p class="small muted">Próby zapisane na koncie: '+(saved?.attempts||0)+'. Zapis używa kontroli wersji i nie zmienia zaksięgowanych operacji w dzienniku. Nadal wymagany jest test na dwóch zalogowanych kontach.</p></section>';
  }
 
+
+ function getJournalDraft(id){
+  if(!Object.prototype.hasOwnProperty.call(journalDrafts,id)){
+   const saved=readJournalAttempts(ws.state,scenario)[id];
+   journalDrafts[id]=saved?.lines.length?saved.lines.map(x=>({account:x.account,debit:decimal(x.debit_cents),credit:decimal(x.credit_cents)})):
+    [{account:'',debit:'0',credit:'0'},{account:'',debit:'0',credit:'0'}];
+  }
+  return journalDrafts[id];
+ }
+ function journalPractice(){
+  if(!scenario||!ws)return '';
+  let model,attempts;
+  try{model=readJournalPractice(scenario);attempts=readJournalAttempts(ws.state,scenario);}
+  catch{return '<section class="card"><h2>Etap 3 · Dekretacja Wn/Ma</h2><p class="error">Model ćwiczeniowy nie jest kompletny. Poprzednie etapy pozostają dostępne.</p></section>';}
+  const summary=journalPracticeSummary(scenario,attempts),doc=scenario.documents.find(d=>d.id===journalDoc)||scenario.documents[0];
+  const saved=attempts[doc.id],checked=checkJournalAttempt(scenario,doc.id,saved),draft=getJournalDraft(doc.id);
+  const accountOptions=Object.entries(model.accounts);
+  const options=scenario.documents.map(d=>'<option value="'+e(d.id)+'" '+(d.id===doc.id?'selected':'')+'>'+e(d.id+' · '+d.title)+'</option>').join('');
+  const fields=draft.map((line,i)=>'<div class="journal-line">'+
+   '<div><label for="sim-j-account-'+i+'">Konto Wn lub Ma</label><select id="sim-j-account-'+i+'" data-jline="'+i+'" data-jfield="account">'+
+   '<option value="">Wybierz konto</option>'+accountOptions.map(([id,label])=>'<option value="'+e(id)+'" '+(id===line.account?'selected':'')+'>'+e(id+' · '+label)+'</option>').join('')+'</select></div>'+
+   '<div><label for="sim-j-debit-'+i+'">Wn (PLN)</label><input id="sim-j-debit-'+i+'" data-jline="'+i+'" data-jfield="debit" inputmode="decimal" value="'+e(line.debit)+'"></div>'+
+   '<div><label for="sim-j-credit-'+i+'">Ma (PLN)</label><input id="sim-j-credit-'+i+'" data-jline="'+i+'" data-jfield="credit" inputmode="decimal" value="'+e(line.credit)+'"></div>'+
+   button('sim-journal-remove','Usuń wiersz',String(i))+'</div>').join('');
+  const totals=checked.attempted?'Suma Wn '+money(checked.debit_cents)+' · Ma '+money(checked.credit_cents)+'. ':'';
+  const feedback=checked.attempted?'<p class="'+(checked.correct?'notice':'error')+'">'+e(totals+
+   (checked.correct?'Prawidłowy dekret w uproszczonym modelu. ' + model.entries[doc.id].explanation:
+    !checked.balanced?'Zapis nie jest zbilansowany. Sprawdź strony Wn i Ma.':
+    'Strony są równe, ale konto, kwota lub liczba zapisów nie odpowiadają zdarzeniu. Sprawdź, czy nie księgujesz drugi raz przelewu, zaliczki albo dokumentu informacyjnego.'))+'</p>':'<p class="muted">Ustal wpływ zdarzenia na konta. Nie każdy dokument wymaga dekretu.</p>';
+  const rows=scenario.documents.map(d=>{const a=attempts[d.id],r=checkJournalAttempt(scenario,d.id,a);return '<tr><td>'+e(d.id)+'</td><td>'+e(d.title)+'</td><td>'+(!r.attempted?'Niepróbowany':r.correct?'Poprawnie':'Do korekty')+'</td></tr>';});
+  return '<section class="card"><span class="pill">ETAP 3 · DZIENNIK Wn/Ma W SYMULACJI</span><h2>Zadekretuj dokumenty D01–D36</h2>'+
+   '<p>Wybierz konto, stronę Wn lub Ma i kwotę dla każdego wiersza. Wn i Ma muszą się równoważyć, ale sama równość nie wystarczy. To oddzielne ćwiczenie: nie dopisuje automatycznie operacji do Twojego głównego dziennika i nie wysyła nic do urzędów.</p>'+
+   '<p class="notice">Odpowiedzi zapisane: <strong>'+summary.attempted+'/36</strong> · poprawne dekrety: <strong>'+summary.correct+'/36</strong>. W modelu '+summary.reference_posts+' dokumentów ma zapis księgowy, a reszta pełni rolę dowodu lub zestawienia.</p>'+
+   '<p class="small muted">Fikcyjny plan kont i kwoty bez VAT oraz prawnych naliczeń ZUS/CIT. Nie stosuj tych dekretów do prawdziwej firmy. Wymagana recenzja księgowego i test na dwóch kontach.</p>'+
+   '<label for="sim-journal-doc">Wybierz dokument</label><select id="sim-journal-doc">'+options+'</select>'+
+   '<div class="card"><h3>'+e(doc.id+' · '+doc.title)+'</h3><p>Data '+e(doc.date)+' · kwota dokumentu '+money(doc.amount_pln*100)+'.</p>'+fields+
+   '<div class="actions">'+button('sim-journal-add','Dodaj wiersz')+button('sim-journal-save','Sprawdź i zapisz dekret',doc.id,'primary')+
+   button('sim-journal-none','Brak księgowania dla tego dowodu',doc.id)+'</div>'+feedback+
+   '<p class="small muted">Wersjonowany zapis na koncie. Liczba prób dokumentu: '+(saved?.tries||0)+'. W razie konfliktu dwóch okien pobierz najnowszy stan.</p></div>'+
+   '<details><summary>Lista 36 dokumentów i status dekretacji</summary>'+table(['Dokument','Treść','Status'],rows)+'</details>'+
+   '<p class="muted">Następny etap: samodzielne zamknięcie miesiąca, rozrachunki i bilans po pełnym księgowaniu; obecne ćwiczenie nie stanowi jeszcze kompletnego E2E.</p></section>';
+ }
+
  function simulator(){
   if(!scenario)return '<section class="card"><h2>Miesiąc firmy D01–D36</h2><p class="error">'+e(scenarioError||'Zaloguj się i uzyskaj dostęp do kursu, aby otworzyć symulator.')+'</p></section>';
   const docs=scenario.documents,doc=docs.find(d=>d.id===scenarioDoc)||docs[0];
@@ -90,9 +133,9 @@ export function mountLab(root,db){
  }
  function coach(){const list=inspect(ws.state);return `<aside class="card"><span class="eyebrow">ANIELKA · KONTROLA ĆWICZENIA</span><h2>Sprawdźmy Twoją pracę</h2><p class="muted">Wskazuję różnice i podpowiadam tok rozwiązania. Nie zmieniam za Ciebie dokumentów.</p>${!list.length?'<p class="notice">Nie widzę problemów objętych kontrolami tego modelu. To nie jest pełna kontrola podatkowa ani potwierdzenie ukończenia całego kursu.</p>':list.slice(0,12).map(h=>`<div class="hint"><span class="pill">${e(h.severity)}</span><h3>${e(h.title)}</h3><p>${e(h.text)}</p></div>`).join('')}${list.length>12?`<p class="small">Łącznie ${list.length} uwag. Kolejne pojawią się po uporządkowaniu pierwszych.</p>`:''}<details><summary>Jak działa sprawdzanie?</summary><p class="small">Kontrole kwot i stron są wykonywane według reguł tego scenariusza. Nie dobierają aktualnej stawki VAT do dowolnego produktu. Dalsza rozmowa z Anielką nie blokuje pracy i nie zatwierdza za Ciebie zapisów.</p></details><form data-form="coach"><label for="question-text">Zapytaj o błąd w swoim ćwiczeniu</label><textarea id="question-text" data-group="question" data-field="text" maxlength="700" placeholder="Np. Dlaczego zapłata nie jest drugą sprzedażą?">${e(drafts.question.text)}</textarea><div class="actions"><button type="submit" ${!canWrite||busy?'disabled':''}>Poproś o wyjaśnienie</button></div></form>${answer?`<p class="notice">${e(answer).replace(/\n/g,'<br>')}</p>`:''}</aside>`;}
  function render(){if(disposed)return;
-  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise(),invoices,bank,journal,matches,report,history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
+  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice(),invoices,bank,journal,matches,report,history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
   if(busy)root.querySelectorAll('button').forEach(b=>b.disabled=true);
-  if(!canWrite)root.querySelectorAll('[data-action="create"],[data-action="reverse"],[data-action="unmatch"],[data-action="sim-save"],[data-action="sim-bank-save"]').forEach(b=>b.disabled=true);
+  if(!canWrite)root.querySelectorAll('[data-action="create"],[data-action="reverse"],[data-action="unmatch"],[data-action="sim-save"],[data-action="sim-bank-save"],[data-action="sim-journal-save"],[data-action="sim-journal-none"],[data-action="sim-journal-add"],[data-action="sim-journal-remove"]').forEach(b=>b.disabled=true);
  }
  async function run(fn){if(busy)return;busy=true;error='';render();try{await fn();}catch(x){error=x.message||'Operacja nie powiodła się. Formularz pozostaje zapisany lokalnie.';}finally{busy=false;render();}}
  function currentInvoice(statusValue){const d=drafts.invoice;return invoiceTotals({id:d.id,kind:d.kind,number:d.number.trim(),party:d.party.trim(),seller:d.seller,date:d.date,due:d.due,status:statusValue,lines:d.lines.map(l=>({label:l.label.trim(),qty_milli:scaled(l.qty,3),unit_cents:cents(l.price),tax_code:l.code}))});}
@@ -126,6 +169,27 @@ export function mountLab(root,db){
     });
     return;
    }
+
+   if(a==='sim-journal-add'){
+    const draft=getJournalDraft(journalDoc);if(draft.length<8)draft.push({account:'',debit:'0',credit:'0'});render();return;
+   }
+   if(a==='sim-journal-remove'){
+    const draft=getJournalDraft(journalDoc);if(draft.length>1&&Number.isInteger(Number(id)))draft.splice(Number(id),1);render();return;
+   }
+   if(a==='sim-journal-save'||a==='sim-journal-none'){
+    const selected=journalDoc,draft=getJournalDraft(selected).map(x=>({...x}));
+    await run(async()=>{
+     if(!canWrite||!scenario)throw new Error('Zapis wymaga dostępu do kursu i biura.');
+     let lines=[];
+     if(a==='sim-journal-save'){
+      lines=draft.map(x=>({account:x.account,debit_cents:cents(x.debit||'0'),credit_cents:cents(x.credit||'0')}))
+       .filter(x=>x.account||x.debit_cents||x.credit_cents);
+      if(!lines.length)throw new Error('Aby potwierdzić brak dekretu, wybierz osobny przycisk. W przeciwnym razie uzupełnij konta i kwoty.');
+     }
+     await commit(withJournalAttempt(ws.state,scenario,selected,lines));
+    });
+    return;
+   }
    if(a==='template'){download('wyciag-cwiczeniowy.csv','\uFEFF'+BANK_TEMPLATE,'text/csv;charset=utf-8');return;}
   if(a==='export'){download('trenerki-biuro-'+ws.id+'.json',JSON.stringify({format:'trenerki-lab-backup-v1',exported_at:new Date().toISOString(),workspace:ws},null,2));return;}
   if(a==='print-invoice'){const i=ws.state.invoices.find(x=>x.id===id),w=window.open('','_blank');if(!w){error='Przeglądarka zablokowała podgląd. Zezwól na nowe okno dla tej strony.';render();return;}w.opener=null;w.document.open();w.document.write(invoiceHTML(i));w.document.close();return;}
@@ -145,8 +209,8 @@ export function mountLab(root,db){
   if(a==='remove-journal-line'&&drafts.journal.lines.length>1)drafts.journal.lines.splice(Number(id),1);
   keepDrafts();render();
  }
- function inputEvent(event){const t=event.target;if(['sim-bank-in','sim-bank-out','sim-bank-net'].includes(t.id)){const key={'sim-bank-in':'bank_in_cents','sim-bank-out':'bank_out_cents','sim-bank-net':'bank_net_cents'}[t.id];const prev=readBankExercise(ws.state);bankDraft={bank_in_cents:prev?decimal(prev.bank_in_cents):'',bank_out_cents:prev?decimal(prev.bank_out_cents):'',bank_net_cents:prev?decimal(prev.bank_net_cents):'',...(bankDraft||{})};bankDraft[key]=t.value;return;}if(!t.dataset.group||!ws)return;let obj=drafts[t.dataset.group];const path=t.dataset.field.split('.');for(const part of path.slice(0,-1))obj=obj[part];obj[path.at(-1)]=t.value;keepDrafts();}
- async function changeEvent(event){const t=event.target;if(t.id==='sim-doc'&&scenario){scenarioDoc=t.value;render();return;}if(t.id==='workspace'&&t.value)await run(()=>open(t.value));if(t.id==='lab-file'&&t.files?.[0]){const f=t.files[0];await run(async()=>{if(f.size>1000000)throw new Error('Limit pliku wynosi 1 MB.');preview=parseBankCSV(await f.text(),ws.state.bank);});}}
+ function inputEvent(event){const t=event.target;if(t.dataset.jline!==undefined&&ws&&scenario){const i=Number(t.dataset.jline),key=t.dataset.jfield;const d=getJournalDraft(journalDoc);if(d[i]&&['account','debit','credit'].includes(key))d[i][key]=t.value;return;}if(['sim-bank-in','sim-bank-out','sim-bank-net'].includes(t.id)){const key={'sim-bank-in':'bank_in_cents','sim-bank-out':'bank_out_cents','sim-bank-net':'bank_net_cents'}[t.id];const prev=readBankExercise(ws.state);bankDraft={bank_in_cents:prev?decimal(prev.bank_in_cents):'',bank_out_cents:prev?decimal(prev.bank_out_cents):'',bank_net_cents:prev?decimal(prev.bank_net_cents):'',...(bankDraft||{})};bankDraft[key]=t.value;return;}if(!t.dataset.group||!ws)return;let obj=drafts[t.dataset.group];const path=t.dataset.field.split('.');for(const part of path.slice(0,-1))obj=obj[part];obj[path.at(-1)]=t.value;keepDrafts();}
+ async function changeEvent(event){const t=event.target;if(t.id==='sim-doc'&&scenario){scenarioDoc=t.value;render();return;}if(t.id==='sim-journal-doc'&&scenario){journalDoc=t.value;render();return;}if(t.id==='workspace'&&t.value)await run(()=>open(t.value));if(t.id==='lab-file'&&t.files?.[0]){const f=t.files[0];await run(async()=>{if(f.size>1000000)throw new Error('Limit pliku wynosi 1 MB.');preview=parseBankCSV(await f.text(),ws.state.bank);});}}
  const leave=ev=>{if(busy){ev.preventDefault();ev.returnValue='';}};
  root.addEventListener('click',click);root.addEventListener('submit',submit);root.addEventListener('input',inputEvent);root.addEventListener('change',changeEvent);window.addEventListener('beforeunload',leave);
  render();void load();
