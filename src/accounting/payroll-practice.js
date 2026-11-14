@@ -14,6 +14,39 @@ export const PAYROLL_FIELDS=Object.freeze({
  paid_cents:'Kwota faktycznie oznaczona jako wypłacona w ćwiczeniu'
 });
 const nonnegative=n=>Number.isSafeInteger(n)&&n>=0&&n<=100000000;
+
+/** Zestawienie jawnie wybranego wiersza FIKCYJNEGO wyciągu CSV.
+ * Nie oznacza wykonania przelewu w banku ani powstania dekretu Wn/Ma.
+ */
+const BANK_ID=/^[A-Za-z0-9_/-]{1,100}$/;
+const validBankId=id=>id===undefined||id===''||(typeof id==='string'&&BANK_ID.test(id));
+function checkBankLink(state,c){
+ const id=c?.bank_transaction_id||'';
+ if(!id)return {status:'not_linked',actual_bank_verified:false};
+ if(!validBankId(id)||!Number.isSafeInteger(c.paid_cents)||c.paid_cents<=0)
+  return {status:'invalid_link',actual_bank_verified:false};
+ const items=Array.isArray(state?.bank)?state.bank:[];
+ const row=items.find(b=>b?.id===id);
+ if(!row)return {status:'missing_bank_row',bank_id:id,actual_bank_verified:false};
+ if(!Number.isSafeInteger(row.amount_cents)||row.amount_cents!==-c.paid_cents)
+  return {status:'amount_mismatch',bank_id:id,actual_bank_verified:false};
+ if(row.date!==c.paid_on)return {status:'date_mismatch',bank_id:id,actual_bank_verified:false};
+ if(Array.isArray(state?.matches)&&state.matches.some(x=>x?.bank_id===id))
+  return {status:'already_allocated_to_invoice',bank_id:id,actual_bank_verified:false};
+ const raw=state?.[STORE]?.entries;
+ if(raw&&typeof raw==='object'&&PERSONNEL_IDS.some(other=>other!==c.employee_id&&raw[other]?.bank_transaction_id===id))
+  return {status:'duplicate_payroll_assignment',bank_id:id,actual_bank_verified:false};
+ return {status:'matched_training_csv',bank_id:id,amount_cents:c.paid_cents,
+  csv_row_date:row.date,actual_bank_verified:false,ledger_posted:false};
+}
+export function payrollBankMatch(state,id){
+ const c=readPayrollPractices(state)[id];
+ if(!c)return {status:'no_payroll',actual_bank_verified:false};
+ if(!eligibleEmployee(readPersonnelCases(state)[id],c))
+  return {status:'personnel_stale',actual_bank_verified:false};
+ return checkBankLink(state,c);
+}
+
 const validDate=x=>{
  if(typeof x!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(x))return false;
  const [y,m,d]=x.split('-').map(Number);
@@ -35,6 +68,7 @@ export function validPayrollPractice(c){
  const m=payrollMath(c);
  return Number.isSafeInteger(m.total_employer_cost_cents)&&
   m.deductions_cents<=c.gross_cents&&c.paid_cents<=m.net_cents&&
+  validBankId(c.bank_transaction_id)&&(!c.bank_transaction_id||c.paid_cents>0)&&
   typeof c.paid_on==='string'&&
   (c.paid_cents===0?c.paid_on==='':validDate(c.paid_on));
 }
@@ -56,6 +90,8 @@ export function withPayrollPractice(state,c){
  const people=readPersonnelCases(state);
  if(!eligibleEmployee(people[c.employee_id],c))
   throw new Error('Najpierw zapisz osobę w Kadrach. Miesiąc musi obejmować czas umowy, a brutto odpowiadać kartotece.');
+ if(c.bank_transaction_id&&checkBankLink(state,c).status!=='matched_training_csv')
+  throw new Error('Wybierz inną pozycję fikcyjnego CSV: data, kwota i kierunek muszą być zgodne, a identyfikator niewykorzystany.');
  return {...state,[STORE]:{scenario_id:SCENARIO,
   entries:{...readPayrollPractices(state),[c.employee_id]:{...c}}}};
 }
@@ -66,8 +102,8 @@ export function payrollReview(state,id){
  const m=payrollMath(c);
  const eligible=!!eligibleEmployee(person,c);
  return {...m,recorded:true,eligible,payroll_month:c.period,
-  actual_bank_match:'not_tested',legal_rates:'not_verified',
-  official_forms:'not_generated',approved_payroll:false,
+  actual_bank_match:'not_tested',training_bank_match:payrollBankMatch(state,id).status,
+  legal_rates:'not_verified',official_forms:'not_generated',approved_payroll:false,
   message:eligible?'Bilans zadania liczbowego. Kwoty składek/PIT wprowadzono ręcznie, nie wyliczono według prawa.':
     'Zmieniono kartotekę albo daty. Popraw kartę płac przed uznaniem jej za spójną.'};
 }
@@ -88,6 +124,7 @@ export function payrollPeriodSummary(state){
   if(!groups.has(c.period))groups.set(c.period,{
    period:c.period,employee_count:0,gross_cents:0,deductions_cents:0,
    net_cents:0,paid_cents:0,outstanding_cents:0,employer_extra_cents:0,
+   training_csv_matched_cents:0,training_csv_unmatched_cents:0,
    total_employer_cost_cents:0
   });
   const x=groups.get(c.period),m=payrollMath(c);
@@ -96,6 +133,8 @@ export function payrollPeriodSummary(state){
   x.deductions_cents+=m.deductions_cents;
   x.net_cents+=m.net_cents;
   x.paid_cents+=c.paid_cents;
+  if(payrollBankMatch(state,id).status==='matched_training_csv')x.training_csv_matched_cents+=c.paid_cents;
+  else x.training_csv_unmatched_cents+=c.paid_cents;
   x.outstanding_cents+=m.outstanding_cents;
   x.employer_extra_cents+=c.employer_extra_cents;
   x.total_employer_cost_cents+=m.total_employer_cost_cents;

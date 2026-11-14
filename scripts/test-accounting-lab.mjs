@@ -470,7 +470,7 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
 
-import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary} from '../src/accounting/payroll-practice.js';
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch} from '../src/accounting/payroll-practice.js';
 const payrollCase=(id='P01')=>({
  employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
  social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
@@ -596,4 +596,69 @@ test('Płace: pusty moduł nie udaje potwierdzenia przelewu',()=>{
  assert.deepEqual(data.periods,[]);
  assert.deepEqual(data.excluded_employee_ids,[]);
  assert.equal(data.cashflow_type,'declared_training_payments_not_bank_verified');
+});
+
+
+test('Płace/CSV: jawny wybór fikcyjnej operacji zgodnej z datą i kwotą',()=>{
+ const original=payrollState();
+ const bank=[{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjna wypłata P01'}];
+ const state={...original,bank},before=JSON.stringify(state);
+ const saved=withPayrollPractice(state,{...payrollCase('P01'),bank_transaction_id:'CW-PAY-P01'});
+ assert.equal(JSON.stringify(state),before);
+ assert.deepEqual(saved.bank,bank);
+ assert.deepEqual(saved.invoices,state.invoices);
+ assert.deepEqual(saved.journals,state.journals);
+ assert.equal(payrollBankMatch(saved,'P01').status,'matched_training_csv');
+ assert.equal(payrollBankMatch(saved,'P01').actual_bank_verified,false);
+ assert.equal(payrollReview(saved,'P01').actual_bank_match,'not_tested');
+ const summary=payrollPeriodSummary(saved).periods[0];
+ assert.equal(summary.training_csv_matched_cents,300000);
+ assert.equal(summary.training_csv_unmatched_cents,0);
+ assert.equal(summary.outstanding_cents,107000);
+});
+test('Płace/CSV: nie zgodzą się data, kwota i znak operacji',()=>{
+ const base=payrollState(),c={...payrollCase('P01'),bank_transaction_id:'CW-PAY-P01'};
+ for(const bank of [
+  [{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:300000}],
+  [{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:-300001}],
+  [{id:'CW-PAY-P01',date:'2026-02-01',amount_cents:-300000}],
+  []])assert.throws(()=>withPayrollPractice({...base,bank},c));
+ const ok=withPayrollPractice({...base,bank:[{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:-300000}]},c);
+ assert.equal(payrollBankMatch({...ok,bank:[]},'P01').status,'missing_bank_row');
+ assert.equal(payrollBankMatch({...ok,bank:[{id:'CW-PAY-P01',date:'2026-01-30',amount_cents:-300000}]},'P01').status,'date_mismatch');
+ assert.equal(payrollBankMatch({...ok,bank:[{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:-299999}]},'P01').status,'amount_mismatch');
+});
+test('Płace/CSV: dowód rozliczony z fakturą nie jest drugi raz wypłatą',()=>{
+ const state={...payrollState(),bank:[{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:-300000}],
+  matches:[{bank_id:'CW-PAY-P01',invoice_id:'F01',amount_cents:300000}]};
+ assert.throws(()=>withPayrollPractice(state,{...payrollCase('P01'),bank_transaction_id:'CW-PAY-P01'}));
+ const ok=withPayrollPractice({...state,matches:[]},{...payrollCase('P01'),bank_transaction_id:'CW-PAY-P01'});
+ assert.equal(payrollBankMatch({...ok,matches:state.matches},'P01').status,'already_allocated_to_invoice');
+});
+test('Płace/CSV: dwie osoby nie mogą wybrać tego samego przelewu',()=>{
+ const bank=[{id:'BANK-2510',date:'2026-01-31',amount_cents:-251000}];
+ const first=withPayrollPractice({...payrollState(),bank},{...payrollCase('P01'),paid_cents:251000,bank_transaction_id:'BANK-2510'});
+ assert.throws(()=>withPayrollPractice(first,{...payrollCase('P02'),bank_transaction_id:'BANK-2510'}));
+ const other=withPayrollPractice(first,{...payrollCase('P02'),bank_transaction_id:''});
+ assert.equal(payrollBankMatch(other,'P01').status,'matched_training_csv');
+ assert.equal(payrollBankMatch(other,'P02').status,'not_linked');
+ assert.equal(payrollPeriodSummary(other).periods[0].training_csv_unmatched_cents,251000);
+});
+test('Płace/CSV: stare karty działają bez nowego pola i bez pozornego przelewu',()=>{
+ const s=withPayrollPractice(payrollState(),payrollCase('P01'));
+ assert.equal(payrollBankMatch(s,'P01').status,'not_linked');
+ assert.equal(payrollPeriodSummary(s).periods[0].training_csv_matched_cents,0);
+ assert.equal(payrollPeriodSummary(s).periods[0].training_csv_unmatched_cents,300000);
+ assert.equal(payrollReview(s,'P01').actual_bank_match,'not_tested');
+ const zero={...payrollCase('P01'),paid_cents:0,paid_on:'',bank_transaction_id:'BANK-2510'};
+ assert.equal(validPayrollPractice(zero),false);
+});
+test('Płace/CSV: zmiana kadrowa odbiera ważność dopasowania',()=>{
+ const state=withPayrollPractice({...payrollState(),bank:[{id:'CW-PAY-P01',date:'2026-01-31',amount_cents:-300000}]},
+  {...payrollCase('P01'),bank_transaction_id:'CW-PAY-P01'});
+ const person=readPersonnelCases(state).P01;
+ const changed=withPersonnelCase(state,{...person,monthly_gross_cents:530000});
+ assert.equal(payrollBankMatch(changed,'P01').status,'personnel_stale');
+ assert.deepEqual(payrollPeriodSummary(changed).excluded_employee_ids,['P01']);
+ assert.equal(payrollPeriodSummary(changed).periods.length,0);
 });
