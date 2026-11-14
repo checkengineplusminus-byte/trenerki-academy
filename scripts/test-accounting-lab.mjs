@@ -213,6 +213,72 @@ test('Zmiana scenariusza nie przejmuje zapisów innego wariantu',()=>{
 });
 
 
+test('Konflikt CAS daje pobranie niezapisanego stanu bez nadpisywania nowszej wersji',async()=>{
+ const {mountLab}=await import('../src/accounting/lab-ui.js');
+ const originalWindow=globalThis.window,originalDocument=globalThis.document;
+ const originalStorage=globalThis.localStorage;
+ const originalCreate=URL.createObjectURL,originalRevoke=URL.revokeObjectURL;
+ const wsFixture={id:'synthetic-lab',name:'Fikcyjna firma',version:3,
+  updated_at:'2026-11-14T12:00:00Z',state:EMPTY()};
+ const root={innerHTML:'',handlers:{},addEventListener(k,cb){this.handlers[k]=cb;},
+  removeEventListener(k){delete this.handlers[k];},querySelectorAll(){return [];}};
+ let saves=0,exportedBlob=null,clicked=false;
+ globalThis.window={addEventListener(){},removeEventListener(){}};
+ globalThis.localStorage={getItem(){return null;},setItem(){}};
+ globalThis.document={createElement(){return {href:'',download:'',click(){clicked=true;}}}};
+ URL.createObjectURL=b=>{exportedBlob=b;return 'blob:synthetic';};
+ URL.revokeObjectURL=()=>{};
+ const db={
+  auth:{getUser:async()=>({data:{user:{id:'synthetic-user'}}})},
+  rpc:async(name,args)=>{
+   if(name==='ta_accounting_overview')return {data:{},error:null};
+   if(name==='ta_accounting_lab_save'){
+    saves++;
+    assert.equal(args.expected_version,3);
+    assert.equal(args.workspace_id,wsFixture.id);
+    return {data:null,error:{code:'40001',message:'concurrent version'}};
+   }
+   throw new Error('Unexpected RPC '+name);
+  },
+  from(table){
+   return {select(){return this;},eq(){return this;},
+    order:async()=>({data:[{id:wsFixture.id,name:wsFixture.name,version:wsFixture.version,updated_at:wsFixture.updated_at}],error:null}),
+    single:async()=>({data:wsFixture,error:null}),
+    maybeSingle:async()=>({data:null,error:{message:'no manifest for test'}})};
+  }
+ };
+ let dispose=()=>{};
+ try{
+  dispose=mountLab(root,db);
+  await new Promise(resolve=>setImmediate(resolve));
+  assert.match(root.innerHTML,/synthetic-lab|Fikcyjna firma/);
+  await root.handlers.submit({target:{closest:()=>({dataset:{form:'journal'}})},
+   submitter:{value:'draft'},preventDefault(){}});
+  assert.equal(saves,1);
+  assert.equal(wsFixture.version,3);
+  assert.equal(wsFixture.state.journals.length,0);
+  assert.match(root.innerHTML,/Pobierz niezapisane zmiany/);
+  assert.match(root.innerHTML,/Zapis odrzucony/);
+  await root.handlers.click({target:{closest:()=>({
+   disabled:false,dataset:{action:'download-conflict',id:''}
+  })}});
+  assert.equal(clicked,true);
+  const backup=JSON.parse(await exportedBlob.text());
+  assert.equal(backup.format,'trenerki-unsaved-conflict-v1');
+  assert.equal(backup.workspace_id,wsFixture.id);
+  assert.equal(backup.expected_version,3);
+  assert.equal(backup.next_state.journals.length,1);
+  assert.equal(backup.next_state.journals[0].status,'draft');
+  assert.equal(wsFixture.state.journals.length,0);
+ }finally{
+  dispose();
+  if(originalWindow===undefined)delete globalThis.window;else globalThis.window=originalWindow;
+  if(originalDocument===undefined)delete globalThis.document;else globalThis.document=originalDocument;
+  if(originalStorage===undefined)delete globalThis.localStorage;else globalThis.localStorage=originalStorage;
+  URL.createObjectURL=originalCreate;URL.revokeObjectURL=originalRevoke;
+ }
+});
+
 test('Test interfejsu: moduł pracowni importuje się bez błędu składni',async()=>{
  const ui=await import('../src/accounting/lab-ui.js');
  assert.equal(typeof ui.mountLab,'function');
