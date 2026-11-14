@@ -19,10 +19,14 @@ test('Stary certyfikat nie odblokowuje nowego egzaminu encyklopedii',()=>assert.
 test('Pozostałe kursy zachowują kryteria zakończenia',()=>{assert.equal(courseFinished('excel',8,8),true);assert.equal(courseFinished('excel',8,4),false);assert.equal(courseFinished('excel',8,4,true),true);});
 test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',()=>{
  const source=readFileSync(new URL('../app/nauka.tsx',import.meta.url),'utf8');
- const guard="   if(slug==='ksiegowosc-od-podstaw'){router.replace('/ksiegowosc');return;}\n";
+ const guard="   if(slug==='ksiegowosc-od-podstaw'){router.replace(courseDestination(slug,lessonParam));return;}\n";
+ const importLine="// @ts-ignore — jednolita, testowana nawigacja starych i nowych odnośników.\nimport {courseDestination} from '../src/accounting/course-entry.js';\n";
+ assert.ok(source.includes(importLine),'Tylko współdzielona, walidowana nawigacja');
+ assert.deepEqual(courseDestination(A,'34'),{pathname:'/ksiegowosc',params:{lesson:'34'}});
+ assert.deepEqual(courseDestination(A,'0'),{pathname:'/ksiegowosc'});
  assert.equal(source.split(guard).length,2,'Przekierowanie występuje tylko raz');
  assert.ok(source.indexOf(guard)<source.indexOf("supabase.auth.getUser()"),'Przekieruj przed starym odczytem danych');
- const bytes=Buffer.from(source.replace(guard,''),'utf8');
+ const bytes=Buffer.from(source.replace(guard,'').replace(importLine,''),'utf8');
  const hash=createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
  assert.equal(hash,'26064c9a53016522f2a5781d41d0c2cbb1414e20','Czytnik pozostałych kursów jest bez zmian');
 });
