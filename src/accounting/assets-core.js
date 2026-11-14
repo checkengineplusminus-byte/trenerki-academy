@@ -68,7 +68,9 @@ export function validateAssets(s,previous=null){
   if(pos.disposal){const j=pos.disposal;assetDate(j.date);const priorMonths=Math.min(a.months,Math.max(0,monthIndex(j.date.slice(0,7))-monthIndex(a.start_month)));
    if(j.date<a.in_service_date||pos.depreciations.length<priorMonths||pos.depreciations.some(d=>d.date>j.date))fail('Sprawdź datę likwidacji i wcześniejsze odpisy.');
    const expected=[...(pos.accumulated?[{account:'071',debit:pos.accumulated,credit:0}]:[]),...(f.cost-pos.accumulated?[{account:'761',debit:f.cost-pos.accumulated,credit:0}]:[]),{account:'010',debit:0,credit:f.cost}];
-   if(j.source_type!=='manual'||!linesEqual(j.lines,expected))fail('Likwidacja nie wyksięgowuje właściwej wartości i umorzenia.');
+   if(j.source_type!=='manual'||!linesEqual(j.lines,expected))fail('Wyksięgowanie nie uzgadnia wartości i umorzenia.');
+   if(j.source_id)validatedAssetSaleInvoice(s,a,j.source_id,j.date);
+
   }
  }
  for(const j of s.journals){if(j.reversal_of&&j.asset_id)fail('Storno wskazuje oryginał, bez drugiego oznaczenia majątku.');if(j.asset_id&&!assets.some(a=>a.id===j.asset_id))fail('Księgowanie odwołuje się do nieistniejącej karty.');if(!j.asset_id&&(j.asset_action||j.asset_period))fail('Brak identyfikatora karty dla zdarzenia.');}
@@ -79,6 +81,38 @@ export function validateAssets(s,previous=null){
 const journal=(id,a,action,date,lines)=>({id,status:'posted',date,memo:`${action==='acquire'?'Przyjęcie':action==='depreciation'?'Amortyzacja':'Likwidacja'}: ${a.inventory_no}`,source_type:action==='acquire'?'invoice':'manual',source_id:action==='acquire'?a.invoice_id:'',asset_id:a.id,asset_action:action,lines});
 export function planAcquisition(s,card,journalId){const a=normalizeAsset(card,s,'active');if(activeJournals(s).some(j=>j.source_type==='invoice'&&j.source_id===a.invoice_id))fail('Zakup ma już księgowanie. Sprawdź je i zastosuj storno, zanim ujmiesz środek trwały.');const j=journal(journalId,a,'acquire',a.in_service_date,acquisitionLines(a,s));const next={...s,assets:[...(s.assets||[]).filter(x=>x.id!==a.id),a],journals:[...s.journals,j]};validateAssets(next,s);return {state:next,journal:j};}
 export function planDepreciation(s,id,journalId){const a=s.assets?.find(a=>a.id===id&&a.status==='active');if(!a)fail('Brak przyjętej karty.');const pos=assetPosition(a,s);if(!pos.acquisition||pos.disposal)fail('Nie amortyzujemy przed przyjęciem lub po likwidacji.');const nextPeriod=schedule(a,s)[pos.depreciations.length];if(!nextPeriod)fail('Zakończono harmonogram amortyzacji.');const j={...journal(journalId,a,'depreciation',nextPeriod.date,[{account:'401',debit:nextPeriod.amount_cents,credit:0},{account:'071',debit:0,credit:nextPeriod.amount_cents}]),asset_period:nextPeriod.period};const next={...s,journals:[...s.journals,j]};validateAssets(next,s);return {state:next,journal:j};}
+/** Sprzedaż w modelu wymaga jednej wystawionej i osobno zaksięgowanej faktury.
+ * Faktura rozlicza przychód/VAT, a ten zapis WYŁĄCZNIE wartość księgową.
+ * Daty muszą być równe w tym wariancie edukacyjnym; bez rozstrzygania prawa podatkowego.
+ */
+export function validatedAssetSaleInvoice(s,a,invoiceId,date){
+ const invoice=(s.invoices||[]).find(i=>i.id===invoiceId);
+ if(!invoice||invoice.kind!=='sale'||invoice.status!=='issued')fail('Wybierz wystawioną fakturę sprzedaży składnika.');
+ if(assetDate(date)!==invoice.date)fail('W tym ćwiczeniu data wyksięgowania musi być datą faktury sprzedaży.');
+ if(!Array.isArray(invoice.lines)||invoice.lines.length!==1||!String(invoice.lines[0].label||'').includes(a.inventory_no))
+  fail('Faktura sprzedaży musi mieć jedną pozycję z numerem inwentarzowym sprzedawanego składnika.');
+ const net=invoice.net_cents,tax=invoice.tax_cents,gross=invoice.gross_cents;
+ if(![net,tax,gross].every(n=>Number.isSafeInteger(n)&&n>=0&&n<=1000000000000)||net<=0||net+tax!==gross)
+  fail('Kwoty faktury sprzedaży są niespójne.');
+ const expected=[{account:'201',debit:gross,credit:0},{account:'700',debit:0,credit:net},...(tax?[{account:'222',debit:0,credit:tax}]:[])];
+ const journals=activeJournals(s).filter(j=>j.source_type==='invoice'&&j.source_id===invoiceId);
+ if(journals.length!==1||!linesEqual(journals[0].lines,expected))
+  fail('Najpierw zaksięguj dokładnie raz fakturę sprzedaży w biurze. Nie księguj przychodu ani VAT po raz drugi w kartotece.');
+ if(activeJournals(s).some(j=>j.asset_action==='dispose'&&j.asset_id!==a.id&&j.source_id===invoiceId))
+  fail('Ta faktura została już powiązana ze sprzedażą innej karty.');
+ return invoice;
+}
+export function planSale(s,id,saleInvoiceId,date,journalId){
+ const a=s.assets?.find(a=>a.id===id&&a.status==='active');if(!a)fail('Brak przyjętej karty.');
+ const position=assetPosition(a,s);
+ if(!position.acquisition||position.disposal)fail('Składnik już wyksięgowano albo brak przyjęcia.');
+ const sale=validatedAssetSaleInvoice(s,a,saleInvoiceId,date);
+ const draft=planDisposal(s,id,date,journalId);
+ const disposal={...draft.journal,source_id:sale.id,memo:'Sprzedaż środka trwałego: '+a.inventory_no};
+ const next={...draft.state,journals:draft.state.journals.map(j=>j.id===journalId?disposal:j)};
+ validateAssets(next,s);
+ return {state:next,journal:disposal,saleInvoiceId:sale.id};
+}
 export function planDisposal(s,id,date,journalId){const a=s.assets?.find(a=>a.id===id&&a.status==='active');if(!a)fail('Brak karty.');const p=assetPosition(a,s);if(!p.acquisition||p.disposal)fail('Składnik nie jest aktywny albo został zlikwidowany.');const j=journal(journalId,a,'dispose',assetDate(date),[...(p.accumulated?[{account:'071',debit:p.accumulated,credit:0}]:[]),...(p.cost-p.accumulated?[{account:'761',debit:p.cost-p.accumulated,credit:0}]:[]),{account:'010',debit:0,credit:p.cost}]);const next={...s,journals:[...s.journals,j]};validateAssets(next,s);return {state:next,journal:j};}
 export function assetsControl(s){const issues=[];const add=(code,text,id='assets')=>issues.push({code,title:'Kontrola majątku',text,entity:'asset',id,severity:'uwaga'});try{validateAssets(s,s);}catch(e){add('asset_invariant',e.message);}
  const posted=s.journals.filter(j=>j.status==='posted'),sum=account=>posted.flatMap(j=>j.lines).filter(l=>l.account===account).reduce((n,l)=>n+l.debit-l.credit,0);
