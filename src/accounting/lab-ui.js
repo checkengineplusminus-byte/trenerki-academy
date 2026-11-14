@@ -114,11 +114,13 @@ export function mountLab(root,db){
     return;
    }
    if(a==='sim-bank-save'){
-    const data={bank_in_cents:cents(root.querySelector('#sim-bank-in')?.value.trim()||''),
-     bank_out_cents:cents(root.querySelector('#sim-bank-out')?.value.trim()||''),
-     bank_net_cents:cents(root.querySelector('#sim-bank-net')?.value.trim()||'')};
-    await run(async()=>{if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');
-     await commit(withBankExercise(ws.state,scenario,data));});
+    await run(async()=>{
+     if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');
+     const data={bank_in_cents:cents(root.querySelector('#sim-bank-in')?.value.trim()||''),
+      bank_out_cents:cents(root.querySelector('#sim-bank-out')?.value.trim()||''),
+      bank_net_cents:cents(root.querySelector('#sim-bank-net')?.value.trim()||'')};
+     await commit(withBankExercise(ws.state,scenario,data));
+    });
     return;
    }
    if(a==='template'){download('wyciag-cwiczeniowy.csv','\uFEFF'+BANK_TEMPLATE,'text/csv;charset=utf-8');return;}
