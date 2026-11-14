@@ -158,6 +158,39 @@ try{
   assert.deepEqual(blocked.errors,[]);
  });
  await blocked.context.close();
+ const partial=await fixture({width:1280,height:900});
+ await partial.page.goto(origin+'/biuro-ksiegowe');
+ await tab(partial.page).waitFor();
+ await tab(partial.page).click();
+ await pass('Po ponownym otwarciu biura wracamy do pierwszych brakujących D03 i D02',async()=>{
+  for(const d of manifest.documents.slice(0,2)){
+   await choose(partial.page,'#sim-doc',d.id);
+   await choose(partial.page,'#sim-kind',d.kind);
+   const before=partial.model().version;
+   await partial.page.locator('button[data-action="sim-save"]').click();
+   await saved(partial,before);
+  }
+  await choose(partial.page,'#sim-journal-doc','D01');
+  for(const [i,row] of manifest.journal_practice_v1.entries.D01.lines.entries()){
+   await choose(partial.page,'[data-jline="'+i+'"][data-jfield="account"]',row.account);
+   await partial.page.locator('[data-jline="'+i+'"][data-jfield="debit"]')
+    .fill((row.debit_cents/100).toFixed(2).replace('.',','));
+   await partial.page.locator('[data-jline="'+i+'"][data-jfield="credit"]')
+    .fill((row.credit_cents/100).toFixed(2).replace('.',','));
+  }
+  const before=partial.model().version;
+  await partial.page.locator('button[data-action="sim-journal-save"]').click();
+  await saved(partial,before);
+  assert.equal(partial.saves(),3);
+  await partial.page.reload();
+  await tab(partial.page).waitFor();
+  await tab(partial.page).click();
+  assert.equal(await partial.page.locator('#sim-doc').inputValue(),'D03');
+  assert.equal(await partial.page.locator('#sim-journal-doc').inputValue(),'D02');
+  assert.equal(partial.model().version,4);
+  assert.deepEqual(partial.errors,[]);
+ });
+ await partial.context.close();
  const f=await fixture({width:1280,height:960});
  await f.page.goto(origin+'/biuro-ksiegowe');
  await tab(f.page).waitFor();
