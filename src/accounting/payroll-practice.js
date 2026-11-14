@@ -39,6 +39,18 @@ function checkBankLink(state,c){
  return {status:'matched_training_csv',bank_id:id,amount_cents:c.paid_cents,
   csv_row_date:row.date,actual_bank_verified:false,ledger_posted:false};
 }
+/**
+ * Powiązanej pozycji CSV nie wolno następnie przypisać do faktury.
+ * Kontrola jest symetryczna względem checkBankLink() w karcie płac.
+ */
+export function bankRowAvailableForInvoice(state,bankId){
+ if(typeof bankId!=='string'||!BANK_ID.test(bankId)||!Array.isArray(state?.bank)||
+    !state.bank.some(row=>row?.id===bankId))return false;
+ const stored=state?.[STORE];
+ if(stored?.scenario_id!==SCENARIO||!stored.entries||
+    typeof stored.entries!=='object'||Array.isArray(stored.entries))return true;
+ return !PERSONNEL_IDS.some(id=>stored.entries[id]?.bank_transaction_id===bankId);
+}
 export function payrollBankMatch(state,id){
  const c=readPayrollPractices(state)[id];
  if(!c)return {status:'no_payroll',actual_bank_verified:false};

@@ -470,7 +470,7 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
 
-import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch} from '../src/accounting/payroll-practice.js';
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice} from '../src/accounting/payroll-practice.js';
 const payrollCase=(id='P01')=>({
  employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
  social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
@@ -661,4 +661,16 @@ test('Płace/CSV: zmiana kadrowa odbiera ważność dopasowania',()=>{
  assert.equal(payrollBankMatch(changed,'P01').status,'personnel_stale');
  assert.deepEqual(payrollPeriodSummary(changed).excluded_employee_ids,['P01']);
  assert.equal(payrollPeriodSummary(changed).periods.length,0);
+});
+
+test('Płace/CSV: nie można ponownie rozliczyć wynagrodzenia w module faktur',()=>{
+ const bank=[{id:'TRAIN-OUT-1',date:'2026-01-31',amount_cents:-300000,description:'fikcyjny'}];
+ const original={...payrollState(),bank};
+ assert.equal(bankRowAvailableForInvoice(original,'TRAIN-OUT-1'),true);
+ const linked=withPayrollPractice(original,{...payrollCase('P01'),bank_transaction_id:'TRAIN-OUT-1'});
+ assert.equal(bankRowAvailableForInvoice(linked,'TRAIN-OUT-1'),false);
+ const cleared=withPayrollPractice(linked,{...payrollCase('P01'),bank_transaction_id:''});
+ assert.equal(bankRowAvailableForInvoice(cleared,'TRAIN-OUT-1'),true);
+ assert.equal(bankRowAvailableForInvoice(cleared,'NOT-IMPORTED'),false);
+ assert.equal(bankRowAvailableForInvoice({...linked,bank:[]},'TRAIN-OUT-1'),false);
 });
