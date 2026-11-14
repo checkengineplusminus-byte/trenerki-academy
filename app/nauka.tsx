@@ -3,6 +3,8 @@ import React,{useEffect,useState} from 'react';
 import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+// @ts-ignore — jednolita, testowana nawigacja starych i nowych odnośników.
+import {courseDestination} from '../src/accounting/course-entry.js';
 import KeyboardLesson,{type KeyboardShortcut} from '../src/KeyboardLesson';
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
@@ -59,7 +61,7 @@ export default function Learning(){
   setBusy(true);setError('');setItems([]);setDone([]);setChecks({});setMsg('');setShowProgram(false);
   try{
    if(!slug)throw new Error('Wybierz kurs z listy.');
-   if(slug==='ksiegowosc-od-podstaw'){router.replace('/ksiegowosc');return;}
+   if(slug==='ksiegowosc-od-podstaw'){router.replace(courseDestination(slug,lessonParam));return;}
    const {data:{user:u},error:ue}=await supabase.auth.getUser();
    if(ue||!u){router.replace('/konto');return;}
    const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
