@@ -141,7 +141,9 @@ export function mountLab(root,db){
     table(['Kontrola','Stan','Co sprawdzić'],rows)+
     '<p class="'+(audit.training_consistent?'notice':'error')+'">'+e(audit.training_consistent?
       'Wewnętrzne etapy są zgodne ('+audit.passed+'/'+audit.total+'). To wyłącznie wynik szkoleniowy, nie ukończenie księgowości ani zatwierdzony egzamin.':
-      'Zgodnych etapów: '+audit.passed+'/'+audit.total+'. Popraw wskazane różnice przed oceną całości.')+'</p>'+
+      (audit.reference_integrity==='blocked'?
+       'Wzorcowy miesiąc zawiera niespójności i nie może być zaliczony. To problem materiału, nie Twoich odpowiedzi; zgłoś go do TRENERKI. Próby pozostają zapisane.':
+       'Zgodnych etapów: '+audit.passed+'/'+audit.total+'. Popraw wskazane różnice przed oceną całości.'))+'</p>'+
     '<p class="small muted">Etapy korzystają z osobno zapisanych prób, nie zatwierdzają operacji w rzeczywistym dzienniku. E2E dwóch kont: niewykonany. Odbiór księgowo-prawny: oczekuje. Niezależny test odtworzenia backupu: niewykonany. Bez wysyłki do urzędu, KSeF czy banku.</p></section>';
  }
 

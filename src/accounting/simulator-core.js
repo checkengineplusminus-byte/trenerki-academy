@@ -29,6 +29,7 @@ export function readScenario(raw){
   if(!d||typeof d.id!=='string'||!/^D(?:0[1-9]|[12][0-9]|3[0-6])$/.test(d.id)||seen.has(d.id)||
      !/^2026-01-(?:0[1-9]|[12][0-9]|3[01])$/.test(d.date)||typeof d.title!=='string'||
      d.title.length<3||d.title.length>250||!isKind(d.kind)||!Number.isSafeInteger(d.amount_pln)||
+     ((d.kind==='bank_in'||d.kind==='bank_out')&&d.amount_pln<0)||
      d.fictional!==true||d.source_verification!=='training_only')
    throw new Error('Niespójne dane dokumentu w manifeście ćwiczeniowym.');
   seen.add(d.id);
@@ -222,6 +223,40 @@ export function journalClosingPreview(scenario,attempts={}){
 }
 
 
+
+/**
+ * Niezależna bramka integralności szkoleniowego wzorca D01-D36.
+ * Weryfikuje każdy dowód bankowy, nie tylko sumę miesiąca: źródło gotówki
+ * musi odpowiadać ruchowi konta 130 w tym SAMYM dokumencie.
+ * Nie ocenia prawa, podatków ani jakości pracy prawdziwego księgowego.
+ */
+export function inspectReferenceMonth(scenario){
+ const data=readScenario(scenario),model=readJournalPractice(data);
+ const issues=[];
+ for(const doc of data.documents){
+  const bankLines=model.entries[doc.id].lines.filter(line=>line.account==='130');
+  const actual=bankLines.reduce((sum,line)=>sum+line.debit_cents-line.credit_cents,0);
+  const expected=(doc.kind==='bank_in'?1:doc.kind==='bank_out'?-1:0)*doc.amount_pln*100;
+  if(!Number.isSafeInteger(expected)||!Number.isSafeInteger(actual)){
+   issues.push({code:'bank_amount_out_of_range',document_id:doc.id});
+  }else if(actual!==expected){
+   issues.push({code:'bank_source_mismatch',document_id:doc.id});
+  }
+ }
+ if(!model.reconciliation||typeof model.reconciliation!=='object'||Array.isArray(model.reconciliation)){
+  issues.push({code:'missing_reference_reconciliation'});
+ }else{
+  const referenceAttempts=Object.fromEntries(data.documents.map(doc=>[doc.id,{
+   lines:model.entries[doc.id].lines,tries:1
+  }]));
+  const closing=journalClosingPreview(data,referenceAttempts);
+  if(closing.progress.correct!==36||!closing.balanced)issues.push({code:'reference_not_balanced'});
+  for(const check of closing.checks)if(!check.matches)
+   issues.push({code:'reference_reconciliation_mismatch',field:check.key});
+ }
+ return {ok:issues.length===0,issues,checked_documents:data.documents.length};
+}
+
 /**
  * Przekrojowa kontrola czterech ćwiczeń D01–D36.
  * Czyta tylko zapisane odpowiedzi ucznia i prywatny manifest; niczego nie zatwierdza.
@@ -232,6 +267,7 @@ export function auditMonthWorkflow(scenario,state={}){
  const classification=scenarioSummary(data,readScenarioAnswers(state));
  const bank=checkBankExercise(data,readBankExercise(state));
  const journal=journalClosingPreview(data,readJournalAttempts(state,data));
+ const reference=inspectReferenceMonth(data);
  const completeJournal=journal.progress.attempted===36;
  const statementNetCents=scenarioSummary(data).bankNet*100;
  const journalBankCents=journal.checks.find(x=>x.key==='bank')?.actual_cents??null;
@@ -254,6 +290,7 @@ export function auditMonthWorkflow(scenario,state={}){
    detail:journal.model_reconciled?'Model uzgodniony':'Do uzgodnienia, nie jest to wynik podatkowy'}
  ];
  return {checks,passed:checks.filter(x=>x.passed).length,total:checks.length,
-  training_consistent:checks.every(x=>x.passed),bank_difference_cents:bankDifferenceCents,
+  training_consistent:checks.every(x=>x.passed)&&reference.ok,bank_difference_cents:bankDifferenceCents,
+  reference_integrity:reference.ok?'passed':'blocked',reference_issues:reference.issues,
   legal_review:'pending',real_two_account_e2e:'not_tested',independent_restore:'not_tested'};
 }

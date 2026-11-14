@@ -251,7 +251,7 @@ test('Niepełny miesiąc nie jest zamknięciem nawet przy równych stronach',()=
 });
 
 
-import {auditMonthWorkflow} from '../src/accounting/simulator-core.js';
+import {auditMonthWorkflow,inspectReferenceMonth} from '../src/accounting/simulator-core.js';
 function completeIntegratedFixture(){
  const manifest=structuredClone(sampleJournalManifest);
  manifest.documents=manifest.documents.map((d,i)=>({
@@ -307,4 +307,50 @@ test('Równe Wn/Ma nie wystarczą: wykrywana jest różnica banku z dokumentami'
  assert.equal(audit.checks.find(x=>x.key==='bank_vs_journal').passed,false);
  assert.equal(audit.bank_difference_cents,-800000);
  assert.equal(audit.training_consistent,false);
+});
+
+test('Wzorzec D01–D36: ruch bankowy jest przypisany do właściwych dokumentów',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const reference=inspectReferenceMonth(manifest);
+ assert.equal(reference.ok,true);
+ assert.equal(reference.checked_documents,36);
+ assert.deepEqual(reference.issues,[]);
+ const audit=auditMonthWorkflow(manifest,state);
+ assert.equal(audit.reference_integrity,'passed');
+ assert.equal(audit.training_consistent,true);
+});
+test('Wykrywa przeniesienie wpływu do obcego dowodu mimo 5/5 zgodnych etapów ucznia',()=>{
+ const {manifest}=completeIntegratedFixture();
+ const wrong=structuredClone(manifest);
+ const first=wrong.journal_practice_v1.entries.D01.lines;
+ wrong.journal_practice_v1.entries.D01.lines=wrong.journal_practice_v1.entries.D02.lines;
+ wrong.journal_practice_v1.entries.D02.lines=first;
+ let state=EMPTY();
+ for(const doc of wrong.documents){
+  state=withScenarioAnswer(state,wrong,doc.id,doc.kind);
+  state=withJournalAttempt(state,wrong,doc.id,wrong.journal_practice_v1.entries[doc.id].lines);
+ }
+ state=withBankExercise(state,wrong,{bank_in_cents:6800000,bank_out_cents:0,bank_net_cents:6800000});
+ const audit=auditMonthWorkflow(wrong,state);
+ assert.equal(audit.passed,5,'Stary wynik byłby myląco pozytywny');
+ assert.equal(audit.reference_integrity,'blocked');
+ assert.equal(audit.training_consistent,false);
+ assert.ok(audit.reference_issues.some(issue=>issue.code==='bank_source_mismatch'&&issue.document_id==='D01'));
+ assert.ok(audit.reference_issues.some(issue=>issue.code==='bank_source_mismatch'&&issue.document_id==='D02'));
+});
+test('Wzorzec z rozbieżną kwotą kontrolną nie może przejść kontroli',()=>{
+ const {manifest}=completeIntegratedFixture();
+ const wrong=structuredClone(manifest);
+ wrong.journal_practice_v1.reconciliation.bank=68001;
+ const quality=inspectReferenceMonth(wrong);
+ assert.equal(quality.ok,false);
+ assert.ok(quality.issues.some(issue=>issue.code==='reference_reconciliation_mismatch'&&issue.field==='bank'));
+});
+test('Ujemny fikcyjny wpływ lub wydatek jest odrzucony na wejściu',()=>{
+ const {manifest}=completeIntegratedFixture();
+ for(const k of ['bank_in','bank_out']){
+  const wrong=structuredClone(manifest);
+  wrong.documents[0].kind=k;wrong.documents[0].amount_pln=-1;
+  assert.throws(()=>readScenario(wrong));
+ }
 });
