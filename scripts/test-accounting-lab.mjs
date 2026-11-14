@@ -213,3 +213,39 @@ test('Test interfejsu: moduł pracowni importuje się bez błędu składni',asyn
  const ui=await import('../src/accounting/lab-ui.js');
  assert.equal(typeof ui.mountLab,'function');
 });
+
+
+import {journalClosingPreview} from '../src/accounting/simulator-core.js';
+test('Pełny fikcyjny miesiąc 36 dekretów tworzy zgodny bilans bez podwójnych wpływów',()=>{
+ const manifest=structuredClone(sampleJournalManifest);
+ manifest.journal_practice_v1.reconciliation={
+  bank:68000,receivables:8000,inventory:0,machine:0,trade_payables:0,loan:0,profit:0
+ };
+ let state=EMPTY();
+ for(const d of manifest.documents)state=withJournalAttempt(state,manifest,d.id,manifest.journal_practice_v1.entries[d.id].lines);
+ const report=journalClosingPreview(manifest,readJournalAttempts(state,manifest));
+ assert.equal(report.progress.attempted,36);assert.equal(report.progress.correct,36);
+ assert.equal(report.debit_cents,report.credit_cents);
+ assert.equal(report.assets_cents,7600000);assert.equal(report.liabilities_cents,0);assert.equal(report.equity_cents,7600000);
+ assert.equal(report.checks.length,7);assert.ok(report.checks.every(c=>c.matches));
+ assert.equal(report.model_reconciled,true);
+});
+test('Bilans próbny nie przechodzi przy zbilansowanej, lecz błędnej dekretacji',()=>{
+ const manifest=structuredClone(sampleJournalManifest);
+ manifest.journal_practice_v1.reconciliation={bank:68000,receivables:8000,inventory:0,machine:0,trade_payables:0,loan:0,profit:0};
+ let state=EMPTY();
+ for(const d of manifest.documents)state=withJournalAttempt(state,manifest,d.id,
+  d.id==='D01'?pair('130','201',6000000):manifest.journal_practice_v1.entries[d.id].lines);
+ const report=journalClosingPreview(manifest,readJournalAttempts(state,manifest));
+ assert.equal(report.progress.attempted,36);assert.equal(report.progress.correct,35);
+ assert.equal(report.debit_cents,report.credit_cents);
+ assert.equal(report.model_reconciled,false);
+ assert.ok(report.checks.some(c=>!c.matches));
+});
+test('Niepełny miesiąc nie jest zamknięciem nawet przy równych stronach',()=>{
+ const manifest=structuredClone(sampleJournalManifest);
+ manifest.journal_practice_v1.reconciliation={bank:68000,receivables:8000,inventory:0,machine:0,trade_payables:0,loan:0,profit:0};
+ const state=withJournalAttempt(EMPTY(),manifest,'D02',[]);
+ const report=journalClosingPreview(manifest,readJournalAttempts(state,manifest));
+ assert.equal(report.progress.attempted,1);assert.equal(report.model_reconciled,false);
+});
