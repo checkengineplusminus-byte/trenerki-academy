@@ -85,7 +85,7 @@ const initial=()=>({id:'00000000-0000-4000-a000-000000000012',user_id:user.id,
  state:{schema_version:1,invoices:[],bank:[],journals:[],matches:[]}});
 const browser=await chromium.launch({headless:true});let checks=0;
 async function pass(name,work){await work();checks++;console.log('OK '+checks+' — '+name);}
-async function fixture(viewport){
+async function fixture(viewport,manifestOverride=manifest){
  const context=await browser.newContext({viewport,acceptDownloads:true,serviceWorkers:'block'});
  await context.addInitScript(({user})=>{
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({
@@ -110,7 +110,7 @@ async function fixture(viewport){
   if(url.pathname==='/rest/v1/rpc/ta_accounting_overview')
    return reply({is_editor:true,active_program:{sections:10,topics:100},published:false});
   if(url.pathname==='/rest/v1/ta_accounting_core_materials_v3')
-   return reply({material:{scenario:manifest}});
+   return reply({material:{scenario:manifestOverride}});
   if(url.pathname==='/rest/v1/ta_accounting_lab_workspaces')
    return reply(url.searchParams.has('id')?workspace:[{
     id:workspace.id,name:workspace.name,version:workspace.version,updated_at:workspace.updated_at}]);
@@ -137,6 +137,27 @@ async function saved(f,prior){
 const tab=page=>page.locator('button[data-action="tab"][data-id="simulator"]');
 const choose=(page,selector,value)=>page.locator(selector).selectOption(value);
 try{
+ const corrupt=structuredClone(manifest);
+ // A deliberately malicious-looking yet balanced internal bank posting
+ // retains exactly the same net bank amount and overall trial balance.
+ // Early preflight must reject it before any learner work is stored.
+ corrupt.journal_practice_v1.entries.D01.lines.push(
+  {account:'130',debit_cents:100,credit_cents:0},
+  {account:'130',debit_cents:0,credit_cents:100}
+ );
+ assert.equal(inspectReferenceMonth(corrupt).ok,false);
+ const blocked=await fixture({width:1280,height:900},corrupt);
+ await blocked.page.goto(origin+'/biuro-ksiegowe');
+ await tab(blocked.page).waitFor();
+ await tab(blocked.page).click();
+ await pass('Błędny wzorzec blokuje rozpoczęcie miesiąca bez naruszania zapisów',async()=>{
+  await blocked.page.getByText('Wzorzec D01–D36 zawiera niespójności techniczne',{exact:false}).waitFor();
+  assert.equal(await blocked.page.locator('#sim-doc').count(),0);
+  assert.equal(blocked.saves(),0);
+  assert.equal(blocked.model().version,1);
+  assert.deepEqual(blocked.errors,[]);
+ });
+ await blocked.context.close();
  const f=await fixture({width:1280,height:960});
  await f.page.goto(origin+'/biuro-ksiegowe');
  await tab(f.page).waitFor();
