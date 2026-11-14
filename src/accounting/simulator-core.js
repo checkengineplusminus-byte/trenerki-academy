@@ -65,3 +65,38 @@ export function scenarioSummary(scenario,answers={}){
  }
  return {total:36,attempted,correct,bankIn,bankOut,bankNet:bankIn-bankOut};
 }
+
+
+/**
+ * Drugi etap D01–D36: samodzielne uzgodnienie przepływów bankowych.
+ * Kwoty zapisujemy wyłącznie w groszach, a odpowiedzi liczymy z chronionego manifestu.
+ * Ta próba NIE oznacza zaksięgowania wyciągu ani ukończenia symulatora.
+ */
+const BANK_KEYS=Object.freeze(['bank_in_cents','bank_out_cents','bank_net_cents']);
+const isBankCents=value=>Number.isSafeInteger(value)&&Math.abs(value)<=100000000000;
+function validBankExercise(x){
+ return !!x&&BANK_KEYS.every(key=>isBankCents(x[key]))&&x.bank_in_cents>=0&&x.bank_out_cents>=0;
+}
+export function readBankExercise(state){
+ const saved=state?.simulator_bank_exercise_v1;
+ if(saved?.scenario_id!==SCENARIO_ID||!validBankExercise(saved))return null;
+ return {bank_in_cents:saved.bank_in_cents,bank_out_cents:saved.bank_out_cents,
+  bank_net_cents:saved.bank_net_cents,attempts:Number.isSafeInteger(saved.attempts)&&saved.attempts>0?saved.attempts:1};
+}
+export function withBankExercise(state,scenario,entry){
+ readScenario(scenario);
+ if(!validBankExercise(entry))throw new Error('Podaj trzy kwoty w PLN: wpływy i wypływy dodatnie oraz saldo netto ze znakiem.');
+ const prev=readBankExercise(state);
+ return {...state,simulator_bank_exercise_v1:{
+  scenario_id:SCENARIO_ID,bank_in_cents:entry.bank_in_cents,bank_out_cents:entry.bank_out_cents,
+  bank_net_cents:entry.bank_net_cents,attempts:Math.min(99999,(prev?.attempts||0)+1)}};
+}
+export function checkBankExercise(scenario,entry){
+ const summary=scenarioSummary(scenario);
+ if(!validBankExercise(entry))return {attempted:false,correct:false,consistent:false,checks:[]};
+ const expected={bank_in_cents:summary.bankIn*100,bank_out_cents:summary.bankOut*100,
+  bank_net_cents:summary.bankNet*100};
+ const checks=BANK_KEYS.map(key=>({key,correct:entry[key]===expected[key]}));
+ return {attempted:true,correct:checks.every(c=>c.correct),
+  consistent:entry.bank_in_cents-entry.bank_out_cents===entry.bank_net_cents,checks};
+}
