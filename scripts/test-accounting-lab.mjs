@@ -281,6 +281,20 @@ test('Etapy D01–D36: zgodność rozpoznania, banku, dziennika i bilansu',()=>{
  assert.equal(audit.real_two_account_e2e,'not_tested');
  assert.equal(audit.independent_restore,'not_tested');
 });
+test('D01-D36: pełny fikcyjny miesiąc przeżywa serializację stanu bez utraty pięciu kontroli',()=>{
+ const {manifest,state}=completeIntegratedFixture(),before=JSON.stringify(state);
+ const restored=JSON.parse(before);
+ const result=auditMonthWorkflow(manifest,restored);
+ assert.equal(result.passed,5);
+ assert.equal(result.training_consistent,true);
+ assert.equal(result.bank_difference_cents,0);
+ assert.equal(result.real_two_account_e2e,'not_tested');
+ assert.equal(JSON.stringify(state),before);
+ const changed=withScenarioAnswer(restored,manifest,'D01','sale');
+ assert.equal(auditMonthWorkflow(manifest,changed).training_consistent,false);
+ assert.equal(JSON.stringify(state),before,'Nowa próba nie może zmieniać wcześniejszego stanu');
+});
+
 test('Przekrojowa kontrola nie uznaje pustych lub częściowych prób',()=>{
  const {manifest}=completeIntegratedFixture();
  const audit=auditMonthWorkflow(manifest,EMPTY());
