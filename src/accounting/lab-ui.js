@@ -9,7 +9,7 @@ const select=(group,key,label,value,options)=>`<div><label for="${group}-${key}"
 const button=(action,label,id='',cls='')=>`<button type="button" data-action="${action}" data-id="${e(id)}" class="${cls}">${e(label)}</button>`;
 const download=(name,text,type='application/json')=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 export function mountLab(root,db){
- let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='';
+ let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null;
  const key=()=>`trenerki-lab-draft-v1:${user?.id}:${ws?.id}`;
  function blankDrafts(){return {invoice:invBlank(ws.name,'sale',ws.state.invoices.filter(i=>i.kind==='sale').length+1),journal:journalBlank(),match:{bank_id:'',invoice_id:'',amount:''},question:{text:''}};}
  function restoreDrafts(){drafts=blankDrafts();try{const raw=localStorage.getItem(key());if(raw){const old=JSON.parse(raw);if(old?.invoice?.lines&&old?.journal?.lines)drafts={...drafts,...old};}}catch{localWarning='Nie udało się odczytać lokalnego szkicu. Dane zapisane w bazie pozostają dostępne.';}}
@@ -26,7 +26,7 @@ export function mountLab(root,db){
     if(workspaces.length)await open(workspaces[0].id);
   }catch(x){error=x.message||'Nie udało się wczytać biura.';}finally{render();}
  }
- async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
+ async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
  async function commit(next){
   if(!canWrite)throw new Error('Brak aktywnego dostępu do zapisu.');
   const r=await db.rpc('ta_accounting_lab_save',{workspace_id:ws.id,expected_version:ws.version,next_state:next});
@@ -50,7 +50,7 @@ export function mountLab(root,db){
  function bankExercise(){
   if(!scenario||!ws)return '';
   const saved=readBankExercise(ws.state),result=checkBankExercise(scenario,saved);
-  const val=key=>saved?decimal(saved[key]):'';
+  const val=key=>bankDraft?bankDraft[key]:(saved?decimal(saved[key]):'');
   const feedback=result.attempted?'<p class="'+(result.correct?'notice':'error')+'">'+
    e(result.correct?'Wszystkie trzy kwoty się zgadzają. To zaliczenie uzgodnienia przepływów, nie księgowań ani zamknięcia miesiąca.':
    'Sprawdź sumy. '+result.checks.filter(x=>!x.correct).map(x=>({
@@ -114,12 +114,15 @@ export function mountLab(root,db){
     return;
    }
    if(a==='sim-bank-save'){
+    const values={bank_in_cents:root.querySelector('#sim-bank-in')?.value.trim()||'',
+     bank_out_cents:root.querySelector('#sim-bank-out')?.value.trim()||'',
+     bank_net_cents:root.querySelector('#sim-bank-net')?.value.trim()||''};
+    bankDraft={...values};
     await run(async()=>{
      if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');
-     const data={bank_in_cents:cents(root.querySelector('#sim-bank-in')?.value.trim()||''),
-      bank_out_cents:cents(root.querySelector('#sim-bank-out')?.value.trim()||''),
-      bank_net_cents:cents(root.querySelector('#sim-bank-net')?.value.trim()||'')};
-     await commit(withBankExercise(ws.state,scenario,data));
+     const data={bank_in_cents:cents(values.bank_in_cents),bank_out_cents:cents(values.bank_out_cents),
+      bank_net_cents:cents(values.bank_net_cents)};
+     await commit(withBankExercise(ws.state,scenario,data));bankDraft=null;
     });
     return;
    }
@@ -142,7 +145,7 @@ export function mountLab(root,db){
   if(a==='remove-journal-line'&&drafts.journal.lines.length>1)drafts.journal.lines.splice(Number(id),1);
   keepDrafts();render();
  }
- function inputEvent(event){const t=event.target;if(!t.dataset.group||!ws)return;let obj=drafts[t.dataset.group];const path=t.dataset.field.split('.');for(const part of path.slice(0,-1))obj=obj[part];obj[path.at(-1)]=t.value;keepDrafts();}
+ function inputEvent(event){const t=event.target;if(['sim-bank-in','sim-bank-out','sim-bank-net'].includes(t.id)){const key={'sim-bank-in':'bank_in_cents','sim-bank-out':'bank_out_cents','sim-bank-net':'bank_net_cents'}[t.id];bankDraft={bank_in_cents:'',bank_out_cents:'',bank_net_cents:'',...(bankDraft||readBankExercise(ws.state)||{})};bankDraft[key]=t.value;return;}if(!t.dataset.group||!ws)return;let obj=drafts[t.dataset.group];const path=t.dataset.field.split('.');for(const part of path.slice(0,-1))obj=obj[part];obj[path.at(-1)]=t.value;keepDrafts();}
  async function changeEvent(event){const t=event.target;if(t.id==='sim-doc'&&scenario){scenarioDoc=t.value;render();return;}if(t.id==='workspace'&&t.value)await run(()=>open(t.value));if(t.id==='lab-file'&&t.files?.[0]){const f=t.files[0];await run(async()=>{if(f.size>1000000)throw new Error('Limit pliku wynosi 1 MB.');preview=parseBankCSV(await f.text(),ws.state.bank);});}}
  const leave=ev=>{if(busy){ev.preventDefault();ev.returnValue='';}};
  root.addEventListener('click',click);root.addEventListener('submit',submit);root.addEventListener('input',inputEvent);root.addEventListener('change',changeEvent);window.addEventListener('beforeunload',leave);
