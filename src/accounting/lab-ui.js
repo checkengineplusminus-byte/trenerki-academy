@@ -89,6 +89,21 @@ export function mountLab(root,db){
   }
   return journalDrafts[id];
  }
+ function nextUnresolvedDocument(current,stage){
+  if(!scenario||!ws)return null;
+  const docs=scenario.documents;
+  if(!Array.isArray(docs)||!docs.length)return null;
+  let needsWork;
+  if(stage==='journal'){
+   const attempts=readJournalAttempts(ws.state,scenario);
+   needsWork=d=>!checkJournalAttempt(scenario,d.id,attempts[d.id]).correct;
+  }else{
+   const answers=readScenarioAnswers(ws.state);
+   needsWork=d=>answers[d.id]!==d.kind;
+  }
+  const start=docs.findIndex(d=>d.id===current)+1;
+  return docs.slice(start).find(needsWork)||docs.slice(0,start).find(needsWork)||null;
+ }
  function journalPractice(){
   if(!scenario||!ws)return '';
   let model,attempts;
@@ -113,6 +128,7 @@ export function mountLab(root,db){
   return '<section class="card"><span class="pill">ETAP 3 · DZIENNIK Wn/Ma W SYMULACJI</span><h2>Zadekretuj dokumenty D01–D36</h2>'+
    '<p>Wybierz konto, stronę Wn lub Ma i kwotę dla każdego wiersza. Wn i Ma muszą się równoważyć, ale sama równość nie wystarczy. To oddzielne ćwiczenie: nie dopisuje automatycznie operacji do Twojego głównego dziennika i nie wysyła nic do urzędów.</p>'+
    '<p class="notice">Odpowiedzi zapisane: <strong>'+summary.attempted+'/36</strong> · poprawne dekrety: <strong>'+summary.correct+'/36</strong>. W modelu '+summary.reference_posts+' dokumentów ma zapis księgowy, a reszta pełni rolę dowodu lub zestawienia.</p>'+
+   '<p class="small muted">Po poprawnej dekretacji przejdziesz do następnego niezaliczonego dowodu. W razie błędu pozostaniesz przy bieżącym zadaniu.</p>'+ 
    '<p class="small muted">Fikcyjny plan kont i kwoty bez VAT oraz prawnych naliczeń ZUS/CIT. Nie stosuj tych dekretów do prawdziwej firmy. Wymagana recenzja księgowego i test na dwóch kontach.</p>'+
    '<label for="sim-journal-doc">Wybierz dokument</label><select id="sim-journal-doc">'+options+'</select>'+
    '<div class="card"><h3>'+e(doc.id+' · '+doc.title)+'</h3><p>Data '+e(doc.date)+' · kwota dokumentu '+money(doc.amount_pln*100)+'.</p>'+fields+
@@ -309,6 +325,7 @@ export function mountLab(root,db){
   return '<section class="card"><span class="pill">STYCZEŃ 2026 · FIKCYJNA SPÓŁKA</span><h2>Rozpoznaj 36 dokumentów z jednego miesiąca</h2>'+
    '<p>To pierwszy działający etap praktyki: rozpoznanie źródła, a nie kompletne księgowanie ani egzamin. Wszystkie odpowiedzi zapisują się w Twoim prywatnym biurze po naciśnięciu przycisku. Nie wysyłamy nic do banku, KSeF ani urzędu.</p>'+
    '<p class="notice">Odpowiedzi zapisane: <strong>'+summary.attempted+'/36</strong> · poprawnie rozpoznane: <strong>'+summary.correct+'/36</strong>. Nie stanowi to odbioru pełnego symulatora D01–D36.</p>'+
+   '<p class="small muted">Po poprawnej odpowiedzi przejdziesz do następnego dokumentu wymagającego pracy. Błędna odpowiedź pozostaje na ekranie do poprawienia.</p>'+ 
    '<label for="sim-doc">Wybierz dokument</label><select id="sim-doc">'+docList+'</select>'+
    '<div class="card"><h3>'+e(doc.id+' · '+doc.title)+'</h3><p>Data: '+e(doc.date)+' · kwota modelowa: '+money(doc.amount_pln*100)+'. Zastanów się, co ten dowód potwierdza. Sam przelew nie jest ponownym przychodem ani kosztem.</p>'+
    '<label for="sim-kind">Jaka jest rola tego dokumentu?</label><select id="sim-kind">'+kindList+'</select><div class="actions">'+
@@ -388,7 +405,15 @@ export function mountLab(root,db){
   }
    if(a==='sim-save'){
     const choice=root.querySelector('#sim-kind')?.value||'';
-    await run(async()=>{if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');await commit(withScenarioAnswer(ws.state,scenario,id,choice));});
+    await run(async()=>{
+     if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');
+     const current=scenario.documents.find(d=>d.id===id);
+     await commit(withScenarioAnswer(ws.state,scenario,id,choice));
+     if(current&&choice===current.kind){
+      const next=nextUnresolvedDocument(id,'classification');
+      if(next)scenarioDoc=next.id;
+     }
+    });
     return;
    }
    if(a==='sim-bank-save'){
@@ -422,6 +447,11 @@ export function mountLab(root,db){
       if(!lines.length)throw new Error('Aby potwierdzić brak dekretu, wybierz osobny przycisk. W przeciwnym razie uzupełnij konta i kwoty.');
      }
      await commit(withJournalAttempt(ws.state,scenario,selected,lines));
+     const attempts=readJournalAttempts(ws.state,scenario);
+     if(checkJournalAttempt(scenario,selected,attempts[selected]).correct){
+      const next=nextUnresolvedDocument(selected,'journal');
+      if(next)journalDoc=next.id;
+     }
     });
     return;
    }
