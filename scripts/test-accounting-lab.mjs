@@ -470,7 +470,7 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
 
-import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview} from '../src/accounting/payroll-practice.js';
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary} from '../src/accounting/payroll-practice.js';
 const payrollCase=(id='P01')=>({
  employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
  social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
@@ -545,4 +545,55 @@ test('Płace: pusty HR nie może utworzyć listy płac; definicje pól są kompl
  assert.equal(Object.keys(PAYROLL_FIELDS).length,6);
  assert.throws(()=>withPayrollPractice(EMPTY(),payrollCase()));
  assert.equal(payrollReview(EMPTY(),'P01').recorded,false);
+});
+
+test('Płace: zestawienie płynności dwóch osób bez podwójnego liczenia potrąceń',()=>{
+ const initial=payrollState(),before=JSON.stringify(initial);
+ const a=withPayrollPractice(initial,payrollCase('P01'));
+ const b=withPayrollPractice(a,payrollCase('P02'));
+ const result=payrollPeriodSummary(b);
+ assert.equal(JSON.stringify(initial),before);
+ assert.deepEqual(result.excluded_employee_ids,[]);
+ assert.equal(result.periods.length,1);
+ const jan=result.periods[0];
+ assert.equal(jan.period,'2026-01');
+ assert.equal(jan.employee_count,2);
+ assert.equal(jan.gross_cents,830000);
+ assert.equal(jan.deductions_cents,172000);
+ assert.equal(jan.net_cents,658000);
+ assert.equal(jan.paid_cents,551000);
+ assert.equal(jan.outstanding_cents,107000);
+ assert.equal(jan.employer_extra_cents,140000);
+ assert.equal(jan.total_employer_cost_cents,970000);
+ assert.equal(jan.net_cents,jan.paid_cents+jan.outstanding_cents);
+ assert.equal(result.bank_match,'not_tested');
+ assert.equal(result.legal_rates,'not_verified');
+});
+test('Płace: różnych miesięcy nie sumujemy w jednej tabeli płynności',()=>{
+ const first=withPayrollPractice(payrollState(),payrollCase('P01'));
+ const p02=readPersonnelCases(first).P02;
+ const extended=withPersonnelCase(first,{...p02,ends_on:'2026-02-28'});
+ const state=withPayrollPractice(extended,{...payrollCase('P02'),period:'2026-02',paid_on:'2026-02-28'});
+ const rows=payrollPeriodSummary(state).periods;
+ assert.deepEqual(rows.map(x=>x.period),['2026-01','2026-02']);
+ assert.deepEqual(rows.map(x=>x.employee_count),[1,1]);
+ assert.equal(rows[0].outstanding_cents,107000);
+ assert.equal(rows[1].outstanding_cents,0);
+});
+test('Płace: zmieniony pracownik wykluczony z płynności do czasu korekty',()=>{
+ const base=payrollState();
+ const a=withPayrollPractice(withPayrollPractice(base,payrollCase('P01')),payrollCase('P02'));
+ const changed=withPersonnelCase(a,{...readPersonnelCases(a).P01,monthly_gross_cents:530000});
+ const before=JSON.stringify(changed);
+ const res=payrollPeriodSummary(changed);
+ assert.deepEqual(res.excluded_employee_ids,['P01']);
+ assert.equal(res.periods.length,1);
+ assert.equal(res.periods[0].gross_cents,310000);
+ assert.equal(JSON.stringify(changed),before);
+});
+test('Płace: pusty moduł nie udaje potwierdzenia przelewu',()=>{
+ const data=payrollPeriodSummary(EMPTY());
+ assert.deepEqual(data.periods,[]);
+ assert.deepEqual(data.excluded_employee_ids,[]);
+ assert.equal(data.cashflow_type,'declared_training_payments_not_bank_verified');
 });

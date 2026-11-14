@@ -71,3 +71,36 @@ export function payrollReview(state,id){
   message:eligible?'Bilans zadania liczbowego. Kwoty składek/PIT wprowadzono ręcznie, nie wyliczono według prawa.':
     'Zmieniono kartotekę albo daty. Popraw kartę płac przed uznaniem jej za spójną.'};
 }
+
+/**
+ * Zestawienie środków potrzebnych do wypłat z zapisanych ćwiczeń.
+ * Nie łączy różnych miesięcy, odrzuca rozrachunki niezgodne z kartoteką,
+ * nie odczytuje banku ani nie udaje potwierdzenia wypłaty czy stawek.
+ * Odczyt wyłącznie; nie modyfikuje istniejącego stanu użytkownika.
+ */
+export function payrollPeriodSummary(state){
+ const cases=readPayrollPractices(state),people=readPersonnelCases(state);
+ const groups=new Map(),excluded_employee_ids=[];
+ for(const id of PERSONNEL_IDS){
+  const c=cases[id];
+  if(!c)continue;
+  if(!eligibleEmployee(people[id],c)){excluded_employee_ids.push(id);continue;}
+  if(!groups.has(c.period))groups.set(c.period,{
+   period:c.period,employee_count:0,gross_cents:0,deductions_cents:0,
+   net_cents:0,paid_cents:0,outstanding_cents:0,employer_extra_cents:0,
+   total_employer_cost_cents:0
+  });
+  const x=groups.get(c.period),m=payrollMath(c);
+  x.employee_count++;
+  x.gross_cents+=c.gross_cents;
+  x.deductions_cents+=m.deductions_cents;
+  x.net_cents+=m.net_cents;
+  x.paid_cents+=c.paid_cents;
+  x.outstanding_cents+=m.outstanding_cents;
+  x.employer_extra_cents+=c.employer_extra_cents;
+  x.total_employer_cost_cents+=m.total_employer_cost_cents;
+ }
+ return {periods:[...groups.values()].sort((a,b)=>a.period.localeCompare(b.period)),
+  excluded_employee_ids,bank_match:'not_tested',legal_rates:'not_verified',
+  cashflow_type:'declared_training_payments_not_bank_verified'};
+}
