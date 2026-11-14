@@ -267,7 +267,12 @@ export function mountLab(root,db){
   const previous=saved[chosen],review=payrollReview(ws.state,chosen);
   const liquidity=payrollPeriodSummary(ws.state);
   const lifecycle=PERSONNEL_IDS.map(id=>payrollLifecycleChecklist(ws.state,id));
-  const lifecycleRows=lifecycle.flatMap(person=>person.steps.map(step=>'<tr><td>'+e(person.employee_id)+'</td><td>'+e(step.label)+'</td><td>'+e(step.status)+'</td><td>'+e(step.detail)+'</td></tr>'));
+  const lifecycleStateLabels={recorded:'Kartoteka zapisana',missing:'Brak zapisu',
+   blocked:'Najpierw wykonaj wcześniejszy etap',pending:'Wymaga działania',
+   marked_by_student:'Szkic oznaczony przez ucznia',arithmetically_consistent:'Zgodne liczbowo',
+   stale:'Nieaktualne dane',csv_matched:'Zgodne z fikcyjnym CSV',
+   amount_reconciled:'Wypłata netto uzgodniona',not_applicable:'Nie dotyczy tego przypadku'};
+  const lifecycleRows=lifecycle.flatMap(person=>person.steps.map(step=>'<tr><td>'+e(person.employee_id)+'</td><td>'+e(step.label)+'</td><td>'+e(lifecycleStateLabels[step.status]||'Wymaga kontroli')+'</td><td>'+e(step.detail)+'</td></tr>'));
   const lifecycleNext=lifecycle.map(person=>'<p><strong>'+e(person.employee_id)+':</strong> '+e(person.next_action)+'</p>').join('');
    const posting=payrollJournalPreview(ws.state,chosen);
   const current=payrollDraft?.employee_id===chosen?payrollDraft:previous||{
@@ -345,7 +350,7 @@ export function mountLab(root,db){
     '<h3>Pełniejsza ścieżka: zatrudnienie → płace → CSV → odejście</h3>'+
    '<p>Sprawdź, czego brakuje w kolejnych czynnościach dwóch fikcyjnych pracowników. Zielona kontrola liczb lub zaznaczony szkic nie są potwierdzeniem legalności dokumentów, prawdziwej wypłaty ani końca całego kursu.</p>'+
    table(['Osoba','Etap','Stan ćwiczenia','Co sprawdzić lub zrobić'],lifecycleRows)+lifecycleNext+
-   '<p class="small muted">Prawo i formularze: NOT_TESTED; prawdziwy bank: NOT_VERIFIED; zapisy Wn/Ma: nie są zatwierdzane przez ten raport; E2E dwóch kont: NOT_TESTED. Raport tylko odczytuje Twoje fikcyjne biuro, bez zmiany faktur, banku i postępu.</p>'+
+   '<p class="small muted">Prawo i formularze: kontrola niewykonana; prawdziwy bank: niezweryfikowany; zapisy Wn/Ma: nie są zatwierdzane przez ten raport; test dwóch zalogowanych kont: niewykonany. Raport tylko odczytuje Twoje fikcyjne biuro, bez zmiany faktur, banku i postępu.</p>'+
    '<h3>Podsumowanie dwóch osób</h3>'+table(['Osoba','Miesiąc','Brutto','Netto','Pozostało','Status'],rows)+
    '<h3>Płynność wypłat według miesiąca</h3>'+
    table(['Miesiąc','Osoby','Brutto','Netto','Oznaczone wypłaty','Pozostało do wypłaty','Powiązane z fikcyjnym CSV','Całkowity koszt modelowy'],liquidityRows)+
