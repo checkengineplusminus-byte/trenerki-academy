@@ -338,6 +338,31 @@ function completeIntegratedFixture(){
  state=withBankExercise(state,manifest,{bank_in_cents:6800000,bank_out_cents:0,bank_net_cents:6800000});
  return {manifest,state};
 }
+import {monthTrainingReportHTML} from '../src/accounting/month-training-report.js';
+test('Raport D01–D36 pobiera się dopiero po pełnym uzgodnieniu modelu',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const html=monthTrainingReportHTML(manifest,state);
+ assert.match(html,/RAPORT SZKOLENIOWY|Raport szkoleniowy/);
+ assert.ok(html.includes('TYLKO DANE FIKCYJNE'));
+ assert.ok(html.includes('68\u00a0000,00')||html.includes('68 000,00')||html.includes('68&#8239;000,00'));
+ assert.equal((html.match(/<tr><td>D\d\d/g)||[]).length,36);
+ assert.ok(html.includes('nie zastępuje opinii księgowego'));
+ assert.throws(()=>monthTrainingReportHTML(manifest,EMPTY()));
+ const partial=withScenarioAnswer(EMPTY(),manifest,'D01','bank_in');
+ assert.throws(()=>monthTrainingReportHTML(manifest,partial));
+});
+test('Raport nie wykonuje HTML ani skryptów pochodzących z dokumentów',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const polluted=structuredClone(manifest);
+ polluted.documents[0].title='<script>alert(9)</script>';
+ polluted.company='<img src=x onerror=alert(9)>';
+ const html=monthTrainingReportHTML(polluted,state);
+ assert.ok(!html.includes('<script>alert'));
+ assert.ok(!html.includes('<img src=x'));
+ assert.ok(html.includes('&lt;script&gt;'));
+ assert.ok(html.includes('&lt;img'));
+});
+
 test('Etapy D01–D36: zgodność rozpoznania, banku, dziennika i bilansu',()=>{
  const {manifest,state}=completeIntegratedFixture();
  const audit=auditMonthWorkflow(manifest,state);
