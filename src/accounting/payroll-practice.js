@@ -3,7 +3,7 @@
  * Bez naliczania ustawowych składek, podatku, terminów ani wysyłek.
  * Oddzielny klucz zachowuje pełną zgodność ze starszą kartoteką pracowników.
  */
-import {PERSONNEL_IDS,readPersonnelCases} from './personnel-practice.js';
+import {PERSONNEL_IDS,readPersonnelCases,personnelDraftReview,PERSONNEL_FLAGS} from './personnel-practice.js';
 const STORE='simulator_payroll_v1',SCENARIO='core-v3-payroll-training-2026-01-v1';
 export const PAYROLL_FIELDS=Object.freeze({
  social_cents:'Składki społeczne pracownika – kwota z zadania',
@@ -209,4 +209,71 @@ export function payrollJournalPreview(state,employeeId){
   ledger_posted:false,actual_bank_verified:false,legal_verified:false,
   disclaimer:'Propozycja kont do symulacji; klasyfikacja pozostałych potrąceń, dodatkowych kosztów pracodawcy i zgodność z prawem wymagają dokumentów i recenzji. Nie zapisano żadnego dekretu.'
  };
+}
+
+
+/**
+ * Kontrola spójności cyklu fikcyjnego pracownika: umowa -> dokumenty ->
+ * lista płac -> wypłata -> rozliczenie przy odejściu.
+ *
+ * Jest to nawigacja po zapisanych czynnościach ucznia, NIE kontrola:
+ * ważności umowy, stawek ZUS/PIT, prawdziwego przelewu, dekretu księgowego,
+ * deklaracji ani autoryzowanego testu E2E. Nie mutuje żadnych danych.
+ */
+export function payrollLifecycleChecklist(state,employeeId){
+ if(!PERSONNEL_IDS.includes(employeeId))
+  return {employee_id:employeeId,steps:[],next_action:'Wybierz fikcyjną osobę P01 lub P02.',
+   ready_for_training_review:false,legal_review:'not_tested',real_bank:'not_verified',
+   actual_documents:'not_verified',ledger_posted:false,real_e2e:'not_tested'};
+ const person=readPersonnelCases(state)[employeeId];
+ const wage=readPayrollPractices(state)[employeeId];
+ const drafts=personnelDraftReview(person);
+ const report=payrollReview(state,employeeId);
+ const bank=payrollBankMatch(state,employeeId);
+ const hasTermination=!!person?.ends_on;
+ const requiredExit=['exit_notice_draft','final_settlement_draft','handover_draft'];
+ const exitMissing=hasTermination?requiredExit.filter(key=>person.document_drafts[key]!==true):[];
+ const prepMissing=person?['contract_draft','onboarding_draft','payroll_draft']
+  .filter(key=>person.document_drafts[key]!==true):[];
+ const eligible=!!(wage&&report.eligible);
+ const settled=eligible&&report.outstanding_cents===0&&wage.paid_cents>0;
+ const steps=[
+  {key:'personnel',label:'Fikcyjna kartoteka i chronologia umowy',
+   status:person?'recorded':'missing',
+   detail:person?'Zapisano daty i miesięczne brutto. Nie zweryfikowano ważności umowy.':'Najpierw zapisz fikcyjną osobę w zakładce Kadry.'},
+  {key:'documents',label:'Projekty dokumentów kadrowych',
+   status:!person?'blocked':prepMissing.length?'pending':'marked_by_student',
+   detail:!person?'Brak kartoteki.':prepMissing.length?
+    'Oznacz projekty: '+prepMissing.map(k=>PERSONNEL_FLAGS[k]).join(', ')+'.':
+    'Projekty oznaczone przez kursanta; treści dokumentów nie oceniono.'},
+  {key:'payroll',label:'Fikcyjna lista płac i rachunek brutto/netto',
+   status:!person?'blocked':!wage?'missing':eligible?'arithmetically_consistent':'stale',
+   detail:!person?'Najpierw utwórz kartotekę.':!wage?
+    'Wpisz kwoty z zadania i zapisz listę płac.':!eligible?
+    'Karta płac jest niezgodna z datami lub brutto kartoteki.':
+    'Uzgodniono ręcznie podane kwoty, nie naliczono podatków ani ZUS.'},
+  {key:'bank',label:'Zgodność wypłaty z jedną pozycją fikcyjnego CSV',
+   status:!eligible?'blocked':bank.status==='matched_training_csv'?'csv_matched':'pending',
+   detail:!eligible?'Najpierw popraw listę płac.':bank.status==='matched_training_csv'?
+    'Zgodne ID, data, kierunek i kwota fikcyjnego wyciągu. Nie potwierdza prawdziwego banku.':
+    'Sprawdź CSV i powiązanie wypłaty: '+bank.status+'.'},
+  {key:'settlement',label:'Rozliczenie całej należnej kwoty netto',
+   status:!eligible?'blocked':settled?'amount_reconciled':'pending',
+   detail:!eligible?'Brak spójnej karty płac.':settled?
+    'Netto równe sumie deklarowanej wypłaty; zweryfikuj osobno dekret Wn/Ma.':
+    'W ćwiczeniu pozostaje do rozliczenia '+(report.outstanding_cents/100).toFixed(2)+' PLN.'},
+  {key:'exit',label:'Projekty przy zakończeniu zatrudnienia',
+   status:!person?'blocked':!hasTermination?'not_applicable':exitMissing.length?'pending':'marked_by_student',
+   detail:!person?'Brak kartoteki.':!hasTermination?'Nie wpisano daty odejścia w fikcyjnym przykładzie.':
+    exitMissing.length?'Brakuje: '+exitMissing.map(k=>PERSONNEL_FLAGS[k]).join(', ')+'.':
+    'Oznaczono trzy projekty, lecz nie oceniono odpraw, urlopu, terminów ani formularzy.'}
+ ];
+ const satisfactory=new Set(['recorded','marked_by_student','arithmetically_consistent','csv_matched','amount_reconciled','not_applicable']);
+ const first=steps.find(step=>!satisfactory.has(step.status));
+ return {employee_id:employeeId,steps,next_action:first?first.detail:
+  'Przejdź do weryfikacji dekretów, dokumentów i przepisów; brak zaliczenia końcowego.',
+  ready_for_training_review:steps.every(step=>satisfactory.has(step.status)),
+  training_documents_marked:drafts.recorded&&drafts.missing.length===0,
+  legal_review:'not_tested',real_bank:'not_verified',actual_documents:'not_verified',
+  ledger_posted:false,real_e2e:'not_tested'};
 }
