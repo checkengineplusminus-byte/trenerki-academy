@@ -39,8 +39,36 @@ export function inspect(s){
      entity:'bank',id:bankId,severity:'błąd'});
   }
  }
+ // Sprawdzamy aktywne źródła dekretów bez zmiany danych kursanta.
+ // Dwa zbilansowane księgowania tego samego dowodu mogą zawyżyć obroty.
+ const sourceIssues=[];
+ for(const [kind,known] of [
+  ['invoice',new Set((s.invoices||[]).map(i=>i.id))],
+  ['bank',new Set((s.bank||[]).map(b=>b.id))]
+ ]){
+  const linked=new Map();
+  for(const entry of posted){
+   if(entry.source_type!==kind)continue;
+   if(!known.has(entry.source_id)){
+    sourceIssues.push({code:'orphan_'+kind+'_posting',
+     title:'Dekret bez dokumentu źródłowego',
+     text:'Sprawdź źródło tego zapisu, nawet jeśli Wn równa się Ma. Dziennik nie został automatycznie zmieniony.',
+     entity:'journal',id:entry.id,severity:'błąd'});
+    continue;
+   }
+   linked.set(entry.source_id,[...(linked.get(entry.source_id)||[]),entry.id]);
+  }
+  for(const [source,entries] of linked){
+   // Płace mają własny, dokładniejszy komunikat o powieleniu przelewu.
+   if(entries.length>1&&!(kind==='bank'&&salaryBank.has(source)))
+    sourceIssues.push({code:'duplicate_'+kind+'_posting',
+     title:'Wiele aktywnych dekretów jednego dokumentu',
+     text:'Ten sam dowód ma '+entries.length+' aktywne zapisy. Sprawdź podwójne ujęcie; ewentualna korekta wymaga jawnego storna.',
+     entity:kind,id:source,severity:'błąd'});
+  }
+ }
  return [...baseInspect(s).filter(i=>
    !(i.code==='invoice_accounts'&&cleared.has(i.id))&&
    !(i.code==='unmatched_bank'&&salaryBank.has(i.id))),
-   ...assetsControl(s),...inspectInvoiceBankMatches(s),...payrollIssues];
+   ...assetsControl(s),...inspectInvoiceBankMatches(s),...payrollIssues,...sourceIssues];
 }
