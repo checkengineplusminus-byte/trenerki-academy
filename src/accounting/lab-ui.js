@@ -1,5 +1,5 @@
 import {ACCOUNTS,EMPTY,uid,money,decimal,cents,scaled,invoiceTotals,expectedInvoiceLines,journalTotals,balanceReport,inspect,reverseJournal,parseBankCSV,BANK_TEMPLATE,escapeHTML as e,invoiceHTML} from './lab-core.js';
-import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow} from './simulator-core.js';
+import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow,inspectReferenceMonth} from './simulator-core.js';
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
 import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview} from './payroll-practice.js';
 import {withInvoiceBankMatch} from './invoice-match.js';
@@ -23,8 +23,21 @@ export function mountLab(root,db){
    if(list.error)throw list.error;workspaces=list.data||[];canWrite=!access.error;status=canWrite?'Wybierz firmę lub utwórz nowe biuro ćwiczeniowe.':'Brak aktywnego dostępu do pracowni. Zapisane wcześniej dane możesz odczytać i wyeksportować.';
    if(canWrite){
      const result=await db.from('ta_accounting_core_materials_v3').select('material').eq('topic_no',96).maybeSingle();
-     try {if(result.error)throw result.error;scenario=readScenario(result.data?.material);}
-     catch {scenario=null;scenarioError='Nie udało się pobrać kompletnego, chronionego manifestu D01–D36. Dotychczasowa pracownia działa niezależnie.';}
+     try {
+      if(result.error)throw result.error;
+      const candidate=readScenario(result.data?.material);
+      // Odbiór wzorca PRZED pierwszym ćwiczeniem, nie dopiero po 36 zapisach.
+      // Kontrola jest tylko odczytem; nie modyfikuje prób kursanta.
+      const reference=inspectReferenceMonth(candidate);
+      if(!reference.ok){
+       scenario=null;
+       scenarioError='Wzorzec D01–D36 zawiera niespójności techniczne ('+reference.issues.length+
+        '). Nie rozpoczynaj tego miesiąca i zgłoś problem TRENERKI. Twoje wcześniejsze zapisy biura pozostają dostępne.';
+      }else{scenario=candidate;scenarioError='';}
+     }catch{
+      scenario=null;
+      scenarioError='Nie udało się pobrać i sprawdzić kompletnego, chronionego manifestu D01–D36. Dotychczasowa pracownia działa niezależnie.';
+     }
     }
     if(workspaces.length)await open(workspaces[0].id);
   }catch(x){error=x.message||'Nie udało się wczytać biura.';}finally{render();}
