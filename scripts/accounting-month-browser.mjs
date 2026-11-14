@@ -209,6 +209,56 @@ try{
   assert.equal(audit.training_consistent,true);
   assert.match(await f.page.locator('body').innerText(),/Wewnętrzne etapy są zgodne \(5\/5\)/);
  });
+ await pass('Błędna klasyfikacja dokumentu blokuje odbiór, poprawa przywraca 5/5',async()=>{
+  await choose(f.page,'#sim-doc','D02');
+  await choose(f.page,'#sim-kind','sale');
+  let prior=f.model().version;
+  await f.page.locator('button[data-action="sim-save"]').click();
+  await saved(f,prior);
+  let audit=auditMonthWorkflow(manifest,f.model().state);
+  assert.equal(audit.training_consistent,false);
+  assert.equal(audit.checks.find(x=>x.key==='classification').passed,false);
+  assert.equal(audit.checks.find(x=>x.key==='closing').passed,true);
+  await choose(f.page,'#sim-kind','purchase');
+  prior=f.model().version;
+  await f.page.locator('button[data-action="sim-save"]').click();
+  await saved(f,prior);
+  audit=auditMonthWorkflow(manifest,f.model().state);
+  assert.equal(audit.training_consistent,true);
+ });
+ await pass('Błędne saldo banku jest wykrywane, ale nie niszczy dekretów',async()=>{
+  await f.page.locator('#sim-bank-net').fill('111099,00');
+  let prior=f.model().version;
+  await f.page.locator('button[data-action="sim-bank-save"]').click();
+  await saved(f,prior);
+  let audit=auditMonthWorkflow(manifest,f.model().state);
+  assert.equal(audit.training_consistent,false);
+  assert.equal(audit.checks.find(x=>x.key==='bank').passed,false);
+  assert.equal(Object.keys(f.model().state.simulator_journal_attempts_v1.entries).length,36);
+  await f.page.locator('#sim-bank-net').fill('111100,00');
+  prior=f.model().version;
+  await f.page.locator('button[data-action="sim-bank-save"]').click();
+  await saved(f,prior);
+  audit=auditMonthWorkflow(manifest,f.model().state);
+  assert.equal(audit.training_consistent,true);
+ });
+ await pass('Zły dekret Wn/Ma zostaje wskazany i po korekcie znów mamy 5/5',async()=>{
+  await choose(f.page,'#sim-journal-doc','D01');
+  await choose(f.page,'[data-jline="1"][data-jfield="account"]','201');
+  let prior=f.model().version;
+  await f.page.locator('button[data-action="sim-journal-save"]').click();
+  await saved(f,prior);
+  let audit=auditMonthWorkflow(manifest,f.model().state);
+  assert.equal(audit.training_consistent,false);
+  assert.equal(audit.checks.find(x=>x.key==='journal').passed,false);
+  await choose(f.page,'[data-jline="1"][data-jfield="account"]','800');
+  prior=f.model().version;
+  await f.page.locator('button[data-action="sim-journal-save"]').click();
+  await saved(f,prior);
+  audit=auditMonthWorkflow(manifest,f.model().state);
+  assert.equal(audit.training_consistent,true);
+  assert.equal(Object.keys(f.model().state.simulator_journal_attempts_v1.entries).length,36);
+ });
  await pass('Konflikt CAS odrzuca nowszą zmianę i pozwala pobrać niezapisany stan',async()=>{
   await choose(f.page,'#sim-doc','D01');
   await choose(f.page,'#sim-kind','sale');
