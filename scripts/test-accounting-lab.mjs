@@ -207,3 +207,9 @@ test('Zmiana scenariusza nie przejmuje zapisów innego wariantu',()=>{
  const changed={...next,simulator_journal_attempts_v1:{...next.simulator_journal_attempts_v1,scenario_id:'inna-firma'}};
  assert.deepEqual(readJournalAttempts(changed,sampleJournalManifest),{});
 });
+
+
+test('Test interfejsu: moduł pracowni importuje się bez błędu składni',async()=>{
+ const ui=await import('../src/accounting/lab-ui.js');
+ assert.equal(typeof ui.mountLab,'function');
+});
