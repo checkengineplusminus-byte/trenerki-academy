@@ -4,11 +4,13 @@ on:
     paths:
       - 'src/accounting/**'
       - 'scripts/test-accounting-lab.mjs'
+      - 'scripts/e2e-accounting-lab-2accounts.mjs'
       - '.github/workflows/accounting-lab-tests.yml'
   pull_request:
     paths:
       - 'src/accounting/**'
       - 'scripts/test-accounting-lab.mjs'
+      - 'scripts/e2e-accounting-lab-2accounts.mjs'
       - '.github/workflows/accounting-lab-tests.yml'
 permissions:
   contents: read
@@ -21,3 +23,7 @@ jobs:
         with:
           node-version: '22'
       - run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+      - name: Syntax and safe preflight of two-account E2E (NO live logins)
+        run: |
+          node --check scripts/e2e-accounting-lab-2accounts.mjs
+          node scripts/e2e-accounting-lab-2accounts.mjs --preflight
