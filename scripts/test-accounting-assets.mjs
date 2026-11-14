@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {monthIndex,monthAt,monthEnd,assetDate,assetFacts,normalizeAsset,schedule,acquisitionLines,assetPosition,validateAssets,planAcquisition,planDepreciation,planDisposal,planSale,validatedAssetSaleInvoice,assetsControl} from '../src/accounting/assets-core.js';
+import {monthIndex,monthAt,monthEnd,assetDate,assetFacts,normalizeAsset,schedule,acquisitionLines,assetPosition,validateAssets,planAcquisition,planDepreciation,planDisposal,planSale,validatedAssetSaleInvoice,assetsControl,activeJournals} from '../src/accounting/assets-core.js';
 const base=()=>({schema_version:1,invoices:[{id:'I1',kind:'purchase',status:'issued',date:'2026-11-01',supply_date:'2026-11-01',number:'CW/ST/1',party:'Fikcyjny dostawca',seller:'Fikcyjna firma',due:'2026-11-15',net_cents:1200000,tax_cents:276000,gross_cents:1476000,lines:[{label:'Urządzenie',qty_milli:1000,unit_cents:1200000,tax_code:'23'}]}],bank:[],matches:[],journals:[]});
 const card=()=>({id:'A1',inventory_no:'CW/ST/001',name:'Urządzenie ćwiczeniowe',category:'machine',invoice_id:'I1',in_service_date:'2026-11-02',start_month:'2026-11',months:48,residual_cents:0,deductible_bps:10000,status:'draft'});
 const activated=()=>planAcquisition(base(),card(),'J1').state;
