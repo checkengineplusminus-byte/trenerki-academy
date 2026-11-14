@@ -5,12 +5,16 @@ on:
       - 'app/majatek-ksiegowy*'
       - 'src/accounting/**'
       - 'scripts/assets-browser.mjs'
+      - 'scripts/accounting-month-browser.mjs'
+      - 'app/biuro-ksiegowe.web.tsx'
       - '.github/workflows/accounting-assets-browser.yml'
   pull_request:
     paths:
       - 'app/majatek-ksiegowy*'
       - 'src/accounting/**'
       - 'scripts/assets-browser.mjs'
+      - 'scripts/accounting-month-browser.mjs'
+      - 'app/biuro-ksiegowe.web.tsx'
       - '.github/workflows/accounting-assets-browser.yml'
 permissions:
   contents: read
@@ -37,11 +41,14 @@ jobs:
           python3 -m http.server 8787 --directory /tmp/trenerki-assets-web >/tmp/trenerki-assets-http.log 2>&1 &
           sleep 2
           node --experimental-default-type=module scripts/assets-browser.mjs http://127.0.0.1:8787
+          node --experimental-default-type=module scripts/accounting-month-browser.mjs http://127.0.0.1:8787
       - name: Zachowaj obrazy testowe
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: accounting-assets-mock-screens
-          path: /tmp/trenerki-assets-*.png
+          path: |
+            /tmp/trenerki-assets-*.png
+            /tmp/trenerki-accounting-month-*.png
           if-no-files-found: ignore
           retention-days: 7
