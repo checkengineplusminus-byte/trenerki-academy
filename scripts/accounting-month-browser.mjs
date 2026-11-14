@@ -22,24 +22,58 @@ const entry=(debit,credit,amount)=>[
  {account:credit,debit_cents:0,credit_cents:amount}
 ];
 function scenario(){
- const documents=Array.from({length:36},(_,i)=>{
-  const n=i+1,kind=n===1||n===3?'bank_in':'formal';
-  return {id:id(n),date:'2026-01-'+String(Math.min(n,28)).padStart(2,'0'),
-   title:'Fikcyjny dowód testowy '+id(n),kind,amount_pln:n===1?60000:n===3?8000:0,
-   fictional:true,source_verification:'training_only'};
- });
- const entries=Object.fromEntries(documents.map(d=>[d.id,{
-  lines:d.id==='D01'?entry('130','800',6000000):d.id==='D03'?entry('130','240',800000):[],
-  explanation:'Fikcyjny wzorzec rachunkowy bez podatków i bez realnych zobowiązań.'
- }]));
- const model={id:'core-v3-firma-demo-2026-01-v1',month:'2026-01',version:1,currency:'PLN',
-  company:'Fikcyjna Spółka Testowa',fictional:true,documents,
+ // Completely invented entries: 29 training postings, 16 bank documents,
+ // 7 nonposting documents. No paid course content or real clients.
+ const events=[
+  ['bank_in',100000,'130','800',100000], // fictitious capital
+  ['purchase',9000,'310','202',9000], // material invoice
+  ['bank_out',9000,'202','130',9000],
+  ['sale',15000,'201','700',15000],
+  ['bank_in',12000,'130','201',12000],
+  ['purchase',1000,'400','202',1000],
+  ['bank_out',1000,'202','130',1000],
+  ['sale',8000,'201','700',8000],
+  ['bank_in',8000,'130','201',8000],
+  ['payroll',7000,'404','231',7000],
+  ['bank_out',5500,'231','130',5500],
+  ['bank_out',1500,'231','130',1500],
+  ['asset',12000,'010','202',12000],
+  ['bank_out',12000,'202','130',12000],
+  ['warehouse',6000,'401','310',6000],
+  ['bank_in',10000,'130','240',10000],
+  ['bank_out',2000,'240','130',2000],
+  ['bank_out',200,'751','130',200],
+  ['bank_out',100,'400','130',100],
+  ['sale',12000,'201','700',12000],
+  ['bank_in',10000,'130','201',10000],
+  ['correction',-2000,'700','201',2000],
+  ['bank_out',2000,'400','130',2000],
+  ['asset',1000,'400','070',1000],
+  ['bank_out',600,'400','130',600],
+  ['bank_in',5000,'130','240',5000],
+  ['warehouse',3000,'310','202',3000],
+  ['purchase',500,'400','202',500],
+  ['purchase',300,'400','202',300]
+ ];
+ for(let n=30;n<=36;n++)events.push(['formal',0,null,null,0]);
+ const documents=events.map(([kind,amount],i)=>({
+  id:id(i+1),date:'2026-01-'+String(Math.min(i+1,28)).padStart(2,'0'),
+  title:'Fikcyjny dowód testowy '+id(i+1),kind,amount_pln:amount,
+  fictional:true,source_verification:'training_only'
+ }));
+ const entries=Object.fromEntries(events.map(([kind,amount,debit,credit,value],i)=>[
+  id(i+1),{lines:debit?entry(debit,credit,value*100):[],
+   explanation:'Fikcyjny wzorzec rachunkowy bez VAT, ZUS i realnych zobowiązań.'}
+ ]));
+ const model={id:'core-v3-firma-demo-2026-01-v1',month:'2026-01',version:1,
+  currency:'PLN',company:'Fikcyjna Spółka Testowa',fictional:true,documents,
   journal_practice_v1:{version:1,currency:'PLN',
    accounts:{'130':'Bank szkoleniowy','800':'Kapitał szkoleniowy','240':'Pożyczka szkoleniowa',
     '201':'Należności','310':'Materiały','010':'Maszyna','070':'Umorzenie','079':'Odpis',
-    '202':'Dostawcy','700':'Sprzedaż','400':'Koszty','401':'Zużycie','404':'Płace','751':'Odsetki'},
-   entries,reconciliation:{bank:68000,receivables:0,inventory:0,machine:0,
-    trade_payables:0,loan:8000,profit:0}}
+    '202':'Dostawcy','700':'Sprzedaż','400':'Koszty','401':'Zużycie','404':'Płace',
+    '751':'Odsetki','231':'Wynagrodzenia szkoleniowe'},
+   entries,reconciliation:{bank:111100,receivables:3000,inventory:6000,machine:11000,
+    trade_payables:3800,loan:13000,profit:14300}}
  };
  assert.equal(readScenario(model).documents.length,36);
  assert.deepEqual(inspectReferenceMonth(model),{ok:true,issues:[],checked_documents:36});
@@ -124,20 +158,20 @@ try{
   assert.equal(Object.keys(f.model().state.simulator_attempts_v1.answers).length,36);
   assert.equal(f.saves(),36);
  });
- await pass('Kwoty bankowe 68 000/0/68 000 są zapisane jako ćwiczenie, nie dekret',async()=>{
-  await f.page.locator('#sim-bank-in').fill('68000,00');
-  await f.page.locator('#sim-bank-out').fill('0,00');
-  await f.page.locator('#sim-bank-net').fill('68000,00');
+ await pass('Kwoty bankowe 145 000/33 900/111 100 są zapisane jako ćwiczenie, nie dekret',async()=>{
+  await f.page.locator('#sim-bank-in').fill('145000,00');
+  await f.page.locator('#sim-bank-out').fill('33900,00');
+  await f.page.locator('#sim-bank-net').fill('111100,00');
   const prior=f.model().version;
   await f.page.locator('button[data-action="sim-bank-save"]').click();
   await saved(f,prior);
-  assert.equal(f.model().state.simulator_bank_exercise_v1.bank_net_cents,6800000);
+  assert.equal(f.model().state.simulator_bank_exercise_v1.bank_net_cents,11110000);
   assert.equal(f.model().state.journals.length,0);
  });
- await pass('36 decyzji Wn/Ma przez interfejs: 2 dekrety i 34 świadome braki',async()=>{
+ await pass('36 decyzji Wn/Ma przez interfejs: 29 dekretów i 7 świadomych braków',async()=>{
   for(const d of manifest.documents){
    await choose(f.page,'#sim-journal-doc',d.id);
-   if(d.id==='D01'||d.id==='D03'){
+   if(manifest.journal_practice_v1.entries[d.id].lines.length){
     const source=manifest.journal_practice_v1.entries[d.id].lines;
     for(const [i,row] of source.entries()){
      await choose(f.page,'[data-jline="'+i+'"][data-jfield="account"]',row.account);
@@ -149,12 +183,12 @@ try{
    }
    const prior=f.model().version;
    await f.page.locator('button[data-action="'+
-    ((d.id==='D01'||d.id==='D03')?'sim-journal-save':'sim-journal-none')+'"]').click();
+    (manifest.journal_practice_v1.entries[d.id].lines.length?'sim-journal-save':'sim-journal-none')+'"]').click();
    await saved(f,prior);
   }
   const entries=f.model().state.simulator_journal_attempts_v1.entries;
   assert.equal(Object.keys(entries).length,36);
-  assert.equal(Object.values(entries).filter(x=>x.lines.length>0).length,2);
+  assert.equal(Object.values(entries).filter(x=>x.lines.length>0).length,29);
   assert.equal(f.model().state.journals.length,0);
  });
  await pass('Kontrola przekrojowa i zamknięcie miesiąca przechodzą 5/5',async()=>{
