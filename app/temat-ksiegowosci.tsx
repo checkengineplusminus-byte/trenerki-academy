@@ -126,7 +126,7 @@ export default function TematKsiegowosci(){
     <Text style={s.small}>Przeniesienie do biura nie wykonuje zadania automatycznie. Wysyłki do urzędów nie są wykonywane.</Text>
    </View>}
    <View style={s.card}><Text accessibilityRole="header" style={s.h2}>Sprawdź samodzielnie</Text>
-    <Text style={s.small}>Cztery zadania. Klucz pojawia się po własnej próbie; nie jest to egzamin certyfikujący.</Text>
+    <Text style={s.small}>Liczba zadań w tym temacie: {(m.exercises||[]).length}. Klucz pojawia się po własnej próbie; nie jest to egzamin certyfikujący.</Text>
     {(m.exercises||[]).map((e:any)=><Task key={e.id} exercise={e} topicNo={lesson.topic_no} userId={userId} initial={answers[e.id]||''}/>)}
    </View>
    {(m.glossary||[]).length>0&&<View style={s.card}><Text accessibilityRole="header" style={s.h2}>Słowniczek od zera</Text>
@@ -136,11 +136,11 @@ export default function TematKsiegowosci(){
     {m.takeaways.map((v:string,i:number)=><Text key={i} style={s.body}>{i+1}. {v}</Text>)}
    </View>}
    <View style={s.card}><Text style={s.h2}>Źródła i zakres</Text>
-    <Text style={s.small}>Data sprawdzenia treści prawnej: {lesson.legal_as_of||'nie potwierdzono'}. Materiał uproszczony do dydaktyki, nie zastępuje sprawdzenia konkretnej sytuacji.</Text>
+    <Text style={s.small}>Data odniesienia materiału: {lesson.legal_as_of||'nie podano'}. Sama data nie potwierdza weryfikacji prawnej ani aktualności odnośników; sprawdź źródła i przepisy właściwe dla konkretnej sytuacji.</Text>
     {(m.sources||[]).map((v:any,i:number)=>{
      const url=sourceURL(v.url);
      return <View key={i} style={s.gloss}><Text style={s.label}>{v.title}</Text><Text style={s.small}>{v.scope}</Text>
-      {url&&<Pressable accessibilityRole="button" style={s.button} onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}><Text style={s.buttonText}>Otwórz urzędowe źródło</Text></Pressable>}
+      {url&&<Pressable accessibilityRole="button" style={s.button} onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}><Text style={s.buttonText}>Otwórz wskazane źródło</Text></Pressable>}
      </View>;
     })}
    </View>

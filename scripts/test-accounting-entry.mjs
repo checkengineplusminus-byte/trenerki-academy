@@ -27,3 +27,25 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
 });
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
 test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Podgląd przygotowywanej encyklopedii'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
+
+test('Aktywny program księgowości nie jest liczony z archiwalnych lekcji',()=>{
+ const code=readFileSync(new URL('../app/ksiegowosc.tsx',import.meta.url),'utf8');
+ assert.match(code,/overview\.program_version==='core-v3-20261113'/);
+ assert.match(code,/overview\.active_program\?\.topics===100/);
+ assert.match(code,/overview\.active_program\.complete_topics/);
+ assert.match(code,/Katalog wcześniejszych lekcji:/);
+ assert.doesNotMatch(code,/Dostępne treści: \{overview\.is_editor\?overview\.authored_count/);
+});
+test('Data odniesienia i link nie są bez dowodu potwierdzeniem aktualności prawa',()=>{
+ const archive=readFileSync(new URL('../app/ksiegowosc.tsx',import.meta.url),'utf8');
+ const active=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
+ for(const code of [archive,active])assert.match(code,/Sama data/);
+ assert.doesNotMatch(archive,/Sprawdzono opisany zakres:/);
+ assert.doesNotMatch(active,/Data sprawdzenia treści prawnej:/);
+ assert.doesNotMatch(active,/>Otwórz urzędowe źródło<\/Text>/);
+});
+test('Licznik ćwiczeń bieżącego tematu odpowiada zapisanej liczbie, nie sztucznym czterem',()=>{
+ const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
+ assert.match(code,/\{\(m\.exercises\|\|\[\]\)\.length\}/);
+ assert.doesNotMatch(code,/Cztery zadania\. Klucz/);
+});
