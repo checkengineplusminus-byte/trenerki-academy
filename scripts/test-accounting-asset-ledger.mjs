@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {EMPTY,invoiceTotals,balanceReport,inspect} from '../src/accounting/lab-core.js';
-import {planAcquisition,planDepreciation,planDisposal} from '../src/accounting/assets-core.js';
+import {planAcquisition,planDepreciation,planDisposal,planSale} from '../src/accounting/assets-core.js';
 function acquired(bps=10000){let s=EMPTY();s.invoices=[invoiceTotals({id:'I',kind:'purchase',status:'issued',number:'CW/ST/1',date:'2026-11-01',due:'2026-11-15',party:'Fikcyjny dostawca',seller:'Firma',lines:[{label:'Urządzenie',qty_milli:1000,unit_cents:1200000,tax_code:'23'}]})];return planAcquisition(s,{id:'A',inventory_no:'CW/ST/A',name:'Urządzenie',category:'machine',invoice_id:'I',in_service_date:'2026-11-02',start_month:'2026-11',months:48,residual_cents:0,deductible_bps:bps,status:'draft'},'J1').state;}
 test('Zakup majątku nie jest od razu kosztem w raporcie',()=>{const r=balanceReport(acquired());assert.equal(r.profit,0);assert.equal(r.assetCost,1200000);assert.equal(r.debit,r.credit);});
 test('Odpis zmniejsza wynik i wartość, nie bank',()=>{const r=balanceReport(planDepreciation(acquired(),'A','D1').state);assert.equal(r.profit,-25000);assert.equal(r.assetCarrying,1175000);assert.equal(r.ledgerBank,0);});
@@ -9,3 +9,15 @@ test('Likwidacja zamyka oba konta majątku i zachowuje wynik',()=>{const s=planD
 test('Kontrola nie narzuca kosztu usługi poprawnemu zakupowi majątku',()=>{const s=acquired();assert.ok(!inspect(s).some(x=>x.code==='invoice_accounts'));s.journals[0].lines=s.journals[0].lines.map(l=>({credit:l.credit,account:l.account,debit:l.debit}));assert.ok(!inspect(s).some(x=>x.code==='invoice_accounts'));});
 test('Częściowe odliczenie jest zgodne z kartą i kontem VAT',()=>{const r=balanceReport(acquired(5000));assert.equal(r.assetCost,1338000);assert.equal(r.accounts.find(a=>a.code==='221').balance,138000);});
 test('Nieznane konto nie znika z raportu bez ostrzeżenia',()=>{const s=acquired();s.journals.push({id:'X',status:'posted',lines:[{account:'999999',debit:1,credit:0}]});assert.throws(()=>balanceReport(s));});
+
+test('Faktura sprzedaży + wyksięgowanie środka dają jeden przychód, jedno saldo VAT i poprawny wynik',()=>{
+ let s=acquired();
+ const sale=invoiceTotals({id:'SALE',kind:'sale',status:'issued',number:'CW/FV/S1',date:'2026-11-30',due:'2026-12-14',party:'Fikcyjny odbiorca',seller:'Firma',lines:[{label:'Sprzedaż CW/ST/A — maszyna',qty_milli:1000,unit_cents:800000,tax_code:'23'}]});
+ s.invoices.push(sale);
+ s.journals.push({id:'SALE-BOOK',status:'posted',date:sale.date,source_type:'invoice',source_id:sale.id,lines:[{account:'201',debit:984000,credit:0},{account:'700',debit:0,credit:800000},{account:'222',debit:0,credit:184000}]});
+ const sold=planSale(s,'A','SALE','2026-11-30','DISP-1').state,r=balanceReport(sold);
+ assert.equal(r.profit,-400000);assert.equal(r.vat,184000-276000);assert.equal(r.receivable,984000);
+ assert.equal(r.assetCost,0);assert.equal(r.assetCarrying,0);assert.equal(r.debit,r.credit);
+ assert.equal(sold.journals.filter(j=>j.source_type==='invoice'&&j.source_id==='SALE').length,1);
+ assert.ok(!inspect(sold).some(x=>x.code==='invoice_accounts'||x.code==='asset_ledger_mismatch'));
+});
