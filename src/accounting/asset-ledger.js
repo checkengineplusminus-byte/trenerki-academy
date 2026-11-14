@@ -42,6 +42,7 @@ export function inspect(s){
  // Sprawdzamy aktywne źródła dekretów bez zmiany danych kursanta.
  // Dwa zbilansowane księgowania tego samego dowodu mogą zawyżyć obroty.
  const sourceIssues=[];
+ const invoicesById=new Map((s.invoices||[]).map(i=>[i.id,i]));
  for(const [kind,known] of [
   ['invoice',new Set((s.invoices||[]).map(i=>i.id))],
   ['bank',new Set((s.bank||[]).map(b=>b.id))]
@@ -55,6 +56,12 @@ export function inspect(s){
      text:'Sprawdź źródło tego zapisu, nawet jeśli Wn równa się Ma. Dziennik nie został automatycznie zmieniony.',
      entity:'journal',id:entry.id,severity:'błąd'});
     continue;
+   }
+   if(kind==='invoice'&&invoicesById.get(entry.source_id)?.status!=='issued'){
+    sourceIssues.push({code:'posting_unissued_invoice',
+     title:'Księgowanie faktury bez statusu wystawiona',
+     text:'Dekret dotyczy szkicu lub dokumentu niewystawionego. Najpierw sprawdź status faktury i dokonaj jawnej korekty zapisu; dane kursanta nie zostały zmienione.',
+     entity:'journal',id:entry.id,severity:'błąd'});
    }
    linked.set(entry.source_id,[...(linked.get(entry.source_id)||[]),entry.id]);
   }
