@@ -1,3 +1,4 @@
+import {invoiceTotals} from './lab-core-base.js';
 /** Model edukacyjny, PLN. Parametry amortyzacji i odliczenia są założeniami użytkownika, nie poradą podatkową. */
 export const ASSET_ACCOUNTS={'010':'Środki trwałe — wartość początkowa','071':'Umorzenie środków trwałych','401':'Amortyzacja — koszt modelu','761':'Pozostałe koszty — likwidacja w modelu'};
 export const ASSET_FIELDS=['id','inventory_no','name','category','invoice_id','in_service_date','start_month','months','residual_cents','deductible_bps','status'];
@@ -92,6 +93,9 @@ export function validatedAssetSaleInvoice(s,a,invoiceId,date){
  if(!Array.isArray(invoice.lines)||invoice.lines.length!==1||!String(invoice.lines[0].label||'').includes(a.inventory_no))
   fail('Faktura sprzedaży musi mieć jedną pozycję z numerem inwentarzowym sprzedawanego składnika.');
  const net=invoice.net_cents,tax=invoice.tax_cents,gross=invoice.gross_cents;
+ const recalculated=invoiceTotals(invoice);
+ if(recalculated.net_cents!==net||recalculated.tax_cents!==tax||recalculated.gross_cents!==gross)
+  fail('Pozycje faktury nie uzgadniają się z kwotami netto, VAT i brutto.');
  if(![net,tax,gross].every(n=>Number.isSafeInteger(n)&&n>=0&&n<=1000000000000)||net<=0||net+tax!==gross)
   fail('Kwoty faktury sprzedaży są niespójne.');
  const expected=[{account:'201',debit:gross,credit:0},{account:'700',debit:0,credit:net},...(tax?[{account:'222',debit:0,credit:tax}]:[])];
