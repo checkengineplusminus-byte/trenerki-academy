@@ -70,3 +70,61 @@ test('Odpowiedzi w prywatnym biurze można poprawiać bez oznaczania etapu jako 
  assert.equal(scenarioSummary(fakeManifest,readScenarioAnswers(b)).correct,1);
  assert.equal(scenarioSummary(fakeManifest,readScenarioAnswers(b)).total,36);
 });
+
+
+import {readBankExercise,withBankExercise,checkBankExercise} from '../src/accounting/simulator-core.js';
+const bankCase={...fakeManifest,documents:fakeManifest.documents.map((d,i)=>
+ i===0?{...d,kind:'bank_in',amount_pln:94000}:
+ i===1?{...d,kind:'bank_out',amount_pln:33900}:
+ {...d,kind:'formal',amount_pln:94000})};
+const bankAnswer={bank_in_cents:9400000,bank_out_cents:3390000,bank_net_cents:6010000};
+test('Ćwiczenie bankowe liczy wyłącznie przelewy, nie faktury i inne dowody',()=>{
+ const p=checkBankExercise(bankCase,bankAnswer);
+ assert.equal(p.attempted,true);assert.equal(p.correct,true);
+ assert.equal(p.consistent,true);assert.equal(p.checks.length,3);
+});
+test('Ćwiczenie rozróżnia błąd w jednej z trzech kwot',()=>{
+ const p=checkBankExercise(bankCase,{...bankAnswer,bank_out_cents:3390001});
+ assert.equal(p.correct,false);assert.equal(p.consistent,false);
+ assert.deepEqual(p.checks.filter(x=>!x.correct).map(x=>x.key),['bank_out_cents']);
+});
+test('Niezgodne saldo netto nie przejdzie pomimo poprawnych wpływów i wypływów',()=>{
+ const p=checkBankExercise(bankCase,{...bankAnswer,bank_net_cents:0});
+ assert.equal(p.correct,false);assert.equal(p.consistent,false);
+ assert.deepEqual(p.checks.filter(x=>!x.correct).map(x=>x.key),['bank_net_cents']);
+});
+test('Niedozwolone wartości i ujemne wypływy są odrzucane bez zapisu',()=>{
+ const s=EMPTY();
+ for(const wrong of [
+  {...bankAnswer,bank_in_cents:-1},{...bankAnswer,bank_out_cents:-3390000},
+  {...bankAnswer,bank_net_cents:NaN},{...bankAnswer,bank_in_cents:Infinity},
+  {...bankAnswer,bank_in_cents:'94000'},{...bankAnswer,bank_out_cents:1e14}
+ ])assert.throws(()=>withBankExercise(s,bankCase,wrong));
+ assert.equal(readBankExercise(s),null);
+});
+test('Zapis uzgodnienia nie modyfikuje dziennika ani wcześniejszych klasyfikacji',()=>{
+ const s=withScenarioAnswer(EMPTY(),bankCase,'D01','bank_in');
+ const original=JSON.stringify(s);
+ const next=withBankExercise(s,bankCase,bankAnswer);
+ assert.equal(JSON.stringify(s),original);
+ assert.equal(readScenarioAnswers(next).D01,'bank_in');
+ assert.equal(next.journals.length,0);
+ assert.deepEqual(readBankExercise(next),{...bankAnswer,attempts:1});
+ const corrected=withBankExercise(next,bankCase,{...bankAnswer,bank_net_cents:0});
+ assert.equal(readBankExercise(corrected).attempts,2);
+ assert.equal(checkBankExercise(bankCase,readBankExercise(corrected)).correct,false);
+ assert.equal(checkBankExercise(bankCase,readBankExercise(next)).correct,true);
+});
+test('Odczyt z innego manifestu lub uszkodzonego stanu nie jest zaliczany',()=>{
+ const s=withBankExercise(EMPTY(),bankCase,bankAnswer);
+ assert.equal(readBankExercise({...s,simulator_bank_exercise_v1:{
+  ...s.simulator_bank_exercise_v1,scenario_id:'inna-firma'}}),null);
+ assert.equal(readBankExercise({...s,simulator_bank_exercise_v1:{
+  ...s.simulator_bank_exercise_v1,bank_in_cents:'94000'}}),null);
+ assert.equal(checkBankExercise(bankCase,readBankExercise({})).attempted,false);
+});
+test('Ujemna zmiana banku może być poprawnym wynikiem',()=>{
+ const month={...bankCase,documents:bankCase.documents.map((d,i)=>i===0?{...d,amount_pln:100}:i===1?{...d,amount_pln:250}:d)};
+ const result=checkBankExercise(month,{bank_in_cents:10000,bank_out_cents:25000,bank_net_cents:-15000});
+ assert.equal(result.correct,true);
+});
