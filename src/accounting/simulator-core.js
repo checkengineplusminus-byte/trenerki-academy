@@ -177,3 +177,45 @@ export function journalPracticeSummary(scenario,attempts){
  }
  return {total:36,attempted,correct,reference_posts:Object.values(practice.entries).filter(x=>x.lines.length>0).length};
 }
+
+
+/**
+ * Podgląd zamknięcia miesiąca z zapisów własnego ćwiczenia Wn/Ma.
+ * Nie jest księgą rachunkową firmy i nie dokonuje zatwierdzenia E2E/podatków.
+ */
+export function journalClosingPreview(scenario,attempts={}){
+ const model=readJournalPractice(scenario),progress=journalPracticeSummary(scenario,attempts);
+ const signed=Object.create(null);
+ let debit_cents=0,credit_cents=0;
+ for(const id of Object.keys(model.entries)){
+  const trial=attempts[id];
+  if(!trial||!validJournalLines(trial.lines,model.accounts))continue;
+  for(const row of trial.lines){
+   signed[row.account]=(signed[row.account]||0)+row.debit_cents-row.credit_cents;
+   debit_cents+=row.debit_cents;credit_cents+=row.credit_cents;
+  }
+ }
+ const amt=key=>signed[key]||0;
+ const actual={
+  bank:amt('130'),receivables:amt('201'),inventory:amt('310'),
+  machine:amt('010')+amt('070')+amt('079'),trade_payables:-amt('202'),
+  loan:-amt('240'),profit:-amt('700')-amt('400')-amt('401')-amt('404')-amt('751')
+ };
+ const assets_cents=actual.bank+actual.receivables+actual.inventory+actual.machine;
+ const liabilities_cents=actual.trade_payables+actual.loan;
+ const equity_cents=-amt('800')+actual.profit;
+ const balance_diff_cents=assets_cents-liabilities_cents-equity_cents;
+ const labels={bank:'Bank',receivables:'Należności handlowe',inventory:'Materiały w magazynie',
+  machine:'Maszyna netto',trade_payables:'Zobowiązania wobec dostawców',
+  loan:'Pozostały kapitał pożyczki',profit:'Wynik przed podatkiem (model)'};
+ const checks=Object.entries(labels).map(([key,label])=>{
+  const expected=model.reconciliation?.[key];
+  const validExpected=Number.isSafeInteger(expected)&&expected>=0&&expected<=1000000000;
+  return {key,label,actual_cents:actual[key],expected_cents:validExpected?expected*100:null,
+   matches:validExpected&&actual[key]===expected*100};
+ });
+ const balanced=debit_cents===credit_cents&&balance_diff_cents===0;
+ return {progress,checks,debit_cents,credit_cents,assets_cents,liabilities_cents,equity_cents,
+  balance_diff_cents,balanced,
+  model_reconciled:progress.correct===36&&balanced&&checks.every(x=>x.matches)};
+}
