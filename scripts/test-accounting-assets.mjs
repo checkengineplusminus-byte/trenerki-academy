@@ -79,6 +79,8 @@ test('Sprzedaż blokuje niezgodny numer składnika, datę oraz błędny dokument
   s=>{s.invoices[1].status='draft';},
   s=>{s.invoices[1].kind='purchase';},
   s=>{s.invoices[1].gross_cents++;},
+  s=>{s.invoices[1].lines[0].unit_cents++;},
+  s=>{s.invoices[1].lines[0].tax_code='ZW';},
   s=>{s.journals[1].lines[0].debit++;},
   s=>{s.journals.push({...s.journals[1],id:'SALE2'});}
  ]){
