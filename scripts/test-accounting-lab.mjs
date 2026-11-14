@@ -850,3 +850,20 @@ test('Jawne storno wyklucza zapis z aktywnych duplikatów',()=>{
   source_type:'manual',source_id:'',lines:s.journals[0].lines.map(x=>({account:x.account,debit:x.credit,credit:x.debit}))});
  assert.ok(!inspect(s).some(i=>i.code==='duplicate_invoice_posting'));
 });
+
+
+test('Nie można uznać dekretu szkicu faktury za zaksięgowaną wystawioną fakturę',()=>{
+ const s=fullScenario();
+ s.invoices[0].status='draft';
+ const before=JSON.stringify(s);
+ const issues=inspect(s);
+ assert.ok(issues.some(x=>x.code==='posting_unissued_invoice'&&x.id==='jsale'));
+ assert.equal(JSON.stringify(s),before,'audyt nie zmienia zapisów kursanta');
+ s.invoices[0].status='issued';
+ assert.equal(inspect(s).some(x=>x.code==='posting_unissued_invoice'),false);
+});
+test('Zapis nie może dotyczyć faktury o nieznanym statusie',()=>{
+ const s=fullScenario();
+ s.invoices[1].status='cancelled';
+ assert.ok(inspect(s).some(x=>x.code==='posting_unissued_invoice'&&x.id==='jpurchase'));
+});
