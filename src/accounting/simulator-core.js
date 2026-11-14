@@ -220,3 +220,40 @@ export function journalClosingPreview(scenario,attempts={}){
   balance_diff_cents,balanced,
   model_reconciled:progress.correct===36&&balanced&&checks.every(x=>x.matches)};
 }
+
+
+/**
+ * Przekrojowa kontrola czterech ćwiczeń D01–D36.
+ * Czyta tylko zapisane odpowiedzi ucznia i prywatny manifest; niczego nie zatwierdza.
+ * Zgodność szkoleniowa NIE zastępuje pracy w rzeczywistym dzienniku, E2E ani podatków.
+ */
+export function auditMonthWorkflow(scenario,state={}){
+ const data=readScenario(scenario);
+ const classification=scenarioSummary(data,readScenarioAnswers(state));
+ const bank=checkBankExercise(data,readBankExercise(state));
+ const journal=journalClosingPreview(data,readJournalAttempts(state,data));
+ const completeJournal=journal.progress.attempted===36;
+ const statementNetCents=scenarioSummary(data).bankNet*100;
+ const journalBankCents=journal.checks.find(x=>x.key==='bank')?.actual_cents??null;
+ const bankDifferenceCents=completeJournal&&journalBankCents!==null?journalBankCents-statementNetCents:null;
+ const checks=[
+  {key:'classification',label:'Rozpoznanie 36 dowodów',
+   passed:classification.correct===36,
+   detail:classification.correct+'/36 poprawnych; '+classification.attempted+'/36 zapisanych'},
+  {key:'bank',label:'Wpływy, wypływy i zmiana banku',
+   passed:bank.correct,detail:bank.attempted?(bank.correct?'Wyniki zgodne z dokumentami':'Sprawdź trzy kwoty i znaki'):'Brak zapisanej próby'},
+  {key:'journal',label:'Dekretacja lub świadomy brak zapisu',
+   passed:journal.progress.correct===36,
+   detail:journal.progress.correct+'/36 poprawnych; '+journal.progress.attempted+'/36 zapisanych'},
+  {key:'bank_vs_journal',label:'Rachunek bankowy z dziennika a dowody',
+   passed:completeJournal&&bankDifferenceCents===0,
+   detail:!completeJournal?'Najpierw zapisz wszystkie 36 decyzji Wn/Ma':
+    bankDifferenceCents===0?'Zgodne':'Różnica '+(bankDifferenceCents/100).toFixed(2)+' PLN; zweryfikuj bank i podwójne księgowanie'},
+  {key:'closing',label:'Bilans, rozrachunki i wynik fikcyjnego modelu',
+   passed:journal.model_reconciled,
+   detail:journal.model_reconciled?'Model uzgodniony':'Do uzgodnienia, nie jest to wynik podatkowy'}
+ ];
+ return {checks,passed:checks.filter(x=>x.passed).length,total:checks.length,
+  training_consistent:checks.every(x=>x.passed),bank_difference_cents:bankDifferenceCents,
+  legal_review:'pending',real_two_account_e2e:'not_tested',independent_restore:'not_tested'};
+}
