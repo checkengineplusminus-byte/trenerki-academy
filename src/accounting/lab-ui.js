@@ -1,8 +1,9 @@
 import {ACCOUNTS,EMPTY,uid,money,decimal,cents,scaled,invoiceTotals,expectedInvoiceLines,journalTotals,balanceReport,inspect,reverseJournal,parseBankCSV,BANK_TEMPLATE,escapeHTML as e,invoiceHTML} from './lab-core.js';
 import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow} from './simulator-core.js';
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
+import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview} from './payroll-practice.js';
 const css=`.tlab{font:15px/1.55 system-ui,sans-serif;color:#183c2b;background:#f6f8f0;min-height:100vh;padding:24px}.tlab *{box-sizing:border-box}.tlab main{max-width:1280px;margin:auto}.tlab h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:12px 0}.tlab h2{font-size:22px;margin:0 0 14px}.tlab h3{font-size:17px;margin:0 0 8px}.tlab a{color:inherit}.tlab header{background:#183c2b;color:#fff;border-radius:22px;padding:28px;margin:18px 0}.tlab .eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px}.tlab .muted{color:#627567;font-size:13px}.tlab header .muted{color:#c9dcc9}.tlab .card{background:white;border:1px solid #dbe5d5;border-radius:16px;padding:20px;margin:14px 0}.tlab .notice{background:#edf3df;border-left:4px solid #6c8e47;padding:14px;border-radius:9px}.tlab .error{background:#fff0e9;color:#8d331f;border-left:4px solid #a3462b;padding:14px;border-radius:9px;white-space:pre-wrap}.tlab .grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px}.tlab .row{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.tlab .row>*{flex:1;min-width:120px}.tlab label{display:block;font-size:13px;font-weight:700;margin-bottom:4px}.tlab input,.tlab select,.tlab textarea{font:inherit;color:inherit;background:white;border:1px solid #bbceb6;border-radius:9px;padding:10px;max-width:100%;width:100%}.tlab textarea{min-height:90px}.tlab input:focus,.tlab select:focus,.tlab button:focus-visible{outline:3px solid #adc793;outline-offset:2px}.tlab button{font:inherit;font-weight:700;cursor:pointer;border:1px solid #bbceb6;background:#edf4e4;color:#183c2b;border-radius:9px;padding:10px 14px}.tlab button.primary{background:#183c2b;color:white;border-color:#183c2b}.tlab button:disabled{opacity:.45;cursor:not-allowed}.tlab .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tlab nav{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}.tlab nav button.active{background:#183c2b;color:white}.tlab .scroll{overflow:auto;max-width:100%}.tlab table{border-collapse:collapse;width:100%;font-size:13px}.tlab th,.tlab td{padding:10px 8px;text-align:left;border-bottom:1px solid #e5ecdf;vertical-align:top}.tlab th{background:#eff4e8;white-space:nowrap}.tlab td.amount,.tlab th.amount{text-align:right;white-space:nowrap}.tlab .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tlab .stat{background:#edf4e4;border-radius:12px;padding:14px}.tlab .stat strong{display:block;font-size:23px}.tlab .pill{display:inline-block;border-radius:15px;background:#edf4e4;padding:3px 9px;font-size:12px;font-weight:700}.tlab .hint{border-top:1px solid #dbe5d5;padding:14px 0}.tlab .hint p{font-size:13px;margin:4px 0}.tlab details{margin:12px 0}.tlab summary{cursor:pointer;font-weight:700}.tlab .line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .journal-line{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .small{font-size:12px}.tlab ol{padding-left:22px}.tlab aside{align-self:start}.tlab .grid>*{min-width:0}.tlab .scroll table{min-width:510px}.tlab .status{min-height:28px;font-size:13px}.tlab fieldset{border:0;margin:0;padding:0;min-width:0}.tlab pre{white-space:pre-wrap;word-break:break-word;font-size:12px}.tlab .empty{padding:25px;text-align:center;color:#627567}@media(max-width:980px){.tlab .grid{grid-template-columns:1fr}.tlab aside{order:2}}@media(max-width:600px){.tlab{padding:12px}.tlab header{padding:22px 18px}.tlab .card{padding:14px}.tlab .stats{grid-template-columns:1fr}.tlab .line,.tlab .journal-line{grid-template-columns:1fr 1fr}.tlab .line>div:first-child,.tlab .journal-line>div:first-child{grid-column:1/-1}.tlab nav button{font-size:13px;padding:9px}.tlab h2{font-size:20px}}`;
-const tabs={start:'Twoja rola',simulator:'Miesiąc firmy D01–D36',personnel:'Kadry — dwie osoby',invoices:'Faktury',bank:'Wyciąg bankowy',journal:'Dziennik Wn/Ma',matches:'Rozrachunki',report:'Zestawienia',history:'Historia'};
+const tabs={start:'Twoja rola',simulator:'Miesiąc firmy D01–D36',personnel:'Kadry — dwie osoby',payroll:'Lista płac — ćwiczenie',invoices:'Faktury',bank:'Wyciąg bankowy',journal:'Dziennik Wn/Ma',matches:'Rozrachunki',report:'Zestawienia',history:'Historia'};
 const invBlank=(name,kind='sale',number=1)=>({id:uid(),kind,number:`CW/${kind==='sale'?'FV':'ZAK'}/${number}`,party:'',seller:name,date:'2026-11-01',due:'2026-11-15',lines:[{label:'Usługa ćwiczeniowa',qty:'1',price:kind==='sale'?'1000,00':'200,00',code:'23'}]});
 const journalBlank=()=>({id:uid(),date:'2026-11-01',memo:'',source_type:'manual',source_id:'',lines:[{account:'201',debit:'0',credit:'0'},{account:'700',debit:'0',credit:'0'}]});
 const input=(group,key,label,value,type='text',extra='')=>`<div><label for="${group}-${key}">${e(label)}</label><input id="${group}-${key}" data-group="${group}" data-field="${key}" type="${type}" value="${e(value)}" ${extra}></div>`;
@@ -10,7 +11,7 @@ const select=(group,key,label,value,options)=>`<div><label for="${group}-${key}"
 const button=(action,label,id='',cls='')=>`<button type="button" data-action="${action}" data-id="${e(id)}" class="${cls}">${e(label)}</button>`;
 const download=(name,text,type='application/json')=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 export function mountLab(root,db){
- let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null;
+ let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null;
  const key=()=>`trenerki-lab-draft-v1:${user?.id}:${ws?.id}`;
  function blankDrafts(){return {invoice:invBlank(ws.name,'sale',ws.state.invoices.filter(i=>i.kind==='sale').length+1),journal:journalBlank(),match:{bank_id:'',invoice_id:'',amount:''},question:{text:''}};}
  function restoreDrafts(){drafts=blankDrafts();try{const raw=localStorage.getItem(key());if(raw){const old=JSON.parse(raw);if(old?.invoice?.lines&&old?.journal?.lines)drafts={...drafts,...old};}}catch{localWarning='Nie udało się odczytać lokalnego szkicu. Dane zapisane w bazie pozostają dostępne.';}}
@@ -27,7 +28,7 @@ export function mountLab(root,db){
     if(workspaces.length)await open(workspaces[0].id);
   }catch(x){error=x.message||'Nie udało się wczytać biura.';}finally{render();}
  }
- async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;journalDrafts={};journalDoc='D01';hrSelected='P01';hrDraft=null;status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
+ async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;journalDrafts={};journalDoc='D01';hrSelected='P01';hrDraft=null;payrollDraft=null;status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
  async function commit(next){
   if(!canWrite)throw new Error('Brak aktywnego dostępu do zapisu.');
   const r=await db.rpc('ta_accounting_lab_save',{workspace_id:ws.id,expected_version:ws.version,next_state:next});
@@ -194,6 +195,53 @@ export function mountLab(root,db){
    '<p class="small muted">Dokumenty faktyczne NOT_VERIFIED; kontrola prawna NOT_TESTED; E2E dwóch kont NOT_TESTED. Każda osoba ma osobny zapis we własnym biurze; istniejące faktury, bank i dekrety są nienaruszone.</p></section>';
  }
 
+ function payroll(){
+  if(!ws)return '';
+  const people=readPersonnelCases(ws.state),saved=readPayrollPractices(ws.state);
+  const chosen=PERSONNEL_IDS.includes(hrSelected)?hrSelected:'P01',person=people[chosen];
+  const previous=saved[chosen],review=payrollReview(ws.state,chosen);
+  const current=payrollDraft?.employee_id===chosen?payrollDraft:previous||{
+   employee_id:chosen,period:person?.starts_on?.slice(0,7)||'2026-01',
+   gross_cents:person?.monthly_gross_cents||0,social_cents:0,health_cents:0,pit_cents:0,
+   other_cents:0,employer_extra_cents:0,paid_cents:0,paid_on:''
+  };
+  const rows=PERSONNEL_IDS.map(id=>{
+   const c=saved[id],r=payrollReview(ws.state,id);
+   return '<tr><td>'+e(id)+' · '+e(people[id]?.fictional_name||'brak osoby')+'</td>'+
+    '<td>'+(c?e(c.period):'brak')+'</td><td>'+(c?money(c.gross_cents):'—')+'</td>'+
+    '<td>'+(c?money(r.net_cents):'—')+'</td><td>'+(c?money(r.outstanding_cents):'—')+'</td>'+
+    '<td>'+e(c?(r.eligible?'spójne liczbowo, prawo niezweryfikowane':'wymaga aktualizacji kartoteki'):'do wykonania')+'</td></tr>';
+  });
+  const amountFields=Object.entries(PAYROLL_FIELDS).map(([key,label])=>
+   '<div><label for="pay-'+e(key)+'">'+e(label)+' (PLN)</label>'+
+   '<input id="pay-'+e(key)+'" inputmode="decimal" value="'+e(decimal(current[key]||0))+'" /></div>').join('');
+  return '<section class="card"><span class="pill">ETAP PŁACOWY · WYŁĄCZNIE FIKCYJNA SYMULACJA</span>'+
+   '<h2>Oblicz netto, przelew i pozostałą należność dla dwóch osób</h2>'+
+   '<p>Najpierw zapisz pracowników w zakładce Kadry. Przepisz kwoty potrąceń ze swojego <strong>fikcyjnego</strong> zadania, bez zgadywania stawek. Sprawdzenie oblicza netto = brutto − potrącenia, saldo do wypłaty = netto − oznaczona wypłata oraz koszt pracodawcy = brutto + dodatkowy koszt płatnika. Wynik nie jest listą płac sporządzoną zgodnie z ustawami.</p>'+
+   '<p class="error">Nie wpisuj prawdziwych pracowników ani kwot z ich dokumentacji. Nie obliczamy tutaj obowiązujących składek ZUS/PIT, nie rejestrujemy rzeczywistego przelewu, nie generujemy deklaracji ani nie wysyłamy dokumentów.</p>'+
+   '<div class="actions">'+PERSONNEL_IDS.map(id=>button('payroll-select','Osoba '+id,id,id===chosen?'active':'')).join('')+'</div>'+
+   (person?
+    '<p class="notice">Kartoteka '+e(chosen)+': '+e(person.fictional_name)+
+    ' · fikcyjne miesięczne brutto '+money(person.monthly_gross_cents)+
+    ' · od '+e(person.starts_on)+(person.ends_on?' do '+e(person.ends_on):' (bez daty zakończenia)')+'</p>'+
+    '<div class="row"><div><label for="pay-period">Miesiąc rozliczenia</label>'+
+    '<input type="month" id="pay-period" value="'+e(current.period)+'" /></div>'+
+    '<div><label>Brutto z kartoteki (nieedytowalne)</label><p><strong>'+money(person.monthly_gross_cents)+'</strong></p></div></div>'+
+    '<div class="row">'+amountFields+'</div>'+
+    '<div><label for="pay-paid_on">Data ćwiczebnej wypłaty (gdy wypłacono ponad 0)</label>'+
+    '<input type="date" id="pay-paid_on" value="'+e(current.paid_on||'')+'" /></div>'+
+    '<div class="actions">'+button('payroll-save','Sprawdź bilans i zapisz w prywatnym biurze',chosen,'primary')+'</div>'+
+    (review.recorded?'<p class="'+(review.eligible?'notice':'error')+'">Miesiąc '+e(review.payroll_month)+
+     ' · potrącenia '+money(review.deductions_cents)+
+     ' · netto '+money(review.net_cents)+
+     ' · jeszcze do wypłaty '+money(review.outstanding_cents)+
+     ' · całkowity koszt modelowy '+money(review.total_employer_cost_cents)+
+     '. '+e(review.message)+'</p>':'<p class="muted">Brak zapisanego rozrachunku. Wpisz fikcyjne dane liczbowe.</p>')
+    :'<p class="error">Nie zapisano jeszcze tej osoby w Kadrach. Najpierw utwórz jej fikcyjną kartotekę.</p>')+
+   '<h3>Podsumowanie dwóch osób</h3>'+table(['Osoba','Miesiąc','Brutto','Netto','Pozostało','Status'],rows)+
+   '<p class="small muted">Wpisane potrącenia to założenia ćwiczenia, nie obliczone stawki. Bank: NOT_TESTED; prawo pracy, ZUS i PIT: NOT_VERIFIED; dwa konta: NOT_TESTED; odtworzenie kopii: NOT_TESTED. Wersjonowanie i kontrola konfliktu korzystają z istniejącego prywatnego zapisu biura.</p></section>';
+ }
+
  function simulator(){
   if(!scenario)return '<section class="card"><h2>Miesiąc firmy D01–D36</h2><p class="error">'+e(scenarioError||'Zaloguj się i uzyskaj dostęp do kursu, aby otworzyć symulator.')+'</p></section>';
   const docs=scenario.documents,doc=docs.find(d=>d.id===scenarioDoc)||docs[0];
@@ -216,9 +264,9 @@ export function mountLab(root,db){
  }
  function coach(){const list=inspect(ws.state);return `<aside class="card"><span class="eyebrow">ANIELKA · KONTROLA ĆWICZENIA</span><h2>Sprawdźmy Twoją pracę</h2><p class="muted">Wskazuję różnice i podpowiadam tok rozwiązania. Nie zmieniam za Ciebie dokumentów.</p>${!list.length?'<p class="notice">Nie widzę problemów objętych kontrolami tego modelu. To nie jest pełna kontrola podatkowa ani potwierdzenie ukończenia całego kursu.</p>':list.slice(0,12).map(h=>`<div class="hint"><span class="pill">${e(h.severity)}</span><h3>${e(h.title)}</h3><p>${e(h.text)}</p></div>`).join('')}${list.length>12?`<p class="small">Łącznie ${list.length} uwag. Kolejne pojawią się po uporządkowaniu pierwszych.</p>`:''}<details><summary>Jak działa sprawdzanie?</summary><p class="small">Kontrole kwot i stron są wykonywane według reguł tego scenariusza. Nie dobierają aktualnej stawki VAT do dowolnego produktu. Dalsza rozmowa z Anielką nie blokuje pracy i nie zatwierdza za Ciebie zapisów.</p></details><form data-form="coach"><label for="question-text">Zapytaj o błąd w swoim ćwiczeniu</label><textarea id="question-text" data-group="question" data-field="text" maxlength="700" placeholder="Np. Dlaczego zapłata nie jest drugą sprzedażą?">${e(drafts.question.text)}</textarea><div class="actions"><button type="submit" ${!canWrite||busy?'disabled':''}>Poproś o wyjaśnienie</button></div></form>${answer?`<p class="notice">${e(answer).replace(/\n/g,'<br>')}</p>`:''}</aside>`;}
  function render(){if(disposed)return;
-  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice()+closingScreen()+integratedAuditScreen(),personnel,invoices,bank,journal,matches,report,history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
+  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice()+closingScreen()+integratedAuditScreen(),personnel,payroll,invoices,bank,journal,matches,report,history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
   if(busy)root.querySelectorAll('button').forEach(b=>b.disabled=true);
-  if(!canWrite)root.querySelectorAll('[data-action="create"],[data-action="reverse"],[data-action="unmatch"],[data-action="sim-save"],[data-action="sim-bank-save"],[data-action="hr-save"],[data-action="sim-journal-save"],[data-action="sim-journal-none"],[data-action="sim-journal-add"],[data-action="sim-journal-remove"]').forEach(b=>b.disabled=true);
+  if(!canWrite)root.querySelectorAll('[data-action="create"],[data-action="reverse"],[data-action="unmatch"],[data-action="sim-save"],[data-action="sim-bank-save"],[data-action="hr-save"],[data-action="payroll-save"],[data-action="sim-journal-save"],[data-action="sim-journal-none"],[data-action="sim-journal-add"],[data-action="sim-journal-remove"]').forEach(b=>b.disabled=true);
  }
  async function run(fn){if(busy)return;busy=true;error='';render();try{await fn();}catch(x){error=x.message||'Operacja nie powiodła się. Formularz pozostaje zapisany lokalnie.';}finally{busy=false;render();}}
  function currentInvoice(statusValue){const d=drafts.invoice;return invoiceTotals({id:d.id,kind:d.kind,number:d.number.trim(),party:d.party.trim(),seller:d.seller,date:d.date,due:d.due,status:statusValue,lines:d.lines.map(l=>({label:l.label.trim(),qty_milli:scaled(l.qty,3),unit_cents:cents(l.price),tax_code:l.code}))});}
@@ -235,7 +283,7 @@ export function mountLab(root,db){
  async function click(event){const b=event.target.closest('[data-action]');if(!b||b.disabled||busy)return;const a=b.dataset.action,id=b.dataset.id;
   if(a==='tab'){tab=id;if(tab==='history')await run(async()=>{const r=await db.from('ta_accounting_lab_events').select('version,created_at,changes').eq('workspace_id',ws.id).order('version',{ascending:false}).limit(50);if(r.error)throw r.error;history=r.data||[];});else render();return;}
   if(a==='hr-select'){
-    if(PERSONNEL_IDS.includes(id)){hrSelected=id;hrDraft=null;render();}
+    if(PERSONNEL_IDS.includes(id)){hrSelected=id;hrDraft=null;payrollDraft=null;render();}
     return;
    }
    if(a==='hr-save'){
@@ -256,6 +304,26 @@ export function mountLab(root,db){
     });
     return;
    }
+
+  if(a==='payroll-select'){
+   if(PERSONNEL_IDS.includes(id)){hrSelected=id;payrollDraft=null;render();}
+   return;
+  }
+  if(a==='payroll-save'){
+   const person=readPersonnelCases(ws.state)[hrSelected];
+   if(!person){error='Najpierw utwórz fikcyjnego pracownika w Kadrach.';render();return;}
+   const get=k=>root.querySelector('#pay-'+k)?.value?.trim()||'';
+   const fields=Object.fromEntries(Object.keys(PAYROLL_FIELDS).map(k=>[k,get(k)]));
+   let candidate;
+   try{candidate={employee_id:hrSelected,period:get('period'),
+    gross_cents:person.monthly_gross_cents,paid_on:get('paid_on'),
+    ...Object.fromEntries(Object.entries(fields).map(([k,v])=>[k,cents(v||'0')]))};}
+   catch {error='Podaj liczby w złotych, np. 600,00, bez ujemnych kwot.';render();return;}
+   payrollDraft=candidate;
+   await run(async()=>{if(!canWrite)throw new Error('Brak uprawnienia do prywatnego biura.');
+    await commit(withPayrollPractice(ws.state,candidate));payrollDraft=null;});
+   return;
+  }
    if(a==='sim-save'){
     const choice=root.querySelector('#sim-kind')?.value||'';
     await run(async()=>{if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');await commit(withScenarioAnswer(ws.state,scenario,id,choice));});

@@ -469,3 +469,80 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.deepEqual(readPersonnelCases(damaged),{});
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
+
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview} from '../src/accounting/payroll-practice.js';
+const payrollCase=(id='P01')=>({
+ employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
+ social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
+ pit_cents:id==='P01'?18000:10000,other_cents:0,
+ employer_extra_cents:id==='P01'?90000:50000,
+ paid_cents:id==='P01'?300000:251000,paid_on:'2026-01-31'
+});
+const payrollState=()=>{
+ let a=withPersonnelCase(EMPTY(),fakeEmployee());
+ a=withPersonnelCase(a,{...fakeEmployee('P02'),fictional_name:'Piotr Przykładowy',
+  monthly_gross_cents:310000,workload_pct:50,ends_on:'2026-01-28'});
+ return a;
+};
+test('Płace: brutto minus cztery potrącenia i wypłata daje saldo do zapłaty',()=>{
+ const c=payrollCase();const m=payrollMath(c);
+ assert.equal(m.deductions_cents,113000);
+ assert.equal(m.net_cents,407000);
+ assert.equal(m.outstanding_cents,107000);
+ assert.equal(m.total_employer_cost_cents,610000);
+ assert.equal(validPayrollPractice(c),true);
+});
+test('Płace: odrębne koszty pracodawcy nie pomniejszają netto',()=>{
+ const c={...payrollCase(),employer_extra_cents:0};
+ assert.equal(payrollMath(c).net_cents,407000);
+ assert.equal(payrollMath(c).total_employer_cost_cents,520000);
+});
+test('Płace: prywatny zapis dwóch osób nie zmienia dokumentów finansowych',()=>{
+ const state=payrollState(),snapshot=JSON.stringify(state);
+ const a=withPayrollPractice(state,payrollCase('P01'));
+ const b=withPayrollPractice(a,payrollCase('P02'));
+ assert.equal(JSON.stringify(state),snapshot);
+ assert.equal(Object.keys(readPayrollPractices(b)).length,2);
+ assert.equal(payrollReview(b,'P02').net_cents,251000);
+ assert.equal(payrollReview(b,'P02').outstanding_cents,0);
+ assert.deepEqual(b.invoices,state.invoices);
+ assert.deepEqual(b.journals,state.journals);
+ assert.deepEqual(b.bank,state.bank);
+ assert.equal(payrollReview(b,'P02').legal_rates,'not_verified');
+ assert.equal(payrollReview(b,'P02').actual_bank_match,'not_tested');
+});
+test('Płace: nadmierne potrącenia, nadpłata i brak daty wypłaty są blokowane',()=>{
+ const state=payrollState(),c=payrollCase();
+ for(const wrong of [{...c,pit_cents:600000},{...c,paid_cents:500000},
+  {...c,paid_on:''},{...c,social_cents:-1},{...c,period:'2026-13'}]){
+  assert.equal(validPayrollPractice(wrong),false);
+  assert.throws(()=>withPayrollPractice(state,wrong));
+ }
+});
+test('Płace: okres poza umową i niepoprawna data wypłaty są odrzucane',()=>{
+ const s=payrollState(),c=payrollCase('P02');
+ assert.throws(()=>withPayrollPractice(s,{...c,period:'2026-02'}));
+ assert.throws(()=>withPayrollPractice(s,{...c,period:'2025-12'}));
+ assert.throws(()=>withPayrollPractice(s,{...c,paid_on:'2026-02-30'}));
+ assert.throws(()=>withPayrollPractice(s,{...c,paid_on:'2025-12-31'}));
+});
+test('Płace: zmiana kwoty brutto w kartotece unieważnia zgodność szkicu',()=>{
+ const a=withPayrollPractice(payrollState(),payrollCase('P01'));
+ const changed=withPersonnelCase(a,{...readPersonnelCases(a).P01,monthly_gross_cents:530000});
+ assert.equal(payrollReview(changed,'P01').recorded,true);
+ assert.equal(payrollReview(changed,'P01').eligible,false);
+ assert.throws(()=>withPayrollPractice(changed,payrollCase('P01')));
+});
+test('Płace: nadpisanie P01 zachowuje P02 i odrzuca nieprawidłowy scenariusz',()=>{
+ const a=withPayrollPractice(withPayrollPractice(payrollState(),payrollCase('P01')),payrollCase('P02'));
+ const next=withPayrollPractice(a,{...payrollCase('P01'),paid_cents:407000});
+ assert.deepEqual(readPayrollPractices(next).P02,readPayrollPractices(a).P02);
+ assert.equal(payrollReview(next,'P01').outstanding_cents,0);
+ const other={...next,simulator_payroll_v1:{...next.simulator_payroll_v1,scenario_id:'other'}};
+ assert.deepEqual(readPayrollPractices(other),{});
+});
+test('Płace: pusty HR nie może utworzyć listy płac; definicje pól są kompletne',()=>{
+ assert.equal(Object.keys(PAYROLL_FIELDS).length,6);
+ assert.throws(()=>withPayrollPractice(EMPTY(),payrollCase()));
+ assert.equal(payrollReview(EMPTY(),'P01').recorded,false);
+});
