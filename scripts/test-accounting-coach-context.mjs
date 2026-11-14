@@ -9,3 +9,16 @@ test('Tekst podszywający się pod konto lub kategorię jest usuwany',()=>{const
 test('Lista ograniczona do 10 nie zmienia pełnej liczby',()=>{const s=state();s.invoices=Array.from({length:15},(_,n)=>({...s.invoices[0],id:'ID'+n}));const c=teachingContext(s,1);assert.equal(c.counts.invoices,15);assert.equal(c.recent_invoices.length,10);assert.equal(c.recent_invoices[0].ref,'I6');});
 test('Brak stanu nie powoduje wyjątku',()=>assert.equal(teachingContext(null,1).counts.assets,0));
 test('Instrukcja nie udaje uprawnień do zmiany ani kwalifikacji podatku',()=>{assert.ok(coachInstruction.includes('Nie zmieniasz'));assert.ok(coachInstruction.includes('nie stawkę VAT'));assert.ok(coachInstruction.includes('010'));assert.ok(coachInstruction.includes('071'));});
+
+test('Anielka rozróżnia zakup Google Ads, sprzedaż do platformy i przychód z AdSense',()=>{
+ for(const phrase of ['GOOGLE ADS','META ADS','ADSENSE','KUPUJE','SPRZEDAJE','refakturuje','kto WYSTAWIA','kto ją OTRZYMUJE'])
+  assert.ok(coachInstruction.includes(phrase),'Brak rozróżnienia: '+phrase);
+});
+test('Instrukcja nie uznaje reverse charge ani odliczenia VAT bez danych',()=>{
+ for(const phrase of ['nie nakazuj wpisania „reverse charge”','status VAT','VAT-UE','VAT-8','VAT-9M','Nie zakładaj, że podatnik zwolniony'])
+  assert.ok(coachInstruction.includes(phrase),'Brak ograniczenia: '+phrase);
+});
+test('Urzędowe linki są sugestią do weryfikacji, a nie udawanym sprawdzeniem w czasie rzeczywistym',()=>{
+ assert.match(coachInstruction,/podatki\.gov\.pl\/podatki-firmowe\/vat\/poradniki-i-informatory\/miejsce-swiadczenia-opodatkowania/);
+ assert.match(coachInstruction,/Nie twierdź, że sprawdziłaś je na żywo/);
+});
