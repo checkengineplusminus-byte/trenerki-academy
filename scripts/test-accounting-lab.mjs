@@ -610,7 +610,7 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
 
-import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview} from '../src/accounting/payroll-practice.js';
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollLifecycleChecklist} from '../src/accounting/payroll-practice.js';
 const payrollCase=(id='P01')=>({
  employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
  social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
@@ -1006,4 +1006,71 @@ test('Zapis nie może dotyczyć faktury o nieznanym statusie',()=>{
  const s=fullScenario();
  s.invoices[1].status='cancelled';
  assert.ok(inspect(s).some(x=>x.code==='posting_unissued_invoice'&&x.id==='jpurchase'));
+});
+
+
+test('Cykl kadrowo-płacowy: puste biuro pokazuje brak kroków, a nie kompletność',()=>{
+ const initial=EMPTY(),snap=JSON.stringify(initial),r=payrollLifecycleChecklist(initial,'P01');
+ assert.equal(r.ready_for_training_review,false);
+ assert.equal(r.steps.find(x=>x.key==='personnel').status,'missing');
+ assert.equal(r.steps.find(x=>x.key==='payroll').status,'blocked');
+ assert.equal(r.legal_review,'not_tested');
+ assert.equal(r.real_bank,'not_verified');
+ assert.equal(r.ledger_posted,false);
+ assert.equal(r.real_e2e,'not_tested');
+ assert.equal(JSON.stringify(initial),snap);
+});
+test('Cykl kadrowo-płacowy: prawidłowe obliczenia nie zastępują dokumentów i przelewu',()=>{
+ const state=withPayrollPractice(payrollState(),payrollCase('P01'));
+ const result=payrollLifecycleChecklist(state,'P01');
+ assert.equal(result.steps.find(x=>x.key==='documents').status,'pending');
+ assert.equal(result.steps.find(x=>x.key==='payroll').status,'arithmetically_consistent');
+ assert.equal(result.steps.find(x=>x.key==='bank').status,'pending');
+ assert.equal(result.steps.find(x=>x.key==='settlement').status,'pending');
+ assert.equal(result.ready_for_training_review,false);
+});
+test('Cykl kadrowo-płacowy: po dopasowaniu fikcyjnego CSV i netto nadal brak statusu E2E',()=>{
+ const bank=[{id:'SALARY-FULL',date:'2026-01-31',amount_cents:-407000}];
+ let state=withPayrollPractice({...payrollState(),bank},{
+  ...payrollCase('P01'),paid_cents:407000,bank_transaction_id:'SALARY-FULL'});
+ const before=JSON.stringify(state);
+ const partial=payrollLifecycleChecklist(state,'P01');
+ assert.equal(partial.steps.find(x=>x.key==='bank').status,'csv_matched');
+ assert.equal(partial.steps.find(x=>x.key==='settlement').status,'amount_reconciled');
+ assert.equal(partial.ready_for_training_review,false,'Zaznaczenie dokumentów to osobny etap');
+ state=withPersonnelCase(state,{...readPersonnelCases(state).P01,
+  document_drafts:{...readPersonnelCases(state).P01.document_drafts,payroll_draft:true}});
+ const r=payrollLifecycleChecklist(state,'P01');
+ assert.equal(r.ready_for_training_review,true,'Tylko gotowość do recenzji ćwiczenia');
+ assert.equal(r.legal_review,'not_tested');
+ assert.equal(r.actual_documents,'not_verified');
+ assert.equal(r.ledger_posted,false);
+ assert.equal(r.real_e2e,'not_tested');
+ assert.equal(JSON.stringify(withPayrollPractice({...payrollState(),bank},{
+  ...payrollCase('P01'),paid_cents:407000,bank_transaction_id:'SALARY-FULL'})),before);
+});
+test('Cykl kadrowo-płacowy: odejście wymaga trzech dodatkowych projektów, nie udaje odprawy',()=>{
+ let state=payrollState();
+ state.bank=[{id:'SALARY-EXIT',date:'2026-01-31',amount_cents:-251000}];
+ state=withPayrollPractice(state,{...payrollCase('P02'),bank_transaction_id:'SALARY-EXIT'});
+ const before=payrollLifecycleChecklist(state,'P02');
+ assert.equal(before.steps.find(x=>x.key==='exit').status,'pending');
+ assert.equal(before.ready_for_training_review,false);
+ const person=readPersonnelCases(state).P02;
+ state=withPersonnelCase(state,{...person,document_drafts:Object.fromEntries(Object.keys(PERSONNEL_FLAGS).map(k=>[k,true]))});
+ const after=payrollLifecycleChecklist(state,'P02');
+ assert.equal(after.steps.find(x=>x.key==='exit').status,'marked_by_student');
+ assert.equal(after.ready_for_training_review,true);
+ assert.equal(after.actual_documents,'not_verified');
+ assert.equal(after.real_bank,'not_verified');
+});
+test('Cykl kadrowo-płacowy: zmieniona umowa odbiera zgodność płac i banku',()=>{
+ const s=withPayrollPractice(payrollState(),payrollCase('P01'));
+ const state=withPersonnelCase(s,{...readPersonnelCases(s).P01,monthly_gross_cents:530000});
+ const before=JSON.stringify(state),result=payrollLifecycleChecklist(state,'P01');
+ assert.equal(result.steps.find(x=>x.key==='payroll').status,'stale');
+ assert.equal(result.steps.find(x=>x.key==='bank').status,'blocked');
+ assert.equal(result.steps.find(x=>x.key==='settlement').status,'blocked');
+ assert.equal(result.ready_for_training_review,false);
+ assert.equal(JSON.stringify(state),before);
 });
