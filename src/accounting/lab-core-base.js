@@ -1,5 +1,5 @@
 /** Silnik ćwiczeniowy. Kwoty zapisujemy w całkowitych groszach; brak rzeczywistych deklaracji. */
-export const ACCOUNTS = {'100':'Kasa','130':'Rachunek bankowy','201':'Należności od klientów','202':'Zobowiązania wobec dostawców','221':'VAT naliczony — ćwiczenie','222':'VAT należny — ćwiczenie','300':'Zapasy — ćwiczenie','400':'Koszty usług — ćwiczenie','700':'Przychody ze sprzedaży','800':'Kapitał — ćwiczenie'};
+export const ACCOUNTS = {'100':'Kasa','130':'Rachunek bankowy','201':'Należności od klientów','202':'Zobowiązania wobec dostawców','220':'Zaliczki PIT od płac — ćwiczenie','229':'Składki pracownika do rozliczenia — ćwiczenie','231':'Rozrachunki z wynagrodzeń — ćwiczenie','234':'Inne potrącenia z wynagrodzeń — ćwiczenie','221':'VAT naliczony — ćwiczenie','222':'VAT należny — ćwiczenie','300':'Zapasy — ćwiczenie','400':'Koszty usług — ćwiczenie','404':'Wynagrodzenia brutto — ćwiczenie','700':'Przychody ze sprzedaży','800':'Kapitał — ćwiczenie'};
 export const EMPTY = () => ({schema_version:1,invoices:[],bank:[],journals:[],matches:[]});
 export const uid = () => globalThis.crypto.randomUUID();
 export const today = () => {const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
@@ -42,7 +42,7 @@ export function balanceReport(s){
  for(const j of s.journals.filter(x=>x.status==='posted'))for(const l of j.lines){const a=accounts[l.account];if(a){a.debit+=l.debit;a.credit+=l.credit;a.balance=a.debit-a.credit;}}
  const values=Object.values(accounts),paid=id=>s.matches.filter(m=>m.invoice_id===id).reduce((v,m)=>v+m.amount_cents,0);
  const outstanding=kind=>s.invoices.filter(i=>i.kind===kind&&i.status==='issued').reduce((v,i)=>v+invoiceTotals(i).gross_cents-paid(i.id),0);
- return {accounts:values,debit:values.reduce((v,a)=>v+a.debit,0),credit:values.reduce((v,a)=>v+a.credit,0),bank:s.bank.reduce((v,b)=>v+b.amount_cents,0),ledgerBank:accounts['130'].balance,profit:-accounts['700'].balance-accounts['400'].balance,vat:-accounts['222'].balance-accounts['221'].balance,receivable:outstanding('sale'),payable:outstanding('purchase')};
+ return {accounts:values,debit:values.reduce((v,a)=>v+a.debit,0),credit:values.reduce((v,a)=>v+a.credit,0),bank:s.bank.reduce((v,b)=>v+b.amount_cents,0),ledgerBank:accounts['130'].balance,profit:-accounts['700'].balance-accounts['400'].balance-accounts['404'].balance,vat:-accounts['222'].balance-accounts['221'].balance,receivable:outstanding('sale'),payable:outstanding('purchase')};
 }
 export function inspect(s){
  const issues=[],live=livePostings(s);const add=(code,title,text,entity,id,severity='uwaga')=>issues.push({code,title,text,entity,id,severity});

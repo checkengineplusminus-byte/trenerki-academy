@@ -155,3 +155,58 @@ export function payrollPeriodSummary(state){
   excluded_employee_ids,bank_match:'not_tested',legal_rates:'not_verified',
   cashflow_type:'declared_training_payments_not_bank_verified'};
 }
+
+
+/** Czytelny wzorzec dekretu miesięcznego do SAMODZIELNEJ pracy w dzienniku.
+ * Brak automatycznego zapisu, brak naliczania prawa podatkowego i ZUS.
+ * Przykładowy plan kont; indywidualny plan kont wymaga odrębnego uzgodnienia.
+ * Inne potrącenia i dodatkowe koszty pracodawcy wymagają klasyfikacji źródeł.
+ */
+export function payrollJournalPreview(state,employeeId){
+ const c=readPayrollPractices(state)[employeeId],person=readPersonnelCases(state)[employeeId];
+ if(!c||!eligibleEmployee(person,c))
+  return {ready:false,reason:'Brak spójnej kartoteki pracownika i karty płac; najpierw popraw daty i brutto.',
+   ledger_posted:false,legal_verified:false};
+ const m=payrollMath(c);
+ const descriptions={
+  '404':'Wynagrodzenia brutto — koszt modelu',
+  '231':'Rozrachunki z tytułu wynagrodzeń — netto',
+  '229':'Rozrachunki ze składek pracownika — uproszczony model',
+  '220':'Zaliczka PIT — kwota ręcznie podana',
+  '234':'Inne potrącenia — wymagają ustalenia odbiorcy',
+  '130':'Rachunek bankowy — fikcyjny CSV'
+ };
+ const line=(account,side,amount)=>({
+  account,label:descriptions[account],
+  debit_cents:side==='debit'?amount:0,
+  credit_cents:side==='credit'?amount:0
+ });
+ const accrual=[
+  line('404','debit',c.gross_cents),
+  ...(m.net_cents?[line('231','credit',m.net_cents)]:[]),
+  ...(c.social_cents+c.health_cents?[line('229','credit',c.social_cents+c.health_cents)]:[]),
+  ...(c.pit_cents?[line('220','credit',c.pit_cents)]:[]),
+  ...(c.other_cents?[line('234','credit',c.other_cents)]:[])
+ ];
+ const totals=lines=>({
+  lines,
+  debit_cents:lines.reduce((n,x)=>n+x.debit_cents,0),
+  credit_cents:lines.reduce((n,x)=>n+x.credit_cents,0)
+ });
+ const accrualSummary=totals(accrual);
+ const match=payrollBankMatch(state,employeeId);
+ const payment=match.status==='matched_training_csv'&&c.paid_cents>0
+  ?totals([line('231','debit',c.paid_cents),line('130','credit',c.paid_cents)]):null;
+ return {
+  ready:true,employee_id:employeeId,period:c.period,
+  accrual:{...accrualSummary,balanced:accrualSummary.debit_cents===accrualSummary.credit_cents},
+  payment:payment?{...payment,balanced:payment.debit_cents===payment.credit_cents}:null,
+  payment_status:match.status,
+  net_cents:m.net_cents,
+  outstanding_cents:m.outstanding_cents,
+  unclassified_employer_cost_cents:c.employer_extra_cents,
+  declared_other_deductions_cents:c.other_cents,
+  ledger_posted:false,actual_bank_verified:false,legal_verified:false,
+  disclaimer:'Propozycja kont do symulacji; klasyfikacja pozostałych potrąceń, dodatkowych kosztów pracodawcy i zgodność z prawem wymagają dokumentów i recenzji. Nie zapisano żadnego dekretu.'
+ };
+}

@@ -470,7 +470,7 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
 
-import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice} from '../src/accounting/payroll-practice.js';
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview} from '../src/accounting/payroll-practice.js';
 const payrollCase=(id='P01')=>({
  employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
  social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
@@ -733,4 +733,87 @@ test('Rozrachunki: historyczne błędne przypisania są widoczne w diagnostyce b
   {id:'m2',bank_id:'B-IN',invoice_id:'sale',amount_cents:100}]};
  assert.equal(inspectInvoiceBankMatches(duplicate).length,1);
  assert.deepEqual(inspectInvoiceBankMatches(valid),[]);
+});
+
+
+test('Płace: przykład dekretu Wn/Ma bilansuje brutto, netto i ręczne potrącenia',()=>{
+ const state=withPayrollPractice(payrollState(),payrollCase());
+ const before=JSON.stringify(state),p=payrollJournalPreview(state,'P01');
+ assert.equal(p.ready,true);assert.equal(p.accrual.balanced,true);
+ assert.equal(p.accrual.debit_cents,520000);
+ assert.equal(p.accrual.credit_cents,520000);
+ assert.equal(p.net_cents,407000);
+ assert.equal(p.accrual.lines.find(x=>x.account==='404').debit_cents,520000);
+ assert.equal(p.accrual.lines.find(x=>x.account==='231').credit_cents,407000);
+ assert.equal(p.accrual.lines.find(x=>x.account==='229').credit_cents,95000);
+ assert.equal(p.accrual.lines.find(x=>x.account==='220').credit_cents,18000);
+ assert.equal(p.unclassified_employer_cost_cents,90000);
+ assert.equal(p.payment,null);
+ assert.equal(p.legal_verified,false);
+ assert.equal(JSON.stringify(state),before);
+});
+test('Płace: plan zapisu bankowego powstaje tylko dla zgodnego fikcyjnego CSV',()=>{
+ let state=payrollState();
+ state.bank=[{id:'SALARY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjne wynagrodzenie'}];
+ const c={...payrollCase(),bank_transaction_id:'SALARY1'};
+ state=withPayrollPractice(state,c);
+ const preview=payrollJournalPreview(state,'P01');
+ assert.equal(preview.payment_status,'matched_training_csv');
+ assert.equal(preview.payment.balanced,true);
+ assert.deepEqual(preview.payment.lines.map(x=>[x.account,x.debit_cents,x.credit_cents]),[
+  ['231',300000,0],['130',0,300000]]);
+ const invalid={...state,bank:[{...state.bank[0],amount_cents:-299999}]};
+ assert.equal(payrollJournalPreview(invalid,'P01').payment,null);
+});
+test('Płace: bank nie pokazuje nieprzypisanego przelewu gdy jest zgodne powiązanie z listą płac',()=>{
+ let state=payrollState();
+ state.bank=[{id:'SALARY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjny przelew'}];
+ state=withPayrollPractice(state,{...payrollCase(),bank_transaction_id:'SALARY1'});
+ const issues=inspect(state);
+ assert.equal(issues.some(x=>x.code==='unmatched_bank'&&x.id==='SALARY1'),false);
+ assert.equal(issues.some(x=>x.code==='unposted_bank'&&x.id==='SALARY1'),true);
+});
+test('Płace: księgowanie Wn 231 / Ma 130 zgadza się z fikcyjnym wyciągiem, nie tworzy drugiego kosztu',()=>{
+ let state=payrollState();
+ state.bank=[{id:'SALARY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjna wypłata'}];
+ state=withPayrollPractice(state,{...payrollCase(),bank_transaction_id:'SALARY1'});
+ state.journals=[{id:'J-WAGE',status:'posted',date:'2026-01-31',source_type:'bank',
+  source_id:'SALARY1',lines:[{account:'231',debit:300000,credit:0},{account:'130',debit:0,credit:300000}]}];
+ const report=balanceReport(state);
+ assert.equal(report.bank,-300000);assert.equal(report.ledgerBank,-300000);
+ assert.equal(report.debit,report.credit);
+ assert.equal(report.profit,0);
+ assert.equal(inspect(state).some(x=>['payroll_bank_accounts','unmatched_bank','bank_difference','unposted_bank'].includes(x.code)),false);
+});
+test('Płace: przychód/koszt wynagrodzeń występuje przy liście płac, a nie przy samej wypłacie',()=>{
+ let state=payrollState();
+ state=withPayrollPractice(state,payrollCase());
+ const p=payrollJournalPreview(state,'P01'),lines=p.accrual.lines.map(l=>({
+  account:l.account,debit:l.debit_cents,credit:l.credit_cents
+ }));
+ state.journals=[{id:'J-GROSS',status:'posted',date:'2026-01-31',source_type:'manual',source_id:'',
+  lines}];
+ const report=balanceReport(state);
+ assert.equal(report.profit,-520000);
+ assert.equal(report.debit,520000);
+ assert.equal(report.credit,520000);
+ assert.equal(report.accounts.find(x=>x.code==='404').balance,520000);
+});
+test('Płace: błędny i podwójny dekret bankowy zostaje wskazany, nie skasowany',()=>{
+ let state=payrollState();
+ state.bank=[{id:'SALARY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjna wypłata'}];
+ state=withPayrollPractice(state,{...payrollCase(),bank_transaction_id:'SALARY1'});
+ state.journals=[{id:'J-WRONG',status:'posted',date:'2026-01-31',source_type:'bank',
+  source_id:'SALARY1',lines:[{account:'400',debit:300000,credit:0},{account:'130',debit:0,credit:300000}]}];
+ const before=JSON.stringify(state);
+ assert.ok(inspect(state).some(x=>x.code==='payroll_bank_accounts'));
+ assert.equal(JSON.stringify(state),before);
+ state.journals=[...state.journals,{...state.journals[0],id:'J-WRONG-2'}];
+ assert.ok(inspect(state).some(x=>x.code==='payroll_bank_duplicate_journal'));
+});
+test('Płace: zmieniona kartoteka blokuje podpowiedź księgową i nie udaje zgodności',()=>{
+ const state=withPayrollPractice(payrollState(),payrollCase());
+ const changed=withPersonnelCase(state,{...fakeEmployee(),monthly_gross_cents:530000});
+ const result=payrollJournalPreview(changed,'P01');
+ assert.equal(result.ready,false);assert.equal(result.ledger_posted,false);
 });

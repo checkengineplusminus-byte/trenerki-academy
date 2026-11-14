@@ -1,7 +1,7 @@
 import {ACCOUNTS,EMPTY,uid,money,decimal,cents,scaled,invoiceTotals,expectedInvoiceLines,journalTotals,balanceReport,inspect,reverseJournal,parseBankCSV,BANK_TEMPLATE,escapeHTML as e,invoiceHTML} from './lab-core.js';
 import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow} from './simulator-core.js';
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
-import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice} from './payroll-practice.js';
+import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview} from './payroll-practice.js';
 import {withInvoiceBankMatch} from './invoice-match.js';
 const css=`.tlab{font:15px/1.55 system-ui,sans-serif;color:#183c2b;background:#f6f8f0;min-height:100vh;padding:24px}.tlab *{box-sizing:border-box}.tlab main{max-width:1280px;margin:auto}.tlab h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:12px 0}.tlab h2{font-size:22px;margin:0 0 14px}.tlab h3{font-size:17px;margin:0 0 8px}.tlab a{color:inherit}.tlab header{background:#183c2b;color:#fff;border-radius:22px;padding:28px;margin:18px 0}.tlab .eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px}.tlab .muted{color:#627567;font-size:13px}.tlab header .muted{color:#c9dcc9}.tlab .card{background:white;border:1px solid #dbe5d5;border-radius:16px;padding:20px;margin:14px 0}.tlab .notice{background:#edf3df;border-left:4px solid #6c8e47;padding:14px;border-radius:9px}.tlab .error{background:#fff0e9;color:#8d331f;border-left:4px solid #a3462b;padding:14px;border-radius:9px;white-space:pre-wrap}.tlab .grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px}.tlab .row{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.tlab .row>*{flex:1;min-width:120px}.tlab label{display:block;font-size:13px;font-weight:700;margin-bottom:4px}.tlab input,.tlab select,.tlab textarea{font:inherit;color:inherit;background:white;border:1px solid #bbceb6;border-radius:9px;padding:10px;max-width:100%;width:100%}.tlab textarea{min-height:90px}.tlab input:focus,.tlab select:focus,.tlab button:focus-visible{outline:3px solid #adc793;outline-offset:2px}.tlab button{font:inherit;font-weight:700;cursor:pointer;border:1px solid #bbceb6;background:#edf4e4;color:#183c2b;border-radius:9px;padding:10px 14px}.tlab button.primary{background:#183c2b;color:white;border-color:#183c2b}.tlab button:disabled{opacity:.45;cursor:not-allowed}.tlab .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tlab nav{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}.tlab nav button.active{background:#183c2b;color:white}.tlab .scroll{overflow:auto;max-width:100%}.tlab table{border-collapse:collapse;width:100%;font-size:13px}.tlab th,.tlab td{padding:10px 8px;text-align:left;border-bottom:1px solid #e5ecdf;vertical-align:top}.tlab th{background:#eff4e8;white-space:nowrap}.tlab td.amount,.tlab th.amount{text-align:right;white-space:nowrap}.tlab .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tlab .stat{background:#edf4e4;border-radius:12px;padding:14px}.tlab .stat strong{display:block;font-size:23px}.tlab .pill{display:inline-block;border-radius:15px;background:#edf4e4;padding:3px 9px;font-size:12px;font-weight:700}.tlab .hint{border-top:1px solid #dbe5d5;padding:14px 0}.tlab .hint p{font-size:13px;margin:4px 0}.tlab details{margin:12px 0}.tlab summary{cursor:pointer;font-weight:700}.tlab .line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .journal-line{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .small{font-size:12px}.tlab ol{padding-left:22px}.tlab aside{align-self:start}.tlab .grid>*{min-width:0}.tlab .scroll table{min-width:510px}.tlab .status{min-height:28px;font-size:13px}.tlab fieldset{border:0;margin:0;padding:0;min-width:0}.tlab pre{white-space:pre-wrap;word-break:break-word;font-size:12px}.tlab .empty{padding:25px;text-align:center;color:#627567}@media(max-width:980px){.tlab .grid{grid-template-columns:1fr}.tlab aside{order:2}}@media(max-width:600px){.tlab{padding:12px}.tlab header{padding:22px 18px}.tlab .card{padding:14px}.tlab .stats{grid-template-columns:1fr}.tlab .line,.tlab .journal-line{grid-template-columns:1fr 1fr}.tlab .line>div:first-child,.tlab .journal-line>div:first-child{grid-column:1/-1}.tlab nav button{font-size:13px;padding:9px}.tlab h2{font-size:20px}}`;
 const tabs={start:'Twoja rola',simulator:'Miesiąc firmy D01–D36',personnel:'Kadry — dwie osoby',payroll:'Lista płac — ćwiczenie',invoices:'Faktury',bank:'Wyciąg bankowy',journal:'Dziennik Wn/Ma',matches:'Rozrachunki',report:'Zestawienia',history:'Historia'};
@@ -202,6 +202,7 @@ export function mountLab(root,db){
   const chosen=PERSONNEL_IDS.includes(hrSelected)?hrSelected:'P01',person=people[chosen];
   const previous=saved[chosen],review=payrollReview(ws.state,chosen);
   const liquidity=payrollPeriodSummary(ws.state);
+   const posting=payrollJournalPreview(ws.state,chosen);
   const current=payrollDraft?.employee_id===chosen?payrollDraft:previous||{
    employee_id:chosen,period:person?.starts_on?.slice(0,7)||'2026-01',
    gross_cents:person?.monthly_gross_cents||0,social_cents:0,health_cents:0,pit_cents:0,
@@ -256,7 +257,25 @@ export function mountLab(root,db){
      ' · całkowity koszt modelowy '+money(review.total_employer_cost_cents)+
      '. '+e(review.message)+' CSV: '+e(bankStatusNames[bankReview.status]||bankReview.status)+'.</p>':'<p class="muted">Brak zapisanego rozrachunku. Wpisz fikcyjne dane liczbowe.</p>')
     :'<p class="error">Nie zapisano jeszcze tej osoby w Kadrach. Najpierw utwórz jej fikcyjną kartotekę.</p>')+
-   '<h3>Podsumowanie dwóch osób</h3>'+table(['Osoba','Miesiąc','Brutto','Netto','Pozostało','Status'],rows)+
+   '<h3>Plan dekretacji Wn/Ma — samodzielnie przepisz do dziennika</h3>'+
+    '<p class="small muted">To tylko edukacyjna propozycja i przykład planu kont, nie zapis księgowy ani naliczenie składek lub podatku. Sprawdź odbiorców potrąceń i dokumenty źródłowe.</p>'+
+    (posting.ready?
+     '<h4>Lista płac – ujęcie miesięcznego brutto i ręcznych potrąceń</h4>'+
+     table(['Konto i rola','Wn','Ma'],posting.accrual.lines.map(l=>
+      '<tr><td>'+e(l.account)+' — '+e(l.label)+'</td><td>'+money(l.debit_cents)+'</td><td>'+money(l.credit_cents)+'</td></tr>'))+
+     '<p>Kontrola stron Wn '+money(posting.accrual.debit_cents)+' = Ma '+
+      money(posting.accrual.credit_cents)+': '+(posting.accrual.balanced?'zgodne':'do wyjaśnienia')+'.</p>'+
+     (posting.payment?'<h4>Wyłącznie gdy wypłata jest dopasowana do fikcyjnego CSV</h4>'+
+      table(['Konto i rola','Wn','Ma'],posting.payment.lines.map(l=>
+       '<tr><td>'+e(l.account)+' — '+e(l.label)+'</td><td>'+money(l.debit_cents)+'</td><td>'+money(l.credit_cents)+'</td></tr>'))+
+      '<p class="small muted">Propozycja dekretu bankowego, a nie już zaksięgowany przelew. Wybierz właściwy dowód w Dzienniku Wn/Ma.</p>'
+      :'<p class="error">Brak poprawnego dopasowania wypłaty do fikcyjnego CSV: nie pokazujemy planu księgowania płatności. Wprowadź fikcyjny wyciąg i zweryfikuj datę/kwotę.</p>')+
+     (posting.unclassified_employer_cost_cents>0?'<p class="small muted">Dodatkowy koszt pracodawcy '+
+      money(posting.unclassified_employer_cost_cents)+
+      ' pozostaje bez propozycji konta: najpierw ustal, czego dotyczy i jaka podstawa dokumentowa go potwierdza.</p>':'')+
+     button('tab','Otwórz Dziennik Wn/Ma i przećwicz zapis','journal')
+    :'<p class="error">'+e(posting.reason)+'</p>')+
+    '<h3>Podsumowanie dwóch osób</h3>'+table(['Osoba','Miesiąc','Brutto','Netto','Pozostało','Status'],rows)+
    '<h3>Płynność wypłat według miesiąca</h3>'+
    table(['Miesiąc','Osoby','Brutto','Netto','Oznaczone wypłaty','Pozostało do wypłaty','Powiązane z fikcyjnym CSV','Całkowity koszt modelowy'],liquidityRows)+
    (liquidity.excluded_employee_ids.length?'<p class="error">Nie wliczono nieaktualnych kart płac: '+e(liquidity.excluded_employee_ids.join(', '))+'. Popraw kartoteki przed sumowaniem.</p>':'')+
