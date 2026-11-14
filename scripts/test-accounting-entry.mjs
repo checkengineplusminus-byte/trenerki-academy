@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {ACCOUNTING_COURSE as A,courseDestination,accountingProgress,courseFinished} from '../src/accounting/course-entry.js';
+import {materialCoverageKnown,materialCount} from '../src/accounting/program-visibility.js';
 test('Encyklopedia otwiera właściwy czytnik',()=>assert.deepEqual(courseDestination(A),{pathname:'/ksiegowosc'}));
 test('Funkcja nawigacji zachowuje prawidłowy numer lekcji',()=>assert.deepEqual(courseDestination(A,'20'),{pathname:'/ksiegowosc',params:{lesson:'20'}}));
 test('Dolna i górna granica numeru lekcji',()=>{for(const n of ['1','100000'])assert.equal(courseDestination(A,n).params.lesson,n);});
@@ -48,4 +49,22 @@ test('Licznik ćwiczeń bieżącego tematu odpowiada zapisanej liczbie, nie sztu
  const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
  assert.match(code,/\{\(m\.exercises\|\|\[\]\)\.length\}/);
  assert.doesNotMatch(code,/Cztery zadania\. Klucz/);
+});
+
+test('Brak uprawnień do szkiców nie jest brakiem materiałów',()=>{
+ assert.equal(materialCoverageKnown(false,true),false);
+ assert.equal(materialCoverageKnown(true,true),true);
+ assert.equal(materialCoverageKnown(true,false),false);
+ assert.equal(materialCount(false,true,0,100),100,'Zwykły użytkownik nie widzi stu wersji do recenzji przez RLS, lecz RPC ujawnia licznik');
+ assert.equal(materialCount(false,true,0,null),null,'Nie wolno zastępować nieznanej liczby zerem');
+ assert.equal(materialCount(true,true,100,100),100);
+ assert.equal(materialCount(true,false,0,100),null);
+});
+test('Ekran programu nie myli RLS z brakiem nowego materiału',()=>{
+ const code=readFileSync(new URL('../app/program-ksiegowosci.tsx',import.meta.url),'utf8');
+ assert.match(code,/access\.data\?\.is_editor===true/);
+ assert.match(code,/const coverageKnown=materialCoverageKnown\(isEditor,materialsReady\)/);
+ assert.match(code,/filter==='missing'&&!coverageKnown/);
+ assert.match(code,/Nieudostępniona wersja nie oznacza braku opracowania/);
+ assert.doesNotMatch(code,/materialsReady\?total-draftCount/);
 });
