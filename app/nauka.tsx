@@ -59,6 +59,7 @@ export default function Learning(){
   setBusy(true);setError('');setItems([]);setDone([]);setChecks({});setMsg('');setShowProgram(false);
   try{
    if(!slug)throw new Error('Wybierz kurs z listy.');
+   if(slug==='ksiegowosc-od-podstaw'){router.replace('/ksiegowosc');return;}
    const {data:{user:u},error:ue}=await supabase.auth.getUser();
    if(ue||!u){router.replace('/konto');return;}
    const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);

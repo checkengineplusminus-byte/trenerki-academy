@@ -16,6 +16,14 @@ test('Uszkodzone dane nie tworzą wyniku',()=>{for(const x of [{approved_count:'
 test('Przeczytanie wszystkich dostępnych lekcji nie kończy encyklopedii',()=>assert.equal(courseFinished(A,45,45),false));
 test('Stary certyfikat nie odblokowuje nowego egzaminu encyklopedii',()=>assert.equal(courseFinished(A,45,45,true),false));
 test('Pozostałe kursy zachowują kryteria zakończenia',()=>{assert.equal(courseFinished('excel',8,8),true);assert.equal(courseFinished('excel',8,4),false);assert.equal(courseFinished('excel',8,4,true),true);});
-test('Czytnik pozostałych kursów pozostał niezmieniony',()=>{const bytes=readFileSync(new URL('../app/nauka.tsx',import.meta.url));const hash=createHash('sha1').update(Buffer.from(`blob ${bytes.length}\0`)).update(bytes).digest('hex');assert.equal(hash,'26064c9a53016522f2a5781d41d0c2cbb1414e20');});
+test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',()=>{
+ const source=readFileSync(new URL('../app/nauka.tsx',import.meta.url),'utf8');
+ const guard="   if(slug==='ksiegowosc-od-podstaw'){router.replace('/ksiegowosc');return;}\n";
+ assert.equal(source.split(guard).length,2,'Przekierowanie występuje tylko raz');
+ assert.ok(source.indexOf(guard)<source.indexOf("supabase.auth.getUser()"),'Przekieruj przed starym odczytem danych');
+ const bytes=Buffer.from(source.replace(guard,''),'utf8');
+ const hash=createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
+ assert.equal(hash,'26064c9a53016522f2a5781d41d0c2cbb1414e20','Czytnik pozostałych kursów jest bez zmian');
+});
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
 test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Podgląd przygotowywanej encyklopedii'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
