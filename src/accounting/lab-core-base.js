@@ -49,6 +49,11 @@ export function inspect(s){
  for(const j of s.journals){
   const t=journalTotals(j);if(j.status==='draft')add('draft','Szkic czeka na sprawdzenie',t.debit===t.credit?'Wn i Ma są równe. Sprawdź jeszcze konta, datę i dokument źródłowy; równość nie oznacza poprawnej kwalifikacji.':`Wn: ${money(t.debit)}; Ma: ${money(t.credit)}. Różnica wynosi ${money(Math.abs(t.debit-t.credit))}. Poszukaj brakującej strony, zamiast dopisywać przypadkowe konto.`, 'journal',j.id,t.debit===t.credit?'wskazówka':'błąd');
   if(j.lines.some(l=>(l.debit>0&&l.credit>0)||(l.debit===0&&l.credit===0)))add('side','Sprawdź strony wiersza','W zatwierdzanym wierszu wpisz dodatnią kwotę tylko po Wn albo po Ma.','journal',j.id,'błąd');
+  if(j.status==='posted'){
+   const invalid=j.lines.some(l=>!Number.isSafeInteger(l.debit)||!Number.isSafeInteger(l.credit)||l.debit<0||l.credit<0);
+   if(invalid)add('posted_invalid_amount','Nieprawidłowa kwota w zatwierdzonym dekrecie','W zatwierdzonym zapisie kwoty Wn i Ma muszą być nieujemnymi liczbami całkowitymi w groszach. Sprawdź źródło i wykonaj jawną korektę.', 'journal',j.id,'błąd');
+   else if(t.debit!==t.credit)add('posted_unbalanced','Niezbilansowany zatwierdzony dekret',`Wn: ${money(t.debit)}; Ma: ${money(t.credit)}. Zapis został oznaczony jako zatwierdzony mimo różnicy. Porównaj dokument źródłowy i wykonaj jawną korektę lub storno.`, 'journal',j.id,'błąd');
+  }
  }
  for(const i of s.invoices){
   if(i.status!=='issued')continue;
