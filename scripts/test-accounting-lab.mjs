@@ -28,3 +28,45 @@ test('Ponowne zaliczenie przelewu do przychodów jest wykryte',()=>{const s=full
 test('Storno zachowuje oryginał i odwraca sumy',()=>{const s=fullScenario(),j=s.journals[0],copy=JSON.stringify(j),r=reverseJournal(j,'2026-11-06');assert.equal(r.lines[0].credit,j.lines[0].debit);assert.equal(JSON.stringify(j),copy);s.journals.push(r);assert.ok(inspect(s).some(x=>x.code==='unposted_invoice'));});
 test('Wydruk nie wykonuje HTML kontrahenta',()=>{const i=invoice();i.party='<script>alert(1)</script>';const html=invoiceHTML(i);assert.ok(!html.includes('<script>alert'));assert.ok(html.includes('&lt;script&gt;'));assert.ok(html.includes('DOKUMENT ĆWICZENIOWY'));});
 test('Import z pustymi wierszami nie tworzy pustych transakcji',()=>assert.equal(parseBankCSV('\n'+BANK_TEMPLATE+'\n').rows.length,2));
+
+import {SCENARIO_ID,CLASS_KINDS,readScenario,readScenarioAnswers,withScenarioAnswer,checkScenarioAnswer,scenarioSummary} from '../src/accounting/simulator-core.js';
+
+const kinds=Object.keys(CLASS_KINDS);
+const fakeManifest={id:SCENARIO_ID,documents:Array.from({length:36},(_,i)=>({
+ id:'D'+String(i+1).padStart(2,'0'),date:'2026-01-15',title:'Fikcyjny dokument '+(i+1),
+ kind:kinds[i%kinds.length],amount_pln:i+1,fictional:true,source_verification:'training_only'
+}))};
+test('Manifest 36 dokumentów: ID, źródła i brak duplikatów',()=>{
+ assert.equal(readScenario(fakeManifest).documents.length,36);
+ assert.throws(()=>readScenario({...fakeManifest,documents:fakeManifest.documents.slice(1)}));
+ assert.throws(()=>readScenario({...fakeManifest,documents:[...fakeManifest.documents.slice(0,35),fakeManifest.documents[0]]}));
+ assert.throws(()=>readScenario({...fakeManifest,documents:fakeManifest.documents.map((d,i)=>i===0?{...d,fictional:false}:d)}));
+});
+test('Błędne kategorie są odrzucane przed zapisem, odpowiedź na koncie jest izolowana od oryginału',()=>{
+ const base={schema_version:1,invoices:[],bank:[],journals:[],matches:[]};
+ assert.throws(()=>withScenarioAnswer(base,fakeManifest,'D01','admin'));
+ assert.throws(()=>withScenarioAnswer(base,fakeManifest,'D37','formal'));
+ const next=withScenarioAnswer(base,fakeManifest,'D01',fakeManifest.documents[0].kind);
+ assert.equal(base.simulator_attempts_v1,undefined);
+ assert.equal(readScenarioAnswers(next).D01,fakeManifest.documents[0].kind);
+ assert.equal(checkScenarioAnswer(fakeManifest.documents[0],readScenarioAnswers(next).D01).correct,true);
+ assert.equal(checkScenarioAnswer(fakeManifest.documents[0],'invalid').valid,false);
+ assert.equal(readScenarioAnswers({...next,simulator_attempts_v1:{scenario_id:'inny',answers:{D01:'formal'}}}).D01,undefined);
+});
+test('Różne źródła dokumentów nie są traktowane jako drugie przepływy',()=>{
+ const scenario={...fakeManifest,documents:fakeManifest.documents.map((d,i)=>i===0?{...d,kind:'bank_in',amount_pln:60000}:
+ i===1?{...d,kind:'formal',amount_pln:60000}:i===2?{...d,kind:'bank_out',amount_pln:5000}:
+ {...d,kind:'purchase',amount_pln:300})};
+ const r=scenarioSummary(scenario);
+ assert.equal(r.bankIn,60000);assert.equal(r.bankOut,5000);assert.equal(r.bankNet,55000);
+ assert.equal(r.attempted,0);assert.equal(r.correct,0);
+});
+test('Odpowiedzi w prywatnym biurze można poprawiać bez oznaczania etapu jako ukończony',()=>{
+ const base={schema_version:1,invoices:[],bank:[],journals:[],matches:[]};
+ const a=withScenarioAnswer(base,fakeManifest,'D01','bank_out');
+ const b=withScenarioAnswer(a,fakeManifest,'D01','formal');
+ assert.equal(scenarioSummary(fakeManifest,readScenarioAnswers(a)).attempted,1);
+ assert.equal(scenarioSummary(fakeManifest,readScenarioAnswers(a)).correct,0);
+ assert.equal(scenarioSummary(fakeManifest,readScenarioAnswers(b)).correct,1);
+ assert.equal(scenarioSummary(fakeManifest,readScenarioAnswers(b)).total,36);
+});
