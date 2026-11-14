@@ -201,6 +201,7 @@ export function journalClosingPreview(scenario,attempts={}){
   machine:amt('010')+amt('070')+amt('079'),trade_payables:-amt('202'),
   loan:-amt('240'),profit:-amt('700')-amt('400')-amt('401')-amt('404')-amt('751')
  };
+ for(const key of Object.keys(actual))if(Object.is(actual[key],-0))actual[key]=0;
  const assets_cents=actual.bank+actual.receivables+actual.inventory+actual.machine;
  const liabilities_cents=actual.trade_payables+actual.loan;
  const equity_cents=-amt('800')+actual.profit;
