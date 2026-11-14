@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {monthIndex,monthAt,monthEnd,assetDate,assetFacts,normalizeAsset,schedule,acquisitionLines,assetPosition,validateAssets,planAcquisition,planDepreciation,planDisposal,assetsControl} from '../src/accounting/assets-core.js';
+import {monthIndex,monthAt,monthEnd,assetDate,assetFacts,normalizeAsset,schedule,acquisitionLines,assetPosition,validateAssets,planAcquisition,planDepreciation,planDisposal,planSale,validatedAssetSaleInvoice,assetsControl} from '../src/accounting/assets-core.js';
 const base=()=>({schema_version:1,invoices:[{id:'I1',kind:'purchase',status:'issued',date:'2026-11-01',supply_date:'2026-11-01',number:'CW/ST/1',party:'Fikcyjny dostawca',seller:'Fikcyjna firma',due:'2026-11-15',net_cents:1200000,tax_cents:276000,gross_cents:1476000,lines:[{label:'Urządzenie',qty_milli:1000,unit_cents:1200000,tax_code:'23'}]}],bank:[],matches:[],journals:[]});
 const card=()=>({id:'A1',inventory_no:'CW/ST/001',name:'Urządzenie ćwiczeniowe',category:'machine',invoice_id:'I1',in_service_date:'2026-11-02',start_month:'2026-11',months:48,residual_cents:0,deductible_bps:10000,status:'draft'});
 const activated=()=>planAcquisition(base(),card(),'J1').state;
@@ -47,3 +47,55 @@ test('Kontrola wykrywa ręczny zapis majątku poza kartoteką',()=>{const s=acti
 test('Nieistniejąca karta nie przyjmuje księgowania',()=>{const s=activated();s.journals[0].asset_id='missing';assert.throws(()=>validateAssets(s));});
 test('Druga karta nie wykorzystuje ponownie aktywnego zakupu',()=>assert.throws(()=>planAcquisition(activated(),{...card(),id:'A2',inventory_no:'CW/ST/002'},'J2')));
 test('Szkic zawiera wskazówkę, nie potwierdzenie majątku',()=>assert.equal(assetsControl({...base(),assets:[card()]})[0].code,'asset_draft'));
+
+const saleInvoiceReady=()=>{
+ const s=activated();
+ s.invoices.push({id:'S1',kind:'sale',status:'issued',date:'2026-11-30',supply_date:'2026-11-30',number:'CW/FV/ST/1',party:'Fikcyjny kupujący',seller:'Fikcyjna firma',
+   net_cents:800000,tax_cents:184000,gross_cents:984000,
+   lines:[{label:'Sprzedaż CW/ST/001 — urządzenie ćwiczeniowe',qty_milli:1000,unit_cents:800000,tax_code:'23'}]});
+ s.journals.push({id:'SALE1',status:'posted',date:'2026-11-30',source_type:'invoice',source_id:'S1',
+   lines:[{account:'201',debit:984000,credit:0},{account:'700',debit:0,credit:800000},{account:'222',debit:0,credit:184000}]});
+ return s;
+};
+test('Sprzedaż środka wymaga uprzednio wystawionej i zaksięgowanej faktury',()=>{
+ assert.throws(()=>planSale(activated(),'A1','S1','2026-11-30','AS1'),/fakturę/i);
+ const noPosting=saleInvoiceReady();noPosting.journals.pop();
+ assert.throws(()=>planSale(noPosting,'A1','S1','2026-11-30','AS1'),/zaksięguj/i);
+});
+test('Karta sprzedaży zdejmuje wartość księgową, nie zapisuje przychodu i VAT ponownie',()=>{
+ const s=planDepreciation(saleInvoiceReady(),'A1','D1').state;
+ const old=JSON.stringify(s),r=planSale(s,'A1','S1','2026-11-30','AS1'),p=assetPosition(r.state.assets[0],r.state);
+ assert.equal(JSON.stringify(s),old);
+ assert.equal(r.journal.source_type,'manual');assert.equal(r.journal.source_id,'S1');
+ assert.deepEqual(r.journal.lines,[{account:'071',debit:25000,credit:0},{account:'761',debit:1175000,credit:0},{account:'010',debit:0,credit:1200000}]);
+ assert.equal(r.journal.lines.reduce((n,l)=>n+l.debit-l.credit,0),0);
+ assert.equal(r.journal.lines.some(l=>['201','700','222'].includes(l.account)),false);
+ assert.equal(p.carrying,0);assert.deepEqual(assetsControl(r.state),[]);
+ assert.equal(activeJournals(r.state).filter(j=>j.source_id==='S1'&&j.asset_action==='dispose').length,1);
+});
+test('Sprzedaż blokuje niezgodny numer składnika, datę oraz błędny dokument',()=>{
+ for(const edit of [
+  s=>{s.invoices[1].lines[0].label='Zwykła usługa bez numeru';},
+  s=>{s.invoices[1].status='draft';},
+  s=>{s.invoices[1].kind='purchase';},
+  s=>{s.invoices[1].gross_cents++;},
+  s=>{s.journals[1].lines[0].debit++;},
+  s=>{s.journals.push({...s.journals[1],id:'SALE2'});}
+ ]){
+  const s=saleInvoiceReady();edit(s);assert.throws(()=>planSale(s,'A1','S1','2026-11-30','AS1'));
+ }
+ assert.throws(()=>planSale(saleInvoiceReady(),'A1','S1','2026-11-29','AS1'),/data/);
+});
+test('Po sprzedaży nie nalicza się amortyzacji ani nie sprzedaje ponownie; storno zachowuje historię',()=>{
+ const s=planSale(saleInvoiceReady(),'A1','S1','2026-11-30','AS1').state;
+ assert.throws(()=>planSale(s,'A1','S1','2026-11-30','AS2'));
+ assert.throws(()=>planDepreciation(s,'A1','D1'));
+ const back=reverse(s,'AS1','RSALE');validateAssets(back,s);
+ assert.equal(assetPosition(back.assets[0],back).carrying,1200000);
+ assert.equal(planDepreciation(back,'A1','D1').journal.asset_period,'2026-11');
+});
+test('Manipulacja powiązaniem faktury z wyksięgowaniem jest wykrywana',()=>{
+ const s=planSale(saleInvoiceReady(),'A1','S1','2026-11-30','AS1').state,changed=copy(s);
+ changed.journals.find(j=>j.id==='AS1').source_id='NIEZNANY';
+ assert.throws(()=>validateAssets(changed,s));
+});
