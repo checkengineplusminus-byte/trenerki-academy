@@ -674,3 +674,63 @@ test('Płace/CSV: nie można ponownie rozliczyć wynagrodzenia w module faktur',
  assert.equal(bankRowAvailableForInvoice(cleared,'NOT-IMPORTED'),false);
  assert.equal(bankRowAvailableForInvoice({...linked,bank:[]},'TRAIN-OUT-1'),false);
 });
+
+
+import {checkInvoiceBankMatch,withInvoiceBankMatch,inspectInvoiceBankMatches} from '../src/accounting/invoice-match.js';
+const matchFixture=()=>{
+ const sale=invoiceTotals(invoice('sale',100000)),purchase=invoiceTotals(invoice('purchase',20000));
+ return {...EMPTY(),invoices:[sale,purchase],bank:[
+  {id:'B-IN',date:'2026-11-05',amount_cents:123000,description:'Fikcyjny wpływ'},
+  {id:'B-OUT',date:'2026-11-06',amount_cents:-24600,description:'Fikcyjny wypływ'}]};
+};
+test('Rozrachunki: poprawna częściowa wpłata i dopłata nie naruszają poprzedniego zapisu',()=>{
+ const first=matchFixture(),snapshot=JSON.stringify(first);
+ const a=withInvoiceBankMatch(first,{id:'m1',bank_id:'B-IN',invoice_id:'sale',amount_cents:23000});
+ const b=withInvoiceBankMatch(a,{id:'m2',bank_id:'B-IN',invoice_id:'sale',amount_cents:100000});
+ assert.equal(JSON.stringify(first),snapshot);
+ assert.equal(a.matches.length,1);assert.equal(b.matches.length,2);
+ assert.equal(checkInvoiceBankMatch(first,{id:'z',bank_id:'B-IN',invoice_id:'sale',amount_cents:123000}).invoice_remaining_cents,0);
+ assert.deepEqual(inspectInvoiceBankMatches(b),[]);
+});
+test('Rozrachunki: zakup wymaga wypływu, sprzedaż wpływu; szkic faktury nie przechodzi',()=>{
+ const s=matchFixture();
+ assert.throws(()=>withInvoiceBankMatch(s,{id:'bad1',bank_id:'B-OUT',invoice_id:'sale',amount_cents:100}),/Wpłatę klienta/);
+ assert.throws(()=>withInvoiceBankMatch(s,{id:'bad2',bank_id:'B-IN',invoice_id:'purchase',amount_cents:100}),/Zapłatę dostawcy/);
+ const draft=structuredClone(s);draft.invoices[0].status='draft';
+ assert.throws(()=>withInvoiceBankMatch(draft,{id:'bad3',bank_id:'B-IN',invoice_id:'sale',amount_cents:100}),/wystawioną fakturę/);
+});
+test('Rozrachunki: blokada nadpłaty faktury i większej kwoty niż pozostałość na banku',()=>{
+ const s=matchFixture(),part=withInvoiceBankMatch(s,{id:'m1',bank_id:'B-IN',invoice_id:'sale',amount_cents:120000});
+ assert.throws(()=>withInvoiceBankMatch(part,{id:'m2',bank_id:'B-IN',invoice_id:'sale',amount_cents:5000}),/przekracza/);
+ const extra={...s,bank:[...s.bank,{id:'B-LARGE',date:'2026-11-07',amount_cents:200000,description:'Fikcyjny wpływ'}]};
+ assert.throws(()=>withInvoiceBankMatch(extra,{id:'m1',bank_id:'B-LARGE',invoice_id:'sale',amount_cents:123001}),/przekracza/);
+ assert.throws(()=>withInvoiceBankMatch(s,{id:'m1',bank_id:'B-OUT',invoice_id:'purchase',amount_cents:24601}),/przekracza/);
+});
+test('Rozrachunki: zero, ujemna kwota, NaN, powtórzony identyfikator i nieznana operacja są blokowane',()=>{
+ const s=matchFixture();const good={id:'m1',bank_id:'B-IN',invoice_id:'sale',amount_cents:100};
+ for(const amount_cents of [0,-1,NaN,100.5,Infinity])
+  assert.throws(()=>withInvoiceBankMatch(s,{...good,amount_cents}));
+ const a=withInvoiceBankMatch(s,good);
+ assert.throws(()=>withInvoiceBankMatch(a,{...good,amount_cents:200}),/już istnieje/);
+ assert.throws(()=>withInvoiceBankMatch(s,{...good,bank_id:'B-UNKNOWN'}),/istniejący przelew/);
+});
+test('Rozrachunki: przelew zarezerwowany dla wypłaty nie może być fakturą',()=>{
+ let s=payrollState();
+ s.bank=[{id:'PAY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjna płaca'}];
+ s=withPayrollPractice(s,{...payrollCase(),bank_transaction_id:'PAY1'});
+ s.invoices=[invoiceTotals(invoice('purchase',300000))];
+ assert.throws(()=>withInvoiceBankMatch(s,{id:'m1',bank_id:'PAY1',invoice_id:'purchase',amount_cents:300000}),/listy płac/);
+});
+test('Rozrachunki: historyczne błędne przypisania są widoczne w diagnostyce bez ich usuwania',()=>{
+ const valid=matchFixture();
+ const invalid={...valid,matches:[{id:'old',bank_id:'B-OUT',invoice_id:'sale',amount_cents:123000}]};
+ const old=JSON.stringify(invalid);
+ assert.equal(inspectInvoiceBankMatches(invalid).length,1);
+ assert.equal(inspect(invalid).some(x=>x.code==='invalid_invoice_payment_match'),true);
+ assert.equal(JSON.stringify(invalid),old);
+ const duplicate={...valid,matches:[
+  {id:'m1',bank_id:'B-IN',invoice_id:'sale',amount_cents:123000},
+  {id:'m2',bank_id:'B-IN',invoice_id:'sale',amount_cents:100}]};
+ assert.equal(inspectInvoiceBankMatches(duplicate).length,1);
+ assert.deepEqual(inspectInvoiceBankMatches(valid),[]);
+});

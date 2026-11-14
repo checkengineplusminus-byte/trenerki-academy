@@ -1,5 +1,6 @@
 import {ACCOUNTS as BASE_ACCOUNTS,balanceReport as baseReport,inspect as baseInspect,livePostings} from './lab-core-base.js';
 import {ASSET_ACCOUNTS,assetsControl,acquisitionLines} from './assets-core.js';
+import {inspectInvoiceBankMatches} from './invoice-match.js';
 export const ACCOUNTS={...BASE_ACCOUNTS,...ASSET_ACCOUNTS};
 export function balanceReport(s){
  const out=baseReport(s),map=Object.fromEntries(Object.entries(ACCOUNTS).sort(([a],[b])=>a.localeCompare(b)).map(([code,name])=>[code,{code,name,debit:0,credit:0,balance:0}]));
@@ -11,5 +12,5 @@ export function balanceReport(s){
 export function inspect(s){
  const acquisitions=livePostings(s).filter(j=>j.asset_action==='acquire'&&(s.assets||[]).some(a=>a.id===j.asset_id&&a.status==='active'));
  const cleared=new Set(acquisitions.filter(j=>{try{const a=s.assets.find(a=>a.id===j.asset_id);return JSON.stringify(j.lines.map(l=>[l.account,l.debit,l.credit]))===JSON.stringify(acquisitionLines(a,s).map(l=>[l.account,l.debit,l.credit]));}catch{return false;}}).map(j=>j.id));
- return [...baseInspect(s).filter(i=>!(i.code==='invoice_accounts'&&cleared.has(i.id))),...assetsControl(s)];
+ return [...baseInspect(s).filter(i=>!(i.code==='invoice_accounts'&&cleared.has(i.id))),...assetsControl(s),...inspectInvoiceBankMatches(s)];
 }
