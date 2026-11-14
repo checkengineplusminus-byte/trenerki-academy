@@ -3,6 +3,7 @@ import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withSce
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
 import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview} from './payroll-practice.js';
 import {withInvoiceBankMatch} from './invoice-match.js';
+import {monthTrainingReportHTML} from './month-training-report.js';
 const css=`.tlab{font:15px/1.55 system-ui,sans-serif;color:#183c2b;background:#f6f8f0;min-height:100vh;padding:24px}.tlab *{box-sizing:border-box}.tlab main{max-width:1280px;margin:auto}.tlab h1{font-size:clamp(28px,4vw,44px);line-height:1.15;margin:12px 0}.tlab h2{font-size:22px;margin:0 0 14px}.tlab h3{font-size:17px;margin:0 0 8px}.tlab a{color:inherit}.tlab header{background:#183c2b;color:#fff;border-radius:22px;padding:28px;margin:18px 0}.tlab .eyebrow{font-size:12px;font-weight:800;letter-spacing:1.5px}.tlab .muted{color:#627567;font-size:13px}.tlab header .muted{color:#c9dcc9}.tlab .card{background:white;border:1px solid #dbe5d5;border-radius:16px;padding:20px;margin:14px 0}.tlab .notice{background:#edf3df;border-left:4px solid #6c8e47;padding:14px;border-radius:9px}.tlab .error{background:#fff0e9;color:#8d331f;border-left:4px solid #a3462b;padding:14px;border-radius:9px;white-space:pre-wrap}.tlab .grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px}.tlab .row{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.tlab .row>*{flex:1;min-width:120px}.tlab label{display:block;font-size:13px;font-weight:700;margin-bottom:4px}.tlab input,.tlab select,.tlab textarea{font:inherit;color:inherit;background:white;border:1px solid #bbceb6;border-radius:9px;padding:10px;max-width:100%;width:100%}.tlab textarea{min-height:90px}.tlab input:focus,.tlab select:focus,.tlab button:focus-visible{outline:3px solid #adc793;outline-offset:2px}.tlab button{font:inherit;font-weight:700;cursor:pointer;border:1px solid #bbceb6;background:#edf4e4;color:#183c2b;border-radius:9px;padding:10px 14px}.tlab button.primary{background:#183c2b;color:white;border-color:#183c2b}.tlab button:disabled{opacity:.45;cursor:not-allowed}.tlab .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.tlab nav{display:flex;flex-wrap:wrap;gap:7px;margin:16px 0}.tlab nav button.active{background:#183c2b;color:white}.tlab .scroll{overflow:auto;max-width:100%}.tlab table{border-collapse:collapse;width:100%;font-size:13px}.tlab th,.tlab td{padding:10px 8px;text-align:left;border-bottom:1px solid #e5ecdf;vertical-align:top}.tlab th{background:#eff4e8;white-space:nowrap}.tlab td.amount,.tlab th.amount{text-align:right;white-space:nowrap}.tlab .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.tlab .stat{background:#edf4e4;border-radius:12px;padding:14px}.tlab .stat strong{display:block;font-size:23px}.tlab .pill{display:inline-block;border-radius:15px;background:#edf4e4;padding:3px 9px;font-size:12px;font-weight:700}.tlab .hint{border-top:1px solid #dbe5d5;padding:14px 0}.tlab .hint p{font-size:13px;margin:4px 0}.tlab details{margin:12px 0}.tlab summary{cursor:pointer;font-weight:700}.tlab .line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .journal-line{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;margin:10px 0;align-items:end}.tlab .small{font-size:12px}.tlab ol{padding-left:22px}.tlab aside{align-self:start}.tlab .grid>*{min-width:0}.tlab .scroll table{min-width:510px}.tlab .status{min-height:28px;font-size:13px}.tlab fieldset{border:0;margin:0;padding:0;min-width:0}.tlab pre{white-space:pre-wrap;word-break:break-word;font-size:12px}.tlab .empty{padding:25px;text-align:center;color:#627567}@media(max-width:980px){.tlab .grid{grid-template-columns:1fr}.tlab aside{order:2}}@media(max-width:600px){.tlab{padding:12px}.tlab header{padding:22px 18px}.tlab .card{padding:14px}.tlab .stats{grid-template-columns:1fr}.tlab .line,.tlab .journal-line{grid-template-columns:1fr 1fr}.tlab .line>div:first-child,.tlab .journal-line>div:first-child{grid-column:1/-1}.tlab nav button{font-size:13px;padding:9px}.tlab h2{font-size:20px}}`;
 const tabs={start:'Twoja rola',simulator:'Miesiąc firmy D01–D36',personnel:'Kadry — dwie osoby',payroll:'Lista płac — ćwiczenie',invoices:'Faktury',bank:'Wyciąg bankowy',journal:'Dziennik Wn/Ma',matches:'Rozrachunki',report:'Zestawienia',history:'Historia'};
 const invBlank=(name,kind='sale',number=1)=>({id:uid(),kind,number:`CW/${kind==='sale'?'FV':'ZAK'}/${number}`,party:'',seller:name,date:'2026-11-01',due:'2026-11-15',lines:[{label:'Usługa ćwiczeniowa',qty:'1',price:kind==='sale'?'1000,00':'200,00',code:'23'}]});
@@ -209,6 +210,7 @@ export function mountLab(root,db){
       (audit.reference_integrity==='blocked'?
        'Wzorcowy miesiąc zawiera niespójności i nie może być zaliczony. To problem materiału, nie Twoich odpowiedzi; zgłoś go do TRENERKI. Próby pozostają zapisane.':
        'Zgodnych etapów: '+audit.passed+'/'+audit.total+'. Popraw wskazane różnice przed oceną całości.'))+'</p>'+
+    (audit.training_consistent?'<div class="actions">'+button('sim-month-report','Pobierz i wydrukuj raport miesiąca (HTML)')+'</div>':'')+
     '<p class="small muted">Etapy korzystają z osobno zapisanych prób, nie zatwierdzają operacji w rzeczywistym dzienniku. E2E dwóch kont: niewykonany. Odbiór księgowo-prawny: oczekuje. Niezależny test odtworzenia backupu: niewykonany. Bez wysyłki do urzędu, KSeF czy banku.</p></section>';
  }
 
@@ -483,6 +485,15 @@ export function mountLab(root,db){
       const next=nextUnresolvedDocument(selected,'journal');
       if(next)journalDoc=next.id;
      }
+    });
+    return;
+   }
+   if(a==='sim-month-report'){
+    await run(async()=>{
+     if(!ws||!scenario)throw new Error('Raport wymaga pełnego, fikcyjnego miesiąca.');
+     const html=monthTrainingReportHTML(scenario,ws.state);
+     download('trenerki-raport-miesiaca-D01-D36.html',html,'text/html;charset=utf-8');
+     status='Pobrano raport wyłącznie szkoleniowy. Otwórz plik HTML i wybierz Drukuj.';
     });
     return;
    }
