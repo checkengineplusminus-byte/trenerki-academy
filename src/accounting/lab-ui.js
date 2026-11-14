@@ -138,7 +138,13 @@ export function mountLab(root,db){
    if(!scenario||!ws)return '';
    let audit;
    try{audit=auditMonthWorkflow(scenario,ws.state);}catch{return '<section class="card"><h2>Etap 5 · Kontrola przekrojowa</h2><p class="error">Brak kompletnych danych ćwiczeniowych. Pozostałe etapy nadal są dostępne.</p></section>';}
-   const rows=audit.checks.map(x=>'<tr><td>'+e(x.label)+'</td><td>'+(x.passed?'Zgodne':'Wymaga pracy')+'</td><td>'+e(x.detail)+'</td></tr>');
+   const sourceOK=audit.reference_integrity==='passed';
+   const rows=[
+    ...audit.checks.map(x=>'<tr><td>'+e(x.label)+'</td><td>'+(x.passed?'Zgodne':'Wymaga pracy')+'</td><td>'+e(x.detail)+'</td></tr>'),
+    '<tr><td>Integralność wzorca D01–D36</td><td>'+(sourceOK?'Zweryfikowany technicznie':'Zablokowany')+
+    '</td><td>'+e(sourceOK?'Dokumenty źródłowe, konto bankowe 130 i uzgodnienia wzorca są spójne w modelu. Nie jest to przegląd podatkowy ani E2E.':
+     'Wykryto '+audit.reference_issues.length+' niespójności wzorca. To nie jest błąd kursanta; zgłoś problem i zachowaj swoje próby.')+'</td></tr>'
+   ];
    return '<section class="card"><span class="pill">ETAP 5 · KONTROLA PRZEKROJOWA</span><h2>Czy wszystkie etapy pokazują ten sam miesiąc?</h2>'+
     '<p>Sprawdzamy razem: klasyfikację, przepływy bankowe, dekrety Wn/Ma, zgodność banku z dziennikiem i próbne zamknięcie. Równe strony Wn/Ma nie oznaczają jeszcze poprawnych dokumentów ani zgodności z wyciągiem.</p>'+
     table(['Kontrola','Stan','Co sprawdzić'],rows)+
