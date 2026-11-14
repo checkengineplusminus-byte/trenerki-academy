@@ -249,3 +249,62 @@ test('Niepełny miesiąc nie jest zamknięciem nawet przy równych stronach',()=
  const report=journalClosingPreview(manifest,readJournalAttempts(state,manifest));
  assert.equal(report.progress.attempted,1);assert.equal(report.model_reconciled,false);
 });
+
+
+import {auditMonthWorkflow} from '../src/accounting/simulator-core.js';
+function completeIntegratedFixture(){
+ const manifest=structuredClone(sampleJournalManifest);
+ manifest.documents=manifest.documents.map((d,i)=>({
+  ...d,kind:i===0||i===2?'bank_in':'formal',amount_pln:i===0?60000:i===2?8000:0
+ }));
+ manifest.journal_practice_v1.reconciliation={
+  bank:68000,receivables:8000,inventory:0,machine:0,trade_payables:0,loan:0,profit:0
+ };
+ let state=EMPTY();
+ for(const doc of manifest.documents){
+  state=withScenarioAnswer(state,manifest,doc.id,doc.kind);
+  state=withJournalAttempt(state,manifest,doc.id,manifest.journal_practice_v1.entries[doc.id].lines);
+ }
+ state=withBankExercise(state,manifest,{bank_in_cents:6800000,bank_out_cents:0,bank_net_cents:6800000});
+ return {manifest,state};
+}
+test('Etapy D01–D36: zgodność rozpoznania, banku, dziennika i bilansu',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const audit=auditMonthWorkflow(manifest,state);
+ assert.equal(audit.passed,5);
+ assert.equal(audit.training_consistent,true);
+ assert.equal(audit.bank_difference_cents,0);
+ assert.equal(audit.real_two_account_e2e,'not_tested');
+ assert.equal(audit.independent_restore,'not_tested');
+});
+test('Przekrojowa kontrola nie uznaje pustych lub częściowych prób',()=>{
+ const {manifest}=completeIntegratedFixture();
+ const audit=auditMonthWorkflow(manifest,EMPTY());
+ assert.equal(audit.passed,0);
+ assert.equal(audit.training_consistent,false);
+ assert.equal(audit.bank_difference_cents,null);
+});
+test('Poprawne dekrety nie maskują błędnego wyliczenia wyciągu',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const wrong=withBankExercise(state,manifest,{bank_in_cents:6800000,bank_out_cents:0,bank_net_cents:0});
+ const audit=auditMonthWorkflow(manifest,wrong);
+ assert.equal(audit.checks.find(x=>x.key==='bank').passed,false);
+ assert.equal(audit.checks.find(x=>x.key==='journal').passed,true);
+ assert.equal(audit.training_consistent,false);
+});
+test('Błędnie rozpoznany dokument blokuje zgodność pomimo poprawnego banku i bilansu',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const wrong=withScenarioAnswer(state,manifest,'D01','sale');
+ const audit=auditMonthWorkflow(manifest,wrong);
+ assert.equal(audit.checks.find(x=>x.key==='classification').passed,false);
+ assert.equal(audit.checks.find(x=>x.key==='closing').passed,true);
+ assert.equal(audit.training_consistent,false);
+});
+test('Równe Wn/Ma nie wystarczą: wykrywana jest różnica banku z dokumentami',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const changed=withJournalAttempt(state,manifest,'D03',pair('201','800',1600000));
+ const audit=auditMonthWorkflow(manifest,changed);
+ assert.equal(audit.checks.find(x=>x.key==='bank_vs_journal').passed,false);
+ assert.equal(audit.bank_difference_cents,-800000);
+ assert.equal(audit.training_consistent,false);
+});
