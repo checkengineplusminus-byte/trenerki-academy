@@ -342,6 +342,37 @@ test('Wykrywa przeniesienie wpływu do obcego dowodu mimo 5/5 zgodnych etapów u
  assert.ok(audit.reference_issues.some(issue=>issue.code==='bank_source_mismatch'&&issue.document_id==='D01'));
  assert.ok(audit.reference_issues.some(issue=>issue.code==='bank_source_mismatch'&&issue.document_id==='D02'));
 });
+test('D01-D36: kompensujące ruchy Wn/Ma na banku nie ukrywają fałszywego obrotu',()=>{
+ const {manifest}=completeIntegratedFixture(),wrong=structuredClone(manifest);
+ wrong.journal_practice_v1.entries.D01.lines.push(
+  {account:'130',debit_cents:100,credit_cents:0},
+  {account:'130',debit_cents:0,credit_cents:100}
+ );
+ const reference=inspectReferenceMonth(wrong);
+ assert.equal(reference.ok,false);
+ assert.ok(reference.issues.some(i=>i.code==='bank_gross_direction_mismatch'&&i.document_id==='D01'));
+ let state=EMPTY();
+ for(const d of wrong.documents){
+  state=withScenarioAnswer(state,wrong,d.id,d.kind);
+  state=withJournalAttempt(state,wrong,d.id,wrong.journal_practice_v1.entries[d.id].lines);
+ }
+ state=withBankExercise(state,wrong,{bank_in_cents:6800000,bank_out_cents:0,bank_net_cents:6800000});
+ const audit=auditMonthWorkflow(wrong,state);
+ assert.equal(audit.passed,5,'Niezmieniona suma nie może wystarczyć do odbioru wzorca');
+ assert.equal(audit.training_consistent,false);
+ assert.equal(audit.reference_integrity,'blocked');
+});
+test('D01-D36: dokument formalny nie może mieć ukrytych, znoszących się obrotów banku',()=>{
+ const {manifest}=completeIntegratedFixture(),wrong=structuredClone(manifest);
+ wrong.journal_practice_v1.entries.D02.lines=[
+  {account:'130',debit_cents:150,credit_cents:0},
+  {account:'130',debit_cents:0,credit_cents:150}
+ ];
+ const reference=inspectReferenceMonth(wrong);
+ assert.equal(reference.ok,false);
+ assert.ok(reference.issues.some(i=>i.code==='unexpected_bank_posting'&&i.document_id==='D02'));
+});
+
 test('Wzorzec z rozbieżną kwotą kontrolną nie może przejść kontroli',()=>{
  const {manifest}=completeIntegratedFixture();
  const wrong=structuredClone(manifest);
