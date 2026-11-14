@@ -256,6 +256,20 @@ try{
   assert.equal(f.saves(),73);
   assert.match(await f.page.locator('body').innerText(),/Wewnętrzne etapy są zgodne \(5\/5\)/);
  });
+ await pass('Raport 36 dokumentów pobiera się dopiero po pełnym uzgodnieniu',async()=>{
+  const button=f.page.locator('button[data-action="sim-month-report"]');
+  assert.equal(await button.count(),1);
+  const downloading=f.page.waitForEvent('download');
+  await button.click();
+  const stream=await (await downloading).createReadStream();
+  const chunks=[];for await(const chunk of stream)chunks.push(chunk);
+  const html=Buffer.concat(chunks).toString('utf8');
+  assert.ok(html.includes('TYLKO DANE FIKCYJNE'));
+  assert.match(html,/Raport szkoleniowy: miesiąc D01–D36/);
+  assert.equal((html.match(/<tr><td>D\d\d/g)||[]).length,36);
+  assert.ok(html.includes('nie zastępuje opinii księgowego'));
+  assert.equal(f.saves(),73,'Raport nie może tworzyć zapisu do bazy');
+ });
  await pass('Pełny stan po odświeżeniu strony odtwarza 36/36 odpowiedzi',async()=>{
   await f.page.reload();
   await tab(f.page).waitFor();
@@ -275,6 +289,7 @@ try{
   assert.equal(audit.training_consistent,false);
   assert.equal(audit.checks.find(x=>x.key==='classification').passed,false);
   assert.equal(audit.checks.find(x=>x.key==='closing').passed,true);
+  assert.equal(await f.page.locator('button[data-action="sim-month-report"]').count(),0);
   assert.equal(await f.page.locator('#sim-doc').inputValue(),'D02');
   await choose(f.page,'#sim-kind','purchase');
   prior=f.model().version;
