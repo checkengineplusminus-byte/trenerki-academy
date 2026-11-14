@@ -154,6 +154,7 @@ try{
    const prior=f.model().version;
    await f.page.locator('button[data-action="sim-save"]').click();
    await saved(f,prior);
+   if(d.id==='D01')assert.equal(await f.page.locator('#sim-doc').inputValue(),'D02');
   }
   assert.equal(Object.keys(f.model().state.simulator_attempts_v1.answers).length,36);
   assert.equal(f.saves(),36);
@@ -185,6 +186,7 @@ try{
    await f.page.locator('button[data-action="'+
     (manifest.journal_practice_v1.entries[d.id].lines.length?'sim-journal-save':'sim-journal-none')+'"]').click();
    await saved(f,prior);
+   if(d.id==='D01')assert.equal(await f.page.locator('#sim-journal-doc').inputValue(),'D02');
   }
   const entries=f.model().state.simulator_journal_attempts_v1.entries;
   assert.equal(Object.keys(entries).length,36);
@@ -219,6 +221,7 @@ try{
   assert.equal(audit.training_consistent,false);
   assert.equal(audit.checks.find(x=>x.key==='classification').passed,false);
   assert.equal(audit.checks.find(x=>x.key==='closing').passed,true);
+  assert.equal(await f.page.locator('#sim-doc').inputValue(),'D02');
   await choose(f.page,'#sim-kind','purchase');
   prior=f.model().version;
   await f.page.locator('button[data-action="sim-save"]').click();
@@ -251,6 +254,7 @@ try{
   let audit=auditMonthWorkflow(manifest,f.model().state);
   assert.equal(audit.training_consistent,false);
   assert.equal(audit.checks.find(x=>x.key==='journal').passed,false);
+  assert.equal(await f.page.locator('#sim-journal-doc').inputValue(),'D01');
   await choose(f.page,'[data-jline="1"][data-jfield="account"]','800');
   prior=f.model().version;
   await f.page.locator('button[data-action="sim-journal-save"]').click();
