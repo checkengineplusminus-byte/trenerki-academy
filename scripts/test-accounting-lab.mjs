@@ -354,3 +354,52 @@ test('Ujemny fikcyjny wpływ lub wydatek jest odrzucony na wejściu',()=>{
   assert.throws(()=>readScenario(wrong));
  }
 });
+
+test('Zamknięcie fikcyjnego miesiąca dopuszcza stratę, nie tylko zysk',()=>{
+ const {manifest:base}=completeIntegratedFixture();
+ const manifest=structuredClone(base);
+ manifest.documents=manifest.documents.map(d=>({
+  ...d,kind:d.id==='D01'?'bank_in':d.id==='D03'?'bank_out':'formal',
+  amount_pln:d.id==='D01'?60000:d.id==='D03'?5000:0
+ }));
+ manifest.journal_practice_v1.accounts['400']='Koszty działalności (model)';
+ manifest.journal_practice_v1.entries.D03.lines=pair('400','130',500000);
+ manifest.journal_practice_v1.reconciliation={
+  bank:55000,receivables:0,inventory:0,machine:0,trade_payables:0,loan:0,profit:-5000
+ };
+ let state=EMPTY();
+ for(const doc of manifest.documents){
+  state=withScenarioAnswer(state,manifest,doc.id,doc.kind);
+  state=withJournalAttempt(state,manifest,doc.id,manifest.journal_practice_v1.entries[doc.id].lines);
+ }
+ state=withBankExercise(state,manifest,{bank_in_cents:6000000,bank_out_cents:500000,bank_net_cents:5500000});
+ const closing=journalClosingPreview(manifest,readJournalAttempts(state,manifest));
+ assert.equal(closing.progress.correct,36);
+ assert.equal(closing.debit_cents,6500000);
+ assert.equal(closing.credit_cents,6500000);
+ assert.equal(closing.assets_cents,5500000);
+ assert.equal(closing.equity_cents,5500000);
+ assert.equal(closing.balance_diff_cents,0);
+ assert.equal(closing.checks.find(c=>c.key==='profit').expected_cents,-500000);
+ assert.equal(closing.checks.find(c=>c.key==='profit').matches,true);
+ assert.equal(closing.model_reconciled,true);
+ const audit=auditMonthWorkflow(manifest,state);
+ assert.equal(audit.passed,5);
+ assert.equal(audit.training_consistent,true);
+ assert.equal(audit.reference_integrity,'passed');
+});
+test('Fałszywy zysk i ujemna należność nie przechodzą kontroli straty',()=>{
+ const {manifest:base}=completeIntegratedFixture();
+ const manifest=structuredClone(base);
+ manifest.journal_practice_v1.reconciliation={
+  bank:68000,receivables:8000,inventory:0,machine:0,trade_payables:0,loan:0,profit:-1
+ };
+ const loss=inspectReferenceMonth(manifest);
+ assert.equal(loss.ok,false);
+ assert.ok(loss.issues.some(i=>i.code==='reference_reconciliation_mismatch'&&i.field==='profit'));
+ manifest.journal_practice_v1.reconciliation.profit=0;
+ manifest.journal_practice_v1.reconciliation.receivables=-8000;
+ const negativeAsset=inspectReferenceMonth(manifest);
+ assert.equal(negativeAsset.ok,false);
+ assert.ok(negativeAsset.issues.some(i=>i.code==='reference_reconciliation_mismatch'&&i.field==='receivables'));
+});

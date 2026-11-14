@@ -212,7 +212,10 @@ export function journalClosingPreview(scenario,attempts={}){
   loan:'Pozostały kapitał pożyczki',profit:'Wynik przed podatkiem (model)'};
  const checks=Object.entries(labels).map(([key,label])=>{
   const expected=model.reconciliation?.[key];
-  const validExpected=Number.isSafeInteger(expected)&&expected>=0&&expected<=1000000000;
+  // W tym modelu strata może być ujemnym wynikiem. Dla pozostałych pozycji
+  // zachowujemy ograniczenie do nieujemnych sald ćwiczeniowych.
+  const validExpected=Number.isSafeInteger(expected)&&expected<=1000000000&&
+   (key==='profit'?expected>=-1000000000:expected>=0);
   return {key,label,actual_cents:actual[key],expected_cents:validExpected?expected*100:null,
    matches:validExpected&&actual[key]===expected*100};
  });
