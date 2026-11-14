@@ -42,7 +42,25 @@ export function mountLab(root,db){
     if(workspaces.length)await open(workspaces[0].id);
   }catch(x){error=x.message||'Nie udało się wczytać biura.';}finally{render();}
  }
- async function open(id){const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();if(r.error)throw r.error;if(disposed)return;ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;journalDrafts={};journalDoc='D01';hrSelected='P01';hrDraft=null;payrollDraft=null;status=`Odczytano zapis z bazy · wersja ${ws.version}`;}
+ async function open(id){
+  const r=await db.from('ta_accounting_lab_workspaces').select('*').eq('id',id).single();
+  if(r.error)throw r.error;
+  if(disposed)return;
+  ws=r.data;preview=null;history=[];answer='';restoreDrafts();bankDraft=null;
+  journalDrafts={};scenarioDoc='D01';journalDoc='D01';
+  hrSelected='P01';hrDraft=null;payrollDraft=null;
+  // Po ponownym zalogowaniu lub wyborze biura wróć do pierwszego brakującego
+  // dowodu na danym etapie. Tylko odczyt; bez automatycznych zapisów do bazy.
+  if(scenario){
+   try{
+    scenarioDoc=nextUnresolvedDocument('D36','classification')?.id||'D01';
+    journalDoc=nextUnresolvedDocument('D36','journal')?.id||'D01';
+   }catch{
+    scenarioDoc='D01';journalDoc='D01';
+   }
+  }
+  status=`Odczytano zapis z bazy · wersja ${ws.version}`;
+ }
  async function commit(next){
   if(!canWrite)throw new Error('Brak aktywnego dostępu do zapisu.');
   const r=await db.rpc('ta_accounting_lab_save',{workspace_id:ws.id,expected_version:ws.version,next_state:next});
