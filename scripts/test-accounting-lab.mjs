@@ -128,3 +128,82 @@ test('Ujemna zmiana banku może być poprawnym wynikiem',()=>{
  const result=checkBankExercise(month,{bank_in_cents:10000,bank_out_cents:25000,bank_net_cents:-15000});
  assert.equal(result.correct,true);
 });
+
+
+import {readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary} from '../src/accounting/simulator-core.js';
+const pair=(debit,credit,amount)=>[{account:debit,debit_cents:amount,credit_cents:0},{account:credit,debit_cents:0,credit_cents:amount}];
+const sampleJournalManifest={...fakeManifest,journal_practice_v1:{
+ version:1,currency:'PLN',accounts:{130:'Rachunek bankowy',800:'Kapitał własny',201:'Należności'},
+ entries:Object.fromEntries(fakeManifest.documents.map((d,i)=>[d.id,{
+  lines:i===0?pair('130','800',6000000):i===2?
+   [...pair('201','800',1600000),...pair('130','201',800000)]:[],
+  explanation:'Fikcyjne zadanie księgowe, bez potwierdzenia podatków.'
+ }]))
+}};
+test('Wzorzec chroniony: dokładnie 36 kompletnych zbilansowanych dokumentów',()=>{
+ const m=readJournalPractice(sampleJournalManifest);
+ assert.equal(Object.keys(m.entries).length,36);
+ assert.deepEqual(m.entries.D01.lines,pair('130','800',6000000));
+ assert.equal(m.entries.D02.lines.length,0);
+ assert.equal(journalPracticeSummary(sampleJournalManifest,{}).reference_posts,2);
+});
+test('Błędny klucz wzorcowy, nieznane konto i nierównowaga są blokowane',()=>{
+ const copy=structuredClone(sampleJournalManifest);delete copy.journal_practice_v1.entries.D36;
+ assert.throws(()=>readJournalPractice(copy));
+ const unknown=structuredClone(sampleJournalManifest);unknown.journal_practice_v1.entries.D01.lines[0].account='999';
+ assert.throws(()=>readJournalPractice(unknown));
+ const unbalanced=structuredClone(sampleJournalManifest);unbalanced.journal_practice_v1.entries.D03.lines[0].debit_cents++;
+ assert.throws(()=>readJournalPractice(unbalanced));
+});
+test('Kursant zapisuje prawidłowy dekret w osobnej przestrzeni bez zmiany dziennika',()=>{
+ const base=EMPTY(),before=JSON.stringify(base),expected=sampleJournalManifest.journal_practice_v1.entries.D01.lines;
+ const next=withJournalAttempt(base,sampleJournalManifest,'D01',expected);
+ assert.equal(JSON.stringify(base),before);
+ assert.equal(next.journals.length,0);
+ assert.equal(checkJournalAttempt(sampleJournalManifest,'D01',readJournalAttempts(next,sampleJournalManifest).D01).correct,true);
+ assert.equal(readJournalAttempts(next,sampleJournalManifest).D01.tries,1);
+});
+test('Dekret zbilansowany, ale na błędnych kontach nie zostaje zaliczony',()=>{
+ const wrong=pair('130','201',6000000);
+ const state=withJournalAttempt(EMPTY(),sampleJournalManifest,'D01',wrong);
+ const result=checkJournalAttempt(sampleJournalManifest,'D01',readJournalAttempts(state,sampleJournalManifest).D01);
+ assert.equal(result.balanced,true);assert.equal(result.correct,false);
+});
+test('Dekret Wn ≠ Ma pozostaje próbą wymagającą korekty',()=>{
+ const wrong=[{account:'130',debit_cents:6000000,credit_cents:0}];
+ const state=withJournalAttempt(EMPTY(),sampleJournalManifest,'D01',wrong);
+ const result=checkJournalAttempt(sampleJournalManifest,'D01',readJournalAttempts(state,sampleJournalManifest).D01);
+ assert.equal(result.balanced,false);assert.equal(result.correct,false);
+});
+test('Brak dekretu jest poprawny dla dowodu formalnego, a nie dla wpłaty',()=>{
+ const a=withJournalAttempt(EMPTY(),sampleJournalManifest,'D02',[]);
+ const b=withJournalAttempt(a,sampleJournalManifest,'D01',[]);
+ const answers=readJournalAttempts(b,sampleJournalManifest);
+ assert.equal(checkJournalAttempt(sampleJournalManifest,'D02',answers.D02).correct,true);
+ assert.equal(checkJournalAttempt(sampleJournalManifest,'D01',answers.D01).correct,false);
+ assert.deepEqual(journalPracticeSummary(sampleJournalManifest,answers),{total:36,attempted:2,correct:1,reference_posts:2});
+});
+test('Czterowierszowy rozrachunek zaliczki nie przechodzi po pominięciu części',()=>{
+ const full=sampleJournalManifest.journal_practice_v1.entries.D03.lines;
+ const a=withJournalAttempt(EMPTY(),sampleJournalManifest,'D03',full.slice(0,2));
+ const b=withJournalAttempt(a,sampleJournalManifest,'D03',full);
+ assert.equal(checkJournalAttempt(sampleJournalManifest,'D03',readJournalAttempts(a,sampleJournalManifest).D03).correct,false);
+ assert.equal(checkJournalAttempt(sampleJournalManifest,'D03',readJournalAttempts(b,sampleJournalManifest).D03).correct,true);
+ assert.equal(readJournalAttempts(b,sampleJournalManifest).D03.tries,2);
+});
+test('Nieprawidłowe i zbyt długie zapisy odrzucamy bez naruszania stanu',()=>{
+ const base=EMPTY();
+ for(const lines of [[{account:'999',debit_cents:5,credit_cents:0}],
+ [{account:'130',debit_cents:5,credit_cents:5}],
+ [{account:'130',debit_cents:-1,credit_cents:0}],
+ [{account:'130',debit_cents:NaN,credit_cents:0}],
+ Array(9).fill({account:'130',debit_cents:100,credit_cents:0})])
+  assert.throws(()=>withJournalAttempt(base,sampleJournalManifest,'D01',lines));
+ assert.throws(()=>withJournalAttempt(base,sampleJournalManifest,'D37',[]));
+ assert.equal(base.simulator_journal_attempts_v1,undefined);
+});
+test('Zmiana scenariusza nie przejmuje zapisów innego wariantu',()=>{
+ const next=withJournalAttempt(EMPTY(),sampleJournalManifest,'D01',pair('130','800',6000000));
+ const changed={...next,simulator_journal_attempts_v1:{...next.simulator_journal_attempts_v1,scenario_id:'inna-firma'}};
+ assert.deepEqual(readJournalAttempts(changed,sampleJournalManifest),{});
+});
