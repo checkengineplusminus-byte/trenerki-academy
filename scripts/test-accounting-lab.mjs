@@ -403,3 +403,69 @@ test('Fałszywy zysk i ujemna należność nie przechodzą kontroli straty',()=>
  assert.equal(negativeAsset.ok,false);
  assert.ok(negativeAsset.issues.some(i=>i.code==='reference_reconciliation_mismatch'&&i.field==='receivables'));
 });
+
+
+import {PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview,validPersonnelCase} from '../src/accounting/personnel-practice.js';
+const fakeEmployee=(id='P01')=>({id,fictional_name:'Ola Przykładowa',contract_kind:'indefinite',
+ signed_on:'2026-01-02',starts_on:'2026-01-05',ends_on:'',
+ monthly_gross_cents:520000,workload_pct:100,notes:'Fikcyjne ćwiczenie.',document_drafts:{
+ contract_draft:true,onboarding_draft:true,payroll_draft:false,
+ exit_notice_draft:false,final_settlement_draft:false,handover_draft:false
+ }});
+test('Kadry: dwie osoby nie zmieniają faktur, banku ani dziennika',()=>{
+ const initial=fullScenario(),snap=JSON.stringify(initial);
+ const first=withPersonnelCase(initial,fakeEmployee());
+ const second=withPersonnelCase(first,{...fakeEmployee('P02'),fictional_name:'Piotr Przykładowy',
+  workload_pct:50,monthly_gross_cents:310000});
+ assert.equal(JSON.stringify(initial),snap);
+ assert.equal(readPersonnelCases(second).P01.monthly_gross_cents,520000);
+ assert.equal(readPersonnelCases(second).P02.workload_pct,50);
+ assert.deepEqual(second.invoices,initial.invoices);
+ assert.deepEqual(second.bank,initial.bank);
+ assert.deepEqual(second.journals,initial.journals);
+});
+test('Kadry: data odejścia dodaje listę trzech projektów do przygotowania',()=>{
+ const c={...fakeEmployee('P02'),ends_on:'2026-01-28'};
+ const review=personnelDraftReview(c);
+ assert.equal(review.recorded,true);
+ assert.equal(review.drafts_total,6);
+ assert.equal(review.drafts_marked,2);
+ assert.equal(review.missing.length,4);
+ assert.equal(review.legal_review,'not_tested');
+ assert.equal(review.actual_documents,'not_verified');
+ const marked={...c,document_drafts:Object.fromEntries(Object.keys(PERSONNEL_FLAGS).map(k=>[k,true]))};
+ assert.equal(personnelDraftReview(marked).missing.length,0);
+ assert.equal(personnelDraftReview(marked).legal_review,'not_tested');
+});
+test('Kadry: nieprawdziwa data i zła kolejność zatrudnienia blokują zapis',()=>{
+ const c=fakeEmployee();
+ for(const changes of [{signed_on:'2026-02-30'},{signed_on:'2026-01-06'},
+  {starts_on:'2026-01-03',ends_on:'2026-01-02'},{starts_on:'2026-13-01'}]){
+  assert.equal(validPersonnelCase({...c,...changes}),false);
+  assert.throws(()=>withPersonnelCase(EMPTY(),{...c,...changes}));
+ }
+});
+test('Kadry: odrzucamy numery PESEL w imieniu, e-maile, ujemne kwoty i fałszywe flagi',()=>{
+ const c=fakeEmployee();
+ for(const changes of [{fictional_name:'Jan 90010112345'}, {fictional_name:'ola@example.com'},
+  {monthly_gross_cents:-100},{workload_pct:0},{contract_kind:'unknown'},
+  {document_drafts:{contract_draft:'yes'}},{notes:'X'.repeat(801)}]){
+  assert.equal(validPersonnelCase({...c,...changes}),false);
+ }
+});
+test('Kadry: ponowny zapis jednej osoby nie tworzy duplikatów',()=>{
+ const a=withPersonnelCase(EMPTY(),fakeEmployee());
+ const b=withPersonnelCase(a,{...fakeEmployee(),monthly_gross_cents:550000,notes:'Zmiana'});
+ assert.deepEqual(Object.keys(readPersonnelCases(b)),['P01']);
+ assert.equal(readPersonnelCases(b).P01.monthly_gross_cents,550000);
+ assert.equal(readPersonnelCases(a).P01.monthly_gross_cents,520000);
+});
+test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',()=>{
+ const state=withPersonnelCase(EMPTY(),fakeEmployee());
+ assert.deepEqual(readPersonnelCases({...state,simulator_personnel_v1:{
+  ...state.simulator_personnel_v1,scenario_id:'inny'}}),{});
+ const damaged=structuredClone(state);
+ damaged.simulator_personnel_v1.cases.P01.starts_on='2026-02-31';
+ assert.deepEqual(readPersonnelCases(damaged),{});
+ assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
+});
