@@ -245,6 +245,19 @@ export function inspectReferenceMonth(scenario){
   }else if(actual!==expected){
    issues.push({code:'bank_source_mismatch',document_id:doc.id});
   }
+  // Sama zgodność netto nie wystarcza: przeciwstawne ruchy konta 130
+  // mogą znosić się arytmetycznie i ukryć nieistniejące wpływy/wypływy.
+  // W tym konkretnym szkoleniowym wzorcu dowód bankowy ma dokładnie
+  // jeden ruch 130, we właściwym kierunku i na pełną kwotę dowodu.
+  if(doc.kind==='bank_in'||doc.kind==='bank_out'){
+   const line=bankLines[0];
+   if(bankLines.length!==1||
+      line.debit_cents!==(doc.kind==='bank_in'?expected:0)||
+      line.credit_cents!==(doc.kind==='bank_out'?-expected:0))
+    issues.push({code:'bank_gross_direction_mismatch',document_id:doc.id});
+  }else if(bankLines.length!==0){
+   issues.push({code:'unexpected_bank_posting',document_id:doc.id});
+  }
  }
  if(!model.reconciliation||typeof model.reconciliation!=='object'||Array.isArray(model.reconciliation)){
   issues.push({code:'missing_reference_reconciliation'});
