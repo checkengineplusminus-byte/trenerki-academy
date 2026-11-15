@@ -190,6 +190,43 @@ async function novicePath(page,round){
  await guide.getByTestId('excel-beginner-success').waitFor();
  console.log('✓ Cykl '+round+' · Excel od ZERA: 6 bramek, prawdziwa edycja komórki, wynik, zakres, kopiowanie wzorów, SUMA 2085');
 }
+async function checkNewExcelTools(page,p,round){
+ const master=page.getByTestId('excel-master-guide');
+ await master.waitFor();
+ if(p.id==='student'){
+  await master.getByTestId('excel-shortcuts-open-button').click();
+  const atlas=master.getByTestId('excel-shortcuts-directory');
+  await atlas.waitFor();
+  await atlas.getByRole('button',{name:'Wszystkie skróty A–Z'}).click();
+  await atlas.getByTestId('excel-shortcuts-search').fill('Ctrl+T');
+  await atlas.getByRole('button',{name:/Ctrl\\+T/}).first().click();
+  await atlas.getByText(/automatycznym rozszerzaniem danych/).first().waitFor();
+  await master.getByTestId('excel-functions-open-button').click();
+  await master.getByTestId('excel-master-function-search').fill('X.WYSZUKAJ');
+  await master.getByTestId('excel-function-detail-XLOOKUP').waitFor();
+  await master.getByTestId('excel-function-example-XLOOKUP').waitFor();
+  console.log('✓ Cykl '+round+' · skróty i atlas funkcji dostępne na pierwszej lekcji');
+ }
+ if([9,15,20,25].includes(p.lesson)){
+  const lab=page.getByTestId('excel-visual-practice');
+  await lab.waitFor();
+  await lab.getByTestId('excel-visual-total').filter({hasText:'830 zł'}).waitFor();
+  await lab.getByTestId('excel-visual-qty-01').fill('5');
+  await lab.getByTestId('excel-visual-total').filter({hasText:'950 zł'}).waitFor();
+  const check=lab.getByRole('button',{name:'Sprawdź moją analizę'});
+  if(p.lesson===25){
+   await lab.getByTestId('excel-visual-pivot-stale').filter({hasText:/wymaga odświeżenia/}).waitFor();
+   await check.click();
+   await lab.getByTestId('excel-visual-feedback').filter({hasText:/Odśwież/}).waitFor();
+   await lab.getByRole('button',{name:'Odśwież tabelę przestawną'}).click();
+   await lab.getByTestId('excel-visual-pivot-stale').filter({hasText:/aktualna/}).waitFor();
+   await lab.getByTestId('excel-visual-answer').fill('260');
+  }else await lab.getByTestId('excel-visual-answer').fill('710');
+  await check.click();
+  await lab.getByTestId('excel-visual-feedback').filter({hasText:/Zgadza się/}).waitFor();
+  console.log('✓ Cykl '+round+' · '+p.id+' · źródłowa tabela, wykres, suma i '+(p.lesson===25?'pivot':'grupowanie'));
+ }
+}
 async function persona(browser,p,round){
  const context=await browser.newContext({viewport:{width:p.width,height:p.height},deviceScaleFactor:p.scale,
   hasTouch:p.touch,isMobile:p.mobile,locale:'pl-PL',reducedMotion:p.reduce?'reduce':'no-preference'});
@@ -270,6 +307,7 @@ async function persona(browser,p,round){
   await region.getByTestId('excel-mission-correct').waitFor();
   await region.getByRole('button',{name:/Na prawdziwym Excelu/}).click();
   await region.getByText(m.realExcel,{exact:true}).waitFor();
+  await checkNewExcelTools(page,p,round);
   if(p.id==='student')await novicePath(page,round);
   if(['accounting','finance','seller','director','it'].includes(p.id))await checkAdvanced(page,p.id);
   if(['director','it'].includes(p.id))await checkPro(page,p.id);
