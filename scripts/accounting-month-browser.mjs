@@ -168,6 +168,22 @@ try{
   assert.equal(verified.model().state.invoices[0].identity_version,1);
   assert.deepEqual(verified.errors,[]);
  });
+ await pass('Chromium: druk nowej faktury pokazuje obie pełne tożsamości, a nie tylko nazwy',async()=>{
+  await verified.page.locator('nav button[data-action="tab"][data-id="invoices"]').click();
+  const before=verified.model().version;
+  const popupPromise=verified.page.waitForEvent('popup');
+  await verified.page.locator('button[data-action="print-invoice"]').click();
+  const popup=await popupPromise;
+  const html=await popup.content();
+  assert.match(html,/DOKUMENT ĆWICZENIOWY/);
+  assert.match(html,/9000000016/,'NIP własnej firmy');
+  assert.match(html,/9000000022/,'NIP kontrahenta');
+  assert.match(html,/ul\. Przykładowa 2, 00-002 Testowo/);
+  assert.match(html,/ul\. Przykładowa 1, 00-001 Testowo/);
+  assert.equal(verified.model().version,before,'Druk jest wyłącznie podglądem');
+  await popup.close();
+  assert.deepEqual(verified.errors,[]);
+ });
  await pass('Chromium: przykładowy wyciąg CSV ma ten sam miesiąc co D01–D36',async()=>{
   await verified.page.locator('nav button[data-action="tab"][data-id="bank"]').click();
   const pending=verified.page.waitForEvent('download');
