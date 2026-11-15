@@ -135,7 +135,10 @@ for(const mobile of [false,true]){
   await cad.getByRole('button',{name:'Zamknij opis paska statusu'}).click();
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: single '+(mobile?'touch':'left click')+' selects LINE; hold selection accumulates; status bar Grid OSNAP POLAR OTRACK DYN explained');
   if(!mobile){
-   await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
+   // Selection was already cleared above. The button is correctly disabled for an empty set.
+   const clear=cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'});
+   if(await clear.isEnabled())await clear.click();
+   else await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 0'}).waitFor();
    const bounds=await cad.getByTestId('cad-canvas').boundingBox();
    assert(bounds&&bounds.width>100,'CAD canvas unavailable');
    await page.mouse.move(bounds.x+bounds.width-8,bounds.y+bounds.height-8);
