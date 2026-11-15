@@ -1562,12 +1562,12 @@ function fixtureWithTrainingBankSources(){
  const {manifest,state}=fictionalFullCompanyMonth(),parsed=parseBankCSV(scenarioBankCSV(manifest));
  assert.deepEqual(parsed.errors,[]);
  for(const row of parsed.rows){
-  const n=Math.abs(row.amount_cents);
+  const reference=manifest.journal_practice_v1.entries[row.id].lines;
   state.bank.push(row);
   state.journals.push({id:'J-'+row.id+'-SOURCE',date:row.date,status:'posted',
-   source_type:'bank',source_id:row.id,lines:row.amount_cents>0?
-   [{account:'130',debit:n,credit:0},{account:'800',debit:0,credit:n}]:
-   [{account:'800',debit:n,credit:0},{account:'130',debit:0,credit:n}]});
+   source_type:'bank',source_id:row.id,lines:reference.map(l=>({
+    account:l.account,debit:l.debit_cents,credit:l.credit_cents
+   }))});
  }
  return {manifest,state,bankRows:parsed.rows};
 }
@@ -1723,6 +1723,27 @@ test('MOST D01-D36: osobne dekrety źródeł CSV umożliwiają TYLKO szkoleniow�
  assert.equal(r.completed,false);
  assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
  assert.equal(JSON.stringify(state),before);
+});
+test('MOST D01-D36: samo konto 130 nie ukrywa blednego kontrkonta ani wyrownujacych zapisow',()=>{
+ const {manifest,state,bankRows}=fixtureWithTrainingBankSources(),before=JSON.stringify(state);
+ const wrongAccount=structuredClone(state);
+ wrongAccount.journals.find(j=>j.source_id===bankRows[0].id).lines[1].account='201';
+ const auditWrong=taxCloseTrainingAudit(wrongAccount,manifest);
+ assert.equal(auditWrong.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
+ assert.ok(auditWrong.issues.some(i=>i.code==='scenario_bank_source_accounts_or_amount_mismatch'&&i.invoice===bankRows[0].id));
+ const compensated=structuredClone(state),j=compensated.journals.find(j=>j.source_id===bankRows[0].id);
+ j.lines.push({account:'201',debit:100,credit:0},{account:'800',debit:0,credit:100});
+ const auditExtra=taxCloseTrainingAudit(compensated,manifest);
+ assert.equal(auditExtra.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
+ assert.ok(auditExtra.issues.some(i=>i.code==='scenario_bank_source_accounts_or_amount_mismatch'));
+ assert.equal(JSON.stringify(state),before,'Audit tylko czyta dane firmy');
+});
+test('MOST D01-D36: bez zweryfikowanego chronionego wzorca nie mozna potwierdzic dekretow',()=>{
+ const {manifest,state}=fixtureWithTrainingBankSources(),without=structuredClone(manifest);
+ delete without.journal_practice_v1;
+ const result=taxCloseTrainingAudit(state,without);
+ assert.equal(result.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
+ assert.ok(result.issues.some(i=>i.code==='scenario_bank_reference_not_verified'));
 });
 test('MOST D01-D36: brak CSV lub dekretu i podwójny dekret blokują weryfikację',()=>{
  const {manifest,state,bankRows}=fixtureWithTrainingBankSources();

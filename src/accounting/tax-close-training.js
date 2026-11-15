@@ -6,7 +6,7 @@
  */
 import {invoiceTotals,expectedInvoiceLines,livePostings,validDate} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
-import {readScenario} from './simulator-core.js';
+import {readScenario,readJournalPractice} from './simulator-core.js';
 import {acquisitionLines,assetFacts} from './assets-core.js';
 import {normalizeIdentity} from './identity-core.js';
 import {inspectScenarioInvoiceBridge} from './scenario-invoice-bridge.js';
@@ -30,6 +30,10 @@ export function inspectScenarioBankBridge(state,rawScenario,period){
  catch{return {passed:false,status:'not_tested',matched:0,total:0,
   issues:[{code:'scenario_bank_manifest_not_verified',invoice:'D01-D36'}]};}
  if(!period||!docs.length)return {passed:false,status:'not_tested',matched:0,total:docs.length,issues:[]};
+ let reference;
+ try{reference=readJournalPractice(rawScenario);}
+ catch{return {passed:false,status:'not_tested',matched:0,total:docs.length,
+   issues:[{code:'scenario_bank_reference_not_verified',invoice:'D01-D36'}]};}
  const issues=[],bank=Array.isArray(state?.bank)?state.bank:[],
        journals=Array.isArray(state?.journals)?livePostings(state):[];
  let matched=0;
@@ -55,6 +59,15 @@ export function inspectScenarioBankBridge(state,rawScenario,period){
      bankLines[0].debit!==(signed>0?signed:0)||
      bankLines[0].credit!==(signed<0?-signed:0)){
    issues.push({code:'scenario_bank_ledger_130_mismatch',invoice:doc.id});continue;
+  }
+  // Kwota na 130 nie dowodzi prawidlowych kont Wn/Ma. Pelny dekret
+  // musi odpowiadac chronionemu wzorcowi Dxx, bez publikacji tresci.
+  const expected=reference.entries[doc.id]?.lines;
+  if(!Array.isArray(expected)||signature(lines)!==signature(expected.map(l=>({
+   account:l.account,debit:l.debit_cents,credit:l.credit_cents
+  })))){
+   issues.push({code:'scenario_bank_source_accounts_or_amount_mismatch',invoice:doc.id});
+   continue;
   }
   matched++;
  }
