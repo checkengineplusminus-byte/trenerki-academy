@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {selectCadWindow,mergeCadSelection,transformCadSelection,copyCadSelection} from '../src/CadSelection.ts';
-import {snapPoint,type CadShape,type Point} from '../src/CadGeometry.ts';
+import {snapPoint} from '../src/CadGeometry.ts';
 
 const p=(x,y)=>({x,y});
 const line=(id,a,b,layer=0)=>({id,kind:'line',points:[a,b],layer});
