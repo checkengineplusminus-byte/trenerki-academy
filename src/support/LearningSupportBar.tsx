@@ -39,7 +39,7 @@ export default function LearningSupportBar(){
    <span aria-hidden="true" style={{color:'#e9a6b0',fontSize:19}}>♡</span>
    Pomoc i wsparcie
   </a>
-  <nav className="ta-app-footer-links" aria-label="Ustawienia prywatności" style={{display:'inline-flex',alignItems:'center',flex:'0 0 auto',minHeight:44}}/>
+  <nav className="ta-app-footer-links" aria-label="Ustawienia prywatności" style={{display:'inline-flex',alignItems:'center',flex:'0 0 auto',width:'auto',maxWidth:'max-content',marginLeft:0,minHeight:44}}/>
  </footer>;
  return <View role="contentinfo" style={{backgroundColor:'#102820',borderTopWidth:1,borderColor:'#2c463b',
   minHeight:48,flexDirection:'row',alignItems:'center',justifyContent:'center',gap:22,paddingHorizontal:12}}>
