@@ -17,5 +17,6 @@ export function accountingProgress(overview) {
 export function courseFinished(slug,lessonCount,completedCount,hasDiploma=false) {
   // W encyklopedii „przeczytane” nie jest zaliczeniem ani dowodem gotowości zawodowej.
   if (isAccountingCourse(slug)) return false;
-  return (lessonCount>0 && completedCount>=lessonCount)||hasDiploma;
+  // A prior diploma remains downloadable but does not complete new lessons.
+  return lessonCount>0 && completedCount>=lessonCount;
 }
