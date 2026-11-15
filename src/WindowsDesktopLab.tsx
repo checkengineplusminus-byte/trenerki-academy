@@ -53,6 +53,8 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
  const [query,setQuery]=useState(''),[note,setNote]=useState('Plan dnia\n1. Porównaj oferty\n2. Uporządkuj pliki\n3. Przejdź na drugi pulpit');
  const [fileName,setFileName]=useState('Notatka.txt'),[savedNotes,setSavedNotes]=useState<Record<string,string>>({});
  const [confirmClose,setConfirmClose]=useState(false);
+ const [beginnerMode,setBeginnerMode]=useState(false),[beginnerStep,setBeginnerStep]=useState(0),[beginnerError,setBeginnerError]=useState('');
+ const [lastReopened,setLastReopened]=useState('');
  const [activeShortcut,setActiveShortcut]=useState('Win+Ctrl+←');
  const [status,setStatus]=useState('Jesteś na Pulpicie 2. Kliknij Win+Ctrl+←, aby przejść na Pulpit 1. Efekt dotyczy tylko symulacji.');
  const [showReal,setShowReal]=useState(false);
@@ -92,6 +94,7 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
   setStatus('Zamknięto Notatnik bez zapisywania ostatnich zmian. Możesz ponownie otworzyć zapisany plik w Eksploratorze.');
  }
  function reopenNote(name:string){
+  setLastReopened(name);
   setFileName(name);setNote(savedNotes[name]);
   openApp('notes');setStatus('Otworzono zapisany plik '+name+' z Dokumentów ćwiczebnych.');
  }
@@ -169,6 +172,41 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
   setDesktops(old=>[...old,{id,name:'Pulpit '+id,windows:[],focused:null}]);
   setIndex(desktops.length);setShowDesktop(false);setTaskView(false);setStatus('Utworzono Pulpit '+id+'.');
  }
+ const beginnerTasks=[
+  {title:'Znajdź Start',instruction:'Spójrz na dolny pasek niebieskiego pulpitu. Kliknij znak ⊞ — to przycisk Start. Na komputerze użyj lewego przycisku myszy lub dotknij touchpada. Na telefonie stuknij palcem.',
+   error:'Kliknij znak ⊞ na dolnym pasku symulacji. Dopiero gdy pokaże się menu, sprawdź krok.'},
+  {title:'Otwórz Notatnik',instruction:'W otwartym menu Start wybierz 📝 Notatnik. Notatnik to zwykły program do pisania tekstu — nie musisz znać żadnych skrótów klawiatury.',
+   error:'W menu Start kliknij „Notatnik”. Jeśli menu zniknęło, otwórz ponownie znak ⊞.'},
+  {title:'Napisz pierwsze zdanie',instruction:'Kliknij białą powierzchnię wewnątrz okna Notatnika, gdzie wpisuje się tekst. Napisz co najmniej 20 znaków, np. „Ogłoszenia na niedzielę: spotkanie po mszy”. Migająca pionowa kreska to kursor tekstu.',
+   error:'Kliknij białe pole Notatnika i wpisz własne zdanie (minimum 20 znaków). To ćwiczenie nie wymaga danych osobowych.'},
+  {title:'Zapisz dokument',instruction:'U góry okna jest pole „Notatka.txt” — to nazwa pliku. Możesz zmienić ją na „Ogloszenia.txt”. Kliknij niebieski przycisk „Zapisz” wewnątrz Notatnika. Plik zostanie zapisany wyłącznie w ćwiczebnej symulacji.',
+   error:'W oknie Notatnika wpisz poprawną nazwę z końcówką .txt i wybierz „Zapisz”.'},
+  {title:'Zamknij Notatnik, znajdź plik',instruction:'Kliknij × w prawym górnym rogu okna Notatnika. Następnie kliknij ikonę żółtego folderu 📁 (Eksplorator plików) po lewej stronie pulpitu. Zobaczysz listę zapisanych plików.',
+   error:'Najpierw zamknij okno Notatnika przyciskiem ×, a potem otwórz żółty folder 📁.'},
+  {title:'Otwórz własny dokument ponownie',instruction:'W oknie Eksploratora znajdź nazwę zapisanego pliku, np. „Ogloszenia.txt”. Kliknij ją. Notatnik powinien ponownie pokazać napisane wcześniej zdanie.',
+   error:'W Eksploratorze wybierz swój zapisany plik, a nie ikonę nowego Notatnika. Sprawdź, czy treść wróciła.'}
+ ] as const;
+ function beginFromZero(){
+  setDesktops(initial);setIndex(1);setStart(false);setTaskView(false);setShowDesktop(false);setShowExplorer(false);
+  setNote('');setFileName('Notatka.txt');setSavedNotes({});setLastReopened('');setQuery('');
+  setBeginnerMode(true);setBeginnerStep(0);setBeginnerError('');
+  setStatus('Zaczynamy od pustego pulpitu. Na razie nie musisz znać żadnych skrótów.');
+ }
+ function verifyBeginner(){
+  if(beginnerStep>=beginnerTasks.length)return;
+  const noteOpen=desktop.windows.some(w=>w.app==='notes'&&!w.minimized);
+  const filesOpen=desktop.windows.some(w=>w.app==='files'&&!w.minimized);
+  const valid=[
+   start,
+   noteOpen,
+   noteOpen&&note.trim().length>=20,
+   !!fileName&&Object.prototype.hasOwnProperty.call(savedNotes,fileName)&&savedNotes[fileName]===note,
+   filesOpen&&!desktop.windows.some(w=>w.app==='notes'),
+   noteOpen&&lastReopened===fileName&&savedNotes[fileName]===note
+  ];
+  if(!valid[beginnerStep]){setBeginnerError(beginnerTasks[beginnerStep].error);return;}
+  setBeginnerStep(n=>n+1);setBeginnerError('');
+ }
  function renderWindow(w:WindowState){
   const left=w.position==='right'?'51%':w.position==='normal'?'12%':'1%';
   const width=w.position==='max'?'98%':w.position==='normal'?'77%':'48%';
@@ -217,6 +255,35 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
  return <View testID="windows-desktop-lab" style={{borderWidth:1,borderColor:'#c7d7e9',borderRadius:18,backgroundColor:'#eef5fc',padding:compact?10:17,gap:13,marginVertical:12}}>
   <Text style={{fontSize:19,fontWeight:'900',color:'#143e6c'}}>Windows 11 — interaktywny pulpit ćwiczebny</Text>
   <Text style={{fontSize:13,lineHeight:20,color:'#3d6080'}}>To demonstracja wewnątrz Trenerki, a nie zdalne sterowanie Twoim komputerem. Możesz tu bezpiecznie klikać w Start, okna i wirtualne pulpity.</Text>
+  <View testID="windows-absolute-beginner" style={{borderRadius:14,borderWidth:1,borderColor:'#d2dcbc',backgroundColor:'#fffdf3',padding:compact?12:16,gap:11}}>
+   <Text style={{fontSize:compact?16:18,color:'#354b2f',fontWeight:'900'}}>Nigdy nie korzystałem z komputera</Text>
+   {!beginnerMode?<View style={{gap:10}}>
+    <Text style={{fontSize:14,lineHeight:22,color:'#53624d'}}>Zaczniemy bez skrótów i trudnych słów. Pokażę Ci, co to pulpit, kliknięcie, Notatnik i folder. W sześciu prostych krokach napiszesz, zapiszesz i ponownie otworzysz dokument.</Text>
+    <Pressable accessibilityRole="button" accessibilityLabel="Rozpocznij naukę od zera" onPress={beginFromZero}
+      style={{minHeight:48,padding:12,alignSelf:'flex-start',backgroundColor:'#255b3b',borderRadius:10,justifyContent:'center'}}>
+     <Text style={{color:'#fff',fontWeight:'900',fontSize:14}}>Rozpocznij naukę od zera</Text>
+    </Pressable>
+   </View>:<View style={{gap:10}}>
+    {beginnerStep<beginnerTasks.length?<>
+     <Text style={{fontSize:12,color:'#6b7855',fontWeight:'900'}}>KROK {beginnerStep+1} Z {beginnerTasks.length}</Text>
+     <Text testID="windows-beginner-task" style={{fontSize:16,color:'#244d35',fontWeight:'900'}}>{beginnerTasks[beginnerStep].title}</Text>
+     <Text style={{fontSize:14,lineHeight:23,color:'#3d5543'}}>{beginnerTasks[beginnerStep].instruction}</Text>
+     <Text style={{fontSize:12,lineHeight:19,color:'#6b705b'}}>Mysz: przesuwasz nią strzałkę na ekranie i klikasz lewy przycisk. Touchpad: dotykowa płytka w laptopie. Tutaj możesz też używać dotyku na telefonie.</Text>
+     <Pressable accessibilityRole="button" accessibilityLabel="Sprawdź wykonanie kroku" onPress={verifyBeginner}
+       style={{minHeight:46,padding:12,alignSelf:'flex-start',backgroundColor:'#255b3b',borderRadius:9,justifyContent:'center'}}>
+      <Text style={{color:'#fff',fontSize:14,fontWeight:'900'}}>Sprawdź wykonanie kroku</Text>
+     </Pressable>
+     {!!beginnerError&&<Text testID="windows-beginner-error" accessibilityLiveRegion="polite" style={{fontSize:13,lineHeight:21,color:'#9c4d25'}}>{beginnerError}</Text>}
+    </>:<>
+     <Text testID="windows-beginner-success" accessibilityRole="header" style={{fontSize:17,fontWeight:'900',color:'#25623c'}}>Udało się! Samodzielnie zapisałeś i odnalazłeś dokument.</Text>
+     <Text style={{fontSize:13,lineHeight:21,color:'#3d5543'}}>Wiesz już, jak otworzyć Start, uruchomić Notatnik, napisać tekst, zapisać go i znaleźć ponownie. To był plik w symulacji, nie na Twoim prawdziwym komputerze.</Text>
+    </>}
+    <Pressable accessibilityRole="button" accessibilityLabel="Powtórz oprowadzanie od początku" onPress={beginFromZero}
+     style={{minHeight:44,justifyContent:'center',alignSelf:'flex-start'}}>
+     <Text style={{fontSize:12,fontWeight:'800',color:'#235f83'}}>↻ Powtórz od początku</Text>
+    </Pressable>
+   </View>}
+  </View>
   <View style={{borderWidth:1,borderColor:'#abc0d9',borderRadius:14,overflow:'hidden',backgroundColor:'#d3e8fa'}}>
    <ImageBackground source={{uri:'/academy/assets/windows-bloom.svg'}} resizeMode="stretch" style={{height:compact?305:395,width:'100%',justifyContent:'flex-end'}} imageStyle={{backgroundColor:'#bdddf5'}}>
     <View style={{flex:1,flexDirection:'row',paddingTop:9}}>
