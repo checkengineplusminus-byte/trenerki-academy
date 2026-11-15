@@ -3,6 +3,7 @@ import {Pressable,ScrollView,Text,TextInput,View,useWindowDimensions} from 'reac
 import CadRibbonIcon from './CadRibbonIcon.web';
 import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection} from './CadSelection';
 import {polarTracking,objectSnapTracking} from './CadTracking';
+import statusReference from '../content/autocad-status-controls-2026.json';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
@@ -177,9 +178,19 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(session.selecting)setSession({...session,target:undefined});
   tell('Wyczyszczono zaznaczenie.');
  }
- function selectOneById(id:number,remove=false){
+ function selectOneById(id:number,remove=false,location?:Point){
   if(layout||pan||!visible.some(shape=>shape.id===id))return;
   if(tool!=='select'&&!session.selecting)return;
+  if(selectionCycling&&location){
+   const point=worldPoint(location,view,size);
+   const hits=[...visible].reverse().filter(shape=>nearEdge(shape,point,baseTolerance)||shape.fill&&contains(shape,point));
+   if(hits.length>1){
+    const key=hits.map(shape=>shape.id).join(',');
+    const index=key===lastCycle.current.ids?(lastCycle.current.index+1)%hits.length:0;
+    lastCycle.current={ids:key,index};id=hits[index].id;
+    tell('CYCLING: nakładający się obiekt '+(index+1)+'/'+hits.length+'.');
+   }
+  }
   const ids=remove?mergeCadSelection(selectedVisible,[id],true):
    selectionHold||session.selecting?mergeCadSelection(selectedVisible,[id]):[id];
   setSelectedIds(ids);setSelected(ids.at(-1));
