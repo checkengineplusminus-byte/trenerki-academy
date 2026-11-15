@@ -1283,3 +1283,37 @@ test('Puste ćwiczenie nie generuje fałszywego UPO, wyniku podatkowego ani uko�
  assert.equal(r.authorized_e2e,'not_tested');
  assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
 });
+
+
+import {acquisitionLines as assetAcquisitionLines} from '../src/accounting/assets-core.js';
+test('Zakup środka trwałego: zgodny dekret 010/221/202 jest technicznie rozpoznany bez zatwierdzenia VAT',()=>{
+ const s=fullScenario(),invoice=s.invoices.find(i=>i.kind==='purchase');
+ const asset={id:'A1',inventory_no:'CW/INW/1',name:'Fikcyjna maszyna',category:'machine',
+  invoice_id:invoice.id,in_service_date:'2026-11-02',start_month:'2026-11',months:12,
+  residual_cents:0,deductible_bps:10000,status:'active'};
+ s.assets=[asset];
+ const posting=s.journals.find(j=>j.source_type==='invoice'&&j.source_id===invoice.id);
+ posting.lines=assetAcquisitionLines(asset,s);
+ posting.asset_id=asset.id;posting.asset_action='acquire';
+ for(const j of s.journals.filter(x=>x.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.issues.length,0);
+ assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,true);
+ assert.ok(r.review_notes.some(x=>x.includes('010/221/202')));
+ assert.equal(r.figures.purchase_vat_cents,4600);
+ assert.equal(r.legal_review,'not_tested');
+ assert.equal(r.draft_documents.jpk.status,'NOT_GENERATED_NOT_SCHEMA_VALIDATED');
+ assert.equal(r.completed,false);
+});
+test('Zakup środka trwałego z błędnym kontem nie dostaje szkoleniowego zaliczenia',()=>{
+ const s=fullScenario(),invoice=s.invoices.find(i=>i.kind==='purchase');
+ const asset={id:'A1',inventory_no:'CW/INW/1',name:'Fikcyjna maszyna',category:'machine',
+  invoice_id:invoice.id,in_service_date:'2026-11-02',start_month:'2026-11',months:12,
+  residual_cents:0,deductible_bps:10000,status:'active'};
+ s.assets=[asset];
+ const j=s.journals.find(j=>j.source_type==='invoice'&&j.source_id===invoice.id);
+ j.lines=assetAcquisitionLines(asset,s);j.lines[0].account='400';j.asset_id=asset.id;j.asset_action='acquire';
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,false);
+ assert.ok(r.issues.some(x=>x.code==='asset_acquisition_posting_mismatch'));
+});

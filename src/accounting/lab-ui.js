@@ -112,6 +112,7 @@ export function mountLab(root,db){
    table(['Warunek','Wynik szkoleniowy','Następny krok'],checks)+
    (issues?'<details><summary>Wykryte problemy w dokumentach ('+audit.issues.length+
      ')</summary><ul>'+issues+'</ul></details>':'')+
+   (audit.review_notes.length?'<p class="muted">'+e(audit.review_notes.join(' '))+'</p>':'')+
    '<h3>Dokumenty urzędowe — wyłącznie etapy edukacyjne</h3>'+
    table(['Etap','Status','Co to oznacza'],[
     '<tr><td>KSeF</td><td>NIE WYSŁANO</td><td>Wyłącznie liczba faktur sprzedaży: '+

@@ -6,6 +6,7 @@
  */
 import {invoiceTotals,expectedInvoiceLines,livePostings} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
+import {acquisitionLines} from './assets-core.js';
 
 const monthOf=date=>typeof date==='string'&&/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(date)?date.slice(0,7):null;
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
@@ -17,7 +18,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const period=lifecycle.period_scope.month,issued=(Array.isArray(state.invoices)?state.invoices:[])
    .filter(i=>i&&i.status==='issued'&&['sale','purchase'].includes(i.kind)&&!!period&&monthOf(i.date)===period);
  const posted=Array.isArray(state.journals)?livePostings(state):[];
- const issues=[],totals={sale_net_cents:0,sale_vat_cents:0,purchase_net_cents:0,purchase_vat_cents:0};
+ const issues=[],review_notes=[],totals={sale_net_cents:0,sale_vat_cents:0,purchase_net_cents:0,purchase_vat_cents:0};
  let correctPostings=0;
  for(const i of issued){
   try{
@@ -33,9 +34,15 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    }
    const acquisition=j[0].asset_action==='acquire'&&i.kind==='purchase';
    if(acquisition){
-    // Wartość początkowa majątku jest księgowana inaczej niż koszt usługi.
-    // Ocena podatkowa prawa do odliczenia pozostaje poza tą symulacją.
-    issues.push({code:'asset_purchase_requires_manual_tax_review',invoice:i.number||i.id});
+    const asset=(Array.isArray(state.assets)?state.assets:[]).find(a=>
+      a.id===j[0].asset_id&&a.invoice_id===i.id&&a.status==='active');
+    if(!asset||signature(j[0].lines)!==signature(acquisitionLines(asset,state))){
+     issues.push({code:'asset_acquisition_posting_mismatch',invoice:i.number||i.id});continue;
+    }
+    // Zakup majątku poprawny w tym modelu nie jest zwykłym kosztem usługi.
+    // Ujęcie prawa do odliczenia podatku VAT wymaga osobnej recenzji człowieka.
+    correctPostings++;
+    review_notes.push('Zakup majątku '+(i.number||i.id)+': dekret 010/221/202 zgodny z kartą; odliczenie VAT wymaga recenzji.');
     continue;
    }
    if(signature(j[0].lines)!==signature(expectedInvoiceLines(i))){
@@ -73,7 +80,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   period:period||null,source_count:issued.length,
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues,
+  checks,issues,review_notes,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
