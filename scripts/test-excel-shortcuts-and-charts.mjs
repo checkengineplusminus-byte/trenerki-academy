@@ -72,5 +72,6 @@ test('spis funkcji i 70 skrótów widoczny na każdej lekcji, praktyczne diagram
  assert.match(short,/excel-shortcuts-search/);
  for(const x of ['excel-visual-source-table','excel-visual-chart','excel-visual-pivot-stale','excel-visual-total','excel-visual-answer'])
   assert(chart.includes(x),'Brakuje '+x);
+ assert.match(chart,/setFilter\(x\);setSelected\(''\);setFeedback\(''\);setAnswer\(''\);if\(pivotMode\)\{setPivot\(null\)/);
  assert(page.includes("ta_enrollments"),'Protected course authorization is missing');
 });
