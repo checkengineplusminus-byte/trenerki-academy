@@ -1261,6 +1261,7 @@ test('Jeden okres: dodatkowe faktury późniejszego miesiąca rozpoczynają nowy
 
 import {taxCloseTrainingAudit} from '../src/accounting/tax-close-training.js';
 import {inspectScenarioInvoiceBridge,withScenarioInvoiceLink} from '../src/accounting/scenario-invoice-bridge.js';
+import {inspectScenarioCorrectionBridge,withScenarioCorrectionJournal} from '../src/accounting/scenario-correction-bridge.js';
 test('Zamknięcie szkoleniowe: sumy VAT z istniejącego miesiąca, bez wysyłki KSeF/JPK/UPO',()=>{
  const state=fullScenario();
  for(const j of state.journals.filter(x=>x.source_type==='bank'))j.date=state.bank.find(b=>b.id===j.source_id).date;
@@ -1582,6 +1583,68 @@ function linkedScenarioInvoicesFixture(){
  }
  return {manifest:model,state,spec};
 }
+
+function syntheticCorrectionFixture(){
+ const {manifest,state:base}=linkedScenarioInvoicesFixture();
+ const original=manifest.documents.find(d=>d.id==='D21'),correction=manifest.documents.find(d=>d.id==='D22');
+ Object.assign(original,{kind:'sale',date:'2026-01-19',amount_pln:1200});
+ Object.assign(correction,{kind:'correction',date:'2026-01-21',amount_pln:-150,corrects_doc_id:'D21'});
+ const lines=[{account:'700',debit_cents:15000,credit_cents:0},
+  {account:'201',debit_cents:0,credit_cents:15000}];
+ manifest.journal_practice_v1.entries.D22.lines=lines;
+ const i=invoiceTotals({id:'SCEN-D21',kind:'sale',status:'issued',number:'CW/SYNTH/D21',
+  date:original.date,due:original.date,
+  party:'Fikcyjny klient',seller:'Fikcyjna spółka',
+  lines:[{label:'Usługa testowa',qty_milli:1000,unit_cents:120000,tax_code:'0'}]});
+ let s={...base,invoices:[...base.invoices,i],
+  journals:[...base.journals,{id:'SCEN-J-D21',status:'posted',date:original.date,
+  source_type:'invoice',source_id:i.id,lines:expectedInvoiceLines(i)}]};
+ s=withScenarioInvoiceLink(s,manifest,original.id,i.id);
+ s=withScenarioAnswer(s,manifest,correction.id,'correction');
+ s=withJournalAttempt(s,manifest,correction.id,lines);
+ return {manifest,state:s,original,correction};
+}
+test('KOREKTA: poprawna własna dekretacja i pierwotna faktura tworzą jeden odrębny wpis',()=>{
+ const {manifest,state}=syntheticCorrectionFixture(),before=JSON.stringify(state);
+ const linked=withScenarioCorrectionJournal(state,manifest,'D22');
+ assert.equal(JSON.stringify(state),before,'Nie wolno zmieniać starego biura w miejscu');
+ const audit=inspectScenarioCorrectionBridge(linked,manifest,'2026-01');
+ assert.equal(audit.passed,true);
+ assert.equal(audit.matched,1);
+ assert.equal(audit.legal_review,'not_tested');
+ assert.equal(linked.journals.length,state.journals.length+1);
+ assert.equal(linked.journals.at(-1).scenario_correction_ref.original_doc_id,'D21');
+ assert.equal(linked.journals.at(-1).source_type,'manual');
+ assert.equal(taxCloseTrainingAudit(linked,manifest).checks.find(c=>c.key==='scenario_correction_ledger').passed,true);
+ assert.equal(taxCloseTrainingAudit(linked,manifest).completed,false);
+ assert.throws(()=>withScenarioCorrectionJournal(linked,manifest,'D22'),/już zapis/);
+});
+test('KOREKTA: brak faktury pierwotnej i błędna własna próba blokują, nie udają wysyłki',()=>{
+ const {manifest,state}=syntheticCorrectionFixture();
+ const broken=structuredClone(state);delete broken.scenario_invoice_links_v1;
+ assert.throws(()=>withScenarioCorrectionJournal(broken,manifest,'D22'),/correction_original_invoice_not_verified/);
+ const wrong=withJournalAttempt(state,manifest,'D22',[
+  {account:'700',debit_cents:14999,credit_cents:0},
+  {account:'201',debit_cents:0,credit_cents:14999}]);
+ assert.throws(()=>withScenarioCorrectionJournal(wrong,manifest,'D22'),/correction_student_journal_not_verified/);
+ const missingMeta=structuredClone(manifest);delete missingMeta.documents.find(d=>d.id==='D22').corrects_doc_id;
+ assert.throws(()=>withScenarioCorrectionJournal(state,missingMeta,'D22'),/correction_private_source_missing_or_period/);
+ assert.equal(inspectScenarioCorrectionBridge(state,manifest,'2026-01').passed,false);
+});
+test('KOREKTA: zła data, ręcznie podmieniony dekret lub storno odbierają zgodność',()=>{
+ const {manifest,state}=syntheticCorrectionFixture();
+ const posted=withScenarioCorrectionJournal(state,manifest,'D22');
+ const wrongDate=structuredClone(posted);wrongDate.journals.at(-1).date='2026-01-30';
+ assert.equal(inspectScenarioCorrectionBridge(wrongDate,manifest,'2026-01').passed,false);
+ const wrongAccount=structuredClone(posted);wrongAccount.journals.at(-1).lines[0].account='800';
+ assert.equal(inspectScenarioCorrectionBridge(wrongAccount,manifest,'2026-01').passed,false);
+ const reversed=structuredClone(posted),j=reversed.journals.at(-1);
+ reversed.journals.push({id:'REV-CORR',status:'posted',date:j.date,
+  source_type:'manual',source_id:'',reversal_of:j.id,
+  lines:j.lines.map(l=>({...l,debit:l.credit,credit:l.debit}))});
+ assert.equal(inspectScenarioCorrectionBridge(reversed,manifest,'2026-01').passed,false);
+});
+
 test('MOST fakturowy D01-D36: sześć niezależnych źródeł uzgadnia faktury i dekrety',()=>{
  const {manifest,spec}=linkedScenarioInvoicesFixture();
  let state=linkedScenarioInvoicesFixture().state;
