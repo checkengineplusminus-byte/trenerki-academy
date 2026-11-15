@@ -22,6 +22,8 @@ on:
       - 'public/sitemap.xml'
       - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
+      - 'scripts/autocad-course-browser.mjs'
+      - 'content/autocad-real-program-2026-11-15.json'
       - 'scripts/test-course-pricing.mjs'
       - 'scripts/pricing-browser.mjs'
       - 'content/course-pricing-2026-11-15.json'
@@ -66,6 +68,7 @@ jobs:
           node scripts/pricing-browser.mjs http://127.0.0.1:8787
           node scripts/seo-structure-test.mjs /tmp/trenerki-browser
           node scripts/learning-browser.mjs http://127.0.0.1:8787
+          node scripts/autocad-course-browser.mjs http://127.0.0.1:8787
           node scripts/company-browser.mjs http://127.0.0.1:8787
           node scripts/gift-card-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection

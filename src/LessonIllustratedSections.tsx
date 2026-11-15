@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Image,Platform,Pressable} from 'react-native';
 import WindowsPracticeMission from './WindowsPracticeMission';
+import AutoCADOriginalScreen from './AutoCADOriginalScreen';
 import ExcelProfessionalMission from './ExcelProfessionalMission';
 import ExcelAnalystWorkbench from './ExcelAnalystWorkbench';
 import ExcelProCaseLab from './ExcelProCaseLab';
@@ -42,8 +43,10 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
  const volunteerImage=courseSlug==='zaufany-wolontariusz'&&typeof illustration==='string'?volunteerIllustrations.get(illustration):undefined;
  const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration));
  const file=volunteerImage?.file??(validSvg?illustration+'.svg':null);
- const showImage=!!file&&Platform.OS==='web'&&!failed;
+ const originalAutoCAD=courseSlug==='autocad-skroty'&&illustration==='autocad-interface';
+ const showImage=!originalAutoCAD&&!!file&&Platform.OS==='web'&&!failed;
  return <View style={{marginBottom:18,gap:14}}>
+  {originalAutoCAD&&<AutoCADOriginalScreen/>}
   {showImage&&<View style={{backgroundColor:'#f1f8ed',padding:9,borderWidth:1,borderColor:'#d9e7d5',borderRadius:16,gap:7}}>
    <Image
     accessibilityLabel={volunteerImage?.alt??'Ilustracja objaśniająca temat: '+title}

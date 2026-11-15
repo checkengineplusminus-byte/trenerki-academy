@@ -123,6 +123,8 @@ async function installFixture(page,catalog){
 
 async function openCourse(page,slug,lesson=1){
  await page.goto(origin+'/nauka?course='+slug+'&lesson='+lesson);
+ const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
+ if(await consent.isVisible())await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
  if(lesson===1){
   await page.getByTestId('course-reading-introduction').waitFor();
   assert.equal(await page.getByTestId('case-checkpoint').count(),0,'Introduction must precede the first task');
@@ -144,60 +146,24 @@ async function waitText(locator,expected){
 
 async function verifyCad(page,mobile){
  await openCourse(page,'autocad-skroty');
- const lab=page.getByTestId('cad-workspace'),input=lab.getByTestId('cad-command'),summary=lab.getByTestId('cad-summary');
- await lab.waitFor();
- assert.equal(await lab.count(),1);
- const send=async command=>{await input.fill(command);await input.press('Enter');};
- const click=name=>lab.getByRole('button',{name,exact:true}).click();
- const canvas=lab.getByTestId('cad-canvas');
- await send('_.RECTANG');await send('-1000,-800');await send('@4200,3000');
- await waitText(summary,'Obiekty: 1');await lab.getByText('Prostokąt · 4200 × 3000',{exact:true}).waitFor();
- await click('Dopasuj widok');
- const first=await canvas.locator('polygon').getAttribute('points');
- assert(first&&first.split(' ').length===4,'The model shows the typed rectangle');
- const screenPick=async(fx,fy)=>{
-  const bounds=await canvas.boundingBox(),position={x:bounds.width*fx,y:bounds.height*fy};
-  if(mobile)await canvas.tap({position});else await canvas.click({position});
- };
- await click('Kreskowanie · HATCH');await screenPick(.48,.48);
- await waitText(summary,'Wypełnienia: 0');
- await click('Enter ↵');await waitText(summary,'Wypełnienia: 1');
- await send('CIRCLE');await send('400,400');await send('D');await send('600');
- await waitText(summary,'Obiekty: 2');await lab.getByText('Okrąg · R 300 · Ø 600',{exact:true}).waitFor();
- await click('Linia · LINE');await send('0,0');await send('@1000<0');
- await waitText(summary,'Obiekty: 3');await send('@1000<90');await waitText(summary,'Obiekty: 4');
- await send('U');await waitText(summary,'Obiekty: 3');
- await send('ESC');await waitText(summary,'Obiekty: 3');
- await click('Cofnij · Ctrl+Z');await waitText(summary,'Obiekty: 2');
- await click('Ponów · Ctrl+Y');await waitText(summary,'Obiekty: 3');
- await send('DI');await send('-1000,-800');await send('3200,-800');
- await lab.getByText('Odległość 4200 · ΔX 4200 · ΔY 0',{exact:true}).waitFor();
- await click('Layers / Warstwy');await click('Nowa warstwa');
- await lab.getByRole('textbox',{name:'Nazwa warstwy'}).fill('Wymiary');
- await click('Dodaj warstwę');
- await click('Annotate / Opisz');await click('Wymiar liniowy · DIMLINEAR');
- await send('-1000,-800');await send('3200,-800');await send('1000,-1450');
- await waitText(summary,'Obiekty: 4');
- await canvas.getByText('4200',{exact:true}).waitFor({state:'attached'});
- await click('Layout 1 / Arkusz');
- await canvas.getByText('Arkusz 1 · Model 2D',{exact:true}).waitFor({state:'attached'});
- await click('Model');await click('Dopasuj widok');
- await click('View / Widok');const before=await canvas.locator('polygon').getAttribute('points');
- await click('Przybliż +');const after=await canvas.locator('polygon').getAttribute('points');
- assert.notEqual(after,before,'Zoom changes the screen view');
- await click('Home / Narzędzia główne');await click('Draw / Rysuj');
- await click('Linia · LINE');await click('ORTHO · F8');
- await screenPick(.13,.25);
- await screenPick(.30,.31);await waitText(summary,'Obiekty: 5');
- const coords=(await canvas.locator('polyline[data-cad-object]:not([data-cad-object=preview])').last().getAttribute('points')).split(' ').map(x=>x.split(',').map(Number));
- assert(Math.abs(coords[0][1]-coords[1][1])<1e-5,'ORTHO did not align picked points: '+JSON.stringify(coords));
- await click('Zakończ rysowanie');
+ const practice=page.getByTestId('autocad-real-practice');
+ await practice.waitFor();
+ assert.equal(await page.getByTestId('cad-workspace').count(),0,'Do not present a substitute as Autodesk AutoCAD');
+ const originals=page.getByTestId('autocad-original-screens').first();
+ await originals.waitFor();
+ const images=originals.getByRole('img');
+ assert.equal(await images.count(),3);
+ for(const img of await images.all())assert(await img.evaluate(node=>node.complete&&node.naturalWidth>0),'Original screenshot must load');
+ await practice.getByRole('button',{name:/Trójkąt z trzech linii/}).click();
+ await practice.getByText(/_JOIN/).waitFor();
+ await practice.getByText(/_MOVE/).waitFor();
+ await practice.getByRole('link',{name:'Otwórz instrukcję łączenia obiektów Autodesk'}).waitFor();
  await page.getByRole('button',{name:'L · Linia',exact:true}).click();
- await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).click();
- await lab.getByText(/Wskaż pierwszy punkt/).first().waitFor();
+ await page.getByTestId('autocad-selected-command').filter({hasText:'L.'}).waitFor();
+ assert.equal(await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).count(),0);
  await page.getByRole('button',{name:/^[A-C]\. L · Linia$/}).click();
  await page.getByText('Wynik zapisany.',{exact:true}).waitFor();
- console.log('✓ '+(mobile?'mobile':'desktop')+' CAD: real-size typed drawing, pointer ORTHO, hatch commit, circle diameter, dimensions, layers, zoom, layout, undo/redo');
+ console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: authentic screenshots, real-program instructions, JOIN/MOVE explanation and recorded knowledge question');
 }
 
 async function verifyExcel(page,mobile){

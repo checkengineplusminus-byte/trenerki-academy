@@ -1,5 +1,5 @@
 import React from 'react';
-import CadWorkspace from './CadWorkspace';
+import CadWorkspace from './AutoCADRealPractice';
 import WindowsDesktopLab from './WindowsDesktopLab';
 // WindowsDesktopLab contains ExplorerWorkspace, retained as the advanced file operations practice panel.
 import SpreadsheetWorkspace from './SpreadsheetWorkspace';

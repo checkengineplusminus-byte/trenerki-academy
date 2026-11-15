@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {Image,Linking,Platform,Pressable,Text,View,useWindowDimensions} from 'react-native';
+import AutoCADOriginalScreen from './AutoCADOriginalScreen';
 
 type Term={name:string;description:string};
 type Program={
@@ -135,10 +136,10 @@ const walkthroughs:Record<string,string[]>={
  'autocad-skroty':[
   'W obszarze wstążki wybierz Home, a w nim Draw i Modify. Rozróżnij narzędzia tworzenia nowych obiektów i zmiany istniejących.',
   'Rysuj w Model Space w uzgodnionych jednostkach. Wprowadź punkty narożników zamiast zgadywać ich położenie na ekranie.',
-  'Wpisz LINE w Command Line, ustaw pierwszy i kolejny punkt. Enter kończy etap, Esc przerywa polecenie. Wykonaj to w symulatorze.',
+  'Wpisz LINE w Command Line, ustaw pierwszy i kolejny punkt. Enter kończy etap, Esc przerywa polecenie. Wykonaj to w swoim AutoCAD-zie.',
   'Utwórz warstwy dla ścian i wymiarów. Ukryj jedną, a następnie przywróć — obiekty nie zostały fizycznie usunięte.',
   'Layout służy do przygotowania widoku i wydruku, nie do przypadkowego przeskalowania modelu. Sprawdź wymiary w modelu przed eksportem.',
-  'Włącz i wyłącz funkcje Snap/Ortho w symulatorze. Zwróć uwagę, kiedy uzyskujesz poziome lub pionowe odcinki.'
+  'Włącz i wyłącz funkcje Snap/Ortho w AutoCAD-zie. Zwróć uwagę, kiedy uzyskujesz poziome lub pionowe odcinki.'
  ],
  'windows-skroty':[
   'Wskaż ikonę programu na pulpicie. Pamiętaj, że ikona może być skrótem, nie samym plikiem z dokumentem.',
@@ -162,7 +163,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
  return <View testID="software-orientation" style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
   <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
-  {Platform.OS==='web'&&!imageFailed?
+  {slug==='autocad-skroty'?<AutoCADOriginalScreen/>:Platform.OS==='web'&&!imageFailed?
    <Image source={{uri:'/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
     resizeMode="contain" style={{width:'100%',height:mobile?210:290,backgroundColor:'white',borderRadius:12}}
     accessibilityLabel={'Ilustrowana mapa głównego ekranu '+p.name}/>:
@@ -180,7 +181,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
      <Text style={{color:'#476a54',lineHeight:22}}>{p.zones[selectedZone].meaning}</Text>
     </View>
    </View>}
-  <Text style={{fontSize:11,color:'#647d66',lineHeight:18}}>Autorski schemat edukacyjny, nie zrzut ekranu producenta. Wygląd może się zmieniać zależnie od wersji programu.</Text>
+  {slug!=='autocad-skroty'&&<Text style={{fontSize:11,color:'#647d66',lineHeight:18}}>Autorski schemat edukacyjny, nie zrzut ekranu producenta. Wygląd może się zmieniać zależnie od wersji programu.</Text>}
   {slug==='excel-skroty'&&<Pressable accessibilityRole="link" accessibilityLabel="Zobacz oficjalną instrukcję Microsoft Excel" onPress={()=>void Linking.openURL('https://support.microsoft.com/pl-pl/excel')}
    style={{paddingHorizontal:13,paddingVertical:11,minHeight:44,borderRadius:10,backgroundColor:'#fff',alignSelf:'flex-start',borderWidth:1,borderColor:'#b6d2bf',justifyContent:'center'}}>
    <Text style={{color:'#1d6546',fontWeight:'800',fontSize:13}}>Oryginalny Excel i oficjalne instrukcje Microsoft ↗</Text>
@@ -208,7 +209,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
     <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{walkthroughs[slug][selectedZone]}</Text>
    </View>
    <Pressable onPress={openPractice} accessibilityRole="button" style={{padding:14,backgroundColor:ink,borderRadius:11}}>
-    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Przejdź do wirtualnego programu →</Text>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{slug==='autocad-skroty'?'Przejdź do instrukcji ćwiczenia →':'Przejdź do wirtualnego programu →'}</Text>
    </Pressable>
   </>}
   {tab==='history'&&<View style={{gap:13}}>

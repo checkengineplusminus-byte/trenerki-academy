@@ -210,7 +210,7 @@ try{
   const source=JSON.parse(read(path));
   const lessons=source.lessons||[];
   if(lessons.length!==30||new Set(lessons.map(x=>x.lesson_no)).size!==30||
-     !lessons.every((x,i)=>x.lesson_no===i&&x.material?.section===Math.floor(i/10)+1&&x.material?.learning?.situation&&x.material?.learning?.example))
+     !lessons.every((x,i)=>x.lesson_no===i&&x.material?.section===Math.floor(i/10)+1&&(x.material?.learning?.situation||x.material?.learning?.question)&&x.material?.learning?.example))
     fail(slug+': expected 30 individual graded lessons in 3 sections');
  }
  ok(specialistSlugs.length+' specialist 30-lesson programs have unique, graded examples and chapter groupings');
@@ -367,7 +367,7 @@ try{
   if(!svg.includes('<svg')||!svg.includes('</svg>')||!illustrated.includes("'"+asset+"'"))
    fail('Missing or unregistered profession illustration '+asset);
  }
- if(!read('src/LabControls.tsx').includes('minHeight:44')||!read('scripts/learning-browser.mjs').includes('canvas.tap')||
+ if(!read('src/LabControls.tsx').includes('minHeight:44')||!read('scripts/learning-browser.mjs').includes('hasTouch:mobile')||
     !chatUI.includes('Zapytaj Anielkę'))
   fail('Touchscreen software practice and single-action mentor interface missing');
  else ok('Touchscreen buttons, automatic Anielka and all 20 profession illustrations verified');

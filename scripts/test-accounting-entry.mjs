@@ -33,6 +33,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // zmianę onboardingu samego Excel (13fab77), bez zmiany tras księgowości.
  // 15.11: użytkownik zlecił wstęp przed zadaniami i dokładną listę wymagań dla wszystkich kursów.
  const reviewedReaderHashes=new Set([
+  '7afb5431e414749db7b441b42ed07af94f75dec9', // opening practice first reveals the introduction-gated lesson
   '12e478132297267229af76f44a752bd5514e22ea', // combined introductory reading and server-verified carpentry requirements
   'db094a43e9adcd3abb7629ee8ebd5ca4d260ee0e',
   'a7c5b5720baeb67a75be65b699d57212197eea60',

@@ -35,6 +35,7 @@ export default function Learning(){
  const {course,lesson:lessonParam}=useLocalSearchParams<{course?:string;lesson?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0);
+ const pendingWorkshopRef=React.useRef(false);
  function scrollToTop(){
   scrollRef.current?.scrollTo({y:0,animated:false});
   if(Platform.OS==='web'&&typeof window!=='undefined')window.scrollTo(0,0);
@@ -45,10 +46,13 @@ export default function Learning(){
   scrollRef.current?.scrollTo({y,animated:true});
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
- function openWorkshop(){scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});}
+ function openWorkshop(){
+  if(!introRead){pendingWorkshopRef.current=true;setIntroRead(true);return;}
+  scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});
+ }
  function openCarpentry(){scrollRef.current?.scrollTo({y:Math.max(0,carpentryYRef.current-18),animated:true});}
  const [introRead,setIntroRead]=useState(false);
- useEffect(()=>setIntroRead(false),[slug]);
+ useEffect(()=>{setIntroRead(false);pendingWorkshopRef.current=false;},[slug]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
@@ -372,7 +376,10 @@ export default function Learning(){
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
-      <View onLayout={event=>{workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;}}>
+      <View onLayout={event=>{
+       workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;
+       if(pendingWorkshopRef.current){pendingWorkshopRef.current=false;scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});}
+      }}>
        <KeyboardLesson key={slug+'-'+module} slug={slug} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise}
         alreadyVerified={passed.keyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
       </View>

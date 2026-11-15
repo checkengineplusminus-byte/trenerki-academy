@@ -74,7 +74,7 @@ const modules:Record<string,Menu>={
  ]}
 };
 
-export const hasSoftwareMenuLab=(slug:string)=>Object.prototype.hasOwnProperty.call(modules,slug);
+export const hasSoftwareMenuLab=(slug:string)=>slug!=='autocad-skroty'&&Object.prototype.hasOwnProperty.call(modules,slug);
 export default function SoftwareMenuLab({slug}:{slug:string}){
  const m=modules[slug];const [selected,setSelected]=useState(0);
  useEffect(()=>setSelected(0),[slug]);if(!m)return null;

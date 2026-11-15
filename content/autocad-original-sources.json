@@ -1,0 +1,25 @@
+{
+  "version": "AutoCAD 2026, documentation ENU; original unmodified screenshots",
+  "assets": [
+    {
+      "file": "autocad-original-ribbon.png",
+      "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-GettingStarted/images/GUID-291027CC-02FF-412F-8790-7E807E41E0BF.png"
+    },
+    {
+      "file": "autocad-original-tabs.png",
+      "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-GettingStarted/images/GUID-DE0FE4D6-C710-4C1D-AA38-FF57CCF19D4F.png"
+    },
+    {
+      "file": "autocad-original-command.png",
+      "url": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-GettingStarted/images/GUID-32F9FC20-332F-4AE3-B9C0-943F4B376E75.png"
+    }
+  ],
+  "documentation": [
+    "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-GettingStarted/files/GUID-5B6347C1-B458-4336-AB2A-C16AF161B755.htm",
+    "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-DidYouKnow/files/GUID-29D46150-7550-420A-B151-73BE44146665.htm",
+    "https://help.autodesk.com/cloudhelp/2025/ENG/AutoCAD-Core/files/GUID-4D2A28C3-3E7F-4830-BE6A-7C9907C95488.htm",
+    "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-1B3E8624-ED88-4409-AEA2-32836332AB27.htm",
+    "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-70599862-DF52-4291-B64B-8A4C45599F39.htm",
+    "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-DidYouKnow/files/GUID-DD451786-5D5A-42A5-92D5-943CE9D66016.htm"
+  ]
+}
