@@ -48,6 +48,19 @@ for(let i=1;i<=5;i++){
 }
 required('academy/assets/craft-kolodziej.svg');
 required('academy/assets/ciesla-dach.svg');
+// The real AutoCAD training files and original-screen extracts must survive Expo export.
+for(const file of ['autocad-triangle-lines.dxf','autocad-room-4000x3000.dxf','autocad-panel-A.dxf']){
+ const dxf=required('academy/assets/'+file);
+ assert(dxf.includes('9\n$INSUNITS\n70\n4\n'),'AutoCAD training DXF must use millimetres: '+file);
+ assert(dxf.endsWith('0\nEOF\n'),'AutoCAD training DXF appears truncated: '+file);
+}
+for(const file of ['autocad-original-ribbon.png','autocad-original-tabs.png','autocad-original-command.png']){
+ const path=join(root,'academy/assets',file);
+ assert(existsSync(path),'Missing original Autodesk program screenshot: '+file);
+ const png=readFileSync(path);
+ assert(png.length>200&&png.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])),'Broken original AutoCAD PNG: '+file);
+}
+
 const volunteerLanding=required('academy/kursy/zaufany-wolontariusz.html');
 const volunteerLegacy=required('academy/kursy/zaufany-wolontariusz-nauka.html');
 assert(!volunteerLanding.includes('bez konta'),'Volunteer landing promises access without an account');
@@ -57,3 +70,4 @@ assert(volunteerLegacy.length<4000&&!/<fieldset|data-answer|data-view|<textarea/
 console.log('✓ Expo export includes the academy catalog, search assets and course visuals');
 console.log('✓ All '+photoDigests.size+' distinct course photos and their SVG fallbacks are shipped in the exported site');
 console.log('✓ Reference illustrations for wooden wheel and timber roof included');
+console.log('✓ All 3 real AutoCAD DXF drawings and 3 original interface screenshots are included in Expo export');
