@@ -40,7 +40,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '8526dbcfa26527f2b004c3ff6bf48ac3d4885e4a',
   '5bb86b0916e4fcdfe1376f770cc8a5e27358a076', // reviewed carpentry lesson progression
   '40028cffa8120c07c37d18d2527768994e089b9d', // previous AutoCAD UI version
-  '955f3659546dcbeae6359955c8498ff2e951837c' // reviewed 15.11: start from beginning and unclutter AutoCAD, accounting guard untouched
+  '955f3659546dcbeae6359955c8498ff2e951837c', // earlier review branch before hook fix
+  'bb3bbe5a73190c30c53a55f90fb74b35fcb09802' // reviewed 15.11: course review UI and unique AutoCAD method, accounting route unchanged
  ]);
  assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
