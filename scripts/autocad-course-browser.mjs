@@ -95,7 +95,7 @@ for(const mobile of [false,true]){
   for(const lesson of lessons){
    const {lesson_no:n,material:m}=lesson;
    await page.getByTestId('lesson-heading').filter({hasText:lesson.title_pl}).waitFor();
-   assert.equal(await page.getByTestId('autocad-original-screens').count(),n===0?1:0,'Screenshot should be shown only in introductory lesson');
+   assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Welcome screenshot must never repeat inside any practical lesson');
    assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Old repeated lecture disguised as CAD practice');
    if(n===0||[4,5,9,10,11,17,19,27,29].includes(n))await page.getByTestId('cad-workspace').waitFor();
    const lessonMethod=page.getByTestId('autocad-lesson-method');
