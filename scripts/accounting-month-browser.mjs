@@ -8,6 +8,7 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {readScenario,inspectReferenceMonth,auditMonthWorkflow} from '../src/accounting/simulator-core.js';
+import {parseBankCSV} from '../src/accounting/lab-core-base.js';
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 assert.match(origin,/^http:\/\/(?:127\.0\.0\.1|localhost):\d+$/,'Only a localhost Expo export is allowed.');
 const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
@@ -241,6 +242,33 @@ try{
   assert.equal(f.model().state.simulator_bank_exercise_v1.bank_net_cents,11110000);
   assert.equal(f.model().state.journals.length,0);
  });
+
+ await pass('Chromium: pobranie i import wyciągu D01-D36 z tymi samymi dowodami',async()=>{
+  const prior=f.model().version,download=f.page.waitForEvent('download');
+  await f.page.locator('button[data-action="sim-bank-csv"]').click();
+  const data=await download,stream=await data.createReadStream(),chunks=[];
+  for await(const c of stream)chunks.push(c);
+  const buffer=Buffer.concat(chunks),parsed=parseBankCSV(buffer.toString('utf8'));
+  assert.deepEqual(parsed.errors,[]);
+  const docs=manifest.documents.filter(d=>['bank_in','bank_out'].includes(d.kind));
+  assert.equal(parsed.rows.length,docs.length);
+  assert.deepEqual(parsed.rows.map(x=>x.id),docs.map(x=>x.id));
+  assert.equal(f.model().version,prior,'Pobranie nie zapisuje stanu konta');
+  await f.page.locator('button[data-action="tab"][data-id="bank"]').click();
+  await f.page.locator('#lab-file').setInputFiles({
+   name:'D01-D36-fikcyjny.csv',mimeType:'text/csv',buffer
+  });
+  const submit=f.page.locator('button[data-action="import-bank"]');
+  await submit.waitFor();
+  assert.match(await submit.innerText(),new RegExp(String(docs.length)));
+  await submit.click();
+  await saved(f,prior);
+  assert.deepEqual(f.model().state.bank.map(x=>x.id),docs.map(x=>x.id));
+  assert.equal(f.model().state.journals.length,0,'CSV nie księguje automatycznie');
+  await tab(f.page).click();
+  assert.equal(await f.page.locator('#sim-doc option').count(),36);
+  assert.deepEqual(f.errors,[]);
+ });
  await pass('36 decyzji Wn/Ma przez interfejs: 29 dekretów i 7 świadomych braków',async()=>{
   for(const d of manifest.documents){
    await choose(f.page,'#sim-journal-doc',d.id);
@@ -271,7 +299,7 @@ try{
   assert.equal(audit.passed,5);
   assert.equal(audit.reference_integrity,'passed');
   assert.equal(audit.bank_difference_cents,0);
-  assert.equal(f.saves(),73);
+  assert.equal(f.saves(),74);
   assert.match(await f.page.locator('body').innerText(),/Wewnętrzne etapy są zgodne \(5\/5\)/);
  });
  await pass('Raport 36 dokumentów pobiera się dopiero po pełnym uzgodnieniu',async()=>{
@@ -286,7 +314,7 @@ try{
   assert.match(html,/Raport szkoleniowy: miesiąc D01–D36/);
   assert.equal((html.match(/<tr><td>D\d\d/g)||[]).length,36);
   assert.ok(html.includes('nie zastępuje opinii księgowego'));
-  assert.equal(f.saves(),73,'Raport nie może tworzyć zapisu do bazy');
+  assert.equal(f.saves(),74,'Raport nie może tworzyć zapisu do bazy');
  });
  await pass('Pełny stan po odświeżeniu strony odtwarza 36/36 odpowiedzi',async()=>{
   await f.page.reload();
