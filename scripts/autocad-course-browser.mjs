@@ -114,6 +114,28 @@ for(const mobile of [false,true]){
   await cad.getByText(/Przesunięto 3 obiekty o 500, 0/).waitFor();
   await send('SCALE');await send('0,0');await send('2');
   await cad.getByText(/SCALE: przeskalowano 3 obiekty/).waitFor();
+  const ribbon=cad.getByTestId('cad-ribbon');
+  await ribbon.waitFor();
+  const ribbonHome=cad.getByTestId('cad-home-ribbon');
+  await ribbonHome.waitFor();
+  const labels=await ribbonHome.innerText();
+  assert(labels.indexOf('Draw / Rysuj')>=0&&labels.indexOf('Modify / Zmień')>labels.indexOf('Draw / Rysuj')&&labels.indexOf('Layers / Warstwy')>labels.indexOf('Modify / Zmień'),
+    'Home ribbon must group Draw, Modify and Layers in Autodesk-like order');
+  assert.equal(await ribbon.getByRole('button',{name:'Obróć · ROTATE'}).count(),1);
+  assert.equal(await ribbon.getByRole('button',{name:'Lustro · MIRROR'}).count(),1);
+  await send('ROTATE');await send('0,0');await send('90');
+  await cad.getByText(/ROTATE: obrócono 3 obiekty o 90°/).waitFor();
+  await send('MIRROR');await send('0,0');await send('0,1000');
+  await cad.getByRole('button',{name:'Zachowaj oryginały · Nie'}).waitFor();
+  await cad.getByRole('button',{name:'Zachowaj oryginały · Nie'}).click();
+  await cad.getByText(/MIRROR: odbito 3 obiekty.*Oryginały zachowane/).waitFor();
+  await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 6'}).waitFor();
+  await cad.getByRole('button',{name:'Zaznacz wszystko · Ctrl+A'}).click();
+  await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 6'}).waitFor();
+  await send('MIRROR');await send('0,0');await send('1000,0');await send('Y');
+  await cad.getByText(/MIRROR: odbito 6 obiektów.*Oryginały usunięte/).waitFor();
+  await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 6'}).waitFor();
+  console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: ROTATE 90° and MIRROR N/Y on grouped selected geometry, 2026 Home ribbon order');
   await cad.getByRole('button',{name:'Tryby OSNAP · ustaw'}).click();
   const snaps=cad.getByTestId('cad-osnap-settings');await snaps.waitFor();
   await snaps.getByRole('button',{name:'Przecięcie'}).click();
