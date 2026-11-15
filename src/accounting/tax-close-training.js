@@ -231,6 +231,29 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    journal_count:posted.filter(j=>j.source_type==='invoice'&&j.source_id===i.id).length,
    legal_qualification:'not_tested'};
  });
+ // Zamknięcie listopada nie może ukryć drugiej faktury z tym samym numerem
+ // wystawionej w październiku tej samej fikcyjnej firmy. Zakup tego samego
+ // numeru od INNEGO dostawcy pozostaje dozwolony; to kontrola ewidencji,
+ // a nie urzędowe potwierdzenie numeracji faktur.
+ const annualSourceIssues=[],annualIds=new Set(),annualNumbers=new Set();
+ if(period){
+  const year=period.slice(0,4);
+  for(const i of allSourceInvoices){
+   if(!validDate(i.date)||i.date.slice(0,4)!==year)continue;
+   const id=typeof i.id==='string'?i.id.trim():'';
+   if(id){
+    if(annualIds.has(id))annualSourceIssues.push({code:'annual_invoice_id_duplicate',invoice:id});
+    annualIds.add(id);
+   }
+   const number=typeof i.number==='string'?i.number.trim().toLocaleLowerCase('pl-PL'):'';
+   if(!number)continue;
+   const party=i.kind==='sale'?'__own_company__':String(i.party??'').trim().toLocaleLowerCase('pl-PL');
+   if(!party)continue;
+   const key=[i.kind,party,number].join('|');
+   if(annualNumbers.has(key))annualSourceIssues.push({code:'annual_invoice_number_duplicate',invoice:i.number});
+   annualNumbers.add(key);
+  }
+ }
  // W tym fikcyjnym modelu każda faktura musi mieć ślad na kontach 221/222.
  // NIE oznacza to jednak odliczenia VAT ani kwalifikacji podatkowej.
  const vatLedgerSalesCents=-periodMovement('222');
@@ -286,6 +309,9 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   {key:'source_identity',label:'Unikalne faktury źródłowe w miesiącu',
    passed:issued.length>0&&sourceIdentityIssues.length===0,
    detail:sourceIdentityIssues.length+' powtórzonych ID / numerów tej samej strony'},
+  {key:'annual_source_identity',label:'Unikalne numery i ID dokumentów w roku ćwiczeniowym',
+   passed:!!period&&annualSourceIssues.length===0,
+   detail:annualSourceIssues.length+' konfliktów źródeł w roku '+(period?.slice(0,4)||'nieustalonym')+'; sprzedaż w jednej serii firmy, zakupy rozróżnione według dostawcy'},
   {key:'invoice_posting',label:'Jedno poprawne księgowanie każdej faktury',passed:issued.length>0&&correctPostings===issued.length&&issues.length===0,detail:correctPostings+'/'+issued.length+'; sprawdź wyjątki dotyczące majątku'},
   {key:'ledger',label:'Wn = Ma na każdym dekrecie miesiąca',passed:ledgerBalanced,detail:periodPostings.length+' aktywnych dekretów'},
   {key:'vat_model_vs_ledger',label:'VAT faktur = konta 221/222 tego samego miesiąca',
@@ -350,7 +376,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   figures:{...visibleInvoiceTotals,purchase_deductible_model_cents:sourceAmountsReady?deductibleModelValue:null,
    vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...annualSourceIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:readyForTrainingReview,
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},

@@ -1906,6 +1906,29 @@ test('Kontrola rozliczenia wykrywa dwie faktury o tym samym identyfikatorze',()=
  assert.equal(r.source_inventory.length,3);
  assert.equal(r.ready_for_training_review,false);
 });
+test('Jedna firma nie może ukryć w zamknięciu miesiąca duplikatu numeru sprzedaży z wcześniejszego miesiąca',()=>{
+ const s=fullScenario(),sale=s.invoices.find(i=>i.kind==='sale'),before=JSON.stringify(s);
+ s.invoices.push({...sale,id:'YEAR-EARLIER-SALE',date:'2026-10-02'});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.period,'2026-11');
+ assert.equal(r.checks.find(c=>c.key==='source_identity').passed,true);
+ assert.equal(r.checks.find(c=>c.key==='annual_source_identity').passed,false);
+ assert.ok(r.issues.some(i=>i.code==='annual_invoice_number_duplicate'));
+ assert.equal(r.ready_for_training_review,false);
+ assert.ok(before.length>0);
+});
+test('Roczna unikalność nie odrzuca takich samych numerów zakupowych od różnych dostawców',()=>{
+ const s=fullScenario(),purchase=s.invoices.find(i=>i.kind==='purchase');
+ s.invoices.push({...purchase,id:'YEAR-OTHER-SUPPLIER',date:'2026-10-02',party:'Inny fikcyjny dostawca'});
+ assert.equal(taxCloseTrainingAudit(s).checks.find(c=>c.key==='annual_source_identity').passed,true);
+});
+test('Ten sam ID dokumentu w dwóch okresach pozostaje błędem źródła',()=>{
+ const s=fullScenario(),sale=s.invoices.find(i=>i.kind==='sale');
+ s.invoices.push({...sale,number:'FV/2026/INNY',date:'2026-10-02'});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(c=>c.key==='annual_source_identity').passed,false);
+ assert.ok(r.issues.some(i=>i.code==='annual_invoice_id_duplicate'));
+});
 test('Różni dostawcy mogą mieć powtarzające się numery faktur zakupowych',()=>{
  const s=fullScenario(),purchase=s.invoices.find(i=>i.kind==='purchase');
  s.invoices.push({...purchase,id:'OTHER-PURCHASE',party:'Inny fikcyjny dostawca'});
