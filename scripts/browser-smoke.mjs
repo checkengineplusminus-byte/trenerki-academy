@@ -182,7 +182,7 @@ async function verify(name,viewport,isMobile){
    assert.deepEqual(await freeCards.evaluateAll(nodes=>nodes.map(node=>node.dataset.courseId)),['excel-skroty','zaufany-wolontariusz','swiety-mikolaj'],'Free courses must appear together in the first catalogue row');
    assert.deepEqual(await freeCards.locator('.price').allTextContents(),['GRATIS','GRATIS','GRATIS']);
    if(!isMobile)assert(await freeCards.evaluateAll(nodes=>nodes.every(node=>Math.abs(node.getBoundingClientRect().top-nodes[0].getBoundingClientRect().top)<3)),'Free courses must sit side by side on desktop');
-   assert.match(await page.locator('#course-cards .course-card .card-title').first().innerText(),/Excel od zera/);
+   assert.match(await page.locator('#course-cards .course-card .card-title').first().innerText(),/Excel — kompletny kurs od podstaw do eksperta/);
   const firstMedia=page.locator('#course-cards .card-media').first();
   await firstMedia.scrollIntoViewIfNeeded();
   const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="excel-skroty"]');

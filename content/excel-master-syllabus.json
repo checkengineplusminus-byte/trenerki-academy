@@ -1,0 +1,552 @@
+{
+  "info": "Rozdziały dodatkowe do kursu Excel. Nie zmieniają postępu istniejących 30 lekcji ani egzaminu. Instrukcje dotyczą rzeczywistego Excela; nie wszystkie polecenia występują w symulatorze.",
+  "chapterCount": 39,
+  "chapters": [
+    {
+      "id": 1,
+      "level": "Podstawy",
+      "title": "Po co powstały arkusze i czym jest Excel?",
+      "explanation": "Arkusz kalkulacyjny zastąpił wiele ręcznych zestawień: po zmianie ceny można automatycznie przeliczyć całe zamówienie. Excel pracuje na skoroszytach, które mogą zawierać kilka arkuszy; komórki przechowują dane, a formuły wyliczają wyniki.",
+      "steps": [
+        "Otwórz pusty skoroszyt i wskaż nazwę pliku.",
+        "Rozpoznaj karty arkuszy na dole oraz wstążkę poleceń u góry.",
+        "Wpisz w A1 nazwę produktu, a w B1 cenę."
+      ],
+      "example": "Wpisz A1: Farba i B1: 150; wyjaśnij różnicę między tekstem a liczbą.",
+      "pitfall": "Skoroszyt to nie to samo co arkusz.",
+      "assignment": "Zapisz definicję komórki, arkusza i skoroszytu własnymi słowami."
+    },
+    {
+      "id": 2,
+      "level": "Podstawy",
+      "title": "Wstążka i wszystkie podstawowe karty",
+      "explanation": "W zależności od wersji Excela widzisz m.in. Plik, Narzędzia główne, Wstawianie, Układ strony, Formuły, Dane, Recenzja, Widok i Pomoc. Karty grupują narzędzia: np. format liczby jest na Narzędziach głównych, wykresy we Wstawianiu, a sortowanie w Danych.",
+      "steps": [
+        "Przejrzyj po kolei nazwy dostępnych kart.",
+        "W karcie Narzędzia główne znajdź grupy Czcionka, Wyrównanie i Liczba.",
+        "W karcie Formuły znajdź Wstaw funkcję; w Układzie strony znajdź ustawienia druku."
+      ],
+      "example": "Wskaż po jednej czynności wykonywanej przez Dane, Widok i Wstawianie.",
+      "pitfall": "Wygląd wstążki zmienia się pomiędzy Windows, Mac i wersją internetową.",
+      "assignment": "Wyszukaj polecenie Obszar wydruku i zapisz, gdzie się znajduje."
+    },
+    {
+      "id": 3,
+      "level": "Podstawy",
+      "title": "Komórki A1, B2 i granice arkusza",
+      "explanation": "Litery oznaczają kolumny, liczby oznaczają wiersze, a B3 to przecięcie kolumny B i wiersza 3. Excel ma maksymalnie 1 048 576 wierszy oraz 16 384 kolumn (ostatnia ma oznaczenie XFD); to rozmiar arkusza, a nie liczba wierszy jednego wydruku.",
+      "steps": [
+        "Kliknij komórkę B3 i odczytaj adres w polu nazwy.",
+        "Wpisz A1:C5 w polu nazwy, aby zaznaczyć zakres.",
+        "Porównaj pojedynczą komórkę, cały wiersz i całą kolumnę."
+      ],
+      "example": "A1:C5 oznacza 3 kolumny razy 5 wierszy, czyli 15 komórek.",
+      "pitfall": "Nie myl wierszy arkusza z liczbą stron PDF.",
+      "assignment": "Zaznacz zakres B2:D6 i policz liczbę komórek."
+    },
+    {
+      "id": 4,
+      "level": "Podstawy",
+      "title": "Liczba, tekst, data, procent i waluta",
+      "explanation": "Wartość liczbowa 1250 i widok 1 250,00 zł mogą oznaczać tę samą komórkę. Dopisek zł wpisany bezpośrednio do tekstu nie jest formatem walutowym i może uniemożliwić prawidłowe liczenie. Daty są przechowywane jako wartości liczbowe z formatem daty.",
+      "steps": [
+        "Wpisz do B2 samo 1250,50.",
+        "Narzędzia główne → Liczba → Walutowe, wybierz PLN.",
+        "W C2 wpisz =B2*2 i sprawdź wynik 2501."
+      ],
+      "example": "Własny przykład: 1 250,50 zł × 2 = 2 501,00 zł.",
+      "pitfall": "Nie doklejaj jednostki do formuł, jeśli chcesz liczyć wartości.",
+      "assignment": "Wykonaj te same działania na liczbach 2,5; 100 i 0,23."
+    },
+    {
+      "id": 5,
+      "level": "Podstawy",
+      "title": "Przecinek, kropka i import liczb",
+      "explanation": "W polskiej konfiguracji separator dziesiętny jest zazwyczaj przecinkiem. Pliki CSV z innych krajów często używają kropki i przecinka albo średnika jako separatorów pól. Import wymaga świadomego wskazania typu liczby, aby 10.50 nie zostało uznane za datę lub tekst.",
+      "steps": [
+        "Porównaj zapis 12,50 i 12.50 na swoim komputerze.",
+        "Otwórz Dane → Z tekstu/CSV i sprawdź separator pól.",
+        "Przed zatwierdzeniem importu obejrzyj podgląd ceny, ilości i dat."
+      ],
+      "example": "Cena 10,50 × ilość 3 powinna dawać 31,50.",
+      "pitfall": "Nie zamieniaj automatycznie każdego przecinka na kropkę bez sprawdzenia ustawień regionalnych.",
+      "assignment": "Sprawdź, czy zaimportowana cena jest liczbą: =CZY.LICZBA(B2)."
+    },
+    {
+      "id": 6,
+      "level": "Podstawy",
+      "title": "Edycja, Enter, Esc, Delete, cofanie",
+      "explanation": "Kliknięcie komórki pozwala ją zaznaczyć. F2 edytuje zawartość; Enter zatwierdza, Esc anuluje, Delete usuwa dane; Ctrl+Z cofa. Pasek formuły pokazuje oryginalny wpis, gdy komórka wyświetla tylko wynik.",
+      "steps": [
+        "Wpisz do A2 10, zatwierdź Enter.",
+        "Naciśnij F2, zamień 10 na 20, po czym zatwierdź.",
+        "Użyj Ctrl+Z, aby wrócić do 10."
+      ],
+      "example": "Dla =B2*C2 w komórce D2 zobaczysz wynik, a na pasku fx formułę.",
+      "pitfall": "Nie usuwaj przypadkiem całego wiersza zamiast pojedynczej wartości.",
+      "assignment": "Wpisz i anuluj jedną zmianę, następnie zapisz poprawną."
+    },
+    {
+      "id": 7,
+      "level": "Podstawy",
+      "title": "Wybieranie wielu wierszy i zakresów",
+      "explanation": "Zakres B2:B10 oznacza pionowy fragment jednej kolumny, a B2:E10 prostokąt danych. Shift rozszerza zaznaczenie, Ctrl pozwala wybierać nieprzylegające zakresy. Zaznaczanie poprzedza formatowanie, kopiowanie i tworzenie wykresu.",
+      "steps": [
+        "Kliknij B2 i z klawiszem Shift kliknij B10.",
+        "Zaznacz B2:E10 przez pole nazwy.",
+        "Spróbuj skopiować zakres Ctrl+C i wkleić Ctrl+V."
+      ],
+      "example": "B2:E10 to 4 kolumny i 9 wierszy.",
+      "pitfall": "Zwróć uwagę, która komórka jest aktywna wewnątrz zaznaczenia.",
+      "assignment": "Zaznacz tylko wartości, nie dodając wiersza RAZEM drugi raz do sumy."
+    },
+    {
+      "id": 8,
+      "level": "Podstawy",
+      "title": "Pierwsza formuła: +, −, *, / i nawiasy",
+      "explanation": "Formuła zaczyna się znakiem =, a adres komórki wskazuje źródło danych. Zmieniając ilość lub cenę, automatycznie aktualizujesz wynik. Kolejność działań jest matematyczna, dlatego używaj nawiasów.",
+      "steps": [
+        "W A2 wpisz 3, w B2 wpisz 40.",
+        "W C2 wpisz =A2*B2; sprawdź 120.",
+        "W D2 wpisz =(C2+30)/3; sprawdź 50."
+      ],
+      "example": "Formuła =3+2*5 daje 13, a =(3+2)*5 daje 25.",
+      "pitfall": "Nie wpisuj formuły bez znaku równości.",
+      "assignment": "Zmodyfikuj A2 na 5 i samodzielnie wyjaśnij, dlaczego zmienia się C2."
+    },
+    {
+      "id": 9,
+      "level": "Podstawy",
+      "title": "SUMA, ŚREDNIA, MIN, MAX i liczenie komórek",
+      "explanation": "Funkcja SUMA dodaje liczby w zakresie, ŚREDNIA liczy średnią, MIN i MAX wskazują wartości skrajne. ILE.LICZB zlicza komórki liczbowe, natomiast ILE.NIEPUSTYCH także wypełnione tekstem.",
+      "steps": [
+        "Wpisz 10, 20, 30 w A1:A3.",
+        "W A4 wpisz =SUMA(A1:A3) i sprawdź 60.",
+        "W B4 wpisz =ŚREDNIA(A1:A3) i sprawdź 20."
+      ],
+      "example": "=MAX(A1:A3) zwraca 30, =MIN(A1:A3) zwraca 10.",
+      "pitfall": "Nie uwzględniaj komórki z sumą w tej samej sumie.",
+      "assignment": "Porównaj ILE.LICZB i ILE.NIEPUSTYCH w kolumnie z nazwą produktu."
+    },
+    {
+      "id": 10,
+      "level": "Podstawy",
+      "title": "Kopiowanie formuł i adresy względne / bezwzględne",
+      "explanation": "Przeciągnięcie formuły =B2*C2 z D2 do D3 zmienia ją na =B3*C3. Znak $ blokuje odpowiednią część adresu: $B$2 blokuje kolumnę i wiersz; F4 przełącza typ odwołania.",
+      "steps": [
+        "Wprowadź =B2*C2 w D2.",
+        "Skopiuj do D3 i obejrzyj pasek fx.",
+        "Zastosuj $F$1 jako stałą stawkę VAT i wypełnij formuły w dół."
+      ],
+      "example": "=E2*$F$1 powinno zachować F1 podczas kopiowania.",
+      "pitfall": "Brak blokady stawki VAT często daje złe wyniki w kolejnych wierszach.",
+      "assignment": "Wykonaj dwa przykłady: kopiowanie =B2*C2 i =B2*$F$1."
+    },
+    {
+      "id": 11,
+      "level": "Podstawy",
+      "title": "Zapisz, Zapisz jako, XLSX, CSV i PDF",
+      "explanation": "XLSX zachowuje strukturę skoroszytu i wiele funkcji Excela, CSV przechowuje zasadniczo dane tabelaryczne w postaci tekstowej, a PDF służy do udostępniania wyglądu dokumentu. Samo zapisanie CSV nie zachowuje wielu arkuszy, formuł czy wykresów.",
+      "steps": [
+        "Naciśnij Ctrl+S i nadaj skoroszytowi czytelną nazwę.",
+        "Wybierz Plik → Zapisz jako i format XLSX.",
+        "Otwórz Zapisz jako ponownie, porównaj CSV i PDF."
+      ],
+      "example": "Budżet_2026.xlsx jest do dalszej edycji; Budżet_2026.pdf do oglądania.",
+      "pitfall": "Nie myl eksportu do PDF z tworzeniem kopii zapasowej XLSX.",
+      "assignment": "Zapisz dwie wersje: edytowalną XLSX oraz czytelny PDF."
+    },
+    {
+      "id": 12,
+      "level": "Podstawy",
+      "title": "Drukowanie i pierwsza kontrola stron",
+      "explanation": "Podgląd pod Plik → Drukuj pokazuje liczbę stron, orientację, marginesy i skalowanie. Szeroki arkusz może wydrukować się na kilku kartkach mimo niewielu wierszy. Liczba stron nie wynika wprost z liczby komórek.",
+      "steps": [
+        "Naciśnij Ctrl+P i przeczytaj liczbę stron w podglądzie.",
+        "Zmień orientację na poziomą, jeżeli kolumny wychodzą poza stronę.",
+        "Sprawdź skalowanie i upewnij się, że czcionka jest czytelna."
+      ],
+      "example": "Wydruk 20 wierszy × 12 kolumn może mieć 2 strony przy ustawieniach domyślnych.",
+      "pitfall": "Nigdy nie skaluj setek wierszy do jednej nieczytelnej strony.",
+      "assignment": "Porównaj podgląd w pionie i poziomie, zapisz liczbę stron."
+    },
+    {
+      "id": 13,
+      "level": "Praktyka",
+      "title": "Format komórek: pieniądze, procenty, daty i style",
+      "explanation": "Format zmienia sposób wyświetlania, nie samą wartość liczbową. 0,23 jako procent pokaże 23%, a 1250 jako waluta może pokazać 1 250,00 zł. Styl, kolor i obramowanie ułatwiają analizę, ale nie zastępują prawidłowego typu danych.",
+      "steps": [
+        "Zaznacz zakres cen i zastosuj PLN.",
+        "Wpisz 0,23 do osobnej komórki i ustaw % (23%).",
+        "Naciśnij Ctrl+1, obejrzyj dostępne kategorie formatowania."
+      ],
+      "example": "C2=100, D2=23%, formuła =C2*(1+D2) daje 123.",
+      "pitfall": "Nie wpisuj 23 zamiast 0,23, jeżeli później używasz procentów.",
+      "assignment": "Porównaj wygląd, pasek fx i wynik obliczeń."
+    },
+    {
+      "id": 14,
+      "level": "Praktyka",
+      "title": "Tabele Excela, nagłówki i Ctrl+T",
+      "explanation": "Zakres danych zmienia się w tabelę przez Wstawianie → Tabela lub Ctrl+T. Prawdziwa tabela automatycznie obejmuje nowe wiersze i udostępnia filtrowanie oraz odwołania strukturalne. Wiersz nagłówka musi opisywać wartości jednoznacznie.",
+      "steps": [
+        "Wpisz nagłówki Produkt, Ilość, Cena, Wartość.",
+        "Zaznacz dane, naciśnij Ctrl+T i potwierdź nagłówki.",
+        "Dodaj nowy wiersz, sprawdź czy tabela rozszerza się sama."
+      ],
+      "example": "W tabeli Wartość można obliczyć jako [@Ilość]*[@Cena].",
+      "pitfall": "Nie zostawiaj pustych nagłówków ani podwójnych tabel w jednym zakresie.",
+      "assignment": "Dodaj pięć pozycji i policz wartości bez ręcznego kopiowania do każdej."
+    },
+    {
+      "id": 15,
+      "level": "Praktyka",
+      "title": "Sortowanie, filtrowanie i usuwanie duplikatów",
+      "explanation": "Sortowanie zmienia kolejność rekordów; filtr ukrywa niepasujące, ale ich nie kasuje. Usuwanie duplikatów fizycznie usuwa wskazane wiersze, dlatego powinno być poprzedzone sprawdzeniem kopii danych i kryteriów.",
+      "steps": [
+        "Zaznacz tabelę i włącz filtr w karcie Dane.",
+        "Wyświetl tylko produkty z ceną większą od 100.",
+        "Posortuj od największej ceny i przywróć wszystkie rekordy."
+      ],
+      "example": "Po wyfiltrowaniu 3 z 10 rekordów nadal masz 10 rekordów w danych źródłowych.",
+      "pitfall": "Nie usuwaj duplikatów wyłącznie na podstawie nazw bez numeru identyfikacyjnego.",
+      "assignment": "Porównaj sumę zwykłą i podsumowanie widocznych wierszy."
+    },
+    {
+      "id": 16,
+      "level": "Praktyka",
+      "title": "JEŻELI, ORAZ, LUB i obsługa błędów",
+      "explanation": "JEŻELI sprawdza warunek i zwraca jedną z dwóch odpowiedzi. ORAZ wymaga spełnienia wszystkich warunków, LUB przynajmniej jednego. JEŻELI.BŁĄD może zamienić błąd obliczenia na czytelny komunikat, ale nie powinno maskować brakujących danych.",
+      "steps": [
+        "W A2 wpisz 80, w B2 =JEŻELI(A2>=50;\"Zaliczono\";\"Powtórz\").",
+        "Zmień A2 na 40 i obserwuj odpowiedź.",
+        "Sprawdź logiczną kontrolę: =ORAZ(A2>=0;A2<=100)."
+      ],
+      "example": "Przy wartości 80 wynik to Zaliczono.",
+      "pitfall": "Nie stosuj JEŻELI.BŁĄD do ukrywania nieprzetestowanych formuł finansowych.",
+      "assignment": "Dodaj warunek zaliczenia i osobny warunek prawidłowej skali punktów."
+    },
+    {
+      "id": 17,
+      "level": "Praktyka",
+      "title": "LICZ.JEŻELI i SUMA.JEŻELI / SUMA.WARUNKÓW",
+      "explanation": "LICZ.JEŻELI zlicza rekordy zgodne z kryterium, SUMA.JEŻELI sumuje spełniające pojedynczy warunek, a SUMA.WARUNKÓW łączy kilka kryteriów. Kluczowe są zgodne długości zakresów i prawidłowy zapis tekstowych wartości kryteriów.",
+      "steps": [
+        "W A2:A5 wpisz nazwy kategorii, a w B2:B5 ceny.",
+        "Policz liczbę wystąpień kategorii przez LICZ.JEŻELI.",
+        "Zsumuj tylko określoną kategorię, potem dołóż filtr na miesiąc."
+      ],
+      "example": "=LICZ.JEŻELI(A2:A5;\"Materiały\") zwraca liczbę wpisów tej kategorii.",
+      "pitfall": "Nie pomijaj cudzysłowów przy tekstowym kryterium.",
+      "assignment": "Dodaj kontrolę, aby suma kategorii zgadzała się z całkowitą sprzedażą."
+    },
+    {
+      "id": 18,
+      "level": "Praktyka",
+      "title": "WYSZUKAJ.PIONOWO, INDEKS i PODAJ.POZYCJĘ",
+      "explanation": "WYSZUKAJ.PIONOWO odczytuje wartość z tabeli na podstawie klucza po lewej. INDEKS i PODAJ.POZYCJĘ rozdzielają odnalezienie pozycji od pobrania wyniku. X.WYSZUKAJ jest bardziej elastyczny, ale dostępność zależy od wersji Excela.",
+      "steps": [
+        "W kolumnie A wpisz identyfikatory produktów, w B ceny.",
+        "Wyszukaj dokładnie produkt o kodzie P-003.",
+        "Zmień kolejność wierszy i sprawdź, czy nadal dostajesz właściwą cenę."
+      ],
+      "example": "Przy WYSZUKAJ.PIONOWO ustaw FAŁSZ, jeśli potrzebujesz dokładnego dopasowania.",
+      "pitfall": "Przy domyślnym dopasowaniu przybliżonym możesz dostać błędną cenę.",
+      "assignment": "Utwórz wyszukiwanie, które odróżnia BRAK rekordu od ceny 0."
+    },
+    {
+      "id": 19,
+      "level": "Praktyka",
+      "title": "X.WYSZUKAJ, X.DOPASUJ i odwołania",
+      "explanation": "X.WYSZUKAJ szuka w jednym zakresie i zwraca wartość z innego. X.DOPASUJ podaje pozycję pasującego elementu. Warto jawnie obsłużyć brak klucza i sprawdzić duplikaty identyfikatorów.",
+      "steps": [
+        "Stwórz tabelę nr faktury → kwota.",
+        "W nowej komórce wpisz X.WYSZUKAJ z dopasowaniem dokładnym.",
+        "Wprowadź nieistniejący numer i zobacz komunikat brak wyniku."
+      ],
+      "example": "=X.WYSZUKAJ(\"FV-014\";A2:A19;J2:J19;\"Brak\";0).",
+      "pitfall": "Nie interpretuj nieistniejącego rekordu jako transakcji o wartości zero.",
+      "assignment": "Sprawdź przypadki brak, jedno dopasowanie i duplikat."
+    },
+    {
+      "id": 20,
+      "level": "Praktyka",
+      "title": "Tekst: LEWY, PRAWY, DŁ i FRAGMENT.TEKSTU",
+      "explanation": "Funkcje tekstowe wydobywają fragmenty kodów i opisów, kontrolują długość wpisu lub łączą pola. ZŁĄCZ.TEKSTY jest klasyczną funkcją łączenia; nowsze funkcje łączą i rozdzielają tekst bardziej elastycznie.",
+      "steps": [
+        "Wpisz w A2 kod FV-2026-014.",
+        "W B2 spróbuj wydobyć początek kodu przez LEWY.",
+        "Porównaj DŁ(A2) i FRAGMENT.TEKSTU(A2;4;4)."
+      ],
+      "example": "DŁ(\"ABC\") = 3; LEWY(\"ABC\";2) = \"AB\".",
+      "pitfall": "Tekstowe identyfikatory nie są liczbami do sumowania.",
+      "assignment": "Zbuduj kod produktu z prefiksu i numeru bez ręcznego przepisywania."
+    },
+    {
+      "id": 21,
+      "level": "Praktyka",
+      "title": "Daty, DZIŚ, TERAZ i dni robocze",
+      "explanation": "Data w Excelu jest wartością liczbową wyświetlaną w formacie daty. DZIŚ zmienia się z datą, TERAZ pokazuje też godzinę. DNI.ROBOCZE pomaga obliczyć termin z pominięciem weekendów i opcjonalnych świąt.",
+      "steps": [
+        "Wpisz rzeczywistą datę, ustaw format Data.",
+        "W sąsiedniej komórce zastosuj =DZIŚ().",
+        "Oblicz różnicę dat i sprawdź liczbę dni roboczych."
+      ],
+      "example": "=DATA(2026;11;15) tworzy datę, której format widzisz w komórce.",
+      "pitfall": "Nie wpisuj dat jako dowolnych tekstów z niejednoznacznym formatem.",
+      "assignment": "Zaplanuj termin zadania przypadający 10 dni roboczych po dniu startu."
+    },
+    {
+      "id": 22,
+      "level": "Praktyka",
+      "title": "Formatowanie warunkowe i walidacja danych",
+      "explanation": "Formatowanie warunkowe wyróżnia dane zależnie od reguły, a Poprawność danych ogranicza dozwolone wpisy. Te narzędzia zapobiegają błędom w rejestrach: np. ilość nie może być ujemna, a status pochodzi z ustalonej listy.",
+      "steps": [
+        "Zaznacz kolumnę kwot i dodaj regułę >1000.",
+        "Utwórz listę rozwijaną statusów: Nowe, W toku, Zamknięte.",
+        "Spróbuj wpisać wartość spoza listy i przeczytaj komunikat."
+      ],
+      "example": "Kwoty powyżej 1000 mogą być wyróżnione bez zmieniania obliczeń.",
+      "pitfall": "Kolor nie oznacza, że dane zostały zatwierdzone poprawnością.",
+      "assignment": "Dodaj walidację do pola ilości: liczba całkowita od 1 do 100."
+    },
+    {
+      "id": 23,
+      "level": "Praktyka",
+      "title": "Wykresy: kolumnowe, liniowe, kołowe, punktowe",
+      "explanation": "Wykres kolumnowy porównuje kategorie, liniowy pokazuje zmianę w czasie, punktowy relację dwóch liczb, a kołowy udział w całości — gdy kategorii jest niewiele. Etykiety osi, jednostka, skala od zera (zwłaszcza dla słupków) i źródło danych są ważniejsze od ozdobników.",
+      "steps": [
+        "Wybierz tabelę miesiąc → sprzedaż i kliknij Wstawianie → Wykres.",
+        "Włącz tytuł i podpis osi wartości w PLN.",
+        "Zmień jedną kwotę, sprawdź czy wykres aktualizuje się."
+      ],
+      "example": "Sprzedaż: styczeń 1000, luty 1500, marzec 1200 — wykres kolumnowy.",
+      "pitfall": "Nie używaj wykresu kołowego do kilkudziesięciu kategorii.",
+      "assignment": "Zaprojektuj wykres bez zbędnych efektów 3D."
+    },
+    {
+      "id": 24,
+      "level": "Praktyka",
+      "title": "Tabele przestawne i segmentatory",
+      "explanation": "Tabela przestawna grupuje i agreguje dane bez pisania jednej formuły na każdą kategorię. Wybierasz pola Wiersze, Kolumny, Wartości i Filtry, a po zmianach źródła często musisz odświeżyć raport.",
+      "steps": [
+        "Wstaw tabelę przestawną na podstawie danych sprzedaży.",
+        "Przeciągnij Region do Wierszy i Kwota do Wartości.",
+        "Zmień rekord źródłowy, wybierz Odśwież."
+      ],
+      "example": "Suma regionów powinna równać się sumie sprzedaży w danych źródłowych.",
+      "pitfall": "Pola kwoty nie powinny być liczone jako liczba wystąpień zamiast sumy.",
+      "assignment": "Dodaj segmentator dla kategorii i zweryfikuj sumę po filtrze."
+    },
+    {
+      "id": 25,
+      "level": "Praktyka",
+      "title": "PDF: obszar wydruku, orientacja, marginesy",
+      "explanation": "Zanim wyślesz raport, wyznacz obszar wydruku, aby nie drukować pustych kolumn. W Układzie strony ustaw orientację, rozmiar papieru i marginesy. Obejrzyj podgląd; zapis do PDF zachowuje układ, lecz nie zastępuje edytowalnego skoroszytu.",
+      "steps": [
+        "Zaznacz A1:F35 → Układ strony → Obszar wydruku → Ustaw obszar.",
+        "Wybierz Orientacja → Pozioma i marginesy.",
+        "Sprawdź Plik → Drukuj, potem Plik → Zapisz jako → PDF."
+      ],
+      "example": "Raport 6-kolumnowy na A4 zwykle wymaga podglądu i dostosowania szerokości.",
+      "pitfall": "Przy wyborze 1 strona szerokości × 1 wysokości treść może stać się mikroskopijna.",
+      "assignment": "Wyeksportuj PDF, otwórz go i policz rzeczywiste strony."
+    },
+    {
+      "id": 26,
+      "level": "Praktyka",
+      "title": "Wiersze nagłówków na każdej stronie i numery stron",
+      "explanation": "W drukowanych raportach tytuł tabeli powinien powtarzać się na każdej stronie. Układ strony → Tytuły wydruku pozwala ustawić U góry powtarzaj wiersze (np. $1:$1). Nagłówki i stopki mogą zawierać numery stron i datę.",
+      "steps": [
+        "Otwórz Układ strony → Tytuły wydruku.",
+        "W polu U góry powtarzaj wiersze wpisz $1:$1.",
+        "Dodaj numer strony w nagłówku lub stopce i otwórz podgląd."
+      ],
+      "example": "Raport 10-stronicowy powinien mieć nazwę kolumn na każdej stronie.",
+      "pitfall": "Nie myl zablokowania okienek na ekranie z drukowanymi tytułami.",
+      "assignment": "Sprawdź w PDF stronę 2 i ostatnią: czy nagłówki są widoczne?"
+    },
+    {
+      "id": 27,
+      "level": "Praktyka",
+      "title": "Liczba stron a liczba wierszy i kolumn",
+      "explanation": "Excel ma ponad milion wierszy, ale drukujesz wybrany zakres i liczbę stron wynikającą z ustawień strony, rozmiaru papieru, marginesów i skali. Liczbę stron i podziały sprawdzisz w podglądzie wydruku lub Podglądzie podziału stron.",
+      "steps": [
+        "Wybierz Widok → Podgląd podziału stron.",
+        "Przenieś podział strony i sprawdź rezultat.",
+        "W Plik → Drukuj porównaj liczbę stron dla 1 i 2 stron szerokości."
+      ],
+      "example": "Arkusz A1:Z150 nie musi dawać 150 stron ani 26 stron.",
+      "pitfall": "Zbyt mocne skalowanie pogarsza czytelność raportu.",
+      "assignment": "Wyeksportuj dwa PDF-y i porównaj, który można normalnie przeczytać."
+    },
+    {
+      "id": 28,
+      "level": "Zaawansowane",
+      "title": "Power Query: import, przekształcanie i łączenie",
+      "explanation": "Power Query pozwala pobierać i czyścić dane z wielu źródeł, ustawiać typy, usuwać zbędne kolumny i łączyć tabele. Kroki są powtarzalne po odświeżeniu, co oszczędza ręcznego kopiowania w comiesięcznych raportach.",
+      "steps": [
+        "Wybierz Dane → Pobierz dane → Z tekstu/CSV.",
+        "Ustaw właściwe typy i rozpoznaj błędne rekordy.",
+        "Połącz dwie tabele po stabilnym identyfikatorze, nie po nazwie."
+      ],
+      "example": "Po imporcie i oczyszczeniu 360 poprawnych z 368 rekordów suma kontrolna powinna pozostać stabilna.",
+      "pitfall": "Automatyczne usuwanie błędnych rekordów bez raportu może zataić istotne straty.",
+      "assignment": "Udokumentuj liczbę rekordów przed i po transformacji."
+    },
+    {
+      "id": 29,
+      "level": "Zaawansowane",
+      "title": "Dynamiczne tablice: FILTRUJ, UNIKATOWE, SORTUJ",
+      "explanation": "Nowoczesne funkcje dynamicznych tablic zwracają wiele wyników do sąsiednich komórek bez ręcznego kopiowania. Zajęte komórki w obszarze rozlania mogą spowodować błąd #ROZLANIE!; funkcje i lokalizacja nazwy zależą od wersji.",
+      "steps": [
+        "Wybierz zakres danych i zastosuj FILTRUJ z warunkiem.",
+        "Zbuduj listę unikatowych kategorii.",
+        "Posortuj wynik bez przestawiania źródła."
+      ],
+      "example": "=UNIKATOWE(A2:A20) tworzy osobną listę wartości bez powtórzeń.",
+      "pitfall": "Nie wpisuj danych w obszarze rozlania formuły.",
+      "assignment": "Sprawdź, czy wyniki aktualizują się po dopisaniu nowego rekordu."
+    },
+    {
+      "id": 30,
+      "level": "Zaawansowane",
+      "title": "LET i LAMBDA — mniej powtarzania wzorów",
+      "explanation": "LET nadaje nazwy wynikom pośrednim wewnątrz jednej formuły, co ułatwia jej czytanie. LAMBDA pozwala zdefiniować powtarzalne obliczenia, ale wymaga szczególnej troski o testy brzegowe i obsługę błędów.",
+      "steps": [
+        "Rozpisz rozbudowaną formułę na nazwane fragmenty w LET.",
+        "Sprawdź jej wynik na kilku prostych wartościach.",
+        "Przeanalizuj, czy LAMBDA ma jasną nazwę i instrukcję."
+      ],
+      "example": "LET(cena;100;ilosc;3;cena*ilosc) ilustruje nazwanie składników w formule.",
+      "pitfall": "Nie używaj LAMBDA tylko dlatego, że brzmi zaawansowanie.",
+      "assignment": "Porównaj wyniki prostej i złożonej wersji wzoru."
+    },
+    {
+      "id": 31,
+      "level": "Zaawansowane",
+      "title": "Model danych, relacje i Power Pivot",
+      "explanation": "Model danych łączy tabele powiązane kluczami, np. Sprzedaż z Kontrahentami. Pozwala analizować dane bez niepotrzebnego powielania pól; Power Pivot i DAX mają odrębne zasady oraz wymagania dostępności w danej edycji programu.",
+      "steps": [
+        "Zidentyfikuj klucz ID kontrahenta w obu tabelach.",
+        "Sprawdź, czy klucz w tabeli kontrahentów nie ma duplikatów.",
+        "Utwórz relację i porównaj wynik z ręcznym sumowaniem."
+      ],
+      "example": "Transakcje mogą mieć wiele wierszy, ale kontrahent ma jeden unikatowy identyfikator.",
+      "pitfall": "Relacja wiele-do-wielu wymaga osobnej analizy.",
+      "assignment": "Uzasadnij, dlaczego połączenie po nazwie jest ryzykowne."
+    },
+    {
+      "id": 32,
+      "level": "Zaawansowane",
+      "title": "Finanse: PMT, PV, NPV, XIRR i harmonogram",
+      "explanation": "Funkcje finansowe operują na przepływach i okresach. PMT liczy ratę przy stałej stopie i liczbie okresów; stopa miesięczna musi odpowiadać miesięcznej liczbie płatności. NPV i XIRR opierają się na innym sposobie traktowania okresów.",
+      "steps": [
+        "Zapisz stopę roczną jako wartość procentową.",
+        "Podziel stopę przez 12 dla rat miesięcznych i ustaw okresy w miesiącach.",
+        "Porównaj wyniki z niezależnym kalkulatorem."
+      ],
+      "example": "Dla 120 rat miesięcznych liczba okresów to 120, a nie 10.",
+      "pitfall": "Nie łącz rocznej stopy procentowej z miesięczną liczbą rat bez konwersji.",
+      "assignment": "Oblicz ratę i pokaż, jaka część to odsetki w pierwszym miesiącu."
+    },
+    {
+      "id": 33,
+      "level": "Zaawansowane",
+      "title": "Statystyka, korelacja, trend i prognoza",
+      "explanation": "ŚREDNIA i MEDIANA pokazują różne cechy rozkładu; odchylenie standardowe opisuje rozrzut, korelacja współzmienność, nie przyczynowość. Wykres punktowy i linia trendu pomagają zauważyć wzorce, ale mała próba lub błędny dobór skali wprowadza w błąd.",
+      "steps": [
+        "Policz średnią i medianę dla 10, 12, 14, 15, 100.",
+        "Narysuj wykres punktowy dwóch kolumn liczbowych.",
+        "Dodaj linię trendu i opisz, co wynika, a czego nie da się ustalić."
+      ],
+      "example": "Wartość odstająca 100 mocno podnosi średnią, ale mniej zmienia medianę.",
+      "pitfall": "Nie ogłaszaj związku przyczynowego tylko dlatego, że korelacja jest wysoka.",
+      "assignment": "Sprawdź, jak usunięcie wartości odstającej zmienia średnią."
+    },
+    {
+      "id": 34,
+      "level": "Zaawansowane",
+      "title": "Scenariusze, szukanie wyniku i Solver",
+      "explanation": "Analiza warunkowa pozwala sprawdzać konsekwencje zmian cen, kosztów i wolumenów. Szukaj wyniku wylicza wartość jednej zmiennej prowadzącą do celu; Solver optymalizuje przy ograniczeniach i może wymagać dodatku.",
+      "steps": [
+        "Zbuduj model: przychód minus koszty = zysk.",
+        "Zmień koszt o 10% i odczytaj zmianę zysku.",
+        "Sprawdź przy Szukaj wyniku, jakiej sprzedaży potrzebujesz do określonego zysku."
+      ],
+      "example": "Przychód 10000, koszty 8000 → zysk 2000.",
+      "pitfall": "Nie modeluj kosztów jako stałej, jeśli zmieniają się wraz z liczbą produktów.",
+      "assignment": "Przygotuj wariant bazowy, optymistyczny i pesymistyczny."
+    },
+    {
+      "id": 35,
+      "level": "Zaawansowane",
+      "title": "Dashboard, wykresy przestawne i segmentatory",
+      "explanation": "Dobry dashboard odpowiada na pytania: ile sprzedano, jaka jest marża, gdzie występują odchylenia. Łączy spójne miary, wykresy i filtry; jego poprawność zależy od jakości źródła i możliwości odświeżenia.",
+      "steps": [
+        "Zdefiniuj trzy KPI: przychód, koszt, marża.",
+        "Zbuduj tabelę przestawną i wykres wg miesięcy.",
+        "Dodaj filtr regionu; kontroluj zgodność sum."
+      ],
+      "example": "Marża = przychód − koszt, a procent marży liczy się względem przychodu.",
+      "pitfall": "Nie mieszaj wartości brutto i netto na jednym wykresie bez informacji.",
+      "assignment": "Zrób kontrolę sum po zmianie każdego filtra."
+    },
+    {
+      "id": 36,
+      "level": "Zaawansowane",
+      "title": "Audyt błędów: #N/D, #ARG!, #DZIEL/0! i #ROZLANIE!",
+      "explanation": "Różne kody błędów wskazują inne przyczyny: brak dopasowania, niewłaściwy argument, dzielenie przez zero albo zablokowane rozlanie tablicy. Excel udostępnia śledzenie poprzedników, ocenę formuły i sprawdzanie błędów.",
+      "steps": [
+        "Wprowadź formułę dzielącą przez zero i odczytaj komunikat.",
+        "Sprawdź Formuły → Oceń formułę.",
+        "Zobacz, które komórki źródłowe wpływają na wynik."
+      ],
+      "example": "=10/0 daje błąd dzielenia przez zero, nie liczbę zero.",
+      "pitfall": "JEŻELI.BŁĄD nie powinno bez wyjaśnienia ukrywać każdego błędu.",
+      "assignment": "Stwórz listę możliwych przyczyn i sposób poprawy dla każdego błędu."
+    },
+    {
+      "id": 37,
+      "level": "Zaawansowane",
+      "title": "Współpraca, uprawnienia i historia zmian",
+      "explanation": "Udostępnianie skoroszytu nie powinno oznaczać automatycznie prawa do edycji. Wersjonowanie i historia zmian pomagają cofnąć błędne decyzje, a ochrona komórek może zabezpieczać formuły przed przypadkową zmianą.",
+      "steps": [
+        "Zapisz kopię pliku z datą wersji.",
+        "Przeanalizuj różnicę między uprawnieniem Wyświetl a Edytuj.",
+        "Zablokuj przykładową komórkę z formułą i przetestuj działanie."
+      ],
+      "example": "Raport kierownika może być do odczytu, a arkusz źródłowy edytowany tylko przez operatorów.",
+      "pitfall": "Ochrona arkusza nie zastępuje bezpieczeństwa dostępu do pliku.",
+      "assignment": "Przygotuj procedurę: kto może zmienić dane, kto zatwierdza raport."
+    },
+    {
+      "id": 38,
+      "level": "Zaawansowane",
+      "title": "Automatyzacja: makra, VBA i Office Scripts",
+      "explanation": "Automatyzacja oszczędza czas przy powtarzalnych operacjach. VBA jest kojarzony głównie z desktopowym Excelem, a Office Scripts z wybranymi planami Microsoft 365. Makra mogą wykonywać kod, więc nie uruchamiaj plików nieznanego pochodzenia.",
+      "steps": [
+        "Opisz powtarzalne zadanie, które warto zautomatyzować.",
+        "Sprawdź dostępność odpowiedniego narzędzia w swojej wersji Excela.",
+        "Zaplanuj kontrolę wyników przed i po automatyzacji."
+      ],
+      "example": "Codzienny import 20 faktur warto automatyzować dopiero po stabilnych testach danych.",
+      "pitfall": "Nigdy nie włączaj makr z obcych plików bez analizy.",
+      "assignment": "Zapisz trzy testy, które automatyzacja musi zdać, zanim będzie używana."
+    },
+    {
+      "id": 39,
+      "level": "Zaawansowane",
+      "title": "Zadanie końcowe: raport od pliku CSV po PDF",
+      "explanation": "Połącz wszystkie kompetencje w jeden przepływ: import i kontrola danych, poprawne typy, obliczenia, tabela przestawna, wykres, podgląd wydruku, podpisany PDF oraz edytowalny XLSX. Wynik musi zgadzać się z sumą kontrolną danych źródłowych.",
+      "steps": [
+        "Zaimportuj przygotowane dane CSV i rozpoznaj błędne rekordy.",
+        "Oblicz przychód i marżę, porównaj z podsumowaniem tabeli przestawnej.",
+        "Wyeksportuj czytelny PDF z powtarzanym nagłówkiem i zachowaj XLSX."
+      ],
+      "example": "W raporcie opisz liczbę rekordów poprawnych i odrzuconych wraz z uzasadnieniem.",
+      "pitfall": "Wizualnie piękny PDF z błędnym obliczeniem to nadal zły raport.",
+      "assignment": "Przeprowadź własną kontrolę: liczby, filtry, daty, strony, typy plików i źródła."
+    }
+  ]
+}

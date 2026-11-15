@@ -390,8 +390,8 @@ async function sellerReview(r,browser){
  const page=await browser.newPage();
  try{
   await page.goto(base+'/academy/kursy/excel-skroty.html',{waitUntil:'domcontentloaded'});
-  await page.getByRole('heading',{name:'Excel od zera do analizy danych — kurs praktyczny'}).waitFor();
-  await page.getByText('30 lekcji',{exact:true}).waitFor();
+  await page.getByRole('heading',{name:'Excel — kompletny kurs od podstaw do eksperta'}).waitFor();
+  await page.getByText(/30 lekcji z zaliczeniem \+ 39 rozdziałów dodatkowych/).waitFor();
   await page.getByText('Od podstaw do zagadnień zaawansowanych',{exact:true}).waitFor();
   const html=await page.locator('body').innerText();
   assert.match(html,/nie jest autoryzowanym szkoleniem ani certyfikacją/i,'Sales must not imply Microsoft accreditation');

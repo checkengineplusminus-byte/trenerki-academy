@@ -13,14 +13,17 @@ const sample=()=>[
  ['','','','VAT 23%','=E5*0,23']
 ];
 type Cell=NonNullable<ReturnType<typeof refPosition>>;
-type Format={bold?:boolean;underlined?:boolean;percent?:boolean};
+type Format={bold?:boolean;underlined?:boolean;percent?:boolean;currency?:boolean};
+const startingFormats=():Record<string,Format>=>Object.fromEntries(
+ ['D2','D3','D4','E2','E3','E4','E5','E6'].map(address=>[address,{currency:true}])
+);
 const interval=(a:Cell,b:Cell)=>({top:Math.min(a.row,b.row),bottom:Math.max(a.row,b.row),left:Math.min(a.column,b.column),right:Math.max(a.column,b.column)});
 
 export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;runId:number}){
  const [rows,setRows]=useState(sample),[history,setHistory]=useState<string[][][]>([]);
  const [active,setActive]=useState('C2'),[anchor,setAnchor]=useState('C2'),[selecting,setSelecting]=useState(false);
  const [address,setAddress]=useState('C2'),[draft,setDraft]=useState<string|null>(null);
- const [format,setFormat]=useState<Record<string,Format>>({}),[ribbon,setRibbon]=useState('home'),[showFormulas,setShowFormulas]=useState(false);
+ const [format,setFormat]=useState<Record<string,Format>>(startingFormats),[ribbon,setRibbon]=useState('home'),[showFormulas,setShowFormulas]=useState(false);
  const [clipboard,setClipboard]=useState<{source:Cell;value:string}>();
  const [status,setStatus]=useState('Kliknij komórkę, wpisz własne dane w pasku fx i zatwierdź Enterem albo przyciskiem ✓.');
  const [beginner,setBeginner]=useState(false),[beginnerStep,setBeginnerStep]=useState(0),[beginnerError,setBeginnerError]=useState('');
@@ -51,7 +54,23 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
  }
  function commit(){
   if(draft===null)return;
-  write(draft);setDraft(null);setStatus('Zapisano '+active+'. Formuły przeliczono.');
+  // Pasted values "1 250,50 zł" must be stored as numbers, with the currency
+  // applied only as a display format. Never strip units from arbitrary text.
+  const currency=/\s*(?:zł|pln)\.?\s*$/iu.test(draft);
+  const parsed=currency?parseSpreadsheetNumber(draft):NaN;
+  if(currency&&Number.isFinite(parsed)){
+   write(String(parsed).replace('.',','));
+   setFormat(old=>({...old,[active]:{...old[active],currency:true,percent:false}}));
+   setStatus('Zapisano liczbę w '+active+'. Symbol zł jest formatem, a nie częścią liczby. Formuły przeliczono.');
+  }else{
+   if(currency){
+    setStatus('Kwota ma niepoprawny zapis — popraw ją, np. 1250,50 zł lub samą liczbę. Dane nie zostały zmienione.');
+    return;
+   }
+   write(draft);
+   setStatus('Zapisano '+active+'. Formuły przeliczono.');
+  }
+  setDraft(null);
  }
  function fill(direction:'down'|'right'){
   const down=direction==='down';
@@ -82,7 +101,16 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
   if(previous){setRows(previous);setHistory(history.slice(0,-1));setDraft(null);setStatus('Cofnięto ostatnią zmianę danych.');}
  }
  function toggleFormat(key:keyof Format){
-  setFormat(old=>({...old,[active]:{...old[active],[key]:!old[active]?.[key]}}));
+  setFormat(old=>{
+   const next={...old},enabled=!old[active]?.[key];
+   for(let r=range.top;r<=range.bottom;r++)for(let c=range.left;c<=range.right;c++){
+    const id=cellAddress(r,c);
+    next[id]={...next[id],[key]:enabled,
+     ...(enabled&&key==='currency'?{percent:false}:{}),
+     ...(enabled&&key==='percent'?{currency:false}:{})};
+   }
+   return next;
+  });
  }
  function paste(){
   if(!clipboard){setStatus('Najpierw skopiuj wybraną komórkę.');return;}
@@ -149,7 +177,7 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
  ] as const;
  function startBeginner(){
   setRows(sample());setHistory([]);setActive('A1');setAnchor('A1');setAddress('A1');setDraft(null);
-  setDidFillDown(false);setBeginner(true);setBeginnerStep(0);setBeginnerError('');
+  setDidFillDown(false);setBeginner(true);setBeginnerStep(0);setBeginnerError('');setFormat(startingFormats());
   setStatus('Ćwiczenie od zera: klikaj w komórki w prawdziwie działającym arkuszu szkoleniowym.');
  }
  function verifyBeginner(){
@@ -170,6 +198,7 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
   const result=evaluateCell(rows,id);
   const numeric=parseSpreadsheetNumber(result);
   if(format[id]?.percent&&result.trim()&&Number.isFinite(numeric))return (numeric*100).toLocaleString('pl-PL',{maximumFractionDigits:3})+'%';
+  if(format[id]?.currency&&result.trim()&&Number.isFinite(numeric))return numeric.toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł';
   return result;
  }
 
@@ -192,6 +221,7 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
     </View>}
   </View>
   <Text style={labStyles.body}>Zmień C2 na 4,5 i sprawdź E2. Potem zaznacz E2:E4 i użyj Wypełnij w dół. W pasku fx porównaj formuły z wynikami.</Text>
+  <Text style={labStyles.body}>Ważne: 350 i 350,00 zł to ta sama wartość liczbowa. Znak waluty jest tylko formatem. Zaznacz zakres cen i wybierz „Format zł”, aby liczby nadal działały w mnożeniu i sumowaniu.</Text>
   <View style={labStyles.ribbon}>
    <View style={labStyles.row}>
     <LabButton label="Narzędzia główne / Home" selected={ribbon==='home'} onPress={()=>setRibbon('home')}/>
@@ -209,6 +239,7 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
      <LabButton label="Cofnij · Ctrl+Z" disabled={!history.length} onPress={undo}/>
      <LabButton label="Pogrubienie" selected={format[active]?.bold} onPress={()=>toggleFormat('bold')}/>
      <LabButton label="Format %" selected={format[active]?.percent} onPress={()=>toggleFormat('percent')}/>
+     <LabButton label="Format zł · PLN" selected={format[active]?.currency} onPress={()=>toggleFormat('currency')}/>
     </LabGroup>
    </>:<LabGroup label="Biblioteka funkcji i inspekcja formuł">
     <LabButton label="Autosumowanie · Alt+=" onPress={sum}/>
