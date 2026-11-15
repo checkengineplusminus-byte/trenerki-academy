@@ -69,6 +69,12 @@ for(const mobile of [false,true]){
   for(const lesson of lessons){
    const {lesson_no:n,material:m}=lesson;
    await page.getByTestId('lesson-heading').filter({hasText:lesson.title_pl}).waitFor();
+   const realScreenshot=page.getByTestId('autocad-original-screens');
+   await realScreenshot.waitFor();
+   const image=realScreenshot.locator('img').first();
+   await image.waitFor();
+   await image.evaluate(el=>el.decode());
+   assert(await image.evaluate(el=>el.naturalWidth>0),'AutoCAD original screenshot failed to load in lesson '+(n+1));
    await page.getByText(m.curiosity,{exact:true}).waitFor();
    const required=m.shortcuts?.length?2:1;
    await page.getByTestId('lesson-requirements').filter({hasText:'Do ukończenia tej lekcji: '+required}).waitFor();
