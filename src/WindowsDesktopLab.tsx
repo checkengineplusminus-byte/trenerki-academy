@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Pressable,ScrollView,TextInput,ImageBackground,useWindowDimensions} from 'react-native';
 import ExplorerWorkspace from './ExplorerWorkspace';
+import {supportedWindowsShortcuts,normalizeWindowsShortcut} from './windowsShortcutSupport';
 
 type App='files'|'notes'|'settings'|'calculator';
 type Position='normal'|'left'|'right'|'max';
@@ -12,7 +13,7 @@ const initial:Desktop[]=[
  {id:1,name:'Pulpit 1',windows:[{app:'files',position:'normal',minimized:false},{app:'notes',position:'right',minimized:false}],focused:'files'},
  {id:2,name:'Pulpit 2',windows:[],focused:null}
 ];
-const supported=['Win+Ctrl+←','Win+Ctrl+→','Win+Ctrl+D','Win+Tab','Win+←','Win+→','Win+↑','Win+↓','Win+D','Alt+Tab','Win+E','Win+I'];
+const supported=supportedWindowsShortcuts;
 const instructions:Record<string,string>={
  'WIN+CTRL+←':'Utwórz dwa pulpity przez Win + Tab → Nowy pulpit. Przejdź na Pulpit 2. Przytrzymaj Windows oraz Ctrl i naciśnij strzałkę w lewo. Powinien pokazać się Pulpit 1.',
  'WIN+CTRL+→':'Utwórz dwa pulpity przez Win + Tab. Na Pulpicie 1 przytrzymaj Windows oraz Ctrl i naciśnij strzałkę w prawo. Zobaczysz Pulpit 2.',
@@ -33,7 +34,7 @@ const instructions:Record<string,string>={
  'WIN+CTRL+F4':'Na dodatkowym pulpicie naciśnij Windows + Ctrl + F4. Pulpit zostanie zamknięty, ale jego aplikacje nie zostaną zamknięte.',
  'WIN+V':'Naciśnij Windows + V. Jeśli historia schowka nie jest włączona, system może poprosić o jej aktywowanie.'
 };
-const clean=(value:string)=>value.toUpperCase().replace(/\s/g,'').replace(/ARROWLEFT/g,'←').replace(/ARROWRIGHT/g,'→').replace(/ARROWUP/g,'↑').replace(/ARROWDOWN/g,'↓');
+const clean=normalizeWindowsShortcut;
 const actionStyle={backgroundColor:'#fff',borderWidth:1,borderColor:'#cfdeec',borderRadius:11,paddingVertical:10,paddingHorizontal:12,minHeight:44,justifyContent:'center' as const};
 const actionText={fontSize:13,fontWeight:'800' as const,color:'#234364'};
 function KeyCombo({value}:{value:string}){
