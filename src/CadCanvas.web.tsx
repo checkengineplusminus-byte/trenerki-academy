@@ -5,7 +5,7 @@ export type SceneObject={shape:CadShape;color:string;selected?:boolean;preview?:
 type Props={
  size:Size;camera:Camera;objects:SceneObject[];grid:boolean;pan:boolean;layout:boolean;selecting?:boolean;lineweight?:boolean;transparency?:boolean;
  cursor?:Point;snap?:Point;prompt?:string;
- onMove:(point?:Point)=>void;onPick:(point:Point,shift?:boolean)=>void;onObjectTap?:(id:number,remove:boolean)=>void;onWindowSelect?:(start:Point,end:Point,remove:boolean)=>void;onPan:(delta:Point)=>void;
+ onMove:(point?:Point)=>void;onPick:(point:Point,shift?:boolean)=>void;onObjectTap?:(id:number,remove:boolean,location:Point)=>void;onWindowSelect?:(start:Point,end:Point,remove:boolean)=>void;onPan:(delta:Point)=>void;
  onZoom:(factor:number,at:Point)=>void;onFinish:()=>void;
 };
 
@@ -39,7 +39,7 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting
   const stroke=layout?'#263849':preview?'#e9b66d':selected?'#91d8ff':color;
   const fill=shape.fill==='solid'?(layout?'#ced9df':'#4c7584'):shape.fill==='hatch'?'url(#'+hatch+')':'none';
   const attrs={'data-cad-object':preview?'preview':String(shape.id),stroke,fill,strokeWidth:selected?2.8:lineweight?2.8:1.65,
-   strokeDasharray:preview?'6 4':undefined,opacity:transparency?.68:1};
+   strokeDasharray:preview?'6 4':undefined,opacity:transparency?0.68:1};
   if(shape.kind==='circle'){
    const center=project(a);
    const radius=distance(a,b)/camera.unitsPerPixel;
@@ -104,7 +104,7 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting
    if(layout)return;
    if(drag.current?.id===event.pointerId){drag.current=null;return;}
    if(tapShape.current?.pointerId===event.pointerId){
-    const hit=tapShape.current;tapShape.current=null;onObjectTap?.(hit.shapeId,hit.remove);return;
+    const hit=tapShape.current;tapShape.current=null;onObjectTap?.(hit.shapeId,hit.remove,pointer(event.nativeEvent));return;
    }
    const p=pointer(event.nativeEvent);
    if(selectionDrag.current?.id===event.pointerId){
