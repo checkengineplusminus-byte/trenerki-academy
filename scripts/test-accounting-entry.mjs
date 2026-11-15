@@ -29,7 +29,13 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  const bytes=Buffer.from(source.replace(guard,'').replace(importLine,''),'utf8');
  const hash=createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
  // Przegląd oddzielnego commita be748774 (tylko import i ćwiczenie Excel) nie zmienia przekierowania księgowości.
- assert.equal(hash,'a7c5b5720baeb67a75be65b699d57212197eea60','Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
+ // Dopuszczamy wyłącznie dwa sprawdzone stany: starszy czytnik oraz
+ // zmianę onboardingu samego Excel (13fab77), bez zmiany tras księgowości.
+ const reviewedReaderHashes=new Set([
+  'a7c5b5720baeb67a75be65b699d57212197eea60',
+  '8526dbcfa26527f2b004c3ff6bf48ac3d4885e4a'
+ ]);
+ assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
 test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Podgląd przygotowywanej encyklopedii'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
