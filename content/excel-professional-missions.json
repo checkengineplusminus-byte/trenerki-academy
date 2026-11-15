@@ -526,7 +526,7 @@
       "hint": "21 × 55.",
       "explanation": "Dokładna kwota FV-014 to 1155 zł; wyszukiwanie po kwocie nie identyfikuje faktury.",
       "mistake": "Brak trafienia ≠ zero wartości; duplikat ≠ unikatowy rekord.",
-      "realExcel": "W Excelu dla Microsoft 365 / Excel 2021 lub nowszego użyj funkcji X.WYSZUKAJ z dopasowaniem dokładnym. Excel 2016 i 2019 nie obsługują tej funkcji — tam ćwicz alternatywnie WYSZUKAJ.PIONOWO lub INDEKS + PODAJ.POZYCJĘ. Sprawdź także wynik dla brakującego ID.",
+      "realExcel": "W Excel 2021, Excel 2024 lub Microsoft 365 użyj X.WYSZUKAJ(numer;kolumna_numerów;kolumna_wartości;\"BRAK\";0). Excel 2016 i 2019 nie obsługują X.WYSZUKAJ — w starszej wersji zastosuj INDEKS + PODAJ.POZYCJĘ.",
       "track": "ekspert",
       "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
     },
