@@ -397,10 +397,10 @@
     {
       "id": 29,
       "level": "Zaawansowane",
-      "title": "Dynamiczne tablice: FILTRUJ, UNIKATOWE, SORTUJ",
+      "title": "Dynamiczne tablice: FILTR, UNIKATOWE, SORTUJ",
       "explanation": "Nowoczesne funkcje dynamicznych tablic zwracają wiele wyników do sąsiednich komórek bez ręcznego kopiowania. Zajęte komórki w obszarze rozlania mogą spowodować błąd #ROZLANIE!; funkcje i lokalizacja nazwy zależą od wersji.",
       "steps": [
-        "Wybierz zakres danych i zastosuj FILTRUJ z warunkiem.",
+        "Wybierz zakres danych i zastosuj FILTR z warunkiem.",
         "Zbuduj listę unikatowych kategorii.",
         "Posortuj wynik bez przestawiania źródła."
       ],
