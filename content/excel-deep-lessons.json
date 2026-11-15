@@ -1,0 +1,878 @@
+{
+  "schema": 1,
+  "course": "excel-skroty",
+  "updated_on": "2026-11-15",
+  "description": "Każda lekcja ma oryginalne wyjaśnienie pojęcia, sytuację do prześledzenia, konkretne kroki oraz ostrzeżenie i powiązane hasła słownika.",
+  "lessons": [
+    {
+      "lesson_no": 0,
+      "level": "fundamenty",
+      "title": "Poznaj arkusz bez znajomości skrótów",
+      "glossary": [
+        "excel",
+        "komórka",
+        "adres komórki"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Excel nie jest tylko kalkulatorem: przechowuje powiązane informacje. Gdy zmienisz cenę farby, poprawnie zbudowany arkusz potrafi automatycznie policzyć nową wartość zakupu, bez przepisywania całej tabeli."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Pierwszy dzień na uczelni: przepisujesz tabelę materiałów, lecz nie wiesz, czym jest komórka. Wyobraź sobie kartkę z trzema produktami. W komórkach wpisujesz nazwy, ilości i ceny, a formuły łączą te informacje. Rozróżnij miejsce przechowywania danych od miejsca obliczania wyniku."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "W arkuszu są kolumny A–E i wiersze 1–6. Kolumna C zawiera ilości, kolumna D ceny. 1. Wskaż nagłówek C jako kolumnę Ilość. 2. Kliknij komórkę C2 w pracowni. 3. Odczytaj, że jej aktualna wartość to 2. 4. Podaj adres komórki z ceną pierwszej pozycji."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie myl nazwy pliku, arkusza i adresu komórki. W Excelu otwórz pusty skoroszyt, kliknij D2 i zobacz adres obok paska formuły."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 1,
+      "level": "fundamenty",
+      "title": "Skoroszyt kontra arkusz",
+      "glossary": [
+        "skoroszyt",
+        "arkusz",
+        "karta arkusza"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Skoroszyt to cały plik, a arkusze są jak przekładki w segregatorze. W ten sposób można rozdzielać miesiące i typy danych, nie tworząc wielu przypadkowo nazwanych plików."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Masz zapisy za styczeń, luty i marzec, które powinny być razem. Zapisz jeden plik Budzet_R01.xlsx z trzema zakładkami: Styczeń, Luty, Marzec. Wpisz po jednym wydatku i sprawdź, czy każda karta zachowuje odrębną zawartość."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Jeden skoroszyt .xlsx może przechowywać osobne arkusze Styczeń, Luty i Marzec. 1. Utwórz nowy skoroszyt. 2. Dodaj trzy zakładki arkuszy. 3. Nazwij każdą zgodnie z miesiącem. 4. Sprawdź liczbę zakładek."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie twórz trzech osobnych plików, jeśli zadanie wymaga jednego skoroszytu. W prawdziwym Excelu dodaj arkusze przez plus na pasku kart i zapisz skoroszyt."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 2,
+      "level": "fundamenty",
+      "title": "Odczytaj adres komórki",
+      "glossary": [
+        "adres komórki",
+        "aktywna komórka",
+        "pole nazwy"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Adres komórki jest jak współrzędna na mapie. Litera określa pionową kolumnę, a numer poziomy wiersz; pomylenie ich może sprawić, że poprawna formuła policzy nieprawidłowy produkt."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Koleżanka prosi o znalezienie kwoty w trzecim wierszu kolumny E. Klikaj kolejno A1, C2 i E3. Obserwuj pole nazwy, a potem wpisz tam D4 i sprawdź, gdzie przesunie się aktywne zaznaczenie. To działa także w arkuszu z setkami wierszy."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Nagłówki znajdują się w wierszu 1, dane w wierszach 2–6. 1. Wskaż kolumnę E. 2. Przejdź do wiersza 3. 3. Kliknij ich przecięcie. 4. Odczytaj adres w polu nazwy."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nazwy wierszy w Excelu są liczbami, natomiast kolumny mają litery. Na swoim Excelu wpisz E3 w polu Nazwa i naciśnij Enter."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 3,
+      "level": "fundamenty",
+      "title": "Zachowaj kod produktu z zerami",
+      "glossary": [
+        "typ danych",
+        "zera wiodące",
+        "data"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Kod 00127 i liczba 127 nie oznaczają tej samej rzeczy w magazynie. Excel może potraktować napis z zerami wiodącymi jako liczbę, jeśli wcześniej nie ustalisz odpowiedniego typu danych."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Numer towaru to 00127, a Excel chce potraktować go jak liczbę. Utwórz kolumny Kod produktu, Ilość i Data. Przy kodzie użyj tekstu, przy ilości liczby, a przy dacie formatu daty. Wyjaśnij, dlaczego nie można sumować kodów."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Kod produktu 00127 jest identyfikatorem, nie wielkością do sumowania. 1. Wybierz format Tekst przed wprowadzaniem identyfikatorów. 2. Wpisz kod 00127. 3. Odczytaj pięć cyfr po zapisie. 4. Zapisz plik bez utraty zer."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Format liczbowy może usunąć zera wiodące. W Excelu ustaw format Tekst lub wpisz apostrof przed kodem."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 4,
+      "level": "fundamenty",
+      "title": "Zmień cenę bez uszkodzenia wzoru",
+      "glossary": [
+        "aktywna komórka",
+        "pasek formuły",
+        "formuła"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Edytowanie jednej komórki może zmienić wynik w wielu innych. Właśnie dlatego trzeba patrzeć nie tylko na nową cenę, ale też na to, czy formuła w kolumnie wartości nadal wskazuje właściwy wiersz."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Cena usługi rośnie ze 120 zł do 135 zł, ilość to 3. W tabeli kosztów zmień cenę jednostkową, zatwierdź ją Enterem i porównaj przed oraz po. Następnie kliknij komórkę z wynikiem i odczytaj jej formułę w pasku nad arkuszem."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Ilość 3 sztuki, nowa cena jednostkowa 135 zł. 1. Kliknij D3 i wpisz 135. 2. Zatwierdź Enterem. 3. Sprawdź, że wzór w E3 pozostał odwołaniem do D3. 4. Oblicz nową wartość pozycji."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie nadpisuj kolumny wartości E3 stałą liczbą. W prawdziwym Excelu edytuj D3, a następnie sprawdź E3 oraz pasek fx."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 5,
+      "level": "fundamenty",
+      "title": "Pierwsza formuła w praktyce",
+      "glossary": [
+        "formuła",
+        "operator *",
+        "komórka"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Formuła to instrukcja, która pozostaje w komórce. Znak równości zapowiada obliczenie, gwiazdka jest mnożeniem, a adres C2 oznacza, skąd pobrać jedną z wartości."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Potrzebujesz wartości robocizny dla dwóch dniówek po 350 zł. Wpisz ilość 2 oraz cenę 350. Do osobnej komórki wstaw =C2*D2 i porównaj wynik z kalkulatorem. Zmień ilość, aby upewnić się, że obliczenie reaguje automatycznie."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "W arkuszu komórka C2 ma ilość 2, D2 cenę jednostkową 350 zł, a E2 powinna zawierać formułę. 1. Kliknij komórkę wynikową E2. 2. Wpisz =C2*D2. 3. Zatwierdź Enterem. 4. Porównaj wynik z 2 × 350."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Formuła zaczyna się od =, nie od C2*D2. Przećwicz na własnym arkuszu, wpisując wartości do C2 i D2."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 6,
+      "level": "fundamenty",
+      "title": "SUMA i niezależna kontrola",
+      "glossary": [
+        "suma",
+        "zakres",
+        "funkcja"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Funkcja SUMA jest gotowym narzędziem dodawania, a zakres wskazuje, jakie komórki uwzględnić. Dwukropek w E2:E4 oznacza wszystkie komórki między oboma adresami, włącznie z nimi."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Musisz zsumować trzy pozycje zamówienia. Wybierz trzy kwoty 700, 360 i 150 i dodaj je na dwa sposoby: pojedynczym działaniem oraz =SUMA(E2:E4). Potem zmień jedną kwotę i porównaj aktualizację wyniku."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Wyniki trzech pozycji: komórka E2=700 zł, E3=360 zł, E4=150 zł. Wynik końcowy ma trafić do E5. 1. Wstaw =SUMA(E2:E4) do E5. 2. Sprawdź zakres od wiersza 2 do 4. 3. Policz niezależnie 700+360+150. 4. Wpisz łączną wartość."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Pominięty wiersz lub samoodwołanie fałszuje wynik. W swoim Excelu porównaj SUMA z ręcznym wyliczeniem na kalkulatorze."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 7,
+      "level": "fundamenty",
+      "title": "Zrozum procenty bez błędów",
+      "glossary": [
+        "format komórki",
+        "procent",
+        "separator dziesiętny"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Format to sposób pokazania liczby, niekoniecznie zmiana jej wartości. Wartość 0,25 może wyglądać jako 25%, a kwota 1200 jako 1 200,00 zł. Wiedza o tej różnicy zapobiega poważnym błędom."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "W arkuszu jest 0,25, a użytkownik chce zobaczyć 25%. Wpisz 0,25, nadaj format procentowy i sprawdź pasek formuły. W drugiej komórce zrób to samo z liczbą 25 i porównaj oba wyświetlone wyniki."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Wartość w komórce to 0,25, czyli jedna czwarta całości. Własność: format % wyświetla ją w procentach. 1. Wpisz liczbę 0,25. 2. Zastosuj format %. 3. Sprawdź, że po zmianie formatu wartość nadal jest 0,25. 4. Podaj procent widoczny dla użytkownika."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie mnoż 0,25 przez 100 w formule, a potem dodatkowo nie formatuj jako procent. W Excelu włącz format procentowy i porównaj pasek formuły z wyglądem komórki."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 8,
+      "level": "fundamenty",
+      "title": "Dobierz format zapisu",
+      "glossary": [
+        "xlsx",
+        "csv",
+        "pdf"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Wybór formatu zapisu decyduje o tym, co współpracownik będzie mógł później zrobić z dokumentem. XLSX zachowuje obliczenia i arkusze; PDF służy głównie do czytania i wydruku."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Współpracownik ma później edytować formuły w Twoim arkuszu. Zapisz wersję Budzet_R01.xlsx, zamknij i ponownie otwórz. Następnie przygotuj eksport PDF i zobacz, że nie zastąpi on edytowalnych formuł i kart."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Do wyboru masz trzy formaty plików: edytowalny skoroszyt XLSX, eksport tekstowy CSV oraz dokument PDF. 1. Zapisz arkusz jako skoroszyt. 2. Sprawdź, czy można nadal edytować formuły. 3. Porównaj co ginie w formacie CSV. 4. Wybierz rozszerzenie pliku."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie reklamuj eksportu CSV jako pełnego zastępstwa XLSX. Na swoim komputerze zapisz kopię jako XLSX i otwórz ponownie."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 9,
+      "level": "fundamenty",
+      "title": "Zbuduj pierwszy budżet i zmień założenie",
+      "glossary": [
+        "formuła",
+        "suma",
+        "przychód"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Dobry budżet składa się z danych źródłowych, wzorów i świadomie opisanego wyniku. Nie potrzebujesz rozbudowanych funkcji, aby przygotować pierwszy kontrolowalny kosztorys."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "W budżecie początkowo są: malowanie 700 zł, materiały 360 zł i transport 150 zł. Zastosuj trzy pozycje kosztów i sumę. Zmień ilość malowania z dwóch na trzy sztuki i sprawdź, dlaczego przychód lub koszt wzrasta o wartość jednej dodatkowej pozycji."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Cena malowania pozostaje 350 zł, ilość rośnie z 2 do 3. 1. Wpisz w C2 nową ilość 3. 2. Sprawdź formułę E2. 3. Oblicz ponownie sumę E2:E4. 4. Sprawdź różnicę do pierwotnych 1210 zł."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie zmieniaj ręcznie sumy, jeśli istnieje poprawna formuła. W prawdziwym arkuszu zmień tylko komórkę wejściową i oceń zależności."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 10,
+      "level": "praktyka",
+      "title": "Poruszaj się po danych bez chaosu",
+      "glossary": [
+        "pole nazwy",
+        "adres komórki",
+        "aktywna komórka"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "W dużym arkuszu sprawna nawigacja jest warunkiem bezpiecznej edycji. Można wrócić na początek przez Ctrl+Home albo wskazać konkretny adres w polu nazwy bez przewijania setek wierszy."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Masz plik z kilkuset wierszami i chcesz wrócić do górnego lewego rogu. Spróbuj przejść do E20, a potem do A1 i E3. Porównaj Ctrl+Home z Ctrl+End i sprawdź, czy ostatni używany obszar rzeczywiście odpowiada końcowi tabeli."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Ctrl+Home wraca zwykle do początku arkusza. 1. Otwórz tabelę z danymi. 2. Przejdź na dalszy wiersz. 3. Użyj Ctrl+Home. 4. Odczytaj adres wybranej komórki."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Ctrl+End nie oznacza końca wszystkich możliwych komórek. Na PC przećwicz Ctrl+Home w arkuszu bez włączonego pola edycji."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 11,
+      "level": "praktyka",
+      "title": "Poprawnie kopiuj formuły",
+      "glossary": [
+        "odwołanie względne",
+        "formuła",
+        "zakres"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Kopiowanie formuł jest użyteczne, ponieważ odwołania względne przesuwają się z wiersza na wiersz. Skopiowanie =C2*D2 do E3 powinno odnosić się do ilości i ceny z trzeciego wiersza."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "W wierszu 2 liczysz C2*D2. Formułę kopiujesz o wiersz niżej. Zaznacz E2:E4, użyj Wypełnij w dół, a potem kliknij E3. Przeczytaj całą formułę zamiast patrzeć tylko na kwotę. Zmieniając jedną cenę, sprawdź efekt."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Komórka E2 zawiera =C2*D2, a komórka E3 jest jeden wiersz niżej. Sprawdzamy kopiowanie adresów względnych. 1. Zaznacz E2. 2. Kopiuj lub wypełnij do E3. 3. Sprawdź względne adresy źródła. 4. Podaj formułę w E3."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie odwołuj się do starej ilości i ceny po skopiowaniu. Na swoim Excelu skopiuj wzór i porównaj pasek formuły obu komórek."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 12,
+      "level": "praktyka",
+      "title": "Nie mieszaj formatu z wynikiem",
+      "glossary": [
+        "formatowanie warunkowe",
+        "procent",
+        "waluta"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Czytelny raport nie powinien wymagać od odbiorcy zgadywania, co oznacza kolor albo procent. Nagłówki, jednostki i spójne formatowanie są elementem kontroli jakości danych."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Komórka ma wartość 0,15, prezentowaną procentowo. Wyróżnij nagłówki, ustaw kwoty w PLN, procenty jako procenty, a w statusach dodaj słowa Opłacona i Po terminie. Wyświetl ten sam raport na wąskim ekranie."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Wartość źródłowa to 0,15, czyli 15/100. Komórkę trzeba wyświetlić jako procent bez zmiany danych bazowych. 1. Wprowadź ułamek 0,15. 2. Ustaw procenty w formacie komórki. 3. Obejrzyj pasek fx. 4. Podaj wyświetlony procent."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie pomyl 15% z liczbą 15 w formule. Na PC porównaj wynik mnożenia 100*komórka przed i po formatowaniu."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 13,
+      "level": "praktyka",
+      "title": "Rozszerzaj dane bez gubienia rekordów",
+      "glossary": [
+        "tabela excel",
+        "kontrola zakresu",
+        "suma"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Dodawanie nowej pozycji do budżetu nie może powodować utraty jej z podsumowania. Wiele błędów wynika z tego, że formuła obejmuje poprzedni zakres danych, a nowy wiersz leży już poza nim."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Dodajesz nowy materiał tuż przed podsumowaniem. Dopisz czwarty koszt pod trzema istniejącymi pozycjami. Sprawdź formułę sumy i zastosuj tabelę Excel, gdy masz wiele rekordów. Porównaj liczbę pozycji przed i po."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Wartości: 700, 360, 150 i nowy wydatek 90. 1. Dodaj wiersz z nową pozycją. 2. Upewnij się, że suma obejmuje nowy wiersz. 3. Porównaj zakres formuły przed i po. 4. Oblicz nowy łączny koszt."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Wstawienie wiersza poza tabelą może nie rozszerzyć zakresu. W Excelu zrób ćwiczenie na kopii i użyj formatu Tabela (Ctrl+T)."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 14,
+      "level": "praktyka",
+      "title": "Zablokuj adres stawki",
+      "glossary": [
+        "odwołanie bezwzględne",
+        "odwołanie mieszane",
+        "f4 w formule"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Jedna wspólna stawka i wiele wierszy tworzą klasyczny problem adresowania. Odwołanie bezwzględne $H$2 utrzymuje stały adres w trakcie kopiowania, podczas gdy C2 może przesuwać się w dół."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "W kolumnie H2 jest wspólna stawka, którą wykorzystują wszystkie wiersze. Zapisz formułę =C2*$H$2, skopiuj ją do następnego wiersza i sprawdź, czy zmienił się tylko adres ilości. Następnie porównaj $A1, A$1 i $A$1."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "W komórce C2 ilość, H2 stawka, wynik w E2. 1. Wpisz w E2 formułę odwołującą się do C2 i H2. 2. Zablokuj kolumnę i wiersz stawki przez $. 3. Skopiuj wzór w dół. 4. Podaj formułę źródłową."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Wynik z kopii nie może nagle korzystać z H3. Na Excelu użyj F4 na adresie H2 i skopiuj formułę na kilka wierszy."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 15,
+      "level": "praktyka",
+      "title": "SUMA.WARUNKÓW: uzgodnij wartość dwóch filtrów",
+      "glossary": [
+        "filtr",
+        "suma.warunków",
+        "rekord"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Filtrowanie danych odpowiada na pytanie, które rekordy spełniają warunki, a SUMA.WARUNKÓW — jaka jest ich łączna wartość. Trzy pasujące faktury nie oznaczają sumy równej trzem."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Raport zawiera różne regiony i kategorie; dyrektor chce tylko materiały z Północy. Wybierz Północ i Materiały, policz liczbę pozycji oraz sumę kwot. Zmień ilość jednej faktury i sprawdź, czy suma po dwóch kryteriach aktualizuje się poprawnie."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "W 18 transakcjach są trzy pozycje Materiały z regionu Północ. Potrzebujesz sumy NETTO, a nie tylko liczby wierszy. 1. Załaduj rejestr 18 transakcji i zweryfikuj sumę kontrolną. 2. Zastosuj jednocześnie region Północ i kategorię Materiały. 3. Użyj SUMA.WARUNKÓW lub dwóch warunków na danych. 4. Porównaj sumę odfiltrowanych faktur z pełnym rejestrem. 5. Podaj wartość netto obu kryteriów w PLN."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Filtr ukrywa, nie usuwa danych. SUMA.WARUNKÓW liczy po kryteriach. W prawdziwym Excelu zrób tabelę Ctrl+T, filtr i SUMA.WARUNKÓW."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 16,
+      "level": "praktyka",
+      "title": "Kontrola wersji i eksportu",
+      "glossary": [
+        "historia wersji",
+        "zapisz jako",
+        "druk i obszar wydruku"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Wysłanie dobrego raportu wymaga kontroli wersji i formatu pliku. Nawet świetna analiza może zawieść, jeśli klient dostanie stare zestawienie albo PDF z obciętą kolumną."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Raport z formułami ma iść do współpracownika i na spotkanie jako wydruk. Zapisz R01 oraz R02 osobno, sprawdź, które formuły uległy zmianie, i wykonaj podgląd wydruku. Rozróżnij plik do edycji i raport tylko do czytania."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Masz plik R01 i planowaną aktualizację R02. 1. Zapisz kopię pliku jako R02.xlsx. 2. Sprawdź, że formuły nadal działają. 3. Zanim wyślesz PDF, otwórz podgląd wydruku. 4. Wybierz właściwy format do edycji."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Zapis bez nazwy wersji sprzyja wysłaniu złego raportu. W Excelu użyj Zapisz jako i sprawdź obszar wydruku w podglądzie."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 17,
+      "level": "praktyka",
+      "title": "Wykres sprzedaży: znajdź region lidera",
+      "glossary": [
+        "wykres",
+        "agregacja",
+        "kpi"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Wykres ma ułatwiać zrozumienie danych, a nie sztucznie wyolbrzymiać różnice. Dla kilku regionów dobrze sprawdza się wykres słupkowy z jednostką PLN i osią zaczynającą się od zera."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Szef potrzebuje porównać kwoty w trzech regionach. Porównaj sprzedaż Północy, Południa i Centrum. Zobacz, czy lider na wykresie jest także liderem w tabeli. Następnie zmień jedną wartość w źródle."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "18 faktur obejmuje regiony Północ, Centrum i Południe. Ich sumy netto to odpowiednio 8885, 9930 i 9430 PLN. 1. Zagreguj wartości netto po regionie, bez mieszania ich z marżą. 2. Zbuduj wykres trzech słupków, z osią PLN zaczynającą się od 0. 3. Porównaj wysokość słupków z sumami w tabeli źródłowej. 4. Wskaż region o najwyższej rzeczywistej sprzedaży."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Zawyżenie osi Y lub pomylenie przychodów z liczbą faktur może fałszować wrażenie lidera. Na PC zbuduj wykres kolumnowy i porównaj go z tabelą przestawną."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 18,
+      "level": "praktyka",
+      "title": "Oznacz brakujące ceny",
+      "glossary": [
+        "pusta komórka",
+        "kontrola zakresu",
+        "źródło"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Brakująca cena nie jest ceną zero. Jeśli projekt ma niepełne dane, suma powinna być wyraźnie opisana jako częściowa, nawet gdy wszystkie zastosowane formuły działają poprawnie."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Przygotowujesz kosztorys, ale jeden dostawca nie podał ceny. Przygotuj trzy pozycje, z których jedna ma status Brak ceny. Zsumuj tylko dwie znane kwoty i pokaż wyjaśnienie, czego wynik jeszcze nie obejmuje."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Pozycje znane: 700, 360 i brak ceny transportu. 1. Wprowadź znane pozycje. 2. Zamiast zera pozostaw brak jako BRAK CENY. 3. Zsumuj wyłącznie potwierdzone wartości. 4. Podaj sumę częściową."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Brakująca cena to nie darmowy transport. Na PC oznacz brak komórką tekstową i dodaj wyjaśnienie do raportu."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 19,
+      "level": "praktyka",
+      "title": "Wyjaśnij zmianę budżetu",
+      "glossary": [
+        "scenariusz",
+        "agregacja",
+        "historia wersji"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Raport tygodniowy powinien pokazać nie tylko bieżącą wartość, ale też zmianę i przyczynę. Dla ilości dwóch sztuk podwyżka ceny o 40 zł oznacza dodatkowe 80 zł."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Cena jednostkowa malowania rośnie z 350 do 390 zł przy ilości 2. Zestaw koszt Przed i Po oraz policz różnicę osobną formułą. Potem sprawdź, czy suma i wykres uwzględniają nowe wartości oraz czy zapisano nową wersję pliku."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Ilość 2, stare 350 zł, nowe 390 zł. 1. Zachowaj starą i nową wartość. 2. Przelicz obie kwoty. 3. Odejmij koszt początkowy od nowego. 4. Sprawdź deltę."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie porównuj samych cen jednostkowych z całkowitymi. Przygotuj komórkę zmiany ceny i kontrolę różnicy w Excelu."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 20,
+      "level": "ekspert",
+      "title": "Model finansowy: policz marżę na 18 transakcjach",
+      "glossary": [
+        "przychód",
+        "marża kwotowa",
+        "uzgodnienie sum"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Przychód, koszty i marża są różnymi wielkościami. Analityk powinien umieć pokazać źródło każdej z nich i uzgodnić różnicę, zamiast przedstawiać cały obrót jako zysk."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Musisz obronić budżet przed dyrektorem, nie tylko wpisać sumę. Przy 18 fakturach policz łączny przychód, koszty oraz marżę. Zbuduj trzy sekcje: Źródło, Obliczenia, Raport. Sprawdź zależność Przychód minus Koszty."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "18 faktur ma ilość, cenę netto i koszt jednostkowy. Suma przychodu wynosi 28245 PLN, ale marża jest inną wielkością. 1. W źródłach policz kwotę faktury jako Ilość × Cena netto. 2. Policz koszt jako Ilość × Koszt jednostkowy i sumę kosztów. 3. Oblicz marżę każdej pozycji i sumę marży. 4. Uzgodnij Przychód − Koszty = Marża i podaj ją w PLN."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie nazywaj przychodu zyskiem; pominięcie kosztów daje fałszywy wynik finansowy. Na PC zbuduj tabelę danych, model marży i podsumowanie w osobnym arkuszu."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 21,
+      "level": "ekspert",
+      "title": "Audyt walidacji: wskaż wadliwą fakturę",
+      "glossary": [
+        "walidacja danych",
+        "błąd źródła",
+        "test negatywny"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Walidacja ogranicza ryzyko wprowadzenia błędnych danych, ale nie jest gwarancją poprawności wszystkich importów. Tekst 5x nie powinien automatycznie stać się ilością pięć."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "W rejestrze przychodzących danych jedna ilość wygląda jak „5x”. Musisz wskazać dokładny rekord przed importem. Wprowadź testowe wartości 5, 0, -1 i 5x przy regule dodatnich liczb całkowitych. Sporządź listę wierszy odrzuconych, z numerem i przyczyną."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Cztery celowo uszkodzone rekordy. Jeden ma ilość „5x”, która nie jest liczbą całkowitą. Znajdź numer faktury. 1. Otwórz zaawansowany audyt CSV i przeczytaj surowe wiersze. 2. Porównaj Ilość każdej faktury z regułą dodatniej liczby całkowitej. 3. Zidentyfikuj numer rekordu zawierającego 5x. 4. Wstrzymaj import tej pozycji do wyjaśnienia ze źródłem."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie konwertuj automatycznie „5x” na 5 bez potwierdzenia; może to być kod, pomyłka lub inna wielkość. Na Excelu: Dane → Poprawność danych → Liczba całkowita większa od 0."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 22,
+      "level": "ekspert",
+      "title": "Zdiagnozuj błąd, nie maskuj go",
+      "glossary": [
+        "błąd #dziel/0!",
+        "błąd #n/d",
+        "jeżeli.błąd"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Błąd formuły jest informacją diagnostyczną. #DZIEL/0! oznacza problem z mianownikiem, a #N/D często brak dopasowania, dlatego automatyczne zastąpienie obu zerem może ukryć problem."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Formuła koszt/ilość ma w mianowniku zero. Przetestuj dzielenie 100 przez 0 oraz wyszukiwanie nieistniejącego numeru faktury. Zapisz kod błędu, źródło i bezpieczną reakcję na nieprawidłowe dane."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Własny arkusz ćwiczebny: w A1 wpisano 100, a w B1 wpisano zero. W komórce C1 ma być =A1/B1. 1. Wprowadź dane testowe 100 i 0. 2. Zastosuj formułę =A1/B1. 3. Odczytaj kod błędu. 4. Zdecyduj, czy zero to brak danych czy faktyczna wartość."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Zamiana każdego błędu na zero ukrywa przyczyny. Na PC użyj JEŻELI i JEŻELI.BŁĄD tylko po zidentyfikowaniu błędu."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 23,
+      "level": "ekspert",
+      "title": "Odwołania między arkuszami",
+      "glossary": [
+        "arkusz",
+        "model danych",
+        "dołączanie zapytań"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Praca z wieloma arkuszami pozwala porządkować miesiące, ale nie powinna prowadzić do kopiowania kwot bez powiązania ze źródłem. W zaawansowanym modelu lepiej sprawdza się jedna tabela rekordów z kolumną daty."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Raport roczny musi pobierać wartości z miesięcy. Utwórz Styczeń i Luty, powiąż obie kwoty w arkuszu Roczny, a potem sprawdź zmianę wartości źródłowej. Przy większej skali przetestuj Power Query."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "W arkuszu Styczeń komórka B2 ma 1200 zł, a w arkuszu Luty ta sama komórka B2 ma 1300 zł. 1. Utwórz arkusze Styczeń i Luty. 2. W arkuszu Roczny wpisz sumę odwołań do obu. 3. Zmień wartość w jednym miesiącu. 4. Oblicz sumę dla pierwotnych danych."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Ręczne kopiowanie kwot bez odwołań psuje aktualizacje. W Excelu użyj =Styczeń!B2+Luty!B2 i sprawdź aktualizację."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 24,
+      "level": "ekspert",
+      "title": "X.WYSZUKAJ po unikatowym ID",
+      "glossary": [
+        "x.wyszukaj",
+        "identyfikator",
+        "błąd #n/d"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Wyszukiwanie po identyfikatorze jest bezpieczniejsze niż wyszukiwanie po samej kwocie. Dwie faktury mogą mieć identyczną cenę, ale różny numer i innego kontrahenta."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Dwie faktury mogą mieć tę samą kwotę. Potrzebujesz dokładnego numeru. Wprowadź numer FV-014 i znajdź jego wartość. Potem sprawdź FV-999, który nie istnieje. Porównaj X.WYSZUKAJ z alternatywą dla Excela 2016/2019."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "FV-014 w ćwiczebnym rejestrze; ilość 21, cena 55 PLN. 1. Wyszukaj po dokładnym numerze FV-014. 2. Sprawdź czy istnieje dokładnie jeden wiersz. 3. Zwróć iloczyn ilości i ceny. 4. Sprawdź co się stanie dla nieistniejącego ID."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Brak trafienia ≠ zero wartości; duplikat ≠ unikatowy rekord. W Excel 2021, Excel 2024 lub Microsoft 365 użyj X.WYSZUKAJ(numer;kolumna_numerów;kolumna_wartości;\"BRAK\";0). Excel 2016 i 2019 nie obsługują X.WYSZUKAJ — w starszej wersji zastosuj INDEKS + PODAJ.POZYCJĘ."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 25,
+      "level": "ekspert",
+      "title": "Pivot: uzgodnij sumę 3 miesięcy z rejestrem",
+      "glossary": [
+        "tabela przestawna",
+        "odświeżenie",
+        "agregacja"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Tabela przestawna łączy wiele wierszy w raport, ale po zmianie źródła wymaga kontroli aktualności. Niezmieniony wynik na ekranie nie dowodzi, że faktury się nie zmieniły."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Zespół chce miesięczny raport bez ręcznego liczenia każdej kategorii. Zgrupuj 18 faktur po miesiącu i uzgodnij sumę 28245 PLN. Zmień ilość FV-001, odśwież podsumowanie i sprawdź, czy wszystkie miesiące nadal dają pełną sumę."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "18 faktur z miesięcy 2026-01, 2026-02 i 2026-03. Raport przestawny musi odpowiadać prawidłowym źródłom. 1. Utwórz tabelę przestawną z 18 faktur. 2. Umieść Miesiąc w Wierszach i Wartość netto w Wartościach jako SUMA. 3. Odśwież tabelę po edycji choć jednej faktury. 4. Zsumuj trzy grupy i porównaj je z pełnym źródłem. 5. Podaj wartość netto w PLN."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nieodświeżona tabela przestawna może pokazywać nieaktualne sumy po zmianie wartości źródłowych. W prawdziwym Excelu: Wstaw → Tabela przestawna, odśwież po zmianie danych."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 26,
+      "level": "ekspert",
+      "title": "Wrażliwość marży: policz wpływ wzrostu kosztu o 15%",
+      "glossary": [
+        "analiza wrażliwości",
+        "scenariusz",
+        "marża kwotowa"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Analiza wrażliwości pozwala przetestować ryzyko w modelu. Gdy koszt materiałów rośnie o 15%, a ceny dla klientów się nie zmieniają, marża spada, lecz przychód pozostaje stały."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Dostawcy materiałów podnoszą koszt zakupu o 15%, a ceny sprzedaży się nie zmieniają. Zwiększ wyłącznie koszty zakupów materiałów, porównaj marżę bazową i wariant. Sprawdź zmianę ze znakiem minus oraz czy suma przychodów się nie zmieniła."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "W 18 fakturach koszt zakupu materiałów wynosi 5691 PLN. Wzrost tego kosztu o 15% nie zmienia przychodów. 1. Oddziel przychód, koszty i marżę bazową 9109 PLN. 2. Zwiększ koszt wyłącznie kategorii Materiały o 15%. 3. Oblicz dodatkowy koszt i zmianę marży po scenariuszu. 4. Sprawdź, czy przychód pozostaje 28245 PLN, i podaj ZMIANĘ marży z minusem."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie zwiększaj sprzedaży o 15%, gdy zmiana dotyczy wyłącznie kosztów zakupu materiałów. W Excelu użyj osobnych komórek parametrów i tabeli danych/scenariuszy."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 27,
+      "level": "ekspert",
+      "title": "Dostęp do danych i wersjonowanie",
+      "glossary": [
+        "uprawnienia dostępu",
+        "ochrona arkusza",
+        "dane osobowe"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Wrażliwy skoroszyt wymaga właściwych uprawnień, a nie tylko ładnych nagłówków. Zasada minimalnego dostępu pozwala ograniczyć ryzyko niezamierzonego ujawnienia danych."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Raport zawiera dane klientów i ceny, ale odbiorca ma go tylko przeczytać. Sprawdź, kto naprawdę potrzebuje edycji, a kto tylko odczytu. Przed udostępnieniem przejrzyj ukryte karty, komentarze, linki i dane osobowe."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Zasada najmniejszych uprawnień — dostęp do odczytu bez edycji. 1. Wybierz dozwolonych odbiorców. 2. Zastosuj wyłącznie odczyt, jeśli nie trzeba edycji. 3. Sprawdź możliwość cofnięcia uprawnień. 4. Zapisz wersję udostępnionego pliku."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Ukrycie arkusza nie zastępuje uprawnień na pliku. Na PC sprawdź uprawnienia SharePoint/OneDrive i osobne wersje raportu testowego."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 28,
+      "level": "ekspert",
+      "title": "Audyt importu i duplikatów",
+      "glossary": [
+        "power query",
+        "duplikat",
+        "rekonsyliacja"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Audyt importu ujawnia, że nawet prawidłowe formuły mogą liczyć z błędnych rekordów. Duplikat faktury, błędna ilość, pusta cena lub niewłaściwa data wymagają osobnej analizy."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Dane CSV z zewnętrznego źródła zawierają błędną ilość, duplikat i puste pola. W 18 rekordach znajdź cztery celowo wadliwe pozycje. Następnie pobierz przypadek 368 wierszy, oznacz osiem anomalii i oblicz sumy wyłącznie na poprawnych danych."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "Cztery specjalnie zepsute wiersze widoczne w ćwiczebnym audycie. 1. Zweryfikuj duplikaty numerów faktur. 2. Oznacz błędne ilości i puste ceny. 3. Oddziel rekordy błędne od raportu. 4. Podaj liczbę wykrytych problemów."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Nie używaj Usuń duplikaty bez sprawdzenia, która wersja jest właściwa. Na Excelu możesz importować CSV przez Dane → Z tekstu/CSV i rozwiązać błędy w Power Query."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    },
+    {
+      "lesson_no": 29,
+      "level": "ekspert",
+      "title": "Egzamin ekspercki: uzasadnij każdy wynik",
+      "glossary": [
+        "ścieżka audytu",
+        "power query",
+        "dashboard"
+      ],
+      "sections": [
+        {
+          "heading": "Zrozum bez żargonu",
+          "text": "Ekspert potrafi przejść od surowego pliku do obrony wyniku. Musi wyjaśnić, skąd pochodzi każda liczba, co zostało odrzucone i dlaczego, i jak raport zachowa się po zmianie założeń."
+        },
+        {
+          "heading": "Wyobraź sobie taką sytuację",
+          "text": "Przed spotkaniem musisz obronić wynik raportu, marżę, dane źródłowe oraz wpływ scenariusza. Połącz źródło, kontrolę błędów, model marży, agregację miesięcy i raport. Zrób odrębną kontrolę sum regionów i miesięcy, a na koniec udokumentuj wersję analizy."
+        },
+        {
+          "heading": "Przećwicz na konkretnych danych",
+          "text": "18 poprawnych faktur, 4 anomalie importu, 3 miesiące. 1. Wykonaj kontrolę źródeł i odrzuć anomalie. 2. Policz SUMA.WARUNKÓW i tabelę przestawną. 3. Wykonaj X.WYSZUKAJ i analizę wrażliwości. 4. Uzgodnij sumę przychodu z bazą. 5. Wskaż ryzyka i zapisz wersję raportu."
+        },
+        {
+          "heading": "Gdzie najłatwiej o błąd",
+          "text": "Raport bez kontroli duplikatów, braków i źródeł nie jest pracą ekspercką. W prawdziwym Excelu zbuduj osobne arkusze: Źródło, Kontrola, Model, Raport i dokumentuj założenia."
+        }
+      ],
+      "reminder": "Nie przechodź dalej tylko po obejrzeniu obrazka. Spróbuj wyjaśnić swoim słowami, skąd pochodzi wynik i jak sprawdzić go drugim sposobem."
+    }
+  ]
+}
