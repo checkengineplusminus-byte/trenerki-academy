@@ -29,6 +29,15 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // Do not weaken the accounting reader guard. Canonicalize ONLY the reviewed
  // Excel-specific additions, then compare with the existing approved blob hashes.
  let sourceForAccounting=source;
+ // Audited non-accounting insertion: one protected, optional lesson clarification.
+ // Remove ONLY these exact two lines before hashing the canonical reader.
+ const clarificationImport="import LessonClarification from '../src/LessonClarification';\n";
+ const clarificationMount="   <LessonClarification key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>\n";
+ assert.equal(sourceForAccounting.split(clarificationImport).length,2,'Anielka: only one approved import');
+ assert.equal(sourceForAccounting.split(clarificationMount).length,2,'Anielka: only one supplementary note mount');
+ assert.ok(sourceForAccounting.indexOf(clarificationMount)>sourceForAccounting.indexOf("lesson.title_pl"),
+  'Dodatkowe wyjaśnienie pozostaje w lekcji, nie w logowaniu ani trasie księgowości');
+ sourceForAccounting=sourceForAccounting.replace(clarificationImport,'').replace(clarificationMount,'');
  const excelImport="import ExcelMasterGuide from '../src/ExcelMasterGuide';\n";
  if(sourceForAccounting.includes(excelImport)){
   const steps=[
