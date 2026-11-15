@@ -51,8 +51,17 @@ export default function Learning(){
   scrollRef.current?.scrollTo({y,animated:true});
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
+ function scrollToExcelGrid():boolean{
+  if(slug!=='excel-skroty'||Platform.OS!=='web'||typeof document==='undefined')return false;
+  // The button must land on the actual spreadsheet, not the shortcut quiz above it.
+  const grid=document.querySelector('[data-testid="excel-workspace"]');
+  if(!grid)return false;
+  grid.scrollIntoView?.({behavior:'smooth',block:'start'});
+  return true;
+ }
  function openWorkshop(){
   if(!introRead){pendingWorkshopRef.current=true;setIntroRead(true);return;}
+  if(scrollToExcelGrid())return;
   scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});
  }
  function openCarpentry(){scrollRef.current?.scrollTo({y:Math.max(0,carpentryYRef.current-18),animated:true});}
@@ -60,6 +69,9 @@ export default function Learning(){
  const [reviewMode,setReviewMode]=useState(reviewParam==='1');
  const [coachOpen,setCoachOpen]=useState(false);
  useEffect(()=>{setIntroRead(false);pendingWorkshopRef.current=false;},[slug]);
+ useEffect(()=>{
+  if(pendingWorkshopRef.current&&introRead&&scrollToExcelGrid())pendingWorkshopRef.current=false;
+ },[introRead,slug,module]);
  useEffect(()=>{setReviewMode(reviewParam==='1');},[slug,reviewParam]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
@@ -405,7 +417,13 @@ export default function Learning(){
       </View>}
       <View onLayout={event=>{
        workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;
-       if(pendingWorkshopRef.current){pendingWorkshopRef.current=false;scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});}
+       if(pendingWorkshopRef.current){
+        if(scrollToExcelGrid())pendingWorkshopRef.current=false;
+        else if(slug!=='excel-skroty'||Platform.OS!=='web'){
+         pendingWorkshopRef.current=false;
+         scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});
+        }
+       }
       }}>
        <KeyboardLesson key={slug+'-'+module} slug={slug} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise}
         alreadyVerified={passed.keyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
