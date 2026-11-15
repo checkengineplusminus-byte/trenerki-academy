@@ -297,6 +297,17 @@ export default function Learning(){
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
+   {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#e5f4e1':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#a8cda4':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
+    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{canFinish?'✓ Obydwa zadania zaliczone — możesz przejść dalej':'Aby przejść dalej, zalicz 2 zadania'}</Text>
+    <Text style={{fontSize:14,fontWeight:'800',color:'#4c634d'}}>Twój wynik: {done.includes(module)?2:passedCount}/2</Text>
+    <Pressable accessibilityRole="button" onPress={returnToExercise} style={{paddingVertical:10,paddingHorizontal:12,backgroundColor:'white',borderRadius:9,minHeight:44}}>
+     <Text style={{fontWeight:'800',color:ink}}>{done.includes(module)||passed[objective||'case']?'✓':'○'} 1. Pytanie kontrolne — {done.includes(module)||passed[objective||'case']?'zaliczone':'do rozwiązania'} ↗</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={openCarpentry} style={{paddingVertical:10,paddingHorizontal:12,backgroundColor:'white',borderRadius:9,minHeight:44}}>
+     <Text style={{fontWeight:'800',color:ink}}>{done.includes(module)||passed.carpentry?'✓':'○'} 2. Zadanie z obliczeń — {done.includes(module)||passed.carpentry?'zaliczone':'do rozwiązania'} ↗</Text>
+    </Pressable>
+    <Text style={{fontSize:12,lineHeight:19,color:'#626e59'}}>Kalkulator na własnych danych służy do ćwiczeń. Aby zaliczyć zadanie 2, wybierz „Zadanie z lekcji”, wpisz wynik i naciśnij „Sprawdź mój wynik”. Oba zaliczenia zostaną zachowane.</Text>
+   </View>
    {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#eff5e9',borderLeftWidth:3,borderLeftColor:'#87af73',borderRadius:9,gap:4}}>
     <Text style={{fontSize:12,color:'#3b6a46',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
     <Text style={{fontSize:15,color:'#2b4b35',lineHeight:23}}>{lesson.material.curiosity}</Text>
@@ -316,7 +327,11 @@ export default function Learning(){
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
-   {carpentry&&<CarpentryPracticeLab key={module} lessonNo={module} alreadyPassed={passed.carpentry} onPassed={()=>markPassed(module,'carpentry')}/>}
+   {carpentry&&<View onLayout={event=>{carpentryYRef.current=event.nativeEvent.layout.y}}>
+    <CarpentryPracticeLab key={module} lessonNo={module} alreadyPassed={passed.carpentry}
+     onPassed={()=>markPassed(module,'carpentry')}
+     onVerify={(answer)=>recordAttempt('carpentry',0,true,undefined,undefined,answer)}/>
+   </View>}
     <View onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
    {!!objective&&!!passed[objective]&&<Text style={{color:ink,marginVertical:8,fontWeight:'800'}}>✓ Odpowiedź do zadania zapisana</Text>}
    {lesson.material?.construction?
@@ -345,14 +360,14 @@ export default function Learning(){
    <LessonHelp slug={slug} title={lesson.title_pl}/>
    <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
    <Pressable accessibilityRole="button" disabled={saving}
-    onPress={()=>{if(canFinish)void finishLesson();else returnToExercise()}}
+    onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
     style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
     <Text style={{color:canFinish?'white':ink,fontWeight:'900',textAlign:'center',fontSize:17,lineHeight:25}}>
-     {saving?'Zapisuję…':!canFinish?'↑ Najpierw rozwiąż zadanie':next!==undefined?'Dalej · lekcja '+(index+2)+' →':'Przejdź do egzaminu →'}
+     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':'↑ Najpierw rozwiąż zadanie'):next!==undefined?'Dalej · lekcja '+(index+2)+' →':'Przejdź do egzaminu →'}
     </Text>
     {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>
-   {!canFinish&&<Text style={{fontSize:12,color:'#647565',lineHeight:19,marginTop:7,textAlign:'center'}}>Po poprawnym rozwiązaniu przycisk „Dalej” odblokuje się automatycznie.</Text>}
+   {!canFinish&&<Text style={{fontSize:12,color:'#647565',lineHeight:19,marginTop:7,textAlign:'center'}}>{carpentry?'Wymagane: 1. pytanie kontrolne, 2. obliczenia. Kliknij brakujące zadanie powyżej.':'Po poprawnym rozwiązaniu przycisk „Dalej” odblokuje się automatycznie.'}</Text>}
    {lessonNavigation('bottom')}
   </>}
   {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#eaf2e0'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
