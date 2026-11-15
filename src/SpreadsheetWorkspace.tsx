@@ -63,8 +63,12 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
    setFormat(old=>({...old,[active]:{...old[active],currency:true,percent:false}}));
    setStatus('Zapisano liczbę w '+active+'. Symbol zł jest formatem, a nie częścią liczby. Formuły przeliczono.');
   }else{
+   if(currency){
+    setStatus('Kwota ma niepoprawny zapis — popraw ją, np. 1250,50 zł lub samą liczbę. Dane nie zostały zmienione.');
+    return;
+   }
    write(draft);
-   setStatus(currency?'Sprawdź wpisaną kwotę: wpisz np. 1250,50 zł albo samą liczbę.':'Zapisano '+active+'. Formuły przeliczono.');
+   setStatus('Zapisano '+active+'. Formuły przeliczono.');
   }
   setDraft(null);
  }
