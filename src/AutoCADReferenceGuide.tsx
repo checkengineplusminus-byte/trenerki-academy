@@ -85,7 +85,7 @@ export default function AutoCADReferenceGuide(){
      {categories.map(entry=>button(entry,()=>{setCategory(entry);setVisible(24);},category===entry))}
     </View>
     <Text style={{color:muted,fontWeight:'800'}}>Znaleziono: {found.length} / {reference.commands.length}</Text>
-    {found.slice(0,visible).map(cmd=><View key={cmd.command} style={{backgroundColor:'white',padding:12,borderRadius:10,gap:4}}>
+    {found.slice(0,visible).map(cmd=><View key={cmd.category+'-'+cmd.command} style={{backgroundColor:'white',padding:12,borderRadius:10,gap:4}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{cmd.command}{cmd.alias?' · '+cmd.alias:''} — {cmd.label}</Text>
      <Text style={{fontSize:13,lineHeight:20,color:muted}}>{cmd.purpose}</Text>
      <Text style={{fontSize:11,color:cmd.lab?'#326f48':'#68776b',fontWeight:'800'}}>{cmd.lab?'Działa w pracowni TRENERKI':'Ćwicz w oryginalnym AutoCAD'}</Text>
