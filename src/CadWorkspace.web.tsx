@@ -4,6 +4,7 @@ import CadRibbonIcon from './CadRibbonIcon.web';
 import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection,nearestCadObjects} from './CadSelection';
 import {polarTracking,objectSnapTracking} from './CadTracking';
 import statusReference from '../content/autocad-status-controls-2026.json';
+import assignments from '../content/autocad-practice-assignments-v3.json';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
@@ -72,6 +73,15 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const [snapModes,setSnapModes]=useState<CadSnapMode[]>(['endpoint','midpoint']);
  const [showSnapSettings,setShowSnapSettings]=useState(false);
  const [layoutScale,setLayoutScale]=useState(50);
+ const [annotationScale,setAnnotationScale]=useState(50);
+ const [scaleMenuOpen,setScaleMenuOpen]=useState(false);
+ const [scaleLocked,setScaleLocked]=useState(false);
+ const [customScaleInput,setCustomScaleInput]=useState('');
+ const [runAssignment,setRunAssignment]=useState(false);
+ const [assignmentBaseline,setAssignmentBaseline]=useState('');
+ const [assignmentFeedback,setAssignmentFeedback]=useState('');
+ const currentAssignment=assignments.assignments[lessonNo??0]??assignments.assignments[0];
+ const standardScales=[1,2,5,10,20,25,50,75,100,125,200,250,500,1000];
  const [fontSample,setFontSample]=useState('Przykładowy opis rysunku');
  const [sampleFont,setSampleFont]=useState('Arial');
  const [sampleHeight,setSampleHeight]=useState(2.5);
@@ -81,6 +91,11 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const nextId=useRef(1),nextLayer=useRef(3),commandRef=useRef<React.ComponentRef<typeof TextInput>>(null);
  const view=camera??fitDrawing([],size);
  const visible=drawing.shapes.filter(shape=>drawing.layers.find(l=>l.id===shape.layer)?.visible);
+ // Paper A3 landscape: 420 × 297 mm. The preview is measured in paper mm,
+ // and layoutScale converts model mm to screen pixels without modifying shapes.
+ const pageW=Math.min(Math.max(100,size.width-28),Math.max(100,size.height-28)*420/297);
+ const paperPixelsPerMm=pageW/420;
+ const layoutCamera:Camera={center:fitDrawing(visible,size).center,unitsPerPixel:layoutScale/paperPixelsPerMm};
  const selectedVisible=selectedIds.filter(id=>visible.some(s=>s.id===id));
  const chosen=visible.find(shape=>shape.id===selected),target=visible.find(shape=>shape.id===session.target);
  const {tool,points}=session,first=points[0],latest=points.at(-1);
@@ -89,6 +104,17 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const currentLayer=drawing.layers.find(l=>l.id===drawing.currentLayer)!;
 
  function tell(text:string){setMessage(text);setLog(old=>[...old.slice(-13),text]);}
+ function checkAssignment(){
+  if(!runAssignment){setAssignmentFeedback('Najpierw rozpocznij zadanie tej lekcji. Twojego wcześniejszego rysunku nie usuwamy.');return;}
+  const now=JSON.stringify(drawing.shapes);
+  if(now===assignmentBaseline){setAssignmentFeedback('Brak nowej operacji w rysunku. Wpisz polecenie i utwórz lub zmodyfikuj obiekt, a potem sprawdź ponownie.');return;}
+  const kind=currentAssignment.targetKind;
+  if(!drawing.shapes.some(s=>s.kind===kind)){
+   setAssignmentFeedback('Jeszcze nie: to ćwiczenie wymaga obiektu '+kind.toUpperCase()+'. Wróć do instrukcji i sprawdź polecenie '+currentAssignment.focusCommand+'.');
+   return;
+  }
+  setAssignmentFeedback('Geometria zmieniła się, a rysunek zawiera wymagany typ obiektu '+kind.toUpperCase()+'. Teraz sprawdź wynik liczbowy: '+currentAssignment.expected);
+ }
  function record(next:Drawing){setHistory(old=>[...old.slice(-79),drawing]);setFuture([]);setDrawing(next);}
  function updateShapes(shapes:CadShape[]){record({...drawing,shapes});}
  function storeShape(shape:Omit<CadShape,'id'|'layer'>,layer=drawing.currentLayer){
@@ -508,13 +534,28 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   {id:'cycle',icon:'⧉',name:'Selection Cycling · Ctrl+W',active:selectionCycling,onPress:()=>setSelectionCycling(v=>!v),extra:true},
   {id:'lwt',icon:'≡',name:'LWT · Grubość linii',active:lineweight,onPress:()=>setLineweight(v=>!v),extra:true},
   {id:'trans',icon:'◫',name:'Transparency · Przezroczystość',active:transparency,onPress:()=>setTransparency(v=>!v),extra:true},
-  {id:'annotation',icon:'1:50',name:'Skala anotacji · 1:50',active:layout,onPress:()=>{setLayout(true);setSession(idle);},extra:true},
+  {id:'annotation',icon:'1:'+annotationScale,name:'Skala anotacji · 1:'+annotationScale,active:layout,
+   onPress:()=>{setLayout(true);setSession(idle);setScaleMenuOpen(v=>!v);},extra:true},
   {id:'clean',icon:'⛶',name:'Czysty ekran · Ctrl+0',active:cleanScreen,onPress:()=>setCleanScreen(v=>!v),extra:true},
  ];
  const activeStatus=statusReference.items.find(item=>item.id===statusInfo);
  return <View style={labStyles.panel} testID="cad-workspace">
   <Text style={labStyles.heading}>AutoCAD · pracownia rysunku 2D</Text>
-  <Text style={labStyles.body}>{lessonNo===0?'Ćwiczenie 1: wpisz LINE → 0,0 → 1000,0 → 500,800 → CLOSE. Następnie wpisz JOIN, aby otrzymać jedną polilinię, i MOVE, aby przesunąć cały trójkąt.':lessonNo===5?'Połącz trzy osobne linie trójkąta poleceniem JOIN. Sprawdź, że to jeden zamknięty obiekt; przesuń go przez MOVE.':lessonNo===9?'Narysuj RECTANG od 0,0 do @4000,3000. Zmierz boki i przekątną oraz dopasuj widok.':'Przećwicz polecenia z tej lekcji na rysunku. Możesz wpisywać współrzędne, używać wstążki oraz zaznaczać obiekty myszą.'}</Text>
+  <View testID="cad-assigned-exercise" style={{backgroundColor:'#f1f6ec',borderRadius:11,padding:14,gap:9}}>
+   <Text style={{color:'#2e6340',fontWeight:'900',fontSize:15}}>Zadanie lekcji {Number(lessonNo??0)+1}/30: {currentAssignment.title.replace('Zadanie w pracowni: ','')}</Text>
+   <Text style={{color:'#365849',fontSize:14,lineHeight:22}}>{currentAssignment.task}</Text>
+   <Text style={{color:'#2e6340',fontWeight:'900'}}>Wpisz po kolei</Text>
+   <Text style={{color:'#365849',fontSize:14,lineHeight:22}}>{currentAssignment.typing.join(' → ')} → Enter (koniec polecenia)</Text>
+   <Text style={{color:'#536b55',fontSize:12,lineHeight:20}}>Wymagany obiekt: {currentAssignment.targetKind.toUpperCase()}. {currentAssignment.verification}</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+    <LabButton label="Rozpocznij zadanie tej lekcji" onPress={()=>{
+     setRunAssignment(true);setAssignmentBaseline(JSON.stringify(drawing.shapes));setAssignmentFeedback('Gotowe: wykonaj ćwiczenie na rysunku. Poprzednich obiektów nie usuwamy.');
+    }}/>
+    <LabButton label="Sprawdź moje ćwiczenie" onPress={checkAssignment}/>
+   </View>
+   {!!assignmentFeedback&&<Text testID="cad-exercise-feedback" style={{fontSize:13,lineHeight:21,color:'#3b6543',fontWeight:'700'}}>{assignmentFeedback}</Text>}
+   <Text style={{color:'#647568',fontSize:12,lineHeight:19}}>Rozdział z funkcją niedostępną w naszej pracowni: wykonaj ją również w oryginalnym Autodesk AutoCAD. Sprawdzenie warsztatu dotyczy geometrii ćwiczebnej, a nie zastępuje zaliczenia w programie producenta.</Text>
+  </View>
 
   {!cleanScreen&&<View testID="cad-ribbon" style={{backgroundColor:'#25303f',borderWidth:1,borderColor:'#56687c',borderRadius:5,overflow:'hidden',marginVertical:5}}>
    <View style={{flexDirection:'row',alignItems:'center',backgroundColor:'#1d2734',minHeight:38}}>
@@ -624,7 +665,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   </View>
   <View style={{height:screenWidth<640?270:385,borderRadius:8,overflow:'hidden',backgroundColor:'#172530'}}
    onLayout={event=>{const {width,height}=event.nativeEvent.layout;setSize({width,height});}}>
-   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting} lineweight={lineweight} transparency={transparency}
+   <CadCanvas size={size} camera={layout?layoutCamera:view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting} lineweight={lineweight} transparency={transparency}
     cursor={pointer} snap={candidate?.label&&cursorPoint?screenPoint(cursorPoint,view,size):undefined}
     prompt={dynamic&&tool!=='select'&&cursorPoint?(candidate?.label?candidate.label+' · ':'')+cadCoordinates(cursorPoint):undefined}
     onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove)}
@@ -637,13 +678,34 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Ponów · Ctrl+Y" disabled={!future.length} onPress={redo}/>
   </View>
   {layout&&<View testID="cad-layout-scale" style={{backgroundColor:'#edf5ec',padding:12,borderRadius:10,gap:10}}>
-   <Text style={labStyles.heading}>Skala rzutni i wydruku — ćwiczenie</Text>
-   <Text style={labStyles.body}>W modelu pozostaw wymiary 1:1. W prawdziwym AutoCAD zaznacz ramkę rzutni na Layout, otwórz Properties (Ctrl+1), ustaw Standard Scale i zablokuj rzutnię. Poniższy kalkulator nie zmienia Twojego rysunku.</Text>
-   <LabGroup label="Porównaj skale">
-    {[20,25,50,100,200].map(scale=><LabButton key={scale} label={'1:'+scale} selected={layoutScale===scale} onPress={()=>setLayoutScale(scale)}/>)}
-   </LabGroup>
+   <Text style={labStyles.heading}>Skala rzutni i wydruku — układ jak w AutoCAD</Text>
+   <Text style={labStyles.body}>Model pozostaje 1:1. Zaznacz rzutnię w Layout, wybierz Standard Scale we właściwościach lub z dolnego paska. W tym warsztacie masz podgląd A3: skala wpływa na wielkość geometrii na papierze, ale nie zmienia współrzędnych modelu.</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:9}}>
+    <LabButton label={'Skala rzutni · 1:'+layoutScale+' ▾'} onPress={()=>setScaleMenuOpen(v=>!v)}/>
+    <LabButton label={'Blokada rzutni · '+(scaleLocked?'Zablokowana':'Odblokowana')} selected={scaleLocked} onPress={()=>setScaleLocked(v=>!v)}/>
+    <LabButton label={'Skala anotacji · 1:'+annotationScale+' ▾'} onPress={()=>{setScaleMenuOpen(true);setStatusInfo('annotation');}}/>
+   </View>
+   {scaleMenuOpen&&<View testID="cad-viewport-scale-menu" style={{padding:13,borderRadius:9,backgroundColor:'#e8eef2',borderWidth:1,borderColor:'#aebfcb',gap:10}}>
+    <Text style={{fontSize:15,fontWeight:'900',color:'#294554'}}>Viewport Scale — lista standardowych skal</Text>
+    <Text style={{fontSize:12,lineHeight:19,color:'#3f5867'}}>W oryginalnym AutoCAD dostępne są też niestandardowe skale poprzez SCALELISTEDIT i pole Custom Scale. Warianty zależą od jednostek szablonu DWG.</Text>
+    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+     {standardScales.map(scale=><LabButton key={scale} label={'1:'+scale} selected={layoutScale===scale} onPress={()=>{
+      setLayoutScale(scale);setAnnotationScale(scale);setScaleMenuOpen(false);tell('Podgląd A3 · skala rzutni 1:'+scale+'.');}}/>)}
+    </View>
+    <Text style={{fontWeight:'900',color:'#294554'}}>Custom Scale — własny mianownik 1:N</Text>
+    <View style={{flexDirection:'row',gap:9,alignItems:'center'}}>
+     <TextInput accessibilityLabel="Własna skala rzutni" value={customScaleInput} onChangeText={setCustomScaleInput}
+      placeholder="np. 75" keyboardType="numeric" style={[labStyles.input,{width:110}]}/>
+     <LabButton label="Zastosuj skalę niestandardową" onPress={()=>{
+      const ratio=Number(customScaleInput.replace(',','.'));
+      if(!Number.isFinite(ratio)||ratio<1||ratio>5000){tell('Podaj mianownik skali 1:N w zakresie 1 do 5000.');return;}
+      setLayoutScale(ratio);setAnnotationScale(ratio);setScaleMenuOpen(false);
+     }}/>
+    </View>
+   </View>}
+   <LabGroup label="Szybkie przykłady skali">{[20,25,50,100,200].map(scale=><LabButton key={scale} label={'1:'+scale} selected={layoutScale===scale} onPress={()=>{setLayoutScale(scale);setAnnotationScale(scale);}}/>)}</LabGroup>
    <Text style={{fontWeight:'800',color:'#315b43'}}>Przy 1:{layoutScale} odcinek 5000 mm w modelu ma {(5000/layoutScale).toLocaleString('pl-PL')} mm na papierze.</Text>
-   <Text style={{fontSize:12,color:'#607a69'}}>SCALE zmienia rozmiar zaznaczonych obiektów. Skala rzutni nie zmienia geometrii. Zoom również jej nie zmienia.</Text>
+   <Text style={{fontSize:12,lineHeight:19,color:'#607a69'}}>SCALE zmienia rozmiar obiektów; Viewport Scale zmienia prezentację w rzutni; Annotation Scale steruje wielkością opisów. W modelu 5000 mm nadal pozostaje 5000 mm. Blokada rzutni jest tu ćwiczeniem ustawienia — nie blokuje pliku DWG producenta.</Text>
   </View>}
   <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Zaznaczone: {selectedVisible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
    {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}</Text>
