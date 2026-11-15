@@ -180,20 +180,21 @@ export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:stri
  });
 
  function drawShape(shape:CadShape){
-  const color=shape.id===selected?'#fff5b7':colors[shape.layer];
+  const color=shape.id===selected?'#fff5b7':colors[shape.layer]||colors[0];
   const [a,b]=shape.points,r=shape.kind==='circle'?distance(a,b)*scale:0;
-  const fillColor=shape.fill==='solid'?'#5a815c':color;
+  const center=screenPoint(a,camera,size),fillColor=shape.fill==='solid'?'#5a815c':color;
   return <React.Fragment key={shape.id}>
-   {shape.fill&&fillSegments(shape,shape.fill==='solid'?3/scale:32,shape.fill==='solid'?0:1).map(([p,q],i)=>
-    <Stroke key={'fill'+i} a={p} b={q} scale={scale} color={fillColor} weight={shape.fill==='solid'?3.4:1}/>)}
-   {shape.kind==='circle'?<View style={{position:'absolute',left:a.x*scale-r,top:(CAD_HEIGHT-a.y)*scale-r,width:2*r,height:2*r,borderRadius:r,borderWidth:2,borderColor:color}}/>:
-    edges(shape).map(([p,q],i)=><Stroke key={i} a={p} b={q} scale={scale} color={color}/>)}
+   {shape.fill&&fillSegments(shape,shape.fill==='solid'?3*camera.unitsPerPixel:32*camera.unitsPerPixel,shape.fill==='solid'?0:1).slice(0,500).map(([p,q],i)=>
+    <Stroke key={'fill'+i} a={p} b={q} camera={camera} size={size} color={fillColor} weight={shape.fill==='solid'?3.4:1}/>)}
+   {shape.kind==='circle'?<View style={{position:'absolute',left:center.x-r,top:center.y-r,width:2*r,height:2*r,borderRadius:r,borderWidth:2,borderColor:color}}/>:
+    edges(shape).map(([p,q],i)=><Stroke key={i} a={p} b={q} camera={camera} size={size} color={color}/>)}
   </React.Fragment>;
  }
 
  return <View style={labStyles.panel} testID="cad-workspace">
-  <Text style={labStyles.heading}>AutoCAD · warsztat rysunku 2D</Text>
-  <Text style={labStyles.body}>Narysuj prostokąt od 100,100 do 600,400. Wybierz HATCH i dotknij jego wnętrza. Pole Model ma zakres 1000 × 600 jednostek.</Text>
+  <Text style={labStyles.heading}>Warsztat AutoCAD 2D — rysuj i wpisuj polecenia</Text>
+  <Text style={labStyles.body}>To interaktywny trening komend, nie licencjonowany Autodesk AutoCAD. Wpisz LINE → Enter → 0,0 → Enter → 4000,0 → Enter → pusty Enter. Zobaczysz narysowaną linię. Możesz również rysować palcem lub myszą.</Text>
+  <Text testID="cad-coordinate-guide" style={[labStyles.eyebrow,{marginBottom:5}]}>Jednostki ćwiczenia: mm · współrzędne X,Y · @X,Y = przesunięcie względem poprzedniego punktu</Text>
   <View style={labStyles.ribbon}>
    <View style={labStyles.row}>{['Home / Narzędzia główne','View / Widok'].map((label,i)=><LabButton key={label} label={label} selected={ribbon===(i?'View':'Home')} onPress={()=>setRibbon(i?'View':'Home')}/>)}</View>
    {ribbon==='Home'?<>
@@ -205,6 +206,7 @@ export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:stri
      <LabButton label="Zaznacz" selected={tool==='select'} onPress={()=>start('select')}/>
      <LabButton label="Przesuń · MOVE" selected={tool==='move'} onPress={()=>start('move')}/>
      <LabButton label="Kopiuj · COPY" selected={tool==='copy'} onPress={()=>start('copy')}/>
+     <LabButton label="Połącz · JOIN" onPress={()=>runCommand('JOIN')}/>
      <LabButton label="Usuń · ERASE" disabled={!target} onPress={erase}/>
      <LabButton label="Cofnij · Ctrl+Z" disabled={!history.length&&!points.length} onPress={undo}/>
     </LabGroup>
@@ -213,6 +215,11 @@ export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:stri
     </LabGroup>
    </>:<LabGroup label="Widoczność i pomiar">
     <LabButton label="Siatka · F7" selected={grid} onPress={()=>runCommand('F7')}/>
+    <LabButton label="Zoom + " onPress={()=>setCamera(c=>({...c,unitsPerPixel:c.unitsPerPixel*.7}))}/>
+    <LabButton label="Zoom −" onPress={()=>setCamera(c=>({...c,unitsPerPixel:c.unitsPerPixel*1.4}))}/>
+    <LabButton label="Dopasuj · ZOOM E" onPress={()=>runCommand('ZOOM E')}/>
+    <LabButton label="Przesuń widok ←" onPress={()=>setCamera(c=>({...c,center:{...c.center,x:c.center.x-150*c.unitsPerPixel}}))}/>
+    <LabButton label="Przesuń widok →" onPress={()=>setCamera(c=>({...c,center:{...c.center,x:c.center.x+150*c.unitsPerPixel}}))}/>
     <LabButton label="Zmierz zaznaczony obiekt" disabled={!target} onPress={()=>runCommand('DI')}/>
    </LabGroup>}
   </View>
@@ -220,9 +227,13 @@ export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:stri
    <LabButton label="Linie ukośne" selected={fill==='hatch'} onPress={()=>setFill('hatch')}/>
    <LabButton label="Pełne · SOLID" selected={fill==='solid'} onPress={()=>setFill('solid')}/>
   </LabGroup>}
-  <Pressable testID="cad-canvas" accessibilityLabel="Pole rysunku Model" onLayout={e=>setWidth(e.nativeEvent.layout.width)}
+  <Pressable testID="cad-canvas" accessibilityLabel="Pole rysunku Model" onLayout={event=>{
+   const next=event.nativeEvent.layout.width;
+   if(!next||Math.abs(next-width)<1)return;
+   setCamera(old=>({...old,unitsPerPixel:old.unitsPerPixel*width/next}));
+   setWidth(next);
+  }}
    onPress={event=>{
-    if(scale<=0)return;
     let {locationX:x,locationY:y}=event.nativeEvent;
     if(Platform.OS==='web'){
      const click=event.nativeEvent as unknown as MouseEvent;
@@ -230,32 +241,42 @@ export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:stri
      const rect=(event.currentTarget as unknown as HTMLElement).getBoundingClientRect();
      x=click.clientX-rect.left;y=click.clientY-rect.top;
     }
-    if(Number.isFinite(x)&&Number.isFinite(y))place({x:Math.round(x/scale),y:Math.round(CAD_HEIGHT-y/scale)},true);
+    if(!Number.isFinite(x)||!Number.isFinite(y))return;
+    const world=worldPoint({x,y},camera,size);
+    place({x:Math.round(world.x),y:Math.round(world.y)},true);
    }}
-   style={{aspectRatio:CAD_WIDTH/CAD_HEIGHT,borderRadius:8,overflow:'hidden',backgroundColor:'#13262d',position:'relative'}}>
-   {scale>0&&<View pointerEvents="none" style={{position:'absolute',left:0,right:0,top:0,bottom:0}}>
-    {grid&&Array.from({length:10},(_,i)=><View key={'x'+i} style={{position:'absolute',left:i*100*scale,top:0,bottom:0,width:1,backgroundColor:'#304850'}}/>)}
-    {grid&&Array.from({length:6},(_,i)=><View key={'y'+i} style={{position:'absolute',top:i*100*scale,left:0,right:0,height:1,backgroundColor:'#304850'}}/>)}
+   style={{aspectRatio:CAD_WIDTH/CAD_HEIGHT,borderRadius:8,overflow:'hidden',backgroundColor:'#13262d',position:'relative',borderColor:'#5d7880',borderWidth:1}}>
+   <View pointerEvents="none" style={{position:'absolute',left:0,right:0,top:0,bottom:0}}>
+    {grid&&gridXs.map(x=><View key={'x'+x} style={{position:'absolute',left:screenPoint({x,y:0},camera,size).x,top:0,bottom:0,width:1,backgroundColor:'#304850'}}/>)}
+    {grid&&gridYs.map(y=><View key={'y'+y} style={{position:'absolute',top:screenPoint({x:0,y},camera,size).y,left:0,right:0,height:1,backgroundColor:'#304850'}}/>)}
     {shapes.map(drawShape)}
-    {points.map((p,i)=><React.Fragment key={i}>
-     {i>0&&<Stroke a={points[i-1]} b={p} scale={scale} color="#f6cb87"/>}
-     <View style={{position:'absolute',left:p.x*scale-3,top:(CAD_HEIGHT-p.y)*scale-3,width:6,height:6,borderRadius:3,backgroundColor:'#f6cb87'}}/>
-    </React.Fragment>)}
-    <Text style={{position:'absolute',bottom:5,left:7,color:'#c3d6d8',fontSize:10}}>Y ↑  0,0 → X</Text>
-   </View>}
+    {points.map((p,i)=>{
+     const pixel=screenPoint(p,camera,size);
+     return <React.Fragment key={i}>
+      {i>0&&<Stroke a={points[i-1]} b={p} camera={camera} size={size} color="#f6cb87"/>}
+      <View style={{position:'absolute',left:pixel.x-3,top:pixel.y-3,width:6,height:6,borderRadius:3,backgroundColor:'#f6cb87'}}/>
+     </React.Fragment>;
+    })}
+    <Text style={{position:'absolute',bottom:5,left:7,color:'#c3d6d8',fontSize:10}}>Model 2D · mm · X → · Y ↑</Text>
+   </View>
   </Pressable>
+  <View style={[labStyles.row,{flexWrap:'wrap'}]}>
+   <LabButton label="Zoom +" onPress={()=>setCamera(c=>({...c,unitsPerPixel:c.unitsPerPixel*.7}))}/>
+   <LabButton label="Zoom −" onPress={()=>setCamera(c=>({...c,unitsPerPixel:c.unitsPerPixel*1.4}))}/>
+   <LabButton label="Pokaż cały rysunek" onPress={()=>runCommand('ZOOM E')}/>
+  </View>
   <Text style={labStyles.eyebrow} testID="cad-summary">Model · Obiekty: {shapes.length} · Wypełnienia: {shapes.filter(s=>s.fill).length}{selected!==undefined?' · Wybrany: '+selected:''}</Text>
   <Text style={labStyles.body}>{prompt}</Text>
   <View style={labStyles.row}>
    <TextInput testID="cad-command" accessibilityLabel="Wiersz poleceń AutoCAD" style={[labStyles.input,{flex:1,minWidth:125}]}
-    value={input} onChangeText={setInput} onSubmitEditing={()=>runCommand(input)} autoCorrect={false} autoCapitalize="none" placeholder="LINE, 100,80 albo @200,0"/>
+    value={input} onChangeText={setInput} onSubmitEditing={()=>runCommand(input)} autoCorrect={false} autoCapitalize="none" placeholder="LINE, 0,0, 4000,0, JOIN, MOVE..."/>
    <LabButton label="Enter ↵" onPress={()=>runCommand(input)}/>
   </View>
   <View style={labStyles.row}>
    <LabButton label="OSNAP · F3" selected={snap} onPress={()=>runCommand('F3')}/>
    <LabButton label="ORTHO · F8" selected={ortho} onPress={()=>runCommand('F8')}/>
    {(tool==='line'||tool==='poly')&&<LabButton label="Zakończ rysowanie" disabled={points.length<2} onPress={()=>finish()}/>}
-   {tool==='poly'&&<LabButton label="Zamknij obrys" disabled={points.length<3} onPress={()=>finish(true)}/>}
+   {(tool==='poly'||tool==='line')&&<LabButton label="Zamknij obrys" disabled={points.length<3} onPress={()=>finish(true)}/>}
    {tool!=='select'&&<LabButton label="Anuluj · Esc" onPress={()=>start('select')}/>}
   </View>
   <Text accessibilityLiveRegion="polite" style={labStyles.status}>{message}</Text>
