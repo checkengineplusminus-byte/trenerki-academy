@@ -1,38 +1,20 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {Pressable,Text,TextInput,View,useWindowDimensions} from 'react-native';
 
-type Group='region'|'month'|'category';
-type Metric='revenue'|'quantity'|'count';
+import {excelVisualNumber,excelVisualValid,excelVisualTotal,excelVisualAggregate,sampleVisualRows,
+ type ExcelVisualGroup,type ExcelVisualMetric,type ExcelVisualRow,type ExcelVisualSummary} from './excelVisualMath';
+type Group=ExcelVisualGroup;
+type Metric=ExcelVisualMetric;
 type ChartKind='columns'|'bars';
-type SourceRow={id:string;product:string;category:string;region:string;month:string;qty:string;price:string};
-type SummaryRow={key:string;value:number;count:number};
-const initial:SourceRow[]=[
- {id:'01',product:'Farba',category:'Materiały',region:'Północ',month:'Styczeń',qty:'2',price:'40'},
- {id:'02',product:'Pędzle',category:'Materiały',region:'Północ',month:'Luty',qty:'3',price:'20'},
- {id:'03',product:'Szkło',category:'Materiały',region:'Południe',month:'Luty',qty:'4',price:'75'},
- {id:'04',product:'Transport',category:'Usługi',region:'Centrum',month:'Marzec',qty:'1',price:'120'},
- {id:'05',product:'Kleje',category:'Materiały',region:'Południe',month:'Marzec',qty:'6',price:'25'},
- {id:'06',product:'Montaż',category:'Usługi',region:'Centrum',month:'Styczeń',qty:'2',price:'60'}
-];
+type SourceRow=ExcelVisualRow;
+type SummaryRow=ExcelVisualSummary;
+const initial=sampleVisualRows;
 const ink='#1b3e2b',muted='#486958',edge='#bed4c4';
-const number=(s:string)=>/^\d+(?:[,.]\d{1,2})?$/.test(s.trim())?Number(s.replace(',','.')):NaN;
+const number=excelVisualNumber;
 const format=(n:number)=>n.toLocaleString('pl-PL',{minimumFractionDigits:0,maximumFractionDigits:2});
 const metricLabel:{[k in Metric]:string}={revenue:'Wartość sprzedaży (zł)',quantity:'Ilość (szt.)',count:'Liczba rekordów'};
 const groupLabel:{[k in Group]:string}={region:'Region',month:'Miesiąc',category:'Kategoria'};
-function aggregate(rows:SourceRow[],group:Group,metric:Metric):SummaryRow[]{
- const map=new Map<string,SummaryRow>();
- for(const row of rows){
-  const q=number(row.qty),p=number(row.price);
-  if(!Number.isFinite(q)||!Number.isFinite(p)||q<0||p<0)continue;
-  const key=row[group];
-  const entry=map.get(key)||{key,value:0,count:0};
-  entry.value+=metric==='revenue'?q*p:metric==='quantity'?q:1;
-  entry.count++;
-  map.set(key,entry);
- }
- const priority=group==='month'?['Styczeń','Luty','Marzec']:group==='region'?['Północ','Centrum','Południe']:['Materiały','Usługi'];
- return [...map.values()].sort((a,b)=>priority.indexOf(a.key)-priority.indexOf(b.key));
-}
+const aggregate=excelVisualAggregate;
 const btn=(active=false)=>({backgroundColor:active?'#d0ebd5':'white',borderColor:active?'#508f66':edge,
  borderWidth:1,borderRadius:9,paddingHorizontal:10,paddingVertical:9,minHeight:43,justifyContent:'center' as const});
 
@@ -50,13 +32,13 @@ export default function ExcelVisualPractices({lessonNo}:{lessonNo:number}){
  const [selected,setSelected]=useState('');
  const [answer,setAnswer]=useState(''),[feedback,setFeedback]=useState('');
  const [showSolution,setShowSolution]=useState(false);
- const sourceValid=rows.every(r=>Number.isFinite(number(r.qty))&&Number.isFinite(number(r.price))&&number(r.qty)>=0&&number(r.price)>=0);
+ const sourceValid=excelVisualValid(rows);
  const displayed=useMemo(()=>{
   const filtered=rows.filter(r=>filter==='Wszystkie'||r.category===filter);
   return [...filtered].sort((a,b)=>sort==='original'?a.id.localeCompare(b.id):sort==='high'?
    number(b.qty)*number(b.price)-number(a.qty)*number(a.price):number(a.qty)*number(a.price)-number(b.qty)*number(b.price));
  },[rows,filter,sort]);
- const total=displayed.reduce((v,r)=>v+(Number.isFinite(number(r.qty)*number(r.price))?number(r.qty)*number(r.price):0),0);
+ const total=excelVisualTotal(displayed);
  const currentGroups=aggregate(displayed,group,metric);
  const pivotMode=lessonNo===25;
  const chartRows=pivotMode?(pivot||[]):currentGroups;
