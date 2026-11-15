@@ -20,6 +20,17 @@ test('ROTATE negative angle and group rotate around a nonzero base point',()=>{
  almost(updated[0].points[0].x,20);almost(updated[0].points[0].y,10);
  almost(updated[1].points[1].x,50);almost(updated[1].points[1].y,0);
 });
+test('ROTATE 45° converts rectangle to closed rotated polygon rather than axis-aligned bounding box',()=>{
+ const rect={id:5,kind:'rect',layer:0,points:[p(0,0),p(100,50)]};
+ const rotated=rotateCadSelection([rect],[5],p(0,0),45)[0];
+ assert.equal(rotated.kind,'poly');
+ assert.equal(rotated.closed,true);
+ assert.equal(rotated.points.length,4);
+ almost(rotated.points[1].x,100/Math.sqrt(2));
+ almost(rotated.points[1].y,100/Math.sqrt(2));
+ almost(rotated.points[2].x,(100-50)/Math.sqrt(2));
+ almost(rotated.points[2].y,(100+50)/Math.sqrt(2));
+});
 test('MIRROR uses two points as its reflection axis',()=>{
  assert.deepEqual(mirrorCadPoint(p(10,20),p(0,0),p(0,100)),p(-10,20));
  assert.deepEqual(mirrorCadPoint(p(10,20),p(0,0),p(100,0)),p(10,-20));
