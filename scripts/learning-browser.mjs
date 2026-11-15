@@ -295,10 +295,10 @@ async function verifyExplorer(page,mobile){
  await simulation.getByText('Utworzono Pulpit 3.').waitFor();
  console.log('✓ '+(mobile?'mobile':'desktop')+' Windows: five persona flows (office, construction, accounting, IT support, touch), no real-OS hotkeys');
  // Capture the actual course design without a mock foreground window or cookie dialog obscuring the wallpaper.
- await simulation.getByRole('button',{name:'Symuluj Win+D'}).click();
+ await simulation.getByRole('button',{name:'Symuluj Win+D',exact:true}).click();
  await simulation.screenshot({path:'/tmp/trenerki-windows-lab-'+(mobile?'mobile':'desktop')+'.png'});
  await mission.screenshot({path:'/tmp/trenerki-windows-mission-'+(mobile?'mobile':'desktop')+'.png'});
- await simulation.getByRole('button',{name:'Symuluj Win+D'}).click();
+ await simulation.getByRole('button',{name:'Symuluj Win+D',exact:true}).click();
  // Keep the advanced file-operations lab available, but out of the way by default.
  await simulation.getByRole('button',{name:'Otwórz dodatkową pracownię Eksploratora plików ▾'}).click();
  const lab=page.getByTestId('explorer-workspace');
