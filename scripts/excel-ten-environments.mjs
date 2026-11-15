@@ -31,7 +31,7 @@ const north=rows.filter(x=>x.region==='Północ');
 const count=rows.length;
 const materialImpact=-Math.round(rows.filter(x=>x.category==='Materiały').reduce((t,r)=>t+r.quantity*r.unitCost*.15,0)*100)/100;
 const answerMoney=n=>String(n).replace('.',',');
-const report={suite:'TRENERKI Excel: 10 środowisk x 2 rundy, IT + krytyk + sprzedawca',date:'2026-11-15',rounds:[],scope:'30 lessons + 6 functional analytical modes; synthetic user, not paid real users'};
+const report={suite:'TRENERKI Excel: 10 środowisk x 2 rundy, IT + krytyk + sprzedawca',date:'2026-11-15',rounds:[],scope:'30 graded lessons + 120 deep texts + 115 glossary terms + 12 ungraded bonus chapters; synthetic user, not paid real users'};
 function material(no){
  return {sections:[{heading:'Zadanie ćwiczebne',text:'Użyj jedynie fikcyjnych danych i wykonaj samodzielne działania w arkuszu.'}],
   illustration:no%2?'excel-addresses':'excel-interface'};
@@ -202,6 +202,48 @@ async function persona(browser,p,round){
   await page.goto(base+'/nauka?course=excel-skroty&lesson='+(p.lesson+1),{waitUntil:'domcontentloaded'});
   const region=page.getByTestId('excel-mission-'+p.lesson);
   await region.waitFor({timeout:18000});
+  const deepLesson=page.getByTestId('excel-deep-lesson-'+p.lesson);
+  await deepLesson.waitFor();
+  await deepLesson.getByText('Zrozum temat, zanim zaczniesz liczyć').waitFor();
+  for(const title of ['Zrozum bez żargonu','Wyobraź sobie taką sytuację','Przećwicz na konkretnych danych','Gdzie najłatwiej o błąd'])
+   await deepLesson.getByText(title,{exact:true}).waitFor();
+  const library=page.getByTestId('excel-encyclopedia');
+  await library.waitFor();
+  await library.getByText(/115 pojęć i 12 rozdziałów dodatkowych/).waitFor();
+  if(p.id==='student'){
+   await library.getByTestId('excel-history').waitFor();
+   await library.getByText('VisiCalc',{exact:true}).waitFor();
+   await library.getByText('Excel na Macintosh',{exact:true}).waitFor();
+   await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
+   const glossary=library.getByTestId('excel-glossary');
+   await glossary.waitFor();
+   await glossary.getByRole('textbox',{name:'Szukaj w słowniku Excel'}).fill('komórka');
+   await glossary.getByRole('button',{name:'Wyjaśnij pojęcie Komórka',exact:true}).click();
+   await glossary.getByTestId('excel-glossary-definition').getByText('Komórka',{exact:true}).waitFor();
+   await library.getByRole('button',{name:'Biblioteka — 12 rozdziałów'}).click();
+   await library.getByRole('button',{name:'Otwórz rozdział dodatkowy Twoje pierwsze 15 minut: nie musisz nic umieć'}).click();
+   const bonus=library.getByTestId('excel-bonus-chapter-detail');
+   const answer=bonus.getByRole('textbox',{name:'Odpowiedź w dodatkowym rozdziale Excel'});
+   await answer.fill('900');await bonus.getByRole('button',{name:'Sprawdź dodatkowy rozdział'}).click();
+   await bonus.getByTestId('excel-bonus-wrong').waitFor();
+   await answer.fill('450');await bonus.getByRole('button',{name:'Sprawdź dodatkowy rozdział'}).click();
+   await bonus.getByTestId('excel-bonus-correct').waitFor();
+   await library.getByText('Samokontrola tej sesji: 1/12').waitFor();
+  }
+  if(p.id==='it'){
+   await library.getByRole('button',{name:'Biblioteka Excel: historia, wstęp, słownik i dodatkowe rozdziały'}).click();
+   await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
+   const search=library.getByRole('textbox',{name:'Szukaj w słowniku Excel'});
+   await search.fill('Power Query');
+   await library.getByRole('button',{name:'Wyjaśnij pojęcie Power Query'}).click();
+   await library.getByTestId('excel-glossary-definition').getByText(/Narzędzie importu i przekształcania/).waitFor();
+   await library.getByRole('button',{name:'Biblioteka — 12 rozdziałów'}).click();
+   await library.getByRole('button',{name:'Otwórz rozdział dodatkowy Power Pivot i DAX: kiedy zwykły arkusz przestaje wystarczać'}).click();
+   const bonus=library.getByTestId('excel-bonus-chapter-detail');
+   await bonus.getByRole('textbox',{name:'Odpowiedź w dodatkowym rozdziale Excel'}).fill('tak');
+   await bonus.getByRole('button',{name:'Sprawdź dodatkowy rozdział'}).click();
+   await bonus.getByTestId('excel-bonus-correct').waitFor();
+  }
   await region.getByText(m.goal,{exact:true}).waitFor();
   await region.getByText(m.role,{exact:true}).waitFor();
   const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
