@@ -196,6 +196,24 @@ try{
  await tab(f.page).waitFor();
  await tab(f.page).click();
  await f.page.getByRole('heading',{name:'Rozpoznaj 36 dokumentów z jednego miesiąca'}).waitFor();
+ await pass('Raport kontrolny okresu działa w przeglądarce, ale niczego nie wysyła',async()=>{
+  const previous=f.model().version;
+  await f.page.locator('button[data-action="tab"][data-id="report"]').click();
+  await f.page.getByRole('heading',{name:'Jeden miesiąc: kontrola przed KSeF / JPK / UPO'}).waitFor();
+  assert.match(await f.page.locator('body').innerText(),/KSeF/);
+  assert.match(await f.page.locator('body').innerText(),/NIE WYDANO/);
+  const pending=f.page.waitForEvent('download');
+  await f.page.locator('button[data-action="tax-close-export"]').click();
+  const stream=await (await pending).createReadStream(),parts=[];
+  for await(const part of stream)parts.push(part);
+  const html=Buffer.concat(parts).toString('utf8');
+  assert.match(html,/BRAK WYSYŁKI URZĘDOWEJ/);
+  assert.match(html,/KSeF: NIE WYSŁANO/);
+  assert.match(html,/UPO: NIE WYDANO/);
+  assert.equal(f.model().version,previous);
+  await tab(f.page).click();
+  assert.deepEqual(f.errors,[]);
+ });
  await pass('Pierwszy etap udostępnia 36 fikcyjnych dokumentów',async()=>{
   assert.equal(await f.page.locator('#sim-doc option').count(),36);
   assert.equal(await f.page.locator('#sim-journal-doc option').count(),36);
