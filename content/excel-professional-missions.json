@@ -23,7 +23,7 @@
       "mistake": "Nie myl nazwy pliku, arkusza i adresu komórki.",
       "realExcel": "W Excelu otwórz pusty skoroszyt, kliknij D2 i zobacz adres obok paska formuły.",
       "track": "fundamenty",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 1,
@@ -44,7 +44,7 @@
       "mistake": "Nie twórz trzech osobnych plików, jeśli zadanie wymaga jednego skoroszytu.",
       "realExcel": "W prawdziwym Excelu dodaj arkusze przez plus na pasku kart i zapisz skoroszyt.",
       "track": "fundamenty",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 2,
@@ -65,7 +65,7 @@
       "mistake": "Nazwy wierszy w Excelu są liczbami, natomiast kolumny mają litery.",
       "realExcel": "Na swoim Excelu wpisz E3 w polu Nazwa i naciśnij Enter.",
       "track": "fundamenty",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 3,
@@ -86,7 +86,7 @@
       "mistake": "Format liczbowy może usunąć zera wiodące.",
       "realExcel": "W Excelu ustaw format Tekst lub wpisz apostrof przed kodem.",
       "track": "fundamenty",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 4,
@@ -191,7 +191,7 @@
       "mistake": "Nie reklamuj eksportu CSV jako pełnego zastępstwa XLSX.",
       "realExcel": "Na swoim komputerze zapisz kopię jako XLSX i otwórz ponownie.",
       "track": "fundamenty",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 9,
@@ -233,7 +233,7 @@
       "mistake": "Ctrl+End nie oznacza końca wszystkich możliwych komórek.",
       "realExcel": "Na PC przećwicz Ctrl+Home w arkuszu bez włączonego pola edycji.",
       "track": "praktyka",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 11,
@@ -360,7 +360,7 @@
       "mistake": "Zapis bez nazwy wersji sprzyja wysłaniu złego raportu.",
       "realExcel": "W Excelu użyj Zapisz jako i sprawdź obszar wydruku w podglądzie.",
       "track": "praktyka",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 17,
@@ -526,9 +526,9 @@
       "hint": "21 × 55.",
       "explanation": "Dokładna kwota FV-014 to 1155 zł; wyszukiwanie po kwocie nie identyfikuje faktury.",
       "mistake": "Brak trafienia ≠ zero wartości; duplikat ≠ unikatowy rekord.",
-      "realExcel": "Na Microsoft 365 użyj X.WYSZUKAJ i własnej obsługi braku dopasowania.",
+      "realExcel": "W Excelu dla Microsoft 365 / Excel 2021 lub nowszego użyj funkcji X.WYSZUKAJ z dopasowaniem dokładnym. Excel 2016 i 2019 nie obsługują tej funkcji — tam ćwicz alternatywnie WYSZUKAJ.PIONOWO lub INDEKS + PODAJ.POZYCJĘ. Sprawdź także wynik dla brakującego ID.",
       "track": "ekspert",
-      "reference": "https://support.microsoft.com/pl-pl/excel/lookup-and-reference-functions-reference"
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
     },
     {
       "lesson_no": 25,
@@ -592,7 +592,7 @@
       "mistake": "Ukrycie arkusza nie zastępuje uprawnień na pliku.",
       "realExcel": "Na PC sprawdź uprawnienia SharePoint/OneDrive i osobne wersje raportu testowego.",
       "track": "ekspert",
-      "reference": "https://support.microsoft.com/pl-pl/excel/get-started"
+      "reference": "https://support.microsoft.com/pl-pl/excel/"
     },
     {
       "lesson_no": 28,
