@@ -13,6 +13,8 @@ on:
       - 'scripts/windows-eight-environments.mjs'
       - 'src/HandsOnLab.tsx'
       - 'app/nauka.tsx'
+      - 'app/_layout.tsx'
+      - 'src/support/LearningSupportBar.tsx'
       - '.github/workflows/windows-quality.yml'
   workflow_dispatch:
 jobs:
