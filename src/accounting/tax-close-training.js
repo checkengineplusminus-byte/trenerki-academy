@@ -65,6 +65,40 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const bankLedgerCents=total(periodPostings,j=>total(j.lines,l=>l.account==='130'?l.debit-l.credit:0));
  const bankBalanced=bank.length>0&&Number.isSafeInteger(bankStatementCents)&&
   Number.isSafeInteger(bankLedgerCents)&&bankStatementCents===bankLedgerCents;
+ // The aggregate on account 130 can balance even when a CSV row was never posted:
+ // a compensating manual journal or two wrong bank postings could hide the gap.
+ // Audit every fictional CSV row against exactly one effective, dated source journal.
+ const bankCoverageIssues=[],bankIds=new Set();
+ if(period){
+  for(const row of bank){
+   const id=typeof row?.id==='string'?row.id:'';
+   if(!id||bankIds.has(id)||!Number.isSafeInteger(row.amount_cents)||
+      row.amount_cents===0||Math.abs(row.amount_cents)>1000000000000){
+    bankCoverageIssues.push({code:'invalid_or_duplicate_bank_row',invoice:id||'(brak ID)'});
+    continue;
+   }
+   bankIds.add(id);
+   const sourceEntries=posted.filter(j=>j.source_type==='bank'&&j.source_id===id);
+   if(sourceEntries.length!==1){
+    bankCoverageIssues.push({code:'bank_row_missing_or_duplicate_posting',invoice:id});
+    continue;
+   }
+   const entry=sourceEntries[0];
+   const bankLines=Array.isArray(entry.lines)?entry.lines.filter(l=>l.account==='130'):[];
+   if(monthOf(entry.date)!==period||bankLines.length!==1||
+      bankLines[0].debit!==Math.max(0,row.amount_cents)||
+      bankLines[0].credit!==Math.max(0,-row.amount_cents)){
+    bankCoverageIssues.push({code:'bank_source_amount_or_period_mismatch',invoice:id});
+   }
+  }
+  for(const entry of periodPostings){
+   if(Array.isArray(entry.lines)&&entry.lines.some(l=>l.account==='130')&&
+      (entry.source_type!=='bank'||!bankIds.has(entry.source_id))){
+    bankCoverageIssues.push({code:'bank_ledger_entry_without_period_csv',invoice:entry.id||'(brak ID)'});
+   }
+  }
+ }
+ const bankCovered=bank.length>0&&bankCoverageIssues.length===0&&bankIds.size===bank.length;
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -72,6 +106,8 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   {key:'invoice_posting',label:'Jedno poprawne księgowanie każdej faktury',passed:issued.length>0&&correctPostings===issued.length&&issues.length===0,detail:correctPostings+'/'+issued.length+'; sprawdź wyjątki dotyczące majątku'},
   {key:'ledger',label:'Wn = Ma na każdym dekrecie miesiąca',passed:ledgerBalanced,detail:periodPostings.length+' aktywnych dekretów'},
   {key:'bank',label:'Bank z wyciągu = konto 130 w miesiącu',passed:bankBalanced,detail:'Porównanie kwot z fikcyjnego CSV oraz dziennika'},
+  {key:'bank_sources',label:'Każdy wiersz CSV ma jeden zgodny dekret źródłowy',passed:bankCovered,
+   detail:bank.length+' wierszy okresu; '+bankCoverageIssues.length+' rozbieżności (w tym daty, ID, kwoty i nieopisane księgowania 130)'},
   {key:'receivables',label:'Rozrachunki z płatnościami',passed:steps.bank==='passed_training',detail:'Wymagane prawidłowe konta i przypisanie obu faktur'},
   {key:'payroll_assets',label:'Kadry, płace i majątek w tym samym okresie',passed:steps.payroll==='passed_training'&&steps.asset==='passed_training',detail:'Wszystkie moduły muszą mieć własne zapisy; sam bilans nie wystarcza'}
  ];
@@ -80,7 +116,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   period:period||null,source_count:issued.length,
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues,review_notes,
+  checks,issues:[...issues,...bankCoverageIssues],review_notes,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},

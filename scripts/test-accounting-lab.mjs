@@ -1367,3 +1367,44 @@ test('Ścieżka firmy nie zalicza zakupionego środka trwałego z błędnym kont
  j.lines[0].account='400';
  assert.equal(auditCompanyLifecycle(s,null).steps.find(x=>x.key==='invoices').status,'needs_work');
 });
+
+test('Kontrola CSV: każdy wyciąg ma własny aktywny dekret bankowy (bez danych prawdziwych)',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ const before=JSON.stringify(s),r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='bank').passed,true);
+ assert.equal(r.checks.find(x=>x.key==='bank_sources').passed,true);
+ assert.equal(r.issues.filter(x=>x.code.startsWith('bank_')).length,0);
+ assert.equal(r.ready_for_training_review,false,'Kadry i majątek nadal wymagają przebiegu');
+ assert.equal(JSON.stringify(s),before);
+});
+test('Kontrola CSV: ręczny dekret 130 nie maskuje braku księgowania wiersza wyciągu',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ s.bank.push({id:'EXTRA-CSV',date:'2026-11-18',amount_cents:500});
+ s.journals.push({id:'MANUAL-MASK',date:'2026-11-18',status:'posted',source_type:'manual',source_id:'',
+  lines:[{account:'130',debit:500,credit:0},{account:'800',debit:0,credit:500}]});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='bank').passed,true,'Zwykła suma maskuje brak');
+ assert.equal(r.checks.find(x=>x.key==='bank_sources').passed,false);
+ assert.ok(r.issues.some(x=>x.code==='bank_row_missing_or_duplicate_posting'&&x.invoice==='EXTRA-CSV'));
+ assert.ok(r.issues.some(x=>x.code==='bank_ledger_entry_without_period_csv'&&x.invoice==='MANUAL-MASK'));
+ assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,true,
+  'Błędy CSV nie są mylone z kontrolą samych faktur');
+ assert.equal(r.ready_for_training_review,false);
+});
+test('Kontrola CSV: błędna data, duplikat, kwota i storno nie przechodzą',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ const wrongDate=structuredClone(s);wrongDate.journals.find(j=>j.id==='jb1').date='2026-12-01';
+ assert.equal(taxCloseTrainingAudit(wrongDate).checks.find(c=>c.key==='bank_sources').passed,false);
+ const wrongAmount=structuredClone(s);
+ wrongAmount.journals.find(j=>j.id==='jb1').lines[0].debit+=1;
+ wrongAmount.journals.find(j=>j.id==='jb1').lines[1].credit+=1;
+ assert.ok(taxCloseTrainingAudit(wrongAmount).issues.some(x=>x.code==='bank_source_amount_or_period_mismatch'));
+ const duplicate=structuredClone(s);duplicate.journals.push({...duplicate.journals.find(j=>j.id==='jb1'),id:'jb1-again'});
+ assert.ok(taxCloseTrainingAudit(duplicate).issues.some(x=>x.code==='bank_row_missing_or_duplicate_posting'));
+ const reversed=structuredClone(s),orig=reversed.journals.find(j=>j.id==='jb1');
+ reversed.journals.push({...reverseJournal(orig,'2026-11-25'),id:'REV-JB1'});
+ assert.equal(taxCloseTrainingAudit(reversed).checks.find(c=>c.key==='bank_sources').passed,false);
+});
