@@ -281,6 +281,10 @@ export default function Learning(){
   {!!lesson&&<>
    {index===0&&!hasSoftwareOrientation(slug)&&!isLogisticsCourse(slug)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
    {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
+   {slug==='windows-skroty'&&<View onLayout={event=>{workshopYRef.current=event.nativeEvent.layout.y;}}>
+    <KeyboardLesson key={slug+'-'+module} slug={slug} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise}
+      alreadyVerified={passed.keyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
+   </View>}
    {index>=0&&index<=2&&hasSoftwareMenuLab(slug)&&<SoftwareMenuLab slug={slug}/>}
     {hasCampaignLab(slug)&&index>=0&&[0,2,4,5,7,10,11].includes(index)&&<CampaignWorkshop slug={slug} lessonNo={module}/>}
    {slug!=='ciesla-przygotowanie-czeladnicze'&&(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
@@ -325,10 +329,10 @@ export default function Learning(){
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
-      <View onLayout={event=>{workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;}}>
+      {slug!=='windows-skroty'&&<View onLayout={event=>{workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;}}>
        <KeyboardLesson key={slug+'-'+module} slug={slug} shortcuts={lesson.material?.shortcuts} tips={lesson.material?.quickTips} exercise={lesson.material?.exercise}
         alreadyVerified={passed.keyboard} onAttempt={(index,correct,activeCombo,selectedCombo)=>recordAttempt('keyboard',index,correct,activeCombo,selectedCombo)}/>
-      </View>
+      </View>}
      </>
    }
    </View>
