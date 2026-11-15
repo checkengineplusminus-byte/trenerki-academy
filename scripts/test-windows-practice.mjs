@@ -64,3 +64,14 @@ test('Safety guard: no secret capture, no claims of verified real-PC actions',()
  assert.match(lab,/nie jest wysyłana ani zapisywana jako zaliczenie/);
  assert(!missions.some(m=>/wpisz (swoje|prawdziwe) hasło/i.test(m.real_pc)));
 });
+test('A person who has never touched Windows gets a six-step verified path, not an unearned Next button',()=>{
+ assert.match(desktop,/Nigdy nie korzystałem z komputera/);
+ assert.match(desktop,/Rozpocznij naukę od zera/);
+ assert.match(desktop,/Sprawdź wykonanie kroku/);
+ assert.match(desktop,/function verifyBeginner\(/);
+ assert.match(desktop,/lastReopened===fileName/);
+ assert.match(desktop,/savedNotes\[fileName\]===note/);
+ assert.match(desktop,/KROK \{beginnerStep\+1\} Z \{beginnerTasks\.length\}/);
+ assert.match(renderer,/WindowsPracticeMission/);
+ assert.match(lab,/Pierwszy raz w życiu przy komputerze/);
+});
