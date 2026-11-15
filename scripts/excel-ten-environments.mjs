@@ -75,14 +75,20 @@ async function checkAdvanced(page,id){
  assert.equal(csv,'/academy/assets/excel-practice-sales.csv');
  await lab.getByTestId('excel-advanced-total').filter({hasText:'28 245,00 zł'}).waitFor();
  if(id==='accounting'){
-  await enterAndCheck(lab,'123',false);await enterAndCheck(lab,String(northMaterial.length));
+  // The first screen in lesson 16 must now be the same SUMIFS operation as its paid assignment.
+  await enterAndCheck(lab,'123',false);await enterAndCheck(lab,answerMoney(sum(northMaterial)));
+  await lab.getByRole('button',{name:'Filtr danych',exact:true}).click();
+  await enterAndCheck(lab,String(northMaterial.length));
   await lab.getByRole('button',{name:'SUMA.WARUNKÓW',exact:true}).click();
-  await enterAndCheck(lab,answerMoney(sum(northMaterial)));
   await lab.getByRole('textbox',{name:'Nowa ilość w FV-001'}).fill('13');
   await lab.getByRole('button',{name:'Zastosuj zmianę ilości FV-001'}).click();
   await lab.getByTestId('excel-advanced-total').filter({hasText:'28 330,00 zł'}).waitFor();
   await enterAndCheck(lab,answerMoney(sum(northMaterial)+85));
  }else if(id==='finance'){
+  // Expert model must first explain and reconcile margin instead of just revenue.
+  await lab.getByTestId('excel-advanced-model').waitFor();
+  await enterAndCheck(lab,'28245',false);
+  await enterAndCheck(lab,'9109');
   await lab.getByRole('button',{name:'Scenariusze',exact:true}).click();
   await enterAndCheck(lab,answerMoney(materialImpact));
   await lab.getByRole('textbox',{name:'Wzrost kosztu materiałów w procentach'}).fill('1000');
@@ -92,13 +98,23 @@ async function checkAdvanced(page,id){
   await enterAndCheck(lab,'1155');
   await lab.getByRole('textbox',{name:'Numer faktury do dokładnego wyszukiwania'}).fill('FV-999');
   await enterAndCheck(lab,'BRAK');
+  await lab.getByRole('button',{name:'Wykres danych',exact:true}).click();
+  await lab.getByTestId('excel-advanced-chart').waitFor();
+  await enterAndCheck(lab,'Centrum');
+  await lab.getByRole('button',{name:'X.WYSZUKAJ',exact:true}).click();
+  await enterAndCheck(lab,'BRAK');
  }else if(id==='director'){
   await lab.getByRole('button',{name:'Odśwież tabelę przestawną'}).click();
-  await enterAndCheck(lab,String(sum(north)));
+  await lab.getByRole('button',{name:'Wybierz grupę Razem'}).waitFor();
+  await enterAndCheck(lab,String(rows.reduce((n,x)=>n+x.quantity*x.netPrice,0)));
   await lab.getByRole('textbox',{name:'Nowa ilość w FV-001'}).fill('13');
   await lab.getByRole('button',{name:'Zastosuj zmianę ilości FV-001'}).click();
   await lab.getByTestId('excel-pivot-stale').filter({hasText:/wymagane odświeżenie/}).waitFor();
   await lab.getByRole('button',{name:'Odśwież tabelę przestawną'}).click();
+  await enterAndCheck(lab,'28330');
+  // Switch to regional grouping and verify individual region still reconciles.
+  await lab.getByRole('button',{name:'Region',exact:true}).click();
+  await lab.getByRole('button',{name:'Wybierz grupę Północ'}).click();
   await enterAndCheck(lab,String(sum(north)+85));
  }else if(id==='it'){
   const types=['Duplikat','Zła ilość','Brak kontrahenta','Brak ceny'];
