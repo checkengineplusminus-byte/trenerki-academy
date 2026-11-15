@@ -17,6 +17,8 @@ jobs:
           run: node --test scripts/test-exam-readiness.mjs
         - name: Verify non-repeating AutoCAD teaching and universal restart
           run: node --test scripts/test-autocad-methodology-review.mjs
+        - name: Verify restored interactive CAD commands and coordinate geometry
+          run: node --experimental-strip-types --test scripts/test-cad-restored.mjs
         - name: Verify AutoCAD exam covers all 30 chapters
           run: node --test scripts/test-autocad-exam-bank.mjs
         - name: Verify real AutoCAD DXF starter drawings
