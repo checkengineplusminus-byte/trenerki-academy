@@ -1,4 +1,3 @@
-import type { } from './excelAdvancedMath';
 export type ProRow={invoice:string;date:string;region:string;client:string;category:string;channel:string;salesperson:string;quantity:string;unitPrice:string;unitCost:string;discountPct:string;status:string};
 export type ProDefect={index:number;invoice:string;reasons:string[]};
 export const rounded=(n:number)=>Math.round((n+Number.EPSILON)*100)/100;
