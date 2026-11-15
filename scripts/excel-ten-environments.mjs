@@ -250,6 +250,7 @@ async function sellerReview(r,browser){
  const page=await browser.newPage();
  try{
   await page.goto(base+'/academy/kursy/excel-skroty.html',{waitUntil:'domcontentloaded'});
+  await page.getByRole('heading',{name:'Excel od zera do analizy danych — kurs praktyczny'}).waitFor();
   await page.getByText('30 lekcji',{exact:true}).waitFor();
   await page.getByText('Od podstaw do zagadnień zaawansowanych',{exact:true}).waitFor();
   const html=await page.locator('body').innerText();
@@ -257,7 +258,13 @@ async function sellerReview(r,browser){
   assert.match(html,/166 zł/i,'Sales must display catalogue price with direct checkout');
   const csv=await page.request.get(base+'/academy/assets/excel-practice-sales.csv');
   assert.equal(csv.status(),200,'Sales promises actionable downloadable training data');
-  assert((await csv.text()).includes('FV-014'));
+  const content=await csv.text();
+  assert(content.includes('FV-014'));
+  assert(content.split(/\r?\n/)[0].split(';').length===11,'CSV is complete through J and K');
+  const dirty=await page.request.get(base+'/academy/assets/excel-practice-errors.csv');
+  assert.equal(dirty.status(),200,'Power Query audit dataset must be available');
+  assert((await dirty.text()).includes('5x'),'Malformed example must be visibly actionable');
+  await page.getByTestId('excel-sales-evidence').getByText(/nie pełna instalacja Microsoft Excel/i).waitFor();
   const large=await page.request.get(base+'/academy/assets/excel-professional-368-import.csv');
   assert.equal(large.status(),200,'Seller: advanced 368-record source must be genuinely downloadable');
   assert((await large.text()).includes('PRO-0367'),'Seller: challenging corrupted raw source required');
