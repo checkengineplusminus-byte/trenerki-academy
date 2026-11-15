@@ -58,12 +58,12 @@ export default function Learning(){
  const [coachOpen,setCoachOpen]=useState(false);
  useEffect(()=>{setIntroRead(false);pendingWorkshopRef.current=false;},[slug]);
  useEffect(()=>{setReviewMode(reviewParam==='1');},[slug,reviewParam]);
- useEffect(()=>{setCoachOpen(false);},[slug,module]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ useEffect(()=>{setCoachOpen(false);},[slug,module]);
  React.useLayoutEffect(()=>{
   if(Platform.OS==='web'){
    scrollToTop();
