@@ -488,11 +488,28 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const ribbonCaption={color:'#a6b7c5',fontSize:11,fontWeight:'700' as const,textAlign:'center' as const,marginTop:'auto' as const,paddingTop:8};
  const ribbonPanel={minHeight:113,borderRightWidth:1,borderRightColor:'#526071',paddingRight:8,marginRight:8,justifyContent:'space-between' as const,gap:4};
  const reportedPoint=candidate?.point??last;
+ const statusButtons:{id:string;icon:string;name:string;active:boolean;onPress:()=>void;extra?:boolean}[]=[
+  {id:'grid',icon:'▦',name:'Siatka · F7',active:grid,onPress:()=>flags('F7')},
+  {id:'snap',icon:'⌗',name:'Skok siatki 50 · F9',active:snapGrid,onPress:()=>flags('F9')},
+  {id:'ortho',icon:'⊥',name:'ORTHO · F8',active:ortho,onPress:()=>{setOrtho(v=>!v);setPolar(false);}},
+  {id:'polar',icon:'◠',name:'POLAR · F10',active:polar,onPress:()=>flags('F10')},
+  {id:'osnap',icon:'⊙',name:'OSNAP · F3',active:osnap,onPress:()=>flags('F3')},
+  {id:'otrack',icon:'↗',name:'OTRACK · F11',active:otrack,onPress:()=>flags('F11')},
+  {id:'dyn',icon:'▣',name:'Dynamic Input · F12',active:dynamic,onPress:()=>flags('F12')},
+  {id:'hold',icon:'▧',name:'PICKADD · Przytrzymaj',active:selectionHold,onPress:()=>setSelectionHold(v=>!v)},
+  {id:'coord',icon:'XY',name:'X,Y · Współrzędne',active:true,onPress:()=>setStatusInfo('coord')},
+  {id:'cycle',icon:'⧉',name:'Selection Cycling · Ctrl+W',active:selectionCycling,onPress:()=>setSelectionCycling(v=>!v),extra:true},
+  {id:'lwt',icon:'≡',name:'LWT · Grubość linii',active:lineweight,onPress:()=>setLineweight(v=>!v),extra:true},
+  {id:'trans',icon:'◫',name:'Transparency · Przezroczystość',active:transparency,onPress:()=>setTransparency(v=>!v),extra:true},
+  {id:'annotation',icon:'1:50',name:'Skala anotacji · 1:50',active:layout,onPress:()=>{setLayout(true);setSession(idle);},extra:true},
+  {id:'clean',icon:'⛶',name:'Czysty ekran · Ctrl+0',active:cleanScreen,onPress:()=>setCleanScreen(v=>!v),extra:true},
+ ];
+ const activeStatus=statusReference.items.find(item=>item.id===statusInfo);
  return <View style={labStyles.panel} testID="cad-workspace">
   <Text style={labStyles.heading}>AutoCAD · pracownia rysunku 2D</Text>
   <Text style={labStyles.body}>{lessonNo===0?'Ćwiczenie 1: wpisz LINE → 0,0 → 1000,0 → 500,800 → CLOSE. Następnie wpisz JOIN, aby otrzymać jedną polilinię, i MOVE, aby przesunąć cały trójkąt.':lessonNo===5?'Połącz trzy osobne linie trójkąta poleceniem JOIN. Sprawdź, że to jeden zamknięty obiekt; przesuń go przez MOVE.':lessonNo===9?'Narysuj RECTANG od 0,0 do @4000,3000. Zmierz boki i przekątną oraz dopasuj widok.':'Przećwicz polecenia z tej lekcji na rysunku. Możesz wpisywać współrzędne, używać wstążki oraz zaznaczać obiekty myszą.'}</Text>
 
-  <View testID="cad-ribbon" style={{backgroundColor:'#25303f',borderWidth:1,borderColor:'#56687c',borderRadius:5,overflow:'hidden',marginVertical:5}}>
+  {!cleanScreen&&<View testID="cad-ribbon" style={{backgroundColor:'#25303f',borderWidth:1,borderColor:'#56687c',borderRadius:5,overflow:'hidden',marginVertical:5}}>
    <View style={{flexDirection:'row',alignItems:'center',backgroundColor:'#1d2734',minHeight:38}}>
     <View style={{backgroundColor:'#be294f',paddingHorizontal:10,minHeight:38,justifyContent:'center'}}>
      <Text style={{color:'white',fontWeight:'900',fontSize:17}}>A</Text>
@@ -564,8 +581,8 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     {tab==='manage'&&<Text style={{fontSize:13,color:'#395569',lineHeight:21}}>Manage / Zarządzaj: CUI, aliasy z acad.pgp, standardy CAD i personalizacja. Korzystaj z Biblioteki AutoCAD oraz programu desktopowego.</Text>}
     {tab==='output'&&<Text style={{fontSize:13,color:'#395569',lineHeight:21}}>Output / Wydruk: PLOT, PUBLISH, EXPORTPDF, PAGESETUP. W modelu rysuj w 1:1, skalę ustawiaj w rzutni arkusza.</Text>}
    </View>}
-  </View>
-  {tab==='annotate'&&<View style={{backgroundColor:'#f1f6f8',padding:12,borderRadius:9,gap:10}}>
+  </View>}
+  {tab==='annotate'&&!cleanScreen&&<View style={{backgroundColor:'#f1f6f8',padding:12,borderRadius:9,gap:10}}>
    <LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(t=><LabButton key={t} label={tools[t].label+' · '+tools[t].name} selected={tool===t} onPress={()=>start(t)}/>)}</LabGroup>
     <View style={{padding:13,backgroundColor:'#f0f6f8',borderRadius:10,gap:9}} testID="cad-font-style">
      <Text style={labStyles.heading}>Tekst i czcionka — STYLE / MTEXT</Text>
@@ -608,8 +625,6 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     onPan={shift} onZoom={zoom} onFinish={()=>finish()}/>
   </View>
   <View style={labStyles.row}>
-   <LabButton label="Model" selected={!layout} onPress={()=>setLayout(false)}/>
-   <LabButton label="Layout 1 / Arkusz" selected={layout} onPress={()=>{cancel();setLayout(true);setPointer(undefined);}}/>
    <LabButton label="Dopasuj widok" onPress={fit}/>
    <LabButton label="Cofnij · Ctrl+Z" disabled={!history.length} onPress={undo}/>
    <LabButton label="Ponów · Ctrl+Y" disabled={!future.length} onPress={redo}/>
@@ -650,14 +665,62 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <Text accessibilityLiveRegion="polite" style={labStyles.body}>{message}</Text>
    {expandLog&&<View style={{gap:3}}>{log.map((entry,i)=><Text key={i} style={labStyles.eyebrow}>{entry}</Text>)}</View>}
   </View>
-  <LabGroup label="Pasek stanu">
-   <LabButton label="Siatka · F7" selected={grid} onPress={()=>flags('F7')}/>
-   <LabButton label="Skok siatki 50 · F9" selected={snapGrid} onPress={()=>flags('F9')}/>
-   <LabButton label="OSNAP · F3" selected={osnap} onPress={()=>flags('F3')}/>
-   <LabButton label="Tryby OSNAP · ustaw" selected={showSnapSettings} onPress={()=>setShowSnapSettings(v=>!v)}/>
-   <LabButton label="ORTHO · F8" selected={ortho} onPress={()=>flags('F8')}/>
-   <LabButton label="Współrzędne przy kursorze · F12" selected={dynamic} onPress={()=>flags('F12')}/>
-  </LabGroup>
+  <View testID="cad-status-bar" style={{backgroundColor:'#222c3a',borderRadius:6,
+    borderWidth:1,borderColor:'#566a7c',gap:0,marginTop:7,overflow:'hidden'}}>
+   <View style={{flexDirection:'row',alignItems:'stretch',minHeight:45}}>
+    <View style={{flexDirection:'row',alignItems:'center',paddingHorizontal:4,backgroundColor:'#1b2431',gap:2}}>
+     {([['Model',false],['Layout 1 / Arkusz',true]] as const).map(([label,isPaper])=><Pressable key={label}
+      accessibilityRole="button" accessibilityLabel={label} accessibilityState={{selected:layout===isPaper}}
+      onPress={()=>{if(isPaper){cancel();setLayout(true);setPointer(undefined);}else setLayout(false);setStatusInfo('model');}}
+      style={{backgroundColor:layout===isPaper?'#317cb0':'transparent',paddingHorizontal:8,paddingVertical:10,borderRadius:3}}>
+      <Text style={{color:'white',fontSize:11,fontWeight:'800'}}>{isPaper?'LAYOUT':'MODEL'}</Text>
+     </Pressable>)}
+    </View>
+    <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:'row',alignItems:'stretch',paddingHorizontal:4,gap:2}}>
+     {statusButtons.filter(item=>showMoreStatus||!item.extra).map(item=><Pressable key={item.id}
+      testID={'cad-status-'+item.id} accessibilityRole="button" accessibilityLabel={item.name}
+      accessibilityState={{selected:item.active}} onPress={()=>{item.onPress();setStatusInfo(item.id);}}
+      style={{backgroundColor:item.active?'#24689e':'transparent',borderRadius:3,minWidth:50,
+       alignItems:'center',justifyContent:'center',paddingVertical:5,paddingHorizontal:7,gap:1}}>
+      <Text style={{color:item.active?'#fff':'#c6d4e3',fontSize:14,fontWeight:'900'}}>{item.icon}</Text>
+      <Text style={{color:item.active?'white':'#c3d1df',fontSize:9,fontWeight:'800'}}>{item.id.toUpperCase()}</Text>
+     </Pressable>)}
+    </ScrollView>
+    <Pressable testID="cad-status-customize" accessibilityRole="button" accessibilityLabel="Dostosuj pasek statusu"
+      onPress={()=>{setStatusCustom(v=>!v);setStatusInfo('custom');}}
+      style={{backgroundColor:statusCustom?'#24689e':'#1b2431',paddingHorizontal:11,justifyContent:'center'}}>
+      <Text style={{color:'white',fontSize:17,fontWeight:'900'}}>☰</Text>
+    </Pressable>
+   </View>
+   <View style={{paddingHorizontal:9,paddingVertical:5,backgroundColor:'#1a2532'}}>
+    <Text style={{color:'#c9d7e3',fontSize:10}}>Wskazówka: pojedynczy lewy klik wybiera obiekt • Przeciągnij, aby zaznaczyć oknem • F7/F9/F3/F8/F10/F11/F12 zmieniają tryb pracy • ⇄ przewiń przyciski</Text>
+   </View>
+  </View>
+  {statusCustom&&<View testID="cad-status-customize-panel" style={{backgroundColor:'#ebf2f7',padding:13,borderRadius:9,gap:9}}>
+   <Text style={{color:'#234456',fontSize:15,fontWeight:'900'}}>Dostosowanie paska stanu</Text>
+   <Text style={{color:'#435e6f',fontSize:13,lineHeight:21}}>W oryginalnym AutoCAD możesz włączyć lub ukryć poszczególne ikony. Tutaj pokazujemy wszystkie ważne ustawienia 2D i uczciwie oznaczamy narzędzia wymagające Autodesk.</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+    <LabButton label="Pokaż wszystkie funkcje" selected={showMoreStatus} onPress={()=>setShowMoreStatus(true)}/>
+    <LabButton label="Tylko podstawowe" selected={!showMoreStatus} onPress={()=>setShowMoreStatus(false)}/>
+    {(['f4','f5','f6','workspace'] as const).map(id=><LabButton key={id}
+     label={statusReference.items.find(x=>x.id===id)?.title||id} onPress={()=>setStatusInfo(id)}/>)}
+   </View>
+  </View>}
+  {activeStatus&&<View testID="cad-status-help" style={{padding:13,borderWidth:1,borderColor:'#c3d4db',borderRadius:9,backgroundColor:'#eef6f8',gap:7}}>
+   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10}}>
+    <Text style={{color:'#24475a',fontWeight:'900',fontSize:15,flex:1}}>{activeStatus.title}</Text>
+    <Pressable accessibilityRole="button" accessibilityLabel="Zamknij opis paska statusu" onPress={()=>setStatusInfo('')}
+     style={{padding:6}}><Text style={{color:'#2b526a',fontWeight:'900'}}>✕</Text></Pressable>
+   </View>
+   <Text style={{color:'#425f6d',lineHeight:22,fontSize:13}}>{activeStatus.meaning}</Text>
+   <Text style={{fontWeight:'900',color:'#315d47'}}>Ćwiczenie — wykonaj teraz</Text>
+   <Text style={{color:'#425e4d',lineHeight:21,fontSize:13}}>{activeStatus.practice}</Text>
+   <Text style={{fontWeight:'800',color:'#335a44'}}>Sprawdź wynik: {activeStatus.result}</Text>
+   <Text style={{color:activeStatus.level==='autodesk'?'#7f6030':'#436d51',fontSize:11,fontWeight:'800'}}>
+    {activeStatus.level==='autodesk'?'Wymaga oryginalnego AutoCAD — nieudawana funkcja 3D':
+     activeStatus.level==='podgląd'?'Podgląd edukacyjny; nie zapisuje zmiany w DWG':'Funkcja obsługiwana w naszym warsztacie 2D'}
+   </Text>
+  </View>}
   {showSnapSettings&&<View testID="cad-osnap-settings" style={{backgroundColor:'#e7f4ee',padding:12,borderRadius:10,gap:9}}>
    <Text style={labStyles.heading}>Przyciąganie do punktów OSNAP</Text>
    <Text style={labStyles.body}>Włącz F3, potem wybierz konkretne typy punktów. Możesz zaznaczyć kilka jednocześnie. Zobacz marker i podpis przy kursorze.</Text>
