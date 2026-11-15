@@ -1221,6 +1221,8 @@ test('Jeden okres: prawidłowy dekret przelewu z innego miesiąca nie zalicza ba
 test('Jeden okres: obie faktury przesunięte na grudzień wymagają grudniowych przelewów',()=>{
  const s=fullScenario();
  for(const invoice of s.invoices)invoice.date='2026-12-01';
+ // Przeniesienie okresu wymaga również dekretów faktur z grudnia.
+ for(const entry of s.journals.filter(j=>j.source_type==='invoice'))entry.date='2026-12-01';
  const r=auditCompanyLifecycle(s,null);
  assert.equal(r.period_scope.month,'2026-12');
  assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');

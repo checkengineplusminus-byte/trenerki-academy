@@ -131,7 +131,7 @@ export function auditCompanyLifecycle(state,scenario=null){
  let monthReady=false;
  try{
    const model=scenario?.scenario??scenario;
-   const samePeriod=!!period&&model?.month===period&&
+   const samePeriod=!!period&&(!model?.month||model.month===period)&&
      Array.isArray(model.documents)&&model.documents.length===36&&
      model.documents.every(d=>monthOf(d.date)===period);
    monthReady=samePeriod&&auditMonthWorkflow(scenario,s).training_consistent===true;
