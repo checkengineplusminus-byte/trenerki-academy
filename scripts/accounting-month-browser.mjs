@@ -254,7 +254,7 @@ try{
   assert.equal(parsed.rows.length,docs.length);
   assert.deepEqual(parsed.rows.map(x=>x.id),docs.map(x=>x.id));
   assert.equal(f.model().version,prior,'Pobranie nie zapisuje stanu konta');
-  await f.page.locator('button[data-action="tab"][data-id="bank"]').click();
+  await f.page.getByRole('button',{name:'Otwórz import CSV'}).click();
   await f.page.locator('#lab-file').setInputFiles({
    name:'D01-D36-fikcyjny.csv',mimeType:'text/csv',buffer
   });
