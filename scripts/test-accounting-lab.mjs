@@ -1591,6 +1591,7 @@ function syntheticCorrectionFixture(){
  Object.assign(correction,{kind:'correction',date:'2026-01-21',amount_pln:-150,corrects_doc_id:'D21'});
  const lines=[{account:'700',debit_cents:15000,credit_cents:0},
   {account:'201',debit_cents:0,credit_cents:15000}];
+ manifest.journal_practice_v1.accounts['700']='Przychody modelowe';
  manifest.journal_practice_v1.entries.D22.lines=lines;
  const i=invoiceTotals({id:'SCEN-D21',kind:'sale',status:'issued',number:'CW/SYNTH/D21',
   date:original.date,due:original.date,
