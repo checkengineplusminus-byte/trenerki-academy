@@ -151,6 +151,7 @@ try{
  await verified.page.locator('nav button[data-action="tab"][data-id="invoices"]').waitFor();
  await verified.page.locator('nav button[data-action="tab"][data-id="invoices"]').click();
  await pass('Chromium: firma + adres/NIP nabywcy => wystawiona faktura z migawką obu stron',async()=>{
+  assert.equal(await verified.page.locator('#invoice-date').inputValue(),'2026-01-01','Faktura bierze miesiąc z D01–D36, nie listopad');
   await verified.page.locator('#invoice-party').fill('Fikcyjny kontrahent');
   await verified.page.locator('#invoice-party_address').fill('ul. Przykładowa 2, 00-002 Testowo');
   await verified.page.locator('#invoice-party_nip').fill('9000000022');
@@ -165,6 +166,17 @@ try{
   await verified.page.reload();
   assert.equal(verified.model().state.invoices[0].identity_version,1);
   assert.deepEqual(verified.errors,[]);
+ });
+ await pass('Chromium: przykładowy wyciąg CSV ma ten sam miesiąc co D01–D36',async()=>{
+  await verified.page.locator('nav button[data-action="tab"][data-id="bank"]').click();
+  const pending=verified.page.waitForEvent('download');
+  await verified.page.locator('button[data-action="template"]').click();
+  const file=await pending,stream=await file.createReadStream(),parts=[];
+  for await(const chunk of stream)parts.push(chunk);
+  const csv=Buffer.concat(parts).toString('utf8');
+  assert.match(csv,/CW-BANK-1;2026-01-05;/);
+  assert.match(csv,/CW-BANK-2;2026-01-06;/);
+  assert.ok(!csv.includes('2026-11'));
  });
  await verified.context.close();
  const mobileInvoice=await fixture({width:390,height:844},manifest,{company});
