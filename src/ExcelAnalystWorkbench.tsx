@@ -109,6 +109,16 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
   </a>:<Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://trenerki.com/academy/assets/excel-practice-sales.csv')} style={{minHeight:44,justifyContent:'center'}}>
    <Text style={{color:'#256b4c',fontSize:13,fontWeight:'800'}}>Pobierz dane CSV (18 faktur)</Text>
   </Pressable>}
+  <View style={{borderLeftWidth:3,borderColor:'#609975',padding:10,backgroundColor:'#fff',borderRadius:8,gap:7}}>
+   <Text style={{fontSize:13,fontWeight:'900',color:ink}}>Rzeczywiste ćwiczenie w Microsoft Excel</Text>
+   <Text style={{fontSize:13,lineHeight:21,color:muted}}>CSV zawiera 18 faktur oraz wartości kontrolne w kolumnach J (Wartość netto) i K (Marża netto). Są to wartości zapisane, a nie formuły. Aby arkusz reagował na zmianę ilości, wpisz w J2 formułę =G2*H2, w K2 formułę =G2*(H2-I2), następnie wypełnij je w dół do wiersza 19. Zanim udostępnisz raport, uzgodnij sumy: 28 245 zł przychodu i 9 109 zł marży.</Text>
+   <Text style={{fontSize:12,lineHeight:19,color:muted}}>Plik używa średnika jako separatora i polskich nagłówków. Importuj przez Dane → Z tekstu/CSV, ustaw UTF-8 i sprawdź rozpoznane typy liczb. To ważny etap pracy eksperckiej.</Text>
+   {Platform.OS==='web'?<a href="/academy/assets/excel-practice-errors.csv" download="excel-practice-errors.csv"
+     style={{fontSize:13,fontWeight:800,color:'#245e87',textDecoration:'underline',minHeight:44,display:'flex',alignItems:'center'}}>Pobierz błędne rekordy CSV do audytu Power Query (4 wiersze)</a>:
+    <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://trenerki.com/academy/assets/excel-practice-errors.csv')} style={{minHeight:44,justifyContent:'center'}}>
+     <Text style={{fontSize:13,fontWeight:'900',color:'#245e87'}}>Pobierz błędne CSV do audytu (4 wiersze)</Text>
+    </Pressable>}
+  </View>
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{modes.map(x=><Choice key={x.id} label={x.label} selected={mode===x.id} onPress={()=>changeMode(x.id)}/>)}</View>
   <View style={{borderWidth:1,borderColor:'#dce9de',backgroundColor:'#fff',borderRadius:11,padding:12,gap:11}}>
    <Text style={headingStyle}>{mode==='filter'?'Odfiltruj rekordy, nie kasuj ich':mode==='sumifs'?'SUMA.WARUNKÓW — dwa kryteria':mode==='lookup'?'X.WYSZUKAJ — dokładny identyfikator':mode==='pivot'?'Tabela przestawna — przelicz i odśwież':mode==='chart'?'Wykres wartości netto w trzech regionach':mode==='model'?'Model przychodu, kosztów i marży':mode==='scenario'?'Model wrażliwości marży':'Power Query — znajdź błędy przed importem'}</Text>
