@@ -233,6 +233,35 @@ async function verifyWord(page,mobile){
 
 async function verifyExplorer(page,mobile){
  await openCourse(page,'windows-skroty');
+ const simulation=page.getByTestId('windows-desktop-lab');
+ await simulation.waitFor();
+ // 1: Beginner in an office — Start, search, and a visible application.
+ await simulation.getByRole('button',{name:'Otwórz menu Start'}).click();
+ await simulation.getByTestId('windows-start-menu').waitFor();
+ await simulation.getByRole('button',{name:'Uruchom Kalkulator'}).click();
+ await simulation.getByTestId('win11-window-calculator').waitFor();
+ // 2: Construction project coordinator — two distinct Snap directions.
+ await simulation.getByRole('button',{name:'Symuluj Win+←'}).click();
+ await simulation.getByText('Aktywne okno przypięto do lewej połowy. Pulpit nie zmienił się.').waitFor();
+ await simulation.getByRole('button',{name:'Symuluj Win+→'}).click();
+ await simulation.getByText('Aktywne okno przypięto do prawej połowy. Pulpit nie zmienił się.').waitFor();
+ // 3: Accountant — keep two workspaces separate, with no changes to the real machine.
+ await simulation.getByRole('button',{name:'Symuluj Win+Ctrl+←'}).click();
+ await simulation.getByText('Przełączono na Pulpit 1. To inny pulpit, nie przesunięcie okna.').waitFor();
+ await simulation.getByRole('button',{name:'Symuluj Win+Ctrl+→'}).click();
+ await simulation.getByText('Przełączono na Pulpit 2. To inny pulpit, nie przesunięcie okna.').waitFor();
+ // 4: IT support — explicitly inspect the independent instructions for the REAL Windows computer.
+ await simulation.getByRole('button',{name:/Sprawdź Win\\+Ctrl\\+→ na swoim komputerze/}).click();
+ await simulation.getByText(/Na Pulpicie 1 przytrzymaj Windows oraz Ctrl/).waitFor();
+ await simulation.getByText(/Trenerki nie wykrywa wyniku/).waitFor();
+ // 5: Touch/mobile user — Task View and new desktop work without system keys or a hover gesture.
+ await simulation.getByRole('button',{name:'Otwórz widok zadań'}).click();
+ await simulation.getByTestId('windows-task-view').waitFor();
+ await simulation.getByRole('button',{name:'Utwórz nowy pulpit'}).click();
+ await simulation.getByText('Utworzono Pulpit 3.').waitFor();
+ console.log('✓ '+(mobile?'mobile':'desktop')+' Windows: five persona flows (office, construction, accounting, IT support, touch), no real-OS hotkeys');
+ // Keep the advanced file-operations lab available, but out of the way by default.
+ await simulation.getByRole('button',{name:'Otwórz dodatkową pracownię Eksploratora plików ▾'}).click();
  const lab=page.getByTestId('explorer-workspace');
  const button=name=>lab.getByRole('button',{name,exact:true});
  const open=async name=>{await button(name).click();await button('Otwórz wybrany element').click();};
