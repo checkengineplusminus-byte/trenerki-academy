@@ -1640,3 +1640,27 @@ test('VAT z obcego okresu nie zmienia bieżącej zgodności źródeł z dziennik
  assert.equal(r.vat_ledger.matching,true);
  assert.equal(r.issues.some(x=>x.code==='model_vat_ledger_does_not_match_invoices'),false);
 });
+
+test('Zamknięcie nie akceptuje 31 listopada w fakturze pomimo poprawnego prefiksu RRRR-MM',()=>{
+ const s=fullScenario();s.invoices[0].date='2026-11-31';
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.period,'2026-11');
+ assert.equal(r.checks.find(x=>x.key==='calendar_dates').passed,false);
+ assert.ok(r.issues.some(x=>x.code==='source_invoice_invalid_calendar_date'));
+ assert.equal(r.ready_for_training_review,false);
+});
+test('Zamknięcie wykrywa niemożliwy dzień na wyciągu i brak daty zatwierdzonego dekretu',()=>{
+ const s=fullScenario();s.bank[0].date='2026-11-31';
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='calendar_dates').passed,false);
+ assert.ok(r.issues.some(x=>x.code==='bank_invalid_calendar_date'));
+ assert.ok(r.issues.some(x=>x.code==='posted_journal_invalid_calendar_date'));
+});
+test('Ważne daty z różnych okresów nie są błędem daty w audycie kalendarza',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),a=taxCloseTrainingAudit(state,manifest);
+ assert.equal(a.checks.find(c=>c.key==='calendar_dates').passed,true);
+ const s=structuredClone(state);
+ s.journals.push({id:'LAST_YEAR',date:'2025-12-31',status:'posted',source_type:'manual',source_id:'',
+  lines:[{account:'400',debit:100,credit:0},{account:'202',debit:0,credit:100}]});
+ assert.equal(taxCloseTrainingAudit(s,manifest).checks.find(c=>c.key==='calendar_dates').passed,true);
+});

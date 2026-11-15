@@ -4,7 +4,7 @@
  * autentycznego UPO, deklaracji ani żądania HTTP do administracji.
  * Liczby to założenia istniejącego modelu, NIE kwalifikacja podatkowa.
  */
-import {invoiceTotals,expectedInvoiceLines,livePostings} from './lab-core-base.js';
+import {invoiceTotals,expectedInvoiceLines,livePostings,validDate} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
 import {acquisitionLines} from './assets-core.js';
 
@@ -53,6 +53,17 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    issues.push({code:'invalid_invoice_amounts',invoice:i.number||i.id});
   }
  }
+ // ISO pasujące do miesiąca może być datą niemożliwą (np. 31 listopada).
+ // Odrzucamy takie dowody, wyciągi oraz zatwierdzone dekrety bez ingerencji w dane.
+ const sourceDateIssues=[];
+ const allSourceInvoices=Array.isArray(state.invoices)?state.invoices.filter(i=>
+  i?.status==='issued'&&['sale','purchase'].includes(i.kind)):[];
+ for(const i of allSourceInvoices)if(!validDate(i.date))
+  sourceDateIssues.push({code:'source_invoice_invalid_calendar_date',invoice:i.number||i.id||'(brak ID)'});
+ for(const row of (Array.isArray(state.bank)?state.bank:[]))if(!validDate(row?.date))
+  sourceDateIssues.push({code:'bank_invalid_calendar_date',invoice:row?.id||'(brak ID)'});
+ for(const j of posted)if(!validDate(j?.date))
+  sourceDateIssues.push({code:'posted_journal_invalid_calendar_date',invoice:j?.id||'(brak ID)'});
  const periodPostings=posted.filter(j=>monthOf(j.date)===period);
  const ledgerBalanced=periodPostings.length>0&&periodPostings.every(j=>{
   if(!Array.isArray(j.lines)||!j.lines.length)return false;
@@ -159,6 +170,9 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
+  {key:'calendar_dates',label:'Prawidłowe daty kalendarzowe faktur, CSV i dekretów',
+   passed:sourceDateIssues.length===0,
+   detail:sourceDateIssues.length+' nieprawidłowych dat (brak daty, nieistniejący dzień lub poza zakresem ćwiczenia)'},
   {key:'sources',label:'Faktury zakupu i sprzedaży',passed:issued.some(i=>i.kind==='sale')&&issued.some(i=>i.kind==='purchase'),detail:issued.length+' dokumentów w miesiącu'},
   {key:'source_identity',label:'Unikalne faktury źródłowe w miesiącu',
    passed:issued.length>0&&sourceIdentityIssues.length===0,
@@ -194,7 +208,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    review:'not_tested'},
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
