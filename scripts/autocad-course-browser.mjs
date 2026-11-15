@@ -7,6 +7,8 @@ const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const {lessons}=JSON.parse(readFileSync(new URL('../content/autocad-real-program-2026-11-15.json',import.meta.url),'utf8'));
 assert.equal(lessons.length,30);
+const method=JSON.parse(readFileSync(new URL('../content/autocad-methodology-v2.json',import.meta.url),'utf8')).lessons;
+assert.equal(method.length,30);
 assert.equal(new Set(lessons.map(l=>l.material.curiosity)).size,30);
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const user={id:'00000000-0000-4000-a000-000000000030',email:'autocad@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{full_name:'Test AutoCAD'}};
@@ -62,19 +64,27 @@ for(const mobile of [false,true]){
  try{
   await page.goto(origin+'/nauka?course=autocad-skroty&lesson=1');
   await page.getByTestId('course-reading-introduction').waitFor();
+  assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Original AutoCAD screen should not dominate the opening');
   const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   if(await consent.isVisible())await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   assert.equal(await page.getByTestId('case-checkpoint').count(),0);
+  await page.getByRole('button',{name:'Ekran programu'}).click();
+  const firstScreen=page.getByTestId('autocad-original-screens');
+  await firstScreen.waitFor();
+  assert.equal(await firstScreen.locator('img').count(),1,'Open one focused original screenshot, not three huge repeats');
+  await firstScreen.locator('img').first().evaluate(el=>el.decode());
+  await page.getByRole('button',{name:'Pojęcia'}).click();
+  assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Original screen must close on changing tabs');
   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   for(const lesson of lessons){
    const {lesson_no:n,material:m}=lesson;
    await page.getByTestId('lesson-heading').filter({hasText:lesson.title_pl}).waitFor();
-   const realScreenshot=page.getByTestId('autocad-original-screens');
-   await realScreenshot.waitFor();
-   const image=realScreenshot.locator('img').first();
-   await image.waitFor();
-   await image.evaluate(el=>el.decode());
-   assert(await image.evaluate(el=>el.naturalWidth>0),'AutoCAD original screenshot failed to load in lesson '+(n+1));
+   assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Repeated AutoCAD screenshot in lesson '+(n+1));
+   const lessonMethod=page.getByTestId('autocad-lesson-method');
+   await lessonMethod.waitFor();
+   await lessonMethod.getByText(method[n].heading,{exact:true}).waitFor();
+   await page.getByTestId('autocad-result-check').waitFor();
+   assert.equal(await lessonMethod.getByText(method[n].steps[0],{exact:true}).count(),1);
    await page.getByText(m.curiosity,{exact:true}).waitFor();
    if([5,9,11,29].includes(n)){
     await page.getByTestId('autocad-real-dxf').waitFor();
@@ -98,11 +108,13 @@ for(const mobile of [false,true]){
     await page.getByText('Wynik zapisany.',{exact:true}).waitFor();
    }
    await page.getByRole('button',{name:n===29?'Przejdź do egzaminu →':new RegExp('^Dalej · lekcja '+(n+2)+' →')}).click();
+   if(n<29)assert.equal(await page.getByTestId('course-completed-last-page-only').count(),0,'Completion banner leaked into intermediate lesson');
    if(n<29)await page.getByTestId('lesson-heading').filter({hasText:lessons[n+1].title_pl}).waitFor();
    else await page.getByRole('button',{name:'Rozpocznij egzamin',exact:true}).waitFor();
    console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD '+(n+1)+'/30: reading, curiosity, wrong/correct answer, '+required+' requirement(s), saved progress');
   }
   assert.equal(completed.length,30);
+  await page.getByTestId('course-completed-last-page-only').waitFor();
   await page.getByRole('button',{name:'Rozpocznij egzamin',exact:true}).click();
   for(let step=0;step<6;step++){
    await page.getByText('Pytanie testowe interfejsu '+(step+1),{exact:true}).waitFor();
@@ -137,6 +149,16 @@ for(const mobile of [false,true]){
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: 30 lessons → mock final exam → diploma; stale deployment chunk shows recovery and reload opens diploma');
   const bounds=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:document.documentElement.clientWidth}));
   assert(bounds.scroll<=bounds.view+3);
+  await page.goto(origin+'/nauka?course=autocad-skroty&lesson=30');
+  await page.getByTestId('course-completed-last-page-only').waitFor();
+  await page.getByTestId('start-course-from-beginning').click();
+  await page.getByTestId('course-reading-introduction').waitFor();
+  assert.equal(await page.getByTestId('course-completed-last-page-only').count(),0,'Repeated course still shows completion banner');
+  assert.equal(await page.getByRole('button',{name:'Rozpocznij egzamin',exact:true}).count(),0,'Exam leaked onto the first review lesson');
+  assert.equal(completed.length,30,'Review button must not erase saved completions');
+  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+  await page.getByTestId('lesson-heading').filter({hasText:lessons[0].title_pl}).waitFor();
+  console.log('✓ '+(mobile?'mobile':'desktop')+' review: restart from lesson 1 with completed lessons and diploma intact, no repeated finish banner');
  }catch(error){
   console.error('AutoCAD regression failed at',page.url(),await page.locator('body').innerText());
   console.error('Browser errors:',errors);
