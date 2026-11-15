@@ -94,7 +94,7 @@ test('First-day entry provides TWO distinct novice environments and checks evide
   assert(ui.includes(marker),'Missing independent beginner context or exercise: '+marker);
  assert(ui.includes('selected===0')&&ui.includes('count(rows[0].amount)===3'),'Must verify actual selections and edits');
  assert(ui.includes('count(input)===total'),'Must check calculated totals rather than simple click-through');
- assert(ui.includes('nie zapisują się na Twoim dysku'),'Do not pretend to access the user's PC');
+ assert(ui.includes('nie zapisują się na Twoim dysku'),"Do not pretend to access the user's PC");
  const entrance=app.indexOf("<ExcelFirstDayPractice/>");
  const orientation=app.indexOf("<SoftwareOrientation slug={slug}");
  assert(entrance>=0&&orientation>=0&&entrance<orientation,'Hands-on beginner orientation should precede expert software text');
