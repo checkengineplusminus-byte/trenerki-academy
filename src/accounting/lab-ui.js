@@ -3,6 +3,7 @@ import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withSce
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
 import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollJournalDraft,payrollLifecycleChecklist} from './payroll-practice.js';
 import {withInvoiceBankMatch} from './invoice-match.js';
+import {inspectWorkspaceBackup} from './backup-recovery.js';
 import {monthTrainingReportHTML} from './month-training-report.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
 import {taxCloseTrainingAudit,taxCloseTrainingReportHTML} from './tax-close-training.js';
@@ -15,7 +16,7 @@ const select=(group,key,label,value,options)=>`<div><label for="${group}-${key}"
 const button=(action,label,id='',cls='')=>`<button type="button" data-action="${action}" data-id="${e(id)}" class="${cls}">${e(label)}</button>`;
 const download=(name,text,type='application/json')=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
 export function mountLab(root,db){
- let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null,conflictSnapshot=null;
+ let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null,conflictSnapshot=null,backupPreview=null;
  const key=()=>`trenerki-lab-draft-v1:${user?.id}:${ws?.id}`;
  function blankDrafts(){return {invoice:invBlank(ws.name,'sale',ws.state.invoices.filter(i=>i.kind==='sale').length+1),journal:journalBlank(),match:{bank_id:'',invoice_id:'',amount:''},question:{text:''}};}
  function restoreDrafts(){drafts=blankDrafts();try{const raw=localStorage.getItem(key());if(raw){const old=JSON.parse(raw);if(old?.invoice?.lines&&old?.journal?.lines)drafts={...drafts,...old};}}catch{localWarning='Nie udało się odczytać lokalnego szkicu. Dane zapisane w bazie pozostają dostępne.';}}
@@ -467,8 +468,22 @@ export function mountLab(root,db){
   return '<section class="card"><p class="error">Wykryto konflikt wersji: ostatni zapis nie został przyjęty. Pobierz kopię niezapisanych zmian, zanim odświeżysz biuro. Nie łączymy danych automatycznie.</p><div class="actions">'+
    button('download-conflict','Pobierz niezapisane zmiany')+'</div></section>';
  }
+ function recoveryPanel(){
+  if(!user)return '';
+  const copy=backupPreview?.owner_id===user.id?backupPreview:null;
+  return '<section class="card"><h3>Odzyskaj biuro z własnej kopii JSON</h3>'+
+   '<p class="muted">Najpierw sprawdzamy plik lokalnie. Odzyskanie tworzy NOWE biuro na tym samym koncie, nie nadpisuje istniejących danych. To nie jest niezależne odtworzenie backupu serwera.</p>'+
+   '<label for="lab-backup-file">Wybierz kopię pobraną wcześniej z TRENERKI</label>'+
+   '<input id="lab-backup-file" type="file" accept=".json,application/json" '+(!canWrite||busy?'disabled':'')+'>'+
+   (copy?'<p class="notice">Sprawdzona kopia: '+e(copy.original_name)+
+    ', wersja '+e(String(copy.source_version))+'. Faktury: '+copy.counts.invoices+
+    ', operacje bankowe: '+copy.counts.bank+', dekrety: '+copy.counts.journals+
+    ', powiązania: '+copy.counts.matches+'. Odtworzenie nie zmienia starego biura.</p>'+
+    '<div class="actions">'+button('restore-copy','Utwórz NOWE biuro z kopii','','primary')+'</div>':'')+
+   '</section>';
+ }
  function render(){if(disposed)return;
-  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${conflictNotice()}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice()+closingScreen()+integratedAuditScreen(),personnel,payroll,invoices,bank,journal,matches,report:()=>report()+taxAndCloseCard(),history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
+  root.innerHTML=`<style>${css}</style><div class="tlab"><main><div class="row"><a href="/moje-kursy">← Moje kursy</a><a href="/academy/index.html">Trenerki</a></div><header><span class="eyebrow">PRACOWNIA KSIĘGOWOŚCI · WŁASNA FIRMA ĆWICZENIOWA</span><h1>Wejdź do swojego biura.</h1><p>Dokumenty, wyciągi, księgowania i rozliczenia — wykonujesz pracę księgowego, a Anielka pomaga zrozumieć błędy.</p><p class="muted">Wersja ćwiczeniowa 1 · tylko dane fikcyjne · PLN</p></header><div class="status" role="status" aria-live="polite">${e(busy?'Trwa zapis lub odczyt…':status)}</div>${error?`<div class="error" role="alert">${e(error)}</div>`:''}${localWarning?`<p class="error">${e(localWarning)}</p>`:''}${conflictNotice()}${!user?'<section class="card"><a href="/konto">Zaloguj się do swojego konta</a></section>':`<section class="card"><div class="row"><div><label for="workspace">Twoje firmy</label><select id="workspace" ${busy?'disabled':''}><option value="">Wybierz biuro</option>${workspaces.map(w=>`<option value="${e(w.id)}" ${ws?.id===w.id?'selected':''}>${e(w.name)} · zapis ${w.version}</option>`).join('')}</select></div><div><label for="new-name">Nowa fikcyjna firma</label><input id="new-name" maxlength="100" placeholder="Np. Studio Przykład" ${!canWrite||busy?'disabled':''}></div><div>${button('create','Utwórz biuro','','primary')}</div></div>${ws?`<div class="actions">${button('refresh','Pobierz najnowszy zapis')}${button('export','Pobierz kopię swojej bazy')}</div>`:''}</section>${recoveryPanel()}${ws?`<nav aria-label="Działy pracowni">${Object.entries(tabs).map(([id,title])=>button('tab',title,id,tab===id?'active':'')).join('')}</nav><div class="grid"><div>${({start,simulator:()=>simulator()+bankExercise()+journalPractice()+closingScreen()+integratedAuditScreen(),personnel,payroll,invoices,bank,journal,matches,report:()=>report()+taxAndCloseCard(),history:()=>`<section class="card"><h2>Historia zapisów</h2><p class="muted">Ostatnie 50 zapisów. Historia jest zapisywana w tej samej bazie; nie zastępuje zewnętrznej kopii zapasowej.</p>${table(['Wersja','Kiedy','Zakres zmian'],history.map(h=>`<tr><td>${h.version}</td><td>${e(new Date(h.created_at).toLocaleString('pl-PL'))}</td><td>${['invoices','bank','journals','matches'].map((k,n)=>`${['Faktury','Bank','Dziennik','Powiązania'][n]}: ${(h.changes[k]||[]).length}`).join(' · ')}</td></tr>`))}</section>`}[tab]||start)()}</div>${coach()}</div>`:''}`}</main></div>`;
   if(busy)root.querySelectorAll('button').forEach(b=>b.disabled=true);
   if(!canWrite)root.querySelectorAll('[data-action="create"],[data-action="reverse"],[data-action="unmatch"],[data-action="sim-save"],[data-action="sim-bank-save"],[data-action="hr-save"],[data-action="payroll-save"],[data-action="payroll-to-journal"],[data-action="sim-journal-save"],[data-action="sim-journal-none"],[data-action="sim-journal-add"],[data-action="sim-journal-remove"]').forEach(b=>b.disabled=true);
  }
@@ -631,6 +646,31 @@ export function mountLab(root,db){
    }
    if(a==='template'){download('wyciag-cwiczeniowy.csv','\uFEFF'+BANK_TEMPLATE,'text/csv;charset=utf-8');return;}
   if(a==='export'){download('trenerki-biuro-'+ws.id+'.json',JSON.stringify({format:'trenerki-lab-backup-v1',exported_at:new Date().toISOString(),workspace:ws},null,2));return;}
+  if(a==='restore-copy'){
+    const copy=backupPreview;
+    if(!canWrite||!user||!copy||copy.owner_id!==user.id){
+     error='Najpierw wybierz i sprawdź własną kopię JSON na aktywnym koncie.';render();return;
+    }
+    if(typeof window.confirm!=='function'||!window.confirm('Utworzyć osobne biuro „'+copy.imported_name+'” z własnej kopii? Żadne istniejące biuro nie zostanie nadpisane.'))return;
+    await run(async()=>{
+     if(copy.owner_id!==user?.id||!canWrite)throw new Error('Zmieniło się konto lub uprawnienia. Wczytaj plik ponownie.');
+     const created=await db.from('ta_accounting_lab_workspaces').insert({name:copy.imported_name}).select('*').single();
+     if(created.error||!created.data)throw new Error(created.error?.message||'Nie udało się utworzyć nowego biura.');
+     const fresh=created.data;
+     if(fresh.user_id!==user.id||!Number.isSafeInteger(fresh.version))
+      throw new Error('Nie potwierdzono właściciela nowego biura. Zatrzymano odtwarzanie.');
+     const saved=await db.rpc('ta_accounting_lab_save',{
+      workspace_id:fresh.id,expected_version:fresh.version,next_state:copy.state
+     });
+     if(saved.error||!saved.data)throw new Error('Utworzono puste biuro, ale przywrócenie danych zostało odrzucone przez kontrolę serwera. Stare biura nie zostały zmienione. '+(saved.error?.message||''));
+     if(saved.data.id!==fresh.id||saved.data.user_id!==user.id||
+        saved.data.version!==fresh.version+1)throw new Error('Odtworzenie nie przeszło kontroli właściciela i wersji. Nie oznaczono go jako udane.');
+     ws=saved.data;workspaces=[{id:ws.id,name:ws.name,version:ws.version,updated_at:ws.updated_at},...workspaces];
+     backupPreview=null;tab='start';restoreDrafts();
+     status='Kopia odzyskana do osobnego biura · wersja '+ws.version+'. Oryginalne biura pozostały bez zmian.';
+    });
+    return;
+   }
   if(a==='print-invoice'){const i=ws.state.invoices.find(x=>x.id===id),w=window.open('','_blank');if(!w){error='Przeglądarka zablokowała podgląd. Zezwól na nowe okno dla tej strony.';render();return;}w.opener=null;w.document.open();w.document.write(invoiceHTML(i));w.document.close();return;}
   if(a==='create'){const name=root.querySelector('#new-name').value.trim();await run(async()=>{if(!canWrite)throw new Error('Pracownia wymaga aktywnego dostępu do kursu.');if(name.length<2)throw new Error('Wpisz nazwę fikcyjnej firmy.');const r=await db.from('ta_accounting_lab_workspaces').insert({name}).select('*').single();if(r.error)throw r.error;ws=r.data;workspaces.unshift({id:ws.id,name:ws.name,version:ws.version,updated_at:ws.updated_at});restoreDrafts();tab='start';status='Biuro utworzone i zapisane na Twoim koncie.';});return;}
   if(a==='refresh'){await run(()=>open(ws.id));return;}
@@ -649,7 +689,7 @@ export function mountLab(root,db){
   keepDrafts();render();
  }
  function inputEvent(event){const t=event.target;if(t.dataset.jline!==undefined&&ws&&scenario){const i=Number(t.dataset.jline),key=t.dataset.jfield;const d=getJournalDraft(journalDoc);if(d[i]&&['account','debit','credit'].includes(key))d[i][key]=t.value;return;}if(['sim-bank-in','sim-bank-out','sim-bank-net'].includes(t.id)){const key={'sim-bank-in':'bank_in_cents','sim-bank-out':'bank_out_cents','sim-bank-net':'bank_net_cents'}[t.id];const prev=readBankExercise(ws.state);bankDraft={bank_in_cents:prev?decimal(prev.bank_in_cents):'',bank_out_cents:prev?decimal(prev.bank_out_cents):'',bank_net_cents:prev?decimal(prev.bank_net_cents):'',...(bankDraft||{})};bankDraft[key]=t.value;return;}if(!t.dataset.group||!ws)return;let obj=drafts[t.dataset.group];const path=t.dataset.field.split('.');for(const part of path.slice(0,-1))obj=obj[part];obj[path.at(-1)]=t.value;keepDrafts();}
- async function changeEvent(event){const t=event.target;if(t.dataset.jline!==undefined&&ws&&scenario){const i=Number(t.dataset.jline),key=t.dataset.jfield;const d=getJournalDraft(journalDoc);if(d[i]&&['account','debit','credit'].includes(key))d[i][key]=t.value;return;}if(t.id==='sim-doc'&&scenario){scenarioDoc=t.value;render();return;}if(t.id==='sim-journal-doc'&&scenario){journalDoc=t.value;render();return;}if(t.id==='workspace'&&t.value)await run(()=>open(t.value));if(t.id==='lab-file'&&t.files?.[0]){const f=t.files[0];await run(async()=>{if(f.size>1000000)throw new Error('Limit pliku wynosi 1 MB.');preview=parseBankCSV(await f.text(),ws.state.bank);});}}
+ async function changeEvent(event){const t=event.target;if(t.dataset.jline!==undefined&&ws&&scenario){const i=Number(t.dataset.jline),key=t.dataset.jfield;const d=getJournalDraft(journalDoc);if(d[i]&&['account','debit','credit'].includes(key))d[i][key]=t.value;return;}if(t.id==='sim-doc'&&scenario){scenarioDoc=t.value;render();return;}if(t.id==='sim-journal-doc'&&scenario){journalDoc=t.value;render();return;}if(t.id==='workspace'&&t.value)await run(()=>open(t.value));if(t.id==='lab-backup-file'&&t.files?.[0]){const f=t.files[0];await run(async()=>{if(!canWrite||!user)throw new Error('Wymagane aktywne konto z dostępem do pracowni.');if(f.size>1000000)throw new Error('Limit kopii JSON wynosi 1 MB.');backupPreview=inspectWorkspaceBackup(await f.text(),user.id);status='Plik sprawdzony lokalnie. Potwierdź osobne odzyskanie albo wybierz inny plik.';});return;}if(t.id==='lab-file'&&t.files?.[0]){const f=t.files[0];await run(async()=>{if(f.size>1000000)throw new Error('Limit pliku wynosi 1 MB.');preview=parseBankCSV(await f.text(),ws.state.bank);});}}
  const leave=ev=>{if(busy){ev.preventDefault();ev.returnValue='';}};
  root.addEventListener('click',click);root.addEventListener('submit',submit);root.addEventListener('input',inputEvent);root.addEventListener('change',changeEvent);window.addEventListener('beforeunload',leave);
  render();void load();
