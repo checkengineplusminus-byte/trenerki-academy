@@ -1724,3 +1724,116 @@ test('Ścieżka firmy nie zalicza banku z datą 31 listopada',()=>{
  assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
  assert.equal(taxCloseTrainingAudit(s).checks.find(x=>x.key==='calendar_dates').passed,false);
 });
+
+
+import {inspectWorkspaceBackup} from '../src/accounting/backup-recovery.js';
+const BACKUP_OWNER='00000000-0000-4000-a000-000000000111';
+const BACKUP_OTHER='00000000-0000-4000-a000-000000000112';
+const BACKUP_ORIGINAL='00000000-0000-4000-a000-000000000113';
+const BACKUP_COPY='00000000-0000-4000-a000-000000000114';
+function syntheticOwnBackup(){
+ return JSON.stringify({format:'trenerki-lab-backup-v1',exported_at:'2026-11-15T08:00:00Z',
+  workspace:{id:BACKUP_ORIGINAL,user_id:BACKUP_OWNER,version:7,name:'Fikcyjne Biuro',
+   state:{...EMPTY(),invoices:[{id:'FAKE1',kind:'sale',status:'draft'}]}}});
+}
+test('Kopia biura: walidacja właściciela, wersji i liczników bez zapisu',()=>{
+ const input=syntheticOwnBackup(),snap=JSON.parse(input);
+ const parsed=inspectWorkspaceBackup(input,BACKUP_OWNER);
+ assert.equal(parsed.imported_name,'Fikcyjne Biuro (odzyskane)');
+ assert.equal(parsed.owner_id,BACKUP_OWNER);
+ assert.equal(parsed.source_workspace_id,BACKUP_ORIGINAL);
+ assert.equal(parsed.source_version,7);
+ assert.deepEqual(parsed.counts,{invoices:1,bank:0,journals:0,matches:0});
+ assert.deepEqual(JSON.parse(input),snap);
+ assert.throws(()=>inspectWorkspaceBackup(input,BACKUP_OTHER),/innego konta/);
+});
+test('Kopia biura: odrzucone nieznane, niepełne i złośliwe pliki',()=>{
+ const good=JSON.parse(syntheticOwnBackup());
+ for(const patch of [
+  obj=>{obj.format='trenerki-unsaved-conflict-v1';},
+  obj=>{obj.workspace.state.schema_version=99;},
+  obj=>{delete obj.workspace.state.bank;},
+  obj=>{obj.workspace.user_id=BACKUP_OTHER;},
+  obj=>{obj.workspace.version=0;},
+  obj=>{Object.defineProperty(obj.workspace.state,'__proto__',{value:{admin:true},enumerable:true});}
+ ]){
+  const candidate=structuredClone(good);
+  patch(candidate);
+  assert.throws(()=>inspectWorkspaceBackup(JSON.stringify(candidate),BACKUP_OWNER));
+ }
+ assert.throws(()=>inspectWorkspaceBackup('{broken',BACKUP_OWNER));
+ assert.throws(()=>inspectWorkspaceBackup('x'.repeat(1000001),BACKUP_OWNER));
+});
+test('Kopia biura: odtworzenie do NOWEGO biura wymaga zgody i nie rusza oryginału',async()=>{
+ const {mountLab}=await import('../src/accounting/lab-ui.js');
+ const prevWindow=globalThis.window,prevLocal=globalThis.localStorage;
+ const original={id:BACKUP_ORIGINAL,user_id:BACKUP_OWNER,name:'Fikcyjne Biuro',
+  version:3,updated_at:'2026-11-15T07:00:00Z',state:EMPTY()};
+ const before=JSON.stringify(original);
+ const root={innerHTML:'',handlers:{},addEventListener(k,fn){this.handlers[k]=fn;},
+  removeEventListener(k){delete this.handlers[k];},querySelectorAll(){return [];}};
+ let inserted=0,saved=0,mayConfirm=false,newRecord=null;
+ globalThis.window={confirm:()=>mayConfirm,addEventListener(){},removeEventListener(){}};
+ globalThis.localStorage={getItem(){return null;},setItem(){}};
+ const db={
+  auth:{getUser:async()=>({data:{user:{id:BACKUP_OWNER}}})},
+  rpc:async(name,args)=>{
+   if(name==='ta_accounting_overview')return {data:{},error:null};
+   if(name==='ta_accounting_lab_save'){
+    assert.equal(args.workspace_id,BACKUP_COPY);
+    assert.equal(args.expected_version,1);
+    assert.equal(args.next_state.invoices.length,1);
+    saved++;
+    newRecord={...newRecord,state:args.next_state,version:2};
+    return {data:newRecord,error:null};
+   }
+   throw new Error('unexpected RPC '+name);
+  },
+  from(table){
+   assert.ok(['ta_accounting_lab_workspaces','ta_accounting_core_materials_v3','ta_accounting_lab_events'].includes(table));
+   return {
+    newName:null,idFilter:null,
+    select(){return this;},
+    eq(k,v){this.idFilter=v;return this;},
+    order:async()=>({data:[{id:original.id,name:original.name,version:original.version,
+       updated_at:original.updated_at}],error:null}),
+    maybeSingle:async()=>({data:null,error:{message:'Synthetic protected lesson unavailable'}}),
+    insert(payload){this.newName=payload.name;return this;},
+    single:async function(){
+     if(this.newName){
+      inserted++;
+      newRecord={id:BACKUP_COPY,user_id:BACKUP_OWNER,name:this.newName,
+       version:1,updated_at:'2026-11-15T08:00:00Z',state:EMPTY()};
+      return {data:newRecord,error:null};
+     }
+     return {data:original,error:null};
+    }
+   };
+  }
+ };
+ let dispose=()=>{};
+ try{
+  dispose=mountLab(root,db);
+  await new Promise(resolve=>setImmediate(resolve));
+  await root.handlers.change({target:{
+   id:'lab-backup-file',files:[{size:syntheticOwnBackup().length,text:async()=>syntheticOwnBackup()}]
+  }});
+  assert.match(root.innerHTML,/Utwórz NOWE biuro z kopii/);
+  const event={target:{closest:()=>({disabled:false,dataset:{action:'restore-copy',id:''}})}};
+  await root.handlers.click(event);
+  assert.equal(inserted,0,'Bez potwierdzenia niczego nie tworzymy');
+  mayConfirm=true;
+  await root.handlers.click(event);
+  assert.equal(inserted,1);
+  assert.equal(saved,1);
+  assert.equal(newRecord.state.invoices[0].id,'FAKE1');
+  assert.equal(newRecord.id,BACKUP_COPY);
+  assert.equal(newRecord.version,2);
+  assert.match(root.innerHTML,/Kopia odzyskana do osobnego biura/);
+  assert.equal(JSON.stringify(original),before);
+ }finally{
+  dispose();
+  if(prevWindow===undefined)delete globalThis.window;else globalThis.window=prevWindow;
+  if(prevLocal===undefined)delete globalThis.localStorage;else globalThis.localStorage=prevLocal;
+ }
+});
