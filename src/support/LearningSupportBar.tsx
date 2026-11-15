@@ -39,9 +39,6 @@ export default function LearningSupportBar(){
    <span aria-hidden="true" style={{color:'#e9a6b0',fontSize:19}}>♡</span>
    Pomoc i wsparcie
   </a>
-  <a href="/academy/kontakt.html" style={{color:'#b7c8bd',fontSize:12,minHeight:40,display:'inline-flex',alignItems:'center'}}>
-   Kontakt
-  </a>
   <nav className="ta-app-footer-links" aria-label="Ustawienia prywatności" style={{display:'inline-flex',alignItems:'center',flex:'0 0 auto',minHeight:44}}/>
  </footer>;
  return <View role="contentinfo" style={{backgroundColor:'#102820',borderTopWidth:1,borderColor:'#2c463b',
