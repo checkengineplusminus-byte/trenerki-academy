@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-label="Autorska niebieska tapeta pulpitu nawiązująca stylistyką do Windows 11">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80ccff"/><stop offset=".38" stop-color="#0a64bd"/><stop offset=".78" stop-color="#0a3c97"/><stop offset="1" stop-color="#032661"/></linearGradient>
+ <radialGradient id="glow" cx=".53" cy=".52" r=".56"><stop stop-color="#d8f9ff" stop-opacity=".94"/><stop offset=".3" stop-color="#70d4ff" stop-opacity=".62"/><stop offset=".68" stop-color="#3b74d6" stop-opacity=".18"/><stop offset="1" stop-color="#183787" stop-opacity="0"/></radialGradient>
+ <linearGradient id="foldA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e1fbff"/><stop offset=".28" stop-color="#87e4ff"/><stop offset=".62" stop-color="#216ed5"/><stop offset="1" stop-color="#063d9b"/></linearGradient>
+ <linearGradient id="foldB" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#072e86"/><stop offset=".22" stop-color="#2376e6"/><stop offset=".48" stop-color="#c1f4ff"/><stop offset=".73" stop-color="#3484d7"/><stop offset="1" stop-color="#12428f"/></linearGradient>
+ <linearGradient id="foldC" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d8f9ff"/><stop offset=".4" stop-color="#87e1ff"/><stop offset="1" stop-color="#144ba5"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="42"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<rect width="1440" height="900" fill="url(#bg)"/>
+<ellipse cx="760" cy="450" rx="590" ry="390" fill="url(#glow)" filter="url(#blur)" opacity=".8"/>
+<path d="M103 630 C278 367 554 221 848 227 C1004 233 1177 291 1320 409 C1090 386 949 388 812 499 C638 638 473 753 103 630Z" fill="url(#foldA)" opacity=".95"/>
+<path d="M130 649 C408 640 545 506 703 385 C824 292 983 255 1186 313 C1092 434 964 510 822 558 C636 643 480 737 130 649Z" fill="url(#foldB)" opacity=".96"/>
+<path d="M336 773 C513 615 622 500 720 411 C861 282 1034 312 1257 444 C1101 449 968 514 851 610 C665 758 534 788 336 773Z" fill="url(#foldC)" opacity=".8"/>
+<path d="M414 773 C636 661 677 556 816 477 C953 400 1077 429 1263 522 C1066 539 974 592 829 707 C678 823 526 819 414 773Z" fill="#0d58b6" opacity=".7"/>
+<path d="M266 548 C488 291 722 194 938 241" fill="none" stroke="#e5ffff" stroke-width="45" stroke-linecap="round" opacity=".29" filter="url(#soft)"/>
+<path d="M385 731 C586 651 707 466 902 404" fill="none" stroke="#d1f9ff" stroke-width="17" stroke-linecap="round" opacity=".36" filter="url(#soft)"/>
+<path d="M119 829 C412 775 583 744 824 800" fill="none" stroke="#001a67" stroke-width="112" opacity=".19" filter="url(#blur)"/>
+</svg>
