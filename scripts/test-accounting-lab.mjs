@@ -1456,7 +1456,10 @@ import {planAcquisition as lifecycleAcquire,planDepreciation as lifecycleDepreci
 function fictionalFullCompanyMonth(){
  const {manifest,state:practice}=completeIntegratedFixture();
  let s=payrollState();
- s.company={status:'ready',fictional:true};
+ s.company={schema_version:1,status:'ready',fictional:true,entity_type:'jdg',
+  record_system:'books',vat_status:'active',
+  identity:{legal_name:'Fikcyjna Firma do Testów',nip:'9000000016',regon:'',
+   krs:'',address:'ul. Przykładowa 1, 00-001 Testowo',country:'PL'}};
  for(const id of ['P01','P02']){
   s=withPersonnelCase(s,{...readPersonnelCases(s)[id],
    document_drafts:Object.fromEntries(Object.keys(PERSONNEL_FLAGS).map(key=>[key,true]))});
@@ -1557,6 +1560,25 @@ test('Zamknięcie miesiąca wymaga zapisanej karty firmy, nie tylko udanych ksi�
  assert.equal(result.checks.find(c=>c.key==='company_opening').passed,false);
  assert.equal(result.ready_for_training_review,false);
  assert.equal(result.completed,false);
+});
+test('Przekrój: sama flaga ready nie potwierdza otwarcia, NIP i wyboru ewidencji/VAT',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),before=JSON.stringify(state);
+ const variants=[
+  {status:'ready',fictional:true},
+  {...state.company,identity:{...state.company.identity,nip:'9000000017'}},
+  {...state.company,record_system:'unconfirmed'},
+  {...state.company,vat_status:'unconfirmed'}
+ ];
+ for(const company of variants){
+  const broken={...state,company};
+  const audit=auditCompanyLifecycle(broken,manifest);
+  const report=taxCloseTrainingAudit(broken,manifest);
+  assert.equal(audit.steps.find(x=>x.key==='company').status,'needs_work');
+  assert.equal(report.checks.find(x=>x.key==='company_opening').passed,false);
+  assert.equal(report.ready_for_training_review,false);
+  assert.equal(report.completed,false);
+ }
+ assert.equal(JSON.stringify(state),before,'Odczytowa kontrola nie zmienia danych');
 });
 test('Jeden miesiąc: fikcyjny styczeń D01–D36 nie zalicza innego okresu biura',()=>{
  const {manifest,state}=fictionalFullCompanyMonth();

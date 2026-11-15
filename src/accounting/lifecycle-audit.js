@@ -5,6 +5,7 @@
  * Żaden wynik nie zastępuje KSeF/JPK/UPO, autoryzowanego E2E ani recenzji.
  */
 import {livePostings,expectedInvoiceLines,invoiceTotals,validDate} from './lab-core-base.js';
+import {prepareCompany} from './identity-core.js';
 import {PERSONNEL_IDS,readPersonnelCases} from './personnel-practice.js';
 import {readPayrollPractices,payrollLifecycleChecklist} from './payroll-practice.js';
 import {inspectPayrollLedger} from './payroll-ledger-audit.js';
@@ -29,10 +30,18 @@ export function auditCompanyLifecycle(state,scenario=null){
  const add=(key,label,passed,detail,tab=null,href=null)=>steps.push({
    key,label,status:passed?'passed_training':'needs_work',detail,tab,href
  });
+ // Wznowiony stan biura może zawierać niezweryfikowaną flagę 'ready'.
+ // Kontrola jest odczytowa i nie poprawia automatycznie danych kursanta.
+ let companyReady=false;
+ try{
+   const checked=prepareCompany(s.company,'ready');
+   companyReady=s.company?.status==='ready'&&
+     checked.record_system!=='unconfirmed'&&checked.vat_status!=='unconfirmed';
+ }catch{companyReady=false;}
  add('company','Karta fikcyjnej jednostki',
-   s.company?.status==='ready',
-   s.company?.status==='ready'?'Karta jednostki zapisana i wewnętrznie sprawdzona; rejestracja urzędowa niepotwierdzona.':
-   'Uzupełnij i zapisz kartę firmy ćwiczeniowej.',null,'/dane-biura');
+   companyReady,
+   companyReady?'Dane i założenia ewidencji/VAT sprawdzone w modelu; rejestracja urzędowa niepotwierdzona.':
+   'Sprawdź nazwę, adres, syntetyczny NIP, rodzaj jednostki i wybierz ewidencję oraz VAT w karcie firmy ćwiczeniowej.',null,'/dane-biura');
  function postingForInvoice(i){
    try{
      const totals=invoiceTotals(i);
