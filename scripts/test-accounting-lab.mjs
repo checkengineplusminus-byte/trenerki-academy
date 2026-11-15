@@ -1191,3 +1191,12 @@ test('Ścieżka: zasymulowane dokumenty D01-D36 bez wzorca księgowań nie dosta
  assert.equal(r.steps.at(-1).status,'not_implemented');
  assert.equal(r.real_two_account_e2e,'not_tested');
 });
+
+
+test('Ścieżka: zbilansowane, ale błędne konto banku nie zalicza rozrachunków',()=>{
+ const s=fullScenario();
+ s.journals.find(j=>j.id==='jb1').lines[1].account='700';
+ const r=auditCompanyLifecycle(s,null);
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(r.completed,false);
+});

@@ -9,6 +9,7 @@ import {PERSONNEL_IDS,readPersonnelCases} from './personnel-practice.js';
 import {readPayrollPractices,payrollLifecycleChecklist} from './payroll-practice.js';
 import {inspectPayrollLedger} from './payroll-ledger-audit.js';
 import {assetsControl,assetPosition} from './assets-core.js';
+import {inspectInvoiceBankMatches} from './invoice-match.js';
 import {auditMonthWorkflow} from './simulator-core.js';
 
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
@@ -54,12 +55,15 @@ export function auditCompanyLifecycle(state,scenario=null){
      if(!b||!Number.isSafeInteger(b.amount_cents)||
        (i.kind==='sale'?b.amount_cents<=0:b.amount_cents>=0))return false;
      const entries=posted.filter(j=>j.source_type==='bank'&&j.source_id===b.id);
-     return entries.length===1&&entries[0].lines.some(l=>
-       l.account==='130'&&
-       (b.amount_cents>0?l.debit===b.amount_cents:l.credit===-b.amount_cents));
+     const expected=b.amount_cents>0
+       ?[{account:'130',debit:b.amount_cents,credit:0},{account:'201',debit:0,credit:b.amount_cents}]
+       :[{account:'202',debit:-b.amount_cents,credit:0},{account:'130',debit:0,credit:-b.amount_cents}];
+     return entries.length===1&&signature(entries[0].lines)===signature(expected);
    });
  }
- const bankReady=validShape&&sales.some(paid)&&purchases.some(paid);
+ let matchesClean=false;
+ try{matchesClean=validShape&&inspectInvoiceBankMatches(s).length===0;}catch{matchesClean=false;}
+ const bankReady=validShape&&matchesClean&&sales.some(paid)&&purchases.some(paid);
  add('bank','CSV, rozrachunki i osobne dekrety bankowe',bankReady,
    bankReady?'Powiązania zakup/sprzedaż mają zgodne wpływy i wypływy z dekretami.':
    'Uzgodnij obie faktury z fikcyjnym CSV oraz oddzielnie zaksięguj wpływ i wydatek.',
