@@ -150,6 +150,11 @@ try{
     !guideServer.includes("db.from('ta_learning_attempts').select('id')"))
   fail('Server must not require a mentor session, but must check objective practice');
  else ok('Sequential progression and objective exercises are mandatory; mentor chat is not');
+ const mandatoryCarpentry="if(slug==='ciesla-przygotowanie-czeladnicze'&&[1,8,18,23,56,58].includes(no))required.push('carpentry');";
+ if(!guideServer.includes(mandatoryCarpentry)||guideServer.includes('payload.require_carpentry===true')||
+    !progress.includes("recordAttempt('carpentry'")||!progress.includes('carpentry-checklist'))
+  fail('Carpentry must require two persisted checkpoints independently of any client flag');
+ else ok('Carpentry quiz + numeric exercise are mandatory and saved on the server');
  if(!caseQuiz.includes('await onAttempt')||!languageQuiz.includes('await onAttempt')||
     !keyboardQuiz.includes('await onAttempt')||!keyboardQuiz.includes('quizConfirmed')||
     !progress.includes('async function recordAttempt('))
