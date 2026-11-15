@@ -22,6 +22,7 @@ import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
+import AutoCADReferenceGuide from '../src/AutoCADReferenceGuide';
 import CadWorkspace from '../src/CadWorkspace';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
@@ -257,6 +258,7 @@ export default function Learning(){
     {reviewMode&&<Text style={{fontSize:12,lineHeight:19,color:'#49684c',marginTop:5}}>Powtarzasz materiały. Postęp i dyplom nie są kasowane.</Text>}
    </View>
    {lessonNavigation('top')}
+   {slug==='autocad-skroty'&&<AutoCADReferenceGuide/>}
    {slug==='zaufany-wolontariusz'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:14,marginBottom:14}}>
     <Link href={{pathname:'/materialy-wolontariusza',params:{sekcja:'karty'}}} style={{color:ink,fontWeight:'700',textDecorationLine:'underline'}}>Karty pracy</Link>
     <Link href={{pathname:'/materialy-wolontariusza',params:{sekcja:'test-zbiorek'}}} style={{color:ink,fontWeight:'700',textDecorationLine:'underline'}}>Test zabezpieczenia zbiórki</Link>
