@@ -2124,3 +2124,31 @@ test('Biuro: brak karty firmy nadal pozwala na szkic i zwykły model, ale bez fa
  assert.equal(issued.identity_version,undefined);
  assert.equal(prepareLabInvoice(d,null,'draft').status,'draft');
 });
+
+
+test('Bank CSV → dekret → kontrola zamknięcia: dzień źródła musi zgadzać się z księgowaniem',()=>{
+ const s=fullScenario();
+ const first=auditCompanyLifecycle(s);
+ const original=taxCloseTrainingAudit(s);
+ assert.equal(first.steps.find(x=>x.key==='bank').status,'passed_training');
+ assert.equal(original.checks.find(x=>x.key==='bank_sources').passed,true);
+ const earlier=JSON.stringify(s);
+ s.journals.find(j=>j.id==='jb1').date='2026-11-07'; // W tym samym miesiącu; CSV ma 05.11.
+ const snapshot=JSON.stringify(s),lifecycle=auditCompanyLifecycle(s),close=taxCloseTrainingAudit(s);
+ assert.equal(lifecycle.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(lifecycle.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(close.checks.find(x=>x.key==='bank').passed,true,'Suma 130 nadal się bilansuje');
+ assert.equal(close.checks.find(x=>x.key==='bank_sources').passed,false,'Kontrola źródłowa ma zablokować fałszywą zgodność');
+ assert.ok(close.issues.some(x=>x.code==='bank_source_amount_or_period_mismatch'&&x.invoice==='CW-BANK-1'));
+ assert.equal(close.ready_for_training_review,false);
+ assert.equal(JSON.stringify(s),snapshot,'Obydwa audyty nie zmieniają danych');
+ assert.notEqual(snapshot,earlier);
+});
+test('Import CSV z datą inną niż data dekretu w tym samym miesiącu nie zalicza etapu',()=>{
+ const s=fullScenario();
+ s.bank[0].date='2026-11-08';
+ assert.equal(auditCompanyLifecycle(s).steps.find(x=>x.key==='bank').status,'needs_work');
+ const closing=taxCloseTrainingAudit(s);
+ assert.equal(closing.checks.find(x=>x.key==='bank_sources').passed,false);
+ assert.ok(closing.issues.some(x=>x.code==='bank_source_amount_or_period_mismatch'));
+});

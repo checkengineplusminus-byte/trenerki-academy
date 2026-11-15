@@ -146,7 +146,8 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    }
    const entry=sourceEntries[0];
    const bankLines=Array.isArray(entry.lines)?entry.lines.filter(l=>l.account==='130'):[];
-   if(monthOf(entry.date)!==period||bankLines.length!==1||
+   // Nie zaliczamy przeksięgowania z inną datą w obrębie tego samego miesiąca.
+   if(entry.date!==row.date||bankLines.length!==1||
       bankLines[0].debit!==Math.max(0,row.amount_cents)||
       bankLines[0].credit!==Math.max(0,-row.amount_cents)){
     bankCoverageIssues.push({code:'bank_source_amount_or_period_mismatch',invoice:id});

@@ -103,7 +103,9 @@ export function auditCompanyLifecycle(state,scenario=null){
      b.amount_cents===0||Math.abs(b.amount_cents)>1000000000000)return false;
    bankIds.add(id);
    const entries=posted.filter(j=>j.source_type==='bank'&&j.source_id===id);
-   if(entries.length!==1||monthOf(entries[0].date)!==period||
+   // Data dekretu musi być datą WŁASNEGO wiersza CSV, a nie tylko
+   // dowolnym dniem w tym samym miesiącu.
+   if(entries.length!==1||entries[0].date!==b.date||
      !Array.isArray(entries[0].lines))return false;
    const line130=entries[0].lines.filter(l=>l.account==='130');
    return line130.length===1&&line130[0].debit===Math.max(0,b.amount_cents)&&
