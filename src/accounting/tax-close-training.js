@@ -138,7 +138,10 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    passed:steps.company==='passed_training',
    detail:'Wymagana zapisana karta fikcyjnej firmy; ćwiczenie nie jest rejestracją urzędową'},
   {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
-   passed:!!period&&!!scenario&&scenario.month===period&&steps.month==='passed_training',
+   passed:!!period&&steps.month==='passed_training'&&
+    (scenario?.scenario??scenario)?.documents?.length===36&&
+    (scenario.scenario??scenario).documents.every(d=>monthOf(d.date)===period)&&
+    (!(scenario.scenario??scenario).month||(scenario.scenario??scenario).month===period),
    detail:'D01–D36 i faktury, bank, kadry oraz majątek muszą dotyczyć tego samego miesiąca ('+(period||'nieustalonego')+'). Osobny styczeń nie zamyka listopada'}
  ];
  const vatDifferenceCents=totals.sale_vat_cents-totals.purchase_vat_cents;
