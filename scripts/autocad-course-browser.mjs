@@ -98,16 +98,25 @@ for(const mobile of [false,true]){
   await send('ZOOM E');
   // User-path regression: tapping a thin LINE must select immediately, not only after holding.
   await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
-  const hit4=cad.getByTestId('cad-canvas').locator('[data-cad-hit="true"][data-cad-object="4"]');
-  const hit5=cad.getByTestId('cad-canvas').locator('[data-cad-hit="true"][data-cad-object="5"]');
-  await hit4.waitFor();await hit5.waitFor();
-  if(mobile)await hit4.tap();else await hit4.click();
+  const clickCadSegment=async(id)=>{
+   const svg=cad.getByTestId('cad-canvas');
+   const poly=svg.locator('g[data-cad-object="'+id+'"] > polyline:not([data-cad-hit])');
+   const pts=(await poly.getAttribute('points')).trim().split(/\\s+/).map(item=>item.split(',').map(Number));
+   assert.equal(pts.length,2,'Expected a straight CAD segment '+id);
+   const box=await svg.boundingBox();
+   const vb=(await svg.getAttribute('viewBox')).split(/\\s+/).map(Number);
+   assert(box&&vb.length===4&&vb[2]>0&&vb[3]>0);
+   const x=box.x+((pts[0][0]+pts[1][0])/2-vb[0])*box.width/vb[2];
+   const y=box.y+((pts[0][1]+pts[1][1])/2-vb[1])*box.height/vb[3];
+   if(mobile)await page.touchscreen.tap(x,y);else await page.mouse.click(x,y);
+  };
+  await clickCadSegment(4);
   await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 1'}).waitFor();
-  if(mobile)await hit5.tap();else await hit5.click();
+  await clickCadSegment(5);
   await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 1'}).waitFor();
   const hold=cad.getByTestId('cad-hold-selection');
   await hold.click();
-  if(mobile)await hit4.tap();else await hit4.click();
+  await clickCadSegment(4);
   await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 2'}).waitFor();
   await hold.click();
   await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
