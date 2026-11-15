@@ -1159,3 +1159,35 @@ test('Integracja płac: storno nie tworzy fałszywego duplikatu',()=>{
     reversal_of:posted.id,lines:posted.lines.map(l=>({account:l.account,debit:l.credit,credit:l.debit}))};
   assert.deepEqual(inspectPayrollLedger({...s,journals:[posted,reversed]}),[]);
 });
+
+
+import {auditCompanyLifecycle} from '../src/accounting/lifecycle-audit.js';
+
+test('Ścieżka firmy: pusty stan nie udaje ukończenia',()=>{
+ const r=auditCompanyLifecycle(EMPTY(),null);
+ assert.equal(r.steps.length,7);
+ assert.equal(r.finished_training_stages,0);
+ assert.equal(r.completed,false);
+ assert.equal(r.integrated_full_cycle,'not_tested');
+ assert.equal(r.steps.at(-1).status,'not_implemented');
+});
+test('Ścieżka: faktury i bank rozpoznane, ale bez kadr i majątku nie ma pełnego cyklu',()=>{
+ const s=fullScenario(),r=auditCompanyLifecycle(s,null);
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='payroll').status,'needs_work');
+ assert.equal(r.steps.find(x=>x.key==='asset').status,'needs_work');
+ assert.equal(r.completed,false);
+});
+test('Ścieżka: sam poprawny przelew bez dekretu banku nie wystarcza',()=>{
+ const s=fullScenario();s.journals=s.journals.filter(j=>j.source_type!=='bank');
+ const r=auditCompanyLifecycle(s,null);
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+});
+test('Ścieżka: zasymulowane dokumenty D01-D36 bez wzorca księgowań nie dostają zaliczenia',()=>{
+ const r=auditCompanyLifecycle(fullScenario(),fakeManifest);
+ assert.equal(r.steps.find(x=>x.key==='month').status,'needs_work');
+ assert.equal(r.steps.at(-1).status,'not_implemented');
+ assert.equal(r.real_two_account_e2e,'not_tested');
+});
