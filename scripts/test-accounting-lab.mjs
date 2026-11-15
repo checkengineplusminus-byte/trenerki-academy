@@ -1636,7 +1636,7 @@ test('MOST fakturowy: duplikat, data, kwota, stornowany dekret i szkic są odrzu
  assert.equal(inspectScenarioInvoiceBridge(reversed,manifest,'2026-01').matched,0);
  const duplicate={...passed,journals:[...passed.journals,{...journal,id:'DOUBLE'}]};
  assert.ok(inspectScenarioInvoiceBridge(duplicate,manifest,'2026-01').issues.some(x=>x.code==='scenario_invoice_posting_missing_duplicate_or_wrong_date'));
- const wrongAccount={...passed,journals:[...base.journals,{...journal,lines:[{account:'400',debit:amount*100,credit:0},{account:'202',debit:0,credit:amount*100}]}]};
+ const wrongAccount={...passed,journals:[...base.journals,{...journal,lines:[{account:'400',debit:amount*100,credit:0},{account:'201',debit:0,credit:amount*100}]}]};
  assert.equal(inspectScenarioInvoiceBridge(wrongAccount,manifest,'2026-01').matched,0);
 });
 test('MOST D01-D36: bankowy CSV z dokumentow jest importowalny i unikalny',()=>{
