@@ -1,0 +1,679 @@
+{
+  "version": "2026-11-15-v3",
+  "course": "autocad-skroty",
+  "lessonCount": 30,
+  "assignments": [
+    {
+      "lesson_no": 0,
+      "title": "Zadanie w pracowni: Co to jest CAD?",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "1000,0"
+      ],
+      "task": "W warsztacie wpisz LINE, wskaż 0,0 i 1000,0, zakończ Enterem. Porównaj z fotografią: narysowany odcinek jest obiektem, który możesz zaznaczyć, zmierzyć i przesunąć.",
+      "expected": "Po zmierzeniu DIST wynik wynosi 1000 jednostek modelu, nie 1000 pikseli ekranu. Przybliżenie ZOOM nie zmienia długości.",
+      "commonMistake": "Nie określaj wymiaru w metrach na podstawie obrazu bez skali. Jeżeli dokument opisuje milimetry, 1000 jednostek oznacza 1000 mm dopiero przy tej świadomej umowie.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "UNITS",
+        "PROPERTIES"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 1,
+      "title": "Zadanie w pracowni: Mapa okna AutoCAD-a",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "250,0"
+      ],
+      "task": "Wskaż wstążkę, obszar rysunku, wiersz poleceń i dolny pasek. Wpisz LINE, zobacz prośbę o pierwszy punkt, następnie anuluj Esc. Sprawdź, czy na modelu nie zostały dodatkowe elementy.",
+      "expected": "Potrafisz wskazać, do czego służy konkretna część interfejsu, oraz otworzyć Model. Wygaszenie wstążki nie usuwa geometrii.",
+      "commonMistake": "Nie klikaj na ślepo w losową ikonę. Przed każdym ćwiczeniem sprawdź aktywne polecenie na dole ekranu i czy pracujesz w Model, a nie w Layout.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "LAYOUT",
+        "COMMANDLINE",
+        "CUI"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 2,
+      "title": "Zadanie w pracowni: Co to jest DWG, DXF i PDF?",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "500,0"
+      ],
+      "task": "Stwórz rysunek testowy i nazwij rewizję A. W oryginalnym Autodesk zapisz DWG, wyeksportuj PDF z layoutu, a DXF przygotuj tylko jeśli wymaga tego odbiorca. W naszym warsztacie narysuj prostą geometrię do porównania.",
+      "expected": "DWG zawiera edytowalną geometrię, PDF jest kontrolnym obrazem wydruku, a DXF wymienia obiekty pomiędzy programami. Zawartość każdej wersji musi odpowiadać tej samej rewizji.",
+      "commonMistake": "Nigdy nie podmieniaj wyłącznie końcówki .PDF na .DWG. Zapisz dane ponownie właściwą funkcją i otwórz wynik innym programem do kontroli.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "QSAVE",
+        "SAVEAS",
+        "EXPORTPDF"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 3,
+      "title": "Zadanie w pracowni: Jednostki i milimetry",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "4000,0"
+      ],
+      "task": "Ustal model w milimetrach. Wpisz LINE, 0,0 i 4000,0. Porównaj długość za pomocą DIST; w oryginalnym AutoCAD sprawdź UNITS oraz jednostki wstawiania.",
+      "expected": "Odcinek ma 4000 jednostek, interpretowanych w projekcie jako 4000 mm = 4 m. Przeliczenie nie wymaga SCALE, jeżeli geometrię od początku narysowano prawidłowo.",
+      "commonMistake": "Zmiana wyświetlanej jednostki przez UNITS nie jest automatycznym przeskalowaniem istniejącego pliku; stary DWG najpierw trzeba zdiagnozować.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "UNITS",
+        "MEASUREGEOM",
+        "PROPERTIES"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 4,
+      "title": "Zadanie w pracowni: Punkt, współrzędne X i Y",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "-1000,-700",
+        "@4200,0"
+      ],
+      "task": "W modelu ustaw początek 0,0. Narysuj pierwszy bok od -1000,-700 do punktu względnego @4200,0. Odczytaj współrzędne początku i końca, a następnie wykonaj ten sam odcinek z innego punktu bazowego.",
+      "expected": "Różnica współrzędnych wynosi +4200 w osi X i 0 w osi Y. Znak @ oznacza przesunięcie od punktu poprzedniego, a nie punkt absolutny.",
+      "commonMistake": "W oryginalnym AutoCAD dynamiczny wpis może zmieniać interpretację wpisywanych liczb. Na początku ćwiczenia użyj jawnej składni @ i odczytaj prompt.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "ID",
+        "UCS",
+        "DYNMODE"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 5,
+      "title": "Zadanie w pracowni: Linia, polilinia i okrąg",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "1000,0"
+      ],
+      "task": "Wpisz LINE, narysuj boki przez 0,0; 1000,0; 500,800 i CLOSE. Sprawdź liczbę obiektów, potem JOIN i spróbuj przenieść powstałą polilinię.",
+      "expected": "Z trzech LINE powstał jeden obiekt typu polilinia. MOVE przesuwa wszystkie wierzchołki o ten sam wektor, zachowując boki i obwód.",
+      "commonMistake": "JOIN może nie zadziałać, jeśli końce nie stykają się, są na różnych poziomach Z albo dołączono niepasujący typ obiektu. Najpierw sprawdź właściwości.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "PROPERTIES"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 6,
+      "title": "Zadanie w pracowni: Co znaczy Enter i Esc?",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "300,0"
+      ],
+      "task": "Uruchom LINE, podaj trzy punkty i naciśnij Esc. Policz odcinki; użyj UNDO, potem REDO. Spróbuj wejść w RECTANG i anulować jeszcze przed wyborem drugiego narożnika.",
+      "expected": "Po Esc polecenie przestaje pobierać kolejne punkty. UNDO cofa wykonane zmiany, a REDO może je odtworzyć.",
+      "commonMistake": "Nie zakładaj, że Esc wyczyści cały fragment rysunku. Obejrzyj status polecenia i zbadaj, co faktycznie pozostało.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "COMMANDLINE"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 7,
+      "title": "Zadanie w pracowni: Warstwy od zera",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "400,250"
+      ],
+      "task": "Utwórz warstwy OBRYS i OSIE. Na pierwszej narysuj prostokąt, na drugiej linię osiową. Wyłącz OSIE, a potem przywróć ją i sprawdź, że dane nie zniknęły.",
+      "expected": "W ukryciu zmienia się widoczność, nie liczba obiektów w DWG. Gdy wrócisz do warstwy, powinieneś odzyskać taki sam rysunek.",
+      "commonMistake": "Warstwa to nie plik i nie grupa połączonych linii. Zmiana bieżącej warstwy nie przenosi automatycznie wszystkich wcześniej utworzonych elementów.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "LAYISO",
+        "LAYOFF",
+        "LAYON"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 8,
+      "title": "Zadanie w pracowni: Model Space i Layout",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "4000,3000"
+      ],
+      "task": "W Model narysuj RECTANG o bokach 4000 i 3000 mm. Przejdź do Layout, zaznacz rzutnię, ustaw jej Standard Scale; sprawdź odpowiednią wysokość opisów.",
+      "expected": "W skali 1:50 obrys 4000 × 3000 mm zajmuje na papierze 80 × 60 mm. Model nadal ma 4000 i 3000 jednostek.",
+      "commonMistake": "Nie stosuj SCALE do modelu tylko dlatego, że nie mieści się w ramce wydruku. Użyj skali rzutni i kontroli papieru.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "MODEL",
+        "LAYOUT",
+        "MVIEW"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 9,
+      "title": "Zadanie w pracowni: Pierwszy szkic 4 na 3 metry",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "4000,3000"
+      ],
+      "task": "Wprowadź RECTANG od 0,0 do 4000,3000. Zmierz boki funkcją DIST oraz osobno przekątną. Zapisz obliczone pole w jednostkach modelu.",
+      "expected": "Otrzymujesz boki 4000 i 3000 mm, przekątną 5000 mm oraz pole 12 000 000 mm², czyli 12 m².",
+      "commonMistake": "Nie używaj ZOOM jako dowodu prawidłowych wymiarów. Skala wyświetlania nie potwierdza dokładności punktów.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "AREA",
+        "PROPERTIES"
+      ],
+      "maxMinutes": 15
+    },
+    {
+      "lesson_no": 10,
+      "title": "Zadanie w pracowni: LINE, PLINE, RECTANG i CIRCLE",
+      "focusCommand": "CIRCLE",
+      "typing": [
+        "CIRCLE",
+        "0,0",
+        "300,0"
+      ],
+      "task": "Zbuduj cztery przykłady: LINE, PLINE, RECTANG i CIRCLE. Zaznacz każdy, obejrzyj jego typ, a następnie spróbuj zastosować MOVE i JOIN.",
+      "expected": "Okrąg Ø600 ma promień 300 mm. Prostokąt z polecenia RECTANG zaznacza się jako jeden zamknięty obiekt.",
+      "commonMistake": "Nie zamieniaj średnicy z promieniem ani nie zakładaj, że każda geometryczna figura jest automatycznie polilinią.",
+      "verification": "Zbuduj okrąg i sprawdź promień, średnicę i współrzędne środka.",
+      "targetKind": "circle",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 11,
+      "title": "Zadanie w pracowni: MOVE, COPY, ROTATE i SCALE",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "600,0"
+      ],
+      "task": "Narysuj trójkąt, połącz boki JOIN, użyj MOVE z @2000,0. Następnie COPY w górę o @0,1500 i ROTATE o 90° wokół wybranego punktu bazowego.",
+      "expected": "MOVE i COPY zachowują geometrię, ROTATE zachowuje długości i kąty, a SCALE zmienia wymiary proporcjonalnie do współczynnika.",
+      "commonMistake": "Jeżeli po zmianie przesunął się tylko jeden bok, prawdopodobnie zaznaczono jeden odcinek albo wykonano edycję uchwytu zamiast MOVE.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 12,
+      "title": "Zadanie w pracowni: OSNAP i ORTHO",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "500,0"
+      ],
+      "task": "Włącz OSNAP Endpoint, rozpocznij LINE i wskaż prawdziwy koniec istniejącego odcinka. Następnie włącz ORTHO F8 i POLAR F10 po kolei, porównaj ich zachowanie.",
+      "expected": "OSNAP wybiera punkt geometrii, ORTHO ogranicza kierunek, POLAR podpowiada określone kąty. Włączona sama siatka Grid nie wystarcza do precyzji.",
+      "commonMistake": "Jeśli nowa linia nie trafia w koniec, sprawdź F3 i aktywne tryby OSNAP; F7 tylko pokazuje kratkę.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "OSNAP",
+        "DSETTINGS",
+        "ORTHO"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 13,
+      "title": "Zadanie w pracowni: LA, właściwości i warstwy",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "300,0"
+      ],
+      "task": "Zrób trzy linie na warstwie OBRYS. Dwie pozostaw ByLayer, a jednej nadaj własny kolor w Properties. Zmień kolor warstwy i porównaj reakcje.",
+      "expected": "Obiekty ByLayer podążają za stylem warstwy, natomiast ręczna zmiana może pozostać niezależna. MATCHPROP pomaga przenieść właściwości między elementami.",
+      "commonMistake": "Nie usuwaj obiektu tylko z powodu złego koloru. Najpierw odczytaj właściwości i sprawdź Overrides.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "PROPERTIES",
+        "MATCHPROP",
+        "CHPROP"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 14,
+      "title": "Zadanie w pracowni: ZOOM, PAN i regeneracja",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "500,0"
+      ],
+      "task": "Zmierz odcinek DIST, wykonaj ZOOM, PAN oraz ZOOM Extents. Powtórz DIST dokładnie między tymi samymi punktami.",
+      "expected": "Wynik pomiaru musi pozostać taki sam niezależnie od powiększenia czy przesunięcia kamery.",
+      "commonMistake": "Nie przesuwaj geometrii komendą MOVE tylko dlatego, że zniknęła z ekranu. Najpierw dopasuj widok.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "REGEN",
+        "VIEW",
+        "PROPERTIES"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 15,
+      "title": "Zadanie w pracowni: Bloki, INSERT i XREF",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "50,50"
+      ],
+      "task": "W oryginalnym AutoCAD narysuj symbol, zrób BLOCK i wstaw kilka egzemplarzy przez INSERT. Dołącz zewnętrzną podstawę konstrukcyjną poleceniem XREF.",
+      "expected": "Wszystkie instancje korzystają ze wspólnej definicji bloku. Odnośnik XREF wymaga dostępnej ścieżki do pliku zewnętrznego.",
+      "commonMistake": "Nie traktuj bloku jako zewnętrznego pliku: to odrębne pojęcia. Nie wysyłaj samego DWG, jeśli potrzebuje podkładów.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "BLOCK",
+        "INSERT",
+        "BEDIT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 16,
+      "title": "Zadanie w pracowni: Wymiarowanie i adnotacje",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "1000,0"
+      ],
+      "task": "Narysuj odcinek 1000 mm. Dodaj wymiar liniowy, zmień długość w kopii i sprawdź niezależnie komendą DIST. Przejrzyj styl wymiaru oraz właściwości skojarzenia.",
+      "expected": "Wartość wymiaru powinna odpowiadać geometrii, a tekst ma być czytelny w docelowej skali wydruku.",
+      "commonMistake": "Nie zastępuj pomiaru wpisaniem poprawnie wyglądającej liczby ręcznie. Zmieniony tekst może maskować geometrię.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "DIM",
+        "DIMSTYLE",
+        "MTEXT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 17,
+      "title": "Zadanie w pracowni: Bezpieczny zapis i wydruk",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "4000,3000"
+      ],
+      "task": "Zapisz edytowalny DWG, ustaw Layout i rzutnię; wybierz PLOT albo EXPORTPDF. Otwórz PDF w niezależnym czytniku.",
+      "expected": "Kontrola musi obejmować rozmiar papieru, skalę, zakres rzutni, widoczność warstw i czytelność tekstu.",
+      "commonMistake": "Nie wysyłaj pliku tylko dlatego, że eksport zakończył się bez błędu. PDF może zawierać niewłaściwy arkusz.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "QSAVE",
+        "SAVEAS",
+        "PLOT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 18,
+      "title": "Zadanie w pracowni: Ćwiczenie: szkic balustrady",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "800,0"
+      ],
+      "task": "Wstaw cztery symbole na X=0,800,1600,2400. Zwymiaruj odstępy osiowe oraz długość całkowitą.",
+      "expected": "Otrzymasz trzy odcinki po 800 mm i zakres osi 2400 mm. Liczba przerw jest o jeden mniejsza od liczby punktów.",
+      "commonMistake": "Nie licz światła między krawędziami, gdy umowa mówi o osiach. Zaznacz punkty odniesienia na rysunku.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "BLOCK",
+        "INSERT",
+        "ARRAY"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 19,
+      "title": "Zadanie w pracowni: Zadanie praktyczne CAD",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "4200,3000"
+      ],
+      "task": "Narysuj obrys i otwór na odrębnej warstwie. Zwymiaruj obrys, sprawdź promień 300 mm i wyeksportuj widok do PDF.",
+      "expected": "Wynik jest pełny dopiero, gdy DWG i PDF pokazują te same wymiary, a niezależne DIST daje właściwą odległość.",
+      "commonMistake": "Nie wystarczy poprawne zdjęcie rysunku. Sam wygląd nie mówi nic o właściwej jednostce, numerze rewizji i warstwach.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "LAYOUT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 20,
+      "title": "Zadanie w pracowni: Zaawansowane: rysunek produkcyjny",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "600,350"
+      ],
+      "task": "Narysuj panel w wariancie A i B, dodaj opis różnic MTEXT, ramkę danych oraz tabelę rewizji w oryginalnym AutoCAD.",
+      "expected": "Dokument z samą datą ostatniego zapisu nie dowodzi zatwierdzenia do wykonania. Każda rewizja musi mieć status.",
+      "commonMistake": "Nie zmieniaj statusu DO SPRAWDZENIA na DO PRODUKCJI bez decyzji osoby uprawnionej.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "BLOCK",
+        "MTEXT",
+        "STYLE"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 21,
+      "title": "Zadanie w pracowni: Zaawansowane: konflikty branżowe",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "500,0"
+      ],
+      "task": "Na osobnych warstwach narysuj podkładową rurę i wspornik. Zaznacz punkt przecięcia, poproś o dane wysokościowe i zapisz współrzędne.",
+      "expected": "Rzut 2D pozwala wskazać XY kolizji. Bez danych Z nie masz podstaw do potwierdzenia rzeczywistego kontaktu.",
+      "commonMistake": "Nie przesuwaj elementów na oko i nie traktuj wyłączonej warstwy jako rozwiązania problemu.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "XREF",
+        "ID",
+        "PROPERTIES"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 22,
+      "title": "Zadanie w pracowni: Zaawansowane: obcy plik DWG",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "500,0"
+      ],
+      "task": "Zrób kopię DWG, sprawdź UNITS, jeden znany wymiar przez DIST, paletę XREF oraz włącz/wyłącz warstwy.",
+      "expected": "Brakujący podkład to nie to samo co usunięty obiekt. Powinieneś umieć wskazać źródło problemu.",
+      "commonMistake": "Nie wykonuj SCALE całego DWG bez uprzedniego pomiaru znanego obiektu i wyjaśnienia jednostek.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "OPEN",
+        "UNITS",
+        "XREF"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 23,
+      "title": "Zadanie w pracowni: Zaawansowane: rewizja i wariant",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "600,350"
+      ],
+      "task": "Zachowaj rysunek A, skopiuj go do B, zmień szerokość +50 mm. Dodaj opis zmiany oraz porównaj geometrię.",
+      "expected": "Raport rewizji pokazuje co i dlaczego się zmieniło. Sam napis final_v2 nie jest dokumentacją decyzji.",
+      "commonMistake": "Nie nadpisuj zatwierdzonego A testowym B; osoba odbierająca musi móc cofnąć się do wcześniejszego stanu.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "SAVEAS",
+        "DWGCOMPARE",
+        "MATCHPROP"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 24,
+      "title": "Zadanie w pracowni: Zaawansowane: skala arkusza",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "5000,0"
+      ],
+      "task": "Zbuduj rzutnię Layout dla jednego modelu. Ustaw 1:50, zablokuj widok, wyeksportuj PDF. Powtórz z 1:100.",
+      "expected": "Odcinek 5000 mm zajmie na papierze odpowiednio 100 lub 50 mm. Geometria w modelu będzie niezmieniona.",
+      "commonMistake": "Nie stosuj SCALE do modelu po to, żeby spełnił arkusz. Nie włączaj dopasowania do strony, jeśli wymagana jest dokładna skala.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "MVIEW",
+        "LAYOUT",
+        "PLOT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 25,
+      "title": "Zadanie w pracowni: Zaawansowane: pomiar z natury",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "3200,0"
+      ],
+      "task": "Narysuj dwa odcinki o długościach 3200 i 3170, dodaj wymiary i opisz bazę pomiarową.",
+      "expected": "Różnica pomiar minus projekt wynosi -30 mm. Zapisz jej znak, datę i miejsce.",
+      "commonMistake": "Nie zmieniaj modelu tylko na podstawie opisu telefonicznego, jeśli nie wiadomo skąd i dokąd dokonano pomiaru.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "ID",
+        "PROPERTIES",
+        "MTEXT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 26,
+      "title": "Zadanie w pracowni: Zaawansowane: bloki i zestawienia",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "50,50"
+      ],
+      "task": "Narysuj pięć symboli, zrób kopię jednego w tym samym miejscu i uruchom COUNT lub listę obiektów w oryginalnym AutoCAD.",
+      "expected": "Liczba wstawień może być większa niż liczba widocznych pozycji. Kontrola duplikatów wpływa na ilość materiału i faktury.",
+      "commonMistake": "Nie licz zrzutu ekranu jako potwierdzenia ilości. Zawsze sprawdź obiekty w pliku.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "INSERT",
+        "BLOCK",
+        "COUNT"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 27,
+      "title": "Zadanie w pracowni: Zaawansowane: kontrola geometrii",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "1000,600"
+      ],
+      "task": "Narysuj poprawny kontur, zduplikuj jedną krawędź, a następnie pozostaw niewielką szczelinę. Sprawdź JOIN, PEDIT i HATCH.",
+      "expected": "Prostokąt 1000 × 600 ma pole 600 000 mm² oraz obwód 3200 mm. Wynik może nie być dostępny przy otwartym obrysie.",
+      "commonMistake": "Nie usuwaj losowo linii, zanim nie sprawdzisz zamknięcia polilinii i końców odcinków.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "OVERKILL",
+        "AREA",
+        "BOUNDARY"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 28,
+      "title": "Zadanie w pracowni: Zaawansowane: komplet plików",
+      "focusCommand": "LINE",
+      "typing": [
+        "LINE",
+        "0,0",
+        "500,0"
+      ],
+      "task": "W oryginalnym AutoCAD przygotuj ETRANSMIT zawierający DWG, XREF, odpowiedni PDF i użyte zależności. Rozpakuj w nowym folderze.",
+      "expected": "Odbiorca może odtworzyć rysunek bez dostępu do Twojego dysku sieciowego. Rozpakowana paczka zachowuje bieżącą rewizję.",
+      "commonMistake": "Nie dołączaj nieaktualnego PDF ani starych XREF. Nie zakładaj, że każda czcionka trafi automatycznie do paczki.",
+      "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
+      "targetKind": "line",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "ETRANSMIT",
+        "XREF",
+        "PDFATTACH"
+      ],
+      "maxMinutes": 20
+    },
+    {
+      "lesson_no": 29,
+      "title": "Zadanie w pracowni: Egzamin próbny: pełny cykl CAD",
+      "focusCommand": "RECTANG",
+      "typing": [
+        "RECTANG",
+        "0,0",
+        "600,350"
+      ],
+      "task": "Narysuj panel A, wyznacz środki (50,50) i (550,50); zrób kopię B 650 × 350 ze środkami (50,70) i (600,70).",
+      "expected": "Rozstaw osi otworów w A wynosi 500 mm, w B 550 mm. Rewizja B musi mieć własny status i niezależny PDF.",
+      "commonMistake": "Nie zmieniaj tylko szerokości obrysu, zostawiając stary rozstaw otworów. Kontroluj wymiar na obu wersjach.",
+      "verification": "Zrób zamknięty prostokąt z dwoma różnymi narożnikami, potem sprawdź długości i pole.",
+      "targetKind": "rect",
+      "targetCount": 1,
+      "allowExisting": false,
+      "desktopOnly": [
+        "EXPORTPDF"
+      ],
+      "maxMinutes": 20
+    }
+  ]
+}
