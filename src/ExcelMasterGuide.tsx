@@ -4,7 +4,7 @@ import reference from '../content/excel-function-index-2026.json';
 import syllabus from '../content/excel-master-syllabus.json';
 
 type Tab='plan'|'functions'|'print';
-type FunctionEntry={code:string;name:string;category:string;url:string};
+type FunctionEntry={code:string;name:string;category:string;url:string;what:string;example?:string};
 type Chapter={id:number;level:string;title:string;explanation:string;steps:string[];example:string;pitfall:string;assignment:string};
 const allFunctions=reference.functions as FunctionEntry[];
 const chapters=syllabus.chapters as Chapter[];
@@ -76,7 +76,7 @@ export default function ExcelMasterGuide(){
    </View>}
    {tab==='functions'&&<View style={{gap:11}}>
     <Text style={sectionHeading}>Encyklopedia {allFunctions.length} funkcji — źródła producenta</Text>
-    <Text style={{fontSize:13,lineHeight:21,color:muted}}>Katalog zawiera identyfikatory, nazwy polskie (tam, gdzie można je wiarygodnie wskazać), kategorie oraz odnośniki do instrukcji Microsoft. To nie jest deklaracja, że wszystkie te funkcje działają w małym arkuszu symulacyjnym. Nazwy i dostępność mogą zależeć od wersji, platformy i języka Excela.</Text>
+    <Text style={{fontSize:13,lineHeight:21,color:muted}}>Katalog zawiera 514 krótkich wyjaśnień, 43 wzory przykładowe, nazwy polskie i angielskie oraz odnośniki do pełnych instrukcji Microsoft. To nie jest deklaracja, że wszystkie te funkcje działają w małym arkuszu symulacyjnym. Nazwy i dostępność mogą zależeć od wersji, platformy i języka Excela.</Text>
     <TextInput accessibilityLabel="Szukaj funkcji Excel A do Z" testID="excel-master-function-search"
      placeholder="Szukaj SUMA, JEŻELI, XLOOKUP, MOD, PMT..." placeholderTextColor="#6a8671"
      value={query} onChangeText={v=>{setQuery(v);setLimit(25)}} autoCorrect={false} style={{padding:13,borderWidth:1,borderColor:outline,backgroundColor:'white',borderRadius:10,color:ink,fontSize:14}}/>
@@ -89,6 +89,11 @@ export default function ExcelMasterGuide(){
     {results.slice(0,limit).map(f=><View key={f.code} style={{borderWidth:1,borderColor:'#dbe7dd',borderRadius:9,backgroundColor:'white',padding:11,gap:5}}>
       <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>{f.name===f.code?f.code:f.name+' · '+f.code}</Text>
       <Text style={{fontSize:11,color:muted}}>{f.category}</Text>
+      <Text style={{fontSize:13,color:ink,lineHeight:20}}>{f.what}</Text>
+      {!!f.example&&<View style={{backgroundColor:'#f0f6ed',padding:9,borderRadius:7}}>
+       <Text style={{fontSize:11,color:muted,fontWeight:'900'}}>Przykładowa formuła</Text>
+       <Text selectable style={{fontSize:12,fontWeight:'700',color:'#285c3d'}}>{f.example}</Text>
+      </View>}
       <Pressable accessibilityRole="link" accessibilityLabel={'Dokumentacja Microsoft funkcji '+f.code} onPress={()=>link(f.url)} style={{minHeight:37,justifyContent:'center'}}>
        <Text style={{fontSize:12,fontWeight:'800',color:'#226485',textDecorationLine:'underline'}}>Opis, składnia i przykłady — Microsoft Support ↗</Text>
       </Pressable>
