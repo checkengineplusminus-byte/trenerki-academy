@@ -22,7 +22,7 @@ export function feedbackConfirmation(data:CourseFeedbackAck|null):string{
  if(!data?.accepted||!data.ticket)return '';
  const short=data.ticket.id.slice(0,8).toUpperCase();
  if(data.ticket.kind==='bug'){
-  return 'Zgłoszenie #'+short+' zostało zapisane do weryfikacji technicznej. Celem jest pierwsze sprawdzenie w ciągu 6 godzin; czas usunięcia usterki zależy od jej potwierdzenia i złożoności.';
+  return 'Anielka: Zapisałam zgłoszenie #'+short+' dla zespołu technicznego. Postaramy się zweryfikować problem w ciągu 6 godzin. Samo usunięcie błędu może wymagać dodatkowych testów i potrwać dłużej.';
  }
  return 'Dziękuję. Zapisałam Twoją uwagę (#'+short+'), żeby można było ulepszyć wyjaśnienia w tej lekcji.';
 }
