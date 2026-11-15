@@ -24,6 +24,12 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
  const [chosen,setChosen]=useState(''),[chapterId,setChapterId]=useState('historia-arkuszy');
  const [answer,setAnswer]=useState(''),[feedback,setFeedback]=useState<'idle'|'wrong'|'right'>('idle'),[finished,setFinished]=useState<string[]>([]);
  useEffect(()=>{setExpanded(lessonNo===0);setTab(lessonNo===0?'historia':'slownik');setSearch('');setCategory('Wszystkie');setChosen('');setLimit(18);},[lessonNo]);
+ useEffect(()=>{
+  if(!expanded||tab!=='slownik'||!chosen||typeof document==='undefined')return;
+  // Place the definition in the learner's viewport after choosing an entry.
+  const selectedNode=document.querySelector('[data-testid="excel-glossary-definition"]');
+  selectedNode?.scrollIntoView?.({block:'nearest',behavior:'smooth'});
+ },[expanded,tab,chosen]);
  const categories=['Wszystkie',...new Set(glossary.map(t=>t.category))];
  const matches=useMemo(()=>glossary.filter(term=>
   (category==='Wszystkie'||term.category===category)&&
