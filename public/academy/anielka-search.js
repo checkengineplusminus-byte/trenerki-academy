@@ -253,7 +253,7 @@ function show(query,scroll=false){
  if(typeof searchCourses==='function')searchCourses(v);
  const out=document.getElementById('anielka-output');
  const opensChat=scroll&&globalThis.TrenerkiSupport&&v.length>=12;
- if(out)out.innerHTML=(opensChat?'<small>Rozmawiasz z asystentką AI. Pomiń dane osobowe.</small>':'')+response(v);
+ if(out)out.innerHTML=(opensChat?'<small>SI · Pomiń dane osobowe.</small>':'')+response(v);
  setPeek(v);
  lastQuery=v;
  if(find(v).found)lastIntent=v;
