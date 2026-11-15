@@ -113,6 +113,11 @@ async function installFixture(page,catalog){
 
 async function openCourse(page,slug,lesson=1){
  await page.goto(origin+'/nauka?course='+slug+'&lesson='+lesson);
+ if(lesson===1){
+  await page.getByTestId('course-reading-introduction').waitFor();
+  assert.equal(await page.getByTestId('case-checkpoint').count(),0,'Introduction must precede the first task');
+  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+ }
  await expectLesson(page,lesson);
 }
 async function expectLesson(page,number){
@@ -419,6 +424,9 @@ async function verifyAllCourses(ctx){
  page.on('pageerror',error=>errors.push(error.message));
  for(const course of courses){
   await page.goto(origin+'/nauka?course='+course.id,{waitUntil:'domcontentloaded'});
+  await page.getByTestId('course-reading-introduction').waitFor();
+  assert.equal(await page.getByTestId('case-checkpoint').count(),0);
+  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   const heading=page.getByTestId('lesson-heading');
   await heading.waitFor();
   assert.equal(await heading.innerText(),course.outline[0],course.id+': opening title');
@@ -472,6 +480,7 @@ for(const mobile of selections){
  page.on('pageerror',error=>errors.push(error.message));
  try{
   await verifyAnonymousCourse(ctx);
+  if(process.env.TRENERKI_INTRO_CATALOG_ONLY==='1'){await verifyAllCourses(ctx);continue;}
   const finished=await installFixture(page);
   await openCourse(page,'zaufany-wolontariusz');
   await verifyIntroPhoto(page,'zaufany-wolontariusz');

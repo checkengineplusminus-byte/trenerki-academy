@@ -31,7 +31,10 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // Przegląd oddzielnego commita be748774 (tylko import i ćwiczenie Excel) nie zmienia przekierowania księgowości.
  // Dopuszczamy wyłącznie dwa sprawdzone stany: starszy czytnik oraz
  // zmianę onboardingu samego Excel (13fab77), bez zmiany tras księgowości.
+ // 15.11: użytkownik zlecił wstęp przed zadaniami i dokładną listę wymagań dla wszystkich kursów.
  const reviewedReaderHashes=new Set([
+  '12e478132297267229af76f44a752bd5514e22ea', // combined introductory reading and server-verified carpentry requirements
+  'db094a43e9adcd3abb7629ee8ebd5ca4d260ee0e',
   'a7c5b5720baeb67a75be65b699d57212197eea60',
   '8526dbcfa26527f2b004c3ff6bf48ac3d4885e4a',
   '5bb86b0916e4fcdfe1376f770cc8a5e27358a076' // reviewed carpentry lesson progression
