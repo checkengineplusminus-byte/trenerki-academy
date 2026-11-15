@@ -6,7 +6,7 @@ type Mission=(typeof workbook.lessons)[number];
 const ink='#173e2d',gray='#52685c',line='#d6e3d9';
 const initialNote='';
 function Step({index,label,done,onPress}:{index:number;label:string;done:boolean;onPress:()=>void}){
- return <Pressable onPress={onPress} accessibilityRole="checkbox" accessibilityState={{checked:done}} aria-checked={done}
+ return <Pressable onPress={onPress} onKeyDown={(event:any)=>{if((event.key||event.nativeEvent?.key)===' '){event.preventDefault?.();event.stopPropagation?.();onPress();}}} accessibilityRole="checkbox" accessibilityState={{checked:done}} aria-checked={done}
   accessibilityLabel={'Krok '+(index+1)+': '+label}
   style={{flexDirection:'row',gap:11,alignItems:'flex-start',borderWidth:1,borderColor:done?'#a6d2b1':'#e0e9e3',backgroundColor:done?'#eff9ef':'#fff',padding:11,borderRadius:10,minHeight:48}}>
    <Text style={{fontSize:18,color:done?'#1c7942':'#668072',fontWeight:'900'}}>{done?'☑':'□'}</Text>
