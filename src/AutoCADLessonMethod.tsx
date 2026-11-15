@@ -22,7 +22,8 @@ export default function AutoCADLessonMethod({lessonNo,title}:Props){
    {blockTitle(section.heading)}
    {section.paragraphs?.map((paragraph,i)=><Text key={i} style={{fontSize:15,lineHeight:26,color:body}}>{paragraph}</Text>)}
    {section.walk?.map((step,i)=><View key={i} style={{gap:7,padding:12,backgroundColor:'#eef5e9',borderRadius:10}}>
-    <Text style={{fontSize:15,fontWeight:'900',color:green}}>Krok {i+1}. {step.instruction}</Text>
+    <Text style={{fontSize:12,fontWeight:'900',color:green}}>KROK {i+1}</Text>
+    <Text style={{fontSize:15,fontWeight:'900',color:green}}>{step.instruction}</Text>
     <Text style={{fontSize:14,lineHeight:23,color:body}}>{step.why}</Text>
     <Text style={{fontSize:13,lineHeight:21,fontWeight:'700',color:'#4f7057'}}>{step.check}</Text>
    </View>)}
