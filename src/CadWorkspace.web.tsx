@@ -1,5 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {Text,TextInput,View,useWindowDimensions} from 'react-native';
+import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection} from './CadSelection';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
@@ -53,7 +54,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const {width:screenWidth}=useWindowDimensions();
  const [size,setSize]=useState<Size>({width:1,height:1}),[camera,setCamera]=useState<Camera|null>(null);
  const [drawing,setDrawing]=useState(initial),[history,setHistory]=useState<Drawing[]>([]),[future,setFuture]=useState<Drawing[]>([]);
- const [session,setSession]=useState<Session>(idle),[selected,setSelected]=useState<number>(),[last,setLast]=useState<Point>();
+ const [session,setSession]=useState<Session>(idle),[selected,setSelected]=useState<number>(),[selectedIds,setSelectedIds]=useState<number[]>([]),[last,setLast]=useState<Point>();
  const [pointer,setPointer]=useState<Point>(),[input,setInput]=useState(''),[lastCommand,setLastCommand]=useState<Tool>();
  const [message,setMessage]=useState('Gotowy. Wpisz polecenie lub użyj wstążki.'),[log,setLog]=useState<string[]>([]);
  const [grid,setGrid]=useState(true),[ortho,setOrtho]=useState(false),[osnap,setOsnap]=useState(false),[snapGrid,setSnapGrid]=useState(false),[dynamic,setDynamic]=useState(true);
@@ -63,6 +64,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const nextId=useRef(1),nextLayer=useRef(3),commandRef=useRef<React.ComponentRef<typeof TextInput>>(null);
  const view=camera??fitDrawing([],size);
  const visible=drawing.shapes.filter(shape=>drawing.layers.find(l=>l.id===shape.layer)?.visible);
+ const selectedVisible=selectedIds.filter(id=>visible.some(s=>s.id===id));
  const chosen=visible.find(shape=>shape.id===selected),target=visible.find(shape=>shape.id===session.target);
  const {tool,points}=session,first=points[0],latest=points.at(-1);
  const prompt=promptFor(session);
@@ -77,15 +79,16 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(!shape.points.every(inRange)){tell('Obiekt przekracza zakres współrzędnych warsztatu.');return;}
   if(drawing.shapes.length>=400){tell('Osiągnięto limit 400 obiektów w pracowni.');return;}
   const id=nextId.current++;
-  updateShapes([...drawing.shapes,{...shape,id,layer}]);setSelected(id);
+  updateShapes([...drawing.shapes,{...shape,id,layer}]);setSelected(id);setSelectedIds([id]);
   return id;
  }
  function resetSession(){setSession(idle);setInput('');}
  function start(next:Tool){
   if(layout){tell('Otwórz Model, aby edytować rysunek.');return;}
   setPan(false);setInput('');
-  const selecting=modify.has(next)&&!chosen;
-  setSession({tool:next,points:[],target:modify.has(next)?chosen?.id:undefined,selecting});
+  const firstSelected=visible.find(shape=>selectedVisible.includes(shape.id))??chosen;
+  const selecting=modify.has(next)&&!firstSelected;
+  setSession({tool:next,points:[],target:modify.has(next)?firstSelected?.id:undefined,selecting});
   if(next!=='select')setLastCommand(next);
   if(next==='hatch'){setTab('home');setPanel('draw');}
   tell(next==='select'?'Wskaż krawędź obiektu.':tools[next].name+' · '+promptFor({tool:next,points:[],selecting}));
@@ -93,12 +96,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  function undo(){
   const previous=history.at(-1);
   if(!previous){tell('Historia rysunku jest pusta.');return;}
-  setFuture(old=>[drawing,...old]);setHistory(history.slice(0,-1));setDrawing(previous);setSelected(undefined);resetSession();
+  setFuture(old=>[drawing,...old]);setHistory(history.slice(0,-1));setDrawing(previous);setSelected(undefined);setSelectedIds([]);resetSession();
   tell('Cofnięto ostatnią zmianę rysunku.');
  }
  function redo(){
   if(!future.length)return;
-  setHistory(old=>[...old,drawing]);setDrawing(future[0]);setFuture(future.slice(1));setSelected(undefined);resetSession();tell('Ponowiono zmianę rysunku.');
+  setHistory(old=>[...old,drawing]);setDrawing(future[0]);setFuture(future.slice(1));setSelected(undefined);setSelectedIds([]);resetSession();tell('Ponowiono zmianę rysunku.');
  }
  function endPolyline(close:boolean){
   if(points.length<2){resetSession();return;}
@@ -111,8 +114,9 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    updateShapes(drawing.shapes.map(s=>session.boundaries?.includes(s.id)?{...s,fill:pattern}:s));resetSession();tell('Zastosowano wypełnienie.');return;
   }
   if(session.selecting){
-   if(target){setSession({...session,selecting:false});tell('Zatwierdzono wybór obiektu.');}
-   else tell('Wskaż krawędź obiektu, aby go wybrać.');
+   const candidate=selectedVisible[0]??target?.id;
+   if(candidate!==undefined){setSession({...session,target:candidate,selecting:false});tell('Zatwierdzono wybór '+selectedVisible.length+' obiektów. Wskaż punkt bazowy.');}
+   else tell('Zaznacz obiekty, przeciągnij okno lub wpisz ALL.');
    return;
   }
   if(close&&points.length<3){tell('Do zamknięcia wskaż co najmniej trzy różne punkty.');return;}
@@ -126,21 +130,43 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  }
  function cancel(){
   if(tool==='poly'&&points.length>=2){endPolyline(false);return;}
-  if(tool==='select')setSelected(undefined);
-  resetSession();setPan(false);tell('Anulowano aktywne polecenie.');
+  if(tool==='select'){setSelected(undefined);setSelectedIds([]);}
+  resetSession();setPan(false);tell('Anulowano polecenie lub wyczyszczono zaznaczenie.');
+ }
+ function clearSelection(){
+  setSelected(undefined);setSelectedIds([]);
+  if(session.selecting)setSession({...session,target:undefined});
+  tell('Wyczyszczono zaznaczenie.');
+ }
+ function selectAll(){
+  if(layout){tell('Zaznaczaj obiekty w Model Space.');return;}
+  const ids=visible.map(shape=>shape.id);
+  setSelectedIds(ids);setSelected(ids.at(-1));
+  if(session.selecting&&ids.length)setSession({...session,target:ids[0],selecting:false});
+  tell('Zaznaczono wszystkie widoczne obiekty: '+ids.length+'. Wpisz MOVE, COPY lub SCALE.');
+ }
+ function selectWindow(startPx:Point,endPx:Point,remove:boolean){
+  const from=worldPoint(startPx,view,size),to=worldPoint(endPx,view,size);
+  const result=selectCadWindow(visible,from,to);
+  const ids=mergeCadSelection(selectedVisible,result.ids,remove);
+  setSelectedIds(ids);setSelected(ids.at(-1));
+  if(session.selecting&&ids.length)setSession({...session,target:ids[0],selecting:false});
+  tell((result.direction==='window'?'Okno: całkowicie objęte':'Przecięcie: objęte lub dotknięte')+' · '+result.ids.length+' obiektów. Łącznie zaznaczono '+ids.length+'.');
  }
  function join(){
   if(layout){tell('Połącz obiekty w przestrzeni Model.');return;}
   const connected=joinCadLines(visible,selected);
   if(!connected){tell('JOIN: wybierz co najmniej dwa połączone odcinki LINE na jednej warstwie.');return;}
   updateShapes([...drawing.shapes.filter(s=>!connected.sourceIds.includes(s.id)),connected.joined]);
-  setSelected(connected.joined.id);resetSession();
+  setSelected(connected.joined.id);setSelectedIds([connected.joined.id]);resetSession();
   tell('JOIN: połączono '+connected.sourceIds.length+' odcinki w '+(connected.joined.closed?'zamkniętą':'otwartą')+' polilinię. Możesz przesunąć ją przez MOVE.');
  }
  function erase(){
   if(layout)return;
-  if(!chosen){tell('Zaznacz krawędź obiektu, który chcesz usunąć.');return;}
-  updateShapes(drawing.shapes.filter(s=>s.id!==selected));setSelected(undefined);resetSession();tell('Usunięto zaznaczony obiekt.');
+  const ids=selectedVisible.length?selectedVisible:chosen?[chosen.id]:[];
+  if(!ids.length){tell('Zaznacz obiekty, które chcesz usunąć.');return;}
+  updateShapes(drawing.shapes.filter(s=>!ids.includes(s.id)));setSelected(undefined);setSelectedIds([]);resetSession();
+  tell('Usunięto '+ids.length+' obiektów.');
  }
  function atPointer(pixel:Point){
   const raw=worldPoint(pixel,view,size);
@@ -165,15 +191,25 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   setLast(point);
   setSession({...session,points:[...points,point]});
  }
- function pick(point:Point){
+ function pick(point:Point,remove=false){
   if(layout||pan)return;
   if(!inRange(point)){tell('Współrzędne przekraczają zakres warsztatu.');return;}
   const ordered=[...visible].reverse();
   if(tool==='select'||session.selecting||(tool==='offset'&&session.target===undefined)||tool==='trim'){
    if(tool==='offset'&&session.amount===undefined){tell(prompt);return;}
    const hit=ordered.find(s=>nearEdge(s,point,baseTolerance))??ordered.find(s=>s.fill&&contains(s,point));
-   if(!hit){if(tool==='select')setSelected(undefined);tell('Wskaż krawędź obiektu.');return;}
-   setSelected(hit.id);
+   if(!hit){
+    if(tool==='select'){setSelected(undefined);setSelectedIds([]);}
+    tell('Wskaż krawędź obiektu lub zaznacz obiekty oknem.');return;
+   }
+   if(tool==='select'||session.selecting){
+    const ids=mergeCadSelection(selectedVisible,[hit.id],remove);
+    setSelectedIds(ids);setSelected(ids.at(-1));
+    if(session.selecting)setSession({...session,target:ids[0],selecting:true});
+    tell((remove?'Odjęto obiekt. ':'Dodano obiekt. ')+'Zaznaczono: '+ids.length+'.');
+    return;
+   }
+   setSelected(hit.id);setSelectedIds([hit.id]);
    if(tool==='trim'){
     const remaining=trimLine(hit,visible,point);
     if(remaining){
@@ -220,8 +256,22 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   }else if(tool==='dimlinear'||tool==='dimaligned'){
    if(storeShape({kind:'dimension',points:[...points,point],aligned:tool==='dimaligned'})){resetSession();tell('Dodano wymiar do rysunku.');}
   }else if(target&&(tool==='move'||tool==='copy')){
-   const delta=subtract(point,first);
-   setLast(point);applyChange(transformShape(target,p=>add(p,delta)),tool==='copy','Przesunięcie '+cadCoordinates(delta)+'.');
+   const delta=subtract(point,first),ids=selectedVisible.length?selectedVisible:[target.id];
+   const shifted=transformCadSelection(drawing.shapes,ids,p=>add(p,delta));
+   const moved=shifted.filter(shape=>ids.includes(shape.id));
+   if(!moved.every(shape=>shape.points.every(inRange))){tell('Obiekty wyszłyby poza dozwolony zakres współrzędnych.');return;}
+   if(tool==='copy'){
+    const result=copyCadSelection(drawing.shapes,ids,nextId.current);
+    if(!result){tell('Nie można skopiować tej liczby obiektów.');return;}
+    nextId.current=result.nextId;
+    updateShapes(transformCadSelection(result.shapes,result.newIds,p=>add(p,delta)));
+    setSelectedIds(result.newIds);setSelected(result.newIds.at(-1));
+   }else{
+    updateShapes(shifted);
+    setSelectedIds(ids);setSelected(ids.at(-1));
+   }
+   setLast(point);resetSession();
+   tell((tool==='copy'?'Skopiowano ':'Przesunięto ')+ids.length+' obiektów o '+cadCoordinates(delta)+'.');
   }else if(target&&tool==='mirror'){
    const axis=subtract(point,first),square=dot(axis,axis);
    applyChange(transformShape(target,p=>subtract(add(first,multiply(axis,2*dot(subtract(p,first),axis)/square)),subtract(p,first)),false),
@@ -258,6 +308,9 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    undo();return;
   }
   if(['CTRL+Y','REDO'].includes(command)){redo();return;}
+  if(['ALL','CTRL+A','SELECTALL'].includes(command)){selectAll();return;}
+  if(['DESELECT','CLEARSELECTION'].includes(command)){clearSelection();return;}
+  if(command==='SELECT'){setSession({tool:'select',points:[]});tell('Wybieraj obiekty pojedynczo lub oknem.');return;}
   if(['E','ERASE','DELETE'].includes(command)){erase();return;}
   if(['JOIN','J','PEDIT'].includes(command)){join();return;}
   if(['LA','LAYER'].includes(command)){setTab('home');setPanel('layers');return;}
