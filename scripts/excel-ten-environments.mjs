@@ -330,7 +330,7 @@ async function totalBeginner(browser,p,round){
   await amount0.fill('0');await lab.getByTestId('excel-first-total').filter({hasText:'Popraw ilości'}).waitFor();
   await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await amount0.fill('3');await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Ile kosztuje pierwszy produkt?'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Policz wartość pierwszego produktu'}).waitFor();
   const answer=lab.getByTestId('excel-first-answer');
   await answer.fill('1');await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await answer.fill('=B2+C2');await check.click();
