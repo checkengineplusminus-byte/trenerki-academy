@@ -41,7 +41,7 @@ test('camera fits 4000 x 3000 mm and converts mouse clicks back to CAD coordinat
 });
 test('UI reconnects CAD workshop only to relevant lessons, independently of checkout or pricing',()=>{
  const app=awaitRead('app/nauka.tsx'),cad=awaitRead('src/CadWorkspace.tsx');
- assert(app.includes('<CadWorkspace storageKey={userId}'));
+ assert(app.includes('<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId}'));
  assert(app.includes("slug!=='autocad-skroty'&&<CourseIntroPhoto"));
  for(const fragment of ['testID="cad-command"','testID="cad-canvas"','joinCadLines(shapes,selected)','ZOOM E']) assert(cad.includes(fragment));
  const web=awaitRead('src/CadWorkspace.web.tsx');
