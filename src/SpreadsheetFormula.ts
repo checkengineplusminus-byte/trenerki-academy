@@ -6,8 +6,10 @@
 export function parseSpreadsheetNumber(value:unknown):number{
  // Currency is presentation, not part of a cell's numeric value. Also accept
  // legacy pasted values such as "1 250,50 zł" so existing lessons still recalculate.
- const s=String(value??'').trim().replace(/(?:\s|\u00a0|\u202f)*(?:zł|pln)\.?$/iu,'').replace(/[\s\u00a0\u202f]/g,'').replace(',','.');
- if(!s)return 0;
+ const input=String(value??'').trim();
+ const currency=/(?:\s|\u00a0|\u202f)*(?:zł|pln)\.?$/iu.test(input);
+ const s=input.replace(/(?:\s|\u00a0|\u202f)*(?:zł|pln)\.?$/iu,'').replace(/[\s\u00a0\u202f]/g,'').replace(',','.');
+ if(!s)return currency?NaN:0;
  if(!/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s))return NaN;
  return Number(s);
 }
