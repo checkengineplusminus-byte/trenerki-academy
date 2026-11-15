@@ -146,6 +146,15 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    journal_count:posted.filter(j=>j.source_type==='invoice'&&j.source_id===i.id).length,
    legal_qualification:'not_tested'};
  });
+ // W tym fikcyjnym modelu każda faktura musi mieć ślad na kontach 221/222.
+ // NIE oznacza to jednak odliczenia VAT ani kwalifikacji podatkowej.
+ const vatLedgerSalesCents=-periodMovement('222');
+ const vatLedgerPurchasesCents=periodMovement('221');
+ const vatLedgerValid=[vatLedgerSalesCents,vatLedgerPurchasesCents].every(Number.isSafeInteger);
+ const vatLedgerMatches=!!period&&issued.length>0&&vatLedgerValid&&
+  vatLedgerSalesCents===totals.sale_vat_cents&&vatLedgerPurchasesCents===totals.purchase_vat_cents;
+ if(!vatLedgerMatches&&!!period&&issued.length>0)
+  sourceIdentityIssues.push({code:'model_vat_ledger_does_not_match_invoices',invoice:period});
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -155,6 +164,11 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    detail:sourceIdentityIssues.length+' powtórzonych ID / numerów tej samej strony'},
   {key:'invoice_posting',label:'Jedno poprawne księgowanie każdej faktury',passed:issued.length>0&&correctPostings===issued.length&&issues.length===0,detail:correctPostings+'/'+issued.length+'; sprawdź wyjątki dotyczące majątku'},
   {key:'ledger',label:'Wn = Ma na każdym dekrecie miesiąca',passed:ledgerBalanced,detail:periodPostings.length+' aktywnych dekretów'},
+  {key:'vat_model_vs_ledger',label:'VAT faktur = konta 221/222 tego samego miesiąca',
+   passed:vatLedgerMatches,
+   detail:'konto 222 '+vatLedgerSalesCents+' gr / faktury '+totals.sale_vat_cents+
+    ' gr; konto 221 '+vatLedgerPurchasesCents+' gr / faktury '+totals.purchase_vat_cents+
+    ' gr. To kontrola ćwiczeniowa, nie kwalifikacja VAT'},
   {key:'bank',label:'Bank z wyciągu = konto 130 w miesiącu',passed:bankBalanced,detail:'Porównanie kwot z fikcyjnego CSV oraz dziennika'},
   {key:'bank_sources',label:'Każdy wiersz CSV ma jeden zgodny dekret źródłowy',passed:bankCovered,
    detail:bank.length+' wierszy okresu; '+bankCoverageIssues.length+' rozbieżności (w tym daty, ID, kwoty i nieopisane księgowania 130)'},
@@ -175,6 +189,8 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const vatDifferenceCents=totals.sale_vat_cents-totals.purchase_vat_cents;
  return {
   period:period||null,source_count:issued.length,
+  vat_ledger:{sales_cents:vatLedgerSalesCents,purchases_cents:vatLedgerPurchasesCents,matching:vatLedgerMatches,
+   review:'not_tested'},
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
   checks,issues:[...issues,...sourceIdentityIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
@@ -217,6 +233,9 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   '; VAT z dokumentów sprzedaży: ',escape(money(r.figures.sale_vat_cents)),
   '; VAT z dokumentów zakupu: ',escape(money(r.figures.purchase_vat_cents)),
   '; różnica modelowa: ',escape(money(r.figures.vat_difference_cents)),'</p>',
+  '<p>VAT według aktywnych dekretów: 222 — ',escape(money(r.vat_ledger.sales_cents)),
+  '; 221 — ',escape(money(r.vat_ledger.purchases_cents)),
+  '; zgodność z fakturami: ',r.vat_ledger.matching?'TAK, WYŁĄCZNIE W MODELU':'NIE — WYJAŚNIJ ROZBIEŻNOŚĆ','.</p>',
   '<h2>Wykaz źródłowych faktur do weryfikacji</h2>',
   '<p>Wyłącznie źródła z miesiąca. Liczba dekretów nie oznacza ich prawidłowości ani kwalifikacji prawnej VAT.</p>',
   '<table><thead><tr><th>Dokument</th><th>Rodzaj</th><th>Data</th><th>Netto</th><th>VAT</th><th>Brutto</th><th>Dekrety</th></tr></thead><tbody>',

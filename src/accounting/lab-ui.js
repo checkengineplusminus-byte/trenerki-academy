@@ -108,6 +108,10 @@ export function mountLab(root,db){
     '<div class="stat">VAT z fikcyjnych faktur zakupu<strong>'+money(f.purchase_vat_cents)+'</strong></div></div>'+
    '<p class="notice">Różnica VAT z dokumentów modelu: <strong>'+money(f.vat_difference_cents)+
     '</strong>. To nie jest deklaracja ani wynik podatkowy bez kwalifikacji prawnej.</p>'+
+   '<p class="'+(audit.vat_ledger.matching?'notice':'error')+'">VAT w dzienniku: 222 — '+money(audit.vat_ledger.sales_cents)+
+    ', 221 — '+money(audit.vat_ledger.purchases_cents)+
+    '. '+(audit.vat_ledger.matching?'Kwoty zgodne z fakturami w modelu.':'Różnica z fakturami — nie przechodź do recenzji.')+
+    ' Kwalifikację podatkową sprawdza osobno księgowy.</p>'+
    '<h3>Wynik i płynność — jeden okres fikcyjnej firmy</h3>'+
    '<p class="muted">Przychody z konta 700, koszty z kont 400/401/404/761. Przepływy z CSV; '+
     'bez salda otwarcia, kwalifikacji podatkowej i rzeczywistej wysyłki. '+

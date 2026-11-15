@@ -1613,3 +1613,30 @@ test('Raport do recenzji pokazuje identyfikowalne faktury i koduje niebezpieczny
  assert.match(html,/Dekrety/);
  assert.match(html,/NIE WYSŁANO/);
 });
+
+test('VAT w jednym okresie: źródło faktur musi odpowiadać kontom 221 i 222',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ const result=taxCloseTrainingAudit(s);
+ assert.equal(result.vat_ledger.sales_cents,23000);
+ assert.equal(result.vat_ledger.purchases_cents,4600);
+ assert.equal(result.vat_ledger.matching,true);
+ assert.equal(result.checks.find(x=>x.key==='vat_model_vs_ledger').passed,true);
+ assert.equal(result.vat_ledger.review,'not_tested');
+});
+test('Nadmiarowy VAT 222 nie może być ukryty przez zbilansowany dekret',()=>{
+ const s=fullScenario();s.journals.push({id:'MANUAL-VAT',date:'2026-11-20',status:'posted',source_type:'manual',source_id:'',
+ lines:[{account:'400',debit:500,credit:0},{account:'222',debit:0,credit:500}]});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='ledger').passed,true);
+ assert.equal(r.checks.find(x=>x.key==='vat_model_vs_ledger').passed,false);
+ assert.ok(r.issues.some(x=>x.code==='model_vat_ledger_does_not_match_invoices'));
+ assert.equal(r.ready_for_training_review,false);
+});
+test('VAT z obcego okresu nie zmienia bieżącej zgodności źródeł z dziennikiem',()=>{
+ const s=fullScenario();s.journals.push({id:'OCT-VAT',date:'2026-10-10',status:'posted',source_type:'manual',source_id:'',
+ lines:[{account:'221',debit:700,credit:0},{account:'202',debit:0,credit:700}]});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.vat_ledger.matching,true);
+ assert.equal(r.issues.some(x=>x.code==='model_vat_ledger_does_not_match_invoices'),false);
+});
