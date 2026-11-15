@@ -330,12 +330,17 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   }
   if((tool==='rotate'||tool==='scale')&&first&&target&&Number.isFinite(number)){
    if(tool==='scale'&&number<=0){tell('Współczynnik skali musi być dodatni.');return;}
-   if(tool==='scale'){
-    applyChange(transformShape(target,p=>add(first,multiply(subtract(p,first),number))),false,'Przeskalowano obiekt przez '+cadNumber(number)+'.');
-   }else{
-    const angle=number*Math.PI/180,cos=Math.cos(angle),sin=Math.sin(angle);
-    applyChange(transformShape(target,p=>{const v=subtract(p,first);return add(first,{x:v.x*cos-v.y*sin,y:v.x*sin+v.y*cos});},false),false,'Obrócono o '+cadNumber(number)+'°.');
+   const ids=selectedVisible.length?selectedVisible:[target.id];
+   const transform=tool==='scale'?(p:Point)=>add(first,multiply(subtract(p,first),number)):(p:Point)=>{
+    const theta=number*Math.PI/180,cos=Math.cos(theta),sin=Math.sin(theta),v=subtract(p,first);
+    return add(first,{x:v.x*cos-v.y*sin,y:v.x*sin+v.y*cos});
+   };
+   const updated=transformCadSelection(drawing.shapes,ids,transform);
+   if(!updated.filter(shape=>ids.includes(shape.id)).every(shape=>shape.points.every(inRange))){
+    tell('Obiekt wychodzi poza dozwolony zakres współrzędnych.');return;
    }
+   updateShapes(updated);setSelectedIds(ids);setSelected(ids.at(-1));resetSession();
+   tell(tool==='scale'?'SCALE: przeskalowano '+ids.length+' obiektów ×'+cadNumber(number)+'.':'ROTATE: obrócono '+ids.length+' obiektów o '+cadNumber(number)+'°.');
    return;
   }
   const point=readCadPoint(command,latest??last);
@@ -349,6 +354,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(event.key==='Escape'){cancel();return true;}
   const tag=(event.target as Element).tagName.toUpperCase();
   if(tag==='INPUT')return false;
+  if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='a'){selectAll();return true;}
   if(event.ctrlKey&&event.key.toLowerCase()==='z'){undo();return true;}
   if(event.ctrlKey&&event.key.toLowerCase()==='y'){redo();return true;}
   if(event.key==='Delete'){erase();return true;}
@@ -384,7 +390,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  }
  const objects:SceneObject[]=visible.map(shape=>({
   shape:session.boundaries?.includes(shape.id)?{...shape,fill:pattern}:shape,
-  color:drawing.layers.find(l=>l.id===shape.layer)!.color,selected:!layout&&shape.id===selected,
+  color:drawing.layers.find(l=>l.id===shape.layer)!.color,selected:!layout&&selectedVisible.includes(shape.id),
  }));
  const ribbonButton=(t:Exclude<Tool,'select'>)=><LabButton key={t} label={tools[t].label+' · '+tools[t].name} selected={tool===t} onPress={()=>start(t)}/>;
  const reportedPoint=candidate?.point??last;
@@ -430,12 +436,24 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Linie ukośne" selected={pattern==='hatch'} onPress={()=>setPattern('hatch')}/>
    <LabButton label="Pełne · SOLID" selected={pattern==='solid'} onPress={()=>setPattern('solid')}/>
   </LabGroup>}
+  <View style={{backgroundColor:'#e6eff1',padding:11,borderRadius:10,gap:7,marginBottom:8}}>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,alignItems:'center'}}>
+    <LabButton label="Zaznacz wszystko · Ctrl+A" disabled={layout||!visible.length} onPress={selectAll}/>
+    <LabButton label="Wyczyść zaznaczenie · Esc" disabled={!selectedVisible.length} onPress={clearSelection}/>
+    <LabButton label="Przesuń zaznaczone · MOVE" disabled={layout||!selectedVisible.length} onPress={()=>start('move')}/>
+    <LabButton label="Kopiuj zaznaczone · COPY" disabled={layout||!selectedVisible.length} onPress={()=>start('copy')}/>
+   </View>
+   <Text style={{color:'#385b64',fontSize:12,lineHeight:19}}>
+    Zaznaczone: {selectedVisible.length}. Klikaj kolejne obiekty; Shift + kliknięcie usuwa obiekt z wyboru. Okno od lewej do prawej wybiera obiekty całkowicie wewnątrz; od prawej do lewej także przecinane. Po zaznaczeniu wpisz MOVE, wskaż punkt bazowy i docelowy.
+   </Text>
+  </View>
   <View style={{height:screenWidth<640?270:385,borderRadius:8,overflow:'hidden',backgroundColor:'#172530'}}
    onLayout={event=>{const {width,height}=event.nativeEvent.layout;setSize({width,height});}}>
-   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout}
+   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting}
     cursor={pointer} snap={candidate?.label&&cursorPoint?screenPoint(cursorPoint,view,size):undefined}
     prompt={dynamic&&tool!=='select'&&cursorPoint?(candidate?.label?candidate.label+' · ':'')+cadCoordinates(cursorPoint):undefined}
-    onMove={setPointer} onPick={p=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point)}
+    onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove)}
+    onWindowSelect={selectWindow}
     onPan={shift} onZoom={zoom} onFinish={()=>finish()}/>
   </View>
   <View style={labStyles.row}>
@@ -445,8 +463,8 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Cofnij · Ctrl+Z" disabled={!history.length} onPress={undo}/>
    <LabButton label="Ponów · Ctrl+Y" disabled={!future.length} onPress={redo}/>
   </View>
-  <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
-   {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}{chosen?' · Zaznaczony '+chosen.id:''}</Text>
+  <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Zaznaczone: {selectedVisible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
+   {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}</Text>
   <View style={{backgroundColor:'#edf2f4',borderColor:'#c1d1d6',borderWidth:1,borderRadius:8,padding:9,gap:6}}>
    <Text style={labStyles.eyebrow}>{tool==='select'?'Polecenie':tools[tool].name} · {layout?'Podgląd arkusza. Edycję wykonujesz w Modelu.':prompt}</Text>
    <View style={labStyles.row}>
