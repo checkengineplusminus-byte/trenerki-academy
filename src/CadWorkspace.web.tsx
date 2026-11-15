@@ -439,7 +439,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   </Pressable>;
  const extraRibbonButton=(name:string,toolIcon:'join'|'erase'|'text'|'layer'|'select'|'zoom'|'pan',
     action:()=>void,disabled=false)=><Pressable accessibilityRole="button" accessibilityLabel={name} disabled={disabled} onPress={action}
-    style={{minWidth:66,justifyContent:'center',alignItems:'center',gap:4,padding:6,opacity:disabled?.38:1}}>
+    style={{minWidth:66,justifyContent:'center',alignItems:'center',gap:4,padding:6,opacity:disabled?0.38:1}}>
     <CadRibbonIcon tool={toolIcon} size={26}/>
     <Text style={{fontSize:10,color:'#e9f0f5',fontWeight:'700',textAlign:'center'}}>{name.split(' · ')[0]}</Text>
    </Pressable>;
@@ -512,8 +512,8 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    {tab!=='home'&&<View style={{padding:12,backgroundColor:'#e9f0f3',gap:9}}>
     {tab==='annotate'&&<Text style={{fontSize:12,color:'#395569',fontWeight:'800'}}>Annotate → Dimensions · Text · Style (wymiary i tekst)</Text>}
     {tab==='view'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
-     {extraRibbonButton('ZOOM · Dopasuj','zoom',fit)}
-     {extraRibbonButton('PAN · Przesuń','pan',()=>{setPan(v=>!v);setPointer(undefined);})}
+     <LabButton label="ZOOM · Dopasuj" onPress={fit}/>
+     <LabButton label="PAN · Przesuń" selected={pan} onPress={()=>{setPan(v=>!v);setPointer(undefined);}}/>
      <LabButton label="Przybliż +" disabled={layout} onPress={()=>zoom(.8)}/>
      <LabButton label="Oddal −" disabled={layout} onPress={()=>zoom(1.25)}/>
     </View>}
@@ -524,9 +524,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    </View>}
   </View>
   {tab==='annotate'&&<View style={{backgroundColor:'#f1f6f8',padding:12,borderRadius:9,gap:10}}>
-   <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</View>
-
-    <LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</LabGroup>
+   <LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(t=><LabButton key={t} label={tools[t].label+' · '+tools[t].name} selected={tool===t} onPress={()=>start(t)}/>)}</LabGroup>
     <View style={{padding:13,backgroundColor:'#f0f6f8',borderRadius:10,gap:9}} testID="cad-font-style">
      <Text style={labStyles.heading}>Tekst i czcionka — STYLE / MTEXT</Text>
      <Text style={labStyles.body}>Podgląd stylu edukacyjnego (nie edytuje pliku DWG). W oryginalnym AutoCAD: wpisz STYLE, utwórz styl i wybierz font TrueType/SHX; użyj MTEXT, aby dodać opis lub zmienić wysokość tekstu.</Text>
@@ -540,7 +538,6 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
      <Text testID="cad-font-preview" style={{fontFamily:sampleFont,fontSize:Math.round(10+sampleHeight*2.5),color:'#264955',padding:13,backgroundColor:'white',borderRadius:8}}>{fontSample||'Przykładowy napis'}</Text>
      <Text style={{fontSize:12,color:'#516c73'}}>Wymiar w modelu i wysokość tekstu na papierze to dwie różne rzeczy. Dla skali 1:50 tekst nieanotacyjny 2,5 mm na papierze odpowiada 125 mm w modelu. Styl anotacyjny potrafi przeliczać to automatycznie.</Text>
     </View>
-   </View>}
   </View>}
   {tool==='hatch'&&<LabGroup label="Hatch Creation / Kreskowanie">
    <LabButton label="Linie ukośne" selected={pattern==='hatch'} onPress={()=>setPattern('hatch')}/>
