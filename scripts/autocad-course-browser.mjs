@@ -118,6 +118,7 @@ for(const mobile of [false,true]){
   await ribbon.waitFor();
   const ribbonHome=cad.getByTestId('cad-home-ribbon');
   await ribbonHome.waitFor();
+  await ribbon.screenshot({path:'/tmp/trenerki-autocad-ribbon-'+(mobile?'mobile':'desktop')+'.png'});
   const labels=await ribbonHome.innerText();
   assert(labels.indexOf('Draw / Rysuj')>=0&&labels.indexOf('Modify / Zmień')>labels.indexOf('Draw / Rysuj')&&labels.indexOf('Layers / Warstwy')>labels.indexOf('Modify / Zmień'),
     'Home ribbon must group Draw, Modify and Layers in Autodesk-like order');
