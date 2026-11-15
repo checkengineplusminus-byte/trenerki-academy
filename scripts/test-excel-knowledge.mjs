@@ -103,7 +103,7 @@ test('First-day entry provides TWO distinct novice environments and checks evide
  assert(ui.includes('Pokaż podpowiedź do kroku'),'Novices need explicit contextual help');
  assert(!ui.includes('parafia')&&!ui.includes('parish'),'Never show niche internal test fixtures in public course');
  const intro=read('src/CourseIntro.tsx');
- assert(intro.includes("useState(slug==='excel-skroty'&&first)"),'Excel intro should be open on the first lesson');
+ assert(intro.includes("useState(first)")&&intro.includes("useEffect(()=>setOpen(first),[slug,first])"),'Excel intro should be open on the first lesson');
  const software=read('src/SoftwareOrientation.tsx');
  assert(software.includes('testID="software-orientation"'),'Intro screen should be identifiable by browser tests');
  assert(software.includes('https://support.microsoft.com/pl-pl/excel'),'Provide an official producer documentation link');

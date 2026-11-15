@@ -200,6 +200,11 @@ async function persona(browser,p,round){
  try{
   await install(page,events);
   await page.goto(base+'/nauka?course=excel-skroty&lesson='+(p.lesson+1),{waitUntil:'domcontentloaded'});
+  if(p.lesson===0){
+   await page.getByTestId('course-reading-introduction').waitFor();
+   assert.equal(await page.getByTestId('case-checkpoint').count(),0,'Read introduction before the first graded task');
+   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+  }
   const region=page.getByTestId('excel-mission-'+p.lesson);
   await region.waitFor({timeout:18000});
   const deepLesson=page.getByTestId('excel-deep-lesson-'+p.lesson);
@@ -290,6 +295,9 @@ async function totalBeginner(browser,p,round){
  try{
   await install(page,events,true); // Empty progress: tests actual new-course learner
   await page.goto(base+'/nauka?course=excel-skroty&lesson=1',{waitUntil:'domcontentloaded'});
+  await page.getByTestId('course-reading-introduction').waitFor();
+  assert.equal(await page.getByTestId('case-checkpoint').count(),0,'No quiz before introduction');
+  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   const lab=page.getByTestId('excel-first-day');
   await lab.waitFor({timeout:20000});
   const earlier=await page.evaluate(()=>{

@@ -83,6 +83,11 @@ async function runPersona(browser,p,round){
  try{
   await setupMock(page,events);
   await page.goto(origin+'/nauka?course=windows-skroty&lesson='+(p.lesson+1),{waitUntil:'domcontentloaded'});
+  if(p.lesson===0){
+   await page.getByTestId('course-reading-introduction').waitFor();
+   assert.equal(await page.getByTestId('case-checkpoint').count(),0,'Read introduction before the first graded task');
+   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+  }
   const scope=page.getByTestId('windows-mission-'+p.lesson);
   await scope.waitFor({timeout:16000});
   const learningFooter=page.getByTestId('learning-support-bar');
@@ -205,6 +210,9 @@ async function priestZeroExperience(browser,kind){
  try{
   await setupMock(page,events,true);
   await page.goto(origin+'/nauka?course=windows-skroty&lesson=1',{waitUntil:'domcontentloaded'});
+  await page.getByTestId('course-reading-introduction').waitFor();
+  assert.equal(await page.getByTestId('case-checkpoint').count(),0,'No quiz before introduction');
+  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   const privacy=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   await privacy.waitFor({state:'visible',timeout:12000});
   await privacy.getByRole('button',{name:'Odrzuć',exact:true}).click();
