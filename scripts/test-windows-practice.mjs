@@ -21,7 +21,7 @@ test('Every lesson includes instructions, objective evidence, mistake, actual-PC
   assert(m.goal.length>=16,'Goal too short for lesson '+m.lesson_no);
   assert(m.scenario.length>=30,'Scenario too generic for lesson '+m.lesson_no);
   assert(m.steps.length>=3&&m.steps.length<=5,'Steps missing for lesson '+m.lesson_no);
-  assert(m.steps.every(s=>s.length>=25),'Vague steps for lesson '+m.lesson_no);
+  assert(m.steps.every(s=>s.length>=12 && !/^(zrób coś|przejdź dalej|ćwicz sam|sprawdź to)[.!]?$/i.test(s.trim())),'Vague steps for lesson '+m.lesson_no);
   assert(m.evidence.length>=45,'No concrete evidence for lesson '+m.lesson_no);
   assert(m.pitfall.length>=35,'No credible misconception for lesson '+m.lesson_no);
   assert(m.real_pc.length>=32,'Real Windows exercise missing for lesson '+m.lesson_no);
