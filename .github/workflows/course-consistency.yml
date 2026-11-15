@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Verify exam question rotation and scoring
         run: node --experimental-strip-types scripts/test-exam-rotation.mjs
+      - name: Verify AutoCAD MIRROR and ROTATE including group geometry
+        run: node --experimental-strip-types --test scripts/test-cad-mirror-rotate.mjs
       - name: Verify AutoCAD multi-selection, OSNAP and complete reference atlas
         run: node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
       - name: Verify AutoCAD full-program exam selection
