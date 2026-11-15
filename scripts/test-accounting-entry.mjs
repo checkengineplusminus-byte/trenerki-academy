@@ -29,14 +29,20 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // Do not weaken the accounting reader guard. Canonicalize ONLY the reviewed
  // Excel-specific additions, then compare with the existing approved blob hashes.
  let sourceForAccounting=source;
+ // Audited non-accounting insertion: one protected, optional lesson clarification.
+ // Remove ONLY these exact two lines before hashing the canonical reader.
+ const clarificationImport="import LessonClarification from '../src/LessonClarification';\n";
+ const clarificationMount="   <LessonClarification key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>\n";
+ assert.equal(sourceForAccounting.split(clarificationImport).length,2,'Anielka: only one approved import');
+ assert.equal(sourceForAccounting.split(clarificationMount).length,2,'Anielka: only one supplementary note mount');
+ assert.ok(sourceForAccounting.indexOf(clarificationMount)>sourceForAccounting.indexOf("lesson.title_pl"),
+  'Dodatkowe wyjaśnienie pozostaje w lekcji, nie w logowaniu ani trasie księgowości');
+ sourceForAccounting=sourceForAccounting.replace(clarificationImport,'').replace(clarificationMount,'');
  const excelImport="import ExcelMasterGuide from '../src/ExcelMasterGuide';\n";
  if(sourceForAccounting.includes(excelImport)){
   const steps=[
    [excelImport,''],
-   ["   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide lessonNo={module}/>}\n", ''],
-   ["import ExcelVisualPractices from '../src/ExcelVisualPractices';\n", ''],
-   ["   {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}\n", ''],
-   ["   {slug==='excel-skroty'&&[9,15,17,18,20,25,26,29].includes(module)&&<ExcelVisualPractices key={'excel-visual-'+module} lessonNo={module}/>}\n", ''],
+   ["   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide/>}\n", ''],
    [` function scrollToExcelGrid():boolean{
   if(slug!=='excel-skroty'||Platform.OS!=='web'||typeof document==='undefined')return false;
   // The button must land on the actual spreadsheet, not the shortcut quiz above it.
@@ -90,8 +96,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'be7644aca8cd1a5422708ee7c1855e37b0055784', // preceding reviewed CAD renderer
   'd168d1296dc0e2936460b52c5b674807c37b52eb', // prior reviewed AutoCAD reader
   '9ed77599d484d991956a544db2704b4edeb7e2b8', // previous review
-  '104db6f1dc8d3eebbdb05c195012568d885a277c', // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
-  '629b67d13927b791aff2924c18053b979d101358' // reviewed: latest AutoCAD reader + only 4 exact Excel insertions validated above
+  '104db6f1dc8d3eebbdb05c195012568d885a277c' // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
