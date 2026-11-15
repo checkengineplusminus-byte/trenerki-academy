@@ -214,6 +214,7 @@ async function persona(browser,p,round){
    await library.getByTestId('excel-history').waitFor();
    await library.getByText('VisiCalc',{exact:true}).waitFor();
    await library.getByText('Excel na Macintosh',{exact:true}).waitFor();
+   assert.equal(await library.getByRole('link',{name:/Sprawdź źródło wydarzenia:/}).count(),6,'Each of six milestones should have a reference');
    await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
    const glossary=library.getByTestId('excel-glossary');
    await glossary.waitFor();
