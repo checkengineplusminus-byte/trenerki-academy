@@ -51,6 +51,8 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
  const [start,setStart]=useState(false),[taskView,setTaskView]=useState(false);
  const [showDesktop,setShowDesktop]=useState(false),[showExplorer,setShowExplorer]=useState(false);
  const [query,setQuery]=useState(''),[note,setNote]=useState('Plan dnia\n1. Porównaj oferty\n2. Uporządkuj pliki\n3. Przejdź na drugi pulpit');
+ const [fileName,setFileName]=useState('Notatka.txt'),[savedNotes,setSavedNotes]=useState<Record<string,string>>({});
+ const [confirmClose,setConfirmClose]=useState(false);
  const [activeShortcut,setActiveShortcut]=useState('Win+Ctrl+←');
  const [status,setStatus]=useState('Jesteś na Pulpicie 2. Kliknij Win+Ctrl+←, aby przejść na Pulpit 1. Efekt dotyczy tylko symulacji.');
  const [showReal,setShowReal]=useState(false);
@@ -67,6 +69,31 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
     [...d.windows,{app,position:'normal',minimized:false}]
   }));
   setShowDesktop(false);setStart(false);setTaskView(false);setStatus('Otwarto '+labels[app]+' na '+desktop.name+'.');
+ }
+ function saveNote(){
+  const name=fileName.trim();
+  if(!name||name.length>64||!name.toLocaleLowerCase('pl').endsWith('.txt')||/[\\\\/:*?"<>|]/.test(name)){
+   setStatus('Wpisz poprawną nazwę pliku zakończoną .txt, bez znaków specjalnych.');return;
+  }
+  setSavedNotes(prev=>({...prev,[name]:note}));
+  setFileName(name);setStatus('Zapisano '+name+' w Dokumentach ćwiczebnych. Otwórz Eksplorator i sprawdź plik.');
+ }
+ function closeWindow(app:App){
+  if(app==='notes'&&savedNotes[fileName]!==note){
+   setConfirmClose(true);setStatus('Uwaga: Notatnik ma niezapisane zmiany. Możesz wrócić i zapisać albo odrzucić je w symulacji.');return;
+  }
+  updateDesktop(d=>({...d,windows:d.windows.filter(w=>w.app!==app),focused:d.focused===app?(d.windows.find(w=>w.app!==app)?.app||null):d.focused}));
+  setStatus('Zamknięto okno ćwiczebne: '+labels[app]+'.');
+ }
+ function discardNoteAndClose(){
+  setNote(savedNotes[fileName]??'');
+  setConfirmClose(false);
+  updateDesktop(d=>({...d,windows:d.windows.filter(w=>w.app!=='notes'),focused:d.focused==='notes'?(d.windows.find(w=>w.app!=='notes')?.app||null):d.focused}));
+  setStatus('Zamknięto Notatnik bez zapisywania ostatnich zmian. Możesz ponownie otworzyć zapisany plik w Eksploratorze.');
+ }
+ function reopenNote(name:string){
+  setFileName(name);setNote(savedNotes[name]);
+  openApp('notes');setStatus('Otworzono zapisany plik '+name+' z Dokumentów ćwiczebnych.');
  }
  function focus(app:App){
   updateDesktop(d=>({...d,focused:app,windows:d.windows.map(w=>w.app===app?{...w,minimized:false}:w)}));
@@ -116,8 +143,7 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
    }
    case 'ALT+F4':
     if(!active){setStatus('Nie wybrano otwartego okna.');break;}
-    updateDesktop(d=>({...d,windows:d.windows.filter(w=>w.app!==active),focused:d.windows.find(w=>w.app!==active)?.app||null}));
-    setStatus('Zamknięto okno demonstracyjne: '+labels[active]+'.');break;
+    closeWindow(active);break;
    case 'WIN+E':openApp('files');break;
    case 'WIN+I':openApp('settings');break;
    case 'WIN+S':setStart(true);setStatus('Otworzono wyszukiwanie w demonstracyjnym menu Start.');break;
@@ -151,7 +177,7 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
    <Pressable onPress={()=>focus(w.app)} style={{minHeight:31,flexDirection:'row',alignItems:'center',paddingHorizontal:9,gap:7,backgroundColor:'#eef3fb'}}>
     <Text style={{fontSize:12}}>{icons[w.app]}</Text><Text numberOfLines={1} style={{fontSize:11,color:'#263e59',fontWeight:'800',flex:1}}>{labels[w.app]}</Text>
     <Pressable accessibilityLabel={'Minimalizuj '+labels[w.app]} onPress={()=>updateDesktop(d=>({...d,windows:d.windows.map(p=>p.app===w.app?{...p,minimized:true}:p)}))} style={{paddingHorizontal:7,paddingVertical:4}}><Text style={{color:'#355577'}}>—</Text></Pressable>
-    <Pressable accessibilityLabel={'Zamknij '+labels[w.app]} onPress={()=>updateDesktop(d=>({...d,windows:d.windows.filter(p=>p.app!==w.app),focused:d.focused===w.app?(d.windows.find(p=>p.app!==w.app)?.app||null):d.focused}))} style={{paddingHorizontal:7,paddingVertical:4}}><Text style={{color:'#a43343',fontWeight:'900'}}>×</Text></Pressable>
+    <Pressable accessibilityRole="button" accessibilityLabel={'Zamknij '+labels[w.app]} onPress={()=>closeWindow(w.app)} style={{paddingHorizontal:7,paddingVertical:4}}><Text style={{color:'#a43343',fontWeight:'900'}}>×</Text></Pressable>
    </Pressable>
    {w.app==='files'?<View style={{flex:1,padding:compact?6:10,backgroundColor:'#fff'}}>
       <Text numberOfLines={1} style={{fontSize:compact?9:11,color:'#536d86',marginBottom:8}}>←  →  ↑     Strona główna › {desktop.name} › Dokumenty</Text>
@@ -159,8 +185,28 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
       <Text style={{fontSize:compact?10:12,color:'#345775',marginVertical:5}}>📁 Dokumenty</Text>
       <Text style={{fontSize:compact?10:12,color:'#345775',marginVertical:5}}>📁 Pobrane</Text>
       <Text style={{fontSize:compact?10:12,color:'#345775',marginVertical:5}}>📁 Obrazy</Text>
-      <Text style={{fontSize:compact?10:12,color:'#345775',marginVertical:5}}>📄 Oferta.docx</Text>
-     </View>:w.app==='notes'?<TextInput multiline accessibilityLabel="Notatnik — pole ćwiczebne" value={note} onChangeText={setNote} style={{flex:1,padding:9,textAlignVertical:'top',fontSize:compact?10:12,color:'#294359',backgroundColor:'#fff'}}/>:
+      <Text style={{fontSize:compact?9:11,color:'#7087a0',marginTop:6}}>Pliki zapisane w symulacji:</Text>
+      {Object.keys(savedNotes).length===0
+       ?<Text style={{fontSize:compact?9:11,color:'#5d7892',marginVertical:4}}>Brak plików. Zapisz próbkę w Notatniku.</Text>
+       :Object.keys(savedNotes).map(name=><Pressable key={name} accessibilityRole="button" accessibilityLabel={'Otwórz plik '+name}
+          onPress={()=>reopenNote(name)} style={{minHeight:35,justifyContent:'center',paddingHorizontal:5}}>
+          <Text numberOfLines={1} style={{fontSize:compact?9:11,color:'#165b8e',fontWeight:'800'}}>📄 {name}</Text>
+        </Pressable>)}
+     </View>:w.app==='notes'?<View style={{flex:1,backgroundColor:'#fff'}}>
+      <View style={{flexDirection:'row',gap:5,padding:5,borderBottomWidth:1,borderColor:'#e1eaf2',alignItems:'center'}}>
+       <TextInput accessibilityLabel="Nazwa pliku do zapisu" value={fileName} onChangeText={setFileName}
+        style={{flex:1,minWidth:50,fontSize:compact?9:11,color:'#2a4b68',borderRadius:5,borderWidth:1,borderColor:'#d2deeb',padding:5,backgroundColor:'#f8fbff'}}/>
+       <Pressable accessibilityRole="button" accessibilityLabel="Zapisz notatkę do pliku" onPress={saveNote}
+        style={{backgroundColor:'#d5ecff',borderRadius:5,paddingHorizontal:compact?5:10,minHeight:34,justifyContent:'center'}}>
+        <Text style={{color:'#21527d',fontSize:compact?9:11,fontWeight:'900'}}>Zapisz</Text>
+       </Pressable>
+      </View>
+      <Text style={{fontSize:compact?9:10,paddingHorizontal:7,color:savedNotes[fileName]===note?'#437a56':'#9a642e'}}>
+       {savedNotes[fileName]===note?'✓ Zapisano w Dokumentach ćwiczebnych':'● Niezapisane zmiany'}
+      </Text>
+      <TextInput multiline accessibilityLabel="Notatnik — pole ćwiczebne" value={note} onChangeText={setNote}
+       style={{flex:1,padding:9,textAlignVertical:'top',fontSize:compact?10:12,color:'#294359',backgroundColor:'#fff'}}/>
+     </View>:
      w.app==='settings'?<View style={{padding:10,gap:9}}><Text style={{fontWeight:'800',color:'#31577a',fontSize:12}}>System</Text><Text style={{color:'#456783',fontSize:11}}>Ekran • Dźwięk • Powiadomienia</Text><Text style={{color:'#456783',fontSize:11}}>Personalizacja • Konta</Text></View>:
      <View style={{padding:10}}><Text style={{fontSize:17,fontWeight:'800',textAlign:'right',color:'#31577a'}}>24 + 18 = 42</Text></View>}
   </View>;
@@ -204,6 +250,16 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
     </View>
    </ImageBackground>
   </View>
+  {confirmClose&&<View testID="win11-unsaved-warning" style={{padding:13,backgroundColor:'#fff3dd',borderWidth:1,borderColor:'#e4cb9e',borderRadius:11,gap:9}}>
+   <Text style={{color:'#80562a',fontSize:14,fontWeight:'900'}}>Notatnik: niezapisane zmiany</Text>
+   <Text style={{color:'#725329',fontSize:13,lineHeight:21}}>Zapisz je w symulacji lub świadomie odrzuć. Nic nie zostanie usunięte na Twoim prawdziwym komputerze.</Text>
+   <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
+    <Pressable accessibilityRole="button" accessibilityLabel="Wróć i zapisz notatkę" onPress={()=>setConfirmClose(false)}
+      style={{minHeight:44,paddingHorizontal:12,borderRadius:8,backgroundColor:'#e0f0e3',justifyContent:'center'}}><Text style={{color:ink,fontWeight:'800'}}>Wróć i zapisz</Text></Pressable>
+    <Pressable accessibilityRole="button" accessibilityLabel="Zamknij bez zapisywania" onPress={discardNoteAndClose}
+      style={{minHeight:44,paddingHorizontal:12,borderRadius:8,backgroundColor:'#fff',borderWidth:1,borderColor:'#dfc69a',justifyContent:'center'}}><Text style={{color:'#80562a',fontWeight:'800'}}>Zamknij bez zapisu</Text></Pressable>
+   </View>
+  </View>}
   <View accessibilityLiveRegion="polite" style={{backgroundColor:'#fff',borderLeftWidth:4,borderColor:'#3289bf',borderRadius:10,padding:12,gap:5}}>
    <Text style={{fontWeight:'900',color:'#16476d'}}>Efekt symulacji · {desktop.name}</Text>
    <Text style={{fontSize:13,lineHeight:20,color:'#345a76'}}>{status}</Text>
