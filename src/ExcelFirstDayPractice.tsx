@@ -36,14 +36,13 @@ export default function ExcelFirstDayPractice(){
  const {width}=useWindowDimensions(),mobile=width<640;
  const [track,setTrack]=useState<Track>('dom'),[rows,setRows]=useState<Item[]>(()=>examples.dom.items.map(x=>({...x})));
  const [step,setStep]=useState(0),[selected,setSelected]=useState(-1),[input,setInput]=useState(''),[warning,setWarning]=useState('');
- const [failures,setFailures]=useState(0);
  const values=useMemo(()=>rows.map(row=>{const n=count(row.amount);return n===null?null:n*row.price;}),[rows]);
  const total=values.every(v=>v!==null)?values.reduce<number>((sum,n)=>sum+(n??0),0):null;
  const done=step===guides.length;
  const base=examples[track];
  function selectTrack(next:Track){
   setTrack(next);setRows(examples[next].items.map(x=>({...x})));
-  setStep(0);setSelected(-1);setInput('');setWarning('');setFailures(0);
+  setStep(0);setSelected(-1);setInput('');setWarning('');
  }
  function verify(){
   if(done)return;
@@ -51,9 +50,9 @@ export default function ExcelFirstDayPractice(){
    step===1?count(rows[0].amount)===3:
    step===2?count(rows[0].amount)===3&&count(input)!==null&&count(input)===values[0]:
    step===3?total!==null&&count(input)===total:
-   step===4?count(rows[0].amount)===3&&count(rows[1].amount)===count(base.items[1].amount)!+1:
-   total!==null&&count(input)===total&&count(rows[1].amount)===count(base.items[1].amount)!+1;
-  if(!correct){setWarning(guides[step].error);setFailures(n=>n+1);return;}
+   step===4?count(rows[0].amount)===3&&count(rows[1].amount)===(count(base.items[1].amount)! + 1):
+   total!==null&&count(input)===total&&count(rows[1].amount)===(count(base.items[1].amount)! + 1);
+  if(!correct){setWarning(guides[step].error);return;}
   setStep(s=>s+1);setInput('');setWarning('');
  }
  return <View testID="excel-first-day" style={{backgroundColor:'#f6fbf5',borderRadius:17,borderWidth:1,borderColor:'#bdd8c5',overflow:'hidden',marginVertical:13}}>
@@ -73,7 +72,7 @@ export default function ExcelFirstDayPractice(){
    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{base.title}</Text>
    <Text style={{fontSize:13,lineHeight:22,color:muted}}>{base.context}</Text>
    <View style={{padding:11,borderRadius:10,backgroundColor:'#fff',borderWidth:1,borderColor:'#d5e4d8',gap:5}}>
-    <Text style={{fontSize:13,lineHeight:21,color:ink}}>**A** to nazwa pozycji, **B** to liczba sztuk, **C** to cena jednej sztuki, **D** to wartość całego wiersza.</Text>
+    <Text style={{fontSize:13,lineHeight:21,color:ink}}>A to nazwa pozycji, B to liczba sztuk, C to cena jednej sztuki, D to wartość całego wiersza.</Text>
     <Text style={{fontSize:12,lineHeight:20,color:muted}}>Wartość powstaje z mnożenia: Ilość × Cena. Zmieniasz ilość — wynik w kolumnie D przelicza się sam.</Text>
    </View>
    <View style={{borderWidth:1,borderColor:'#c8ddcd',borderRadius:10,backgroundColor:'#fff',overflow:'hidden'}}>
