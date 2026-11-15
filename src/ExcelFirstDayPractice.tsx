@@ -145,6 +145,7 @@ export default function ExcelFirstDayPractice(){
    <View style={{backgroundColor:'white',padding:12,borderRadius:10,gap:6,borderWidth:1,borderColor:border}}>
     <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>Jak to zrobić w prawdziwym Microsoft Excel?</Text>
     <Text style={{color:muted,fontSize:13,lineHeight:22}}>Wpisz nazwy do A2:A4, ilości do B2:B4 i ceny do C2:C4. W D2 wpisz =B2*C2, potem skopiuj formułę do D3 i D4. W D5 wpisz =SUMA(D2:D4). Zapisz plik jako XLSX.</Text>
+    <Text testID="excel-first-column-shift" style={{color:'#325e42',fontSize:12,lineHeight:21}}>Uwaga: w kolejnym, większym warsztacie dołożymy kolumnę „JM” (jednostka miary). Wtedy Ilość będzie w C, Cena w D, a Wartość w E. Z tego powodu poprawny wzór w E2 będzie miał postać =C2*D2. Zawsze kieruj się nagłówkami tabeli, nie ucz się adresów na pamięć.</Text>
     {Platform.OS==='web'?<a href={example.file} download style={{minHeight:44,display:'inline-flex',alignItems:'center',fontWeight:800,color:'#216e51',fontSize:13,textDecoration:'underline'}}>Pobierz listę ćwiczebną CSV do prawdziwego Excela</a>:
      <Text style={{color:muted,fontSize:12}}>Na komputerze możesz przepisać te przykładowe dane do Microsoft Excel.</Text>}
    </View>
