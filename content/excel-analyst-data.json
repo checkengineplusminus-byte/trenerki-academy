@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "currency": "PLN",
+  "origin": "Fikcyjne dane wyłącznie do szkoleń. Żaden kontrahent ani numer faktury nie identyfikuje rzeczywistej osoby.",
+  "description": "18 przykładowych faktur sprzedaży z trzema miesiącami, regionami, kategoriami, kosztami i cenami. Cztery błędne rekordy do osobnego audytu.",
+  "columns": [
+    "Numer faktury",
+    "Data",
+    "Miesiąc",
+    "Region",
+    "Kategoria",
+    "Kontrahent",
+    "Ilość",
+    "Cena netto",
+    "Koszt jednostkowy",
+    "Wartość netto",
+    "Marża netto"
+  ],
+  "rows": [
+    {
+      "invoice": "FV-001",
+      "date": "2026-01-05",
+      "month": "2026-01",
+      "region": "Północ",
+      "category": "Materiały",
+      "client": "Firma Alfa",
+      "quantity": 12,
+      "netPrice": 85,
+      "unitCost": 62
+    },
+    {
+      "invoice": "FV-002",
+      "date": "2026-01-08",
+      "month": "2026-01",
+      "region": "Południe",
+      "category": "Usługi",
+      "client": "Firma Beta",
+      "quantity": 8,
+      "netPrice": 260,
+      "unitCost": 170
+    },
+    {
+      "invoice": "FV-003",
+      "date": "2026-01-13",
+      "month": "2026-01",
+      "region": "Centrum",
+      "category": "Transport",
+      "client": "Firma Gamma",
+      "quantity": 2,
+      "netPrice": 520,
+      "unitCost": 330
+    },
+    {
+      "invoice": "FV-004",
+      "date": "2026-01-18",
+      "month": "2026-01",
+      "region": "Północ",
+      "category": "Usługi",
+      "client": "Firma Delta",
+      "quantity": 6,
+      "netPrice": 310,
+      "unitCost": 195
+    },
+    {
+      "invoice": "FV-005",
+      "date": "2026-01-24",
+      "month": "2026-01",
+      "region": "Południe",
+      "category": "Materiały",
+      "client": "Firma Beta",
+      "quantity": 20,
+      "netPrice": 48,
+      "unitCost": 31
+    },
+    {
+      "invoice": "FV-006",
+      "date": "2026-01-30",
+      "month": "2026-01",
+      "region": "Centrum",
+      "category": "Materiały",
+      "client": "Firma Epsilon",
+      "quantity": 15,
+      "netPrice": 120,
+      "unitCost": 84
+    },
+    {
+      "invoice": "FV-007",
+      "date": "2026-02-03",
+      "month": "2026-02",
+      "region": "Południe",
+      "category": "Transport",
+      "client": "Firma Alfa",
+      "quantity": 4,
+      "netPrice": 440,
+      "unitCost": 310
+    },
+    {
+      "invoice": "FV-008",
+      "date": "2026-02-08",
+      "month": "2026-02",
+      "region": "Północ",
+      "category": "Materiały",
+      "client": "Firma Gamma",
+      "quantity": 10,
+      "netPrice": 95,
+      "unitCost": 64
+    },
+    {
+      "invoice": "FV-009",
+      "date": "2026-02-12",
+      "month": "2026-02",
+      "region": "Centrum",
+      "category": "Usługi",
+      "client": "Firma Delta",
+      "quantity": 7,
+      "netPrice": 300,
+      "unitCost": 210
+    },
+    {
+      "invoice": "FV-010",
+      "date": "2026-02-18",
+      "month": "2026-02",
+      "region": "Południe",
+      "category": "Usługi",
+      "client": "Firma Epsilon",
+      "quantity": 5,
+      "netPrice": 380,
+      "unitCost": 250
+    },
+    {
+      "invoice": "FV-011",
+      "date": "2026-02-23",
+      "month": "2026-02",
+      "region": "Północ",
+      "category": "Transport",
+      "client": "Firma Beta",
+      "quantity": 3,
+      "netPrice": 600,
+      "unitCost": 410
+    },
+    {
+      "invoice": "FV-012",
+      "date": "2026-02-28",
+      "month": "2026-02",
+      "region": "Centrum",
+      "category": "Materiały",
+      "client": "Firma Alfa",
+      "quantity": 16,
+      "netPrice": 75,
+      "unitCost": 48
+    },
+    {
+      "invoice": "FV-013",
+      "date": "2026-03-04",
+      "month": "2026-03",
+      "region": "Centrum",
+      "category": "Usługi",
+      "client": "Firma Gamma",
+      "quantity": 9,
+      "netPrice": 270,
+      "unitCost": 185
+    },
+    {
+      "invoice": "FV-014",
+      "date": "2026-03-09",
+      "month": "2026-03",
+      "region": "Północ",
+      "category": "Materiały",
+      "client": "Firma Delta",
+      "quantity": 21,
+      "netPrice": 55,
+      "unitCost": 37
+    },
+    {
+      "invoice": "FV-015",
+      "date": "2026-03-13",
+      "month": "2026-03",
+      "region": "Południe",
+      "category": "Materiały",
+      "client": "Firma Epsilon",
+      "quantity": 18,
+      "netPrice": 70,
+      "unitCost": 49
+    },
+    {
+      "invoice": "FV-016",
+      "date": "2026-03-17",
+      "month": "2026-03",
+      "region": "Centrum",
+      "category": "Transport",
+      "client": "Firma Beta",
+      "quantity": 2,
+      "netPrice": 680,
+      "unitCost": 455
+    },
+    {
+      "invoice": "FV-017",
+      "date": "2026-03-22",
+      "month": "2026-03",
+      "region": "Północ",
+      "category": "Usługi",
+      "client": "Firma Alfa",
+      "quantity": 6,
+      "netPrice": 350,
+      "unitCost": 245
+    },
+    {
+      "invoice": "FV-018",
+      "date": "2026-03-27",
+      "month": "2026-03",
+      "region": "Południe",
+      "category": "Transport",
+      "client": "Firma Gamma",
+      "quantity": 3,
+      "netPrice": 490,
+      "unitCost": 340
+    }
+  ],
+  "dirty": [
+    {
+      "invoice": "FV-015",
+      "date": "2026-03-28",
+      "region": "Północ",
+      "category": "Materiały",
+      "client": "Firma Delta",
+      "quantity": "5",
+      "netPrice": "120,00",
+      "issue": "duplicated-invoice"
+    },
+    {
+      "invoice": "FV-019",
+      "date": "2026-03-29",
+      "region": "Centrum",
+      "category": "Usługi",
+      "client": "Firma Beta",
+      "quantity": "5x",
+      "netPrice": "240,00",
+      "issue": "invalid-quantity"
+    },
+    {
+      "invoice": "FV-020",
+      "date": "2026-03-30",
+      "region": "Południe",
+      "category": "Transport",
+      "client": "",
+      "quantity": "2",
+      "netPrice": "450,00",
+      "issue": "missing-client"
+    },
+    {
+      "invoice": "FV-021",
+      "date": "2026-03-31",
+      "region": "Północ",
+      "category": "Materiały",
+      "client": "Firma Gamma",
+      "quantity": "4",
+      "netPrice": "",
+      "issue": "missing-price"
+    }
+  ]
+}
