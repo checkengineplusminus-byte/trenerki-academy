@@ -216,7 +216,7 @@
       ],
       "task": "Czy zapis 2026-02-30 jest poprawną datą?",
       "answer": "nie",
-      "tip": "Luty nie ma 30 dni.",
+      "tip": "Luty ma najwyżej 29 dni, a w 2026 roku dokładnie 28 dni.",
       "source": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
@@ -279,7 +279,7 @@
       "id": "power-query-relacje",
       "level": "Ekspert",
       "title": "Scalanie i dołączanie tabel bez duplikowania danych",
-      "lead": "Dwie podobne operacje Power Query prowadzą do zupełnie innych wyników.",
+      "lead": "Dwie podobne operacje Power Query prowadzą do zupełnie innych wyników. Dobrze rozpoznaj różnicę przed uruchomieniem dowolnej operacji.",
       "sections": [
         {
           "heading": "Dołączanie działa pionowo",
