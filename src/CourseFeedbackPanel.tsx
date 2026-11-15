@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
+import {View,Text,TextInput,Pressable,ActivityIndicator,Linking} from 'react-native';
 import {supabase} from './supabase';
 
 type Row={
@@ -7,7 +7,8 @@ type Row={
  message_excerpt:string;verification:'unverified'|'confirmed'|'not_reproduced';
  status:'new'|'triaging'|'fixing'|'resolved'|'rejected';
  priority:'normal'|'high';created_at:string;due_at?:string|null;
- resolved_at?:string|null;resolution_note?:string|null
+ resolved_at?:string|null;resolution_note?:string|null;
+ automation?:{state:string;github_url?:string|null;updated_at:string}|null
 };
 type Group={course_slug:string;lesson_no:number;kind:string;reports:number;open:number};
 type Inbox={ok?:boolean;rows?:Row[];summary?:{sample:number;open:number;overdue:number;bugs:number;confusion:number};hotspots?:Group[];error?:string};
@@ -93,6 +94,15 @@ export default function CourseFeedbackPanel(){
    return <View key={row.id} style={{borderTopWidth:1,borderColor:'#dce9d7',paddingTop:16,gap:8}}>
     <Text style={{color:ink,fontWeight:'900'}}>{typeNames[row.kind]} · {row.course_slug} · lekcja {row.lesson_no}</Text>
     <Text style={{fontSize:12,color:muted}}>#{row.id.slice(0,8).toUpperCase()} · {statusNames[row.status]} · {row.verification==='confirmed'?'Potwierdzony':row.verification==='not_reproduced'?'Nieodtworzony':'Wymaga sprawdzenia'}</Text>
+    {!!row.automation&&<Text style={{fontSize:12,color:'#28653e'}}>Automat: {({
+      claimed:'Analizowanie',pr_open:'Propozycja zmiany kodu gotowa',issue_open:'Przekazano do weryfikacji',
+      note_published:'Opublikowano dodatkowe wyjaśnienie',needs_review:'Wymaga dodatkowej kontroli',
+      failed:'Ponowienie analizy'
+    } as Record<string,string>)[row.automation.state]||row.automation.state}</Text>}
+    {!!row.automation?.github_url&&/^https:\/\/github\.com\/checkengineplusminus-byte\/trenerki-academy\/(?:issues|pull)\/[0-9]+$/.test(row.automation.github_url)&&
+     <Pressable onPress={()=>void Linking.openURL(row.automation!.github_url!)} style={{alignSelf:'flex-start',paddingVertical:5}}>
+      <Text style={{color:'#226a48',fontWeight:'800',fontSize:12}}>Zobacz propozycję lub zgłoszenie w GitHub →</Text>
+     </Pressable>}
     <Text style={{fontSize:12,color:overdue?'#a44728':muted}}>Zgłoszono: {format(row.created_at)}{row.due_at?' · Cel weryfikacji: '+format(row.due_at):''}{overdue?' · TERMIN MINĄŁ':''}</Text>
     <Text selectable style={{color:ink,lineHeight:22,fontSize:14}}>{row.message_excerpt}</Text>
     <TextInput value={notes[row.id]??row.resolution_note??''} onChangeText={t=>setNotes(old=>({...old,[row.id]:t.slice(0,600)}))}
