@@ -148,8 +148,8 @@ try{
   nip:'9000000016',regon:'',krs:'',address:'ul. Przykładowa 1, 00-001 Testowo',country:'PL'}};
  const verified=await fixture({width:1280,height:900},manifest,{company});
  await verified.page.goto(origin+'/biuro-ksiegowe');
- await verified.page.locator('button[data-action="tab"][data-id="invoices"]').waitFor();
- await verified.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+ await verified.page.locator('nav button[data-action="tab"][data-id="invoices"]').waitFor();
+ await verified.page.locator('nav button[data-action="tab"][data-id="invoices"]').click();
  await pass('Chromium: firma + adres/NIP nabywcy => wystawiona faktura z migawką obu stron',async()=>{
   await verified.page.locator('#invoice-party').fill('Fikcyjny kontrahent');
   await verified.page.locator('#invoice-party_address').fill('ul. Przykładowa 2, 00-002 Testowo');
@@ -169,8 +169,8 @@ try{
  await verified.context.close();
  const mobileInvoice=await fixture({width:390,height:844},manifest,{company});
  await mobileInvoice.page.goto(origin+'/biuro-ksiegowe');
- await mobileInvoice.page.locator('button[data-action="tab"][data-id="invoices"]').waitFor();
- await mobileInvoice.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+ await mobileInvoice.page.locator('nav button[data-action="tab"][data-id="invoices"]').waitFor();
+ await mobileInvoice.page.locator('nav button[data-action="tab"][data-id="invoices"]').click();
  await pass('Chromium mobile: brak adresu dostawcy blokuje zapis zamiast wymyślać dane',async()=>{
   await mobileInvoice.page.locator('button[data-action="new-purchase"]').click();
   await mobileInvoice.page.locator('#invoice-party').fill('Fikcyjny dostawca');
