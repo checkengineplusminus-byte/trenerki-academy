@@ -98,7 +98,8 @@ async function runPersona(browser,p,round){
   // Checked steps do not secretly count as server-side completion.
   const checks=scope.getByRole('checkbox');
   for(let j=0;j<m.steps.length;j++)await checks.nth(j).click();
-  assert.equal(await checks.filter({checked:true}).count(),m.steps.length);
+  const marked=await checks.evaluateAll(elements=>elements.filter(el=>el.getAttribute('aria-checked')==='true').length);
+  assert.equal(marked,m.steps.length,'Checklist did not reflect all completed steps');
   await input.fill(m.evidence+' Wykonanie potwierdzam wyłącznie jako samokontrolę.');
   await scope.getByRole('button',{name:'Porównaj moje rozwiązanie z kryterium'}).click();
   const criterion=scope.getByTestId('windows-mission-criterion');
