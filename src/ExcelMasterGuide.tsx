@@ -120,7 +120,7 @@ export default function ExcelMasterGuide(){
       ['3. Wybierz papier i orientację','Układ strony → Rozmiar (np. A4), Orientacja (pionowa/pozioma) i Marginesy. Obejrzyj czytelność kolumn.'],
       ['4. Licz strony, nie wiersze','Plik → Drukuj pokaże rzeczywistą liczbę stron po uwzględnieniu skali i marginesów. Excel może mieć 1 048 576 wierszy × 16 384 kolumn, ale nie drukuje ich automatycznie.'],
       ['5. Kontroluj szerokość stron','Układ strony → Dopasuj do: szerokość 1 strona, wysokość automatycznie — szerokie kolumny zmieszczą się w jednym pasie, a duża liczba wierszy przejdzie na kolejne strony.'],
-      ['6. Powtarzaj nagłówek tabeli','Układ strony → Tytuły wydruku → U góry powtarzaj wiersze: $1:$1. Nagłówek wiersza 1 będzie widoczny także na kolejnych stronach wydruku.'],
+      ['6. Powtarzaj nagłówek tabeli','W Excelu na komputerze: Układ strony → Tytuły wydruku → U góry powtarzaj wiersze: $1:$1. Nagłówek będzie na kolejnych stronach wydruku. Uwaga: Excel w przeglądarce nie obsługuje tej opcji drukowania.'],
       ['7. Sprawdź podziały','Widok → Podgląd podziału stron pokazuje granice stron. Nie zmniejszaj wszystkiego do jednej strony kosztem czytelności.'],
       ['8. Dodaj numerację','Wstawianie → Nagłówek i stopka. Umieść numer strony, nazwę raportu albo datę. Przejrzyj stronę 1, 2 i ostatnią.'],
       ['9. Zapisz PDF','Plik → Zapisz jako (lub Zapisz kopię) → typ PDF (*.pdf). W Opcjach wybierz właściwe arkusze/obszar i jakość.'],
@@ -141,7 +141,7 @@ export default function ExcelMasterGuide(){
      {[
       ['Microsoft: zapis do PDF','https://support.microsoft.com/pl-pl/office/collab-files/save-or-convert-to-pdf-or-xps-in-office-desktop-apps'],
       ['Microsoft: ustawienia strony','https://support.microsoft.com/pl-pl/excel/page-setup'],
-      ['Microsoft: powtarzanie nagłówków','https://support.microsoft.com/pl-pl/excel/print-the-top-row-on-every-page'],
+      ['Microsoft: powtarzanie nagłówków','https://support.microsoft.com/pl-pl/excel/print-rows-with-column-headers-on-top-of-every-page'],
       ['Microsoft: limity wierszy i kolumn','https://support.microsoft.com/pl-pl/excel/excel-specifications-and-limits']
      ].map(([h,url])=><Pressable key={h} accessibilityRole="link" onPress={()=>link(url)} style={{minHeight:40,justifyContent:'center'}}>
       <Text style={{color:'#236a86',fontWeight:'800',textDecorationLine:'underline',fontSize:12}}>{h} ↗</Text>
