@@ -56,6 +56,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
  function setControl(fn:()=>void){fn();setAnswer('');setFeedback('idle');setShowWorkedSolution(false);}
  function validateAnswer(){
   if(mode==='pivot'&&!pivotSnapshot){setStatus('Najpierw naciśnij „Odśwież podsumowanie”, aby policzyć dane.');setFeedback('wrong');return;}
+  if(mode==='pivot'&&pivotRevision!==revision){setStatus('Najpierw odśwież tabelę przestawną po zmianie danych — stary wynik jest nieaktualny.');setFeedback('wrong');return;}
   if(mode==='scenario'&&!impact){setStatus('Podaj zmianę kosztu od −50 do +200 procent.');setFeedback('wrong');return;}
   if(mode==='audit'){
    const accepted=broken.every((_,i)=>guesses[i]===issues.find(x=>x.rowIndex===i)?.kind);
