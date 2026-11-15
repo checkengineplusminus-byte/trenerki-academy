@@ -1,4 +1,4 @@
-import {contains,distance,edges,outline,transformShape,type CadShape,type Point} from './CadGeometry';
+import {contains,distance,edges,outline,transformShape,type CadShape,type Point} from './CadGeometry.ts';
 
 export type WindowDirection='window'|'crossing';
 type Box={left:number;right:number;bottom:number;top:number};
