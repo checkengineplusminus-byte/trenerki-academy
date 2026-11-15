@@ -220,7 +220,10 @@ async function priestZeroExperience(browser,kind){
   // A true beginner must not get credit by pressing Next without a real action.
   await advance();
   await guide.getByTestId('windows-beginner-error').filter({hasText:/Kliknij znak ⊞/}).waitFor();
-  await lab.getByRole('button',{name:'Otwórz menu Start'}).click();
+  const startButton=lab.getByRole('button',{name:'Otwórz menu Start'});
+  const startTarget=await startButton.boundingBox();
+  assert(startTarget&&startTarget.width>=44&&startTarget.height>=44,'Critic: first-time learner Start icon is too small to tap');
+  await startButton.click();
   await lab.getByTestId('windows-start-menu').waitFor();
   await advance();
   await title.filter({hasText:'Otwórz Notatnik'}).waitFor();
