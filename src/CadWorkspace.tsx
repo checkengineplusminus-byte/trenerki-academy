@@ -19,7 +19,7 @@ function Stroke({a,b,camera,size,color,weight=2}:{a:Point;b:Point;camera:Camera;
   backgroundColor:color,transform:[{rotate:Math.atan2(last.y-first.y,last.x-first.x)+'rad'}]}}/>;
 }
 
-export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:string;runId:number;storageKey?:string}){
+export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{shortcut?:string;runId:number;storageKey?:string;lessonNo?:number}){
  const [shapes,setShapes]=useState<CadShape[]>([]),[history,setHistory]=useState<CadShape[][]>([]);
  const [tool,setTool]=useState<Tool>('select'),[points,setPoints]=useState<Point[]>([]),[selected,setSelected]=useState<number>();
  const [layer,setLayer]=useState(0),[grid,setGrid]=useState(true),[ortho,setOrtho]=useState(false),[snap,setSnap]=useState(false);
