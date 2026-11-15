@@ -9,6 +9,7 @@ import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {readScenario,inspectReferenceMonth,auditMonthWorkflow} from '../src/accounting/simulator-core.js';
 import {parseBankCSV} from '../src/accounting/lab-core-base.js';
+import {inspectScenarioInvoiceBridge} from '../src/accounting/scenario-invoice-bridge.js';
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 assert.match(origin,/^http:\/\/(?:127\.0\.0\.1|localhost):\d+$/,'Only a localhost Expo export is allowed.');
 const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
@@ -398,6 +399,57 @@ try{
  await f.page.screenshot({path:'/tmp/trenerki-accounting-month-desktop.png',fullPage:true});
  assert.deepEqual(f.errors,[]);
  await f.context.close();
+
+ // Browser mock of the same real UI integration route, NOT authorized real user E2E.
+ const bridge=await fixture({width:1280,height:900});
+ await bridge.page.goto(origin+'/biuro-ksiegowe');
+ await tab(bridge.page).waitFor();await tab(bridge.page).click();
+ await pass('Chromium: brak faktury modelowej D04 nie udaje pozytywnego powiązania',async()=>{
+  assert.equal(await bridge.page.locator('#bridge-D04 option').count(),1);
+  assert.equal(bridge.model().state.scenario_invoice_links_v1,undefined);
+  assert.equal(bridge.saves(),0);
+ });
+ await pass('Chromium: modelowa faktura D04 zostaje przypisana i pozostaje po odświeżeniu',async()=>{
+  await bridge.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+  await bridge.page.locator('button[data-action="new-sale"]').click();
+  await bridge.page.locator('#invoice-party').fill('Fikcyjna firma A');
+  await bridge.page.locator('#invoice-date').fill('2026-01-04');
+  await bridge.page.locator('#invoice-due').fill('2026-01-31');
+  await bridge.page.locator('[data-group="invoice"][data-field="lines.0.price"]').fill('15000,00');
+  await bridge.page.locator('[data-group="invoice"][data-field="lines.0.code"]').selectOption('0');
+  let prior=bridge.model().version;
+  await bridge.page.locator('form[data-form="invoice"] button[value="issued"]').click();
+  await saved(bridge,prior);
+  const inv=bridge.model().state.invoices.find(i=>i.kind==='sale');
+  assert.equal(inv.gross_cents,1500000);
+  await tab(bridge.page).click();
+  await bridge.page.locator('#bridge-D04').selectOption(inv.id);
+  prior=bridge.model().version;
+  await bridge.page.locator('button[data-action="sim-invoice-link-save"][data-id="D04"]').click();
+  await saved(bridge,prior);
+  assert.equal(bridge.model().state.scenario_invoice_links_v1.links.D04,inv.id);
+  assert.equal(inspectScenarioInvoiceBridge(bridge.model().state,manifest,'2026-01').matched,0,
+   'Nie uznawaj faktury za uzgodnioną bez aktywnego dekretu');
+  await bridge.page.reload();await tab(bridge.page).waitFor();await tab(bridge.page).click();
+  assert.equal(await bridge.page.locator('#bridge-D04').inputValue(),inv.id);
+  assert.deepEqual(bridge.errors,[]);
+ });
+ await pass('Chromium: dodanie prawidłowego dekretu potwierdza jedno ze źródeł',async()=>{
+  const inv=bridge.model().state.invoices[0];
+  await bridge.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+  await bridge.page.locator('button[data-action="journal-invoice"][data-id="'+inv.id+'"]').click();
+  await bridge.page.locator('[data-group="journal"][data-field="lines.0.debit"]').fill('15000,00');
+  await bridge.page.locator('[data-group="journal"][data-field="lines.1.credit"]').fill('15000,00');
+  const prior=bridge.model().version;
+  await bridge.page.locator('form[data-form="journal"] button[value="posted"]').click();
+  await saved(bridge,prior);
+  const result=inspectScenarioInvoiceBridge(bridge.model().state,manifest,'2026-01');
+  assert.equal(result.matched,1);assert.equal(result.passed,false);
+  await tab(bridge.page).click();
+  await bridge.page.getByText('Faktura i aktywny dekret sprawdzone').first().waitFor();
+  assert.deepEqual(bridge.errors,[]);
+ });
+ await bridge.context.close();
  const mobile=await fixture({width:390,height:844});
  await mobile.page.goto(origin+'/biuro-ksiegowe');await tab(mobile.page).waitFor();await tab(mobile.page).click();
  await pass('Mobilna pracownia D01–D36 nie wychodzi poza ekran 390px',async()=>{
