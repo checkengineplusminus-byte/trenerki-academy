@@ -63,6 +63,22 @@ export function calculateCarpentry(problem:Problem,values:Record<string,string>)
 export function formatCarpentry(value:number){
  return value>0&&value<0.000001?value.toExponential(3).replace('.',','):value.toLocaleString('pl-PL',{maximumFractionDigits:6});
 }
+/** Specific, beginner-friendly feedback when a calculation is wrong.
+ * This is guidance, never proof of completion: only the server verifies a correct answer.
+ */
+export function explainCarpentryWrongAnswer(lessonNo:number,entered:number,v:Record<string,number>,expected:number){
+ const f=formatCarpentry,unit=examples[lessonNo].unit;
+ const opening='Wpisano '+f(entered)+' '+unit+'. To nie jest poprawny wynik dla podanych danych.';
+ if(lessonNo===1){
+  return opening+'\nKROK 1 · Zamień milimetry na metry: '+f(v.thickness)+' mm = '+f(v.thickness/1000)+' m; '+f(v.width)+' mm = '+f(v.width/1000)+' m; '+f(v.length)+' mm = '+f(v.length/1000)+' m.'
+  +'\nKROK 2 · Pomnóż trzy wymiary jednej deski i liczbę desek: '
+  +f(v.thickness/1000)+' × '+f(v.width/1000)+' × '+f(v.length/1000)+' × '+f(v.count)+' = '+f(expected)+' m³.'
+  +'\nKROK 3 · W polu odpowiedzi wpisz '+f(expected)+' (bez jednostki) i kliknij „Sprawdź mój wynik” ponownie.';
+ }
+ return opening+'\nWzór i obliczenie: '+explainCarpentry(lessonNo,v,expected)
+  +'\nWpisz '+f(expected)+' (bez jednostki) i sprawdź ponownie. Jeśli nie rozumiesz wzoru, otwórz „Pokaż wzór i rozwiązanie”.';
+}
+
 export function explainCarpentry(lessonNo:number,v:Record<string,number>,value:number){
  const f=formatCarpentry,result=f(value)+' '+examples[lessonNo].unit;
  if(lessonNo===1)return '('+f(v.thickness)+' ÷ 1000) × ('+f(v.width)+' ÷ 1000) × ('+f(v.length)+' ÷ 1000) × '+f(v.count)+' = '+result;

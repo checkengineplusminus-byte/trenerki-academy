@@ -61,6 +61,9 @@ async function installFixture(page,catalog){
   return progress.get(slug);
  };
  await page.addInitScript(({user})=>{
+  // Simulate a learner who rejected optional advertising cookies before opening the course.
+  // The consent banner is tested separately and must not cover lesson controls in this fixture.
+  localStorage.setItem('trenerki_ads_consent_v1','no');
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({
    access_token:'test-access-token',refresh_token:'test-refresh-token',expires_at:Math.floor(Date.now()/1000)+3600,
    expires_in:3600,token_type:'bearer',user,
@@ -372,8 +375,18 @@ async function verifyCarpentryGate(page,mobile){
  await checklist.getByText('Twój wynik: 1/2').waitFor();
  await checklist.getByText(/2. Zadanie z obliczeń — do rozwiązania/).waitFor();
  const lab=page.getByTestId('carpentry-lab').last();
- await lab.getByRole('textbox',{name:'Wpisz obliczony wynik'}).fill('0,192');
- await lab.getByRole('button',{name:'Sprawdź mój wynik'}).click();
+ const answer=lab.getByRole('textbox',{name:'Wpisz obliczony wynik'});
+ const check=lab.getByRole('button',{name:'Sprawdź mój wynik'});
+ await answer.fill('6,7');
+ await check.click();
+ const wrong=lab.getByTestId('carpentry-answer-feedback');
+ await wrong.getByText(/Wpisano 6,7 m³/).waitFor();
+ await wrong.getByText(/0,192 m³/).waitFor();
+ await wrong.getByText(/KROK 1.*KROK 2.*KROK 3/s).waitFor();
+ await checklist.getByText('Twój wynik: 1/2').waitFor();
+ await answer.fill('0,192');
+ await check.click();
+ await lab.getByTestId('carpentry-answer-feedback').getByText(/Poprawnie! Zadanie 2 zaliczone/).waitFor();
  await checklist.getByText('Twój wynik: 2/2').waitFor();
  await page.reload();
  await checklist.getByText('Twój wynik: 2/2').waitFor();
