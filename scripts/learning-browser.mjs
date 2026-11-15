@@ -153,9 +153,10 @@ async function verifyCad(page,mobile){
  await page.getByRole('button',{name:'Ekran programu'}).click();
  const originals=page.getByTestId('autocad-original-screens');
  await originals.waitFor();
- const images=originals.getByRole('img');
+ const images=originals.locator('img');
+ await images.first().waitFor();
  assert.equal(await images.count(),1);
- for(const img of await images.all())assert(await img.evaluate(node=>node.complete&&node.naturalWidth>0),'Original screenshot must load');
+ for(const img of await images.all())await img.evaluate(node=>node.decode());
  await page.getByRole('button',{name:'Pojęcia'}).click();
  await practice.getByRole('button',{name:/Trójkąt z trzech linii/}).click();
  await practice.getByText(/_JOIN/).waitFor();
