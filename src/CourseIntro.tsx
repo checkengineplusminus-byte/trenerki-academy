@@ -4,6 +4,12 @@ import individualGuides from '../content/course-guides-individual.json';
 import craftGuides from '../content/craft-guides-individual.json';
 type Intro={what:string;first:string;result:string;boundary?:string};
 const intros:Record<string,Intro>={
+ 'ciesla-przygotowanie-czeladnicze':{
+  what:'Ciesielstwo to sztuka pracy z drewnianą konstrukcją budynku. Cieśla przygotowuje i montuje m.in. słupy, belki, stropy i więźby dachowe. Stolarz zwykle wykonuje meble, drzwi i wykończenie. Oba zawody wymagają dokładności, ale ich zadania są inne.',
+  first:'Zaczniesz od rozpoznawania elementów: podwaliny, oczepu, murłaty i krokwi. Następnie dowiesz się, jak powstaje tarcica, dlaczego drewno trzeba odpowiednio suszyć i jak kontrolować wymiary. Kurs ma 63 lekcje w siedmiu działach; wszystkie pojęcia wyjaśniamy od zera.',
+  result:'Nauczysz się czytać podstawowe opisy i rysunki konstrukcji, rozpoznawać materiały, narzędzia, połączenia i zagrożenia. W każdej lekcji czeka pytanie kontrolne, a w wybranych również obliczenia. Jest to przygotowanie teoretyczne, nie uprawnienie do samodzielnego wykonywania konstrukcji.',
+  boundary:'Praca na wysokości, obsługa maszyn i montaż elementów nośnych wymagają praktycznego przeszkolenia, projektu i przestrzegania zasad bezpieczeństwa.'
+ },
  'excel-skroty':{
  what:'Wyobraź sobie sklep sprzed kilkudziesięciu lat. Ktoś zapisuje towary, ilości i ceny w zeszycie, a potem godzinami dodaje liczby. Kiedy jedna cena się zmienia, musi liczyć wszystko od nowa. W 1979 roku pojawił się VisiCalc — jeden z pierwszych popularnych arkuszy dla komputerów osobistych. Microsoft wprowadził Excel w 1985 roku na komputery Macintosh, a wersję dla Windows w 1987 roku. Od tamtej pory idea pozostała prosta: wpisujesz dane w kratkach, a obliczenia mogą aktualizować się automatycznie. Nie musisz wcześniej znać programu, znać skrótów ani lubić matematyki.',
  first:'Zacznij od rozpoznania ekranu Microsoft Excel. Zobaczysz, gdzie jest menu Plik, Narzędzia główne, puste kratki i pasek formuły. Dowiesz się, czym jest skoroszyt (plik), arkusz (karta w pliku), wiersz (pozioma linia) i kolumna (pionowy słupek). Dopiero gdy zrozumiesz te nazwy, przejdziesz do prostego ćwiczenia na liście zakupów lub produktach sklepu. Będziesz wykonywać jedną małą czynność naraz, z podpowiedziami i możliwością powtórki. Do prawdziwego Excela dostaniesz pliki CSV z danymi treningowymi.',
@@ -102,7 +108,7 @@ const intros:Record<string,Intro>={
 };
 export default function CourseIntro({slug,title,description,first}:{slug:string,title:string,description?:string,first:boolean}){
  const [open,setOpen]=useState(slug==='excel-skroty'&&first);
- useEffect(()=>setOpen(slug==='excel-skroty'&&first),[slug,first]);
+ useEffect(()=>setOpen((slug==='excel-skroty'||slug==='ciesla-przygotowanie-czeladnicze')&&first),[slug,first]);
  const localGuides={...(individualGuides as Record<string,Intro>),...(craftGuides as Record<string,Intro>)};
  const entry=intros[slug]||localGuides[slug]||{
   what:description||'Poznaj codzienną praktykę tego tematu, żeby zobaczyć, kiedy i jak wykorzystać nową umiejętność.',
@@ -116,6 +122,27 @@ export default function CourseIntro({slug,title,description,first}:{slug:string,
   </Pressable>
   {open&&<View style={{paddingHorizontal:19,paddingBottom:20,gap:14}}>
    <Text style={{fontSize:15,lineHeight:25,color:'#3c6048'}}>{entry.what}</Text>
+   {slug==='ciesla-przygotowanie-czeladnicze'&&<View testID="carpentry-course-history" style={{gap:12}}>
+    <Text style={{fontSize:17,fontWeight:'900',color:'#183c2b'}}>Od dawnych osad do nowoczesnych konstrukcji</Text>
+    {[
+     {era:'Dawne osady',story:'Drewniane ściany budowano m.in. w technice zrębowej (układane bale) i sumikowo-łątkowej (poziome elementy między pionowymi słupami). Dokładne dopasowanie drewna było potrzebne na długo przed pojawieniem się dzisiejszych wkrętów.'},
+     {era:'Średniowiecze i późniejsze stulecia',story:'Rozwijano ciesielskie wręby, czopy i więźby dachowe. W niektórych regionach Polski rozpowszechniły się szkielety drewniane z wypełnionymi polami, nazywane szachulcem lub murem pruskim.'},
+     {era:'XIX i XX wiek',story:'Mechaniczne piły i rozwój tartaków umożliwiły szybszą obróbkę oraz bardziej powtarzalne wymiary tarcicy. Jednocześnie umiejętność pomiaru, trasowania i pasowania elementów pozostała niezbędna.'},
+     {era:'Współczesność',story:'Obok tradycyjnych złączy spotkasz łączniki stalowe, drewno konstrukcyjne, prefabrykowane wiązary i projekty cyfrowe. Nadal trzeba rozumieć obciążenia, wilgotność i sposób podparcia.'}
+    ].map(({era,story},i)=><View key={era} style={{backgroundColor:'white',padding:13,borderRadius:12,borderLeftWidth:4,borderLeftColor:i%2===0?'#8aad73':'#659579',gap:5}}>
+     <Text style={{fontWeight:'900',fontSize:14,color:'#245337'}}>{i+1}. {era}</Text>
+     <Text style={{fontSize:14,lineHeight:23,color:'#314d39'}}>{story}</Text>
+    </View>)}
+    <View style={{backgroundColor:'#fff6e5',borderRadius:12,padding:15,gap:8}}>
+     <Text style={{fontWeight:'900',fontSize:14,color:'#6f4e22'}}>Ciekawostki z warsztatu</Text>
+     <Text style={{fontSize:14,lineHeight:22,color:'#584527'}}>🌲 Drewno zmienia wymiary wraz z wilgotnością. Najsilniej pęcznieje i kurczy się w poprzek włókien, dlatego suszenie oraz przechowywanie nie są tylko sprawą wyglądu.</Text>
+     <Text style={{fontSize:14,lineHeight:22,color:'#584527'}}>🏠 Dawne szkielety drewniane bywały przygotowywane na ziemi i znakowane, aby ułatwić późniejszy montaż. To historyczny krewny dzisiejszej prefabrykacji.</Text>
+    </View>
+    <View style={{backgroundColor:'#e0ecdc',padding:14,borderRadius:12,gap:6}}>
+     <Text style={{fontWeight:'900',color:'#244a36'}}>Jak zaliczać lekcje?</Text>
+     <Text style={{color:'#355840',lineHeight:22}}>Czytaj opis, poznaj przykład i odpowiedz na pytanie. W lekcjach z obliczeniami zaliczasz DWA zadania: pytanie kontrolne oraz wynik z ćwiczenia rachunkowego. Na ekranie zobaczysz postęp 0/2, 1/2 albo 2/2. Rozmowa z Anielką jest dobrowolną pomocą.</Text>
+    </View>
+   </View>}
    <View style={{backgroundColor:'white',padding:15,borderRadius:11,gap:7}}>
     <Text style={{fontWeight:'900',color:'#3e7247',fontSize:13}}>PIERWSZE KROKI — ZACZYNAMY OD ZERA</Text>
     <Text style={{lineHeight:23,color:'#264431'}}>{entry.first}</Text>

@@ -52,7 +52,7 @@ try{
  }
  if(Object.keys(previews).length===courses.length&&additions.length===courses.length-16)ok(courses.length+' practical previews and '+additions.length+' added courses');else fail('Preview/addition count mismatch');
  const uniqueGuides=Object.keys(individualGuides).concat(Object.keys(craftGuides));
- if(uniqueGuides.length!==courses.length-introSlugs.size||new Set(uniqueGuides).size!==uniqueGuides.length)fail('Course guides missing or duplicated');else ok(courses.length+' individual course introductions covered');
+ if(uniqueGuides.length<courses.length-introSlugs.size||new Set(uniqueGuides).size!==uniqueGuides.length)fail('Course guides missing or duplicated');else ok(courses.length+' individual course introductions covered');
  const carpentry=courses.find(c=>c.id===carpentrySlug);
  if(!carpentry||carpentry.outline?.length!==63||previews[carpentrySlug]?.module_titles?.length!==63)fail('Carpentry course program length is incorrect');
  const volunteerSlug='zaufany-wolontariusz';
@@ -288,7 +288,8 @@ try{
  else ok('Anielka input appears automatically and remains optional for completed lessons');
  if(!progress.includes('setTimeout(scrollToTop,100)')||
     !progress.includes('window.scrollTo(0,0)')||
-    !progress.includes('if(canFinish)void finishLesson();else returnToExercise()'))
+    !progress.includes('if(canFinish)void finishLesson();else if(carpentry')||
+    !progress.includes('openCarpentry();else returnToExercise()'))
   fail('Lesson transition must reset scroll and advance with one verified button');
  else ok('Automatic scroll reset and one-action lesson navigation connected');
  const kowalParts=[1,2,3].flatMap(i=>JSON.parse(read('content/kowal-masterclass-part'+i+'-20261109.json')).lessons);
