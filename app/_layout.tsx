@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {View,ActivityIndicator,Platform} from 'react-native';
 import {Link,Slot,Stack,usePathname} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
+import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
 
 /**
@@ -66,5 +67,5 @@ function AccountLayout(){
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>
- </Stack></View><HelpFooter/></View>;
+ </Stack></View>{pathname==='/nauka'?<LearningSupportBar/>:<HelpFooter/>}</View>;
 }
