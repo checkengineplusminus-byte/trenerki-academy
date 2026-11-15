@@ -101,10 +101,10 @@ for(const mobile of [false,true]){
   const clickCadSegment=async(id)=>{
    const svg=cad.getByTestId('cad-canvas');
    const poly=svg.locator('g[data-cad-object="'+id+'"] > polyline:not([data-cad-hit])');
-   const pts=(await poly.getAttribute('points')).trim().split(/\\s+/).map(item=>item.split(',').map(Number));
+   const pts=(await poly.getAttribute('points')).trim().split(/\s+/).map(item=>item.split(',').map(Number));
    assert.equal(pts.length,2,'Expected a straight CAD segment '+id);
    const box=await svg.boundingBox();
-   const vb=(await svg.getAttribute('viewBox')).split(/\\s+/).map(Number);
+   const vb=(await svg.getAttribute('viewBox')).split(/\s+/).map(Number);
    assert(box&&vb.length===4&&vb[2]>0&&vb[3]>0);
    const x=box.x+((pts[0][0]+pts[1][0])/2-vb[0])*box.width/vb[2];
    const y=box.y+((pts[0][1]+pts[1][1])/2-vb[1])*box.height/vb[3];
