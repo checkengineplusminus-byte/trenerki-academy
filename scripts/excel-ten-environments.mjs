@@ -110,6 +110,7 @@ async function checkAdvanced(page,id){
   await lab.getByRole('textbox',{name:'Nowa ilość w FV-001'}).fill('13');
   await lab.getByRole('button',{name:'Zastosuj zmianę ilości FV-001'}).click();
   await lab.getByTestId('excel-pivot-stale').filter({hasText:/wymagane odświeżenie/}).waitFor();
+  await enterAndCheck(lab,String(sum(north)+85),false);
   await lab.getByRole('button',{name:'Odśwież tabelę przestawną'}).click();
   await enterAndCheck(lab,'28330');
   // Switch to regional grouping and verify individual region still reconciles.
