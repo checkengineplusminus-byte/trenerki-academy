@@ -55,14 +55,14 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
   if(help){setSupport(help);setInput('');setError('');return;}
   if(!canReply||message.length<5)return;
   setSending(true);setError('');setFeedbackNotice('');
-  try{const data=await request('dialogue',message);if(data.support)setSupport(data.support);else{
-    apply(data);
-    // Never trust learner text as commands. The separate function classifies reports server-side.
-    void submitCourseFeedback(courseSlug,lessonNo,message).then(ack=>{
-     const confirmation=feedbackConfirmation(ack);
-     if(confirmation)setFeedbackNotice(confirmation);
-    });
-   }setInput('')}
+  // Save a genuine problem even if the tutor model/network fails.
+  // This independent endpoint validates enrollment and classifies the report server-side.
+  const feedbackPromise=submitCourseFeedback(courseSlug,lessonNo,message);
+  void feedbackPromise.then(ack=>{
+   const confirmation=feedbackConfirmation(ack);
+   if(confirmation)setFeedbackNotice(confirmation);
+  });
+  try{const data=await request('dialogue',message);if(data.support)setSupport(data.support);else apply(data);setInput('')}
   catch(e:any){setError(e?.message||'Nie udało się wysłać pytania.')}
   finally{setSending(false)}
  }
