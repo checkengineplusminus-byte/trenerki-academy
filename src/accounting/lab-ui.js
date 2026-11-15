@@ -1,5 +1,5 @@
 import {ACCOUNTS,EMPTY,uid,money,decimal,cents,scaled,invoiceTotals,expectedInvoiceLines,journalTotals,balanceReport,inspect,reverseJournal,parseBankCSV,BANK_TEMPLATE,escapeHTML as e,invoiceHTML} from './lab-core.js';
-import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow,inspectReferenceMonth} from './simulator-core.js';
+import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow,inspectReferenceMonth,scenarioBankCSV} from './simulator-core.js';
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
 import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollJournalDraft,payrollLifecycleChecklist} from './payroll-practice.js';
 import {withInvoiceBankMatch} from './invoice-match.js';
@@ -187,6 +187,8 @@ export function mountLab(root,db){
    '<div><label for="sim-bank-out">Wypływy łącznie (PLN, dodatnio)</label><input id="sim-bank-out" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00" value="'+e(val('bank_out_cents'))+'"></div>'+
    '<div><label for="sim-bank-net">Zmiana rachunku (PLN)</label><input id="sim-bank-net" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00" value="'+e(val('bank_net_cents'))+'"></div></div>'+
    '<div class="actions">'+button('sim-bank-save','Sprawdź i zapisz uzgodnienie','','primary')+'</div>'+feedback+
+   '<p class="notice">Powiąż D01–D36 z biurem: pobierz fikcyjny CSV z ID Dxx, zaimportuj go do zakładki Wyciąg bankowy i zaksięguj każdy przelew. Pracuj w jednym okresie.</p>'+
+   '<div class="actions">'+button('sim-bank-csv','Pobierz CSV D01–D36')+button('tab','Otwórz import CSV','bank')+'</div>'+
    '<p class="small muted">Próby zapisane na koncie: '+(saved?.attempts||0)+'. Zapis używa kontroli wersji i nie zmienia zaksięgowanych operacji w dzienniku. Nadal wymagany jest test na dwóch zalogowanych kontach.</p></section>';
  }
 
@@ -643,6 +645,14 @@ export function mountLab(root,db){
     },null,2));
     status='Pobrano kopię niezapisanych zmian. Możesz porównać ją z najnowszym zapisem z bazy.';
     render();return;
+   }
+   if(a==='sim-bank-csv'){
+    await run(async()=>{
+     if(!scenario||!ws)throw new Error('Najpierw otwórz własne, fikcyjne biuro i scenariusz D01–D36.');
+     download('trenerki-D01-D36-wyciag-2026-01.csv',String.fromCharCode(65279)+scenarioBankCSV(scenario),'text/csv;charset=utf-8');
+     status='Pobrano tylko fikcyjny CSV; niczego nie wysłano do banku.';
+    });
+    return;
    }
    if(a==='template'){download('wyciag-cwiczeniowy.csv','\uFEFF'+BANK_TEMPLATE,'text/csv;charset=utf-8');return;}
   if(a==='export'){download('trenerki-biuro-'+ws.id+'.json',JSON.stringify({format:'trenerki-lab-backup-v1',exported_at:new Date().toISOString(),workspace:ws},null,2));return;}

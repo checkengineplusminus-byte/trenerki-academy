@@ -38,6 +38,21 @@ export function readScenario(raw){
   throw new Error('W manifeście brakuje dokumentu ćwiczeniowego.');
  return scenario;
 }
+
+/** Fikcyjne źródła D01-D36 -> CSV biura. Manifest pozostaje w prywatnym Supabase. */
+export function scenarioBankCSV(raw){
+ const docs=readScenario(raw).documents.filter(d=>d.kind==='bank_in'||d.kind==='bank_out');
+ if(!docs.length)throw new Error('Brak dowodów bankowych w scenariuszu.');
+ const rows=['id;data;kwota;opis'];
+ for(const d of docs){
+  if(!Number.isSafeInteger(d.amount_pln)||d.amount_pln<=0||
+     !Number.isSafeInteger(d.amount_pln*100))throw new Error('Nieprawidłowa kwota dla '+d.id);
+  const caption=(d.id+' — '+d.title).replace(/[\r\n]/g,' ').slice(0,245).replace(/"/g,'""');
+  rows.push([d.id,d.date,(d.kind==='bank_out'?'-':'')+d.amount_pln+',00','"'+caption+'"'].join(';'));
+ }
+ return rows.join('\n')+'\n';
+}
+
 export function readScenarioAnswers(state){
  const saved=state?.simulator_attempts_v1;
  if(saved?.scenario_id!==SCENARIO_ID||!saved.answers||typeof saved.answers!=='object'||Array.isArray(saved.answers))return {};

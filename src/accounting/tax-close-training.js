@@ -6,6 +6,7 @@
  */
 import {invoiceTotals,expectedInvoiceLines,livePostings,validDate} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
+import {readScenario} from './simulator-core.js';
 import {acquisitionLines} from './assets-core.js';
 import {normalizeIdentity} from './identity-core.js';
 
@@ -13,6 +14,52 @@ const monthOf=date=>typeof date==='string'&&/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
 const total=(items,pick)=>items.reduce((n,item)=>n+pick(item),0);
 const isMoney=n=>Number.isSafeInteger(n)&&n>=0&&n<=1000000000000;
+
+
+/**
+ * Pierwszy most D01-D36 -> biuro. Każdy fikcyjny dowód Dxx banku
+ * musi być importowany z tym samym ID, datą i kwotą i mieć dokładnie
+ * jeden aktywny, zbilansowany dekret 130 w tym samym okresie.
+ */
+export function inspectScenarioBankBridge(state,rawScenario,period){
+ if(!rawScenario)return {passed:false,status:'not_tested',matched:0,total:0,issues:[]};
+ let docs;
+ try{docs=readScenario(rawScenario).documents.filter(d=>d.kind==='bank_in'||d.kind==='bank_out');}
+ catch{return {passed:false,status:'not_tested',matched:0,total:0,
+  issues:[{code:'scenario_bank_manifest_not_verified',invoice:'D01-D36'}]};}
+ if(!period||!docs.length)return {passed:false,status:'not_tested',matched:0,total:docs.length,issues:[]};
+ const issues=[],bank=Array.isArray(state?.bank)?state.bank:[],
+       journals=Array.isArray(state?.journals)?livePostings(state):[];
+ let matched=0;
+ for(const doc of docs){
+  const signed=(doc.kind==='bank_in'?1:-1)*doc.amount_pln*100;
+  if(!Number.isSafeInteger(signed)||signed===0||doc.date.slice(0,7)!==period){
+   issues.push({code:'scenario_bank_amount_or_period_invalid',invoice:doc.id});continue;
+  }
+  const rows=bank.filter(b=>b?.id===doc.id);
+  if(rows.length!==1||rows[0].date!==doc.date||rows[0].amount_cents!==signed){
+   issues.push({code:'scenario_bank_csv_missing_duplicate_or_mismatch',invoice:doc.id});continue;
+  }
+  const entries=journals.filter(j=>j.source_type==='bank'&&j.source_id===doc.id);
+  if(entries.length!==1||entries[0].date!==doc.date||!Array.isArray(entries[0].lines)){
+   issues.push({code:'scenario_bank_journal_missing_duplicate_or_period',invoice:doc.id});continue;
+  }
+  const lines=entries[0].lines,bankLines=lines.filter(l=>l.account==='130');
+  const balanced=lines.length>=2&&lines.every(l=>
+   Number.isSafeInteger(l.debit)&&Number.isSafeInteger(l.credit)&&
+   l.debit>=0&&l.credit>=0&&((l.debit>0)!==(l.credit>0)))&&
+   lines.reduce((v,l)=>v+l.debit,0)===lines.reduce((v,l)=>v+l.credit,0);
+  if(!balanced||bankLines.length!==1||
+     bankLines[0].debit!==(signed>0?signed:0)||
+     bankLines[0].credit!==(signed<0?-signed:0)){
+   issues.push({code:'scenario_bank_ledger_130_mismatch',invoice:doc.id});continue;
+  }
+  matched++;
+ }
+ const passed=issues.length===0&&matched===docs.length;
+ return {passed,status:passed?'verified_training_sources':'needs_work',
+  matched,total:docs.length,issues};
+}
 
 export function taxCloseTrainingAudit(raw,scenario=null){
  const state=raw||{},lifecycle=auditCompanyLifecycle(state,scenario);
@@ -183,7 +230,8 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  }
  const companyInvoicesConsistent=issued.length>0&&legacyInvoiceCount===0&&
    companyInvoiceIssues.length===0&&!!companySnapshot;
- const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
+ const bankBridge=inspectScenarioBankBridge(state,scenario,period);
+  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
   {key:'calendar_dates',label:'Prawidłowe daty kalendarzowe faktur, CSV i dekretów',
@@ -216,7 +264,11 @@ export function taxCloseTrainingAudit(raw,scenario=null){
     '; dokumenty bez zapisanej tożsamości: '+legacyInvoiceCount+
     '; rozbieżności: '+companyInvoiceIssues.length+
     '. Tylko zgodność danych ćwiczenia, nie weryfikacja w rejestrze'},
-  {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
+  {key:'scenario_bank_ledger',label:'D01–D36: źródła CSV i dekrety 130 mają wspólne ID',
+    passed:bankBridge.passed,
+    detail:'Powiązano '+bankBridge.matched+'/'+bankBridge.total+
+     ' źródeł. Pobierz CSV D01–D36, zaimportuj do biura i zaksięguj każdy przelew oddzielnie.'},
+   {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
    passed:!!period&&steps.month==='passed_training'&&
     (scenario?.scenario??scenario)?.documents?.length===36&&
     (scenario.scenario??scenario).documents.every(d=>monthOf(d.date)===period)&&
@@ -226,11 +278,12 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const vatDifferenceCents=totals.sale_vat_cents-totals.purchase_vat_cents;
  return {
   period:period||null,source_count:issued.length,
+   scenario_bank_bridge:{status:bankBridge.status,matched:bankBridge.matched,total:bankBridge.total},
   vat_ledger:{sales_cents:vatLedgerSalesCents,purchases_cents:vatLedgerPurchasesCents,matching:vatLedgerMatches,
    review:'not_tested'},
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues],source_inventory,review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},

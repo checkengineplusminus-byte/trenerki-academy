@@ -321,7 +321,7 @@ test('Niepełny miesiąc nie jest zamknięciem nawet przy równych stronach',()=
 });
 
 
-import {auditMonthWorkflow,inspectReferenceMonth} from '../src/accounting/simulator-core.js';
+import {auditMonthWorkflow,inspectReferenceMonth,scenarioBankCSV} from '../src/accounting/simulator-core.js';
 function completeIntegratedFixture(){
  const manifest=structuredClone(sampleJournalManifest);
  manifest.documents=manifest.documents.map((d,i)=>({
@@ -1543,7 +1543,8 @@ test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie pła
  assert.equal(byKey.tax_and_close,'not_implemented','Nie udajemy KSeF/JPK/UPO');
  const tax=taxCloseTrainingAudit(state,manifest);
  assert.equal(tax.period,'2026-01');
- assert.equal(tax.ready_for_training_review,true,'Kompletność danych fikcyjnego okresu, nie legalna');
+ assert.equal(tax.ready_for_training_review,false,'D01-D36 nie ma jeszcze powiązania ze źródłem bankowym');
+ assert.equal(tax.checks.find(x=>x.key==='scenario_bank_ledger').passed,false);
  assert.equal(tax.checks.find(x=>x.key==='bank_sources').passed,true);
  assert.equal(tax.checks.find(x=>x.key==='payroll_assets').passed,true);
  assert.equal(tax.training_result.result_label,'strata modelowa');
@@ -1554,6 +1555,64 @@ test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie pła
  assert.equal(tax.authorized_e2e,'not_tested');
  assert.equal(JSON.stringify(state),before,'Audyt ma być odczytowy');
 });
+
+function fixtureWithTrainingBankSources(){
+ const {manifest,state}=fictionalFullCompanyMonth(),parsed=parseBankCSV(scenarioBankCSV(manifest));
+ assert.deepEqual(parsed.errors,[]);
+ for(const row of parsed.rows){
+  const n=Math.abs(row.amount_cents);
+  state.bank.push(row);
+  state.journals.push({id:'J-'+row.id+'-SOURCE',date:row.date,status:'posted',
+   source_type:'bank',source_id:row.id,lines:row.amount_cents>0?
+   [{account:'130',debit:n,credit:0},{account:'800',debit:0,credit:n}]:
+   [{account:'800',debit:n,credit:0},{account:'130',debit:0,credit:n}]});
+ }
+ return {manifest,state,bankRows:parsed.rows};
+}
+test('MOST D01-D36: bankowy CSV z dokumentow jest importowalny i unikalny',()=>{
+ const {manifest}=fictionalFullCompanyMonth(),csv=scenarioBankCSV(manifest);
+ const parsed=parseBankCSV(csv);
+ assert.deepEqual(parsed.errors,[]);
+ assert.deepEqual(parsed.rows.map(x=>x.id),['D01','D03']);
+ assert.equal(parsed.rows.length,2);
+ const repeated=parseBankCSV(csv,parsed.rows);
+ assert.equal(repeated.rows.length,0);
+ assert.equal(repeated.skipped,2);
+});
+test('MOST D01-D36: osobne dekrety źródeł CSV umożliwiają TYLKO szkoleniową recenzję',()=>{
+ const {manifest,state}=fixtureWithTrainingBankSources(),before=JSON.stringify(state);
+ const r=taxCloseTrainingAudit(state,manifest);
+ assert.equal(r.checks.find(c=>c.key==='scenario_bank_ledger').passed,true);
+ assert.equal(r.scenario_bank_bridge.matched,2);
+ assert.equal(r.ready_for_training_review,true);
+ assert.equal(r.completed,false);
+ assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
+ assert.equal(JSON.stringify(state),before);
+});
+test('MOST D01-D36: brak CSV lub dekretu i podwójny dekret blokują weryfikację',()=>{
+ const {manifest,state,bankRows}=fixtureWithTrainingBankSources();
+ const missing=structuredClone(state);
+ missing.bank=missing.bank.filter(b=>b.id!==bankRows[0].id);
+ assert.ok(taxCloseTrainingAudit(missing,manifest).issues.some(x=>
+  x.code==='scenario_bank_csv_missing_duplicate_or_mismatch'));
+ const noPosting=structuredClone(state);
+ noPosting.journals=noPosting.journals.filter(j=>j.source_id!==bankRows[0].id);
+ assert.equal(taxCloseTrainingAudit(noPosting,manifest).checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
+ const twice=structuredClone(state),j=twice.journals.find(j=>j.source_id===bankRows[0].id);
+ twice.journals.push({...j,id:'DOUBLE'});
+ assert.ok(taxCloseTrainingAudit(twice,manifest).issues.some(x=>
+  x.code==='scenario_bank_journal_missing_duplicate_or_period'));
+});
+test('MOST D01-D36: błędna kwota albo inna data nie przechodzą mimo równych sum',()=>{
+ const {manifest,state,bankRows}=fixtureWithTrainingBankSources();
+ const wrongAmount=structuredClone(state);
+ wrongAmount.bank.find(b=>b.id===bankRows[0].id).amount_cents+=100;
+ assert.equal(taxCloseTrainingAudit(wrongAmount,manifest).checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
+ const wrongDay=structuredClone(state);
+ wrongDay.journals.find(j=>j.source_id===bankRows[0].id).date='2026-01-30';
+ assert.equal(taxCloseTrainingAudit(wrongDay,manifest).checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
+});
+
 test('PRZEKRÓJ: trzecia niezaksięgowana faktura nie może ukryć się za dwiema poprawnymi',()=>{
  const {manifest,state}=fictionalFullCompanyMonth();
  const extra=invoiceTotals({...invoice('sale',30000),id:'EXTRA-SALE',number:'CW/FV/EXTRA',date:'2026-01-17'});
@@ -1674,7 +1733,8 @@ test('Pełen fikcyjny cykl dopuszcza wyłącznie recenzję, nie zamknięcie urz�
  const r=taxCloseTrainingAudit(state,manifest);
  assert.equal(r.checks.find(c=>c.key==='company_opening').passed,true);
  assert.equal(r.checks.find(c=>c.key==='scenario_same_period').passed,true);
- assert.equal(r.ready_for_training_review,true);
+ assert.equal(r.ready_for_training_review,false);
+ assert.equal(r.checks.find(x=>x.key==='scenario_bank_ledger').passed,false);
  assert.equal(r.completed,false);
  assert.equal(r.draft_documents.ksef.status,'NOT_SENT_TRAINING_REFERENCE_ONLY');
  assert.equal(r.draft_documents.jpk.status,'NOT_GENERATED_NOT_SCHEMA_VALIDATED');
