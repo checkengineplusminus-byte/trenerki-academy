@@ -255,7 +255,7 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
    <Text style={{color:'#725329',fontSize:13,lineHeight:21}}>Zapisz je w symulacji lub świadomie odrzuć. Nic nie zostanie usunięte na Twoim prawdziwym komputerze.</Text>
    <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
     <Pressable accessibilityRole="button" accessibilityLabel="Wróć i zapisz notatkę" onPress={()=>setConfirmClose(false)}
-      style={{minHeight:44,paddingHorizontal:12,borderRadius:8,backgroundColor:'#e0f0e3',justifyContent:'center'}}><Text style={{color:ink,fontWeight:'800'}}>Wróć i zapisz</Text></Pressable>
+      style={{minHeight:44,paddingHorizontal:12,borderRadius:8,backgroundColor:'#e0f0e3',justifyContent:'center'}}><Text style={{color:'#245136',fontWeight:'800'}}>Wróć i zapisz</Text></Pressable>
     <Pressable accessibilityRole="button" accessibilityLabel="Zamknij bez zapisywania" onPress={discardNoteAndClose}
       style={{minHeight:44,paddingHorizontal:12,borderRadius:8,backgroundColor:'#fff',borderWidth:1,borderColor:'#dfc69a',justifyContent:'center'}}><Text style={{color:'#80562a',fontWeight:'800'}}>Zamknij bez zapisu</Text></Pressable>
    </View>
