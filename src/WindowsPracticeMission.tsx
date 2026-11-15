@@ -40,6 +40,10 @@ export default function WindowsPracticeMission({lessonNo}:{lessonNo:number}){
    <Text style={{fontSize:12,color:'#4d725c'}}>{mission.persona}</Text>
   </Pressable>
   {expanded&&<View style={{padding:compact?12:17,gap:14}}>
+   {lessonNo===0&&<View testID="windows-start-from-zero-hint" style={{borderLeftWidth:4,borderColor:'#6b9776',backgroundColor:'#fffef6',borderRadius:8,padding:12,gap:4}}>
+    <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>Pierwszy raz w życiu przy komputerze?</Text>
+    <Text style={{fontSize:13,lineHeight:21,color:'#425b47'}}>Nie musisz znać słowa „Start” ani umieć korzystać z myszy. W pracowni Windows poniżej wybierz „Rozpocznij naukę od zera”. Przejdziemy przez każde kliknięcie, a na końcu odnajdziesz samodzielnie zapisany dokument.</Text>
+   </View>}
    <View style={{backgroundColor:'#fff',borderRadius:12,padding:13,gap:7,borderWidth:1,borderColor:line}}>
     <Text style={{fontSize:12,color:'#43845b',fontWeight:'900'}}>SYTUACJA Z PRAWDZIWEJ PRACY</Text>
     <Text style={{fontSize:15,lineHeight:23,fontWeight:'700',color:ink}}>{mission.scenario}</Text>
