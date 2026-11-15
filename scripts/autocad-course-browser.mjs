@@ -18,8 +18,8 @@ for(const mobile of [false,true]){
  page.on('pageerror',e=>errors.push(e.message));
  const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
  await page.addInitScript(({user})=>localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({access_token:'test-access-token',refresh_token:'test-refresh-token',expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user})),{user});
- await page.route(url=>url.origin===origin&&url.pathname==='/nauka',async route=>{
-  const response=await route.fetch({url:origin+'/nauka.html'});await route.fulfill({response});
+ await page.route(url=>url.origin===origin&&['/nauka','/dyplom'].includes(url.pathname),async route=>{
+  const response=await route.fetch({url:origin+new URL(route.request().url()).pathname+'.html'});await route.fulfill({response});
  });
  await page.route(url=>url.origin===api,async route=>{
   const req=route.request(),path=new URL(req.url()).pathname,table=path.split('/').at(-1);
@@ -31,6 +31,7 @@ for(const mobile of [false,true]){
   if(table==='ta_lessons')return json(lessons);
   if(table==='ta_learning_progress')return json(completed.map(lesson_no=>({lesson_no})));
   if(table==='ta_learning_attempts')return json(attempts);
+  if(table==='ta_certificates')return json([{id:'fixture',certificate_no:'WZOR-TESTOWY',holder_name:'Test AutoCAD',title_pl:'AutoCAD',title_en:'AutoCAD',issued_at:'2026-11-15',is_demo:true}]);
   if(table==='ta_drafts')return req.method()==='POST'?json({},201):json([]);
   if(table==='ta-lesson-guide'){
    const body=req.postDataJSON(),material=lessons[body.lesson_no]?.material;
@@ -101,6 +102,19 @@ for(const mobile of [false,true]){
   await page.getByText('Gratulacje! Zaliczyłeś egzamin.',{exact:true}).waitFor();
   await page.getByText(/WZOR-TESTOWY/).waitFor();
   assert.equal(examStep,6);assert.deepEqual(errors,[]);
+  // Reproduce the observed production failure: a tab opened before deployment
+  // requests a diploma chunk that no longer exists. Recovery is user initiated.
+  let blockedChunks=0;
+  const diplomaChunk=url=>url.origin===origin&&/\/_expo\/static\/js\/web\/dyplom-[^/]+\.js$/.test(url.pathname);
+  await page.route(diplomaChunk,route=>{blockedChunks++;return route.abort('failed');});
+  await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).click();
+  await page.getByTestId('route-recovery').waitFor();
+  assert(blockedChunks>0,'The stale route module must actually fail');
+  await page.unroute(diplomaChunk);
+  await page.getByRole('button',{name:'Odśwież stronę',exact:true}).click();
+  await page.getByRole('button',{name:'Pobierz dyplom PDF (PL)',exact:true}).waitFor();
+  assert.equal(await page.getByTestId('route-recovery').count(),0);
+  console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: 30 lessons → mock final exam → diploma; stale deployment chunk shows recovery and reload opens diploma');
   const bounds=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:document.documentElement.clientWidth}));
   assert(bounds.scroll<=bounds.view+3);
  }finally{await browser.close();}

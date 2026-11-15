@@ -1,9 +1,27 @@
 import React,{useEffect,useState} from 'react';
-import {View,ActivityIndicator,Platform} from 'react-native';
-import {Link,Slot,Stack,usePathname,Redirect} from 'expo-router';
+import {View,Text,Pressable,ActivityIndicator,Platform} from 'react-native';
+import {Link,Slot,Stack,usePathname,Redirect,type ErrorBoundaryProps} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
+
+// An open tab can reference a route chunk from the release before the latest
+// deployment. Keep a recovery action visible instead of leaving a blank page.
+export function ErrorBoundary({retry}:ErrorBoundaryProps){
+ const web=Platform.OS==='web';
+ return <View testID="route-recovery" style={{flex:1,justifyContent:'center',alignItems:'center',padding:24,backgroundColor:'#fbfcf7'}}>
+  <View style={{width:'100%',maxWidth:540,gap:16,padding:24,borderRadius:16,backgroundColor:'#eaf3e4'}}>
+   <Text accessibilityRole="header" style={{fontSize:24,fontWeight:'900',color:'#19392b'}}>Nie udało się otworzyć tej strony</Text>
+   <Text style={{fontSize:16,lineHeight:25,color:'#19392b'}}>Strona mogła zostać zaktualizowana lub połączenie zostało przerwane. Zapisane wyniki pozostają na Twoim koncie. Spróbuj ponownie.</Text>
+   <Pressable accessibilityRole="button" onPress={()=>{
+    if(web&&typeof window!=='undefined')window.location.reload();
+    else void retry();
+   }} style={{minHeight:48,padding:14,borderRadius:10,backgroundColor:'#245f36'}}>
+    <Text style={{fontWeight:'800',color:'white',textAlign:'center'}}>{web?'Odśwież stronę':'Spróbuj ponownie'}</Text>
+   </Pressable>
+  </View>
+ </View>;
+}
 
 /**
  * Route visibility is a convenience, NOT the authorization boundary.
