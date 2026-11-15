@@ -221,6 +221,11 @@ async function persona(browser,p,round){
    await glossary.getByRole('button',{name:'Wyjaśnij pojęcie Komórka',exact:true}).click();
    await glossary.getByTestId('excel-glossary-definition').getByText('Komórka',{exact:true}).waitFor();
    await library.getByRole('button',{name:'Biblioteka — 12 rozdziałów'}).click();
+   await library.getByRole('button',{name:'Poziom rozdziałów dodatkowych: Ekspert'}).click();
+   await library.getByText('Wyświetlasz 5 z 12 dodatkowych rozdziałów.').waitFor();
+   await library.getByRole('button',{name:'Poziom rozdziałów dodatkowych: Od zera'}).click();
+   await library.getByText('Wyświetlasz 3 z 12 dodatkowych rozdziałów.').waitFor();
+   await library.getByRole('button',{name:'Poziom rozdziałów dodatkowych: Wszystkie'}).click();
    await library.getByRole('button',{name:'Otwórz rozdział dodatkowy Twoje pierwsze 15 minut: nie musisz nic umieć'}).click();
    const bonus=library.getByTestId('excel-bonus-chapter-detail');
    const answer=bonus.getByRole('textbox',{name:'Odpowiedź w dodatkowym rozdziale Excel'});
