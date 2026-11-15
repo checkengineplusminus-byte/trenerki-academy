@@ -215,13 +215,11 @@ async function priestZeroExperience(browser,kind){
   await page.goto(origin+'/nauka?course=windows-skroty&lesson=1',{waitUntil:'domcontentloaded'});
   await page.getByTestId('course-reading-introduction').waitFor();
   assert.equal(await page.getByTestId('case-checkpoint').count(),0,'No quiz before introduction');
-  const introConsent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
-  if(await introConsent.isVisible())await introConsent.getByRole('button',{name:'Odrzuć',exact:true}).click();
-  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   const privacy=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   await privacy.waitFor({state:'visible',timeout:12000});
   await privacy.getByRole('button',{name:'Odrzuć',exact:true}).click();
   await privacy.waitFor({state:'hidden'});
+  await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   await page.getByTestId('windows-start-from-zero-hint').waitFor();
   const lab=page.getByTestId('windows-desktop-lab'),guide=lab.getByTestId('windows-absolute-beginner');
   await guide.waitFor();
