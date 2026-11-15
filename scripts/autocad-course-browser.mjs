@@ -100,6 +100,7 @@ for(const mobile of [false,true]){
   await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
   const clickCadSegment=async(id)=>{
    const svg=cad.getByTestId('cad-canvas');
+   await svg.scrollIntoViewIfNeeded();
    const poly=svg.locator('g[data-cad-object="'+id+'"] > polyline:not([data-cad-hit])');
    const pts=(await poly.getAttribute('points')).trim().split(/\s+/).map(item=>item.split(',').map(Number));
    assert.equal(pts.length,2,'Expected a straight CAD segment '+id);
