@@ -32,7 +32,7 @@ test('UI: rozdziały, indeks, PDF i ochrony lekcji',()=>{
  const route=read('app/_layout.tsx');
  assert.match(ui,/excel-master-function-search/);
  assert.match(ui,/excel-pdf-check/);
- assert.match(ui,/print-the-top-row-on-every-page/);
+ assert.match(ui,/print-rows-with-column-headers-on-top-of-every-page/);
  assert.match(page,/<ExcelMasterGuide\/>/);
  assert.match(page,/supabase\.auth\.getUser\(\)/);
  assert.match(page,/ta_enrollments/);
