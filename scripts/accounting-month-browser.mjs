@@ -8,7 +8,8 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {readScenario,inspectReferenceMonth,auditMonthWorkflow} from '../src/accounting/simulator-core.js';
-import {parseBankCSV} from '../src/accounting/lab-core-base.js';
+import {parseBankCSV,invoiceTotals,expectedInvoiceLines} from '../src/accounting/lab-core-base.js';
+import {inspectScenarioCorrectionBridge} from '../src/accounting/scenario-correction-bridge.js';
 import {inspectScenarioInvoiceBridge} from '../src/accounting/scenario-invoice-bridge.js';
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 assert.match(origin,/^http:\/\/(?:127\.0\.0\.1|localhost):\d+$/,'Only a localhost Expo export is allowed.');
@@ -506,6 +507,56 @@ try{
   assert.deepEqual(bridge.errors,[]);
  });
  await bridge.context.close();
+
+ const correctionManifest=structuredClone(manifest);
+ correctionManifest.documents.find(d=>d.id==='D22').corrects_doc_id='D20';
+ assert.equal(inspectReferenceMonth(correctionManifest).ok,true);
+ const originalDoc=correctionManifest.documents.find(d=>d.id==='D20');
+ const originalInvoice=invoiceTotals({id:'SCEN-D20',kind:'sale',status:'issued',
+  number:'CW/SYNTH/D20',date:originalDoc.date,due:originalDoc.date,
+  party:'Fikcyjny klient',seller:'Fikcyjna firma',
+  lines:[{label:'Ćwiczenie',qty_milli:1000,unit_cents:originalDoc.amount_pln*100,tax_code:'0'}]});
+ const correctionState={
+  invoices:[originalInvoice],
+  journals:[{id:'SOURCE-D20',status:'posted',date:originalDoc.date,
+   source_type:'invoice',source_id:originalInvoice.id,lines:expectedInvoiceLines(originalInvoice)}],
+  scenario_invoice_links_v1:{scenario_id:correctionManifest.id,links:{D20:originalInvoice.id}},
+  simulator_attempts_v1:{scenario_id:correctionManifest.id,answers:{D22:'correction'}},
+  simulator_journal_attempts_v1:{scenario_id:correctionManifest.id,
+   entries:{D22:{lines:correctionManifest.journal_practice_v1.entries.D22.lines,tries:1}}}
+ };
+ const correction=await fixture({width:1280,height:960},correctionManifest,correctionState);
+ await correction.page.goto(origin+'/biuro-ksiegowe');
+ await tab(correction.page).waitFor();await tab(correction.page).click();
+ await pass('Chromium: korekta ucznia tworzy jeden dekret, a pierwotna faktura zostaje bez zmian',async()=>{
+  const previous=correction.model().version,original=JSON.stringify(correction.model().state.invoices);
+  assert.equal(inspectScenarioCorrectionBridge(correction.model().state,correctionManifest,'2026-01').passed,false);
+  await correction.page.locator('button[data-action="sim-correction-post"][data-id="D22"]').click();
+  await correction.page.waitForFunction(()=>document.querySelector('[role="status"]')?.textContent?.includes('Zaksięgowano Twoją poprawną próbę korekty'));
+  assert.equal(correction.model().version,previous+1);
+  const state=correction.model().state,j=state.journals.at(-1);
+  assert.equal(JSON.stringify(state.invoices),original);
+  assert.equal(j.source_type,'manual');
+  assert.equal(j.source_id,'D22');
+  assert.equal(j.scenario_correction_ref.original_doc_id,'D20');
+  assert.equal(j.scenario_correction_ref.original_invoice_id,originalInvoice.id);
+  assert.equal(inspectScenarioCorrectionBridge(state,correctionManifest,'2026-01').passed,true);
+  assert.equal(correction.saves(),1);
+  assert.deepEqual(correction.errors,[]);
+ });
+ await pass('Chromium: ponowna próba korekty jest blokowana i odświeżenie zachowuje dekret',async()=>{
+  const v=correction.model().version;
+  await correction.page.locator('button[data-action="sim-correction-post"][data-id="D22"]').click();
+  await correction.page.getByRole('alert').getByText(/Korekta ma już zapis/).waitFor();
+  assert.equal(correction.model().version,v);assert.equal(correction.saves(),1);
+  await correction.page.reload();await tab(correction.page).waitFor();await tab(correction.page).click();
+  await correction.page.getByText('Sprawdzony dekret szkoleniowy').first().waitFor();
+  assert.equal(correction.model().state.journals.length,2);
+  assert.equal(inspectScenarioCorrectionBridge(correction.model().state,correctionManifest,'2026-01').legal_review,'not_tested');
+  assert.deepEqual(correction.errors,[]);
+ });
+ await correction.page.screenshot({path:'/tmp/trenerki-accounting-month-correction.png',fullPage:true});
+ await correction.context.close();
  const mobile=await fixture({width:390,height:844});
  await mobile.page.goto(origin+'/biuro-ksiegowe');await tab(mobile.page).waitFor();await tab(mobile.page).click();
  await pass('Mobilna pracownia D01–D36 nie wychodzi poza ekran 390px',async()=>{
