@@ -27,7 +27,7 @@ try{
   await page.goto(root+'/academy/kursy/brygadzista.html',{waitUntil:'domcontentloaded'});
   await page.getByText('Cena katalogowa: 155 zł').waitFor();
   await page.goto(root+'/academy/kategorie/technologie-i-logistyka.html',{waitUntil:'domcontentloaded'});
-  await page.getByRole('link',{name:/Excel od zera do analizy danych.*0 zł/}).waitFor();
+  await page.getByRole('link',{name:/Excel — kompletny kurs od podstaw do eksperta.*0 zł/}).waitFor();
   assert.deepEqual(errors,[],'No JavaScript errors');
   console.log('✓ '+size.width+'px: free course trio, no separate Excel banner, paid prices and SEO consistent');
   await ctx.close();
