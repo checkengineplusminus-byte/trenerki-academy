@@ -362,14 +362,14 @@
         "raw": [
           "Punkt, współrzędne X i Y",
           "Każdy punkt w przestrzeni 2D ma współrzędną X i Y. X opisuje położenie w poziomie, a Y w pionie układu rysunku. Dwa punkty (0,0) i (4000,0) wyznaczają poziomą linię o długości 4000 jednostek. Współrzędne względne wyrażają przesunięcie od aktualnego punktu, a bezwzględne pozycję względem początku układu.",
-          "W wierszu poleceń uruchom _LINE. Wpisz punkt -1000,-700, potem @4200,0 i zakończ Enterem. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach.",
+          "W nowym pliku treningowym ustaw układ globalny: wpisz _UCS, Enter, _World, Enter. Wyłącz wprowadzanie dynamiczne: DYNMODE, Enter, 0, Enter. Teraz uruchom _LINE. Wpisz -1000,-700 i Enter, potem @4200,0 i Enter. Kolejnym Enterem zakończ LINE. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach.",
           "Punkt końcowy to (3200, -700), a długość odcinka wynosi 4200 jednostek. Współrzędna Y się nie zmieniła.",
           "Wpis @4200,0 nie oznacza punktu (4200,0). Dodajesz przesunięcie do punktu poprzedniego. Przy wpisywaniu dziesiętnych współrzędnych używaj kropki, a przecinkiem oddzielaj X i Y."
         ],
         "level": "podstawy",
         "section": 1,
         "learning": {
-          "task": "W wierszu poleceń uruchom _LINE. Wpisz punkt -1000,-700, potem @4200,0 i zakończ Enterem. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach.",
+          "task": "W nowym pliku treningowym ustaw układ globalny: wpisz _UCS, Enter, _World, Enter. Wyłącz wprowadzanie dynamiczne: DYNMODE, Enter, 0, Enter. Teraz uruchom _LINE. Wpisz -1000,-700 i Enter, potem @4200,0 i Enter. Kolejnym Enterem zakończ LINE. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach.",
           "intro": "Każdy punkt w przestrzeni 2D ma współrzędną X i Y. X opisuje położenie w poziomie, a Y w pionie układu rysunku. Dwa punkty (0,0) i (4000,0) wyznaczają poziomą linię o długości 4000 jednostek. Współrzędne względne wyrażają przesunięcie od aktualnego punktu, a bezwzględne pozycję względem początku układu.",
           "correct": 1,
           "example": "(3200, -700).",
@@ -414,11 +414,11 @@
           },
           {
             "heading": "Układ współrzędnych i zapis biegunowy",
-            "text": "WCS oznacza globalny układ rysunku, a UCS układ użytkownika, który można przesunąć lub obrócić. Te same liczby mogą więc wskazywać inne miejsce. W ćwiczeniach używamy standardowego układu XY. Przy wyłączonym wprowadzaniu dynamicznym wpis 250,120 w wierszu poleceń jest bezwzględny, a @250,120 względny. Zapis @150<30 oznacza odcinek długości 150 pod kątem 30° przy standardowych ustawieniach kątów. Punkt środkowy ma współrzędne będące średnimi współrzędnych końców: między (40,20) a (160,100) jest to (100,60)."
+            "text": "WCS oznacza globalny układ rysunku, a UCS układ użytkownika, który można przesunąć lub obrócić. Te same liczby mogą więc wskazywać inne miejsce. W ćwiczeniach używamy globalnego układu XY. F12 przełącza wprowadzanie dynamiczne, czyli pola przy kursorze; jeśli jest włączone, kolejne punkty mogą być interpretowane względnie. W polu dynamicznym znak # wymusza punkt bezwzględny, np. #500,800. W naszych ćwiczeniach wyłączamy tę funkcję przez DYNMODE = 0 i wpisujemy liczby w wierszu poleceń. Po ćwiczeniu możesz włączyć ją ponownie F12. Przy wyłączonym wprowadzaniu dynamicznym wpis 250,120 w wierszu poleceń jest bezwzględny, a @250,120 względny. Zapis @150<30 oznacza odcinek długości 150 pod kątem 30° przy standardowych ustawieniach kątów. Punkt środkowy ma współrzędne będące średnimi współrzędnych końców: między (40,20) a (160,100) jest to (100,60)."
           },
           {
             "heading": "Krok po kroku w AutoCAD-zie",
-            "text": "W wierszu poleceń uruchom _LINE. Wpisz punkt -1000,-700, potem @4200,0 i zakończ Enterem. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach."
+            "text": "W nowym pliku treningowym ustaw układ globalny: wpisz _UCS, Enter, _World, Enter. Wyłącz wprowadzanie dynamiczne: DYNMODE, Enter, 0, Enter. Teraz uruchom _LINE. Wpisz -1000,-700 i Enter, potem @4200,0 i Enter. Kolejnym Enterem zakończ LINE. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach."
           },
           {
             "heading": "Sprawdź wynik po wykonaniu",
@@ -432,7 +432,7 @@
         "illustration": "autocad-coordinates",
         "editorial_status": "approved",
         "curiosity": "Znak @ mówi o przesunięciu względem poprzedniego punktu. Dlatego @100,0 może prowadzić do różnych współrzędnych końcowych zależnie od miejsca startu.",
-        "exercise": "W wierszu poleceń uruchom _LINE. Wpisz punkt -1000,-700, potem @4200,0 i zakończ Enterem. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach.",
+        "exercise": "W nowym pliku treningowym ustaw układ globalny: wpisz _UCS, Enter, _World, Enter. Wyłącz wprowadzanie dynamiczne: DYNMODE, Enter, 0, Enter. Teraz uruchom _LINE. Wpisz -1000,-700 i Enter, potem @4200,0 i Enter. Kolejnym Enterem zakończ LINE. Zapisuj współrzędne w wierszu poleceń, a nie w polach dynamicznych przy kursorze. Odczytaj oba końce we Właściwościach.",
         "quickTips": [
           "Wpis @4200,0 nie oznacza punktu (4200,0). Dodajesz przesunięcie do punktu poprzedniego. Przy wpisywaniu dziesiętnych współrzędnych używaj kropki, a przecinkiem oddzielaj X i Y."
         ]
@@ -446,14 +446,14 @@
         "raw": [
           "Linia, polilinia i okrąg",
           "LINE tworzy pojedyncze odcinki. PLINE tworzy połączoną polilinię, która może być jednym obiektem. CIRCLE tworzy okrąg opisany środkiem i promieniem lub innymi parametrami zależnymi od polecenia. RECTANG może utworzyć prostokątny obrys. Te obiekty różnią się właściwościami, dlatego wybór narzędzia ma znaczenie dla późniejszej edycji.",
-          "W pustym rysunku uruchom _LINE. Podaj 0,0, następnie 1000,0 i 500,800. Wpisz _Close. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close.",
+          "W pustym rysunku ustaw układ globalny (_UCS, Enter, _World, Enter) i wyłącz wprowadzanie dynamiczne (DYNMODE, Enter, 0, Enter). Uruchom _LINE. W wierszu poleceń podaj 0,0, następnie 1000,0 i 500,800, zatwierdzając każdy punkt Enterem. Wpisz _Close i Enter. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close.",
           "Trójkąt po poprawnym połączeniu zaznacza się jako jedna polilinia. Drugi, narysowany PLINE, również jest jednym obiektem. Pole trójkąta o podstawie 1000 i wysokości 800 wynosi 400 000 jednostek kwadratowych.",
           "Nie przeciągaj pojedynczego uchwytu wierzchołka, jeśli chcesz przesunąć cały kształt. Użyj MOVE na zaznaczonym obiekcie. Samo zetknięcie linii nie łączy ich automatycznie."
         ],
         "level": "podstawy",
         "section": 1,
         "learning": {
-          "task": "W pustym rysunku uruchom _LINE. Podaj 0,0, następnie 1000,0 i 500,800. Wpisz _Close. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close.",
+          "task": "W pustym rysunku ustaw układ globalny (_UCS, Enter, _World, Enter) i wyłącz wprowadzanie dynamiczne (DYNMODE, Enter, 0, Enter). Uruchom _LINE. W wierszu poleceń podaj 0,0, następnie 1000,0 i 500,800, zatwierdzając każdy punkt Enterem. Wpisz _Close i Enter. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close.",
           "intro": "LINE tworzy pojedyncze odcinki. PLINE tworzy połączoną polilinię, która może być jednym obiektem. CIRCLE tworzy okrąg opisany środkiem i promieniem lub innymi parametrami zależnymi od polecenia. RECTANG może utworzyć prostokątny obrys. Te obiekty różnią się właściwościami, dlatego wybór narzędzia ma znaczenie dla późniejszej edycji.",
           "correct": 1,
           "example": "Łączę odcinki w polilinię, sprawdzam wynik i używam MOVE.",
@@ -500,7 +500,7 @@
           },
           {
             "heading": "Krok po kroku w AutoCAD-zie",
-            "text": "W pustym rysunku uruchom _LINE. Podaj 0,0, następnie 1000,0 i 500,800. Wpisz _Close. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close."
+            "text": "W pustym rysunku ustaw układ globalny (_UCS, Enter, _World, Enter) i wyłącz wprowadzanie dynamiczne (DYNMODE, Enter, 0, Enter). Uruchom _LINE. W wierszu poleceń podaj 0,0, następnie 1000,0 i 500,800, zatwierdzając każdy punkt Enterem. Wpisz _Close i Enter. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close."
           },
           {
             "heading": "Sprawdź wynik po wykonaniu",
@@ -514,7 +514,7 @@
         "illustration": "autocad-commands",
         "editorial_status": "approved",
         "curiosity": "Obrys może wyglądać jak trójkąt, choć składa się z trzech osobnych obiektów. O sposobie zaznaczania decyduje typ geometrii, nie sam wygląd.",
-        "exercise": "W pustym rysunku uruchom _LINE. Podaj 0,0, następnie 1000,0 i 500,800. Wpisz _Close. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close.",
+        "exercise": "W pustym rysunku ustaw układ globalny (_UCS, Enter, _World, Enter) i wyłącz wprowadzanie dynamiczne (DYNMODE, Enter, 0, Enter). Uruchom _LINE. W wierszu poleceń podaj 0,0, następnie 1000,0 i 500,800, zatwierdzając każdy punkt Enterem. Wpisz _Close i Enter. Powstaną trzy odcinki. Zaznacz wszystkie trzy i użyj _JOIN. We Właściwościach sprawdź typ Polilinia oraz zamknięcie. Jeżeli połączenie nie powstało, sprawdź wspólne końce i wysokość Z; możesz użyć _PEDIT z opcją Dołącz. Dla porównania narysuj taki sam trójkąt poleceniem _PLINE i zakończ _Close.",
         "quickTips": [
           "Nie przeciągaj pojedynczego uchwytu wierzchołka, jeśli chcesz przesunąć cały kształt. Użyj MOVE na zaznaczonym obiekcie. Samo zetknięcie linii nie łączy ich automatycznie."
         ]
@@ -927,29 +927,29 @@
         ],
         "shortcuts": [
           {
-            "tip": "Wybieraj punkty z włączonymi pomocami precyzyjnego wskazywania.",
+            "tip": "Każdy następny punkt dodaje osobny odcinek. Enter kończy rysowanie.",
             "keys": [
               "L",
               "Enter"
             ],
             "kind": "alias",
-            "after": "Tworzysz odcinek od punktu A do B",
+            "after": "Po podaniu początku i końca powstaje odcinek.",
             "combo": "L",
             "label": "Linia — LINE",
-            "before": "Puste pole rysunku",
+            "before": "Chcesz narysować nowy prosty odcinek.",
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
-            "tip": "Wygodne do obrysów, które chcesz później modyfikować jako całość.",
+            "tip": "PLINE nie łączy istniejących linii. Do tego użyj JOIN lub PEDIT z opcją Dołącz.",
             "keys": [
               "PL",
               "Enter"
             ],
             "kind": "alias",
-            "after": "Połączone segmenty jednego obiektu",
+            "after": "Kolejno wskazane punkty tworzą segmenty jednej polilinii.",
             "combo": "PL",
             "label": "Polilinia — PLINE",
-            "before": "Kilka oddzielnych krawędzi",
+            "before": "Chcesz od początku narysować obrys jako jeden obiekt.",
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
@@ -966,29 +966,29 @@
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
-            "tip": "Dobry początek prostego rzutu pomieszczenia.",
+            "tip": "RECTANG tworzy nowy obiekt; nie zamienia czterech istniejących linii w prostokąt.",
             "keys": [
               "REC",
               "Enter"
             ],
             "kind": "alias",
-            "after": "Prostokąt będący polilinią",
+            "after": "Po podaniu dwóch narożników powstaje prostokątna polilinia.",
             "combo": "REC",
             "label": "Prostokąt — RECTANG",
-            "before": "Cztery niezależne linie",
+            "before": "Chcesz narysować nowy prostokąt o określonych wymiarach.",
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
-            "tip": "Dla precyzji wybierz sposób definiowania łuku w wierszu poleceń.",
+            "tip": "Przeczytaj wybraną metodę, np. trzy punkty. ARC nie zamienia samoczynnie istniejącej prostej w łuk.",
             "keys": [
               "A",
               "Enter"
             ],
             "kind": "alias",
-            "after": "Odcinek łuku",
+            "after": "Po wskazaniu wymaganych punktów powstaje łuk.",
             "combo": "A",
             "label": "Łuk — ARC",
-            "before": "Prosta krawędź",
+            "before": "Potrzebujesz nowego zakrzywionego fragmentu rysunku.",
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           }
         ],
@@ -1377,16 +1377,16 @@
         ],
         "shortcuts": [
           {
-            "tip": "Nazwij warstwy według ich funkcji, nie losowych numerów.",
+            "tip": "Samo otwarcie okna nie porządkuje rysunku. Utwórz potrzebne warstwy i przypisz do nich właściwe obiekty.",
             "keys": [
               "LA",
               "Enter"
             ],
             "kind": "alias",
-            "after": "Warstwy da się porządkować i filtrować",
+            "after": "Otwiera się menedżer właściwości warstw.",
             "combo": "LA",
             "label": "Menedżer warstw — LAYER",
-            "before": "Ściany i instalacje narysowane razem",
+            "before": "Chcesz utworzyć warstwę albo sprawdzić jej kolor i widoczność.",
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
@@ -1416,16 +1416,16 @@
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
-            "tip": "Skala rodzaju linii może wpływać na wygląd kreskowania.",
+            "tip": "Po wczytaniu przypisz rodzaj linii do warstwy lub obiektu. Widoczność kresek zależy także od skali rodzaju linii.",
             "keys": [
               "LT",
               "Enter"
             ],
             "kind": "alias",
-            "after": "Możesz zarządzać typami linii",
+            "after": "Otwiera się menedżer rodzajów linii.",
             "combo": "LT",
             "label": "Typ linii — LINETYPE",
-            "before": "Wszystko wygląda jak linia ciągła",
+            "before": "Chcesz wczytać albo sprawdzić rodzaj linii, np. linię kreskową.",
             "platform": "AutoCAD dla Windows (domyślne aliasy/ustawienia)"
           },
           {
@@ -2721,7 +2721,7 @@
           "Zaawansowane: bloki i zestawienia",
           "Zestawienie ilości jest wynikiem przyjętego zakresu i sposobu zliczania. Symbole mogą się nakładać, być w innych warstwach, mieć różne nazwy lub stanowić części większego bloku. Dlatego liczbę z tabeli trzeba porównać z rysunkiem. W prostym przykładzie nauczysz się wykrywać ukryte dodatkowe wstawienie i wyjaśniać różnicę.",
           "W pliku próbnym wstaw pięć bloków SLUPEK. Na kopii dodaj szósty dokładnie na jednym z istniejących. Porównaj liczbę widocznych symboli i liczbę wstawień. Jeśli Twoja wersja ma COUNT, sprawdź jego szczegóły i ostrzeżenia; w starszej wersji użyj wyboru obiektów i Właściwości.",
-          "W kopii są sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu.",
+          "W kopii jest sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu.",
           "Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty."
         ],
         "level": "expert",
@@ -2737,13 +2737,13 @@
             "Powiększenie widoku dodało nowe wstawienie."
           ],
           "feedback": [
-            "Dobrze. W kopii są sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty.",
-            "Spróbuj jeszcze raz. W kopii są sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty.",
-            "Spróbuj jeszcze raz. W kopii są sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty."
+            "Dobrze. W kopii jest sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty.",
+            "Spróbuj jeszcze raz. W kopii jest sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty.",
+            "Spróbuj jeszcze raz. W kopii jest sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty."
           ],
           "question": "Widać pięć miejsc z symbolami, ale w pliku jest sześć wstawień tego samego bloku. Co może to wyjaśniać?",
           "situation": null,
-          "explanation": "W kopii są sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty."
+          "explanation": "W kopii jest sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu. Nie zatwierdzaj ilości wyłącznie na podstawie tabeli. Sprawdź zakres zliczania, nazwy bloków i ewentualne duplikaty."
         },
         "practice": {
           "visual": {
@@ -2776,7 +2776,7 @@
           },
           {
             "heading": "Sprawdź wynik po wykonaniu",
-            "text": "W kopii są sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu."
+            "text": "W kopii jest sześć wstawień, choć widać pięć miejsc. Potrafisz wskazać nakładkę i wyjaśnić różnicę w zestawieniu."
           },
           {
             "heading": "Na co uważać",
