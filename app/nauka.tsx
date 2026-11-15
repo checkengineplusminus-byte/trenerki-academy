@@ -13,6 +13,7 @@ import CarpentryPracticeLab,{CarpentryCalculatorDirectory,hasCarpentryLab} from 
 import CourseIntro from '../src/CourseIntro';
 import ExcelFirstDayPractice from '../src/ExcelFirstDayPractice';
 import {ExcelAcademyLibrary} from '../src/ExcelAcademyLibrary';
+import ExcelMasterGuide from '../src/ExcelMasterGuide';
 import CourseIntroPhoto from '../src/CourseIntroPhoto';
 import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
@@ -336,6 +337,7 @@ export default function Learning(){
   {!!lesson&&<>
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
+   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide/>}
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
    {index===0&&!introRead&&<View testID="course-reading-introduction" style={{padding:20,backgroundColor:'white',borderRadius:16,gap:14,marginBottom:20}}>
     <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Jak będziemy się uczyć?</Text>
