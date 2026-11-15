@@ -248,6 +248,24 @@ async function verifyExplorer(page,mobile){
  console.log('✓ '+(mobile?'mobile':'desktop')+' Windows mission: real-PC guidance, steps, typed evidence and honest self-check');
  const simulation=page.getByTestId('windows-desktop-lab');
  await simulation.waitFor();
+ // Paid-course proof: edit, Save As, close, find the file in Explorer and reopen it.
+ await simulation.getByRole('button',{name:'Otwórz Notatnik'}).click();
+ await simulation.getByRole('textbox',{name:'Notatnik — pole ćwiczebne'}).fill('Test jakości: zapis działa i tekst można odzyskać.');
+ await simulation.getByRole('textbox',{name:'Nazwa pliku do zapisu'}).fill('Test_Jakosci.txt');
+ await simulation.getByRole('button',{name:'Zapisz notatkę do pliku'}).click();
+ await simulation.getByText(/Zapisano Test_Jakosci.txt w Dokumentach ćwiczebnych/).waitFor();
+ await simulation.getByRole('button',{name:'Zamknij Notatnik'}).click();
+ await simulation.getByRole('button',{name:'Otwórz Eksplorator plików'}).click();
+ await simulation.getByRole('button',{name:'Otwórz plik Test_Jakosci.txt'}).click();
+ await simulation.getByRole('textbox',{name:'Notatnik — pole ćwiczebne'}).waitFor();
+ assert.equal(await simulation.getByRole('textbox',{name:'Notatnik — pole ćwiczebne'}).inputValue(),'Test jakości: zapis działa i tekst można odzyskać.');
+ await simulation.getByRole('textbox',{name:'Notatnik — pole ćwiczebne'}).fill('Niezapisana zmiana — wymaga decyzji.');
+ await simulation.getByRole('button',{name:'Zamknij Notatnik'}).click();
+ await simulation.getByTestId('win11-unsaved-warning').waitFor();
+ await simulation.getByRole('button',{name:'Wróć i zapisz notatkę'}).click();
+ await simulation.getByTestId('win11-unsaved-warning').waitFor({state:'detached'});
+ console.log('✓ '+(mobile?'mobile':'desktop')+' Windows Notepad: edit, save, close, reopen, unsaved-change warning');
+
  // 1: Beginner in an office — Start, search, and a visible application.
  await simulation.getByRole('button',{name:'Otwórz menu Start'}).click();
  await simulation.getByTestId('windows-start-menu').waitFor();
