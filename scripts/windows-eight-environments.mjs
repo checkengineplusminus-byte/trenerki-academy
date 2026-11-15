@@ -205,6 +205,10 @@ async function priestZeroExperience(browser,kind){
  try{
   await setupMock(page,events,true);
   await page.goto(origin+'/nauka?course=windows-skroty&lesson=1',{waitUntil:'domcontentloaded'});
+  const privacy=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
+  await privacy.waitFor({state:'visible',timeout:12000});
+  await privacy.getByRole('button',{name:'Odrzuć',exact:true}).click();
+  await privacy.waitFor({state:'hidden'});
   await page.getByTestId('windows-start-from-zero-hint').waitFor();
   const lab=page.getByTestId('windows-desktop-lab'),guide=lab.getByTestId('windows-absolute-beginner');
   await guide.waitFor();
