@@ -9,6 +9,7 @@ import {auditCompanyLifecycle} from './lifecycle-audit.js';
 import {readScenario} from './simulator-core.js';
 import {acquisitionLines} from './assets-core.js';
 import {normalizeIdentity} from './identity-core.js';
+import {inspectScenarioInvoiceBridge} from './scenario-invoice-bridge.js';
 
 const monthOf=date=>typeof date==='string'&&/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(date)?date.slice(0,7):null;
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
@@ -231,6 +232,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const companyInvoicesConsistent=issued.length>0&&legacyInvoiceCount===0&&
    companyInvoiceIssues.length===0&&!!companySnapshot;
  const bankBridge=inspectScenarioBankBridge(state,scenario,period);
+ const invoiceBridge=inspectScenarioInvoiceBridge(state,scenario,period);
   const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -268,6 +270,9 @@ export function taxCloseTrainingAudit(raw,scenario=null){
     passed:bankBridge.passed,
     detail:'Powiązano '+bankBridge.matched+'/'+bankBridge.total+
      ' źródeł. Pobierz CSV D01–D36, zaimportuj do biura i zaksięguj każdy przelew oddzielnie.'},
+  {key:'scenario_invoice_ledger',label:'D01–D36: każda faktura modelowa ma własny dokument i aktywny dekret',
+   passed:invoiceBridge.passed,
+   detail:'Związano i zaksięgowano '+invoiceBridge.matched+'/'+invoiceBridge.total+' dowodów zakupów i sprzedaży. Korekty oraz KSeF/JPK/UPO wymagają dalszej, osobnej kontroli.'},
    {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
    passed:!!period&&steps.month==='passed_training'&&
     (scenario?.scenario??scenario)?.documents?.length===36&&
@@ -279,11 +284,12 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  return {
   period:period||null,source_count:issued.length,
    scenario_bank_bridge:{status:bankBridge.status,matched:bankBridge.matched,total:bankBridge.total},
+   scenario_invoice_bridge:{status:invoiceBridge.status,matched:invoiceBridge.matched,total:invoiceBridge.total},
   vat_ledger:{sales_cents:vatLedgerSalesCents,purchases_cents:vatLedgerPurchasesCents,matching:vatLedgerMatches,
    review:'not_tested'},
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues],source_inventory,review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},

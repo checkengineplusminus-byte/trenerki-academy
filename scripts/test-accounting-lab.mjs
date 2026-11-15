@@ -1260,6 +1260,7 @@ test('Jeden okres: dodatkowe faktury późniejszego miesiąca rozpoczynają nowy
 
 
 import {taxCloseTrainingAudit} from '../src/accounting/tax-close-training.js';
+import {inspectScenarioInvoiceBridge,withScenarioInvoiceLink} from '../src/accounting/scenario-invoice-bridge.js';
 test('Zamknięcie szkoleniowe: sumy VAT z istniejącego miesiąca, bez wysyłki KSeF/JPK/UPO',()=>{
  const state=fullScenario();
  for(const j of state.journals.filter(x=>x.source_type==='bank'))j.date=state.bank.find(b=>b.id===j.source_id).date;
@@ -1569,6 +1570,75 @@ function fixtureWithTrainingBankSources(){
  }
  return {manifest,state,bankRows:parsed.rows};
 }
+
+function linkedScenarioInvoicesFixture(){
+ const {manifest,state}=fixtureWithTrainingBankSources();
+ const model=structuredClone(manifest);
+ const spec=[['D04','purchase',900],['D05','purchase',1000],['D08','purchase',2000],
+  ['D09','purchase',4000],['D13','sale',1600],['D15','sale',1400]];
+ for(const [id,kind,amount] of spec){
+  const d=model.documents.find(d=>d.id===id);
+  Object.assign(d,{kind,amount_pln:amount});
+ }
+ return {manifest:model,state,spec};
+}
+test('MOST fakturowy D01-D36: sześć niezależnych źródeł uzgadnia faktury i dekrety',()=>{
+ const {manifest,spec}=linkedScenarioInvoicesFixture();
+ let state=linkedScenarioInvoicesFixture().state;
+ const first=spec[0],d=manifest.documents.find(x=>x.id===first[0]);
+ const issue=(id,kind,amount,date)=>invoiceTotals({id:'SCEN-'+id,kind,status:'issued',
+  number:'TEST/SOURCE/'+id,date,due:date,party:'Fikcyjny kontrahent',seller:'Fikcyjna spółka',
+  lines:[{label:'Model '+id,qty_milli:1000,unit_cents:amount*100,tax_code:'0'}]});
+ const firstInvoice=issue(first[0],first[1],first[2],d.date);
+ state.invoices.push(firstInvoice);
+ const before=JSON.stringify(state);
+ state=withScenarioInvoiceLink(state,manifest,first[0],firstInvoice.id);
+ assert.equal(JSON.stringify(state.invoices),JSON.stringify(JSON.parse(before).invoices),'Powiązanie nie zmienia faktur');
+ assert.equal(inspectScenarioInvoiceBridge(state,manifest,'2026-01').matched,0,'Bez dekretu nie zalicza');
+ state.journals.push({id:'SOURCE-'+first[0],status:'posted',date:d.date,
+  source_type:'invoice',source_id:firstInvoice.id,lines:expectedInvoiceLines(firstInvoice)});
+ assert.equal(inspectScenarioInvoiceBridge(state,manifest,'2026-01').matched,1);
+ for(const [id,kind,amount] of spec.slice(1)){
+  const doc=manifest.documents.find(x=>x.id===id),i=issue(id,kind,amount,doc.date);
+  state.invoices.push(i);
+  state.journals.push({id:'SOURCE-'+id,status:'posted',date:doc.date,
+   source_type:'invoice',source_id:i.id,lines:expectedInvoiceLines(i)});
+  state=withScenarioInvoiceLink(state,manifest,id,i.id);
+ }
+ const inspect=inspectScenarioInvoiceBridge(state,manifest,'2026-01');
+ assert.equal(inspect.total,6);assert.equal(inspect.matched,6);
+ assert.equal(inspect.passed,true);
+ assert.equal(inspect.issues.length,0);
+ const review=taxCloseTrainingAudit(state,manifest);
+ assert.equal(review.checks.find(c=>c.key==='scenario_invoice_ledger').passed,true);
+ assert.equal(review.scenario_invoice_bridge.matched,6);
+ assert.equal(review.completed,false,'Nawet po źródłach KSeF/JPK/UPO nie są zakończone');
+});
+test('MOST fakturowy: duplikat, data, kwota, stornowany dekret i szkic są odrzucane',()=>{
+ const {manifest,state:base,spec}=linkedScenarioInvoicesFixture();
+ const [id,kind,amount]=spec[0],doc=manifest.documents.find(x=>x.id===id);
+ const good=invoiceTotals({id:'A',kind,status:'issued',number:'FIK/A',date:doc.date,due:doc.date,
+  party:'Fikcyjny kontrahent',seller:'Fikcyjna firma',
+  lines:[{label:'Test',qty_milli:1000,unit_cents:amount*100,tax_code:'0'}]});
+ const state={...base,invoices:[...base.invoices,good]};
+ assert.throws(()=>withScenarioInvoiceLink(state,manifest,'D99',good.id));
+ assert.throws(()=>withScenarioInvoiceLink({...state,invoices:[...base.invoices,{...good,date:'2026-01-31'}]},manifest,id,good.id));
+ assert.throws(()=>withScenarioInvoiceLink({...state,invoices:[...base.invoices,{...good,gross_cents:1234}]},manifest,id,good.id));
+ const link=withScenarioInvoiceLink(state,manifest,id,good.id);
+ assert.equal(inspectScenarioInvoiceBridge(link,manifest,'2026-01').matched,0);
+ const journal={id:'SOURCE-'+id,date:doc.date,status:'posted',source_type:'invoice',source_id:good.id,lines:expectedInvoiceLines(good)};
+ const passed={...link,journals:[...base.journals,journal]};
+ assert.equal(inspectScenarioInvoiceBridge(passed,manifest,'2026-01').matched,1);
+ const draft={...passed,journals:[...base.journals,{...journal,status:'draft'}]};
+ assert.equal(inspectScenarioInvoiceBridge(draft,manifest,'2026-01').matched,0);
+ const reversed={...passed,journals:[...passed.journals,{id:'REV-SOURCE',date:doc.date,status:'posted',source_type:'manual',source_id:'',reversal_of:journal.id,
+  lines:journal.lines.map(l=>({...l,debit:l.credit,credit:l.debit}))}]};
+ assert.equal(inspectScenarioInvoiceBridge(reversed,manifest,'2026-01').matched,0);
+ const duplicate={...passed,journals:[...passed.journals,{...journal,id:'DOUBLE'}]};
+ assert.ok(inspectScenarioInvoiceBridge(duplicate,manifest,'2026-01').issues.some(x=>x.code==='scenario_invoice_posting_missing_duplicate_or_wrong_date'));
+ const wrongAccount={...passed,journals:[...base.journals,{...journal,lines:[{account:'400',debit:amount*100,credit:0},{account:'202',debit:0,credit:amount*100}]}]};
+ assert.equal(inspectScenarioInvoiceBridge(wrongAccount,manifest,'2026-01').matched,0);
+});
 test('MOST D01-D36: bankowy CSV z dokumentow jest importowalny i unikalny',()=>{
  const {manifest}=fictionalFullCompanyMonth(),csv=scenarioBankCSV(manifest);
  const parsed=parseBankCSV(csv);
@@ -1584,7 +1654,8 @@ test('MOST D01-D36: osobne dekrety źródeł CSV umożliwiają TYLKO szkoleniow�
  const r=taxCloseTrainingAudit(state,manifest);
  assert.equal(r.checks.find(c=>c.key==='scenario_bank_ledger').passed,true);
  assert.equal(r.scenario_bank_bridge.matched,2);
- assert.equal(r.ready_for_training_review,true);
+ assert.equal(r.ready_for_training_review,false,'Most bankowy nie oznacza jeszcze powiązania faktur Dxx');
+ assert.equal(r.checks.find(c=>c.key==='scenario_invoice_ledger').passed,false);
  assert.equal(r.completed,false);
  assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
  assert.equal(JSON.stringify(state),before);
