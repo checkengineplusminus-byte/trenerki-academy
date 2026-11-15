@@ -454,7 +454,7 @@ async function verifyAllCourses(ctx){
   await page.getByTestId('lesson-nav-top').getByRole('button',{name:'Poprzednia lekcja'}).click();
   await page.waitForURL(url=>url.searchParams.get('lesson')==='1');
   await heading.filter({hasText:course.outline[0]}).waitFor();
-  await page.getByText(/Lekcja 1 z .*Ukończona/).waitFor();
+  await page.getByText(/Lekcja 1 z .*Zaliczone ćwiczenia/).waitFor();
   assert.deepEqual(finished.at(-1),[course.id,0]);
   console.log('✓ '+course.id+' · '+course.outline.length+' lessons · course opened, checkpoint accepted, next and back');
  }
