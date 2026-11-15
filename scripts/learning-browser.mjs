@@ -251,7 +251,7 @@ async function verifyExplorer(page,mobile){
  await simulation.getByRole('button',{name:'Symuluj Win+Ctrl+→'}).click();
  await simulation.getByText('Przełączono na Pulpit 2. To inny pulpit, nie przesunięcie okna.').waitFor();
  // 4: IT support — explicitly inspect the independent instructions for the REAL Windows computer.
- await simulation.getByRole('button',{name:/Sprawdź Win\\+Ctrl\\+→ na swoim komputerze/}).click();
+ await simulation.getByRole('button',{name:/Sprawdź Win\+Ctrl\+→ na swoim komputerze/}).click();
  await simulation.getByText(/Na Pulpicie 1 przytrzymaj Windows oraz Ctrl/).waitFor();
  await simulation.getByText(/Trenerki nie wykrywa wyniku/).waitFor();
  // 5: Touch/mobile user — Task View and new desktop work without system keys or a hover gesture.
