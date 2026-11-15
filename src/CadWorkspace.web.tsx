@@ -61,6 +61,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const [pointer,setPointer]=useState<Point>(),[input,setInput]=useState(''),[lastCommand,setLastCommand]=useState<Tool>();
  const [message,setMessage]=useState('Gotowy. Wpisz polecenie lub użyj wstążki.'),[log,setLog]=useState<string[]>([]);
  const [grid,setGrid]=useState(true),[ortho,setOrtho]=useState(false),[osnap,setOsnap]=useState(false),[snapGrid,setSnapGrid]=useState(false),[dynamic,setDynamic]=useState(true);
+ const [selectionHold,setSelectionHold]=useState(false);
+ const [polar,setPolar]=useState(false),[polarStep,setPolarStep]=useState(45),[otrack,setOtrack]=useState(false);
+ const [lineweight,setLineweight]=useState(false),[transparency,setTransparency]=useState(false),[selectionCycling,setSelectionCycling]=useState(false);
+ const [statusCustom,setStatusCustom]=useState(false),[statusInfo,setStatusInfo]=useState(''),[cleanScreen,setCleanScreen]=useState(false);
+ const [showMoreStatus,setShowMoreStatus]=useState(true);
+ const polarAnchor=useRef<Point|null>(null),lastCycle=useRef({ids:'' as string,index:0});
  const [snapModes,setSnapModes]=useState<CadSnapMode[]>(['endpoint','midpoint']);
  const [showSnapSettings,setShowSnapSettings]=useState(false);
  const [layoutScale,setLayoutScale]=useState(50);
@@ -170,6 +176,15 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(session.selecting)setSession({...session,target:undefined});
   tell('Wyczyszczono zaznaczenie.');
  }
+ function selectOneById(id:number,remove=false){
+  if(layout||pan||!visible.some(shape=>shape.id===id))return;
+  if(tool!=='select'&&!session.selecting)return;
+  const ids=remove?mergeCadSelection(selectedVisible,[id],true):
+   selectionHold||session.selecting?mergeCadSelection(selectedVisible,[id]):[id];
+  setSelectedIds(ids);setSelected(ids.at(-1));
+  if(session.selecting)setSession({...session,target:ids[0],selecting:true});
+  tell('Lewy klik: '+(remove?'odjęto':'wybrano')+' obiekt '+id+'. Zaznaczone: '+ids.length+'.');
+ }
  function selectAll(){
   if(layout){tell('Zaznaczaj obiekty w Model Space.');return;}
   const ids=visible.map(shape=>shape.id);
@@ -180,7 +195,8 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  function selectWindow(startPx:Point,endPx:Point,remove:boolean){
   const from=worldPoint(startPx,view,size),to=worldPoint(endPx,view,size);
   const result=selectCadWindow(visible,from,to);
-  const ids=mergeCadSelection(selectedVisible,result.ids,remove);
+  const ids=remove?mergeCadSelection(selectedVisible,result.ids,true):
+   selectionHold||session.selecting?mergeCadSelection(selectedVisible,result.ids):result.ids;
   setSelectedIds(ids);setSelected(ids.at(-1));
   if(session.selecting&&ids.length)setSession({...session,target:ids[0],selecting:false});
   tell((result.direction==='window'?'Okno: całkowicie objęte':'Przecięcie: objęte lub dotknięte')+' · '+result.ids.length+' obiektów. Łącznie zaznaczono '+ids.length+'.');
@@ -231,11 +247,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    if(tool==='offset'&&session.amount===undefined){tell(prompt);return;}
    const hit=ordered.find(s=>nearEdge(s,point,baseTolerance))??ordered.find(s=>s.fill&&contains(s,point));
    if(!hit){
-    if(tool==='select'){setSelected(undefined);setSelectedIds([]);}
+    if(tool==='select'&&!selectionHold){setSelected(undefined);setSelectedIds([]);}
     tell('Wskaż krawędź obiektu lub zaznacz obiekty oknem.');return;
    }
    if(tool==='select'||session.selecting){
-    const ids=mergeCadSelection(selectedVisible,[hit.id],remove);
+    const ids=remove?mergeCadSelection(selectedVisible,[hit.id],true):
+     selectionHold||session.selecting?mergeCadSelection(selectedVisible,[hit.id]):[hit.id];
     setSelectedIds(ids);setSelected(ids.at(-1));
     if(session.selecting)setSession({...session,target:ids[0],selecting:true});
     tell((remove?'Odjęto obiekt. ':'Dodano obiekt. ')+'Zaznaczono: '+ids.length+'.');
@@ -545,13 +562,15 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   </LabGroup>}
   <View style={{backgroundColor:'#e6eff1',padding:11,borderRadius:10,gap:7,marginBottom:8}}>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,alignItems:'center'}}>
+    <LabButton testID="cad-hold-selection" label={selectionHold?'Przytrzymaj zaznaczenie · WŁ.':'Przytrzymaj zaznaczenie · WYŁ.'}
+      selected={selectionHold} disabled={layout} onPress={()=>{setSelectionHold(v=>!v);tell('Tryb podtrzymania wyboru: '+(!selectionHold?'włączony.':'wyłączony.'));}}/>
     <LabButton label="Zaznacz wszystko · Ctrl+A" disabled={layout||!visible.length} onPress={selectAll}/>
     <LabButton label="Wyczyść zaznaczenie · Esc" disabled={!selectedVisible.length} onPress={clearSelection}/>
     <LabButton label="Przesuń zaznaczone · MOVE" disabled={layout||!selectedVisible.length} onPress={()=>start('move')}/>
     <LabButton label="Kopiuj zaznaczone · COPY" disabled={layout||!selectedVisible.length} onPress={()=>start('copy')}/>
    </View>
    <Text style={{color:'#385b64',fontSize:12,lineHeight:19}}>
-    Zaznaczone: {selectedVisible.length}. Klikaj kolejne obiekty; Shift + kliknięcie usuwa obiekt z wyboru. Okno od lewej do prawej wybiera obiekty całkowicie wewnątrz; od prawej do lewej także przecinane. Po zaznaczeniu wpisz MOVE, wskaż punkt bazowy i docelowy.
+    Zaznaczone: {selectedVisible.length}. Pojedynczy lewy klik od razu wybiera obiekt. Włącz „Przytrzymaj zaznaczenie”, aby kolejne kliknięcia dodawały elementy do grupy (również na telefonie); Shift + kliknięcie odejmuje. Przeciągnięcie od lewej do prawej wybiera obiekty wewnątrz, od prawej do lewej także przecinane. Potem wybierz MOVE.
    </Text>
   </View>
   <View style={{height:screenWidth<640?270:385,borderRadius:8,overflow:'hidden',backgroundColor:'#172530'}}
@@ -560,7 +579,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     cursor={pointer} snap={candidate?.label&&cursorPoint?screenPoint(cursorPoint,view,size):undefined}
     prompt={dynamic&&tool!=='select'&&cursorPoint?(candidate?.label?candidate.label+' · ':'')+cadCoordinates(cursorPoint):undefined}
     onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove)}
-    onWindowSelect={selectWindow}
+    onObjectTap={selectOneById} onWindowSelect={selectWindow}
     onPan={shift} onZoom={zoom} onFinish={()=>finish()}/>
   </View>
   <View style={labStyles.row}>
