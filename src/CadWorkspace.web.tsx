@@ -685,6 +685,11 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
       <Text style={{color:item.active?'#fff':'#c6d4e3',fontSize:14,fontWeight:'900'}}>{item.icon}</Text>
       <Text style={{color:item.active?'white':'#c3d1df',fontSize:9,fontWeight:'800'}}>{item.id.toUpperCase()}</Text>
      </Pressable>)}
+     <Pressable accessibilityRole="button" accessibilityLabel="Tryby OSNAP · ustaw"
+      accessibilityState={{selected:showSnapSettings}} onPress={()=>{setShowSnapSettings(v=>!v);setStatusInfo('osnap');}}
+      style={{paddingHorizontal:11,backgroundColor:showSnapSettings?'#24689e':'#243345',justifyContent:'center'}}>
+      <Text style={{color:'white',fontWeight:'900',fontSize:17}}>⌄</Text>
+     </Pressable>
     </ScrollView>
     <Pressable testID="cad-status-customize" accessibilityRole="button" accessibilityLabel="Dostosuj pasek statusu"
       onPress={()=>{setStatusCustom(v=>!v);setStatusInfo('custom');}}
