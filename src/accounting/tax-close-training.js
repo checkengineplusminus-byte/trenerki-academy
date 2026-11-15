@@ -189,7 +189,10 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const source_inventory=issued.map(i=>{
   const id=typeof i.id==='string'?i.id.trim():'';
   const number=typeof i.number==='string'?i.number.trim():'';
-  const party=String(i.kind==='purchase'?i.party??'':i.seller??'').trim();
+  // Sprzedawca wystawia dokumenty we WŁASNEJ jednej firmie ćwiczeniowej.
+  // Nie wolno obejść unikalności numeru przez zmianę opisu sprzedawcy.
+  // Przy zakupach numer może powtórzyć się u dwóch różnych dostawców.
+  const party=i.kind==='sale'?'__own_company__':String(i.party??'').trim();
   if(!id||sourceIds.has(id))sourceIdentityIssues.push({code:'source_id_missing_or_duplicate',invoice:number||id||'(brak ID)'});
   if(id)sourceIds.add(id);
   if(!number)sourceIdentityIssues.push({code:'source_invoice_number_missing',invoice:id||'(brak ID)'});

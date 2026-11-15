@@ -2152,3 +2152,20 @@ test('Import CSV z datą inną niż data dekretu w tym samym miesiącu nie zalic
  assert.equal(closing.checks.find(x=>x.key==='bank_sources').passed,false);
  assert.ok(closing.issues.some(x=>x.code==='bank_source_amount_or_period_mismatch'));
 });
+
+
+test('Zamknięcie: dwa numery sprzedaży w tej samej firmie nie mogą być takie same mimo zmiany sprzedawcy i odbiorcy',()=>{
+ const s=fullScenario(),first=s.invoices.find(i=>i.kind==='sale');
+ s.invoices.push({...first,id:'SECOND-SALE',seller:'Zmieniona fikcyjna nazwa',party:'Inny fikcyjny klient'});
+ const before=JSON.stringify(s),report=taxCloseTrainingAudit(s);
+ assert.equal(report.checks.find(x=>x.key==='source_identity').passed,false);
+ assert.ok(report.issues.some(x=>x.code==='source_invoice_number_duplicate_for_party'&&x.invoice===first.number));
+ assert.equal(report.ready_for_training_review,false);
+ assert.equal(JSON.stringify(s),before,'Audyt nie modyfikuje prywatnych dokumentów');
+});
+test('Zamknięcie: brak pola sprzedawcy nie ukrywa powtórzonego numeru własnej sprzedaży',()=>{
+ const s=fullScenario(),first=s.invoices.find(i=>i.kind==='sale');
+ const {seller,...withoutSeller}=first;
+ s.invoices.push({...withoutSeller,id:'THIRD-SALE',party:'Fikcyjny odbiorca drugi'});
+ assert.ok(taxCloseTrainingAudit(s).issues.some(x=>x.code==='source_invoice_number_duplicate_for_party'));
+});
