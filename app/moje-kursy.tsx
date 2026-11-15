@@ -102,7 +102,7 @@ export default function MyCourses(){
       onPress={()=>router.push({pathname:'/nauka',params:{course:row.course_slug,lesson:'1',review:'1'}})}
       style={{backgroundColor:'#f0f7ee',borderWidth:1,borderColor:'#bfd6bd',borderRadius:9,padding:10}}>
       <Text style={{color:'#26533a',fontWeight:'800',fontSize:12,textAlign:'center'}}>↺ Zacznij od początku</Text>
-    </Pressable>
+    </Pressable>}
     {hasDiploma&&<Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug}})} accessibilityRole="button" style={{backgroundColor:'#e8f3dc',padding:9,borderRadius:9}}><Text style={{textAlign:'center',fontSize:11,color:'#245c3c',fontWeight:'800'}}>Zobacz dyplom</Text></Pressable>}
     {hasDiploma&&!done&&row.progressAvailable&&<Text style={{fontSize:10,lineHeight:15,color:'#667b68'}}>Dyplom z wcześniejszego zaliczenia pozostaje dostępny. Dokończ aktualne lekcje.</Text>}
     {done&&!hasDiploma&&<Text style={{fontSize:10,lineHeight:15,color:'#667b68'}}>Egzamin i dyplom w kursie</Text>}
