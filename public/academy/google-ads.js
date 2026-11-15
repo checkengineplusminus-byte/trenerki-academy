@@ -74,6 +74,11 @@ function banner(){
 function ready(){
  if(!document.body)return;
  var settings=btn('Ustawienia plików cookie',banner,false);
+ var learningFooter=document.querySelector('footer[data-testid="learning-support-bar"]');
+ if(learningFooter){
+  settings.textContent='Cookies';
+  settings.setAttribute('aria-label','Ustawienia plików cookie');
+ }
  var footer=document.querySelector('footer');
  var utility=footer&&footer.querySelector('.academy-footer__utility,.ta-app-footer-links');
  if(utility){
