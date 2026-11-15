@@ -4,6 +4,7 @@ import WindowsPracticeMission from './WindowsPracticeMission';
 import ExcelProfessionalMission from './ExcelProfessionalMission';
 import ExcelAnalystWorkbench from './ExcelAnalystWorkbench';
 import ExcelProCaseLab from './ExcelProCaseLab';
+import {ExcelAcademyLibrary,ExcelDeepLesson} from './ExcelAcademyLibrary';
 export type LearningSection={heading:string;text:string};
 export type LessonVisual={title:string;kind:'flow'|'comparison';entries:{label:string;detail:string}[]};
 const ink='#173e2d',body='#3e5c48';
@@ -62,6 +63,8 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     </View>)}
    </View>
   </View>}
+  {courseSlug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-library-'+lessonNo} lessonNo={lessonNo}/>}
+  {courseSlug==='excel-skroty'&&<ExcelDeepLesson key={'excel-deep-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='windows-skroty'&&<WindowsPracticeMission key={lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&<ExcelProfessionalMission key={'excel-mission-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&lessonNo>=15&&<ExcelAnalystWorkbench key={'excel-advanced-'+lessonNo} lessonNo={lessonNo}/>}
