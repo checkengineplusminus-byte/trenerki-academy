@@ -22,6 +22,7 @@ import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
+import CadWorkspace from '../src/CadWorkspace';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
@@ -33,6 +34,7 @@ type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
 type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
+const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,24,26,27,28,29]);
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
@@ -239,7 +241,7 @@ export default function Learning(){
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
   {!!items.length&&<>
-   {!busy&&courseInfo.slug===slug&&index===0&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
+   {!busy&&courseInfo.slug===slug&&index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
    <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
@@ -318,7 +320,7 @@ export default function Learning(){
   </>}
   {progress===100&&index===items.length-1&&!reviewMode&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
-   {index===0&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
+   {index===0&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
    {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
    {index===0&&!introRead&&<View testID="course-reading-introduction" style={{padding:20,backgroundColor:'white',borderRadius:16,gap:14,marginBottom:20}}>
@@ -368,6 +370,7 @@ export default function Learning(){
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
    {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
+   {slug==='autocad-skroty'&&cadWorkshopLessons.has(module)&&<CadWorkspace storageKey={userId} shortcut={undefined} runId={0}/>}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
