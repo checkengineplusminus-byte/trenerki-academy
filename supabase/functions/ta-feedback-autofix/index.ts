@@ -123,6 +123,11 @@ Deno.serve(async(req:Request)=>{
    const {count,error}=await db.from("ta_course_feedback").select("id",{count:"exact",head:true})
     .in("status",["new","triaging"]);
    if(error)throw Error("health_query_failed");
+   const {error:heartbeatError}=await db.from("ta_feedback_autofix_heartbeat").upsert({
+    id:1,last_success_at:today(),updated_at:today(),
+    ai_configured:!!openaiKey(),queued_count:count||0
+   },{onConflict:"id"});
+   if(heartbeatError)throw Error("heartbeat_write_failed");
    return response({ok:true,oidc_verified:true,ai_configured:!!openaiKey(),queued:count||0});
   }
   if(action==="claim"){
