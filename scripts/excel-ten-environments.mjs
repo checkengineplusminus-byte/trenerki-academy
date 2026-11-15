@@ -36,7 +36,7 @@ function material(no){
  return {sections:[{heading:'Zadanie ćwiczebne',text:'Użyj jedynie fikcyjnych danych i wykonaj samodzielne działania w arkuszu.'}],
   illustration:no%2?'excel-addresses':'excel-interface'};
 }
-async function install(page,events){
+async function install(page,events,firstTime=false){
  await page.addInitScript(({user})=>{
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({access_token:'excel-test-token',refresh_token:'excel-test-refresh',
    expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user}));
@@ -53,7 +53,7 @@ async function install(page,events){
   if(table==='ta_enrollments')return response([{id:'test-enrollment'}]);
   if(table==='ta_courses')return response([{title_pl:'Excel od zera do analizy danych',description_pl:'Zadania zawodowe'}]);
   if(table==='ta_lessons')return response(missions.map(x=>({lesson_no:x.lesson_no,title_pl:'Lekcja Excel '+(x.lesson_no+1),material:material(x.lesson_no)})));
-  if(table==='ta_learning_progress')return response(Array.from({length:29},(_,lesson_no)=>({lesson_no})));
+  if(table==='ta_learning_progress')return response(firstTime?[]:Array.from({length:29},(_,lesson_no)=>({lesson_no})));
   if(table==='ta_learning_attempts'||table==='ta_drafts')return response([]);
   if(table==='ta-lesson-guide')return response({ok:true,history:[],opening:'Pomoc w ćwiczeniach',can_reply:true});
   if(request.method()!=='GET')events.writes.push({method:request.method(),path:table});
@@ -277,6 +277,84 @@ async function persona(browser,p,round){
   return {id:p.id,role:p.role,lesson:p.lesson+1,viewport:p.width+'×'+p.height,passed:true,jsErrors:0,writes:0,overflow:false};
  }finally{await context.close();}
 }
+const firstTimers=[
+ {id:'mama-mobile',persona:'Mama bez wcześniejszej wiedzy',track:'dom',device:'telefon',width:390,height:844,mobile:true,base2:3,final2:4,first:'Zakupy spożywcze',cost:135,firstTotal:199,secondTotal:211},
+ {id:'ksiadz-desktop',persona:'Ksiądz bez wcześniejszej wiedzy',track:'parafia',device:'komputer',width:1365,height:800,mobile:false,base2:4,final2:5,first:'Ogrzewanie sali',cost:540,firstTotal:675,secondTotal:690},
+ {id:'mama-desktop',persona:'Mama bez wcześniejszej wiedzy',track:'dom',device:'komputer',width:1280,height:800,mobile:false,base2:3,final2:4,first:'Zakupy spożywcze',cost:135,firstTotal:199,secondTotal:211},
+ {id:'ksiadz-mobile',persona:'Ksiądz bez wcześniejszej wiedzy',track:'parafia',device:'telefon',width:375,height:812,mobile:true,base2:4,final2:5,first:'Ogrzewanie sali',cost:540,firstTotal:675,secondTotal:690}
+];
+async function totalBeginner(browser,p,round){
+ const context=await browser.newContext({viewport:{width:p.width,height:p.height},isMobile:p.mobile,hasTouch:p.mobile,deviceScaleFactor:p.mobile?2:1,locale:'pl-PL'});
+ const page=await context.newPage(),events={errors:[],writes:[]};page.setDefaultTimeout(18000);
+ page.on('pageerror',error=>events.errors.push(String(error.message)));
+ try{
+  await install(page,events,true); // Empty progress: tests actual new-course learner
+  await page.goto(base+'/nauka?course=excel-skroty&lesson=1',{waitUntil:'domcontentloaded'});
+  const lab=page.getByTestId('excel-first-day');
+  await lab.waitFor({timeout:20000});
+  const earlier=await page.evaluate(()=>{
+   const day=document.querySelector('[data-testid="excel-first-day"]');
+   const orientation=document.querySelector('[data-testid="software-orientation"]');
+   const library=document.querySelector('[data-testid="excel-encyclopedia"]');
+   return {beforeLibrary:!!day&&!!library&&!!(day.compareDocumentPosition(library)&Node.DOCUMENT_POSITION_FOLLOWING),
+           beforeOrientation:!orientation||!!day&&(!!(day.compareDocumentPosition(orientation)&Node.DOCUMENT_POSITION_FOLLOWING))};
+  });
+  assert(earlier.beforeLibrary,'Novice hands-on exercise must appear before the giant glossary');
+  assert(earlier.beforeOrientation,'Novice exercise must appear before technical orientation');
+  const cookie=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
+  if(await cookie.isVisible().catch(()=>false))await cookie.click();
+  await lab.getByRole('button',{name:'Wybierz przykład: '+(p.track==='dom'?'Budżet domowy':'Wydatki parafii')}).click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Najpierw znajdź właściwy wiersz'}).waitFor();
+  const check=lab.getByRole('button',{name:'Sprawdź wykonanie zadania od zera'});
+  // Novice should NEVER pass just by clicking Next.
+  await check.click();await lab.getByTestId('excel-first-error').waitFor();
+  await lab.getByRole('button',{name:'Wybierz pozycję '+p.first}).click();
+  await check.click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Zmień jedną ilość'}).waitFor();
+  const amount0=lab.getByTestId('excel-first-quantity-0');
+  await amount0.fill('0');await lab.getByTestId('excel-first-total').filter({hasText:'Popraw ilości'}).waitFor();
+  await check.click();await lab.getByTestId('excel-first-error').waitFor();
+  await amount0.fill('3');await check.click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Sprawdź wartość pierwszego wiersza'}).waitFor();
+  const answer=lab.getByTestId('excel-first-answer');
+  await answer.fill('1');await check.click();await lab.getByTestId('excel-first-error').waitFor();
+  await answer.fill(String(p.cost));await check.click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Zsumuj wszystkie trzy pozycje'}).waitFor();
+  await lab.getByTestId('excel-first-total').filter({hasText:String(p.firstTotal)}).waitFor();
+  await answer.fill(String(p.firstTotal));await check.click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Sprawdź reakcję na następną zmianę'}).waitFor();
+  await lab.getByTestId('excel-first-quantity-1').fill(String(p.final2));await check.click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Samodzielnie sprawdź nową sumę'}).waitFor();
+  await lab.getByTestId('excel-first-total').filter({hasText:String(p.secondTotal)}).waitFor();
+  await answer.fill(String(p.firstTotal));await check.click();await lab.getByTestId('excel-first-error').waitFor();
+  await answer.fill(String(p.secondTotal));await check.click();
+  await lab.getByTestId('excel-first-success').waitFor();
+  // Real MS Excel transfer: download CSV that contains actual data, not a fake XLSX.
+  const link=lab.getByRole('link',{name:/Pobierz listę ćwiczebną CSV/});
+  const href=await link.getAttribute('href');
+  assert.equal(href,p.track==='dom'?'/academy/assets/excel-firstday-home.csv':'/academy/assets/excel-firstday-parish.csv');
+  const response=await page.request.get(base+href);
+  assert.equal(response.status(),200,'Downloadable starting spreadsheet data is absent');
+  assert((await response.text()).includes(p.track==='dom'?'Zakupy spozywcze':'Ogrzewanie sali'),'Downloaded file has wrong starting data');
+  const library=page.getByTestId('excel-encyclopedia');
+  await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
+  await library.getByRole('textbox',{name:'Szukaj w słowniku Excel'}).fill('komórka');
+  await library.getByRole('button',{name:'Wyjaśnij pojęcie Komórka',exact:true}).click();
+  await library.getByTestId('excel-glossary-definition').getByText('Komórka',{exact:true}).waitFor();
+  const mission=page.getByTestId('excel-mission-0');
+  await mission.getByRole('textbox',{name:'Twoja odpowiedź na zadanie Excel'}).fill('D2');
+  await mission.getByRole('button',{name:'Sprawdź wynik zadania Excel'}).click();
+  await mission.getByTestId('excel-mission-correct').waitFor();
+  const viewport=await page.evaluate(()=>({width:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
+  assert(viewport.scroll<=viewport.width+3,'Horizontal overflow on '+p.id+' '+JSON.stringify(viewport));
+  assert.deepEqual(events.errors,[],'JavaScript errors');
+  assert.deepEqual(events.writes,[],'Novice training accidentally wrote to live user data');
+  if(round===2){await lab.getByTestId('excel-first-success').scrollIntoViewIfNeeded();
+    await page.screenshot({path:'/tmp/trenerki-excel-qa-firstday-'+p.id+'.png',fullPage:false});}
+  console.log('✓ Cykl '+round+' · '+p.id+' · 6 rzeczywistych kroków, 3 pomyłki odrzucone, pobrano CSV, sprawdzono słownik + misję');
+  return {persona:p.persona,device:p.device,round,passed:true,steps:6,errorsCaught:3,noviceProgress:0,finalTotal:p.secondTotal,csv:true,glossary:true,firstLesson:true};
+ }finally{await context.close();}
+}
 function engineerReview(r,checked){
  assert.equal(checked.length,10,'IT needs ten device/industry reports');
  assert(checked.every(x=>x.passed&&!x.jsErrors&&!x.writes&&!x.overflow),'IT failed on JS, writes or overflow');
@@ -328,15 +406,18 @@ try{
   console.log('=== EXCEL: CYKL '+round+'/2 — 10 ŚRODOWISK ===');
   const checked=[];
   for(const p of round===1?roleIds:[...roleIds].reverse())checked.push(await persona(browser,p,round));
+  const noviceCheck=[];
+  for(const p of round===1?firstTimers:[...firstTimers].reverse())noviceCheck.push(await totalBeginner(browser,p,round));
+  assert(noviceCheck.length===4&&noviceCheck.every(x=>x.passed),'Beginner mother/priest acceptance not green');
   const it=engineerReview(round,checked);
   const critics=criticReview(round,checked);
   const seller=await sellerReview(round,browser);
-  report.rounds.push({round,profiles:checked,it,critics,seller});
+  report.rounds.push({round,profiles:checked,firstTimeLearners:noviceCheck,it,critics,seller});
  }
  report.summary={passed:report.rounds.length===2&&report.rounds.every(r=>r.it.passed&&r.critics.passed&&r.seller.passed),
-  journeys:20,technicalReviews:2,criticalReviews:2,salesReviews:2};
+  journeys:20,firstTimeJourneys:8,technicalReviews:2,criticalReviews:2,salesReviews:2};
  assert(report.summary.passed);
- console.log('✓ EXCEL: 20/20 scenariuszy, 2 przeglądy IT, 2 krytyków i 2 audyty sprzedawcy kursu');
+ console.log('✓ EXCEL: 20/20 scenariuszy zawodowych + 8/8 prób mama/ksiądz od zera, 2 przeglądy IT, 2 krytyków i 2 audyty sprzedawcy kursu');
 }finally{
  await browser.close();
  writeFileSync('/tmp/trenerki-excel-two-cycles.json',JSON.stringify(report,null,2));
