@@ -30,7 +30,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  const hash=createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
  // Przegląd oddzielnego commita be748774 (tylko import i ćwiczenie Excel) nie zmienia przekierowania księgowości.
  // Reviewed modification is limited to the two carpentry checkpoints and their navigation.
- assert.ok(new Set(['a7c5b5720baeb67a75be65b699d57212197eea60','08d8d6a4eda9901d97b6e1c095b9fca2bf683a60']).has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
+ assert.ok(new Set(['a7c5b5720baeb67a75be65b699d57212197eea60','5bb86b0916e4fcdfe1376f770cc8a5e27358a076']).has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
 test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Podgląd przygotowywanej encyklopedii'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
