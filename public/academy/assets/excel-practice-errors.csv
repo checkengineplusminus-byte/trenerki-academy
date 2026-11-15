@@ -1,0 +1,5 @@
+﻿"Numer faktury";"Data";"Region";"Kategoria";"Kontrahent";"Ilość";"Cena netto"
+"FV-015";"2026-03-28";"Północ";"Materiały";"Firma Delta";"5";"120,00"
+"FV-019";"2026-03-29";"Centrum";"Usługi";"Firma Beta";"5x";"240,00"
+"FV-020";"2026-03-30";"Południe";"Transport";"";"2";"450,00"
+"FV-021";"2026-03-31";"Północ";"Materiały";"Firma Gamma";"4";""
