@@ -1,5 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
-import {Text,TextInput,View,useWindowDimensions} from 'react-native';
+import {Pressable,ScrollView,Text,TextInput,View,useWindowDimensions} from 'react-native';
+import CadRibbonIcon from './CadRibbonIcon.web';
 import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection} from './CadSelection';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
@@ -66,7 +67,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const [fontSample,setFontSample]=useState('Przykładowy opis rysunku');
  const [sampleFont,setSampleFont]=useState('Arial');
  const [sampleHeight,setSampleHeight]=useState(2.5);
- const [tab,setTab]=useState<'home'|'annotate'|'view'>('home'),[panel,setPanel]=useState<'draw'|'modify'|'layers'>('draw');
+ const [tab,setTab]=useState<'home'|'insert'|'annotate'|'parametric'|'view'|'manage'|'output'>('home'),[panel,setPanel]=useState<'draw'|'modify'|'layers'>('draw');
  const [pan,setPan]=useState(false),[layout,setLayout]=useState(false),[expandLog,setExpandLog]=useState(false),[pattern,setPattern]=useState<'hatch'|'solid'>('hatch');
  const [layerName,setLayerName]=useState(''),[newLayer,setNewLayer]=useState(false);
  const nextId=useRef(1),nextLayer=useRef(3),commandRef=useRef<React.ComponentRef<typeof TextInput>>(null);
@@ -429,39 +430,102 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   shape:session.boundaries?.includes(shape.id)?{...shape,fill:pattern}:shape,
   color:drawing.layers.find(l=>l.id===shape.layer)!.color,selected:!layout&&selectedVisible.includes(shape.id),
  }));
- const ribbonButton=(t:Exclude<Tool,'select'>)=><LabButton key={t} label={tools[t].label+' · '+tools[t].name} selected={tool===t} onPress={()=>start(t)}/>;
+ const ribbonButton=(t:Exclude<Tool,'select'>)=><Pressable key={t} accessibilityRole="button"
+   accessibilityLabel={tools[t].label+' · '+tools[t].name} accessibilityState={{selected:tool===t}} onPress={()=>start(t)}
+   style={{minWidth:65,maxWidth:76,alignItems:'center',justifyContent:'center',paddingHorizontal:5,paddingVertical:8,
+    borderRadius:3,backgroundColor:tool===t?'#506d80':'transparent',gap:4,minHeight:64}}>
+   <CadRibbonIcon tool={t} size={28}/>
+   <Text style={{color:'#e9f0f5',fontSize:10,fontWeight:'700',textAlign:'center'}}>{tools[t].name}</Text>
+  </Pressable>;
+ const extraRibbonButton=(name:string,toolIcon:'join'|'erase'|'text'|'layer'|'select'|'zoom'|'pan',
+    action:()=>void,disabled=false)=><Pressable accessibilityRole="button" accessibilityLabel={name} disabled={disabled} onPress={action}
+    style={{minWidth:66,justifyContent:'center',alignItems:'center',gap:4,padding:6,opacity:disabled?.38:1}}>
+    <CadRibbonIcon tool={toolIcon} size={26}/>
+    <Text style={{fontSize:10,color:'#e9f0f5',fontWeight:'700',textAlign:'center'}}>{name.split(' · ')[0]}</Text>
+   </Pressable>;
+ const ribbonCaption={color:'#a6b7c5',fontSize:11,fontWeight:'700' as const,textAlign:'center' as const,marginTop:'auto' as const,paddingTop:8};
+ const ribbonPanel={minHeight:113,borderRightWidth:1,borderRightColor:'#526071',paddingRight:8,marginRight:8,justifyContent:'space-between' as const,gap:4};
  const reportedPoint=candidate?.point??last;
  return <View style={labStyles.panel} testID="cad-workspace">
   <Text style={labStyles.heading}>AutoCAD · pracownia rysunku 2D</Text>
   <Text style={labStyles.body}>{lessonNo===0?'Ćwiczenie 1: wpisz LINE → 0,0 → 1000,0 → 500,800 → CLOSE. Następnie wpisz JOIN, aby otrzymać jedną polilinię, i MOVE, aby przesunąć cały trójkąt.':lessonNo===5?'Połącz trzy osobne linie trójkąta poleceniem JOIN. Sprawdź, że to jeden zamknięty obiekt; przesuń go przez MOVE.':lessonNo===9?'Narysuj RECTANG od 0,0 do @4000,3000. Zmierz boki i przekątną oraz dopasuj widok.':'Przećwicz polecenia z tej lekcji na rysunku. Możesz wpisywać współrzędne, używać wstążki oraz zaznaczać obiekty myszą.'}</Text>
-  <View style={labStyles.ribbon}>
-   <View style={labStyles.row}>{([['home','Home / Narzędzia główne'],['annotate','Annotate / Opisz'],['view','View / Widok']] as const).map(([id,label])=>
-    <LabButton key={id} label={label} selected={tab===id} onPress={()=>setTab(id)}/>)}</View>
-   {tab==='home'&&<>
-    <View style={labStyles.row}>{([['draw','Draw / Rysuj'],['modify','Modify / Zmień'],['layers','Layers / Warstwy']] as const).map(([id,label])=>
-     <LabButton key={id} label={label} selected={panel===id} onPress={()=>setPanel(id)}/>)}</View>
-    {panel==='draw'&&<View style={labStyles.row}>{(['line','poly','rect','circle','arc','hatch'] as const).map(ribbonButton)}</View>}
-    {panel==='modify'&&<View style={labStyles.row}>{(['move','copy','rotate','scale','mirror','offset','trim'] as const).map(ribbonButton)}
-     <LabButton label="Połącz linie · JOIN" disabled={layout} onPress={join}/>
-     <LabButton label="Usuń · ERASE" disabled={!chosen||layout} onPress={erase}/>
-    </View>}
-    {panel==='layers'&&<View style={{gap:7}}>
-     <LabGroup label={'Warstwa aktywna · '+currentLayer.name}>
-      {drawing.layers.map(layer=><View key={layer.id} style={labStyles.row}>
-       <LabButton label={layer.name} selected={drawing.currentLayer===layer.id} onPress={()=>setDrawing({...drawing,currentLayer:layer.id})}/>
-       <LabButton label={(layer.visible?'Ukryj ':'Pokaż ')+layer.name} onPress={()=>record({...drawing,layers:drawing.layers.map(l=>l.id===layer.id?{...l,visible:!l.visible}:l)})}/>
-      </View>)}
-     </LabGroup>
-     <View style={labStyles.row}>
-      <LabButton label="Nowa warstwa" onPress={()=>setNewLayer(v=>!v)}/>
-      {newLayer&&<>
-       <TextInput accessibilityLabel="Nazwa warstwy" value={layerName} onChangeText={setLayerName} onSubmitEditing={addLayer} style={[labStyles.input,{minWidth:120}]}/>
-       <LabButton label="Dodaj warstwę" onPress={addLayer}/>
-      </>}
+
+  <View testID="cad-ribbon" style={{backgroundColor:'#25303f',borderWidth:1,borderColor:'#56687c',borderRadius:5,overflow:'hidden',marginVertical:5}}>
+   <View style={{flexDirection:'row',alignItems:'center',backgroundColor:'#1d2734',minHeight:38}}>
+    <View style={{backgroundColor:'#be294f',paddingHorizontal:10,minHeight:38,justifyContent:'center'}}>
+     <Text style={{color:'white',fontWeight:'900',fontSize:17}}>A</Text>
+    </View>
+    <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:'row',alignItems:'stretch',gap:2,paddingHorizontal:6}}>
+     {([
+      ['home','Home / Narzędzia główne','Home'],['insert','Insert / Wstawianie','Insert'],
+      ['annotate','Annotate / Opisz','Annotate'],['parametric','Parametric / Parametryczne','Parametric'],
+      ['view','View / Widok','View'],['manage','Manage / Zarządzaj','Manage'],['output','Output / Wydruk','Output'],
+     ] as const).map(([id,label,caption])=><Pressable key={id} accessibilityRole="button" accessibilityLabel={label} onPress={()=>setTab(id)}
+      style={{paddingHorizontal:11,paddingVertical:10,backgroundColor:tab===id?'#3b485c':'transparent',
+       borderBottomWidth:tab===id?2:0,borderBottomColor:'#98bed9'}}>
+      <Text style={{color:tab===id?'white':'#c8d1dc',fontWeight:tab===id?'900':'600',fontSize:12}}>{caption}</Text>
+     </Pressable>)}
+    </ScrollView>
+   </View>
+   {tab==='home'&&<ScrollView horizontal showsHorizontalScrollIndicator testID="cad-home-ribbon"
+    contentContainerStyle={{flexDirection:'row',alignItems:'stretch',paddingVertical:9,paddingHorizontal:8}}>
+    <View style={ribbonPanel}>
+     <View style={{flexDirection:'row',alignItems:'center'}}>
+      {(['line','poly','circle','arc','rect','hatch'] as const).map(ribbonButton)}
      </View>
+     <Text style={ribbonCaption}>Draw / Rysuj</Text>
+    </View>
+    <View style={ribbonPanel}>
+     <View style={{flexDirection:'row',alignItems:'center'}}>
+      {(['move','copy','rotate','mirror','trim','scale','offset'] as const).map(ribbonButton)}
+      {extraRibbonButton('Połącz linie · JOIN','join',join)}
+      {extraRibbonButton('Usuń · ERASE','erase',erase,!selectedVisible.length)}
+     </View>
+     <Text style={ribbonCaption}>Modify / Zmień</Text>
+    </View>
+    <View style={{...ribbonPanel,minWidth:195}}>
+     <View style={{flexDirection:'row',alignItems:'center',gap:7}}>
+      <CadRibbonIcon tool="layer" size={30}/>
+      <View style={{gap:3,flex:1}}>
+       <Text style={{color:'#e9f0f5',fontSize:11}}>Bieżąca warstwa</Text>
+       <Text style={{color:'#c9ebd1',fontSize:13,fontWeight:'800'}}>{currentLayer.name}</Text>
+      </View>
+     </View>
+     <View style={{flexDirection:'row',gap:5,alignItems:'center'}}>
+      {drawing.layers.map(layer=><Pressable key={layer.id} accessibilityRole="button" accessibilityLabel={'Warstwa: '+layer.name}
+       onPress={()=>setDrawing({...drawing,currentLayer:layer.id})}
+       style={{paddingHorizontal:7,paddingVertical:7,backgroundColor:drawing.currentLayer===layer.id?'#587084':'#344557',borderRadius:4}}>
+       <Text style={{color:'white',fontSize:10}}>{layer.name}</Text>
+      </Pressable>)}
+     </View>
+     <Text style={ribbonCaption}>Layers / Warstwy</Text>
+    </View>
+    <View style={{...ribbonPanel,borderRightWidth:0}}>
+     <View style={{flexDirection:'row',alignItems:'center',gap:3}}>
+      {extraRibbonButton('Tekst · MTEXT','text',()=>setTab('annotate'))}
+      {ribbonButton('dimlinear')}
+      {extraRibbonButton('Zaznacz wszystko · Ctrl+A','select',selectAll,!visible.length)}
+     </View>
+     <Text style={ribbonCaption}>Annotation / Właściwości</Text>
+    </View>
+   </ScrollView>}
+   {tab!=='home'&&<View style={{padding:12,backgroundColor:'#e9f0f3',gap:9}}>
+    {tab==='annotate'&&<Text style={{fontSize:12,color:'#395569',fontWeight:'800'}}>Annotate → Dimensions · Text · Style (wymiary i tekst)</Text>}
+    {tab==='view'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+     {extraRibbonButton('ZOOM · Dopasuj','zoom',fit)}
+     {extraRibbonButton('PAN · Przesuń','pan',()=>{setPan(v=>!v);setPointer(undefined);})}
+     <LabButton label="Przybliż +" disabled={layout} onPress={()=>zoom(.8)}/>
+     <LabButton label="Oddal −" disabled={layout} onPress={()=>zoom(1.25)}/>
     </View>}
-   </>}
-   {tab==='annotate'&&<View style={{gap:12}}>
+    {tab==='insert'&&<Text style={{fontSize:13,color:'#395569',lineHeight:21}}>Insert / Wstaw: BLOCK, INSERT, XREF, PDFATTACH, IMAGEATTACH. Te narzędzia wymagają oryginalnego AutoCAD-a — instrukcje znajdziesz w Bibliotece AutoCAD.</Text>}
+    {tab==='parametric'&&<Text style={{fontSize:13,color:'#395569',lineHeight:21}}>Parametric / Parametryczne: wiązania geometryczne, równoległość, styczność oraz ograniczenia wymiarowe. Ćwiczenia są w Bibliotece AutoCAD.</Text>}
+    {tab==='manage'&&<Text style={{fontSize:13,color:'#395569',lineHeight:21}}>Manage / Zarządzaj: CUI, aliasy z acad.pgp, standardy CAD i personalizacja. Korzystaj z Biblioteki AutoCAD oraz programu desktopowego.</Text>}
+    {tab==='output'&&<Text style={{fontSize:13,color:'#395569',lineHeight:21}}>Output / Wydruk: PLOT, PUBLISH, EXPORTPDF, PAGESETUP. W modelu rysuj w 1:1, skalę ustawiaj w rzutni arkusza.</Text>}
+   </View>}
+  </View>
+  {tab==='annotate'&&<View style={{backgroundColor:'#f1f6f8',padding:12,borderRadius:9,gap:10}}>
+   <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</View>
+
     <LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</LabGroup>
     <View style={{padding:13,backgroundColor:'#f0f6f8',borderRadius:10,gap:9}} testID="cad-font-style">
      <Text style={labStyles.heading}>Tekst i czcionka — STYLE / MTEXT</Text>
@@ -477,13 +541,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
      <Text style={{fontSize:12,color:'#516c73'}}>Wymiar w modelu i wysokość tekstu na papierze to dwie różne rzeczy. Dla skali 1:50 tekst nieanotacyjny 2,5 mm na papierze odpowiada 125 mm w modelu. Styl anotacyjny potrafi przeliczać to automatycznie.</Text>
     </View>
    </View>}
-   {tab==='view'&&<LabGroup label="Navigate / Nawiguj">
-    <LabButton label="Dopasuj · Zoom Extents" onPress={fit}/>
-    <LabButton label="Przybliż +" disabled={layout} onPress={()=>zoom(.8)}/>
-    <LabButton label="Oddal −" disabled={layout} onPress={()=>zoom(1.25)}/>
-    <LabButton label="Przesuń widok · PAN" selected={pan} disabled={layout} onPress={()=>{setPan(v=>!v);setPointer(undefined);}}/>
-   </LabGroup>}
-  </View>
+  </View>}
   {tool==='hatch'&&<LabGroup label="Hatch Creation / Kreskowanie">
    <LabButton label="Linie ukośne" selected={pattern==='hatch'} onPress={()=>setPattern('hatch')}/>
    <LabButton label="Pełne · SOLID" selected={pattern==='solid'} onPress={()=>setPattern('solid')}/>
