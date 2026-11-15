@@ -1664,3 +1664,18 @@ test('Ważne daty z różnych okresów nie są błędem daty w audycie kalendarz
   lines:[{account:'400',debit:100,credit:0},{account:'202',debit:0,credit:100}]});
  assert.equal(taxCloseTrainingAudit(s,manifest).checks.find(c=>c.key==='calendar_dates').passed,true);
 });
+
+test('Ścieżka firmy odmawia zaliczenia nieistniejącej daty na fakturze',()=>{
+ const s=fullScenario();s.invoices.find(i=>i.kind==='purchase').date='2026-11-31';
+ const r=auditCompanyLifecycle(s);
+ assert.equal(r.period_scope.month,'2026-11');
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'needs_work');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(r.completed,false);
+});
+test('Ścieżka firmy nie zalicza banku z datą 31 listopada',()=>{
+ const s=fullScenario();s.bank[0].date='2026-11-31';
+ const r=auditCompanyLifecycle(s);
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(taxCloseTrainingAudit(s).checks.find(x=>x.key==='calendar_dates').passed,false);
+});

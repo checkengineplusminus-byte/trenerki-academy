@@ -4,7 +4,7 @@
  * Styczeń D01–D36 i listopadowe biuro są odrębnymi symulacjami.
  * Żaden wynik nie zastępuje KSeF/JPK/UPO, autoryzowanego E2E ani recenzji.
  */
-import {livePostings,expectedInvoiceLines,invoiceTotals} from './lab-core-base.js';
+import {livePostings,expectedInvoiceLines,invoiceTotals,validDate} from './lab-core-base.js';
 import {PERSONNEL_IDS,readPersonnelCases} from './personnel-practice.js';
 import {readPayrollPractices,payrollLifecycleChecklist} from './payroll-practice.js';
 import {inspectPayrollLedger} from './payroll-ledger-audit.js';
@@ -15,7 +15,7 @@ import {auditMonthWorkflow} from './simulator-core.js';
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
 // Okres szkoleniowy wynika z miesiąca wystawienia zapisanych faktur.
 // Nie jest to data podatkowa ani ustawowy termin zapłaty.
-const monthOf=date=>typeof date==='string'&&/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(date)?date.slice(0,7):null;
+const monthOf=date=>validDate(date)?date.slice(0,7):null;
 
 export function auditCompanyLifecycle(state,scenario=null){
  const s=state||{},invoices=Array.isArray(s.invoices)?s.invoices:[],
@@ -50,12 +50,13 @@ export function auditCompanyLifecycle(state,scenario=null){
    }catch{return false;}
  }
  const issued=invoices.filter(i=>i?.status==='issued'&&['purchase','sale'].includes(i.kind));
+ const allIssuedDatesValid=issued.every(i=>validDate(i.date));
  const periods=[...new Set(issued.map(i=>monthOf(i.date)).filter(Boolean))].sort();
  const period=periods.at(-1)||null;
  const sales=issued.filter(i=>i.kind==='sale'&&monthOf(i.date)===period&&postingForInvoice(i));
  const purchases=issued.filter(i=>i.kind==='purchase'&&monthOf(i.date)===period&&postingForInvoice(i));
  add('invoices','Zakup i sprzedaż z jednym prawidłowym dekretem',
-   validShape&&sales.length>0&&purchases.length>0,
+   validShape&&allIssuedDatesValid&&sales.length>0&&purchases.length>0,
    sales.length&&purchases.length?'Zakup i sprzedaż wystawione oraz zaksięgowane w tym samym miesiącu ćwiczenia ('+period+').':
    'Zapisz fakturę zakupu i sprzedaży; każdą wystaw i zaksięguj dokładnie raz.',
    'invoices');
@@ -76,7 +77,8 @@ export function auditCompanyLifecycle(state,scenario=null){
  }
  let matchesClean=false;
  try{matchesClean=validShape&&inspectInvoiceBankMatches(s).length===0;}catch{matchesClean=false;}
- const bankReady=validShape&&matchesClean&&sales.some(paid)&&purchases.some(paid);
+ const allBankDatesValid=bank.every(b=>validDate(b?.date));
+ const bankReady=validShape&&allIssuedDatesValid&&allBankDatesValid&&matchesClean&&sales.some(paid)&&purchases.some(paid);
  add('bank','CSV, rozrachunki i osobne dekrety bankowe',bankReady,
    bankReady?'Powiązania zakup/sprzedaż mają zgodne wpływy i wypływy z dekretami.':
    'Uzgodnij obie faktury z fikcyjnym CSV oraz oddzielnie zaksięguj wpływ i wydatek.',
