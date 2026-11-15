@@ -40,6 +40,11 @@ test('visitor: recurring AutoCAD screenshots removed from all lesson bodies',()=
  assert(orientation.includes('<AutoCADOriginalScreen'));
  assert(orientation.includes("slug==='autocad-skroty'?null"));
 });
+test('old generic AutoCAD lab cannot repeat itself inside unrelated chapters',()=>{
+ const shortcutUI=load('src/KeyboardLesson.tsx');
+ assert(shortcutUI.includes("if(slug==='autocad-skroty'&&!valid.length)return null;"));
+ assert(shortcutUI.includes("mode&&slug!=='autocad-skroty'&&<HandsOnLab"));
+});
 test('all courses have Start from beginning and review never deletes diplomas',()=>{
  const learn=load('app/nauka.tsx');
  const library=load('app/moje-kursy.tsx');
