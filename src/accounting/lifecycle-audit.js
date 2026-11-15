@@ -93,10 +93,31 @@ export function auditCompanyLifecycle(state,scenario=null){
  let matchesClean=false;
  try{matchesClean=validShape&&inspectInvoiceBankMatches(s).length===0;}catch{matchesClean=false;}
  const allBankDatesValid=bank.every(b=>validDate(b?.date));
- const bankReady=invoicesReady&&allBankDatesValid&&matchesClean&&sales.some(paid)&&purchases.some(paid);
+ const periodBank=bank.filter(b=>monthOf(b?.date)===period);
+ const bankIds=new Set();
+ // Każdy wiersz CSV tego okresu ma dokładnie jeden dekret z odpowiadającą
+ // kwotą na 130. Dwie uzgodnione faktury nie ukrywają trzeciego przelewu.
+ const bankSourcesCovered=!!period&&periodBank.length>0&&periodBank.every(b=>{
+   const id=typeof b?.id==='string'?b.id.trim():'';
+   if(!id||bankIds.has(id)||!Number.isSafeInteger(b.amount_cents)||
+     b.amount_cents===0||Math.abs(b.amount_cents)>1000000000000)return false;
+   bankIds.add(id);
+   const entries=posted.filter(j=>j.source_type==='bank'&&j.source_id===id);
+   if(entries.length!==1||monthOf(entries[0].date)!==period||
+     !Array.isArray(entries[0].lines))return false;
+   const line130=entries[0].lines.filter(l=>l.account==='130');
+   return line130.length===1&&line130[0].debit===Math.max(0,b.amount_cents)&&
+     line130[0].credit===Math.max(0,-b.amount_cents);
+ });
+ const noUnmatched130=posted.filter(j=>monthOf(j.date)===period).every(j=>{
+   const touches130=Array.isArray(j.lines)&&j.lines.some(l=>l.account==='130');
+   return !touches130||(j.source_type==='bank'&&bankIds.has(j.source_id));
+ });
+ const bankReady=invoicesReady&&allBankDatesValid&&matchesClean&&bankSourcesCovered&&
+   noUnmatched130&&sales.some(paid)&&purchases.some(paid);
  add('bank','CSV, rozrachunki i osobne dekrety bankowe',bankReady,
-   bankReady?'Powiązania zakup/sprzedaż mają zgodne wpływy i wypływy z dekretami.':
-   'Uzgodnij obie faktury z fikcyjnym CSV oraz oddzielnie zaksięguj wpływ i wydatek.',
+   bankReady?'Każdy fikcyjny wiersz CSV okresu ma jeden zgodny dekret bankowy, z uzgodnionymi fakturami.':
+   'Sprawdź wszystkie przelewy CSV, daty, kwoty i konta 130 oraz rozrachunki faktur.',
    'matches');
  let payrollReady=false;
  try{

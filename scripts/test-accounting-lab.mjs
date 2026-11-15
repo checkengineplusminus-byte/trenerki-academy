@@ -24,7 +24,7 @@ test('Zatwierdzony niezbilansowany dekret jest zgłaszany i nie zmienia danych',
 test('Ujemna kwota zatwierdzonego dekretu jest wyraźnie wykrywana',()=>{const s=EMPTY();s.journals.push({id:'j-negative',status:'posted',source_type:'manual',source_id:'',lines:[{account:'130',debit:-100,credit:0},{account:'800',debit:0,credit:100}]});assert.ok(inspect(s).some(x=>x.code==='posted_invalid_amount'&&x.id==='j-negative'));});
 test('Poprawny dekret nie otrzymuje fałszywego alarmu o niezbilansowaniu',()=>{const s=EMPTY();s.journals.push({id:'j-correct',status:'posted',source_type:'manual',source_id:'',lines:[{account:'130',debit:10000,credit:0},{account:'800',debit:0,credit:10000}]});assert.equal(inspect(s).filter(x=>['posted_unbalanced','posted_invalid_amount'].includes(x.code)).length,0);});
 
-function fullScenario(){const s=EMPTY();s.invoices=[invoiceTotals(invoice()),invoiceTotals(invoice('purchase',20000))];s.bank=parseBankCSV(BANK_TEMPLATE).rows;s.matches=s.invoices.map((i,n)=>({id:'m'+n,invoice_id:i.id,bank_id:s.bank[n].id,amount_cents:i.gross_cents}));s.journals=s.invoices.map(i=>({id:'j'+i.id,status:'posted',date:i.date,source_type:'invoice',source_id:i.id,lines:expectedInvoiceLines(i)}));s.journals.push({id:'jb1',status:'posted',source_type:'bank',source_id:s.bank[0].id,lines:[{account:'130',debit:123000,credit:0},{account:'201',debit:0,credit:123000}]},{id:'jb2',status:'posted',source_type:'bank',source_id:s.bank[1].id,lines:[{account:'202',debit:24600,credit:0},{account:'130',debit:0,credit:24600}]});return s;}
+function fullScenario(){const s=EMPTY();s.invoices=[invoiceTotals(invoice()),invoiceTotals(invoice('purchase',20000))];s.bank=parseBankCSV(BANK_TEMPLATE).rows;s.matches=s.invoices.map((i,n)=>({id:'m'+n,invoice_id:i.id,bank_id:s.bank[n].id,amount_cents:i.gross_cents}));s.journals=s.invoices.map(i=>({id:'j'+i.id,status:'posted',date:i.date,source_type:'invoice',source_id:i.id,lines:expectedInvoiceLines(i)}));s.journals.push({id:'jb1',status:'posted',date:s.bank[0].date,source_type:'bank',source_id:s.bank[0].id,lines:[{account:'130',debit:123000,credit:0},{account:'201',debit:0,credit:123000}]},{id:'jb2',status:'posted',date:s.bank[1].date,source_type:'bank',source_id:s.bank[1].id,lines:[{account:'202',debit:24600,credit:0},{account:'130',debit:0,credit:24600}]});return s;}
 test('Cały scenariusz: wynik 800, VAT 184, bank 984',()=>{const r=balanceReport(fullScenario());assert.equal(r.profit,80000);assert.equal(r.vat,18400);assert.equal(r.bank,98400);assert.equal(r.ledgerBank,98400);assert.equal(r.receivable,0);assert.equal(r.payable,0);assert.equal(r.debit,r.credit);});
 test('Anielka nie zgłasza uwag do poprawnego scenariusza',()=>assert.equal(inspect(fullScenario()).length,0));
 test('Równość Wn i Ma nie ukrywa błędnego konta',()=>{const s=fullScenario();s.journals[0].lines[1].account='800';assert.ok(inspect(s).some(x=>x.code==='invoice_accounts'));});
@@ -1179,6 +1179,26 @@ test('Ścieżka: faktury i bank rozpoznane, ale bez kadr i majątku nie ma pełn
  assert.equal(r.steps.find(x=>x.key==='asset').status,'needs_work');
  assert.equal(r.completed,false);
 });
+test('Ścieżka: trzeci wiersz CSV bez własnego dekretu blokuje etap bankowy',()=>{
+ const s=fullScenario();
+ s.bank.push({id:'EXTRA-ROW',date:'2026-11-20',amount_cents:5000,description:'Fikcyjny wpływ bez dekretu'});
+ const before=JSON.stringify(s),r=auditCompanyLifecycle(s);
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(JSON.stringify(s),before);
+});
+test('Ścieżka: ręczny dekret konta 130 bez wiersza CSV blokuje zaliczenie banku',()=>{
+ const s=fullScenario();
+ s.journals.push({id:'MANUAL-130',date:'2026-11-20',status:'posted',source_type:'manual',source_id:'',
+  lines:[{account:'130',debit:500,credit:0},{account:'800',debit:0,credit:500}]});
+ assert.equal(auditCompanyLifecycle(s).steps.find(x=>x.key==='bank').status,'needs_work');
+});
+test('Ścieżka: dekret CSV z obcego miesiąca nie zalicza banku',()=>{
+ const s=fullScenario();s.journals.find(j=>j.id==='jb1').date='2026-10-02';
+ const r=auditCompanyLifecycle(s);
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+});
 test('Ścieżka: sam poprawny przelew bez dekretu banku nie wystarcza',()=>{
  const s=fullScenario();s.journals=s.journals.filter(j=>j.source_type!=='bank');
  const r=auditCompanyLifecycle(s,null);
@@ -1726,6 +1746,7 @@ test('Zamknięcie nie akceptuje 31 listopada w fakturze pomimo poprawnego prefik
 });
 test('Zamknięcie wykrywa niemożliwy dzień na wyciągu i brak daty zatwierdzonego dekretu',()=>{
  const s=fullScenario();s.bank[0].date='2026-11-31';
+ s.journals.find(j=>j.id==='jb1').date='';
  const r=taxCloseTrainingAudit(s);
  assert.equal(r.checks.find(x=>x.key==='calendar_dates').passed,false);
  assert.ok(r.issues.some(x=>x.code==='bank_invalid_calendar_date'));
