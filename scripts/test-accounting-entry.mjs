@@ -29,6 +29,14 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // Do not weaken the accounting reader guard. Canonicalize ONLY the reviewed
  // Excel-specific additions, then compare with the existing approved blob hashes.
  let sourceForAccounting=source;
+ // Audited, read-only supplement: exactly one Anielka import + one lesson-only mount.
+ const clarificationImport="import LessonClarification from '../src/LessonClarification';\n";
+ const clarificationMount="   <LessonClarification key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>\n";
+ assert.equal(sourceForAccounting.split(clarificationImport).length,2,'Anielka: exactly one optional import');
+ assert.equal(sourceForAccounting.split(clarificationMount).length,2,'Anielka: exactly one lesson-only note mount');
+ assert.ok(sourceForAccounting.indexOf(clarificationMount)>sourceForAccounting.indexOf("lesson.title_pl"),
+   'Podpowiedź Anielki jest częścią lekcji, nie autoryzacji księgowości');
+ sourceForAccounting=sourceForAccounting.replace(clarificationImport,'').replace(clarificationMount,'');
  const excelImport="import ExcelMasterGuide from '../src/ExcelMasterGuide';\n";
  if(sourceForAccounting.includes(excelImport)){
   const steps=[
@@ -91,7 +99,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'd168d1296dc0e2936460b52c5b674807c37b52eb', // prior reviewed AutoCAD reader
   '9ed77599d484d991956a544db2704b4edeb7e2b8', // previous review
   '104db6f1dc8d3eebbdb05c195012568d885a277c', // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
-  '629b67d13927b791aff2924c18053b979d101358' // reviewed: latest AutoCAD reader + only 4 exact Excel insertions validated above
+  '629b67d13927b791aff2924c18053b979d101358', // reviewed current Excel reader
+  '46774c0f2a24a78e23f3c6075168f131f7580258' // PR #27: exactly two audited Anielka UI insertions
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.

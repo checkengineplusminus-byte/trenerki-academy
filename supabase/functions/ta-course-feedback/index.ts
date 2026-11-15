@@ -49,7 +49,13 @@ Deno.serve(async(req:Request)=>{
     "id,course_slug,lesson_no,kind,message_excerpt,verification,status,priority,created_at,due_at,resolved_at,resolution_note"
    ).order("created_at",{ascending:false}).limit(300);
    if(error)return respond({error:"feedback_unavailable"},503);
-   const rows=data||[];
+   const plainRows=data||[];
+   const {data:automations}=plainRows.length
+    ? await db.from("ta_feedback_autofix_runs")
+      .select("feedback_id,state,github_url,updated_at").in("feedback_id",plainRows.map(r=>r.id))
+    : {data:[]};
+   const automationMap=new Map((automations||[]).map((a:any)=>[a.feedback_id,a]));
+   const rows=plainRows.map(r=>({...r,automation:automationMap.get(r.id)||null}));
    const active=rows.filter(r=>!["resolved","rejected"].includes(r.status));
    const overdue=active.filter(r=>r.due_at&&new Date(r.due_at).getTime()<Date.now());
    const groups=new Map<string,{course_slug:string;lesson_no:number;kind:string;reports:number;open:number}>();
@@ -59,7 +65,9 @@ Deno.serve(async(req:Request)=>{
     group.reports++;if(!["resolved","rejected"].includes(row.status))group.open++;
     groups.set(id,group);
    }
-   return respond({ok:true,rows,summary:{sample:rows.length,open:active.length,overdue:overdue.length,
+   const {data:heartbeat}=await db.from("ta_feedback_autofix_heartbeat")
+    .select("last_success_at,ai_configured,queued_count").eq("id",1).maybeSingle();
+   return respond({ok:true,rows,heartbeat:heartbeat||null,summary:{sample:rows.length,open:active.length,overdue:overdue.length,
     bugs:rows.filter(r=>r.kind==="bug").length,confusion:rows.filter(r=>r.kind==="confusion").length},
     hotspots:[...groups.values()].sort((a,b)=>b.reports-a.reports).slice(0,12)});
   }
