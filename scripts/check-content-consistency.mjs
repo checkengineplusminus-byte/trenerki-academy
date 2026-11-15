@@ -56,19 +56,27 @@ try{
  const carpentry=courses.find(c=>c.id===carpentrySlug);
  if(!carpentry||carpentry.outline?.length!==63||previews[carpentrySlug]?.module_titles?.length!==63)fail('Carpentry course program length is incorrect');
  const volunteerSlug='zaufany-wolontariusz';
- if(courses[0]?.id!==volunteerSlug||courses[0].outline.length!==40)fail('The first course must be Zaufany wolontariusz with exactly 40 chapters');
+ if(courses[0]?.id!=='excel-skroty'||courses[0]?.price!==0||courses.find(c=>c.id===volunteerSlug)?.outline?.length!==40)
+  fail('Excel must be free and FIRST, and Zaufany wolontariusz must keep its 40 chapters');
  const free=courses.filter(c=>c.price===0).map(c=>c.id).sort();
- if(free.join(',')!=='swiety-mikolaj,'+volunteerSlug||Math.min(...courses.filter(c=>c.price>0).map(c=>c.price))!==99||
-    courses.some(c=>!Number.isInteger(c.price)||c.price<0||(c.price>0&&c.price<99)))
-  fail('Mikołaj and Zaufany wolontariusz must be free and the paid catalogue must start at PLN 99');
+ const expectedFree=['excel-skroty','swiety-mikolaj',volunteerSlug].sort();
+ if(JSON.stringify(free)!==JSON.stringify(expectedFree)||courses.some(c=>!Number.isInteger(c.price)||c.price<0))
+  fail('Expected exactly three genuine free courses and valid nonnegative paid prices');
+ const pricing=JSON.parse(read('content/course-pricing-2026-11-15.json'));
+ const after=new Map(pricing.courses.filter(c=>c.published).map(c=>[c.slug,c.price_after_grosze]));
+ if(pricing.published_count!==courses.length||after.size!==courses.length||
+    courses.some(c=>after.get(c.id)!==c.price*100))
+  fail('Public fallback catalogue prices must match current, versioned production price audit');
+ else ok(courses.length+' live catalog prices match the versioned base price audit');
  const prices=[
   'database/patches/trenerki-catalog-release-20261110.sql',
   'database/patches/trenerki-zaufany-wolontariusz-release-20261112.sql',
  ].map(read).join('\n');
  const fromSql=new Map([...prices.matchAll(/\('([a-z0-9-]+)', (\d+)\)/g)].map(row=>[row[1],Number(row[2])]));
- if(fromSql.size!==courses.length||courses.some(c=>fromSql.get(c.id)!==c.price*100))
-  fail('Public fallback catalogue prices must match the production SQL amounts');
- else ok(courses.length+' matching catalogue amounts in PLN; two free courses');
+ const initial=new Map(pricing.courses.filter(c=>c.published).map(c=>[c.slug,c.price_before_grosze]));
+ if(fromSql.size!==courses.length||courses.some(c=>fromSql.get(c.id)!==initial.get(c.id)))
+  fail('Historical release SQL baseline and before-price audit disagree');
+ else ok('Legacy SQL release baseline preserved independently of new current prices');
  if(courses.some(c=>!Array.isArray(previews[c.id].module_titles)||JSON.stringify(c.outline)!==JSON.stringify(previews[c.id].module_titles)))
   fail('Preview and detailed course outline differ');
  if(!page.includes('id="anielka-szukaj"')||!page.includes('id="anielka-question"'))fail('Anielka catalogue search must remain accessible');
