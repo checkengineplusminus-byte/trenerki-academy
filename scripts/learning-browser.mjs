@@ -149,11 +149,14 @@ async function verifyCad(page,mobile){
  const practice=page.getByTestId('autocad-real-practice');
  await practice.waitFor();
  assert.equal(await page.getByTestId('cad-workspace').count(),0,'Do not present a substitute as Autodesk AutoCAD');
- const originals=page.getByTestId('autocad-original-screens').first();
+ assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Do not repeat a full AutoCAD screen by default');
+ await page.getByRole('button',{name:'Ekran programu'}).click();
+ const originals=page.getByTestId('autocad-original-screens');
  await originals.waitFor();
  const images=originals.getByRole('img');
- assert.equal(await images.count(),3);
+ assert.equal(await images.count(),1);
  for(const img of await images.all())assert(await img.evaluate(node=>node.complete&&node.naturalWidth>0),'Original screenshot must load');
+ await page.getByRole('button',{name:'Pojęcia'}).click();
  await practice.getByRole('button',{name:/Trójkąt z trzech linii/}).click();
  await practice.getByText(/_JOIN/).waitFor();
  await practice.getByText(/_MOVE/).waitFor();
