@@ -30,10 +30,15 @@ async function verifyGithub(req:Request){
  const token=h.match(/^Bearer\s+([A-Za-z0-9._-]+)$/i)?.[1];
  if(!token)throw Error("no_oidc");
  const {payload}=await jwtVerify(token,jwks,{issuer:ISSUER,audience:AUD,algorithms:["RS256"]});
- if(payload.repository!==OWNER_REPO||String(payload.repository_id)!==REPO_ID||
-  payload.ref!=="refs/heads/main"||payload.workflow_ref!==WORKFLOW||
-  !["schedule","push","workflow_dispatch"].includes(String(payload.event_name))||
-  payload.sub!=="repo:"+OWNER_REPO+":ref:refs/heads/main")throw Error("untrusted_workflow");
+ const invalid=[
+  payload.repository!==OWNER_REPO?"repository":null,
+  String(payload.repository_id)!==REPO_ID?"repository_id":null,
+  payload.ref!=="refs/heads/main"?"ref":null,
+  payload.workflow_ref!==WORKFLOW?"workflow_ref":null,
+  !["schedule","push","workflow_dispatch"].includes(String(payload.event_name))?"event":null,
+  payload.sub!=="repo:"+OWNER_REPO+":ref:refs/heads/main"?"sub":null
+ ].filter(Boolean);
+ if(invalid.length)throw Error("oidc_claim_mismatch_"+invalid.join("_"));
  return String(payload.run_id||"").slice(0,30);
 }
 function pickFiles(slug:string,message:string):string[]{
@@ -112,7 +117,13 @@ async function dbClient(){
 }
 Deno.serve(async(req:Request)=>{
  if(req.method!=="POST")return response({error:"method_not_allowed"},405);
- try{await verifyGithub(req)}catch{return response({error:"unauthorized"},401)}
+ try{await verifyGithub(req)}catch(err:any){
+  // Audit only which validation failed, never JWT, raw claims or request data.
+  const code=err instanceof Error&&err.message.startsWith("oidc_claim_mismatch_")
+   ?err.message:(err?.code||err?.name||"unknown");
+  console.error("anielka_oidc_denied",String(code).slice(0,110));
+  return response({error:"unauthorized"},401);
+ }
  const raw=await req.text().catch(()=>"");
  if(raw.length>110000)return response({error:"request_too_large"},413);
  let input:any;try{input=JSON.parse(raw)}catch{return response({error:"invalid_json"},400)}
