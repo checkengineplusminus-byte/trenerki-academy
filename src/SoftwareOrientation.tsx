@@ -163,7 +163,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
  return <View testID="software-orientation" style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
   <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
-  {slug==='autocad-skroty'?null:Platform.OS==='web'&&!imageFailed?
+  {slug==='autocad-skroty'?<AutoCADOriginalScreen focus={tab==='interface'?(selectedZone===2?'command':selectedZone===4?'tabs':'ribbon'):'ribbon'}/>:Platform.OS==='web'&&!imageFailed?
    <Image source={{uri:'/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
     resizeMode="contain" style={{width:'100%',height:mobile?210:290,backgroundColor:'white',borderRadius:12}}
     accessibilityLabel={'Ilustrowana mapa głównego ekranu '+p.name}/>:
@@ -195,13 +195,10 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
   </View>
   {tab==='interface'&&<>
    <Text style={{color:ink,fontWeight:'900',fontSize:19}}>Kliknij część menu i przećwicz jej funkcję</Text>
-   {slug==='autocad-skroty'&&<View testID="autocad-first-screen-only" style={{backgroundColor:'white',borderRadius:12,padding:8}}>
-    <AutoCADOriginalScreen focus={selectedZone===2?'command':selectedZone===4?'tabs':'ribbon'}/>
-    <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://help.autodesk.com/view/ACD/2026/ENU/?contextId=HITCHHIKERSGUIDETOAUTOCADBASICS')}
-     style={{padding:11}}>
+   {slug==='autocad-skroty'&&<Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://help.autodesk.com/view/ACD/2026/ENU/?contextId=HITCHHIKERSGUIDETOAUTOCADBASICS')}
+     style={{padding:11,alignSelf:'flex-start'}}>
      <Text style={{color:'#1c6542',fontWeight:'800'}}>Otwórz oficjalną instrukcję Autodesk ↗</Text>
-    </Pressable>
-   </View>}
+    </Pressable>}}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
     {p.zones.map((z,i)=><Pressable key={i} onPress={()=>setSelectedZone(i)} accessibilityRole="button" accessibilityState={{selected:i===selectedZone}}
      style={{padding:11,borderRadius:9,backgroundColor:i===selectedZone?'#cde6c5':'white',borderWidth:1,borderColor:'#c8dcca'}}>
