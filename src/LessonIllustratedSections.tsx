@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Image,Platform,Pressable} from 'react-native';
 import WindowsPracticeMission from './WindowsPracticeMission';
-import AutoCADOriginalScreen from './AutoCADOriginalScreen';
 import ExcelProfessionalMission from './ExcelProfessionalMission';
 import ExcelAnalystWorkbench from './ExcelAnalystWorkbench';
 import ExcelProCaseLab from './ExcelProCaseLab';
@@ -39,18 +38,17 @@ function Visual({title,kind,entries}:LessonVisual){
 export default function LessonIllustratedSections({courseSlug,lessonNo,title,sections,illustration,diagram,visual}:Props){
  const [failed,setFailed]=useState(false),[showSolution,setShowSolution]=useState(false);
  useEffect(()=>{setFailed(false);setShowSolution(false)},[courseSlug,lessonNo]);
- const named=Array.isArray(sections)&&sections.length>0?sections.filter(x=>x?.heading&&x?.text):[];
+ // AutoCAD has an independently reviewed, non-repeating lesson method.
+ // Do not render its legacy copy of the same introduction/exercise a second time.
+ const named=courseSlug==='autocad-skroty'?[]:Array.isArray(sections)&&sections.length>0?sections.filter(x=>x?.heading&&x?.text):[];
  const volunteerImage=courseSlug==='zaufany-wolontariusz'&&typeof illustration==='string'?volunteerIllustrations.get(illustration):undefined;
  const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration));
  const file=volunteerImage?.file??(validSvg?illustration+'.svg':null);
  const isAutoCAD=courseSlug==='autocad-skroty';
- // Lesson 1 already shows the full genuine Autodesk screen in SoftwareOrientation.
- const originalAutoCAD=isAutoCAD&&lessonNo!==0;
- const originalFocus=illustration==='autocad-commands'?'command':illustration==='autocad-filetypes'?'tabs':'ribbon';
- // AutoCAD lessons show genuine program screenshots, not recreated interface mockups.
+ // Do not repeat a screenshot on each CAD page. Original UI only in the optional
+ // orientation tab on the first lesson; here show a topic-specific method/diagram.
  const showImage=!isAutoCAD&&!!file&&Platform.OS==='web'&&!failed;
  return <View style={{marginBottom:18,gap:14}}>
-  {originalAutoCAD&&<AutoCADOriginalScreen focus={originalFocus}/>}
   {showImage&&<View style={{backgroundColor:'#f1f8ed',padding:9,borderWidth:1,borderColor:'#d9e7d5',borderRadius:16,gap:7}}>
    <Image
     accessibilityLabel={volunteerImage?.alt??'Ilustracja objaśniająca temat: '+title}
