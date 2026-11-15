@@ -121,6 +121,11 @@ async function openCourse(page,slug,lesson=1){
  await expectLesson(page,lesson);
 }
 async function expectLesson(page,number){
+ if(number===1){
+  const intro=page.getByTestId('course-reading-introduction');
+  await intro.or(page.getByTestId('lesson-heading')).first().waitFor();
+  if(await intro.isVisible())await intro.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+ }
  await page.getByTestId('lesson-heading').filter({hasText:new RegExp('^Lekcja testowa '+number+'$')}).waitFor();
 }
 async function waitText(locator,expected){
