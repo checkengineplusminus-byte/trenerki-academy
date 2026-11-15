@@ -2,6 +2,7 @@ import {ACCOUNTS as BASE_ACCOUNTS,balanceReport as baseReport,inspect as baseIns
 import {ASSET_ACCOUNTS,assetsControl,acquisitionLines} from './assets-core.js';
 import {inspectInvoiceBankMatches} from './invoice-match.js';
 import {PERSONNEL_IDS} from './personnel-practice.js';
+import {inspectPayrollLedger} from './payroll-ledger-audit.js';
 import {readPayrollPractices,payrollBankMatch} from './payroll-practice.js';
 export const ACCOUNTS={...BASE_ACCOUNTS,...ASSET_ACCOUNTS};
 export function balanceReport(s){
@@ -77,5 +78,5 @@ export function inspect(s){
  return [...baseInspect(s).filter(i=>
    !(i.code==='invoice_accounts'&&cleared.has(i.id))&&
    !(i.code==='unmatched_bank'&&salaryBank.has(i.id))),
-   ...assetsControl(s),...inspectInvoiceBankMatches(s),...payrollIssues,...sourceIssues];
+   ...assetsControl(s),...inspectInvoiceBankMatches(s),...payrollIssues,...inspectPayrollLedger(s),...sourceIssues];
 }

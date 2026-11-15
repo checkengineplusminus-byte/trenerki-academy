@@ -1108,3 +1108,54 @@ test('Płace do dziennika: nieznany pracownik, etap i identyfikator są odrzucan
  assert.throws(()=>payrollJournalDraft(s,'P01','tax','J1'));
  assert.throws(()=>payrollJournalDraft(s,'P01','accrual','nie poprawne id'));
 });
+
+import {inspectPayrollLedger} from '../src/accounting/payroll-ledger-audit.js';
+
+test('Integracja płac: poprawne naliczenie w dzienniku ma 0 dodatkowych błędów',()=>{
+  const s=withPayrollPractice(payrollState(),payrollCase());
+  const draft=payrollJournalDraft(s,'P01','accrual','ACCRUAL-1');
+  const changed={...s,journals:[{...draft,status:'posted'}]};
+  const snapshot=JSON.stringify(changed);
+  assert.deepEqual(inspectPayrollLedger(changed),[]);
+  assert.equal(JSON.stringify(changed),snapshot);
+});
+test('Integracja płac: zbilansowane, ale fałszywe potrącenie nie przechodzi kontroli',()=>{
+  const s=withPayrollPractice(payrollState(),payrollCase());
+  const draft=payrollJournalDraft(s,'P01','accrual','ACCRUAL-1');
+  const wrong={...draft,status:'posted',lines:draft.lines.map(x=>({...x}))};
+  wrong.lines.find(x=>x.account==='404').debit+=100;
+  wrong.lines.find(x=>x.account==='231').credit+=100;
+  const issues=inspectPayrollLedger({...s,journals:[wrong]});
+  assert.ok(issues.some(x=>x.code==='payroll_ledger_mismatch'));
+});
+test('Integracja płac: niewłaściwy miesiąc i podwójne naliczenie są wykrywane',()=>{
+  const s=withPayrollPractice(payrollState(),payrollCase());
+  const draft=payrollJournalDraft(s,'P01','accrual','ACCRUAL-1');
+  const posted={...draft,status:'posted'};
+  const duplicate={...posted,id:'ACCRUAL-2'};
+  const changed={...s,journals:[posted,duplicate]};
+  assert.ok(inspectPayrollLedger(changed).some(x=>x.code==='payroll_ledger_duplicate'));
+  const stale={...s,journals:[{...posted,payroll_ref:{...posted.payroll_ref,period:'2025-12'}}]};
+  assert.ok(inspectPayrollLedger(stale).some(x=>x.code==='payroll_ledger_stale'));
+  assert.deepEqual(inspectPayrollLedger({...s,journals:[{...posted,payroll_ref:null}]}).map(x=>x.code),['payroll_ref_invalid']);
+});
+test('Integracja płac: sam przelew nie zalicza naliczenia; poprawna para przechodzi',()=>{
+  let s=payrollState();
+  s={...s,bank:[{id:'SALARY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjny przelew'}]};
+  s=withPayrollPractice(s,{...payrollCase(),bank_transaction_id:'SALARY1'});
+  const accrual={...payrollJournalDraft(s,'P01','accrual','ACCRUAL-1'),status:'posted'};
+  const payment={...payrollJournalDraft(s,'P01','payment','PAYMENT-1'),status:'posted'};
+  assert.ok(inspectPayrollLedger({...s,journals:[payment]}).some(x=>x.code==='payroll_payment_before_accrual'));
+  const both={...s,journals:[accrual,payment]};
+  assert.deepEqual(inspectPayrollLedger(both),[]);
+  assert.equal(inspect(both).some(x=>['payroll_ledger_mismatch','payroll_payment_before_accrual'].includes(x.code)),false);
+  assert.ok(inspectPayrollLedger({...s,journals:[accrual,{...payment,source_id:'OTHER'}]})
+    .some(x=>x.code==='payroll_ledger_mismatch'));
+});
+test('Integracja płac: storno nie tworzy fałszywego duplikatu',()=>{
+  const s=withPayrollPractice(payrollState(),payrollCase());
+  const posted={...payrollJournalDraft(s,'P01','accrual','ACCRUAL-1'),status:'posted'};
+  const reversed={id:'REV-1',status:'posted',date:posted.date,source_type:'manual',source_id:'',
+    reversal_of:posted.id,lines:posted.lines.map(l=>({account:l.account,debit:l.credit,credit:l.debit}))};
+  assert.deepEqual(inspectPayrollLedger({...s,journals:[posted,reversed]}),[]);
+});
