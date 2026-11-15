@@ -5,9 +5,9 @@ import craftGuides from '../content/craft-guides-individual.json';
 type Intro={what:string;first:string;result:string;boundary?:string};
 const intros:Record<string,Intro>={
  'excel-skroty':{
- what:'Excel to arkusz kalkulacyjny Microsoftu służący do przechowywania danych, liczenia formuł, budowania raportów i wyciągania wniosków. Zaczynamy bez wymaganej znajomości programu: od kolumn, wierszy, adresu D2 i wpisania pierwszej formuły. Potem przechodzimy przez tabelę, walidację, model budżetu, kontrolę jakości danych i raporty.',
- first:'Kurs podzielono na 30 lekcji w trzech poziomach: fundamenty (1–10), praktyka (11–20), analiza ekspercka (21–30). W sześciostopniowej pracowni początkującego naprawdę zmienisz komórki, skopiujesz wzór i uzgodnisz sumę. Każda lekcja ma oddzielne zadanie z wynikiem liczonym na podstawie danych, wyjaśnieniem błędu i instrukcją dla prawdziwego Excela. Przed zadaniami znajdziesz teraz szczegółowe objaśnienia, historię programu, wyszukiwalny słownik 115 pojęć oraz bibliotekę 12 rozdziałów pogłębiających. To dodatkowe materiały — nie zmieniają zaliczonych 30 lekcji ani warunków egzaminu.',
- result:'W części zaawansowanej pracujesz na 18 fikcyjnych fakturach i 4 błędnych rekordach: filtrujesz dane, liczysz SUMA.WARUNKÓW, wykonujesz dokładne X.WYSZUKAJ, budujesz grupowania i wykres, odświeżasz tabelę przestawną, modelujesz marżę i wykrywasz anomalie importu. Pobierasz CSV do ćwiczeń w Microsoft Excel. W finale dodatkowo pobierzesz 368-wierszowy przypadek biznesowy (360 poprawnych rekordów i 8 anomalii), oczyścisz go w Excelu lub Power Query, a następnie uzgodnisz wyniki. Pracownia TRENERKI jest szkoleniową symulacją wybranych operacji — nie pełnym Excelem ani certyfikacją Microsoft.'
+ what:'Wyobraź sobie sklep sprzed kilkudziesięciu lat. Ktoś zapisuje towary, ilości i ceny w zeszycie, a potem godzinami dodaje liczby. Kiedy jedna cena się zmienia, musi liczyć wszystko od nowa. W 1979 roku pojawił się VisiCalc — jeden z pierwszych popularnych arkuszy dla komputerów osobistych. Microsoft wprowadził Excel w 1985 roku na komputery Macintosh, a wersję dla Windows w 1987 roku. Od tamtej pory idea pozostała prosta: wpisujesz dane w kratkach, a obliczenia mogą aktualizować się automatycznie. Nie musisz wcześniej znać programu, znać skrótów ani lubić matematyki.',
+ first:'Zacznij od rozpoznania ekranu Microsoft Excel. Zobaczysz, gdzie jest menu Plik, Narzędzia główne, puste kratki i pasek formuły. Dowiesz się, czym jest skoroszyt (plik), arkusz (karta w pliku), wiersz (pozioma linia) i kolumna (pionowy słupek). Dopiero gdy zrozumiesz te nazwy, przejdziesz do prostego ćwiczenia na liście zakupów lub produktach sklepu. Będziesz wykonywać jedną małą czynność naraz, z podpowiedziami i możliwością powtórki. Do prawdziwego Excela dostaniesz pliki CSV z danymi treningowymi.',
+ result:'Kurs ma 30 lekcji w trzech częściach: fundamenty, praktyka i analiza. Najpierw nauczysz się wpisać dane, znaleźć komórkę, zapisać plik XLSX i użyć prostych formuł, a później przygotować budżet, filtr, wykres i raport. Bardziej złożone funkcje, takie jak X.WYSZUKAJ czy Power Query, zostawiamy na później. Ćwiczenia wewnątrz Trenerki są symulacjami edukacyjnymi — prawdziwy Microsoft Excel poznajesz także z instrukcji producenta i samodzielnie otwieranych plików.'
  },
  'word-skroty':{
  what:'Word został stworzony przez firmę Microsoft jako edytor dokumentów. Wśród jego głównych twórców byli Charles Simonyi i Richard Brodie. Program Multi-Tool Word trafił na rynek w 1983 roku; Microsoft podaje premierę 25 października 1983 r. Word dla Windows pojawił się w 1989 roku. Program pozwala pisać i poprawiać pisma bez przepisywania całych stron, a później wzbogacono go o tabele, obrazy, style, spisy treści i wspólną pracę.',
@@ -101,8 +101,8 @@ const intros:Record<string,Intro>={
  }
 };
 export default function CourseIntro({slug,title,description,first}:{slug:string,title:string,description?:string,first:boolean}){
- const [open,setOpen]=useState(false);
- useEffect(()=>setOpen(false),[slug,first]);
+ const [open,setOpen]=useState(slug==='excel-skroty'&&first);
+ useEffect(()=>setOpen(slug==='excel-skroty'&&first),[slug,first]);
  const localGuides={...(individualGuides as Record<string,Intro>),...(craftGuides as Record<string,Intro>)};
  const entry=intros[slug]||localGuides[slug]||{
   what:description||'Poznaj codzienną praktykę tego tematu, żeby zobaczyć, kiedy i jak wykorzystać nową umiejętność.',

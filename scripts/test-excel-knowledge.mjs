@@ -102,6 +102,11 @@ test('First-day entry provides TWO distinct novice environments and checks evide
  assert(ui.includes('excel-first-row-number-'),'Explain Excel-like row numbers');
  assert(ui.includes('Pokaż podpowiedź do kroku'),'Novices need explicit contextual help');
  assert(!ui.includes('parafia')&&!ui.includes('parish'),'Never show niche internal test fixtures in public course');
+ const intro=read('src/CourseIntro.tsx');
+ assert(intro.includes("useState(slug==='excel-skroty'&&first)"),'Excel intro should be open on the first lesson');
+ const software=read('src/SoftwareOrientation.tsx');
+ assert(software.includes('testID="software-orientation"'),'Intro screen should be identifiable by browser tests');
+ assert(software.includes('https://support.microsoft.com/pl-pl/excel'),'Provide an official producer documentation link');
  assert(ui.includes('nie zapisują się na Twoim dysku'),"Do not pretend to access the user's PC");
  const entrance=app.indexOf("<ExcelFirstDayPractice/>");
  const orientation=app.indexOf("<SoftwareOrientation slug={slug}");

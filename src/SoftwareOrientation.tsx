@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Image,Platform,Pressable,Text,View,useWindowDimensions} from 'react-native';
+import {Image,Linking,Platform,Pressable,Text,View,useWindowDimensions} from 'react-native';
 
 type Term={name:string;description:string};
 type Program={
@@ -159,7 +159,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
  const [selectedTerm,setSelectedTerm]=useState(0),[selectedZone,setSelectedZone]=useState(0);
  const [tab,setTab]=useState<Tab>(slug==='excel-skroty'?'interface':mobile?'practice':'interface'),[imageFailed,setImageFailed]=useState(false);
  if(!p)return null;
- return <View style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
+ return <View testID="software-orientation" style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
   <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
   {Platform.OS==='web'&&!imageFailed?
@@ -181,6 +181,10 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
     </View>
    </View>}
   <Text style={{fontSize:11,color:'#647d66',lineHeight:18}}>Autorski schemat edukacyjny, nie zrzut ekranu producenta. Wygląd może się zmieniać zależnie od wersji programu.</Text>
+  {slug==='excel-skroty'&&<Pressable accessibilityRole="link" accessibilityLabel="Zobacz oficjalną instrukcję Microsoft Excel" onPress={()=>void Linking.openURL('https://support.microsoft.com/pl-pl/excel')}
+   style={{paddingHorizontal:13,paddingVertical:11,minHeight:44,borderRadius:10,backgroundColor:'#fff',alignSelf:'flex-start',borderWidth:1,borderColor:'#b6d2bf',justifyContent:'center'}}>
+   <Text style={{color:'#1d6546',fontWeight:'800',fontSize:13}}>Oryginalny Excel i oficjalne instrukcje Microsoft ↗</Text>
+  </Pressable>}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
    {tabs.map(x=><Pressable key={x.key} onPress={()=>setTab(x.key)} accessibilityRole="button"
     accessibilityState={{selected:tab===x.key}}
