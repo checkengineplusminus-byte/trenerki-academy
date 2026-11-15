@@ -26,7 +26,7 @@ function materialFor(n){
   section:Math.floor(n/10)+1,illustration:n===0?'windows-history':n%2===0?'windows-desktop':'windows-explorer',
   sections:[{heading:'Cel lekcji',text:'Bezpieczna nauka Windows z realnym ćwiczeniem oraz własnymi notatkami. Tylko dane testowe.'}]};
 }
-async function setupMock(page,events){
+async function setupMock(page,events,fresh=false){
  await page.addInitScript(({user})=>{
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({
    access_token:'test-only-access-token',refresh_token:'test-only-refresh-token',
@@ -47,7 +47,7 @@ async function setupMock(page,events){
   if(table==='ta_lessons')return fulfill(missions.map(m=>({lesson_no:m.lesson_no,title_pl:'Lekcja QA '+(m.lesson_no+1),material:materialFor(m.lesson_no)})));
   if(table==='ta_drafts')return fulfill([]);
   // Unlock individual mission pages without granting access to protected backend.
-  if(table==='ta_learning_progress')return fulfill(Array.from({length:29},(_,lesson_no)=>({lesson_no})));
+  if(table==='ta_learning_progress')return fulfill(fresh?[]:Array.from({length:29},(_,lesson_no)=>({lesson_no})));
   if(table==='ta_learning_attempts')return fulfill([]);
   if(table==='ta-lesson-guide'){
    const payload=req.postDataJSON?.()||{};
@@ -192,6 +192,80 @@ function criticCheck(round,checked){
  console.log('✓ Cykl '+round+' · KRYTYK SIGN-OFF: 8 odrębnych celów, 30 kompletnych rozdziałów, nieudawana weryfikacja');
  return {passed:true,distinctScenarios:8,totalChapters:30,limitations:['Kontrola automatyczna, nie testy z żywymi kursantami','Nie można zweryfikować skrótów wykonanych na cudzym komputerze']};
 }
+// Final sign-off: an imaginary priest who has NEVER used a Windows computer.
+// This is a simulated novice journey, not a claim that an actual clergyman tested the site.
+async function priestZeroExperience(browser,kind){
+ const mobile=kind==='phone',width=mobile?390:1280,height=mobile?844:800;
+ const context=await browser.newContext({
+  viewport:{width,height},deviceScaleFactor:mobile?2:1,isMobile:mobile,hasTouch:mobile,locale:'pl-PL'
+ });
+ const page=await context.newPage(),events={errors:[],unexpected:[]};
+ page.setDefaultTimeout(14000);
+ page.on('pageerror',error=>events.errors.push(String(error.message)));
+ try{
+  await setupMock(page,events,true);
+  await page.goto(origin+'/nauka?course=windows-skroty&lesson=1',{waitUntil:'domcontentloaded'});
+  await page.getByTestId('windows-start-from-zero-hint').waitFor();
+  const lab=page.getByTestId('windows-desktop-lab'),guide=lab.getByTestId('windows-absolute-beginner');
+  await guide.waitFor();
+  await guide.getByText('Nigdy nie korzystałem z komputera',{exact:true}).waitFor();
+  await guide.getByRole('button',{name:'Rozpocznij naukę od zera'}).click();
+  const advance=()=>guide.getByRole('button',{name:'Sprawdź wykonanie kroku'}).click();
+  const title=guide.getByTestId('windows-beginner-task');
+  await title.getByText('Znajdź Start',{exact:true}).waitFor();
+  // A true beginner must not get credit by pressing Next without a real action.
+  await advance();
+  await guide.getByTestId('windows-beginner-error').getByText(/Kliknij znak ⊞/).waitFor();
+  await lab.getByRole('button',{name:'Otwórz menu Start'}).click();
+  await lab.getByTestId('windows-start-menu').waitFor();
+  await advance();
+  await title.getByText('Otwórz Notatnik',{exact:true}).waitFor();
+  await lab.getByRole('button',{name:'Uruchom Notatnik'}).click();
+  await lab.getByTestId('win11-window-notes').waitFor();
+  await advance();
+  await title.getByText('Napisz pierwsze zdanie',{exact:true}).waitFor();
+  const notepad=lab.getByRole('textbox',{name:'Notatnik — pole ćwiczebne'});
+  assert.equal(await notepad.inputValue(),'','Novice should start with a blank document');
+  await advance();
+  await guide.getByTestId('windows-beginner-error').getByText(/minimum 20 znaków/).waitFor();
+  const bulletin='Ogłoszenia parafialne na niedzielę: spotkanie po nabożeństwie.';
+  await notepad.fill(bulletin);
+  await advance();
+  await title.getByText('Zapisz dokument',{exact:true}).waitFor();
+  await lab.getByRole('textbox',{name:'Nazwa pliku do zapisu'}).fill('Ogloszenia_parafialne.txt');
+  await advance();
+  await guide.getByTestId('windows-beginner-error').getByText(/wybierz „Zapisz”/).waitFor();
+  await lab.getByRole('button',{name:'Zapisz notatkę do pliku'}).click();
+  await lab.getByText(/Zapisano Ogloszenia_parafialne.txt w Dokumentach ćwiczebnych/).waitFor();
+  await advance();
+  await title.getByText('Zamknij Notatnik, znajdź plik',{exact:true}).waitFor();
+  const close=lab.getByRole('button',{name:'Zamknij Notatnik'});
+  const dimensions=await close.boundingBox();
+  assert(dimensions&&dimensions.width>=38&&dimensions.height>=38,'IT reviewer: novice close target is too small');
+  await close.click();
+  await lab.getByTestId('win11-window-notes').waitFor({state:'detached'});
+  await lab.getByRole('button',{name:'Otwórz Eksplorator plików'}).click();
+  await lab.getByTestId('win11-window-files').waitFor();
+  await advance();
+  await title.getByText('Otwórz własny dokument ponownie',{exact:true}).waitFor();
+  await lab.getByRole('button',{name:'Otwórz plik Ogloszenia_parafialne.txt'}).click();
+  await lab.getByTestId('win11-window-notes').waitFor();
+  assert.equal(await notepad.inputValue(),bulletin,'Novice must recover same content, not just open an empty app');
+  await advance();
+  await guide.getByTestId('windows-beginner-success').waitFor();
+  await guide.getByText(/plik w symulacji, nie na Twoim prawdziwym komputerze/).waitFor();
+  const overflow=await page.evaluate(()=>({width:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
+  assert(overflow.width<=overflow.viewport+3,'Critic: novice flow has horizontal overflow');
+  assert.deepEqual(events.errors,[],'IT reviewer: browser JavaScript exceptions');
+  assert.deepEqual(events.unexpected,[],'IT reviewer: novice flow unexpectedly wrote to Supabase');
+  await guide.scrollIntoViewIfNeeded();
+  await page.screenshot({path:'/tmp/trenerki-windows-priest-final-'+kind+'.png',fullPage:false});
+  console.log('✓ OSTATECZNY TEST: ksiądz bez doświadczenia ('+kind+'): od pustego pulpitu do zapisanych i odnalezionych ogłoszeń; kontrola IT i krytyka pozytywna');
+  return {persona:'Ksiądz bez wcześniejszego doświadczenia komputerowego',device:kind,scenario:'Ogłoszenia parafialne',
+   beginnerSteps:6,mistakesCaught:3,documentSavedAndReopened:true,noBackendWrites:true,noJavascriptErrors:true,
+   horizontalOverflow:false,engineeringReview:'passed',criticalReview:'passed'};
+ }finally{await context.close();}
+}
 const browser=await chromium.launch({headless:true,...(process.env.TRENERKI_CHROMIUM_BINARY?{executablePath:process.env.TRENERKI_CHROMIUM_BINARY}:{} )});
 try{
  for(let round=1;round<=2;round++){
@@ -204,9 +278,13 @@ try{
   const critics=criticCheck(round,checked);
   result.rounds.push({round,profiles:checked,engineers,critics});
  }
- result.summary={passed:result.rounds.length===2&&result.rounds.every(r=>r.engineers.passed&&r.critics.passed),profileJourneys:16,engineerReviews:2,criticReviews:2};
+ result.priestFinal=[
+  await priestZeroExperience(browser,'desktop'),
+  await priestZeroExperience(browser,'phone')
+ ];
+ result.summary={passed:result.rounds.length===2&&result.rounds.every(r=>r.engineers.passed&&r.critics.passed),profileJourneys:16,engineerReviews:2,criticReviews:2,priestFinalJourneys:result.priestFinal.length};
  assert(result.summary.passed);
- console.log('\n✓ WYNIK: 2 pełne cykle, 16 przebiegów użytkownika, 2 kontrole inżynierskie, 2 recenzje krytyczne.');
+ console.log('\n✓ WYNIK: 2 cykle, 16 przebiegów zawodowych, 2 kontrole IT, 2 recenzje krytyczne + końcowy test księdza od zera (desktop i telefon).');
 }finally{
  await browser.close();
  writeFileSync('/tmp/trenerki-windows-two-cycles-report.json',JSON.stringify(result,null,2));
