@@ -259,6 +259,7 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
    <Text style={{fontSize:compact?16:18,color:'#354b2f',fontWeight:'900'}}>Nigdy nie korzystałem z komputera</Text>
    {!beginnerMode?<View style={{gap:10}}>
     <Text style={{fontSize:14,lineHeight:22,color:'#53624d'}}>Zaczniemy bez skrótów i trudnych słów. Pokażę Ci, co to pulpit, kliknięcie, Notatnik i folder. W sześciu prostych krokach napiszesz, zapiszesz i ponownie otworzysz dokument.</Text>
+    <Text style={{fontSize:12,lineHeight:19,color:'#53624d'}}>Jeśli widzisz okno „Prywatność i pliki cookie”, możesz nacisnąć „Odrzuć” — kurs będzie działał tak samo. To pytanie o reklamowe pomiary, nie element Windows.</Text>
     <Pressable accessibilityRole="button" accessibilityLabel="Rozpocznij naukę od zera" onPress={beginFromZero}
       style={{minHeight:48,padding:12,alignSelf:'flex-start',backgroundColor:'#255b3b',borderRadius:10,justifyContent:'center'}}>
      <Text style={{color:'#fff',fontWeight:'900',fontSize:14}}>Rozpocznij naukę od zera</Text>
