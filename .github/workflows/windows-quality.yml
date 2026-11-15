@@ -60,5 +60,6 @@ jobs:
           path: |
             /tmp/trenerki-windows-two-cycles-report.json
             /tmp/trenerki-windows-qa-round*.png
+            /tmp/trenerki-windows-priest-final-*.png
           retention-days: 14
           if-no-files-found: ignore
