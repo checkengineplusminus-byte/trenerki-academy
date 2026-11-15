@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {supabase} from './supabase';
+import {submitCourseFeedback,feedbackConfirmation} from './feedbackApi';
 import {categoryLabel,routeSupport,type SupportResult} from './support/routing';
 import {HelpLink} from './support/links';
 
@@ -24,6 +25,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  const [support,setSupport]=useState<SupportResult|null>(null);
  const [loading,setLoading]=useState(true),[sending,setSending]=useState(false),[canReply,setCanReply]=useState(true);
  const [error,setError]=useState(''),[showOlder,setShowOlder]=useState(false),[cooldown,setCooldown]=useState<string|null>(null);
+ const [feedbackNotice,setFeedbackNotice]=useState('');
  const request=async(action:'status'|'dialogue',message?:string)=>{
   const {data,error:e}=await supabase.functions.invoke<Session>('ta-lesson-guide',{
    body:{action,course_slug:courseSlug,lesson_no:lessonNo,...(message?{message}:{})}
@@ -40,7 +42,7 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
  useEffect(()=>{
   let active=true;
   setHistory([]);setInput('');setSupport(null);setOpening('');setError('');setShowOlder(false);
-  setCooldown(null);setCanReply(true);setLoading(true);
+  setCooldown(null);setCanReply(true);setLoading(true);setFeedbackNotice('');
   void request('status').then(d=>{if(active)apply(d)})
    .catch(e=>{if(active)setError(String(e?.message||'Połączenie chwilowo niedostępne.'))})
    .finally(()=>{if(active)setLoading(false)});
@@ -52,7 +54,14 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
   const help=routeSupport(message,support);
   if(help){setSupport(help);setInput('');setError('');return;}
   if(!canReply||message.length<5)return;
-  setSending(true);setError('');
+  setSending(true);setError('');setFeedbackNotice('');
+  // Save a genuine problem even if the tutor model/network fails.
+  // This independent endpoint validates enrollment and classifies the report server-side.
+  const feedbackPromise=submitCourseFeedback(courseSlug,lessonNo,message);
+  void feedbackPromise.then(ack=>{
+   const confirmation=feedbackConfirmation(ack);
+   if(confirmation)setFeedbackNotice(confirmation);
+  });
   try{const data=await request('dialogue',message);if(data.support)setSupport(data.support);else apply(data);setInput('')}
   catch(e:any){setError(e?.message||'Nie udało się wysłać pytania.')}
   finally{setSending(false)}
@@ -91,13 +100,14 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
    <TextInput value={input} onFocus={()=>setChatOpened(true)} onChangeText={setInput} multiline maxLength={1000} placeholder="Np. Nie rozumiem, skąd ta kwota. Wyjaśnij na liczbach."
     placeholderTextColor="#728576" textAlignVertical="top" accessibilityLabel="Twoje pytanie do Anielki"
     style={{backgroundColor:'white',borderColor:'#c4d7c2',borderWidth:1,borderRadius:11,minHeight:74,padding:13,color:ink,fontSize:16}}/>
-   {(chatOpened||!!input)&&<Text style={{color:muted,fontSize:12,lineHeight:19}}>Rozmawiasz z asystentką AI. Pomiń dane osobowe i wrażliwe.</Text>}
+   {(chatOpened||!!input)&&<Text style={{color:muted,fontSize:11,lineHeight:19}}>SI · Nie wpisuj danych osobowych. Uwagi do lekcji wykorzystujemy, aby poprawiać kurs.</Text>}
    <Pressable accessibilityRole="button" onPress={()=>void send()} disabled={sending||input.trim().length<5}
     style={{backgroundColor:ink,borderRadius:11,padding:15,opacity:sending||input.trim().length<5?.5:1}}>
     <Text style={{color:'white',textAlign:'center',fontWeight:'900',fontSize:15}}>{sending?'Odpowiadam…':'Zapytaj Anielkę →'}</Text>
    </Pressable>
   </View>}
   {!allowed&&<Text style={{color:muted,lineHeight:21}}>Możesz teraz przejść dalej z kursem. Do rozmowy wrócisz później.</Text>}
+  {!!feedbackNotice&&<Text accessibilityLiveRegion="polite" style={{color:'#285c3c',fontSize:12,lineHeight:20,backgroundColor:'white',padding:10,borderRadius:9}}>{feedbackNotice}</Text>}
   {!!error&&<Text style={{color:'#a25132',fontSize:13,lineHeight:20}}>{error}</Text>}
  </View>;
 }

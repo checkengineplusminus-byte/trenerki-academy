@@ -1,12 +1,14 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,TextInput,Pressable,ActivityIndicator} from 'react-native';
 import {supabase} from './supabase';
+import {submitCourseFeedback,feedbackConfirmation} from './feedbackApi';
 type Api={ok?:boolean;available?:boolean;answer?:string;error?:string;remaining_today?:number};
 const color='#17392a';
 export default function AiTutor({courseSlug,lessonNo}:{courseSlug:string;lessonNo:number}){
  const [available,setAvailable]=useState(false),[consent,setConsent]=useState(false);
  const [question,setQuestion]=useState(''),[answer,setAnswer]=useState(''),[error,setError]=useState(''),[busy,setBusy]=useState(false),[remain,setRemain]=useState<number|null>(null);
- useEffect(()=>{let active=true;setAnswer('');setQuestion('');setError('');setConsent(false);
+ const [feedbackNotice,setFeedbackNotice]=useState('');
+ useEffect(()=>{let active=true;setAnswer('');setQuestion('');setError('');setConsent(false);setFeedbackNotice('');
   (async()=>{
    try{
     const {data,error:e}=await supabase.functions.invoke<Api>('ta-tutor',{body:{action:'status'}});
@@ -29,16 +31,17 @@ export default function AiTutor({courseSlug,lessonNo}:{courseSlug:string;lessonN
      'Nie udało się teraz uzyskać odpowiedzi. Spróbuj później.');
    }
    setAnswer(data.answer);setRemain(data.remaining_today??null);
+   void submitCourseFeedback(courseSlug,lessonNo,question.trim()).then(ack=>setFeedbackNotice(feedbackConfirmation(ack)));
   }catch(e:any){setError(e?.message||'Asystent jest chwilowo niedostępny.');}
   finally{setBusy(false);}
  }
  return <View style={{marginTop:25,backgroundColor:'#e9f3e3',borderRadius:18,padding:19,gap:12}}>
-  <Text style={{color:color,fontWeight:'900',fontSize:21}}>Zapytaj Anielkę — asystent nauki</Text>
+  <Text style={{color:color,fontWeight:'900',fontSize:21}}>Zapytaj Anielkę — Twoją trenerkę nauki</Text>
   <Text style={{color:'#577260',lineHeight:22,fontSize:14}}>Nie rozumiesz fragmentu lekcji? Zadaj pytanie o konkretną sytuację. Otrzymasz wyjaśnienie i przykład dopasowany do aktualnego tematu.</Text>
   <TextInput multiline maxLength={700} value={question} onChangeText={setQuestion} placeholder="Np. Jak powiedzieć koledze, że nie rozumiem polecenia?" style={{minHeight:94,backgroundColor:'white',borderRadius:12,borderColor:'#c9d9c4',borderWidth:1,padding:14,color:color,textAlignVertical:'top'}}/>
   <Pressable onPress={()=>setConsent(v=>!v)} accessibilityRole="checkbox" accessibilityState={{checked:consent}} style={{flexDirection:'row',alignItems:'flex-start',gap:10}}>
    <View style={{width:22,height:22,borderWidth:1,borderColor:'#7f9c7d',borderRadius:5,backgroundColor:consent?'#b1dda1':'white',alignItems:'center',justifyContent:'center'}}><Text style={{fontWeight:'900',color:color}}>{consent?'✓':''}</Text></View>
-   <Text style={{flex:1,color:'#58705d',fontSize:12,lineHeight:19}}>Zgadzam się przesłać treść mojego pytania do dostawcy modelu AI w celu udzielenia odpowiedzi. Nie wpisuję haseł, adresów, danych zdrowotnych ani informacji o innych osobach.</Text>
+   <Text style={{flex:1,color:'#58705d',fontSize:12,lineHeight:19}}>Zgadzam się przesłać treść mojego pytania do zewnętrznego dostawcy modelu SI w celu udzielenia odpowiedzi. Nie wpisuję haseł, adresów, danych zdrowotnych ani informacji o innych osobach.</Text>
   </Pressable>
   <Pressable disabled={!consent||busy||question.trim().length<4} onPress={ask} style={{padding:15,borderRadius:11,backgroundColor:color,opacity:!consent||busy||question.trim().length<4?0.45:1}}>
    <Text style={{fontWeight:'900',color:'white',textAlign:'center'}}>{busy?'Szukam dobrego wyjaśnienia…':'Wyjaśnij mi ten temat'}</Text>
@@ -49,7 +52,8 @@ export default function AiTutor({courseSlug,lessonNo}:{courseSlug:string;lessonN
    <Text style={{color:color,fontSize:15,lineHeight:25}}>{answer}</Text>
    {remain!==null&&<Text style={{fontSize:11,color:'#738477'}}>Pozostało pytań dzisiaj: {remain}</Text>}
   </View>}
+  {!!feedbackNotice&&<Text accessibilityLiveRegion="polite" style={{color:color,fontSize:12,lineHeight:19}}>{feedbackNotice}</Text>}
   {!!error&&<Text style={{color:'#a24836',fontSize:13,lineHeight:21}}>{error}</Text>}
-  <Text style={{fontSize:11,color:'#708075',lineHeight:18}}>Odpowiedź AI służy nauce i może zawierać pomyłki. W sprawach bezpieczeństwa pracy, zdrowia i prawa zawsze stosuj odpowiednie procedury.</Text>
+  <Text style={{fontSize:11,color:'#708075',lineHeight:18}}>Odpowiedź SI służy nauce i może zawierać pomyłki. W sprawach bezpieczeństwa pracy, zdrowia i prawa zawsze stosuj odpowiednie procedury.</Text>
  </View>;
 }

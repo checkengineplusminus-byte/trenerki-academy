@@ -5,6 +5,7 @@ import {FunctionsHttpError} from '@supabase/supabase-js';
 import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 import DiplomaRegistry from '../src/DiplomaRegistry';
+import CourseFeedbackPanel from '../src/CourseFeedbackPanel';
 import ContactEditor from '../src/support/ContactEditor';
 import {downloadGiftPdf,saveGiftPdf} from '../src/giftPdf';
 import {formatGiftCode} from '../src/giftCode';
@@ -62,7 +63,7 @@ export default function AdminPage(){
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'diplomas'|'support'>('giveaway');
+ const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'feedback'|'diplomas'|'support'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
  const [giftTransferable,setGiftTransferable]=useState(true),[giftDedication,setGiftDedication]=useState('');
@@ -360,7 +361,7 @@ export default function AdminPage(){
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['discount','Rabaty dzienne'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
+     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['discount','Rabaty dzienne'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['feedback','Zgłoszenia Anielki'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
@@ -623,6 +624,7 @@ export default function AdminPage(){
       </Pressable>
      </View>}
     </View>}
+    {tab==='feedback'&&<CourseFeedbackPanel/>}
     {tab==='diplomas'&&<DiplomaRegistry/>}
     {tab==='support'&&<ContactEditor/>}
     {tab==='quality'&&<View style={card}>
