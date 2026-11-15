@@ -1,0 +1,46 @@
+name: TRENERKI Anielka — ciągłe doskonalenie kursów
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/anielka-autofix.yml'
+      - 'scripts/anielka-autofix*.mjs'
+      - 'supabase/functions/ta-feedback-autofix/**'
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  id-token: write
+  actions: write
+
+concurrency:
+  group: trenerki-anielka-autofix-single-writer
+  cancel-in-progress: false
+
+jobs:
+  improvement_agent:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - name: Checkout current verified main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check automation guards before connecting to Supabase
+        run: |
+          node --test scripts/test-anielka-autofix-guards.mjs
+          node --experimental-strip-types --test scripts/test-anielka-feedback.mjs
+      - name: Triage one verified learner report
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/anielka-autofix.mjs
