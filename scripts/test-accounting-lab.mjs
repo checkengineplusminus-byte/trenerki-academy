@@ -1816,7 +1816,7 @@ test('Kopia biura: odtworzenie do NOWEGO biura wymaga zgody i nie rusza oryginaÅ
   dispose=mountLab(root,db);
   await new Promise(resolve=>setImmediate(resolve));
   await root.handlers.change({target:{
-   id:'lab-backup-file',files:[{size:syntheticOwnBackup().length,text:async()=>syntheticOwnBackup()}]
+   id:'lab-backup-file',dataset:{},files:[{size:syntheticOwnBackup().length,text:async()=>syntheticOwnBackup()}]
   }});
   assert.match(root.innerHTML,/UtwÃ³rz NOWE biuro z kopii/);
   const event={target:{closest:()=>({disabled:false,dataset:{action:'restore-copy',id:''}})}};
