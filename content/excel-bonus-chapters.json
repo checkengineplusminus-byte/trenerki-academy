@@ -1,0 +1,391 @@
+{
+  "schema": 1,
+  "course": "excel-skroty",
+  "kind": "supplementary_chapters",
+  "note": "12 rozdziałów pogłębiających niezależnych od 30 zaliczanych lekcji. To biblioteka edukacyjna, nie 42 formalne lekcje.",
+  "updated_on": "2026-11-15",
+  "timeline": [
+    {
+      "year": "1979",
+      "title": "VisiCalc",
+      "description": "Elektroniczne arkusze przenoszą budżety z papieru na komputery osobiste.",
+      "reference": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2002/06/information-technology-outlook-2002_g1gh2563/it_outlook-2002-en.pdf"
+    },
+    {
+      "year": "1982",
+      "title": "Multiplan",
+      "description": "Microsoft rozwija własny arkusz dla komputerów osobistych.",
+      "reference": "https://catalogimages.wiley.com/images/db/pdf/9780470475362.excerpt.pdf"
+    },
+    {
+      "year": "1985",
+      "title": "Excel na Macintosh",
+      "description": "30 września Microsoft ogłasza wysyłkę Excela dla komputerów Mac.",
+      "reference": "https://learn.microsoft.com/pl-pl/shows/history/history-of-microsoft-1985"
+    },
+    {
+      "year": "1987",
+      "title": "Excel dla Windows",
+      "description": "Pierwsza wersja Excela przeznaczona dla Windows pojawia się na rynku.",
+      "reference": "https://catalogimages.wiley.com/images/db/pdf/9780470475362.excerpt.pdf"
+    },
+    {
+      "year": "2007",
+      "title": "Wstążka i XLSX",
+      "description": "Duża zmiana menu i formatu plików; łatwiej odkrywać polecenia i przekazywać dane.",
+      "reference": "https://download.microsoft.com/download/3/5/a/35a8cb9f-1349-4645-ac2a-49ba61834826/first-look-2007-microsoft-office-system.pdf"
+    },
+    {
+      "year": "2025",
+      "title": "40 lat Excela",
+      "description": "Microsoft świętuje 40 lat programu, który rozwinął się od arkusza do narzędzia analizy i współpracy.",
+      "reference": "https://news.microsoft.com/signal/articles/microsoft-excel-celebrates-40-years/"
+    }
+  ],
+  "chapters": [
+    {
+      "id": "historia-arkuszy",
+      "level": "Historia",
+      "title": "Od kartki papieru do arkusza Excela",
+      "lead": "Co wspólnego ma papierowa księga magazynu z najnowszym Excelem? Możliwość zmiany jednej liczby bez przepisywania całego raportu.",
+      "sections": [
+        {
+          "heading": "Problem sprzed ery komputerów",
+          "text": "Wyobraź sobie kierownika magazynu z 1978 roku. Spisał w kolumnach ilości, ceny i wartości. Gdy dostawca podniósł ceny, wszystkie kwoty i sumy trzeba było poprawić ręcznie. Każde kolejne przepisanie zwiększało ryzyko pomyłki. Elektroniczny arkusz nie wynalazł tabel, lecz pozwolił automatycznie przeliczać powiązane komórki."
+        },
+        {
+          "heading": "Pierwsza rewolucja: VisiCalc i Lotus",
+          "text": "W 1979 roku VisiCalc upowszechnił ideę elektronicznego arkusza na komputerach osobistych. W 1982 roku Microsoft rozwijał Multiplana, a od 1983 roku Lotus 1-2-3 odegrał ogromną rolę w biurach korzystających z komputerów PC. Te narzędzia budowały pomost między papierowym kosztorysem a dynamicznym modelem danych."
+        },
+        {
+          "heading": "Narodziny Excela",
+          "text": "Microsoft ogłosił Excela na komputery Macintosh 30 września 1985 roku. Wersja dla Windows ukazała się w 1987 roku. Możliwość wybierania komórek wskaźnikiem i pracy z grafiką była ważnym krokiem dla osób, które nie chciały zapamiętywać poleceń. Excel rozwijał się równolegle z komputerami i sposobem prowadzenia firmy."
+        },
+        {
+          "heading": "Excel 2007 i nowy sposób pracy",
+          "text": "W wydaniach pakietu Office z 2007 roku upowszechniły się wstążka z kartami oraz format XLSX. Dzięki temu początkujący zobaczył grupy poleceń na ekranie, choć musiał nauczyć się nowej organizacji menu. Później znaczenia nabierały importowanie danych, współpraca w chmurze i rozbudowane formuły."
+        },
+        {
+          "heading": "Dziś: dane, modele i automatyzacja",
+          "text": "Współczesny Excel nie kończy się na dodawaniu kolumn. Power Query umożliwia wielokrotny import i czyszczenie danych, modele danych łączą tabele, a nowe funkcje potrafią zwracać wiele wyników. Warto jednak pamiętać: narzędzia ułatwiają obliczenia, lecz nie potwierdzają, że dane źródłowe są poprawne."
+        }
+      ],
+      "task": "Który rok uznajemy za premierę Excela na Macintosh?",
+      "answer": "1985",
+      "tip": "Nie myl pierwszego Excela z wcześniejszymi arkuszami VisiCalc i Lotus.",
+      "source": "https://learn.microsoft.com/pl-pl/shows/history/history-of-microsoft-1985"
+    },
+    {
+      "id": "pierwszy-kwadrans",
+      "level": "Od zera",
+      "title": "Twoje pierwsze 15 minut: nie musisz nic umieć",
+      "lead": "Pracownik, senior czy student — wszyscy zaczynają od tego samego: ustalenia, gdzie jest wskaźnik, komórka, klawiatura i zapis.",
+      "sections": [
+        {
+          "heading": "Przed otwarciem programu",
+          "text": "Sprawdź, czy klawiatura i mysz lub touchpad działają. Wskaźnik myszy to poruszająca się strzałka. Kliknięcie zaznacza komórkę, dwuklik może ją edytować, a Enter zatwierdza wpis lub przechodzi dalej. Nie musisz znać żadnych kombinacji Ctrl ani klawiszy funkcyjnych, aby wykonać pierwszy budżet."
+        },
+        {
+          "heading": "Nowy skoroszyt i prosty cel",
+          "text": "Uruchom Microsoft Excel i wybierz Pusty skoroszyt. Zobaczysz kratkowany obszar. W A1 wpisz 'Produkt', w B1 'Ilość', w C1 'Cena', a w D1 'Wartość'. Zapisz plik od razu jako Proba_Budzet.xlsx w bezpiecznym folderze. Masz dzięki temu miejsce, do którego wrócisz po zamknięciu programu."
+        },
+        {
+          "heading": "Od liczb do pierwszej formuły",
+          "text": "W wierszu 2 wpisz 'Farba', 2, 150. Kliknij D2 i wpisz =B2*C2, a potem Enter. Powinieneś otrzymać 300. Zmień ilość z 2 na 3. Jeśli D2 automatycznie zmieni się na 450, zobaczyłeś najważniejszą przewagę arkusza nad kalkulatorem."
+        },
+        {
+          "heading": "Sprawdź, co naprawdę zapisałeś",
+          "text": "Kliknij D2. W siatce widzisz wynik 450, ale na pasku formuły napis =B2*C2. To dwie różne informacje: wartość wyświetlana i instrukcja jej obliczenia. Zapisz zmiany, zamknij plik i otwórz go ponownie. Jeśli formuła nadal tam jest, wykonałeś swój pierwszy kompletny cykl pracy."
+        },
+        {
+          "heading": "Przyjemność z nauki",
+          "text": "Nie przechodź do kolejnego rozdziału wyłącznie dlatego, że umiesz nacisnąć przycisk. Wyjaśnij komuś swoim językiem, skąd wziął się wynik 450. Jeśli potrafisz to zrobić, naprawdę rozumiesz pierwszą formułę i masz podstawę pod dalsze funkcje."
+        }
+      ],
+      "task": "Ile wynosi 3 × 150 w pierwszym arkuszu?",
+      "answer": "450",
+      "tip": "Wartość 450 pochodzi z formuły, a nie z ręcznego wpisania do D2.",
+      "source": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "projektowanie-danych",
+      "level": "Fundamenty",
+      "title": "Dane muszą mieć sens, zanim zaczniesz liczyć",
+      "lead": "Najwięcej czasu analitycy tracą nie na skomplikowane wzory, ale na poprawianie źle ułożonych tabel.",
+      "sections": [
+        {
+          "heading": "Jeden wiersz — jeden rekord",
+          "text": "Jeśli tabela ma opisywać faktury, każdy wiersz powinien odpowiadać dokładnie jednej fakturze. Nie mieszaj miesięcznych podsumowań z rekordami źródłowymi. Wiersz z sumą w środku tabeli potrafi zepsuć filtrowanie, liczenie i import do Power Query."
+        },
+        {
+          "heading": "Jedna kolumna — jedna cecha",
+          "text": "Kolumna 'Data' powinna zawierać wyłącznie datę, 'Ilość' wyłącznie ilość, a 'Cena netto' liczbę reprezentującą kwotę. Nie wpisuj w jedną komórkę '12 szt., 300 zł, 2026-11-15'. Program nie będzie wiedział, którą część należy policzyć albo filtrować."
+        },
+        {
+          "heading": "Poprawne typy danych",
+          "text": "Identyfikator '00127' jest tekstem, bo zera mają znaczenie, ale nie będziesz dodawać kodów do siebie. Kwota '120,50' powinna być liczbą, a data rzeczywistą datą, nie przypadkowym napisem. Przed obliczeniami sprawdź kilka komórek z każdego rodzaju danych."
+        },
+        {
+          "heading": "Cztery szybkie kontrole",
+          "text": "Przejrzyj puste nagłówki, powtórzone ID, brakujące wartości i dane poza rozsądnym zakresem. W pliku z 368 rekordami załóż, że coś może być nieprawidłowe. Zanim zsumujesz przychód, ustal, które wiersze można bezpiecznie uwzględnić."
+        }
+      ],
+      "task": "Ile rekordów powinny stanowić dwie odrębne faktury?",
+      "answer": "2",
+      "tip": "Każda faktura powinna mieć osobny wiersz i jednoznaczny identyfikator.",
+      "source": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "logika-warunkow",
+      "level": "Praktyka",
+      "title": "JEŻELI, ORAZ i LUB — Excel zaczyna podejmować decyzje",
+      "lead": "Dobre formuły warunkowe nie zgadują; wykonują dokładnie te reguły, które zapiszesz.",
+      "sections": [
+        {
+          "heading": "Zapisz zasadę zwykłym zdaniem",
+          "text": "Zanim wpiszesz funkcję, powiedz: 'Jeżeli ilość jest większa od zera, pokaż OK, inaczej pokaż BŁĄD'. Dopiero później przełóż to na =JEŻELI(B2>0;\"OK\";\"BŁĄD\"). Dzięki takiej kolejności rozumiesz, co dzieje się dla zera, pustej komórki i wartości ujemnej."
+        },
+        {
+          "heading": "Kiedy użyć ORAZ",
+          "text": "Jeżeli faktura ma zostać zaakceptowana tylko przy dodatniej ilości oraz nieujemnej cenie, oba warunki muszą być prawdziwe. Możesz to zapisać jako =JEŻELI(ORAZ(C2>0;D2>=0);\"OK\";\"SPRAWDŹ\"). Taka formuła nie zastępuje jednak kontroli dokumentu przez człowieka."
+        },
+        {
+          "heading": "Kiedy użyć LUB",
+          "text": "Jeśli wiadomość wymaga reakcji, gdy termin minął albo kontrahent jest na liście wyjątków, wystarczy spełnienie jednego warunku. To właśnie przypadek dla LUB. Pomylenie LUB z ORAZ może odrzucić poprawne rekordy lub zaakceptować nieprawidłowe."
+        },
+        {
+          "heading": "Testy negatywne",
+          "text": "Nie testuj tylko wiersza, który wygląda idealnie. Sprawdź ilość 0, cenę ujemną i pustą wartość. Zapisz oczekiwane wyniki z góry. Jeśli wszystkie przykłady mają wyjść 'OK', formuła prawdopodobnie niczego sensownie nie sprawdza."
+        }
+      ],
+      "task": "Czy ORAZ jest prawdziwe, gdy z dwóch warunków tylko jeden jest spełniony?",
+      "answer": "nie",
+      "tip": "ORAZ wymaga spełnienia wszystkich warunków.",
+      "source": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "wyszukiwanie-danych",
+      "level": "Praktyka",
+      "title": "Znajdź dokładną fakturę: X.WYSZUKAJ kontra starsze metody",
+      "lead": "Wyobraź sobie dwa zamówienia po 1155 zł. Sama kwota nie wystarczy, aby rozpoznać dokument.",
+      "sections": [
+        {
+          "heading": "Wybierz dobry klucz",
+          "text": "Najlepszy klucz to identyfikator, który jednoznacznie opisuje rekord. W rejestrze użyj numeru faktury, np. FV-014, a nie wysokości kwoty. Jeśli klucz ma duplikaty, najpierw trzeba je wyjaśnić, bo nawet poprawna formuła może zwrócić tylko pierwszy pasujący wiersz."
+        },
+        {
+          "heading": "X.WYSZUKAJ krok po kroku",
+          "text": "W obsługiwanej wersji Excela wpisz =X.WYSZUKAJ(\"FV-014\";A2:A19;J2:J19;\"BRAK\";0). Najpierw podajesz szukany numer, potem kolumnę z numerami i kolumnę wyników. 'BRAK' to komunikat zamiast fałszywego zera, a 0 oznacza dokładne dopasowanie."
+        },
+        {
+          "heading": "Starsze wersje programu",
+          "text": "Excel 2016 i 2019 nie oferują X.WYSZUKAJ jako natywnej funkcji. Możesz korzystać z WYSZUKAJ.PIONOWO lub połączenia INDEKS z PODAJ.POZYCJĘ. Nie zakładaj, że wszyscy odbiorcy pliku mają ten sam pakiet Microsoft 365."
+        },
+        {
+          "heading": "Dopasowanie nie jest kontrolą jakości",
+          "text": "Znalezienie wartości nie oznacza, że faktura jest poprawna. Najpierw sprawdź unikatowy numer, typ danych, zakresy dat i brak duplikatów. Potem porównaj wynik wyszukiwania z oryginalnym dokumentem. To szczególnie ważne dla księgowości i zamówień."
+        }
+      ],
+      "task": "Jaki numer powinien być kluczem wyszukiwania: FV-014 czy kwota 1155?",
+      "answer": "FV-014",
+      "tip": "Szukaj po unikatowym ID, nigdy tylko po kwocie.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "tekst-daty-lokalizacja",
+      "level": "Praktyka",
+      "title": "Tekst, daty i czas: małe błędy, wielkie konsekwencje",
+      "lead": "Raport może być matematycznie poprawny, a mimo to błędny przez datę, nieczytelny kod lub separator.",
+      "sections": [
+        {
+          "heading": "Kody to tekst",
+          "text": "Jeżeli numer produktu brzmi 00127, wpisanie go jako liczby może usunąć dwa pierwsze zera. Najbezpieczniej zadbać o typ tekstowy przed importem. W zadaniach magazynowych i fakturowych kody są identyfikatorami, a nie kwotami do obliczeń."
+        },
+        {
+          "heading": "Data ma znaczenie",
+          "text": "Wiele pozornie poprawnych napisów dat nie jest datami, np. 2026-02-30. Przy imporcie z CSV wybierz rzeczywisty typ daty i sprawdź zakresy dni. Jeśli Power Query zgłasza błędną datę, nie zastępuj jej losową datą z bieżącego miesiąca."
+        },
+        {
+          "heading": "Separatory zależą od regionu",
+          "text": "Polski Excel często przyjmuje 12,50, a plik z systemu anglojęzycznego może zawierać 12.50. W ustawieniach importu możesz wskazać separator i kulturę liczb. Nie zmieniaj hurtowo kropek na przecinki, jeśli nie masz pewności, czy kropka oznacza wartość dziesiętną."
+        },
+        {
+          "heading": "Prosty audyt importu",
+          "text": "Wybierz po pięć przykładowych wartości z różnych kolumn: ceny, daty, ilości, kody i nazwy. Potwierdź, że każda zachowała sens. Dopiero wtedy policz SUMA lub otwórz tabelę przestawną. Kontrola jednego wiersza nie wystarczy przy setkach danych."
+        }
+      ],
+      "task": "Czy zapis 2026-02-30 jest poprawną datą?",
+      "answer": "nie",
+      "tip": "Luty nie ma 30 dni.",
+      "source": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "dashboard-wskazniki",
+      "level": "Praktyka",
+      "title": "Dashboard: raport, który odpowiada na pytania",
+      "lead": "Dyrektor nie potrzebuje 20 kolorowych wykresów. Potrzebuje wiedzieć, co się zmieniło i dlaczego.",
+      "sections": [
+        {
+          "heading": "Zacznij od pytań, nie od wykresu",
+          "text": "Ustal, jakie decyzje będzie podejmował odbiorca: gdzie rośnie sprzedaż, czy marża jest wystarczająca, które faktury są po terminie. Dopiero wtedy wybierz miary. Każda powinna mieć jasną definicję, datę i jednostkę."
+        },
+        {
+          "heading": "Cztery podstawowe KPI",
+          "text": "Dla ćwiczenia biznesowego wybierz sumę przychodu netto, marżę kwotową, liczbę transakcji i udział zaległych faktur. Nie sumuj kwot PLN razem z liczbą dokumentów, a na wykresie zawsze opisuj okres porównania."
+        },
+        {
+          "heading": "Dobrze dobrany wykres",
+          "text": "Wykres słupkowy pasuje do porównania regionów. Linia lepiej pokazuje rozwój miesięczny. Koło nie pomaga, jeśli masz wiele drobnych kategorii bez czytelnych podpisów. Skala zaczynająca się od zera pozwala uczciwiej porównywać wielkości słupków."
+        },
+        {
+          "heading": "Uzgodnij dane pod każdym wykresem",
+          "text": "Kliknij wartość KPI i sprawdź źródłowe wiersze. Suma regionów powinna równać się sumie miesięcy oraz pełnemu przychodowi. Jeżeli wyniki nie są zgodne, powstrzymaj publikację dashboardu i zbadaj zakresy."
+        }
+      ],
+      "task": "Czy wykres słupkowy jest dobry do porównania przychodu kilku regionów?",
+      "answer": "tak",
+      "tip": "Najpierw oblicz wartości i jednostki.",
+      "source": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "power-query-pierwsze-kroki",
+      "level": "Ekspert",
+      "title": "Power Query: od brudnego CSV do czystej tabeli",
+      "lead": "To miejsce, w którym dojrzały użytkownik przestaje poprawiać dziesiątki wierszy ręcznie.",
+      "sections": [
+        {
+          "heading": "Po co Power Query",
+          "text": "Otrzymujesz plik CSV z 368 rekordami. Zamiast ręcznie kopiować komórki i poprawiać formaty co miesiąc, definiujesz powtarzalną sekwencję importu. Power Query może zamienić kolumny na daty lub liczby, wykryć błędy i przekazać dane do arkusza albo modelu."
+        },
+        {
+          "heading": "Właściwa kolejność operacji",
+          "text": "Najpierw zaimportuj plik i sprawdź kodowanie UTF-8 oraz separator średnik. Następnie ustaw typy: Data jako data, Ilość jako liczba całkowita, Cena jako liczba dziesiętna. Dopiero po tym kroku analizuj duplikaty faktur i niedozwolone wartości."
+        },
+        {
+          "heading": "Zachowaj listę błędów",
+          "text": "Nie usuwaj ośmiu wadliwych faktur bez śladu. Utwórz osobne zapytanie z listą błędów: numer rekordu i przyczyna. Dzięki temu firma może wrócić do źródła i wyjaśnić, czy wystąpił błąd wpisu, przesyłki albo podwójnej faktury."
+        },
+        {
+          "heading": "Ładowanie i odświeżanie",
+          "text": "Wybierz Zamknij i załaduj, aby przekazać poprawne dane do arkusza lub modelu danych. Gdy system dostarczy nowy CSV w tym samym schemacie, skorzystaj z Odśwież. Sprawdź, czy liczba wierszy, zakres dat i suma kwot mają sens."
+        }
+      ],
+      "task": "Ile podejrzanych rekordów jest w zaawansowanym ćwiczeniu CSV?",
+      "answer": "8",
+      "tip": "Liczby 368, 360 i 8 dotyczą osobnych klas danych.",
+      "source": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "power-query-relacje",
+      "level": "Ekspert",
+      "title": "Scalanie i dołączanie tabel bez duplikowania danych",
+      "lead": "Dwie podobne operacje Power Query prowadzą do zupełnie innych wyników.",
+      "sections": [
+        {
+          "heading": "Dołączanie działa pionowo",
+          "text": "Masz 12 plików z takimi samymi kolumnami, po jednym na miesiąc. Funkcja Dołącz zapytania dodaje nowe rekordy pod dotychczasowymi. Przed dołączeniem sprawdź zgodność nazw, formatów i typów kolumn, aby dane ze stycznia nie przesunęły się pod niewłaściwy nagłówek."
+        },
+        {
+          "heading": "Scalanie działa przez klucz",
+          "text": "Masz Faktury z kolumną KlientID oraz tabelę Klienci z nazwami firm. Scalanie dopina do faktury informacje z tabeli klientów przez wspólny identyfikator. Jeżeli tabela klientów zawiera dwa takie same ID, połączenie może zwielokrotnić wiersze."
+        },
+        {
+          "heading": "Wybór rodzaju połączenia",
+          "text": "Przy scalaniu używasz typów łączenia, np. lewostronnego. Oznacza to zachowanie wszystkich faktur i dołączenie danych klienta tylko tam, gdzie znaleziono dopasowanie. Brak klienta nie powinien po cichu usuwać faktury ze źródła."
+        },
+        {
+          "heading": "Test przed publikacją",
+          "text": "Porównaj liczbę faktur przed i po scaleniu. Jeżeli była 360, a potem jest 375, najpierw sprawdź duplikaty klucza. Następnie porównaj sumę przychodu, listę braków i uzupełnione dane. To podstawowy test jakości modelu."
+        }
+      ],
+      "task": "Czy dołączenie dwóch plików miesięcznych dodaje wiersze czy kolumny?",
+      "answer": "wiersze",
+      "tip": "Dołączanie to wiersze, scalanie to klucze i kolumny.",
+      "source": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "power-pivot-dax",
+      "level": "Ekspert",
+      "title": "Power Pivot i DAX: kiedy zwykły arkusz przestaje wystarczać",
+      "lead": "Przy wielu tabelach i latach danych nie chcesz powtarzać nazw kontrahentów w każdej komórce.",
+      "sections": [
+        {
+          "heading": "Model danych zamiast jednej ogromnej tabeli",
+          "text": "Wyobraź sobie tabele Sprzedaż, Klienci i Kalendarz. W Sprzedaży przechowujesz kwoty i ID klientów, w Klientach dane firm, a w Kalendarzu opisy miesięcy. Relacje łączą je ze sobą bez ciągłego kopiowania opisów."
+        },
+        {
+          "heading": "Czym jest Power Pivot",
+          "text": "Power Pivot umożliwia budowanie modelu danych, relacji oraz miar. Dostępność edytora zależy od wersji pakietu Office i systemu. Nie zakładaj, że identyczne menu będzie na Macu, w wersji przeglądarkowej i na Windows."
+        },
+        {
+          "heading": "DAX nie działa jak C2*D2",
+          "text": "W DAX obliczenia zależą od kontekstu filtra i odwołują się do tabel oraz ich kolumn. Gdy wybierasz konkretny region, ta sama miara może zwracać inną wartość. To potężne narzędzie, ale wymaga zrozumienia relacji i kierunku filtrowania."
+        },
+        {
+          "heading": "Zacznij od kontroli biznesowej",
+          "text": "Zbuduj model z jedną tabelą faktów i dwiema tabelami wymiarów. Wpisz sumę przychodu i zweryfikuj ją niezależnie na surowych rekordach. Jeżeli wynik modelu różni się od oryginału, problemem może być relacja, filtr lub błędny klucz."
+        }
+      ],
+      "task": "W DAX miary zależą od kontekstu filtrów — tak czy nie?",
+      "answer": "tak",
+      "tip": "Nie pomyl formuł w komórkach z miarami modelu danych.",
+      "source": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "nowoczesne-formuly",
+      "level": "Ekspert",
+      "title": "Nowoczesne formuły: LET, LAMBDA i tablice dynamiczne",
+      "lead": "W nowych wersjach Excela pojedyncza formuła potrafi wykonać zadanie, do którego kiedyś potrzebne były dodatkowe kolumny.",
+      "sections": [
+        {
+          "heading": "Co daje LET",
+          "text": "LET pozwala nazwać pośrednie wyniki i używać ich wielokrotnie wewnątrz jednej formuły. Dzięki temu długi wzór może być czytelniejszy, łatwiejszy do debugowania i mniej kosztowny do przeliczenia. Zanim go zastosujesz, upewnij się, że odbiorca ma wersję obsługującą funkcję."
+        },
+        {
+          "heading": "Po co LAMBDA",
+          "text": "LAMBDA umożliwia zbudowanie własnego wielokrotnie używanego działania bez pisania makra VBA. Możesz nazwać logikę naliczania rabatu i stosować ją w raportach. Dobra funkcja ma jasne parametry, opis, kilka testów i obsługę nieprawidłowych danych."
+        },
+        {
+          "heading": "Tablice dynamiczne",
+          "text": "Funkcje takie jak FILTRUJ, SORTUJ czy UNIKATOWE mogą zwrócić całą tabelę wynikową. Komórki wyników rozlewają się w obszarze arkusza. Jeśli któraś z nich jest zajęta, Excel może pokazać błąd rozlania zamiast automatycznie nadpisać cudzą zawartość."
+        },
+        {
+          "heading": "Kompatybilność ma znaczenie",
+          "text": "Nowsze funkcje nie działają we wszystkich starszych wydaniach. Przy przekazywaniu ważnego pliku klientowi sprawdź jego wersję Excela. Jeśli rozwiązanie ma działać w Excelu 2016, czasem lepiej użyć alternatywnej metody, tabeli przestawnej albo klasycznej formuły."
+        }
+      ],
+      "task": "Czy jedna formuła FILTRUJ może zwrócić wiele komórek?",
+      "answer": "tak",
+      "tip": "Rozlany wynik może zająć sąsiednie pola.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "automatyzacja-bezpieczenstwo",
+      "level": "Ekspert",
+      "title": "Automatyzacja i bezpieczeństwo: oszczędzaj czas bez ryzyka",
+      "lead": "Najlepsza automatyzacja to taka, której wynik potrafisz przewidzieć i odtworzyć.",
+      "sections": [
+        {
+          "heading": "Najpierw powtarzalny proces",
+          "text": "Zanim zbudujesz makro, opisz czynności zwykłym językiem: import, walidacja, wyliczenie, raport, kontrola. Jeżeli kolejne kroki są niejasne, automatyzacja jedynie powtórzy niejasny proces szybciej i na większej liczbie danych."
+        },
+        {
+          "heading": "Makra i VBA",
+          "text": "Makra mogą wykonywać wiele działań w jednym uruchomieniu, a VBA pozwala pisać kod dla klasycznych aplikacji Office. To narzędzie potężne, ale złośliwy plik może próbować wykorzystać makro do niepożądanych działań. Nie włączaj zawartości w dokumentach od nieznanych nadawców."
+        },
+        {
+          "heading": "Bezpieczeństwo pliku",
+          "text": "Zastosuj zasadę minimalnych uprawnień. Osoba, która tylko czyta raport, nie potrzebuje prawa do nadpisywania formuł. Przy pracy z danymi płacowymi lub osobowymi używaj zatwierdzonych kanałów i nie kopiuj prawdziwych danych do publicznych symulatorów."
+        },
+        {
+          "heading": "Kontrola eksperta na końcu",
+          "text": "Automatyczny raport powinien mieć datę, identyfikator źródła, liczbę poprawnych i błędnych rekordów, wersję założeń oraz sumę kontrolną. Uzgodnij wynik z niezależną metodą i dopiero potem wyślij go odbiorcy. To różnica między efektownym narzędziem a odpowiedzialną analizą."
+        }
+      ],
+      "task": "Czy wolno automatycznie włączać makra z nieznanych załączników?",
+      "answer": "nie",
+      "tip": "W razie wątpliwości skontaktuj się z IT.",
+      "source": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    }
+  ]
+}
