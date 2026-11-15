@@ -31,6 +31,10 @@ jobs:
           run: node scripts/audit-course-standards.mjs --enforce
         - name: Verify content, exercises and protected course access
           run: node scripts/check-content-consistency.mjs
+        - name: Verify Excel currency calculations and spreadsheet navigation
+          run: node scripts/test-excel-currency.mjs
+        - name: Verify Excel function atlas and detailed PDF guide
+          run: node --test scripts/test-excel-master-guide.mjs
         - name: Verify course finding with Anielka
           run: node scripts/test-anielka.mjs
         - name: Verify meaning and uniqueness of all 80 icons
