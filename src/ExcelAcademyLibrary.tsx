@@ -79,6 +79,7 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
      <View style={{flex:1,borderLeftWidth:2,borderColor:'#a5c4af',paddingLeft:13,paddingBottom:12,gap:5}}>
       <Text style={{fontSize:15,color:ink,fontWeight:'900'}}>{entry.title}</Text>
       <Text style={{fontSize:13,lineHeight:21,color:muted}}>{entry.description}</Text>
+      <Source url={entry.reference} label={'Sprawdź źródło wydarzenia: '+entry.year}/>
      </View>
     </View>)}
     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Ciekawostka: Excel ma ponad 40 lat, ale główny pomysł nie zmienił się od początku — zmieniasz liczbę, a arkusz może przeliczyć zależne wyniki.</Text>
