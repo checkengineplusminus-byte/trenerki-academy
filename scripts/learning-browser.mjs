@@ -61,6 +61,9 @@ async function installFixture(page,catalog){
   return progress.get(slug);
  };
  await page.addInitScript(({user})=>{
+  // Simulate a learner who rejected optional advertising cookies before opening the course.
+  // The consent banner is tested separately and must not cover lesson controls in this fixture.
+  localStorage.setItem('trenerki_ads_consent_v1','no');
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({
    access_token:'test-access-token',refresh_token:'test-refresh-token',expires_at:Math.floor(Date.now()/1000)+3600,
    expires_in:3600,token_type:'bearer',user,
