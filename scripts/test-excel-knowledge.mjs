@@ -85,3 +85,26 @@ test('Browser UI is accessible and never pretends bonus chapters are formal cert
  assert(illustrated.includes('<ExcelAcademyLibrary'),'Library not connected to course');
  assert(orientation.includes("'excel-skroty'"),'Excel onboarding not preserved');
 });
+
+
+test('First-day entry provides TWO distinct novice environments and checks evidence, not Next clicks',()=>{
+ const ui=read('src/ExcelFirstDayPractice.tsx');
+ const app=read('app/nauka.tsx');
+ for(const marker of ['Budżet domowy','Wydatki parafii','Zakupy spożywcze','Ogrzewanie sali','excel-first-success','excel-first-step','excel-first-error','Sprawdź wykonanie','=B2*C2','=SUMA(D2:D4)'])
+  assert(ui.includes(marker),'Missing independent beginner context or exercise: '+marker);
+ assert(ui.includes('selected===0')&&ui.includes('count(rows[0].amount)===3'),'Must verify actual selections and edits');
+ assert(ui.includes('count(input)===total'),'Must check calculated totals rather than simple click-through');
+ assert(ui.includes('nie zapisują się na Twoim dysku'),'Do not pretend to access the user's PC');
+ const entrance=app.indexOf("<ExcelFirstDayPractice/>");
+ const orientation=app.indexOf("<SoftwareOrientation slug={slug}");
+ assert(entrance>=0&&orientation>=0&&entrance<orientation,'Hands-on beginner orientation should precede expert software text');
+ for(const [file,expected] of [
+  ['public/academy/assets/excel-firstday-home.csv','Zakupy spozywcze;2;45'],
+  ['public/academy/assets/excel-firstday-parish.csv','Ogrzewanie sali;2;180']
+ ]){
+  const raw=read(file);
+  assert(raw.startsWith('\uFEFF'),'Excel CSV should be UTF-8 BOM: '+file);
+  assert(raw.includes(expected),'Beginner CSV is missing fixture: '+file);
+  assert.equal(raw.trim().split(/\r?\n/).length,4);
+ }
+});
