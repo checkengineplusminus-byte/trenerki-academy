@@ -1,4 +1,5 @@
 import React,{useEffect,useId,useRef,useState} from 'react';
+import {paperWindow} from './CadScale';
 import {dimensionGeometry,distance,outline,screenPoint,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
 
 export type SceneObject={shape:CadShape;color:string;selected?:boolean;preview?:boolean};
@@ -15,9 +16,11 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting
  const selectionDrag=useRef<{id:number;start:Point;end:Point;remove:boolean}|null>(null);
  const tapShape=useRef<{pointerId:number;shapeId:number;remove:boolean}|null>(null);
  const [selectionWindow,setSelectionWindow]=useState<{start:Point;end:Point}|null>(null);
- const hatch=useId();
+ const hatch=useId(),paperClip=useId();
  const project=(point:Point)=>screenPoint(point,camera,size);
  const w=Math.max(1,size.width),h=Math.max(1,size.height);
+ const paper=paperWindow(size);
+ const paperW=paper.width,paperH=paper.height,paperX=paper.x,paperY=paper.y;
  const origin=project({x:0,y:0});
  const step=Math.pow(10,Math.floor(Math.log10(65*camera.unitsPerPixel)))/camera.unitsPerPixel;
  const gridStep=step<23?step*5:step;
@@ -117,9 +120,15 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting
   }}
   onPointerCancel={()=>{drag.current=null;tapShape.current=null;selectionDrag.current=null;setSelectionWindow(null);onMove(undefined);}}
   onPointerLeave={()=>{if(!drag.current)onMove(undefined);}}>
-  <defs><pattern id={hatch} width="11" height="11" patternUnits="userSpaceOnUse"><path d="M-3 3 3-3 M0 11 11 0 M8 14 14 8" stroke={layout?'#81949b':'#759caa'} strokeWidth="1"/></pattern></defs>
-  {layout?<g><rect x="12" y="10" width={w-24} height={h-20} fill="#fff" stroke="#bac8d0"/><rect x="23" y="21" width={w-46} height={h-42} fill="none" stroke="#d5dfe5"/>
-   <text x={w-29} y={h-28} textAnchor="end" fill="#455e72" fontSize="11">Arkusz 1 · Model 2D</text></g>:grid&&<g stroke="#2b3f4c" strokeWidth="1">
+  <defs>
+   <pattern id={hatch} width="11" height="11" patternUnits="userSpaceOnUse"><path d="M-3 3 3-3 M0 11 11 0 M8 14 14 8" stroke={layout?'#81949b':'#759caa'} strokeWidth="1"/></pattern>
+   <clipPath id={paperClip}><rect x={paperX+8} y={paperY+8} width={Math.max(1,paperW-16)} height={Math.max(1,paperH-16)}/></clipPath>
+  </defs>
+  {layout?<g>
+   <rect x={paperX} y={paperY} width={paperW} height={paperH} fill="#fff" stroke="#bac8d0"/>
+   <rect x={paperX+8} y={paperY+8} width={Math.max(1,paperW-16)} height={Math.max(1,paperH-16)} fill="none" stroke="#d5dfe5"/>
+   <text x={paperX+paperW-13} y={paperY+paperH-14} textAnchor="end" fill="#455e72" fontSize="11">A3 · 420 × 297 mm · rzutnia</text>
+  </g>:grid&&<g stroke="#2b3f4c" strokeWidth="1">
     {Array.from({length:Math.ceil(w/gridStep)},(_,i)=>line({x:gridX+i*gridStep,y:0},{x:gridX+i*gridStep,y:h},{key:'x'+i}))}
     {Array.from({length:Math.ceil(h/gridStep)},(_,i)=>line({x:0,y:gridY+i*gridStep},{x:w,y:gridY+i*gridStep},{key:'y'+i}))}
    </g>}
@@ -127,7 +136,7 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting
    {origin.y>=0&&origin.y<=h&&line({x:0,y:origin.y},{x:w,y:origin.y})}
    {origin.x>=0&&origin.x<=w&&line({x:origin.x,y:0},{x:origin.x,y:h})}
   </g>}
-  {objects.map(object)}
+  <g clipPath={layout?'url(#'+paperClip+')':undefined}>{objects.map(object)}</g>
   {selectionWindow&&!layout&&(()=>{
    const a=selectionWindow.start,b=selectionWindow.end,crossing=b.x<a.x;
    return <rect data-testid="cad-selection-window" x={Math.min(a.x,b.x)} y={Math.min(a.y,b.y)}

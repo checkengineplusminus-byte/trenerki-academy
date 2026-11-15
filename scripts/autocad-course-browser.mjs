@@ -189,6 +189,19 @@ for(const mobile of [false,true]){
   const scales=cad.getByTestId('cad-layout-scale');await scales.waitFor();
   await scales.getByRole('button',{name:'1:100'}).click();
   await scales.getByText(/50 mm na papierze/).waitFor();
+  await scales.getByRole('button',{name:/Skala rzutni · 1:100/}).click();
+  const scaleMenu=cad.getByTestId('cad-viewport-scale-menu');
+  await scaleMenu.waitFor();
+  await scaleMenu.getByRole('button',{name:'1:50',exact:true}).click();
+  await scales.getByText(/100 mm na papierze/).waitFor();
+  await cad.getByRole('button',{name:'Model',exact:true}).click();
+  const training=cad.getByTestId('cad-assigned-exercise');
+  await training.waitFor();
+  await training.getByRole('button',{name:'Rozpocznij zadanie tej lekcji'}).click();
+  await send('LINE');await send('0,0');await send('1000,0');await send('');
+  await training.getByRole('button',{name:'Sprawdź moje ćwiczenie'}).click();
+  await training.getByTestId('cad-exercise-feedback').getByText(/Zaliczone ćwiczenie geometrii/).waitFor();
+  console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: genuine A3 viewport-scale dropdown 1:100 → 1:50 and numerically validated lesson exercise');
   const handbook=page.getByTestId('autocad-reference-guide');
   await handbook.getByRole('button',{name:/Biblioteka AutoCAD:/}).click();
   await handbook.getByRole('button',{name:'Całe menu'}).click();
@@ -196,6 +209,9 @@ for(const mobile of [false,true]){
   await handbook.getByRole('button',{name:'Polecenia'}).click();
   await handbook.getByRole('textbox',{name:'Szukaj komendy AutoCAD'}).fill('MTEXT');
   await handbook.getByText(/MTEXT.*Tekst wielowierszowy/).waitFor();
+  await handbook.getByRole('button',{name:'Aliasy A–Z'}).click();
+  await handbook.getByRole('textbox',{name:'Szukaj komendy AutoCAD'}).fill('ZEBRA');
+  await handbook.getByText(/ZEBRA → ANALYSISZEBRA/).waitFor();
   await handbook.getByRole('button',{name:/Zwiń bibliotekę AutoCAD/}).click();
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: select ALL → group MOVE/SCALE; OSNAP modes, font preview, layout scale 1:100 and searchable Atlas');
   for(const lesson of lessons){
@@ -204,6 +220,9 @@ for(const mobile of [false,true]){
    assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Welcome screenshot must never repeat inside any practical lesson');
    assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Old repeated lecture disguised as CAD practice');
    if(n===0||[4,5,9,10,11,17,19,27,29].includes(n))await page.getByTestId('cad-workspace').waitFor();
+   const assignment=page.getByTestId('cad-assigned-exercise');
+   await assignment.waitFor();
+   await assignment.getByText('Zadanie lekcji '+(n+1)+'/30',{exact:false}).waitFor();
    const lessonMethod=page.getByTestId('autocad-lesson-method');
    await lessonMethod.waitFor();
    await lessonMethod.getByText(method[n].heading,{exact:true}).waitFor();

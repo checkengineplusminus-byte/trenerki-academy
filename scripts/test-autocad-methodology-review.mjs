@@ -43,7 +43,7 @@ test('visitor: recurring AutoCAD screenshots removed from all lesson bodies',()=
 });
 test('original interactive CAD drawing workspace is restored in relevant AutoCAD lessons',()=>{
  const src=load('app/nauka.tsx'),workspace=load('src/CadWorkspace.tsx');
- assert(src.includes('<CadWorkspace storageKey={userId}'));
+ assert(src.includes("<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId}"));
  assert(workspace.includes('testID="cad-command"'));
  assert(workspace.includes('joinCadLines(shapes,selected)'));
 });

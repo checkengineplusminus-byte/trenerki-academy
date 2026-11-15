@@ -1,112 +1,155 @@
 import React,{useMemo,useState} from 'react';
 import {Linking,Pressable,Text,TextInput,View} from 'react-native';
-import reference from '../content/autocad-reference-2026.json';
+import ref from '../content/autocad-reference-2026.json';
+import supplement from '../content/autocad-source-aliases-2026.json';
 
-type Tab='steps'|'menu'|'commands'|'keys';
+type Tab='steps'|'menu'|'commands'|'aliases'|'keys';
+type RecordItem={command:string;alias?:string;category:string;label:string;purpose:string;lab:boolean;sourceDescription?:string;note?:string};
 const ink='#183e2b',muted='#4d6754';
-const tabs:({id:Tab;label:string})[]=[
+const tabs:{id:Tab;label:string}[]=[
  {id:'steps',label:'Ćwicz krok po kroku'},
  {id:'menu',label:'Całe menu'},
  {id:'commands',label:'Polecenia'},
- {id:'keys',label:'Skróty'},
+ {id:'aliases',label:'Aliasy A–Z'},
+ {id:'keys',label:'Skróty klawiaturowe'},
 ];
+const added=supplement.entries.filter(item=>!item.inOriginalAtlas).filter((value,index,all)=>all.findIndex(x=>x.command===value.command)===index);
+const allCommands:RecordItem[]=[
+ ...ref.commands.map(cmd=>({...cmd})),
+ ...added.map(item=>({command:item.command,alias:item.alias,category:item.category,label:item.label,
+  purpose:item.explanationPL,lab:false,sourceDescription:item.sourceDescription,note:item.note})),
+];
+const old=new Set(ref.shortcuts.map(row=>row.keys.toUpperCase().replace(/\s/g,'')));
+const allKeys=[
+ ...ref.shortcuts.map(row=>({...row,description:row.purpose,source:'atlas'})),
+ ...supplement.keyboard.filter(row=>!old.has(row.keys.toUpperCase().replace(/\s/g,''))).map(row=>({keys:row.keys,purpose:row.explanationPL,
+  description:row.explanationPL,source:'lista',sourceDescription:row.sourceDescription,note:row.note})),
+];
+const detailFor=(item:RecordItem)=>{
+ const name=item.command,kind=item.category.toLocaleLowerCase('pl');
+ if(/wymiary|opis|annotate|table|style|tekst|leader/.test(kind))return {
+  start:'Wpisz '+name+' w wierszu poleceń, a następnie przeczytaj opcje na ekranie. Ustaw styl, punkt wstawienia i właściwości opisu przed zatwierdzeniem.',
+  check:'Otwórz Properties i Layout. Sprawdź, czy tekst, wysokość, jednostki i forma wymiaru są czytelne po wyeksportowaniu PDF.',
+  warning:'Nie wpisuj „ładnego” wymiaru na oko. Przekonaj się niezależnym pomiarem, że opis odpowiada geometrii.'};
+ if(/rysowanie|geometria|modelowanie/.test(kind))return {
+  start:'Uruchom '+name+' w Model Space na kopii pliku. Wskazuj punkty i parametry dokładnie w kolejności żądanej przez AutoCAD.',
+  check:'Wybierz obiekt po zakończeniu polecenia. Porównaj współrzędne, rozmiar i typ geometrii z oczekiwanym wynikiem.',
+  warning:'Nie myl zaznaczenia obiektu z aktywną komendą. W środowisku 3D upewnij się również, że pracujesz na właściwym UCS.'};
+ if(/modyfikuj|edycja|modify|zmień/.test(kind))return {
+  start:'Najpierw zaznacz obiekt lub grupę, potem wpisz '+name+'. Przeczytaj pytanie o punkt bazowy, cel lub opcję. Zatwierdź dopiero po sprawdzeniu podglądu.',
+  check:'Użyj DIST lub Properties, żeby potwierdzić, czy polecenie zmieniło położenie, kształt czy rozmiar.',
+  warning:'Przy błędnym zaznaczeniu przesuniesz lub zmienisz tylko część rysunku. Przed operacją sprawdź licznik obiektów.'};
+ if(/pliki|wydruk|file|output/.test(kind))return {
+  start:'Wykonaj '+name+' na kopii rysunku z nazwą i numerem rewizji. Zwróć uwagę na lokalizację zapisu i wymagany format pliku.',
+  check:'Zamknij lub odłącz wynik, a potem otwórz go ponownie, by upewnić się, że plik jest kompletny i czytelny.',
+  warning:'Prawidłowo zakończony eksport nie gwarantuje poprawnej skali ani kompletności XREF i czcionek.'};
+ return {
+  start:'Wpisz '+name+' w prawdziwym AutoCAD i przeczytaj dostępne opcje. Przed zmianą ustawienia zachowaj kopię roboczą i zanotuj jego wcześniejszą wartość.',
+  check:'Po zastosowaniu komendy sprawdź konkretny rezultat: wygląd widoku, aktywną warstwę, właściwość albo stan wskazanej palety.',
+  warning:'Dostępność tego polecenia może zależeć od edycji programu, zainstalowanych modułów i profilu. Nie traktuj symulatora TRENERKI jako pełnego AutoCAD.'};
+};
+const action=(label:string,onPress:()=>void,selected=false)=><Pressable key={label} accessibilityRole="button" accessibilityState={{selected}}
+  onPress={onPress} style={{paddingHorizontal:12,paddingVertical:10,minHeight:43,borderRadius:9,justifyContent:'center',
+  backgroundColor:selected?ink:'#e7f1e4',borderWidth:1,borderColor:selected?ink:'#cadbc6'}}>
+ <Text style={{fontWeight:'800',fontSize:13,color:selected?'white':ink}}>{label}</Text>
+</Pressable>;
 export default function AutoCADReferenceGuide(){
  const [open,setOpen]=useState(false),[tab,setTab]=useState<Tab>('steps');
  const [guideId,setGuideId]=useState('select'),[menu,setMenu]=useState(0);
  const [query,setQuery]=useState(''),[category,setCategory]=useState('Wszystkie'),[visible,setVisible]=useState(24);
- const categories=useMemo(()=>['Wszystkie',...new Set(reference.commands.map(cmd=>cmd.category))],[]);
- const found=useMemo(()=>{
-  const q=query.trim().toLocaleLowerCase('pl');
-  return reference.commands.filter(cmd=>(category==='Wszystkie'||category===cmd.category)&&
-   (!q||[cmd.command,cmd.alias,cmd.label,cmd.purpose,cmd.category].some(value=>value.toLocaleLowerCase('pl').includes(q))));
- },[category,query]);
- const guide=reference.walkthroughs.find(item=>item.id===guideId)||reference.walkthroughs[0];
- const info=reference.tabs[menu];
- const external=(url:string)=>void Linking.openURL(url);
- const button=(label:string,onPress:()=>void,active=false)=><Pressable key={label} accessibilityRole="button" accessibilityState={{selected:active}} onPress={onPress}
-  style={{paddingHorizontal:12,paddingVertical:10,minHeight:42,justifyContent:'center',borderRadius:10,backgroundColor:active?ink:'#e8f2e5',borderWidth:1,borderColor:active?ink:'#d0dfcc'}}>
-  <Text style={{fontSize:13,fontWeight:'800',color:active?'white':ink}}>{label}</Text>
- </Pressable>;
+ const [details,setDetails]=useState(''),[shortcutsQuery,setShortcutsQuery]=useState('');
+ const categories=useMemo(()=>['Wszystkie',...new Set(allCommands.map(cmd=>cmd.category))],[]);
+ const found=useMemo(()=>{const q=query.trim().toLocaleLowerCase('pl');
+  return allCommands.filter(cmd=>(category==='Wszystkie'||category===cmd.category)&&
+   (!q||[cmd.command,cmd.alias,cmd.label,cmd.purpose,cmd.category].some(v=>String(v||'').toLocaleLowerCase('pl').includes(q))));},[query,category]);
+ const aliases=useMemo(()=>{const q=query.trim().toLowerCase();
+  return supplement.entries.filter(row=>!q||[row.alias,row.command,row.sourceDescription,row.explanationPL].some(value=>String(value||'').toLowerCase().includes(q)));},[query]);
+ const keys=useMemo(()=>{const q=shortcutsQuery.trim().toUpperCase();
+  return allKeys.filter(row=>!q||row.keys.toUpperCase().includes(q)||row.purpose.toUpperCase().includes(q));},[shortcutsQuery]);
+ const guide=ref.walkthroughs.find(x=>x.id===guideId)||ref.walkthroughs[0],info=ref.tabs[menu];
+ const link=(url:string)=>void Linking.openURL(url);
+ const detailCard=(item:RecordItem)=>{
+  const expanded=details===item.command,ex=detailFor(item);
+  return <View key={item.category+'-'+item.command} style={{padding:12,borderRadius:10,backgroundColor:'white',gap:7}}>
+   <Pressable accessibilityRole="button" accessibilityState={{expanded}} onPress={()=>setDetails(expanded?'':item.command)} style={{gap:5}}>
+    <Text style={{fontWeight:'900',fontSize:15,color:ink}}>{item.command}{item.alias?' · '+item.alias:''} — {item.label} {expanded?'↑':'↓'}</Text>
+    <Text style={{color:muted,lineHeight:21,fontSize:13}}>{item.purpose}</Text>
+    <Text style={{fontSize:11,color:item.lab?'#267248':'#64776d',fontWeight:'800'}}>{item.lab?'Działa w naszym warsztacie 2D':'Ćwicz w Autodesk; zakres symulatora ograniczony'}</Text>
+   </Pressable>
+   {expanded&&<View testID="autocad-command-detail" style={{gap:10,padding:9,borderLeftWidth:3,borderColor:'#a6c7aa',backgroundColor:'#f5f9f2'}}>
+    <Text style={{fontWeight:'900',color:ink}}>Uruchomienie i kolejność</Text><Text style={{color:muted,lineHeight:23}}>{ex.start}</Text>
+    <Text style={{fontWeight:'900',color:ink}}>Kontrola wyniku</Text><Text style={{color:muted,lineHeight:23}}>{ex.check}</Text>
+    <Text style={{fontWeight:'900',color:ink}}>Najczęstsza pomyłka</Text><Text style={{color:muted,lineHeight:23}}>{ex.warning}</Text>
+    {item.note&&<Text style={{color:'#705823',lineHeight:21}}>{item.note}</Text>}
+    {item.sourceDescription&&<Text style={{fontSize:12,color:'#748178',lineHeight:19}}>Opis z przesłanego zestawienia (EN): {item.sourceDescription}</Text>}
+    <Pressable accessibilityRole="link" onPress={()=>link(supplement.autodeskDocs.commands)} style={{padding:8}}>
+     <Text style={{color:'#1f6745',fontWeight:'900'}}>Sprawdź szczegóły polecenia w Autodesk ↗</Text>
+    </Pressable>
+   </View>}
+  </View>;
+ };
  return <View testID="autocad-reference-guide" style={{borderColor:'#c8dcc6',borderWidth:1,borderRadius:15,backgroundColor:'#f5f9f2',marginVertical:12,overflow:'hidden'}}>
-  <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setOpen(v=>!v)}
-   style={{padding:17,gap:6,backgroundColor:'#e9f4e5'}}>
+  <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setOpen(x=>!x)} style={{padding:17,gap:6,backgroundColor:'#e9f4e5'}}>
    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{open?'Zwiń bibliotekę AutoCAD ↑':'Biblioteka AutoCAD: menu, skala, czcionki, OSNAP, skróty ↓'}</Text>
-   <Text style={{fontSize:12,lineHeight:19,color:muted}}>180 wpisów z 12 obszarów programu, 40 skrótów klawiaturowych i 8 prowadzonych ćwiczeń. Dostępne z każdej lekcji bez powtarzania całych opisów.</Text>
+   <Text style={{fontSize:12,lineHeight:19,color:muted}}>{allCommands.length} opisów poleceń, {supplement.entries.length} wierszy aliasów z przesłanej listy, {allKeys.length} skrótów i {ref.tabs.length} kart/pasków. Otwórz wybraną kartę, a następnie szczegóły funkcji.</Text>
   </Pressable>
-  {open&&<View style={{padding:15,gap:14}}>
-   <Text style={{fontSize:12,lineHeight:19,color:muted}}>Opracowanie edukacyjne na podstawie Autodesk AutoCAD 2026 na komputer. To nie jest sam program Autodesk: tylko wpisy oznaczone „Działa w pracowni” są ćwiczone w naszym warsztacie. Pełna dokumentacja obejmuje dodatkowe funkcje i wersje.</Text>
-   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-    {tabs.map(entry=>button(entry.label,()=>setTab(entry.id),entry.id===tab))}
-   </View>
-   {tab==='steps'&&<View style={{gap:13}}>
-    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Prawdziwa kolejność pracy w AutoCAD</Text>
-    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-     {reference.walkthroughs.map(entry=>button(entry.name,()=>setGuideId(entry.id),entry.id===guide.id))}
-    </View>
-    <View testID="autocad-tutorial" style={{padding:15,backgroundColor:'white',borderRadius:12,gap:13}}>
-     <Text style={{fontSize:18,color:ink,fontWeight:'900'}}>{guide.name}</Text>
-     {guide.steps.map((step,i)=><View key={i} style={{flexDirection:'row',gap:11}}>
-      <View style={{width:28,height:28,borderRadius:9,backgroundColor:'#d5e7cf',alignItems:'center',justifyContent:'center'}}>
-       <Text style={{color:ink,fontWeight:'900'}}>{i+1}</Text>
-      </View>
-      <Text style={{flex:1,fontSize:14,lineHeight:23,color:'#355343'}}>{step}</Text>
-     </View>)}
-     <Text style={{fontWeight:'900',color:'#315d40'}}>Oczekiwany wynik</Text>
-     <Text style={{color:muted,lineHeight:22}}>{guide.result}</Text>
-     <Text style={{fontWeight:'900',color:'#7a622c'}}>Typowa pomyłka</Text>
-     <Text style={{color:'#6a5531',lineHeight:22}}>{guide.mistake}</Text>
-     <Pressable accessibilityRole="link" onPress={()=>external(guide.docs)} style={{padding:10,alignSelf:'flex-start'}}>
-      <Text style={{color:'#216b45',fontWeight:'900'}}>Sprawdź instrukcję Autodesk ↗</Text>
+  {open&&<View style={{padding:15,gap:13}}>
+   <Text style={{color:muted,fontSize:12,lineHeight:20}}>Zakres: wersja AutoCAD 2026 Windows jako punkt odniesienia. Pełny Autodesk posiada więcej poleceń i zmiennych niż ten atlas. Oznaczenia „do sprawdzenia” pokazują niepewne/historyczne wpisy źródłowe. Alias (np. L) i skrót klawiaturowy (np. Ctrl+1) to różne mechanizmy.</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{tabs.map(x=>action(x.label,()=>{setTab(x.id);setVisible(24);},tab===x.id))}</View>
+   {tab==='steps'&&<View style={{gap:11}}>
+    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Nauka z rzeczywistymi przykładami</Text>
+    <View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>{ref.walkthroughs.map(x=>action(x.name,()=>setGuideId(x.id),guideId===x.id))}</View>
+    <View testID="autocad-tutorial" style={{padding:15,backgroundColor:'white',gap:12,borderRadius:12}}>
+     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{guide.name}</Text>
+     {guide.steps.map((s,i)=><Text key={i} style={{color:muted,lineHeight:24}}>{i+1}. {s}</Text>)}
+     <Text style={{color:ink,fontWeight:'900'}}>Rezultat</Text><Text style={{color:muted,lineHeight:22}}>{guide.result}</Text>
+     <Text style={{color:ink,fontWeight:'900'}}>Typowy błąd</Text><Text style={{color:muted,lineHeight:22}}>{guide.mistake}</Text>
+     <Pressable accessibilityRole="link" onPress={()=>link(guide.docs)} style={{padding:10}}>
+      <Text style={{color:'#1d6a44',fontWeight:'900'}}>Instrukcja Autodesk ↗</Text>
      </Pressable>
     </View>
    </View>}
-   {tab==='menu'&&<View style={{gap:13}}>
-    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Mapa wstążki, paneli i pasków</Text>
-    <Text style={{fontSize:13,lineHeight:22,color:muted}}>Układ kart różni się między środowiskami roboczymi, AutoCAD i AutoCAD LT. Kliknij kartę, aby zobaczyć jej sekcje i przykład działania.</Text>
-    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-     {reference.tabs.map((entry,i)=>button(entry.name,()=>setMenu(i),menu===i))}
-    </View>
-    <View testID="autocad-menu-detail" style={{backgroundColor:'white',padding:16,borderRadius:12,gap:10}}>
-     <Text style={{fontSize:18,fontWeight:'900',color:ink}}>{info.name}</Text>
-     <Text style={{fontSize:14,lineHeight:23,color:muted}}>{info.purpose}</Text>
-     <Text style={{fontWeight:'900',color:ink}}>Panele / elementy</Text>
-     <Text style={{color:muted,lineHeight:23}}>{info.panels}</Text>
-     <Text style={{fontWeight:'900',color:ink}}>Przykład ćwiczenia</Text>
-     <Text style={{color:muted,lineHeight:23}}>{info.exercise}</Text>
+   {tab==='menu'&&<View style={{gap:12}}>
+    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Mapa wstążki i menu AutoCAD</Text>
+    <View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>{ref.tabs.map((x,i)=>action(x.name,()=>setMenu(i),i===menu))}</View>
+    <View testID="autocad-menu-detail" style={{padding:15,backgroundColor:'white',borderRadius:11,gap:9}}>
+     <Text style={{color:ink,fontWeight:'900'}}>{info.name}</Text>
+     <Text style={{color:muted,lineHeight:22}}>{info.purpose}</Text>
+     <Text style={{color:ink,fontWeight:'900'}}>Panele</Text><Text style={{color:muted,lineHeight:22}}>{info.panels}</Text>
+     <Text style={{color:ink,fontWeight:'900'}}>Przykład</Text><Text style={{color:muted,lineHeight:22}}>{info.exercise}</Text>
     </View>
    </View>}
-   {tab==='commands'&&<View style={{gap:13}}>
-    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Alfabetyczny katalog funkcji i poleceń</Text>
-    <Text style={{fontSize:13,lineHeight:21,color:muted}}>Polecenia są pogrupowane według zastosowania. Aliasy mogą się różnić, jeśli ktoś zmienił acad.pgp. Znajdziesz tu również funkcje niedostępne w naszej pracowni.</Text>
-    <TextInput accessibilityLabel="Szukaj komendy AutoCAD" value={query} onChangeText={v=>{setQuery(v);setVisible(24);}}
-     placeholder="Szukaj, np. MTEXT, skala, warstwy, J, wymiar" placeholderTextColor="#789080"
-     style={{backgroundColor:'white',borderWidth:1,borderColor:'#bfd3bb',padding:13,borderRadius:10,fontSize:15,color:ink}}/>
-    <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>
-     {categories.map(entry=>button(entry,()=>{setCategory(entry);setVisible(24);},category===entry))}
-    </View>
-    <Text style={{color:muted,fontWeight:'800'}}>Znaleziono: {found.length} / {reference.commands.length}</Text>
-    {found.slice(0,visible).map(cmd=><View key={cmd.category+'-'+cmd.command} style={{backgroundColor:'white',padding:12,borderRadius:10,gap:4}}>
-     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{cmd.command}{cmd.alias?' · '+cmd.alias:''} — {cmd.label}</Text>
-     <Text style={{fontSize:13,lineHeight:20,color:muted}}>{cmd.purpose}</Text>
-     <Text style={{fontSize:11,color:cmd.lab?'#326f48':'#68776b',fontWeight:'800'}}>{cmd.lab?'Działa w pracowni TRENERKI':'Ćwicz w oryginalnym AutoCAD'}</Text>
-    </View>)}
-    {found.length>visible&&button('Pokaż kolejne '+Math.min(24,found.length-visible),()=>setVisible(n=>n+24))}
-    <Pressable accessibilityRole="link" onPress={()=>external(reference.links.commands)} style={{padding:11}}>
-     <Text style={{color:'#216b45',fontWeight:'900'}}>Pełna dokumentacja poleceń Autodesk AutoCAD 2026 ↗</Text>
+   {(tab==='commands'||tab==='aliases')&&<View style={{gap:12}}>
+    <TextInput accessibilityLabel="Szukaj komendy AutoCAD" value={query} onChangeText={v=>{setQuery(v);setVisible(24);setDetails('');}}
+     placeholder="Znajdź polecenie, alias albo temat" placeholderTextColor="#879988"
+     style={{padding:13,minHeight:46,backgroundColor:'white',borderRadius:9,borderWidth:1,borderColor:'#c4d6c2',fontSize:15,color:ink}}/>
+    {tab==='commands'&&<View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>{categories.map(x=>action(x,()=>{setCategory(x);setVisible(24);},category===x))}</View>}
+    <Text style={{fontSize:13,fontWeight:'800',color:muted}}>Znaleziono: {tab==='commands'?found.length:aliases.length}</Text>
+    {tab==='commands'?found.slice(0,visible).map(detailCard):aliases.slice(0,visible).map((x,i)=><View key={x.alias+'-'+x.command+'-'+i} style={{backgroundColor:'white',padding:12,borderRadius:9,gap:5}}>
+      <Text style={{fontWeight:'900',fontSize:15,color:ink}}>{x.alias} → {x.command}</Text>
+      <Text style={{lineHeight:22,color:muted}}>{x.explanationPL}</Text>
+      {x.note&&<Text style={{color:'#84612b',fontSize:12,lineHeight:20}}>{x.note}</Text>}
+      <Text style={{color:'#7c887e',fontSize:11,lineHeight:18}}>Oryginalna lista (EN): {x.sourceDescription}</Text>
+     </View>)}
+    {(tab==='commands'?found.length:aliases.length)>visible&&action('Pokaż kolejne '+Math.min(24,(tab==='commands'?found.length:aliases.length)-visible),()=>setVisible(x=>x+24))}
+    <Pressable accessibilityRole="link" onPress={()=>link(ref.links.commands)} style={{padding:10}}>
+     <Text style={{color:'#1e6544',fontWeight:'900'}}>Alfabetyczny indeks wszystkich poleceń Autodesk ↗</Text>
     </Pressable>
    </View>}
-   {tab==='keys'&&<View style={{gap:12}}>
-    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Skróty klawiaturowe i klawisze funkcyjne</Text>
-    <Text style={{fontSize:13,color:muted,lineHeight:22}}>Skrót klawiaturowy (Ctrl+1) i alias wpisywany w wierszu (L, M, SC) to nie to samo. W AutoCAD można zmienić przypisania w CUI/CUIx, a aliasy w acad.pgp.</Text>
-    {reference.shortcuts.map(entry=><View key={entry.keys} style={{flexDirection:'row',gap:11,padding:10,backgroundColor:'white',borderRadius:8}}>
-     <Text style={{fontSize:13,color:ink,fontWeight:'900',minWidth:115}}>{entry.keys}</Text>
-     <Text style={{fontSize:13,color:muted,lineHeight:20,flex:1}}>{entry.purpose}</Text>
+   {tab==='keys'&&<View style={{gap:10}}>
+    <Text style={{fontSize:17,color:ink,fontWeight:'900'}}>Skróty klawiaturowe i funkcyjne</Text>
+    <Text style={{fontSize:13,color:muted,lineHeight:21}}>Sprawdzaj przypisania z dokumentacją i plikami CUIx oraz PGP. Przesłana lista zawiera niektóre historyczne opisy; zaznaczyłem różnice z Autodesk 2026.</Text>
+    <TextInput accessibilityLabel="Szukaj skrótu klawiaturowego" value={shortcutsQuery} onChangeText={setShortcutsQuery}
+     placeholder="Ctrl+W, F3, OSNAP..." placeholderTextColor="#829282"
+     style={{backgroundColor:'white',padding:13,borderRadius:9,borderWidth:1,borderColor:'#b4ccb1',color:ink}}/>
+    {keys.map(x=><View key={x.keys} style={{flexDirection:'row',gap:12,padding:12,backgroundColor:'white',borderRadius:8}}>
+     <Text style={{color:ink,fontWeight:'900',minWidth:112}}>{x.keys}</Text>
+     <View style={{flex:1,gap:4}}><Text style={{color:muted,lineHeight:21}}>{x.purpose}</Text>
+      {x.note&&<Text style={{color:'#826326',lineHeight:18,fontSize:12}}>{x.note}</Text>}
+     </View>
     </View>)}
-    <Pressable accessibilityRole="link" onPress={()=>external(reference.links.keys)} style={{padding:12}}>
-     <Text style={{color:'#216b45',fontWeight:'900'}}>Pełny spis domyślnych klawiszy Autodesk ↗</Text>
-    </Pressable>
-    <Pressable accessibilityRole="link" onPress={()=>external(reference.links.aliases)} style={{padding:12}}>
-     <Text style={{color:'#216b45',fontWeight:'900'}}>Instrukcja aliasów acad.pgp i dostosowywania skrótów ↗</Text>
+    <Pressable accessibilityRole="link" onPress={()=>link(supplement.autodeskDocs.keys)} style={{padding:10}}>
+     <Text style={{fontWeight:'900',color:'#246b47'}}>Autodesk 2026 — oficjalna tabela skrótów ↗</Text>
     </Pressable>
    </View>}
   </View>}

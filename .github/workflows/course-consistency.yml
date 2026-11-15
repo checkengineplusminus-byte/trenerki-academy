@@ -26,6 +26,8 @@ jobs:
         run: node --test scripts/test-autocad-exam-bank.mjs
       - name: Verify restored AutoCAD geometry, JOIN and millimetre coordinates
         run: node --experimental-strip-types --test scripts/test-cad-restored.mjs
+      - name: Audit the complete 30-lesson AutoCAD handbook and source shortcut coverage
+        run: node --experimental-strip-types --test scripts/test-autocad-full-manual-v3.mjs
       - name: Review AutoCAD teaching quality, 30 lessons, and all-course restart
         run: node --test scripts/test-autocad-methodology-review.mjs
       - name: Check curriculum and test-only sales
