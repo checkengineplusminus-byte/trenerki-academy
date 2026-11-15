@@ -199,7 +199,7 @@ async function checkNewExcelTools(page,p,round){
   await atlas.waitFor();
   await atlas.getByRole('button',{name:'Wszystkie skróty A–Z'}).click();
   await atlas.getByTestId('excel-shortcuts-search').fill('Ctrl+T');
-  await atlas.getByRole('button',{name:/Ctrl\\+T/}).first().click();
+  await atlas.getByRole('button',{name:/Ctrl\+T/}).first().click();
   await atlas.getByText(/automatycznym rozszerzaniem danych/).first().waitFor();
   await master.getByTestId('excel-functions-open-button').click();
   await master.getByTestId('excel-master-function-search').fill('X.WYSZUKAJ');
