@@ -319,13 +319,13 @@ async function totalBeginner(browser,p,round){
   const cookie=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
   if(await cookie.isVisible().catch(()=>false))await cookie.click();
   await lab.getByRole('button',{name:'Wybierz przykład: '+(p.track==='dom'?'Budżet domowy':'Mały sklep')}).click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Wiersz 2: wskaż pierwszy produkt'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Znajdź pierwszy wiersz danych'}).waitFor();
   const check=lab.getByRole('button',{name:'Sprawdź wykonanie zadania od zera'});
   // Novice should NEVER pass just by clicking Next.
   await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await lab.getByRole('button',{name:'Wybierz pozycję '+p.first}).click();
   await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Zmień ilość pierwszego produktu'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Zmień liczbę sztuk w B2'}).waitFor();
   const amount0=lab.getByTestId('excel-first-quantity-0');
   await amount0.fill('0');await lab.getByTestId('excel-first-total').filter({hasText:'Popraw ilości'}).waitFor();
   await check.click();await lab.getByTestId('excel-first-error').waitFor();
@@ -344,7 +344,7 @@ async function totalBeginner(browser,p,round){
   await answer.fill(round===2?'=suma(d2:d4)':String(p.firstTotal));await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Zmień ilość drugiego produktu'}).waitFor();
   await lab.getByTestId('excel-first-quantity-1').fill(String(p.final2));await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Odczytaj nową sumę'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Sprawdź nową sumę'}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.secondTotal)}).waitFor();
   await answer.fill(String(p.firstTotal));await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await answer.fill(round===2?'=SUMA(D2:D4)':String(p.secondTotal));await check.click();
