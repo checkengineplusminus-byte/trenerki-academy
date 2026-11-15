@@ -10,6 +10,9 @@ on:
       - 'src/KeyboardLesson.tsx'
       - 'src/LessonIllustratedSections.tsx'
       - 'scripts/test-windows-practice.mjs'
+      - 'scripts/windows-eight-environments.mjs'
+      - 'src/HandsOnLab.tsx'
+      - 'app/nauka.tsx'
       - '.github/workflows/windows-quality.yml'
   workflow_dispatch:
 jobs:
@@ -23,3 +26,37 @@ jobs:
           node-version: 22
       - name: Sprawdź komplet 30 unikalnych misji i zabezpieczenia
         run: node --test scripts/test-windows-practice.mjs
+  two_rounds:
+    needs: content_quality
+    name: 8 środowisk × 2 cykle → IT → krytyk
+    runs-on: ubuntu-24.04
+    timeout-minutes: 19
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalacja aplikacji i testowej przeglądarki
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Eksport kursu do izolowanych testów
+        run: npx expo export --platform web --output-dir /tmp/trenerki-windows-ci
+      - name: Dwa pełne cykle QA (8 środowisk → IT → krytyk)
+        run: |
+          python3 -m http.server 8794 --directory /tmp/trenerki-windows-ci >/tmp/trenerki-windows-http.log 2>&1 &
+          sleep 2
+          node scripts/windows-eight-environments.mjs http://127.0.0.1:8794
+      - name: Raport i zrzuty QA
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-8-srodowisk-2-cykle
+          path: |
+            /tmp/trenerki-windows-two-cycles-report.json
+            /tmp/trenerki-windows-qa-round*.png
+          retention-days: 14
+          if-no-files-found: ignore
