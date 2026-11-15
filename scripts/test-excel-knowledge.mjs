@@ -51,6 +51,8 @@ test('Twelve complete bonus chapters are grounded, diverse and leave 30 certifie
  assert.equal(bonus.chapters.length,12);
  assert.equal(new Set(bonus.chapters.map(x=>x.id)).size,12);
  assert.equal(bonus.timeline.length,6);
+ assert(bonus.timeline.every(event=>/^https:\/\//.test(event.reference)),'Each historical milestone requires its own source');
+ assert(ui.includes('Sprawdź źródło wydarzenia: '),'History event source links must be visible');
  assert.deepEqual(bonus.timeline.map(x=>x.year),['1979','1982','1985','1987','2007','2025']);
  for(const c of bonus.chapters){
   assert(c.title.length>=18,'Missing title '+c.id);
