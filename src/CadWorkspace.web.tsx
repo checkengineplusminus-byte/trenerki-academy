@@ -4,7 +4,7 @@ import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
 import {add,arcData,cadCoordinates,cadNumber,contains,distance,dot,fitDrawing,isClosed,multiply,nearEdge,offsetShape,readCadPoint,
- screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
+ screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
 
 type Tool='select'|'line'|'poly'|'rect'|'circle'|'arc'|'hatch'|'move'|'copy'|'rotate'|'scale'|'mirror'|'offset'|'trim'|'dist'|'dimlinear'|'dimaligned';
 type Session={tool:Tool;points:Point[];target?:number;selecting?:boolean;amount?:number;diameter?:boolean;boundaries?:number[]};
@@ -49,7 +49,7 @@ const idle:Session={tool:'select',points:[]};
 const scalar=(text:string)=>/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)?Number(text):NaN;
 const inRange=(p:Point)=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Math.abs(p.x)<=1e9&&Math.abs(p.y)<=1e9;
 
-export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:number}){
+export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{shortcut?:string;runId:number;storageKey?:string;lessonNo?:number}){
  const {width:screenWidth}=useWindowDimensions();
  const [size,setSize]=useState<Size>({width:1,height:1}),[camera,setCamera]=useState<Camera|null>(null);
  const [drawing,setDrawing]=useState(initial),[history,setHistory]=useState<Drawing[]>([]),[future,setFuture]=useState<Drawing[]>([]);
@@ -128,6 +128,14 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
   if(tool==='poly'&&points.length>=2){endPolyline(false);return;}
   if(tool==='select')setSelected(undefined);
   resetSession();setPan(false);tell('Anulowano aktywne polecenie.');
+ }
+ function join(){
+  if(layout){tell('Połącz obiekty w przestrzeni Model.');return;}
+  const connected=joinCadLines(visible,selected);
+  if(!connected){tell('JOIN: wybierz co najmniej dwa połączone odcinki LINE na jednej warstwie.');return;}
+  updateShapes([...drawing.shapes.filter(s=>!connected.sourceIds.includes(s.id)),connected.joined]);
+  setSelected(connected.joined.id);resetSession();
+  tell('JOIN: połączono '+connected.sourceIds.length+' odcinki w '+(connected.joined.closed?'zamkniętą':'otwartą')+' polilinię. Możesz przesunąć ją przez MOVE.');
  }
  function erase(){
   if(layout)return;
@@ -251,6 +259,7 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
   }
   if(['CTRL+Y','REDO'].includes(command)){redo();return;}
   if(['E','ERASE','DELETE'].includes(command)){erase();return;}
+  if(['JOIN','J','PEDIT'].includes(command)){join();return;}
   if(['LA','LAYER'].includes(command)){setTab('home');setPanel('layers');return;}
   if(['ZOOM','Z','ZOOM E','ZOOM EXTENTS','ZE'].includes(command)){fit();return;}
   if(['PAN','P'].includes(command)){setPan(v=>!v);tell('Przesuń widok przez przeciągnięcie.');return;}
@@ -328,7 +337,7 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
  const reportedPoint=candidate?.point??last;
  return <View style={labStyles.panel} testID="cad-workspace">
   <Text style={labStyles.heading}>AutoCAD · pracownia rysunku 2D</Text>
-  <Text style={labStyles.body}>Zadanie na start. Narysuj prostokąt od 0,0 do @4200,3000. Dopasuj widok, wybierz HATCH, wskaż wnętrze i potwierdź Enterem. Potem zmierz szerokość.</Text>
+  <Text style={labStyles.body}>{lessonNo===0?'Ćwiczenie 1: wpisz LINE → 0,0 → 1000,0 → 500,800 → CLOSE. Następnie wpisz JOIN, aby otrzymać jedną polilinię, i MOVE, aby przesunąć cały trójkąt.':lessonNo===5?'Połącz trzy osobne linie trójkąta poleceniem JOIN. Sprawdź, że to jeden zamknięty obiekt; przesuń go przez MOVE.':lessonNo===9?'Narysuj RECTANG od 0,0 do @4000,3000. Zmierz boki i przekątną oraz dopasuj widok.':'Przećwicz polecenia z tej lekcji na rysunku. Możesz wpisywać współrzędne, używać wstążki oraz zaznaczać obiekty myszą.'}</Text>
   <View style={labStyles.ribbon}>
    <View style={labStyles.row}>{([['home','Home / Narzędzia główne'],['annotate','Annotate / Opisz'],['view','View / Widok']] as const).map(([id,label])=>
     <LabButton key={id} label={label} selected={tab===id} onPress={()=>setTab(id)}/>)}</View>
@@ -337,6 +346,7 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
      <LabButton key={id} label={label} selected={panel===id} onPress={()=>setPanel(id)}/>)}</View>
     {panel==='draw'&&<View style={labStyles.row}>{(['line','poly','rect','circle','arc','hatch'] as const).map(ribbonButton)}</View>}
     {panel==='modify'&&<View style={labStyles.row}>{(['move','copy','rotate','scale','mirror','offset','trim'] as const).map(ribbonButton)}
+     <LabButton label="Połącz linie · JOIN" disabled={layout} onPress={join}/>
      <LabButton label="Usuń · ERASE" disabled={!chosen||layout} onPress={erase}/>
     </View>}
     {panel==='layers'&&<View style={{gap:7}}>
