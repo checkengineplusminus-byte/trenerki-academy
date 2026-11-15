@@ -22,6 +22,7 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
  const [expanded,setExpanded]=useState(lessonNo===0),[tab,setTab]=useState<Tab>('historia');
  const [search,setSearch]=useState(''),[category,setCategory]=useState('Wszystkie'),[limit,setLimit]=useState(18);
  const [chosen,setChosen]=useState(''),[chapterId,setChapterId]=useState('historia-arkuszy');
+ const [chapterLevel,setChapterLevel]=useState('Wszystkie');
  const [answer,setAnswer]=useState(''),[feedback,setFeedback]=useState<'idle'|'wrong'|'right'>('idle'),[finished,setFinished]=useState<string[]>([]);
  useEffect(()=>{setExpanded(lessonNo===0);setTab(lessonNo===0?'historia':'slownik');setSearch('');setCategory('Wszystkie');setChosen('');setLimit(18);},[lessonNo]);
  useEffect(()=>{
@@ -37,6 +38,11 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
  ),[search,category]);
  const selected=glossary.find(t=>t.id===chosen);
  const chapter:Chapter|undefined=bonus.chapters.find(c=>c.id===chapterId);
+ const availableChapters=bonus.chapters.map((chapter,i)=>({...chapter,number:i+1})).filter(x=>
+  chapterLevel==='Wszystkie'||
+  (chapterLevel==='Od zera'&&['Historia','Od zera','Fundamenty'].includes(x.level))||
+  chapterLevel===x.level
+ );
  function chooseTab(next:Tab){setTab(next);setAnswer('');setFeedback('idle');}
  function chooseChapter(id:string){setChapterId(id);setAnswer('');setFeedback('idle');}
  function checkChapter(){
@@ -129,10 +135,20 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
     <Text style={{fontSize:18,color:ink,fontWeight:'900'}}>Dodatkowe rozdziały — pogłębiaj wiedzę</Text>
     <Text style={{fontSize:13,color:muted,lineHeight:21}}>To {bonus.chapters.length} dodatkowych rozdziałów czytania i samokontroli poza 30 zaliczanymi lekcjami. Nie zmieniają Twojego postępu ani warunków dyplomu. Wybierz temat — od historii i pierwszego dnia po DAX i automatyzację.</Text>
     <Text style={{color:'#356a49',fontWeight:'900',fontSize:12}}>Samokontrola tej sesji: {finished.length}/{bonus.chapters.length}</Text>
-    <View style={{gap:7}}>{bonus.chapters.map((item,i)=><Pressable key={item.id} accessibilityRole="button"
+    <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Wybierz etap dodatkowej nauki</Text>
+    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
+     {['Wszystkie','Od zera','Praktyka','Ekspert'].map(level=><Pressable key={level}
+      accessibilityRole="button" accessibilityLabel={'Poziom rozdziałów dodatkowych: '+level} accessibilityState={{selected:chapterLevel===level}}
+      onPress={()=>{setChapterLevel(level);setAnswer('');setFeedback('idle');}}
+      style={[chipStyle,{backgroundColor:chapterLevel===level?'#23553a':'#fff',borderColor:chapterLevel===level?'#23553a':border}]}>
+      <Text style={{color:chapterLevel===level?'#fff':ink,fontWeight:'800',fontSize:13}}>{level}</Text>
+     </Pressable>)}
+    </View>
+    <Text style={{color:muted,fontSize:12}}>Wyświetlasz {availableChapters.length} z {bonus.chapters.length} dodatkowych rozdziałów.</Text>
+    <View style={{gap:7}}>{availableChapters.map((item)=><Pressable key={item.id} accessibilityRole="button"
      accessibilityLabel={'Otwórz rozdział dodatkowy '+item.title} accessibilityState={{selected:chapterId===item.id}}
      onPress={()=>chooseChapter(item.id)} style={{minHeight:50,backgroundColor:chapterId===item.id?'#d7eadb':'#fff',borderRadius:9,borderWidth:1,borderColor:chapterId===item.id?'#7fb193':border,padding:11,gap:3}}>
-     <Text style={{fontWeight:'900',color:ink,fontSize:13}}>{finished.includes(item.id)?'✓ ':''}{String(i+1).padStart(2,'0')}. {item.title}</Text>
+     <Text style={{fontWeight:'900',color:ink,fontSize:13}}>{finished.includes(item.id)?'✓ ':''}{String(item.number).padStart(2,'0')}. {item.title}</Text>
      <Text style={{color:'#55725c',fontSize:11}}>{item.level}</Text>
     </Pressable>)}</View>
     {chapter&&<View testID="excel-bonus-chapter-detail" style={{padding:compact?11:15,borderWidth:1,borderColor:'#b4d3bb',backgroundColor:'#fff',borderRadius:12,gap:12}}>
