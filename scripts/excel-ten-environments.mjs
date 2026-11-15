@@ -382,7 +382,8 @@ async function sellerReview(r,browser){
   await page.getByText('Od podstaw do zagadnień zaawansowanych',{exact:true}).waitFor();
   const html=await page.locator('body').innerText();
   assert.match(html,/nie jest autoryzowanym szkoleniem ani certyfikacją/i,'Sales must not imply Microsoft accreditation');
-  assert.match(html,/166 zł/i,'Sales must display catalogue price with direct checkout');
+  assert.match(html,/Bezpłatny kurs: 0 zł/i,'Free Excel landing must display 0 zł without checkout');
+   assert.match(html,/Odbierz bezpłatny kurs Excel/i,'Free learners must have an enrollment action');
   const csv=await page.request.get(base+'/academy/assets/excel-practice-sales.csv');
   assert.equal(csv.status(),200,'Sales promises actionable downloadable training data');
   const content=await csv.text();
