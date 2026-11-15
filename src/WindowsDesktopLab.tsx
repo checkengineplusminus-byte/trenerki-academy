@@ -95,7 +95,15 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
    case 'WIN+←':moveWindow('left');break;
    case 'WIN+→':moveWindow('right');break;
    case 'WIN+↑':moveWindow('max');break;
-   case 'WIN+↓':moveWindow('normal');break;
+   case 'WIN+↓':{
+    const focusedWindow=desktop.windows.find(w=>w.app===active);
+    if(!focusedWindow){setStatus('Najpierw wybierz otwarte okno.');break;}
+    if(focusedWindow.position==='normal'){
+     updateDesktop(d=>({...d,windows:d.windows.map(w=>w.app===active?{...w,minimized:true}:w)}));
+     setStatus('Aktywne okno zminimalizowano. Ponownie otworzysz je z paska zadań.');
+    }else moveWindow('normal');
+    break;
+   }
    case 'WIN+D':setShowDesktop(v=>!v);setStart(false);setTaskView(false);setStatus(showDesktop?'Przywrócono okna.':'Pokazano pulpit, okna nadal są otwarte.');break;
    case 'WIN+M':updateDesktop(d=>({...d,windows:d.windows.map(w=>({...w,minimized:true}))}));setStatus('Wszystkie okna zminimalizowane — aplikacje nie zostały zamknięte.');break;
    case 'WIN+SHIFT+M':updateDesktop(d=>({...d,windows:d.windows.map(w=>({...w,minimized:false}))}));setShowDesktop(false);setStatus('Przywrócono zminimalizowane okna.');break;
@@ -112,10 +120,19 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
    case 'WIN+E':openApp('files');break;
    case 'WIN+I':openApp('settings');break;
    case 'WIN+S':setStart(true);setStatus('Otworzono wyszukiwanie w demonstracyjnym menu Start.');break;
-   case 'WIN+CTRL+F4':
+   case 'WIN+CTRL+F4':{
     if(desktops.length===1){setStatus('Nie można zamknąć ostatniego pulpitu.');break;}
-    setDesktops(old=>old.filter((_,i)=>i!==index));
-    setIndex(Math.max(0,index-1));setTaskView(false);setStatus('Zamknięto pulpit ćwiczebny; to nie zamyka aplikacji w Twoim Windows.');break;
+    const destination=index===0?1:index-1;
+    const removed=desktops[index];
+    setDesktops(old=>old.map((d,i)=>{
+     if(i!==destination)return d;
+     const moving=removed.windows.filter(w=>!d.windows.some(known=>known.app===w.app));
+     return {...d,windows:[...d.windows,...moving],focused:d.focused||removed.focused};
+    }).filter((_,i)=>i!==index));
+    setIndex(index===0?0:index-1);setTaskView(false);setShowDesktop(false);
+    setStatus('Zamknięto pulpit ćwiczebny. Otwarte aplikacje przeniesiono na sąsiedni pulpit.');
+    break;
+   }
    default:setStatus('Ten skrót nie jest modelowany w tej demonstracji. Użyj instrukcji „Sprawdź na swoim komputerze” poniżej.');
   }
  }
