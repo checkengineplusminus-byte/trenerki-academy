@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {View,ActivityIndicator,Platform} from 'react-native';
-import {Link,Slot,Stack,usePathname} from 'expo-router';
+import {Link,Slot,Stack,usePathname,Redirect} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
@@ -43,6 +43,7 @@ function AccountLayout(){
   return()=>{mounted=false;subscription.unsubscribe()};
  },[]);
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
+ if(!signedIn&&pathname==='/nauka')return <Redirect href="/konto"/>;
  return <View style={{flex:1}}>
   {signedIn&&['/ksiegowosc','/biuro-ksiegowe','/slownik-ksiegowego','/dane-biura','/formularze-ksiegowego','/majatek-ksiegowy'].includes(pathname)&&<View style={{paddingVertical:10,paddingHorizontal:20,backgroundColor:'#eaf3df',gap:8}}><Link href="/sciezka-ksiegowosci" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Od czego zacząć? Ścieżka nauki krok po kroku →</Link><Link href="/formularze-ksiegowego" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Formularze — bezpłatne oryginały i ćwiczenia →</Link><Link href="/dane-biura" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Dane firmy, NIP, REGON, KRS i faktura z danymi stron →</Link><Link href="/majatek-ksiegowy" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Majątek: przyjęcie, amortyzacja i likwidacja →</Link></View>}
   <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
