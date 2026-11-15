@@ -42,7 +42,7 @@ test('SUMA.WARUNKÓW must enforce TWO criteria, not only one',()=>{
  assert.equal(sumIfs(fixture.rows,'Północ','Materiały'),3125);
  assert.equal(sumIfs(fixture.rows,'Północ','Usługi'),3960);
  assert.equal(fixture.rows.filter(x=>x.region==='Północ'&&x.category==='Materiały').length,3);
- assert.equal(answer(15),'3');
+ assert.equal(answer(15),'3125');
  const edited=fixture.rows.map(r=>r.invoice==='FV-001'?{...r,quantity:13}:r);
  assert.equal(sumIfs(edited,'Północ','Materiały'),3210);
  assert.equal(total(edited),28330);
@@ -56,6 +56,10 @@ test('Exact X.WYSZUKAJ cannot silently substitute missing records with zero',()=
  const duplicate=findInvoice([...fixture.rows,fixture.rows[0]],'FV-001');
  assert.deepEqual(duplicate,{kind:'duplicate',matches:2});
  assert.equal(answer(24),'1155');
+ assert.equal(answer(20),'9109');
+ assert.equal(answer(21),'FV-019');
+ assert.equal(answer(26),'-853,65');
+ assert.equal(answer(17),'Centrum');
 });
 test('Pivot groups reconcile completely to source totals and refresh after mutation',()=>{
  const grouped=pivot(fixture.rows,'region');
@@ -63,7 +67,7 @@ test('Pivot groups reconcile completely to source totals and refresh after mutat
  assert.equal(grouped.reduce((n,x)=>n+x.value,0),total(fixture.rows));
  assert.equal(pivot(fixture.rows,'month').length,3);
  assert.equal(pivot(fixture.rows,'category','count').reduce((n,x)=>n+x.value,0),18);
- assert.equal(answer(25),'3');
+ assert.equal(answer(25),'28245');
 });
 test('Sensitivity analysis changes margin, NOT revenue; aggregates independently',()=>{
  const base=scenario(fixture.rows,0),up=scenario(fixture.rows,15);
