@@ -174,11 +174,14 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
   const width=w.position==='max'?'98%':w.position==='normal'?'77%':'48%';
   const height=w.position==='normal'?'79%':'94%';
   return <View key={w.app} testID={'win11-window-'+w.app} style={{position:'absolute',left: left as any,top:w.position==='normal'?24:3,width:width as any,height:height as any,zIndex:w.app===active?5:3,backgroundColor:'#f8fbff',borderWidth:1,borderColor:w.app===active?'#74b6ef':'#b7ccde',borderRadius:9,overflow:'hidden',shadowColor:'#0a2751',shadowOpacity:.19,shadowRadius:13,elevation:3}}>
-   <Pressable onPress={()=>focus(w.app)} style={{minHeight:31,flexDirection:'row',alignItems:'center',paddingHorizontal:9,gap:7,backgroundColor:'#eef3fb'}}>
-    <Text style={{fontSize:12}}>{icons[w.app]}</Text><Text numberOfLines={1} style={{fontSize:11,color:'#263e59',fontWeight:'800',flex:1}}>{labels[w.app]}</Text>
+   <View style={{minHeight:31,flexDirection:'row',alignItems:'center',paddingHorizontal:9,gap:7,backgroundColor:'#eef3fb'}}>
+    <Pressable accessibilityRole="button" accessibilityLabel={'Aktywuj okno '+labels[w.app]} onPress={()=>focus(w.app)}
+      style={{flexDirection:'row',alignItems:'center',gap:7,flex:1,minHeight:31}}>
+      <Text style={{fontSize:12}}>{icons[w.app]}</Text><Text numberOfLines={1} style={{fontSize:11,color:'#263e59',fontWeight:'800',flex:1}}>{labels[w.app]}</Text>
+    </Pressable>
     <Pressable accessibilityLabel={'Minimalizuj '+labels[w.app]} onPress={()=>updateDesktop(d=>({...d,windows:d.windows.map(p=>p.app===w.app?{...p,minimized:true}:p)}))} style={{paddingHorizontal:7,paddingVertical:4}}><Text style={{color:'#355577'}}>—</Text></Pressable>
     <Pressable accessibilityRole="button" accessibilityLabel={'Zamknij '+labels[w.app]} onPress={()=>closeWindow(w.app)} style={{paddingHorizontal:7,paddingVertical:4}}><Text style={{color:'#a43343',fontWeight:'900'}}>×</Text></Pressable>
-   </Pressable>
+   </View>
    {w.app==='files'?<View style={{flex:1,padding:compact?6:10,backgroundColor:'#fff'}}>
       <Text numberOfLines={1} style={{fontSize:compact?9:11,color:'#536d86',marginBottom:8}}>←  →  ↑     Strona główna › {desktop.name} › Dokumenty</Text>
       <Text style={{fontSize:compact?11:13,fontWeight:'800',color:'#284a6a',marginBottom:7}}>Szybki dostęp</Text>
@@ -282,6 +285,6 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
   </View>
   <Pressable accessibilityRole="button" accessibilityState={{expanded:showExplorer}} onPress={()=>setShowExplorer(v=>!v)} style={[actionStyle,{backgroundColor:'#f9fcff'}]}><Text style={actionText}>{showExplorer?'Ukryj ćwiczenia plików ▴':'Otwórz dodatkową pracownię Eksploratora plików ▾'}</Text></Pressable>
   {showExplorer&&<ExplorerWorkspace shortcut={shortcut} runId={runId}/>}
-  <Text style={{fontSize:11,lineHeight:17,color:'#5b748e'}}>Autorska symulacja Windows 11, nie oryginalny system ani zrzut ekranu. Rzeczywisty wygląd może zależeć od wersji Windows i personalizacji. Skrótów systemowych celowo nie przechwytujemy w przeglądarce.</Text>
+  <Text style={{fontSize:11,lineHeight:17,color:'#5b748e'}}>Autorska symulacja Windows 11, nie oryginalny system ani zrzut ekranu. Pliki z ćwiczebnego Notatnika istnieją tylko podczas tej sesji lekcji — nie zapisują się na Twoim dysku i znikają po odświeżeniu strony. Rzeczywisty wygląd może zależeć od wersji Windows i personalizacji. Skrótów systemowych celowo nie przechwytujemy w przeglądarce.</Text>
  </View>;
 }
