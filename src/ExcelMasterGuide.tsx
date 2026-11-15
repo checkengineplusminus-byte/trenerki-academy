@@ -26,7 +26,7 @@ export default function ExcelMasterGuide({lessonNo=0}:{lessonNo?:number}){
  const visibleChapters=chapters.filter(c=>level==='Wszystkie'||c.level===level);
  const results=useMemo(()=>allFunctions.filter(item=>
   (category==='Wszystkie'||item.category===category)&&
-  (!query.trim()||normalize(item.code+' '+item.name+' '+item.category).includes(normalize(query.trim())))
+  (!query.trim()||normalize(item.code+' '+item.name+' '+item.category).includes(normalize(query.trim().replace(/wyszukaj\.x/gi,'X.WYSZUKAJ').replace(/^rata$/i,'PMT'))))
  ),[category,query]);
  const chosen=chapters.find(c=>c.id===openChapter);
  const pill=(selected:boolean)=>({minHeight:40,paddingHorizontal:11,paddingVertical:8,borderRadius:9,borderWidth:1,
@@ -41,6 +41,16 @@ export default function ExcelMasterGuide({lessonNo=0}:{lessonNo?:number}){
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>To niezależny kurs TRENERKI, a nie oficjalne szkolenie ani certyfikacja Microsoft. Część operacji wykonujesz w prawdziwym Excelu; szkoleniowy symulator odtwarza tylko wybrane funkcje.</Text>
    <Text style={{color:'#256347',fontWeight:'900',fontSize:14}}>{expanded?'Zwiń podręcznik i wróć do lekcji ▴':'Otwórz szczegółowy podręcznik i wyszukiwarkę funkcji ▾'}</Text>
   </Pressable>
+  <View style={{paddingHorizontal:mobile?12:17,paddingTop:5,flexDirection:'row',flexWrap:'wrap',gap:8}}>
+   <Pressable testID="excel-shortcuts-open-button" accessibilityRole="button" onPress={()=>{setExpanded(true);setTab('shortcuts')}}
+    style={{backgroundColor:'#dcefe1',borderColor:'#a9d2b5',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
+    <Text style={{color:'#214e37',fontSize:13,fontWeight:'900'}}>Pokaż 70 skrótów klawiaturowych</Text>
+   </Pressable>
+   <Pressable testID="excel-functions-open-button" accessibilityRole="button" onPress={()=>{setExpanded(true);setTab('functions')}}
+    style={{backgroundColor:'#dcefe1',borderColor:'#a9d2b5',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
+    <Text style={{color:'#214e37',fontSize:13,fontWeight:'900'}}>Pokaż wszystkie 514 funkcji</Text>
+   </Pressable>
+  </View>
   <Pressable accessibilityRole="link" accessibilityLabel="Otwórz prawdziwy Microsoft Excel w przeglądarce"
    onPress={()=>link('https://www.microsoft.com/pl-pl/microsoft-365/excel')}
    style={{marginHorizontal:mobile?12:17,marginVertical:10,padding:11,minHeight:48,borderRadius:9,backgroundColor:'white',borderWidth:1,borderColor:outline,justifyContent:'center'}}>
