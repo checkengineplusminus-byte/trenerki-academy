@@ -271,7 +271,7 @@
     {
       "lesson_no": 2,
       "title": "Co to jest DWG, DXF i PDF?",
-      "estimatedWords": 1010,
+      "estimatedWords": 1022,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -315,7 +315,7 @@
               "command": "QSAVE",
               "alias": "Ctrl+S",
               "heading": "Szybki zapis",
-              "explanation": "Zapisuje bieżący DWG",
+              "explanation": "Szybko zapisuje aktualnie otwarty rysunek, dlatego przed nadpisaniem sprawdź jego nazwę, folder i bieżącą rewizję.",
               "procedure": "Wykonaj operację na kopii oznaczonej rewizją, sprawdź zapis lub podgląd wyniku, a następnie otwórz nowy plik poza bieżącym widokiem.",
               "case": "W przykładzie „Co to jest DWG, DXF i PDF?” użyj QSAVE w odpowiednim momencie: Załóż folder Kurs_AutoCAD. W notatce zaplanuj nazwy trzech plików: panel_A.dwg do edycji, panel_A.pdf do odczytu i panel_A.dxf tylko wtedy, gdy odbiorca wymaga wymiany w tym formacie. Z",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -799,7 +799,7 @@
     {
       "lesson_no": 6,
       "title": "Co znaczy Enter i Esc?",
-      "estimatedWords": 910,
+      "estimatedWords": 931,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -852,7 +852,7 @@
               "command": "RECTANG",
               "alias": "REC",
               "heading": "Prostokąt",
-              "explanation": "Prostokątny obrys",
+              "explanation": "Tworzy zamkniętą polilinię prostokątną określoną dwoma przeciwległymi narożnikami i ich współrzędnymi.",
               "procedure": "Uruchom polecenie w Model Space, odczytaj następny prompt i dopiero wtedy wprowadź punkty. Obejrzyj powstały typ obiektu we Właściwościach.",
               "case": "W przykładzie „Co znaczy Enter i Esc?” użyj RECTANG w odpowiednim momencie: Uruchom _LINE, wskaż trzy różne punkty i naciśnij Esc. Następnie użyj Cofnij i porównaj rysunek. W drugiej próbie uruchom _RECTANG, wskaż tylko pierwszy narożnik i naciśnij Esc.",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -861,7 +861,7 @@
               "command": "UNDO",
               "alias": "U",
               "heading": "Cofnij",
-              "explanation": "Odwraca operację",
+              "explanation": "Cofa ostatnio wykonaną operację zapisaną w historii rysunku, a nie wszystkie działania bieżącej sesji.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Co znaczy Enter i Esc?” użyj UNDO w odpowiednim momencie: Uruchom _LINE, wskaż trzy różne punkty i naciśnij Esc. Następnie użyj Cofnij i porównaj rysunek. W drugiej próbie uruchom _RECTANG, wskaż tylko pierwszy narożnik i naciśnij Esc.",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -1195,7 +1195,7 @@
     {
       "lesson_no": 9,
       "title": "Pierwszy szkic 4 na 3 metry",
-      "estimatedWords": 941,
+      "estimatedWords": 961,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -1239,7 +1239,7 @@
               "command": "RECTANG",
               "alias": "REC",
               "heading": "Prostokąt",
-              "explanation": "Prostokątny obrys",
+              "explanation": "Tworzy zamkniętą polilinię prostokątną określoną dwoma przeciwległymi narożnikami i ich współrzędnymi.",
               "procedure": "Uruchom polecenie w Model Space, odczytaj następny prompt i dopiero wtedy wprowadź punkty. Obejrzyj powstały typ obiektu we Właściwościach.",
               "case": "W przykładzie „Pierwszy szkic 4 na 3 metry” użyj RECTANG w odpowiednim momencie: W nowym rysunku milimetrowym wpisz _RECTANG, podaj 0,0 i @4000,3000. Wykonaj _ZOOM z opcją _Extents. Poleceniem _DIST zmierz dwa boki i przekątną, przyciągając do narożników. Zapisz pli",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -1257,7 +1257,7 @@
               "command": "AREA",
               "alias": "AA",
               "heading": "Powierzchnia",
-              "explanation": "Pole i obwód",
+              "explanation": "Mierzy pole powierzchni i obwód obiektu lub obszaru; do poprawnego rezultatu potrzebujesz właściwej geometrii.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Pierwszy szkic 4 na 3 metry” użyj AREA w odpowiednim momencie: W nowym rysunku milimetrowym wpisz _RECTANG, podaj 0,0 i @4000,3000. Wykonaj _ZOOM z opcją _Extents. Poleceniem _DIST zmierz dwa boki i przekątną, przyciągając do narożników. Zapisz pli",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -1327,7 +1327,7 @@
     {
       "lesson_no": 10,
       "title": "LINE, PLINE, RECTANG i CIRCLE",
-      "estimatedWords": 955,
+      "estimatedWords": 974,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -1389,7 +1389,7 @@
               "command": "RECTANG",
               "alias": "REC",
               "heading": "Prostokąt",
-              "explanation": "Prostokątny obrys",
+              "explanation": "Tworzy zamkniętą polilinię prostokątną określoną dwoma przeciwległymi narożnikami i ich współrzędnymi.",
               "procedure": "Uruchom polecenie w Model Space, odczytaj następny prompt i dopiero wtedy wprowadź punkty. Obejrzyj powstały typ obiektu we Właściwościach.",
               "case": "W przykładzie „LINE, PLINE, RECTANG i CIRCLE” użyj RECTANG w odpowiednim momencie: W jednym pliku narysuj LINE o długości 1000, zamkniętą PLINE z trzema wierzchołkami, RECTANG 1000 × 600 i CIRCLE o środku 2000,1000 oraz promieniu 300. Wskazuj każdy obiekt osobno i odc",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -1407,7 +1407,7 @@
               "command": "ARC",
               "alias": "A",
               "heading": "Łuk",
-              "explanation": "Łuk przez punkty",
+              "explanation": "Tworzy łuk kołowy na podstawie punktów, kąta lub promienia, zależnie od wybranej opcji.",
               "procedure": "Uruchom polecenie w Model Space, odczytaj następny prompt i dopiero wtedy wprowadź punkty. Obejrzyj powstały typ obiektu we Właściwościach.",
               "case": "W przykładzie „LINE, PLINE, RECTANG i CIRCLE” użyj ARC w odpowiednim momencie: W jednym pliku narysuj LINE o długości 1000, zamkniętą PLINE z trzema wierzchołkami, RECTANG 1000 × 600 i CIRCLE o środku 2000,1000 oraz promieniu 300. Wskazuj każdy obiekt osobno i odc",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -1855,7 +1855,7 @@
     {
       "lesson_no": 14,
       "title": "ZOOM, PAN i regeneracja",
-      "estimatedWords": 908,
+      "estimatedWords": 923,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -1908,7 +1908,7 @@
               "command": "PAN",
               "alias": "P",
               "heading": "Przesuń widok",
-              "explanation": "Przemieszcza kamerę",
+              "explanation": "Przesuwa widok roboczy bez zmiany współrzędnych ani rzeczywistej geometrii obiektów.",
               "procedure": "Zmieniaj ustawienia podczas oglądania jednego odcinka o znanej długości; kontroluj, czy wynik DIST lub współrzędne zmieniły się rzeczywiście.",
               "case": "W przykładzie „ZOOM, PAN i regeneracja” użyj PAN w odpowiednim momencie: Zapisz odczytaną długość boku pokoju. Przybliż rysunek kółkiem myszy, przesuń widok i ponownie zmierz ten bok. Wpisz _ZOOM, wybierz _Extents i sprawdź, czy widzisz cały rysunek. Polecen",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -1917,7 +1917,7 @@
               "command": "REGEN",
               "alias": "RE",
               "heading": "Regeneruj",
-              "explanation": "Odświeża rysunek",
+              "explanation": "Regeneruje rysunek i aktualizuje wyświetlanie obiektów po zmianach ustawień.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „ZOOM, PAN i regeneracja” użyj REGEN w odpowiednim momencie: Zapisz odczytaną długość boku pokoju. Przybliż rysunek kółkiem myszy, przesuń widok i ponownie zmierz ten bok. Wpisz _ZOOM, wybierz _Extents i sprawdź, czy widzisz cały rysunek. Polecen",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -1987,7 +1987,7 @@
     {
       "lesson_no": 15,
       "title": "Bloki, INSERT i XREF",
-      "estimatedWords": 938,
+      "estimatedWords": 950,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2067,7 +2067,7 @@
               "command": "XREF",
               "alias": "XR",
               "heading": "Odnośniki zewnętrzne",
-              "explanation": "Menedżer podkładów",
+              "explanation": "Łączy bieżący DWG z innymi plikami jako odniesienia zewnętrzne i wymaga kontroli ich ścieżek.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Bloki, INSERT i XREF” użyj XREF w odpowiednim momencie: Narysuj prosty symbol słupka: kwadrat 50 × 50. Poleceniem _BLOCK nadaj mu nazwę SLUPEK i wybierz punkt bazowy w środku. Wstaw trzy egzemplarze. Następnie zapisz osobny plik podklad.dwg ",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -2119,7 +2119,7 @@
     {
       "lesson_no": 16,
       "title": "Wymiarowanie i adnotacje",
-      "estimatedWords": 945,
+      "estimatedWords": 954,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2181,7 +2181,7 @@
               "command": "DIMLINEAR",
               "alias": "DLI",
               "heading": "Wymiar liniowy",
-              "explanation": "Poziomy lub pionowy",
+              "explanation": "Tworzy wymiar poziomy lub pionowy między wskazanymi punktami, zgodny z aktualnym stylem.",
               "procedure": "Zwróć uwagę na styl, wysokość tekstu, jednostki oraz skalę anotacji. Podgląd na ekranie nie wystarczy bez sprawdzenia wyglądu na papierze.",
               "case": "W przykładzie „Wymiarowanie i adnotacje” użyj DIMLINEAR w odpowiednim momencie: Narysuj odcinek 1000 mm i dodaj wymiar. Zmierz ten sam odcinek niezależnie poleceniem _DIST. Na kopii zmień geometrię do 980 mm i sprawdź, co pokazuje wymiar. Jeżeli nie reaguje, sprawd",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -2251,7 +2251,7 @@
     {
       "lesson_no": 17,
       "title": "Bezpieczny zapis i wydruk",
-      "estimatedWords": 927,
+      "estimatedWords": 949,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2295,7 +2295,7 @@
               "command": "QSAVE",
               "alias": "Ctrl+S",
               "heading": "Szybki zapis",
-              "explanation": "Zapisuje bieżący DWG",
+              "explanation": "Szybko zapisuje aktualnie otwarty rysunek, dlatego przed nadpisaniem sprawdź jego nazwę, folder i bieżącą rewizję.",
               "procedure": "Wykonaj operację na kopii oznaczonej rewizją, sprawdź zapis lub podgląd wyniku, a następnie otwórz nowy plik poza bieżącym widokiem.",
               "case": "W przykładzie „Bezpieczny zapis i wydruk” użyj QSAVE w odpowiednim momencie: Zapisz pokoj_A.dwg. Przygotuj arkusz z nazwą, jednostką i skalą. Otwórz podgląd wydruku, a następnie utwórz PDF. Otwórz gotowy PDF w przeglądarce dokumentów i sprawdź, czy są w nim wszy",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -2331,7 +2331,7 @@
               "command": "PAGESETUP",
               "alias": "",
               "heading": "Ustawienia strony",
-              "explanation": "Papier i drukarka",
+              "explanation": "Otwiera ustawienia strony, takie jak format papieru, drukarka PDF, obszar wydruku i skala.",
               "procedure": "Wykonaj operację na kopii oznaczonej rewizją, sprawdź zapis lub podgląd wyniku, a następnie otwórz nowy plik poza bieżącym widokiem.",
               "case": "W przykładzie „Bezpieczny zapis i wydruk” użyj PAGESETUP w odpowiednim momencie: Zapisz pokoj_A.dwg. Przygotuj arkusz z nazwą, jednostką i skalą. Otwórz podgląd wydruku, a następnie utwórz PDF. Otwórz gotowy PDF w przeglądarce dokumentów i sprawdź, czy są w nim wszy",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -2383,7 +2383,7 @@
     {
       "lesson_no": 18,
       "title": "Ćwiczenie: szkic balustrady",
-      "estimatedWords": 954,
+      "estimatedWords": 963,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2454,7 +2454,7 @@
               "command": "DIMLINEAR",
               "alias": "DLI",
               "heading": "Wymiar liniowy",
-              "explanation": "Poziomy lub pionowy",
+              "explanation": "Tworzy wymiar poziomy lub pionowy między wskazanymi punktami, zgodny z aktualnym stylem.",
               "procedure": "Zwróć uwagę na styl, wysokość tekstu, jednostki oraz skalę anotacji. Podgląd na ekranie nie wystarczy bez sprawdzenia wyglądu na papierze.",
               "case": "W przykładzie „Ćwiczenie: szkic balustrady” użyj DIMLINEAR w odpowiednim momencie: Wstaw cztery symbole słupków w punktach X=0, 800, 1600, 2400, przy Y=0. Dodaj wymiar całkowity i trzy wymiary odcinkowe. W kopii B przesuń ostatni słupek do X=2380. Oznacz rysunek jako ",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -2515,7 +2515,7 @@
     {
       "lesson_no": 19,
       "title": "Zadanie praktyczne CAD",
-      "estimatedWords": 941,
+      "estimatedWords": 959,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2568,7 +2568,7 @@
               "command": "RECTANG",
               "alias": "REC",
               "heading": "Prostokąt",
-              "explanation": "Prostokątny obrys",
+              "explanation": "Tworzy zamkniętą polilinię prostokątną określoną dwoma przeciwległymi narożnikami i ich współrzędnymi.",
               "procedure": "Uruchom polecenie w Model Space, odczytaj następny prompt i dopiero wtedy wprowadź punkty. Obejrzyj powstały typ obiektu we Właściwościach.",
               "case": "W przykładzie „Zadanie praktyczne CAD” użyj RECTANG w odpowiednim momencie: Narysuj obrys 4200 × 3000 mm. Dodaj okrąg o średnicy 600 na osobnej warstwie i linię osi. Zwymiaruj szerokość, zmierz ją ponownie przez DIST, zapisz DWG i przygotuj PDF. Wyłącz na chwil",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -2595,7 +2595,7 @@
               "command": "DIMLINEAR",
               "alias": "DLI",
               "heading": "Wymiar liniowy",
-              "explanation": "Poziomy lub pionowy",
+              "explanation": "Tworzy wymiar poziomy lub pionowy między wskazanymi punktami, zgodny z aktualnym stylem.",
               "procedure": "Zwróć uwagę na styl, wysokość tekstu, jednostki oraz skalę anotacji. Podgląd na ekranie nie wystarczy bez sprawdzenia wyglądu na papierze.",
               "case": "W przykładzie „Zadanie praktyczne CAD” użyj DIMLINEAR w odpowiednim momencie: Narysuj obrys 4200 × 3000 mm. Dodaj okrąg o średnicy 600 na osobnej warstwie i linię osi. Zwymiaruj szerokość, zmierz ją ponownie przez DIST, zapisz DWG i przygotuj PDF. Wyłącz na chwil",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -2779,7 +2779,7 @@
     {
       "lesson_no": 21,
       "title": "Zaawansowane: konflikty branżowe",
-      "estimatedWords": 903,
+      "estimatedWords": 915,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2823,7 +2823,7 @@
               "command": "XREF",
               "alias": "XR",
               "heading": "Odnośniki zewnętrzne",
-              "explanation": "Menedżer podkładów",
+              "explanation": "Łączy bieżący DWG z innymi plikami jako odniesienia zewnętrzne i wymaga kontroli ich ścieżek.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Zaawansowane: konflikty branżowe” użyj XREF w odpowiednim momencie: Na osobnych warstwach narysuj rzut rury i wspornika. Zaznacz miejsce przecięcia. W notatce podaj współrzędne, wersje obu rysunków i znane wysokości. Jeśli wysokości nie podano, napisz, ",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -2911,7 +2911,7 @@
     {
       "lesson_no": 22,
       "title": "Zaawansowane: obcy plik DWG",
-      "estimatedWords": 887,
+      "estimatedWords": 899,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -2982,7 +2982,7 @@
               "command": "XREF",
               "alias": "XR",
               "heading": "Odnośniki zewnętrzne",
-              "explanation": "Menedżer podkładów",
+              "explanation": "Łączy bieżący DWG z innymi plikami jako odniesienia zewnętrzne i wymaga kontroli ich ścieżek.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Zaawansowane: obcy plik DWG” użyj XREF w odpowiednim momencie: Otwórz kopię otrzymanego pliku. Zapisz jego nazwę i wersję. Sprawdź komunikaty, odnośniki, warstwy oraz jeden wymiar odniesienia. Porównaj rysunek z kontrolnym PDF-em. Wypisz brakujące ",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -3043,7 +3043,7 @@
     {
       "lesson_no": 23,
       "title": "Zaawansowane: rewizja i wariant",
-      "estimatedWords": 927,
+      "estimatedWords": 939,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -3123,7 +3123,7 @@
               "command": "QSAVE",
               "alias": "Ctrl+S",
               "heading": "Szybki zapis",
-              "explanation": "Zapisuje bieżący DWG",
+              "explanation": "Szybko zapisuje aktualnie otwarty rysunek, dlatego przed nadpisaniem sprawdź jego nazwę, folder i bieżącą rewizję.",
               "procedure": "Wykonaj operację na kopii oznaczonej rewizją, sprawdź zapis lub podgląd wyniku, a następnie otwórz nowy plik poza bieżącym widokiem.",
               "case": "W przykładzie „Zaawansowane: rewizja i wariant” użyj QSAVE w odpowiednim momencie: Z pliku panel_A.dwg utwórz panel_B.dwg i zmień szerokość z 600 na 650 mm. Dodaj opis „zwiększono szerokość o 50 mm” oraz status do sprawdzenia. Zachowaj A. Jeżeli przygotowujesz alterna",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -3307,7 +3307,7 @@
     {
       "lesson_no": 25,
       "title": "Zaawansowane: pomiar z natury",
-      "estimatedWords": 954,
+      "estimatedWords": 963,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -3378,7 +3378,7 @@
               "command": "DIMLINEAR",
               "alias": "DLI",
               "heading": "Wymiar liniowy",
-              "explanation": "Poziomy lub pionowy",
+              "explanation": "Tworzy wymiar poziomy lub pionowy między wskazanymi punktami, zgodny z aktualnym stylem.",
               "procedure": "Zwróć uwagę na styl, wysokość tekstu, jednostki oraz skalę anotacji. Podgląd na ekranie nie wystarczy bez sprawdzenia wyglądu na papierze.",
               "case": "W przykładzie „Zaawansowane: pomiar z natury” użyj DIMLINEAR w odpowiednim momencie: W notatce pomiarowej zapisz 3200 mm z rysunku i 3170 mm z pomiaru. Określ te same punkty odniesienia, datę i narzędzie. Oblicz różnicę, zaznacz miejsce na szkicu i przygotuj pytanie o s",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -3571,7 +3571,7 @@
     {
       "lesson_no": 27,
       "title": "Zaawansowane: kontrola geometrii",
-      "estimatedWords": 943,
+      "estimatedWords": 954,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -3642,7 +3642,7 @@
               "command": "AREA",
               "alias": "AA",
               "heading": "Powierzchnia",
-              "explanation": "Pole i obwód",
+              "explanation": "Mierzy pole powierzchni i obwód obiektu lub obszaru; do poprawnego rezultatu potrzebujesz właściwej geometrii.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Zaawansowane: kontrola geometrii” użyj AREA w odpowiednim momencie: Narysuj prostokąt 1000 × 600 mm i zapisz kopię. Na jednej kopii dodaj zdublowaną linię, a na drugiej zrób szczelinę 2 mm. Obejrzyj narożniki i liczbę obiektów. Po korekcie sprawdź zamkn",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -3703,7 +3703,7 @@
     {
       "lesson_no": 28,
       "title": "Zaawansowane: komplet plików",
-      "estimatedWords": 916,
+      "estimatedWords": 953,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -3756,7 +3756,7 @@
               "command": "XREF",
               "alias": "XR",
               "heading": "Odnośniki zewnętrzne",
-              "explanation": "Menedżer podkładów",
+              "explanation": "Łączy bieżący DWG z innymi plikami jako odniesienia zewnętrzne i wymaga kontroli ich ścieżek.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Zaawansowane: komplet plików” użyj XREF w odpowiednim momencie: Przygotuj paczkę z bieżącym DWG, odpowiadającym mu PDF-em, potrzebnymi odnośnikami i wykazem wersji. Użyj eTransmit, jeśli jest dostępne w Twojej wersji, i przejrzyj raport plików dołąc",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -3765,7 +3765,7 @@
               "command": "PDFATTACH",
               "alias": "",
               "heading": "Podłącz PDF",
-              "explanation": "PDF jako odniesienie",
+              "explanation": "Dołącza dokument PDF jako podkład referencyjny, a nie zmienia automatycznie jego linii w edytowalne obiekty CAD.",
               "procedure": "Sprawdź kontekst: aktywną warstwę, zaznaczenie, jednostki i stan dokumentu. Nie przechodź dalej, jeśli polecenie jest niedostępne w używanej edycji.",
               "case": "W przykładzie „Zaawansowane: komplet plików” użyj PDFATTACH w odpowiednim momencie: Przygotuj paczkę z bieżącym DWG, odpowiadającym mu PDF-em, potrzebnymi odnośnikami i wykazem wersji. Użyj eTransmit, jeśli jest dostępne w Twojej wersji, i przejrzyj raport plików dołąc",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -3774,7 +3774,7 @@
               "command": "QSAVE",
               "alias": "Ctrl+S",
               "heading": "Szybki zapis",
-              "explanation": "Zapisuje bieżący DWG",
+              "explanation": "Szybko zapisuje aktualnie otwarty rysunek, dlatego przed nadpisaniem sprawdź jego nazwę, folder i bieżącą rewizję.",
               "procedure": "Wykonaj operację na kopii oznaczonej rewizją, sprawdź zapis lub podgląd wyniku, a następnie otwórz nowy plik poza bieżącym widokiem.",
               "case": "W przykładzie „Zaawansowane: komplet plików” użyj QSAVE w odpowiednim momencie: Przygotuj paczkę z bieżącym DWG, odpowiadającym mu PDF-em, potrzebnymi odnośnikami i wykazem wersji. Użyj eTransmit, jeśli jest dostępne w Twojej wersji, i przejrzyj raport plików dołąc",
               "environment": "Oryginalny Autodesk; nasz warsztat może nie udostępniać pełnej funkcji"
@@ -3835,7 +3835,7 @@
     {
       "lesson_no": 29,
       "title": "Egzamin próbny: pełny cykl CAD",
-      "estimatedWords": 988,
+      "estimatedWords": 1006,
       "sections": [
         {
           "heading": "Na czym polega zadanie?",
@@ -3879,7 +3879,7 @@
               "command": "RECTANG",
               "alias": "REC",
               "heading": "Prostokąt",
-              "explanation": "Prostokątny obrys",
+              "explanation": "Tworzy zamkniętą polilinię prostokątną określoną dwoma przeciwległymi narożnikami i ich współrzędnymi.",
               "procedure": "Uruchom polecenie w Model Space, odczytaj następny prompt i dopiero wtedy wprowadź punkty. Obejrzyj powstały typ obiektu we Właściwościach.",
               "case": "W przykładzie „Egzamin próbny: pełny cykl CAD” użyj RECTANG w odpowiednim momencie: Przygotuj panel A: 600 × 350 mm, otwory o promieniu 10, środki (50,50) i (550,50). Zapisz A. W kopii B zwiększ szerokość do 650, przesuń środki na (50,70) i (600,70). Dodaj wymiary, ozn",
               "environment": "Symulator TRENERKI i/lub Autodesk"
@@ -3915,7 +3915,7 @@
               "command": "DIMLINEAR",
               "alias": "DLI",
               "heading": "Wymiar liniowy",
-              "explanation": "Poziomy lub pionowy",
+              "explanation": "Tworzy wymiar poziomy lub pionowy między wskazanymi punktami, zgodny z aktualnym stylem.",
               "procedure": "Zwróć uwagę na styl, wysokość tekstu, jednostki oraz skalę anotacji. Podgląd na ekranie nie wystarczy bez sprawdzenia wyglądu na papierze.",
               "case": "W przykładzie „Egzamin próbny: pełny cykl CAD” użyj DIMLINEAR w odpowiednim momencie: Przygotuj panel A: 600 × 350 mm, otwory o promieniu 10, środki (50,50) i (550,50). Zapisz A. W kopii B zwiększ szerokość do 650, przesuń środki na (50,70) i (600,70). Dodaj wymiary, ozn",
               "environment": "Symulator TRENERKI i/lub Autodesk"
