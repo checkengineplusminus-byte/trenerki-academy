@@ -253,6 +253,18 @@ try{
  const f=await fixture({width:1280,height:960});
  await f.page.goto(origin+'/biuro-ksiegowe');
  await tab(f.page).waitFor();
+ await pass('Przekrojowy plan prowadzi bezpośrednio do szkoleniowej kontroli zamknięcia, bez wysyłki',async()=>{
+  const previous=f.model().version;
+  const close=f.page.getByRole('button',{name:'Zobacz kontrolę szkoleniową',exact:true});
+  assert.equal(await close.count(),1,'Ostatni etap musi mieć działający przycisk');
+  await close.click();
+  await f.page.getByRole('heading',{name:'Jeden miesiąc: kontrola przed KSeF / JPK / UPO'}).waitFor();
+  assert.match(await f.page.locator('body').innerText(),/NIE WYSŁANO/);
+  assert.match(await f.page.locator('body').innerText(),/NIE WYDANO/);
+  assert.equal(f.model().version,previous,'Przegląd nie zapisuje prób kursanta');
+  await f.page.locator('nav button[data-action="tab"][data-id="simulator"]').click();
+  assert.deepEqual(f.errors,[]);
+ });
  await tab(f.page).click();
  await f.page.getByRole('heading',{name:'Rozpoznaj 36 dokumentów z jednego miesiąca'}).waitFor();
  await pass('Raport kontrolny okresu działa w przeglądarce, ale niczego nie wysyła',async()=>{
