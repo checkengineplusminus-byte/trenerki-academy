@@ -1235,3 +1235,49 @@ test('Jeden okres: dodatkowe faktury późniejszego miesiąca rozpoczynają nowy
  assert.equal(r.finished_training_stages,0);
  assert.equal(r.integrated_full_cycle,'not_tested');
 });
+
+
+import {taxCloseTrainingAudit} from '../src/accounting/tax-close-training.js';
+test('Zamknięcie szkoleniowe: sumy VAT z istniejącego miesiąca, bez wysyłki KSeF/JPK/UPO',()=>{
+ const state=fullScenario(),before=JSON.stringify(state),r=taxCloseTrainingAudit(state);
+ assert.equal(r.period,'2026-11');
+ assert.equal(r.figures.sale_vat_cents,23000);
+ assert.equal(r.figures.purchase_vat_cents,4600);
+ assert.equal(r.figures.vat_difference_cents,18400);
+ assert.equal(r.figures.bank_statement_cents,98400);
+ assert.equal(r.figures.bank_ledger_cents,98400);
+ assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,true);
+ assert.equal(r.checks.find(x=>x.key==='bank').passed,true);
+ assert.equal(r.checks.find(x=>x.key==='payroll_assets').passed,false);
+ assert.equal(r.ready_for_training_review,false);
+ assert.equal(r.draft_documents.ksef.status,'NOT_SENT_TRAINING_REFERENCE_ONLY');
+ assert.equal(r.draft_documents.jpk.status,'NOT_GENERATED_NOT_SCHEMA_VALIDATED');
+ assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
+ assert.equal(r.completed,false);
+ assert.equal(JSON.stringify(state),before);
+});
+test('Zamknięcie szkoleniowe nie zalicza faktury bez księgowania lub innego miesiąca',()=>{
+ const s=fullScenario();
+ s.journals=s.journals.filter(j=>j.source_id!==s.invoices[0].id);
+ assert.equal(taxCloseTrainingAudit(s).checks.find(x=>x.key==='invoice_posting').passed,false);
+ const other=fullScenario();other.bank[0].date='2026-12-01';
+ assert.equal(taxCloseTrainingAudit(other).checks.find(x=>x.key==='bank').passed,false);
+ assert.equal(taxCloseTrainingAudit(other).ready_for_training_review,false);
+});
+test('Zamknięcie szkoleniowe wykrywa zbilansowany, ale niewłaściwy dekret i niezbilansowanie',()=>{
+ const s=fullScenario();s.journals.find(j=>j.source_type==='invoice'&&j.source_id==='sale').lines[1].account='800';
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,false);
+ const bad=fullScenario();bad.journals[0].lines[0].debit++;
+ assert.equal(taxCloseTrainingAudit(bad).checks.find(x=>x.key==='ledger').passed,false);
+});
+test('Puste ćwiczenie nie generuje fałszywego UPO, wyniku podatkowego ani ukończenia',()=>{
+ const r=taxCloseTrainingAudit(EMPTY());
+ assert.equal(r.source_count,0);
+ assert.equal(r.period,null);
+ assert.equal(r.ready_for_training_review,false);
+ assert.equal(r.completed,false);
+ assert.equal(r.legal_review,'not_tested');
+ assert.equal(r.authorized_e2e,'not_tested');
+ assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
+});
