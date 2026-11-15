@@ -195,6 +195,22 @@ try{
   assert.equal(mobileInvoice.saves(),0);
   assert.deepEqual(mobileInvoice.errors,[]);
  });
+ await pass('Mobilne 390 px: plan etapów i finałowy raport są dostępne bez zmiany danych',async()=>{
+  await mobileInvoice.page.locator('nav button[data-action="tab"][data-id="start"]').click();
+  await mobileInvoice.page.getByRole('heading',{name:'Jedna ścieżka: co naprawdę jest zrobione?'}).waitFor();
+  assert.equal(await mobileInvoice.page.getByRole('button',{name:'Zobacz kontrolę szkoleniową',exact:true}).count(),1);
+  const width=await mobileInvoice.page.evaluate(()=>({
+   window:window.innerWidth,document:document.documentElement.scrollWidth
+  }));
+  assert.ok(width.document<=width.window+1,
+   'Przegląd planu nie może wymagać poziomego przewijania całej strony: '+JSON.stringify(width));
+  const version=mobileInvoice.model().version;
+  await mobileInvoice.page.getByRole('button',{name:'Zobacz kontrolę szkoleniową',exact:true}).click();
+  await mobileInvoice.page.getByRole('heading',{name:'Jeden miesiąc: kontrola przed KSeF / JPK / UPO'}).waitFor();
+  assert.match(await mobileInvoice.page.locator('body').innerText(),/NIE WYDANO/);
+  assert.equal(mobileInvoice.model().version,version,'Sam raport nie zapisuje dokumentów');
+  assert.deepEqual(mobileInvoice.errors,[]);
+ });
  await mobileInvoice.context.close();
  const corrupt=structuredClone(manifest);
  // A deliberately malicious-looking yet balanced internal bank posting
