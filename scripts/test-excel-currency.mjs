@@ -10,7 +10,7 @@ const compiled=ts.transpileModule(read('src/SpreadsheetFormula.ts'),{
 const {parseSpreadsheetNumber,evaluateCell}=await import('data:text/javascript;base64,'+Buffer.from(compiled).toString('base64'));
 const checks=[['1 250,50 zł',1250.5],['1\u00a0250,50 PLN',1250.5],['2,56 zł',2.56],['0 zł',0],['-25,40 PLN',-25.4],['1250,50',1250.5]];
 for(const [raw,expected] of checks)assert.equal(parseSpreadsheetNumber(raw),expected,'Niepoprawna kwota '+raw);
-for(const raw of ['12,3 kg','abc zł','1,2,3 zł','4 000 cm'])assert(Number.isNaN(parseSpreadsheetNumber(raw)),'Fałszywa liczba '+raw);
+for(const raw of ['12,3 kg','abc zł','1,2,3 zł','4 000 cm','zł','PLN'])assert(Number.isNaN(parseSpreadsheetNumber(raw)),'Fałszywa liczba '+raw);
 const sheet=[
  ['Lp.','Usługa','Ilość','Cena','Wartość'],
  ['1','Malowanie','2','350 zł','=C2*D2'],
