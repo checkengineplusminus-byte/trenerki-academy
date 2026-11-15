@@ -610,7 +610,7 @@ test('Kadry: uszkodzony lub obcy scenariusz nie uzyskuje pozornego zaliczenia',(
  assert.equal(personnelDraftReview(damaged.simulator_personnel_v1.cases.P01).recorded,false);
 });
 
-import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollLifecycleChecklist} from '../src/accounting/payroll-practice.js';
+import {PAYROLL_FIELDS,payrollMath,validPayrollPractice,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollJournalDraft,payrollLifecycleChecklist} from '../src/accounting/payroll-practice.js';
 const payrollCase=(id='P01')=>({
  employee_id:id,period:'2026-01',gross_cents:id==='P01'?520000:310000,
  social_cents:id==='P01'?60000:30000,health_cents:id==='P01'?35000:19000,
@@ -1073,4 +1073,38 @@ test('Cykl kadrowo-płacowy: zmieniona umowa odbiera zgodność płac i banku',(
  assert.equal(result.steps.find(x=>x.key==='settlement').status,'blocked');
  assert.equal(result.ready_for_training_review,false);
  assert.equal(JSON.stringify(state),before);
+});
+
+test('Płace do dziennika: szkic naliczenia nie księguje automatycznie',()=>{
+ const s=withPayrollPractice(payrollState(),payrollCase('P01')),before=JSON.stringify(s);
+ const d=payrollJournalDraft(s,'P01','accrual','J-PAY-ACCRUAL');
+ assert.equal(d.status,'draft');assert.equal(d.source_type,'manual');assert.equal(d.date,'2026-01-31');
+ assert.deepEqual(d.payroll_ref,{employee_id:'P01',period:'2026-01',stage:'accrual'});
+ assert.equal(d.lines.reduce((n,l)=>n+l.debit-l.credit,0),0);
+ assert.equal(d.lines.find(l=>l.account==='404').debit,520000);
+ assert.equal(d.lines.find(l=>l.account==='231').credit,407000);
+ assert.equal(JSON.stringify(s),before);
+ assert.throws(()=>payrollJournalDraft({...s,journals:[{...d,status:'posted'}]},'P01','accrual','J2'),/już zaksięgowano/);
+});
+test('Płace do dziennika: wypłata z CSV nie tworzy drugiego kosztu, storno odblokowuje',()=>{
+ let s=payrollState();
+ s.bank=[{id:'SALARY1',date:'2026-01-31',amount_cents:-300000,description:'Fikcyjna wypłata'}];
+ s=withPayrollPractice(s,{...payrollCase(),bank_transaction_id:'SALARY1'});
+ const d=payrollJournalDraft(s,'P01','payment','J-PAY-BANK');
+ assert.equal(d.status,'draft');assert.equal(d.source_type,'bank');assert.equal(d.source_id,'SALARY1');
+ assert.deepEqual(d.lines,[{account:'231',debit:300000,credit:0},{account:'130',debit:0,credit:300000}]);
+ assert.equal(d.lines.some(l=>l.account==='404'),false);
+ const posted={...d,status:'posted'};
+ assert.equal(balanceReport({...s,journals:[posted]}).ledgerBank,-300000);
+ assert.throws(()=>payrollJournalDraft({...s,journals:[posted]},'P01','payment','J2'),/już zaksięgowano/);
+ const reversed={id:'REV',status:'posted',date:'2026-01-31',source_type:'manual',source_id:'',
+  reversal_of:posted.id,lines:posted.lines.map(l=>({account:l.account,debit:l.credit,credit:l.debit}))};
+ assert.equal(payrollJournalDraft({...s,journals:[posted,reversed]},'P01','payment','J3').status,'draft');
+ assert.throws(()=>payrollJournalDraft({...s,bank:[]},'P01','payment','J4'),/wymaga fikcyjnego CSV/);
+});
+test('Płace do dziennika: nieznany pracownik, etap i identyfikator są odrzucane',()=>{
+ const s=withPayrollPractice(payrollState(),payrollCase());
+ assert.throws(()=>payrollJournalDraft(s,'P03','accrual','J1'));
+ assert.throws(()=>payrollJournalDraft(s,'P01','tax','J1'));
+ assert.throws(()=>payrollJournalDraft(s,'P01','accrual','nie poprawne id'));
 });

@@ -277,3 +277,28 @@ export function payrollLifecycleChecklist(state,employeeId){
   legal_review:'not_tested',real_bank:'not_verified',actual_documents:'not_verified',
   ledger_posted:false,real_e2e:'not_tested'};
 }
+/** Przeniesienie zapisanej fikcyjnej listy płac do NIEZATWIERDZONEGO szkicu.
+ * Zachowuje odrębne koszty i wypłatę; nie oblicza stawek PIT/ZUS ani nie wysyła
+ * przelewów. Uczeń świadomie weryfikuje i zatwierdza w istniejącym dzienniku. */
+export function payrollJournalDraft(state,employeeId,stage,journalId){
+ if(!PERSONNEL_IDS.includes(employeeId)||!['accrual','payment'].includes(stage)||
+   typeof journalId!=='string'||!/^[A-Za-z0-9_/-]{1,100}$/.test(journalId))
+  throw new Error('Wybierz pracownika, etap i identyfikator szkicu.');
+ const c=readPayrollPractices(state)[employeeId],preview=payrollJournalPreview(state,employeeId);
+ if(!c||!preview.ready)throw new Error('Najpierw popraw i zapisz fikcyjną kartę płac.');
+ const plan=stage==='accrual'?preview.accrual:preview.payment;
+ if(!plan||!plan.balanced||plan.lines.length<2)
+  throw new Error('Brak zgodnego planu Wn/Ma; wypłata wymaga fikcyjnego CSV z poprawną datą i kwotą.');
+ const all=Array.isArray(state?.journals)?state.journals:[];
+ const live=all.filter(j=>j.status==='posted'&&!j.reversal_of&&!all.some(r=>r.status==='posted'&&r.reversal_of===j.id));
+ if(live.some(j=>j.payroll_ref?.employee_id===employeeId&&j.payroll_ref?.period===c.period&&j.payroll_ref?.stage===stage)||
+    (stage==='payment'&&live.some(j=>j.source_type==='bank'&&j.source_id===c.bank_transaction_id)))
+  throw new Error('Ten etap lub przelew już zaksięgowano; w razie błędu zastosuj storno, nie duplikuj kosztu.');
+ const end=new Date(Date.UTC(Number(c.period.slice(0,4)),Number(c.period.slice(5)),0)).toISOString().slice(0,10);
+ return {id:journalId,status:'draft',date:stage==='accrual'?end:c.paid_on,
+  memo:(stage==='accrual'?'Lista płac':'Wypłata listy płac')+' — '+employeeId+' / '+c.period+' (fikcyjna)',
+  source_type:stage==='payment'?'bank':'manual',
+  source_id:stage==='payment'?c.bank_transaction_id:'',
+  payroll_ref:{employee_id:employeeId,period:c.period,stage},
+  lines:plan.lines.map(l=>({account:l.account,debit:l.debit_cents,credit:l.credit_cents}))};
+}
