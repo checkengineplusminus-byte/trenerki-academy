@@ -141,7 +141,7 @@
       "category": "Pierwsze kroki",
       "definition": "Popularny format pliku Excela, który zachowuje wiele arkuszy, formuły i formatowanie.",
       "example": "Wysyłasz Kosztorys_R02.xlsx, aby kolega mógł edytować obliczenia.",
-      "pitfall": "XLSX nie oznacza automatycznie pliku wolnego od makr i ryzyka.",
+      "pitfall": "XLSX nie przechowuje makr VBA. Makra mogą znajdować się np. w plikach XLSM, a dowolny załącznik z nieznanego źródła wymaga ostrożności.",
       "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
@@ -331,7 +331,7 @@
       "definition": "Wyrażenie zaczynające się od znaku =, które oblicza wynik na podstawie liczb, adresów i funkcji.",
       "example": "=C2*D2 mnoży ilość przez cenę.",
       "pitfall": "Wpisanie C2*D2 bez = może pozostać tekstem.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "funkcja",
@@ -340,7 +340,7 @@
       "definition": "Gotowa operacja w formule, przyjmująca argumenty w nawiasach.",
       "example": "=SUMA(E2:E4) dodaje zakres.",
       "pitfall": "Nie wszystkie nazwy funkcji są takie same w polskiej i angielskiej wersji.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "argument-funkcji",
@@ -349,7 +349,7 @@
       "definition": "Wartość, zakres lub odwołanie przekazywane funkcji jako parametr.",
       "example": "SUMA(E2:E4) dostaje argument E2:E4.",
       "pitfall": "Nie myl separatora argumentów z separatorem dziesiętnym.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "suma",
@@ -358,7 +358,7 @@
       "definition": "Funkcja dodająca liczby w wybranym zakresie; w angielskim Excelu SUM.",
       "example": "=SUMA(E2:E4) daje 1210 przy danych 700+360+150.",
       "pitfall": "Nie obejmuj komórki z sumą tym samym zakresem.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "średnia",
@@ -367,7 +367,7 @@
       "definition": "Funkcja obliczająca średnią arytmetyczną liczb; angielska AVERAGE.",
       "example": "Średnia z 2, 4 i 6 wynosi 4.",
       "pitfall": "Średnia z cen i średnia ważona ilością to różne wielkości.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "min-i-max",
@@ -376,7 +376,7 @@
       "definition": "Funkcje wybierające najmniejszą i największą liczbę z zakresu.",
       "example": "=MAX(C2:C20) pokazuje największą ilość.",
       "pitfall": "Nie stosuj MAX na tekstowych kodach zamówień.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "jeżeli",
@@ -385,7 +385,7 @@
       "definition": "Funkcja warunkowa zwracająca jeden z dwóch wyników w zależności od prawdy/fałszu.",
       "example": "=JEŻELI(B2>0;\"OK\";\"BRAK\") odróżnia dodatnią wartość.",
       "pitfall": "Przed użyciem ułóż jasną regułę biznesową.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "oraz",
@@ -394,7 +394,7 @@
       "definition": "Funkcja logiczna: wszystkie warunki muszą być prawdziwe.",
       "example": "=ORAZ(C2>0;D2>=0) sprawdza ilość i cenę.",
       "pitfall": "Jeden niespełniony warunek daje FAŁSZ.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "lub",
@@ -403,7 +403,7 @@
       "definition": "Funkcja logiczna: przynajmniej jeden z warunków musi być prawdziwy.",
       "example": "=LUB(A2=\"pilne\";B2=\"pilne\") sprawdza oznaczenia.",
       "pitfall": "Nie myl 'lub' z 'oraz', gdy obydwa kryteria są wymagane.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "licz-jeżeli",
@@ -412,7 +412,7 @@
       "definition": "Funkcja licząca komórki zgodne z jednym warunkiem; angielski COUNTIF.",
       "example": "Liczysz faktury ze statusem Opłacona.",
       "pitfall": "Liczenie wierszy nie jest sumowaniem kwot.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "suma-jeżeli",
@@ -421,7 +421,7 @@
       "definition": "Funkcja sumująca wartości dla jednego warunku; angielski SUMIF.",
       "example": "Sumujesz sprzedaż tylko dla regionu Północ.",
       "pitfall": "Nie pomyl zakresu kryterium z zakresem sumy.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "suma-warunków",
@@ -430,7 +430,7 @@
       "definition": "Funkcja dodająca kwoty spełniające wiele kryteriów; angielski SUMIFS.",
       "example": "Sumujesz sprzedaż Północ i Materiały.",
       "pitfall": "Warunki muszą dotyczyć zakresów tej samej długości.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "jeżeli-błąd",
@@ -439,7 +439,7 @@
       "definition": "Funkcja pozwalająca określić wynik w razie błędu obliczenia; angielski IFERROR.",
       "example": "Dla #DZIEL/0! możesz wyświetlić komunikat o braku danych.",
       "pitfall": "Nie ukrywaj automatycznie wszystkich błędów zerem.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "x-wyszukaj",
@@ -457,7 +457,7 @@
       "definition": "Starsza funkcja wyszukiwania pionowego; angielski VLOOKUP.",
       "example": "Szukanie ceny produktu po kodzie w pierwszej kolumnie.",
       "pitfall": "Dla dokładnego dopasowania podaj odpowiedni tryb zamiast zgadywać.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "indeks-i-podaj-pozycję",
@@ -466,7 +466,7 @@
       "definition": "Połączenie funkcji służące do znajdowania wartości według pozycji. Może być alternatywą dla X.WYSZUKAJ w starszych Excelach.",
       "example": "INDEKS zwraca wartość z pozycji znalezionej przez PODAJ.POZYCJĘ.",
       "pitfall": "Sprawdź identyczność typów danych i unikatowość klucza.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "odwołanie-względne",
@@ -475,7 +475,7 @@
       "definition": "Adres przesuwający się podczas kopiowania formuły.",
       "example": "=C2*D2 skopiowane o wiersz niżej daje =C3*D3.",
       "pitfall": "Nie stosuj go dla stałego kursu walutowego.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "odwołanie-bezwzględne",
@@ -484,7 +484,7 @@
       "definition": "Adres z symbolami $, który nie przesuwa się po kopiowaniu.",
       "example": "$H$2 pozostaje H2 w skopiowanych wzorach.",
       "pitfall": "$H2 i H$2 blokują tylko jedną część adresu.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "odwołanie-mieszane",
@@ -493,7 +493,7 @@
       "definition": "Adres zablokowany wyłącznie po kolumnie lub wyłącznie po wierszu.",
       "example": "$A2 blokuje kolumnę A, lecz wiersz się zmienia.",
       "pitfall": "Dwa różne rodzaje blokady nie są wymienne.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "operator-",
@@ -502,7 +502,7 @@
       "definition": "Znak mnożenia we wzorach Excela.",
       "example": "=2*350 daje 700.",
       "pitfall": "W Excelu zwykle nie używasz litery x do mnożenia.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "kolejność-działań",
@@ -511,7 +511,7 @@
       "definition": "Reguły matematyczne określające, co Excel policzy najpierw.",
       "example": "=2+3*4 daje 14, ale =(2+3)*4 daje 20.",
       "pitfall": "Brak nawiasów może diametralnie zmienić wynik.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "zakres",
@@ -520,7 +520,7 @@
       "definition": "Grupa komórek pomiędzy dwoma adresami, np. A2:A20.",
       "example": "E2:E4 obejmuje trzy pola.",
       "pitfall": "Dwukropek w zakresie nie oznacza operacji dzielenia.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "błąd-dziel-0-",
@@ -529,7 +529,7 @@
       "definition": "Informacja, że formuła próbuje dzielić przez zero lub pusty mianownik.",
       "example": "=100/0 zwraca błąd zamiast poprawnej kwoty.",
       "pitfall": "Nie traktuj błędu jako wyniku 0.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "błąd-adr-",
@@ -538,7 +538,7 @@
       "definition": "Sygnał nieprawidłowego odwołania, np. po usunięciu kolumny używanej przez formułę.",
       "example": "Usunięcie źródła dla =B2 może zerwać odwołanie.",
       "pitfall": "Nie nadpisuj błędu ręczną liczbą bez przywrócenia źródła.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "błąd-n-d",
@@ -547,7 +547,7 @@
       "definition": "Sygnalizuje brak dopasowania w niektórych funkcjach wyszukujących.",
       "example": "Nie znaleziono numeru FV-999.",
       "pitfall": "Brak wyniku to nie to samo co znalezienie kwoty 0.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "f4-w-formule",
@@ -556,7 +556,7 @@
       "definition": "Klawisz, który może przełączać rodzaje odwołań po wybraniu adresu w edytowanej formule.",
       "example": "A1 → $A$1 → A$1 → $A1 → A1.",
       "pitfall": "Na laptopie może być potrzebny Fn; działanie zależy od trybu klawiszy.",
-      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
     },
     {
       "id": "tabela-excel",
