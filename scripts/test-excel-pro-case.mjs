@@ -64,5 +64,5 @@ test('All six independent expert exercises are integrated in the last part of co
  assert(ui.includes('inspectImport')&&ui.includes('proStats')&&ui.includes('equalIdentifiers'));
  assert(ui.includes('nie widzi pliku na Twoim komputerze'),'Must not pretend to inspect learner PC');
  assert(reader.includes("<ExcelProCaseLab/>"));
- assert(intro.includes('368-wierszowy przypadek biznesowy'));
+ assert(intro.includes('Bardziej złożone funkcje')&&intro.includes('X.WYSZUKAJ'),'Intro should signal advanced lessons without overwhelming beginners');
 });
