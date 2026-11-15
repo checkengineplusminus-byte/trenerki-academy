@@ -64,7 +64,8 @@ for(const mobile of [false,true]){
  try{
   await page.goto(origin+'/nauka?course=autocad-skroty&lesson=1');
   await page.getByTestId('course-reading-introduction').waitFor();
-  assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Original AutoCAD screen should not dominate the opening');
+  assert.equal(await page.getByTestId('course-intro-photo').count(),0,'Duplicate stock photo after opening course');
+  assert.equal(await page.getByTestId('autocad-original-screens').count(),1,'A genuine AutoCAD screenshot must be visible before reading');
   const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   if(await consent.isVisible())await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   assert.equal(await page.getByTestId('case-checkpoint').count(),0);
@@ -74,13 +75,29 @@ for(const mobile of [false,true]){
   assert.equal(await firstScreen.locator('img').count(),1,'Open one focused original screenshot, not three huge repeats');
   await firstScreen.locator('img').first().evaluate(el=>el.decode());
   await page.getByRole('button',{name:'Pojęcia'}).click();
-  assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Original screen must close on changing tabs');
+  assert.equal(await page.getByTestId('autocad-original-screens').count(),1,'Do not duplicate or remove the single genuine AutoCAD screenshot');
   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+  const cad=page.getByTestId('cad-workspace');
+  await cad.waitFor();
+  const cmd=cad.getByTestId('cad-command');
+  const send=async (line)=>{await cmd.fill(line);await cad.getByRole('button',{name:'Enter ↵'}).click();};
+  await send('LINE');await send('0,0');await send('1000,0');await send('500,800');await send('CLOSE');
+  await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 3'}).waitFor();
+  await send('JOIN');
+  await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 1'}).waitFor();
+  await cad.getByText(/JOIN: połączono 3 odcinki/).waitFor();
+  await send('MOVE');await send('0,0');await send('@2000,0');
+  await cad.getByText(/Przesunięcie 2000, 0/).waitFor();
+  await send('ZOOM E');
+  await cad.getByText(/Dopasowano widok/).waitFor();
+  await cad.getByTestId('cad-canvas').screenshot({path:'/tmp/trenerki-autocad-canvas-'+(mobile?'mobile':'desktop')+'.png'});
+  console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: LINE → 3 segments → JOIN → one closed polyline → MOVE → ZOOM E');
   for(const lesson of lessons){
    const {lesson_no:n,material:m}=lesson;
    await page.getByTestId('lesson-heading').filter({hasText:lesson.title_pl}).waitFor();
-   assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Repeated AutoCAD screenshot in lesson '+(n+1));
-   assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Repeating legacy AutoCAD practice panel detected in chapter '+(n+1));
+   assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Welcome screenshot must never repeat inside any practical lesson');
+   assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Old repeated lecture disguised as CAD practice');
+   if(n===0||[4,5,9,10,11,17,19,27,29].includes(n))await page.getByTestId('cad-workspace').waitFor();
    const lessonMethod=page.getByTestId('autocad-lesson-method');
    await lessonMethod.waitFor();
    await lessonMethod.getByText(method[n].heading,{exact:true}).waitFor();

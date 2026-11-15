@@ -38,7 +38,14 @@ test('visitor: recurring AutoCAD screenshots removed from all lesson bodies',()=
  assert(!visual.includes('<AutoCADOriginalScreen'));
  assert(orientation.includes("tab==='interface'"));
  assert(orientation.includes('<AutoCADOriginalScreen'));
- assert(orientation.includes("slug==='autocad-skroty'?null"));
+ assert(orientation.includes("slug==='autocad-skroty'?<AutoCADOriginalScreen"));
+ assert(load('app/nauka.tsx').includes("index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto"));
+});
+test('original interactive CAD drawing workspace is restored in relevant AutoCAD lessons',()=>{
+ const src=load('app/nauka.tsx'),workspace=load('src/CadWorkspace.tsx');
+ assert(src.includes('<CadWorkspace storageKey={userId}'));
+ assert(workspace.includes('testID="cad-command"'));
+ assert(workspace.includes('joinCadLines(shapes,selected)'));
 });
 test('old generic AutoCAD lab cannot repeat itself inside unrelated chapters',()=>{
  const shortcutUI=load('src/KeyboardLesson.tsx');

@@ -23,6 +23,8 @@ on:
       - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
       - 'scripts/autocad-course-browser.mjs'
+      - 'scripts/test-cad-restored.mjs'
+      - 'src/CadGeometry.ts'
       - 'content/autocad-real-program-2026-11-15.json'
       - 'scripts/test-course-pricing.mjs'
       - 'scripts/pricing-browser.mjs'
@@ -69,6 +71,7 @@ jobs:
           node --experimental-default-type=module --test scripts/test-course-progress.mjs
           node --test scripts/test-exam-readiness.mjs
           node --test scripts/test-autocad-dxf.mjs
+          node --experimental-strip-types --test scripts/test-cad-restored.mjs
           node --test scripts/test-course-pricing.mjs
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2

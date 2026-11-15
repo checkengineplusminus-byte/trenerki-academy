@@ -22,6 +22,7 @@ import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
+import CadWorkspace from '../src/CadWorkspace';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
@@ -33,6 +34,7 @@ type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
 type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
+const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,24,26,27,28,29]);
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
@@ -239,7 +241,7 @@ export default function Learning(){
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
   {!!items.length&&<>
-   {!busy&&courseInfo.slug===slug&&index===0&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
+   {!busy&&courseInfo.slug===slug&&index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
    <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
@@ -318,9 +320,9 @@ export default function Learning(){
   </>}
   {progress===100&&index===items.length-1&&!reviewMode&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
-   {index===0&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
+   {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
-   {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
+   {index===0&&(slug!=='autocad-skroty'||!introRead)&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
    {index===0&&!introRead&&<View testID="course-reading-introduction" style={{padding:20,backgroundColor:'white',borderRadius:16,gap:14,marginBottom:20}}>
     <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Jak będziemy się uczyć?</Text>
     <Text style={{fontSize:16,lineHeight:27,color:secondary}}>Najpierw przeczytaj wprowadzenie. Dalej poznasz wyjaśnienia i przykłady, a dopiero potem zadania. Możesz wracać do przeczytanych lekcji. Błędna odpowiedź to okazja do powtórki — nie tracisz przez nią dostępu do kursu.</Text>
@@ -360,6 +362,7 @@ export default function Learning(){
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
    </View>
+   {slug==='autocad-skroty'&&cadWorkshopLessons.has(module)&&<CadWorkspace storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>}
    {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections

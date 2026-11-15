@@ -215,3 +215,35 @@ export function trimLine(target:CadShape,cutters:CadShape[],picked:Point):CadSha
  if(upper!==undefined)parts.push({...target,points:[add(a,multiply(v,upper)),b]});
  return parts;
 }
+
+/**
+ * Educational equivalent of joining touching LINE segments into a polyline.
+ * Non-collinear touching segments remain separate until JOIN/PEDIT is used.
+ * The selected segment, when available, anchors the connected chain.
+ */
+export function joinCadLines(shapes:CadShape[],preferredId?:number):
+ {joined:CadShape;sourceIds:number[]}|undefined{
+ const lines=shapes.filter(s=>s.kind==='line'&&s.points.length===2&&distance(s.points[0],s.points[1])>1e-8);
+ const seed=lines.find(s=>s.id===preferredId)??lines[0];
+ if(!seed)return;
+ const chain=[...seed.points],sourceIds=[seed.id],used=new Set([seed.id]);
+ const eps=1e-5;
+ let added=true;
+ while(added){
+  added=false;
+  for(const candidate of lines){
+   if(used.has(candidate.id)||candidate.layer!==seed.layer)continue;
+   const [a,b]=candidate.points,head=chain[0],tail=chain[chain.length-1];
+   if(distance(a,tail)<eps){chain.push(b);}
+   else if(distance(b,tail)<eps){chain.push(a);}
+   else if(distance(a,head)<eps){chain.unshift(b);}
+   else if(distance(b,head)<eps){chain.unshift(a);}
+   else continue;
+   used.add(candidate.id);sourceIds.push(candidate.id);added=true;break;
+  }
+ }
+ if(sourceIds.length<2)return;
+ const closed=chain.length>=4&&distance(chain[0],chain[chain.length-1])<eps;
+ if(closed)chain.pop();
+ return {joined:{...seed,kind:'poly',closed,points:chain},sourceIds};
+}

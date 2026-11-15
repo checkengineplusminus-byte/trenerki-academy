@@ -145,29 +145,29 @@ async function waitText(locator,expected){
 }
 
 async function verifyCad(page,mobile){
- await openCourse(page,'autocad-skroty');
+ await page.goto(origin+'/nauka?course=autocad-skroty&lesson=1');
+ await page.getByTestId('course-reading-introduction').waitFor();
+ const originals=page.getByTestId('autocad-original-screens');
+ await originals.waitFor();
+ assert.equal(await page.getByTestId('course-intro-photo').count(),0,'Catalog photo must not duplicate on first learning page');
+ assert.equal(await originals.locator('img').count(),1,'Show one real Autodesk interface image');
+ await originals.locator('img').first().evaluate(node=>node.decode());
+ await page.getByRole('button',{name:'Ekran programu'}).click();
+ await page.getByRole('link',{name:/Otwórz oficjalną instrukcję Autodesk/}).waitFor();
+ await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+ assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'The welcome screen must not repeat in the practical lesson');
  const method=page.getByTestId('autocad-lesson-method');
  await method.waitFor();
  await method.getByText('CAD to dane, nie obrazek',{exact:true}).waitFor();
- assert.equal(await page.getByTestId('cad-workspace').count(),0,'Never present a substitute as Autodesk AutoCAD');
- assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Do not show the same old CAD practice panel in every lesson');
- assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Do not repeat a full AutoCAD screen by default');
- await page.getByRole('button',{name:'Ekran programu'}).click();
- const originals=page.getByTestId('autocad-original-screens');
- await originals.waitFor();
- const images=originals.locator('img');
- await images.first().waitFor();
- assert.equal(await images.count(),1);
- for(const img of await images.all())await img.evaluate(node=>node.decode());
- await page.getByRole('link',{name:/Otwórz oficjalną instrukcję Autodesk/}).waitFor();
- await page.getByRole('button',{name:'Pojęcia'}).click();
- assert.equal(await page.getByTestId('autocad-original-screens').count(),0);
+ const cad=page.getByTestId('cad-workspace');
+ await cad.waitFor();
+ assert.equal(await cad.getByTestId('cad-command').count(),1,'Interactive command prompt must be present');
+ assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Do not repeat the obsolete text-only CAD panel');
  await page.getByRole('button',{name:'L · Linia',exact:true}).click();
- await page.getByText('Przed użyciem',{exact:false}).first().waitFor();
  assert.equal(await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).count(),0);
  await page.getByRole('button',{name:/^[A-C]\. L · Linia$/}).click();
  await page.getByText('Wynik zapisany.',{exact:true}).waitFor();
- console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: unique lesson method, original screen on demand, no repeating legacy lab, recorded knowledge question');
+ console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: real welcome screenshot → separate interactive lesson with LINE and quiz');
 }
 
 async function verifyExcel(page,mobile){
@@ -425,7 +425,8 @@ async function verifyAllCourses(ctx){
   const heading=page.getByTestId('lesson-heading');
   await heading.waitFor();
   assert.equal(await heading.innerText(),course.outline[0],course.id+': opening title');
-  await verifyIntroPhoto(page,course.id);
+  if(course.id==='autocad-skroty')assert.equal(await page.getByTestId('course-intro-photo').count(),0,'AutoCAD study page must not repeat the catalog cover photo');
+  else await verifyIntroPhoto(page,course.id);
   const material=sample(course.id);
   const q=material.construction?.roleplay??material.learning;
   assert(q?.options?.[q.correct],course.id+': valid first checkpoint');
