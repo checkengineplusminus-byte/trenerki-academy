@@ -1,7 +1,7 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {Pressable,ScrollView,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import CadRibbonIcon from './CadRibbonIcon.web';
-import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection} from './CadSelection';
+import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection,nearestCadObjects} from './CadSelection';
 import {polarTracking,objectSnapTracking} from './CadTracking';
 import statusReference from '../content/autocad-status-controls-2026.json';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
@@ -181,14 +181,21 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  function selectOneById(id:number,remove=false,location?:Point){
   if(layout||pan||!visible.some(shape=>shape.id===id))return;
   if(tool!=='select'&&!session.selecting)return;
-  if(selectionCycling&&location){
+  if(location){
    const point=worldPoint(location,view,size);
-   const hits=[...visible].reverse().filter(shape=>nearEdge(shape,point,baseTolerance)||shape.fill&&contains(shape,point));
-   if(hits.length>1){
-    const key=hits.map(shape=>shape.id).join(',');
-    const index=key===lastCycle.current.ids?(lastCycle.current.index+1)%hits.length:0;
-    lastCycle.current={ids:key,index};id=hits[index].id;
-    tell('CYCLING: nakładający się obiekt '+(index+1)+'/'+hits.length+'.');
+   // Touch targets on close parallel lines may overlap. Select by actual CAD
+   // distance, not by whichever invisible SVG hit area is on top.
+   const hits=nearestCadObjects(visible,point,baseTolerance);
+   if(hits.length){
+    if(selectionCycling&&hits.length>1){
+     const key=hits.map(hit=>hit.id).join(',');
+     const index=key===lastCycle.current.ids?(lastCycle.current.index+1)%hits.length:0;
+     lastCycle.current={ids:key,index};id=hits[index].id;
+     tell('CYCLING: nakładający się obiekt '+(index+1)+'/'+hits.length+'.');
+    }else{
+     const first=hits[0],underPointer=hits.find(hit=>hit.id===id);
+     id=underPointer&&Math.abs(underPointer.distance-first.distance)<1e-6?underPointer.id:first.id;
+    }
    }
   }
   const ids=remove?mergeCadSelection(selectedVisible,[id],true):
