@@ -151,27 +151,60 @@ export function fitDrawing(shapes:CadShape[],size:Size):Camera{
   (right-left)/Math.max(1,size.width*.78),(top-bottom)/Math.max(1,size.height*.75))};
 }
 
-export function snapPoint(point:Point,shapes:CadShape[],tolerance:number){
- let nearest:{point:Point;label:string}|undefined,best=tolerance;
+export type CadSnapMode='endpoint'|'midpoint'|'center'|'quadrant'|'intersection'|'nearest'|'geometric'|'node';
+export function snapPoint(point:Point,shapes:CadShape[],tolerance:number,
+ modes:CadSnapMode[]=['endpoint','midpoint','center','quadrant']):{point:Point;label:string}|undefined{
+ const enabled=new Set(modes),hits:{point:Point;label:string;d:number}[]=[];
  const check=(candidate:Point,label:string)=>{
   const d=distance(point,candidate);
-  if(d<best){best=d;nearest={point:candidate,label};}
+  if(d<=tolerance)hits.push({point:candidate,label,d});
+ };
+ const segments:([Point,Point])[]=[];
+ const addProjection=(a:Point,b:Point)=>{
+  const dx=b.x-a.x,dy=b.y-a.y,n=dx*dx+dy*dy;
+  if(n<1e-14)return a;
+  const t=Math.max(0,Math.min(1,((point.x-a.x)*dx+(point.y-a.y)*dy)/n));
+  return {x:a.x+t*dx,y:a.y+t*dy};
  };
  for(const shape of shapes){
+  const vertices=outline(shape);
   if(shape.kind==='circle'){
-   const [c,e]=shape.points,r=distance(c,e);
-   check(c,'Środek');
-   for(const offset of [{x:r,y:0},{x:-r,y:0},{x:0,y:r},{x:0,y:-r}])check(add(c,offset),'Kwadrant');
-  }else if(shape.kind==='arc'){
-   for(const p of shape.points)check(p,'Punkt łuku');
-   const arc=arcData(shape.points);
-   if(arc)check(arc.center,'Środek');
-  }else if(shape.kind!=='dimension'){
-   for(const p of outline(shape))check(p,'Koniec');
-   for(const [a,b] of edges(shape))check(multiply(add(a,b),.5),'Środek odcinka');
+   const [center,rim]=shape.points,r=distance(center,rim);
+   if(enabled.has('center'))check(center,'Środek');
+   if(enabled.has('quadrant'))for(const d of [{x:r,y:0},{x:-r,y:0},{x:0,y:r},{x:0,y:-r}])
+    check(add(center,d),'Kwadrant');
+   if(enabled.has('nearest')&&r>0){
+    const len=distance(center,point);
+    if(len>0)check(add(center,multiply(subtract(point,center),r/len)),'Najbliższy');
+   }
+   continue;
+  }
+  if(enabled.has('endpoint')&&shape.kind!=='dimension')for(const p of vertices)check(p,'Koniec');
+  if(enabled.has('node')&&shape.kind==='dimension')for(const p of shape.points)check(p,'Węzeł');
+  if(enabled.has('geometric')&&isClosed(shape)&&vertices.length>=3){
+   const centroid=vertices.reduce((sum,p)=>add(sum,p),{x:0,y:0});
+   check(multiply(centroid,1/vertices.length),'Środek geometryczny');
+  }
+  for(const [a,b] of edges(shape)){
+   segments.push([a,b]);
+   if(enabled.has('midpoint'))check(multiply(add(a,b),.5),'Środek odcinka');
+   if(enabled.has('nearest'))check(addProjection(a,b),'Najbliższy');
   }
  }
- return nearest;
+ if(enabled.has('intersection')){
+  const cross=(a:Point,b:Point)=>a.x*b.y-a.y*b.x;
+  // Stop after 1200 comparisons to keep the browser responsive for dense drawings.
+  let count=0;
+  for(let i=0;i<segments.length;i++)for(let j=i+1;j<segments.length;j++){
+   if(++count>1200)break;
+   const [a,b]=segments[i],[c,d]=segments[j],v=subtract(b,a),w=subtract(d,c),den=cross(v,w);
+   if(Math.abs(den)<1e-9)continue;
+   const t=cross(subtract(c,a),w)/den,u=cross(subtract(c,a),v)/den;
+   if(t>=0&&t<=1&&u>=0&&u<=1)check(add(a,multiply(v,t)),'Przecięcie');
+  }
+ }
+ hits.sort((a,b)=>a.d-b.d);
+ return hits.length?{point:hits[0].point,label:hits[0].label}:undefined;
 }
 
 export function transformShape(shape:CadShape,transform:(point:Point)=>Point,preserveRect=true){
