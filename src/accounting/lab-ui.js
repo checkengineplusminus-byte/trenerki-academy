@@ -156,17 +156,27 @@ export function mountLab(root,db){
  function lifecycleRoadmap(){
   const audit=auditCompanyLifecycle(ws.state,scenario);
   const labels={passed_training:'Zapisane i sprawdzone w ćwiczeniu',needs_work:'Do wykonania',not_implemented:'Brak pełnej funkcji'};
+  // Każdy etap prowadzi do istniejącego modułu, także ostatni, którego
+  // część urzędowa NIE jest zaimplementowana. Przycisk otwiera tylko raport.
+  const go=step=>{
+   if(step.status==='passed_training')return '<span class="muted">Etap już sprawdzony</span>';
+   const label=step.status==='not_implemented'?'Zobacz kontrolę szkoleniową':'Otwórz etap';
+   if(step.href)return '<a href="'+e(step.href)+'">'+e(label)+'</a>';
+   if(step.tab)return button('tab',label,step.tab);
+   return '<span class="muted">Brak samodzielnego ekranu</span>';
+  };
   const rows=audit.steps.map((step,index)=>
    '<tr><td>'+(index+1)+'. '+e(step.label)+'</td><td>'+e(labels[step.status])+
-   '</td><td>'+e(step.detail)+'</td></tr>');
-  const next=audit.steps.find(x=>x.status==='needs_work');
+   '</td><td>'+e(step.detail)+'</td><td>'+go(step)+'</td></tr>');
+  const next=audit.steps.find(x=>x.status==='needs_work'||x.status==='not_implemented');
   const jump=next?.href?'<a href="'+e(next.href)+'">Otwórz kolejny etap →</a>':
-   next?.tab?button('tab','Otwórz kolejny etap',next.tab,'primary'):'';
+   next?.tab?button('tab',next.status==='not_implemented'?
+    'Zobacz kontrolę szkoleniową — bez wysyłki':'Otwórz kolejny etap',next.tab,'primary'):'';
   return '<section class="card"><h2>Jedna ścieżka: co naprawdę jest zrobione?</h2>'+
    '<p><strong>'+audit.finished_training_stages+'/'+audit.stage_count+'</strong> elementów praktyki potwierdzonych na podstawie zapisów. To nie jest procent gotowości kursu ani odbiór księgowy.</p>'+
    '<p class="notice"><strong>Okres biura:</strong> '+e(audit.period_scope.month||'nieustalony')+
    ' (miesiąc daty wystawienia faktur; tylko umowa zadania, nie kwalifikacja podatkowa). Zakup, sprzedaż, zapłaty, płace i majątek są zaliczane wyłącznie w ramach wskazanego miesiąca.</p>'+
-   table(['Etap','Status','Co oznacza'],rows)+
+   table(['Etap','Status','Co oznacza','Działanie'],rows)+
    '<p class="error">'+e(audit.warning)+'</p>'+
    '<p class="muted">Zamknięcie, KSeF/JPK/UPO, prawdziwy E2E dwóch kont, RLS, recenzja eksperta i odtworzenie backupu wymagają osobnych testów.</p>'+
    (jump?'<div class="actions">'+jump+'</div>':'')+'</section>';
