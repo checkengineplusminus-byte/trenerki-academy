@@ -54,8 +54,8 @@ for(const required of [
  'excel-first-step-explanation','excel-first-formula-notice',
  'excel-first-step-success','Nie wiem, co wpisać',
  'checkFirstDayAnswer(answer','keyboardType="default"',
- 'Zanim zaczniesz liczyć','Wyświetla'
-].filter(x=>x!=='Wyświetla')){
+ 'Zanim zaczniesz liczyć'
+]){
  assert(ui.includes(required),'Brakuje dydaktycznego elementu: '+required);
 }
 assert(!ui.includes('keyboardType="decimal-pad"'),'Klawiatura musi pozwolić wpisać = i litery na telefonie');
