@@ -101,6 +101,8 @@ export function mountLab(root,db){
    next?.tab?button('tab','Otwórz kolejny etap',next.tab,'primary'):'';
   return '<section class="card"><h2>Jedna ścieżka: co naprawdę jest zrobione?</h2>'+
    '<p><strong>'+audit.finished_training_stages+'/'+audit.stage_count+'</strong> elementów praktyki potwierdzonych na podstawie zapisów. To nie jest procent gotowości kursu ani odbiór księgowy.</p>'+
+   '<p class="notice"><strong>Okres biura:</strong> '+e(audit.period_scope.month||'nieustalony')+
+   ' (miesiąc daty wystawienia faktur; tylko umowa zadania, nie kwalifikacja podatkowa). Zakup, sprzedaż, zapłaty, płace i majątek są zaliczane wyłącznie w ramach wskazanego miesiąca.</p>'+
    table(['Etap','Status','Co oznacza'],rows)+
    '<p class="error">'+e(audit.warning)+'</p>'+
    '<p class="muted">Zamknięcie, KSeF/JPK/UPO, prawdziwy E2E dwóch kont, RLS, recenzja eksperta i odtworzenie backupu wymagają osobnych testów.</p>'+

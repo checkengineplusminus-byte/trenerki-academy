@@ -1200,3 +1200,38 @@ test('Ścieżka: zbilansowane, ale błędne konto banku nie zalicza rozrachunkó
  assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
  assert.equal(r.completed,false);
 });
+
+test('Jeden okres: sprzedaż i zakup z różnych miesięcy nie zaliczają faktur',()=>{
+ const s=fullScenario();
+ s.invoices[0].date='2026-10-01';
+ const r=auditCompanyLifecycle(s,null);
+ assert.equal(r.period_scope.month,'2026-11');
+ assert.deepEqual(r.period_scope.seen_invoice_months,['2026-10','2026-11']);
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'needs_work');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+});
+test('Jeden okres: prawidłowy dekret przelewu z innego miesiąca nie zalicza banku',()=>{
+ const s=fullScenario();
+ s.bank[0].date='2026-12-05';
+ const r=auditCompanyLifecycle(s,null);
+ assert.equal(r.period_scope.month,'2026-11');
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+});
+test('Jeden okres: obie faktury przesunięte na grudzień wymagają grudniowych przelewów',()=>{
+ const s=fullScenario();
+ for(const invoice of s.invoices)invoice.date='2026-12-01';
+ const r=auditCompanyLifecycle(s,null);
+ assert.equal(r.period_scope.month,'2026-12');
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(r.steps.find(x=>x.key==='bank').status,'needs_work');
+});
+test('Jeden okres: dodatkowe faktury późniejszego miesiąca rozpoczynają nowy okres',()=>{
+ const s=fullScenario();
+ s.invoices.push({...s.invoices[0],id:'new-period',number:'CW/FV/12',date:'2026-12-01'});
+ const r=auditCompanyLifecycle(s,null);
+ assert.equal(r.period_scope.month,'2026-12');
+ assert.equal(r.steps.find(x=>x.key==='invoices').status,'needs_work');
+ assert.equal(r.finished_training_stages,0);
+ assert.equal(r.integrated_full_cycle,'not_tested');
+});
