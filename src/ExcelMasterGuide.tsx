@@ -39,6 +39,12 @@ export default function ExcelMasterGuide(){
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>To niezależny kurs TRENERKI, a nie oficjalne szkolenie ani certyfikacja Microsoft. Część operacji wykonujesz w prawdziwym Excelu; szkoleniowy symulator odtwarza tylko wybrane funkcje.</Text>
    <Text style={{color:'#256347',fontWeight:'900',fontSize:14}}>{expanded?'Zwiń podręcznik i wróć do lekcji ▴':'Otwórz szczegółowy podręcznik i wyszukiwarkę funkcji ▾'}</Text>
   </Pressable>
+  <Pressable accessibilityRole="link" accessibilityLabel="Otwórz prawdziwy Microsoft Excel w przeglądarce"
+   onPress={()=>link('https://www.microsoft.com/pl-pl/microsoft-365/excel')}
+   style={{marginHorizontal:mobile?12:17,marginVertical:10,padding:11,minHeight:48,borderRadius:9,backgroundColor:'white',borderWidth:1,borderColor:outline,justifyContent:'center'}}>
+   <Text style={{fontSize:13,color:'#226486',fontWeight:'900',textDecorationLine:'underline'}}>Ćwicz równolegle w prawdziwym Microsoft Excel dla przeglądarki ↗</Text>
+   <Text style={{fontSize:11,color:muted,marginTop:3}}>Otwiera zewnętrzną stronę Microsoft; może być wymagane konto. Funkcje zależą od wersji.</Text>
+  </Pressable>
   {expanded&&<View style={{padding:mobile?12:17,gap:14}}>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
     {([{id:'plan',name:'39 rozdziałów krok po kroku'},{id:'functions',name:'514 funkcji A–Z'},{id:'print',name:'PDF, druk i liczba stron'}] as {id:Tab;name:string}[]).map(x=>
