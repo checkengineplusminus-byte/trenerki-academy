@@ -139,7 +139,7 @@ async function saved(f,prior){
   throw new Error('Mock save timed out at version '+prior+'; UI errors: '+detail.join(' | '));}
  assert.equal(f.model().version,prior+1);
 }
-const tab=page=>page.locator('button[data-action="tab"][data-id="simulator"]');
+const tab=page=>page.locator('nav button[data-action="tab"][data-id="simulator"]');
 const choose=(page,selector,value)=>page.locator(selector).selectOption(value);
 try{
 
