@@ -63,7 +63,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     </View>)}
    </View>
   </View>}
-  {courseSlug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-library-'+lessonNo} lessonNo={lessonNo}/>}
+  {courseSlug==='excel-skroty'&&lessonNo!==0&&<ExcelAcademyLibrary key={'excel-library-'+lessonNo} lessonNo={lessonNo}/>} 
   {courseSlug==='excel-skroty'&&<ExcelDeepLesson key={'excel-deep-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='windows-skroty'&&<WindowsPracticeMission key={lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&<ExcelProfessionalMission key={'excel-mission-'+lessonNo} lessonNo={lessonNo}/>}

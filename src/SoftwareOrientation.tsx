@@ -157,7 +157,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
  const {width}=useWindowDimensions(),mobile=width<650;
  const p=programs[slug];
  const [selectedTerm,setSelectedTerm]=useState(0),[selectedZone,setSelectedZone]=useState(0);
- const [tab,setTab]=useState<Tab>(mobile?'practice':'interface'),[imageFailed,setImageFailed]=useState(false);
+ const [tab,setTab]=useState<Tab>(slug==='excel-skroty'?'interface':mobile?'practice':'interface'),[imageFailed,setImageFailed]=useState(false);
  if(!p)return null;
  return <View style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
   <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>

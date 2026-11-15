@@ -82,7 +82,12 @@ test('Browser UI is accessible and never pretends bonus chapters are formal cert
  assert(ui.includes('Odpowiedź w dodatkowym rozdziale Excel'));
  assert(ui.includes('Nie zmieniają Twojego postępu ani warunków dyplomu'));
  assert(ui.includes('lessonNo===0'),'First lesson must default to open history');
- assert(illustrated.includes('<ExcelAcademyLibrary'),'Library not connected to course');
+ assert(illustrated.includes('<ExcelAcademyLibrary'),'Reference library must stay available in later lessons');
+ const app=read('app/nauka.tsx');
+ const libraryPosition=app.indexOf("<ExcelAcademyLibrary key={'excel-start-'");
+ const orientationPosition=app.indexOf('<SoftwareOrientation slug={slug}');
+ const practicePosition=app.indexOf('<ExcelFirstDayPractice/>');
+ assert(libraryPosition>=0&&orientationPosition>=0&&practicePosition>=0&&libraryPosition<orientationPosition&&orientationPosition<practicePosition,'Teach history and interface BEFORE testing first-time learners');
  assert(orientation.includes("'excel-skroty'"),'Excel onboarding not preserved');
 });
 
@@ -97,7 +102,7 @@ test('First-day entry provides TWO distinct novice environments and checks evide
  assert(ui.includes('nie zapisują się na Twoim dysku'),"Do not pretend to access the user's PC");
  const entrance=app.indexOf("<ExcelFirstDayPractice/>");
  const orientation=app.indexOf("<SoftwareOrientation slug={slug}");
- assert(entrance>=0&&orientation>=0&&entrance<orientation,'Hands-on beginner orientation should precede expert software text');
+ assert(entrance>=0&&orientation>=0&&orientation<entrance,'Real Excel interface orientation must precede hands-on questions');
  for(const [file,expected] of [
   ['public/academy/assets/excel-firstday-home.csv','Zakupy spozywcze;2;45'],
   ['public/academy/assets/excel-firstday-parish.csv','Ogrzewanie sali;2;180']

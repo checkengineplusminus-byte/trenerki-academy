@@ -12,6 +12,7 @@ import GuidedDialogue from '../src/GuidedDialogue';
 import CarpentryPracticeLab,{CarpentryCalculatorDirectory,hasCarpentryLab} from '../src/CarpentryPracticeLab';
 import CourseIntro from '../src/CourseIntro';
 import ExcelFirstDayPractice from '../src/ExcelFirstDayPractice';
+import {ExcelAcademyLibrary} from '../src/ExcelAcademyLibrary';
 import CourseIntroPhoto from '../src/CourseIntroPhoto';
 import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
@@ -281,8 +282,10 @@ export default function Learning(){
   {progress===100&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
    {index===0&&!hasSoftwareOrientation(slug)&&!isLogisticsCourse(slug)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
-   {index===0&&slug==='excel-skroty'&&<ExcelFirstDayPractice/>}
+   {index===0&&slug==='excel-skroty'&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
+   {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
    {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
+   {index===0&&slug==='excel-skroty'&&<ExcelFirstDayPractice/>}
    {index>=0&&index<=2&&hasSoftwareMenuLab(slug)&&<SoftwareMenuLab slug={slug}/>}
     {hasCampaignLab(slug)&&index>=0&&[0,2,4,5,7,10,11].includes(index)&&<CampaignWorkshop slug={slug} lessonNo={module}/>}
    {slug!=='ciesla-przygotowanie-czeladnicze'&&(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}

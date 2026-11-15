@@ -296,11 +296,11 @@ async function totalBeginner(browser,p,round){
    const day=document.querySelector('[data-testid="excel-first-day"]');
    const orientation=document.querySelector('[data-testid="software-orientation"]');
    const library=document.querySelector('[data-testid="excel-encyclopedia"]');
-   return {beforeLibrary:!!day&&!!library&&!!(day.compareDocumentPosition(library)&Node.DOCUMENT_POSITION_FOLLOWING),
-           beforeOrientation:!orientation||!!day&&(!!(day.compareDocumentPosition(orientation)&Node.DOCUMENT_POSITION_FOLLOWING))};
+   return {afterLibrary:!!day&&!!library&&!!(library.compareDocumentPosition(day)&Node.DOCUMENT_POSITION_FOLLOWING),
+           afterOrientation:!!orientation&&!!day&&(!!(orientation.compareDocumentPosition(day)&Node.DOCUMENT_POSITION_FOLLOWING))};
   });
-  assert(earlier.beforeLibrary,'Novice hands-on exercise must appear before the giant glossary');
-  assert(earlier.beforeOrientation,'Novice exercise must appear before technical orientation');
+  assert(earlier.afterLibrary,'First show Excel history and introductory glossary');
+  assert(earlier.afterOrientation,'Then show accurate interface guide before exercise');
   const cookie=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
   if(await cookie.isVisible().catch(()=>false))await cookie.click();
   await lab.getByRole('button',{name:'Wybierz przykład: '+(p.track==='dom'?'Budżet domowy':'Wydatki parafii')}).click();
