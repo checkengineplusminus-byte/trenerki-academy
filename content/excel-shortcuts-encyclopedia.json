@@ -453,7 +453,7 @@
       "title": "Usuń zawartość",
       "lessonNo": 4,
       "platform": "Excel na komputerze z Windows; część skrótów różni się w przeglądarce i na Macu",
-      "before": "Komórka ma złą cenę",
+      "before": "Komórka z błędną ceną 1500 jest zaznaczona, a prawidłowa cena ma wynosić 150.",
       "after": "Usuwa zawartość bez konieczności usuwania całego wiersza",
       "why": "Skrót „Delete” uruchamia działanie „Usuń zawartość”. Korzystaj z niego dopiero po sprawdzeniu, co masz zaznaczone; opisana operacja dotyczy tego zaznaczenia lub skoroszytu.",
       "practice": "Otwórz testowy skoroszyt. Stan wyjściowy: komórka ma złą cenę. Użyj Delete. Potwierdź, czy usuwa zawartość bez konieczności usuwania całego wiersza. Jeśli nie, sprawdź zaznaczenie i układ klawiatury.",
