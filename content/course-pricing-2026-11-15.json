@@ -1,0 +1,511 @@
+{
+  "schema": 1,
+  "changed_at": "2026-11-15",
+  "currency": "PLN",
+  "type": "permanent standard pricing adjustment (not promotional or time-limited price labels)",
+  "note": "The 30-day lowest historical prices were not available for verification; do not claim a percentage promotion or display old-price strike-through.",
+  "legal_reference": "https://prawakonsumenta.uokik.gov.pl/prawo-do-informacji/informacje-o-obnizkach-cen/",
+  "course_count": 82,
+  "published_count": 81,
+  "change_count": 80,
+  "free_course": "excel-skroty",
+  "free_courses_after_change": [
+    "excel-skroty",
+    "swiety-mikolaj",
+    "zaufany-wolontariusz"
+  ],
+  "courses": [
+    {
+      "slug": "angielski-na-budowie",
+      "published": true,
+      "price_before_grosze": 26500,
+      "price_after_grosze": 18500
+    },
+    {
+      "slug": "apartamenty",
+      "published": true,
+      "price_before_grosze": 22400,
+      "price_after_grosze": 15500
+    },
+    {
+      "slug": "astro-consafe-wms",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "autocad-skroty",
+      "published": true,
+      "price_before_grosze": 11600,
+      "price_after_grosze": 7900
+    },
+    {
+      "slug": "axapta-dynamics-magazyn",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "bdo",
+      "published": true,
+      "price_before_grosze": 26700,
+      "price_after_grosze": 18900
+    },
+    {
+      "slug": "bednarz",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "blizej-dziecka",
+      "published": true,
+      "price_before_grosze": 16400,
+      "price_after_grosze": 11500
+    },
+    {
+      "slug": "blue-yonder-wms",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "brygadzista",
+      "published": true,
+      "price_before_grosze": 22400,
+      "price_after_grosze": 15500
+    },
+    {
+      "slug": "ciesla-przygotowanie-czeladnicze",
+      "published": true,
+      "price_before_grosze": 24600,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "dostepne-pdf",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "dziennik-kota",
+      "published": true,
+      "price_before_grosze": 26900,
+      "price_after_grosze": 18900
+    },
+    {
+      "slug": "ekonomia-domowa-bez-dlugow",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "excel-skroty",
+      "published": true,
+      "price_before_grosze": 16600,
+      "price_after_grosze": 0
+    },
+    {
+      "slug": "facebook-ads-promocja",
+      "published": true,
+      "price_before_grosze": 17300,
+      "price_after_grosze": 11900
+    },
+    {
+      "slug": "festyn",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "garncarz-tradycja",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "gontarz",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "google-ads-promocja",
+      "published": true,
+      "price_before_grosze": 17300,
+      "price_after_grosze": 11900
+    },
+    {
+      "slug": "gpsr",
+      "published": true,
+      "price_before_grosze": 26700,
+      "price_after_grosze": 18900
+    },
+    {
+      "slug": "infor-wms",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "introligator-tradycja",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "jestem-eko",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "kaletnik-tradycja",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "kgw",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "kierownik-budowy",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "kolodziej",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "koordynator",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "kowal-tradycja",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "kryzys-po-40-bez-dlugow",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "ksiegowosc-od-podstaw",
+      "published": false,
+      "price_before_grosze": 99900,
+      "price_after_grosze": 69900
+    },
+    {
+      "slug": "lepsza-mama",
+      "published": true,
+      "price_before_grosze": 16400,
+      "price_after_grosze": 11500
+    },
+    {
+      "slug": "lepszy-cukiernik",
+      "published": true,
+      "price_before_grosze": 14900,
+      "price_after_grosze": 10500
+    },
+    {
+      "slug": "lepszy-kucharz",
+      "published": true,
+      "price_before_grosze": 14900,
+      "price_after_grosze": 10500
+    },
+    {
+      "slug": "lepszy-szef",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "lepszy-tata",
+      "published": true,
+      "price_before_grosze": 16400,
+      "price_after_grosze": 11500
+    },
+    {
+      "slug": "ludwisarz",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "manhattan-active-wms",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "mierz-ponad-sily",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "mlynarz-tradycyjny",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "mocny-charakter",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "nie-lubie-ludzi",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "nie-marnuj-jedzenia",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "niemiecki-na-budowie",
+      "published": true,
+      "price_before_grosze": 26500,
+      "price_after_grosze": 18500
+    },
+    {
+      "slug": "norweski-na-budowie",
+      "published": true,
+      "price_before_grosze": 26500,
+      "price_after_grosze": 18500
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "published": true,
+      "price_before_grosze": 9900,
+      "price_after_grosze": 6900
+    },
+    {
+      "slug": "odbiory",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "ongoing-wms",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "opieka-seniorzy",
+      "published": true,
+      "price_before_grosze": 17700,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "oracle-wms-cloud",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "partner-z-uzaleznieniem",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "pasieka",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "petsitter",
+      "published": true,
+      "price_before_grosze": 26900,
+      "price_after_grosze": 18900
+    },
+    {
+      "slug": "plecionkarz",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "pomagaj-dziecku-w-lekcjach",
+      "published": true,
+      "price_before_grosze": 16400,
+      "price_after_grosze": 11500
+    },
+    {
+      "slug": "powroznik",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "poznaj-siebie",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "rodzice-50-50",
+      "published": true,
+      "price_before_grosze": 16400,
+      "price_after_grosze": 11500
+    },
+    {
+      "slug": "rymarz",
+      "published": true,
+      "price_before_grosze": 17900,
+      "price_after_grosze": 12500
+    },
+    {
+      "slug": "sap-ewm-magazyn",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "sap-tm-transport",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "sitarz",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "snycerz",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "published": true,
+      "price_before_grosze": 0,
+      "price_after_grosze": 0
+    },
+    {
+      "slug": "szewc-tradycja",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "tkacz-reczny",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "transport-logistyka-praktycznie",
+      "published": true,
+      "price_before_grosze": 20100,
+      "price_after_grosze": 13900
+    },
+    {
+      "slug": "trawnik-jestem-ogrodnikiem",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "windows-skroty",
+      "published": true,
+      "price_before_grosze": 16000,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "word-skroty",
+      "published": true,
+      "price_before_grosze": 13400,
+      "price_after_grosze": 9500
+    },
+    {
+      "slug": "woznica",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "wsparcie-adhd",
+      "published": true,
+      "price_before_grosze": 16400,
+      "price_after_grosze": 11500
+    },
+    {
+      "slug": "wspolnota",
+      "published": true,
+      "price_before_grosze": 23900,
+      "price_after_grosze": 16900
+    },
+    {
+      "slug": "wyjdz-z-toksycznego-zwiazku",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "zaczynam-od-zera",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "zaufany-wolontariusz",
+      "published": true,
+      "price_before_grosze": 0,
+      "price_after_grosze": 0
+    },
+    {
+      "slug": "zdun-tradycja",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "zecer",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "zegarmistrz-tradycja",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    },
+    {
+      "slug": "zwiazek-rozmowa",
+      "published": true,
+      "price_before_grosze": 15600,
+      "price_after_grosze": 10900
+    }
+  ]
+}

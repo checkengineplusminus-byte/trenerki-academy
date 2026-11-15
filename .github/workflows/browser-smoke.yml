@@ -22,6 +22,9 @@ on:
       - 'public/sitemap.xml'
       - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
+      - 'scripts/test-course-pricing.mjs'
+      - 'scripts/pricing-browser.mjs'
+      - 'content/course-pricing-2026-11-15.json'
       - 'scripts/company-browser.mjs'
       - 'app/nauka.tsx'
       - 'app/_layout.tsx'
@@ -55,10 +58,12 @@ jobs:
       - name: Check desktop and mobile browser experience
         run: |
           node scripts/gift-card-ui-state.test.mjs
+          node --test scripts/test-course-pricing.mjs
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2
           node scripts/test-support.mjs
           node scripts/browser-smoke.mjs http://127.0.0.1:8787
+          node scripts/pricing-browser.mjs http://127.0.0.1:8787
           node scripts/seo-structure-test.mjs /tmp/trenerki-browser
           node scripts/learning-browser.mjs http://127.0.0.1:8787
           node scripts/company-browser.mjs http://127.0.0.1:8787
