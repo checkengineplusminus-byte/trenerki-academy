@@ -1,28 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Windows — pulpit, Start i pasek zadań">
-<rect width="1200" height="720" rx="26" fill="#f4f8f1"/>
-<text x="45" y="59" fill="#173d2a" font-size="30" font-weight="900" font-family="Arial, sans-serif">Windows — pulpit, Start i pasek zadań</text>
-<text x="45" y="90" fill="#627b64" font-size="17" font-family="Arial, sans-serif">Autorska wizualizacja funkcji programu — schemat edukacyjny, wygląd może różnić się w zależności od wersji.</text>
-
-<rect x="40" y="115" width="1120" height="518" rx="18" fill="#b4d1dc" stroke="none"/><rect x="65" y="141" width="1080" height="428" rx="10" fill="#d9e5eb" stroke="none"/>
-<rect x="95" y="180" width="730" height="330" rx="16" fill="#ffffff" stroke="#95b6be"/>
-<rect x="95" y="180" width="730" height="45" rx="11" fill="#e9f0f3" stroke="none"/><text x="119" y="208" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Eksplorator plików</text>
-<rect x="110" y="242" width="179" height="250" rx="10" fill="#f2f6f5" stroke="none"/>
-<text x="132" y="285" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Szybki dostęp</text>
-<text x="132" y="332" font-size="16" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Dokumenty</text>
-<text x="132" y="375" font-size="16" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Pobrane</text>
-<text x="132" y="419" font-size="16" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Obrazy</text>
-<text x="132" y="462" font-size="16" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Ten komputer</text>
-<text x="318" y="279" font-size="15" fill="#5a7668" font-weight="600" font-family="Arial, sans-serif">Ten komputer > Dokumenty > TRENERKI</text>
-<rect x="315" y="302" width="145" height="39" rx="9" fill="#f2e5ca" stroke="none"/><text x="327" y="328" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Oferta.docx</text><rect x="477" y="302" width="145" height="39" rx="9" fill="#e3ebf8" stroke="none"/><text x="489" y="328" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Zdjęcie.jpg</text>
-<rect x="315" y="360" width="145" height="39" rx="9" fill="#e5ebdd" stroke="none"/><text x="327" y="386" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Raport.pdf</text>
-<rect x="40" y="573" width="1120" height="60" rx="12" fill="#123b51" stroke="none"/>
-<rect x="70" y="585" width="44" height="37" rx="10" fill="#a3d8e4" stroke="none"/><text x="83" y="610" font-size="24" fill="#103947" font-weight="600" font-family="Arial, sans-serif">⊞</text>
-<rect x="128" y="585" width="155" height="39" rx="9" fill="#ecf2f1" stroke="none"/><text x="140" y="611" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Szukaj</text>
-<rect x="310" y="585" width="128" height="39" rx="9" fill="#dbe9d4" stroke="none"/><text x="322" y="611" font-size="15" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Foldery</text>
-<text x="918" y="609" font-size="16" fill="white" font-weight="600" font-family="Arial, sans-serif">WIFI     12:00</text>
-<circle cx="84" cy="157" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="78" y="164" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">1</text><text x="113" y="163" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Pulpit i otwarte okna</text>
-<circle cx="101" cy="650" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="95" y="657" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">2</text><text x="130" y="656" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Menu Start</text>
-<circle cx="440" cy="650" r="19" fill="#bfe5b8" stroke="#286346" stroke-width="2"/><text x="434" y="657" font-size="20" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">3</text><text x="469" y="656" font-size="18" fill="#1c3b30" font-weight="600" font-family="Arial, sans-serif">Pasek zadań</text>
-<text x="49" y="694" font-family="Arial, sans-serif" font-size="15" fill="#607b67">TRENERKI ACADEMY · oryginalna ilustracja edukacyjna</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-label="Przykładowy pulpit Windows 11 z niebieską tapetą, ikonami, wyśrodkowanym menu Start, paskiem zadań i dwoma pulpitami">
+<defs>
+<linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#84cdfb"/><stop offset=".42" stop-color="#0b66bf"/><stop offset="1" stop-color="#072675"/></linearGradient>
+<linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8faff"/><stop offset=".27" stop-color="#65d2fc"/><stop offset=".55" stop-color="#387ddc"/><stop offset="1" stop-color="#0a3484"/></linearGradient>
+<linearGradient id="ribbon2" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#cff8ff"/><stop offset=".4" stop-color="#58b4ea"/><stop offset="1" stop-color="#073782"/></linearGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="24"/></filter>
+<clipPath id="screen"><rect x="40" y="104" width="1120" height="540" rx="16"/></clipPath>
+</defs>
+<rect width="1200" height="720" rx="25" fill="#f5f9ff"/>
+<text x="44" y="46" font-family="Arial,sans-serif" font-weight="800" font-size="27" fill="#143c65">Windows 11 · poznaj prawdziwy układ pulpitu</text>
+<text x="44" y="77" font-family="Arial,sans-serif" font-size="16" fill="#536f8d">Tapeta, ikony, otwarte okna, Start i pasek zadań — przykład wyglądu systemu.</text>
+<g clip-path="url(#screen)">
+<rect x="40" y="104" width="1120" height="540" fill="url(#base)"/>
+<ellipse cx="682" cy="389" rx="360" ry="250" fill="#9ee5ff" opacity=".42" filter="url(#blur)"/>
+<path d="M160 491C366 264 568 177 826 224C973 251 1066 328 1166 403C941 351 824 387 708 481C528 627 344 613 160 491Z" fill="url(#ribbon)"/>
+<path d="M178 539C388 535 505 437 627 335C771 213 918 236 1077 293C965 418 840 468 722 511C530 583 368 638 178 539Z" fill="url(#ribbon2)" opacity=".91"/>
+<path d="M286 572C447 470 554 358 713 309C883 258 994 326 1120 396C932 397 821 490 671 561C507 634 413 641 286 572Z" fill="#2c72ca" opacity=".66"/>
+<path d="M193 526C422 486 485 369 629 289" stroke="#d6f9ff" stroke-width="23" opacity=".29" fill="none" filter="url(#blur)"/>
+<!-- Desktop shortcuts -->
+<rect x="58" y="128" width="81" height="75" rx="8" fill="#ffffff" fill-opacity=".09"/>
+<rect x="81" y="137" width="34" height="25" rx="3" fill="#b2e8fa" stroke="#15519b" stroke-width="2"/>
+<rect x="89" y="146" width="18" height="9" rx="1" fill="#ffffff"/>
+<text x="98" y="185" font-family="Arial,sans-serif" font-size="12" text-anchor="middle" fill="#ffffff" font-weight="700">Ten komputer</text>
+<rect x="63" y="228" width="65" height="58" rx="8" fill="#ffffff" fill-opacity=".08"/>
+<path d="M79 244h34l-3 30H82Z" fill="#dfe9ff" stroke="#3460a4" stroke-width="2"/>
+<path d="M84 239h23" stroke="#dfe9ff" stroke-width="5" stroke-linecap="round"/>
+<text x="96" y="302" font-family="Arial,sans-serif" font-size="12" text-anchor="middle" fill="white" font-weight="700">Kosz</text>
+<rect x="69" y="323" width="57" height="58" rx="7" fill="#ffffff" fill-opacity=".06"/>
+<path d="M80 345h32v24H80Z" fill="#ffd870" stroke="#cc973d"/><path d="M80 345v-8h17l7 8" fill="#ffe7a6"/>
+<text x="97" y="396" font-family="Arial,sans-serif" font-size="12" text-anchor="middle" fill="white" font-weight="700">Dokumenty</text>
+<!-- File Explorer window (right) -->
+<rect x="784" y="176" width="335" height="298" rx="14" fill="#fafcff" stroke="#d1e4f6" stroke-width="2"/>
+<rect x="784" y="176" width="335" height="39" rx="14" fill="#eef5fd"/>
+<rect x="784" y="200" width="335" height="15" fill="#eef5fd"/>
+<text x="805" y="200" font-family="Arial,sans-serif" font-size="13" fill="#284668" font-weight="700">📁  Eksplorator plików</text>
+<text x="1070" y="200" font-family="Arial,sans-serif" font-size="15" fill="#33516d">—  □  ×</text>
+<rect x="802" y="228" width="300" height="28" rx="6" fill="#eff5fa"/>
+<text x="815" y="247" font-family="Arial,sans-serif" font-size="11" fill="#45647f">←   →   ↑       Strona główna  ›  Dokumenty</text>
+<rect x="800" y="268" width="95" height="188" rx="6" fill="#f2f7fc"/>
+<text x="811" y="288" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="#45627b">Szybki dostęp</text>
+<text x="812" y="318" font-family="Arial,sans-serif" font-size="12" fill="#45627b">📁 Pulpit</text>
+<text x="812" y="346" font-family="Arial,sans-serif" font-size="12" fill="#45627b">📁 Dokumenty</text>
+<text x="812" y="374" font-family="Arial,sans-serif" font-size="12" fill="#45627b">📁 Pobrane</text>
+<text x="812" y="402" font-family="Arial,sans-serif" font-size="12" fill="#45627b">📁 Obrazy</text>
+<text x="907" y="289" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#315b7a">Dokumenty</text>
+<rect x="913" y="305" width="167" height="39" rx="6" fill="#e8f4fc"/>
+<text x="925" y="328" font-family="Arial,sans-serif" font-size="12" fill="#32577a">📁 Projekty</text>
+<rect x="913" y="357" width="167" height="39" rx="6" fill="#f3f7fb"/>
+<text x="925" y="382" font-family="Arial,sans-serif" font-size="12" fill="#32577a">▤ Oferta.docx</text>
+<text x="913" y="432" font-family="Arial,sans-serif" font-size="11" fill="#70869c">Zapisane w Dokumentach</text>
+<!-- Taskbar -->
+<rect x="40" y="598" width="1120" height="46" fill="#eef7fe" fill-opacity=".94"/>
+<rect x="486" y="610" width="18" height="13" fill="#078be1"/><rect x="507" y="610" width="18" height="13" fill="#078be1"/>
+<rect x="486" y="626" width="18" height="13" fill="#078be1"/><rect x="507" y="626" width="18" height="13" fill="#078be1"/>
+<rect x="537" y="610" width="95" height="29" rx="13" fill="#fbfdff" stroke="#d3e5f5"/>
+<text x="551" y="629" font-family="Arial,sans-serif" font-size="12" fill="#63809c">⌕ Szukaj</text>
+<rect x="652" y="611" width="22" height="22" rx="4" fill="#2876b1"/>
+<rect x="659" y="616" width="8" height="12" fill="#d8f3ff"/>
+<rect x="690" y="612" width="29" height="22" rx="4" fill="#f8c85e"/>
+<rect x="691" y="608" width="16" height="7" rx="3" fill="#ffe3a3"/>
+<text x="733" y="633" font-family="Arial,sans-serif" font-size="21" fill="#356c9a">▣</text>
+<text x="1010" y="622" font-family="Arial,sans-serif" font-size="12" fill="#37627f">◉  ▮  Wi-Fi</text>
+<text x="1077" y="618" font-family="Arial,sans-serif" font-size="11" fill="#315779" text-anchor="middle">12:00</text>
+<text x="1077" y="632" font-family="Arial,sans-serif" font-size="10" fill="#315779" text-anchor="middle">15.11.2026</text>
+</g>
+<rect x="40" y="104" width="1120" height="540" rx="16" fill="none" stroke="#91b4d5" stroke-width="2"/>
+<rect x="40" y="663" width="1120" height="37" rx="10" fill="#e7f3ff"/>
+<text x="56" y="687" font-family="Arial,sans-serif" font-size="14" fill="#234e72" font-weight="700">1. Ikony pulpitu</text>
+<text x="340" y="687" font-family="Arial,sans-serif" font-size="14" fill="#234e72" font-weight="700">2. Okno programu</text>
+<text x="680" y="687" font-family="Arial,sans-serif" font-size="14" fill="#234e72" font-weight="700">3. Start / pasek zadań</text>
+<text x="1090" y="687" font-family="Arial,sans-serif" font-size="11" text-anchor="end" fill="#52718c">Autorska ilustracja · nie zrzut</text>
 </svg>
