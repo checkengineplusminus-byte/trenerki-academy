@@ -410,7 +410,7 @@ try{
   assert.equal(bridge.saves(),0);
  });
  await pass('Chromium: modelowa faktura D04 zostaje przypisana i pozostaje po odświeżeniu',async()=>{
-  await bridge.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+  await bridge.page.locator('nav button[data-action="tab"][data-id="invoices"]').click();
   await bridge.page.locator('button[data-action="new-sale"]').click();
   await bridge.page.locator('#invoice-party').fill('Fikcyjna firma A');
   await bridge.page.locator('#invoice-date').fill('2026-01-04');
@@ -436,7 +436,7 @@ try{
  });
  await pass('Chromium: dodanie prawidłowego dekretu potwierdza jedno ze źródeł',async()=>{
   const inv=bridge.model().state.invoices[0];
-  await bridge.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+  await bridge.page.locator('nav button[data-action="tab"][data-id="invoices"]').click();
   await bridge.page.locator('button[data-action="journal-invoice"][data-id="'+inv.id+'"]').click();
   await bridge.page.locator('[data-group="journal"][data-field="lines.0.debit"]').fill('15000,00');
   await bridge.page.locator('[data-group="journal"][data-field="lines.1.credit"]').fill('15000,00');
