@@ -1317,3 +1317,25 @@ test('Zakup środka trwałego z błędnym kontem nie dostaje szkoleniowego zalic
  assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,false);
  assert.ok(r.issues.some(x=>x.code==='asset_acquisition_posting_mismatch'));
 });
+
+
+import {taxCloseTrainingReportHTML} from '../src/accounting/tax-close-training.js';
+test('Lokalny raport kontrolny do recenzji zawiera kwoty i jawne NIE WYSŁANO',()=>{
+ const s=fullScenario(),html=taxCloseTrainingReportHTML(s);
+ assert.match(html,/BRAK WYSYŁKI URZĘDOWEJ/);
+ assert.match(html,/184,00 PLN/);
+ assert.match(html,/KSeF: NIE WYSŁANO/);
+ assert.match(html,/JPK: NIE WYGENEROWANO/);
+ assert.match(html,/UPO: NIE WYDANO/);
+ assert.match(html,/Odbiór eksperta: NIE PRZEPROWADZONO/);
+ assert.ok(!html.includes('<form'));
+});
+test('Lokalny raport nie wykonuje HTML z nieprawidłowej faktury i nie mutuje danych',()=>{
+ const s=fullScenario();
+ s.invoices[0].number='<script>alert(1)</script>';
+ s.journals=s.journals.filter(j=>j.source_id!==s.invoices[0].id);
+ const before=JSON.stringify(s),html=taxCloseTrainingReportHTML(s);
+ assert.ok(!html.includes('<script>alert(1)</script>'));
+ assert.ok(html.includes('&lt;script&gt;alert(1)&lt;/script&gt;'));
+ assert.equal(JSON.stringify(s),before);
+});

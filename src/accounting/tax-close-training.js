@@ -91,3 +91,41 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   disclaimer:'To kontrola fikcyjnych liczb i dokumentów. Nie tworzy ani nie wysyła KSeF/JPK, nie wyznacza terminu ustawowego, nie udaje UPO i nie zatwierdza rozliczenia.'
  };
 }
+
+
+/** Raport do lokalnego druku i przekazania ekspertowi. Bez prawdziwego formularza. */
+export function taxCloseTrainingReportHTML(state,scenario=null){
+ const r=taxCloseTrainingAudit(state,scenario);
+ const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const money=n=>(n/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' PLN';
+ const body=r.checks.map(c=>'<tr><td>'+escape(c.label)+'</td><td>'+
+  (c.passed?'Zgodne w modelu':'Do uzupełnienia')+'</td><td>'+escape(c.detail)+'</td></tr>').join('');
+ const issues=r.issues.map(x=>'<li>'+escape(x.code)+' — '+escape(x.invoice)+'</li>').join('');
+ const notes=r.review_notes.map(x=>'<li>'+escape(x)+'</li>').join('');
+ return [
+  '<!doctype html><html lang="pl"><head><meta charset="utf-8">',
+  '<meta name="viewport" content="width=device-width,initial-scale=1">',
+  '<title>Trenerki — przegląd szkoleniowy okresu</title>',
+  '<style>body{font:14px/1.5 Arial,sans-serif;max-width:980px;margin:auto;padding:22px;color:#183c2b}',
+  'table{border-collapse:collapse;width:100%}th,td{text-align:left;border:1px solid #c8d8c3;padding:9px;vertical-align:top}',
+  '.warning{border:3px solid #aa503e;padding:16px;font-weight:bold}h1{font-size:24px}',
+  '@media print{body{padding:8mm;font-size:11px}}</style></head><body>',
+  '<div class="warning">WYŁĄCZNIE FIKCYJNE DANE. BRAK WYSYŁKI URZĘDOWEJ. ',
+  'TO NIE JEST JPK, PLIK KSeF, UPO ANI DEKLARACJA PODATKOWA.</div>',
+  '<h1>Raport kontrolny — przygotowanie rozliczenia okresu</h1>',
+  '<p>Okres ćwiczeniowy: <strong>',escape(r.period||'nieustalony'),'</strong>; dokumenty: ',r.source_count,'</p>',
+  '<p>Sprzedaż netto: ',escape(money(r.figures.sale_net_cents)),
+  '; VAT z dokumentów sprzedaży: ',escape(money(r.figures.sale_vat_cents)),
+  '; VAT z dokumentów zakupu: ',escape(money(r.figures.purchase_vat_cents)),
+  '; różnica modelowa: ',escape(money(r.figures.vat_difference_cents)),'</p>',
+  '<h2>Kontrole wykonane przez model</h2><table><thead><tr><th>Warunek</th><th>Stan</th><th>Opis</th></tr></thead><tbody>',
+  body,'</tbody></table>',
+  '<h2>Wyjątki wymagające wyjaśnienia</h2>',issues?'<ul>'+issues+'</ul>':'<p>Brak błędów dokumentowych wykrytych przez ten zakres testów.</p>',
+  '<h2>Uwagi do sprawdzenia przez księgowego</h2>',notes?'<ul>'+notes+'</ul>':'<p>Niezależna recenzja prawna nadal jest wymagana.</p>',
+  '<h2>Status etapów urzędowych</h2><p>KSeF: NIE WYSŁANO. JPK: NIE WYGENEROWANO W SCHEMACIE URZĘDOWYM. UPO: NIE WYDANO.</p>',
+  '<p>',escape(r.disclaimer),'</p>',
+  '<p>Odbiór eksperta: NIE PRZEPROWADZONO. Test dwóch rzeczywistych kont: NIE PRZEPROWADZONO. ',
+  'Niezależne odtworzenie backupu: NIE PRZEPROWADZONO.</p>',
+  '</body></html>'
+ ].join('');
+}
