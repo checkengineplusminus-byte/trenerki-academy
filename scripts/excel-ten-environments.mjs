@@ -129,6 +129,42 @@ async function checkAdvanced(page,id){
   await lab.getByTestId('excel-advanced-total').filter({hasText:'28 245,00 zł'}).waitFor();
  }
 }
+async function checkPro(page,id){
+ const pro=page.getByTestId('excel-pro-case');
+ await pro.waitFor();
+ const url=await pro.getByRole('link',{name:/368-wierszowy CSV/}).getAttribute('href');
+ assert.equal(url,'/academy/assets/excel-professional-368-import.csv');
+ const csv=await page.request.get(base+url);
+ assert.equal(csv.status(),200,'Real expert import CSV should be downloadable');
+ assert((await csv.text()).includes('PRO-0367'));
+ const answer=pro.getByRole('textbox',{name:'Wynik profesjonalnego ćwiczenia Excel'});
+ const validate=()=>pro.getByRole('button',{name:'Sprawdź wynik PRO'}).click();
+ if(id==='director'){
+  await pro.getByRole('button',{name:'Uzgodnij przychód',exact:true}).click();
+  await answer.fill('2128968,5');await validate();
+  await pro.getByTestId('excel-pro-correct').waitFor();
+  return;
+ }
+ assert.equal(id,'it');
+ // Wrong duplicate-only "audit" answer cannot receive expert credit.
+ await answer.fill('PRO-0044');await validate();
+ await pro.getByTestId('excel-pro-incorrect').waitFor();
+ const tasks=[
+  ['Audyt 8 błędów','PRO-0044, PRO-0361, PRO-0362, PRO-0363, PRO-0364, PRO-0365, PRO-0366, PRO-0367'],
+  ['Uzgodnij przychód','2128968,50'],
+  ['Marża po kosztach','703969,22'],
+  ['Region lider','Południe'],
+  ['Miesiąc lider','2026-11'],
+  ['Rabat i częstotliwość','262']
+ ];
+ for(const [label,expected] of tasks){
+  await pro.getByRole('button',{name:label,exact:true}).click();
+  await answer.fill(expected);await validate();
+  await pro.getByTestId('excel-pro-correct').waitFor();
+ }
+ await pro.getByTestId('excel-pro-progress').filter({hasText:'6/6'}).waitFor();
+ console.log('✓ Excel PRO: 368 records, strict eight-ID error detection, 6 checked expert tasks, CSV fetch');
+}
 async function novicePath(page,round){
  const lab=page.getByTestId('excel-workspace'),guide=lab.getByTestId('excel-zero-experience-guide');
  await lab.waitFor();await guide.getByRole('button',{name:'Rozpocznij Excel od zera'}).click();
@@ -179,6 +215,7 @@ async function persona(browser,p,round){
   await region.getByText(m.realExcel,{exact:true}).waitFor();
   if(p.id==='student')await novicePath(page,round);
   if(['accounting','finance','seller','director','it'].includes(p.id))await checkAdvanced(page,p.id);
+  if(['director','it'].includes(p.id))await checkPro(page,p.id);
   const overflow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth}));
   assert(overflow.scroll<=overflow.viewport+3,'Horizontal overflow '+JSON.stringify(overflow));
   assert.deepEqual(events.errors,[],'JavaScript exceptions');
@@ -221,6 +258,10 @@ async function sellerReview(r,browser){
   const csv=await page.request.get(base+'/academy/assets/excel-practice-sales.csv');
   assert.equal(csv.status(),200,'Sales promises actionable downloadable training data');
   assert((await csv.text()).includes('FV-014'));
+  const large=await page.request.get(base+'/academy/assets/excel-professional-368-import.csv');
+  assert.equal(large.status(),200,'Seller: advanced 368-record source must be genuinely downloadable');
+  assert((await large.text()).includes('PRO-0367'),'Seller: challenging corrupted raw source required');
+
   console.log('✓ Cykl '+r+' · SPRZEDAWCA EXCEL: jasne 30 rozdziałów, cena, brak fałszywej certyfikacji, działający CSV');
   return {passed:true,landingVerified:true,download:true};
  }finally{await page.close();}
