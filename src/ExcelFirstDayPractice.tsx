@@ -86,8 +86,8 @@ export default function ExcelFirstDayPractice(){
      <View style={{flex:1.4,gap:4}}>
       <Text style={{fontSize:11.5,color:ink,fontWeight:'700'}}>{row.label}</Text>
       <Pressable accessibilityRole="button" accessibilityState={{selected:selected===i}} accessibilityLabel={'Wybierz pozycję '+row.label}
-       onPress={()=>setSelected(i)} style={{alignSelf:'flex-start',paddingHorizontal:8,paddingVertical:6,minHeight:37,justifyContent:'center',borderRadius:8,backgroundColor:selected===i?'#cae8d4':'#edf4ed'}}>
-       <Text style={{fontSize:11,color:'#285f43',fontWeight:'900'}}>{selected===i?'✓ Wybrane':'Wybierz'}</Text>
+       onPress={()=>setSelected(i)} style={{alignSelf:'flex-start',paddingHorizontal:8,paddingVertical:8,minHeight:44,justifyContent:'center',borderRadius:8,backgroundColor:selected===i?'#cae8d4':'#edf4ed'}}>
+       <Text style={{fontSize:12,color:'#285f43',fontWeight:'900'}}>{selected===i?'✓ Wybrane':'Wybierz'}</Text>
       </Pressable>
      </View>
      <View style={{flex:.7}}>
