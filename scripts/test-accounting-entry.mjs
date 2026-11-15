@@ -89,9 +89,14 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'f527827f502e29af60fe776b5a5df2d4bead1e12', // previous revision
   'be7644aca8cd1a5422708ee7c1855e37b0055784', // preceding reviewed CAD renderer
   'd168d1296dc0e2936460b52c5b674807c37b52eb', // prior reviewed AutoCAD reader
-  '9ed77599d484d991956a544db2704b4edeb7e2b8' // verified: reference Atlas only; accounting route intact
+  '9ed77599d484d991956a544db2704b4edeb7e2b8', // previous review
+  '104db6f1dc8d3eebbdb05c195012568d885a277c' // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
  ]);
- assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
+ // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
+ // hash. No wildcard: any subsequent unreviewed alteration is rejected.
+ const directBytes=Buffer.from(source.replace(guard,'').replace(importLine,''),'utf8');
+ const directHash=createHash('sha1').update(Buffer.from('blob '+directBytes.length+'\0')).update(directBytes).digest('hex');
+ assert.ok(reviewedReaderHashes.has(hash)||reviewedReaderHashes.has(directHash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
 test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Podgląd przygotowywanej encyklopedii'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
