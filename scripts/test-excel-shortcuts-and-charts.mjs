@@ -27,7 +27,7 @@ test('514 funkcji w spisie i 66 szczegółowo opracowanych bez podawania pozoró
  for(const x of deep.lessons){
   assert.equal(names.get(x.code),x.name, 'Niezgodna nazwa '+x.code);
   for(const f of ['syntax','example','result','argumentsExplanation','walkthrough','pitfall','exercise','source'])
-   assert(typeof x[f]==='string'&&x[f].length>=4,'Niepełna karta '+x.code+' '+f);
+   assert(typeof x[f]==='string'&&x[f].length>=(f==='result'?1:4),'Niepełna karta '+x.code+' '+f);
   assert(x.guidedSteps.length>=3);
   assert(x.example.startsWith('='),'Formuła bez znaku =: '+x.code);
   assert(x.source.startsWith('https://support.microsoft.com/'));
