@@ -412,7 +412,7 @@
         "0,0",
         "800,0"
       ],
-      "task": "Wstaw cztery symbole na X=0,800,1600,2400. Zwymiaruj odstępy osiowe oraz długość całkowitą.",
+      "task": "Wstaw cztery symbole na X=0,800,1600,2400. Zwymiaruj odstępy osiowe oraz długość całkowitą. Potwierdź też przy pomocy DIST, że kolejne osie nie są odmierzone od krawędzi słupków. Zachowaj kopię rysunku A przed wprowadzeniem rewizji B.",
       "expected": "Otrzymasz trzy odcinki po 800 mm i zakres osi 2400 mm. Liczba przerw jest o jeden mniejsza od liczby punktów.",
       "commonMistake": "Nie licz światła między krawędziami, gdy umowa mówi o osiach. Zaznacz punkty odniesienia na rysunku.",
       "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
@@ -502,7 +502,7 @@
         "0,0",
         "500,0"
       ],
-      "task": "Zrób kopię DWG, sprawdź UNITS, jeden znany wymiar przez DIST, paletę XREF oraz włącz/wyłącz warstwy.",
+      "task": "Zrób kopię DWG, sprawdź UNITS, jeden znany wymiar przez DIST, paletę XREF oraz włącz/wyłącz warstwy. Wykonaj kopię zapasową, podaj datę otrzymania pliku i sprawdź numer rewizji. Zapisz, które problemy dotyczą geometrii, a które brakujących plików.",
       "expected": "Brakujący podkład to nie to samo co usunięty obiekt. Powinieneś umieć wskazać źródło problemu.",
       "commonMistake": "Nie wykonuj SCALE całego DWG bez uprzedniego pomiaru znanego obiektu i wyjaśnienia jednostek.",
       "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
@@ -571,7 +571,7 @@
         "0,0",
         "3200,0"
       ],
-      "task": "Narysuj dwa odcinki o długościach 3200 i 3170, dodaj wymiary i opisz bazę pomiarową.",
+      "task": "Narysuj dwa odcinki o długościach 3200 i 3170, dodaj wymiary i opisz bazę pomiarową. Następnie zweryfikuj oba punkty pomiarowe i zapisz różnicę ze znakiem, tak aby inny odbiorca mógł samodzielnie odtworzyć obliczenie.",
       "expected": "Różnica pomiar minus projekt wynosi -30 mm. Zapisz jej znak, datę i miejsce.",
       "commonMistake": "Nie zmieniaj modelu tylko na podstawie opisu telefonicznego, jeśli nie wiadomo skąd i dokąd dokonano pomiaru.",
       "verification": "Narysuj prostą linię. Polecenie kończy się, gdy są dwa różne punkty; wynik sprawdź DIST.",
