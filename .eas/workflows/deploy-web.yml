@@ -35,6 +35,8 @@ jobs:
           run: node scripts/check-content-consistency.mjs
         - name: Verify Excel currency calculations and spreadsheet navigation
           run: node scripts/test-excel-currency.mjs
+        - name: Verify Excel first-day formulas on numerical and symbolic answers
+          run: node scripts/test-excel-firstday-formulas.mjs
         - name: Verify Excel function atlas and detailed PDF guide
           run: node --test scripts/test-excel-master-guide.mjs
         - name: Verify course finding with Anielka

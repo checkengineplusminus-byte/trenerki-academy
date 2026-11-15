@@ -23,6 +23,8 @@ on:
       - 'content/excel-deep-lessons.json'
       - 'src/ExcelAcademyLibrary.tsx'
       - 'src/ExcelFirstDayPractice.tsx'
+      - 'src/excelFirstDayAnswers.ts'
+      - 'scripts/test-excel-firstday-formulas.mjs'
       - 'public/academy/assets/excel-firstday-home.csv'
       - 'public/academy/assets/excel-firstday-shop.csv'
       - 'app/nauka.tsx'
@@ -40,6 +42,8 @@ on:
       - 'src/SpreadsheetWorkspace.tsx'
       - 'src/SpreadsheetFormula.ts'
       - 'src/ExcelFirstDayPractice.tsx'
+      - 'src/excelFirstDayAnswers.ts'
+      - 'scripts/test-excel-firstday-formulas.mjs'
       - 'src/SoftwareOrientation.tsx'
       - 'app/nauka.tsx'
       - 'content/excel-function-index-2026.json'
@@ -61,6 +65,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Sprawdź funkcje ekspertów i kurs od zera
         run: node --experimental-strip-types --test scripts/test-excel-expert.mjs scripts/test-excel-pro-case.mjs scripts/test-excel-knowledge.mjs
+      - name: Sprawdź początek Excela — prawidłowe formuły i proste wyjaśnienia
+        run: node scripts/test-excel-firstday-formulas.mjs
       - name: Sprawdź silnik walut i nawigację wirtualnego arkusza
         run: node scripts/test-excel-currency.mjs
       - name: Sprawdź 514 funkcji, 39 rozdziałów i eksport PDF

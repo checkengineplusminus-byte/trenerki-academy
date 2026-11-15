@@ -98,7 +98,7 @@ test('First-day entry provides TWO distinct novice environments and checks evide
  for(const marker of ['Budżet domowy','Mały sklep','Zakupy spożywcze','Długopisy','excel-first-success','excel-first-step','excel-first-error','Sprawdź wykonanie','=B2*C2','=SUMA(D2:D4)'])
   assert(ui.includes(marker),'Missing independent beginner context or exercise: '+marker);
  assert(ui.includes('selected===0')&&ui.includes('count(rows[0].amount)===3'),'Must verify actual selections and edits');
- assert(ui.includes('parseMoney(answer)===total'),'Must check calculated amounts and not permit blind click-through');
+ assert(ui.includes('checkFirstDayAnswer(answer')&&ui.includes('excel-first-worked-example'),'Must validate both formulas and amounts after showing a worked example');
  assert(ui.includes('excel-first-row-number-'),'Explain Excel-like row numbers');
  assert(ui.includes('Pokaż podpowiedź do kroku'),'Novices need explicit contextual help');
  assert(!ui.includes('parafia')&&!ui.includes('parish'),'Never show niche internal test fixtures in public course');
