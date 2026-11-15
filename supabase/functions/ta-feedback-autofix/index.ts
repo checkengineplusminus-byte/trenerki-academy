@@ -131,6 +131,12 @@ Deno.serve(async(req:Request)=>{
    return response({ok:true,oidc_verified:true,ai_configured:!!openaiKey(),queued:count||0});
   }
   if(action==="claim"){
+   // Hard cap on paid model processing and automated issues. Avoid abuse/cost surprises.
+   const dayStart=new Date().toISOString().slice(0,10)+"T00:00:00Z";
+   const {count:dailyCount,error:dailyError}=await db.from("ta_feedback_autofix_runs")
+    .select("id",{head:true,count:"exact"}).gte("created_at",dayStart);
+   if(dailyError)throw Error("daily_budget_query_failed");
+   if((dailyCount||0)>=24)return response({ok:true,state:"idle",reason:"daily_budget_reached",ai_configured:!!openaiKey()});
    // No raw user messages are sent to GitHub Actions, issues, pull requests or logs.
    const {data:rows,error}=await db.from("ta_course_feedback")
     .select("id,user_id,course_slug,lesson_no,kind,message_excerpt,priority,status,verification,created_at")
