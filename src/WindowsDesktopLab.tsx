@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,Pressable,ScrollView,TextInput,ImageBackground,Platform,useWindowDimensions} from 'react-native';
+import {View,Text,Pressable,ScrollView,TextInput,ImageBackground,useWindowDimensions} from 'react-native';
 import ExplorerWorkspace from './ExplorerWorkspace';
 
 type App='files'|'notes'|'settings'|'calculator';
@@ -10,7 +10,7 @@ const labels:Record<App,string>={files:'Eksplorator plików',notes:'Notatnik',se
 const icons:Record<App,string>={files:'📁',notes:'📝',settings:'⚙️',calculator:'▦'};
 const initial:Desktop[]=[
  {id:1,name:'Pulpit 1',windows:[{app:'files',position:'normal',minimized:false},{app:'notes',position:'right',minimized:false}],focused:'files'},
- {id:2,name:'Pulpit 2',windows:[{app:'notes',position:'normal',minimized:false}],focused:'notes'}
+ {id:2,name:'Pulpit 2',windows:[],focused:null}
 ];
 const supported=['Win+Ctrl+←','Win+Ctrl+→','Win+Ctrl+D','Win+Tab','Win+←','Win+→','Win+↑','Win+↓','Win+D','Alt+Tab','Win+E','Win+I'];
 const instructions:Record<string,string>={
@@ -46,12 +46,12 @@ export default function WindowsDesktopLab({shortcut,runId}:{shortcut?:string;run
  const {width}=useWindowDimensions();
  const compact=width<620;
  const [desktops,setDesktops]=useState<Desktop[]>(initial);
- const [index,setIndex]=useState(0);
+ const [index,setIndex]=useState(1);
  const [start,setStart]=useState(false),[taskView,setTaskView]=useState(false);
  const [showDesktop,setShowDesktop]=useState(false),[showExplorer,setShowExplorer]=useState(false);
  const [query,setQuery]=useState(''),[note,setNote]=useState('Plan dnia\n1. Porównaj oferty\n2. Uporządkuj pliki\n3. Przejdź na drugi pulpit');
  const [activeShortcut,setActiveShortcut]=useState('Win+Ctrl+←');
- const [status,setStatus]=useState('Kliknij przycisk skrótu — zobaczysz jego skutek wyłącznie w tym ćwiczebnym Windows.');
+ const [status,setStatus]=useState('Jesteś na Pulpicie 2. Kliknij Win+Ctrl+←, aby przejść na Pulpit 1. Efekt dotyczy tylko symulacji.');
  const [showReal,setShowReal]=useState(false);
  const desktop=desktops[index]||desktops[0];
  const active=desktop?.focused;
