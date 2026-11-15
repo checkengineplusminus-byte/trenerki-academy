@@ -5,7 +5,7 @@ import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
 import {add,arcData,cadCoordinates,cadNumber,contains,distance,dot,fitDrawing,isClosed,multiply,nearEdge,offsetShape,readCadPoint,
- screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
+ screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size,type CadSnapMode} from './CadGeometry';
 
 type Tool='select'|'line'|'poly'|'rect'|'circle'|'arc'|'hatch'|'move'|'copy'|'rotate'|'scale'|'mirror'|'offset'|'trim'|'dist'|'dimlinear'|'dimaligned';
 type Session={tool:Tool;points:Point[];target?:number;selecting?:boolean;amount?:number;diameter?:boolean;boundaries?:number[]};
@@ -58,6 +58,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const [pointer,setPointer]=useState<Point>(),[input,setInput]=useState(''),[lastCommand,setLastCommand]=useState<Tool>();
  const [message,setMessage]=useState('Gotowy. Wpisz polecenie lub użyj wstążki.'),[log,setLog]=useState<string[]>([]);
  const [grid,setGrid]=useState(true),[ortho,setOrtho]=useState(false),[osnap,setOsnap]=useState(false),[snapGrid,setSnapGrid]=useState(false),[dynamic,setDynamic]=useState(true);
+ const [snapModes,setSnapModes]=useState<CadSnapMode[]>(['endpoint','midpoint']);
+ const [showSnapSettings,setShowSnapSettings]=useState(false);
+ const [layoutScale,setLayoutScale]=useState(50);
+ const [fontSample,setFontSample]=useState('Przykładowy opis rysunku');
+ const [sampleFont,setSampleFont]=useState('Arial');
+ const [sampleHeight,setSampleHeight]=useState(2.5);
  const [tab,setTab]=useState<'home'|'annotate'|'view'>('home'),[panel,setPanel]=useState<'draw'|'modify'|'layers'>('draw');
  const [pan,setPan]=useState(false),[layout,setLayout]=useState(false),[expandLog,setExpandLog]=useState(false),[pattern,setPattern]=useState<'hatch'|'solid'>('hatch');
  const [layerName,setLayerName]=useState(''),[newLayer,setNewLayer]=useState(false);
@@ -170,7 +176,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  }
  function atPointer(pixel:Point){
   const raw=worldPoint(pixel,view,size);
-  const snapped=osnap?snapPoint(raw,visible,baseTolerance):undefined;
+  const snapped=osnap?snapPoint(raw,visible,baseTolerance,snapModes):undefined;
   if(snapped)return snapped;
   const gridSize=50;
   let point=snapGrid?{x:Math.round(raw.x/gridSize)*gridSize,y:Math.round(raw.y/gridSize)*gridSize}:raw;
@@ -490,9 +496,23 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Siatka · F7" selected={grid} onPress={()=>flags('F7')}/>
    <LabButton label="Skok siatki 50 · F9" selected={snapGrid} onPress={()=>flags('F9')}/>
    <LabButton label="OSNAP · F3" selected={osnap} onPress={()=>flags('F3')}/>
+   <LabButton label="Tryby OSNAP · ustaw" selected={showSnapSettings} onPress={()=>setShowSnapSettings(v=>!v)}/>
    <LabButton label="ORTHO · F8" selected={ortho} onPress={()=>flags('F8')}/>
    <LabButton label="Współrzędne przy kursorze · F12" selected={dynamic} onPress={()=>flags('F12')}/>
   </LabGroup>
+  {showSnapSettings&&<View testID="cad-osnap-settings" style={{backgroundColor:'#e7f4ee',padding:12,borderRadius:10,gap:9}}>
+   <Text style={labStyles.heading}>Przyciąganie do punktów OSNAP</Text>
+   <Text style={labStyles.body}>Włącz F3, potem wybierz konkretne typy punktów. Możesz zaznaczyć kilka jednocześnie. Zobacz marker i podpis przy kursorze.</Text>
+   <View style={[labStyles.row,{flexWrap:'wrap'}]}>
+    {([
+     ['endpoint','Koniec odcinka'],['midpoint','Środek odcinka'],['center','Środek okręgu'],['quadrant','Kwadrant'],
+     ['intersection','Przecięcie'],['nearest','Najbliższy na obiekcie'],['geometric','Środek geometryczny'],['node','Węzeł wymiaru'],
+    ] as [CadSnapMode,string][]).map(([id,label])=><LabButton key={id} label={label} selected={snapModes.includes(id)} onPress={()=>{
+     setSnapModes(prev=>prev.includes(id)?prev.filter(v=>v!==id):[...prev,id]);setOsnap(true);
+    }}/>)}
+   </View>
+   <Text style={{fontSize:12,color:'#536d61'}}>Nasz warsztat ćwiczy wskazane tryby 2D. Pełny AutoCAD ma dodatkowo m.in. prostopadłość, styczność, śledzenie i osnap 3D — wyjaśniono je w przewodniku.</Text>
+  </View>}
   <Text style={labStyles.body}>Przewiń kółko nad rysunkiem, aby powiększyć widok. Przeciągnij środkowym przyciskiem myszy albo wybierz PAN. Wiersz poleceń przyjmuje X,Y, @ΔX,ΔY oraz @odległość&lt;kąt. ORTHO i OSNAP pomagają przy wskazywaniu kursorem.</Text>
  </View>;
 }
