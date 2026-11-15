@@ -5,6 +5,7 @@ import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection
 import {polarTracking,objectSnapTracking} from './CadTracking';
 import statusReference from '../content/autocad-status-controls-2026.json';
 import assignments from '../content/autocad-practice-assignments-v3.json';
+import {layoutViewportCamera,paperLengthMm} from './CadScale';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
@@ -95,9 +96,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const visible=drawing.shapes.filter(shape=>drawing.layers.find(l=>l.id===shape.layer)?.visible);
  // Paper A3 landscape: 420 × 297 mm. The preview is measured in paper mm,
  // and layoutScale converts model mm to screen pixels without modifying shapes.
- const pageW=Math.min(Math.max(100,size.width-28),Math.max(100,size.height-28)*420/297);
- const paperPixelsPerMm=pageW/420;
- const layoutCamera:Camera={center:fitDrawing(visible,size).center,unitsPerPixel:layoutScale/paperPixelsPerMm};
+ const layoutCamera=layoutViewportCamera(size,fitDrawing(visible,size).center,layoutScale);
  const selectedVisible=selectedIds.filter(id=>visible.some(s=>s.id===id));
  const chosen=visible.find(shape=>shape.id===selected),target=visible.find(shape=>shape.id===session.target);
  const {tool,points}=session,first=points[0],latest=points.at(-1);
@@ -729,7 +728,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     </View>
    </View>}
    <LabGroup label="Szybkie przykłady skali">{[20,25,50,100,200].map(scale=><LabButton key={scale} label={'1:'+scale} selected={layoutScale===scale} onPress={()=>{setLayoutScale(scale);setAnnotationScale(scale);}}/>)}</LabGroup>
-   <Text style={{fontWeight:'800',color:'#315b43'}}>Przy 1:{layoutScale} odcinek 5000 mm w modelu ma {(5000/layoutScale).toLocaleString('pl-PL')} mm na papierze.</Text>
+   <Text style={{fontWeight:'800',color:'#315b43'}}>Przy 1:{layoutScale} odcinek 5000 mm w modelu ma {paperLengthMm(5000,layoutScale).toLocaleString('pl-PL')} mm na papierze.</Text>
    <Text style={{fontSize:12,lineHeight:19,color:'#607a69'}}>SCALE zmienia rozmiar obiektów; Viewport Scale zmienia prezentację w rzutni; Annotation Scale steruje wielkością opisów. W modelu 5000 mm nadal pozostaje 5000 mm. Blokada rzutni jest tu ćwiczeniem ustawienia — nie blokuje pliku DWG producenta.</Text>
   </View>}
   <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Zaznaczone: {selectedVisible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
