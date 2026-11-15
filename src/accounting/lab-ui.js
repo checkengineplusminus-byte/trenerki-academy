@@ -3,7 +3,7 @@ import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withSce
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
 import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollJournalDraft,payrollLifecycleChecklist} from './payroll-practice.js';
 import {withInvoiceBankMatch} from './invoice-match.js';
-import {prepareLabInvoice} from './identity-core.js';
+import {prepareLabInvoice,identityInvoiceHTML} from './identity-core.js';
 import {inspectWorkspaceBackup} from './backup-recovery.js';
 import {monthTrainingReportHTML} from './month-training-report.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
@@ -771,7 +771,7 @@ export function mountLab(root,db){
     });
     return;
    }
-  if(a==='print-invoice'){const i=ws.state.invoices.find(x=>x.id===id),w=window.open('','_blank');if(!w){error='Przeglądarka zablokowała podgląd. Zezwól na nowe okno dla tej strony.';render();return;}w.opener=null;w.document.open();w.document.write(invoiceHTML(i));w.document.close();return;}
+  if(a==='print-invoice'){const i=ws.state.invoices.find(x=>x.id===id),w=window.open('','_blank');if(!w){error='Przeglądarka zablokowała podgląd. Zezwól na nowe okno dla tej strony.';render();return;}w.opener=null;w.document.open();w.document.write(i?.identity_version===1?identityInvoiceHTML(i):invoiceHTML(i));w.document.close();return;}
   if(a==='create'){const name=root.querySelector('#new-name').value.trim();await run(async()=>{if(!canWrite)throw new Error('Pracownia wymaga aktywnego dostępu do kursu.');if(name.length<2)throw new Error('Wpisz nazwę fikcyjnej firmy.');const r=await db.from('ta_accounting_lab_workspaces').insert({name}).select('*').single();if(r.error)throw r.error;ws=r.data;workspaces.unshift({id:ws.id,name:ws.name,version:ws.version,updated_at:ws.updated_at});restoreDrafts();tab='start';status='Biuro utworzone i zapisane na Twoim koncie.';});return;}
   if(a==='refresh'){await run(()=>open(ws.id));return;}
   if(a==='import-bank'){await run(async()=>{if(!preview||preview.errors.length)throw new Error('Najpierw popraw błędy importu.');await commit({...ws.state,bank:[...ws.state.bank,...preview.rows]});preview=null;});return;}
