@@ -38,7 +38,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'db094a43e9adcd3abb7629ee8ebd5ca4d260ee0e',
   'a7c5b5720baeb67a75be65b699d57212197eea60',
   '8526dbcfa26527f2b004c3ff6bf48ac3d4885e4a',
-  '5bb86b0916e4fcdfe1376f770cc8a5e27358a076' // reviewed carpentry lesson progression
+  '5bb86b0916e4fcdfe1376f770cc8a5e27358a076', // reviewed carpentry lesson progression
+  '40028cffa8120c07c37d18d2527768994e089b9d' // reviewed AutoCAD real DXF links and screenshots only; accounting route unchanged
  ]);
  assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
