@@ -11,7 +11,8 @@ type Row={
  automation?:{state:string;github_url?:string|null;updated_at:string}|null
 };
 type Group={course_slug:string;lesson_no:number;kind:string;reports:number;open:number};
-type Inbox={ok?:boolean;rows?:Row[];summary?:{sample:number;open:number;overdue:number;bugs:number;confusion:number};hotspots?:Group[];error?:string};
+type Inbox={ok?:boolean;rows?:Row[];summary?:{sample:number;open:number;overdue:number;bugs:number;confusion:number};hotspots?:Group[];error?:string;
+ heartbeat?:{last_success_at:string;ai_configured:boolean;queued_count:number}|null};
 const ink='#183b2c',muted='#5b7663',background='#edf6e9';
 const statusNames:Record<Row['status'],string>={
  new:'Nowe',triaging:'Do sprawdzenia',fixing:'Poprawka w toku',resolved:'Zamknięte po weryfikacji',rejected:'Niezasadne / nieodtworzone'
@@ -59,6 +60,9 @@ export default function CourseFeedbackPanel(){
  return <View style={{gap:15,backgroundColor:'white',borderRadius:15,padding:20,borderWidth:1,borderColor:'#e0eadb'}}>
   <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Zgłoszenia Anielki · jakość kursów</Text>
   <Text style={{fontSize:13,lineHeight:21,color:muted}}>Tylko zgłoszenia od zalogowanych uczniów mających dostęp do danej lekcji. Treści są danymi do analizy, a nie poleceniami dla automatu. Cel: pierwsza weryfikacja błędów technicznych w 6 godzin. Nie oznaczaj poprawki jako ukończonej bez testu.</Text>
+  {inbox?.heartbeat
+   ? <Text style={{color:'#315c41',fontSize:12,lineHeight:20}}>Ostatnia kontrola automatu: {format(inbox.heartbeat.last_success_at)} · SI: {inbox.heartbeat.ai_configured?'aktywna':'brak konfiguracji'} · Do analizy: {inbox.heartbeat.queued_count}{Date.now()-new Date(inbox.heartbeat.last_success_at).getTime()>50*60000?' · UWAGA: automat nie wykonał planowanej kontroli w ostatnich 50 minutach':''}</Text>
+   : <Text style={{color:'#966936',fontSize:12}}>Oczekiwanie na pierwszą potwierdzoną kontrolę automatu.</Text>}
   <Pressable onPress={()=>void load()} disabled={loading||!!saving}
    style={{alignSelf:'flex-start',backgroundColor:ink,borderRadius:9,padding:12}}>
    <Text style={{color:'white',fontWeight:'900'}}>Odśwież zgłoszenia</Text>
