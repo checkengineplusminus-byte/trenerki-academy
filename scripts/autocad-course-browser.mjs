@@ -85,11 +85,11 @@ for(const mobile of [false,true]){
   await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 3'}).waitFor();
   await send('JOIN');
   await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 1'}).waitFor();
-  await cad.getByText(/JOIN: połączono 3 linii/).waitFor();
+  await cad.getByText(/JOIN: połączono 3 odcinki/).waitFor();
   await send('MOVE');await send('0,0');await send('@2000,0');
-  await cad.getByText('Przesunięto obiekt.',{exact:true}).waitFor();
+  await cad.getByText(/Przesunięcie 2000, 0/).waitFor();
   await send('ZOOM E');
-  await cad.getByText(/ZOOM Extents/).waitFor();
+  await cad.getByText(/Dopasowano widok/).waitFor();
   await cad.getByTestId('cad-canvas').screenshot({path:'/tmp/trenerki-autocad-canvas-'+(mobile?'mobile':'desktop')+'.png'});
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: LINE → 3 segments → JOIN → one closed polyline → MOVE → ZOOM E');
   for(const lesson of lessons){
