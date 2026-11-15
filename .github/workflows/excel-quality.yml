@@ -10,6 +10,11 @@ on:
       - 'src/ExcelProfessionalMission.tsx'
       - 'src/SpreadsheetWorkspace.tsx'
       - 'src/SpreadsheetFormula.ts'
+      - 'src/ExcelMasterGuide.tsx'
+      - 'content/excel-function-index-2026.json'
+      - 'content/excel-master-syllabus.json'
+      - 'scripts/test-excel-currency.mjs'
+      - 'scripts/test-excel-master-guide.mjs'
       - 'src/LessonIllustratedSections.tsx'
       - 'scripts/test-excel-expert.mjs'
       - 'scripts/test-excel-knowledge.mjs'
@@ -40,6 +45,10 @@ jobs:
           node-version: '22'
       - name: Sprawdź funkcje ekspertów i kurs od zera
         run: node --experimental-strip-types --test scripts/test-excel-expert.mjs scripts/test-excel-pro-case.mjs scripts/test-excel-knowledge.mjs
+      - name: Sprawdź silnik walut i nawigację wirtualnego arkusza
+        run: node scripts/test-excel-currency.mjs
+      - name: Sprawdź 514 funkcji, 39 rozdziałów i eksport PDF
+        run: node --test scripts/test-excel-master-guide.mjs
   ten_environments:
     needs: expert_engine
     name: 10 środowisk × 2 cykle → IT → krytyk → sprzedawca
