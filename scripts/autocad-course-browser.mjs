@@ -95,6 +95,19 @@ for(const mobile of [false,true]){
   await send('LINE');await send('0,0');await send('300,0');await send('');
   await send('LINE');await send('100,100');await send('400,100');await send('');
   await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 3'}).waitFor();
+  await send('ZOOM E');
+  if(!mobile){
+   await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
+   const bounds=await cad.getByTestId('cad-canvas').boundingBox();
+   assert(bounds&&bounds.width>100,'CAD canvas unavailable');
+   await page.mouse.move(bounds.x+bounds.width-8,bounds.y+bounds.height-8);
+   await page.mouse.down();
+   await page.mouse.move(bounds.x+8,bounds.y+8,{steps:8});
+   await page.mouse.up();
+   await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 3'}).waitFor();
+   await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
+   console.log('✓ desktop AutoCAD: crossing window from right to left selects all three visible objects');
+  }
   await cad.getByRole('button',{name:'Zaznacz wszystko · Ctrl+A'}).click();
   await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 3'}).waitFor();
   await send('MOVE');await send('0,0');await send('@500,0');
