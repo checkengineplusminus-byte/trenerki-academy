@@ -23,6 +23,10 @@ on:
       - 'public/robots.txt'
       - 'scripts/learning-browser.mjs'
       - 'scripts/autocad-course-browser.mjs'
+      - 'scripts/test-autocad-full-manual-v3.mjs'
+      - 'content/autocad-complete-lessons-v3.json'
+      - 'content/autocad-practice-assignments-v3.json'
+      - 'content/autocad-source-aliases-2026.json'
       - 'scripts/test-cad-restored.mjs'
       - 'scripts/test-cad-multiselect.mjs'
       - 'scripts/test-cad-mirror-rotate.mjs'
@@ -77,6 +81,7 @@ jobs:
           node --experimental-default-type=module --test scripts/test-course-progress.mjs
           node --test scripts/test-exam-readiness.mjs
           node --test scripts/test-autocad-dxf.mjs
+          node --experimental-strip-types --test scripts/test-autocad-full-manual-v3.mjs
           node --experimental-strip-types --test scripts/test-cad-restored.mjs
           node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
           node --experimental-strip-types --test scripts/test-cad-mirror-rotate.mjs
