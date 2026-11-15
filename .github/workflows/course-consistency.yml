@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Verify exam question rotation and scoring
         run: node --experimental-strip-types scripts/test-exam-rotation.mjs
+      - name: Verify AutoCAD multi-selection, OSNAP and complete reference atlas
+        run: node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
       - name: Verify AutoCAD full-program exam selection
         run: node --test scripts/test-autocad-exam-bank.mjs
       - name: Verify restored AutoCAD geometry, JOIN and millimetre coordinates
