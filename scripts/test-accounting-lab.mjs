@@ -2019,3 +2019,44 @@ test('Kopia biura: odtworzenie do NOWEGO biura wymaga zgody i nie rusza orygina�
   if(prevLocal===undefined)delete globalThis.localStorage;else globalThis.localStorage=prevLocal;
  }
 });
+
+import {prepareLabInvoice} from '../src/accounting/identity-core.js';
+test('Biuro: wystawienie z gotowej karty firmy zachowuje w fakturze dane stron i miesiąc',()=>{
+ const company={schema_version:1,status:'ready',fictional:true,entity_type:'jdg',record_system:'books',
+  vat_status:'active',identity:{legal_name:'Fikcyjna Firma do Testów',nip:'9000000016',
+   regon:'',krs:'',address:'ul. Przykładowa 1, 00-001 Testowo',country:'PL'}};
+ const draft={id:'INVOICE-INTEGRATION-1',kind:'sale',number:'CW/FV/TEST1',
+  party:'Fikcyjny kontrahent',party_address:'ul. Przykładowa 2, 00-002 Testowo',
+  party_nip:'9000000022',party_kind:'business',seller:'Fikcyjna Firma do Testów',
+  date:'2026-01-15',due:'2026-01-20',
+  lines:[{label:'Test integracyjny',qty:'1',price:'1000,00',code:'23'}]};
+ const before=JSON.stringify({company,draft});
+ const issued=prepareLabInvoice(draft,company,'issued');
+ assert.equal(issued.identity_version,1);
+ assert.equal(issued.own_identity.nip,'9000000016');
+ assert.equal(issued.counterparty_identity.nip,'9000000022');
+ assert.equal(issued.date,'2026-01-15');
+ assert.equal(issued.gross_cents,123000);
+ assert.equal(JSON.stringify({company,draft}),before,'Brak mutacji danych formularza i firmy');
+});
+test('Biuro: z gotową firmą brak adresu lub zły NIP nabywcy blokuje wystawienie',()=>{
+ const company={schema_version:1,status:'ready',entity_type:'jdg',record_system:'books',
+  vat_status:'active',identity:{legal_name:'Fikcyjna Firma',nip:'9000000016',
+  regon:'',krs:'',address:'Fikcyjna 1, Testowo',country:'PL'}};
+ const draft={id:'INVOICE-NEGATIVE',kind:'purchase',number:'CW/ZAK/TEST1',
+  party:'Fikcyjny dostawca',party_address:'',party_nip:'9000000022',
+  party_kind:'business',seller:'Fikcyjna Firma',
+  date:'2026-01-15',due:'2026-01-18',
+  lines:[{label:'Materiał testowy',qty:'1',price:'200,00',code:'23'}]};
+ assert.throws(()=>prepareLabInvoice(draft,company,'issued'),/adres/i);
+ assert.throws(()=>prepareLabInvoice({...draft,party_address:'Fikcyjna 2',party_nip:'1234567890'},company,'issued'),/NIP/i);
+ assert.throws(()=>prepareLabInvoice({...draft,party_address:'Fikcyjna 2'}, {...company,identity:{...company.identity,nip:'1234567890'}},'issued'),/NIP/i);
+});
+test('Biuro: brak karty firmy nadal pozwala na szkic i zwykły model, ale bez fałszywego powiązania',()=>{
+ const d={id:'LEGACY-1',kind:'sale',number:'CW/FV/LEGACY',party:'Test',
+  seller:'Testowa Firma',date:'2026-01-15',due:'2026-01-31',
+  lines:[{label:'Szkic',qty:'1',price:'100,00',code:'0'}]};
+ const issued=prepareLabInvoice(d,null,'issued');
+ assert.equal(issued.identity_version,undefined);
+ assert.equal(prepareLabInvoice(d,null,'draft').status,'draft');
+});

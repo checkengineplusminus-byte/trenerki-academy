@@ -54,6 +54,30 @@ export function prepareIdentityInvoice(draft,company,status){
  const invoice=invoiceTotals({id:draft.id,kind:draft.kind,status,number:draft.number,party:other.legal_name,seller:own.legal_name,date:draft.date,supply_date:draft.supply_date,due:draft.due,identity_version:1,party_kind:draft.party_kind,own_identity:own,counterparty_identity:other,lines:draft.lines.map(l=>({label:l.label.trim(),qty_milli:scaled(l.qty,3),unit_cents:cents(l.unit_price),tax_code:l.tax_code}))});
  if(status==='issued'&&(invoice.net_cents<=0||invoice.lines.some(l=>!l.label)))throw new Error('Uzupełnij opisy i dodatnią wartość dokumentu.');return invoice;
 }
+
+/** Shared issued-invoice bridge for the main laboratory and the full identity workbench.
+ * Existing simple exercises without a ready company stay legacy/unverified;
+ * NEVER invent a seller, buyer address/NIP or silently approve a legal status.
+ */
+export function prepareLabInvoice(draft,company,status){
+ const fields={id:draft.id,kind:draft.kind,number:draft.number.trim(),
+  party:draft.party.trim(),seller:draft.seller,date:draft.date,due:draft.due,status,
+  lines:draft.lines.map(l=>({label:l.label.trim(),qty_milli:scaled(l.qty,3),
+   unit_cents:cents(l.price),tax_code:l.code}))};
+ if(status!=='issued'||company?.status!=='ready')return invoiceTotals(fields);
+ // Revalidate the saved company; a stale or forged "ready" flag is insufficient.
+ const verified=prepareCompany(company,'ready');
+ const partyKind=draft.kind==='purchase'?'business':draft.party_kind==='consumer'?'consumer':'business';
+ return prepareIdentityInvoice({
+  id:draft.id,kind:draft.kind,party_kind:partyKind,number:draft.number.trim(),
+  date:draft.date,supply_date:draft.date,due:draft.due,
+  own_identity:{...verified.identity},
+  counterparty_identity:{...blankIdentity(),legal_name:draft.party.trim(),
+   address:String(draft.party_address||'').trim(),nip:String(draft.party_nip||'').trim()},
+  lines:draft.lines.map(l=>({label:l.label.trim(),qty:l.qty,unit_price:l.price,tax_code:l.code}))
+ },verified,'issued');
+}
+
 export function restoreIdentityDraft(raw,version){try{const x=JSON.parse(raw);if(!x||!Number.isInteger(x.baseVersion)||x.baseVersion<1||!x.company||!x.invoice||!Array.isArray(x.invoice.lines)||x.invoice.lines.length<1||x.invoice.lines.length>20)return null;prepareCompany(x.company,'draft');normalizeIdentity(x.invoice.own_identity);normalizeIdentity(x.invoice.counterparty_identity);if(x.invoice.lines.some(l=>!l||['label','qty','unit_price','tax_code'].some(k=>typeof l[k]!=='string')))return null;return {...x,conflict:x.baseVersion!==version};}catch{return null;}}
 const escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const amount=n=>(n/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł';
