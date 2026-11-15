@@ -1,5 +1,6 @@
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 import {examAttemptWindow,maxExamQuestions,nextChoice,questionKey,type Choice} from './selection.ts';
+import {examReadiness} from './readiness.mjs';
 
 const origins=new Set(['https://trenerki.com','https://www.trenerki.com','https://trenerki-academy.expo.app','https://trenerki.academy','https://www.trenerki.academy']);
 const trim=(v:unknown,n=200)=>typeof v==='string'?v.trim().slice(0,n):'';
@@ -54,7 +55,7 @@ Deno.serve(async(req:Request)=>{
  if(enrollmentResult.error||previewResult.error||certResult.error)return json({error:'db_unavailable'},503);
  const enrollment=enrollmentResult.data?.[0],existingCert=certResult.data;
  const requireReal=enrollment?.status==='active'&&previewResult.data?.review_status==='approved';
- if(existingCert&&(!existingCert.is_demo||!requireReal))return json({ok:true,state:'passed',certificate:existingCert});
+ if(!enrollment&&!existingCert)return json({error:'course_not_owned'},403);
  async function issue(sessionId:string,feedback?:string){
   const {data:certificate,error}=await db.rpc('ta_issue_diploma',{p_user:user!.id,p_session:sessionId});
   if(error||!certificate){
@@ -66,6 +67,19 @@ Deno.serve(async(req:Request)=>{
    message:certificate.is_demo?'Gratulacje, egzamin zaliczony. Twój dyplom jest oznaczony jako wzór testowy.':
     'Gratulacje, egzamin zaliczony. Obie wersje dyplomu są gotowe do pobrania. Przekazaliśmy je też do kolejki wysyłki.'});
  }
+
+ const {data:lessons,error:le}=await db.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no');
+ if(le||!lessons?.length)return json({error:'lessons_not_found'},404);
+ // Validate every completion against the CURRENT lesson numbers, not a raw row count.
+ const {data:progressRows,error:ce}=await db.from('ta_learning_progress').select('lesson_no').eq('user_id',user.id).eq('course_slug',slug);
+ if(ce)return json({error:'db_unavailable'},503);
+ const {completed,ready}=examReadiness(lessons,progressRows||[]);
+ if(!ready){
+  if(action==='status')return json({ok:true,state:'not_ready',available:false,completed,total:lessons.length});
+  return json({error:'lessons_incomplete',completed,total:lessons.length},403);
+ }
+ // Older diplomas remain in the learner's archive, but cannot bypass a new lesson requirement.
+ if(existingCert&&(!existingCert.is_demo||!requireReal))return json({ok:true,state:'passed',certificate:existingCert});
  const recoveryQuery=db.from('ta_exam_sessions').select('id').eq('user_id',user.id).eq('course_slug',slug)
    .eq('status','passed').order('updated_at',{ascending:false}).limit(1);
  if(requireReal)recoveryQuery.eq('is_demo',false);
@@ -73,11 +87,6 @@ Deno.serve(async(req:Request)=>{
  if(recoveryError)return json({error:'db_unavailable'},503);
  if(passedSession)return issue(passedSession.id);
  if(!enrollment)return json({error:'course_not_owned'},403);
- const {data:lessons,error:le}=await db.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no');
- if(le||!lessons?.length)return json({error:'lessons_not_found'},404);
- const {count:completed,error:ce}=await db.from('ta_learning_progress').select('lesson_no',{count:'exact',head:true}).eq('user_id',user.id).eq('course_slug',slug);
- if(ce)return json({error:'db_unavailable'},503);
- const ready=(completed||0)>=lessons.length;
  const {data:storedBank,error:bankError}=await db.rpc('ta_private_exam_bank',{p_course:slug});
  if(bankError)return json({error:'db_unavailable'},503);
  const privateBank:Choice[]=(storedBank||[]).flatMap((row:any)=>{
@@ -131,7 +140,6 @@ Deno.serve(async(req:Request)=>{
   session=changed;
  }
  if(action==='status')return json(present(session));
- if(!ready)return json({error:'lessons_incomplete',completed:completed||0,total:lessons.length},403);
  if(!available)return json({error:'question_bank_incomplete'},422);
  if(action==='start'){
   if(session)return json(present(session));
