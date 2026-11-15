@@ -2147,6 +2147,35 @@ test('Biuro: brak karty firmy nadal pozwala na szkic i zwykły model, ale bez fa
 });
 
 
+test('Puste biuro: brak dowodów nie może wyglądać jak zerowy przychód i saldo',()=>{
+ const s={invoices:[],bank:[],journals:[],matches:[]},before=JSON.stringify(s);
+ const r=taxCloseTrainingAudit(s),html=taxCloseTrainingReportHTML(s);
+ assert.equal(r.training_result.profit_or_loss_cents,null);
+ assert.equal(r.training_result.revenue_cents,null);
+ assert.equal(r.training_result.bank_net_movement_cents,null);
+ assert.equal(r.training_result.result_label,'brak wiarygodnego wyniku okresu');
+ assert.equal(r.figures.sale_net_cents,null);
+ assert.equal(r.figures.vat_difference_cents,null);
+ assert.equal(r.ready_for_training_review,false);
+ assert.match(html,/BRAK WIARYGODNYCH DANYCH/);
+ assert.doesNotMatch(html,/Sprzedaż netto: 0,00 PLN/);
+ assert.equal(JSON.stringify(s),before);
+});
+test('Niekompletny dziennik nie dostaje wiarygodnego wyniku mimo faktur',()=>{
+ const s=fullScenario();s.journals=[];
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.training_result.profit_or_loss_cents,null);
+ assert.equal(r.training_result.status,'incomplete_model');
+ assert.equal(r.figures.sale_net_cents,null);
+ assert.equal(r.figures.vat_difference_cents,null);
+ assert.equal(r.completed,false);
+});
+test('Fikcyjny miesiąc z uzgodnionymi źródłami zachowuje niezerowy wynik modelowy',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),r=taxCloseTrainingAudit(state,manifest);
+ assert.equal(Number.isSafeInteger(r.training_result.profit_or_loss_cents),true);
+ assert.equal(r.completed,false);
+});
+
 test('Bank CSV → dekret → kontrola zamknięcia: dzień źródła musi zgadzać się z księgowaniem',()=>{
  const s=fullScenario();
  const first=auditCompanyLifecycle(s);

@@ -185,16 +185,23 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const cashOutCents=total(bank,row=>Math.max(0,-row.amount_cents));
  const moneyInputsSafe=[revenueCents,expenseCents,resultCents,cashInCents,cashOutCents]
   .every(Number.isSafeInteger);
+ // Pusty lub tylko częściowo zadekretowany miesiąc nie ma wyniku 0 zł.
+ // Nie ukrywamy braku dowodów pod arytmetycznie poprawną sumą pustych tablic.
+ const sourceAmountsReady=issued.length>0&&correctPostings===issued.length&&
+   issues.length===0&&sourceDateIssues.length===0;
+ const financialEvidencePresent=!!period&&sourceAmountsReady&&periodPostings.length>0&&
+   bank.length>0&&moneyInputsSafe&&ledgerBalanced&&bankBalanced&&bankCovered;
  const trainingResult={
-  revenue_cents:moneyInputsSafe?revenueCents:null,
-  expense_cents:moneyInputsSafe?expenseCents:null,
-  profit_or_loss_cents:moneyInputsSafe?resultCents:null,
-  result_label:!moneyInputsSafe?'nieprawidłowe dane':resultCents<0?'strata modelowa':resultCents>0?'zysk modelowy':'wynik zerowy',
-  bank_inflow_cents:moneyInputsSafe?cashInCents:null,
-  bank_outflow_cents:moneyInputsSafe?cashOutCents:null,
-  bank_net_movement_cents:moneyInputsSafe?cashInCents-cashOutCents:null,
-  status:'incomplete_model', // wynik końcowy dopiero po sprawdzeniu wszystkich źródeł
-  explanation:'Wynik modelu: konto 700 minus 400/401/404/761. Przepływ banku: wpływy minus wypływy CSV. To NIE jest saldo otwarcia ani dochód podatkowy.'
+  revenue_cents:financialEvidencePresent?revenueCents:null,
+  expense_cents:financialEvidencePresent?expenseCents:null,
+  profit_or_loss_cents:financialEvidencePresent?resultCents:null,
+  result_label:!financialEvidencePresent?'brak wiarygodnego wyniku okresu':
+   resultCents<0?'strata modelowa':resultCents>0?'zysk modelowy':'wynik zerowy',
+  bank_inflow_cents:financialEvidencePresent?cashInCents:null,
+  bank_outflow_cents:financialEvidencePresent?cashOutCents:null,
+  bank_net_movement_cents:financialEvidencePresent?cashInCents-cashOutCents:null,
+  status:'incomplete_model', // ostateczna ocena dopiero po sprawdzeniu wszystkich mostów
+  explanation:'Wynik modelu: konto 700 minus 400/401/404/761. Przepływ banku: wpływy minus wypływy CSV. Brak zweryfikowanych źródeł oznacza BRAK DANYCH, nie zero. To NIE jest saldo otwarcia ani dochód podatkowy.'
  };
  // Spójny wykaz dokumentów źródłowych dla fikcyjnego zamknięcia i recenzji.
  // Numery zakupów od różnych dostawców mogą się powtarzać.
@@ -324,10 +331,13 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  // Poprawne CSV i Wn/Ma są tylko etapem. Pełne źródła modelu wolno
  // nazwać uzgodnionymi dopiero po zaliczeniu WSZYSTKICH mostów D01–D36.
  const readyForTrainingReview=checks.every(c=>c.passed);
- trainingResult.status=moneyInputsSafe&&ledgerBalanced&&bankCovered
+ trainingResult.status=financialEvidencePresent
   ?(readyForTrainingReview?'source_reconciled_training':'bank_and_journal_reconciled_training')
   :'incomplete_model';
- const vatDifferenceCents=deductibleModelKnown?totals.sale_vat_cents-deductiblePurchaseCents:null;
+ const vatDifferenceCents=sourceAmountsReady&&vatLedgerMatches?
+  totals.sale_vat_cents-deductiblePurchaseCents:null;
+ const visibleInvoiceTotals=Object.fromEntries(Object.entries(totals).map(
+  ([key,value])=>[key,sourceAmountsReady?value:null]));
  return {
   period:period||null,source_count:issued.length,
    scenario_bank_bridge:{status:bankBridge.status,matched:bankBridge.matched,total:bankBridge.total},
@@ -337,7 +347,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    purchases_deductible_model_cents:deductibleModelValue,
    purchases_invoice_vat_cents:totals.purchase_vat_cents,matching:vatLedgerMatches,
    review:'not_tested'},
-  figures:{...totals,purchase_deductible_model_cents:deductibleModelValue,
+  figures:{...visibleInvoiceTotals,purchase_deductible_model_cents:sourceAmountsReady?deductibleModelValue:null,
    vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
   checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
@@ -376,14 +386,14 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   'TO NIE JEST JPK, PLIK KSeF, UPO ANI DEKLARACJA PODATKOWA.</div>',
   '<h1>Raport kontrolny — przygotowanie rozliczenia okresu</h1>',
   '<p>Okres ćwiczeniowy: <strong>',escape(r.period||'nieustalony'),'</strong>; dokumenty: ',r.source_count,'</p>',
-  '<p>Sprzedaż netto: ',escape(money(r.figures.sale_net_cents)),
-  '; VAT z dokumentów sprzedaży: ',escape(money(r.figures.sale_vat_cents)),
-  '; VAT z dokumentów zakupu (pełna kwota): ',escape(money(r.figures.purchase_vat_cents)),
+  '<p>Sprzedaż netto: ',escape(fm(r.figures.sale_net_cents)),
+  '; VAT z dokumentów sprzedaży: ',escape(fm(r.figures.sale_vat_cents)),
+  '; VAT z dokumentów zakupu (pełna kwota): ',escape(fm(r.figures.purchase_vat_cents)),
   '; odliczenie przyjęte w fikcyjnym modelu: ',escape(fm(r.figures.purchase_deductible_model_cents)),
   '; różnica modelowa, NIE zobowiązanie podatkowe: ',escape(fm(r.figures.vat_difference_cents)),
   '. Odliczenie i rozliczenie wymaga recenzji księgowego.</p>',
-  '<p>VAT według aktywnych dekretów: 222 — ',escape(money(r.vat_ledger.sales_cents)),
-  '; 221 — ',escape(money(r.vat_ledger.purchases_cents)),
+  '<p>VAT według aktywnych dekretów: 222 — ',escape(fm(r.vat_ledger.matching?r.vat_ledger.sales_cents:null)),
+  '; 221 — ',escape(fm(r.vat_ledger.matching?r.vat_ledger.purchases_cents:null)),
   '; zgodność z fakturami: ',r.vat_ledger.matching?'TAK, WYŁĄCZNIE W MODELU':'NIE — WYJAŚNIJ ROZBIEŻNOŚĆ','.</p>',
   '<h2>Wykaz źródłowych faktur do weryfikacji</h2>',
   '<p>Wyłącznie źródła z miesiąca. Liczba dekretów nie oznacza ich prawidłowości ani kwalifikacji prawnej VAT.</p>',
