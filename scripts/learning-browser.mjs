@@ -165,7 +165,7 @@ async function verifyCad(page,mobile){
  await page.getByRole('button',{name:'L · Linia',exact:true}).click();
  await page.getByText('Przed użyciem',{exact:false}).first().waitFor();
  assert.equal(await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).count(),0);
- await page.getByRole('button',{name:/^[A-C]\\. L · Linia$/}).click();
+ await page.getByRole('button',{name:/^[A-C]\. L · Linia$/}).click();
  await page.getByText('Wynik zapisany.',{exact:true}).waitFor();
  console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: unique lesson method, original screen on demand, no repeating legacy lab, recorded knowledge question');
 }
