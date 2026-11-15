@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,ActivityIndicator,Pressable} from 'react-native';
+import {View,Text,Pressable} from 'react-native';
 import {supabase} from './supabase';
 
 // Explanations are optional, read-only supplements to the paid lesson.
@@ -8,19 +8,18 @@ import {supabase} from './supabase';
 export default function LessonClarification({courseSlug,lessonNo}:{
  courseSlug:string;lessonNo:number
 }){
- const [note,setNote]=useState(''),[loading,setLoading]=useState(false);
+ const [note,setNote]=useState('');
  const [open,setOpen]=useState(true);
- const [version,setVersion]=useState(0);
  useEffect(()=>{
-  let active=true;setNote('');setLoading(true);setOpen(true);
+  let active=true;setNote('');setOpen(true);
   void supabase.from('ta_lesson_clarifications').select('note')
    .eq('course_slug',courseSlug).eq('lesson_no',lessonNo).eq('status','active')
    .maybeSingle().then(({data,error})=>{
     if(active&&!error&&data?.note&&typeof data.note==='string')
      setNote(data.note.slice(0,750));
-   }).finally(()=>{if(active)setLoading(false)});
+   });
   return ()=>{active=false};
- },[courseSlug,lessonNo,version]);
+ },[courseSlug,lessonNo]);
  if(!note)return null;
  return <View testID="anielka-auto-clarification" style={{
   borderLeftWidth:4,borderLeftColor:'#75ac85',borderRadius:12,
