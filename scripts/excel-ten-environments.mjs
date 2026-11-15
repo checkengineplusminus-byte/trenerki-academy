@@ -306,7 +306,7 @@ async function totalBeginner(browser,p,round){
   const lab=page.getByTestId('excel-first-day');
   await lab.waitFor({timeout:20000});
   await lab.getByTestId('excel-first-worked-example').getByText(/NAJPIERW PRZYKŁAD/).waitFor();
-  await lab.getByTestId('excel-first-worked-example').getByText(/=B2\*C2/).waitFor();
+  await lab.getByTestId('excel-first-worked-example').getByText(/=B2\*C2/).first().waitFor();
   const earlier=await page.evaluate(()=>{
    const day=document.querySelector('[data-testid="excel-first-day"]');
    const orientation=document.querySelector('[data-testid="software-orientation"]');
