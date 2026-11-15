@@ -8,6 +8,8 @@ test('katalog funkcji: 514 pozycji, linki Microsoft, nazwy unikatowe',()=>{
  const data=JSON.parse(read('content/excel-function-index-2026.json'));
  assert.equal(data.count,514);
  assert.equal(data.functions.length,514);
+ assert(data.functions.every(x=>typeof x.what==='string'&&x.what.length>=20),'Każda funkcja musi mieć własny opis');
+ assert(data.functions.filter(x=>x.example).length>=40,'Przyklady ważnych funkcji powinny działać i być zachowane');
  assert.equal(new Set(data.functions.map(x=>x.code)).size,514);
  assert(data.functions.every(x=>x.url.startsWith('https://support.microsoft.com/')));
  for(const id of ['IF','AND','OR','IFERROR','SUM','ROUND','MOD','AVERAGE','COUNTIF','SUMIF','VLOOKUP','HLOOKUP','XLOOKUP','INDEX','MATCH','LEN','MID','TODAY','NOW','DATE','PMT','NPV','PV','FILTER','UNIQUE','SORT','LAMBDA','LET','XIRR']){
