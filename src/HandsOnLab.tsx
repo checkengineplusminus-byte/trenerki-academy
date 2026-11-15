@@ -1,10 +1,10 @@
 import React from 'react';
 import CadWorkspace from './CadWorkspace';
-import ExplorerWorkspace from './ExplorerWorkspace';
+import WindowsDesktopLab from './WindowsDesktopLab';
 import SpreadsheetWorkspace from './SpreadsheetWorkspace';
 import WordWorkspace from './WordWorkspace';
 
-const modes={cad:CadWorkspace,excel:SpreadsheetWorkspace,word:WordWorkspace,windows:ExplorerWorkspace};
+const modes={cad:CadWorkspace,excel:SpreadsheetWorkspace,word:WordWorkspace,windows:WindowsDesktopLab};
 const courseModes:Record<string,keyof typeof modes>={
  'autocad-skroty':'cad','excel-skroty':'excel','word-skroty':'word','windows-skroty':'windows',
 };
