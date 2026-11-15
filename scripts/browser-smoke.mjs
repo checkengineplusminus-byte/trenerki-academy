@@ -174,14 +174,14 @@ async function verify(name,viewport,isMobile){
   await field.waitFor({state:'visible'});
   const prices=await page.evaluate(()=>COURSES.map(c=>({slug:c.id,price:c.price})));
   assert.equal(prices.length,81,'Public catalogue should contain all courses');
-  assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug).sort(),['swiety-mikolaj','zaufany-wolontariusz']);
-  assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),99);
+  assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug).sort(),['excel-skroty','swiety-mikolaj','zaufany-wolontariusz']);
+  assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),69);
   assert.equal(await page.locator('.category-tiles .category-tile').count(),6,'Six clickable category cards must appear on homepage');
   assert.equal(await page.locator('#course-cards .course-card').count(),12,'Homepage should show twelve featured courses');
-  assert.equal(await page.locator('#course-cards .course-card .card-title').first().innerText(),'Zaufany wolontariusz');
+  assert.match(await page.locator('#course-cards .course-card .card-title').first().innerText(),/Excel od zera/);
   const firstMedia=page.locator('#course-cards .card-media').first();
   await firstMedia.scrollIntoViewIfNeeded();
-  const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="ongoing-wms"]');
+  const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="excel-skroty"]');
   await firstPhoto.waitFor({state:'visible',timeout:7000});
   assert(await firstPhoto.evaluate(img=>
    img.naturalWidth>0&&img.naturalWidth*9===img.naturalHeight*16&&
@@ -191,9 +191,9 @@ async function verify(name,viewport,isMobile){
    const card=button.closest('.course-card').getBoundingClientRect(), action=button.getBoundingClientRect();
    return action.left>=card.left&&action.right<=card.right;
   })),'Course purchase buttons must fit inside their cards');
-  assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'rodzina-i-rozwoj');
+  assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'technologie-i-logistyka');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
-  assert.doesNotMatch(await page.locator('.hero').innerText(),/\b\d+\s+lekcj\w*/i,'Hero should omit lesson counts');
+  assert.match(await page.locator('.excel-free-intro').innerText(),/30 lekcji/,'Free Excel hero should communicate clear learning value');
   assert.equal(await page.locator('.catalog-more').count(),0,'No more-courses buttons');
   await page.locator('.category-tiles .category-tile').first().click();
   assert.equal(await page.locator('#course-cards .course-card').count(),9,'Selecting construction must show all nine courses');
