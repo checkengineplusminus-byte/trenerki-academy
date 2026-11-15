@@ -2,6 +2,7 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Pressable,ScrollView,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import CadRibbonIcon from './CadRibbonIcon.web';
 import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection} from './CadSelection';
+import {polarTracking,objectSnapTracking} from './CadTracking';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
@@ -219,11 +220,20 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  function atPointer(pixel:Point){
   const raw=worldPoint(pixel,view,size);
   const snapped=osnap?snapPoint(raw,visible,baseTolerance,snapModes):undefined;
-  if(snapped)return snapped;
+  if(snapped){if(otrack)polarAnchor.current=snapped.point;return snapped;}
+  if(otrack&&osnap&&polarAnchor.current){
+   const projected=objectSnapTracking(raw,polarAnchor.current,baseTolerance);
+   if(projected)return projected;
+  }
   const gridSize=50;
   let point=snapGrid?{x:Math.round(raw.x/gridSize)*gridSize,y:Math.round(raw.y/gridSize)*gridSize}:raw;
   if(ortho&&latest&&['line','poly','move','copy','mirror','dist'].includes(tool)){
    point=Math.abs(point.x-latest.x)>=Math.abs(point.y-latest.y)?{x:point.x,y:latest.y}:{x:latest.x,y:point.y};
+   return {point,label:'ORTHO 90°'};
+  }
+  if(polar&&latest&&['line','poly','move','copy','dist'].includes(tool)){
+   const guide=polarTracking(point,latest,polarStep);
+   if(guide)return guide;
   }
   return {point,label:''};
  }
@@ -340,6 +350,8 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    case 'F7':setGrid(v=>!v);return true;
    case 'F8':setOrtho(v=>!v);return true;
    case 'F9':setSnapGrid(v=>!v);return true;
+   case 'F10':setPolar(v=>!v);setOrtho(false);return true;
+   case 'F11':setOtrack(v=>!v);return true;
    case 'F12':setDynamic(v=>!v);return true;
    case 'F2':setExpandLog(v=>!v);return true;
    default:return false;
@@ -366,6 +378,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    undo();return;
   }
   if(['CTRL+Y','REDO'].includes(command)){redo();return;}
+  if(['CTRL+W','SELECTIONCYCLING'].includes(command)){setSelectionCycling(v=>!v);tell('Przełączono wybór nakładających się obiektów.');return;}
   if(['ALL','CTRL+A','SELECTALL'].includes(command)){selectAll();return;}
   if(['DESELECT','CLEARSELECTION'].includes(command)){clearSelection();return;}
   if(command==='SELECT'){setSession({tool:'select',points:[]});tell('Wybieraj obiekty pojedynczo lub oknem.');return;}
@@ -410,6 +423,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   const tag=(event.target as Element).tagName.toUpperCase();
   if(tag==='INPUT')return false;
   if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='a'){selectAll();return true;}
+  if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='w'){setSelectionCycling(v=>!v);return true;}
   if(event.ctrlKey&&event.key.toLowerCase()==='z'){undo();return true;}
   if(event.ctrlKey&&event.key.toLowerCase()==='y'){redo();return true;}
   if(event.key==='Delete'){erase();return true;}
@@ -575,7 +589,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   </View>
   <View style={{height:screenWidth<640?270:385,borderRadius:8,overflow:'hidden',backgroundColor:'#172530'}}
    onLayout={event=>{const {width,height}=event.nativeEvent.layout;setSize({width,height});}}>
-   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting}
+   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting} lineweight={lineweight} transparency={transparency}
     cursor={pointer} snap={candidate?.label&&cursorPoint?screenPoint(cursorPoint,view,size):undefined}
     prompt={dynamic&&tool!=='select'&&cursorPoint?(candidate?.label?candidate.label+' · ':'')+cadCoordinates(cursorPoint):undefined}
     onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove)}
