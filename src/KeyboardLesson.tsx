@@ -76,11 +76,11 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
    {!!error&&<Text style={{color:'#ffe2ac',fontWeight:'800'}}>{error}</Text>}
    {answer!==null&&!error&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{quizConfirmed?'Wynik zapisany.':verifying?'Sprawdzam odpowiedź…':'Porównaj opis działania z wybranym skrótem i spróbuj ponownie.'}</Text>}
   </View>}
-  {!!tips?.length&&<View style={labStyles.ribbon}>
+  {slug!=='autocad-skroty'&&!!tips?.length&&<View style={labStyles.ribbon}>
    <Text style={labStyles.heading}>Wskazówki do ćwiczenia</Text>
    {tips.map((tip,i)=><Text key={i} style={labStyles.body}>• {tip}</Text>)}
   </View>}
-  {!!exercise&&<View style={labStyles.ribbon}>
+  {slug!=='autocad-skroty'&&!!exercise&&<View style={labStyles.ribbon}>
    <Text style={labStyles.heading}>Przećwicz samodzielnie</Text>
    <Text style={labStyles.body}>{exercise}</Text>
   </View>}

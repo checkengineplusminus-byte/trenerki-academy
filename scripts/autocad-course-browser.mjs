@@ -88,6 +88,7 @@ for(const mobile of [false,true]){
    }
    await page.getByRole('button',{name:n===29?'Przejdź do egzaminu →':new RegExp('^Dalej · lekcja '+(n+2)+' →')}).click();
    if(n<29)await page.getByTestId('lesson-heading').filter({hasText:lessons[n+1].title_pl}).waitFor();
+   else await page.getByRole('button',{name:'Rozpocznij egzamin',exact:true}).waitFor();
    console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD '+(n+1)+'/30: reading, curiosity, wrong/correct answer, '+required+' requirement(s), saved progress');
   }
   assert.equal(completed.length,30);

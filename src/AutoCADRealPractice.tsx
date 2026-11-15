@@ -9,7 +9,7 @@ export default function AutoCADRealPractice({shortcut}:{shortcut?:string;runId:n
  return <View testID="autocad-real-practice" style={labStyles.panel}>
   <Text style={labStyles.heading}>Ćwiczenie w Twoim AutoCAD-zie</Text>
   <Text style={labStyles.body}>Rysunek wykonujesz w programie Autodesk AutoCAD lub AutoCAD LT na komputerze. Otwórz nowy plik ćwiczeniowy i ustaw go obok tej lekcji. Kurs nie zawiera licencji programu. Wersja przeglądarkowa i aplikacja na telefon mogą mieć inny zakres funkcji; poniższe instrukcje dotyczą wersji komputerowej.</Text>
-  <Text style={labStyles.body}>Najpierw przeczytaj wyjaśnienia i wykonaj zadanie z bieżącej lekcji. Zapisz wynik jako DWG. Pytania w Trenerki sprawdzają rozumienie materiału; poprawna odpowiedź nie oznacza automatycznej kontroli Twojego rysunku.</Text>
+  <Text style={labStyles.body}>Najpierw przeczytaj wyjaśnienia. Gdy lekcja prosi o narysowanie lub zmianę obiektu, wykonaj te kroki we własnym programie i zapisz plik DWG. Pytania w Trenerki sprawdzają rozumienie materiału; poprawna odpowiedź nie oznacza automatycznej kontroli Twojego rysunku.</Text>
   {!!shortcut&&<Text testID="autocad-selected-command" style={labStyles.body}>Wybrane polecenie lub skrót: {shortcut}. Użyj go w AutoCAD-zie, zgodnie z opisem „Przed użyciem” i „Co się zmieni”. Aliasy można zmieniać w ustawieniach programu — gdy alias nie działa, wpisz pełną nazwę polecenia.</Text>}
   <Pressable accessibilityRole="button" accessibilityState={{expanded:triangleOpen}} onPress={()=>setTriangleOpen(v=>!v)} style={labStyles.ribbon}>
    <Text style={labStyles.heading}>Trójkąt z trzech linii: jak przesunąć go w całości? {triangleOpen?'↑':'↓'}</Text>

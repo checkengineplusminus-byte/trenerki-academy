@@ -200,6 +200,9 @@ async function persona(browser,p,round){
  try{
   await install(page,events);
   await page.goto(base+'/nauka?course=excel-skroty&lesson='+(p.lesson+1),{waitUntil:'domcontentloaded'});
+  await page.getByTestId('lesson-heading').or(page.getByTestId('course-reading-introduction')).first().waitFor();
+  const introConsent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
+  if(await introConsent.isVisible())await introConsent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   if(p.lesson===0){
    await page.getByTestId('course-reading-introduction').waitFor();
    assert.equal(await page.getByTestId('case-checkpoint').count(),0,'Read introduction before the first graded task');
