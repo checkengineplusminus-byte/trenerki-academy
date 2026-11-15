@@ -90,6 +90,14 @@ async function runPersona(browser,p,round){
   const footerBounds=await learningFooter.boundingBox();
   assert(footerBounds&&footerBounds.height<=64,'Critic: persistent lesson footer consumes excessive vertical space: '+JSON.stringify(footerBounds));
   assert.equal(await learningFooter.getByRole('link',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).getAttribute('href'),'/pomoc','Engineer: support must remain accessible in lessons');
+  const cookieSettings=learningFooter.getByRole('button',{name:'Ustawienia plików cookie'});
+  await cookieSettings.waitFor({state:'visible',timeout:10000});
+  const cookieBounds=await cookieSettings.boundingBox();
+  assert(cookieBounds&&cookieBounds.y>=footerBounds.y-2&&cookieBounds.y+cookieBounds.height<=footerBounds.y+footerBounds.height+2,
+   'Critic: cookie control leaks outside compact lesson footer');
+  assert(cookieBounds.x>=footerBounds.x-2&&cookieBounds.x+cookieBounds.width<=footerBounds.x+footerBounds.width+2,
+   'Critic: cookie control extends beyond viewport');
+
   // Remove the unrelated site-wide consent dialog before visual course inspection.
   const rejectCookies=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
   if(await rejectCookies.isVisible().catch(()=>false)){
