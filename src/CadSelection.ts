@@ -83,8 +83,9 @@ export function mirrorCadSelection(shapes:CadShape[],ids:number[],start:Point,en
 /** Positive degrees rotate counterclockwise around the chosen base point. */
 export function rotateCadSelection(shapes:CadShape[],ids:number[],base:Point,degrees:number):CadShape[]{
  const a=degrees*Math.PI/180,cos=Math.cos(a),sin=Math.sin(a);
- return transformCadSelection(shapes,ids,p=>{
+ const chosen=new Set(ids);
+ return shapes.map(shape=>chosen.has(shape.id)?transformShape(shape,p=>{
   const dx=p.x-base.x,dy=p.y-base.y;
   return {x:base.x+dx*cos-dy*sin,y:base.y+dx*sin+dy*cos};
- });
+ },false):shape);
 }
