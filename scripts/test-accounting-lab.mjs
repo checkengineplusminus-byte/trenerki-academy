@@ -1339,3 +1339,31 @@ test('Lokalny raport nie wykonuje HTML z nieprawidłowej faktury i nie mutuje da
  assert.ok(html.includes('&lt;script&gt;alert(1)&lt;/script&gt;'));
  assert.equal(JSON.stringify(s),before);
 });
+
+
+test('Ścieżka życia firmy rozpoznaje prawidłowe przyjęcie majątku zamiast zwykłego kosztu',()=>{
+ const s=fullScenario(),invoice=s.invoices.find(i=>i.kind==='purchase');
+ const card={id:'LIFE-A1',inventory_no:'CW/INW/11',name:'Maszyna fikcyjna',category:'machine',
+  invoice_id:invoice.id,in_service_date:'2026-11-02',start_month:'2026-11',
+  months:12,residual_cents:0,deductible_bps:10000,status:'active'};
+ s.assets=[card];
+ const j=s.journals.find(j=>j.source_type==='invoice'&&j.source_id===invoice.id);
+ j.lines=assetAcquisitionLines(card,s);j.asset_action='acquire';j.asset_id=card.id;
+ const before=JSON.stringify(s),audit=auditCompanyLifecycle(s,null);
+ assert.equal(audit.steps.find(x=>x.key==='invoices').status,'passed_training');
+ assert.equal(audit.steps.find(x=>x.key==='asset').status,'needs_work');
+ assert.equal(audit.steps.at(-1).status,'not_implemented');
+ assert.equal(audit.completed,false);
+ assert.equal(JSON.stringify(s),before);
+});
+test('Ścieżka firmy nie zalicza zakupionego środka trwałego z błędnym kontem',()=>{
+ const s=fullScenario(),invoice=s.invoices.find(i=>i.kind==='purchase');
+ const card={id:'LIFE-A1',inventory_no:'CW/INW/11',name:'Maszyna fikcyjna',category:'machine',
+  invoice_id:invoice.id,in_service_date:'2026-11-02',start_month:'2026-11',
+  months:12,residual_cents:0,deductible_bps:10000,status:'active'};
+ s.assets=[card];
+ const j=s.journals.find(j=>j.source_type==='invoice'&&j.source_id===invoice.id);
+ j.lines=assetAcquisitionLines(card,s);j.asset_action='acquire';j.asset_id=card.id;
+ j.lines[0].account='400';
+ assert.equal(auditCompanyLifecycle(s,null).steps.find(x=>x.key==='invoices').status,'needs_work');
+});

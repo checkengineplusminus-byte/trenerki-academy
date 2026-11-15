@@ -8,7 +8,7 @@ import {livePostings,expectedInvoiceLines,invoiceTotals} from './lab-core-base.j
 import {PERSONNEL_IDS,readPersonnelCases} from './personnel-practice.js';
 import {readPayrollPractices,payrollLifecycleChecklist} from './payroll-practice.js';
 import {inspectPayrollLedger} from './payroll-ledger-audit.js';
-import {assetsControl,assetPosition} from './assets-core.js';
+import {assetsControl,assetPosition,acquisitionLines} from './assets-core.js';
 import {inspectInvoiceBankMatches} from './invoice-match.js';
 import {auditMonthWorkflow} from './simulator-core.js';
 
@@ -39,7 +39,14 @@ export function auditCompanyLifecycle(state,scenario=null){
      if(totals.gross_cents!==i.gross_cents||totals.net_cents!==i.net_cents||
          totals.tax_cents!==i.tax_cents)return false;
      const items=posted.filter(j=>j.source_type==='invoice'&&j.source_id===i.id);
-     return items.length===1&&signature(items[0].lines)===signature(expectedInvoiceLines(i));
+     if(items.length!==1)return false;
+     const entry=items[0];
+     if(i.kind==='purchase'&&entry.asset_action==='acquire'){
+       const a=(Array.isArray(s.assets)?s.assets:[]).find(a=>
+        a.id===entry.asset_id&&a.invoice_id===i.id&&a.status==='active');
+       return !!a&&signature(entry.lines)===signature(acquisitionLines(a,s));
+     }
+     return signature(entry.lines)===signature(expectedInvoiceLines(i));
    }catch{return false;}
  }
  const issued=invoices.filter(i=>i?.status==='issued'&&['purchase','sale'].includes(i.kind));
