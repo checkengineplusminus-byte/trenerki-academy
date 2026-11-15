@@ -79,8 +79,10 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const [customScaleInput,setCustomScaleInput]=useState('');
  const [runAssignment,setRunAssignment]=useState(false);
  const [assignmentBaseline,setAssignmentBaseline]=useState('');
+ const [workshopLoaded,setWorkshopLoaded]=useState(false);
  const [assignmentFeedback,setAssignmentFeedback]=useState('');
  const currentAssignment=assignments.assignments[lessonNo??0]??assignments.assignments[0];
+ const localDrawingKey='trenerki-cad-v3-'+(storageKey||'guest')+'-'+String(lessonNo??0);
  const standardScales=[1,2,5,10,20,25,50,75,100,125,200,250,500,1000];
  const [fontSample,setFontSample]=useState('Przykładowy opis rysunku');
  const [sampleFont,setSampleFont]=useState('Arial');
@@ -102,6 +104,25 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const prompt=promptFor(session);
  const baseTolerance=view.unitsPerPixel*(screenWidth<650?14:8);
  const currentLayer=drawing.layers.find(l=>l.id===drawing.currentLayer)!;
+ useEffect(()=>{
+  setRunAssignment(false);setAssignmentBaseline('');setAssignmentFeedback('');
+  if(typeof localStorage!=='undefined'){
+   try{
+    const data=JSON.parse(localStorage.getItem(localDrawingKey)||'null');
+    if(data&&Array.isArray(data.shapes)&&data.shapes.length<=400&&data.shapes.every((x:CadShape)=>
+      Number.isInteger(x.id)&&x.id>=1&&['line','poly','rect','circle','arc','dimension'].includes(x.kind)&&
+      Array.isArray(x.points)&&x.points.length>=2&&x.points.length<=100&&x.points.every(inRange))){
+     setDrawing({...initial,shapes:data.shapes});
+     nextId.current=Math.max(1,...data.shapes.map((x:CadShape)=>x.id+1));
+    }
+   }catch{}
+  }
+  setWorkshopLoaded(true);
+ },[localDrawingKey]);
+ useEffect(()=>{
+  if(!workshopLoaded||typeof localStorage==='undefined')return;
+  try{localStorage.setItem(localDrawingKey,JSON.stringify({shapes:drawing.shapes.slice(-400)}));}catch{}
+ },[workshopLoaded,localDrawingKey,drawing.shapes]);
 
  function tell(text:string){setMessage(text);setLog(old=>[...old.slice(-13),text]);}
  function checkAssignment(){
@@ -109,7 +130,11 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   const now=JSON.stringify(drawing.shapes);
   if(now===assignmentBaseline){setAssignmentFeedback('Brak nowej operacji w rysunku. Wpisz polecenie i utwórz lub zmodyfikuj obiekt, a potem sprawdź ponownie.');return;}
   const kind=currentAssignment.targetKind;
-  if(!drawing.shapes.some(s=>s.kind===kind)){
+  let originalShapes:CadShape[]=[];
+  try{originalShapes=JSON.parse(assignmentBaseline);}catch{}
+  const completedShape=drawing.shapes.find(shape=>shape.kind===kind&&
+    !originalShapes.some(old=>old.id===shape.id&&JSON.stringify(old)===JSON.stringify(shape)));
+  if(!completedShape){
    setAssignmentFeedback('Jeszcze nie: to ćwiczenie wymaga obiektu '+kind.toUpperCase()+'. Wróć do instrukcji i sprawdź polecenie '+currentAssignment.focusCommand+'.');
    return;
   }
