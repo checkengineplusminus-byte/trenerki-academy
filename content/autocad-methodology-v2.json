@@ -1,0 +1,337 @@
+{
+  "course_slug": "autocad-skroty",
+  "pedagogy_version": "2026-11-15-v2",
+  "method": "concept → 3 steps → self-check",
+  "lessons": [
+    {
+      "lesson_no": 0,
+      "heading": "CAD to dane, nie obrazek",
+      "concept": "W CAD dwie kreski mogą wyglądać identycznie, ale jedna ma długość 4000 mm, a druga 4000 m. Zanim cokolwiek odczytasz, ustal jednostkę, skalę modelu i źródło dokumentu. Geometria nie gwarantuje sama z siebie zgodności z budową.",
+      "steps": [
+        "Porównaj zdjęcie prostokąta z rysunkiem zawierającym jego współrzędne.",
+        "Wyjaśnij, dlaczego samo powiększenie obrazu nie zmienia rozmiaru obiektu w CAD.",
+        "Wypisz trzy pytania, które zadasz przed wykorzystaniem obcego pliku DWG."
+      ],
+      "question": "Czy potrafisz wskazać konkretną cechę pliku CAD, której nie odczytasz pewnie z przypadkowej fotografii?"
+    },
+    {
+      "lesson_no": 1,
+      "heading": "Wiersz poleceń prowadzi przez czynności",
+      "concept": "AutoCAD jest dialogiem: po uruchomieniu LINE program nie rysuje automatycznie. Najpierw pyta o punkt początkowy, później o kolejne punkty. Przy wielu poleceniach bezpieczniej czytać pytanie niż zapamiętać na ślepo sekwencję kliknięć.",
+      "steps": [
+        "Otwórz nowy plik i wskaż wstążkę, przestrzeń Model oraz wiersz poleceń.",
+        "Uruchom _LINE z klawiatury. Przeczytaj komunikat, ale nie wskazuj punktu.",
+        "Naciśnij Esc, sprawdź czy polecenie przerwano oraz czy pozostał pusty rysunek."
+      ],
+      "question": "Co zmieni się na ekranie, gdy po _LINE wpiszesz pierwszy punkt, a co gdy od razu wybierzesz Esc?"
+    },
+    {
+      "lesson_no": 2,
+      "heading": "DWG do edycji, PDF do kontroli, DXF do wymiany",
+      "concept": "Plik nie jest tylko jego rozszerzeniem. DWG przechowuje edytowalny model, PDF pomaga przekazać układ i wygląd do kontroli, a DXF bywa potrzebny do wymiany geometrii z innym systemem. Wszystkie wersje muszą odpowiadać tej samej rewizji projektu.",
+      "steps": [
+        "Utwórz folder projektu z nazwą i numerem rewizji.",
+        "Zapisz własny rysunek jako DWG, a później wyeksportuj kontrolny PDF.",
+        "Otwórz oba pliki i sprawdź zgodność kształtów, wymiarów, nazwy oraz daty rewizji."
+      ],
+      "question": "Gdy poprawisz wymiary w DWG, skąd będziesz wiedział, czy wysłany wcześniej PDF nadal jest aktualny?"
+    },
+    {
+      "lesson_no": 3,
+      "heading": "Jednostki: 1 oznacza to, co ustalisz",
+      "concept": "AutoCAD nie zna zamiaru projektanta. Możesz narysować odcinek o długości 4000 jednostek i tylko dzięki założeniom projektu zinterpretować go jako 4000 mm. Ustawienia jednostek wstawiania i sposób wyświetlania nie są automatycznym przeskalowaniem istniejącej geometrii.",
+      "steps": [
+        "Ustal i zapisz w notatce: 1 jednostka modelu oznacza 1 mm.",
+        "Narysuj odcinek długości 4000 jednostek; w _UNITS sprawdź jednostkę wstawiania.",
+        "Przelicz 4 m na 4000 mm i zmierz odcinek niezależnie komendą _DIST."
+      ],
+      "question": "Czy umiesz powiedzieć, dlaczego zmiana opisu jednostki nie poprawi źle narysowanego elementu?"
+    },
+    {
+      "lesson_no": 4,
+      "heading": "Współrzędne absolutne i względne",
+      "concept": "Punkt 3200,-700 jest miejscem na rysunku. Zapis @4200,0 jest wektorem przesunięcia od ostatniego punktu. Pomylenie tych trybów daje geometrię inną niż oczekiwana; dodatkowo zachowanie pól dynamicznych może wpływać na sposób wpisywania wartości.",
+      "steps": [
+        "Ustaw światowy UCS i wyłącz Dynamic Input do tego ćwiczenia.",
+        "Uruchom LINE z pierwszym punktem -1000,-700 i kolejnym @4200,0.",
+        "Odczytaj współrzędne obu końców z Właściwości i sprawdź, czy różnica X wynosi 4200."
+      ],
+      "question": "Co oznacza znak @ w poleceniu? Oblicz koniec odcinka bez spoglądania na podpowiedź."
+    },
+    {
+      "lesson_no": 5,
+      "heading": "Trzy boki nie stanowią jeszcze jednego obiektu",
+      "concept": "Nawet idealnie stykające się odcinki narysowane poleceniem LINE zwykle pozostają trzema elementami. Do wspólnej edycji możesz zbudować jedną polilinię za pomocą PLINE albo połączyć istniejące boki. Właściwości obiektu powinny potwierdzić rezultat, a nie tylko wygląd ekranu.",
+      "steps": [
+        "Otwórz przykładowy DXF z trzema liniami; kliknij jeden bok i sprawdź typ LINE.",
+        "Zastosuj _JOIN, a gdy trzeba _PEDIT → Join; sprawdź współpłaszczyznowość i wspólne końce.",
+        "Wybierz gotową polilinię i użyj _MOVE; porównaj jej wymiary przed i po przesunięciu."
+      ],
+      "question": "Jeżeli przesuwa się tylko jeden bok, sprawdź zaznaczenie i typ obiektu przed kolejną próbą."
+    },
+    {
+      "lesson_no": 6,
+      "heading": "Esc przerywa, Undo cofa",
+      "concept": "Esc przerywa bieżącą operację, ale nie zawsze usuwa obiekty już utworzone we wcześniejszych jej krokach. Undo cofa zapisaną zmianę. Ta różnica jest ważna przy rysowaniu kilku kolejnych odcinków i przy niepełnych poleceniach.",
+      "steps": [
+        "Wpisz _LINE i zatwierdź trzy różne punkty.",
+        "Naciśnij Esc i policz pozostawione odcinki.",
+        "Wykonaj _UNDO, porównaj rezultat i dopiero wtedy powtórz eksperyment z _RECTANG."
+      ],
+      "question": "Przed naciśnięciem Esc przewidź, które elementy pozostaną na ekranie."
+    },
+    {
+      "lesson_no": 7,
+      "heading": "Warstwa to grupa organizacyjna, nie osobny plik",
+      "concept": "Warstwy pomagają oddzielić obrys, osie, wymiary i instalacje. Wyłączenie warstwy ukrywa obiekty, ale ich nie usuwa. To kluczowe przy pracach wykonawczych: ukrycie rury na rysunku nie likwiduje kolizji w rzeczywistym projekcie.",
+      "steps": [
+        "Utwórz dwie warstwy: OBRYS i OSIE, z różnymi kolorami.",
+        "Na OBRYS narysuj prostokąt, na OSIE linię referencyjną.",
+        "Ukryj OSIE, sprawdź geometrię prostokąta, a potem przywróć widoczność i typy warstw."
+      ],
+      "question": "Czy potrafisz rozróżnić obiekt ukryty, skasowany i należący do innej warstwy?"
+    },
+    {
+      "lesson_no": 8,
+      "heading": "Model 1:1, arkusz w odpowiedniej skali",
+      "concept": "W modelu rysujesz rzeczywiste wymiary przyjętego układu. Layout wykorzystujesz do przygotowania widoku na papierze. Skala 1:50 zmniejsza widok przy wydruku, nie zmieniając długości 4000 mm w samym modelu.",
+      "steps": [
+        "Narysuj w Model Space prostokąt 4000 × 3000 mm.",
+        "Otwórz Layout i utwórz rzutnię pokazującą model.",
+        "Porównaj obliczony wymiar wydruku w skali 1:50: 80 × 60 mm z geometrią w Model Space."
+      ],
+      "question": "Jeżeli rysunek jest za duży na kartce, gdzie należy zmienić skalę: w modelu czy w rzutni?"
+    },
+    {
+      "lesson_no": 9,
+      "heading": "Pokój 4 × 3 m: pierwszy model z kontrolą przekątnej",
+      "concept": "Samo wpisanie 4000 i 3000 nie daje pewności wyniku, jeżeli punkt bazowy lub sposób wprowadzania współrzędnych został źle ustawiony. Prostokąt należy sprawdzić co najmniej w dwóch niezależnych wymiarach oraz po ponownym otwarciu pliku.",
+      "steps": [
+        "Otwórz DXF pokoju i zmierz oba boki oraz przekątną komendą _DIST.",
+        "Porównaj z wynikami: 4000, 3000 i 5000 mm; policz pole 12 m².",
+        "Zapisz własny DWG, zamknij plik, otwórz go ponownie i jeszcze raz zmierz przekątną."
+      ],
+      "question": "Dlaczego przekątna 5000 mm jest dodatkową kontrolą, a nie zamiennikiem sprawdzania wszystkich boków?"
+    },
+    {
+      "lesson_no": 10,
+      "heading": "Polecenia geometrii: wybór ma konsekwencje",
+      "concept": "LINE tworzy pojedyncze odcinki, PLINE ciąg połączonych segmentów, RECTANG zamknięty obrys prostokątny, CIRCLE okrąg z określonym środkiem i promieniem. Ten wybór wpływa na późniejsze zaznaczanie, liczenie i przesuwanie.",
+      "steps": [
+        "Utwórz po jednym przykładzie LINE, PLINE, RECTANG i CIRCLE.",
+        "Otwórz Właściwości każdego z obiektów i zapisz, czym różni się ich typ.",
+        "Dla okręgu o średnicy 600 mm sprawdź promień 300 mm i nie pomyl pytania o promień z pytaniem o średnicę."
+      ],
+      "question": "Jak sprawdzisz, że prostokąt z czterech LINE nie jest automatycznie jednym RECTANG?"
+    },
+    {
+      "lesson_no": 11,
+      "heading": "MOVE i COPY: punkt bazowy oraz wektor",
+      "concept": "MOVE przesuwa wskazane obiekty, COPY tworzy dodatkową kopię, ROTATE zmienia kierunek, a SCALE rozmiar. Weryfikuj nie tylko położenie, ale też geometrię: po MOVE i COPY długości boków nie powinny się zmieniać.",
+      "steps": [
+        "Otwórz DXF trójkąta i najpierw połącz odcinki w polilinię.",
+        "Uruchom _MOVE z bazą 0,0 i przesunięciem względnym @2000,0.",
+        "Użyj _COPY z @0,1500, a potem sprawdź długości i współrzędne obu egzemplarzy."
+      ],
+      "question": "Co zrobisz, jeżeli po MOVE cały trójkąt zmieni kształt lub zniknie jeden bok?"
+    },
+    {
+      "lesson_no": 12,
+      "heading": "OSNAP i ORTHO: precyzja bez zgadywania",
+      "concept": "OSNAP przyciąga do punktów charakterystycznych obiektu, na przykład końca odcinka. ORTHO ogranicza kierunki rysowania. Nie są tym samym co siatka. Możesz mieć prostą linię poziomą, której początek nadal nie trafia w wymagany punkt.",
+      "steps": [
+        "Włącz OSNAP: Endpoint, a przed kliknięciem zobacz marker końca.",
+        "Uruchom LINE i rozpocznij nowy odcinek dokładnie w punkcie istniejącego.",
+        "Włącz ORTHO, wykonaj odcinek poziomy, a następnie porównaj oba końce w Właściwościach."
+      ],
+      "question": "Jak odróżnisz przyciągnięcie do końca od przyciągnięcia do środka odcinka?"
+    },
+    {
+      "lesson_no": 13,
+      "heading": "ByLayer kontra wymuszony kolor",
+      "concept": "Obiekt może dziedziczyć kolor, grubość i typ linii z warstwy, ale może też mieć ręcznie wymuszoną właściwość. Przy zmianie ustawień warstwy niektóre elementy będą reagować, a inne pozostaną bez zmian. To częste źródło niespójności dokumentacji.",
+      "steps": [
+        "Na jednej warstwie wykonaj trzy linie; dwie pozostaw ByLayer.",
+        "Trzeciej nadaj kolor bezpośrednio w Właściwościach, a następnie zmień kolor warstwy.",
+        "Porównaj zachowanie wszystkich linii i przywróć trzecią do ByLayer."
+      ],
+      "question": "Dlaczego dwa obiekty na tej samej warstwie mogą być wyświetlane w różnych kolorach?"
+    },
+    {
+      "lesson_no": 14,
+      "heading": "ZOOM i PAN nie zmieniają modelu",
+      "concept": "Widok jest sposobem oglądania rysunku. ZOOM przybliża, PAN przesuwa okno widzenia, a REGEN odświeża obraz. Żadna z tych czynności nie powinna zmieniać współrzędnych ani rzeczywistych wymiarów obiektów.",
+      "steps": [
+        "Zmierz bok pokoju i zanotuj wynik przed zmianą widoku.",
+        "Użyj ZOOM oraz PAN; ponownie zmierz tę samą parę punktów.",
+        "Uruchom _ZOOM → _Extents i upewnij się, że model wrócił do czytelnego ujęcia."
+      ],
+      "question": "Jeśli po _ZOOM Extents obiekt stał się maleńki, czego poszukasz poza widocznym obrysem?"
+    },
+    {
+      "lesson_no": 15,
+      "heading": "BLOCK i XREF: dwa różne mechanizmy",
+      "concept": "Blok jest nazwanym wzorcem obiektów wstawianym wiele razy do rysunku. XREF jest odnośnikiem do zewnętrznego pliku, którego brak może spowodować niepełny obraz projektu. Kopia rysunku nie gwarantuje, że przekazano wszystkie zależności.",
+      "steps": [
+        "Zbuduj symbol słupka z kwadratu 50 × 50 i zapisz go jako BLOCK SLUPEK.",
+        "Wstaw trzy egzemplarze bloku w różnych miejscach i zmierz ich rozstaw.",
+        "Dołącz plik podklad.dwg jako XREF, a potem sprawdź ścieżkę zależności w menedżerze."
+      ],
+      "question": "Jakie pliki musisz przekazać, żeby druga osoba widziała podkład XREF?"
+    },
+    {
+      "lesson_no": 16,
+      "heading": "Wymiary są sprawdzeniem, nie dekoracją",
+      "concept": "Na rysunku może pojawić się napis 1000 mm, który nie jest zgodny z geometrią. Wymiary mają zależeć od rzeczywistych punktów, a ich prezentacja nie powinna ukrywać błędów. Od niezależnego pomiaru DIST zaczyna się diagnoza rozbieżności.",
+      "steps": [
+        "Narysuj linię 1000 mm i utwórz powiązany z nią wymiar.",
+        "Na kopii zmień jej długość na 980 mm i porównaj wynik z _DIST.",
+        "Jeśli wymiar nadal pokazuje 1000, sprawdź powiązanie i nadpisany tekst, nie poprawiaj go ręcznie bez diagnozy."
+      ],
+      "question": "Kiedy etykieta wymiaru może pokazywać liczbę różną od rzeczywistej długości odcinka?"
+    },
+    {
+      "lesson_no": 17,
+      "heading": "Zapis DWG i kontrola końcowego PDF",
+      "concept": "Eksport nie kończy pracy. PDF może nie zawierać ukrytej warstwy, mieć nieprawidłową skalę albo niewidoczne wymiary. Zanim wyślesz dokument, otwórz wygenerowany plik poza AutoCAD-em i przeprowadź krótką kontrolę wydania.",
+      "steps": [
+        "Zapisz plik DWG z jednoznaczną nazwą i rewizją.",
+        "Przygotuj arkusz, ustaw skalę oraz podgląd wydruku, a następnie eksport do PDF.",
+        "Otwórz PDF w czytniku i sprawdź czytelność, zakres widoku, datę i numery rewizji."
+      ],
+      "question": "Dlaczego zgodność podglądu wydruku nie wystarcza jako dowód poprawności przesłanego pliku?"
+    },
+    {
+      "lesson_no": 18,
+      "heading": "Szkic balustrady: liczenie osi, nie prześwitów",
+      "concept": "Na rysunku balustrady rozstaw osi słupków i światło między ich krawędziami to dwa różne wymiary. Można uzyskać pozornie poprawną liczbę 800 mm przy niewłaściwym usytuowaniu kolejnego słupka. W praktyce należy zawsze wiedzieć, co jest punktem odniesienia.",
+      "steps": [
+        "Wstaw cztery symbole słupków na osiach X=0,800,1600,2400 mm.",
+        "Dodaj wymiar całkowity i trzy wymiarowania między sąsiadującymi osiami.",
+        "W rewizji B przenieś ostatni słupek na X=2380 i sprawdź końcowy odcinek 780 mm."
+      ],
+      "question": "Dlaczego rozstaw osi 780 mm nie jest równy wolnej przestrzeni między dwoma słupkami?"
+    },
+    {
+      "lesson_no": 19,
+      "heading": "Zadanie przekrojowe: najpierw kryteria, potem rysunek",
+      "concept": "Rysunek wyglądający poprawnie może zawierać błędny wymiar, inną jednostkę lub niedrukowaną warstwę. Wykonanie ćwiczenia jest ukończone dopiero wtedy, gdy można obiektywnie potwierdzić geometrię, zapis oraz zgodność PDF z modelem.",
+      "steps": [
+        "Narysuj obrys 4200 × 3000 mm i otwór Ø600 na osobnej warstwie.",
+        "Dodaj wymiary, zmierz szerokość przez DIST i sprawdź właściwości okręgu.",
+        "Wyeksportuj PDF, otwórz oba pliki ponownie i porównaj liczbę oraz wymiary obiektów."
+      ],
+      "question": "Wypisz trzy różne rodzaje błędów, które sam wygląd gotowego wydruku może ukryć."
+    },
+    {
+      "lesson_no": 20,
+      "heading": "Dokument produkcyjny wymaga statusu i uzgodnienia",
+      "concept": "Projekt próbny nie powinien trafić do produkcji. Rozróżniaj „wersję roboczą”, „do sprawdzenia” oraz „zatwierdzoną do wykonania”. Podpis i rewizja określają odpowiedzialność; nie da się jej zastąpić samą datą pliku.",
+      "steps": [
+        "Utwórz dwa warianty panelu: szerokość 600 mm oraz 650 mm.",
+        "Na każdym dodaj numer rewizji, datę i status „DO SPRAWDZENIA”.",
+        "Zapisz w tabeli zmian, czego dotyczy rewizja i kto powinien potwierdzić geometrię."
+      ],
+      "question": "Jeśli dwa pliki noszą podobne nazwy, po czym niezależnie rozpoznasz wersję obowiązującą?"
+    },
+    {
+      "lesson_no": 21,
+      "heading": "Kolizja 2D nie zawsze oznacza kolizję w przestrzeni",
+      "concept": "Dwie geometrie mogą przecinać się na rzucie, ale przebiegać na różnych wysokościach. Brak danych wysokościowych nie pozwala rozstrzygnąć rzeczywistej kolizji. Zgłoszenie projektowe musi wskazywać miejsce, wersje rysunków i informacje do uzupełnienia.",
+      "steps": [
+        "Na oddzielnych warstwach narysuj rurę i wspornik tak, aby przecinały się na rzucie.",
+        "Zapisz współrzędne punktu przecięcia i sprawdź dostępne rzędne wysokościowe.",
+        "Zamiast przesuwać element na oko, przygotuj pytanie o brakujące dane Z dla obu branż."
+      ],
+      "question": "Czy samo wyłączenie widoczności instalacji dowodzi, że kolizja została rozwiązana?"
+    },
+    {
+      "lesson_no": 22,
+      "heading": "Obcy DWG: diagnostyka zanim zaczniesz edytować",
+      "concept": "Cudzy plik może zawierać wyłączone warstwy, brakujące odnośniki, nietypowe jednostki i starszą rewizję. Pierwszym krokiem nie jest poprawianie obiektów, lecz bezpieczna kopia i zebranie faktów o stanie dokumentu.",
+      "steps": [
+        "Zapisz kopię otrzymanego DWG i zanotuj źródło oraz numer rewizji.",
+        "Sprawdź warstwy, odnośniki XREF, komunikaty błędów i jeden znany wymiar.",
+        "Porównaj rysunek z kontrolnym PDF, spisz różnice i dopiero później rozważ korekty."
+      ],
+      "question": "Jeśli brakuje fragmentu rzutu, jak sprawdzisz czy jest ukryty, czy nie został dołączony do pliku?"
+    },
+    {
+      "lesson_no": 23,
+      "heading": "Rewizja to zapis zmiany z możliwością odtworzenia",
+      "concept": "Nazwy typu final_v2_nowy nic nie mówią o zmianie. Rewizja powinna odzwierciedlać wcześniej zatwierdzony stan, przyczynę i status nowej propozycji. Wariant alternatywny również wymaga własnego oznaczenia.",
+      "steps": [
+        "Zachowaj panel_A.dwg jako nienaruszony punkt odniesienia.",
+        "W kopii panel_B.dwg zmień szerokość z 600 do 650 mm.",
+        "Dodaj opis zmiany +50 mm, status DO SPRAWDZENIA i porównaj oba pliki przez pomiary."
+      ],
+      "question": "Jak odróżnisz nową rewizję od eksperymentalnego wariantu, którego nikt nie zatwierdził?"
+    },
+    {
+      "lesson_no": 24,
+      "heading": "Dwie skale bez przerysowywania modelu",
+      "concept": "Model 5000 mm ma pozostać 5000 mm niezależnie od arkusza. W skali 1:50 zajmie 100 mm na papierze, w skali 1:100 — 50 mm. Drukowanie z dodatkowym „Dopasuj do strony” może zniszczyć poprawną skalę.",
+      "steps": [
+        "Przygotuj dwa layouty dla tego samego modelu, z rzutniami 1:50 i 1:100.",
+        "Zadbaj o czytelność wymiarów i ustaw skalę wydruku arkusza 1:1.",
+        "Eksportuj PDF i sprawdź miarką albo narzędziem pomiaru wynik: 100 mm oraz 50 mm."
+      ],
+      "question": "Który parametr zmienisz, jeżeli na A4 nie mieści się widok, ale wymiary modelu są prawidłowe?"
+    },
+    {
+      "lesson_no": 25,
+      "heading": "Pomiary z natury muszą mieć jednoznaczne odniesienia",
+      "concept": "Różnica -30 mm ma sens dopiero wtedy, gdy pomiar i projekt obejmują dokładnie te same punkty. Zapisuj lokalizację, datę, narzędzie i źródło projektu. Nie dopasowuj geometrii „na oko” do jednego odczytu.",
+      "steps": [
+        "Porównaj projektowe 3200 mm z pomiarem 3170 mm dla tych samych punktów.",
+        "Oblicz pomiar minus projekt: -30 mm i zapisz znak różnicy.",
+        "Przygotuj szkic ze wskazaniem punktów odniesienia oraz pytanie do osoby zatwierdzającej zmianę."
+      ],
+      "question": "Co zrobisz, jeżeli dwa zespoły podają tę samą różnicę, ale mierzą między innymi punktami?"
+    },
+    {
+      "lesson_no": 26,
+      "heading": "Bloki i liczba sztuk: pułapka nakładania",
+      "concept": "Liczba widocznych miejsc nie musi odpowiadać liczbie obiektów. Dwa takie same bloki w tym samym miejscu wyglądają jak jeden, ale zestawienie może policzyć oba. Kontrola ilości jest krytyczna przy kosztorysowaniu i zamówieniach.",
+      "steps": [
+        "Wstaw pięć bloków SLUPEK w pięciu różnych pozycjach.",
+        "Skopiuj jeden blok dokładnie w jego obecne współrzędne.",
+        "Wykorzystaj COUNT lub listę zaznaczonych bloków i porównaj sześć wstawień z pięcioma widocznymi pozycjami."
+      ],
+      "question": "Dlaczego tabela 6 sztuk bez kontroli duplikatów nie jest wystarczająca do zamówienia materiału?"
+    },
+    {
+      "lesson_no": 27,
+      "heading": "Kontrola geometrii: szczeliny i duplikaty",
+      "concept": "Obrys może wyglądać na zamknięty, a zawierać mikroszczelinę, nakładającą się linię albo niezgodną wysokość Z. Te błędy mogą uniemożliwiać obliczenie pola, kreskowanie lub eksport. Poprawny wynik trzeba potwierdzić niezależnymi metodami.",
+      "steps": [
+        "Narysuj prostokąt 1000 × 600, a w jego kopiach dodaj duplikat linii i szczelinę 2 mm.",
+        "Sprawdź zamknięcie polilinii, liczbę obiektów oraz współrzędne końców.",
+        "Po naprawie zmierz pole 600 000 mm² i obwód 3200 mm; zachowaj obie wersje do porównania."
+      ],
+      "question": "Czy poprawne kreskowanie zawsze oznacza brak nakładających się linii albo samoprzecięć?"
+    },
+    {
+      "lesson_no": 28,
+      "heading": "Przekazywanie dokumentacji: kontrola kompletności",
+      "concept": "Paczka zawierająca DWG bez XREF może wyglądać dobrze tylko na komputerze autora. Odbiorca potrzebuje wskazanej rewizji, plików zewnętrznych i odpowiedniego PDF. Taki komplet należy samodzielnie rozpakować i otworzyć w nowej lokalizacji.",
+      "steps": [
+        "Przygotuj bieżący DWG, zgodny PDF oraz wszystkie odnośniki zewnętrzne.",
+        "Jeśli jest dostępne, użyj eTransmit i sprawdź raport plików dołączonych i pominiętych.",
+        "Rozpakuj paczkę w innym folderze i otwórz DWG bez polegania na starych ścieżkach."
+      ],
+      "question": "Czy odbiorca może odtworzyć obraz dokumentacji, nie mając dostępu do folderów na Twoim komputerze?"
+    },
+    {
+      "lesson_no": 29,
+      "heading": "Próba końcowa: od panelu A do rewizji B",
+      "concept": "Egzamin praktyczny ma łączyć umiejętności, nie tylko rozpoznawanie nazw. Musisz wykonać geometrię, zmienić jej wymiary, zachować historię rewizji, dodać oznaczenia i niezależnie potwierdzić wyniki pomiarami w obu plikach.",
+      "steps": [
+        "Otwórz DXF panelu A 600 × 350 mm z otworami R10: (50,50) i (550,50).",
+        "Zapisz DWG wersji A, utwórz B o szerokości 650 mm i środkach (50,70) oraz (600,70).",
+        "Dodaj wymiarowanie, tabelę rewizji, PDF obu wersji oraz raport: rozstaw osi otworów A=500 i B=550 mm."
+      ],
+      "question": "Gdyby ktoś otrzymał same pliki bez rozmowy z Tobą, czy potrafiłby wskazać wersję, zmianę i pomiary kontrolne?"
+    }
+  ]
+}

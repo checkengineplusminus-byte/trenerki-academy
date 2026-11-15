@@ -21,6 +21,7 @@ import FinalExam from '../src/FinalExam';
 import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '../src/LessonIllustratedSections';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
+import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
@@ -33,7 +34,7 @@ type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
 type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
- const {course,lesson:lessonParam}=useLocalSearchParams<{course?:string;lesson?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
@@ -53,12 +54,16 @@ export default function Learning(){
  }
  function openCarpentry(){scrollRef.current?.scrollTo({y:Math.max(0,carpentryYRef.current-18),animated:true});}
  const [introRead,setIntroRead]=useState(false);
+ const [reviewMode,setReviewMode]=useState(reviewParam==='1');
+ const [coachOpen,setCoachOpen]=useState(false);
  useEffect(()=>{setIntroRead(false);pendingWorkshopRef.current=false;},[slug]);
+ useEffect(()=>{setReviewMode(reviewParam==='1');},[slug,reviewParam]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ useEffect(()=>{setCoachOpen(false);},[slug,module]);
  React.useLayoutEffect(()=>{
   if(Platform.OS==='web'){
    scrollToTop();
@@ -145,6 +150,14 @@ export default function Learning(){
  const firstPending=items.find(v=>!done.includes(v.lesson_no));
  const unlockedNo=firstPending?.lesson_no??Infinity;
  const canVisit=(number:number)=>number<=unlockedNo||done.includes(number);
+ function startFromBeginning(){
+  if(saving||!items.length)return;
+  setReviewMode(true);setIntroRead(false);setCoachOpen(false);setShowProgram(false);
+  setMsg('Powtórka od pierwszej lekcji. Zapisany postęp i otrzymany dyplom pozostają bez zmian.');
+  setModule(items[0].lesson_no);
+  router.setParams({lesson:String(items[0].lesson_no+1),review:'1'});
+  scrollToTop();
+ }
  function openModule(number:number){
   setModule(number);router.setParams({lesson:String(number+1)});scrollToTop();
  }
@@ -198,7 +211,8 @@ export default function Learning(){
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
    if(target!==module){openModule(target);setMsg(prev=>prev||'Otworzono następną lekcję.');}
-   else {setMsg('Wszystkie lekcje ukończone. Egzamin Anielki jest teraz na początku strony.');scrollToTop();}
+   else if(reviewMode){setReviewMode(false);router.setParams({review:'0'});setMsg('Powtórka ukończona. Możesz wrócić do dowolnej lekcji lub zobaczyć dyplom.');scrollToTop();}
+   else {setMsg('Wszystkie lekcje ukończone. Egzamin jest poniżej ostatniej lekcji.');scrollToTop();}
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
  }
@@ -228,12 +242,17 @@ export default function Learning(){
    {!busy&&courseInfo.slug===slug&&index===0&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
    <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
-     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Postęp · {completed}/{items.length} lekcji</Text>
-     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{progress}%</Text>
+     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
+     <Text style={{fontSize:reviewMode?12:17,fontWeight:'900',color:ink}}>{reviewMode?'Dyplom zachowany':progress+'%'}</Text>
     </View>
-    <View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
+    {!reviewMode&&<View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
      <View style={{height:8,width:progress+'%',backgroundColor:'#7cae6e'}}/>
-    </View>
+    </View>}
+    <Pressable testID="start-course-from-beginning" accessibilityRole="button" disabled={saving} onPress={startFromBeginning}
+      style={{marginTop:12,paddingVertical:11,paddingHorizontal:13,backgroundColor:'white',borderRadius:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#bad4b6'}}>
+      <Text style={{fontWeight:'900',color:ink}}>↺ Zacznij od początku</Text>
+    </Pressable>
+    {reviewMode&&<Text style={{fontSize:12,lineHeight:19,color:'#49684c',marginTop:5}}>Powtarzasz materiały. Postęp i dyplom nie są kasowane.</Text>}
    </View>
    {lessonNavigation('top')}
    {slug==='zaufany-wolontariusz'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:14,marginBottom:14}}>
@@ -267,7 +286,7 @@ export default function Learning(){
      </View>;
     })}
    </View>}
-   {!!study&&<CourseStudyPlan key={slug} project={study}/>}
+   {index===0&&!!study&&<CourseStudyPlan key={slug} project={study}/>}
    <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
     style={{backgroundColor:'#f1f6ed',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#d6e7d0',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
@@ -292,12 +311,12 @@ export default function Learning(){
       <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':!canVisit(v.lesson_no)?'🔒 ':''}{v.lesson_no+1}</Text>
      </Pressable>)}</View>
    </View>)}
-   {progress===100&&<View style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
+   {progress===100&&index===items.length-1&&!reviewMode&&<View testID="course-completed-last-page-only" style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Wszystkie lekcje ukończone! 🎉</Text>
     <Text style={{color:secondary,marginTop:6}}>Masz komplet lekcji. Teraz czeka Cię osobny egzamin Anielki. Dopiero jego zaliczenie umożliwia wystawienie autorskiego dyplomu.</Text>
    </View>}
   </>}
-  {progress===100&&<FinalExam courseSlug={slug}/>}
+  {progress===100&&index===items.length-1&&!reviewMode&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
    {index===0&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={true}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
@@ -319,7 +338,7 @@ export default function Learning(){
    {(items.length===30||slug==='ciesla-przygotowanie-czeladnicze')&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
      <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · ZAAWANSOWANE')}</Text>
    </View>}
-   <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{done.includes(module)?' · Ukończona ✓':''}</Text>
+   <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
    {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#e5f4e1':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#a8cda4':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{canFinish?'✓ Obydwa zadania zaliczone — możesz przejść dalej':'Aby przejść dalej, zalicz 2 zadania'}</Text>
@@ -341,6 +360,7 @@ export default function Learning(){
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
    </View>
+   {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
@@ -369,7 +389,7 @@ export default function Learning(){
      <>
       {learning&&<CaseLesson data={learning} identity={slug+'-'+String(module)}
        hideSituation={!!learning.situation&&sections.some(section=>section?.text?.includes(learning.situation!))}
-       hideTask={!!learning.task&&sections.some(section=>section?.text?.includes(learning.task!))}
+       hideTask={slug==='autocad-skroty'||!!learning.task&&sections.some(section=>section?.text?.includes(learning.task!))}
        onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
@@ -391,12 +411,16 @@ export default function Learning(){
    {isLogisticsCourse(slug)&&[9,19,29].includes(index)&&<LogisticsWorkshop key={slug+'-'+module} slug={slug} lessonNo={module}/>}
 
    <LessonHelp slug={slug} title={lesson.title_pl}/>
-   <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
+   <Pressable testID="anielka-help-toggle" accessibilityRole="button" accessibilityState={{expanded:coachOpen}}
+     onPress={()=>setCoachOpen(v=>!v)} style={{marginTop:14,padding:15,backgroundColor:'#edf5e8',borderRadius:12}}>
+    <Text style={{color:ink,fontWeight:'900'}}>{coachOpen?'Zwiń rozmowę z Anielką ↑':'Nie rozumiesz? Zapytaj Anielkę ↓'}</Text>
+   </Pressable>
+   {coachOpen&&<GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>}
    <Pressable accessibilityRole="button" disabled={saving}
     onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
     style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
     <Text style={{color:canFinish?'white':ink,fontWeight:'900',textAlign:'center',fontSize:17,lineHeight:25}}>
-     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':'Przejdź do egzaminu →'}
+     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':reviewMode?'Zakończ powtórkę →':'Przejdź do egzaminu →'}
     </Text>
     {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>

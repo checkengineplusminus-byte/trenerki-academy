@@ -23,6 +23,9 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
  const [options,setOptions]=useState<KeyboardShortcut[]>([]);
  const [answer,setAnswer]=useState<number|null>(null),[verifying,setVerifying]=useState(false),[quizConfirmed,setQuizConfirmed]=useState(false),[error,setError]=useState('');
  const mode=softwareMode(slug);
+ // AutoCAD has its own 30-lesson method. An empty shortcut list must not
+ // mount the old identical practice panel on every chapter.
+ if(slug==='autocad-skroty'&&!valid.length)return null;
  if(!mode&&!valid.length)return null;
 
  function showShortcut(item:KeyboardShortcut){
@@ -63,7 +66,7 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
     {slug==='windows-skroty'&&<Text style={labStyles.body}>② Możesz też wykonać ten skrót na własnym komputerze. Pod symulacją rozwiń instrukcję „Sprawdź na swoim komputerze”. System przechwytuje część kombinacji; dlatego nie wymagamy wciskania ich w przeglądarce.</Text>}
    </View>}
   </View>}
-  {mode&&<HandsOnLab mode={mode} shortcut={active?.combo} runId={runId}/>}
+  {mode&&slug!=='autocad-skroty'&&<HandsOnLab mode={mode} shortcut={active?.combo} runId={runId}/>}
   {mode&&slug!=='autocad-skroty'&&<Text style={labStyles.eyebrow}>Autorski warsztat szkoleniowy. Pracujesz na danych ćwiczebnych w obrębie Akademii.</Text>}
   {alreadyVerified&&<Text style={labStyles.status}>✓ Zaliczenie skrótów zapisane. Możesz przejść dalej albo poćwiczyć ponownie.</Text>}
   {active&&options.length>=3&&<View style={{backgroundColor:labInk,padding:15,borderRadius:13,gap:10}}>

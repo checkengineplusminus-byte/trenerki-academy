@@ -146,24 +146,28 @@ async function waitText(locator,expected){
 
 async function verifyCad(page,mobile){
  await openCourse(page,'autocad-skroty');
- const practice=page.getByTestId('autocad-real-practice');
- await practice.waitFor();
- assert.equal(await page.getByTestId('cad-workspace').count(),0,'Do not present a substitute as Autodesk AutoCAD');
- const originals=page.getByTestId('autocad-original-screens').first();
+ const method=page.getByTestId('autocad-lesson-method');
+ await method.waitFor();
+ await method.getByText('CAD to dane, nie obrazek',{exact:true}).waitFor();
+ assert.equal(await page.getByTestId('cad-workspace').count(),0,'Never present a substitute as Autodesk AutoCAD');
+ assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Do not show the same old CAD practice panel in every lesson');
+ assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Do not repeat a full AutoCAD screen by default');
+ await page.getByRole('button',{name:'Ekran programu'}).click();
+ const originals=page.getByTestId('autocad-original-screens');
  await originals.waitFor();
- const images=originals.getByRole('img');
- assert.equal(await images.count(),3);
- for(const img of await images.all())assert(await img.evaluate(node=>node.complete&&node.naturalWidth>0),'Original screenshot must load');
- await practice.getByRole('button',{name:/Trójkąt z trzech linii/}).click();
- await practice.getByText(/_JOIN/).waitFor();
- await practice.getByText(/_MOVE/).waitFor();
- await practice.getByRole('link',{name:'Otwórz instrukcję łączenia obiektów Autodesk'}).waitFor();
+ const images=originals.locator('img');
+ await images.first().waitFor();
+ assert.equal(await images.count(),1);
+ for(const img of await images.all())await img.evaluate(node=>node.decode());
+ await page.getByRole('link',{name:/Otwórz oficjalną instrukcję Autodesk/}).waitFor();
+ await page.getByRole('button',{name:'Pojęcia'}).click();
+ assert.equal(await page.getByTestId('autocad-original-screens').count(),0);
  await page.getByRole('button',{name:'L · Linia',exact:true}).click();
- await page.getByTestId('autocad-selected-command').filter({hasText:'L.'}).waitFor();
+ await page.getByText('Przed użyciem',{exact:false}).first().waitFor();
  assert.equal(await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).count(),0);
  await page.getByRole('button',{name:/^[A-C]\. L · Linia$/}).click();
  await page.getByText('Wynik zapisany.',{exact:true}).waitFor();
- console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: authentic screenshots, real-program instructions, JOIN/MOVE explanation and recorded knowledge question');
+ console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: unique lesson method, original screen on demand, no repeating legacy lab, recorded knowledge question');
 }
 
 async function verifyExcel(page,mobile){
@@ -450,7 +454,7 @@ async function verifyAllCourses(ctx){
   await page.getByTestId('lesson-nav-top').getByRole('button',{name:'Poprzednia lekcja'}).click();
   await page.waitForURL(url=>url.searchParams.get('lesson')==='1');
   await heading.filter({hasText:course.outline[0]}).waitFor();
-  await page.getByText(/Lekcja 1 z .*Ukończona/).waitFor();
+  await page.getByText(/Lekcja 1 z .*Zaliczone ćwiczenia/).waitFor();
   assert.deepEqual(finished.at(-1),[course.id,0]);
   console.log('✓ '+course.id+' · '+course.outline.length+' lessons · course opened, checkpoint accepted, next and back');
  }
