@@ -1,6 +1,6 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {Text,TextInput,View,useWindowDimensions} from 'react-native';
-import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection} from './CadSelection';
+import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection,mirrorCadSelection,rotateCadSelection} from './CadSelection';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
@@ -8,7 +8,7 @@ import {add,arcData,cadCoordinates,cadNumber,contains,distance,dot,fitDrawing,is
  screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size,type CadSnapMode} from './CadGeometry';
 
 type Tool='select'|'line'|'poly'|'rect'|'circle'|'arc'|'hatch'|'move'|'copy'|'rotate'|'scale'|'mirror'|'offset'|'trim'|'dist'|'dimlinear'|'dimaligned';
-type Session={tool:Tool;points:Point[];target?:number;selecting?:boolean;amount?:number;diameter?:boolean;boundaries?:number[]};
+type Session={tool:Tool;points:Point[];target?:number;selecting?:boolean;amount?:number;diameter?:boolean;boundaries?:number[];mirrorAxis?:[Point,Point]};
 type Layer={id:number;name:string;color:string;visible:boolean};
 type Drawing={shapes:CadShape[];layers:Layer[];currentLayer:number};
 const palette=['#d9e8e9','#83d9ee','#edbe83','#bfda94','#e69fa7','#c4a9ee'];
@@ -29,6 +29,7 @@ const aliasMap=Object.fromEntries(Object.entries(tools).flatMap(([tool,t])=>[t.n
 const modify=new Set<Tool>(['move','copy','rotate','scale','mirror']);
 const promptFor=(s:Session)=>{
  const n=s.points.length;
+ if(s.mirrorAxis)return 'Usunąć oryginalne obiekty? [Tak/Nie] <Nie>. Naciśnij Enter, aby je zachować.';
  if(s.tool==='select')return 'Wybierz narzędzie lub wskaż krawędź obiektu.';
  if(s.tool==='line'||s.tool==='poly')return n?'Wskaż następny punkt lub wybierz [Zamknij/Cofnij].':'Wskaż pierwszy punkt.';
  if(s.tool==='rect')return n?'Wskaż przeciwległy narożnik.':'Wskaż pierwszy narożnik.';
@@ -115,7 +116,30 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   const id=storeShape({kind:'poly',points,closed:close});
   if(id){resetSession();tell(close?'Zamknięto polilinię.':'Zakończono polilinię.');}
  }
+ function performMirror(eraseSource:boolean){
+  if(!session.mirrorAxis)return;
+  const ids=selectedVisible.length?selectedVisible:session.target!==undefined?[session.target]:[];
+  const result=mirrorCadSelection(drawing.shapes,ids,session.mirrorAxis[0],session.mirrorAxis[1],
+   eraseSource,nextId.current);
+  if(!result){tell('MIRROR nie powiódł się: zaznacz obiekty, wybierz dwa różne punkty osi i sprawdź limit obiektów.');return;}
+  nextId.current=result.nextId;
+  updateShapes(result.shapes);
+  setSelectedIds(result.ids);setSelected(result.ids.at(-1));resetSession();
+  tell('MIRROR: odbito '+ids.length+' '+countObjects(ids.length)+'. '+(eraseSource?'Oryginały usunięte.':'Oryginały zachowane.'));
+ }
+ function performRotate(degrees:number){
+  if(!first||!Number.isFinite(degrees))return;
+  const ids=selectedVisible.length?selectedVisible:session.target!==undefined?[session.target]:[];
+  if(!ids.length){tell('ROTATE: najpierw zaznacz obiekt.');return;}
+  const updated=rotateCadSelection(drawing.shapes,ids,first,degrees);
+  if(!updated.filter(shape=>ids.includes(shape.id)).every(shape=>shape.points.every(inRange))){
+   tell('ROTATE: część obiektów wyszłaby poza bezpieczny zakres współrzędnych.');return;
+  }
+  updateShapes(updated);setSelectedIds(ids);setSelected(ids.at(-1));resetSession();
+  tell('ROTATE: obrócono '+ids.length+' '+countObjects(ids.length)+' o '+cadNumber(degrees)+'° względem '+cadCoordinates(first)+'.');
+ }
  function finish(close=false){
+  if(session.mirrorAxis){performMirror(false);return;}
   if(tool==='hatch'){
    if(!session.boundaries?.length){resetSession();return;}
    updateShapes(drawing.shapes.map(s=>session.boundaries?.includes(s.id)?{...s,fill:pattern}:s));resetSession();tell('Zastosowano wypełnienie.');return;
@@ -242,6 +266,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    else tell('Odsunięcie w tej pracowni działa na liniach i okręgach. Sprawdź też promień.');
    return;
   }
+  if(session.mirrorAxis){tell('MIRROR: wybierz Tak lub Nie, aby zakończyć odbicie.');return;}
   if(!first){accept(point);return;}
   if(distance(point,latest!)<1e-8){tell('Wybierz punkt różny od poprzedniego.');return;}
   if(tool==='line'){
@@ -279,10 +304,13 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    }
    setLast(point);resetSession();
    tell((tool==='copy'?'Skopiowano ':'Przesunięto ')+ids.length+' '+countObjects(ids.length)+' o '+cadCoordinates(delta)+'.');
+  }else if(target&&tool==='rotate'){
+   const angle=Math.atan2(point.y-first.y,point.x-first.x)*180/Math.PI;
+   performRotate(angle);
   }else if(target&&tool==='mirror'){
-   const axis=subtract(point,first),square=dot(axis,axis);
-   applyChange(transformShape(target,p=>subtract(add(first,multiply(axis,2*dot(subtract(p,first),axis)/square)),subtract(p,first)),false),
-    true,'Odbito obiekt. Oryginał pozostaje na rysunku.');
+   if(distance(point,first)<1e-6){tell('MIRROR: punkty osi muszą być różne.');return;}
+   setSession({...session,points:[first,point],mirrorAxis:[first,point]});
+   tell('MIRROR: usunąć obiekty źródłowe? [Tak/Nie] <Nie>. Enter zachowuje oryginały.');
   }
  }
  function zoom(factor:number,at:Point={x:size.width/2,y:size.height/2}){setCamera(old=>zoomCamera(old??view,size,factor,at));}
@@ -305,6 +333,11 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   setInput('');
   if(flags(command))return;
   if(['ESC','ESCAPE'].includes(command)){cancel();return;}
+  if(session.mirrorAxis){
+   if(['N','NO','NIE',''].includes(command)){performMirror(false);return;}
+   if(['Y','YES','T','TAK'].includes(command)){performMirror(true);return;}
+   tell('MIRROR: wpisz N, aby zachować oryginały, lub Y, aby je usunąć.');return;
+  }
   if(['CTRL+Z','UNDO','U'].includes(command)){
    if(command==='U'&&(tool==='line'||tool==='poly')&&points.length>1){
     if(tool==='line'&&history.length){
@@ -336,18 +369,15 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    return;
   }
   if((tool==='rotate'||tool==='scale')&&first&&target&&Number.isFinite(number)){
-   if(tool==='scale'&&number<=0){tell('Współczynnik skali musi być dodatni.');return;}
+   if(tool==='rotate'){performRotate(number);return;}
+   if(number<=0){tell('Współczynnik skali musi być dodatni.');return;}
    const ids=selectedVisible.length?selectedVisible:[target.id];
-   const transform=tool==='scale'?(p:Point)=>add(first,multiply(subtract(p,first),number)):(p:Point)=>{
-    const theta=number*Math.PI/180,cos=Math.cos(theta),sin=Math.sin(theta),v=subtract(p,first);
-    return add(first,{x:v.x*cos-v.y*sin,y:v.x*sin+v.y*cos});
-   };
-   const updated=transformCadSelection(drawing.shapes,ids,transform);
+   const updated=transformCadSelection(drawing.shapes,ids,p=>add(first,multiply(subtract(p,first),number)));
    if(!updated.filter(shape=>ids.includes(shape.id)).every(shape=>shape.points.every(inRange))){
-    tell('Obiekt wychodzi poza dozwolony zakres współrzędnych.');return;
+    tell('Obiekt wychodzi poza bezpieczny zakres współrzędnych.');return;
    }
    updateShapes(updated);setSelectedIds(ids);setSelected(ids.at(-1));resetSession();
-   tell(tool==='scale'?'SCALE: przeskalowano '+ids.length+' '+countObjects(ids.length)+' ×'+cadNumber(number)+'.':'ROTATE: obrócono '+ids.length+' '+countObjects(ids.length)+' o '+cadNumber(number)+'°.');
+   tell('SCALE: przeskalowano '+ids.length+' '+countObjects(ids.length)+' ×'+cadNumber(number)+'.');
    return;
   }
   const point=readCadPoint(command,latest??last);
@@ -511,6 +541,10 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
      <LabButton label="Zamknij obrys" disabled={points.length<3} onPress={()=>finish(true)}/>
     </>}
     {tool==='circle'&&first&&<LabButton label="Średnica · D" selected={session.diameter} onPress={()=>setSession({...session,diameter:!session.diameter})}/>}
+    {tool==='mirror'&&session.mirrorAxis&&<>
+     <LabButton label="Zachowaj oryginały · Nie" onPress={()=>performMirror(false)}/>
+     <LabButton label="Usuń oryginały · Tak" onPress={()=>performMirror(true)}/>
+    </>}
     {tool!=='select'&&<LabButton label="Anuluj · Esc" onPress={cancel}/>}
     <LabButton label="Historia poleceń · F2" selected={expandLog} onPress={()=>setExpandLog(v=>!v)}/>
    </View>
