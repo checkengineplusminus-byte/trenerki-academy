@@ -85,7 +85,7 @@ export default function ExcelFirstDayPractice(){
   <View style={{padding:mobile?14:19,backgroundColor:'#e2f1e5',gap:8}}>
    <Text style={{color:'#3d7351',fontSize:11,fontWeight:'900'}}>MICROSOFT EXCEL · LEKCJA PIERWSZA · BEZ POŚPIECHU</Text>
    <Text style={{fontSize:mobile?20:24,fontWeight:'900',color:ink}}>Zanim zaczniesz liczyć, poznaj wiersze i kolumny</Text>
-   <Text style={{fontSize:14,lineHeight:23,color:muted}}>Nie musisz znać żadnych skrótów. To sześć małych czynności na przykładowej liście. Każdy krok mówi, gdzie nacisnąć, a jeśli utkniesz, pokaże podpowiedź.</Text>
+   <Text style={{fontSize:14,lineHeight:23,color:muted}}>Najpierw pokażemy Ci gotowy przykład, a dopiero potem wykonasz sześć prostych czynności. Wpisanie poprawnej liczby LUB poprawnej formuły jest zaliczane. Niczego nie musisz zgadywać.</Text>
   </View>
   <View style={{padding:mobile?12:18,gap:13}}>
    <View style={{backgroundColor:'white',padding:14,borderRadius:12,borderWidth:1,borderColor:border,gap:7}}>
@@ -104,6 +104,23 @@ export default function ExcelFirstDayPractice(){
    <View style={{gap:5}}>
     <Text style={{color:ink,fontSize:17,fontWeight:'900'}}>{example.title}</Text>
     <Text style={{color:muted,fontSize:13,lineHeight:21}}>{example.context}</Text>
+   </View>
+   <View testID="excel-first-worked-example" style={{backgroundColor:'#edf6ef',padding:mobile?13:17,borderRadius:12,borderWidth:1,borderColor:'#a8ceb3',gap:11}}>
+    <Text style={{color:'#286747',fontSize:12,fontWeight:'900'}}>NAJPIERW PRZYKŁAD — TO NIE JEST SPRAWDZIAN</Text>
+    <Text style={{fontSize:16,lineHeight:24,color:ink,fontWeight:'800'}}>Kupujesz {baselineAmount} sztuki produktu „{example.items[0].label}” po {pln(baselinePrice)} za sztukę.</Text>
+    <Text style={{fontSize:14,lineHeight:23,color:ink}}>Najpierw mnożymy ilość przez cenę: {baselineAmount} × {baselinePrice} = {baselineAmount*baselinePrice}. Zatem zapłacisz {pln(baselineAmount*baselinePrice)}.</Text>
+    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+     {[
+      {key:'B2',label:'ILE SZTUK?',value:String(baselineAmount)},
+      {key:'C2',label:'CENA SZTUKI',value:pln(baselinePrice)},
+      {key:'D2',label:'WYNIK',value:pln(baselineAmount*baselinePrice)}
+     ].map(cell=><View key={cell.key} style={{flexGrow:1,minWidth:mobile?90:110,padding:10,borderWidth:1,borderColor:'#b6d5bf',borderRadius:10,backgroundColor:'white',gap:3}}>
+      <Text style={{fontSize:11,color:'#47785a',fontWeight:'900'}}>{cell.key} · {cell.label}</Text>
+      <Text style={{fontSize:16,color:ink,fontWeight:'900'}}>{cell.value}</Text>
+     </View>)}
+    </View>
+    <Text style={{fontSize:14,lineHeight:23,color:ink}}>W prawdziwym Excelu wpisujesz do komórki <Text style={{fontWeight:'900'}}>D2</Text> formułę <Text style={{fontWeight:'900'}}>=B2*C2</Text> i naciskasz Enter. Gwiazdka * oznacza mnożenie. Excel wyświetla wynik, ale w pasku formuły zachowuje zapis działania.</Text>
+    <Text style={{fontSize:13,lineHeight:21,color:'#315d43'}}>Zapamiętaj: <Text style={{fontWeight:'900'}}>=B2*C2</Text> to formuła (instrukcja), a <Text style={{fontWeight:'900'}}>{pln(baselineAmount*baselinePrice)}</Text> to wynik. W naszych zadaniach przyjmiemy jedno albo drugie.</Text>
    </View>
    <View style={{borderColor:border,borderWidth:1,borderRadius:12,overflow:'hidden',backgroundColor:'white'}}>
     {!mobile&&<View style={{padding:9,flexDirection:'row',backgroundColor:'#e7f1e7',gap:5,alignItems:'center'}}>
@@ -138,6 +155,9 @@ export default function ExcelFirstDayPractice(){
      <Text testID="excel-first-total" style={{fontSize:18,color:ink,fontWeight:'900'}}>{total===null?'Popraw ilości':money(total)}</Text>
     </View>
    </View>
+   {!!notice&&<View testID="excel-first-step-success" accessibilityLiveRegion="polite" style={{padding:13,backgroundColor:'#e0f3e3',borderRadius:10,borderWidth:1,borderColor:'#afd2b2'}}>
+    <Text style={{color:'#215d3b',fontSize:13,lineHeight:22,fontWeight:'700'}}>✓ {notice}</Text>
+   </View>}
    {done?<View testID="excel-first-success" style={{padding:14,borderRadius:12,backgroundColor:'#dff2e3',gap:9}}>
     <Text style={{fontWeight:'900',fontSize:16,color:'#205e3d'}}>✓ Dobrze! Rozumiesz sześć podstawowych czynności.</Text>
     <Text style={{fontSize:13,lineHeight:22,color:ink}}>Teraz spróbuj wykonać te same kroki w Microsoft Excel. Tutaj wynik przeliczał symulator; w Excelu tworzy go formuła wpisana do komórki.</Text>
@@ -146,10 +166,24 @@ export default function ExcelFirstDayPractice(){
    </View>:<View style={{backgroundColor:'white',padding:mobile?13:17,borderWidth:1,borderColor:border,borderRadius:13,gap:10}}>
     <Text style={{fontWeight:'900',color:'#34704a',fontSize:12}}>{'KROK '+(step+1)+' / '+guide.length}</Text>
     <Text testID="excel-first-step" style={{color:ink,fontSize:17,fontWeight:'900'}}>{guide[step].name}</Text>
-    <Text style={{fontSize:14,lineHeight:24,color:muted}}>{guide[step].instruction}</Text>
-    {[2,3,5].includes(step)&&<TextInput testID="excel-first-answer" accessibilityLabel="Twoja obliczona odpowiedź" value={answer} onChangeText={v=>{setAnswer(v);setWarning('');}}
-     placeholder="Wpisz wynik, np. 135 albo 135,00 zł" placeholderTextColor="#7b9582" keyboardType="decimal-pad"
-     style={{minHeight:48,borderWidth:1,borderColor:'#b5d4bf',borderRadius:9,padding:12,fontSize:15,color:ink}}/>}
+    <Text style={{fontSize:15,lineHeight:25,color:ink}}>{guide[step].instruction}</Text>
+    <View testID="excel-first-step-explanation" style={{padding:13,backgroundColor:'#f0f6ed',borderRadius:10,borderLeftWidth:4,borderLeftColor:'#7eab87',gap:5}}>
+     <Text style={{color:'#346846',fontSize:12,fontWeight:'900'}}>DLACZEGO TAK ROBIMY?</Text>
+     <Text style={{fontSize:14,lineHeight:23,color:ink}}>{stepExplanation}</Text>
+    </View>
+    {answerStep&&<View style={{gap:8}}>
+     <Text style={{fontSize:13,lineHeight:22,fontWeight:'800',color:ink}}>Twoja odpowiedź — wpisz liczbę lub formułę zaczynającą się od =</Text>
+     <TextInput testID="excel-first-answer" accessibilityLabel="Twoja obliczona odpowiedź" value={answer} onChangeText={v=>{setAnswer(v);setWarning('');setNotice('');}}
+      placeholder={step===2?'np. '+(values[0]===null?'24':String(values[0]))+' lub =B2*C2':'np. '+String(total??'78')+' lub =SUMA(D2:D4)'}
+      placeholderTextColor="#688375" keyboardType="default" autoCapitalize="none" autoCorrect={false}
+      style={{minHeight:52,borderWidth:1,borderColor:'#8ab79a',borderRadius:9,padding:12,fontSize:16,color:ink,backgroundColor:'white'}}/>
+     {!!answer.trim().startsWith('=')&&<Text testID="excel-first-formula-notice" style={{color:'#246c49',fontSize:12,lineHeight:20}}>To jest formuła. Świetnie, że próbujesz! W naszym polu ją sprawdzamy. W prawdziwym Excelu wpisujesz ją do komórki {step===2?'D2':'D5'}.</Text>}
+     <Pressable accessibilityRole="button" accessibilityLabel="Wstaw formułę z przykładu" onPress={()=>{setAnswer(formulaForStep);setWarning('');setNotice('');}}
+      style={{minHeight:42,paddingHorizontal:12,paddingVertical:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#c1dacc',borderRadius:9,backgroundColor:'#eaf3eb'}}>
+      <Text style={{fontSize:13,color:'#265f43',fontWeight:'800'}}>Nie wiem, co wpisać — wstaw przykład {formulaForStep}</Text>
+     </Pressable>
+     <Text style={{fontSize:12,lineHeight:20,color:muted}}>Ten formularz sprawdza Twoją naukę, nie zapisuje formuły do prawdziwego pliku. Przycisk poniżej przechodzi dalej dopiero po poprawnej odpowiedzi.</Text>
+    </View>}}
     <Pressable accessibilityRole="button" accessibilityLabel="Sprawdź wykonanie zadania od zera" onPress={verify} style={[tap,{alignSelf:'flex-start',backgroundColor:'#245c3e'}]}>
      <Text style={{fontWeight:'900',color:'white',fontSize:14}}>Sprawdź wykonanie</Text>
     </Pressable>
@@ -159,10 +193,19 @@ export default function ExcelFirstDayPractice(){
      style={{minHeight:44,justifyContent:'center',alignSelf:'flex-start'}}><Text style={{color:'#206a4b',fontWeight:'900',fontSize:13}}>{showHint?'Ukryj podpowiedź':'Potrzebujesz pomocy? Pokaż podpowiedź'}</Text></Pressable>
     {showHint&&<Text testID="excel-first-hint" style={{fontSize:13,lineHeight:22,color:ink,backgroundColor:'#edf5e9',borderRadius:8,padding:11}}>{guide[step].hint}</Text>}
    </View>}
-   <View style={{backgroundColor:'white',padding:12,borderRadius:10,gap:6,borderWidth:1,borderColor:border}}>
-    <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>Jak to zrobić w prawdziwym Microsoft Excel?</Text>
-    <Text style={{color:muted,fontSize:13,lineHeight:22}}>Wpisz nazwy do A2:A4, ilości do B2:B4 i ceny do C2:C4. W D2 wpisz =B2*C2, potem skopiuj formułę do D3 i D4. W D5 wpisz =SUMA(D2:D4). Zapisz plik jako XLSX.</Text>
-    <Text testID="excel-first-column-shift" style={{color:'#325e42',fontSize:12,lineHeight:21}}>Uwaga: w kolejnym, większym warsztacie dołożymy kolumnę „JM” (jednostka miary). Wtedy Ilość będzie w C, Cena w D, a Wartość w E. Z tego powodu poprawny wzór w E2 będzie miał postać =C2*D2. Zawsze kieruj się nagłówkami tabeli, nie ucz się adresów na pamięć.</Text>
+   <View style={{backgroundColor:'white',padding:12,borderRadius:10,gap:8,borderWidth:1,borderColor:border}}>
+    <Pressable accessibilityRole="button" accessibilityState={{expanded:showReal||done}} onPress={()=>setShowReal(x=>!x)}
+     style={{minHeight:44,paddingVertical:8,justifyContent:'center'}}>
+     <Text style={{fontSize:14,color:'#286345',fontWeight:'900'}}>{showReal||done?'Ukryj / rozwiń instrukcję prawdziwego Excela ▴':'Chcę też ćwiczyć w prawdziwym Microsoft Excel ▾'}</Text>
+    </Pressable>
+    {(showReal||done)&&<View style={{gap:8}}>
+     <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>Otwórz Excel i wykonaj to po kolei</Text>
+     <Text style={{fontSize:13,lineHeight:22,color:muted}}>1. W A1, B1, C1, D1 wpisz: Produkt, Ilość, Cena, Wartość. W następnych trzech wierszach wpisz nazwy produktów, ilości i ceny.</Text>
+     <Text style={{fontSize:13,lineHeight:22,color:muted}}>2. Kliknij D2, wpisz =B2*C2 i naciśnij Enter. Zobaczysz wynik. Kiedy ponownie klikniesz D2, w pasku fx znajdziesz tę samą formułę.</Text>
+     <Text style={{fontSize:13,lineHeight:22,color:muted}}>3. Skopiuj formułę z D2 do D3 i D4. W D5 wpisz =SUMA(D2:D4). Zmień ilość w B3 i zobacz, jak zmienia się D3 oraz D5.</Text>
+     <Text style={{fontSize:13,lineHeight:22,color:muted}}>4. Zaznacz ceny i wyniki, następnie wybierz format Walutowe (PLN). Na koniec zapisz skoroszyt jako XLSX.</Text>
+     <Text testID="excel-first-column-shift" style={{color:'#315e42',fontSize:12,lineHeight:21}}>Gdy w późniejszych ćwiczeniach pojawią się inne kolumny (np. jednostka miary „JM”), adresy się przesuną. Wtedy sprawdzaj nagłówki, a nie kopiuj wzorów na pamięć.</Text>
+    </View>}
     {Platform.OS==='web'?<a href={example.file} download style={{minHeight:44,display:'inline-flex',alignItems:'center',fontWeight:800,color:'#216e51',fontSize:13,textDecoration:'underline'}}>Pobierz listę ćwiczebną CSV do prawdziwego Excela</a>:
      <Text style={{color:muted,fontSize:12}}>Na komputerze możesz przepisać te przykładowe dane do Microsoft Excel.</Text>}
    </View>
