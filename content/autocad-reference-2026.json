@@ -1,0 +1,1794 @@
+{
+  "version": "Autodesk AutoCAD 2026, desktop (Windows); zestaw może się różnić zależnie od wersji/licencji/profilu.",
+  "scope": "Kompendium ponad 160 poleceń; nie jest pełną implementacją AutoCAD. Aliasy mogą być modyfikowane w acad.pgp; skróty w CUIx.",
+  "tabs": [
+    {
+      "name": "Start / Home",
+      "panels": "Draw, Modify, Layers, Annotation, Properties, Clipboard",
+      "purpose": "Rysowanie, zmiana obiektów, warstwy, szybkie wymiary i praca na zaznaczeniu.",
+      "exercise": "Zaznacz trzy obiekty, wybierz Modify → Move i przesuń je wspólnie."
+    },
+    {
+      "name": "Wstaw / Insert",
+      "panels": "Block, Attributes, Reference, Data, Import",
+      "purpose": "Bloki, atrybuty, zewnętrzne podkłady DWG, pliki PDF i obrazy, import danych.",
+      "exercise": "Utwórz BLOCK słupka, wstaw 4 razy i dołącz podkład XREF."
+    },
+    {
+      "name": "Opisz / Annotate",
+      "panels": "Text, Dimensions, Leaders, Tables, Markup, Annotation Scaling",
+      "purpose": "Tekst i jego style, wymiarowanie, opisy, tabele i skale anotacyjne.",
+      "exercise": "STYLE → font; MTEXT → edytowalny opis; DIMSTYLE → wygląd wymiarów."
+    },
+    {
+      "name": "Parametryczne / Parametric",
+      "panels": "Geometric Constraints, Dimensional Constraints, Manage",
+      "purpose": "Więzy geometryczne i wymiarowe zachowujące warunki konstrukcji przy edycji.",
+      "exercise": "Dodaj więz równoległości dwóch linii i sprawdź zmianę geometrii."
+    },
+    {
+      "name": "Widok / View",
+      "panels": "Views, Viewports, Palettes, Visual Styles, Interfaces",
+      "purpose": "Zoom, Pan, przestrzeń robocza, rzutnie, widoki oraz narzędzia nawigacji.",
+      "exercise": "W modelu użyj ZOOM Extents, a w Layout zmień skalę rzutni."
+    },
+    {
+      "name": "Zarządzaj / Manage",
+      "panels": "Customization (CUI), CAD Standards, Applications, Action Recorder",
+      "purpose": "Ustawienia aplikacji, skróty, standardy, interfejs i automatyzacja.",
+      "exercise": "W CUI przeglądaj skróty; w pliku acad.pgp sprawdź aliasy poleceń."
+    },
+    {
+      "name": "Wynik / Output",
+      "panels": "Plot, Export, Publish, Page Setup",
+      "purpose": "Wydruki, PDF, ustawienia strony i publikacja wieloarkuszowa.",
+      "exercise": "Wydrukuj PDF A3 w skali 1:50, potem sprawdź wymiar kontrolny."
+    },
+    {
+      "name": "Współpraca / Collaborate",
+      "panels": "Share, Compare, Markup, Trace",
+      "purpose": "Przegląd zmian, komentarze, porównywanie plików i udostępnianie.",
+      "exercise": "Porównaj rewizję A i B przez DWGCOMPARE, zapisz różnice."
+    },
+    {
+      "name": "Narzędzia dodatkowe / Express Tools",
+      "panels": "Text, Blocks, Layout, Modify (opcjonalne)",
+      "purpose": "Rozszerzenia usprawniające czyszczenie, edycję tekstu i pracę na rysunkach.",
+      "exercise": "OVERKILL usuwa zbędne duplikaty geometrii; dostępność zależy od wersji."
+    },
+    {
+      "name": "Modelowanie / 3D Tools",
+      "panels": "Solid, Surface, Mesh, 3D Modify, Render",
+      "purpose": "Bryły, powierzchnie, siatki, operacje logiczne i podgląd trójwymiarowy.",
+      "exercise": "EXTRUDE tworzy bryłę z profilu; UNION łączy bryły."
+    },
+    {
+      "name": "Zakładki kontekstowe",
+      "panels": "Hatch Creation, Text Editor, Block Editor, Layout, Dimension",
+      "purpose": "Pojawiają się po wybraniu konkretnego narzędzia lub obiektu, a nie zawsze na wstążce.",
+      "exercise": "Wejdź w MTEXT i obejrzyj panel Text Editor z fontem i wysokością."
+    },
+    {
+      "name": "Pasek statusu / Status Bar",
+      "panels": "OSNAP, ORTHO, Polar, Grid, Snap, Dynamic Input, Annotation Scale",
+      "purpose": "Przełączniki dokładności i skali; F3/F8/F9/F12 sterują trybami.",
+      "exercise": "F3 → włącz OSNAP, wybierz Endpoint i Midpoint, sprawdź markery."
+    }
+  ],
+  "walkthroughs": [
+    {
+      "id": "select",
+      "name": "Zaznaczanie i MOVE całej grupy",
+      "steps": [
+        "Kliknij pierwszą linię, następnie kolejne. Shift + kliknięcie usuwa element z zaznaczenia.",
+        "Przeciągnij okno z lewej do prawej: obiekty muszą być całkowicie wewnątrz. Z prawej do lewej: wystarczy przecięcie okna.",
+        "Ctrl+A zaznacza dostępne obiekty. Wpisz MOVE, wybierz punkt bazowy 0,0 i cel @2000,0.",
+        "Sprawdź, czy wszystkie elementy zmieniły położenie o ten sam wektor bez zmiany wymiarów."
+      ],
+      "result": "Wszystkie wybrane obiekty zachowują swoje wzajemne odległości i wymiary.",
+      "mistake": "Pojedynczy uchwyt (grip) może rozciągnąć geometrię; MOVE przenosi cały zbiór.",
+      "docs": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-DD2A36B6-1196-4205-9A07-32056292F0B5.htm"
+    },
+    {
+      "id": "scale",
+      "name": "SCALE obiektu a skala rzutni",
+      "steps": [
+        "W Model Space rysuj w rzeczywistych jednostkach (np. 4000 oznacza 4000 mm).",
+        "Aby zmienić rzeczywistą wielkość obiektów, zaznacz je, wpisz SCALE, podaj bazę i współczynnik, np. 2.",
+        "Aby tylko pokazać model na papierze w skali 1:50, przejdź do Layout, wybierz ramkę rzutni i Properties → Standard Scale → 1:50.",
+        "Sprawdź: 5000 mm / 50 = 100 mm na papierze. Zablokuj rzutnię i skontroluj PDF."
+      ],
+      "result": "SCALE zmienia geometrię; Viewport Scale zmienia tylko prezentację na papierze.",
+      "mistake": "Nie pomniejszaj modelu przez SCALE, aby zmieścił się na kartce.",
+      "docs": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-9929178F-64E4-4B76-BDE2-00BFDAEFC8B6.htm"
+    },
+    {
+      "id": "font",
+      "name": "Czcionka, TEXT, MTEXT, STYLE",
+      "steps": [
+        "Wpisz STYLE i utwórz styl np. OPIS_2_5. Wybierz font TrueType lub SHX oraz wysokość.",
+        "Wpisz MTEXT, wskaż obszar tekstu, wpisz opis. Możesz zmienić styl, wysokość, pogrubienie i wyrównanie.",
+        "Jeżeli tekst ma mieć np. 2,5 mm na papierze w skali 1:50, użyj stylu anotacyjnego z Paper Text Height 2.5 albo odpowiednio skonfigurowanej wysokości w modelu.",
+        "Otwórz Properties (Ctrl+1), sprawdź Text Style, Text Height oraz skale anotacyjne przed wydrukiem."
+      ],
+      "result": "Opis ma czytelny font i wysokość odpowiednią do docelowego wydruku.",
+      "mistake": "Zmiana czcionki tylko w edytorze pojedynczego MTEXT nie musi zmienić stylu całego projektu.",
+      "docs": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Core/files/GUID-1ED81E98-6463-4574-875F-183C8280C4AC.htm"
+    },
+    {
+      "id": "osnap",
+      "name": "OSNAP — dokładne punkty i tryby",
+      "steps": [
+        "Naciśnij F3, aby włączyć OSNAP. Otwórz Drafting Settings → Object Snap.",
+        "Wybierz Endpoint (koniec), Midpoint (środek odcinka), Center (środek okręgu), Intersection (przecięcie) i inne potrzebne tryby.",
+        "Uruchom LINE i przesuń kursor do charakterystycznego punktu, obserwuj marker i podpis przed kliknięciem.",
+        "Przez Shift + prawy przycisk myszy możesz jednorazowo wskazać inny rodzaj przyciągania."
+      ],
+      "result": "Nowe linie zaczynają się w faktycznych punktach geometrii, bez przypadkowych szczelin.",
+      "mistake": "F7 włącza siatkę, F9 skok siatki, F3 OSNAP, F8 ORTHO — to różne funkcje.",
+      "docs": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-MAC-Core/files/GUID-06D81B23-B171-4F33-920B-4609E22DD9.htm"
+    },
+    {
+      "id": "units",
+      "name": "Jednostki, warstwy i właściwości",
+      "steps": [
+        "Wpisz UNITS, sprawdź format i jednostki wstawiania. Zweryfikuj rzeczywisty wymiar przez DIST.",
+        "Otwórz LAYER: przygotuj OBRYS, OSIE, WYMIARY, przypisz kolory ByLayer.",
+        "Wybierz obiekt, Ctrl+1 → Properties; sprawdź warstwę, kolor, współrzędne, długość i typ.",
+        "Wyłącz warstwę OSIE i włącz ponownie. Zobacz, że obiekty zostały w pliku."
+      ],
+      "result": "Rysunek ma kontrolowane jednostki, warstwy i właściwości bez przypadkowego nadpisywania kolorów.",
+      "mistake": "Ustawienie milimetrów w UNITS nie skaluje automatycznie starego DWG.",
+      "docs": "https://help.autodesk.com/view/ACD/2026/ENU/"
+    },
+    {
+      "id": "dimensions",
+      "name": "Wymiarowanie i czytelny PDF",
+      "steps": [
+        "Użyj DIMLINEAR lub DIMALIGNED do wskazania rzeczywistych punktów modelu.",
+        "W DIMSTYLE ustaw wysokości tekstu, strzałki, jednostki, precyzję i skalę anotacji.",
+        "Sprawdź niezależnie przez DIST, czy wymiar odpowiada geometrii i czy nie jest nadpisany tekstem.",
+        "Ustaw Layout, skalę rzutni i PLOT, wyeksportuj PDF; po eksporcie otwórz go ponownie."
+      ],
+      "result": "PDF i DWG zawierają zgodne wartości wymiarów w prawidłowej rewizji.",
+      "mistake": "Ręczne wpisanie liczby 1000 na wymiarze nie naprawia błędnego odcinka 975 mm.",
+      "docs": "https://help.autodesk.com/view/ACD/2026/ENU/"
+    },
+    {
+      "id": "blocks",
+      "name": "Bloki, atrybuty i zewnętrzne rysunki",
+      "steps": [
+        "Narysuj symbol i użyj BLOCK, nadaj mu nazwę oraz punkt bazowy.",
+        "Przez INSERT wstaw kilka egzemplarzy; sprawdź liczbę bloków i ich właściwości.",
+        "Dołącz zewnętrzny plik przez XREF. Sprawdź ścieżkę względną i dostępność podkładu.",
+        "Wykonaj ETRANSMIT, rozpakuj kopię w innym folderze i sprawdź komplet zależności."
+      ],
+      "result": "Dokumentacja otwiera się u odbiorcy i zachowuje bloki, atrybuty oraz odnośniki.",
+      "mistake": "Wstawienie XREF nie kopiuje całego pliku DWG do projektu głównego.",
+      "docs": "https://help.autodesk.com/view/ACD/2026/ENU/"
+    },
+    {
+      "id": "shortcuts",
+      "name": "Aliasy, skróty i personalizacja",
+      "steps": [
+        "W AutoCAD 2026 alias polecenia wpisujesz w wierszu poleceń (np. L dla LINE, M dla MOVE).",
+        "Skróty klawiaturowe (np. Ctrl+S, Ctrl+1, F3) są konfigurowane osobno w CUIx.",
+        "Otwórz Manage → CUI, aby zobaczyć i zmienić skróty; aliasy przechowuje acad.pgp.",
+        "Po zmianie sprawdź działanie aliasu na rysunku ćwiczebnym i zapisz własną listę."
+      ],
+      "result": "Potrafisz odróżnić tekstowy alias komendy od kombinacji klawiszy i sprawdzić zmiany konfiguracji.",
+      "mistake": "Nie zakładaj, że aliasy i klawisze są identyczne w każdym profilu AutoCAD.",
+      "docs": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm"
+    }
+  ],
+  "commands": [
+    {
+      "command": "NEW",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Nowy rysunek",
+      "purpose": "Tworzy nowy DWG z szablonu",
+      "lab": false
+    },
+    {
+      "command": "OPEN",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Otwórz",
+      "purpose": "Otwiera istniejący rysunek",
+      "lab": false
+    },
+    {
+      "command": "QSAVE",
+      "alias": "Ctrl+S",
+      "category": "Pliki i ustawienia",
+      "label": "Szybki zapis",
+      "purpose": "Zapisuje bieżący DWG",
+      "lab": false
+    },
+    {
+      "command": "SAVEAS",
+      "alias": "Ctrl+Shift+S",
+      "category": "Pliki i ustawienia",
+      "label": "Zapisz jako",
+      "purpose": "Nowa nazwa lub format pliku",
+      "lab": false
+    },
+    {
+      "command": "CLOSE",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Zamknij rysunek",
+      "purpose": "Zamyka aktualny dokument",
+      "lab": false
+    },
+    {
+      "command": "RECOVER",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Odzyskaj",
+      "purpose": "Próbuje naprawić uszkodzony plik",
+      "lab": false
+    },
+    {
+      "command": "AUDIT",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Audyt",
+      "purpose": "Wykrywa i naprawia błędy bazy rysunku",
+      "lab": false
+    },
+    {
+      "command": "PURGE",
+      "alias": "PU",
+      "category": "Pliki i ustawienia",
+      "label": "Wyczyść",
+      "purpose": "Usuwa nieużywane definicje",
+      "lab": false
+    },
+    {
+      "command": "UNITS",
+      "alias": "UN",
+      "category": "Pliki i ustawienia",
+      "label": "Jednostki",
+      "purpose": "Format i jednostki wstawiania",
+      "lab": false
+    },
+    {
+      "command": "DWGPROPS",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Właściwości rysunku",
+      "purpose": "Metadane i informacje projektu",
+      "lab": false
+    },
+    {
+      "command": "OPTIONS",
+      "alias": "OP",
+      "category": "Pliki i ustawienia",
+      "label": "Opcje",
+      "purpose": "Preferencje aplikacji",
+      "lab": false
+    },
+    {
+      "command": "CUI",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Interfejs",
+      "purpose": "Dostosowanie narzędzi i skrótów",
+      "lab": false
+    },
+    {
+      "command": "REINIT",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Przeładuj aliasy",
+      "purpose": "Odczytuje ponownie ustawienia niektórych plików",
+      "lab": false
+    },
+    {
+      "command": "DWGCOMPARE",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Porównanie DWG",
+      "purpose": "Różnice między rewizjami",
+      "lab": false
+    },
+    {
+      "command": "ETRANSMIT",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Wyślij komplet",
+      "purpose": "Pakuje zależności pliku",
+      "lab": false
+    },
+    {
+      "command": "DWGCONVERT",
+      "alias": "",
+      "category": "Pliki i ustawienia",
+      "label": "Konwersja plików",
+      "purpose": "Zmiana wersji formatu DWG",
+      "lab": false
+    },
+    {
+      "command": "LINE",
+      "alias": "L",
+      "category": "Rysuj / Draw",
+      "label": "Linia",
+      "purpose": "Odcinki między kolejnymi punktami",
+      "lab": true
+    },
+    {
+      "command": "PLINE",
+      "alias": "PL",
+      "category": "Rysuj / Draw",
+      "label": "Polilinia",
+      "purpose": "Jeden ciąg powiązanych segmentów",
+      "lab": true
+    },
+    {
+      "command": "RECTANG",
+      "alias": "REC",
+      "category": "Rysuj / Draw",
+      "label": "Prostokąt",
+      "purpose": "Prostokątny obrys",
+      "lab": true
+    },
+    {
+      "command": "CIRCLE",
+      "alias": "C",
+      "category": "Rysuj / Draw",
+      "label": "Okrąg",
+      "purpose": "Środek i promień lub średnica",
+      "lab": true
+    },
+    {
+      "command": "ARC",
+      "alias": "A",
+      "category": "Rysuj / Draw",
+      "label": "Łuk",
+      "purpose": "Łuk przez punkty",
+      "lab": true
+    },
+    {
+      "command": "ELLIPSE",
+      "alias": "EL",
+      "category": "Rysuj / Draw",
+      "label": "Elipsa",
+      "purpose": "Obrys eliptyczny",
+      "lab": false
+    },
+    {
+      "command": "POLYGON",
+      "alias": "POL",
+      "category": "Rysuj / Draw",
+      "label": "Wielokąt",
+      "purpose": "Regularny wielokąt",
+      "lab": false
+    },
+    {
+      "command": "SPLINE",
+      "alias": "SPL",
+      "category": "Rysuj / Draw",
+      "label": "Krzywa",
+      "purpose": "Gładka krzywa przez punkty",
+      "lab": false
+    },
+    {
+      "command": "XLINE",
+      "alias": "XL",
+      "category": "Rysuj / Draw",
+      "label": "Prosta pomocnicza",
+      "purpose": "Nieskończona linia konstrukcyjna",
+      "lab": false
+    },
+    {
+      "command": "RAY",
+      "alias": "",
+      "category": "Rysuj / Draw",
+      "label": "Półprosta",
+      "purpose": "Promień zaczynający się w punkcie",
+      "lab": false
+    },
+    {
+      "command": "POINT",
+      "alias": "PO",
+      "category": "Rysuj / Draw",
+      "label": "Punkt",
+      "purpose": "Obiekt punktowy",
+      "lab": false
+    },
+    {
+      "command": "DONUT",
+      "alias": "DO",
+      "category": "Rysuj / Draw",
+      "label": "Pierścień",
+      "purpose": "Pełny pierścień o dwóch średnicach",
+      "lab": false
+    },
+    {
+      "command": "HATCH",
+      "alias": "H",
+      "category": "Rysuj / Draw",
+      "label": "Kreskowanie",
+      "purpose": "Wypełnia zamknięty obszar",
+      "lab": true
+    },
+    {
+      "command": "GRADIENT",
+      "alias": "",
+      "category": "Rysuj / Draw",
+      "label": "Gradient",
+      "purpose": "Wypełnienie gradientowe",
+      "lab": false
+    },
+    {
+      "command": "BOUNDARY",
+      "alias": "BO",
+      "category": "Rysuj / Draw",
+      "label": "Granica",
+      "purpose": "Tworzy obrys z zamkniętego obszaru",
+      "lab": false
+    },
+    {
+      "command": "REGION",
+      "alias": "REG",
+      "category": "Rysuj / Draw",
+      "label": "Region",
+      "purpose": "Obszar 2D do operacji logicznych",
+      "lab": false
+    },
+    {
+      "command": "REVCLOUD",
+      "alias": "",
+      "category": "Rysuj / Draw",
+      "label": "Chmurka rewizji",
+      "purpose": "Oznacza zakres zmian",
+      "lab": false
+    },
+    {
+      "command": "3DPOLY",
+      "alias": "",
+      "category": "Rysuj / Draw",
+      "label": "Polilinia 3D",
+      "purpose": "Łączy przestrzenne wierzchołki",
+      "lab": false
+    },
+    {
+      "command": "SELECT",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Zaznacz obiekty",
+      "purpose": "Tworzy zbiór wyboru",
+      "lab": true
+    },
+    {
+      "command": "ALL",
+      "alias": "Ctrl+A",
+      "category": "Modyfikuj / Modify",
+      "label": "Wszystkie obiekty",
+      "purpose": "W warsztacie wybiera widoczne obiekty",
+      "lab": true
+    },
+    {
+      "command": "QSELECT",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Szybki wybór",
+      "purpose": "Filtruje obiekty po właściwościach",
+      "lab": false
+    },
+    {
+      "command": "FILTER",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Filtr wyboru",
+      "purpose": "Łączy kryteria zaznaczania",
+      "lab": false
+    },
+    {
+      "command": "MOVE",
+      "alias": "M",
+      "category": "Modyfikuj / Modify",
+      "label": "Przesuń",
+      "purpose": "Przenosi zaznaczone obiekty",
+      "lab": true
+    },
+    {
+      "command": "COPY",
+      "alias": "CO",
+      "category": "Modyfikuj / Modify",
+      "label": "Kopiuj",
+      "purpose": "Powiela zaznaczone obiekty",
+      "lab": true
+    },
+    {
+      "command": "ROTATE",
+      "alias": "RO",
+      "category": "Modyfikuj / Modify",
+      "label": "Obróć",
+      "purpose": "Obraca względem punktu bazowego",
+      "lab": true
+    },
+    {
+      "command": "SCALE",
+      "alias": "SC",
+      "category": "Modyfikuj / Modify",
+      "label": "Skaluj geometrię",
+      "purpose": "Zmienia wymiary przez współczynnik",
+      "lab": true
+    },
+    {
+      "command": "STRETCH",
+      "alias": "S",
+      "category": "Modyfikuj / Modify",
+      "label": "Rozciągnij",
+      "purpose": "Modyfikuje odpowiednio wybrane wierzchołki",
+      "lab": false
+    },
+    {
+      "command": "MIRROR",
+      "alias": "MI",
+      "category": "Modyfikuj / Modify",
+      "label": "Lustro",
+      "purpose": "Odbija geometrię względem osi",
+      "lab": true
+    },
+    {
+      "command": "OFFSET",
+      "alias": "O",
+      "category": "Modyfikuj / Modify",
+      "label": "Odsuń",
+      "purpose": "Tworzy równoległy obiekt w odległości",
+      "lab": true
+    },
+    {
+      "command": "TRIM",
+      "alias": "TR",
+      "category": "Modyfikuj / Modify",
+      "label": "Przytnij",
+      "purpose": "Skraca obiekty przy krawędziach",
+      "lab": true
+    },
+    {
+      "command": "EXTEND",
+      "alias": "EX",
+      "category": "Modyfikuj / Modify",
+      "label": "Przedłuż",
+      "purpose": "Wydłuża obiekt do granicy",
+      "lab": false
+    },
+    {
+      "command": "FILLET",
+      "alias": "F",
+      "category": "Modyfikuj / Modify",
+      "label": "Zaokrąglij",
+      "purpose": "Łączy krawędzie łukiem",
+      "lab": false
+    },
+    {
+      "command": "CHAMFER",
+      "alias": "CHA",
+      "category": "Modyfikuj / Modify",
+      "label": "Fazuj",
+      "purpose": "Ścina narożnik",
+      "lab": false
+    },
+    {
+      "command": "BREAK",
+      "alias": "BR",
+      "category": "Modyfikuj / Modify",
+      "label": "Przerwij",
+      "purpose": "Wyłącza fragment linii",
+      "lab": false
+    },
+    {
+      "command": "BREAKATPOINT",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Przerwij w punkcie",
+      "purpose": "Dzieli obiekt w wybranym miejscu",
+      "lab": false
+    },
+    {
+      "command": "JOIN",
+      "alias": "J",
+      "category": "Modyfikuj / Modify",
+      "label": "Połącz",
+      "purpose": "Łączy stykające się odcinki",
+      "lab": true
+    },
+    {
+      "command": "PEDIT",
+      "alias": "PE",
+      "category": "Modyfikuj / Modify",
+      "label": "Edytuj polilinię",
+      "purpose": "Zamiana i łączenie obiektów",
+      "lab": true
+    },
+    {
+      "command": "EXPLODE",
+      "alias": "X",
+      "category": "Modyfikuj / Modify",
+      "label": "Rozbij",
+      "purpose": "Rozdziela obiekt złożony",
+      "lab": false
+    },
+    {
+      "command": "ERASE",
+      "alias": "E",
+      "category": "Modyfikuj / Modify",
+      "label": "Usuń",
+      "purpose": "Kasuje wskazany zbiór",
+      "lab": true
+    },
+    {
+      "command": "UNDO",
+      "alias": "U",
+      "category": "Modyfikuj / Modify",
+      "label": "Cofnij",
+      "purpose": "Odwraca operację",
+      "lab": true
+    },
+    {
+      "command": "REDO",
+      "alias": "Ctrl+Y",
+      "category": "Modyfikuj / Modify",
+      "label": "Ponów",
+      "purpose": "Przywraca cofniętą zmianę",
+      "lab": true
+    },
+    {
+      "command": "ALIGN",
+      "alias": "AL",
+      "category": "Modyfikuj / Modify",
+      "label": "Dopasuj",
+      "purpose": "Przenosi/obraca do punktów odniesienia",
+      "lab": false
+    },
+    {
+      "command": "ARRAY",
+      "alias": "AR",
+      "category": "Modyfikuj / Modify",
+      "label": "Szyk",
+      "purpose": "Powtarza obiekt według wzoru",
+      "lab": false
+    },
+    {
+      "command": "ARRAYRECT",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Szyk prostokątny",
+      "purpose": "Powiela w rzędach i kolumnach",
+      "lab": false
+    },
+    {
+      "command": "ARRAYPOLAR",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Szyk biegunowy",
+      "purpose": "Powiela wokół środka",
+      "lab": false
+    },
+    {
+      "command": "LENGTHEN",
+      "alias": "LEN",
+      "category": "Modyfikuj / Modify",
+      "label": "Wydłuż",
+      "purpose": "Zmienia długość krzywej",
+      "lab": false
+    },
+    {
+      "command": "DIVIDE",
+      "alias": "DIV",
+      "category": "Modyfikuj / Modify",
+      "label": "Podziel",
+      "purpose": "Wyznacza równe odcinki",
+      "lab": false
+    },
+    {
+      "command": "MEASURE",
+      "alias": "ME",
+      "category": "Modyfikuj / Modify",
+      "label": "Rozmieść",
+      "purpose": "Odmierza punkty w odstępach",
+      "lab": false
+    },
+    {
+      "command": "OVERKILL",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Usuń nakładki",
+      "purpose": "Usuwa duplikaty i nakładające się linie",
+      "lab": false
+    },
+    {
+      "command": "MATCHPROP",
+      "alias": "MA",
+      "category": "Modyfikuj / Modify",
+      "label": "Dopasuj właściwości",
+      "purpose": "Przenosi cechy stylu między obiektami",
+      "lab": false
+    },
+    {
+      "command": "DRAWORDER",
+      "alias": "DR",
+      "category": "Modyfikuj / Modify",
+      "label": "Kolejność",
+      "purpose": "Zmienia kolejność wyświetlania",
+      "lab": false
+    },
+    {
+      "command": "GROUP",
+      "alias": "G",
+      "category": "Modyfikuj / Modify",
+      "label": "Grupuj",
+      "purpose": "Tworzy zbiór do wspólnego wyboru",
+      "lab": false
+    },
+    {
+      "command": "UNGROUP",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Rozgrupuj",
+      "purpose": "Usuwa definicję grupy",
+      "lab": false
+    },
+    {
+      "command": "HIDEOBJECTS",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Ukryj obiekty",
+      "purpose": "Chowa wskazane elementy",
+      "lab": false
+    },
+    {
+      "command": "ISOLATEOBJECTS",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Izoluj",
+      "purpose": "Pokazuje tylko wskazane obiekty",
+      "lab": false
+    },
+    {
+      "command": "UNISOLATEOBJECTS",
+      "alias": "",
+      "category": "Modyfikuj / Modify",
+      "label": "Pokaż wszystkie",
+      "purpose": "Przywraca ukryte przez izolację",
+      "lab": false
+    },
+    {
+      "command": "LAYER",
+      "alias": "LA",
+      "category": "Warstwy i właściwości",
+      "label": "Menedżer warstw",
+      "purpose": "Utwórz i kontroluj warstwy",
+      "lab": true
+    },
+    {
+      "command": "LAYISO",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Izoluj warstwę",
+      "purpose": "Pozostawia wybraną widoczną",
+      "lab": false
+    },
+    {
+      "command": "LAYUNISO",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Cofnij izolację",
+      "purpose": "Przywraca poprzednie warstwy",
+      "lab": false
+    },
+    {
+      "command": "LAYOFF",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Wyłącz warstwę",
+      "purpose": "Ukrywa obiekty całej warstwy",
+      "lab": false
+    },
+    {
+      "command": "LAYON",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Włącz warstwy",
+      "purpose": "Przywraca widoczność wyłączonych",
+      "lab": false
+    },
+    {
+      "command": "LAYFRZ",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Zamroź",
+      "purpose": "Wyłącza regenerację warstwy",
+      "lab": false
+    },
+    {
+      "command": "LAYTHW",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Odmroź",
+      "purpose": "Odmraża warstwę",
+      "lab": false
+    },
+    {
+      "command": "LAYMCH",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Dopasuj warstwę",
+      "purpose": "Nadaje warstwę na podstawie obiektu",
+      "lab": false
+    },
+    {
+      "command": "LAYMRG",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Scal warstwy",
+      "purpose": "Łączy obiekty różnych warstw",
+      "lab": false
+    },
+    {
+      "command": "LAYDEL",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Usuń warstwę",
+      "purpose": "Usuwa niepotrzebną warstwę z obiektami",
+      "lab": false
+    },
+    {
+      "command": "LAYWALK",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Przejdź warstwy",
+      "purpose": "Przegląda zestawy warstw",
+      "lab": false
+    },
+    {
+      "command": "CHPROP",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Zmień właściwości",
+      "purpose": "Zmienia kolor, warstwę i typ linii",
+      "lab": false
+    },
+    {
+      "command": "PROPERTIES",
+      "alias": "Ctrl+1",
+      "category": "Warstwy i właściwości",
+      "label": "Paleta właściwości",
+      "purpose": "Wymiary, warstwa, kolor i typ obiektu",
+      "lab": false
+    },
+    {
+      "command": "SETBYLAYER",
+      "alias": "",
+      "category": "Warstwy i właściwości",
+      "label": "Według warstwy",
+      "purpose": "Przywraca dziedziczenie właściwości",
+      "lab": false
+    },
+    {
+      "command": "TEXT",
+      "alias": "DT",
+      "category": "Opis / Annotate",
+      "label": "Tekst jednowierszowy",
+      "purpose": "Krótki opis na rysunku",
+      "lab": false
+    },
+    {
+      "command": "MTEXT",
+      "alias": "T",
+      "category": "Opis / Annotate",
+      "label": "Tekst wielowierszowy",
+      "purpose": "Akapiowy opis z formatowaniem",
+      "lab": false
+    },
+    {
+      "command": "STYLE",
+      "alias": "ST",
+      "category": "Opis / Annotate",
+      "label": "Styl tekstu",
+      "purpose": "Czcionka, szerokość, wysokość i styl",
+      "lab": false
+    },
+    {
+      "command": "TEXTEDIT",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Edycja tekstu",
+      "purpose": "Zmienia zawartość tekstu",
+      "lab": false
+    },
+    {
+      "command": "FIND",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Wyszukaj",
+      "purpose": "Znajduje tekst w rysunku",
+      "lab": false
+    },
+    {
+      "command": "SPELL",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Ortografia",
+      "purpose": "Sprawdza pisownię",
+      "lab": false
+    },
+    {
+      "command": "FIELD",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Pole",
+      "purpose": "Dynamiczne informacje w tekście",
+      "lab": false
+    },
+    {
+      "command": "TABLE",
+      "alias": "TB",
+      "category": "Opis / Annotate",
+      "label": "Tabela",
+      "purpose": "Wstawia strukturę danych",
+      "lab": false
+    },
+    {
+      "command": "TABLESTYLE",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Styl tabeli",
+      "purpose": "Wygląd kolumn i wierszy",
+      "lab": false
+    },
+    {
+      "command": "DIM",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Wymiar",
+      "purpose": "Interaktywne wymiarowanie",
+      "lab": false
+    },
+    {
+      "command": "DIMLINEAR",
+      "alias": "DLI",
+      "category": "Opis / Annotate",
+      "label": "Wymiar liniowy",
+      "purpose": "Poziomy lub pionowy",
+      "lab": true
+    },
+    {
+      "command": "DIMALIGNED",
+      "alias": "DAL",
+      "category": "Opis / Annotate",
+      "label": "Wymiar wyrównany",
+      "purpose": "Wymiar równoległy do obiektu",
+      "lab": true
+    },
+    {
+      "command": "DIMANGULAR",
+      "alias": "DAN",
+      "category": "Opis / Annotate",
+      "label": "Wymiar kąta",
+      "purpose": "Kąt między krawędziami",
+      "lab": false
+    },
+    {
+      "command": "DIMRADIUS",
+      "alias": "DRA",
+      "category": "Opis / Annotate",
+      "label": "Promień",
+      "purpose": "Wymiar łuku/okręgu",
+      "lab": false
+    },
+    {
+      "command": "DIMDIAMETER",
+      "alias": "DDI",
+      "category": "Opis / Annotate",
+      "label": "Średnica",
+      "purpose": "Wymiar okręgu",
+      "lab": false
+    },
+    {
+      "command": "DIMORDINATE",
+      "alias": "DOR",
+      "category": "Opis / Annotate",
+      "label": "Wymiar współrzędnej",
+      "purpose": "Odległość od bazowego układu",
+      "lab": false
+    },
+    {
+      "command": "DIMCONTINUE",
+      "alias": "DCO",
+      "category": "Opis / Annotate",
+      "label": "Kontynuuj wymiar",
+      "purpose": "Ciąg wymiarów",
+      "lab": false
+    },
+    {
+      "command": "DIMBASELINE",
+      "alias": "DBA",
+      "category": "Opis / Annotate",
+      "label": "Baza wymiarowania",
+      "purpose": "Wymiary od jednej bazy",
+      "lab": false
+    },
+    {
+      "command": "DIMSTYLE",
+      "alias": "D",
+      "category": "Opis / Annotate",
+      "label": "Styl wymiarowania",
+      "purpose": "Strzałki, tekst, jednostki i precyzja",
+      "lab": false
+    },
+    {
+      "command": "DIMUPDATE",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Zaktualizuj wymiary",
+      "purpose": "Przypisuje aktualny styl",
+      "lab": false
+    },
+    {
+      "command": "MLEADER",
+      "alias": "MLD",
+      "category": "Opis / Annotate",
+      "label": "Odnośnik wieloliniowy",
+      "purpose": "Strzałka z opisem",
+      "lab": false
+    },
+    {
+      "command": "MLEADERSTYLE",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Styl odnośnika",
+      "purpose": "Definiuje wygląd odnośników",
+      "lab": false
+    },
+    {
+      "command": "TOLERANCE",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Tolerancje",
+      "purpose": "Ramki tolerancji geometrycznych",
+      "lab": false
+    },
+    {
+      "command": "CENTERMARK",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Znacznik środka",
+      "purpose": "Automatycznie oznacza środek okręgu",
+      "lab": false
+    },
+    {
+      "command": "CENTERLINE",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Linia osiowa",
+      "purpose": "Między krawędziami",
+      "lab": false
+    },
+    {
+      "command": "SCALELISTEDIT",
+      "alias": "",
+      "category": "Opis / Annotate",
+      "label": "Lista skal",
+      "purpose": "Zmienia dostępne skale opisów",
+      "lab": false
+    },
+    {
+      "command": "BLOCK",
+      "alias": "B",
+      "category": "Wstaw / Insert",
+      "label": "Utwórz blok",
+      "purpose": "Nazywa zbiór geometrii",
+      "lab": false
+    },
+    {
+      "command": "INSERT",
+      "alias": "I",
+      "category": "Wstaw / Insert",
+      "label": "Wstaw blok",
+      "purpose": "Dodaje egzemplarz bloku",
+      "lab": false
+    },
+    {
+      "command": "BEDIT",
+      "alias": "BE",
+      "category": "Wstaw / Insert",
+      "label": "Edytor bloków",
+      "purpose": "Zmienia definicję bloku",
+      "lab": false
+    },
+    {
+      "command": "BCLOSE",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Zamknij edytor",
+      "purpose": "Kończy edycję bloku",
+      "lab": false
+    },
+    {
+      "command": "WBLOCK",
+      "alias": "W",
+      "category": "Wstaw / Insert",
+      "label": "Eksport bloku",
+      "purpose": "Zapisuje do osobnego DWG",
+      "lab": false
+    },
+    {
+      "command": "ATTDEF",
+      "alias": "ATT",
+      "category": "Wstaw / Insert",
+      "label": "Atrybut bloku",
+      "purpose": "Definiuje pole tekstowe",
+      "lab": false
+    },
+    {
+      "command": "EATTEDIT",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Edytuj atrybuty",
+      "purpose": "Zmienia dane bloków",
+      "lab": false
+    },
+    {
+      "command": "BATTMAN",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Menedżer atrybutów",
+      "purpose": "Porządkuje definicje",
+      "lab": false
+    },
+    {
+      "command": "XREF",
+      "alias": "XR",
+      "category": "Wstaw / Insert",
+      "label": "Odnośniki zewnętrzne",
+      "purpose": "Menedżer podkładów",
+      "lab": false
+    },
+    {
+      "command": "XATTACH",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Dołącz DWG",
+      "purpose": "Linkuje podkład z pliku",
+      "lab": false
+    },
+    {
+      "command": "XCLIP",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Przytnij XREF",
+      "purpose": "Ogranicza widoczny fragment",
+      "lab": false
+    },
+    {
+      "command": "REFEDIT",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Edytuj odnośnik",
+      "purpose": "Edycja w kontekście",
+      "lab": false
+    },
+    {
+      "command": "IMAGEATTACH",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Dołącz obraz",
+      "purpose": "Podkład PNG/JPG",
+      "lab": false
+    },
+    {
+      "command": "PDFATTACH",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Podłącz PDF",
+      "purpose": "PDF jako odniesienie",
+      "lab": false
+    },
+    {
+      "command": "PDFIMPORT",
+      "alias": "",
+      "category": "Wstaw / Insert",
+      "label": "Import PDF",
+      "purpose": "Konwertuje część geometrii",
+      "lab": false
+    },
+    {
+      "command": "DATALINK",
+      "alias": "DL",
+      "category": "Wstaw / Insert",
+      "label": "Łącze danych",
+      "purpose": "Łączy arkusze z tabelami",
+      "lab": false
+    },
+    {
+      "command": "ZOOM",
+      "alias": "Z",
+      "category": "Widok i arkusze",
+      "label": "Powiększ widok",
+      "purpose": "Zmienia przybliżenie bez zmiany geometrii",
+      "lab": true
+    },
+    {
+      "command": "PAN",
+      "alias": "P",
+      "category": "Widok i arkusze",
+      "label": "Przesuń widok",
+      "purpose": "Przemieszcza kamerę",
+      "lab": true
+    },
+    {
+      "command": "REGEN",
+      "alias": "RE",
+      "category": "Widok i arkusze",
+      "label": "Regeneruj",
+      "purpose": "Odświeża rysunek",
+      "lab": false
+    },
+    {
+      "command": "VIEW",
+      "alias": "V",
+      "category": "Widok i arkusze",
+      "label": "Nazwane widoki",
+      "purpose": "Zapisuje perspektywy kamery",
+      "lab": false
+    },
+    {
+      "command": "VPORTS",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Rzutnie modelu",
+      "purpose": "Dzieli obszar roboczy",
+      "lab": false
+    },
+    {
+      "command": "MVIEW",
+      "alias": "MV",
+      "category": "Widok i arkusze",
+      "label": "Rzutnia arkusza",
+      "purpose": "Tworzy okno modelu w Layout",
+      "lab": false
+    },
+    {
+      "command": "MSPACE",
+      "alias": "MS",
+      "category": "Widok i arkusze",
+      "label": "Model z arkusza",
+      "purpose": "Aktywuje model w rzutni",
+      "lab": false
+    },
+    {
+      "command": "PSPACE",
+      "alias": "PS",
+      "category": "Widok i arkusze",
+      "label": "Papier",
+      "purpose": "Wraca do papieru",
+      "lab": false
+    },
+    {
+      "command": "LAYOUT",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Układ arkusza",
+      "purpose": "Wstawia i modyfikuje arkusze",
+      "lab": false
+    },
+    {
+      "command": "CHSPACE",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Przenieś między przestrzeniami",
+      "purpose": "Zachowuje wygląd przy przenoszeniu",
+      "lab": false
+    },
+    {
+      "command": "PAGESETUP",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Ustawienia strony",
+      "purpose": "Papier i drukarka",
+      "lab": false
+    },
+    {
+      "command": "PLOT",
+      "alias": "Ctrl+P",
+      "category": "Widok i arkusze",
+      "label": "Drukuj",
+      "purpose": "Drukuje układ na papier/PDF",
+      "lab": false
+    },
+    {
+      "command": "PUBLISH",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Publikuj",
+      "purpose": "Zestaw kilku arkuszy",
+      "lab": false
+    },
+    {
+      "command": "EXPORTPDF",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Eksport PDF",
+      "purpose": "Przekazuje dokument do odczytu",
+      "lab": false
+    },
+    {
+      "command": "UCS",
+      "alias": "UCS",
+      "category": "Widok i arkusze",
+      "label": "Układ współrzędnych",
+      "purpose": "Zmienia lokalny układ osi",
+      "lab": false
+    },
+    {
+      "command": "UCSICON",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "Ikona UCS",
+      "purpose": "Pokazuje orientację osi",
+      "lab": false
+    },
+    {
+      "command": "NAVVCUBE",
+      "alias": "",
+      "category": "Widok i arkusze",
+      "label": "ViewCube",
+      "purpose": "Nawigacja widokami 3D",
+      "lab": false
+    },
+    {
+      "command": "DIST",
+      "alias": "DI",
+      "category": "Kontrola i pomiary",
+      "label": "Zmierz odległość",
+      "purpose": "Wartość oraz delta X,Y",
+      "lab": true
+    },
+    {
+      "command": "AREA",
+      "alias": "AA",
+      "category": "Kontrola i pomiary",
+      "label": "Powierzchnia",
+      "purpose": "Pole i obwód",
+      "lab": false
+    },
+    {
+      "command": "ID",
+      "alias": "",
+      "category": "Kontrola i pomiary",
+      "label": "Identyfikuj punkt",
+      "purpose": "Współrzędne wskazanego punktu",
+      "lab": false
+    },
+    {
+      "command": "LIST",
+      "alias": "LI",
+      "category": "Kontrola i pomiary",
+      "label": "Lista obiektów",
+      "purpose": "Dane geometryczne i właściwości",
+      "lab": false
+    },
+    {
+      "command": "MEASUREGEOM",
+      "alias": "",
+      "category": "Kontrola i pomiary",
+      "label": "Pomiary geometrii",
+      "purpose": "Odległość, kąt, promień, powierzchnia",
+      "lab": false
+    },
+    {
+      "command": "QUICKCALC",
+      "alias": "",
+      "category": "Kontrola i pomiary",
+      "label": "Kalkulator",
+      "purpose": "Proste obliczenia w programie",
+      "lab": false
+    },
+    {
+      "command": "COUNT",
+      "alias": "",
+      "category": "Kontrola i pomiary",
+      "label": "Zlicz obiekty",
+      "purpose": "Liczy instancje i wykrywa nakładki",
+      "lab": false
+    },
+    {
+      "command": "CHECKSTANDARDS",
+      "alias": "",
+      "category": "Kontrola i pomiary",
+      "label": "Sprawdź standardy",
+      "purpose": "Weryfikuje pliki DWS",
+      "lab": false
+    },
+    {
+      "command": "ETRANSMIT",
+      "alias": "",
+      "category": "Kontrola i pomiary",
+      "label": "Komplet wysyłkowy",
+      "purpose": "Pakuje podkłady i fonty",
+      "lab": false
+    },
+    {
+      "command": "GEOMCONSTRAINT",
+      "alias": "",
+      "category": "Parametryczne / Parametric",
+      "label": "Więzy geometrii",
+      "purpose": "Równoległość, styczność i współliniowość",
+      "lab": false
+    },
+    {
+      "command": "DIMCONSTRAINT",
+      "alias": "",
+      "category": "Parametryczne / Parametric",
+      "label": "Więzy wymiarowe",
+      "purpose": "Zależności liczbowe",
+      "lab": false
+    },
+    {
+      "command": "PARAMETERS",
+      "alias": "",
+      "category": "Parametryczne / Parametric",
+      "label": "Parametry",
+      "purpose": "Nazwane zmienne i relacje",
+      "lab": false
+    },
+    {
+      "command": "DELCONSTRAINT",
+      "alias": "",
+      "category": "Parametryczne / Parametric",
+      "label": "Usuń więzy",
+      "purpose": "Kasuje ograniczenie",
+      "lab": false
+    },
+    {
+      "command": "SHOWCONSTRAINTS",
+      "alias": "",
+      "category": "Parametryczne / Parametric",
+      "label": "Pokaż więzy",
+      "purpose": "Wyświetla symbole zależności",
+      "lab": false
+    },
+    {
+      "command": "INFER",
+      "alias": "",
+      "category": "Parametryczne / Parametric",
+      "label": "Wnioskowanie więzów",
+      "purpose": "Automatycznie rozpoznaje relacje",
+      "lab": false
+    },
+    {
+      "command": "EXTRUDE",
+      "alias": "EXT",
+      "category": "3D i wizualizacja",
+      "label": "Wyciągnij",
+      "purpose": "Tworzy bryłę z zamkniętego profilu",
+      "lab": false
+    },
+    {
+      "command": "PRESSPULL",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Naciśnij/ciągnij",
+      "purpose": "Wyciąga wybrany obszar",
+      "lab": false
+    },
+    {
+      "command": "REVOLVE",
+      "alias": "REV",
+      "category": "3D i wizualizacja",
+      "label": "Obrót bryły",
+      "purpose": "Tworzy bryłę obrotową",
+      "lab": false
+    },
+    {
+      "command": "SWEEP",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Ścieżka",
+      "purpose": "Przeciąga profil po krzywej",
+      "lab": false
+    },
+    {
+      "command": "LOFT",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Przekroje",
+      "purpose": "Interpoluje bryłę przez profile",
+      "lab": false
+    },
+    {
+      "command": "UNION",
+      "alias": "UNI",
+      "category": "3D i wizualizacja",
+      "label": "Suma brył",
+      "purpose": "Łączy objętości",
+      "lab": false
+    },
+    {
+      "command": "SUBTRACT",
+      "alias": "SU",
+      "category": "3D i wizualizacja",
+      "label": "Różnica brył",
+      "purpose": "Odejmuje bryłę",
+      "lab": false
+    },
+    {
+      "command": "INTERSECT",
+      "alias": "IN",
+      "category": "3D i wizualizacja",
+      "label": "Część wspólna",
+      "purpose": "Wspólna objętość",
+      "lab": false
+    },
+    {
+      "command": "FILLETEDGE",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Zaokrąglij krawędź",
+      "purpose": "Zaokrągla bryłę",
+      "lab": false
+    },
+    {
+      "command": "SHELL",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Powłoka",
+      "purpose": "Nadaje grubość ściance",
+      "lab": false
+    },
+    {
+      "command": "SECTIONPLANE",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Płaszczyzna przekroju",
+      "purpose": "Tworzy przekrój modelu",
+      "lab": false
+    },
+    {
+      "command": "3DORBIT",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Orbita 3D",
+      "purpose": "Obraca widok wokół obiektu",
+      "lab": false
+    },
+    {
+      "command": "VISUALSTYLES",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Style wizualne",
+      "purpose": "Realistyczny/szkieletowy",
+      "lab": false
+    },
+    {
+      "command": "RENDER",
+      "alias": "",
+      "category": "3D i wizualizacja",
+      "label": "Renderowanie",
+      "purpose": "Obraz modelu 3D",
+      "lab": false
+    },
+    {
+      "command": "SHARE",
+      "alias": "",
+      "category": "Współpraca i przegląd",
+      "label": "Udostępnij",
+      "purpose": "Dostęp do rysunku wg licencji",
+      "lab": false
+    },
+    {
+      "command": "TRACE",
+      "alias": "",
+      "category": "Współpraca i przegląd",
+      "label": "Kalka komentarzy",
+      "purpose": "Warstwa recenzji bez edycji oryginału",
+      "lab": false
+    },
+    {
+      "command": "DWGCOMPARE",
+      "alias": "",
+      "category": "Współpraca i przegląd",
+      "label": "Porównaj rysunki",
+      "purpose": "Śledzi różnice wersji",
+      "lab": false
+    },
+    {
+      "command": "MARKUPIMPORT",
+      "alias": "",
+      "category": "Współpraca i przegląd",
+      "label": "Import uwag",
+      "purpose": "Wczytuje uwagi z plików",
+      "lab": false
+    },
+    {
+      "command": "MARKUPASSIST",
+      "alias": "",
+      "category": "Współpraca i przegląd",
+      "label": "Wspomaganie uwag",
+      "purpose": "Rozpoznaje część adnotacji",
+      "lab": false
+    },
+    {
+      "command": "AUTOPUBLISH",
+      "alias": "",
+      "category": "Współpraca i przegląd",
+      "label": "Automatyczna publikacja",
+      "purpose": "Publikuje na zapis/wyjście wg ustawień",
+      "lab": false
+    }
+  ],
+  "shortcuts": [
+    {
+      "keys": "F1",
+      "purpose": "Pomoc"
+    },
+    {
+      "keys": "F2",
+      "purpose": "Historia poleceń"
+    },
+    {
+      "keys": "F3",
+      "purpose": "OSNAP — przyciąganie do obiektów"
+    },
+    {
+      "keys": "F4",
+      "purpose": "OSNAP 3D"
+    },
+    {
+      "keys": "F5",
+      "purpose": "Cykl płaszczyzn izometrycznych"
+    },
+    {
+      "keys": "F6",
+      "purpose": "Dynamic UCS w 3D"
+    },
+    {
+      "keys": "F7",
+      "purpose": "Siatka"
+    },
+    {
+      "keys": "F8",
+      "purpose": "ORTHO"
+    },
+    {
+      "keys": "F9",
+      "purpose": "Skok siatki"
+    },
+    {
+      "keys": "F10",
+      "purpose": "Śledzenie biegunowe"
+    },
+    {
+      "keys": "F11",
+      "purpose": "Śledzenie OSNAP"
+    },
+    {
+      "keys": "F12",
+      "purpose": "Dynamic Input"
+    },
+    {
+      "keys": "Ctrl+0",
+      "purpose": "Czysty ekran"
+    },
+    {
+      "keys": "Ctrl+1",
+      "purpose": "Właściwości / Properties"
+    },
+    {
+      "keys": "Ctrl+2",
+      "purpose": "DesignCenter"
+    },
+    {
+      "keys": "Ctrl+3",
+      "purpose": "Tool Palettes"
+    },
+    {
+      "keys": "Ctrl+4",
+      "purpose": "Sheet Set Manager"
+    },
+    {
+      "keys": "Ctrl+8",
+      "purpose": "Kalkulator QuickCalc"
+    },
+    {
+      "keys": "Ctrl+9",
+      "purpose": "Wiersz poleceń"
+    },
+    {
+      "keys": "Ctrl+A",
+      "purpose": "Zaznacz wszystkie dostępne obiekty"
+    },
+    {
+      "keys": "Ctrl+C",
+      "purpose": "Kopiuj do schowka"
+    },
+    {
+      "keys": "Ctrl+V",
+      "purpose": "Wklej ze schowka"
+    },
+    {
+      "keys": "Ctrl+Shift+C",
+      "purpose": "Kopiuj z punktem bazowym"
+    },
+    {
+      "keys": "Ctrl+Shift+V",
+      "purpose": "Wklej jako blok"
+    },
+    {
+      "keys": "Ctrl+X",
+      "purpose": "Wytnij"
+    },
+    {
+      "keys": "Ctrl+Z",
+      "purpose": "Cofnij"
+    },
+    {
+      "keys": "Ctrl+Y",
+      "purpose": "Ponów"
+    },
+    {
+      "keys": "Ctrl+N",
+      "purpose": "Nowy rysunek"
+    },
+    {
+      "keys": "Ctrl+O",
+      "purpose": "Otwórz"
+    },
+    {
+      "keys": "Ctrl+S",
+      "purpose": "Zapisz"
+    },
+    {
+      "keys": "Ctrl+Shift+S",
+      "purpose": "Zapisz jako"
+    },
+    {
+      "keys": "Ctrl+P",
+      "purpose": "Drukuj"
+    },
+    {
+      "keys": "Ctrl+Tab",
+      "purpose": "Przełącz rysunek (zależnie od wersji)"
+    },
+    {
+      "keys": "Delete",
+      "purpose": "Usuń zaznaczone"
+    },
+    {
+      "keys": "Esc",
+      "purpose": "Anuluj / wyczyść wybór"
+    },
+    {
+      "keys": "Enter",
+      "purpose": "Zatwierdź lub powtórz polecenie"
+    },
+    {
+      "keys": "Shift+klik",
+      "purpose": "Usuń obiekt z zaznaczenia"
+    },
+    {
+      "keys": "Shift+prawy klik",
+      "purpose": "Menu jednorazowego OSNAP"
+    },
+    {
+      "keys": "Kółko myszy",
+      "purpose": "Zoom"
+    },
+    {
+      "keys": "Wciśnięte kółko",
+      "purpose": "Pan / przesuwanie widoku"
+    }
+  ],
+  "links": {
+    "commands": "https://help.autodesk.com/view/ACD/2026/ENU/",
+    "keys": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-Customization/files/GUID-B6A9C126-230D-47F5-8973-464BC80E3736.htm",
+    "aliases": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-LT-DidYouKnow/files/GUID-D2B4BF16-B1F7-4EF2-89AF-88ACE85FAD73.htm",
+    "snap": "https://help.autodesk.com/cloudhelp/2026/ENU/AutoCAD-MAC-Core/files/GUID-06D81B23-B171-4F33-920B-4609E22DD9.htm"
+  }
+}

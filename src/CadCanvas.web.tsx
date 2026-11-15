@@ -1,17 +1,19 @@
-import React,{useEffect,useId,useRef} from 'react';
+import React,{useEffect,useId,useRef,useState} from 'react';
 import {dimensionGeometry,distance,outline,screenPoint,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
 
 export type SceneObject={shape:CadShape;color:string;selected?:boolean;preview?:boolean};
 type Props={
- size:Size;camera:Camera;objects:SceneObject[];grid:boolean;pan:boolean;layout:boolean;
+ size:Size;camera:Camera;objects:SceneObject[];grid:boolean;pan:boolean;layout:boolean;selecting?:boolean;
  cursor?:Point;snap?:Point;prompt?:string;
- onMove:(point?:Point)=>void;onPick:(point:Point)=>void;onPan:(delta:Point)=>void;
+ onMove:(point?:Point)=>void;onPick:(point:Point,shift?:boolean)=>void;onWindowSelect?:(start:Point,end:Point,remove:boolean)=>void;onPan:(delta:Point)=>void;
  onZoom:(factor:number,at:Point)=>void;onFinish:()=>void;
 };
 
-export default function CadCanvas({size,camera,objects,grid,pan,layout,cursor,snap,prompt,onMove,onPick,onPan,onZoom,onFinish}:Props){
+export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting=false,cursor,snap,prompt,onMove,onPick,onWindowSelect,onPan,onZoom,onFinish}:Props){
  const surface=useRef<SVGSVGElement>(null);
  const drag=useRef<{id:number;point:Point}|null>(null);
+ const selectionDrag=useRef<{id:number;start:Point;end:Point;remove:boolean}|null>(null);
+ const [selectionWindow,setSelectionWindow]=useState<{start:Point;end:Point}|null>(null);
  const hatch=useId();
  const project=(point:Point)=>screenPoint(point,camera,size);
  const w=Math.max(1,size.width),h=Math.max(1,size.height);
@@ -60,20 +62,35 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,cursor,sn
    if(pan||event.button===1){
     event.preventDefault();event.currentTarget.setPointerCapture(event.pointerId);
     drag.current={id:event.pointerId,point:pointer(event.nativeEvent)};
+   }else if(selecting&&event.button===0&&!(event.target as Element).closest('[data-cad-object]')){
+    event.preventDefault();event.currentTarget.setPointerCapture(event.pointerId);
+    const start=pointer(event.nativeEvent);
+    selectionDrag.current={id:event.pointerId,start,end:start,remove:event.shiftKey};
    }
   }}
   onPointerMove={event=>{
    if(layout)return;
    const p=pointer(event.nativeEvent);
    if(drag.current?.id===event.pointerId){onPan({x:p.x-drag.current.point.x,y:p.y-drag.current.point.y});drag.current.point=p;}
-   else onMove(p);
+   else if(selectionDrag.current?.id===event.pointerId){
+    selectionDrag.current.end=p;
+    if(Math.hypot(p.x-selectionDrag.current.start.x,p.y-selectionDrag.current.start.y)>4)
+     setSelectionWindow({start:selectionDrag.current.start,end:p});
+   }else onMove(p);
   }}
   onPointerUp={event=>{
    if(layout)return;
    if(drag.current?.id===event.pointerId){drag.current=null;return;}
-   if(event.button===0)onPick(pointer(event.nativeEvent));
+   const p=pointer(event.nativeEvent);
+   if(selectionDrag.current?.id===event.pointerId){
+    const box=selectionDrag.current;selectionDrag.current=null;setSelectionWindow(null);
+    if(Math.hypot(p.x-box.start.x,p.y-box.start.y)>5)onWindowSelect?.(box.start,p,box.remove);
+    else onPick(p,box.remove);
+    return;
+   }
+   if(event.button===0)onPick(p,event.shiftKey);
   }}
-  onPointerCancel={()=>{drag.current=null;onMove(undefined);}}
+  onPointerCancel={()=>{drag.current=null;selectionDrag.current=null;setSelectionWindow(null);onMove(undefined);}}
   onPointerLeave={()=>{if(!drag.current)onMove(undefined);}}>
   <defs><pattern id={hatch} width="11" height="11" patternUnits="userSpaceOnUse"><path d="M-3 3 3-3 M0 11 11 0 M8 14 14 8" stroke={layout?'#81949b':'#759caa'} strokeWidth="1"/></pattern></defs>
   {layout?<g><rect x="12" y="10" width={w-24} height={h-20} fill="#fff" stroke="#bac8d0"/><rect x="23" y="21" width={w-46} height={h-42} fill="none" stroke="#d5dfe5"/>
@@ -86,6 +103,13 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,cursor,sn
    {origin.x>=0&&origin.x<=w&&line({x:origin.x,y:0},{x:origin.x,y:h})}
   </g>}
   {objects.map(object)}
+  {selectionWindow&&!layout&&(()=>{
+   const a=selectionWindow.start,b=selectionWindow.end,crossing=b.x<a.x;
+   return <rect data-testid="cad-selection-window" x={Math.min(a.x,b.x)} y={Math.min(a.y,b.y)}
+    width={Math.abs(b.x-a.x)} height={Math.abs(b.y-a.y)} pointerEvents="none"
+    fill={crossing?'#78d79b':'#7bbdff'} fillOpacity=".18"
+    stroke={crossing?'#7dd59c':'#83c8ff'} strokeWidth="1.5" strokeDasharray={crossing?'5 4':undefined}/>;
+  })()}
   {!layout&&<g transform={'translate(17 '+(h-17)+')'} fill="#abc0ca" stroke="#abc0ca" strokeWidth="1">
    <path d="M0-24V0H25" fill="none"/><text x="27" y="3" stroke="none" fontSize="10">X</text><text x="-4" y="-27" stroke="none" fontSize="10">Y</text>
   </g>}

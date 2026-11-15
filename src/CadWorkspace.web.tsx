@@ -1,10 +1,11 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {Text,TextInput,View,useWindowDimensions} from 'react-native';
+import {copyCadSelection,mergeCadSelection,selectCadWindow,transformCadSelection} from './CadSelection';
 import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
 import {add,arcData,cadCoordinates,cadNumber,contains,distance,dot,fitDrawing,isClosed,multiply,nearEdge,offsetShape,readCadPoint,
- screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
+ screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size,type CadSnapMode} from './CadGeometry';
 
 type Tool='select'|'line'|'poly'|'rect'|'circle'|'arc'|'hatch'|'move'|'copy'|'rotate'|'scale'|'mirror'|'offset'|'trim'|'dist'|'dimlinear'|'dimaligned';
 type Session={tool:Tool;points:Point[];target?:number;selecting?:boolean;amount?:number;diameter?:boolean;boundaries?:number[]};
@@ -48,21 +49,29 @@ const promptFor=(s:Session)=>{
 const idle:Session={tool:'select',points:[]};
 const scalar=(text:string)=>/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)?Number(text):NaN;
 const inRange=(p:Point)=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Math.abs(p.x)<=1e9&&Math.abs(p.y)<=1e9;
+const countObjects=(n:number)=>n===1?'obiekt':n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?'obiekty':'obiektów';
 
 export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{shortcut?:string;runId:number;storageKey?:string;lessonNo?:number}){
  const {width:screenWidth}=useWindowDimensions();
  const [size,setSize]=useState<Size>({width:1,height:1}),[camera,setCamera]=useState<Camera|null>(null);
  const [drawing,setDrawing]=useState(initial),[history,setHistory]=useState<Drawing[]>([]),[future,setFuture]=useState<Drawing[]>([]);
- const [session,setSession]=useState<Session>(idle),[selected,setSelected]=useState<number>(),[last,setLast]=useState<Point>();
+ const [session,setSession]=useState<Session>(idle),[selected,setSelected]=useState<number>(),[selectedIds,setSelectedIds]=useState<number[]>([]),[last,setLast]=useState<Point>();
  const [pointer,setPointer]=useState<Point>(),[input,setInput]=useState(''),[lastCommand,setLastCommand]=useState<Tool>();
  const [message,setMessage]=useState('Gotowy. Wpisz polecenie lub użyj wstążki.'),[log,setLog]=useState<string[]>([]);
  const [grid,setGrid]=useState(true),[ortho,setOrtho]=useState(false),[osnap,setOsnap]=useState(false),[snapGrid,setSnapGrid]=useState(false),[dynamic,setDynamic]=useState(true);
+ const [snapModes,setSnapModes]=useState<CadSnapMode[]>(['endpoint','midpoint']);
+ const [showSnapSettings,setShowSnapSettings]=useState(false);
+ const [layoutScale,setLayoutScale]=useState(50);
+ const [fontSample,setFontSample]=useState('Przykładowy opis rysunku');
+ const [sampleFont,setSampleFont]=useState('Arial');
+ const [sampleHeight,setSampleHeight]=useState(2.5);
  const [tab,setTab]=useState<'home'|'annotate'|'view'>('home'),[panel,setPanel]=useState<'draw'|'modify'|'layers'>('draw');
  const [pan,setPan]=useState(false),[layout,setLayout]=useState(false),[expandLog,setExpandLog]=useState(false),[pattern,setPattern]=useState<'hatch'|'solid'>('hatch');
  const [layerName,setLayerName]=useState(''),[newLayer,setNewLayer]=useState(false);
  const nextId=useRef(1),nextLayer=useRef(3),commandRef=useRef<React.ComponentRef<typeof TextInput>>(null);
  const view=camera??fitDrawing([],size);
  const visible=drawing.shapes.filter(shape=>drawing.layers.find(l=>l.id===shape.layer)?.visible);
+ const selectedVisible=selectedIds.filter(id=>visible.some(s=>s.id===id));
  const chosen=visible.find(shape=>shape.id===selected),target=visible.find(shape=>shape.id===session.target);
  const {tool,points}=session,first=points[0],latest=points.at(-1);
  const prompt=promptFor(session);
@@ -77,15 +86,16 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(!shape.points.every(inRange)){tell('Obiekt przekracza zakres współrzędnych warsztatu.');return;}
   if(drawing.shapes.length>=400){tell('Osiągnięto limit 400 obiektów w pracowni.');return;}
   const id=nextId.current++;
-  updateShapes([...drawing.shapes,{...shape,id,layer}]);setSelected(id);
+  updateShapes([...drawing.shapes,{...shape,id,layer}]);setSelected(id);setSelectedIds([id]);
   return id;
  }
  function resetSession(){setSession(idle);setInput('');}
  function start(next:Tool){
   if(layout){tell('Otwórz Model, aby edytować rysunek.');return;}
   setPan(false);setInput('');
-  const selecting=modify.has(next)&&!chosen;
-  setSession({tool:next,points:[],target:modify.has(next)?chosen?.id:undefined,selecting});
+  const firstSelected=visible.find(shape=>selectedVisible.includes(shape.id))??chosen;
+  const selecting=modify.has(next)&&!firstSelected;
+  setSession({tool:next,points:[],target:modify.has(next)?firstSelected?.id:undefined,selecting});
   if(next!=='select')setLastCommand(next);
   if(next==='hatch'){setTab('home');setPanel('draw');}
   tell(next==='select'?'Wskaż krawędź obiektu.':tools[next].name+' · '+promptFor({tool:next,points:[],selecting}));
@@ -93,12 +103,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  function undo(){
   const previous=history.at(-1);
   if(!previous){tell('Historia rysunku jest pusta.');return;}
-  setFuture(old=>[drawing,...old]);setHistory(history.slice(0,-1));setDrawing(previous);setSelected(undefined);resetSession();
+  setFuture(old=>[drawing,...old]);setHistory(history.slice(0,-1));setDrawing(previous);setSelected(undefined);setSelectedIds([]);resetSession();
   tell('Cofnięto ostatnią zmianę rysunku.');
  }
  function redo(){
   if(!future.length)return;
-  setHistory(old=>[...old,drawing]);setDrawing(future[0]);setFuture(future.slice(1));setSelected(undefined);resetSession();tell('Ponowiono zmianę rysunku.');
+  setHistory(old=>[...old,drawing]);setDrawing(future[0]);setFuture(future.slice(1));setSelected(undefined);setSelectedIds([]);resetSession();tell('Ponowiono zmianę rysunku.');
  }
  function endPolyline(close:boolean){
   if(points.length<2){resetSession();return;}
@@ -111,8 +121,9 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    updateShapes(drawing.shapes.map(s=>session.boundaries?.includes(s.id)?{...s,fill:pattern}:s));resetSession();tell('Zastosowano wypełnienie.');return;
   }
   if(session.selecting){
-   if(target){setSession({...session,selecting:false});tell('Zatwierdzono wybór obiektu.');}
-   else tell('Wskaż krawędź obiektu, aby go wybrać.');
+   const candidate=selectedVisible[0]??target?.id;
+   if(candidate!==undefined){setSession({...session,target:candidate,selecting:false});tell('Zatwierdzono wybór '+selectedVisible.length+' obiektów. Wskaż punkt bazowy.');}
+   else tell('Zaznacz obiekty, przeciągnij okno lub wpisz ALL.');
    return;
   }
   if(close&&points.length<3){tell('Do zamknięcia wskaż co najmniej trzy różne punkty.');return;}
@@ -126,25 +137,47 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  }
  function cancel(){
   if(tool==='poly'&&points.length>=2){endPolyline(false);return;}
-  if(tool==='select')setSelected(undefined);
-  resetSession();setPan(false);tell('Anulowano aktywne polecenie.');
+  if(tool==='select'){setSelected(undefined);setSelectedIds([]);}
+  resetSession();setPan(false);tell('Anulowano polecenie lub wyczyszczono zaznaczenie.');
+ }
+ function clearSelection(){
+  setSelected(undefined);setSelectedIds([]);
+  if(session.selecting)setSession({...session,target:undefined});
+  tell('Wyczyszczono zaznaczenie.');
+ }
+ function selectAll(){
+  if(layout){tell('Zaznaczaj obiekty w Model Space.');return;}
+  const ids=visible.map(shape=>shape.id);
+  setSelectedIds(ids);setSelected(ids.at(-1));
+  if(session.selecting&&ids.length)setSession({...session,target:ids[0],selecting:false});
+  tell('Zaznaczono wszystkie widoczne obiekty: '+ids.length+'. Wpisz MOVE, COPY lub SCALE.');
+ }
+ function selectWindow(startPx:Point,endPx:Point,remove:boolean){
+  const from=worldPoint(startPx,view,size),to=worldPoint(endPx,view,size);
+  const result=selectCadWindow(visible,from,to);
+  const ids=mergeCadSelection(selectedVisible,result.ids,remove);
+  setSelectedIds(ids);setSelected(ids.at(-1));
+  if(session.selecting&&ids.length)setSession({...session,target:ids[0],selecting:false});
+  tell((result.direction==='window'?'Okno: całkowicie objęte':'Przecięcie: objęte lub dotknięte')+' · '+result.ids.length+' obiektów. Łącznie zaznaczono '+ids.length+'.');
  }
  function join(){
   if(layout){tell('Połącz obiekty w przestrzeni Model.');return;}
   const connected=joinCadLines(visible,selected);
   if(!connected){tell('JOIN: wybierz co najmniej dwa połączone odcinki LINE na jednej warstwie.');return;}
   updateShapes([...drawing.shapes.filter(s=>!connected.sourceIds.includes(s.id)),connected.joined]);
-  setSelected(connected.joined.id);resetSession();
+  setSelected(connected.joined.id);setSelectedIds([connected.joined.id]);resetSession();
   tell('JOIN: połączono '+connected.sourceIds.length+' odcinki w '+(connected.joined.closed?'zamkniętą':'otwartą')+' polilinię. Możesz przesunąć ją przez MOVE.');
  }
  function erase(){
   if(layout)return;
-  if(!chosen){tell('Zaznacz krawędź obiektu, który chcesz usunąć.');return;}
-  updateShapes(drawing.shapes.filter(s=>s.id!==selected));setSelected(undefined);resetSession();tell('Usunięto zaznaczony obiekt.');
+  const ids=selectedVisible.length?selectedVisible:chosen?[chosen.id]:[];
+  if(!ids.length){tell('Zaznacz obiekty, które chcesz usunąć.');return;}
+  updateShapes(drawing.shapes.filter(s=>!ids.includes(s.id)));setSelected(undefined);setSelectedIds([]);resetSession();
+  tell('Usunięto '+ids.length+' obiektów.');
  }
  function atPointer(pixel:Point){
   const raw=worldPoint(pixel,view,size);
-  const snapped=osnap?snapPoint(raw,visible,baseTolerance):undefined;
+  const snapped=osnap?snapPoint(raw,visible,baseTolerance,snapModes):undefined;
   if(snapped)return snapped;
   const gridSize=50;
   let point=snapGrid?{x:Math.round(raw.x/gridSize)*gridSize,y:Math.round(raw.y/gridSize)*gridSize}:raw;
@@ -165,15 +198,25 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   setLast(point);
   setSession({...session,points:[...points,point]});
  }
- function pick(point:Point){
+ function pick(point:Point,remove=false){
   if(layout||pan)return;
   if(!inRange(point)){tell('Współrzędne przekraczają zakres warsztatu.');return;}
   const ordered=[...visible].reverse();
   if(tool==='select'||session.selecting||(tool==='offset'&&session.target===undefined)||tool==='trim'){
    if(tool==='offset'&&session.amount===undefined){tell(prompt);return;}
    const hit=ordered.find(s=>nearEdge(s,point,baseTolerance))??ordered.find(s=>s.fill&&contains(s,point));
-   if(!hit){if(tool==='select')setSelected(undefined);tell('Wskaż krawędź obiektu.');return;}
-   setSelected(hit.id);
+   if(!hit){
+    if(tool==='select'){setSelected(undefined);setSelectedIds([]);}
+    tell('Wskaż krawędź obiektu lub zaznacz obiekty oknem.');return;
+   }
+   if(tool==='select'||session.selecting){
+    const ids=mergeCadSelection(selectedVisible,[hit.id],remove);
+    setSelectedIds(ids);setSelected(ids.at(-1));
+    if(session.selecting)setSession({...session,target:ids[0],selecting:true});
+    tell((remove?'Odjęto obiekt. ':'Dodano obiekt. ')+'Zaznaczono: '+ids.length+'.');
+    return;
+   }
+   setSelected(hit.id);setSelectedIds([hit.id]);
    if(tool==='trim'){
     const remaining=trimLine(hit,visible,point);
     if(remaining){
@@ -220,8 +263,22 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   }else if(tool==='dimlinear'||tool==='dimaligned'){
    if(storeShape({kind:'dimension',points:[...points,point],aligned:tool==='dimaligned'})){resetSession();tell('Dodano wymiar do rysunku.');}
   }else if(target&&(tool==='move'||tool==='copy')){
-   const delta=subtract(point,first);
-   setLast(point);applyChange(transformShape(target,p=>add(p,delta)),tool==='copy','Przesunięcie '+cadCoordinates(delta)+'.');
+   const delta=subtract(point,first),ids=selectedVisible.length?selectedVisible:[target.id];
+   const shifted=transformCadSelection(drawing.shapes,ids,p=>add(p,delta));
+   const moved=shifted.filter(shape=>ids.includes(shape.id));
+   if(!moved.every(shape=>shape.points.every(inRange))){tell('Obiekty wyszłyby poza dozwolony zakres współrzędnych.');return;}
+   if(tool==='copy'){
+    const result=copyCadSelection(drawing.shapes,ids,nextId.current);
+    if(!result){tell('Nie można skopiować tej liczby obiektów.');return;}
+    nextId.current=result.nextId;
+    updateShapes(transformCadSelection(result.shapes,result.newIds,p=>add(p,delta)));
+    setSelectedIds(result.newIds);setSelected(result.newIds.at(-1));
+   }else{
+    updateShapes(shifted);
+    setSelectedIds(ids);setSelected(ids.at(-1));
+   }
+   setLast(point);resetSession();
+   tell((tool==='copy'?'Skopiowano ':'Przesunięto ')+ids.length+' '+countObjects(ids.length)+' o '+cadCoordinates(delta)+'.');
   }else if(target&&tool==='mirror'){
    const axis=subtract(point,first),square=dot(axis,axis);
    applyChange(transformShape(target,p=>subtract(add(first,multiply(axis,2*dot(subtract(p,first),axis)/square)),subtract(p,first)),false),
@@ -258,6 +315,9 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    undo();return;
   }
   if(['CTRL+Y','REDO'].includes(command)){redo();return;}
+  if(['ALL','CTRL+A','SELECTALL'].includes(command)){selectAll();return;}
+  if(['DESELECT','CLEARSELECTION'].includes(command)){clearSelection();return;}
+  if(command==='SELECT'){setSession({tool:'select',points:[]});tell('Wybieraj obiekty pojedynczo lub oknem.');return;}
   if(['E','ERASE','DELETE'].includes(command)){erase();return;}
   if(['JOIN','J','PEDIT'].includes(command)){join();return;}
   if(['LA','LAYER'].includes(command)){setTab('home');setPanel('layers');return;}
@@ -277,12 +337,17 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   }
   if((tool==='rotate'||tool==='scale')&&first&&target&&Number.isFinite(number)){
    if(tool==='scale'&&number<=0){tell('Współczynnik skali musi być dodatni.');return;}
-   if(tool==='scale'){
-    applyChange(transformShape(target,p=>add(first,multiply(subtract(p,first),number))),false,'Przeskalowano obiekt przez '+cadNumber(number)+'.');
-   }else{
-    const angle=number*Math.PI/180,cos=Math.cos(angle),sin=Math.sin(angle);
-    applyChange(transformShape(target,p=>{const v=subtract(p,first);return add(first,{x:v.x*cos-v.y*sin,y:v.x*sin+v.y*cos});},false),false,'Obrócono o '+cadNumber(number)+'°.');
+   const ids=selectedVisible.length?selectedVisible:[target.id];
+   const transform=tool==='scale'?(p:Point)=>add(first,multiply(subtract(p,first),number)):(p:Point)=>{
+    const theta=number*Math.PI/180,cos=Math.cos(theta),sin=Math.sin(theta),v=subtract(p,first);
+    return add(first,{x:v.x*cos-v.y*sin,y:v.x*sin+v.y*cos});
+   };
+   const updated=transformCadSelection(drawing.shapes,ids,transform);
+   if(!updated.filter(shape=>ids.includes(shape.id)).every(shape=>shape.points.every(inRange))){
+    tell('Obiekt wychodzi poza dozwolony zakres współrzędnych.');return;
    }
+   updateShapes(updated);setSelectedIds(ids);setSelected(ids.at(-1));resetSession();
+   tell(tool==='scale'?'SCALE: przeskalowano '+ids.length+' '+countObjects(ids.length)+' ×'+cadNumber(number)+'.':'ROTATE: obrócono '+ids.length+' '+countObjects(ids.length)+' o '+cadNumber(number)+'°.');
    return;
   }
   const point=readCadPoint(command,latest??last);
@@ -296,6 +361,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(event.key==='Escape'){cancel();return true;}
   const tag=(event.target as Element).tagName.toUpperCase();
   if(tag==='INPUT')return false;
+  if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='a'){selectAll();return true;}
   if(event.ctrlKey&&event.key.toLowerCase()==='z'){undo();return true;}
   if(event.ctrlKey&&event.key.toLowerCase()==='y'){redo();return true;}
   if(event.key==='Delete'){erase();return true;}
@@ -331,7 +397,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  }
  const objects:SceneObject[]=visible.map(shape=>({
   shape:session.boundaries?.includes(shape.id)?{...shape,fill:pattern}:shape,
-  color:drawing.layers.find(l=>l.id===shape.layer)!.color,selected:!layout&&shape.id===selected,
+  color:drawing.layers.find(l=>l.id===shape.layer)!.color,selected:!layout&&selectedVisible.includes(shape.id),
  }));
  const ribbonButton=(t:Exclude<Tool,'select'>)=><LabButton key={t} label={tools[t].label+' · '+tools[t].name} selected={tool===t} onPress={()=>start(t)}/>;
  const reportedPoint=candidate?.point??last;
@@ -365,7 +431,22 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
      </View>
     </View>}
    </>}
-   {tab==='annotate'&&<LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</LabGroup>}
+   {tab==='annotate'&&<View style={{gap:12}}>
+    <LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</LabGroup>
+    <View style={{padding:13,backgroundColor:'#f0f6f8',borderRadius:10,gap:9}} testID="cad-font-style">
+     <Text style={labStyles.heading}>Tekst i czcionka — STYLE / MTEXT</Text>
+     <Text style={labStyles.body}>Podgląd stylu edukacyjnego (nie edytuje pliku DWG). W oryginalnym AutoCAD: wpisz STYLE, utwórz styl i wybierz font TrueType/SHX; użyj MTEXT, aby dodać opis lub zmienić wysokość tekstu.</Text>
+     <TextInput accessibilityLabel="Treść napisu do podglądu" value={fontSample} onChangeText={setFontSample} style={labStyles.input}/>
+     <LabGroup label="Wygląd czcionki (przykłady)">
+      {['Arial','Times New Roman','monospace'].map(font=><LabButton key={font} label={font} selected={sampleFont===font} onPress={()=>setSampleFont(font)}/>)}
+     </LabGroup>
+     <LabGroup label="Wysokość tekstu na papierze">
+      {[2.5,3.5,5].map(h=><LabButton key={h} label={String(h).replace('.',',')+' mm'} selected={sampleHeight===h} onPress={()=>setSampleHeight(h)}/>)}
+     </LabGroup>
+     <Text testID="cad-font-preview" style={{fontFamily:sampleFont,fontSize:Math.round(10+sampleHeight*2.5),color:'#264955',padding:13,backgroundColor:'white',borderRadius:8}}>{fontSample||'Przykładowy napis'}</Text>
+     <Text style={{fontSize:12,color:'#516c73'}}>Wymiar w modelu i wysokość tekstu na papierze to dwie różne rzeczy. Dla skali 1:50 tekst nieanotacyjny 2,5 mm na papierze odpowiada 125 mm w modelu. Styl anotacyjny potrafi przeliczać to automatycznie.</Text>
+    </View>
+   </View>}
    {tab==='view'&&<LabGroup label="Navigate / Nawiguj">
     <LabButton label="Dopasuj · Zoom Extents" onPress={fit}/>
     <LabButton label="Przybliż +" disabled={layout} onPress={()=>zoom(.8)}/>
@@ -377,12 +458,24 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Linie ukośne" selected={pattern==='hatch'} onPress={()=>setPattern('hatch')}/>
    <LabButton label="Pełne · SOLID" selected={pattern==='solid'} onPress={()=>setPattern('solid')}/>
   </LabGroup>}
+  <View style={{backgroundColor:'#e6eff1',padding:11,borderRadius:10,gap:7,marginBottom:8}}>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,alignItems:'center'}}>
+    <LabButton label="Zaznacz wszystko · Ctrl+A" disabled={layout||!visible.length} onPress={selectAll}/>
+    <LabButton label="Wyczyść zaznaczenie · Esc" disabled={!selectedVisible.length} onPress={clearSelection}/>
+    <LabButton label="Przesuń zaznaczone · MOVE" disabled={layout||!selectedVisible.length} onPress={()=>start('move')}/>
+    <LabButton label="Kopiuj zaznaczone · COPY" disabled={layout||!selectedVisible.length} onPress={()=>start('copy')}/>
+   </View>
+   <Text style={{color:'#385b64',fontSize:12,lineHeight:19}}>
+    Zaznaczone: {selectedVisible.length}. Klikaj kolejne obiekty; Shift + kliknięcie usuwa obiekt z wyboru. Okno od lewej do prawej wybiera obiekty całkowicie wewnątrz; od prawej do lewej także przecinane. Po zaznaczeniu wpisz MOVE, wskaż punkt bazowy i docelowy.
+   </Text>
+  </View>
   <View style={{height:screenWidth<640?270:385,borderRadius:8,overflow:'hidden',backgroundColor:'#172530'}}
    onLayout={event=>{const {width,height}=event.nativeEvent.layout;setSize({width,height});}}>
-   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout}
+   <CadCanvas size={size} camera={layout?fitDrawing(visible,size):view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting}
     cursor={pointer} snap={candidate?.label&&cursorPoint?screenPoint(cursorPoint,view,size):undefined}
     prompt={dynamic&&tool!=='select'&&cursorPoint?(candidate?.label?candidate.label+' · ':'')+cadCoordinates(cursorPoint):undefined}
-    onMove={setPointer} onPick={p=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point)}
+    onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove)}
+    onWindowSelect={selectWindow}
     onPan={shift} onZoom={zoom} onFinish={()=>finish()}/>
   </View>
   <View style={labStyles.row}>
@@ -392,8 +485,17 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Cofnij · Ctrl+Z" disabled={!history.length} onPress={undo}/>
    <LabButton label="Ponów · Ctrl+Y" disabled={!future.length} onPress={redo}/>
   </View>
-  <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
-   {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}{chosen?' · Zaznaczony '+chosen.id:''}</Text>
+  {layout&&<View testID="cad-layout-scale" style={{backgroundColor:'#edf5ec',padding:12,borderRadius:10,gap:10}}>
+   <Text style={labStyles.heading}>Skala rzutni i wydruku — ćwiczenie</Text>
+   <Text style={labStyles.body}>W modelu pozostaw wymiary 1:1. W prawdziwym AutoCAD zaznacz ramkę rzutni na Layout, otwórz Properties (Ctrl+1), ustaw Standard Scale i zablokuj rzutnię. Poniższy kalkulator nie zmienia Twojego rysunku.</Text>
+   <LabGroup label="Porównaj skale">
+    {[20,25,50,100,200].map(scale=><LabButton key={scale} label={'1:'+scale} selected={layoutScale===scale} onPress={()=>setLayoutScale(scale)}/>)}
+   </LabGroup>
+   <Text style={{fontWeight:'800',color:'#315b43'}}>Przy 1:{layoutScale} odcinek 5000 mm w modelu ma {(5000/layoutScale).toLocaleString('pl-PL')} mm na papierze.</Text>
+   <Text style={{fontSize:12,color:'#607a69'}}>SCALE zmienia rozmiar zaznaczonych obiektów. Skala rzutni nie zmienia geometrii. Zoom również jej nie zmienia.</Text>
+  </View>}
+  <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Zaznaczone: {selectedVisible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
+   {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}</Text>
   <View style={{backgroundColor:'#edf2f4',borderColor:'#c1d1d6',borderWidth:1,borderRadius:8,padding:9,gap:6}}>
    <Text style={labStyles.eyebrow}>{tool==='select'?'Polecenie':tools[tool].name} · {layout?'Podgląd arkusza. Edycję wykonujesz w Modelu.':prompt}</Text>
    <View style={labStyles.row}>
@@ -419,9 +521,23 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Siatka · F7" selected={grid} onPress={()=>flags('F7')}/>
    <LabButton label="Skok siatki 50 · F9" selected={snapGrid} onPress={()=>flags('F9')}/>
    <LabButton label="OSNAP · F3" selected={osnap} onPress={()=>flags('F3')}/>
+   <LabButton label="Tryby OSNAP · ustaw" selected={showSnapSettings} onPress={()=>setShowSnapSettings(v=>!v)}/>
    <LabButton label="ORTHO · F8" selected={ortho} onPress={()=>flags('F8')}/>
    <LabButton label="Współrzędne przy kursorze · F12" selected={dynamic} onPress={()=>flags('F12')}/>
   </LabGroup>
+  {showSnapSettings&&<View testID="cad-osnap-settings" style={{backgroundColor:'#e7f4ee',padding:12,borderRadius:10,gap:9}}>
+   <Text style={labStyles.heading}>Przyciąganie do punktów OSNAP</Text>
+   <Text style={labStyles.body}>Włącz F3, potem wybierz konkretne typy punktów. Możesz zaznaczyć kilka jednocześnie. Zobacz marker i podpis przy kursorze.</Text>
+   <View style={[labStyles.row,{flexWrap:'wrap'}]}>
+    {([
+     ['endpoint','Koniec odcinka'],['midpoint','Środek odcinka'],['center','Środek okręgu'],['quadrant','Kwadrant'],
+     ['intersection','Przecięcie'],['nearest','Najbliższy na obiekcie'],['geometric','Środek geometryczny'],['node','Węzeł wymiaru'],
+    ] as [CadSnapMode,string][]).map(([id,label])=><LabButton key={id} label={label} selected={snapModes.includes(id)} onPress={()=>{
+     setSnapModes(prev=>prev.includes(id)?prev.filter(v=>v!==id):[...prev,id]);setOsnap(true);
+    }}/>)}
+   </View>
+   <Text style={{fontSize:12,color:'#536d61'}}>Nasz warsztat ćwiczy wskazane tryby 2D. Pełny AutoCAD ma dodatkowo m.in. prostopadłość, styczność, śledzenie i osnap 3D — wyjaśniono je w przewodniku.</Text>
+  </View>}
   <Text style={labStyles.body}>Przewiń kółko nad rysunkiem, aby powiększyć widok. Przeciągnij środkowym przyciskiem myszy albo wybierz PAN. Wiersz poleceń przyjmuje X,Y, @ΔX,ΔY oraz @odległość&lt;kąt. ORTHO i OSNAP pomagają przy wskazywaniu kursorem.</Text>
  </View>;
 }
