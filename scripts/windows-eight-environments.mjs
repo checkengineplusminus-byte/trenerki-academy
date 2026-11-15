@@ -99,6 +99,10 @@ async function runPersona(browser,p,round){
   const checks=scope.getByRole('checkbox');
   for(let j=0;j<m.steps.length;j++)await checks.nth(j).click();
   const marked=await checks.evaluateAll(elements=>elements.filter(el=>el.getAttribute('aria-checked')==='true').length);
+  if(marked!==m.steps.length){
+   const details=await checks.evaluateAll(elements=>elements.slice(0,3).map(el=>({role:el.getAttribute('role'),ariaChecked:el.getAttribute('aria-checked'),title:el.textContent?.slice(0,90),html:el.outerHTML.slice(0,360)})));
+   console.log('QA checklist diagnostic:',JSON.stringify(details));
+  }
   assert.equal(marked,m.steps.length,'Checklist did not reflect all completed steps');
   await input.fill(m.evidence+' Wykonanie potwierdzam wyłącznie jako samokontrolę.');
   await scope.getByRole('button',{name:'Porównaj moje rozwiązanie z kryterium'}).click();
