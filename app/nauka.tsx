@@ -242,12 +242,17 @@ export default function Learning(){
    {!busy&&courseInfo.slug===slug&&index===0&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
    <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
-     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Postęp · {completed}/{items.length} lekcji</Text>
-     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{progress}%</Text>
+     <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
+     <Text style={{fontSize:reviewMode?12:17,fontWeight:'900',color:ink}}>{reviewMode?'Dyplom zachowany':progress+'%'}</Text>
     </View>
-    <View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
+    {!reviewMode&&<View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
      <View style={{height:8,width:progress+'%',backgroundColor:'#7cae6e'}}/>
-    </View>
+    </View>}
+    <Pressable testID="start-course-from-beginning" accessibilityRole="button" disabled={saving} onPress={startFromBeginning}
+      style={{marginTop:12,paddingVertical:11,paddingHorizontal:13,backgroundColor:'white',borderRadius:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#bad4b6'}}>
+      <Text style={{fontWeight:'900',color:ink}}>↺ Zacznij od początku</Text>
+    </Pressable>
+    {reviewMode&&<Text style={{fontSize:12,lineHeight:19,color:'#49684c',marginTop:5}}>Powtarzasz materiały. Postęp i dyplom nie są kasowane.</Text>}
    </View>
    {lessonNavigation('top')}
    {slug==='zaufany-wolontariusz'&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:14,marginBottom:14}}>
