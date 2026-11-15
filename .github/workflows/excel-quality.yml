@@ -12,6 +12,11 @@ on:
       - 'src/SpreadsheetFormula.ts'
       - 'src/LessonIllustratedSections.tsx'
       - 'scripts/test-excel-expert.mjs'
+      - 'scripts/test-excel-pro-case.mjs'
+      - 'src/excelProReview.ts'
+      - 'src/ExcelProCaseLab.tsx'
+      - 'content/excel-pro-case.json'
+      - 'public/academy/assets/excel-professional-368-import.csv'
       - 'scripts/excel-ten-environments.mjs'
       - '.github/workflows/excel-quality.yml'
   workflow_dispatch:
@@ -25,7 +30,7 @@ jobs:
         with:
           node-version: '22'
       - name: Sprawdź funkcje ekspertów i kurs od zera
-        run: node --experimental-strip-types --test scripts/test-excel-expert.mjs
+        run: node --experimental-strip-types --test scripts/test-excel-expert.mjs scripts/test-excel-pro-case.mjs
   ten_environments:
     needs: expert_engine
     name: 10 środowisk × 2 cykle → IT → krytyk → sprzedawca
