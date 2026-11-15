@@ -110,9 +110,13 @@ for(const mobile of [false,true]){
   await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).click();
   await page.getByTestId('route-recovery').waitFor();
   assert(blockedChunks>0,'The stale route module must actually fail');
+  console.log('Recovery boundary opened at',page.url());
   await page.unroute(diplomaChunk);
-  await page.getByRole('button',{name:'Odśwież stronę',exact:true}).click();
-  await page.waitForLoadState('domcontentloaded');
+  await Promise.all([
+   page.waitForEvent('domcontentloaded'),
+   page.getByRole('button',{name:'Odśwież stronę',exact:true}).click(),
+  ]);
+  console.log('Recovered document opened at',page.url());
   // A failed lazy navigation can leave the browser at its previous URL. A
   // reload must also recover that course, retaining its passed exam status.
   if(new URL(page.url()).pathname==='/nauka'){

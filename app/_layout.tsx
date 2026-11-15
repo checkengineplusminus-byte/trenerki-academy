@@ -1,9 +1,15 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Pressable,ActivityIndicator,Platform} from 'react-native';
-import {Link,Slot,Stack,usePathname,Redirect,type ErrorBoundaryProps} from 'expo-router';
+import {Link,Slot,Stack,usePathname,useGlobalSearchParams,Redirect,type ErrorBoundaryProps} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
+
+// The router may replace the URL with its root when a parent boundary catches
+// a failed lazy route. Retain the most recent committed page for recovery.
+const webLocation=()=>Platform.OS==='web'&&typeof window!=='undefined'
+ ? window.location.pathname+window.location.search : '';
+let lastWorkingWebLocation=webLocation();
 
 // An open tab can reference a route chunk from the release before the latest
 // deployment. Keep a recovery action visible instead of leaving a blank page.
@@ -14,7 +20,7 @@ export function ErrorBoundary({retry}:ErrorBoundaryProps){
    <Text accessibilityRole="header" style={{fontSize:24,fontWeight:'900',color:'#19392b'}}>Nie udało się otworzyć tej strony</Text>
    <Text style={{fontSize:16,lineHeight:25,color:'#19392b'}}>Strona mogła zostać zaktualizowana lub połączenie zostało przerwane. Zapisane wyniki pozostają na Twoim koncie. Spróbuj ponownie.</Text>
    <Pressable accessibilityRole="button" onPress={()=>{
-    if(web&&typeof window!=='undefined')window.location.reload();
+    if(web&&typeof window!=='undefined')window.location.replace(lastWorkingWebLocation||webLocation());
     else void retry();
    }} style={{minHeight:48,padding:14,borderRadius:10,backgroundColor:'#245f36'}}>
     <Text style={{fontWeight:'800',color:'white',textAlign:'center'}}>{web?'Odśwież stronę':'Spróbuj ponownie'}</Text>
@@ -33,6 +39,8 @@ export function ErrorBoundary({retry}:ErrorBoundaryProps){
  */
 export default function RootLayout(){
  const pathname=usePathname();
+ const routeParams=JSON.stringify(useGlobalSearchParams());
+ useEffect(()=>{lastWorkingWebLocation=webLocation();},[pathname,routeParams]);
  useEffect(()=>{
   if(Platform.OS!=='web'||typeof document==='undefined'||document.querySelector('script[data-trenerki-google-ads]'))return;
   const script=document.createElement('script');script.src='/academy/google-ads.js';script.async=true;
