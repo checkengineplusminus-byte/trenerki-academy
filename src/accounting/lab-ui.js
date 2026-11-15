@@ -120,6 +120,12 @@ export function mountLab(root,db){
     '<tr><td>Wypływy bankowe CSV</td><td>'+money(fin.bank_outflow_cents||0)+'</td></tr>',
     '<tr><td>Zmiana banku w okresie</td><td>'+money(fin.bank_net_movement_cents||0)+'</td></tr>'
    ])+
+   '<h3>Wykaz źródeł miesiąca</h3><p class="muted">Liczba dekretów nie potwierdza poprawności ani prawa do odliczenia VAT.</p>'+
+   table(['Numer','Rodzaj','Data','Netto','VAT','Brutto','Dekrety'],audit.source_inventory.map(i=>
+    '<tr><td>'+e(i.number||i.id)+'</td><td>'+e(i.kind)+'</td><td>'+e(i.date)+'</td>'+
+    '<td>'+(i.net_cents===null?'brak':money(i.net_cents))+'</td>'+
+    '<td>'+(i.vat_cents===null?'brak':money(i.vat_cents))+'</td>'+
+    '<td>'+(i.gross_cents===null?'brak':money(i.gross_cents))+'</td><td>'+i.journal_count+'</td></tr>'))+
    '<h3>Sprawdź dane przed przejściem do kolejnego ćwiczenia</h3>'+
    table(['Warunek','Wynik szkoleniowy','Następny krok'],checks)+
    (issues?'<details><summary>Wykryte problemy w dokumentach ('+audit.issues.length+

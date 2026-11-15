@@ -1586,3 +1586,30 @@ test('Pełen fikcyjny cykl dopuszcza wyłącznie recenzję, nie zamknięcie urz�
  assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
  assert.equal(JSON.stringify(state),before);
 });
+
+test('Kontrola rozliczenia wykrywa dwie faktury o tym samym identyfikatorze',()=>{
+ const s=fullScenario(),first=s.invoices[0];s.invoices.push({...first,number:'FV/NOWA'});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='source_identity').passed,false);
+ assert.ok(r.issues.some(x=>x.code==='source_id_missing_or_duplicate'));
+ assert.equal(r.source_inventory.length,3);
+ assert.equal(r.ready_for_training_review,false);
+});
+test('Różni dostawcy mogą mieć powtarzające się numery faktur zakupowych',()=>{
+ const s=fullScenario(),purchase=s.invoices.find(i=>i.kind==='purchase');
+ s.invoices.push({...purchase,id:'OTHER-PURCHASE',party:'Inny fikcyjny dostawca'});
+ const r=taxCloseTrainingAudit(s);
+ assert.equal(r.checks.find(x=>x.key==='source_identity').passed,true);
+ assert.equal(r.source_inventory.length,3);
+ assert.equal(r.checks.find(x=>x.key==='invoice_posting').passed,false);
+});
+test('Raport do recenzji pokazuje identyfikowalne faktury i koduje niebezpieczny HTML',()=>{
+ const s=fullScenario();s.invoices[0].number='<script>oops</script>';
+ const r=taxCloseTrainingAudit(s),html=taxCloseTrainingReportHTML(s);
+ assert.equal(r.source_inventory.length,2);
+ assert.match(html,/Wykaz źródłowych faktur/);
+ assert.match(html,/&lt;script&gt;oops&lt;\/script&gt;/);
+ assert.ok(!html.includes('<script>'));
+ assert.match(html,/Dekrety/);
+ assert.match(html,/NIE WYSŁANO/);
+});

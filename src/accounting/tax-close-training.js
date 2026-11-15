@@ -121,10 +121,38 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   status:moneyInputsSafe&&ledgerBalanced&&bankCovered?'source_reconciled_training':'incomplete_model',
   explanation:'Wynik modelu: konto 700 minus 400/401/404/761. Przepływ banku: wpływy minus wypływy CSV. To NIE jest saldo otwarcia ani dochód podatkowy.'
  };
+ // Spójny wykaz dokumentów źródłowych dla fikcyjnego zamknięcia i recenzji.
+ // Numery zakupów od różnych dostawców mogą się powtarzać.
+ const sourceIdentityIssues=[],sourceIds=new Set(),documentKeys=new Set();
+ const source_inventory=issued.map(i=>{
+  const id=typeof i.id==='string'?i.id.trim():'';
+  const number=typeof i.number==='string'?i.number.trim():'';
+  const party=String(i.kind==='purchase'?i.party??'':i.seller??'').trim();
+  if(!id||sourceIds.has(id))sourceIdentityIssues.push({code:'source_id_missing_or_duplicate',invoice:number||id||'(brak ID)'});
+  if(id)sourceIds.add(id);
+  if(!number)sourceIdentityIssues.push({code:'source_invoice_number_missing',invoice:id||'(brak ID)'});
+  if(number&&party){
+   const key=[i.kind,party.toLocaleLowerCase('pl-PL'),number.toLocaleLowerCase('pl-PL')].join('|');
+   if(documentKeys.has(key))sourceIdentityIssues.push({code:'source_invoice_number_duplicate_for_party',invoice:number});
+   documentKeys.add(key);
+  }
+  let amounts=null;
+  try{const v=invoiceTotals(i);
+   if(v.net_cents===i.net_cents&&v.tax_cents===i.tax_cents&&v.gross_cents===i.gross_cents)amounts=v;
+  }catch{}
+  return {id,number,kind:i.kind,date:i.date,
+   net_cents:amounts?.net_cents??null,vat_cents:amounts?.tax_cents??null,
+   gross_cents:amounts?.gross_cents??null,
+   journal_count:posted.filter(j=>j.source_type==='invoice'&&j.source_id===i.id).length,
+   legal_qualification:'not_tested'};
+ });
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
   {key:'sources',label:'Faktury zakupu i sprzedaży',passed:issued.some(i=>i.kind==='sale')&&issued.some(i=>i.kind==='purchase'),detail:issued.length+' dokumentów w miesiącu'},
+  {key:'source_identity',label:'Unikalne faktury źródłowe w miesiącu',
+   passed:issued.length>0&&sourceIdentityIssues.length===0,
+   detail:sourceIdentityIssues.length+' powtórzonych ID / numerów tej samej strony'},
   {key:'invoice_posting',label:'Jedno poprawne księgowanie każdej faktury',passed:issued.length>0&&correctPostings===issued.length&&issues.length===0,detail:correctPostings+'/'+issued.length+'; sprawdź wyjątki dotyczące majątku'},
   {key:'ledger',label:'Wn = Ma na każdym dekrecie miesiąca',passed:ledgerBalanced,detail:periodPostings.length+' aktywnych dekretów'},
   {key:'bank',label:'Bank z wyciągu = konto 130 w miesiącu',passed:bankBalanced,detail:'Porównanie kwot z fikcyjnego CSV oraz dziennika'},
@@ -149,7 +177,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   period:period||null,source_count:issued.length,
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...bankCoverageIssues],review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceIdentityIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
@@ -189,6 +217,12 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   '; VAT z dokumentów sprzedaży: ',escape(money(r.figures.sale_vat_cents)),
   '; VAT z dokumentów zakupu: ',escape(money(r.figures.purchase_vat_cents)),
   '; różnica modelowa: ',escape(money(r.figures.vat_difference_cents)),'</p>',
+  '<h2>Wykaz źródłowych faktur do weryfikacji</h2>',
+  '<p>Wyłącznie źródła z miesiąca. Liczba dekretów nie oznacza ich prawidłowości ani kwalifikacji prawnej VAT.</p>',
+  '<table><thead><tr><th>Dokument</th><th>Rodzaj</th><th>Data</th><th>Netto</th><th>VAT</th><th>Brutto</th><th>Dekrety</th></tr></thead><tbody>',
+  r.source_inventory.map(i=>'<tr><td>'+escape(i.number||i.id)+'</td><td>'+escape(i.kind)+'</td><td>'+escape(i.date)+'</td><td>'+
+   escape(fm(i.net_cents))+'</td><td>'+escape(fm(i.vat_cents))+'</td><td>'+escape(fm(i.gross_cents))+'</td><td>'+i.journal_count+'</td></tr>').join(''),
+  '</tbody></table>',
   '<h2>Wynik i przepływy pieniężne okresu — wyłącznie model</h2>',
   '<p>Przychody 700: ',escape(fm(fin.revenue_cents)),
   '; koszty 400/401/404/761: ',escape(fm(fin.expense_cents)),
