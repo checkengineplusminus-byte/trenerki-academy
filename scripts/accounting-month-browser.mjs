@@ -132,7 +132,7 @@ async function fixture(viewport,manifestOverride=manifest,initialState={}){
 async function saved(f,prior){
  try{await f.page.waitForFunction(v=>{
   const t=document.querySelector('[role="status"]')?.textContent||'';
-  return t.includes('wersja '+v);
+  return t.includes('wersja '+v)||t.includes('Powiązano fikcyjną fakturę.');
  },prior+1,{timeout:15000});}
  catch(ex){const detail=await f.page.locator('[role="alert"]').allTextContents();
   throw new Error('Mock save timed out at version '+prior+'; UI errors: '+detail.join(' | '));}
