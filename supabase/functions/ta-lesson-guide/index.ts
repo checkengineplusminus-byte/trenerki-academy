@@ -180,8 +180,9 @@ Deno.serve(async(req:Request)=>{
   if(mat.construction)required.push('construction');
   else if(mat.learning)required.push('case');
   if(Array.isArray(mat.shortcuts)&&mat.shortcuts.length)required.push('keyboard');
-  // New clients request the persisted arithmetic checkpoint; older clients remain compatible during rollout.
-  if(payload.require_carpentry===true&&slug==='ciesla-przygotowanie-czeladnicze'&&[1,8,18,23,56,58].includes(no))required.push('carpentry');
+  // The server, not a client flag, enforces the second checkpoint for carpentry calculation lessons.
+  // Historical completed lessons remain completed via the existing alreadyDone check above.
+  if(slug==='ciesla-przygotowanie-czeladnicze'&&[1,8,18,23,56,58].includes(no))required.push('carpentry');
   for(const mode of required){
    const {data:passed,error:e}=await db.from('ta_learning_attempts').select('id').eq('user_id',user.id).eq('course_slug',slug)
     .eq('lesson_no',no).eq('mode',mode).eq('correct',true).limit(1);
