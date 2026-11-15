@@ -1445,3 +1445,107 @@ test('Wynik miesięczny nie miesza kosztów z poprzedniego okresu ani nie deklar
  const html=taxCloseTrainingReportHTML(s);
  assert.match(html,/To nie jest JPK|TO NIE JEST JPK/);
 });
+
+import {planAcquisition as lifecycleAcquire,planDepreciation as lifecycleDepreciate,
+ planSale as lifecycleSell} from '../src/accounting/assets-core.js';
+
+/** Jedna fikcyjna firma, jeden miesiąc: źródłowe dokumenty, CSV, kadry,
+ * płace, majątek, sprzedaż środka, bilans i 36 odrębnych ćwiczeń.
+ * Nic nie trafia do Supabase; brak stawek prawnych, KSeF/JPK/UPO i logowania.
+ */
+function fictionalFullCompanyMonth(){
+ const {manifest,state:practice}=completeIntegratedFixture();
+ let s=payrollState();
+ s.company={status:'ready',fictional:true};
+ for(const id of ['P01','P02']){
+  s=withPersonnelCase(s,{...readPersonnelCases(s)[id],
+   document_drafts:Object.fromEntries(Object.keys(PERSONNEL_FLAGS).map(key=>[key,true]))});
+ }
+ const sale=invoiceTotals({...invoice('sale'),date:'2026-01-03',due:'2026-01-15'});
+ const purchase=invoiceTotals({...invoice('purchase',20000),date:'2026-01-02',due:'2026-01-15'});
+ const equipment=invoiceTotals({id:'equipment',kind:'purchase',status:'issued',
+  number:'TEST/MACHINE/01',date:'2026-01-02',due:'2026-01-15',party:'Fikcyjny dostawca',
+  seller:'Fikcyjna firma',lines:[{label:'Maszyna testowa',qty_milli:1000,
+   unit_cents:1200000,tax_code:'23'}]});
+ const sold=invoiceTotals({id:'machine-sale',kind:'sale',status:'issued',
+  number:'TEST/MACHINE/SALE',date:'2026-01-31',due:'2026-02-14',party:'Fikcyjny klient',
+  seller:'Fikcyjna firma',lines:[{label:'Sprzedaż TEST/MACHINE/A',qty_milli:1000,
+   unit_cents:800000,tax_code:'23'}]});
+ s.invoices=[sale,purchase,equipment,sold];
+ const imported=parseBankCSV(BANK_TEMPLATE).rows.map((row,index)=>({...row,
+  date:index===0?'2026-01-05':'2026-01-06'}));
+ s.bank=[...imported,
+  {id:'WAGE-A',date:'2026-01-31',amount_cents:-407000,description:'Fikcyjna pensja P01'},
+  {id:'WAGE-B',date:'2026-01-31',amount_cents:-251000,description:'Fikcyjna pensja P02'}];
+ s.matches=[{id:'M-SALE',invoice_id:sale.id,bank_id:imported[0].id,amount_cents:sale.gross_cents},
+  {id:'M-PURCHASE',invoice_id:purchase.id,bank_id:imported[1].id,amount_cents:purchase.gross_cents}];
+ s.journals=[sale,purchase,sold].map(i=>({
+  id:'J-'+i.id,status:'posted',date:i.date,source_type:'invoice',
+  source_id:i.id,lines:expectedInvoiceLines(i)}));
+ s.journals.push({id:'J-B-IN',date:imported[0].date,status:'posted',source_type:'bank',
+  source_id:imported[0].id,lines:[{account:'130',debit:123000,credit:0},
+   {account:'201',debit:0,credit:123000}]},
+  {id:'J-B-OUT',date:imported[1].date,status:'posted',source_type:'bank',
+   source_id:imported[1].id,lines:[{account:'202',debit:24600,credit:0},
+    {account:'130',debit:0,credit:24600}]});
+ s=lifecycleAcquire(s,{id:'ASSET-A',inventory_no:'TEST/MACHINE/A',
+  name:'Maszyna fikcyjna',category:'machine',invoice_id:equipment.id,
+  in_service_date:'2026-01-03',start_month:'2026-01',
+  months:12,residual_cents:0,deductible_bps:10000,status:'draft'},'J-ASSET-ACQUIRE').state;
+ s=lifecycleDepreciate(s,'ASSET-A','J-ASSET-DEPR').state;
+ s=lifecycleSell(s,'ASSET-A','machine-sale','2026-01-31','J-ASSET-SALE').state;
+ for(const [id,bankId,paid] of [['P01','WAGE-A',407000],['P02','WAGE-B',251000]]){
+  s=withPayrollPractice(s,{...payrollCase(id),paid_cents:paid,bank_transaction_id:bankId});
+  const accrual=payrollJournalDraft(s,id,'accrual','J-'+id+'-ACCRUAL');
+  s.journals.push({...accrual,status:'posted'});
+  const payment=payrollJournalDraft(s,id,'payment','J-'+id+'-PAYMENT');
+  s.journals.push({...payment,status:'posted'});
+ }
+ for(const [key,value] of Object.entries(practice))
+  if(key.startsWith('simulator_'))s[key]=structuredClone(value);
+ return {manifest,state:s};
+}
+test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie płace, odejście, aktywa, sprzedaż, bilans i D01-D36',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),before=JSON.stringify(state);
+ const lifecycle=auditCompanyLifecycle(state,manifest);
+ const byKey=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
+ assert.deepEqual(Object.fromEntries(Object.entries(byKey).filter(([k])=>k!=='tax_and_close')),
+  {company:'passed_training',invoices:'passed_training',bank:'passed_training',
+   payroll:'passed_training',asset:'passed_training',month:'passed_training'});
+ assert.equal(byKey.tax_and_close,'not_implemented','Nie udajemy KSeF/JPK/UPO');
+ const tax=taxCloseTrainingAudit(state,manifest);
+ assert.equal(tax.period,'2026-01');
+ assert.equal(tax.ready_for_training_review,true,'Kompletność danych fikcyjnego okresu, nie legalna');
+ assert.equal(tax.checks.find(x=>x.key==='bank_sources').passed,true);
+ assert.equal(tax.checks.find(x=>x.key==='payroll_assets').passed,true);
+ assert.equal(tax.training_result.result_label,'strata modelowa');
+ assert.equal(tax.training_result.status,'source_reconciled_training');
+ assert.equal(tax.completed,false);
+ assert.equal(lifecycle.completed,false);
+ assert.equal(lifecycle.integrated_full_cycle,'not_tested');
+ assert.equal(tax.authorized_e2e,'not_tested');
+ assert.equal(JSON.stringify(state),before,'Audyt ma być odczytowy');
+});
+test('PRZEKRÓJ: usterka dekretu wypłaty blokuje gotowość, mimo poprawnego bilansu Wn/Ma',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth();
+ const wrong=structuredClone(state);
+ const bankEntry=wrong.journals.find(j=>j.id==='J-P01-PAYMENT');
+ bankEntry.lines[0].account='202';
+ const tax=taxCloseTrainingAudit(wrong,manifest),life=auditCompanyLifecycle(wrong,manifest);
+ assert.equal(tax.checks.find(x=>x.key==='bank').passed,true,'Sama suma 130 nic nie wykrywa');
+ assert.equal(tax.checks.find(x=>x.key==='payroll_assets').passed,false);
+ assert.equal(tax.ready_for_training_review,false);
+ assert.equal(life.steps.find(x=>x.key==='payroll').status,'needs_work');
+});
+test('PRZEKRÓJ: storno sprzedaży środka trwałego zatrzymuje cykl bez zmiany źródłowych danych',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),wrong=structuredClone(state);
+ const entry=wrong.journals.find(j=>j.id==='J-ASSET-SALE');
+ wrong.journals.push({id:'REV-ASSET-SALE',date:entry.date,status:'posted',
+  reversal_of:entry.id,source_type:'manual',source_id:'',
+  lines:entry.lines.map(l=>({account:l.account,debit:l.credit,credit:l.debit}))});
+ const before=JSON.stringify(wrong),life=auditCompanyLifecycle(wrong,manifest),tax=taxCloseTrainingAudit(wrong,manifest);
+ assert.equal(life.steps.find(x=>x.key==='asset').status,'needs_work');
+ assert.equal(tax.checks.find(x=>x.key==='payroll_assets').passed,false);
+ assert.equal(tax.ready_for_training_review,false);
+ assert.equal(JSON.stringify(wrong),before);
+});
