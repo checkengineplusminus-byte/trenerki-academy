@@ -31,6 +31,8 @@ on:
       - 'app/nauka.tsx'
       - 'app/moje-kursy.tsx'
       - 'scripts/test-course-progress.mjs'
+      - 'scripts/test-exam-readiness.mjs'
+      - 'supabase/functions/ta-exam/**'
       - 'app/_layout.tsx'
       - 'src/support/LearningSupportBar.tsx'
       - 'app/firma.tsx'
@@ -63,6 +65,7 @@ jobs:
         run: |
           node scripts/gift-card-ui-state.test.mjs
           node --experimental-default-type=module --test scripts/test-course-progress.mjs
+          node --test scripts/test-exam-readiness.mjs
           node --test scripts/test-course-pricing.mjs
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2
