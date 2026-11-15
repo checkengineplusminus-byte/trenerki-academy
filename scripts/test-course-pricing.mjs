@@ -11,9 +11,9 @@ assert.equal(snapshot.change_count,80);
 assert.equal(catalog[0].id,'excel-skroty');
 assert.equal(catalog[0].price,0);
 assert.deepEqual(snapshot.free_courses_after_change.sort(),['excel-skroty','swiety-mikolaj','zaufany-wolontariusz']);
-assert(home.includes('Excel od zera do analizy danych — 0 zł'),'Free Excel must be permanently visible in the hero');
-assert(home.includes('BEZPŁATNY KURS NA START'),'Excel should appear featured');
-assert(home.includes('aria-label="Bezpłatny kurs Excel od podstaw'),'Free Excel hero link needs proper accessible name');
+assert(!home.includes('class="excel-free-intro"'),'Free Excel must not duplicate its catalogue card with a hero banner');
+assert(!home.includes('BEZPŁATNY KURS NA START'),'Free courses must use equal card styles');
+assert(home.includes('Darmowe kursy na start')&&home.includes('free-starter-grid'),'Three free courses must share one featured catalogue row');
 assert(!home.includes('Excel -30%')&&!home.includes('Excel tylko dziś'),'No fake discount or countdown allowed');
 for(const course of catalog){
  const record=prices.get(course.id);

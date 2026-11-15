@@ -9,13 +9,14 @@ try{
   const errors=[];page.on('pageerror',err=>errors.push(err.message));page.setDefaultTimeout(13000);
   await page.route('**/rest/v1/**',route=>route.fulfill({status:503,contentType:'application/json',body:'[]'}));
   await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded'});
-  const feature=page.locator('.excel-free-intro');await feature.waitFor();
-  assert.equal(await feature.getAttribute('href'),'/academy/kursy/excel-skroty.html');
-  await feature.getByText(/Excel od zera do analizy danych — 0 zł/).waitFor();
-  const first=page.locator('#course-cards .course-card').first();
-  assert.equal(await first.getAttribute('data-course-id'),'excel-skroty');
-  await first.getByText('BEZPŁATNY KURS NA START').waitFor();
-  await first.getByRole('button',{name:'Odbierz za darmo'}).waitFor();
+  assert.equal(await page.locator('.excel-free-intro').count(),0,'No duplicate Excel banner at the top');
+  assert.equal(await page.locator('header .nav a[href*="excel"]').count(),0,'No extra Excel navigation tab');
+  const freeCards=page.locator('#course-cards .free-starter-grid .course-card');
+  assert.deepEqual(await freeCards.evaluateAll(nodes=>nodes.map(node=>node.dataset.courseId)),['excel-skroty','zaufany-wolontariusz','swiety-mikolaj']);
+  assert.deepEqual(await freeCards.locator('.price').allTextContents(),['GRATIS','GRATIS','GRATIS']);
+  assert.equal(await page.locator('#course-cards .course-card').count(),12);
+  if(size.width>=621)assert(await freeCards.evaluateAll(nodes=>nodes.every(node=>Math.abs(node.getBoundingClientRect().top-nodes[0].getBoundingClientRect().top)<3)),'Three free courses must be side by side');
+  await freeCards.first().getByRole('button',{name:'Odbierz za darmo'}).waitFor();
   await page.locator('.category-tile[data-course-category="budownictwo"]').click();
   await page.locator('#course-cards .course-card[data-course-id="brygadzista"]').getByText(/155 zł/).waitFor();
   const dims=await page.evaluate(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));
@@ -28,7 +29,7 @@ try{
   await page.goto(root+'/academy/kategorie/technologie-i-logistyka.html',{waitUntil:'domcontentloaded'});
   await page.getByRole('link',{name:/Excel od zera do analizy danych.*0 zł/}).waitFor();
   assert.deepEqual(errors,[],'No JavaScript errors');
-  console.log('✓ '+size.width+'px: free Excel hero+first featured, 155-zł brygadzista, SEO and category consistency');
+  console.log('✓ '+size.width+'px: free course trio, no separate Excel banner, paid prices and SEO consistent');
   await ctx.close();
  }
 }finally{await browser.close();}
