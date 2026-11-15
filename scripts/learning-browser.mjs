@@ -55,6 +55,13 @@ async function verifyIntroPhoto(page,slug){
 }
 
 async function installFixture(page,catalog){
+ // Świadoma decyzja syntetycznego ucznia: odrzuca opcjonalne pomiary Ads.
+ // Gdy baner pojawi się asynchronicznie, Playwright wybiera prawdziwy przycisk
+ // zamiast ukrywać overlay, podmieniać localStorage lub wymuszać kliknięcie.
+ await page.addLocatorHandler(page.locator('#trenerki-ads-banner'),async banner=>{
+  await banner.getByRole('button',{name:'Odrzuć',exact:true}).click();
+  await banner.waitFor({state:'detached'});
+ });
  const progress=new Map(),finished=[],answers=[];
  const completed=(slug)=>{
   if(!progress.has(slug))progress.set(slug,catalog?[]:[0]);
