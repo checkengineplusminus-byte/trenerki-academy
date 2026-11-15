@@ -71,7 +71,7 @@ export default function Learning(){
  useEffect(()=>{setIntroRead(false);pendingWorkshopRef.current=false;},[slug]);
  useEffect(()=>{
   if(pendingWorkshopRef.current&&introRead&&scrollToExcelGrid())pendingWorkshopRef.current=false;
- },[introRead,slug,module]);
+ },[introRead,slug]);
  useEffect(()=>{setReviewMode(reviewParam==='1');},[slug,reviewParam]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
