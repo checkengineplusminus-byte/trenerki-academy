@@ -20,6 +20,7 @@ import EcoAtlas from '../src/EcoAtlas';
 import FinalExam from '../src/FinalExam';
 import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '../src/LessonIllustratedSections';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
+import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
@@ -346,6 +347,7 @@ export default function Learning(){
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
+   {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
