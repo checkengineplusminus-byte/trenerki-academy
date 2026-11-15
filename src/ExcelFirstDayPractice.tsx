@@ -107,7 +107,7 @@ export default function ExcelFirstDayPractice(){
    </View>
    <View testID="excel-first-worked-example" style={{backgroundColor:'#edf6ef',padding:mobile?13:17,borderRadius:12,borderWidth:1,borderColor:'#a8ceb3',gap:11}}>
     <Text style={{color:'#286747',fontSize:12,fontWeight:'900'}}>NAJPIERW PRZYKŁAD — TO NIE JEST SPRAWDZIAN</Text>
-    <Text style={{fontSize:16,lineHeight:24,color:ink,fontWeight:'800'}}>Kupujesz {baselineAmount} sztuki produktu „{example.items[0].label}” po {pln(baselinePrice)} za sztukę.</Text>
+    <Text style={{fontSize:16,lineHeight:24,color:ink,fontWeight:'800'}}>Na liście masz pozycję „{example.items[0].label}”. Jej ilość to {baselineAmount}, a cena jednej jednostki wynosi {pln(baselinePrice)}.</Text>
     <Text style={{fontSize:14,lineHeight:23,color:ink}}>Najpierw mnożymy ilość przez cenę: {baselineAmount} × {baselinePrice} = {baselineAmount*baselinePrice}. Zatem zapłacisz {pln(baselineAmount*baselinePrice)}.</Text>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
      {[
