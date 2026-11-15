@@ -1,0 +1,1057 @@
+{
+  "schema": 1,
+  "updated_on": "2026-11-15",
+  "course": "excel-skroty",
+  "scope": "Słownik kursu Excel od podstaw po raportowanie",
+  "sources": [
+    {
+      "title": "Microsoft Excel Glossary",
+      "url": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "title": "Microsoft Support — Power Query i Power Pivot",
+      "url": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "title": "Microsoft — Funkcja X.WYSZUKAJ",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    }
+  ],
+  "terms": [
+    {
+      "id": "excel",
+      "term": "Excel",
+      "category": "Pierwsze kroki",
+      "definition": "Program do pracy z danymi w arkuszach. Zapisuje wartości, oblicza formuły i pomaga porównywać wyniki; nie sprawdza sam z siebie, czy dane są prawdziwe.",
+      "example": "Wpisujesz ilość farby i cenę, a arkusz liczy koszt.",
+      "pitfall": "Excel nie jest ani Wordem, ani programem księgowym, który sam zna wszystkie przepisy.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "skoroszyt",
+      "term": "Skoroszyt",
+      "category": "Pierwsze kroki",
+      "definition": "Cały plik Excela, w którym mieści się jeden lub wiele arkuszy. Najczęściej ma rozszerzenie .xlsx.",
+      "example": "Budzet_2026.xlsx zawiera zakładki Styczeń, Luty i Marzec.",
+      "pitfall": "Trzy arkusze nie muszą oznaczać trzech plików.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "arkusz",
+      "term": "Arkusz",
+      "category": "Pierwsze kroki",
+      "definition": "Jedna karta wewnątrz skoroszytu, z siatką komórek ułożonych w wiersze i kolumny.",
+      "example": "Arkusz Materiały przechowuje ceny, a arkusz Raport podsumowanie.",
+      "pitfall": "Nie myl karty arkusza z kartą wstążki programu.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "wiersz",
+      "term": "Wiersz",
+      "category": "Pierwsze kroki",
+      "definition": "Poziomy pas komórek oznaczony numerem po lewej stronie.",
+      "example": "Wiersz 2 zawiera pierwszy produkt.",
+      "pitfall": "Liczba 2 nie oznacza drugiej kolumny.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "kolumna",
+      "term": "Kolumna",
+      "category": "Pierwsze kroki",
+      "definition": "Pionowy pas komórek oznaczony literą u góry arkusza.",
+      "example": "W kolumnie C przechowujesz ilości.",
+      "pitfall": "Litera C nie jest numerem wiersza.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "komórka",
+      "term": "Komórka",
+      "category": "Pierwsze kroki",
+      "definition": "Jedno pole na przecięciu wiersza i kolumny. Może przechowywać tekst, liczbę lub formułę.",
+      "example": "W C2 zapisujesz ilość 4,5.",
+      "pitfall": "Widoczny wynik i przechowywana formuła to nie zawsze to samo.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "adres-komórki",
+      "term": "Adres komórki",
+      "category": "Pierwsze kroki",
+      "definition": "Współrzędne pola: litera kolumny oraz numer wiersza. Dzięki nim formuły odnajdują dane.",
+      "example": "D4 oznacza kolumnę D i wiersz 4.",
+      "pitfall": "D4 i D5 to różne komórki, nawet jeśli wyglądają podobnie.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "aktywna-komórka",
+      "term": "Aktywna komórka",
+      "category": "Pierwsze kroki",
+      "definition": "Komórka wybrana do pracy; to do niej trafi tekst wpisany z klawiatury.",
+      "example": "Klikasz C2 i wpisujesz 5.",
+      "pitfall": "Przed zmianą ceny sprawdź, czy wybrałeś właściwe pole.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "pole-nazwy",
+      "term": "Pole nazwy",
+      "category": "Pierwsze kroki",
+      "definition": "Pole po lewej stronie paska formuły wskazujące adres wybranej komórki lub zakresu.",
+      "example": "Wpisz E20 w polu nazwy, aby szybko przeskoczyć do komórki.",
+      "pitfall": "Nie wpisuj tam kwoty, jeśli chcesz ją zapisać w komórce.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "pasek-formuły",
+      "term": "Pasek formuły",
+      "category": "Pierwsze kroki",
+      "definition": "Obszar nad siatką, gdzie możesz obejrzeć i edytować pełną zawartość komórki.",
+      "example": "W E2 widzisz 700, a pasek formuły pokazuje =C2*D2.",
+      "pitfall": "Nie oceniaj wzoru tylko po wyświetlanej liczbie.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "wstążka",
+      "term": "Wstążka",
+      "category": "Pierwsze kroki",
+      "definition": "Górny zestaw kart z poleceniami: Narzędzia główne, Wstawianie, Dane, Formuły itd.",
+      "example": "W karcie Dane znajdziesz sortowanie i filtry.",
+      "pitfall": "Wygląd wstążki zależy od wersji i szerokości okna.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "karta-plik",
+      "term": "Karta Plik",
+      "category": "Pierwsze kroki",
+      "definition": "Miejsce tworzenia, otwierania, zapisywania, eksportowania i drukowania skoroszytów.",
+      "example": "Plik → Zapisz jako pozwala nadać nazwę kopii.",
+      "pitfall": "Wybór Eksport PDF nie zastępuje edytowalnego XLSX.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "karta-arkusza",
+      "term": "Karta arkusza",
+      "category": "Pierwsze kroki",
+      "definition": "Zakładka u dołu skoroszytu, która przełącza arkusze i umożliwia ich zmianę nazwy.",
+      "example": "Klikasz + i nazywasz nowy arkusz Faktury.",
+      "pitfall": "Nie nadpisuj nazw wszystkich kart słowem Arkusz1.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "xlsx",
+      "term": "XLSX",
+      "category": "Pierwsze kroki",
+      "definition": "Popularny format pliku Excela, który zachowuje wiele arkuszy, formuły i formatowanie.",
+      "example": "Wysyłasz Kosztorys_R02.xlsx, aby kolega mógł edytować obliczenia.",
+      "pitfall": "XLSX nie oznacza automatycznie pliku wolnego od makr i ryzyka.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "csv",
+      "term": "CSV",
+      "category": "Pierwsze kroki",
+      "definition": "Plik tekstowy z rekordami oddzielanymi separatorem, np. średnikiem. Nie przechowuje pełnego wyglądu ani wielu arkuszy.",
+      "example": "Importujesz rejestr sprzedaży z 368 rekordami.",
+      "pitfall": "Separator oraz kodowanie trzeba ustawić zgodnie z plikiem.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "pdf",
+      "term": "PDF",
+      "category": "Pierwsze kroki",
+      "definition": "Format przeznaczony głównie do udostępniania i wydruku układu dokumentu.",
+      "example": "Wysyłasz zatwierdzony raport PDF na spotkanie.",
+      "pitfall": "PDF nie służy do dalszego przeliczania formuł.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "zapisz-jako",
+      "term": "Zapisz jako",
+      "category": "Pierwsze kroki",
+      "definition": "Zapisuje skoroszyt pod inną nazwą albo w innym miejscu, zachowując oryginał.",
+      "example": "Przed eksperymentem tworzysz Budzet_R02.xlsx.",
+      "pitfall": "Nadpisanie R01 może pozbawić Cię wersji wyjściowej.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "autozapis",
+      "term": "Autozapis",
+      "category": "Pierwsze kroki",
+      "definition": "Funkcja automatycznego zapisywania zmian, dostępna w odpowiednich konfiguracjach i lokalizacjach chmurowych Microsoft 365.",
+      "example": "Plik zapisany na OneDrive może zapisywać edycje na bieżąco.",
+      "pitfall": "Nie zakładaj, że działa dla każdego lokalnego pliku na dysku.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "typ-danych",
+      "term": "Typ danych",
+      "category": "Dane i formaty",
+      "definition": "Sposób, w jaki arkusz interpretuje zawartość: liczba, tekst, data, czas albo wartość logiczna.",
+      "example": "00127 to kod produktu, a 127 to liczba sztuk.",
+      "pitfall": "Kod z zerami wiodącymi nie powinien stać się automatycznie liczbą.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "liczba",
+      "term": "Liczba",
+      "category": "Dane i formaty",
+      "definition": "Wartość, na której można wykonywać działania arytmetyczne.",
+      "example": "12,50 zł to liczba 12,5 pokazana w formacie walutowym.",
+      "pitfall": "Napis '12,50 PLN' może zostać zaimportowany jako tekst.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "tekst",
+      "term": "Tekst",
+      "category": "Dane i formaty",
+      "definition": "Ciąg znaków, używany m.in. dla nazw i identyfikatorów.",
+      "example": "Numer faktury PRO-0044 jest tekstem.",
+      "pitfall": "Nie sumuj identyfikatorów zamówień.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "data",
+      "term": "Data",
+      "category": "Dane i formaty",
+      "definition": "Wartość reprezentująca dzień kalendarzowy. Excel przechowuje daty jako liczby seryjne i wyświetla je według formatu.",
+      "example": "15.11.2026 możesz grupować według miesięcy.",
+      "pitfall": "Tekst '2026-02-30' nie jest poprawną datą.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "czas",
+      "term": "Czas",
+      "category": "Dane i formaty",
+      "definition": "Wartość reprezentująca godzinę lub długość czasu; Excel może traktować ją jako część doby.",
+      "example": "8:30 i 10:00 daje 1:30 różnicy.",
+      "pitfall": "Nie myl 1,5 godziny z zapisem godziny 1:50.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "procent",
+      "term": "Procent",
+      "category": "Dane i formaty",
+      "definition": "Część całości wyrażona na sto: 0,15 to 15%.",
+      "example": "Rabat 15% od 200 zł to 30 zł.",
+      "pitfall": "Po wpisaniu 15 zamiast 0,15 i formatowaniu procentowym uzyskasz 1500%.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "format-komórki",
+      "term": "Format komórki",
+      "category": "Dane i formaty",
+      "definition": "Sposób prezentacji wartości, np. waluta, data, procent; nie musi zmieniać samej przechowywanej liczby.",
+      "example": "0,25 wyświetla się jako 25%.",
+      "pitfall": "Formatowanie nie naprawia źle zinterpretowanych danych.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "separator-dziesiętny",
+      "term": "Separator dziesiętny",
+      "category": "Dane i formaty",
+      "definition": "Znak oddzielający część całkowitą i ułamkową liczby. Zależy od ustawień regionalnych.",
+      "example": "Polski Excel często używa 4,5, angielski 4.5.",
+      "pitfall": "Import CSV z kropkami może wymagać jawnego ustawienia kultury.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "separator-csv",
+      "term": "Separator CSV",
+      "category": "Dane i formaty",
+      "definition": "Znak między polami w pliku CSV: przecinek, średnik, tabulator lub inny ustalony separator.",
+      "example": "Dane 001;Farba;12,50 oznaczają trzy kolumny.",
+      "pitfall": "Źle wybrany separator umieści cały rekord w jednej kolumnie.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "kodowanie-utf-8",
+      "term": "Kodowanie UTF-8",
+      "category": "Dane i formaty",
+      "definition": "Sposób zapisu znaków tekstowych obsługujący polskie litery.",
+      "example": "Po imporcie widać 'Łódź' i 'Północ', a nie dziwne symbole.",
+      "pitfall": "Błędne kodowanie może uszkodzić polskie znaki.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "zera-wiodące",
+      "term": "Zera wiodące",
+      "category": "Dane i formaty",
+      "definition": "Zera na początku kodu, istotne dla identyfikatora, nie dla wartości liczbowej.",
+      "example": "Kod '00127' ma pięć znaków.",
+      "pitfall": "Zmiana formatu po utracie zer nie zawsze przywróci oryginalny kod.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "pusta-komórka",
+      "term": "Pusta komórka",
+      "category": "Dane i formaty",
+      "definition": "Pole bez wpisanej wartości; może oznaczać brak danych lub brak zastosowania.",
+      "example": "Pusta cena dostawcy nie oznacza ceny 0 zł.",
+      "pitfall": "Nie wypełniaj automatycznie wszystkich braków zerem.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "null-brak-danych",
+      "term": "NULL / brak danych",
+      "category": "Dane i formaty",
+      "definition": "W narzędziach importu oznacza brak wartości; różni się od tekstu 'NULL' i od zera.",
+      "example": "Power Query pokaże null dla brakującego kontrahenta.",
+      "pitfall": "Nie interpretuj null jako poprawnego tekstu nazwy firmy.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "identyfikator",
+      "term": "Identyfikator",
+      "category": "Dane i formaty",
+      "definition": "Wartość jednoznacznie określająca rekord, np. numer faktury lub ID klienta.",
+      "example": "FV-014 wskazuje konkretną fakturę.",
+      "pitfall": "Ta sama kwota nie dowodzi, że to ten sam dokument.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "waluta",
+      "term": "Waluta",
+      "category": "Dane i formaty",
+      "definition": "Jednostka pieniężna wartości, np. PLN lub NOK.",
+      "example": "Raport wyświetla 1000 PLN.",
+      "pitfall": "Dodanie 1000 PLN i 1000 NOK bez przeliczenia jest błędem.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "zaokrąglenie",
+      "term": "Zaokrąglenie",
+      "category": "Dane i formaty",
+      "definition": "Ograniczenie liczby wyświetlanych lub obliczanych miejsc po przecinku według reguły.",
+      "example": "19,995 może zostać wyświetlone jako 20,00.",
+      "pitfall": "Zaokrąglanie każdego wiersza i dopiero potem sumowanie może różnić się od zaokrąglenia sumy.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "formuła",
+      "term": "Formuła",
+      "category": "Formuły i funkcje",
+      "definition": "Wyrażenie zaczynające się od znaku =, które oblicza wynik na podstawie liczb, adresów i funkcji.",
+      "example": "=C2*D2 mnoży ilość przez cenę.",
+      "pitfall": "Wpisanie C2*D2 bez = może pozostać tekstem.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "funkcja",
+      "term": "Funkcja",
+      "category": "Formuły i funkcje",
+      "definition": "Gotowa operacja w formule, przyjmująca argumenty w nawiasach.",
+      "example": "=SUMA(E2:E4) dodaje zakres.",
+      "pitfall": "Nie wszystkie nazwy funkcji są takie same w polskiej i angielskiej wersji.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "argument-funkcji",
+      "term": "Argument funkcji",
+      "category": "Formuły i funkcje",
+      "definition": "Wartość, zakres lub odwołanie przekazywane funkcji jako parametr.",
+      "example": "SUMA(E2:E4) dostaje argument E2:E4.",
+      "pitfall": "Nie myl separatora argumentów z separatorem dziesiętnym.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "suma",
+      "term": "SUMA",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja dodająca liczby w wybranym zakresie; w angielskim Excelu SUM.",
+      "example": "=SUMA(E2:E4) daje 1210 przy danych 700+360+150.",
+      "pitfall": "Nie obejmuj komórki z sumą tym samym zakresem.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "średnia",
+      "term": "ŚREDNIA",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja obliczająca średnią arytmetyczną liczb; angielska AVERAGE.",
+      "example": "Średnia z 2, 4 i 6 wynosi 4.",
+      "pitfall": "Średnia z cen i średnia ważona ilością to różne wielkości.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "min-i-max",
+      "term": "MIN i MAX",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcje wybierające najmniejszą i największą liczbę z zakresu.",
+      "example": "=MAX(C2:C20) pokazuje największą ilość.",
+      "pitfall": "Nie stosuj MAX na tekstowych kodach zamówień.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "jeżeli",
+      "term": "JEŻELI",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja warunkowa zwracająca jeden z dwóch wyników w zależności od prawdy/fałszu.",
+      "example": "=JEŻELI(B2>0;\"OK\";\"BRAK\") odróżnia dodatnią wartość.",
+      "pitfall": "Przed użyciem ułóż jasną regułę biznesową.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "oraz",
+      "term": "ORAZ",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja logiczna: wszystkie warunki muszą być prawdziwe.",
+      "example": "=ORAZ(C2>0;D2>=0) sprawdza ilość i cenę.",
+      "pitfall": "Jeden niespełniony warunek daje FAŁSZ.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "lub",
+      "term": "LUB",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja logiczna: przynajmniej jeden z warunków musi być prawdziwy.",
+      "example": "=LUB(A2=\"pilne\";B2=\"pilne\") sprawdza oznaczenia.",
+      "pitfall": "Nie myl 'lub' z 'oraz', gdy obydwa kryteria są wymagane.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "licz-jeżeli",
+      "term": "LICZ.JEŻELI",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja licząca komórki zgodne z jednym warunkiem; angielski COUNTIF.",
+      "example": "Liczysz faktury ze statusem Opłacona.",
+      "pitfall": "Liczenie wierszy nie jest sumowaniem kwot.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "suma-jeżeli",
+      "term": "SUMA.JEŻELI",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja sumująca wartości dla jednego warunku; angielski SUMIF.",
+      "example": "Sumujesz sprzedaż tylko dla regionu Północ.",
+      "pitfall": "Nie pomyl zakresu kryterium z zakresem sumy.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "suma-warunków",
+      "term": "SUMA.WARUNKÓW",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja dodająca kwoty spełniające wiele kryteriów; angielski SUMIFS.",
+      "example": "Sumujesz sprzedaż Północ i Materiały.",
+      "pitfall": "Warunki muszą dotyczyć zakresów tej samej długości.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "jeżeli-błąd",
+      "term": "JEŻELI.BŁĄD",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja pozwalająca określić wynik w razie błędu obliczenia; angielski IFERROR.",
+      "example": "Dla #DZIEL/0! możesz wyświetlić komunikat o braku danych.",
+      "pitfall": "Nie ukrywaj automatycznie wszystkich błędów zerem.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "x-wyszukaj",
+      "term": "X.WYSZUKAJ",
+      "category": "Formuły i funkcje",
+      "definition": "Funkcja wyszukująca w kolumnie lub zakresie i zwracająca wartość z odpowiadającego rekordu; angielski XLOOKUP.",
+      "example": "Po ID faktury znajdujesz jej kwotę.",
+      "pitfall": "Nie jest dostępna w Excelu 2016 i 2019.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "wyszukaj-pionowo",
+      "term": "WYSZUKAJ.PIONOWO",
+      "category": "Formuły i funkcje",
+      "definition": "Starsza funkcja wyszukiwania pionowego; angielski VLOOKUP.",
+      "example": "Szukanie ceny produktu po kodzie w pierwszej kolumnie.",
+      "pitfall": "Dla dokładnego dopasowania podaj odpowiedni tryb zamiast zgadywać.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "indeks-i-podaj-pozycję",
+      "term": "INDEKS i PODAJ.POZYCJĘ",
+      "category": "Formuły i funkcje",
+      "definition": "Połączenie funkcji służące do znajdowania wartości według pozycji. Może być alternatywą dla X.WYSZUKAJ w starszych Excelach.",
+      "example": "INDEKS zwraca wartość z pozycji znalezionej przez PODAJ.POZYCJĘ.",
+      "pitfall": "Sprawdź identyczność typów danych i unikatowość klucza.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "odwołanie-względne",
+      "term": "Odwołanie względne",
+      "category": "Formuły i funkcje",
+      "definition": "Adres przesuwający się podczas kopiowania formuły.",
+      "example": "=C2*D2 skopiowane o wiersz niżej daje =C3*D3.",
+      "pitfall": "Nie stosuj go dla stałego kursu walutowego.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "odwołanie-bezwzględne",
+      "term": "Odwołanie bezwzględne",
+      "category": "Formuły i funkcje",
+      "definition": "Adres z symbolami $, który nie przesuwa się po kopiowaniu.",
+      "example": "$H$2 pozostaje H2 w skopiowanych wzorach.",
+      "pitfall": "$H2 i H$2 blokują tylko jedną część adresu.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "odwołanie-mieszane",
+      "term": "Odwołanie mieszane",
+      "category": "Formuły i funkcje",
+      "definition": "Adres zablokowany wyłącznie po kolumnie lub wyłącznie po wierszu.",
+      "example": "$A2 blokuje kolumnę A, lecz wiersz się zmienia.",
+      "pitfall": "Dwa różne rodzaje blokady nie są wymienne.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "operator-",
+      "term": "Operator *",
+      "category": "Formuły i funkcje",
+      "definition": "Znak mnożenia we wzorach Excela.",
+      "example": "=2*350 daje 700.",
+      "pitfall": "W Excelu zwykle nie używasz litery x do mnożenia.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "kolejność-działań",
+      "term": "Kolejność działań",
+      "category": "Formuły i funkcje",
+      "definition": "Reguły matematyczne określające, co Excel policzy najpierw.",
+      "example": "=2+3*4 daje 14, ale =(2+3)*4 daje 20.",
+      "pitfall": "Brak nawiasów może diametralnie zmienić wynik.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "zakres",
+      "term": "Zakres",
+      "category": "Formuły i funkcje",
+      "definition": "Grupa komórek pomiędzy dwoma adresami, np. A2:A20.",
+      "example": "E2:E4 obejmuje trzy pola.",
+      "pitfall": "Dwukropek w zakresie nie oznacza operacji dzielenia.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "błąd-dziel-0-",
+      "term": "Błąd #DZIEL/0!",
+      "category": "Formuły i funkcje",
+      "definition": "Informacja, że formuła próbuje dzielić przez zero lub pusty mianownik.",
+      "example": "=100/0 zwraca błąd zamiast poprawnej kwoty.",
+      "pitfall": "Nie traktuj błędu jako wyniku 0.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "błąd-adr-",
+      "term": "Błąd #ADR!",
+      "category": "Formuły i funkcje",
+      "definition": "Sygnał nieprawidłowego odwołania, np. po usunięciu kolumny używanej przez formułę.",
+      "example": "Usunięcie źródła dla =B2 może zerwać odwołanie.",
+      "pitfall": "Nie nadpisuj błędu ręczną liczbą bez przywrócenia źródła.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "błąd-n-d",
+      "term": "Błąd #N/D",
+      "category": "Formuły i funkcje",
+      "definition": "Sygnalizuje brak dopasowania w niektórych funkcjach wyszukujących.",
+      "example": "Nie znaleziono numeru FV-999.",
+      "pitfall": "Brak wyniku to nie to samo co znalezienie kwoty 0.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "f4-w-formule",
+      "term": "F4 w formule",
+      "category": "Formuły i funkcje",
+      "definition": "Klawisz, który może przełączać rodzaje odwołań po wybraniu adresu w edytowanej formule.",
+      "example": "A1 → $A$1 → A$1 → $A1 → A1.",
+      "pitfall": "Na laptopie może być potrzebny Fn; działanie zależy od trybu klawiszy.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "id": "tabela-excel",
+      "term": "Tabela Excel",
+      "category": "Analiza i raporty",
+      "definition": "Ustrukturyzowany zestaw danych z nagłówkami i funkcjami filtrowania; zwykle Ctrl+T.",
+      "example": "Tabela Sprzedaż powiększa się o nowe faktury.",
+      "pitfall": "Scalanie komórek wewnątrz danych utrudnia filtrowanie.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "nagłówek-kolumny",
+      "term": "Nagłówek kolumny",
+      "category": "Analiza i raporty",
+      "definition": "Nazwa opisująca zawartość kolumny, np. Ilość albo Data.",
+      "example": "Kolumna date zawiera daty ISO.",
+      "pitfall": "Nie pozostawiaj pustych lub powtarzających się nagłówków.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "rekord",
+      "term": "Rekord",
+      "category": "Analiza i raporty",
+      "definition": "Jeden kompletny wiersz danych opisujący fakturę, osobę albo produkt.",
+      "example": "FV-014 ma ilość, cenę i region.",
+      "pitfall": "Nie traktuj wiersza sumy jako normalnej transakcji.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "filtr",
+      "term": "Filtr",
+      "category": "Analiza i raporty",
+      "definition": "Wyświetla tylko rekordy spełniające warunek, nie usuwa pozostałych.",
+      "example": "Wybierasz tylko kategorię Materiały.",
+      "pitfall": "Suma ręcznie liczona na przefiltrowanych rekordach może nie uwzględniać ukrytych wierszy.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "sortowanie",
+      "term": "Sortowanie",
+      "category": "Analiza i raporty",
+      "definition": "Zmienia kolejność rekordów według wybranego kryterium.",
+      "example": "Faktury od najstarszej daty do najnowszej.",
+      "pitfall": "Sortuj całe rekordy, nie samą kolumnę z ceną.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "duplikat",
+      "term": "Duplikat",
+      "category": "Analiza i raporty",
+      "definition": "Dwa rekordy mające ten sam klucz albo powtórzone dane.",
+      "example": "Dwie faktury PRO-0044 wymagają wyjaśnienia.",
+      "pitfall": "Nie usuwaj duplikatu bez porównania źródła i korekt.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "walidacja-danych",
+      "term": "Walidacja danych",
+      "category": "Analiza i raporty",
+      "definition": "Reguły sprawdzające, jakie wpisy mogą pojawić się w komórce.",
+      "example": "Ilość musi być dodatnią liczbą całkowitą.",
+      "pitfall": "Wklejanie lub import może wymagać dodatkowej kontroli.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "formatowanie-warunkowe",
+      "term": "Formatowanie warunkowe",
+      "category": "Analiza i raporty",
+      "definition": "Automatyczne wyróżnianie komórek spełniających regułę.",
+      "example": "Po terminie zapłaty faktura staje się pomarańczowa.",
+      "pitfall": "Kolor nie zastępuje dodatkowej etykiety tekstowej.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "tabela-przestawna",
+      "term": "Tabela przestawna",
+      "category": "Analiza i raporty",
+      "definition": "Narzędzie agregujące duży zbiór danych według pól wierszy, kolumn i miar.",
+      "example": "Grupujesz przychód według miesiąca.",
+      "pitfall": "Po zmianie źródła tabela może wymagać odświeżenia.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "odświeżenie",
+      "term": "Odświeżenie",
+      "category": "Analiza i raporty",
+      "definition": "Ponowne pobranie lub przeliczenie danych w raporcie z aktualnego źródła.",
+      "example": "Nowa faktura pojawia się po odświeżeniu Pivot.",
+      "pitfall": "Oglądanie starego podsumowania może prowadzić do błędnej decyzji.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "agregacja",
+      "term": "Agregacja",
+      "category": "Analiza i raporty",
+      "definition": "Łączenie wielu rekordów w wynik, np. suma, liczba lub średnia.",
+      "example": "360 transakcji daje 12 sum miesięcznych.",
+      "pitfall": "Zawsze sprawdź, jaką miarę agregujesz.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "miara",
+      "term": "Miara",
+      "category": "Analiza i raporty",
+      "definition": "Obliczana wielkość podsumowania, np. suma przychodu lub liczba dokumentów.",
+      "example": "W tabeli przestawnej wybierasz Suma Wartości netto.",
+      "pitfall": "Przypadkowe Licznik zamiast Suma da inny wynik.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "wykres",
+      "term": "Wykres",
+      "category": "Analiza i raporty",
+      "definition": "Graficzny sposób przedstawienia danych w określonej skali i z podpisami.",
+      "example": "Słupki przedstawiają sprzedaż czterech regionów.",
+      "pitfall": "Obcięcie osi może sztucznie wyolbrzymić różnice.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "fragmentator",
+      "term": "Fragmentator",
+      "category": "Analiza i raporty",
+      "definition": "Interaktywny filtr widoczny jako przyciski; często używany z tabelą przestawną.",
+      "example": "Wybierasz region bez rozwijania filtra kolumny.",
+      "pitfall": "Nie traktuj ukrytych wierszy jak utraconych danych.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "dashboard",
+      "term": "Dashboard",
+      "category": "Analiza i raporty",
+      "definition": "Panel z najważniejszymi miarami, wykresami i informacjami dla odbiorcy.",
+      "example": "Dyrektor widzi przychód, marżę i zaległe faktury.",
+      "pitfall": "Nie przeładowuj panelu przypadkowymi wykresami.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "kpi",
+      "term": "KPI",
+      "category": "Analiza i raporty",
+      "definition": "Kluczowy wskaźnik skuteczności służący do monitorowania celu.",
+      "example": "Procent faktur opłaconych na czas.",
+      "pitfall": "Wskaźnik bez definicji i okresu porównania jest niejasny.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "przychód",
+      "term": "Przychód",
+      "category": "Analiza i raporty",
+      "definition": "Wartość sprzedaży przed odjęciem kosztów; w raportach rozróżniaj netto i brutto.",
+      "example": "Przychód 2 128 968,50 PLN w zadaniu PRO.",
+      "pitfall": "Przychód nie jest tym samym co zysk czy marża.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "marża-kwotowa",
+      "term": "Marża kwotowa",
+      "category": "Analiza i raporty",
+      "definition": "Różnica między przychodem a określonymi kosztami; zawsze podaj, jakie koszty odjęto.",
+      "example": "2 128 968,50 minus koszty daje marżę w zadaniu.",
+      "pitfall": "Marża nie zawsze oznacza pełny zysk netto firmy.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "rabat",
+      "term": "Rabat",
+      "category": "Analiza i raporty",
+      "definition": "Obniżka ceny wobec wartości wyjściowej.",
+      "example": "Rabat 5% od 200 zł zmniejsza kwotę o 10 zł.",
+      "pitfall": "Rabat 0,05 to 5%, nie 0,05%.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "scenariusz",
+      "term": "Scenariusz",
+      "category": "Analiza i raporty",
+      "definition": "Opis zestawu założeń do obliczenia alternatywnego wyniku.",
+      "example": "Koszty materiałów rosną o 15%.",
+      "pitfall": "Scenariusz nie oznacza przepowiedni przyszłości.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "analiza-wrażliwości",
+      "term": "Analiza wrażliwości",
+      "category": "Analiza i raporty",
+      "definition": "Sprawdza, jak zmiana określonego wejścia wpływa na wynik.",
+      "example": "Po wzroście kosztu o 15% marża spada.",
+      "pitfall": "Zmieniając dwa parametry naraz, trudno wskazać przyczynę.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "uzgodnienie-sum",
+      "term": "Uzgodnienie sum",
+      "category": "Analiza i raporty",
+      "definition": "Porównywanie podsumowania z niezależnym źródłem lub alternatywnym obliczeniem.",
+      "example": "Suma regionów i suma miesięcy musi dać ten sam przychód.",
+      "pitfall": "Zgodne dwa błędne wzory nie stanowią niezależnej kontroli.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "power-query",
+      "term": "Power Query",
+      "category": "Dane eksperckie",
+      "definition": "Narzędzie importu i przekształcania danych, znane jako Pobieranie i przekształcanie. Pozwala powtarzać te same kroki czyszczenia.",
+      "example": "CSV 368 wierszy zamieniasz w oczyszczoną tabelę.",
+      "pitfall": "Nie usuwaj wadliwych rekordów bez raportu błędów.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "zapytanie",
+      "term": "Zapytanie",
+      "category": "Dane eksperckie",
+      "definition": "Zapisana procedura pobierania i transformowania danych z określonych źródeł.",
+      "example": "Odświeżasz rejestr CSV bez ręcznego kopiowania kolumn.",
+      "pitfall": "Zmiana schematu pliku może zepsuć zapytanie.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "kroki-zastosowane",
+      "term": "Kroki zastosowane",
+      "category": "Dane eksperckie",
+      "definition": "Lista kolejnych operacji Power Query: typy, filtrowanie, zastępowanie, grupowanie.",
+      "example": "Zmieniasz typ daty i odrzucasz niepoprawny zapis.",
+      "pitfall": "Kolejność kroków może zmienić wynik.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "scalanie-zapytań",
+      "term": "Scalanie zapytań",
+      "category": "Dane eksperckie",
+      "definition": "Łączy dwie tabele według klucza — odpowiednik relacyjnego dopasowania.",
+      "example": "Do faktur dopinasz tabelę dostawców po ID.",
+      "pitfall": "Duplikaty w tabeli słownikowej mogą zwielokrotnić wiersze.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "dołączanie-zapytań",
+      "term": "Dołączanie zapytań",
+      "category": "Dane eksperckie",
+      "definition": "Dodaje wiersze jednej tabeli pod drugą o zgodnym układzie kolumn.",
+      "example": "Łączysz sprzedaż styczniową i lutową.",
+      "pitfall": "Nie pomyl dołączania wierszy ze scalaniem kolumn.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "unpivot-anuluj-przestawienie",
+      "term": "Unpivot / anuluj przestawienie",
+      "category": "Dane eksperckie",
+      "definition": "Zamienia wiele kolumn miar na kolumny atrybut–wartość.",
+      "example": "Kolumny Styczeń, Luty, Marzec zamieniasz na Miesiąc i Kwota.",
+      "pitfall": "Przy imporcie sprawdź jednostki wszystkich kolumn.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "model-danych",
+      "term": "Model danych",
+      "category": "Dane eksperckie",
+      "definition": "Powiązany zestaw tabel, w którym informacje są połączone kluczami.",
+      "example": "Sprzedaż łączy się z tabelą produktów i kalendarzem.",
+      "pitfall": "Nie kopiuj identycznych opisów do każdej tabeli bez potrzeby.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "relacja",
+      "term": "Relacja",
+      "category": "Dane eksperckie",
+      "definition": "Zdefiniowane powiązanie dwóch tabel po kluczu.",
+      "example": "Faktury[KlientID] → Klienci[KlientID].",
+      "pitfall": "Powiązanie z nieunikatowym kluczem może dać błędne sumy.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "power-pivot",
+      "term": "Power Pivot",
+      "category": "Dane eksperckie",
+      "definition": "Rozszerzenie modelowania danych i analizy w Excelu; obsługuje m.in. relacje i miary.",
+      "example": "Łączysz sprzedaż z kalendarzem i klientami.",
+      "pitfall": "Dostępność narzędzia zależy od wersji i platformy.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "dax",
+      "term": "DAX",
+      "category": "Dane eksperckie",
+      "definition": "Język wyrażeń używany w modelach danych i Power Pivot do budowania miar.",
+      "example": "Miara sumuje sprzedaż przy aktywnym filtrze regionu.",
+      "pitfall": "DAX różni się kontekstem obliczeń od zwykłej formuły komórkowej.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "let",
+      "term": "LET",
+      "category": "Dane eksperckie",
+      "definition": "Funkcja pozwalająca nadawać nazwy pośrednim wynikom wewnątrz jednej formuły.",
+      "example": "Jednorazowo liczysz podstawę rabatu i używasz jej dalej.",
+      "pitfall": "Nie wszystkie starsze wersje Excela obsługują LET.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "lambda",
+      "term": "LAMBDA",
+      "category": "Dane eksperckie",
+      "definition": "Funkcja nowszych wersji Excela umożliwiająca definiowanie własnych funkcji bez VBA.",
+      "example": "Tworzysz powtarzalną formułę marży z nazwanymi parametrami.",
+      "pitfall": "Nie zakładaj zgodności z każdym starym Excelem.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "tablice-dynamiczne",
+      "term": "Tablice dynamiczne",
+      "category": "Dane eksperckie",
+      "definition": "Mechanizm, w którym formuła może zwrócić wiele wartości rozlewających się do sąsiednich komórek.",
+      "example": "FILTRUJ zwraca cały podzbiór tabeli.",
+      "pitfall": "Komórka blokująca zakres rozlania może wywołać błąd.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "filtruj",
+      "term": "FILTRUJ",
+      "category": "Dane eksperckie",
+      "definition": "Funkcja dynamiczna zwracająca rekordy zgodne z warunkiem w obsługiwanych wersjach Excela.",
+      "example": "Pokazuje tylko faktury Północ i Materiały.",
+      "pitfall": "Nie myl funkcji FILTRUJ z ręcznym filtrem tabeli.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "unikatowe",
+      "term": "UNIKATOWE",
+      "category": "Dane eksperckie",
+      "definition": "Funkcja dynamiczna zwracająca różne wartości z zakresu w odpowiednich wersjach Excela.",
+      "example": "Wyliczasz listę unikatowych klientów.",
+      "pitfall": "Unikatowa nazwa firmy nie zawsze jest unikatowym ID.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "sortuj",
+      "term": "SORTUJ",
+      "category": "Dane eksperckie",
+      "definition": "Funkcja dynamiczna zwracająca dane w określonym porządku w obsługiwanych wersjach.",
+      "example": "Sortujesz zestaw według wartości bez zmiany źródła.",
+      "pitfall": "Nie myl wyniku formuły z trwałym przemieszczaniem danych.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "makro",
+      "term": "Makro",
+      "category": "Dane eksperckie",
+      "definition": "Zapisana automatyzacja powtarzalnych czynności w pliku Excel, często oparta na VBA.",
+      "example": "Jednym poleceniem formatujesz raport.",
+      "pitfall": "Nie uruchamiaj makr z nieznanych plików.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "vba",
+      "term": "VBA",
+      "category": "Dane eksperckie",
+      "definition": "Język skryptowy do automatyzacji aplikacji Office, w tym klasycznego Excela na komputerze.",
+      "example": "Makro przenosi dane do szablonu raportu.",
+      "pitfall": "Kod może zmieniać pliki i wymaga ostrożności oraz uprawnień.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "rejestrowanie-makra",
+      "term": "Rejestrowanie makra",
+      "category": "Dane eksperckie",
+      "definition": "Mechanizm zapisywania części działań wykonywanych w Excelu jako sekwencji poleceń.",
+      "example": "Nagrywasz formatowanie raportu i odtwarzasz je.",
+      "pitfall": "Nagranie może zawierać niepotrzebne, zależne od układu odwołania.",
+      "reference": "https://support.microsoft.com/pl-pl/excel/learn-to-use-power-query-and-power-pivot-in-excel"
+    },
+    {
+      "id": "kopia-zapasowa",
+      "term": "Kopia zapasowa",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Niezależna kopia pliku, możliwa do przywrócenia po błędzie, awarii albo usunięciu.",
+      "example": "Zachowujesz Budzet_R01 przed modyfikacją.",
+      "pitfall": "Synchronizacja na wszystkie urządzenia nie zawsze jest niezależnym backupem.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "historia-wersji",
+      "term": "Historia wersji",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Możliwość obejrzenia i przywrócenia wcześniejszej wersji dokumentu, gdy usługa ją wspiera.",
+      "example": "Odzyskujesz raport sprzed przypadkowej edycji.",
+      "pitfall": "Nie zakładaj historii wersji dla każdego lokalnego pliku.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "ochrona-arkusza",
+      "term": "Ochrona arkusza",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Mechanizm ograniczania edycji wybranych elementów arkusza.",
+      "example": "Blokujesz komórki z formułami przed przypadkową zmianą.",
+      "pitfall": "Nie traktuj ochrony arkusza jako szyfrowania poufnych danych.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "uprawnienia-dostępu",
+      "term": "Uprawnienia dostępu",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Określają, kto może czytać, edytować lub udostępniać plik.",
+      "example": "Dla przełożonego ustawiasz tylko podgląd.",
+      "pitfall": "Publiczny link nie jest dobrym rozwiązaniem dla płac czy danych klientów.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "dane-osobowe",
+      "term": "Dane osobowe",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Informacje pozwalające zidentyfikować osobę; ich udostępnianie może podlegać obowiązkom prawnym.",
+      "example": "Tabela wynagrodzeń wymaga ograniczonego dostępu.",
+      "pitfall": "Nie wrzucaj rzeczywistych danych pracowników do ćwiczeń.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "błąd-źródła",
+      "term": "Błąd źródła",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Nieprawidłowa wartość w danych wejściowych, która może popsuć nawet doskonałą formułę.",
+      "example": "Ilość '5x' blokuje obliczenia.",
+      "pitfall": "Automatyczne usuwanie liter bez potwierdzenia może zmienić sens.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "ścieżka-audytu",
+      "term": "Ścieżka audytu",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Udokumentowany sposób odtworzenia, skąd pochodzi liczba i jakie przekształcenia wykonano.",
+      "example": "Raport wskazuje plik CSV, datę, filtr i kontrolę sum.",
+      "pitfall": "Wynik bez źródła i daty może być nie do obrony.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "test-negatywny",
+      "term": "Test negatywny",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Próba z niepoprawnymi danymi, która sprawdza, czy system wykrywa błąd.",
+      "example": "Wprowadzasz ujemną cenę lub błędną datę.",
+      "pitfall": "Nie wystarczy testować wyłącznie poprawnych przykładów.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "kontrola-zakresu",
+      "term": "Kontrola zakresu",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Sprawdzenie, czy formuła obejmuje wszystkie i tylko potrzebne wiersze.",
+      "example": "Nowy wiersz powinien pojawić się w SUMA.",
+      "pitfall": "Nie pomiń nowych danych znajdujących się pod tabelą.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "rekonsyliacja",
+      "term": "Rekonsyliacja",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Porównanie wyników z niezależnych źródeł lub sposobów obliczenia.",
+      "example": "Suma regionów = suma miesięcy = suma faktur.",
+      "pitfall": "Zgodność nie oznacza poprawności, jeśli oba wyniki liczą z tego samego błędu.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "zamrożenie-okienek",
+      "term": "Zamrożenie okienek",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Funkcja utrzymująca nagłówki lub wybrany obszar widoczny podczas przewijania.",
+      "example": "Nagłówek kolumn pozostaje widoczny przy 368 wierszach.",
+      "pitfall": "Nie myl zamrożenia z ochroną przed edycją.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "druk-i-obszar-wydruku",
+      "term": "Druk i obszar wydruku",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Ustawienia określające, co zostanie wydrukowane i jak ułoży się na stronach.",
+      "example": "Raport mieści się na A4 bez obcięcia kwot.",
+      "pitfall": "Nie zakładaj, że dobry wygląd ekranu oznacza dobry PDF.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "hasło-do-pliku",
+      "term": "Hasło do pliku",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Kontrola dostępu lub szyfrowanie pliku, zależnie od ustawień i formatu.",
+      "example": "Chronisz wrażliwy arkusz hasłem do otwarcia.",
+      "pitfall": "Nie myl hasła do arkusza z rzeczywistym szyfrowaniem pliku.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    },
+    {
+      "id": "phishing-w-pliku-excel",
+      "term": "Phishing w pliku Excel",
+      "category": "Kontrola i bezpieczeństwo",
+      "definition": "Próba skłonienia użytkownika do otwarcia podejrzanego pliku lub uruchomienia makra.",
+      "example": "Nieznany nadawca żąda włączenia zawartości w .xlsm.",
+      "pitfall": "Nie włączaj makr wyłącznie dlatego, że arkusz prosi o kliknięcie.",
+      "reference": "https://support.microsoft.com/en-us/excel/excel-glossary"
+    }
+  ]
+}
