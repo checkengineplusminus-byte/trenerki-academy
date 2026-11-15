@@ -57,6 +57,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Instaluj zależności silnika TypeScript przed testem walut
+        run: npm install --no-audit --no-fund
       - name: Sprawdź funkcje ekspertów i kurs od zera
         run: node --experimental-strip-types --test scripts/test-excel-expert.mjs scripts/test-excel-pro-case.mjs scripts/test-excel-knowledge.mjs
       - name: Sprawdź silnik walut i nawigację wirtualnego arkusza
