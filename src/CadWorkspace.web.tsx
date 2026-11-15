@@ -49,6 +49,7 @@ const promptFor=(s:Session)=>{
 const idle:Session={tool:'select',points:[]};
 const scalar=(text:string)=>/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)?Number(text):NaN;
 const inRange=(p:Point)=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Math.abs(p.x)<=1e9&&Math.abs(p.y)<=1e9;
+const countObjects=(n:number)=>n===1?'obiekt':n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?'obiekty':'obiektów';
 
 export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{shortcut?:string;runId:number;storageKey?:string;lessonNo?:number}){
  const {width:screenWidth}=useWindowDimensions();
@@ -277,7 +278,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     setSelectedIds(ids);setSelected(ids.at(-1));
    }
    setLast(point);resetSession();
-   tell((tool==='copy'?'Skopiowano ':'Przesunięto ')+ids.length+' obiektów o '+cadCoordinates(delta)+'.');
+   tell((tool==='copy'?'Skopiowano ':'Przesunięto ')+ids.length+' '+countObjects(ids.length)+' o '+cadCoordinates(delta)+'.');
   }else if(target&&tool==='mirror'){
    const axis=subtract(point,first),square=dot(axis,axis);
    applyChange(transformShape(target,p=>subtract(add(first,multiply(axis,2*dot(subtract(p,first),axis)/square)),subtract(p,first)),false),
@@ -346,7 +347,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     tell('Obiekt wychodzi poza dozwolony zakres współrzędnych.');return;
    }
    updateShapes(updated);setSelectedIds(ids);setSelected(ids.at(-1));resetSession();
-   tell(tool==='scale'?'SCALE: przeskalowano '+ids.length+' obiektów ×'+cadNumber(number)+'.':'ROTATE: obrócono '+ids.length+' obiektów o '+cadNumber(number)+'°.');
+   tell(tool==='scale'?'SCALE: przeskalowano '+ids.length+' '+countObjects(ids.length)+' ×'+cadNumber(number)+'.':'ROTATE: obrócono '+ids.length+' '+countObjects(ids.length)+' o '+cadNumber(number)+'°.');
    return;
   }
   const point=readCadPoint(command,latest??last);
