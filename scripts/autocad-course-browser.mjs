@@ -76,6 +76,10 @@ for(const mobile of [false,true]){
    await image.evaluate(el=>el.decode());
    assert(await image.evaluate(el=>el.naturalWidth>0),'AutoCAD original screenshot failed to load in lesson '+(n+1));
    await page.getByText(m.curiosity,{exact:true}).waitFor();
+   if([5,9,11,29].includes(n)){
+    await page.getByTestId('autocad-real-dxf').waitFor();
+    assert.equal(await page.getByRole('button',{name:/Pobierz plik DXF:/}).count(),1);
+   }
    const required=m.shortcuts?.length?2:1;
    await page.getByTestId('lesson-requirements').filter({hasText:'Do ukończenia tej lekcji: '+required}).waitFor();
    const checkpoint=page.getByTestId('case-checkpoint');
