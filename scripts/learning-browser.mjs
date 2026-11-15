@@ -233,6 +233,19 @@ async function verifyWord(page,mobile){
 
 async function verifyExplorer(page,mobile){
  await openCourse(page,'windows-skroty');
+ const mission=page.getByTestId('windows-mission-0');
+ await mission.waitFor();
+ // Real learning evidence, not a fake claim that the website inspected the Windows PC.
+ await mission.getByRole('button',{name:'② Na moim komputerze'}).click();
+ await mission.getByText(/Na własnym PC otwórz Start, Notatnik/).waitFor();
+ await mission.getByRole('button',{name:'Porównaj moje rozwiązanie z kryterium'}).click();
+ await mission.getByText(/Najpierw opisz własnymi słowami/).waitFor();
+ await mission.getByRole('checkbox').first().click();
+ await mission.getByRole('textbox',{name:'Moja odpowiedź po ćwiczeniu'}).fill('Windows 11 to system, Notatnik to aplikacja, a Notatka.txt to zapisany plik.');
+ await mission.getByRole('button',{name:'Porównaj moje rozwiązanie z kryterium'}).click();
+ await mission.getByTestId('windows-mission-criterion').waitFor();
+ await mission.getByText(/To samokontrola/).waitFor();
+ console.log('✓ '+(mobile?'mobile':'desktop')+' Windows mission: real-PC guidance, steps, typed evidence and honest self-check');
  const simulation=page.getByTestId('windows-desktop-lab');
  await simulation.waitFor();
  // 1: Beginner in an office — Start, search, and a visible application.
@@ -289,6 +302,12 @@ async function verifyExplorer(page,mobile){
  await open('Folder Odbiory');
  await waitText(lab.getByText('Ten folder jest pusty.'),'pusty');
  console.log('✓ '+(mobile?'mobile':'desktop')+' Explorer: create, copy, paste, rename, delete, undo and folder history');
+ await openCourse(page,'windows-skroty',2);
+ const nextMission=page.getByTestId('windows-mission-1');
+ await nextMission.waitFor();
+ await nextMission.getByText('Poznaj elementy pulpitu').first().waitFor();
+ console.log('✓ '+(mobile?'mobile':'desktop')+' Windows chapter 2: distinct professional task in sequential lesson');
+
 }
 
 async function verifyCarpentry(page,mobile){
