@@ -13,6 +13,8 @@ jobs:
       after_install_node_modules:
         - name: Verify complete catalogue progress beyond API pagination
           run: node --experimental-default-type=module --test scripts/test-course-progress.mjs
+        - name: Verify exam never accepts obsolete lesson completions
+          run: node --test scripts/test-exam-readiness.mjs
         - name: Protect minimum thirty chapters per course
           run: node scripts/audit-course-standards.mjs --enforce
         - name: Verify content, exercises and protected course access
