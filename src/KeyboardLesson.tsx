@@ -57,7 +57,8 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
     <Text style={labStyles.body}><Text style={{fontWeight:'900'}}>Przed użyciem </Text>{active.before}</Text>
     <Text style={labStyles.body}><Text style={{fontWeight:'900'}}>Co się zmieni </Text>{active.after}</Text>
     <Text style={labStyles.body}><Text style={{fontWeight:'900'}}>W praktyce </Text>{active.tip}</Text>
-    {mode&&<LabButton label="Wypróbuj skrót w warsztacie" onPress={()=>setRunId(n=>n+1)}/>}
+    {mode&&<LabButton label={slug==='windows-skroty'?'① Zasymuluj ten skrót w Trenerki':'Wypróbuj skrót w warsztacie'} onPress={()=>setRunId(n=>n+1)}/>}
+    {slug==='windows-skroty'&&<Text style={labStyles.body}>② Możesz też wykonać ten skrót na własnym komputerze. Pod symulacją rozwiń instrukcję „Sprawdź na swoim komputerze”. System przechwytuje część kombinacji; dlatego nie wymagamy wciskania ich w przeglądarce.</Text>}
    </View>}
   </View>}
   {mode&&<HandsOnLab mode={mode} shortcut={active?.combo} runId={runId}/>}
