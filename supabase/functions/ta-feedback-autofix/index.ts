@@ -36,7 +36,11 @@ async function verifyGithub(req:Request){
   payload.ref!=="refs/heads/main"?"ref":null,
   payload.workflow_ref!==WORKFLOW?"workflow_ref":null,
   !["schedule","push","workflow_dispatch"].includes(String(payload.event_name))?"event":null,
-  payload.sub!=="repo:"+OWNER_REPO+":ref:refs/heads/main"?"sub":null
+  // GitHub may use an organization-customized 'sub' template.
+  // Signature plus exact repository ID, branch, workflow_ref, issuer and audience
+  // are the authoritative scope; requiring a fixed sub format would reject a
+  // legitimate custom subject without increasing security.
+  (typeof payload.sub!=="string"||payload.sub.length<8)?"sub":null
  ].filter(Boolean);
  if(invalid.length)throw Error("oidc_claim_mismatch_"+invalid.join("_"));
  return String(payload.run_id||"").slice(0,30);
