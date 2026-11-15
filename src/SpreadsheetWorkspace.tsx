@@ -23,6 +23,8 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
  const [format,setFormat]=useState<Record<string,Format>>({}),[ribbon,setRibbon]=useState('home'),[showFormulas,setShowFormulas]=useState(false);
  const [clipboard,setClipboard]=useState<{source:Cell;value:string}>();
  const [status,setStatus]=useState('Kliknij komórkę, wpisz własne dane w pasku fx i zatwierdź Enterem albo przyciskiem ✓.');
+ const [beginner,setBeginner]=useState(false),[beginnerStep,setBeginnerStep]=useState(0),[beginnerError,setBeginnerError]=useState('');
+ const [didFillDown,setDidFillDown]=useState(false);
  const addressRef=useRef<React.ComponentRef<typeof TextInput>>(null),formulaRef=useRef<React.ComponentRef<typeof TextInput>>(null),caret=useRef(0);
  const activeCell=refPosition(active)!,anchorCell=refPosition(anchor)!,range=interval(anchorCell,activeCell);
  const ranged=active!==anchor;
@@ -62,6 +64,7 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
    next[r][c]=shiftFormula(rows[sourceRow][sourceCol],r-sourceRow,c-sourceCol);
   }
   update(next);setDraft(null);
+  if(down&&displayedRange==='E2:E4')setDidFillDown(true);
   setStatus((down?'Wypełniono w dół ':'Wypełniono w prawo ')+displayedRange+'. Adresy zablokowane przez $ pozostały stałe.');
  }
  function sum(){
@@ -130,6 +133,38 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
   if(!event.ctrlKey&&!event.altKey&&!event.metaKey&&event.key.length===1){setDraft(event.key);edit();return true;}
   return false;
  });
+ const beginnerLessons=[
+  {title:'Wskaż pierwszą ilość',instructions:'A, B, C, D, E to kolumny. 1, 2, 3 to wiersze. Kliknij komórkę C2 — kolumna C, drugi wiersz. Jest tam liczba 2.',
+   help:'Kliknij kratkę na przecięciu kolumny C i wiersza 2, nie wpisuj jeszcze liczby.'},
+  {title:'Zmień dane wejściowe',instructions:'W polu fx (pasek nad kratkami) wpisz 4,5. Kliknij „Zapisz komórkę ✓” albo naciśnij Enter. Przecinek oznacza część dziesiętną.',
+   help:'Upewnij się, że aktywne C2 ma teraz 4,5; naciśnij Zapisz komórkę.'},
+  {title:'Odczytaj przeliczony wynik',instructions:'Kliknij E2 — piąta kolumna, drugi wiersz. Zobaczysz 1575. W pasku fx znajdziesz =C2*D2 — znak * oznacza mnożenie.',
+   help:'Otwórz E2 i sprawdź, czy wynik to 1575. Jeśli nie, wróć do C2 i popraw liczbę.'},
+  {title:'Wskaż zakres kilku komórek',instructions:'W lewym polu na pasku arkusza wpisz E2:E4, a następnie kliknij „Idź do zakresu”. Dwukropek oznacza zakres od E2 do E4.',
+   help:'Wpisz dokładnie E2:E4 w pole „Adres lub zakres komórek” i wybierz Idź do zakresu.'},
+  {title:'Przećwicz wypełnianie w dół',instructions:'Kliknij „Wypełnij w dół · Ctrl+D” w narzędziach. Formuła z E2 zostanie skopiowana do E3 i E4, a względne numery wierszy zmienią się automatycznie.',
+   help:'Najpierw zaznacz E2:E4, a następnie kliknij Wypełnij w dół. Samo przeczytanie instrukcji nie zalicza kroku.'},
+  {title:'Sprawdź sumę końcową',instructions:'Kliknij E5, w którym znajduje się formuła =SUMA(E2:E4). Zobacz 2085. Porównaj: 1575 + 360 + 150 = 2085.',
+   help:'Kliknij E5 i sprawdź wynik. Jeśli jest inny, odtwórz poprzednie kroki na danych ćwiczebnych.'}
+ ] as const;
+ function startBeginner(){
+  setRows(sample());setHistory([]);setActive('A1');setAnchor('A1');setAddress('A1');setDraft(null);
+  setDidFillDown(false);setBeginner(true);setBeginnerStep(0);setBeginnerError('');
+  setStatus('Ćwiczenie od zera: klikaj w komórki w prawdziwie działającym arkuszu szkoleniowym.');
+ }
+ function verifyBeginner(){
+  if(beginnerStep>=beginnerLessons.length)return;
+  const tests=[
+   active==='C2',
+   parseSpreadsheetNumber(rows[1][2])===4.5,
+   active==='E2'&&evaluateCell(rows,'E2')==='1575',
+   displayedRange==='E2:E4',
+   didFillDown&&rows[2][4]==='=C3*D3'&&rows[3][4]==='=C4*D4',
+   active==='E5'&&evaluateCell(rows,'E5')==='2085'
+  ];
+  if(!tests[beginnerStep]){setBeginnerError(beginnerLessons[beginnerStep].help);return;}
+  setBeginnerStep(old=>old+1);setBeginnerError('');
+ }
  function display(value:string,id:string){
   if(showFormulas&&value.startsWith('='))return value;
   const result=evaluateCell(rows,id);
@@ -140,6 +175,22 @@ export default function SpreadsheetWorkspace({shortcut,runId}:{shortcut?:string;
 
  return <View style={labStyles.panel} testID="excel-workspace">
   <Text style={labStyles.heading}>Excel · arkusz kosztorysu</Text>
+  <View testID="excel-zero-experience-guide" style={{borderWidth:1,borderColor:'#b8d2c3',padding:12,borderRadius:12,backgroundColor:'#f5f9f3',gap:9}}>
+   <Text style={{fontSize:16,fontWeight:'900',color:labInk}}>Nigdy nie korzystałem z Excela</Text>
+   {!beginner?<><Text style={{fontSize:13,lineHeight:21,color:'#416049'}}>Zaczniemy od zera — gdzie kliknąć, jak zapisać komórkę, czym jest formuła i jak skopiować ją do kilku wierszy. Każdy krok sprawdzamy w działającym arkuszu, bez znajomości skrótów.</Text>
+    <LabButton label="Rozpocznij Excel od zera" onPress={startBeginner}/></>:
+    beginnerStep<beginnerLessons.length?<View style={{gap:9}}>
+     <Text style={{fontSize:11,fontWeight:'900',color:'#497b5c'}}>KROK {beginnerStep+1}/6</Text>
+     <Text testID="excel-beginner-title" style={{fontSize:15,fontWeight:'900',color:labInk}}>{beginnerLessons[beginnerStep].title}</Text>
+     <Text style={{fontSize:13,lineHeight:22,color:'#305744'}}>{beginnerLessons[beginnerStep].instructions}</Text>
+     <LabButton label="Sprawdź wykonanie kroku Excel" onPress={verifyBeginner}/>
+     {!!beginnerError&&<Text testID="excel-beginner-error" accessibilityLiveRegion="polite" style={{fontSize:13,lineHeight:21,color:'#99512f'}}>{beginnerError}</Text>}
+    </View>:<View style={{gap:6}}>
+     <Text testID="excel-beginner-success" style={{fontWeight:'900',fontSize:15,color:'#276940'}}>✓ Potrafisz samodzielnie edytować, liczyć, kopiować formuły i kontrolować wynik.</Text>
+     <Text style={{fontSize:13,lineHeight:20,color:'#305744'}}>To symulator szkoleniowy; ćwiczenia w rzeczywistym Microsoft Excel wykonujesz osobno.</Text>
+     <LabButton label="Powtórz Excel od zera" onPress={startBeginner}/>
+    </View>}
+  </View>
   <Text style={labStyles.body}>Zmień C2 na 4,5 i sprawdź E2. Potem zaznacz E2:E4 i użyj Wypełnij w dół. W pasku fx porównaj formuły z wynikami.</Text>
   <View style={labStyles.ribbon}>
    <View style={labStyles.row}>
