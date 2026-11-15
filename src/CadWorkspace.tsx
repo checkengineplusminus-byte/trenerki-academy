@@ -2,29 +2,38 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Platform,Pressable,Text,TextInput,View} from 'react-native';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
-import {CAD_HEIGHT,CAD_WIDTH,contains,distance,edges,fillSegments,isClosed,nearEdge,outline,readCadPoint,type CadShape,type Point} from './CadGeometry';
+import {CAD_HEIGHT,CAD_WIDTH,contains,distance,edges,fillSegments,nearEdge,outline,readCadPoint,fitDrawing,joinCadLines,screenPoint,worldPoint,type CadShape,type Camera,type Point} from './CadGeometry';
 
 type Tool='select'|'line'|'poly'|'rect'|'circle'|'hatch'|'move'|'copy';
 const commands:Record<string,Tool>={L:'line',LINE:'line',PL:'poly',PLINE:'poly',REC:'rect',RECTANG:'rect',C:'circle',CIRCLE:'circle',H:'hatch',HATCH:'hatch',M:'move',MOVE:'move',CO:'copy',CP:'copy',COPY:'copy'};
 const toolNames:Record<Tool,string>={select:'Wskaż obiekt',line:'LINE',poly:'PLINE',rect:'RECTANG',circle:'CIRCLE',hatch:'HATCH',move:'MOVE',copy:'COPY'};
 const number=(n:number)=>String(Number(n.toFixed(2)));
 const colors=['#cbe6a4','#89d9ed','#f0bf85'];
-const inBounds=(p:Point)=>p.x>=0&&p.x<=CAD_WIDTH&&p.y>=0&&p.y<=CAD_HEIGHT;
+const inBounds=(p:Point)=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Math.abs(p.x)<=1000000&&Math.abs(p.y)<=1000000;
 
-function Stroke({a,b,scale,color,weight=2}:{a:Point;b:Point;scale:number;color:string;weight?:number}){
- return <View style={{position:'absolute',width:distance(a,b)*scale,height:weight,left:(a.x+b.x-distance(a,b))*scale/2,
-  top:(CAD_HEIGHT-(a.y+b.y)/2)*scale-weight/2,backgroundColor:color,
-  transform:[{rotate:Math.atan2(a.y-b.y,b.x-a.x)+'rad'}]}}/>;
+function Stroke({a,b,camera,size,color,weight=2}:{a:Point;b:Point;camera:Camera;size:{width:number;height:number};color:string;weight?:number}){
+ const first=screenPoint(a,camera,size),last=screenPoint(b,camera,size);
+ const length=distance(first,last);
+ return <View style={{position:'absolute',width:length,height:weight,
+  left:(first.x+last.x-length)/2,top:(first.y+last.y)/2-weight/2,
+  backgroundColor:color,transform:[{rotate:Math.atan2(last.y-first.y,last.x-first.x)+'rad'}]}}/>;
 }
 
-export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:number}){
+export default function CadWorkspace({shortcut,runId,storageKey}:{shortcut?:string;runId:number;storageKey?:string}){
  const [shapes,setShapes]=useState<CadShape[]>([]),[history,setHistory]=useState<CadShape[][]>([]);
  const [tool,setTool]=useState<Tool>('select'),[points,setPoints]=useState<Point[]>([]),[selected,setSelected]=useState<number>();
  const [layer,setLayer]=useState(0),[grid,setGrid]=useState(true),[ortho,setOrtho]=useState(false),[snap,setSnap]=useState(false);
- const [fill,setFill]=useState<'hatch'|'solid'>('hatch'),[input,setInput]=useState(''),[width,setWidth]=useState(0);
+ const [fill,setFill]=useState<'hatch'|'solid'>('hatch'),[input,setInput]=useState(''),[width,setWidth]=useState(860);
+ const [camera,setCamera]=useState<Camera>({center:{x:2000,y:1500},unitsPerPixel:5000/860});
+ const [loaded,setLoaded]=useState(false);
  const [ribbon,setRibbon]=useState('Home'),[message,setMessage]=useState('Wybierz narzędzie z panelu Rysuj lub wpisz jego nazwę.');
  const nextId=useRef(1);
- const scale=width/CAD_WIDTH;
+ const size={width,height:width*CAD_HEIGHT/CAD_WIDTH},scale=1/camera.unitsPerPixel;
+ const bottomLeft=worldPoint({x:0,y:size.height},camera,size);
+ const topRight=worldPoint({x:size.width,y:0},camera,size);
+ const gridStep=Math.pow(10,Math.ceil(Math.log10(Math.max(1,camera.unitsPerPixel*45))));
+ const gridXs=Array.from({length:Math.min(30,Math.max(0,Math.ceil((topRight.x-Math.ceil(bottomLeft.x/gridStep)*gridStep)/gridStep)+1))},(_,i)=>Math.ceil(bottomLeft.x/gridStep)*gridStep+i*gridStep);
+ const gridYs=Array.from({length:Math.min(30,Math.max(0,Math.ceil((topRight.y-Math.ceil(bottomLeft.y/gridStep)*gridStep)/gridStep)+1))},(_,i)=>Math.ceil(bottomLeft.y/gridStep)*gridStep+i*gridStep);
  const target=shapes.find(s=>s.id===selected);
  const first=points[0],last=points.at(-1);
  const prompt=tool==='select'?'Dotknij krawędzi lub wnętrza zamkniętej figury.':tool==='hatch'?'Wskaż wnętrze zamkniętego obrysu.':
@@ -35,7 +44,27 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
 
  function store(next:CadShape[]){
   setHistory(old=>[...old.slice(-39),shapes]);setShapes(next);
+  if(shapes.length===0&&next.length>0)setCamera(fitDrawing(next,size));
  }
+ useEffect(()=>{
+  if(Platform.OS!=='web'||!storageKey||typeof localStorage==='undefined'){setLoaded(true);return;}
+  try{
+   const raw=JSON.parse(localStorage.getItem('trenerki-cad-drawing-v2-'+storageKey)||'null');
+   if(Array.isArray(raw)&&raw.length<=200&&raw.every((shape:any)=>
+      Number.isInteger(shape.id)&&['line','poly','rect','circle'].includes(shape.kind)&&
+      Array.isArray(shape.points)&&shape.points.length>=2&&shape.points.length<100&&
+      shape.points.every((p:any)=>inBounds(p)))){
+    setShapes(raw as CadShape[]);
+    nextId.current=1+Math.max(0,...raw.map((shape:CadShape)=>shape.id));
+    if(raw.length)setCamera(fitDrawing(raw,size));
+   }
+  }catch{}
+  setLoaded(true);
+ },[storageKey]);
+ useEffect(()=>{
+  if(!loaded||Platform.OS!=='web'||!storageKey||typeof localStorage==='undefined')return;
+  try{localStorage.setItem('trenerki-cad-drawing-v2-'+storageKey,JSON.stringify(shapes.slice(-200)));}catch{}
+ },[shapes,loaded,storageKey]);
  function start(next:Tool){
   setTool(next);setPoints([]);setInput('');setMessage(toolNames[next]+' · '+(next==='select'?'Gotowe do zaznaczenia.':'Polecenie aktywne.'));
  }
@@ -55,14 +84,15 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
   if(points.length<(close?3:2)){setMessage(close?'Do zamknięcia potrzebujesz co najmniej trzech punktów.':'Wskaż co najmniej dwa punkty.');return;}
   if(tool==='poly'){add(tool,points,close);return;}
   const segments=points.slice(1).map((end,i):CadShape=>({id:nextId.current++,kind:'line',points:[points[i],end],layer}));
-  store([...shapes,...segments]);setSelected(segments.at(-1)?.id);start('select');setMessage('Utworzono odcinki: '+segments.length+'.');
+  if(close)segments.push({id:nextId.current++,kind:'line',points:[points[points.length-1],points[0]],layer});
+  store([...shapes,...segments]);setSelected(segments.at(-1)?.id);start('select');setMessage('Utworzono '+segments.length+' osobne odcinki LINE. Aby utworzyć jeden obiekt, wpisz JOIN.');
  }
  function erase(){
   if(!target){setMessage('Wskaż obiekt, który chcesz usunąć.');return;}
   store(shapes.filter(s=>s.id!==selected));setSelected(undefined);start('select');setMessage('Obiekt usunięty.');
  }
  function place(point:Point,byTouch=false){
-  const tolerance=12/Math.max(scale,0.2);
+  const tolerance=12*camera.unitsPerPixel;
   if(tool==='select'||tool==='hatch'||((tool==='move'||tool==='copy')&&!target)){
    const reversed=[...shapes].reverse();
    const hit=tool==='hatch'?reversed.find(s=>contains(s,point)):reversed.find(s=>nearEdge(s,point,tolerance))??reversed.find(s=>contains(s,point));
@@ -82,7 +112,7 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
   if(byTouch&&last&&ortho&&(tool==='line'||tool==='poly')){
    p=Math.abs(p.x-last.x)>=Math.abs(p.y-last.y)?{x:p.x,y:last.y}:{x:last.x,y:p.y};
   }
-  if(!inBounds(p)){setMessage('Punkt poza polem ćwiczenia. Zakres X to 0–1000, Y to 0–600.');return;}
+  if(!inBounds(p)){setMessage('Wpisz punkt w bezpiecznym zakresie współrzędnych (od -1 000 000 do 1 000 000).');return;}
   if(!first){setPoints([p]);setMessage('Punkt '+number(p.x)+','+number(p.y)+' przyjęty.');return;}
   if(distance(p,last!)<0.001){setMessage('Wskaż punkt inny niż poprzedni.');return;}
   if(tool==='rect'){
@@ -100,14 +130,26 @@ export default function CadWorkspace({shortcut,runId}:{shortcut?:string;runId:nu
   }
  }
  function runCommand(raw:string){
-  const command=raw.trim().toUpperCase();
-  if((command==='CLOSE'||command==='C')&&tool==='poly'&&points.length>=3)finish(true);
+  const command=raw.trim().toUpperCase().replace(/^[_.]+/,'');
+  if((command==='CLOSE'||command==='C')&&(tool==='poly'||tool==='line')&&points.length>=3)finish(true);
   else if(Object.hasOwn(commands,command)){setRibbon('Home');start(commands[command]);}
   else if(command==='F3'){setSnap(v=>!v);setMessage('Przełączono przyciąganie do punktów obiektów.');}
   else if(command==='F7'){setGrid(v=>!v);setMessage('Przełączono siatkę.');}
   else if(command==='F8'){setOrtho(v=>!v);setMessage('Przełączono tryb ortogonalny.');}
   else if(['E','ERASE','DELETE'].includes(command))erase();
   else if(['U','UNDO','CTRL+Z'].includes(command))undo();
+  else if(['JOIN','J','PEDIT'].includes(command)){
+   const connected=joinCadLines(shapes,selected);
+   if(!connected){setMessage('JOIN wymaga przynajmniej dwóch odcinków LINE ze wspólnymi końcami na jednej warstwie.');}
+   else {
+    store([...shapes.filter(s=>!connected.sourceIds.includes(s.id)),connected.joined]);
+    setSelected(connected.joined.id);start('select');
+    setMessage('JOIN: połączono '+connected.sourceIds.length+' linii w '+(connected.joined.closed?'zamkniętą':'otwartą')+' polilinię. Sprawdź MOVE.');
+   }
+  }
+  else if(['Z','ZOOM','ZOOM E','ZE','EXTENTS'].includes(command)){
+   setCamera(fitDrawing(shapes,size));setMessage('ZOOM Extents: dopasowano widok do geometrii.');
+  }
   else if(['ESC','ESCAPE'].includes(command)){
    if(tool==='select')setSelected(undefined);
    start('select');
