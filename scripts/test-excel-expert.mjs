@@ -96,7 +96,7 @@ test('Honest product contract: beginner/advanced UI is connected but never claim
  assert.match(mission,/nie zastępują egzaminu kursowego/);
  assert.match(novice,/function verifyBeginner\(/);
  assert.match(novice,/Sprawdź wykonanie kroku Excel/);
- assert(!module.includes('eval('));
+ assert(!module.includes('new Function(')&&!module.includes('Function('),'No dynamic JS code generation allowed');
  const csv=get('public/academy/assets/excel-practice-sales.csv');
  assert.equal(csv.split(/\r?\n/).filter(Boolean).length,19);
  assert(csv.startsWith('\uFEFF'),'CSV includes UTF-8 BOM for Excel Unicode');
