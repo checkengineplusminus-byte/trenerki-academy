@@ -430,7 +430,22 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
      </View>
     </View>}
    </>}
-   {tab==='annotate'&&<LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</LabGroup>}
+   {tab==='annotate'&&<View style={{gap:12}}>
+    <LabGroup label="Dimensions / Wymiary i pomiary">{(['dimlinear','dimaligned','dist'] as const).map(ribbonButton)}</LabGroup>
+    <View style={{padding:13,backgroundColor:'#f0f6f8',borderRadius:10,gap:9}} testID="cad-font-style">
+     <Text style={labStyles.heading}>Tekst i czcionka — STYLE / MTEXT</Text>
+     <Text style={labStyles.body}>Podgląd stylu edukacyjnego (nie edytuje pliku DWG). W oryginalnym AutoCAD: wpisz STYLE, utwórz styl i wybierz font TrueType/SHX; użyj MTEXT, aby dodać opis lub zmienić wysokość tekstu.</Text>
+     <TextInput accessibilityLabel="Treść napisu do podglądu" value={fontSample} onChangeText={setFontSample} style={labStyles.input}/>
+     <LabGroup label="Wygląd czcionki (przykłady)">
+      {['Arial','Times New Roman','monospace'].map(font=><LabButton key={font} label={font} selected={sampleFont===font} onPress={()=>setSampleFont(font)}/>)}
+     </LabGroup>
+     <LabGroup label="Wysokość tekstu na papierze">
+      {[2.5,3.5,5].map(h=><LabButton key={h} label={String(h).replace('.',',')+' mm'} selected={sampleHeight===h} onPress={()=>setSampleHeight(h)}/>)}
+     </LabGroup>
+     <Text testID="cad-font-preview" style={{fontFamily:sampleFont,fontSize:Math.round(10+sampleHeight*2.5),color:'#264955',padding:13,backgroundColor:'white',borderRadius:8}}>{fontSample||'Przykładowy napis'}</Text>
+     <Text style={{fontSize:12,color:'#516c73'}}>Wymiar w modelu i wysokość tekstu na papierze to dwie różne rzeczy. Dla skali 1:50 tekst nieanotacyjny 2,5 mm na papierze odpowiada 125 mm w modelu. Styl anotacyjny potrafi przeliczać to automatycznie.</Text>
+    </View>
+   </View>}
    {tab==='view'&&<LabGroup label="Navigate / Nawiguj">
     <LabButton label="Dopasuj · Zoom Extents" onPress={fit}/>
     <LabButton label="Przybliż +" disabled={layout} onPress={()=>zoom(.8)}/>
@@ -469,6 +484,15 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <LabButton label="Cofnij · Ctrl+Z" disabled={!history.length} onPress={undo}/>
    <LabButton label="Ponów · Ctrl+Y" disabled={!future.length} onPress={redo}/>
   </View>
+  {layout&&<View testID="cad-layout-scale" style={{backgroundColor:'#edf5ec',padding:12,borderRadius:10,gap:10}}>
+   <Text style={labStyles.heading}>Skala rzutni i wydruku — ćwiczenie</Text>
+   <Text style={labStyles.body}>W modelu pozostaw wymiary 1:1. W prawdziwym AutoCAD zaznacz ramkę rzutni na Layout, otwórz Properties (Ctrl+1), ustaw Standard Scale i zablokuj rzutnię. Poniższy kalkulator nie zmienia Twojego rysunku.</Text>
+   <LabGroup label="Porównaj skale">
+    {[20,25,50,100,200].map(scale=><LabButton key={scale} label={'1:'+scale} selected={layoutScale===scale} onPress={()=>setLayoutScale(scale)}/>)}
+   </LabGroup>
+   <Text style={{fontWeight:'800',color:'#315b43'}}>Przy 1:{layoutScale} odcinek 5000 mm w modelu ma {(5000/layoutScale).toLocaleString('pl-PL')} mm na papierze.</Text>
+   <Text style={{fontSize:12,color:'#607a69'}}>SCALE zmienia rozmiar zaznaczonych obiektów. Skala rzutni nie zmienia geometrii. Zoom również jej nie zmienia.</Text>
+  </View>}
   <Text style={labStyles.eyebrow} testID="cad-summary">{layout?'Arkusz':'Model'} · Obiekty: {visible.length} · Zaznaczone: {selectedVisible.length} · Wypełnienia: {visible.filter(s=>s.fill).length}
    {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}</Text>
   <View style={{backgroundColor:'#edf2f4',borderColor:'#c1d1d6',borderWidth:1,borderRadius:8,padding:9,gap:6}}>
