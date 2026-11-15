@@ -42,7 +42,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '40028cffa8120c07c37d18d2527768994e089b9d', // previous AutoCAD UI version
   '955f3659546dcbeae6359955c8498ff2e951837c', // earlier review branch before hook fix
   'bb3bbe5a73190c30c53a55f90fb74b35fcb09802', // last approved learning renderer
-  'f527827f502e29af60fe776b5a5df2d4bead1e12' // original CAD workspace and screenshot restored; accounting redirect checked unchanged
+  'f527827f502e29af60fe776b5a5df2d4bead1e12', // previous revision
+  'be7644aca8cd1a5422708ee7c1855e37b0055784' // reviewed: separate AutoCAD welcome and interactive lessons; accounting redirect preserved
  ]);
  assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
