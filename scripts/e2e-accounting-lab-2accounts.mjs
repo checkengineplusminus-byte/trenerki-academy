@@ -1,5 +1,6 @@
 /**
- * E2E RLS TRENERKI — uruchamiaj WYŁĄCZNIE na dwóch własnych kontach testowych
+ * AUTORYZOWANY TEST BACKENDU RLS TRENERKI, NIE pełny browser E2E.
+ * Uruchamiaj WYŁĄCZNIE na dwóch własnych kontach testowych
  * mających aktywny dostęp do kursu. Nigdy na kontach kursantów.
  * Bez sekretów: node scripts/e2e-accounting-lab-2accounts.mjs --preflight
  * Właściwy test wymaga w env:
@@ -20,7 +21,8 @@ const missing=required.filter(k=>!e[k]?.trim());
 const ack=e.TA_E2E_CONFIRM==='I_OWN_TWO_DEDICATED_TEST_ACCOUNTS';
 if(process.argv.includes('--preflight')){
  console.log(JSON.stringify({
-  status:missing.length||!ack?'BLOCKED_MISSING_AUTHORIZED_FIXTURES':'READY_FOR_AUTHORIZED_E2E',
+  status:missing.length||!ack?'BLOCKED_MISSING_AUTHORIZED_FIXTURES':'READY_FOR_AUTHORIZED_BACKEND_RLS_TEST',
+  full_two_account_browser_e2e:'not_tested',mobile_ux:'not_tested',anielka:'not_tested',
   missing,confirmation_required:!ack,network_calls:0,writes:0
  }));
  process.exit(0);
@@ -107,8 +109,11 @@ try{
  const prior=await readOwn(a,wa.id,'A_before_direct_write');
  const direct=await a.from(table).update({state:prior.state,version:prior.version+1})
   .eq('id',wa.id).select('id,version');
- passed('direct_state_version_update_denied',Boolean(direct.error));
+ // PostgREST może odmówić UPDATE przez RLS, zwracając zero wierszy bez błędu.
+ // Rozstrzygający jest ponowny odczyt wersji, nie wyłącznie error.
  const after=await readOwn(a,wa.id,'A_after_direct_write_denied');
+ const policyDenied=Boolean(direct.error)||(Array.isArray(direct.data)&&direct.data.length===0);
+ passed('direct_state_version_update_denied',policyDenied&&after.version===prior.version);
  passed('direct_denial_kept_version',after.version===prior.version);
 
  const staleView=await readOwn(a2,wa.id,'A_other_window');
@@ -125,11 +130,13 @@ try{
  passed('B_can_save_own',savedB.version===ownB.version+1);
  await invisible(a,wb.id,'A_still_cannot_read_B');
 
- console.log(JSON.stringify({status:'PASSED_AUTHORIZED_E2E',cases:results.length,
-  results,fixture_workspaces_retained:2,full_simulator:'not_tested',
-  backup_restore:'not_tested',professional_review:'pending'}));
+ console.log(JSON.stringify({status:'PASSED_AUTHORIZED_BACKEND_RLS_ONLY',cases:results.length,
+  results,fixture_workspaces_retained:2,full_two_account_browser_e2e:'not_tested',
+  mobile_ux:'not_tested',anielka:'not_tested',paid_content_ui_access:'not_tested',
+  full_simulator:'not_tested',backup_restore:'not_tested',professional_review:'not_tested',
+  release_gate_15_points:'NOT_EARNED_BACKEND_CHECK_ONLY'}));
 }catch(err){
- console.error(JSON.stringify({status:'FAILED_OR_BLOCKED_AUTHORIZED_E2E',
+ console.error(JSON.stringify({status:'FAILED_OR_BLOCKED_AUTHORIZED_BACKEND_RLS',
   stage:String(err?.message||'UNKNOWN').slice(0,140),passed_so_far:results.length,
   fixture_workspaces_may_remain:true,backup_restore:'not_tested'}));
  process.exitCode=1;
