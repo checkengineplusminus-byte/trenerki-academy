@@ -264,7 +264,9 @@ async function verifyExplorer(page,mobile){
  await simulation.getByTestId('win11-unsaved-warning').waitFor();
  await simulation.getByRole('button',{name:'Wróć i zapisz notatkę'}).click();
  await simulation.getByTestId('win11-unsaved-warning').waitFor({state:'detached'});
- console.log('✓ '+(mobile?'mobile':'desktop')+' Windows Notepad: edit, save, close, reopen, unsaved-change warning');
+ await mission.screenshot({path:'/tmp/trenerki-windows-mission-'+(mobile?'mobile':'desktop')+'.png'});
+ await simulation.screenshot({path:'/tmp/trenerki-windows-lab-'+(mobile?'mobile':'desktop')+'.png'});
+  console.log('✓ '+(mobile?'mobile':'desktop')+' Windows Notepad: edit, save, close, reopen, unsaved-change warning');
 
  // 1: Beginner in an office — Start, search, and a visible application.
  await simulation.getByRole('button',{name:'Otwórz menu Start'}).click();
