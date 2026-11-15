@@ -1239,7 +1239,9 @@ test('Jeden okres: dodatkowe faktury późniejszego miesiąca rozpoczynają nowy
 
 import {taxCloseTrainingAudit} from '../src/accounting/tax-close-training.js';
 test('Zamknięcie szkoleniowe: sumy VAT z istniejącego miesiąca, bez wysyłki KSeF/JPK/UPO',()=>{
- const state=fullScenario(),before=JSON.stringify(state),r=taxCloseTrainingAudit(state);
+ const state=fullScenario();
+ for(const j of state.journals.filter(x=>x.source_type==='bank'))j.date=state.bank.find(b=>b.id===j.source_id).date;
+ const before=JSON.stringify(state),r=taxCloseTrainingAudit(state);
  assert.equal(r.period,'2026-11');
  assert.equal(r.figures.sale_vat_cents,23000);
  assert.equal(r.figures.purchase_vat_cents,4600);

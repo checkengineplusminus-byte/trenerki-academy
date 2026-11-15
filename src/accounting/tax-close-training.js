@@ -15,7 +15,7 @@ const isMoney=n=>Number.isSafeInteger(n)&&n>=0&&n<=1000000000000;
 export function taxCloseTrainingAudit(raw,scenario=null){
  const state=raw||{},lifecycle=auditCompanyLifecycle(state,scenario);
  const period=lifecycle.period_scope.month,issued=(Array.isArray(state.invoices)?state.invoices:[])
-   .filter(i=>i&&i.status==='issued'&&['sale','purchase'].includes(i.kind)&&monthOf(i.date)===period);
+   .filter(i=>i&&i.status==='issued'&&['sale','purchase'].includes(i.kind)&&!!period&&monthOf(i.date)===period);
  const posted=Array.isArray(state.journals)?livePostings(state):[];
  const issues=[],totals={sale_net_cents:0,sale_vat_cents:0,purchase_net_cents:0,purchase_vat_cents:0};
  let correctPostings=0;
