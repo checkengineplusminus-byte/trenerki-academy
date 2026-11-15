@@ -1442,7 +1442,7 @@ test('Wynik i płynność w jednej firmie to odrębne wielkości z tego samego m
  assert.equal(f.bank_inflow_cents,123000);assert.equal(f.bank_outflow_cents,24600);
  assert.equal(f.bank_net_movement_cents,98400);
  assert.notEqual(f.profit_or_loss_cents,f.bank_net_movement_cents);
- assert.equal(f.status,'source_reconciled_training');
+ assert.equal(f.status,'bank_and_journal_reconciled_training');
  assert.equal(r.completed,false);assert.equal(JSON.stringify(s),before);
 });
 test('Koszt bez zapłaty może dać stratę, a CSV nadal pokazuje dodatni przepływ banku',()=>{
@@ -1464,7 +1464,7 @@ test('Wynik miesięczny nie miesza kosztów z poprzedniego okresu ani nie deklar
   lines:[{account:'400',debit:999999,credit:0},{account:'202',debit:0,credit:999999}]});
  const f=taxCloseTrainingAudit(s).training_result;
  assert.equal(f.profit_or_loss_cents,80000);
- assert.equal(f.status,'source_reconciled_training');
+ assert.equal(f.status,'bank_and_journal_reconciled_training');
  assert.match(f.explanation,/NIE jest saldo otwarcia ani dochód podatkowy/);
  const html=taxCloseTrainingReportHTML(s);
  assert.match(html,/To nie jest JPK|TO NIE JEST JPK/);
@@ -1550,7 +1550,7 @@ test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie pła
  assert.equal(tax.checks.find(x=>x.key==='bank_sources').passed,true);
  assert.equal(tax.checks.find(x=>x.key==='payroll_assets').passed,true);
  assert.equal(tax.training_result.result_label,'strata modelowa');
- assert.equal(tax.training_result.status,'source_reconciled_training');
+ assert.equal(tax.training_result.status,'bank_and_journal_reconciled_training');
  assert.equal(tax.completed,false);
  assert.equal(lifecycle.completed,false);
  assert.equal(lifecycle.integrated_full_cycle,'not_tested');
@@ -2218,4 +2218,23 @@ test('VAT przy zakupie majątku: niepoprawna karta odliczenia pozostaje nieweryf
  assert.equal(r.figures.vat_difference_cents,null);
  assert.ok(r.issues.some(x=>x.code==='purchase_vat_deduction_model_incomplete'));
  assert.equal(r.checks.find(c=>c.key==='vat_model_vs_ledger').passed,false);
+});
+
+// Gdy model umie uzgodnić bank, ale nie ma dowodu pełnego miesiąca,
+// nie pokazuj pozornie zamkniętych źródeł ani zera zamiast braku danych.
+import {formatReviewMoney} from '../src/accounting/lab-ui.js';
+test('Brak wiarygodnego VAT/wyniku nie jest kwotą 0 zł w UI',()=>{
+ assert.equal(formatReviewMoney(null),'BRAK WIARYGODNYCH DANYCH');
+ assert.equal(formatReviewMoney(undefined),'BRAK WIARYGODNYCH DANYCH');
+ assert.equal(formatReviewMoney(Number.NaN),'BRAK WIARYGODNYCH DANYCH');
+ assert.match(formatReviewMoney(0),/0,00 zł/);
+ assert.match(formatReviewMoney(-120000),/1.*200,00 zł/);
+});
+test('Uzgodniony bank i dziennik NIE zaliczają osobno 36 dokumentów, kadr i rozliczenia prawnego',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth();
+ const r=taxCloseTrainingAudit(state,manifest);
+ assert.equal(r.training_result.status,'bank_and_journal_reconciled_training');
+ assert.equal(r.ready_for_training_review,false);
+ assert.equal(r.completed,false);
+ assert.equal(r.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
 });

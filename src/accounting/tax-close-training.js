@@ -193,7 +193,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   bank_inflow_cents:moneyInputsSafe?cashInCents:null,
   bank_outflow_cents:moneyInputsSafe?cashOutCents:null,
   bank_net_movement_cents:moneyInputsSafe?cashInCents-cashOutCents:null,
-  status:moneyInputsSafe&&ledgerBalanced&&bankCovered?'source_reconciled_training':'incomplete_model',
+  status:'incomplete_model', // wynik końcowy dopiero po sprawdzeniu wszystkich źródeł
   explanation:'Wynik modelu: konto 700 minus 400/401/404/761. Przepływ banku: wpływy minus wypływy CSV. To NIE jest saldo otwarcia ani dochód podatkowy.'
  };
  // Spójny wykaz dokumentów źródłowych dla fikcyjnego zamknięcia i recenzji.
@@ -321,6 +321,12 @@ export function taxCloseTrainingAudit(raw,scenario=null){
     (!(scenario.scenario??scenario).month||(scenario.scenario??scenario).month===period),
    detail:'D01–D36 i faktury, bank, kadry oraz majątek muszą dotyczyć tego samego miesiąca ('+(period||'nieustalonego')+'). Osobny styczeń nie zamyka listopada'}
  ];
+ // Poprawne CSV i Wn/Ma są tylko etapem. Pełne źródła modelu wolno
+ // nazwać uzgodnionymi dopiero po zaliczeniu WSZYSTKICH mostów D01–D36.
+ const readyForTrainingReview=checks.every(c=>c.passed);
+ trainingResult.status=moneyInputsSafe&&ledgerBalanced&&bankCovered
+  ?(readyForTrainingReview?'source_reconciled_training':'bank_and_journal_reconciled_training')
+  :'incomplete_model';
  const vatDifferenceCents=deductibleModelKnown?totals.sale_vat_cents-deductiblePurchaseCents:null;
  return {
   period:period||null,source_count:issued.length,
@@ -335,7 +341,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
   checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
-  ready_for_training_review:checks.every(c=>c.passed),
+  ready_for_training_review:readyForTrainingReview,
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
    jpk:{status:'NOT_GENERATED_NOT_SCHEMA_VALIDATED',totals_status:'TRAINING_MODEL_ONLY'},
