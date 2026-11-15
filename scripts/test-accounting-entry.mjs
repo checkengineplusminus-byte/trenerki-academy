@@ -90,7 +90,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'be7644aca8cd1a5422708ee7c1855e37b0055784', // preceding reviewed CAD renderer
   'd168d1296dc0e2936460b52c5b674807c37b52eb', // prior reviewed AutoCAD reader
   '9ed77599d484d991956a544db2704b4edeb7e2b8', // previous review
-  '104db6f1dc8d3eebbdb05c195012568d885a277c' // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
+  '104db6f1dc8d3eebbdb05c195012568d885a277c', // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
+  '629b67d13927b791aff2924c18053b979d101358' // reviewed: latest AutoCAD reader + only 4 exact Excel insertions validated above
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
