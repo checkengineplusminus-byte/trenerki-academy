@@ -320,9 +320,9 @@ export default function Learning(){
   </>}
   {progress===100&&index===items.length-1&&!reviewMode&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
-   {index===0&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
+   {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
-   {index===0&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
+   {index===0&&(slug!=='autocad-skroty'||!introRead)&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
    {index===0&&!introRead&&<View testID="course-reading-introduction" style={{padding:20,backgroundColor:'white',borderRadius:16,gap:14,marginBottom:20}}>
     <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Jak będziemy się uczyć?</Text>
     <Text style={{fontSize:16,lineHeight:27,color:secondary}}>Najpierw przeczytaj wprowadzenie. Dalej poznasz wyjaśnienia i przykłady, a dopiero potem zadania. Możesz wracać do przeczytanych lekcji. Błędna odpowiedź to okazja do powtórki — nie tracisz przez nią dostępu do kursu.</Text>
@@ -362,6 +362,7 @@ export default function Learning(){
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
    </View>
+   {slug==='autocad-skroty'&&cadWorkshopLessons.has(module)&&<CadWorkspace storageKey={userId} shortcut={undefined} runId={0}/>}
    {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
     <LessonIllustratedSections
@@ -370,7 +371,6 @@ export default function Learning(){
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
    {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
-   {slug==='autocad-skroty'&&cadWorkshopLessons.has(module)&&<CadWorkspace storageKey={userId} shortcut={undefined} runId={0}/>}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
