@@ -6,9 +6,9 @@
   "lessons": [
     {
       "lesson_no": 0,
-      "persona": "Nowy pracownik biurowy",
+      "persona": "Student",
       "goal": "System, aplikacja czy plik?",
-      "scenario": "Po pierwszym uruchomieniu trzeba przygotować notatkę.",
+      "scenario": "Na uczelni przygotowujesz pierwsze notatki z wykładu, ale po zalogowaniu widzisz tylko pulpit i nie wiesz, od czego zacząć.",
       "steps": [
         "Otwórz Start i Notatnik.",
         "Otwórz Eksplorator i wskaż Dokumenty.",
@@ -16,14 +16,14 @@
       ],
       "evidence": "Windows 11 to system, Notatnik to aplikacja, a Notatka.txt to plik.",
       "pitfall": "Tapeta nie służy do wpisywania tekstu.",
-      "real_pc": "Na własnym PC otwórz Start, Notatnik i folder Dokumenty; niczego nie instaluj.",
+      "real_pc": "Na własnym PC otwórz Start, Notatnik i folder Dokumenty; zapisz tylko fikcyjną notatkę ze studiów.",
       "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
     },
     {
       "lesson_no": 1,
-      "persona": "Administracja",
+      "persona": "Pracownik biurowy",
       "goal": "Poznaj elementy pulpitu",
-      "scenario": "Po zalogowaniu widzisz ikony, tapetę i otwarte okna.",
+      "scenario": "Pierwszego dnia w biurze widzisz tapetę, skróty do aplikacji i kilka otwartych okien. Musisz odnaleźć właściwy dokument bez usuwania ikon.",
       "steps": [
         "Wskaż tapetę, ikonę i pasek zadań.",
         "Otwórz menu Start i zamknij je.",
@@ -156,9 +156,9 @@
     },
     {
       "lesson_no": 10,
-      "persona": "Praca zdalna",
+      "persona": "Pracownik zdalny",
       "goal": "Pokaż pulpit albo zmień pulpit",
-      "scenario": "Spotkanie i dokumenty mają być rozdzielone.",
+      "scenario": "W czasie pracy z domu musisz oddzielić spotkanie internetowe od dokumentów i sprawdzić, czy zmiana pulpitu nie kończy aplikacji.",
       "steps": [
         "Wypróbuj Win + D na dwóch oknach.",
         "Użyj Win + Tab, aby obejrzeć pulpity.",
@@ -216,9 +216,9 @@
     },
     {
       "lesson_no": 14,
-      "persona": "Magazyn",
+      "persona": "Magazynier",
       "goal": "Nawiguj po folderach świadomie",
-      "scenario": "W projekcie jest kilka poziomów folderów.",
+      "scenario": "Na tablecie z Windows otrzymujesz dokument dostawy zapisany kilka folderów niżej. Musisz odnaleźć go w strukturze projektu i nie pomylić historii nawigacji z katalogami.",
       "steps": [
         "Przejdź Dokumenty → Projekty → wybrany plik.",
         "Użyj Wstecz, Dalej i W górę.",
@@ -321,9 +321,9 @@
     },
     {
       "lesson_no": 21,
-      "persona": "Pomoc IT",
+      "persona": "Technik IT",
       "goal": "Sprawdź zawieszoną aplikację bez niszczenia pracy",
-      "scenario": "Jedno okno nie odpowiada, inne nadal działają.",
+      "scenario": "Na stanowisku technicznym jedna aplikacja nie odpowiada, ale pozostałe okna nadal działają. Musisz ocenić problem bez utraty niezapisanej pracy.",
       "steps": [
         "Sprawdź zachowanie pozostałych programów.",
         "Otwórz Menedżera zadań przez Ctrl + Shift + Esc.",
@@ -411,9 +411,9 @@
     },
     {
       "lesson_no": 27,
-      "persona": "Osoba ucząca się",
+      "persona": "Senior",
       "goal": "Dostępność ekranu w praktyce",
-      "scenario": "Tekst jest za mały, a praca wzrokiem męczy.",
+      "scenario": "Starsza osoba ma trudność z czytaniem małych napisów na laptopie. Chce bezpiecznie zwiększyć czytelność i umieć przywrócić poprzednie ustawienia.",
       "steps": [
         "Otwórz Ustawienia → Ułatwienia dostępu.",
         "Znajdź Rozmiar tekstu, Kontrast i Lupę.",
