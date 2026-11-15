@@ -233,6 +233,9 @@ async function verifyWord(page,mobile){
 
 async function verifyExplorer(page,mobile){
  await openCourse(page,'windows-skroty');
+ // Review course content rather than the fixed site-wide cookie consent banner.
+ const dismissCookie=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
+ if(await dismissCookie.isVisible().catch(()=>false))await dismissCookie.click();
  const mission=page.getByTestId('windows-mission-0');
  await mission.waitFor();
  // Real learning evidence, not a fake claim that the website inspected the Windows PC.
@@ -264,8 +267,6 @@ async function verifyExplorer(page,mobile){
  await simulation.getByTestId('win11-unsaved-warning').waitFor();
  await simulation.getByRole('button',{name:'Wróć i zapisz notatkę'}).click();
  await simulation.getByTestId('win11-unsaved-warning').waitFor({state:'detached'});
- await mission.screenshot({path:'/tmp/trenerki-windows-mission-'+(mobile?'mobile':'desktop')+'.png'});
- await simulation.screenshot({path:'/tmp/trenerki-windows-lab-'+(mobile?'mobile':'desktop')+'.png'});
   console.log('✓ '+(mobile?'mobile':'desktop')+' Windows Notepad: edit, save, close, reopen, unsaved-change warning');
 
  // 1: Beginner in an office — Start, search, and a visible application.
@@ -293,6 +294,11 @@ async function verifyExplorer(page,mobile){
  await simulation.getByRole('button',{name:'Utwórz nowy pulpit'}).click();
  await simulation.getByText('Utworzono Pulpit 3.').waitFor();
  console.log('✓ '+(mobile?'mobile':'desktop')+' Windows: five persona flows (office, construction, accounting, IT support, touch), no real-OS hotkeys');
+ // Capture the actual course design without a mock foreground window or cookie dialog obscuring the wallpaper.
+ await simulation.getByRole('button',{name:'Symuluj Win+D'}).click();
+ await simulation.screenshot({path:'/tmp/trenerki-windows-lab-'+(mobile?'mobile':'desktop')+'.png'});
+ await mission.screenshot({path:'/tmp/trenerki-windows-mission-'+(mobile?'mobile':'desktop')+'.png'});
+ await simulation.getByRole('button',{name:'Symuluj Win+D'}).click();
  // Keep the advanced file-operations lab available, but out of the way by default.
  await simulation.getByRole('button',{name:'Otwórz dodatkową pracownię Eksploratora plików ▾'}).click();
  const lab=page.getByTestId('explorer-workspace');
