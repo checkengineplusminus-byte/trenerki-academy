@@ -89,3 +89,27 @@ export function rotateCadSelection(shapes:CadShape[],ids:number[],base:Point,deg
   return {x:base.x+dx*cos-dy*sin,y:base.y+dx*sin+dy*cos};
  },false):shape);
 }
+
+/**
+ * Real-world CAD hit-testing for tight parallel lines. The SVG 18px touch
+ * target is deliberately wide, but we choose the GEOMETRICALLY nearest edge
+ * to the pointer rather than the topmost overlapping invisible SVG stroke.
+ */
+export function cadEdgeDistance(shape:CadShape,point:Point):number{
+ if(shape.kind==='circle'){
+  return Math.abs(distance(point,shape.points[0])-distance(shape.points[0],shape.points[1]));
+ }
+ const lines=edges(shape);
+ if(!lines.length)return Number.POSITIVE_INFINITY;
+ return Math.min(...lines.map(([a,b])=>{
+  const dx=b.x-a.x,dy=b.y-a.y,length2=dx*dx+dy*dy;
+  const t=length2>1e-12?Math.max(0,Math.min(1,((point.x-a.x)*dx+(point.y-a.y)*dy)/length2)):0;
+  return distance(point,{x:a.x+t*dx,y:a.y+t*dy});
+ }));
+}
+export function nearestCadObjects(shapes:CadShape[],point:Point,tolerance:number):
+ {id:number;distance:number}[]{
+ if(!Number.isFinite(tolerance)||tolerance<0)return [];
+ return shapes.map(shape=>({id:shape.id,distance:cadEdgeDistance(shape,point)}))
+  .filter(hit=>hit.distance<=tolerance).sort((a,b)=>a.distance-b.distance||a.id-b.id);
+}
