@@ -131,13 +131,31 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   const kind=currentAssignment.targetKind;
   let originalShapes:CadShape[]=[];
   try{originalShapes=JSON.parse(assignmentBaseline);}catch{}
-  const completedShape=drawing.shapes.find(shape=>shape.kind===kind&&
+  const changed=drawing.shapes.filter(shape=>shape.kind===kind&&
     !originalShapes.some(old=>old.id===shape.id&&JSON.stringify(old)===JSON.stringify(shape)));
-  if(!completedShape){
-   setAssignmentFeedback('Jeszcze nie: to ćwiczenie wymaga obiektu '+kind.toUpperCase()+'. Wróć do instrukcji i sprawdź polecenie '+currentAssignment.focusCommand+'.');
+  if(!changed.length){
+   setAssignmentFeedback('Jeszcze nie: to ćwiczenie wymaga nowego lub poprawionego obiektu '+kind.toUpperCase()+'. Wróć do instrukcji i sprawdź polecenie '+currentAssignment.focusCommand+'.');
    return;
   }
-  setAssignmentFeedback('Geometria zmieniła się, a rysunek zawiera wymagany typ obiektu '+kind.toUpperCase()+'. Teraz sprawdź wynik liczbowy: '+currentAssignment.expected);
+  const p0=readCadPoint(currentAssignment.typing[1]);
+  const p1=p0?readCadPoint(currentAssignment.typing[2],p0):undefined;
+  if(!p0||!p1){setAssignmentFeedback('Sprawdź składnię punktów ćwiczenia i spróbuj ponownie.');return;}
+  const expected=distance(p0,p1);
+  const ok=changed.some(shape=>{
+   const [a,b]=shape.points;
+   if(!a||!b)return false;
+   if(kind==='line')return Math.abs(distance(a,b)-expected)<=1;
+   if(kind==='circle')return Math.abs(distance(a,b)-expected)<=1;
+   if(kind==='rect')return Math.abs(Math.abs(a.x-b.x)-Math.abs(p0.x-p1.x))<=1&&
+    Math.abs(Math.abs(a.y-b.y)-Math.abs(p0.y-p1.y))<=1;
+   return false;
+  });
+  if(!ok){
+   setAssignmentFeedback('Nie zgadza się wymiar. Oczekiwano '+(kind==='rect'?Math.abs(p0.x-p1.x)+' × '+Math.abs(p0.y-p1.y)+' mm':Math.round(expected)+' mm')+
+    '. Sprawdź współrzędne końcowe, promień lub wymiary poprzez DIST i Properties.');
+   return;
+  }
+  setAssignmentFeedback('Zaliczone ćwiczenie geometrii: nowy obiekt '+kind.toUpperCase()+' ma prawidłowy rozmiar. Zweryfikuj jeszcze kontekst: '+currentAssignment.expected);
  }
  function record(next:Drawing){setHistory(old=>[...old.slice(-79),drawing]);setFuture([]);setDrawing(next);}
  function updateShapes(shapes:CadShape[]){record({...drawing,shapes});}
