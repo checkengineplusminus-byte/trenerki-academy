@@ -1,0 +1,25 @@
+name: Windows — bramka jakości 30 lekcji
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'content/windows-practice-missions.json'
+      - 'src/WindowsPracticeMission.tsx'
+      - 'src/WindowsDesktopLab.tsx'
+      - 'src/windowsShortcutSupport.ts'
+      - 'src/KeyboardLesson.tsx'
+      - 'src/LessonIllustratedSections.tsx'
+      - 'scripts/test-windows-practice.mjs'
+      - '.github/workflows/windows-quality.yml'
+  workflow_dispatch:
+jobs:
+  content_quality:
+    name: 30 rozdziałów, prawdziwy PC i zgodność skrótów
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Sprawdź komplet 30 unikalnych misji i zabezpieczenia
+        run: node --test scripts/test-windows-practice.mjs
