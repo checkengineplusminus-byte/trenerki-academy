@@ -1,0 +1,3090 @@
+{
+  "count": 514,
+  "description": "Katalog referencyjny: nazwy/identyfikatory i odnośniki do dokumentacji Microsoft; nazwy lokalizowane zależą od wersji Excela.",
+  "functions": [
+    {
+      "code": "ABS",
+      "name": "ABS",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/abs-function"
+    },
+    {
+      "code": "ACCRINT",
+      "name": "NAL.ODS",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/accrint-function"
+    },
+    {
+      "code": "ACCRINTM",
+      "name": "NAL.ODS.WYKUP",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/accrintm-function"
+    },
+    {
+      "code": "ACOS",
+      "name": "ACOS",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acos-function"
+    },
+    {
+      "code": "ACOSH",
+      "name": "ACOSH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acosh-function"
+    },
+    {
+      "code": "ACOT",
+      "name": "ACOT (ACOT)",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acot-function"
+    },
+    {
+      "code": "ACOTH",
+      "name": "ACOTH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acoth-function"
+    },
+    {
+      "code": "AGGREGATE",
+      "name": "AGREGUJ",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/aggregate-function"
+    },
+    {
+      "code": "ADDRESS",
+      "name": "ADRES",
+      "category": "Funkcje odnośników i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/address-function"
+    },
+    {
+      "code": "AMORDEGRC",
+      "name": "AMORT.NIELIN",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/amordegrc-function"
+    },
+    {
+      "code": "AMORLINC",
+      "name": "AMORT.LIN",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/amorlinc-function"
+    },
+    {
+      "code": "AND",
+      "name": "ORAZ",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/and-function"
+    },
+    {
+      "code": "ARABIC",
+      "name": "ARABSKIE",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/arabic-function"
+    },
+    {
+      "code": "AREAS",
+      "name": "OBSZARY",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/areas-function"
+    },
+    {
+      "code": "ARRAYTOTEXT",
+      "name": "TABLICA.NA.TEKST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/arraytotext-function"
+    },
+    {
+      "code": "ASC",
+      "name": "ASC",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/asc-function"
+    },
+    {
+      "code": "ASIN",
+      "name": "ASIN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/asin-function"
+    },
+    {
+      "code": "ASINH",
+      "name": "ASINH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/asinh-function"
+    },
+    {
+      "code": "ATAN",
+      "name": "ATAN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/atan-function"
+    },
+    {
+      "code": "ATAN2",
+      "name": "ATAN2",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/atan2-function"
+    },
+    {
+      "code": "ATANH",
+      "name": "ATANH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/atanh-function"
+    },
+    {
+      "code": "AVEDEV",
+      "name": "ODCH.ŚREDNIE",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/avedev-function"
+    },
+    {
+      "code": "AVERAGE",
+      "name": "ŚREDNIA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/average-function"
+    },
+    {
+      "code": "AVERAGEA",
+      "name": "ŚREDNIA.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/averagea-function"
+    },
+    {
+      "code": "AVERAGEIF",
+      "name": "ŚREDNIA.JEŻELI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/averageif-function"
+    },
+    {
+      "code": "AVERAGEIFS",
+      "name": "ŚREDNIA.WARUNKÓW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/averageifs-function"
+    },
+    {
+      "code": "BAHTTEXT",
+      "name": "BAT.TEKST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bahttext-function"
+    },
+    {
+      "code": "BASE",
+      "name": "PODSTAWA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/base-function"
+    },
+    {
+      "code": "BESSELI",
+      "name": "BESSEL.I",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/besseli-function"
+    },
+    {
+      "code": "BESSELJ",
+      "name": "BESSEL.J",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/besselj-function"
+    },
+    {
+      "code": "BESSELK",
+      "name": "BESSEL.K",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/besselk-function"
+    },
+    {
+      "code": "BESSELY",
+      "name": "BESSEL.Y",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bessely-function"
+    },
+    {
+      "code": "BETADIST",
+      "name": "ROZKŁAD.BETA",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/betadist-function"
+    },
+    {
+      "code": "BETA.DIST",
+      "name": "BETA. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/beta-dist-function"
+    },
+    {
+      "code": "BETAINV",
+      "name": "ROZKŁAD.BETA.ODW",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/betainv-function"
+    },
+    {
+      "code": "BETA.INV",
+      "name": "BETA. INVn",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/beta-inv-function"
+    },
+    {
+      "code": "BIN2DEC",
+      "name": "DWÓJK.NA.DZIES",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2dec-function"
+    },
+    {
+      "code": "BIN2HEX",
+      "name": "DWÓJK.NA.SZESN",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2hex-function"
+    },
+    {
+      "code": "BIN2OCT",
+      "name": "DWÓJK.NA.ÓSM",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2oct-function"
+    },
+    {
+      "code": "BINOMDIST",
+      "name": "ROZKŁAD.DWUM",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binomdist-function"
+    },
+    {
+      "code": "BINOM.DIST",
+      "name": "DWUM. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-dist-function"
+    },
+    {
+      "code": "BINOM.DIST.RANGE",
+      "name": "DWUM. ROZDZ. ZASIĘG",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-dist-range-function"
+    },
+    {
+      "code": "BINOM.INV",
+      "name": "DWUM. ZAOKR.DO.OD",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-inv-function"
+    },
+    {
+      "code": "BITAND",
+      "name": "BITAND",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitand-function"
+    },
+    {
+      "code": "BITLSHIFT",
+      "name": "PRZESUNIĘCIE.W.LEWO",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitlshift-function"
+    },
+    {
+      "code": "BITOR",
+      "name": "BITOR",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitor-function"
+    },
+    {
+      "code": "BITRSHIFT",
+      "name": "BIT.PRZESUNIĘCIE.W.PRAWO",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitrshift-function"
+    },
+    {
+      "code": "BITXOR",
+      "name": "BITXOR",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitxor-function"
+    },
+    {
+      "code": "BYCOL",
+      "name": "KOLUMNAMI",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bycol-function"
+    },
+    {
+      "code": "BYROW",
+      "name": "WIERSZAMI",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/byrow-function"
+    },
+    {
+      "code": "CALL",
+      "name": "ZADZWOŃ",
+      "category": "Funkcje dodatków i automatyzacji",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/call-function"
+    },
+    {
+      "code": "CEILING",
+      "name": "ZAOKR.W.GÓRĘ",
+      "category": "Kompatybilność",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-function"
+    },
+    {
+      "code": "CEILING.MATH",
+      "name": "SUFIT. MATEMATYKA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-math-function"
+    },
+    {
+      "code": "CEILING.PRECISE",
+      "name": "ZAOKR.W.GÓRĘ.DOKŁ",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-precise-function"
+    },
+    {
+      "code": "CELL",
+      "name": "KOMÓRKA",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cell-function"
+    },
+    {
+      "code": "CHAR",
+      "name": "CHAR",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/char-function"
+    },
+    {
+      "code": "CHIDIST",
+      "name": "ROZKŁAD.CHI",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chidist-function"
+    },
+    {
+      "code": "CHIINV",
+      "name": "ROZKŁAD.CHI.ODW",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chiinv-function"
+    },
+    {
+      "code": "CHITEST",
+      "name": "TEST.CHI",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chitest-function"
+    },
+    {
+      "code": "CHISQ.DIST",
+      "name": "CHI. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-dist-function"
+    },
+    {
+      "code": "CHISQ.DIST.RT",
+      "name": "CHISQ.DIST.RT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-dist-rt-function"
+    },
+    {
+      "code": "CHISQ.INV",
+      "name": "CHI. ZAOKR.DO.OD",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-inv-function"
+    },
+    {
+      "code": "CHISQ.INV.RT",
+      "name": "CHISQ.INV.RT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-inv-rt-function"
+    },
+    {
+      "code": "CHISQ.TEST",
+      "name": "CHI. TEST (TEST)",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-test-function"
+    },
+    {
+      "code": "CHOOSE",
+      "name": "WYBIERZ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/choose-function"
+    },
+    {
+      "code": "CHOOSECOLS",
+      "name": "WYBIERZ.KOLUMNY",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/choosecols-function"
+    },
+    {
+      "code": "CHOOSEROWS",
+      "name": "WYBIERZ.WIERSZE",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chooserows-function"
+    },
+    {
+      "code": "CLEAN",
+      "name": "OCZYŚĆ",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/clean-function"
+    },
+    {
+      "code": "CODE",
+      "name": "KOD",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/code-function"
+    },
+    {
+      "code": "COLUMN",
+      "name": "KOLUMNA",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/column-function"
+    },
+    {
+      "code": "COLUMNS",
+      "name": "KOLUMNY",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/columns-function"
+    },
+    {
+      "code": "COMBIN",
+      "name": "KOMBINACJE",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/combin-function"
+    },
+    {
+      "code": "COMBINA",
+      "name": "KOMBINACJE.A",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/combina-function"
+    },
+    {
+      "code": "COMPLEX",
+      "name": "LICZBA.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/complex-function"
+    },
+    {
+      "code": "CONCAT",
+      "name": "Funkcja ZŁĄCZ.TEKST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/concat-function"
+    },
+    {
+      "code": "CONCATENATE",
+      "name": "ZŁĄCZ.TEKSTY",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/concatenate-function"
+    },
+    {
+      "code": "CONFIDENCE",
+      "name": "UFNOŚĆ",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-function"
+    },
+    {
+      "code": "CONFIDENCE.NORM",
+      "name": "CONFIDENCE.NORM",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-norm-function"
+    },
+    {
+      "code": "CONFIDENCE.T",
+      "name": "CONFIDENCE.T",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-t-function"
+    },
+    {
+      "code": "CONVERT",
+      "name": "CONVERT",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/convert-function"
+    },
+    {
+      "code": "CORREL",
+      "name": "WSP.KORELACJI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/correl-function"
+    },
+    {
+      "code": "COS",
+      "name": "COS",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cos-function"
+    },
+    {
+      "code": "COSH",
+      "name": "COSH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cosh-function"
+    },
+    {
+      "code": "COT",
+      "name": "COT",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cot-function"
+    },
+    {
+      "code": "COTH",
+      "name": "COTH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coth-function"
+    },
+    {
+      "code": "COUNT",
+      "name": "ILE.LICZB",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/count-function"
+    },
+    {
+      "code": "COUNTA",
+      "name": "ILE.NIEPUSTYCH",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/counta-function"
+    },
+    {
+      "code": "COUNTBLANK",
+      "name": "LICZ.PUSTE",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/countblank-function"
+    },
+    {
+      "code": "COUNTIF",
+      "name": "LICZ.JEŻELI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/get-started/use-the-countif-function-in-microsoft-excel"
+    },
+    {
+      "code": "COUNTIFS",
+      "name": "LICZ.WARUNKI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/countifs-function"
+    },
+    {
+      "code": "COUPDAYBS",
+      "name": "WYPŁ.DNI.OD.POCZ",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdaybs-function"
+    },
+    {
+      "code": "COUPDAYS",
+      "name": "WYPŁ.DNI",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdays-function"
+    },
+    {
+      "code": "COUPDAYSNC",
+      "name": "WYPŁ.DNI.NAST",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdaysnc-function"
+    },
+    {
+      "code": "COUPNCD",
+      "name": "WYPŁ.DATA.NAST",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupncd-function"
+    },
+    {
+      "code": "COUPNUM",
+      "name": "WYPŁ.LICZBA",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupnum-function"
+    },
+    {
+      "code": "COUPPCD",
+      "name": "WYPŁ.DATA.POPRZ",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/couppcd-function"
+    },
+    {
+      "code": "COVAR",
+      "name": "KOWARIANCJA",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/covar-function"
+    },
+    {
+      "code": "COVARIANCE.P",
+      "name": "KOWARIANCJA. P",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/covariance-p-function"
+    },
+    {
+      "code": "COVARIANCE.S",
+      "name": "KOWARIANCJA. S",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/covariance-s-function"
+    },
+    {
+      "code": "CRITBINOM",
+      "name": "PRÓG.ROZKŁAD.DWUM",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/critbinom-function"
+    },
+    {
+      "code": "CSC",
+      "name": "CSC",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/csc-function"
+    },
+    {
+      "code": "CSCH",
+      "name": "CSCH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/csch-function"
+    },
+    {
+      "code": "CUBEKPIMEMBER",
+      "name": "ELEMENT.KPI.MODUŁU",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubekpimember-function"
+    },
+    {
+      "code": "CUBEMEMBER",
+      "name": "ELEMENT.MODUŁU",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubemember-function"
+    },
+    {
+      "code": "CUBEMEMBERPROPERTY",
+      "name": "WŁAŚCIWOŚĆ.ELEMENTU.MODUŁU",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubememberproperty-function"
+    },
+    {
+      "code": "CUBERANKEDMEMBER",
+      "name": "USZEREGOWANY.ELEMENT.MODUŁU",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cuberankedmember-function"
+    },
+    {
+      "code": "CUBESET",
+      "name": "ZESTAW.MODUŁÓW",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubeset-function"
+    },
+    {
+      "code": "CUBESETCOUNT",
+      "name": "LICZNIK.MODUŁÓW.ZESTAWU",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubesetcount-function"
+    },
+    {
+      "code": "CUBEVALUE",
+      "name": "WARTOŚĆ.MODUŁU",
+      "category": "Funkcje modułu",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubevalue-function"
+    },
+    {
+      "code": "CUMIPMT",
+      "name": "SPŁAC.ODS",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cumipmt-function"
+    },
+    {
+      "code": "CUMPRINC",
+      "name": "SPŁAC.KAPIT",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cumprinc-function"
+    },
+    {
+      "code": "DATE",
+      "name": "DATA",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/date-function"
+    },
+    {
+      "code": "DATEDIF",
+      "name": "DATA.RÓŻNICA",
+      "category": "Data i godzina",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/datedif-function"
+    },
+    {
+      "code": "DATEVALUE",
+      "name": "DATA.WARTOŚĆ",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/datevalue-function"
+    },
+    {
+      "code": "DAVERAGE",
+      "name": "BD.ŚREDNIA",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/daverage-function"
+    },
+    {
+      "code": "DAY",
+      "name": "DAY (dzień)",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/day-function"
+    },
+    {
+      "code": "DAYS",
+      "name": "DNI",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/days-function"
+    },
+    {
+      "code": "DAYS360",
+      "name": "DNI.360",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/days360-function"
+    },
+    {
+      "code": "DB",
+      "name": "DB",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/db-function"
+    },
+    {
+      "code": "DBCS",
+      "name": "zestaw znaków dwubajtowych",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dbcs-function"
+    },
+    {
+      "code": "DCOUNT",
+      "name": "BD.ILE.REKORDÓW",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dcount-function"
+    },
+    {
+      "code": "DCOUNTA",
+      "name": "BD.ILE.REKORDÓW.A",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dcounta-function"
+    },
+    {
+      "code": "DDB",
+      "name": "DDB",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ddb-function"
+    },
+    {
+      "code": "DEC2BIN",
+      "name": "DZIES.NA.DWÓJK",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2bin-function"
+    },
+    {
+      "code": "DEC2HEX",
+      "name": "DZIES.NA.SZESN",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2hex-function"
+    },
+    {
+      "code": "DEC2OCT",
+      "name": "DZIES.NA.ÓSM",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2oct-function"
+    },
+    {
+      "code": "DECIMAL",
+      "name": "DECIMAL",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/decimal-function"
+    },
+    {
+      "code": "DEGREES",
+      "name": "STOPNIE",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/degrees-function"
+    },
+    {
+      "code": "DELTA",
+      "name": "CZY.RÓWNE",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/delta-function"
+    },
+    {
+      "code": "DETECTLANGUAGE",
+      "name": "WYKRYJJĘZYK",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/detectlanguage-function"
+    },
+    {
+      "code": "DEVSQ",
+      "name": "ODCH.KWADRATOWE",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/devsq-function"
+    },
+    {
+      "code": "DGET",
+      "name": "BD.POLE",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dget-function"
+    },
+    {
+      "code": "DISC",
+      "name": "STOPA.DYSK",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/disc-function"
+    },
+    {
+      "code": "DMAX",
+      "name": "BD.MAX",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dmax-function"
+    },
+    {
+      "code": "DMIN",
+      "name": "BD.MIN",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dmin-function"
+    },
+    {
+      "code": "DOLLAR",
+      "name": "KWOTA",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollar-function"
+    },
+    {
+      "code": "DOLLARDE",
+      "name": "CENA.DZIES",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollarde-function"
+    },
+    {
+      "code": "DOLLARFR",
+      "name": "CENA.UŁAM",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollarfr-function"
+    },
+    {
+      "code": "DPRODUCT",
+      "name": "BD.ILOCZYN",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dproduct-function"
+    },
+    {
+      "code": "DROP",
+      "name": "POMIŃ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/drop-function"
+    },
+    {
+      "code": "DSTDEV",
+      "name": "BD.ODCH.STANDARD",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dstdev-function"
+    },
+    {
+      "code": "DSTDEVP",
+      "name": "BD.ODCH.STANDARD.POPUL",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dstdevp-function"
+    },
+    {
+      "code": "DSUM",
+      "name": "BD.SUMA",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dsum-function"
+    },
+    {
+      "code": "DURATION",
+      "name": "CZAS TRWANIA",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/duration-function"
+    },
+    {
+      "code": "DVAR",
+      "name": "BD.WARIANCJA",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dvar-function"
+    },
+    {
+      "code": "DVARP",
+      "name": "BD.WARIANCJA.POPUL",
+      "category": "Funkcje bazy danych",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dvarp-function"
+    },
+    {
+      "code": "EDATE",
+      "name": "Funkcje WAT",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/edate-function"
+    },
+    {
+      "code": "EFFECT",
+      "name": "EFEKTYWNA",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/effect-function"
+    },
+    {
+      "code": "ENCODEURL",
+      "name": "ENCODEURL",
+      "category": "Funkcje sieci Web",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/encodeurl-function"
+    },
+    {
+      "code": "EOMONTH",
+      "name": "NR.SER.OST.DN.MIES",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/eomonth-function"
+    },
+    {
+      "code": "ERF",
+      "name": "FUNKCJA.BŁ",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erf-function"
+    },
+    {
+      "code": "ERF.PRECISE",
+      "name": "Funkcja ŁBÓW. PRECYZJA",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erf-precise-function"
+    },
+    {
+      "code": "ERFC",
+      "name": "ERFC",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erfc-function"
+    },
+    {
+      "code": "ERFC.PRECISE",
+      "name": "ERFC. PRECYZJA",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erfc-precise-function"
+    },
+    {
+      "code": "ERROR.TYPE",
+      "name": "NR.BŁĘDU",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/error-type-function"
+    },
+    {
+      "code": "EUROCONVERT",
+      "name": "EUROCONVERT",
+      "category": "Funkcje dodatków i automatyzacji",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/euroconvert-function"
+    },
+    {
+      "code": "EVEN",
+      "name": "ZAOKR.DO.PARZ",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/even-function"
+    },
+    {
+      "code": "EXACT",
+      "name": "PORÓWNAJ",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/exact-function"
+    },
+    {
+      "code": "EXP",
+      "name": "EXP",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/exp-function"
+    },
+    {
+      "code": "EXPAND",
+      "name": "ROZSZERZ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/expand-function"
+    },
+    {
+      "code": "EXPON.DIST",
+      "name": "EXPON. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/expon-dist-function"
+    },
+    {
+      "code": "EXPONDIST",
+      "name": "ROZKŁAD.EXP",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/expondist-function"
+    },
+    {
+      "code": "FACT",
+      "name": "FAKT",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fact-function"
+    },
+    {
+      "code": "FACTDOUBLE",
+      "name": "SILNIA.DWUKR",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/factdouble-function"
+    },
+    {
+      "code": "FALSE",
+      "name": "FAŁSZ",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/false-function"
+    },
+    {
+      "code": "F.DIST",
+      "name": "ROZKŁ.F",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-dist-function"
+    },
+    {
+      "code": "FDIST",
+      "name": "ROZKŁAD.F",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fdist-function"
+    },
+    {
+      "code": "F.DIST.RT",
+      "name": "F.DIST.RT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-dist-rt-function"
+    },
+    {
+      "code": "FILTER",
+      "name": "FILTRUJ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/filter-function"
+    },
+    {
+      "code": "FILTERXML",
+      "name": "FILTERXML",
+      "category": "Funkcje sieci Web",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/filterxml-function"
+    },
+    {
+      "code": "FIND",
+      "name": "ZNAJDŹ, ZNAJDŹB",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/topic/c7912941-af2a-4bdf-a553-d0d89b0a0628"
+    },
+    {
+      "code": "F.INV",
+      "name": "ROZKŁ.F.ODWR",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-inv-function"
+    },
+    {
+      "code": "F.INV.RT",
+      "name": "F.INV.RT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-inv-rt-function"
+    },
+    {
+      "code": "FINV",
+      "name": "ROZKŁAD.F.ODW",
+      "category": "Kompatybilność",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/finv-function"
+    },
+    {
+      "code": "FISHER",
+      "name": "ROZKŁAD.FISHER",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fisher-function"
+    },
+    {
+      "code": "FISHERINV",
+      "name": "ROZKŁAD.FISHER.ODW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fisherinv-function"
+    },
+    {
+      "code": "FIXED",
+      "name": "NAPRAWIONE",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fixed-function"
+    },
+    {
+      "code": "FLOOR",
+      "name": "ZAOKR.W.DÓŁ",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-function"
+    },
+    {
+      "code": "FLOOR.MATH",
+      "name": "PIĘTRO. MATEMATYKA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-math-function"
+    },
+    {
+      "code": "FLOOR.PRECISE",
+      "name": "ZAOKR.W.DÓŁ.DOKŁ",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-precise-function"
+    },
+    {
+      "code": "FORECAST",
+      "name": "REGLINX",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/forecast-and-forecast-linear-functions"
+    },
+    {
+      "code": "FORECAST.ETS",
+      "name": "FORECAST.ETS",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets"
+    },
+    {
+      "code": "FORECAST.ETS.CONFINT",
+      "name": "PROGNOZA. systemu handlu emisjami. CONFINT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.confint"
+    },
+    {
+      "code": "FORECAST.ETS.SEASONALITY",
+      "name": "PROGNOZA. systemu handlu emisjami. SEZONOWOŚĆ",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.seasonality"
+    },
+    {
+      "code": "FORECAST.ETS.STAT",
+      "name": "PROGNOZA. systemu handlu emisjami. Statystyki statystyczne",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.stat"
+    },
+    {
+      "code": "FORECAST.LINEAR",
+      "name": "PROGNOZA. LINIOWY",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.linear"
+    },
+    {
+      "code": "FORMULATEXT",
+      "name": "FORMUŁA.TEKST",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/formulatext-function"
+    },
+    {
+      "code": "FREQUENCY",
+      "name": "CZĘSTOŚĆ",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/frequency-function"
+    },
+    {
+      "code": "F.TEST",
+      "name": "F.TEST",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-test-function"
+    },
+    {
+      "code": "FTEST",
+      "name": "TEST.F",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ftest-function"
+    },
+    {
+      "code": "FV",
+      "name": "FV",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fv-function"
+    },
+    {
+      "code": "FVSCHEDULE",
+      "name": "WART.PRZYSZŁ.KAP",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fvschedule-function"
+    },
+    {
+      "code": "GAMMA",
+      "name": "Współczynnik gamma",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-function"
+    },
+    {
+      "code": "GAMMA.DIST",
+      "name": "GAMMA. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-dist-function"
+    },
+    {
+      "code": "GAMMADIST",
+      "name": "ROZKŁAD.GAMMA",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammadist-function"
+    },
+    {
+      "code": "GAMMA.INV",
+      "name": "GAMMA. ZAOKR.DO.OD",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-inv-function"
+    },
+    {
+      "code": "GAMMAINV",
+      "name": "ROZKŁAD.GAMMA.ODW",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammainv-function"
+    },
+    {
+      "code": "GAMMALN",
+      "name": "ROZKŁAD.LIN.GAMMA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammaln-function"
+    },
+    {
+      "code": "GAMMALN.PRECISE",
+      "name": "ROZKŁAD.LIN.GAMMA. PRECYZJA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammaln-precise-function"
+    },
+    {
+      "code": "GAUSS",
+      "name": "GAUSS",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gauss-function"
+    },
+    {
+      "code": "GCD",
+      "name": "NAJW.WSP.DZIEL",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gcd-function"
+    },
+    {
+      "code": "GEOMEAN",
+      "name": "ŚREDNIA.GEOMETRYCZNA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/geomean-function"
+    },
+    {
+      "code": "GESTEP",
+      "name": "SPRAWDŹ.PRÓG",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gestep-function"
+    },
+    {
+      "code": "GETPIVOTDATA",
+      "name": "WEŹDANETABELI",
+      "category": "Funkcje odnośników i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/getpivotdata-function"
+    },
+    {
+      "code": "GROUPBY",
+      "name": "GROUPBY (GRUPUJ.WEDŁUG",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/groupby-function"
+    },
+    {
+      "code": "GROWTH",
+      "name": "WZROST",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/growth-function"
+    },
+    {
+      "code": "HARMEAN",
+      "name": "ŚREDNIA HARMONICZNA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/harmean-function"
+    },
+    {
+      "code": "HEX2BIN",
+      "name": "SZESN.NA.DWÓJK",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2bin-function"
+    },
+    {
+      "code": "HEX2DEC",
+      "name": "SZESN.NA.DZIES",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2dec-function"
+    },
+    {
+      "code": "HEX2OCT",
+      "name": "SZESN.NA.ÓSM",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2oct-function"
+    },
+    {
+      "code": "HLOOKUP",
+      "name": "WYSZUKAJ.POZIOMO",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hlookup-function"
+    },
+    {
+      "code": "HOUR",
+      "name": "HOUR (godzina)",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hour-function"
+    },
+    {
+      "code": "HSTACK",
+      "name": "STOS.POZ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hstack-function"
+    },
+    {
+      "code": "HYPERLINK",
+      "name": "HIPERŁĄCZE",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hyperlink-function"
+    },
+    {
+      "code": "HYPGEOM.DIST",
+      "name": "ROZKŁ.HIPERGEOM",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hypgeom-dist-function"
+    },
+    {
+      "code": "HYPGEOMDIST",
+      "name": "ROZKŁAD.HIPERGEOM",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hypgeomdist-function"
+    },
+    {
+      "code": "IF",
+      "name": "JEŻELI",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/if-function"
+    },
+    {
+      "code": "IFERROR",
+      "name": "JEŻELI.BŁĄD",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/iferror-function"
+    },
+    {
+      "code": "IFNA",
+      "name": "JEŻELI.ND",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ifna-function"
+    },
+    {
+      "code": "IFS",
+      "name": "Funkcja WARUNKI",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ifs-function"
+    },
+    {
+      "code": "IMABS",
+      "name": "MODUŁ.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imabs-function"
+    },
+    {
+      "code": "IMAGE",
+      "name": "OBRAZ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/image-function"
+    },
+    {
+      "code": "IMAGINARY",
+      "name": "CZ.UROJ.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imaginary-function"
+    },
+    {
+      "code": "IMARGUMENT",
+      "name": "ARG.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imargument-function"
+    },
+    {
+      "code": "IMCONJUGATE",
+      "name": "SPRZĘŻ.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imconjugate-function"
+    },
+    {
+      "code": "IMCOS",
+      "name": "COS.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcos-function"
+    },
+    {
+      "code": "IMCOSH",
+      "name": "COSH.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcosh-function"
+    },
+    {
+      "code": "IMCOT",
+      "name": "COT.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcot-function"
+    },
+    {
+      "code": "IMCSC",
+      "name": "CSC.LICZBA.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcsc-function"
+    },
+    {
+      "code": "IMCSCH",
+      "name": "CSCH.LICZBA.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcsch-function"
+    },
+    {
+      "code": "IMDIV",
+      "name": "ILORAZ.LICZB.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imdiv-function"
+    },
+    {
+      "code": "IMEXP",
+      "name": "EXP.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imexp-function"
+    },
+    {
+      "code": "IMLN",
+      "name": "LN.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imln-function"
+    },
+    {
+      "code": "IMLOG10",
+      "name": "LOG10.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imlog10-function"
+    },
+    {
+      "code": "IMLOG2",
+      "name": "LOG2.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imlog2-function"
+    },
+    {
+      "code": "IMPOWER",
+      "name": "POTĘGA.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/impower-function"
+    },
+    {
+      "code": "IMPRODUCT",
+      "name": "ILOCZYN.LICZB.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/improduct-function"
+    },
+    {
+      "code": "IMREAL",
+      "name": "CZ.RZECZ.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imreal-function"
+    },
+    {
+      "code": "IMSEC",
+      "name": "SEC.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsec-function"
+    },
+    {
+      "code": "IMSECH",
+      "name": "SECH.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsech-function"
+    },
+    {
+      "code": "IMSIN",
+      "name": "SIN.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsin-function"
+    },
+    {
+      "code": "IMSINH",
+      "name": "Funkcja IMSINH",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsinh-function"
+    },
+    {
+      "code": "IMSQRT",
+      "name": "PIERWIASTEK.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsqrt-function"
+    },
+    {
+      "code": "IMSUB",
+      "name": "RÓŻN.LICZB.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsub-function"
+    },
+    {
+      "code": "IMSUM",
+      "name": "SUMA.LICZB.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsum-function"
+    },
+    {
+      "code": "IMTAN",
+      "name": "TAN.LICZBY.ZESP",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imtan-function"
+    },
+    {
+      "code": "INDEX",
+      "name": "INDEKS",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/index-function"
+    },
+    {
+      "code": "INDIRECT",
+      "name": "ADR.POŚR",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/indirect-function"
+    },
+    {
+      "code": "INFO",
+      "name": "INFO",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/info-function"
+    },
+    {
+      "code": "INT",
+      "name": "INT",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/int-function"
+    },
+    {
+      "code": "INTERCEPT",
+      "name": "ODCIĘTA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/intercept-function"
+    },
+    {
+      "code": "INTRATE",
+      "name": "STOPA.PROC",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/intrate-function"
+    },
+    {
+      "code": "IPMT",
+      "name": "IPMT",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ipmt-function"
+    },
+    {
+      "code": "IRR",
+      "name": "IRR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/irr-function"
+    },
+    {
+      "code": "ISBLANK",
+      "name": "CZY.PUSTA",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISERR",
+      "name": "CZY.BŁ",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISERROR",
+      "name": "CZY.BŁĄD",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISEVEN",
+      "name": "CZY.PARZYSTE",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/iseven-function"
+    },
+    {
+      "code": "ISFORMULA",
+      "name": "CZY.FORMUŁA",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/isformula-function"
+    },
+    {
+      "code": "ISLOGICAL",
+      "name": "CZY.LOGICZNA",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISNA",
+      "name": "CZY.BRAK",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISNONTEXT",
+      "name": "CZY.NIE.TEKST",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISNUMBER",
+      "name": "CZY.LICZBA",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISODD",
+      "name": "CZY.NIEPARZYSTE",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISOMITTED",
+      "name": "ISOMITTED",
+      "category": "Informacje",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/isomitted-function"
+    },
+    {
+      "code": "ISREF",
+      "name": "CZY.ADR",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISTEXT",
+      "name": "CZY.TEKST",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISO.CEILING",
+      "name": "ISO.CEILING",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/iso-ceiling-function"
+    },
+    {
+      "code": "ISOWEEKNUM",
+      "name": "ISO.NUM.TYG",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/isoweeknum-function"
+    },
+    {
+      "code": "ISPMT",
+      "name": "Mechanizm ISPMT",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ispmt-function"
+    },
+    {
+      "code": "JIS",
+      "name": "JIS",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/jis-function"
+    },
+    {
+      "code": "KURT",
+      "name": "KURT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/kurt-function"
+    },
+    {
+      "code": "LAMBDA",
+      "name": "LAMBDA",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lambda-function"
+    },
+    {
+      "code": "LARGE",
+      "name": "MAX.K",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/large-function"
+    },
+    {
+      "code": "LCM",
+      "name": "NAJMN.WSP.WIEL",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lcm-function"
+    },
+    {
+      "code": "LEFT",
+      "name": "LEWY",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/left-function"
+    },
+    {
+      "code": "LEN",
+      "name": "DŁ",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/len-function"
+    },
+    {
+      "code": "LET",
+      "name": "LET",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/let-function"
+    },
+    {
+      "code": "LINEST",
+      "name": "REGLINP",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/linest-function"
+    },
+    {
+      "code": "LN",
+      "name": "LN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ln-function"
+    },
+    {
+      "code": "LOG",
+      "name": "LOG",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/log-function"
+    },
+    {
+      "code": "LOG10",
+      "name": "LOG10",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/log10-function"
+    },
+    {
+      "code": "LOGEST",
+      "name": "REGEXPP",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/logest-function"
+    },
+    {
+      "code": "LOGINV",
+      "name": "ROZKŁAD.LOG.ODW",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/loginv-function"
+    },
+    {
+      "code": "LOGNORM.DIST",
+      "name": "LOGNORM. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognorm-dist-function"
+    },
+    {
+      "code": "LOGNORMDIST",
+      "name": "ROZKŁAD.LOG",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognormdist-function"
+    },
+    {
+      "code": "LOGNORM.INV",
+      "name": "LOGNORM. ZAOKR.DO.OD",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognorm-inv-function"
+    },
+    {
+      "code": "LOOKUP",
+      "name": "WYSZUKAJ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lookup-function"
+    },
+    {
+      "code": "LOWER",
+      "name": "LOWER",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lower-function"
+    },
+    {
+      "code": "MAKEARRAY",
+      "name": "MAKEARRAY",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/makearray-function"
+    },
+    {
+      "code": "MAP",
+      "name": "MAP",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/map-function"
+    },
+    {
+      "code": "MATCH",
+      "name": "PODAJ.POZYCJĘ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/match-function"
+    },
+    {
+      "code": "MAX",
+      "name": "MAX",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/max-function"
+    },
+    {
+      "code": "MAXA",
+      "name": "MAX.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/maxa-function"
+    },
+    {
+      "code": "MAXIFS",
+      "name": "Funkcja MAKS.WARUNKÓW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/maxifs-function"
+    },
+    {
+      "code": "MDETERM",
+      "name": "WYZNACZNIK.MACIERZY",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mdeterm-function"
+    },
+    {
+      "code": "MDURATION",
+      "name": "ROCZ.PRZYCH.M",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mduration-function"
+    },
+    {
+      "code": "MEDIAN",
+      "name": "MEDIANA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/median-function"
+    },
+    {
+      "code": "MID",
+      "name": "FRAGMENT.TEKSTU",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mid-function"
+    },
+    {
+      "code": "MIN",
+      "name": "MIN",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/min-function"
+    },
+    {
+      "code": "MINIFS",
+      "name": "Funkcja MIN.WARUNKÓW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/minifs-function"
+    },
+    {
+      "code": "MINA",
+      "name": "MIN.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mina-function"
+    },
+    {
+      "code": "MINUTE",
+      "name": "MINUTE (minuta)",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/minute-function"
+    },
+    {
+      "code": "MINVERSE",
+      "name": "MACIERZ.ODW",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/minverse-function"
+    },
+    {
+      "code": "MIRR",
+      "name": "MIRR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mirr-function"
+    },
+    {
+      "code": "MMULT",
+      "name": "MACIERZ.ILOCZYN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mmult-function"
+    },
+    {
+      "code": "MOD",
+      "name": "MOD",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mod-function"
+    },
+    {
+      "code": "MODE",
+      "name": "WYST.NAJCZĘŚCIEJ",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-function"
+    },
+    {
+      "code": "MODE.MULT",
+      "name": "TRYB. MULT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-mult-function"
+    },
+    {
+      "code": "MODE.SNGL",
+      "name": "WYST.NAJCZĘŚCIEJ.WART",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-sngl-function"
+    },
+    {
+      "code": "MONTH",
+      "name": "MIESIĄC",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/month-function"
+    },
+    {
+      "code": "MROUND",
+      "name": "ZAOKR.DO.WIELOKR",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mround-function"
+    },
+    {
+      "code": "MULTINOMIAL",
+      "name": "WIELOMIAN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/multinomial-function"
+    },
+    {
+      "code": "MUNIT",
+      "name": "MACIERZ.JEDNOSTKOWA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/munit-function"
+    },
+    {
+      "code": "N",
+      "name": "N",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/n-function"
+    },
+    {
+      "code": "NA",
+      "name": "ND.",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/na-function"
+    },
+    {
+      "code": "NEGBINOM.DIST",
+      "name": "DWUM.PRZEC. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/negbinom-dist-function"
+    },
+    {
+      "code": "NEGBINOMDIST",
+      "name": "ROZKŁAD.DWUM.PRZEC",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/negbinomdist-function"
+    },
+    {
+      "code": "NETWORKDAYS",
+      "name": "DNI.ROBOCZE",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-function"
+    },
+    {
+      "code": "NETWORKDAYS.INTL",
+      "name": "DNI.ROBOCZE. INTL",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-intl-function"
+    },
+    {
+      "code": "NOMINAL",
+      "name": "NOMINALNA",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/nominal-function"
+    },
+    {
+      "code": "NORM.DIST",
+      "name": "NORMA. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-dist-function"
+    },
+    {
+      "code": "NORMDIST",
+      "name": "ROZKŁAD.NORMALNY",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/normdist-function"
+    },
+    {
+      "code": "NORMINV",
+      "name": "ROZKŁAD.NORMALNY.ODW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norminv-function"
+    },
+    {
+      "code": "NORM.INV",
+      "name": "NORMA. ZAOKR.DO.OD",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-inv-function"
+    },
+    {
+      "code": "NORM.S.DIST",
+      "name": "NORMA. ROZKŁ.S",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-s-dist-function"
+    },
+    {
+      "code": "NORMSDIST",
+      "name": "ROZKŁAD.NORMALNY.S",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/normsdist-function"
+    },
+    {
+      "code": "NORM.S.INV",
+      "name": "NORMA. ROZKŁ.S.ODWR",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-s-inv-function"
+    },
+    {
+      "code": "NORMSINV",
+      "name": "ROZKŁAD.NORMALNY.S.ODW",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/normsinv-function"
+    },
+    {
+      "code": "NOT",
+      "name": "NIE",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/not-function"
+    },
+    {
+      "code": "NOW",
+      "name": "TERAZ",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/now-function"
+    },
+    {
+      "code": "NPER",
+      "name": "NPER",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/nper-function"
+    },
+    {
+      "code": "NPV",
+      "name": "NPV",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/npv-function"
+    },
+    {
+      "code": "NUMBERVALUE",
+      "name": "WARTOŚĆ.LICZBOWA",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/numbervalue-function"
+    },
+    {
+      "code": "OCT2BIN",
+      "name": "OCT2BIN",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2bin-function"
+    },
+    {
+      "code": "OCT2DEC",
+      "name": "ÓSM.NA.DZIES",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2dec-function"
+    },
+    {
+      "code": "OCT2HEX",
+      "name": "ÓSM.NA.SZESN",
+      "category": "Funkcje inżynierskie",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2hex-function"
+    },
+    {
+      "code": "ODD",
+      "name": "ZAOKR.DO.NPARZ",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/odd-function"
+    },
+    {
+      "code": "ODDFPRICE",
+      "name": "CENA.PIERW.OKR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddfprice-function"
+    },
+    {
+      "code": "ODDFYIELD",
+      "name": "RENT.PIERW.OKR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddfyield-function"
+    },
+    {
+      "code": "ODDLPRICE",
+      "name": "CENA.OST.OKR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddlprice-function"
+    },
+    {
+      "code": "ODDLYIELD",
+      "name": "RENT.OST.OKR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddlyield-function"
+    },
+    {
+      "code": "OFFSET",
+      "name": "PRZESUNIĘCIE",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/offset-function"
+    },
+    {
+      "code": "OR",
+      "name": "LUB",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/or-function"
+    },
+    {
+      "code": "PDURATION",
+      "name": "O.CZAS.TRWANIA",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pduration-function"
+    },
+    {
+      "code": "PEARSON",
+      "name": "PEARSON",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pearson-function"
+    },
+    {
+      "code": "PERCENTILE.EXC",
+      "name": "PERCENTYL.PRZEDZ.OTW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-exc-function"
+    },
+    {
+      "code": "PERCENTILE.INC",
+      "name": "PERCENTYL.PRZEDZ.ZAMK",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-inc-function"
+    },
+    {
+      "code": "PERCENTILE",
+      "name": "PERCENTYL",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-function"
+    },
+    {
+      "code": "PERCENTOF",
+      "name": "PROCENT",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentof-function"
+    },
+    {
+      "code": "PERCENTRANK.EXC",
+      "name": "PROC.POZYCJA. Przedz.Z",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-exc-function"
+    },
+    {
+      "code": "PERCENTRANK.INC",
+      "name": "PROC.POZYCJA. INC",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-inc-function"
+    },
+    {
+      "code": "PERCENTRANK",
+      "name": "PROCENT.POZYCJA",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-function"
+    },
+    {
+      "code": "PERMUT",
+      "name": "PERMUTACJE",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/permut-function"
+    },
+    {
+      "code": "PERMUTATIONA",
+      "name": "PERMUTACJE.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/permutationa-function"
+    },
+    {
+      "code": "PHI",
+      "name": "PHI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/phi-function"
+    },
+    {
+      "code": "PHONETIC",
+      "name": "PHONETIC",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/phonetic-function"
+    },
+    {
+      "code": "PI",
+      "name": "PI",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pi-function"
+    },
+    {
+      "code": "PIVOTBY",
+      "name": "Funkcja PRZESTAWIAJ.WEDŁUG",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pivotby-function"
+    },
+    {
+      "code": "PMT",
+      "name": "PMT",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pmt-function"
+    },
+    {
+      "code": "POISSON.DIST",
+      "name": "POISSON. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/poisson-dist-function"
+    },
+    {
+      "code": "POISSON",
+      "name": "ROZKŁAD.POISSON",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/poisson-function"
+    },
+    {
+      "code": "POWER",
+      "name": "POTĘGA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/power-function"
+    },
+    {
+      "code": "PPMT",
+      "name": "PPMT",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ppmt-function"
+    },
+    {
+      "code": "PRICE",
+      "name": "CENA",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/price-function"
+    },
+    {
+      "code": "PRICEDISC",
+      "name": "CENA.DYSK",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pricedisc-function"
+    },
+    {
+      "code": "PRICEMAT",
+      "name": "CENA.WYKUP",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pricemat-function"
+    },
+    {
+      "code": "PROB",
+      "name": "PRAWDPD",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/prob-function"
+    },
+    {
+      "code": "PRODUCT",
+      "name": "ILOCZYN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/product-function"
+    },
+    {
+      "code": "PROPER",
+      "name": "Z.WIELKIEJ.LITERY",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/proper-function"
+    },
+    {
+      "code": "PV",
+      "name": "PV",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pv-function"
+    },
+    {
+      "code": "QUARTILE",
+      "name": "KWARTYL",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-function"
+    },
+    {
+      "code": "QUARTILE.EXC",
+      "name": "KWARTYL.PRZEDZ.OTW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-exc-function"
+    },
+    {
+      "code": "QUARTILE.INC",
+      "name": "KWARTYL.PRZEDZ.ZAMK",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-inc-function"
+    },
+    {
+      "code": "QUOTIENT",
+      "name": "CZ.CAŁK.DZIELENIA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quotient-function"
+    },
+    {
+      "code": "RADIANS",
+      "name": "RADIANY",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/radians-function"
+    },
+    {
+      "code": "RAND",
+      "name": "LOS",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rand-function"
+    },
+    {
+      "code": "RANDARRAY",
+      "name": "LOSOWA.TABLICA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/randarray-function"
+    },
+    {
+      "code": "RANDBETWEEN",
+      "name": "LOS.ZAKR",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/randbetween-function"
+    },
+    {
+      "code": "RANK.AVG",
+      "name": "POZYCJA. ŚREDNIA",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-avg-function"
+    },
+    {
+      "code": "RANK.EQ",
+      "name": "RANK.EQ",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-eq-function"
+    },
+    {
+      "code": "RANK",
+      "name": "POZYCJA",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-function"
+    },
+    {
+      "code": "RATE",
+      "name": "RATE",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rate-function"
+    },
+    {
+      "code": "RECEIVED",
+      "name": "KWOTA.WYKUP",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/received-function"
+    },
+    {
+      "code": "REDUCE",
+      "name": "REDUCE",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/reduce-function"
+    },
+    {
+      "code": "REGEXEXTRACT",
+      "name": "REGEXWYODRĘBNIJ",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/regexextract-function"
+    },
+    {
+      "code": "REGEXREPLACE",
+      "name": "Funkcja REGEXZASTĄP",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/regexreplace-function"
+    },
+    {
+      "code": "REGEXTEST",
+      "name": "REGEXTEST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/regextest-function"
+    },
+    {
+      "code": "REGISTER.ID",
+      "name": "REJESTR.KOD",
+      "category": "Funkcje dodatków i automatyzacji",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/register-id-function"
+    },
+    {
+      "code": "REPLACE",
+      "name": "ZASTĄP, ZASTĄP.B",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/replace-function"
+    },
+    {
+      "code": "REPT",
+      "name": "POWT",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rept-function"
+    },
+    {
+      "code": "RIGHT",
+      "name": "PRAWY",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/right-function"
+    },
+    {
+      "code": "ROMAN",
+      "name": "RZYMSKIE",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/roman-function"
+    },
+    {
+      "code": "ROUND",
+      "name": "ZAOKR",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/round-function"
+    },
+    {
+      "code": "ROUNDDOWN",
+      "name": "ZAOKR.DÓŁ",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rounddown-function"
+    },
+    {
+      "code": "ROUNDUP",
+      "name": "ZAOKR.GÓRA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/roundup-function"
+    },
+    {
+      "code": "ROW",
+      "name": "WIERSZ",
+      "category": "Funkcje odnośników i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/row-function"
+    },
+    {
+      "code": "ROWS",
+      "name": "WIERSZE",
+      "category": "Funkcje odnośników i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rows-function"
+    },
+    {
+      "code": "RRI",
+      "name": "RÓWNOW.STOPA.PROC",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rri-function"
+    },
+    {
+      "code": "RSQ",
+      "name": "R.KWADRAT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rsq-function"
+    },
+    {
+      "code": "RTD",
+      "name": "DANE.CZASU.RZECZ",
+      "category": "Funkcje odnośników i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rtd-function"
+    },
+    {
+      "code": "SCAN",
+      "name": "SCAN",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/scan-function"
+    },
+    {
+      "code": "SEARCH",
+      "name": "SZUKAJ.TEKST, SZUKAJ.TEKST.B",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/search-function"
+    },
+    {
+      "code": "SEC",
+      "name": "SEC",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sec-function"
+    },
+    {
+      "code": "SECH",
+      "name": "SECH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sech-function"
+    },
+    {
+      "code": "SECOND",
+      "name": "SECOND (sekunda)",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/second-function"
+    },
+    {
+      "code": "SEQUENCE",
+      "name": "SEKWENCJA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sequence-function"
+    },
+    {
+      "code": "SERIESSUM",
+      "name": "SUMA.SZER.POT",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/seriessum-function"
+    },
+    {
+      "code": "SHEET",
+      "name": "ARKUSZ",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sheet-function"
+    },
+    {
+      "code": "SHEETS",
+      "name": "ARKUSZE",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sheets-function"
+    },
+    {
+      "code": "SIGN",
+      "name": "ZNAK.LICZBY",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sign-function"
+    },
+    {
+      "code": "SIN",
+      "name": "SIN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sin-function"
+    },
+    {
+      "code": "SINH",
+      "name": "SINH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sinh-function"
+    },
+    {
+      "code": "SKEW",
+      "name": "SKOŚNOŚĆ",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/skew-function"
+    },
+    {
+      "code": "SKEW.P",
+      "name": "Skośność. P",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/skew-p-function"
+    },
+    {
+      "code": "SLN",
+      "name": "SLN",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sln-function"
+    },
+    {
+      "code": "SLOPE",
+      "name": "NACHYLENIE",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/slope-function"
+    },
+    {
+      "code": "SMALL",
+      "name": "MIN.K",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/small-function"
+    },
+    {
+      "code": "SORT",
+      "name": "SORTUJ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sort-function"
+    },
+    {
+      "code": "SORTBY",
+      "name": "SORTUJ.WEDŁUG",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sortby-function"
+    },
+    {
+      "code": "SQRT",
+      "name": "SQRT",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sqrt-function"
+    },
+    {
+      "code": "SQRTPI",
+      "name": "PIERW.PI",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sqrtpi-function"
+    },
+    {
+      "code": "STANDARDIZE",
+      "name": "NORMALIZUJ",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/standardize-function"
+    },
+    {
+      "code": "STDEV",
+      "name": "ODCH.STANDARDOWE",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-function"
+    },
+    {
+      "code": "STDEV.P",
+      "name": "ODCH.STANDARDOWE. P",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-p-function"
+    },
+    {
+      "code": "STDEV.S",
+      "name": "ODCH.STANDARD.PRÓBKI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-s-function"
+    },
+    {
+      "code": "STDEVA",
+      "name": "ODCH.STANDARDOWE.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdeva-function"
+    },
+    {
+      "code": "STDEVP",
+      "name": "ODCH.STANDARD.POPUL",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdevp-function"
+    },
+    {
+      "code": "STDEVPA",
+      "name": "ODCH.STANDARD.POPUL.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdevpa-function"
+    },
+    {
+      "code": "STEYX",
+      "name": "REGBŁSTD",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/steyx-function"
+    },
+    {
+      "code": "STOCKHISTORY",
+      "name": "HISTORIA.AKCJI",
+      "category": "Informacje",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stockhistory-function"
+    },
+    {
+      "code": "SUBSTITUTE",
+      "name": "PODSTAW",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/substitute-function"
+    },
+    {
+      "code": "SUBTOTAL",
+      "name": "SUMY.CZĘŚCIOWE",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/subtotal-function"
+    },
+    {
+      "code": "SUM",
+      "name": "SUMA",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sum-function"
+    },
+    {
+      "code": "SUMIF",
+      "name": "SUMA.JEŻELI",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumif-function"
+    },
+    {
+      "code": "SUMIFS",
+      "name": "SUMA.WARUNKÓW",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumifs-function"
+    },
+    {
+      "code": "SUMPRODUCT",
+      "name": "SUMA.ILOCZYNÓW",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumproduct-function"
+    },
+    {
+      "code": "SUMSQ",
+      "name": "SUMA.KWADRATÓW",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumsq-function"
+    },
+    {
+      "code": "SUMX2MY2",
+      "name": "SUMA.X2.M.Y2",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumx2my2-function"
+    },
+    {
+      "code": "SUMX2PY2",
+      "name": "SUMA.X2.P.Y2",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumx2py2-function"
+    },
+    {
+      "code": "SUMXMY2",
+      "name": "SUMA.XMY.2",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumxmy2-function"
+    },
+    {
+      "code": "SWITCH",
+      "name": "PRZEŁĄCZ",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/switch-function"
+    },
+    {
+      "code": "SYD",
+      "name": "SYD",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/syd-function"
+    },
+    {
+      "code": "T",
+      "name": "T",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-function"
+    },
+    {
+      "code": "TAN",
+      "name": "TAN",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tan-function"
+    },
+    {
+      "code": "TANH",
+      "name": "TANH",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tanh-function"
+    },
+    {
+      "code": "TAKE",
+      "name": "WYCINEK",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/take-function"
+    },
+    {
+      "code": "TBILLEQ",
+      "name": "RENT.EKW.BS",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbilleq-function"
+    },
+    {
+      "code": "TBILLPRICE",
+      "name": "CENA.BS",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbillprice-function"
+    },
+    {
+      "code": "TBILLYIELD",
+      "name": "RENT.BS",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbillyield-function"
+    },
+    {
+      "code": "T.DIST",
+      "name": "ROZKŁ.T",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-function"
+    },
+    {
+      "code": "T.DIST.2T",
+      "name": "ROZKŁ.T.2T",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-2t-function"
+    },
+    {
+      "code": "T.DIST.RT",
+      "name": "T.DIST.RT",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-rt-function"
+    },
+    {
+      "code": "TDIST",
+      "name": "ROZKŁAD.T",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tdist-function"
+    },
+    {
+      "code": "TEXT",
+      "name": "TEKST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/text-function"
+    },
+    {
+      "code": "TEXTAFTER",
+      "name": "TEKST.PO",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textafter-function"
+    },
+    {
+      "code": "TEXTBEFORE",
+      "name": "TEKST.PRZED",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textbefore-function"
+    },
+    {
+      "code": "TEXTJOIN",
+      "name": "POŁĄCZ.TEKSTY",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textjoin-function"
+    },
+    {
+      "code": "TEXTSPLIT",
+      "name": "PODZIEL.TEKST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textsplit-function"
+    },
+    {
+      "code": "TIME",
+      "name": "TIME",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/time-function"
+    },
+    {
+      "code": "TIMEVALUE",
+      "name": "CZAS.WARTOŚĆ",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/timevalue-function"
+    },
+    {
+      "code": "T.INV",
+      "name": "ROZKŁ.T.ODWR",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-inv-function"
+    },
+    {
+      "code": "T.INV.2T",
+      "name": "ROZKŁ.T.ODWR.DS",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-inv-2t-function"
+    },
+    {
+      "code": "TINV",
+      "name": "ROZKŁAD.T.ODW",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tinv-function"
+    },
+    {
+      "code": "TOCOL",
+      "name": "DO.KOLUMNY",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tocol-function"
+    },
+    {
+      "code": "TOROW",
+      "name": "DO.WIERSZA",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/torow-function"
+    },
+    {
+      "code": "TODAY",
+      "name": "DZIŚ",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/today-function"
+    },
+    {
+      "code": "TRANSLATE",
+      "name": "PRZETŁUMACZ",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/translate-function"
+    },
+    {
+      "code": "TRANSPOSE",
+      "name": "TRANSPONUJ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/transpose-function"
+    },
+    {
+      "code": "TREND",
+      "name": "REGLINW",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trend-function"
+    },
+    {
+      "code": "TRIM",
+      "name": "USUŃ.ZBĘDNE.ODSTĘPY",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trim-function"
+    },
+    {
+      "code": "TRIMMEAN",
+      "name": "ŚREDNIA.WEWN",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trimmean-function"
+    },
+    {
+      "code": "TRIMRANGE",
+      "name": "PRZYTNIJZAKRES",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trimrange-function"
+    },
+    {
+      "code": "TRUE",
+      "name": "PRAWDA",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/true-function"
+    },
+    {
+      "code": "TRUNC",
+      "name": "LICZBA.CAŁK",
+      "category": "Funkcje matematyczne i trygonometryczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trunc-function"
+    },
+    {
+      "code": "T.TEST",
+      "name": "T.TEST",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-test-function"
+    },
+    {
+      "code": "TTEST",
+      "name": "TEST.T",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ttest-function"
+    },
+    {
+      "code": "TYPE",
+      "name": "TYPE (TYP)",
+      "category": "Funkcje informacyjne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/type-function"
+    },
+    {
+      "code": "UNICHAR",
+      "name": "ZNAK.UNICODE",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/unichar-function"
+    },
+    {
+      "code": "UNICODE",
+      "name": "Znaki UNICODE",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/unicode-function"
+    },
+    {
+      "code": "UNIQUE",
+      "name": "UNIKATOWE",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/unique-function"
+    },
+    {
+      "code": "UPPER",
+      "name": "UPPER",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/upper-function"
+    },
+    {
+      "code": "VALUE",
+      "name": "WARTOŚĆ",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/value-function"
+    },
+    {
+      "code": "VALUETOTEXT",
+      "name": "WARTOŚĆ.NA.TEKST",
+      "category": "Funkcje tekstowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/valuetotext-function"
+    },
+    {
+      "code": "VAR",
+      "name": "WARIANCJA",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-function"
+    },
+    {
+      "code": "VAR.P",
+      "name": "VAR. P",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-p-function"
+    },
+    {
+      "code": "VAR.S",
+      "name": "WARIANCJA.PRÓBKI",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-s-function"
+    },
+    {
+      "code": "VARA",
+      "name": "WARIANCJA.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vara-function"
+    },
+    {
+      "code": "VARP",
+      "name": "WARIANCJA.POPUL",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/varp-function"
+    },
+    {
+      "code": "VARPA",
+      "name": "WARIANCJA.POPUL.A",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/varpa-function"
+    },
+    {
+      "code": "VDB",
+      "name": "VDB",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vdb-function"
+    },
+    {
+      "code": "VLOOKUP",
+      "name": "WYSZUKAJ.PIONOWO",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vlookup-function"
+    },
+    {
+      "code": "VSTACK",
+      "name": "STOS.PION",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vstack-function"
+    },
+    {
+      "code": "WEBSERVICE",
+      "name": "WEBSERVICE",
+      "category": "Funkcje sieci Web",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/webservice-function"
+    },
+    {
+      "code": "WEEKDAY",
+      "name": "DZIEŃ.TYG",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weekday-function"
+    },
+    {
+      "code": "WEEKNUM",
+      "name": "NUM.TYG",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weeknum-function"
+    },
+    {
+      "code": "WEIBULL",
+      "name": "ROZKŁAD.WEIBULL",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weibull-function"
+    },
+    {
+      "code": "WEIBULL.DIST",
+      "name": "WEIBULL. ROZKŁ.",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weibull-dist-function"
+    },
+    {
+      "code": "WORKDAY",
+      "name": "DZIEŃ.ROBOCZY",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/workday-function"
+    },
+    {
+      "code": "WORKDAY.INTL",
+      "name": "DZIEŃ ROBOCZY. INTL",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/workday-intl-function"
+    },
+    {
+      "code": "WRAPCOLS",
+      "name": "ZAWIŃ.KOLUMNY",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/wrapcols-function"
+    },
+    {
+      "code": "WRAPROWS",
+      "name": "ZAWIŃ.WIERSZE",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/wraprows-function"
+    },
+    {
+      "code": "XIRR",
+      "name": "XIRR",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xirr-function"
+    },
+    {
+      "code": "XLOOKUP",
+      "name": "X.WYSZUKAJ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "code": "XMATCH",
+      "name": "X.DOPASUJ",
+      "category": "Funkcje wyszukiwania i odwołań",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xmatch-function"
+    },
+    {
+      "code": "XNPV",
+      "name": "XNPV",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xnpv-function"
+    },
+    {
+      "code": "XOR",
+      "name": "XOR",
+      "category": "Funkcje logiczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xor-function"
+    },
+    {
+      "code": "YEAR",
+      "name": "ROK",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/year-function"
+    },
+    {
+      "code": "YEARFRAC",
+      "name": "CZĘŚĆ.ROKU",
+      "category": "Funkcje daty i godziny",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yearfrac-function"
+    },
+    {
+      "code": "YIELD",
+      "name": "PLON",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yield-function"
+    },
+    {
+      "code": "YIELDDISC",
+      "name": "RENT.DYSK",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yielddisc-function"
+    },
+    {
+      "code": "YIELDMAT",
+      "name": "RENT.WYKUP",
+      "category": "Funkcje finansowe",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yieldmat-function"
+    },
+    {
+      "code": "Z.TEST",
+      "name": "Z.TEST",
+      "category": "Funkcje statystyczne",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/z-test-function"
+    },
+    {
+      "code": "ZTEST",
+      "name": "TEST.Z",
+      "category": "Funkcje zgodności",
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ztest-function"
+    }
+  ]
+}
