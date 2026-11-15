@@ -10,6 +10,15 @@ assert.equal(snapshot.course_count,82);
 assert.equal(snapshot.change_count,80);
 assert.equal(catalog[0].id,'excel-skroty');
 assert.equal(catalog[0].price,0);
+const santaTitle='Bądź lepszym Świętym Mikołajem';
+const santa=catalog.find(c=>c.id==='swiety-mikolaj');
+assert.equal(santa?.title,santaTitle,'Santa course should have an inviting title in the catalogue');
+assert.equal(santa?.certificate_title_pl,santaTitle,'Santa certificate label should match the course name');
+for(const santaPage of ['public/academy/kursy/swiety-mikolaj.html','public/academy/kategorie/rzemioslo-i-hobby.html']){
+ const pageHtml=read(santaPage);
+ assert(pageHtml.includes(santaTitle),'Updated Santa name missing from '+santaPage);
+ assert(!pageHtml.includes('Wizyta Świętego Mikołaja — kurs świąteczny'),'Outdated Santa title found on '+santaPage);
+}
 assert.deepEqual(snapshot.free_courses_after_change.sort(),['excel-skroty','swiety-mikolaj','zaufany-wolontariusz']);
 assert(!home.includes('class="excel-free-intro"'),'Free Excel must not duplicate its catalogue card with a hero banner');
 assert(!home.includes('BEZPŁATNY KURS NA START'),'Free courses must use equal card styles');
