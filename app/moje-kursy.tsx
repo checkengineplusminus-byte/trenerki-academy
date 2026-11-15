@@ -5,6 +5,8 @@ import {supabase} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 // @ts-ignore — pomocniki bez zależności, sprawdzane testami Node.
 import {isAccountingCourse,courseDestination,accountingProgress,courseFinished} from '../src/accounting/course-entry.js';
+// @ts-ignore — pagination and current-curriculum counts covered by Node tests.
+import {loadCourseProgress} from '../src/learning/course-progress.js';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean};
@@ -54,19 +56,12 @@ export default function MyCourses(){
     if(!error&&data?.ok){setCreditBalance(Number(data.balance_grosze||0));setCreditHistory(data.history||[])}
    }).catch(()=>{});
    void academyAction('whoami').then(info=>setAdmin(!!info.is_admin)).catch(()=>setAdmin(false));
-   const [{data:rows,error:e},{data:passed,error:p}]=await Promise.all([
-    supabase.from('ta_enrollments').select('course_slug,expires_at,status,ta_courses(title_pl)').eq('user_id',user.id),
-    supabase.from('ta_learning_progress').select('course_slug,lesson_no').eq('user_id',user.id)]);
-   if(e||p)throw e||p;
-   const done=new Map<string,Set<number>>();for(const row of passed||[]){if(!done.has(row.course_slug))done.set(row.course_slug,new Set());done.get(row.course_slug)!.add(row.lesson_no);}
+   const {data:rows,error:e}=await supabase.from('ta_enrollments').select('course_slug,expires_at,status,ta_courses(title_pl)').eq('user_id',user.id);
+   if(e)throw e;
    const enrolled=(rows||[]) as unknown as Enrollment[];
    // Encyklopedia ma własne tabele i licznik przeczytanych materiałów.
    const slugs=[...new Set(enrolled.map(r=>r.course_slug))].filter(slug=>!isAccountingCourse(slug));
-   const counts=new Map<string,number>();
-   if(slugs.length){
-    const {data:lessons,error:le}=await supabase.from('ta_lessons').select('course_slug,lesson_no').in('course_slug',slugs);
-    if(le)throw le;for(const row of lessons||[])counts.set(row.course_slug,(counts.get(row.course_slug)||0)+1);
-   }
+   const progressByCourse=await loadCourseProgress(supabase,user.id,slugs);
    let accountingInfo:any=null;
    if(enrolled.some(r=>isAccountingCourse(r.course_slug)&&r.status==='active'&&new Date(r.expires_at)>new Date())){
     const result=await supabase.rpc('ta_accounting_overview');
@@ -79,8 +74,7 @@ export default function MyCourses(){
    setCertificates(Object.fromEntries((diplomas||[]).map(d=>[d.course_slug,d as Diploma])));
    setItems(enrolled.map(row=>{
     if(isAccountingCourse(row.course_slug))return {...row,lessonCount:reading.lessonCount,completedCount:reading.completedCount,progress:reading.progress,progressAvailable:reading.available};
-    const lessonCount=counts.get(row.course_slug)||0,completedCount=Math.min(lessonCount,done.get(row.course_slug)?.size||0);
-    return {...row,lessonCount,completedCount,progress:lessonCount?Math.round(completedCount/lessonCount*100):0,progressAvailable:lessonCount>0};
+    return {...row,...(progressByCourse.get(row.course_slug)||{lessonCount:0,completedCount:0,progress:0,progressAvailable:false})};
    }));
   }catch(e:any){setError(e.message||'Nie udało się wczytać kursów.');}finally{setBusy(false);}
  }
@@ -105,6 +99,7 @@ export default function MyCourses(){
    <View style={{gap:6}}>
     {active?<Pressable onPress={()=>router.push(courseDestination(row.course_slug))} accessibilityRole="button" style={{backgroundColor:'#173228',paddingVertical:10,paddingHorizontal:5,borderRadius:9}}><Text style={{textAlign:'center',fontSize:12,color:'white',fontWeight:'800'}}>{done?'Otwórz kurs':'Kontynuuj naukę'}</Text></Pressable>:<Text style={{fontSize:12,color:'#956532'}}>Dostęp wygasł</Text>}
     {hasDiploma&&<Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug}})} accessibilityRole="button" style={{backgroundColor:'#e8f3dc',padding:9,borderRadius:9}}><Text style={{textAlign:'center',fontSize:11,color:'#245c3c',fontWeight:'800'}}>Zobacz dyplom</Text></Pressable>}
+    {hasDiploma&&!done&&row.progressAvailable&&<Text style={{fontSize:10,lineHeight:15,color:'#667b68'}}>Dyplom z wcześniejszego zaliczenia pozostaje dostępny. Dokończ aktualne lekcje.</Text>}
     {done&&!hasDiploma&&<Text style={{fontSize:10,lineHeight:15,color:'#667b68'}}>Egzamin i dyplom w kursie</Text>}
    </View>
   </View>;

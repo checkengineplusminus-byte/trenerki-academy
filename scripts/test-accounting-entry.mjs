@@ -16,7 +16,7 @@ test('Historyczne oznaczenia nie dają więcej niż 100 procent czytania',()=>as
 test('Uszkodzone dane nie tworzą wyniku',()=>{for(const x of [{approved_count:'45',read_count:1},{approved_count:-1,read_count:0},{approved_count:45,read_count:NaN}])assert.equal(accountingProgress(x).available,false);});
 test('Przeczytanie wszystkich dostępnych lekcji nie kończy encyklopedii',()=>assert.equal(courseFinished(A,45,45),false));
 test('Stary certyfikat nie odblokowuje nowego egzaminu encyklopedii',()=>assert.equal(courseFinished(A,45,45,true),false));
-test('Pozostałe kursy zachowują kryteria zakończenia',()=>{assert.equal(courseFinished('excel',8,8),true);assert.equal(courseFinished('excel',8,4),false);assert.equal(courseFinished('excel',8,4,true),true);});
+test('Kurs wymaga wszystkich aktualnych lekcji, nawet gdy zachowano wcześniejszy dyplom',()=>{assert.equal(courseFinished('excel',8,8),true);assert.equal(courseFinished('excel',8,4),false);assert.equal(courseFinished('excel',30,8,true),false);assert.equal(courseFinished('excel',0,0,true),false);});
 test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',()=>{
  const source=readFileSync(new URL('../app/nauka.tsx',import.meta.url),'utf8');
  const guard="   if(slug==='ksiegowosc-od-podstaw'){router.replace(courseDestination(slug,lessonParam));return;}\n";
