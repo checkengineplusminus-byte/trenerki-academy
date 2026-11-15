@@ -153,8 +153,9 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const vatLedgerValid=[vatLedgerSalesCents,vatLedgerPurchasesCents].every(Number.isSafeInteger);
  const vatLedgerMatches=!!period&&issued.length>0&&vatLedgerValid&&
   vatLedgerSalesCents===totals.sale_vat_cents&&vatLedgerPurchasesCents===totals.purchase_vat_cents;
+ const vatLedgerIssues=[];
  if(!vatLedgerMatches&&!!period&&issued.length>0)
-  sourceIdentityIssues.push({code:'model_vat_ledger_does_not_match_invoices',invoice:period});
+  vatLedgerIssues.push({code:'model_vat_ledger_does_not_match_invoices',invoice:period});
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -193,7 +194,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    review:'not_tested'},
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceIdentityIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
