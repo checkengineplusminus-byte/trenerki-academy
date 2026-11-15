@@ -96,6 +96,34 @@ for(const mobile of [false,true]){
   await send('LINE');await send('100,100');await send('400,100');await send('');
   await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 3'}).waitFor();
   await send('ZOOM E');
+  // User-path regression: tapping a thin LINE must select immediately, not only after holding.
+  await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
+  const hit4=cad.getByTestId('cad-canvas').locator('[data-cad-hit="true"][data-cad-object="4"]');
+  const hit5=cad.getByTestId('cad-canvas').locator('[data-cad-hit="true"][data-cad-object="5"]');
+  await hit4.waitFor();await hit5.waitFor();
+  if(mobile)await hit4.tap();else await hit4.click();
+  await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 1'}).waitFor();
+  if(mobile)await hit5.tap();else await hit5.click();
+  await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 1'}).waitFor();
+  const hold=cad.getByTestId('cad-hold-selection');
+  await hold.click();
+  if(mobile)await hit4.tap();else await hit4.click();
+  await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 2'}).waitFor();
+  await hold.click();
+  await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
+  const status=cad.getByTestId('cad-status-bar');
+  await status.waitFor();
+  await status.getByRole('button',{name:'Siatka · F7'}).click();
+  await cad.getByTestId('cad-status-help').getByText(/GRID · F7/).waitFor();
+  await status.getByRole('button',{name:'OSNAP · F3'}).click();
+  await status.getByRole('button',{name:'POLAR · F10'}).click();
+  await cad.getByTestId('cad-status-help').getByText(/POLAR · F10/).waitFor();
+  await status.getByRole('button',{name:'OTRACK · F11'}).click();
+  await cad.getByTestId('cad-status-help').getByText(/OTRACK · F11/).waitFor();
+  await status.getByRole('button',{name:'Dynamic Input · F12'}).click();
+  await status.screenshot({path:'/tmp/trenerki-autocad-status-'+(mobile?'mobile':'desktop')+'.png'});
+  await cad.getByRole('button',{name:'Zamknij opis paska statusu'}).click();
+  console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: single '+(mobile?'touch':'left click')+' selects LINE; hold selection accumulates; status bar Grid OSNAP POLAR OTRACK DYN explained');
   if(!mobile){
    await cad.getByRole('button',{name:'Wyczyść zaznaczenie · Esc'}).click();
    const bounds=await cad.getByTestId('cad-canvas').boundingBox();
