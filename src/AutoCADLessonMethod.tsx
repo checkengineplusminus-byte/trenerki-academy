@@ -1,50 +1,48 @@
-import React from 'react';
-import {Text,View} from 'react-native';
-import course from '../content/autocad-methodology-v2.json';
+import React,{useState} from 'react';
+import {Pressable,Text,View} from 'react-native';
+import guide from '../content/autocad-complete-lessons-v3.json';
+import methods from '../content/autocad-methodology-v2.json';
 
 type Props={lessonNo:number;title:string;raw?:string[]};
-const ink='#193c2d',body='#365445';
-const guide=course.lessons;
-
-export default function AutoCADLessonMethod({lessonNo,title,raw}:Props){
- const lesson=guide[lessonNo];
- if(!lesson||lesson.lesson_no!==lessonNo)return null;
- const explanation=typeof raw?.[1]==='string'?raw[1]:'';
- const expected=typeof raw?.[3]==='string'?raw[3]:'';
- const pitfall=typeof raw?.[4]==='string'?raw[4]:'';
- return <View testID="autocad-lesson-method" style={{gap:15,marginBottom:18}}>
-  <View style={{backgroundColor:'white',borderWidth:1,borderColor:'#dce7d9',borderRadius:15,padding:18,gap:12}}>
-   <Text style={{fontSize:11,color:'#4a8057',fontWeight:'900'}}>LEKCJA {lessonNo+1} · ZROZUM ZASADĘ</Text>
-   <Text style={{fontSize:19,fontWeight:'900',lineHeight:26,color:ink}}>{lesson.heading}</Text>
-   {!!explanation&&<Text style={{fontSize:15,lineHeight:25,color:body}}>{explanation}</Text>}
-   <View style={{borderTopWidth:1,borderColor:'#edf1e9',paddingTop:12,gap:7}}>
-    <Text style={{color:ink,fontSize:15,fontWeight:'900'}}>Dlaczego to ma znaczenie w praktyce?</Text>
-    <Text style={{fontSize:15,lineHeight:25,color:body}}>{lesson.concept}</Text>
-   </View>
+const ink='#193c2d',body='#365445',green='#305f43';
+const book=guide.lessonBooks;
+const blockTitle=(title:string)=><Text style={{fontSize:18,lineHeight:26,fontWeight:'900',color:ink}}>{title}</Text>;
+export default function AutoCADLessonMethod({lessonNo,title}:Props){
+ const [showAllCommands,setShowAllCommands]=useState(true);
+ const chapter=book[lessonNo],method=methods.lessons[lessonNo];
+ if(!chapter||chapter.lesson_no!==lessonNo||!method)return null;
+ return <View testID="autocad-lesson-method" style={{gap:17,marginBottom:20}}>
+  <View style={{backgroundColor:'#e7f2e3',borderRadius:14,padding:17,gap:8}}>
+   <Text style={{color:'#35734c',fontSize:12,fontWeight:'900'}}>LEKCJA {lessonNo+1}/30 · KOMPLETNY PODRĘCZNIK</Text>
+   <Text style={{fontSize:20,lineHeight:28,fontWeight:'900',color:ink}}>{method.heading}</Text>
+   <Text style={{fontSize:14,lineHeight:22,color:body}}>Nauka dla osoby od zera: przykład → polecenia → czynności → samodzielne sprawdzenie. Materiał zawiera ponad {chapter.estimatedWords} słów objaśnień i ćwiczeń, nie samą listę skrótów.</Text>
   </View>
-  <View style={{backgroundColor:'#eef6eb',borderRadius:15,padding:18,gap:12}}>
-   <Text style={{color:'#42754d',fontWeight:'900',fontSize:12}}>ĆWICZENIE W PRAWDZIWYM AUTOCAD-ZIE</Text>
-   <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Wykonaj po kolei</Text>
-   {lesson.steps.map((step,i)=><View key={i} style={{flexDirection:'row',gap:12,alignItems:'flex-start',paddingVertical:5}}>
-    <View style={{width:29,height:29,borderRadius:9,backgroundColor:'#cfe7c8',justifyContent:'center',alignItems:'center'}}>
-     <Text style={{color:ink,fontWeight:'900'}}>{i+1}</Text>
-    </View>
-    <Text style={{color:body,fontSize:15,lineHeight:24,flex:1}}>{step}</Text>
+  {chapter.sections.filter(x=>x.heading!=='Ciekawostka z praktyki').map((section,index)=><View key={section.heading}
+   style={{backgroundColor:index%2?'#f4f8f2':'white',borderRadius:13,borderWidth:1,borderColor:'#e0e9dc',padding:17,gap:12}}>
+   {blockTitle(section.heading)}
+   {section.paragraphs?.map((paragraph,i)=><Text key={i} style={{fontSize:15,lineHeight:26,color:body}}>{paragraph}</Text>)}
+   {section.walk?.map((step,i)=><View key={i} style={{gap:7,padding:12,backgroundColor:'#eef5e9',borderRadius:10}}>
+    <Text style={{fontSize:15,fontWeight:'900',color:green}}>Krok {i+1}. {step.instruction}</Text>
+    <Text style={{fontSize:14,lineHeight:23,color:body}}>{step.why}</Text>
+    <Text style={{fontSize:13,lineHeight:21,fontWeight:'700',color:'#4f7057'}}>{step.check}</Text>
    </View>)}
-   <Text style={{fontSize:12,lineHeight:19,color:'#557260'}}>Instrukcje dotyczą Autodesk AutoCAD/AutoCAD LT. Pracuj na kopiach ćwiczebnych, nie na dokumentacji produkcyjnej.</Text>
-  </View>
-  {!!expected&&<View testID="autocad-result-check" style={{padding:16,backgroundColor:'white',borderWidth:1,borderColor:'#dbe7d6',borderRadius:12,gap:6}}>
-   <Text style={{color:'#315f42',fontWeight:'900',fontSize:15}}>Sprawdź wynik — nie tylko wygląd</Text>
-   <Text style={{color:body,fontSize:15,lineHeight:24}}>{expected}</Text>
-  </View>}
-  {!!pitfall&&<View style={{padding:15,borderLeftWidth:4,borderColor:'#c7a468',backgroundColor:'#fff7e9',borderRadius:10,gap:7}}>
-   <Text style={{color:'#795b29',fontWeight:'900'}}>Typowy błąd i jak go uniknąć</Text>
-   <Text style={{color:'#69512c',fontSize:14,lineHeight:23}}>{pitfall}</Text>
-  </View>}
-  <View style={{padding:15,borderRadius:10,gap:6,backgroundColor:'#f3f6f0'}}>
-   <Text style={{color:ink,fontSize:14,fontWeight:'900'}}>Sprawdź, czy naprawdę rozumiesz</Text>
-   <Text style={{color:body,fontSize:14,lineHeight:23}}>{lesson.question}</Text>
-   <Text style={{color:'#617867',fontSize:12,lineHeight:18}}>Odpowiedz sobie przed pytaniem kontrolnym poniżej. To ćwiczenie do namysłu, nie dodatkowa blokada przejścia.</Text>
+   {!!section.commands?.length&&<View style={{gap:8}}>
+    <Pressable testID="cad-lesson-command-toggle" accessibilityRole="button" accessibilityState={{expanded:showAllCommands}}
+      onPress={()=>setShowAllCommands(v=>!v)} style={{alignSelf:'flex-start',padding:10,backgroundColor:'#e5f2e0',borderRadius:8}}>
+     <Text style={{color:green,fontWeight:'900'}}>{showAllCommands?'Zwiń':'Rozwiń'} objaśnienia {section.commands.length} poleceń</Text>
+    </Pressable>
+    {showAllCommands&&section.commands.map(c=><View key={c.command} style={{gap:6,padding:12,borderLeftWidth:3,borderColor:'#8cab86',backgroundColor:'white',borderRadius:8}}>
+     <Text style={{fontWeight:'900',fontSize:15,color:ink}}>{c.command}{c.alias?' · '+c.alias:''} — {c.heading}</Text>
+     <Text style={{fontSize:14,lineHeight:23,color:body}}>{c.explanation}</Text>
+     <Text style={{fontSize:14,lineHeight:23,color:body}}>{c.procedure}</Text>
+     <Text style={{fontSize:13,lineHeight:21,color:'#4b674f'}}>{c.case}</Text>
+     <Text style={{fontSize:11,lineHeight:18,color:'#687e6d',fontWeight:'800'}}>{c.environment}</Text>
+    </View>)}
+   </View>}
+  </View>)}
+  <View testID="autocad-result-check" style={{padding:14,backgroundColor:'#e8f4e4',borderRadius:12,gap:7}}>
+   <Text style={{fontWeight:'900',fontSize:15,color:ink}}>Przed przejściem dalej</Text>
+   <Text style={{fontSize:14,lineHeight:23,color:body}}>Sprawdź wyjaśnienie, przeprowadź zadanie w symulatorze i porównaj wynik z kryteriami z tej lekcji. W przypadku funkcji wymagającej rzeczywistego AutoCAD wykonaj ją w programie producenta, nie przyjmuj, że sam symulator zastępuje to ćwiczenie.</Text>
   </View>
  </View>;
 }
