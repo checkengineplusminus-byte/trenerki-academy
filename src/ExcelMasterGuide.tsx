@@ -17,6 +17,7 @@ const link=(url:string)=>void Linking.openURL(url);
 export default function ExcelMasterGuide(){
  const {width}=useWindowDimensions(),mobile=width<650;
  const [tab,setTab]=useState<Tab>('plan');
+ const [expanded,setExpanded]=useState(false);
  const [level,setLevel]=useState('Wszystkie'),[openChapter,setOpenChapter]=useState<number|null>(1);
  const [query,setQuery]=useState(''),[category,setCategory]=useState('Wszystkie'),[limit,setLimit]=useState(25);
  const [answer,setAnswer]=useState(''),[quiz,setQuiz]=useState<'idle'|'correct'|'wrong'>('idle');
@@ -30,13 +31,15 @@ export default function ExcelMasterGuide(){
   borderColor:selected?'#559671':outline,backgroundColor:selected?'#d9ecdd':'white'} as const);
  const sectionHeading={color:ink,fontSize:mobile?17:19,fontWeight:'900' as const};
  return <View testID="excel-master-guide" style={{borderWidth:1,borderColor:'#bfd6c7',borderRadius:17,backgroundColor:'#f3f8f3',marginVertical:14,overflow:'hidden'}}>
-  <View style={{padding:mobile?13:19,backgroundColor:'#e2f0e2',gap:8}}>
+  <Pressable accessibilityRole="button" accessibilityState={{expanded}} onPress={()=>setExpanded(v=>!v)}
+   style={{padding:mobile?13:19,backgroundColor:'#e2f0e2',gap:8,minHeight:68}}>
    <Text style={{fontSize:11,fontWeight:'900',color:'#427657'}}>TRENERKI · DODATKOWA ENCYKLOPEDIA EXCEL</Text>
    <Text style={{fontSize:mobile?20:23,fontWeight:'900',color:ink}}>Excel krok po kroku — od pierwszej komórki do raportu PDF</Text>
    <Text style={{fontSize:13,lineHeight:21,color:muted}}>39 szczegółowych rozdziałów uzupełniających i katalog 514 funkcji. Podstawy uczymy powoli, z przykładem i ostrzeżeniem o typowych błędach; później przechodzimy do analizy, tabel przestawnych, Power Query i finansów. Dotychczasowe 30 zaliczanych lekcji i postępy pozostają bez zmian.</Text>
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>To niezależny kurs TRENERKI, a nie oficjalne szkolenie ani certyfikacja Microsoft. Część operacji wykonujesz w prawdziwym Excelu; szkoleniowy symulator odtwarza tylko wybrane funkcje.</Text>
-  </View>
-  <View style={{padding:mobile?12:17,gap:14}}>
+   <Text style={{color:'#256347',fontWeight:'900',fontSize:14}}>{expanded?'Zwiń podręcznik i wróć do lekcji ▴':'Otwórz szczegółowy podręcznik i wyszukiwarkę funkcji ▾'}</Text>
+  </Pressable>
+  {expanded&&<View style={{padding:mobile?12:17,gap:14}}>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
     {([{id:'plan',name:'39 rozdziałów krok po kroku'},{id:'functions',name:'514 funkcji A–Z'},{id:'print',name:'PDF, druk i liczba stron'}] as {id:Tab;name:string}[]).map(x=>
      <Pressable key={x.id} accessibilityRole="button" accessibilityState={{selected:tab===x.id}} onPress={()=>setTab(x.id)} style={pill(tab===x.id)}>
@@ -139,5 +142,5 @@ export default function ExcelMasterGuide(){
      </Pressable>)}
     </View>
    </View>}
-  </View>
+  </View>}
  </View>;
