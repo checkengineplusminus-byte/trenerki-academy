@@ -1408,3 +1408,40 @@ test('Kontrola CSV: błędna data, duplikat, kwota i storno nie przechodzą',()=
  reversed.journals.push({...reverseJournal(orig,'2026-11-25'),id:'REV-JB1'});
  assert.equal(taxCloseTrainingAudit(reversed).checks.find(c=>c.key==='bank_sources').passed,false);
 });
+
+test('Wynik i płynność w jednej firmie to odrębne wielkości z tego samego miesiąca',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ const before=JSON.stringify(s),r=taxCloseTrainingAudit(s),f=r.training_result;
+ assert.equal(f.revenue_cents,100000);assert.equal(f.expense_cents,20000);
+ assert.equal(f.profit_or_loss_cents,80000);assert.equal(f.result_label,'zysk modelowy');
+ assert.equal(f.bank_inflow_cents,123000);assert.equal(f.bank_outflow_cents,24600);
+ assert.equal(f.bank_net_movement_cents,98400);
+ assert.notEqual(f.profit_or_loss_cents,f.bank_net_movement_cents);
+ assert.equal(f.status,'source_reconciled_training');
+ assert.equal(r.completed,false);assert.equal(JSON.stringify(s),before);
+});
+test('Koszt bez zapłaty może dać stratę, a CSV nadal pokazuje dodatni przepływ banku',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ s.journals.push({id:'EXPENSE-NOV',date:'2026-11-15',source_type:'manual',source_id:'',status:'posted',
+  lines:[{account:'400',debit:200000,credit:0},{account:'202',debit:0,credit:200000}]});
+ const r=taxCloseTrainingAudit(s),f=r.training_result;
+ assert.equal(f.result_label,'strata modelowa');assert.equal(f.profit_or_loss_cents,-120000);
+ assert.equal(f.bank_net_movement_cents,98400);assert.equal(r.completed,false);
+ const html=taxCloseTrainingReportHTML(s);
+ assert.match(html,/strata modelowa/);assert.match(html,/1.*200,00 PLN|1.*200,00/);
+ assert.match(html,/nie jest przepływem gotówki/);
+});
+test('Wynik miesięczny nie miesza kosztów z poprzedniego okresu ani nie deklaruje podatku',()=>{
+ const s=fullScenario();
+ for(const j of s.journals.filter(j=>j.source_type==='bank'))j.date=s.bank.find(b=>b.id===j.source_id).date;
+ s.journals.push({id:'EXPENSE-OCT',date:'2026-10-31',source_type:'manual',source_id:'',status:'posted',
+  lines:[{account:'400',debit:999999,credit:0},{account:'202',debit:0,credit:999999}]});
+ const f=taxCloseTrainingAudit(s).training_result;
+ assert.equal(f.profit_or_loss_cents,80000);
+ assert.equal(f.status,'source_reconciled_training');
+ assert.match(f.explanation,/NIE jest saldo otwarcia ani dochód podatkowy/);
+ const html=taxCloseTrainingReportHTML(s);
+ assert.match(html,/To nie jest JPK|TO NIE JEST JPK/);
+});

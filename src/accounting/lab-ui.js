@@ -93,7 +93,7 @@ export function mountLab(root,db){
  function report(){const r=balanceReport(ws.state);return `<section class="card"><h2>Zestawienie ćwiczeniowe</h2><p class="notice">Model usługowy, PLN, salda początkowe równe zero. Uwzględnia zatwierdzone księgowania wraz ze stornami, nie szkice. Wynik i VAT poniżej nie są deklaracjami podatkowymi.</p><div class="stats"><div class="stat">Wynik modelu<strong>${money(r.profit)}</strong></div><div class="stat">VAT: należny − naliczony<strong>${money(r.vat)}</strong></div><div class="stat">Bank według dziennika<strong>${money(r.ledgerBank)}</strong></div></div><p>Wyciąg: ${money(r.bank)} · Należności: ${money(r.receivable)} · Zobowiązania: ${money(r.payable)}</p>${table(['Konto','Obroty Wn','Obroty Ma','Saldo Wn','Saldo Ma'],r.accounts.map(a=>`<tr><td>${a.code} — ${e(a.name)}</td><td>${money(a.debit)}</td><td>${money(a.credit)}</td><td>${money(Math.max(0,a.balance))}</td><td>${money(Math.max(0,-a.balance))}</td></tr>`))}<p><strong>Suma Wn ${money(r.debit)} = suma Ma ${money(r.credit)}</strong></p></section>`;}
 
  function taxAndCloseCard(){
-  const audit=taxCloseTrainingAudit(ws.state,scenario),f=audit.figures;
+  const audit=taxCloseTrainingAudit(ws.state,scenario),f=audit.figures,fin=audit.training_result;
   const checks=audit.checks.map(x=>'<tr><td>'+e(x.label)+'</td><td>'+
     (x.passed?'Zgodne w modelu':'Do wykonania')+'</td><td>'+e(x.detail)+'</td></tr>');
   const issues=audit.issues.map(x=>'<li>'+e(x.code)+' — '+e(x.invoice)+'</li>').join('');
@@ -108,6 +108,18 @@ export function mountLab(root,db){
     '<div class="stat">VAT z fikcyjnych faktur zakupu<strong>'+money(f.purchase_vat_cents)+'</strong></div></div>'+
    '<p class="notice">Różnica VAT z dokumentów modelu: <strong>'+money(f.vat_difference_cents)+
     '</strong>. To nie jest deklaracja ani wynik podatkowy bez kwalifikacji prawnej.</p>'+
+   '<h3>Wynik i płynność — jeden okres fikcyjnej firmy</h3>'+
+   '<p class="muted">Przychody z konta 700, koszty z kont 400/401/404/761. Przepływy z CSV; '+
+    'bez salda otwarcia, kwalifikacji podatkowej i rzeczywistej wysyłki. '+
+    (fin.status==='source_reconciled_training'?'Źródła bankowe zgodne w modelu.':'Dane wymagają uzgodnienia.')+'</p>'+
+   table(['Kontrola okresu','Kwota w modelu'],[
+    '<tr><td>Przychody</td><td>'+money(fin.revenue_cents||0)+'</td></tr>',
+    '<tr><td>Koszty</td><td>'+money(fin.expense_cents||0)+'</td></tr>',
+    '<tr><td>'+e(fin.result_label)+'</td><td>'+money(fin.profit_or_loss_cents||0)+'</td></tr>',
+    '<tr><td>Wpływy bankowe CSV</td><td>'+money(fin.bank_inflow_cents||0)+'</td></tr>',
+    '<tr><td>Wypływy bankowe CSV</td><td>'+money(fin.bank_outflow_cents||0)+'</td></tr>',
+    '<tr><td>Zmiana banku w okresie</td><td>'+money(fin.bank_net_movement_cents||0)+'</td></tr>'
+   ])+
    '<h3>Sprawdź dane przed przejściem do kolejnego ćwiczenia</h3>'+
    table(['Warunek','Wynik szkoleniowy','Następny krok'],checks)+
    (issues?'<details><summary>Wykryte problemy w dokumentach ('+audit.issues.length+

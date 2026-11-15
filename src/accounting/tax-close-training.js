@@ -99,6 +99,28 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   }
  }
  const bankCovered=bank.length>0&&bankCoverageIssues.length===0&&bankIds.size===bank.length;
+ // Wynik i płynność są dwoma RÓŻNYMI odczytami tego samego okresu.
+ // Wartości z modelowego planu kont, bez uznawania ich za podstawę PIT/CIT/VAT.
+ const periodMovement=account=>total(periodPostings,j=>
+  total(Array.isArray(j.lines)?j.lines:[],l=>l.account===account?l.debit-l.credit:0));
+ const revenueCents=-periodMovement('700');
+ const expenseCents=['400','401','404','761'].reduce((n,account)=>n+periodMovement(account),0);
+ const resultCents=revenueCents-expenseCents;
+ const cashInCents=total(bank,row=>Math.max(0,row.amount_cents));
+ const cashOutCents=total(bank,row=>Math.max(0,-row.amount_cents));
+ const moneyInputsSafe=[revenueCents,expenseCents,resultCents,cashInCents,cashOutCents]
+  .every(Number.isSafeInteger);
+ const trainingResult={
+  revenue_cents:moneyInputsSafe?revenueCents:null,
+  expense_cents:moneyInputsSafe?expenseCents:null,
+  profit_or_loss_cents:moneyInputsSafe?resultCents:null,
+  result_label:!moneyInputsSafe?'nieprawidłowe dane':resultCents<0?'strata modelowa':resultCents>0?'zysk modelowy':'wynik zerowy',
+  bank_inflow_cents:moneyInputsSafe?cashInCents:null,
+  bank_outflow_cents:moneyInputsSafe?cashOutCents:null,
+  bank_net_movement_cents:moneyInputsSafe?cashInCents-cashOutCents:null,
+  status:moneyInputsSafe&&ledgerBalanced&&bankCovered?'source_reconciled_training':'incomplete_model',
+  explanation:'Wynik modelu: konto 700 minus 400/401/404/761. Przepływ banku: wpływy minus wypływy CSV. To NIE jest saldo otwarcia ani dochód podatkowy.'
+ };
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -116,7 +138,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   period:period||null,source_count:issued.length,
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...bankCoverageIssues],review_notes,
+  checks,issues:[...issues,...bankCoverageIssues],review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
@@ -138,6 +160,8 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   (c.passed?'Zgodne w modelu':'Do uzupełnienia')+'</td><td>'+escape(c.detail)+'</td></tr>').join('');
  const issues=r.issues.map(x=>'<li>'+escape(x.code)+' — '+escape(x.invoice)+'</li>').join('');
  const notes=r.review_notes.map(x=>'<li>'+escape(x)+'</li>').join('');
+ const fin=r.training_result;
+ const fm=n=>n===null?'BRAK WIARYGODNYCH DANYCH':money(n);
  return [
   '<!doctype html><html lang="pl"><head><meta charset="utf-8">',
   '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -154,6 +178,15 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   '; VAT z dokumentów sprzedaży: ',escape(money(r.figures.sale_vat_cents)),
   '; VAT z dokumentów zakupu: ',escape(money(r.figures.purchase_vat_cents)),
   '; różnica modelowa: ',escape(money(r.figures.vat_difference_cents)),'</p>',
+  '<h2>Wynik i przepływy pieniężne okresu — wyłącznie model</h2>',
+  '<p>Przychody 700: ',escape(fm(fin.revenue_cents)),
+  '; koszty 400/401/404/761: ',escape(fm(fin.expense_cents)),
+  '; ',escape(fin.result_label),': ',escape(fm(fin.profit_or_loss_cents)),'</p>',
+  '<p>Wpływy CSV: ',escape(fm(fin.bank_inflow_cents)),
+  '; wypływy CSV: ',escape(fm(fin.bank_outflow_cents)),
+  '; zmiana banku bez salda otwarcia: ',escape(fm(fin.bank_net_movement_cents)),'</p>',
+  '<p>Wiarygodność danych: ',escape(fin.status),
+  '. Wynik księgowy nie jest przepływem gotówki; nie jest też podstawą PIT/CIT.</p>',
   '<h2>Kontrole wykonane przez model</h2><table><thead><tr><th>Warunek</th><th>Stan</th><th>Opis</th></tr></thead><tbody>',
   body,'</tbody></table>',
   '<h2>Wyjątki wymagające wyjaśnienia</h2>',issues?'<ul>'+issues+'</ul>':'<p>Brak błędów dokumentowych wykrytych przez ten zakres testów.</p>',
