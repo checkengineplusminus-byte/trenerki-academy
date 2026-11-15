@@ -4,6 +4,30 @@ import {Linking,Platform,Pressable,Text,View} from 'react-native';
 // Keep professional support visible while protecting the limited vertical
 // space of the full-screen learning route on phones and tablets.
 export default function LearningSupportBar(){
+ React.useEffect(()=>{
+  if(Platform.OS!=='web'||typeof document==='undefined'||typeof MutationObserver==='undefined')return;
+  const relocate=()=>{
+   const slot=document.querySelector('footer[data-testid="learning-support-bar"] .ta-app-footer-links');
+   const buttons=[...document.querySelectorAll('button')];
+   const settings=buttons.find(button=>
+     button.getAttribute('aria-label')==='Ustawienia plików cookie'||
+     button.textContent?.trim()==='Ustawienia plików cookie'
+   );
+   if(!slot||!settings)return false;
+   if(settings.textContent!=='Cookies')settings.textContent='Cookies';
+   if(settings.getAttribute('aria-label')!=='Ustawienia plików cookie')
+    settings.setAttribute('aria-label','Ustawienia plików cookie');
+   if(settings.className!=='trenerki-footer-cookie')settings.className='trenerki-footer-cookie';
+   if(settings.getAttribute('style'))settings.removeAttribute('style');
+   if(settings.parentElement!==slot)slot.appendChild(settings);
+   return true;
+  };
+  const observer=new MutationObserver(()=>{
+   if(relocate())observer.disconnect();
+  });
+  if(!relocate())observer.observe(document.body,{subtree:true,childList:true});
+  return()=>observer.disconnect();
+ },[]);
  if(Platform.OS==='web')return <footer className="ta-app-footer" aria-label="Pomoc podczas kursu" data-testid="learning-support-bar"
   style={{boxSizing:'border-box',width:'100%',height:50,minHeight:50,maxHeight:50,background:'#102820',color:'#f1ede0',display:'flex',
    alignItems:'center',justifyContent:'center',flexWrap:'nowrap',overflow:'hidden',gap:'0 20px',padding:'0 12px',
