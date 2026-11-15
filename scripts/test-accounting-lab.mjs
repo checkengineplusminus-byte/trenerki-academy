@@ -1532,6 +1532,34 @@ test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie pła
  assert.equal(tax.authorized_e2e,'not_tested');
  assert.equal(JSON.stringify(state),before,'Audyt ma być odczytowy');
 });
+test('PRZEKRÓJ: trzecia niezaksięgowana faktura nie może ukryć się za dwiema poprawnymi',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth();
+ const extra=invoiceTotals({...invoice('sale',30000),id:'EXTRA-SALE',number:'CW/FV/EXTRA',date:'2026-01-17'});
+ state.invoices.push({...extra,identity_version:1,own_identity:{...state.company.identity}});
+ const before=JSON.stringify(state),life=auditCompanyLifecycle(state,manifest);
+ assert.equal(life.steps.find(x=>x.key==='invoices').status,'needs_work');
+ assert.equal(life.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(taxCloseTrainingAudit(state,manifest).checks.find(x=>x.key==='invoice_posting').passed,false);
+ assert.equal(JSON.stringify(state),before);
+});
+test('PRZEKRÓJ: faktura i dekret w różnych miesiącach nie zaliczają dokumentów',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth();
+ state.journals.find(j=>j.source_type==='invoice'&&j.source_id==='sale').date='2026-02-03';
+ const life=auditCompanyLifecycle(state,manifest);
+ assert.equal(life.steps.find(x=>x.key==='invoices').status,'needs_work');
+ assert.equal(life.steps.find(x=>x.key==='bank').status,'needs_work');
+ assert.equal(taxCloseTrainingAudit(state,manifest).checks.find(x=>x.key==='invoice_posting').passed,false);
+});
+test('PRZEKRÓJ: oddzielny styczeń D01-D36 nie zamyka faktur i biura z lutego',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth();
+ assert.equal(auditMonthWorkflow(manifest,state).training_consistent,true);
+ const wrong=structuredClone(state);
+ wrong.invoices.find(i=>i.id==='sale').date='2026-02-03';
+ const life=auditCompanyLifecycle(wrong,manifest);
+ assert.equal(life.period_scope.month,'2026-02');
+ assert.equal(life.steps.find(x=>x.key==='month').status,'needs_work');
+ assert.equal(taxCloseTrainingAudit(wrong,manifest).checks.find(x=>x.key==='scenario_same_period').passed,false);
+});
 test('PRZEKRÓJ: usterka dekretu wypłaty blokuje gotowość, mimo poprawnego bilansu Wn/Ma',()=>{
  const {manifest,state}=fictionalFullCompanyMonth();
  const wrong=structuredClone(state);

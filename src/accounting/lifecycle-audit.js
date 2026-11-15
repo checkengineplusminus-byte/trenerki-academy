@@ -50,6 +50,8 @@ export function auditCompanyLifecycle(state,scenario=null){
      const items=posted.filter(j=>j.source_type==='invoice'&&j.source_id===i.id);
      if(items.length!==1)return false;
      const entry=items[0];
+     // Dekret musi należeć do miesiąca faktury, nie tylko mieć zgodne kwoty.
+     if(monthOf(entry.date)!==monthOf(i.date))return false;
      if(i.kind==='purchase'&&entry.asset_action==='acquire'){
        const a=(Array.isArray(s.assets)?s.assets:[]).find(a=>
         a.id===entry.asset_id&&a.invoice_id===i.id&&a.status==='active');
@@ -64,10 +66,14 @@ export function auditCompanyLifecycle(state,scenario=null){
  const period=periods.at(-1)||null;
  const sales=issued.filter(i=>i.kind==='sale'&&monthOf(i.date)===period&&postingForInvoice(i));
  const purchases=issued.filter(i=>i.kind==='purchase'&&monthOf(i.date)===period&&postingForInvoice(i));
+ const periodInvoices=issued.filter(i=>monthOf(i.date)===period);
+ // Dwie poprawne faktury nie mogą ukryć trzeciej, wystawionej bez dekretu.
+ const allPeriodInvoicesPosted=!!period&&periodInvoices.length>0&&periodInvoices.every(postingForInvoice);
+ const invoicesReady=validShape&&allIssuedDatesValid&&sales.length>0&&purchases.length>0&&allPeriodInvoicesPosted;
  add('invoices','Zakup i sprzedaż z jednym prawidłowym dekretem',
-   validShape&&allIssuedDatesValid&&sales.length>0&&purchases.length>0,
-   sales.length&&purchases.length?'Zakup i sprzedaż wystawione oraz zaksięgowane w tym samym miesiącu ćwiczenia ('+period+').':
-   'Zapisz fakturę zakupu i sprzedaży; każdą wystaw i zaksięguj dokładnie raz.',
+   invoicesReady,
+   invoicesReady?'Wszystkie wystawione faktury okresu '+period+' mają dokładnie jeden zgodny dekret.':
+   'Uzgodnij każdą wystawioną fakturę zakupu i sprzedaży z jednym poprawnym dekretem w jej miesiącu.',
    'invoices');
  function paid(i){
    if(!period||monthOf(i.date)!==period)return false;
@@ -87,7 +93,7 @@ export function auditCompanyLifecycle(state,scenario=null){
  let matchesClean=false;
  try{matchesClean=validShape&&inspectInvoiceBankMatches(s).length===0;}catch{matchesClean=false;}
  const allBankDatesValid=bank.every(b=>validDate(b?.date));
- const bankReady=validShape&&allIssuedDatesValid&&allBankDatesValid&&matchesClean&&sales.some(paid)&&purchases.some(paid);
+ const bankReady=invoicesReady&&allBankDatesValid&&matchesClean&&sales.some(paid)&&purchases.some(paid);
  add('bank','CSV, rozrachunki i osobne dekrety bankowe',bankReady,
    bankReady?'Powiązania zakup/sprzedaż mają zgodne wpływy i wypływy z dekretami.':
    'Uzgodnij obie faktury z fikcyjnym CSV oraz oddzielnie zaksięguj wpływ i wydatek.',
@@ -123,11 +129,16 @@ export function auditCompanyLifecycle(state,scenario=null){
    'Przejdź do kartoteki majątku; nie wystarczy sam zakup lub sam harmonogram amortyzacji.',
    null,'/majatek-ksiegowy');
  let monthReady=false;
- try{monthReady=!!scenario&&auditMonthWorkflow(scenario,s).training_consistent===true;}
- catch{monthReady=false;}
+ try{
+   const model=scenario?.scenario??scenario;
+   const samePeriod=!!period&&model?.month===period&&
+     Array.isArray(model.documents)&&model.documents.length===36&&
+     model.documents.every(d=>monthOf(d.date)===period);
+   monthReady=samePeriod&&auditMonthWorkflow(scenario,s).training_consistent===true;
+ }catch{monthReady=false;}
  add('month','D01–D36: decyzje, bank, dekretacja, uzgodnienie',
-   monthReady,monthReady?'Odrębny fikcyjny styczeń D01–D36 uzgodniony szkoleniowo; nie połączono go z biurem listopadowym.':
-   'Rozwiąż 36 dokumentów i pięć kontroli fikcyjnego stycznia w symulatorze.',
+   monthReady,monthReady?'D01–D36 uzgodnione w tym samym miesiącu ćwiczeniowym co biuro; nadal brak powiązania każdego źródła z dziennikiem.':
+   'Rozwiąż 36 dokumentów i pięć kontroli, ale pamiętaj: ich miesiąc musi być zgodny z okresem faktur, banku i płac biura.',
    'simulator');
  steps.push({key:'tax_and_close',
    label:'Pełne zamknięcie jednego okresu, KSeF/JPK/UPO',
