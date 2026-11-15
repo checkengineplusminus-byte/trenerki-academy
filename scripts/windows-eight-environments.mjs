@@ -85,6 +85,12 @@ async function runPersona(browser,p,round){
   await page.goto(origin+'/nauka?course=windows-skroty&lesson='+(p.lesson+1),{waitUntil:'domcontentloaded'});
   const scope=page.getByTestId('windows-mission-'+p.lesson);
   await scope.waitFor({timeout:16000});
+  // Remove the unrelated site-wide consent dialog before visual course inspection.
+  const rejectCookies=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
+  if(await rejectCookies.isVisible().catch(()=>false)){
+   await rejectCookies.click();
+   await rejectCookies.waitFor({state:'hidden'});
+  }
   await scope.getByText(m.goal,{exact:false}).first().waitFor();
   await scope.getByText(m.persona,{exact:true}).waitFor();
   assert.equal(await scope.getByRole('checkbox').count(),m.steps.length,'Each step must have an accessible checkbox');
@@ -125,8 +131,15 @@ async function runPersona(browser,p,round){
   assert(bounds&&bounds.height>=44,'Touch target too small: '+JSON.stringify(bounds));
   assert.deepEqual(events.errors,[],'Browser JavaScript exceptions');
   assert.deepEqual(events.unexpected,[],'Unexpected Supabase writes during ungraded exercise');
-  if((p.id==='student'||p.id==='construction')&&round===2)
-   await scope.screenshot({path:'/tmp/trenerki-windows-qa-round'+round+'-'+p.id+'.png'});
+  if(round===2){
+   // Capture the viewport seen by an actual learner, not a tall clipped element.
+   const heading=scope.getByText(m.goal,{exact:false}).first();
+   await heading.evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
+   const rect=await heading.boundingBox();
+   assert(rect && rect.y>=-5 && rect.y<p.height-30,'Critical mission heading is outside the visible viewport: '+JSON.stringify(rect));
+   assert(!(await rejectCookies.isVisible().catch(()=>false)),'Cookie consent obscures the reviewed lesson');
+   await page.screenshot({path:'/tmp/trenerki-windows-qa-round'+round+'-'+p.id+'.png',fullPage:false});
+  }
   console.log('✓ Cykl '+round+' · '+p.title+' ('+p.width+'×'+p.height+'): zadanie, real PC, samokontrola i ekran OK');
   return {id:p.id,title:p.title,lesson:p.lesson+1,viewport:p.width+'×'+p.height,steps:m.steps.length,jsErrors:0,unexpectedWrites:0,overflow:false,passed:true};
  }finally{await context.close();}
