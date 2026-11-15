@@ -1,0 +1,40 @@
+name: Anielka — autonomous improvement safeguards
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/anielka-autofix.yml'
+      - '.github/workflows/anielka-autofix-tests.yml'
+      - 'scripts/anielka-autofix*.mjs'
+      - 'supabase/functions/ta-feedback-autofix/**'
+      - 'src/LessonClarification.tsx'
+      - 'app/nauka.tsx'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/anielka-autofix-tests.yml'
+      - 'scripts/anielka-autofix*.mjs'
+      - 'supabase/functions/ta-feedback-autofix/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Guard malicious user text and public repository paths
+        run: |
+          node --test scripts/test-anielka-autofix-guards.mjs
+          node --experimental-strip-types --test scripts/test-anielka-feedback.mjs
+      - name: Verify untrusted messages cannot request arbitrary code execution
+        run: |
+          node --check scripts/anielka-autofix.mjs
+          node --check scripts/anielka-autofix-guards.mjs
