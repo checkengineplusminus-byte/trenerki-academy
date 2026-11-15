@@ -19,7 +19,7 @@ on:
       - 'src/ExcelAcademyLibrary.tsx'
       - 'src/ExcelFirstDayPractice.tsx'
       - 'public/academy/assets/excel-firstday-home.csv'
-      - 'public/academy/assets/excel-firstday-parish.csv'
+      - 'public/academy/assets/excel-firstday-shop.csv'
       - 'app/nauka.tsx'
       - 'scripts/test-excel-pro-case.mjs'
       - 'src/excelProReview.ts'

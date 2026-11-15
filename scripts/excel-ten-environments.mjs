@@ -279,9 +279,9 @@ async function persona(browser,p,round){
 }
 const firstTimers=[
  {id:'mama-mobile',persona:'Mama bez wcześniejszej wiedzy',track:'dom',device:'telefon',width:390,height:844,mobile:true,base2:3,final2:4,first:'Zakupy spożywcze',cost:135,firstTotal:199,secondTotal:211},
- {id:'ksiadz-desktop',persona:'Ksiądz bez wcześniejszej wiedzy',track:'parafia',device:'komputer',width:1365,height:800,mobile:false,base2:4,final2:5,first:'Ogrzewanie sali',cost:540,firstTotal:675,secondTotal:690},
+ {id:'ksiadz-desktop',persona:'Ksiądz bez wcześniejszej wiedzy',track:'sklep',device:'komputer',width:1365,height:800,mobile:false,base2:3,final2:4,first:'Długopisy',cost:24,firstTotal:66,secondTotal:78},
  {id:'mama-desktop',persona:'Mama bez wcześniejszej wiedzy',track:'dom',device:'komputer',width:1280,height:800,mobile:false,base2:3,final2:4,first:'Zakupy spożywcze',cost:135,firstTotal:199,secondTotal:211},
- {id:'ksiadz-mobile',persona:'Ksiądz bez wcześniejszej wiedzy',track:'parafia',device:'telefon',width:375,height:812,mobile:true,base2:4,final2:5,first:'Ogrzewanie sali',cost:540,firstTotal:675,secondTotal:690}
+ {id:'ksiadz-mobile',persona:'Ksiądz bez wcześniejszej wiedzy',track:'sklep',device:'telefon',width:375,height:812,mobile:true,base2:3,final2:4,first:'Długopisy',cost:24,firstTotal:66,secondTotal:78}
 ];
 async function totalBeginner(browser,p,round){
  const context=await browser.newContext({viewport:{width:p.width,height:p.height},isMobile:p.mobile,hasTouch:p.mobile,deviceScaleFactor:p.mobile?2:1,locale:'pl-PL'});
@@ -303,28 +303,28 @@ async function totalBeginner(browser,p,round){
   assert(earlier.afterOrientation,'Then show accurate interface guide before exercise');
   const cookie=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
   if(await cookie.isVisible().catch(()=>false))await cookie.click();
-  await lab.getByRole('button',{name:'Wybierz przykład: '+(p.track==='dom'?'Budżet domowy':'Wydatki parafii')}).click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Najpierw znajdź właściwy wiersz'}).waitFor();
+  await lab.getByRole('button',{name:'Wybierz przykład: '+(p.track==='dom'?'Budżet domowy':'Mały sklep')}).click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Wiersz 2: wskaż pierwszy produkt'}).waitFor();
   const check=lab.getByRole('button',{name:'Sprawdź wykonanie zadania od zera'});
   // Novice should NEVER pass just by clicking Next.
   await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await lab.getByRole('button',{name:'Wybierz pozycję '+p.first}).click();
   await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Zmień jedną ilość'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Zmień ilość pierwszego produktu'}).waitFor();
   const amount0=lab.getByTestId('excel-first-quantity-0');
   await amount0.fill('0');await lab.getByTestId('excel-first-total').filter({hasText:'Popraw ilości'}).waitFor();
   await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await amount0.fill('3');await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Sprawdź wartość pierwszego wiersza'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Ile kosztuje pierwszy produkt?'}).waitFor();
   const answer=lab.getByTestId('excel-first-answer');
   await answer.fill('1');await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await answer.fill(String(p.cost));await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Zsumuj wszystkie trzy pozycje'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Dodaj trzy kwoty'}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.firstTotal)}).waitFor();
   await answer.fill(String(p.firstTotal));await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Sprawdź reakcję na następną zmianę'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Zmień ilość drugiego produktu'}).waitFor();
   await lab.getByTestId('excel-first-quantity-1').fill(String(p.final2));await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Samodzielnie sprawdź nową sumę'}).waitFor();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Odczytaj nową sumę'}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.secondTotal)}).waitFor();
   await answer.fill(String(p.firstTotal));await check.click();await lab.getByTestId('excel-first-error').waitFor();
   await answer.fill(String(p.secondTotal));await check.click();
@@ -332,10 +332,10 @@ async function totalBeginner(browser,p,round){
   // Real MS Excel transfer: download CSV that contains actual data, not a fake XLSX.
   const link=lab.getByRole('link',{name:/Pobierz listę ćwiczebną CSV/});
   const href=await link.getAttribute('href');
-  assert.equal(href,p.track==='dom'?'/academy/assets/excel-firstday-home.csv':'/academy/assets/excel-firstday-parish.csv');
+  assert.equal(href,p.track==='dom'?'/academy/assets/excel-firstday-home.csv':'/academy/assets/excel-firstday-shop.csv');
   const response=await page.request.get(base+href);
   assert.equal(response.status(),200,'Downloadable starting spreadsheet data is absent');
-  assert((await response.text()).includes(p.track==='dom'?'Zakupy spozywcze':'Ogrzewanie sali'),'Downloaded file has wrong starting data');
+  assert((await response.text()).includes(p.track==='dom'?'Zakupy spozywcze':'Dlugopisy'),'Downloaded file has wrong starting data');
   const library=page.getByTestId('excel-encyclopedia');
   await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
   await library.getByRole('textbox',{name:'Szukaj w słowniku Excel'}).fill('komórka');
