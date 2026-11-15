@@ -102,6 +102,15 @@ test('Honest product contract: beginner/advanced UI is connected but never claim
  assert.match(novice,/Sprawdź wykonanie kroku Excel/);
  assert(!module.includes('new Function(')&&!module.includes('Function('),'No dynamic JS code generation allowed');
  const csv=get('public/academy/assets/excel-practice-sales.csv');
- assert.equal(csv.split(/\r?\n/).filter(Boolean).length,19);
+ const records=csv.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean);
+ assert.equal(records.length,19);
+ assert.equal(records[0].split(';').length,11,'Real-Excel CSV has 11 columns A–K, including J/K values');
  assert(csv.startsWith('\uFEFF'),'CSV includes UTF-8 BOM for Excel Unicode');
+ const numeric=records.slice(1).map(line=>line.split(';').map(v=>v.replace(/^"|"$/g,'')));
+ assert.equal(numeric.reduce((sum,parts)=>sum+Number(parts[9]),0),28245,'Excel column J values must reconcile');
+ assert.equal(numeric.reduce((sum,parts)=>sum+Number(parts[10]),0),9109,'Excel column K values must reconcile');
+ const errorsCsv=get('public/academy/assets/excel-practice-errors.csv');
+ assert.equal(errorsCsv.replace(/^\uFEFF/,'').split(/\r?\n/).filter(Boolean).length,5);
+ assert.match(lab,/J2 formułę =G2\*H2/);
+ assert.match(lab,/K2 formułę =G2\*\(H2-I2\)/);
 });
