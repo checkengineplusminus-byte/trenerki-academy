@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Image,Platform,Pressable} from 'react-native';
 import WindowsPracticeMission from './WindowsPracticeMission';
+import ExcelProfessionalMission from './ExcelProfessionalMission';
+import ExcelAnalystWorkbench from './ExcelAnalystWorkbench';
 export type LearningSection={heading:string;text:string};
 export type LessonVisual={title:string;kind:'flow'|'comparison';entries:{label:string;detail:string}[]};
 const ink='#173e2d',body='#3e5c48';
@@ -60,6 +62,8 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
    </View>
   </View>}
   {courseSlug==='windows-skroty'&&<WindowsPracticeMission key={lessonNo} lessonNo={lessonNo}/>}
+  {courseSlug==='excel-skroty'&&<ExcelProfessionalMission key={'excel-mission-'+lessonNo} lessonNo={lessonNo}/>}
+  {courseSlug==='excel-skroty'&&lessonNo>=15&&<ExcelAnalystWorkbench key={'excel-advanced-'+lessonNo} lessonNo={lessonNo}/>}
   {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
    <View style={{backgroundColor:'#e8f3e3',padding:15}}>
     <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Wyjaśnienie krok po kroku</Text>
