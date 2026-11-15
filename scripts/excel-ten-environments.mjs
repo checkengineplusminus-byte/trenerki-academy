@@ -305,6 +305,8 @@ async function totalBeginner(browser,p,round){
   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   const lab=page.getByTestId('excel-first-day');
   await lab.waitFor({timeout:20000});
+  await lab.getByTestId('excel-first-worked-example').getByText(/NAJPIERW PRZYKŁAD/).waitFor();
+  await lab.getByTestId('excel-first-worked-example').getByText(/=B2\*C2/).waitFor();
   const earlier=await page.evaluate(()=>{
    const day=document.querySelector('[data-testid="excel-first-day"]');
    const orientation=document.querySelector('[data-testid="software-orientation"]');
@@ -331,16 +333,21 @@ async function totalBeginner(browser,p,round){
   await lab.getByTestId('excel-first-step').filter({hasText:'Ile kosztuje pierwszy produkt?'}).waitFor();
   const answer=lab.getByTestId('excel-first-answer');
   await answer.fill('1');await check.click();await lab.getByTestId('excel-first-error').waitFor();
-  await answer.fill(String(p.cost));await check.click();
-  await lab.getByTestId('excel-first-step').filter({hasText:'Dodaj trzy kwoty'}).waitFor();
+  await answer.fill('=B2+C2');await check.click();
+  await lab.getByTestId('excel-first-error').filter({hasText:/B2 oznacza ilość/}).waitFor();
+  await answer.fill(round===2?'=b2*c2':String(p.cost));
+  if(round===2)await lab.getByTestId('excel-first-formula-notice').waitFor();
+  await check.click();
+  await lab.getByTestId('excel-first-step').filter({hasText:'Dodaj wartości trzech produktów'}).waitFor();
+  if(round===2)await lab.getByTestId('excel-first-step-success').filter({hasText:/prawidłowa formuła/}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.firstTotal)}).waitFor();
-  await answer.fill(String(p.firstTotal));await check.click();
+  await answer.fill(round===2?'=suma(d2:d4)':String(p.firstTotal));await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Zmień ilość drugiego produktu'}).waitFor();
   await lab.getByTestId('excel-first-quantity-1').fill(String(p.final2));await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Odczytaj nową sumę'}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.secondTotal)}).waitFor();
   await answer.fill(String(p.firstTotal));await check.click();await lab.getByTestId('excel-first-error').waitFor();
-  await answer.fill(String(p.secondTotal));await check.click();
+  await answer.fill(round===2?'=SUMA(D2:D4)':String(p.secondTotal));await check.click();
   await lab.getByTestId('excel-first-success').waitFor();
   // Real MS Excel transfer: download CSV that contains actual data, not a fake XLSX.
   const link=lab.getByRole('link',{name:/Pobierz listę ćwiczebną CSV/});
@@ -364,7 +371,7 @@ async function totalBeginner(browser,p,round){
   assert.deepEqual(events.writes,[],'Novice training accidentally wrote to live user data');
   if(round===2){await lab.getByTestId('excel-first-success').scrollIntoViewIfNeeded();
     await page.screenshot({path:'/tmp/trenerki-excel-qa-firstday-'+p.id+'.png',fullPage:false});}
-  console.log('✓ Cykl '+round+' · '+p.id+' · 6 rzeczywistych kroków, 3 pomyłki odrzucone, pobrano CSV, sprawdzono słownik + misję');
+  console.log('✓ Cykl '+round+' · '+p.id+' · 6 kroków, odpowiedzi '+(round===2?'=b2*c2 i =SUMA(D2:D4)':'liczbowe')+', błędna formuła odrzucona, CSV, słownik + misja');
   return {persona:p.persona,device:p.device,round,passed:true,steps:6,errorsCaught:3,noviceProgress:0,finalTotal:p.secondTotal,csv:true,glossary:true,firstLesson:true};
  }finally{await context.close();}
 }
