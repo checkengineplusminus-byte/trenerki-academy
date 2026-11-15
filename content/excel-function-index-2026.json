@@ -2610,7 +2610,7 @@
       "name": "ILOCZYN",
       "category": "Funkcje matematyczne i trygonometryczne",
       "url": "https://support.microsoft.com/pl-pl/excel/functions/product-function",
-      "what": "Mnoży argumenty.",
+      "what": "Mnoży wszystkie wskazane liczby lub wartości w zakresie komórek.",
       "example": "=ILOCZYN(B2:B5)"
     },
     {
@@ -2858,7 +2858,7 @@
       "name": "SEC",
       "category": "Funkcje matematyczne i trygonometryczne",
       "url": "https://support.microsoft.com/pl-pl/excel/functions/sec-function",
-      "what": "Podaje secans kąta."
+      "what": "Oblicza secans kąta wyrażonego w radianach, czyli odwrotność cosinusa."
     },
     {
       "code": "SECH",
@@ -2908,7 +2908,7 @@
       "name": "ZNAK.LICZBY",
       "category": "Funkcje matematyczne i trygonometryczne",
       "url": "https://support.microsoft.com/pl-pl/excel/functions/sign-function",
-      "what": "Podaje znak liczby."
+      "what": "Określa znak liczby: −1 dla ujemnych, 0 dla zera i 1 dla dodatnich."
     },
     {
       "code": "SIN",
