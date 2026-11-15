@@ -28,13 +28,13 @@ type Lesson={
  material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
-type AttemptMode='case'|'construction'|'keyboard';
+type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
 type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
  const {course,lesson:lessonParam}=useLocalSearchParams<{course?:string;lesson?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
- const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),workshopYRef=React.useRef(0);
+ const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0);
  function scrollToTop(){
   scrollRef.current?.scrollTo({y:0,animated:false});
   if(Platform.OS==='web'&&typeof window!=='undefined')window.scrollTo(0,0);
@@ -45,6 +45,7 @@ export default function Learning(){
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
  function openWorkshop(){scrollRef.current?.scrollTo({y:Math.max(0,workshopYRef.current-18),animated:true});}
+ function openCarpentry(){scrollRef.current?.scrollTo({y:Math.max(0,carpentryYRef.current-18),animated:true});}
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
@@ -76,7 +77,7 @@ export default function Learning(){
     supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle(),
     supabase.from('ta_learning_attempts').select('lesson_no,mode,correct').eq('user_id',u.id).eq('course_slug',slug)
    ]);
-   if(lessons.error||draft.error||progress.error||details.error)throw lessons.error||draft.error||progress.error||details.error;
+   if(lessons.error||draft.error||progress.error||details.error||attempts.error)throw lessons.error||draft.error||progress.error||details.error||attempts.error;
    const all=(lessons.data||[]) as Lesson[],completed=(progress.data||[]).map(v=>v.lesson_no);
    if(active){
     setUserId(u.id);setItems(all);setDone(completed);setCourseInfo({slug,title:details.data?.title_pl||slug,description:details.data?.description_pl||''});
@@ -86,7 +87,7 @@ export default function Learning(){
      const k=String(attempt.lesson_no);if(!perLesson[k])perLesson[k]={correct:0,incorrect:0};
      if(attempt.correct){
       perLesson[k].correct++;
-      if(['case','construction','keyboard'].includes(attempt.mode)){
+      if(['case','construction','keyboard','carpentry'].includes(attempt.mode)){
        const mode=attempt.mode as AttemptMode;
        passed[attempt.lesson_no]={...passed[attempt.lesson_no],[mode]:true};
       }
@@ -109,12 +110,13 @@ export default function Learning(){
  const completed=items.filter(x=>done.includes(x.lesson_no)).length;
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
- async function recordAttempt(mode:AttemptMode,answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string):Promise<boolean>{
+ async function recordAttempt(mode:AttemptMode,answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string,numericAnswer?:string):Promise<boolean>{
   if(!userId)return false;
   try{
    const {data,error:e}=await supabase.functions.invoke<{ok?:boolean;correct?:boolean;error?:string}>('ta-lesson-guide',{
     body:{action:'attempt',course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,
-     ...(mode==='keyboard'?{active_combo:activeCombo,selected_combo:selectedCombo}:{})}
+     ...(mode==='keyboard'?{active_combo:activeCombo,selected_combo:selectedCombo}:{}),
+     ...(mode==='carpentry'?{numeric_answer:numericAnswer}:{})}
    });
    if(e||!data?.ok)throw new Error(data?.error||e?.message||'Brak odpowiedzi serwera');
    const correct=!!data.correct;
@@ -145,6 +147,7 @@ export default function Learning(){
  const passed=checks[module]||{};
  const objective=lesson?.material?.construction?'construction':lesson?.material?.learning?'case':undefined;
  const carpentry=slug==='ciesla-przygotowanie-czeladnicze'&&hasCarpentryLab(module);
+ const passedCount=(objective&&passed[objective]?1:0)+(lesson?.material?.shortcuts?.length&&passed.keyboard?1:0)+(carpentry&&passed.carpentry?1:0);
  const canFinish=done.includes(module)||(
    (!objective||passed[objective])&&
    (!lesson?.material?.shortcuts?.length||passed.keyboard)&&
@@ -160,16 +163,16 @@ export default function Learning(){
  }
  async function finishLesson(){
   if(saving||!userId||!lesson)return;
-  if(!canFinish){setMsg('Wykonaj poprawnie ćwiczenie. Rozmowa z Anielką jest zawsze opcjonalna.');return;}
+  if(!canFinish){setMsg(carpentry?'Aby przejść dalej, zalicz dwa zadania: pytanie i obliczenia. Rozmowa z Anielką jest opcjonalna.':'Wykonaj poprawnie ćwiczenie. Rozmowa z Anielką jest zawsze opcjonalna.');return;}
   setSaving(true);setMsg('');
   try{
    if(!done.includes(module)){
     // Server verifies objective attempts and chronological ordering.
     const {data:result,error:pe}=await supabase.functions.invoke<{ok?:boolean;completed?:boolean;error?:string}>('ta-lesson-guide',{
-      body:{action:'complete',course_slug:slug,lesson_no:module}
+      body:{action:'complete',course_slug:slug,lesson_no:module,require_carpentry:carpentry}
     });
     if(pe||!result?.completed){
-      const msg=result?.error==='exercise_required'?'Wykonaj poprawnie ćwiczenie praktyczne, a potem spróbuj ponownie.':
+      const msg=result?.error==='exercise_required'?'Zalicz wymagane zadanie, a potem spróbuj ponownie.':
        result?.error==='previous_lessons_required'?'Najpierw ukończ poprzednie lekcje.':
        'Nie udało się potwierdzić zaliczenia na serwerze. Spróbuj ponownie.';
       throw new Error(msg);
