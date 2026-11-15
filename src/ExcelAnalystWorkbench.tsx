@@ -3,13 +3,13 @@ import {Linking,Platform,Pressable,ScrollView,Text,TextInput,View,useWindowDimen
 import fixtures from '../content/excel-analyst-data.json';
 import {auditImport,findInvoice,lineMargin,lineRevenue,pivot,plNumber,round2,safeDataset,scenario,sumIfs,total,type GroupBy,type Measure,type Sale,type SourceRow} from './excelAdvancedMath';
 
-type Mode='filter'|'sumifs'|'lookup'|'pivot'|'chart'|'scenario'|'audit';
+type Mode='filter'|'sumifs'|'lookup'|'pivot'|'chart'|'model'|'scenario'|'audit';
 const modes:{id:Mode;label:string}[]=[
  {id:'filter',label:'Filtr danych'},{id:'sumifs',label:'SUMA.WARUNKÓW'},{id:'lookup',label:'X.WYSZUKAJ'},
- {id:'pivot',label:'Tabela przestawna'},{id:'chart',label:'Wykres danych'},{id:'scenario',label:'Scenariusze'},{id:'audit',label:'Audyt CSV'}
+ {id:'pivot',label:'Tabela przestawna'},{id:'chart',label:'Wykres danych'},{id:'model',label:'Przychód i marża'},{id:'scenario',label:'Scenariusze'},{id:'audit',label:'Audyt CSV'}
 ];
 const source=fixtures.rows as Sale[],broken=fixtures.dirty as SourceRow[];
-const initialMode=(lessonNo:number):Mode=>lessonNo===24?'lookup':lessonNo===17?'chart':lessonNo===25||lessonNo===23?'pivot':lessonNo===26?'scenario':lessonNo===21||lessonNo===22||lessonNo>=28?'audit':lessonNo===15?'filter':'sumifs';
+const initialMode=(lessonNo:number):Mode=>lessonNo===24?'lookup':lessonNo===17?'chart':lessonNo===20?'model':lessonNo===25||lessonNo===23?'pivot':lessonNo===26?'scenario':lessonNo===21||lessonNo===22||lessonNo>=28?'audit':'sumifs';
 const ink='#1c4331',muted='#4d6756';
 const money=(v:number)=>v.toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł';
 const headingStyle={fontSize:14,color:ink,fontWeight:'900' as const};
@@ -26,8 +26,8 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
  const [rows,setRows]=useState<Sale[]>(()=>source.map(x=>({...x})));
  const [mode,setMode]=useState<Mode>(initialMode(lessonNo));
  const [region,setRegion]=useState('Północ'),[category,setCategory]=useState('Materiały');
- const [invoice,setInvoice]=useState('FV-014'),[group,setGroup]=useState<GroupBy>('region'),[metric,setMetric]=useState<Measure>('revenue');
- const [groupItem,setGroupItem]=useState('Północ'),[pivotSnapshot,setPivotSnapshot]=useState<Sale[]|null>(null);
+ const [invoice,setInvoice]=useState('FV-014'),[group,setGroup]=useState<GroupBy>(lessonNo===25?'month':'region'),[metric,setMetric]=useState<Measure>('revenue');
+ const [groupItem,setGroupItem]=useState(lessonNo===25?'Razem':'Północ'),[pivotSnapshot,setPivotSnapshot]=useState<Sale[]|null>(null);
  const [revision,setRevision]=useState(0),[pivotRevision,setPivotRevision]=useState(-1);
  const [increase,setIncrease]=useState('15'),[quantity,setQuantity]=useState('12');
  const [answer,setAnswer]=useState(''),[feedback,setFeedback]=useState<'idle'|'right'|'wrong'>('idle');
@@ -44,8 +44,9 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
  const impact=useMemo(()=>increaseNumber===null?null:(()=>{try{return scenario(rows,increaseNumber);}catch{return null;}})(),[rows,increaseNumber]);
  const expectedValue=mode==='filter'?filtered.length:mode==='sumifs'?sumIfs(rows,region,category):
   mode==='lookup'?matching.kind==='found'?matching.amount:NaN:
+  mode==='model'?total(rows,'margin'):
   mode==='chart'?NaN:
-  mode==='pivot'?pivotRows.find(x=>x.key===groupItem)?.value??NaN:
+  mode==='pivot'?groupItem==='Razem'?pivotRows.reduce((sum,row)=>sum+row.value,0):pivotRows.find(x=>x.key===groupItem)?.value??NaN:
   mode==='scenario'?impact?.marginDelta??NaN:issues.length;
  const expectedLabel=mode==='lookup'&&matching.kind==='missing'?'BRAK':mode==='lookup'&&matching.kind==='duplicate'?'DUPLIKAT':mode==='chart'?chartBest?.key||'BRAK':String(expectedValue);
  const dirtyLine=rows.find(x=>x.invoice==='FV-001')!;
@@ -92,6 +93,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
   lookup:'=X.WYSZUKAJ("'+invoice+'";A2:A19;J2:J19;"Brak";0)',
   pivot:'Wstaw → Tabela przestawna → Wiersze: '+group+' → Wartości: '+metric+' → Odśwież',
   chart:'Wstaw → Wykres kolumnowy → Kategorie: Region → Oś Y: Suma Wartości netto (PLN). Zweryfikuj oś od 0.',
+  model:'Przychód = SUMA(ilość * cena_netto); Koszty = SUMA(ilość * koszt_jednostkowy); Marża = Przychód − Koszty.',
   scenario:'Koszt materiałów = koszt_bazowy*(1+'+increase+'%) ; marża = przychód − suma kosztów',
   audit:'Dane → Z tekstu/CSV → typy danych → kontrola duplikatów, pustych pól i błędów'
  };
@@ -109,7 +111,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
   </Pressable>}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{modes.map(x=><Choice key={x.id} label={x.label} selected={mode===x.id} onPress={()=>changeMode(x.id)}/>)}</View>
   <View style={{borderWidth:1,borderColor:'#dce9de',backgroundColor:'#fff',borderRadius:11,padding:12,gap:11}}>
-   <Text style={headingStyle}>{mode==='filter'?'Odfiltruj rekordy, nie kasuj ich':mode==='sumifs'?'SUMA.WARUNKÓW — dwa kryteria':mode==='lookup'?'X.WYSZUKAJ — dokładny identyfikator':mode==='pivot'?'Tabela przestawna — przelicz i odśwież':mode==='chart'?'Wykres wartości netto w trzech regionach':mode==='scenario'?'Model wrażliwości marży':'Power Query — znajdź błędy przed importem'}</Text>
+   <Text style={headingStyle}>{mode==='filter'?'Odfiltruj rekordy, nie kasuj ich':mode==='sumifs'?'SUMA.WARUNKÓW — dwa kryteria':mode==='lookup'?'X.WYSZUKAJ — dokładny identyfikator':mode==='pivot'?'Tabela przestawna — przelicz i odśwież':mode==='chart'?'Wykres wartości netto w trzech regionach':mode==='model'?'Model przychodu, kosztów i marży':mode==='scenario'?'Model wrażliwości marży':'Power Query — znajdź błędy przed importem'}</Text>
    {(mode==='filter'||mode==='sumifs')&&<>
     <Text style={{fontSize:13,color:muted}}>Wybierz region i kategorię. Wynik powinien odpowiadać dokładnie obu warunkom.</Text>
     <Text style={{fontWeight:'800',fontSize:12,color:ink}}>Region</Text>
@@ -138,6 +140,11 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
        <Text style={{color:ink,fontWeight:'800',fontSize:13,textAlign:'right',alignSelf:'center'}}>{metric==='count'?x.value:money(x.value)}</Text>
       </View>)}
       <Text style={{fontSize:12,color:muted}}>Suma grup: {metric==='count'?pivotRows.reduce((s,r)=>s+r.value,0):money(pivotRows.reduce((s,r)=>s+r.value,0))}</Text>
+      <Pressable accessibilityRole="button" accessibilityLabel="Wybierz grupę Razem" onPress={()=>setControl(()=>setGroupItem('Razem'))}
+       style={{minHeight:44,backgroundColor:groupItem==='Razem'?'#ddf0e0':'#f7fbf7',borderWidth:1,borderColor:'#d4e6d8',borderRadius:8,padding:8,flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+       <Text style={{fontSize:13,color:ink,fontWeight:'900'}}>RAZEM · wszystkie grupy</Text>
+       <Text style={{fontSize:13,color:ink,fontWeight:'900'}}>{metric==='count'?pivotRows.reduce((s,r)=>s+r.value,0):money(pivotRows.reduce((s,r)=>s+r.value,0))}</Text>
+      </Pressable>
      </View>}
    </>}
    {mode==='chart'&&<View testID="excel-advanced-chart" style={{gap:10}}>
@@ -149,6 +156,14 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
      </View>
     </View>)}
     <Text style={{fontSize:11,color:muted}}>Wykres ćwiczebny: Wartość netto w PLN, skala od 0 do największej wartości.</Text>
+   </View>}
+   {mode==='model'&&<View testID="excel-advanced-model" style={{gap:8}}>
+    <Text style={{fontSize:13,lineHeight:21,color:muted}}>Rozdziel wartość sprzedaży od kosztów zakupu. Każdy rekord ma ilość, cenę netto i koszt jednostkowy — policz trzy niezależne sumy i uzgodnij bilans.</Text>
+    <Text style={{fontSize:13,color:ink}}>Wiersze źródłowe: {rows.length}</Text>
+    <Text style={{fontSize:13,color:ink}}>Przychód netto: {money(total(rows))}</Text>
+    <Text style={{fontSize:13,color:ink}}>Koszty łącznie: {money(round2(total(rows)-total(rows,'margin')))}</Text>
+    <Text style={{fontSize:13,color:ink,fontWeight:'900'}}>Marża netto: oblicz i wpisz poniżej (nie utożsamiaj jej z przychodem)</Text>
+    <Text style={{fontSize:12,color:muted}}>Kontrola: suma marż ze wszystkich wierszy powinna odpowiadać różnicy Przychód − Koszty.</Text>
    </View>}
    {mode==='scenario'&&<>
     <Text style={{fontSize:13,color:muted}}>Zmienia się koszt jednostkowy materiałów, ale ceny sprzedaży pozostają stałe. Sprawdź wpływ na marżę zamiast mylić go z przychodem.</Text>
@@ -170,7 +185,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
     </View>)}
    </>}
    {mode!=='audit'&&<View style={{gap:9}}>
-    <Text style={{fontSize:13,color:ink,fontWeight:'900'}}>{mode==='filter'?'Ile wierszy spełnia obydwa kryteria?':mode==='sumifs'?'Jaka jest suma wartości netto w PLN?':mode==='lookup'?'Jaka jest wartość netto tej faktury?':mode==='pivot'?'Jaka jest wartość zaznaczonej grupy '+groupItem+'?':mode==='chart'?'Który region ma najwyższą sprzedaż?':'O ile PLN zmieni się marża? (wpisz kwotę ze znakiem)'}</Text>
+    <Text style={{fontSize:13,color:ink,fontWeight:'900'}}>{mode==='filter'?'Ile wierszy spełnia obydwa kryteria?':mode==='sumifs'?'Jaka jest suma wartości netto w PLN?':mode==='lookup'?'Jaka jest wartość netto tej faktury?':mode==='pivot'?'Jaka jest wartość zaznaczonej grupy '+groupItem+'?':mode==='chart'?'Który region ma najwyższą sprzedaż?':mode==='model'?'Jaka jest MARŻA NETTO ze wszystkich 18 faktur?':'O ile PLN zmieni się marża? (wpisz kwotę ze znakiem)'}</Text>
     <TextInput testID="excel-advanced-answer" accessibilityLabel="Wynik obliczeń zaawansowanych" value={answer} onChangeText={v=>{setAnswer(v);setFeedback('idle');}}
      autoCapitalize="characters" placeholder="Oblicz i wpisz wynik" placeholderTextColor="#849a88"
      style={{borderWidth:1,borderColor:'#bfcec2',backgroundColor:'#fff',color:ink,borderRadius:9,minHeight:48,padding:12,fontSize:15}}/>
