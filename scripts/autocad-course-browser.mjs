@@ -80,6 +80,7 @@ for(const mobile of [false,true]){
    const {lesson_no:n,material:m}=lesson;
    await page.getByTestId('lesson-heading').filter({hasText:lesson.title_pl}).waitFor();
    assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Repeated AutoCAD screenshot in lesson '+(n+1));
+   assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Repeating legacy AutoCAD practice panel detected in chapter '+(n+1));
    const lessonMethod=page.getByTestId('autocad-lesson-method');
    await lessonMethod.waitFor();
    await lessonMethod.getByText(method[n].heading,{exact:true}).waitFor();
