@@ -1,0 +1,28 @@
+name: Anielka feedback safety checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/ta-course-feedback/**'
+      - 'scripts/test-anielka-feedback.mjs'
+      - '.github/workflows/anielka-feedback-checks.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'supabase/functions/ta-course-feedback/**'
+      - 'scripts/test-anielka-feedback.mjs'
+      - '.github/workflows/anielka-feedback-checks.yml'
+  workflow_dispatch:
+jobs:
+  feedback-safety:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test classification and redaction
+        run: node --experimental-strip-types --test scripts/test-anielka-feedback.mjs
