@@ -24,6 +24,8 @@ on:
       - 'scripts/learning-browser.mjs'
       - 'scripts/autocad-course-browser.mjs'
       - 'scripts/test-cad-restored.mjs'
+      - 'scripts/test-cad-multiselect.mjs'
+      - 'content/autocad-reference-2026.json'
       - 'src/CadGeometry.ts'
       - 'content/autocad-real-program-2026-11-15.json'
       - 'scripts/test-course-pricing.mjs'
@@ -72,6 +74,7 @@ jobs:
           node --test scripts/test-exam-readiness.mjs
           node --test scripts/test-autocad-dxf.mjs
           node --experimental-strip-types --test scripts/test-cad-restored.mjs
+          node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
           node --test scripts/test-course-pricing.mjs
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2
