@@ -307,7 +307,7 @@ export default function Learning(){
      <Text style={{fontWeight:'800',color:ink}}>{done.includes(module)||passed.carpentry?'✓':'○'} 2. Zadanie z obliczeń — {done.includes(module)||passed.carpentry?'zaliczone':'do rozwiązania'} ↗</Text>
     </Pressable>
     <Text style={{fontSize:12,lineHeight:19,color:'#626e59'}}>Kalkulator na własnych danych służy do ćwiczeń. Aby zaliczyć zadanie 2, wybierz „Zadanie z lekcji”, wpisz wynik i naciśnij „Sprawdź mój wynik”. Oba zaliczenia zostaną zachowane.</Text>
-   </View>
+   </View>}
    {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#eff5e9',borderLeftWidth:3,borderLeftColor:'#87af73',borderRadius:9,gap:4}}>
     <Text style={{fontSize:12,color:'#3b6a46',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
     <Text style={{fontSize:15,color:'#2b4b35',lineHeight:23}}>{lesson.material.curiosity}</Text>
