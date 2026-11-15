@@ -74,6 +74,9 @@ test('Browser UI is accessible and never pretends bonus chapters are formal cert
   assert(ui.includes(name),'UI test ID missing: '+name);
  assert(ui.includes('Szukaj w słowniku Excel'));
  assert(ui.includes('Pokaż kolejne pojęcia'));
+ assert(ui.includes('Poziom rozdziałów dodatkowych: '));
+ assert(ui.includes("chapterLevel==='Od zera'"));
+ assert(ui.includes('availableChapters.length'));
  assert(ui.includes('Odpowiedź w dodatkowym rozdziale Excel'));
  assert(ui.includes('Nie zmieniają Twojego postępu ani warunków dyplomu'));
  assert(ui.includes('lessonNo===0'),'First lesson must default to open history');
