@@ -44,6 +44,10 @@ test('UI reconnects CAD workshop only to relevant lessons, independently of chec
  assert(app.includes('<CadWorkspace storageKey={userId}'));
  assert(app.includes("slug!=='autocad-skroty'&&<CourseIntroPhoto"));
  for(const fragment of ['testID="cad-command"','testID="cad-canvas"','joinCadLines(shapes,selected)','ZOOM E']) assert(cad.includes(fragment));
+ const web=awaitRead('src/CadWorkspace.web.tsx');
+ assert(web.includes("joinCadLines(visible,selected)"),'Expo Web implementation must recognize JOIN');
+ assert(web.includes("['JOIN','J','PEDIT']"),'Web command entrypoint must support JOIN/PEDIT');
+ assert(web.includes('Połącz linie · JOIN'),'JOIN must be available through ribbon');
 });
 function awaitRead(path){
  return readFileSync(new URL('../'+path,import.meta.url),'utf8');
