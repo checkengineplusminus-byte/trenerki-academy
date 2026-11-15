@@ -359,7 +359,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   switch(command){
    case 'F3':setOsnap(v=>!v);return true;
    case 'F7':setGrid(v=>!v);return true;
-   case 'F8':setOrtho(v=>!v);return true;
+   case 'F8':setOrtho(v=>!v);setPolar(false);return true;
    case 'F9':setSnapGrid(v=>!v);return true;
    case 'F10':setPolar(v=>!v);setOrtho(false);return true;
    case 'F11':setOtrack(v=>!v);return true;
@@ -676,7 +676,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
       <Text style={{color:'white',fontSize:11,fontWeight:'800'}}>{isPaper?'LAYOUT':'MODEL'}</Text>
      </Pressable>)}
     </View>
-    <ScrollView horizontal showsHorizontalScrollIndicator contentContainerStyle={{flexDirection:'row',alignItems:'stretch',paddingHorizontal:4,gap:2}}>
+    <ScrollView horizontal showsHorizontalScrollIndicator style={{flex:1,minWidth:0}} contentContainerStyle={{flexDirection:'row',alignItems:'stretch',paddingHorizontal:4,gap:2}}>
      {statusButtons.filter(item=>showMoreStatus||!item.extra).map(item=><Pressable key={item.id}
       testID={'cad-status-'+item.id} accessibilityRole="button" accessibilityLabel={item.name}
       accessibilityState={{selected:item.active}} onPress={()=>{item.onPress();setStatusInfo(item.id);}}
