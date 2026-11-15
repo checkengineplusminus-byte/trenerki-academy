@@ -33,6 +33,20 @@ on:
       - 'public/academy/assets/excel-professional-368-import.csv'
       - 'scripts/excel-ten-environments.mjs'
       - '.github/workflows/excel-quality.yml'
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'src/ExcelMasterGuide.tsx'
+      - 'src/SpreadsheetWorkspace.tsx'
+      - 'src/SpreadsheetFormula.ts'
+      - 'src/ExcelFirstDayPractice.tsx'
+      - 'src/SoftwareOrientation.tsx'
+      - 'app/nauka.tsx'
+      - 'content/excel-function-index-2026.json'
+      - 'content/excel-master-syllabus.json'
+      - 'scripts/test-excel-currency.mjs'
+      - 'scripts/test-excel-master-guide.mjs'
+      - '.github/workflows/excel-quality.yml'
   workflow_dispatch:
 jobs:
   expert_engine:
