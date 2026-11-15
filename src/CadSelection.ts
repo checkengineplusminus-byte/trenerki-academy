@@ -56,3 +56,35 @@ export function copyCadSelection(shapes:CadShape[],ids:number[],nextId:number,ma
  const copied=selected.map(s=>({...s,id:nextId++}));
  return {shapes:[...shapes,...copied],newIds:copied.map(s=>s.id),nextId};
 }
+
+/** Reflect across the line defined by TWO distinct points (not a point rotation). */
+export function mirrorCadPoint(point:Point,axisStart:Point,axisEnd:Point):Point|undefined{
+ const dx=axisEnd.x-axisStart.x,dy=axisEnd.y-axisStart.y,length2=dx*dx+dy*dy;
+ if(length2<1e-12)return;
+ const px=point.x-axisStart.x,py=point.y-axisStart.y,t=(px*dx+py*dy)/length2;
+ return {x:2*(axisStart.x+t*dx)-point.x,y:2*(axisStart.y+t*dy)-point.y};
+}
+/** AutoCAD MIRROR: keep originals by default; Y replaces selected objects. */
+export function mirrorCadSelection(shapes:CadShape[],ids:number[],start:Point,end:Point,
+ eraseSource=false,nextId=1,max=400):
+ {shapes:CadShape[];ids:number[];nextId:number}|undefined{
+ const selected=new Set(ids),originals=shapes.filter(shape=>selected.has(shape.id));
+ if(!originals.length||!mirrorCadPoint(start,start,end))return;
+ if(!eraseSource&&shapes.length+originals.length>max)return;
+ const reflected=originals.map(shape=>{
+  const mapped=transformShape(shape,point=>mirrorCadPoint(point,start,end)!,false);
+  return {...mapped,id:eraseSource?shape.id:nextId++};
+ });
+ return {
+  shapes:eraseSource?shapes.map(shape=>reflected.find(copy=>copy.id===shape.id)??shape):[...shapes,...reflected],
+  ids:reflected.map(shape=>shape.id),nextId,
+ };
+}
+/** Positive degrees rotate counterclockwise around the chosen base point. */
+export function rotateCadSelection(shapes:CadShape[],ids:number[],base:Point,degrees:number):CadShape[]{
+ const a=degrees*Math.PI/180,cos=Math.cos(a),sin=Math.sin(a);
+ return transformCadSelection(shapes,ids,p=>{
+  const dx=p.x-base.x,dy=p.y-base.y;
+  return {x:base.x+dx*cos-dy*sin,y:base.y+dx*sin+dy*cos};
+ });
+}
