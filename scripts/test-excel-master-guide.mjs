@@ -33,7 +33,10 @@ test('UI: rozdziały, indeks, PDF i ochrony lekcji',()=>{
  assert.match(ui,/excel-master-function-search/);
  assert.match(ui,/excel-pdf-check/);
  assert.match(ui,/print-rows-with-column-headers-on-top-of-every-page/);
- assert.match(page,/<ExcelMasterGuide\/>/);
+ assert.match(page,/<ExcelMasterGuide lessonNo=\{module\}\/>/);
+ assert.match(page,/index>0&&<ExcelMasterGuide/);
+ assert.match(ui,/ExcelShortcutsDirectory/);
+ assert.match(ui,/ExcelFunctionDetails/);
  assert.match(page,/supabase\.auth\.getUser\(\)/);
  assert.match(page,/ta_enrollments/);
  assert.match(route,/<Stack\.Protected guard=\{signedIn\}/);

@@ -1,0 +1,1238 @@
+{
+  "description": "Rozwinięte i ręcznie rozpisane przykłady praktycznych funkcji. Pozostałe funkcje są w indeksie z linkiem do producenta; nie przypisuj im niezweryfikowanych formuł.",
+  "sampleTable": [
+    [
+      "Komórka",
+      "A: Kod",
+      "B: Ilość",
+      "C: Cena",
+      "D: Kategoria"
+    ],
+    [
+      "Wiersz 2",
+      "P01",
+      2,
+      30,
+      "Farba"
+    ],
+    [
+      "Wiersz 3",
+      "P02",
+      3,
+      10,
+      "Narzędzia"
+    ],
+    [
+      "Wiersz 4",
+      "P03",
+      5,
+      20,
+      "Farba"
+    ],
+    [
+      "Wiersz 5",
+      "P04",
+      1,
+      50,
+      "Usługi"
+    ],
+    [
+      "Wiersz 6",
+      "P05",
+      4,
+      12,
+      "Farba"
+    ]
+  ],
+  "count": 66,
+  "lessons": [
+    {
+      "code": "IF",
+      "name": "JEŻELI",
+      "lessonNo": 5,
+      "syntax": "JEŻELI(test_logiczny;wartość_jeśli_prawda;wartość_jeśli_fałsz)",
+      "example": "=JEŻELI(70>=50;\"Zdane\";\"Powtórz\")",
+      "result": "Zdane",
+      "argumentsExplanation": "Test to warunek prawda/fałsz. Drugi argument zostaje użyty, gdy warunek jest prawdziwy, trzeci — gdy jest fałszywy.",
+      "walkthrough": "70 jest nie mniejsze niż 50, więc Excel zwraca tekst Zdane.",
+      "pitfall": "Teksty muszą znajdować się w cudzysłowach; liczba progowa ma być liczbą.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =JEŻELI(70>=50;\"Zdane\";\"Powtórz\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „Zdane”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/if-function"
+    },
+    {
+      "code": "AND",
+      "name": "ORAZ",
+      "lessonNo": 5,
+      "syntax": "ORAZ(warunek1;warunek2;...)",
+      "example": "=ORAZ(5>2;10>8)",
+      "result": "PRAWDA",
+      "argumentsExplanation": "Każdy argument jest oddzielnym warunkiem logicznym. Wszystkie muszą być prawdziwe.",
+      "walkthrough": "Oba porównania są prawdziwe, dlatego wynik to PRAWDA.",
+      "pitfall": "Nie myl ORAZ z LUB; jeden fałszywy warunek zmienia wynik na FAŁSZ.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ORAZ(5>2;10>8) na danych ćwiczebnych. Sprawdź, czy uzyskasz „PRAWDA”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/and-function"
+    },
+    {
+      "code": "OR",
+      "name": "LUB",
+      "lessonNo": 5,
+      "syntax": "LUB(warunek1;warunek2;...)",
+      "example": "=LUB(5>9;10>8)",
+      "result": "PRAWDA",
+      "argumentsExplanation": "Wystarczy, że co najmniej jeden z warunków jest prawdziwy.",
+      "walkthrough": "Pierwsze porównanie jest fałszywe, drugie prawdziwe; wynik to PRAWDA.",
+      "pitfall": "Dla wszystkich warunków fałszywych LUB zwróci FAŁSZ.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =LUB(5>9;10>8) na danych ćwiczebnych. Sprawdź, czy uzyskasz „PRAWDA”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/or-function"
+    },
+    {
+      "code": "IFERROR",
+      "name": "JEŻELI.BŁĄD",
+      "lessonNo": 22,
+      "syntax": "JEŻELI.BŁĄD(wartość;wartość_jeśli_błąd)",
+      "example": "=JEŻELI.BŁĄD(10/0;\"Sprawdź dzielnik\")",
+      "result": "Sprawdź dzielnik",
+      "argumentsExplanation": "Pierwszy argument jest obliczeniem, drugi alternatywą wyświetlaną w razie błędu.",
+      "walkthrough": "Dzielenie przez zero powoduje błąd, więc Excel pokazuje ostrzeżenie tekstowe.",
+      "pitfall": "Nie ukrywaj błędu finansowego zerem; wyjaśnij jego źródło.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =JEŻELI.BŁĄD(10/0;\"Sprawdź dzielnik\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „Sprawdź dzielnik”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/iferror-function"
+    },
+    {
+      "code": "NOT",
+      "name": "NIE",
+      "lessonNo": 5,
+      "syntax": "NIE(wartość_logiczna)",
+      "example": "=NIE(2>5)",
+      "result": "PRAWDA",
+      "argumentsExplanation": "Funkcja odwraca wartość logiczną PRAWDA na FAŁSZ i odwrotnie.",
+      "walkthrough": "2 nie jest większe niż 5, więc NIE zamienia FAŁSZ na PRAWDA.",
+      "pitfall": "To nie jest odejmowanie liczby od zera.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =NIE(2>5) na danych ćwiczebnych. Sprawdź, czy uzyskasz „PRAWDA”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/not-function"
+    },
+    {
+      "code": "SUM",
+      "name": "SUMA",
+      "lessonNo": 6,
+      "syntax": "SUMA(liczba1;[liczba2];...)",
+      "example": "=SUMA(B2:B6)",
+      "result": "15",
+      "argumentsExplanation": "Argumentem może być liczba, komórka lub zakres komórek; dwukropek łączy początek i koniec zakresu.",
+      "walkthrough": "W przykładowej tabeli ilości wynoszą 2, 3, 5, 1, 4; ich suma to 15.",
+      "pitfall": "Nie dodawaj komórki z wynikiem do zakresu, bo powstanie odwołanie cykliczne.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =SUMA(B2:B6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „15”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/sum-function"
+    },
+    {
+      "code": "ROUND",
+      "name": "ZAOKR",
+      "lessonNo": 6,
+      "syntax": "ZAOKR(liczba;liczba_cyfr)",
+      "example": "=ZAOKR(12,345;2)",
+      "result": "12,35",
+      "argumentsExplanation": "Pierwszy argument jest liczbą do zaokrąglenia, drugi mówi o liczbie miejsc po przecinku.",
+      "walkthrough": "Wartość 12,345 zaokrąglona do dwóch miejsc wynosi 12,35.",
+      "pitfall": "Format liczby na ekranie i zaokrąglenie wyniku w formule nie zawsze znaczą to samo.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ZAOKR(12,345;2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „12,35”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/round-function"
+    },
+    {
+      "code": "MOD",
+      "name": "MOD",
+      "lessonNo": 6,
+      "syntax": "MOD(liczba;dzielnik)",
+      "example": "=MOD(17;5)",
+      "result": "2",
+      "argumentsExplanation": "Liczba jest dzielona przez dzielnik; wynikiem jest reszta z dzielenia, a nie iloraz.",
+      "walkthrough": "17 = 3×5 + 2, więc reszta wynosi 2.",
+      "pitfall": "Dzielnik zero prowadzi do błędu.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =MOD(17;5) na danych ćwiczebnych. Sprawdź, czy uzyskasz „2”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/mod-function"
+    },
+    {
+      "code": "PRODUCT",
+      "name": "ILOCZYN",
+      "lessonNo": 5,
+      "syntax": "ILOCZYN(liczba1;[liczba2];...)",
+      "example": "=ILOCZYN(2;3;4)",
+      "result": "24",
+      "argumentsExplanation": "Wskazane liczby lub zakresy są mnożone przez siebie.",
+      "walkthrough": "2×3×4 = 24.",
+      "pitfall": "ILOCZYN nie zastępuje SUMA.ILOCZYNÓW, która mnoży pary i dodaje wyniki.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ILOCZYN(2;3;4) na danych ćwiczebnych. Sprawdź, czy uzyskasz „24”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/product-function"
+    },
+    {
+      "code": "SUMIF",
+      "name": "SUMA.JEŻELI",
+      "lessonNo": 15,
+      "syntax": "SUMA.JEŻELI(zakres;kryterium;[suma_zakres])",
+      "example": "=SUMA.JEŻELI(D2:D6;\"Farba\";C2:C6)",
+      "result": "62",
+      "argumentsExplanation": "Zakres D to kategorie, kryterium Farba wskazuje pasujące wiersze, suma_zakres C zawiera ceny do dodania.",
+      "walkthrough": "Ceny pozycji Farba: 30+20+12 = 62. Nie są to kwoty po pomnożeniu przez ilość.",
+      "pitfall": "Zakres kryterium i zakres sumowania muszą odpowiadać tym samym wierszom.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =SUMA.JEŻELI(D2:D6;\"Farba\";C2:C6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „62”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/sumif-function"
+    },
+    {
+      "code": "SUMIFS",
+      "name": "SUMA.WARUNKÓW",
+      "lessonNo": 15,
+      "syntax": "SUMA.WARUNKÓW(suma_zakres;kryteria_zakres1;kryteria1;...)",
+      "example": "=SUMA.WARUNKÓW(B2:B6;D2:D6;\"Farba\";C2:C6;\">=20\")",
+      "result": "7",
+      "argumentsExplanation": "Najpierw podaje się zakres sumowania, następnie pary zakres–kryterium. Wszystkie kryteria muszą pasować.",
+      "walkthrough": "Pozycje Farba z ceną co najmniej 20 to P01 i P03; ich ilości to 2 i 5, suma 7.",
+      "pitfall": "Inna kolejność argumentów niż w SUMA.JEŻELI; zapamiętaj, co jest sumowane.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =SUMA.WARUNKÓW(B2:B6;D2:D6;\"Farba\";C2:C6;\">=20\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „7”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/sumifs-function"
+    },
+    {
+      "code": "SUMPRODUCT",
+      "name": "SUMA.ILOCZYNÓW",
+      "lessonNo": 18,
+      "syntax": "SUMA.ILOCZYNÓW(tablica1;[tablica2];...)",
+      "example": "=SUMA.ILOCZYNÓW(B2:B6;C2:C6)",
+      "result": "288",
+      "argumentsExplanation": "B2:B6 zawiera ilości, C2:C6 ceny. Funkcja mnoży odpowiednie pary i sumuje iloczyny.",
+      "walkthrough": "2×30 + 3×10 + 5×20 + 1×50 + 4×12 = 288.",
+      "pitfall": "Zakresy muszą mieć tę samą liczbę wierszy i kolumn.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =SUMA.ILOCZYNÓW(B2:B6;C2:C6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „288”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/sumproduct-function"
+    },
+    {
+      "code": "ROUNDUP",
+      "name": "ZAOKR.GÓRA",
+      "lessonNo": 6,
+      "syntax": "ZAOKR.GÓRA(liczba;liczba_cyfr)",
+      "example": "=ZAOKR.GÓRA(12,341;2)",
+      "result": "12,35",
+      "argumentsExplanation": "Drugi argument podaje liczbę miejsc dziesiętnych; funkcja zaokrągla od zera.",
+      "walkthrough": "12,341 zostaje zaokrąglone w górę do 12,35.",
+      "pitfall": "Dla liczb ujemnych kierunek zaokrąglania od zera jest istotny.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ZAOKR.GÓRA(12,341;2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „12,35”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/roundup-function"
+    },
+    {
+      "code": "ROUNDDOWN",
+      "name": "ZAOKR.DÓŁ",
+      "lessonNo": 6,
+      "syntax": "ZAOKR.DÓŁ(liczba;liczba_cyfr)",
+      "example": "=ZAOKR.DÓŁ(12,349;2)",
+      "result": "12,34",
+      "argumentsExplanation": "Drugi argument wskazuje dokładność; wartości są zaokrąglane w kierunku zera.",
+      "walkthrough": "12,349 zostaje obcięte do 12,34 przy dwóch miejscach.",
+      "pitfall": "Nie myl kierunku do zera z zaokrąglaniem zawsze w dół osi liczbowej.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ZAOKR.DÓŁ(12,349;2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „12,34”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/rounddown-function"
+    },
+    {
+      "code": "ABS",
+      "name": "ABS",
+      "lessonNo": 6,
+      "syntax": "ABS(liczba)",
+      "example": "=ABS(-12)",
+      "result": "12",
+      "argumentsExplanation": "Argument jest jedną liczbą; wynik jest jej wartością bezwzględną.",
+      "walkthrough": "Odległość -12 od zera wynosi 12.",
+      "pitfall": "Nie stosuj do porównania wielkości z zachowaniem znaku.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ABS(-12) na danych ćwiczebnych. Sprawdź, czy uzyskasz „12”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/abs-function"
+    },
+    {
+      "code": "POWER",
+      "name": "POTĘGA",
+      "lessonNo": 6,
+      "syntax": "POTĘGA(liczba;potęga)",
+      "example": "=POTĘGA(2;3)",
+      "result": "8",
+      "argumentsExplanation": "Pierwsza liczba jest podstawą, druga wykładnikiem potęgi.",
+      "walkthrough": "2×2×2 = 8.",
+      "pitfall": "Potęga 2 to kwadrat, a nie dwukrotność liczby.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =POTĘGA(2;3) na danych ćwiczebnych. Sprawdź, czy uzyskasz „8”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/power-function"
+    },
+    {
+      "code": "SQRT",
+      "name": "PIERWIASTEK",
+      "lessonNo": 6,
+      "syntax": "PIERWIASTEK(liczba)",
+      "example": "=PIERWIASTEK(81)",
+      "result": "9",
+      "argumentsExplanation": "Argumentem jest nieujemna liczba, z której obliczamy pierwiastek kwadratowy.",
+      "walkthrough": "9×9 = 81, zatem pierwiastek z 81 to 9.",
+      "pitfall": "Liczba ujemna bez zmiany dziedziny powoduje błąd.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =PIERWIASTEK(81) na danych ćwiczebnych. Sprawdź, czy uzyskasz „9”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/sqrt-function"
+    },
+    {
+      "code": "AVERAGE",
+      "name": "ŚREDNIA",
+      "lessonNo": 6,
+      "syntax": "ŚREDNIA(liczba1;[liczba2];...)",
+      "example": "=ŚREDNIA(C2:C6)",
+      "result": "24,4",
+      "argumentsExplanation": "Funkcja dodaje liczby i dzieli przez liczbę wartości liczbowych.",
+      "walkthrough": "Ceny 30+10+20+50+12 to 122, podzielone przez 5 daje 24,4.",
+      "pitfall": "Nie utożsamiaj średniej ceny z ceną ważoną ilością.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ŚREDNIA(C2:C6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „24,4”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/average-function"
+    },
+    {
+      "code": "MIN",
+      "name": "MIN",
+      "lessonNo": 6,
+      "syntax": "MIN(liczba1;[liczba2];...)",
+      "example": "=MIN(C2:C6)",
+      "result": "10",
+      "argumentsExplanation": "Podaj jedną liczbę lub zakres z liczbami do porównania.",
+      "walkthrough": "Najmniejsza cena z tabeli wynosi 10.",
+      "pitfall": "MIN pomija tekst, ale nieliczbowe ceny mogą oznaczać błąd danych.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =MIN(C2:C6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „10”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/min-function"
+    },
+    {
+      "code": "MAX",
+      "name": "MAX",
+      "lessonNo": 6,
+      "syntax": "MAX(liczba1;[liczba2];...)",
+      "example": "=MAX(C2:C6)",
+      "result": "50",
+      "argumentsExplanation": "Podaj zestaw wartości liczbowych.",
+      "walkthrough": "Największa cena w tabeli to 50.",
+      "pitfall": "MAX nie mówi, który produkt ma tę cenę; do tego służy wyszukiwanie.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =MAX(C2:C6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „50”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/max-function"
+    },
+    {
+      "code": "COUNTIF",
+      "name": "LICZ.JEŻELI",
+      "lessonNo": 15,
+      "syntax": "LICZ.JEŻELI(zakres;kryterium)",
+      "example": "=LICZ.JEŻELI(D2:D6;\"Farba\")",
+      "result": "3",
+      "argumentsExplanation": "Pierwszy argument jest badanym zakresem, drugi warunkiem w cudzysłowie dla tekstu.",
+      "walkthrough": "Kategoria Farba występuje 3 razy.",
+      "pitfall": "Funkcja zlicza wiersze, nie sumuje wartości liczbowych.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =LICZ.JEŻELI(D2:D6;\"Farba\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „3”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/get-started/use-the-countif-function-in-microsoft-excel"
+    },
+    {
+      "code": "COUNTIFS",
+      "name": "LICZ.WARUNKI",
+      "lessonNo": 15,
+      "syntax": "LICZ.WARUNKI(zakres1;kryterium1;zakres2;kryterium2;...)",
+      "example": "=LICZ.WARUNKI(D2:D6;\"Farba\";B2:B6;\">=3\")",
+      "result": "2",
+      "argumentsExplanation": "Każda para oznacza zakres oraz warunek. Zliczone zostaną rekordy pasujące do wszystkich warunków.",
+      "walkthrough": "Ilość co najmniej 3 mają dwie pozycje kategorii Farba.",
+      "pitfall": "Zakresy muszą obejmować tyle samo wierszy.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =LICZ.WARUNKI(D2:D6;\"Farba\";B2:B6;\">=3\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „2”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/countifs-function"
+    },
+    {
+      "code": "MODE",
+      "name": "WYST.NAJCZĘŚCIEJ",
+      "lessonNo": 6,
+      "syntax": "WYST.NAJCZĘŚCIEJ(liczba1;[liczba2];...)",
+      "example": "=WYST.NAJCZĘŚCIEJ(2;3;3;5)",
+      "result": "3",
+      "argumentsExplanation": "Zwraca wartość pojawiającą się najczęściej w zbiorze liczb.",
+      "walkthrough": "Liczba 3 występuje dwa razy, inne po jednym.",
+      "pitfall": "Gdy nie ma powtórzeń, funkcja może zwrócić błąd.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =WYST.NAJCZĘŚCIEJ(2;3;3;5) na danych ćwiczebnych. Sprawdź, czy uzyskasz „3”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/mode-function"
+    },
+    {
+      "code": "MEDIAN",
+      "name": "MEDIANA",
+      "lessonNo": 6,
+      "syntax": "MEDIANA(liczba1;[liczba2];...)",
+      "example": "=MEDIANA(2;4;100)",
+      "result": "4",
+      "argumentsExplanation": "Po uporządkowaniu danych znajduje środkową wartość.",
+      "walkthrough": "Dla 2, 4, 100 wartością środkową jest 4, mimo skrajnej liczby 100.",
+      "pitfall": "Nie myl z średnią arytmetyczną 35,33.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =MEDIANA(2;4;100) na danych ćwiczebnych. Sprawdź, czy uzyskasz „4”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/median-function"
+    },
+    {
+      "code": "COUNT",
+      "name": "ILE.LICZB",
+      "lessonNo": 6,
+      "syntax": "ILE.LICZB(wartość1;[wartość2];...)",
+      "example": "=ILE.LICZB(B2:B6)",
+      "result": "5",
+      "argumentsExplanation": "Zlicza tylko wartości liczbowe w podanym zakresie.",
+      "walkthrough": "W kolumnie B jest pięć liczbowych ilości.",
+      "pitfall": "Puste komórki i tekst to nie liczby.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ILE.LICZB(B2:B6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „5”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/count-function"
+    },
+    {
+      "code": "COUNTA",
+      "name": "ILE.NIEPUSTYCH",
+      "lessonNo": 6,
+      "syntax": "ILE.NIEPUSTYCH(wartość1;[wartość2];...)",
+      "example": "=ILE.NIEPUSTYCH(A2:A6)",
+      "result": "5",
+      "argumentsExplanation": "Zlicza wszystkie niepuste wartości, w tym identyfikatory zapisane jako tekst.",
+      "walkthrough": "Pięć komórek z kodami P01–P05 nie jest pustych.",
+      "pitfall": "Komórka zawierająca formułę zwracającą pusty tekst nadal może być liczona jako niepusta.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ILE.NIEPUSTYCH(A2:A6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „5”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/counta-function"
+    },
+    {
+      "code": "COUNTBLANK",
+      "name": "LICZ.PUSTE",
+      "lessonNo": 6,
+      "syntax": "LICZ.PUSTE(zakres)",
+      "example": "=LICZ.PUSTE(A2:A6)",
+      "result": "0",
+      "argumentsExplanation": "Argument jest zakresem komórek, w których szukasz pustych miejsc.",
+      "walkthrough": "W kolumnie A każdy z pięciu produktów ma identyfikator.",
+      "pitfall": "Pusta komórka i komórka z błędem to różne problemy.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =LICZ.PUSTE(A2:A6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „0”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/countblank-function"
+    },
+    {
+      "code": "VLOOKUP",
+      "name": "WYSZUKAJ.PIONOWO",
+      "lessonNo": 24,
+      "syntax": "WYSZUKAJ.PIONOWO(szukana_wartość;tabela;nr_kolumny;[przeszukiwany_zakres])",
+      "example": "=WYSZUKAJ.PIONOWO(\"P02\";A2:D6;3;FAŁSZ)",
+      "result": "10",
+      "argumentsExplanation": "Szukana wartość to P02, tabela to A2:D6, 3 oznacza trzecią kolumnę tabeli; FAŁSZ wymusza dokładne dopasowanie.",
+      "walkthrough": "Produkt P02 ma cenę 10 w kolumnie C.",
+      "pitfall": "Pominięcie FAŁSZ może zwrócić niedokładne dopasowanie.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =WYSZUKAJ.PIONOWO(\"P02\";A2:D6;3;FAŁSZ) na danych ćwiczebnych. Sprawdź, czy uzyskasz „10”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/vlookup-function"
+    },
+    {
+      "code": "HLOOKUP",
+      "name": "WYSZUKAJ.POZIOMO",
+      "lessonNo": 24,
+      "syntax": "WYSZUKAJ.POZIOMO(szukana_wartość;tabela;nr_wiersza;[przeszukiwany_zakres])",
+      "example": "=WYSZUKAJ.POZIOMO(\"Cena\";A1:D6;3;FAŁSZ)",
+      "result": "10",
+      "argumentsExplanation": "Szukamy nagłówka Cena w pierwszym wierszu. 3 oznacza trzeci wiersz w zakresie A1:D6.",
+      "walkthrough": "Nagłówek Cena jest w kolumnie C; w trzecim wierszu tabeli C3 znajduje się 10.",
+      "pitfall": "Ta funkcja szuka w pierwszym wierszu, nie w pierwszej kolumnie.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =WYSZUKAJ.POZIOMO(\"Cena\";A1:D6;3;FAŁSZ) na danych ćwiczebnych. Sprawdź, czy uzyskasz „10”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/hlookup-function"
+    },
+    {
+      "code": "XLOOKUP",
+      "name": "X.WYSZUKAJ",
+      "lessonNo": 24,
+      "syntax": "X.WYSZUKAJ(szukana_wartość;przeszukiwana_tablica;zwracana_tablica;[jeżeli_nie_znaleziono];...)",
+      "example": "=X.WYSZUKAJ(\"P03\";A2:A6;C2:C6;\"Brak\")",
+      "result": "20",
+      "argumentsExplanation": "Pierwsza tablica zawiera identyfikatory, druga ceny. Funkcja szuka P03 i zwraca pasującą cenę.",
+      "walkthrough": "P03 jest na trzeciej pozycji, a odpowiadająca cena to 20.",
+      "pitfall": "Wymaga zgodnych zakresów; nie każda stara wersja Excela ją obsługuje.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =X.WYSZUKAJ(\"P03\";A2:A6;C2:C6;\"Brak\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „20”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+    },
+    {
+      "code": "INDIRECT",
+      "name": "ADR.POŚR",
+      "lessonNo": 22,
+      "syntax": "ADR.POŚR(tekst_odwołania;[typ_a1])",
+      "example": "=ADR.POŚR(\"C2\")",
+      "result": "30",
+      "argumentsExplanation": "Tekst C2 zostaje odczytany jako adres komórki, a nie literalny napis.",
+      "walkthrough": "C2 w tabeli zawiera cenę 30, więc wynik to 30.",
+      "pitfall": "Zmiana nazw arkuszy i niepoprawne teksty adresów mogą prowadzić do #ADR!.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ADR.POŚR(\"C2\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „30”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/indirect-function"
+    },
+    {
+      "code": "INDEX",
+      "name": "INDEKS",
+      "lessonNo": 24,
+      "syntax": "INDEKS(tablica;nr_wiersza;[nr_kolumny])",
+      "example": "=INDEKS(C2:C6;3)",
+      "result": "20",
+      "argumentsExplanation": "Zakres cen jest tablicą. Liczba 3 wskazuje trzeci element tej tablicy.",
+      "walkthrough": "Trzecią ceną w C2:C6 jest C4 = 20.",
+      "pitfall": "Numer wiersza liczy się od początku podanego zakresu, nie od początku arkusza.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =INDEKS(C2:C6;3) na danych ćwiczebnych. Sprawdź, czy uzyskasz „20”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/index-function"
+    },
+    {
+      "code": "MATCH",
+      "name": "PODAJ.POZYCJĘ",
+      "lessonNo": 24,
+      "syntax": "PODAJ.POZYCJĘ(szukana_wartość;przeszukiwana_tablica;[typ_porównania])",
+      "example": "=PODAJ.POZYCJĘ(\"P03\";A2:A6;0)",
+      "result": "3",
+      "argumentsExplanation": "Pierwszy argument to klucz, drugi lista, 0 oznacza dokładne dopasowanie.",
+      "walkthrough": "P03 znajduje się na trzeciej pozycji w zakresie A2:A6.",
+      "pitfall": "Wynik to pozycja w zakresie, a nie numer wiersza arkusza.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =PODAJ.POZYCJĘ(\"P03\";A2:A6;0) na danych ćwiczebnych. Sprawdź, czy uzyskasz „3”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/match-function"
+    },
+    {
+      "code": "XMATCH",
+      "name": "X.DOPASUJ",
+      "lessonNo": 24,
+      "syntax": "X.DOPASUJ(szukana_wartość;przeszukiwana_tablica;[tryb_dopasowania];...)",
+      "example": "=X.DOPASUJ(\"P03\";A2:A6;0)",
+      "result": "3",
+      "argumentsExplanation": "Szukamy P03 w kolumnie kodów; 0 oznacza dopasowanie dokładne.",
+      "walkthrough": "P03 zajmuje trzecią pozycję w zakresie A2:A6.",
+      "pitfall": "Nowsza funkcja nie jest dostępna we wszystkich starszych wydaniach.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =X.DOPASUJ(\"P03\";A2:A6;0) na danych ćwiczebnych. Sprawdź, czy uzyskasz „3”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/xmatch-function"
+    },
+    {
+      "code": "LEFT",
+      "name": "LEWY",
+      "lessonNo": 24,
+      "syntax": "LEWY(tekst;[liczba_znaków])",
+      "example": "=LEWY(\"EXCEL\";2)",
+      "result": "EX",
+      "argumentsExplanation": "Pierwszy argument jest tekstem, drugi mówi, ile znaków pobrać od lewej.",
+      "walkthrough": "Dwa pierwsze znaki słowa EXCEL to EX.",
+      "pitfall": "Nie myl liczby znaków z numerem pozycji.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =LEWY(\"EXCEL\";2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „EX”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/left-function"
+    },
+    {
+      "code": "RIGHT",
+      "name": "PRAWY",
+      "lessonNo": 24,
+      "syntax": "PRAWY(tekst;[liczba_znaków])",
+      "example": "=PRAWY(\"EXCEL\";2)",
+      "result": "EL",
+      "argumentsExplanation": "Pobiera określoną liczbę znaków od prawej strony tekstu.",
+      "walkthrough": "Dwa końcowe znaki EXCEL to EL.",
+      "pitfall": "Wartości liczbowe mogą wymagać świadomej konwersji na tekst.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =PRAWY(\"EXCEL\";2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „EL”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/right-function"
+    },
+    {
+      "code": "LEN",
+      "name": "DŁ",
+      "lessonNo": 24,
+      "syntax": "DŁ(tekst)",
+      "example": "=DŁ(\"Excel\")",
+      "result": "5",
+      "argumentsExplanation": "Argumentem jest tekst lub adres komórki zawierającej tekst.",
+      "walkthrough": "Słowo Excel ma pięć znaków.",
+      "pitfall": "Spacje są znakami i wpływają na długość.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =DŁ(\"Excel\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „5”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/len-function"
+    },
+    {
+      "code": "MID",
+      "name": "FRAGMENT.TEKSTU",
+      "lessonNo": 24,
+      "syntax": "FRAGMENT.TEKSTU(tekst;nr_początkowy;liczba_znaków)",
+      "example": "=FRAGMENT.TEKSTU(\"KOSZTORYS\";2;4)",
+      "result": "OSZT",
+      "argumentsExplanation": "Drugi argument wskazuje pozycję startową liczoną od 1, trzeci długość fragmentu.",
+      "walkthrough": "Od drugiego znaku KOSZTORYS pobieramy cztery znaki OSZT.",
+      "pitfall": "Numer pierwszego znaku wynosi 1, nie 0.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =FRAGMENT.TEKSTU(\"KOSZTORYS\";2;4) na danych ćwiczebnych. Sprawdź, czy uzyskasz „OSZT”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/mid-function"
+    },
+    {
+      "code": "PROPER",
+      "name": "Z.WIELKIEJ.LITERY",
+      "lessonNo": 24,
+      "syntax": "Z.WIELKIEJ.LITERY(tekst)",
+      "example": "=Z.WIELKIEJ.LITERY(\"jan kowalski\")",
+      "result": "Jan Kowalski",
+      "argumentsExplanation": "Zamienia pierwszą literę każdego słowa na wielką, pozostałe na małe.",
+      "walkthrough": "Tekst jan kowalski staje się Jan Kowalski.",
+      "pitfall": "Nazwy firm i nazwiska z nietypową pisownią mogą wymagać ręcznej korekty.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =Z.WIELKIEJ.LITERY(\"jan kowalski\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „Jan Kowalski”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/proper-function"
+    },
+    {
+      "code": "CLEAN",
+      "name": "OCZYŚĆ",
+      "lessonNo": 24,
+      "syntax": "OCZYŚĆ(tekst)",
+      "example": "=OCZYŚĆ(\"Excel\")",
+      "result": "Excel",
+      "argumentsExplanation": "Usuwa niedrukowane znaki z tekstu; tekst bez tych znaków pozostaje bez zmian.",
+      "walkthrough": "Prosty wyraz Excel nie zawiera znaków niedrukowanych.",
+      "pitfall": "Nie jest to funkcja usuwająca wszystkie dodatkowe spacje; do nich służą inne narzędzia.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =OCZYŚĆ(\"Excel\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „Excel”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/clean-function"
+    },
+    {
+      "code": "CONCATENATE",
+      "name": "ZŁĄCZ.TEKSTY",
+      "lessonNo": 24,
+      "syntax": "ZŁĄCZ.TEKSTY(tekst1;[tekst2];...)",
+      "example": "=ZŁĄCZ.TEKSTY(\"Jan\";\" \";\"Kowalski\")",
+      "result": "Jan Kowalski",
+      "argumentsExplanation": "Każdy argument jest częścią, z której budujesz wynikowy tekst.",
+      "walkthrough": "Połączenie trzech części daje pełne imię i nazwisko ze spacją.",
+      "pitfall": "Spację trzeba wprowadzić jako osobny argument, jeśli chcesz ją zachować.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ZŁĄCZ.TEKSTY(\"Jan\";\" \";\"Kowalski\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „Jan Kowalski”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/concatenate-function"
+    },
+    {
+      "code": "TEXTJOIN",
+      "name": "POŁĄCZ.TEKSTY",
+      "lessonNo": 24,
+      "syntax": "POŁĄCZ.TEKSTY(ogranicznik;ignoruj_puste;tekst1;...)",
+      "example": "=POŁĄCZ.TEKSTY(\"-\";PRAWDA;\"A\";\"B\")",
+      "result": "A-B",
+      "argumentsExplanation": "Ogranicznik to znak między częściami. PRAWDA pozwala pominąć puste elementy.",
+      "walkthrough": "Między A i B zostaje wstawiony myślnik.",
+      "pitfall": "Nie myl POŁĄCZ.TEKSTY z klasycznym ZŁĄCZ.TEKSTY.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =POŁĄCZ.TEKSTY(\"-\";PRAWDA;\"A\";\"B\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „A-B”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/textjoin-function"
+    },
+    {
+      "code": "TRIM",
+      "name": "USUŃ.ZBĘDNE.ODSTĘPY",
+      "lessonNo": 24,
+      "syntax": "USUŃ.ZBĘDNE.ODSTĘPY(tekst)",
+      "example": "=USUŃ.ZBĘDNE.ODSTĘPY(\"  A   B  \")",
+      "result": "A B",
+      "argumentsExplanation": "Usuwa spacje nadmiarowe, pozostawiając pojedyncze odstępy między wyrazami.",
+      "walkthrough": "Wynik ma po jednej spacji między A i B.",
+      "pitfall": "Nie każda spacja Unicode jest zwykłą spacją ASCII.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =USUŃ.ZBĘDNE.ODSTĘPY(\"  A   B  \") na danych ćwiczebnych. Sprawdź, czy uzyskasz „A B”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/trim-function"
+    },
+    {
+      "code": "SUBSTITUTE",
+      "name": "PODSTAW",
+      "lessonNo": 24,
+      "syntax": "PODSTAW(tekst;stary_tekst;nowy_tekst;[nr_wystąpienia])",
+      "example": "=PODSTAW(\"a-b-c\";\"-\";\"/\")",
+      "result": "a/b/c",
+      "argumentsExplanation": "W tekście zamienia wybrany fragment na nowy; opcjonalnie można ograniczyć, które wystąpienie podmienić.",
+      "walkthrough": "Oba myślniki zostały zamienione na ukośniki.",
+      "pitfall": "Nie myl PODSTAW z ZASTĄP operującym na pozycjach znaków.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =PODSTAW(\"a-b-c\";\"-\";\"/\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „a/b/c”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/substitute-function"
+    },
+    {
+      "code": "TODAY",
+      "name": "DZIŚ",
+      "lessonNo": 3,
+      "syntax": "DZIŚ()",
+      "example": "=DZIŚ()",
+      "result": "Bieżąca data",
+      "argumentsExplanation": "Brak argumentów; formuła zwraca datę systemową przy aktualnym przeliczeniu.",
+      "walkthrough": "Po otwarciu jutro data może być inna.",
+      "pitfall": "DZIŚ() to nie to samo co stała data wprowadzona skrótem klawiaturowym.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =DZIŚ() na danych ćwiczebnych. Sprawdź, czy uzyskasz „Bieżąca data”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/today-function"
+    },
+    {
+      "code": "NOW",
+      "name": "TERAZ",
+      "lessonNo": 3,
+      "syntax": "TERAZ()",
+      "example": "=TERAZ()",
+      "result": "Bieżąca data i godzina",
+      "argumentsExplanation": "Funkcja nie wymaga argumentów; wynikiem jest bieżąca data razem z czasem.",
+      "walkthrough": "Wyświetlany format może ukrywać godzinę, mimo że jest w wartości.",
+      "pitfall": "Wartość może zmienić się po przeliczeniu skoroszytu.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =TERAZ() na danych ćwiczebnych. Sprawdź, czy uzyskasz „Bieżąca data i godzina”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/now-function"
+    },
+    {
+      "code": "DATE",
+      "name": "DATA",
+      "lessonNo": 3,
+      "syntax": "DATA(rok;miesiąc;dzień)",
+      "example": "=DATA(2026;11;15)",
+      "result": "15.11.2026",
+      "argumentsExplanation": "Pierwszy argument to rok, drugi miesiąc, trzeci dzień.",
+      "walkthrough": "Po ustawieniu formatu daty Excel wyświetla 15 listopada 2026.",
+      "pitfall": "Tekst wyglądający jak data nie zawsze jest datą w rozumieniu Excela.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =DATA(2026;11;15) na danych ćwiczebnych. Sprawdź, czy uzyskasz „15.11.2026”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/date-function"
+    },
+    {
+      "code": "WEEKDAY",
+      "name": "DZIEŃ.TYG",
+      "lessonNo": 3,
+      "syntax": "DZIEŃ.TYG(numer_seryjny;[typ])",
+      "example": "=DZIEŃ.TYG(DATA(2026;11;16);2)",
+      "result": "1",
+      "argumentsExplanation": "Pierwszy argument to data, drugi ustala numerację dni. Typ 2 oznacza poniedziałek = 1.",
+      "walkthrough": "16 listopada 2026 to poniedziałek, więc wynik wynosi 1.",
+      "pitfall": "Bez określenia typu domyślna numeracja zaczyna się inaczej.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =DZIEŃ.TYG(DATA(2026;11;16);2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „1”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/weekday-function"
+    },
+    {
+      "code": "YEAR",
+      "name": "ROK",
+      "lessonNo": 3,
+      "syntax": "ROK(data)",
+      "example": "=ROK(DATA(2026;11;15))",
+      "result": "2026",
+      "argumentsExplanation": "Wskazujesz datę i otrzymujesz sam rok jako liczbę.",
+      "walkthrough": "Z daty 15.11.2026 otrzymujemy 2026.",
+      "pitfall": "Format komórki daty i jej rok to dwie różne rzeczy.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =ROK(DATA(2026;11;15)) na danych ćwiczebnych. Sprawdź, czy uzyskasz „2026”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/year-function"
+    },
+    {
+      "code": "MONTH",
+      "name": "MIESIĄC",
+      "lessonNo": 3,
+      "syntax": "MIESIĄC(data)",
+      "example": "=MIESIĄC(DATA(2026;11;15))",
+      "result": "11",
+      "argumentsExplanation": "Argumentem jest data. Zwracany miesiąc ma numer od 1 do 12.",
+      "walkthrough": "Listopad to miesiąc numer 11.",
+      "pitfall": "Nie myl numeru miesiąca z liczbą dni w miesiącu.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =MIESIĄC(DATA(2026;11;15)) na danych ćwiczebnych. Sprawdź, czy uzyskasz „11”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/month-function"
+    },
+    {
+      "code": "NETWORKDAYS",
+      "name": "DNI.ROBOCZE",
+      "lessonNo": 20,
+      "syntax": "DNI.ROBOCZE(data_początkowa;data_końcowa;[święta])",
+      "example": "=DNI.ROBOCZE(DATA(2026;11;16);DATA(2026;11;20))",
+      "result": "5",
+      "argumentsExplanation": "Podajesz początek i koniec okresu; weekendy są standardowo pomijane, a święta możesz określić osobno.",
+      "walkthrough": "Poniedziałek–piątek tego samego tygodnia to pięć dni roboczych.",
+      "pitfall": "Święta oraz inne weekendy trzeba uwzględnić w konfiguracji.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =DNI.ROBOCZE(DATA(2026;11;16);DATA(2026;11;20)) na danych ćwiczebnych. Sprawdź, czy uzyskasz „5”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-function"
+    },
+    {
+      "code": "PMT",
+      "name": "PMT",
+      "lessonNo": 20,
+      "syntax": "PMT(stopa;liczba_okresów;wartość_bieżąca;[wartość_przyszła];[typ])",
+      "example": "=PMT(0;12;-1200)",
+      "result": "100",
+      "argumentsExplanation": "Stopa to oprocentowanie jednego okresu, 12 to liczba rat, -1200 to kwota pożyczki w konwencji przepływów pieniężnych.",
+      "walkthrough": "Przy stopie 0% kapitał 1200 spłacony w 12 ratach to 100 na okres.",
+      "pitfall": "Rocznej stopy nie łącz bezpośrednio z liczbą rat miesięcznych; dziel ją przez 12.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =PMT(0;12;-1200) na danych ćwiczebnych. Sprawdź, czy uzyskasz „100”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/pmt-function"
+    },
+    {
+      "code": "PV",
+      "name": "PV",
+      "lessonNo": 20,
+      "syntax": "PV(stopa;liczba_okresów;płatność;[wartość_przyszła];[typ])",
+      "example": "=PV(0;12;-100)",
+      "result": "1200",
+      "argumentsExplanation": "Stopa i okres muszą mieć wspólną jednostkę czasu. Płatność -100 oznacza wydatek każdego okresu.",
+      "walkthrough": "Dwanaście płatności po 100 przy stopie 0% ma wartość bieżącą 1200.",
+      "pitfall": "Znaki dodatni/ujemny oznaczają kierunek przepływów.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =PV(0;12;-100) na danych ćwiczebnych. Sprawdź, czy uzyskasz „1200”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/pv-function"
+    },
+    {
+      "code": "NPV",
+      "name": "NPV",
+      "lessonNo": 20,
+      "syntax": "NPV(stopa;wartość1;[wartość2];...)",
+      "example": "=NPV(10%;100;100)-150",
+      "result": "23,55 (w przybliżeniu)",
+      "argumentsExplanation": "W NPV podajesz stopę i przyszłe okresowe przepływy; nakład początkowy z okresu 0 zwykle dodajesz poza funkcją.",
+      "walkthrough": "100/1,1 + 100/1,21 - 150 ≈ 23,55.",
+      "pitfall": "NPV nie jest synonimem PV; pierwsza płatność w funkcji przypada na koniec pierwszego okresu.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =NPV(10%;100;100)-150 na danych ćwiczebnych. Sprawdź, czy uzyskasz „23,55 (w przybliżeniu)”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/npv-function"
+    },
+    {
+      "code": "RATE",
+      "name": "RATE",
+      "lessonNo": 20,
+      "syntax": "RATE(liczba_okresów;płatność;wartość_bieżąca;[wartość_przyszła];[typ];[zgadnij])",
+      "example": "=RATE(12;-100;1200)",
+      "result": "0%",
+      "argumentsExplanation": "Wskazujesz liczbę okresów, stałą płatność i wartość początkową. Wynikiem jest stopa na okres.",
+      "walkthrough": "Dwanaście płatności po 100 przy kapitale 1200 odpowiada stopie 0%.",
+      "pitfall": "Funkcja iteracyjna może nie zbiegać; sprawdzaj znaki przepływów.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =RATE(12;-100;1200) na danych ćwiczebnych. Sprawdź, czy uzyskasz „0%”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/rate-function"
+    },
+    {
+      "code": "NPER",
+      "name": "NPER",
+      "lessonNo": 20,
+      "syntax": "NPER(stopa;płatność;wartość_bieżąca;[wartość_przyszła];[typ])",
+      "example": "=NPER(0;-100;1200)",
+      "result": "12",
+      "argumentsExplanation": "Funkcja wylicza liczbę okresów na podstawie stopy, płatności i wartości początkowej.",
+      "walkthrough": "Kapitał 1200 spłacany po 100 na okres przy 0% wymaga 12 okresów.",
+      "pitfall": "Różne znaki przepływów są istotne dla wyniku.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =NPER(0;-100;1200) na danych ćwiczebnych. Sprawdź, czy uzyskasz „12”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/nper-function"
+    },
+    {
+      "code": "FILTER",
+      "name": "FILTR",
+      "lessonNo": 24,
+      "syntax": "FILTR(tablica;uwzględnij;[jeżeli_puste])",
+      "example": "=FILTR(A2:D6;D2:D6=\"Farba\";\"Brak\")",
+      "result": "3 wiersze",
+      "argumentsExplanation": "Tablica A2:D6 to dane źródłowe, drugi argument jest warunkiem PRAWDA/FAŁSZ dla każdego rekordu.",
+      "walkthrough": "Kategoria Farba występuje w trzech wierszach, więc wynik obejmuje te trzy rekordy.",
+      "pitfall": "Funkcja dynamiczna wymaga wolnego miejsca do rozlania wyniku i nowoczesnej wersji.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =FILTR(A2:D6;D2:D6=\"Farba\";\"Brak\") na danych ćwiczebnych. Sprawdź, czy uzyskasz „3 wiersze”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/filter-function"
+    },
+    {
+      "code": "UNIQUE",
+      "name": "UNIKATOWE",
+      "lessonNo": 24,
+      "syntax": "UNIKATOWE(tablica;[wg_kolumn];[dokładnie_raz])",
+      "example": "=UNIKATOWE(D2:D6)",
+      "result": "Farba; Narzędzia; Usługi",
+      "argumentsExplanation": "Zakres wskazuje listę danych, a wynik rozlewa się na unikatowe wartości.",
+      "walkthrough": "Kategorie Farba, Narzędzia, Usługi występują w źródle, bez powtórek w wyniku.",
+      "pitfall": "Nowoczesny Excel może używać nazwy UNIKATOWE; sprawdź wersję i region.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =UNIKATOWE(D2:D6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „Farba; Narzędzia; Usługi”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/unique-function"
+    },
+    {
+      "code": "SORT",
+      "name": "SORTUJ",
+      "lessonNo": 24,
+      "syntax": "SORTUJ(tablica;[indeks_sortowania];[kolejność_sortowania];[według_kolumn])",
+      "example": "=SORTUJ(C2:C6;1;1)",
+      "result": "10; 12; 20; 30; 50",
+      "argumentsExplanation": "Tablica to ceny, 1 wybiera pierwszą kolumnę, 1 oznacza rosnąco.",
+      "walkthrough": "Cena 10 jest najmniejsza, 50 największa, stąd taka kolejność.",
+      "pitfall": "Sortowanie rozlanej tablicy nie przestawia danych źródłowych.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =SORTUJ(C2:C6;1;1) na danych ćwiczebnych. Sprawdź, czy uzyskasz „10; 12; 20; 30; 50”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/sort-function"
+    },
+    {
+      "code": "ISNUMBER",
+      "name": "CZY.LICZBA",
+      "lessonNo": 22,
+      "syntax": "CZY.LICZBA(wartość)",
+      "example": "=CZY.LICZBA(150)",
+      "result": "PRAWDA",
+      "argumentsExplanation": "Argumentem może być komórka lub stała; funkcja sprawdza typ wartości.",
+      "walkthrough": "Liczba 150 jest liczbą, nie tekstem.",
+      "pitfall": "Tekst \"150 zł\" nie musi być liczbą; stosuj format walutowy zamiast dopisywania jednostki.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =CZY.LICZBA(150) na danych ćwiczebnych. Sprawdź, czy uzyskasz „PRAWDA”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISERROR",
+      "name": "CZY.BŁĄD",
+      "lessonNo": 22,
+      "syntax": "CZY.BŁĄD(wartość)",
+      "example": "=CZY.BŁĄD(1/0)",
+      "result": "PRAWDA",
+      "argumentsExplanation": "Wartością może być wyrażenie powodujące kod błędu.",
+      "walkthrough": "Dzielenie przez zero jest błędem, więc otrzymujemy PRAWDA.",
+      "pitfall": "Nie zamieniaj kontroli błędów na ukrywanie błędów.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =CZY.BŁĄD(1/0) na danych ćwiczebnych. Sprawdź, czy uzyskasz „PRAWDA”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ISBLANK",
+      "name": "CZY.PUSTA",
+      "lessonNo": 22,
+      "syntax": "CZY.PUSTA(wartość)",
+      "example": "=CZY.PUSTA(A2)",
+      "result": "FAŁSZ",
+      "argumentsExplanation": "Argumentem jest adres komórki, której pustość sprawdzasz.",
+      "walkthrough": "A2 zawiera P01, zatem nie jest pusta.",
+      "pitfall": "Komórka z formułą zwracającą \"\" bywa uznawana za niepustą.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =CZY.PUSTA(A2) na danych ćwiczebnych. Sprawdź, czy uzyskasz „FAŁSZ”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/is-functions"
+    },
+    {
+      "code": "ROWS",
+      "name": "WIERSZE",
+      "lessonNo": 2,
+      "syntax": "WIERSZE(tablica)",
+      "example": "=WIERSZE(A2:A6)",
+      "result": "5",
+      "argumentsExplanation": "Wskazany zakres ma pięć wierszy.",
+      "walkthrough": "A2, A3, A4, A5, A6 = pięć komórek w pionie.",
+      "pitfall": "Nie myl z WIERSZ, który zwraca numer pojedynczego wiersza.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =WIERSZE(A2:A6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „5”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/rows-function"
+    },
+    {
+      "code": "COLUMNS",
+      "name": "KOLUMNY",
+      "lessonNo": 2,
+      "syntax": "KOLUMNY(tablica)",
+      "example": "=KOLUMNY(A2:D6)",
+      "result": "4",
+      "argumentsExplanation": "Wskazany zakres obejmuje cztery kolumny A–D.",
+      "walkthrough": "A, B, C i D to cztery kolumny.",
+      "pitfall": "Nie myl z KOLUMNA zwracającą numer jednej kolumny.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =KOLUMNY(A2:D6) na danych ćwiczebnych. Sprawdź, czy uzyskasz „4”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/columns-function"
+    },
+    {
+      "code": "ROW",
+      "name": "WIERSZ",
+      "lessonNo": 2,
+      "syntax": "WIERSZ([odwołanie])",
+      "example": "=WIERSZ(C4)",
+      "result": "4",
+      "argumentsExplanation": "Odwołanie wskazuje konkretną komórkę.",
+      "walkthrough": "Komórka C4 należy do wiersza 4.",
+      "pitfall": "Wynik to numer wiersza arkusza, nie pozycja w podanym zakresie.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =WIERSZ(C4) na danych ćwiczebnych. Sprawdź, czy uzyskasz „4”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/row-function"
+    },
+    {
+      "code": "COLUMN",
+      "name": "KOLUMNA",
+      "lessonNo": 2,
+      "syntax": "KOLUMNA([odwołanie])",
+      "example": "=KOLUMNA(C4)",
+      "result": "3",
+      "argumentsExplanation": "Odwołanie wskazuje komórkę, dla której sprawdzasz numer kolumny.",
+      "walkthrough": "Kolumna C jest trzecią kolumną arkusza.",
+      "pitfall": "Nie myl litery C z liczbą 3.",
+      "guidedSteps": [
+        "Najpierw przeczytaj znaczenie każdego argumentu powyżej.",
+        "Przepisz przykładowe dane i formułę do rzeczywistego Excela.",
+        "Naciśnij Enter, porównaj wynik oraz sprawdź co się zmieni, gdy zmienisz jeden argument."
+      ],
+      "exercise": "Wykonaj formułę =KOLUMNA(C4) na danych ćwiczebnych. Sprawdź, czy uzyskasz „3”. Następnie zmień jeden argument i wytłumacz, dlaczego wynik się zmienił.",
+      "source": "https://support.microsoft.com/pl-pl/excel/functions/column-function"
+    }
+  ]
+}
