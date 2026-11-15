@@ -21,6 +21,7 @@ import FinalExam from '../src/FinalExam';
 import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '../src/LessonIllustratedSections';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
+import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
@@ -33,7 +34,7 @@ type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
 type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 export default function Learning(){
- const {course,lesson:lessonParam}=useLocalSearchParams<{course?:string;lesson?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
+ const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
@@ -53,7 +54,11 @@ export default function Learning(){
  }
  function openCarpentry(){scrollRef.current?.scrollTo({y:Math.max(0,carpentryYRef.current-18),animated:true});}
  const [introRead,setIntroRead]=useState(false);
+ const [reviewMode,setReviewMode]=useState(reviewParam==='1');
+ const [coachOpen,setCoachOpen]=useState(false);
  useEffect(()=>{setIntroRead(false);pendingWorkshopRef.current=false;},[slug]);
+ useEffect(()=>{setReviewMode(reviewParam==='1');},[slug,reviewParam]);
+ useEffect(()=>{setCoachOpen(false);},[slug,module]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
@@ -145,6 +150,14 @@ export default function Learning(){
  const firstPending=items.find(v=>!done.includes(v.lesson_no));
  const unlockedNo=firstPending?.lesson_no??Infinity;
  const canVisit=(number:number)=>number<=unlockedNo||done.includes(number);
+ function startFromBeginning(){
+  if(saving||!items.length)return;
+  setReviewMode(true);setIntroRead(false);setCoachOpen(false);setShowProgram(false);
+  setMsg('Powtórka od pierwszej lekcji. Zapisany postęp i otrzymany dyplom pozostają bez zmian.');
+  setModule(items[0].lesson_no);
+  router.setParams({lesson:String(items[0].lesson_no+1),review:'1'});
+  scrollToTop();
+ }
  function openModule(number:number){
   setModule(number);router.setParams({lesson:String(number+1)});scrollToTop();
  }
@@ -198,7 +211,8 @@ export default function Learning(){
    try{await persistDraft(target,notes);}
    catch{setMsg('Lekcja ukończona. Notatki nie zostały zapisane — możesz spróbować ponownie.');}
    if(target!==module){openModule(target);setMsg(prev=>prev||'Otworzono następną lekcję.');}
-   else {setMsg('Wszystkie lekcje ukończone. Egzamin Anielki jest teraz na początku strony.');scrollToTop();}
+   else if(reviewMode){setReviewMode(false);router.setParams({review:'0'});setMsg('Powtórka ukończona. Możesz wrócić do dowolnej lekcji lub zobaczyć dyplom.');scrollToTop();}
+   else {setMsg('Wszystkie lekcje ukończone. Egzamin jest poniżej ostatniej lekcji.');scrollToTop();}
   }catch(e:any){setMsg('Postęp nie został zapisany: '+(e?.message||'błąd sieci')+'. Spróbuj jeszcze raz.');}
   finally{setSaving(false);}
  }
