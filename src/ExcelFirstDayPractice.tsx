@@ -77,17 +77,17 @@ export default function ExcelFirstDayPractice(){
    </View>
    <View style={{borderWidth:1,borderColor:'#c8ddcd',borderRadius:10,backgroundColor:'#fff',overflow:'hidden'}}>
     <View style={{flexDirection:'row',backgroundColor:'#e4f0e5',paddingHorizontal:8,paddingVertical:8,alignItems:'center'}}>
-     <Text style={{flex:1.4,fontSize:11.5,fontWeight:'900',color:ink}}>A · Pozycja</Text>
-     <Text style={{flex:.7,fontSize:11.5,textAlign:'center',fontWeight:'900',color:ink}}>B · Ilość</Text>
-     <Text style={{flex:.8,fontSize:11.5,textAlign:'center',fontWeight:'900',color:ink}}>C · Cena</Text>
-     <Text style={{flex:.85,fontSize:11.5,textAlign:'right',fontWeight:'900',color:ink}}>D · Wartość</Text>
+     <Text style={{flex:1.4,fontSize:12.5,fontWeight:'900',color:ink}}>A · Pozycja</Text>
+     <Text style={{flex:.7,fontSize:12.5,textAlign:'center',fontWeight:'900',color:ink}}>B · Ilość</Text>
+     <Text style={{flex:.8,fontSize:12.5,textAlign:'center',fontWeight:'900',color:ink}}>C · Cena</Text>
+     <Text style={{flex:.85,fontSize:12.5,textAlign:'right',fontWeight:'900',color:ink}}>D · Wartość</Text>
     </View>
     {rows.map((row,i)=><View key={i} style={{padding:7,flexDirection:'row',alignItems:'center',borderTopWidth:1,borderColor:'#e4eee4',gap:3,backgroundColor:selected===i?'#eef8ef':'#fff'}}>
      <View style={{flex:1.4,gap:4}}>
-      <Text style={{fontSize:11.5,color:ink,fontWeight:'700'}}>{row.label}</Text>
+      <Text style={{fontSize:13,color:ink,fontWeight:'700'}}>{row.label}</Text>
       <Pressable accessibilityRole="button" accessibilityState={{selected:selected===i}} accessibilityLabel={'Wybierz pozycję '+row.label}
        onPress={()=>setSelected(i)} style={{alignSelf:'flex-start',paddingHorizontal:8,paddingVertical:8,minHeight:44,justifyContent:'center',borderRadius:8,backgroundColor:selected===i?'#cae8d4':'#edf4ed'}}>
-       <Text style={{fontSize:12,color:'#285f43',fontWeight:'900'}}>{selected===i?'✓ Wybrane':'Wybierz'}</Text>
+       <Text style={{fontSize:13,color:'#285f43',fontWeight:'900'}}>{selected===i?'✓ Wybrane':'Wybierz'}</Text>
       </Pressable>
      </View>
      <View style={{flex:.7}}>
@@ -96,8 +96,8 @@ export default function ExcelFirstDayPractice(){
        onChangeText={value=>{setRows(previous=>previous.map((item,j)=>j===i?{...item,amount:value}:item));setWarning('');}}
        style={{borderWidth:1,borderColor:'#aecab7',borderRadius:7,color:ink,backgroundColor:'#fff',textAlign:'center',fontSize:15,minHeight:44,paddingHorizontal:2,paddingVertical:6}}/>
      </View>
-     <Text style={{flex:.8,fontSize:12,textAlign:'center',color:ink}}>{money(row.price)}</Text>
-     <Text testID={'excel-first-value-'+i} style={{flex:.85,fontSize:12,textAlign:'right',color:ink,fontWeight:'900'}}>{values[i]===null?'—':money(values[i]!)}</Text>
+     <Text style={{flex:.8,fontSize:13,textAlign:'center',color:ink}}>{money(row.price)}</Text>
+     <Text testID={'excel-first-value-'+i} style={{flex:.85,fontSize:13,textAlign:'right',color:ink,fontWeight:'900'}}>{values[i]===null?'—':money(values[i]!)}</Text>
     </View>)}
     <View style={{padding:10,backgroundColor:'#edf6ec',borderTopWidth:1,borderColor:'#cadfcd',flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:8}}>
      <Text style={{fontSize:13,fontWeight:'900',color:ink}}>RAZEM</Text>
