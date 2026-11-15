@@ -9,6 +9,7 @@ import KeyboardLesson,{type KeyboardShortcut} from '../src/KeyboardLesson';
 import ConstructionLesson,{type ConstructionMaterial} from '../src/ConstructionLesson';
 import CaseLesson,{type LearningCase} from '../src/CaseLesson';
 import GuidedDialogue from '../src/GuidedDialogue';
+import LessonClarification from '../src/LessonClarification';
 import CarpentryPracticeLab,{CarpentryCalculatorDirectory,hasCarpentryLab} from '../src/CarpentryPracticeLab';
 import CourseIntro from '../src/CourseIntro';
 import ExcelFirstDayPractice from '../src/ExcelFirstDayPractice';
@@ -390,6 +391,7 @@ export default function Learning(){
     />}
    {slug==='excel-skroty'&&[9,15,17,18,20,25,26,29].includes(module)&&<ExcelVisualPractices key={'excel-visual-'+module} lessonNo={module}/>}
    {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
+   <LessonClarification key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
