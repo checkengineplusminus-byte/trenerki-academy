@@ -33,7 +33,10 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  if(sourceForAccounting.includes(excelImport)){
   const steps=[
    [excelImport,''],
-   ["   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide/>}\n", ''],
+   ["   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide lessonNo={module}/>}\n", ''],
+   ["import ExcelVisualPractices from '../src/ExcelVisualPractices';\n", ''],
+   ["   {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}\n", ''],
+   ["   {slug==='excel-skroty'&&[9,15,17,18,20,25,26,29].includes(module)&&<ExcelVisualPractices key={'excel-visual-'+module} lessonNo={module}/>}\n", ''],
    [` function scrollToExcelGrid():boolean{
   if(slug!=='excel-skroty'||Platform.OS!=='web'||typeof document==='undefined')return false;
   // The button must land on the actual spreadsheet, not the shortcut quiz above it.
