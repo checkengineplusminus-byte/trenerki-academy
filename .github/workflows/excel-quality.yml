@@ -1,0 +1,62 @@
+name: Excel — audyt jakości od zera do eksperta
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'content/excel-professional-missions.json'
+      - 'content/excel-analyst-data.json'
+      - 'src/excelAdvancedMath.ts'
+      - 'src/ExcelAnalystWorkbench.tsx'
+      - 'src/ExcelProfessionalMission.tsx'
+      - 'src/SpreadsheetWorkspace.tsx'
+      - 'src/SpreadsheetFormula.ts'
+      - 'src/LessonIllustratedSections.tsx'
+      - 'scripts/test-excel-expert.mjs'
+      - 'scripts/excel-ten-environments.mjs'
+      - '.github/workflows/excel-quality.yml'
+  workflow_dispatch:
+jobs:
+  expert_engine:
+    name: Excel 30 rozdziałów — poprawność obliczeń i poziomów
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sprawdź funkcje ekspertów i kurs od zera
+        run: node --experimental-strip-types --test scripts/test-excel-expert.mjs
+  ten_environments:
+    needs: expert_engine
+    name: 10 środowisk × 2 cykle → IT → krytyk → sprzedawca
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instaluj aplikację i Chromium
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Eksportuj aplikację
+        run: npx expo export --platform web --output-dir /tmp/trenerki-excel-ci
+      - name: Dwie rundy środowisk, ocena IT, krytyka i sprzedawcy
+        run: |
+          python3 -m http.server 8795 --directory /tmp/trenerki-excel-ci >/tmp/trenerki-excel-http.log 2>&1 &
+          sleep 2
+          node scripts/excel-ten-environments.mjs http://127.0.0.1:8795
+      - name: Zapisz raport i zrzuty
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: excel-10-srodowisk-2-cykle
+          path: |
+            /tmp/trenerki-excel-two-cycles.json
+            /tmp/trenerki-excel-qa-*.png
+          if-no-files-found: ignore
+          retention-days: 14
