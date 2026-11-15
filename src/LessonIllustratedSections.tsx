@@ -43,10 +43,12 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
  const volunteerImage=courseSlug==='zaufany-wolontariusz'&&typeof illustration==='string'?volunteerIllustrations.get(illustration):undefined;
  const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration));
  const file=volunteerImage?.file??(validSvg?illustration+'.svg':null);
- const originalAutoCAD=courseSlug==='autocad-skroty';
- const originalFocus=illustration==='autocad-commands'?'command':illustration==='autocad-filetypes'?'tabs':illustration==='autocad-interface'&&lessonNo===0?'overview':'ribbon';
+ const isAutoCAD=courseSlug==='autocad-skroty';
+ // Lesson 1 already shows the full genuine Autodesk screen in SoftwareOrientation.
+ const originalAutoCAD=isAutoCAD&&lessonNo!==0;
+ const originalFocus=illustration==='autocad-commands'?'command':illustration==='autocad-filetypes'?'tabs':'ribbon';
  // AutoCAD lessons show genuine program screenshots, not recreated interface mockups.
- const showImage=!originalAutoCAD&&!!file&&Platform.OS==='web'&&!failed;
+ const showImage=!isAutoCAD&&!!file&&Platform.OS==='web'&&!failed;
  return <View style={{marginBottom:18,gap:14}}>
   {originalAutoCAD&&<AutoCADOriginalScreen focus={originalFocus}/>}
   {showImage&&<View style={{backgroundColor:'#f1f8ed',padding:9,borderWidth:1,borderColor:'#d9e7d5',borderRadius:16,gap:7}}>
