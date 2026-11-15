@@ -149,9 +149,11 @@ async function verifyCad(page,mobile){
  const method=page.getByTestId('autocad-lesson-method');
  await method.waitFor();
  await method.getByText('CAD to dane, nie obrazek',{exact:true}).waitFor();
- assert.equal(await page.getByTestId('cad-workspace').count(),0,'Never present a substitute as Autodesk AutoCAD');
+ const cad=page.getByTestId('cad-workspace');
+ await cad.waitFor();
+ assert.equal(await cad.getByTestId('cad-command').count(),1,'Interactive command prompt must be present');
  assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Do not show the same old CAD practice panel in every lesson');
- assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Do not repeat a full AutoCAD screen by default');
+ assert.equal(await page.getByTestId('autocad-original-screens').count(),1,'Original Autodesk screenshot must be visible on first page');
  await page.getByRole('button',{name:'Ekran programu'}).click();
  const originals=page.getByTestId('autocad-original-screens');
  await originals.waitFor();
@@ -161,7 +163,7 @@ async function verifyCad(page,mobile){
  for(const img of await images.all())await img.evaluate(node=>node.decode());
  await page.getByRole('link',{name:/Otwórz oficjalną instrukcję Autodesk/}).waitFor();
  await page.getByRole('button',{name:'Pojęcia'}).click();
- assert.equal(await page.getByTestId('autocad-original-screens').count(),0);
+ assert.equal(await page.getByTestId('autocad-original-screens').count(),1);
  await page.getByRole('button',{name:'L · Linia',exact:true}).click();
  await page.getByText('Przed użyciem',{exact:false}).first().waitFor();
  assert.equal(await page.getByRole('button',{name:'Wypróbuj skrót w warsztacie'}).count(),0);
