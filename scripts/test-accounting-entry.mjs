@@ -86,7 +86,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'f527827f502e29af60fe776b5a5df2d4bead1e12', // previous revision
   'be7644aca8cd1a5422708ee7c1855e37b0055784', // preceding reviewed CAD renderer
   'd168d1296dc0e2936460b52c5b674807c37b52eb', // prior reviewed AutoCAD reader
-  '9ed77599d484d991956a544db2704b4edeb7e2b8' // verified: reference Atlas only; accounting route intact
+  '9ed77599d484d991956a544db2704b4edeb7e2b8', // previous review
+  '104db6f1dc8d3eebbdb05c195012568d885a277c' // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
  ]);
  assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
