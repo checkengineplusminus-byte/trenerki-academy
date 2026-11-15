@@ -213,7 +213,7 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
     <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{walkthroughs[slug][selectedZone]}</Text>
    </View>
    <Pressable onPress={openPractice} accessibilityRole="button" style={{padding:14,backgroundColor:ink,borderRadius:11}}>
-    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{slug==='autocad-skroty'?'Przejdź do instrukcji ćwiczenia →':'Przejdź do wirtualnego programu →'}</Text>
+    <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{slug==='autocad-skroty'?'Przejdź do instrukcji ćwiczenia →':slug==='excel-skroty'?'Otwórz arkusz ćwiczebny Excel ↓':'Przejdź do wirtualnego programu →'}</Text>
    </Pressable>
   </>}
   {tab==='history'&&<View style={{gap:13}}>
