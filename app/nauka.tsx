@@ -14,6 +14,7 @@ import CourseIntro from '../src/CourseIntro';
 import ExcelFirstDayPractice from '../src/ExcelFirstDayPractice';
 import {ExcelAcademyLibrary} from '../src/ExcelAcademyLibrary';
 import ExcelMasterGuide from '../src/ExcelMasterGuide';
+import ExcelVisualPractices from '../src/ExcelVisualPractices';
 import CourseIntroPhoto from '../src/CourseIntroPhoto';
 import CourseStudyPlan,{type StudyProject} from '../src/CourseStudyPlan';
 import ConceptAtlas from '../src/ConceptAtlas';
@@ -337,7 +338,7 @@ export default function Learning(){
   {!!lesson&&<>
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
-   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide/>}
+   {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide lessonNo={module}/>}
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&hasSoftwareOrientation(slug)&&<SoftwareOrientation slug={slug} openPractice={openWorkshop}/>}
    {index===0&&!introRead&&<View testID="course-reading-introduction" style={{padding:20,backgroundColor:'white',borderRadius:16,gap:14,marginBottom:20}}>
     <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Jak będziemy się uczyć?</Text>
@@ -358,6 +359,7 @@ export default function Learning(){
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
+   {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}
    {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#e5f4e1':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#a8cda4':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{canFinish?'✓ Obydwa zadania zaliczone — możesz przejść dalej':'Aby przejść dalej, zalicz 2 zadania'}</Text>
     <Text style={{fontSize:14,fontWeight:'800',color:'#4c634d'}}>Twój wynik: {done.includes(module)?2:passedCount}/2</Text>
@@ -386,6 +388,7 @@ export default function Learning(){
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
+   {slug==='excel-skroty'&&[9,15,17,18,20,25,26,29].includes(module)&&<ExcelVisualPractices key={'excel-visual-'+module} lessonNo={module}/>}
    {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>

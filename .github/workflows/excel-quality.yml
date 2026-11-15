@@ -11,6 +11,13 @@ on:
       - 'src/SpreadsheetWorkspace.tsx'
       - 'src/SpreadsheetFormula.ts'
       - 'src/ExcelMasterGuide.tsx'
+      - 'src/ExcelFunctionDetails.tsx'
+      - 'src/ExcelShortcutsDirectory.tsx'
+      - 'src/ExcelVisualPractices.tsx'
+      - 'src/excelVisualMath.ts'
+      - 'content/excel-shortcuts-encyclopedia.json'
+      - 'content/excel-function-deep-guide.json'
+      - 'scripts/test-excel-shortcuts-and-charts.mjs'
       - 'content/excel-function-index-2026.json'
       - 'content/excel-master-syllabus.json'
       - 'scripts/test-excel-currency.mjs'
@@ -39,6 +46,13 @@ on:
     branches: ['main']
     paths:
       - 'src/ExcelMasterGuide.tsx'
+      - 'src/ExcelFunctionDetails.tsx'
+      - 'src/ExcelShortcutsDirectory.tsx'
+      - 'src/ExcelVisualPractices.tsx'
+      - 'src/excelVisualMath.ts'
+      - 'content/excel-shortcuts-encyclopedia.json'
+      - 'content/excel-function-deep-guide.json'
+      - 'scripts/test-excel-shortcuts-and-charts.mjs'
       - 'src/SpreadsheetWorkspace.tsx'
       - 'src/SpreadsheetFormula.ts'
       - 'src/ExcelFirstDayPractice.tsx'
@@ -71,6 +85,8 @@ jobs:
         run: node scripts/test-excel-currency.mjs
       - name: Sprawdź 514 funkcji, 39 rozdziałów i eksport PDF
         run: node --test scripts/test-excel-master-guide.mjs
+      - name: Sprawdź 70 skrótów, 66 objaśnionych funkcji i prawdziwe agregacje wykresów
+        run: node --test scripts/test-excel-shortcuts-and-charts.mjs
   ten_environments:
     needs: expert_engine
     name: 10 środowisk × 2 cykle → IT → krytyk → sprzedawca

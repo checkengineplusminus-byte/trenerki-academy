@@ -2,9 +2,11 @@ import React,{useMemo,useState} from 'react';
 import {Linking,Pressable,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import reference from '../content/excel-function-index-2026.json';
 import syllabus from '../content/excel-master-syllabus.json';
+import ExcelShortcutsDirectory from './ExcelShortcutsDirectory';
+import ExcelFunctionDetails,{excelDeepDetails} from './ExcelFunctionDetails';
 
-type Tab='plan'|'functions'|'print';
-type FunctionEntry={code:string;name:string;category:string;url:string;what:string;example?:string};
+type Tab='plan'|'functions'|'shortcuts'|'print';
+type FunctionEntry={code:string;name:string;category:string;url:string;what:string;example?:string;editorial?:string};
 type Chapter={id:number;level:string;title:string;explanation:string;steps:string[];example:string;pitfall:string;assignment:string};
 const allFunctions=reference.functions as FunctionEntry[];
 const chapters=syllabus.chapters as Chapter[];
@@ -14,17 +16,17 @@ const normalize=(text:string)=>text.toLocaleLowerCase('pl-PL').normalize('NFD').
 const ink='#193d2c',muted='#4c6756',outline='#cbded0';
 const link=(url:string)=>void Linking.openURL(url);
 
-export default function ExcelMasterGuide(){
+export default function ExcelMasterGuide({lessonNo=0}:{lessonNo?:number}){
  const {width}=useWindowDimensions(),mobile=width<650;
- const [tab,setTab]=useState<Tab>('plan');
- const [expanded,setExpanded]=useState(false);
+ const [tab,setTab]=useState<Tab>(lessonNo>=10&&lessonNo<=17?'shortcuts':lessonNo===24?'functions':'plan');
+ const [expanded,setExpanded]=useState((lessonNo>=10&&lessonNo<=17)||[20,24,25].includes(lessonNo));
  const [level,setLevel]=useState('Wszystkie'),[openChapter,setOpenChapter]=useState<number|null>(1);
  const [query,setQuery]=useState(''),[category,setCategory]=useState('Wszystkie'),[limit,setLimit]=useState(25);
  const [answer,setAnswer]=useState(''),[quiz,setQuiz]=useState<'idle'|'correct'|'wrong'>('idle');
  const visibleChapters=chapters.filter(c=>level==='Wszystkie'||c.level===level);
  const results=useMemo(()=>allFunctions.filter(item=>
   (category==='Wszystkie'||item.category===category)&&
-  (!query.trim()||normalize(item.code+' '+item.name+' '+item.category).includes(normalize(query.trim())))
+  (!query.trim()||normalize(item.code+' '+item.name+' '+item.category).includes(normalize(query.trim().replace(/wyszukaj\.x/gi,'X.WYSZUKAJ').replace(/^rata$/i,'PMT'))))
  ),[category,query]);
  const chosen=chapters.find(c=>c.id===openChapter);
  const pill=(selected:boolean)=>({minHeight:40,paddingHorizontal:11,paddingVertical:8,borderRadius:9,borderWidth:1,
@@ -33,12 +35,22 @@ export default function ExcelMasterGuide(){
  return <View testID="excel-master-guide" style={{borderWidth:1,borderColor:'#bfd6c7',borderRadius:17,backgroundColor:'#f3f8f3',marginVertical:14,overflow:'hidden'}}>
   <Pressable accessibilityRole="button" accessibilityState={{expanded}} onPress={()=>setExpanded(v=>!v)}
    style={{padding:mobile?13:19,backgroundColor:'#e2f0e2',gap:8,minHeight:68}}>
-   <Text style={{fontSize:11,fontWeight:'900',color:'#427657'}}>TRENERKI · DODATKOWA ENCYKLOPEDIA EXCEL</Text>
+   <Text style={{fontSize:11,fontWeight:'900',color:'#427657'}}>TRENERKI · PODRĘCZNIK EXCEL · SKRÓTY, FUNKCJE, PRAKTYKA</Text>
    <Text style={{fontSize:mobile?20:23,fontWeight:'900',color:ink}}>Excel krok po kroku — od pierwszej komórki do raportu PDF</Text>
-   <Text style={{fontSize:13,lineHeight:21,color:muted}}>39 szczegółowych rozdziałów uzupełniających i katalog 514 funkcji. Podstawy uczymy powoli, z przykładem i ostrzeżeniem o typowych błędach; później przechodzimy do analizy, tabel przestawnych, Power Query i finansów. Dotychczasowe 30 zaliczanych lekcji i postępy pozostają bez zmian.</Text>
+   <Text style={{fontSize:13,lineHeight:21,color:muted}}>39 dodatkowych rozdziałów, atlas 70 skrótów i indeks 514 funkcji. 66 funkcji ma rozpisane argumenty, przykład, wynik i ćwiczenie; pozostałe mają opis i odsyłacz do dokumentacji Microsoft. Nie zmieniamy postępów 30 zaliczanych lekcji.</Text>
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>To niezależny kurs TRENERKI, a nie oficjalne szkolenie ani certyfikacja Microsoft. Część operacji wykonujesz w prawdziwym Excelu; szkoleniowy symulator odtwarza tylko wybrane funkcje.</Text>
    <Text style={{color:'#256347',fontWeight:'900',fontSize:14}}>{expanded?'Zwiń podręcznik i wróć do lekcji ▴':'Otwórz szczegółowy podręcznik i wyszukiwarkę funkcji ▾'}</Text>
   </Pressable>
+  <View style={{paddingHorizontal:mobile?12:17,paddingTop:5,flexDirection:'row',flexWrap:'wrap',gap:8}}>
+   <Pressable testID="excel-shortcuts-open-button" accessibilityRole="button" onPress={()=>{setExpanded(true);setTab('shortcuts')}}
+    style={{backgroundColor:'#dcefe1',borderColor:'#a9d2b5',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
+    <Text style={{color:'#214e37',fontSize:13,fontWeight:'900'}}>Pokaż 70 skrótów klawiaturowych</Text>
+   </Pressable>
+   <Pressable testID="excel-functions-open-button" accessibilityRole="button" onPress={()=>{setExpanded(true);setTab('functions')}}
+    style={{backgroundColor:'#dcefe1',borderColor:'#a9d2b5',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
+    <Text style={{color:'#214e37',fontSize:13,fontWeight:'900'}}>Pokaż wszystkie 514 funkcji</Text>
+   </Pressable>
+  </View>
   <Pressable accessibilityRole="link" accessibilityLabel="Otwórz prawdziwy Microsoft Excel w przeglądarce"
    onPress={()=>link('https://www.microsoft.com/pl-pl/microsoft-365/excel')}
    style={{marginHorizontal:mobile?12:17,marginVertical:10,padding:11,minHeight:48,borderRadius:9,backgroundColor:'white',borderWidth:1,borderColor:outline,justifyContent:'center'}}>
@@ -47,7 +59,7 @@ export default function ExcelMasterGuide(){
   </Pressable>
   {expanded&&<View style={{padding:mobile?12:17,gap:14}}>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-    {([{id:'plan',name:'39 rozdziałów krok po kroku'},{id:'functions',name:'514 funkcji A–Z'},{id:'print',name:'PDF, druk i liczba stron'}] as {id:Tab;name:string}[]).map(x=>
+    {([{id:'plan',name:'39 rozdziałów krok po kroku'},{id:'functions',name:'514 funkcji A–Z'},{id:'shortcuts',name:'70 skrótów z ćwiczeniami'},{id:'print',name:'PDF, druk i liczba stron'}] as {id:Tab;name:string}[]).map(x=>
      <Pressable key={x.id} accessibilityRole="button" accessibilityState={{selected:tab===x.id}} onPress={()=>setTab(x.id)} style={pill(tab===x.id)}>
       <Text style={{fontSize:13,fontWeight:'900',color:ink}}>{x.name}</Text>
      </Pressable>)}
@@ -85,7 +97,8 @@ export default function ExcelMasterGuide(){
    </View>}
    {tab==='functions'&&<View style={{gap:11}}>
     <Text style={sectionHeading}>Encyklopedia {allFunctions.length} funkcji — źródła producenta</Text>
-    <Text style={{fontSize:13,lineHeight:21,color:muted}}>Katalog zawiera 514 krótkich wyjaśnień, 43 wzory przykładowe, nazwy polskie i angielskie oraz odnośniki do pełnych instrukcji Microsoft. To nie jest deklaracja, że wszystkie te funkcje działają w małym arkuszu symulacyjnym. Nazwy i dostępność mogą zależeć od wersji, platformy i języka Excela.</Text>
+    <Text style={{fontSize:13,lineHeight:21,color:muted}}>Każda z 514 pozycji ma krótki opis i link do producenta; 66 podstawowych i zaawansowanych funkcji ma też kompletną kartę dydaktyczną z argumentami, przykładem i zadaniem. To nie jest deklaracja, że wszystkie te funkcje działają w małym arkuszu symulacyjnym. Nazwy i dostępność mogą zależeć od wersji, platformy i języka Excela.</Text>
+    <Text style={{fontSize:12,lineHeight:20,color:muted}}>W polskim Excelu szukaj X.WYSZUKAJ (nie WYSZUKAJ.X). Obliczenia raty znajdziesz pod PMT. WPN nie jest zweryfikowaną nazwą z bieżącego katalogu Microsoft — sprawdź, czy chodzi Ci o NPV lub PV.</Text>
     <TextInput accessibilityLabel="Szukaj funkcji Excel A do Z" testID="excel-master-function-search"
      placeholder="Szukaj SUMA, JEŻELI, XLOOKUP, MOD, PMT..." placeholderTextColor="#6a8671"
      value={query} onChangeText={v=>{setQuery(v);setLimit(25)}} autoCorrect={false} style={{padding:13,borderWidth:1,borderColor:outline,backgroundColor:'white',borderRadius:10,color:ink,fontSize:14}}/>
@@ -99,7 +112,9 @@ export default function ExcelMasterGuide(){
       <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>{f.name===f.code?f.code:f.name+' · '+f.code}</Text>
       <Text style={{fontSize:11,color:muted}}>{f.category}</Text>
       <Text style={{fontSize:13,color:ink,lineHeight:20}}>{f.what}</Text>
-      {!!f.example&&<View style={{backgroundColor:'#f0f6ed',padding:9,borderRadius:7}}>
+      <Text style={{fontSize:11,color:excelDeepDetails[f.code]?'#287446':'#7e6d3d',fontWeight:'800'}}>{excelDeepDetails[f.code]?'Opracowana funkcja: składnia, argumenty, wynik i ćwiczenie':'Katalog funkcji — szczegóły w dokumentacji Microsoft'}</Text>
+      <ExcelFunctionDetails code={f.code}/>
+      {!!f.example&&!excelDeepDetails[f.code]&&<View style={{backgroundColor:'#f0f6ed',padding:9,borderRadius:7}}>
        <Text style={{fontSize:11,color:muted,fontWeight:'900'}}>Przykładowa formuła</Text>
        <Text selectable style={{fontSize:12,fontWeight:'700',color:'#285c3d'}}>{f.example}</Text>
       </View>}
@@ -112,6 +127,7 @@ export default function ExcelMasterGuide(){
     </Pressable>}
     {!results.length&&<Text style={{color:muted}}>Brak dopasowania. Spróbuj nazwy angielskiej, polskiej lub kategorii.</Text>}
    </View>}
+   {tab==='shortcuts'&&<ExcelShortcutsDirectory lessonNo={lessonNo}/>}
    {tab==='print'&&<View style={{gap:12}}>
     <Text style={sectionHeading}>Jak uzyskać czytelny PDF — od A do Z</Text>
     {[

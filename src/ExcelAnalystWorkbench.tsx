@@ -89,7 +89,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
  useEffect(()=>{changeMode(initialMode(lessonNo));},[lessonNo]);
  const groups=(group==='region'?['Północ','Centrum','Południe']:group==='category'?['Materiały','Usługi','Transport']:group==='month'?['2026-01','2026-02','2026-03']:['Firma Alfa','Firma Beta','Firma Gamma','Firma Delta','Firma Epsilon']);
  const formulas:Record<Mode,string>={
-  filter:'=FILTRUJ(A2:K19;(D2:D19="'+region+'")*(E2:E19="'+category+'");"Brak rekordów")',
+  filter:'=FILTR(A2:K19;(D2:D19="'+region+'")*(E2:E19="'+category+'");"Brak rekordów")',
   sumifs:'=SUMA.WARUNKÓW(J2:J19;D2:D19;"'+region+'";E2:E19;"'+category+'")',
   lookup:'=X.WYSZUKAJ("'+invoice+'";A2:A19;J2:J19;"Brak";0)',
   pivot:'Wstaw → Tabela przestawna → Wiersze: '+group+' → Wartości: '+metric+' → Odśwież',
