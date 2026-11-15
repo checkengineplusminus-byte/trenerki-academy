@@ -331,10 +331,10 @@
         "Policz kwotę bez ukrywania innych rekordów na stałe.",
         "Porównaj SUMA.WARUNKÓW z filtrem."
       ],
-      "expected": "4",
+      "expected": "3",
       "unit": "number",
       "hint": "Policz rekordy z Północy i kategorii Materiały.",
-      "explanation": "W danych są cztery pozycje Materiały w regionie Północ; sprawdź też ich sumę w pracowni.",
+      "explanation": "W danych są 3 pozycje Materiały w regionie Północ; sprawdź też ich sumę w pracowni.",
       "mistake": "Filtr ukrywa, nie usuwa danych. SUMA.WARUNKÓW liczy po kryteriach.",
       "realExcel": "W prawdziwym Excelu zrób tabelę Ctrl+T, filtr i SUMA.WARUNKÓW.",
       "track": "praktyka",
