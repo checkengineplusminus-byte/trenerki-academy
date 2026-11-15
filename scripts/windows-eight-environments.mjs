@@ -92,7 +92,7 @@ async function runPersona(browser,p,round){
   assert.equal(await learningFooter.getByRole('link',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).getAttribute('href'),'/pomoc','Engineer: support must remain accessible in lessons');
   const supportBox=await learningFooter.getByRole('link',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).boundingBox();
   assert(supportBox&&supportBox.x>=footerBounds.x-1&&supportBox.x+supportBox.width<=footerBounds.x+footerBounds.width+1,
-   'Critic: help link is clipped outside small lesson viewport');
+   'Critic: help link is clipped outside small lesson viewport: '+JSON.stringify({help:supportBox,footer:footerBounds}));
 
   const cookieSettings=learningFooter.getByRole('button',{name:'Ustawienia plików cookie'});
   await cookieSettings.waitFor({state:'visible',timeout:10000});
