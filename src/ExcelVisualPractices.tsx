@@ -81,7 +81,7 @@ export default function ExcelVisualPractices({lessonNo}:{lessonNo:number}){
   </View>
   <Text style={{color:ink,fontWeight:'900',fontSize:15}}>1. Pracuj na tabeli źródłowej</Text>
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-   {['Wszystkie','Materiały','Usługi'].map(x=><Pressable key={x} onPress={()=>{setFilter(x);setSelected('');setFeedback('')}} accessibilityRole="button" accessibilityState={{selected:filter===x}} style={btn(filter===x)}>
+   {['Wszystkie','Materiały','Usługi'].map(x=><Pressable key={x} onPress={()=>{setFilter(x);setSelected('');setFeedback('');setAnswer('');if(pivotMode){setPivot(null);setPivotVersion(-1)}}} accessibilityRole="button" accessibilityState={{selected:filter===x}} style={btn(filter===x)}>
     <Text style={{color:ink,fontSize:12,fontWeight:'700'}}>{x}</Text>
    </Pressable>)}
    {(['original','high','low'] as const).map(x=><Pressable key={x} accessibilityRole="button" accessibilityState={{selected:sort===x}} onPress={()=>setSort(x)} style={btn(sort===x)}>
