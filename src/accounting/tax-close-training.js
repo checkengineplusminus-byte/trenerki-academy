@@ -7,7 +7,7 @@
 import {invoiceTotals,expectedInvoiceLines,livePostings,validDate} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
 import {readScenario} from './simulator-core.js';
-import {acquisitionLines} from './assets-core.js';
+import {acquisitionLines,assetFacts} from './assets-core.js';
 import {normalizeIdentity} from './identity-core.js';
 import {inspectScenarioInvoiceBridge} from './scenario-invoice-bridge.js';
 import {inspectScenarioCorrectionBridge} from './scenario-correction-bridge.js';
@@ -215,10 +215,27 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  // NIE oznacza to jednak odliczenia VAT ani kwalifikacji podatkowej.
  const vatLedgerSalesCents=-periodMovement('222');
  const vatLedgerPurchasesCents=periodMovement('221');
+ // W zwykłym zakupie testowym model zakłada pełne odliczenie VAT.
+ // Środek trwały używa WYŁĄCZNIE zadeklarowanego deductible_bps z karty,
+ // nie pełnej kwoty podatku na fakturze. To nie jest ocena prawa do odliczenia.
+ let deductiblePurchaseCents=0,deductibleModelKnown=true;
+ const activeAssetCards=Array.isArray(state.assets)?
+   state.assets.filter(a=>a?.status==='active'):[];
+ for(const invoice of issued.filter(i=>i.kind==='purchase')){
+  try{
+   const cards=activeAssetCards.filter(a=>a.invoice_id===invoice.id);
+   if(cards.length>1)throw new Error('Powtórzony zakup środka trwałego');
+   deductiblePurchaseCents+=cards.length?assetFacts(cards[0],state).deductible:
+     invoiceTotals(invoice).tax_cents;
+  }catch{deductibleModelKnown=false;}
+ }
+ if(!Number.isSafeInteger(deductiblePurchaseCents))deductibleModelKnown=false;
+ const deductibleModelValue=deductibleModelKnown?deductiblePurchaseCents:null;
  const vatLedgerValid=[vatLedgerSalesCents,vatLedgerPurchasesCents].every(Number.isSafeInteger);
- const vatLedgerMatches=!!period&&issued.length>0&&vatLedgerValid&&
-  vatLedgerSalesCents===totals.sale_vat_cents&&vatLedgerPurchasesCents===totals.purchase_vat_cents;
+ const vatLedgerMatches=!!period&&issued.length>0&&vatLedgerValid&&deductibleModelKnown&&
+  vatLedgerSalesCents===totals.sale_vat_cents&&vatLedgerPurchasesCents===deductiblePurchaseCents;
  const vatLedgerIssues=[];
+ if(!deductibleModelKnown)vatLedgerIssues.push({code:'purchase_vat_deduction_model_incomplete',invoice:period||'brak okresu'});
  if(!vatLedgerMatches&&!!period&&issued.length>0)
   vatLedgerIssues.push({code:'model_vat_ledger_does_not_match_invoices',invoice:period});
  // Wystawione faktury muszą należeć do TEJ SAMEJ fikcyjnej firmy.
@@ -254,7 +271,8 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   {key:'vat_model_vs_ledger',label:'VAT faktur = konta 221/222 tego samego miesiąca',
    passed:vatLedgerMatches,
    detail:'konto 222 '+vatLedgerSalesCents+' gr / faktury '+totals.sale_vat_cents+
-    ' gr; konto 221 '+vatLedgerPurchasesCents+' gr / faktury '+totals.purchase_vat_cents+
+    ' gr; konto 221 '+vatLedgerPurchasesCents+' gr / założone odliczenie '+(deductibleModelValue??'nieweryfikowalne')+
+    ' gr; VAT na fakturach zakupowych '+totals.purchase_vat_cents+
     ' gr. To kontrola ćwiczeniowa, nie kwalifikacja VAT'},
   {key:'bank',label:'Bank z wyciągu = konto 130 w miesiącu',passed:bankBalanced,detail:'Porównanie kwot z fikcyjnego CSV oraz dziennika'},
   {key:'bank_sources',label:'Każdy wiersz CSV ma jeden zgodny dekret źródłowy',passed:bankCovered,
@@ -290,15 +308,18 @@ export function taxCloseTrainingAudit(raw,scenario=null){
     (!(scenario.scenario??scenario).month||(scenario.scenario??scenario).month===period),
    detail:'D01–D36 i faktury, bank, kadry oraz majątek muszą dotyczyć tego samego miesiąca ('+(period||'nieustalonego')+'). Osobny styczeń nie zamyka listopada'}
  ];
- const vatDifferenceCents=totals.sale_vat_cents-totals.purchase_vat_cents;
+ const vatDifferenceCents=deductibleModelKnown?totals.sale_vat_cents-deductiblePurchaseCents:null;
  return {
   period:period||null,source_count:issued.length,
    scenario_bank_bridge:{status:bankBridge.status,matched:bankBridge.matched,total:bankBridge.total},
    scenario_invoice_bridge:{status:invoiceBridge.status,matched:invoiceBridge.matched,total:invoiceBridge.total},
     scenario_correction_bridge:{status:correctionBridge.status,matched:correctionBridge.matched,total:correctionBridge.total,legal_review:'not_tested'},
-  vat_ledger:{sales_cents:vatLedgerSalesCents,purchases_cents:vatLedgerPurchasesCents,matching:vatLedgerMatches,
+  vat_ledger:{sales_cents:vatLedgerSalesCents,purchases_cents:vatLedgerPurchasesCents,
+   purchases_deductible_model_cents:deductibleModelValue,
+   purchases_invoice_vat_cents:totals.purchase_vat_cents,matching:vatLedgerMatches,
    review:'not_tested'},
-  figures:{...totals,vat_difference_cents:vatDifferenceCents,
+  figures:{...totals,purchase_deductible_model_cents:deductibleModelValue,
+   vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
   checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
@@ -338,8 +359,10 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   '<p>Okres ćwiczeniowy: <strong>',escape(r.period||'nieustalony'),'</strong>; dokumenty: ',r.source_count,'</p>',
   '<p>Sprzedaż netto: ',escape(money(r.figures.sale_net_cents)),
   '; VAT z dokumentów sprzedaży: ',escape(money(r.figures.sale_vat_cents)),
-  '; VAT z dokumentów zakupu: ',escape(money(r.figures.purchase_vat_cents)),
-  '; różnica modelowa: ',escape(money(r.figures.vat_difference_cents)),'</p>',
+  '; VAT z dokumentów zakupu (pełna kwota): ',escape(money(r.figures.purchase_vat_cents)),
+  '; odliczenie przyjęte w fikcyjnym modelu: ',escape(fm(r.figures.purchase_deductible_model_cents)),
+  '; różnica modelowa, NIE zobowiązanie podatkowe: ',escape(fm(r.figures.vat_difference_cents)),
+  '. Odliczenie i rozliczenie wymaga recenzji księgowego.</p>',
   '<p>VAT według aktywnych dekretów: 222 — ',escape(money(r.vat_ledger.sales_cents)),
   '; 221 — ',escape(money(r.vat_ledger.purchases_cents)),
   '; zgodność z fakturami: ',r.vat_ledger.matching?'TAK, WYŁĄCZNIE W MODELU':'NIE — WYJAŚNIJ ROZBIEŻNOŚĆ','.</p>',

@@ -1477,7 +1477,7 @@ import {planAcquisition as lifecycleAcquire,planDepreciation as lifecycleDepreci
  * płace, majątek, sprzedaż środka, bilans i 36 odrębnych ćwiczeń.
  * Nic nie trafia do Supabase; brak stawek prawnych, KSeF/JPK/UPO i logowania.
  */
-function fictionalFullCompanyMonth(){
+function fictionalFullCompanyMonth(deductible_bps=10000){
  const {manifest,state:practice}=completeIntegratedFixture();
  let s=payrollState();
  s.company={schema_version:1,status:'ready',fictional:true,entity_type:'jdg',
@@ -1521,7 +1521,7 @@ function fictionalFullCompanyMonth(){
  s=lifecycleAcquire(s,{id:'ASSET-A',inventory_no:'TEST/MACHINE/A',
   name:'Maszyna fikcyjna',category:'machine',invoice_id:equipment.id,
   in_service_date:'2026-01-03',start_month:'2026-01',
-  months:12,residual_cents:0,deductible_bps:10000,status:'draft'},'J-ASSET-ACQUIRE').state;
+  months:12,residual_cents:0,deductible_bps,status:'draft'},'J-ASSET-ACQUIRE').state;
  s=lifecycleDepreciate(s,'ASSET-A','J-ASSET-DEPR').state;
  s=lifecycleSell(s,'ASSET-A','machine-sale','2026-01-31','J-ASSET-SALE').state;
  for(const [id,bankId,paid] of [['P01','WAGE-A',407000],['P02','WAGE-B',251000]]){
@@ -2168,4 +2168,33 @@ test('Zamknięcie: brak pola sprzedawcy nie ukrywa powtórzonego numeru własnej
  const {seller,...withoutSeller}=first;
  s.invoices.push({...withoutSeller,id:'THIRD-SALE',party:'Fikcyjny odbiorca drugi'});
  assert.ok(taxCloseTrainingAudit(s).issues.some(x=>x.code==='source_invoice_number_duplicate_for_party'));
+});
+
+
+test('Majątek → księgi VAT → zamknięcie: 0%, 50%, 100% odliczenia nie udają błędu Wn/Ma',()=>{
+ for(const bps of [0,5000,10000]){
+  const {manifest,state}=fictionalFullCompanyMonth(bps),before=JSON.stringify(state);
+  const audit=taxCloseTrainingAudit(state,manifest);
+  const fullInvoiceTax=audit.figures.purchase_vat_cents;
+  const assetTax=state.invoices.find(i=>i.id==='equipment').tax_cents;
+  const expectedDeduction=fullInvoiceTax-assetTax+(assetTax*bps/10000);
+  assert.equal(audit.figures.purchase_deductible_model_cents,expectedDeduction);
+  assert.equal(audit.vat_ledger.purchases_cents,expectedDeduction);
+  assert.equal(audit.vat_ledger.matching,true);
+  assert.equal(audit.checks.find(c=>c.key==='vat_model_vs_ledger').passed,true);
+  assert.equal(audit.checks.find(c=>c.key==='payroll_assets').passed,true,'Pozostałe etapy własnego biura muszą pozostać spójne');
+  assert.equal(audit.figures.vat_difference_cents,audit.figures.sale_vat_cents-expectedDeduction);
+  assert.equal(audit.completed,false,'Bez KSeF/JPK/UPO i prawdziwego odbioru nie ma ukończenia');
+  assert.equal(JSON.stringify(state),before);
+ }
+});
+test('VAT przy zakupie majątku: niepoprawna karta odliczenia pozostaje nieweryfikowalna, nie 0 zł',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(5000);
+ state.assets[0].deductible_bps=-5;
+ const r=taxCloseTrainingAudit(state,manifest);
+ assert.equal(r.vat_ledger.matching,false);
+ assert.equal(r.vat_ledger.purchases_deductible_model_cents,null);
+ assert.equal(r.figures.vat_difference_cents,null);
+ assert.ok(r.issues.some(x=>x.code==='purchase_vat_deduction_model_incomplete'));
+ assert.equal(r.checks.find(c=>c.key==='vat_model_vs_ledger').passed,false);
 });
