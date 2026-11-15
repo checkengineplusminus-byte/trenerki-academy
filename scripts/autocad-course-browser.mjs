@@ -87,7 +87,7 @@ for(const mobile of [false,true]){
   await cad.getByTestId('cad-summary').filter({hasText:'Obiekty: 1'}).waitFor();
   await cad.getByText(/JOIN: połączono 3 odcinki/).waitFor();
   await send('MOVE');await send('0,0');await send('@2000,0');
-  await cad.getByText(/Przesunięcie 2000, 0/).waitFor();
+  await cad.getByText(/Przesunięto 1 obiekt o 2000, 0/).waitFor();
   await send('ZOOM E');
   await cad.getByText(/Dopasowano widok/).waitFor();
   await cad.getByTestId('cad-canvas').screenshot({path:'/tmp/trenerki-autocad-canvas-'+(mobile?'mobile':'desktop')+'.png'});
@@ -98,9 +98,9 @@ for(const mobile of [false,true]){
   await cad.getByRole('button',{name:'Zaznacz wszystko · Ctrl+A'}).click();
   await cad.getByTestId('cad-summary').filter({hasText:'Zaznaczone: 3'}).waitFor();
   await send('MOVE');await send('0,0');await send('@500,0');
-  await cad.getByText(/Przesunięto 3 obiektów o 500, 0/).waitFor();
+  await cad.getByText(/Przesunięto 3 obiekty o 500, 0/).waitFor();
   await send('SCALE');await send('0,0');await send('2');
-  await cad.getByText(/SCALE: przeskalowano 3 obiektów/).waitFor();
+  await cad.getByText(/SCALE: przeskalowano 3 obiekty/).waitFor();
   await cad.getByRole('button',{name:'Tryby OSNAP · ustaw'}).click();
   const snaps=cad.getByTestId('cad-osnap-settings');await snaps.waitFor();
   await snaps.getByRole('button',{name:'Przecięcie'}).click();
