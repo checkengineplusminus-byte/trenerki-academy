@@ -33,7 +33,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // zmianę onboardingu samego Excel (13fab77), bez zmiany tras księgowości.
  const reviewedReaderHashes=new Set([
   'a7c5b5720baeb67a75be65b699d57212197eea60',
-  '8526dbcfa26527f2b004c3ff6bf48ac3d4885e4a'
+  '8526dbcfa26527f2b004c3ff6bf48ac3d4885e4a',
+  '5bb86b0916e4fcdfe1376f770cc8a5e27358a076' // reviewed carpentry lesson progression
  ]);
  assert.ok(reviewedReaderHashes.has(hash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });

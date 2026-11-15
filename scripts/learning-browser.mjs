@@ -87,7 +87,7 @@ async function installFixture(page,catalog){
   if(table==='ta_drafts')return method==='POST'?route.fulfill({headers,status:201}):json([]);
   if(table==='ta_learning_progress')return json(completed(slug).map(lesson_no=>({lesson_no})));
   if(table==='ta_courses')return json([{title_pl:'Kurs testowy '+slug,description_pl:'Dane demonstracyjne'}]);
-  if(table==='ta_learning_attempts')return json(catalog?answers.filter(x=>x.course_slug===slug):[{lesson_no:1,mode:'case',correct:true}]);
+  if(table==='ta_learning_attempts')return json(catalog?answers.filter(x=>x.course_slug===slug):[{lesson_no:1,mode:'case',correct:true},...answers.filter(x=>x.course_slug===slug)]);
   if(table==='ta-lesson-guide'){
    const input=req.postDataJSON();
    if(input.action==='complete'){
@@ -100,8 +100,8 @@ async function installFixture(page,catalog){
    if(input.action==='attempt'){
     const material=catalog?.sample(input.course_slug);
     const q=input.mode==='construction'?material?.construction?.roleplay:material?.learning;
-    const correct=catalog?Number(q?.correct)===input.selected_index:input.active_combo===input.selected_combo;
-    if(catalog)answers.push({...input,correct});
+    const correct=input.mode==='carpentry'?input.course_slug==='ciesla-przygotowanie-czeladnicze'&&input.lesson_no===1&&Math.abs(Number(String(input.numeric_answer).replace(',','.'))-0.192)<0.00001:catalog?Number(q?.correct)===input.selected_index:input.active_combo===input.selected_combo;
+    if(catalog||input.mode==='carpentry')answers.push({...input,correct});
     return json({ok:true,correct});
    }
    return json({ok:true,can_reply:true});
@@ -338,6 +338,7 @@ async function verifyExplorer(page,mobile){
 
 async function verifyCarpentry(page,mobile){
  await openCourse(page,'ciesla-przygotowanie-czeladnicze');
+ await page.getByTestId('carpentry-course-history').getByText('Od dawnych osad do nowoczesnych konstrukcji').waitFor();
  await page.getByRole('button',{name:'Kalkulatory cieśli ↓'}).click();
  const result=page.getByTestId('carpentry-result').first();
  const input=(name)=>page.getByTestId('carpentry-lab').first().getByRole('textbox',{name,exact:true});
@@ -352,6 +353,23 @@ async function verifyCarpentry(page,mobile){
  await input('Cena bazowa').fill('100,50');await input('Dodatek').fill('0');
  await waitText(result,'100,5 zł');
  console.log('✓ '+(mobile?'mobile':'desktop')+' carpentry: free inputs, locale decimals, validation, zero humidity and zero surcharge');
+}
+
+async function verifyCarpentryGate(page,mobile){
+ await openCourse(page,'ciesla-przygotowanie-czeladnicze',2);
+ const checklist=page.getByTestId('carpentry-checklist');
+ await checklist.getByText('Aby przejść dalej, zalicz 2 zadania').waitFor();
+ await checklist.getByText('Twój wynik: 1/2').waitFor();
+ await checklist.getByText(/2. Zadanie z obliczeń — do rozwiązania/).waitFor();
+ const lab=page.getByTestId('carpentry-lab').last();
+ await lab.getByRole('textbox',{name:'Wpisz obliczony wynik'}).fill('0,192');
+ await lab.getByRole('button',{name:'Sprawdź mój wynik'}).click();
+ await checklist.getByText('Twój wynik: 2/2').waitFor();
+ await page.reload();
+ await checklist.getByText('Twój wynik: 2/2').waitFor();
+ await page.getByRole('button',{name:'Dalej · lekcja 3 →'}).click();
+ await page.waitForURL(url=>url.searchParams.get('lesson')==='3');
+ console.log('✓ '+(mobile?'mobile':'desktop')+' carpentry: two checkpoints, durable arithmetic result, reload and next lesson');
 }
 
 async function verifyNavigation(page,finished,mobile){
@@ -463,6 +481,7 @@ for(const mobile of selections){
   await verifyExplorer(page,mobile);
   await verifyCarpentry(page,mobile);
   await verifyNavigation(page,finished,mobile);
+  await verifyCarpentryGate(page,mobile);
   if(!mobile&&process.env.TRENERKI_SKIP_FULL_CATALOG!=='1')await verifyAllCourses(ctx);
   const size=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:document.documentElement.clientWidth}));
   assert(size.scroll<=size.view+3,'Learning route has horizontal overflow');

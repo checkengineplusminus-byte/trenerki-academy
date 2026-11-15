@@ -127,7 +127,7 @@ Deno.serve(async(req:Request)=>{
   cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'))});
  if(action==='attempt'){
   const mode=cut(payload.mode,24),selected=Number(payload.selected_index);
-  if(!['case','construction','keyboard'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
+  if(!['case','construction','keyboard','carpentry'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
   const material=lesson.material||{};
   let correct=false;
   if(mode==='case'){
@@ -140,6 +140,14 @@ Deno.serve(async(req:Request)=>{
    if(!Array.isArray(options)||options.length<2||selected>=options.length||!Number.isInteger(answer)||answer<0||answer>=options.length)
     return respond({error:'exercise_not_configured'},422);
    correct=selected===answer;
+  }else if(mode==='carpentry'){
+   // Validate the fixed learning-exercise values server-side, never trust client-side flags.
+   const expected:Record<number,number>={1:0.192,8:4,18:5,23:24,56:41.3,58:5};
+   if(slug!=='ciesla-przygotowanie-czeladnicze'||!(no in expected)||selected!==0)return respond({error:'invalid_attempt'},400);
+   const raw=cut(payload.numeric_answer,40).replace(/\s/g,'').replace(',','.');
+   if(!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(raw))return respond({error:'invalid_attempt'},400);
+   const number=Number(raw),tolerance=Math.max(0.00001,Math.abs(expected[no])*0.0005);
+   correct=Number.isFinite(number)&&Math.abs(number-expected[no])<=tolerance;
   }else{
    const shortcuts=Array.isArray(material.shortcuts)?material.shortcuts:[],
    active=cut(payload.active_combo,80).toUpperCase().replace(/\s/g,''),
@@ -168,10 +176,12 @@ Deno.serve(async(req:Request)=>{
   // Conversation is voluntary support, never a prerequisite for lesson completion.
   // Completion still requires prior lessons and correct, server-validated practice.
   const mat=lesson.material||{};
-  const required:('case'|'construction'|'keyboard')[]=[];
+  const required:('case'|'construction'|'keyboard'|'carpentry')[]=[];
   if(mat.construction)required.push('construction');
   else if(mat.learning)required.push('case');
   if(Array.isArray(mat.shortcuts)&&mat.shortcuts.length)required.push('keyboard');
+  // New clients request the persisted arithmetic checkpoint; older clients remain compatible during rollout.
+  if(payload.require_carpentry===true&&slug==='ciesla-przygotowanie-czeladnicze'&&[1,8,18,23,56,58].includes(no))required.push('carpentry');
   for(const mode of required){
    const {data:passed,error:e}=await db.from('ta_learning_attempts').select('id').eq('user_id',user.id).eq('course_slug',slug)
     .eq('lesson_no',no).eq('mode',mode).eq('correct',true).limit(1);

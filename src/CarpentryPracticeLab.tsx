@@ -5,27 +5,36 @@ import {calculateCarpentry,examples,explainCarpentry,formatCarpentry,readCarpent
 
 export {hasCarpentryLab} from './CarpentryCalculations';
 
-export default function CarpentryPracticeLab({lessonNo,onPassed,alreadyPassed}:{lessonNo:number;onPassed?:()=>void;alreadyPassed?:boolean}){
+export default function CarpentryPracticeLab({lessonNo,onPassed,alreadyPassed,onVerify}:{lessonNo:number;onPassed?:()=>void;alreadyPassed?:boolean;onVerify?:(answer:string)=>Promise<boolean>|boolean}){
  const problem=examples[lessonNo];
- const [mode,setMode]=useState<'calculator'|'exercise'>('calculator');
+ const [mode,setMode]=useState<'calculator'|'exercise'>(onPassed?'exercise':'calculator');
  const [inputs,setInputs]=useState(()=>problem?sampleValues(problem):{});
- const [answer,setAnswer]=useState(''),[message,setMessage]=useState(''),[showSolution,setShowSolution]=useState(false);
+ const [answer,setAnswer]=useState(''),[message,setMessage]=useState(''),[showSolution,setShowSolution]=useState(false),[verifying,setVerifying]=useState(false);
  if(!problem)return null;
  const sample=sampleValues(problem);
  const current=calculateCarpentry(problem,mode==='calculator'?inputs:sample);
 
- function check(){
-  if(current.value===undefined)return;
+ async function check(){
+  if(verifying||current.value===undefined)return;
   const entered=readCarpentryNumber(answer);
   if(!Number.isFinite(entered)){setMessage('Wpisz samą liczbę z przecinkiem albo kropką.');return;}
   const tolerance=Math.max(0.00001,Math.abs(current.value)*0.0005);
-  if(Math.abs(current.value-entered)<=tolerance){
-   setMessage('Zgadza się. '+explainCarpentry(lessonNo,current.values,current.value));onPassed?.();
-  }else setMessage('Sprawdź przeliczenie jednostek i kolejność działań. Możesz podejrzeć wzór.');
+  if(Math.abs(current.value-entered)>tolerance){
+   setMessage('Sprawdź przeliczenie jednostek i kolejność działań. Możesz podejrzeć wzór.');return;
+  }
+  if(onVerify){
+   setVerifying(true);setMessage('Sprawdzam i zapisuję zaliczenie…');
+   try{
+    const confirmed=await onVerify(answer);
+    if(!confirmed){setMessage('Wynik nie został zatwierdzony na serwerze. Sprawdź połączenie i kliknij ponownie.');return;}
+   }catch{setMessage('Nie udało się zapisać wyniku. Spróbuj ponownie.');return;}
+   finally{setVerifying(false);}
+  }
+  setMessage('✓ Zadanie z obliczeń zaliczone i zapisane. '+explainCarpentry(lessonNo,current.values,current.value));onPassed?.();
  }
 
  return <View testID="carpentry-lab" style={[labStyles.panel,{marginBottom:16}]}>
-  <Text style={labStyles.heading}>{problem.title}</Text>
+  <Text style={labStyles.heading}>{onPassed?'Zadanie 2 · obliczenia: ':''}{problem.title}</Text>
   <Text style={labStyles.body}>{problem.goal}</Text>
   {onPassed&&<View style={labStyles.row}>
    <LabButton label="Kalkulator · własne dane" selected={mode==='calculator'} onPress={()=>setMode('calculator')}/>
@@ -49,13 +58,13 @@ export default function CarpentryPracticeLab({lessonNo,onPassed,alreadyPassed}:{
     <Text selectable style={labStyles.body}>{current.value===undefined?current.error:explainCarpentry(lessonNo,current.values,current.value)}</Text>
    </View>
   </>:<>
-   <Text style={labStyles.body}>Oblicz wynik dla danych z lekcji. Po sprawdzeniu możesz wrócić do własnych obliczeń w kalkulatorze.</Text>
+   <Text style={labStyles.body}>{onPassed?'To obowiązkowe drugie zadanie tej lekcji. Oblicz wynik, wpisz go poniżej i kliknij przycisk sprawdzania. Po zaliczeniu wróć do przycisku „Dalej”.':'Oblicz wynik dla danych z lekcji. Po sprawdzeniu możesz wrócić do własnych obliczeń w kalkulatorze.'}</Text>
    <Text style={labStyles.body}>{problem.fields.map(field=>field.label+' '+field.initial+' '+field.unit).join(' · ')}</Text>
    <Text style={labStyles.eyebrow}>Twój wynik · {problem.expectedLabel} ({problem.unit})</Text>
    <TextInput accessibilityLabel="Wpisz obliczony wynik" keyboardType="decimal-pad" value={answer}
-    onChangeText={value=>{setAnswer(value);setMessage('');}} onSubmitEditing={check} style={labStyles.input}/>
+    onChangeText={value=>{setAnswer(value);setMessage('');}} onSubmitEditing={()=>void check()} style={labStyles.input}/>
    <View style={labStyles.row}>
-    <LabButton label="Sprawdź mój wynik" onPress={check}/>
+    <LabButton label={verifying?'Zapisuję wynik…':'Sprawdź mój wynik'} onPress={()=>void check()}/>
     <LabButton label={showSolution?'Ukryj wzór':'Pokaż wzór i rozwiązanie'} selected={showSolution} onPress={()=>setShowSolution(v=>!v)}/>
    </View>
    {!!message&&<Text accessibilityLiveRegion="polite" style={labStyles.status}>{message}</Text>}
