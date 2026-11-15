@@ -66,7 +66,7 @@ export default function ExcelVisualPractices({lessonNo}:{lessonNo:number}){
  }
  const picker=<View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
   {(['category','region','month'] as Group[]).map(x=><Pressable key={x} accessibilityRole="button" accessibilityState={{selected:group===x}}
-   onPress={()=>{setGroup(x);setSelected('');setFeedback('');setAnswer('');if(pivotMode){setPivot(null);setPivotVersion(-1)}} style={btn(group===x)}>
+   onPress={()=>{setGroup(x);setSelected('');setFeedback('');setAnswer('');if(pivotMode){setPivot(null);setPivotVersion(-1)}}} style={btn(group===x)}>
    <Text style={{fontSize:12,color:ink,fontWeight:'800'}}>{groupLabel[x]}</Text>
   </Pressable>)}
  </View>;
@@ -118,7 +118,7 @@ export default function ExcelVisualPractices({lessonNo}:{lessonNo:number}){
   <Text style={{fontSize:13,color:muted}}>Pole „Wiersze” tabeli przestawnej określa, czy grupujemy po kategorii, regionie czy miesiącu. „Wartości” wskazuje, co sumujemy lub liczymy.</Text>
   {picker}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:6}}>
-   {(['revenue','quantity','count'] as Metric[]).map(x=><Pressable key={x} accessibilityRole="button" accessibilityState={{selected:metric===x}} onPress={()=>{setMetric(x);setSelected('');setFeedback('');setAnswer('');if(pivotMode){setPivot(null);setPivotVersion(-1)}} style={btn(metric===x)}>
+   {(['revenue','quantity','count'] as Metric[]).map(x=><Pressable key={x} accessibilityRole="button" accessibilityState={{selected:metric===x}} onPress={()=>{setMetric(x);setSelected('');setFeedback('');setAnswer('');if(pivotMode){setPivot(null);setPivotVersion(-1)}}} style={btn(metric===x)}>
     <Text style={{fontSize:12,color:ink,fontWeight:'800'}}>{x==='revenue'?'Suma wartości':x==='quantity'?'Suma ilości':'Liczba rekordów'}</Text>
    </Pressable>)}
   </View>
