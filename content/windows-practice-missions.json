@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "course_slug": "windows-skroty",
+  "updated_on": "2026-11-15",
+  "disclaimer": "Zadania praktyczne wykonuj wyłącznie na testowych plikach i danych. Zaliczenie samokontroli nie zastępuje egzaminu.",
+  "lessons": [
+    {
+      "lesson_no": 0,
+      "persona": "Nowy pracownik biurowy",
+      "goal": "System, aplikacja czy plik?",
+      "scenario": "Po pierwszym uruchomieniu trzeba przygotować notatkę.",
+      "steps": [
+        "Otwórz Start i Notatnik.",
+        "Otwórz Eksplorator i wskaż Dokumenty.",
+        "Wyjaśnij, co jest systemem, programem i zapisanym plikiem."
+      ],
+      "evidence": "Windows 11 to system, Notatnik to aplikacja, a Notatka.txt to plik.",
+      "pitfall": "Tapeta nie służy do wpisywania tekstu.",
+      "real_pc": "Na własnym PC otwórz Start, Notatnik i folder Dokumenty; niczego nie instaluj.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 1,
+      "persona": "Administracja",
+      "goal": "Poznaj elementy pulpitu",
+      "scenario": "Po zalogowaniu widzisz ikony, tapetę i otwarte okna.",
+      "steps": [
+        "Wskaż tapetę, ikonę i pasek zadań.",
+        "Otwórz menu Start i zamknij je.",
+        "Zminimalizuj okno i przywróć je z paska zadań."
+      ],
+      "evidence": "Rozpoznajesz tapetę, Start, pasek zadań, aktywne okno i obszar powiadomień.",
+      "pitfall": "Nie usuwaj skrótu, żeby odnaleźć schowane okno.",
+      "real_pc": "Na Windows wskaż te elementy na własnym pulpicie; niczego nie kasuj.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/how-to-multitask-in-windows"
+    },
+    {
+      "lesson_no": 2,
+      "persona": "Sprzedaż",
+      "goal": "Znajdź i uruchom Kalkulator",
+      "scenario": "Potrzebujesz programu, którego nie widać na pulpicie.",
+      "steps": [
+        "Kliknij Start.",
+        "Wpisz „Kalkulator” w wyszukiwarce.",
+        "Uruchom i przywróć aplikację z paska zadań."
+      ],
+      "evidence": "Kalkulator otworzył się bez instalatora i pobierania z sieci.",
+      "pitfall": "Nie pobieraj przypadkowych plików EXE z reklam.",
+      "real_pc": "Powtórz w prawdziwym Start, bez klikania nieznanych linków.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 3,
+      "persona": "Logistyka",
+      "goal": "Wskaż miejsce pliku i ścieżkę",
+      "scenario": "Dokument jest w Pobranych, ale widzisz tylko przeglądarkę.",
+      "steps": [
+        "Otwórz Eksplorator przez Win + E.",
+        "Wejdź do Pobranych i Dokumentów.",
+        "Odczytaj pasek adresu i wróć Wstecz."
+      ],
+      "evidence": "Wskazujesz pełną lokalizację folderu i różnicę od adresu WWW.",
+      "pitfall": "Nie szukaj „Pobrane” jak strony internetowej.",
+      "real_pc": "Na swoim PC przeglądaj foldery bez otwierania nieznanych pobrań.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 4,
+      "persona": "Kierownik budowy",
+      "goal": "Utwórz ścieżkę projektu",
+      "scenario": "Kolega ma znaleźć ofertę bez przeszukiwania całego dysku.",
+      "steps": [
+        "Utwórz Ćwiczenia, a w nim Oferty.",
+        "Zapisz tam próbny oferta_01.txt.",
+        "Odczytaj ścieżkę i sprawdź rozszerzenie."
+      ],
+      "evidence": "Plik ma poprawną nazwę i istnieje w folderze Ćwiczenia\\Oferty.",
+      "pitfall": "Zmiana samej końcówki .txt na .pdf nie konwertuje pliku.",
+      "real_pc": "Pracuj w nowym folderze testowym, nie w firmowym projekcie.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 5,
+      "persona": "Pierwsza praca",
+      "goal": "Ctrl, Alt, Shift i Win w praktyce",
+      "scenario": "Instrukcja mówi o Win + E i Ctrl + C.",
+      "steps": [
+        "Wskaż cztery klawisze modyfikujące.",
+        "Otwórz Eksplorator przez Win + E.",
+        "Skopiuj fragment próbnej notatki przez Ctrl + C i Ctrl + V."
+      ],
+      "evidence": "Win + E otwiera Eksplorator, a Ctrl + C kopiuje zaznaczenie.",
+      "pitfall": "Nie wpisuj dosłownie „Win+E” w pasek adresu.",
+      "real_pc": "Testuj kombinacje na nieszkodliwej notatce tekstowej.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 6,
+      "persona": "Księgowość",
+      "goal": "Wybierz aktywne okno",
+      "scenario": "Notatnik i przeglądarka są otwarte jednocześnie.",
+      "steps": [
+        "Kliknij w edytorze i odnajdź kursor.",
+        "Użyj Alt + Tab, aby zmienić okno.",
+        "Wróć do Notatnika i zaznacz próbny fragment."
+      ],
+      "evidence": "Wiesz, które okno odbiera klawiaturę i gdzie znajduje się kursor.",
+      "pitfall": "Ctrl + A może zaznaczać tekst w innym aktywnym polu.",
+      "real_pc": "Otwórz dwa testowe okna, nie dokumenty z danymi klientów.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 7,
+      "persona": "Sekretariat",
+      "goal": "Zapisz i odtwórz notatkę",
+      "scenario": "Trzeba udowodnić, że tekst nie zniknie po zamknięciu.",
+      "steps": [
+        "Wpisz „Spotkanie testowe — 10:00” w Notatniku.",
+        "Zapisz plik jako spotkanie.txt w Ćwiczeniach.",
+        "Zamknij, znajdź i otwórz plik ponownie."
+      ],
+      "evidence": "Po ponownym otwarciu widzisz dokładnie ten sam tekst.",
+      "pitfall": "Otwarte okno nie oznacza automatycznie zapisanego pliku.",
+      "real_pc": "Użyj nowego testowego pliku, nie czyjejś umowy.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 8,
+      "persona": "Obsługa klienta",
+      "goal": "Oceń niebezpieczny załącznik",
+      "scenario": "Przychodzi „faktura.pdf.exe”, a nadawca naciska na kliknięcie.",
+      "steps": [
+        "Odczytaj pełną nazwę i końcowe rozszerzenie.",
+        "Zweryfikuj prośbę niezależnym kanałem.",
+        "Zdecyduj, co zgłosić bez otwierania pliku."
+      ],
+      "evidence": "Wskazujesz .exe jako rozszerzenie i nie uruchamiasz załącznika.",
+      "pitfall": "„pdf” w środku nazwy nie oznacza dokumentu PDF.",
+      "real_pc": "Nie pobieraj malware — ćwicz na samej nazwie tekstowej.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 9,
+      "persona": "Koordynacja projektów",
+      "goal": "Przygotuj strukturę do przekazania",
+      "scenario": "Masz dwie oferty i zdjęcie projektu.",
+      "steps": [
+        "Utwórz Ćwiczenia\\Projekt_A.",
+        "Dodaj foldery Oferty i Zdjęcia.",
+        "Wstaw próbną notatkę do Ofert i sprawdź ścieżkę."
+      ],
+      "evidence": "Struktura ma dwa podfoldery, a dokument jest we właściwym miejscu.",
+      "pitfall": "Nie mieszaj fotografii i wersji roboczych bez struktury.",
+      "real_pc": "Utwórz fikcyjny projekt w swoich Ćwiczeniach.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 10,
+      "persona": "Praca zdalna",
+      "goal": "Pokaż pulpit albo zmień pulpit",
+      "scenario": "Spotkanie i dokumenty mają być rozdzielone.",
+      "steps": [
+        "Wypróbuj Win + D na dwóch oknach.",
+        "Użyj Win + Tab, aby obejrzeć pulpity.",
+        "Przełącz pulpit przez Win + Ctrl + ← / →."
+      ],
+      "evidence": "Win + D pokazuje pulpit; Win + Ctrl + strzałka przełącza wirtualne pulpity.",
+      "pitfall": "Nie myl pokazania pulpitu z zamknięciem aplikacji.",
+      "real_pc": "Na swoim Windows utwórz dwa pulpity; nie udostępniaj poufnych okien.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/how-to-multitask-in-windows"
+    },
+    {
+      "lesson_no": 11,
+      "persona": "Inżynier",
+      "goal": "Porównaj dwa dokumenty obok siebie",
+      "scenario": "Masz dwie oferty wymagające porównania.",
+      "steps": [
+        "Otwórz dwa testowe okna.",
+        "Przypnij jedno przez Win + ←, drugie przez Win + →.",
+        "Sprawdź Alt + Tab i Win + Ctrl + ←."
+      ],
+      "evidence": "Oba okna są na jednym pulpicie; zmiana pulpitu to inna operacja.",
+      "pitfall": "Win + ← nie przełącza standardowo na drugi wirtualny pulpit.",
+      "real_pc": "Na prawdziwym komputerze użyj dwóch niepoufnych okien.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/how-to-multitask-in-windows"
+    },
+    {
+      "lesson_no": 12,
+      "persona": "Serwis techniczny",
+      "goal": "Utwórz bezpieczny zrzut błędu",
+      "scenario": "Musisz pokazać jeden komunikat, a nie cały ekran.",
+      "steps": [
+        "Otwórz fikcyjny komunikat.",
+        "Użyj Win + Shift + S i zaznacz jego fragment.",
+        "Sprawdź krawędzie zrzutu przed udostępnieniem."
+      ],
+      "evidence": "Kadr nie pokazuje nazwisk, haseł, prywatnej poczty ani kont.",
+      "pitfall": "Nie wysyłaj zdjęcia całego pulpitu z dokumentami klienta.",
+      "real_pc": "Rzeczywisty zrzut wykonaj tylko na nieszkodliwym oknie.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 13,
+      "persona": "Zakupy",
+      "goal": "Odszukaj skalę ekranu",
+      "scenario": "Tekst jest za mały i nie wiadomo, które ustawienie odpowiada za jego rozmiar.",
+      "steps": [
+        "Otwórz Ustawienia przez Win + I.",
+        "Znajdź System → Ekran.",
+        "Zanotuj skalę i rozdzielczość bez ich zmieniania."
+      ],
+      "evidence": "Rozróżniasz skalę interfejsu od rozdzielczości wyświetlacza.",
+      "pitfall": "Nie zmieniaj losowo rozdzielczości, by zwiększyć czcionkę.",
+      "real_pc": "Zobacz ustawienia na swoim Windows i wróć bez zatwierdzania zmian.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 14,
+      "persona": "Magazyn",
+      "goal": "Nawiguj po folderach świadomie",
+      "scenario": "W projekcie jest kilka poziomów folderów.",
+      "steps": [
+        "Przejdź Dokumenty → Projekty → wybrany plik.",
+        "Użyj Wstecz, Dalej i W górę.",
+        "Utwórz próbny podfolder przez Ctrl + Shift + N."
+      ],
+      "evidence": "Wiesz, na jakim poziomie drzewa jest nowy folder.",
+      "pitfall": "Wstecz to historia, a W górę to folder nadrzędny.",
+      "real_pc": "Ćwicz we własnych Dokumentach\\Ćwiczenia.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 15,
+      "persona": "Księgowa",
+      "goal": "Kopia czy przeniesienie?",
+      "scenario": "Plik wzorcowy musi pozostać nietknięty.",
+      "steps": [
+        "Skopiuj próbkę przez Ctrl + C oraz Ctrl + V.",
+        "Sprawdź, że oryginał nadal istnieje.",
+        "Przenieś inną próbkę przez Ctrl + X oraz Ctrl + V."
+      ],
+      "evidence": "Kopiowanie pozostawia oryginał; przeniesienie zmienia lokalizację.",
+      "pitfall": "Schowek Windows nie zastępuje kopii zapasowej.",
+      "real_pc": "Wykonaj oba działania tylko na plikach testowych.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 16,
+      "persona": "Kadry",
+      "goal": "Nawiguj w tekście bez myszy",
+      "scenario": "Masz długą notatkę z wieloma akapitami.",
+      "steps": [
+        "Wpisz kilka akapitów w Notatniku.",
+        "Użyj Ctrl + Home, Ctrl + End i Ctrl + strzałka.",
+        "Zaznacz fragment przez Shift + strzałka."
+      ],
+      "evidence": "Umiesz określić początek, koniec i granice zaznaczenia.",
+      "pitfall": "Sprawdź fokus — inaczej skróty zadziałają w innym polu.",
+      "real_pc": "Na prawdziwym PC użyj tekstu fikcyjnego, nie umowy.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 17,
+      "persona": "Recepcja",
+      "goal": "Blokada i dostępność stanowiska",
+      "scenario": "Odchodzisz od biurka, na którym są otwarte aplikacje.",
+      "steps": [
+        "Zapisz próbny tekst.",
+        "Poznaj działanie Win + L.",
+        "Odszukaj Ustawienia → Ułatwienia dostępu."
+      ],
+      "evidence": "Blokada wymaga ponownego logowania, ale nie kasuje plików.",
+      "pitfall": "Nie wyłączaj systemu zamiast krótkotrwałej blokady.",
+      "real_pc": "Win + L naprawdę blokuje PC; najpierw upewnij się, że znasz hasło.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 18,
+      "persona": "Punkt usługowy",
+      "goal": "Odzyskaj pomyłkę",
+      "scenario": "Przypadkowo zmieniono nazwę próbnego pliku.",
+      "steps": [
+        "Utwórz test.txt i zmień nazwę przez F2.",
+        "Wypróbuj Ctrl + Z tam, gdzie operacja wspiera cofanie.",
+        "Wyjaśnij, kiedy potrzebny jest Kosz lub backup."
+      ],
+      "evidence": "Plik da się odnaleźć w przewidywanej lokalizacji.",
+      "pitfall": "Ctrl + Z nie jest uniwersalnym sposobem odzyskania każdej utraty.",
+      "real_pc": "Nie usuwaj ważnych dokumentów — tylko próbkę.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 19,
+      "persona": "Asystentka zarządu",
+      "goal": "Zrealizuj zadanie biurowe od początku do końca",
+      "scenario": "Trzeba przygotować i sprawdzić notatkę na spotkanie.",
+      "steps": [
+        "Utwórz Spotkanie_testowe.",
+        "Zapisz Notatka_01.txt i otwórz ją ponownie.",
+        "Porównaj dwa otwarte okna i wskaż poprawną wersję."
+      ],
+      "evidence": "Znasz ścieżkę, nazwę i zawartość przekazywanego pliku.",
+      "pitfall": "Nie zgaduj po nazwie „final”, otwórz dokument.",
+      "real_pc": "Użyj fikcyjnych danych uczestników spotkania.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/how-to-multitask-in-windows"
+    },
+    {
+      "lesson_no": 20,
+      "persona": "Projektowanie",
+      "goal": "Prowadź rewizje R01 i R02",
+      "scenario": "Klient przesyła zmianę do dokumentu.",
+      "steps": [
+        "Zapisz Projekt_A_2026-11-15_R01.txt.",
+        "Utwórz R02 i zmień jeden punkt.",
+        "Otwórz R01 i R02, porównaj treść i daty."
+      ],
+      "evidence": "Dwie wersje istnieją osobno, a zmiana jest czytelna.",
+      "pitfall": "Unikaj nazw final_final2 i nadpisania jedynego oryginału.",
+      "real_pc": "Testuj rewizje na własnym dokumencie próbnej oferty.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 21,
+      "persona": "Pomoc IT",
+      "goal": "Sprawdź zawieszoną aplikację bez niszczenia pracy",
+      "scenario": "Jedno okno nie odpowiada, inne nadal działają.",
+      "steps": [
+        "Sprawdź zachowanie pozostałych programów.",
+        "Otwórz Menedżera zadań przez Ctrl + Shift + Esc.",
+        "Odczytaj stan aplikacji i ryzyko wymuszonego zamknięcia."
+      ],
+      "evidence": "Potrafisz odróżnić przeciążenie od utraty systemu.",
+      "pitfall": "Nie zamykaj losowych procesów ani nie trać niezapisanego dokumentu.",
+      "real_pc": "Na własnym PC tylko obejrzyj menedżer — niczego nie kończ.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 22,
+      "persona": "Właściciel firmy",
+      "goal": "Przetestuj odtwarzanie z niezależnej kopii",
+      "scenario": "Synchronizacja przez pomyłkę rozsyła usunięcie pliku.",
+      "steps": [
+        "Rozróżnij synchronizację i kopię.",
+        "Skopiuj nowy plik do odrębnej lokalizacji.",
+        "Odtwórz kopię w innym folderze i otwórz jej treść."
+      ],
+      "evidence": "Z kopii powstaje działający plik o tej samej zawartości.",
+      "pitfall": "Sama synchronizacja nie zapewnia bezpiecznej historii kopii.",
+      "real_pc": "Nie usuwaj niczego z czynnego firmowego dysku.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 23,
+      "persona": "Kadry",
+      "goal": "Praca na koncie bez nadmiernych uprawnień",
+      "scenario": "Instalator prosi o hasło administratora.",
+      "steps": [
+        "Ustal, jakie uprawnienia są rzeczywiście potrzebne.",
+        "Rozpoznaj prośbę UAC i w razie wątpliwości ją odrzuć.",
+        "Wyjaśnij, po co służy MFA i dlaczego kod jest tajny."
+      ],
+      "evidence": "Potrafisz odmówić nieuzasadnionych uprawnień.",
+      "pitfall": "Nie podawaj nikomu hasła ani kodu MFA w ćwiczeniu.",
+      "real_pc": "Na PC tylko odczytaj typ konta, bez zmiany uprawnień.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 24,
+      "persona": "Fakturowanie",
+      "goal": "Rozpoznaj ukryte rozszerzenie pliku",
+      "scenario": "W Pobranych widzisz faktura_maj.pdf.exe.",
+      "steps": [
+        "W Eksploratorze wybierz Widok → Pokaż → Rozszerzenia nazw plików.",
+        "Odczytaj końcówkę .exe i porównaj z .csv.",
+        "Zdecyduj, którego pliku nie wolno uruchamiać."
+      ],
+      "evidence": "Wskazujesz .exe jako typ wykonywalny i nie otwierasz podejrzanej próbki.",
+      "pitfall": "Ikona i środkowy fragment nazwy nie gwarantują typu pliku.",
+      "real_pc": "Ćwicz na nazwach tekstowych, nie na nieznanych plikach EXE.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 25,
+      "persona": "Handlowiec",
+      "goal": "Zdiagnozuj powolne uruchamianie",
+      "scenario": "Komputer wolno startuje, przyczyna jest nieznana.",
+      "steps": [
+        "Otwórz Menedżera zadań.",
+        "Znajdź aplikacje uruchamiane przy starcie.",
+        "Zanotuj obserwację i zaplanuj sprawdzenie zmian."
+      ],
+      "evidence": "Masz listę konkretnych hipotez, a nie obietnicę „przyspieszenia w jeden klik”.",
+      "pitfall": "Nie wyłączaj ochrony antywirusowej i nie instaluj optymalizatorów.",
+      "real_pc": "Na PC tylko obejrzyj aplikacje startowe, nie wyłączaj ich bez potrzeby.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 26,
+      "persona": "Koordynator zespołu",
+      "goal": "Udostępnij z minimalnym dostępem",
+      "scenario": "Współpracownik ma czytać ofertę, ale nie edytować.",
+      "steps": [
+        "Zweryfikuj adresata i zakres dostępu.",
+        "Rozróżnij „może wyświetlać” i „może edytować”.",
+        "Sprawdź czas dostępu i możliwość cofnięcia."
+      ],
+      "evidence": "Dostęp ma wskazany odbiorca na minimalnych uprawnieniach.",
+      "pitfall": "Nie wybieraj publicznego linku „każdy z łączem” bez zgody.",
+      "real_pc": "Użyj fikcyjnego pliku; realne wysłanie możesz pominąć.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/fileexplorer/file-explorer-in-windows"
+    },
+    {
+      "lesson_no": 27,
+      "persona": "Osoba ucząca się",
+      "goal": "Dostępność ekranu w praktyce",
+      "scenario": "Tekst jest za mały, a praca wzrokiem męczy.",
+      "steps": [
+        "Otwórz Ustawienia → Ułatwienia dostępu.",
+        "Znajdź Rozmiar tekstu, Kontrast i Lupę.",
+        "Przetestuj pojedynczą opcję i sposób cofnięcia."
+      ],
+      "evidence": "Potrafisz wskazać dwie funkcje i wrócić do poprzedniej konfiguracji.",
+      "pitfall": "Nie traktuj skali ekranu jak zmiany rozmiaru wszystkich plików.",
+      "real_pc": "Na PC zmieniaj tylko świadomie i zapamiętaj ustawienie pierwotne.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 28,
+      "persona": "Administracja",
+      "goal": "Reaguj na dokument wysłany niewłaściwej osobie",
+      "scenario": "Link z danymi klienta otrzymał nie ten adresat.",
+      "steps": [
+        "Jeżeli możesz, ogranicz dalszy dostęp do dokumentu.",
+        "Niezwłocznie zgłoś incydent odpowiedzialnej osobie.",
+        "Zanotuj czas i wykonane działania bez kopiowania danych."
+      ],
+      "evidence": "Jest plan: ograniczenie dostępu, zgłoszenie, dokumentacja.",
+      "pitfall": "Usunięcie maila nie gwarantuje cofnięcia odbioru; nie ukrywaj zdarzenia.",
+      "real_pc": "Przeprowadź tylko fikcyjny scenariusz — niczego nie wysyłaj.",
+      "source": "https://support.microsoft.com/en-us/accessibility/windows/keyboard-shortcuts-in-windows"
+    },
+    {
+      "lesson_no": 29,
+      "persona": "Kierownik nowego zespołu",
+      "goal": "Projekt końcowy — działające stanowisko",
+      "scenario": "Od zera organizujesz próbny projekt i musisz dowieść, że dane są bezpieczne.",
+      "steps": [
+        "Utwórz Projekt_demo oraz Dokumenty, Oferty, Archiwum.",
+        "Zapisz rewizje R01 i R02 i otwórz je ponownie.",
+        "Uporządkuj dwa okna i dwa wirtualne pulpity.",
+        "Odtwórz niezależną kopię próbnego pliku do osobnego folderu."
+      ],
+      "evidence": "Pokazujesz strukturę, aktualną rewizję oraz otwarty i odzyskany plik.",
+      "pitfall": "Nie kończ projektu bez sprawdzenia odtwarzania kopii.",
+      "real_pc": "Wykonaj capstone na plikach fikcyjnych; nie udostępniaj realnych danych.",
+      "source": "https://support.microsoft.com/en-us/windows/experience/how-to-multitask-in-windows"
+    }
+  ]
+}
