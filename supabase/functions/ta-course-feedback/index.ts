@@ -65,7 +65,9 @@ Deno.serve(async(req:Request)=>{
     group.reports++;if(!["resolved","rejected"].includes(row.status))group.open++;
     groups.set(id,group);
    }
-   return respond({ok:true,rows,summary:{sample:rows.length,open:active.length,overdue:overdue.length,
+   const {data:heartbeat}=await db.from("ta_feedback_autofix_heartbeat")
+    .select("last_success_at,ai_configured,queued_count").eq("id",1).maybeSingle();
+   return respond({ok:true,rows,heartbeat:heartbeat||null,summary:{sample:rows.length,open:active.length,overdue:overdue.length,
     bugs:rows.filter(r=>r.kind==="bug").length,confusion:rows.filter(r=>r.kind==="confusion").length},
     hotspots:[...groups.values()].sort((a,b)=>b.reports-a.reports).slice(0,12)});
   }
