@@ -1,4 +1,5 @@
 import React,{useEffect,useId,useRef,useState} from 'react';
+import {paperWindow} from './CadScale';
 import {dimensionGeometry,distance,outline,screenPoint,type CadShape,type Camera,type Point,type Size} from './CadGeometry';
 
 export type SceneObject={shape:CadShape;color:string;selected?:boolean;preview?:boolean};
@@ -18,8 +19,8 @@ export default function CadCanvas({size,camera,objects,grid,pan,layout,selecting
  const hatch=useId(),paperClip=useId();
  const project=(point:Point)=>screenPoint(point,camera,size);
  const w=Math.max(1,size.width),h=Math.max(1,size.height);
- const paperH=Math.min(Math.max(1,h-26),Math.max(1,w-26)*297/420);
- const paperW=paperH*420/297,paperX=(w-paperW)/2,paperY=(h-paperH)/2;
+ const paper=paperWindow(size);
+ const paperW=paper.width,paperH=paper.height,paperX=paper.x,paperY=paper.y;
  const origin=project({x:0,y:0});
  const step=Math.pow(10,Math.floor(Math.log10(65*camera.unitsPerPixel)))/camera.unitsPerPixel;
  const gridStep=step<23?step*5:step;
