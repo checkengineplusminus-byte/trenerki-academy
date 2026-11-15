@@ -5,8 +5,8 @@ import {Linking,Platform,Pressable,Text,View} from 'react-native';
 // space of the full-screen learning route on phones and tablets.
 export default function LearningSupportBar(){
  if(Platform.OS==='web')return <footer aria-label="Pomoc podczas kursu" data-testid="learning-support-bar"
-  style={{boxSizing:'border-box',width:'100%',minHeight:48,background:'#102820',color:'#f1ede0',display:'flex',
-   alignItems:'center',justifyContent:'center',flexWrap:'wrap',gap:'4px 20px',padding:'4px 12px',
+  style={{boxSizing:'border-box',width:'100%',height:50,minHeight:50,maxHeight:50,background:'#102820',color:'#f1ede0',display:'flex',
+   alignItems:'center',justifyContent:'center',flexWrap:'nowrap',overflow:'hidden',gap:'0 20px',padding:'0 12px',
    borderTop:'1px solid #2c463b',fontFamily:'system-ui, sans-serif'}}>
   <a href="/pomoc" aria-label="Potrzebujesz pomocy? Nie jesteś sam"
    style={{color:'#f1ede0',textDecoration:'none',fontWeight:750,fontSize:13,
