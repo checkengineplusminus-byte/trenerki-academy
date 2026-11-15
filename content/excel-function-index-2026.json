@@ -1,3090 +1,3647 @@
 {
   "count": 514,
-  "description": "Katalog referencyjny: nazwy/identyfikatory i odnośniki do dokumentacji Microsoft; nazwy lokalizowane zależą od wersji Excela.",
+  "description": "514 funkcji: nazwa polska/angielska, zwięzłe wyjaśnienie przekształcone z materiału źródłowego oraz odnośnik do Microsoft. Przykładowe formuły dla wybranych funkcji; nazwy oraz dostępność zależą od lokalizacji i wersji.",
   "functions": [
     {
       "code": "ABS",
       "name": "ABS",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/abs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/abs-function",
+      "what": "Podaje wartość absolutną liczby."
     },
     {
       "code": "ACCRINT",
       "name": "NAL.ODS",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/accrint-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/accrint-function",
+      "what": "Podaje narosłe odsetki dla papieru wartościowego z oprocentowaniem okresowym."
     },
     {
       "code": "ACCRINTM",
       "name": "NAL.ODS.WYKUP",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/accrintm-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/accrintm-function",
+      "what": "Podaje narosłe odsetki dla papieru wartościowego z oprocentowaniem w terminie wykupu."
     },
     {
       "code": "ACOS",
       "name": "ACOS",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/acos-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acos-function",
+      "what": "Podaje arcus cosinus liczby."
     },
     {
       "code": "ACOSH",
       "name": "ACOSH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/acosh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acosh-function",
+      "what": "Podaje arcus cosinus hiperboliczny liczby."
     },
     {
       "code": "ACOT",
       "name": "ACOT (ACOT)",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/acot-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acot-function",
+      "what": "Podaje arcus cotangens liczby."
     },
     {
       "code": "ACOTH",
       "name": "ACOTH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/acoth-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/acoth-function",
+      "what": "Podaje arcus cotangens hiperboliczny liczby."
     },
     {
       "code": "AGGREGATE",
       "name": "AGREGUJ",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/aggregate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/aggregate-function",
+      "what": "Podaje wartość zagregowaną z listy lub bazy danych."
     },
     {
       "code": "ADDRESS",
       "name": "ADRES",
       "category": "Funkcje odnośników i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/address-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/address-function",
+      "what": "Podaje odwołanie do jednej komórki w arkuszu jako wartość tekstową."
     },
     {
       "code": "AMORDEGRC",
       "name": "AMORT.NIELIN",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/amordegrc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/amordegrc-function",
+      "what": "Podaje amortyzację dla każdego okresu rozliczeniowego przy użyciu współczynnika amortyzacji."
     },
     {
       "code": "AMORLINC",
       "name": "AMORT.LIN",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/amorlinc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/amorlinc-function",
+      "what": "Podaje amortyzację dla każdego okresu rozliczeniowego."
     },
     {
       "code": "AND",
       "name": "ORAZ",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/and-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/and-function",
+      "what": "Zwraca PRAWDA wyłącznie wtedy, gdy wszystkie warunki są spełnione.",
+      "example": "=ORAZ(B2>0;C2>0)"
     },
     {
       "code": "ARABIC",
       "name": "ARABSKIE",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/arabic-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/arabic-function",
+      "what": "Przekształca liczbę rzymską na liczbę arabską."
     },
     {
       "code": "AREAS",
       "name": "OBSZARY",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/areas-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/areas-function",
+      "what": "Podaje liczbę obszarów występujących w odwołaniu."
     },
     {
       "code": "ARRAYTOTEXT",
       "name": "TABLICA.NA.TEKST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/arraytotext-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/arraytotext-function",
+      "what": "Podaje tablicę wartości tekstowych z dowolnego określonego zakresu."
     },
     {
       "code": "ASC",
       "name": "ASC",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/asc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/asc-function",
+      "what": "Zamienia litery angielskie lub katakana o pełnej szerokości (dwubajtowe) w ciągu znaków na znaki o szerokości połówkowej (jednobajtowe)."
     },
     {
       "code": "ASIN",
       "name": "ASIN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/asin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/asin-function",
+      "what": "Podaje arcus sinus liczby."
     },
     {
       "code": "ASINH",
       "name": "ASINH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/asinh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/asinh-function",
+      "what": "Podaje arcus sinus hiperboliczny liczby."
     },
     {
       "code": "ATAN",
       "name": "ATAN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/atan-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/atan-function",
+      "what": "Podaje arcus tangens liczby."
     },
     {
       "code": "ATAN2",
       "name": "ATAN2",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/atan2-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/atan2-function",
+      "what": "Podaje arcus tangens liczby na podstawie współrzędnych x i y."
     },
     {
       "code": "ATANH",
       "name": "ATANH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/atanh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/atanh-function",
+      "what": "Podaje arcus tangens hiperboliczny liczby."
     },
     {
       "code": "AVEDEV",
       "name": "ODCH.ŚREDNIE",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/avedev-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/avedev-function",
+      "what": "Podaje średnią wartość odchyleń absolutnych punktów danych od ich wartości średniej."
     },
     {
       "code": "AVERAGE",
       "name": "ŚREDNIA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/average-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/average-function",
+      "what": "Podaje wartość średnią argumentów.",
+      "example": "=ŚREDNIA(B2:B10)"
     },
     {
       "code": "AVERAGEA",
       "name": "ŚREDNIA.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/averagea-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/averagea-function",
+      "what": "Podaje wartość średnią argumentów, z uwzględnieniem liczb, tekstów i wartości logicznych."
     },
     {
       "code": "AVERAGEIF",
       "name": "ŚREDNIA.JEŻELI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/averageif-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/averageif-function",
+      "what": "Podaje średnią (średnią arytmetyczną) wszystkich komórek w zakresie, które spełniają podane kryteria."
     },
     {
       "code": "AVERAGEIFS",
       "name": "ŚREDNIA.WARUNKÓW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/averageifs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/averageifs-function",
+      "what": "Podaje średnią (średnią arytmetyczną) wszystkich komórek, które spełniają wiele kryteriów."
     },
     {
       "code": "BAHTTEXT",
       "name": "BAT.TEKST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bahttext-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bahttext-function",
+      "what": "Przekształca liczbę na tekst, stosując format walutowy ß (baht)."
     },
     {
       "code": "BASE",
       "name": "PODSTAWA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/base-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/base-function",
+      "what": "Przekształca liczbę na reprezentację tekstową o podanej podstawie."
     },
     {
       "code": "BESSELI",
       "name": "BESSEL.I",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/besseli-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/besseli-function",
+      "what": "Podaje wartość zmodyfikowanej funkcji Bessela In(x)."
     },
     {
       "code": "BESSELJ",
       "name": "BESSEL.J",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/besselj-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/besselj-function",
+      "what": "Podaje wartość funkcji Bessela Jn(x)."
     },
     {
       "code": "BESSELK",
       "name": "BESSEL.K",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/besselk-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/besselk-function",
+      "what": "Podaje wartość zmodyfikowanej funkcji Bessela Kn(x)."
     },
     {
       "code": "BESSELY",
       "name": "BESSEL.Y",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bessely-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bessely-function",
+      "what": "Podaje wartość funkcji Bessela Yn(x)."
     },
     {
       "code": "BETADIST",
       "name": "ROZKŁAD.BETA",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/betadist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/betadist-function",
+      "what": "Podaje funkcję skumulowanego rozkładu beta."
     },
     {
       "code": "BETA.DIST",
       "name": "BETA. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/beta-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/beta-dist-function",
+      "what": "Podaje funkcję skumulowanego rozkładu beta."
     },
     {
       "code": "BETAINV",
       "name": "ROZKŁAD.BETA.ODW",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/betainv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/betainv-function",
+      "what": "Podaje odwrotność funkcji rozkładu skumulowanego dla określonego rozkładu beta."
     },
     {
       "code": "BETA.INV",
       "name": "BETA. INVn",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/beta-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/beta-inv-function",
+      "what": "Podaje odwrotność funkcji rozkładu skumulowanego dla określonego rozkładu beta."
     },
     {
       "code": "BIN2DEC",
       "name": "DWÓJK.NA.DZIES",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2dec-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2dec-function",
+      "what": "Przekształca liczbę w postaci dwójkowej na liczbę w postaci dziesiętnej."
     },
     {
       "code": "BIN2HEX",
       "name": "DWÓJK.NA.SZESN",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2hex-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2hex-function",
+      "what": "Przekształca liczbę w postaci dwójkowej na liczbę w postaci szesnastkowej."
     },
     {
       "code": "BIN2OCT",
       "name": "DWÓJK.NA.ÓSM",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2oct-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bin2oct-function",
+      "what": "Przekształca liczbę w postaci dwójkowej na liczbę w postaci ósemkowej."
     },
     {
       "code": "BINOMDIST",
       "name": "ROZKŁAD.DWUM",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/binomdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binomdist-function",
+      "what": "Podaje pojedynczy składnik dwumianowego rozkładu prawdopodobieństwa."
     },
     {
       "code": "BINOM.DIST",
       "name": "DWUM. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-dist-function",
+      "what": "Podaje pojedynczy składnik dwumianowego rozkładu prawdopodobieństwa."
     },
     {
       "code": "BINOM.DIST.RANGE",
       "name": "DWUM. ROZDZ. ZASIĘG",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-dist-range-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-dist-range-function",
+      "what": "Podaje prawdopodobieństwo wyniku próby na podstawie rozkładu dwumianowego."
     },
     {
       "code": "BINOM.INV",
       "name": "DWUM. ZAOKR.DO.OD",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/binom-inv-function",
+      "what": "Podaje najmniejszą wartość, dla której skumulowany rozkład dwumianowy jest mniejszy niż wartość kryterium lub równy jej."
     },
     {
       "code": "BITAND",
       "name": "BITAND",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitand-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitand-function",
+      "what": "Podaje wartość operacji bitowej ORAZ (AND) dla dwóch liczb."
     },
     {
       "code": "BITLSHIFT",
       "name": "PRZESUNIĘCIE.W.LEWO",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitlshift-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitlshift-function",
+      "what": "Podaje liczbę przesuniętą w lewo o liczbę bitów określoną przez argument wartość_przesunięcia."
     },
     {
       "code": "BITOR",
       "name": "BITOR",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitor-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitor-function",
+      "what": "Podaje wartość operacji bitowej LUB (OR) dla dwóch liczb."
     },
     {
       "code": "BITRSHIFT",
       "name": "BIT.PRZESUNIĘCIE.W.PRAWO",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitrshift-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitrshift-function",
+      "what": "Podaje liczbę przesuniętą w prawo o liczbę bitów określoną przez argument wartość_przesunięcia."
     },
     {
       "code": "BITXOR",
       "name": "BITXOR",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitxor-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bitxor-function",
+      "what": "Podaje wartość operacji bitowej alternatywy wykluczającej (XOR) dla dwóch liczb."
     },
     {
       "code": "BYCOL",
       "name": "KOLUMNAMI",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/bycol-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/bycol-function",
+      "what": "Stosuje funkcję LAMBDA do każdej kolumny i zwraca tablicę wyników"
     },
     {
       "code": "BYROW",
       "name": "WIERSZAMI",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/byrow-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/byrow-function",
+      "what": "Stosuje funkcję LAMBDA do każdego wiersza i zwraca tablicę wyników"
     },
     {
       "code": "CALL",
       "name": "ZADZWOŃ",
       "category": "Funkcje dodatków i automatyzacji",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/call-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/call-function",
+      "what": "Wywołuje procedurę w bibliotece dołączanej dynamicznie lub w zasobie kodu."
     },
     {
       "code": "CEILING",
       "name": "ZAOKR.W.GÓRĘ",
       "category": "Kompatybilność",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę do najbliższej liczby całkowitej lub do najbliższej wielokrotności podanej istotności."
     },
     {
       "code": "CEILING.MATH",
       "name": "SUFIT. MATEMATYKA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-math-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-math-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w górę do najbliższej liczby całkowitej lub do najbliższej wielokrotności podanej istotności."
     },
     {
       "code": "CEILING.PRECISE",
       "name": "ZAOKR.W.GÓRĘ.DOKŁ",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-precise-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ceiling-precise-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę do najbliższej liczby całkowitej lub do najbliższej wielokrotności dokładności. Zaokrąglenie następuje w górę niezależnie od znaku liczby."
     },
     {
       "code": "CELL",
       "name": "KOMÓRKA",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cell-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cell-function",
+      "what": "Podaje informacje o formatowaniu, położeniu lub zawartości komórki. Ta funkcja jest niedostępna w aplikacji Excel dla sieci Web."
     },
     {
       "code": "CHAR",
       "name": "CHAR",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/char-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/char-function",
+      "what": "Podaje znak o podanym numerze kodu."
     },
     {
       "code": "CHIDIST",
       "name": "ROZKŁAD.CHI",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chidist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chidist-function",
+      "what": "Podaje jednostronne prawdopodobieństwo rozkładu chi-kwadrat."
     },
     {
       "code": "CHIINV",
       "name": "ROZKŁAD.CHI.ODW",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chiinv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chiinv-function",
+      "what": "Podaje odwrotność jednostronnego prawdopodobieństwa rozkładu chi-kwadrat."
     },
     {
       "code": "CHITEST",
       "name": "TEST.CHI",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chitest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chitest-function",
+      "what": "Podaje test niezależności."
     },
     {
       "code": "CHISQ.DIST",
       "name": "CHI. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-dist-function",
+      "what": "Oblicza funkcję gęstości lub dystrybuantę rozkładu chi-kwadrat."
     },
     {
       "code": "CHISQ.DIST.RT",
       "name": "CHISQ.DIST.RT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-dist-rt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-dist-rt-function",
+      "what": "Podaje jednostronne prawdopodobieństwo rozkładu chi-kwadrat."
     },
     {
       "code": "CHISQ.INV",
       "name": "CHI. ZAOKR.DO.OD",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-inv-function",
+      "what": "Oblicza kwantyl rozkładu chi-kwadrat dla podanego prawdopodobieństwa."
     },
     {
       "code": "CHISQ.INV.RT",
       "name": "CHISQ.INV.RT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-inv-rt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-inv-rt-function",
+      "what": "Oblicza kwantyl prawostronnego rozkładu chi-kwadrat."
     },
     {
       "code": "CHISQ.TEST",
       "name": "CHI. TEST (TEST)",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-test-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chisq-test-function",
+      "what": "Podaje test niezależności."
     },
     {
       "code": "CHOOSE",
       "name": "WYBIERZ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/choose-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/choose-function",
+      "what": "Pobiera wartość z listy wartości."
     },
     {
       "code": "CHOOSECOLS",
       "name": "WYBIERZ.KOLUMNY",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/choosecols-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/choosecols-function",
+      "what": "Podaje określone kolumny z tablicy"
     },
     {
       "code": "CHOOSEROWS",
       "name": "WYBIERZ.WIERSZE",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/chooserows-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/chooserows-function",
+      "what": "Podaje określone wiersze z tablicy"
     },
     {
       "code": "CLEAN",
       "name": "OCZYŚĆ",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/clean-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/clean-function",
+      "what": "Eliminuje z tekstu wszystkie znaki niedrukowane."
     },
     {
       "code": "CODE",
       "name": "KOD",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/code-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/code-function",
+      "what": "Podaje wartość kodu liczbowego pierwszego znaku w ciągu tekstowym."
     },
     {
       "code": "COLUMN",
       "name": "KOLUMNA",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/column-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/column-function",
+      "what": "Podaje numer kolumny z odwołania."
     },
     {
       "code": "COLUMNS",
       "name": "KOLUMNY",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/columns-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/columns-function",
+      "what": "Podaje liczbę kolumn w odwołaniu."
     },
     {
       "code": "COMBIN",
       "name": "KOMBINACJE",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/combin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/combin-function",
+      "what": "Podaje liczbę kombinacji dla danej liczby obiektów."
     },
     {
       "code": "COMBINA",
       "name": "KOMBINACJE.A",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/combina-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/combina-function",
+      "what": "Podaje liczbę kombinacji (wraz z powtórzeniami) dla danej liczby elementów."
     },
     {
       "code": "COMPLEX",
       "name": "LICZBA.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/complex-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/complex-function",
+      "what": "Przekształca część rzeczywistą i urojoną na liczbę zespoloną."
     },
     {
       "code": "CONCAT",
       "name": "Funkcja ZŁĄCZ.TEKST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/concat-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/concat-function",
+      "what": "Scala tekst z wielu zakresów i (lub) ciągów, ale nie zapewnia argumentów ignorowania pustych ani ogranicznika.",
+      "example": "=ZŁĄCZ.TEKST(A2;B2)"
     },
     {
       "code": "CONCATENATE",
       "name": "ZŁĄCZ.TEKSTY",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/concatenate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/concatenate-function",
+      "what": "Scala kilka elementów tekstu w jeden tekst."
     },
     {
       "code": "CONFIDENCE",
       "name": "UFNOŚĆ",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-function",
+      "what": "Podaje przedział ufności dla średniej populacji."
     },
     {
       "code": "CONFIDENCE.NORM",
       "name": "CONFIDENCE.NORM",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-norm-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-norm-function",
+      "what": "Podaje przedział ufności dla średniej populacji."
     },
     {
       "code": "CONFIDENCE.T",
       "name": "CONFIDENCE.T",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-t-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/confidence-t-function",
+      "what": "Podaje przedział ufności dla średniej populacji, używając rozkładu t-Studenta."
     },
     {
       "code": "CONVERT",
       "name": "CONVERT",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/convert-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/convert-function",
+      "what": "Przekształca liczbę z jednego systemu miar na inny."
     },
     {
       "code": "CORREL",
       "name": "WSP.KORELACJI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/correl-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/correl-function",
+      "what": "Podaje współczynnik korelacji dwóch zbiorów danych."
     },
     {
       "code": "COS",
       "name": "COS",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cos-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cos-function",
+      "what": "Podaje cosinus liczby."
     },
     {
       "code": "COSH",
       "name": "COSH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cosh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cosh-function",
+      "what": "Podaje cosinus hiperboliczny liczby."
     },
     {
       "code": "COT",
       "name": "COT",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cot-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cot-function",
+      "what": "Oblicza cotangens kąta podanego w radianach."
     },
     {
       "code": "COTH",
       "name": "COTH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/coth-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coth-function",
+      "what": "Oblicza cotangens hiperboliczny podanej liczby."
     },
     {
       "code": "COUNT",
       "name": "ILE.LICZB",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/count-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/count-function",
+      "what": "Liczy liczby znajdujące się na liście argumentów.",
+      "example": "=ILE.LICZB(A2:A20)"
     },
     {
       "code": "COUNTA",
       "name": "ILE.NIEPUSTYCH",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/counta-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/counta-function",
+      "what": "Liczy wartości znajdujące się na liście argumentów.",
+      "example": "=ILE.NIEPUSTYCH(A2:A20)"
     },
     {
       "code": "COUNTBLANK",
       "name": "LICZ.PUSTE",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/countblank-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/countblank-function",
+      "what": "Podaje liczbę pustych komórek w zakresie.",
+      "example": "=LICZ.PUSTE(A2:A20)"
     },
     {
       "code": "COUNTIF",
       "name": "LICZ.JEŻELI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/get-started/use-the-countif-function-in-microsoft-excel"
+      "url": "https://support.microsoft.com/pl-pl/excel/get-started/use-the-countif-function-in-microsoft-excel",
+      "what": "Liczy komórki odpowiadające wskazanemu warunkowi.",
+      "example": "=LICZ.JEŻELI(A2:A100;\"Gotowe\")"
     },
     {
       "code": "COUNTIFS",
       "name": "LICZ.WARUNKI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/countifs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/countifs-function",
+      "what": "Podaje liczbę komórek wewnątrz zakresu, które spełniają wiele kryteriów.",
+      "example": "=LICZ.WARUNKI(A2:A30;\"Gotowe\";B2:B30;\">0\")"
     },
     {
       "code": "COUPDAYBS",
       "name": "WYPŁ.DNI.OD.POCZ",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdaybs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdaybs-function",
+      "what": "Podaje liczbę dni od początku okresu dywidendy do dnia rozliczeniowego."
     },
     {
       "code": "COUPDAYS",
       "name": "WYPŁ.DNI",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdays-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdays-function",
+      "what": "Podaje liczbę dni w okresie dywidendy, z uwzględnieniem dnia rozliczeniowego."
     },
     {
       "code": "COUPDAYSNC",
       "name": "WYPŁ.DNI.NAST",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdaysnc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupdaysnc-function",
+      "what": "Podaje liczbę dni od dnia rozliczeniowego do daty następnego dnia dywidendy."
     },
     {
       "code": "COUPNCD",
       "name": "WYPŁ.DATA.NAST",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupncd-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupncd-function",
+      "what": "Podaje dzień następnej dywidendy po dniu rozliczeniowym."
     },
     {
       "code": "COUPNUM",
       "name": "WYPŁ.LICZBA",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupnum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/coupnum-function",
+      "what": "Podaje liczbę dywidend płatnych między dniem rozliczeniowym a dniem wykupu."
     },
     {
       "code": "COUPPCD",
       "name": "WYPŁ.DATA.POPRZ",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/couppcd-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/couppcd-function",
+      "what": "Podaje dzień poprzedniej dywidendy przed dniem rozliczeniowym."
     },
     {
       "code": "COVAR",
       "name": "KOWARIANCJA",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/covar-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/covar-function",
+      "what": "Podaje kowariancję, czyli średnią wartość iloczynów odpowiednich odchyleń."
     },
     {
       "code": "COVARIANCE.P",
       "name": "KOWARIANCJA. P",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/covariance-p-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/covariance-p-function",
+      "what": "Podaje kowariancję, czyli średnią wartość iloczynów odpowiednich odchyleń."
     },
     {
       "code": "COVARIANCE.S",
       "name": "KOWARIANCJA. S",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/covariance-s-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/covariance-s-function",
+      "what": "Podaje kowariancję próbki, czyli średnią iloczynów odchyleń dla każdej pary punktów danych w dwóch zbiorach danych."
     },
     {
       "code": "CRITBINOM",
       "name": "PRÓG.ROZKŁAD.DWUM",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/critbinom-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/critbinom-function",
+      "what": "Podaje najmniejszą wartość, dla której skumulowany rozkład dwumianowy jest mniejszy niż wartość kryterium lub równy jej."
     },
     {
       "code": "CSC",
       "name": "CSC",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/csc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/csc-function",
+      "what": "Podaje cosecans kąta."
     },
     {
       "code": "CSCH",
       "name": "CSCH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/csch-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/csch-function",
+      "what": "Podaje cosecans hiperboliczny kąta."
     },
     {
       "code": "CUBEKPIMEMBER",
       "name": "ELEMENT.KPI.MODUŁU",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubekpimember-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubekpimember-function",
+      "what": "Podaje nazwę, właściwość i miarę kluczowego wskaźnika wydajności (KPI) oraz wyświetla nazwę i właściwość w komórce. Wskaźnik KPI jest miarą ilościową, taką jak miesięczny zysk brutto lub kwartalna fluktuacja pracowników, używaną do monitorowania…"
     },
     {
       "code": "CUBEMEMBER",
       "name": "ELEMENT.MODUŁU",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubemember-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubemember-function",
+      "what": "Podaje element lub krotkę z hierarchii modułu. Służy do sprawdzania, czy element lub krotka istnieje w module."
     },
     {
       "code": "CUBEMEMBERPROPERTY",
       "name": "WŁAŚCIWOŚĆ.ELEMENTU.MODUŁU",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubememberproperty-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubememberproperty-function",
+      "what": "Podaje wartość właściwości elementu w module. Służy do sprawdzania, czy nazwa elementu istnieje w module, a także do zwracania określonej właściwości dla tego elementu."
     },
     {
       "code": "CUBERANKEDMEMBER",
       "name": "USZEREGOWANY.ELEMENT.MODUŁU",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cuberankedmember-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cuberankedmember-function",
+      "what": "Podaje n-ty (czyli uszeregowany) element zestawu. Służy do zwracania elementu lub elementów zestawu, na przykład najlepszego sprzedawcy lub 10 najlepszych studentów."
     },
     {
       "code": "CUBESET",
       "name": "ZESTAW.MODUŁÓW",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubeset-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubeset-function",
+      "what": "Definiuje obliczeniowy zestaw elementów lub krotek, wysyłając wyrażenie zestawu do modułu na serwerze, który tworzy zestaw i zwraca go do programu Microsoft Office Excel."
     },
     {
       "code": "CUBESETCOUNT",
       "name": "LICZNIK.MODUŁÓW.ZESTAWU",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubesetcount-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubesetcount-function",
+      "what": "Podaje liczbę elementów zestawu."
     },
     {
       "code": "CUBEVALUE",
       "name": "WARTOŚĆ.MODUŁU",
       "category": "Funkcje modułu",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubevalue-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cubevalue-function",
+      "what": "Podaje zagregowaną wartość z modułu."
     },
     {
       "code": "CUMIPMT",
       "name": "SPŁAC.ODS",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cumipmt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cumipmt-function",
+      "what": "Podaje wartość procentu składanego płatnego między dwoma okresami."
     },
     {
       "code": "CUMPRINC",
       "name": "SPŁAC.KAPIT",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/cumprinc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/cumprinc-function",
+      "what": "Podaje wartość kapitału skumulowanego spłaty pożyczki między dwoma okresami."
     },
     {
       "code": "DATE",
       "name": "DATA",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/date-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/date-function",
+      "what": "Podaje liczbę kolejną dla wybranej daty.",
+      "example": "=DATA(2026;11;15)"
     },
     {
       "code": "DATEDIF",
       "name": "DATA.RÓŻNICA",
       "category": "Data i godzina",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/datedif-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/datedif-function",
+      "what": "Wylicza liczbę dni, miesięcy lub lat między dwiema datami. Ta funkcja jest przydatna w formułach, w których oblicza się wiek."
     },
     {
       "code": "DATEVALUE",
       "name": "DATA.WARTOŚĆ",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/datevalue-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/datevalue-function",
+      "what": "Przekształca datę w formie tekstu na liczbę kolejną."
     },
     {
       "code": "DAVERAGE",
       "name": "BD.ŚREDNIA",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/daverage-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/daverage-function",
+      "what": "Podaje wartość średniej wybranych wpisów bazy danych."
     },
     {
       "code": "DAY",
       "name": "DAY (dzień)",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/day-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/day-function",
+      "what": "Przekształca liczbę kolejną na dzień miesiąca."
     },
     {
       "code": "DAYS",
       "name": "DNI",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/days-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/days-function",
+      "what": "Podaje liczbę dni między dwiema datami."
     },
     {
       "code": "DAYS360",
       "name": "DNI.360",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/days360-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/days360-function",
+      "what": "Wylicza liczbę dni między dwiema datami na podstawie roku 360-dniowego."
     },
     {
       "code": "DB",
       "name": "DB",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/db-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/db-function",
+      "what": "Podaje amortyzację środka trwałego w danym okresie metodą degresywną z zastosowaniem stałej bazowej."
     },
     {
       "code": "DBCS",
       "name": "zestaw znaków dwubajtowych",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dbcs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dbcs-function",
+      "what": "Zamienia litery angielskie lub katakana o szerokości połówkowej (jednobajtowe) w ciągu znaków na znaki o pełnej szerokości (dwubajtowe)."
     },
     {
       "code": "DCOUNT",
       "name": "BD.ILE.REKORDÓW",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dcount-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dcount-function",
+      "what": "Liczy komórki zawierające liczby w bazie danych."
     },
     {
       "code": "DCOUNTA",
       "name": "BD.ILE.REKORDÓW.A",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dcounta-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dcounta-function",
+      "what": "Liczy niepuste komórki w bazie danych."
     },
     {
       "code": "DDB",
       "name": "DDB",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ddb-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ddb-function",
+      "what": "Podaje amortyzację środka trwałego za podany okres metodą degresywną z zastosowaniem podwójnej bazowej lub metodą określoną przez użytkownika."
     },
     {
       "code": "DEC2BIN",
       "name": "DZIES.NA.DWÓJK",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2bin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2bin-function",
+      "what": "Przekształca liczbę w postaci dziesiętnej na postać dwójkową."
     },
     {
       "code": "DEC2HEX",
       "name": "DZIES.NA.SZESN",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2hex-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2hex-function",
+      "what": "Przekształca liczbę w postaci dziesiętnej na liczbę w postaci szesnastkowej."
     },
     {
       "code": "DEC2OCT",
       "name": "DZIES.NA.ÓSM",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2oct-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dec2oct-function",
+      "what": "Przekształca liczbę w postaci dziesiętnej na liczbę w postaci ósemkowej."
     },
     {
       "code": "DECIMAL",
       "name": "DECIMAL",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/decimal-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/decimal-function",
+      "what": "Przekształca postać tekstową liczby o określonej podstawie na liczbę dziesiętną."
     },
     {
       "code": "DEGREES",
       "name": "STOPNIE",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/degrees-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/degrees-function",
+      "what": "Przekształca radiany na stopnie."
     },
     {
       "code": "DELTA",
       "name": "CZY.RÓWNE",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/delta-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/delta-function",
+      "what": "Sprawdza, czy dwie wartości są równe."
     },
     {
       "code": "DETECTLANGUAGE",
       "name": "WYKRYJJĘZYK",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/detectlanguage-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/detectlanguage-function",
+      "what": "Identyfikuje język określonego tekstu"
     },
     {
       "code": "DEVSQ",
       "name": "ODCH.KWADRATOWE",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/devsq-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/devsq-function",
+      "what": "Podaje sumę kwadratów odchyleń."
     },
     {
       "code": "DGET",
       "name": "BD.POLE",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dget-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dget-function",
+      "what": "Wydziela z bazy danych jeden rekord spełniający określone kryteria."
     },
     {
       "code": "DISC",
       "name": "STOPA.DYSK",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/disc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/disc-function",
+      "what": "Podaje wartość stopy dyskontowej papieru wartościowego."
     },
     {
       "code": "DMAX",
       "name": "BD.MAX",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dmax-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dmax-function",
+      "what": "Podaje wartość maksymalną z wybranych wpisów bazy danych."
     },
     {
       "code": "DMIN",
       "name": "BD.MIN",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dmin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dmin-function",
+      "what": "Podaje wartość minimalną z wybranych wpisów bazy danych."
     },
     {
       "code": "DOLLAR",
       "name": "KWOTA",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollar-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollar-function",
+      "what": "Przekształca liczbę na tekst, stosując format walutowy zł (PLN)."
     },
     {
       "code": "DOLLARDE",
       "name": "CENA.DZIES",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollarde-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollarde-function",
+      "what": "Przekształca cenę w postaci ułamkowej na cenę wyrażoną w postaci dziesiętnej."
     },
     {
       "code": "DOLLARFR",
       "name": "CENA.UŁAM",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollarfr-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dollarfr-function",
+      "what": "Przekształca cenę wyrażoną w postaci dziesiętnej na cenę wyrażoną w postaci ułamkowej."
     },
     {
       "code": "DPRODUCT",
       "name": "BD.ILOCZYN",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dproduct-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dproduct-function",
+      "what": "Mnoży wartości w konkretnym, spełniającym kryteria polu rekordów bazy danych."
     },
     {
       "code": "DROP",
       "name": "POMIŃ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/drop-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/drop-function",
+      "what": "Wyklucza określoną liczbę wierszy lub kolumn z początku lub końca tablicy"
     },
     {
       "code": "DSTDEV",
       "name": "BD.ODCH.STANDARD",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dstdev-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dstdev-function",
+      "what": "Szacunkowo wyznacza odchylenie standardowe na podstawie próbki z wybranych wpisów bazy danych."
     },
     {
       "code": "DSTDEVP",
       "name": "BD.ODCH.STANDARD.POPUL",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dstdevp-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dstdevp-function",
+      "what": "Wylicza odchylenie standardowe na podstawie całej populacji wybranych wpisów bazy danych."
     },
     {
       "code": "DSUM",
       "name": "BD.SUMA",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dsum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dsum-function",
+      "what": "Dodaje liczby w kolumnie pól rekordów bazy danych, które spełniają kryteria."
     },
     {
       "code": "DURATION",
       "name": "CZAS TRWANIA",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/duration-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/duration-function",
+      "what": "Podaje wartość rocznego przychodu z papieru wartościowego o okresowych wypłatach oprocentowania."
     },
     {
       "code": "DVAR",
       "name": "BD.WARIANCJA",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dvar-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dvar-function",
+      "what": "Szacunkowo wyznacza wariancję na podstawie próbki z wybranych wpisów bazy danych."
     },
     {
       "code": "DVARP",
       "name": "BD.WARIANCJA.POPUL",
       "category": "Funkcje bazy danych",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/dvarp-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/dvarp-function",
+      "what": "Wylicza wariancję na podstawie całej populacji wybranych wpisów bazy danych."
     },
     {
       "code": "EDATE",
       "name": "Funkcje WAT",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/edate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/edate-function",
+      "what": "Podaje liczbę kolejną daty jako wskazaną liczbę miesięcy przed określoną datą początkową lub po niej."
     },
     {
       "code": "EFFECT",
       "name": "EFEKTYWNA",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/effect-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/effect-function",
+      "what": "Podaje wartość efektywnej rocznej stopy procentowej."
     },
     {
       "code": "ENCODEURL",
       "name": "ENCODEURL",
       "category": "Funkcje sieci Web",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/encodeurl-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/encodeurl-function",
+      "what": "Podaje ciąg zakodowany w adresie URL. Ta funkcja jest niedostępna w aplikacji Excel dla sieci Web."
     },
     {
       "code": "EOMONTH",
       "name": "NR.SER.OST.DN.MIES",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/eomonth-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/eomonth-function",
+      "what": "Podaje liczbę kolejną ostatniego dnia miesiąca przed określoną liczbą miesięcy lub po niej."
     },
     {
       "code": "ERF",
       "name": "FUNKCJA.BŁ",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/erf-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erf-function",
+      "what": "Podaje wartość funkcji błędu."
     },
     {
       "code": "ERF.PRECISE",
       "name": "Funkcja ŁBÓW. PRECYZJA",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/erf-precise-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erf-precise-function",
+      "what": "Podaje wartość funkcji błędu."
     },
     {
       "code": "ERFC",
       "name": "ERFC",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/erfc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erfc-function",
+      "what": "Podaje wartość komplementarnej funkcji błędu."
     },
     {
       "code": "ERFC.PRECISE",
       "name": "ERFC. PRECYZJA",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/erfc-precise-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/erfc-precise-function",
+      "what": "Podaje wartość dopełniającej funkcji FUNKCJA.BŁ scałkowanej w przedziale od x do nieskończoności."
     },
     {
       "code": "ERROR.TYPE",
       "name": "NR.BŁĘDU",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/error-type-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/error-type-function",
+      "what": "Podaje liczbę odpowiadającą typowi błędu."
     },
     {
       "code": "EUROCONVERT",
       "name": "EUROCONVERT",
       "category": "Funkcje dodatków i automatyzacji",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/euroconvert-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/euroconvert-function",
+      "what": "Przekształca liczbę na euro, daną wartość w euro na wartość w walucie kraju członkowskiego euro lub wartość w walucie jednego kraju członkowskiego na wartość w walucie innego kraju członkowskiego za pomocą euro jako waluty pośredniej (triangulacja)."
     },
     {
       "code": "EVEN",
       "name": "ZAOKR.DO.PARZ",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/even-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/even-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w górę do najbliższej liczby parzystej."
     },
     {
       "code": "EXACT",
       "name": "PORÓWNAJ",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/exact-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/exact-function",
+      "what": "Sprawdza, czy dwie wartości tekstowe są identyczne."
     },
     {
       "code": "EXP",
       "name": "EXP",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/exp-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/exp-function",
+      "what": "Podaje wartość liczby *e* podniesionej do potęgi określonej przez podaną liczbę."
     },
     {
       "code": "EXPAND",
       "name": "ROZSZERZ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/expand-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/expand-function",
+      "what": "Rozwija lub uzupełnia tablicę do określonych wymiarów wierszy i kolumn"
     },
     {
       "code": "EXPON.DIST",
       "name": "EXPON. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/expon-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/expon-dist-function",
+      "what": "Podaje rozkład wykładniczy."
     },
     {
       "code": "EXPONDIST",
       "name": "ROZKŁAD.EXP",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/expondist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/expondist-function",
+      "what": "Podaje rozkład wykładniczy."
     },
     {
       "code": "FACT",
       "name": "FAKT",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fact-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fact-function",
+      "what": "Podaje silnię liczby."
     },
     {
       "code": "FACTDOUBLE",
       "name": "SILNIA.DWUKR",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/factdouble-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/factdouble-function",
+      "what": "Podaje podwójną silnię liczby."
     },
     {
       "code": "FALSE",
       "name": "FAŁSZ",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/false-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/false-function",
+      "what": "Podaje wartość logiczną FAŁSZ."
     },
     {
       "code": "F.DIST",
       "name": "ROZKŁ.F",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-dist-function",
+      "what": "Podaje rozkład prawdopodobieństwa F."
     },
     {
       "code": "FDIST",
       "name": "ROZKŁAD.F",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fdist-function",
+      "what": "Podaje rozkład prawdopodobieństwa F."
     },
     {
       "code": "F.DIST.RT",
       "name": "F.DIST.RT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-dist-rt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-dist-rt-function",
+      "what": "Podaje rozkład prawdopodobieństwa F."
     },
     {
       "code": "FILTER",
       "name": "FILTRUJ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/filter-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/filter-function",
+      "what": "Wybiera zakres danych na podstawie kryteriów zdefiniowanych"
     },
     {
       "code": "FILTERXML",
       "name": "FILTERXML",
       "category": "Funkcje sieci Web",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/filterxml-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/filterxml-function",
+      "what": "Podaje określone dane z treści XML, korzystając z określonego wyrażenia XPath. Ta funkcja jest niedostępna w aplikacji Excel dla sieci Web."
     },
     {
       "code": "FIND",
       "name": "ZNAJDŹ, ZNAJDŹB",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/topic/c7912941-af2a-4bdf-a553-d0d89b0a0628"
+      "url": "https://support.microsoft.com/topic/c7912941-af2a-4bdf-a553-d0d89b0a0628",
+      "what": "Znajduje jedną wartość tekstową wewnątrz innej (z uwzględnieniem wielkich i małych liter)."
     },
     {
       "code": "F.INV",
       "name": "ROZKŁ.F.ODWR",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-inv-function",
+      "what": "Podaje odwrotność rozkładu prawdopodobieństwa F."
     },
     {
       "code": "F.INV.RT",
       "name": "F.INV.RT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-inv-rt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-inv-rt-function",
+      "what": "Podaje odwrotność rozkładu prawdopodobieństwa F."
     },
     {
       "code": "FINV",
       "name": "ROZKŁAD.F.ODW",
       "category": "Kompatybilność",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/finv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/finv-function",
+      "what": "Podaje odwrotność rozkładu prawdopodobieństwa F."
     },
     {
       "code": "FISHER",
       "name": "ROZKŁAD.FISHER",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fisher-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fisher-function",
+      "what": "Podaje transformację Fishera."
     },
     {
       "code": "FISHERINV",
       "name": "ROZKŁAD.FISHER.ODW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fisherinv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fisherinv-function",
+      "what": "Podaje odwrotność transformacji Fishera."
     },
     {
       "code": "FIXED",
       "name": "NAPRAWIONE",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fixed-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fixed-function",
+      "what": "Formatuje liczbę jako tekst o stałej liczbie miejsc dziesiętnych."
     },
     {
       "code": "FLOOR",
       "name": "ZAOKR.W.DÓŁ",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w dół w kierunku zera."
     },
     {
       "code": "FLOOR.MATH",
       "name": "PIĘTRO. MATEMATYKA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-math-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-math-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w dół do najbliższej liczby całkowitej lub najbliższej wielokrotności podanej istotności."
     },
     {
       "code": "FLOOR.PRECISE",
       "name": "ZAOKR.W.DÓŁ.DOKŁ",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-precise-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/floor-precise-function",
+      "what": "Zaokrągla w dół do podanej wielokrotności, niezależnie od znaku argumentu."
     },
     {
       "code": "FORECAST",
       "name": "REGLINX",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/forecast-and-forecast-linear-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/forecast-and-forecast-linear-functions",
+      "what": "Podaje wartość trendu liniowego. Ta funkcja została zastąpiona przez funkcję FORECAST.LINEAR w ramach nowego Prognozowania, ale nadal jest dostępna w celu zapewnienia zgodności z wcześniejszymi wersjami."
     },
     {
       "code": "FORECAST.ETS",
       "name": "FORECAST.ETS",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets"
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets",
+      "what": "Podaje przyszłą wartość na podstawie istniejących (historycznych) wartości przy użyciu wersji AAA algorytmu wygładzania wykładniczego (ETS)."
     },
     {
       "code": "FORECAST.ETS.CONFINT",
       "name": "PROGNOZA. systemu handlu emisjami. CONFINT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.confint"
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.confint",
+      "what": "Podaje przedział ufności dla wartości prognozy dla określonej daty docelowej."
     },
     {
       "code": "FORECAST.ETS.SEASONALITY",
       "name": "PROGNOZA. systemu handlu emisjami. SEZONOWOŚĆ",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.seasonality"
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.seasonality",
+      "what": "Podaje długość powtarzającego się wzorca wykrytego przez program Excel dla określonego szeregu czasowego."
     },
     {
       "code": "FORECAST.ETS.STAT",
       "name": "PROGNOZA. systemu handlu emisjami. Statystyki statystyczne",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.stat"
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.ets.stat",
+      "what": "Podaje wartość statystyczną jako wynik prognozowania szeregu czasowego."
     },
     {
       "code": "FORECAST.LINEAR",
       "name": "PROGNOZA. LINIOWY",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.linear"
+      "url": "https://support.microsoft.com/pl-pl/excel/forecasting-functions-reference#_forecast.linear",
+      "what": "Podaje wartość przyszłą na podstawie wartości istniejących."
     },
     {
       "code": "FORMULATEXT",
       "name": "FORMUŁA.TEKST",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/formulatext-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/formulatext-function",
+      "what": "Podaje formułę w danym odwołaniu jako tekst."
     },
     {
       "code": "FREQUENCY",
       "name": "CZĘSTOŚĆ",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/frequency-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/frequency-function",
+      "what": "Podaje rozkład częstotliwości jako tablicę pionową."
     },
     {
       "code": "F.TEST",
       "name": "F.TEST",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-test-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/f-test-function",
+      "what": "Podaje wynik testu F."
     },
     {
       "code": "FTEST",
       "name": "TEST.F",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ftest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ftest-function",
+      "what": "Podaje wynik testu F."
     },
     {
       "code": "FV",
       "name": "FV",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fv-function",
+      "what": "Podaje przyszłą wartość inwestycji."
     },
     {
       "code": "FVSCHEDULE",
       "name": "WART.PRZYSZŁ.KAP",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/fvschedule-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/fvschedule-function",
+      "what": "Podaje przyszłą wartość kapitału początkowego wraz z szeregiem procentów składanych."
     },
     {
       "code": "GAMMA",
       "name": "Współczynnik gamma",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-function",
+      "what": "Podaje wartość funkcji gamma."
     },
     {
       "code": "GAMMA.DIST",
       "name": "GAMMA. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-dist-function",
+      "what": "Podaje rozkład gamma."
     },
     {
       "code": "GAMMADIST",
       "name": "ROZKŁAD.GAMMA",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammadist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammadist-function",
+      "what": "Podaje rozkład gamma."
     },
     {
       "code": "GAMMA.INV",
       "name": "GAMMA. ZAOKR.DO.OD",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gamma-inv-function",
+      "what": "Podaje odwrotność skumulowanego rozkładu gamma."
     },
     {
       "code": "GAMMAINV",
       "name": "ROZKŁAD.GAMMA.ODW",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammainv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammainv-function",
+      "what": "Podaje odwrotność skumulowanego rozkładu gamma."
     },
     {
       "code": "GAMMALN",
       "name": "ROZKŁAD.LIN.GAMMA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammaln-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammaln-function",
+      "what": "Podaje logarytm naturalny funkcji gamma, Γ(x)."
     },
     {
       "code": "GAMMALN.PRECISE",
       "name": "ROZKŁAD.LIN.GAMMA. PRECYZJA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammaln-precise-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gammaln-precise-function",
+      "what": "Podaje logarytm naturalny funkcji gamma, Γ(x)."
     },
     {
       "code": "GAUSS",
       "name": "GAUSS",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gauss-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gauss-function",
+      "what": "Podaje wartości o 0,5 mniejsze niż standardowy skumulowany rozkład normalny."
     },
     {
       "code": "GCD",
       "name": "NAJW.WSP.DZIEL",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gcd-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gcd-function",
+      "what": "Podaje największy wspólny dzielnik."
     },
     {
       "code": "GEOMEAN",
       "name": "ŚREDNIA.GEOMETRYCZNA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/geomean-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/geomean-function",
+      "what": "Podaje średnią geometryczną."
     },
     {
       "code": "GESTEP",
       "name": "SPRAWDŹ.PRÓG",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/gestep-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/gestep-function",
+      "what": "Sprawdza, czy liczba jest większa niż wartość progowa."
     },
     {
       "code": "GETPIVOTDATA",
       "name": "WEŹDANETABELI",
       "category": "Funkcje odnośników i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/getpivotdata-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/getpivotdata-function",
+      "what": "Podaje dane przechowywane w raporcie w formie tabeli przestawnej."
     },
     {
       "code": "GROUPBY",
       "name": "GROUPBY (GRUPUJ.WEDŁUG",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/groupby-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/groupby-function",
+      "what": "Ułatwia grupowanie, agregowanie, sortowanie i filtrowanie danych na podstawie określonych pól"
     },
     {
       "code": "GROWTH",
       "name": "WZROST",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/growth-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/growth-function",
+      "what": "Podaje wartości trendu wykładniczego."
     },
     {
       "code": "HARMEAN",
       "name": "ŚREDNIA HARMONICZNA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/harmean-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/harmean-function",
+      "what": "Podaje średnią harmoniczną."
     },
     {
       "code": "HEX2BIN",
       "name": "SZESN.NA.DWÓJK",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2bin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2bin-function",
+      "what": "Przekształca liczbę w postaci szesnastkowej na liczbę w postaci dwójkowej."
     },
     {
       "code": "HEX2DEC",
       "name": "SZESN.NA.DZIES",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2dec-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2dec-function",
+      "what": "Przekształca liczbę w postaci szesnastkowej na liczbę w postaci dziesiętnej."
     },
     {
       "code": "HEX2OCT",
       "name": "SZESN.NA.ÓSM",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2oct-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hex2oct-function",
+      "what": "Przekształca liczbę w postaci szesnastkowej na liczbę w postaci ósemkowej."
     },
     {
       "code": "HLOOKUP",
       "name": "WYSZUKAJ.POZIOMO",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hlookup-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hlookup-function",
+      "what": "Szuka klucza w pierwszym wierszu tabeli i odczytuje wartość z wybranego wiersza tej kolumny.",
+      "example": "=WYSZUKAJ.POZIOMO(\"Styczeń\";A1:E5;3;FAŁSZ)"
     },
     {
       "code": "HOUR",
       "name": "HOUR (godzina)",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hour-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hour-function",
+      "what": "Przekształca liczbę kolejną na godzinę."
     },
     {
       "code": "HSTACK",
       "name": "STOS.POZ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hstack-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hstack-function",
+      "what": "Dołącza tablice w poziomie i w sekwencji, aby zwrócić większą tablicę"
     },
     {
       "code": "HYPERLINK",
       "name": "HIPERŁĄCZE",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hyperlink-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hyperlink-function",
+      "what": "Buduje skrót lub skok, który pozwala otwierać dokument przechowywany na serwerze sieciowym, w sieci intranet lub w Internecie."
     },
     {
       "code": "HYPGEOM.DIST",
       "name": "ROZKŁ.HIPERGEOM",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hypgeom-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hypgeom-dist-function",
+      "what": "Podaje rozkład hipergeometryczny."
     },
     {
       "code": "HYPGEOMDIST",
       "name": "ROZKŁAD.HIPERGEOM",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/hypgeomdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/hypgeomdist-function",
+      "what": "Podaje rozkład hipergeometryczny."
     },
     {
       "code": "IF",
       "name": "JEŻELI",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/if-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/if-function",
+      "what": "Sprawdza warunek logiczny i wybiera jedną z dwóch wartości w zależności od wyniku.",
+      "example": "=JEŻELI(B2>=50;\"Zaliczone\";\"Spróbuj ponownie\")"
     },
     {
       "code": "IFERROR",
       "name": "JEŻELI.BŁĄD",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/iferror-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/iferror-function",
+      "what": "Wyświetla wskazaną alternatywę, gdy pierwsze wyrażenie zwraca błąd.",
+      "example": "=JEŻELI.BŁĄD(A2/B2;\"Sprawdź dane\")"
     },
     {
       "code": "IFNA",
       "name": "JEŻELI.ND",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ifna-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ifna-function",
+      "what": "Podaje określoną wartość, jeśli wynikiem wyrażenia jest wartość #N/D. W przeciwnym razie zwraca wynik wyrażenia."
     },
     {
       "code": "IFS",
       "name": "Funkcja WARUNKI",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ifs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ifs-function",
+      "what": "Sprawdza, czy spełniono jeden lub więcej warunków, i zwraca wartość odpowiadającą pierwszemu warunkowi ocenionemu jako PRAWDA."
     },
     {
       "code": "IMABS",
       "name": "MODUŁ.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imabs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imabs-function",
+      "what": "Podaje wartość bezwzględną (moduł) liczby zespolonej."
     },
     {
       "code": "IMAGE",
       "name": "OBRAZ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/image-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/image-function",
+      "what": "Podaje obraz z danego źródła"
     },
     {
       "code": "IMAGINARY",
       "name": "CZ.UROJ.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imaginary-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imaginary-function",
+      "what": "Podaje wartość części urojonej liczby zespolonej."
     },
     {
       "code": "IMARGUMENT",
       "name": "ARG.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imargument-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imargument-function",
+      "what": "Podaje wartość argumentu liczby zespolonej, przy czym kąt wyrażony jest w radianach."
     },
     {
       "code": "IMCONJUGATE",
       "name": "SPRZĘŻ.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imconjugate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imconjugate-function",
+      "what": "Podaje wartość liczby sprzężonej danej liczby zespolonej."
     },
     {
       "code": "IMCOS",
       "name": "COS.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcos-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcos-function",
+      "what": "Podaje wartość cosinusa liczby zespolonej."
     },
     {
       "code": "IMCOSH",
       "name": "COSH.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcosh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcosh-function",
+      "what": "Podaje cosinus hiperboliczny liczby zespolonej."
     },
     {
       "code": "IMCOT",
       "name": "COT.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcot-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcot-function",
+      "what": "Podaje cotangens liczby zespolonej."
     },
     {
       "code": "IMCSC",
       "name": "CSC.LICZBA.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcsc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcsc-function",
+      "what": "Podaje cosecans liczby zespolonej."
     },
     {
       "code": "IMCSCH",
       "name": "CSCH.LICZBA.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcsch-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imcsch-function",
+      "what": "Podaje cosecans hiperboliczny liczby zespolonej."
     },
     {
       "code": "IMDIV",
       "name": "ILORAZ.LICZB.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imdiv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imdiv-function",
+      "what": "Podaje wartość ilorazu dwóch liczb zespolonych."
     },
     {
       "code": "IMEXP",
       "name": "EXP.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imexp-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imexp-function",
+      "what": "Podaje postać wykładniczą liczby zespolonej."
     },
     {
       "code": "IMLN",
       "name": "LN.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imln-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imln-function",
+      "what": "Podaje wartość logarytmu naturalnego liczby zespolonej."
     },
     {
       "code": "IMLOG10",
       "name": "LOG10.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imlog10-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imlog10-function",
+      "what": "Podaje wartość logarytmu dziesiętnego liczby zespolonej."
     },
     {
       "code": "IMLOG2",
       "name": "LOG2.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imlog2-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imlog2-function",
+      "what": "Podaje wartość logarytmu liczby zespolonej przy podstawie 2."
     },
     {
       "code": "IMPOWER",
       "name": "POTĘGA.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/impower-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/impower-function",
+      "what": "Podaje wartość liczby zespolonej podniesionej do potęgi całkowitej."
     },
     {
       "code": "IMPRODUCT",
       "name": "ILOCZYN.LICZB.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/improduct-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/improduct-function",
+      "what": "Podaje wartość iloczynu liczb zespolonych."
     },
     {
       "code": "IMREAL",
       "name": "CZ.RZECZ.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imreal-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imreal-function",
+      "what": "Podaje wartość części rzeczywistej liczby zespolonej."
     },
     {
       "code": "IMSEC",
       "name": "SEC.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsec-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsec-function",
+      "what": "Podaje secans liczby zespolonej."
     },
     {
       "code": "IMSECH",
       "name": "SECH.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsech-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsech-function",
+      "what": "Podaje secans hiperboliczny liczby zespolonej."
     },
     {
       "code": "IMSIN",
       "name": "SIN.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsin-function",
+      "what": "Podaje wartość sinusa liczby zespolonej."
     },
     {
       "code": "IMSINH",
       "name": "Funkcja IMSINH",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsinh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsinh-function",
+      "what": "Podaje sinus hiperboliczny liczby zespolonej."
     },
     {
       "code": "IMSQRT",
       "name": "PIERWIASTEK.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsqrt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsqrt-function",
+      "what": "Podaje wartość pierwiastka kwadratowego z liczby zespolonej."
     },
     {
       "code": "IMSUB",
       "name": "RÓŻN.LICZB.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsub-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsub-function",
+      "what": "Podaje wartość różnicy dwóch liczb zespolonych."
     },
     {
       "code": "IMSUM",
       "name": "SUMA.LICZB.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imsum-function",
+      "what": "Podaje wartość sumy liczb zespolonych."
     },
     {
       "code": "IMTAN",
       "name": "TAN.LICZBY.ZESP",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/imtan-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/imtan-function",
+      "what": "Podaje tangens liczby zespolonej."
     },
     {
       "code": "INDEX",
       "name": "INDEKS",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/index-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/index-function",
+      "what": "Zwraca element lub odwołanie do komórki na podstawie jej pozycji w zakresie.",
+      "example": "=INDEKS(B2:B20;3)"
     },
     {
       "code": "INDIRECT",
       "name": "ADR.POŚR",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/indirect-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/indirect-function",
+      "what": "Podaje odwołanie określone przez wartość tekstową."
     },
     {
       "code": "INFO",
       "name": "INFO",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/info-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/info-function",
+      "what": "Podaje informację o bieżącym środowisku operacyjnym. Ta funkcja jest niedostępna w aplikacji Excel dla sieci Web."
     },
     {
       "code": "INT",
       "name": "INT",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/int-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/int-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w dół do najbliższej liczby całkowitej."
     },
     {
       "code": "INTERCEPT",
       "name": "ODCIĘTA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/intercept-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/intercept-function",
+      "what": "Podaje punkt przecięcia osi pionowej z linią regresji liniowej."
     },
     {
       "code": "INTRATE",
       "name": "STOPA.PROC",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/intrate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/intrate-function",
+      "what": "Podaje wartość stopy procentowej papieru wartościowego całkowicie ulokowanego."
     },
     {
       "code": "IPMT",
       "name": "IPMT",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ipmt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ipmt-function",
+      "what": "Podaje wysokość płatności odsetek dla inwestycji za dany okres."
     },
     {
       "code": "IRR",
       "name": "IRR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/irr-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/irr-function",
+      "what": "Podaje wartość wewnętrznej stopy zwrotu dla serii przepływów gotówkowych."
     },
     {
       "code": "ISBLANK",
       "name": "CZY.PUSTA",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Sprawdza, czy wskazana komórka jest pusta.",
+      "example": "=CZY.PUSTA(A2)"
     },
     {
       "code": "ISERR",
       "name": "CZY.BŁ",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Podaje wartość PRAWDA, jeśli wartość jest dowolną wartością błędu, z wyjątkiem #N/D!."
     },
     {
       "code": "ISERROR",
       "name": "CZY.BŁĄD",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Sprawdza, czy argument zwraca dowolny kod błędu.",
+      "example": "=CZY.BŁĄD(A2)"
     },
     {
       "code": "ISEVEN",
       "name": "CZY.PARZYSTE",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/iseven-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/iseven-function",
+      "what": "Podaje wartość PRAWDA, jeśli liczba jest parzysta."
     },
     {
       "code": "ISFORMULA",
       "name": "CZY.FORMUŁA",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/isformula-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/isformula-function",
+      "what": "Podaje wartość PRAWDA, jeśli istnieje odwołanie do komórki zawierającej formułę."
     },
     {
       "code": "ISLOGICAL",
       "name": "CZY.LOGICZNA",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Podaje wartość PRAWDA, jeśli wartość jest wartością logiczną."
     },
     {
       "code": "ISNA",
       "name": "CZY.BRAK",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Podaje wartość PRAWDA, jeśli wartość jest wartością błędu #N/D."
     },
     {
       "code": "ISNONTEXT",
       "name": "CZY.NIE.TEKST",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Podaje wartość PRAWDA, jeśli wartość nie jest tekstem."
     },
     {
       "code": "ISNUMBER",
       "name": "CZY.LICZBA",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Sprawdza, czy argument ma typ liczbowy.",
+      "example": "=CZY.LICZBA(A2)"
     },
     {
       "code": "ISODD",
       "name": "CZY.NIEPARZYSTE",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Sprawdza, czy liczba jest nieparzysta."
     },
     {
       "code": "ISOMITTED",
       "name": "ISOMITTED",
       "category": "Informacje",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/isomitted-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/isomitted-function",
+      "what": "Sprawdza, czy brakuje wartości w funkcji LAMBDA i zwraca wartość PRAWDA lub FAŁSZ"
     },
     {
       "code": "ISREF",
       "name": "CZY.ADR",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Podaje wartość PRAWDA, jeśli wartość jest odwołaniem."
     },
     {
       "code": "ISTEXT",
       "name": "CZY.TEKST",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/is-functions"
+      "url": "https://support.microsoft.com/pl-pl/excel/is-functions",
+      "what": "Podaje wartość PRAWDA, jeśli wartość jest tekstem."
     },
     {
       "code": "ISO.CEILING",
       "name": "ISO.CEILING",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/iso-ceiling-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/iso-ceiling-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w górę do najbliższej wartości całkowitej lub wielokrotności podanej istotności."
     },
     {
       "code": "ISOWEEKNUM",
       "name": "ISO.NUM.TYG",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/isoweeknum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/isoweeknum-function",
+      "what": "Podaje numer tygodnia roku w formacie ISO dla określonej daty."
     },
     {
       "code": "ISPMT",
       "name": "Mechanizm ISPMT",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ispmt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ispmt-function",
+      "what": "Wylicza wysokość odsetek płatnych w określonym okresie inwestycji."
     },
     {
       "code": "JIS",
       "name": "JIS",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/jis-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/jis-function",
+      "what": "Zamienia znaki o szerokości połówkowej (jednobajtowe) w ciągu na znaki o pełnej szerokości (dwubajtowe)."
     },
     {
       "code": "KURT",
       "name": "KURT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/kurt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/kurt-function",
+      "what": "Podaje kurtozę zbioru danych."
     },
     {
       "code": "LAMBDA",
       "name": "LAMBDA",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lambda-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lambda-function",
+      "what": "Tworzenie niestandardowych, wielokrotnego użytku i wywoływanie ich przy użyciu przyjaznej nazwy"
     },
     {
       "code": "LARGE",
       "name": "MAX.K",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/large-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/large-function",
+      "what": "Podaje k-tą największą wartość ze zbioru danych."
     },
     {
       "code": "LCM",
       "name": "NAJMN.WSP.WIEL",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lcm-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lcm-function",
+      "what": "Podaje najmniejszą wspólną wielokrotność."
     },
     {
       "code": "LEFT",
       "name": "LEWY",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/left-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/left-function",
+      "what": "Podaje skrajne lewe znaki z wartości tekstowej.",
+      "example": "=LEWY(A2;3)"
     },
     {
       "code": "LEN",
       "name": "DŁ",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/len-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/len-function",
+      "what": "Podaje liczbę znaków w ciągu tekstowym.",
+      "example": "=DŁ(A2)"
     },
     {
       "code": "LET",
       "name": "LET",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/let-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/let-function",
+      "what": "Przypisuje nazwy do wyników obliczeń"
     },
     {
       "code": "LINEST",
       "name": "REGLINP",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/linest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/linest-function",
+      "what": "Podaje parametry trendu liniowego."
     },
     {
       "code": "LN",
       "name": "LN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ln-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ln-function",
+      "what": "Podaje logarytm naturalny podanej liczby."
     },
     {
       "code": "LOG",
       "name": "LOG",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/log-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/log-function",
+      "what": "Podaje logarytm danej liczby przy zadanej podstawie."
     },
     {
       "code": "LOG10",
       "name": "LOG10",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/log10-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/log10-function",
+      "what": "Podaje logarytm dziesiętny liczby."
     },
     {
       "code": "LOGEST",
       "name": "REGEXPP",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/logest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/logest-function",
+      "what": "Podaje parametry trendu wykładniczego."
     },
     {
       "code": "LOGINV",
       "name": "ROZKŁAD.LOG.ODW",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/loginv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/loginv-function",
+      "what": "Podaje odwrotność skumulowanego rozkładu logarytmiczno-normalnego."
     },
     {
       "code": "LOGNORM.DIST",
       "name": "LOGNORM. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognorm-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognorm-dist-function",
+      "what": "Podaje skumulowany rozkład logarytmu naturalnego."
     },
     {
       "code": "LOGNORMDIST",
       "name": "ROZKŁAD.LOG",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognormdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognormdist-function",
+      "what": "Podaje skumulowany rozkład logarytmu naturalnego."
     },
     {
       "code": "LOGNORM.INV",
       "name": "LOGNORM. ZAOKR.DO.OD",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognorm-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lognorm-inv-function",
+      "what": "Podaje odwrotność skumulowanego rozkładu logarytmiczno-normalnego."
     },
     {
       "code": "LOOKUP",
       "name": "WYSZUKAJ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lookup-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lookup-function",
+      "what": "Odnajduje wartości w wektorze lub tablicy."
     },
     {
       "code": "LOWER",
       "name": "LOWER",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/lower-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/lower-function",
+      "what": "Przekształca litery w tekście na małe."
     },
     {
       "code": "MAKEARRAY",
       "name": "MAKEARRAY",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/makearray-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/makearray-function",
+      "what": "Podaje obliczoną tablicę o określonym rozmiarze wiersza i kolumny, stosując funkcję LAMBDA"
     },
     {
       "code": "MAP",
       "name": "MAP",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/map-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/map-function",
+      "what": "Przetwarza kolejne elementy tablicy przy użyciu wskazanej funkcji LAMBDA."
     },
     {
       "code": "MATCH",
       "name": "PODAJ.POZYCJĘ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/match-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/match-function",
+      "what": "Odnajduje wartości w odwołaniu lub w tablicy.",
+      "example": "=PODAJ.POZYCJĘ(\"Ala\";A2:A20;0)"
     },
     {
       "code": "MAX",
       "name": "MAX",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/max-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/max-function",
+      "what": "Podaje maksymalną wartość z listy argumentów.",
+      "example": "=MAX(B2:B10)"
     },
     {
       "code": "MAXA",
       "name": "MAX.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/maxa-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/maxa-function",
+      "what": "Podaje maksymalną wartość z listy argumentów, z uwzględnieniem liczb, tekstów i wartości logicznych."
     },
     {
       "code": "MAXIFS",
       "name": "Funkcja MAKS.WARUNKÓW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/maxifs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/maxifs-function",
+      "what": "Podaje wartość maksymalną spośród komórek spełniających podany zestaw warunków lub kryteriów."
     },
     {
       "code": "MDETERM",
       "name": "WYZNACZNIK.MACIERZY",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mdeterm-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mdeterm-function",
+      "what": "Podaje wyznacznik macierzy tablicy."
     },
     {
       "code": "MDURATION",
       "name": "ROCZ.PRZYCH.M",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mduration-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mduration-function",
+      "what": "Podaje wartość zmodyfikowanego okresu Macauleya dla papieru wartościowego o założonej wartości nominalnej 100 zł."
     },
     {
       "code": "MEDIAN",
       "name": "MEDIANA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/median-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/median-function",
+      "what": "Podaje medianę podanych liczb."
     },
     {
       "code": "MID",
       "name": "FRAGMENT.TEKSTU",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mid-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mid-function",
+      "what": "Podaje określoną liczbę znaków z ciągu tekstowego, zaczynając od zadanej pozycji.",
+      "example": "=FRAGMENT.TEKSTU(A2;4;3)"
     },
     {
       "code": "MIN",
       "name": "MIN",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/min-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/min-function",
+      "what": "Podaje minimalną wartość z listy argumentów.",
+      "example": "=MIN(B2:B10)"
     },
     {
       "code": "MINIFS",
       "name": "Funkcja MIN.WARUNKÓW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/minifs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/minifs-function",
+      "what": "Podaje wartość minimalną spośród komórek spełniających podany zestaw warunków lub kryteriów."
     },
     {
       "code": "MINA",
       "name": "MIN.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mina-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mina-function",
+      "what": "Podaje najmniejszą wartość z listy argumentów, z uwzględnieniem liczb, tekstów i wartości logicznych."
     },
     {
       "code": "MINUTE",
       "name": "MINUTE (minuta)",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/minute-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/minute-function",
+      "what": "Przekształca liczbę kolejną na minuty."
     },
     {
       "code": "MINVERSE",
       "name": "MACIERZ.ODW",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/minverse-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/minverse-function",
+      "what": "Podaje odwrotność macierzy tablicy."
     },
     {
       "code": "MIRR",
       "name": "MIRR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mirr-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mirr-function",
+      "what": "Podaje wartość wewnętrznej stopy zwrotu dla przypadku, gdy dodatnie i ujemne przepływy gotówkowe mają różne stopy."
     },
     {
       "code": "MMULT",
       "name": "MACIERZ.ILOCZYN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mmult-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mmult-function",
+      "what": "Podaje iloczyn macierzy dwóch tablic."
     },
     {
       "code": "MOD",
       "name": "MOD",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mod-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mod-function",
+      "what": "Podaje resztę z dzielenia.",
+      "example": "=MOD(10;3)"
     },
     {
       "code": "MODE",
       "name": "WYST.NAJCZĘŚCIEJ",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-function",
+      "what": "Podaje wartość najczęściej występującą w zbiorze danych."
     },
     {
       "code": "MODE.MULT",
       "name": "TRYB. MULT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-mult-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-mult-function",
+      "what": "Podaje pionową tablicę zawierającą najczęściej występujące lub powtarzające się wartości w tablicy lub zakresie danych."
     },
     {
       "code": "MODE.SNGL",
       "name": "WYST.NAJCZĘŚCIEJ.WART",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-sngl-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mode-sngl-function",
+      "what": "Podaje wartość najczęściej występującą w zbiorze danych."
     },
     {
       "code": "MONTH",
       "name": "MIESIĄC",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/month-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/month-function",
+      "what": "Przekształca liczbę kolejną na miesiąc."
     },
     {
       "code": "MROUND",
       "name": "ZAOKR.DO.WIELOKR",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/mround-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/mround-function",
+      "what": "Podaje liczbę zaokrągloną do żądanej wielokrotności."
     },
     {
       "code": "MULTINOMIAL",
       "name": "WIELOMIAN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/multinomial-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/multinomial-function",
+      "what": "Podaje wielomian dla zbioru liczb."
     },
     {
       "code": "MUNIT",
       "name": "MACIERZ.JEDNOSTKOWA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/munit-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/munit-function",
+      "what": "Podaje macierz jednostkową lub określony wymiar."
     },
     {
       "code": "N",
       "name": "N",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/n-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/n-function",
+      "what": "Podaje wartość przekonwertowaną na postać liczbową."
     },
     {
       "code": "NA",
       "name": "ND.",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/na-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/na-function",
+      "what": "Podaje wartość błędu #N/D."
     },
     {
       "code": "NEGBINOM.DIST",
       "name": "DWUM.PRZEC. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/negbinom-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/negbinom-dist-function",
+      "what": "Podaje ujemny rozkład dwumianowy."
     },
     {
       "code": "NEGBINOMDIST",
       "name": "ROZKŁAD.DWUM.PRZEC",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/negbinomdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/negbinomdist-function",
+      "what": "Podaje ujemny rozkład dwumianowy."
     },
     {
       "code": "NETWORKDAYS",
       "name": "DNI.ROBOCZE",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-function",
+      "what": "Podaje liczbę pełnych dni roboczych między dwiema datami."
     },
     {
       "code": "NETWORKDAYS.INTL",
       "name": "DNI.ROBOCZE. INTL",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-intl-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/networkdays-intl-function",
+      "what": "Podaje liczbę dni roboczych między dwiema datami zgodnie z parametrami określającymi dni stanowiące dni weekendowe oraz liczbę dni weekendowych."
     },
     {
       "code": "NOMINAL",
       "name": "NOMINALNA",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/nominal-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/nominal-function",
+      "what": "Podaje wysokość nominalnej rocznej stopy procentowej."
     },
     {
       "code": "NORM.DIST",
       "name": "NORMA. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-dist-function",
+      "what": "Podaje skumulowany rozkład normalny."
     },
     {
       "code": "NORMDIST",
       "name": "ROZKŁAD.NORMALNY",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/normdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/normdist-function",
+      "what": "Podaje skumulowany rozkład normalny."
     },
     {
       "code": "NORMINV",
       "name": "ROZKŁAD.NORMALNY.ODW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/norminv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norminv-function",
+      "what": "Podaje odwrotność skumulowanego rozkładu normalnego."
     },
     {
       "code": "NORM.INV",
       "name": "NORMA. ZAOKR.DO.OD",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-inv-function",
+      "what": "Podaje odwrotność skumulowanego rozkładu normalnego."
     },
     {
       "code": "NORM.S.DIST",
       "name": "NORMA. ROZKŁ.S",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-s-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-s-dist-function",
+      "what": "Podaje standardowy rozkład normalny skumulowany."
     },
     {
       "code": "NORMSDIST",
       "name": "ROZKŁAD.NORMALNY.S",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/normsdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/normsdist-function",
+      "what": "Podaje standardowy rozkład normalny skumulowany."
     },
     {
       "code": "NORM.S.INV",
       "name": "NORMA. ROZKŁ.S.ODWR",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-s-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/norm-s-inv-function",
+      "what": "Podaje odwrotność standardowego rozkładu normalnego skumulowanego."
     },
     {
       "code": "NORMSINV",
       "name": "ROZKŁAD.NORMALNY.S.ODW",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/normsinv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/normsinv-function",
+      "what": "Podaje odwrotność standardowego rozkładu normalnego skumulowanego."
     },
     {
       "code": "NOT",
       "name": "NIE",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/not-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/not-function",
+      "what": "Odwraca wartość logiczną argumentu."
     },
     {
       "code": "NOW",
       "name": "TERAZ",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/now-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/now-function",
+      "what": "Podaje liczbę kolejną bieżącej daty i godziny.",
+      "example": "=TERAZ()"
     },
     {
       "code": "NPER",
       "name": "NPER",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/nper-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/nper-function",
+      "what": "Podaje liczbę okresów dla inwestycji."
     },
     {
       "code": "NPV",
       "name": "NPV",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/npv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/npv-function",
+      "what": "Wyznacza wartość bieżącą netto strumienia okresowych przepływów pieniężnych.",
+      "example": "=NPV(10%;B2:B10)+B1"
     },
     {
       "code": "NUMBERVALUE",
       "name": "WARTOŚĆ.LICZBOWA",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/numbervalue-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/numbervalue-function",
+      "what": "Przekształca tekst na liczbę w sposób niezależny od ustawień regionalnych."
     },
     {
       "code": "OCT2BIN",
       "name": "OCT2BIN",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2bin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2bin-function",
+      "what": "Przekształca liczbę w postaci ósemkowej na liczbę w postaci dwójkowej."
     },
     {
       "code": "OCT2DEC",
       "name": "ÓSM.NA.DZIES",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2dec-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2dec-function",
+      "what": "Przekształca liczbę w postaci ósemkowej na liczbę w postaci dziesiętnej."
     },
     {
       "code": "OCT2HEX",
       "name": "ÓSM.NA.SZESN",
       "category": "Funkcje inżynierskie",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2hex-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oct2hex-function",
+      "what": "Przekształca liczbę w postaci ósemkowej na liczbę w postaci szesnastkowej."
     },
     {
       "code": "ODD",
       "name": "ZAOKR.DO.NPARZ",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/odd-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/odd-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w górę do najbliższej liczby nieparzystej."
     },
     {
       "code": "ODDFPRICE",
       "name": "CENA.PIERW.OKR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddfprice-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddfprice-function",
+      "what": "Podaje cenę za 100 zł wartości nominalnej papieru wartościowego z nietypowym pierwszym okresem."
     },
     {
       "code": "ODDFYIELD",
       "name": "RENT.PIERW.OKR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddfyield-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddfyield-function",
+      "what": "Podaje rentowność papieru wartościowego z nietypowym pierwszym okresem."
     },
     {
       "code": "ODDLPRICE",
       "name": "CENA.OST.OKR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddlprice-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddlprice-function",
+      "what": "Podaje cenę za 100 zł wartości nominalnej papieru wartościowego z nietypowym ostatnim okresem."
     },
     {
       "code": "ODDLYIELD",
       "name": "RENT.OST.OKR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddlyield-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/oddlyield-function",
+      "what": "Podaje rentowność papieru wartościowego z nietypowym ostatnim okresem."
     },
     {
       "code": "OFFSET",
       "name": "PRZESUNIĘCIE",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/offset-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/offset-function",
+      "what": "Podaje odwołanie przesunięte od danego odwołania."
     },
     {
       "code": "OR",
       "name": "LUB",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/or-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/or-function",
+      "what": "Zwraca PRAWDA, gdy przynajmniej jeden warunek jest spełniony.",
+      "example": "=LUB(B2=\"Tak\";C2=\"Tak\")"
     },
     {
       "code": "PDURATION",
       "name": "O.CZAS.TRWANIA",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pduration-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pduration-function",
+      "what": "Podaje liczbę okresów wymaganych przez inwestycję do osiągnięcia określonej wartości."
     },
     {
       "code": "PEARSON",
       "name": "PEARSON",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pearson-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pearson-function",
+      "what": "Podaje współczynnik korelacji momentu iloczynu Pearsona."
     },
     {
       "code": "PERCENTILE.EXC",
       "name": "PERCENTYL.PRZEDZ.OTW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-exc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-exc-function",
+      "what": "Wyznacza percentyl metodą wykluczającą wartości graniczne."
     },
     {
       "code": "PERCENTILE.INC",
       "name": "PERCENTYL.PRZEDZ.ZAMK",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-inc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-inc-function",
+      "what": "Podaje k-ty percentyl wartości w zakresie."
     },
     {
       "code": "PERCENTILE",
       "name": "PERCENTYL",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentile-function",
+      "what": "Podaje k-ty percentyl wartości w zakresie."
     },
     {
       "code": "PERCENTOF",
       "name": "PROCENT",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentof-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentof-function",
+      "what": "Sumuje wartości w podzbiorze i dzieli je przez wszystkie wartości"
     },
     {
       "code": "PERCENTRANK.EXC",
       "name": "PROC.POZYCJA. Przedz.Z",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-exc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-exc-function",
+      "what": "Podaje pozycję procentową wartości w zbiorze danych, należącą do zakresu od 0 do 1 (bez wartości granicznych)."
     },
     {
       "code": "PERCENTRANK.INC",
       "name": "PROC.POZYCJA. INC",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-inc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-inc-function",
+      "what": "Podaje pozycję procentową wartości w zbiorze danych."
     },
     {
       "code": "PERCENTRANK",
       "name": "PROCENT.POZYCJA",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/percentrank-function",
+      "what": "Podaje pozycję procentową wartości w zbiorze danych."
     },
     {
       "code": "PERMUT",
       "name": "PERMUTACJE",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/permut-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/permut-function",
+      "what": "Podaje liczbę permutacji dla danej liczby obiektów."
     },
     {
       "code": "PERMUTATIONA",
       "name": "PERMUTACJE.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/permutationa-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/permutationa-function",
+      "what": "Podaje liczbę permutacji dla podanej liczby obiektów (wraz z powtórzeniami), które można wybrać spośród wszystkich obiektów."
     },
     {
       "code": "PHI",
       "name": "PHI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/phi-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/phi-function",
+      "what": "Podaje wartość funkcji gęstości dla standardowego rozkładu normalnego."
     },
     {
       "code": "PHONETIC",
       "name": "PHONETIC",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/phonetic-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/phonetic-function",
+      "what": "Wydziela znaki fonetyczne (furigana) z ciągu tekstowego."
     },
     {
       "code": "PI",
       "name": "PI",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pi-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pi-function",
+      "what": "Podaje stałą matematyczną pi, około 3,1415926536."
     },
     {
       "code": "PIVOTBY",
       "name": "Funkcja PRZESTAWIAJ.WEDŁUG",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pivotby-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pivotby-function",
+      "what": "Ułatwia grupowanie, agregowanie, sortowanie i filtrowanie danych na podstawie określonych pól wierszy i kolumn"
     },
     {
       "code": "PMT",
       "name": "PMT",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pmt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pmt-function",
+      "what": "Wyznacza jednakową płatność okresową kredytu lub inwestycji przy stałej stopie.",
+      "example": "=PMT(5%/12;60;-10000)"
     },
     {
       "code": "POISSON.DIST",
       "name": "POISSON. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/poisson-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/poisson-dist-function",
+      "what": "Podaje rozkład Poissona."
     },
     {
       "code": "POISSON",
       "name": "ROZKŁAD.POISSON",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/poisson-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/poisson-function",
+      "what": "Podaje rozkład Poissona."
     },
     {
       "code": "POWER",
       "name": "POTĘGA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/power-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/power-function",
+      "what": "Podaje liczbę podniesioną do potęgi."
     },
     {
       "code": "PPMT",
       "name": "PPMT",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ppmt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ppmt-function",
+      "what": "Podaje wysokość spłaty kapitału w przypadku inwestycji dla danego okresu."
     },
     {
       "code": "PRICE",
       "name": "CENA",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/price-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/price-function",
+      "what": "Podaje cenę za 100 zł wartości nominalnej papieru wartościowego z oprocentowaniem okresowym."
     },
     {
       "code": "PRICEDISC",
       "name": "CENA.DYSK",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pricedisc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pricedisc-function",
+      "what": "Podaje cenę za 100 zł wartości nominalnej papieru wartościowego zdyskontowanego."
     },
     {
       "code": "PRICEMAT",
       "name": "CENA.WYKUP",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pricemat-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pricemat-function",
+      "what": "Podaje cenę za 100 zł wartości nominalnej papieru wartościowego z oprocentowaniem w terminie wykupu."
     },
     {
       "code": "PROB",
       "name": "PRAWDPD",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/prob-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/prob-function",
+      "what": "Podaje prawdopodobieństwo, że wartości w zakresie leżą pomiędzy dwiema granicami."
     },
     {
       "code": "PRODUCT",
       "name": "ILOCZYN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/product-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/product-function",
+      "what": "Mnoży argumenty.",
+      "example": "=ILOCZYN(B2:B5)"
     },
     {
       "code": "PROPER",
       "name": "Z.WIELKIEJ.LITERY",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/proper-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/proper-function",
+      "what": "Zamienia pierwszą literę każdego wyrazu w tekście wielką literą."
     },
     {
       "code": "PV",
       "name": "PV",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/pv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/pv-function",
+      "what": "Wyznacza wartość bieżącą przyszłych przepływów przy zadanej stopie i okresach."
     },
     {
       "code": "QUARTILE",
       "name": "KWARTYL",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-function",
+      "what": "Podaje kwartyl zbioru danych."
     },
     {
       "code": "QUARTILE.EXC",
       "name": "KWARTYL.PRZEDZ.OTW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-exc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-exc-function",
+      "what": "Wyznacza kwartyl zbioru danych z użyciem metody wyłączającej wartości graniczne."
     },
     {
       "code": "QUARTILE.INC",
       "name": "KWARTYL.PRZEDZ.ZAMK",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-inc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quartile-inc-function",
+      "what": "Podaje kwartyl zbioru danych."
     },
     {
       "code": "QUOTIENT",
       "name": "CZ.CAŁK.DZIELENIA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/quotient-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/quotient-function",
+      "what": "Podaje iloraz (całkowity)."
     },
     {
       "code": "RADIANS",
       "name": "RADIANY",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/radians-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/radians-function",
+      "what": "Przekształca stopnie na radiany."
     },
     {
       "code": "RAND",
       "name": "LOS",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rand-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rand-function",
+      "what": "Podaje liczbę losową z zakresu od 0 do 1."
     },
     {
       "code": "RANDARRAY",
       "name": "LOSOWA.TABLICA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/randarray-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/randarray-function",
+      "what": "Podaje tablicę liczb losowych w przedziale od 0 do 1. Możesz jednak określić liczbę wierszy i kolumn do wypełnienia, wartości minimalne i maksymalne oraz czy mają być zwracane liczby całkowite, czy wartości dziesiętne."
     },
     {
       "code": "RANDBETWEEN",
       "name": "LOS.ZAKR",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/randbetween-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/randbetween-function",
+      "what": "Podaje liczbę losową z zakresu określonego przez podane argumenty."
     },
     {
       "code": "RANK.AVG",
       "name": "POZYCJA. ŚREDNIA",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-avg-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-avg-function",
+      "what": "Podaje pozycję liczby na liście liczb."
     },
     {
       "code": "RANK.EQ",
       "name": "RANK.EQ",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-eq-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-eq-function",
+      "what": "Podaje pozycję liczby na liście liczb."
     },
     {
       "code": "RANK",
       "name": "POZYCJA",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rank-function",
+      "what": "Podaje pozycję liczby na liście liczb."
     },
     {
       "code": "RATE",
       "name": "RATE",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rate-function",
+      "what": "Podaje wysokość stopy procentowej dla pojedynczego okresu raty rocznej."
     },
     {
       "code": "RECEIVED",
       "name": "KWOTA.WYKUP",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/received-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/received-function",
+      "what": "Podaje wartość kapitału otrzymanego przy wykupie papieru wartościowego całkowicie ulokowanego."
     },
     {
       "code": "REDUCE",
       "name": "REDUCE",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/reduce-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/reduce-function",
+      "what": "Redukuje tablicę do wartości skumulowanej, stosując funkcję LAMBDA do każdej wartości i zwracając łączną wartość w akumulatorze"
     },
     {
       "code": "REGEXEXTRACT",
       "name": "REGEXWYODRĘBNIJ",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/regexextract-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/regexextract-function",
+      "what": "Wydziela ciągi w podanym tekście, który jest zgodny ze wzorcem"
     },
     {
       "code": "REGEXREPLACE",
       "name": "Funkcja REGEXZASTĄP",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/regexreplace-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/regexreplace-function",
+      "what": "Zamienia ciągi w podanym tekście, który jest zgodny ze wzorcem z zamianą"
     },
     {
       "code": "REGEXTEST",
       "name": "REGEXTEST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/regextest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/regextest-function",
+      "what": "Określa, czy dowolna część tekstu jest zgodna ze wzorcem"
     },
     {
       "code": "REGISTER.ID",
       "name": "REJESTR.KOD",
       "category": "Funkcje dodatków i automatyzacji",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/register-id-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/register-id-function",
+      "what": "Podaje identyfikator rejestru określonej biblioteki dołączanej dynamicznie (DLL) lub wcześniej zarejestrowanego zasobu kodu."
     },
     {
       "code": "REPLACE",
       "name": "ZASTĄP, ZASTĄP.B",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/replace-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/replace-function",
+      "what": "Zamienia znaki w tekście."
     },
     {
       "code": "REPT",
       "name": "POWT",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rept-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rept-function",
+      "what": "Powtarza tekst określoną liczbę razy."
     },
     {
       "code": "RIGHT",
       "name": "PRAWY",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/right-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/right-function",
+      "what": "Podaje skrajne prawe znaki z wartości tekstowej.",
+      "example": "=PRAWY(A2;4)"
     },
     {
       "code": "ROMAN",
       "name": "RZYMSKIE",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/roman-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/roman-function",
+      "what": "Przekształca liczbę arabską na rzymską jako tekst."
     },
     {
       "code": "ROUND",
       "name": "ZAOKR",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/round-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/round-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę do określonej liczby cyfr.",
+      "example": "=ZAOKR(23,456;2)"
     },
     {
       "code": "ROUNDDOWN",
       "name": "ZAOKR.DÓŁ",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rounddown-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rounddown-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w dół, w kierunku zera."
     },
     {
       "code": "ROUNDUP",
       "name": "ZAOKR.GÓRA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/roundup-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/roundup-function",
+      "what": "Przybliża liczbę przez zaokrąglenie: liczbę w górę, w kierunku od zera."
     },
     {
       "code": "ROW",
       "name": "WIERSZ",
       "category": "Funkcje odnośników i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/row-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/row-function",
+      "what": "Podaje numer wiersza odwołania."
     },
     {
       "code": "ROWS",
       "name": "WIERSZE",
       "category": "Funkcje odnośników i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rows-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rows-function",
+      "what": "Podaje liczbę wierszy dla danego odwołania."
     },
     {
       "code": "RRI",
       "name": "RÓWNOW.STOPA.PROC",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rri-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rri-function",
+      "what": "Podaje równoważną stopę procentową dla określonego wzrostu wartości inwestycji."
     },
     {
       "code": "RSQ",
       "name": "R.KWADRAT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rsq-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rsq-function",
+      "what": "Podaje kwadrat współczynnika korelacji momentu iloczynu Pearsona."
     },
     {
       "code": "RTD",
       "name": "DANE.CZASU.RZECZ",
       "category": "Funkcje odnośników i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/rtd-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/rtd-function",
+      "what": "Pobiera dane w czasie rzeczywistym z programu obsługującego automatyzację COM."
     },
     {
       "code": "SCAN",
       "name": "SCAN",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/scan-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/scan-function",
+      "what": "Skanuje tablicę, stosując funkcję LAMBDA do każdej wartości i zwraca tablicę, która ma każdą wartość pośrednią"
     },
     {
       "code": "SEARCH",
       "name": "SZUKAJ.TEKST, SZUKAJ.TEKST.B",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/search-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/search-function",
+      "what": "Znajduje jedną wartość tekstową wewnątrz innej (bez uwzględniania wielkich i małych liter)."
     },
     {
       "code": "SEC",
       "name": "SEC",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sec-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sec-function",
+      "what": "Podaje secans kąta."
     },
     {
       "code": "SECH",
       "name": "SECH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sech-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sech-function",
+      "what": "Podaje secans hiperboliczny kąta."
     },
     {
       "code": "SECOND",
       "name": "SECOND (sekunda)",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/second-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/second-function",
+      "what": "Przekształca liczbę kolejną na sekundę."
     },
     {
       "code": "SEQUENCE",
       "name": "SEKWENCJA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sequence-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sequence-function",
+      "what": "Generuje listę kolejnych liczb w tablicy, np. 1, 2, 3, 4",
+      "example": "=SEKWENCJA(10)"
     },
     {
       "code": "SERIESSUM",
       "name": "SUMA.SZER.POT",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/seriessum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/seriessum-function",
+      "what": "Podaje sumę szeregu potęgowego na podstawie wzoru."
     },
     {
       "code": "SHEET",
       "name": "ARKUSZ",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sheet-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sheet-function",
+      "what": "Podaje numer arkusza, którego dotyczy odwołanie."
     },
     {
       "code": "SHEETS",
       "name": "ARKUSZE",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sheets-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sheets-function",
+      "what": "Podaje liczbę arkuszy w odwołaniu."
     },
     {
       "code": "SIGN",
       "name": "ZNAK.LICZBY",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sign-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sign-function",
+      "what": "Podaje znak liczby."
     },
     {
       "code": "SIN",
       "name": "SIN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sin-function",
+      "what": "Podaje sinus danego kąta."
     },
     {
       "code": "SINH",
       "name": "SINH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sinh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sinh-function",
+      "what": "Podaje sinus hiperboliczny liczby."
     },
     {
       "code": "SKEW",
       "name": "SKOŚNOŚĆ",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/skew-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/skew-function",
+      "what": "Podaje skośność rozkładu."
     },
     {
       "code": "SKEW.P",
       "name": "Skośność. P",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/skew-p-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/skew-p-function",
+      "what": "Podaje skośność rozkładu na podstawie populacji, charakteryzującą stopień asymetrii rozkładu wokół średniej."
     },
     {
       "code": "SLN",
       "name": "SLN",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sln-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sln-function",
+      "what": "Podaje amortyzację środka trwałego za jeden okres metodą liniową."
     },
     {
       "code": "SLOPE",
       "name": "NACHYLENIE",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/slope-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/slope-function",
+      "what": "Podaje nachylenie linii regresji liniowej."
     },
     {
       "code": "SMALL",
       "name": "MIN.K",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/small-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/small-function",
+      "what": "Podaje k-tą najmniejszą wartość ze zbioru danych."
     },
     {
       "code": "SORT",
       "name": "SORTUJ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sort-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sort-function",
+      "what": "Sortuje zawartość zakresu lub tablicy",
+      "example": "=SORTUJ(A2:B30;2;-1)"
     },
     {
       "code": "SORTBY",
       "name": "SORTUJ.WEDŁUG",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sortby-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sortby-function",
+      "what": "Sortuje zawartość zakresu lub tablicy na podstawie wartości w odpowiednim zakresie lub tablicy"
     },
     {
       "code": "SQRT",
       "name": "SQRT",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sqrt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sqrt-function",
+      "what": "Podaje dodatni pierwiastek kwadratowy."
     },
     {
       "code": "SQRTPI",
       "name": "PIERW.PI",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sqrtpi-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sqrtpi-function",
+      "what": "Podaje pierwiastek kwadratowy iloczynu (liczba \\* Pi)."
     },
     {
       "code": "STANDARDIZE",
       "name": "NORMALIZUJ",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/standardize-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/standardize-function",
+      "what": "Podaje wartość znormalizowaną."
     },
     {
       "code": "STDEV",
       "name": "ODCH.STANDARDOWE",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-function",
+      "what": "Szacunkowo wyznacza odchylenie standardowe na podstawie próbki."
     },
     {
       "code": "STDEV.P",
       "name": "ODCH.STANDARDOWE. P",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-p-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-p-function",
+      "what": "Wylicza odchylenie standardowe na podstawie całej populacji."
     },
     {
       "code": "STDEV.S",
       "name": "ODCH.STANDARD.PRÓBKI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-s-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdev-s-function",
+      "what": "Szacunkowo wyznacza odchylenie standardowe na podstawie próbki."
     },
     {
       "code": "STDEVA",
       "name": "ODCH.STANDARDOWE.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdeva-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdeva-function",
+      "what": "Szacunkowo wyznacza odchylenie standardowe na podstawie próbki, z uwzględnieniem liczb, tekstów i wartości logicznych."
     },
     {
       "code": "STDEVP",
       "name": "ODCH.STANDARD.POPUL",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdevp-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdevp-function",
+      "what": "Wylicza odchylenie standardowe na podstawie całej populacji."
     },
     {
       "code": "STDEVPA",
       "name": "ODCH.STANDARD.POPUL.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdevpa-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stdevpa-function",
+      "what": "Wylicza odchylenie standardowe na podstawie całej populacji, z uwzględnieniem liczb, teksów i wartości logicznych."
     },
     {
       "code": "STEYX",
       "name": "REGBŁSTD",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/steyx-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/steyx-function",
+      "what": "Podaje błąd standardowy przewidzianej wartości y dla każdej wartości x w regresji."
     },
     {
       "code": "STOCKHISTORY",
       "name": "HISTORIA.AKCJI",
       "category": "Informacje",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/stockhistory-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/stockhistory-function",
+      "what": "Pobiera dane historyczne dotyczące instrumentu finansowego i ładuje je jako tablicę"
     },
     {
       "code": "SUBSTITUTE",
       "name": "PODSTAW",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/substitute-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/substitute-function",
+      "what": "Zamienia stary tekst nowym tekstem w ciągu tekstowym."
     },
     {
       "code": "SUBTOTAL",
       "name": "SUMY.CZĘŚCIOWE",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/subtotal-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/subtotal-function",
+      "what": "Podaje sumę częściową listy lub bazy danych."
     },
     {
       "code": "SUM",
       "name": "SUMA",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sum-function",
+      "what": "Dodaje wartości liczbowe lub cały wskazany zakres komórek.",
+      "example": "=SUMA(B2:B10)"
     },
     {
       "code": "SUMIF",
       "name": "SUMA.JEŻELI",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumif-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumif-function",
+      "what": "Dodaje wartości z rekordów spełniających jedno kryterium.",
+      "example": "=SUMA.JEŻELI(A2:A10;\"Farba\";B2:B10)"
     },
     {
       "code": "SUMIFS",
       "name": "SUMA.WARUNKÓW",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumifs-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumifs-function",
+      "what": "Dodaje wartości po sprawdzeniu kilku jednoczesnych kryteriów.",
+      "example": "=SUMA.WARUNKÓW(D2:D100;B2:B100;\"Oslo\";C2:C100;\"Listopad\")"
     },
     {
       "code": "SUMPRODUCT",
       "name": "SUMA.ILOCZYNÓW",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumproduct-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumproduct-function",
+      "what": "Podaje sumę iloczynów odpowiednich elementów tablicy."
     },
     {
       "code": "SUMSQ",
       "name": "SUMA.KWADRATÓW",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumsq-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumsq-function",
+      "what": "Podaje sumę kwadratów argumentów."
     },
     {
       "code": "SUMX2MY2",
       "name": "SUMA.X2.M.Y2",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumx2my2-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumx2my2-function",
+      "what": "Podaje sumę różnic kwadratów odpowiednich wartości w dwóch tablicach."
     },
     {
       "code": "SUMX2PY2",
       "name": "SUMA.X2.P.Y2",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumx2py2-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumx2py2-function",
+      "what": "Podaje sumę sum kwadratów odpowiednich wartości w dwóch tablicach."
     },
     {
       "code": "SUMXMY2",
       "name": "SUMA.XMY.2",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumxmy2-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/sumxmy2-function",
+      "what": "Podaje sumę kwadratów różnic odpowiednich wartości w dwóch tablicach."
     },
     {
       "code": "SWITCH",
       "name": "PRZEŁĄCZ",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/switch-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/switch-function",
+      "what": "Wylicza wyrażenie, korzystając z listy wartości, i zwraca wynik odpowiadający pierwszej zgodnej wartości. W przypadku braku dopasowania może zostać zwrócona opcjonalna wartość domyślna."
     },
     {
       "code": "SYD",
       "name": "SYD",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/syd-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/syd-function",
+      "what": "Podaje amortyzację środka trwałego za dany okres metodą sumy cyfr lat amortyzacji."
     },
     {
       "code": "T",
       "name": "T",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-function",
+      "what": "Przekształca argumenty na tekst."
     },
     {
       "code": "TAN",
       "name": "TAN",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tan-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tan-function",
+      "what": "Podaje tangens liczby."
     },
     {
       "code": "TANH",
       "name": "TANH",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tanh-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tanh-function",
+      "what": "Podaje tangens hiperboliczny liczby."
     },
     {
       "code": "TAKE",
       "name": "WYCINEK",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/take-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/take-function",
+      "what": "Podaje określoną liczbę ciągłych wierszy lub kolumn od początku lub końca tablicy"
     },
     {
       "code": "TBILLEQ",
       "name": "RENT.EKW.BS",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbilleq-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbilleq-function",
+      "what": "Podaje rentowność ekwiwalentu obligacji dla bonu skarbowego."
     },
     {
       "code": "TBILLPRICE",
       "name": "CENA.BS",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbillprice-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbillprice-function",
+      "what": "Podaje cenę za 100 zł wartości nominalnej bonu skarbowego."
     },
     {
       "code": "TBILLYIELD",
       "name": "RENT.BS",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbillyield-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tbillyield-function",
+      "what": "Podaje rentowność bonu skarbowego."
     },
     {
       "code": "T.DIST",
       "name": "ROZKŁ.T",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-function",
+      "what": "Podaje punkty procentowe (prawdopodobieństwo) dla rozkładu t-Studenta."
     },
     {
       "code": "T.DIST.2T",
       "name": "ROZKŁ.T.2T",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-2t-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-2t-function",
+      "what": "Podaje punkty procentowe (prawdopodobieństwo) dla rozkładu t-Studenta."
     },
     {
       "code": "T.DIST.RT",
       "name": "T.DIST.RT",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-rt-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-dist-rt-function",
+      "what": "Podaje rozkład t-Studenta."
     },
     {
       "code": "TDIST",
       "name": "ROZKŁAD.T",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tdist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tdist-function",
+      "what": "Podaje rozkład t-Studenta."
     },
     {
       "code": "TEXT",
       "name": "TEKST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/text-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/text-function",
+      "what": "Formatuje liczbę i konwertuje ją na tekst.",
+      "example": "=TEKST(A2;\"0,00\")"
     },
     {
       "code": "TEXTAFTER",
       "name": "TEKST.PO",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/textafter-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textafter-function",
+      "what": "Podaje tekst występujący po danym znaku lub ciągu"
     },
     {
       "code": "TEXTBEFORE",
       "name": "TEKST.PRZED",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/textbefore-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textbefore-function",
+      "what": "Podaje tekst występujący przed danym znakiem lub ciągiem."
     },
     {
       "code": "TEXTJOIN",
       "name": "POŁĄCZ.TEKSTY",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/textjoin-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textjoin-function",
+      "what": "Scala tekst z wielu zakresów i/lub ciągów",
+      "example": "=POŁĄCZ.TEKSTY(\" \";PRAWDA;A2:C2)"
     },
     {
       "code": "TEXTSPLIT",
       "name": "PODZIEL.TEKST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/textsplit-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/textsplit-function",
+      "what": "Dzieli ciągi tekstowe za pomocą ograniczników kolumn i wierszy"
     },
     {
       "code": "TIME",
       "name": "TIME",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/time-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/time-function",
+      "what": "Podaje liczbę kolejną określonego czasu."
     },
     {
       "code": "TIMEVALUE",
       "name": "CZAS.WARTOŚĆ",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/timevalue-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/timevalue-function",
+      "what": "Przekształca czas w formie tekstu na liczbę kolejną."
     },
     {
       "code": "T.INV",
       "name": "ROZKŁ.T.ODWR",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-inv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-inv-function",
+      "what": "Podaje wartość t rozkładu t-Studenta jako funkcję prawdopodobieństwa i liczby stopni swobody."
     },
     {
       "code": "T.INV.2T",
       "name": "ROZKŁ.T.ODWR.DS",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-inv-2t-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-inv-2t-function",
+      "what": "Podaje odwrotność rozkładu t-Studenta."
     },
     {
       "code": "TINV",
       "name": "ROZKŁAD.T.ODW",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tinv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tinv-function",
+      "what": "Podaje odwrotność rozkładu t-Studenta."
     },
     {
       "code": "TOCOL",
       "name": "DO.KOLUMNY",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/tocol-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/tocol-function",
+      "what": "Podaje tablicę w jednej kolumnie."
     },
     {
       "code": "TOROW",
       "name": "DO.WIERSZA",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/torow-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/torow-function",
+      "what": "Podaje tablicę w jednym wierszu"
     },
     {
       "code": "TODAY",
       "name": "DZIŚ",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/today-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/today-function",
+      "what": "Podaje liczbę kolejną dla daty bieżącej.",
+      "example": "=DZIŚ()"
     },
     {
       "code": "TRANSLATE",
       "name": "PRZETŁUMACZ",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/translate-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/translate-function",
+      "what": "Tłumaczenie tekstu z jednego języka na inny"
     },
     {
       "code": "TRANSPOSE",
       "name": "TRANSPONUJ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/transpose-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/transpose-function",
+      "what": "Podaje transponowaną tablicę."
     },
     {
       "code": "TREND",
       "name": "REGLINW",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/trend-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trend-function",
+      "what": "Podaje wartości trendu liniowego."
     },
     {
       "code": "TRIM",
       "name": "USUŃ.ZBĘDNE.ODSTĘPY",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/trim-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trim-function",
+      "what": "Eliminuje spacje z tekstu."
     },
     {
       "code": "TRIMMEAN",
       "name": "ŚREDNIA.WEWN",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/trimmean-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trimmean-function",
+      "what": "Podaje średnią wartość dla wnętrza zbioru danych."
     },
     {
       "code": "TRIMRANGE",
       "name": "PRZYTNIJZAKRES",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/trimrange-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trimrange-function",
+      "what": "Skanuje od krawędzi zakresu lub tablicy do momentu znalezienia niepustej komórki (lub wartości), a następnie wyklucza te puste wiersze lub kolumny"
     },
     {
       "code": "TRUE",
       "name": "PRAWDA",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/true-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/true-function",
+      "what": "Podaje wartość logiczną PRAWDA."
     },
     {
       "code": "TRUNC",
       "name": "LICZBA.CAŁK",
       "category": "Funkcje matematyczne i trygonometryczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/trunc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/trunc-function",
+      "what": "Przycina liczbę do wartości całkowitej."
     },
     {
       "code": "T.TEST",
       "name": "T.TEST",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-test-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/t-test-function",
+      "what": "Podaje prawdopodobieństwo związane z testem t-Studenta."
     },
     {
       "code": "TTEST",
       "name": "TEST.T",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ttest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ttest-function",
+      "what": "Podaje prawdopodobieństwo związane z testem t-Studenta."
     },
     {
       "code": "TYPE",
       "name": "TYPE (TYP)",
       "category": "Funkcje informacyjne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/type-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/type-function",
+      "what": "Podaje liczbę wskazującą typ danych wartości."
     },
     {
       "code": "UNICHAR",
       "name": "ZNAK.UNICODE",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/unichar-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/unichar-function",
+      "what": "Podaje znak Unicode, do którego odwołuje się określona wartość liczbowa."
     },
     {
       "code": "UNICODE",
       "name": "Znaki UNICODE",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/unicode-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/unicode-function",
+      "what": "Podaje liczbę (punkt kodowy) odpowiadającą pierwszemu znakowi tekstu."
     },
     {
       "code": "UNIQUE",
       "name": "UNIKATOWE",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/unique-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/unique-function",
+      "what": "Podaje listę unikatowych wartości na liście lub w zakresie"
     },
     {
       "code": "UPPER",
       "name": "UPPER",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/upper-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/upper-function",
+      "what": "Przekształca litery w tekście na wielkie."
     },
     {
       "code": "VALUE",
       "name": "WARTOŚĆ",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/value-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/value-function",
+      "what": "Przekształca argument tekstowy na liczbę."
     },
     {
       "code": "VALUETOTEXT",
       "name": "WARTOŚĆ.NA.TEKST",
       "category": "Funkcje tekstowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/valuetotext-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/valuetotext-function",
+      "what": "Podaje tekst z dowolnej określonej wartości."
     },
     {
       "code": "VAR",
       "name": "WARIANCJA",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-function",
+      "what": "Szacunkowo wyznacza wariancję na podstawie próbki."
     },
     {
       "code": "VAR.P",
       "name": "VAR. P",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-p-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-p-function",
+      "what": "Wylicza wariancję na podstawie całej populacji."
     },
     {
       "code": "VAR.S",
       "name": "WARIANCJA.PRÓBKI",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-s-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/var-s-function",
+      "what": "Szacunkowo wyznacza wariancję na podstawie próbki."
     },
     {
       "code": "VARA",
       "name": "WARIANCJA.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/vara-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vara-function",
+      "what": "Szacunkowo wyznacza wariancję na podstawie próbki, z uwzględnieniem liczb, tekstów i wartości logicznych."
     },
     {
       "code": "VARP",
       "name": "WARIANCJA.POPUL",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/varp-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/varp-function",
+      "what": "Wylicza wariancję na podstawie całej populacji."
     },
     {
       "code": "VARPA",
       "name": "WARIANCJA.POPUL.A",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/varpa-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/varpa-function",
+      "what": "Wylicza wariancję na podstawie całej populacji, z uwzględnieniem liczb, tekstów i wartości logicznych."
     },
     {
       "code": "VDB",
       "name": "VDB",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/vdb-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vdb-function",
+      "what": "Wylicza amortyzację środka trwałego w danym okresie lub jego części metodą degresywną."
     },
     {
       "code": "VLOOKUP",
       "name": "WYSZUKAJ.PIONOWO",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/vlookup-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vlookup-function",
+      "what": "Szuka klucza w pierwszej kolumnie tabeli i odczytuje wartość z wybranej kolumny tego wiersza.",
+      "example": "=WYSZUKAJ.PIONOWO(\"P-003\";A2:D20;3;FAŁSZ)"
     },
     {
       "code": "VSTACK",
       "name": "STOS.PION",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/vstack-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/vstack-function",
+      "what": "Dołącza tablice w pionie i w sekwencji, aby zwrócić większą tablicę"
     },
     {
       "code": "WEBSERVICE",
       "name": "WEBSERVICE",
       "category": "Funkcje sieci Web",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/webservice-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/webservice-function",
+      "what": "Podaje dane z usługi sieci Web. Ta funkcja jest niedostępna w aplikacji Excel dla sieci Web."
     },
     {
       "code": "WEEKDAY",
       "name": "DZIEŃ.TYG",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/weekday-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weekday-function",
+      "what": "Przekształca liczbę kolejną na dzień tygodnia.",
+      "example": "=DZIEŃ.TYG(A2;2)"
     },
     {
       "code": "WEEKNUM",
       "name": "NUM.TYG",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/weeknum-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weeknum-function",
+      "what": "Przekształca liczbę kolejną na liczbę reprezentującą numer tygodnia w roku."
     },
     {
       "code": "WEIBULL",
       "name": "ROZKŁAD.WEIBULL",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/weibull-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weibull-function",
+      "what": "Oblicza prawdopodobieństwo według rozkładu Weibulla."
     },
     {
       "code": "WEIBULL.DIST",
       "name": "WEIBULL. ROZKŁ.",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/weibull-dist-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/weibull-dist-function",
+      "what": "Podaje rozkład Weibulla."
     },
     {
       "code": "WORKDAY",
       "name": "DZIEŃ.ROBOCZY",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/workday-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/workday-function",
+      "what": "Podaje liczbę kolejną dla daty przed określoną liczbą dni roboczych lub po niej."
     },
     {
       "code": "WORKDAY.INTL",
       "name": "DZIEŃ ROBOCZY. INTL",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/workday-intl-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/workday-intl-function",
+      "what": "Podaje liczbę kolejną daty przypadającej przed określoną liczbą dni roboczych lub po tej liczbie zgodnie z parametrami wskazującymi, ile dni stanowią dni weekendowe."
     },
     {
       "code": "WRAPCOLS",
       "name": "ZAWIŃ.KOLUMNY",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/wrapcols-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/wrapcols-function",
+      "what": "Zawija podany wiersz lub kolumnę wartości według kolumn po określonej liczbie elementów"
     },
     {
       "code": "WRAPROWS",
       "name": "ZAWIŃ.WIERSZE",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/wraprows-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/wraprows-function",
+      "what": "Zawija podany wiersz lub kolumnę wartości według wierszy po określonej liczbie elementów"
     },
     {
       "code": "XIRR",
       "name": "XIRR",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/xirr-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xirr-function",
+      "what": "Podaje wartość wewnętrznej stopy zwrotu dla serii rozłożonych w czasie przepływów gotówkowych, niekoniecznie okresowych.",
+      "example": "=XIRR(B2:B20;A2:A20)"
     },
     {
       "code": "XLOOKUP",
       "name": "X.WYSZUKAJ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xlookup-function",
+      "what": "Wyszukuje wartość w jednym zakresie i zwraca powiązaną wartość z innego zakresu, także dla dopasowania dokładnego.",
+      "example": "=X.WYSZUKAJ(\"P-003\";A2:A20;D2:D20;\"Brak\";0)"
     },
     {
       "code": "XMATCH",
       "name": "X.DOPASUJ",
       "category": "Funkcje wyszukiwania i odwołań",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/xmatch-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xmatch-function",
+      "what": "Podaje względną pozycję elementu w tablicy lub zakresie komórek."
     },
     {
       "code": "XNPV",
       "name": "XNPV",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/xnpv-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xnpv-function",
+      "what": "Podaje wartość bieżącą netto dla serii rozłożonych w czasie przepływów gotówkowych, niekoniecznie okresowych."
     },
     {
       "code": "XOR",
       "name": "XOR",
       "category": "Funkcje logiczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/xor-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/xor-function",
+      "what": "Podaje wartość logiczną alternatywy wykluczającej (XOR) dla wszystkich argumentów."
     },
     {
       "code": "YEAR",
       "name": "ROK",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/year-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/year-function",
+      "what": "Przekształca liczbę kolejną na rok.",
+      "example": "=ROK(A2)"
     },
     {
       "code": "YEARFRAC",
       "name": "CZĘŚĆ.ROKU",
       "category": "Funkcje daty i godziny",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/yearfrac-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yearfrac-function",
+      "what": "Podaje część roku reprezentującą liczbę pełnych dni między datą początkową a datą końcową."
     },
     {
       "code": "YIELD",
       "name": "PLON",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/yield-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yield-function",
+      "what": "Podaje rentowność papieru wartościowego z oprocentowaniem okresowym."
     },
     {
       "code": "YIELDDISC",
       "name": "RENT.DYSK",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/yielddisc-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yielddisc-function",
+      "what": "Podaje roczną rentowność zdyskontowanego papieru wartościowego, na przykład bonu skarbowego."
     },
     {
       "code": "YIELDMAT",
       "name": "RENT.WYKUP",
       "category": "Funkcje finansowe",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/yieldmat-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/yieldmat-function",
+      "what": "Podaje roczną rentowność papieru wartościowego oprocentowanego przy wykupie."
     },
     {
       "code": "Z.TEST",
       "name": "Z.TEST",
       "category": "Funkcje statystyczne",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/z-test-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/z-test-function",
+      "what": "Podaje wartość jednostronnego prawdopodobieństwa testu z."
     },
     {
       "code": "ZTEST",
       "name": "TEST.Z",
       "category": "Funkcje zgodności",
-      "url": "https://support.microsoft.com/pl-pl/excel/functions/ztest-function"
+      "url": "https://support.microsoft.com/pl-pl/excel/functions/ztest-function",
+      "what": "Podaje wartość jednostronnego prawdopodobieństwa testu z."
     }
   ]
 }
