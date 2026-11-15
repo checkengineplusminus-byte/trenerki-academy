@@ -1474,7 +1474,10 @@ function fictionalFullCompanyMonth(){
   number:'TEST/MACHINE/SALE',date:'2026-01-31',due:'2026-02-14',party:'Fikcyjny klient',
   seller:'Fikcyjna firma',lines:[{label:'Sprzedaż TEST/MACHINE/A',qty_milli:1000,
    unit_cents:800000,tax_code:'23'}]});
- s.invoices=[sale,purchase,equipment,sold];
+ s.invoices=[sale,purchase,equipment,sold].map(i=>({...i,identity_version:1,
+  own_identity:{...s.company.identity},
+  counterparty_identity:{legal_name:'Fikcyjny kontrahent',nip:'9000000022',regon:'',
+   krs:'',address:'ul. Fikcyjna 2, 00-002 Testowo',country:'PL'}}));
  const imported=parseBankCSV(BANK_TEMPLATE).rows.map((row,index)=>({...row,
   date:index===0?'2026-01-05':'2026-01-06'}));
  s.bank=[...imported,
@@ -1595,6 +1598,26 @@ test('Scenariusz bez zapisanych odpowiedzi nie zastępuje pracy z 36 dowodami',(
  const result=taxCloseTrainingAudit(withoutAttempts,manifest);
  assert.equal(result.checks.find(c=>c.key==='scenario_same_period').passed,false);
  assert.equal(result.ready_for_training_review,false);
+});
+test('Powiązanie firmy z dokumentami: obcy NIP we własnej migawce blokuje przegląd',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),copy=structuredClone(state);
+ copy.invoices[0].own_identity.nip='9000000022';
+ const review=taxCloseTrainingAudit(copy,manifest);
+ assert.equal(review.checks.find(c=>c.key==='company_opening').passed,true);
+ assert.equal(review.checks.find(c=>c.key==='company_invoice_identity').passed,false);
+ assert.ok(review.issues.some(x=>x.code==='invoice_own_identity_mismatch'));
+ assert.equal(review.ready_for_training_review,false);
+ assert.equal(review.completed,false);
+});
+test('Powiązanie firmy z dokumentami: starsza faktura bez migawki pozostaje niezweryfikowana',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),copy=structuredClone(state);
+ delete copy.invoices[0].identity_version;
+ delete copy.invoices[0].own_identity;
+ const review=taxCloseTrainingAudit(copy,manifest);
+ assert.equal(review.checks.find(c=>c.key==='company_invoice_identity').passed,false);
+ assert.match(review.checks.find(c=>c.key==='company_invoice_identity').detail,/bez zapisanej tożsamości: 1/);
+ assert.equal(review.ready_for_training_review,false);
+ assert.equal(review.completed,false);
 });
 test('Pełen fikcyjny cykl dopuszcza wyłącznie recenzję, nie zamknięcie urzędowe',()=>{
  const {manifest,state}=fictionalFullCompanyMonth(),before=JSON.stringify(state);

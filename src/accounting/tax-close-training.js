@@ -7,6 +7,7 @@
 import {invoiceTotals,expectedInvoiceLines,livePostings,validDate} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
 import {acquisitionLines} from './assets-core.js';
+import {normalizeIdentity} from './identity-core.js';
 
 const monthOf=date=>typeof date==='string'&&/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(date)?date.slice(0,7):null;
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
@@ -167,6 +168,21 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const vatLedgerIssues=[];
  if(!vatLedgerMatches&&!!period&&issued.length>0)
   vatLedgerIssues.push({code:'model_vat_ledger_does_not_match_invoices',invoice:period});
+ // Wystawione faktury muszą należeć do TEJ SAMEJ fikcyjnej firmy.
+ // Legacy bez zapisanej tożsamości jest nieweryfikowalne, nie zaliczone.
+ const companyInvoiceIssues=[];
+ const withIdentity=issued.filter(i=>i.identity_version===1);
+ const legacyInvoiceCount=issued.length-withIdentity.length;
+ let companySnapshot=null;
+ try{companySnapshot=JSON.stringify(normalizeIdentity(state.company?.identity));}catch{}
+ for(const i of withIdentity){
+   let ownSnapshot=null;
+   try{ownSnapshot=JSON.stringify(normalizeIdentity(i.own_identity));}catch{}
+   if(!companySnapshot||!ownSnapshot||ownSnapshot!==companySnapshot)
+     companyInvoiceIssues.push({code:'invoice_own_identity_mismatch',invoice:i.number||i.id||'(brak ID)'});
+ }
+ const companyInvoicesConsistent=issued.length>0&&legacyInvoiceCount===0&&
+   companyInvoiceIssues.length===0&&!!companySnapshot;
  const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -194,6 +210,12 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   {key:'company_opening',label:'Karta firmy i dane otwarcia w tym samym biurze',
    passed:steps.company==='passed_training',
    detail:'Wymagana zapisana karta fikcyjnej firmy; ćwiczenie nie jest rejestracją urzędową'},
+  {key:'company_invoice_identity',label:'Własna jednostka na wszystkich fakturach miesiąca',
+   passed:steps.company==='passed_training'&&companyInvoicesConsistent,
+   detail:'Migawki danych własnej firmy: '+withIdentity.length+'/'+issued.length+
+    '; dokumenty bez zapisanej tożsamości: '+legacyInvoiceCount+
+    '; rozbieżności: '+companyInvoiceIssues.length+
+    '. Tylko zgodność danych ćwiczenia, nie weryfikacja w rejestrze'},
   {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
    passed:!!period&&steps.month==='passed_training'&&
     (scenario?.scenario??scenario)?.documents?.length===36&&
@@ -208,7 +230,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
    review:'not_tested'},
   figures:{...totals,vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues],source_inventory,review_notes,training_result:trainingResult,
+  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:checks.every(c=>c.passed),
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
