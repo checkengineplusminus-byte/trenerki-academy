@@ -504,7 +504,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
      <View style={{flexDirection:'row',alignItems:'center',gap:3}}>
       {extraRibbonButton('Tekst · MTEXT','text',()=>setTab('annotate'))}
       {ribbonButton('dimlinear')}
-      {extraRibbonButton('Zaznacz wszystko · Ctrl+A','select',selectAll,!visible.length)}
+      {extraRibbonButton('Wybierz wszystkie · Ctrl+A','select',selectAll,!visible.length)}
      </View>
      <Text style={ribbonCaption}>Annotation / Właściwości</Text>
     </View>
