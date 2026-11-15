@@ -87,7 +87,7 @@ const initial=()=>({id:'00000000-0000-4000-a000-000000000012',user_id:user.id,
  state:{schema_version:1,invoices:[],bank:[],journals:[],matches:[]}});
 const browser=await chromium.launch({headless:true});let checks=0;
 async function pass(name,work){await work();checks++;console.log('OK '+checks+' — '+name);}
-async function fixture(viewport,manifestOverride=manifest){
+async function fixture(viewport,manifestOverride=manifest,initialState={}){
  const context=await browser.newContext({viewport,acceptDownloads:true,serviceWorkers:'block'});
  await context.addInitScript(({user})=>{
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({
@@ -96,7 +96,7 @@ async function fixture(viewport,manifestOverride=manifest){
    expires_in:3600,token_type:'bearer',user}));
  },{user});
  const page=await context.newPage();
- let workspace=initial(),saves=0;const errors=[];
+ let workspace=initial(),saves=0;workspace.state={...workspace.state,...structuredClone(initialState)};const errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  await page.route(url=>url.origin!==origin&&url.origin!==api,route=>route.fulfill({status:200,body:''}));
  await page.route(url=>url.origin===origin&&url.pathname==='/biuro-ksiegowe',
@@ -130,15 +130,59 @@ async function fixture(viewport,manifestOverride=manifest){
   bump:()=>{workspace={...workspace,version:workspace.version+1};}};
 }
 async function saved(f,prior){
- await f.page.waitForFunction(v=>{
+ try{await f.page.waitForFunction(v=>{
   const t=document.querySelector('[role="status"]')?.textContent||'';
   return t.includes('wersja '+v);
- },prior+1,{timeout:15000});
+ },prior+1,{timeout:15000});}
+ catch(ex){const detail=await f.page.locator('[role="alert"]').allTextContents();
+  throw new Error('Mock save timed out at version '+prior+'; UI errors: '+detail.join(' | '));}
  assert.equal(f.model().version,prior+1);
 }
 const tab=page=>page.locator('button[data-action="tab"][data-id="simulator"]');
 const choose=(page,selector,value)=>page.locator(selector).selectOption(value);
 try{
+
+ // End-to-end interaction in LOCAL Chromium only (synthetic API and identity).
+ const company={schema_version:1,status:'ready',entity_type:'jdg',record_system:'books',
+  vat_status:'active',identity:{legal_name:'Fikcyjna Firma do Testów',
+  nip:'9000000016',regon:'',krs:'',address:'ul. Przykładowa 1, 00-001 Testowo',country:'PL'}};
+ const verified=await fixture({width:1280,height:900},manifest,{company});
+ await verified.page.goto(origin+'/biuro-ksiegowe');
+ await verified.page.locator('button[data-action="tab"][data-id="invoices"]').waitFor();
+ await verified.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+ await pass('Chromium: firma + adres/NIP nabywcy => wystawiona faktura z migawką obu stron',async()=>{
+  await verified.page.locator('#invoice-party').fill('Fikcyjny kontrahent');
+  await verified.page.locator('#invoice-party_address').fill('ul. Przykładowa 2, 00-002 Testowo');
+  await verified.page.locator('#invoice-party_nip').fill('9000000022');
+  const previous=verified.model().version;
+  await verified.page.locator('form[data-form="invoice"] button[value="issued"]').click();
+  await saved(verified,previous);
+  const issued=verified.model().state.invoices[0];
+  assert.equal(issued.identity_version,1);
+  assert.equal(issued.own_identity.nip,'9000000016');
+  assert.equal(issued.counterparty_identity.nip,'9000000022');
+  assert.equal(issued.gross_cents,123000);
+  await verified.page.reload();
+  assert.equal(verified.model().state.invoices[0].identity_version,1);
+  assert.deepEqual(verified.errors,[]);
+ });
+ await verified.context.close();
+ const mobileInvoice=await fixture({width:390,height:844},manifest,{company});
+ await mobileInvoice.page.goto(origin+'/biuro-ksiegowe');
+ await mobileInvoice.page.locator('button[data-action="tab"][data-id="invoices"]').waitFor();
+ await mobileInvoice.page.locator('button[data-action="tab"][data-id="invoices"]').click();
+ await pass('Chromium mobile: brak adresu dostawcy blokuje zapis zamiast wymyślać dane',async()=>{
+  await mobileInvoice.page.locator('button[data-action="new-purchase"]').click();
+  await mobileInvoice.page.locator('#invoice-party').fill('Fikcyjny dostawca');
+  await mobileInvoice.page.locator('#invoice-party_nip').fill('9000000022');
+  const previous=mobileInvoice.model().version;
+  await mobileInvoice.page.locator('form[data-form="invoice"] button[value="issued"]').click();
+  await mobileInvoice.page.locator('[role="alert"]').getByText('Uzupełnij adres strony.',{exact:false}).waitFor();
+  assert.equal(mobileInvoice.model().version,previous);
+  assert.equal(mobileInvoice.saves(),0);
+  assert.deepEqual(mobileInvoice.errors,[]);
+ });
+ await mobileInvoice.context.close();
  const corrupt=structuredClone(manifest);
  // A deliberately malicious-looking yet balanced internal bank posting
  // retains exactly the same net bank amount and overall trial balance.
