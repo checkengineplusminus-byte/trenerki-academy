@@ -1549,3 +1549,40 @@ test('PRZEKRÓJ: storno sprzedaży środka trwałego zatrzymuje cykl bez zmiany 
  assert.equal(tax.ready_for_training_review,false);
  assert.equal(JSON.stringify(wrong),before);
 });
+
+test('Zamknięcie miesiąca wymaga zapisanej karty firmy, nie tylko udanych księgowań',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),withoutCompany=structuredClone(state);
+ delete withoutCompany.company;
+ const result=taxCloseTrainingAudit(withoutCompany,manifest);
+ assert.equal(result.checks.find(c=>c.key==='company_opening').passed,false);
+ assert.equal(result.ready_for_training_review,false);
+ assert.equal(result.completed,false);
+});
+test('Jeden miesiąc: fikcyjny styczeń D01–D36 nie zalicza innego okresu biura',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth();
+ const mismatch={...manifest,month:'2026-11'};
+ const result=taxCloseTrainingAudit(state,mismatch);
+ assert.equal(result.period,'2026-01');
+ assert.equal(result.checks.find(c=>c.key==='scenario_same_period').passed,false);
+ assert.equal(result.ready_for_training_review,false);
+ assert.equal(result.draft_documents.upo.status,'NOT_ISSUED');
+});
+test('Scenariusz bez zapisanych odpowiedzi nie zastępuje pracy z 36 dowodami',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),withoutAttempts=structuredClone(state);
+ for(const key of Object.keys(withoutAttempts))if(key.startsWith('simulator_'))delete withoutAttempts[key];
+ const result=taxCloseTrainingAudit(withoutAttempts,manifest);
+ assert.equal(result.checks.find(c=>c.key==='scenario_same_period').passed,false);
+ assert.equal(result.ready_for_training_review,false);
+});
+test('Pełen fikcyjny cykl dopuszcza wyłącznie recenzję, nie zamknięcie urzędowe',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),before=JSON.stringify(state);
+ const r=taxCloseTrainingAudit(state,manifest);
+ assert.equal(r.checks.find(c=>c.key==='company_opening').passed,true);
+ assert.equal(r.checks.find(c=>c.key==='scenario_same_period').passed,true);
+ assert.equal(r.ready_for_training_review,true);
+ assert.equal(r.completed,false);
+ assert.equal(r.draft_documents.ksef.status,'NOT_SENT_TRAINING_REFERENCE_ONLY');
+ assert.equal(r.draft_documents.jpk.status,'NOT_GENERATED_NOT_SCHEMA_VALIDATED');
+ assert.equal(r.draft_documents.upo.status,'NOT_ISSUED');
+ assert.equal(JSON.stringify(state),before);
+});

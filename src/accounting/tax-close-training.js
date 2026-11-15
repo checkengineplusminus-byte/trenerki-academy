@@ -131,7 +131,15 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   {key:'bank_sources',label:'Każdy wiersz CSV ma jeden zgodny dekret źródłowy',passed:bankCovered,
    detail:bank.length+' wierszy okresu; '+bankCoverageIssues.length+' rozbieżności (w tym daty, ID, kwoty i nieopisane księgowania 130)'},
   {key:'receivables',label:'Rozrachunki z płatnościami',passed:steps.bank==='passed_training',detail:'Wymagane prawidłowe konta i przypisanie obu faktur'},
-  {key:'payroll_assets',label:'Kadry, płace i majątek w tym samym okresie',passed:steps.payroll==='passed_training'&&steps.asset==='passed_training',detail:'Wszystkie moduły muszą mieć własne zapisy; sam bilans nie wystarcza'}
+  {key:'payroll_assets',label:'Kadry, płace i majątek w tym samym okresie',passed:steps.payroll==='passed_training'&&steps.asset==='passed_training',detail:'Wszystkie moduły muszą mieć własne zapisy; sam bilans nie wystarcza'},
+  // Odbiór rozliczenia jednego biura nie może bazować na odrębnym ćwiczeniu
+  // D01–D36 z innego miesiąca ani pominąć dokumentu otwarcia firmy.
+  {key:'company_opening',label:'Karta firmy i dane otwarcia w tym samym biurze',
+   passed:steps.company==='passed_training',
+   detail:'Wymagana zapisana karta fikcyjnej firmy; ćwiczenie nie jest rejestracją urzędową'},
+  {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
+   passed:!!period&&!!scenario&&scenario.month===period&&steps.month==='passed_training',
+   detail:'D01–D36 i faktury, bank, kadry oraz majątek muszą dotyczyć tego samego miesiąca ('+(period||'nieustalonego')+'). Osobny styczeń nie zamyka listopada'}
  ];
  const vatDifferenceCents=totals.sale_vat_cents-totals.purchase_vat_cents;
  return {
