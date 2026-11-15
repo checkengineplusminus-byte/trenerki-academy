@@ -88,7 +88,7 @@ async function runPersona(browser,p,round){
   const learningFooter=page.getByTestId('learning-support-bar');
   await learningFooter.waitFor();
   const footerBounds=await learningFooter.boundingBox();
-  assert(footerBounds&&footerBounds.height<=64,'Critic: persistent lesson footer consumes excessive vertical space');
+  assert(footerBounds&&footerBounds.height<=64,'Critic: persistent lesson footer consumes excessive vertical space: '+JSON.stringify(footerBounds));
   assert.equal(await learningFooter.getByRole('link',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).getAttribute('href'),'/pomoc','Engineer: support must remain accessible in lessons');
   // Remove the unrelated site-wide consent dialog before visual course inspection.
   const rejectCookies=page.getByRole('button',{name:'Odrzuć',exact:true}).first();
