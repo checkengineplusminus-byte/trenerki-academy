@@ -1,6 +1,7 @@
 import {createClient} from 'npm:@supabase/supabase-js@2.86.0';
 import {examAttemptWindow,maxExamQuestions,nextChoice,questionKey,type Choice} from './selection.ts';
 import {examReadiness} from './readiness.mjs';
+import {selectCourseExamBank,examPhaseChoices} from './course-bank.mjs';
 
 const origins=new Set(['https://trenerki.com','https://www.trenerki.com','https://trenerki-academy.expo.app','https://trenerki.academy','https://www.trenerki.academy']);
 const trim=(v:unknown,n=200)=>typeof v==='string'?v.trim().slice(0,n):'';
@@ -100,7 +101,7 @@ Deno.serve(async(req:Request)=>{
  // Never discard the other 30–63 course lessons just because eight authored
  // exam questions exist. Combine both banks, removing duplicate question stems.
  const seenPrompts=new Set<string>();
- const bank=[...privateBank,...legacyBank].filter(q=>{
+ const bank=selectCourseExamBank(slug,privateBank,legacyBank).filter(q=>{
   const normalized=questionKey(q.question);
   if(!normalized||seenPrompts.has(normalized))return false;
   seenPrompts.add(normalized);return true;
@@ -127,7 +128,7 @@ Deno.serve(async(req:Request)=>{
  if(session&&session.grading_mode!=='choice'&&ready&&available){
   const {data:previous,error:historyError}=await previousAttempts(session.id);
   if(historyError)return json({error:'db_unavailable'},503);
-  const first=nextChoice(bank,session.history||[],session.phase,previous||[]);
+  const first=nextChoice(examPhaseChoices(slug,bank,session.history||[],session.phase),session.history||[],session.phase,previous||[]);
   if(!first)return json({error:'question_bank_incomplete'},422);
   const {data:changed,error:e}=await db.from('ta_exam_sessions').update({
    grading_mode:'choice',question:first.question,question_lesson_no:first.lesson_no,
@@ -152,7 +153,7 @@ Deno.serve(async(req:Request)=>{
   if((failedAttempts||0)>=3)return json({error:'exam_daily_limit'},429);
   const {data:previous,error:historyError}=await previousAttempts();
   if(historyError)return json({error:'db_unavailable'},503);
-  const first=nextChoice(bank,[],'practice',previous||[]);
+  const first=nextChoice(examPhaseChoices(slug,bank,[],'practice'),[],'practice',previous||[]);
   if(!first)return json({error:'question_bank_incomplete'},422);
   const isDemo=!requireReal;
   const {data:s,error:e}=await db.from('ta_exam_sessions').insert({
@@ -198,7 +199,7 @@ Deno.serve(async(req:Request)=>{
  if(status==='in_progress'){
   const {data:previous,error:historyError}=await previousAttempts(session.id);
   if(historyError)return json({error:'db_unavailable'},503);
-  next=nextChoice(bank,history,phase,previous||[]);
+  next=nextChoice(examPhaseChoices(slug,bank,history,phase),history,phase,previous||[]);
  }
  if(status==='in_progress'&&!next)return json({error:'question_bank_incomplete'},422);
  const now=new Date().toISOString();
