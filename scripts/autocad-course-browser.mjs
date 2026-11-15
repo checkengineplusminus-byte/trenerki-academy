@@ -51,7 +51,7 @@ for(const mobile of [false,true]){
   if(table==='ta-exam'){
    const body=req.postDataJSON();
    if(completed.length!==30)return json({error:'lessons_incomplete'},409);
-   if(body.action==='status')return json({state:'ready',available:true});
+   if(body.action==='status'&&examStep!==6)return json({state:'ready',available:true});
    if(body.action==='start')examStarted=true;
    if(body.action==='answer'){assert(examStarted);assert.equal(body.selected_index,0);examStep++;}
    if(examStep===6)return json({state:'passed',answer_correct:true,certificate:{id:'fixture',certificate_no:'WZOR-TESTOWY',holder_name:'Test AutoCAD',title_pl:'AutoCAD',issued_at:'2026-11-15',is_demo:true}});
@@ -112,10 +112,20 @@ for(const mobile of [false,true]){
   assert(blockedChunks>0,'The stale route module must actually fail');
   await page.unroute(diplomaChunk);
   await page.getByRole('button',{name:'Odśwież stronę',exact:true}).click();
+  await page.waitForLoadState('domcontentloaded');
+  // A failed lazy navigation can leave the browser at its previous URL. A
+  // reload must also recover that course, retaining its passed exam status.
+  if(new URL(page.url()).pathname==='/nauka'){
+   await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).click();
+  }
   await page.getByRole('button',{name:'Pobierz dyplom PDF (PL)',exact:true}).waitFor();
   assert.equal(await page.getByTestId('route-recovery').count(),0);
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: 30 lessons → mock final exam → diploma; stale deployment chunk shows recovery and reload opens diploma');
   const bounds=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,view:document.documentElement.clientWidth}));
   assert(bounds.scroll<=bounds.view+3);
+ }catch(error){
+  console.error('AutoCAD regression failed at',page.url(),await page.locator('body').innerText());
+  console.error('Browser errors:',errors);
+  throw error;
  }finally{await browser.close();}
 }
