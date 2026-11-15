@@ -26,6 +26,9 @@ on:
       - 'scripts/test-cad-restored.mjs'
       - 'scripts/test-cad-multiselect.mjs'
       - 'scripts/test-cad-mirror-rotate.mjs'
+      - 'scripts/test-cad-status-and-click.mjs'
+      - 'content/autocad-status-controls-2026.json'
+      - 'src/CadCanvas.web.tsx'
       - 'content/autocad-reference-2026.json'
       - 'src/CadGeometry.ts'
       - 'content/autocad-real-program-2026-11-15.json'
@@ -77,6 +80,7 @@ jobs:
           node --experimental-strip-types --test scripts/test-cad-restored.mjs
           node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
           node --experimental-strip-types --test scripts/test-cad-mirror-rotate.mjs
+          node --experimental-strip-types --test scripts/test-cad-status-and-click.mjs
           node --test scripts/test-course-pricing.mjs
           python3 -m http.server 8787 --directory /tmp/trenerki-browser >/tmp/trenerki-http.log 2>&1 &
           sleep 2

@@ -23,6 +23,8 @@ jobs:
           run: node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
         - name: Verify AutoCAD grouped MIRROR/ROTATE and faithful ribbon
           run: node --experimental-strip-types --test scripts/test-cad-mirror-rotate.mjs
+        - name: Verify AutoCAD status bar controls and single click selection
+          run: node --experimental-strip-types --test scripts/test-cad-status-and-click.mjs
         - name: Verify AutoCAD exam covers all 30 chapters
           run: node --test scripts/test-autocad-exam-bank.mjs
         - name: Verify real AutoCAD DXF starter drawings

@@ -1,0 +1,186 @@
+{
+  "version": "Status bar AutoCAD 2026 (desktop Windows), ćwiczenia TRENERKI 2D",
+  "notice": "Układ ikon zależy od przestrzeni roboczej, edycji i ustawień. W warsztacie tylko oznaczone 'działa' są wykonywane; podgląd nie zmienia DWG. Przyciski oznaczone 'autodesk' opisują czynności w programie producenta.",
+  "items": [
+    {
+      "id": "model",
+      "title": "MODEL / Paper Space",
+      "shortcut": "MODEL",
+      "meaning": "Model Space służy do rysowania geometrii w rzeczywistych jednostkach. Layout (papier) przygotowuje arkusz do wydruku.",
+      "practice": "Narysuj 4000 mm w Model. Przejdź do Layout 1, wróć do Model — zmierz długość, nadal 4000 mm.",
+      "result": "Przełączanie modelu i arkusza nie zmienia rysunku.",
+      "level": "działa"
+    },
+    {
+      "id": "grid",
+      "title": "GRID · F7 — siatka",
+      "shortcut": "F7",
+      "meaning": "Pokazuje lub ukrywa wizualną siatkę. Nie zaokrągla wpisywanych współrzędnych ani nie przyciąga punktów.",
+      "practice": "Włącz/wyłącz F7. Przesuń kursor i sprawdź, że znika tylko siatka tła.",
+      "result": "Geometria pozostaje w tym samym miejscu.",
+      "level": "działa"
+    },
+    {
+      "id": "snap",
+      "title": "SNAP · F9 — skok siatki",
+      "shortcut": "F9",
+      "meaning": "Ogranicza punkty wskazywane kursorem do zadanych odstępów siatki. Nie jest tym samym co OSNAP.",
+      "practice": "Włącz F9, narysuj linię klikając dwa punkty między węzłami siatki. Wyłącz i powtórz.",
+      "result": "Kursor podąża skokami po siatce, ale wpisane współrzędne są dokładne.",
+      "level": "działa"
+    },
+    {
+      "id": "ortho",
+      "title": "ORTHO · F8 — poziom/pion",
+      "shortcut": "F8",
+      "meaning": "Pomaga utrzymać rysowaną linię poziomą lub pionową względem aktualnego układu współrzędnych.",
+      "practice": "Uruchom LINE, wskaż pierwszy punkt, włącz F8 i spróbuj skośnego odcinka kursorem.",
+      "result": "Wprowadzany myszą odcinek biegnie poziomo albo pionowo.",
+      "level": "działa"
+    },
+    {
+      "id": "polar",
+      "title": "POLAR · F10 — śledzenie kątów",
+      "shortcut": "F10",
+      "meaning": "Prowadzi kursor w pobliżu określonych kierunków (np. co 45°); nie należy mylić z blokadą ORTHO.",
+      "practice": "Wyłącz ORTHO, włącz POLAR F10. Narysuj linię pod kątem około 45°, obserwuj pomocniczą podpowiedź.",
+      "result": "Gdy wskaźnik jest blisko kąta prowadzenia, pojawia się POLAR 45°.",
+      "level": "działa"
+    },
+    {
+      "id": "osnap",
+      "title": "OSNAP · F3 — punkty obiektów",
+      "shortcut": "F3",
+      "meaning": "Przyciąga do konkretnych punktów geometrii: końca, środka odcinka, środka okręgu, przecięcia, kwadrantu itd.",
+      "practice": "Narysuj dwa przecinające się odcinki, wybierz OSNAP: Przecięcie. Kliknij w pobliżu skrzyżowania.",
+      "result": "Nowa linia zaczyna się dokładnie w punkcie przecięcia.",
+      "level": "działa"
+    },
+    {
+      "id": "otrack",
+      "title": "OTRACK · F11 — śledzenie od punktu",
+      "shortcut": "F11",
+      "meaning": "Po uchwyceniu punktu OSNAP podpowiada kierunki względem tego punktu. W warsztacie ćwiczymy prowadzenie poziome i pionowe.",
+      "practice": "Włącz F3 i F11, najedź na koniec linii, a potem przesuwaj kursor poziomo od tego punktu.",
+      "result": "Zobaczysz wskazówkę OTrack — poziom lub pion.",
+      "level": "działa"
+    },
+    {
+      "id": "dyn",
+      "title": "DYN · F12 — dynamiczny wpis",
+      "shortcut": "F12",
+      "meaning": "Wyświetla współrzędne i podpowiedzi podczas ruchu kursora. Nie zmienia geometrii.",
+      "practice": "Włącz DYN, rozpocznij LINE i poruszaj kursorem; wyłącz DYN, porównaj ekran.",
+      "result": "Podpowiedź przy kursorze pojawia się lub znika.",
+      "level": "działa"
+    },
+    {
+      "id": "coord",
+      "title": "Współrzędne X,Y",
+      "shortcut": "COORDS",
+      "meaning": "Na pasku statusu pokazuje się położenie kursora w jednostkach modelu.",
+      "practice": "Przesuń kursor nad rysunkiem, odczytaj X,Y i porównaj ze współrzędnymi końca odcinka.",
+      "result": "Odczyt zmienia się z ruchem myszy.",
+      "level": "działa"
+    },
+    {
+      "id": "hold",
+      "title": "Przytrzymaj wybór — wielokrotne zaznaczanie",
+      "shortcut": "PICKADD",
+      "meaning": "W tym warsztacie pozwala dodawać kolejne obiekty zwykłym kliknięciem lub dotykiem, bez trzymania Ctrl. W oryginalnym AutoCAD zachowanie wyboru zależy od PICKADD.",
+      "practice": "Włącz Przytrzymaj zaznaczenie. Kliknij trzy różne linie po kolei, wyłącz i kliknij jedną: wybór wróci do pojedynczego.",
+      "result": "Po włączeniu trzy obiekty pozostają wybrane i można je wspólnie przesunąć.",
+      "level": "działa"
+    },
+    {
+      "id": "cycle",
+      "title": "CYCLING · Ctrl+W",
+      "shortcut": "Ctrl+W",
+      "meaning": "Pozwala rozpoznawać i wybierać obiekty zachodzące na siebie. W pełnym AutoCAD można wyświetlić listę nakładających się elementów.",
+      "practice": "Nałóż dwa odcinki jeden na drugi, włącz CYCLING i klikaj w miejscu nakładania.",
+      "result": "Kolejne trafienie może wskazywać inny obiekt w tym samym miejscu.",
+      "level": "działa"
+    },
+    {
+      "id": "lwt",
+      "title": "LWT — wyświetlanie grubości linii",
+      "shortcut": "LWDISPLAY",
+      "meaning": "Przełącza prezentację grubości kresek na ekranie; nie zmienia właściwości linii ani samej dokumentacji.",
+      "practice": "Narysuj odcinek, włącz i wyłącz LWT. Porównaj grubość na ekranie.",
+      "result": "Widoczna linia jest grubsza lub cieńsza.",
+      "level": "podgląd"
+    },
+    {
+      "id": "trans",
+      "title": "TRANSPARENCY — przezroczystość",
+      "shortcut": "TRANSPARENCYDISPLAY",
+      "meaning": "Pokazuje podgląd efektu przezroczystości obiektów w ćwiczeniu; nie zapisuje właściwości do DWG.",
+      "practice": "Narysuj prostokąt i włącz/wyłącz Transparency. Zobacz zmianę wizualną.",
+      "result": "Widoczne obiekty uzyskują inny poziom przezroczystości.",
+      "level": "podgląd"
+    },
+    {
+      "id": "annotation",
+      "title": "ANNOTATION SCALE — skala opisów",
+      "shortcut": "CANNOSCALE",
+      "meaning": "Skala anotacyjna steruje wielkością opisów w różnych skalach widoku. Nie zmienia rzeczywistego rozmiaru geometrii.",
+      "practice": "Przejdź do Layout i porównaj 5000 mm w skali 1:50 i 1:100.",
+      "result": "Wymiary modelu są stałe; na papierze zajmują 100 mm albo 50 mm.",
+      "level": "podgląd"
+    },
+    {
+      "id": "clean",
+      "title": "CLEAN SCREEN — czysty ekran",
+      "shortcut": "Ctrl+0",
+      "meaning": "Ukrywa zbędne panele, aby zwiększyć powierzchnię rysunku. W ćwiczeniu ukrywa wstążkę — pasek statusu zostaje do powrotu.",
+      "practice": "Włącz Czysty ekran, następnie kliknij ponownie, aby przywrócić narzędzia.",
+      "result": "Wstążka znika i wraca bez usuwania geometrii.",
+      "level": "działa"
+    },
+    {
+      "id": "f4",
+      "title": "3D OSNAP · F4",
+      "shortcut": "F4",
+      "meaning": "W Autodesk przyciąga do punktów 3D. Nasz warsztat prowadzi ćwiczenia 2D i nie odwzorowuje przyciągania 3D.",
+      "practice": "W prawdziwym AutoCAD przejdź do środowiska 3D, ustaw F4 i sprawdź snap na bryle.",
+      "result": "Wymaga desktopowego Autodesk AutoCAD z obsługą 3D.",
+      "level": "autodesk"
+    },
+    {
+      "id": "f5",
+      "title": "ISODRAFT · F5",
+      "shortcut": "F5",
+      "meaning": "Przełącza kierunki izometryczne do symulowania przestrzeni w rysunku 2D. Nie jest trójwymiarowym modelowaniem.",
+      "practice": "W AutoCAD wpisz ISODRAFT albo naciśnij F5, zmień płaszczyznę i narysuj izometryczny okrąg.",
+      "result": "Kąt osi izometrycznych zależy od aktywnej płaszczyzny.",
+      "level": "autodesk"
+    },
+    {
+      "id": "f6",
+      "title": "Dynamic UCS · F6",
+      "shortcut": "F6",
+      "meaning": "W pełnym AutoCAD przy pracy 3D pomaga dynamicznie wyrównywać układ UCS względem powierzchni. W ćwiczeniu 2D nie symulujemy go.",
+      "practice": "W desktopowym AutoCAD aktywuj model 3D i sprawdź orientację UCS przy najechaniu na płaszczyznę.",
+      "result": "Wymaga rzeczywistego Autodesk AutoCAD.",
+      "level": "autodesk"
+    },
+    {
+      "id": "workspace",
+      "title": "Workspace — przestrzeń robocza",
+      "shortcut": "WSCURRENT",
+      "meaning": "AutoCAD pozwala przełączać własne układy narzędzi. Nasz warsztat pokazuje wzorcowy 2D Drafting & Annotation.",
+      "practice": "W AutoCAD sprawdź Workspace Switching i porównaj położenie kart wstążki.",
+      "result": "Karty i ich układ mogą zależeć od edycji programu i wybranego workspace.",
+      "level": "autodesk"
+    },
+    {
+      "id": "custom",
+      "title": "Customization ☰ — ustawienia paska",
+      "shortcut": "STATUSBAR",
+      "meaning": "Lista ustawień paska pozwala pokazać i ukryć dodatkowe przełączniki. W warsztacie wybierasz widok podstawowy lub rozszerzony.",
+      "practice": "Otwórz ☰, wybierz wszystkie przyciski, potem podstawowe i sprawdź dostępność funkcji.",
+      "result": "Podstawowe przełączniki pozostają dostępne, a rozszerzone można pokazać ponownie.",
+      "level": "działa"
+    }
+  ]
+}
