@@ -104,6 +104,14 @@ async function runPersona(browser,p,round){
    console.log('QA checklist diagnostic:',JSON.stringify(details));
   }
   assert.equal(marked,m.steps.length,'Checklist did not reflect all completed steps');
+  if(p.id==='it'||p.id==='senior'){
+   // Check the keyboard-only path, not only mouse/touch.
+   await checks.first().focus();
+   await page.keyboard.press('Space');
+   assert.equal(await checks.first().getAttribute('aria-checked'),'false','Checkbox did not respond to Space');
+   await page.keyboard.press('Space');
+   assert.equal(await checks.first().getAttribute('aria-checked'),'true','Checkbox did not restore checked state');
+  }
   await input.fill(m.evidence+' Wykonanie potwierdzam wyłącznie jako samokontrolę.');
   await scope.getByRole('button',{name:'Porównaj moje rozwiązanie z kryterium'}).click();
   const criterion=scope.getByTestId('windows-mission-criterion');
@@ -137,7 +145,15 @@ function engineerCheck(round,checked){
 }
 function criticCheck(round,checked){
  assert.equal(checked.length,8,'Critic: missing user perspectives');
- for(const x of checked)editorialAssertions(missions[x.lesson-1]);
+ const expectedRoles={
+  student:'Student',senior:'Senior',office:'Pracownik biurowy',
+  accounting:'Księgowa',construction:'Kierownik budowy',
+  warehouse:'Magazynier',remote:'Pracownik zdalny',it:'Technik IT'
+ };
+ for(const x of checked){
+  editorialAssertions(missions[x.lesson-1]);
+  assert.equal(missions[x.lesson-1].persona,expectedRoles[x.id],'Critic: scenario does not match intended learner');
+ }
  assert.equal(new Set(checked.map(x=>missions[x.lesson-1].goal)).size,8,'Critic: scenarios are repetitive');
  assert.equal(new Set(checked.map(x=>missions[x.lesson-1].persona)).size,8,'Critic: professional contexts too similar');
  const all=missions.map(m=>m.goal);
