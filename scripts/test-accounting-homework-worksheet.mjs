@@ -38,3 +38,45 @@ test('Odpowiedzi uczniów i danych osobowych nigdy nie pobiera się do szablonu'
  assert(csv.includes('fikcyjnych danych'));
  assert(csv.includes('trenerki.com'));
 });
+
+
+test('Dodatkowe oryginalne zestawy danych w tematach 91–94 nie zastępują prac głównych', async ()=>{
+ const {bonusSpreadsheetTopic,bonusSpreadsheetRows}=await import('../src/accounting/bonus-datasets.js');
+ for(let topic=1;topic<=100;topic++){
+  const extra=bonusSpreadsheetRows(topic),csv=buildHomeworkCsv(topic,'Temat '+topic,valid);
+  assert.equal(bonusSpreadsheetTopic(topic),[91,92,93,94].includes(topic));
+  if(topic<91||topic>94){
+   assert.deepEqual(extra,[]);
+   assert(!csv.includes('OSOBNY ZESTAW (BONUS)'));
+  }else{
+   assert(extra.length>=12,'Różne pakiety muszą mieć realne rekordy: '+topic);
+   assert(csv.includes('PRAKTYKA DODATKOWA — OSOBNY ZESTAW (BONUS)'));
+   assert(csv.includes('Dane bonusowe są inne niż w poleceniu lekcji'));
+   assert(csv.includes('KROKI DO WYKONANIA'));
+   assert(csv.includes('Samokontrola'));
+   assert(!csv.includes('TAJNY KLUCZ WZORCOWY'));
+  }
+ }
+ assert(buildHomeworkCsv(91,'Import',valid).includes('000012345678901234'));
+ assert(buildHomeworkCsv(91,'Import',valid).includes('RAW_BANK'));
+ assert(buildHomeworkCsv(92,'Pivot',valid).includes('NOWY_REKORD'));
+ assert(buildHomeworkCsv(93,'Budżet',valid).includes('FIK-3'));
+ assert(buildHomeworkCsv(94,'Rentowność',valid).includes('15 950')===false); // liczby w danych są nieformatowane
+ assert(buildHomeworkCsv(94,'Rentowność',valid).includes('15950,00'));
+});
+test('Dodatkowe dane są lokalne, całkowicie fikcyjne i nie zawierają kluczy',async ()=>{
+ const {EXTRA_SPREADSHEET_CASES}=await import('../src/accounting/bonus-datasets.js');
+ assert.deepEqual(Object.keys(EXTRA_SPREADSHEET_CASES).sort(),['91','92','93','94']);
+ for(const [topic,pack] of Object.entries(EXTRA_SPREADSHEET_CASES)){
+  assert(pack.tables.length>=1 && pack.steps.length>=3);
+  const instruction=pack.instruction.toLowerCase();
+  assert(instruction.includes('fikcyj')||instruction.includes('bonus')||instruction.includes('model'));
+  for(const t of pack.tables){
+   assert(t.rows.length>0);
+   for(const row of t.rows)assert.equal(row.length,t.header.length,topic+': '+t.name);
+  }
+  assert(!JSON.stringify(pack).includes('expected_output'));
+  assert(!JSON.stringify(pack).includes('correctIndex'));
+  assert(!JSON.stringify(pack).includes('odpowiedź poprawna'));
+ }
+});

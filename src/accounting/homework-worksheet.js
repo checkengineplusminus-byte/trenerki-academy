@@ -3,7 +3,8 @@
  * Only a blank LOCAL CSV is generated: no user answers, private workbook state or
  * assessment keys are sent, fetched or written to Supabase.
  */
-export const WORKSHEET_VERSION=1;
+import {bonusSpreadsheetRows} from './bonus-datasets.js';
+export const WORKSHEET_VERSION=2;
 export const SECTION_HEADERS=Object.freeze([
  ['Lp.','Dowód / zdarzenie','Data','Podmiot','Aktywo / Wn','Pasywo / Ma','Kwota (zł)','Uzasadnienie i kontrola'],
  ['Lp.','Numer dokumentu','Strona transakcji','Data zdarzenia','Kwota netto (zł)','VAT — założenie','Kwota VAT (zł)','Kwota brutto (zł)','Wniosek'],
@@ -64,6 +65,7 @@ export function buildHomeworkCsv(topicNo,title,practice){
   [],
   SECTION_HEADERS[section-1],
   ...Array.from({length:12},(_,i)=>[String(i+1)]),
+  ...bonusSpreadsheetRows(topicNo),
   [],
   ['Samokontrola','Czy wykonano wszystkie elementy z polecenia?',''],
   ['Samokontrola','Czy każdą kwotę da się odtworzyć z danych wejściowych?',''],
