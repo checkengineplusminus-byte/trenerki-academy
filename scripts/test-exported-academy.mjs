@@ -16,8 +16,12 @@ function required(relative){
 const academy=required('academy/index.html');
 required('academy/anielka-search.js');
 const accountingOffer=required('academy/ksiegowosc-od-podstaw.html');
-assert.match(accountingOffer,/Wczesny dostęp/i);
-assert.match(academy,/acct-feature-title/);
+assert.match(accountingOffer,/Księgowość od podstaw — Encyklopedia/i);
+assert.match(accountingOffer,/Kup kurs online/i);
+assert.doesNotMatch(accountingOffer,/wczesny dostęp|wersja rozwojowa|w trakcie recenzji/i);
+assert(!academy.includes('acct-feature-title'),'Accounting must not appear as a large homepage promotion');
+assert(academy.includes('const ACCOUNTING_CATALOG='),'Accounting must be included as a regular category-only course card');
+assert(required('academy/kategorie/biznes-i-praca.html').includes('/academy/ksiegowosc-od-podstaw.html'),'Accounting must be listed in the business course group');
 required('academy/anielka-search.css');
 required('academy/footer.css');
 required('academy/app-footer.css');
