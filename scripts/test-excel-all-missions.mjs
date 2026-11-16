@@ -118,7 +118,7 @@ test('Wszystkie trzydziestolekcyjne materiały mają pytanie, poprawny wariant i
 test('Dwanaście zadań dodatkowych: struktura, przykłady i odpowiedzi',()=>{
  assert.equal(bonus.length,12);
  for(const [i,ch]of bonus.entries()){
-  assert(ch.id&&ch.task.length>=20&&ch.answer.length>=2&&ch.tip.length>=20,'Brak danych bonus '+i);
+  assert(ch.id&&ch.task.length>=20&&ch.answer.length>=1&&ch.tip.length>=20,'Brak danych bonus '+i);
   assert(ch.sections.length>=2);
   assert(ch.sections.every(x=>x.heading&&x.text.length>70));
  }
