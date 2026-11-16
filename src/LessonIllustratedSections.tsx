@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {View,Text,Image,Platform,Pressable} from 'react-native';
 import WindowsPracticeMission from './WindowsPracticeMission';
 import ExcelProfessionalMission from './ExcelProfessionalMission';
+import ExcelRealHomework from './ExcelRealHomework';
 import ExcelAnalystWorkbench from './ExcelAnalystWorkbench';
 import ExcelProCaseLab from './ExcelProCaseLab';
 import {ExcelAcademyLibrary,ExcelDeepLesson} from './ExcelAcademyLibrary';
@@ -72,6 +73,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
   {courseSlug==='excel-skroty'&&<ExcelDeepLesson key={'excel-deep-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='windows-skroty'&&<WindowsPracticeMission key={lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&<ExcelProfessionalMission key={'excel-mission-'+lessonNo} lessonNo={lessonNo}/>}
+  {courseSlug==='excel-skroty'&&<ExcelRealHomework key={'excel-homework-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&lessonNo>=15&&<ExcelAnalystWorkbench key={'excel-advanced-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&[25,28,29].includes(lessonNo)&&<ExcelProCaseLab/>}
   {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>

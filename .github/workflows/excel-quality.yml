@@ -42,6 +42,12 @@ on:
       - 'src/excelFirstDayAnswers.ts'
       - 'scripts/test-excel-firstday-formulas.mjs'
       - 'scripts/test-excel-all-missions.mjs'
+      - 'content/excel-real-homework-30.json'
+      - 'src/ExcelRealHomework.tsx'
+      - 'src/excelHomeworkAnswers.ts'
+      - 'public/academy/assets/excel-homework-basics.csv'
+      - 'public/academy/assets/excel-homework-codes.csv'
+      - 'scripts/test-excel-real-homework.mjs'
       - 'scripts/excel-all-missions-browser.mjs'
       - 'public/academy/assets/excel-firstday-home.csv'
       - 'public/academy/assets/excel-firstday-shop.csv'
@@ -79,6 +85,12 @@ on:
       - 'src/excelFirstDayAnswers.ts'
       - 'scripts/test-excel-firstday-formulas.mjs'
       - 'scripts/test-excel-all-missions.mjs'
+      - 'content/excel-real-homework-30.json'
+      - 'src/ExcelRealHomework.tsx'
+      - 'src/excelHomeworkAnswers.ts'
+      - 'public/academy/assets/excel-homework-basics.csv'
+      - 'public/academy/assets/excel-homework-codes.csv'
+      - 'scripts/test-excel-real-homework.mjs'
       - 'scripts/excel-all-missions-browser.mjs'
       - 'src/SoftwareOrientation.tsx'
       - 'app/nauka.tsx'
@@ -105,6 +117,8 @@ jobs:
         run: node scripts/test-excel-firstday-formulas.mjs
       - name: Sprawdź wszystkie 30 misji, 30 pytań i 12 dodatków — kwoty, waluty i formuły
         run: node --test scripts/test-excel-all-missions.mjs
+      - name: Sprawdź 30 zadań domowych oraz 5 perspektyw eksperckich i 10 ról
+        run: node --test scripts/test-excel-real-homework.mjs
       - name: Sprawdź silnik walut i nawigację wirtualnego arkusza
         run: node scripts/test-excel-currency.mjs
       - name: Sprawdź 514 funkcji, 39 rozdziałów i eksport PDF

@@ -1,0 +1,1113 @@
+{
+  "version": 1,
+  "course": "excel-skroty",
+  "kind": "real-excel-self-practice",
+  "total": 30,
+  "reviewRubric": [
+    {
+      "id": "formulas",
+      "role": "Audyt formuł i obliczeń",
+      "focus": "adresowanie, SUMA, SUMA.WARUNKÓW, X.WYSZUKAJ, odwołania i wyniki",
+      "source": "Dane + niezależne przeliczenie"
+    },
+    {
+      "id": "data",
+      "role": "Audyt Power Query i jakości danych",
+      "focus": "CSV, typy liczb, daty, duplikaty, brakujące wartości, import i kontrola",
+      "source": "Pliki CSV oraz reguły typów"
+    },
+    {
+      "id": "analytics",
+      "role": "Audyt analityki i finansów",
+      "focus": "wykresy, tabele przestawne, marża, scenariusze i odświeżanie",
+      "source": "18 poprawnych faktur i scenariusze"
+    },
+    {
+      "id": "pedagogy",
+      "role": "Audyt metodyki nauczania",
+      "focus": "od przykładu do ćwiczenia, język początkującego, kryteria, jednoznaczność odpowiedzi",
+      "source": "Wszystkie 30 prac domowych"
+    },
+    {
+      "id": "ux",
+      "role": "Audyt mobilny, dostępności i dostarczenia",
+      "focus": "pobieranie, rozszerzane panele, klawiatura, czytelność, zapisywanie XLSX, zero ukrytych warunków",
+      "source": "Expo Web i mobilny Chromium"
+    }
+  ],
+  "note": "Prace domowe wykonywane są we własnym Microsoft Excel. TRENERKI sprawdza tylko wpisany wynik, nie odczytuje ani nie ocenia lokalnego XLSX. CSV należy zapisać jako XLSX, aby zachować formuły i arkusze.",
+  "lessons": [
+    {
+      "lessonNo": 0,
+      "title": "Otwórz pierwszy plik i znajdź D2",
+      "goal": "Otworzyć CSV w swoim Excelu, rozpoznać kolumny i zapisać własny XLSX",
+      "source": "basics",
+      "steps": [
+        "Na komputerze otwórz Microsoft Excel. Wybierz Dane → Z tekstu/CSV, wskaż pobrany plik i ustaw separator średnik.",
+        "Sprawdź, czy nagłówki „Produkt, Dział, Ilość, Cena PLN, Wartość” znajdują się osobno w kolumnach A–E.",
+        "Kliknij literę D nad kolumną z cenami. W jej drugim wierszu odszukaj cenę farby 350.",
+        "Kliknij komórkę z ceną farby i odczytaj jej adres w polu Nazwa obok paska formuły.",
+        "Zapisz kopię skoroszytu jako plik XLSX. Otwórz go ponownie i sprawdź, czy komórka nadal zawiera liczbę."
+      ],
+      "expected": "D2",
+      "kind": "address",
+      "checks": [
+        "Cena farby jest w kolumnie D i wierszu 2",
+        "Nie zgubiono osobnych kolumn podczas importu",
+        "Plik został zapisany jako prawdziwe XLSX, a nie przemianowane CSV"
+      ],
+      "mistakes": [
+        "Nie otwieraj CSV bez sprawdzenia separatora — inaczej wszystko może znaleźć się w A.",
+        "Nie pomyl adresu komórki D2 z wpisaną do niej wartością 350."
+      ],
+      "example": "Kolumna B i wiersz 4 tworzą adres B4. Tutaj szukamy analogicznie ceny pierwszej pozycji.",
+      "why": "Nauczysz się adresów i prawdziwego importu, a nie zgadywania skrótu.",
+      "delivery": "Zapisz Trenerki-Excel-01.xlsx z poprawnym widokiem A–E.",
+      "minutes": 12,
+      "review": "pedagogy",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-01.xlsx"
+    },
+    {
+      "lessonNo": 1,
+      "title": "Cztery arkusze w jednym skoroszycie",
+      "goal": "Rozróżnić plik XLSX od arkusza i zrobić własną strukturę budżetu",
+      "source": "basics",
+      "steps": [
+        "Otwórz pobrany CSV, a następnie zapisz nowy skoroszyt w formacie XLSX.",
+        "Zmień nazwę pierwszej karty na Styczeń (dwuklik na karcie arkusza).",
+        "Dodaj nowe karty o nazwach Luty i Marzec.",
+        "Dodaj czwartą kartę Podsumowanie i ustaw ją na końcu.",
+        "Przełącz się kolejno przez wszystkie karty; zapisz plik i otwórz go ponownie."
+      ],
+      "expected": "4",
+      "kind": "count",
+      "checks": [
+        "Skoroszyt ma dokładnie cztery karty: Styczeń, Luty, Marzec i Podsumowanie.",
+        "Każda karta ma unikatową nazwę",
+        "Po ponownym otwarciu karty i ich nazwy nadal istnieją"
+      ],
+      "mistakes": [
+        "Cztery kolumny na jednym arkuszu to nie cztery arkusze.",
+        "Nie zapisuj pliku jako CSV, bo utracisz układ wielu kart."
+      ],
+      "example": "Jeden skoroszyt to segregator, a arkusze to jego kartki. Trzy miesiące plus podsumowanie dają cztery karty.",
+      "why": "Oddzielna karta na okres ułatwia audyt i archiwizację.",
+      "delivery": "Zapisz Trenerki-Excel-02.xlsx z kartami Styczeń, Luty, Marzec i Podsumowanie.",
+      "minutes": 12,
+      "review": "pedagogy",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-02.xlsx"
+    },
+    {
+      "lessonNo": 2,
+      "title": "Adres komórki wynikowej",
+      "goal": "Znaleźć dokładnie komórkę E4 bez zgadywania nazwy kolumny",
+      "source": "basics",
+      "steps": [
+        "Zaimportuj CSV i upewnij się, że kolumna E jest pusta i nosi nagłówek Wartość.",
+        "Sprawdź wiersz 4: powinna tam być pozycja Transport, ilość w C4 i cena w D4.",
+        "Zaznacz E4 klikając kolumnę E w wierszu 4.",
+        "Przeczytaj adres komórki w polu nazwy po lewej stronie paska formuły.",
+        "Wpisz do E4 =C4*D4, zatwierdź Enter i ponownie kliknij wynik, aby obejrzeć formułę w pasku."
+      ],
+      "expected": "E4",
+      "kind": "address",
+      "checks": [
+        "Praca odbyła się w trzecim wierszu danych — arkuszowy wiersz 4",
+        "W E4 jest formuła, a nie wynik wpisany ręcznie",
+        "Po kliknięciu wyniku dla Transportu pole Nazwa pokazuje E4."
+      ],
+      "mistakes": [
+        "Nie pomyl czwartego wiersza arkusza z czwartym produktem.",
+        "Litera E nie jest nazwą pliku ani oznaczeniem wiersza."
+      ],
+      "example": "Jeśli wartość pierwszego produktu jest w E2, to wartość trzeciego produktu znajdziesz w E4.",
+      "why": "Adresy pozwalają kierować formuły do prawidłowych pól.",
+      "delivery": "Zapisz Trenerki-Excel-03.xlsx z własną formułą w E4.",
+      "minutes": 10,
+      "review": "pedagogy",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-03.xlsx"
+    },
+    {
+      "lessonNo": 3,
+      "title": "Zera w kodzie produktu",
+      "goal": "Zachować 00073 jako tekst przy imporcie CSV",
+      "source": "codes",
+      "steps": [
+        "Importuj plik kodów przez Dane → Z tekstu/CSV, nie przez automatyczne dwukrotne kliknięcie.",
+        "Podczas importu ustaw typ kolumny Kod na Tekst; nie pozwól automatycznej konwersji do liczby.",
+        "Znajdź kod przy produkcie Klej 5 kg i sprawdź liczbę znaków.",
+        "Skopiuj kod do pustej komórki sformatowanej jako Tekst.",
+        "Zapisz XLSX, zamknij i otwórz ponownie; sprawdź, czy wszystkie zera pozostają."
+      ],
+      "expected": "00073",
+      "kind": "identifier",
+      "checks": [
+        "Kod przy pozycji Klej 5 kg nadal ma pięć znaków, w tym zera.",
+        "Zera początkowe nie znikają po zapisaniu",
+        "Wartość jest identyfikatorem, a nie liczbą do sumowania"
+      ],
+      "mistakes": [
+        "Autoimport może zamienić 00073 na 73.",
+        "Nie próbuj naprawiać identyfikatora przez mnożenie przez 1."
+      ],
+      "example": "Kod 00127 jest tekstem składającym się z pięciu znaków, nawet jeśli wygląda jak liczba.",
+      "why": "Nieprawidłowa konwersja kodów może zepsuć magazyn i wyszukiwanie.",
+      "delivery": "Zapisz Trenerki-Excel-04.xlsx z zachowanym kodem 00073.",
+      "minutes": 13,
+      "review": "data",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-codes.csv",
+        "label": "Arkusz kodów produktów (CSV)"
+      },
+      "filename": "Trenerki-Excel-04.xlsx"
+    },
+    {
+      "lessonNo": 4,
+      "title": "Zmiana ceny bez nadpisywania formuły",
+      "goal": "Zaktualizować D3 i otrzymać nową wartość w E3",
+      "source": "basics",
+      "steps": [
+        "W tabeli znajdź wiersz 3 z pozycją Taśma: C3=3 oraz D3=120.",
+        "Kliknij E3, wpisz =C3*D3 i zatwierdź Enter; wynik przed zmianą to 360.",
+        "Kliknij D3 i zmień cenę jednostkową z 120 na 155, nie ruszając formuły E3.",
+        "Sprawdź w pasku formuły E3, czy nadal jest =C3*D3.",
+        "Odczytaj nowy wynik w E3 i zapisz skoroszyt XLSX."
+      ],
+      "expected": "465",
+      "kind": "number",
+      "checks": [
+        "W komórce ilości C3 nadal widzisz liczbę 3 sztuki.",
+        "D3 ma wartość 155 jako liczbę, nie napis z dopiskiem zł",
+        "E3 jest formułą, a jej wynik wynosi 465"
+      ],
+      "mistakes": [
+        "Nie nadpisuj E3 liczbą 465, bo dalsza zmiana ceny nie przeliczy wyniku.",
+        "Nie wpisuj 155 zł jako zwykłego tekstu w D3."
+      ],
+      "example": "3 sztuki po 10 zł kosztują 30 zł. Po zmianie ceny na 12 zł, przy niezmienionej formule, wynik wynosi 36 zł.",
+      "why": "Najważniejszą zaletą Excela jest przeliczanie zależnych wyników.",
+      "delivery": "Zapisz Trenerki-Excel-05.xlsx z formułą w E3.",
+      "minutes": 12,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-05.xlsx"
+    },
+    {
+      "lessonNo": 5,
+      "title": "Samodzielna formuła mnożenia",
+      "goal": "Wprowadzić formułę do E2 i przetestować zmianę ilości",
+      "source": "basics",
+      "steps": [
+        "Zobacz wiersz 2: Farba, C2=2 sztuki i D2=350 PLN.",
+        "Kliknij E2 i wpisz =C2*D2. Gwiazdka oznacza mnożenie, a znak = rozpoczyna formułę.",
+        "Zmień C2 z 2 na 4, nie dotykając E2 ani D2.",
+        "Sprawdź, czy E2 automatycznie zmieniło wynik, a w pasku formuły dalej widnieje =C2*D2.",
+        "Zapisz XLSX. Wpisz do zadania wynik E2 po zmianie ilości."
+      ],
+      "expected": "1400",
+      "kind": "number",
+      "checks": [
+        "Po kliknięciu E2 pasek formuły wyświetla =C2*D2.",
+        "Ilość w komórce C2 zmieniła się na 4 sztuki.",
+        "Wynik jest obliczany automatycznie, bez ręcznego wpisu do E2"
+      ],
+      "mistakes": [
+        "Nie pisz =C2xD2 — Excel używa znaku *.",
+        "Nie wpisuj samego 1400 w E2 zamiast formuły."
+      ],
+      "example": "Jeśli B2=3 i C2=8, formuła =B2*C2 daje 24, a po zmianie B2=4 daje 32.",
+      "why": "Różnica między formułą i wyświetlaną liczbą jest podstawą kolejnych lekcji.",
+      "delivery": "Zapisz Trenerki-Excel-06.xlsx z przeliczaną komórką E2.",
+      "minutes": 13,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-06.xlsx"
+    },
+    {
+      "lessonNo": 6,
+      "title": "SUMA z nowym wydatkiem",
+      "goal": "Rozszerzyć zakres i samodzielnie kontrolować sumę",
+      "source": "basics",
+      "steps": [
+        "Zaimportuj plik, a następnie w E2, E3 i E4 wpisz odpowiednio =C2*D2, =C3*D3, =C4*D4.",
+        "Wstaw NOWY wiersz 5 przed pozycją Klej. Nazwij pozycję Dodatkowa usługa.",
+        "Wpisz w C5 ilość 1, w D5 cenę 90 oraz w E5 formułę =C5*D5.",
+        "W E8 (pod wszystkimi pozycjami) wpisz =SUMA(E2:E5), świadomie ograniczając zakres do pierwszych czterech usług.",
+        "Sprawdź wynik niezależnie dodawaniem 700+360+150+90 i zapisz XLSX."
+      ],
+      "expected": "1300",
+      "kind": "number",
+      "checks": [
+        "Formuła sumuje E2:E5, a nie pomija nowego wiersza",
+        "Wszystkie cztery wartości są obliczone osobno",
+        "Wynik sumy pierwszych czterech pozycji wynosi 1300"
+      ],
+      "mistakes": [
+        "Nie używaj =SUMA(E2:E4), jeśli chcesz uwzględnić czwarty koszt.",
+        "Nie dodawaj komórki z sumą do jej własnego zakresu — to odwołanie cykliczne."
+      ],
+      "example": "=SUMA(A2:A4) oznacza dodanie A2, A3 i A4. Bez słowa SUMA sam zakres nie oznacza dodawania.",
+      "why": "W arkuszu słowo SUMA jest częścią formuły, a pole odpowiedzi w kursie wymaga wyniku.",
+      "delivery": "Zapisz Trenerki-Excel-07.xlsx z formułą SUMA.",
+      "minutes": 17,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-07.xlsx"
+    },
+    {
+      "lessonNo": 7,
+      "title": "Procent jako format, nie nowa liczba",
+      "goal": "Wprowadzić 0,375 i wyświetlić tę wartość jako procent",
+      "source": "basics",
+      "steps": [
+        "Zapisz pobrany arkusz w formacie XLSX i otwórz nową kartę Procenty.",
+        "Wpisz do B2 liczbę 0,375 (polski przecinek dziesiętny).",
+        "Zastosuj w B2 format procentowy; ustaw jedno miejsce po przecinku.",
+        "Przeczytaj liczbę wyświetlaną w komórce oraz surową wartość widoczną w pasku formuły.",
+        "Sprawdź, że liczba po zmianie formatowania nie uległa zmianie, zapisz XLSX."
+      ],
+      "expected": "37.5",
+      "kind": "percent",
+      "checks": [
+        "W pasku formuły liczba wynosi 0,375",
+        "Po ustawieniu formatu procentowego B2 pokazuje 37,5%.",
+        "Zmienił się format, nie wartość używana przez formuły"
+      ],
+      "mistakes": [
+        "Nie wpisuj 37,5 do komórki i nie włączaj dodatkowo formatu %, bo otrzymasz 3750%.",
+        "Nie dopisuj znaku % jako tekstu do kwoty pieniężnej."
+      ],
+      "example": "Liczba 0,25 po nałożeniu formatu % pokazuje 25%, mimo że obliczenia nadal używają 0,25.",
+      "why": "Takie formatowanie chroni przed pomyleniem procentów i pieniędzy.",
+      "delivery": "Zapisz Trenerki-Excel-08.xlsx z B2 pokazującą procent.",
+      "minutes": 12,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-08.xlsx"
+    },
+    {
+      "lessonNo": 8,
+      "title": "XLSX kontra CSV kontra PDF",
+      "goal": "Wybrać format zachowujący formuły i wiele arkuszy",
+      "source": "basics",
+      "steps": [
+        "Otwórz startowy plik CSV w Excelu, upewnij się, że C2 i D2 są liczbami, a następnie wprowadź w E2 formułę =C2*D2.",
+        "Zapisz jako XLSX w nowym pliku Trenerki-Excel-09.xlsx.",
+        "Sprawdź, czy Excel zachował formułę po ponownym otwarciu.",
+        "Zapisz jedną kopię wybranego arkusza jako CSV i zobacz różnice: plik CSV nie przechowuje wielu arkuszy ani wszystkich formatowań.",
+        "Wyeksportuj raport do PDF i sprawdź, że PDF nie służy do dalszej edycji formuł."
+      ],
+      "expected": "XLSX",
+      "kind": "file",
+      "checks": [
+        "Formuły w kopii XLSX nadal działają",
+        "CSV nie jest nazywany plikiem XLSX przez samo przemianowanie",
+        "PDF stanowi wersję do odczytu/drukowania"
+      ],
+      "mistakes": [
+        "Nie zmieniaj rozszerzenia nazwy pliku ręcznie bez prawidłowej konwersji.",
+        "Nie oddawaj PDF jako jedynej kopii do dalszej edycji."
+      ],
+      "example": "Zdjęcie tabeli nie zastępuje pliku XLSX, jeżeli odbiorca ma zmieniać obliczenia.",
+      "why": "Poprawny format pliku to część jakości pracy biurowej.",
+      "delivery": "Zapisz Trenerki-Excel-09.xlsx i jego raportowy PDF.",
+      "minutes": 17,
+      "review": "ux",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-09.xlsx"
+    },
+    {
+      "lessonNo": 9,
+      "title": "Budżet po dwóch zmianach",
+      "goal": "Zmienić ilość i koszt transportu, nie tracąc formuł",
+      "source": "basics",
+      "steps": [
+        "W E2:E4 ustaw formuły ilość × cena dla pierwszych trzech pozycji.",
+        "Zmień ilość farby C2 z 2 na 3 — nowa wartość farby wynosi 1050.",
+        "Zmień cenę transportu D4 ze 150 na 175, pozostawiając C4=1.",
+        "W komórce pod podsumowaniem wpisz =SUMA(E2:E4).",
+        "Oblicz sumę także ręcznie i zapisz XLSX."
+      ],
+      "expected": "1585",
+      "kind": "number",
+      "checks": [
+        "Po zmianie ilości farba kosztuje dokładnie 1050 PLN.",
+        "Taśma nadal kosztuje 360, transport 175",
+        "Suma trzech pozycji wynosi 1585"
+      ],
+      "mistakes": [
+        "Nie sumuj ceny jednostkowej zamiast wartości ilość × cena.",
+        "Nie podawaj 1560 ze starego wariantu — zmienił się także transport."
+      ],
+      "example": "Gdy ilość 2 i cena 5 zmienia się na ilość 3, wynik zmienia się z 10 na 15.",
+      "why": "Weryfikacja dwóch zależnych zmian zapobiega błędnym kosztorysom.",
+      "delivery": "Zapisz Trenerki-Excel-10.xlsx z sumą i historią zmian w notatce.",
+      "minutes": 20,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-10.xlsx"
+    },
+    {
+      "lessonNo": 10,
+      "title": "Nawigacja po dużym arkuszu",
+      "goal": "Użyć Ctrl+Home i odczytać adres aktywnej komórki",
+      "source": "basics",
+      "steps": [
+        "Otwórz arkusz na komputerze z Windows, kliknij komórkę E6.",
+        "Przejdź do dalszego wiersza, wpisując A250 w pole Nazwa.",
+        "Naciśnij Ctrl+Home poza trybem edytowania komórki.",
+        "Sprawdź adres aktywnej komórki w polu nazwy.",
+        "Zapisz skoroszyt z dodatkową notatką o skrótach na osobnej karcie."
+      ],
+      "expected": "A1",
+      "kind": "address",
+      "checks": [
+        "Ctrl+Home wykonano poza trybem edycji",
+        "Pole Nazwa wskazuje A1 na zwykłym arkuszu",
+        "Pozycje danych nie zostały usunięte"
+      ],
+      "mistakes": [
+        "W przeglądarce kombinację może przechwycić strona; to ćwiczenie dla Excel Desktop Windows.",
+        "Ctrl+End nie musi pokazać ostatniego wiersza z daną — formatowanie może rozszerzyć używany zakres."
+      ],
+      "example": "Klawisze Ctrl+Home zwykle przenoszą do początku arkusza, nie czyszczą tabeli.",
+      "why": "Skróty służą nawigacji, nie zastępują odczytywania adresów.",
+      "delivery": "Zapisz Trenerki-Excel-11.xlsx z kartą Notatki.",
+      "minutes": 12,
+      "review": "ux",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-11.xlsx"
+    },
+    {
+      "lessonNo": 11,
+      "title": "Kopiowanie formuł bez błędów",
+      "goal": "Skopiować E2 do E3 bez zamiany wzoru na sztywną wartość",
+      "source": "basics",
+      "steps": [
+        "Zaimportuj plik startowy przez Dane → Z tekstu/CSV, po czym w komórce E2 wpisz prawidłową formułę =C2*D2.",
+        "Skopiuj E2 przez Ctrl+C, zaznacz E3 i wklej Ctrl+V.",
+        "Kliknij E3, a następnie spójrz w pasek formuły (fx).",
+        "Sprawdź, czy numery wierszy w nowej formule odpowiadają trzeciemu wierszowi.",
+        "Zmień C3 z 3 na 4 i sprawdź, czy wynik E3 się przelicza."
+      ],
+      "expected": "=C3*D3",
+      "kind": "formula",
+      "checks": [
+        "E3 zawiera formułę, a nie stałą liczbę 360",
+        "Odwołania względne przesunęły się z wiersza 2 na 3",
+        "Zmiana C3 automatycznie przelicza E3"
+      ],
+      "mistakes": [
+        "Nie kopiuj wartości 700 zamiast formuły.",
+        "Nie wpisuj ręcznie =C2*D2 w E3, jeśli celem jest przesunięcie adresu."
+      ],
+      "example": "Po skopiowaniu =A2*B2 o jeden wiersz w dół formuła stanie się =A3*B3.",
+      "why": "Adresy względne pozwalają przetwarzać wiele pozycji.",
+      "delivery": "Zapisz Trenerki-Excel-12.xlsx z formułą w E3.",
+      "minutes": 16,
+      "review": "formulas",
+      "alternates": [
+        "=D3*C3"
+      ],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-12.xlsx"
+    },
+    {
+      "lessonNo": 12,
+      "title": "Format walutowy bez psucia obliczeń",
+      "goal": "Nadać format PLN wartości 350 i zachować typ liczbowy",
+      "source": "basics",
+      "steps": [
+        "Zaznacz komórkę D2 z ceną 350 w pliku startowym.",
+        "Wybierz Formatowanie komórek → Walutowe lub Księgowe → PLN.",
+        "Sprawdź, czy komórka pokazuje walutę, a formuła =C2*D2 nadal działa.",
+        "W innej komórce wpisz =D2*2 i zatwierdź Enter.",
+        "Sprawdź w E2 wynik wyliczony przez formułę i zapisz skoroszyt w edytowalnym formacie XLSX, nie jako CSV."
+      ],
+      "expected": "350",
+      "kind": "number",
+      "checks": [
+        "D2 nadal przechowuje liczbę 350",
+        "Format pokazuje PLN bez wpisania „zł” jako tekst",
+        "Mnożenie D2 przez 2 zwraca 700"
+      ],
+      "mistakes": [
+        "Nie wpisuj w komórce tekstu „350 zł”, jeśli zamierzasz ją mnożyć.",
+        "Nie używaj samych kolorów do oznaczania błędnych wartości."
+      ],
+      "example": "Liczba 25 ma format 25,00 zł, ale w pasku formuły nadal jest 25.",
+      "why": "Rozdzielanie danych od ich formatu zapobiega błędom sumowania.",
+      "delivery": "Zapisz Trenerki-Excel-13.xlsx z formatowaniem cen.",
+      "minutes": 13,
+      "review": "pedagogy",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-13.xlsx"
+    },
+    {
+      "lessonNo": 13,
+      "title": "Nowy wiersz a zakres SUMA",
+      "goal": "Dodać nowy koszt 125 zł i nie stracić go w podsumowaniu",
+      "source": "basics",
+      "steps": [
+        "Przygotuj formuły E2:E4 i policz początkowy koszt trzech pozycji.",
+        "Zaznacz cały wiersz 5 z pozycją Klej, wstaw nad nim nowy wiersz, a następnie sprawdź przesunięcie adresów.",
+        "Do nowego wiersza wpisz dodatkową usługę: ilość 1 i cenę 125.",
+        "Upewnij się, że formuła SUMA obejmuje wszystkie cztery pozycje E2:E5.",
+        "Zapisz finalną sumę i zweryfikuj ją przez niezależne dodawanie."
+      ],
+      "expected": "1335",
+      "kind": "number",
+      "checks": [
+        "Do listy trzech pozycji dopisano nowy koszt 125",
+        "Zakres sumowania obejmuje E2, E3, E4 oraz nowy E5.",
+        "Łączna wartość 700+360+150+125 wynosi 1335"
+      ],
+      "mistakes": [
+        "Suma z E2:E4 pozostaje stara i pomija dopisany wiersz.",
+        "Nie dodawaj wynikowej sumy do jej własnego zakresu."
+      ],
+      "example": "Jeśli trzy koszty to 10,20 i 30, a dopiszesz 5, nowa suma wynosi 65.",
+      "why": "To test aktualizacji zakresów po zmianie struktury tabeli.",
+      "delivery": "Zapisz Trenerki-Excel-14.xlsx z kontrolą zakresu.",
+      "minutes": 15,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-14.xlsx"
+    },
+    {
+      "lessonNo": 14,
+      "title": "Stała stawka VAT i odwołanie bezwzględne",
+      "goal": "Zastosować H2=23% bez ręcznego przepisywania stawki",
+      "source": "basics",
+      "steps": [
+        "Oblicz wartość farby w E2 jako =C2*D2; początkowy wynik wynosi 700.",
+        "Do H1 wpisz VAT, a do H2 liczbę 0,23 i nadaj jej format 23%.",
+        "W F1 wpisz VAT w PLN, w F2 wpisz =E2*$H$2.",
+        "Skopiuj F2 do F3 i sprawdź, że odwołanie do H2 nie przesunęło się.",
+        "Odczytaj kwotę VAT dla farby w komórce F2, sprawdź formułę w pasku fx i zachowaj cały skoroszyt jako XLSX."
+      ],
+      "expected": "161",
+      "kind": "number",
+      "checks": [
+        "H2 zawiera liczbę 0,23, nie tekst „23%”",
+        "Formuła w F2 używa bezwzględnego $H$2",
+        "Kwota VAT dla farby wynosi 161 PLN: 700 × 0,23."
+      ],
+      "mistakes": [
+        "Nie myl znaku $ w adresie z symbolem waluty.",
+        "Nie wpisuj w F2 sztywnej kwoty 161 zamiast formuły."
+      ],
+      "example": "Odwołanie $B$1 po kopiowaniu nadal wskazuje B1, bo kolumna i wiersz są zablokowane.",
+      "why": "Jedna stawka w jednym miejscu zmniejsza ryzyko rozbieżności.",
+      "delivery": "Zapisz Trenerki-Excel-15.xlsx z VAT dla minimum dwóch pozycji.",
+      "minutes": 17,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-15.xlsx"
+    },
+    {
+      "lessonNo": 15,
+      "title": "Dwa kryteria SUMA.WARUNKÓW",
+      "goal": "Zaktualizować fakturę i przeliczyć region+kategorię",
+      "source": "sales",
+      "steps": [
+        "Importuj 18 faktur przez Dane → Z tekstu/CSV. Ustaw średnik i sprawdź typ liczb w G i H.",
+        "W kolumnie J wyliczaj każdą Wartość netto jako =G2*H2, a formułę skopiuj do J19.",
+        "Znajdź FV-001 w drugim wierszu i zmień G2 z 12 na 13.",
+        "Użyj =SUMA.WARUNKÓW(J2:J19;D2:D19;\"Północ\";E2:E19;\"Materiały\").",
+        "Sprawdź liczbę zgodnych faktur, nową sumę i porównaj z wariantem sprzed zmiany."
+      ],
+      "expected": "3210",
+      "kind": "number",
+      "checks": [
+        "Wynik przed zmianą wynosi 3125 PLN",
+        "Dzięki zmianie FV-001 rośnie o dokładnie 85 PLN",
+        "Wynik po zmianie wynosi 3210 PLN"
+      ],
+      "mistakes": [
+        "Nie sumuj ilości G, jeśli zadanie prosi o Wartość netto J.",
+        "Nie myl SUMA.WARUNKÓW z LICZ.WARUNKI: pierwsza zwraca kwotę, druga liczbę rekordów."
+      ],
+      "example": "SUMA.WARUNKÓW dodaje kwotę tylko wtedy, gdy wszystkie kryteria w danym wierszu pasują.",
+      "why": "To typowe zadanie analityka finansowego i kosztorysanta.",
+      "delivery": "Zapisz Trenerki-Excel-16.xlsx z tabelą, formułami i kontrolą.",
+      "minutes": 25,
+      "review": "analytics",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-16.xlsx"
+    },
+    {
+      "lessonNo": 16,
+      "title": "Wydruk PDF bez uciętych kolumn",
+      "goal": "Ustawić orientację, obszar wydruku i liczbę stron",
+      "source": "basics",
+      "steps": [
+        "Importuj startową tabelę i oblicz wartość każdej pozycji w kolumnie E.",
+        "Nadaj nagłówkom czytelny styl, ustaw szerokość kolumn i popraw marginesy.",
+        "W Excelu Desktop wybierz Układ strony → Orientacja pozioma i wskaż obszar wydruku A1:E6.",
+        "Przejdź do Plik → Drukuj, wybierz dopasowanie do jednej strony szerokości i jednej wysokości.",
+        "Sprawdź w podglądzie liczbę stron oraz czy kolumny nie są obcięte. Wyeksportuj PDF i zachowaj XLSX."
+      ],
+      "expected": "1",
+      "kind": "count",
+      "checks": [
+        "Podgląd wydruku pokazuje dokładnie jedną stronę dla A1:E6.",
+        "Wszystkie kolumny A–E i nazwy produktów są widoczne",
+        "Zapisano dwa osobne pliki: edytowalny XLSX i PDF do podglądu."
+      ],
+      "mistakes": [
+        "Nie drukuj przed sprawdzeniem podglądu i szerokości kolumn.",
+        "Nie zastępuj wersji XLSX samym PDF."
+      ],
+      "example": "Mały kosztorys zajmuje jedną stronę dopiero po ustawieniu właściwej orientacji i skalowania.",
+      "why": "Czytelny eksport jest elementem jakości, nie dodatkiem.",
+      "delivery": "Zapisz Trenerki-Excel-17.xlsx i Trenerki-Excel-17.pdf.",
+      "minutes": 22,
+      "review": "ux",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-17.xlsx"
+    },
+    {
+      "lessonNo": 17,
+      "title": "Wykres miesięcznej sprzedaży",
+      "goal": "Wykonać wykres kolumnowy z poprawną osią i podpisami",
+      "source": "sales",
+      "steps": [
+        "Zaimportuj 18 faktur z CSV do prawdziwego Excela.",
+        "Sprawdź kolumnę C Miesiąc oraz J Wartość netto; w razie potrzeby wpisz w J2 =G2*H2 i wypełnij w dół.",
+        "Zbuduj tabelę pomocniczą: trzy miesiące, SUMA kwoty dla każdego miesiąca.",
+        "Zaznacz miesiące i sumy, wstaw wykres kolumnowy; podpisz oś pionową „PLN”, bez ucinania jej do wysokiej wartości.",
+        "Sprawdź, który miesiąc jest liderem i czy suma miesięcy to 28245 PLN."
+      ],
+      "expected": "2026-03",
+      "kind": "text",
+      "checks": [
+        "Przychód stycznia w tabeli pomocniczej wynosi 8760 PLN.",
+        "Luty ma 9710 PLN, marzec 9775 PLN",
+        "Największa sprzedaż występuje w 2026-03"
+      ],
+      "mistakes": [
+        "Nie porównuj liczby faktur zamiast kwot sprzedaży.",
+        "Nie zaczynaj osi porównawczej od 9000 bez jawnego oznaczenia skali."
+      ],
+      "example": "Wykres powinien przedstawiać wartości z tabeli, a nie z ręcznie narysowanych słupków.",
+      "why": "Rzetelny wykres pozwala podjąć decyzję na podstawie danych.",
+      "delivery": "Zapisz Trenerki-Excel-18.xlsx z wykresem na osobnej karcie.",
+      "minutes": 25,
+      "review": "analytics",
+      "alternates": [
+        "MARZEC",
+        "MARZEC 2026",
+        "03.2026"
+      ],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-18.xlsx"
+    },
+    {
+      "lessonNo": 18,
+      "title": "Cena nieznana a suma częściowa",
+      "goal": "Prawidłowo oznaczyć brak kosztu transportu i częściową sumę",
+      "source": "basics",
+      "steps": [
+        "W ćwiczebnym arkuszu pozostaw dwie pierwsze wartości: Farba 700 PLN, Taśma 360 PLN.",
+        "W wierszu Transport usuń cenę D4 (zamiast wpisywać zero).",
+        "Do kolumny F dodaj status „BRAK CENY”; wyświetl ostrzeżenie przy pozycji Transport.",
+        "Policz sumę tylko potwierdzonych wartości: E2 i E3.",
+        "Zapisz wynik jako suma częściowa i dopisz w raporcie, że nie jest to cena finalna."
+      ],
+      "expected": "1060",
+      "kind": "number",
+      "checks": [
+        "Potwierdzone koszty 700 i 360 wynoszą 1060 PLN",
+        "Brak ceny transportu pozostaje jawny",
+        "Wynik jest opisany jako częściowy, nie pełny kosztorys"
+      ],
+      "mistakes": [
+        "Nie wstawiaj 0 przy nieznanej cenie — może wyglądać jak darmowy transport.",
+        "Nie ukrywaj błędnej pozycji filtrem i nie ogłaszaj sumy jako kompletnej."
+      ],
+      "example": "100 PLN potwierdzonych kosztów i nieznana usługa nie oznaczają, że całe zamówienie kosztuje 100 PLN.",
+      "why": "Rzetelność danych jest ważniejsza niż estetyka sumy.",
+      "delivery": "Zapisz Trenerki-Excel-19.xlsx z ostrzeżeniem BRAK CENY.",
+      "minutes": 20,
+      "review": "data",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-19.xlsx"
+    },
+    {
+      "lessonNo": 19,
+      "title": "Raport zmian cen w budżecie",
+      "goal": "Policzyć przyczynę i wielkość zmiany budżetu",
+      "source": "basics",
+      "steps": [
+        "Zapisz w arkuszu starą cenę farby 350 PLN i nową cenę 390 PLN w osobnych kolumnach.",
+        "Wprowadź ilość 2 sztuki i oblicz koszt przed zmianą oraz po zmianie.",
+        "W kolejnej kolumnie wpisz formułę nowy koszt minus stary koszt.",
+        "Wstaw prosty wykres porównujący obie kwoty z podpisem PLN.",
+        "Zapisz plik z datą aktualizacji, a w notatce wskaż przyczynę zmiany."
+      ],
+      "expected": "80",
+      "kind": "number",
+      "checks": [
+        "Przed zmianą ceny koszt dwóch sztuk wynosił 700 PLN.",
+        "Po podwyżce koszt dwóch sztuk wynosi 780 PLN.",
+        "Różnica wynosi +80 PLN, a nie +40 PLN"
+      ],
+      "mistakes": [
+        "Nie porównuj samych cen jednostkowych 390-350 bez uwzględnienia ilości.",
+        "Nie przepisuj ręcznie jednej kwoty jako gwarantowanej prognozy."
+      ],
+      "example": "Przy dwóch sztukach podwyżka o 10 PLN na sztuce zwiększa łączny koszt o 20 PLN.",
+      "why": "Raport zmian powinien pokazywać założenia i wpływ, nie tylko wynik.",
+      "delivery": "Zapisz Trenerki-Excel-20.xlsx z wykresem i opisem zmiany.",
+      "minutes": 23,
+      "review": "analytics",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-20.xlsx"
+    },
+    {
+      "lessonNo": 20,
+      "title": "Marża to nie przychód",
+      "goal": "Obliczyć koszty całkowite 18 faktur",
+      "source": "sales",
+      "steps": [
+        "Importuj 18 faktur, sprawdzając typy ilości, ceny i kosztu jednostkowego.",
+        "W kolumnie J policz przychód netto =G2*H2, a w kolumnie K marżę =G2*(H2-I2); skopiuj w dół.",
+        "Na karcie Podsumowanie policz SUMA przychodów i SUMA marż oraz zrób niezależną kontrolę.",
+        "Oblicz całkowity koszt jako Przychód minus Marża.",
+        "Sprawdź, że kwota kosztu jest spójna z sumą G2:G19 × I2:I19 i zapisz XLSX."
+      ],
+      "expected": "19136",
+      "kind": "number",
+      "checks": [
+        "Przychód netto wynosi 28245 PLN",
+        "Po odjęciu kosztów od przychodów marża netto wynosi 9109 PLN.",
+        "Łączne koszty wszystkich faktur wynoszą 19136 PLN."
+      ],
+      "mistakes": [
+        "Nie nazywaj przychodu 28245 zyskiem ani marżą.",
+        "Nie pomijaj ilości w formule kosztu zakupu."
+      ],
+      "example": "Jeśli przychód to 100, a koszt 70, marża kwotowa wynosi 30.",
+      "why": "To podstawowy test finansowy wymagany w realnym raporcie.",
+      "delivery": "Zapisz Trenerki-Excel-21.xlsx z kartą Podsumowanie.",
+      "minutes": 28,
+      "review": "analytics",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-21.xlsx"
+    },
+    {
+      "lessonNo": 21,
+      "title": "Kontrola importu: 5x nie jest liczbą",
+      "goal": "Zlokalizować i udokumentować wadliwą fakturę w CSV",
+      "source": "errors",
+      "steps": [
+        "Zaimportuj osobny plik z czterema błędnymi rekordami przez Dane → Z tekstu/CSV.",
+        "Sprawdź kolumnę Ilość i oddziel tekst od prawdziwych liczb. Nie usuwaj automatycznie błędnych wierszy.",
+        "Znajdź rekord z ilością zapisaną jako 5x — nie jest dodatnią liczbą całkowitą.",
+        "Zapisz numer faktury, opis problemu oraz działanie naprawcze w osobnej karcie Audyt.",
+        "Zabezpiecz oryginalny plik źródłowy, zapisz nowy XLSX bez poprawiania danych na ślepo."
+      ],
+      "expected": "FV-019",
+      "kind": "identifier",
+      "checks": [
+        "Faktura z 5x została jednoznacznie zidentyfikowana",
+        "Zachowano oryginalne dane źródłowe",
+        "Odrzucono automatyczne użycie niepoprawnej ilości w obliczeniach"
+      ],
+      "mistakes": [
+        "Nie traktuj tekstu 5x jako liczby 5 bez weryfikacji.",
+        "Nie kasuj całego wiersza bez śladu w dzienniku błędów."
+      ],
+      "example": "Liczba 5 jest poprawna do obliczeń, ale kod 5x wymaga wyjaśnienia.",
+      "why": "Jakość danych wejściowych warunkuje jakość całego raportu.",
+      "delivery": "Zapisz Trenerki-Excel-22.xlsx z kartą Audyt.",
+      "minutes": 24,
+      "review": "data",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-errors.csv",
+        "label": "Błędne rekordy do audytu (CSV)"
+      },
+      "filename": "Trenerki-Excel-22.xlsx"
+    },
+    {
+      "lessonNo": 22,
+      "title": "Błąd #DZIEL/0! — nie ukrywaj problemu",
+      "goal": "Wywołać i wyjaśnić prawdziwy błąd dzielenia przez zero",
+      "source": "basics",
+      "steps": [
+        "Na nowej karcie Błędy wpisz A1=100 i B1=0.",
+        "W C1 wpisz dokładnie =A1/B1 i naciśnij Enter.",
+        "Odczytaj kod błędu wyświetlany w polskim Excelu.",
+        "Zapisz w D1 tekstową diagnozę: B1 jest zerem, dlatego dzielenie nie jest możliwe.",
+        "W E1 zaproponuj bezpieczną kontrolę warunku, zamiast ukrywać błąd bez wyjaśnienia."
+      ],
+      "expected": "#DZIEL/0!",
+      "kind": "error",
+      "checks": [
+        "Komórka C1 po dzieleniu przez zero wyświetla #DZIEL/0!.",
+        "W notatce nazwano przyczynę błędu: mianownik B1 jest równy zeru.",
+        "Nie zamieniono błędu na fałszywą kwotę 0"
+      ],
+      "mistakes": [
+        "Nie wpisuj dowolnej liczby, by ukryć błąd.",
+        "Nie używaj JEŻELI.BŁĄD bez wcześniejszego ustalenia powodu dzielenia przez zero."
+      ],
+      "example": "Gdy 100 dzielisz przez 2, otrzymujesz 50. Dzielnik 0 nie ma sensownego wyniku liczbowego.",
+      "why": "Dobre raporty sygnalizują nieprawidłowe założenia.",
+      "delivery": "Zapisz Trenerki-Excel-23.xlsx z komórką C1 i diagnozą.",
+      "minutes": 18,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-23.xlsx"
+    },
+    {
+      "lessonNo": 23,
+      "title": "Trzy arkusze połączone formułą",
+      "goal": "Stworzyć sumę miesiąc–miesiąc bez kopiowania wartości ręcznie",
+      "source": "basics",
+      "steps": [
+        "Utwórz karty Styczeń, Luty, Marzec i Roczny w jednym skoroszycie.",
+        "Do B2 każdej karty miesięcznej wpisz kolejno 1200, 1300 i 1470.",
+        "W karcie Roczny, w B2 wpisz =Styczeń!B2+Luty!B2+Marzec!B2.",
+        "Zmień kwotę w jednym miesiącu, sprawdź automatyczne przeliczenie, a następnie przywróć pierwotną wartość.",
+        "Zapisz skoroszyt XLSX i podaj sumę pierwotnych danych."
+      ],
+      "expected": "3970",
+      "kind": "number",
+      "checks": [
+        "Styczeń, Luty i Marzec to trzy odrębne, nazwane karty arkusza.",
+        "Formuła Roczny!B2 odwołuje się do trzech kart",
+        "Dla liczb 1200+1300+1470 otrzymujesz 3970"
+      ],
+      "mistakes": [
+        "Nie wklejaj samych wartości do Roczny, bo przestanie działać aktualizacja.",
+        "Nie pomijaj nazwy arkusza i wykrzyknika ! w odwołaniu."
+      ],
+      "example": "=Styczeń!B2+Luty!B2 dodaje dane dwóch arkuszy. Trzeci dodajesz analogicznie.",
+      "why": "To podstawa skonsolidowanych zestawień i audytowalności.",
+      "delivery": "Zapisz Trenerki-Excel-24.xlsx z czterema kartami.",
+      "minutes": 22,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-24.xlsx"
+    },
+    {
+      "lessonNo": 24,
+      "title": "Wyszukiwanie X.WYSZUKAJ po ID",
+      "goal": "Znaleźć konkretną fakturę, a nie tylko identyczną kwotę",
+      "source": "sales",
+      "steps": [
+        "Zaimportuj 18 faktur i sprawdź, że kolumna A przechowuje unikalne numery dokumentów.",
+        "W kolumnie J oblicz Wartość netto jako =G2*H2 i skopiuj w dół.",
+        "Na karcie Wyszukiwanie wpisz numer FV-014 do A2.",
+        "Użyj formuły =X.WYSZUKAJ(A2;'Źródło'!A2:A19;'Źródło'!J2:J19;\"BRAK\";0) po nadaniu arkuszowi z importem nazwy Źródło.",
+        "Porównaj wartość z ilością × ceną dla FV-014. Sprawdź też zachowanie dla FV-999."
+      ],
+      "expected": "1155",
+      "kind": "number",
+      "checks": [
+        "FV-014 jest identyfikowany po kluczu, nie po kwocie",
+        "Wartość FV-014 wynosi 1155 PLN",
+        "Nieistniejący FV-999 daje BRAK, a nie dowolny wiersz"
+      ],
+      "mistakes": [
+        "Nie wyszukuj po cenie, która może się powtarzać.",
+        "Nie zakładaj, że starszy Excel obsługuje X.WYSZUKAJ — sprawdź wersję Microsoft 365/Excel 2021+."
+      ],
+      "example": "Wyszukanie po ID jest bezpieczniejsze niż po kwocie 100 zł, którą mogą mieć dwie faktury.",
+      "why": "Uczysz się jednoznacznych dopasowań i pracy z brakującymi danymi.",
+      "delivery": "Zapisz Trenerki-Excel-25.xlsx z wyszukiwaniem i testem BRAK.",
+      "minutes": 27,
+      "review": "formulas",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-25.xlsx"
+    },
+    {
+      "lessonNo": 25,
+      "title": "Tabela przestawna po zmianie źródła",
+      "goal": "Odświeżyć pivot i uzgodnić nową sumę 18 faktur",
+      "source": "sales",
+      "steps": [
+        "Importuj 18 faktur. Jeśli J zawiera statyczne dane z CSV, zastąp je formułą =G2*H2 i skopiuj do J19.",
+        "Zaznacz dane, utwórz tabelę (Ctrl+T) i wstaw tabelę przestawną na osobnej karcie.",
+        "Przenieś Miesiąc do Wierszy oraz Wartość netto do Wartości jako SUMA.",
+        "W źródle zmień ilość FV-001 z 12 na 13, zachowując cenę 85.",
+        "Upewnij się, że pivot uwzględnia zmianę; gdy nie, wybierz Odśwież. Porównaj nowy wiersz Razem z całym źródłem."
+      ],
+      "expected": "28330",
+      "kind": "number",
+      "checks": [
+        "Pierwotny przychód wynosi 28245 PLN",
+        "Zmiana FV-001 zwiększa wartość o 85 PLN",
+        "Po odświeżeniu pivot sumuje 28330 PLN"
+      ],
+      "mistakes": [
+        "Nie zakładaj, że w każdej wersji Excel pivot zawsze odświeża się automatycznie.",
+        "Nie sumuj sumy końcowej z pozostałymi grupami po raz drugi."
+      ],
+      "example": "Jeśli jedna faktura rośnie o 85 PLN, suma całego raportu również powinna wzrosnąć o 85 PLN.",
+      "why": "Odświeżanie i uzgodnienie z danymi źródłowymi są obowiązkową kontrolą.",
+      "delivery": "Zapisz Trenerki-Excel-26.xlsx z pivotem i odświeżonym wynikiem.",
+      "minutes": 29,
+      "review": "analytics",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-26.xlsx"
+    },
+    {
+      "lessonNo": 26,
+      "title": "Scenariusz kosztowy +20%",
+      "goal": "Policzyć nową marżę przy rosnącym koszcie materiałów",
+      "source": "sales",
+      "steps": [
+        "Na arkuszu Źródło policz przychody i koszty na 18 fakturach. Przychód = 28245, marża bazowa = 9109.",
+        "W osobnej karcie Scenariusz wpisz w B2 parametr 20% wzrostu kosztu kategorii Materiały.",
+        "Współczynnik 1+B2 zastosuj tylko do kosztów jednostkowych faktur Materiały.",
+        "Oblicz dodatkowy koszt materiałów oraz nową marżę przy niezmienionych przychodach.",
+        "Sprawdź obie metody: nowa marża = stara marża − wzrost kosztów oraz przychód − koszty po zmianie."
+      ],
+      "expected": "7970.80",
+      "kind": "number",
+      "checks": [
+        "Bazowy koszt materiałów wynosi 5691 PLN",
+        "Wzrost kosztu o 20% wynosi 1138,20 PLN",
+        "Marża spada do 7970,80 PLN przy tym samym przychodzie"
+      ],
+      "mistakes": [
+        "Nie zmieniaj cen sprzedaży, jeśli scenariusz dotyczy tylko kosztu zakupu.",
+        "Nie pomyl procentowej zmiany kosztów z procentową zmianą marży."
+      ],
+      "example": "Przy koszcie 100 wzrost o 20% daje 120; marża spada o 20, jeśli cena sprzedaży się nie zmienia.",
+      "why": "Model scenariuszowy uczy rozróżnienia przyczyny i skutku.",
+      "delivery": "Zapisz Trenerki-Excel-27.xlsx z kartą Scenariusz i parametrem.",
+      "minutes": 30,
+      "review": "analytics",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-27.xlsx"
+    },
+    {
+      "lessonNo": 27,
+      "title": "Udostępniaj tylko do odczytu",
+      "goal": "Utrzymać kontrolę dostępu do arkusza ćwiczebnego",
+      "source": "basics",
+      "steps": [
+        "Przygotuj fikcyjny raport z arkusza startowego i zapisz jego kopię XLSX.",
+        "Wybierz w OneDrive lub SharePoint udostępnianie testowego pliku — bez dodawania rzeczywistych odbiorców.",
+        "Sprawdź, gdzie w Twojej wersji ustawia się uprawnienia do wyświetlania bez edycji.",
+        "Zapisz nazwę takiego poziomu uprawnienia w karcie Notatki i sprawdź widok ustawień.",
+        "Nie wysyłaj publicznego linku z rzeczywistymi danymi; na koniec anuluj testowe ustawienia, jeśli je utworzyłeś."
+      ],
+      "expected": "ODCZYT",
+      "kind": "access",
+      "checks": [
+        "Ustalono różnicę między Odczyt i Edycja",
+        "Nie udostępniono danych osobowych publicznie",
+        "W arkuszu Notatki zapisano, jak cofnąć użytkownikowi dostęp."
+      ],
+      "mistakes": [
+        "Nie zakładaj, że hasło do arkusza zastępuje prawa dostępu OneDrive.",
+        "Nie publikuj pracy w otwartym folderze z prawem edycji."
+      ],
+      "example": "Uprawnienie „Może wyświetlać” nie powinno umożliwiać zmiany komórek.",
+      "why": "Zasada najmniejszych uprawnień chroni budżety i dokumenty klientów.",
+      "delivery": "Zapisz Trenerki-Excel-28.xlsx z notatką o ustawieniach.",
+      "minutes": 17,
+      "review": "ux",
+      "alternates": [
+        "DO ODCZYTU",
+        "TYLKO DO ODCZYTU",
+        "MOŻE WYŚWIETLAĆ",
+        "ODCZYT"
+      ],
+      "starter": {
+        "file": "/academy/assets/excel-homework-basics.csv",
+        "label": "Arkusz startowy — koszty materiałów (CSV)"
+      },
+      "filename": "Trenerki-Excel-28.xlsx"
+    },
+    {
+      "lessonNo": 28,
+      "title": "Audyt czterech błędnych rekordów",
+      "goal": "Wykryć różne klasy błędów zamiast szukać jednej formuły",
+      "source": "errors",
+      "steps": [
+        "Zaimportuj CSV błędnych rekordów z typami kolumn dobranymi do danych.",
+        "Utwórz kartę Kontrola z kolumnami: Numer, Błąd, Skutek, Działanie.",
+        "Zaimportuj również plik 18 poprawnych faktur z linku „Plik porównawczy”. Sprawdź, czy numer FV-015 już istnieje w źródle — to duplikat przy próbie dołączenia błędnego CSV.",
+        "Zidentyfikuj złą ilość, pustego kontrahenta i brakującą cenę.",
+        "Policz wszystkie cztery problemy bez usuwania dowodów z pliku oryginalnego."
+      ],
+      "expected": "4",
+      "kind": "count",
+      "checks": [
+        "Porównując oba pliki, zidentyfikowano dokładnie cztery problemy, w tym powtórzony numer FV-015.",
+        "Każdy ma inny opis i działanie",
+        "Oryginalne wiersze pozostały dostępne do wglądu"
+      ],
+      "mistakes": [
+        "Nie usuwaj błędnych rekordów bez dziennika audytu.",
+        "Nie uznawaj pustej ceny za wartość zero."
+      ],
+      "example": "Zduplikowany numer może oznaczać drugi dokument lub błąd importu — wymaga wyjaśnienia.",
+      "why": "Audyt jakości poprzedza analizę przychodów.",
+      "delivery": "Zapisz Trenerki-Excel-29.xlsx z tabelą błędów i ich klasyfikacją.",
+      "minutes": 28,
+      "review": "data",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-errors.csv",
+        "label": "Błędne rekordy do audytu (CSV)"
+      },
+      "filename": "Trenerki-Excel-29.xlsx",
+      "comparisonStarter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "Plik porównawczy — 18 poprawnych faktur (CSV)"
+      }
+    },
+    {
+      "lessonNo": 29,
+      "title": "Raport końcowy z pięciu kart",
+      "goal": "Połączyć źródło, kontrolę, model, raport i opis metod",
+      "source": "sales",
+      "steps": [
+        "Zaimportuj 18 poprawnych faktur do karty Źródło i dodaj obliczane kolumny J oraz K.",
+        "Utwórz kartę Kontrola: sprawdź liczbę faktur, duplikaty i zgodność sum.",
+        "Utwórz kartę Model: wylicz SUMA przychodu, SUMA marży i koszty.",
+        "Utwórz kartę Raport: dodaj wykres miesięczny i tabelę przestawną lub zestawienie.",
+        "Utwórz kartę Metodyka: zapisz źródła danych, składnie formuł, założenia i sposób odświeżenia.",
+        "Zapisz XLSX i wyeksportuj czytelny PDF. Porównaj przychód z sumą na oryginalnym CSV."
+      ],
+      "expected": "28245",
+      "kind": "number",
+      "checks": [
+        "Skoroszyt zawiera pięć wymaganych kart",
+        "Przychód wynosi 28245 PLN, marża 9109 PLN",
+        "Raport ma wykres, kontrolę i dokumentację pochodzenia wyników",
+        "W wyeksportowanym PDF widać całe wiersze, nagłówki i sumy."
+      ],
+      "mistakes": [
+        "Nie wpisuj sum końcowych jako niepowiązanych wartości ręcznych.",
+        "Nie oddawaj samego PDF bez edytowalnego XLSX i opisu metod."
+      ],
+      "example": "Rzetelny raport zawiera dane źródłowe, obliczenia, kontrolę i gotowy widok dla odbiorcy.",
+      "why": "To praca końcowa łącząca wszystkie umiejętności z kursu.",
+      "delivery": "Zapisz Trenerki-Excel-30.xlsx oraz czytelny Trenerki-Excel-30.pdf.",
+      "minutes": 50,
+      "review": "analytics",
+      "alternates": [],
+      "starter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
+      },
+      "filename": "Trenerki-Excel-30.xlsx",
+      "bonusStarter": {
+        "file": "/academy/assets/excel-professional-368-import.csv",
+        "label": "Rozszerzenie PRO — 368 rekordów (8 anomalii, CSV)"
+      },
+      "bonusTask": "Dla chętnych po zakończeniu pracy: osobno zaimportuj 368 rekordów, wyjaśnij osiem anomalii, a następnie policz marżę na 360 poprawnych rekordach. Ten materiał nie zastępuje głównego zadania z 18 faktur i nie wpływa na jego ocenę."
+    }
+  ]
+}
