@@ -1731,12 +1731,12 @@ test('MOST D01-D36: samo konto 130 nie ukrywa blednego kontrkonta ani wyrownujac
  wrongAccount.journals.find(j=>j.source_id===bankRows[0].id).lines[1].account='201';
  const auditWrong=taxCloseTrainingAudit(wrongAccount,manifest);
  assert.equal(auditWrong.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
- assert.ok(auditWrong.issues.some(i=>i.code==='scenario_bank_source_accounts_or_amount_mismatch'&&i.invoice===bankRows[0].id));
+ assert.ok(auditWrong.issues.some(i=>i.code==='scenario_bank_posting_differs_from_private_model'&&i.invoice===bankRows[0].id));
  const compensated=structuredClone(state),j=compensated.journals.find(j=>j.source_id===bankRows[0].id);
  j.lines.push({account:'201',debit:100,credit:0},{account:'800',debit:0,credit:100});
  const auditExtra=taxCloseTrainingAudit(compensated,manifest);
  assert.equal(auditExtra.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
- assert.ok(auditExtra.issues.some(i=>i.code==='scenario_bank_source_accounts_or_amount_mismatch'));
+ assert.ok(auditExtra.issues.some(i=>i.code==='scenario_bank_posting_differs_from_private_model'));
  assert.equal(JSON.stringify(state),before,'Audit tylko czyta dane firmy');
 });
 test('MOST D01-D36: bez zweryfikowanego chronionego wzorca nie mozna potwierdzic dekretow',()=>{
@@ -1744,7 +1744,7 @@ test('MOST D01-D36: bez zweryfikowanego chronionego wzorca nie mozna potwierdzic
  delete without.journal_practice_v1;
  const result=taxCloseTrainingAudit(state,without);
  assert.equal(result.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
- assert.ok(result.issues.some(i=>i.code==='scenario_bank_reference_not_verified'));
+ assert.ok(result.issues.some(i=>i.code==='scenario_bank_private_model_invalid'));
 });
 test('MOST D01-D36: brak CSV lub dekretu i podwójny dekret blokują weryfikację',()=>{
  const {manifest,state,bankRows}=fixtureWithTrainingBankSources();
@@ -1758,7 +1758,7 @@ test('MOST D01-D36: brak CSV lub dekretu i podwójny dekret blokują weryfikacj�
  const twice=structuredClone(state),j=twice.journals.find(j=>j.source_id===bankRows[0].id);
  twice.journals.push({...j,id:'DOUBLE'});
  assert.ok(taxCloseTrainingAudit(twice,manifest).issues.some(x=>
-  x.code==='scenario_bank_journal_missing_duplicate_or_period'));
+  x.code==='scenario_bank_posting_missing_duplicate_or_invalid'));
 });
 test('MOST D01-D36: błędna kwota albo inna data nie przechodzą mimo równych sum',()=>{
  const {manifest,state,bankRows}=fixtureWithTrainingBankSources();
