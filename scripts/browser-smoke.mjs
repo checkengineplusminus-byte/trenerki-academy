@@ -22,13 +22,22 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
    const images=cards.locator('.card-photo');
    await images.first().waitFor();
    await images.evaluateAll(nodes=>nodes.forEach(img=>{img.loading='eager';}));
-   await page.waitForFunction(()=>{
-    const courseCards=[...document.querySelectorAll('#course-cards .course-card')];
-    return courseCards.length>0&&courseCards.every(card=>{
+   try{
+    await page.waitForFunction(()=>{
+     const courseCards=[...document.querySelectorAll('#course-cards .course-card')];
+     return courseCards.length>0&&courseCards.every(card=>{
+      const img=card.querySelector('.has-course-photo .card-photo');
+      return img?.complete&&img.naturalWidth>0;
+     });
+    },null,{timeout:10000});
+   }catch(error){
+    const broken=await cards.evaluateAll(nodes=>nodes.map(card=>{
      const img=card.querySelector('.has-course-photo .card-photo');
-     return img?.complete&&img.naturalWidth>0;
-    });
-   },null,{timeout:10000});
+     return {course:card.dataset.courseId,url:img?.currentSrc||img?.src||'none',complete:img?.complete||false,
+      width:img?.naturalWidth||0};
+    }).filter(x=>!x.complete||!x.width));
+    throw new Error(category+': photos failed to load '+JSON.stringify(broken)+'; '+String(error.message||error));
+   }
    for(const {slug,file,width,height} of await images.evaluateAll(nodes=>nodes.map(img=>({
     slug:img.closest('.course-card').dataset.courseId,file:new URL(img.currentSrc).pathname,
     width:img.naturalWidth,height:img.naturalHeight,
@@ -48,12 +57,14 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
       assert(width>=1280&&height>=720&&width/height>1.6&&width/height<2.1,slug+': crisp real Excel screenshot');
     }else{
       assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
+      if(slug==='ksiegowosc-od-podstaw')assert.equal(file,'/academy/photos/ksiegowosc-od-podstaw.webp','Accounting must use its own generated WebP');
       assert.equal(width*9,height*16,slug+': course card photo ratio');
     }
     seen.push(slug);
    }
   }
-  assert.deepEqual(seen.sort(),expectedSlugs.slice().sort(),'Every published course card must load its own photo');
+  assert.deepEqual(seen.sort(),[...expectedSlugs,'ksiegowosc-od-podstaw'].sort(),
+  'All 81 standard course cards and the additional official accounting course must load their distinct photos');
  }finally{await page.close();}
 }
 
@@ -234,12 +245,22 @@ async function verify(name,viewport,isMobile){
   await page.waitForFunction(()=>document.querySelector('#anielka-output')?.textContent?.includes('Ponieważ chcesz używać Excela'),{timeout:9000});
   const excelCard=page.locator('#course-cards [data-course-id="excel-skroty"]');
   await excelCard.locator('.card-media').scrollIntoViewIfNeeded();
-  const icon=excelCard.locator('.course-icon-art');
-  await icon.waitFor({state:'visible',timeout:7000});
-  const usable=await icon.evaluate(node=>{
-   try{const b=node.getBBox();return b.width>0&&b.height>0;}catch{return false;}
-  });
-  assert(usable,'Missing photo must show its course-specific SVG fallback');
+  // Excel now uses a genuine licensed screenshot; verify the rendered photo,
+  // falling back to the legacy SVG only for older entries without a photo.
+  const photo=excelCard.locator('img.card-photo');
+  if(await photo.count()){
+   await photo.evaluate(img=>{img.loading='eager';});
+   await photo.waitFor({state:'visible',timeout:7000});
+   const ready=await photo.evaluate(img=>img.complete&&img.naturalWidth>0&&img.naturalHeight>0);
+   assert(ready,'The Excel course screenshot must render, not merely have a URL');
+  }else{
+   const icon=excelCard.locator('.course-icon-art');
+   await icon.waitFor({state:'visible',timeout:7000});
+   const usable=await icon.evaluate(node=>{
+    try{const b=node.getBBox();return b.width>0&&b.height>0;}catch{return false;}
+   });
+   assert(usable,'Course without a photo must show its course-specific SVG fallback');
+  }
   const width=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(width.scroll<=width.client+3,'Horizontal overflow: '+JSON.stringify(width));
   await page.locator('#anielka-output [data-anielka-course="excel-skroty"]').first().click();
@@ -301,7 +322,10 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('.support-grid').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),isMobile?1:2);
   await page.getByRole('button',{name:'Uzależnienia',exact:true}).focus();
   await page.keyboard.press('Enter');
-  await page.waitForFunction(()=>document.querySelectorAll('.support-category').length===1&&document.querySelector('#uzaleznienia'));
+  // Check the user's visible filtered result, not the number of hidden/retained DOM nodes.
+  const visibleSections=page.locator('.support-grid .support-category:visible');
+  await page.getByRole('heading',{name:'Uzależnienia',exact:true}).waitFor({state:'visible',timeout:10000});
+  assert.equal(await visibleSections.count(),1,'Filter should show exactly one support category');
   assert.equal(await page.locator('a[href="tel:112"]').count(),1,'Emergency number must stay visible under filtering');
   const supportWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(supportWidth.scroll<=supportWidth.client+3,'Public help page horizontal overflow');

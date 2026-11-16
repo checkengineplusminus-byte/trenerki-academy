@@ -32,7 +32,8 @@ assert.equal(catalog.length,81,'Expected 81 exported courses');
 assert(academy.includes('class="course-icon-art"'),'Catalog does not preserve topic-specific fallback icons');
 const photoManifest=JSON.parse(required('academy/course-photo-manifest.json'));
 assert.equal(photoManifest.version,1,'Unsupported course photo manifest version');
-assert.deepEqual(Object.keys(photoManifest.courses).sort(),catalog.map(course=>course.id).sort(),'Photo manifest must match the exported catalog');
+assert.deepEqual(Object.keys(photoManifest.courses).sort(),[...catalog.map(course=>course.id),'ksiegowosc-od-podstaw'].sort(),
+ 'Photo manifest must cover the original 81 courses and the additional official accounting course');
 const photoDigests=new Set();
 for(const course of catalog){
  const photo=photoManifest.courses[course.id];
@@ -55,6 +56,23 @@ for(const course of catalog){
  assert(!photoDigests.has(digest),'The same photo is used on more than one course: '+course.id);
  photoDigests.add(digest);
 }
+// Accounting is a separate official course card, not one of the original 81.
+// Require its OWN generated image, never a reused stock photo or external URL.
+const accountingPhoto=photoManifest.courses['ksiegowosc-od-podstaw'];
+assert.equal(accountingPhoto.file,'ksiegowosc-od-podstaw.webp','Missing accounting photo filename');
+assert.equal(accountingPhoto.origin,'generated_inhouse','Accounting thumbnail must be generated in-house');
+assert(typeof accountingPhoto.alt==='string'&&accountingPhoto.alt.includes('kalkulator'),
+ 'Accounting photo must have a descriptive alt');
+assert(!('license' in accountingPhoto||'source_page' in accountingPhoto||'photographer' in accountingPhoto),
+ 'Accounting thumbnail must not depend on stock-photo metadata');
+const accountingImage=readFileSync(join(root,'academy/photos',accountingPhoto.file));
+assert(accountingImage.length>100&&accountingImage.toString('ascii',0,4)==='RIFF'&&
+ accountingImage.toString('ascii',8,12)==='WEBP','Missing/broken generated accounting WebP');
+const accountingDigest=createHash('sha256').update(accountingImage).digest('hex');
+assert(!photoDigests.has(accountingDigest),'Accounting thumbnail must be unique');
+photoDigests.add(accountingDigest);
+assert(!/^https?:\/\//.test(accountingPhoto.file),'Accounting thumbnail must not be an external URL');
+
 assert(!academy.includes('<span class="card-emoji" role="img"'),'Obsolete emoji icons are still in use');
 for(let i=1;i<=5;i++){
  const sprite=required('academy/course-icons-'+i+'.svg');
@@ -87,6 +105,6 @@ assert(volunteerLegacy.includes('/materialy-wolontariusza'),'Legacy material URL
 assert(volunteerLegacy.length<4000&&!/<fieldset|data-answer|data-view|<textarea/.test(volunteerLegacy),
  'Private volunteer lessons and answers must not be shipped as public HTML');
 console.log('✓ Expo export includes the academy catalog, search assets and course visuals');
-console.log('✓ '+photoDigests.size+' distinct local course photos plus the verified CC0 Excel screenshot, with SVG fallbacks');
+console.log('✓ '+photoDigests.size+' distinct local course photos including the originally generated accounting image, plus verified original Excel screenshot, with SVG fallbacks');
 console.log('✓ Reference illustrations for wooden wheel and timber roof included');
 console.log('✓ All 3 real AutoCAD DXF drawings and 3 original interface screenshots are included in Expo export');

@@ -417,6 +417,11 @@
       "file": "jestem-eko.webp",
       "alt": "Odkładanie tekturowego pudełka do pojemnika do segregacji",
       "iconBundle": 5
+    },
+    "ksiegowosc-od-podstaw": {
+      "file": "ksiegowosc-od-podstaw.webp",
+      "alt": "Własna wygenerowana scena księgowa: kalkulator, dokumenty, monety i segregatory",
+      "origin": "generated_inhouse"
     }
   }
 }

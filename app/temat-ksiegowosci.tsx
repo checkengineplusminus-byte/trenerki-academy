@@ -1,5 +1,5 @@
 import React,{useCallback,useEffect,useRef,useState} from 'react';
-import {ActivityIndicator,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
+import {ActivityIndicator,Image,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
@@ -12,8 +12,24 @@ import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accoun
 import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework-worksheet.js';
 // @ts-ignore — only suggests the correct existing tab; auth remains server-side.
 import {recommendedLabTab,LAB_TAB_NAMES} from '../src/accounting/lab-navigation.js';
+// @ts-ignore — strictly validates in-house generated and locally bundled photo IDs.
+import {topicPhotoAssetId} from '../src/accounting/topic-media.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
+// Static require() is intentionally used for Expo Web, Android and iOS bundling.
+// Assets never come from externally supplied URLs or user-generated HTML.
+const GENERATED_PHOTO_ASSETS:Record<string,number>=Object.freeze({
+ 'accounting-desk-01':require('../assets/accounting/generated/accounting-desk-01.webp'),
+ 'accounting-archive-02':require('../assets/accounting/generated/accounting-archive-02.webp'),
+});
+function SectionPhoto({photo}:{photo:any}){
+ const assetId=topicPhotoAssetId(photo);
+ const [failed,setFailed]=useState(false);
+ useEffect(()=>{setFailed(false);},[assetId]);
+ const source=assetId?GENERATED_PHOTO_ASSETS[assetId]:null;
+ if(!source||failed)return null;
+ return <Image accessible accessibilityLabel={photo.alt} source={source} onError={()=>setFailed(true)} resizeMode="cover" style={s.sectionPhoto}/>;
+}
 type Answer={exercise_id:string;answer:string};
 type Homework={response:string;version:number;submitted_at:string|null;updated_at:string}|null;
 function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:number;userId:string;initial:string;onSaved:(id:string,answer:string)=>void}){
@@ -182,7 +198,14 @@ export default function TematKsiegowosci(){
    <View style={s.card}><Text style={s.body}>{m.intro||lesson.body_text}</Text></View>
    {(m.sections||[]).map((section:any,i:number)=><View key={i} style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>{section.heading}</Text>
-    {(section.paragraphs||[]).map((p:string,j:number)=><Text key={j} selectable style={s.body}>{p}</Text>)}
+    {(section.paragraphs||[]).filter((p:string)=>!(section.curiosity?.text&&p.startsWith('Ciekawostka:')&&p.includes(section.curiosity.text))).map((p:string,j:number)=><Text key={j} selectable style={s.body}>{p}</Text>)}
+    {typeof section.curiosity?.text==='string'&&section.curiosity.text.trim()?<View style={s.curiosityBox}>
+      <Text style={s.curiosityTitle}>CIEKAWOSTKA</Text>
+      <Text selectable style={s.body}>{section.curiosity.text}</Text>
+      {section.curiosity.source_ref?<Text style={s.curiositySource}>Źródło: {section.curiosity.source_ref}</Text>:null}
+      {sourceURL(section.curiosity.source_url)&&/^https:\/\/(eli\.gov\.pl|eur-lex\.europa\.eu|uodo\.gov\.pl|www\.uodo\.gov\.pl)\//i.test(section.curiosity.source_url)?<Pressable accessibilityRole="link" onPress={()=>Linking.openURL(section.curiosity.source_url)}><Text style={s.link}>Sprawdź źródło urzędowe</Text></Pressable>:null}
+    </View>:null}
+    <SectionPhoto photo={section.photo}/>
    </View>)}
    {(m.tables||[]).map((table:any,i:number)=><View key={i} style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>{table.title}</Text>
@@ -284,6 +307,10 @@ const s=StyleSheet.create({
  body:{fontSize:16,lineHeight:26,color:'#274734'},small:{fontSize:12,lineHeight:20,color:'#56715b'},
  label:{fontSize:14,fontWeight:'800',color:'#1e422d'},
  card:{borderRadius:15,borderWidth:1,borderColor:'#dbe7d2',padding:18,backgroundColor:'white',gap:13,marginBottom:14},
+ curiosityBox:{backgroundColor:'#f2f7e9',borderRadius:12,padding:14,gap:5,marginVertical:12,borderLeftWidth:4,borderLeftColor:'#69a33a'},
+ curiosityTitle:{fontWeight:'800',color:'#27551c',fontSize:13,letterSpacing:0.8},
+ curiositySource:{color:'#36523b',fontSize:12,fontWeight:'600'},
+ sectionPhoto:{width:'100%',aspectRatio:16/9,borderRadius:12,backgroundColor:'#edf3e8'},
  practice:{padding:20,borderRadius:15,backgroundColor:'#e8f2df',gap:12,marginBottom:14},
  result:{fontSize:16,lineHeight:26,fontWeight:'800',color:'#1b5332',backgroundColor:'#ebf4e3',padding:13,borderRadius:10},
  tableRow:{flexDirection:'row'},cell:{width:210,padding:12,borderBottomWidth:1,borderBottomColor:'#dee8d9',fontSize:14,lineHeight:22,color:'#274734'},

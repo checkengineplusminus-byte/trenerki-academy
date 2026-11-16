@@ -42,7 +42,17 @@ async function verifyAnonymousCourse(ctx){
 
 async function verifyIntroPhoto(page,slug){
  const photo=page.getByTestId('course-intro-photo').locator('img');
- await photo.waitFor();
+ try{
+  await photo.waitFor();
+ }catch(error){
+  const diagnostic=await page.evaluate(()=>({
+   pathname:location.pathname,
+   introContainers:document.querySelectorAll('[data-testid="course-intro-photo"]').length,
+   introImages:document.querySelectorAll('[data-testid="course-intro-photo"] img').length,
+   lessonHeading:document.querySelector('[data-testid="lesson-heading"]')?.textContent?.slice(0,90)||''
+  }));
+  throw new Error('Intro image missing for '+slug+'; '+JSON.stringify(diagnostic)+'; '+String(error.message||error));
+ }
  const actual=await photo.evaluate(async img=>{
   await img.decode();
   const frame=img.getBoundingClientRect();
@@ -425,8 +435,12 @@ async function verifyAllCourses(ctx){
   const heading=page.getByTestId('lesson-heading');
   await heading.waitFor();
   assert.equal(await heading.innerText(),course.outline[0],course.id+': opening title');
-  if(course.id==='autocad-skroty')assert.equal(await page.getByTestId('course-intro-photo').count(),0,'AutoCAD study page must not repeat the catalog cover photo');
-  else await verifyIntroPhoto(page,course.id);
+  if(course.id==='autocad-skroty'||course.id==='excel-skroty'){
+   // Both applications have their original interface screenshots inside the lessons;
+   // the shared generated catalogue-cover component intentionally does not duplicate them.
+   assert.equal(await page.getByTestId('course-intro-photo').count(),0,
+    course.id+': no duplicated or substituted intro cover instead of original software screenshot');
+  }else await verifyIntroPhoto(page,course.id);
   const material=sample(course.id);
   const q=material.construction?.roleplay??material.learning;
   assert(q?.options?.[q.correct],course.id+': valid first checkpoint');
