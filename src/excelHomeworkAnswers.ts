@@ -13,8 +13,8 @@ const simplify=(value:string)=>String(value??'').trim().toLocaleUpperCase('pl-PL
  .replace(/[−–—]/g,'-').replace(/\s+/g,' ');
 export const homeworkLabel=(kind:ExcelHomeworkKind)=>kind==='number'?'Końcowa kwota albo liczba z własnego arkusza':
  kind==='count'?'Liczba policzonych elementów':kind==='percent'?'Procent z arkusza':
- kind==='formula'?'Pełna formuła z własnego Excela':kind==='address'?'Adres komórki':
- kind==='identifier'?'Kod lub numer dokumentu':kind==='file'?'Format pliku':
+ kind==='formula'?'Pełna formuła z własnego Excela':kind==='address'?'Adres komórki w arkuszu':
+ kind==='identifier'?'Kod lub numer dokumentu':kind==='file'?'Format zapisywanego pliku':
  kind==='error'?'Kod błędu Excel':kind==='access'?'Poziom uprawnień':'Nazwa miesiąca lub kategorii';
 export const homeworkPlaceholder=(kind:ExcelHomeworkKind)=>kind==='number'?'np. 1200,50 zł':kind==='count'?'np. 4':
  kind==='percent'?'np. 37,5%':kind==='formula'?'np. =C3*D3':
