@@ -11,6 +11,7 @@ import {acquisitionLines,assetFacts} from './assets-core.js';
 import {normalizeIdentity} from './identity-core.js';
 import {inspectScenarioInvoiceBridge} from './scenario-invoice-bridge.js';
 import {inspectScenarioCorrectionBridge} from './scenario-correction-bridge.js';
+import {inspectScenarioUnlinkedSources} from './scenario-unlinked-sources.js';
 
 const monthOf=date=>typeof date==='string'&&/^\d{4}-(0[1-9]|1[0-2])-\d{2}$/.test(date)?date.slice(0,7):null;
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
@@ -94,6 +95,7 @@ const MONTH_CLOSE_GUIDANCE = Object.freeze([
  ["scenario_bank_ledger","Połączenie D01–D36 z bankiem","Pobierz wyciąg scenariusza D01–D36, zaimportuj go do tego samego biura i połącz wszystkie pozycje z prawidłowymi dekretami.","bank",null],
  ["scenario_invoice_ledger","Połączenie D01–D36 z fakturami","Dla każdego dowodu kupna i sprzedaży scenariusza wskaż fakturę z tego okresu oraz jej aktywny dekret w Dzienniku.","invoices",null],
  ["scenario_correction_ledger","Korekta D01–D36","Powiąż korektę z dokumentem pierwotnym i wykonaj osobny poprawny dekret; nie traktuj korekty jako nowej niezależnej sprzedaży.","journal",null],
+ ["scenario_other_source_links","Pozostałe dowody D01–D36","Samo rozwiązanie 36 decyzji nie dowodzi ujęcia pozostałych źródeł (m.in. kadr, majątku, magazynu i zamknięcia) w tym samym biurze. Wymagane są osobne sprawdzalne połączenia; ten etap nie jest jeszcze udostępniony do zaliczenia.","simulator",null],
  ["scenario_same_period","Jeden wspólny miesiąc","Rozwiąż 36 decyzji i kontroli scenariusza. Daty faktur, banku, płac, majątku i wzorca muszą dotyczyć tego samego miesiąca.","simulator",null],
 ]);
 
@@ -325,6 +327,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  const bankBridge=inspectScenarioBankBridge(state,scenario,period);
  const invoiceBridge=inspectScenarioInvoiceBridge(state,scenario,period);
   const correctionBridge=inspectScenarioCorrectionBridge(state,scenario,period);
+ const otherSources=inspectScenarioUnlinkedSources(scenario);
   const steps=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  const checks=[
   {key:'period',label:'Jeden miesiąc źródłowy',passed:!!period,detail:period||'Najpierw wystaw ćwiczeniowe dokumenty.'},
@@ -373,6 +376,12 @@ export function taxCloseTrainingAudit(raw,scenario=null){
     passed:correctionBridge.passed,
     detail:'Korekty z powiązaną fakturą i aktywnym, sprawdzonym dekretem: '+correctionBridge.matched+'/'+correctionBridge.total+
      '. To weryfikacja modelu ucznia, nie wystawienie faktury korygującej ani kwalifikacja VAT.'},
+   {key:'scenario_other_source_links',label:'D01–D36: pozostałe dowody mają własny ślad źródłowy',
+    passed:otherSources.passed&&otherSources.status==='categories_covered_by_existing_bridges',
+    detail:'Bez osobnego mostu źródłowego pozostaje '+otherSources.pending+'/'+otherSources.total+
+      ' dokumentów ('+otherSources.pending_doc_ids.join(', ')+'). Kategoriami do wdrożenia są: '+
+      Object.entries(otherSources.pending_by_kind).map(([kind,count])=>kind+' '+count).join('; ')+
+      '. Rozwiązane ćwiczenie Wn/Ma nie jest dowodem zaksięgowania w biurze.'},
    {key:'scenario_same_period',label:'36 dokumentów i zamknięcie z TEGO miesiąca',
    passed:!!period&&steps.month==='passed_training'&&
     (scenario?.scenario??scenario)?.documents?.length===36&&
