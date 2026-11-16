@@ -4,6 +4,27 @@ import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {ACCOUNTING_COURSE as A,courseDestination,accountingProgress,courseFinished} from '../src/accounting/course-entry.js';
 import {materialCoverageKnown,materialCount} from '../src/accounting/program-visibility.js';
+test('Główne strony programu i tematu księgowości są objęte logowaniem i RLS',()=>{
+ const layout=readFileSync(new URL('../app/_layout.tsx',import.meta.url),'utf8');
+ const open='<Stack.Protected guard={signedIn} redirectTo="/konto">';
+ const start=layout.indexOf(open);
+ assert.ok(start>=0,'Wspólna blokada sesji i przekierowanie na logowanie');
+ const end=layout.indexOf('</Stack.Protected>',start);
+ assert.ok(end>start,'Zamknięcie bloku chronionych ekranów');
+ const secured=layout.slice(start,end);
+ for(const route of ['ksiegowosc','program-ksiegowosci','temat-ksiegowosci','sciezka-ksiegowosci','biuro-ksiegowe','dane-biura','majatek-ksiegowy','slownik-ksiegowego','formularze-ksiegowego']){
+  const screen='<Stack.Screen name="'+route+'"/>';
+  assert.ok(secured.includes(screen),'Ekran wymaga logowania: '+route);
+  assert.equal(layout.split(screen).length,2,'Ekran deklarowany dokładnie raz: '+route);
+ }
+ assert.ok(layout.includes('supabase.auth.onAuthStateChange'),'Wylogowanie powinno odświeżać guard');
+ assert.ok(layout.includes('supabase.auth.getSession()'),'Sesja jest inicjalizowana przed otwarciem widoków');
+ assert.ok(layout.indexOf('<Stack.Screen name="konto"/>')<start,'Logowanie musi pozostać publiczne');
+ for(const route of ['program-ksiegowosci','temat-ksiegowosci']){
+  const code=readFileSync(new URL('../app/'+route+'.tsx',import.meta.url),'utf8');
+  assert.ok(code.includes('supabase.auth.getUser()'),'Ekran ponownie weryfikuje użytkownika: '+route);
+ }
+});
 test('Encyklopedia otwiera właściwy czytnik',()=>assert.deepEqual(courseDestination(A),{pathname:'/ksiegowosc'}));
 test('Funkcja nawigacji zachowuje prawidłowy numer lekcji',()=>assert.deepEqual(courseDestination(A,'20'),{pathname:'/ksiegowosc',params:{lesson:'20'}}));
 test('Dolna i górna granica numeru lekcji',()=>{for(const n of ['1','100000'])assert.equal(courseDestination(A,n).params.lesson,n);});
