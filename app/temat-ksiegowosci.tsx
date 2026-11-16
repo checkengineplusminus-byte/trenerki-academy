@@ -1,5 +1,5 @@
 import React,{useCallback,useEffect,useRef,useState} from 'react';
-import {ActivityIndicator,Linking,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
+import {ActivityIndicator,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
@@ -8,6 +8,8 @@ import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/rea
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 // @ts-ignore — pure homework validation; authority remains the Supabase RPC.
 import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accounting/homework-core.js';
+// @ts-ignore — pure CSV template; no answers, private records, or keys are exported.
+import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework-worksheet.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
 type Answer={exercise_id:string;answer:string};
@@ -134,6 +136,26 @@ export default function TematKsiegowosci(){
      'Nie udało się zapisać pracy. Skopiuj tekst przed odświeżeniem. ')+(err?.message||''));
   }finally{if(run===serial.current)setHomeworkBusy(false);}
  }
+ function downloadHomeworkWorksheet(){
+  if(topic===null||!lesson||!lesson.material?.practice)return;
+  if(Platform.OS!=='web'||typeof document==='undefined'||typeof window==='undefined'){
+   setHomeworkError('Arkusz CSV pobierzesz po otwarciu kursu w przeglądarce.');
+   return;
+  }
+  try{
+   const csv=buildHomeworkCsv(topic,lesson.title_pl,lesson.material.practice);
+   const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+   const url=URL.createObjectURL(blob);
+   const a=document.createElement('a');
+   a.href=url;a.download=homeworkSheetFilename(topic);a.style.display='none';
+   document.body.appendChild(a);
+   a.click();a.remove();
+   window.setTimeout(()=>URL.revokeObjectURL(url),5000);
+   setHomeworkError('');
+  }catch{
+   setHomeworkError('Nie można przygotować arkusza. Skorzystaj z polecenia wyświetlonego w lekcji.');
+  }
+ }
  const m=lesson?.material||{};
  const savedRows=topic!==null?Object.entries(answers).map(([exercise_id,answer])=>({topic_no:topic,exercise_id,answer})):[];
  const progress=buildCorePracticeProgress(
@@ -176,6 +198,12 @@ export default function TematKsiegowosci(){
     <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
     <Link href="/biuro-ksiegowe" style={s.link}>Otwórz biuro ćwiczeniowe</Link>
+    <Text style={s.label}>Zrób zadanie również we własnym Excelu</Text>
+    <Text style={s.small}>1. Pobierz arkusz z poleceniem i kolumnami dopasowanymi do tego działu. 2. Otwórz CSV w Excelu, Arkuszach Google lub LibreOffice. 3. Uzupełnij własne obliczenia, wykonaj kontrolę i zapisz plik na urządzeniu. 4. Opisz rozwiązanie poniżej i oddaj pracę domową na koncie.</Text>
+    {Platform.OS==='web'&&<Pressable accessibilityRole="button" onPress={downloadHomeworkWorksheet} style={s.button}>
+     <Text style={s.buttonText}>Pobierz arkusz pracy domowej (Excel / CSV)</Text>
+    </Pressable>}
+    <Text style={s.small}>Arkusz jest pustym szablonem. Zawiera polecenie, ale nie zawiera odpowiedzi ani danych osobowych i nie przesyła Twojego pliku na serwer.</Text>
     <Text style={s.small}>Możesz pracować na własnym arkuszu Excel, ale nie wpisuj rzeczywistych danych klientów. W polu poniżej zapisz swoje obliczenia, kroki, wynik i kwestie wymagające wyjaśnienia. Przeniesienie do biura nie wykonuje zadania.</Text>
     {!homeworkReady?<Text style={s.warning}>Nie potwierdzono jeszcze odczytu Twojej wcześniejszej pracy. Zapis jest wyłączony.</Text>:<>
      <Text style={s.label}>Twoje rozwiązanie (wersja {homework?.version||'nowa'})</Text>

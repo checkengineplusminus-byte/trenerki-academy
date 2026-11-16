@@ -291,6 +291,15 @@ test('Zadania domowe: 100 tematów bez podwójnego naliczania i bez fikcyjnego d
   {submitted:1,total:100,topics:[7]});
  assert.equal(homeworkProgress(null,100),null);
 });
+test('Samodzielne ćwiczenie księgowości: arkusz lokalny dostępny w każdej lekcji',()=>{
+ const ui=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
+ const exporter=readFileSync(new URL('../src/accounting/homework-worksheet.js',import.meta.url),'utf8');
+ assert.match(ui,/buildHomeworkCsv\(topic,lesson\.title_pl,lesson\.material\.practice\)/);
+ assert.match(ui,/Pobierz arkusz pracy domowej \(Excel \/ CSV\)/);
+ assert.match(ui,/onPress=\{downloadHomeworkWorksheet\}/);
+ assert.match(exporter,/Samokontrola/);
+ assert.doesNotMatch(exporter,/service_role|auth\.getUser|supabase\.from/);
+});
 test('Praktyka 100 tematów jest w czytniku, zapisywana przez RPC CAS, bez obejścia sesji',()=>{
  const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
  assert.ok(code.includes("supabase.rpc('ta_accounting_core_homework_save'"));
