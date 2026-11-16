@@ -256,16 +256,16 @@ async function checkRealHomework(page,p,round){
  const csv=await file.text();assert(csv.length>50&&csv.includes(';'));
  await answer.fill('TO-NIE-JEST-ODPOWIEDŹ');
  await lab.getByTestId('excel-homework-check').click();
- await lab.getByTestId('excel-homework-feedback').getByText(/Uwaga:/).waitFor();
+ await lab.getByTestId('excel-homework-feedback').filter({hasText:/Uwaga:/}).waitFor();
  const correct=round===2&&assignment.kind==='number'?assignment.expected+' zł':
   round===2&&assignment.kind==='percent'?assignment.expected+'%':assignment.expected;
  await answer.fill(correct);
  await lab.getByTestId('excel-homework-check').click();
- await lab.getByTestId('excel-homework-feedback').getByText(/Zgadza się|Odpowiedź jest zgodna|Prawidłowy zapis|Dobrze|Tak\. To angielski/).waitFor();
+ await lab.getByTestId('excel-homework-feedback').filter({hasText:/Zgadza się|Odpowiedź jest zgodna|Prawidłowy zapis|Dobrze|Tak\. To angielski/}).waitFor();
  await lab.getByTestId('excel-homework-step-0').click();
- await lab.getByTestId('excel-homework-step-progress').getByText(/1\//).waitFor();
+ await lab.getByTestId('excel-homework-step-progress').filter({hasText:/1\//}).waitFor();
  await lab.getByTestId('excel-homework-criterion-0').click();
- await lab.getByTestId('excel-homework-criterion-progress').getByText(/1\//).waitFor();
+ await lab.getByTestId('excel-homework-criterion-progress').filter({hasText:/1\//}).waitFor();
  await lab.getByTestId('excel-homework-solution-toggle').click();
  await lab.getByTestId('excel-homework-solution').waitFor();
  console.log('✓ Cykl '+round+' · '+p.id+' · zadanie domowe '+(p.lesson+1)+'/30: plik CSV, instrukcja, walidacja, kryteria');
