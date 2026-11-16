@@ -97,7 +97,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(points.length<2||distance(points[0],points[1])<.001){setMessage('Wymiar wymaga dwóch różnych punktów.');return;}
   const shape:CadShape={id:nextId.current++,kind:'dimension',points:[points[0],points[1],placement],layer,aligned:tool==='dimaligned'};
   const label=dimensionGeometry(shape).label;
-  store([...shapes,shape]);setSelected(shape.id);setTool('select');setPoints([]);
+  store([...shapes,shape]);setSelected(undefined);setTool('select');setPoints([]);
   setMessage('Dodano wymiar '+label+' jednostek modelu. DIST służy do pomiaru dwóch punktów.');
  }
  function erase(){
