@@ -62,7 +62,7 @@ export default function ExcelProfessionalMission({lessonNo}:{lessonNo:number}){
      <Text style={{color:'#8c4e29',fontWeight:'900',fontSize:13}}>Jeszcze nie — sprawdź rodzaj odpowiedzi i obliczenia.</Text>
      <Text testID="excel-mission-answer-feedback" style={{color:'#825e47',fontSize:13,lineHeight:21}}>{feedbackText}</Text>
      <Text style={{color:'#825e47',fontSize:13,lineHeight:21}}><Text style={{fontWeight:'900'}}>Podpowiedź do zadania: </Text>{mission.hint}</Text>
-    </View>
+    </View>}
     {result==='right'&&<View testID="excel-mission-correct" accessibilityLiveRegion="polite" style={{backgroundColor:'#eef8ee',padding:11,borderRadius:9,gap:7}}>
      <Text style={{color:'#236244',fontSize:14,fontWeight:'900'}}>✓ Odpowiedź pasuje do wyniku kontrolnego.</Text>
      <Text style={{color:'#2d5540',fontSize:13,lineHeight:21}}>{feedbackText}</Text>
@@ -85,7 +85,7 @@ export default function ExcelProfessionalMission({lessonNo}:{lessonNo:number}){
      <Text style={{color:'#24638a',fontWeight:'800',fontSize:12,textDecorationLine:'underline'}}>Dokumentacja funkcji Microsoft Excel ↗</Text>
     </Pressable>
    </View>}
-   <Text style={{color:'#587162',fontSize:11,lineHeight:18}}>To samokontrola: sprawdzamy poprawność wpisanej odpowiedzi, nie obserwujemy faktycznego pliku w Excelu. Zaznaczenie kroków oznacza wykonanie ich według Twojej deklaracji, nie jest automatyczną weryfikacją. Ćwiczenie nie zastępuje egzaminu kursowego ani licencjonowanego Excela.</Text>
+   <Text style={{color:'#587162',fontSize:11,lineHeight:18}}>To samokontrola: sprawdzamy poprawność wpisanej odpowiedzi, nie obserwujemy faktycznego pliku w Excelu. Zaznaczenie kroków oznacza wykonanie ich według Twojej deklaracji, nie jest automatyczną weryfikacją. Zaznaczenie kroków i odpowiedź nie zastępują egzaminu kursowego ani licencjonowanego Excela.</Text>
   </View>
  </View>;
 }
