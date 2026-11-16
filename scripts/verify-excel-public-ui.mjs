@@ -1,47 +1,52 @@
 #!/usr/bin/env node
 /**
- * Read-only production smoke test. Unlike synthetic course tests, this checks
- * what a visitor can actually download from trainerki.com.
- * It does not log in or read personal data.
+ * Read-only production smoke test. Validates actual public JS, not synthetic
+ * CI code. Checks BOTH homework component and top-of-lesson quick-access button.
+ * Retries while Expo deploy/CDN updates propagate. No credentials or user data.
  */
-import assert from 'node:assert/strict';
 const origin=process.env.TRENERKI_PUBLIC_ORIGIN||'https://trenerki.com';
-const signature='excel-real-homework-'; // Added only by the real-homework release
-async function request(url) {
- const response=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(25000)});
- assert(response.ok, 'HTTP '+response.status+' for '+url);
+const signatures=['excel-real-homework-','excel-homework-quick-access'];
+const retries=Math.max(1,Math.min(20,Number(process.env.TRENERKI_LIVE_RETRIES||14)));
+const delay=Number(process.env.TRENERKI_LIVE_DELAY_MS||15000);
+async function request(url){
+ const response=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(22000),
+  headers:{'cache-control':'no-cache, max-age=0','user-agent':'TRENERKI-Excel-live-verifier'}});
+ if(!response.ok)throw Error('HTTP '+response.status+' '+url);
  return await response.text();
 }
-function referencedScripts(html,base){
+function scriptsFrom(html,base){
  const refs=[];
- for(const match of html.matchAll(/<script\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/gi))refs.push(match[1]);
- for(const match of html.matchAll(/<link\b[^>]*\bhref\s*=\s*["']([^"']+\.js(?:\?[^"']*)?)["']/gi))refs.push(match[1]);
- return [...new Set(refs.map(u=>new URL(u,base).href))].filter(u=>u.startsWith(origin)&&/\.js(?:$|\?)/.test(u));
+ for(const m of html.matchAll(/<script\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/gi))refs.push(m[1]);
+ for(const m of html.matchAll(/<link\b[^>]*\bhref\s*=\s*["']([^"']+\.js(?:\?[^"']*)?)["']/gi))refs.push(m[1]);
+ return [...new Set(refs.map(x=>new URL(x,base).href))]
+  .filter(u=>u.startsWith(origin)&&/\.js(?:$|\?)/.test(u));
 }
-let errors=[],found=false,checked=0;
-for(const route of ['/nauka','/nauka.html']){
- try{
-  const url=origin+route,html=await request(url);
-  console.log('Live route '+url+': '+html.length+' HTML characters');
-  if(html.includes(signature)){found=true;break;}
-  const scripts=referencedScripts(html,url);
-  console.log('Found '+scripts.length+' referenced JavaScript assets');
-  for(const script of scripts.slice(0,40)){
-   try {
-    const code=await request(script);checked++;
-    if(code.includes(signature)){
-     console.log('Verified real homework UI marker in live JS: '+script);
-     found=true;break;
-    }
-   }catch(error){errors.push(String(error.message).slice(0,150))}
-  }
-  if(found)break;
- }catch(error){errors.push(String(error.message).slice(0,200))}
+let verified=false,errors=[],checked=0;
+for(let attempt=1;attempt<=retries;attempt++){
+ const found=new Set();errors=[];checked=0;
+ for(const path of ['/nauka','/nauka.html']){
+  const url=origin+path;
+  try{
+   const html=await request(url);
+   for(const signature of signatures)if(html.includes(signature))found.add(signature);
+   for(const script of scriptsFrom(html,url).slice(0,40)){
+    try{
+     const js=await request(script);
+     checked++;
+     for(const signature of signatures)if(js.includes(signature))found.add(signature);
+     if(found.size===signatures.length)break;
+    }catch(e){errors.push(String(e.message).slice(0,170))}
+   }
+   if(found.size===signatures.length)break;
+  }catch(e){errors.push(String(e.message).slice(0,170))}
+ }
+ console.log('Attempt '+attempt+'/'+retries+': verified '+found.size+'/'+signatures.length+' UI markers; inspected '+checked+' JS assets');
+ if(found.size===signatures.length){verified=true;break}
+ if(attempt<retries)await new Promise(resolve=>setTimeout(resolve,delay));
 }
-if(!found){
- console.error('The public site could not be confirmed to contain the real-homework lesson UI.');
- console.error('Inspected '+checked+' JS bundles; request errors: '+JSON.stringify(errors.slice(0,10)));
+if(!verified){
+ console.error('Public EXCEL UI not verified. Expected both real homework and quick access; errors='+JSON.stringify(errors.slice(0,8)));
  process.exitCode=1;
 }else{
- console.log('PASS: Public trainerki.com JavaScript includes the 30-lesson homework UI marker.');
+ console.log('PASS: public trainerki.com exposes both 30 homework lessons and the visible quick-access button.');
 }
