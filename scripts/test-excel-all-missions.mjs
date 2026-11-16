@@ -10,7 +10,7 @@ const json=path=>JSON.parse(read(path));
 const src=ts.transpileModule(read('src/excelMissionAnswers.ts'),{
  compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}
 }).outputText;
-const {checkExcelMissionAnswer,excelResponsePresentation,parseExcelResponseNumber}=await import(
+const {checkExcelMissionAnswer,excelResponsePresentation,parseExcelResponseNumber,parseExcelResponseCount}=await import(
  'data:text/javascript;base64,'+Buffer.from(src).toString('base64'));
 const {missions}=json('content/excel-professional-missions.json');
 const lessons=json('content/v2-excel-skroty.json').lessons;
@@ -23,9 +23,9 @@ const rev=data.rows.reduce((s,r)=>s+r.quantity*r.netPrice,0);
 const margin=data.rows.reduce((s,r)=>s+r.quantity*(r.netPrice-r.unitCost),0);
 const materialCost=data.rows.filter(x=>x.category==='Materiały').reduce((s,r)=>s+r.quantity*r.unitCost,0);
 const expectedKinds=[
- 'address','number','address','identifier','number','number','number','percent','file','number',
+ 'address','count','address','identifier','number','number','number','percent','file','number',
  'address','formula','percent','number','formula','number','file','name','number','number',
- 'number','identifier','error','number','number','number','number','access','number','number'
+ 'number','identifier','error','number','number','number','number','access','count','number'
 ];
 test('30 zadania: każda odpowiedź, format, wskazówka i negatywny przypadek',()=>{
  assert.equal(missions.length,30);
@@ -44,7 +44,7 @@ test('30 zadania: każda odpowiedź, format, wskazówka i negatywny przypadek',(
   assert.equal(checkExcelMissionAnswer(m,'').correct,false,'Puste pole jest zaliczone '+(i+1));
   assert.equal(checkExcelMissionAnswer(m,'GARBAGE-NO-ANSWER').correct,false,'Śmieciowe dane zaliczone '+(i+1));
   assert.equal(checkExcelMissionAnswer(m,'=(D2:D4)').correct,false,'Niepełna formuła zaliczona '+(i+1));
-  if(m.unit==='number'&&!([7,12].includes(i))){
+  if(p.kind==='number'){
    assert.equal(checkExcelMissionAnswer(m,String(m.expected)+' zł').correct,true,'Brak zł w '+(i+1));
    assert.equal(checkExcelMissionAnswer(m,String(m.expected)+' PLN').correct,true,'Brak PLN w '+(i+1));
   }
@@ -52,6 +52,10 @@ test('30 zadania: każda odpowiedź, format, wskazówka i negatywny przypadek',(
    assert.equal(checkExcelMissionAnswer(m,String(m.expected).replace('-','−')+' zł').correct,true,'Minus Unicode '+(i+1));
   if(m.unit==='number'&&Math.abs(Number(m.expected))>=1000)
    assert.equal(checkExcelMissionAnswer(m,Number(m.expected).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł').correct,true,'Polskie separator + zł '+(i+1));
+  if(p.kind==='count'){
+   assert.equal(checkExcelMissionAnswer(m,m.expected+' zł').correct,false,'Kwoty nie mogą być liczbą obiektów '+(i+1));
+   assert.equal(checkExcelMissionAnswer(m,m.expected+(i===1?' arkusze':' błędy')).correct,true,'Polskie nazwy liczby obiektów '+(i+1));
+  }
   if([7,12].includes(i)){
    assert.equal(checkExcelMissionAnswer(m,m.expected+'%').correct,true,'Wpis procentowy '+(i+1));
    assert.equal(checkExcelMissionAnswer(m,m.expected+' zł').correct,false,'Błędna jednostka dla procenta '+(i+1));
@@ -135,4 +139,7 @@ test('Parser liczb: zł, %, niepoprawne jednostki i tysiące',()=>{
  assert.equal(parseExcelResponseNumber('15%',true),15);
  for(const s of ['1,2,3','SUMA(E2:E4)','abc zł','','1 kg','10%'])assert.equal(parseExcelResponseNumber(s),null,s);
  assert.equal(parseExcelResponseNumber('15 zł',true),null);
+ assert.equal(parseExcelResponseCount('4 błędy'),4);
+ assert.equal(parseExcelResponseCount('3 arkusze'),3);
+ assert.equal(parseExcelResponseCount('3 zł'),null);
 });
