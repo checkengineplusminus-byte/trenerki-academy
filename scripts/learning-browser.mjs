@@ -42,7 +42,17 @@ async function verifyAnonymousCourse(ctx){
 
 async function verifyIntroPhoto(page,slug){
  const photo=page.getByTestId('course-intro-photo').locator('img');
- await photo.waitFor();
+ try{
+  await photo.waitFor();
+ }catch(error){
+  const diagnostic=await page.evaluate(()=>({
+   pathname:location.pathname,
+   introContainers:document.querySelectorAll('[data-testid="course-intro-photo"]').length,
+   introImages:document.querySelectorAll('[data-testid="course-intro-photo"] img').length,
+   lessonHeading:document.querySelector('[data-testid="lesson-heading"]')?.textContent?.slice(0,90)||''
+  }));
+  throw new Error('Intro image missing for '+slug+'; '+JSON.stringify(diagnostic)+'; '+String(error.message||error));
+ }
  const actual=await photo.evaluate(async img=>{
   await img.decode();
   const frame=img.getBoundingClientRect();
