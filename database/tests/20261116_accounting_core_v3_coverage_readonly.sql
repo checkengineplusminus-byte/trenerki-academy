@@ -41,6 +41,63 @@ duplicate_exercises AS (
   SELECT topic_no, exercise_id FROM exercises
   GROUP BY topic_no, exercise_id HAVING count(*)>1
 ),
+-- Check only the SHAPE of confidential answer keys: never select their values.
+solution_issues AS (
+  SELECT topic_no, exercise_id FROM exercises
+  WHERE NOT (
+    CASE WHEN exercise_type='choice' THEN
+      CASE WHEN jsonb_typeof(task->'choices')='array'
+        AND (task->>'correctIndex') ~ '^[0-9]{1,3}homework_gaps AS (
+  SELECT topic_no FROM materials
+  WHERE jsonb_typeof(material->'practice') IS DISTINCT FROM 'object'
+    OR length(task_text)<100
+),
+self_check_gaps AS (
+  SELECT topic_no FROM materials WHERE length(self_check_text)<40
+),
+manifest AS (
+  SELECT
+    CASE WHEN jsonb_typeof(material #> '{scenario,documents}')='array'
+      THEN jsonb_array_length(material #> '{scenario,documents}') ELSE 0 END AS document_count,
+    coalesce(material #>> '{scenario,id}', '') AS manifest_id
+  FROM materials WHERE topic_no=96
+)
+SELECT
+  'core-v3-20261113' AS plan,
+  'NO_GO — wymaga niezależnego odbioru; kontrola wyłącznie strukturalna' AS release_gate,
+  (SELECT total FROM curriculum) AS topics,
+  (SELECT count(*)=10 AND coalesce(bool_and(size=10),false) FROM section_sizes)
+    AS sections_10_x_10,
+  (SELECT count(*) FROM materials) AS materials,
+  (SELECT count(*) FROM materials WHERE jsonb_typeof(material->'practice')='object')
+    AS homework_descriptions,
+  (SELECT count(*) FROM materials WHERE length(task_text)>=100)
+    AS homework_instructions_min_100_chars,
+  (SELECT count(*) FROM materials WHERE length(self_check_text)>=40)
+    AS homework_self_check_min_40_chars,
+  (SELECT coalesce(array_agg(topic_no ORDER BY topic_no),'{}'::smallint[]) FROM homework_gaps)
+    AS homework_instruction_gap_topics,
+  (SELECT coalesce(array_agg(topic_no ORDER BY topic_no),'{}'::smallint[]) FROM self_check_gaps)
+    AS homework_self_check_gap_topics,
+  (SELECT count(*) FROM exercises) AS exercise_count,
+  (SELECT count(*) FROM exercise_issues) AS invalid_exercises,
+  (SELECT count(*) FROM duplicate_exercises) AS duplicate_exercise_ids,
+  (SELECT count(*) FROM solution_issues) AS invalid_answer_key_shapes,
+  (SELECT document_count FROM manifest) AS d01_d36_documents,
+  (SELECT manifest_id FROM manifest) AS d01_d36_manifest_id,
+  (SELECT complete_count FROM curriculum) AS topics_expert_accepted,
+  (SELECT count(*) FROM materials WHERE editorial_status='complete') AS materials_expert_accepted;
+
+      THEN jsonb_array_length(task->'choices')>=2
+        AND (task->>'correctIndex')::integer < jsonb_array_length(task->'choices')
+      ELSE false END
+    WHEN exercise_type='number' THEN
+      CASE WHEN jsonb_typeof(task->'expected')='number'
+      THEN (task->>'expected')::numeric BETWEEN -1000000000000 AND 1000000000000
+      ELSE false END
+    ELSE false END
+  )
+),
 homework_gaps AS (
   SELECT topic_no FROM materials
   WHERE jsonb_typeof(material->'practice') IS DISTINCT FROM 'object'
