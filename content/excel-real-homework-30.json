@@ -704,7 +704,7 @@
     },
     {
       "lessonNo": 19,
-      "title": "Raport zmian cen",
+      "title": "Raport zmian cen w budżecie",
       "goal": "Policzyć przyczynę i wielkość zmiany budżetu",
       "source": "basics",
       "steps": [
