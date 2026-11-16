@@ -43,6 +43,12 @@ for(const sample of [
  assert.equal(check(String(sample.firstTotal)+' zł',3).correct,true);
  assert.equal(check('=B2*C2',3).correct,false);
  assert.equal(check('1',3).correct,false);
+ // Real mobile screenshots: incomplete ranges and values in front of () must not pass.
+ for(const wrong of ['=(d2:d4)','=135(d2:d4)','=D2:D4','SUMA','SUMA(D2:D4)']){
+  assert.equal(check(wrong,3).correct,false,wrong+' must not be accepted');
+ }
+ assert.match(check('=(d2:d4)',3).message,/słowem SUMA/i);
+ assert.match(check('=135(d2:d4)',3).message,/Nie wpisuj liczby przed nawiasem/i);
  sample.rows[1].amount='4';
  assert.equal(check('=SUMA(D2:D4)',5).correct,true);
  assert.equal(check(String(sample.after),5).correct,true);
@@ -53,10 +59,14 @@ for(const required of [
  'excel-first-worked-example','NAJPIERW PRZYKŁAD',
  'excel-first-step-explanation','excel-first-formula-notice',
  'excel-first-step-success','Nie wiem, co wpisać',
- 'checkFirstDayAnswer(answer','keyboardType="default"',
+ 'excel-first-mode-result','excel-first-mode-formula',
+ 'excel-first-result-instruction','excel-first-formula-instruction',
+ 'Wpisz tylko liczbę','musisz napisać słowo SUMA',
+ 'checkFirstDayAnswer(answer',"keyboardType={isFormulaMode?'default':'decimal-pad'}",
  'Zanim zaczniesz liczyć'
 ]){
  assert(ui.includes(required),'Brakuje dydaktycznego elementu: '+required);
 }
 assert(!ui.includes('keyboardType="decimal-pad"'),'Klawiatura musi pozwolić wpisać = i litery na telefonie');
+assert(!ui.includes('</View>}}'),'Nieprawidłowa samotna klamra nie może być renderowana jako tekst');
 console.log('✓ 2 scenariusze: =b2*c2, SUMA, liczby, PLN, stale wyników, błędy, telefon i przykłady');
