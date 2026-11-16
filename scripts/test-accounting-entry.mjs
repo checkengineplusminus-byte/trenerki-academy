@@ -259,3 +259,14 @@ test('Mapa kursu czyta wyłącznie własne odpowiedzi przez RLS, nie wydaje dypl
  assert.ok(ui.includes("buildCorePracticeProgress(topics,practiceMaterials,savedAnswers"));
  assert.ok(!ui.includes("from('ta_certificates').insert"));
 });
+
+
+test('Czytnik tematu wymaga zapisania wszystkich poprawnych zadań przed przyciskiem następnego kroku',()=>{
+ const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
+ assert.ok(code.includes('onSaved(exercise.id,answer);'));
+ assert.ok(code.includes('setAnswers(old=>({...old,[id]:answer}))'));
+ assert.ok(code.includes('const nextReady=sectionProgress?.passed===true;'));
+ assert.ok(code.includes('{nextReady&&topic!==null&&topic<100&&'));
+ assert.ok(code.includes('{nextReady&&topic===100&&'));
+ assert.ok(!code.includes("supabase.from('ta_certificates').insert"));
+});
