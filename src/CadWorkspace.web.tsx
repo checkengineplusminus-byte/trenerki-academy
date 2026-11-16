@@ -155,7 +155,13 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     '. Sprawdź współrzędne końcowe, promień lub wymiary poprzez DIST i Properties.');
    return;
   }
-  setAssignmentFeedback('Zaliczone ćwiczenie geometrii: nowy obiekt '+kind.toUpperCase()+' ma prawidłowy rozmiar. Zweryfikuj jeszcze kontekst: '+currentAssignment.expected);
+  if(lessonNo===16){
+   const newDimensions=drawing.shapes.filter(shape=>shape.kind==='dimension'&&
+    !originalShapes.some(old=>old.id===shape.id&&JSON.stringify(old)===JSON.stringify(shape)));
+   const measured=newDimensions.some(shape=>Math.abs(Number(dimensionGeometry(shape).label)-expected)<=1);
+   if(!measured){setAssignmentFeedback('Odcinek jest prawidłowy. Zaznacz go, wpisz DIM → Enter, wskaż położenie wymiaru i sprawdź, że na rysunku widzisz '+cadNumber(expected)+'.');return;}
+  }
+  setAssignmentFeedback('Zaliczone ćwiczenie geometrii'+(lessonNo===16?' i wymiarowania DIM':'')+': nowy obiekt '+kind.toUpperCase()+' ma prawidłowy rozmiar. Zweryfikuj jeszcze kontekst: '+currentAssignment.expected);
  }
  function record(next:Drawing){setHistory(old=>[...old.slice(-79),drawing]);setFuture([]);setDrawing(next);}
  function updateShapes(shapes:CadShape[]){record({...drawing,shapes});}
@@ -603,9 +609,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   <Text style={labStyles.heading}>AutoCAD · pracownia rysunku 2D</Text>
   <View testID="cad-assigned-exercise" style={{backgroundColor:'#f1f6ec',borderRadius:11,padding:14,gap:9}}>
    <Text style={{color:'#2e6340',fontWeight:'900',fontSize:15}}>Zadanie lekcji {Number(lessonNo??0)+1}/30: {currentAssignment.title.replace('Zadanie w pracowni: ','')}</Text>
+   <Text style={{color:'#2e6340',fontWeight:'900'}}>ETAP 1 · Geometria w naszej pracowni</Text>
+   <Text style={{color:'#365849',fontSize:14,lineHeight:22}}>Wpisz po kolei: {currentAssignment.typing.join(' → ')} → Enter (koniec polecenia). Sprawdzamy prawidłowy wymiar obiektu.</Text>
+   {lessonNo===16&&<Text style={{color:'#315c45',fontSize:13,lineHeight:21,fontWeight:'800'}}>Po utworzeniu odcinka 1000 zaznacz go, wpisz DIM → Enter, wskaż miejsce wymiaru i kliknij „Sprawdź moje ćwiczenie”.</Text>}
+   <Text style={{color:'#2e6340',fontWeight:'900'}}>ETAP 2 · Pełne ćwiczenie i zastosowanie</Text>
    <Text style={{color:'#365849',fontSize:14,lineHeight:22}}>{currentAssignment.task}</Text>
-   <Text style={{color:'#2e6340',fontWeight:'900'}}>Wpisz po kolei</Text>
-   <Text style={{color:'#365849',fontSize:14,lineHeight:22}}>{currentAssignment.typing.join(' → ')} → Enter (koniec polecenia)</Text>
+   {'desktopOnly' in currentAssignment&&Array.isArray(currentAssignment.desktopOnly)&&currentAssignment.desktopOnly.length>0&&<Text style={{color:'#7b542e',fontWeight:'800',fontSize:12,lineHeight:20}}>Te polecenia wymagają oryginalnego AutoCAD na komputerze: {currentAssignment.desktopOnly.join(', ')}. Nie są symulowane w warsztacie TRENERKI.</Text>}
    <Text style={{color:'#536b55',fontSize:12,lineHeight:20}}>Wymagany obiekt: {currentAssignment.targetKind.toUpperCase()}. {currentAssignment.verification}</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
     <LabButton label="Rozpocznij zadanie tej lekcji" onPress={()=>{
