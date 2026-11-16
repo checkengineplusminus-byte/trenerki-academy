@@ -13,15 +13,17 @@ import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework
 // @ts-ignore — only suggests the correct existing tab; auth remains server-side.
 import {recommendedLabTab,LAB_TAB_NAMES} from '../src/accounting/lab-navigation.js';
 // @ts-ignore — only displays manually curated photos with a verified commercial license.
-import {topicPhotoUrl} from '../src/accounting/topic-media.js';
+import {topicPhotoAssetPath} from '../src/accounting/topic-media.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
 function SectionPhoto({photo}:{photo:any}){
- const src=topicPhotoUrl(photo);
+ const assetPath=topicPhotoAssetPath(photo);
  const [failed,setFailed]=useState(false);
- useEffect(()=>{setFailed(false);},[src]);
- if(!src||failed)return null;
- return <Image accessibilityLabel={photo.alt} source={{uri:src}} onError={()=>setFailed(true)} resizeMode="cover" style={s.sectionPhoto}/>;
+ useEffect(()=>{setFailed(false);},[assetPath]);
+ // Use only app-hosted files on web. Never fetch external image URLs.
+ // Native bundled asset mapping is handled separately once its files pass CI.
+ if(!assetPath||failed||Platform.OS!=='web')return null;
+ return <Image accessibilityLabel={photo.alt} source={{uri:assetPath}} onError={()=>setFailed(true)} resizeMode="cover" style={s.sectionPhoto}/>;
 }
 type Answer={exercise_id:string;answer:string};
 type Homework={response:string;version:number;submitted_at:string|null;updated_at:string}|null;
