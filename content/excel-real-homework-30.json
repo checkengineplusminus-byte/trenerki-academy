@@ -1092,7 +1092,12 @@
         "file": "/academy/assets/excel-practice-sales.csv",
         "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
       },
-      "filename": "Trenerki-Excel-30.xlsx"
+      "filename": "Trenerki-Excel-30.xlsx",
+      "bonusStarter": {
+        "file": "/academy/assets/excel-professional-368-import.csv",
+        "label": "Rozszerzenie PRO — 368 rekordów (8 anomalii, CSV)"
+      },
+      "bonusTask": "Dla chętnych po zakończeniu pracy: osobno zaimportuj 368 rekordów, wyjaśnij osiem anomalii, a następnie policz marżę na 360 poprawnych rekordach. Ten materiał nie zastępuje głównego zadania z 18 faktur i nie wpływa na jego ocenę."
     }
   ]
 }
