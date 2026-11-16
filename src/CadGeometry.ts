@@ -38,6 +38,24 @@ export function readCadPoint(input:string,previous?:Point):Point|undefined{
  if([p.x,p.y].every(n=>Number.isFinite(n)&&Math.abs(n)<=1e9))return p;
 }
 
+/** AutoCAD-like direct distance entry for LINE/PLINE: typed length + cursor direction.
+ * When no pointer direction is available, the learner gets a documented +X
+ * fallback. For exact arbitrary directions, use @length<angle.
+ */
+export function readCadDirectDistance(raw:string,previous?:Point,directionPoint?:Point,ortho=false):Point|undefined{
+ const input=raw.trim();
+ if(!previous||!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(input))return;
+ const length=Number(input);
+ if(!Number.isFinite(length)||length===0||Math.abs(length)>1e9)return;
+ const delta=directionPoint?subtract(directionPoint,previous):{x:1,y:0};
+ const magnitude=Math.hypot(delta.x,delta.y);
+ const unit=magnitude<1e-8?{x:1,y:0}:ortho?
+  Math.abs(delta.x)>=Math.abs(delta.y)?{x:delta.x<0?-1:1,y:0}:{x:0,y:delta.y<0?-1:1}:
+  {x:delta.x/magnitude,y:delta.y/magnitude};
+ const point=add(previous,multiply(unit,length));
+ return Number.isFinite(point.x)&&Number.isFinite(point.y)&&Math.abs(point.x)<=1e9&&Math.abs(point.y)<=1e9?point:undefined;
+}
+
 export function arcData([start,via,end]:Point[]){
  const u=subtract(via,start),v=subtract(end,start),det=2*(u.x*v.y-u.y*v.x);
  if(Math.abs(det)<1e-9)return;
