@@ -1030,14 +1030,14 @@
       "steps": [
         "Zaimportuj CSV błędnych rekordów z typami kolumn dobranymi do danych.",
         "Utwórz kartę Kontrola z kolumnami: Numer, Błąd, Skutek, Działanie.",
-        "Sprawdź duplikaty numerów faktur względem poprawnego źródła 18 faktur.",
+        "Zaimportuj również plik 18 poprawnych faktur z linku „Plik porównawczy”. Sprawdź, czy numer FV-015 już istnieje w źródle — to duplikat przy próbie dołączenia błędnego CSV.",
         "Zidentyfikuj złą ilość, pustego kontrahenta i brakującą cenę.",
         "Policz wszystkie cztery problemy bez usuwania dowodów z pliku oryginalnego."
       ],
       "expected": "4",
       "kind": "count",
       "checks": [
-        "Zidentyfikowano dokładnie cztery błędy importu",
+        "Porównując oba pliki, zidentyfikowano dokładnie cztery problemy, w tym powtórzony numer FV-015.",
         "Każdy ma inny opis i działanie",
         "Oryginalne wiersze pozostały dostępne do wglądu"
       ],
@@ -1055,7 +1055,11 @@
         "file": "/academy/assets/excel-practice-errors.csv",
         "label": "Błędne rekordy do audytu (CSV)"
       },
-      "filename": "Trenerki-Excel-29.xlsx"
+      "filename": "Trenerki-Excel-29.xlsx",
+      "comparisonStarter": {
+        "file": "/academy/assets/excel-practice-sales.csv",
+        "label": "Plik porównawczy — 18 poprawnych faktur (CSV)"
+      }
     },
     {
       "lessonNo": 29,
