@@ -179,19 +179,49 @@ export default function ExcelFirstDayPractice(){
      <Text style={{color:'#346846',fontSize:12,fontWeight:'900'}}>DLACZEGO TAK ROBIMY?</Text>
      <Text style={{fontSize:14,lineHeight:23,color:ink}}>{stepExplanation}</Text>
     </View>
-    {answerStep&&<View style={{gap:8}}>
-     <Text style={{fontSize:13,lineHeight:22,fontWeight:'800',color:ink}}>Twoja odpowiedź — wpisz liczbę lub formułę zaczynającą się od =</Text>
-     <TextInput testID="excel-first-answer" accessibilityLabel="Twoja obliczona odpowiedź" value={answer} onChangeText={v=>{setAnswer(v);setWarning('');setNotice('');}}
-      placeholder={step===2?'np. '+(values[0]===null?'24':String(values[0]))+' lub =B2*C2':'np. '+String(total??'78')+' lub =SUMA(D2:D4)'}
-      placeholderTextColor="#688375" keyboardType="default" autoCapitalize="none" autoCorrect={false}
-      style={{minHeight:52,borderWidth:1,borderColor:'#8ab79a',borderRadius:9,padding:12,fontSize:16,color:ink,backgroundColor:'white'}}/>
-     {!!answer.trim().startsWith('=')&&<Text testID="excel-first-formula-notice" style={{color:'#246c49',fontSize:12,lineHeight:20}}>To jest formuła. Świetnie, że próbujesz! W naszym polu ją sprawdzamy. W prawdziwym Excelu wpisujesz ją do komórki {step===2?'D2':'D5'}.</Text>}
-     <Pressable accessibilityRole="button" accessibilityLabel="Wstaw formułę z przykładu" onPress={()=>{setAnswer(formulaForStep);setWarning('');setNotice('');}}
-      style={{minHeight:42,paddingHorizontal:12,paddingVertical:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#c1dacc',borderRadius:9,backgroundColor:'#eaf3eb'}}>
+    {answerStep&&<View testID="excel-first-answer-guide" style={{gap:10}}>
+     <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>Co chcesz wpisać? Wybierz jedną opcję:</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+      <Pressable testID="excel-first-mode-result" accessibilityRole="button" accessibilityState={{selected:!isFormulaMode}}
+       onPress={()=>chooseAnswerMode('result')}
+       style={{flexGrow:1,padding:12,minHeight:52,borderRadius:9,borderWidth:2,borderColor:!isFormulaMode?'#286343':border,backgroundColor:!isFormulaMode?'#e1f1e4':'white'}}>
+       <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>1. Sam wynik</Text>
+       <Text style={{fontSize:12,color:muted}}>Łatwiej · wpisuję liczbę</Text>
+      </Pressable>
+      <Pressable testID="excel-first-mode-formula" accessibilityRole="button" accessibilityState={{selected:isFormulaMode}}
+       onPress={()=>chooseAnswerMode('formula')}
+       style={{flexGrow:1,padding:12,minHeight:52,borderRadius:9,borderWidth:2,borderColor:isFormulaMode?'#286343':border,backgroundColor:isFormulaMode?'#e1f1e4':'white'}}>
+       <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>2. Formuła Excela</Text>
+       <Text style={{fontSize:12,color:muted}}>Dodatkowa nauka · zaczyna się od =</Text>
+      </Pressable>
+     </View>
+     {!isFormulaMode?<View testID="excel-first-result-instruction" style={{padding:13,backgroundColor:'#f0f7f0',borderRadius:9,gap:6}}>
+      <Text style={{fontSize:15,color:ink,fontWeight:'900'}}>Wpisz tylko liczbę {expectedText}.</Text>
+      <Text style={{fontSize:13,lineHeight:22,color:ink}}>{step===2?'Ilość × cena = wartość. Zobacz wynik w D2.':
+       'Dodaj kwoty: '+(values[0]??'—')+' + '+(values[1]??'—')+' + '+(values[2]??'—')+' = '+expectedText+'.'}</Text>
+      <Text style={{fontSize:13,lineHeight:21,color:muted}}>Nie wpisuj SUMA, nawiasów, znaku = ani „zł”. W tym trybie wystarczy sam wynik.</Text>
+     </View>:<View testID="excel-first-formula-instruction" style={{padding:13,backgroundColor:'#f0f7f0',borderRadius:9,gap:7}}>
+      <Text style={{fontSize:15,color:ink,fontWeight:'900'}}>Wpisz całą formułę — razem ze znakiem =</Text>
+      <Text selectable style={{fontSize:21,fontWeight:'900',color:'#215f40'}}>{formulaForStep}</Text>
+      <Text style={{fontSize:13,lineHeight:22,color:ink}}>{step===2?'B2 oznacza ilość, C2 cenę, a gwiazdka * mnożenie.':
+       'Tak: musisz napisać słowo SUMA. Znak = rozpoczyna formułę, nawiasy zawierają zakres D2:D4, a dwukropek znaczy „od D2 do D4”. Samo =(D2:D4) nie dodaje liczb.'}</Text>
+     </View>}
+     <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{isFormulaMode?'Wpisz formułę:':'Wpisz wynik:'}</Text>
+     <TextInput testID="excel-first-answer" accessibilityLabel="Twoja obliczona odpowiedź" value={answer}
+      onChangeText={v=>{setAnswer(v);setWarning('');setNotice('');}}
+      placeholder={isFormulaMode?formulaForStep:'np. '+expectedText}
+      placeholderTextColor="#688576" keyboardType={isFormulaMode?'default':'decimal-pad'} autoCapitalize="none" autoCorrect={false}
+      style={{minHeight:54,borderWidth:1,borderColor:'#8ab79a',borderRadius:9,padding:12,fontSize:17,color:ink,backgroundColor:'white'}}/>
+     {!!answer.trim().startsWith('=')&&<Text testID="excel-first-formula-notice" style={{color:'#2a6a48',fontSize:12,lineHeight:20}}>
+      {isFormulaMode?'To zapis formuły. Naciśnij „Sprawdź wykonanie”, aby sprawdzić, czy jest poprawny.':
+       'Wpisałeś formułę zamiast liczby. Możesz wybrać „Formuła Excela” albo wpisać sam wynik. Poprawną formułę też zaliczymy.'}
+     </Text>}
+     {isFormulaMode&&<Pressable accessibilityRole="button" accessibilityLabel="Wstaw formułę z przykładu"
+      onPress={()=>{setAnswer(formulaForStep);setWarning('');setNotice('');}}
+      style={{minHeight:44,padding:11,alignSelf:'flex-start',borderWidth:1,borderColor:'#c1dacc',borderRadius:9,backgroundColor:'#eaf3eb'}}>
       <Text style={{fontSize:13,color:'#265f43',fontWeight:'800'}}>Nie wiem, co wpisać — wstaw przykład {formulaForStep}</Text>
-     </Pressable>
-     <Text style={{fontSize:12,lineHeight:20,color:muted}}>Ten formularz sprawdza Twoją naukę, nie zapisuje formuły do prawdziwego pliku. Przycisk poniżej przechodzi dalej dopiero po poprawnej odpowiedzi.</Text>
-    </View>}}
+     </Pressable>}
+    </View>}
     <Pressable accessibilityRole="button" accessibilityLabel="Sprawdź wykonanie zadania od zera" onPress={verify} style={[tap,{alignSelf:'flex-start',backgroundColor:'#245c3e'}]}>
      <Text style={{fontWeight:'900',color:'white',fontSize:14}}>Sprawdź wykonanie</Text>
     </Pressable>
