@@ -6,6 +6,8 @@ import {supabase} from '../src/supabase';
 import {materialCoverageKnown,materialCount} from '../src/accounting/program-visibility.js';
 // @ts-ignore — read-only per-exercise progress, checked against visible materials and private answers.
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
+// @ts-ignore — private homework counts are calculated from visible topics, not hidden drafts.
+import {homeworkProgress,firstUnfinishedPracticeTopic} from '../src/accounting/homework-core.js';
 
 type Status='planned'|'in_progress'|'review_needed'|'blocked'|'complete';
 type Filter='all'|'draft'|'review'|'missing';
@@ -46,6 +48,9 @@ export default function ProgramKsiegowosci(){
  const [materialStats,setMaterialStats]=useState<Record<number,MaterialStats>>({});
  const [practiceMaterials,setPracticeMaterials]=useState<any[]>([]);
  const [savedAnswers,setSavedAnswers]=useState<any[]>([]);
+ const [submittedHomeworks,setSubmittedHomeworks]=useState<any[]>([]);
+ const [homeworksReady,setHomeworksReady]=useState(false);
+ const [homeworksError,setHomeworksError]=useState('');
  const [answersReady,setAnswersReady]=useState(false);
  const [answersError,setAnswersError]=useState('');
  const [materialsReady,setMaterialsReady]=useState(false);
@@ -62,7 +67,7 @@ export default function ProgramKsiegowosci(){
  useEffect(()=>{
   let active=true;
   (async()=>{
-   setBusy(true);setError('');setMaterialError('');setMaterialsReady(false);setIsEditor(false);setOverviewAuthored(null);setAnswersError('');setAnswersReady(false);setSavedAnswers([]);setPracticeMaterials([]);
+   setBusy(true);setError('');setMaterialError('');setMaterialsReady(false);setIsEditor(false);setOverviewAuthored(null);setAnswersError('');setAnswersReady(false);setSavedAnswers([]);setPracticeMaterials([]);setSubmittedHomeworks([]);setHomeworksReady(false);setHomeworksError('');
    try{
     const session=await supabase.auth.getUser();
     if(!active)return;
@@ -110,6 +115,12 @@ export default function ProgramKsiegowosci(){
     if(!active)return;
     if(saved.error)setAnswersError('Nie udało się odczytać Twoich ćwiczeń. Postęp jest nieznany — nie nadpisano odpowiedzi.');
     else{setSavedAnswers(saved.data||[]);setAnswersReady(true);}
+    const homework=await supabase.from('ta_accounting_core_homework_v3')
+     .select('topic_no,response,version,submitted_at').eq('user_id',session.data.user.id);
+    if(!active)return;
+    if(homework.error)setHomeworksError('Nie udało się pobrać prac domowych. Licznik jest nieznany, żadne zadanie nie zostało usunięte.');
+    else{setSubmittedHomeworks(homework.data||[]);setHomeworksReady(true);}
+
    }catch(e:any){if(active)setError(e?.message||'Nie udało się wczytać programu.');}
    finally{if(active)setBusy(false);}
   })();
@@ -117,6 +128,9 @@ export default function ProgramKsiegowosci(){
  },[router,reload]);
 
  const practice=buildCorePracticeProgress(topics,practiceMaterials,savedAnswers,{materialsReady,answersReady});
+ const homeworks=homeworksReady&&practice.known?
+  homeworkProgress(submittedHomeworks,Object.keys(practice.byTopic).map(Number)):null;
+ const nextActual=firstUnfinishedPracticeTopic(practice,homeworks);
  const total=topics.length;
  const finished=topics.filter(t=>t.status==='complete').length;
  const toReview=topics.filter(t=>t.status==='review_needed').length;
@@ -155,6 +169,7 @@ export default function ProgramKsiegowosci(){
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
   {!!materialError&&<Text accessibilityRole="alert" style={s.warning}>{materialError}</Text>}
   {!!answersError&&<Text accessibilityRole="alert" style={s.warning}>{answersError}</Text>}
+  {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
    <View style={s.grid}>
     <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
@@ -165,12 +180,16 @@ export default function ProgramKsiegowosci(){
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?olderOnly:'—'}</Text><Text style={s.small}>Tylko odnośnik do starszej lekcji</Text></View>
    </View>
    <View style={s.card}>
-    <Text style={s.label}>Twoje ćwiczenia — zapisane na koncie</Text>
+    <Text style={s.label}>Twoje ćwiczenia i prace domowe — zapisane na koncie</Text>
     {practice.known?
       practice.availableTopics>0?<>
        <Text style={s.body}>{practice.correctAnswers}/{practice.totalQuestions} poprawnych odpowiedzi · {practice.passedTopics}/{practice.availableTopics} tematów z poprawnym kompletem odpowiedzi.</Text>
        <Text style={s.small}>Odpowiedzi zapisane: {practice.attemptedAnswers}. Wynik pochodzi z Twoich odpowiedzi do obecnie dostępnej wersji zadań, nie ze starego licznika przeczytanych stron.</Text>
-       {practice.nextTopic!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(practice.nextTopic)}}} style={s.link}>Kontynuuj ćwiczenia — temat {practice.nextTopic}</Link>}
+       {homeworks?<Text style={s.body}>Oddane prace domowe: {homeworks.submitted}/{homeworks.total} dostępnych tematów.</Text>:
+        <Text style={s.small}>Licznik prac domowych jest nieznany. Nie oznaczamy go jako 0.</Text>}
+       {nextActual!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextActual)}}} style={s.link}>
+        Kontynuuj naukę i pracę domową — temat {nextActual}
+       </Link>}
        <Text style={s.small}>To ćwiczeniowy postęp, nie zaliczenie całego kursu. Niezatwierdzone wersje są tylko do recenzji; dyplom wymaga osobnego procesu.</Text>
       </>:<Text style={s.small}>Na tym koncie nie ma jeszcze dostępnych zadań do policzenia. Materiały ukryte przez RLS nie są uznawane za brakujące ani zaliczone.</Text>
     :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
@@ -233,6 +252,8 @@ export default function ProgramKsiegowosci(){
          {practice.byTopic[topic.topic_no].attempted} zapisanych odpowiedzi.
          {practice.byTopic[topic.topic_no].passed?' Komplet odpowiedzi poprawny — nie jest to odbiór redakcyjny.':''}
         </Text>}
+       {homeworks&&practice.byTopic[topic.topic_no]&&
+        <Text style={s.small}>Praca domowa: {homeworks.topics.includes(topic.topic_no)?'oddana do samokontroli, nieoceniona':'do napisania lub oddania'}.</Text>}
        <Text style={s.todo}>{next}</Text>
        {!!stats&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>Otwórz zapisany materiał</Link>}
       </View>;

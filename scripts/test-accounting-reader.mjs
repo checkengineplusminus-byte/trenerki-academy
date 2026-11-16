@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {lessonNumber,parsePolishNumber,checkExercise,sourceURL,noteDraftKey,resumeNoteDraft} from '../src/accounting/reader-core.js';
+import {lessonNumber,parsePolishNumber,checkExercise,sourceURL,noteDraftKey,resumeNoteDraft,glossaryExplanation} from '../src/accounting/reader-core.js';
 test('Prawidłowy zakres lekcji',()=>{assert.equal(lessonNumber('1'),1);assert.equal(lessonNumber('100000'),100000);for(const x of ['0','01','100001','1.5','1x','',undefined,'-1'])assert.equal(lessonNumber(x),null);});
 test('Pusta odpowiedź nie jest zerem',()=>{for(const x of ['', ' ',null,undefined])assert.equal(parsePolishNumber(x),null);assert.equal(checkExercise({type:'number',expected:0},'').correct,false);});
 test('Przecinek, kropka i ujemna liczba',()=>{assert.equal(parsePolishNumber('1230,50'),1230.5);assert.equal(parsePolishNumber('-12.25'),-12.25);assert.equal(parsePolishNumber('+5'),5);});
@@ -14,3 +14,9 @@ test('Klucz szkicu jest rozdzielony według użytkownika i lekcji',()=>{assert.n
 test('Powrót do niezapisanego szkicu zachowuje tekst',()=>{const x=resumeNoteDraft(JSON.stringify({text:'Mój szkic',base:'t1'}),{note:'Stary zapis',updated_at:'t1'});assert.equal(x.text,'Mój szkic');assert.equal(x.conflict,false);assert.equal(x.dirty,true);});
 test('Nowsza zdalna notatka wymaga porównania, nie nadpisania',()=>{const x=resumeNoteDraft({text:'Lokalnie',base:'t1'},{note:'Z innego okna',updated_at:'t2'});assert.equal(x.conflict,true);assert.equal(x.base,'t1');});
 test('Uszkodzony szkic jest odrzucany',()=>{assert.equal(resumeNoteDraft('{',null),null);assert.equal(resumeNoteDraft({text:'x'.repeat(10001),base:null},null),null);});
+
+test('Słownik 100 tematów wyświetla znaczenie z obu formatów zamiast pustych haseł',()=>{
+ assert.equal(glossaryExplanation({term:'RLS',definition:'Ograniczenie dostępu do wierszy.'}),'Ograniczenie dostępu do wierszy.');
+ assert.equal(glossaryExplanation({term:'VAT',meaning:'Podatek od towarów i usług.'}),'Podatek od towarów i usług.');
+ assert.match(glossaryExplanation({term:'Nieznany'}),/Brak objaśnienia/);
+});
