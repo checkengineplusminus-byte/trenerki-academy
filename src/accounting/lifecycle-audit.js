@@ -11,6 +11,7 @@ import {readPayrollPractices,payrollLifecycleChecklist} from './payroll-practice
 import {inspectPayrollLedger} from './payroll-ledger-audit.js';
 import {assetsControl,assetPosition,acquisitionLines} from './assets-core.js';
 import {inspectInvoiceBankMatches} from './invoice-match.js';
+import {gradeFinalPractice} from './final-practice.js';
 import {auditMonthWorkflow} from './simulator-core.js';
 
 const signature=lines=>lines.map(l=>l.account+':'+l.debit+':'+l.credit).sort().join('|');
@@ -163,6 +164,12 @@ export function auditCompanyLifecycle(state,scenario=null){
    monthReady,monthReady?'D01–D36 uzgodnione w tym samym miesiącu ćwiczeniowym co biuro; nadal brak powiązania każdego źródła z dziennikiem.':
    'Rozwiąż 36 dokumentów i pięć kontroli, ale pamiętaj: ich miesiąc musi być zgodny z okresem faktur, banku i płac biura.',
    'simulator');
+ const practice=gradeFinalPractice(s);
+ add('final_practice','Końcowy sprawdzian: 8 pytań ze zrozumienia księgowości',
+   practice.passed,
+   practice.passed?'Osiem odpowiedzi poprawnych w prywatnym biurze; to zaliczenie powtórki, nie całego kursu ani potwierdzenie prawa podatkowego.':
+   'Otwórz Zestawienia i rozwiąż osiem końcowych pytań. Wynik: '+practice.correct+'/'+practice.total+'. Własny wynik nie zastępuje pełnej kontroli źródeł.',
+   'report');
  steps.push({key:'tax_and_close',
    label:'Pełne zamknięcie jednego okresu, KSeF/JPK/UPO',
    status:'not_implemented',detail:'Brak kompletnego jednego procesu przez wszystkie moduły i pełnej symulacji rozliczeń. Nie wolno oznaczyć tego jako zaliczone.',

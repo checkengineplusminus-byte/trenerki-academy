@@ -1166,7 +1166,7 @@ import {auditCompanyLifecycle} from '../src/accounting/lifecycle-audit.js';
 
 test('Ścieżka firmy: pusty stan nie udaje ukończenia',()=>{
  const r=auditCompanyLifecycle(EMPTY(),null);
- assert.equal(r.steps.length,7);
+ assert.equal(r.steps.length,8);
  assert.equal(r.finished_training_stages,0);
  assert.equal(r.completed,false);
  assert.equal(r.integrated_full_cycle,'not_tested');
@@ -1542,7 +1542,7 @@ test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie pła
  const byKey=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  assert.deepEqual(Object.fromEntries(Object.entries(byKey).filter(([k])=>k!=='tax_and_close')),
   {company:'passed_training',invoices:'passed_training',bank:'passed_training',
-   payroll:'passed_training',asset:'passed_training',month:'passed_training'});
+   payroll:'passed_training',asset:'passed_training',month:'passed_training',final_practice:'needs_work'});
  assert.equal(byKey.tax_and_close,'not_implemented','Nie udajemy KSeF/JPK/UPO');
  const tax=taxCloseTrainingAudit(state,manifest);
  assert.equal(tax.period,'2026-01');
@@ -2329,4 +2329,39 @@ test('Podstawowe Zestawienia nie pokazują niezweryfikowanego wyniku i VAT jako 
  assert.equal(empty.figures.vat_difference_cents,null);
  assert.equal(empty.training_result.bank_net_movement_cents,null);
  assert.equal(empty.completed,false);
+});
+
+
+import {FINAL_PRACTICE_QUESTIONS,readFinalPractice,withFinalPracticeAnswers,gradeFinalPractice} from '../src/accounting/final-practice.js';
+test('Końcowa praktyka: 8 pytań zapisywanych w prywatnym modelu, bez nadpisania źródeł',()=>{
+ const state=fullScenario(),prior=JSON.stringify(state);
+ const answers={source:'1',bank:'984',posting:'0',vat:'184,00',assets:'1',reversal:'2',result:'800',official:'1'};
+ const saved=withFinalPracticeAnswers(state,answers);
+ assert.equal(JSON.stringify(state),prior);
+ assert.equal(gradeFinalPractice(saved).passed,true);
+ assert.equal(auditCompanyLifecycle(saved,null).steps.find(x=>x.key==='final_practice').status,'passed_training');
+ assert.equal(gradeFinalPractice(saved).correct,FINAL_PRACTICE_QUESTIONS.length);
+ assert.equal(gradeFinalPractice(state).passed,false);
+ assert.equal(taxCloseTrainingAudit(saved).completed,false);
+ assert.equal(saved.journals.length,state.journals.length);
+ assert.equal(readFinalPractice(saved).vat,'184.00');
+});
+test('Końcowa praktyka: błędna odpowiedź nie daje zaliczenia i można ponowić próbę',()=>{
+ const state=fullScenario(),right={source:'1',bank:'984',posting:'0',vat:'184',assets:'1',reversal:'2',result:'800',official:'1'};
+ const wrong=withFinalPracticeAnswers(state,{...right,bank:'1230'});
+ const grade=gradeFinalPractice(wrong);
+ assert.equal(grade.correct,7);assert.equal(grade.passed,false);
+ const corrected=withFinalPracticeAnswers(wrong,right);
+ assert.equal(gradeFinalPractice(corrected).passed,true);
+ assert.equal(gradeFinalPractice(wrong).passed,false);
+ assert.throws(()=>withFinalPracticeAnswers(state,{...right,bank:'pieniądze'}));
+ assert.throws(()=>withFinalPracticeAnswers(state,{...right,source:''}));
+});
+test('Końcowa praktyka: nigdy nie wierzymy zapisanej fladze zaliczenia',()=>{
+ const state=fullScenario();
+ state.accounting_final_practice_v1={version:1,passed:true,answers:{source:'1'}};
+ assert.equal(gradeFinalPractice(state).passed,false);
+ const text=__test_fs.readFileSync(new URL('../src/accounting/lab-ui.js',import.meta.url),'utf8');
+ assert.match(text,/finalPracticeCard\(\)/);
+ assert.match(text,/withFinalPracticeAnswers\(ws.state,finalPracticeInput\)/);
 });
