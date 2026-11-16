@@ -57,12 +57,14 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
       assert(width>=1280&&height>=720&&width/height>1.6&&width/height<2.1,slug+': crisp real Excel screenshot');
     }else{
       assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
+      if(slug==='ksiegowosc-od-podstaw')assert.equal(file,'/academy/photos/ksiegowosc-od-podstaw.webp','Accounting must use its own generated WebP');
       assert.equal(width*9,height*16,slug+': course card photo ratio');
     }
     seen.push(slug);
    }
   }
-  assert.deepEqual(seen.sort(),expectedSlugs.slice().sort(),'Every published course card must load its own photo');
+  assert.deepEqual(seen.sort(),[...expectedSlugs,'ksiegowosc-od-podstaw'].sort(),
+  'All 81 standard course cards and the additional official accounting course must load their distinct photos');
  }finally{await page.close();}
 }
 
