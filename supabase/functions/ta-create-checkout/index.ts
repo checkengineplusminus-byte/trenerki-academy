@@ -22,7 +22,6 @@ Deno.serve(async req=>{
   const recipient=typeof body?.recipient_email==='string'?body.recipient_email.trim().toLowerCase():'';
   if(isGift&&(recipient.length>190||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(recipient)))return reply({error:'invalid_recipient_email'},400);
   if(body?.accepted_terms!==true||(!isGift&&body?.immediate_content_consent!==true))return reply({error:'consent_required'},400);
-  if(slug==='ksiegowosc-od-podstaw'&&(isGift||body?.development_version_acknowledged!==true))return reply({error:'development_version_consent_required'},400);
   const admin=createClient(url,role,{auth:{persistSession:false}});
   const {data:course,error:courseError}=await admin.from('ta_courses').select('slug,title_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle();
   if(courseError)return reply({error:'database_unavailable'},503);
@@ -62,7 +61,7 @@ Deno.serve(async req=>{
    client_reference_id:user.id,
    'line_items[0][price_data][currency]':'pln',
    'line_items[0][price_data][unit_amount]':String(checkoutAmount),
-   'line_items[0][price_data][product_data][name]':(giftId?'Karta podarunkowa – ':'')+course.title_pl+(slug==='ksiegowosc-od-podstaw'?' (wczesny dostęp)':''),
+   'line_items[0][price_data][product_data][name]':(giftId?'Karta podarunkowa – ':'')+course.title_pl,
    'line_items[0][quantity]':'1',
    'metadata[user_id]':user.id,
    'metadata[course_slug]':slug,
@@ -70,8 +69,7 @@ Deno.serve(async req=>{
    'metadata[unit_amount_grosze]':String(checkoutAmount),
    'metadata[terms_version]':termsVersion,
    'metadata[terms_accepted_at]':consentDate,
-   'metadata[immediate_content_consent]':String(!giftId),
-   'metadata[development_version_acknowledged]':String(slug==='ksiegowosc-od-podstaw'&&body?.development_version_acknowledged===true)
+   'metadata[immediate_content_consent]':String(!giftId)
   });
   if(giftId)p.set('metadata[gift_id]',giftId);
   const response=await fetch('https://api.stripe.com/v1/checkout/sessions',{

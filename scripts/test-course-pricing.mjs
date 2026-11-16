@@ -43,7 +43,13 @@ for(const category of ['budownictwo','rzemioslo-i-hobby','technologie-i-logistyk
  assert(matches.length>0,'Missing links for '+category);
  for(const [,slug,price] of matches)assert.equal(Number(price)*100,prices.get(slug)?.price_after_grosze,'Category price mismatch '+slug);
 }
-assert.equal(prices.get('ksiegowosc-od-podstaw').published,false,'Do not auto-publish accounting');
+assert.equal(prices.get('ksiegowosc-od-podstaw').published,false,'Historical price snapshot from 15 November is intentionally unchanged');
+assert(!home.includes('class="acct-feature"'),'Accounting must never occupy a promotional block on the homepage');
+assert(home.includes('const ACCOUNTING_CATALOG='),'Accounting must have a regular course-card definition');
+assert(home.includes('c.id!==ACCOUNTING_CATALOG.id'),'Accounting must not be featured in the homepage initial selection');
+assert(read('public/academy/kategorie/biznes-i-praca.html').includes('/academy/ksiegowosc-od-podstaw.html'),'Accounting must be grouped under Biznes i praca');
+assert(!read('public/academy/ksiegowosc-od-podstaw.html').toLowerCase().includes('wczesny dostęp'),'Accounting landing should not advertise early access');
+assert(!read('app/kup.tsx').includes('developmentConsent'),'Accounting checkout should use normal course terms');
 assert.equal(prices.get('ksiegowosc-od-podstaw').price_after_grosze,69900);
 assert(read('app/kup.tsx').includes("functions.invoke('ta-enroll-free'"),'Free course needs authenticated server-only grant');
 assert(read('src/courseQuote.ts').includes('ta_effective_course_price'),'Paid checkout price source must remain server-authoritative');

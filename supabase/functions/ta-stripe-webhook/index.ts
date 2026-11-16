@@ -116,10 +116,6 @@ Deno.serve(async req=>{
    return reply();
   }
   const slug=s.metadata?.course_slug||'',uid=s.metadata?.user_id||'';
-  if(slug==='ksiegowosc-od-podstaw'&&s.metadata?.development_version_acknowledged!=='true')
-   return reply(400); // Never fulfill an unacknowledged developmental course purchase.
-  const accountingEarlyAccessNotice=slug==='ksiegowosc-od-podstaw'?
-   '<p><strong>Wczesny dostęp:</strong> otrzymujesz wersję rozwojową. 100 tematów wymaga niezależnej recenzji, a symulator jest jeszcze dopracowywany. Materiały mają cel edukacyjny; nie zastępują porady podatkowej ani nie nadają kwalifikacji zawodowych.</p>':'';
 
   if(!slug||!uid)return reply(); // Other Checkout integrations may share this Stripe account.
   const paymentId=s.payment_intent;
@@ -164,7 +160,7 @@ Deno.serve(async req=>{
     const walletUsed=Number(s.metadata?.course_price_grosze)-amount;
     const walletStr=new Intl.NumberFormat('pl-PL',{style:'currency',currency:'PLN'}).format(walletUsed/100);
     await sendMail('trenerki-split-buyer-'+s.id,email,'TRENERKI Academy — zakup kursu',
-     '<p>Odblokowano kurs <strong>'+title+'</strong>.</p>'+accountingEarlyAccessNotice+
+     '<p>Odblokowano kurs <strong>'+title+'</strong>.</p>'+
      '<p>Wykorzystane saldo karty: '+escape(walletStr)+'. Dopłata Stripe: '+escape(cost)+'.</p>'+
      '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a></p>'+(newTerms?orderInfo+termsNotice+earlyAccess:''),version);
     const {error}=await db.from('ta_enrollments').update({buyer_email_sent_at:new Date().toISOString()}).eq('stripe_checkout_session_id',s.id);
@@ -214,7 +210,7 @@ Deno.serve(async req=>{
   if(orderError)throw orderError;
   if(order.status==='refunded'||await wasRefunded()||order.buyer_email_sent_at)return reply();
   await sendMail('trenerki-buyer-'+s.id,email,'TRENERKI Academy — potwierdzenie zakupu',
-   '<p>Kupiono kurs <strong>'+title+'</strong> z dostępem na 12 miesięcy.</p>'+accountingEarlyAccessNotice+orderInfo+
+   '<p>Kupiono kurs <strong>'+title+'</strong> z dostępem na 12 miesięcy.</p>'+orderInfo+
    (newTerms?earlyAccess+termsNotice:'<p>Potwierdzamy Twoją zgodę na dostarczenie treści cyfrowych przed upływem 14 dni i przyjęcie do wiadomości utraty prawa odstąpienia po rozpoczęciu dostarczania.</p>')+
    '<p><a href="'+site+'/moje-kursy">Otwórz kurs</a> · <a href="'+site+'/academy/regulamin.html">Regulamin</a></p>',version);
   const {error}=await db.from('ta_enrollments').update({buyer_email_sent_at:new Date().toISOString()}).eq('stripe_checkout_session_id',s.id);
