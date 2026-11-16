@@ -45,7 +45,7 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
   finally{setVerifying(false);}
  }
 
- return <View style={{gap:13,marginVertical:14}}>
+ return <View testID={slug==='excel-skroty'?'excel-keyboard-lesson':undefined} style={{gap:13,marginVertical:14}}>
   {!!valid.length&&<View style={labStyles.panel}>
    <Text style={labStyles.heading}>Skróty i polecenia z tej lekcji</Text>
    <Text style={labStyles.body}>Wybierz skrót. Sprawdź, co przygotować przed użyciem, jaki efekt zobaczysz i gdzie łatwo o pomyłkę.</Text>
@@ -69,7 +69,7 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
   {mode&&slug!=='autocad-skroty'&&<HandsOnLab mode={mode} shortcut={active?.combo} runId={runId}/>}
   {mode&&slug!=='autocad-skroty'&&<Text style={labStyles.eyebrow}>Autorski warsztat szkoleniowy. Pracujesz na danych ćwiczebnych w obrębie Akademii.</Text>}
   {alreadyVerified&&<Text style={labStyles.status}>✓ Zaliczenie skrótów zapisane. Możesz przejść dalej albo poćwiczyć ponownie.</Text>}
-  {active&&options.length>=3&&<View style={{backgroundColor:labInk,padding:15,borderRadius:13,gap:10}}>
+  {active&&options.length>=3&&<View testID={slug==='excel-skroty'?'excel-keyboard-quiz':undefined} style={{backgroundColor:labInk,padding:15,borderRadius:13,gap:10}}>
    <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ WIEDZĘ</Text>
    <Text style={{fontWeight:'900',color:'white',fontSize:17,lineHeight:24}}>Które polecenie daje taki efekt? {active.after}</Text>
    {options.map((option,i)=><Pressable key={option.combo} accessibilityRole="button" disabled={verifying||quizConfirmed}
