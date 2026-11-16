@@ -1,43 +1,46 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {topicPhotoUrl} from '../src/accounting/topic-media.js';
+import {topicPhotoAssetPath} from '../src/accounting/topic-media.js';
 
-// Publicly licensed, synthetic metadata only. No course materials or learner records.
+// Synthetic metadata only; no learner records, secrets or paid content.
 const photo={
- src:'https://images.unsplash.com/photo-1758876201660-103984519266?auto=format&fit=crop&w=1200&q=75',
- alt:'Osoba przegląda dokumenty przy biurku i komputerze',
- license:'Unsplash License',
- source_page:'https://unsplash.com/photos/woman-working-with-documents-at-office-desk-Vvn0OD0IxBM'
+ asset_id:'accounting-desk-01',
+ origin:'generated_inhouse',
+ status:'published',
+ alt:'Oryginalne wygenerowane stanowisko księgowego z kalkulatorem i dokumentami'
 };
-test('Photographs with verified Unsplash licence and descriptive alt can render',()=>{
- assert.equal(topicPhotoUrl(photo),photo.src);
- assert.equal(topicPhotoUrl({...photo,src:'https://images.unsplash.com/photo-1762341122023-3aac65b1d787?auto=format&fit=crop&w=1200&q=75'}),
-  'https://images.unsplash.com/photo-1762341122023-3aac65b1d787?auto=format&fit=crop&w=1200&q=75');
+test('Original generated assets resolve to local application paths only',()=>{
+ assert.equal(topicPhotoAssetPath(photo),'/accounting/generated/accounting-desk-01.webp');
+ assert.equal(topicPhotoAssetPath({...photo,asset_id:'accounting-archive-02'}),
+  '/accounting/generated/accounting-archive-02.webp');
 });
-test('Unknown, unsafe or unlicensed images fail closed rather than load',()=>{
+test('Third-party photos, external URLs, unknown files, and unpublished assets fail closed',()=>{
  const bad=[
-  null,undefined,'https://images.unsplash.com/photo-1758876201660-103984519266',
-  {...photo,src:'http://images.unsplash.com/photo-1758876201660-103984519266'},
-  {...photo,src:'https://images.unsplash.com.attacker.tld/photo-1758876201660-103984519266'},
-  {...photo,src:'https://images.unsplash.com/photo-1758876201660-103984519266?token=secret'},
-  {...photo,src:'data:image/svg+xml,%3Csvg%3E'},
-  {...photo,src:'https://images.unsplash.com/photo-1758876201660-103984519266#tracking'},
-  {...photo,src:'https://images.unsplash.com/photo-1758876201660-103984519266?w=99999'},
-  {...photo,license:'Unsplash+'},
-  {...photo,source_page:'https://evil.example/photos/abc'},
+  null,undefined,'/accounting/generated/accounting-desk-01.webp',
+  {...photo,origin:'external_stock'},
+  {...photo,status:'awaiting_asset_deploy'},
+  {...photo,status:'draft'},
+  {...photo,status:undefined},
+  {...photo,asset_id:'other-file'},
+  {...photo,asset_id:'../../unsafe'},
+  {...photo,asset_id:'https://example.invalid/image.webp'},
   {...photo,alt:''},
+  {...photo,alt:'abc'},
   {...photo,alt:'a'.repeat(181)}
  ];
- for(const item of bad) assert.equal(topicPhotoUrl(item),null,JSON.stringify(item));
+ for(const item of bad) assert.equal(topicPhotoAssetPath(item),null,JSON.stringify(item));
 });
-test('Only existing core topic reader displays responsive accessible photographs without overlays',()=>{
+test('Reader uses only local generated images with no untrusted remote URL',()=>{
  const screen=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
- assert.match(screen,/import \{topicPhotoUrl\} from/);
- assert.match(screen,/source=\{\{uri:src\}\}/);
+ const gate=readFileSync(new URL('../src/accounting/topic-media.js',import.meta.url),'utf8');
+ assert.match(screen,/import \{topicPhotoAssetPath\} from/);
+ assert.match(screen,/const assetPath=topicPhotoAssetPath\(photo\)/);
+ assert.match(screen,/source=\{\{uri:assetPath\}\}/);
  assert.match(screen,/accessibilityLabel=\{photo\.alt\}/);
  assert.match(screen,/resizeMode="cover"/);
  assert.match(screen,/sectionPhoto:\{width:'100%',aspectRatio:16\/9/);
  assert.match(screen,/<SectionPhoto photo=\{section\.photo\}\/>/);
+ assert.doesNotMatch(gate,/https?:\/\//);
  assert.doesNotMatch(screen,/dangerouslySetInnerHTML/);
 });
