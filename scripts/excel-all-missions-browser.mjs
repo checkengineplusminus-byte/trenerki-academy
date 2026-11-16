@@ -143,9 +143,9 @@ async function auditScreen(browser,round){
    const card=page.getByTestId('case-checkpoint');
    await card.waitFor();
    const wrong=authored.options.find((_,i)=>i!==authored.correct);
-   await card.getByText(wrong,{exact:false}).first().click();
+   await card.getByRole('button').filter({hasText:wrong}).first().click();
    await card.getByText('Jeszcze nie. Spróbuj raz jeszcze.').waitFor();
-   await card.getByText(authored.options[authored.correct],{exact:false}).first().click();
+   await card.getByRole('button').filter({hasText:authored.options[authored.correct]}).first().click();
    await card.getByText('✓ Poprawna odpowiedź. Zapisano wynik.').waitFor();
    caseCount++;
 
