@@ -95,11 +95,11 @@ async function auditKeyboard(page,authored){
  const shortcuts=authored?.material?.shortcuts||[];
  if(!shortcuts.length)return 0;
  assert.equal(shortcuts.length,5,'Sprawdź komplet pięciu skrótów w każdej lekcji 11–18');
- const panel=page.getByText('Skróty i polecenia z tej lekcji',{exact:true}).locator('..').locator('..');
+ const panel=page.getByTestId('excel-keyboard-lesson');
  await panel.waitFor();
  for(const shortcut of shortcuts){
   await panel.getByRole('button',{name:shortcut.combo+' · '+shortcut.label}).click();
-  const quiz=panel.getByText('SPRAWDŹ WIEDZĘ',{exact:true}).locator('..');
+  const quiz=panel.getByTestId('excel-keyboard-quiz');
   await quiz.waitFor();
   const options=quiz.getByRole('button');
   assert.equal(await options.count(),3,'3 alternatywy do rozpoznania '+shortcut.combo);
