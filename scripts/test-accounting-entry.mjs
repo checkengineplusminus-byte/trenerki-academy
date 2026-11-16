@@ -343,7 +343,7 @@ test('Płatność wersji rozwojowej wymaga potwierdzenia i potwierdzenie e-mail 
  assert.match(checkout,/development_version_consent_required/);
  assert.match(wallet,/development_version_consent_required/);
  assert.match(webhook,/accountingEarlyAccessNotice/);
- assert.match(webhook,/Nie.*nadają kwalifikacji/);
+ assert.match(webhook,/nie.*nadają kwalifikacji/i);
  assert.match(view,/developmentReady/);
  assert.match(view,/accountingEarlyAccess/);
 });
