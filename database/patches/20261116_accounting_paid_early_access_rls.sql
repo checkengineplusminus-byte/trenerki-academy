@@ -37,3 +37,18 @@ CREATE POLICY core_material_v3_read ON public.ta_accounting_core_materials_v3 FO
  );
 COMMENT ON POLICY core_material_v3_read ON public.ta_accounting_core_materials_v3 IS
 'Review_needed materials are visible to authenticated editor, or to entitled early-access learners ONLY while course is publicly published; content remains review_needed and never becomes legally approved automatically.';
+
+
+-- Buyer can also hand in homework for accessible developmental lessons. Approval state remains review_needed.
+DO $$
+DECLARE v_definition text; v_old text := '(m.editorial_status=''approved'' OR ta_accounting_internal.is_editor())';
+v_new text := '(m.editorial_status=''approved'' OR ta_accounting_internal.is_editor() OR (m.editorial_status=''review_needed'' AND EXISTS (SELECT 1 FROM public.ta_courses c WHERE c.slug=''ksiegowosc-od-podstaw'' AND c.published=true)))';
+BEGIN
+ IF NOT EXISTS (SELECT 1 FROM ta_accounting_internal.build_leases WHERE lease_key='encyclopedia-builder'
+   AND owner_run='8e621752-990d-42a5-bf7d-b7f8ef599291'::uuid AND leased_until>now() FOR UPDATE)
+ THEN RAISE EXCEPTION 'Accounting builder lease not held'; END IF;
+ SELECT pg_get_functiondef('public.ta_accounting_core_homework_save(smallint,text,boolean,integer)'::regprocedure) INTO v_definition;
+ IF v_definition IS NULL OR (length(v_definition)-length(replace(v_definition,v_old,'')))<>length(v_old)
+ THEN RAISE EXCEPTION 'Unknown homework function version, release aborted'; END IF;
+ EXECUTE replace(v_definition,v_old,v_new);
+END $$;
