@@ -157,9 +157,11 @@
       "iconBundle": 2
     },
     "excel-skroty": {
-      "file": "excel-skroty.webp",
-      "alt": "Laptop z kolorowymi zestawieniami liczbowymi na ekranie",
-      "iconBundle": 2
+      "file": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Anzahl_der_B%C3%A4ume_pro_Quadrat_1.png",
+      "alt": "Autentyczny zrzut interfejsu programu Microsoft Excel z tabelą i wstążką narzędzi",
+      "iconBundle": 2,
+      "source": "https://commons.wikimedia.org/wiki/File:Anzahl_der_B%C3%A4ume_pro_Quadrat_1.png",
+      "license": "CC0 1.0"
     },
     "autocad-skroty": {
       "file": "autocad-skroty.webp",
