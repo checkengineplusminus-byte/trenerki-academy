@@ -12,8 +12,10 @@ export default function Purchase(){
  const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
  const router=useRouter(),[item,setItem]=useState<Course|null>(null),[preview,setPreview]=useState<Preview|null>(null),
  [email,setEmail]=useState(''),[termsAccepted,setTermsAccepted]=useState(false),[earlyAccessConsent,setEarlyAccessConsent]=useState(false),[busy,setBusy]=useState(true),
- [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState('');
+ [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState(''),[developmentConsent,setDevelopmentConsent]=useState(false);
  const [creditBalance,setCreditBalance]=useState(0),[applyCredit,setApplyCredit]=useState(true),[quote,setQuote]=useState<{slug:string;price:number}|null>(null);
+ const accountingEarlyAccess=slug==='ksiegowosc-od-podstaw';
+ const developmentReady=!accountingEarlyAccess||developmentConsent;
  const quoted=quote?.slug===slug?quote.price:null;
  const [quoteLoading,setQuoteLoading]=useState(false);
  async function loadQuote(){
@@ -55,11 +57,11 @@ export default function Purchase(){
     router.replace('/moje-kursy');return;
    }
    if(quoted===null)throw new Error('Odśwież aktualną cenę przed zakupem.');
-   if(!termsAccepted||!earlyAccessConsent)throw new Error('Zaznacz obie wymagane zgody przed płatnością.');
+   if(!termsAccepted||!earlyAccessConsent||!developmentReady)throw new Error('Potwierdź regulamin, rozpoczęcie nauki i świadomy zakup wersji rozwojowej.');
    // The server atomically reserves wallet funds, or grants a fully covered course.
    if(effectiveCredit>0){
     const {data:wallet,error:walletError}=await supabase.functions.invoke('ta-credit',{body:{
-     action:'purchase_course',course_slug:slug,accepted_terms:true,immediate_content_consent:true,terms_version:termsVersion,expected_price_grosze:quoted,expected_credit_grosze:effectiveCredit
+     action:'purchase_course',course_slug:slug,accepted_terms:true,immediate_content_consent:true,development_version_acknowledged:developmentReady,terms_version:termsVersion,expected_price_grosze:quoted,expected_credit_grosze:effectiveCredit
     }});
     if(!walletError&&wallet?.ok){
      if(wallet.mode==='covered'){router.replace('/moje-kursy');return;}
@@ -84,7 +86,7 @@ export default function Purchase(){
    }
    // Price, account ownership and course publication are re-checked by the server.
    const {data,error}=await supabase.functions.invoke('ta-create-checkout',{
-    body:{course_slug:slug,accepted_terms:true,immediate_content_consent:true,terms_version:termsVersion,expected_price_grosze:quoted}
+    body:{course_slug:slug,accepted_terms:true,immediate_content_consent:true,development_version_acknowledged:developmentReady,terms_version:termsVersion,expected_price_grosze:quoted}
    });
    if(error){
     let code='';
@@ -128,6 +130,10 @@ export default function Purchase(){
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
      <Text style={{fontSize:15,color:muted,lineHeight:24}}>{item.description_pl}</Text>
      <Text style={{fontSize:27,fontWeight:'900',color:ink}}>{item.price_grosze===0?'GRATIS':price}</Text>
+     {accountingEarlyAccess&&<View style={{padding:17,borderRadius:12,backgroundColor:'#fff2dc',gap:8}}>
+      <Text style={{fontSize:18,fontWeight:'900',color:'#74441e'}}>Wczesny dostęp — kurs w wersji rozwojowej</Text>
+      <Text style={{fontSize:14,lineHeight:22,color:'#624525'}}>Dostępnych jest 100 opracowanych tematów w 10 działach, ćwiczenia i fikcyjne biuro. Wszystkie tematy wymagają niezależnej recenzji merytorycznej i prawnej, a pełny cykl symulatora jest nadal dopracowywany. To materiał edukacyjny, nie porada podatkowa, oficjalna kwalifikacja ani obietnica dyplomu. W ramach 12 miesięcy dostępne będą poprawki i aktualizacje.</Text>
+     </View>
     </View>
     {!!preview&&<>
      <View style={{borderRadius:18,backgroundColor:lime,padding:24,gap:12}}>
@@ -173,6 +179,10 @@ export default function Purchase(){
        <Text style={{color:ink,fontWeight:'900'}}>{applyCredit&&creditBalance>0?toPay===0?'Zapłata z salda':'Dopłata przez Stripe: '+pln(toPay):'Płatność jednorazowa przez Stripe'}</Text>
        <Text style={{color:muted,fontSize:13,lineHeight:20}}>Dostęp na 12 miesięcy po potwierdzonej płatności. Brak automatycznego odnawiania. Kurs odblokowuje się na Twoim koncie.</Text>
        <PurchaseLegalLinks/>
+       {accountingEarlyAccess&&<Pressable accessibilityRole="checkbox" accessibilityState={{checked:developmentConsent}} onPress={()=>setDevelopmentConsent(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:8}}>
+        <Text style={{fontSize:20,color:ink}}>{developmentConsent?'☑':'☐'}</Text>
+        <Text style={{flex:1,color:ink,lineHeight:21}}>Wiem, że kupuję wczesny dostęp do niezatwierdzonej jeszcze wersji kursu księgowości. Materiały i symulator są aktualizowane, a informacje prawne wymagają niezależnej recenzji. Nie będę używać ich do rzeczywistych rozliczeń ani traktować jako kwalifikacji zawodowej.</Text>
+       </Pressable>}
        <Pressable accessibilityRole="checkbox" accessibilityState={{checked:termsAccepted}} onPress={()=>setTermsAccepted(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6}}>
         <Text style={{fontSize:20,color:ink}}>{termsAccepted?'☑':'☐'}</Text>
         <Text style={{flex:1,color:ink,lineHeight:21}}>Zapoznałem się z regulaminem i akceptuję warunki zakupu.</Text>
@@ -182,12 +192,12 @@ export default function Purchase(){
         <Text style={{flex:1,color:ink,lineHeight:21}}>Wyraźnie zgadzam się na rozpoczęcie dostarczania treści cyfrowych przed upływem 14 dni i przyjmuję do wiadomości, że po rozpoczęciu dostarczania mogę utracić prawo odstąpienia, jeżeli spełniono wszystkie warunki ustawowe opisane w regulaminie.</Text>
        </Pressable>
       </View>}
-     {!!owned?<Pressable onPress={()=>router.replace({pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
+     {!!owned?<Pressable onPress={()=>router.replace(accountingEarlyAccess?'/program-ksiegowosci':{pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
-     </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null)))?0.5:1}}>
+     </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||!developmentReady||quoted===null))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||!developmentReady||quoted===null)))?0.5:1}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?(item.price_grosze===0?'Zapisuję na kurs…':'Przechodzę do płatności…'):item.price_grosze===0?'Odbierz za darmo →':(effectiveCredit>0?(toPay===0?'Kupuję i płacę z salda '+pln(effectiveCredit):'Przejdź do płatności '+pln(toPay)):'Przejdź do płatności Stripe')+' →'}</Text>
      </Pressable>}
-     {slug!=='zaufany-wolontariusz'&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
+     {slug!=='zaufany-wolontariusz'&&!accountingEarlyAccess&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs</Text>
      </Pressable>}
 
