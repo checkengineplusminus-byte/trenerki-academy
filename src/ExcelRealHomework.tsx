@@ -61,6 +61,10 @@ export default function ExcelRealHomework({lessonNo}:{lessonNo:number}){
     <Text style={{fontWeight:'900',color:ink,fontSize:14}}>1. Pobierz dane i otwórz Microsoft Excel</Text>
     <Text style={{fontSize:12,lineHeight:20,color:muted}}>Plik CSV zawiera fikcyjne dane startowe. Otwórz go przez Dane → Z tekstu/CSV, wybierz separator średnik i sprawdź typy liczb oraz kodów. Następnie zapisz jako XLSX, aby zachować kolejne formuły i arkusze.</Text>
     <DownloadFile id="excel-homework-download" file={item.starter.file} label={'Pobierz: '+item.starter.label}/>
+    {item.comparisonStarter&&<View style={{gap:6}}>
+      <Text style={{fontSize:12,fontWeight:'900',color:accent}}>Drugi plik potrzebny do porównania danych</Text>
+      <DownloadFile id="excel-homework-comparison-download" file={item.comparisonStarter.file} label={'Plik porównawczy: '+item.comparisonStarter.label}/>
+    </View>}
     {item.bonusStarter&&<View style={{gap:7,marginTop:4}}>
      <Text style={{fontSize:12,fontWeight:'900',color:accent}}>Rozszerzenie dla ambitnych — po głównym zadaniu</Text>
      <Text style={{fontSize:12,lineHeight:21,color:muted}}>{item.bonusTask}</Text>
