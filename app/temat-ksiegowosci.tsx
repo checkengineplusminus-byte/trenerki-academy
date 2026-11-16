@@ -154,7 +154,7 @@ export default function TematKsiegowosci(){
     <Text accessibilityRole="header" style={s.h1}>{lesson.title_pl}</Text>
     <Text style={s.heroBody}>{lesson.learning_goal}</Text>
    </View>
-   {lesson.editorial_status!=='approved'&&<Text style={s.warning}>WCZESNY DOSTĘP: niezatwierdzony materiał rozwojowy wymagający niezależnego przeglądu prawnego i merytorycznego. Nie używaj go jako porady ani podstawy rzeczywistych deklaracji.</Text>}
+   <Text style={s.small}>To ćwiczenie ma charakter edukacyjny i wykorzystuje fikcyjne dane. Przed rzeczywistymi rozliczeniami należy sprawdzić aktualne przepisy i zasięgnąć odpowiedniej porady.</Text>
    <View style={s.card}><Text style={s.body}>{m.intro||lesson.body_text}</Text></View>
    {(m.sections||[]).map((section:any,i:number)=><View key={i} style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>{section.heading}</Text>

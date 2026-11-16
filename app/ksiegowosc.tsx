@@ -75,7 +75,7 @@ export default function AccountingReader(){
   const auth=await supabase.auth.getUser();if(auth.error||!auth.data.user){router.replace('/konto');return;}
   const info=await supabase.rpc('ta_accounting_overview');if(info.error)throw info.error;
   if(mounted){setUserId(auth.data.user.id);setOverview(info.data);}
- }catch(e:any){if(mounted)setAccessError(e.code==='42501'?'Encyklopedia wymaga aktywnego dostępu. Właściciel może korzystać z podglądu przygotowywanego kursu.':'Nie udało się odczytać kursu. Spróbuj ponownie.');}finally{if(mounted)setLoading(false);}})();return()=>{mounted=false;active.current=false;};},[]);
+ }catch(e:any){if(mounted)setAccessError(e.code==='42501'?'Encyklopedia wymaga aktywnego dostępu. Właściciel może korzystać z podglądu administracyjnego.':'Nie udało się odczytać kursu. Spróbuj ponownie.');}finally{if(mounted)setLoading(false);}})();return()=>{mounted=false;active.current=false;};},[]);
  useEffect(()=>{if(!userId)return;let mounted=true;setChaptersBusy(true);setListError('');void supabase.rpc('ta_accounting_chapter_list',{p_section:section}).then(({data,error})=>{if(!mounted)return;if(error){setChapters([]);setListError('Nie udało się wczytać rozdziałów.');}else setChapters(data||[]);}).catch(()=>{if(mounted)setListError('Błąd połączenia przy odczycie rozdziałów.');}).finally(()=>{if(mounted)setChaptersBusy(false);});return()=>{mounted=false;};},[userId,section]);
  useEffect(()=>{if(!userId)return;let mounted=true;setItems([]);setMore(false);setListError('');if(mode==='program'&&chapter===null){setListBusy(false);return;}setListBusy(true);
   void(async()=>{try{let rows:Summary[]=[];const offset=page*PAGE_SIZE;

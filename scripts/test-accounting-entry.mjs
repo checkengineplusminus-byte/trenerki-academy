@@ -175,7 +175,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  assert.ok(reviewedReaderHashes.has(hash)||reviewedReaderHashes.has(directHash),'Czytnik pozostałych kursów jest bez nieuzgodnionych zmian');
 });
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
-test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Podgląd przygotowywanej encyklopedii'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
+test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Panel właściciela — księgowość'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
 
 test('Aktywny program księgowości nie jest liczony z archiwalnych lekcji',()=>{
  const code=readFileSync(new URL('../app/ksiegowosc.tsx',import.meta.url),'utf8');
@@ -318,32 +318,32 @@ test('Program księgowości pokazuje prace domowe i pierwszy niezakończony tema
 });
 
 
-test('Księgowość: wczesny dostęp jawnie opisany w katalogu, czytniku i płatności',()=>{
- const file=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+test('Księgowość: normalna oferta tylko w kategorii Biznes i praca',()=>{
+ const home=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+ const category=readFileSync(new URL('../public/academy/kategorie/biznes-i-praca.html',import.meta.url),'utf8');
  const page=readFileSync(new URL('../public/academy/ksiegowosc-od-podstaw.html',import.meta.url),'utf8');
- const checkout=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
- const stripe=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
- const credit=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
- assert.match(file,/acct-feature-title/);
- assert.match(file,/w trakcie recenzji/);
+ assert.doesNotMatch(home,/acct-feature-title|NOWOŚĆ · WCZESNY DOSTĘP/);
+ assert.match(home,/const ACCOUNTING_CATALOG=/);
+ assert.match(home,/c\.id!==ACCOUNTING_CATALOG\.id/);
+ assert.match(category,/Księgowość od podstaw — Encyklopedia/);
  assert.match(page,/100 tematów/);
- assert.match(page,/nie gwarantuje dyplomu/);
- assert.match(checkout,/development_version_acknowledged:developmentReady/);
- assert.match(stripe,/development_version_consent_required/);
- assert.match(credit,/development_version_consent_required/);
+ assert.match(page,/Kup kurs online/);
+ assert.doesNotMatch(page,/wczesny dostęp|wersja rozwojowa|w trakcie recenzji/i);
 });
 
-
-test('Płatność wersji rozwojowej wymaga potwierdzenia i potwierdzenie e-mail jest jednoznaczne',()=>{
+test('Księgowość: standardowy zakup chroni zgodę, konto i potwierdzenie płatności',()=>{
  const checkout=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
  const wallet=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
  const webhook=readFileSync(new URL('../supabase/functions/ta-stripe-webhook/index.ts',import.meta.url),'utf8');
  const view=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
- for(const src of [checkout,wallet,webhook])assert.match(src,/development_version_acknowledged/);
- assert.match(checkout,/development_version_consent_required/);
- assert.match(wallet,/development_version_consent_required/);
- assert.match(webhook,/accountingEarlyAccessNotice/);
- assert.match(webhook,/nie.*nadają kwalifikacji/i);
- assert.match(view,/developmentReady/);
- assert.match(view,/accountingEarlyAccess/);
+ for(const src of [checkout,wallet,webhook,view]){
+  assert.doesNotMatch(src,/development_version_acknowledged|development_version_consent_required|accountingEarlyAccessNotice/);
+ }
+ assert.match(checkout,/accepted_terms/);
+ assert.match(checkout,/immediate_content_consent/);
+ assert.match(checkout,/ta_effective_course_price/);
+ assert.match(wallet,/immediate_content_consent/);
+ assert.match(webhook,/ta_enrollments/);
+ assert.match(view,/termsAccepted/);
+ assert.match(view,/earlyAccessConsent/);
 });

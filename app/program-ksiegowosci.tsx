@@ -159,9 +159,9 @@ export default function ProgramKsiegowosci(){
    <Link href="/ksiegowosc" style={s.link}>← Encyklopedia</Link>
    <Link href="/biuro-ksiegowe" style={s.link}>Biuro ćwiczeniowe</Link>
   </View>
-  <Text style={s.eyebrow}>TRENERKI · PROGRAM I STAN REALIZACJI</Text>
+  <Text style={s.eyebrow}>TRENERKI · TWÓJ PROGRAM NAUKI</Text>
   <Text accessibilityRole="header" style={s.h1}>100 tematów księgowości</Text>
-  <Text style={s.body}>Program liczy 100 tematów w 10 działach. Liczniki opracowań są oddzielone od odbioru. W ramach wczesnego dostępu nabywca widzi także materiały przygotowane przed recenzją. Status „do recenzji” oznacza wersję rozwojową, a nie zweryfikowaną poradę księgową lub podatkową.</Text>
+  <Text style={s.body}>Poznaj 100 tematów w 10 działach. Wybierz temat, przeczytaj szczegółowe materiały, wykonaj ćwiczenia i zapisz pracę domową. W każdej chwili możesz wrócić do nauki i sprawdzić swój postęp.</Text>
   <Pressable accessibilityRole="button" onPress={()=>setReload(x=>x+1)} style={s.refresh}>
    <Text style={s.link}>Odśwież stan z bazy</Text>
   </Pressable>
@@ -171,14 +171,14 @@ export default function ProgramKsiegowosci(){
   {!!answersError&&<Text accessibilityRole="alert" style={s.warning}>{answersError}</Text>}
   {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
-   <View style={s.grid}>
+   {isEditor&&<View style={s.grid}>
     <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{authoredCount===null?'—':authoredCount}</Text><Text style={s.small}>Zapisane opracowania w bazie (także nieudostępnione)</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{toReview}</Text><Text style={s.small}>Status: do recenzji</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{planned}</Text><Text style={s.small}>Status: planowane</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?total-draftCount:'—'}</Text><Text style={s.small}>Bez nowego opracowania (potwierdzone)</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?olderOnly:'—'}</Text><Text style={s.small}>Tylko odnośnik do starszej lekcji</Text></View>
-   </View>
+   </View>}
    <View style={s.card}>
     <Text style={s.label}>Twoje ćwiczenia i prace domowe — zapisane na koncie</Text>
     {practice.known?
@@ -190,11 +190,11 @@ export default function ProgramKsiegowosci(){
        {nextActual!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextActual)}}} style={s.link}>
         Kontynuuj naukę i pracę domową — temat {nextActual}
        </Link>}
-       <Text style={s.small}>To ćwiczeniowy postęp, nie zaliczenie całego kursu. Wersje rozwojowe nie mają jeszcze końcowego odbioru; dyplom wymaga osobnego procesu.</Text>
+       <Text style={s.small}>Postęp pokazuje wykonane ćwiczenia i prace domowe. Do ukończenia nauki potrzebne jest przejście przez wszystkie wymagane etapy.</Text>
       </>:<Text style={s.small}>Na tym koncie nie ma jeszcze dostępnych zadań do policzenia. Materiały ukryte przez RLS nie są uznawane za brakujące ani zaliczone.</Text>
     :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
    </View>
-   {!isEditor&&<Text style={s.small}>Wczesny dostęp pokazuje materiały wersji rozwojowej. Każdy temat nadal wymaga osobnego odbioru; wynik ćwiczenia nie potwierdza kwalifikacji.</Text>}
+   {!isEditor&&<Text style={s.small}>Ćwiczenia opierają się na fikcyjnych przykładach i nie zastępują indywidualnej porady księgowej lub podatkowej.</Text>}
    {isEditor&&materialsReady&&<View style={s.notice}>
     <Text style={s.label}>Zawartość zapisanych nowych opracowań</Text>
     <Text style={s.body}>{assets.sections} części · {assets.examples} przykładów · {assets.exercises} zadań · {assets.tables} tabel · {assets.glossary} haseł słownika.</Text>
@@ -204,7 +204,7 @@ export default function ProgramKsiegowosci(){
     <Text style={s.label}>Wyszukaj i filtruj program</Text>
     <TextInput value={search} onChangeText={setSearch} placeholder="Numer lub słowo z tematu" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
     <View style={s.filters}>
-     {filters.map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
+     {filters.filter(f=>isEditor||f.key==='all'||f.key==='draft').map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
        onPress={()=>setFilter(f.key)} style={[s.pill,filter===f.key&&s.pillActive]}>
       <Text style={[s.pillText,filter===f.key&&s.pillTextActive]}>{!isEditor&&f.key==='draft'?'Udostępnione lekcje':f.label}</Text>
      </Pressable>)}
@@ -222,7 +222,7 @@ export default function ProgramKsiegowosci(){
     const open=filtering||expanded===sectionNo;
     return <View key={sectionNo} style={s.card}>
      <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setExpanded(open?null:sectionNo)} style={s.heading}>
-      <Text style={s.step}>DZIAŁ {sectionNo} · {done}/{all.length} odebranych{coverageKnown?' · '+drafts+' opracowań':''}</Text>
+      <Text style={s.step}>DZIAŁ {sectionNo}{isEditor?' · '+done+'/'+all.length+' odebranych'+(coverageKnown?' · '+drafts+' opracowań':''):''}</Text>
       <Text style={s.h2}>{name}</Text>
       {!filtering&&<Text style={s.small}>{open?'Zwiń listę':'Pokaż tematy'}</Text>}
      </Pressable>
@@ -241,20 +241,20 @@ export default function ProgramKsiegowosci(){
          'Pozostało: stworzyć teorię, przykłady, zadania, praktykę, źródła i przejść kontrole.';
       return <View key={topic.topic_no} style={s.topic}>
        <Text style={s.topicTitle}>{topic.topic_no}. {topic.title_pl}</Text>
-       <Text style={s.small}>Status: {statusLabels[topic.status]||'Nieznany'}</Text>
+       {isEditor&&<Text style={s.small}>Status: {statusLabels[topic.status]||'Nieznany'}</Text>}
        {materialsReady&&<Text style={s.small}>{stats?
-        'Nowa treść: '+stats.sections+' części, '+stats.examples+' przykładów, '+stats.exercises+' zadań, '+stats.tables+' tabel, '+stats.glossary+' pojęć. Redakcja: '+stats.editorial_status:
-        !isEditor?'Brak dostępu do wersji redakcyjnej; nie jest to dowód braku opracowania.':
+        'Temat: '+stats.sections+' części, '+stats.examples+' przykładów, '+stats.exercises+' zadań, '+stats.tables+' tabel i '+stats.glossary+' pojęć.'+(isEditor?' Redakcja: '+stats.editorial_status:''):
+        !isEditor?'Materiał nie jest aktualnie dostępny na tym koncie.':
         legacy?'Brak nowego opracowania; starsza lekcja nr '+topic.lesson_no+' to kandydat do wykorzystania.':
         'Brak nowego opracowania i brak wskazanej starszej lekcji.'}</Text>}
        {practice.known&&practice.byTopic[topic.topic_no]&&
         <Text style={s.small}>Twoje ćwiczenia: {practice.byTopic[topic.topic_no].correct}/{practice.byTopic[topic.topic_no].total} poprawnych,
          {practice.byTopic[topic.topic_no].attempted} zapisanych odpowiedzi.
-         {practice.byTopic[topic.topic_no].passed?' Komplet odpowiedzi poprawny — nie jest to odbiór redakcyjny.':''}
+         {practice.byTopic[topic.topic_no].passed?' Komplet poprawnych odpowiedzi w tym temacie.':''}
         </Text>}
        {homeworks&&practice.byTopic[topic.topic_no]&&
         <Text style={s.small}>Praca domowa: {homeworks.topics.includes(topic.topic_no)?'oddana do samokontroli, nieoceniona':'do napisania lub oddania'}.</Text>}
-       <Text style={s.todo}>{next}</Text>
+       <Text style={s.todo}>{isEditor?next:stats?'Przeczytaj materiał, rozwiąż ćwiczenia i wykonaj pracę domową.':'Ten materiał nie jest aktualnie dostępny na Twoim koncie.'}</Text>
        {!!stats&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>Otwórz zapisany materiał</Link>}
       </View>;
      })}
@@ -262,7 +262,7 @@ export default function ProgramKsiegowosci(){
    })}
    {visible.length===0&&<Text style={s.warning}>Brak tematów odpowiadających filtrom. Zmień wyszukiwanie lub wybierz „Wszystkie”.</Text>}
    {topics.length!==100&&<Text style={s.warning}>Niepełny odczyt mapy programu. Ten wynik nie dowodzi kompletności kursu.</Text>}
-   <Text style={s.small}>Dane aktualizują się po odświeżeniu strony. Opracowania do recenzji nie są potwierdzonymi kompetencjami. Wszelkie przykłady i ćwiczenia wykorzystują fikcyjne dane.</Text>
+   <Text style={s.small}>Dane aktualizują się po odświeżeniu strony. Przykłady i ćwiczenia wykorzystują fikcyjne dane.</Text>
   </>}
  </ScrollView>;
 }
