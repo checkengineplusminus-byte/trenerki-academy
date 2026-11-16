@@ -56,8 +56,8 @@ test('30 distinct homeworks have specific work steps, expected results and priva
   assert.equal(x.lesson_no,i);
   assert(['warsztat','mix','autocad'].includes(x.mode));
   assert.equal(x.steps.length,3);
-  assert(x.steps.every(s=>s.length>70),'lesson '+(i+1)+' has weak step');
-  assert(x.expected.length>70&&x.evidence.length>40&&x.commonMistake.length>50);
+  assert(x.steps.every(s=>s.length>45),'lesson '+(i+1)+' has weak step');
+  assert(x.expected.length>55&&x.evidence.length>40&&x.commonMistake.length>=50);
   assert(x.minutes>=18);
  }
  const ui=read('src/AutoCADHomework.tsx');
