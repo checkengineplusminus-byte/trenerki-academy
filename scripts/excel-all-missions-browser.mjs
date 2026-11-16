@@ -11,6 +11,7 @@ const data=path=>JSON.parse(readFileSync(new URL('../'+path,import.meta.url),'ut
 const lessons=data('content/v2-excel-skroty.json').lessons;
 const missions=data('content/excel-professional-missions.json').missions;
 const bonus=data('content/excel-bonus-chapters.json').chapters;
+const homeworks=data('content/excel-real-homework-30.json').lessons;
 assert.equal(lessons.length,30);
 assert.equal(missions.length,30);
 assert.equal(bonus.length,12);
@@ -91,6 +92,37 @@ async function auditVisual(page,no){
  await lab.getByRole('button',{name:'Sprawdź moją analizę'}).click();
  await lab.getByTestId('excel-visual-feedback').filter({hasText:/Zgadza się/}).waitFor();
 }
+async function auditHomework(page,no,round){
+ const item=homeworks.find(x=>x.lessonNo===no);
+ assert(item,'Missing homework for '+no);
+ const panel=page.getByTestId('excel-real-homework-'+no);
+ await panel.waitFor();
+ const input=panel.getByTestId('excel-homework-answer');
+ if(!await input.isVisible())await panel.getByTestId('excel-homework-toggle').click();
+ await input.waitFor();
+ const download=panel.getByRole('link',{name:/Pobierz:/}).first();
+ const url=await download.getAttribute('href');
+ assert.equal(url,item.starter.file,'Wrong workbook starter for '+no);
+ const response=await page.request.get(base+url);
+ assert.equal(response.status(),200,'Homework starter unavailable '+no);
+ const body=await response.text();
+ assert(body.length>50&&body.includes(';'),'Empty or unstructured homework starter '+no);
+ await input.fill('NIE-MA-TAKIEJ-ODPOWIEDZI');
+ await panel.getByTestId('excel-homework-check').click();
+ await panel.getByTestId('excel-homework-feedback').filter({hasText:/Uwaga/}).waitFor();
+ const correct=round===1&&item.kind==='number'?item.expected+' zł':
+  round===2&&item.kind==='percent'?item.expected+'%':item.expected;
+ await input.fill(correct);
+ await panel.getByTestId('excel-homework-check').click();
+ await panel.getByTestId('excel-homework-feedback').filter({hasText:/✓/}).waitFor();
+ await panel.getByTestId('excel-homework-step-0').click();
+ await panel.getByTestId('excel-homework-step-progress').filter({hasText:/1\//}).waitFor();
+ await panel.getByTestId('excel-homework-criterion-0').click();
+ await panel.getByTestId('excel-homework-criterion-progress').filter({hasText:/1\//}).waitFor();
+ await panel.getByTestId('excel-homework-solution-toggle').click();
+ await panel.getByTestId('excel-homework-solution').waitFor();
+ return {download:true,answer:true,checklist:true};
+}
 async function auditKeyboard(page,authored){
  const shortcuts=authored?.material?.shortcuts||[];
  if(!shortcuts.length)return 0;
@@ -146,7 +178,7 @@ async function auditScreen(browser,round){
  const page=await context.newPage(),attempts=[],errors=[];
  page.setDefaultTimeout(18000);
  page.on('pageerror',error=>errors.push(error.message));
- let missionCount=0,caseCount=0,bonusCount=0,visualCount=0,keyboardCount=0;
+ let missionCount=0,caseCount=0,bonusCount=0,visualCount=0,keyboardCount=0,homeworkCount=0;
  try{
   await stubProduction(page,attempts);
   for(const m of missions){
@@ -185,6 +217,7 @@ async function auditScreen(browser,round){
    await card.getByText('✓ Poprawna odpowiedź. Zapisano wynik.').waitFor();
    caseCount++;
    keyboardCount+=await auditKeyboard(page,lessons[no]);
+   await auditHomework(page,no,round);homeworkCount++;
 
    if(visualLessons.has(no)){await auditVisual(page,no);visualCount++;}
    if(no===0)bonusCount=await auditBonus(page);
@@ -195,6 +228,7 @@ async function auditScreen(browser,round){
   }
   assert.equal(missionCount,30);assert.equal(caseCount,30);assert.equal(bonusCount,12);assert.equal(visualCount,8);
   assert.equal(keyboardCount,40,'Osiem lekcji po pięć skrótów');
+  assert.equal(homeworkCount,30,'Każda lekcja musi mieć sprawdzoną pracę domową');
   const cases=attempts.filter(x=>x.mode==='case'),keys=attempts.filter(x=>x.mode==='keyboard');
   assert.equal(cases.length,60,'Wrong and correct attempts for every case quiz');
   assert.equal(cases.filter(x=>x.correct).length,30);
@@ -204,7 +238,7 @@ async function auditScreen(browser,round){
   assert.equal(keys.filter(x=>!x.correct).length,40);
   assert.deepEqual(errors,[],'No JS errors in the 30-lesson audit');
   return {viewport:mobile?'390×844 mobile':'1365×820 desktop',
-   missions:missionCount,cases:caseCount,bonus:bonusCount,visual:visualCount,keyboard:keyboardCount,attempts:attempts.length,passed:true};
+   missions:missionCount,cases:caseCount,bonus:bonusCount,visual:visualCount,keyboard:keyboardCount,homeworks:homeworkCount,attempts:attempts.length,passed:true};
  }finally{await context.close();}
 }
 const browser=await chromium.launch({headless:true});
@@ -212,7 +246,7 @@ const report={suite:'Excel wszystkie lekcje',source:'local authored curriculum, 
 try{
  for(let round=1;round<=2;round++)report.results.push(await auditScreen(browser,round));
  assert(report.results.every(r=>r.passed));
- console.log('✓ EXCEL: 60/60 misji, 60/60 quizów, 80/80 skrótów, 24/24 bonusów, 16/16 wykresów/pivotów na telefonie i desktopie');
+ console.log('✓ EXCEL: 60/60 misji, 60/60 quizów, 80/80 skrótów, 60/60 prac domowych, 24/24 bonusów, 16/16 wykresów/pivotów na telefonie i desktopie');
 }finally{
  await browser.close();
  writeFileSync('/tmp/trenerki-excel-all-lessons.json',JSON.stringify(report,null,2));
