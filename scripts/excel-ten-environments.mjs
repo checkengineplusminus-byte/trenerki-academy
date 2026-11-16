@@ -343,6 +343,7 @@ async function totalBeginner(browser,p,round){
   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   const lab=page.getByTestId('excel-first-day');
   await lab.waitFor({timeout:20000});
+  assert.equal(await lab.getByText('}',{exact:true}).count(),0,'Samotna klamra nie powinna być widoczna na telefonie');
   await lab.getByTestId('excel-first-worked-example').getByText(/NAJPIERW PRZYKŁAD/).waitFor();
   await lab.getByTestId('excel-first-worked-example').getByText(/=B2\*C2/).first().waitFor();
   const earlier=await page.evaluate(()=>{
@@ -370,21 +371,34 @@ async function totalBeginner(browser,p,round){
   await amount0.fill('3');await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Policz wartość pierwszego produktu'}).waitFor();
   const answer=lab.getByTestId('excel-first-answer');
+  await lab.getByTestId('excel-first-result-instruction').getByText(/Wpisz tylko liczbę/).waitFor();
   await answer.fill('1');await check.click();await lab.getByTestId('excel-first-error').waitFor();
+  await lab.getByTestId('excel-first-mode-formula').click();
+  await lab.getByTestId('excel-first-formula-instruction').waitFor();
   await answer.fill('=B2+C2');await check.click();
   await lab.getByTestId('excel-first-error').filter({hasText:/B2 oznacza ilość/}).waitFor();
+  if(round===1)await lab.getByTestId('excel-first-mode-result').click();
   await answer.fill(round===2?'=b2*c2':String(p.cost));
   if(round===2)await lab.getByTestId('excel-first-formula-notice').waitFor();
   await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Dodaj wartości trzech produktów'}).waitFor();
   if(round===2)await lab.getByTestId('excel-first-step-success').filter({hasText:/prawidłowa formuła/}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.firstTotal)}).waitFor();
+  await lab.getByTestId('excel-first-result-instruction').getByText(/Wpisz tylko liczbę/).waitFor();
+  if(round===2){
+   await lab.getByTestId('excel-first-mode-formula').click();
+   await answer.fill('=(d2:d4)');await check.click();
+   await lab.getByTestId('excel-first-error').filter({hasText:/słowem SUMA/}).waitFor();
+   await answer.fill('=135(d2:d4)');await check.click();
+   await lab.getByTestId('excel-first-error').filter({hasText:/Nie wpisuj liczby przed nawiasem/}).waitFor();
+  }
   await answer.fill(round===2?'=suma(d2:d4)':String(p.firstTotal));await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Zmień ilość drugiego produktu'}).waitFor();
   await lab.getByTestId('excel-first-quantity-1').fill(String(p.final2));await check.click();
   await lab.getByTestId('excel-first-step').filter({hasText:'Sprawdź nową sumę'}).waitFor();
   await lab.getByTestId('excel-first-total').filter({hasText:String(p.secondTotal)}).waitFor();
   await answer.fill(String(p.firstTotal));await check.click();await lab.getByTestId('excel-first-error').waitFor();
+  if(round===2)await lab.getByTestId('excel-first-mode-formula').click();
   await answer.fill(round===2?'=SUMA(D2:D4)':String(p.secondTotal));await check.click();
   await lab.getByTestId('excel-first-success').waitFor();
   // Real MS Excel transfer: download CSV that contains actual data, not a fake XLSX.

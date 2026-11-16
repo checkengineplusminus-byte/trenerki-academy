@@ -3,6 +3,7 @@ import {Platform,Pressable,Text,TextInput,View,useWindowDimensions} from 'react-
 import {beginnerCount,checkFirstDayAnswer,pln} from './excelFirstDayAnswers';
 
 type Track='dom'|'sklep';
+type AnswerMode='result'|'formula';
 type Item={label:string;amount:string;price:number};
 const examples:Record<Track,{label:string;title:string;context:string;items:Item[];file:string}>={
  dom:{
@@ -25,10 +26,10 @@ const tap={minHeight:46,paddingHorizontal:12,paddingVertical:10,borderRadius:10,
 const guide=[
  {name:'Znajdź pierwszy wiersz danych',instruction:'Spójrz na tabelę powyżej. Litery A, B, C, D opisują kolumny. Pierwszy produkt znajduje się w WIERSZU 2. Kliknij „Wybierz” przy jego nazwie. Teraz niczego nie liczysz.',error:'Znajdź napis „Wiersz 2” i kliknij „Wybierz” przy pierwszym produkcie.',hint:'Wiersz 1 zawiera nazwy kolumn. Wiersz 2 jest pierwszym wierszem z produktem. Kliknij przy nim przycisk „Wybierz”.'},
  {name:'Zmień liczbę sztuk w B2',instruction:'Kolumna B to ILOŚĆ. Znajdź pole B2 obok pierwszego produktu. Na początku jest tam 2. Zmień tę liczbę na 3 i sprawdź, jak zmienia się wartość po prawej stronie.',error:'W pierwszym wierszu produktu znajdź B · Ilość. Zamiast 2 wpisz 3. Nie zmieniaj ceny.',hint:'B2 to liczba sztuk pierwszego produktu. Kliknij pole z liczbą 2, usuń ją i wpisz 3. Potwierdź przyciskiem „Sprawdź wykonanie”.'},
- {name:'Policz wartość pierwszego produktu — D2',instruction:'Teraz zrobimy to razem. B2 to ilość, C2 to cena jednej sztuki, D2 to łączna wartość. Możesz wpisać SAM WYNIK albo FORMUŁĘ =B2*C2. Obie odpowiedzi są poprawne.',error:'Wybierz jeden sposób: liczba albo formuła =B2*C2. Znak * oznacza mnożenie.',hint:'Zobacz liczby B2 i C2 w tabeli. Pomnóż je. W Excelu do komórki D2 wpisuje się =B2*C2, a po Enter program pokazuje obliczony wynik.'},
- {name:'Dodaj wartości trzech produktów',instruction:'Mamy trzy wartości w komórkach D2, D3 i D4. Chcemy je dodać. Możesz podać widoczną liczbę RAZEM albo formułę =SUMA(D2:D4). Dwukropek znaczy „od D2 do D4”.',error:'Dodaj kwoty z D2, D3 i D4. Poprawna formuła to =SUMA(D2:D4).',hint:'Zapis =SUMA(D2:D4) oznacza: dodaj D2 + D3 + D4. Możesz też odczytać gotową kwotę RAZEM spod tabeli.'},
+ {name:'Policz wartość pierwszego produktu — D2',instruction:'Zobacz ilość w B2 i cenę w C2. Ich iloczyn jest w D2. Najpierw wpisz sam wynik jako liczbę. Jeśli chcesz poćwiczyć formułę, wybierz osobny tryb „Uczę się formuły”.',error:'Wybierz jeden sposób: liczba albo formuła =B2*C2. Znak * oznacza mnożenie.',hint:'Zobacz liczby B2 i C2 w tabeli. Pomnóż je. W Excelu do komórki D2 wpisuje się =B2*C2, a po Enter program pokazuje obliczony wynik.'},
+ {name:'Dodaj wartości trzech produktów',instruction:'Dodaj trzy wartości z D2, D3 i D4. Wpisz tylko wynik dodawania jako liczbę. Jeśli chcesz uczyć się zapisu =SUMA(D2:D4), wybierz osobny tryb „Uczę się formuły”.',error:'Dodaj kwoty z D2, D3 i D4. Poprawna formuła to =SUMA(D2:D4).',hint:'Zapis =SUMA(D2:D4) oznacza: dodaj D2 + D3 + D4. Możesz też odczytać gotową kwotę RAZEM spod tabeli.'},
  {name:'Zmień ilość drugiego produktu w B3',instruction:'Wróć do tabeli. Drugi produkt jest w WIERSZU 3. W polu B3 (Ilość) zwiększ liczbę o 1. Cena C3 pozostanie taka sama, ale wynik D3 oraz RAZEM zmienią się automatycznie.',error:'Znajdź B · Ilość przy drugim produkcie (wiersz 3) i dodaj jedną sztukę.',hint:'Nie zmieniaj pierwszego produktu. Wiersz 3 = drugi produkt. W polu B · Ilość wpisz o 1 więcej niż wcześniej.'},
- {name:'Sprawdź nową sumę — po zmianie B3',instruction:'Po zmianie ilości drugiego produktu suma RAZEM też się zmieniła. Podaj nowy wynik albo ponownie wpisz =SUMA(D2:D4). To jest najważniejsza zaleta Excela: wyniki aktualizują się po zmianie danych.',error:'Sprawdź nową sumę po zmianie drugiego produktu. Możesz użyć =SUMA(D2:D4).',hint:'Spójrz na aktualne kwoty D2, D3 i D4. Dodaj je lub wpisz formułę =SUMA(D2:D4).'}
+ {name:'Sprawdź nową sumę — po zmianie B3',instruction:'Zmieniłeś ilość drugiego produktu, więc nowa suma RAZEM jest inna. Wpisz ją jako liczbę. Formułę można poćwiczyć po przełączeniu na „Uczę się formuły”.',error:'Sprawdź nową sumę po zmianie drugiego produktu. Możesz użyć =SUMA(D2:D4).',hint:'Spójrz na aktualne kwoty D2, D3 i D4. Dodaj je lub wpisz formułę =SUMA(D2:D4).'}
 ] as const;
 
 export default function ExcelFirstDayPractice(){
@@ -36,13 +37,14 @@ export default function ExcelFirstDayPractice(){
  const [track,setTrack]=useState<Track>('dom');
  const [rows,setRows]=useState<Item[]>(()=>examples.dom.items.map(item=>({...item})));
  const [step,setStep]=useState(0),[selected,setSelected]=useState(-1),[answer,setAnswer]=useState('');
+ const [answerMode,setAnswerMode]=useState<AnswerMode>('result');
  const [warning,setWarning]=useState(''),[showHint,setShowHint]=useState(false),[notice,setNotice]=useState(''),[showReal,setShowReal]=useState(false);
  const values=useMemo(()=>rows.map(r=>{const n=count(r.amount);return n===null?null:n*r.price;}),[rows]);
  const total=values.every(n=>n!==null)?values.reduce<number>((sum,n)=>sum+(n??0),0):null;
  const done=step===guide.length,example=examples[track];
  function reset(next:Track){
   setTrack(next);setRows(examples[next].items.map(item=>({...item})));
-  setStep(0);setSelected(-1);setAnswer('');setWarning('');setShowHint(false);setNotice('');setShowReal(false);
+  setStep(0);setSelected(-1);setAnswer('');setAnswerMode('result');setWarning('');setShowHint(false);setNotice('');setShowReal(false);
  }
  function verify(){
   if(done)return;
@@ -67,7 +69,7 @@ export default function ExcelFirstDayPractice(){
     step===1?'Dobrze! B2 = 3. Teraz dowiesz się, dlaczego D2 zmieniło swoją wartość.':
     'Super! Po zmianie B3 wartość D3 i suma RAZEM przeliczyły się automatycznie.');
   }
-  setStep(n=>n+1);setAnswer('');setWarning('');setShowHint(false);
+  setStep(n=>n+1);setAnswer('');setAnswerMode('result');setWarning('');setShowHint(false);
  }
  const previewAmount=count(rows[0].amount);
  const baselineAmount=count(example.items[0].amount)??2;
@@ -80,6 +82,12 @@ export default function ExcelFirstDayPractice(){
   'B3 zmieniono, więc nowa wartość D3 = '+(values[1]===null?'—':money(values[1]))+'. Wzór =SUMA(D2:D4) nadal jest taki sam, ale jego wynik się aktualizuje.';
  const formulaForStep=step===2?'=B2*C2':'=SUMA(D2:D4)';
  const answerStep=[2,3,5].includes(step);
+ const expectedAnswer=step===2?values[0]:total;
+ const expectedText=expectedAnswer===null?'—':String(expectedAnswer).replace('.',',');
+ const isFormulaMode=answerMode==='formula';
+ function chooseAnswerMode(mode:AnswerMode){
+  setAnswerMode(mode);setAnswer('');setWarning('');setNotice('');setShowHint(false);
+ }
 
  return <View testID="excel-first-day" style={{borderWidth:1,borderColor:'#bdd8c5',borderRadius:17,backgroundColor:'#f6fbf5',overflow:'hidden',marginVertical:13}}>
   <View style={{padding:mobile?14:19,backgroundColor:'#e2f1e5',gap:8}}>
@@ -171,19 +179,49 @@ export default function ExcelFirstDayPractice(){
      <Text style={{color:'#346846',fontSize:12,fontWeight:'900'}}>DLACZEGO TAK ROBIMY?</Text>
      <Text style={{fontSize:14,lineHeight:23,color:ink}}>{stepExplanation}</Text>
     </View>
-    {answerStep&&<View style={{gap:8}}>
-     <Text style={{fontSize:13,lineHeight:22,fontWeight:'800',color:ink}}>Twoja odpowiedź — wpisz liczbę lub formułę zaczynającą się od =</Text>
-     <TextInput testID="excel-first-answer" accessibilityLabel="Twoja obliczona odpowiedź" value={answer} onChangeText={v=>{setAnswer(v);setWarning('');setNotice('');}}
-      placeholder={step===2?'np. '+(values[0]===null?'24':String(values[0]))+' lub =B2*C2':'np. '+String(total??'78')+' lub =SUMA(D2:D4)'}
-      placeholderTextColor="#688375" keyboardType="default" autoCapitalize="none" autoCorrect={false}
-      style={{minHeight:52,borderWidth:1,borderColor:'#8ab79a',borderRadius:9,padding:12,fontSize:16,color:ink,backgroundColor:'white'}}/>
-     {!!answer.trim().startsWith('=')&&<Text testID="excel-first-formula-notice" style={{color:'#246c49',fontSize:12,lineHeight:20}}>To jest formuła. Świetnie, że próbujesz! W naszym polu ją sprawdzamy. W prawdziwym Excelu wpisujesz ją do komórki {step===2?'D2':'D5'}.</Text>}
-     <Pressable accessibilityRole="button" accessibilityLabel="Wstaw formułę z przykładu" onPress={()=>{setAnswer(formulaForStep);setWarning('');setNotice('');}}
-      style={{minHeight:42,paddingHorizontal:12,paddingVertical:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#c1dacc',borderRadius:9,backgroundColor:'#eaf3eb'}}>
+    {answerStep&&<View testID="excel-first-answer-guide" style={{gap:10}}>
+     <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>Co chcesz wpisać? Wybierz jedną opcję:</Text>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+      <Pressable testID="excel-first-mode-result" accessibilityRole="button" accessibilityState={{selected:!isFormulaMode}}
+       onPress={()=>chooseAnswerMode('result')}
+       style={{flexGrow:1,padding:12,minHeight:52,borderRadius:9,borderWidth:2,borderColor:!isFormulaMode?'#286343':border,backgroundColor:!isFormulaMode?'#e1f1e4':'white'}}>
+       <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>1. Sam wynik</Text>
+       <Text style={{fontSize:12,color:muted}}>Łatwiej · wpisuję liczbę</Text>
+      </Pressable>
+      <Pressable testID="excel-first-mode-formula" accessibilityRole="button" accessibilityState={{selected:isFormulaMode}}
+       onPress={()=>chooseAnswerMode('formula')}
+       style={{flexGrow:1,padding:12,minHeight:52,borderRadius:9,borderWidth:2,borderColor:isFormulaMode?'#286343':border,backgroundColor:isFormulaMode?'#e1f1e4':'white'}}>
+       <Text style={{fontSize:14,color:ink,fontWeight:'900'}}>2. Formuła Excela</Text>
+       <Text style={{fontSize:12,color:muted}}>Dodatkowa nauka · zaczyna się od =</Text>
+      </Pressable>
+     </View>
+     {!isFormulaMode?<View testID="excel-first-result-instruction" style={{padding:13,backgroundColor:'#f0f7f0',borderRadius:9,gap:6}}>
+      <Text style={{fontSize:15,color:ink,fontWeight:'900'}}>Wpisz tylko liczbę {expectedText}.</Text>
+      <Text style={{fontSize:13,lineHeight:22,color:ink}}>{step===2?'Ilość × cena = wartość. Zobacz wynik w D2.':
+       'Dodaj kwoty: '+(values[0]??'—')+' + '+(values[1]??'—')+' + '+(values[2]??'—')+' = '+expectedText+'.'}</Text>
+      <Text style={{fontSize:13,lineHeight:21,color:muted}}>Nie wpisuj SUMA, nawiasów, znaku = ani „zł”. W tym trybie wystarczy sam wynik.</Text>
+     </View>:<View testID="excel-first-formula-instruction" style={{padding:13,backgroundColor:'#f0f7f0',borderRadius:9,gap:7}}>
+      <Text style={{fontSize:15,color:ink,fontWeight:'900'}}>Wpisz całą formułę — razem ze znakiem =</Text>
+      <Text selectable style={{fontSize:21,fontWeight:'900',color:'#215f40'}}>{formulaForStep}</Text>
+      <Text style={{fontSize:13,lineHeight:22,color:ink}}>{step===2?'B2 oznacza ilość, C2 cenę, a gwiazdka * mnożenie.':
+       'Tak: musisz napisać słowo SUMA. Znak = rozpoczyna formułę, nawiasy zawierają zakres D2:D4, a dwukropek znaczy „od D2 do D4”. Samo =(D2:D4) nie dodaje liczb.'}</Text>
+     </View>}
+     <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{isFormulaMode?'Wpisz formułę:':'Wpisz wynik:'}</Text>
+     <TextInput testID="excel-first-answer" accessibilityLabel="Twoja obliczona odpowiedź" value={answer}
+      onChangeText={v=>{setAnswer(v);setWarning('');setNotice('');}}
+      placeholder={isFormulaMode?formulaForStep:'np. '+expectedText}
+      placeholderTextColor="#688576" keyboardType={isFormulaMode?'default':'decimal-pad'} autoCapitalize="none" autoCorrect={false}
+      style={{minHeight:54,borderWidth:1,borderColor:'#8ab79a',borderRadius:9,padding:12,fontSize:17,color:ink,backgroundColor:'white'}}/>
+     {!!answer.trim().startsWith('=')&&<Text testID="excel-first-formula-notice" style={{color:'#2a6a48',fontSize:12,lineHeight:20}}>
+      {isFormulaMode?'To zapis formuły. Naciśnij „Sprawdź wykonanie”, aby sprawdzić, czy jest poprawny.':
+       'Wpisałeś formułę zamiast liczby. Możesz wybrać „Formuła Excela” albo wpisać sam wynik. Poprawną formułę też zaliczymy.'}
+     </Text>}
+     {isFormulaMode&&<Pressable accessibilityRole="button" accessibilityLabel="Wstaw formułę z przykładu"
+      onPress={()=>{setAnswer(formulaForStep);setWarning('');setNotice('');}}
+      style={{minHeight:44,padding:11,alignSelf:'flex-start',borderWidth:1,borderColor:'#c1dacc',borderRadius:9,backgroundColor:'#eaf3eb'}}>
       <Text style={{fontSize:13,color:'#265f43',fontWeight:'800'}}>Nie wiem, co wpisać — wstaw przykład {formulaForStep}</Text>
-     </Pressable>
-     <Text style={{fontSize:12,lineHeight:20,color:muted}}>Ten formularz sprawdza Twoją naukę, nie zapisuje formuły do prawdziwego pliku. Przycisk poniżej przechodzi dalej dopiero po poprawnej odpowiedzi.</Text>
-    </View>}}
+     </Pressable>}
+    </View>}
     <Pressable accessibilityRole="button" accessibilityLabel="Sprawdź wykonanie zadania od zera" onPress={verify} style={[tap,{alignSelf:'flex-start',backgroundColor:'#245c3e'}]}>
      <Text style={{fontWeight:'900',color:'white',fontSize:14}}>Sprawdź wykonanie</Text>
     </Pressable>

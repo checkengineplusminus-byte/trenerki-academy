@@ -61,13 +61,24 @@ export function checkFirstDayAnswer(
   if(validFormula(raw,step))return {correct:true,kind:'formula',
    message:step===2?'Dobrze! =B2*C2 to prawidłowa formuła: ilość razy cena. '+first:
     'Dobrze! =SUMA(D2:D4) dodaje wszystkie trzy wartości. '+total};
+  if(step!==2){
+   const normalized=raw.toUpperCase().replace(/[\s\u00a0\u202f]/g,'');
+   if(/^=\d+[,(]?/.test(normalized)&&normalized.includes('D2:D4'))
+    return {correct:false,kind:'formula',message:'Nie wpisuj liczby przed nawiasem. W polskim Excelu cała formuła dodawania wygląda tak: =SUMA(D2:D4). Słowo SUMA jest konieczne. Jeśli chcesz podać tylko wynik, wpisz '+pln(expected)+' bez znaku =.'};
+   if(normalized.includes('D2:D4')&&!normalized.includes('SUMA')&&!normalized.includes('SUM('))
+    return {correct:false,kind:'formula',message:'D2:D4 jest adresem trzech komórek, ale sam zakres ich nie dodaje. W trybie „Sam wynik” wpisz '+pln(expected)+'. W trybie „Formuła Excela” wpisz dokładnie =SUMA(D2:D4) — TAK, ze słowem SUMA przed nawiasem.'};
+  }
   return {correct:false,kind:'formula',message:step===2?
-   'Wpisujesz formułę, to dobry kierunek! W naszej tabeli B2 oznacza ilość, C2 cenę. Spróbuj =B2*C2. '+first:
-   'To wygląda jak formuła. Aby dodać trzy wyniki z kolumny D, wpisz =SUMA(D2:D4). Dwukropek oznacza zakres od D2 do D4. '+total};
+   'B2 oznacza ilość, C2 cenę. Aby je pomnożyć, wpisz dokładnie =B2*C2 (gwiazdka to mnożenie). '+first:
+   'Aby dodać trzy wartości, potrzebna jest pełna formuła =SUMA(D2:D4). Sam znak = albo zapis D2:D4 nie wystarczy. '+total};
  }
  const parsed=beginnerMoney(raw);
- if(parsed===null)return {correct:false,kind:'invalid',
-  message:'To pole przyjmuje liczbę (np. '+pln(expected)+') albo formułę rozpoczynającą się od =. Dopisek zł jest opcjonalny.'};
+ if(parsed===null){
+  const upper=raw.toUpperCase().replace(/[\s\u00a0\u202f]/g,'');
+  if(upper.includes('D2:D4')||upper.startsWith('SUMA'))
+   return {correct:false,kind:'invalid',message:'Jeśli wybierasz sam wynik, wpisz tylko '+pln(expected)+'. Jeśli chcesz napisać formułę, MUSISZ zacząć od znaku = i wpisać całe =SUMA(D2:D4). Sam napis SUMA lub D2:D4 nie wystarcza.'};
+  return {correct:false,kind:'invalid',message:'Wpisz samą liczbę, np. '+pln(expected)+'. Możesz też wybrać tryb „Formuła Excela” i wpisać '+(step===2?'=B2*C2':'=SUMA(D2:D4)')+'.'};
+ }
  if(Math.abs(parsed-expected)<0.005)return {correct:true,kind:'number',
   message:'Dobrze! To poprawny wynik. '+(step===2?first:total)+' W prawdziwym Excelu wynik może obliczać formuła.'};
  return {correct:false,kind:'number',message:'Jeszcze nie. '+(step===2?first:total)+' Możesz wpisać liczbę albo formułę '+(step===2?'=B2*C2':'=SUMA(D2:D4)')+'.'};
