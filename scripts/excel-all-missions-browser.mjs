@@ -204,7 +204,13 @@ async function auditScreen(browser,round){
    if(await consent.isVisible().catch(()=>false))await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
    if(no===0){
     await page.getByTestId('course-reading-introduction').waitFor();
-    await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
+    // New visitor may jump straight from the intro screen to the real Excel homework.
+    await page.getByTestId('excel-homework-quick-access').click();
+    await page.getByTestId('excel-real-homework-'+no).getByTestId('excel-homework-answer').waitFor();
+   }else{
+    // On every other lesson a single clear action must reveal the previously buried homework.
+    await page.getByTestId('excel-homework-quick-access').click();
+    await page.getByTestId('excel-real-homework-'+no).getByTestId('excel-homework-answer').waitFor();
    }
    await page.getByTestId('lesson-heading').waitFor({timeout:25000});
    const mission=page.getByTestId('excel-mission-'+no);

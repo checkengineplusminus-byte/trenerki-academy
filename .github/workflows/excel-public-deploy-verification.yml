@@ -7,6 +7,7 @@ on:
       - 'public/academy/assets/excel-homework-*.csv'
       - 'scripts/verify-excel-public-ui.mjs'
       - 'src/ExcelRealHomework.tsx'
+      - 'app/nauka.tsx'
       - 'src/LessonIllustratedSections.tsx'
       - 'content/excel-real-homework-30.json'
       - '.eas/workflows/deploy-web.yml'
