@@ -450,7 +450,9 @@
       "delivery": "Zapisz Trenerki-Excel-12.xlsx z formułą w E3.",
       "minutes": 16,
       "review": "formulas",
-      "alternates": [],
+      "alternates": [
+        "=D3*C3"
+      ],
       "starter": {
         "file": "/academy/assets/excel-homework-basics.csv",
         "label": "Arkusz startowy — koszty materiałów (CSV)"
@@ -660,7 +662,11 @@
       "delivery": "Zapisz Trenerki-Excel-18.xlsx z wykresem na osobnej karcie.",
       "minutes": 25,
       "review": "analytics",
-      "alternates": [],
+      "alternates": [
+        "MARZEC",
+        "MARZEC 2026",
+        "03.2026"
+      ],
       "starter": {
         "file": "/academy/assets/excel-practice-sales.csv",
         "label": "18 rzeczywistych wierszy ćwiczebnych sprzedaży (CSV)"
