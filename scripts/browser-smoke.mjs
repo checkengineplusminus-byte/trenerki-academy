@@ -311,7 +311,10 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('.support-grid').evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),isMobile?1:2);
   await page.getByRole('button',{name:'Uzależnienia',exact:true}).focus();
   await page.keyboard.press('Enter');
-  await page.waitForFunction(()=>document.querySelectorAll('.support-category').length===1&&document.querySelector('#uzaleznienia'));
+  // Check the user's visible filtered result, not the number of hidden/retained DOM nodes.
+  const visibleSections=page.locator('.support-grid .support-category:visible');
+  await page.getByRole('heading',{name:'Uzależnienia',exact:true}).waitFor({state:'visible',timeout:10000});
+  assert.equal(await visibleSections.count(),1,'Filter should show exactly one support category');
   assert.equal(await page.locator('a[href="tel:112"]').count(),1,'Emergency number must stay visible under filtering');
   const supportWidth=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(supportWidth.scroll<=supportWidth.client+3,'Public help page horizontal overflow');
