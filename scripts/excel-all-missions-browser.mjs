@@ -119,6 +119,7 @@ async function auditScreen(browser,round){
   for(const m of missions){
    const no=m.lesson_no;
    await page.goto(base+'/nauka?course=excel-skroty&lesson='+(no+1),{waitUntil:'domcontentloaded'});
+   await page.getByTestId('lesson-heading').or(page.getByTestId('course-reading-introduction')).first().waitFor({timeout:25000});
    const consent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
    if(await consent.isVisible().catch(()=>false))await consent.getByRole('button',{name:'Odrzuć',exact:true}).click();
    if(no===0){
