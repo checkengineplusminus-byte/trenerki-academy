@@ -271,7 +271,7 @@ test('Czytnik tematu wymaga zapisania wszystkich poprawnych zadań przed przycis
  assert.ok(!code.includes("supabase.from('ta_certificates').insert"));
 });
 
-import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion,homeworkProgress} from '../src/accounting/homework-core.js';
+import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion,homeworkProgress,firstUnfinishedPracticeTopic} from '../src/accounting/homework-core.js';
 test('Zadania domowe: nie wolno uznać pustej pracy lub samego szkicu za oddanie',()=>{
  const words='Moja analiza dokumentów i obliczeń. '.repeat(5);
  assert.equal(homeworkCanSubmit(words),true);
@@ -298,4 +298,21 @@ test('Praktyka 100 tematów jest w czytniku, zapisywana przez RPC CAS, bez obej�
  assert.ok(code.includes("const nextReady=sectionProgress?.passed===true&&hasHomework;"));
  assert.ok(!code.includes("supabase.from('ta_accounting_core_homework_v3').insert"));
  assert.ok(!code.includes("supabase.from('ta_accounting_core_homework_v3').update"));
+});
+
+test('Praktyka pisemna: ukryte tematy nie zawyżają oddanych prac i nie odblokowują kursu',()=>{
+ const long='Wykonałem pracę na dokumentach fikcyjnych i uzasadniłem każdy zapis. '.repeat(3);
+ const samples=[{topic_no:2,response:long,version:1,submitted_at:'2026-11-16T14:15:00Z'},
+ {topic_no:90,response:long,version:1,submitted_at:'2026-11-16T14:15:00Z'}];
+ const x=homeworkProgress(samples,[1,2,3]);
+ assert.deepEqual(x,{submitted:1,total:3,topics:[2]});
+ assert.equal(firstUnfinishedPracticeTopic({known:true,byTopic:{1:{passed:true},2:{passed:true},3:{passed:false}}},x),1);
+ assert.equal(firstUnfinishedPracticeTopic({known:false,byTopic:{}},x),null);
+});
+test('Program księgowości pokazuje prace domowe i pierwszy niezakończony temat',()=>{
+ const ui=readFileSync(new URL('../app/program-ksiegowosci.tsx',import.meta.url),'utf8');
+ assert.ok(ui.includes(".from('ta_accounting_core_homework_v3')"));
+ assert.ok(ui.includes(".eq('user_id',session.data.user.id)"));
+ assert.ok(ui.includes('firstUnfinishedPracticeTopic(practice,homeworks)'));
+ assert.ok(ui.includes('homeworks.submitted}/{homeworks.total'));
 });
