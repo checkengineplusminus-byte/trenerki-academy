@@ -143,6 +143,7 @@
 .catalog-category-grid .card-media:before{width:115px;height:115px}
 .catalog-category-grid .card-media.has-course-photo:before{display:none}
 .catalog-category-grid .card-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;opacity:0}
+.catalog-category-grid img.card-photo[data-course-photo="excel-skroty"]{object-fit:contain;background:#f5f8f6}
 .catalog-category-grid .has-course-photo .card-photo{opacity:1}
 [data-course-category="budownictwo"]{--course-category-tint:#f3e6d5;--course-category-ink:#69411f}
 [data-course-category="rzemioslo-i-hobby"]{--course-category-tint:#f6e4df;--course-category-ink:#763f31}
@@ -359,10 +360,16 @@ function courseIllustration(c){
 
 const CATEGORY_TILES=[{"name":"Budownictwo","slug":"budownictwo","icon":"🏗️","photo":"angielski-na-budowie","headline":"Od planu do budowy","sub":"Organizacja robót, rysunki i praktyczne umiejętności","count":9},{"name":"Rzemiosło i hobby","slug":"rzemioslo-i-hobby","icon":"🛠️","photo":"garncarz-tradycja","headline":"Zrób to samodzielnie","sub":"Poznaj materiały, narzędzia i techniki od podstaw","count":25},{"name":"Technologie i logistyka","slug":"technologie-i-logistyka","icon":"💻","photo":"autocad-skroty","headline":"Technologia bez stresu","sub":"Excel, AutoCAD, programy i codzienna organizacja","count":15},{"name":"Biznes i praca","slug":"biznes-i-praca","icon":"📊","photo":"zaczynam-od-zera","headline":"Więcej umiejętności w pracy","sub":"Zarządzanie, organizacja i praktyka zawodowa","count":9},{"name":"Rodzina i rozwój","slug":"rodzina-i-rozwoj","icon":"🌱","photo":"blizej-dziecka","headline":"Zadbaj o siebie i bliskich","sub":"Relacje, komunikacja i codzienny rozwój","count":17},{"name":"Dom i codzienność","slug":"dom-i-codziennosc","icon":"🏡","photo":"obowiazki-domowe","headline":"Dom pod kontrolą","sub":"Przydatne umiejętności, proste decyzje i domowe projekty","count":7}];
 let coursePhotos=null;
+// Genuine Excel screenshot released CC0 by its author on Wikimedia Commons.
+const EXCEL_REAL_SCREENSHOT='https://upload.wikimedia.org/wikipedia/commons/0/0a/Anzahl_der_B%C3%A4ume_pro_Quadrat_1.png';
 const coursePhotoFile=slug=>{
  const file=coursePhotos?.get(slug)?.file;
- return typeof file==='string'&&/^[a-z0-9-]+\.webp$/.test(file)?file:null;
+ return typeof file==='string'&&(
+  /^[a-z0-9-]+\.webp$/.test(file)||
+  (slug==='excel-skroty'&&file===EXCEL_REAL_SCREENSHOT)
+ )?file:null;
 };
+const coursePhotoSrc=file=>file===EXCEL_REAL_SCREENSHOT?file:'/academy/photos/'+file+'?v=20261112-h1';
 
 function usePhotoFallback(img){
  const fallback=img.parentElement?.querySelector('.card-photo-fallback');
@@ -399,7 +406,7 @@ async function loadCoursePhotoManifest(){
  }
  for(const img of document.querySelectorAll('.card-photo:not([src])')){
   const file=coursePhotoFile(img.dataset.coursePhoto);
-  if(file)img.src='/academy/photos/'+file+'?v=20261112-h1';
+  if(file)img.src=coursePhotoSrc(file);
   else usePhotoFallback(img);
  }
 }
@@ -418,7 +425,7 @@ function courseCardMedia(c){
  const photoSlug=cardPhotoSlug(c.id);
  const file=coursePhotoFile(photoSlug);
  if(coursePhotos&&!file)return courseIllustration(c);
- const source=file?' src="/academy/photos/'+file+'?v=20261112-h1"':'';
+ const source=file?' src="'+esc(coursePhotoSrc(file))+'"':'';
  return `<img class="card-photo" data-course-photo="${esc(photoSlug)}"${source} alt="" width="960" height="540" loading="lazy" decoding="async">
  <template class="card-photo-fallback">${courseIllustration(c)}</template>`;
 }
@@ -561,7 +568,9 @@ function paintHeroTicker(){
   photo.onload=()=>{if(photo.dataset.courseId===c.id&&photo.naturalWidth>0)art.classList.add('is-loaded');};
   photo.onerror=()=>{if(photo.dataset.courseId===c.id)art.classList.remove('is-loaded');};
   photo.dataset.courseId=c.id;
-  photo.src='/academy/photos/'+spotlightPhotoSlug(c.id)+'.webp?v=20261112-h1';
+  const spotlightFile=coursePhotoFile(spotlightPhotoSlug(c.id));
+  photo.src=spotlightFile?coursePhotoSrc(spotlightFile):'/academy/photos/'+spotlightPhotoSlug(c.id)+'.webp?v=20261112-h1';
+  photo.style.objectFit=c.id==='excel-skroty'?'contain':'cover';
   if(photo.complete&&photo.naturalWidth>0)art.classList.add('is-loaded');
  }
 }
