@@ -98,7 +98,7 @@ async function auditKeyboard(page,authored){
  const panel=page.getByTestId('excel-keyboard-lesson');
  await panel.waitFor();
  for(const shortcut of shortcuts){
-  await panel.getByRole('button',{name:shortcut.combo+' · '+shortcut.label}).click();
+  await panel.getByRole('button',{name:shortcut.combo+' · '+shortcut.label,exact:true}).click();
   const quiz=panel.getByTestId('excel-keyboard-quiz');
   await quiz.waitFor();
   const options=quiz.getByRole('button');
