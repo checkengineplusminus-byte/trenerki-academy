@@ -417,7 +417,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   }else if(tool==='dimlinear'||tool==='dimaligned'){
    const dimensional={kind:'dimension' as const,points:[...points,point],aligned:tool==='dimaligned'};
    const measured=dimensionGeometry({...dimensional,id:0,layer:drawing.currentLayer}).label;
-   if(storeShape(dimensional)){resetSession();tell('Dodano wymiar '+measured+' jednostek modelu ('+(tool==='dimaligned'?'długość odcinka':'rzut poziomy lub pionowy')+').');}
+   if(storeShape(dimensional)){setSelected(undefined);setSelectedIds([]);resetSession();tell('Dodano wymiar '+measured+' jednostek modelu ('+(tool==='dimaligned'?'długość odcinka':'rzut poziomy lub pionowy')+').');}
   }else if(target&&(tool==='move'||tool==='copy')){
    const delta=subtract(point,first),ids=selectedVisible.length?selectedVisible:[target.id];
    const shifted=transformCadSelection(drawing.shapes,ids,p=>add(p,delta));
@@ -614,7 +614,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    {lessonNo===16&&<Text style={{color:'#315c45',fontSize:13,lineHeight:21,fontWeight:'800'}}>Po utworzeniu odcinka 1000 zaznacz go, wpisz DIM → Enter, wskaż miejsce wymiaru i kliknij „Sprawdź moje ćwiczenie”.</Text>}
    <Text style={{color:'#2e6340',fontWeight:'900'}}>ETAP 2 · Pełne ćwiczenie i zastosowanie</Text>
    <Text style={{color:'#365849',fontSize:14,lineHeight:22}}>{currentAssignment.task}</Text>
-   {'desktopOnly' in currentAssignment&&Array.isArray(currentAssignment.desktopOnly)&&currentAssignment.desktopOnly.length>0&&<Text style={{color:'#7b542e',fontWeight:'800',fontSize:12,lineHeight:20}}>Te polecenia wymagają oryginalnego AutoCAD na komputerze: {currentAssignment.desktopOnly.join(', ')}. Nie są symulowane w warsztacie TRENERKI.</Text>}
+   {'desktopOnly' in currentAssignment&&Array.isArray(currentAssignment.desktopOnly)&&currentAssignment.desktopOnly.filter(command=>!['DIM','DIST','OSNAP','ORTHO','POLAR','ZOOM','PAN','LINE','PLINE','RECTANG','CIRCLE','JOIN','PEDIT','MOVE','COPY','ROTATE','SCALE','MIRROR'].includes(command)).length>0&&<Text style={{color:'#7b542e',fontWeight:'800',fontSize:12,lineHeight:20}}>Te funkcje wymagają pełnego AutoCAD na komputerze: {currentAssignment.desktopOnly.filter(command=>!['DIM','DIST','OSNAP','ORTHO','POLAR','ZOOM','PAN','LINE','PLINE','RECTANG','CIRCLE','JOIN','PEDIT','MOVE','COPY','ROTATE','SCALE','MIRROR'].includes(command)).join(', ')}. Nie są w pełni symulowane w warsztacie TRENERKI.</Text>}
    <Text style={{color:'#536b55',fontSize:12,lineHeight:20}}>Wymagany obiekt: {currentAssignment.targetKind.toUpperCase()}. {currentAssignment.verification}</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
     <LabButton label="Rozpocznij zadanie tej lekcji" onPress={()=>{
