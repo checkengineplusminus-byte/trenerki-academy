@@ -1,5 +1,6 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {Pressable,Text,TextInput,View,useWindowDimensions} from 'react-native';
+import {parseExcelResponseNumber} from './excelMissionAnswers';
 
 import {excelVisualNumber,excelVisualValid,excelVisualTotal,excelVisualAggregate,sampleVisualRows,
  type ExcelVisualGroup,type ExcelVisualMetric,type ExcelVisualRow,type ExcelVisualSummary} from './excelVisualMath';
@@ -60,7 +61,7 @@ export default function ExcelVisualPractices({lessonNo}:{lessonNo:number}){
    setFeedback('Najpierw kliknij „Odśwież tabelę przestawną”. W programie Excel tabela przestawna nie zawsze aktualizuje się sama po edycji źródła.');return;
   }
   if(expected===undefined){setFeedback('Wybierz jedną kategorię, region lub miesiąc.');return;}
-  const n=number(answer);
+  const n=parseExcelResponseNumber(answer);
   setFeedback(Number.isFinite(n)&&Math.abs(n-expected)<0.01?'✓ Zgadza się. '+outcome+' = '+format(expected)+unit+'. Wynik wynika z danych, nie ze zgadywania.':
    'To nie jest wynik dla '+outcome+'. Dodaj wartości z właściwych wierszy. W razie potrzeby rozwiń sposób obliczenia.');
  }
@@ -168,6 +169,7 @@ export default function ExcelVisualPractices({lessonNo}:{lessonNo:number}){
    <Text style={{color:ink,fontSize:15,fontWeight:'900'}}>4. Zadanie — odczytaj i sprawdź wynik</Text>
    <Text style={{fontSize:13,color:muted,lineHeight:21}}>Kliknij jedną kategorię na wykresie albo w tabeli wyników. Wpisz jej wartość poniżej. Jeśli zmieniłeś ilości i ćwiczysz tabelę przestawną, najpierw użyj „Odśwież”.</Text>
    <Text style={{fontSize:13,color:ink,fontWeight:'800'}}>Wybrana grupa: {outcome||'brak'}</Text>
+   <Text style={{color:muted,fontSize:12,lineHeight:20}}>Wpisz tylko wynik liczbowy z grupy, np. 150 zł. Nie wpisuj formuły ani nazwy kategorii.</Text>
    <TextInput testID="excel-visual-answer" accessibilityLabel="Odpowiedź do wykresu lub tabeli przestawnej" value={answer} onChangeText={v=>{setAnswer(v);setFeedback('')}} keyboardType="decimal-pad" placeholder="Wpisz obliczoną liczbę" style={{minHeight:46,backgroundColor:'white',borderColor:edge,borderWidth:1,borderRadius:8,padding:11,color:ink}}/>
    <Pressable accessibilityRole="button" onPress={verify} style={{padding:12,minHeight:43,backgroundColor:'#245e40',borderRadius:9,alignSelf:'flex-start'}}><Text style={{fontSize:13,color:'white',fontWeight:'900'}}>Sprawdź moją analizę</Text></Pressable>
    {!!feedback&&<Text testID="excel-visual-feedback" accessibilityLiveRegion="polite" style={{fontSize:13,lineHeight:21,color:ink}}>{feedback}</Text>}
