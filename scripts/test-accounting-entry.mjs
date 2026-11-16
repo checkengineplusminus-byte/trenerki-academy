@@ -332,3 +332,18 @@ test('Księgowość: wczesny dostęp jawnie opisany w katalogu, czytniku i płat
  assert.match(stripe,/development_version_consent_required/);
  assert.match(credit,/development_version_consent_required/);
 });
+
+
+test('Płatność wersji rozwojowej wymaga potwierdzenia i potwierdzenie e-mail jest jednoznaczne',()=>{
+ const checkout=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
+ const wallet=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
+ const webhook=readFileSync(new URL('../supabase/functions/ta-stripe-webhook/index.ts',import.meta.url),'utf8');
+ const view=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
+ for(const src of [checkout,wallet,webhook])assert.match(src,/development_version_acknowledged/);
+ assert.match(checkout,/development_version_consent_required/);
+ assert.match(wallet,/development_version_consent_required/);
+ assert.match(webhook,/accountingEarlyAccessNotice/);
+ assert.match(webhook,/Nie.*nadają kwalifikacji/);
+ assert.match(view,/developmentReady/);
+ assert.match(view,/accountingEarlyAccess/);
+});
