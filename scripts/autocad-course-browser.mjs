@@ -217,7 +217,6 @@ for(const mobile of [false,true]){
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: select ALL → group MOVE/SCALE; OSNAP modes, font preview, layout scale 1:100 and searchable Atlas');
    // Regression for previously impossible typed LINE length and DIM measurement.
    await send('LINE');await send('0,0');await send('1000');await send('');
-   await cad.getByText(/Odcinek · długość 1000/).catch(()=>{});
    await send('DIM');await send('500,200');
    await cad.getByText(/Dodano wymiar 1000 jednostek modelu/).waitFor();
    await send('DIST');await send('0,0');await send('1000,0');
