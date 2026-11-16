@@ -59,6 +59,8 @@ test('Prawdziwe pliki CSV dostępne: BOM UTF-8, średnik, przykłady liczb i zer
  assert(read('public/academy/assets/excel-practice-errors.csv').includes('5x'));
  assert(read('public/academy/assets/excel-professional-368-import.csv').includes('PRO-0367'));
  assert.equal(every[29].bonusStarter.file,'/academy/assets/excel-professional-368-import.csv');
+ assert.equal(every[28].comparisonStarter.file,'/academy/assets/excel-practice-sales.csv');
+ assert(read('public'+every[28].comparisonStarter.file).includes('FV-015'));
 });
 test('Sprawdzanie odpowiedzi: kwoty, procenty, kody, adresy, PDF, separator i błędy',()=>{
  const home=i=>every[i],yes=(i,v)=>assert.equal(checkExcelHomeworkAnswer(home(i),v).correct,true,'Powinno przejść '+i+' '+v);
