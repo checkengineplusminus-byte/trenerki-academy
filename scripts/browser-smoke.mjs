@@ -59,6 +59,13 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
 
 async function verify(name,viewport,isMobile){
  const ctx=await browser.newContext({viewport,isMobile,deviceScaleFactor:1,hasTouch:isMobile});
+ // Browser smoke is a deterministic layout test, not an external CDN uptime test.
+ // Only tests replace the remotely hosted CC0 screenshot with a clearly labelled fixture.
+ // The production catalogue URL and its original pixels are NOT modified.
+ const excelOfflineFixture='<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1007"><rect width="1920" height="1007" fill="#eef5f0"/><text x="80" y="150" font-size="70" fill="#1b4430">EXCEL SCREENSHOT — OFFLINE TEST FIXTURE</text></svg>';
+ await ctx.route('https://upload.wikimedia.org/**',route=>route.fulfill({
+  status:200,contentType:'image/svg+xml',headers:{'access-control-allow-origin':'*'},body:excelOfflineFixture,
+ }));
  const page=await ctx.newPage();
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
