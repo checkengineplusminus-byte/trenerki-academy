@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
 import {Linking,Platform,Pressable,ScrollView,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import fixtures from '../content/excel-analyst-data.json';
+import {parseExcelResponseNumber} from './excelMissionAnswers';
 import {auditImport,findInvoice,lineMargin,lineRevenue,pivot,plNumber,round2,safeDataset,scenario,sumIfs,total,type GroupBy,type Measure,type Sale,type SourceRow} from './excelAdvancedMath';
 
 type Mode='filter'|'sumifs'|'lookup'|'pivot'|'chart'|'model'|'scenario'|'audit';
@@ -20,7 +21,7 @@ function Choice({label,selected,onPress}:{label:string;selected?:boolean;onPress
   <Text style={{color:ink,fontWeight:selected?'900':'700',fontSize:13}}>{label}</Text>
  </Pressable>;
 }
-const compare=(a:string,n:number)=>{const value=plNumber(a);return value!==null&&Math.abs(value-n)<0.005;};
+const compare=(a:string,n:number)=>{const value=parseExcelResponseNumber(a);return value!==null&&Math.abs(value-n)<0.005;};
 export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
  const {width}=useWindowDimensions(),compact=width<650;
  const [rows,setRows]=useState<Sale[]>(()=>source.map(x=>({...x})));
@@ -40,7 +41,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
  const chartRows=useMemo(()=>pivot(rows,'region','revenue'),[rows]);
  const chartBest=chartRows.reduce((a,b)=>!a||b.value>a.value?b:a,null as null|{key:string;value:number;count:number});
  const issues=useMemo(()=>auditImport(rows,broken),[rows]);
- const increaseNumber=plNumber(increase);
+ const increaseNumber=parseExcelResponseNumber(increase,true);
  const impact=useMemo(()=>increaseNumber===null?null:(()=>{try{return scenario(rows,increaseNumber);}catch{return null;}})(),[rows,increaseNumber]);
  const expectedValue=mode==='filter'?filtered.length:mode==='sumifs'?sumIfs(rows,region,category):
   mode==='lookup'?matching.kind==='found'?matching.amount:NaN:
@@ -197,6 +198,7 @@ export default function ExcelAnalystWorkbench({lessonNo}:{lessonNo:number}){
    </>}
    {mode!=='audit'&&<View style={{gap:9}}>
     <Text style={{fontSize:13,color:ink,fontWeight:'900'}}>{mode==='filter'?'Ile wierszy spełnia obydwa kryteria?':mode==='sumifs'?'Jaka jest suma wartości netto w PLN?':mode==='lookup'?'Jaka jest wartość netto tej faktury?':mode==='pivot'?'Jaka jest wartość zaznaczonej grupy '+groupItem+'?':mode==='chart'?'Który region ma najwyższą sprzedaż?':mode==='model'?'Jaka jest MARŻA NETTO ze wszystkich 18 faktur?':'O ile PLN zmieni się marża? (wpisz kwotę ze znakiem)'}</Text>
+    <Text testID="excel-advanced-answer-instruction" style={{fontSize:12,color:muted,lineHeight:20}}>{mode==='lookup'||mode==='chart'?'Wpisz odpowiednią nazwę lub kod z danych. Nie wpisuj formuły.':'Wpisz końcowy wynik jako liczbę; możesz dopisać zł. Wzór wykonaj w arkuszu, ale w tym polu podaj wynik.'}</Text>
     <TextInput testID="excel-advanced-answer" accessibilityLabel="Wynik obliczeń zaawansowanych" value={answer} onChangeText={v=>{setAnswer(v);setFeedback('idle');}}
      autoCapitalize="characters" placeholder="Oblicz i wpisz wynik" placeholderTextColor="#849a88"
      style={{borderWidth:1,borderColor:'#bfcec2',backgroundColor:'#fff',color:ink,borderRadius:9,minHeight:48,padding:12,fontSize:15}}/>

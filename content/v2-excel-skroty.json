@@ -356,15 +356,15 @@
           "situation": "Masz wartości trzech usług w E2:E4.",
           "question": "Które działanie ma sens?",
           "options": [
-            "Używam =SUM(E2:E4) i porównuję wynik z ręcznym oszacowaniem.",
+            "Sumuję cały zakres E2:E4 funkcją =SUMA(E2:E4) i sprawdzam wynik przez 700+360+150.",
             "Dodaję tylko pierwszą komórkę i nazywam to sumą.",
             "Mnożę wszystkie wartości zamiast je dodawać."
           ],
           "correct": 0,
-          "example": "Używam =SUM(E2:E4) i porównuję wynik z ręcznym oszacowaniem.",
+          "example": "Sumuję cały zakres E2:E4 funkcją =SUMA(E2:E4) i sprawdzam wynik przez 700+360+150.",
           "explanation": "Zakres A1:A10 obejmuje dziesięć komórek. Funkcja SUMA lub SUM zlicza liczby; ŚREDNIA oblicza średnią, a jej wynik nie musi być sumą.",
           "feedback": [
-            "Tak. Zakres A1:A10 obejmuje dziesięć komórek. Funkcja SUMA lub SUM zlicza liczby; ŚREDNIA oblicza średnią, a jej wynik nie musi być sumą.",
+            "Tak. W polskim Excelu użyj =SUMA(E2:E4), a ręczna kontrola 700+360+150 daje 1210.",
             "To błąd. Zakres A1:A10 obejmuje dziesięć komórek. Funkcja SUMA lub SUM zlicza liczby; ŚREDNIA oblicza średnią, a jej wynik nie musi być sumą.",
             "To błąd. Zakres A1:A10 obejmuje dziesięć komórek. Funkcja SUMA lub SUM zlicza liczby; ŚREDNIA oblicza średnią, a jej wynik nie musi być sumą."
           ],

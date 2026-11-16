@@ -9,6 +9,8 @@ const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const data=JSON.parse(readFileSync(new URL('../content/excel-analyst-data.json',import.meta.url),'utf8'));
 const content=JSON.parse(readFileSync(new URL('../content/excel-professional-missions.json',import.meta.url),'utf8'));
 const missions=content.missions;
+const authoredLessons=JSON.parse(readFileSync(new URL('../content/v2-excel-skroty.json',import.meta.url),'utf8')).lessons;
+const bonusLessons=JSON.parse(readFileSync(new URL('../content/excel-bonus-chapters.json',import.meta.url),'utf8')).chapters;
 const rows=data.rows;
 const roleIds=[
  {id:'student',role:'Student bez doświadczenia',lesson:0,width:390,height:844,mobile:true,touch:true,scale:2},
@@ -36,7 +38,7 @@ function material(no){
  return {sections:[{heading:'Zadanie ćwiczebne',text:'Użyj jedynie fikcyjnych danych i wykonaj samodzielne działania w arkuszu.'}],
   illustration:no%2?'excel-addresses':'excel-interface'};
 }
-async function install(page,events,firstTime=false){
+async function install(page,events,firstTime=false,fullCurriculum=false){
  await page.addInitScript(({user})=>{
   localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({access_token:'excel-test-token',refresh_token:'excel-test-refresh',
    expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user}));
@@ -52,10 +54,19 @@ async function install(page,events,firstTime=false){
   if(url.pathname==='/auth/v1/user')return response(user);
   if(table==='ta_enrollments')return response([{id:'test-enrollment'}]);
   if(table==='ta_courses')return response([{title_pl:'Excel od zera do analizy danych',description_pl:'Zadania zawodowe'}]);
-  if(table==='ta_lessons')return response(missions.map(x=>({lesson_no:x.lesson_no,title_pl:'Lekcja Excel '+(x.lesson_no+1),material:material(x.lesson_no)})));
+  if(table==='ta_lessons')return response(fullCurriculum?authoredLessons:missions.map(x=>({lesson_no:x.lesson_no,title_pl:'Lekcja Excel '+(x.lesson_no+1),material:material(x.lesson_no)})));
   if(table==='ta_learning_progress')return response(firstTime?[]:Array.from({length:29},(_,lesson_no)=>({lesson_no})));
   if(table==='ta_learning_attempts'||table==='ta_drafts')return response([]);
-  if(table==='ta-lesson-guide')return response({ok:true,history:[],opening:'Pomoc w ćwiczeniach',can_reply:true});
+  if(table==='ta-lesson-guide'){
+   const body=(()=>{try{return JSON.parse(request.postData()||'{}')}catch{return {}}})();
+   if(fullCurriculum&&body.action==='attempt'&&body.mode==='case'){
+    const lesson=authoredLessons.find(x=>x.lesson_no===body.lesson_no);
+    const correct=!!lesson&&body.selected_index===lesson.material.learning.correct;
+    events.quizAttempts.push({lesson_no:body.lesson_no,selected_index:body.selected_index,correct});
+    return response({ok:true,correct});
+   }
+   return response({ok:true,history:[],opening:'Pomoc w ćwiczeniach',can_reply:true});
+  }
   if(request.method()!=='GET')events.writes.push({method:request.method(),path:table});
   return response({ok:true});
  });

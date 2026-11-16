@@ -1,7 +1,8 @@
 import React,{useMemo,useState} from 'react';
 import {Linking,Platform,Pressable,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import dataset from '../content/excel-pro-case.json';
-import {equalIdentifiers,inspectImport,proStats,strictNumber,type ProRow} from './excelProReview';
+import {parseExcelResponseNumber} from './excelMissionAnswers';
+import {equalIdentifiers,inspectImport,proStats,type ProRow} from './excelProReview';
 
 type Task='audit'|'revenue'|'margin'|'region'|'month'|'discount';
 const tasks:{id:Task;label:string;question:string;hint:string;method:string}[]=[
@@ -47,7 +48,7 @@ export default function ExcelProCaseLab(){
  function choose(task:Task){setSelected(task);setValue('');setNotice('none');setHint(false);setMethod(false);}
  function verify(){
   const ok=selected==='audit'?equalIdentifiers(value,expected as string[]):
-   typeof expected==='number'?strictNumber(value.replace(/\s/g,'').replace(',','.'))===expected:
+   typeof expected==='number'?(()=>{const n=parseExcelResponseNumber(value);return n!==null&&Math.abs(n-expected)<0.005;})():
    value.trim().toLocaleLowerCase('pl-PL')===String(expected).toLocaleLowerCase('pl-PL');
   setNotice(ok?'correct':'incorrect');
   if(ok)setVerified(old=>old.includes(selected)?old:[...old,selected]);
@@ -71,6 +72,7 @@ export default function ExcelProCaseLab(){
    </Pressable>)}</View>
    <View style={{backgroundColor:'#fff',borderRadius:12,borderWidth:1,borderColor:'#d8e4d9',padding:13,gap:12}}>
     <Text style={{color:ink,fontWeight:'900',fontSize:15}}>{current.question}</Text>
+    <Text testID="excel-pro-answer-instruction" style={{color:muted,fontSize:12,lineHeight:20}}>{selected==='audit'?'Wpisz wszystkie osiem numerów faktur, oddziel je przecinkami.':selected==='region'||selected==='month'?'Wpisz samą nazwę regionu lub miesiąc YYYY-MM, bez kwoty.':'Wpisz końcową liczbę z obliczenia; możesz dodać zł, ale nie wpisuj tutaj całej formuły.'}</Text>
     <TextInput testID="excel-pro-answer" accessibilityLabel="Wynik profesjonalnego ćwiczenia Excel" value={value}
      onChangeText={text=>{setValue(text);setNotice('none');}} multiline={selected==='audit'} autoCapitalize="none" autoCorrect={false}
      placeholder={selected==='audit'?'PRO-XXXX, PRO-XXXX, ...':selected==='region'?'Nazwa regionu':selected==='month'?'2026-MM':'Wynik z własnego arkusza'}

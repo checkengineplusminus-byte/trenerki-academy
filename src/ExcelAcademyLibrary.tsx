@@ -2,6 +2,7 @@ import React,{useEffect,useMemo,useState} from 'react';
 import {Linking,Pressable,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import encyclopedia from '../content/excel-encyclopedia-glossary.json';
 import bonus from '../content/excel-bonus-chapters.json';
+import {parseExcelResponseNumber,parseExcelResponseCount} from './excelMissionAnswers';
 import deep from '../content/excel-deep-lessons.json';
 
 const ink='#193b2b',muted='#4e6958',border='#d3e2d3';
@@ -47,7 +48,16 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
  function chooseChapter(id:string){setChapterId(id);setAnswer('');setFeedback('idle');}
  function checkChapter(){
   if(!chapter)return;
-  const right=normalize(answer.replace(/[.,!?;:]+$/,'')).replace(/\s+/g,'')===normalize(chapter.answer).replace(/\s+/g,'');
+  const normalizedAnswer=normalize(answer.replace(/[.,!?;:]+$/,'')).replace(/\s+/g,'');
+  const normalizedExpected=normalize(chapter.answer).replace(/\s+/g,'');
+  const numeric=/^\d+$/.test(chapter.answer);
+  const typed=chapter.id==='power-query-pierwsze-kroki'?answer.trim().replace(/\s*rekord(?:y|ów)?$/i,''):answer;
+  const right=numeric?
+   (chapter.id==='historia-arkuszy'?/^\d{4}$/.test(answer.trim())&&answer.trim()===chapter.answer:
+    ['projektowanie-danych','power-query-pierwsze-kroki'].includes(chapter.id)?
+     parseExcelResponseCount(typed)===Number(chapter.answer):
+     parseExcelResponseNumber(typed)===Number(chapter.answer)):
+   normalizedAnswer===normalizedExpected;
   setFeedback(right?'right':'wrong');
   if(right)setFinished(old=>old.includes(chapter.id)?old:[...old,chapter.id]);
  }
@@ -162,6 +172,7 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
      <View style={{backgroundColor:'#f0f7ee',padding:12,borderRadius:10,gap:8}}>
       <Text style={{color:ink,fontWeight:'900',fontSize:14}}>Sprawdź, czy naprawdę rozumiesz</Text>
       <Text style={{color:muted,fontSize:13,lineHeight:21}}>{chapter.task}</Text>
+      <Text style={{color:muted,fontSize:12,lineHeight:20}}>{/^\d+$/.test(chapter.answer)?(chapter.id==='historia-arkuszy'?'Wpisz czterocyfrowy rok, bez dopisku i bez formuły.':['projektowanie-danych','power-query-pierwsze-kroki'].includes(chapter.id)?'Wpisz samą liczbę policzonych rekordów. Nie dodawaj zł ani formuły.':'Wpisz obliczoną liczbę. Możesz dopisać zł, jeśli pytanie dotyczy kwoty.'):'Wpisz krótką odpowiedź tekstową zgodną z pytaniem. Nie wpisuj formuły, jeśli pytanie prosi o tak lub nie.'}</Text>
       <TextInput accessibilityLabel="Odpowiedź w dodatkowym rozdziale Excel" value={answer}
        onChangeText={v=>{setAnswer(v);setFeedback('idle');}} placeholder="Wpisz krótką odpowiedź..."
        placeholderTextColor="#718a75" style={{borderWidth:1,borderColor:'#c0d3c3',padding:11,minHeight:46,backgroundColor:'#fff',color:ink,borderRadius:9}}/>

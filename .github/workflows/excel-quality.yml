@@ -30,8 +30,19 @@ on:
       - 'content/excel-deep-lessons.json'
       - 'src/ExcelAcademyLibrary.tsx'
       - 'src/ExcelFirstDayPractice.tsx'
+      - 'src/ExcelProfessionalMission.tsx'
+      - 'src/ExcelAcademyLibrary.tsx'
+      - 'src/ExcelAnalystWorkbench.tsx'
+      - 'src/ExcelProCaseLab.tsx'
+      - 'src/ExcelVisualPractices.tsx'
+      - 'src/excelMissionAnswers.ts'
+      - 'content/excel-professional-missions.json'
+      - 'content/v2-excel-skroty.json'
+      - 'content/excel-bonus-chapters.json'
       - 'src/excelFirstDayAnswers.ts'
       - 'scripts/test-excel-firstday-formulas.mjs'
+      - 'scripts/test-excel-all-missions.mjs'
+      - 'scripts/excel-all-missions-browser.mjs'
       - 'public/academy/assets/excel-firstday-home.csv'
       - 'public/academy/assets/excel-firstday-shop.csv'
       - 'app/nauka.tsx'
@@ -56,8 +67,19 @@ on:
       - 'src/SpreadsheetWorkspace.tsx'
       - 'src/SpreadsheetFormula.ts'
       - 'src/ExcelFirstDayPractice.tsx'
+      - 'src/ExcelProfessionalMission.tsx'
+      - 'src/ExcelAcademyLibrary.tsx'
+      - 'src/ExcelAnalystWorkbench.tsx'
+      - 'src/ExcelProCaseLab.tsx'
+      - 'src/ExcelVisualPractices.tsx'
+      - 'src/excelMissionAnswers.ts'
+      - 'content/excel-professional-missions.json'
+      - 'content/v2-excel-skroty.json'
+      - 'content/excel-bonus-chapters.json'
       - 'src/excelFirstDayAnswers.ts'
       - 'scripts/test-excel-firstday-formulas.mjs'
+      - 'scripts/test-excel-all-missions.mjs'
+      - 'scripts/excel-all-missions-browser.mjs'
       - 'src/SoftwareOrientation.tsx'
       - 'app/nauka.tsx'
       - 'content/excel-function-index-2026.json'
@@ -81,6 +103,8 @@ jobs:
         run: node --experimental-strip-types --test scripts/test-excel-expert.mjs scripts/test-excel-pro-case.mjs scripts/test-excel-knowledge.mjs
       - name: Sprawdź początek Excela — prawidłowe formuły i proste wyjaśnienia
         run: node scripts/test-excel-firstday-formulas.mjs
+      - name: Sprawdź wszystkie 30 misji, 30 pytań i 12 dodatków — kwoty, waluty i formuły
+        run: node --test scripts/test-excel-all-missions.mjs
       - name: Sprawdź silnik walut i nawigację wirtualnego arkusza
         run: node scripts/test-excel-currency.mjs
       - name: Sprawdź 514 funkcji, 39 rozdziałów i eksport PDF
@@ -111,6 +135,7 @@ jobs:
           python3 -m http.server 8795 --directory /tmp/trenerki-excel-ci >/tmp/trenerki-excel-http.log 2>&1 &
           sleep 2
           node scripts/excel-ten-environments.mjs http://127.0.0.1:8795
+          node scripts/excel-all-missions-browser.mjs http://127.0.0.1:8795
       - name: Zapisz raport i zrzuty
         if: always()
         uses: actions/upload-artifact@v4
@@ -118,6 +143,7 @@ jobs:
           name: excel-10-srodowisk-2-cykle
           path: |
             /tmp/trenerki-excel-two-cycles.json
+            /tmp/trenerki-excel-all-lessons.json
             /tmp/trenerki-excel-qa-*.png
           if-no-files-found: ignore
           retention-days: 14
