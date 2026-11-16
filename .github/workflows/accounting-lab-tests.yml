@@ -4,12 +4,14 @@ on:
     paths:
       - 'src/accounting/**'
       - 'scripts/test-accounting-lab.mjs'
+      - 'scripts/test-accounting-scenario-bank.mjs'
       - 'scripts/e2e-accounting-lab-2accounts.mjs'
       - '.github/workflows/accounting-lab-tests.yml'
   pull_request:
     paths:
       - 'src/accounting/**'
       - 'scripts/test-accounting-lab.mjs'
+      - 'scripts/test-accounting-scenario-bank.mjs'
       - 'scripts/e2e-accounting-lab-2accounts.mjs'
       - '.github/workflows/accounting-lab-tests.yml'
 permissions:
@@ -27,9 +29,12 @@ jobs:
         run: |
           find src/accounting -type f -name '*.js' -print0 | xargs -0 -r -n 1 node --check
           node --check scripts/test-accounting-lab.mjs
+          node --check scripts/test-accounting-scenario-bank.mjs
           node --check scripts/e2e-accounting-lab-2accounts.mjs
       - name: Run accounting training unit tests
         run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+      - name: Run D01-D36 private bank provenance regression
+        run: node --experimental-default-type=module --test scripts/test-accounting-scenario-bank.mjs
       - name: Syntax and safe preflight of two-account E2E (NO live logins)
         run: |
           node --check scripts/e2e-accounting-lab-2accounts.mjs
