@@ -20,6 +20,7 @@ const fmt=(v:string)=>String(v??'').trim().replace(/[−–—]/g,'-');
 const moneySuffix=/(?:\s|\u00a0|\u202f)*(?:zł|PLN)\.?\s*$/iu;
 export function parseExcelResponseNumber(raw:string,percentage=false):number|null{
  let text=fmt(raw);
+ if(percentage&&moneySuffix.test(text))return null; // zł is a unit of money, not a percent.
  if(percentage&&/%\s*$/.test(text))text=text.replace(/%\s*$/,'');
  else if(/%\s*$/.test(text))return null;
  text=text.replace(moneySuffix,'').replace(/[\s\u00a0\u202f]/g,'');
@@ -111,6 +112,8 @@ export function checkExcelMissionAnswer(mission:ExcelMissionSource,response:stri
    return {correct:false,kind:'formula',
     message:'Rozumiem, że próbujesz wpisać formułę. W tej odpowiedzi sprawdzamy jej wynik liczbowy. Wpisz formułę w arkuszu i przepisz obliczoną liczbę poniżej. '+(p.allowFormula?'Jeśli chcesz podać samą formułę, użyj dokładnie wzoru z zadania.':'Nie musisz wpisywać tutaj SUMA ani adresów komórek.')};
   }
+  if(/^(?:SUMA|SUM)(?:\(|$)/i.test(raw))
+   return {correct:false,kind:'formula',message:'Samo SUMA nie jest wynikiem. W prawdziwym Excelu formułę rozpoczyna się od =, np. =SUMA(E2:E4). W polu odpowiedzi wpisz liczbę obliczoną przez arkusz. '+(p.allowFormula?'Pełna poprawna formuła z tego zadania także zostanie zaliczona.':'')};
   const value=parseExcelResponseNumber(raw,p.kind==='percent');
   const correct=parseExcelResponseNumber(expected,false);
   if(value!==null&&correct!==null&&Math.abs(value-correct)<0.005)
