@@ -42,8 +42,14 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
      'bdo':'oracle-wms-cloud',
      'kgw':'lepszy-cukiernik'
     };
-    assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
-    assert.equal(width*9,height*16,slug+': course card photo ratio');
+    if(slug==='excel-skroty'){
+      // The real Excel screenshot is 1920×1007 rather than a cropped stock 16:9 photo.
+      assert.match(file,/^\/wikipedia\/commons\/0\/0a\/Anzahl_der_B%C3%A4ume_pro_Quadrat_1\.png$/,slug+': original Excel screenshot URL');
+      assert(width>=1280&&height>=720&&width/height>1.6&&width/height<2.1,slug+': crisp real Excel screenshot');
+    }else{
+      assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
+      assert.equal(width*9,height*16,slug+': course card photo ratio');
+    }
     seen.push(slug);
    }
   }
@@ -53,6 +59,13 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
 
 async function verify(name,viewport,isMobile){
  const ctx=await browser.newContext({viewport,isMobile,deviceScaleFactor:1,hasTouch:isMobile});
+ // Browser smoke is a deterministic layout test, not an external CDN uptime test.
+ // Only tests replace the remotely hosted CC0 screenshot with a clearly labelled fixture.
+ // The production catalogue URL and its original pixels are NOT modified.
+ const excelOfflineFixture='<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1007"><rect width="1920" height="1007" fill="#eef5f0"/><text x="80" y="150" font-size="70" fill="#1b4430">EXCEL SCREENSHOT — OFFLINE TEST FIXTURE</text></svg>';
+ await ctx.route('https://upload.wikimedia.org/**',route=>route.fulfill({
+  status:200,contentType:'image/svg+xml',headers:{'access-control-allow-origin':'*'},body:excelOfflineFixture,
+ }));
  const page=await ctx.newPage();
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
@@ -188,9 +201,11 @@ async function verify(name,viewport,isMobile){
   const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="excel-skroty"]');
   await firstPhoto.waitFor({state:'visible',timeout:7000});
   assert(await firstPhoto.evaluate(img=>
-   img.naturalWidth>0&&img.naturalWidth*9===img.naturalHeight*16&&
-   img.getAttribute('alt')===''&&img.loading==='lazy'&&getComputedStyle(img).opacity==='1'),
-   'The featured course photo must render in 16:9 without duplicating the heading for assistive technology');
+   img.naturalWidth>=1280&&img.naturalHeight>=720&&
+   img.naturalWidth/img.naturalHeight>1.6&&img.naturalWidth/img.naturalHeight<2.1&&
+   img.getAttribute('alt')===''&&img.loading==='lazy'&&
+   getComputedStyle(img).objectFit==='contain'&&getComputedStyle(img).opacity==='1'),
+   'The original Excel screenshot must render fully, crisply and without duplicate screen-reader text');
   assert(await page.locator('#course-cards .btn-buy-card').evaluateAll(buttons=>buttons.every(button=>{
    const card=button.closest('.course-card').getBoundingClientRect(), action=button.getBoundingClientRect();
    return action.left>=card.left&&action.right<=card.right;
@@ -292,6 +307,12 @@ async function verify(name,viewport,isMobile){
   assert(supportWidth.scroll<=supportWidth.client+3,'Public help page horizontal overflow');
   await page.screenshot({path:'/tmp/trenerki-'+name+'.png',fullPage:false});
   assert.equal(errors.length,0,'Browser JS errors: '+errors.join(' | '));
+  const cookOffer=await page.request.get(root+'/academy/kursy/lepszy-kucharz.html');
+  assert.equal(cookOffer.status(),200,'Chef course public page must load');
+  const cookContent=await cookOffer.text();
+  assert.match(cookContent,/<span>30 lekcji<\/span>/,'Chef course must not advertise obsolete 12 lessons');
+  assert.match(cookContent,/Wprowadzenie: historia kuchni, zawód kucharza i mise en place/,'Chef course must have the history introduction');
+  assert.match(cookContent,/GHP, GMP, HACCP/,'Chef course must teach food safety and professional duties');
   if(!isMobile)await verifyAllCataloguePhotos(ctx,prices.map(course=>course.slug));
   console.log('✓ '+name+': Anielka searches from home AND course detail, opens both courses, no JS errors or overflow');
  }catch(error){

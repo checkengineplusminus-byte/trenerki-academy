@@ -36,9 +36,19 @@ assert.deepEqual(Object.keys(photoManifest.courses).sort(),catalog.map(course=>c
 const photoDigests=new Set();
 for(const course of catalog){
  const photo=photoManifest.courses[course.id];
- assert.equal(photo.file,course.id+'.webp','Unexpected photo filename for '+course.id);
  assert.equal(photo.iconBundle,course.iconBundle,'Incorrect fallback icon bundle for '+course.id);
  assert(typeof photo.alt==='string'&&photo.alt.trim(),'Missing photo description for '+course.id);
+ if(course.id==='excel-skroty'){
+   // The Excel catalog image must be a genuine spreadsheet screenshot, not generic finance imagery.
+   const realExcelScreenshot='https://upload.wikimedia.org/wikipedia/commons/0/0a/Anzahl_der_B%C3%A4ume_pro_Quadrat_1.png';
+   assert.equal(photo.file,realExcelScreenshot,'Excel must use the verified real Excel screenshot');
+   assert.equal(photo.license,'CC0 1.0','Missing image reuse provenance');
+   assert(photo.alt.includes('Microsoft Excel'),'Excel screenshot alt text is not specific');
+   assert(academy.includes('const EXCEL_REAL_SCREENSHOT=\''+realExcelScreenshot+'\''),'Catalog renderer must support the actual screenshot URL');
+   assert(academy.includes('photo.src=spotlightFile?coursePhotoSrc(spotlightFile)'),'Featured Excel card must use the same image source');
+   continue;
+ }
+ assert.equal(photo.file,course.id+'.webp','Unexpected photo filename for '+course.id);
  const image=readFileSync(join(root,'academy/photos',photo.file));
  assert(image.length>100&&image.toString('ascii',0,4)==='RIFF'&&image.toString('ascii',8,12)==='WEBP','Invalid WebP photo for '+course.id);
  const digest=createHash('sha256').update(image).digest('hex');
@@ -77,6 +87,6 @@ assert(volunteerLegacy.includes('/materialy-wolontariusza'),'Legacy material URL
 assert(volunteerLegacy.length<4000&&!/<fieldset|data-answer|data-view|<textarea/.test(volunteerLegacy),
  'Private volunteer lessons and answers must not be shipped as public HTML');
 console.log('✓ Expo export includes the academy catalog, search assets and course visuals');
-console.log('✓ All '+photoDigests.size+' distinct course photos and their SVG fallbacks are shipped in the exported site');
+console.log('✓ '+photoDigests.size+' distinct local course photos plus the verified CC0 Excel screenshot, with SVG fallbacks');
 console.log('✓ Reference illustrations for wooden wheel and timber roof included');
 console.log('✓ All 3 real AutoCAD DXF drawings and 3 original interface screenshots are included in Expo export');
