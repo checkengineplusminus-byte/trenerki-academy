@@ -133,7 +133,7 @@ export default function Purchase(){
      {accountingEarlyAccess&&<View style={{padding:17,borderRadius:12,backgroundColor:'#fff2dc',gap:8}}>
       <Text style={{fontSize:18,fontWeight:'900',color:'#74441e'}}>Wczesny dostęp — kurs w wersji rozwojowej</Text>
       <Text style={{fontSize:14,lineHeight:22,color:'#624525'}}>Dostępnych jest 100 opracowanych tematów w 10 działach, ćwiczenia i fikcyjne biuro. Wszystkie tematy wymagają niezależnej recenzji merytorycznej i prawnej, a pełny cykl symulatora jest nadal dopracowywany. To materiał edukacyjny, nie porada podatkowa, oficjalna kwalifikacja ani obietnica dyplomu. W ramach 12 miesięcy dostępne będą poprawki i aktualizacje.</Text>
-     </View>
+     </View>}
     </View>
     {!!preview&&<>
      <View style={{borderRadius:18,backgroundColor:lime,padding:24,gap:12}}>
