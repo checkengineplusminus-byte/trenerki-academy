@@ -112,9 +112,9 @@ export function mountLab(root,db){
     e(audit.disclaimer)+'</p>'+
    '<p><strong>Okres ćwiczeniowy:</strong> '+e(audit.period||'nieustalony')+
     ' · <strong>Faktury:</strong> '+audit.source_count+'</p>'+
-   '<div class="stats"><div class="stat">Sprzedaż netto<strong>'+money(f.sale_net_cents)+'</strong></div>'+
-    '<div class="stat">VAT z fikcyjnych faktur sprzedaży<strong>'+money(f.sale_vat_cents)+'</strong></div>'+
-    '<div class="stat">VAT z fikcyjnych faktur zakupu<strong>'+money(f.purchase_vat_cents)+'</strong></div></div>'+
+   '<div class="stats"><div class="stat">Sprzedaż netto<strong>'+formatReviewMoney(f.sale_net_cents)+'</strong></div>'+
+    '<div class="stat">VAT z fikcyjnych faktur sprzedaży<strong>'+formatReviewMoney(f.sale_vat_cents)+'</strong></div>'+
+    '<div class="stat">VAT z fikcyjnych faktur zakupu<strong>'+formatReviewMoney(f.purchase_vat_cents)+'</strong></div></div>'+
    '<p class="notice">Różnica VAT z dokumentów modelu: <strong>'+formatReviewMoney(f.vat_difference_cents)+
     '</strong>. To nie jest deklaracja ani wynik podatkowy bez kwalifikacji prawnej.</p>'+
    '<p class="'+(audit.vat_ledger.matching?'notice':'error')+'">VAT w dzienniku: 222 — '+formatReviewMoney(audit.vat_ledger.matching?audit.vat_ledger.sales_cents:null)+
@@ -122,7 +122,7 @@ export function mountLab(root,db){
     '. '+(audit.vat_ledger.matching?'Kwoty zgodne z fakturami w modelu.':'Różnica z fakturami — nie przechodź do recenzji.')+
     ' Kwalifikację podatkową sprawdza osobno księgowy.</p>'+
    '<h3>Od czego zacząć? Twoje trzy najbliższe kroki</h3>'+
-   (important?'<ol>'+important+'</ol><p class="muted">Pozostałych kontroli do wykonania: '+audit.next_actions.length+'. Pełna lista jest poniżej.</p>':
+   (important?'<ol>'+important+'</ol><p class="muted">Wszystkich nierozwiązanych kontroli: '+audit.next_actions.length+'. Pełna lista jest poniżej.</p>':
     '<p class="notice">Kontrole modelu zaliczone; nie jest to odbiór księgowy ani wysyłka do urzędu.</p>')+
    '<h3>Wynik i płynność — jeden okres fikcyjnej firmy</h3>'+
    '<p class="muted">Przychody z konta 700, koszty z kont 400/401/404/761. Przepływy z CSV; '+
