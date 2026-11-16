@@ -44,6 +44,7 @@ export default function Learning(){
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
+ const pendingExcelHomeworkRef=React.useRef(false);
  function scrollToTop(){
   scrollRef.current?.scrollTo({y:0,animated:false});
   if(Platform.OS==='web'&&typeof window!=='undefined')window.scrollTo(0,0);
@@ -61,6 +62,23 @@ export default function Learning(){
   if(!grid)return false;
   grid.scrollIntoView?.({behavior:'smooth',block:'start'});
   return true;
+ }
+ function scrollToExcelHomework():boolean{
+  if(slug!=='excel-skroty'||Platform.OS!=='web'||typeof document==='undefined')return false;
+  const block=document.querySelector('[data-testid="excel-real-homework-'+module+'"]');
+  if(!block)return false;
+  const control=block.querySelector('[data-testid="excel-homework-toggle"]');
+  // React Native Web may omit aria-expanded on a Pressable despite its internal state.
+  // Fall back to the visible label; do not close homework already expanded.
+  const expanded=control?.getAttribute('aria-expanded')==='true'||control?.textContent?.includes('Zwiń zadanie');
+  if(control instanceof HTMLElement&&!expanded)control.click();
+  block.scrollIntoView?.({behavior:'smooth',block:'start'});
+  return true;
+ }
+ function openExcelHomework(){
+  if(slug!=='excel-skroty')return;
+  if(index===0&&!introRead){pendingExcelHomeworkRef.current=true;setIntroRead(true);return;}
+  if(!scrollToExcelHomework()){pendingExcelHomeworkRef.current=true;setIntroRead(true);}
  }
  function openWorkshop(){
   if(!introRead){pendingWorkshopRef.current=true;setIntroRead(true);return;}
@@ -82,6 +100,10 @@ export default function Learning(){
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{setCoachOpen(false);},[slug,module]);
+ useEffect(()=>{
+  if(slug==='excel-skroty'&&pendingExcelHomeworkRef.current&&introRead&&scrollToExcelHomework())
+   pendingExcelHomeworkRef.current=false;
+ },[slug,module,introRead,items.length]);
  React.useLayoutEffect(()=>{
   if(Platform.OS==='web'){
    scrollToTop();
@@ -337,6 +359,14 @@ export default function Learning(){
   </>}
   {progress===100&&index===items.length-1&&!reviewMode&&<FinalExam courseSlug={slug}/>}
   {!!lesson&&<>
+   {slug==='excel-skroty'&&Platform.OS==='web'&&
+    <Pressable testID="excel-homework-quick-access" accessibilityRole="button"
+     accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
+     onPress={openExcelHomework}
+     style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
+     <Text style={{fontWeight:'900',fontSize:16,color:'#1d5839'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
+     <Text style={{fontSize:12,lineHeight:20,color:'#37674a'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
+    </Pressable>}
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide lessonNo={module}/>}

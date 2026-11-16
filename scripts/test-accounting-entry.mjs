@@ -37,6 +37,50 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  assert.ok(sourceForAccounting.indexOf(clarificationMount)>sourceForAccounting.indexOf("lesson.title_pl"),
    'Podpowiedź Anielki jest częścią lekcji, nie autoryzacji księgowości');
  sourceForAccounting=sourceForAccounting.replace(clarificationImport,'').replace(clarificationMount,'');
+ // Scope-limited Excel homework jump. This block is reviewed against main byte-for-byte:
+ // it cannot alter accounting routes, Auth or lesson completion.
+ const homeworkMarker=" const pendingExcelHomeworkRef=React.useRef(false);\n";
+ if(sourceForAccounting.includes(homeworkMarker)){
+  const approvedHomeworkUi=[
+   homeworkMarker,
+   ` function scrollToExcelHomework():boolean{
+  if(slug!=='excel-skroty'||Platform.OS!=='web'||typeof document==='undefined')return false;
+  const block=document.querySelector('[data-testid="excel-real-homework-'+module+'"]');
+  if(!block)return false;
+  const control=block.querySelector('[data-testid="excel-homework-toggle"]');
+  // React Native Web may omit aria-expanded on a Pressable despite its internal state.
+  // Fall back to the visible label; do not close homework already expanded.
+  const expanded=control?.getAttribute('aria-expanded')==='true'||control?.textContent?.includes('Zwiń zadanie');
+  if(control instanceof HTMLElement&&!expanded)control.click();
+  block.scrollIntoView?.({behavior:'smooth',block:'start'});
+  return true;
+ }
+ function openExcelHomework(){
+  if(slug!=='excel-skroty')return;
+  if(index===0&&!introRead){pendingExcelHomeworkRef.current=true;setIntroRead(true);return;}
+  if(!scrollToExcelHomework()){pendingExcelHomeworkRef.current=true;setIntroRead(true);}
+ }
+`,
+   ` useEffect(()=>{
+  if(slug==='excel-skroty'&&pendingExcelHomeworkRef.current&&introRead&&scrollToExcelHomework())
+   pendingExcelHomeworkRef.current=false;
+ },[slug,module,introRead,items.length]);
+`,
+   `   {slug==='excel-skroty'&&Platform.OS==='web'&&
+    <Pressable testID="excel-homework-quick-access" accessibilityRole="button"
+     accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
+     onPress={openExcelHomework}
+     style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
+     <Text style={{fontWeight:'900',fontSize:16,color:'#1d5839'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
+     <Text style={{fontSize:12,lineHeight:20,color:'#37674a'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
+    </Pressable>}
+`
+  ];
+  for(const addition of approvedHomeworkUi){
+   assert.equal(sourceForAccounting.split(addition).length,2,'Unreviewed change in Excel homework jump');
+   sourceForAccounting=sourceForAccounting.replace(addition,'');
+  }
+ }
  const excelImport="import ExcelMasterGuide from '../src/ExcelMasterGuide';\n";
  if(sourceForAccounting.includes(excelImport)){
   const steps=[
@@ -100,7 +144,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '9ed77599d484d991956a544db2704b4edeb7e2b8', // previous review
   '104db6f1dc8d3eebbdb05c195012568d885a277c', // AutoCAD all-lesson instruction books and practice mount; accounting route unchanged
   '629b67d13927b791aff2924c18053b979d101358', // reviewed current Excel reader
-  '46774c0f2a24a78e23f3c6075168f131f7580258' // PR #27: exactly two audited Anielka UI insertions
+  '46774c0f2a24a78e23f3c6075168f131f7580258', // PR #27: exactly two audited Anielka UI insertions
+  '69b42978196bee5ecf968b52d7991fd005a84559' // audited 16.11: current main reader after removing only four exact homework UI additions, accounting navigation untouched
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
