@@ -343,7 +343,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   setLast(point);
   setSession({...session,points:[...points,point]});
  }
- function pick(point:Point,remove=false){
+ function pick(point:Point,remove=false,fromPointer=false){
   if(layout||pan)return;
   if(!inRange(point)){tell('Współrzędne przekraczają zakres warsztatu.');return;}
   const ordered=[...visible].reverse();
@@ -389,7 +389,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    return;
   }
   if(session.mirrorAxis){tell('MIRROR: wybierz Tak lub Nie, aby zakończyć odbicie.');return;}
-  if(!first&&(tool==='dimlinear'||tool==='dimaligned')){
+  if(fromPointer&&!first&&(tool==='dimlinear'||tool==='dimaligned')){
    const source=ordered.find(shape=>shape.kind==='line'&&shape.points.length===2&&nearEdge(shape,point,baseTolerance));
    if(source){
     setSession({...session,points:source.points.slice(0,2)});
@@ -737,7 +737,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    <CadCanvas size={size} camera={layout?layoutCamera:view} objects={[...objects,...drawingPreview]} grid={grid} pan={pan} layout={layout} selecting={tool==='select'||!!session.selecting} lineweight={lineweight} transparency={transparency}
     cursor={pointer} snap={candidate?.label&&cursorPoint?screenPoint(cursorPoint,view,size):undefined}
     prompt={dynamic&&tool!=='select'&&cursorPoint?(candidate?.label?candidate.label+' · ':'')+cadCoordinates(cursorPoint):undefined}
-    onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove)}
+    onMove={setPointer} onPick={(p,remove)=>pick(tool==='select'||session.selecting||tool==='hatch'||tool==='trim'?worldPoint(p,view,size):atPointer(p).point,remove,true)}
     onObjectTap={selectOneById} onWindowSelect={selectWindow}
     onPan={shift} onZoom={zoom} onFinish={()=>finish()}/>
   </View>
