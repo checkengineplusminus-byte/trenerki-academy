@@ -107,6 +107,21 @@ async function auditHomework(page,no,round){
  assert.equal(response.status(),200,'Homework starter unavailable '+no);
  const body=await response.text();
  assert(body.length>50&&body.includes(';'),'Empty or unstructured homework starter '+no);
+
+ if(item.comparisonStarter){
+  const extra=panel.getByTestId('excel-homework-comparison-download');
+  const extraUrl=await extra.getAttribute('href');
+  assert.equal(extraUrl,item.comparisonStarter.file);
+  assert.equal((await page.request.get(base+extraUrl)).status(),200,'Comparison CSV missing '+no);
+ }
+ if(item.bonusStarter){
+  const extra=panel.getByTestId('excel-homework-bonus-download');
+  const extraUrl=await extra.getAttribute('href');
+  assert.equal(extraUrl,item.bonusStarter.file);
+  const response=await page.request.get(base+extraUrl);
+  assert.equal(response.status(),200,'Advanced CSV missing '+no);
+  assert((await response.text()).includes('PRO-0367'));
+ }
  await input.fill('NIE-MA-TAKIEJ-ODPOWIEDZI');
  await panel.getByTestId('excel-homework-check').click();
  await panel.getByTestId('excel-homework-feedback').filter({hasText:/Uwaga/}).waitFor();
