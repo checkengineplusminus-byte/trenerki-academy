@@ -6,9 +6,12 @@ import {supabase} from '../src/supabase';
 import {checkExercise,sourceURL} from '../src/accounting/reader-core.js';
 // @ts-ignore — same read-only progress rules as the 100-topic programme.
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
+// @ts-ignore — pure homework validation; authority remains the Supabase RPC.
+import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accounting/homework-core.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
 type Answer={exercise_id:string;answer:string};
+type Homework={response:string;version:number;submitted_at:string|null;updated_at:string}|null;
 function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:number;userId:string;initial:string;onSaved:(id:string,answer:string)=>void}){
  const [answer,setAnswer]=useState(initial),[feedback,setFeedback]=useState<any>(null);
  const [saving,setSaving]=useState(false),[saved,setSaved]=useState(false),[saveError,setSaveError]=useState('');
@@ -56,10 +59,16 @@ export default function TematKsiegowosci(){
  const [lesson,setLesson]=useState<Lesson|null>(null);
  const [answers,setAnswers]=useState<Record<string,string>>({});
  const [userId,setUserId]=useState('');
+ const [homework,setHomework]=useState<Homework>(null);
+ const [homeworkText,setHomeworkText]=useState('');
+ const [homeworkReady,setHomeworkReady]=useState(false);
+ const [homeworkBusy,setHomeworkBusy]=useState(false);
+ const [homeworkError,setHomeworkError]=useState('');
+ const [homeworkMessage,setHomeworkMessage]=useState('');
  const [busy,setBusy]=useState(true),[error,setError]=useState(''),[warning,setWarning]=useState('');
  const serial=useRef(0),owner=useRef('');
  const load=useCallback(async()=>{
-  const run=++serial.current;setBusy(true);setLesson(null);setError('');setWarning('');setAnswers({});
+  const run=++serial.current;setBusy(true);setLesson(null);setError('');setWarning('');setAnswers({});setHomework(null);setHomeworkText('');setHomeworkReady(false);setHomeworkError('');setHomeworkMessage('');
   try{
    if(topic===null)throw new Error('Nieprawidłowy numer tematu.');
    const u=await supabase.auth.getUser();
@@ -80,6 +89,14 @@ export default function TematKsiegowosci(){
    if(run!==serial.current)return;
    if(a.error)throw new Error('Nie udało się odczytać poprzednich odpowiedzi; zapis nowych jest wstrzymany, aby ich nie nadpisać.');
    setAnswers(Object.fromEntries(((a.data||[]) as Answer[]).map(v=>[v.exercise_id,v.answer])));
+   const h=await supabase.from('ta_accounting_core_homework_v3')
+     .select('response,version,submitted_at,updated_at')
+     .eq('user_id',owner.current).eq('topic_no',topic).maybeSingle();
+   if(run!==serial.current)return;
+   if(h.error)throw new Error('Nie udało się odczytać pracy domowej. Zapis jest zablokowany, aby nie nadpisać wcześniejszej wersji.');
+   setHomework((h.data||null) as Homework);
+   setHomeworkText(h.data?.response||'');
+   setHomeworkReady(true);
   }catch(e:any){if(run===serial.current)setError(e?.message||'Błąd odczytu lekcji.');}
   finally{if(run===serial.current)setBusy(false);}
  },[topic,router]);
@@ -87,11 +104,36 @@ export default function TematKsiegowosci(){
  useEffect(()=>{
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
    if(owner.current && owner.current!==(session?.user?.id||'')){
-    ++serial.current;owner.current='';setLesson(null);setAnswers({});setUserId('');router.replace('/konto');
+    ++serial.current;owner.current='';setLesson(null);setAnswers({});setHomework(null);setHomeworkText('');setHomeworkReady(false);setUserId('');router.replace('/konto');
    }
   });
   return()=>subscription.unsubscribe();
  },[router]);
+ async function saveHomework(submit:boolean){
+  if(homeworkBusy||!homeworkReady||busy||topic===null||!lesson||!userId||owner.current!==userId)return;
+  setHomeworkError('');setHomeworkMessage('');
+  if(submit&&!homeworkCanSubmit(homeworkText)){
+   setHomeworkError('Przed oddaniem opisz wynik, wykonane kroki i wnioski — co najmniej 120 znaków. Możesz wcześniej zapisać krótszy szkic.');
+   return;
+  }
+  const run=serial.current,activeUser=userId;
+  setHomeworkBusy(true);
+  try{
+   const answer=await supabase.rpc('ta_accounting_core_homework_save',{
+    p_topic_no:topic,p_response:homeworkText,p_submit:submit,
+    p_expected_version:homeworkVersion(homework)
+   });
+   if(run!==serial.current||owner.current!==activeUser)return;
+   if(answer.error||!answer.data||answer.data.user_id!==activeUser||answer.data.topic_no!==topic)
+    throw new Error(answer.error?.message||'Serwer nie potwierdził zapisu Twojej pracy. Zachowaj tekst przed odświeżeniem.');
+   setHomework(answer.data as Homework);
+   setHomeworkMessage(submit?'Praca domowa została oddana i zapisana na koncie. To nie jest jeszcze ocena eksperta ani zaliczenie kursu.':'Szkic pracy domowej zapisany na Twoim koncie.');
+  }catch(err:any){
+   if(run===serial.current)setHomeworkError((err?.code==='40001'?
+     'Konflikt wersji — ktoś zapisał nowszą pracę w drugim oknie. Skopiuj własny tekst przed odświeżeniem. ':
+     'Nie udało się zapisać pracy. Skopiuj tekst przed odświeżeniem. ')+(err?.message||''));
+  }finally{if(run===serial.current)setHomeworkBusy(false);}
+ }
  const m=lesson?.material||{};
  const savedRows=topic!==null?Object.entries(answers).map(([exercise_id,answer])=>({topic_no:topic,exercise_id,answer})):[];
  const progress=buildCorePracticeProgress(
@@ -99,7 +141,8 @@ export default function TematKsiegowosci(){
   topic!==null&&lesson?[{topic_no:topic,material:m}]:[],
   savedRows,{materialsReady:!!lesson,answersReady:!!userId});
  const sectionProgress=topic!==null?progress.byTopic[topic]:null;
- const nextReady=sectionProgress?.passed===true;
+ const hasHomework=homeworkReady&&homeworkSubmitted(homework)&&homeworkText===homework?.response;
+ const nextReady=sectionProgress?.passed===true&&hasHomework;
  return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
   <View style={s.row}><Link href="/program-ksiegowosci" style={s.link}>← Wróć do 100 tematów</Link><Link href="/ksiegowosc" style={s.link}>Encyklopedia</Link></View>
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie lekcji"/>}
@@ -130,10 +173,35 @@ export default function TematKsiegowosci(){
     <Text style={s.result}>{example.result}</Text>
    </View>)}
    {m.practice&&<View style={s.practice}>
-    <Text style={s.eyebrowDark}>TERAZ TY – PRAKTYKA</Text><Text style={s.h2}>{m.practice.role}</Text>
+    <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
     <Link href="/biuro-ksiegowe" style={s.link}>Otwórz biuro ćwiczeniowe</Link>
-    <Text style={s.small}>Przeniesienie do biura nie wykonuje zadania automatycznie. Wysyłki do urzędów nie są wykonywane.</Text>
+    <Text style={s.small}>Możesz pracować na własnym arkuszu Excel, ale nie wpisuj rzeczywistych danych klientów. W polu poniżej zapisz swoje obliczenia, kroki, wynik i kwestie wymagające wyjaśnienia. Przeniesienie do biura nie wykonuje zadania.</Text>
+    {!homeworkReady?<Text style={s.warning}>Nie potwierdzono jeszcze odczytu Twojej wcześniejszej pracy. Zapis jest wyłączony.</Text>:<>
+     <Text style={s.label}>Twoje rozwiązanie (wersja {homework?.version||'nowa'})</Text>
+     <TextInput accessibilityLabel="Rozwiązanie pracy domowej" multiline textAlignVertical="top" maxLength={10000}
+      editable={!homeworkBusy} value={homeworkText} onChangeText={value=>{setHomeworkText(value);setHomeworkMessage('');setHomeworkError('');}}
+      placeholder={'1. Jakie dokumenty sprawdziłem?\\n2. Moje obliczenia i źródła...\\n3. Wynik oraz wątpliwości...'}
+      style={s.homeworkInput}/>
+     <Text style={s.small}>{homeworkText.length}/10 000 znaków · oddanie wymaga minimum 120 znaków.</Text>
+     <View style={s.row}>
+      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy} onPress={()=>void saveHomework(false)} style={s.button}>
+       <Text style={s.buttonText}>{homeworkBusy?'Zapisywanie…':'Zapisz szkic'}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy||!homeworkCanSubmit(homeworkText)} onPress={()=>void saveHomework(true)} style={s.button}>
+       <Text style={s.buttonText}>Oddaj pracę domową</Text>
+      </Pressable>
+     </View>
+     {homeworkMessage!==''&&<Text style={s.notice}>{homeworkMessage}</Text>}
+     {homeworkError!==''&&<Text accessibilityRole="alert" style={s.warning}>{homeworkError}</Text>}
+     {hasHomework?<Text style={s.notice}>Praca oddana do własnego przeglądu. Zapis na koncie potwierdzony. Nie jest to automatyczna ocena ani dyplom.</Text>:
+       <Text style={s.small}>Praca jeszcze nieoddana. Samo zapisanie szkicu nie odblokowuje następnego tematu.</Text>}
+     {hasHomework&&typeof m.practice.expected_output==='string'&&
+       <View style={s.notice}><Text style={s.label}>Porównaj swój wynik z przykładowym kluczem</Text>
+        <Text style={s.body}>{m.practice.expected_output}</Text>
+        <Text style={s.small}>Klucz służy do samokontroli. Jeśli wynik się różni, popraw swoją pracę i oddaj ponownie. Rzeczywiste przepisy sprawdzaj w aktualnych źródłach.</Text>
+       </View>}
+    </>}
    </View>}
    <View style={s.card}><Text accessibilityRole="header" style={s.h2}>Sprawdź samodzielnie</Text>
     <Text style={s.small}>Liczba zadań w tym temacie: {(m.exercises||[]).length}. Klucz pojawia się po własnej próbie; nie jest to egzamin certyfikujący.</Text>
@@ -159,7 +227,7 @@ export default function TematKsiegowosci(){
     {sectionProgress?
       <Text style={s.body}>Zapisane i poprawne odpowiedzi: {sectionProgress.correct}/{sectionProgress.total}. Zapisane próby: {sectionProgress.attempted}/{sectionProgress.total}.</Text>:
       <Text style={s.warning}>Nie udało się zweryfikować wszystkich zadań. Nie oznaczamy tematu jako zaliczonego.</Text>}
-    {!nextReady&&<Text style={s.small}>Rozwiąż wszystkie zadania poprawnie i zapisz odpowiedzi na koncie. Przycisk kolejnego kroku pojawi się po potwierdzonym zapisie — samo przeczytanie tekstu nie wystarczy.</Text>}
+    {!nextReady&&<Text style={s.small}>Rozwiąż poprawnie i zapisz wszystkie zadania, a także oddaj pisemną pracę domową do samokontroli. Kolejny temat odblokuje się po potwierdzonym zapisie obu części. Oddanie pracy nie jest oceną profesjonalisty ani zaliczeniem całego kursu.</Text>}
     {nextReady&&topic!==null&&topic<100&&
      <Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic+1)}}} style={s.link}>Przejdź do tematu {topic+1} z 100</Link>}
     {nextReady&&topic===100&&<>
@@ -192,6 +260,7 @@ const s=StyleSheet.create({
  button:{alignSelf:'flex-start',paddingHorizontal:15,paddingVertical:12,borderRadius:10,backgroundColor:'#e4efdb'},
  buttonText:{fontWeight:'800',color:'#214b30'},
  input:{fontSize:16,padding:12,minWidth:160,borderColor:'#becdb6',borderWidth:1,borderRadius:10,color:'#1b3e2b'},
+ homeworkInput:{fontSize:16,lineHeight:24,minHeight:220,padding:14,borderWidth:1,borderRadius:12,borderColor:'#b7c9b3',backgroundColor:'#fff',color:'#1b3e2b'},
  notice:{padding:13,borderRadius:9,backgroundColor:'#ecf4e6',gap:7},
  warning:{backgroundColor:'#fff0e5',padding:13,borderRadius:10,color:'#813d25',fontSize:14,lineHeight:22,marginBottom:12},
  gloss:{gap:6,borderTopWidth:1,borderColor:'#e0e8dc',paddingTop:9},
