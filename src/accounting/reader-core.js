@@ -30,6 +30,11 @@ export function checkExercise(exercise, answer) {
   }
   return {valid:false,correct:false,message:'Ten rodzaj zadania nie jest obsługiwany w czytniku.'};
 }
+export function glossaryExplanation(entry){
+ const explanation=typeof entry?.meaning==='string'&&entry.meaning.trim()?
+  entry.meaning:typeof entry?.definition==='string'&&entry.definition.trim()?entry.definition:'';
+ return explanation||'Brak objaśnienia w materiale — zgłoś do redakcji, nie zgaduj.';
+}
 export function sourceURL(raw) {
   try {const u=new URL(raw);return u.protocol==='https:'&&!u.username&&!u.password?u.href:null;}catch{return null;}
 }
