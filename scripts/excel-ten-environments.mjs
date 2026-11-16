@@ -9,6 +9,8 @@ const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const data=JSON.parse(readFileSync(new URL('../content/excel-analyst-data.json',import.meta.url),'utf8'));
 const content=JSON.parse(readFileSync(new URL('../content/excel-professional-missions.json',import.meta.url),'utf8'));
 const missions=content.missions;
+const homework=JSON.parse(readFileSync(new URL('../content/excel-real-homework-30.json',import.meta.url),'utf8'));
+
 const authoredLessons=JSON.parse(readFileSync(new URL('../content/v2-excel-skroty.json',import.meta.url),'utf8')).lessons;
 const bonusLessons=JSON.parse(readFileSync(new URL('../content/excel-bonus-chapters.json',import.meta.url),'utf8')).chapters;
 const rows=data.rows;
@@ -33,7 +35,7 @@ const north=rows.filter(x=>x.region==='Północ');
 const count=rows.length;
 const materialImpact=-Math.round(rows.filter(x=>x.category==='Materiały').reduce((t,r)=>t+r.quantity*r.unitCost*.15,0)*100)/100;
 const answerMoney=n=>String(n).replace('.',',');
-const report={suite:'TRENERKI Excel: 10 środowisk x 2 rundy, IT + krytyk + sprzedawca',date:'2026-11-15',rounds:[],scope:'30 graded lessons + 120 deep texts + 115 glossary terms + 12 ungraded bonus chapters; synthetic user, not paid real users'};
+const report={suite:'TRENERKI Excel: 10 środowisk x 2 rundy, 5 automatycznych perspektyw eksperckich',date:'2026-11-16',rounds:[],scope:'30 lekcji i 30 nowych prac w prawdziwym Excelu; 10 syntetycznych person, 5 rubryk testowych; nie są to ludzie ani rzeczywiste konta'};
 function material(no){
  return {sections:[{heading:'Zadanie ćwiczebne',text:'Użyj jedynie fikcyjnych danych i wykonaj samodzielne działania w arkuszu.'}],
   illustration:no%2?'excel-addresses':'excel-interface'};
@@ -238,6 +240,58 @@ async function checkNewExcelTools(page,p,round){
   console.log('✓ Cykl '+round+' · '+p.id+' · źródłowa tabela, wykres, suma i '+(p.lesson===25?'pivot':'grupowanie'));
  }
 }
+async function checkRealHomework(page,p,round){
+ const assignment=homework.lessons.find(x=>x.lessonNo===p.lesson);
+ assert(assignment,'No homework lesson '+p.lesson);
+ const lab=page.getByTestId('excel-real-homework-'+p.lesson);
+ await lab.waitFor();
+ const answer=lab.getByTestId('excel-homework-answer');
+ if(!await answer.isVisible())await lab.getByTestId('excel-homework-toggle').click();
+ await answer.waitFor();
+ const link=lab.getByRole('link',{name:/Pobierz:/}).first();
+ const href=await link.getAttribute('href');
+ assert.equal(href,assignment.starter.file,'Wrong data source '+p.id);
+ const file=await page.request.get(base+href);
+ assert.equal(file.status(),200,'CSV download '+p.id);
+ const csv=await file.text();assert(csv.length>50&&csv.includes(';'));
+ await answer.fill('TO-NIE-JEST-ODPOWIEDŹ');
+ await lab.getByTestId('excel-homework-check').click();
+ await lab.getByTestId('excel-homework-feedback').getByText(/Uwaga:/).waitFor();
+ const correct=round===2&&assignment.kind==='number'?assignment.expected+' zł':
+  round===2&&assignment.kind==='percent'?assignment.expected+'%':assignment.expected;
+ await answer.fill(correct);
+ await lab.getByTestId('excel-homework-check').click();
+ await lab.getByTestId('excel-homework-feedback').getByText(/Zgadza się|Odpowiedź jest zgodna|Prawidłowy zapis|Dobrze|Tak\. To angielski/).waitFor();
+ await lab.getByTestId('excel-homework-step-0').click();
+ await lab.getByTestId('excel-homework-step-progress').getByText(/1\//).waitFor();
+ await lab.getByTestId('excel-homework-criterion-0').click();
+ await lab.getByTestId('excel-homework-criterion-progress').getByText(/1\//).waitFor();
+ await lab.getByTestId('excel-homework-solution-toggle').click();
+ await lab.getByTestId('excel-homework-solution').waitFor();
+ console.log('✓ Cykl '+round+' · '+p.id+' · zadanie domowe '+(p.lesson+1)+'/30: plik CSV, instrukcja, walidacja, kryteria');
+ return {lesson:p.lesson+1,download:true,correct:true,wrongRejected:true,checklist:true};
+}
+function fiveExpertRubrics(round,checked){
+ const domains=homework.reviewRubric;
+ assert.equal(domains.length,5);
+ assert.equal(new Set(domains.map(x=>x.id)).size,5);
+ assert.equal(homework.lessons.length,30);
+ for(const domain of domains){
+  const assigned=homework.lessons.filter(x=>x.review===domain.id);
+  assert(assigned.length>=2,'No assignments for '+domain.id);
+  assert(assigned.every(x=>x.steps.length>=5&&x.checks.length>=3&&x.mistakes.length>=2));
+ }
+ const source=data.rows;
+ assert.equal(source.length,18);
+ assert.equal(source.reduce((x,r)=>x+r.quantity*r.netPrice,0),28245);
+ assert.equal(source.reduce((x,r)=>x+r.quantity*(r.netPrice-r.unitCost),0),9109);
+ assert.equal(homework.lessons[25].expected,'28330');
+ assert.equal(homework.lessons[26].expected,'7970.80');
+ assert(checked.every(x=>x.homework?.correct&&x.homework.download));
+ const verdict=domains.map(d=>({perspective:d.id,title:d.role,checked:homework.lessons.filter(x=>x.review===d.id).length,passed:true}));
+ console.log('✓ Cykl '+round+' · 5/5 SYMULOWANYCH audytów eksperckich: formuły, dane, analityka, dydaktyka, UX (bez ludzkich ekspertów)');
+ return {mode:'automated rubrics, not human interviews',passed:true,perspectives:verdict};
+}
 async function persona(browser,p,round){
  const context=await browser.newContext({viewport:{width:p.width,height:p.height},deviceScaleFactor:p.scale,
   hasTouch:p.touch,isMobile:p.mobile,locale:'pl-PL',reducedMotion:p.reduce?'reduce':'no-preference'});
@@ -318,6 +372,7 @@ async function persona(browser,p,round){
   await region.getByTestId('excel-mission-correct').waitFor();
   await region.getByRole('button',{name:/Na prawdziwym Excelu/}).click();
   await region.getByText(m.realExcel,{exact:true}).waitFor();
+  const homeworkResult=await checkRealHomework(page,p,round);
   await checkNewExcelTools(page,p,round);
   if(p.id==='student')await novicePath(page,round);
   if(['accounting','finance','seller','director','it'].includes(p.id))await checkAdvanced(page,p.id);
@@ -331,7 +386,7 @@ async function persona(browser,p,round){
    await page.screenshot({path:'/tmp/trenerki-excel-qa-'+p.id+'.png',fullPage:false});
   }
   console.log('✓ Cykl '+round+' · '+p.id+' '+p.width+'×'+p.height+' · misja '+(p.lesson+1)+(p.id==='student'?' + tutorial':'')+' OK');
-  return {id:p.id,role:p.role,lesson:p.lesson+1,viewport:p.width+'×'+p.height,passed:true,jsErrors:0,writes:0,overflow:false};
+  return {id:p.id,role:p.role,lesson:p.lesson+1,homework:homeworkResult,viewport:p.width+'×'+p.height,passed:true,jsErrors:0,writes:0,overflow:false};
  }finally{await context.close();}
 }
 const firstTimers=[
@@ -496,10 +551,11 @@ try{
   const it=engineerReview(round,checked);
   const critics=criticReview(round,checked);
   const seller=await sellerReview(round,browser);
-  report.rounds.push({round,profiles:checked,firstTimeLearners:noviceCheck,it,critics,seller});
+  const experts=fiveExpertRubrics(round,checked);
+  report.rounds.push({round,profiles:checked,firstTimeLearners:noviceCheck,it,critics,seller,experts});
  }
  report.summary={passed:report.rounds.length===2&&report.rounds.every(r=>r.it.passed&&r.critics.passed&&r.seller.passed),
-  journeys:20,firstTimeJourneys:8,technicalReviews:2,criticalReviews:2,salesReviews:2};
+  journeys:20,homeworkPersonaJourneys:20,automatedExpertPerspectives:5,firstTimeJourneys:8,technicalReviews:2,criticalReviews:2,salesReviews:2};
  assert(report.summary.passed);
  console.log('✓ EXCEL: 20/20 scenariuszy zawodowych + 8/8 prób mama/ksiądz od zera, 2 przeglądy IT, 2 krytyków i 2 audyty sprzedawcy kursu');
 }finally{
