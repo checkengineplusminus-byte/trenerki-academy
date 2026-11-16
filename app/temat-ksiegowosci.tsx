@@ -1,5 +1,5 @@
 import React,{useCallback,useEffect,useRef,useState} from 'react';
-import {ActivityIndicator,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
+import {ActivityIndicator,Image,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
@@ -12,8 +12,17 @@ import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accoun
 import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework-worksheet.js';
 // @ts-ignore — only suggests the correct existing tab; auth remains server-side.
 import {recommendedLabTab,LAB_TAB_NAMES} from '../src/accounting/lab-navigation.js';
+// @ts-ignore — only displays manually curated photos with a verified commercial license.
+import {topicPhotoUrl} from '../src/accounting/topic-media.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
+function SectionPhoto({photo}:{photo:any}){
+ const src=topicPhotoUrl(photo);
+ const [failed,setFailed]=useState(false);
+ useEffect(()=>{setFailed(false);},[src]);
+ if(!src||failed)return null;
+ return <Image accessibilityLabel={photo.alt} source={{uri:src}} onError={()=>setFailed(true)} resizeMode="cover" style={s.sectionPhoto}/>;
+}
 type Answer={exercise_id:string;answer:string};
 type Homework={response:string;version:number;submitted_at:string|null;updated_at:string}|null;
 function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:number;userId:string;initial:string;onSaved:(id:string,answer:string)=>void}){
@@ -183,6 +192,7 @@ export default function TematKsiegowosci(){
    {(m.sections||[]).map((section:any,i:number)=><View key={i} style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>{section.heading}</Text>
     {(section.paragraphs||[]).map((p:string,j:number)=><Text key={j} selectable style={s.body}>{p}</Text>)}
+    <SectionPhoto photo={section.photo}/>
    </View>)}
    {(m.tables||[]).map((table:any,i:number)=><View key={i} style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>{table.title}</Text>
@@ -284,6 +294,7 @@ const s=StyleSheet.create({
  body:{fontSize:16,lineHeight:26,color:'#274734'},small:{fontSize:12,lineHeight:20,color:'#56715b'},
  label:{fontSize:14,fontWeight:'800',color:'#1e422d'},
  card:{borderRadius:15,borderWidth:1,borderColor:'#dbe7d2',padding:18,backgroundColor:'white',gap:13,marginBottom:14},
+ sectionPhoto:{width:'100%',aspectRatio:16/9,borderRadius:12,backgroundColor:'#edf3e8'},
  practice:{padding:20,borderRadius:15,backgroundColor:'#e8f2df',gap:12,marginBottom:14},
  result:{fontSize:16,lineHeight:26,fontWeight:'800',color:'#1b5332',backgroundColor:'#ebf4e3',padding:13,borderRadius:10},
  tableRow:{flexDirection:'row'},cell:{width:210,padding:12,borderBottomWidth:1,borderBottomColor:'#dee8d9',fontSize:14,lineHeight:22,color:'#274734'},
