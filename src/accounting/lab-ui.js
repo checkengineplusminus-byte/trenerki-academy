@@ -1,4 +1,5 @@
 import {ACCOUNTS,EMPTY,uid,money,decimal,cents,scaled,invoiceTotals,expectedInvoiceLines,journalTotals,balanceReport,inspect,reverseJournal,parseBankCSV,BANK_TEMPLATE,escapeHTML as e,invoiceHTML} from './lab-core.js';
+import {normalizeLabTab} from './lab-navigation.js';
 import {CLASS_KINDS,readScenario,readScenarioAnswers,checkScenarioAnswer,withScenarioAnswer,scenarioSummary,readBankExercise,withBankExercise,checkBankExercise,readJournalPractice,readJournalAttempts,withJournalAttempt,checkJournalAttempt,journalPracticeSummary,journalClosingPreview,auditMonthWorkflow,inspectReferenceMonth,scenarioBankCSV} from './simulator-core.js';
 import {PERSONNEL_IDS,PERSONNEL_FLAGS,readPersonnelCases,withPersonnelCase,personnelDraftReview} from './personnel-practice.js';
 import {PAYROLL_FIELDS,readPayrollPractices,withPayrollPractice,payrollReview,payrollPeriodSummary,payrollBankMatch,bankRowAvailableForInvoice,payrollJournalPreview,payrollJournalDraft,payrollLifecycleChecklist} from './payroll-practice.js';
@@ -20,8 +21,8 @@ const input=(group,key,label,value,type='text',extra='')=>`<div><label for="${gr
 const select=(group,key,label,value,options)=>`<div><label for="${group}-${key}">${e(label)}</label><select id="${group}-${key}" data-group="${group}" data-field="${key}">${options.map(([v,n])=>`<option value="${e(v)}" ${v===value?'selected':''}>${e(n)}</option>`).join('')}</select></div>`;
 const button=(action,label,id='',cls='')=>`<button type="button" data-action="${action}" data-id="${e(id)}" class="${cls}">${e(label)}</button>`;
 const download=(name,text,type='application/json')=>{const url=URL.createObjectURL(new Blob([text],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
-export function mountLab(root,db){
- let disposed=false,user=null,workspaces=[],ws=null,tab='start',busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null,conflictSnapshot=null,backupPreview=null;
+export function mountLab(root,db,initialTab='start'){
+ let disposed=false,user=null,workspaces=[],ws=null,tab=normalizeLabTab(initialTab),busy=false,canWrite=false,status='Sprawdzam zapisane biura…',error='',preview=null,history=[],answer='',drafts={},localWarning='',scenario=null,scenarioDoc='D01',scenarioError='',bankDraft=null,journalDoc='D01',journalDrafts={},hrSelected='P01',hrDraft=null,payrollDraft=null,conflictSnapshot=null,backupPreview=null;
  const key=()=>`trenerki-lab-draft-v1:${user?.id}:${ws?.id}`;
  const trainingPeriod=()=>typeof scenario?.month==='string'&&/^\d{4}-(0[1-9]|1[0-2])$/.test(scenario.month)?scenario.month:'2026-11';
  function blankDrafts(){return {invoice:invBlank(ws.name,'sale',ws.state.invoices.filter(i=>i.kind==='sale').length+1,trainingPeriod()),journal:journalBlank(trainingPeriod()),match:{bank_id:'',invoice_id:'',amount:''},question:{text:''}};}

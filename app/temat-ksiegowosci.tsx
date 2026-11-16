@@ -10,6 +10,8 @@ import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accounting/homework-core.js';
 // @ts-ignore — pure CSV template; no answers, private records, or keys are exported.
 import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework-worksheet.js';
+// @ts-ignore — only suggests the correct existing tab; auth remains server-side.
+import {recommendedLabTab,LAB_TAB_NAMES} from '../src/accounting/lab-navigation.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
 type Answer={exercise_id:string;answer:string};
@@ -197,7 +199,11 @@ export default function TematKsiegowosci(){
    {m.practice&&<View style={s.practice}>
     <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
-    <Link href="/biuro-ksiegowe" style={s.link}>Otwórz biuro ćwiczeniowe</Link>
+    <Link href={{pathname:'/biuro-ksiegowe',params:{tab:recommendedLabTab(topic)}}} style={s.link}>
+     Otwórz ćwiczenie: {LAB_TAB_NAMES[recommendedLabTab(topic)]}
+    </Link>
+    {[54,55,98].includes(lesson.topic_no)&&<Link href="/majatek-ksiegowy" style={s.link}>Otwórz kartotekę środków trwałych</Link>}
+    {[24,47,48].includes(lesson.topic_no)&&<Link href="/formularze-ksiegowego" style={s.link}>Otwórz ćwiczenia z formularzami</Link>}
     <Text style={s.label}>Zrób zadanie również we własnym Excelu</Text>
     <Text style={s.small}>1. Pobierz arkusz z poleceniem i kolumnami dopasowanymi do tego działu. 2. Otwórz CSV w Excelu, Arkuszach Google lub LibreOffice. 3. Uzupełnij własne obliczenia, wykonaj kontrolę i zapisz plik na urządzeniu. 4. Opisz rozwiązanie poniżej i oddaj pracę domową na koncie.</Text>
     {Platform.OS==='web'&&<Pressable accessibilityRole="button" onPress={downloadHomeworkWorksheet} style={s.button}>
