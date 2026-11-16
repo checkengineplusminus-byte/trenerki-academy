@@ -3,7 +3,7 @@ import {ActivityIndicator,Linking,Pressable,ScrollView,StyleSheet,Text,TextInput
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
-import {checkExercise,sourceURL} from '../src/accounting/reader-core.js';
+import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/reader-core.js';
 // @ts-ignore — same read-only progress rules as the 100-topic programme.
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 // @ts-ignore — pure homework validation; authority remains the Supabase RPC.
@@ -208,7 +208,7 @@ export default function TematKsiegowosci(){
     {(m.exercises||[]).map((e:any)=><Task key={e.id} exercise={e} topicNo={lesson.topic_no} userId={userId} initial={answers[e.id]||''} onSaved={(id,answer)=>setAnswers(old=>({...old,[id]:answer}))}/>)}
    </View>
    {(m.glossary||[]).length>0&&<View style={s.card}><Text accessibilityRole="header" style={s.h2}>Słowniczek od zera</Text>
-    {m.glossary.map((g:any,i:number)=><View key={i} style={s.gloss}><Text style={s.label}>{g.term}</Text><Text style={s.body}>{g.meaning}</Text></View>)}
+    {m.glossary.map((g:any,i:number)=><View key={i} style={s.gloss}><Text style={s.label}>{g.term}</Text><Text style={s.body}>{glossaryExplanation(g)}</Text></View>)}
    </View>}
    {(m.takeaways||[]).length>0&&<View style={s.card}><Text style={s.h2}>Najważniejsze do zapamiętania</Text>
     {m.takeaways.map((v:string,i:number)=><Text key={i} style={s.body}>{i+1}. {v}</Text>)}
