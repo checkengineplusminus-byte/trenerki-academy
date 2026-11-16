@@ -265,8 +265,37 @@ test('Czytnik tematu wymaga zapisania wszystkich poprawnych zadań przed przycis
  const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
  assert.ok(code.includes('onSaved(exercise.id,answer);'));
  assert.ok(code.includes('setAnswers(old=>({...old,[id]:answer}))'));
- assert.ok(code.includes('const nextReady=sectionProgress?.passed===true;'));
+ assert.ok(code.includes('const nextReady=sectionProgress?.passed===true&&hasHomework;'));
  assert.ok(code.includes('{nextReady&&topic!==null&&topic<100&&'));
  assert.ok(code.includes('{nextReady&&topic===100&&'));
  assert.ok(!code.includes("supabase.from('ta_certificates').insert"));
+});
+
+import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion,homeworkProgress} from '../src/accounting/homework-core.js';
+test('Zadania domowe: nie wolno uznać pustej pracy lub samego szkicu za oddanie',()=>{
+ const words='Moja analiza dokumentów i obliczeń. '.repeat(5);
+ assert.equal(homeworkCanSubmit(words),true);
+ assert.equal(homeworkCanSubmit('krótki wynik'),false);
+ assert.equal(homeworkSubmitted({version:1,response:words,submitted_at:null}),false);
+ assert.equal(homeworkSubmitted({version:1,response:words,submitted_at:'2026-11-16T14:00:00Z'}),true);
+ assert.equal(homeworkSubmitted({version:2,response:'krótki wynik',submitted_at:'2026-11-16T14:00:00Z'}),false);
+ assert.equal(homeworkVersion({version:1}),1);
+ assert.equal(homeworkVersion(null),null);
+});
+test('Zadania domowe: 100 tematów bez podwójnego naliczania i bez fikcyjnego dyplomu',()=>{
+ const txt='Przeanalizowano wszystkie fikcyjne dokumenty, zapisano rachunek i wnioski. '.repeat(3);
+ const accepted={topic_no:7,version:1,response:txt,submitted_at:'2026-11-16T14:00:00Z'};
+ assert.deepEqual(homeworkProgress([accepted,accepted,{topic_no:8,version:1,response:txt,submitted_at:null}],100),
+  {submitted:1,total:100,topics:[7]});
+ assert.equal(homeworkProgress(null,100),null);
+});
+test('Praktyka 100 tematów jest w czytniku, zapisywana przez RPC CAS, bez obejścia sesji',()=>{
+ const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
+ assert.ok(code.includes("supabase.rpc('ta_accounting_core_homework_save'"));
+ assert.ok(code.includes("p_expected_version:homeworkVersion(homework)"));
+ assert.ok(code.includes("supabase.from('ta_accounting_core_homework_v3')"));
+ assert.ok(code.includes("homeworkText===homework?.response"));
+ assert.ok(code.includes("const nextReady=sectionProgress?.passed===true&&hasHomework;"));
+ assert.ok(!code.includes("supabase.from('ta_accounting_core_homework_v3').insert"));
+ assert.ok(!code.includes("supabase.from('ta_accounting_core_homework_v3').update"));
 });
