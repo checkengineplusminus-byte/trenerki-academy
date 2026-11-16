@@ -45,7 +45,14 @@ async function stubProduction(page,attempts){
    if(body.action==='attempt'&&body.mode==='case'){
     const l=lessons.find(x=>x.lesson_no===body.lesson_no);
     const correct=!!l&&body.selected_index===l.material.learning.correct;
-    attempts.push({lesson:body.lesson_no,index:body.selected_index,correct});
+    attempts.push({lesson:body.lesson_no,mode:'case',index:body.selected_index,correct});
+    return response({ok:true,correct});
+   }
+   if(body.action==='attempt'&&body.mode==='keyboard'){
+    const l=lessons.find(x=>x.lesson_no===body.lesson_no);
+    const declared=!!l?.material?.shortcuts?.some(x=>x.combo===body.active_combo);
+    const correct=declared&&body.active_combo===body.selected_combo;
+    attempts.push({lesson:body.lesson_no,mode:'keyboard',active:body.active_combo,selected:body.selected_combo,correct});
     return response({ok:true,correct});
    }
    return response({ok:true,history:[],opening:'Pomoc testowa',can_reply:true});
@@ -84,6 +91,32 @@ async function auditVisual(page,no){
  await lab.getByRole('button',{name:'Sprawdź moją analizę'}).click();
  await lab.getByTestId('excel-visual-feedback').filter({hasText:/Zgadza się/}).waitFor();
 }
+async function auditKeyboard(page,authored){
+ const shortcuts=authored?.material?.shortcuts||[];
+ if(!shortcuts.length)return 0;
+ assert.equal(shortcuts.length,5,'Sprawdź komplet pięciu skrótów w każdej lekcji 11–18');
+ const panel=page.getByText('Skróty i polecenia z tej lekcji',{exact:true}).locator('..').locator('..');
+ await panel.waitFor();
+ for(const shortcut of shortcuts){
+  await panel.getByRole('button',{name:shortcut.combo+' · '+shortcut.label}).click();
+  const quiz=panel.getByText('SPRAWDŹ WIEDZĘ',{exact:true}).locator('..');
+  await quiz.waitFor();
+  const options=quiz.getByRole('button');
+  assert.equal(await options.count(),3,'3 alternatywy do rozpoznania '+shortcut.combo);
+  let wrong=null,correct=null;
+  for(let index=0;index<3;index++){
+   const button=options.nth(index),text=await button.innerText();
+   if(text.includes(shortcut.combo+' · '+shortcut.label))correct=button;
+   else if(wrong===null)wrong=button;
+  }
+  assert(correct&&wrong,'Brak poprawnego lub niepoprawnego przycisku '+shortcut.combo);
+  await wrong.click();
+  await quiz.getByText('Porównaj opis działania z wybranym skrótem i spróbuj ponownie.').waitFor();
+  await correct.click();
+  await quiz.getByText('Wynik zapisany.').waitFor();
+ }
+ return shortcuts.length;
+}
 async function auditBonus(page){
  const lib=page.getByTestId('excel-encyclopedia');
  await lib.waitFor();
@@ -113,7 +146,7 @@ async function auditScreen(browser,round){
  const page=await context.newPage(),attempts=[],errors=[];
  page.setDefaultTimeout(18000);
  page.on('pageerror',error=>errors.push(error.message));
- let missionCount=0,caseCount=0,bonusCount=0,visualCount=0;
+ let missionCount=0,caseCount=0,bonusCount=0,visualCount=0,keyboardCount=0;
  try{
   await stubProduction(page,attempts);
   for(const m of missions){
@@ -151,6 +184,7 @@ async function auditScreen(browser,round){
    await card.getByRole('button').filter({hasText:authored.options[authored.correct]}).first().click();
    await card.getByText('✓ Poprawna odpowiedź. Zapisano wynik.').waitFor();
    caseCount++;
+   keyboardCount+=await auditKeyboard(page,lessons[no]);
 
    if(visualLessons.has(no)){await auditVisual(page,no);visualCount++;}
    if(no===0)bonusCount=await auditBonus(page);
@@ -160,12 +194,17 @@ async function auditScreen(browser,round){
    console.log('✓ '+(mobile?'telefon':'desktop')+' · lekcja '+(no+1)+'/30: misja + quiz'+(visualLessons.has(no)?' + wykres/pivot':''));
   }
   assert.equal(missionCount,30);assert.equal(caseCount,30);assert.equal(bonusCount,12);assert.equal(visualCount,8);
-  assert.equal(attempts.length,60,'Wrong and correct attempts for every quiz');
-  assert.equal(attempts.filter(x=>x.correct).length,30);
-  assert.equal(attempts.filter(x=>!x.correct).length,30);
+  assert.equal(keyboardCount,40,'Osiem lekcji po pięć skrótów');
+  const cases=attempts.filter(x=>x.mode==='case'),keys=attempts.filter(x=>x.mode==='keyboard');
+  assert.equal(cases.length,60,'Wrong and correct attempts for every case quiz');
+  assert.equal(cases.filter(x=>x.correct).length,30);
+  assert.equal(cases.filter(x=>!x.correct).length,30);
+  assert.equal(keys.length,80,'Wrong and correct attempts for every keyboard quiz');
+  assert.equal(keys.filter(x=>x.correct).length,40);
+  assert.equal(keys.filter(x=>!x.correct).length,40);
   assert.deepEqual(errors,[],'No JS errors in the 30-lesson audit');
   return {viewport:mobile?'390×844 mobile':'1365×820 desktop',
-   missions:missionCount,cases:caseCount,bonus:bonusCount,visual:visualCount,attempts:attempts.length,passed:true};
+   missions:missionCount,cases:caseCount,bonus:bonusCount,visual:visualCount,keyboard:keyboardCount,attempts:attempts.length,passed:true};
  }finally{await context.close();}
 }
 const browser=await chromium.launch({headless:true});
@@ -173,7 +212,7 @@ const report={suite:'Excel wszystkie lekcje',source:'local authored curriculum, 
 try{
  for(let round=1;round<=2;round++)report.results.push(await auditScreen(browser,round));
  assert(report.results.every(r=>r.passed));
- console.log('✓ EXCEL: 60/60 misji, 60/60 quizów, 24/24 bonusów, 16/16 wykresów/pivotów na telefonie i desktopie');
+ console.log('✓ EXCEL: 60/60 misji, 60/60 quizów, 80/80 skrótów, 24/24 bonusów, 16/16 wykresów/pivotów na telefonie i desktopie');
 }finally{
  await browser.close();
  writeFileSync('/tmp/trenerki-excel-all-lessons.json',JSON.stringify(report,null,2));
