@@ -187,6 +187,7 @@ Deno.serve(async(req)=>{
  if(action==='purchase_course'){
   const slug=String(body?.course_slug||'');
   if(!courseValid(slug))return reply({error:'invalid_course'},400);
+  if(slug==='ksiegowosc-od-podstaw'&&body?.development_version_acknowledged!==true)return reply({error:'development_version_consent_required'},400);
   if(body?.accepted_terms!==true||body?.immediate_content_consent!==true)return reply({error:'consent_required'},400);
   if(body?.terms_version!==termsVersion||!Number.isSafeInteger(body?.expected_price_grosze)||!Number.isSafeInteger(body?.expected_credit_grosze))return reply({error:'quote_changed'},409);
   if(!Deno.env.get('RESEND_API_KEY')||!Deno.env.get('RESEND_FROM_EMAIL'))return reply({error:'email_not_configured'},503);
@@ -221,7 +222,8 @@ Deno.serve(async(req)=>{
    'metadata[ta_credit_hold_id]':hold,
    'metadata[terms_version]':termsVersion,
    'metadata[terms_accepted_at]':new Date().toISOString(),
-   'metadata[immediate_content_consent]':'true'
+   'metadata[immediate_content_consent]':'true',
+   'metadata[development_version_acknowledged]':String(slug==='ksiegowosc-od-podstaw'&&body?.development_version_acknowledged===true)
   });
   try{
    const session=await checkout(secret,params);
