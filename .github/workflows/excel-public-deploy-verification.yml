@@ -1,0 +1,61 @@
+name: TRENERKI — verify public Excel homework release
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/excel-public-deploy-verification.yml'
+      - 'public/academy/assets/excel-homework-*.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public_excel_release:
+    name: Check actual trainerki.com deployment, not just GitHub build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Verify live HTTPS, homework files and specific release contents
+        shell: bash
+        run: |
+          set -uo pipefail
+          BASE="https://trenerki.com"
+          echo "Checking live domain: $BASE"
+          echo "This is a real public HTTP check; it is not a synthetic Expo test."
+          success=0
+          for attempt in $(seq 1 16); do
+            echo "Attempt $attempt/16 — public deployment probe"
+            if curl -fsSL --connect-timeout 12 --max-time 30 "$BASE/academy/assets/excel-homework-basics.csv" -o /tmp/trenerki-basics.csv \
+              && curl -fsSL --connect-timeout 12 --max-time 30 "$BASE/academy/assets/excel-homework-codes.csv" -o /tmp/trenerki-codes.csv \
+              && curl -fsSL --connect-timeout 12 --max-time 30 "$BASE/academy/kursy/excel-skroty.html" -o /tmp/trenerki-excel-page.html; then
+              if python3 -c '
+          from pathlib import Path
+          b=Path("/tmp/trenerki-basics.csv").read_text(encoding="utf-8-sig")
+          c=Path("/tmp/trenerki-codes.csv").read_text(encoding="utf-8-sig")
+          page=Path("/tmp/trenerki-excel-page.html").read_text(encoding="utf-8")
+          assert "Farba;Materiały;2;350;" in b, "old or incorrect starter file"
+          assert "00073;Klej 5 kg" in c, "starter file does not preserve leading zeroes"
+          assert "excel-skroty" in page.lower(), "missing Excel course landing"
+          print("OK: two new homework CSV files and Excel landing are publicly accessible.")
+          '; then
+                success=1
+                break
+              fi
+            fi
+            if [ "$attempt" -lt 16 ]; then sleep 15; fi
+          done
+          if [ "$success" -ne 1 ]; then
+            echo "::error::Public trenerki.com does NOT expose the validated Excel homework files. GitHub build status alone is not proof of Expo deployment. Inspect Expo EAS Hosting workflow, GitHub integration, custom domain and DNS."
+            {
+              echo "## TRENERKI Excel public deployment — NOT CONFIRMED"
+              echo "Unable to verify /academy/assets/excel-homework-basics.csv and /academy/assets/excel-homework-codes.csv on the production domain."
+              echo "Check EAS Hosting → Workflows → deploy-web.yml, production alias and trainerki.com domain settings."
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+          {
+            echo "## TRENERKI Excel public deployment — VERIFIED"
+            echo "Verified over HTTPS from GitHub runner: both homework starter CSVs (including original data and leading-zero codes) and the Excel landing page."
+            echo "This confirms public static assets. Authenticated lesson UI and user XLSX files still require separate acceptance tests."
+          } >> "$GITHUB_STEP_SUMMARY"
