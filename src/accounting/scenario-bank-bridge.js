@@ -49,7 +49,7 @@ export function inspectScenarioBankBridge(state,rawScenario,period=null){
   const source=found[0];
   if(found.length!==1||source?.date!==doc.date||
      source?.amount_cents!==sign(doc)*amount||
-     source?.description!==doc.id+' — '+doc.title){
+     source?.description!==(doc.id+' — '+doc.title).replace(/[\r\n]/g,' ').slice(0,245)){
    fail('scenario_bank_csv_missing_duplicate_or_mismatch');continue;
   }
   const entries=posted.filter(j=>j?.source_type==='bank'&&j.source_id===doc.id);
