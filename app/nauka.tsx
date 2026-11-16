@@ -26,6 +26,7 @@ import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrienta
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
 import AutoCADHomework from '../src/AutoCADHomework';
+import AutoCADPrecisionGuide from '../src/AutoCADPrecisionGuide';
 import AutoCADReferenceGuide from '../src/AutoCADReferenceGuide';
 import CadWorkspace from '../src/CadWorkspace';
 import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
@@ -413,6 +414,7 @@ export default function Learning(){
     <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
    </View>
    {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
+   {slug==='autocad-skroty'&&<AutoCADPrecisionGuide lessonNo={module}/>}
    {slug==='autocad-skroty'&&<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>}
    {slug==='autocad-skroty'&&<AutoCADHomework key={'autocad-homework-'+module} lessonNo={module} userId={userId}/>}
    {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
