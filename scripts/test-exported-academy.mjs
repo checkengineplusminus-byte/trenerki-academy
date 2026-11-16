@@ -15,6 +15,9 @@ function required(relative){
 }
 const academy=required('academy/index.html');
 required('academy/anielka-search.js');
+const accountingOffer=required('academy/ksiegowosc-od-podstaw.html');
+assert.match(accountingOffer,/Wczesny dostęp/i);
+assert.match(academy,/acct-feature-title/);
 required('academy/anielka-search.css');
 required('academy/footer.css');
 required('academy/app-footer.css');

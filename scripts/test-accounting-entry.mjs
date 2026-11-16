@@ -213,7 +213,7 @@ test('Ekran programu nie myli RLS z brakiem nowego materiału',()=>{
  assert.match(code,/access\.data\?\.is_editor===true/);
  assert.match(code,/const coverageKnown=materialCoverageKnown\(isEditor,materialsReady\)/);
  assert.match(code,/filter==='missing'&&!coverageKnown/);
- assert.match(code,/Nieudostępniona wersja nie oznacza braku opracowania/);
+ assert.match(code,/Wczesny dostęp pokazuje materiały wersji rozwojowej/);
  assert.doesNotMatch(code,/materialsReady\?total-draftCount/);
 });
 
@@ -315,4 +315,35 @@ test('Program księgowości pokazuje prace domowe i pierwszy niezakończony tema
  assert.ok(ui.includes(".eq('user_id',session.data.user.id)"));
  assert.ok(ui.includes('firstUnfinishedPracticeTopic(practice,homeworks)'));
  assert.ok(ui.includes('homeworks.submitted}/{homeworks.total'));
+});
+
+
+test('Księgowość: wczesny dostęp jawnie opisany w katalogu, czytniku i płatności',()=>{
+ const file=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+ const page=readFileSync(new URL('../public/academy/ksiegowosc-od-podstaw.html',import.meta.url),'utf8');
+ const checkout=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
+ const stripe=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
+ const credit=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
+ assert.match(file,/acct-feature-title/);
+ assert.match(file,/w trakcie recenzji/);
+ assert.match(page,/100 tematów/);
+ assert.match(page,/nie gwarantuje dyplomu/);
+ assert.match(checkout,/development_version_acknowledged:developmentReady/);
+ assert.match(stripe,/development_version_consent_required/);
+ assert.match(credit,/development_version_consent_required/);
+});
+
+
+test('Płatność wersji rozwojowej wymaga potwierdzenia i potwierdzenie e-mail jest jednoznaczne',()=>{
+ const checkout=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
+ const wallet=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
+ const webhook=readFileSync(new URL('../supabase/functions/ta-stripe-webhook/index.ts',import.meta.url),'utf8');
+ const view=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
+ for(const src of [checkout,wallet,webhook])assert.match(src,/development_version_acknowledged/);
+ assert.match(checkout,/development_version_consent_required/);
+ assert.match(wallet,/development_version_consent_required/);
+ assert.match(webhook,/accountingEarlyAccessNotice/);
+ assert.match(webhook,/nie.*nadają kwalifikacji/i);
+ assert.match(view,/developmentReady/);
+ assert.match(view,/accountingEarlyAccess/);
 });

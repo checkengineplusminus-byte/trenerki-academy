@@ -161,7 +161,7 @@ export default function ProgramKsiegowosci(){
   </View>
   <Text style={s.eyebrow}>TRENERKI · PROGRAM I STAN REALIZACJI</Text>
   <Text accessibilityRole="header" style={s.h1}>100 tematów księgowości</Text>
-  <Text style={s.body}>Program liczy 100 tematów w 10 działach. Liczniki opracowań są oddzielone od odbioru. Wersje do recenzji są widoczne tylko w uprawnionym podglądzie; ich brak w odczycie kursanta nie oznacza braku materiałów w bazie.</Text>
+  <Text style={s.body}>Program liczy 100 tematów w 10 działach. Liczniki opracowań są oddzielone od odbioru. W ramach wczesnego dostępu nabywca widzi także materiały przygotowane przed recenzją. Status „do recenzji” oznacza wersję rozwojową, a nie zweryfikowaną poradę księgową lub podatkową.</Text>
   <Pressable accessibilityRole="button" onPress={()=>setReload(x=>x+1)} style={s.refresh}>
    <Text style={s.link}>Odśwież stan z bazy</Text>
   </Pressable>
@@ -190,11 +190,11 @@ export default function ProgramKsiegowosci(){
        {nextActual!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextActual)}}} style={s.link}>
         Kontynuuj naukę i pracę domową — temat {nextActual}
        </Link>}
-       <Text style={s.small}>To ćwiczeniowy postęp, nie zaliczenie całego kursu. Niezatwierdzone wersje są tylko do recenzji; dyplom wymaga osobnego procesu.</Text>
+       <Text style={s.small}>To ćwiczeniowy postęp, nie zaliczenie całego kursu. Wersje rozwojowe nie mają jeszcze końcowego odbioru; dyplom wymaga osobnego procesu.</Text>
       </>:<Text style={s.small}>Na tym koncie nie ma jeszcze dostępnych zadań do policzenia. Materiały ukryte przez RLS nie są uznawane za brakujące ani zaliczone.</Text>
     :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
    </View>
-   {!isEditor&&<Text style={s.small}>Odczyt Twojego konta pokazuje tylko udostępnione lekcje. Nieudostępniona wersja nie oznacza braku opracowania. Stan wszystkich szkiców zna wyłącznie widok redakcyjny.</Text>}
+   {!isEditor&&<Text style={s.small}>Wczesny dostęp pokazuje materiały wersji rozwojowej. Każdy temat nadal wymaga osobnego odbioru; wynik ćwiczenia nie potwierdza kwalifikacji.</Text>}
    {isEditor&&materialsReady&&<View style={s.notice}>
     <Text style={s.label}>Zawartość zapisanych nowych opracowań</Text>
     <Text style={s.body}>{assets.sections} części · {assets.examples} przykładów · {assets.exercises} zadań · {assets.tables} tabel · {assets.glossary} haseł słownika.</Text>
