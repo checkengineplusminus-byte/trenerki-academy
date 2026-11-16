@@ -216,3 +216,46 @@ test('Ekran programu nie myli RLS z brakiem nowego materiału',()=>{
  assert.match(code,/Nieudostępniona wersja nie oznacza braku opracowania/);
  assert.doesNotMatch(code,/materialsReady\?total-draftCount/);
 });
+
+
+import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
+test('Postęp 100 tematów: dokładne rozróżnienie poprawnych, błędnych i brakujących odpowiedzi',()=>{
+ const topics=[{topic_no:1,status:'review_needed'},{topic_no:2,status:'complete'}];
+ const materials=[
+  {topic_no:1,material:{exercises:[{id:'a',type:'choice',choices:['X','Y'],correctIndex:1},{id:'b',type:'number',expected:12}]}},
+  {topic_no:2,material:{exercises:[{id:'c',type:'number',expected:0}]}}
+ ];
+ const answers=[{topic_no:1,exercise_id:'a',answer:'1'},{topic_no:1,exercise_id:'b',answer:'11'},{topic_no:2,exercise_id:'c',answer:'0'}];
+ const result=buildCorePracticeProgress(topics,materials,answers,{materialsReady:true,answersReady:true});
+ assert.equal(result.known,true);assert.equal(result.availableTopics,2);
+ assert.equal(result.correctAnswers,2);assert.equal(result.attemptedAnswers,3);
+ assert.equal(result.totalQuestions,3);assert.equal(result.passedTopics,1);
+ assert.equal(result.nextTopic,1);assert.equal(result.byTopic[2].passed,true);
+ assert.equal(result.byTopic[1].passed,false);
+});
+test('Postęp bez odczytu jest nieznany, nie 0%; RLS i ukryte szkice nie dają pozornego zaliczenia',()=>{
+ const topics=[{topic_no:1,status:'review_needed'}];
+ const materials=[{topic_no:1,material:{exercises:[{id:'a',type:'number',expected:5}]}}];
+ const answer=[{topic_no:1,exercise_id:'a',answer:'5'}];
+ assert.equal(buildCorePracticeProgress(topics,materials,answer,{materialsReady:false,answersReady:true}).known,false);
+ assert.equal(buildCorePracticeProgress(topics,materials,answer,{materialsReady:true,answersReady:false}).passedTopics,null);
+ const blocked=buildCorePracticeProgress(topics,[],answer,{materialsReady:true,answersReady:true});
+ assert.equal(blocked.availableTopics,0);assert.equal(blocked.nextTopic,null);
+ assert.deepEqual(blocked.byTopic,{});
+});
+test('Postęp pomija nieznane odpowiedzi i odrzuca niejednoznaczne dane zamiast nadawać komplet',()=>{
+ const topics=[{topic_no:1,status:'review_needed'}];
+ const materials=[{topic_no:1,material:{exercises:[{id:'a',type:'choice',choices:['A','B'],correctIndex:1}]}}];
+ const answers=[{topic_no:1,exercise_id:'a',answer:'1'},{topic_no:1,exercise_id:'a',answer:'0'}];
+ const result=buildCorePracticeProgress(topics,materials,answers,{materialsReady:true,answersReady:true});
+ assert.equal(result.passedTopics,0);assert.equal(result.attemptedAnswers,0);
+ const stale=buildCorePracticeProgress(topics,materials,[{topic_no:1,exercise_id:'removed',answer:'1'}],{materialsReady:true,answersReady:true});
+ assert.equal(stale.correctAnswers,0);assert.equal(stale.byTopic[1].total,1);
+});
+test('Mapa kursu czyta wyłącznie własne odpowiedzi przez RLS, nie wydaje dyplomu',()=>{
+ const ui=readFileSync(new URL('../app/program-ksiegowosci.tsx',import.meta.url),'utf8');
+ assert.ok(ui.includes(".from('ta_accounting_core_answers_v3')"));
+ assert.ok(ui.includes(".eq('user_id',session.data.user.id)"));
+ assert.ok(ui.includes("buildCorePracticeProgress(topics,practiceMaterials,savedAnswers"));
+ assert.ok(!ui.includes("from('ta_certificates').insert"));
+});
