@@ -6,7 +6,7 @@
 export type ExcelMissionSource={
  lesson_no:number;unit:string;expected:string;goal?:string;steps?:string[];
 };
-export type ExcelResponseKind='number'|'percent'|'formula'|'address'|'identifier'|'file'|'name'|'error'|'access';
+export type ExcelResponseKind='number'|'count'|'percent'|'formula'|'address'|'identifier'|'file'|'name'|'error'|'access';
 export type ExcelAnswerResult={correct:boolean;kind:'number'|'formula'|'text'|'empty'|'invalid';message:string};
 export type ExcelAnswerPresentation={
  kind:ExcelResponseKind;title:string;instruction:string;placeholder:string;
@@ -51,13 +51,24 @@ const otherFormula:Record<number,string[]>={
 };
 const formulaIndex=new Set([11,14]);
 const percentIndex=new Set([7,12]);
+const countIndex=new Set([1,28]);
 const addressIndex=new Set([0,2,10]);
 const fileIndex=new Set([8,16]);
 const textLabels:Record<number,ExcelResponseKind>={
  3:'identifier',17:'name',21:'identifier',22:'error',27:'access'
 };
+export function parseExcelResponseCount(raw:string):number|null{
+ const text=String(raw??'').trim().replace(/[\s\u00a0\u202f]+/g,' ').replace(/\s+(?:arkusze|arkuszy|rekordy|rekordów|błędy|błędów|problemy|problemów|sztuki|szt\.)$/iu,'');
+ if(!/^\d+$/.test(text))return null;
+ const n=Number(text);
+ return Number.isSafeInteger(n)&&n>=0?n:null;
+}
 export function excelResponsePresentation(mission:ExcelMissionSource):ExcelAnswerPresentation{
  const i=mission.lesson_no;
+ if(countIndex.has(i))return {kind:'count',title:'Wpisz liczbę policzonych '+(i===1?'arkuszy':'błędów'),
+  instruction:i===1?'Policz karty arkuszy w skoroszycie. Wpisz samą liczbę, np. 3 — bez zł, bez formuły.':
+   'Policz błędne rekordy importu. Wpisz liczbę, np. 4 — bez zł, bez formuły.',
+  placeholder:i===1?'Liczba arkuszy':'Liczba błędnych rekordów',keyboard:'decimal-pad'};
  if(formulaIndex.has(i))return {kind:'formula',title:'Wpisz PEŁNĄ FORMUŁĘ (nie jej wynik)',
   instruction:'To zadanie sprawdza sposób zapisu formuły po skopiowaniu. Zacznij od znaku =, użyj adresów komórek i sprawdź, gdzie potrzebny jest znak $. Nie podawaj samej liczby.',
   placeholder:'Cała formuła zaczynająca się od =',example:i===11?'=A2*B2':'=$B$1*C2',keyboard:'default'};
@@ -104,6 +115,14 @@ export function checkExcelMissionAnswer(mission:ExcelMissionSource,response:stri
   if(approvedOther||fm===formula(expected))return {correct:true,kind:'formula',message:'Dobrze. Zapis formuły i sposób użycia adresów są poprawne.'};
   return {correct:false,kind:raw.startsWith('=')?'formula':'text',
    message:'W tym zadaniu sprawdzamy pełny zapis formuły, a nie liczbę. Zacznij od =; sprawdź adresy, sposób kopiowania i znaki $. '+(i===14?'Stawka w H2 musi pozostać zablokowana jako $H$2.':'Po skopiowaniu formuły adresy powinny wskazywać wiersz 3.')};
+ }
+ if(p.kind==='count'){
+  const count=parseExcelResponseCount(raw);
+  const correct=parseExcelResponseCount(expected);
+  if(count!==null&&correct!==null&&count===correct)return {correct:true,kind:'number',message:'Zgadza się! To właściwa liczba obiektów.'};
+  return {correct:false,kind:count===null?'invalid':'number',message:count===null?
+   'Podaj liczbę policzonych obiektów, np. 3 lub 4. Nie wpisuj zł, procentu, formuły ani samej nazwy.':
+   'Policz jeszcze raz wszystkie odpowiednie wiersze lub karty. To pole wymaga liczby, nie sumy kosztów.'};
  }
  if(p.kind==='number'||p.kind==='percent'){
   if(raw.startsWith('=')){
