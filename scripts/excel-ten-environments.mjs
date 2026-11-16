@@ -254,6 +254,21 @@ async function checkRealHomework(page,p,round){
  const file=await page.request.get(base+href);
  assert.equal(file.status(),200,'CSV download '+p.id);
  const csv=await file.text();assert(csv.length>50&&csv.includes(';'));
+
+ if(assignment.comparisonStarter){
+  const extra=lab.getByTestId('excel-homework-comparison-download');
+  const extraUrl=await extra.getAttribute('href');
+  assert.equal(extraUrl,assignment.comparisonStarter.file);
+  assert.equal((await page.request.get(base+extraUrl)).status(),200,'Comparison CSV unavailable');
+ }
+ if(assignment.bonusStarter){
+  const extra=lab.getByTestId('excel-homework-bonus-download');
+  const extraUrl=await extra.getAttribute('href');
+  assert.equal(extraUrl,assignment.bonusStarter.file);
+  const response=await page.request.get(base+extraUrl);
+  assert.equal(response.status(),200,'Advanced CSV unavailable');
+  assert((await response.text()).includes('PRO-0367'));
+ }
  await answer.fill('TO-NIE-JEST-ODPOWIEDŹ');
  await lab.getByTestId('excel-homework-check').click();
  await lab.getByTestId('excel-homework-feedback').filter({hasText:/Uwaga:/}).waitFor();
