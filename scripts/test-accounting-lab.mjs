@@ -2290,3 +2290,26 @@ test('Uzgodniony bank i dziennik NIE zaliczają osobno 36 dokumentów, kadr i ro
  assert.equal(r.completed,false);
  assert.equal(r.checks.find(c=>c.key==='scenario_bank_ledger').passed,false);
 });
+
+
+test('Początkujący widzi pierwsze trzy realne kroki zamknięcia bez sztucznego zaliczenia',()=>{
+ const result=taxCloseTrainingAudit(EMPTY());
+ assert.equal(result.next_actions[0].key,'company_opening');
+ assert.equal(result.next_actions[1].key,'period');
+ assert.ok(result.next_actions.every(x=>x.instruction&&x.title&&(x.href||x.tab)));
+ assert.equal(result.completed,false);
+ const html=taxCloseTrainingReportHTML(EMPTY());
+ assert.match(html,/Co poprawić w pierwszej kolejności/);
+ assert.match(html,/Karta firmy/);
+ assert.match(html,/NIE WYSŁANO/);
+});
+test('Wspólny fikcyjny miesiąc pokazuje brakujące powiązania, nie cofa zgodnych etapów',()=>{
+ const {manifest,state}=fictionalFullCompanyMonth(),before=JSON.stringify(state);
+ const result=taxCloseTrainingAudit(state,manifest);
+ assert.ok(!result.next_actions.some(x=>x.key==='company_opening'));
+ assert.ok(!result.next_actions.some(x=>x.key==='period'));
+ assert.ok(result.next_actions.some(x=>x.key==='scenario_bank_ledger'));
+ assert.equal(result.ready_for_training_review,false);
+ assert.equal(result.completed,false);
+ assert.equal(JSON.stringify(state),before);
+});

@@ -102,6 +102,9 @@ export function mountLab(root,db){
   const audit=taxCloseTrainingAudit(ws.state,scenario),f=audit.figures,fin=audit.training_result;
   const checks=audit.checks.map(x=>'<tr><td>'+e(x.label)+'</td><td>'+
     (x.passed?'Zgodne w modelu':'Do wykonania')+'</td><td>'+e(x.detail)+'</td></tr>');
+  const important=audit.next_actions.slice(0,3).map(x=>'<li><strong>'+e(x.title)+'</strong> — '+e(x.instruction)+
+    (x.href?'<p><a href="'+e(x.href)+'">Otwórz właściwe miejsce ćwiczenia</a></p>':
+     x.tab?'<p>'+button('tab','Przejdź do ćwiczenia',x.tab)+'</p>':'')+'</li>').join('');
   const issues=audit.issues.map(x=>'<li>'+e(x.code)+' — '+e(x.invoice)+'</li>').join('');
   return '<section class="card"><span class="pill">SZKIC ROZLICZENIA · BEZ WYSYŁKI</span>'+
    '<h2>Jeden miesiąc: kontrola przed KSeF / JPK / UPO</h2>'+
@@ -109,15 +112,18 @@ export function mountLab(root,db){
     e(audit.disclaimer)+'</p>'+
    '<p><strong>Okres ćwiczeniowy:</strong> '+e(audit.period||'nieustalony')+
     ' · <strong>Faktury:</strong> '+audit.source_count+'</p>'+
-   '<div class="stats"><div class="stat">Sprzedaż netto<strong>'+money(f.sale_net_cents)+'</strong></div>'+
-    '<div class="stat">VAT z fikcyjnych faktur sprzedaży<strong>'+money(f.sale_vat_cents)+'</strong></div>'+
-    '<div class="stat">VAT z fikcyjnych faktur zakupu<strong>'+money(f.purchase_vat_cents)+'</strong></div></div>'+
+   '<div class="stats"><div class="stat">Sprzedaż netto<strong>'+formatReviewMoney(f.sale_net_cents)+'</strong></div>'+
+    '<div class="stat">VAT z fikcyjnych faktur sprzedaży<strong>'+formatReviewMoney(f.sale_vat_cents)+'</strong></div>'+
+    '<div class="stat">VAT z fikcyjnych faktur zakupu<strong>'+formatReviewMoney(f.purchase_vat_cents)+'</strong></div></div>'+
    '<p class="notice">Różnica VAT z dokumentów modelu: <strong>'+formatReviewMoney(f.vat_difference_cents)+
     '</strong>. To nie jest deklaracja ani wynik podatkowy bez kwalifikacji prawnej.</p>'+
-   '<p class="'+(audit.vat_ledger.matching?'notice':'error')+'">VAT w dzienniku: 222 — '+money(audit.vat_ledger.sales_cents)+
-    ', 221 — '+money(audit.vat_ledger.purchases_cents)+
+   '<p class="'+(audit.vat_ledger.matching?'notice':'error')+'">VAT w dzienniku: 222 — '+formatReviewMoney(audit.vat_ledger.matching?audit.vat_ledger.sales_cents:null)+
+    ', 221 — '+formatReviewMoney(audit.vat_ledger.matching?audit.vat_ledger.purchases_cents:null)+
     '. '+(audit.vat_ledger.matching?'Kwoty zgodne z fakturami w modelu.':'Różnica z fakturami — nie przechodź do recenzji.')+
     ' Kwalifikację podatkową sprawdza osobno księgowy.</p>'+
+   '<h3>Od czego zacząć? Twoje trzy najbliższe kroki</h3>'+
+   (important?'<ol>'+important+'</ol><p class="muted">Wszystkich nierozwiązanych kontroli: '+audit.next_actions.length+'. Pełna lista jest poniżej.</p>':
+    '<p class="notice">Kontrole modelu zaliczone; nie jest to odbiór księgowy ani wysyłka do urzędu.</p>')+
    '<h3>Wynik i płynność — jeden okres fikcyjnej firmy</h3>'+
    '<p class="muted">Przychody z konta 700, koszty z kont 400/401/404/761. Przepływy z CSV; '+
     'bez salda otwarcia, kwalifikacji podatkowej i rzeczywistej wysyłki. '+
