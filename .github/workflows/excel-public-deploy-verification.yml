@@ -5,6 +5,11 @@ on:
     paths:
       - '.github/workflows/excel-public-deploy-verification.yml'
       - 'public/academy/assets/excel-homework-*.csv'
+      - 'scripts/verify-excel-public-ui.mjs'
+      - 'src/ExcelRealHomework.tsx'
+      - 'src/LessonIllustratedSections.tsx'
+      - 'content/excel-real-homework-30.json'
+      - '.eas/workflows/deploy-web.yml'
   workflow_dispatch:
 
 permissions:
@@ -16,6 +21,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 9
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - name: Verify live HTTPS, homework files and specific release contents
         shell: bash
         run: |
@@ -59,3 +68,7 @@ jobs:
             echo "Verified over HTTPS from GitHub runner: both homework starter CSVs (including original data and leading-zero codes) and the Excel landing page."
             echo "This confirms public static assets. Authenticated lesson UI and user XLSX files still require separate acceptance tests."
           } >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify live Expo JS bundle contains the homework lesson UI
+        shell: bash
+        run: node scripts/verify-excel-public-ui.mjs
+
