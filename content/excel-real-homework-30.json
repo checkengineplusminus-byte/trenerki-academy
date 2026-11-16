@@ -87,7 +87,7 @@
       "expected": "4",
       "kind": "count",
       "checks": [
-        "Są dokładnie cztery karty",
+        "Skoroszyt ma dokładnie cztery karty: Styczeń, Luty, Marzec i Podsumowanie.",
         "Każda karta ma unikatową nazwę",
         "Po ponownym otwarciu karty i ich nazwy nadal istnieją"
       ],
@@ -124,7 +124,7 @@
       "checks": [
         "Praca odbyła się w trzecim wierszu danych — arkuszowy wiersz 4",
         "W E4 jest formuła, a nie wynik wpisany ręcznie",
-        "Adres w polu nazwy jest E4"
+        "Po kliknięciu wyniku dla Transportu pole Nazwa pokazuje E4."
       ],
       "mistakes": [
         "Nie pomyl czwartego wiersza arkusza z czwartym produktem.",
@@ -157,7 +157,7 @@
       "expected": "00073",
       "kind": "identifier",
       "checks": [
-        "Kod Klej 5 kg ma pięć znaków",
+        "Kod przy pozycji Klej 5 kg nadal ma pięć znaków, w tym zera.",
         "Zera początkowe nie znikają po zapisaniu",
         "Wartość jest identyfikatorem, a nie liczbą do sumowania"
       ],
@@ -192,7 +192,7 @@
       "expected": "465",
       "kind": "number",
       "checks": [
-        "C3 nadal wynosi 3",
+        "W komórce ilości C3 nadal widzisz liczbę 3 sztuki.",
         "D3 ma wartość 155 jako liczbę, nie napis z dopiskiem zł",
         "E3 jest formułą, a jej wynik wynosi 465"
       ],
@@ -227,8 +227,8 @@
       "expected": "1400",
       "kind": "number",
       "checks": [
-        "W E2 znajduje się =C2*D2",
-        "C2 zostało zmienione na 4",
+        "Po kliknięciu E2 pasek formuły wyświetla =C2*D2.",
+        "Ilość w komórce C2 zmieniła się na 4 sztuki.",
         "Wynik jest obliczany automatycznie, bez ręcznego wpisu do E2"
       ],
       "mistakes": [
@@ -298,7 +298,7 @@
       "kind": "percent",
       "checks": [
         "W pasku formuły liczba wynosi 0,375",
-        "Na ekranie pojawia się 37,5%",
+        "Po ustawieniu formatu procentowego B2 pokazuje 37,5%.",
         "Zmienił się format, nie wartość używana przez formuły"
       ],
       "mistakes": [
@@ -323,7 +323,7 @@
       "goal": "Wybrać format zachowujący formuły i wiele arkuszy",
       "source": "basics",
       "steps": [
-        "Otwórz CSV i wpisz w E2 formułę =C2*D2.",
+        "Otwórz startowy plik CSV w Excelu, upewnij się, że C2 i D2 są liczbami, a następnie wprowadź w E2 formułę =C2*D2.",
         "Zapisz jako XLSX w nowym pliku Trenerki-Excel-09.xlsx.",
         "Sprawdź, czy Excel zachował formułę po ponownym otwarciu.",
         "Zapisz jedną kopię wybranego arkusza jako CSV i zobacz różnice: plik CSV nie przechowuje wielu arkuszy ani wszystkich formatowań.",
@@ -367,7 +367,7 @@
       "expected": "1585",
       "kind": "number",
       "checks": [
-        "Farba kosztuje 1050",
+        "Po zmianie ilości farba kosztuje dokładnie 1050 PLN.",
         "Taśma nadal kosztuje 360, transport 175",
         "Suma trzech pozycji wynosi 1585"
       ],
@@ -428,7 +428,7 @@
       "goal": "Skopiować E2 do E3 bez zamiany wzoru na sztywną wartość",
       "source": "basics",
       "steps": [
-        "Importuj źródło, w E2 wpisz =C2*D2.",
+        "Zaimportuj plik startowy przez Dane → Z tekstu/CSV, po czym w komórce E2 wpisz prawidłową formułę =C2*D2.",
         "Skopiuj E2 przez Ctrl+C, zaznacz E3 i wklej Ctrl+V.",
         "Kliknij E3, a następnie spójrz w pasek formuły (fx).",
         "Sprawdź, czy numery wierszy w nowej formule odpowiadają trzeciemu wierszowi.",
@@ -467,7 +467,7 @@
         "Wybierz Formatowanie komórek → Walutowe lub Księgowe → PLN.",
         "Sprawdź, czy komórka pokazuje walutę, a formuła =C2*D2 nadal działa.",
         "W innej komórce wpisz =D2*2 i zatwierdź Enter.",
-        "Sprawdź wynik E2 i zapisz jako XLSX."
+        "Sprawdź w E2 wynik wyliczony przez formułę i zapisz skoroszyt w edytowalnym formacie XLSX, nie jako CSV."
       ],
       "expected": "350",
       "kind": "number",
@@ -499,7 +499,7 @@
       "source": "basics",
       "steps": [
         "Przygotuj formuły E2:E4 i policz początkowy koszt trzech pozycji.",
-        "Wstaw nowy wiersz 5 przed pozycją Klej.",
+        "Zaznacz cały wiersz 5 z pozycją Klej, wstaw nad nim nowy wiersz, a następnie sprawdź przesunięcie adresów.",
         "Do nowego wiersza wpisz dodatkową usługę: ilość 1 i cenę 125.",
         "Upewnij się, że formuła SUMA obejmuje wszystkie cztery pozycje E2:E5.",
         "Zapisz finalną sumę i zweryfikuj ją przez niezależne dodawanie."
@@ -508,7 +508,7 @@
       "kind": "number",
       "checks": [
         "Do listy trzech pozycji dopisano nowy koszt 125",
-        "Formuła obejmuje E2:E5",
+        "Zakres sumowania obejmuje E2, E3, E4 oraz nowy E5.",
         "Łączna wartość 700+360+150+125 wynosi 1335"
       ],
       "mistakes": [
@@ -537,14 +537,14 @@
         "Do H1 wpisz VAT, a do H2 liczbę 0,23 i nadaj jej format 23%.",
         "W F1 wpisz VAT w PLN, w F2 wpisz =E2*$H$2.",
         "Skopiuj F2 do F3 i sprawdź, że odwołanie do H2 nie przesunęło się.",
-        "Odczytaj VAT dla farby i zapisz XLSX."
+        "Odczytaj kwotę VAT dla farby w komórce F2, sprawdź formułę w pasku fx i zachowaj cały skoroszyt jako XLSX."
       ],
       "expected": "161",
       "kind": "number",
       "checks": [
         "H2 zawiera liczbę 0,23, nie tekst „23%”",
         "Formuła w F2 używa bezwzględnego $H$2",
-        "700 × 0,23 = 161 PLN"
+        "Kwota VAT dla farby wynosi 161 PLN: 700 × 0,23."
       ],
       "mistakes": [
         "Nie myl znaku $ w adresie z symbolem waluty.",
@@ -612,9 +612,9 @@
       "expected": "1",
       "kind": "count",
       "checks": [
-        "Podgląd pokazuje jedną stronę",
+        "Podgląd wydruku pokazuje dokładnie jedną stronę dla A1:E6.",
         "Wszystkie kolumny A–E i nazwy produktów są widoczne",
-        "Zachowano XLSX i eksport PDF"
+        "Zapisano dwa osobne pliki: edytowalny XLSX i PDF do podglądu."
       ],
       "mistakes": [
         "Nie drukuj przed sprawdzeniem podglądu i szerokości kolumn.",
@@ -647,7 +647,7 @@
       "expected": "2026-03",
       "kind": "text",
       "checks": [
-        "Styczeń ma 8760 PLN",
+        "Przychód stycznia w tabeli pomocniczej wynosi 8760 PLN.",
         "Luty ma 9710 PLN, marzec 9775 PLN",
         "Największa sprzedaż występuje w 2026-03"
       ],
@@ -717,8 +717,8 @@
       "expected": "80",
       "kind": "number",
       "checks": [
-        "Stary koszt wynosi 700 PLN",
-        "Nowy koszt wynosi 780 PLN",
+        "Przed zmianą ceny koszt dwóch sztuk wynosił 700 PLN.",
+        "Po podwyżce koszt dwóch sztuk wynosi 780 PLN.",
         "Różnica wynosi +80 PLN, a nie +40 PLN"
       ],
       "mistakes": [
@@ -753,8 +753,8 @@
       "kind": "number",
       "checks": [
         "Przychód netto wynosi 28245 PLN",
-        "Marża netto wynosi 9109 PLN",
-        "Suma kosztów wynosi 19136 PLN"
+        "Po odjęciu kosztów od przychodów marża netto wynosi 9109 PLN.",
+        "Łączne koszty wszystkich faktur wynoszą 19136 PLN."
       ],
       "mistakes": [
         "Nie nazywaj przychodu 28245 zyskiem ani marżą.",
@@ -822,8 +822,8 @@
       "expected": "#DZIEL/0!",
       "kind": "error",
       "checks": [
-        "W C1 pojawia się #DZIEL/0!",
-        "Przyczyna B1=0 jest nazwana",
+        "Komórka C1 po dzieleniu przez zero wyświetla #DZIEL/0!.",
+        "W notatce nazwano przyczynę błędu: mianownik B1 jest równy zeru.",
         "Nie zamieniono błędu na fałszywą kwotę 0"
       ],
       "mistakes": [
@@ -857,7 +857,7 @@
       "expected": "3970",
       "kind": "number",
       "checks": [
-        "Każdy miesiąc ma osobną kartę",
+        "Styczeń, Luty i Marzec to trzy odrębne, nazwane karty arkusza.",
         "Formuła Roczny!B2 odwołuje się do trzech kart",
         "Dla liczb 1200+1300+1470 otrzymujesz 3970"
       ],
@@ -999,7 +999,7 @@
       "checks": [
         "Ustalono różnicę między Odczyt i Edycja",
         "Nie udostępniono danych osobowych publicznie",
-        "Istnieje opis cofania dostępu"
+        "W arkuszu Notatki zapisano, jak cofnąć użytkownikowi dostęp."
       ],
       "mistakes": [
         "Nie zakładaj, że hasło do arkusza zastępuje prawa dostępu OneDrive.",
@@ -1076,7 +1076,7 @@
         "Skoroszyt zawiera pięć wymaganych kart",
         "Przychód wynosi 28245 PLN, marża 9109 PLN",
         "Raport ma wykres, kontrolę i dokumentację pochodzenia wyników",
-        "Eksport PDF nie ucina danych"
+        "W wyeksportowanym PDF widać całe wiersze, nagłówki i sumy."
       ],
       "mistakes": [
         "Nie wpisuj sum końcowych jako niepowiązanych wartości ręcznych.",
