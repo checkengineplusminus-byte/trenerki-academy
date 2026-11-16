@@ -11,12 +11,21 @@ export function homeworkVersion(row){
  return row&&Number.isSafeInteger(row.version)&&row.version>=1?row.version:null;
 }
 export function homeworkProgress(rows,expectedTopics){
- if(!Array.isArray(rows)||!Number.isSafeInteger(expectedTopics)||expectedTopics<0)return null;
+ const allowed=Array.isArray(expectedTopics)?
+  new Set(expectedTopics.filter(n=>Number.isInteger(n)&&n>=1&&n<=100)):null;
+ const total=allowed?allowed.size:expectedTopics;
+ if(!Array.isArray(rows)||!Number.isSafeInteger(total)||total<0)return null;
  const seen=new Set(),valid=[];
  for(const row of rows){
   if(!Number.isInteger(row?.topic_no)||row.topic_no<1||row.topic_no>100||seen.has(row.topic_no))continue;
   seen.add(row.topic_no);
-  if(homeworkSubmitted(row))valid.push(row.topic_no);
+  if((!allowed||allowed.has(row.topic_no))&&homeworkSubmitted(row))valid.push(row.topic_no);
  }
- return {submitted:valid.length,total:expectedTopics,topics:valid};
+ return {submitted:valid.length,total,topics:valid.sort((a,b)=>a-b)};
+}
+export function firstUnfinishedPracticeTopic(quizProgress,homeworkSummary){
+ if(quizProgress?.known!==true||!homeworkSummary||!Array.isArray(homeworkSummary.topics))return null;
+ const submitted=new Set(homeworkSummary.topics);
+ return Object.keys(quizProgress.byTopic).map(Number).sort((a,b)=>a-b)
+  .find(n=>!quizProgress.byTopic[n].passed||!submitted.has(n))??null;
 }
