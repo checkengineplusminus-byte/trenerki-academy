@@ -62,8 +62,8 @@ export function checkFirstDayAnswer(
    message:step===2?'Dobrze! =B2*C2 to prawidłowa formuła: ilość razy cena. '+first:
     'Dobrze! =SUMA(D2:D4) dodaje wszystkie trzy wartości. '+total};
   if(step!==2){
-   const normalized=raw.toUpperCase().replace(/[\\s\\u00a0\\u202f]/g,'');
-   if(/^=\\d+[,(]?/.test(normalized)&&normalized.includes('D2:D4'))
+   const normalized=raw.toUpperCase().replace(/[\s\u00a0\u202f]/g,'');
+   if(/^=\d+[,(]?/.test(normalized)&&normalized.includes('D2:D4'))
     return {correct:false,kind:'formula',message:'Nie wpisuj liczby przed nawiasem. W polskim Excelu cała formuła dodawania wygląda tak: =SUMA(D2:D4). Słowo SUMA jest konieczne. Jeśli chcesz podać tylko wynik, wpisz '+pln(expected)+' bez znaku =.'};
    if(normalized.includes('D2:D4')&&!normalized.includes('SUMA')&&!normalized.includes('SUM('))
     return {correct:false,kind:'formula',message:'D2:D4 jest adresem trzech komórek, ale sam zakres ich nie dodaje. W trybie „Sam wynik” wpisz '+pln(expected)+'. W trybie „Formuła Excela” wpisz dokładnie =SUMA(D2:D4) — TAK, ze słowem SUMA przed nawiasem.'};
@@ -74,7 +74,7 @@ export function checkFirstDayAnswer(
  }
  const parsed=beginnerMoney(raw);
  if(parsed===null){
-  const upper=raw.toUpperCase().replace(/[\\s\\u00a0\\u202f]/g,'');
+  const upper=raw.toUpperCase().replace(/[\s\u00a0\u202f]/g,'');
   if(upper.includes('D2:D4')||upper.startsWith('SUMA'))
    return {correct:false,kind:'invalid',message:'Jeśli wybierasz sam wynik, wpisz tylko '+pln(expected)+'. Jeśli chcesz napisać formułę, MUSISZ zacząć od znaku = i wpisać całe =SUMA(D2:D4). Sam napis SUMA lub D2:D4 nie wystarcza.'};
   return {correct:false,kind:'invalid',message:'Wpisz samą liczbę, np. '+pln(expected)+'. Możesz też wybrać tryb „Formuła Excela” i wpisać '+(step===2?'=B2*C2':'=SUMA(D2:D4)')+'.'};
