@@ -22,13 +22,22 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
    const images=cards.locator('.card-photo');
    await images.first().waitFor();
    await images.evaluateAll(nodes=>nodes.forEach(img=>{img.loading='eager';}));
-   await page.waitForFunction(()=>{
-    const courseCards=[...document.querySelectorAll('#course-cards .course-card')];
-    return courseCards.length>0&&courseCards.every(card=>{
+   try{
+    await page.waitForFunction(()=>{
+     const courseCards=[...document.querySelectorAll('#course-cards .course-card')];
+     return courseCards.length>0&&courseCards.every(card=>{
+      const img=card.querySelector('.has-course-photo .card-photo');
+      return img?.complete&&img.naturalWidth>0;
+     });
+    },null,{timeout:10000});
+   }catch(error){
+    const broken=await cards.evaluateAll(nodes=>nodes.map(card=>{
      const img=card.querySelector('.has-course-photo .card-photo');
-     return img?.complete&&img.naturalWidth>0;
-    });
-   },null,{timeout:10000});
+     return {course:card.dataset.courseId,url:img?.currentSrc||img?.src||'none',complete:img?.complete||false,
+      width:img?.naturalWidth||0};
+    }).filter(x=>!x.complete||!x.width));
+    throw new Error(category+': photos failed to load '+JSON.stringify(broken)+'; '+String(error.message||error));
+   }
    for(const {slug,file,width,height} of await images.evaluateAll(nodes=>nodes.map(img=>({
     slug:img.closest('.course-card').dataset.courseId,file:new URL(img.currentSrc).pathname,
     width:img.naturalWidth,height:img.naturalHeight,
