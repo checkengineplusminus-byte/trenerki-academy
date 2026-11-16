@@ -1166,7 +1166,7 @@ import {auditCompanyLifecycle} from '../src/accounting/lifecycle-audit.js';
 
 test('Ścieżka firmy: pusty stan nie udaje ukończenia',()=>{
  const r=auditCompanyLifecycle(EMPTY(),null);
- assert.equal(r.steps.length,7);
+ assert.equal(r.steps.length,8);
  assert.equal(r.finished_training_stages,0);
  assert.equal(r.completed,false);
  assert.equal(r.integrated_full_cycle,'not_tested');
