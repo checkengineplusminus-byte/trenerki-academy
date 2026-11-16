@@ -234,12 +234,22 @@ async function verify(name,viewport,isMobile){
   await page.waitForFunction(()=>document.querySelector('#anielka-output')?.textContent?.includes('Ponieważ chcesz używać Excela'),{timeout:9000});
   const excelCard=page.locator('#course-cards [data-course-id="excel-skroty"]');
   await excelCard.locator('.card-media').scrollIntoViewIfNeeded();
-  const icon=excelCard.locator('.course-icon-art');
-  await icon.waitFor({state:'visible',timeout:7000});
-  const usable=await icon.evaluate(node=>{
-   try{const b=node.getBBox();return b.width>0&&b.height>0;}catch{return false;}
-  });
-  assert(usable,'Missing photo must show its course-specific SVG fallback');
+  // Excel now uses a genuine licensed screenshot; verify the rendered photo,
+  // falling back to the legacy SVG only for older entries without a photo.
+  const photo=excelCard.locator('img.card-photo');
+  if(await photo.count()){
+   await photo.evaluate(img=>{img.loading='eager';});
+   await photo.waitFor({state:'visible',timeout:7000});
+   const ready=await photo.evaluate(img=>img.complete&&img.naturalWidth>0&&img.naturalHeight>0);
+   assert(ready,'The Excel course screenshot must render, not merely have a URL');
+  }else{
+   const icon=excelCard.locator('.course-icon-art');
+   await icon.waitFor({state:'visible',timeout:7000});
+   const usable=await icon.evaluate(node=>{
+    try{const b=node.getBBox();return b.width>0&&b.height>0;}catch{return false;}
+   });
+   assert(usable,'Course without a photo must show its course-specific SVG fallback');
+  }
   const width=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(width.scroll<=width.client+3,'Horizontal overflow: '+JSON.stringify(width));
   await page.locator('#anielka-output [data-anielka-course="excel-skroty"]').first().click();
