@@ -12,18 +12,23 @@ import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accoun
 import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework-worksheet.js';
 // @ts-ignore — only suggests the correct existing tab; auth remains server-side.
 import {recommendedLabTab,LAB_TAB_NAMES} from '../src/accounting/lab-navigation.js';
-// @ts-ignore — only displays manually curated photos with a verified commercial license.
-import {topicPhotoAssetPath} from '../src/accounting/topic-media.js';
+// @ts-ignore — strictly validates in-house generated and locally bundled photo IDs.
+import {topicPhotoAssetId} from '../src/accounting/topic-media.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
+// Static require() is intentionally used for Expo Web, Android and iOS bundling.
+// Assets never come from externally supplied URLs or user-generated HTML.
+const GENERATED_PHOTO_ASSETS:Record<string,number>=Object.freeze({
+ 'accounting-desk-01':require('../assets/accounting/generated/accounting-desk-01.webp'),
+ 'accounting-archive-02':require('../assets/accounting/generated/accounting-archive-02.webp'),
+});
 function SectionPhoto({photo}:{photo:any}){
- const assetPath=topicPhotoAssetPath(photo);
+ const assetId=topicPhotoAssetId(photo);
  const [failed,setFailed]=useState(false);
- useEffect(()=>{setFailed(false);},[assetPath]);
- // Use only app-hosted files on web. Never fetch external image URLs.
- // Native bundled asset mapping is handled separately once its files pass CI.
- if(!assetPath||failed||Platform.OS!=='web')return null;
- return <Image accessibilityLabel={photo.alt} source={{uri:assetPath}} onError={()=>setFailed(true)} resizeMode="cover" style={s.sectionPhoto}/>;
+ useEffect(()=>{setFailed(false);},[assetId]);
+ const source=assetId?GENERATED_PHOTO_ASSETS[assetId]:null;
+ if(!source||failed)return null;
+ return <Image accessible accessibilityLabel={photo.alt} source={source} onError={()=>setFailed(true)} resizeMode="cover" style={s.sectionPhoto}/>;
 }
 type Answer={exercise_id:string;answer:string};
 type Homework={response:string;version:number;submitted_at:string|null;updated_at:string}|null;
