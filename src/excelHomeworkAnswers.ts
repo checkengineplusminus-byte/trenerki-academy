@@ -5,7 +5,7 @@ export type ExcelHomework={
  lessonNo:number;title:string;goal:string;source:string;starter:ExcelHomeworkSource;
  steps:string[];expected:string;kind:ExcelHomeworkKind;checks:string[];mistakes:string[];
  example:string;why:string;delivery:string;minutes:number;review:string;filename:string;alternates:string[];
- bonusStarter?:ExcelHomeworkSource;bonusTask?:string;
+ comparisonStarter?:ExcelHomeworkSource;bonusStarter?:ExcelHomeworkSource;bonusTask?:string;
 };
 export type HomeworkResult={correct:boolean;kind:'correct'|'empty'|'format'|'wrong';feedback:string};
 const simplify=(value:string)=>String(value??'').trim().toLocaleUpperCase('pl-PL')
