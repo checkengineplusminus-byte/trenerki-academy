@@ -2365,3 +2365,46 @@ test('Końcowa praktyka: nigdy nie wierzymy zapisanej fladze zaliczenia',()=>{
  assert.match(text,/finalPracticeCard\(\)/);
  assert.match(text,/withFinalPracticeAnswers\(ws.state,finalPracticeInput\)/);
 });
+
+
+import {inspectScenarioUnlinkedSources} from '../src/accounting/scenario-unlinked-sources.js';
+
+test('D01–D36: rozwiązane 36 ćwiczeń nie podszywa się pod powiązanie wszystkich źródeł',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const before=JSON.stringify(state);
+ const coverage=inspectScenarioUnlinkedSources(manifest);
+ assert.equal(coverage.total,36);
+ assert.equal(coverage.pending,34);
+ assert.equal(coverage.pending_by_kind.formal,34);
+ assert.equal(coverage.covered_by_existing_bridge,2);
+ assert.equal(coverage.passed,false);
+ const result=taxCloseTrainingAudit(state,manifest);
+ const gate=result.checks.find(x=>x.key==='scenario_other_source_links');
+ assert.ok(gate);
+ assert.equal(gate.passed,false);
+ assert.match(gate.detail,/34\/36/);
+ assert.ok(result.next_actions.some(x=>x.key==='scenario_other_source_links'));
+ assert.equal(result.ready_for_training_review,false);
+ assert.equal(result.completed,false);
+ assert.equal(JSON.stringify(state),before);
+});
+test('D01–D36: kategorie obsługiwane przez mosty nie wystarczą bez ich własnej weryfikacji',()=>{
+ const {manifest,state}=completeIntegratedFixture();
+ const onlyBridged={...manifest,documents:manifest.documents.map(d=>({
+  ...d,kind:'bank_in',amount_pln:1
+ }))};
+ const coverage=inspectScenarioUnlinkedSources(onlyBridged);
+ assert.equal(coverage.total,36);
+ assert.equal(coverage.pending,0);
+ assert.equal(coverage.passed,true);
+ // Nie ma 36 rzeczywistych wierszy CSV ani 36 dekretów w tym biurze.
+ const audit=taxCloseTrainingAudit(state,onlyBridged);
+ assert.equal(audit.checks.find(x=>x.key==='scenario_other_source_links').passed,true);
+ assert.equal(audit.checks.find(x=>x.key==='scenario_bank_ledger').passed,false);
+ assert.equal(audit.ready_for_training_review,false);
+});
+test('D01–D36: brak lub błędny manifest oznacza NO_GO, bez domyślnych zaliczeń',()=>{
+ assert.equal(inspectScenarioUnlinkedSources(null).passed,false);
+ assert.equal(inspectScenarioUnlinkedSources({scenario:{id:'wrong',documents:[]}}).status,'manifest_invalid');
+ assert.equal(taxCloseTrainingAudit(EMPTY()).checks.find(x=>x.key==='scenario_other_source_links').passed,false);
+});
