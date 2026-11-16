@@ -1542,7 +1542,7 @@ test('PEŁNY PRZEKRÓJ FIKCYJNY: styczeń 2026 łączy dokumenty, CSV, dwie pła
  const byKey=Object.fromEntries(lifecycle.steps.map(x=>[x.key,x.status]));
  assert.deepEqual(Object.fromEntries(Object.entries(byKey).filter(([k])=>k!=='tax_and_close')),
   {company:'passed_training',invoices:'passed_training',bank:'passed_training',
-   payroll:'passed_training',asset:'passed_training',month:'passed_training'});
+   payroll:'passed_training',asset:'passed_training',month:'passed_training',final_practice:'needs_work'});
  assert.equal(byKey.tax_and_close,'not_implemented','Nie udajemy KSeF/JPK/UPO');
  const tax=taxCloseTrainingAudit(state,manifest);
  assert.equal(tax.period,'2026-01');
@@ -2339,6 +2339,7 @@ test('Końcowa praktyka: 8 pytań zapisywanych w prywatnym modelu, bez nadpisani
  const saved=withFinalPracticeAnswers(state,answers);
  assert.equal(JSON.stringify(state),prior);
  assert.equal(gradeFinalPractice(saved).passed,true);
+ assert.equal(auditCompanyLifecycle(saved,null).steps.find(x=>x.key==='final_practice').status,'passed_training');
  assert.equal(gradeFinalPractice(saved).correct,FINAL_PRACTICE_QUESTIONS.length);
  assert.equal(gradeFinalPractice(state).passed,false);
  assert.equal(taxCloseTrainingAudit(saved).completed,false);
