@@ -105,3 +105,12 @@ test('Uszkodzony prywatny manifest kończy się blokadą, bez rzucania wyjątkó
  assert.equal(inspect(makeState(),{...manifest,journal_practice_v1:null}).passed,false);
  assert.equal(inspect(makeState(),null).status,'not_tested');
 });
+
+test('Długi opis lub znak nowej linii są zgodne z bezpiecznym obcięciem CSV',()=>{
+ const custom={...manifest,documents:docs.map((d,n)=>n===0?
+  {...d,title:'Wymyślona długa nazwa '+('A'.repeat(220))+'\nX'}:d)};
+ const state=makeState();
+ state.bank=parseBankCSV(scenarioBankCSV(custom)).rows;
+ assert.equal(state.bank[0].description.length,245);
+ assert.equal(inspect(state,custom).passed,true);
+});
