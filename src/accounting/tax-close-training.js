@@ -6,7 +6,7 @@
  */
 import {invoiceTotals,expectedInvoiceLines,livePostings,validDate} from './lab-core-base.js';
 import {auditCompanyLifecycle} from './lifecycle-audit.js';
-import {readScenario,readJournalPractice} from './simulator-core.js';
+import {inspectScenarioBankBridge as inspectScenarioBankEvidence} from './scenario-bank-bridge.js';
 import {acquisitionLines,assetFacts} from './assets-core.js';
 import {normalizeIdentity} from './identity-core.js';
 import {inspectScenarioInvoiceBridge} from './scenario-invoice-bridge.js';
@@ -24,57 +24,19 @@ const isMoney=n=>Number.isSafeInteger(n)&&n>=0&&n<=1000000000000;
  * musi być importowany z tym samym ID, datą i kwotą i mieć dokładnie
  * jeden aktywny, zbilansowany dekret 130 w tym samym okresie.
  */
+/**
+ * Jedna wspólna, rygorystyczna bramka D01–D36 dla zamknięcia miesiąca i
+ * ekranu banku. Poprzednia, słabsza kopia tej kontroli nie sprawdzała
+ * kompletnego podpisu źródła CSV (opisu), przez co zamknięcie miesiąca
+ * mogło przejść mimo negatywnego wyniku na ekranie banku.
+ *
+ * Brak wybranego okresu NIE oznacza zgodności z domyślnym miesiącem
+ * z prywatnego scenariusza.
+ */
 export function inspectScenarioBankBridge(state,rawScenario,period){
- if(!rawScenario)return {passed:false,status:'not_tested',matched:0,total:0,issues:[]};
- let docs;
- try{docs=readScenario(rawScenario).documents.filter(d=>d.kind==='bank_in'||d.kind==='bank_out');}
- catch{return {passed:false,status:'not_tested',matched:0,total:0,
-  issues:[{code:'scenario_bank_manifest_not_verified',invoice:'D01-D36'}]};}
- if(!period||!docs.length)return {passed:false,status:'not_tested',matched:0,total:docs.length,issues:[]};
- let reference;
- try{reference=readJournalPractice(rawScenario);}
- catch{return {passed:false,status:'not_tested',matched:0,total:docs.length,
-   issues:[{code:'scenario_bank_reference_not_verified',invoice:'D01-D36'}]};}
- const issues=[],bank=Array.isArray(state?.bank)?state.bank:[],
-       journals=Array.isArray(state?.journals)?livePostings(state):[];
- let matched=0;
- for(const doc of docs){
-  const signed=(doc.kind==='bank_in'?1:-1)*doc.amount_pln*100;
-  if(!Number.isSafeInteger(signed)||signed===0||doc.date.slice(0,7)!==period){
-   issues.push({code:'scenario_bank_amount_or_period_invalid',invoice:doc.id});continue;
-  }
-  const rows=bank.filter(b=>b?.id===doc.id);
-  if(rows.length!==1||rows[0].date!==doc.date||rows[0].amount_cents!==signed){
-   issues.push({code:'scenario_bank_csv_missing_duplicate_or_mismatch',invoice:doc.id});continue;
-  }
-  const entries=journals.filter(j=>j.source_type==='bank'&&j.source_id===doc.id);
-  if(entries.length!==1||entries[0].date!==doc.date||!Array.isArray(entries[0].lines)){
-   issues.push({code:'scenario_bank_journal_missing_duplicate_or_period',invoice:doc.id});continue;
-  }
-  const lines=entries[0].lines,bankLines=lines.filter(l=>l.account==='130');
-  const balanced=lines.length>=2&&lines.every(l=>
-   Number.isSafeInteger(l.debit)&&Number.isSafeInteger(l.credit)&&
-   l.debit>=0&&l.credit>=0&&((l.debit>0)!==(l.credit>0)))&&
-   lines.reduce((v,l)=>v+l.debit,0)===lines.reduce((v,l)=>v+l.credit,0);
-  if(!balanced||bankLines.length!==1||
-     bankLines[0].debit!==(signed>0?signed:0)||
-     bankLines[0].credit!==(signed<0?-signed:0)){
-   issues.push({code:'scenario_bank_ledger_130_mismatch',invoice:doc.id});continue;
-  }
-  // Kwota na 130 nie dowodzi prawidlowych kont Wn/Ma. Pelny dekret
-  // musi odpowiadac chronionemu wzorcowi Dxx, bez publikacji tresci.
-  const expected=reference.entries[doc.id]?.lines;
-  if(!Array.isArray(expected)||signature(lines)!==signature(expected.map(l=>({
-   account:l.account,debit:l.debit_cents,credit:l.credit_cents
-  })))){
-   issues.push({code:'scenario_bank_source_accounts_or_amount_mismatch',invoice:doc.id});
-   continue;
-  }
-  matched++;
- }
- const passed=issues.length===0&&matched===docs.length;
- return {passed,status:passed?'verified_training_sources':'needs_work',
-  matched,total:docs.length,issues};
+ if(!period)return {passed:false,status:'not_tested',matched:0,total:0,
+  verified_doc_ids:[],issues:[],legal_review:'not_tested',real_bank_confirmation:false};
+ return inspectScenarioBankEvidence(state,rawScenario,period);
 }
 
 const MONTH_CLOSE_GUIDANCE = Object.freeze([
