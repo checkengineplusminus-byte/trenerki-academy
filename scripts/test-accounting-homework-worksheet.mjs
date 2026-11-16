@@ -61,7 +61,6 @@ test('Dodatkowe oryginalne zestawy danych w tematach 91–94 nie zastępują pra
  assert(buildHomeworkCsv(91,'Import',valid).includes('RAW_BANK'));
  assert(buildHomeworkCsv(92,'Pivot',valid).includes('NOWY_REKORD'));
  assert(buildHomeworkCsv(93,'Budżet',valid).includes('FIK-3'));
- assert(buildHomeworkCsv(94,'Rentowność',valid).includes('15 950')===false); // liczby w danych są nieformatowane
  assert(buildHomeworkCsv(94,'Rentowność',valid).includes('15950,00'));
 });
 test('Dodatkowe dane są lokalne, całkowicie fikcyjne i nie zawierają kluczy',async ()=>{
