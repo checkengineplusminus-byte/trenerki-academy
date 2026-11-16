@@ -153,6 +153,7 @@ export default function TematKsiegowosci(){
       {url&&<Pressable accessibilityRole="button" style={s.button} onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}><Text style={s.buttonText}>Otwórz wskazane źródło</Text></Pressable>}
      </View>;
     })}
+   </View>
    <View style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>Dokończ ten temat i przejdź dalej</Text>
     {sectionProgress?
@@ -166,7 +167,6 @@ export default function TematKsiegowosci(){
      <Link href="/biuro-ksiegowe" style={s.link}>Otwórz biuro — Zestawienia i sprawdzian końcowy</Link>
     </>}
     <Link href="/program-ksiegowosci" style={s.link}>Wróć do programu i swoich wyników</Link>
-   </View>
    </View>
   </View>}
  </ScrollView>;
