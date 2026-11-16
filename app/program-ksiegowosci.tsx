@@ -156,7 +156,7 @@ export default function ProgramKsiegowosci(){
 
  return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
   <View style={s.nav}>
-   <Link href="/ksiegowosc" style={s.link}>← Encyklopedia</Link>
+   <Link href="/ksiegowosc" style={s.link}>← Materiały kursu</Link>
    <Link href="/biuro-ksiegowe" style={s.link}>Biuro ćwiczeniowe</Link>
   </View>
   <Text style={s.eyebrow}>TRENERKI · TWÓJ PROGRAM NAUKI</Text>

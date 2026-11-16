@@ -16,7 +16,9 @@ function required(relative){
 const academy=required('academy/index.html');
 required('academy/anielka-search.js');
 const accountingOffer=required('academy/ksiegowosc-od-podstaw.html');
-assert.match(accountingOffer,/Księgowość od podstaw — Encyklopedia/i);
+assert.match(accountingOffer,/<h1>Księgowość od podstaw<\/h1>/i);
+assert.match(accountingOffer,/Faktury bez zgadywania/);
+assert.match(accountingOffer,/CIEKAWOSTKA/);
 assert.match(accountingOffer,/Kup kurs online/i);
 assert.doesNotMatch(accountingOffer,/wczesny dostęp|wersja rozwojowa|w trakcie recenzji/i);
 assert(!academy.includes('acct-feature-title'),'Accounting must not appear as a large homepage promotion');

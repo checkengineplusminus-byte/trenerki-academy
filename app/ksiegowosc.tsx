@@ -75,7 +75,7 @@ export default function AccountingReader(){
   const auth=await supabase.auth.getUser();if(auth.error||!auth.data.user){router.replace('/konto');return;}
   const info=await supabase.rpc('ta_accounting_overview');if(info.error)throw info.error;
   if(mounted){setUserId(auth.data.user.id);setOverview(info.data);}
- }catch(e:any){if(mounted)setAccessError(e.code==='42501'?'Encyklopedia wymaga aktywnego dostępu. Właściciel może korzystać z podglądu administracyjnego.':'Nie udało się odczytać kursu. Spróbuj ponownie.');}finally{if(mounted)setLoading(false);}})();return()=>{mounted=false;active.current=false;};},[]);
+ }catch(e:any){if(mounted)setAccessError(e.code==='42501'?'Ten kurs wymaga aktywnego dostępu. Właściciel może korzystać z podglądu administracyjnego.':'Nie udało się odczytać kursu. Spróbuj ponownie.');}finally{if(mounted)setLoading(false);}})();return()=>{mounted=false;active.current=false;};},[]);
  useEffect(()=>{if(!userId)return;let mounted=true;setChaptersBusy(true);setListError('');void supabase.rpc('ta_accounting_chapter_list',{p_section:section}).then(({data,error})=>{if(!mounted)return;if(error){setChapters([]);setListError('Nie udało się wczytać rozdziałów.');}else setChapters(data||[]);}).catch(()=>{if(mounted)setListError('Błąd połączenia przy odczycie rozdziałów.');}).finally(()=>{if(mounted)setChaptersBusy(false);});return()=>{mounted=false;};},[userId,section]);
  useEffect(()=>{if(!userId)return;let mounted=true;setItems([]);setMore(false);setListError('');if(mode==='program'&&chapter===null){setListBusy(false);return;}setListBusy(true);
   void(async()=>{try{let rows:Summary[]=[];const offset=page*PAGE_SIZE;
@@ -114,7 +114,7 @@ export default function AccountingReader(){
  const m=detail?.material||{};
  return <ScrollView ref={scroll} style={s.page} contentContainerStyle={s.pad} keyboardShouldPersistTaps="handled"><View style={s.wrap}>
   <View style={s.row}><Link href="/moje-kursy" style={s.link}>← Moje kursy</Link><Link href="/program-ksiegowosci" style={s.link}>Nowy program: 100 tematów</Link><Link href="/biuro-ksiegowe" style={s.link}>Biuro ćwiczeniowe</Link><Link href="/slownik-ksiegowego" style={s.link}>Słownik pojęć</Link></View>
-  <View style={s.hero}><Text style={s.eyebrow}>KSIĘGOWOŚĆ OD PODSTAW · ENCYKLOPEDIA I PRAKTYKA</Text><Text accessibilityRole="header" style={s.h1}>{detail?'Rozumiesz. Ćwiczysz. Sprawdzasz.':'Od pierwszego dokumentu do samodzielnego rozliczenia.'}</Text><Text style={s.heroText}>Czytaj w swoim tempie, wracaj do zagadnień i sprawdzaj obliczenia w fikcyjnym biurze.</Text></View>
+  <View style={s.hero}><Text style={s.eyebrow}>KSIĘGOWOŚĆ OD PODSTAW · TEORIA I PRAKTYKA</Text><Text accessibilityRole="header" style={s.h1}>{detail?'Rozumiesz. Ćwiczysz. Sprawdzasz.':'Od pierwszego dokumentu do samodzielnego rozliczenia.'}</Text><Text style={s.heroText}>Czytaj w swoim tempie, wracaj do zagadnień i sprawdzaj obliczenia w fikcyjnym biurze.</Text></View>
   {loading&&<ActivityIndicator accessibilityLabel="Odczytywanie kursu"/>}{!!accessError&&<Text accessibilityRole="alert" style={s.warning}>{accessError}</Text>}
   {overview&&<View style={s.summary}>
    {overview.program_version==='core-v3-20261113'&&overview.active_program?.sections===10&&overview.active_program?.topics===100

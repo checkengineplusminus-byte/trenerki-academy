@@ -48,6 +48,8 @@ assert(!home.includes('class="acct-feature"'),'Accounting must never occupy a pr
 assert(home.includes('const ACCOUNTING_CATALOG='),'Accounting must have a regular course-card definition');
 assert(home.includes('c.id!==ACCOUNTING_CATALOG.id'),'Accounting must not be featured in the homepage initial selection');
 assert(read('public/academy/kategorie/biznes-i-praca.html').includes('/academy/ksiegowosc-od-podstaw.html'),'Accounting must be grouped under Biznes i praca');
+assert(home.includes('"title":"Księgowość od podstaw"'),'Public accounting course should have a concise name');
+assert(!home.includes('Księgowość od podstaw — Encyklopedia'),'Old accounting course title must not appear in main catalogue');
 assert(!read('public/academy/ksiegowosc-od-podstaw.html').toLowerCase().includes('wczesny dostęp'),'Accounting landing should not advertise early access');
 assert(!read('app/kup.tsx').includes('developmentConsent'),'Accounting checkout should use normal course terms');
 assert.equal(prices.get('ksiegowosc-od-podstaw').price_after_grosze,69900);

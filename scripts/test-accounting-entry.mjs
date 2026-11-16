@@ -327,7 +327,9 @@ test('Księgowość: normalna oferta tylko w kategorii Biznes i praca',()=>{
  assert.doesNotMatch(home,/acct-feature-title|NOWOŚĆ · WCZESNY DOSTĘP/);
  assert.match(home,/const ACCOUNTING_CATALOG=/);
  assert.match(home,/c\.id!==ACCOUNTING_CATALOG\.id/);
- assert.match(category,/Księgowość od podstaw — Encyklopedia/);
+ assert.match(category,/Księgowość od podstaw/);
+ assert.doesNotMatch(category,/Księgowość od podstaw — Encyklopedia/);
+ assert.match(page,/CIEKAWOSTKA/);
  assert.match(page,/100 tematów/);
  assert.match(page,/Kup kurs online/);
  assert.doesNotMatch(page,/wczesny dostęp|wersja rozwojowa|w trakcie recenzji/i);
