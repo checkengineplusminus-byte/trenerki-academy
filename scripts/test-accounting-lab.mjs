@@ -1,3 +1,4 @@
+import * as __test_fs from 'node:fs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {EMPTY,cents,scaled,validDate,invoiceTotals,expectedInvoiceLines,journalTotals,parseBankCSV,BANK_TEMPLATE,balanceReport,inspect,invoiceHTML,reverseJournal} from '../src/accounting/lab-core.js';
@@ -2312,4 +2313,20 @@ test('Wspólny fikcyjny miesiąc pokazuje brakujące powiązania, nie cofa zgodn
  assert.equal(result.ready_for_training_review,false);
  assert.equal(result.completed,false);
  assert.equal(JSON.stringify(state),before);
+});
+
+test('Podstawowe Zestawienia nie pokazują niezweryfikowanego wyniku i VAT jako 0 zł',()=>{
+ const {readFileSync}=__test_fs;
+ const text=readFileSync(new URL('../src/accounting/lab-ui.js',import.meta.url),'utf8');
+ const view=text.slice(text.indexOf(' function report(){'),text.indexOf(' function taxAndCloseCard(){'));
+ assert.match(view,/formatReviewMoney\(fin\.profit_or_loss_cents\)/);
+ assert.match(view,/formatReviewMoney\(audit\.figures\.vat_difference_cents\)/);
+ assert.match(view,/formatReviewMoney\(fin\.bank_net_movement_cents\)/);
+ assert.match(view,/BRAK WIARYGODNYCH DANYCH oznacza/);
+ assert.doesNotMatch(view,/money\(r\.profit\)|money\(r\.vat\)|money\(r\.ledgerBank\)/);
+ const empty=taxCloseTrainingAudit(EMPTY());
+ assert.equal(empty.training_result.profit_or_loss_cents,null);
+ assert.equal(empty.figures.vat_difference_cents,null);
+ assert.equal(empty.training_result.bank_net_movement_cents,null);
+ assert.equal(empty.completed,false);
 });

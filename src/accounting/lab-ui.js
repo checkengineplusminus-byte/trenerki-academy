@@ -96,7 +96,40 @@ export function mountLab(root,db){
  function matches(){const s=ws.state,d=drafts.match;const due=i=>i.gross_cents-s.matches.filter(m=>m.invoice_id===i.id).reduce((a,m)=>a+m.amount_cents,0),remain=b=>Math.abs(b.amount_cents)-s.matches.filter(m=>m.bank_id===b.id).reduce((a,m)=>a+m.amount_cents,0);
   return `<section class="card"><h2>Powiąż przelew z fakturą</h2><p class="muted">Możesz częściowo rozliczać faktury i dzielić przelew, ale łączna kwota nie może przekroczyć wartości faktury ani operacji bankowej. Wpływ (+) dotyczy sprzedaży, wydatek (−) zakupu. Przypisanie zapłaty nie zastępuje księgowania w dzienniku.</p><form data-form="match"><fieldset ${!canWrite||busy?'disabled':''}><div class="row">${select('match','bank_id','Operacja bankowa',d.bank_id,[['','Wybierz operację'],...s.bank.filter(b=>remain(b)>0&&bankRowAvailableForInvoice(s,b.id)).map(b=>[b.id,`${b.id}: ${money(b.amount_cents)}; pozostało ${money(remain(b))}`])])}${select('match','invoice_id','Faktura',d.invoice_id,[['','Wybierz fakturę'],...s.invoices.filter(i=>i.status==='issued'&&due(i)>0).map(i=>[i.id,`${i.number}: pozostało ${money(due(i))}`])])}${input('match','amount','Przypisywana kwota (zł)',d.amount,'text','inputmode="decimal"')}</div><div class="actions"><button type="submit" class="primary">Zapisz powiązanie</button></div></fieldset></form></section><section class="card"><h2>Pozostałe salda</h2>${table(['Faktura','Rodzaj','Brutto','Pozostało'],s.invoices.filter(i=>i.status==='issued').map(i=>`<tr><td>${e(i.number)}</td><td>${i.kind==='sale'?'Należność':'Zobowiązanie'}</td><td>${money(i.gross_cents)}</td><td>${money(due(i))}</td></tr>`))}<h3>Powiązane płatności</h3>${table(['Bank','Faktura','Kwota','Korekta przypisania'],s.matches.map(m=>`<tr><td>${e(m.bank_id)}</td><td>${e(s.invoices.find(i=>i.id===m.invoice_id)?.number||m.invoice_id)}</td><td>${money(m.amount_cents)}</td><td>${button('unmatch','Cofnij powiązanie',m.id)}</td></tr>`))}</section>`;
  }
- function report(){const r=balanceReport(ws.state);return `<section class="card"><h2>Zestawienie ćwiczeniowe</h2><p class="notice">Model usługowy, PLN, salda początkowe równe zero. Uwzględnia zatwierdzone księgowania wraz ze stornami, nie szkice. Wynik i VAT poniżej nie są deklaracjami podatkowymi.</p><div class="stats"><div class="stat">Wynik modelu<strong>${money(r.profit)}</strong></div><div class="stat">VAT: należny − naliczony<strong>${money(r.vat)}</strong></div><div class="stat">Bank według dziennika<strong>${money(r.ledgerBank)}</strong></div></div><p>Wyciąg: ${money(r.bank)} · Należności: ${money(r.receivable)} · Zobowiązania: ${money(r.payable)}</p>${table(['Konto','Obroty Wn','Obroty Ma','Saldo Wn','Saldo Ma'],r.accounts.map(a=>`<tr><td>${a.code} — ${e(a.name)}</td><td>${money(a.debit)}</td><td>${money(a.credit)}</td><td>${money(Math.max(0,a.balance))}</td><td>${money(Math.max(0,-a.balance))}</td></tr>`))}<p><strong>Suma Wn ${money(r.debit)} = suma Ma ${money(r.credit)}</strong></p></section>`;}
+ function report(){
+  const audit=taxCloseTrainingAudit(ws.state,scenario),fin=audit.training_result;
+  const reviewed=audit.checks.filter(c=>c.passed).length;
+  const pending=audit.next_actions[0];
+  const r=balanceReport(ws.state);
+  const hasPostings=Array.isArray(ws.state.journals)&&ws.state.journals.some(j=>j.status==='posted');
+  const firstAction=!pending?'':pending.href
+   ?'<p class="actions"><a href="'+e(pending.href)+'">Otwórz pierwszy brakujący etap: '+e(pending.title)+'</a></p>'
+   :pending.tab?'<div class="actions">'+button('tab','Przejdź dalej: '+pending.title,pending.tab,'primary')+'</div>':'';
+  const rawLedger=hasPostings
+   ?'<details><summary>Rozwiń roboczy dziennik kont i obroty Wn / Ma</summary>'+
+    '<p class="muted">To techniczny widok zapisanych dekretów, również storn. Równe sumy Wn i Ma nie potwierdzają prawidłowości źródeł, kompletności miesiąca, podatków ani rozrachunków.</p>'+
+    table(['Konto','Obroty Wn','Obroty Ma','Saldo Wn','Saldo Ma'],
+      r.accounts.filter(a=>a.debit!==0||a.credit!==0).map(a=>
+       '<tr><td>'+e(a.code)+' — '+e(a.name)+'</td><td>'+money(a.debit)+
+       '</td><td>'+money(a.credit)+'</td><td>'+money(Math.max(0,a.balance))+
+       '</td><td>'+money(Math.max(0,-a.balance))+'</td></tr>'))+
+    '<p>Robocze obroty: Wn '+money(r.debit)+'; Ma '+money(r.credit)+
+    (r.debit===r.credit?' (kwoty równe, ale niezatwierdzone źródłowo).':' (różnica — przejrzyj dekrety).')+
+    '</p></details>'
+   :'<p class="notice">Nie ma jeszcze zatwierdzonych dekretów. Najpierw wystaw fikcyjne dokumenty i wykonaj zapisy Wn/Ma. Brak dokumentów to nie wynik 0 zł.</p>';
+  return '<section class="card"><h2>Wynik ćwiczenia — bez zgadywania</h2>'+
+   '<p class="'+(audit.ready_for_training_review?'notice':'error')+'"><strong>Kontrole techniczne: '+
+     reviewed+'/'+audit.checks.length+'.</strong> '+
+     (audit.ready_for_training_review
+       ?'Dane fikcyjnego miesiąca można przekazać do niezależnego przeglądu. To nie jest zamknięcie urzędowe.'
+       :'Część źródeł lub etapów jest niegotowa. Liczby poniżej pojawią się dopiero po ich uzgodnieniu.')+
+   '</p><div class="stats">'+
+    '<div class="stat">Wynik ćwiczeniowy (nie podatek)<strong>'+formatReviewMoney(fin.profit_or_loss_cents)+'</strong></div>'+
+    '<div class="stat">Różnica VAT w modelu (nie do zapłaty)<strong>'+formatReviewMoney(audit.figures.vat_difference_cents)+'</strong></div>'+
+    '<div class="stat">Zmiana banku z CSV (bez salda otwarcia)<strong>'+formatReviewMoney(fin.bank_net_movement_cents)+'</strong></div>'+
+   '</div><p class="muted">BRAK WIARYGODNYCH DANYCH oznacza brak potwierdzonych źródeł, nie wartość zerową. Rozrachunki, podatki i wynik mogą wymagać dodatkowych dokumentów oraz niezależnej kontroli.</p>'+
+   firstAction+rawLedger+'</section>';
+ }
 
  function taxAndCloseCard(){
   const audit=taxCloseTrainingAudit(ws.state,scenario),f=audit.figures,fin=audit.training_result;
