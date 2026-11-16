@@ -10,7 +10,7 @@ import CadCanvas,{type SceneObject} from './CadCanvas.web';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
 import {add,arcData,cadCoordinates,cadNumber,contains,distance,dot,fitDrawing,isClosed,multiply,nearEdge,offsetShape,readCadPoint,
- screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,type CadShape,type Camera,type Point,type Size,type CadSnapMode} from './CadGeometry';
+ screenPoint,snapPoint,subtract,transformShape,trimLine,worldPoint,zoomCamera,joinCadLines,readCadDirectDistance,dimensionGeometry,type CadShape,type Camera,type Point,type Size,type CadSnapMode} from './CadGeometry';
 
 type Tool='select'|'line'|'poly'|'rect'|'circle'|'arc'|'hatch'|'move'|'copy'|'rotate'|'scale'|'mirror'|'offset'|'trim'|'dist'|'dimlinear'|'dimaligned';
 type Session={tool:Tool;points:Point[];target?:number;selecting?:boolean;amount?:number;diameter?:boolean;boundaries?:number[];mirrorAxis?:[Point,Point]};
@@ -173,10 +173,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   setPan(false);setInput('');
   const firstSelected=visible.find(shape=>selectedVisible.includes(shape.id))??chosen;
   const selecting=modify.has(next)&&!firstSelected;
-  setSession({tool:next,points:[],target:modify.has(next)?firstSelected?.id:undefined,selecting});
+  const isDim=next==='dimlinear'||next==='dimaligned';
+  const endpoints=isDim&&firstSelected?.kind==='line'&&firstSelected.points.length===2?firstSelected.points.slice(0,2):[];
+  setSession({tool:next,points:endpoints,target:modify.has(next)?firstSelected?.id:undefined,selecting});
   if(next!=='select')setLastCommand(next);
   if(next==='hatch'){setTab('home');setPanel('draw');}
-  tell(next==='select'?'Wskaż krawędź obiektu.':tools[next].name+' · '+promptFor({tool:next,points:[],selecting}));
+  tell(next==='select'?'Wskaż krawędź obiektu.':tools[next].name+' · '+(endpoints.length?'Wybrano końce zaznaczonej linii. Wskaż położenie wymiaru albo wpisz punkt X,Y.':promptFor({tool:next,points:[],selecting})));
  }
  function undo(){
   const previous=history.at(-1);
@@ -381,6 +383,13 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    return;
   }
   if(session.mirrorAxis){tell('MIRROR: wybierz Tak lub Nie, aby zakończyć odbicie.');return;}
+  if(!first&&(tool==='dimlinear'||tool==='dimaligned')){
+   const source=ordered.find(shape=>shape.kind==='line'&&shape.points.length===2&&nearEdge(shape,point,baseTolerance));
+   if(source){
+    setSession({...session,points:source.points.slice(0,2)});
+    tell('DIM: wybrano odcinek '+cadNumber(distance(source.points[0],source.points[1]))+' jednostek. Wskaż położenie opisu wymiaru lub wpisz punkt X,Y.');return;
+   }
+  }
   if(!first){accept(point);return;}
   if(distance(point,latest!)<1e-8){tell('Wybierz punkt różny od poprzedniego.');return;}
   if(tool==='line'){
@@ -400,7 +409,9 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   }else if(tool==='dist'){
    setLast(point);resetSession();tell('Odległość '+cadNumber(distance(first,point))+' · ΔX '+cadNumber(point.x-first.x)+' · ΔY '+cadNumber(point.y-first.y));
   }else if(tool==='dimlinear'||tool==='dimaligned'){
-   if(storeShape({kind:'dimension',points:[...points,point],aligned:tool==='dimaligned'})){resetSession();tell('Dodano wymiar do rysunku.');}
+   const dimensional={kind:'dimension' as const,points:[...points,point],aligned:tool==='dimaligned'};
+   const measured=dimensionGeometry({...dimensional,id:0,layer:drawing.currentLayer}).label;
+   if(storeShape(dimensional)){resetSession();tell('Dodano wymiar '+measured+' jednostek modelu ('+(tool==='dimaligned'?'długość odcinka':'rzut poziomy lub pionowy')+').');}
   }else if(target&&(tool==='move'||tool==='copy')){
    const delta=subtract(point,first),ids=selectedVisible.length?selectedVisible:[target.id];
    const shifted=transformCadSelection(drawing.shapes,ids,p=>add(p,delta));
@@ -469,6 +480,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(['DESELECT','CLEARSELECTION'].includes(command)){clearSelection();return;}
   if(command==='SELECT'){setSession({tool:'select',points:[]});tell('Wybieraj obiekty pojedynczo lub oknem.');return;}
   if(['E','ERASE','DELETE'].includes(command)){erase();return;}
+  if(command==='DIM'||command==='DIMENSION'){start('dimaligned');return;}
   if(['JOIN','J','PEDIT'].includes(command)){join();return;}
   if(['LA','LAYER'].includes(command)){setTab('home');setPanel('layers');return;}
   if(['ZOOM','Z','ZOOM E','ZOOM EXTENTS','ZE'].includes(command)){fit();return;}
@@ -497,8 +509,14 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    tell('SCALE: przeskalowano '+ids.length+' '+countObjects(ids.length)+' ×'+cadNumber(number)+'.');
    return;
   }
-  const point=readCadPoint(command,latest??last);
+  // LINE and PLINE accept a numeric length at the next-point prompt.
+  const direct=(tool==='line'||tool==='poly')&&first&&Number.isFinite(number)?
+   readCadDirectDistance(command,latest,pointer?atPointer(pointer).point:undefined,ortho):undefined;
+  const point=direct??readCadPoint(command,latest??last);
   if(point){pick(point);return;}
+  if(Number.isFinite(number)&&(tool==='line'||tool==='poly')&&!first){
+   tell('Najpierw wskaż początek odcinka, np. 0,0. Dopiero potem wpisz długość, np. 1000.');return;
+  }
   if(Object.hasOwn(aliasMap,command)){start(aliasMap[command]);return;}
   tell('Nie rozpoznano wpisu „'+raw.slice(0,50)+'”. Użyj polecenia z wstążki lub wpisz punkt, np. 1200,800 albo @600<30.');
  }
@@ -753,11 +771,23 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    {reportedPoint?' · X,Y '+cadCoordinates(reportedPoint):''}</Text>
   <View style={{backgroundColor:'#edf2f4',borderColor:'#c1d1d6',borderWidth:1,borderRadius:8,padding:9,gap:6}}>
    <Text style={labStyles.eyebrow}>{tool==='select'?'Polecenie':tools[tool].name} · {layout?'Podgląd arkusza. Edycję wykonujesz w Modelu.':prompt}</Text>
+   {(tool==='line'||tool==='poly')&&<Text testID="cad-direct-length-help" style={{color:'#365f54',fontSize:12,lineHeight:19}}>
+    LINE / PLINE: wskaż pierwszy punkt, skieruj kursor i wpisz 1000 → Enter. F8 (ORTHO) wymusza poziom lub pion. Bez wskazanego kierunku 1000 rysuje w prawo (+X). Dla określonego kąta wpisz @1000&lt;90 (1000 w górę).
+   </Text>}
+   {(tool==='dimlinear'||tool==='dimaligned'||tool==='dist')&&<Text testID="cad-dimension-help" style={{color:'#365f54',fontSize:12,lineHeight:19}}>
+    DIM: zaznacz odcinek i wpisz DIM, a potem wybierz miejsce wymiaru. Bez zaznaczenia wybierz dwa końce i miejsce wymiaru. DLI mierzy rzut poziomy/pionowy, DAL mierzy długość ukośną; DI / DIST sprawdza odległość między punktami.
+   </Text>}
    <View style={labStyles.row}>
     <TextInput ref={commandRef} testID="cad-command" accessibilityLabel="Wiersz poleceń AutoCAD" style={[labStyles.input,{flex:1,minWidth:135}]}
      value={input} onChangeText={setInput} onSubmitEditing={()=>runCommand(input)} autoCorrect={false} autoCapitalize="none"
      placeholder={tool==='select'?'Wpisz polecenie, np. L lub REC':'Wpisz punkt albo opcję polecenia'}/>
     <LabButton label="Enter ↵" onPress={()=>runCommand(input)}/>
+   </View>
+   <View style={[labStyles.row,{flexWrap:'wrap'}]}>
+    <LabButton label="DIM · Wymiar" onPress={()=>start('dimaligned')}/>
+    <LabButton label="DLI · Poziom/pion" onPress={()=>start('dimlinear')}/>
+    <LabButton label="DAL · Wzdłuż odcinka" onPress={()=>start('dimaligned')}/>
+    <LabButton label="DI · Zmierz" onPress={()=>start('dist')}/>
    </View>
    <View style={labStyles.row}>
     {(tool==='poly'||tool==='line')&&points.length>1&&<>
@@ -850,6 +880,6 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    </View>
    <Text style={{fontSize:12,color:'#536d61'}}>Nasz warsztat ćwiczy wskazane tryby 2D. Pełny AutoCAD ma dodatkowo m.in. prostopadłość, styczność, śledzenie i osnap 3D — wyjaśniono je w przewodniku.</Text>
   </View>}
-  <Text style={labStyles.body}>Przewiń kółko nad rysunkiem, aby powiększyć widok. Przeciągnij środkowym przyciskiem myszy albo wybierz PAN. Wiersz poleceń przyjmuje X,Y, @ΔX,ΔY oraz @odległość&lt;kąt. ORTHO i OSNAP pomagają przy wskazywaniu kursorem.</Text>
+  <Text style={labStyles.body}>Przewiń kółko nad rysunkiem, aby powiększyć widok. Przeciągnij środkowym przyciskiem myszy albo wybierz PAN. Wiersz poleceń przyjmuje X,Y, @ΔX,ΔY, @odległość&lt;kąt i samą długość (np. 1000 po wskazaniu punktu LINE). DIM tworzy widoczny wymiar, a DIST mierzy dwa punkty. ORTHO i OSNAP pomagają przy precyzyjnym wskazywaniu.</Text>
  </View>;
 }
