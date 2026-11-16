@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {SECTION_HEADERS,homeworkSheetSection,homeworkSheetFilename,csvSafeCell,buildHomeworkCsv} from '../src/accounting/homework-worksheet.js';
+import {SECTION_HEADERS,TOPIC_HEADERS,homeworkSheetSection,homeworkSheetFilename,csvSafeCell,buildHomeworkCsv} from '../src/accounting/homework-worksheet.js';
 const valid={role:'Osoba sprawdzająca faktury',task:'Na danych fikcyjnych policz netto, VAT i brutto. Wpisz działania do tabeli, sprawdź wynik i opisz wnioski.',expected_output:'TAJNY KLUCZ WZORCOWY'};
 test('Arkusze z 10 działów mają prawidłowe, zróżnicowane kolumny',()=>{
  assert.equal(SECTION_HEADERS.length,10);
@@ -14,6 +14,34 @@ test('Arkusze z 10 działów mają prawidłowe, zróżnicowane kolumny',()=>{
   assert(csv.includes('Samokontrola'));
   assert(csv.includes(SECTION_HEADERS[homeworkSheetSection(i)-1][1]));
   assert(!csv.includes('TAJNY KLUCZ WZORCOWY'),'Klucz nie może być pobierany z arkuszem');
+ }
+});
+test('Temat 2: arkusz rejestruje trzy daty, powiązanie i duplikat dowodu',()=>{
+ const csv=buildHomeworkCsv(2,'Dokumenty i daty',valid);
+ assert.equal(TOPIC_HEADERS[2].length,10);
+ for(const field of ['Data zdarzenia','Data dowodu','Data zapłaty','Okres ujęcia','Duplikat?','Powiązane ID operacji / dokumentu']){
+  assert(csv.includes(field),'Brak kolumny: '+field);
+ }
+ assert(csv.includes('bez podwójnego księgowania'));
+ assert(csv.includes('Brakującej daty nie zgaduj'));
+ assert(!csv.includes('TAJNY KLUCZ WZORCOWY'));
+});
+test('Temat 4: arkusz rozdziela memoriał od przepływów',()=>{
+ const csv=buildHomeworkCsv(4,'Przychody i wpływy',valid);
+ assert.equal(TOPIC_HEADERS[4].length,11);
+ for(const field of ['Okres wyniku','Okres przepływu','Przychód (zł)','Koszt (zł)','Wpływ (zł)','Wydatek (zł)','Wynik (zł)','Przepływ netto (zł)']){
+  assert(csv.includes(field),'Brak kolumny: '+field);
+ }
+ assert(csv.includes('Wynik rachunkowy'));
+ assert(csv.includes('wpływ bankowy nie oznacza automatycznie przychodu'));
+ assert(!csv.includes('TAJNY KLUCZ WZORCOWY'));
+});
+test('Pozostałe 98 arkuszy zachowują nagłówki swoich działów',()=>{
+ for(let topic=1;topic<=100;topic++){
+  if(topic===2||topic===4)continue;
+  const csv=buildHomeworkCsv(topic,'Temat '+topic,valid);
+  assert(csv.includes(SECTION_HEADERS[homeworkSheetSection(topic)-1][1]),'Zmiana szablonu innego tematu '+topic);
+  assert(!csv.includes('Wskazówka do tego tematu'),'Przeciek wskazówki tematycznej: '+topic);
  }
 });
 test('CSV jest bezpieczny dla formuł w Excelu i nie dokleja nowych wierszy przez tekst źródłowy',()=>{
