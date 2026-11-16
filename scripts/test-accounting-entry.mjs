@@ -318,32 +318,29 @@ test('Program księgowości pokazuje prace domowe i pierwszy niezakończony tema
 });
 
 
-test('Księgowość: wczesny dostęp jawnie opisany w katalogu, czytniku i płatności',()=>{
- const file=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+test('Księgowość NO_GO: katalog tematyczny nie kieruje do niedostępnej płatności',()=>{
  const page=readFileSync(new URL('../public/academy/ksiegowosc-od-podstaw.html',import.meta.url),'utf8');
- const checkout=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
+ assert.match(page,/Księgowość od podstaw — Encyklopedia/);
+ assert.match(page,/id="program"/);
+ assert.match(page,/href="#program"/);
+ assert.match(page,/Cena katalogowa: 999 zł/);
+ assert.ok(!page.includes('href="/kup?course=ksiegowosc-od-podstaw"'));
+ assert.doesNotMatch(page,/>Kup kurs(?: online)?</);
+ // Nie doklejamy alarmującego komunikatu NO_GO na stronie głównej.
+ const catalogue=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+ assert.doesNotMatch(catalogue,/acct-feature-title/);
+});
+
+test('Księgowość NO_GO: trasy kupna i checkout nie omijają published=true',()=>{
+ const checkoutPage=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
  const stripe=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
  const credit=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
- assert.match(file,/acct-feature-title/);
- assert.match(file,/w trakcie recenzji/);
- assert.match(page,/100 tematów/);
- assert.match(page,/nie gwarantuje dyplomu/);
- assert.match(checkout,/development_version_acknowledged:developmentReady/);
- assert.match(stripe,/development_version_consent_required/);
- assert.match(credit,/development_version_consent_required/);
+ assert.ok(checkoutPage.includes(".eq('published',true).maybeSingle()"));
+ assert.ok(stripe.includes(".eq('published',true).maybeSingle()"));
+ assert.ok(credit.includes("db.rpc('ta_credit_confirm_purchase'"));
+ // Funkcja SQL ta_credit_confirm_purchase w produkcyjnej bazie musi
+ // osobno weryfikować c.published=true — test kodu nie zastępuje RLS/E2E.
+ assert.doesNotMatch(stripe,/development_version_consent_required/);
+ assert.doesNotMatch(checkoutPage,/development_version_acknowledged/);
 });
 
-
-test('Płatność wersji rozwojowej wymaga potwierdzenia i potwierdzenie e-mail jest jednoznaczne',()=>{
- const checkout=readFileSync(new URL('../supabase/functions/ta-create-checkout/index.ts',import.meta.url),'utf8');
- const wallet=readFileSync(new URL('../supabase/functions/ta-credit/index.ts',import.meta.url),'utf8');
- const webhook=readFileSync(new URL('../supabase/functions/ta-stripe-webhook/index.ts',import.meta.url),'utf8');
- const view=readFileSync(new URL('../app/kup.tsx',import.meta.url),'utf8');
- for(const src of [checkout,wallet,webhook])assert.match(src,/development_version_acknowledged/);
- assert.match(checkout,/development_version_consent_required/);
- assert.match(wallet,/development_version_consent_required/);
- assert.match(webhook,/accountingEarlyAccessNotice/);
- assert.match(webhook,/nie.*nadają kwalifikacji/i);
- assert.match(view,/developmentReady/);
- assert.match(view,/accountingEarlyAccess/);
-});
