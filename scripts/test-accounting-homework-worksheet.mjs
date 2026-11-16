@@ -12,7 +12,7 @@ test('Arkusze z 10 działów mają prawidłowe, zróżnicowane kolumny',()=>{
   assert(csv.startsWith('\ufeff'));
   assert(csv.includes('Na danych fikcyjnych policz netto'));
   assert(csv.includes('Samokontrola'));
-  assert(csv.includes(SECTION_HEADERS[homeworkSheetSection(i)-1][1]));
+  assert(csv.includes((TOPIC_HEADERS[i]||SECTION_HEADERS[homeworkSheetSection(i)-1])[1]));
   assert(!csv.includes('TAJNY KLUCZ WZORCOWY'),'Klucz nie może być pobierany z arkuszem');
  }
 });
