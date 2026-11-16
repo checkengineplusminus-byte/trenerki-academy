@@ -76,6 +76,32 @@ export function inspectScenarioBankBridge(state,rawScenario,period){
   matched,total:docs.length,issues};
 }
 
+const MONTH_CLOSE_GUIDANCE = Object.freeze([
+ ["company_opening","Karta firmy","Otwórz kartę fikcyjnej firmy. Uzupełnij nazwę, identyfikatory ćwiczeniowe, rodzaj ewidencji i status VAT; nie zgłaszaj nic do urzędu.","start","/dane-biura"],
+ ["period","Wybór okresu","Wystaw co najmniej jedną fikcyjną fakturę sprzedaży i zakupu z tego samego miesiąca. Pamiętaj, że płatność może być późniejsza.","invoices",null],
+ ["calendar_dates","Daty dokumentów","Popraw nieistniejące dni i daty wszystkich faktur, wierszy CSV i zatwierdzonych dekretów. Nie zmieniaj dat wyłącznie po to, by uzyskać zielony wynik.","invoices",null],
+ ["sources","Faktury źródłowe","Wystaw dokument sprzedaży i zakupu na dane tej samej firmy ćwiczeniowej; przejdź do Dziennika dopiero po zapisaniu dowodów.","invoices",null],
+ ["company_invoice_identity","Dane firmy na fakturach","Sprawdź migawkę danych własnego podmiotu na każdej fakturze. Nie zatwierdzaj dokumentów bez jednoznacznie ustalonej strony.","invoices",null],
+ ["source_identity","Unikalne źródła","Sprawdź identyfikator dokumentu, numer i wystawcę. U różnych dostawców numer zakupu może się powtarzać; w ramach jednej serii sprzedaży własnej firmy — nie.","invoices",null],
+ ["annual_source_identity","Numeracja roczna","Zestaw faktury z innymi miesiącami fikcyjnego roku i usuń konflikt numerów sprzedaży lub powtórzone identyfikatory źródeł.","invoices",null],
+ ["invoice_posting","Księgowanie faktur","W Dzienniku dodaj dokładnie jeden poprawny dekret dla każdej wystawionej faktury. Zakup środka trwałego rozlicz w odpowiedniej kartotece.","journal",null],
+ ["ledger","Bilans Wn i Ma","Sprawdź każdy zatwierdzony dekret: suma strony Wn musi być równa sumie strony Ma, a data musi dotyczyć właściwego okresu.","journal",null],
+ ["vat_model_vs_ledger","VAT w modelu","Uzgodnij kontrolne wartości VAT z fikcyjnych faktur oraz kont 221 i 222. Nie traktuj symulowanej kwoty jako ustawowego zobowiązania.","journal",null],
+ ["bank","Wyciąg i księga bankowa","Zaimportuj fikcyjny wyciąg CSV. Porównaj go z ruchem na koncie 130 w tym samym miesiącu.","bank",null],
+ ["bank_sources","Każdy przelew osobno","Dla każdego wiersza CSV sprawdź źródłowy identyfikator, dokładną datę, kwotę i jeden aktywny dekret 130. Sama zgodna suma banku nie wystarczy.","bank",null],
+ ["receivables","Rozrachunki","Połącz przelewy z właściwymi fakturami. Nie księguj wpływu ze sprzedaży jako drugiego przychodu.","matches",null],
+ ["payroll_assets","Płace i majątek","Dokończ kartoteki dwóch fikcyjnych pracowników, listy płac, wypłaty i zakończenie umowy; następnie sprawdź zakup, odpis i sprzedaż majątku.","payroll","/majatek-ksiegowy"],
+ ["scenario_bank_ledger","Połączenie D01–D36 z bankiem","Pobierz wyciąg scenariusza D01–D36, zaimportuj go do tego samego biura i połącz wszystkie pozycje z prawidłowymi dekretami.","bank",null],
+ ["scenario_invoice_ledger","Połączenie D01–D36 z fakturami","Dla każdego dowodu kupna i sprzedaży scenariusza wskaż fakturę z tego okresu oraz jej aktywny dekret w Dzienniku.","invoices",null],
+ ["scenario_correction_ledger","Korekta D01–D36","Powiąż korektę z dokumentem pierwotnym i wykonaj osobny poprawny dekret; nie traktuj korekty jako nowej niezależnej sprzedaży.","journal",null],
+ ["scenario_same_period","Jeden wspólny miesiąc","Rozwiąż 36 decyzji i kontroli scenariusza. Daty faktur, banku, płac, majątku i wzorca muszą dotyczyć tego samego miesiąca.","simulator",null],
+]);
+
+function nextMonthActions(checks){
+ const unresolved=new Set(checks.filter(c=>!c.passed).map(c=>c.key));
+ return MONTH_CLOSE_GUIDANCE.filter(([key])=>unresolved.has(key)).map(([key,title,instruction,tab,href])=>({key,title,instruction,tab,href}));
+}
+
 export function taxCloseTrainingAudit(raw,scenario=null){
  const state=raw||{},lifecycle=auditCompanyLifecycle(state,scenario);
  const period=lifecycle.period_scope.month,issued=(Array.isArray(state.invoices)?state.invoices:[])
@@ -357,6 +383,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
  // Poprawne CSV i Wn/Ma są tylko etapem. Pełne źródła modelu wolno
  // nazwać uzgodnionymi dopiero po zaliczeniu WSZYSTKICH mostów D01–D36.
  const readyForTrainingReview=checks.every(c=>c.passed);
+ const next_actions=nextMonthActions(checks);
  trainingResult.status=financialEvidencePresent
   ?(readyForTrainingReview?'source_reconciled_training':'bank_and_journal_reconciled_training')
   :'incomplete_model';
@@ -376,7 +403,7 @@ export function taxCloseTrainingAudit(raw,scenario=null){
   figures:{...visibleInvoiceTotals,purchase_deductible_model_cents:sourceAmountsReady?deductibleModelValue:null,
    vat_difference_cents:vatDifferenceCents,
    bank_statement_cents:bankStatementCents,bank_ledger_cents:bankLedgerCents},
-  checks,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...annualSourceIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
+  checks,next_actions,issues:[...issues,...sourceDateIssues,...sourceIdentityIssues,...annualSourceIssues,...vatLedgerIssues,...bankCoverageIssues,...companyInvoiceIssues,...bankBridge.issues,...invoiceBridge.issues,...correctionBridge.issues],source_inventory,review_notes,training_result:trainingResult,
   ready_for_training_review:readyForTrainingReview,
   draft_documents:{
    ksef:{status:'NOT_SENT_TRAINING_REFERENCE_ONLY',source_invoice_count:issued.filter(i=>i.kind==='sale').length},
@@ -397,6 +424,7 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
  const body=r.checks.map(c=>'<tr><td>'+escape(c.label)+'</td><td>'+
   (c.passed?'Zgodne w modelu':'Do uzupełnienia')+'</td><td>'+escape(c.detail)+'</td></tr>').join('');
  const issues=r.issues.map(x=>'<li>'+escape(x.code)+' — '+escape(x.invoice)+'</li>').join('');
+ const prioritized=r.next_actions.slice(0,3).map(a=>'<li><strong>'+escape(a.title)+'</strong> — '+escape(a.instruction)+'</li>').join('');
  const notes=r.review_notes.map(x=>'<li>'+escape(x)+'</li>').join('');
  const fin=r.training_result;
  const fm=n=>n===null?'BRAK WIARYGODNYCH DANYCH':money(n);
@@ -436,6 +464,9 @@ export function taxCloseTrainingReportHTML(state,scenario=null){
   '; zmiana banku bez salda otwarcia: ',escape(fm(fin.bank_net_movement_cents)),'</p>',
   '<p>Wiarygodność danych: ',escape(fin.status),
   '. Wynik księgowy nie jest przepływem gotówki; nie jest też podstawą PIT/CIT.</p>',
+  '<h2>Co poprawić w pierwszej kolejności</h2>',
+  prioritized?'<ol>'+prioritized+'</ol>':'<p>Wszystkie kontrole techniczne w zakresie modelu są spełnione; nadal konieczna jest odrębna recenzja.</p>',
+  '<p>Lista poniżej pokazuje również pozostałe warunki. Zielony wynik ćwiczenia nie oznacza zamknięcia ksiąg ani wysyłki urzędowej.</p>',
   '<h2>Kontrole wykonane przez model</h2><table><thead><tr><th>Warunek</th><th>Stan</th><th>Opis</th></tr></thead><tbody>',
   body,'</tbody></table>',
   '<h2>Wyjątki wymagające wyjaśnienia</h2>',issues?'<ul>'+issues+'</ul>':'<p>Brak błędów dokumentowych wykrytych przez ten zakres testów.</p>',
