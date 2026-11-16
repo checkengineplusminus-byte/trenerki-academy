@@ -213,7 +213,7 @@ test('Ekran programu nie myli RLS z brakiem nowego materiału',()=>{
  assert.match(code,/access\.data\?\.is_editor===true/);
  assert.match(code,/const coverageKnown=materialCoverageKnown\(isEditor,materialsReady\)/);
  assert.match(code,/filter==='missing'&&!coverageKnown/);
- assert.match(code,/Nieudostępniona wersja nie oznacza braku opracowania/);
+ assert.match(code,/Wczesny dostęp pokazuje materiały wersji rozwojowej/);
  assert.doesNotMatch(code,/materialsReady\?total-draftCount/);
 });
 
