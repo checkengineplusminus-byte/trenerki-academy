@@ -80,6 +80,9 @@ try{
     if(assignments[n].targetKind==='line')await send('');
     if(n===0){
      await lab.getByTestId('cad-summary').filter({hasText:'Obiekty: 1'}).waitFor();
+     // Regression: use *bare* 1000 instead of coordinate 1000,0.
+     await send('LINE');await send('0,0');await send('1000');await send('');
+     await lab.getByTestId('cad-summary').filter({hasText:'Obiekty: 2'}).waitFor();
      await send('DIM');await send('500,200');
      await lab.getByText(/Dodano wymiar 1000 jednostek modelu/).waitFor();
      await send('DIST');await send('0,0');await send('1000,0');
@@ -87,10 +90,17 @@ try{
      for(let s=0;s<3;s++)await hw.getByTestId('autocad-homework-step-'+s).click();
      await hw.getByTestId('autocad-homework-notes').fill('Kontrola: odcinek 1000 mm i 500 mm, DIST potwierdza wymiar niezależnie od ZOOM.');
      await hw.getByTestId('autocad-homework-save').click();
-     await hw.getByTestId('autocad-homework-status').getByText(/Zapisano: praca domowa ukończona/).waitFor();
+     await hw.getByTestId('autocad-homework-status').waitFor();
+     assert.match(await hw.getByTestId('autocad-homework-status').innerText(),/Zapisano: praca domowa ukończona/);
      assert.equal(homeworkNotes.length,1);
     }
-    if(n===16){await send('DIM');await send('500,200');}
+    if(n===16){
+     await send('DIM');await send('500,200');
+     await send('DLI');await send('0,0');await send('1000,0');await send('500,300');
+     await lab.getByText(/Dodano wymiar 1000 jednostek modelu/).waitFor();
+     await send('DAL');await send('0,0');await send('1000,600');await send('500,800');
+     await lab.getByText(/Dodano wymiar 1166.19 jednostek modelu/).waitFor();
+    }
     await task.getByRole('button',{name:'Sprawdź moje ćwiczenie'}).click();
     await task.getByTestId('cad-exercise-feedback').getByText(/Zaliczone ćwiczenie geometrii/).waitFor();
     checked++;
