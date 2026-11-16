@@ -1,25 +1,23 @@
 import React,{useEffect,useState} from 'react';
 import {Linking,Pressable,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import workbook from '../content/excel-professional-missions.json';
-import {plNumber} from './excelAdvancedMath';
+import {checkExcelMissionAnswer,excelResponsePresentation} from './excelMissionAnswers';
 const ink='#1e4131';
 type Mission=(typeof workbook.missions)[number];
-function normalize(value:string){
- return value.trim().toLocaleLowerCase('pl-PL').replace(/\s+/g,'').replace(/[−–]/g,'-');
-}
 export default function ExcelProfessionalMission({lessonNo}:{lessonNo:number}){
  const mission:Mission|undefined=workbook.missions.find(x=>x.lesson_no===lessonNo);
  const {width}=useWindowDimensions(),small=width<650;
  const [answer,setAnswer]=useState(''),[result,setResult]=useState<'untried'|'wrong'|'right'>('untried');
+ const [feedbackText,setFeedbackText]=useState('');
  const [showHelp,setShowHelp]=useState(false),[showReal,setShowReal]=useState(false);
  const [completed,setCompleted]=useState<number[]>([]);
- useEffect(()=>{setAnswer('');setResult('untried');setShowHelp(false);setShowReal(false);setCompleted([]);},[lessonNo]);
+ useEffect(()=>{setAnswer('');setResult('untried');setFeedbackText('');setShowHelp(false);setShowReal(false);setCompleted([]);},[lessonNo]);
  if(!mission)return null;
+ const presentation=excelResponsePresentation(mission);
  function check(){
-  const correct=mission.unit==='number'
-   ?(()=>{const a=plNumber(answer),b=plNumber(mission.expected);return a!==null&&b!==null&&Math.abs(a-b)<=0.005;})()
-   :normalize(answer)===normalize(mission.expected);
-  setResult(correct?'right':'wrong');
+  const result=checkExcelMissionAnswer(mission,answer);
+  setResult(result.correct?'right':'wrong');
+  setFeedbackText(result.message);
  }
  const level=mission.track==='fundamenty'?'01 · OD ZERA':mission.track==='praktyka'?'02 · PRAKTYKA':'03 · EKSPERT';
  return <View testID={'excel-mission-'+lessonNo} style={{borderWidth:1,borderColor:'#cbded0',borderRadius:16,backgroundColor:'#f5faf5',overflow:'hidden',marginVertical:12}}>
@@ -50,21 +48,24 @@ export default function ExcelProfessionalMission({lessonNo}:{lessonNo:number}){
      </Pressable>)}
    </View>
    <View style={{backgroundColor:'#fff',borderRadius:12,borderWidth:1,borderColor:'#d0dfd3',padding:13,gap:9}}>
-    <Text style={{fontWeight:'900',color:ink}}>Jaki wynik uzyskałeś?</Text>
-    <TextInput testID="excel-mission-answer" accessibilityLabel="Twoja odpowiedź na zadanie Excel" value={answer} onChangeText={v=>{setAnswer(v);setResult('untried');}}
-     placeholder={mission.unit==='number'?'Wpisz liczbę, np. 1210':'Wpisz wynik, nazwę, adres lub formułę'}
+    <Text testID="excel-mission-answer-label" style={{fontWeight:'900',color:ink,fontSize:15}}>{presentation.title}</Text>
+    <Text testID="excel-mission-answer-instruction" style={{fontSize:13,color:'#456655',lineHeight:22}}>{presentation.instruction}</Text>
+    <TextInput testID="excel-mission-answer" accessibilityLabel="Twoja odpowiedź na zadanie Excel" value={answer} onChangeText={v=>{setAnswer(v);setResult('untried');setFeedbackText('');}}
+     placeholder={presentation.placeholder} keyboardType={presentation.keyboard}
      placeholderTextColor="#82988a" autoCapitalize="none" autoCorrect={false}
-     style={{borderWidth:1,borderColor:'#bfcdc0',borderRadius:9,backgroundColor:'#fff',padding:12,minHeight:47,fontSize:15,color:ink}}/>
+     style={{borderWidth:1,borderColor:'#bfcdc0',borderRadius:9,backgroundColor:'#fff',padding:12,minHeight:49,fontSize:15,color:ink}}/>
     <Pressable onPress={check} accessibilityRole="button" accessibilityLabel="Sprawdź wynik zadania Excel"
      style={{minHeight:46,backgroundColor:'#255a3d',borderRadius:9,alignItems:'center',justifyContent:'center',paddingHorizontal:12}}>
      <Text style={{color:'#fff',fontWeight:'900',fontSize:14}}>Sprawdź wynik zadania</Text>
     </Pressable>
-    {result==='wrong'&&<View testID="excel-mission-wrong" accessibilityLiveRegion="polite" style={{gap:5}}>
-     <Text style={{color:'#8c4e29',fontWeight:'900',fontSize:13}}>Nie zgadza się z wynikiem kontrolnym.</Text>
-     <Text style={{color:'#825e47',fontSize:13,lineHeight:21}}>{mission.hint}</Text>
-    </View>}
+    {result==='wrong'&&<View testID="excel-mission-wrong" accessibilityLiveRegion="polite" style={{gap:7}}>
+     <Text style={{color:'#8c4e29',fontWeight:'900',fontSize:13}}>Jeszcze nie — sprawdź rodzaj odpowiedzi i obliczenia.</Text>
+     <Text testID="excel-mission-answer-feedback" style={{color:'#825e47',fontSize:13,lineHeight:21}}>{feedbackText}</Text>
+     <Text style={{color:'#825e47',fontSize:13,lineHeight:21}}><Text style={{fontWeight:'900'}}>Podpowiedź do zadania: </Text>{mission.hint}</Text>
+    </View>
     {result==='right'&&<View testID="excel-mission-correct" accessibilityLiveRegion="polite" style={{backgroundColor:'#eef8ee',padding:11,borderRadius:9,gap:7}}>
-     <Text style={{color:'#236244',fontSize:14,fontWeight:'900'}}>✓ Wynik poprawny — porównany z wartością kontrolną.</Text>
+     <Text style={{color:'#236244',fontSize:14,fontWeight:'900'}}>✓ Odpowiedź pasuje do wyniku kontrolnego.</Text>
+     <Text style={{color:'#2d5540',fontSize:13,lineHeight:21}}>{feedbackText}</Text>
      <Text style={{color:'#2d5540',fontSize:13,lineHeight:21}}>{mission.explanation}</Text>
      <Text style={{color:'#735632',fontSize:12,lineHeight:18}}>Błąd, którego unikaj: {mission.mistake}</Text>
     </View>}
@@ -84,7 +85,7 @@ export default function ExcelProfessionalMission({lessonNo}:{lessonNo:number}){
      <Text style={{color:'#24638a',fontWeight:'800',fontSize:12,textDecorationLine:'underline'}}>Dokumentacja funkcji Microsoft Excel ↗</Text>
     </Pressable>
    </View>}
-   <Text style={{color:'#587162',fontSize:11,lineHeight:18}}>Wynik zadania jest sprawdzany lokalnie, bez wysyłania danych osobowych. Zaznaczenie kroków i odpowiedź nie zastępują egzaminu kursowego. Pracownia jest symulacją szkoleniową, a nie licencjonowanym Excelem.</Text>
+   <Text style={{color:'#587162',fontSize:11,lineHeight:18}}>To samokontrola: sprawdzamy poprawność wpisanej odpowiedzi, nie obserwujemy faktycznego pliku w Excelu. Zaznaczenie kroków oznacza wykonanie ich według Twojej deklaracji, nie jest automatyczną weryfikacją. Ćwiczenie nie zastępuje egzaminu kursowego ani licencjonowanego Excela.</Text>
   </View>
  </View>;
 }
