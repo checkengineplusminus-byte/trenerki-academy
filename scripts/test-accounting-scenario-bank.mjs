@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {inspectScenarioBankBridge} from '../src/accounting/scenario-bank-bridge.js';
+import {inspectScenarioBankBridge as inspectFromMonthClose} from '../src/accounting/tax-close-training.js';
 import {SCENARIO_ID,scenarioBankCSV} from '../src/accounting/simulator-core.js';
 import {parseBankCSV} from '../src/accounting/lab-core-base.js';
 
@@ -113,4 +114,26 @@ test('Długi opis lub znak nowej linii są zgodne z bezpiecznym obcięciem CSV',
  state.bank=parseBankCSV(scenarioBankCSV(custom)).rows;
  assert.equal(state.bank[0].description.length,245);
  assert.equal(inspect(state,custom).passed,true);
+});
+
+test('D01–D36: zamknięcie miesiąca nie może ominąć ścisłej kontroli CSV i dekretów',()=>{
+ const cases=[
+  ['poprawne źródła',s=>s],
+  ['fałszywy opis przelewu',s=>{s.bank[0].description='Wymyślony opis bez pochodzenia';return s;}],
+  ['błędne konto rozrachunku',s=>{s.journals[1].lines[0].account='800';return s;}],
+  ['duplikat D01 w CSV',s=>{s.bank.push({...s.bank[0]});return s;}],
+  ['storno poprzedniego zapisu',s=>{s.journals.push({
+   id:'storno-d01',date:'2026-01-02',source_type:'manual',source_id:'',
+   reversal_of:'j-D01',status:'posted',lines:originalLines('D01')
+  });return s;}]
+ ];
+ for(const [reason,alter] of cases){
+  const state=alter(makeState());
+  assert.deepEqual(inspectFromMonthClose(state,manifest,'2026-01'),
+   inspect(state,manifest,'2026-01'),
+   'Ścieżka końcowego zamknięcia różni się od bramki banku: '+reason);
+ }
+ const noPeriod=inspectFromMonthClose(makeState(),manifest,null);
+ assert.equal(noPeriod.passed,false);
+ assert.equal(noPeriod.status,'not_tested');
 });
