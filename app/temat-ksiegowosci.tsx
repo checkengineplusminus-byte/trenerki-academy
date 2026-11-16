@@ -4,10 +4,12 @@ import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
 import {checkExercise,sourceURL} from '../src/accounting/reader-core.js';
+// @ts-ignore — same read-only progress rules as the 100-topic programme.
+import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
 type Answer={exercise_id:string;answer:string};
-function Task({exercise,topicNo,userId,initial}:{exercise:any;topicNo:number;userId:string;initial:string}){
+function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:number;userId:string;initial:string;onSaved:(id:string,answer:string)=>void}){
  const [answer,setAnswer]=useState(initial),[feedback,setFeedback]=useState<any>(null);
  const [saving,setSaving]=useState(false),[saved,setSaved]=useState(false),[saveError,setSaveError]=useState('');
  const lock=useRef(false);
@@ -25,6 +27,7 @@ function Task({exercise,topicNo,userId,initial}:{exercise:any;topicNo:number;use
    ).select('updated_at').single();
    if(write.error)throw write.error;
    setSaved(true);
+   onSaved(exercise.id,answer);
   }catch{setSaveError('Odpowiedź została sprawdzona lokalnie, ale nie zapisała się na koncie. Spróbuj ponownie.');}
   finally{lock.current=false;setSaving(false);}
  }
@@ -90,6 +93,13 @@ export default function TematKsiegowosci(){
   return()=>subscription.unsubscribe();
  },[router]);
  const m=lesson?.material||{};
+ const savedRows=topic!==null?Object.entries(answers).map(([exercise_id,answer])=>({topic_no:topic,exercise_id,answer})):[];
+ const progress=buildCorePracticeProgress(
+  topic!==null&&lesson?[{topic_no:topic,status:lesson.editorial_status}]:[],
+  topic!==null&&lesson?[{topic_no:topic,material:m}]:[],
+  savedRows,{materialsReady:!!lesson,answersReady:!!userId});
+ const sectionProgress=topic!==null?progress.byTopic[topic]:null;
+ const nextReady=sectionProgress?.passed===true;
  return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
   <View style={s.row}><Link href="/program-ksiegowosci" style={s.link}>← Wróć do 100 tematów</Link><Link href="/ksiegowosc" style={s.link}>Encyklopedia</Link></View>
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie lekcji"/>}
@@ -127,7 +137,7 @@ export default function TematKsiegowosci(){
    </View>}
    <View style={s.card}><Text accessibilityRole="header" style={s.h2}>Sprawdź samodzielnie</Text>
     <Text style={s.small}>Liczba zadań w tym temacie: {(m.exercises||[]).length}. Klucz pojawia się po własnej próbie; nie jest to egzamin certyfikujący.</Text>
-    {(m.exercises||[]).map((e:any)=><Task key={e.id} exercise={e} topicNo={lesson.topic_no} userId={userId} initial={answers[e.id]||''}/>)}
+    {(m.exercises||[]).map((e:any)=><Task key={e.id} exercise={e} topicNo={lesson.topic_no} userId={userId} initial={answers[e.id]||''} onSaved={(id,answer)=>setAnswers(old=>({...old,[id]:answer}))}/>)}
    </View>
    {(m.glossary||[]).length>0&&<View style={s.card}><Text accessibilityRole="header" style={s.h2}>Słowniczek od zera</Text>
     {m.glossary.map((g:any,i:number)=><View key={i} style={s.gloss}><Text style={s.label}>{g.term}</Text><Text style={s.body}>{g.meaning}</Text></View>)}
@@ -143,6 +153,20 @@ export default function TematKsiegowosci(){
       {url&&<Pressable accessibilityRole="button" style={s.button} onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}><Text style={s.buttonText}>Otwórz wskazane źródło</Text></Pressable>}
      </View>;
     })}
+   </View>
+   <View style={s.card}>
+    <Text accessibilityRole="header" style={s.h2}>Dokończ ten temat i przejdź dalej</Text>
+    {sectionProgress?
+      <Text style={s.body}>Zapisane i poprawne odpowiedzi: {sectionProgress.correct}/{sectionProgress.total}. Zapisane próby: {sectionProgress.attempted}/{sectionProgress.total}.</Text>:
+      <Text style={s.warning}>Nie udało się zweryfikować wszystkich zadań. Nie oznaczamy tematu jako zaliczonego.</Text>}
+    {!nextReady&&<Text style={s.small}>Rozwiąż wszystkie zadania poprawnie i zapisz odpowiedzi na koncie. Przycisk kolejnego kroku pojawi się po potwierdzonym zapisie — samo przeczytanie tekstu nie wystarczy.</Text>}
+    {nextReady&&topic!==null&&topic<100&&
+     <Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic+1)}}} style={s.link}>Przejdź do tematu {topic+1} z 100</Link>}
+    {nextReady&&topic===100&&<>
+     <Text style={s.small}>Ostatni temat — teraz wykonaj końcowe ćwiczenia na fikcyjnej firmie. To jeszcze nie oznacza wydania dyplomu.</Text>
+     <Link href="/biuro-ksiegowe" style={s.link}>Otwórz biuro — Zestawienia i sprawdzian końcowy</Link>
+    </>}
+    <Link href="/program-ksiegowosci" style={s.link}>Wróć do programu i swoich wyników</Link>
    </View>
   </View>}
  </ScrollView>;

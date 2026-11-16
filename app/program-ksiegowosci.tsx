@@ -4,6 +4,8 @@ import {Link,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — niezależnie testowany pomocnik rozróżnia stan bazy i widoczność RLS.
 import {materialCoverageKnown,materialCount} from '../src/accounting/program-visibility.js';
+// @ts-ignore — read-only per-exercise progress, checked against visible materials and private answers.
+import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 
 type Status='planned'|'in_progress'|'review_needed'|'blocked'|'complete';
 type Filter='all'|'draft'|'review'|'missing';
@@ -42,6 +44,10 @@ export default function ProgramKsiegowosci(){
  const router=useRouter();
  const [topics,setTopics]=useState<Topic[]>([]);
  const [materialStats,setMaterialStats]=useState<Record<number,MaterialStats>>({});
+ const [practiceMaterials,setPracticeMaterials]=useState<any[]>([]);
+ const [savedAnswers,setSavedAnswers]=useState<any[]>([]);
+ const [answersReady,setAnswersReady]=useState(false);
+ const [answersError,setAnswersError]=useState('');
  const [materialsReady,setMaterialsReady]=useState(false);
  const [isEditor,setIsEditor]=useState(false);
  const [overviewAuthored,setOverviewAuthored]=useState<number|null>(null);
@@ -56,7 +62,7 @@ export default function ProgramKsiegowosci(){
  useEffect(()=>{
   let active=true;
   (async()=>{
-   setBusy(true);setError('');setMaterialError('');setMaterialsReady(false);setIsEditor(false);setOverviewAuthored(null);
+   setBusy(true);setError('');setMaterialError('');setMaterialsReady(false);setIsEditor(false);setOverviewAuthored(null);setAnswersError('');setAnswersReady(false);setSavedAnswers([]);setPracticeMaterials([]);
    try{
     const session=await supabase.auth.getUser();
     if(!active)return;
@@ -83,6 +89,7 @@ export default function ProgramKsiegowosci(){
     if(material.error){
      setMaterialError('Nie udało się pobrać liczników opracowań. Ich stan jest nieznany, nie wynosi zero.');
     }else{
+     setPracticeMaterials(material.data||[]);
      const stats:Record<number,MaterialStats>={};
      for(const row of material.data||[]){
       const m=(row as any).material||{};
@@ -96,12 +103,20 @@ export default function ProgramKsiegowosci(){
      setMaterialStats(stats);
      setMaterialsReady(true);
     }
+    // Private learner answers are read only under the logged-in user ID AND RLS.
+    // If the read fails, the progress is unknown, never zero or completed.
+    const saved=await supabase.from('ta_accounting_core_answers_v3')
+     .select('topic_no,exercise_id,answer').eq('user_id',session.data.user.id);
+    if(!active)return;
+    if(saved.error)setAnswersError('Nie udało się odczytać Twoich ćwiczeń. Postęp jest nieznany — nie nadpisano odpowiedzi.');
+    else{setSavedAnswers(saved.data||[]);setAnswersReady(true);}
    }catch(e:any){if(active)setError(e?.message||'Nie udało się wczytać programu.');}
    finally{if(active)setBusy(false);}
   })();
   return()=>{active=false;};
  },[router,reload]);
 
+ const practice=buildCorePracticeProgress(topics,practiceMaterials,savedAnswers,{materialsReady,answersReady});
  const total=topics.length;
  const finished=topics.filter(t=>t.status==='complete').length;
  const toReview=topics.filter(t=>t.status==='review_needed').length;
@@ -139,6 +154,7 @@ export default function ProgramKsiegowosci(){
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie programu i stanu opracowań"/>}
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
   {!!materialError&&<Text accessibilityRole="alert" style={s.warning}>{materialError}</Text>}
+  {!!answersError&&<Text accessibilityRole="alert" style={s.warning}>{answersError}</Text>}
   {!busy&&!error&&<>
    <View style={s.grid}>
     <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
@@ -147,6 +163,17 @@ export default function ProgramKsiegowosci(){
     <View style={s.metric}><Text style={s.metricNumber}>{planned}</Text><Text style={s.small}>Status: planowane</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?total-draftCount:'—'}</Text><Text style={s.small}>Bez nowego opracowania (potwierdzone)</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?olderOnly:'—'}</Text><Text style={s.small}>Tylko odnośnik do starszej lekcji</Text></View>
+   </View>
+   <View style={s.card}>
+    <Text style={s.label}>Twoje ćwiczenia — zapisane na koncie</Text>
+    {practice.known?
+      practice.availableTopics>0?<>
+       <Text style={s.body}>{practice.correctAnswers}/{practice.totalQuestions} poprawnych odpowiedzi · {practice.passedTopics}/{practice.availableTopics} tematów z poprawnym kompletem odpowiedzi.</Text>
+       <Text style={s.small}>Odpowiedzi zapisane: {practice.attemptedAnswers}. Wynik pochodzi z Twoich odpowiedzi do obecnie dostępnej wersji zadań, nie ze starego licznika przeczytanych stron.</Text>
+       {practice.nextTopic!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(practice.nextTopic)}}} style={s.link}>Kontynuuj ćwiczenia — temat {practice.nextTopic}</Link>}
+       <Text style={s.small}>To ćwiczeniowy postęp, nie zaliczenie całego kursu. Niezatwierdzone wersje są tylko do recenzji; dyplom wymaga osobnego procesu.</Text>
+      </>:<Text style={s.small}>Na tym koncie nie ma jeszcze dostępnych zadań do policzenia. Materiały ukryte przez RLS nie są uznawane za brakujące ani zaliczone.</Text>
+    :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
    </View>
    {!isEditor&&<Text style={s.small}>Odczyt Twojego konta pokazuje tylko udostępnione lekcje. Nieudostępniona wersja nie oznacza braku opracowania. Stan wszystkich szkiców zna wyłącznie widok redakcyjny.</Text>}
    {isEditor&&materialsReady&&<View style={s.notice}>
@@ -201,6 +228,11 @@ export default function ProgramKsiegowosci(){
         !isEditor?'Brak dostępu do wersji redakcyjnej; nie jest to dowód braku opracowania.':
         legacy?'Brak nowego opracowania; starsza lekcja nr '+topic.lesson_no+' to kandydat do wykorzystania.':
         'Brak nowego opracowania i brak wskazanej starszej lekcji.'}</Text>}
+       {practice.known&&practice.byTopic[topic.topic_no]&&
+        <Text style={s.small}>Twoje ćwiczenia: {practice.byTopic[topic.topic_no].correct}/{practice.byTopic[topic.topic_no].total} poprawnych,
+         {practice.byTopic[topic.topic_no].attempted} zapisanych odpowiedzi.
+         {practice.byTopic[topic.topic_no].passed?' Komplet odpowiedzi poprawny — nie jest to odbiór redakcyjny.':''}
+        </Text>}
        <Text style={s.todo}>{next}</Text>
        {!!stats&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>Otwórz zapisany materiał</Link>}
       </View>;
