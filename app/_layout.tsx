@@ -89,6 +89,8 @@ function AccountLayout(){
    <Stack.Screen name="majatek-ksiegowy"/>
    <Stack.Screen name="slownik-ksiegowego"/>
    <Stack.Screen name="ksiegowosc"/>
+   <Stack.Screen name="program-ksiegowosci"/>
+   <Stack.Screen name="temat-ksiegowosci"/>
    <Stack.Screen name="sciezka-ksiegowosci"/>
    <Stack.Screen name="formularze-ksiegowego"/>
    <Stack.Screen name="dyplom"/>
