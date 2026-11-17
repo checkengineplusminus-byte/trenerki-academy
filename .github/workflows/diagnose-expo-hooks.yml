@@ -1,0 +1,62 @@
+name: TRENERKI — diagnostyka błędu publikacji Expo
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-expo-hooks.yml'
+      - 'scripts/test-accounting-entry.mjs'
+      - 'app/nauka.tsx'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  account_guard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies identical to Expo hook stage
+        run: npm install --no-audit --no-fund
+      - name: Run EXACT accounting route and source-guard test from Expo build hooks
+        run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+  other_eas_hooks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies identical to Expo hook stage
+        run: npm install --no-audit --no-fund
+      - name: Validate all other Expo before-deploy content and educational hooks
+        run: |
+          node --experimental-default-type=module --test scripts/test-course-progress.mjs
+          node --test scripts/test-exam-readiness.mjs
+          node --experimental-strip-types --test scripts/test-autocad-full-manual-v3.mjs
+          node --test scripts/test-autocad-methodology-review.mjs
+          node --experimental-strip-types --test scripts/test-cad-restored.mjs
+          node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
+          node --experimental-strip-types --test scripts/test-cad-mirror-rotate.mjs
+          node --experimental-strip-types --test scripts/test-cad-status-and-click.mjs
+          node --test scripts/test-autocad-exam-bank.mjs
+          node --test scripts/test-autocad-dxf.mjs
+          node scripts/audit-course-standards.mjs --enforce
+          node scripts/check-content-consistency.mjs
+          node scripts/test-excel-currency.mjs
+          node scripts/test-excel-firstday-formulas.mjs
+          node --test scripts/test-excel-all-missions.mjs
+          node --test scripts/test-excel-real-homework.mjs
+          node --test scripts/test-excel-shortcuts-and-charts.mjs
+          node --test scripts/test-excel-master-guide.mjs
+          node scripts/test-anielka.mjs
+          node scripts/test-course-icons.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-reader.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-identities.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-homework-worksheet.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-lab-navigation.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-study-path.mjs
