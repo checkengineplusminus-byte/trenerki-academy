@@ -33,10 +33,12 @@ async function runBrowser(browser,device){
   assert.notEqual(animation,'none','Affiliate callout should pulse for users who permit motion');
   await page.emulateMedia({reducedMotion:'reduce'});
   assert.equal(await affiliate.evaluate(node=>getComputedStyle(node).animationName),'none','Reduce-motion must disable pulsing');
-  const buying=page.locator('[data-course-id="obowiazki-domowe"] .btn-buy-card');
-  await buying.waitFor();
+  const buying=page.locator('article.course-card .btn-buy-card').filter({hasText:'Kup kurs'}).first();
+  await buying.waitFor({timeout:18000});
+  const courseId=await buying.locator('xpath=ancestor::article[1]').getAttribute('data-course-id');
+  assert(courseId,'Paid course card missing unique ID');
   await buying.click();
-  await page.waitForURL(url=>url.pathname==='/konto'&&url.searchParams.get('ref')===code&&url.searchParams.get('course')==='obowiazki-domowe',{timeout:10000});
+  await page.waitForURL(url=>url.pathname==='/konto'&&url.searchParams.get('ref')===code&&url.searchParams.get('course')===courseId,{timeout:10000});
   console.log('✓ '+device+' public visitor: 10% footer, reduced motion and referral passed to account');
   await page.goto(origin+'/academy/program-afiliacyjny.html');
   await page.getByRole('link',{name:/Zostań partnerem/}).waitFor();
