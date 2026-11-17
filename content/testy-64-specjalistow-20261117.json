@@ -1,0 +1,1385 @@
+{
+  "meta": {
+    "date": "2026-11-17",
+    "mode": "AI-based simulation of professional review roles, not external human specialists",
+    "simulated_professional_profiles": 64,
+    "human_professional_approvals": 0,
+    "courses": 8,
+    "lessons": 64,
+    "accounting_excluded": true,
+    "original_quiz_keys_preserved": true
+  },
+  "groups": {
+    "bednarz": 4,
+    "brygadzista": 12,
+    "jak-kupic-samochod": 8,
+    "kolodziej": 4,
+    "lepszy-tata": 12,
+    "obowiazki-domowe": 8,
+    "plecionkarz": 4,
+    "swiety-mikolaj": 12
+  },
+  "reviews": [
+    {
+      "slug": "bednarz",
+      "lesson_no": 16,
+      "reviewer_profile": "Technolog drewna i wilgotności",
+      "advanced_case": "Beczka po 12 godzinach kontaktu z wodą nie przecieka, ale nie ma informacji o wcześniejszym przeznaczeniu. Czy wolno napełnić ją sokiem?",
+      "expected_resolution": "Nie. Szczelność jest wynikiem technicznym, a przydatność do kontaktu z żywnością wymaga niezależnych danych o materiałach i historii użycia.",
+      "required_fix": "Oddziel w karcie trzy kolumny: szczelność, higiena oraz deklarowane zastosowanie. Oznacz «niepotwierdzony kontakt z żywnością», gdy brak identyfikacji materiałów i poprzedniego przeznaczenia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 1,
+      "title": "17. Szczelność a wilgotność — plan kontrolowanego testu",
+      "previous_quiz": {
+        "question": "Jak zapiszesz wynik próby, gdy przy denku nadal widać przeciek?",
+        "correct_index": 1,
+        "correct_text": "Zanotować miejsce wycieku, przeprowadzić właściwą diagnostykę i wstrzymać odbiór do potwierdzenia przyczyny.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 17,
+      "reviewer_profile": "Specjalista planowania rozkroju i wydajności",
+      "advanced_case": "Na 25 zaakceptowanych klepek zakład wynosi 80%. Ile półfabrykatów należy przewidzieć i czy wynik gwarantuje komplet?",
+      "expected_resolution": "Zaokrąglij 25/0,8=31,25 w górę do 32 sztuk. To oszacowanie statystyczne, nie gwarancja; zapisz rzeczywisty uzysk.",
+      "required_fix": "Wprowadź zasadę zaokrąglania do pełnej sztuki w górę, a obok obliczenia wykaż zmianę wyniku przy niższym rzeczywistym uzysku; nie podstawiaj szerokości surowej deski za gotową geometrię klepki.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 2,
+      "title": "18. Oblicz zapotrzebowanie na klepki i zapas",
+      "previous_quiz": {
+        "question": "Ile półfabrykatów uwzględnisz przy założonym uzysku 80%, żeby zaplanować 24 zaakceptowane klepki?",
+        "correct_index": 2,
+        "correct_text": "Plan zakupu to około 30 półfabrykatów, ponieważ 24/0,8=30.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 18,
+      "reviewer_profile": "Audytor bezpieczeństwa materiałów do kontaktu z żywnością",
+      "advanced_case": "Odnowiona beczka jest szczelna, lecz sprzedawca nie wie, jaki lakier zastosowano. Klient chce wlać do niej napój. Co wpiszesz na etykiecie?",
+      "expected_resolution": "Nie dopuszczaj do kontaktu z napojem. Wstrzymaj deklarację przydatności i wymagaj danych o wyrobie, powłokach oraz zgodności z właściwymi przepisami.",
+      "required_fix": "Doprecyzuj: rozporządzenie WE 1935/2004 i dobra praktyka produkcji WE 2023/2006 dotyczą wyrobów przeznaczonych do kontaktu z żywnością. Sama naturalność drewna ani test szczelności nie dowodzą zgodności.",
+      "source_urls": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 3,
+      "title": "19. Beczka użytkowa: dokumentuj granice bezpieczeństwa",
+      "previous_quiz": {
+        "question": "Klient chce przechowywać sok w odnowionej beczce o nieznanym pochodzeniu. Jak postępujesz?",
+        "correct_index": 0,
+        "correct_text": "Wyjaśniasz, że bez danych o materiałach i poprzednim użyciu nie można potwierdzić przydatności do kontaktu z napojem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 19,
+      "reviewer_profile": "Kontroler jakości wyrobu bednarskiego",
+      "advanced_case": "Protokół zawiera zdjęcie i wymiary beczki, ale brak zastosowania i ograniczeń. Czy można zamknąć odbiór?",
+      "expected_resolution": "Nie dla wyrobu użytkowego. Należy wskazać przeznaczenie, materiały, wykonane próby, niezgodności, instrukcję konserwacji i podpis osoby przyjmującej.",
+      "required_fix": "Rozdziel akceptację wyglądu od akceptacji użytkowej. Dodaj pole «niezweryfikowane» tam, gdzie brak dokumentów — nigdy nie traktuj pustego pola jako wyniku pozytywnego.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 4,
+      "title": "20. Odbiór końcowy: karta wyrobu i plan konserwacji",
+      "previous_quiz": {
+        "question": "Jak powinna wyglądać karta odbioru drewnianej beczki?",
+        "correct_index": 3,
+        "correct_text": "Powinna wskazać wymiary, materiały, wykonane kontrole, ograniczenia użytkowania i zasady pielęgnacji.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 8,
+      "reviewer_profile": "Koordynator dokumentacji technicznej BIM i rewizji",
+      "advanced_case": "W rejestrze jest rewizja C, a paleta ma B. Kierownik mówi przez telefon «będzie dobrze». Czego brakuje?",
+      "expected_resolution": "Potwierdzenia właściwego detalu, statusu wydania i zgodności dostarczonego materiału. Sporne mocowanie wstrzymuje się do decyzji uprawnionej osoby.",
+      "required_fix": "Wyjaśnij, że numer rewizji, jej data i status zatwierdzenia muszą odnosić się do tego samego zakresu. Telefon nie zastępuje automatycznie procedury dokumentowania zmian.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 5,
+      "title": "Czytanie rewizji rysunku i kontrola zmian",
+      "previous_quiz": {
+        "question": "Masz dwa różne detale tego samego mocowania: rewizję B na palecie i C w aktualnym rejestrze. Co powinno wydarzyć się przed montażem?",
+        "correct_index": 1,
+        "correct_text": "Potwierdzić obowiązującą rewizję i zgodność dostawy, wstrzymując sporne mocowanie do decyzji uprawnionej osoby.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 9,
+      "reviewer_profile": "Geodeta budowlany i specjalista punktów odniesienia",
+      "advanced_case": "Laser ustawiono 700 mm ponad zerem, a odczyt dotyczy poziomu posadzki. Pomiar wpisano z offsetem dwa razy. Jak wykryć błąd?",
+      "expected_resolution": "Narysuj oś zera i położenie lasera, zapisz równanie ze znakiem i jednostką oraz uwzględnij offset dokładnie raz; wynik zweryfikuj niezależnym punktem.",
+      "required_fix": "W każdym przykładzie pomiaru rozróżnij odczyt instrumentu, wysokość instrumentu, poziom bazowy i rzędną docelową. Nie wolno dodawać lub odejmować 700 mm z pamięci bez schematu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 6,
+      "title": "Pomiary kontrolne i punkt odniesienia",
+      "previous_quiz": {
+        "question": "Po obliczeniu poziomu z lasera pracownik chce odjąć ponownie 700 mm offsetu, bo „laser jest wyżej”. Co powinieneś zrobić?",
+        "correct_index": 2,
+        "correct_text": "Zatrzymać przeliczenie i odtworzyć wzór wraz ze znakiem i punktem zerowym; offset uwzględnić dokładnie raz.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 10,
+      "reviewer_profile": "Inżynier jakości i tolerancji montażowych",
+      "advanced_case": "Wynik +8 mm jest pewny, ale nie dostarczono specyfikacji tolerancji. Czy raport może mówić «element zgodny»?",
+      "expected_resolution": "Nie. Wynik odchylenia nie jest oceną zgodności. Potrzebne jest właściwe, zatwierdzone kryterium i decyzja o wpływie na połączenie.",
+      "required_fix": "Dopisz do protokołu osobne pola: projekt, wynik, różnica, norma/specyfikacja, status decyzji. W razie braku normy wpisz «nieustalone», nie samodzielnie wymyślone ±10 mm.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 7,
+      "title": "Tolerancje: kiedy pomiar wymaga decyzji",
+      "previous_quiz": {
+        "question": "Element ma +8 mm względem rysunku, ale w przekazanych dokumentach nie wskazano dopuszczalnego odchylenia. Co robisz?",
+        "correct_index": 0,
+        "correct_text": "Zgłaszasz brak kryterium i prosisz właściwą osobę o decyzję opartą na dokumentacji oraz wpływie na montaż.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 11,
+      "reviewer_profile": "Planista kolejności robót i konfliktów międzybranżowych",
+      "advanced_case": "Montaż balustrady jutro zablokuje transport instalacji, choć prace balustradowe są w harmonogramie. Kto i co uzgadnia?",
+      "expected_resolution": "Koordynatorzy obu ekip ustalają okno dostępu, strefę i warunki bezpieczeństwa; aktualizują plan, nie dopuszczając kolizyjnego montażu bez uzgodnienia.",
+      "required_fix": "Dodać przykładowy protokół przekazania strefy z osobą odpowiedzialną, godziną i warunkiem jej otwarcia; termin harmonogramowy nie jest samodzielnym pozwoleniem na niebezpieczny transport.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 8,
+      "title": "Kolejność montażu a dostęp dla innych ekip",
+      "previous_quiz": {
+        "question": "Kierownik instalacji informuje, że po montażu balustrad nie będzie mógł wprowadzić swoich elementów. Co jest właściwym ruchem?",
+        "correct_index": 1,
+        "correct_text": "Uzgodnić kolejność, strefę i punkt przekazania z obiema ekipami, zachowując wymogi bezpieczeństwa i odbioru.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 12,
+      "reviewer_profile": "Kierownik operacji dźwigowych i zawiesi",
+      "advanced_case": "Cztery palety ważą razem 4800 kg. Zespół wybiera dźwig, dzieląc masę przez cztery. Co pominął?",
+      "expected_resolution": "Rzeczywistą masę najcięższego ładunku, promień pracy, urządzenie i osprzęt, podłoże oraz plan bezpiecznego podnoszenia.",
+      "required_fix": "W zadaniu wymagaj tabeli mas jednostkowych i danych zawiesi zamiast średniej. Bez tabeli udźwigu odpowiedniej do promienia nie akceptuj wyboru urządzenia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 9,
+      "title": "Dostawa i bezpieczne rozładowanie",
+      "previous_quiz": {
+        "question": "Na liście przewozowym są cztery palety o łącznej masie 4800 kg. Która informacja jest krytyczna do wyboru urządzenia?",
+        "correct_index": 3,
+        "correct_text": "Wymagana jest wiarygodna masa najcięższej palety oraz warunki i sposób podnoszenia.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 13,
+      "reviewer_profile": "Specjalista bezpieczeństwa pracy na wysokości",
+      "advanced_case": "Podnośnik jest zajęty, monter proponuje wnieść dużą szybę po drabinie. Czy można zastąpić plan stwierdzeniem «to tylko jedno piętro»?",
+      "expected_resolution": "Nie. Wstrzymuje się taki transport; należy dobrać zgodny z instrukcją sposób przenoszenia tafli i dostęp, po ocenie ryzyka i przygotowaniu ekipy.",
+      "required_fix": "Wskaż, że korzystanie z podnośnika wymaga zgodności z instrukcją producenta i oceny ryzyka. Drabina nie jest dowolnym zamiennikiem transportu ciężkiego szkła.",
+      "source_urls": [
+        "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/",
+        "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/bruk-av-personlofter/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 10,
+      "title": "Praca na wysokości: wybór metody dostępu",
+      "previous_quiz": {
+        "question": "Monter proponuje wniesienie ciężkiej szyby po drabinie, ponieważ podnośnik jest zajęty. Co odpowiedzieć?",
+        "correct_index": 2,
+        "correct_text": "Wstrzymać taki transport i zorganizować odpowiedni dostęp oraz bezpieczny sposób przeniesienia tafli.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 14,
+      "reviewer_profile": "Inspektor jakości szkła architektonicznego",
+      "advanced_case": "Krawędź tafli ma wyszczerbienie, które schowa się w profilu. Czy niewidoczność usuwa ryzyko?",
+      "expected_resolution": "Nie. Element zabezpiecza się i zgłasza do oceny zgodności zgodnie z wymaganiami dla szkła i jego mocowania przed instalacją.",
+      "required_fix": "Dodaj wyraźny zakaz samodzielnego szlifowania lub maskowania uszkodzenia krawędzi elementu wymagającego oceny; fotografie i identyfikator partii pozostają w dokumentacji.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 11,
+      "title": "Jakość szkła i elementów przed montażem",
+      "previous_quiz": {
+        "question": "Zespół proponuje ukryć uszkodzoną krawędź szyby w profilu, bo po montażu nie będzie jej widać. Co robisz?",
+        "correct_index": 0,
+        "correct_text": "Zabezpieczasz element i wymagasz oceny zgodności przez właściwą osobę przed montażem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 15,
+      "reviewer_profile": "Specjalista planowania roboczogodzin",
+      "advanced_case": "Czterech pracowników było 7 godzin na budowie, w tym godzinę czekało na sprzęt. Ile godzin montażu, a ile przestoju?",
+      "expected_resolution": "24 roboczogodziny pracy bez oczekiwania i 4 roboczogodziny przestoju; łącznie 28 roboczogodzin obecności.",
+      "required_fix": "Trzymaj osobne kolumny: czas kalendarzowy, liczba osób, roboczogodziny produkcyjne i oczekiwanie. Nie myl sumy godzin pracy z czasem, który upłynął na budowie.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 12,
+      "title": "Harmonogram godzin a rzeczywisty nakład",
+      "previous_quiz": {
+        "question": "Cztery osoby są przez 7 godzin na budowie. Wszyscy czekali na sprzęt przez 1 godzinę. Ile godzin pracy bez oczekiwania przypada na zespół?",
+        "correct_index": 1,
+        "correct_text": "24 rbh pracy oraz 4 rbh oczekiwania.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 16,
+      "reviewer_profile": "Kontroler kosztów robót i zmian kontraktowych",
+      "advanced_case": "Zespół czekał 5 roboczogodzin, a stawka kalkulacyjna to 550 NOK/rbh. Czy 2750 NOK należy automatycznie dopisać klientowi do faktury?",
+      "expected_resolution": "Nie. 2750 NOK jest wyliczonym kosztem kalkulacyjnym, a zasadność fakturowania zależy od kontraktu, dowodów i procedury zmiany.",
+      "required_fix": "Dodatkowy przykład musi oddzielać koszt wewnętrzny, zgłoszenie roszczenia i zatwierdzony przychód. Nie zamieniaj prostego mnożenia w automatyczne prawo do zapłaty.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 13,
+      "title": "Odchylenie kosztowe: skąd bierze się strata",
+      "previous_quiz": {
+        "question": "Ekipa straciła 5 rbh na oczekiwanie. W kalkulacji używasz 550 NOK/rbh. Co prawidłowo wynika z obliczenia?",
+        "correct_index": 0,
+        "correct_text": "2750 NOK kosztu kalkulacyjnego, ale prawo do rozliczenia z klientem wymaga osobnej analizy kontraktu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 17,
+      "reviewer_profile": "Specjalista kontraktów budowlanych i zmian VO",
+      "advanced_case": "Klient telefonicznie zamawia dwa nowe wsporniki, ale nie ma pisemnej zmiany. Jak ograniczyć spór?",
+      "expected_resolution": "Opisz nowy zakres, rysunek i koszt/czas oraz prześlij do zatwierdzenia właściwą procedurą; nie traktuj milczenia jako bezwarunkowej zgody.",
+      "required_fix": "Uzupełnij ścieżkę: zlecenie, weryfikacja wpływu, wycena, pisemne potwierdzenie, wykonanie, dokumentacja. Wymagany tryb wynika z konkretnego kontraktu, a nie jednej uniwersalnej zasady.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 14,
+      "title": "Zgłaszanie zmian i potwierdzenia do klienta",
+      "previous_quiz": {
+        "question": "Klient prosi o dwa dodatkowe wsporniki, których nie ma w uzgodnionym zakresie. Co zrobić?",
+        "correct_index": 3,
+        "correct_text": "Opisać zmianę, zebrać dane czasu i materiału i skierować do zatwierdzenia właściwym trybem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 18,
+      "reviewer_profile": "Inżynier raportowania zaawansowania robót",
+      "advanced_case": "Wykonano 36/40 m, a odebrano 28/40 m. Czy wolno napisać «90% ukończone i odebrane»?",
+      "expected_resolution": "Nie. Montaż 90%, odbiór 70%, różnica 8 m. Każdy etap i blokery należy wykazać osobno.",
+      "required_fix": "Rozdziel w raporcie status wykonania, kontroli jakości, odbioru klienta i plan usunięcia braków. Wprowadź przykład z obliczeniem 36/40 i 28/40 bez sumowania procentów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 15,
+      "title": "Spotkanie z kierownikiem: jak pokazać stan",
+      "previous_quiz": {
+        "question": "Z zaplanowanych 40 m zamontowano 36 m, a odebrano 28 m. Jak raportować?",
+        "correct_index": 2,
+        "correct_text": "Rozdzielić 90% montażu od 70% odbioru, wskazując brakujące kontrole i ryzyka.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 19,
+      "reviewer_profile": "Kierownik budowy — zarządzanie ryzykiem harmonogramu",
+      "advanced_case": "Termin jest pilny, ale najnowszy detal mocowania nie został potwierdzony. Czy zatrzymać wszystkie prace?",
+      "expected_resolution": "Wstrzymaj sporny montaż, a bezpieczne i niezależne zadania kontynuuj po koordynacji; pilnie pozyskaj zatwierdzony detal.",
+      "required_fix": "Dodaj macierz zadań «bezpiecznie kontynuować / wymaga decyzji / wstrzymać». Nie buduj fałszywego wyboru między pracą bez dokumentów a odwołaniem całego tygodnia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 16,
+      "title": "Symulacja: projekt pod presją terminu",
+      "previous_quiz": {
+        "question": "Brakuje aktualnego detalu mocowania, a termin klienta jest pilny. Które podejście jest najlepsze?",
+        "correct_index": 1,
+        "correct_text": "Wstrzymanie spornego mocowania, równoległe wykonanie bezpiecznych niezależnych prac i pilne uzyskanie decyzji o rewizji.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 12,
+      "reviewer_profile": "Rzeczoznawca identyfikacji pojazdów i VIN",
+      "advanced_case": "VIN z ogłoszenia zgadza się z numerem nadwozia, ale w dokumentach jest inny wariant silnika. Czy raport online wystarcza?",
+      "expected_resolution": "Nie. Wstrzymaj płatność do wyjaśnienia zgodności oznaczeń, dokumentów, konfiguracji fabrycznej oraz ewentualnych zmian homologacyjnych.",
+      "required_fix": "W recenzji oddziel identyfikację VIN od ustalenia rzeczywistego stanu technicznego. Rozbieżność może wynikać z błędu danych, ale nie powinna zostać zignorowana.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 17,
+      "title": "Weryfikacja VIN bez wiary w jeden raport",
+      "previous_quiz": {
+        "question": "Numer VIN zgadza się z ogłoszeniem, ale dokumenty wskazują inny wariant silnika. Co powinieneś zrobić?",
+        "correct_index": 2,
+        "correct_text": "Wstrzymać decyzję do wyjaśnienia rozbieżności w identyfikacji i dokumentach.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 13,
+      "reviewer_profile": "Diagnosta historii przebiegu pojazdu",
+      "advanced_case": "Wpis serwisowy dwa lata temu 172 000 km, dziś 163 000 km. Co jest dowodem cofnięcia licznika?",
+      "expected_resolution": "Sama rozbieżność jest sygnałem ostrzegawczym, nie ostatecznym dowodem przyczyny. Poproś o dokumenty, sprawdź kolejność wpisów i wykonaj niezależną weryfikację.",
+      "required_fix": "Nie ucz wyrokowania o oszustwie na podstawie jednej niespójności. Zaznacz, że źle wpisany przebieg, wymiana zegarów i ingerencja wymagają odrębnych dowodów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 18,
+      "title": "Ocena przebiegu: dokumenty, stan i logika",
+      "previous_quiz": {
+        "question": "Dokument sprzed dwóch lat pokazuje 172 000 km, a obecny licznik 163 000 km. Co zrobić?",
+        "correct_index": 1,
+        "correct_text": "Zażądać wiarygodnego wyjaśnienia i dokumentów przed zawarciem transakcji.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 14,
+      "reviewer_profile": "Technik diagnostyki akumulatorów trakcyjnych EV",
+      "advanced_case": "Wyświetlany zasięg 400 km ma dowodzić 100% kondycji baterii. Jak go zweryfikować?",
+      "expected_resolution": "Nie jest to pomiar pojemności użytkowej ani gwarancja zasięgu; potrzebny wiarygodny test baterii odpowiedni do danego modelu, ładowania i warunków.",
+      "required_fix": "Rozróżnij zasięg szacowany, rzeczywiste zużycie energii, wynik diagnostycznego SoH i gwarancję producenta. Jednorazowe wskazanie ekranu nie jest certyfikatem.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 19,
+      "title": "Samochód elektryczny: bateria, ładowanie i koszty",
+      "previous_quiz": {
+        "question": "Sprzedawca wskazuje wyświetlany zasięg 400 km jako dowód doskonałej kondycji baterii. Jak to ocenić?",
+        "correct_index": 0,
+        "correct_text": "Sam zasięg wyświetlany nie wystarcza; potrzebne są wiarygodne dane baterii i test zgodności sposobu ładowania.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 15,
+      "reviewer_profile": "Mechanik przeglądów przedzakupowych",
+      "advanced_case": "Auto 28 000 zł; opony i hamulce wymagają 3000 zł. Ile kosztuje wejście przed OC, podatkiem i innymi naprawami?",
+      "expected_resolution": "Co najmniej 31 000 zł. Koszt bezpieczeństwa trzeba uwzględnić przed transakcją i potwierdzić stan warsztatowo.",
+      "required_fix": "Wskazówki obejmują bieżnik, wiek i typ opon, stan hamulców i zawieszenia oraz budżet z rezerwą. Próba drogowa nie zastępuje kontroli podzespołów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 20,
+      "title": "Opony, hamulce i zawieszenie: koszty po zakupie",
+      "previous_quiz": {
+        "question": "Auto kosztuje 28 000 zł, a niezbędne opony i hamulce to 3000 zł. Jaki koszt przyjąć w budżecie przed innymi opłatami?",
+        "correct_index": 3,
+        "correct_text": "Co najmniej 31 000 zł, uwzględniając cenę i rozpoznane niezbędne naprawy.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 16,
+      "reviewer_profile": "Analityk kredytu konsumenckiego na zakup auta",
+      "advanced_case": "Dwie oferty mają taką samą ratę, ale jedna ma dłuższy okres i większy wykup końcowy. Co porównać?",
+      "expected_resolution": "Całkowitą kwotę do zapłaty, RRSO przy porównywalnych parametrach, opłaty, ubezpieczenie wymagane umową i warunki wykupu.",
+      "required_fix": "Usuń ryzyko utożsamiania małej raty z tanim finansowaniem. Dodaj obliczenie sumy rat plus opłat i ewentualnej ostatniej raty, bez wymyślania aktualnej oferty banku.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 21,
+      "title": "Kredyt samochodowy: rata nie jest całym kosztem",
+      "previous_quiz": {
+        "question": "Sprzedawca reklamuje najniższą ratę, nie pokazując całkowitej kwoty do zapłaty. Jak porównać ofertę?",
+        "correct_index": 1,
+        "correct_text": "Zsumować wszystkie raty i opłaty, porównać RRSO i warunki na takich samych założeniach.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 17,
+      "reviewer_profile": "Prawnik ochrony konsumentów i transakcji samochodowych",
+      "advanced_case": "Komis reklamuje samochód, lecz chce umowy z prywatną osobą. Kto odpowiada za niezgodność towaru z umową?",
+      "expected_resolution": "Najpierw ustal faktyczną stronę i charakter sprzedaży; w relacji konsument–przedsiębiorca zastosowanie mają przepisy o niezgodności towaru z umową. Przy transakcji prywatnej reżim jest inny.",
+      "required_fix": "Wyjaśnij konsekwencje sprzedaży przez przedsiębiorcę versus pośrednictwa komisu. Nigdy nie zakładaj, że ogłoszenie w komisie samo przesądza, kto jest sprzedawcą w umowie.",
+      "source_urls": [
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/",
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 22,
+      "title": "Zakup od firmy czy osoby prywatnej: czego sprawdzić",
+      "previous_quiz": {
+        "question": "Komis wystawia ogłoszenie, lecz na umowie widnieje nieznana osoba fizyczna. Co zrobić?",
+        "correct_index": 2,
+        "correct_text": "Wyjaśnić, kto faktycznie sprzedaje auto i ma do tego prawo oraz jaki reżim prawny dotyczy transakcji.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 18,
+      "reviewer_profile": "Specjalista formalności rejestracyjnych w Polsce",
+      "advanced_case": "Osoba prywatna kupiła w Polsce zarejestrowany pojazd. Czy wystarczy zgłosić nabycie, a wniosek o rejestrację odłożyć?",
+      "expected_resolution": "Nie. Zasadą dla obecnego nabycia jest wniosek o rejestrację w ciągu 30 dni; są wyjątki, w tym termin 60 dni przy spadku i 90 dni dla przedsiębiorcy handlującego pojazdami.",
+      "required_fix": "W lekcji doprecyzuj obowiązek złożenia wniosku, a nie gwarantowanego wydania dowodu w 30 dni. Sprawdź OC i dokumenty. Pokaż wyjątki i źródło Gov.pl aktualne w dniu nauki.",
+      "source_urls": [
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/",
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 23,
+      "title": "Rejestracja i formalności po zakupie w Polsce",
+      "previous_quiz": {
+        "question": "Kupujący dostał kluczyki, ale nie sprawdził ciągłości ubezpieczenia. Który krok jest odpowiedzialny?",
+        "correct_index": 0,
+        "correct_text": "Sprawdzić stan i ciągłość wymaganej ochrony przed jazdą oraz ustalić aktualne formalności we właściwych źródłach.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 19,
+      "reviewer_profile": "Doradca planowania obsługi serwisowej pojazdu",
+      "advanced_case": "Samochód 35 000 zł, serwis 1800 zł, rezerwa 1200 zł. Ile przygotować na start i jak planować następne 90 dni?",
+      "expected_resolution": "38 000 zł przed pozostałymi opłatami. W planie wydziel rzeczy pilne dla bezpieczeństwa, formalności i obserwację eksploatacji.",
+      "required_fix": "Nie rekomenduj bezpodstawnej wymiany wszystkich elementów. Zapisz dokumentację, rekomendacje producenta i wynik diagnostyki, wraz z pozycją «wymaga potwierdzenia».",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 24,
+      "title": "Plan pierwszych 90 dni z samochodem",
+      "previous_quiz": {
+        "question": "Auto kosztuje 35 000 zł, rozpoznany serwis 1800 zł, a planowana rezerwa 1200 zł. Jaką kwotę należy przewidzieć na początek, nie licząc innych opłat?",
+        "correct_index": 3,
+        "correct_text": "38 000 zł, ponieważ cena, serwis i rezerwa to trzy elementy budżetu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 16,
+      "reviewer_profile": "Metrolog kół i bicia obręczy",
+      "advanced_case": "Koło drewniane ma odchylenie 5 mm w dwóch punktach, brak tolerancji. Czy jest dopuszczone do jazdy?",
+      "expected_resolution": "Nie. Najpierw trzeba ustalić rodzaj bicia, oś pomiarową, przeznaczenie i wymagane kryteria bezpieczeństwa.",
+      "required_fix": "Odróżniaj bicie promieniowe od bocznego; nie twórz dopuszczalnej tolerancji z samego wrażenia wzrokowego lub liczby 5 mm.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 25,
+      "title": "17. Koło po naprawie: mierzenie bicia przed odbiorem",
+      "previous_quiz": {
+        "question": "Dwa punkty mają różnicę odczytu 5 mm, ale brak dopuszczalnej tolerancji projektowej. Jaki jest wniosek?",
+        "correct_index": 2,
+        "correct_text": "Należy udokumentować wynik i ustalić właściwą tolerancję oraz przeznaczenie przed decyzją o użytkowaniu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 17,
+      "reviewer_profile": "Rzemieślnik konstrukcji piasty i szprych",
+      "advanced_case": "Jedna szprycha jest luźna po naprawie, reszta wygląda prawidłowo. Co sprawdzić?",
+      "expected_resolution": "Zbadaj gniazdo piasty, sąsiednie połączenia, stan włókien i geometrię całego koła. Dla wyrobu do jazdy wymagana jest osobna ocena konstrukcyjna.",
+      "required_fix": "Nie dopuszczaj do bezpiecznego użytkowania na podstawie dobicia jednej szprychy bez pomiarów. Przy ekspozycji stosuj odrębne kryteria.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 26,
+      "title": "18. Naprężenia w połączeniach szprych i piasty",
+      "previous_quiz": {
+        "question": "Jedna szprycha jest luźna przy piaście. Co zrobić przed oceną naprawy?",
+        "correct_index": 0,
+        "correct_text": "Zbadać także gniazdo w piaście, sąsiednie połączenia i geometrię oraz wyjaśnić źródło luzu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 18,
+      "reviewer_profile": "Konserwator historycznych pojazdów i eksponatów",
+      "advanced_case": "Muzealna replika koła ma starą naprawę, klient prosi o dopuszczenie jej do ruchu. Co zrobić?",
+      "expected_resolution": "Odmówić deklaracji bez oceny przydatności do jazdy i badań. Zachowanie substancji historycznej to inny cel niż eksploatacja.",
+      "required_fix": "Podaj na karcie odbioru «eksponat» albo «użytkowe» z osobnymi wymaganiami; dokumentacja konserwacji nie zastępuje testów nośności.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 27,
+      "title": "19. Koło muzealne a koło do jazdy: dwa różne odbiory",
+      "previous_quiz": {
+        "question": "Odnowione koło ma wyłącznie udokumentowany stan eksponatu. Jak je opisać?",
+        "correct_index": 1,
+        "correct_text": "Jako koło przeznaczone do ekspozycji z opisem wykonanych prac i bez deklaracji użytkowania drogowego.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 19,
+      "reviewer_profile": "Audytor jakości zleceń kołodziejskich",
+      "advanced_case": "Karta koła pokazuje gatunek drewna, ale nie obejmuje geometrii i przeznaczenia. Czy zamknąć odbiór?",
+      "expected_resolution": "Nie. Podaj identyfikację, materiał, naprawy, geometrię, zakres badań, decyzje i ograniczenia; brak testów oznacz jawnie.",
+      "required_fix": "Zaproponuj ścieżkę przekazania klientowi, która nie sugeruje certyfikacji nieprzeprowadzonej w warsztacie.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 28,
+      "title": "20. Zlecenie kołodziejskie: dokumentuj plan i wynik",
+      "previous_quiz": {
+        "question": "Klient chce używać dekoracyjnej repliki koła w pojeździe. Co robisz?",
+        "correct_index": 3,
+        "correct_text": "Wyjaśnić, że to zmiana przeznaczenia wymagająca odrębnej oceny konstrukcyjnej i zgodności.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 8,
+      "reviewer_profile": "Psycholog więzi rodzic–dziecko",
+      "advanced_case": "Dziecko zaprasza do pokazania modelu przez 20 minut, rodzic planował spacer. Czy ważniejsze jest sztywne dotrzymanie planu?",
+      "expected_resolution": "Nie. Uzgodnij z dzieckiem wspólną, bezpieczną aktywność i odłóż telefon; nie uzależniaj uwagi od ocen ani nagród.",
+      "required_fix": "Dodaj obserwowalny wskaźnik zaangażowania rodzica: brak multitaskingu, pytanie o wybór i podsumowanie bez oceniania uczuć dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 29,
+      "title": "Czas jeden na jeden bez telefonu",
+      "previous_quiz": {
+        "question": "Jak uzgodnisz wspólną aktywność na dostępne 20 minut?",
+        "correct_index": 0,
+        "correct_text": "Wybrać wspólne oglądanie budowli po uzgodnieniu z dzieckiem, a spacer pozostawić jako możliwość na inny dzień.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 9,
+      "reviewer_profile": "Specjalista regulacji emocji dzieci",
+      "advanced_case": "Dziecko po przegranej rzuca kontrolerem. Jak odróżnić akceptację emocji od zgody na przemoc?",
+      "expected_resolution": "Nazwij frustrację bez zawstydzania, zatrzymaj rzucanie i zapewnij bezpieczeństwo; po uspokojeniu wróć do ustalenia sposobu działania.",
+      "required_fix": "Doprecyzuj kolejność: bezpieczeństwo, uznanie emocji, granica, możliwość naprawy. Nie nazywaj złości chorobą ani cechą charakteru.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 30,
+      "title": "Akceptuj emocję, zatrzymuj krzywdzące zachowanie",
+      "previous_quiz": {
+        "question": "Jak uznasz rozczarowanie i zareagujesz na rzucanie kontrolerem?",
+        "correct_index": 1,
+        "correct_text": "Nazwać rozczarowanie, zatrzymać rzucanie i wrócić do rozmowy, gdy będzie bezpiecznie.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 10,
+      "reviewer_profile": "Pedagog uczenia samodzielności",
+      "advanced_case": "Dziecko prosi o pomoc z konstrukcją, po dwóch błędach rodzic chce wykonać wszystko sam. Co zrobić?",
+      "expected_resolution": "Sprawdź, co już próbowało, wskaż małą podpowiedź i oddaj mu wykonanie; przejmij zadanie tylko w razie zagrożenia lub gdy pomoc jest konieczna.",
+      "required_fix": "Ucz rozróżniania stopni podpowiedzi: pytanie naprowadzające, pokazanie fragmentu, działanie wspólne. Nie nagradzaj rodzica za szybkość kosztem nauki dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 31,
+      "title": "Zadanie zamiast wyręczania",
+      "previous_quiz": {
+        "question": "Jak pomóc dziecku znaleźć pomylone części modelu?",
+        "correct_index": 2,
+        "correct_text": "Zapytać o dotychczasowe próby, wskazać fragment instrukcji i pozwolić samodzielnie sprawdzić następny krok.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 11,
+      "reviewer_profile": "Edukator higieny cyfrowej rodziny",
+      "advanced_case": "Rodzic zabrania telefonu przy kolacji, lecz sam stale odbiera maile. Jak przeformułować regułę?",
+      "expected_resolution": "Wprowadź wspólną zasadę bez ekranów i jawny wyjątek dla pilnego kontaktu, wyjaśniając go wszystkim.",
+      "required_fix": "Nie proponuj jednego uniwersalnego limitu minut dla każdego wieku; obserwuj sen, funkcjonowanie i kontakt, a nie tylko stoper.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 32,
+      "title": "Rodzinne zasady ekranów, które obowiązują dorosłych",
+      "previous_quiz": {
+        "question": "Jak ustalisz zasadę telefonu przy kolacji dla wszystkich?",
+        "correct_index": 3,
+        "correct_text": "Uzgodnić zasadę wspólną dla wszystkich z jasnym wyjątkiem na rzeczywiście pilny kontakt.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 12,
+      "reviewer_profile": "Psycholog konsultacji szkolnych dzieci",
+      "advanced_case": "Po szkole dziecko odpowiada «normalnie» i wycofuje się do pokoju. Czy to dowód problemu psychicznego?",
+      "expected_resolution": "Nie. Uszanuj odpoczynek, zaoferuj kontakt w innym momencie; przy rzeczywistych sygnałach ryzyka szukaj adekwatnej pomocy.",
+      "required_fix": "Ujmij brak rozmowy jako możliwą, nie jedyną interpretację. Nie ucz wchodzenia w telefon dziecka lub przesłuchiwania bez przesłanek.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 33,
+      "title": "Gdy dziecko milczy po powrocie ze szkoły",
+      "previous_quiz": {
+        "question": "Jak dasz dziecku przestrzeń i możliwość rozmowy później?",
+        "correct_index": 0,
+        "correct_text": "Pozwolić na przerwę, okazać dostępność i zaproponować rozmowę w późniejszym spokojnym momencie.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 13,
+      "reviewer_profile": "Mediator rodzinny opieki naprzemiennej",
+      "advanced_case": "Rodzic chce przez dziecko przesłać zmianę godziny odbioru 17:00 na 17:30. Kto odpowiada za potwierdzenie?",
+      "expected_resolution": "Dorośli bezpośrednio, w bezpiecznym kanale. Nie obciążaj dziecka rolą posłańca lub dowodu w sporze.",
+      "required_fix": "Dodaj zapis daty, godziny, miejsca i osoby potwierdzającej; w sytuacji przemocy zastrzeżenie o bezpiecznej komunikacji przez wyznaczony kanał.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 34,
+      "title": "Dziecko nie jest posłańcem między rodzicami",
+      "previous_quiz": {
+        "question": "Kto potwierdzi zmianę odbioru z 17:00 na 17:30?",
+        "correct_index": 1,
+        "correct_text": "Przekazać zmianę bezpośrednio drugiemu opiekunowi i potwierdzić godzinę odbioru.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 14,
+      "reviewer_profile": "Specjalista komunikacji naprawczej z dzieckiem",
+      "advanced_case": "Tata krzyknął. Czy przeprosiny «Przepraszam, ale mnie sprowokowałeś» są wystarczające?",
+      "expected_resolution": "Nie. Rodzic nazywa własny błąd bez «ale», bierze odpowiedzialność i proponuje zmianę zachowania. Dziecko nie musi od razu wybaczyć.",
+      "required_fix": "W quizie wymagaj rozpoznania odpowiedzialności dorosłego, a w dodatkowym zadaniu zapisu obserwowalnego kroku naprawy zamiast obietnicy «już nigdy».",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 35,
+      "title": "Jak przeprosić dziecko i naprawić relację",
+      "previous_quiz": {
+        "question": "Które przeprosiny nazywają zachowanie i możliwą zmianę?",
+        "correct_index": 2,
+        "correct_text": "„Krzyknąłem i to było niewłaściwe. Przepraszam. Następnym razem zatrzymam się, zanim odpowiem”.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 15,
+      "reviewer_profile": "Psycholog rozwoju i prywatności nastolatka",
+      "advanced_case": "Piętnastolatek wraca z treningu o 20:30 i nie chce ciągłego śledzenia GPS. Jak pogodzić autonomię i bezpieczeństwo?",
+      "expected_resolution": "Uzgodnij godzinę, kontakt przy zmianie planu i plan awaryjny adekwatny do ryzyka. Nie instaluj ukrytego nadzoru jako automatycznej reguły.",
+      "required_fix": "Rozróżnij porozumienie z nastolatkiem od wyjątków w przypadku zagrożenia. Nie sugeruj, że prywatność znika przez samo niepełnoletnie dziecko.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 36,
+      "title": "Nastolatek: autonomia, prywatność i bezpieczeństwo",
+      "previous_quiz": {
+        "question": "Jak uzgodnisz bezpieczny powrót z treningu?",
+        "correct_index": 3,
+        "correct_text": "Uzgodnić porę, kontakt przy zmianie planu i jasne działanie na wypadek zagrożenia.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 16,
+      "reviewer_profile": "Pedagog współpracy rodziny ze szkołą",
+      "advanced_case": "Nauczyciel zgłasza trzy braki, dziecko nie rozumiało zadań. Jaki jest pierwszy krok: kara czy diagnoza sytuacji?",
+      "expected_resolution": "Rozmowa o konkretnych trudnościach, sprawdzenie instrukcji i mały uzgodniony plan ze szkołą; bez przypisywania winy.",
+      "required_fix": "Dodaj przykład pytania o format zadania, dostęp do materiałów i sposób sprawdzenia postępu. Nie zamieniaj oceny w etykietę dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 37,
+      "title": "Rozmowa z nauczycielem bez szukania winnego",
+      "previous_quiz": {
+        "question": "Co ustalisz z dzieckiem i nauczycielem o zaległych zadaniach?",
+        "correct_index": 0,
+        "correct_text": "Ustalić z dzieckiem i nauczycielem przyczynę trudności, a następnie zaplanować niewielki mierzalny krok.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 17,
+      "reviewer_profile": "Mediator konfliktów między rodzeństwem",
+      "advanced_case": "Dwoje dzieci spiera się o rower; jedno musi jechać na trening. Jak rozwiązać konflikt bez etykiety «samolub»?",
+      "expected_resolution": "Zatrzymaj przepychanki, wysłuchaj obie strony i uzgodnij sprawdzalną kolejność z uwzględnieniem realnych terminów.",
+      "required_fix": "Dodaj kryterium: obie strony mają możliwość wypowiedzi, zasada jest wykonalna i nie wymaga stałego arbitra. Nie ustalaj winy z góry.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 38,
+      "title": "Spór rodzeństwa: fakty zamiast etykiet",
+      "previous_quiz": {
+        "question": "Jak uzgodnisz kolejność korzystania z jednego roweru?",
+        "correct_index": 1,
+        "correct_text": "Wysłuchać obie strony, rozpoznać ograniczenie i uzgodnić sprawdzalną kolejność korzystania.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 18,
+      "reviewer_profile": "Psycholog motywacji młodzieży w sporcie",
+      "advanced_case": "Dziecko nie dostało się do drużyny. Czy obietnica «za rok na pewno wygrasz» jest wspierająca?",
+      "expected_resolution": "Nie. Nazwij rozczarowanie i wspólnie oceń małe kroki pozostające pod kontrolą dziecka, bez gwarancji wyniku i bez przymusu treningu.",
+      "required_fix": "W ćwiczeniu oddziel feedback o procesie od obietnic wyniku; zapisz dwie opcje, w tym prawo dziecka do odpoczynku lub rezygnacji.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 39,
+      "title": "Jak pomóc po porażce bez pustych obietnic",
+      "previous_quiz": {
+        "question": "Jak pomożesz po nieprzyjęciu do drużyny?",
+        "correct_index": 2,
+        "correct_text": "Uznając rozczarowanie, zapytać o gotowość do rozmowy i możliwe następne próby bez gwarancji wyniku.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 19,
+      "reviewer_profile": "Trener umiejętności rodzicielskich i ewaluacji nawyków",
+      "advanced_case": "Po miesiącu dziecko proponuje gotowanie zamiast spacerów. Czy zmiana aktywności to porażka planu 90 dni?",
+      "expected_resolution": "Nie. Zmień formę, zachowując regularny kontakt i uzgodnione granice. Mierz własną dostępność, nie wdzięczność dziecka.",
+      "required_fix": "W programie 90 dni dodaj cotygodniową refleksję rodzica i możliwość korekty na podstawie preferencji dziecka; bez formularza oceniania dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 40,
+      "title": "Plan 90 dni: obserwuj, poprawiaj, pytaj",
+      "previous_quiz": {
+        "question": "Jak zmienisz rytuał po informacji, że dziecko woli gotowanie?",
+        "correct_index": 0,
+        "correct_text": "Zaproponować wspólne gotowanie i sprawdzić, czy nowa forma pomaga utrzymać regularny kontakt.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 12,
+      "reviewer_profile": "Projektant procesów porządkowych w domu",
+      "advanced_case": "Rano jest nieporządek mimo wieczornego «posprzątane». Jak znaleźć przyczynę bez wskazywania winnego?",
+      "expected_resolution": "Zdefiniuj widoczny stan po kolacji i jeden prosty krok po określonym zdarzeniu; obserwuj proces przez tydzień.",
+      "required_fix": "Przygotuj checklistę rzeczywiście sprawdzalnego rezultatu, a nie ocenę charakteru domowników. Liczy się przepływ rzeczy i czas ich odkładania.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 41,
+      "title": "Punkty zapalne w mieszkaniu",
+      "previous_quiz": {
+        "question": "Co ustalisz jako pierwszy sprawdzalny rezultat po kolacji?",
+        "correct_index": 0,
+        "correct_text": "Uzgodnić jeden widoczny stan końcowy kuchni i przypisać do niego prosty krok po kolacji.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 13,
+      "reviewer_profile": "Psycholog podziału obciążenia mentalnego",
+      "advanced_case": "Jedna osoba myje łazienkę, druga pilnuje zapasów, terminu i przypomnień. Kto wykonuje niewidzialną część pracy?",
+      "expected_resolution": "Ta, która planuje, pamięta i organizuje. Równy podział zadań powinien uwzględniać także plan i monitorowanie.",
+      "required_fix": "Oddziel wykonawcę od osoby odpowiedzialnej za całość zadania; unikaj liczenia jedynie minut fizycznego sprzątania.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 42,
+      "title": "Obciążenie niewidzialne: kto pamięta?",
+      "previous_quiz": {
+        "question": "Jak przekazać odpowiedzialność za całe zadanie?",
+        "correct_index": 2,
+        "correct_text": "Przekazać wraz z myciem łazienki odpowiedzialność za plan, zapasy i kontrolę terminu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 14,
+      "reviewer_profile": "Specjalista planowania czasu rodziny",
+      "advanced_case": "Wyjście 7:30, podstawowe czynności 35 min, bufor 10 min. Kiedy najpóźniej rozpocząć?",
+      "expected_resolution": "O 6:45, jeśli te czasy są realistyczne i nie obejmują czynności dodatkowych. Co można przygotować wieczorem?",
+      "required_fix": "Dodaj rozróżnienie działań sekwencyjnych i równoległych; prosta suma nie dowodzi, że cały plan jest wykonalny dla wszystkich domowników.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 43,
+      "title": "Rutyna poranna bez pośpiechu",
+      "previous_quiz": {
+        "question": "O której zaczniesz, żeby zachować rezerwę?",
+        "correct_index": 1,
+        "correct_text": "Rozpocząć najpóźniej o 6:45, zostawiając około 10 minut rezerwy.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 15,
+      "reviewer_profile": "Koordynator rodzinnych planów awaryjnych",
+      "advanced_case": "Rodzic choruje, a na tydzień zaplanowano 10 prac domowych. Czy wykonanie wszystkich jest obowiązkiem?",
+      "expected_resolution": "Nie. Zabezpiecz minimum higieny, jedzenia i opieki, rozdziel pomoc i przełóż bezpiecznie resztę.",
+      "required_fix": "Rozdziel zadania krytyczne od kosmetycznych i dostosuj role do wieku oraz dostępności domowników; nie używaj kar za chorobę.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 44,
+      "title": "Plan na chorobę i nagły brak czasu",
+      "previous_quiz": {
+        "question": "Jak ustalisz wersję minimum na ten tydzień?",
+        "correct_index": 3,
+        "correct_text": "Ustalić minimum higieny i opieki, bezpiecznie odroczyć resztę i zmienić plan na ten tydzień.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 16,
+      "reviewer_profile": "Ekspert bezpiecznej chemii gospodarczej",
+      "advanced_case": "W szafce stoi odkamieniacz i środek chlorowy. Domownik chce je zmieszać dla silniejszego działania. Co robisz?",
+      "expected_resolution": "Nie miesza się środków na własną rękę, zwłaszcza produktów chlorowych z kwasami; należy czytać etykiety i przechowywać chemikalia poza dostępem dzieci.",
+      "required_fix": "Rozszerz wskazówki o zakaz mieszania chemikaliów, oryginalne opakowania i wentylację zgodnie z instrukcją. Stałe miejsce sprzętu nie zwalnia z kontroli substancji.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 45,
+      "title": "Sprzęt w jednym miejscu: skróć szukanie",
+      "previous_quiz": {
+        "question": "Jak sprawdzisz rozwiązanie problemu ze sprzętem?",
+        "correct_index": 1,
+        "correct_text": "Wyznaczyć bezpieczne, stałe miejsce sprzętu i mierzyć czas znalezienia po zmianie.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 17,
+      "reviewer_profile": "Pedagog obowiązków dopasowanych do wieku",
+      "advanced_case": "Dziecko nakryło stół, ale zapomniało dwóch łyżek. Czy należy zabrać mu zadanie?",
+      "expected_resolution": "Nie. Pokaż prostą samokontrolę, pozwól poprawić pomyłkę i dostosuj trudność bezpiecznie do wieku.",
+      "required_fix": "Daj przykład pozytywnej informacji zwrotnej o wykonaniu i jednej rzeczy do uzupełnienia; nie włączaj dzieci do kontaktu z ostrą chemią.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 46,
+      "title": "Dziecko uczy się odpowiedzialności — bez kar za pomyłkę",
+      "previous_quiz": {
+        "question": "Jak pomożesz mu sprawdzić i dokończyć własne zadanie?",
+        "correct_index": 0,
+        "correct_text": "Dać mu prosty sposób sprawdzenia czterech miejsc i pozwolić uzupełnić brakujące elementy.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 18,
+      "reviewer_profile": "Ekonomista kosztów eksploatacji domu",
+      "advanced_case": "Środek 750 ml kosztuje 15 zł, inny 1 litr kosztuje 18 zł. Który jest tańszy na litr i czy zawsze lepiej go kupić?",
+      "expected_resolution": "750 ml wychodzi 20 zł/l, 1 l — 18 zł/l. Większe opakowanie jest tańsze jednostkowo, ale zakup wymaga realnego zużycia i bezpiecznego składowania.",
+      "required_fix": "Dodaj obliczenie 15/0,75=20 i porównanie z 18; rozdziel cenę jednostkową od całkowitej oszczędności oraz kosztów przechowywania.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 47,
+      "title": "Koszty sprzątania: licz przed zakupem",
+      "previous_quiz": {
+        "question": "Które porównanie kosztu na litr i faktycznego zużycia jest poprawne?",
+        "correct_index": 2,
+        "correct_text": "Większe opakowanie kosztuje 18 zł/l, ale kupno ma sens tylko przy realnym zużyciu i miejscu składowania.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 19,
+      "reviewer_profile": "Audytor ergonomii i sprawiedliwości podziału obowiązków",
+      "advanced_case": "Wykonanie prac wzrosło z 60% do 83%, ale jeden domownik jest przeciążony. Czy plan jest optymalny?",
+      "expected_resolution": "Nie można tego uznać tylko na podstawie procentu. Oceń wynik oraz rozkład pracy i ustal jedną korektę.",
+      "required_fix": "Rozdziel jakość wykonania, realny czas, liczbę przypomnień i obciążenie uczestników. Wzrost wykonania nie jest automatyczną miarą dobrostanu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 48,
+      "title": "Audyt miesiąca: co naprawdę się zmieniło?",
+      "previous_quiz": {
+        "question": "Jak ocenisz jednocześnie wykonanie i podział pracy?",
+        "correct_index": 3,
+        "correct_text": "Uznać poprawę wykonania i osobno przeanalizować obciążenie osób, zanim zatwierdzi się nowy plan.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 16,
+      "reviewer_profile": "Mistrz doboru wikliny i konstrukcji splotu",
+      "advanced_case": "Kosz zakupowy projektowany jest według barwy prętów, bez sprawdzenia uchwytu. Czy to bezpieczne?",
+      "expected_resolution": "Nie. Oceń stan, giętkość, splot konstrukcyjny, mocowanie uchwytu i zamierzone obciążenia.",
+      "required_fix": "Dopisz rozróżnienie prętów dna, ścian i obrzeża; nie deklaruj nośności bez sprawdzenia całej konstrukcji i odpowiednich prób.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 49,
+      "title": "17. Dobór wikliny do kosza zakupowego",
+      "previous_quiz": {
+        "question": "Kosz ma przenosić zakupy, a wykonawca dobiera materiał wyłącznie według koloru. Co należy zmienić?",
+        "correct_index": 0,
+        "correct_text": "Sprawdzić również funkcję prętów, połączenia uchwytu, stan materiału i sposób użytkowania.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 17,
+      "reviewer_profile": "Kontroler geometrii wyrobów plecionkarskich",
+      "advanced_case": "Kosz ma w osiach 300 i 318 mm. Czy 18 mm różnicy można zignorować, bo nie widać jej na zdjęciu?",
+      "expected_resolution": "Nie. Zmierz ponownie po ustaleniu orientacji i porównaj z szablonem; skoryguj przed zamknięciem splotu, jeśli projekt tego wymaga.",
+      "required_fix": "Wstaw tabelę średnic i wysokości w czterech punktach oraz wyjaśnij, że tolerancję dla rzemiosła trzeba uzgodnić, a nie przyjąć automatycznie.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 50,
+      "title": "18. Kontrola kształtu: mierzenie dna, ścianki i uchwytu",
+      "previous_quiz": {
+        "question": "W dwóch kierunkach kosz ma średnice 300 i 318 mm. Jakie jest rozsądne pierwsze działanie?",
+        "correct_index": 2,
+        "correct_text": "Sprawdzić projekt, szablon i rozstaw słupków, następnie ocenić korektę przed zakończeniem splotu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 18,
+      "reviewer_profile": "Konserwator wyrobów z włókien roślinnych",
+      "advanced_case": "Uchwyt kosza pękł, a na dnie widać oznaki wilgoci i podejrzany nalot. Czy wystarczy zakleić uchwyt?",
+      "expected_resolution": "Nie. Oceń splot, sąsiednie pręty, połączenia i ewentualne skażenie; przy niepotwierdzonej higienie nie polecaj zwykłego dalszego użytkowania.",
+      "required_fix": "Dodaj rozdzielenie wad konstrukcyjnych i higienicznych; przypadkowy klej ani przetarcie nie zastępują oceny wilgotności i stanu wyrobu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 51,
+      "title": "19. Konserwacja kosza i naprawa uszkodzeń",
+      "previous_quiz": {
+        "question": "Kosz ma pęknięty uchwyt przy mocowaniu do ścianki. Co robisz przed naprawą?",
+        "correct_index": 1,
+        "correct_text": "Oglądasz połączenie uchwytu ze splotem i stan sąsiednich prętów, a potem planujesz naprawę.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 19,
+      "reviewer_profile": "Projektant bezpiecznych wyrobów wiklinowych",
+      "advanced_case": "Kosz dekoracyjny ma nosić ciężkie narzędzia. Czy zmiana przeznaczenia jest możliwa bez testów?",
+      "expected_resolution": "Nie. Powinna być poprzedzona odrębną specyfikacją i oceną mocowania uchwytów oraz nośności.",
+      "required_fix": "W protokole podkreśl różnicę między dekoracją a wyrobem użytkowym, z przeznaczeniem i ograniczeniami. Nie przepisuj udźwigu z wizualnie podobnego kosza.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 52,
+      "title": "20. Zamówienie kosza: specyfikacja i odbiór",
+      "previous_quiz": {
+        "question": "Jak odpowiesz, gdy klient chce przenosić ciężkie narzędzia w koszu zamówionym jako dekoracja?",
+        "correct_index": 3,
+        "correct_text": "Wyjaśnię różnicę zastosowań i potrzebę odrębnej oceny przed takim użytkowaniem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 8,
+      "reviewer_profile": "Pedagog animacji dziecięcej i bezpiecznego powitania",
+      "advanced_case": "Dziewczynka chowa się za opiekunem, grupa macha. Czy animator ma podejść bezpośrednio, by ją «ośmielić»?",
+      "expected_resolution": "Nie. Przywitaj grupę spokojnie, zachowaj dystans i pozwól dziecku obserwować z opiekunem lub dołączyć później.",
+      "required_fix": "Wskaż oznaki dyskomfortu, zakaz przymusu przytulenia i miejsce dla obserwatorów. Odmowa kontaktu nie pozbawia prawa do prezentu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 53,
+      "title": "Pierwsze powitanie: zbuduj poczucie bezpieczeństwa",
+      "previous_quiz": {
+        "question": "Jak poprowadzisz pierwsze chwile spotkania?",
+        "correct_index": 0,
+        "correct_text": "Zatrzymam się w widocznym miejscu, powitam grupę spokojnym głosem i zostawię dziewczynce możliwość obserwowania obok taty.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 9,
+      "reviewer_profile": "Specjalista zapobiegania wykluczeniu dzieci",
+      "advanced_case": "Dziecko z mniejszą paczką pyta, czy jest mniej ważne. Jak odpowiedzieć bez publicznego porównywania?",
+      "expected_resolution": "Uznaj jego uczucie, nie oceniaj wartości dziecka przez prezent i dyskretnie sprawdź ewentualną pomyłkę z opiekunem.",
+      "required_fix": "Usuń obietnice dodatkowej paczki bez uzgodnienia oraz publiczne wyjaśnianie budżetu rodzin. Zachowaj poufność ustaleń organizatora.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 54,
+      "title": "Prezenty bez porównywania dzieci",
+      "previous_quiz": {
+        "question": "Jak odpowiesz dziecku przy grupie?",
+        "correct_index": 2,
+        "correct_text": "Uznaję, że różnica może je zmartwić. Powiem, że paczki mogą się różnić i że możemy spokojnie porozmawiać z opiekunem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 10,
+      "reviewer_profile": "Specjalista komunikacji alternatywnej i wspomagającej AAC",
+      "advanced_case": "Dziecko nie mówi, lecz używa kart z obrazkami. Czy animator może traktować milczenie jako zgodę?",
+      "expected_resolution": "Nie. Zaproponuj dwie dostępne możliwości, daj czas na wskazanie i zachowaj prawo do obserwacji lub rezygnacji.",
+      "required_fix": "Wyraźnie rozdziel brak wypowiedzi od braku zrozumienia. Nie zmuszaj do kontaktu słownego i nie diagnozuj umiejętności dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 55,
+      "title": "Spotkanie z dzieckiem, które nie mówi",
+      "previous_quiz": {
+        "question": "Jak zaprosisz dziecko do kontaktu?",
+        "correct_index": 1,
+        "correct_text": "Zaproponuję dwie dostępne możliwości z użyciem kart, dam czas na wskazanie i pozwolę pozostać obserwatorem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 11,
+      "reviewer_profile": "Inspektor ochrony danych i wizerunku małoletnich",
+      "advanced_case": "Rodzic zgodził się na zdjęcie prywatne, organizator chce wrzucić je publicznie. Czy taka zgoda wystarcza?",
+      "expected_resolution": "Nie. Publikacja wymaga osobnej, uprzedniej i konkretnej podstawy oraz poszanowania wieku i zdania dziecka.",
+      "required_fix": "Wyjaśnij wymagania UODO: cel, konkretna platforma, odbiorca, okres i możliwość cofnięcia zgody. Zdjęcie dla rodziny nie jest automatyczną zgodą na profil publiczny.",
+      "source_urls": [
+        "https://uodo.gov.pl/pl/644/4111",
+        "https://brpd.gov.pl/2026/08/23/zgody-blankietowe-rpd-przypomina-o-ochronie-wizerunku-dzieci/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 56,
+      "title": "Zdjęcia i zgoda na publikację",
+      "previous_quiz": {
+        "question": "Co zrobisz z fotografią przeznaczoną dla rodziny?",
+        "correct_index": 3,
+        "correct_text": "Zachowam uzgodniony prywatny obieg i poproszę organizatora o wybór materiału, który wolno opublikować.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 12,
+      "reviewer_profile": "Koordynator ochrony dzieci w placówkach edukacyjnych",
+      "advanced_case": "Podczas wizyty jedno dziecko prosi o wyjście, w sali jest dwóch pracowników i animator. Kto decyduje?",
+      "expected_resolution": "Wyznaczony personel placówki; animator utrzymuje uzgodnioną rolę i nie wyprowadza dziecka sam.",
+      "required_fix": "Dopisz podział ról opiekun–animator–pomocnik i zasady przekazywania dziecka bez ujawniania danych przed grupą.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 57,
+      "title": "Świąteczna wizyta w przedszkolu i szkole",
+      "previous_quiz": {
+        "question": "Jak zorganizujesz dalsze spotkanie zgodnie z podziałem ról?",
+        "correct_index": 1,
+        "correct_text": "Uzgodnię z wychowawcą, który pracownik zajmie się dzieckiem, i dostosuję przebieg do osoby pozostającej z grupą.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 13,
+      "reviewer_profile": "Terapeuta integracji sensorycznej — projektowanie spokojnego udziału",
+      "advanced_case": "Muzyka gra głośniej, dziecko zasłania uszy i wycofuje się. Czy należy kontynuować do końca utworu?",
+      "expected_resolution": "Nie. Natychmiast ścisz lub wyłącz dźwięk i pozwól na przerwę z opiekunem.",
+      "required_fix": "W ćwiczeniu rozpoznawaj widoczne zachowanie bez stawiania diagnozy sensorycznej. Dodaj przygotowaną cichą alternatywę dla całej grupy.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 58,
+      "title": "Komunikacja z dzieckiem wrażliwym na hałas",
+      "previous_quiz": {
+        "question": "Jak zareagujesz w tym momencie?",
+        "correct_index": 0,
+        "correct_text": "Dam znak do wyłączenia muzyki, zrobię krótką pauzę i umożliwię dziecku spokojniejszy udział albo przerwę z opiekunem.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 14,
+      "reviewer_profile": "Psycholog komunikacji wspierającej dziecko w kryzysie",
+      "advanced_case": "Dziecko prosi o obietnicę powrotu taty na święta. Czy animator powinien uspokoić pewną obietnicą?",
+      "expected_resolution": "Nie. Uznaj tęsknotę, nie obiecuj rzeczy nieznanych i włącz zaufanego opiekuna.",
+      "required_fix": "Doprecyzuj granice roli animatora; nie zbieraj szczegółów rodzinnych przy innych dzieciach ani nie zastępuj specjalistycznego wsparcia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 59,
+      "title": "Życzliwość bez obietnic niemożliwych do spełnienia",
+      "previous_quiz": {
+        "question": "Co odpowiesz dziecku?",
+        "correct_index": 2,
+        "correct_text": "Powiem, że słyszę, jak bardzo tęskni, i że nie wiem, kiedy tata wróci. Jeśli zechce, zaprosimy wychowawczynię do rozmowy.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 15,
+      "reviewer_profile": "Pedagog zabawy symbolicznej i różnic wieku",
+      "advanced_case": "Dziesięciolatek rozpoznaje sąsiada w kostiumie. Czy można wymagać od niego milczenia w zamian za nagrodę?",
+      "expected_resolution": "Nie. Uznaj spostrzeżenie, uszanuj poglądy dziecka i zaproponuj udział w zabawie bez manipulowania.",
+      "required_fix": "Nie stawiaj starszego dziecka w roli «psującego magię» ani «strażnika tajemnicy»; rodziny różnie opowiadają o Mikołaju.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 60,
+      "title": "Gdy dziecko zna prawdę o Mikołaju",
+      "previous_quiz": {
+        "question": "Jak odpowiesz, by uszanować obserwację i pozwolić grupie dalej się bawić?",
+        "correct_index": 1,
+        "correct_text": "Uznaję, że głos jest znajomy, i mówię, że dziś organizujemy świąteczną zabawę, w której każdy może uczestniczyć po swojemu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 16,
+      "reviewer_profile": "Edukator ekologiczny materiałów bezpiecznych dla dzieci",
+      "advanced_case": "Został czysty papier z odzysku i kredki. Czy do zabawy można używać opakowań ze zszywkami i resztkami środków?",
+      "expected_resolution": "Nie. Reużycie nie znosi kontroli czystości, ostrości i zgodności z wiekiem uczestników.",
+      "required_fix": "Zaproponuj plan zajęć dostępny także dla dzieci, które wolą słuchać. Nie stawiaj warunku kupienia nowych przyborów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 61,
+      "title": "Ekologiczny Mikołaj: radość bez zbędnych zakupów",
+      "previous_quiz": {
+        "question": "Który plan zapewni dostępny udział całej grupie?",
+        "correct_index": 3,
+        "correct_text": "Przygotujemy kartki z dostępnego papieru i stanowiska do wspólnego rysowania. Zaproponujemy też krótką opowieść tym, którzy wolą słuchać.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 17,
+      "reviewer_profile": "Instruktor reagowania na zdarzenia i pierwszej pomocy dzieciom",
+      "advanced_case": "Dziecko upadło, ma silny ból i nie może wstać. Animator chce przesadzić je na krzesło, żeby zrobić miejsce. Co zrobić?",
+      "expected_resolution": "Przerwij wizytę, odgrodź grupę, wezwij właściwą pomoc i nie przemieszczaj dziecka bez uzasadnionej potrzeby bezpieczeństwa; ocenę urazu powierz przygotowanym osobom.",
+      "required_fix": "W przypadkach urazów nie zachęcaj animatora do samodzielnej diagnostyki ani rutynowego przenoszenia poszkodowanego. Przy zagrożeniu życia w Polsce korzystaj z numeru 112.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 62,
+      "title": "Nagła sytuacja podczas wizyty",
+      "previous_quiz": {
+        "question": "Jak zareagujesz jako animator?",
+        "correct_index": 0,
+        "correct_text": "Przerwę wizytę, rozdzielę zadania przy dziecku i grupie oraz dopilnuję wezwania odpowiedniej pomocy i wolnego dojścia.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 18,
+      "reviewer_profile": "Planista logistyki wydarzeń dziecięcych",
+      "advanced_case": "Z 20 minut programu zostało 10, a paczki zajmują 8 minut. Co skreślić?",
+      "expected_resolution": "Zachowaj minutę powitania, spokojne 8 minut przekazania paczek i minutę zamknięcia; usuń piosenkę i zdjęcia.",
+      "required_fix": "Wprowadź tabelę czasu i regułę, że skracanie atrakcji nie może wymuszać dotyku, zdjęć ani pośpiesznego wydawania paczek.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 63,
+      "title": "Przygotowanie wizyty: próba i plan B",
+      "previous_quiz": {
+        "question": "Którą zmianę zaproponujesz gospodarzowi?",
+        "correct_index": 2,
+        "correct_text": "Zaproponuję krótkie powitanie, spokojne wręczanie i zakończenie. Dodatkową piosenkę oraz zdjęcia skreślimy z tego wariantu.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 19,
+      "reviewer_profile": "Audytor standardów imprez i prawa dziecka do odmowy",
+      "advanced_case": "Organizator chce zdjęcia całej grupy, dziecko odmawia. Czy można wstrzymać prezent do zdjęcia?",
+      "expected_resolution": "Nie. Zaoferuj przekazanie prezentu poza kadrem, a organizatorowi ujęcie scenografii lub grupy osób z właściwą podstawą publikacji.",
+      "required_fix": "Sprawdzian ma oceniać dostępność udziału, zgodę i dokumentację, nie jedynie wykonanie zdjęcia. Uwzględnij wycofanie zgody oraz zdanie dziecka.",
+      "source_urls": [
+        "https://uodo.gov.pl/pl/644/4111",
+        "https://brpd.gov.pl/2026/08/23/zgody-blankietowe-rpd-przypomina-o-ochronie-wizerunku-dzieci/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false,
+      "id": 64,
+      "title": "Dyplom życzliwości: sprawdzian praktyczny",
+      "previous_quiz": {
+        "question": "Jak zakończysz tę część wizyty i uzgodnisz zdjęcie z organizatorem?",
+        "correct_index": 1,
+        "correct_text": "Umożliwię odbiór z opiekunką i miejsce poza kadrem. Z organizatorem ustalę zdjęcie chętnych lub ujęcie scenografii.",
+        "option_count": 4
+      },
+      "internal_status": "model_review_prepared_for_publication",
+      "independent_specialist_signoff": "pending_external_professional"
+    }
+  ]
+}
