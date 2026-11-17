@@ -1,5 +1,7 @@
 name: TRENERKI — AI course real browser smoke
 on:
+  push:
+    branches: ['main']
   pull_request:
     paths:
       - 'scripts/test-ai-course-browser.mjs'
@@ -24,10 +26,10 @@ jobs:
         run: |
           npm install --no-audit --no-fund
           npm install --no-save --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium firefox webkit
       - name: Export web app
         run: npx expo export --platform web --output-dir /tmp/trenerki-ai-browser
-      - name: Run AI course on desktop and mobile with synthetic learner
+      - name: Test ten simulated environments and complete 32-lesson course
         run: |
           python3 -m http.server 8791 --directory /tmp/trenerki-ai-browser >/tmp/ai-course-http.log 2>&1 &
           node scripts/test-ai-course-browser.mjs http://127.0.0.1:8791

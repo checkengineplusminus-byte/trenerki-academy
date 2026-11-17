@@ -66,6 +66,6 @@ test('completed course banner and exam appear only on the final lesson',()=>{
  const src=load('app/nauka.tsx');
  assert(src.includes("progress===100&&index===items.length-1&&!reviewMode&&<FinalExam"));
  assert(src.includes("progress===100&&index===items.length-1&&!reviewMode&&<View testID=\"course-completed-last-page-only\""));
- assert(src.includes('coachOpen&&<GuidedDialogue'));
+ assert(src.includes('coachOpen&&<View')&&src.includes('<GuidedDialogue')&&src.includes('coachYRef.current=event.nativeEvent.layout.y'),'Tutor remains optional and positioned in scrollable lesson');
  assert(src.includes("index===0&&!!study&&<CourseStudyPlan"));
 });
