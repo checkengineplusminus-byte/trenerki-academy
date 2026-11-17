@@ -7,7 +7,8 @@ import {HelpLink} from './support/links';
 
 type Line={role:'student'|'anielka';text:string;created_at?:string};
 type Session={support?:SupportResult;ok?:boolean;error?:string;history?:Line[];opening?:string;reply?:string;cooldown_until?:string|null;can_reply?:boolean};
-type Props={courseSlug:string;lessonNo:number;canMoveOn?:boolean;onFinish?:()=>void};
+type CoachTask={mission?:string;starter?:string;rubric?:string[];pitfalls?:string[]};
+type Props={courseSlug:string;lessonNo:number;canMoveOn?:boolean;onFinish?:()=>void;coachTask?:CoachTask;homeworkDraft?:string};
 const ink='#183c2b', muted='#58705f';
 const names:Record<string,string>={
  previous_lessons_required:'Najpierw ukończ wcześniejszą lekcję.',
@@ -19,7 +20,7 @@ const names:Record<string,string>={
  retry_request:'Nie udało się wysłać pytania. Spróbuj ponownie.',
  no_payment_details:'Nie wpisuj numerów kart ani innych danych płatniczych.',
 };
-export default function GuidedDialogue({courseSlug,lessonNo}:Props){
+export default function GuidedDialogue({courseSlug,lessonNo,coachTask,homeworkDraft=''}:Props){
  const [history,setHistory]=useState<Line[]>([]),[opening,setOpening]=useState(''),[input,setInput]=useState('');
  const [chatOpened,setChatOpened]=useState(false);
  const [support,setSupport]=useState<SupportResult|null>(null);
@@ -55,30 +56,52 @@ export default function GuidedDialogue({courseSlug,lessonNo}:Props){
   if(help){setSupport(help);setInput('');setError('');return;}
   if(!canReply||message.length<5)return;
   setSending(true);setError('');setFeedbackNotice('');
-  // Save a genuine problem even if the tutor model/network fails.
-  // This independent endpoint validates enrollment and classifies the report server-side.
-  const feedbackPromise=submitCourseFeedback(courseSlug,lessonNo,message);
-  void feedbackPromise.then(ack=>{
-   const confirmation=feedbackConfirmation(ack);
-   if(confirmation)setFeedbackNotice(confirmation);
-  });
+  // Normal exercises are NOT defect reports; the improvement pipeline only sees explicit issues.
+  if(/(?:nie działa|nie dziala|nie mogę|nie moge|błąd|blad|brakuje|nie da się|nie da sie|zepsut|zawiesz)/iu.test(message)){
+   void submitCourseFeedback(courseSlug,lessonNo,message).then(ack=>{
+    const confirmation=feedbackConfirmation(ack);
+    if(confirmation)setFeedbackNotice(confirmation);
+   });
+  }
   try{const data=await request('dialogue',message);if(data.support)setSupport(data.support);else apply(data);setInput('')}
   catch(e:any){setError(e?.message||'Nie udało się wysłać pytania.')}
   finally{setSending(false)}
  }
  const paused=!!cooldown&&new Date(cooldown).getTime()>Date.now(),allowed=!paused&&canReply;
  const visible=showOlder?history:history.slice(-4);
+ const aiWorkshop=courseSlug==='ai-bez-tajemnic'&&!!coachTask?.mission;
+ const draft=homeworkDraft.trim().slice(0,650);
+ const helpfulActions=aiWorkshop?[
+  {title:'Ćwicz ze mną',prompt:coachTask?.starter||'Poprowadź krótkie ćwiczenie z tej lekcji: najpierw jeden krok, potem informacja zwrotna.'},
+  {title:'Daj wskazówkę',prompt:'Nie podawaj gotowego rozwiązania. Daj mi jedną podpowiedź do zadania: '+coachTask?.mission},
+  {title:'Sprawdź moją próbę',prompt:draft.length>=10?'Porównaj moją roboczą próbę z kryteriami lekcji. Wskaż mocną stronę, błąd i jeden konkretny krok poprawy. Nie wystawiaj oceny egzaminacyjnej. Moja próba: '+draft:'Pokaż mi kryteria samodzielnego sprawdzenia zadania: '+coachTask?.mission},
+  {title:'Zadaj mi pytanie',prompt:'Przepytaj mnie z tej lekcji. Zadaj jedno pytanie kontrolne i poczekaj na moją odpowiedź, bez podawania jej od razu.'}
+ ]:[];
  return <View style={{backgroundColor:'#edf6e8',borderRadius:15,borderWidth:1,borderColor:'#d4e3d0',padding:15,gap:11,marginTop:16}}>
   <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
    <View style={{width:38,height:38,borderRadius:19,backgroundColor:'#d4ebcd',alignItems:'center',justifyContent:'center'}}>
     <Text style={{fontSize:20}}>💬</Text>
    </View>
    <View style={{flex:1}}>
-    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Anielka wyjaśni Ci to prościej</Text>
+    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>{aiWorkshop?'Anielka — Twoja trenerka praktyki':'Anielka wyjaśni Ci to prościej'}</Text>
     <Text style={{color:muted,fontSize:12}}>Nie rozumiesz? Zapytaj własnymi słowami.</Text>
    </View>
   </View>
-  {loading&&<ActivityIndicator color={ink}/>}
+  {aiWorkshop&&<View testID="anielka-ai-practice" style={{backgroundColor:'white',borderWidth:1,borderColor:'#c5dfc4',borderRadius:12,padding:13,gap:9}}>
+   <Text style={{color:ink,fontSize:16,fontWeight:'900'}}>Pracownia z Anielką · lekcja {lessonNo+1}</Text>
+   <Text style={{color:muted,fontSize:14,lineHeight:22}}>{coachTask?.mission}</Text>
+   <Text style={{color:muted,fontSize:12,lineHeight:18}}>Wybierz sposób ćwiczenia. Najpierw zobaczysz wiadomość w polu poniżej, możesz ją poprawić przed wysłaniem.</Text>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+    {helpfulActions.map(action=><Pressable key={action.title} accessibilityRole="button" testID={'anielka-action-'+action.title.replaceAll(' ','-')}
+     onPress={()=>{setInput(action.prompt.slice(0,1000));setChatOpened(true);setError('')}}
+     disabled={!allowed||loading||sending}
+     style={{paddingVertical:11,paddingHorizontal:12,borderRadius:10,backgroundColor:'#e9f4e8',minHeight:44,justifyContent:'center',opacity:!allowed?.45:1}}>
+      <Text style={{fontSize:13,fontWeight:'800',color:ink}}>{action.title}</Text>
+    </Pressable>)}
+   </View>
+   <Text style={{fontSize:12,lineHeight:19,color:muted}}>Przed wysłaniem usuń dane osobowe, hasła i poufne dokumenty. Anielka pomaga ćwiczyć; quiz i egzamin są oceniane osobno.</Text>
+  </View>}
+  {loading&&<ActivityIndicator color={ink}/>
   {!loading&&!history.length&&!!opening&&<Text style={{fontSize:14,color:ink,lineHeight:22,backgroundColor:'white',padding:12,borderRadius:10}}>{opening}</Text>}
   {history.length>4&&!showOlder&&<Pressable onPress={()=>setShowOlder(true)} accessibilityRole="button" style={{padding:5}}>
    <Text style={{color:'#386c48',fontWeight:'800',textAlign:'center'}}>Pokaż wcześniejszą rozmowę</Text>
