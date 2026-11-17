@@ -56,9 +56,9 @@ const intros:Record<string,Intro>={
  result:'Zaczniesz kontrolować jakość dania, ryzyko i koszty — także w domowej kuchni.'
  },
  'lepszy-cukiernik':{
- what:'Cukiernictwo to precyzja: zmiana proporcji o niewielką ilość może zmienić cały wypiek.',
- first:'Zważysz składniki i porównasz wynik z odmierzaniem na oko.',
- result:'Zrozumiesz konsystencję, temperaturę, bezpieczne przechowywanie oraz kalkulację porcji.'
+ what:'Odkryjesz fach cukiernika: historię, organizację dnia, ciasta, kremy, torty, bezy, czekoladę i lody. Zrozumiesz dokładnie, dlaczego techniki działają, co może pójść źle i kiedy można bezpiecznie uratować wypiek.',
+ first:'Przygotujesz bezpieczne stanowisko, sprawdzisz składniki i zaczniesz prowadzić kartę produkcji, zamiast pracować na wyczucie.',
+ result:'Przećwiczysz 50 lekcji z zadaniami domowymi, diagnozą 20 awarii, własnymi recepturami, higieną, magazynem i kalkulacją tortu.'
  },
  'opieka-seniorzy':{
  what:'Opieka to przede wszystkim szacunek, komunikacja, bezpieczeństwo i wspieranie samodzielności starszej osoby.',

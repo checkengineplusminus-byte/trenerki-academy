@@ -43,7 +43,8 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
  // Do not render its legacy copy of the same introduction/exercise a second time.
  const named=courseSlug==='autocad-skroty'?[]:Array.isArray(sections)&&sections.length>0?sections.filter(x=>x?.heading&&x?.text):[];
  const volunteerImage=courseSlug==='zaufany-wolontariusz'&&typeof illustration==='string'?volunteerIllustrations.get(illustration):undefined;
- const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration));
+ const pastrySvg=courseSlug==='lepszy-cukiernik'&&typeof illustration==='string'&&/^cukiernik-ilustracja-(0[1-9]|[1-4][0-9]|50)$/.test(illustration);
+ const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration)||pastrySvg);
  const file=volunteerImage?.file??(validSvg?illustration+'.svg':null);
  const isAutoCAD=courseSlug==='autocad-skroty';
  // Do not repeat a screenshot on each CAD page. Original UI only in the optional
