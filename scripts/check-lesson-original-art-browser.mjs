@@ -39,12 +39,12 @@ async function check(context,row,label){
    return respond({ok:true});
   });
   await page.goto(base+'/nauka?course='+row.course_slug+'&lesson='+(row.lesson_no+1),{waitUntil:'domcontentloaded'});
-  if(row.lesson_no===0){
-   const intro=page.getByTestId('course-reading-introduction');
-   await intro.waitFor({timeout:30000});
-   await intro.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
-  }
+  // Course introduction is intentionally shown on first entry even when
+  // a returning student opens a later, already unlocked module.
+  const intro=page.getByTestId('course-reading-introduction');
   const heading=page.getByTestId('lesson-heading');
+  await intro.or(heading).first().waitFor({timeout:30000});
+  if(await intro.isVisible())await intro.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   await heading.waitFor({timeout:30000});
   assert.equal((await heading.innerText()).trim(),row.title_pl,label+': title of '+row.course_slug);
   const image=page.locator('img[src*="'+row.material.illustration+'.svg"]').first();
