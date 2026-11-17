@@ -82,6 +82,9 @@ async function run(env){
   await page.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   await page.getByTestId('lesson-heading').filter({hasText:'AI: ćwiczenie 1'}).waitFor();
   await page.getByTestId('ai-course-stage').filter({hasText:'ETAP 1/8'}).waitFor();
+  const cta=page.getByTestId('anielka-top-cta');
+  await cta.waitFor();
+  await cta.click();
   const workshop=page.getByTestId('anielka-ai-practice');
   await workshop.waitFor();
   for(const name of ['Ćwicz ze mną','Daj wskazówkę','Sprawdź moją próbę','Zadaj mi pytanie'])
