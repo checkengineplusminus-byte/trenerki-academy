@@ -1,0 +1,288 @@
+{
+  "version": "2026-11-17-v1",
+  "course_count": 4,
+  "lesson_count": 28,
+  "subject": "source-grounded editorial improvements only; not certified expert reviews",
+  "rows": [
+    {
+      "slug": "bednarz",
+      "no": 16,
+      "explanation": "Drewno zmienia objętość pod wpływem wilgoci, ale poprawa szczelności po namoczeniu nie oznacza, że beczka nadaje się do napojów. W próbie oddziel ocenę spasowania klepek od kontroli higienicznej i przeznaczenia. Zapisz stan przed testem, czas obserwacji i miejsca wycieku bez ukrywania odkształceń.",
+      "exercise": "Narysuj mapę pięciu potencjalnych miejsc wycieku i zaproponuj trzy obserwacje: przed, w trakcie oraz po kontrolowanym kontakcie z wodą. Nie deklaruj dopuszczenia do żywności na podstawie samej szczelności.",
+      "refs": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "bednarz",
+      "no": 17,
+      "explanation": "Przy liczeniu klepek nie wystarczy podzielić obwodu przez szerokość surowej deski. Szerokość po obróbce, zbieżność klepki, odpad i geometria naczynia zmieniają wynik. Traktuj obliczenie jako wstępny bilans materiału, który trzeba potwierdzić rozkrojem próbnym.",
+      "exercise": "Przyjmij teoretyczny obwód 1200 mm i wykończoną średnią szerokość klepki 40 mm. Wylicz 30 sztuk przed korektą geometrii i stratami; osobno zapisz, czego te dane nie pozwalają wyznaczyć.",
+      "refs": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "bednarz",
+      "no": 18,
+      "explanation": "Wygląd starej lub nowej beczki nie potwierdza, że powinna stykać się z żywnością. Dla wyrobu użytkowego potrzebne są informacje o gatunku drewna, powłokach, elementach metalowych, sposobie produkcji i właściwych wymaganiach dotyczących kontaktu z żywnością. Dekoracji nie oznaczaj jako naczynia spożywczego.",
+      "exercise": "Zbuduj dwie etykiety dla wizualnie podobnych beczek: eksponat dekoracyjny i produkt potencjalnie przeznaczony do kontaktu z żywnością. W tej drugiej wskaż dokumenty oraz badania wymagające potwierdzenia przed sprzedażą.",
+      "refs": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "bednarz",
+      "no": 19,
+      "explanation": "Karta odbioru powinna rozdzielać estetykę, geometrię, szczelność oraz bezpieczeństwo konkretnego przeznaczenia. Zdjęcie produktu po wykończeniu nie zastępuje zapisu o materiałach i instrukcji konserwacji. Gdy nie ma dowodu przydatności do określonego celu, należy to jasno odnotować.",
+      "exercise": "Wypisz 10 pól protokołu: identyfikator partii, materiał, przeznaczenie, wymiary, obręcze, złącza, wynik próby, ograniczenia, konserwacja, osoba odbierająca. Wskaż, które pola muszą mieć dowód.",
+      "refs": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 8,
+      "explanation": "Litera rewizji na rysunku nie jest jedynym kryterium obowiązywania dokumentu. Porównuj numer, datę wydania, status zatwierdzenia oraz zakres zmian. Starsze wydruki odłóż z miejsca produkcji, a przy niejednoznaczności uzyskaj potwierdzenie od upoważnionej osoby przed wykonaniem elementu.",
+      "exercise": "Zestaw dwie fikcyjne rewizje B i C tego samego numeru rysunku; wskaż co trzeba potwierdzić, zanim brygada rozpocznie montaż. Nie uznawaj nowszej daty za automatyczną akceptację techniczną.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 9,
+      "explanation": "Rzędna +1200 mm może dotyczyć zera konstrukcyjnego, podczas gdy pomiar wykonano od gotowej posadzki. Bez punktu bazowego liczby nie są porównywalne. Zapisuj miejsce, datę, instrument, punkt odniesienia i osobę potwierdzającą poziom przed dalszym wytyczeniem.",
+      "exercise": "Przygotuj przekrój z posadzką gotową 75 mm ponad konstrukcyjną. Wyjaśnij, jak ten sam odczyt 1200 mm prowadzi do innego położenia, zależnie od przyjętego zera.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 10,
+      "explanation": "Odchylenie +8 mm jest wynikiem pomiaru, nie samodzielną zgodą na montaż ani dowodem wady. Kryterium zgodności wynika z zatwierdzonych dokumentów i właściwych tolerancji dla konkretnego elementu. Przy braku kryterium wstrzymaj decyzję i uzyskaj źródło wymagania.",
+      "exercise": "Zrób tabelę pięciu pomiarów: wartość projektu, wynik, różnica, źródło tolerancji, decyzja. Dla pozycji bez dokumentu tolerancji wpisz «wymaga wyjaśnienia», nie własny limit.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 11,
+      "explanation": "Zmiana kolejności robót wymaga sprawdzenia dostępu do frontu, kolizji z innymi ekipami, dostępności materiału, sprzętu oraz dopuszczalnego obciążenia stref. Nie każda zmiana organizacyjna zmienia zakres kontraktowy, lecz nie powinna omijać uzgodnień bezpieczeństwa.",
+      "exercise": "Porównaj dwa harmonogramy dla klatek A i B. Zaznacz kolizję transportu, zamknięte przejście i termin gotowości podnośnika; wskaż kto zatwierdza zmianę frontu.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 12,
+      "explanation": "Masa całej dostawy nie zastępuje masy najcięższej pojedynczej palety. Dobór dźwigu lub sprzętu przeładunkowego zależy także od promienia, geometrii ładunku, podłoża, zawiesi i planu podnoszenia. Nie wykorzystuj katalogowego udźwigu bez analizy konfiguracji urządzenia.",
+      "exercise": "Sporządź kartę hipotetycznej dostawy ośmiu palet: każda masa osobno, maksymalna masa, gabaryty, miejsce rozładunku, strefa wyłączenia i potrzebne potwierdzenia. Nie podawaj zmyślonej nośności balkonu.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 13,
+      "explanation": "Przed wyborem rusztowania, podestu lub innego dostępu sprawdza się wysokość, charakter czynności, podłoże, drogi ewakuacji, stabilność i wymagania sprzętu. Odbiór rusztowania i kompetencje operatorów muszą wynikać z właściwych procedur; kask nie zastępuje zabezpieczenia przed upadkiem.",
+      "exercise": "Porównaj na papierze podest i rusztowanie przy fasadzie. Wskaż zagrożenia, dokumenty, dostęp, obciążenia oraz warunek, który musi być spełniony przed dopuszczeniem ludzi do pracy.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 14,
+      "explanation": "Kontrola szkła obejmuje identyfikację tafli, zgodność krawędzi i otworów, oględziny uszkodzeń, warunki przechowania oraz sposób manipulacji zgodny z dokumentacją. Nie próbuj maskować wyszczerbień na krawędzi szkła konstrukcyjnego ani montować elementu bez wymaganej decyzji jakościowej.",
+      "exercise": "Sporządź protokół dostawy pięciu szyb: identyfikator, pozycja montażowa, stan krawędzi, stan opakowania, zdjęcie i decyzja. Rozróżnij zarysowanie opakowania od uszkodzenia tafli.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 15,
+      "explanation": "Roboczogodziny są iloczynem liczby pracowników i ich godzin pracy; nie można ich utożsamiać z czasem kalendarzowym zadania. Czterech pracowników po sześć godzin to 24 roboczogodziny, chociaż zadanie może trwać sześć godzin na osi harmonogramu.",
+      "exercise": "Przelicz nakład dla ekipy 4 × 6 h oraz 3 × 8 h. Wynik 24 roboczogodzin w obu przypadkach nie oznacza identycznej produktywności ani takich samych kosztów sprzętu.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 16,
+      "explanation": "Różnicę między planowanym a rzeczywistym kosztem rozbij na ilości, ceny jednostkowe, robociznę, transport, dostęp i zmiany. Bez rozróżnienia przyczyn łatwo obwinić brygadę za koszt wynikający z błędnego zamówienia lub opóźnionej decyzji projektowej.",
+      "exercise": "Zrób przykład z planem 100 roboczogodzin i wykonaniem 116; osobno dopisz łączną liczbę nadgodzin i godziny sprzętu. Wskaż, co potwierdzają liczby i czego jeszcze nie dowodzą.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 17,
+      "explanation": "Zgłoszenie zmiany powinno identyfikować rysunek, przyczynę, zakres, wpływ na koszt i termin oraz wymagane potwierdzenie klienta. Telefoniczne uzgodnienie warto udokumentować, jednak samego milczenia drugiej strony nie traktuj automatycznie jako akceptacji.",
+      "exercise": "Napisz przykładowe zgłoszenie dodatkowego mocowania: numer rewizji, pomiar, propozycja, termin decyzji i zastrzeżenie skutku dla harmonogramu. Oddziel prośbę o decyzję od faktycznie zaakceptowanej zmiany.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 18,
+      "explanation": "Na spotkaniu rozdziel trzy statusy: wykonane przez ekipę, sprawdzone jakościowo i odebrane przez klienta. Prezentuj blokery, potrzebną decyzję, osobę odpowiedzialną oraz termin następnego sprawdzenia. Same procenty nie rozwiązują problemów montażowych.",
+      "exercise": "Zapisz raport tygodniowy z 20 elementami: 16 wykonanych, 14 skontrolowanych i 12 odebranych. Wyjaśnij, dlaczego nie wolno podać po prostu «80% odebrane».",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "brygadzista",
+      "no": 19,
+      "explanation": "Gdy harmonogram, transport i jakość kolidują, pierwszym zadaniem jest nazwanie zależności i niepewności. Działanie pod presją czasu nie uzasadnia rezygnacji z kontroli punktu odniesienia, nośności czy zatwierdzonego rysunku.",
+      "exercise": "Przeprowadź modelową odprawę: jedna dostawa spóźniona, dwa niejasne pomiary, jedna strefa wspólna. Spisz plan bezpieczny, pytania do klienta i raport końca zmiany.",
+      "refs": [
+        "https://www.pip.gov.pl/aktualnosci/odsniezaj-dach-bezpiecznie"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 12,
+      "explanation": "Numer VIN pomaga identyfikować pojazd i porównać dokumenty, ale raport generowany z VIN nie jest certyfikatem bezwypadkowości. Porównaj oznaczenia pojazdu, dokument rejestracyjny, historię przeglądów, serwisu i wyniki niezależnych oględzin, odróżniając dane pewne od nieobecnych.",
+      "exercise": "Wymyśl zestaw trzech źródeł z rozbieżnym przebiegiem i odmienną datą wpisu. Wskaż, które informacje wymagają potwierdzenia, a których nie można zastąpić jedną oceną online.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 13,
+      "explanation": "Zużycie fotela, pedałów lub kierownicy może sugerować intensywność eksploatacji, ale nie pozwala wyliczyć rzeczywistego przebiegu. Serwis, dokumenty, stan techniczny i diagnostykę porównuje się łącznie; żadna pojedyncza poszlaka nie jest dowodem manipulacji licznikiem.",
+      "exercise": "Oceń scenariusz: licznik 90 000 km, mało dokumentów, wyraźnie zużyte wnętrze. Zapisz co zweryfikować i czego nie wolno ogłaszać jako ustalony fakt.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 14,
+      "explanation": "Zasięg wyświetlany przez auto elektryczne zależy m.in. od temperatury, stylu jazdy, temperatury baterii i algorytmu prognozy. Sam wynik na ekranie nie jest niezależnym badaniem pojemności użytkowej; zażądaj danych diagnostycznych z podaniem metody i ograniczeń.",
+      "exercise": "Zaplanuj oględziny EV: złącze ładowania, historia błędów, raport diagnostyczny, przebieg i warunki testu. Wskaż, co nadal pozostaje niepewne po jednej krótkiej jeździe próbnej.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 15,
+      "explanation": "Ocena opon wymaga sprawdzenia rozmiaru, stanu bieżnika, zużycia nierównomiernego i zgodności ze specyfikacją; sam kod DOT nie potwierdza przydatności. Hamulce i zawieszenie mogą wymagać kontroli warsztatowej, a zakup auta z wykrytą wadą powinien uwzględniać naprawę.",
+      "exercise": "Rozpisz budżet pierwszego serwisu: opony, hamulce, geometria, oględziny zawieszenia. Użyj przedziałów orientacyjnych i wpisz, że ostateczna cena wymaga oferty warsztatu.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 16,
+      "explanation": "Porównując kredyty, rozdziel kwotę finansowania, wkład własny, oprocentowanie nominalne, RRSO, opłaty i całkowitą sumę do zapłaty. Dwie identyczne raty mogą wynikać z różnych okresów spłaty i kończyć się innym kosztem całkowitym.",
+      "exercise": "Zrób tabelę dwóch fikcyjnych ofert z jednakową ratą, ale różnymi opłatami i okresem. Oblicz koszt łączny, nie tylko miesięczne obciążenie.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 17,
+      "explanation": "W Polsce uprawnienia kupującego zależą m.in. od tego, czy sprzedaje przedsiębiorca konsumentowi, czy osoba prywatna. Przy zakupie konsumenckim od przedsiębiorcy podstawą reklamacji jest w szczególności niezgodność towaru z umową; nie przenoś automatycznie tych zasad na sprzedaż prywatną.",
+      "exercise": "Porównaj dwa fikcyjne ogłoszenia: komis będący sprzedawcą oraz osoba prywatna. Sprawdź kto formalnie jest stroną umowy, jak dokumentuje się stan auta i do kogo kieruje się ewentualną reklamację.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 18,
+      "explanation": "Dla zakupu zarejestrowanego auta w Polsce od 1 stycznia 2024 r. zasadą jest wniosek o rejestrację, a nie dawne oddzielne zgłoszenie nabycia. Zwykły termin na wniosek wynosi 30 dni; istnieją wyjątki, dlatego sprawdzaj aktualną instrukcję urzędową i dokumenty pojazdu.",
+      "exercise": "Narysuj oś czasu: dzień umowy, kontrola OC, weryfikacja dokumentów, wniosek o rejestrację w ustawowym terminie. Rozróżnij obowiązek nabywcy od zgłoszenia zbycia przez sprzedającego.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "no": 19,
+      "explanation": "Pierwsze 90 dni po zakupie warto planować z rezerwą na badanie stanu auta, ubezpieczenie, ogumienie, hamulce i wydatki eksploatacyjne. Brak awarii w pierwszym tygodniu nie jest dowodem na brak odłożonych problemów technicznych.",
+      "exercise": "Ułóż plan 7/30/90 dni dla auta: dokumentacja, kontrola bezpieczeństwa, podstawowe płyny zgodnie ze specyfikacją producenta, rezerwa finansowa i termin następnego przeglądu.",
+      "refs": [
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow",
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "kolodziej",
+      "no": 16,
+      "explanation": "Bicie promieniowe i bicie boczne mierzy się względem ustalonej osi obrotu oraz nieruchomego punktu odniesienia. Oględziny obracającego się koła mogą wykazać problem, ale nie zastępują rejestru pomiarowego ani oceny przeznaczenia wyrobu.",
+      "exercise": "Na kartonowej makiecie zaznacz dwa rodzaje bicia i zaproponuj tabelę 8 odczytów. Nie przenoś wyniku demonstracji na dopuszczenie koła do realnego ruchu.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "kolodziej",
+      "no": 17,
+      "explanation": "Szprychy, piasta i obręcz przenoszą obciążenia wspólnie. Jedna widoczna szczelina nie pozwala zdalnie wyznaczyć rzeczywistych naprężeń ani bezpiecznej nośności. Przy kole użytkowym konieczna jest kwalifikowana ocena i właściwe próby zgodnie z przeznaczeniem.",
+      "exercise": "Opisz dwie sytuacje: eksponat z historycznym połączeniem oraz koło do jazdy. Dla każdej wskaż odrębne kryteria odbioru i granicę użycia bez badań.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "kolodziej",
+      "no": 18,
+      "explanation": "Eksponat muzealny może zachować dawną naprawę jako element historii, ale koło przeznaczone do jazdy musi spełniać wymagania bezpieczeństwa właściwe dla rzeczywistego zastosowania. Zbliżony wygląd dwóch kół nie oznacza identycznego przeznaczenia.",
+      "exercise": "Przygotuj dwie karty: «do ekspozycji» i «do użytkowania». Pierwsza dokumentuje zachowanie substancji historycznej; druga wymaga dodatkowej, fachowej oceny materiału, obciążeń i mocowań.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "kolodziej",
+      "no": 19,
+      "explanation": "Rzetelne zakończenie zlecenia kołodziejskiego powinno dokumentować rodzaj drewna, widoczne wady, naprawy, geometrię, ograniczenia użytkowania i zalecenia przechowywania. Nie obiecuj nośności ani dopuszczenia do transportu, jeśli nie zostały potwierdzone.",
+      "exercise": "Wypełnij protokół fikcyjnego koła z pięcioma pomiarami, pięcioma zdjęciami i jednoznacznym polem «przeznaczenie». Opisz, kiedy decyzję musi podjąć niezależny fachowiec.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    }
+  ]
+}
