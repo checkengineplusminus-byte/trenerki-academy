@@ -110,8 +110,8 @@ async function run(mode){
    }
    await page.getByRole('button',{name:new RegExp('Dalej · lekcja '+(lesson+1))}).last().click();
   }
-  assert.deepEqual(completed,[0,1,2,3],mode+' did not persist 4 lessons');
   await page.getByTestId('lesson-heading').filter({hasText:'AI: ćwiczenie 5'}).waitFor();
+  assert.deepEqual(completed,[0,1,2,3],mode+' did not persist 4 lessons');
   await page.getByTestId('ai-course-stage').filter({hasText:'ETAP 2/8'}).waitFor();
   console.log('✓ '+mode+': Anielka coaching, four lessons, bad/good stage answers, locked milestone, next stage');
  } finally {await page.close();await context.close();}
