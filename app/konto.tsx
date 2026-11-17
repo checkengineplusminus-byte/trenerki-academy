@@ -9,14 +9,16 @@ const ink='#193b2a',pale='#e7f2da';
 const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
  ? window.location.origin : 'https://trenerki.com';
 export default function AccountPage(){
- const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string}>(),
+ const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string;ref?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
- gift=validGiftCode(params.gift);
+ gift=validGiftCode(params.gift),
+ referral=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const [isAdmin,setIsAdmin]=useState(false);
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const isCompanyLogin=params.next==='company';
  const continueToSelectedCourse=async()=>{
     if(params.next==='company'){router.replace('/firma');return;}
+    if(params.next==='affiliate'){router.replace('/partner');return;}
     if(params.next==='valuegift'){router.replace('/prezent');return;}
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
     if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course}});return;}
@@ -33,15 +35,21 @@ export default function AccountPage(){
       await supabase.auth.updateUser({data:{pending_company:null}});
       router.replace('/firma');return;
     }
+    if(user?.user_metadata?.pending_affiliate===true){
+      await supabase.auth.updateUser({data:{pending_affiliate:null}});
+      router.replace('/partner');return;
+    }
     const selected=typeof candidate==='string'&&/^[a-z0-9][a-z0-9_-]{1,79}$/.test(candidate)?candidate:'';
     const next=user?.user_metadata?.pending_checkout==='gift'?'/prezent':'/kup';
+    const savedReferral=typeof user?.user_metadata?.pending_referral_code==='string'&&/^TA[A-F0-9]{12}$/.test(user.user_metadata.pending_referral_code)?user.user_metadata.pending_referral_code:'';
+    const activeReferral=referral||savedReferral;
     const possibleGift=user?.user_metadata?.pending_gift;
     const savedGift=validGiftCode(possibleGift);
     if(selected||savedGift){
       // Clear once consumed so future logins don't keep redirecting to old courses.
-      await supabase.auth.updateUser({data:{pending_course:null,pending_gift:null,pending_checkout:null}});
+      await supabase.auth.updateUser({data:{pending_course:null,pending_gift:null,pending_checkout:null,pending_referral_code:null}});
       if(savedGift){router.replace({pathname:'/prezent',params:{code:savedGift}});return;}
-      router.replace({pathname:next,params:{course:selected}});return;
+      router.replace({pathname:next,params:{course:selected,...(activeReferral?{ref:activeReferral}:{})}});return;
     }
     router.replace('/moje-kursy');
  };
@@ -122,7 +130,7 @@ export default function AccountPage(){
      if(mode==='register'){
        if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
        const emailRedirectTo=siteUrl+'/konto';
-       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null,pending_company:isCompanyLogin,pending_valuegift:params.next==='valuegift'}}});
+       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null,pending_company:isCompanyLogin,pending_affiliate:params.next==='affiliate',pending_referral_code:referral||null,pending_valuegift:params.next==='valuegift'}}});
        if(error)throw error;
        if(data.session){await continueToSelectedCourse();return;}
        setMessage(gift?'Konto utworzone. Potwierdź e-mail (sprawdź także SPAM), następnie zaloguj się. Twoja karta będzie czekać na odbiór.':'Konto utworzone. Potwierdź e-mail (również w SPAM), następnie zaloguj się. Wybrany kurs będzie czekał w koszyku.');return;
