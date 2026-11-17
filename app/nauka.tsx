@@ -37,11 +37,11 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{section?:number,stage_name?:string,study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
+ material:{section?:number,stage_name?:string,lesson_kind?:string,study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
-type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
-type Checks=Partial<Record<AttemptMode|'carpentry',boolean>>;
+type AttemptMode='case'|'construction'|'keyboard'|'carpentry'|'stage';
+type Checks=Partial<Record<AttemptMode,boolean>>;
 const ink='#183c2b',secondary='#526f5c',line='#dfeada';
 const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,24,26,27,28,29]);
 export default function Learning(){
@@ -145,7 +145,7 @@ export default function Learning(){
      const k=String(attempt.lesson_no);if(!perLesson[k])perLesson[k]={correct:0,incorrect:0};
      if(attempt.correct){
       perLesson[k].correct++;
-      if(['case','construction','keyboard','carpentry'].includes(attempt.mode)){
+      if(['case','construction','keyboard','carpentry','stage'].includes(attempt.mode)){
        const mode=attempt.mode as AttemptMode;
        passed[attempt.lesson_no]={...passed[attempt.lesson_no],[mode]:true};
       }
@@ -213,18 +213,21 @@ export default function Learning(){
  const passed=checks[module]||{};
  const objective=lesson?.material?.construction?'construction':lesson?.material?.learning?'case':undefined;
  const carpentry=slug==='ciesla-przygotowanie-czeladnicze'&&hasCarpentryLab(module);
+ const stageRequired=slug==='ai-bez-tajemnic'&&lesson?.material?.lesson_kind==='stage_checkpoint';
  const passedCount=(objective&&passed[objective]?1:0)+(lesson?.material?.shortcuts?.length&&passed.keyboard?1:0)+(carpentry&&passed.carpentry?1:0);
  const requirements=[
   ...(objective?[{key:objective,label:objective==='construction'?'Zadanie z rysunku lub obliczeń':'Pytanie do przeczytanej lekcji',passed:!!passed[objective]}]:[]),
   ...(lesson?.material?.shortcuts?.length?[{key:'keyboard',label:'Pytanie o skrót: wybierz skrót, potem odpowiedź',passed:!!passed.keyboard}]:[]),
-  ...(carpentry?[{key:'carpentry',label:'Ćwiczenie praktyczne z ciesielstwa',passed:!!passed.carpentry}]:[])
+  ...(carpentry?[{key:'carpentry',label:'Ćwiczenie praktyczne z ciesielstwa',passed:!!passed.carpentry}]:[]),
+  ...(stageRequired?[{key:'stage',label:'Obowiązkowy sprawdzian etapu z czterema odpowiedziami',passed:!!passed.stage}]:[])
  ];
  const missingRequirements=requirements.filter(item=>!item.passed);
  const requirementMessage='Aby przejść dalej, dokończ: '+missingRequirements.map(item=>item.label.toLocaleLowerCase('pl')).join('; ')+'.';
  const canFinish=done.includes(module)||(
    (!objective||passed[objective])&&
    (!lesson?.material?.shortcuts?.length||passed.keyboard)&&
-   (!carpentry||passed.carpentry)
+   (!carpentry||passed.carpentry)&&
+   (!stageRequired||passed.stage)
  );
  async function persistDraft(target:number,noteState:NoteState){
   if(!userId)return;
@@ -435,7 +438,9 @@ export default function Learning(){
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
    {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
-    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module} test={lesson.material.redteam_quiz}/>}
+    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}
+     test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
+     onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>}
    {slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
     <CourseLessonExtras
      key={'course-homework-'+slug+'-'+module}
