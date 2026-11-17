@@ -184,7 +184,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'ad0d91e6319a72e3e989a5ea69cc4cf1db54f1b9', // Norwegian-only notebook
   '270f859b6147a7e3b227f9352338295f68d9af47', // audited 17.11: course-only private homework and tips, accounting guard unchanged
   '46fdaf64ac76e1dd2457107fbb2e9a30851501b6', // audited red-team-only change
-  'c8268e990da7e1421dc19450339faac8b5497af9' // reviewed AI-scoped stage quizzes, 8-step navigation and voluntary coach; accounting guard unchanged
+  'c8268e990da7e1421dc19450339faac8b5497af9', // reviewed AI stage controls
+  'df96f74c58d6c1c59d99b13d09f3de99ea583a1f' // reviewed AI-only early Anielka CTA and scroll target; accounting guard unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
