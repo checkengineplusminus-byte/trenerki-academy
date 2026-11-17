@@ -1,0 +1,48 @@
+name: TRENERKI — audit all 81 courses and live deployment
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit-public-course-pages.mjs'
+      - 'scripts/check-live-trenerki.mjs'
+      - '.github/workflows/audit-all-81-live.yml'
+      - 'public/academy/kursy/**'
+      - 'public/academy/index.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static_81:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inspect every course card, lesson count, price, public outline and photo
+        run: node scripts/audit-public-course-pages.mjs
+      - name: Retain complete static audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-all-courses-static-audit
+          path: /tmp/trenerki-course-audit/static.json
+          if-no-files-found: ignore
+  live_81:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify actual public domain and all 81 course pages using HTTP
+        run: node scripts/check-live-trenerki.mjs
+      - name: Retain real-production response audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-all-courses-live-audit
+          path: /tmp/trenerki-course-audit/live.json
+          if-no-files-found: ignore
