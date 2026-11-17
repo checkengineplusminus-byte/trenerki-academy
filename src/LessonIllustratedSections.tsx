@@ -57,7 +57,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     source={{uri:'/academy/assets/'+file}}
     onError={()=>setFailed(true)}
     resizeMode="contain"
-    style={{width:'100%',height:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
+    style={{width:'100%',aspectRatio:pastrySvg?16/9:undefined,height:pastrySvg?undefined:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
    />
   </View>}
   {!!visual?.entries?.length&&<Visual {...visual}/>}
