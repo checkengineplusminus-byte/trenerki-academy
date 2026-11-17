@@ -36,6 +36,24 @@ Deno.serve(async req=>{
  try{
   if(event.type==='charge.refunded'){
    const charge=event.data.object as Stripe.Charge;
+   if(typeof charge.payment_intent==='string'){
+    const isFullRefund=charge.amount_refunded>=charge.amount;
+    const {data:commissions,error:ce}=await db.from('ta_affiliate_commissions').select('id,status,partner_id')
+      .eq('stripe_payment_intent_id',charge.payment_intent);
+    if(ce)throw ce;
+    for(const commission of commissions||[]){
+     if(commission.status==='void')continue;
+     const review=['transferred','in_payout'].includes(commission.status)||!isFullRefund;
+     const {error:ue}=await db.from('ta_affiliate_commissions').update({
+      status:review?'requires_review':'void',
+      void_reason:isFullRefund?'full_stripe_refund':'partial_stripe_refund_review',
+      updated_at:new Date().toISOString()
+     }).eq('id',commission.id);
+     if(ue)throw ue;
+     await db.from('ta_affiliate_audit').insert({partner_id:commission.partner_id,event_type:'stripe_refund_affiliate_reconciliation',
+       related_id:charge.payment_intent,info:{full:isFullRefund,needs_review:review}});
+    }
+   }
    if(charge.amount_refunded>=charge.amount&&typeof charge.payment_intent==='string'){
     const {error}=await db.rpc('ta_refund_stripe_payment',{p_payment:charge.payment_intent});
     if(error)throw error;
@@ -206,6 +224,40 @@ Deno.serve(async req=>{
    amount_grosze:amount,currency:'PLN',status:'active',purchased_at:paid.toISOString(),expires_at:end.toISOString()
   },{onConflict:'stripe_checkout_session_id',ignoreDuplicates:true});
   if(saveError)throw saveError;
+  // A verified Stripe checkout referral earns 10% only after payment, never on a click.
+  // Gift cards and wallet-split transactions are excluded until separately verified.
+  if(s.metadata?.ta_affiliate_partner_id&&s.metadata?.ta_affiliate_code){
+   const {data:attr,error:atErr}=await db.from('ta_affiliate_attributions')
+     .select('id,partner_id,buyer_user_id,course_slug')
+     .eq('stripe_session_id',s.id).maybeSingle();
+   if(atErr)throw atErr;
+   const {data:partner,error:paErr}=attr?await db.from('ta_affiliate_partners')
+    .select('id,user_id,status,code').eq('id',attr.partner_id).single():{data:null,error:null};
+   if(paErr)throw paErr;
+   if(attr&&partner&&partner.status==='active'&&partner.user_id!==uid&&
+      attr.buyer_user_id===uid&&attr.course_slug===slug&&
+      partner.id===s.metadata.ta_affiliate_partner_id&&partner.code===s.metadata.ta_affiliate_code){
+    const {data:cfg,error:cfgErr}=await db.from('ta_affiliate_config').select('program_enabled,commission_percent,hold_days')
+      .eq('singleton',true).single();
+    if(cfgErr)throw cfgErr;
+    const {data:refunded,error:re}=await db.from('ta_stripe_refunds').select('payment_id')
+      .eq('payment_id',paymentId).maybeSingle();
+    if(re)throw re;
+    if(cfg?.program_enabled&&!refunded){
+     const commission=Math.round(amount*cfg.commission_percent/100);
+     const {error:comErr}=await db.from('ta_affiliate_commissions').upsert({
+       attribution_id:attr.id,partner_id:attr.partner_id,buyer_user_id:uid,course_slug:slug,
+       stripe_session_id:s.id,stripe_payment_intent_id:paymentId,
+       base_amount_grosze:amount,commission_grosze:commission,
+       commission_percent:cfg.commission_percent,currency:'PLN',
+       purchased_at:paid.toISOString(),
+       eligible_at:new Date(paid.getTime()+cfg.hold_days*86400000).toISOString(),
+       status:'pending'
+      },{onConflict:'stripe_session_id',ignoreDuplicates:true});
+     if(comErr)throw comErr;
+    }
+   }
+  }
   const {data:order,error:orderError}=await db.from('ta_enrollments').select('buyer_email_sent_at,status').eq('stripe_checkout_session_id',s.id).single();
   if(orderError)throw orderError;
   if(order.status==='refunded'||await wasRefunded()||order.buyer_email_sent_at)return reply();
