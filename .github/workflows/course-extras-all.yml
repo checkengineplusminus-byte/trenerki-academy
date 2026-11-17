@@ -12,6 +12,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 jobs:
   content:
     runs-on: ubuntu-24.04
@@ -24,6 +27,7 @@ jobs:
       - name: Verify 79 source-backed courses, lessons, tips and homework
         run: node scripts/test-course-extras-source.mjs
   browser_representative:
+    needs: content
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -31,6 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Install app and real browser engines
         run: |
           npm install --no-audit --no-fund
@@ -46,6 +52,7 @@ jobs:
           sleep 2
           node scripts/test-course-extras-browser.mjs http://127.0.0.1:8787
   browser_all_79:
+    needs: content
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -53,6 +60,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Install Expo and Chromium
         run: |
           npm install --no-audit --no-fund

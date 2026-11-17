@@ -63,7 +63,7 @@ async function check(ctx,row,label,representative){
   assert.equal(await target.getByTestId('adversarial-solution').count(),0,'Solution leaked before attempt');
   const wrong=q.options.findIndex((_,i)=>i!==q.correct);
   await target.getByTestId('adversarial-option-'+wrong).click();
-  await target.getByText('Jeszcze nie — znalazłeś pułapkę').waitFor({timeout:12000});
+  await target.getByText('Jeszcze nie — sprawdź założenie').waitFor({timeout:12000});
   assert.equal(await target.getByTestId('adversarial-solution').count(),0,'Wrong answer must not reveal correct answer on first attempt');
   await target.getByTestId('adversarial-retry').click();
   await target.getByTestId('adversarial-option-'+q.correct).click();

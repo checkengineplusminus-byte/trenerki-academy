@@ -10,9 +10,22 @@ on:
       - 'scripts/test-redteam-v3-source.mjs'
       - 'scripts/test-redteam-v3-browser.mjs'
       - '.github/workflows/redteam-64-v3.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'content/expert-64-redteam-fixture-v3-20261117.json'
+      - 'content/redteam-64-assembled-20261117.json'
+      - 'src/AdversarialLessonTest.tsx'
+      - 'app/nauka.tsx'
+      - 'scripts/test-redteam-v3-source.mjs'
+      - 'scripts/test-redteam-v3-browser.mjs'
+      - '.github/workflows/redteam-64-v3.yml'
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 jobs:
   validate_redteam_content:
     runs-on: ubuntu-24.04
@@ -25,6 +38,7 @@ jobs:
       - name: Validate all 64 traps, original quiz keys, math and pending signoff
         run: node scripts/test-redteam-v3-source.mjs
   browsers_64:
+    needs: validate_redteam_content
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -32,6 +46,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Install Expo and real browser engines
         run: |
           npm install --no-audit --no-fund

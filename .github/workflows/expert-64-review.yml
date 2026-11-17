@@ -13,6 +13,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 jobs:
   verify_64_materials:
     runs-on: ubuntu-24.04
@@ -27,6 +30,7 @@ jobs:
           node scripts/verify-64-specialist-simulation.mjs
           node scripts/test-expert-64-source.mjs
   browser_64:
+    needs: verify_64_materials
     runs-on: ubuntu-24.04
     timeout-minutes: 22
     steps:
@@ -34,6 +38,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Install Expo and browser engines
         run: |
           npm install --no-audit --no-fund
