@@ -1,0 +1,325 @@
+{
+  "date": "2026-11-17",
+  "scope": "28 of 64 simulated professional checklist cases",
+  "reviews": [
+    {
+      "slug": "bednarz",
+      "lesson_no": 16,
+      "reviewer_profile": "Technolog drewna i wilgotności",
+      "advanced_case": "Beczka po 12 godzinach kontaktu z wodą nie przecieka, ale nie ma informacji o wcześniejszym przeznaczeniu. Czy wolno napełnić ją sokiem?",
+      "expected_resolution": "Nie. Szczelność jest wynikiem technicznym, a przydatność do kontaktu z żywnością wymaga niezależnych danych o materiałach i historii użycia.",
+      "required_fix": "Oddziel w karcie trzy kolumny: szczelność, higiena oraz deklarowane zastosowanie. Oznacz «niepotwierdzony kontakt z żywnością», gdy brak identyfikacji materiałów i poprzedniego przeznaczenia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 17,
+      "reviewer_profile": "Specjalista planowania rozkroju i wydajności",
+      "advanced_case": "Na 25 zaakceptowanych klepek zakład wynosi 80%. Ile półfabrykatów należy przewidzieć i czy wynik gwarantuje komplet?",
+      "expected_resolution": "Zaokrąglij 25/0,8=31,25 w górę do 32 sztuk. To oszacowanie statystyczne, nie gwarancja; zapisz rzeczywisty uzysk.",
+      "required_fix": "Wprowadź zasadę zaokrąglania do pełnej sztuki w górę, a obok obliczenia wykaż zmianę wyniku przy niższym rzeczywistym uzysku; nie podstawiaj szerokości surowej deski za gotową geometrię klepki.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 18,
+      "reviewer_profile": "Audytor bezpieczeństwa materiałów do kontaktu z żywnością",
+      "advanced_case": "Odnowiona beczka jest szczelna, lecz sprzedawca nie wie, jaki lakier zastosowano. Klient chce wlać do niej napój. Co wpiszesz na etykiecie?",
+      "expected_resolution": "Nie dopuszczaj do kontaktu z napojem. Wstrzymaj deklarację przydatności i wymagaj danych o wyrobie, powłokach oraz zgodności z właściwymi przepisami.",
+      "required_fix": "Doprecyzuj: rozporządzenie WE 1935/2004 i dobra praktyka produkcji WE 2023/2006 dotyczą wyrobów przeznaczonych do kontaktu z żywnością. Sama naturalność drewna ani test szczelności nie dowodzą zgodności.",
+      "source_urls": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 19,
+      "reviewer_profile": "Kontroler jakości wyrobu bednarskiego",
+      "advanced_case": "Protokół zawiera zdjęcie i wymiary beczki, ale brak zastosowania i ograniczeń. Czy można zamknąć odbiór?",
+      "expected_resolution": "Nie dla wyrobu użytkowego. Należy wskazać przeznaczenie, materiały, wykonane próby, niezgodności, instrukcję konserwacji i podpis osoby przyjmującej.",
+      "required_fix": "Rozdziel akceptację wyglądu od akceptacji użytkowej. Dodaj pole «niezweryfikowane» tam, gdzie brak dokumentów — nigdy nie traktuj pustego pola jako wyniku pozytywnego.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 8,
+      "reviewer_profile": "Koordynator dokumentacji technicznej BIM i rewizji",
+      "advanced_case": "W rejestrze jest rewizja C, a paleta ma B. Kierownik mówi przez telefon «będzie dobrze». Czego brakuje?",
+      "expected_resolution": "Potwierdzenia właściwego detalu, statusu wydania i zgodności dostarczonego materiału. Sporne mocowanie wstrzymuje się do decyzji uprawnionej osoby.",
+      "required_fix": "Wyjaśnij, że numer rewizji, jej data i status zatwierdzenia muszą odnosić się do tego samego zakresu. Telefon nie zastępuje automatycznie procedury dokumentowania zmian.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 9,
+      "reviewer_profile": "Geodeta budowlany i specjalista punktów odniesienia",
+      "advanced_case": "Laser ustawiono 700 mm ponad zerem, a odczyt dotyczy poziomu posadzki. Pomiar wpisano z offsetem dwa razy. Jak wykryć błąd?",
+      "expected_resolution": "Narysuj oś zera i położenie lasera, zapisz równanie ze znakiem i jednostką oraz uwzględnij offset dokładnie raz; wynik zweryfikuj niezależnym punktem.",
+      "required_fix": "W każdym przykładzie pomiaru rozróżnij odczyt instrumentu, wysokość instrumentu, poziom bazowy i rzędną docelową. Nie wolno dodawać lub odejmować 700 mm z pamięci bez schematu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 10,
+      "reviewer_profile": "Inżynier jakości i tolerancji montażowych",
+      "advanced_case": "Wynik +8 mm jest pewny, ale nie dostarczono specyfikacji tolerancji. Czy raport może mówić «element zgodny»?",
+      "expected_resolution": "Nie. Wynik odchylenia nie jest oceną zgodności. Potrzebne jest właściwe, zatwierdzone kryterium i decyzja o wpływie na połączenie.",
+      "required_fix": "Dopisz do protokołu osobne pola: projekt, wynik, różnica, norma/specyfikacja, status decyzji. W razie braku normy wpisz «nieustalone», nie samodzielnie wymyślone ±10 mm.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 11,
+      "reviewer_profile": "Planista kolejności robót i konfliktów międzybranżowych",
+      "advanced_case": "Montaż balustrady jutro zablokuje transport instalacji, choć prace balustradowe są w harmonogramie. Kto i co uzgadnia?",
+      "expected_resolution": "Koordynatorzy obu ekip ustalają okno dostępu, strefę i warunki bezpieczeństwa; aktualizują plan, nie dopuszczając kolizyjnego montażu bez uzgodnienia.",
+      "required_fix": "Dodać przykładowy protokół przekazania strefy z osobą odpowiedzialną, godziną i warunkiem jej otwarcia; termin harmonogramowy nie jest samodzielnym pozwoleniem na niebezpieczny transport.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 12,
+      "reviewer_profile": "Kierownik operacji dźwigowych i zawiesi",
+      "advanced_case": "Cztery palety ważą razem 4800 kg. Zespół wybiera dźwig, dzieląc masę przez cztery. Co pominął?",
+      "expected_resolution": "Rzeczywistą masę najcięższego ładunku, promień pracy, urządzenie i osprzęt, podłoże oraz plan bezpiecznego podnoszenia.",
+      "required_fix": "W zadaniu wymagaj tabeli mas jednostkowych i danych zawiesi zamiast średniej. Bez tabeli udźwigu odpowiedniej do promienia nie akceptuj wyboru urządzenia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 13,
+      "reviewer_profile": "Specjalista bezpieczeństwa pracy na wysokości",
+      "advanced_case": "Podnośnik jest zajęty, monter proponuje wnieść dużą szybę po drabinie. Czy można zastąpić plan stwierdzeniem «to tylko jedno piętro»?",
+      "expected_resolution": "Nie. Wstrzymuje się taki transport; należy dobrać zgodny z instrukcją sposób przenoszenia tafli i dostęp, po ocenie ryzyka i przygotowaniu ekipy.",
+      "required_fix": "Wskaż, że korzystanie z podnośnika wymaga zgodności z instrukcją producenta i oceny ryzyka. Drabina nie jest dowolnym zamiennikiem transportu ciężkiego szkła.",
+      "source_urls": [
+        "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/",
+        "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/bruk-av-personlofter/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 14,
+      "reviewer_profile": "Inspektor jakości szkła architektonicznego",
+      "advanced_case": "Krawędź tafli ma wyszczerbienie, które schowa się w profilu. Czy niewidoczność usuwa ryzyko?",
+      "expected_resolution": "Nie. Element zabezpiecza się i zgłasza do oceny zgodności zgodnie z wymaganiami dla szkła i jego mocowania przed instalacją.",
+      "required_fix": "Dodaj wyraźny zakaz samodzielnego szlifowania lub maskowania uszkodzenia krawędzi elementu wymagającego oceny; fotografie i identyfikator partii pozostają w dokumentacji.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 15,
+      "reviewer_profile": "Specjalista planowania roboczogodzin",
+      "advanced_case": "Czterech pracowników było 7 godzin na budowie, w tym godzinę czekało na sprzęt. Ile godzin montażu, a ile przestoju?",
+      "expected_resolution": "24 roboczogodziny pracy bez oczekiwania i 4 roboczogodziny przestoju; łącznie 28 roboczogodzin obecności.",
+      "required_fix": "Trzymaj osobne kolumny: czas kalendarzowy, liczba osób, roboczogodziny produkcyjne i oczekiwanie. Nie myl sumy godzin pracy z czasem, który upłynął na budowie.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 16,
+      "reviewer_profile": "Kontroler kosztów robót i zmian kontraktowych",
+      "advanced_case": "Zespół czekał 5 roboczogodzin, a stawka kalkulacyjna to 550 NOK/rbh. Czy 2750 NOK należy automatycznie dopisać klientowi do faktury?",
+      "expected_resolution": "Nie. 2750 NOK jest wyliczonym kosztem kalkulacyjnym, a zasadność fakturowania zależy od kontraktu, dowodów i procedury zmiany.",
+      "required_fix": "Dodatkowy przykład musi oddzielać koszt wewnętrzny, zgłoszenie roszczenia i zatwierdzony przychód. Nie zamieniaj prostego mnożenia w automatyczne prawo do zapłaty.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 17,
+      "reviewer_profile": "Specjalista kontraktów budowlanych i zmian VO",
+      "advanced_case": "Klient telefonicznie zamawia dwa nowe wsporniki, ale nie ma pisemnej zmiany. Jak ograniczyć spór?",
+      "expected_resolution": "Opisz nowy zakres, rysunek i koszt/czas oraz prześlij do zatwierdzenia właściwą procedurą; nie traktuj milczenia jako bezwarunkowej zgody.",
+      "required_fix": "Uzupełnij ścieżkę: zlecenie, weryfikacja wpływu, wycena, pisemne potwierdzenie, wykonanie, dokumentacja. Wymagany tryb wynika z konkretnego kontraktu, a nie jednej uniwersalnej zasady.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 18,
+      "reviewer_profile": "Inżynier raportowania zaawansowania robót",
+      "advanced_case": "Wykonano 36/40 m, a odebrano 28/40 m. Czy wolno napisać «90% ukończone i odebrane»?",
+      "expected_resolution": "Nie. Montaż 90%, odbiór 70%, różnica 8 m. Każdy etap i blokery należy wykazać osobno.",
+      "required_fix": "Rozdziel w raporcie status wykonania, kontroli jakości, odbioru klienta i plan usunięcia braków. Wprowadź przykład z obliczeniem 36/40 i 28/40 bez sumowania procentów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 19,
+      "reviewer_profile": "Kierownik budowy — zarządzanie ryzykiem harmonogramu",
+      "advanced_case": "Termin jest pilny, ale najnowszy detal mocowania nie został potwierdzony. Czy zatrzymać wszystkie prace?",
+      "expected_resolution": "Wstrzymaj sporny montaż, a bezpieczne i niezależne zadania kontynuuj po koordynacji; pilnie pozyskaj zatwierdzony detal.",
+      "required_fix": "Dodaj macierz zadań «bezpiecznie kontynuować / wymaga decyzji / wstrzymać». Nie buduj fałszywego wyboru między pracą bez dokumentów a odwołaniem całego tygodnia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 12,
+      "reviewer_profile": "Rzeczoznawca identyfikacji pojazdów i VIN",
+      "advanced_case": "VIN z ogłoszenia zgadza się z numerem nadwozia, ale w dokumentach jest inny wariant silnika. Czy raport online wystarcza?",
+      "expected_resolution": "Nie. Wstrzymaj płatność do wyjaśnienia zgodności oznaczeń, dokumentów, konfiguracji fabrycznej oraz ewentualnych zmian homologacyjnych.",
+      "required_fix": "W recenzji oddziel identyfikację VIN od ustalenia rzeczywistego stanu technicznego. Rozbieżność może wynikać z błędu danych, ale nie powinna zostać zignorowana.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 13,
+      "reviewer_profile": "Diagnosta historii przebiegu pojazdu",
+      "advanced_case": "Wpis serwisowy dwa lata temu 172 000 km, dziś 163 000 km. Co jest dowodem cofnięcia licznika?",
+      "expected_resolution": "Sama rozbieżność jest sygnałem ostrzegawczym, nie ostatecznym dowodem przyczyny. Poproś o dokumenty, sprawdź kolejność wpisów i wykonaj niezależną weryfikację.",
+      "required_fix": "Nie ucz wyrokowania o oszustwie na podstawie jednej niespójności. Zaznacz, że źle wpisany przebieg, wymiana zegarów i ingerencja wymagają odrębnych dowodów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 14,
+      "reviewer_profile": "Technik diagnostyki akumulatorów trakcyjnych EV",
+      "advanced_case": "Wyświetlany zasięg 400 km ma dowodzić 100% kondycji baterii. Jak go zweryfikować?",
+      "expected_resolution": "Nie jest to pomiar pojemności użytkowej ani gwarancja zasięgu; potrzebny wiarygodny test baterii odpowiedni do danego modelu, ładowania i warunków.",
+      "required_fix": "Rozróżnij zasięg szacowany, rzeczywiste zużycie energii, wynik diagnostycznego SoH i gwarancję producenta. Jednorazowe wskazanie ekranu nie jest certyfikatem.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 15,
+      "reviewer_profile": "Mechanik przeglądów przedzakupowych",
+      "advanced_case": "Auto 28 000 zł; opony i hamulce wymagają 3000 zł. Ile kosztuje wejście przed OC, podatkiem i innymi naprawami?",
+      "expected_resolution": "Co najmniej 31 000 zł. Koszt bezpieczeństwa trzeba uwzględnić przed transakcją i potwierdzić stan warsztatowo.",
+      "required_fix": "Wskazówki obejmują bieżnik, wiek i typ opon, stan hamulców i zawieszenia oraz budżet z rezerwą. Próba drogowa nie zastępuje kontroli podzespołów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 16,
+      "reviewer_profile": "Analityk kredytu konsumenckiego na zakup auta",
+      "advanced_case": "Dwie oferty mają taką samą ratę, ale jedna ma dłuższy okres i większy wykup końcowy. Co porównać?",
+      "expected_resolution": "Całkowitą kwotę do zapłaty, RRSO przy porównywalnych parametrach, opłaty, ubezpieczenie wymagane umową i warunki wykupu.",
+      "required_fix": "Usuń ryzyko utożsamiania małej raty z tanim finansowaniem. Dodaj obliczenie sumy rat plus opłat i ewentualnej ostatniej raty, bez wymyślania aktualnej oferty banku.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 17,
+      "reviewer_profile": "Prawnik ochrony konsumentów i transakcji samochodowych",
+      "advanced_case": "Komis reklamuje samochód, lecz chce umowy z prywatną osobą. Kto odpowiada za niezgodność towaru z umową?",
+      "expected_resolution": "Najpierw ustal faktyczną stronę i charakter sprzedaży; w relacji konsument–przedsiębiorca zastosowanie mają przepisy o niezgodności towaru z umową. Przy transakcji prywatnej reżim jest inny.",
+      "required_fix": "Wyjaśnij konsekwencje sprzedaży przez przedsiębiorcę versus pośrednictwa komisu. Nigdy nie zakładaj, że ogłoszenie w komisie samo przesądza, kto jest sprzedawcą w umowie.",
+      "source_urls": [
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/",
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 18,
+      "reviewer_profile": "Specjalista formalności rejestracyjnych w Polsce",
+      "advanced_case": "Osoba prywatna kupiła w Polsce zarejestrowany pojazd. Czy wystarczy zgłosić nabycie, a wniosek o rejestrację odłożyć?",
+      "expected_resolution": "Nie. Zasadą dla obecnego nabycia jest wniosek o rejestrację w ciągu 30 dni; są wyjątki, w tym termin 60 dni przy spadku i 90 dni dla przedsiębiorcy handlującego pojazdami.",
+      "required_fix": "W lekcji doprecyzuj obowiązek złożenia wniosku, a nie gwarantowanego wydania dowodu w 30 dni. Sprawdź OC i dokumenty. Pokaż wyjątki i źródło Gov.pl aktualne w dniu nauki.",
+      "source_urls": [
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/",
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 19,
+      "reviewer_profile": "Doradca planowania obsługi serwisowej pojazdu",
+      "advanced_case": "Samochód 35 000 zł, serwis 1800 zł, rezerwa 1200 zł. Ile przygotować na start i jak planować następne 90 dni?",
+      "expected_resolution": "38 000 zł przed pozostałymi opłatami. W planie wydziel rzeczy pilne dla bezpieczeństwa, formalności i obserwację eksploatacji.",
+      "required_fix": "Nie rekomenduj bezpodstawnej wymiany wszystkich elementów. Zapisz dokumentację, rekomendacje producenta i wynik diagnostyki, wraz z pozycją «wymaga potwierdzenia».",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 16,
+      "reviewer_profile": "Metrolog kół i bicia obręczy",
+      "advanced_case": "Koło drewniane ma odchylenie 5 mm w dwóch punktach, brak tolerancji. Czy jest dopuszczone do jazdy?",
+      "expected_resolution": "Nie. Najpierw trzeba ustalić rodzaj bicia, oś pomiarową, przeznaczenie i wymagane kryteria bezpieczeństwa.",
+      "required_fix": "Odróżniaj bicie promieniowe od bocznego; nie twórz dopuszczalnej tolerancji z samego wrażenia wzrokowego lub liczby 5 mm.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 17,
+      "reviewer_profile": "Rzemieślnik konstrukcji piasty i szprych",
+      "advanced_case": "Jedna szprycha jest luźna po naprawie, reszta wygląda prawidłowo. Co sprawdzić?",
+      "expected_resolution": "Zbadaj gniazdo piasty, sąsiednie połączenia, stan włókien i geometrię całego koła. Dla wyrobu do jazdy wymagana jest osobna ocena konstrukcyjna.",
+      "required_fix": "Nie dopuszczaj do bezpiecznego użytkowania na podstawie dobicia jednej szprychy bez pomiarów. Przy ekspozycji stosuj odrębne kryteria.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 18,
+      "reviewer_profile": "Konserwator historycznych pojazdów i eksponatów",
+      "advanced_case": "Muzealna replika koła ma starą naprawę, klient prosi o dopuszczenie jej do ruchu. Co zrobić?",
+      "expected_resolution": "Odmówić deklaracji bez oceny przydatności do jazdy i badań. Zachowanie substancji historycznej to inny cel niż eksploatacja.",
+      "required_fix": "Podaj na karcie odbioru «eksponat» albo «użytkowe» z osobnymi wymaganiami; dokumentacja konserwacji nie zastępuje testów nośności.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 19,
+      "reviewer_profile": "Audytor jakości zleceń kołodziejskich",
+      "advanced_case": "Karta koła pokazuje gatunek drewna, ale nie obejmuje geometrii i przeznaczenia. Czy zamknąć odbiór?",
+      "expected_resolution": "Nie. Podaj identyfikację, materiał, naprawy, geometrię, zakres badań, decyzje i ograniczenia; brak testów oznacz jawnie.",
+      "required_fix": "Zaproponuj ścieżkę przekazania klientowi, która nie sugeruje certyfikacji nieprzeprowadzonej w warsztacie.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    }
+  ]
+}
