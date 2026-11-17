@@ -1,0 +1,510 @@
+{
+  "date": "2026-11-17",
+  "role": "adversarial critique",
+  "reviews": [
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 8,
+      "question": "Masz 20 minut i dziecko chce pokazać budowlę, choć umówiłeś spacer. Co świadczy o uważnym kontakcie?",
+      "correct": "Zapytanie, na czym mu zależy, uzgodnienie czasu i wspólne działanie bez równoległego telefonu.",
+      "wrongs": [
+        "Przełożenie rozmowy na wieczór bez sprawdzania, czy dziecko ma wtedy czas.",
+        "Pokazanie dziecku planu spaceru i ustalenie kolejnego terminu na budowlę bez pytania o jego zdanie.",
+        "Wspólne zdjęcie budowli i późniejsze oglądanie go przy odpowiadaniu na wiadomości."
+      ],
+      "flaw": "Formalna obecność nie równa się uważnemu kontaktowi; uogólnianie skutków jednej aktywności.",
+      "evidence": "Zgoda dziecka, brak multitaskingu, krótki uzgodniony rytuał bez oceniania emocji.",
+      "severity": "medium"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 9,
+      "question": "Po przegranej dziecko rzuca kontrolerem w kierunku rodzeństwa. Która reakcja zachowuje granicę i kontakt?",
+      "correct": "Najpierw zatrzymaj zagrożenie, nazwij emocję bez oceny osoby i porozmawiaj o naprawie, gdy wszyscy są bezpieczni.",
+      "wrongs": [
+        "Wysłuchaj emocji bez przerywania rzucania, by nie nasilać napięcia.",
+        "Najpierw zastosuj długą karę, a dopiero potem zapytaj o emocje.",
+        "Poproś dziecko o przeprosiny, zanim zabezpieczysz inne osoby."
+      ],
+      "flaw": "Uznanie emocji bywa błędnie rozumiane jako nieingerowanie w przemoc.",
+      "evidence": "Bezpieczeństwo, nazwanie emocji, jasna granica, późniejszy plan naprawy.",
+      "severity": "high"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 10,
+      "question": "Dziecko prosi o pomoc przy modelu, ale chce samo dokończyć. Kiedy wskazówka jest lepsza od przejęcia zadania?",
+      "correct": "Gdy czynność jest bezpieczna i dziecko może rozwiązać problem po jednej małej podpowiedzi.",
+      "wrongs": [
+        "Gdy rodzic chce przede wszystkim szybciej skończyć model.",
+        "Gdy dziecko w ogóle nie ma dostępu do instrukcji ani potrzebnych części.",
+        "Gdy próba wymaga niebezpiecznego narzędzia poza jego kompetencją."
+      ],
+      "flaw": "Pomoc dorosłego może przejść w wyręczanie albo pozostawienie dziecka bez wsparcia.",
+      "evidence": "Bezpieczny zakres działania, najmniejsza potrzebna podpowiedź i samokontrola dziecka.",
+      "severity": "medium"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 11,
+      "question": "Rodzic deklaruje strefę bez telefonów, ale musi mieć dostępność na pilny kontakt medyczny. Które rozwiązanie jest spójne?",
+      "correct": "Wspólna reguła odkładania ekranów i jawny, wąsko określony wyjątek dla rzeczywiście pilnych połączeń.",
+      "wrongs": [
+        "Reguła tylko dla dzieci, bo dorośli posiadają obowiązki.",
+        "Całkowity zakaz telefonu nawet w sytuacji zagrożenia zdrowia.",
+        "Pozostawienie telefonu na stole i odpowiadanie na wszystko, aby nie przegapić nic ważnego."
+      ],
+      "flaw": "Reguła bez uzasadnionych wyjątków albo nieobowiązująca dorosłych nie daje dobrego wzorca.",
+      "evidence": "Wspólny zapis zasady, wyjątek awaryjny, tygodniowa refleksja bez publicznego oceniania.",
+      "severity": "medium"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 12,
+      "question": "Dziecko milczy po szkole przez jeden dzień. Jak odróżnić troskę od nadinterpretacji?",
+      "correct": "Zaproponuj spokojny kontakt później i obserwuj sytuację, reagując adekwatnie na konkretne sygnały zagrożenia.",
+      "wrongs": [
+        "Uznać milczenie za dowód, że wydarzyło się coś złego.",
+        "Odczytać prywatne wiadomości bez żadnych konkretnych przesłanek.",
+        "Zrezygnować ze sprawdzania bezpieczeństwa nawet przy wyraźnych objawach zagrożenia."
+      ],
+      "flaw": "Jednorazowe zachowanie nie jest diagnozą, lecz troska nie wyklucza adekwatnej reakcji na ryzyko.",
+      "evidence": "Uważna rozmowa, respektowanie odpoczynku, konkretne objawy wymagające pomocy.",
+      "severity": "high"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 13,
+      "question": "Odbiór dziecka opóźnia się o 30 minut. Rodzice mają napięte relacje. Jak przekazać zmianę?",
+      "correct": "Bezpośrednio i możliwie neutralnie między dorosłymi, a przy zagrożeniu przez bezpieczny uzgodniony kanał.",
+      "wrongs": [
+        "Poprosić dziecko o wysłanie wiadomości i przedstawienie potwierdzenia.",
+        "Poczekać bez żadnej informacji, by nie zaostrzać konfliktu.",
+        "Przekazać zmianę przez innych rodziców w obecności dziecka."
+      ],
+      "flaw": "Dziecko może stać się pośrednikiem w konflikcie; bezpośredni kontakt nie zawsze jest bezpieczny.",
+      "evidence": "Potwierdzona godzina, miejsce, kanał bezpieczny dla opiekunów, brak obciążania dziecka.",
+      "severity": "high"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 14,
+      "question": "Rodzic mówi: «Krzyknąłem, ale zdenerwowałeś mnie». Co trzeba poprawić?",
+      "correct": "Usunąć usprawiedliwiające «ale», nazwać własny krzyk i zaplanować konkretną zmianę reakcji.",
+      "wrongs": [
+        "Dodać dziecku obowiązek natychmiastowego wybaczenia.",
+        "Utrzymać «ale», lecz zmienić je na bardziej łagodny ton.",
+        "Zastąpić przeprosiny prezentem, aby dziecko nie wracało do sprawy."
+      ],
+      "flaw": "Przeprosiny warunkowe przesuwają odpowiedzialność z dorosłego na dziecko.",
+      "evidence": "Nazwanie własnego zachowania, brak obwiniania, obserwowalny krok naprawy.",
+      "severity": "high"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 15,
+      "question": "Nastolatek nie chce stale udostępniać GPS, a rodzic troszczy się o powrót z treningu. Jak uzgodnić bezpieczeństwo?",
+      "correct": "Uzgodnij godzinę, kontakt przy zmianie planu i jasne działanie awaryjne, uwzględniając wiek oraz rzeczywiste ryzyka.",
+      "wrongs": [
+        "Wymagaj automatycznego śledzenia każdej godziny niezależnie od sytuacji.",
+        "Usuń wszystkie zasady powrotu, ponieważ nastolatek potrzebuje prywatności.",
+        "Sprawdź ukradkiem telefon, a później przedstaw śledzenie jako uzgodnioną regułę."
+      ],
+      "flaw": "Prywatność nie oznacza braku opieki, lecz opieka nie uzasadnia automatycznego nadzoru ukrytego.",
+      "evidence": "Wspólne ustalenia, proporcjonalność ryzyka, plan awaryjny, brak nieuzasadnionego szpiegowania.",
+      "severity": "high"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 16,
+      "question": "Dziecko ma trzy zaległe zadania; nauczyciel nie wie, czy rozumiało polecenie. Co jest pierwszym działaniem?",
+      "correct": "Ustalenie konkretnych barier z dzieckiem i nauczycielem oraz małego, sprawdzalnego następnego kroku.",
+      "wrongs": [
+        "Wprowadzenie kary za każdą zaległość przed wyjaśnieniem przyczyny.",
+        "Samodzielne wykonanie prac za dziecko, by uniknęło kolejnych ocen.",
+        "Uznanie trudności za stałą cechę dziecka na podstawie trzech zadań."
+      ],
+      "flaw": "Brak pracy nie dowodzi braku motywacji ani nie wyklucza trudności w zrozumieniu.",
+      "evidence": "Przykłady poleceń, dostęp do materiałów, plan dostosowania i sprawdzenie postępu.",
+      "severity": "medium"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 17,
+      "question": "Dwoje dzieci chce używać jednego roweru, a jedno ma trening o ustalonej godzinie. Co jest sprawiedliwą procedurą?",
+      "correct": "Wysłuchanie obojga, zapisanie ograniczeń czasowych i wspólna zasada kolejności możliwa do sprawdzenia.",
+      "wrongs": [
+        "Zawsze przyznawać rower starszemu dziecku bez dyskusji.",
+        "Zawsze wybierać młodsze dziecko, aby nie czuło się pominięte.",
+        "Rozstrzygać losowaniem niezależnie od realnego terminu treningu i bezpieczeństwa."
+      ],
+      "flaw": "Równość formalna nie zawsze odpowiada realnym ograniczeniom, a etykiety utrwalają konflikt.",
+      "evidence": "Bezpieczeństwo, dwa opisy, faktyczne terminy, jasna i wykonalna reguła.",
+      "severity": "medium"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 18,
+      "question": "Dziecka nie przyjęto do drużyny. Czy powiedzenie «za rok na pewno wygrasz» jest właściwe?",
+      "correct": "Nie: uznaj rozczarowanie i rozmawiaj o możliwych działaniach tylko wtedy, gdy dziecko chce, bez gwarantowania wyniku.",
+      "wrongs": [
+        "Tak, bo mocna obietnica zawsze poprawia motywację.",
+        "Tak, jeśli rodzic zapewni dodatkowe treningi bez pytania dziecka.",
+        "Tak, jeśli obietnica będzie wypowiedziana bardzo spokojnie."
+      ],
+      "flaw": "Podtrzymywanie motywacji nie daje prawa do obiecywania niekontrolowanego wyniku.",
+      "evidence": "Uznanie uczuć, pytanie o gotowość, realistyczne opcje i prawo do rezygnacji.",
+      "severity": "medium"
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 19,
+      "question": "Plan kontaktu zakładał spacery, lecz dziecko prosi o gotowanie. Co sprawdzić przed korektą?",
+      "correct": "Czy wspólne gotowanie jest bezpieczne i chciane przez dziecko, a rytuał uważnego kontaktu może zostać zachowany.",
+      "wrongs": [
+        "Pozostać przy spacerach, ponieważ plan 90-dniowy nie podlega korekcie.",
+        "Uznać cały miesiąc spacerów za nieważny i przerwać regularne spotkania.",
+        "Zamienić spacer na obowiązkowe gotowanie z oceną zaangażowania dziecka."
+      ],
+      "flaw": "Sztywność planu może zmieniać relację w narzędzie kontroli dziecka.",
+      "evidence": "Zgoda na zmianę, bezpieczny zakres czynności, obserwacja własnej dostępności.",
+      "severity": "medium"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 12,
+      "question": "Rano kuchnia jest brudna, chociaż każdy wieczorem mówi «gotowe». Jak udowodnić poprawę bez szukania winnego?",
+      "correct": "Zdefiniować widoczny stan końcowy i zmierzyć przez tydzień, czy po kolacji jest osiągany.",
+      "wrongs": [
+        "Kupić nowe pojemniki bez sprawdzenia źródła problemu.",
+        "Dodać ostrzejszą karę za pozostawienie naczyń.",
+        "Porównywać domowników według liczby minut sprzątania."
+      ],
+      "flaw": "Brak mierzalnego standardu i automatyczne przypisywanie winy.",
+      "evidence": "Lista stanu końcowego, obserwacje przez tydzień, korekta środowiska i podziału pracy.",
+      "severity": "medium"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 13,
+      "question": "Jedna osoba sprząta, druga planuje zakupy i pilnuje terminów. Czy podział «po jednym zadaniu» jest sprawiedliwy?",
+      "correct": "Nie da się ocenić bez uwzględnienia pracy planowania, pamiętania i monitorowania zadania.",
+      "wrongs": [
+        "Tak, liczba widocznych zadań obu osób jest taka sama.",
+        "Tak, jeśli tylko sprzątanie zajmuje tyle samo czasu.",
+        "Nie, jeśli jedna osoba nie wykonuje każdej czynności fizycznie."
+      ],
+      "flaw": "Praca organizacyjna może pozostać niewidzialna przy liczeniu tylko wykonania.",
+      "evidence": "Karta właściciela zadania: plan, zakupy, wykonanie, weryfikacja i realny czas.",
+      "severity": "medium"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 14,
+      "question": "Wyjście 7:30, czynności trwają 35 min i potrzeba 10 min buforu. Godzina startu?",
+      "correct": "6:45; następnie zweryfikuj, które czynności są sekwencyjne, a które można wykonać równolegle.",
+      "wrongs": [
+        "6:55, bo bufor dodaje się do godziny wyjścia.",
+        "7:05, bo czynności i bufor można zawsze nałożyć.",
+        "6:45 gwarantuje bezstresowy poranek niezależnie od zdarzeń."
+      ],
+      "flaw": "Błąd rachunku czasu albo traktowanie założenia jako gwarancji.",
+      "evidence": "Oś czasu, rzeczywiste pomiary, bufor i dwie czynności przygotowane wcześniej.",
+      "severity": "medium"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 15,
+      "question": "Jedno z rodziców choruje. Jak wybierzesz priorytety z listy 10 zadań?",
+      "correct": "Najpierw higiena, bezpieczne jedzenie i opieka; resztę rozdziel lub odrocz według możliwości.",
+      "wrongs": [
+        "Wykonanie wszystkich prac jest konieczne, choćby kosztem odpoczynku.",
+        "Wszystkie obowiązki należy przekazać najstarszemu dziecku.",
+        "Można odroczyć wszystko, w tym bezpieczeństwo żywności i opiekę."
+      ],
+      "flaw": "Brak hierarchii zadań i narzucanie nierealnej liczby obowiązków.",
+      "evidence": "Wersja minimum, przydział zależny od możliwości, warunki odroczenia.",
+      "severity": "high"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 16,
+      "question": "Na półce stoi odkamieniacz i produkt chlorowy. Czy można je połączyć dla lepszego działania?",
+      "correct": "Nie. Nie mieszaj takich środków; stosuj etykiety i zasady przechowywania, a w razie uwolnienia gazu opuść zagrożone miejsce i wezwij pomoc.",
+      "wrongs": [
+        "Tak, ale wyłącznie w dobrze wentylowanym pomieszczeniu.",
+        "Tak, jeśli ilość obu substancji jest niewielka.",
+        "Tak, jeśli mieszankę od razu spłucze się wodą."
+      ],
+      "flaw": "Powstanie toksycznych gazów przy mieszaniu niektórych środków chlorowych i kwasowych.",
+      "evidence": "Oryginalne opakowania, ostrzeżenia na etykietach, dostęp dzieci, wentylacja i procedura awaryjna.",
+      "severity": "critical"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 17,
+      "question": "Dziecko przy nakrywaniu stołu zapomniało łyżek. Jak zareagować, by nauczyć samokontroli?",
+      "correct": "Pokazać kryterium kompletnego nakrycia i pozwolić spokojnie uzupełnić brak, bez zawstydzania.",
+      "wrongs": [
+        "Odebrać zadanie na stałe po pierwszej pomyłce.",
+        "Wymagać, aby rodzeństwo oceniało je publicznie.",
+        "Pochwalić bez zwracania uwagi na brakujące elementy."
+      ],
+      "flaw": "Brak informacji zwrotnej albo używanie zawstydzania zamiast nauki.",
+      "evidence": "Prosta karta kontroli zadania, dostosowanie do możliwości i bezpieczeństwo.",
+      "severity": "medium"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 18,
+      "question": "750 ml środka kosztuje 15 zł, a litr 18 zł. Jaki wniosek jest dokładny?",
+      "correct": "Pierwszy kosztuje 20 zł/l, drugi 18 zł/l; oszczędność wymaga jeszcze realnego zużycia i przechowywania.",
+      "wrongs": [
+        "Pierwszy jest tańszy, bo ma niższą cenę na półce.",
+        "Drugi jest zawsze opłacalny, nawet gdy zostanie wyrzucony.",
+        "Oba mają tę samą cenę jednostkową, bo różnica wynosi tylko 3 zł."
+      ],
+      "flaw": "Mylenie ceny opakowania z ceną jednostkową i ekonomią użycia.",
+      "evidence": "Działania 15/0,75 i 18/1, przydatność i warunki składowania.",
+      "severity": "medium"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 19,
+      "question": "Odsetek wykonania wzrósł z 60 do 83%, ale jedna osoba jest przeciążona. Czy plan zaliczyć jako sukces?",
+      "correct": "Jest poprawa wykonania, lecz trzeba też ocenić podział obowiązków i koszt dla domowników.",
+      "wrongs": [
+        "Tak, bo procent jest wyższy bez potrzeby innej oceny.",
+        "Nie, ponieważ każda poprawa wymaga 100% wykonania.",
+        "Nie da się ocenić niczego bez porównywania charakterów osób."
+      ],
+      "flaw": "Wynik liczbowy bez mierzenia kosztów i sprawiedliwości podziału.",
+      "evidence": "Dane wykonania, czas pracy, przypominanie, możliwość korekty i opinia domowników.",
+      "severity": "medium"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 16,
+      "question": "Kosz zakupowy wykonano z wikliny dobranej tylko po kolorze. Co trzeba udowodnić przed podaniem nośności?",
+      "correct": "Stan materiału, konstrukcję dna, obrzeże, uchwyt i sposób użytkowania zweryfikowane odpowiednią kontrolą.",
+      "wrongs": [
+        "Wystarczy sprawdzić grubość jednego pręta obrzeża.",
+        "Wystarczy potwierdzić, że pręty są równego koloru.",
+        "Wystarczy test, że pusty kosz sam stoi na podłodze."
+      ],
+      "flaw": "Estetyka materiału nie jest dowodem nośności konstrukcji.",
+      "evidence": "Dobór prętów do funkcji, uchwyt, splot, protokół odpowiedniej próby.",
+      "severity": "high"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 17,
+      "question": "Kosz ma średnice 300 i 318 mm w dwóch kierunkach. Czy «18 mm jest mało» wystarcza do akceptacji?",
+      "correct": "Nie: sprawdź szablon i uzgodnione tolerancje przed decyzją, a korektę rozważ przed zamknięciem splotu.",
+      "wrongs": [
+        "Tak, bo zdjęcie wykonane z przodu nie pokazuje różnicy.",
+        "Tak, jeśli oba wymiary zaokrągli się do 31 cm.",
+        "Tak, jeśli uchwyt jest centralnie umieszczony."
+      ],
+      "flaw": "Własne uznaniowe tolerancje zamiast wymogów zamówienia.",
+      "evidence": "Miejsca pomiarów, szablon, średnice, wysokość i kryterium odbioru.",
+      "severity": "high"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 18,
+      "question": "Kosz ma pęknięty uchwyt i podejrzany nalot przy dnie. Jak rozdzielić problemy?",
+      "correct": "Zabezpieczyć produkt, osobno ocenić połączenie konstrukcyjne i ryzyko higieniczne; nie ukrywać nalotu klejem.",
+      "wrongs": [
+        "Naprawić uchwyt i uznać kosz za bezpieczny bez oględzin dna.",
+        "Wytrzeć nalot i automatycznie dopuścić do kontaktu z żywnością.",
+        "Suszyć uchwyt bez sprawdzenia wątku i obrzeża."
+      ],
+      "flaw": "Zbiorcze «naprawione» maskuje różne ryzyka użytkowe i higieniczne.",
+      "evidence": "Dokumentacja konstrukcji, wilgotność, oględziny, przeznaczenie i decyzja.",
+      "severity": "high"
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 19,
+      "question": "Klient chce przenosić narzędzia w koszu zaprojektowanym jako dekoracja. Czy można dopisać «do 10 kg»?",
+      "correct": "Nie bez projektu i odpowiedniej weryfikacji połączeń oraz nośności dla nowego przeznaczenia.",
+      "wrongs": [
+        "Tak, jeżeli klient podpisze, że bierze odpowiedzialność.",
+        "Tak, jeśli podobny kosz sprzedawany jest jako transportowy.",
+        "Tak, jeśli wymieni się tylko rękojeść na grubszą."
+      ],
+      "flaw": "Deklarowanie udźwigu bez dowodów albo przerzucanie ryzyka na klienta.",
+      "evidence": "Specyfikacja obciążeń, konstrukcja, adekwatna próba, ograniczenia użycia.",
+      "severity": "high"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 8,
+      "question": "Nieśmiałe dziecko trzyma opiekuna za rękę, a grupa jest podekscytowana. Jak rozpocząć bez presji?",
+      "correct": "Powitać spokojnie całą grupę i zostawić dziecku wybór obserwacji lub późniejszego dołączenia.",
+      "wrongs": [
+        "Podejść do dziecka, bo reszta już się bawi.",
+        "Poprosić opiekuna o delikatne przesunięcie dziecka do przodu.",
+        "Skupić na dziecku uwagę grupy, aby zachęcić je do kontaktu."
+      ],
+      "flaw": "Naruszenie granic dziecka w celu wymuszenia udziału.",
+      "evidence": "Możliwość odmowy, brak przymusu dotyku, miejsce przy opiekunie.",
+      "severity": "high"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 9,
+      "question": "Dziecko mówi, że ma mniejszy prezent od kolegi. Co byłoby bezpiecznym rozwiązaniem?",
+      "correct": "Uznaj uczucie, nie porównuj wartości dzieci i dyskretnie zweryfikuj przypisanie paczki z opiekunem.",
+      "wrongs": [
+        "Publicznie przedstaw budżety wszystkich paczek, by pokazać zasady.",
+        "Obiecaj większą paczkę bez ustalenia z organizatorem.",
+        "Poproś inne dzieci o pokazanie swoich prezentów dla porównania."
+      ],
+      "flaw": "Rankingi dzieci według prezentów i łamanie poufności rodzin.",
+      "evidence": "Neutralne komunikaty, identyfikacja paczek, dyskrecja.",
+      "severity": "medium"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 10,
+      "question": "Dziecko nie mówi, ale może wskazać kartę. Czy brak odpowiedzi to zgoda na bliski kontakt?",
+      "correct": "Nie. Zaproponuj możliwość wyboru gestem i czas, respektując także brak decyzji i rezygnację.",
+      "wrongs": [
+        "Tak, jeżeli opiekun zapewnia, że dziecko rozumie.",
+        "Tak, jeśli pytanie zostanie powtórzone głośniej.",
+        "Tak, jeśli reszta grupy już odebrała prezenty."
+      ],
+      "flaw": "Milczenie nie oznacza przyzwolenia ani braku rozumienia.",
+      "evidence": "Preferowana forma AAC, uzgodnienie z opiekunem, czas i prawo odmowy.",
+      "severity": "high"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 11,
+      "question": "Rodzic zgodził się na fotografię dla rodziny, a organizator chce ją wrzucić publicznie. Co trzeba sprawdzić?",
+      "correct": "Osobną, uprzednią i konkretną podstawę publikacji, zgodną z celem oraz uwzględniającą zdanie dziecka.",
+      "wrongs": [
+        "Wystarczy, że na zdjęciu nie ma nazwiska.",
+        "Wystarczy poinformować o możliwości usunięcia już po publikacji.",
+        "Wystarczy regulamin udziału w imprezie bez zgody na rozpowszechnianie."
+      ],
+      "flaw": "Zgoda na zdjęcie prywatne nie upoważnia automatycznie do publikacji.",
+      "evidence": "Cel, platforma, podmiot, czas, uprzednia zgoda i interes dziecka.",
+      "severity": "critical"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 12,
+      "question": "Dziecko podczas wizyty przedszkolnej chce wyjść z sali. Kto ustala bezpieczny sposób?",
+      "correct": "Wyznaczony personel placówki, koordynując nadzór nad grupą; animator nie przejmuje roli opiekuna.",
+      "wrongs": [
+        "Animator wyprowadza dziecko sam, aby przyspieszyć program.",
+        "Cały personel wychodzi z jednym dzieckiem, pozostawiając grupę bez nadzoru.",
+        "Dziecko opuszcza salę samo bez powiadomienia personelu."
+      ],
+      "flaw": "Przekroczenie kompetencji animatora i brak nadzoru nad grupą.",
+      "evidence": "Ustalone role, zasady przekazania, nadzór placówki.",
+      "severity": "critical"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 13,
+      "question": "Głośna muzyka powoduje, że dziecko zakrywa uszy. Jaka reakcja nie wymaga diagnozy?",
+      "correct": "Ściszyć lub wyłączyć dźwięk, umożliwić przerwę z opiekunem i nie wymuszać powrotu.",
+      "wrongs": [
+        "Wytłumaczyć, że utwór potrwa tylko pół minuty.",
+        "Przenieść dziecko bliżej animatora bez zmiany muzyki.",
+        "Czekać z wyłączeniem, aż dziecko zgodzi się wrócić."
+      ],
+      "flaw": "Zignorowanie widocznego dyskomfortu lub wymuszanie ekspozycji.",
+      "evidence": "Sygnały dyskomfortu, możliwość wyciszenia, dostępna alternatywa.",
+      "severity": "high"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 14,
+      "question": "Dziecko prosi o obietnicę powrotu nieobecnego taty. Jak uniknąć krzywdzącej obietnicy?",
+      "correct": "Uznaj tęsknotę, powiedz uczciwie, że nie możesz tego zagwarantować, i zaoferuj kontakt z zaufanym opiekunem.",
+      "wrongs": [
+        "Zapewnij, że magia świąt może sprowadzić tatę, jeśli dziecko będzie grzeczne.",
+        "Przy wszystkich pytaj szczegółowo, dlaczego tata jest nieobecny.",
+        "Zastąp rozmowę dodatkowym prezentem bez pytania o potrzebę."
+      ],
+      "flaw": "Bezpodstawne obietnice i przenoszenie odpowiedzialności na dziecko.",
+      "evidence": "Uznanie emocji, brak gwarancji, poufność i opiekun.",
+      "severity": "high"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 15,
+      "question": "Starsze dziecko rozpoznaje głos sąsiada w kostiumie. Co zrobić bez manipulowania?",
+      "correct": "Potraktować obserwację poważnie i zaprosić do wspólnej zabawy bez wymuszania tajemnicy.",
+      "wrongs": [
+        "Obiecać dodatkowy prezent za nierozpowiadanie o odkryciu.",
+        "Poinformować grupę, że dziecko próbuje zepsuć zabawę.",
+        "Wymagać publicznego potwierdzenia wersji animatora."
+      ],
+      "flaw": "Zawstydzanie lub nagradzanie milczenia o rozpoznaniu kostiumu.",
+      "evidence": "Neutralna rozmowa, poszanowanie rodzinnych zwyczajów, brak presji.",
+      "severity": "medium"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 16,
+      "question": "Do zajęć używany jest papier z odzysku, ale część opakowań ma zszywki. Co zrobisz?",
+      "correct": "Wyłączysz niebezpieczne elementy, sprawdzisz czystość i wiek uczestników, przygotowując równoległą opcję udziału.",
+      "wrongs": [
+        "Pozostawisz zszywki, jeśli dzieci mają więcej niż pięć lat.",
+        "Wyłączysz wszystkie materiały z odzysku bez oceny ich stanu.",
+        "Każdemu dziecku dasz nowe przybory jako warunek udziału."
+      ],
+      "flaw": "Ekologiczne pochodzenie materiału nie zastępuje kontroli bezpieczeństwa.",
+      "evidence": "Czystość, ostre elementy, wiek, dostępność aktywności.",
+      "severity": "medium"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 17,
+      "question": "Dziecko upadło, ma silny ból i nie wstaje. Czy animator powinien przenieść je na krzesło?",
+      "correct": "Nie rutynowo: zabezpiecz grupę, wezwij odpowiednią pomoc i nie przemieszczaj, jeśli nie jest to konieczne dla bezpieczeństwa.",
+      "wrongs": [
+        "Tak, żeby zrobić miejsce na dalszy program.",
+        "Tak, jeśli dwie dorosłe osoby są wystarczająco silne.",
+        "Tak, bo siedzenie zawsze ułatwia obserwację urazu."
+      ],
+      "flaw": "Nieuzasadnione przemieszczanie poszkodowanego i opóźnienie wezwania pomocy.",
+      "evidence": "Strefa bezpieczeństwa, odpowiednia pomoc, instrukcje służb, dokumentacja zdarzenia.",
+      "severity": "critical"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 18,
+      "question": "Wizytę skrócono do 10 minut, paczki zajmują 8. Jaka zmiana jest racjonalna?",
+      "correct": "Zachować krótkie powitanie, spokojne wydanie paczek i zakończenie; zrezygnować z piosenki i zdjęć.",
+      "wrongs": [
+        "Skrócić wydawanie do 4 minut kosztem kontroli odbiorców.",
+        "Zachować zdjęcia, a prezenty wydać zbiorowo bez identyfikacji.",
+        "Przenieść powitanie i zakończenie po wszystkich zdjęciach."
+      ],
+      "flaw": "Spieszenie się kosztem bezpieczeństwa i prawidłowej identyfikacji.",
+      "evidence": "Czas wręczania, przydział opiekunów i nieobowiązkowe dodatki.",
+      "severity": "medium"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 19,
+      "question": "Dziecko odmawia wspólnego zdjęcia, lecz chce otrzymać paczkę. Jakie rozwiązanie chroni jego prawa?",
+      "correct": "Zapewnić wydanie prezentu poza kadrem, a zdjęcie ograniczyć do chętnych lub scenografii.",
+      "wrongs": [
+        "Wstrzymać prezent do czasu uzyskania zgody na zdjęcie.",
+        "Zrobić ujęcie całości i później ewentualnie wyciąć dziecko.",
+        "Poprosić resztę grupy, aby przekonała dziecko do zdjęcia."
+      ],
+      "flaw": "Warunkowanie uczestnictwa zgodą na rozpowszechnianie wizerunku.",
+      "evidence": "Rzeczywista możliwość odmowy, ustalenia z opiekunem, dokumentacja publikacji.",
+      "severity": "critical"
+    }
+  ]
+}
