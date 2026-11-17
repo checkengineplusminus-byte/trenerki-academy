@@ -222,6 +222,17 @@ export default function TematKsiegowosci(){
    {m.practice&&<View style={s.practice}>
     <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
+    {Array.isArray(m.practice.homework)&&m.practice.homework.some((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0)&&
+     <View style={s.card}>
+      <Text accessibilityRole="header" style={s.h2}>Dodatkowe zadania do samodzielnego wykonania</Text>
+      {m.practice.homework.filter((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0).map((h:any,i:number)=>
+       <View key={h.id||i} style={s.gloss}>
+        <Text style={s.label}>Zadanie {i+1}{typeof h.format==='string'?' · '+h.format:''}</Text>
+        <Text style={s.body}>{h.task}</Text>
+        {typeof h.deliverable==='string'&&h.deliverable.trim()!==''&&<Text style={s.small}>Co przygotować: {h.deliverable}</Text>}
+       </View>)}
+      <Text style={s.small}>Wykonaj ćwiczenia samodzielnie, bez danych prawdziwych klientów. Opisz ich wynik w rozwiązaniu poniżej; możesz oddać wszystkie części jako jedną pracę.</Text>
+     </View>}
     <Link href={{pathname:'/biuro-ksiegowe',params:{tab:recommendedLabTab(topic)}}} style={s.link}>
      Otwórz ćwiczenie: {LAB_TAB_NAMES[recommendedLabTab(topic)]}
     </Link>
