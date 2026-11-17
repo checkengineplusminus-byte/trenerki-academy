@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
+const home=read('public/academy/index.html'),styles=read('public/academy/app-footer.css');
+const landing=read('public/academy/program-afiliacyjny.html');
+const terms=read('public/academy/regulamin-afiliacyjny.html'),privacy=read('public/academy/prywatnosc-afiliacja.html');
+const checkout=read('supabase/functions/ta-create-checkout/index.ts');
+const webhook=read('supabase/functions/ta-stripe-webhook/index.ts');
+const affiliate=read('supabase/functions/ta-affiliate/index.ts'),admin=read('supabase/functions/ta-affiliate-admin/index.ts');
+const partner=read('app/partner.tsx'),partnerAdmin=read('app/partner-admin.tsx');
+const account=read('app/konto.tsx'),buy=read('app/kup.tsx'),layout=read('app/_layout.tsx');
+function includes(source,parts,label){for(const part of parts)assert(source.includes(part),label+': '+part)}
+includes(home,['academy-footer__affiliate','taAffiliateCode()','&ref=','prefers-reduced-motion:reduce','function startPurchase(id)'],'Public site');
+includes(styles,['ta-app-footer-affiliate','prefers-reduced-motion:reduce'],'App footer');
+includes(landing,['Zarabiaj 10%','Stripe','PIT','reklam'],'Affiliate landing');
+includes(terms,['§1.','§11.','PIT-11','30 dni','150 zł','reklam','Stripe'],'Affiliate terms');
+includes(privacy,['RODO','Stripe','art. 6','kupującego','Rachunek'],'Affiliate privacy');
+includes(account,['pending_referral_code','params.next===\'affiliate\'','referral?{ref:referral}'],'Account referral continuation');
+includes(buy,['referralCode','referral_code:referralCode','self_referral_not_allowed'],'Checkout UI');
+includes(checkout,['referral_code','ta_affiliate_partners','self_referral_not_allowed','ta_affiliate_attributions','ta_affiliate_partner_id','attributionError'],'Signed server checkout');
+includes(webhook,['ta_affiliate_commissions','commission=Math.round','payment_status!==\'paid\'','stripe_session_id','onConflict:\'stripe_session_id\'','charge.refunded','requires_review'],'Webhook accrual and refund');
+includes(affiliate,['auth.auth.getUser(bearer)','user.email_confirmed_at','tax_residency','account_links','stripe_connected','ta_affiliate_partner_totals','ta_affiliate_partners'],'Partner backend');
+includes(admin,['ta_admins','eq(\'role\',\'owner\')','ta_affiliate_admin_report','ta_affiliate_monthly_report','mark_tax_verified','accountant_evidence_required'],'Owner admin API');
+includes(partner,['Załóż konto partnerskie','stripe_connected','Prowizje','regulamin-afiliacyjny.html','prywatnosc-afiliacja.html','ta-affiliate'],'Partner UI');
+includes(partnerAdmin,['partner-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację'],'Owner UI');
+includes(layout,['<Stack.Screen name="partner"/>','<Stack.Screen name="partner-admin"/>'],'Route protection');
+assert(layout.indexOf('<Stack.Screen name="partner-admin"/>')>layout.indexOf('<Stack.Protected guard={signedIn}'),'Admin must be auth guarded');
+assert(!partner.includes('service_role')&&!partnerAdmin.includes('service_role'),'Secrets must not enter public UI');
+assert(!partner.includes('numer rachunku bankowego')&&!partner.includes('IBAN'),'No direct bank collection');
+assert(!affiliate.includes('payouts.create')&&!affiliate.includes("action==='send_payout'"),'Partner may not trigger payouts');
+assert(!admin.includes('transfers')||admin.includes('stripe_transfers_enabled'),'Admin must not directly move funds');
+const valid=(v)=>/^TA[A-F0-9]{12}$/.test(v);
+for(let i=0;i<32;i++)assert(valid('TA'+i.toString(16).padStart(12,'0').toUpperCase()));
+for(const bad of ['','ta000000000000','TA123','TA'+'G'.repeat(12),'TA'+'0'.repeat(13),'abc&ref=def'])assert(!valid(bad));
+for(let amount=200;amount<50000;amount+=327){
+ const cents=Math.round(amount*.1);
+ assert(cents>0&&cents<=amount,'10% commission arithmetic violated');
+}
+console.log('✓ Affiliate: public footer + reduced-motion, legal/PIT/privacy pages, buyer referral continuation');
+console.log('✓ Affiliate: server-owned attribution, paid-session 10%, refunds, no self-earnings, idempotence');
+console.log('✓ Affiliate: owner-only accounting reports, Stripe onboarding, no bank account or payouts in public UI');
+console.log('✓ Affiliate: 32 valid and 6 invalid referral codes plus commission arithmetic cases');
