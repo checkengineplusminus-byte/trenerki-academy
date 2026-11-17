@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+// TRENERKI: norweski na budowie, data-only quality gate without private accounts.
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
+const a=JSON.parse(read('content/norweski-budowa-part1-20261117.json'));
+const b=JSON.parse(read('content/norweski-budowa-part2-20261117.json'));
+const all=JSON.parse(read('content/norweski-budowa-full-20261117.json'));
+const entries=[...a.lessons,...b.lessons],lessons=all.lessons;
+assert.equal(entries.length,30);assert.equal(lessons.length,30);
+assert.deepEqual(entries.map(e=>e.n),Array.from({length:30},(_,i)=>i));
+assert.deepEqual(lessons.map(e=>e.lesson_no),Array.from({length:30},(_,i)=>i));
+assert.equal(Object.keys(a.lexicon).length,83);
+assert.equal(a.traps.length,7);
+assert(new Set(Object.keys(a.lexicon)).size===83);
+assert.equal(lessons[0].material.language_bridge.words.length,83);
+assert.equal(lessons[0].material.language_bridge.traps.length,7);
+assert.equal(lessons[0].material.study_project.chapters.length,30);
+for(const [i,entry] of entries.entries()){
+ const l=lessons[i],m=l.material;
+ assert.equal(m.norwegian_revision,'2026-11-17-norsk-v1','revision '+i);
+ assert(m.curiosity.length>=85,'curiosity '+i);
+ assert(m.homework?.instructions?.length>=105,'homework '+i);
+ assert(Array.isArray(m.sections)&&m.sections.length>=13,'sections '+i);
+ assert(m.sections.some(x=>x.heading.startsWith('Gramatyka od zera')&&x.text.length>=150),'grammar '+i);
+ assert(m.sections.some(x=>x.heading.startsWith('Dialog norweski')&&x.text.length>=150),'dialog '+i);
+ assert(m.sections.some(x=>x.heading.startsWith('Ucz się metodycznie')),'learning method '+i);
+ assert(m.sections.some(x=>x.heading.startsWith('Typowe pomyłki')),'common errors '+i);
+ assert(m.sections.some(x=>x.heading.startsWith('Zadanie domowe')),'homework page '+i);
+ assert(entry.dialog.length>=4,'dialog turns '+i);
+ assert(entry.words.length>=4,'topic words '+i);
+ assert.equal(m.language_bridge.words.length,entry.words.length,'topic vocabulary '+i);
+ assert(entry.words.every(k=>a.lexicon[k]),'unknown word '+i);
+ assert(m.language_bridge.words.every(w=>w.norwegian&&w.polish&&w.example&&w.translation),'four-field vocabulary '+i);
+ const q=m.construction?.roleplay??m.learning;
+ assert(q?.options?.length>=3,'missing checkpoint '+i);
+ assert(Number.isInteger(q.correct)&&q.correct>=0&&q.correct<q.options.length,'invalid checkpoint '+i);
+ assert(new Set(q.options).size===q.options.length,'duplicate answers '+i);
+ assert(l.title_pl.length>10,'blank course title '+i);
+}
+assert.equal(new Set(lessons.map(l=>l.material.curiosity)).size,30,'repeated curiosities');
+assert.equal(new Set(lessons.map(l=>l.material.homework.instructions)).size,30,'repeated homework');
+const html=read('public/academy/kursy/norweski-na-budowie.html');
+assert(html.includes('<span>30 lekcji</span>'),'wrong public lesson count');
+assert(!html.includes('<span>12 lekcji</span>'),'obsolete lesson count');
+assert((html.match(/<ol class="program">([\s\S]*?)<\/ol>/)?.[1].match(/<li>/g)||[]).length===30,'incorrect program');
+for(const word of ['kollega','akkurat','betong','tak','takk','ja'])assert(html.includes(word),'missing public vocabulary example '+word);
+const index=read('public/academy/index.html');
+const label='"id":"norweski-na-budowie",';
+assert(index.includes(label)&&index.includes('83 słowa'),'missing public catalogue or vocabulary');
+const reader=read('app/nauka.tsx');
+assert(reader.includes("slug==='norweski-na-budowie'&&!!lesson.material?.language_bridge?.words?.length"),'word bridge not connected');
+assert(reader.includes("slug==='norweski-na-budowie'&&!!lesson.material?.homework?.instructions"),'homework not connected');
+assert(reader.includes("await persistDraft(firstPending?.lesson_no??module,{...notes,[String(module)]:draft})"),'private note persistence not connected');
+assert(read('src/NorwegianWordBridge.tsx').includes('nb-NO'),'Norwegian audio locale missing');
+assert(read('src/NorwegianNotebook.tsx').includes('Zapisz zadanie domowe'),'homework save missing');
+console.log('✓ NORWESKI: 30 original lessons, all quizzes preserved, 83 cognate cards, 7 false friends, 30 curiosities, 30 homework exercises, 30 detailed grammars, 30 coherent dialogues, public count 30');

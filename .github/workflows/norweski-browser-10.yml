@@ -1,0 +1,43 @@
+name: Norweski — 30 lekcji, słownik i 10 środowisk
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/norweski-budowa-*.json'
+      - 'src/NorwegianWordBridge.tsx'
+      - 'src/NorwegianNotebook.tsx'
+      - 'app/nauka.tsx'
+      - 'src/CourseIntro.tsx'
+      - 'public/academy/kursy/norweski-na-budowie.html'
+      - 'public/academy/index.html'
+      - 'scripts/test-norweski-quality.mjs'
+      - 'scripts/norweski-browser-10.mjs'
+      - '.github/workflows/norweski-browser-10.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  norwegian_10_profiles:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check 30 lessons, quizzes, 83 cognates and notes source
+        run: node scripts/test-norweski-quality.mjs
+      - name: Install app and browsers
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Build production web bundle
+        run: npx expo export --platform web --output-dir /tmp/trenerki-norwegian
+        env:
+          EXPO_NO_TELEMETRY: '1'
+      - name: Check 10 actual browser engines and screen sizes with synthetic accounts
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-norwegian >/tmp/trenerki-norwegian-http.log 2>&1 &
+          sleep 2
+          node scripts/norweski-browser-10.mjs http://127.0.0.1:8787
