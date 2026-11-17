@@ -60,10 +60,14 @@ export default function AffiliateAdmin(){
  function download(){
   if(Platform.OS!=='web'||typeof document==='undefined')return;
   const names=['Kod','Partner','Typ','NIP','Status podatkowy','Sprzedaże','Przychód PLN','Prowizja PLN','Oczekuje PLN','Zatwierdzone PLN','Przekazano PLN','Anulowane PLN','Do wyjaśnienia PLN'];
-  const extract=(r:Row)=>[r.code,r.legal_name,r.partner_type,r.company_tax_id||'',r.tax_status,r.sales,
+  const extract=(r:Row)=>[r.code,r.legal_name,r.partner_type,r.company_tax_id?"'"+r.company_tax_id:'',r.tax_status,r.sales,
    r.gross_sales_grosze/100,r.commission_grosze/100,r.pending_grosze/100,r.approved_grosze/100,
    r.transferred_grosze/100,r.void_grosze/100,r.needs_review_grosze/100];
-  const csv=(rows:unknown[][])=>rows.map(row=>row.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(';')).join('\r\n');
+  const csv=(rows:unknown[][])=>rows.map(row=>row.map(v=>{
+    let cell=String(v??'');
+    if(/^[\s]*[=+@-]/u.test(cell))cell="'"+cell; // Protect Excel from executing formulas placed in partner names.
+    return '"'+cell.replaceAll('"','""')+'"';
+   }).join(';')).join('\r\n');
   const blob=new Blob(['\ufeff'+csv([names,...monthly.map(extract)])],{type:'text/csv;charset=utf-8'});
   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='trenerki-afiliacja-'+month+'.csv';document.body.appendChild(a);a.click();a.remove();
   URL.revokeObjectURL(url);
