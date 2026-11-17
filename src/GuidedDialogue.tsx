@@ -95,13 +95,13 @@ export default function GuidedDialogue({courseSlug,lessonNo,coachTask,homeworkDr
     {helpfulActions.map(action=><Pressable key={action.title} accessibilityRole="button" testID={'anielka-action-'+action.title.replaceAll(' ','-')}
      onPress={()=>{setInput(action.prompt.slice(0,1000));setChatOpened(true);setError('')}}
      disabled={!allowed||loading||sending}
-     style={{paddingVertical:11,paddingHorizontal:12,borderRadius:10,backgroundColor:'#e9f4e8',minHeight:44,justifyContent:'center',opacity:!allowed?.45:1}}>
+     style={{paddingVertical:11,paddingHorizontal:12,borderRadius:10,backgroundColor:'#e9f4e8',minHeight:44,justifyContent:'center',opacity:!allowed?0.45:1}}>
       <Text style={{fontSize:13,fontWeight:'800',color:ink}}>{action.title}</Text>
     </Pressable>)}
    </View>
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>Przed wysłaniem usuń dane osobowe, hasła i poufne dokumenty. Anielka pomaga ćwiczyć; quiz i egzamin są oceniane osobno.</Text>
   </View>}
-  {loading&&<ActivityIndicator color={ink}/>
+  {loading&&<ActivityIndicator color={ink}/>}
   {!loading&&!history.length&&!!opening&&<Text style={{fontSize:14,color:ink,lineHeight:22,backgroundColor:'white',padding:12,borderRadius:10}}>{opening}</Text>}
   {history.length>4&&!showOlder&&<Pressable onPress={()=>setShowOlder(true)} accessibilityRole="button" style={{padding:5}}>
    <Text style={{color:'#386c48',fontWeight:'800',textAlign:'center'}}>Pokaż wcześniejszą rozmowę</Text>
