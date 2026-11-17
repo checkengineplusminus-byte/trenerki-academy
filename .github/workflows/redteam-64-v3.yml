@@ -1,0 +1,50 @@
+name: TRENERKI — 64 upierdliwe testy fachowe i bezpieczne poprawki
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/expert-64-redteam-fixture-v3-20261117.json'
+      - 'content/redteam-64-assembled-20261117.json'
+      - 'src/AdversarialLessonTest.tsx'
+      - 'app/nauka.tsx'
+      - 'scripts/test-redteam-v3-source.mjs'
+      - 'scripts/test-redteam-v3-browser.mjs'
+      - '.github/workflows/redteam-64-v3.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate_redteam_content:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate all 64 traps, original quiz keys, math and pending signoff
+        run: node scripts/test-redteam-v3-source.mjs
+  browsers_64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Expo and real browser engines
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Export application
+        run: npx expo export --platform web --output-dir /tmp/trenerki-redteam-v3
+        env:
+          EXPO_NO_TELEMETRY: '1'
+      - name: Test all 64 challenging cases on computer and mobile
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-redteam-v3 >/tmp/trenerki-redteam-http.log 2>&1 &
+          sleep 2
+          TRENERKI_REDTEAM_MODE=all node scripts/test-redteam-v3-browser.mjs http://127.0.0.1:8787
+      - name: Verify 8 different courses on Firefox and Safari, including reveal after two wrong choices
+        run: TRENERKI_REDTEAM_MODE=representative node scripts/test-redteam-v3-browser.mjs http://127.0.0.1:8787
