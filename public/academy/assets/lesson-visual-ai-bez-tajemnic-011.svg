@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Autorska ilustracja wektorowa do lekcji 11">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f244d"/><stop offset="1" stop-color="#7a5187"/></linearGradient><filter id="shadow" x="-20%" y="-25%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#051a20" flood-opacity=".22"/></filter></defs>
+<rect width="1280" height="720" fill="url(#bg)"/>
+<circle cx="220" cy="720" r="370" fill="#e9ccf4" opacity=".045"/>
+<circle cx="1120" cy="380" r="240" fill="#ffffff" opacity=".055"/>
+<circle cx="565" cy="535" r="44" fill="#e9ccf4" opacity="0.040"/><circle cx="714" cy="638" r="57" fill="#e9ccf4" opacity="0.049"/><circle cx="863" cy="21" r="27" fill="#e9ccf4" opacity="0.058"/><circle cx="1012" cy="124" r="40" fill="#e9ccf4" opacity="0.067"/><circle cx="1161" cy="227" r="53" fill="#e9ccf4" opacity="0.076"/><circle cx="30" cy="330" r="23" fill="#e9ccf4" opacity="0.085"/><circle cx="179" cy="433" r="36" fill="#e9ccf4" opacity="0.094"/>
+<path d="M0 620q240-65 460-12t430-16 390-24v152H0Z" fill="#e9ccf4" opacity=".08"/>
+<path d="M339.0 340.0 C399.0 340.0 420.0 210.0 480.0 210.0" stroke="#e9ccf4" stroke-opacity=".75" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="480.0" cy="210.0" r="9" fill="#e9ccf4"/><path d="M740.0 210.0 C800.0 210.0 816.0 340.0 876.0 340.0" stroke="#e9ccf4" stroke-opacity=".75" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="876.0" cy="340.0" r="9" fill="#e9ccf4"/>
+<g filter="url(#shadow)"><g transform="translate(121.0 236.0)">
+  <rect width="208" height="208" rx="36" fill="#ffffff" opacity=".88"/>
+  <rect x="6" y="6" width="196" height="196" rx="31" fill="none" stroke="#3f244d" stroke-opacity=".12" stroke-width="3"/>
+  <g transform="translate(35.8 35.8) scale(1.365)" fill="none" stroke="#3f244d" stroke-width="4.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="34" cy="32" r="12"/><circle cx="68" cy="32" r="12"/><path d="M10 80c0-17 9-28 25-28s25 11 25 28ZM48 80c0-17 9-28 21-28s21 11 21 28Z"/></g>
+  </g><g transform="translate(490.0 90.0)">
+  <rect width="240" height="240" rx="36" fill="#e9ccf4" opacity=".97"/>
+  <rect x="6" y="6" width="228" height="228" rx="31" fill="none" stroke="#3f244d" stroke-opacity=".12" stroke-width="3"/>
+  <g transform="translate(41.3 41.3) scale(1.575)" fill="none" stroke="#3f244d" stroke-width="4.3" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="16" width="56" height="64" rx="4"/><path d="M27 34h29M27 46h22M27 59h29"/><path d="M61 36h27v50H44V66"/></g>
+  </g><g transform="translate(886.0 236.0)">
+  <rect width="208" height="208" rx="36" fill="#ffffff" opacity=".88"/>
+  <rect x="6" y="6" width="196" height="196" rx="31" fill="none" stroke="#3f244d" stroke-opacity=".12" stroke-width="3"/>
+  <g transform="translate(35.8 35.8) scale(1.365)" fill="none" stroke="#3f244d" stroke-width="4.3" stroke-linecap="round" stroke-linejoin="round"><rect x="13" y="22" width="74" height="66" rx="8"/><path d="M13 42h74M33 15v15M67 15v15M30 56h11m17 0h11M30 72h11m17 0h11"/></g>
+  </g></g>
+</svg>

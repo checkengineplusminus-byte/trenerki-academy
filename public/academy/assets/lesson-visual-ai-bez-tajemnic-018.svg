@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Autorska ilustracja wektorowa do lekcji 18">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#133f3d"/><stop offset="1" stop-color="#438a78"/></linearGradient><filter id="shadow" x="-20%" y="-25%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#051a20" flood-opacity=".22"/></filter></defs>
+<rect width="1280" height="720" fill="url(#bg)"/>
+<circle cx="600" cy="720" r="370" fill="#c7f6e8" opacity=".045"/>
+<circle cx="1120" cy="290" r="240" fill="#ffffff" opacity=".055"/>
+<circle cx="936" cy="102" r="50" fill="#c7f6e8" opacity="0.040"/><circle cx="1085" cy="205" r="20" fill="#c7f6e8" opacity="0.049"/><circle cx="1234" cy="308" r="33" fill="#c7f6e8" opacity="0.058"/><circle cx="103" cy="411" r="46" fill="#c7f6e8" opacity="0.067"/><circle cx="252" cy="514" r="59" fill="#c7f6e8" opacity="0.076"/><circle cx="401" cy="617" r="29" fill="#c7f6e8" opacity="0.085"/><circle cx="550" cy="0" r="42" fill="#c7f6e8" opacity="0.094"/>
+<path d="M0 620q240-65 460-12t430-16 390-24v152H0Z" fill="#c7f6e8" opacity=".08"/>
+<path d="M364.0 235.0 C424.0 235.0 421.6 345.0 481.6 345.0" stroke="#c7f6e8" stroke-opacity=".75" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="481.6" cy="345.0" r="9" fill="#c7f6e8"/><path d="M738.4 345.0 C798.4 345.0 830.0 200.0 890.0 200.0" stroke="#c7f6e8" stroke-opacity=".75" stroke-width="9" stroke-linecap="round" fill="none"/><circle cx="890.0" cy="200.0" r="9" fill="#c7f6e8"/>
+<g filter="url(#shadow)"><g transform="translate(146.0 131.0)">
+  <rect width="208" height="208" rx="36" fill="#ffffff" opacity=".88"/>
+  <rect x="6" y="6" width="196" height="196" rx="31" fill="none" stroke="#133f3d" stroke-opacity=".12" stroke-width="3"/>
+  <g transform="translate(35.8 35.8) scale(1.365)" fill="none" stroke="#133f3d" stroke-width="4.3" stroke-linecap="round" stroke-linejoin="round"><path d="M50 22C38 13 21 12 10 19v60c15-6 29-5 40 5 11-10 25-11 40-5V19C79 12 62 13 50 22ZM50 22v62"/><path d="M21 34h19M60 34h19"/></g>
+  </g><g transform="translate(491.6 226.6)">
+  <rect width="236.8" height="236.8" rx="36" fill="#c7f6e8" opacity=".97"/>
+  <rect x="6" y="6" width="224.8" height="224.8" rx="31" fill="none" stroke="#133f3d" stroke-opacity=".12" stroke-width="3"/>
+  <g transform="translate(40.7 40.7) scale(1.554)" fill="none" stroke="#133f3d" stroke-width="4.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="30" r="16"/><path d="M19 87c-1-20 11-33 31-33s32 13 31 33Z"/></g>
+  </g><g transform="translate(900.0 100.0)">
+  <rect width="200" height="200" rx="36" fill="#ffffff" opacity=".88"/>
+  <rect x="6" y="6" width="188" height="188" rx="31" fill="none" stroke="#133f3d" stroke-opacity=".12" stroke-width="3"/>
+  <g transform="translate(34.4 34.4) scale(1.313)" fill="none" stroke="#133f3d" stroke-width="4.3" stroke-linecap="round" stroke-linejoin="round"><path d="M50 8 61 37 90 50 61 63 50 92 39 63 10 50 39 37Z"/></g>
+  </g></g>
+</svg>
