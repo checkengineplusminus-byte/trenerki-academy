@@ -93,5 +93,5 @@ for(const item of manifest.lessons){
  const motif=selectMotif(item,rules,categoryExtras,hash);perType[motif]=(perType[motif]||0)+1;
 }
 const report={version:'2026-11-17-v1',format:'original SVG',generated:ids.size,totalBytes:bytes,uniqueTopics:Object.keys(perType).length,motifs:perType};
-writeFileSync(new URL('content/course-illustrations-coverage.json',root),JSON.stringify(report,null,2)+'\\n');
+writeFileSync(new URL('content/course-illustrations-coverage.json',root),JSON.stringify(report,null,2)+String.fromCharCode(10));
 console.log('✓ '+ids.size+' original topic illustrations with '+Object.keys(perType).length+' visual motifs, '+bytes+' bytes');
