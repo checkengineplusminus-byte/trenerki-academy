@@ -1993,6 +1993,9 @@
       "course_slug": "brygadzista"
     },
     {
+      "course_slug": "ciesla-przygotowanie-czeladnicze",
+      "lesson_no": 0,
+      "title_pl": "1. Mur pruski, szachulec, podwalina i oczep",
       "material": {
         "module": 1,
         "homework": {
@@ -2094,7 +2097,7 @@
             "heading": "Sprawdź wynik po wykonaniu"
           }
         ],
-        "curiosity": "Warto wiedzieć przy temacie „1. Mur pruski, szachulec, podwalina i oczep”: Mur pruski oraz szachulec mają drewniany szkielet z polami wypełnionymi innym materiałem. W polskiej tradycji nazwą mur pruski zazwyczaj określa się wypełnienie ceglane, a szachulec — gliniane lub gliniano-roślinne. W praktyce historycznej nazwy bywają stosowane niejednoznacznie; przy remoncie rozpoznaje się rzeczywistą budowę. Przypadek do rozważenia: W jednym polu ściany odnajdujesz cegłę, w drugim glinę ze słomą. Najpierw dokumentujesz obydwa rodzaje, rozpoznajesz stan drewna i dopiero dobierasz technologię naprawy.",
+        "curiosity": "Dwie ściany o niemal takim samym drewnianym szkielecie mogą kryć zupełnie inne wypełnienie: cegłę, glinę lub materiał roślinny. Dlatego podczas renowacji nazwy „mur pruski” i „szachulec” nie wystarczą do wyboru sposobu naprawy. Najpierw sprawdza się przekrój, stan podwaliny, słupków, oczepu oraz rzeczywisty materiał wypełnienia — które nie zastępuje automatycznie elementów nośnych.",
         "lesson_tips": [
           "Wypisz punkt wyjścia: W jednym polu ściany odnajdujesz cegłę, w drugim glinę ze słomą. Najpierw dokumentujesz obydwa rodzaje, rozpoznajesz stan drewna i dopiero dobierasz technologię naprawy.",
           "Przed decyzją porównaj swój pomysł z zasadą z lekcji: Zrób dwa przekroje ściany historycznej i podpisz funkcję każdego elementu. Wyjaśnij, dlaczego nie można zastąpić słupka samym wypełnieniem.",
@@ -2148,13 +2151,11 @@
             }
           ]
         },
+        "curiosity_edit": "2026-11-17-editorial-first-lesson",
         "editorial_status": "approved",
         "source_backfill_revision": "2026-11-17-source-grounded-v1",
         "source_backfill_editorial_review": "pending_human_review"
-      },
-      "title_pl": "1. Mur pruski, szachulec, podwalina i oczep",
-      "lesson_no": 0,
-      "course_slug": "ciesla-przygotowanie-czeladnicze"
+      }
     },
     {
       "material": {
@@ -16238,6 +16239,9 @@
       "course_slug": "zaczynam-od-zera"
     },
     {
+      "course_slug": "zaufany-wolontariusz",
+      "lesson_no": 0,
+      "title_pl": "Wolontariat i jego granice",
       "material": {
         "module": 1,
         "homework": {
@@ -16295,7 +16299,7 @@
             "heading": "Sprawdź wynik po wykonaniu"
           }
         ],
-        "curiosity": "Warto wiedzieć przy temacie „Wolontariat i jego granice”: Wolontariat w rozumieniu polskiej ustawy jest dobrowolnym i nieodpłatnym wykonywaniem świadczeń na rzecz uprawnionego podmiotu. Warunki działania uzgadniasz z podmiotem korzystającym ze świadczeń, na przykład fundacją, jednostką samorządową lub podmiotem leczniczym w zakresie działalności leczniczej. Pomoc sąsiedzka ma dużą wartość, a spontaniczne wsparcie bez takiego podmiotu co do zasady daje inną podstawę działania i wymaga własnych ustaleń bezpieczeństwa. Przypadek do rozważenia: Firma cateringowa szuka na stałe „wolontariuszy” do pakowania komercyjnych zamówień. Obiecuje referencje i prosi, by zacząć jutro.",
+        "curiosity": "Roznoszenie posiłków może wyglądać identycznie podczas formalnego wolontariatu i sąsiedzkiej pomocy, lecz organizacja oraz odpowiedzialność mogą być odmienne. Sama nazwa „wolontariusz” nie zamienia zwykłej pracy przy komercyjnych zamówieniach firmy w świadczenie na rzecz uprawnionego podmiotu. Warto zawsze ustalić dla kogo działasz, jaki jest zakres roli, kto koordynuje i kiedy trzeba odmówić nieuzgodnionego zadania.",
         "references": [
           {
             "url": "https://eli.gov.pl/api/acts/DU/2025/1338/text/U/D20251338Lj.pdf",
@@ -16311,6 +16315,7 @@
           "Przed decyzją porównaj swój pomysł z zasadą z lekcji: Zapytaj o podmiot korzystający i cel. Jeśli zadanie służy zwykłej sprzedaży firmy, szukaj oferty u uprawnionego organizatora. Powiedz „Szukam wolontariatu przy dystrybucji żywności. Czy robicie to z fundacją lub inną uprawnioną organizacją?”.",
           "Nie kończ na samej odpowiedzi. Zapisz, po czym rozpoznasz poprawny rezultat; jeśli brakuje danych, zaznacz to zamiast zgadywać."
         ],
+        "curiosity_edit": "2026-11-17-editorial-first-lesson",
         "volunteer_workbook": {
           "cards": [
             {
@@ -17120,10 +17125,7 @@
         },
         "source_backfill_revision": "2026-11-17-source-grounded-v1",
         "source_backfill_editorial_review": "pending_human_review"
-      },
-      "title_pl": "Wolontariat i jego granice",
-      "lesson_no": 0,
-      "course_slug": "zaufany-wolontariusz"
+      }
     },
     {
       "material": {
@@ -18075,5 +18077,8 @@
     }
   ],
   "quality_revision": "2026-11-17-detailed-v2",
-  "description": "Production first lessons with source-derived teaching supplements and corrected substantive tips; excludes accounting"
+  "description": "Production first lessons with source-derived teaching supplements and corrected substantive tips; excludes accounting",
+  "editorial_updates": [
+    "17.11: two source-grounded opening curiosities individually rewritten"
+  ]
 }
