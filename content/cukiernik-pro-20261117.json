@@ -139,122 +139,262 @@
         "curiosity": "Czy wiesz, że lśniący, perfekcyjnie udekorowany tort może być niebezpieczny? O jakości decyduje także droga składników, którą trzeba umieć odtworzyć.",
         "illustration": "cukiernik-ilustracja-01",
         "study_project": {
-          "title": "Zaplanuj małą serię jednego wyrobu. Nauczysz się przeliczać recepturę, porównywać próbki, uwzględniać alergeny i liczyć koszt.",
-          "minutes": 790,
+          "title": "Projekt końcowy: zaplanuj i wykonaj własne zamówienie cukiernicze od receptury do wydania, z kontrolą jakości, alergenów i kosztów",
+          "minutes": 1500,
           "chapters": [
             {
-              "title": "Stanowisko i dane",
+              "title": "Stanowisko i bezpieczeństwo żywności",
               "lesson": 1,
-              "minutes": 50
+              "minutes": 30
             },
             {
-              "title": "Temperatura, czas i tekstura",
+              "title": "Ważenie i proporcje",
+              "lesson": 2,
+              "minutes": 30
+            },
+            {
+              "title": "Ciasta podstawowe i konsystencja",
+              "lesson": 3,
+              "minutes": 30
+            },
+            {
+              "title": "Kremy i stabilizacja",
+              "lesson": 4,
+              "minutes": 30
+            },
+            {
+              "title": "Temperatura, czas i wilgotność",
               "lesson": 5,
-              "minutes": 55
+              "minutes": 30
             },
             {
-              "title": "Skalowanie i odpad",
+              "title": "Dekoracja i estetyka",
+              "lesson": 6,
+              "minutes": 30
+            },
+            {
+              "title": "Kalkulacja kosztu porcji",
+              "lesson": 7,
+              "minutes": 30
+            },
+            {
+              "title": "Plan produkcji i kontrola jakości",
+              "lesson": 8,
+              "minutes": 30
+            },
+            {
+              "title": "Pierwsza własna receptura — kontrolowana zmiana",
               "lesson": 9,
-              "minutes": 55
+              "minutes": 30
             },
             {
-              "title": "Przekazanie zamówienia",
+              "title": "Alergeny w zamówieniu",
+              "lesson": 10,
+              "minutes": 30
+            },
+            {
+              "title": "Powtarzalność między partiami",
+              "lesson": 11,
+              "minutes": 30
+            },
+            {
+              "title": "Zamówienie końcowe — od wyceny do odbioru",
               "lesson": 12,
-              "minutes": 60
+              "minutes": 30
             },
             {
               "title": "Skalowanie masy na dwie formy",
               "lesson": 13,
-              "minutes": 55
+              "minutes": 30
             },
             {
               "title": "Wada kremu między dwiema partiami",
               "lesson": 14,
-              "minutes": 55
+              "minutes": 30
             },
             {
               "title": "Informacja dla klienta o alergenie",
               "lesson": 15,
-              "minutes": 55
+              "minutes": 30
             },
             {
               "title": "Wycena partii i porcje próbne",
               "lesson": 16,
-              "minutes": 55
+              "minutes": 30
             },
             {
               "title": "Próbna porcja z kontrolą masy",
               "lesson": 17,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Porcjowanie przy zmienionym rozmiarze",
               "lesson": 18,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Kolejność zadań przy jednej misie",
               "lesson": 19,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Nowa kolejność po dopisaniu alergenu",
               "lesson": 20,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Zapis odchylenia między próbami ciasta",
               "lesson": 21,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Potwierdzenie przyczyny na małej serii",
               "lesson": 22,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Ocena prezentacji przed transportem",
               "lesson": 23,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Uzgodnienie innej formy wydania",
               "lesson": 24,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Przeliczenie ceny po dodaniu opakowania",
               "lesson": 25,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Porcja zamienna po aktualizacji kosztów",
               "lesson": 26,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Zamówienie dwóch różnych odbiorów",
               "lesson": 27,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Zmiana odbioru bez pomylenia partii",
               "lesson": 28,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Karta partii po niezgodności temperatury",
               "lesson": 29,
-              "minutes": 25
+              "minutes": 30
             },
             {
               "title": "Decyzja przy braku jednego pomiaru",
               "lesson": 30,
-              "minutes": 25
+              "minutes": 30
+            },
+            {
+              "title": "Zawód cukiernika: historia, obowiązki i cały dzień pracy",
+              "lesson": 31,
+              "minutes": 30
+            },
+            {
+              "title": "Surowce cukiernicze: mąka, skrobia, cukier, jaja, nabiał i tłuszcze",
+              "lesson": 32,
+              "minutes": 30
+            },
+            {
+              "title": "Biszkopt od zera: napowietrzanie, pieczenie i ratowanie opadniętego ciasta",
+              "lesson": 33,
+              "minutes": 30
+            },
+            {
+              "title": "Ciasto kruche: tartaletki, tarty, spody i przyczyny kurczenia",
+              "lesson": 34,
+              "minutes": 30
+            },
+            {
+              "title": "Ciasto drożdżowe i brioche: fermentacja, garowanie i ratowanie zbitej struktury",
+              "lesson": 35,
+              "minutes": 30
+            },
+            {
+              "title": "Ciasto parzone: ptysie, eklery i sekret pustego wnętrza",
+              "lesson": 36,
+              "minutes": 30
+            },
+            {
+              "title": "Ciasto francuskie i croissant: laminacja, warstwy i temperatura masła",
+              "lesson": 37,
+              "minutes": 30
+            },
+            {
+              "title": "Ciasta ucierane, babki i muffiny: emulsja, mieszanie i wypukły wierzch",
+              "lesson": 38,
+              "minutes": 30
+            },
+            {
+              "title": "Beza, pavlova i makaroniki: białka, cukier, wilgoć i pęknięcia",
+              "lesson": 39,
+              "minutes": 30
+            },
+            {
+              "title": "Serniki pieczone i na zimno: pęknięcia, woda i bezpieczne chłodzenie",
+              "lesson": 40,
+              "minutes": 30
+            },
+            {
+              "title": "Krem angielski, pâtissière, diplomat i mousseline — rodziny kremów",
+              "lesson": 41,
+              "minutes": 30
+            },
+            {
+              "title": "Ganache i emulsje: idealna polewa, trufle i naprawa rozwarstwienia",
+              "lesson": 42,
+              "minutes": 30
+            },
+            {
+              "title": "Czekolada: temperowanie, tablowanie, praliny i piękny połysk",
+              "lesson": 43,
+              "minutes": 30
+            },
+            {
+              "title": "Karmel, syropy, glazury i żelowanie: od złotej barwy do stabilnego deseru",
+              "lesson": 44,
+              "minutes": 30
+            },
+            {
+              "title": "Torty profesjonalne: warstwy, nasączanie, stabilizacja i dekoracje 3D",
+              "lesson": 45,
+              "minutes": 30
+            },
+            {
+              "title": "Musy, żelatyna, pektyny i deser w pucharku — stabilizacja bez magii",
+              "lesson": 46,
+              "minutes": 30
+            },
+            {
+              "title": "Lody, sorbety i semifreddo: cukier, kryształki lodu i łańcuch mroźniczy",
+              "lesson": 47,
+              "minutes": 30
+            },
+            {
+              "title": "Pogotowie cukiernicze: 20 błędów i skuteczne ratowanie wypieków",
+              "lesson": 48,
+              "minutes": 30
+            },
+            {
+              "title": "Magazyn, HACCP, sprzęt, zamówienia surowców i ograniczanie strat",
+              "lesson": 49,
+              "minutes": 30
+            },
+            {
+              "title": "Egzamin praktyczny cukiernika: tort, eklerki, deser, koszt i pełna kontrola",
+              "lesson": 50,
+              "minutes": 30
             }
           ],
-          "review_minutes": 20,
-          "reading_minutes": 240
+          "review_minutes": 100,
+          "reading_minutes": 600
         },
         "pastry_revision": "2026-11-17-pro-v1",
         "editorial_status": "approved"
@@ -485,9 +625,9 @@
           }
         ],
         "curiosity": "Dwa ciasta o podobnej liście surowców mogą mieć skrajnie różną strukturę wyłącznie z powodu metody mieszania.",
+        "illustration": "cukiernik-ilustracja-03",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-03"
+        "editorial_status": "approved"
       },
       "title_pl": "Ciasta podstawowe i konsystencja",
       "lesson_no": 2
@@ -595,9 +735,9 @@
           }
         ],
         "curiosity": "Gładkie ganache może wyglądać idealnie, choć było nieprawidłowo przechowywane: wygląd nie potwierdza bezpieczeństwa mikrobiologicznego.",
+        "illustration": "cukiernik-ilustracja-04",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-04"
+        "editorial_status": "approved"
       },
       "title_pl": "Kremy i stabilizacja",
       "lesson_no": 3
@@ -727,9 +867,9 @@
           }
         ],
         "curiosity": "Dwa identyczne wypieki potrafią stracić różną ilość wody, jeśli znalazły się w innych strefach tego samego pieca.",
+        "illustration": "cukiernik-ilustracja-05",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-05"
+        "editorial_status": "approved"
       },
       "title_pl": "Temperatura, czas i wilgotność",
       "lesson_no": 4
@@ -837,9 +977,9 @@
           }
         ],
         "curiosity": "Najpiękniejszy tort nie jest udany, jeśli po opuszczeniu pracowni nie da się go bezpiecznie przewieźć i podać.",
+        "illustration": "cukiernik-ilustracja-06",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-06"
+        "editorial_status": "approved"
       },
       "title_pl": "Dekoracja i estetyka",
       "lesson_no": 5
@@ -957,9 +1097,9 @@
           }
         ],
         "curiosity": "Cena 20 zł przy koszcie 15 zł daje 25% marży, ale narzut wynosi około 33,3% — pomylenie tych liczb może zaniżyć ofertę.",
+        "illustration": "cukiernik-ilustracja-07",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-07"
+        "editorial_status": "approved"
       },
       "title_pl": "Kalkulacja kosztu porcji",
       "lesson_no": 6
@@ -1067,9 +1207,9 @@
           }
         ],
         "curiosity": "Czas, gdy krem się stabilizuje lub biszkopt stygnie, jest częścią procesu technologicznego, nie zmarnowanym czasem.",
+        "illustration": "cukiernik-ilustracja-08",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-08"
+        "editorial_status": "approved"
       },
       "title_pl": "Plan produkcji i kontrola jakości",
       "lesson_no": 7
@@ -1196,9 +1336,9 @@
         ],
         "curiosity": "Cukier odpowiada nie tylko za słodycz: pomaga wiązać wodę, wpływa na zrumienienie i niekiedy stabilizuje pianę.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-09",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-09"
+        "editorial_status": "approved"
       },
       "title_pl": "Pierwsza własna receptura — kontrolowana zmiana",
       "lesson_no": 8
@@ -1311,9 +1451,9 @@
         ],
         "curiosity": "Orzechy mogą pojawić się w dekoracji, posypce, paście, półprodukcie albo przez wspólny sprzęt — sam przepis nie opisuje całego ryzyka.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-10",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-10"
+        "editorial_status": "approved"
       },
       "title_pl": "Alergeny w zamówieniu",
       "lesson_no": 9
@@ -1417,9 +1557,9 @@
         ],
         "curiosity": "Dwie partie mogą mieć identyczny skład i kompletnie inny wynik z powodu napowietrzenia, wilgoci i obiegu powietrza w piecu.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-11",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-11"
+        "editorial_status": "approved"
       },
       "title_pl": "Powtarzalność między partiami",
       "lesson_no": 10
@@ -1545,9 +1685,9 @@
         ],
         "curiosity": "Zrealizowane zamówienie to wyrób, który jest dobry po dotarciu na miejsce — nie tylko na zdjęciu z pracowni.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-12",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-12"
+        "editorial_status": "approved"
       },
       "title_pl": "Zamówienie końcowe — od wyceny do odbioru",
       "lesson_no": 11
@@ -1644,9 +1784,9 @@
         ],
         "curiosity": "Średnica większa o 20% daje powierzchnię większą aż o 44% — to częste źródło błędów w tortach.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-13",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-13"
+        "editorial_status": "approved"
       },
       "title_pl": "Skalowanie masy na dwie formy",
       "lesson_no": 12
@@ -1743,9 +1883,9 @@
         ],
         "curiosity": "Rozwarstwienie i zepsucie mogą wyglądać inaczej, ale ładny zapach czy gładkość nie pozwalają bezpiecznie ocenić ryzyka mikrobiologicznego.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-14",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-14"
+        "editorial_status": "approved"
       },
       "title_pl": "Wada kremu między dwiema partiami",
       "lesson_no": 13
@@ -1842,9 +1982,9 @@
         ],
         "curiosity": "Alergen może pochodzić z pasty pistacjowej, czekolady czy polewy nawet wtedy, gdy nie jest widoczny w gotowym torcie.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-15",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-15"
+        "editorial_status": "approved"
       },
       "title_pl": "Informacja dla klienta o alergenie",
       "lesson_no": 14
@@ -1941,9 +2081,9 @@
         ],
         "curiosity": "Utrata 10% produkcji nie musi oznaczać utraty 10% zysku; przy niskiej marży może to zlikwidować zysk całkowicie.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-16",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-16"
+        "editorial_status": "approved"
       },
       "title_pl": "Wycena partii i porcje próbne",
       "lesson_no": 15
@@ -2044,9 +2184,9 @@
         ],
         "curiosity": "Muffinka, która wygląda na identyczną, może mieć inną wilgotność środka i inną masę po pieczeniu.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-17",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-17"
+        "editorial_status": "approved"
       },
       "title_pl": "Próbna porcja z kontrolą masy",
       "lesson_no": 16
@@ -2101,7 +2241,7 @@
             "heading": "Punkt wyjścia"
           },
           {
-            "text": "Nowy rozmiar to 110 g. Masa nadal wynosi 1440 g.",
+            "text": "Zamówiona porcja ma teraz ważyć 110 g zamiast poprzedniej wartości, natomiast masa gotowego wyrobu pozostaje 1440 g. Przy równej gramaturze można teoretycznie uzyskać 13 pełnych porcji po 110 g (1430 g) i 10 g pozostałości, zanim uwzględnimy rzeczywiste straty przy krojeniu. Przed obiecaniem liczby porcji sprawdź sposób dekorowania, wielkość kawałków, akceptowaną tolerancję oraz masę strat. Nie utożsamiaj masy całego tortu z masą każdej gotowej porcji.",
             "heading": "Co się zmienia"
           },
           {
@@ -2147,9 +2287,9 @@
         ],
         "curiosity": "Jednakowa liczba kawałków nie daje jednakowej porcji, jeśli tort ma różne grubości nadzienia i dekoracji.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-18",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-18"
+        "editorial_status": "approved"
       },
       "title_pl": "Porcjowanie przy zmienionym rozmiarze",
       "lesson_no": 17
@@ -2250,9 +2390,9 @@
         ],
         "curiosity": "Krótki czas miksowania nie przekłada się na szybkie i bezpieczne wykonanie, jeśli zabraknie czasu na prawidłowe mycie sprzętu.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-19",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-19"
+        "editorial_status": "approved"
       },
       "title_pl": "Kolejność zadań przy jednej misie",
       "lesson_no": 18
@@ -2353,9 +2493,9 @@
         ],
         "curiosity": "Usunięcie jednego składnika z listy nie wystarczy, jeśli pomieszczenie albo sprzęt pozostają źródłem kontaktu krzyżowego.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-20",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-20"
+        "editorial_status": "approved"
       },
       "title_pl": "Nowa kolejność po dopisaniu alergenu",
       "lesson_no": 19
@@ -2456,9 +2596,9 @@
         ],
         "curiosity": "Sam poprawny kolor powierzchni nie dowodzi, że środek wypieku jest prawidłowo ścięty i stabilny.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-21",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-21"
+        "editorial_status": "approved"
       },
       "title_pl": "Zapis odchylenia między próbami ciasta",
       "lesson_no": 20
@@ -2559,9 +2699,9 @@
         ],
         "curiosity": "Jedna udana partia jest sygnałem, a nie dowodem stabilności procesu — cukiernik musi umieć wynik powtórzyć.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-22",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-22"
+        "editorial_status": "approved"
       },
       "title_pl": "Potwierdzenie przyczyny na małej serii",
       "lesson_no": 21
@@ -2662,9 +2802,9 @@
         ],
         "curiosity": "Pudełko jest elementem technologii tortu — złe opakowanie może zniweczyć wiele godzin dekoracji.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-23",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-23"
+        "editorial_status": "approved"
       },
       "title_pl": "Ocena prezentacji przed transportem",
       "lesson_no": 22
@@ -2765,9 +2905,9 @@
         ],
         "curiosity": "Nawet krótki przewóz może wymagać planu chłodzenia, jeśli tort zawiera delikatny krem.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-24",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-24"
+        "editorial_status": "approved"
       },
       "title_pl": "Uzgodnienie innej formy wydania",
       "lesson_no": 23
@@ -2868,9 +3008,9 @@
         ],
         "curiosity": "Wzrost kosztu kartonu o 17 zł zwiększa koszt wyrobu, ale zmienia też konieczną cenę przy założonej marży.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-25",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-25"
+        "editorial_status": "approved"
       },
       "title_pl": "Przeliczenie ceny po dodaniu opakowania",
       "lesson_no": 24
@@ -2971,9 +3111,9 @@
         ],
         "curiosity": "Mniejszy deser wcale nie musi mieć takiej samej procentowej marży, bo czas ręcznej dekoracji bywa zbliżony.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-26",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-26"
+        "editorial_status": "approved"
       },
       "title_pl": "Porcja zamienna po aktualizacji kosztów",
       "lesson_no": 25
@@ -3074,9 +3214,9 @@
         ],
         "curiosity": "Dwa identyczne wizualnie wyroby mogą mieć zupełnie różne zagrożenia alergenne.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-27",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-27"
+        "editorial_status": "approved"
       },
       "title_pl": "Zamówienie dwóch różnych odbiorów",
       "lesson_no": 26
@@ -3131,7 +3271,7 @@
             "heading": "Punkt wyjścia"
           },
           {
-            "text": "Godziny zamówień zostają zamienione.",
+            "text": "Klient zmienił godziny odbioru dwóch gotowych zamówień, lecz ich numery, receptury i alergeny pozostają takie same. Przypisz nowe godziny do właściwych numerów zleceń, sprawdź kto ma odebrać każdy wyrób i czy wydłużone przechowywanie nie przekroczy zatwierdzonych warunków produktu. Przekaż zmianę osobie odpowiedzialnej za pakowanie i wydanie, a następnie potwierdź ją klientom. Nie zamieniaj etykiet ani pudełek tylko na podstawie podobnego wyglądu tortów.",
             "heading": "Co się zmienia"
           },
           {
@@ -3177,9 +3317,9 @@
         ],
         "curiosity": "Zmiana godziny odbioru jest również zmianą planu przechowywania, a nie tylko aktualizacją kalendarza.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-28",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-28"
+        "editorial_status": "approved"
       },
       "title_pl": "Zmiana odbioru bez pomylenia partii",
       "lesson_no": 27
@@ -3280,9 +3420,9 @@
         ],
         "curiosity": "Prawidłowy odczyt po awarii nie dowodzi prawidłowej temperatury produktów przez całą noc.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-29",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-29"
+        "editorial_status": "approved"
       },
       "title_pl": "Karta partii po niezgodności temperatury",
       "lesson_no": 28
@@ -3383,9 +3523,9 @@
         ],
         "curiosity": "Dwa poprawne pomiary po obu stronach przerwy nie odtwarzają automatycznie brakującej wartości.",
         "lesson_kind": "guided_workshop",
+        "illustration": "cukiernik-ilustracja-30",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-30"
+        "editorial_status": "approved"
       },
       "title_pl": "Decyzja przy braku jednego pomiaru",
       "lesson_no": 29
@@ -3475,9 +3615,9 @@
         ],
         "curiosity": "Najważniejszym narzędziem cukiernika nie zawsze jest piec: dobry harmonogram chroni też jakość, czas i bezpieczeństwo.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-31",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-31"
+        "editorial_status": "approved"
       },
       "title_pl": "Zawód cukiernika: historia, obowiązki i cały dzień pracy",
       "lesson_no": 30
@@ -3567,9 +3707,9 @@
         ],
         "curiosity": "Jajko w zależności od techniki może napowietrzać biszkopt, zagęszczać krem albo łączyć składniki w emulsji.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-32",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-32"
+        "editorial_status": "approved"
       },
       "title_pl": "Surowce cukiernicze: mąka, skrobia, cukier, jaja, nabiał i tłuszcze",
       "lesson_no": 31
@@ -3659,9 +3799,9 @@
         ],
         "curiosity": "W biszkopcie pierwsze spulchnienie powstaje w misie podczas ubijania; piec przede wszystkim utrwala powstałą strukturę.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-33",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-33"
+        "editorial_status": "approved"
       },
       "title_pl": "Biszkopt od zera: napowietrzanie, pieczenie i ratowanie opadniętego ciasta",
       "lesson_no": 32
@@ -3751,9 +3891,9 @@
         ],
         "curiosity": "Kruche ciasto często psuje nadmierna staranność w wyrabianiu — tu krócej zwykle znaczy lepiej.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-34",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-34"
+        "editorial_status": "approved"
       },
       "title_pl": "Ciasto kruche: tartaletki, tarty, spody i przyczyny kurczenia",
       "lesson_no": 33
@@ -3843,9 +3983,9 @@
         ],
         "curiosity": "Drożdże nie pracują według zegarka; ta sama receptura może rosnąć inaczej zimą i latem.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-35",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-35"
+        "editorial_status": "approved"
       },
       "title_pl": "Ciasto drożdżowe i brioche: fermentacja, garowanie i ratowanie zbitej struktury",
       "lesson_no": 34
@@ -3935,9 +4075,9 @@
         ],
         "curiosity": "Ptyś rośnie głównie dzięki parze wodnej, a nie przez proszek do pieczenia.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-36",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-36"
+        "editorial_status": "approved"
       },
       "title_pl": "Ciasto parzone: ptysie, eklery i sekret pustego wnętrza",
       "lesson_no": 35
@@ -4027,9 +4167,9 @@
         ],
         "curiosity": "Laminacja to fizyka cienkich warstw: tłuszcz ma oddzielać płaty ciasta, a nie stapiać się z nimi przed pieczeniem.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-37",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-37"
+        "editorial_status": "approved"
       },
       "title_pl": "Ciasto francuskie i croissant: laminacja, warstwy i temperatura masła",
       "lesson_no": 36
@@ -4119,9 +4259,9 @@
         ],
         "curiosity": "Ta sama mąka w babce i muffinie może dać inny miękisz z powodu sposobu łączenia składników.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-38",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-38"
+        "editorial_status": "approved"
       },
       "title_pl": "Ciasta ucierane, babki i muffiny: emulsja, mieszanie i wypukły wierzch",
       "lesson_no": 37
@@ -4211,9 +4351,9 @@
         ],
         "curiosity": "Beza nie zawsze potrzebuje wysokiej temperatury: częściej wymaga długiego, kontrolowanego suszenia.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-39",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-39"
+        "editorial_status": "approved"
       },
       "title_pl": "Beza, pavlova i makaroniki: białka, cukier, wilgoć i pęknięcia",
       "lesson_no": 38
@@ -4303,9 +4443,9 @@
         ],
         "curiosity": "Pęknięcie sernika bywa skutkiem naprężeń powstałych podczas ogrzewania i chłodzenia, a nie wyłącznie nieudanego przepisu.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-40",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-40"
+        "editorial_status": "approved"
       },
       "title_pl": "Serniki pieczone i na zimno: pęknięcia, woda i bezpieczne chłodzenie",
       "lesson_no": 39
@@ -4395,9 +4535,9 @@
         ],
         "curiosity": "Dwa kremy z mleka i jaj potrafią mieć zupełnie inną konsystencję tylko dzięki użyciu skrobi i temperaturze.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-41",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-41"
+        "editorial_status": "approved"
       },
       "title_pl": "Krem angielski, pâtissière, diplomat i mousseline — rodziny kremów",
       "lesson_no": 40
@@ -4487,9 +4627,9 @@
         ],
         "curiosity": "Niewielka ilość ciepłej wody może odtworzyć rozbite ganache lepiej niż dodatek tłustej śmietanki, ale recepturę trzeba wtedy ocenić ponownie.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-42",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-42"
+        "editorial_status": "approved"
       },
       "title_pl": "Ganache i emulsje: idealna polewa, trufle i naprawa rozwarstwienia",
       "lesson_no": 41
@@ -4579,9 +4719,9 @@
         ],
         "curiosity": "Szary nalot tłuszczowy na czekoladzie to zwykle problem krystalizacji lub przechowywania, ale samo zdjęcie nie pozwala stwierdzić, że produkt jest bezpieczny.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-43",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-43"
+        "editorial_status": "approved"
       },
       "title_pl": "Czekolada: temperowanie, tablowanie, praliny i piękny połysk",
       "lesson_no": 42
@@ -4671,9 +4811,9 @@
         ],
         "curiosity": "Świadome brązowienie cukru daje karmelowi nowy smak i aromat, ale zbyt mocne ogrzewanie przekształca przyjemną gorycz w przypalenie.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-44",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-44"
+        "editorial_status": "approved"
       },
       "title_pl": "Karmel, syropy, glazury i żelowanie: od złotej barwy do stabilnego deseru",
       "lesson_no": 43
@@ -4763,9 +4903,9 @@
         ],
         "curiosity": "Dobrze zaprojektowana dekoracja tortu uwzględnia mechanikę i logistykę równie mocno jak smak i kolor.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-45",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-45"
+        "editorial_status": "approved"
       },
       "title_pl": "Torty profesjonalne: warstwy, nasączanie, stabilizacja i dekoracje 3D",
       "lesson_no": 44
@@ -4855,9 +4995,9 @@
         ],
         "curiosity": "Nie każdy owoc zachowuje się jednakowo w deserze żelowym; skład i kwasowość mogą zmieniać efekt nawet przy identycznej dawce zagęstnika.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-46",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-46"
+        "editorial_status": "approved"
       },
       "title_pl": "Musy, żelatyna, pektyny i deser w pucharku — stabilizacja bez magii",
       "lesson_no": 45
@@ -4947,9 +5087,9 @@
         ],
         "curiosity": "Miękkość sorbetu nie wynika tylko z siły zamrażarki — receptura cukrów zmienia temperaturę zamarzania mieszaniny.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-47",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-47"
+        "editorial_status": "approved"
       },
       "title_pl": "Lody, sorbety i semifreddo: cukier, kryształki lodu i łańcuch mroźniczy",
       "lesson_no": 46
@@ -5039,9 +5179,9 @@
         ],
         "curiosity": "Nie każdy nieudany wypiek trzeba wyrzucić, ale żaden nie powinien być „ratowany” kosztem bezpieczeństwa klienta.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-48",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-48"
+        "editorial_status": "approved"
       },
       "title_pl": "Pogotowie cukiernicze: 20 błędów i skuteczne ratowanie wypieków",
       "lesson_no": 47
@@ -5131,9 +5271,9 @@
         ],
         "curiosity": "W cukierni najdroższa strata często powstaje nie w piecu, lecz przez źle kupione, składowane albo nieoznaczone surowce.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-49",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-49"
+        "editorial_status": "approved"
       },
       "title_pl": "Magazyn, HACCP, sprzęt, zamówienia surowców i ograniczanie strat",
       "lesson_no": 48
@@ -5223,12 +5363,17 @@
         ],
         "curiosity": "Dobry cukiernik nie tylko przygotowuje idealną dekorację, ale umie pokazać, dlaczego każda porcja jest bezpieczna, powtarzalna i uczciwie wyceniona.",
         "lesson_kind": "applied_case",
+        "illustration": "cukiernik-ilustracja-50",
         "pastry_revision": "2026-11-17-pro-v1",
-        "editorial_status": "approved",
-        "illustration": "cukiernik-ilustracja-50"
+        "editorial_status": "approved"
       },
       "title_pl": "Egzamin praktyczny cukiernika: tort, eklerki, deser, koszt i pełna kontrola",
       "lesson_no": 49
     }
+  ],
+  "review_updates": [
+    "Expanded concise case analysis at existing lessons 18 and 28",
+    "Stored original per-lesson illustrations",
+    "Updated 50-lesson study project"
   ]
 }
