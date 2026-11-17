@@ -25,6 +25,7 @@ import LessonIllustratedSections,{type LearningSection,type LessonVisual} from '
 import PastryHomework from '../src/PastryHomework';
 import NorwegianWordBridge,{type NorwegianBridgeData} from '../src/NorwegianWordBridge';
 import NorwegianNotebook from '../src/NorwegianNotebook';
+import CourseLessonExtras from '../src/CourseLessonExtras';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
@@ -35,7 +36,7 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string},language_bridge?:NorwegianBridgeData,editorial_status?:string}
+ material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
@@ -421,6 +422,21 @@ export default function Learning(){
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
+    />}
+   {slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
+    <CourseLessonExtras
+     key={'course-homework-'+slug+'-'+module}
+     lessonNo={module+1}
+     title={lesson.title_pl}
+     tips={lesson.material.lesson_tips}
+     homework={lesson.material.homework}
+     value={notes[String(module)]||''}
+     onChange={draft=>setNotes(current=>({...current,[String(module)]:draft}))}
+     onSave={async draft=>{
+      if(!userId)throw new Error('Brak sesji ucznia');
+      await persistDraft(firstPending?.lesson_no??module,{...notes,[String(module)]:draft});
+      setNotes(current=>({...current,[String(module)]:draft}));
+     }}
     />}
    {slug==='norweski-na-budowie'&&!!lesson.material?.language_bridge?.words?.length&&
     <NorwegianWordBridge key={'norwegian-bridge-'+module} data={lesson.material.language_bridge} lessonNo={module}/>}
