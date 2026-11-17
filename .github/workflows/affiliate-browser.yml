@@ -1,0 +1,41 @@
+name: TRENERKI — affiliate referral and registration browser
+on:
+  pull_request:
+    paths:
+      - 'scripts/test-affiliate-browser.mjs'
+      - '.github/workflows/affiliate-browser.yml'
+      - 'public/academy/**'
+      - 'app/partner.tsx'
+      - 'app/konto.tsx'
+      - 'app/kup.tsx'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/test-affiliate-browser.mjs'
+      - '.github/workflows/affiliate-browser.yml'
+      - 'public/academy/**'
+      - 'app/partner.tsx'
+      - 'app/konto.tsx'
+      - 'app/kup.tsx'
+jobs:
+  affiliate_browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Expo, browser runner and Chromium/WebKit
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium webkit
+      - name: Export the real public and account pages
+        run: npx expo export --platform web --output-dir /tmp/trenerki-affiliate-browser
+      - name: Verify affiliate footer, referral, legal pages and registration
+        run: |
+          python3 -m http.server 8788 --directory /tmp/trenerki-affiliate-browser >/tmp/trenerki-affiliate-browser.log 2>&1 &
+          node scripts/test-affiliate-browser.mjs http://127.0.0.1:8788
