@@ -30,8 +30,8 @@ function Button({title,onPress,disabled=false,outline=false}:{title:string;onPre
   <Text style={{fontWeight:'800',fontSize:15,color:outline?primary:'white',textAlign:'center'}}>{title}</Text>
  </Pressable>;
 }
-function Agree({value,onPress,children}:{value:boolean;onPress:()=>void;children:React.ReactNode}){
- return <Pressable accessibilityRole="checkbox" accessibilityState={{checked:value}} onPress={onPress}
+function Agree({label,value,onPress,children}:{label:string;value:boolean;onPress:()=>void;children:React.ReactNode}){
+ return <Pressable accessibilityRole="checkbox" accessibilityLabel={label} accessibilityState={{checked:value}} onPress={onPress}
   style={{flexDirection:'row',gap:10,alignItems:'flex-start',paddingVertical:6,minHeight:44}}>
   <Text style={{fontSize:22,color:primary}}>{value?'☑':'☐'}</Text>
   <Text style={{flex:1,fontSize:14,lineHeight:21,color:ink}}>{children}</Text>
@@ -122,9 +122,9 @@ export default function AffiliatePartner(){
        {kind==='company'&&<><Text style={{color:ink,fontWeight:'800'}}>NIP firmy z Polski</Text>
        <TextInput value={nip} onChangeText={setNip} accessibilityLabel="NIP firmy" keyboardType="number-pad" placeholder="10 cyfr"
         maxLength={10} style={{borderWidth:1,borderColor:'#b7cdb7',borderRadius:10,padding:13,fontSize:16,color:ink,minHeight:50}}/></>}
-       <Agree value={adult} onPress={()=>setAdult(v=>!v)}>Potwierdzam, że mam ukończone 18 lat oraz rozliczam się podatkowo w Polsce.</Agree>
-       <Agree value={terms} onPress={()=>setTerms(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/regulamin-afiliacyjny.html')} style={{textDecorationLine:'underline'}}>regulaminem programu afiliacyjnego</Text> (wersja {policyVersion}) i akceptuję jego warunki.</Agree>
-       <Agree value={privacy} onPress={()=>setPrivacy(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/prywatnosc-afiliacja.html')} style={{textDecorationLine:'underline'}}>informacją o przetwarzaniu danych partnerów</Text> i przekazywaniu danych Stripe do obsługi weryfikacji i wypłat.</Agree>
+       <Agree label="Potwierdzam pełnoletność i polską rezydencję podatkową" value={adult} onPress={()=>setAdult(v=>!v)}>Potwierdzam, że mam ukończone 18 lat oraz rozliczam się podatkowo w Polsce.</Agree>
+       <Agree label="Akceptuję regulamin programu afiliacyjnego" value={terms} onPress={()=>setTerms(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/regulamin-afiliacyjny.html')} style={{textDecorationLine:'underline'}}>regulaminem programu afiliacyjnego</Text> (wersja {policyVersion}) i akceptuję jego warunki.</Agree>
+       <Agree label="Potwierdzam zapoznanie się z informacją o prywatności programu" value={privacy} onPress={()=>setPrivacy(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/prywatnosc-afiliacja.html')} style={{textDecorationLine:'underline'}}>informacją o przetwarzaniu danych partnerów</Text> i przekazywaniu danych Stripe do obsługi weryfikacji i wypłat.</Agree>
        <Button title={sending?'Zapisuję…':'Załóż konto partnerskie'} disabled={!canSubmit||sending} onPress={()=>void register()}/>
        </>:<>
         <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Twój panel partnerski</Text>
