@@ -34,6 +34,8 @@ jobs:
         run: node scripts/check-content-consistency.mjs
       - name: Enforce minimum thirty chapters in every course
         run: node scripts/audit-course-standards.mjs --enforce
+      - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
+        run: node scripts/test-ai-course-integration.mjs
       - name: Verify Anielka course discovery and consolidated sections
         run: node scripts/test-anielka.mjs
       - name: Verify all 80 specific course illustrations and reduced motion

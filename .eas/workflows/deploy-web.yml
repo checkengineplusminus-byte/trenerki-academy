@@ -47,6 +47,8 @@ jobs:
           run: node --test scripts/test-excel-shortcuts-and-charts.mjs
         - name: Verify Excel function atlas and detailed PDF guide
           run: node --test scripts/test-excel-master-guide.mjs
+        - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
+          run: node scripts/test-ai-course-integration.mjs
         - name: Verify course finding with Anielka
           run: node scripts/test-anielka.mjs
         - name: Verify meaning and uniqueness of all 80 icons
