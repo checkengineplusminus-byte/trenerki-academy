@@ -37,7 +37,7 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
+ material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
@@ -104,7 +104,7 @@ export default function Learning(){
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
  [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
- useEffect(()=>{setCoachOpen(false);},[slug,module]);
+ useEffect(()=>{setCoachOpen(slug==='ai-bez-tajemnic');},[slug,module]);
  useEffect(()=>{
   if(slug==='excel-skroty'&&pendingExcelHomeworkRef.current&&introRead&&scrollToExcelHomework())
    pendingExcelHomeworkRef.current=false;
@@ -519,9 +519,9 @@ export default function Learning(){
    <LessonHelp slug={slug} title={lesson.title_pl}/>
    <Pressable testID="anielka-help-toggle" accessibilityRole="button" accessibilityState={{expanded:coachOpen}}
      onPress={()=>setCoachOpen(v=>!v)} style={{marginTop:14,padding:15,backgroundColor:'#edf5e8',borderRadius:12}}>
-    <Text style={{color:ink,fontWeight:'900'}}>{coachOpen?'Zwiń rozmowę z Anielką ↑':'Nie rozumiesz? Zapytaj Anielkę ↓'}</Text>
+    <Text style={{color:ink,fontWeight:'900'}}>{slug==='ai-bez-tajemnic'?(coachOpen?'Zwiń pracownię z Anielką ↑':'Ćwicz z Anielką · wskazówki, próby i pytania ↓'):(coachOpen?'Zwiń rozmowę z Anielką ↑':'Nie rozumiesz? Zapytaj Anielkę ↓')}</Text>
    </Pressable>
-   {coachOpen&&<GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>}
+   {coachOpen&&<GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} coachTask={lesson.material?.anielka} homeworkDraft={notes[String(module)]||''}/>} 
    <Pressable accessibilityRole="button" disabled={saving}
     onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
     style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
