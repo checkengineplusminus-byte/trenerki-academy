@@ -36,11 +36,11 @@ function localLessonCoach(name:string,lesson:any,text:string,history:any[],count
  const meaningful=text.length>=52&&meaningfulWords.size>=9&&overlap>=2&&!isDuplicate;
  const tip=cut(learn.explanation||material.sections?.[0]?.text||material.raw?.[1]||ref,340);
  const wantsQuiz=/\b(przepytaj|quiz|zadaj mi pytanie|zadaj pytanie|sprawdź moją wiedzę|sprawdz mnie)\b/iu.test(text);
- const question=wantsQuiz?'Co sprawdzisz, zanim podejmiesz decyzję opisaną w tej lekcji?':'';
+ const question=wantsQuiz?cut(learn.question||q.question||'Co sprawdzisz, zanim podejmiesz decyzję opisaną w tej lekcji?',340):'';
  const reply=meaningful?
   name+', w Twojej odpowiedzi pojawił się ważny element tego tematu. Sprawdź tę zasadę: '+ref+'. '+(question||'Możesz wrócić do ćwiczenia lub napisać, co chcesz jeszcze wyjaśnić.'):
   name+', możesz spokojnie spróbować inaczej. Zwróć uwagę na ten fragment: '+tip+'. Podaj jeden rzeczywisty krok i sposób sprawdzenia wyniku; możesz korzystać z materiału.';
- return {reply:cut(reply,1400),meaningful,severe:false,question:''};
+ return {reply:cut(reply,1400),meaningful,severe:false,question};
 }
 async function respondAsAnielka(name:string,lesson:any,text:string,history:any[],meaningful:number,learnerSummary:string):Promise<ModelResult|null>{
  const key=(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'));
