@@ -1,0 +1,39 @@
+name: TRENERKI — generate original images for 1885 lessons
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-original-course-illustrations.mjs'
+      - 'scripts/verify-original-course-illustrations.mjs'
+      - 'content/course-illustrations-missing-20261117.json'
+      - '.github/workflows/generate-lesson-art.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: trainerki-original-chapter-art
+  cancel-in-progress: false
+jobs:
+  generate_original_lesson_images:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Generate original category-aware, lesson-aware SVG illustrations
+        run: node scripts/build-original-course-illustrations.mjs
+      - name: Verify all files, IDs and absence of externally licensed graphics
+        run: node scripts/verify-original-course-illustrations.mjs
+      - name: Commit all 1885 chapter illustrations without modifying lesson content
+        run: |
+          git config user.name "Trenerki Original Art"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/academy/assets/lesson-visual-*.svg content/course-illustrations-coverage.json
+          if git diff --cached --quiet; then echo "Illustrations already available"; exit 0; fi
+          git commit -m "feat(academy): publish 1885 original topical lesson illustrations"
+          git pull --rebase origin main
+          git push origin HEAD:main
