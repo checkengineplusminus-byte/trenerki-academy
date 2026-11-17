@@ -143,13 +143,21 @@ Deno.serve(async(req:Request)=>{
   cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'))});
  if(action==='attempt'){
   const mode=cut(payload.mode,24),selected=Number(payload.selected_index);
-  if(!['case','construction','keyboard','carpentry'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
+  if(!['case','construction','keyboard','carpentry','stage'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
   const material=lesson.material||{};
   let correct=false;
   if(mode==='case'){
    const options=material.learning?.options||[],answer=Number(material.learning?.correct);
    if(!Array.isArray(options)||options.length<2||selected>=options.length||!Number.isInteger(answer)||answer<0||answer>=options.length)
     return respond({error:'exercise_not_configured'},422);
+   correct=selected===answer;
+  }else if(mode==='stage'){
+   // AI Academy milestones require a second, independently validated checkpoint.
+   if(slug!=='ai-bez-tajemnic'||material.lesson_kind!=='stage_checkpoint')return respond({error:'exercise_not_configured'},422);
+   const quiz=material.redteam_quiz||{}, options=quiz.options||[], answer=Number(quiz.correct);
+   if(!Array.isArray(options)||options.length!==4||selected>=options.length||
+      !Number.isInteger(answer)||answer<0||answer>=4||!options.every((v:any)=>typeof v==='string'&&v.length>6))
+     return respond({error:'exercise_not_configured'},422);
    correct=selected===answer;
   }else if(mode==='construction'){
    const options=material.construction?.roleplay?.options||[],answer=Number(material.construction?.roleplay?.correct);
@@ -192,10 +200,11 @@ Deno.serve(async(req:Request)=>{
   // Conversation is voluntary support, never a prerequisite for lesson completion.
   // Completion still requires prior lessons and correct, server-validated practice.
   const mat=lesson.material||{};
-  const required:('case'|'construction'|'keyboard'|'carpentry')[]=[];
+  const required:('case'|'construction'|'keyboard'|'carpentry'|'stage')[]=[];
   if(mat.construction)required.push('construction');
   else if(mat.learning)required.push('case');
   if(Array.isArray(mat.shortcuts)&&mat.shortcuts.length)required.push('keyboard');
+  if(slug==='ai-bez-tajemnic'&&mat.lesson_kind==='stage_checkpoint')required.push('stage');
   // The server, not a client flag, enforces the second checkpoint for carpentry calculation lessons.
   // Historical completed lessons remain completed via the existing alreadyDone check above.
   if(slug==='ciesla-przygotowanie-czeladnicze'&&[1,8,18,23,56,58].includes(no))required.push('carpentry');
