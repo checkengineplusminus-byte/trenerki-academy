@@ -110,13 +110,13 @@ Deno.serve(async(req:Request)=>{
    }
   }
  }
- const [commissions,payouts]=await Promise.all([
+ const [commissions,payouts,aggregates]=await Promise.all([
   db.from('ta_affiliate_commissions').select('id,course_slug,base_amount_grosze,commission_grosze,status,purchased_at,eligible_at').eq('partner_id',old.id).order('purchased_at',{ascending:false}).limit(200),
-  db.from('ta_affiliate_payouts').select('id,payout_month,amount_grosze,status,sent_at').eq('partner_id',old.id).order('payout_month',{ascending:false}).limit(36)
+  db.from('ta_affiliate_payouts').select('id,payout_month,amount_grosze,status,sent_at').eq('partner_id',old.id).order('payout_month',{ascending:false}).limit(36),
+  db.rpc('ta_affiliate_partner_totals',{p_partner:old.id})
  ]);
- if(commissions.error||payouts.error)return reply(origin,{error:'statement_unavailable'},503);
+ if(commissions.error||payouts.error||aggregates.error)return reply(origin,{error:'statement_unavailable'},503);
  const rows=commissions.data||[],pay=payouts.data||[];
- const sum=(states:string[])=>rows.filter((x:any)=>states.includes(x.status)).reduce((a:number,x:any)=>a+x.commission_grosze,0);
  return reply(origin,{ok:true,
   profile:{code:old.code,partner_type:old.partner_type,legal_name:old.legal_name,status:old.status,
    stripe_connected:!!old.stripe_account_id,stripe_details_submitted:old.stripe_details_submitted,
@@ -124,9 +124,7 @@ Deno.serve(async(req:Request)=>{
    payout_tax_status:old.payout_tax_status,terms_version:old.terms_version},
   policy:{commission_percent:cfg.commission_percent,min_payout_grosze:cfg.payout_min_grosze,
    hold_days:cfg.hold_days,payouts_live:cfg.payout_enabled&&cfg.tax_review_approved,terms_version:cfg.terms_version},
-  totals:{pending_grosze:sum(['pending']),approved_grosze:sum(['approved']),
-   in_process_grosze:sum(['in_payout']),transferred_grosze:sum(['transferred']),
-   total_sales:rows.filter((x:any)=>x.status!=='void').length},
+  totals:aggregates.data||{pending_grosze:0,approved_grosze:0,in_process_grosze:0,transferred_grosze:0,total_sales:0},
   transactions:rows.map((r:any)=>({course_slug:r.course_slug,amount_grosze:r.commission_grosze,
    status:r.status,purchased_at:r.purchased_at,eligible_at:r.eligible_at})),
   payouts:pay
