@@ -100,6 +100,9 @@ on:
       - 'scripts/test-excel-master-guide.mjs'
       - '.github/workflows/excel-quality.yml'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 jobs:
   expert_engine:
     name: Excel 30 rozdziałów — poprawność obliczeń i poziomów
@@ -109,6 +112,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Instaluj zależności silnika TypeScript przed testem walut
         run: npm install --no-audit --no-fund
       - name: Sprawdź funkcje ekspertów i kurs od zera
@@ -137,6 +142,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Instaluj aplikację i Chromium
         run: |
           npm install --no-audit --no-fund
