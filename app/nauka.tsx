@@ -26,6 +26,7 @@ import PastryHomework from '../src/PastryHomework';
 import NorwegianWordBridge,{type NorwegianBridgeData} from '../src/NorwegianWordBridge';
 import NorwegianNotebook from '../src/NorwegianNotebook';
 import CourseLessonExtras from '../src/CourseLessonExtras';
+import AdversarialLessonTest,{type RedTeamQuiz} from '../src/AdversarialLessonTest';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
 import AutoCADLessonMethod from '../src/AutoCADLessonMethod';
@@ -36,7 +37,7 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,editorial_status?:string}
+ material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
@@ -423,6 +424,8 @@ export default function Learning(){
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
+   {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
+    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module} test={lesson.material.redteam_quiz}/>}
    {slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
     <CourseLessonExtras
      key={'course-homework-'+slug+'-'+module}

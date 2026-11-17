@@ -58,6 +58,17 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  assert.ok(sourceForAccounting.indexOf(clarificationMount)>sourceForAccounting.indexOf("lesson.title_pl"),
    'Podpowiedź Anielki jest częścią lekcji, nie autoryzacji księgowości');
  sourceForAccounting=sourceForAccounting.replace(clarificationImport,'').replace(clarificationMount,'');
+ // Scope-specific red-team lesson test: added only under explicit non-accounting route.
+ const toughImport="import AdversarialLessonTest,{type RedTeamQuiz} from '../src/AdversarialLessonTest';\n";
+ const toughMount=`   {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
+    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module} test={lesson.material.redteam_quiz}/>}
+`;
+ const toughField="redteam_quiz?:RedTeamQuiz,";
+ assert.equal(sourceForAccounting.split(toughImport).length,2,'One scoped red-team import');
+ assert.equal(sourceForAccounting.split(toughMount).length,2,'One explicitly excluded accounting mount');
+ assert.equal(sourceForAccounting.split(toughField).length,2,'One red-team-only material type');
+ sourceForAccounting=sourceForAccounting.replace(toughImport,'').replace(toughMount,'').replace(toughField,'');
+
  // Scope-limited Excel homework jump. This block is reviewed against main byte-for-byte:
  // it cannot alter accounting routes, Auth or lesson completion.
  const homeworkMarker=" const pendingExcelHomeworkRef=React.useRef(false);\n";
