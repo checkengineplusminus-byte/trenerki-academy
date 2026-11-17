@@ -351,6 +351,7 @@ function courseIllustration(c){
  <span class="accounting-art-header">FAKTURA · ĆWICZENIE</span>
  <strong>1 230 zł</strong><span class="accounting-art-detail">1 000 zł netto <b>+</b> 230 zł VAT</span>
  </div>`;
+ if(c.id==='ai-bez-tajemnic')return '<img class="course-icon-art" src="/academy/assets/lesson-visual-ai-bez-tajemnic-001.svg" alt="Autorska ilustracja kursu AI bez tajemnic">';
  const bundle=Number(c.iconBundle);
  if(!Number.isInteger(bundle)||bundle<1||bundle>5)return '';
  const ref='/academy/course-icons-'+bundle+'.svg#course-'+c.id;
@@ -422,6 +423,9 @@ const FEATURED_CARD_PHOTO_OVERRIDES={
 };
 function cardPhotoSlug(courseSlug){return FEATURED_CARD_PHOTO_OVERRIDES[courseSlug]||courseSlug;}
 function courseCardMedia(c){
+ if(c.id==='ai-bez-tajemnic'){
+  return '<img class="card-photo" data-course-photo="ai-bez-tajemnic" src="/academy/assets/lesson-visual-ai-bez-tajemnic-001.svg" alt="" width="960" height="540" loading="lazy" decoding="async">';
+ }
  const photoSlug=cardPhotoSlug(c.id);
  const file=coursePhotoFile(photoSlug);
  if(coursePhotos&&!file)return courseIllustration(c);
@@ -445,7 +449,7 @@ function homeHTML(){return `<section class="hero"><div class="wrap hero-in"><div
 
 function cardHTML(c){
  const category=CATEGORY_TILES.find(tile=>tile.name===c.cat)?.slug||'';
-  const courseHref=c.id===ACCOUNTING_CATALOG.id?'/academy/ksiegowosc-od-podstaw.html':'/academy/kursy/'+c.id+'.html';
+  const courseHref=c.id===ACCOUNTING_CATALOG.id?'/academy/ksiegowosc-od-podstaw.html':c.id==='ai-bez-tajemnic'?'/academy/index.html?course=ai-bez-tajemnic':'/academy/kursy/'+c.id+'.html';
  return `<article class="course-card" data-course-id="${esc(c.id)}" data-course-category="${category}">
   <div class="card-media" style="background:${c.accent}">${courseCardMedia(c)}</div>
   <div class="card-body">
@@ -621,6 +625,24 @@ async function syncLiveCatalog(){
   ]);
   if(!rows.length)throw new Error('empty catalog');
   const bySlug=new Map(rows.map(row=>[row.slug,row]));
+  // New AI courses may be shown only after verified completion and intentional publication.
+  // The existing 81-course offline catalogue, prices, icons and test baseline remain unchanged.
+  const aiCourse=bySlug.get('ai-bez-tajemnic');
+  const aiPreview=previews.find(p=>p.course_slug==='ai-bez-tajemnic');
+  if(aiCourse&&aiPreview?.review_status==='approved'&&
+     Array.isArray(aiPreview.module_titles)&&aiPreview.module_titles.length>=30&&
+     Number.isInteger(aiCourse.price_grosze)&&aiCourse.price_grosze>0&&
+     !COURSES.some(c=>c.id===aiCourse.slug)){
+    COURSES.push({
+      id:'ai-bez-tajemnic',title:String(aiCourse.title_pl||'AI bez tajemnic'),
+      short:String(aiCourse.description_pl||''),cat:'Technologie i logistyka',
+      price:aiCourse.price_grosze/100,emoji:'🧠',accent:'#D7EAE9',
+      level:'Od zera do samodzielności',iconBundle:5,
+      certificate_title_pl:String(aiCourse.certificate_pl||'Zaświadczenie ukończenia kursu'),
+      certificate_title_en:String(aiCourse.certificate_en||'Course completion'),
+      outline:aiPreview.module_titles.filter(t=>typeof t==='string'&&t.trim()).slice(0,200)
+    });
+  }
   // A withdrawn course is no longer offered even if it exists in the static offline snapshot.
   for(let i=COURSES.length-1;i>=0;i--)if(!bySlug.has(COURSES[i].id))COURSES.splice(i,1);
   for(const c of COURSES){
@@ -641,7 +663,9 @@ async function syncLiveCatalog(){
     if(titles.length)course.outline=titles;
    }
   }
-  if(selectedCourse&&!COURSES.includes(selectedCourse)){showCatalog();}
+  const requested=new URLSearchParams(window.location.search).get('course');
+  if(requested==='ai-bez-tajemnic'&&COURSES.some(c=>c.id===requested)&&selectedCourse?.id!==requested)openCourse(requested,false);
+  else if(selectedCourse&&!COURSES.includes(selectedCourse)){showCatalog();}
   else if(page==='home')updateCatalog();
   else if(selectedCourse)render();
   if(status()){status().textContent='';status().hidden=true;}

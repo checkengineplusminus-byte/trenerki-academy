@@ -64,3 +64,71 @@ jobs:
         run: node scripts/test-exported-academy.mjs /tmp/trenerki-smoke
         env:
           EXPO_NO_TELEMETRY: '1'
+
+  eas_parity_checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies for Expo parity tests
+        run: npm install --no-audit --no-fund
+      - name: Verify complete catalogue progress beyond API pagination
+        run: node --experimental-default-type=module --test scripts/test-course-progress.mjs
+      - name: Verify exam never accepts obsolete lesson completions
+        run: node --test scripts/test-exam-readiness.mjs
+      - name: Audit complete AutoCAD manual, 30 simulator exercises and source commands
+        run: node --experimental-strip-types --test scripts/test-autocad-full-manual-v3.mjs
+      - name: Verify non-repeating AutoCAD teaching and universal restart
+        run: node --test scripts/test-autocad-methodology-review.mjs
+      - name: Verify restored interactive CAD commands and coordinate geometry
+        run: node --experimental-strip-types --test scripts/test-cad-restored.mjs
+      - name: Verify group MOVE/COPY/SCALE, snap modes and reference Atlas
+        run: node --experimental-strip-types --test scripts/test-cad-multiselect.mjs
+      - name: Verify AutoCAD grouped MIRROR/ROTATE and faithful ribbon
+        run: node --experimental-strip-types --test scripts/test-cad-mirror-rotate.mjs
+      - name: Verify AutoCAD status bar controls and single click selection
+        run: node --experimental-strip-types --test scripts/test-cad-status-and-click.mjs
+      - name: Verify AutoCAD exam covers all 30 chapters
+        run: node --test scripts/test-autocad-exam-bank.mjs
+      - name: Verify real AutoCAD DXF starter drawings
+        run: node --test scripts/test-autocad-dxf.mjs
+      - name: Protect minimum thirty chapters per course
+        run: node scripts/audit-course-standards.mjs --enforce
+      - name: Verify content, exercises and protected course access
+        run: node scripts/check-content-consistency.mjs
+      - name: Verify Excel currency calculations and spreadsheet navigation
+        run: node scripts/test-excel-currency.mjs
+      - name: Verify Excel first-day formulas on numerical and symbolic answers
+        run: node scripts/test-excel-firstday-formulas.mjs
+      - name: Verify 30 Excel missions, twelve bonus tasks and input formats
+        run: node --test scripts/test-excel-all-missions.mjs
+      - name: Verify 30 real Excel homework assignments and independent answer checks
+        run: node --test scripts/test-excel-real-homework.mjs
+      - name: Verify Excel shortcuts and real tables/chart calculations
+        run: node --test scripts/test-excel-shortcuts-and-charts.mjs
+      - name: Verify Excel function atlas and detailed PDF guide
+        run: node --test scripts/test-excel-master-guide.mjs
+      - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
+        run: node scripts/test-ai-course-integration.mjs
+      - name: Verify course finding with Anielka
+        run: node scripts/test-anielka.mjs
+      - name: Verify meaning and uniqueness of all 80 icons
+        run: node scripts/test-course-icons.mjs
+      - name: Sprawdz obliczenia i import pracowni ksiegowej
+        run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+      - name: Sprawdz odpowiedzi i szkice czytnika ksiegowosci
+        run: node --experimental-default-type=module --test scripts/test-accounting-reader.mjs
+      - name: Sprawdz dane stron i historie identyfikatorow
+        run: node --experimental-default-type=module --test scripts/test-accounting-identities.mjs
+      - name: Sprawdz wejscie i postep encyklopedii
+        run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+      - name: Sprawdz 100 arkuszy domowych dla Excel bez odpowiedzi i danych prywatnych
+        run: node --experimental-default-type=module --test scripts/test-accounting-homework-worksheet.mjs
+      - name: Sprawdz kierowanie 100 tematow do wlasciwego modulu pracowni
+        run: node --experimental-default-type=module --test scripts/test-accounting-lab-navigation.mjs
+      - name: Sprawdz kolejnosc nauki i zachowanie postepow
+        run: node --experimental-default-type=module --test scripts/test-accounting-study-path.mjs
