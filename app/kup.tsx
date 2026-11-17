@@ -9,7 +9,8 @@ type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:
 type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string};
 const ink='#193a2c',muted='#5b7563',lime='#e6f3d6';
 export default function Purchase(){
- const params=useLocalSearchParams<{course?:string}>(),slug=typeof params.course==='string'?params.course:'';
+ const params=useLocalSearchParams<{course?:string;ref?:string}>(),slug=typeof params.course==='string'?params.course:'';
+ const referralCode=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const router=useRouter(),[item,setItem]=useState<Course|null>(null),[preview,setPreview]=useState<Preview|null>(null),
  [email,setEmail]=useState(''),[termsAccepted,setTermsAccepted]=useState(false),[earlyAccessConsent,setEarlyAccessConsent]=useState(false),[busy,setBusy]=useState(true),
  [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState('');
@@ -30,7 +31,7 @@ export default function Purchase(){
   if(!slug){setMessage('Wybierz kurs w katalogu.');setBusy(false);return;}
   try{
    const {data:{user},error:authError}=await supabase.auth.getUser();
-   if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
+   if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup',...(referralCode?{ref:referralCode}:{})}});return;}
    const [courseResult,previewResult,enrollmentResult]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
     supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note').eq('course_slug',slug).maybeSingle(),
@@ -85,7 +86,8 @@ export default function Purchase(){
    }
    // Price, account ownership and course publication are re-checked by the server.
    const {data,error}=await supabase.functions.invoke('ta-create-checkout',{
-    body:{course_slug:slug,accepted_terms:true,immediate_content_consent:true,terms_version:termsVersion,expected_price_grosze:quoted}
+    body:{course_slug:slug,accepted_terms:true,immediate_content_consent:true,terms_version:termsVersion,expected_price_grosze:quoted,
+      ...(referralCode?{referral_code:referralCode}:{})}
    });
    if(error){
     let code='';
@@ -101,7 +103,10 @@ export default function Purchase(){
       already_purchased:'Masz już aktywny dostęp do tego kursu — otwórz Moje kursy.',
       course_unavailable_or_free:'Kurs nie jest obecnie dostępny do zakupu.',
       consent_required:'Potwierdź regulamin i zgodę na rozpoczęcie nauki.',
-      payment_provider_unavailable:'Nie można teraz połączyć się ze Stripe. Spróbuj ponownie.'
+      payment_provider_unavailable:'Nie można teraz połączyć się ze Stripe. Spróbuj ponownie.',
+      invalid_referral_code:'Kod polecający jest nieaktywny. Usuń go z adresu i spróbuj ponownie.',
+      self_referral_not_allowed:'Nie można naliczać prowizji za własny zakup.',
+      affiliate_attribution_unavailable:'Nie udało się bezpiecznie zapisać polecenia. Spróbuj ponownie.'
     };
     throw new Error(message[code]||'Nie udało się rozpocząć bezpiecznej płatności. Nie pobrano pieniędzy.');
    }
@@ -124,6 +129,10 @@ export default function Purchase(){
    <Text style={{fontSize:16,color:muted,lineHeight:25}}>{item?.price_grosze===0?'Zobacz program i dodaj bezpłatny kurs do zakładki Moje kursy.':'Nie kupujesz w ciemno. Zobacz, czego nauczysz się na przykładach z prawdziwego życia — i dopiero wtedy wybierz kurs.'}</Text>
    {busy&&<ActivityIndicator/>}
    {!!item&&<>
+    {!!referralCode&&<View style={{backgroundColor:'#e8f5e4',padding:13,borderRadius:11}}>
+     <Text style={{color:ink,fontWeight:'800'}}>Zakup z polecenia partnera: {referralCode}</Text>
+     <Text style={{color:muted,lineHeight:20,fontSize:13}}>Partner może otrzymać 10% prowizji od kwalifikującej się płatności Stripe. Nie otrzyma Twoich danych osobowych. Przy zakupie z salda wewnętrznego prowizja nie zostanie naliczona.</Text>
+    </View>}
     <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#dbe8d9',padding:23,gap:11}}>
      <Text style={{fontSize:12,color:'#6b8d70',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'}</Text>
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
