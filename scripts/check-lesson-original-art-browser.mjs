@@ -29,7 +29,8 @@ async function check(context,row,label){
    if(req.method()==='OPTIONS')return route.fulfill({headers,status:204});
    if(u.pathname==='/auth/v1/user')return respond(user);
    if(table==='ta_enrollments')return respond([{id:'synthetic-enrollment'}]);
-   if(table==='ta_lessons')return respond([row]);
+   if(table==='ta_lessons')return respond(Array.from({length:Math.max(30,row.lesson_no+1)},(_,i)=>
+    i===row.lesson_no?row:{lesson_no:i,title_pl:'Lekcja poprzednia '+(i+1),material:{...row.material,illustration:undefined}}));
    if(table==='ta_drafts')return respond([]);
    if(table==='ta_learning_progress')return respond(Array.from({length:row.lesson_no},(_,i)=>({lesson_no:i})));
    if(table==='ta_courses')return respond([{title_pl:row.title_pl,description_pl:'Kurs praktyczny'}]);
