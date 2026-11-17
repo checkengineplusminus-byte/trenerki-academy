@@ -12,7 +12,9 @@ async function check(course){
  try{
   const r=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(15000),headers:{accept:'text/html','cache-control':'no-cache','user-agent':'Trenerki-Public-ReadOnly-Release-Audit/1.0'}});
   const body=await r.text();
-  const count=(body.match(/<span>(\d+)\s+lekcj[ieó]+<\/span>/i)||[])[1];
+  const info=body.match(/<div class="info">([\s\S]*?)<\/div>/i)?.[1]||'';
+  const captions=[...info.matchAll(/<span>([\s\S]*?)<\/span>/gi)].map(x=>x[1].replace(/<[^>]*>/g,'').trim());
+  const count=captions.map(text=>text.match(/\b(\d+)\s+(?:lekcj[a-ząćęłńóśźż]*|dział[a-ząćęłńóśźż]*)/i)).find(Boolean)?.[1];
   const actual=count?Number(count):null,expected=course.outline.length;
   const hasProgram=(body.match(/<ol class="program">([\s\S]*?)<\/ol>/)||[])[1];
   const n=hasProgram?(hasProgram.match(/<li>/g)||[]).length:null;
