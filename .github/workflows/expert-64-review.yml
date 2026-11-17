@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'content/expert-64-browser-fixture-20261117.json'
+      - 'content/expert-64-browser-fixture-20261117-v2.json'
+      - 'content/testy-64-specjalistow-20261117.json'
+      - 'scripts/verify-64-specialist-simulation.mjs'
       - 'scripts/test-expert-64-source.mjs'
       - 'scripts/test-expert-64-browser.mjs'
       - '.github/workflows/expert-64-review.yml'
@@ -20,7 +23,9 @@ jobs:
         with:
           node-version: '22'
       - name: Validate all 64 original flags, teaching appendices and quizzes
-        run: node scripts/test-expert-64-source.mjs
+        run: |
+          node scripts/verify-64-specialist-simulation.mjs
+          node scripts/test-expert-64-source.mjs
   browser_64:
     runs-on: ubuntu-24.04
     timeout-minutes: 22
@@ -38,7 +43,7 @@ jobs:
         run: npx expo export --platform web --output-dir /tmp/trenerki-expert-review
         env:
           EXPO_NO_TELEMETRY: '1'
-      - name: Check all 64 lesson revisions on computer and mobile
+      - name: Check 64 advanced scenarios, revealed expert answers and original quizzes on computer and mobile
         run: |
           python3 -m http.server 8787 --directory /tmp/trenerki-expert-review >/tmp/trenerki-expert-http.log 2>&1 &
           sleep 2

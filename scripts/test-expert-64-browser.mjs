@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const {chromium,firefox,webkit}=await import('playwright');
-const lessons=JSON.parse(readFileSync(new URL('../content/expert-64-browser-fixture-20261117.json',import.meta.url),'utf8')).lessons;
+const lessons=JSON.parse(readFileSync(new URL('../content/expert-64-browser-fixture-20261117-v2.json',import.meta.url),'utf8')).lessons;
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000064',email:'expert-review-test@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
@@ -50,6 +50,12 @@ async function go(context,row,profile){
   assert.equal((await heading.innerText()).trim(),row.title_pl,profile+' '+row.course_slug+': wrong title');
   await page.getByText('Doprecyzowanie praktyczne',{exact:true}).waitFor({timeout:15000});
   await page.getByText('Ćwiczenie diagnostyczne z kryterium odbioru',{exact:true}).waitFor({timeout:15000});
+  await page.getByText('Próba zawodowa — trudniejszy przypadek',{exact:true}).waitFor({timeout:15000});
+  const solutionHeading=page.getByText('Sprawdź wynik po wykonaniu',{exact:true}).last();
+  await solutionHeading.waitFor({timeout:15000});
+  // Solution starts hidden. Reveal it using the same control the learner sees.
+  await page.getByRole('button',{name:'Pokaż rozwiązanie i kryteria'}).first().click();
+  await page.getByText(/Oczekiwany sposób postępowania:/).waitFor({timeout:15000});
   const quiz=row.material.construction?.roleplay??row.material.learning;
   const card=page.getByTestId(row.material.construction?'construction-checkpoint':'case-checkpoint');
   await card.waitFor({timeout:15000});
@@ -71,4 +77,4 @@ for(const [engine,name,width,height,mobile] of configs){
   await ctx.close();console.log('✓ '+engine+' '+name+': '+selected.length+' updated lessons show new material and correct question');
  }finally{await b.close()}
 }
-console.log('✓ '+count+' browser checks complete; no genuine student accounts touched');
+console.log('✓ '+count+' browser checks: 64 role-specific advanced scenarios, hidden/revealed solutions, unchanged original quiz; no genuine student accounts touched');
