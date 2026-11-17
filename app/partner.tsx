@@ -157,6 +157,13 @@ export default function AffiliatePartner(){
           <Text style={{color:muted,fontSize:12}}>{new Date(r.purchased_at).toLocaleDateString('pl-PL')} · {statusLabel[r.status]||r.status}</Text></View>
           <Text style={{fontWeight:'900',color:ink}}>{pln(r.amount_grosze)}</Text>
          </View>)}
+        <Text style={{color:ink,fontWeight:'900',fontSize:17,marginTop:10}}>Miesięczne rozliczenia i wypłaty</Text>
+        {(data?.payouts||[]).length===0?<Text style={{color:muted}}>Nie ma jeszcze zatwierdzonych wypłat. Prowizje gromadzą się w saldzie zgodnie z regulaminem.</Text>:
+         (data?.payouts||[]).map(p=><View key={p.id} style={{paddingVertical:10,borderBottomWidth:1,borderColor:'#edf0e8',flexDirection:'row',justifyContent:'space-between',gap:12}}>
+          <View style={{flex:1}}><Text style={{color:ink,fontWeight:'800'}}>{new Date(p.payout_month).toLocaleDateString('pl-PL',{month:'long',year:'numeric'})}</Text>
+           <Text style={{color:muted,fontSize:12}}>{statusLabel[p.status]||p.status} · {p.sent_at?new Date(p.sent_at).toLocaleDateString('pl-PL'):'bez potwierdzonej daty przelewu'}</Text></View>
+          <Text style={{color:ink,fontWeight:'900'}}>{pln(p.amount_grosze)}</Text>
+         </View>)}
        </>
     }
     {!!error&&<Text accessibilityLiveRegion="polite" style={{color:'#a53529',lineHeight:23}}>{error}</Text>}
