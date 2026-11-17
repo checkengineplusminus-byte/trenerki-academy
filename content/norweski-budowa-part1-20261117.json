@@ -1,0 +1,981 @@
+{
+  "course_slug": "norweski-na-budowie",
+  "revision": "2026-11-17-norsk-v1",
+  "lexicon": {
+    "kollega": {
+      "norwegian": "kollega",
+      "polish": "kolega / koleżanka",
+      "example": "Hun er min kollega.",
+      "translation": "Ona jest moją koleżanką z pracy."
+    },
+    "akkurat": {
+      "norwegian": "akkurat",
+      "polish": "akurat, dokładnie",
+      "example": "Akkurat! Det stemmer.",
+      "translation": "Dokładnie! Zgadza się."
+    },
+    "problem": {
+      "norwegian": "problem",
+      "polish": "problem",
+      "example": "Vi har et problem med leveringen.",
+      "translation": "Mamy problem z dostawą."
+    },
+    "telefon": {
+      "norwegian": "telefon",
+      "polish": "telefon",
+      "example": "Kan jeg ringe deg på telefon?",
+      "translation": "Mogę do ciebie zadzwonić?"
+    },
+    "radio": {
+      "norwegian": "radio",
+      "polish": "radio",
+      "example": "Svar på radioen.",
+      "translation": "Odpowiedz przez radio."
+    },
+    "plan": {
+      "norwegian": "plan",
+      "polish": "plan",
+      "example": "Vi følger planen.",
+      "translation": "Postępujemy według planu."
+    },
+    "prosjekt": {
+      "norwegian": "prosjekt",
+      "polish": "projekt",
+      "example": "Dette prosjektet starter i dag.",
+      "translation": "Ten projekt zaczyna się dzisiaj."
+    },
+    "betong": {
+      "norwegian": "betong",
+      "polish": "beton",
+      "example": "Betongen må herde.",
+      "translation": "Beton musi stwardnieć."
+    },
+    "materiale": {
+      "norwegian": "materiale",
+      "polish": "materiał",
+      "example": "Dette materialet er skadet.",
+      "translation": "Ten materiał jest uszkodzony."
+    },
+    "maskin": {
+      "norwegian": "maskin",
+      "polish": "maszyna",
+      "example": "Maskinen er slått av.",
+      "translation": "Maszyna jest wyłączona."
+    },
+    "motor": {
+      "norwegian": "motor",
+      "polish": "motor, silnik",
+      "example": "Motoren må stoppes.",
+      "translation": "Silnik trzeba zatrzymać."
+    },
+    "meter": {
+      "norwegian": "meter",
+      "polish": "metr",
+      "example": "Det er to meter langt.",
+      "translation": "To ma dwa metry długości."
+    },
+    "millimeter": {
+      "norwegian": "millimeter",
+      "polish": "milimetr",
+      "example": "Vi trenger 350 millimeter.",
+      "translation": "Potrzebujemy 350 milimetrów."
+    },
+    "centimeter": {
+      "norwegian": "centimeter",
+      "polish": "centymetr",
+      "example": "Flytt den to centimeter.",
+      "translation": "Przesuń to o dwa centymetry."
+    },
+    "kilometer": {
+      "norwegian": "kilometer",
+      "polish": "kilometr",
+      "example": "Det er ti kilometer til byggeplassen.",
+      "translation": "Na budowę jest dziesięć kilometrów."
+    },
+    "nummer": {
+      "norwegian": "nummer",
+      "polish": "numer",
+      "example": "Sjekk nummeret på pakken.",
+      "translation": "Sprawdź numer na paczce."
+    },
+    "kontakt": {
+      "norwegian": "kontakt",
+      "polish": "kontakt",
+      "example": "Ta kontakt med formannen.",
+      "translation": "Skontaktuj się z brygadzistą."
+    },
+    "kontroll": {
+      "norwegian": "kontroll",
+      "polish": "kontrola",
+      "example": "Vi tar en kontroll før levering.",
+      "translation": "Przeprowadzimy kontrolę przed dostawą."
+    },
+    "dokument": {
+      "norwegian": "dokument",
+      "polish": "dokument",
+      "example": "Hvilket dokument gjelder?",
+      "translation": "Który dokument obowiązuje?"
+    },
+    "dokumentasjon": {
+      "norwegian": "dokumentasjon",
+      "polish": "dokumentacja",
+      "example": "Vi trenger dokumentasjon.",
+      "translation": "Potrzebujemy dokumentacji."
+    },
+    "informasjon": {
+      "norwegian": "informasjon",
+      "polish": "informacja",
+      "example": "Jeg trenger mer informasjon.",
+      "translation": "Potrzebuję więcej informacji."
+    },
+    "instruksjon": {
+      "norwegian": "instruksjon",
+      "polish": "instrukcja",
+      "example": "Kan du gjenta instruksjonen?",
+      "translation": "Możesz powtórzyć instrukcję?"
+    },
+    "registrere": {
+      "norwegian": "registrere",
+      "polish": "rejestrować",
+      "example": "Jeg må registrere meg.",
+      "translation": "Muszę się zarejestrować."
+    },
+    "revisjon": {
+      "norwegian": "revisjon",
+      "polish": "rewizja / wersja rysunku",
+      "example": "Tegningen har revisjon C.",
+      "translation": "Rysunek ma rewizję C."
+    },
+    "transport": {
+      "norwegian": "transport",
+      "polish": "transport",
+      "example": "Transporten er forsinket.",
+      "translation": "Transport jest opóźniony."
+    },
+    "kontrakt": {
+      "norwegian": "kontrakt",
+      "polish": "kontrakt, umowa",
+      "example": "Jeg har en skriftlig kontrakt.",
+      "translation": "Mam pisemną umowę."
+    },
+    "faktura": {
+      "norwegian": "faktura",
+      "polish": "faktura",
+      "example": "Vi har fått en faktura.",
+      "translation": "Otrzymaliśmy fakturę."
+    },
+    "bank": {
+      "norwegian": "bank",
+      "polish": "bank",
+      "example": "Pengene kom inn på bankkontoen.",
+      "translation": "Pieniądze wpłynęły na konto bankowe."
+    },
+    "konto": {
+      "norwegian": "konto",
+      "polish": "konto",
+      "example": "Sjekk kontoen din.",
+      "translation": "Sprawdź swoje konto."
+    },
+    "brutto": {
+      "norwegian": "brutto",
+      "polish": "brutto",
+      "example": "Hva er bruttolønna?",
+      "translation": "Ile wynosi wynagrodzenie brutto?"
+    },
+    "netto": {
+      "norwegian": "netto",
+      "polish": "netto",
+      "example": "Hva får jeg utbetalt netto?",
+      "translation": "Ile otrzymam na rękę (netto)?"
+    },
+    "temperatur": {
+      "norwegian": "temperatur",
+      "polish": "temperatura",
+      "example": "Kontroller temperaturen.",
+      "translation": "Sprawdź temperaturę."
+    },
+    "teknikk": {
+      "norwegian": "teknikk",
+      "polish": "technika",
+      "example": "Vi bruker riktig teknikk.",
+      "translation": "Stosujemy właściwą technikę."
+    },
+    "automatisk": {
+      "norwegian": "automatisk",
+      "polish": "automatycznie, automatyczny",
+      "example": "Porten åpnes automatisk.",
+      "translation": "Brama otwiera się automatycznie."
+    },
+    "praktisk": {
+      "norwegian": "praktisk",
+      "polish": "praktyczny",
+      "example": "Vi tar en praktisk øvelse.",
+      "translation": "Zrobimy ćwiczenie praktyczne."
+    },
+    "organisasjon": {
+      "norwegian": "organisasjon",
+      "polish": "organizacja",
+      "example": "Organisasjonen har en HMS-plan.",
+      "translation": "Organizacja ma plan HMS."
+    },
+    "situasjon": {
+      "norwegian": "situasjon",
+      "polish": "sytuacja",
+      "example": "Vi må vurdere situasjonen.",
+      "translation": "Musimy ocenić sytuację."
+    },
+    "posisjon": {
+      "norwegian": "posisjon",
+      "polish": "pozycja",
+      "example": "Kontroller posisjonen.",
+      "translation": "Sprawdź pozycję."
+    },
+    "dimensjon": {
+      "norwegian": "dimensjon",
+      "polish": "wymiar, rozmiar",
+      "example": "Kontroller riktig dimensjon.",
+      "translation": "Sprawdź właściwy wymiar."
+    },
+    "profil": {
+      "norwegian": "profil",
+      "polish": "profil",
+      "example": "Den venstre profilen er skadet.",
+      "translation": "Lewy profil jest uszkodzony."
+    },
+    "resultat": {
+      "norwegian": "resultat",
+      "polish": "rezultat, wynik",
+      "example": "Vi dokumenterer resultatet.",
+      "translation": "Dokumentujemy wynik."
+    },
+    "rapport": {
+      "norwegian": "rapport",
+      "polish": "raport",
+      "example": "Send rapporten i dag.",
+      "translation": "Wyślij raport dzisiaj."
+    },
+    "faktisk": {
+      "norwegian": "faktisk",
+      "polish": "faktycznie, naprawdę",
+      "example": "Det er faktisk fem paller.",
+      "translation": "W rzeczywistości jest pięć palet."
+    },
+    "normal": {
+      "norwegian": "normal",
+      "polish": "normalny",
+      "example": "Dette er ikke en normal situasjon.",
+      "translation": "To nie jest normalna sytuacja."
+    },
+    "fysisk": {
+      "norwegian": "fysisk",
+      "polish": "fizyczny",
+      "example": "Dette er fysisk arbeid.",
+      "translation": "To praca fizyczna."
+    },
+    "elektrisk": {
+      "norwegian": "elektrisk",
+      "polish": "elektryczny",
+      "example": "Dette er et elektrisk verktøy.",
+      "translation": "To narzędzie elektryczne."
+    },
+    "stasjon": {
+      "norwegian": "stasjon",
+      "polish": "stacja",
+      "example": "Vi møtes ved stasjonen.",
+      "translation": "Spotkamy się przy stacji."
+    },
+    "standard": {
+      "norwegian": "standard",
+      "polish": "standard",
+      "example": "Vi følger riktig standard.",
+      "translation": "Stosujemy odpowiedni standard."
+    },
+    "detalj": {
+      "norwegian": "detalj",
+      "polish": "detal",
+      "example": "Det mangler en detalj.",
+      "translation": "Brakuje jednego detalu."
+    },
+    "kvalitet": {
+      "norwegian": "kvalitet",
+      "polish": "jakość",
+      "example": "Vi kontrollerer kvaliteten.",
+      "translation": "Sprawdzamy jakość."
+    },
+    "variant": {
+      "norwegian": "variant",
+      "polish": "wariant",
+      "example": "Vi velger riktig variant.",
+      "translation": "Wybieramy właściwy wariant."
+    },
+    "inspeksjon": {
+      "norwegian": "inspeksjon",
+      "polish": "inspekcja",
+      "example": "Vi gjør en inspeksjon.",
+      "translation": "Przeprowadzamy inspekcję."
+    },
+    "konstruksjon": {
+      "norwegian": "konstruksjon",
+      "polish": "konstrukcja",
+      "example": "Konstruksjonen må kontrolleres.",
+      "translation": "Konstrukcję trzeba sprawdzić."
+    },
+    "kommunikasjon": {
+      "norwegian": "kommunikasjon",
+      "polish": "komunikacja",
+      "example": "God kommunikasjon er viktig.",
+      "translation": "Dobra komunikacja jest ważna."
+    },
+    "komponent": {
+      "norwegian": "komponent",
+      "polish": "komponent, element",
+      "example": "Vi mangler en komponent.",
+      "translation": "Brakuje nam komponentu."
+    },
+    "logistikk": {
+      "norwegian": "logistikk",
+      "polish": "logistyka",
+      "example": "Logistikken må planlegges.",
+      "translation": "Logistykę trzeba zaplanować."
+    },
+    "firma": {
+      "norwegian": "firma",
+      "polish": "firma",
+      "example": "Hvilket firma jobber du for?",
+      "translation": "Dla jakiej firmy pracujesz?"
+    },
+    "dato": {
+      "norwegian": "dato",
+      "polish": "data",
+      "example": "Sjekk datoen.",
+      "translation": "Sprawdź datę."
+    },
+    "adresse": {
+      "norwegian": "adresse",
+      "polish": "adres",
+      "example": "Hva er adressen?",
+      "translation": "Jaki jest adres?"
+    },
+    "klasse": {
+      "norwegian": "klasse",
+      "polish": "klasa",
+      "example": "Hvilken klasse er dette?",
+      "translation": "Jaka to klasa?"
+    },
+    "liste": {
+      "norwegian": "liste",
+      "polish": "lista",
+      "example": "Sjekk listen før du signerer.",
+      "translation": "Sprawdź listę przed podpisaniem."
+    },
+    "pause": {
+      "norwegian": "pause",
+      "polish": "pauza, przerwa",
+      "example": "Vi tar en pause.",
+      "translation": "Robimy przerwę."
+    },
+    "alarm": {
+      "norwegian": "alarm",
+      "polish": "alarm",
+      "example": "Alarmen går.",
+      "translation": "Włącza się alarm."
+    },
+    "signal": {
+      "norwegian": "signal",
+      "polish": "sygnał",
+      "example": "Vi venter på signal.",
+      "translation": "Czekamy na sygnał."
+    },
+    "kabel": {
+      "norwegian": "kabel",
+      "polish": "kabel",
+      "example": "Kabelen er skadet.",
+      "translation": "Kabel jest uszkodzony."
+    },
+    "panel": {
+      "norwegian": "panel",
+      "polish": "panel",
+      "example": "Panelet er klart.",
+      "translation": "Panel jest gotowy."
+    },
+    "modell": {
+      "norwegian": "modell",
+      "polish": "model",
+      "example": "Kontroller modellen.",
+      "translation": "Sprawdź model."
+    },
+    "system": {
+      "norwegian": "system",
+      "polish": "system",
+      "example": "Systemet er oppdatert.",
+      "translation": "System jest zaktualizowany."
+    },
+    "analyse": {
+      "norwegian": "analyse",
+      "polish": "analiza",
+      "example": "Vi gjør en analyse av risikoen.",
+      "translation": "Przeprowadzamy analizę ryzyka."
+    },
+    "risiko": {
+      "norwegian": "risiko",
+      "polish": "ryzyko",
+      "example": "Dette er en risiko.",
+      "translation": "To jest zagrożenie / ryzyko."
+    },
+    "versjon": {
+      "norwegian": "versjon",
+      "polish": "wersja",
+      "example": "Vi bruker siste versjon.",
+      "translation": "Używamy najnowszej wersji."
+    },
+    "prioritet": {
+      "norwegian": "prioritet",
+      "polish": "priorytet",
+      "example": "Sikkerhet har høyeste prioritet.",
+      "translation": "Bezpieczeństwo ma najwyższy priorytet."
+    },
+    "signatur": {
+      "norwegian": "signatur",
+      "polish": "sygnatura, podpis",
+      "example": "Vi trenger en signatur.",
+      "translation": "Potrzebujemy podpisu."
+    },
+    "periode": {
+      "norwegian": "periode",
+      "polish": "okres, period",
+      "example": "Hvilken periode gjelder dette?",
+      "translation": "Jakiego okresu to dotyczy?"
+    },
+    "status": {
+      "norwegian": "status",
+      "polish": "status",
+      "example": "Hva er status nå?",
+      "translation": "Jaki jest teraz status?"
+    },
+    "fotografi": {
+      "norwegian": "fotografi",
+      "polish": "fotografia",
+      "example": "Ta et fotografi av skaden.",
+      "translation": "Zrób zdjęcie uszkodzenia."
+    },
+    "montering": {
+      "norwegian": "montering",
+      "polish": "montaż",
+      "example": "Vi starter monteringen.",
+      "translation": "Rozpoczynamy montaż."
+    },
+    "koordinasjon": {
+      "norwegian": "koordinasjon",
+      "polish": "koordynacja",
+      "example": "Vi trenger bedre koordinasjon.",
+      "translation": "Potrzebujemy lepszej koordynacji."
+    },
+    "referanse": {
+      "norwegian": "referanse",
+      "polish": "referencja, odniesienie",
+      "example": "Hvilken referanse bruker vi?",
+      "translation": "Jakiego odniesienia używamy?"
+    },
+    "montasje": {
+      "norwegian": "montasje",
+      "polish": "montaż",
+      "example": "Montasjen må planlegges.",
+      "translation": "Montaż trzeba zaplanować."
+    },
+    "lokasjon": {
+      "norwegian": "lokasjon",
+      "polish": "lokalizacja",
+      "example": "Oppgi nøyaktig lokasjon.",
+      "translation": "Podaj dokładną lokalizację."
+    },
+    "nivå": {
+      "norwegian": "nivå",
+      "polish": "poziom",
+      "example": "Hvilket nivå mener du?",
+      "translation": "O który poziom ci chodzi?"
+    },
+    "etappe": {
+      "norwegian": "etappe",
+      "polish": "etap",
+      "example": "Neste etappe begynner i morgen.",
+      "translation": "Następny etap zaczyna się jutro."
+    }
+  },
+  "traps": [
+    {
+      "norwegian": "tak",
+      "polish": "dach, sufit; również chwyt",
+      "example": "Taket er ferdig.",
+      "translation": "Dach jest gotowy.",
+      "note": "Pułapka: polskie «tak» to po norwesku «ja»; «takk» z dwoma k oznacza «dziękuję»."
+    },
+    {
+      "norwegian": "takk",
+      "polish": "dziękuję",
+      "example": "Takk for hjelpen.",
+      "translation": "Dziękuję za pomoc.",
+      "note": "Nie myl z «tak» = dach i polskim «tak» = ja."
+    },
+    {
+      "norwegian": "ja",
+      "polish": "tak",
+      "example": "Ja, jeg forstår.",
+      "translation": "Tak, rozumiem.",
+      "note": "Polskie «ja» znaczy «I» (jeg), a norweskie «ja» znaczy «tak»."
+    },
+    {
+      "norwegian": "time",
+      "polish": "godzina; lekcja / umówiona godzina",
+      "example": "Det tar én time.",
+      "translation": "To zajmuje jedną godzinę.",
+      "note": "W norweskim «time» może oznaczać godzinę w jednostce czasu, nie dowolną porę dnia."
+    },
+    {
+      "norwegian": "farge",
+      "polish": "kolor, barwa",
+      "example": "Hvilken farge skal vi bruke?",
+      "translation": "Jakiego koloru mamy użyć?",
+      "note": "Brzmi jak polska «farba», lecz norweskie «maling» to farba malarska."
+    },
+    {
+      "norwegian": "aktuelt",
+      "polish": "aktualne w sensie istotne / mogące wchodzić w grę",
+      "example": "Er det aktuelt å endre planen?",
+      "translation": "Czy wchodzi w grę zmiana planu?",
+      "note": "Nie zawsze znaczy «najświeższy». Dla aktualnej wersji rysunku używaj «gjeldende revisjon»."
+    },
+    {
+      "norwegian": "måling",
+      "polish": "pomiar",
+      "example": "Vi trenger en ny måling.",
+      "translation": "Potrzebujemy nowego pomiaru.",
+      "note": "Nie myl z «maling» = farba / malowanie; liczy się norweskie «å»."
+    }
+  ],
+  "lessons": [
+    {
+      "n": 0,
+      "context": "Pierwsza rozmowa przy bramie bywa krótsza niż minuta, lecz decyduje, czy trafisz do właściwego biura, poznasz opiekuna i nie rozpoczniesz nieuzgodnionej pracy. Norwegowie używają dwóch pisanych odmian języka, bokmål i nynorsk; tu uczymy praktycznego bokmål. Wymowa różni się regionalnie.",
+      "grammar": "Buduj najpierw trzy wzory: «Jeg heter ...» (nazywam się...), «Jeg er ny her» (jestem tu nowy) i «Kan du gjenta?» (możesz powtórzyć?). «Jeg» znaczy polskie «ja», natomiast norweskie «ja» znaczy «tak». W prostym zdaniu oznajmującym czasownik stoi zwykle na drugim miejscu: «I dag jobber jeg her», a nie «I dag jeg jobber her». Dźwięków æ, ø, å słuchaj przed naśladowaniem — pisownia nie jest prostą transkrypcją.",
+      "dialog": [
+        "A: Hei! Jeg heter Piotr. Jeg er ny her. – Cześć! Mam na imię Piotr. Jestem tu nowy.",
+        "B: Hei, Piotr. Hvilket firma jobber du for? – Cześć, Piotr. Dla jakiej firmy pracujesz?",
+        "A: Jeg jobber for Nordbygg. Hvor skal jeg registrere meg? – Pracuję dla Nordbygg. Gdzie mam się zarejestrować?",
+        "B: Gå til brakka ved inngangen. – Idź do baraku przy wejściu."
+      ],
+      "tips": "Ucz się małymi zdaniami, nie pojedynczymi słowami; odsłuchuj zwrot w całości; zamieniaj imię i nazwę firmy; zawsze ćwicz «Jeg forstår ikke»; przećwicz po norwesku powtórzenie pytania bez zgadywania odpowiedzi.",
+      "mistake": "«Ja» nie znaczy polskiego «ja», tylko «tak». «Tak» (jedno k) to dach lub chwyt, «takk» to dziękuję. «Akkurat» wyraża dokładność lub zgodę, ale nie zastąpi prośby o potwierdzenie wymiaru.",
+      "homework": "Powiedz na głos sześć zdań: przywitanie, imię, nazwa firmy, pytanie o wejście, prośba o wolniejsze tempo, podziękowanie. Zapisz norweski tekst oraz własne tłumaczenie. Następnie zapisz pięć par słów podobnych do polskich i trzy pułapki, wyjaśniając znaczenia.",
+      "curiosity": "Polski uczeń zna już wiele norweskich słów pochodzenia międzynarodowego: problem, telefon, radio, plan i prosjekt. Podobne słowa przyspieszają naukę, ale końcówki i wymowa pozostają norweskie.",
+      "words": [
+        "kollega",
+        "akkurat",
+        "problem",
+        "telefon",
+        "radio",
+        "plan",
+        "prosjekt",
+        "betong",
+        "materiale",
+        "maskin",
+        "motor",
+        "meter",
+        "millimeter",
+        "centimeter",
+        "kilometer",
+        "nummer",
+        "kontakt",
+        "kontroll",
+        "dokument",
+        "dokumentasjon",
+        "informasjon",
+        "instruksjon",
+        "registrere",
+        "revisjon",
+        "transport",
+        "kontrakt",
+        "faktura",
+        "bank",
+        "konto",
+        "brutto",
+        "netto",
+        "temperatur",
+        "teknikk",
+        "automatisk",
+        "praktisk",
+        "organisasjon",
+        "situasjon",
+        "posisjon",
+        "dimensjon",
+        "profil",
+        "resultat",
+        "rapport",
+        "faktisk",
+        "normal",
+        "fysisk",
+        "elektrisk",
+        "stasjon",
+        "standard",
+        "detalj",
+        "kvalitet",
+        "variant",
+        "inspeksjon",
+        "konstruksjon",
+        "kommunikasjon",
+        "komponent",
+        "logistikk",
+        "firma",
+        "dato",
+        "adresse",
+        "klasse",
+        "liste",
+        "pause",
+        "alarm",
+        "signal",
+        "kabel",
+        "panel",
+        "modell",
+        "system",
+        "analyse",
+        "risiko",
+        "versjon",
+        "prioritet",
+        "signatur",
+        "periode",
+        "status",
+        "fotografi",
+        "montering",
+        "koordinasjon",
+        "referanse",
+        "montasje",
+        "lokasjon",
+        "nivå",
+        "etappe"
+      ]
+    },
+    {
+      "n": 1,
+      "context": "Zanim wejdziesz na plac, musisz ustalić, kto prowadzi rejestrację i instruktaż. Karta HMS to identyfikacja pracownika i firmy, a nie licencja do obsługi maszyny. Warto nauczyć się odróżniać pytania o dokument, uprawnienie oraz osobę odpowiedzialną.",
+      "grammar": "«Hvor skal jeg ...?» pyta «Gdzie mam ...?», np. «Hvor skal jeg registrere meg?». «Har du HMS-kort?» pyta o posiadanie. Końcówka -et w «kortet» znaczy «ta konkretna karta», a «kortet mitt» to moja karta. «Jeg må gjennomføre opplæringen» znaczy «Muszę przejść szkolenie»; po «må» zwykle występuje bezokolicznik bez «å».",
+      "dialog": [
+        "A: Har du HMS-kortet ditt? – Masz swoją kartę HMS?",
+        "B: Ja. Hvor skal jeg registrere meg? – Tak. Gdzie mam się zarejestrować?",
+        "A: På kontoret ved hovedinngangen. Har du tatt sikkerhetsopplæringen? – W biurze przy wejściu głównym. Przeszedłeś szkolenie bezpieczeństwa?",
+        "B: Ikke ennå. Hvem kan hjelpe meg? – Jeszcze nie. Kto może mi pomóc?"
+      ],
+      "tips": "Przećwicz wskazywanie własnej karty bez podawania cudzych danych; ucz się słów «kort», «opplæring», «arbeidsgiver», «registrering»; pytaj o miejsce, nie zakładaj go; powtarzaj nazwę osoby kontaktowej; odróżniaj szkolenie od dostępu do konkretnej maszyny.",
+      "mistake": "Nie używaj karty kolegi. Nie twierdź, że samo HMS-kort potwierdza szkolenie na podnośnik lub uprawnienia zawodowe. Nie myl «arbeidstaker» (pracownik) z «arbeidsgiver» (pracodawca).",
+      "homework": "Odegraj z drugą osobą rozmowę przy bramie: pokaż własną kartę, zapytaj o biuro, instruktaż, HMS i numer telefonu osoby kontaktowej. Zapisz osiem zdań po norwesku i sześć słów administracyjnych z tłumaczeniem.",
+      "curiosity": "W norweskim budownictwie HMS-kort ma być widoczny podczas pracy; pracodawca odpowiada za zamówienie karty. Sama karta nie dowodzi kompetencji technicznych ani zaliczenia kursu.",
+      "words": [
+        "registrere",
+        "dokument",
+        "informasjon",
+        "instruksjon",
+        "firma",
+        "kontakt"
+      ]
+    },
+    {
+      "n": 2,
+      "context": "Na dużej budowie człowiek może znać technologię, ale nie znać dróg pieszych, biura, apteczki i punktu zbiórki. Uczenie kierunków wraz z przedmiotami pomaga szybciej zapamiętywać zwroty niż samotne wkuwanie nazw.",
+      "grammar": "«Hvor er ...?» oznacza «Gdzie jest ...?», a «Hvor ligger ...?» zwykle «Gdzie znajduje się ...?». Naucz się «ved» = przy, «til høyre» = w prawo, «til venstre» = w lewo, «rett fram» = prosto. Po «i andre etasje» mówimy «na drugim piętrze», nie «w drugim etapu». Ćwicz prośbę: «Kan du vise meg veien?».",
+      "dialog": [
+        "A: Unnskyld, hvor er førstehjelpsutstyret? – Przepraszam, gdzie jest sprzęt pierwszej pomocy?",
+        "B: I brakka ved inngangen. – W baraku przy wejściu.",
+        "A: Og hvor er møteplassen ved alarm? – A gdzie jest miejsce zbiórki podczas alarmu?",
+        "B: Se på oversiktsplanen. Jeg kan vise deg. – Spójrz na plan ogólny. Mogę ci pokazać."
+      ],
+      "tips": "Zrób prosty szkic wejścia, biura, apteczki i punktu zbiórki; dopasuj słowo do miejsca; ćwicz «til høyre/venstre»; sprawdzaj nazwę strefy; upewnij się, że znamy drogę ewakuacyjną, nie tylko trasę do szatni.",
+      "mistake": "«Brakka» to budynek zaplecza, «førstehjelp» to pierwsza pomoc, a «møteplass» przy alarmie to punkt zbiórki. Nigdy nie opisuj drogi ewakuacyjnej na podstawie domysłu.",
+      "homework": "Narysuj plan przykładowej budowy i opisz po norwesku trasę od bramy do biura, apteczki, toalety i punktu zbiórki. Użyj minimum pięciu wyrażeń miejsca; poproś inną osobę o odtworzenie trasy ze swojego opisu.",
+      "curiosity": "«Plass» to nie tylko «plac» w słowie «byggeplass»: może oznaczać miejsce. Dlatego «møteplass» to miejsce zbiórki, a nie miejsce spotkania towarzyskiego.",
+      "words": [
+        "plan",
+        "adresse",
+        "posisjon",
+        "informasjon",
+        "nummer"
+      ]
+    },
+    {
+      "n": 3,
+      "context": "Na budowie łatwo pomylić bezpieczeństwo projektu z jakością wykonanego elementu. HMS, SJA, SHA i KS mają odmienne funkcje, więc tłumaczenia muszą być precyzyjne. Naukę skrótów łącz z pytaniem «co sprawdzam i u kogo?».",
+      "grammar": "«Hva betyr ...?» = «Co oznacza ...?». «Vi må ta en SJA før vi starter» = «Musimy przeprowadzić SJA przed rozpoczęciem». Zapamiętaj różnicę między czasownikiem «å sikre» (zabezpieczyć) a rzeczownikiem «sikkerhet» (bezpieczeństwo). W prostym zdaniu z «før» wyraźnie wskaż kolejność: najpierw analiza, potem praca.",
+      "dialog": [
+        "A: Skal vi begynne nå? – Zaczynamy teraz?",
+        "B: Først må vi gjennomgå SJA. – Najpierw musimy przeanalizować SJA.",
+        "A: Hvor finner vi SHA-planen? – Gdzie znajdziemy plan SHA?",
+        "B: Hos byggeledelsen. KS-dokumentene er i prosjektmappen. – U kierownictwa budowy. Dokumenty KS są w folderze projektu."
+      ],
+      "tips": "Stwórz mapę czterech skrótów; powiedz pełną nazwę po norwesku; do każdego dodaj praktyczny przykład; nie używaj KS jako synonimu SJA; sprawdź wersję planu i osoby kontaktowe.",
+      "mistake": "Podpisanie SJA nie oznacza automatycznie zgodności wymiaru rekkverk ani zatwierdzenia rysunku. Gdy występuje nowe zagrożenie lub zmiana metody, przeprowadź ponowną ocenę w uzgodnionym zakresie.",
+      "homework": "Wypisz HMS, SJA, SHA i KS; pod każdym skrótem zapisz jedną norweską definicję i jedno polskie zdanie. Nagraj lub odegraj 60-sekundowe wyjaśnienie dla nowej osoby na budowie.",
+      "curiosity": "Norweskie «analyse» brzmi podobnie do polskiej «analizy», ale poprawne zastosowanie SJA wymaga rozpoznania konkretnych zagrożeń, nie tylko znajomości skrótu.",
+      "words": [
+        "analyse",
+        "risiko",
+        "dokumentasjon",
+        "kontroll",
+        "system",
+        "prosjekt"
+      ]
+    },
+    {
+      "n": 4,
+      "context": "Ważniejsze od umiejętności wygłoszenia długiej prezentacji jest krótkie i poprawne zdanie do kolegi: czego potrzebuję, czego nie wiem i kiedy mogę zacząć. W rozmowie liczy się bezpieczeństwo i uprzejmość.",
+      "grammar": "«Kan du ...?» to «Czy możesz ...?», «Jeg trenger ...» = «Potrzebuję ...», «Jeg kan ikke ...» = «Nie mogę ...». «Jeg vil gjerne ...» oznacza uprzejme «Chciałbym ...». Wyraz «kollega» oznacza kolegę z pracy, w liczbie mnogiej «kolleger» lub «kollegaer». Ucz się całych konstrukcji.",
+      "dialog": [
+        "A: Hei, jeg er ny på laget. – Cześć, jestem nowy w ekipie.",
+        "B: Velkommen! Hva trenger du? – Witamy! Czego potrzebujesz?",
+        "A: Jeg trenger hjelp med denne oppgaven. Kan du vise meg? – Potrzebuję pomocy przy tym zadaniu. Możesz mi pokazać?",
+        "B: Ja, vi gjør det sammen først. – Tak, najpierw zrobimy to razem."
+      ],
+      "tips": "Ćwicz pytanie zamiast milczenia; nie wstydź się «Jeg forstår ikke»; proś o pokazanie czynności; stosuj «takk» po pomocy; przy pracy wspólnej potwierdzaj, kto wykonuje dane zadanie.",
+      "mistake": "Nie odpowiadaj «ja» na instrukcję, której nie zrozumiałeś. Nie podejmuj obsługi nieznanej maszyny wyłącznie na podstawie zachęty kolegi.",
+      "homework": "Nagraj krótki dialog dwóch pracowników zawierający przedstawienie się, prośbę o narzędzie, wyjaśnienie niejasnego polecenia i podziękowanie. Zapisz 8 zdań, każde przetłumacz i sprawdź szyk zdania.",
+      "curiosity": "«Kollega» i «akkurat» to prawdziwe ułatwienia dla Polaków, lecz szybkie «akkurat» w rozmowie nie jest potwierdzeniem, że wymiar jest zgodny z rysunkiem.",
+      "words": [
+        "kollega",
+        "akkurat",
+        "firma",
+        "kontakt",
+        "pause",
+        "problem"
+      ]
+    },
+    {
+      "n": 5,
+      "context": "Gdy poprosisz o niewłaściwe narzędzie lub nazwiesz śrubę tylko «to», druga osoba może przynieść zły komponent. Zdania o sprzęcie muszą zawierać nazwę, rozmiar i — przy zagrożeniu — informację o stanie.",
+      "grammar": "Rozróżnij «en skrue» = wkręt/śruba zależnie od typu oraz «skruen» = ten konkretny łącznik. «Et verktøy» znaczy narzędzie, a «verktøyet» = to narzędzie. «Kan du hente ...?» oznacza «Możesz przynieść ...?». Przedmiot i jego liczba nie zastępują identyfikatora materiału.",
+      "dialog": [
+        "A: Kan du hente målebåndet og drillen? – Możesz przynieść miarkę i wiertarkę?",
+        "B: Ja. Hvilke skruer trenger du? – Tak. Jakich wkrętów/śrub potrzebujesz?",
+        "A: Vi trenger åtte skruer, type M8 er skrevet på tegningen. – Potrzebujemy ośmiu śrub; typ M8 jest wskazany na rysunku.",
+        "B: Jeg sjekker merkingen før jeg henter dem. – Sprawdzę oznaczenie, zanim je przyniosę."
+      ],
+      "tips": "Zapisuj specyfikację narzędzia; ucz się rodzajników en/et na konkretnych przykładach; sprawdzaj stan kabla; odróżniaj drill od skruer; przy montażu pokazuj na rysunku numer łącznika; używaj zdjęć narzędzi jako pomocy pamięciowej.",
+      "mistake": "«Betong» to beton, «materiale» to materiał; podobieństwo do polskich słów nie wystarczy do rozpoznania klasy produktu. Nie zgaduj długości śruby czy klasy wytrzymałości.",
+      "homework": "Wybierz 12 prawdziwych narzędzi i materiałów. Zrób kartę NO–PL z rodzajnikiem, funkcją i jednym zdaniem prośby. Przy trzech komponentach dopisz także dokładny wymiar albo oznaczenie.",
+      "curiosity": "Norweskie «maskin», «motor», «betong», «profil» i «kabel» wyglądają bardzo znajomo, ale etykieta techniczna potrafi zmienić znaczenie wymiaru lub tolerancji.",
+      "words": [
+        "maskin",
+        "motor",
+        "betong",
+        "materiale",
+        "profil",
+        "kabel",
+        "komponent",
+        "elektrisk"
+      ]
+    },
+    {
+      "n": 6,
+      "context": "W budownictwie źle usłyszane 350 zamiast 530 mm może spowodować kosztowny błąd. Słuchanie liczb musi zawsze łączyć się z powtórzeniem, jednostką oraz wskazaniem elementu.",
+      "grammar": "Przeczytaj «tre hundre og femti millimeter» = 350 mm oraz «fem hundre og tretti millimeter» = 530 mm. «En meter» = metr; «hundre» = sto, «tusen» = tysiąc. «Klokka sju» = o siódmej, «klokka halv åtte» = o 7:30. Jednostki wymawiaj do końca, nie kończ na samej liczbie.",
+      "dialog": [
+        "A: Hvor lang skal profilen være? – Jak długi ma być profil?",
+        "B: Tre hundre og femti millimeter. – Trzysta pięćdziesiąt milimetrów.",
+        "A: Jeg gjentar: 350 millimeter, ikke 530? – Powtarzam: 350 mm, a nie 530?",
+        "B: Riktig. Sjekk også revisjon C. – Zgadza się. Sprawdź również rewizję C."
+      ],
+      "tips": "Zapisuj cyfry i ich norweskie brzmienie; powtarzaj pełną liczbę; sprawdzaj jednostkę mm/cm/m; pytaj o rewizję; ćwicz godziny «halv åtte»; przy hałaśliwym radiu użyj pisemnego potwierdzenia.",
+      "mistake": "«Halv åtte» oznacza 7:30, nie 8:30. Nie wolno zamieniać 350 mm na 35 cm bez świadomego przeliczenia. Jeśli odczyt różni się od rysunku, zatrzymaj decyzję do wyjaśnienia.",
+      "homework": "Przygotuj 15 zapisów: 350, 530, 160, 180, 1200 mm oraz dziesięć godzin. Nagraj dyktando, a druga osoba niech zapisze cyfry. Porównaj wynik, jednostki i poziom pewności.",
+      "curiosity": "Norweskie nazwy jednostek «meter», «millimeter» i «centimeter» są zrozumiałe dla Polaków, lecz system godzin z «halv» trzeba świadomie przećwiczyć.",
+      "words": [
+        "meter",
+        "millimeter",
+        "centimeter",
+        "kilometer",
+        "nummer",
+        "dimensjon",
+        "temperatur"
+      ]
+    },
+    {
+      "n": 7,
+      "context": "Zrozumienie planu dnia nie wymaga zaawansowanej gramatyki, ale wymaga umiejętności powiedzenia, co już zrobiono, co trwa i co się opóźni. To codzienny język każdego pracownika.",
+      "grammar": "«Jeg begynner klokka sju» = zaczynam o siódmej. «Jeg er ferdig» = skończyłem. «Vi mangler ...» = brakuje nam. «Etter pausen» = po przerwie. Łącz zdania «før» (przed) i «etter» (po), a rozmówca zrozumie kolejność. Czasownik zazwyczaj znajduje się na drugim miejscu w głównym zdaniu: «Etter pausen fortsetter vi».",
+      "dialog": [
+        "A: Hva skal du gjøre nå? – Co będziesz teraz robił?",
+        "B: Jeg skal montere rekkverket i sone A. – Mam montować balustradę w strefie A.",
+        "A: Når tar dere pause? – Kiedy macie przerwę?",
+        "B: Klokka elleve. Etter pausen fortsetter vi. – O jedenastej. Po przerwie kontynuujemy."
+      ],
+      "tips": "Zadania opisuj czasownikiem i strefą; używaj «først», «etterpå»; powiedz szacunkowy czas, ale nie gwarantuj go bez podstaw; przećwicz prośbę o pomoc; dawaj krótkie statusy.",
+      "mistake": "Nie mów «ferdig» gdy praca nie jest ukończona. Nie mieszaj przerwy z końcem zmiany. Nie przyjmuj skróconego polecenia jako wystarczającego przy ryzyku.",
+      "homework": "Napisz harmonogram swojej przykładowej zmiany: 07:00 start, 11:00 przerwa, dwa zadania przed i dwa po przerwie. Zbuduj 10 zdań w czasie teraźniejszym i trzy o zmianie planu.",
+      "curiosity": "Norweskie «pause» to polska przerwa/pauza, a «plan» to plan — można natychmiast zbudować «Etter pausen følger vi planen».",
+      "words": [
+        "plan",
+        "pause",
+        "normal",
+        "praktisk",
+        "organisasjon",
+        "status"
+      ]
+    },
+    {
+      "n": 8,
+      "context": "Przy zagrożeniu liczy się prosty komunikat, nie piękna gramatyka. Pracownik musi umieć krzyknąć STOP, określić strefę i wezwać pomoc. W Norwegii numer medycznego pogotowia to 113, straży pożarnej 110, a policji 112.",
+      "grammar": "«Stopp!» to rozkaz; «Det er fare for fall» = jest zagrożenie upadkiem; «Ring 113!» = dzwoń pod 113. «Ikke gå inn!» = nie wchodź! Negacja w rozkazie stoi przed czasownikiem («Ikke gå!»). Ćwicz kolejno: zatrzymaj, powiedz gdzie, opisz co się stało, zgłoś odpowiedniej osobie.",
+      "dialog": [
+        "A: Stopp! Ikke gå inn i sone B! – Stop! Nie wchodź do strefy B!",
+        "B: Hva har skjedd? – Co się stało?",
+        "A: Det er fare for fall ved åpningen. – Przy otworze jest ryzyko upadku.",
+        "B: Jeg varsler arbeidslederen. Ved akutt skade ringer vi 113. – Powiadomię przełożonego. Przy nagłym urazie dzwonimy pod 113."
+      ],
+      "tips": "Ćwicz głośne krótkie komunikaty; podawaj dokładną lokalizację; nie podchodź niepotrzebnie do strefy zagrożenia; odróżniaj 110/112/113; używaj nazw stref; nie diagnozuj obrażeń przez telefon.",
+      "mistake": "Nie wolno zastąpić alarmu słowem «problem» bez podania zagrożenia. Nie wybieraj numeru alarmowego w ramach ćwiczenia; symuluj wypowiedź bez rzeczywistego połączenia.",
+      "homework": "Ułóż trzy bezpieczne scenki na papierze: upadek z wysokości, dym w rozdzielni i nieprzytomny pracownik. Przy każdej napisz trzy norweskie komunikaty: STOP, lokalizacja, wezwanie pomocy.",
+      "curiosity": "«Alarm» i «signal» są podobne do polskich słów, ale w realnym zagrożeniu ważniejsze jest konkretne «Hvor?» (gdzie?) i «Hva har skjedd?» (co się stało?).",
+      "words": [
+        "alarm",
+        "signal",
+        "telefon",
+        "risiko",
+        "kontakt",
+        "informasjon"
+      ]
+    },
+    {
+      "n": 9,
+      "context": "Umowa, lista godzin i odcinek wynagrodzenia mają własne nazwy. Norweski budowlany nie powinien uczyć jednej «stałej stawki dla każdego» — zasady i kwoty zależą m.in. od branżowych przepisów, kwalifikacji, okresu i aktualizacji.",
+      "grammar": "«Hva er timelønna mi?» = jaka jest moja stawka godzinowa? «Hvor mange timer har jeg jobbet?» = ile godzin przepracowałem? «Det mangler to timer» = brakuje dwóch godzin. Rozróżniaj «brutto» (przed potrąceniami), «netto» (po nich), «lønnsslipp» (pasek płacowy) i «arbeidsavtale» (umowa o pracę).",
+      "dialog": [
+        "A: Kan vi se på timelisten min? – Możemy sprawdzić moją listę godzin?",
+        "B: Ja. Hvilken periode gjelder det? – Tak. Jakiego okresu to dotyczy?",
+        "A: Jeg har registrert 38 timer, men lønnsslippen viser 36. – Zarejestrowałem 38 godzin, ale pasek pokazuje 36.",
+        "B: Vi kontrollerer registreringene før neste utbetaling. – Sprawdzimy zapisy przed kolejną wypłatą."
+      ],
+      "tips": "Porównuj okres, godziny i stawkę; zadawaj pytania bez oskarżeń; przechowuj własny rejestr czasu; nie myl kwot brutto/netto; stawki aktualizuj ze stron urzędowych; proś o pisemną odpowiedź.",
+      "mistake": "Nie przepisuj starych minimalnych stawek do kolejnych lat. Nie uznawaj «netto» za kwotę przed podatkiem. Ćwiczenie języka nie zastępuje interpretacji konkretnego kontraktu.",
+      "homework": "Ułóż 8 pytań do działu kadr o umowę, okres, godziny, nadgodziny, stawkę, brutto, netto i datę wypłaty. Stwórz przykładową listę 38 h i zapytaj o różnicę 2 h.",
+      "curiosity": "«Kontrakt», «konto», «bank», «brutto», «netto» i «faktura» ułatwiają polskiemu pracownikowi rozmowę o pieniądzach, ale norweski odcinek płacowy nazywa się «lønnsslipp».",
+      "words": [
+        "kontrakt",
+        "brutto",
+        "netto",
+        "konto",
+        "bank",
+        "faktura",
+        "periode",
+        "dato"
+      ]
+    },
+    {
+      "n": 10,
+      "context": "Dostawa może się spóźnić lub przyjechać niekompletna. Sprawny pracownik nie ogranicza się do «problem», lecz podaje fakt, liczbę, stan i następne działanie; nie podpisuje niezweryfikowanej całości.",
+      "grammar": "«Leveringen er forsinket» = dostawa jest opóźniona; «Vi mangler én pall» = brakuje jednej palety. «Har vi fått bekreftet ...?» pyta o potwierdzenie. Przy informacji niepewnej mów «ikke bekreftet» zamiast «kommer klokka ni» — nie twórz pewności, której nie ma.",
+      "dialog": [
+        "A: Har alt materialet kommet? – Czy cały materiał dotarł?",
+        "B: Nei, vi mangler én pall. – Nie, brakuje jednej palety.",
+        "A: Når kommer den siste pallen? – Kiedy przyjedzie ostatnia paleta?",
+        "B: Det er ikke bekreftet ennå. Jeg kontakter transportøren. – Tego jeszcze nie potwierdzono. Skontaktuję się z przewoźnikiem."
+      ],
+      "tips": "Rozróżniaj «bestilt», «levert», «mangler»; zapisuj liczbę sztuk i palet; przy niepewnej godzinie dodaj «ikke bekreftet»; przekazuj numer zlecenia; sprawdzaj zgodność z dokumentem dostawy.",
+      "mistake": "Nie używaj «alt er levert» przy brakującej palecie. Nie mieszaj uszkodzenia opakowania z potwierdzonym uszkodzeniem produktu.",
+      "homework": "Przygotuj e-mail po norwesku o dostawie pięciu palet, z których przyszły cztery. Podaj numer zamówienia, stan opakowania, godzinę dostawy i prośbę o potwierdzenie pozostałej palety.",
+      "curiosity": "«Transport» i «problem» są znajome, ale norweskie «levering» oznacza dostawę, a «mangler» jest najważniejszym czasownikiem do zgłaszania braków.",
+      "words": [
+        "transport",
+        "problem",
+        "plan",
+        "materiale",
+        "nummer",
+        "informasjon"
+      ]
+    },
+    {
+      "n": 11,
+      "context": "Raport końca zmiany powinien pozwalać kolejnej ekipie bez pytania odróżnić prace ukończone od niedokończonych. Szczególnie ważne jest wyodrębnienie zagrożeń, braków i danych niepotwierdzonych.",
+      "grammar": "«Vi er ferdige» = skończyliśmy. «Vi har montert ...» to czas przeszły złożony: «har» + imiesłów. «Det gjenstår ...» = pozostaje do wykonania. «Ikke bekreftet» to niepotwierdzone. Zdanie bez podmiotu «Det mangler ...» informuje o brakach bez oskarżania osoby.",
+      "dialog": [
+        "A: Hva er gjort i dag? – Co dzisiaj wykonano?",
+        "B: Vi har montert rekkverk i sone A. – Zamontowaliśmy balustradę w strefie A.",
+        "A: Hva gjenstår? – Co pozostaje?",
+        "B: To braketter mangler i sone B. Leveringstid er ikke bekreftet. – W strefie B brakuje dwóch wsporników. Godzina dostawy nie jest potwierdzona."
+      ],
+      "tips": "Rozdziel «ferdig» i «gjenstår»; podawaj lokalizację; wpisuj ilości; odróżniaj potwierdzone od przewidywanego; wskazuj odpowiedzialnego za kolejne działanie; zabezpiecz stanowisko przed wyjściem.",
+      "mistake": "Nie kończ raportu «alt klart» jeśli pozostają niezabezpieczone strefy lub niejasne pomiary. Nie używaj czasu przeszłego przy pracy dopiero zaplanowanej.",
+      "homework": "Napisz raport z fikcyjnej zmiany: 4 zakończone zadania, 2 braki, jedna uwaga HMS oraz jedna niepotwierdzona dostawa. Użyj minimum sześciu norweskich zdań i polskiego tłumaczenia.",
+      "curiosity": "Norweskie «rapport», «status», «standard» i «kontroll» brzmią znajomo, lecz słowo «ferdig» (gotowe) powinno zawsze dotyczyć rzeczywiście sprawdzonej pracy.",
+      "words": [
+        "rapport",
+        "status",
+        "kontroll",
+        "dokument",
+        "standard",
+        "resultat"
+      ]
+    },
+    {
+      "n": 12,
+      "context": "Wymiar na rysunku ma znaczenie tylko wtedy, gdy obie osoby wskazują tę samą oś i aktualną rewizję. W rozmowie o rozstawie możesz brzmieć płynnie po norwesku, ale mimo to popełnić błąd, jeśli nie powtórzysz liczby.",
+      "grammar": "«Sett brakettene med ...» to polecenie ustawienia wsporników; «senteravstand» to odległość osiowa. «Kan du bekrefte at ...?» prosi o potwierdzenie. Pytaj nie tylko «hvor mye?», ale «hvilken tegning?» i «hvilken revisjon?»; stosuj zasadę zamkniętej pętli: polecenie → powtórzenie → potwierdzenie.",
+      "dialog": [
+        "A: Jeg hørte 180 millimeter senteravstand. – Usłyszałem 180 mm rozstawu osiowego.",
+        "B: Tegningen her viser 160 millimeter. – Rysunek tutaj pokazuje 160 mm.",
+        "A: Kan du bekrefte hvilken revisjon som gjelder? – Możesz potwierdzić, która rewizja obowiązuje?",
+        "B: Vi avklarer tegningen før monteringen starter. – Wyjaśnimy rysunek przed rozpoczęciem montażu."
+      ],
+      "tips": "Przy liczbie wymawiaj jednostkę; sprawdzaj senteravstand versus odległość między krawędziami; pytaj o oś; nie kontynuuj montażu przy sprzeczności; zapisz kto potwierdził; sprawdź najnowszy rysunek.",
+      "mistake": "Nie zamieniaj rozstawu osiowego na prześwit bez obliczeń. Nie zakładaj, że rozmowa telefoniczna ma pierwszeństwo przed dokumentacją kontraktową bez właściwego potwierdzenia.",
+      "homework": "Zapisz trzy dialogi rozstawu: 160/180 mm, 300/375 mm i 350/530 mm. Każdy dialog ma zawierać odczyt, powtórzenie, wskazanie rewizji i decyzję o wstrzymaniu montażu do wyjaśnienia.",
+      "curiosity": "«Revisjon» i «millimeter» są bliskie polskim słowom, ale norweskie «senteravstand» opisuje rozstaw osiowy — nie zawsze prześwit między elementami.",
+      "words": [
+        "millimeter",
+        "revisjon",
+        "montering",
+        "modell",
+        "konstruksjon",
+        "dimensjon"
+      ]
+    },
+    {
+      "n": 13,
+      "context": "Podczas rozładunku pytanie «Hva mangler?» wymaga konkretnej odpowiedzi: jaki materiał, ile sztuk, skąd wiemy, że brakuje i co zostało sprawdzone. Zdania o dostawie powinny być jednocześnie krótkie i kompletne.",
+      "grammar": "«Det skulle komme fire paller» = miały przyjść cztery palety; «Vi har mottatt tre» = otrzymaliśmy trzy. «Én pall mangler» to liczba + jednostka + czasownik braku. Użyj formy «mottatt» (otrzymane), a nie «bestilt» (zamówione), gdy opisujesz rzeczywisty stan.",
+      "dialog": [
+        "A: Hva mangler på leveringen? – Czego brakuje w dostawie?",
+        "B: Det skulle komme fire paller, men vi har mottatt tre. – Miały przyjść cztery palety, ale otrzymaliśmy trzy.",
+        "A: Er noe skadet? – Czy coś jest uszkodzone?",
+        "B: Emballasjen på pall tre er skadet. Innholdet er ikke kontrollert. – Opakowanie trzeciej palety jest uszkodzone. Zawartości jeszcze nie sprawdzono."
+      ],
+      "tips": "Policz palety i sztuki osobno; użyj numeru listy; opisuj uszkodzone opakowanie jako obserwację; nie potwierdzaj stanu produktu bez kontroli; zrób zdjęcie; zapisz odpowiedź dostawcy.",
+      "mistake": "«Pall» oznacza paletę, a nie zawartość opakowania. Nie twierdź «produkt uszkodzony», jeśli stwierdzono wyłącznie uszkodzenie folii.",
+      "homework": "Ułóż pięciozdaniowy raport o czterech paletach, z których dotarły trzy. Dodaj numer przesyłki, osobny opis opakowania i prośbę o brakującą paletę.",
+      "curiosity": "«Nummer», «transport» i «dokumentasjon» pomagają opisać dostawę, ale w norweskich raportach najważniejsze są też «mangler», «mottatt» i «kontrollert».",
+      "words": [
+        "transport",
+        "nummer",
+        "dokumentasjon",
+        "fotografi",
+        "kontroll"
+      ]
+    },
+    {
+      "n": 14,
+      "context": "Polecenie STOP w strefie przejścia musi zadziałać natychmiast. Obserwacja nie jest jeszcze diagnozą, dlatego najpierw podaj konkretny objaw i lokalizację, a dopiero potem ustal sposób zabezpieczenia.",
+      "grammar": "Rozkazy: «Stopp!», «Vent!», «Ikke gå inn!»; miejsce: «ved inngang B», «i passasjen»; zagrożenie: «Det er fare for ...». Po «fordi» możesz podać przyczynę, ale nie dopisuj domysłu jako potwierdzonego faktu.",
+      "dialog": [
+        "A: Stopp, ikke gå inn i passasjen ved inngang B! – Stop, nie wchodź w przejście przy wejściu B!",
+        "B: Hva er galt? – Co jest nie tak?",
+        "A: En løs plate ligger ved åpningen. – Przy otworze leży luźna płyta.",
+        "B: Jeg varsler basen, og vi sperrer av området. – Powiadomię brygadzistę i odgrodzimy teren."
+      ],
+      "tips": "Najpierw ostrzegaj; podawaj lokalizację i rzecz, którą widzisz; nie dotykaj nieznanego urządzenia; zapisz kiedy zauważyłeś; używaj krótkich poleceń; bezpieczne wznowienie wymaga uzgodnienia.",
+      "mistake": "Nie traktuj zdjęcia jako wystarczającego zabezpieczenia terenu. Nie podawaj przyczyny usterki bez potwierdzenia.",
+      "homework": "Przygotuj trzy ostrzeżenia dla przejścia B: o luźnej płycie, niechronionej krawędzi i uszkodzonym kablu. Do każdego dopisz jednozdaniowy meldunek do przełożonego.",
+      "curiosity": "Norweskie «alarm», «risiko» i «signal» są bliskie polskim wyrazom, ale w stresie najlepiej działa proste «Stopp! Ikke gå inn!».",
+      "words": [
+        "alarm",
+        "risiko",
+        "signal",
+        "kontakt",
+        "elektrisk"
+      ]
+    }
+  ]
+}
