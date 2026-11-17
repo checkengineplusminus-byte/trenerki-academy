@@ -4,7 +4,7 @@
  * Isolated API stubs: NEVER touches real accounts, payments, production lessons or grades.
  */
 import assert from 'node:assert/strict';
-import {chromium} from 'playwright';
+import {chromium,firefox,webkit} from 'playwright';
 
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8791').origin;
 const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
@@ -26,10 +26,12 @@ const mkLesson=(n)=>{
  }};
 };
 const lessons=Array.from({length:32},(_,n)=>mkLesson(n));
-const browser=await chromium.launch({headless:true});
+const browsers={chromium:await chromium.launch({headless:true}),firefox:await firefox.launch({headless:true}),webkit:await webkit.launch({headless:true})};
 let attempts=0,passedStage=0,correctCase=0,completed=[],coachCalls=0;
-async function run(mode){
- const context=await browser.newContext({viewport:mode==='mobile'?{width:390,height:844}:{width:1366,height:900},isMobile:mode==='mobile',hasTouch:mode==='mobile'});
+async function run(env){
+ const mode=env.name, browser=browsers[env.engine];
+ const context=await browser.newContext({viewport:env.viewport,isMobile:env.isMobile&&env.engine!=='firefox',hasTouch:env.hasTouch,deviceScaleFactor:env.scale||1});
+ const lastLesson=env.full?32:4;
  const page=await context.newPage();
  completed=[];attempts=0;passedStage=0;correctCase=0;coachCalls=0;
  try {
@@ -92,28 +94,46 @@ async function run(mode){
   assert.equal(coachCalls,1,'Tutor action did not invoke backend');
   assert.equal(completed.length,0,'Tutor interaction must never complete a lesson');
 
-  for(let lesson=1;lesson<=4;lesson++){
+  for(let lesson=1;lesson<=lastLesson;lesson++){
    await page.getByTestId('lesson-heading').filter({hasText:'AI: ćwiczenie '+lesson}).waitFor();
    const checkpoint=page.getByTestId('case-checkpoint');
    await checkpoint.getByRole('button',{name:/Sprawdź dane/}).click();
    await page.getByText('Odpowiedź do zadania zapisana').waitFor();
-   if(lesson===4){
+   if(lesson%4===0){
     const stage=page.getByTestId('ai-stage-checkpoint');
     await stage.waitFor();
     await page.getByTestId('lesson-requirements').getByText(/sprawdzian etapu/).waitFor();
-    assert.equal(completed.length,3,'Stage must stay locked until checkpoint');
+    assert.equal(completed.length,lesson-1,'Stage must stay locked until checkpoint');
     await stage.getByTestId('adversarial-option-0').click();
     await stage.getByTestId('adversarial-retry').click();
     await stage.getByTestId('adversarial-option-1').click();
     await stage.getByText('Sprawdzian zaliczony i zapisany').waitFor();
-    assert.equal(passedStage,1,'Stage grade must be persisted through server');
+    assert.ok(passedStage>=lesson/4,'Stage grade must be persisted through server');
    }
-   await page.getByRole('button',{name:new RegExp('Dalej · lekcja '+(lesson+1))}).last().click();
+   if(lesson<32){
+    await page.getByRole('button',{name:new RegExp('Dalej · lekcja '+(lesson+1))}).last().click();
+    await page.getByTestId('lesson-heading').filter({hasText:'AI: ćwiczenie '+(lesson+1)}).waitFor();
+   }else{
+    await page.getByRole('button',{name:'Przejdź do egzaminu →'}).last().click();
+    await page.getByText('Egzamin końcowy',{exact:true}).waitFor();
+   }
   }
-  await page.getByTestId('lesson-heading').filter({hasText:'AI: ćwiczenie 5'}).waitFor();
-  assert.deepEqual(completed,[0,1,2,3],mode+' did not persist 4 lessons');
-  await page.getByTestId('ai-course-stage').filter({hasText:'ETAP 2/8'}).waitFor();
-  console.log('✓ '+mode+': Anielka coaching, four lessons, bad/good stage answers, locked milestone, next stage');
+  assert.deepEqual(completed,Array.from({length:lastLesson},(_,i)=>i),mode+' did not persist '+lastLesson+' lessons');
+  if(lastLesson===4)await page.getByTestId('ai-course-stage').filter({hasText:'ETAP 2/8'}).waitFor();
+  else await page.getByTestId('course-completed-last-page-only').waitFor();
+  console.log('✓ '+mode+': Anielka, '+lastLesson+' lessons, required stage exams, lock/restore, navigation');
  } finally {await page.close();await context.close();}
 }
-try{await run('desktop');await run('mobile');}finally{await browser.close();}
+const envs=[
+ {name:'Chrome 1366 desktop 32 lessons',engine:'chromium',viewport:{width:1366,height:900},isMobile:false,hasTouch:false,full:true},
+ {name:'Chrome 1920 widescreen',engine:'chromium',viewport:{width:1920,height:1080},isMobile:false,hasTouch:false},
+ {name:'Chrome 1024 laptop',engine:'chromium',viewport:{width:1024,height:768},isMobile:false,hasTouch:false},
+ {name:'Chrome iPhone 390 emulator',engine:'chromium',viewport:{width:390,height:844},isMobile:true,hasTouch:true,scale:3},
+ {name:'Chrome Android 412 emulator',engine:'chromium',viewport:{width:412,height:915},isMobile:true,hasTouch:true,scale:2.625},
+ {name:'Chrome small phone 360 emulator',engine:'chromium',viewport:{width:360,height:740},isMobile:true,hasTouch:true,scale:2},
+ {name:'Chrome tablet 820 touch',engine:'chromium',viewport:{width:820,height:1180},isMobile:true,hasTouch:true,scale:2},
+ {name:'Firefox 1366 desktop',engine:'firefox',viewport:{width:1366,height:900},isMobile:false,hasTouch:false},
+ {name:'Safari WebKit 1280 desktop',engine:'webkit',viewport:{width:1280,height:800},isMobile:false,hasTouch:false},
+ {name:'Safari WebKit iPhone 390 emulator',engine:'webkit',viewport:{width:390,height:844},isMobile:true,hasTouch:true,scale:3}
+];
+try{for(const env of envs)await run(env);}finally{for(const b of Object.values(browsers))await b.close();}
