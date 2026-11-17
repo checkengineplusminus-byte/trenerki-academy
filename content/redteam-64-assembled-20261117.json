@@ -1,0 +1,1893 @@
+{
+  "meta": {
+    "date": "2026-11-17",
+    "courses": 8,
+    "lessons": 64,
+    "red_team_profiles": 64,
+    "independent_real_experts": 0,
+    "severity": {
+      "critical": 20,
+      "high": 25,
+      "medium": 19
+    },
+    "separate_from_final_quiz": true,
+    "expert_flags_to_keep": 64,
+    "original_answer_keys_untouched": true,
+    "scope_excludes": "ksiegowosc-od-podstaw"
+  },
+  "tests": [
+    {
+      "id": 1,
+      "slug": "bednarz",
+      "lesson_no": 16,
+      "title": "17. Szczelność a wilgotność — plan kontrolowanego testu",
+      "reviewer_profile": "Technolog drewna i wilgotności",
+      "question": "Po szczelnym teście wodą klient chce wpisać w karcie «bezpieczna do soku». Co jest wadą tego wniosku?",
+      "options": [
+        "Wystarczy przedłużyć test szczelności o dobę i dopisać wyniki.",
+        "Wystarczy wyparzyć beczkę i odnotować brak zapachu.",
+        "Zapis «na własną odpowiedzialność» zastępuje kontrolę materiałów.",
+        "Brak potwierdzenia materiałów, powłok i historii użycia; wynik szczelności opisuje tylko szczelność."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Pomieszanie szczelności konstrukcyjnej z higieną produktu.",
+        "To pomija ważne kryterium. Pomieszanie szczelności konstrukcyjnej z higieną produktu.",
+        "To pomija ważne kryterium. Pomieszanie szczelności konstrukcyjnej z higieną produktu.",
+        "Prawidłowo. Brak potwierdzenia materiałów, powłok i historii użycia; wynik szczelności opisuje tylko szczelność."
+      ],
+      "flaw": "Pomieszanie szczelności konstrukcyjnej z higieną produktu.",
+      "evidence": "Identyfikacja materiałów, powłok, wcześniejszego zastosowania i dokumentów kontaktu z żywnością.",
+      "severity": "critical",
+      "review_reason": "Oddziel w karcie trzy kolumny: szczelność, higiena oraz deklarowane zastosowanie. Oznacz «niepotwierdzony kontakt z żywnością», gdy brak identyfikacji materiałów i poprzedniego przeznaczenia.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 2,
+      "slug": "bednarz",
+      "lesson_no": 17,
+      "title": "18. Oblicz zapotrzebowanie na klepki i zapas",
+      "reviewer_profile": "Specjalista planowania rozkroju i wydajności",
+      "question": "Do 25 gotowych klepek przy 80% uzysku kupiec zamawia 31 sztuk. Jak audytor oceni rachunek?",
+      "options": [
+        "31 jest wystarczające, bo końcówkę 0,25 się pomija.",
+        "30 wystarcza, ponieważ 20% z 25 to pięć odpadów.",
+        "31 sztuk nie wystarczy według tego założenia: 25/0,80 = 31,25, więc planuj co najmniej 32 półfabrykaty.",
+        "32 gwarantuje wynik bez ryzyka, więc nie trzeba rejestrować strat."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Niewłaściwe zaokrąglenie liczby sztuk lub traktowanie oczekiwanego uzysku jako gwarancji.",
+        "To pomija ważne kryterium. Niewłaściwe zaokrąglenie liczby sztuk lub traktowanie oczekiwanego uzysku jako gwarancji.",
+        "Prawidłowo. 31 sztuk nie wystarczy według tego założenia: 25/0,80 = 31,25, więc planuj co najmniej 32 półfabrykaty.",
+        "To pomija ważne kryterium. Niewłaściwe zaokrąglenie liczby sztuk lub traktowanie oczekiwanego uzysku jako gwarancji."
+      ],
+      "flaw": "Niewłaściwe zaokrąglenie liczby sztuk lub traktowanie oczekiwanego uzysku jako gwarancji.",
+      "evidence": "Wzór 25/0,8, zaokrąglenie w górę i osobny bilans rzeczywistych odrzutów.",
+      "severity": "high",
+      "review_reason": "Wprowadź zasadę zaokrąglania do pełnej sztuki w górę, a obok obliczenia wykaż zmianę wyniku przy niższym rzeczywistym uzysku; nie podstawiaj szerokości surowej deski za gotową geometrię klepki.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 3,
+      "slug": "bednarz",
+      "lesson_no": 18,
+      "title": "19. Beczka użytkowa: dokumentuj granice bezpieczeństwa",
+      "reviewer_profile": "Audytor bezpieczeństwa materiałów do kontaktu z żywnością",
+      "question": "Beczka po renowacji jest szczelna, ale nieznany jest lakier wnętrza. Jak sformułować ofertę?",
+      "options": [
+        "Oznaczyć jako spożywczą po samym wietrzeniu i płukaniu.",
+        "Nie deklarować przydatności do napojów; ograniczyć przeznaczenie do potwierdzonego i żądać dokumentacji materiałowej.",
+        "Załączyć zdjęcia wnętrza, a kwestię powłoki pominąć.",
+        "Umieścić w opisie «naturalne drewno», uznając to za dowód."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Brak identyfikowalności materiału i nieuprawniona deklaracja żywnościowa.",
+        "Prawidłowo. Nie deklarować przydatności do napojów; ograniczyć przeznaczenie do potwierdzonego i żądać dokumentacji materiałowej.",
+        "To pomija ważne kryterium. Brak identyfikowalności materiału i nieuprawniona deklaracja żywnościowa.",
+        "To pomija ważne kryterium. Brak identyfikowalności materiału i nieuprawniona deklaracja żywnościowa."
+      ],
+      "flaw": "Brak identyfikowalności materiału i nieuprawniona deklaracja żywnościowa.",
+      "evidence": "Dane lakieru i materiału, identyfikowalność oraz wymagania właściwe dla deklarowanego kontaktu z żywnością.",
+      "severity": "critical",
+      "review_reason": "Doprecyzuj: rozporządzenie WE 1935/2004 i dobra praktyka produkcji WE 2023/2006 dotyczą wyrobów przeznaczonych do kontaktu z żywnością. Sama naturalność drewna ani test szczelności nie dowodzą zgodności.",
+      "source_urls": [
+        "https://www.gov.pl/web/gis/materialy-i-wyroby-przeznaczone-do-konaktu-z-zywnoscia"
+      ],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 4,
+      "slug": "bednarz",
+      "lesson_no": 19,
+      "title": "20. Odbiór końcowy: karta wyrobu i plan konserwacji",
+      "reviewer_profile": "Kontroler jakości wyrobu bednarskiego",
+      "question": "Protokół beczki zawiera 10 pomiarów, lecz puste pole «przeznaczenie». Czy to pełny odbiór?",
+      "options": [
+        "Nie: bez przeznaczenia nie wiadomo, które kryteria bezpieczeństwa i użytkowania należało sprawdzić.",
+        "Tak, bo liczba wykonanych pomiarów sama potwierdza funkcję.",
+        "Tak, jeśli klient pisemnie zaakceptuje wygląd wyrobu.",
+        "Tak, jeśli dopisze się uniwersalny limit obciążenia."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Nie: bez przeznaczenia nie wiadomo, które kryteria bezpieczeństwa i użytkowania należało sprawdzić.",
+        "To pomija ważne kryterium. Protokół bez funkcji wyrobu może sugerować nieprzeprowadzoną kontrolę.",
+        "To pomija ważne kryterium. Protokół bez funkcji wyrobu może sugerować nieprzeprowadzoną kontrolę.",
+        "To pomija ważne kryterium. Protokół bez funkcji wyrobu może sugerować nieprzeprowadzoną kontrolę."
+      ],
+      "flaw": "Protokół bez funkcji wyrobu może sugerować nieprzeprowadzoną kontrolę.",
+      "evidence": "Opis zastosowania, rodzaj materiału, wymagane pomiary, ograniczenia i identyfikacja osoby odbierającej.",
+      "severity": "high",
+      "review_reason": "Rozdziel akceptację wyglądu od akceptacji użytkowej. Dodaj pole «niezweryfikowane» tam, gdzie brak dokumentów — nigdy nie traktuj pustego pola jako wyniku pozytywnego.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 5,
+      "slug": "brygadzista",
+      "lesson_no": 8,
+      "title": "Czytanie rewizji rysunku i kontrola zmian",
+      "reviewer_profile": "Koordynator dokumentacji technicznej BIM i rewizji",
+      "question": "Na palecie detale B, na serwerze rewizja C oznaczona «do koordynacji». Czy można już montować według C?",
+      "options": [
+        "Tak, bo każda litera C jest z definicji wydaniem do montażu.",
+        "Można montować B, jeśli ilość sztuk odpowiada zamówieniu.",
+        "Można łączyć B i C, jeśli wymiary na pierwszy rzut oka pasują.",
+        "Nie; trzeba ustalić wydaną do realizacji rewizję, zakres zmian i zgodność dostawy przed montażem."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Data lub litera rewizji bez statusu dokumentu nie oznacza zatwierdzenia.",
+        "To pomija ważne kryterium. Data lub litera rewizji bez statusu dokumentu nie oznacza zatwierdzenia.",
+        "To pomija ważne kryterium. Data lub litera rewizji bez statusu dokumentu nie oznacza zatwierdzenia.",
+        "Prawidłowo. Nie; trzeba ustalić wydaną do realizacji rewizję, zakres zmian i zgodność dostawy przed montażem."
+      ],
+      "flaw": "Data lub litera rewizji bez statusu dokumentu nie oznacza zatwierdzenia.",
+      "evidence": "Rejestr wydań, numer detalu, status dokumentu i pisemne wyjaśnienie różnic.",
+      "severity": "critical",
+      "review_reason": "Wyjaśnij, że numer rewizji, jej data i status zatwierdzenia muszą odnosić się do tego samego zakresu. Telefon nie zastępuje automatycznie procedury dokumentowania zmian.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 6,
+      "slug": "brygadzista",
+      "lesson_no": 9,
+      "title": "Pomiary kontrolne i punkt odniesienia",
+      "reviewer_profile": "Geodeta budowlany i specjalista punktów odniesienia",
+      "question": "Laser na +700 mm względem zera. Punkt jest 250 mm poniżej wiązki. Jaka rzędna punktu?",
+      "options": [
+        "+950 mm, ponieważ offset trzeba doliczyć do odczytu.",
+        "−450 mm, ponieważ odległość od lasera zawsze jest ujemna.",
+        "+450 mm względem tego samego zera, ponieważ +700 mm − 250 mm = +450 mm.",
+        "+450 mm i jeszcze −700 mm podczas wpisywania protokołu."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Podwójne uwzględnienie offsetu lub pomieszanie osi i znaków.",
+        "To pomija ważne kryterium. Podwójne uwzględnienie offsetu lub pomieszanie osi i znaków.",
+        "Prawidłowo. +450 mm względem tego samego zera, ponieważ +700 mm − 250 mm = +450 mm.",
+        "To pomija ważne kryterium. Podwójne uwzględnienie offsetu lub pomieszanie osi i znaków."
+      ],
+      "flaw": "Podwójne uwzględnienie offsetu lub pomieszanie osi i znaków.",
+      "evidence": "Szkic zera, położenie lasera, kierunek odczytu i sprawdzenie znaku wyniku.",
+      "severity": "high",
+      "review_reason": "W każdym przykładzie pomiaru rozróżnij odczyt instrumentu, wysokość instrumentu, poziom bazowy i rzędną docelową. Nie wolno dodawać lub odejmować 700 mm z pamięci bez schematu.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 7,
+      "slug": "brygadzista",
+      "lesson_no": 10,
+      "title": "Tolerancje: kiedy pomiar wymaga decyzji",
+      "reviewer_profile": "Inżynier jakości i tolerancji montażowych",
+      "question": "Wynik elementu to +8 mm, lecz tolerancji w zatwierdzonej dokumentacji brak. Jak brzmieć powinien status?",
+      "options": [
+        "«Zgodny, bo +8 mm w budowlance jest typowe».",
+        "«Wynik +8 mm; zgodność nieustalona — wymagana specyfikacja i decyzja uprawnionej osoby».",
+        "«Niezgodny, do poprawy o 8 mm», bez sprawdzenia połączenia.",
+        "«Zgodny pod warunkiem, że przyjmiemy ±10 mm»."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Zamiana pomiaru w ocenę zgodności bez kryterium.",
+        "Prawidłowo. «Wynik +8 mm; zgodność nieustalona — wymagana specyfikacja i decyzja uprawnionej osoby».",
+        "To pomija ważne kryterium. Zamiana pomiaru w ocenę zgodności bez kryterium.",
+        "To pomija ważne kryterium. Zamiana pomiaru w ocenę zgodności bez kryterium."
+      ],
+      "flaw": "Zamiana pomiaru w ocenę zgodności bez kryterium.",
+      "evidence": "Źródło tolerancji, stan montażu, zapis pomiaru i decyzja zatwierdzająca.",
+      "severity": "critical",
+      "review_reason": "Dopisz do protokołu osobne pola: projekt, wynik, różnica, norma/specyfikacja, status decyzji. W razie braku normy wpisz «nieustalone», nie samodzielnie wymyślone ±10 mm.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 8,
+      "slug": "brygadzista",
+      "lesson_no": 11,
+      "title": "Kolejność montażu a dostęp dla innych ekip",
+      "reviewer_profile": "Planista kolejności robót i konfliktów międzybranżowych",
+      "question": "Zmiana frontu na klatkę B pozwoli dotrzymać terminu, ale instalatorzy są tam w tym samym czasie. Które rozwiązanie jest wykonalne?",
+      "options": [
+        "Uzgodnienie czasu i granic strefy między ekipami wraz z aktualizacją oceny ryzyka oraz harmonogramu.",
+        "Wysłanie obu ekip z poleceniem wzajemnego ustępowania.",
+        "Przeniesienie tylko terminu w ERP bez odprawy na budowie.",
+        "Oznaczenie miejsca jako wolnego, jeżeli nie ma tam materiału."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Uzgodnienie czasu i granic strefy między ekipami wraz z aktualizacją oceny ryzyka oraz harmonogramu.",
+        "To pomija ważne kryterium. Pomylenie dostępności harmonogramowej z faktycznym bezpiecznym dostępem.",
+        "To pomija ważne kryterium. Pomylenie dostępności harmonogramowej z faktycznym bezpiecznym dostępem.",
+        "To pomija ważne kryterium. Pomylenie dostępności harmonogramowej z faktycznym bezpiecznym dostępem."
+      ],
+      "flaw": "Pomylenie dostępności harmonogramowej z faktycznym bezpiecznym dostępem.",
+      "evidence": "Odprawa obu ekip, uzgodnione okno, osoba odpowiedzialna i zapis przekazania.",
+      "severity": "high",
+      "review_reason": "Dodać przykładowy protokół przekazania strefy z osobą odpowiedzialną, godziną i warunkiem jej otwarcia; termin harmonogramowy nie jest samodzielnym pozwoleniem na niebezpieczny transport.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 9,
+      "slug": "brygadzista",
+      "lesson_no": 12,
+      "title": "Dostawa i bezpieczne rozładowanie",
+      "reviewer_profile": "Kierownik operacji dźwigowych i zawiesi",
+      "question": "Dźwig ma podnieść jedną z 4 palet o łącznej masie 4,8 t. Czego brak do doboru urządzenia?",
+      "options": [
+        "Średniej masy 1,2 t przy zachowaniu tej samej liczby palet.",
+        "Samej nominalnej masy całej ciężarówki i czasu rozładunku.",
+        "Tylko potwierdzenia, że kierowca ma uprawnienia kategorii C.",
+        "Mas najcięższej palety, promienia podnoszenia, sposobu zawieszenia, danych sprzętu i podłoża."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Użycie średniej masy zamiast danych obciążenia konkretnego podnoszenia.",
+        "To pomija ważne kryterium. Użycie średniej masy zamiast danych obciążenia konkretnego podnoszenia.",
+        "To pomija ważne kryterium. Użycie średniej masy zamiast danych obciążenia konkretnego podnoszenia.",
+        "Prawidłowo. Mas najcięższej palety, promienia podnoszenia, sposobu zawieszenia, danych sprzętu i podłoża."
+      ],
+      "flaw": "Użycie średniej masy zamiast danych obciążenia konkretnego podnoszenia.",
+      "evidence": "Masy jednostkowe, DOR zawiesi, diagram udźwigu przy promieniu i zabezpieczenie strefy.",
+      "severity": "critical",
+      "review_reason": "W zadaniu wymagaj tabeli mas jednostkowych i danych zawiesi zamiast średniej. Bez tabeli udźwigu odpowiedniej do promienia nie akceptuj wyboru urządzenia.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 10,
+      "slug": "brygadzista",
+      "lesson_no": 13,
+      "title": "Praca na wysokości: wybór metody dostępu",
+      "reviewer_profile": "Specjalista bezpieczeństwa pracy na wysokości",
+      "question": "Brak dostępu do podestu, za to jest drabina. Tafla ciężka, dwóch monterów i jedno piętro. Co robi kierujący?",
+      "options": [
+        "Dopuszcza drabinę, jeśli obaj monterzy mają kaski.",
+        "Dopuszcza wariant, jeżeli klient zgodzi się ustnie.",
+        "Wstrzymuje ten sposób transportu i organizuje bezpieczną metodę dostępu oraz przeniesienia tafli.",
+        "Wybiera drabinę, jeśli cała czynność potrwa mniej niż pięć minut."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Zastąpienie oceny ryzyka kryterium czasu, kasku lub liczby osób.",
+        "To pomija ważne kryterium. Zastąpienie oceny ryzyka kryterium czasu, kasku lub liczby osób.",
+        "Prawidłowo. Wstrzymuje ten sposób transportu i organizuje bezpieczną metodę dostępu oraz przeniesienia tafli.",
+        "To pomija ważne kryterium. Zastąpienie oceny ryzyka kryterium czasu, kasku lub liczby osób."
+      ],
+      "flaw": "Zastąpienie oceny ryzyka kryterium czasu, kasku lub liczby osób.",
+      "evidence": "Instrukcja sprzętu, analiza transportu szkła, ryzyko upadku i przeszkolenie operatorów.",
+      "severity": "critical",
+      "review_reason": "Wskaż, że korzystanie z podnośnika wymaga zgodności z instrukcją producenta i oceny ryzyka. Drabina nie jest dowolnym zamiennikiem transportu ciężkiego szkła.",
+      "source_urls": [
+        "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/",
+        "https://www.arbeidstilsynet.no/risikofylt-arbeid/arbeid-i-hoyden/bruk-av-personlofter/"
+      ],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 11,
+      "slug": "brygadzista",
+      "lesson_no": 14,
+      "title": "Jakość szkła i elementów przed montażem",
+      "reviewer_profile": "Inspektor jakości szkła architektonicznego",
+      "question": "Rysa na opakowaniu i wyszczerbiona krawędź tafli trafiają do jednego protokołu. Czy można oznaczyć oba jako «uszkodzenie opakowania»?",
+      "options": [
+        "Tak, jeśli w profilu po montażu nie będzie widoczne.",
+        "Nie; uszkodzenie tafli wymaga osobnego oznaczenia, zabezpieczenia i decyzji jakościowej przed montażem.",
+        "Tak, jeśli monter sfotografuje tylko całą paletę.",
+        "Tak, jeśli dostawca obieca wymianę po odbiorze."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Ukrywanie wady szkła w ogólnej etykiecie dostawy.",
+        "Prawidłowo. Nie; uszkodzenie tafli wymaga osobnego oznaczenia, zabezpieczenia i decyzji jakościowej przed montażem.",
+        "To pomija ważne kryterium. Ukrywanie wady szkła w ogólnej etykiecie dostawy.",
+        "To pomija ważne kryterium. Ukrywanie wady szkła w ogólnej etykiecie dostawy."
+      ],
+      "flaw": "Ukrywanie wady szkła w ogólnej etykiecie dostawy.",
+      "evidence": "Zdjęcie i identyfikacja tafli, ocena krawędzi oraz decyzja co do przyjęcia.",
+      "severity": "critical",
+      "review_reason": "Dodaj wyraźny zakaz samodzielnego szlifowania lub maskowania uszkodzenia krawędzi elementu wymagającego oceny; fotografie i identyfikator partii pozostają w dokumentacji.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 12,
+      "slug": "brygadzista",
+      "lesson_no": 15,
+      "title": "Harmonogram godzin a rzeczywisty nakład",
+      "reviewer_profile": "Specjalista planowania roboczogodzin",
+      "question": "4 pracowników × 7 h obecności, w tym wspólne 1 h czekania. Jak rozdzielić ewidencję?",
+      "options": [
+        "28 rbh obecności = 24 rbh aktywnej pracy i 4 rbh czekania; ewentualne rozliczenie przestoju to osobna sprawa.",
+        "24 rbh obecności i 4 rbh czasu kalendarzowego.",
+        "28 rbh aktywnej pracy, bo ekipa była na miejscu.",
+        "27 rbh pracy, bo godzinę czekania odejmuje się raz od całej ekipy."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. 28 rbh obecności = 24 rbh aktywnej pracy i 4 rbh czekania; ewentualne rozliczenie przestoju to osobna sprawa.",
+        "To pomija ważne kryterium. Mylenie czasu kalendarzowego i sumy godzin wszystkich pracowników.",
+        "To pomija ważne kryterium. Mylenie czasu kalendarzowego i sumy godzin wszystkich pracowników.",
+        "To pomija ważne kryterium. Mylenie czasu kalendarzowego i sumy godzin wszystkich pracowników."
+      ],
+      "flaw": "Mylenie czasu kalendarzowego i sumy godzin wszystkich pracowników.",
+      "evidence": "Liczba osób, godziny faktyczne, rozdział pracy/przestoju i zasada ewidencji.",
+      "severity": "high",
+      "review_reason": "Trzymaj osobne kolumny: czas kalendarzowy, liczba osób, roboczogodziny produkcyjne i oczekiwanie. Nie myl sumy godzin pracy z czasem, który upłynął na budowie.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 13,
+      "slug": "brygadzista",
+      "lesson_no": 16,
+      "title": "Odchylenie kosztowe: skąd bierze się strata",
+      "reviewer_profile": "Kontroler kosztów robót i zmian kontraktowych",
+      "question": "Przestój 5 rbh × 550 NOK/rbh dał 2750 NOK. Czy w ERP można oznaczyć kwotę jako zaakceptowaną zmianę?",
+      "options": [
+        "Tak, bo iloczyn jest matematycznie poprawny.",
+        "Tak, jeśli opis przestoju znalazł się w raporcie wewnętrznym.",
+        "Tak, jeśli klient był na budowie w chwili zdarzenia.",
+        "Nie: to koszt według przyjętej stawki, który wymaga analizy kontraktu, dowodów i akceptacji rozliczenia."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Przekształcenie kalkulacyjnego kosztu w automatyczne roszczenie.",
+        "To pomija ważne kryterium. Przekształcenie kalkulacyjnego kosztu w automatyczne roszczenie.",
+        "To pomija ważne kryterium. Przekształcenie kalkulacyjnego kosztu w automatyczne roszczenie.",
+        "Prawidłowo. Nie: to koszt według przyjętej stawki, który wymaga analizy kontraktu, dowodów i akceptacji rozliczenia."
+      ],
+      "flaw": "Przekształcenie kalkulacyjnego kosztu w automatyczne roszczenie.",
+      "evidence": "Dokumenty przestoju, warunki kontraktu, tryb zgłoszenia i potwierdzona decyzja.",
+      "severity": "critical",
+      "review_reason": "Dodatkowy przykład musi oddzielać koszt wewnętrzny, zgłoszenie roszczenia i zatwierdzony przychód. Nie zamieniaj prostego mnożenia w automatyczne prawo do zapłaty.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 14,
+      "slug": "brygadzista",
+      "lesson_no": 17,
+      "title": "Zgłaszanie zmian i potwierdzenia do klienta",
+      "reviewer_profile": "Specjalista kontraktów budowlanych i zmian VO",
+      "question": "Klient zgłosił dwa wsporniki telefonicznie. Czy dokument z kosztorysem sam zatwierdza zmianę?",
+      "options": [
+        "Tak, jeśli kopia kosztorysu trafiła do wszystkich monterów.",
+        "Tak, jeśli nie otrzymano sprzeciwu w dniu wysłania.",
+        "Nie; należy zastosować tryb uzgodnienia i potwierdzenia przewidziany w danym kontrakcie.",
+        "Tak, jeśli klient miał możliwość obejrzenia detalu na budowie."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Brak rozdzielenia zgłoszenia i zaakceptowanej zmiany kontraktowej.",
+        "To pomija ważne kryterium. Brak rozdzielenia zgłoszenia i zaakceptowanej zmiany kontraktowej.",
+        "Prawidłowo. Nie; należy zastosować tryb uzgodnienia i potwierdzenia przewidziany w danym kontrakcie.",
+        "To pomija ważne kryterium. Brak rozdzielenia zgłoszenia i zaakceptowanej zmiany kontraktowej."
+      ],
+      "flaw": "Brak rozdzielenia zgłoszenia i zaakceptowanej zmiany kontraktowej.",
+      "evidence": "Źródło zmiany, wycena, wpływ na termin, wymagany tryb akceptacji i ślad decyzji.",
+      "severity": "critical",
+      "review_reason": "Uzupełnij ścieżkę: zlecenie, weryfikacja wpływu, wycena, pisemne potwierdzenie, wykonanie, dokumentacja. Wymagany tryb wynika z konkretnego kontraktu, a nie jednej uniwersalnej zasady.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 15,
+      "slug": "brygadzista",
+      "lesson_no": 18,
+      "title": "Spotkanie z kierownikiem: jak pokazać stan",
+      "reviewer_profile": "Inżynier raportowania zaawansowania robót",
+      "question": "Wykonano 36/40 m, odebrano 28/40 m. Ile metrów zostało wykonanych, ale nieodebranych?",
+      "options": [
+        "12 m, bo tyle pozostało do pełnego odbioru.",
+        "8 m, przy 90% montażu i 70% odbioru; te statusy należy raportować oddzielnie.",
+        "4 m, bo tyle nie ukończono w montażu.",
+        "16 m, bo różnica procentowa wynosi 20 punktów."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Pomieszanie części niezamontowanej z zamontowaną, lecz nieodebraną.",
+        "Prawidłowo. 8 m, przy 90% montażu i 70% odbioru; te statusy należy raportować oddzielnie.",
+        "To pomija ważne kryterium. Pomieszanie części niezamontowanej z zamontowaną, lecz nieodebraną.",
+        "To pomija ważne kryterium. Pomieszanie części niezamontowanej z zamontowaną, lecz nieodebraną."
+      ],
+      "flaw": "Pomieszanie części niezamontowanej z zamontowaną, lecz nieodebraną.",
+      "evidence": "Trzy liczniki: planowane, wykonane, odebrane, ze stanem i datą.",
+      "severity": "high",
+      "review_reason": "Rozdziel w raporcie status wykonania, kontroli jakości, odbioru klienta i plan usunięcia braków. Wprowadź przykład z obliczeniem 36/40 i 28/40 bez sumowania procentów.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 16,
+      "slug": "brygadzista",
+      "lesson_no": 19,
+      "title": "Symulacja: projekt pod presją terminu",
+      "reviewer_profile": "Kierownik budowy — zarządzanie ryzykiem harmonogramu",
+      "question": "Brak zatwierdzonego detalu mocowania, a podwykonawca ma bezpieczne zadanie niezależne. Co jest racjonalne?",
+      "options": [
+        "Wstrzymać sporne mocowanie, kontynuować wyłącznie niezależne i bezpieczne prace po koordynacji.",
+        "Rozpocząć wszystkie mocowania na starszym detalu i później poprawić.",
+        "Wstrzymać cały projekt do czasu potwierdzenia każdego dokumentu.",
+        "Przenieść sporny montaż na inną strefę bez zmiany dokumentacji."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Wstrzymać sporne mocowanie, kontynuować wyłącznie niezależne i bezpieczne prace po koordynacji.",
+        "To pomija ważne kryterium. Fałszywy wybór między niebezpiecznym montażem a całkowitą bezczynnością.",
+        "To pomija ważne kryterium. Fałszywy wybór między niebezpiecznym montażem a całkowitą bezczynnością.",
+        "To pomija ważne kryterium. Fałszywy wybór między niebezpiecznym montażem a całkowitą bezczynnością."
+      ],
+      "flaw": "Fałszywy wybór między niebezpiecznym montażem a całkowitą bezczynnością.",
+      "evidence": "Lista zależności, dopuszczonych zadań, zablokowanych prac i osób decyzyjnych.",
+      "severity": "high",
+      "review_reason": "Dodaj macierz zadań «bezpiecznie kontynuować / wymaga decyzji / wstrzymać». Nie buduj fałszywego wyboru między pracą bez dokumentów a odwołaniem całego tygodnia.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 17,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 12,
+      "title": "Weryfikacja VIN bez wiary w jeden raport",
+      "reviewer_profile": "Rzeczoznawca identyfikacji pojazdów i VIN",
+      "question": "VIN z nadwozia i ogłoszenia zgodny, wersja silnika w dokumencie różna. Który wniosek jest uprawniony?",
+      "options": [
+        "Pojazd należy uznać za kradziony bez dalszych ustaleń.",
+        "Jeśli raport VIN się zgadza, dokument silnika nie ma znaczenia.",
+        "Wystarczy zapewnienie sprzedawcy o wymianie silnika, bez dowodu.",
+        "To rozbieżność do wyjaśnienia przed transakcją; sama w sobie nie dowodzi oszustwa ani nie znika po raporcie online."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Przypisywanie przyczyny rozbieżności bez dokumentów.",
+        "To pomija ważne kryterium. Przypisywanie przyczyny rozbieżności bez dokumentów.",
+        "To pomija ważne kryterium. Przypisywanie przyczyny rozbieżności bez dokumentów.",
+        "Prawidłowo. To rozbieżność do wyjaśnienia przed transakcją; sama w sobie nie dowodzi oszustwa ani nie znika po raporcie online."
+      ],
+      "flaw": "Przypisywanie przyczyny rozbieżności bez dokumentów.",
+      "evidence": "VIN na pojeździe, dokument rejestracyjny, konfiguracja i dokumenty zmian.",
+      "severity": "high",
+      "review_reason": "W recenzji oddziel identyfikację VIN od ustalenia rzeczywistego stanu technicznego. Rozbieżność może wynikać z błędu danych, ale nie powinna zostać zignorowana.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 18,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 13,
+      "title": "Ocena przebiegu: dokumenty, stan i logika",
+      "reviewer_profile": "Diagnosta historii przebiegu pojazdu",
+      "question": "Dwa lata temu zapisano 172 tys. km, teraz 163 tys. km. Sprzedający mówi o błędzie wpisu. Co wystarczy?",
+      "options": [
+        "Wystarczy oświadczenie sprzedawcy i aktualna diagnostyka.",
+        "Wystarczy ocena zużycia kierownicy w czasie oględzin.",
+        "Nie samo wyjaśnienie: należy porównać kolejne wpisy i dokumenty oraz ustalić przyczynę rozbieżności.",
+        "Wystarczy przyjęcie większej wartości bez dalszych dowodów."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Zastąpienie weryfikacji przebiegu jedną poszlaką lub oświadczeniem.",
+        "To pomija ważne kryterium. Zastąpienie weryfikacji przebiegu jedną poszlaką lub oświadczeniem.",
+        "Prawidłowo. Nie samo wyjaśnienie: należy porównać kolejne wpisy i dokumenty oraz ustalić przyczynę rozbieżności.",
+        "To pomija ważne kryterium. Zastąpienie weryfikacji przebiegu jedną poszlaką lub oświadczeniem."
+      ],
+      "flaw": "Zastąpienie weryfikacji przebiegu jedną poszlaką lub oświadczeniem.",
+      "evidence": "Chronologia zapisów, faktury serwisowe, odczyty i wiarygodne wyjaśnienie.",
+      "severity": "high",
+      "review_reason": "Nie ucz wyrokowania o oszustwie na podstawie jednej niespójności. Zaznacz, że źle wpisany przebieg, wymiana zegarów i ingerencja wymagają odrębnych dowodów.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 19,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 14,
+      "title": "Samochód elektryczny: bateria, ładowanie i koszty",
+      "reviewer_profile": "Technik diagnostyki akumulatorów trakcyjnych EV",
+      "question": "EV pokazuje 400 km zasięgu na 100%. Czy z tego wynika SoH akumulatora?",
+      "options": [
+        "Tak, jeśli zasięg zmierzono w ciepły dzień przy pełnym naładowaniu.",
+        "Nie; zasięg jest estymacją zależną od warunków, a do oceny baterii potrzeba metody właściwej dla modelu.",
+        "Tak, jeśli samochód przejechał tylko krótki odcinek próbny.",
+        "Tak, jeśli nie świeci się kontrolka awarii baterii."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Przypisywanie wskaźnikowi zasięgu statusu profesjonalnego testu pojemności.",
+        "Prawidłowo. Nie; zasięg jest estymacją zależną od warunków, a do oceny baterii potrzeba metody właściwej dla modelu.",
+        "To pomija ważne kryterium. Przypisywanie wskaźnikowi zasięgu statusu profesjonalnego testu pojemności.",
+        "To pomija ważne kryterium. Przypisywanie wskaźnikowi zasięgu statusu profesjonalnego testu pojemności."
+      ],
+      "flaw": "Przypisywanie wskaźnikowi zasięgu statusu profesjonalnego testu pojemności.",
+      "evidence": "Opis metody testu SoH, warunki i zakres pomiaru oraz raport błędów.",
+      "severity": "high",
+      "review_reason": "Rozróżnij zasięg szacowany, rzeczywiste zużycie energii, wynik diagnostycznego SoH i gwarancję producenta. Jednorazowe wskazanie ekranu nie jest certyfikatem.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 20,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 15,
+      "title": "Opony, hamulce i zawieszenie: koszty po zakupie",
+      "reviewer_profile": "Mechanik przeglądów przedzakupowych",
+      "question": "Auto 28 000 zł, rozpoznane naprawy 3000 zł. Kwota 31 000 zł oznacza co dokładnie?",
+      "options": [
+        "Minimalny budżet ceny i wskazanych napraw, ale bez pozostałych formalności i nierozpoznanych usterek.",
+        "Pełny koszt posiadania przez pierwszy rok.",
+        "Gwarancję, że żadne inne naprawy nie będą konieczne.",
+        "Kwotę wystarczającą również na wszystkie formalności i ubezpieczenie."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Minimalny budżet ceny i wskazanych napraw, ale bez pozostałych formalności i nierozpoznanych usterek.",
+        "To pomija ważne kryterium. Przedstawienie budżetu cząstkowego jako całkowitego kosztu samochodu.",
+        "To pomija ważne kryterium. Przedstawienie budżetu cząstkowego jako całkowitego kosztu samochodu.",
+        "To pomija ważne kryterium. Przedstawienie budżetu cząstkowego jako całkowitego kosztu samochodu."
+      ],
+      "flaw": "Przedstawienie budżetu cząstkowego jako całkowitego kosztu samochodu.",
+      "evidence": "Pozycje napraw w kosztorysie, dane warsztatu i rezerwa na nieznane koszty.",
+      "severity": "medium",
+      "review_reason": "Wskazówki obejmują bieżnik, wiek i typ opon, stan hamulców i zawieszenia oraz budżet z rezerwą. Próba drogowa nie zastępuje kontroli podzespołów.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 21,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 16,
+      "title": "Kredyt samochodowy: rata nie jest całym kosztem",
+      "reviewer_profile": "Analityk kredytu konsumenckiego na zakup auta",
+      "question": "Dwie oferty mają identyczną ratę, ale różnią się okresem i wykupem. Jak ocenić koszt?",
+      "options": [
+        "Wybrać krótszy okres bez weryfikowania prowizji.",
+        "Wybrać większą wpłatę własną niezależnie od jej wpływu na koszt.",
+        "Porównać tylko nominalne oprocentowanie i ratę.",
+        "Zsumować raty i pozostałe opłaty, porównać RRSO na zgodnych założeniach oraz obowiązki umowne."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Pomijanie wykupu końcowego i kosztów dodatkowych.",
+        "To pomija ważne kryterium. Pomijanie wykupu końcowego i kosztów dodatkowych.",
+        "To pomija ważne kryterium. Pomijanie wykupu końcowego i kosztów dodatkowych.",
+        "Prawidłowo. Zsumować raty i pozostałe opłaty, porównać RRSO na zgodnych założeniach oraz obowiązki umowne."
+      ],
+      "flaw": "Pomijanie wykupu końcowego i kosztów dodatkowych.",
+      "evidence": "Harmonogram, wykup, prowizje, ubezpieczenia wymagane i kwota do zapłaty.",
+      "severity": "high",
+      "review_reason": "Usuń ryzyko utożsamiania małej raty z tanim finansowaniem. Dodaj obliczenie sumy rat plus opłat i ewentualnej ostatniej raty, bez wymyślania aktualnej oferty banku.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 22,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 17,
+      "title": "Zakup od firmy czy osoby prywatnej: czego sprawdzić",
+      "reviewer_profile": "Prawnik ochrony konsumentów i transakcji samochodowych",
+      "question": "Komis wystawia ogłoszenie, umowę podpisuje osoba fizyczna. Czy prawa konsumenta z definicji dotyczą sprzedającego komis?",
+      "options": [
+        "Tak, ponieważ auto stało na placu komisu.",
+        "Tak, jeśli komis przygotował formularz umowy.",
+        "Nie: najpierw należy ustalić faktycznego sprzedawcę i charakter transakcji, w tym rolę komisu.",
+        "Nie, ponieważ sam tytuł umowy przesądza pełną sytuację prawną."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Automatyczne zastosowanie lub wyłączenie ochrony konsumenckiej bez ustalenia strony umowy.",
+        "To pomija ważne kryterium. Automatyczne zastosowanie lub wyłączenie ochrony konsumenckiej bez ustalenia strony umowy.",
+        "Prawidłowo. Nie: najpierw należy ustalić faktycznego sprzedawcę i charakter transakcji, w tym rolę komisu.",
+        "To pomija ważne kryterium. Automatyczne zastosowanie lub wyłączenie ochrony konsumenckiej bez ustalenia strony umowy."
+      ],
+      "flaw": "Automatyczne zastosowanie lub wyłączenie ochrony konsumenckiej bez ustalenia strony umowy.",
+      "evidence": "Dane sprzedawcy, pełnomocnictwo/pośrednictwo, umowa i dowody transakcji.",
+      "severity": "critical",
+      "review_reason": "Wyjaśnij konsekwencje sprzedaży przez przedsiębiorcę versus pośrednictwa komisu. Nigdy nie zakładaj, że ogłoszenie w komisie samo przesądza, kto jest sprzedawcą w umowie.",
+      "source_urls": [
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/",
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow/"
+      ],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 23,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 18,
+      "title": "Rejestracja i formalności po zakupie w Polsce",
+      "reviewer_profile": "Specjalista formalności rejestracyjnych w Polsce",
+      "question": "Przy zakupie zwykłego auta w Polsce, termin na wniosek o rejestrację to 30 dni. A w razie spadku?",
+      "options": [
+        "Zawsze 30 dni od śmierci spadkodawcy.",
+        "Co do zasady 60 dni, liczone od prawomocnego orzeczenia albo sporządzenia aktu poświadczenia dziedziczenia.",
+        "Zawsze 60 dni od daty zakupu samochodu.",
+        "90 dni od podpisania umowy, nawet gdy nie jest się przedsiębiorcą handlującym autami."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Zastosowanie jednego terminu do różnych podstaw nabycia.",
+        "Prawidłowo. Co do zasady 60 dni, liczone od prawomocnego orzeczenia albo sporządzenia aktu poświadczenia dziedziczenia.",
+        "To pomija ważne kryterium. Zastosowanie jednego terminu do różnych podstaw nabycia.",
+        "To pomija ważne kryterium. Zastosowanie jednego terminu do różnych podstaw nabycia."
+      ],
+      "flaw": "Zastosowanie jednego terminu do różnych podstaw nabycia.",
+      "evidence": "Data zdarzenia prawnego, rodzaj nabycia i źródło gov.pl aktualne na dzień kursu.",
+      "severity": "critical",
+      "review_reason": "W lekcji doprecyzuj obowiązek złożenia wniosku, a nie gwarantowanego wydania dowodu w 30 dni. Sprawdź OC i dokumenty. Pokaż wyjątki i źródło Gov.pl aktualne w dniu nauki.",
+      "source_urls": [
+        "https://prawakonsumenta.uokik.gov.pl/reklamacja/niezgodnosc/",
+        "https://www.gov.pl/web/infrastruktura/rejestracja-pojazdow/"
+      ],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 24,
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 19,
+      "title": "Plan pierwszych 90 dni z samochodem",
+      "reviewer_profile": "Doradca planowania obsługi serwisowej pojazdu",
+      "question": "Auto 35 tys., serwis 1800 zł, rezerwa 1200 zł. Co opisuje wynik 38 tys. zł?",
+      "options": [
+        "Budżet początkowy tych trzech pozycji, przed podatkiem, ubezpieczeniem i innymi nieznanymi kosztami.",
+        "Pełny koszt 90 dni niezależnie od dalszego użytkowania.",
+        "Samą wartość pojazdu po wykonaniu napraw.",
+        "Wartość auta podlegającą automatycznie odzyskaniu przy odsprzedaży."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Budżet początkowy tych trzech pozycji, przed podatkiem, ubezpieczeniem i innymi nieznanymi kosztami.",
+        "To pomija ważne kryterium. Fałszywa precyzja kosztorysu przy nieznanych kosztach i warunkach.",
+        "To pomija ważne kryterium. Fałszywa precyzja kosztorysu przy nieznanych kosztach i warunkach.",
+        "To pomija ważne kryterium. Fałszywa precyzja kosztorysu przy nieznanych kosztach i warunkach."
+      ],
+      "flaw": "Fałszywa precyzja kosztorysu przy nieznanych kosztach i warunkach.",
+      "evidence": "Pisemna wycena serwisu, rezerwa, koszty formalności i termin ponownej oceny.",
+      "severity": "medium",
+      "review_reason": "Nie rekomenduj bezpodstawnej wymiany wszystkich elementów. Zapisz dokumentację, rekomendacje producenta i wynik diagnostyki, wraz z pozycją «wymaga potwierdzenia».",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 25,
+      "slug": "kolodziej",
+      "lesson_no": 16,
+      "title": "17. Koło po naprawie: mierzenie bicia przed odbiorem",
+      "reviewer_profile": "Metrolog kół i bicia obręczy",
+      "question": "Bicie promieniowe ma różnicę odczytu 5 mm, bez specyfikacji. Czy dopuszczasz koło do jazdy?",
+      "options": [
+        "Tak, po zaokrągleniu odchylenia do pełnego centymetra.",
+        "Tak, jeśli bicie boczne wygląda na mniejsze.",
+        "Tak, jeżeli odczyty wykonano tą samą miarką.",
+        "Nie; zapisujesz wynik i żądasz kryterium odpowiedniego do przeznaczenia przed decyzją o użytkowaniu."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Nieuzgodniony limit geometrii koła użytkowego.",
+        "To pomija ważne kryterium. Nieuzgodniony limit geometrii koła użytkowego.",
+        "To pomija ważne kryterium. Nieuzgodniony limit geometrii koła użytkowego.",
+        "Prawidłowo. Nie; zapisujesz wynik i żądasz kryterium odpowiedniego do przeznaczenia przed decyzją o użytkowaniu."
+      ],
+      "flaw": "Nieuzgodniony limit geometrii koła użytkowego.",
+      "evidence": "Oś odniesienia, sposób pomiaru, przeznaczenie, tolerancja i ocena konstrukcyjna.",
+      "severity": "critical",
+      "review_reason": "Odróżniaj bicie promieniowe od bocznego; nie twórz dopuszczalnej tolerancji z samego wrażenia wzrokowego lub liczby 5 mm.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 26,
+      "slug": "kolodziej",
+      "lesson_no": 17,
+      "title": "18. Naprężenia w połączeniach szprych i piasty",
+      "reviewer_profile": "Rzemieślnik konstrukcji piasty i szprych",
+      "question": "Naprawiono jedną luźną szprychę, ale nie obejrzano gniazda piasty. Czy odbiór jest możliwy?",
+      "options": [
+        "Tak, jeżeli koło obraca się bez widocznego bicia.",
+        "Tak, jeśli nowa szprycha jest z twardego drewna.",
+        "Nie; gniazdo, sąsiednie połączenia i geometria wymagają sprawdzenia przed decyzją.",
+        "Tak, jeśli nie ma na zewnątrz widocznych pęknięć."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Ocena jednego połączenia zamiast układu przenoszącego obciążenia.",
+        "To pomija ważne kryterium. Ocena jednego połączenia zamiast układu przenoszącego obciążenia.",
+        "Prawidłowo. Nie; gniazdo, sąsiednie połączenia i geometria wymagają sprawdzenia przed decyzją.",
+        "To pomija ważne kryterium. Ocena jednego połączenia zamiast układu przenoszącego obciążenia."
+      ],
+      "flaw": "Ocena jednego połączenia zamiast układu przenoszącego obciążenia.",
+      "evidence": "Piasta, gniazda, szprychy, włókna i pomiary całej geometrii.",
+      "severity": "critical",
+      "review_reason": "Nie dopuszczaj do bezpiecznego użytkowania na podstawie dobicia jednej szprychy bez pomiarów. Przy ekspozycji stosuj odrębne kryteria.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 27,
+      "slug": "kolodziej",
+      "lesson_no": 18,
+      "title": "19. Koło muzealne a koło do jazdy: dwa różne odbiory",
+      "reviewer_profile": "Konserwator historycznych pojazdów i eksponatów",
+      "question": "Konserwator zachowuje starą naprawę w kole muzealnym. Klient chce na nim jeździć. Co dalej?",
+      "options": [
+        "Próba jazdy bez obciążenia jest wystarczającą kontrolą.",
+        "To zmiana przeznaczenia, której odbiór eksponatu nie obejmuje; potrzeba osobnej oceny i prób.",
+        "Wiek drewna sam potwierdza tradycyjną wytrzymałość.",
+        "Wystarczy lakierować obręcz, aby naprawa nie przeszkadzała."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Traktowanie dokumentacji konserwatorskiej jako certyfikatu eksploatacyjnego.",
+        "Prawidłowo. To zmiana przeznaczenia, której odbiór eksponatu nie obejmuje; potrzeba osobnej oceny i prób.",
+        "To pomija ważne kryterium. Traktowanie dokumentacji konserwatorskiej jako certyfikatu eksploatacyjnego.",
+        "To pomija ważne kryterium. Traktowanie dokumentacji konserwatorskiej jako certyfikatu eksploatacyjnego."
+      ],
+      "flaw": "Traktowanie dokumentacji konserwatorskiej jako certyfikatu eksploatacyjnego.",
+      "evidence": "Karta eksponatu, zakres prac, warunki przechowania i odrębna kwalifikacja do jazdy.",
+      "severity": "critical",
+      "review_reason": "Podaj na karcie odbioru «eksponat» albo «użytkowe» z osobnymi wymaganiami; dokumentacja konserwacji nie zastępuje testów nośności.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 28,
+      "slug": "kolodziej",
+      "lesson_no": 19,
+      "title": "20. Zlecenie kołodziejskie: dokumentuj plan i wynik",
+      "reviewer_profile": "Audytor jakości zleceń kołodziejskich",
+      "question": "Karta koła nie podaje obciążeń ani przeznaczenia. Czy podpis klienta zamyka ryzyko?",
+      "options": [
+        "Nie; podpis odbioru nie zastępuje potrzebnej dokumentacji funkcji i kontroli konstrukcyjnej.",
+        "Tak, podpis klienta przenosi każde ryzyko na kupującego.",
+        "Tak, jeśli drewno posiada fakturę zakupu.",
+        "Tak, jeśli koło jest oznaczone jako ręcznie wykonane."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Nie; podpis odbioru nie zastępuje potrzebnej dokumentacji funkcji i kontroli konstrukcyjnej.",
+        "To pomija ważne kryterium. Przerzucanie odpowiedzialności na klienta zamiast rzetelnej dokumentacji.",
+        "To pomija ważne kryterium. Przerzucanie odpowiedzialności na klienta zamiast rzetelnej dokumentacji.",
+        "To pomija ważne kryterium. Przerzucanie odpowiedzialności na klienta zamiast rzetelnej dokumentacji."
+      ],
+      "flaw": "Przerzucanie odpowiedzialności na klienta zamiast rzetelnej dokumentacji.",
+      "evidence": "Rysunek, geometra, materiały, ograniczenia i przeznaczenie, komplet pomiarów.",
+      "severity": "critical",
+      "review_reason": "Zaproponuj ścieżkę przekazania klientowi, która nie sugeruje certyfikacji nieprzeprowadzonej w warsztacie.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 29,
+      "slug": "lepszy-tata",
+      "lesson_no": 8,
+      "title": "Czas jeden na jeden bez telefonu",
+      "reviewer_profile": "Psycholog więzi rodzic–dziecko",
+      "question": "Masz 20 minut i dziecko chce pokazać budowlę, choć umówiłeś spacer. Co świadczy o uważnym kontakcie?",
+      "options": [
+        "Przełożenie rozmowy na wieczór bez sprawdzania, czy dziecko ma wtedy czas.",
+        "Pokazanie dziecku planu spaceru i ustalenie kolejnego terminu na budowlę bez pytania o jego zdanie.",
+        "Wspólne zdjęcie budowli i późniejsze oglądanie go przy odpowiadaniu na wiadomości.",
+        "Zapytanie, na czym mu zależy, uzgodnienie czasu i wspólne działanie bez równoległego telefonu."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Formalna obecność nie równa się uważnemu kontaktowi; uogólnianie skutków jednej aktywności.",
+        "To pomija ważne kryterium. Formalna obecność nie równa się uważnemu kontaktowi; uogólnianie skutków jednej aktywności.",
+        "To pomija ważne kryterium. Formalna obecność nie równa się uważnemu kontaktowi; uogólnianie skutków jednej aktywności.",
+        "Prawidłowo. Zapytanie, na czym mu zależy, uzgodnienie czasu i wspólne działanie bez równoległego telefonu."
+      ],
+      "flaw": "Formalna obecność nie równa się uważnemu kontaktowi; uogólnianie skutków jednej aktywności.",
+      "evidence": "Zgoda dziecka, brak multitaskingu, krótki uzgodniony rytuał bez oceniania emocji.",
+      "severity": "medium",
+      "review_reason": "Dodaj obserwowalny wskaźnik zaangażowania rodzica: brak multitaskingu, pytanie o wybór i podsumowanie bez oceniania uczuć dziecka.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 30,
+      "slug": "lepszy-tata",
+      "lesson_no": 9,
+      "title": "Akceptuj emocję, zatrzymuj krzywdzące zachowanie",
+      "reviewer_profile": "Specjalista regulacji emocji dzieci",
+      "question": "Po przegranej dziecko rzuca kontrolerem w kierunku rodzeństwa. Która reakcja zachowuje granicę i kontakt?",
+      "options": [
+        "Wysłuchaj emocji bez przerywania rzucania, by nie nasilać napięcia.",
+        "Najpierw zastosuj długą karę, a dopiero potem zapytaj o emocje.",
+        "Najpierw zatrzymaj zagrożenie, nazwij emocję bez oceny osoby i porozmawiaj o naprawie, gdy wszyscy są bezpieczni.",
+        "Poproś dziecko o przeprosiny, zanim zabezpieczysz inne osoby."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Uznanie emocji bywa błędnie rozumiane jako nieingerowanie w przemoc.",
+        "To pomija ważne kryterium. Uznanie emocji bywa błędnie rozumiane jako nieingerowanie w przemoc.",
+        "Prawidłowo. Najpierw zatrzymaj zagrożenie, nazwij emocję bez oceny osoby i porozmawiaj o naprawie, gdy wszyscy są bezpieczni.",
+        "To pomija ważne kryterium. Uznanie emocji bywa błędnie rozumiane jako nieingerowanie w przemoc."
+      ],
+      "flaw": "Uznanie emocji bywa błędnie rozumiane jako nieingerowanie w przemoc.",
+      "evidence": "Bezpieczeństwo, nazwanie emocji, jasna granica, późniejszy plan naprawy.",
+      "severity": "high",
+      "review_reason": "Doprecyzuj kolejność: bezpieczeństwo, uznanie emocji, granica, możliwość naprawy. Nie nazywaj złości chorobą ani cechą charakteru.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 31,
+      "slug": "lepszy-tata",
+      "lesson_no": 10,
+      "title": "Zadanie zamiast wyręczania",
+      "reviewer_profile": "Pedagog uczenia samodzielności",
+      "question": "Dziecko prosi o pomoc przy modelu, ale chce samo dokończyć. Kiedy wskazówka jest lepsza od przejęcia zadania?",
+      "options": [
+        "Gdy rodzic chce przede wszystkim szybciej skończyć model.",
+        "Gdy czynność jest bezpieczna i dziecko może rozwiązać problem po jednej małej podpowiedzi.",
+        "Gdy dziecko w ogóle nie ma dostępu do instrukcji ani potrzebnych części.",
+        "Gdy próba wymaga niebezpiecznego narzędzia poza jego kompetencją."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Pomoc dorosłego może przejść w wyręczanie albo pozostawienie dziecka bez wsparcia.",
+        "Prawidłowo. Gdy czynność jest bezpieczna i dziecko może rozwiązać problem po jednej małej podpowiedzi.",
+        "To pomija ważne kryterium. Pomoc dorosłego może przejść w wyręczanie albo pozostawienie dziecka bez wsparcia.",
+        "To pomija ważne kryterium. Pomoc dorosłego może przejść w wyręczanie albo pozostawienie dziecka bez wsparcia."
+      ],
+      "flaw": "Pomoc dorosłego może przejść w wyręczanie albo pozostawienie dziecka bez wsparcia.",
+      "evidence": "Bezpieczny zakres działania, najmniejsza potrzebna podpowiedź i samokontrola dziecka.",
+      "severity": "medium",
+      "review_reason": "Ucz rozróżniania stopni podpowiedzi: pytanie naprowadzające, pokazanie fragmentu, działanie wspólne. Nie nagradzaj rodzica za szybkość kosztem nauki dziecka.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 32,
+      "slug": "lepszy-tata",
+      "lesson_no": 11,
+      "title": "Rodzinne zasady ekranów, które obowiązują dorosłych",
+      "reviewer_profile": "Edukator higieny cyfrowej rodziny",
+      "question": "Rodzic deklaruje strefę bez telefonów, ale musi mieć dostępność na pilny kontakt medyczny. Które rozwiązanie jest spójne?",
+      "options": [
+        "Wspólna reguła odkładania ekranów i jawny, wąsko określony wyjątek dla rzeczywiście pilnych połączeń.",
+        "Reguła tylko dla dzieci, bo dorośli posiadają obowiązki.",
+        "Całkowity zakaz telefonu nawet w sytuacji zagrożenia zdrowia.",
+        "Pozostawienie telefonu na stole i odpowiadanie na wszystko, aby nie przegapić nic ważnego."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Wspólna reguła odkładania ekranów i jawny, wąsko określony wyjątek dla rzeczywiście pilnych połączeń.",
+        "To pomija ważne kryterium. Reguła bez uzasadnionych wyjątków albo nieobowiązująca dorosłych nie daje dobrego wzorca.",
+        "To pomija ważne kryterium. Reguła bez uzasadnionych wyjątków albo nieobowiązująca dorosłych nie daje dobrego wzorca.",
+        "To pomija ważne kryterium. Reguła bez uzasadnionych wyjątków albo nieobowiązująca dorosłych nie daje dobrego wzorca."
+      ],
+      "flaw": "Reguła bez uzasadnionych wyjątków albo nieobowiązująca dorosłych nie daje dobrego wzorca.",
+      "evidence": "Wspólny zapis zasady, wyjątek awaryjny, tygodniowa refleksja bez publicznego oceniania.",
+      "severity": "medium",
+      "review_reason": "Nie proponuj jednego uniwersalnego limitu minut dla każdego wieku; obserwuj sen, funkcjonowanie i kontakt, a nie tylko stoper.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 33,
+      "slug": "lepszy-tata",
+      "lesson_no": 12,
+      "title": "Gdy dziecko milczy po powrocie ze szkoły",
+      "reviewer_profile": "Psycholog konsultacji szkolnych dzieci",
+      "question": "Dziecko milczy po szkole przez jeden dzień. Jak odróżnić troskę od nadinterpretacji?",
+      "options": [
+        "Uznać milczenie za dowód, że wydarzyło się coś złego.",
+        "Odczytać prywatne wiadomości bez żadnych konkretnych przesłanek.",
+        "Zrezygnować ze sprawdzania bezpieczeństwa nawet przy wyraźnych objawach zagrożenia.",
+        "Zaproponuj spokojny kontakt później i obserwuj sytuację, reagując adekwatnie na konkretne sygnały zagrożenia."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Jednorazowe zachowanie nie jest diagnozą, lecz troska nie wyklucza adekwatnej reakcji na ryzyko.",
+        "To pomija ważne kryterium. Jednorazowe zachowanie nie jest diagnozą, lecz troska nie wyklucza adekwatnej reakcji na ryzyko.",
+        "To pomija ważne kryterium. Jednorazowe zachowanie nie jest diagnozą, lecz troska nie wyklucza adekwatnej reakcji na ryzyko.",
+        "Prawidłowo. Zaproponuj spokojny kontakt później i obserwuj sytuację, reagując adekwatnie na konkretne sygnały zagrożenia."
+      ],
+      "flaw": "Jednorazowe zachowanie nie jest diagnozą, lecz troska nie wyklucza adekwatnej reakcji na ryzyko.",
+      "evidence": "Uważna rozmowa, respektowanie odpoczynku, konkretne objawy wymagające pomocy.",
+      "severity": "high",
+      "review_reason": "Ujmij brak rozmowy jako możliwą, nie jedyną interpretację. Nie ucz wchodzenia w telefon dziecka lub przesłuchiwania bez przesłanek.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 34,
+      "slug": "lepszy-tata",
+      "lesson_no": 13,
+      "title": "Dziecko nie jest posłańcem między rodzicami",
+      "reviewer_profile": "Mediator rodzinny opieki naprzemiennej",
+      "question": "Odbiór dziecka opóźnia się o 30 minut. Rodzice mają napięte relacje. Jak przekazać zmianę?",
+      "options": [
+        "Poprosić dziecko o wysłanie wiadomości i przedstawienie potwierdzenia.",
+        "Poczekać bez żadnej informacji, by nie zaostrzać konfliktu.",
+        "Bezpośrednio i możliwie neutralnie między dorosłymi, a przy zagrożeniu przez bezpieczny uzgodniony kanał.",
+        "Przekazać zmianę przez innych rodziców w obecności dziecka."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Dziecko może stać się pośrednikiem w konflikcie; bezpośredni kontakt nie zawsze jest bezpieczny.",
+        "To pomija ważne kryterium. Dziecko może stać się pośrednikiem w konflikcie; bezpośredni kontakt nie zawsze jest bezpieczny.",
+        "Prawidłowo. Bezpośrednio i możliwie neutralnie między dorosłymi, a przy zagrożeniu przez bezpieczny uzgodniony kanał.",
+        "To pomija ważne kryterium. Dziecko może stać się pośrednikiem w konflikcie; bezpośredni kontakt nie zawsze jest bezpieczny."
+      ],
+      "flaw": "Dziecko może stać się pośrednikiem w konflikcie; bezpośredni kontakt nie zawsze jest bezpieczny.",
+      "evidence": "Potwierdzona godzina, miejsce, kanał bezpieczny dla opiekunów, brak obciążania dziecka.",
+      "severity": "high",
+      "review_reason": "Dodaj zapis daty, godziny, miejsca i osoby potwierdzającej; w sytuacji przemocy zastrzeżenie o bezpiecznej komunikacji przez wyznaczony kanał.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 35,
+      "slug": "lepszy-tata",
+      "lesson_no": 14,
+      "title": "Jak przeprosić dziecko i naprawić relację",
+      "reviewer_profile": "Specjalista komunikacji naprawczej z dzieckiem",
+      "question": "Rodzic mówi: «Krzyknąłem, ale zdenerwowałeś mnie». Co trzeba poprawić?",
+      "options": [
+        "Dodać dziecku obowiązek natychmiastowego wybaczenia.",
+        "Usunąć usprawiedliwiające «ale», nazwać własny krzyk i zaplanować konkretną zmianę reakcji.",
+        "Utrzymać «ale», lecz zmienić je na bardziej łagodny ton.",
+        "Zastąpić przeprosiny prezentem, aby dziecko nie wracało do sprawy."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Przeprosiny warunkowe przesuwają odpowiedzialność z dorosłego na dziecko.",
+        "Prawidłowo. Usunąć usprawiedliwiające «ale», nazwać własny krzyk i zaplanować konkretną zmianę reakcji.",
+        "To pomija ważne kryterium. Przeprosiny warunkowe przesuwają odpowiedzialność z dorosłego na dziecko.",
+        "To pomija ważne kryterium. Przeprosiny warunkowe przesuwają odpowiedzialność z dorosłego na dziecko."
+      ],
+      "flaw": "Przeprosiny warunkowe przesuwają odpowiedzialność z dorosłego na dziecko.",
+      "evidence": "Nazwanie własnego zachowania, brak obwiniania, obserwowalny krok naprawy.",
+      "severity": "high",
+      "review_reason": "W quizie wymagaj rozpoznania odpowiedzialności dorosłego, a w dodatkowym zadaniu zapisu obserwowalnego kroku naprawy zamiast obietnicy «już nigdy».",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 36,
+      "slug": "lepszy-tata",
+      "lesson_no": 15,
+      "title": "Nastolatek: autonomia, prywatność i bezpieczeństwo",
+      "reviewer_profile": "Psycholog rozwoju i prywatności nastolatka",
+      "question": "Nastolatek nie chce stale udostępniać GPS, a rodzic troszczy się o powrót z treningu. Jak uzgodnić bezpieczeństwo?",
+      "options": [
+        "Uzgodnij godzinę, kontakt przy zmianie planu i jasne działanie awaryjne, uwzględniając wiek oraz rzeczywiste ryzyka.",
+        "Wymagaj automatycznego śledzenia każdej godziny niezależnie od sytuacji.",
+        "Usuń wszystkie zasady powrotu, ponieważ nastolatek potrzebuje prywatności.",
+        "Sprawdź ukradkiem telefon, a później przedstaw śledzenie jako uzgodnioną regułę."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Uzgodnij godzinę, kontakt przy zmianie planu i jasne działanie awaryjne, uwzględniając wiek oraz rzeczywiste ryzyka.",
+        "To pomija ważne kryterium. Prywatność nie oznacza braku opieki, lecz opieka nie uzasadnia automatycznego nadzoru ukrytego.",
+        "To pomija ważne kryterium. Prywatność nie oznacza braku opieki, lecz opieka nie uzasadnia automatycznego nadzoru ukrytego.",
+        "To pomija ważne kryterium. Prywatność nie oznacza braku opieki, lecz opieka nie uzasadnia automatycznego nadzoru ukrytego."
+      ],
+      "flaw": "Prywatność nie oznacza braku opieki, lecz opieka nie uzasadnia automatycznego nadzoru ukrytego.",
+      "evidence": "Wspólne ustalenia, proporcjonalność ryzyka, plan awaryjny, brak nieuzasadnionego szpiegowania.",
+      "severity": "high",
+      "review_reason": "Rozróżnij porozumienie z nastolatkiem od wyjątków w przypadku zagrożenia. Nie sugeruj, że prywatność znika przez samo niepełnoletnie dziecko.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 37,
+      "slug": "lepszy-tata",
+      "lesson_no": 16,
+      "title": "Rozmowa z nauczycielem bez szukania winnego",
+      "reviewer_profile": "Pedagog współpracy rodziny ze szkołą",
+      "question": "Dziecko ma trzy zaległe zadania; nauczyciel nie wie, czy rozumiało polecenie. Co jest pierwszym działaniem?",
+      "options": [
+        "Wprowadzenie kary za każdą zaległość przed wyjaśnieniem przyczyny.",
+        "Samodzielne wykonanie prac za dziecko, by uniknęło kolejnych ocen.",
+        "Uznanie trudności za stałą cechę dziecka na podstawie trzech zadań.",
+        "Ustalenie konkretnych barier z dzieckiem i nauczycielem oraz małego, sprawdzalnego następnego kroku."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Brak pracy nie dowodzi braku motywacji ani nie wyklucza trudności w zrozumieniu.",
+        "To pomija ważne kryterium. Brak pracy nie dowodzi braku motywacji ani nie wyklucza trudności w zrozumieniu.",
+        "To pomija ważne kryterium. Brak pracy nie dowodzi braku motywacji ani nie wyklucza trudności w zrozumieniu.",
+        "Prawidłowo. Ustalenie konkretnych barier z dzieckiem i nauczycielem oraz małego, sprawdzalnego następnego kroku."
+      ],
+      "flaw": "Brak pracy nie dowodzi braku motywacji ani nie wyklucza trudności w zrozumieniu.",
+      "evidence": "Przykłady poleceń, dostęp do materiałów, plan dostosowania i sprawdzenie postępu.",
+      "severity": "medium",
+      "review_reason": "Dodaj przykład pytania o format zadania, dostęp do materiałów i sposób sprawdzenia postępu. Nie zamieniaj oceny w etykietę dziecka.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 38,
+      "slug": "lepszy-tata",
+      "lesson_no": 17,
+      "title": "Spór rodzeństwa: fakty zamiast etykiet",
+      "reviewer_profile": "Mediator konfliktów między rodzeństwem",
+      "question": "Dwoje dzieci chce używać jednego roweru, a jedno ma trening o ustalonej godzinie. Co jest sprawiedliwą procedurą?",
+      "options": [
+        "Zawsze przyznawać rower starszemu dziecku bez dyskusji.",
+        "Zawsze wybierać młodsze dziecko, aby nie czuło się pominięte.",
+        "Wysłuchanie obojga, zapisanie ograniczeń czasowych i wspólna zasada kolejności możliwa do sprawdzenia.",
+        "Rozstrzygać losowaniem niezależnie od realnego terminu treningu i bezpieczeństwa."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Równość formalna nie zawsze odpowiada realnym ograniczeniom, a etykiety utrwalają konflikt.",
+        "To pomija ważne kryterium. Równość formalna nie zawsze odpowiada realnym ograniczeniom, a etykiety utrwalają konflikt.",
+        "Prawidłowo. Wysłuchanie obojga, zapisanie ograniczeń czasowych i wspólna zasada kolejności możliwa do sprawdzenia.",
+        "To pomija ważne kryterium. Równość formalna nie zawsze odpowiada realnym ograniczeniom, a etykiety utrwalają konflikt."
+      ],
+      "flaw": "Równość formalna nie zawsze odpowiada realnym ograniczeniom, a etykiety utrwalają konflikt.",
+      "evidence": "Bezpieczeństwo, dwa opisy, faktyczne terminy, jasna i wykonalna reguła.",
+      "severity": "medium",
+      "review_reason": "Dodaj kryterium: obie strony mają możliwość wypowiedzi, zasada jest wykonalna i nie wymaga stałego arbitra. Nie ustalaj winy z góry.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 39,
+      "slug": "lepszy-tata",
+      "lesson_no": 18,
+      "title": "Jak pomóc po porażce bez pustych obietnic",
+      "reviewer_profile": "Psycholog motywacji młodzieży w sporcie",
+      "question": "Dziecka nie przyjęto do drużyny. Czy powiedzenie «za rok na pewno wygrasz» jest właściwe?",
+      "options": [
+        "Tak, bo mocna obietnica zawsze poprawia motywację.",
+        "Nie: uznaj rozczarowanie i rozmawiaj o możliwych działaniach tylko wtedy, gdy dziecko chce, bez gwarantowania wyniku.",
+        "Tak, jeśli rodzic zapewni dodatkowe treningi bez pytania dziecka.",
+        "Tak, jeśli obietnica będzie wypowiedziana bardzo spokojnie."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Podtrzymywanie motywacji nie daje prawa do obiecywania niekontrolowanego wyniku.",
+        "Prawidłowo. Nie: uznaj rozczarowanie i rozmawiaj o możliwych działaniach tylko wtedy, gdy dziecko chce, bez gwarantowania wyniku.",
+        "To pomija ważne kryterium. Podtrzymywanie motywacji nie daje prawa do obiecywania niekontrolowanego wyniku.",
+        "To pomija ważne kryterium. Podtrzymywanie motywacji nie daje prawa do obiecywania niekontrolowanego wyniku."
+      ],
+      "flaw": "Podtrzymywanie motywacji nie daje prawa do obiecywania niekontrolowanego wyniku.",
+      "evidence": "Uznanie uczuć, pytanie o gotowość, realistyczne opcje i prawo do rezygnacji.",
+      "severity": "medium",
+      "review_reason": "W ćwiczeniu oddziel feedback o procesie od obietnic wyniku; zapisz dwie opcje, w tym prawo dziecka do odpoczynku lub rezygnacji.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 40,
+      "slug": "lepszy-tata",
+      "lesson_no": 19,
+      "title": "Plan 90 dni: obserwuj, poprawiaj, pytaj",
+      "reviewer_profile": "Trener umiejętności rodzicielskich i ewaluacji nawyków",
+      "question": "Plan kontaktu zakładał spacery, lecz dziecko prosi o gotowanie. Co sprawdzić przed korektą?",
+      "options": [
+        "Czy wspólne gotowanie jest bezpieczne i chciane przez dziecko, a rytuał uważnego kontaktu może zostać zachowany.",
+        "Pozostać przy spacerach, ponieważ plan 90-dniowy nie podlega korekcie.",
+        "Uznać cały miesiąc spacerów za nieważny i przerwać regularne spotkania.",
+        "Zamienić spacer na obowiązkowe gotowanie z oceną zaangażowania dziecka."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Czy wspólne gotowanie jest bezpieczne i chciane przez dziecko, a rytuał uważnego kontaktu może zostać zachowany.",
+        "To pomija ważne kryterium. Sztywność planu może zmieniać relację w narzędzie kontroli dziecka.",
+        "To pomija ważne kryterium. Sztywność planu może zmieniać relację w narzędzie kontroli dziecka.",
+        "To pomija ważne kryterium. Sztywność planu może zmieniać relację w narzędzie kontroli dziecka."
+      ],
+      "flaw": "Sztywność planu może zmieniać relację w narzędzie kontroli dziecka.",
+      "evidence": "Zgoda na zmianę, bezpieczny zakres czynności, obserwacja własnej dostępności.",
+      "severity": "medium",
+      "review_reason": "W programie 90 dni dodaj cotygodniową refleksję rodzica i możliwość korekty na podstawie preferencji dziecka; bez formularza oceniania dziecka.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 41,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 12,
+      "title": "Punkty zapalne w mieszkaniu",
+      "reviewer_profile": "Projektant procesów porządkowych w domu",
+      "question": "Rano kuchnia jest brudna, chociaż każdy wieczorem mówi «gotowe». Jak udowodnić poprawę bez szukania winnego?",
+      "options": [
+        "Kupić nowe pojemniki bez sprawdzenia źródła problemu.",
+        "Dodać ostrzejszą karę za pozostawienie naczyń.",
+        "Porównywać domowników według liczby minut sprzątania.",
+        "Zdefiniować widoczny stan końcowy i zmierzyć przez tydzień, czy po kolacji jest osiągany."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Brak mierzalnego standardu i automatyczne przypisywanie winy.",
+        "To pomija ważne kryterium. Brak mierzalnego standardu i automatyczne przypisywanie winy.",
+        "To pomija ważne kryterium. Brak mierzalnego standardu i automatyczne przypisywanie winy.",
+        "Prawidłowo. Zdefiniować widoczny stan końcowy i zmierzyć przez tydzień, czy po kolacji jest osiągany."
+      ],
+      "flaw": "Brak mierzalnego standardu i automatyczne przypisywanie winy.",
+      "evidence": "Lista stanu końcowego, obserwacje przez tydzień, korekta środowiska i podziału pracy.",
+      "severity": "medium",
+      "review_reason": "Przygotuj checklistę rzeczywiście sprawdzalnego rezultatu, a nie ocenę charakteru domowników. Liczy się przepływ rzeczy i czas ich odkładania.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 42,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 13,
+      "title": "Obciążenie niewidzialne: kto pamięta?",
+      "reviewer_profile": "Psycholog podziału obciążenia mentalnego",
+      "question": "Jedna osoba sprząta, druga planuje zakupy i pilnuje terminów. Czy podział «po jednym zadaniu» jest sprawiedliwy?",
+      "options": [
+        "Tak, liczba widocznych zadań obu osób jest taka sama.",
+        "Tak, jeśli tylko sprzątanie zajmuje tyle samo czasu.",
+        "Nie da się ocenić bez uwzględnienia pracy planowania, pamiętania i monitorowania zadania.",
+        "Nie, jeśli jedna osoba nie wykonuje każdej czynności fizycznie."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Praca organizacyjna może pozostać niewidzialna przy liczeniu tylko wykonania.",
+        "To pomija ważne kryterium. Praca organizacyjna może pozostać niewidzialna przy liczeniu tylko wykonania.",
+        "Prawidłowo. Nie da się ocenić bez uwzględnienia pracy planowania, pamiętania i monitorowania zadania.",
+        "To pomija ważne kryterium. Praca organizacyjna może pozostać niewidzialna przy liczeniu tylko wykonania."
+      ],
+      "flaw": "Praca organizacyjna może pozostać niewidzialna przy liczeniu tylko wykonania.",
+      "evidence": "Karta właściciela zadania: plan, zakupy, wykonanie, weryfikacja i realny czas.",
+      "severity": "medium",
+      "review_reason": "Oddziel wykonawcę od osoby odpowiedzialnej za całość zadania; unikaj liczenia jedynie minut fizycznego sprzątania.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 43,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 14,
+      "title": "Rutyna poranna bez pośpiechu",
+      "reviewer_profile": "Specjalista planowania czasu rodziny",
+      "question": "Wyjście 7:30, czynności trwają 35 min i potrzeba 10 min buforu. Godzina startu?",
+      "options": [
+        "6:55, bo bufor dodaje się do godziny wyjścia.",
+        "6:45; następnie zweryfikuj, które czynności są sekwencyjne, a które można wykonać równolegle.",
+        "7:05, bo czynności i bufor można zawsze nałożyć.",
+        "6:45 gwarantuje bezstresowy poranek niezależnie od zdarzeń."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Błąd rachunku czasu albo traktowanie założenia jako gwarancji.",
+        "Prawidłowo. 6:45; następnie zweryfikuj, które czynności są sekwencyjne, a które można wykonać równolegle.",
+        "To pomija ważne kryterium. Błąd rachunku czasu albo traktowanie założenia jako gwarancji.",
+        "To pomija ważne kryterium. Błąd rachunku czasu albo traktowanie założenia jako gwarancji."
+      ],
+      "flaw": "Błąd rachunku czasu albo traktowanie założenia jako gwarancji.",
+      "evidence": "Oś czasu, rzeczywiste pomiary, bufor i dwie czynności przygotowane wcześniej.",
+      "severity": "medium",
+      "review_reason": "Dodaj rozróżnienie działań sekwencyjnych i równoległych; prosta suma nie dowodzi, że cały plan jest wykonalny dla wszystkich domowników.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 44,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 15,
+      "title": "Plan na chorobę i nagły brak czasu",
+      "reviewer_profile": "Koordynator rodzinnych planów awaryjnych",
+      "question": "Jedno z rodziców choruje. Jak wybierzesz priorytety z listy 10 zadań?",
+      "options": [
+        "Najpierw higiena, bezpieczne jedzenie i opieka; resztę rozdziel lub odrocz według możliwości.",
+        "Wykonanie wszystkich prac jest konieczne, choćby kosztem odpoczynku.",
+        "Wszystkie obowiązki należy przekazać najstarszemu dziecku.",
+        "Można odroczyć wszystko, w tym bezpieczeństwo żywności i opiekę."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Najpierw higiena, bezpieczne jedzenie i opieka; resztę rozdziel lub odrocz według możliwości.",
+        "To pomija ważne kryterium. Brak hierarchii zadań i narzucanie nierealnej liczby obowiązków.",
+        "To pomija ważne kryterium. Brak hierarchii zadań i narzucanie nierealnej liczby obowiązków.",
+        "To pomija ważne kryterium. Brak hierarchii zadań i narzucanie nierealnej liczby obowiązków."
+      ],
+      "flaw": "Brak hierarchii zadań i narzucanie nierealnej liczby obowiązków.",
+      "evidence": "Wersja minimum, przydział zależny od możliwości, warunki odroczenia.",
+      "severity": "high",
+      "review_reason": "Rozdziel zadania krytyczne od kosmetycznych i dostosuj role do wieku oraz dostępności domowników; nie używaj kar za chorobę.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 45,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 16,
+      "title": "Sprzęt w jednym miejscu: skróć szukanie",
+      "reviewer_profile": "Ekspert bezpiecznej chemii gospodarczej",
+      "question": "Na półce stoi odkamieniacz i produkt chlorowy. Czy można je połączyć dla lepszego działania?",
+      "options": [
+        "Tak, ale wyłącznie w dobrze wentylowanym pomieszczeniu.",
+        "Tak, jeśli ilość obu substancji jest niewielka.",
+        "Tak, jeśli mieszankę od razu spłucze się wodą.",
+        "Nie. Nie mieszaj takich środków; stosuj etykiety i zasady przechowywania, a w razie uwolnienia gazu opuść zagrożone miejsce i wezwij pomoc."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Powstanie toksycznych gazów przy mieszaniu niektórych środków chlorowych i kwasowych.",
+        "To pomija ważne kryterium. Powstanie toksycznych gazów przy mieszaniu niektórych środków chlorowych i kwasowych.",
+        "To pomija ważne kryterium. Powstanie toksycznych gazów przy mieszaniu niektórych środków chlorowych i kwasowych.",
+        "Prawidłowo. Nie. Nie mieszaj takich środków; stosuj etykiety i zasady przechowywania, a w razie uwolnienia gazu opuść zagrożone miejsce i wezwij pomoc."
+      ],
+      "flaw": "Powstanie toksycznych gazów przy mieszaniu niektórych środków chlorowych i kwasowych.",
+      "evidence": "Oryginalne opakowania, ostrzeżenia na etykietach, dostęp dzieci, wentylacja i procedura awaryjna.",
+      "severity": "critical",
+      "review_reason": "Rozszerz wskazówki o zakaz mieszania chemikaliów, oryginalne opakowania i wentylację zgodnie z instrukcją. Stałe miejsce sprzętu nie zwalnia z kontroli substancji.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 46,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 17,
+      "title": "Dziecko uczy się odpowiedzialności — bez kar za pomyłkę",
+      "reviewer_profile": "Pedagog obowiązków dopasowanych do wieku",
+      "question": "Dziecko przy nakrywaniu stołu zapomniało łyżek. Jak zareagować, by nauczyć samokontroli?",
+      "options": [
+        "Odebrać zadanie na stałe po pierwszej pomyłce.",
+        "Wymagać, aby rodzeństwo oceniało je publicznie.",
+        "Pokazać kryterium kompletnego nakrycia i pozwolić spokojnie uzupełnić brak, bez zawstydzania.",
+        "Pochwalić bez zwracania uwagi na brakujące elementy."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Brak informacji zwrotnej albo używanie zawstydzania zamiast nauki.",
+        "To pomija ważne kryterium. Brak informacji zwrotnej albo używanie zawstydzania zamiast nauki.",
+        "Prawidłowo. Pokazać kryterium kompletnego nakrycia i pozwolić spokojnie uzupełnić brak, bez zawstydzania.",
+        "To pomija ważne kryterium. Brak informacji zwrotnej albo używanie zawstydzania zamiast nauki."
+      ],
+      "flaw": "Brak informacji zwrotnej albo używanie zawstydzania zamiast nauki.",
+      "evidence": "Prosta karta kontroli zadania, dostosowanie do możliwości i bezpieczeństwo.",
+      "severity": "medium",
+      "review_reason": "Daj przykład pozytywnej informacji zwrotnej o wykonaniu i jednej rzeczy do uzupełnienia; nie włączaj dzieci do kontaktu z ostrą chemią.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 47,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 18,
+      "title": "Koszty sprzątania: licz przed zakupem",
+      "reviewer_profile": "Ekonomista kosztów eksploatacji domu",
+      "question": "750 ml środka kosztuje 15 zł, a litr 18 zł. Jaki wniosek jest dokładny?",
+      "options": [
+        "Pierwszy jest tańszy, bo ma niższą cenę na półce.",
+        "Pierwszy kosztuje 20 zł/l, drugi 18 zł/l; oszczędność wymaga jeszcze realnego zużycia i przechowywania.",
+        "Drugi jest zawsze opłacalny, nawet gdy zostanie wyrzucony.",
+        "Oba mają tę samą cenę jednostkową, bo różnica wynosi tylko 3 zł."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Mylenie ceny opakowania z ceną jednostkową i ekonomią użycia.",
+        "Prawidłowo. Pierwszy kosztuje 20 zł/l, drugi 18 zł/l; oszczędność wymaga jeszcze realnego zużycia i przechowywania.",
+        "To pomija ważne kryterium. Mylenie ceny opakowania z ceną jednostkową i ekonomią użycia.",
+        "To pomija ważne kryterium. Mylenie ceny opakowania z ceną jednostkową i ekonomią użycia."
+      ],
+      "flaw": "Mylenie ceny opakowania z ceną jednostkową i ekonomią użycia.",
+      "evidence": "Działania 15/0,75 i 18/1, przydatność i warunki składowania.",
+      "severity": "medium",
+      "review_reason": "Dodaj obliczenie 15/0,75=20 i porównanie z 18; rozdziel cenę jednostkową od całkowitej oszczędności oraz kosztów przechowywania.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 48,
+      "slug": "obowiazki-domowe",
+      "lesson_no": 19,
+      "title": "Audyt miesiąca: co naprawdę się zmieniło?",
+      "reviewer_profile": "Audytor ergonomii i sprawiedliwości podziału obowiązków",
+      "question": "Odsetek wykonania wzrósł z 60 do 83%, ale jedna osoba jest przeciążona. Czy plan zaliczyć jako sukces?",
+      "options": [
+        "Jest poprawa wykonania, lecz trzeba też ocenić podział obowiązków i koszt dla domowników.",
+        "Tak, bo procent jest wyższy bez potrzeby innej oceny.",
+        "Nie, ponieważ każda poprawa wymaga 100% wykonania.",
+        "Nie da się ocenić niczego bez porównywania charakterów osób."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Jest poprawa wykonania, lecz trzeba też ocenić podział obowiązków i koszt dla domowników.",
+        "To pomija ważne kryterium. Wynik liczbowy bez mierzenia kosztów i sprawiedliwości podziału.",
+        "To pomija ważne kryterium. Wynik liczbowy bez mierzenia kosztów i sprawiedliwości podziału.",
+        "To pomija ważne kryterium. Wynik liczbowy bez mierzenia kosztów i sprawiedliwości podziału."
+      ],
+      "flaw": "Wynik liczbowy bez mierzenia kosztów i sprawiedliwości podziału.",
+      "evidence": "Dane wykonania, czas pracy, przypominanie, możliwość korekty i opinia domowników.",
+      "severity": "medium",
+      "review_reason": "Rozdziel jakość wykonania, realny czas, liczbę przypomnień i obciążenie uczestników. Wzrost wykonania nie jest automatyczną miarą dobrostanu.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 49,
+      "slug": "plecionkarz",
+      "lesson_no": 16,
+      "title": "17. Dobór wikliny do kosza zakupowego",
+      "reviewer_profile": "Mistrz doboru wikliny i konstrukcji splotu",
+      "question": "Kosz zakupowy wykonano z wikliny dobranej tylko po kolorze. Co trzeba udowodnić przed podaniem nośności?",
+      "options": [
+        "Wystarczy sprawdzić grubość jednego pręta obrzeża.",
+        "Wystarczy potwierdzić, że pręty są równego koloru.",
+        "Wystarczy test, że pusty kosz sam stoi na podłodze.",
+        "Stan materiału, konstrukcję dna, obrzeże, uchwyt i sposób użytkowania zweryfikowane odpowiednią kontrolą."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Estetyka materiału nie jest dowodem nośności konstrukcji.",
+        "To pomija ważne kryterium. Estetyka materiału nie jest dowodem nośności konstrukcji.",
+        "To pomija ważne kryterium. Estetyka materiału nie jest dowodem nośności konstrukcji.",
+        "Prawidłowo. Stan materiału, konstrukcję dna, obrzeże, uchwyt i sposób użytkowania zweryfikowane odpowiednią kontrolą."
+      ],
+      "flaw": "Estetyka materiału nie jest dowodem nośności konstrukcji.",
+      "evidence": "Dobór prętów do funkcji, uchwyt, splot, protokół odpowiedniej próby.",
+      "severity": "high",
+      "review_reason": "Dopisz rozróżnienie prętów dna, ścian i obrzeża; nie deklaruj nośności bez sprawdzenia całej konstrukcji i odpowiednich prób.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 50,
+      "slug": "plecionkarz",
+      "lesson_no": 17,
+      "title": "18. Kontrola kształtu: mierzenie dna, ścianki i uchwytu",
+      "reviewer_profile": "Kontroler geometrii wyrobów plecionkarskich",
+      "question": "Kosz ma średnice 300 i 318 mm w dwóch kierunkach. Czy «18 mm jest mało» wystarcza do akceptacji?",
+      "options": [
+        "Tak, bo zdjęcie wykonane z przodu nie pokazuje różnicy.",
+        "Tak, jeśli oba wymiary zaokrągli się do 31 cm.",
+        "Nie: sprawdź szablon i uzgodnione tolerancje przed decyzją, a korektę rozważ przed zamknięciem splotu.",
+        "Tak, jeśli uchwyt jest centralnie umieszczony."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Własne uznaniowe tolerancje zamiast wymogów zamówienia.",
+        "To pomija ważne kryterium. Własne uznaniowe tolerancje zamiast wymogów zamówienia.",
+        "Prawidłowo. Nie: sprawdź szablon i uzgodnione tolerancje przed decyzją, a korektę rozważ przed zamknięciem splotu.",
+        "To pomija ważne kryterium. Własne uznaniowe tolerancje zamiast wymogów zamówienia."
+      ],
+      "flaw": "Własne uznaniowe tolerancje zamiast wymogów zamówienia.",
+      "evidence": "Miejsca pomiarów, szablon, średnice, wysokość i kryterium odbioru.",
+      "severity": "high",
+      "review_reason": "Wstaw tabelę średnic i wysokości w czterech punktach oraz wyjaśnij, że tolerancję dla rzemiosła trzeba uzgodnić, a nie przyjąć automatycznie.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 51,
+      "slug": "plecionkarz",
+      "lesson_no": 18,
+      "title": "19. Konserwacja kosza i naprawa uszkodzeń",
+      "reviewer_profile": "Konserwator wyrobów z włókien roślinnych",
+      "question": "Kosz ma pęknięty uchwyt i podejrzany nalot przy dnie. Jak rozdzielić problemy?",
+      "options": [
+        "Naprawić uchwyt i uznać kosz za bezpieczny bez oględzin dna.",
+        "Zabezpieczyć produkt, osobno ocenić połączenie konstrukcyjne i ryzyko higieniczne; nie ukrywać nalotu klejem.",
+        "Wytrzeć nalot i automatycznie dopuścić do kontaktu z żywnością.",
+        "Suszyć uchwyt bez sprawdzenia wątku i obrzeża."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Zbiorcze «naprawione» maskuje różne ryzyka użytkowe i higieniczne.",
+        "Prawidłowo. Zabezpieczyć produkt, osobno ocenić połączenie konstrukcyjne i ryzyko higieniczne; nie ukrywać nalotu klejem.",
+        "To pomija ważne kryterium. Zbiorcze «naprawione» maskuje różne ryzyka użytkowe i higieniczne.",
+        "To pomija ważne kryterium. Zbiorcze «naprawione» maskuje różne ryzyka użytkowe i higieniczne."
+      ],
+      "flaw": "Zbiorcze «naprawione» maskuje różne ryzyka użytkowe i higieniczne.",
+      "evidence": "Dokumentacja konstrukcji, wilgotność, oględziny, przeznaczenie i decyzja.",
+      "severity": "high",
+      "review_reason": "Dodaj rozdzielenie wad konstrukcyjnych i higienicznych; przypadkowy klej ani przetarcie nie zastępują oceny wilgotności i stanu wyrobu.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 52,
+      "slug": "plecionkarz",
+      "lesson_no": 19,
+      "title": "20. Zamówienie kosza: specyfikacja i odbiór",
+      "reviewer_profile": "Projektant bezpiecznych wyrobów wiklinowych",
+      "question": "Klient chce przenosić narzędzia w koszu zaprojektowanym jako dekoracja. Czy można dopisać «do 10 kg»?",
+      "options": [
+        "Nie bez projektu i odpowiedniej weryfikacji połączeń oraz nośności dla nowego przeznaczenia.",
+        "Tak, jeżeli klient podpisze, że bierze odpowiedzialność.",
+        "Tak, jeśli podobny kosz sprzedawany jest jako transportowy.",
+        "Tak, jeśli wymieni się tylko rękojeść na grubszą."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Nie bez projektu i odpowiedniej weryfikacji połączeń oraz nośności dla nowego przeznaczenia.",
+        "To pomija ważne kryterium. Deklarowanie udźwigu bez dowodów albo przerzucanie ryzyka na klienta.",
+        "To pomija ważne kryterium. Deklarowanie udźwigu bez dowodów albo przerzucanie ryzyka na klienta.",
+        "To pomija ważne kryterium. Deklarowanie udźwigu bez dowodów albo przerzucanie ryzyka na klienta."
+      ],
+      "flaw": "Deklarowanie udźwigu bez dowodów albo przerzucanie ryzyka na klienta.",
+      "evidence": "Specyfikacja obciążeń, konstrukcja, adekwatna próba, ograniczenia użycia.",
+      "severity": "high",
+      "review_reason": "W protokole podkreśl różnicę między dekoracją a wyrobem użytkowym, z przeznaczeniem i ograniczeniami. Nie przepisuj udźwigu z wizualnie podobnego kosza.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 53,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 8,
+      "title": "Pierwsze powitanie: zbuduj poczucie bezpieczeństwa",
+      "reviewer_profile": "Pedagog animacji dziecięcej i bezpiecznego powitania",
+      "question": "Nieśmiałe dziecko trzyma opiekuna za rękę, a grupa jest podekscytowana. Jak rozpocząć bez presji?",
+      "options": [
+        "Podejść do dziecka, bo reszta już się bawi.",
+        "Poprosić opiekuna o delikatne przesunięcie dziecka do przodu.",
+        "Skupić na dziecku uwagę grupy, aby zachęcić je do kontaktu.",
+        "Powitać spokojnie całą grupę i zostawić dziecku wybór obserwacji lub późniejszego dołączenia."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Naruszenie granic dziecka w celu wymuszenia udziału.",
+        "To pomija ważne kryterium. Naruszenie granic dziecka w celu wymuszenia udziału.",
+        "To pomija ważne kryterium. Naruszenie granic dziecka w celu wymuszenia udziału.",
+        "Prawidłowo. Powitać spokojnie całą grupę i zostawić dziecku wybór obserwacji lub późniejszego dołączenia."
+      ],
+      "flaw": "Naruszenie granic dziecka w celu wymuszenia udziału.",
+      "evidence": "Możliwość odmowy, brak przymusu dotyku, miejsce przy opiekunie.",
+      "severity": "high",
+      "review_reason": "Wskaż oznaki dyskomfortu, zakaz przymusu przytulenia i miejsce dla obserwatorów. Odmowa kontaktu nie pozbawia prawa do prezentu.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 54,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 9,
+      "title": "Prezenty bez porównywania dzieci",
+      "reviewer_profile": "Specjalista zapobiegania wykluczeniu dzieci",
+      "question": "Dziecko mówi, że ma mniejszy prezent od kolegi. Co byłoby bezpiecznym rozwiązaniem?",
+      "options": [
+        "Publicznie przedstaw budżety wszystkich paczek, by pokazać zasady.",
+        "Obiecaj większą paczkę bez ustalenia z organizatorem.",
+        "Uznaj uczucie, nie porównuj wartości dzieci i dyskretnie zweryfikuj przypisanie paczki z opiekunem.",
+        "Poproś inne dzieci o pokazanie swoich prezentów dla porównania."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Rankingi dzieci według prezentów i łamanie poufności rodzin.",
+        "To pomija ważne kryterium. Rankingi dzieci według prezentów i łamanie poufności rodzin.",
+        "Prawidłowo. Uznaj uczucie, nie porównuj wartości dzieci i dyskretnie zweryfikuj przypisanie paczki z opiekunem.",
+        "To pomija ważne kryterium. Rankingi dzieci według prezentów i łamanie poufności rodzin."
+      ],
+      "flaw": "Rankingi dzieci według prezentów i łamanie poufności rodzin.",
+      "evidence": "Neutralne komunikaty, identyfikacja paczek, dyskrecja.",
+      "severity": "medium",
+      "review_reason": "Usuń obietnice dodatkowej paczki bez uzgodnienia oraz publiczne wyjaśnianie budżetu rodzin. Zachowaj poufność ustaleń organizatora.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 55,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 10,
+      "title": "Spotkanie z dzieckiem, które nie mówi",
+      "reviewer_profile": "Specjalista komunikacji alternatywnej i wspomagającej AAC",
+      "question": "Dziecko nie mówi, ale może wskazać kartę. Czy brak odpowiedzi to zgoda na bliski kontakt?",
+      "options": [
+        "Tak, jeżeli opiekun zapewnia, że dziecko rozumie.",
+        "Nie. Zaproponuj możliwość wyboru gestem i czas, respektując także brak decyzji i rezygnację.",
+        "Tak, jeśli pytanie zostanie powtórzone głośniej.",
+        "Tak, jeśli reszta grupy już odebrała prezenty."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Milczenie nie oznacza przyzwolenia ani braku rozumienia.",
+        "Prawidłowo. Nie. Zaproponuj możliwość wyboru gestem i czas, respektując także brak decyzji i rezygnację.",
+        "To pomija ważne kryterium. Milczenie nie oznacza przyzwolenia ani braku rozumienia.",
+        "To pomija ważne kryterium. Milczenie nie oznacza przyzwolenia ani braku rozumienia."
+      ],
+      "flaw": "Milczenie nie oznacza przyzwolenia ani braku rozumienia.",
+      "evidence": "Preferowana forma AAC, uzgodnienie z opiekunem, czas i prawo odmowy.",
+      "severity": "high",
+      "review_reason": "Wyraźnie rozdziel brak wypowiedzi od braku zrozumienia. Nie zmuszaj do kontaktu słownego i nie diagnozuj umiejętności dziecka.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 56,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 11,
+      "title": "Zdjęcia i zgoda na publikację",
+      "reviewer_profile": "Inspektor ochrony danych i wizerunku małoletnich",
+      "question": "Rodzic zgodził się na fotografię dla rodziny, a organizator chce ją wrzucić publicznie. Co trzeba sprawdzić?",
+      "options": [
+        "Osobną, uprzednią i konkretną podstawę publikacji, zgodną z celem oraz uwzględniającą zdanie dziecka.",
+        "Wystarczy, że na zdjęciu nie ma nazwiska.",
+        "Wystarczy poinformować o możliwości usunięcia już po publikacji.",
+        "Wystarczy regulamin udziału w imprezie bez zgody na rozpowszechnianie."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Osobną, uprzednią i konkretną podstawę publikacji, zgodną z celem oraz uwzględniającą zdanie dziecka.",
+        "To pomija ważne kryterium. Zgoda na zdjęcie prywatne nie upoważnia automatycznie do publikacji.",
+        "To pomija ważne kryterium. Zgoda na zdjęcie prywatne nie upoważnia automatycznie do publikacji.",
+        "To pomija ważne kryterium. Zgoda na zdjęcie prywatne nie upoważnia automatycznie do publikacji."
+      ],
+      "flaw": "Zgoda na zdjęcie prywatne nie upoważnia automatycznie do publikacji.",
+      "evidence": "Cel, platforma, podmiot, czas, uprzednia zgoda i interes dziecka.",
+      "severity": "critical",
+      "review_reason": "Wyjaśnij wymagania UODO: cel, konkretna platforma, odbiorca, okres i możliwość cofnięcia zgody. Zdjęcie dla rodziny nie jest automatyczną zgodą na profil publiczny.",
+      "source_urls": [
+        "https://uodo.gov.pl/pl/644/4111",
+        "https://brpd.gov.pl/2026/08/23/zgody-blankietowe-rpd-przypomina-o-ochronie-wizerunku-dzieci/"
+      ],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 57,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 12,
+      "title": "Świąteczna wizyta w przedszkolu i szkole",
+      "reviewer_profile": "Koordynator ochrony dzieci w placówkach edukacyjnych",
+      "question": "Dziecko podczas wizyty przedszkolnej chce wyjść z sali. Kto ustala bezpieczny sposób?",
+      "options": [
+        "Animator wyprowadza dziecko sam, aby przyspieszyć program.",
+        "Cały personel wychodzi z jednym dzieckiem, pozostawiając grupę bez nadzoru.",
+        "Dziecko opuszcza salę samo bez powiadomienia personelu.",
+        "Wyznaczony personel placówki, koordynując nadzór nad grupą; animator nie przejmuje roli opiekuna."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Przekroczenie kompetencji animatora i brak nadzoru nad grupą.",
+        "To pomija ważne kryterium. Przekroczenie kompetencji animatora i brak nadzoru nad grupą.",
+        "To pomija ważne kryterium. Przekroczenie kompetencji animatora i brak nadzoru nad grupą.",
+        "Prawidłowo. Wyznaczony personel placówki, koordynując nadzór nad grupą; animator nie przejmuje roli opiekuna."
+      ],
+      "flaw": "Przekroczenie kompetencji animatora i brak nadzoru nad grupą.",
+      "evidence": "Ustalone role, zasady przekazania, nadzór placówki.",
+      "severity": "critical",
+      "review_reason": "Dopisz podział ról opiekun–animator–pomocnik i zasady przekazywania dziecka bez ujawniania danych przed grupą.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 58,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 13,
+      "title": "Komunikacja z dzieckiem wrażliwym na hałas",
+      "reviewer_profile": "Terapeuta integracji sensorycznej — projektowanie spokojnego udziału",
+      "question": "Głośna muzyka powoduje, że dziecko zakrywa uszy. Jaka reakcja nie wymaga diagnozy?",
+      "options": [
+        "Wytłumaczyć, że utwór potrwa tylko pół minuty.",
+        "Przenieść dziecko bliżej animatora bez zmiany muzyki.",
+        "Ściszyć lub wyłączyć dźwięk, umożliwić przerwę z opiekunem i nie wymuszać powrotu.",
+        "Czekać z wyłączeniem, aż dziecko zgodzi się wrócić."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Zignorowanie widocznego dyskomfortu lub wymuszanie ekspozycji.",
+        "To pomija ważne kryterium. Zignorowanie widocznego dyskomfortu lub wymuszanie ekspozycji.",
+        "Prawidłowo. Ściszyć lub wyłączyć dźwięk, umożliwić przerwę z opiekunem i nie wymuszać powrotu.",
+        "To pomija ważne kryterium. Zignorowanie widocznego dyskomfortu lub wymuszanie ekspozycji."
+      ],
+      "flaw": "Zignorowanie widocznego dyskomfortu lub wymuszanie ekspozycji.",
+      "evidence": "Sygnały dyskomfortu, możliwość wyciszenia, dostępna alternatywa.",
+      "severity": "high",
+      "review_reason": "W ćwiczeniu rozpoznawaj widoczne zachowanie bez stawiania diagnozy sensorycznej. Dodaj przygotowaną cichą alternatywę dla całej grupy.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 59,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 14,
+      "title": "Życzliwość bez obietnic niemożliwych do spełnienia",
+      "reviewer_profile": "Psycholog komunikacji wspierającej dziecko w kryzysie",
+      "question": "Dziecko prosi o obietnicę powrotu nieobecnego taty. Jak uniknąć krzywdzącej obietnicy?",
+      "options": [
+        "Zapewnij, że magia świąt może sprowadzić tatę, jeśli dziecko będzie grzeczne.",
+        "Uznaj tęsknotę, powiedz uczciwie, że nie możesz tego zagwarantować, i zaoferuj kontakt z zaufanym opiekunem.",
+        "Przy wszystkich pytaj szczegółowo, dlaczego tata jest nieobecny.",
+        "Zastąp rozmowę dodatkowym prezentem bez pytania o potrzebę."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Bezpodstawne obietnice i przenoszenie odpowiedzialności na dziecko.",
+        "Prawidłowo. Uznaj tęsknotę, powiedz uczciwie, że nie możesz tego zagwarantować, i zaoferuj kontakt z zaufanym opiekunem.",
+        "To pomija ważne kryterium. Bezpodstawne obietnice i przenoszenie odpowiedzialności na dziecko.",
+        "To pomija ważne kryterium. Bezpodstawne obietnice i przenoszenie odpowiedzialności na dziecko."
+      ],
+      "flaw": "Bezpodstawne obietnice i przenoszenie odpowiedzialności na dziecko.",
+      "evidence": "Uznanie emocji, brak gwarancji, poufność i opiekun.",
+      "severity": "high",
+      "review_reason": "Doprecyzuj granice roli animatora; nie zbieraj szczegółów rodzinnych przy innych dzieciach ani nie zastępuj specjalistycznego wsparcia.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 60,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 15,
+      "title": "Gdy dziecko zna prawdę o Mikołaju",
+      "reviewer_profile": "Pedagog zabawy symbolicznej i różnic wieku",
+      "question": "Starsze dziecko rozpoznaje głos sąsiada w kostiumie. Co zrobić bez manipulowania?",
+      "options": [
+        "Potraktować obserwację poważnie i zaprosić do wspólnej zabawy bez wymuszania tajemnicy.",
+        "Obiecać dodatkowy prezent za nierozpowiadanie o odkryciu.",
+        "Poinformować grupę, że dziecko próbuje zepsuć zabawę.",
+        "Wymagać publicznego potwierdzenia wersji animatora."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Potraktować obserwację poważnie i zaprosić do wspólnej zabawy bez wymuszania tajemnicy.",
+        "To pomija ważne kryterium. Zawstydzanie lub nagradzanie milczenia o rozpoznaniu kostiumu.",
+        "To pomija ważne kryterium. Zawstydzanie lub nagradzanie milczenia o rozpoznaniu kostiumu.",
+        "To pomija ważne kryterium. Zawstydzanie lub nagradzanie milczenia o rozpoznaniu kostiumu."
+      ],
+      "flaw": "Zawstydzanie lub nagradzanie milczenia o rozpoznaniu kostiumu.",
+      "evidence": "Neutralna rozmowa, poszanowanie rodzinnych zwyczajów, brak presji.",
+      "severity": "medium",
+      "review_reason": "Nie stawiaj starszego dziecka w roli «psującego magię» ani «strażnika tajemnicy»; rodziny różnie opowiadają o Mikołaju.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 61,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 16,
+      "title": "Ekologiczny Mikołaj: radość bez zbędnych zakupów",
+      "reviewer_profile": "Edukator ekologiczny materiałów bezpiecznych dla dzieci",
+      "question": "Do zajęć używany jest papier z odzysku, ale część opakowań ma zszywki. Co zrobisz?",
+      "options": [
+        "Pozostawisz zszywki, jeśli dzieci mają więcej niż pięć lat.",
+        "Wyłączysz wszystkie materiały z odzysku bez oceny ich stanu.",
+        "Każdemu dziecku dasz nowe przybory jako warunek udziału.",
+        "Wyłączysz niebezpieczne elementy, sprawdzisz czystość i wiek uczestników, przygotowując równoległą opcję udziału."
+      ],
+      "correct": 3,
+      "feedback": [
+        "To pomija ważne kryterium. Ekologiczne pochodzenie materiału nie zastępuje kontroli bezpieczeństwa.",
+        "To pomija ważne kryterium. Ekologiczne pochodzenie materiału nie zastępuje kontroli bezpieczeństwa.",
+        "To pomija ważne kryterium. Ekologiczne pochodzenie materiału nie zastępuje kontroli bezpieczeństwa.",
+        "Prawidłowo. Wyłączysz niebezpieczne elementy, sprawdzisz czystość i wiek uczestników, przygotowując równoległą opcję udziału."
+      ],
+      "flaw": "Ekologiczne pochodzenie materiału nie zastępuje kontroli bezpieczeństwa.",
+      "evidence": "Czystość, ostre elementy, wiek, dostępność aktywności.",
+      "severity": "medium",
+      "review_reason": "Zaproponuj plan zajęć dostępny także dla dzieci, które wolą słuchać. Nie stawiaj warunku kupienia nowych przyborów.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 62,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 17,
+      "title": "Nagła sytuacja podczas wizyty",
+      "reviewer_profile": "Instruktor reagowania na zdarzenia i pierwszej pomocy dzieciom",
+      "question": "Dziecko upadło, ma silny ból i nie wstaje. Czy animator powinien przenieść je na krzesło?",
+      "options": [
+        "Tak, żeby zrobić miejsce na dalszy program.",
+        "Tak, jeśli dwie dorosłe osoby są wystarczająco silne.",
+        "Nie rutynowo: zabezpiecz grupę, wezwij odpowiednią pomoc i nie przemieszczaj, jeśli nie jest to konieczne dla bezpieczeństwa.",
+        "Tak, bo siedzenie zawsze ułatwia obserwację urazu."
+      ],
+      "correct": 2,
+      "feedback": [
+        "To pomija ważne kryterium. Nieuzasadnione przemieszczanie poszkodowanego i opóźnienie wezwania pomocy.",
+        "To pomija ważne kryterium. Nieuzasadnione przemieszczanie poszkodowanego i opóźnienie wezwania pomocy.",
+        "Prawidłowo. Nie rutynowo: zabezpiecz grupę, wezwij odpowiednią pomoc i nie przemieszczaj, jeśli nie jest to konieczne dla bezpieczeństwa.",
+        "To pomija ważne kryterium. Nieuzasadnione przemieszczanie poszkodowanego i opóźnienie wezwania pomocy."
+      ],
+      "flaw": "Nieuzasadnione przemieszczanie poszkodowanego i opóźnienie wezwania pomocy.",
+      "evidence": "Strefa bezpieczeństwa, odpowiednia pomoc, instrukcje służb, dokumentacja zdarzenia.",
+      "severity": "critical",
+      "review_reason": "W przypadkach urazów nie zachęcaj animatora do samodzielnej diagnostyki ani rutynowego przenoszenia poszkodowanego. Przy zagrożeniu życia w Polsce korzystaj z numeru 112.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 63,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 18,
+      "title": "Przygotowanie wizyty: próba i plan B",
+      "reviewer_profile": "Planista logistyki wydarzeń dziecięcych",
+      "question": "Wizytę skrócono do 10 minut, paczki zajmują 8. Jaka zmiana jest racjonalna?",
+      "options": [
+        "Skrócić wydawanie do 4 minut kosztem kontroli odbiorców.",
+        "Zachować krótkie powitanie, spokojne wydanie paczek i zakończenie; zrezygnować z piosenki i zdjęć.",
+        "Zachować zdjęcia, a prezenty wydać zbiorowo bez identyfikacji.",
+        "Przenieść powitanie i zakończenie po wszystkich zdjęciach."
+      ],
+      "correct": 1,
+      "feedback": [
+        "To pomija ważne kryterium. Spieszenie się kosztem bezpieczeństwa i prawidłowej identyfikacji.",
+        "Prawidłowo. Zachować krótkie powitanie, spokojne wydanie paczek i zakończenie; zrezygnować z piosenki i zdjęć.",
+        "To pomija ważne kryterium. Spieszenie się kosztem bezpieczeństwa i prawidłowej identyfikacji.",
+        "To pomija ważne kryterium. Spieszenie się kosztem bezpieczeństwa i prawidłowej identyfikacji."
+      ],
+      "flaw": "Spieszenie się kosztem bezpieczeństwa i prawidłowej identyfikacji.",
+      "evidence": "Czas wręczania, przydział opiekunów i nieobowiązkowe dodatki.",
+      "severity": "medium",
+      "review_reason": "Wprowadź tabelę czasu i regułę, że skracanie atrakcji nie może wymuszać dotyku, zdjęć ani pośpiesznego wydawania paczek.",
+      "source_urls": [],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    },
+    {
+      "id": 64,
+      "slug": "swiety-mikolaj",
+      "lesson_no": 19,
+      "title": "Dyplom życzliwości: sprawdzian praktyczny",
+      "reviewer_profile": "Audytor standardów imprez i prawa dziecka do odmowy",
+      "question": "Dziecko odmawia wspólnego zdjęcia, lecz chce otrzymać paczkę. Jakie rozwiązanie chroni jego prawa?",
+      "options": [
+        "Zapewnić wydanie prezentu poza kadrem, a zdjęcie ograniczyć do chętnych lub scenografii.",
+        "Wstrzymać prezent do czasu uzyskania zgody na zdjęcie.",
+        "Zrobić ujęcie całości i później ewentualnie wyciąć dziecko.",
+        "Poprosić resztę grupy, aby przekonała dziecko do zdjęcia."
+      ],
+      "correct": 0,
+      "feedback": [
+        "Prawidłowo. Zapewnić wydanie prezentu poza kadrem, a zdjęcie ograniczyć do chętnych lub scenografii.",
+        "To pomija ważne kryterium. Warunkowanie uczestnictwa zgodą na rozpowszechnianie wizerunku.",
+        "To pomija ważne kryterium. Warunkowanie uczestnictwa zgodą na rozpowszechnianie wizerunku.",
+        "To pomija ważne kryterium. Warunkowanie uczestnictwa zgodą na rozpowszechnianie wizerunku."
+      ],
+      "flaw": "Warunkowanie uczestnictwa zgodą na rozpowszechnianie wizerunku.",
+      "evidence": "Rzeczywista możliwość odmowy, ustalenia z opiekunem, dokumentacja publikacji.",
+      "severity": "critical",
+      "review_reason": "Sprawdzian ma oceniać dostępność udziału, zgodę i dokumentację, nie jedynie wykonanie zdjęcia. Uwzględnij wycofanie zgody oraz zdanie dziecka.",
+      "source_urls": [
+        "https://uodo.gov.pl/pl/644/4111",
+        "https://brpd.gov.pl/2026/08/23/zgody-blankietowe-rpd-przypomina-o-ochronie-wizerunku-dzieci/"
+      ],
+      "method": "independent assistant adversarial critique, not independent human expert",
+      "human_approved": false,
+      "revision": "2026-11-17-adversarial-v3"
+    }
+  ]
+}
