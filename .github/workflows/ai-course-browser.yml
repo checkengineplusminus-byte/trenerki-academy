@@ -11,6 +11,9 @@ on:
       - 'src/AdversarialLessonTest.tsx'
       - 'supabase/functions/ta-lesson-guide/index.ts'
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'push' || github.event_name == 'pull_request' }}
 jobs:
   ai_browser_smoke:
     runs-on: ubuntu-24.04
@@ -22,6 +25,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
       - name: Install app and Chromium
         run: |
           npm install --no-audit --no-fund
