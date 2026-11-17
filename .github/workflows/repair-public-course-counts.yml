@@ -1,0 +1,36 @@
+name: TRENERKI — one-time repair of inaccurate public course lesson counts
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/repair-public-course-counts.mjs'
+      - '.github/workflows/repair-public-course-counts.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch_public_cards:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify proposed corrections only affect public lesson-count labels
+        run: node scripts/repair-public-course-counts.mjs --check
+      - name: Repair and then STRICTLY verify 81 public lesson counts and prices
+        run: |
+          node scripts/repair-public-course-counts.mjs
+          node scripts/audit-public-course-pages.mjs --strict
+      - name: Commit corrected public cards without changing lesson or user data
+        run: |
+          if git diff --quiet -- public/academy/kursy; then echo "No corrections"; exit 0; fi
+          git config user.name "Trenerki Course Audit"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/academy/kursy
+          git commit -m "fix(academy): show true lesson count in all 81 public course cards"
+          git pull --rebase origin main
+          git push origin HEAD:main

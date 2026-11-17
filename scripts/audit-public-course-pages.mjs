@@ -24,20 +24,22 @@ for(const c of courses){
  const slug=c.id,path='public/academy/kursy/'+slug+'.html';
  if(!exists(path)){findings.push({type:'missing_public_course_page',slug});continue;}
  const source=read(path),n=counts[slug];
- const badge=source.match(/<span>(\d+)\s+lekcj[ieó]+<\/span>/i);
+ const info=source.match(/<div class="info">([\s\S]*?)<\/div>/i)?.[1]||'';
+ const spans=[...info.matchAll(/<span>([\s\S]*?)<\/span>/gi)].map(x=>x[1].replace(/<[^>]*>/g,'').trim());
+ const badge=spans.map(v=>v.match(/\b(\d+)\s+(?:lekcj[a-ząćęłńóśźż]*|dział[a-ząćęłńóśźż]*)/i)).find(Boolean);
  const found=badge?Number(badge[1]):null;
  if(found!==n)findings.push({type:'lesson_badge_mismatch',slug,expected:n,actual:found});
  const list=source.match(/<ol class="program">([\s\S]*?)<\/ol>/);
  const items=list?(list[1].match(/<li>/g)||[]).length:null;
  if(items!==n)findings.push({type:'public_outline_mismatch',slug,expected:n,actual:items});
- const price=source.match(/Cena katalogowa:\s*([\d\s,.]+)\s*zł/i);
- const shown=price?Math.round(Number(price[1].replace(/\s/g,'').replace(',','.'))*100):null;
+ const price=info.match(/(\d+(?:[.,]\d+)?)\s*zł/i);
+ const shown=price?Math.round(Number(price[1].replace(',','.'))*100):null;
  if(shown!==c.price*100)findings.push({type:'price_badge_mismatch',slug,expected:c.price*100,actual:shown});
  if(!source.includes('href="https://trenerki.com/academy/kursy/'+slug+'.html"'))
  findings.push({type:'missing_canonical',slug});
  const photo=photoManifest[slug];
  if(!photo)findings.push({type:'missing_photo_manifest',slug});
- else if(!exists('public/academy/photos/'+photo.file))findings.push({type:'photo_file_missing',slug,file:photo.file});
+ else if(!/^https?:\/\//i.test(photo.file)&&!exists('public/academy/photos/'+photo.file))findings.push({type:'photo_file_missing',slug,file:photo.file});
  const header=source.match(/<h1>(.*?)<\/h1>/s)?.[1]||'';
  if(header!==c.title)findings.push({type:'title_mismatch',slug,expected:c.title,actual:header});
  meta.push({slug,lessons:n,price:c.price,photo:photo?.file||'',publicBadge:found,programItems:items});
