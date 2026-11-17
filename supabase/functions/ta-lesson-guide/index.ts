@@ -25,9 +25,13 @@ function localLessonCoach(name:string,lesson:any,text:string,history:any[],count
  const ref=cut(learn.example||q.options?.[q.correct]||material.raw?.[1]||lesson.title_pl,700);
  const mission=cut(material.anielka?.mission,460);
  const rubric=(Array.isArray(material.anielka?.rubric)?material.anielka.rubric:[]).slice(0,4).map((s:any)=>cut(s,180)).filter(Boolean).join('; ');
- const wantsPractice=/poćwicz|ćwicz ze mną|poprowadź krótkie ćwiczenie/iu.test(text);
+ const wantsPractice=/poćwicz|ćwicz ze mną|przeprowadź mnie|pomóż mi przećwiczyć|poprowadź krótkie ćwiczenie/iu.test(text);
  const wantsReview=/porównaj moją roboczą próbę|sprawdź moją próbę|sprawdź mój projekt/iu.test(text);
+ const wantsHint=/jedną podpowiedź|daj mi podpowiedź|daj wskazówkę/iu.test(text);
+ const wantsCriteria=/pokaż mi kryteria samodzielnego sprawdzenia/iu.test(text);
  if(mission&&wantsPractice)return {reply:name+', dziś ćwiczymy: '+mission+' Zacznij od pierwszego samodzielnego kroku. Gdy napiszesz, co zrobiłeś, porównamy wynik z kryteriami: '+(rubric||'zgodność z poleceniem i możliwość sprawdzenia faktów')+'.',meaningful:false,severe:false,question:''};
+ if(mission&&wantsHint)return {reply:name+', jedna wskazówka: najpierw wypisz, jakie dane wejściowe są faktycznie znane, a które trzeba sprawdzić. Następnie wykonaj pierwszy krok misji: '+mission+' Nie musisz rozwiązywać wszystkiego na raz.',meaningful:false,severe:false,question:''};
+ if(mission&&wantsCriteria)return {reply:name+', sprawdź próbę według kryteriów: '+(rubric||'kompletność i możliwość potwierdzenia')+'. Zapisz swoje działanie, wynik i jedno ryzyko, którego unikasz.',meaningful:false,severe:false,question:''};
  if(mission&&wantsReview)return {reply:name+', porównajmy Twoją próbę z kryteriami: '+(rubric||'konkretność, bezpieczeństwo i sprawdzalność')+'. Nie wystawiam oceny egzaminacyjnej. Zaznacz, co potrafisz udowodnić i wskaż jedno miejsce do poprawy; jeżeli potrzeba, wróć do instrukcji lekcji.',meaningful:false,severe:false,question:''};
  const meaningfulWords=new Set(tokens(text));
  const refer=new Set(tokens([learn.example,learn.situation,material.raw?.[1],lesson.title_pl].filter(Boolean).join(' ')));
