@@ -5187,7 +5187,7 @@
         ],
         "lesson_kind": "heritage_intro",
         "lesson_tips": [
-          "Wypisz punkt wyjścia: Przekrój próbki",
+          "Zacznij od konkretnej sytuacji w temacie „1. Anatomia skóry: lico, mizdra i dwoina”. Wypisz dostępne dane, element lub osobę, której dotyczy działanie, i określ, czego jeszcze nie wiesz.",
           "Przed decyzją porównaj swój pomysł z zasadą z lekcji: Nie: struktura włókien, wykończenie i sposób produkcji mają znaczenie.",
           "Nie kończ na samej odpowiedzi. Zapisz, po czym rozpoznasz poprawny rezultat; jeśli brakuje danych, zaznacz to zamiast zgadywać."
         ],
@@ -5313,6 +5313,7 @@
         "editorial_status": "approved",
         "curriculum_revision": 5,
         "source_backfill_revision": "2026-11-17-source-grounded-v1",
+        "lesson_tips_polish_revision": "2026-11-17-detailed-v2",
         "source_backfill_editorial_review": "pending_human_review"
       },
       "title_pl": "1. Anatomia skóry: lico, mizdra i dwoina",
@@ -5887,7 +5888,7 @@
         "lesson_kind": "technical_curriculum",
         "lesson_tips": [
           "Wypisz punkt wyjścia: Klient mówi, że odpadła 'szprycha', lecz na fotografii widać szczelinę na połączeniu dwóch dzwon. Przed naprawą zidentyfikuj element i wyjaśnij, dlaczego postępowanie z pękniętym dzwonem różni się od wymiany szprychy.",
-          "Przed decyzją porównaj swój pomysł z zasadą z lekcji: Dwa, ponieważ 14/7=2.",
+          "Dlaczego ta decyzja jest ważna: 14 szprych dzielone przez 7 segmentów to średnio 2 końce szprych na segment. To parametr tej konstrukcji. Zanim uznasz wynik, sprawdź go na danych z tego konkretnego zadania.",
           "Nie kończ na samej odpowiedzi. Zapisz, po czym rozpoznasz poprawny rezultat; jeśli brakuje danych, zaznacz to zamiast zgadywać."
         ],
         "illustration": "kolodziej-przekroj",
@@ -5972,6 +5973,7 @@
         "editorial_status": "approved",
         "curriculum_revision": 6,
         "source_backfill_revision": "2026-11-17-source-grounded-v1",
+        "lesson_tips_polish_revision": "2026-11-17-detailed-v2",
         "source_backfill_editorial_review": "pending_human_review"
       },
       "title_pl": "1. Anatomia drewnianego koła: piasta, szprychy, dzwona i obręcz",
@@ -8359,7 +8361,7 @@
         "lesson_kind": "heritage_intro",
         "lesson_tips": [
           "Wypisz punkt wyjścia: Na stole leżą dwa przekroje ziaren pszenicy. Na schemacie trzeba wskazać część bogatą w skrobię, warstwy zewnętrzne oraz część, z której rozwija się nowa roślina.",
-          "Przed decyzją porównaj swój pomysł z zasadą z lekcji: Bielmo, okrywy, zarodek.",
+          "Dlaczego ta decyzja jest ważna: Bielmo dostarcza głównie skrobi, okrywy osłaniają ziarno, a zarodek daje początek nowej roślinie. Te trzy części rozpoznasz na przekroju. Zanim uznasz wynik, sprawdź go na danych z tego konkretnego zadania.",
           "Nie kończ na samej odpowiedzi. Zapisz, po czym rozpoznasz poprawny rezultat; jeśli brakuje danych, zaznacz to zamiast zgadywać."
         ],
         "illustration": "mlynarz-ziarno",
@@ -8484,6 +8486,7 @@
         "editorial_status": "approved",
         "curriculum_revision": 8,
         "source_backfill_revision": "2026-11-17-source-grounded-v1",
+        "lesson_tips_polish_revision": "2026-11-17-detailed-v2",
         "source_backfill_editorial_review": "pending_human_review"
       },
       "title_pl": "1. Ziarno: bielmo, okrywa i zarodek",
@@ -18070,5 +18073,7 @@
       "lesson_no": 0,
       "course_slug": "zwiazek-rozmowa"
     }
-  ]
+  ],
+  "quality_revision": "2026-11-17-detailed-v2",
+  "description": "Production first lessons with source-derived teaching supplements and corrected substantive tips; excludes accounting"
 }
