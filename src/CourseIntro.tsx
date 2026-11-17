@@ -31,9 +31,9 @@ const intros:Record<string,Intro>={
  result:'Zrozumiesz rolę systemu operacyjnego, samodzielnie zorganizujesz dokumenty, zapiszesz i odnajdziesz plik, ustawisz dwa okna do pracy, sprawdzisz źródło programu, ochronisz dane i wykonasz zadanie biurowe od początku do końca. W trzecim dziale nauczysz się diagnozy problemów, kopii zapasowych i bezpiecznego udostępniania.'
  },
  'norweski-na-budowie':{
- what:'Norweski na budowie to język codziennej pracy. Uczymy się od pierwszego „hei” i pytania, gdzie jest wejście, nie od skomplikowanych zdań kierownika.',
- first:'Stoisz przy bramie. Dowiesz się, jak się przedstawić, poprosić o powtórzenie i zapytać o kartę HMS.',
- result:'Udzielisz podstawowych informacji, poprosisz o pomoc i dowiesz się, gdzie sprawdzić swoje prawa i obowiązki w Norwegii.'
+ what:'Praktyczny norweski w 30 lekcjach: od pierwszego „hei”, alfabetu i codziennych pytań, przez 83 znajomo brzmiące słowa i pułapki językowe, po HMS, narzędzia, pomiary i raporty z budowy. Każdy krok ma jasne tłumaczenie i kontekst.',
+ first:'Zaczniesz od przedstawienia się i zdań, które pozwolą bezpiecznie poprosić o powtórzenie. Potem rozpoznasz norweskie słowa podobne do polskich — kollega, akkurat, telefon i wiele kolejnych.',
+ result:'Po 30 lekcjach przećwiczysz prawdziwe dialogi, gramatykę krok po kroku, rozstawy przez radio, sytuacje z budowy i zadania domowe w swoim zeszycie.'
  },
  'angielski-na-budowie':{
  what:'Praktyczny angielski dla każdego pracownika budowy w Wielkiej Brytanii: pomocnika, malarza, montera czy dostawcy.',

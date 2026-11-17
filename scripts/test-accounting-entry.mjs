@@ -167,7 +167,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '629b67d13927b791aff2924c18053b979d101358', // reviewed current Excel reader
   '46774c0f2a24a78e23f3c6075168f131f7580258', // PR #27: exactly two audited Anielka UI insertions
   '69b42978196bee5ecf968b52d7991fd005a84559', // audited 16.11: main reader before pastry-only worksheet
-  'fa76531383ce432e828d50a34281d4aac4f66136' // audited 17.11: pastry-only homework worksheet, other courses and accounting route unchanged
+  'fa76531383ce432e828d50a34281d4aac4f66136', // audited 17.11: pastry-only worksheet
+  'ad0d91e6319a72e3e989a5ea69cc4cf1db54f1b9' // audited 17.11: Norwegian-only lesson vocabulary and homework, protected routing unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
