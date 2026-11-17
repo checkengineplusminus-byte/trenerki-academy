@@ -106,11 +106,14 @@ async function checkLesson(ctx,id,number){
   await note.getByText('✓ Zadanie zapisano w Twoim zeszycie. Możesz je później poprawić.').waitFor();
   // Reopen lesson and restore the private workbook note from mocked PostgREST.
   await page.reload({waitUntil:'domcontentloaded'});
+  const noteAgain=page.getByTestId('norwegian-homework-note');
   if(number===0){
+   // After a refresh, lesson 1 intentionally reopens the reading introduction.
+   // Wait for React to initialize before choosing the visible entry point.
    const intro=page.getByTestId('course-reading-introduction');
+   await intro.or(noteAgain).first().waitFor({timeout:25000});
    if(await intro.isVisible())await intro.getByRole('button',{name:'Przejdź do wyjaśnień pierwszej lekcji →'}).click();
   }
-  const noteAgain=page.getByTestId('norwegian-homework-note');
   await noteAgain.waitFor({timeout:25000});
   assert.equal(await noteAgain.inputValue(),answer,id+': lost workbook text '+number);
   const mat=byNo.get(number).material,q=mat.construction?.roleplay??mat.learning;
