@@ -61,7 +61,9 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // Scope-specific red-team lesson test: added only under explicit non-accounting route.
  const toughImport="import AdversarialLessonTest,{type RedTeamQuiz} from '../src/AdversarialLessonTest';\n";
  const toughMount=`   {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
-    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module} test={lesson.material.redteam_quiz}/>}
+    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}
+     test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
+     onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>}
 `;
  const toughField="redteam_quiz?:RedTeamQuiz,";
  assert.equal(sourceForAccounting.split(toughImport).length,2,'One scoped red-team import');
@@ -181,7 +183,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   'fa76531383ce432e828d50a34281d4aac4f66136', // audited 17.11: pastry-only worksheet
   'ad0d91e6319a72e3e989a5ea69cc4cf1db54f1b9', // Norwegian-only notebook
   '270f859b6147a7e3b227f9352338295f68d9af47', // audited 17.11: course-only private homework and tips, accounting guard unchanged
-  '46fdaf64ac76e1dd2457107fbb2e9a30851501b6' // audited exact 17.11: red-team-only 3-line reader change; accounting authorization and completion unchanged
+  '46fdaf64ac76e1dd2457107fbb2e9a30851501b6', // audited red-team-only change
+  'c8268e990da7e1421dc19450339faac8b5497af9' // reviewed AI-scoped stage quizzes, 8-step navigation and voluntary coach; accounting guard unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
