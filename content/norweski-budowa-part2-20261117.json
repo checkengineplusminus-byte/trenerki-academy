@@ -1,0 +1,350 @@
+{
+  "course_slug": "norweski-na-budowie",
+  "revision": "2026-11-17-norsk-v1",
+  "lessons": [
+    {
+      "n": 15,
+      "context": "Na koniec pracy potrzebny jest raport, który rozdziela informację pewną, niepewną i brakującą. Przykład z dwiema strefami dobrze uczy czasu przeszłego, prostych liczb i spokojnego komunikowania opóźnienia.",
+      "grammar": "«Vi har montert ...» informuje o wykonanym montażu. «Det mangler ...» mówi, czego brakuje. «Klokka er ikke bekreftet ennå» oznacza, że godzina nie została jeszcze potwierdzona. «Vi venter på bekreftelse» to czekamy na potwierdzenie. W raporcie zawsze oddzielaj «fakta» od «antakelser» — fakty od przypuszczeń.",
+      "dialog": [
+        "A: Hva har dere gjort i dag? – Co dzisiaj zrobiliście?",
+        "B: Vi har montert alt i sone A. – Zamontowaliśmy wszystko w strefie A.",
+        "A: Hva gjenstår i sone B? – Co pozostało w strefie B?",
+        "B: To braketter mangler. Leveringstid er ikke bekreftet. – Brakuje dwóch wsporników. Godzina dostawy jest niepotwierdzona."
+      ],
+      "tips": "Podaj datę, strefę, ilość i numer rysunku; używaj «ferdig» tylko po kontroli; uczyń niepotwierdzony termin widocznym; wskaż kto ma oddzwonić; nie ukrywaj zagrożenia w ogólniku «drobny problem».",
+      "mistake": "Nie mów «kommer klokka 08:30», jeżeli dostawca podał jedynie przypuszczenie. Brak dwóch wsporników nie oznacza, że reszta montażu jest automatycznie zakończona.",
+      "homework": "Stwórz dzienny raport po norwesku w 8 zdaniach: strefa A ukończona, w B dwa brakujące wsporniki, dostawa 08:30 jako niepotwierdzona, następna osoba do kontaktu. Zapisz te same informacje po polsku i sprawdź, czy nie dodałeś nieznanych faktów.",
+      "curiosity": "Norweskie «rapport», «status», «informasjon» i «dokumentasjon» są podobne do polskich, ale słowo «bekreftet» decyduje, czy obie strony rzeczywiście mają to samo ustalenie.",
+      "words": [
+        "rapport",
+        "status",
+        "informasjon",
+        "dokumentasjon",
+        "dato",
+        "kontroll"
+      ]
+    },
+    {
+      "n": 16,
+      "context": "W planie montażu „oś C” bez numeru piętra bywa bezużyteczna. W budynkach wielokondygnacyjnych identyczne osie powtarzają się na kolejnych poziomach, a radio często ucina początek wypowiedzi.",
+      "grammar": "«Mener du akse C i andre etasje?» = Masz na myśli oś C na drugim piętrze? «Hvilket nivå?» = który poziom? «Etasje» oznacza kondygnację/piętro, a «akse» oś. Pytając, nie mów tylko «C?», lecz powtórz komplet: oś, poziom, strefa i ewentualnie strona.",
+      "dialog": [
+        "A: Monter braketten ved akse C. – Zamontuj wspornik przy osi C.",
+        "B: Mener du akse C i andre etasje? – Chodzi o oś C na drugim piętrze?",
+        "A: Ja, i andre etasje på nordsiden. – Tak, na drugim piętrze, od strony północnej.",
+        "B: Takk. Jeg kontrollerer tegningen før jeg begynner. – Dziękuję. Sprawdzę rysunek przed rozpoczęciem."
+      ],
+      "tips": "Powtarzaj oś i poziom razem; zapisuj skrót piętra tak jak na planie; sprawdzaj stronę północną i południową; nie montuj na podstawie samej litery; upewnij się, że druga osoba potwierdziła odczyt.",
+      "mistake": "«Etasje» nie jest synonimem «nivå» we wszystkich rysunkach — poziom montażowy może być rzędną, a nie piętrem. Nie używaj «akse» bez odniesienia do rysunku.",
+      "homework": "Narysuj prostą siatkę osi A–D na trzech piętrach. Odegraj sześć komunikatów radiowych z celową pomyłką piętra i prawidłową korektą; każdorazowo zapisz potwierdzony punkt montażowy.",
+      "curiosity": "«Nivå», «posisjon» i «plan» wyglądają znajomo, ale na budowie musisz precyzyjnie odróżnić poziom, pozycję i kondygnację.",
+      "words": [
+        "nivå",
+        "posisjon",
+        "plan",
+        "millimeter",
+        "modell",
+        "nummer"
+      ]
+    },
+    {
+      "n": 17,
+      "context": "Rozmowa przez radio jest szybsza, ale łatwiej w niej przeoczyć podobnie brzmiące liczby. Gdy różnica wynosi 180 mm, jej wyłapanie jest ważniejsze od szybkiego rozpoczęcia pracy.",
+      "grammar": "Porównaj «tre hundre og femti» (350) z «fem hundre og tretti» (530). Użyj «Jeg gjentar ...» (powtarzam), «Stemmer det?» (czy się zgadza?) i «Det står ... på tegningen» (na rysunku jest ...). Zawsze dodawaj «millimeter», a po zaprzeczeniu «nei» doprecyzuj prawidłową liczbę.",
+      "dialog": [
+        "A: Avstanden er fem hundre og tretti millimeter. – Rozstaw wynosi 530 milimetrów.",
+        "B: Jeg gjentar: 530? Tegningen min viser 350. – Powtarzam: 530? Mój rysunek pokazuje 350.",
+        "A: Vent. Jeg kontrollerer dokumentet. – Poczekaj. Sprawdzę dokument.",
+        "B: Vi monterer ikke før målet er bekreftet. – Nie montujemy, dopóki wymiar nie zostanie potwierdzony."
+      ],
+      "tips": "Dyktuj powoli; powtórz cyframi i słownie; nie pomijaj jednostki; przy rozbieżności przerwij proces; wskaż rewizję; prześlij czytelne pisemne potwierdzenie.",
+      "mistake": "Nie rozstrzygaj na zasadzie «na pewno było 350». Podobnie brzmiące liczby przez krótkofalówkę to znana sytuacja wymagająca «repeat back», a nie domysłów.",
+      "homework": "Zrób 12 kart z wymiarami 160, 180, 300, 350, 375, 530, 600, 750, 1200, 1250, 1500 i 1800 mm. Druga osoba ma je odczytać, a ty zapisać i potwierdzić. Zamieńcie role i zaznaczcie, kiedy potrzebne jest pisemne potwierdzenie.",
+      "curiosity": "Norweskie «radio», «millimeter» i «nummer» są prawie jak polskie odpowiedniki; trudność nie tkwi w nazwie jednostki, ale w prawidłowym odczycie 350 i 530.",
+      "words": [
+        "radio",
+        "millimeter",
+        "nummer",
+        "kontroll"
+      ]
+    },
+    {
+      "n": 18,
+      "context": "Wysokość opisana jako +1,200 m może być odniesiona do punktu projektu, a nie do gotowej posadzki. W języku technicznym podobne liczby nie oznaczają tych samych pomiarów bez wskazania odniesienia.",
+      "grammar": "«Referansepunkt» to punkt odniesienia; «fra gulvet» = od podłogi; «over ferdig gulv» = nad gotową posadzką. Pytaj: «Hvilket referansepunkt måler vi fra?» oraz «Er dette nivå eller avstand fra gulvet?» Po «fra» podajesz punkt startowy, po «til» punkt docelowy.",
+      "dialog": [
+        "A: Vi skal plassere håndløperen på 1200 millimeter. – Mamy umieścić poręcz na 1200 milimetrach.",
+        "B: Fra hvilket referansepunkt? – Od jakiego punktu odniesienia?",
+        "A: Det må vi avklare. Tegningen viser et nivå, ikke bare avstand fra gulvet. – Musimy to wyjaśnić. Rysunek pokazuje rzędną, a nie tylko odległość od podłogi.",
+        "B: Da kontrollerer vi referansen før vi måler. – W takim razie przed pomiarem sprawdzimy odniesienie."
+      ],
+      "tips": "Zapisuj punkt odniesienia; sprawdzaj czy chodzi o posadzkę konstrukcyjną czy wykończoną; używaj jednostek; zaznaczaj wysokości na rysunku; wstrzymuj montaż przy niewyjaśnionej różnicy.",
+      "mistake": "«Nivå» to poziom lub rzędna, a «avstand fra gulvet» to odległość od podłogi. Nie można ich utożsamiać, jeśli posadzka ma dodatkowe warstwy lub poziom zerowy jest gdzie indziej.",
+      "homework": "Narysuj przekrój z poziomem betonu 0,00, gotowej posadzki +75 mm i zaznaczeniem +1200 mm. Odpowiedz po norwesku, czy 1200 mm jest od poziomu betonu, czy gotowej podłogi, oraz jakie pytanie trzeba zadać przed montażem.",
+      "curiosity": "Polsko podobne «referanse», «nivå», «dimensjon» pomagają w rozmowie z projektantem, ale odczytanie punktu zero jest ważniejsze niż płynna wymowa.",
+      "words": [
+        "referanse",
+        "nivå",
+        "dimensjon",
+        "meter",
+        "millimeter",
+        "posisjon"
+      ]
+    },
+    {
+      "n": 19,
+      "context": "Rewizja rysunku informuje o zmianie dokumentacji. Gdy papier pokazuje B, a cyfrowa lista C, pracownik powinien poprosić o wskazanie dokumentu obowiązującego zamiast polegać na «najprawdopodobniej nowszym».",
+      "grammar": "«Hvilken revisjon gjelder?» = która rewizja obowiązuje? «Tegningen er oppdatert» = rysunek zaktualizowano. «Vi må avklare» = musimy wyjaśnić. «Versjon» jest bliskie polskiej „wersji”, a «revisjon» w dokumentacji budowlanej oznacza rewizję/zmianę. Poproś o numer rysunku i datę, nie tylko literę.",
+      "dialog": [
+        "A: Jeg har tegning med revisjon B. – Mam rysunek z rewizją B.",
+        "B: Dokumentlisten viser revisjon C. – Lista dokumentów pokazuje rewizję C.",
+        "A: Hvilken revisjon gjelder for denne montasjen? – Która rewizja obowiązuje dla tego montażu?",
+        "B: Vi må få det bekreftet før vi fortsetter. – Musimy to potwierdzić, zanim będziemy kontynuować."
+      ],
+      "tips": "Zapisuj numer dokumentu; porównuj datę i rewizję; weryfikuj zakres zmiany; nie montuj na sprzecznych rysunkach; potwierdzenie uzyskaj od właściwej osoby; odłóż nieaktualne wydruki.",
+      "mistake": "Nie zmieniaj samowolnie wymiaru tylko dlatego, że w pliku jest litera C. Rewizja może dotyczyć innego fragmentu albo nie być jeszcze oficjalnie wydana dla ekipy.",
+      "homework": "Ułóż procedurę na pięć kroków i dialog o rysunku 281_E_7: wersja B w ręce, C w systemie. Opisz pytanie o zakres zmiany, numer dokumentu i sposób potwierdzenia obowiązującej wersji.",
+      "curiosity": "«Revisjon», «dokument», «versjon» i «modell» przypominają polskie słowa, ale poprawna decyzja wymaga identyfikatora całego dokumentu, nie jednego znaku.",
+      "words": [
+        "revisjon",
+        "dokument",
+        "versjon",
+        "modell",
+        "kontroll",
+        "dato"
+      ]
+    },
+    {
+      "n": 20,
+      "context": "Palety z rozładunku trzeba policzyć przed podpisaniem pełnego odbioru. Kierowca może prosić o natychmiastowy podpis, ale językowe «mamy cztery z pięciu» jest ważniejszy od zwrotu «dziękuję».",
+      "grammar": "«Fire av fem paller» = cztery z pięciu palet; «Vi mangler én» = brakuje jednej. «Levert» znaczy dostarczone, «bestilt» zamówione. «Jeg kan ikke bekrefte alle fem» = nie mogę potwierdzić wszystkich pięciu. Naucz się liczebników z rzeczownikami w liczbie mnogiej.",
+      "dialog": [
+        "A: Kan du signere for fem paller? – Możesz podpisać odbiór pięciu palet?",
+        "B: Jeg har telt fire av fem paller. – Policzyłem cztery z pięciu palet.",
+        "A: Kan vi kontrollere fraktbrevet sammen? – Możemy razem sprawdzić list przewozowy?",
+        "B: Ja. Vi må notere den manglende pallen før signering. – Tak. Musimy odnotować brakującą paletę przed podpisem."
+      ],
+      "tips": "Licz palety i paczki osobno; porównuj z listem przewozowym; do raportu dodaj numer dokumentu; przy rozbieżności rób adnotację; nie podpisuj pełnej zgodności; używaj «fire av fem».",
+      "mistake": "Nie traktuj numeru palety jako liczby palet. «Pall 4» może znaczyć paletę nr 4, a «fire paller» cztery sztuki. Uważaj na te dwie konstrukcje.",
+      "homework": "Przygotuj krótką notatkę z odbioru pięciu palet, z których dotarły cztery. Napisz po norwesku stan, ilość, numer listu, zastrzeżenie i prośbę o wyjaśnienie.",
+      "curiosity": "«Transport», «signatur», «nummer», «dokument» są podobne do polskich, ale różnica pomiędzy «fire av fem» a «pall nummer fire» zmienia treść dokumentu.",
+      "words": [
+        "transport",
+        "signatur",
+        "nummer",
+        "dokument",
+        "faktisk",
+        "kontroll"
+      ]
+    },
+    {
+      "n": 21,
+      "context": "Przy widocznym wgnieceniu opakowania nie wolno bez oględzin stwierdzać, że element jest uszkodzony. Ucz się języka, który dokładnie oddziela obserwację od diagnozy i pozwala przekazać dowody.",
+      "grammar": "«Det er en bulk i emballasjen» = na opakowaniu jest wgniecenie; «innholdet er ikke kontrollert» = zawartość nie została sprawdzona. „Nie wiem” to «jeg vet ikke», a „jeszcze nie” to «ikke ennå». Te słowa chronią przed przypadkowym zapewnieniem o stanie towaru.",
+      "dialog": [
+        "A: Hva har skjedd med kolli nummer sju? – Co stało się z paczką numer siedem?",
+        "B: Det er en bulk i emballasjen. – Na opakowaniu jest wgniecenie.",
+        "A: Er produktet skadet? – Czy produkt jest uszkodzony?",
+        "B: Det vet vi ikke ennå. Vi dokumenterer og kontrollerer først. – Tego jeszcze nie wiemy. Najpierw dokumentujemy i sprawdzamy."
+      ],
+      "tips": "Fotografuj etykietę i widoczne uszkodzenie; zapisuj czas; opisuj to, co widzisz; oznaczaj numer sztuki; oddzielaj wadę opakowania od produktu; powiadamiaj odpowiedzialną osobę.",
+      "mistake": "Nie używaj «produktet er ødelagt» bez oględzin. Nie stwierdzaj «ingen skade» zanim produkt nie został bezpiecznie skontrolowany.",
+      "homework": "Napisz raport z rozładunku: godzina 09:20, paczka 7, wgniecenie opakowania, stan zawartości nieustalony. Użyj czterech zdań faktów i dwóch pytań do osoby odpowiedzialnej.",
+      "curiosity": "«Fotografi», «kontroll», «nummer», «dokumentasjon» pomagają w dokładnym raporcie, ale słowo «ukjent» (nieznany) może być najważniejszym elementem.",
+      "words": [
+        "fotografi",
+        "kontroll",
+        "nummer",
+        "dokumentasjon",
+        "materiale"
+      ]
+    },
+    {
+      "n": 22,
+      "context": "Zmiana frontu montażu może być organizacyjnie rozsądna, lecz musi uwzględniać bezpieczeństwo i zakres zatwierdzonych prac. Najpierw poinformuj ekipę, co jest niemożliwe, potem co jest możliwe i kto potwierdził zmianę.",
+      "grammar": "«Først ... deretter ...» = najpierw ... następnie ...; «I dag begynner vi i trappeoppgang B» = dzisiaj zaczynamy na klatce B. «Sone A er ikke tilgjengelig» = strefa A jest niedostępna. «Etter at ...» wymaga pełniejszej konstrukcji; na początku lepiej używać prostych zdań po kolei.",
+      "dialog": [
+        "A: Vi kan ikke begynne i trappeoppgang A i dag. – Dziś nie możemy zacząć na klatce A.",
+        "B: Kan vi starte i B? – Czy możemy zacząć na B?",
+        "A: Ja, men bare med den godkjente delen. – Tak, ale tylko z zatwierdzoną częścią.",
+        "B: Da endrer jeg planen og informerer laget. – W takim razie zmienię plan i poinformuję ekipę."
+      ],
+      "tips": "Powiedz co jest niedostępne; oddziel zatwierdzony zakres; sprawdź zagrożenia w nowej strefie; zaktualizuj plan; zgłoś zmianę innym ekipom; nie zakładaj dostępu do podnośnika w nowym miejscu.",
+      "mistake": "«Vi bytter område» nie oznacza, że wolno wykonywać nieuzgodnione prace. Nowa kolejność to nie automatyczna zmiana rozwiązania technicznego.",
+      "homework": "Zrób dwie wersje planu dnia: A jest dostępne / A jest zamknięte. Przetłumacz pięć komunikatów do ekipy, uwzględnij «først», «deretter», «bare» i potwierdzenie zakresu.",
+      "curiosity": "«Montasje», «plan», «prioritet», «etappe» przypominają polskie odpowiedniki i przyspieszają rozmowę, lecz nie zastępują zatwierdzonej decyzji o kolejności prac.",
+      "words": [
+        "montasje",
+        "plan",
+        "prioritet",
+        "etappe",
+        "koordinasjon",
+        "prosjekt"
+      ]
+    },
+    {
+      "n": 23,
+      "context": "Zgłoszenie odchyłki powinno zaczynać się od liczb i lokalizacji. Pracownik nie musi zgadywać, czy winę ponosi beton, pomiar czy rysunek — najpierw zgłasza to, co naprawdę zmierzył.",
+      "grammar": "«Den målte bredden er ...» = zmierzona szerokość wynosi ...; «tegningen viser ...» = rysunek pokazuje ...; «forskjellen er ...» = różnica wynosi ...; «årsaken er ikke avklart» = przyczyna nieustalona. Ucz się konstrukcji porównania, nie stawiania diagnozy.",
+      "dialog": [
+        "A: Hva er avviket ved åpningen? – Jaka jest odchyłka przy otworze?",
+        "B: Vi målte 1185 millimeter. Tegningen viser 1200. – Zmierzyliśmy 1185 mm. Rysunek pokazuje 1200.",
+        "A: Vet du hvorfor? – Wiesz dlaczego?",
+        "B: Nei, årsaken er ikke avklart. Vi trenger en kontroll. – Nie, przyczyna nie została ustalona. Potrzebujemy kontroli."
+      ],
+      "tips": "Zapisz 1185 i 1200; oblicz różnicę 15 mm; dodaj lokalizację; odróżniaj pomiar od przyczyny; prześlij dowód; nie koryguj sam rysunku.",
+      "mistake": "Unikaj zdania «betongen er feil» bez sprawdzenia; prawidłowy raport nie przesądza winy. «Avvik» to nie tylko „pomyłka”, lecz odchylenie od ustalonego wymagania.",
+      "homework": "Przygotuj raport dla otworu o szerokości 1185 mm wobec 1200 mm na rysunku. Dodaj pomiar, różnicę 15 mm, miejsce, rewizję, zdjęcie lub szkic i jedno zdanie «årsaken er ikke avklart».",
+      "curiosity": "«Millimeter», «dokumentasjon» i «resultat» brzmią znajomo, ale krytyczne dla jakości jest również precyzyjne «avvik» i «målt».",
+      "words": [
+        "millimeter",
+        "dokumentasjon",
+        "resultat",
+        "kontroll",
+        "revisjon",
+        "dimensjon"
+      ]
+    },
+    {
+      "n": 24,
+      "context": "Gdy dwie ekipy pracują przy tym samym przejściu, nawet prosty transport może kolidować z montażem. W rozmowie trzeba uzgodnić czas, miejsce, pierwszeństwo i sposób zabezpieczenia, nie tylko «kto ma rację».",
+      "grammar": "«Når kan vi bruke passasjen?» = kiedy możemy korzystać z przejścia? «Vi må koordinere arbeidet» = musimy skoordynować pracę. «Samtidig» = jednocześnie; «etterpå» = później. «Begge lagene» to obie ekipy, «et lag» jedna ekipa.",
+      "dialog": [
+        "A: Kan vi kjøre materialer gjennom passasjen nå? – Możemy teraz przewieźć materiał przez przejście?",
+        "B: Nei, vi monterer ved inngangen akkurat nå. – Nie, właśnie teraz montujemy przy wejściu.",
+        "A: Når kan vi bruke passasjen trygt? – Kiedy będziemy mogli bezpiecznie użyć przejścia?",
+        "B: Vi avtaler tidspunkt med begge lagene før transporten. – Uzgodnimy czas z obydwiema ekipami przed transportem."
+      ],
+      "tips": "Zapisz uzgodnione okno czasowe; wskaż osobę koordynującą; kontroluj drogę pieszą; nie otwieraj strefy bez zgody; korzystaj z czytelnego radia; potwierdź zmianę obu ekipom.",
+      "mistake": "Brak odpowiedzi nie jest zgodą na przejazd. „Można po lunchu” to za mało, jeśli druga ekipa nie zna dokładnego czasu i zakresu zamknięcia.",
+      "homework": "Przygotuj krótką odprawę po norwesku dwóch ekip o wspólnym przejściu. Nadaj każdej ekipie dwa pytania, uzgodnij godzinę i zapisz odpowiedzialność za zabezpieczenie.",
+      "curiosity": "Norweskie «koordinasjon», «transport» i «plan» są bliskie polskim słowom, ale «begge» i «samtidig» pomagają uniknąć konfliktów dwóch ekip.",
+      "words": [
+        "koordinasjon",
+        "transport",
+        "plan",
+        "kommunikasjon",
+        "status",
+        "prioritet"
+      ]
+    },
+    {
+      "n": 25,
+      "context": "Niejasna instrukcja nie staje się bezpieczniejsza dlatego, że wypowiedziała ją osoba z doświadczeniem. W Norwegii można jasno powiedzieć, że potrzebujesz potwierdzenia, bez agresywnego kwestionowania przełożonego.",
+      "grammar": "«La oss stanse arbeidet» = zatrzymajmy pracę; «Vi må avklare beskjeden» = musimy wyjaśnić polecenie; «før vi fortsetter» = zanim będziemy kontynuować. Po czasownikach modalnych «må/kan/skal» zachowaj bezokolicznik bez «å»: «Vi må avklare», nie «Vi må å avklare».",
+      "dialog": [
+        "A: Vi endrer metoden nå. – Teraz zmieniamy metodę.",
+        "B: Vi forstår beskjeden forskjellig. – Różnie rozumiemy polecenie.",
+        "A: Hva foreslår du? – Co proponujesz?",
+        "B: La oss stanse arbeidet og avklare det før vi fortsetter. – Zatrzymajmy pracę i wyjaśnijmy to, zanim będziemy kontynuować."
+      ],
+      "tips": "Powtarzaj instrukcję swoimi słowami; wskaż sporny krok; proś o potwierdzenie pisemne przy zmianie technicznej; nie ukrywaj niepewności; zadbaj o strefę wspólną; nie lekceważ ryzyka.",
+      "mistake": "Nie kontynuuj ryzykownej operacji, gdy dwie osoby rozumieją ją różnie. «Jeg tror ...» (myślę, że...) nie jest formalnym zatwierdzeniem.",
+      "homework": "Napisz 6-zdaniowy dialog o zmianie sposobu montażu: niezgodne zrozumienie, STOP, wyjaśnienie, osoba do decyzji, ponowne odczytanie i bezpieczne wznowienie.",
+      "curiosity": "«Instruksjon», «kommunikasjon» i «kontroll» pomagają przejść do rozmowy, ale w praktyce najważniejsze jest «Vi må avklare» — musimy wyjaśnić.",
+      "words": [
+        "instruksjon",
+        "kommunikasjon",
+        "kontroll",
+        "signal",
+        "pause",
+        "risiko"
+      ]
+    },
+    {
+      "n": 26,
+      "context": "Usterka bez lokalizacji jest trudna do usunięcia. Zawodowa informacja podaje budynek, piętro, numer mieszkania, stronę oraz opis widocznego problemu, nie oceniając od razu przyczyny.",
+      "grammar": "«Det er en ripe på den venstre profilen» = jest rysa na lewym profilu. «I leilighet 204, i andre etasje» = w mieszkaniu 204 na drugim piętrze. «Venstre» = lewy, «høyre» = prawy, «ved inngangen» = przy wejściu. Rozróżnij «det er» (jest) i «det ligger» (leży/znajduje się).",
+      "dialog": [
+        "A: Hvor er feilen? – Gdzie jest usterka?",
+        "B: I leilighet 204, i andre etasje. – W mieszkaniu 204, na drugim piętrze.",
+        "A: Hvilken del gjelder det? – Którego elementu to dotyczy?",
+        "B: Det er en ripe på den venstre profilen ved inngangen. – Na lewym profilu przy wejściu jest rysa."
+      ],
+      "tips": "Podaj numer mieszkania; określ piętro; używaj lewy/prawy z punktu widzenia dokumentacji; dołącz zdjęcie z orientacją; wpisz numer elementu; oddziel rysę od przyczyny.",
+      "mistake": "Nie pisz «dårlig montasje» (zły montaż), jeśli wiesz tylko o rysie. Nie zakładaj winy transportu bez dowodów.",
+      "homework": "Przygotuj raport z pięcioma polami dla rysy na profilu w mieszkaniu 204: adres/segment, piętro, element, opis, fotografia. Napisz też jedno pytanie do osoby odpowiedzialnej.",
+      "curiosity": "«Profil», «fotografi», «rapport», «detalj» i «lokasjon» brzmią podobnie do polskich, ale «venstre» oraz «høyre» mają znaczenie dla lokalizacji usterki.",
+      "words": [
+        "profil",
+        "fotografi",
+        "rapport",
+        "detalj",
+        "lokasjon",
+        "nummer"
+      ]
+    },
+    {
+      "n": 27,
+      "context": "Rozliczenie godzin jest częścią codziennego życia pracownika. Zanim złożysz reklamację, należy zestawić okres z rejestru i odcinka, a następnie opisać policzalną różnicę prostym norweskim.",
+      "grammar": "«Det mangler to timer på lønnsslippen» = na odcinku brakuje dwóch godzin. «Timeliste» = lista czasu pracy, «lønnsslipp» = pasek płacowy, «overtid» = nadgodziny. «Jeg har registrert 38 timer» to czas przeszły złożony od «å registrere». Nie wymyślaj stawki podatkowej ani należności bez dokumentów.",
+      "dialog": [
+        "A: Jeg vil gjerne kontrollere timelisten min. – Chciałbym sprawdzić moją listę godzin.",
+        "B: Hvilken periode gjelder det? – Jakiego okresu to dotyczy?",
+        "A: Jeg har registrert 38 timer, men lønnsslippen viser 36. – Zarejestrowałem 38 godzin, ale odcinek pokazuje 36.",
+        "B: Vi undersøker forskjellen og svarer skriftlig. – Sprawdzimy różnicę i odpowiemy pisemnie."
+      ],
+      "tips": "Porównuj te same daty; zapisuj różnicę 2 h; nie myl rejestru godzin z nadgodzinami; zachowaj kopię dokumentów; używaj spokojnej prośby «kan vi kontrollere»; poproś o odpowiedź na piśmie.",
+      "mistake": "Nie twierdź, że brakujące dwie godziny to automatycznie nadgodziny. Nie pomijaj dodatków, potrąceń i okresów rozliczeniowych.",
+      "homework": "Sporządź prosty szablon e-maila: okres 1–7 listopada, 38 h w rejestrze, 36 h na odcinku, różnica 2 h, prośba o sprawdzenie. Dodaj polskie tłumaczenie każdego zdania.",
+      "curiosity": "Norweskie «brutto», «netto», «konto», «faktura», «kontrakt» brzmią znajomo, lecz dla pracownika słowo «timeliste» jest podstawą rozmowy o godzinach.",
+      "words": [
+        "brutto",
+        "netto",
+        "faktura",
+        "konto",
+        "periode",
+        "registrere"
+      ]
+    },
+    {
+      "n": 28,
+      "context": "Telefon o opóźnieniu ciężarówki ma sens tylko wtedy, gdy wiadomo, co jest potwierdzone i co trzeba zmienić na budowie. Słowa «być może» i «na pewno» nie są wymienne.",
+      "grammar": "«Leveringen er forsinket» = dostawa jest opóźniona; «nytt tidspunkt er ikke bekreftet» = nowa godzina nie jest potwierdzona; «Jeg gir beskjed så snart jeg vet mer» = dam znać, jak tylko dowiem się więcej. «Vi skulle ha mottatt ...» = mieliśmy otrzymać ... . Nie mieszaj czasu zaplanowanego z terminem faktycznym.",
+      "dialog": [
+        "A: Hei, jeg ringer om leveringen i dag. – Cześć, dzwonię w sprawie dzisiejszej dostawy.",
+        "B: Har lastebilen kommet? – Czy ciężarówka już przyjechała?",
+        "A: Nei, transporten er forsinket. Ny ankomsttid er ikke bekreftet. – Nie, transport jest opóźniony. Nowej godziny przyjazdu nie potwierdzono.",
+        "B: Takk. Gi beskjed når du får en bekreftelse. – Dziękuję. Daj znać, gdy dostaniesz potwierdzenie."
+      ],
+      "tips": "Zapisz numer zamówienia; potwierdź czy chodzi o rano czy popołudnie; podaj status potwierdzenia; poinformuj osobę od rozładunku; przeorganizuj wyłącznie możliwe zadania; zaktualizuj godzinę dopiero po potwierdzeniu.",
+      "mistake": "«Bilen kommer klokka elleve» brzmi jak pewna informacja. Jeśli nie masz potwierdzenia, powiedz «Vi vet ikke når den kommer». Nie twórz fikcyjnych czasów i obietnic.",
+      "homework": "Odegraj dwie rozmowy z dostawcą: (A) potwierdzone opóźnienie do 11:00, (B) brak nowego terminu. Napisz krótki SMS do ekipy, który nie myli tych sytuacji.",
+      "curiosity": "«Telefon», «transport», «informasjon», «nummer» i «plan» pomagają opisać opóźnienie, lecz precyzyjne «ikke bekreftet» chroni przed fałszywą obietnicą.",
+      "words": [
+        "telefon",
+        "transport",
+        "informasjon",
+        "nummer",
+        "plan",
+        "status"
+      ]
+    },
+    {
+      "n": 29,
+      "context": "Ostatnia lekcja łączy wszystkie sytuacje w jedną zmianę: odprawę, pomiar, zgłoszenie odchyłki, decyzję o wstrzymaniu jednego elementu, raport i przekazanie kolejnej osobie. Tak budujesz pewność językową i praktyczną.",
+      "grammar": "Ułóż oś czasu «først» (najpierw), «deretter» (następnie), «klokka ti» (o 10:00), «til slutt» (na koniec). Użyj przeszłego «vi har kontrollert» (sprawdziliśmy), «vi stanset» (wstrzymaliśmy) oraz przyszłego «vi skal avklare» (mamy wyjaśnić). Zdania łącz w logiczny raport; nie wstawiaj niepotwierdzonej przyczyny.",
+      "dialog": [
+        "A: Hva avtalte vi på morgenmøtet? – Co uzgodniliśmy na odprawie rano?",
+        "B: Vi skulle montere ved inngang B. – Mieliśmy montować przy wejściu B.",
+        "A: Hva skjedde klokka ti? – Co zdarzyło się o 10:00?",
+        "B: Vi oppdaget et avvik og stanset monteringen av én del. – Zauważyliśmy odchyłkę i wstrzymaliśmy montaż jednego elementu.",
+        "A: Hva skal vi gjøre nå? – Co teraz zrobimy?",
+        "B: Vi dokumenterer avviket og venter på avklaring. – Dokumentujemy odchyłkę i czekamy na wyjaśnienie."
+      ],
+      "tips": "Przygotuj kartę dnia z pięcioma punktami; wprowadź numery rysunków; oddziel fakty od decyzji; opisuj lokalizację i czas; sprawdzaj pytania kontrolne; potwierdź kolejny krok po norwesku.",
+      "mistake": "Nie podmieniaj statusu «wstrzymane» na «zakończone», nawet jeśli większość montażu jest gotowa. Nie dodawaj do raportu przyczyny, której nie zweryfikowano.",
+      "homework": "Zrealizuj projekt: napisz dialog porannej odprawy, rozmowę radiową o wymiarze, ostrzeżenie STOP, zgłoszenie odchyłki 15 mm, raport końca zmiany i e-mail do klienta. Każdy fragment przetłumacz na polski, oznacz co pewne, a co wymaga potwierdzenia.",
+      "curiosity": "«Prosjekt», «rapport», «kontroll», «resultat» i «logistikk» są bliskie polskim odpowiednikom; użyte razem z prostymi «først», «etterpå», «til slutt» pozwalają opowiedzieć całą zmianę.",
+      "words": [
+        "prosjekt",
+        "rapport",
+        "kontroll",
+        "resultat",
+        "logistikk",
+        "status"
+      ]
+    }
+  ]
+}
