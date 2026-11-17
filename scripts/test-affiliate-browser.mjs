@@ -96,9 +96,9 @@ async function partnerRegistration(){
   const name=page.getByRole('textbox',{name:'Imię i nazwisko albo nazwa firmy'});
   await name.waitFor({timeout:12000});
   await name.fill('Tester Partner');
-  for(const label of [/Potwierdzam, że mam ukończone 18 lat/,/Zapoznałem\(-am\) się z regulaminem/,/Zapoznałem\(-am\) się z informacją/]){
-    await page.getByRole('checkbox',{name:label}).click();
-  }
+  const checkboxes=page.getByRole('checkbox');
+  assert.equal(await checkboxes.count(),3,'Three distinct disclosures must be displayed');
+  for(let i=0;i<3;i++)await checkboxes.nth(i).click();
   await page.getByRole('button',{name:'Załóż konto partnerskie'}).click();
   await page.getByText('Twój panel partnerski').waitFor({timeout:12000});
   assert.equal(registrationAttempts,1,'Partner may register exactly once');
