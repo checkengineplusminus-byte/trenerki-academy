@@ -1,0 +1,320 @@
+{
+  "version": "2026-11-17-v1",
+  "course_count": 4,
+  "lesson_count": 36,
+  "subject": "editorial teaching additions; professional-review flags stay active",
+  "rows": [
+    {
+      "slug": "lepszy-tata",
+      "no": 8,
+      "explanation": "Bliskość nie wymaga drogiej atrakcji, lecz uważnej obecności i zgody dziecka na formę kontaktu. Kilka minut bez telefonu może być dobrym początkiem, ale nie narzucaj rozmowy ani nie oceniaj dziecka na podstawie tego, ile powiedziało.",
+      "exercise": "Zaproponuj trzy nieoceniające pytania na krótką rozmowę i dwa sposoby wspólnego spędzenia czasu bez presji. Ustal, po czym sam rozpoznasz, że rzeczywiście słuchałeś.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 9,
+      "explanation": "Można zaakceptować emocję i jednocześnie zatrzymać uderzanie lub inne krzywdzące zachowanie. Nie nazywaj samej złości „złą”; pokaż bezpieczną granicę i alternatywny sposób reagowania, odpowiedni do wieku dziecka.",
+      "exercise": "Przeredaguj trzy polecenia z oceną osoby na komunikaty opisujące zachowanie: «Widzę, że jesteś zły, nie pozwolę bić». Wskaż, jak zapewnisz bezpieczeństwo obu stronom.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 10,
+      "explanation": "Wyręczanie dziecka w każdym zadaniu może ograniczać ćwiczenie samodzielności. Wybieraj czynności odpowiednie do etapu rozwoju i warunków, pokaż pierwszy krok, a potem udzielaj tylko potrzebnej pomocy zamiast przejmować całą kontrolę.",
+      "exercise": "Przygotuj trzy poziomy wsparcia przy pakowaniu plecaka: pełne pokazanie, wspólna lista i samodzielna próba. Zapisz kryterium, kiedy należy pomóc, a kiedy pozwolić na korektę błędu.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 11,
+      "explanation": "Domowe zasady korzystania z ekranów są czytelniejsze, gdy dorośli także ich przestrzegają. Nie sprowadzaj problemu do minut przed urządzeniem: znaczenie mają sen, bezpieczeństwo, relacje i rzeczywiste obowiązki dziecka.",
+      "exercise": "Napisz prostą umowę rodzinną obejmującą czas wspólny, pory bez telefonu i uzasadnione wyjątki. Sprawdź, które zasady uczciwie obowiązują także Ciebie.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 12,
+      "explanation": "Milczenie po powrocie ze szkoły nie musi świadczyć o konflikcie czy złej woli. Dziecko może potrzebować odpoczynku, swobodnej aktywności lub rozmowy później; dociekliwe pytania natychmiast po wejściu do domu mogą zwiększać presję.",
+      "exercise": "Przygotuj dwie wersje powitania dziecka i spokojną propozycję rozmowy później. Nie diagnozuj jego samopoczucia bez dodatkowych informacji ani nie zmuszaj do zwierzeń.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 13,
+      "explanation": "Dziecko nie powinno być pośrednikiem w sporach dorosłych o terminy, pieniądze czy zasady opieki. Ustalaj szczegóły bezpośrednio między rodzicami i nie proś dziecka o ocenę drugiej strony lub przenoszenie pretensji.",
+      "exercise": "Zamień trzy komunikaty skierowane do dziecka na neutralne wiadomości między dorosłymi: termin odbioru, przybory szkolne i zmiana planu. Odróżnij sprawy dziecka od problemów rodziców.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 14,
+      "explanation": "Przeprosiny rodzica wymagają nazwania własnego zachowania bez usprawiedliwiającego «ale». Dziecko nie jest zobowiązane natychmiast wybaczyć ani pocieszać dorosłego. Ważny jest konkretny plan poprawy i późniejsze jego dotrzymanie.",
+      "exercise": "Napisz trzy zdania przeprosin po niepotrzebnym krzyku oraz jeden realistyczny krok na kolejny poranek. Sprawdź, czy nie obwiniasz dziecka za reakcję dorosłego.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 15,
+      "explanation": "Poszanowanie prywatności nastolatka powinno rosnąć wraz z jego samodzielnością, ale nie oznacza rezygnacji z rozmowy o bezpieczeństwie i uzgodnionych zasadach. Kontrola ukryta i nieproporcjonalna może osłabić zaufanie; sprawy zagrożenia wymagają osobnego potraktowania.",
+      "exercise": "Ułóż zasady dotyczące powrotów, kontaktu w razie nagłego zdarzenia i prywatności wiadomości. Wyjaśnij, co uzgadniasz z nastolatkiem, a co wymaga odpowiedzialnej interwencji dorosłego.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 16,
+      "explanation": "Jedna ocena szkolna ani brak zadania nie opisują całego dziecka. W rozmowie z nauczycielem ustal zdarzenie, jego okoliczności, dotychczasowe wsparcie i wspólny plan. Nie przypisuj winy przed wysłuchaniem kilku stron.",
+      "exercise": "Napisz cztery neutralne pytania do nauczyciela, a następnie plan jednego niewielkiego usprawnienia w domu. Zapisz, jakie fakty odróżniają hipotezę od ustalenia.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 17,
+      "explanation": "W sporze rodzeństwa łatwo utrwalić role «zawsze winnego» i «zawsze poszkodowanego». Najpierw zapewnij bezpieczeństwo, zbierz osobne opisy wydarzenia i pomóż ustalić konkretny sposób naprawy szkody.",
+      "exercise": "Wymyśl spór o wspólną zabawkę. Zapisz pytania do obojga dzieci bez etykietowania oraz dwie możliwe formy zadośćuczynienia adekwatne do sytuacji.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 18,
+      "explanation": "Dziecko po porażce może potrzebować uznania rozczarowania bardziej niż natychmiastowego hasła «następnym razem wygrasz». Nie obiecuj rezultatu, na który nie masz wpływu; zachęcaj do procesu i stopniowej próby.",
+      "exercise": "Przygotuj odpowiedź po nieprzyjęciu do drużyny. Ma zawierać uznanie emocji, propozycję odpoczynku i możliwy następny krok bez gwarantowania sukcesu.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "lepszy-tata",
+      "no": 19,
+      "explanation": "Zmiana nawyków rodzica wymaga obserwacji własnego zachowania, a nie oceniania dziecka. Plan na 90 dni lepiej oprzeć na kilku sprawdzalnych działaniach: uważne słuchanie, stabilny rytuał i naprawianie błędów.",
+      "exercise": "Zaproponuj trzy niewielkie nawyki na 90 dni oraz neutralny sposób kontroli co tydzień. Nie zbieraj prywatnych wypowiedzi dziecka w aplikacjach publicznych.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 12,
+      "explanation": "Punkty zapalne w mieszkaniu często wynikają z układu czynności i braku miejsca na odkładanie rzeczy, a nie z czyjejś złej woli. Sprawdź, kiedy powstaje bałagan, co jest pod ręką i jak zmienić otoczenie bez zwiększania liczby nakazów.",
+      "exercise": "Wybierz trzy miejsca: blat, przedpokój i łazienkę. Dla każdego zapisz powtarzalną przyczynę, jedną zmianę organizacyjną i prosty wskaźnik poprawy po tygodniu.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 13,
+      "explanation": "Za wykonaniem widocznej czynności stoi też praca niewidzialna: pamiętanie terminów, kupowanie środków i przypominanie domownikom. Uczciwy podział powinien obejmować planowanie i kontrolę, nie tylko samo sprzątanie.",
+      "exercise": "Sporządź tygodniową tabelę 12 zadań, dodając osobno osobę planującą, wykonującą i monitorującą. Porównaj obciążenie bez oceniania charakteru domowników.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 14,
+      "explanation": "Poranek często opóźniają czynności zależne od siebie: brak kluczy, ubrań, śniadania i przygotowanego plecaka. Zmiana wieczornego przygotowania może być skuteczniejsza niż kolejne przypominanie rano.",
+      "exercise": "Ułóż dwie osie czasu: chaotyczny poranek i wersję z pięciominutowym przygotowaniem poprzedniego dnia. Wskaż czynność, której opóźnienie blokuje resztę.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 15,
+      "explanation": "Gdy domownik choruje lub pracuje dłużej, najpierw należy ochronić zadania kluczowe dla zdrowia i bezpieczeństwa. Część mniej ważnych prac można odroczyć, nie traktując przerwy jako osobistej porażki.",
+      "exercise": "Przygotuj plan awaryjny na dwa dni: konieczne czynności, te możliwe do przekazania innym i te, które można odłożyć. Uwzględnij bezpieczne przechowanie żywności.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 16,
+      "explanation": "Jedno miejsce przechowywania sprzętu oszczędza szukanie, ale środki chemiczne wymagają właściwego zabezpieczenia, opisanych opakowań i postępowania zgodnie z etykietą. Nie łącz różnych środków na własną rękę, aby «wzmocnić» działanie.",
+      "exercise": "Zaprojektuj bezpieczne miejsce dla ścierek, odkurzacza, rękawic i środków czystości. Oddziel przedmioty bezpieczne dla dzieci od chemikaliów oraz sprawdź oznaczenia.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 17,
+      "explanation": "Dziecko uczy się obowiązków przez zadanie dopasowane do możliwości i jasny sposób sprawdzenia, nie przez karanie za pierwszą pomyłkę. Czynności z substancjami żrącymi, prądem lub ostrym sprzętem nie powinny być przydzielane bez właściwego nadzoru.",
+      "exercise": "Ułóż trzy przykładowe zadania dla różnych poziomów samodzielności i opisz pomoc dorosłego, oczekiwany wynik oraz sposób spokojnej informacji zwrotnej.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 18,
+      "explanation": "Nowy organizer lub droższy detergent nie musi skracać czasu pracy. Porównując koszty sprzątania, wlicz zużycie, wydajność, częstotliwość wymiany oraz bezpieczeństwo materiału i powierzchni.",
+      "exercise": "Zrób miesięczny kosztorys: dwa środki czystości, materiały wielorazowe i jednorazowe. Wylicz cenę jednego użycia przy przyjętych założeniach.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "no": 19,
+      "explanation": "Ocena systemu po miesiącu powinna obejmować nie tylko stan powierzchni, lecz także czas, liczbę przypomnień i sprawiedliwość podziału obowiązków. Sukces nie oznacza codziennie idealnego porządku.",
+      "exercise": "Przygotuj cztery wskaźniki dla minionego miesiąca i jedną niewielką zmianę. Unikaj punktowania domowników; oceniaj działanie uzgodnionego systemu.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "plecionkarz",
+      "no": 16,
+      "explanation": "Kosz na zakupy musi odpowiadać rzeczywistemu przeznaczeniu i przewidywanym obciążeniom; ozdobny wygląd nie gwarantuje trwałości uchwytów. Przy doborze wikliny obserwuj wilgotność materiału, pęknięcia, rozstaw splotu i jakość mocowania.",
+      "exercise": "Zaprojektuj dwie karty materiałowe: kosz dekoracyjny i użytkowy. Wskaż, jakie kontrole konstrukcji trzeba wykonać, zanim zadeklarujesz nośność tego drugiego.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "plecionkarz",
+      "no": 17,
+      "explanation": "Symetria kosza oceniana od frontu nie oznacza równego dna ani prawidłowego ustawienia uchwytu. Kontroluj wymiary na kilku wysokościach oraz po obu stronach, zaznaczając punkt odniesienia do pomiaru.",
+      "exercise": "Na papierowej makiecie zmierz szerokość dna, dwa przekroje na różnych wysokościach oraz pozycję uchwytu. Zapisz, jak rozpoznasz skręcenie lub różnicę kształtu.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "plecionkarz",
+      "no": 18,
+      "explanation": "Wiklina reaguje na wilgotność i długotrwałe zawilgocenie sprzyja deformacji oraz rozwojowi pleśni. Samo szybkie przetarcie nie przywróci bezpieczeństwa produktu w razie podejrzenia skażenia; ocena powinna obejmować warunki przechowywania i przeznaczenie.",
+      "exercise": "Opracuj kartę konserwacji kosza: przechowywanie, obserwacja pleśni, drobne naprawy konstrukcyjne i sytuacje, w których produktu nie należy przekazywać użytkownikowi.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "plecionkarz",
+      "no": 19,
+      "explanation": "Profesjonalne zamówienie kosza powinno zawierać wymiary, sposób użytkowania, oczekiwane obciążenie, materiał, wykończenie i kryterium odbioru. Odnotuj ograniczenia zamiast obiecywać niezweryfikowaną nośność.",
+      "exercise": "Napisz fikcyjną kartę produktu z trzema pomiarami, zdjęciami kontrolnymi oraz opisem oczekiwanego zastosowania. Zaznacz, co należy zatwierdzić przed wydaniem.",
+      "refs": [],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 8,
+      "explanation": "Pierwsze powitanie powinno dawać dziecku wybór i czas na orientację. Niespodziewany dotyk lub podejście bardzo blisko może wywołać dyskomfort; przyjazny animator nie wymusza przytulenia, siadania na kolanach ani wypowiedzi.",
+      "exercise": "Zaprojektuj dwa sposoby powitania grupy: dzieci chętne do rozmowy i dzieci wolące obserwować. Każdy wariant ma zapewniać udział bez przymusu fizycznego.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 9,
+      "explanation": "Wielkość paczki lub jej wartość nie jest miarą charakteru dziecka. Publiczne porównywanie prezentów może być krzywdzące; odpowiedzialny animator przekazuje upominki według uzgodnionego porządku bez ocen i rankingów.",
+      "exercise": "Przećwicz wręczanie trzech różnej wielkości prezentów bez komentarzy porównujących dzieci. Zapisz komunikat, który sprawdza tożsamość odbiorcy.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 10,
+      "explanation": "Milczenie dziecka nie oznacza braku zainteresowania ani zgody na dotyk. Można zaproponować niewerbalną odpowiedź, gest, obrazek lub pomoc znanego opiekuna. Animator nie powinien zmuszać do mówienia ani stawiać diagnoz.",
+      "exercise": "Opracuj trzy krótkie pytania, na które można odpowiedzieć gestem, wskazaniem obrazka albo słowem. Pozostaw dziecku możliwość rezygnacji.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 11,
+      "explanation": "Zgoda na wykonanie zdjęcia i jego publikację w sieci to dwa różne zastosowania wizerunku. Ustal wcześniej uprawnienie do fotografowania oraz cel i zakres publikacji, a przy dzieciach uwzględnij głos dziecka i zasady organizatora. Nie zakładaj, że udział w imprezie jest zgodą na internet.",
+      "exercise": "Przygotuj listę pięciu pytań do organizatora: kto fotografuje, jaka zgoda, gdzie zdjęcia trafią, przez jaki czas i jak obsługiwany jest sprzeciw. Nie używaj rzeczywistych fotografii dzieci do zadania.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 12,
+      "explanation": "Odpowiedzialność za nadzór nad grupą w przedszkolu lub szkole należy wyjaśnić przed wejściem gościa. Animator nie zastępuje nauczyciela lub opiekuna i nie prowadzi dziecka sam do innego pomieszczenia bez uzgodnionych zasad.",
+      "exercise": "Wypisz role organizatora, wychowawcy, animatora i osoby wydającej prezenty. Zaznacz, kto reaguje na sytuację wymagającą dodatkowej opieki.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 13,
+      "explanation": "Niektóre dzieci silniej reagują na hałas, światło i nagłe zmiany. Przewidywalne rozpoczęcie wizyty, możliwość wyjścia do spokojniejszej strefy i brak wymuszania udziału pozwalają dopasować formę wydarzenia bez diagnozowania dziecka.",
+      "exercise": "Ułóż dwa scenariusze tej samej wizyty: z muzyką i bez muzyki. Uwzględnij zapowiedź dźwięku, spokojne wejście i możliwość obserwowania z boku.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 14,
+      "explanation": "Życzliwa reakcja na trudną wiadomość nie wymaga obiecywania prezentu, poprawy zdrowia bliskiego czy natychmiastowego rozwiązania rodzinnego problemu. Animator powinien uznać uczucie i skierować dziecko do znanego, odpowiedzialnego opiekuna.",
+      "exercise": "Napisz bezpieczną odpowiedź na wypowiedź o tęsknocie za bliską osobą. Wskaż, czego nie należy obiecywać, oraz komu spokojnie przekazać ważną informację.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 15,
+      "explanation": "Gdy dziecko rozpozna kostium lub zapyta, czy Mikołaj jest prawdziwy, nie trzeba zawstydzać go ani wymuszać podtrzymywania fikcji. Można uszanować spostrzeżenie i skierować uwagę na wspólną świąteczną zabawę, zgodnie z ustaleniami rodziców.",
+      "exercise": "Przygotuj dwie odpowiedzi na pytanie dziecka, które zauważyło przebranie. Obie mają unikać presji i oceniania, a jednocześnie szanować rodzinne zwyczaje.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 16,
+      "explanation": "Ponowne wykorzystanie rekwizytów i opakowań ogranicza odpady, ale materiały przeznaczone dla dzieci muszą być czyste i bezpieczne: bez ostrych krawędzi, małych odrywających się części oraz nieznanych pozostałości chemicznych.",
+      "exercise": "Zaproponuj dwa sposoby ograniczenia odpadów podczas wizyty. Dodaj listę kontroli przedmiotów pod kątem ostrości, stabilności i właściwego wieku uczestników.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 17,
+      "explanation": "W nagłej sytuacji animator powinien znać osobę odpowiedzialną, drogę ewakuacji i sposób wezwania pomocy, nie zastępować personelu medycznego bez przygotowania. Gdy zagrożenie trwa, pierwszeństwo ma zabezpieczenie i wezwanie odpowiednich służb.",
+      "exercise": "Ułóż fikcyjną odprawę: kto wzywa pomoc, kto opiekuje się grupą, gdzie jest wyjście i jak przekazuje się informację opiekunom. Nie wykonuj realnego alarmu jako ćwiczenia.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 18,
+      "explanation": "Plan B na spotkanie powinien być przygotowany zanim pojawi się opóźnienie, hałas lub niepokój dzieci. Zachowaj zasady bezpiecznego udziału i poprawnego wydania prezentów, nawet jeżeli skrócisz występ.",
+      "exercise": "Napisz wariant 25-minutowy i 10-minutowy tej samej wizyty; w obu pozostaw spokojne powitanie, możliwość odmowy kontaktu i potwierdzenie wydania paczek.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "no": 19,
+      "explanation": "Egzamin praktyczny animatora powinien oceniać bezpieczeństwo, współpracę z opiekunami, zgodę na zdjęcia i reagowanie na zmianę nastroju dzieci, a nie szybkość rozdania paczek. Jedna udana scenka nie zastąpi planu na zdarzenie nietypowe.",
+      "exercise": "Przygotuj kartę wizyty z pięcioma kryteriami odbioru, symulacją dziecka niewerbalnego oraz planem odwołania punktu programu. Wynik podsumuj wnioskami do następnej próby.",
+      "refs": [
+        "https://uodo.gov.pl/pl/644/4111"
+      ],
+      "review_state": "requires_professional_sign_off"
+    }
+  ]
+}
