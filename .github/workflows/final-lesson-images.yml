@@ -1,0 +1,65 @@
+name: TRENERKI — final verification of all original lesson images
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-lesson-image-coverage.mjs'
+      - 'scripts/check-1885-live-images.mjs'
+      - 'scripts/check-lesson-original-art-browser.mjs'
+      - '.github/workflows/final-lesson-images.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original_source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify all SVG files and code-backed lesson mappings
+        run: |
+          node scripts/verify-original-course-illustrations.mjs
+          node scripts/check-lesson-image-coverage.mjs
+  browser_73:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install app and browsers
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Build actual web application
+        run: npx expo export --platform web --output-dir /tmp/trenerki-original-illustrations
+        env:
+          EXPO_NO_TELEMETRY: '1'
+      - name: Test SVG decoding and 16:9 presentation for 73 courses on desktop and mobile
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-original-illustrations >/tmp/trenerki-image-http.log 2>&1 &
+          sleep 2
+          TRENERKI_ART_MODE=all node scripts/check-lesson-original-art-browser.mjs http://127.0.0.1:8787
+      - name: Also test representative subject categories in Firefox and WebKit
+        run: TRENERKI_ART_MODE=representative node scripts/check-lesson-original-art-browser.mjs http://127.0.0.1:8787
+  official_domain:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Confirm 1885 images on actual trenerki.com
+        run: node scripts/check-1885-live-images.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: trenerki-1885-live-image-report
+          path: /tmp/trenerki-images/live-audit.json
+          if-no-files-found: ignore
