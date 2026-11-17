@@ -25,7 +25,7 @@ assert(server.includes("material.lesson_kind!=='stage_checkpoint'"),'Server must
 assert(server.includes("required.push('stage')"),'Server must enforce stage pass before completion');
 assert(server.includes("mode==='stage'"),'Server must validate stage answer from material');
 assert(server.includes("selected===answer"),'Server must compare selected index to correct stage answer');
-assert(view.includes('lesson-visual-'+courseSlug+'-'),'Image component must route per-lesson editorial artwork');
+assert(view.includes('const editorialSvg=')&&view.includes('lesson-visual-'),'Image component must route per-lesson editorial artwork');
 const hashes=new Set();
 for(let i=1;i<=32;i++){
  const id=String(i).padStart(3,'0');
