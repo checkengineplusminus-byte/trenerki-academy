@@ -1,0 +1,47 @@
+name: TRENERKI — verify 64 enriched lessons without expert-signoff changes
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/expert-64-browser-fixture-20261117.json'
+      - 'scripts/test-expert-64-source.mjs'
+      - 'scripts/test-expert-64-browser.mjs'
+      - '.github/workflows/expert-64-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify_64_materials:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate all 64 original flags, teaching appendices and quizzes
+        run: node scripts/test-expert-64-source.mjs
+  browser_64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Expo and browser engines
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium firefox webkit
+      - name: Export current production site
+        run: npx expo export --platform web --output-dir /tmp/trenerki-expert-review
+        env:
+          EXPO_NO_TELEMETRY: '1'
+      - name: Check all 64 lesson revisions on computer and mobile
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-expert-review >/tmp/trenerki-expert-http.log 2>&1 &
+          sleep 2
+          TRENERKI_EXPERT_MODE=all node scripts/test-expert-64-browser.mjs http://127.0.0.1:8787
+      - name: Check representative 8 courses on Firefox and Safari engines
+        run: TRENERKI_EXPERT_MODE=representative node scripts/test-expert-64-browser.mjs http://127.0.0.1:8787
