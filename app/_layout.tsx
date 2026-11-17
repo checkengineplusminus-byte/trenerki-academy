@@ -82,6 +82,7 @@ function AccountLayout(){
   <Stack.Screen name="partner"/>
   <Stack.Screen name="admin"/>
   <Stack.Protected guard={signedIn} redirectTo="/konto">
+   <Stack.Screen name="partner-admin"/>
    <Stack.Screen name="moje-kursy"/>
    <Stack.Screen name="ustawienia"/>
    <Stack.Screen name="nauka"/>
