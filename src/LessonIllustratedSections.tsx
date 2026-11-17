@@ -44,7 +44,9 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
  const named=courseSlug==='autocad-skroty'?[]:Array.isArray(sections)&&sections.length>0?sections.filter(x=>x?.heading&&x?.text):[];
  const volunteerImage=courseSlug==='zaufany-wolontariusz'&&typeof illustration==='string'?volunteerIllustrations.get(illustration):undefined;
  const pastrySvg=courseSlug==='lepszy-cukiernik'&&typeof illustration==='string'&&/^cukiernik-ilustracja-(0[1-9]|[1-4][0-9]|50)$/.test(illustration);
- const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration)||pastrySvg);
+ // Original illustrations are tied to one exact course and lesson; no arbitrary file paths.
+ const editorialSvg=illustration==='lesson-visual-'+courseSlug+'-'+String(lessonNo+1).padStart(3,'0');
+ const validSvg=typeof illustration==='string'&&(imageNames.has(illustration)||masteryImages.has(illustration)||deeperCraftImages.has(illustration)||secondLessonImages.has(illustration)||pastrySvg||editorialSvg);
  const file=volunteerImage?.file??(validSvg?illustration+'.svg':null);
  const isAutoCAD=courseSlug==='autocad-skroty';
  // Do not repeat a screenshot on each CAD page. Original UI only in the optional
@@ -57,7 +59,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     source={{uri:'/academy/assets/'+file}}
     onError={()=>setFailed(true)}
     resizeMode="contain"
-    style={{width:'100%',aspectRatio:pastrySvg?16/9:undefined,height:pastrySvg?undefined:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
+    style={{width:'100%',aspectRatio:(pastrySvg||editorialSvg)?16/9:undefined,height:(pastrySvg||editorialSvg)?undefined:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
    />
   </View>}
   {!!visual?.entries?.length&&<Visual {...visual}/>}
