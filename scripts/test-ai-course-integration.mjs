@@ -33,7 +33,7 @@ for(let i=1;i<=32;i++){
  assert(svg.includes('xmlns="http://www.w3.org/2000/svg"'),'Broken SVG '+id);
  assert(svg.includes('viewBox="0 0 1280 720"'),'Wrong aspect ratio '+id);
  assert(svg.includes('</svg>'),'Unclosed image '+id);
- assert(!/<image\b|<foreignObject\b|<script\b|https?:\/\//.test(svg),'External media or code in image '+id);
+ assert(!/<image\b|<foreignObject\b|<script\b|https?:\/\//.test(svg.replace('xmlns="http://www.w3.org/2000/svg"','')),'External media or code in image '+id);
  const hash=createHash('sha256').update(svg).digest('hex');
  assert(!hashes.has(hash),'Repeated artwork '+id);
  hashes.add(hash);
