@@ -1,0 +1,408 @@
+{
+  "date": "2026-11-17",
+  "scope": "36 of 64 independent simulated specialty checks, not real professional appointments",
+  "reviews": [
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 8,
+      "reviewer_profile": "Psycholog więzi rodzic–dziecko",
+      "advanced_case": "Dziecko zaprasza do pokazania modelu przez 20 minut, rodzic planował spacer. Czy ważniejsze jest sztywne dotrzymanie planu?",
+      "expected_resolution": "Nie. Uzgodnij z dzieckiem wspólną, bezpieczną aktywność i odłóż telefon; nie uzależniaj uwagi od ocen ani nagród.",
+      "required_fix": "Dodaj obserwowalny wskaźnik zaangażowania rodzica: brak multitaskingu, pytanie o wybór i podsumowanie bez oceniania uczuć dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 9,
+      "reviewer_profile": "Specjalista regulacji emocji dzieci",
+      "advanced_case": "Dziecko po przegranej rzuca kontrolerem. Jak odróżnić akceptację emocji od zgody na przemoc?",
+      "expected_resolution": "Nazwij frustrację bez zawstydzania, zatrzymaj rzucanie i zapewnij bezpieczeństwo; po uspokojeniu wróć do ustalenia sposobu działania.",
+      "required_fix": "Doprecyzuj kolejność: bezpieczeństwo, uznanie emocji, granica, możliwość naprawy. Nie nazywaj złości chorobą ani cechą charakteru.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 10,
+      "reviewer_profile": "Pedagog uczenia samodzielności",
+      "advanced_case": "Dziecko prosi o pomoc z konstrukcją, po dwóch błędach rodzic chce wykonać wszystko sam. Co zrobić?",
+      "expected_resolution": "Sprawdź, co już próbowało, wskaż małą podpowiedź i oddaj mu wykonanie; przejmij zadanie tylko w razie zagrożenia lub gdy pomoc jest konieczna.",
+      "required_fix": "Ucz rozróżniania stopni podpowiedzi: pytanie naprowadzające, pokazanie fragmentu, działanie wspólne. Nie nagradzaj rodzica za szybkość kosztem nauki dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 11,
+      "reviewer_profile": "Edukator higieny cyfrowej rodziny",
+      "advanced_case": "Rodzic zabrania telefonu przy kolacji, lecz sam stale odbiera maile. Jak przeformułować regułę?",
+      "expected_resolution": "Wprowadź wspólną zasadę bez ekranów i jawny wyjątek dla pilnego kontaktu, wyjaśniając go wszystkim.",
+      "required_fix": "Nie proponuj jednego uniwersalnego limitu minut dla każdego wieku; obserwuj sen, funkcjonowanie i kontakt, a nie tylko stoper.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 12,
+      "reviewer_profile": "Psycholog konsultacji szkolnych dzieci",
+      "advanced_case": "Po szkole dziecko odpowiada «normalnie» i wycofuje się do pokoju. Czy to dowód problemu psychicznego?",
+      "expected_resolution": "Nie. Uszanuj odpoczynek, zaoferuj kontakt w innym momencie; przy rzeczywistych sygnałach ryzyka szukaj adekwatnej pomocy.",
+      "required_fix": "Ujmij brak rozmowy jako możliwą, nie jedyną interpretację. Nie ucz wchodzenia w telefon dziecka lub przesłuchiwania bez przesłanek.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 13,
+      "reviewer_profile": "Mediator rodzinny opieki naprzemiennej",
+      "advanced_case": "Rodzic chce przez dziecko przesłać zmianę godziny odbioru 17:00 na 17:30. Kto odpowiada za potwierdzenie?",
+      "expected_resolution": "Dorośli bezpośrednio, w bezpiecznym kanale. Nie obciążaj dziecka rolą posłańca lub dowodu w sporze.",
+      "required_fix": "Dodaj zapis daty, godziny, miejsca i osoby potwierdzającej; w sytuacji przemocy zastrzeżenie o bezpiecznej komunikacji przez wyznaczony kanał.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 14,
+      "reviewer_profile": "Specjalista komunikacji naprawczej z dzieckiem",
+      "advanced_case": "Tata krzyknął. Czy przeprosiny «Przepraszam, ale mnie sprowokowałeś» są wystarczające?",
+      "expected_resolution": "Nie. Rodzic nazywa własny błąd bez «ale», bierze odpowiedzialność i proponuje zmianę zachowania. Dziecko nie musi od razu wybaczyć.",
+      "required_fix": "W quizie wymagaj rozpoznania odpowiedzialności dorosłego, a w dodatkowym zadaniu zapisu obserwowalnego kroku naprawy zamiast obietnicy «już nigdy».",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 15,
+      "reviewer_profile": "Psycholog rozwoju i prywatności nastolatka",
+      "advanced_case": "Piętnastolatek wraca z treningu o 20:30 i nie chce ciągłego śledzenia GPS. Jak pogodzić autonomię i bezpieczeństwo?",
+      "expected_resolution": "Uzgodnij godzinę, kontakt przy zmianie planu i plan awaryjny adekwatny do ryzyka. Nie instaluj ukrytego nadzoru jako automatycznej reguły.",
+      "required_fix": "Rozróżnij porozumienie z nastolatkiem od wyjątków w przypadku zagrożenia. Nie sugeruj, że prywatność znika przez samo niepełnoletnie dziecko.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 16,
+      "reviewer_profile": "Pedagog współpracy rodziny ze szkołą",
+      "advanced_case": "Nauczyciel zgłasza trzy braki, dziecko nie rozumiało zadań. Jaki jest pierwszy krok: kara czy diagnoza sytuacji?",
+      "expected_resolution": "Rozmowa o konkretnych trudnościach, sprawdzenie instrukcji i mały uzgodniony plan ze szkołą; bez przypisywania winy.",
+      "required_fix": "Dodaj przykład pytania o format zadania, dostęp do materiałów i sposób sprawdzenia postępu. Nie zamieniaj oceny w etykietę dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 17,
+      "reviewer_profile": "Mediator konfliktów między rodzeństwem",
+      "advanced_case": "Dwoje dzieci spiera się o rower; jedno musi jechać na trening. Jak rozwiązać konflikt bez etykiety «samolub»?",
+      "expected_resolution": "Zatrzymaj przepychanki, wysłuchaj obie strony i uzgodnij sprawdzalną kolejność z uwzględnieniem realnych terminów.",
+      "required_fix": "Dodaj kryterium: obie strony mają możliwość wypowiedzi, zasada jest wykonalna i nie wymaga stałego arbitra. Nie ustalaj winy z góry.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 18,
+      "reviewer_profile": "Psycholog motywacji młodzieży w sporcie",
+      "advanced_case": "Dziecko nie dostało się do drużyny. Czy obietnica «za rok na pewno wygrasz» jest wspierająca?",
+      "expected_resolution": "Nie. Nazwij rozczarowanie i wspólnie oceń małe kroki pozostające pod kontrolą dziecka, bez gwarancji wyniku i bez przymusu treningu.",
+      "required_fix": "W ćwiczeniu oddziel feedback o procesie od obietnic wyniku; zapisz dwie opcje, w tym prawo dziecka do odpoczynku lub rezygnacji.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "lepszy-tata",
+      "lesson_no": 19,
+      "reviewer_profile": "Trener umiejętności rodzicielskich i ewaluacji nawyków",
+      "advanced_case": "Po miesiącu dziecko proponuje gotowanie zamiast spacerów. Czy zmiana aktywności to porażka planu 90 dni?",
+      "expected_resolution": "Nie. Zmień formę, zachowując regularny kontakt i uzgodnione granice. Mierz własną dostępność, nie wdzięczność dziecka.",
+      "required_fix": "W programie 90 dni dodaj cotygodniową refleksję rodzica i możliwość korekty na podstawie preferencji dziecka; bez formularza oceniania dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 12,
+      "reviewer_profile": "Projektant procesów porządkowych w domu",
+      "advanced_case": "Rano jest nieporządek mimo wieczornego «posprzątane». Jak znaleźć przyczynę bez wskazywania winnego?",
+      "expected_resolution": "Zdefiniuj widoczny stan po kolacji i jeden prosty krok po określonym zdarzeniu; obserwuj proces przez tydzień.",
+      "required_fix": "Przygotuj checklistę rzeczywiście sprawdzalnego rezultatu, a nie ocenę charakteru domowników. Liczy się przepływ rzeczy i czas ich odkładania.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 13,
+      "reviewer_profile": "Psycholog podziału obciążenia mentalnego",
+      "advanced_case": "Jedna osoba myje łazienkę, druga pilnuje zapasów, terminu i przypomnień. Kto wykonuje niewidzialną część pracy?",
+      "expected_resolution": "Ta, która planuje, pamięta i organizuje. Równy podział zadań powinien uwzględniać także plan i monitorowanie.",
+      "required_fix": "Oddziel wykonawcę od osoby odpowiedzialnej za całość zadania; unikaj liczenia jedynie minut fizycznego sprzątania.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 14,
+      "reviewer_profile": "Specjalista planowania czasu rodziny",
+      "advanced_case": "Wyjście 7:30, podstawowe czynności 35 min, bufor 10 min. Kiedy najpóźniej rozpocząć?",
+      "expected_resolution": "O 6:45, jeśli te czasy są realistyczne i nie obejmują czynności dodatkowych. Co można przygotować wieczorem?",
+      "required_fix": "Dodaj rozróżnienie działań sekwencyjnych i równoległych; prosta suma nie dowodzi, że cały plan jest wykonalny dla wszystkich domowników.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 15,
+      "reviewer_profile": "Koordynator rodzinnych planów awaryjnych",
+      "advanced_case": "Rodzic choruje, a na tydzień zaplanowano 10 prac domowych. Czy wykonanie wszystkich jest obowiązkiem?",
+      "expected_resolution": "Nie. Zabezpiecz minimum higieny, jedzenia i opieki, rozdziel pomoc i przełóż bezpiecznie resztę.",
+      "required_fix": "Rozdziel zadania krytyczne od kosmetycznych i dostosuj role do wieku oraz dostępności domowników; nie używaj kar za chorobę.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 16,
+      "reviewer_profile": "Ekspert bezpiecznej chemii gospodarczej",
+      "advanced_case": "W szafce stoi odkamieniacz i środek chlorowy. Domownik chce je zmieszać dla silniejszego działania. Co robisz?",
+      "expected_resolution": "Nie miesza się środków na własną rękę, zwłaszcza produktów chlorowych z kwasami; należy czytać etykiety i przechowywać chemikalia poza dostępem dzieci.",
+      "required_fix": "Rozszerz wskazówki o zakaz mieszania chemikaliów, oryginalne opakowania i wentylację zgodnie z instrukcją. Stałe miejsce sprzętu nie zwalnia z kontroli substancji.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 17,
+      "reviewer_profile": "Pedagog obowiązków dopasowanych do wieku",
+      "advanced_case": "Dziecko nakryło stół, ale zapomniało dwóch łyżek. Czy należy zabrać mu zadanie?",
+      "expected_resolution": "Nie. Pokaż prostą samokontrolę, pozwól poprawić pomyłkę i dostosuj trudność bezpiecznie do wieku.",
+      "required_fix": "Daj przykład pozytywnej informacji zwrotnej o wykonaniu i jednej rzeczy do uzupełnienia; nie włączaj dzieci do kontaktu z ostrą chemią.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 18,
+      "reviewer_profile": "Ekonomista kosztów eksploatacji domu",
+      "advanced_case": "Środek 750 ml kosztuje 15 zł, inny 1 litr kosztuje 18 zł. Który jest tańszy na litr i czy zawsze lepiej go kupić?",
+      "expected_resolution": "750 ml wychodzi 20 zł/l, 1 l — 18 zł/l. Większe opakowanie jest tańsze jednostkowo, ale zakup wymaga realnego zużycia i bezpiecznego składowania.",
+      "required_fix": "Dodaj obliczenie 15/0,75=20 i porównanie z 18; rozdziel cenę jednostkową od całkowitej oszczędności oraz kosztów przechowywania.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "obowiazki-domowe",
+      "lesson_no": 19,
+      "reviewer_profile": "Audytor ergonomii i sprawiedliwości podziału obowiązków",
+      "advanced_case": "Wykonanie prac wzrosło z 60% do 83%, ale jeden domownik jest przeciążony. Czy plan jest optymalny?",
+      "expected_resolution": "Nie można tego uznać tylko na podstawie procentu. Oceń wynik oraz rozkład pracy i ustal jedną korektę.",
+      "required_fix": "Rozdziel jakość wykonania, realny czas, liczbę przypomnień i obciążenie uczestników. Wzrost wykonania nie jest automatyczną miarą dobrostanu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 16,
+      "reviewer_profile": "Mistrz doboru wikliny i konstrukcji splotu",
+      "advanced_case": "Kosz zakupowy projektowany jest według barwy prętów, bez sprawdzenia uchwytu. Czy to bezpieczne?",
+      "expected_resolution": "Nie. Oceń stan, giętkość, splot konstrukcyjny, mocowanie uchwytu i zamierzone obciążenia.",
+      "required_fix": "Dopisz rozróżnienie prętów dna, ścian i obrzeża; nie deklaruj nośności bez sprawdzenia całej konstrukcji i odpowiednich prób.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 17,
+      "reviewer_profile": "Kontroler geometrii wyrobów plecionkarskich",
+      "advanced_case": "Kosz ma w osiach 300 i 318 mm. Czy 18 mm różnicy można zignorować, bo nie widać jej na zdjęciu?",
+      "expected_resolution": "Nie. Zmierz ponownie po ustaleniu orientacji i porównaj z szablonem; skoryguj przed zamknięciem splotu, jeśli projekt tego wymaga.",
+      "required_fix": "Wstaw tabelę średnic i wysokości w czterech punktach oraz wyjaśnij, że tolerancję dla rzemiosła trzeba uzgodnić, a nie przyjąć automatycznie.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 18,
+      "reviewer_profile": "Konserwator wyrobów z włókien roślinnych",
+      "advanced_case": "Uchwyt kosza pękł, a na dnie widać oznaki wilgoci i podejrzany nalot. Czy wystarczy zakleić uchwyt?",
+      "expected_resolution": "Nie. Oceń splot, sąsiednie pręty, połączenia i ewentualne skażenie; przy niepotwierdzonej higienie nie polecaj zwykłego dalszego użytkowania.",
+      "required_fix": "Dodaj rozdzielenie wad konstrukcyjnych i higienicznych; przypadkowy klej ani przetarcie nie zastępują oceny wilgotności i stanu wyrobu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "plecionkarz",
+      "lesson_no": 19,
+      "reviewer_profile": "Projektant bezpiecznych wyrobów wiklinowych",
+      "advanced_case": "Kosz dekoracyjny ma nosić ciężkie narzędzia. Czy zmiana przeznaczenia jest możliwa bez testów?",
+      "expected_resolution": "Nie. Powinna być poprzedzona odrębną specyfikacją i oceną mocowania uchwytów oraz nośności.",
+      "required_fix": "W protokole podkreśl różnicę między dekoracją a wyrobem użytkowym, z przeznaczeniem i ograniczeniami. Nie przepisuj udźwigu z wizualnie podobnego kosza.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 8,
+      "reviewer_profile": "Pedagog animacji dziecięcej i bezpiecznego powitania",
+      "advanced_case": "Dziewczynka chowa się za opiekunem, grupa macha. Czy animator ma podejść bezpośrednio, by ją «ośmielić»?",
+      "expected_resolution": "Nie. Przywitaj grupę spokojnie, zachowaj dystans i pozwól dziecku obserwować z opiekunem lub dołączyć później.",
+      "required_fix": "Wskaż oznaki dyskomfortu, zakaz przymusu przytulenia i miejsce dla obserwatorów. Odmowa kontaktu nie pozbawia prawa do prezentu.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 9,
+      "reviewer_profile": "Specjalista zapobiegania wykluczeniu dzieci",
+      "advanced_case": "Dziecko z mniejszą paczką pyta, czy jest mniej ważne. Jak odpowiedzieć bez publicznego porównywania?",
+      "expected_resolution": "Uznaj jego uczucie, nie oceniaj wartości dziecka przez prezent i dyskretnie sprawdź ewentualną pomyłkę z opiekunem.",
+      "required_fix": "Usuń obietnice dodatkowej paczki bez uzgodnienia oraz publiczne wyjaśnianie budżetu rodzin. Zachowaj poufność ustaleń organizatora.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 10,
+      "reviewer_profile": "Specjalista komunikacji alternatywnej i wspomagającej AAC",
+      "advanced_case": "Dziecko nie mówi, lecz używa kart z obrazkami. Czy animator może traktować milczenie jako zgodę?",
+      "expected_resolution": "Nie. Zaproponuj dwie dostępne możliwości, daj czas na wskazanie i zachowaj prawo do obserwacji lub rezygnacji.",
+      "required_fix": "Wyraźnie rozdziel brak wypowiedzi od braku zrozumienia. Nie zmuszaj do kontaktu słownego i nie diagnozuj umiejętności dziecka.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 11,
+      "reviewer_profile": "Inspektor ochrony danych i wizerunku małoletnich",
+      "advanced_case": "Rodzic zgodził się na zdjęcie prywatne, organizator chce wrzucić je publicznie. Czy taka zgoda wystarcza?",
+      "expected_resolution": "Nie. Publikacja wymaga osobnej, uprzedniej i konkretnej podstawy oraz poszanowania wieku i zdania dziecka.",
+      "required_fix": "Wyjaśnij wymagania UODO: cel, konkretna platforma, odbiorca, okres i możliwość cofnięcia zgody. Zdjęcie dla rodziny nie jest automatyczną zgodą na profil publiczny.",
+      "source_urls": [
+        "https://uodo.gov.pl/pl/644/4111",
+        "https://brpd.gov.pl/2026/08/23/zgody-blankietowe-rpd-przypomina-o-ochronie-wizerunku-dzieci/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 12,
+      "reviewer_profile": "Koordynator ochrony dzieci w placówkach edukacyjnych",
+      "advanced_case": "Podczas wizyty jedno dziecko prosi o wyjście, w sali jest dwóch pracowników i animator. Kto decyduje?",
+      "expected_resolution": "Wyznaczony personel placówki; animator utrzymuje uzgodnioną rolę i nie wyprowadza dziecka sam.",
+      "required_fix": "Dopisz podział ról opiekun–animator–pomocnik i zasady przekazywania dziecka bez ujawniania danych przed grupą.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 13,
+      "reviewer_profile": "Terapeuta integracji sensorycznej — projektowanie spokojnego udziału",
+      "advanced_case": "Muzyka gra głośniej, dziecko zasłania uszy i wycofuje się. Czy należy kontynuować do końca utworu?",
+      "expected_resolution": "Nie. Natychmiast ścisz lub wyłącz dźwięk i pozwól na przerwę z opiekunem.",
+      "required_fix": "W ćwiczeniu rozpoznawaj widoczne zachowanie bez stawiania diagnozy sensorycznej. Dodaj przygotowaną cichą alternatywę dla całej grupy.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 14,
+      "reviewer_profile": "Psycholog komunikacji wspierającej dziecko w kryzysie",
+      "advanced_case": "Dziecko prosi o obietnicę powrotu taty na święta. Czy animator powinien uspokoić pewną obietnicą?",
+      "expected_resolution": "Nie. Uznaj tęsknotę, nie obiecuj rzeczy nieznanych i włącz zaufanego opiekuna.",
+      "required_fix": "Doprecyzuj granice roli animatora; nie zbieraj szczegółów rodzinnych przy innych dzieciach ani nie zastępuj specjalistycznego wsparcia.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 15,
+      "reviewer_profile": "Pedagog zabawy symbolicznej i różnic wieku",
+      "advanced_case": "Dziesięciolatek rozpoznaje sąsiada w kostiumie. Czy można wymagać od niego milczenia w zamian za nagrodę?",
+      "expected_resolution": "Nie. Uznaj spostrzeżenie, uszanuj poglądy dziecka i zaproponuj udział w zabawie bez manipulowania.",
+      "required_fix": "Nie stawiaj starszego dziecka w roli «psującego magię» ani «strażnika tajemnicy»; rodziny różnie opowiadają o Mikołaju.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 16,
+      "reviewer_profile": "Edukator ekologiczny materiałów bezpiecznych dla dzieci",
+      "advanced_case": "Został czysty papier z odzysku i kredki. Czy do zabawy można używać opakowań ze zszywkami i resztkami środków?",
+      "expected_resolution": "Nie. Reużycie nie znosi kontroli czystości, ostrości i zgodności z wiekiem uczestników.",
+      "required_fix": "Zaproponuj plan zajęć dostępny także dla dzieci, które wolą słuchać. Nie stawiaj warunku kupienia nowych przyborów.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 17,
+      "reviewer_profile": "Instruktor reagowania na zdarzenia i pierwszej pomocy dzieciom",
+      "advanced_case": "Dziecko upadło, ma silny ból i nie może wstać. Animator chce przesadzić je na krzesło, żeby zrobić miejsce. Co zrobić?",
+      "expected_resolution": "Przerwij wizytę, odgrodź grupę, wezwij właściwą pomoc i nie przemieszczaj dziecka bez uzasadnionej potrzeby bezpieczeństwa; ocenę urazu powierz przygotowanym osobom.",
+      "required_fix": "W przypadkach urazów nie zachęcaj animatora do samodzielnej diagnostyki ani rutynowego przenoszenia poszkodowanego. Przy zagrożeniu życia w Polsce korzystaj z numeru 112.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 18,
+      "reviewer_profile": "Planista logistyki wydarzeń dziecięcych",
+      "advanced_case": "Z 20 minut programu zostało 10, a paczki zajmują 8 minut. Co skreślić?",
+      "expected_resolution": "Zachowaj minutę powitania, spokojne 8 minut przekazania paczek i minutę zamknięcia; usuń piosenkę i zdjęcia.",
+      "required_fix": "Wprowadź tabelę czasu i regułę, że skracanie atrakcji nie może wymuszać dotyku, zdjęć ani pośpiesznego wydawania paczek.",
+      "source_urls": [],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    },
+    {
+      "slug": "swiety-mikolaj",
+      "lesson_no": 19,
+      "reviewer_profile": "Audytor standardów imprez i prawa dziecka do odmowy",
+      "advanced_case": "Organizator chce zdjęcia całej grupy, dziecko odmawia. Czy można wstrzymać prezent do zdjęcia?",
+      "expected_resolution": "Nie. Zaoferuj przekazanie prezentu poza kadrem, a organizatorowi ujęcie scenografii lub grupy osób z właściwą podstawą publikacji.",
+      "required_fix": "Sprawdzian ma oceniać dostępność udziału, zgodę i dokumentację, nie jedynie wykonanie zdjęcia. Uwzględnij wycofanie zgody oraz zdanie dziecka.",
+      "source_urls": [
+        "https://uodo.gov.pl/pl/644/4111",
+        "https://brpd.gov.pl/2026/08/23/zgody-blankietowe-rpd-przypomina-o-ochronie-wizerunku-dzieci/"
+      ],
+      "review_mode": "AI-simulated-specialist-criteria",
+      "human_signoff": false
+    }
+  ]
+}
