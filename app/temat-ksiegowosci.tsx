@@ -203,7 +203,7 @@ export default function TematKsiegowosci(){
       <Text style={s.curiosityTitle}>CIEKAWOSTKA</Text>
       <Text selectable style={s.body}>{section.curiosity.text}</Text>
       {section.curiosity.source_ref?<Text style={s.curiositySource}>Źródło: {section.curiosity.source_ref}</Text>:null}
-      {sourceURL(section.curiosity.source_url)&&/^https:\/\/(eli\.gov\.pl|eur-lex\.europa\.eu|uodo\.gov\.pl|www\.uodo\.gov\.pl)\//i.test(section.curiosity.source_url)?<Pressable accessibilityRole="link" onPress={()=>Linking.openURL(section.curiosity.source_url)}><Text style={s.link}>Sprawdź źródło urzędowe</Text></Pressable>:null}
+      {sourceURL(section.curiosity.source_url)&&/^https:\/\/(eli\.gov\.pl|eur-lex\.europa\.eu|uodo\.gov\.pl|www\.uodo\.gov\.pl|ksef\.podatki\.gov\.pl)\//i.test(section.curiosity.source_url)?<Pressable accessibilityRole="link" onPress={()=>Linking.openURL(section.curiosity.source_url)}><Text style={s.link}>Sprawdź źródło urzędowe</Text></Pressable>:null}
     </View>:null}
     <SectionPhoto photo={section.photo}/>
    </View>)}
