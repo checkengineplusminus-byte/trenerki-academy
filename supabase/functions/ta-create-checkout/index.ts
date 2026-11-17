@@ -19,6 +19,8 @@ Deno.serve(async req=>{
   const slug=String(body?.course_slug||'');
   if(!/^[a-z0-9][a-z0-9_-]{1,79}$/.test(slug))return reply({error:'invalid_course'},400);
   const isGift=body?.kind==='gift';
+  const referralCode=typeof body?.referral_code==='string'?body.referral_code.trim().toUpperCase():'';
+  if(referralCode&&!/^TA[A-F0-9]{12}$/.test(referralCode))return reply({error:'invalid_referral_code'},400);
   const recipient=typeof body?.recipient_email==='string'?body.recipient_email.trim().toLowerCase():'';
   if(isGift&&(recipient.length>190||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(recipient)))return reply({error:'invalid_recipient_email'},400);
   if(body?.accepted_terms!==true||(!isGift&&body?.immediate_content_consent!==true))return reply({error:'consent_required'},400);
@@ -31,6 +33,15 @@ Deno.serve(async req=>{
   if(priceError||!Number.isInteger(checkoutAmount)||checkoutAmount<200||checkoutAmount>course.price_grosze)
    return reply({error:'pricing_unavailable'},503);
   if(body?.terms_version!==termsVersion||body?.expected_price_grosze!==checkoutAmount)return reply({error:'quote_changed'},409);
+  let referredPartner:any=null;
+  if(referralCode&&!isGift){
+   const {data:partner,error:partnerError}=await admin.from('ta_affiliate_partners').select('id,user_id')
+    .eq('code',referralCode).eq('status','active').maybeSingle();
+   if(partnerError)return reply({error:'referral_unavailable'},503);
+   if(!partner)return reply({error:'invalid_referral_code'},400);
+   if(partner.user_id===user.id)return reply({error:'self_referral_not_allowed'},403);
+   referredPartner=partner;
+  }
   if(!isGift){
   const {data:already,error:alreadyError}=await admin.from('ta_enrollments').select('id').eq('user_id',user.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
   if(alreadyError)return reply({error:'database_unavailable'},503);
@@ -72,6 +83,10 @@ Deno.serve(async req=>{
    'metadata[immediate_content_consent]':String(!giftId)
   });
   if(giftId)p.set('metadata[gift_id]',giftId);
+  if(referredPartner){
+   p.set('metadata[ta_affiliate_partner_id]',referredPartner.id);
+   p.set('metadata[ta_affiliate_code]',referralCode);
+  }
   const response=await fetch('https://api.stripe.com/v1/checkout/sessions',{
     method:'POST',
     headers:{Authorization:'Bearer '+stripe,'content-type':'application/x-www-form-urlencoded'},
@@ -80,6 +95,14 @@ Deno.serve(async req=>{
   if(!response.ok)return reply({error:'payment_provider_unavailable'},502);
   const result=await response.json();
   if(typeof result?.url!=='string'||!result.url.startsWith('https://checkout.stripe.com/'))return reply({error:'payment_provider_unavailable'},502);
+  if(referredPartner){
+   // Immutable attribution bound to Stripe's newly created checkout session, not a client claim.
+   const {error:attributionError}=await admin.from('ta_affiliate_attributions').insert({
+    partner_id:referredPartner.id,buyer_user_id:user.id,course_slug:slug,stripe_session_id:result.id
+   });
+   // Never send the buyer to a checkout that can't credit their referring partner.
+   if(attributionError)return reply({error:'affiliate_attribution_unavailable'},503);
+  }
   return reply({url:result.url});
  }catch(_){return reply({error:'checkout_unavailable'},500)}
 });
