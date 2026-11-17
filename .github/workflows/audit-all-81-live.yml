@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '22'
       - name: Inspect every course card, lesson count, price, public outline and photo
-        run: node scripts/audit-public-course-pages.mjs
+        run: node scripts/audit-public-course-pages.mjs --strict
       - name: Retain complete static audit
         if: always()
         uses: actions/upload-artifact@v4
@@ -45,4 +45,34 @@ jobs:
         with:
           name: trenerki-all-courses-live-audit
           path: /tmp/trenerki-course-audit/live.json
+          if-no-files-found: ignore
+  browser_81:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install app and Chromium test runner
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Build the entire real application
+        run: npx expo export --platform web --output-dir /tmp/trenerki-full-course-audit
+        env:
+          EXPO_NO_TELEMETRY: '1'
+      - name: Open all 81 courses and verify first lesson, real controls, quiz, progression and return
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-full-course-audit >/tmp/trenerki-full-course-http.log 2>&1 &
+          sleep 2
+          TRENERKI_INTRO_CATALOG_ONLY=1 TRENERKI_VIEWPORT=desktop node scripts/learning-browser.mjs http://127.0.0.1:8787
+          TRENERKI_INTRO_CATALOG_ONLY=1 TRENERKI_VIEWPORT=mobile node scripts/learning-browser.mjs http://127.0.0.1:8787
+      - name: Preserve browser diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-all-courses-browser-diagnostics
+          path: /tmp/trenerki-lessons-*.png
           if-no-files-found: ignore
