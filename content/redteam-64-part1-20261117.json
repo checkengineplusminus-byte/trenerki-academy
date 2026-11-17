@@ -1,0 +1,398 @@
+{
+  "date": "2026-11-17",
+  "role": "adversarial critique",
+  "reviews": [
+    {
+      "slug": "bednarz",
+      "lesson_no": 16,
+      "question": "Po szczelnym teście wodą klient chce wpisać w karcie «bezpieczna do soku». Co jest wadą tego wniosku?",
+      "correct": "Brak potwierdzenia materiałów, powłok i historii użycia; wynik szczelności opisuje tylko szczelność.",
+      "wrongs": [
+        "Wystarczy przedłużyć test szczelności o dobę i dopisać wyniki.",
+        "Wystarczy wyparzyć beczkę i odnotować brak zapachu.",
+        "Zapis «na własną odpowiedzialność» zastępuje kontrolę materiałów."
+      ],
+      "flaw": "Pomieszanie szczelności konstrukcyjnej z higieną produktu.",
+      "evidence": "Identyfikacja materiałów, powłok, wcześniejszego zastosowania i dokumentów kontaktu z żywnością.",
+      "severity": "critical"
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 17,
+      "question": "Do 25 gotowych klepek przy 80% uzysku kupiec zamawia 31 sztuk. Jak audytor oceni rachunek?",
+      "correct": "31 sztuk nie wystarczy według tego założenia: 25/0,80 = 31,25, więc planuj co najmniej 32 półfabrykaty.",
+      "wrongs": [
+        "31 jest wystarczające, bo końcówkę 0,25 się pomija.",
+        "30 wystarcza, ponieważ 20% z 25 to pięć odpadów.",
+        "32 gwarantuje wynik bez ryzyka, więc nie trzeba rejestrować strat."
+      ],
+      "flaw": "Niewłaściwe zaokrąglenie liczby sztuk lub traktowanie oczekiwanego uzysku jako gwarancji.",
+      "evidence": "Wzór 25/0,8, zaokrąglenie w górę i osobny bilans rzeczywistych odrzutów.",
+      "severity": "high"
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 18,
+      "question": "Beczka po renowacji jest szczelna, ale nieznany jest lakier wnętrza. Jak sformułować ofertę?",
+      "correct": "Nie deklarować przydatności do napojów; ograniczyć przeznaczenie do potwierdzonego i żądać dokumentacji materiałowej.",
+      "wrongs": [
+        "Oznaczyć jako spożywczą po samym wietrzeniu i płukaniu.",
+        "Załączyć zdjęcia wnętrza, a kwestię powłoki pominąć.",
+        "Umieścić w opisie «naturalne drewno», uznając to za dowód."
+      ],
+      "flaw": "Brak identyfikowalności materiału i nieuprawniona deklaracja żywnościowa.",
+      "evidence": "Dane lakieru i materiału, identyfikowalność oraz wymagania właściwe dla deklarowanego kontaktu z żywnością.",
+      "severity": "critical"
+    },
+    {
+      "slug": "bednarz",
+      "lesson_no": 19,
+      "question": "Protokół beczki zawiera 10 pomiarów, lecz puste pole «przeznaczenie». Czy to pełny odbiór?",
+      "correct": "Nie: bez przeznaczenia nie wiadomo, które kryteria bezpieczeństwa i użytkowania należało sprawdzić.",
+      "wrongs": [
+        "Tak, bo liczba wykonanych pomiarów sama potwierdza funkcję.",
+        "Tak, jeśli klient pisemnie zaakceptuje wygląd wyrobu.",
+        "Tak, jeśli dopisze się uniwersalny limit obciążenia."
+      ],
+      "flaw": "Protokół bez funkcji wyrobu może sugerować nieprzeprowadzoną kontrolę.",
+      "evidence": "Opis zastosowania, rodzaj materiału, wymagane pomiary, ograniczenia i identyfikacja osoby odbierającej.",
+      "severity": "high"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 8,
+      "question": "Na palecie detale B, na serwerze rewizja C oznaczona «do koordynacji». Czy można już montować według C?",
+      "correct": "Nie; trzeba ustalić wydaną do realizacji rewizję, zakres zmian i zgodność dostawy przed montażem.",
+      "wrongs": [
+        "Tak, bo każda litera C jest z definicji wydaniem do montażu.",
+        "Można montować B, jeśli ilość sztuk odpowiada zamówieniu.",
+        "Można łączyć B i C, jeśli wymiary na pierwszy rzut oka pasują."
+      ],
+      "flaw": "Data lub litera rewizji bez statusu dokumentu nie oznacza zatwierdzenia.",
+      "evidence": "Rejestr wydań, numer detalu, status dokumentu i pisemne wyjaśnienie różnic.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 9,
+      "question": "Laser na +700 mm względem zera. Punkt jest 250 mm poniżej wiązki. Jaka rzędna punktu?",
+      "correct": "+450 mm względem tego samego zera, ponieważ +700 mm − 250 mm = +450 mm.",
+      "wrongs": [
+        "+950 mm, ponieważ offset trzeba doliczyć do odczytu.",
+        "−450 mm, ponieważ odległość od lasera zawsze jest ujemna.",
+        "+450 mm i jeszcze −700 mm podczas wpisywania protokołu."
+      ],
+      "flaw": "Podwójne uwzględnienie offsetu lub pomieszanie osi i znaków.",
+      "evidence": "Szkic zera, położenie lasera, kierunek odczytu i sprawdzenie znaku wyniku.",
+      "severity": "high"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 10,
+      "question": "Wynik elementu to +8 mm, lecz tolerancji w zatwierdzonej dokumentacji brak. Jak brzmieć powinien status?",
+      "correct": "«Wynik +8 mm; zgodność nieustalona — wymagana specyfikacja i decyzja uprawnionej osoby».",
+      "wrongs": [
+        "«Zgodny, bo +8 mm w budowlance jest typowe».",
+        "«Niezgodny, do poprawy o 8 mm», bez sprawdzenia połączenia.",
+        "«Zgodny pod warunkiem, że przyjmiemy ±10 mm»."
+      ],
+      "flaw": "Zamiana pomiaru w ocenę zgodności bez kryterium.",
+      "evidence": "Źródło tolerancji, stan montażu, zapis pomiaru i decyzja zatwierdzająca.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 11,
+      "question": "Zmiana frontu na klatkę B pozwoli dotrzymać terminu, ale instalatorzy są tam w tym samym czasie. Które rozwiązanie jest wykonalne?",
+      "correct": "Uzgodnienie czasu i granic strefy między ekipami wraz z aktualizacją oceny ryzyka oraz harmonogramu.",
+      "wrongs": [
+        "Wysłanie obu ekip z poleceniem wzajemnego ustępowania.",
+        "Przeniesienie tylko terminu w ERP bez odprawy na budowie.",
+        "Oznaczenie miejsca jako wolnego, jeżeli nie ma tam materiału."
+      ],
+      "flaw": "Pomylenie dostępności harmonogramowej z faktycznym bezpiecznym dostępem.",
+      "evidence": "Odprawa obu ekip, uzgodnione okno, osoba odpowiedzialna i zapis przekazania.",
+      "severity": "high"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 12,
+      "question": "Dźwig ma podnieść jedną z 4 palet o łącznej masie 4,8 t. Czego brak do doboru urządzenia?",
+      "correct": "Mas najcięższej palety, promienia podnoszenia, sposobu zawieszenia, danych sprzętu i podłoża.",
+      "wrongs": [
+        "Średniej masy 1,2 t przy zachowaniu tej samej liczby palet.",
+        "Samej nominalnej masy całej ciężarówki i czasu rozładunku.",
+        "Tylko potwierdzenia, że kierowca ma uprawnienia kategorii C."
+      ],
+      "flaw": "Użycie średniej masy zamiast danych obciążenia konkretnego podnoszenia.",
+      "evidence": "Masy jednostkowe, DOR zawiesi, diagram udźwigu przy promieniu i zabezpieczenie strefy.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 13,
+      "question": "Brak dostępu do podestu, za to jest drabina. Tafla ciężka, dwóch monterów i jedno piętro. Co robi kierujący?",
+      "correct": "Wstrzymuje ten sposób transportu i organizuje bezpieczną metodę dostępu oraz przeniesienia tafli.",
+      "wrongs": [
+        "Dopuszcza drabinę, jeśli obaj monterzy mają kaski.",
+        "Dopuszcza wariant, jeżeli klient zgodzi się ustnie.",
+        "Wybiera drabinę, jeśli cała czynność potrwa mniej niż pięć minut."
+      ],
+      "flaw": "Zastąpienie oceny ryzyka kryterium czasu, kasku lub liczby osób.",
+      "evidence": "Instrukcja sprzętu, analiza transportu szkła, ryzyko upadku i przeszkolenie operatorów.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 14,
+      "question": "Rysa na opakowaniu i wyszczerbiona krawędź tafli trafiają do jednego protokołu. Czy można oznaczyć oba jako «uszkodzenie opakowania»?",
+      "correct": "Nie; uszkodzenie tafli wymaga osobnego oznaczenia, zabezpieczenia i decyzji jakościowej przed montażem.",
+      "wrongs": [
+        "Tak, jeśli w profilu po montażu nie będzie widoczne.",
+        "Tak, jeśli monter sfotografuje tylko całą paletę.",
+        "Tak, jeśli dostawca obieca wymianę po odbiorze."
+      ],
+      "flaw": "Ukrywanie wady szkła w ogólnej etykiecie dostawy.",
+      "evidence": "Zdjęcie i identyfikacja tafli, ocena krawędzi oraz decyzja co do przyjęcia.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 15,
+      "question": "4 pracowników × 7 h obecności, w tym wspólne 1 h czekania. Jak rozdzielić ewidencję?",
+      "correct": "28 rbh obecności = 24 rbh aktywnej pracy i 4 rbh czekania; ewentualne rozliczenie przestoju to osobna sprawa.",
+      "wrongs": [
+        "24 rbh obecności i 4 rbh czasu kalendarzowego.",
+        "28 rbh aktywnej pracy, bo ekipa była na miejscu.",
+        "27 rbh pracy, bo godzinę czekania odejmuje się raz od całej ekipy."
+      ],
+      "flaw": "Mylenie czasu kalendarzowego i sumy godzin wszystkich pracowników.",
+      "evidence": "Liczba osób, godziny faktyczne, rozdział pracy/przestoju i zasada ewidencji.",
+      "severity": "high"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 16,
+      "question": "Przestój 5 rbh × 550 NOK/rbh dał 2750 NOK. Czy w ERP można oznaczyć kwotę jako zaakceptowaną zmianę?",
+      "correct": "Nie: to koszt według przyjętej stawki, który wymaga analizy kontraktu, dowodów i akceptacji rozliczenia.",
+      "wrongs": [
+        "Tak, bo iloczyn jest matematycznie poprawny.",
+        "Tak, jeśli opis przestoju znalazł się w raporcie wewnętrznym.",
+        "Tak, jeśli klient był na budowie w chwili zdarzenia."
+      ],
+      "flaw": "Przekształcenie kalkulacyjnego kosztu w automatyczne roszczenie.",
+      "evidence": "Dokumenty przestoju, warunki kontraktu, tryb zgłoszenia i potwierdzona decyzja.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 17,
+      "question": "Klient zgłosił dwa wsporniki telefonicznie. Czy dokument z kosztorysem sam zatwierdza zmianę?",
+      "correct": "Nie; należy zastosować tryb uzgodnienia i potwierdzenia przewidziany w danym kontrakcie.",
+      "wrongs": [
+        "Tak, jeśli kopia kosztorysu trafiła do wszystkich monterów.",
+        "Tak, jeśli nie otrzymano sprzeciwu w dniu wysłania.",
+        "Tak, jeśli klient miał możliwość obejrzenia detalu na budowie."
+      ],
+      "flaw": "Brak rozdzielenia zgłoszenia i zaakceptowanej zmiany kontraktowej.",
+      "evidence": "Źródło zmiany, wycena, wpływ na termin, wymagany tryb akceptacji i ślad decyzji.",
+      "severity": "critical"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 18,
+      "question": "Wykonano 36/40 m, odebrano 28/40 m. Ile metrów zostało wykonanych, ale nieodebranych?",
+      "correct": "8 m, przy 90% montażu i 70% odbioru; te statusy należy raportować oddzielnie.",
+      "wrongs": [
+        "12 m, bo tyle pozostało do pełnego odbioru.",
+        "4 m, bo tyle nie ukończono w montażu.",
+        "16 m, bo różnica procentowa wynosi 20 punktów."
+      ],
+      "flaw": "Pomieszanie części niezamontowanej z zamontowaną, lecz nieodebraną.",
+      "evidence": "Trzy liczniki: planowane, wykonane, odebrane, ze stanem i datą.",
+      "severity": "high"
+    },
+    {
+      "slug": "brygadzista",
+      "lesson_no": 19,
+      "question": "Brak zatwierdzonego detalu mocowania, a podwykonawca ma bezpieczne zadanie niezależne. Co jest racjonalne?",
+      "correct": "Wstrzymać sporne mocowanie, kontynuować wyłącznie niezależne i bezpieczne prace po koordynacji.",
+      "wrongs": [
+        "Rozpocząć wszystkie mocowania na starszym detalu i później poprawić.",
+        "Wstrzymać cały projekt do czasu potwierdzenia każdego dokumentu.",
+        "Przenieść sporny montaż na inną strefę bez zmiany dokumentacji."
+      ],
+      "flaw": "Fałszywy wybór między niebezpiecznym montażem a całkowitą bezczynnością.",
+      "evidence": "Lista zależności, dopuszczonych zadań, zablokowanych prac i osób decyzyjnych.",
+      "severity": "high"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 12,
+      "question": "VIN z nadwozia i ogłoszenia zgodny, wersja silnika w dokumencie różna. Który wniosek jest uprawniony?",
+      "correct": "To rozbieżność do wyjaśnienia przed transakcją; sama w sobie nie dowodzi oszustwa ani nie znika po raporcie online.",
+      "wrongs": [
+        "Pojazd należy uznać za kradziony bez dalszych ustaleń.",
+        "Jeśli raport VIN się zgadza, dokument silnika nie ma znaczenia.",
+        "Wystarczy zapewnienie sprzedawcy o wymianie silnika, bez dowodu."
+      ],
+      "flaw": "Przypisywanie przyczyny rozbieżności bez dokumentów.",
+      "evidence": "VIN na pojeździe, dokument rejestracyjny, konfiguracja i dokumenty zmian.",
+      "severity": "high"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 13,
+      "question": "Dwa lata temu zapisano 172 tys. km, teraz 163 tys. km. Sprzedający mówi o błędzie wpisu. Co wystarczy?",
+      "correct": "Nie samo wyjaśnienie: należy porównać kolejne wpisy i dokumenty oraz ustalić przyczynę rozbieżności.",
+      "wrongs": [
+        "Wystarczy oświadczenie sprzedawcy i aktualna diagnostyka.",
+        "Wystarczy ocena zużycia kierownicy w czasie oględzin.",
+        "Wystarczy przyjęcie większej wartości bez dalszych dowodów."
+      ],
+      "flaw": "Zastąpienie weryfikacji przebiegu jedną poszlaką lub oświadczeniem.",
+      "evidence": "Chronologia zapisów, faktury serwisowe, odczyty i wiarygodne wyjaśnienie.",
+      "severity": "high"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 14,
+      "question": "EV pokazuje 400 km zasięgu na 100%. Czy z tego wynika SoH akumulatora?",
+      "correct": "Nie; zasięg jest estymacją zależną od warunków, a do oceny baterii potrzeba metody właściwej dla modelu.",
+      "wrongs": [
+        "Tak, jeśli zasięg zmierzono w ciepły dzień przy pełnym naładowaniu.",
+        "Tak, jeśli samochód przejechał tylko krótki odcinek próbny.",
+        "Tak, jeśli nie świeci się kontrolka awarii baterii."
+      ],
+      "flaw": "Przypisywanie wskaźnikowi zasięgu statusu profesjonalnego testu pojemności.",
+      "evidence": "Opis metody testu SoH, warunki i zakres pomiaru oraz raport błędów.",
+      "severity": "high"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 15,
+      "question": "Auto 28 000 zł, rozpoznane naprawy 3000 zł. Kwota 31 000 zł oznacza co dokładnie?",
+      "correct": "Minimalny budżet ceny i wskazanych napraw, ale bez pozostałych formalności i nierozpoznanych usterek.",
+      "wrongs": [
+        "Pełny koszt posiadania przez pierwszy rok.",
+        "Gwarancję, że żadne inne naprawy nie będą konieczne.",
+        "Kwotę wystarczającą również na wszystkie formalności i ubezpieczenie."
+      ],
+      "flaw": "Przedstawienie budżetu cząstkowego jako całkowitego kosztu samochodu.",
+      "evidence": "Pozycje napraw w kosztorysie, dane warsztatu i rezerwa na nieznane koszty.",
+      "severity": "medium"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 16,
+      "question": "Dwie oferty mają identyczną ratę, ale różnią się okresem i wykupem. Jak ocenić koszt?",
+      "correct": "Zsumować raty i pozostałe opłaty, porównać RRSO na zgodnych założeniach oraz obowiązki umowne.",
+      "wrongs": [
+        "Wybrać krótszy okres bez weryfikowania prowizji.",
+        "Wybrać większą wpłatę własną niezależnie od jej wpływu na koszt.",
+        "Porównać tylko nominalne oprocentowanie i ratę."
+      ],
+      "flaw": "Pomijanie wykupu końcowego i kosztów dodatkowych.",
+      "evidence": "Harmonogram, wykup, prowizje, ubezpieczenia wymagane i kwota do zapłaty.",
+      "severity": "high"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 17,
+      "question": "Komis wystawia ogłoszenie, umowę podpisuje osoba fizyczna. Czy prawa konsumenta z definicji dotyczą sprzedającego komis?",
+      "correct": "Nie: najpierw należy ustalić faktycznego sprzedawcę i charakter transakcji, w tym rolę komisu.",
+      "wrongs": [
+        "Tak, ponieważ auto stało na placu komisu.",
+        "Tak, jeśli komis przygotował formularz umowy.",
+        "Nie, ponieważ sam tytuł umowy przesądza pełną sytuację prawną."
+      ],
+      "flaw": "Automatyczne zastosowanie lub wyłączenie ochrony konsumenckiej bez ustalenia strony umowy.",
+      "evidence": "Dane sprzedawcy, pełnomocnictwo/pośrednictwo, umowa i dowody transakcji.",
+      "severity": "critical"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 18,
+      "question": "Przy zakupie zwykłego auta w Polsce, termin na wniosek o rejestrację to 30 dni. A w razie spadku?",
+      "correct": "Co do zasady 60 dni, liczone od prawomocnego orzeczenia albo sporządzenia aktu poświadczenia dziedziczenia.",
+      "wrongs": [
+        "Zawsze 30 dni od śmierci spadkodawcy.",
+        "Zawsze 60 dni od daty zakupu samochodu.",
+        "90 dni od podpisania umowy, nawet gdy nie jest się przedsiębiorcą handlującym autami."
+      ],
+      "flaw": "Zastosowanie jednego terminu do różnych podstaw nabycia.",
+      "evidence": "Data zdarzenia prawnego, rodzaj nabycia i źródło gov.pl aktualne na dzień kursu.",
+      "severity": "critical"
+    },
+    {
+      "slug": "jak-kupic-samochod",
+      "lesson_no": 19,
+      "question": "Auto 35 tys., serwis 1800 zł, rezerwa 1200 zł. Co opisuje wynik 38 tys. zł?",
+      "correct": "Budżet początkowy tych trzech pozycji, przed podatkiem, ubezpieczeniem i innymi nieznanymi kosztami.",
+      "wrongs": [
+        "Pełny koszt 90 dni niezależnie od dalszego użytkowania.",
+        "Samą wartość pojazdu po wykonaniu napraw.",
+        "Wartość auta podlegającą automatycznie odzyskaniu przy odsprzedaży."
+      ],
+      "flaw": "Fałszywa precyzja kosztorysu przy nieznanych kosztach i warunkach.",
+      "evidence": "Pisemna wycena serwisu, rezerwa, koszty formalności i termin ponownej oceny.",
+      "severity": "medium"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 16,
+      "question": "Bicie promieniowe ma różnicę odczytu 5 mm, bez specyfikacji. Czy dopuszczasz koło do jazdy?",
+      "correct": "Nie; zapisujesz wynik i żądasz kryterium odpowiedniego do przeznaczenia przed decyzją o użytkowaniu.",
+      "wrongs": [
+        "Tak, po zaokrągleniu odchylenia do pełnego centymetra.",
+        "Tak, jeśli bicie boczne wygląda na mniejsze.",
+        "Tak, jeżeli odczyty wykonano tą samą miarką."
+      ],
+      "flaw": "Nieuzgodniony limit geometrii koła użytkowego.",
+      "evidence": "Oś odniesienia, sposób pomiaru, przeznaczenie, tolerancja i ocena konstrukcyjna.",
+      "severity": "critical"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 17,
+      "question": "Naprawiono jedną luźną szprychę, ale nie obejrzano gniazda piasty. Czy odbiór jest możliwy?",
+      "correct": "Nie; gniazdo, sąsiednie połączenia i geometria wymagają sprawdzenia przed decyzją.",
+      "wrongs": [
+        "Tak, jeżeli koło obraca się bez widocznego bicia.",
+        "Tak, jeśli nowa szprycha jest z twardego drewna.",
+        "Tak, jeśli nie ma na zewnątrz widocznych pęknięć."
+      ],
+      "flaw": "Ocena jednego połączenia zamiast układu przenoszącego obciążenia.",
+      "evidence": "Piasta, gniazda, szprychy, włókna i pomiary całej geometrii.",
+      "severity": "critical"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 18,
+      "question": "Konserwator zachowuje starą naprawę w kole muzealnym. Klient chce na nim jeździć. Co dalej?",
+      "correct": "To zmiana przeznaczenia, której odbiór eksponatu nie obejmuje; potrzeba osobnej oceny i prób.",
+      "wrongs": [
+        "Próba jazdy bez obciążenia jest wystarczającą kontrolą.",
+        "Wiek drewna sam potwierdza tradycyjną wytrzymałość.",
+        "Wystarczy lakierować obręcz, aby naprawa nie przeszkadzała."
+      ],
+      "flaw": "Traktowanie dokumentacji konserwatorskiej jako certyfikatu eksploatacyjnego.",
+      "evidence": "Karta eksponatu, zakres prac, warunki przechowania i odrębna kwalifikacja do jazdy.",
+      "severity": "critical"
+    },
+    {
+      "slug": "kolodziej",
+      "lesson_no": 19,
+      "question": "Karta koła nie podaje obciążeń ani przeznaczenia. Czy podpis klienta zamyka ryzyko?",
+      "correct": "Nie; podpis odbioru nie zastępuje potrzebnej dokumentacji funkcji i kontroli konstrukcyjnej.",
+      "wrongs": [
+        "Tak, podpis klienta przenosi każde ryzyko na kupującego.",
+        "Tak, jeśli drewno posiada fakturę zakupu.",
+        "Tak, jeśli koło jest oznaczone jako ręcznie wykonane."
+      ],
+      "flaw": "Przerzucanie odpowiedzialności na klienta zamiast rzetelnej dokumentacji.",
+      "evidence": "Rysunek, geometra, materiały, ograniczenia i przeznaczenie, komplet pomiarów.",
+      "severity": "critical"
+    }
+  ]
+}
