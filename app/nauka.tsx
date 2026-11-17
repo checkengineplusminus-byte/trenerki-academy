@@ -37,7 +37,7 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
+ material:{section?:number,stage_name?:string,study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry';
@@ -346,7 +346,16 @@ export default function Learning(){
       {name:'V · ANATOMIA I DETALE KONSTRUKCJI',about:'Lekcje 43–50 · budowa drewna, podwalina, krokwie i połączenia',list:items.slice(42,50)},
       {name:'VI · WARSZTAT I IZOLACJE',about:'Lekcje 51–56 · trasowanie, napędy, powierzchnie i izolacje',list:items.slice(50,56)},
       {name:'VII · PRZYGOTOWANIE DO EGZAMINU PISEMNEGO',about:'Lekcje 57–63 · rachunkowość, dokumenty, rysunek, BHP, środowisko i prawo',list:items.slice(56,63)}
-    ]:items.length===30?[
+    ]:slug==='ai-bez-tajemnic'?[
+     {name:'ETAP I · POZNAJ AI',about:'Lekcje 1–4 · podstawy, narzędzia, kontekst, sprawdzanie faktów',list:items.slice(0,4)},
+     {name:'ETAP II · PISZ DOBRE POLECENIA',about:'Lekcje 5–8 · prompty, poprawki, format i porównania',list:items.slice(4,8)},
+     {name:'ETAP III · AI W PRACY',about:'Lekcje 9–12 · wiadomości, CV, spotkania i reklama',list:items.slice(8,12)},
+     {name:'ETAP IV · DOKUMENTY I LICZBY',about:'Lekcje 13–16 · notatki, Excel, budżet i oferty',list:items.slice(12,16)},
+     {name:'ETAP V · DOM I RODZINA',about:'Lekcje 17–20 · organizacja, nauka, podróże i posiłki',list:items.slice(16,20)},
+     {name:'ETAP VI · TWÓRZ I PUBLIKUJ',about:'Lekcje 21–24 · obrazy, prezentacje, posty i PDF',list:items.slice(20,24)},
+     {name:'ETAP VII · MYŚL KRYTYCZNIE',about:'Lekcje 25–28 · prywatność, oszustwa, zdrowie i prawa autorskie',list:items.slice(24,28)},
+     {name:'ETAP VIII · DZIAŁAJ SAMODZIELNIE',about:'Lekcje 29–32 · procesy, testy, automatyzacja i trzy projekty',list:items.slice(28,32)}
+   ]:items.length===30?[
      {name:slug==='kowal-tradycja'?'DZIAŁ I · WARSZTAT I PODSTAWY':'DZIAŁ I · PODSTAWY',about:slug==='kowal-tradycja'?'Lekcje 1–10 · BHP, stal, rysunek techniczny, pomiary i narzędzia':'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
      {name:slug==='kowal-tradycja'?'DZIAŁ II · TECHNIKI KUCIA':'DZIAŁ II · PRAKTYKA',about:slug==='kowal-tradycja'?'Lekcje 11–20 · wydłużanie, spęcznianie, gięcie, przebijanie, łączenie i obróbka cieplna':'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
      {name:slug==='kowal-tradycja'?'DZIAŁ III · PROJEKTY I NAPRAWY':'DZIAŁ III · ZAAWANSOWANE',about:slug==='kowal-tradycja'?'Lekcje 21–30 · wyroby, bryczki, podkuwnictwo i projekt końcowy':'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
@@ -394,6 +403,7 @@ export default function Learning(){
      <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · ZAAWANSOWANE')}</Text>
    </View>}
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
+   {slug==='ai-bez-tajemnic'&&<Text testID="ai-course-stage" style={{color:'#356e44',fontSize:13,fontWeight:'900',marginBottom:6}}>ETAP {lesson.material.section||Math.floor(module/4)+1}/8 · {lesson.material.stage_name||'Pracownia umiejętności'}</Text>}
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
    {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}
    {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#e5f4e1':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#a8cda4':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
