@@ -47,12 +47,20 @@ const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
- const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0);
+ const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0),coachYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
  const pendingExcelHomeworkRef=React.useRef(false);
  function scrollToTop(){
   scrollRef.current?.scrollTo({y:0,animated:false});
   if(Platform.OS==='web'&&typeof window!=='undefined')window.scrollTo(0,0);
+ }
+ function focusAnielka(){
+  setCoachOpen(true);
+  if(Platform.OS==='web'&&typeof document!=='undefined'){
+   const panel=document.querySelector('[data-testid="anielka-ai-practice"]');
+   if(panel){panel.scrollIntoView?.({behavior:'smooth',block:'start'});return;}
+  }
+  scrollRef.current?.scrollTo({y:Math.max(0,coachYRef.current-16),animated:true});
  }
  function returnToExercise(){
   setMsg(requirementMessage);
@@ -408,6 +416,11 @@ export default function Learning(){
    <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
    {slug==='ai-bez-tajemnic'&&<Text testID="ai-course-stage" style={{color:'#356e44',fontSize:13,fontWeight:'900',marginBottom:6}}>ETAP {lesson.material.section||Math.floor(module/4)+1}/8 · {lesson.material.stage_name||'Pracownia umiejętności'}</Text>}
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
+   {slug==='ai-bez-tajemnic'&&<Pressable testID="anielka-top-cta" accessibilityRole="button" onPress={focusAnielka}
+    style={{padding:15,backgroundColor:'#e4f2e5',borderRadius:13,borderWidth:1,borderColor:'#a9cfae',marginBottom:14,minHeight:51}}>
+    <Text style={{color:'#173e2d',fontSize:16,fontWeight:'900'}}>Ćwicz z Anielką · przejdź do pracowni ↓</Text>
+    <Text style={{color:'#446b52',fontSize:12,lineHeight:20}}>4 sposoby pracy: wspólne ćwiczenie, wskazówka, sprawdzenie próby i pytanie kontrolne.</Text>
+   </Pressable>}
    {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}
    {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#e5f4e1':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#a8cda4':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{canFinish?'✓ Obydwa zadania zaliczone — możesz przejść dalej':'Aby przejść dalej, zalicz 2 zadania'}</Text>
@@ -536,7 +549,9 @@ export default function Learning(){
      onPress={()=>setCoachOpen(v=>!v)} style={{marginTop:14,padding:15,backgroundColor:'#edf5e8',borderRadius:12}}>
     <Text style={{color:ink,fontWeight:'900'}}>{slug==='ai-bez-tajemnic'?(coachOpen?'Zwiń pracownię z Anielką ↑':'Ćwicz z Anielką · wskazówki, próby i pytania ↓'):(coachOpen?'Zwiń rozmowę z Anielką ↑':'Nie rozumiesz? Zapytaj Anielkę ↓')}</Text>
    </Pressable>
-   {coachOpen&&<GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} coachTask={lesson.material?.anielka} homeworkDraft={notes[String(module)]||''}/>} 
+   {coachOpen&&<View onLayout={event=>{coachYRef.current=event.nativeEvent.layout.y}}>
+     <GuidedDialogue key={slug+'-'+module} courseSlug={slug} lessonNo={module} coachTask={lesson.material?.anielka} homeworkDraft={notes[String(module)]||''}/>
+   </View>}
    <Pressable accessibilityRole="button" disabled={saving}
     onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
     style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
