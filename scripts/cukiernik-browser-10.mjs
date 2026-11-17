@@ -95,6 +95,11 @@ async function checkProtected(ctx,profile,number){
   await page.getByText('WARTO WIEDZIEĆ',{exact:true}).waitFor();
   await page.getByText('Wyjaśnienie krok po kroku',{exact:true}).waitFor();
   await page.getByText(/Zadanie domowe/i).first().waitFor();
+  const notebook=page.getByTestId('pastry-homework-entry');
+  await notebook.waitFor();
+  await notebook.getByTestId('pastry-homework-note').fill('Moje pomiary: 100 g; kontrola: bezpieczne wydanie, następnym razem notuję temperaturę.');
+  await notebook.getByRole('button',{name:'Zapisz notatkę'}).click();
+  await notebook.getByText('✓ Zapisano odpowiedź w Twoim notatniku kursu.').waitFor();
   const filename='cukiernik-ilustracja-'+String(number+1).padStart(2,'0')+'.svg';
   const img=page.locator('img[src*="'+filename+'"]').first();
   await img.waitFor();
