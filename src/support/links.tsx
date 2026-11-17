@@ -36,6 +36,7 @@ export function HelpFooter(){
     </span>
    </a>
    <nav className="ta-app-footer-links" aria-label="Informacje i kontakt">
+    <a className="ta-app-footer-affiliate" href="/academy/program-afiliacyjny.html" aria-label="Program afiliacyjny — 10 procent prowizji">✦ Program afiliacyjny · 10%</a>
     {footerLinks.map(({href,label})=><a href={href} key={href}>{label}</a>)}
    </nav>
   </div>
@@ -51,6 +52,9 @@ export function HelpFooter(){
     </View>
    </Pressable>
    <View style={footerStyles.links}>
+    <Pressable accessibilityRole="link" onPress={()=>openSupportLink('/academy/program-afiliacyjny.html')} style={[footerStyles.link,{backgroundColor:'#d9f29c',borderRadius:9,paddingHorizontal:12}]}>
+      <Text style={{color:'#1a412c',fontSize:13,fontWeight:'900'}}>✦ Program afiliacyjny · 10%</Text>
+    </Pressable>
     {footerLinks.map(({href,label})=><Pressable key={href} accessibilityRole="link" onPress={()=>openSupportLink(href)}
      style={({pressed})=>[footerStyles.link,pressed&&footerStyles.pressed]}><Text style={footerStyles.linkText}>{label}</Text></Pressable>)}
    </View>

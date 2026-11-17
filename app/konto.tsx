@@ -21,7 +21,7 @@ export default function AccountPage(){
     if(params.next==='affiliate'){router.replace('/partner');return;}
     if(params.next==='valuegift'){router.replace('/prezent');return;}
     if(gift){router.replace({pathname:'/prezent',params:{code:gift}});return;}
-    if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course}});return;}
+    if(course){router.replace({pathname:params.next==='gift'?'/prezent':'/kup',params:{course,...(referral?{ref:referral}:{})}});return;}
     // Email confirmation sends users back to /konto without original query params.
     // Recover the chosen course from signup metadata for navigation only;
     // enrollment authorization is always checked independently by the server.
