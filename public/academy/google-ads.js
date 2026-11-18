@@ -46,7 +46,7 @@ function recordPurchase(purchase){
  pendingPurchase=purchase;
  if(choice==='yes')deliverPurchase(pendingPurchase);
 }
-window.TrenerkiAds={recordPurchase:recordPurchase};
+window.TrenerkiAds={recordPurchase:recordPurchase,openSettings:banner};
 function save(value){
  choice=value;
  try{localStorage.setItem(KEY,value)}catch(_){}
@@ -85,10 +85,12 @@ function ready(){
   settings.className='trenerki-footer-cookie';
   settings.style.cssText='';
   utility.insertBefore(settings,utility.querySelector('.academy-footer__staff'));
- }else{
+ }else if(!/^\/konto\/?$/.test(window.location.pathname)){
   settings.style.margin='10px';settings.style.fontSize='12px';
   (footer||document.body).appendChild(settings);
  }
+ // /konto has its own small settings link inside the form's legal links;
+ // never add an orphaned cookie button underneath the mobile login screen.
  if(!choice)banner();
 }
 if(choice==='yes')load();
