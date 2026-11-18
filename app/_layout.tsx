@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
-import {Link,Slot,Stack,usePathname,useGlobalSearchParams,Redirect,type ErrorBoundaryProps} from 'expo-router';
+import {Slot,Stack,usePathname,useGlobalSearchParams,Redirect,type ErrorBoundaryProps} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
@@ -53,7 +53,8 @@ export default function RootLayout(){
 function AccountLayout(){
  const pathname=usePathname();
  const {width}=useWindowDimensions();
- const hideAccountFooter=pathname==='/konto'&&width<640;
+ const learningRoutes=['/ksiegowosc','/program-ksiegowosci','/temat-ksiegowosci','/sciezka-ksiegowosci','/biuro-ksiegowe','/dane-biura','/formularze-ksiegowego','/majatek-ksiegowy','/slownik-ksiegowego'];
+ const hideAccountFooter=width<760&&(pathname==='/konto'||learningRoutes.includes(pathname));
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  useEffect(()=>{
@@ -73,7 +74,7 @@ function AccountLayout(){
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
  if(!signedIn&&pathname==='/nauka')return <Redirect href="/konto"/>;
  return <View style={{flex:1}}>
-  {signedIn&&['/ksiegowosc','/biuro-ksiegowe','/slownik-ksiegowego','/dane-biura','/formularze-ksiegowego','/majatek-ksiegowy'].includes(pathname)&&<View style={{paddingVertical:10,paddingHorizontal:20,backgroundColor:'#eaf3df',gap:8}}><Link href="/sciezka-ksiegowosci" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Od czego zacząć? Ścieżka nauki krok po kroku →</Link><Link href="/formularze-ksiegowego" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Formularze — bezpłatne oryginały i ćwiczenia →</Link><Link href="/dane-biura" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Dane firmy, NIP, REGON, KRS i faktura z danymi stron →</Link><Link href="/majatek-ksiegowy" style={{color:'#245f36',fontWeight:'800',fontSize:14}}>Majątek: przyjęcie, amortyzacja i likwidacja →</Link></View>}
+
   <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>
