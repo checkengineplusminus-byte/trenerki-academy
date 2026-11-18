@@ -10,6 +10,7 @@ import ContactEditor from '../src/support/ContactEditor';
 import {downloadGiftPdf,saveGiftPdf} from '../src/giftPdf';
 import {formatGiftCode} from '../src/giftCode';
 import {downloadLedgerPdf,downloadLedgerXlsx} from '../src/accounting/reportDownloads';
+import {periodName,localDateTime,formatAmount,productName,buyerName,operationLabel} from '../src/accounting/reportModel';
 
 const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
@@ -22,8 +23,10 @@ type PromoResult={batch_id:string;recipient_email:string;quantity:number;total_g
 type PromoRequest={id:string;signature:string};
 type CourseGift={gift_id?:string;course_slug:string;title_pl:string;code:string;link:string;expires_at?:string};
 type AccountingDocument={stripe_source:string;document_type:string;document_status:string;document_number:string|null;ksef_number:string|null;tax_treatment:string;notes:string|null};
-type AccountingRow={id:string;date:string;source:string;category:string;currency:string;gross_grosze:number;fee_grosze:number;net_grosze:number;document?:AccountingDocument|null};
-type AccountingReport={period:string;rows:AccountingRow[];summary:Array<{currency:string;category:string;count:number;gross_grosze:number;fee_grosze:number;net_grosze:number}>};
+type AccountingRow={id:string;date:string;time?:string;created_at_utc?:string;available_on?:string;source:string;category:string;currency:string;gross_grosze:number;fee_grosze:number;net_grosze:number;
+ product?:string;customer_name?:string;customer_email?:string;customer_country?:string;payment_intent_id?:string;payment_status?:string;
+ purchase_category?:string;purchase_date?:string;stripe_description?:string;document?:AccountingDocument|null};
+type AccountingReport={period:string;rows:AccountingRow[];generated_at?:string;time_zone?:string;warnings?:string[];summary:Array<{currency:string;category:string;count:number;gross_grosze:number;fee_grosze:number;net_grosze:number}>};
 type SalesAnalytics={
  timezone:string;
  totals:{users:number,purchases:number,gifts?:number,revenue_grosze:number};
@@ -64,7 +67,7 @@ export default function AdminPage(){
  }
 
  const [accountPeriod,setAccountPeriod]=useState(new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit'}).format(new Date()).slice(0,7));
- const [accountReport,setAccountReport]=useState<AccountingReport|null>(null),[accountError,setAccountError]=useState(''),[accountBusy,setAccountBusy]=useState(false),[accountShowTechnical,setAccountShowTechnical]=useState(false);
+ const [accountReport,setAccountReport]=useState<AccountingReport|null>(null),[accountError,setAccountError]=useState(''),[accountBusy,setAccountBusy]=useState(false),[accountShowTechnical,setAccountShowTechnical]=useState(false),[accountVisible,setAccountVisible]=useState(40);
  const [accountEditSource,setAccountEditSource]=useState(''),[accountDocNumber,setAccountDocNumber]=useState(''),[accountKsef,setAccountKsef]=useState(''),[accountDocType,setAccountDocType]=useState('pending'),[accountTax,setAccountTax]=useState('review'),[accountDocStatus,setAccountDocStatus]=useState('pending'),[accountNotes,setAccountNotes]=useState(''),[accountSaving,setAccountSaving]=useState(false);
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
@@ -323,7 +326,7 @@ export default function AdminPage(){
   try{
    const {data,error}=await supabase.functions.invoke('ta-admin-analytics',{body:{action:'accounting_export',period}});
    if(error||!data?.ok)throw Error('Nie udało się pobrać operacji Stripe. Sprawdź wdrożenie funkcji i uprawnienia administratora.');
-   setAccountReport(data as AccountingReport);
+   setAccountReport(data as AccountingReport);setAccountVisible(40);
   }catch(e:any){setAccountError(e?.message||'Raport jest niedostępny.')}
   finally{setAccountBusy(false)}
  }
@@ -460,11 +463,11 @@ export default function AdminPage(){
       <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://saldeo.brainshare.pl/')} style={{padding:13,backgroundColor:'#edf2e9',borderRadius:10,borderWidth:1,borderColor:'#d7e1d2'}}>
        <Text style={{color:ink,fontWeight:'900'}}>Otwórz SaldeoSMART</Text>
       </Pressable>
-      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerPdf(accountReport.period,accountReport.rows)}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
-       <Text style={{color:'white',fontWeight:'900'}}>Pobierz PDF</Text>
+      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>{try{void downloadLedgerPdf(accountReport).catch((e:any)=>setAccountError(String(e?.message||e)))}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
+       <Text style={{color:'white',fontWeight:'900'}}>Pobierz PDF raportu</Text>
       </Pressable>}
-      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx(accountReport.period,accountReport.rows)}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
-       <Text style={{color:ink,fontWeight:'900'}}>Pobierz Excel</Text>
+      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx(accountReport)}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
+       <Text style={{color:ink,fontWeight:'900'}}>Pobierz Excel raportu</Text>
       </Pressable>}
       {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
        <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV</Text>
@@ -485,7 +488,7 @@ export default function AdminPage(){
        const missing=sales.filter(x=>!['issued','reconciled'].includes(x.document?.document_status||'')).length;
        const amount=(n:number)=>money(n);
        return <View style={{gap:12,marginTop:18}}>
-        <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Podsumowanie — {accountReport.period}</Text>
+        <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Podsumowanie — {periodName(accountReport.period)}</Text>
         <View style={{flexDirection:'row',flexWrap:'wrap',gap:10}}>
          {([['Sprzedaż brutto',amount(gross)],['Zwroty',amount(returns)],['Opłaty Stripe',amount(fees)],['Wypłaty zlecone',amount(bank)]] as const).map(([label,value])=>
           <View key={label} style={{padding:14,backgroundColor:'#f4f7f1',borderRadius:12,minWidth:190,flexGrow:1,gap:5}}>
@@ -506,23 +509,45 @@ export default function AdminPage(){
         {accountReport.rows.some(x=>x.currency!=='PLN')&&<Text style={{color:'#8a5c13',fontSize:13}}>Występują także inne waluty. Powyższe kwoty dotyczą PLN; pozostałe waluty wykazano oddzielnie w eksporcie.</Text>}
        </View>;
       })()}
-      <Text style={{fontWeight:'900',color:ink,fontSize:17,marginTop:16}}>Rejestr sprzedaży</Text>
-
-      {accountReport.rows.filter(x=>x.category==='charge').slice(0,100).map(x=><View key={x.id} style={{paddingVertical:13,borderBottomWidth:1,borderColor:'#e2e9de',gap:5}}>
-       <Text style={{color:ink,fontWeight:'900',fontSize:16}}>{x.date} · Sprzedaż {money(x.gross_grosze)} {x.currency==='PLN'?'':'('+x.currency+')'}</Text>
-       <Text style={{color:muted,fontSize:13}}>Dokument: {x.document?.document_number||'Nieprzypisany'} · {x.document?.document_status==='issued'||x.document?.document_status==='reconciled'?'Ujęty':'Do weryfikacji'}</Text>
-       <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
-        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerPdf(x.date,[x])}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:10,backgroundColor:ink,borderRadius:8}}>
-         <Text style={{color:'white',fontWeight:'800'}}>PDF</Text>
+      {!!accountReport.warnings?.length&&<View style={{backgroundColor:'#FFF5E5',borderRadius:10,padding:12,gap:4,marginTop:6}}>
+       <Text style={{fontWeight:'800',color:'#855C19'}}>Uwagi do danych źródłowych</Text>
+       {accountReport.warnings.map((notice,i)=><Text key={i} style={{color:'#6E552A',fontSize:13}}>• {notice}</Text>)}
+      </View>}
+      <View style={{marginTop:18,gap:5}}>
+       <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Transakcje sprzedaży</Text>
+       <Text style={{color:muted,fontSize:13}}>Każda pozycja zawiera zakup, datę, kwotę i powiązanie z dokumentem księgowym.</Text>
+      </View>
+      {accountReport.rows.filter(x=>x.category==='charge').slice(0,accountVisible).map(x=><View key={x.id}
+       style={{marginTop:9,padding:16,borderWidth:1,borderColor:'#DFE9DE',borderRadius:12,backgroundColor:'#FAFCF9',gap:8}}>
+       <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,flexWrap:'wrap'}}>
+        <Text style={{color:ink,fontWeight:'900',fontSize:15,flexShrink:1}}>{productName(x)}</Text>
+        <Text style={{color:ink,fontWeight:'900',fontSize:18}}>{formatAmount(x.gross_grosze,x.currency)}</Text>
+       </View>
+       <Text style={{color:muted,fontSize:13}}>{localDateTime(x)}  ·  {buyerName(x)}</Text>
+       <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+        <Text style={{fontSize:12,color:muted}}>Prowizja: {formatAmount(x.fee_grosze,x.currency)}</Text>
+        <Text style={{fontSize:12,color:muted}}>Po opłacie: {formatAmount(x.net_grosze,x.currency)}</Text>
+       </View>
+       <Text style={{color:x.document?.document_number?'#356247':'#885F27',fontSize:12,fontWeight:'700'}}>
+        {x.document?.document_number?'Dokument Saldeo: '+x.document.document_number:'Dokument księgowy: nieprzypisany'}
+       </Text>
+       <View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginTop:4}}>
+        <Pressable accessibilityRole="button" onPress={()=>{void downloadLedgerPdf({...accountReport,rows:[x]}).catch((e:any)=>setAccountError(String(e?.message||e)))}} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:ink,borderRadius:9}}>
+         <Text style={{color:'white',fontWeight:'800'}}>PDF transakcji</Text>
         </Pressable>
-        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx(x.date,[x])}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:10,backgroundColor:pale,borderRadius:8}}>
-         <Text style={{color:ink,fontWeight:'800'}}>Excel</Text>
+        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx({...accountReport,rows:[x]})}catch(e:any){setAccountError(String(e?.message||e))}}} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:pale,borderRadius:9}}>
+         <Text style={{color:ink,fontWeight:'800'}}>Excel transakcji</Text>
+        </Pressable>
+        <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:'#F1F4ED',borderRadius:9,borderWidth:1,borderColor:'#D5E0D2'}}>
+         <Text style={{color:ink,fontWeight:'800'}}>Dokument w Saldeo</Text>
         </Pressable>
        </View>
-       <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{alignSelf:'flex-start',padding:10,backgroundColor:pale,borderRadius:9}}><Text style={{fontWeight:'800',color:ink}}>Dokument sprzedaży</Text></Pressable>
-       {accountShowTechnical&&<Text style={{color:muted,fontSize:12}}>Stripe: {x.source} · Opłata: {(x.fee_grosze/100).toFixed(2)} {x.currency} · Rodzaj: {x.category}</Text>}
+       {accountShowTechnical&&<Text style={{color:muted,fontSize:11}}>Stripe: {x.source} · {x.id} · PI: {x.payment_intent_id||'—'} · {operationLabel(x.category)}</Text>}
       </View>)}
-      {!accountReport.rows.some(x=>x.category==='charge')&&<Text style={{color:muted,marginTop:10}}>W tym okresie nie ma transakcji sprzedaży.</Text>}
+      {accountReport.rows.filter(x=>x.category==='charge').length>accountVisible&&<Pressable accessibilityRole="button" onPress={()=>setAccountVisible(v=>v+40)} style={{padding:12,backgroundColor:'#EAF3E6',borderRadius:9,marginTop:10}}>
+       <Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>Pokaż kolejne 40 transakcji</Text>
+      </Pressable>}
+      {!accountReport.rows.some(x=>x.category==='charge')&&<Text style={{color:muted,marginTop:10}}>W wybranym okresie nie ma operacji sprzedaży.</Text>}
       {!!accountEditSource&&<View style={{marginTop:18,padding:15,borderWidth:1,borderColor:'#bbd4bb',borderRadius:12,gap:9}}>
        <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Dokument sprzedaży</Text>
        <Text style={{color:muted,fontSize:12,lineHeight:18}}>Powiąż transakcję z fakturą lub ewidencją sprzedaży w Saldeo. Zapis nie wystawia nowej faktury.</Text>
