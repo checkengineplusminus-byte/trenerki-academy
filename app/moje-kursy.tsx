@@ -50,7 +50,8 @@ export default function MyCourses(){
  async function load(){
   setBusy(true);setError('');
   try{
-   const {data:{user}}=await supabase.auth.getUser();
+   const {data:{user},error:authError}=await supabase.auth.getUser();
+   if(authError)throw new Error('Chwilowo nie można potwierdzić sesji. Spróbuj ponownie — nie wylogowaliśmy Cię.');
    if(!user){router.replace('/konto');return;}
    void supabase.functions.invoke('ta-credit',{body:{action:'balance'}}).then(({data,error})=>{
     if(!error&&data?.ok){setCreditBalance(Number(data.balance_grosze||0));setCreditHistory(data.history||[])}
@@ -114,7 +115,7 @@ export default function MyCourses(){
    <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800'}}>← Katalog kursów</Text></Pressable>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
     <Pressable accessibilityRole="link" onPress={()=>router.push('/ustawienia')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}><Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Ustawienia konta</Text></Pressable>
-    <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut();if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}><Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Wyloguj się</Text></Pressable>
+    <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut({scope:'local'});if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}><Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Wyloguj się</Text></Pressable>
    </View>
   </View>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:8,flexWrap:'wrap',marginBottom:9}}>
@@ -122,6 +123,10 @@ export default function MyCourses(){
    <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#e7f0df',borderRadius:10,paddingVertical:11,paddingHorizontal:14}}><Text style={{color:'#214c36',fontWeight:'900'}}>Moje dyplomy</Text></Pressable>
   </View>
   <Text style={{color:'#5c7460',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
+  {!!error&&<View style={{padding:15,marginBottom:14,backgroundColor:'#fff2e8',borderRadius:12,gap:8}}>
+   <Text accessibilityRole="alert" style={{color:'#88422d',fontSize:14}}>{error}</Text>
+   <Pressable accessibilityRole="button" onPress={()=>void load()} style={{minHeight:44,justifyContent:'center',alignSelf:'flex-start',paddingHorizontal:15,backgroundColor:'#1c4a31',borderRadius:9}}><Text style={{color:'white',fontWeight:'800'}}>Spróbuj ponownie</Text></Pressable>
+  </View>}
   {isAdmin&&<View style={{backgroundColor:'#edf5e9',padding:16,borderRadius:13,gap:8}}><Text style={{color:'#173228',fontWeight:'800'}}>Panel właściciela — księgowość</Text><Text style={{color:'#5c7460',fontSize:12}}>Podgląd administracyjny pozwala sprawdzać kurs bez nadawania dostępu innym kontom. Uprawnienia sprawdza serwer.</Text><Pressable accessibilityRole="button" onPress={()=>router.push('/ksiegowosc')} style={{padding:10}}><Text style={{color:'#245c3c',fontWeight:'800'}}>Otwórz encyklopedię →</Text></Pressable></View>}
   <View style={{backgroundColor:'#e8f3dc',padding:16,borderRadius:13,gap:10,marginVertical:12}}>
    <Text style={{color:'#56725c',fontWeight:'700',fontSize:12}}>Saldo kart podarunkowych</Text>
@@ -145,6 +150,6 @@ export default function MyCourses(){
   })}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:10,marginTop:20}}><Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#e8f3dc',padding:13,borderRadius:11}}><Text style={{color:'#173228',fontWeight:'800'}}>🎁 Karty podarunkowe</Text></Pressable><Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#e8f3dc',padding:13,borderRadius:11}}><Text style={{color:'#173228',fontWeight:'800'}}>Przeglądaj kursy</Text></Pressable></View>
   {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:17}}><Text style={{fontSize:11,color:'#718779'}}>Staff</Text></Pressable>}
-  <Pressable onPress={async()=>{await supabase.auth.signOut();router.replace('/konto')}} style={{alignSelf:'flex-start',padding:13,marginTop:12}}><Text style={{color:'#476d50',fontWeight:'700'}}>Wyloguj się</Text></Pressable>
+  <Pressable onPress={async()=>{await supabase.auth.signOut({scope:'local'});router.replace('/konto')}} style={{alignSelf:'flex-start',padding:13,marginTop:12}}><Text style={{color:'#476d50',fontWeight:'700'}}>Wyloguj się</Text></Pressable>
  </ScrollView>;
 }
