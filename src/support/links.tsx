@@ -1,5 +1,5 @@
 import React from 'react';
-import {Linking,Platform,Pressable,StyleSheet,Text,View} from 'react-native';
+import {Linking,Platform,Pressable,StyleSheet,Text,View,useWindowDimensions,ScrollView} from 'react-native';
 
 export const helpTitle='Potrzebujesz pomocy? Nie jesteś sam';
 export const helpDescription='Bezpłatne telefony zaufania i profesjonalne wsparcie';
@@ -22,6 +22,30 @@ export function HelpLink({children,href='/pomoc'}:{children:React.ReactNode;href
     </Pressable>;
 }
 export function HelpFooter({compact=false}:{compact?:boolean}={}){
+ const {width}=useWindowDimensions();
+ // Mobile layout must not rely on a separately deployed/cached stylesheet.
+ // One unobtrusive row, always horizontally scrollable, never a multi-line card.
+ if(Platform.OS==='web'&&width<640){
+  const linkStyle:React.CSSProperties={display:'inline-flex',alignItems:'center',justifyContent:'center',flex:'0 0 auto',height:44,padding:'0 7px',fontSize:12,fontWeight:650,whiteSpace:'nowrap',color:'#cbd9cf',textDecoration:'none'};
+  return <footer aria-label="Pomoc i informacje" style={{flex:'0 0 auto',boxSizing:'border-box',width:'100%',backgroundColor:'#102820',borderTop:'1px solid #2c463b',padding:'2px 9px',fontFamily:'system-ui, -apple-system, BlinkMacSystemFont, sans-serif'}}>
+   <div style={{display:'flex',alignItems:'center',gap:5,minWidth:0,maxWidth:1100,margin:'0 auto'}}>
+    <a href="/pomoc" aria-label={helpTitle} style={{...linkStyle,padding:'0 4px',color:'#f1ede0',fontWeight:750}}>♡ Pomoc</a>
+    <nav aria-label="Informacje i kontakt" className="ta-app-footer-links" style={{display:'flex',alignItems:'center',flex:'1 1 auto',minWidth:0,width:'auto',flexWrap:'nowrap',gap:2,margin:0,overflowX:'auto',whiteSpace:'nowrap',WebkitOverflowScrolling:'touch'}}>
+     <a style={linkStyle} href="/academy/program-afiliacyjny.html">Partnerzy</a>
+     {footerLinks.map(({href,label})=><a style={linkStyle} href={href} key={href}>{label}</a>)}
+    </nav>
+   </div>
+  </footer>;
+ }
+ if(Platform.OS!=='web'&&width<640)return <View role="contentinfo" style={{backgroundColor:'#102820',borderTopWidth:1,borderTopColor:'#2c463b'}}>
+  <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{alignItems:'center',paddingHorizontal:10,gap:4}}>
+   <Pressable accessibilityRole="link" accessibilityLabel={helpTitle} onPress={()=>openSupportLink('/pomoc')} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}>
+    <Text style={{fontSize:12,fontWeight:'800',color:'#f1ede0'}}>♡ Pomoc</Text>
+   </Pressable>
+   <Pressable accessibilityRole="link" onPress={()=>openSupportLink('/academy/program-afiliacyjny.html')} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}><Text style={{fontSize:12,color:'#cbd9cf'}}>Partnerzy</Text></Pressable>
+   {footerLinks.map(({href,label})=><Pressable key={href} accessibilityRole="link" onPress={()=>openSupportLink(href)} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}><Text style={{fontSize:12,color:'#cbd9cf'}}>{label}</Text></Pressable>)}
+  </ScrollView>
+ </View>;
  if(Platform.OS==='web')return <footer className={compact?'ta-app-footer ta-app-footer--compact':'ta-app-footer'}>
   <link rel="stylesheet" href="/academy/app-footer.css" precedence="default"/>
   <div className="ta-app-footer-inner">
