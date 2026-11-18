@@ -52,7 +52,7 @@ export const minorUnitFactor=(currency='PLN')=>zeroDecimalCurrencies.has(currenc
 export const formatAmount=(n:number,currency='PLN')=>new Intl.NumberFormat('pl-PL',{
  minimumFractionDigits:minorUnitFactor(currency)===1?0:2,
  maximumFractionDigits:minorUnitFactor(currency)===1?0:2
-}).format((Number(n)||0)/minorUnitFactor(currency))+(currency?' '+currency:'');
+}).format((Number(n)||0)/minorUnitFactor(currency)).replace(/[\u00a0\u202f]/g,' ')+(currency?' '+currency:'');
 export const downloadName=(report:LedgerReport)=>'Trenerki-'+(
  report.rows.length===1?'transakcja-'+report.rows[0].date+'-'+report.rows[0].id:
  report.period.length===4?'raport-roczny-'+report.period:'raport-miesieczny-'+report.period);
