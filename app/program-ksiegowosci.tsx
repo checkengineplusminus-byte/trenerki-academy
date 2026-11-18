@@ -308,7 +308,7 @@ export default function ProgramKsiegowosci(){
 }
 const s=StyleSheet.create({
  dashboardHeading:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,marginTop:7},
- chapterCount:{color:'#536f55',fontSize:12,fontWeight:'850',backgroundColor:'#e7f0df',borderRadius:20,paddingHorizontal:10,paddingVertical:7,overflow:'hidden'},
+ chapterCount:{color:'#536f55',fontSize:12,fontWeight:'800',backgroundColor:'#e7f0df',borderRadius:20,paddingHorizontal:10,paddingVertical:7,overflow:'hidden'},
  tilesRail:{paddingHorizontal:4,paddingTop:10,paddingBottom:14,gap:12},
  tilesGrid:{flexDirection:'row',flexWrap:'wrap',gap:12,marginTop:8,marginBottom:12,justifyContent:'space-between'},
  tile:{backgroundColor:'#fff',borderWidth:1,borderColor:'#d1e3ca',borderBottomWidth:6,borderBottomColor:'#bdd3b5',borderRadius:20,padding:14,minHeight:166,gap:7,shadowColor:'#183c2b',shadowOffset:{width:0,height:7},shadowOpacity:0.12,shadowRadius:11,elevation:4},
@@ -322,7 +322,7 @@ const s=StyleSheet.create({
  tileTitle:{fontSize:16,fontWeight:'900',lineHeight:20,color:'#173b2a'},
  tileTitleActive:{color:'#145337'},
  tileSubtitle:{fontSize:11,lineHeight:16,color:'#58745f'},
- tileAvailable:{fontSize:11,color:'#53745b',fontWeight:'750',marginTop:'auto'},
+ tileAvailable:{fontSize:11,color:'#53745b',fontWeight:'700',marginTop:'auto'},
  activeChapter:{backgroundColor:'#fff',borderWidth:1,borderColor:'#d5e4cf',borderRadius:18,padding:14,gap:8,marginBottom:15,shadowColor:'#244b36',shadowOpacity:0.06,shadowRadius:8,elevation:2},
  closeChapter:{width:42,height:42,borderRadius:13,backgroundColor:'#ecf3e6',alignItems:'center',justifyContent:'center'},
  lessonTile:{borderTopWidth:1,borderColor:'#e7eee1',paddingVertical:15,flexDirection:'row',gap:12,alignItems:'flex-start'},
