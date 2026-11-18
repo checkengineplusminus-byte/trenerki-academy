@@ -140,7 +140,7 @@ function reportContent(report:LedgerReport){
  return intro;
 }
 export function buildPdfDefinition(report:LedgerReport){
- const single=report.rows.length===1;
+ const single=report.scope==='transaction'&&report.rows.length===1;
  const generated=printableDate(report.generated_at||new Date().toISOString());
  const def:any={
   pageSize:'A4',pageOrientation:single?'portrait':'landscape',
