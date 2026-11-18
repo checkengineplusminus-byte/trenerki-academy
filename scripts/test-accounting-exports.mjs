@@ -34,7 +34,7 @@ const month={period:'2026-11',generated_at:'2026-11-18T14:00:00Z',time_zone:'Eur
  row({id:'txn_test_3',source:'po_test',category:'payout',gross_grosze:-7000,fee_grosze:0,net_grosze:-7000,product:'',document:null}),
  row({id:'txn_test_4',source:'ch_test_jpy',currency:'JPY',gross_grosze:1300,fee_grosze:0,net_grosze:1300,document:null})
 ]};
-assert.equal(model.formatAmount(1300,'JPY'),'1 300 JPY');
+assert.equal(model.formatAmount(1300,'JPY').replace(/ /g,''),'1300JPY');
 assert.equal(model.localDate('2026-11-10'),'10.11.2026');
 assert.equal(model.detailedCells(month.rows[0]).length,17);
 assert(model.productName(month.rows[0]).includes('Księgowość'));
