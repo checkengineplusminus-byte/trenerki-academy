@@ -6,6 +6,7 @@ on:
       - 'public/academy/index.html'
       - 'public/academy/anielka-search.js'
       - 'scripts/verify-public-catalog-live.mjs'
+      - 'scripts/test-public-catalog-live-browser.mjs'
       - '.github/workflows/public-catalog-live.yml'
   workflow_dispatch:
 permissions:
@@ -21,3 +22,10 @@ jobs:
           node-version: '22'
       - name: Test live site as anonymous user (no authentication)
         run: node scripts/verify-public-catalog-live.mjs
+      - name: Install Chromium search test
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Search AI and accounting on the public website in two real browsers
+        run: node scripts/test-public-catalog-live-browser.mjs
