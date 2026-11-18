@@ -25,10 +25,10 @@ test('Główne strony programu i tematu księgowości są objęte logowaniem i R
   assert.ok(code.includes('supabase.auth.getUser()'),'Ekran ponownie weryfikuje użytkownika: '+route);
  }
 });
-test('Encyklopedia otwiera właściwy czytnik',()=>assert.deepEqual(courseDestination(A),{pathname:'/ksiegowosc'}));
+test('Kurs księgowości domyślnie otwiera nowy pulpit nauki',()=>assert.deepEqual(courseDestination(A),{pathname:'/program-ksiegowosci'}));
 test('Funkcja nawigacji zachowuje prawidłowy numer lekcji',()=>assert.deepEqual(courseDestination(A,'20'),{pathname:'/ksiegowosc',params:{lesson:'20'}}));
 test('Dolna i górna granica numeru lekcji',()=>{for(const n of ['1','100000'])assert.equal(courseDestination(A,n).params.lesson,n);});
-test('Nieprawidłowe numery nie przechodzą do adresu',()=>{for(const n of ['0','01','100001','-1','1.5','<script>',null,['2']])assert.deepEqual(courseDestination(A,n),{pathname:'/ksiegowosc'});});
+test('Nieprawidłowe numery nie przechodzą do adresu',()=>{for(const n of ['0','01','100001','-1','1.5','<script>',null,['2']])assert.deepEqual(courseDestination(A,n),{pathname:'/program-ksiegowosci'});});
 test('Pozostałe kursy zachowują dotychczasowy adres',()=>assert.deepEqual(courseDestination('excel-od-podstaw'),{pathname:'/nauka',params:{course:'excel-od-podstaw'}}));
 test('45 dostępnych lekcji, nie 100000 pustych miejsc',()=>assert.deepEqual(accountingProgress({approved_count:45,read_count:9,target_lessons:100000}),{lessonCount:45,completedCount:9,progress:20,available:true}));
 test('Brak odczytu nie jest udawanym zerowym postępem',()=>assert.equal(accountingProgress(null).available,false));
@@ -44,7 +44,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  const importLine="// @ts-ignore — jednolita, testowana nawigacja starych i nowych odnośników.\nimport {courseDestination} from '../src/accounting/course-entry.js';\n";
  assert.ok(source.includes(importLine),'Tylko współdzielona, walidowana nawigacja');
  assert.deepEqual(courseDestination(A,'34'),{pathname:'/ksiegowosc',params:{lesson:'34'}});
- assert.deepEqual(courseDestination(A,'0'),{pathname:'/ksiegowosc'});
+ assert.deepEqual(courseDestination(A,'0'),{pathname:'/program-ksiegowosci'});
  assert.equal(source.split(guard).length,2,'Przekierowanie występuje tylko raz');
  assert.ok(source.indexOf(guard)<source.indexOf("supabase.auth.getUser()"),'Przekieruj przed starym odczytem danych');
  // Do not weaken the accounting reader guard. Canonicalize ONLY the reviewed
