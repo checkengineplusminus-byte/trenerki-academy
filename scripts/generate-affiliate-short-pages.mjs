@@ -5,7 +5,7 @@
 import {mkdirSync,writeFileSync} from 'node:fs';
 import {join,resolve} from 'node:path';
 const root=resolve('public');
-const max=2000; // Current deployment capacity; increase before partner #2001.
+const max=500; // Current deployment capacity; increase before partner #501.
 for(let id=2;id<=max;id++){
  const doc=`<!doctype html><html lang="pl"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
