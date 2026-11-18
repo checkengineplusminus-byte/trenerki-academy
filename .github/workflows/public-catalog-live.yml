@@ -1,0 +1,23 @@
+name: TRENERKI — publiczny katalog i wyszukiwarka LIVE
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/academy/index.html'
+      - 'public/academy/anielka-search.js'
+      - 'scripts/verify-public-catalog-live.mjs'
+      - '.github/workflows/public-catalog-live.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public_catalog:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test live site as anonymous user (no authentication)
+        run: node scripts/verify-public-catalog-live.mjs
