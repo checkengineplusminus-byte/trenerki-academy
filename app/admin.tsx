@@ -69,7 +69,7 @@ export default function AdminPage(){
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'accounting'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'feedback'|'diplomas'|'support'>('giveaway');
+ const [tab,setTab]=useState<'sales'|'accounting'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'feedback'|'diplomas'|'support'>('accounting');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
  const [giftTransferable,setGiftTransferable]=useState(true),[giftDedication,setGiftDedication]=useState('');
@@ -392,15 +392,16 @@ export default function AdminPage(){
    </View>
    <Text style={{fontSize:12,fontWeight:'800',color:'#72906d',letterSpacing:1.8}}>ADMINISTRACJA · TRENERKI ACADEMY</Text>
    <Text style={{fontSize:36,color:ink,fontWeight:'900'}}>Panel administratora</Text>
-   <Pressable accessibilityRole="button" onPress={()=>router.push('/partner-admin')}
-    style={{backgroundColor:'#e1f0d5',borderRadius:12,padding:15,borderWidth:1,borderColor:'#b6d5ac',gap:5}}>
-    <Text style={{color:ink,fontWeight:'900',fontSize:17}}>✦ Program afiliacyjny · 10% prowizji</Text>
-    <Text style={{color:'#496a52',fontSize:13}}>Partnerzy, e-maile, próg 300 zł, faktury firm, PIT i miesięczny eksport CSV →</Text>
-   </Pressable>
-   <Pressable accessibilityRole="button" onPress={()=>setTab('giveaway')} style={{backgroundColor:ink,padding:16,borderRadius:13}}>
-    <Text style={{color:'white',fontSize:17,fontWeight:'900',textAlign:'center'}}>🎁 Rozdaj do 10 kursów za darmo</Text>
-    <Text style={{color:'#dcefdc',fontSize:12,marginTop:5,textAlign:'center'}}>Wpisz e-mail, zaznacz kursy i wyślij prezent.</Text>
-   </Pressable>
+   <View style={{flexDirection:'row',flexWrap:'wrap',gap:10}}>
+    <Pressable accessibilityRole="button" onPress={()=>setTab('accounting')} style={{backgroundColor:ink,padding:16,borderRadius:12,flexGrow:1,minWidth:230}}>
+     <Text style={{color:'white',fontWeight:'900',fontSize:17}}>Rozliczenia sprzedaży</Text>
+     <Text style={{color:'#dcefdc',fontSize:13,marginTop:4}}>Raport Stripe · dokumenty Saldeo · przelewy</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={()=>router.push('/partner-admin')} style={{backgroundColor:'#eaf1e7',padding:16,borderRadius:12,flexGrow:1,minWidth:230}}>
+     <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Rozliczenia partnerów</Text>
+     <Text style={{color:muted,fontSize:13,marginTop:4}}>Prowizja 10% · próg 500 zł · zamknięcie roku</Text>
+    </Pressable>
+   </View>
    {busy&&<ActivityIndicator/>}
    {!!error&&<Text style={{backgroundColor:'#ffefdf',padding:16,borderRadius:12,color:'#8c462c'}}>{error}</Text>}
    {!!stats&&<>
@@ -413,15 +414,15 @@ export default function AdminPage(){
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['discount','Rabaty dzienne'],['sales','Sprzedaż Stripe'],['accounting','Księgowość / Saldeo'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['feedback','Zgłoszenia Anielki'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
+     {([['giveaway','Kursy gratis'],['credit-card','Karty podarunkowe'],['discount','Rabaty'],['sales','Statystyki sprzedaży'],['accounting','Rozliczenia / Saldeo'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość'],['feedback','Zgłoszenia'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
      )}
     </View>
     {tab==='accounting'&&<View style={card}>
-     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:8}}>Rozliczenia sprzedaży — dla księgowości</Text>
-     <Text style={{color:muted,lineHeight:21,marginBottom:12}}>Wybierz miesiąc, sprawdź sprzedaż i brakujące dokumenty, a potem pobierz zestawienie. Nie wystawiaj faktury na Stripe — sprzedawcą jest Trenerki, a nabywcą klient.</Text>
+     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:8}}>Rozliczenia sprzedaży</Text>
+     <Text style={{color:muted,lineHeight:21,marginBottom:12}}>Sprzedaż, opłaty, dokumenty i wypłaty. Dane z rachunku Stripe są aktualizowane przy pobraniu raportu.</Text>
      <Text style={{fontWeight:'800',color:ink}}>Okres rozliczenia (np. 2026-11 lub 2026)</Text>
      <TextInput accessibilityLabel="Okres rozliczenia Stripe" value={accountPeriod} onChangeText={setAccountPeriod} autoCapitalize="none" placeholder="2026-11" style={{padding:12,borderWidth:1,borderColor:'#ccdcca',borderRadius:9,marginTop:7,marginBottom:12,color:ink}}/>
      <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
@@ -429,7 +430,7 @@ export default function AdminPage(){
        <Text style={{color:'white',fontWeight:'900'}}>{accountBusy?'Pobieram…':'Odśwież dane'}</Text>
       </Pressable>
       {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
-       <Text style={{color:ink,fontWeight:'900'}}>Pobierz zestawienie dla księgowej (CSV)</Text>
+       <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV</Text>
       </Pressable>}
      </View>
      {!!accountError&&<Text style={{color:'#a52626',marginTop:11}}>{accountError}</Text>}
@@ -449,46 +450,46 @@ export default function AdminPage(){
        return <View style={{gap:12,marginTop:18}}>
         <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Podsumowanie — {accountReport.period}</Text>
         <View style={{flexDirection:'row',flexWrap:'wrap',gap:10}}>
-         {([['Sprzedaż od klientów',amount(gross)],['Zwroty klientom',amount(returns)],['Opłaty pobrane przez Stripe',amount(fees)],['Przelewy Stripe na bank',amount(bank)]] as const).map(([label,value])=>
+         {([['Sprzedaż brutto',amount(gross)],['Zwroty',amount(returns)],['Opłaty Stripe',amount(fees)],['Wypłaty zlecone',amount(bank)]] as const).map(([label,value])=>
           <View key={label} style={{padding:14,backgroundColor:'#f4f7f1',borderRadius:12,minWidth:190,flexGrow:1,gap:5}}>
            <Text style={{fontSize:13,color:muted}}>{label}</Text><Text style={{fontSize:22,fontWeight:'900',color:ink}}>{value}</Text>
           </View>)}
         </View>
         <View style={{padding:15,borderRadius:12,backgroundColor:missing?'#fff4dd':'#eef6e9',gap:4}}>
          <Text style={{fontWeight:'900',color:ink}}>{missing?missing+' płatności wymaga sprawdzenia dokumentu':'Brak niepowiązanych sprzedaży w tym zestawieniu'}</Text>
-         <Text style={{color:muted,fontSize:13}}>Status oznacza tylko, czy wpisano dokument w rejestrze Trenerki. Nie potwierdza poprawności VAT, paragonu lub KSeF.</Text>
+         <Text style={{color:muted,fontSize:13}}>Status rejestru dokumentów; faktury i ewidencję prowadzimy w Saldeo.</Text>
         </View>
         <View style={{gap:5}}>
-         <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Co zrobić w Saldeo?</Text>
-         <Text style={{color:ink}}>1. Sprawdź zakupy poniżej i przypisz sprzedaż do klienta lub ewidencji B2C.</Text>
-         <Text style={{color:ink}}>2. Faktury dla firm wystawiaj w Saldeo/KSeF i zapisz tutaj ich numery.</Text>
-         <Text style={{color:ink}}>3. Opłaty Stripe zaksięguj jako osobne koszty według dokumentów operatora.</Text>
-         <Text style={{color:ink}}>4. Przelewy na konto porównaj z rozrachunkami. Nie księguj ich drugi raz jako sprzedaży.</Text>
+         <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Zamknięcie okresu</Text>
+         <Text style={{color:ink}}>1. Zweryfikuj sprzedaż B2C i faktury dla firm.</Text>
+         <Text style={{color:ink}}>2. Wpisz numery dokumentów wystawionych w Saldeo / KSeF.</Text>
+         <Text style={{color:ink}}>3. Dołącz dokument opłat Stripe i rozlicz koszt operatora.</Text>
+         <Text style={{color:ink}}>4. Uzgodnij wypłaty Stripe z wyciągiem bankowym.</Text>
         </View>
-        {accountReport.rows.some(x=>x.currency!=='PLN')&&<Text style={{color:'#8a5c13',fontSize:13}}>W zestawieniu są też operacje w innych walutach. Podsumowanie powyżej obejmuje tylko PLN. Pełne dane znajdziesz w eksporcie i szczegółach.</Text>}
+        {accountReport.rows.some(x=>x.currency!=='PLN')&&<Text style={{color:'#8a5c13',fontSize:13}}>Występują także inne waluty. Powyższe kwoty dotyczą PLN; pozostałe waluty wykazano oddzielnie w eksporcie.</Text>}
        </View>;
       })()}
-      <Text style={{fontWeight:'900',color:ink,fontSize:17,marginTop:16}}>Płatności i dokumenty</Text>
+      <Text style={{fontWeight:'900',color:ink,fontSize:17,marginTop:16}}>Rejestr sprzedaży</Text>
 
       {accountReport.rows.filter(x=>x.category==='charge').slice(0,100).map(x=><View key={x.id} style={{paddingVertical:13,borderBottomWidth:1,borderColor:'#e2e9de',gap:5}}>
        <Text style={{color:ink,fontWeight:'900',fontSize:16}}>{x.date} · Sprzedaż {money(x.gross_grosze)} {x.currency==='PLN'?'':'('+x.currency+')'}</Text>
-       <Text style={{color:muted,fontSize:13}}>Dokument: {x.document?.document_number||'Nie przypisano'} · {x.document?.document_status==='issued'||x.document?.document_status==='reconciled'?'Zapisany':'Wymaga sprawdzenia'}</Text>
-       <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{alignSelf:'flex-start',padding:10,backgroundColor:pale,borderRadius:9}}><Text style={{fontWeight:'800',color:ink}}>Dodaj numer faktury / ewidencji</Text></Pressable>
+       <Text style={{color:muted,fontSize:13}}>Dokument: {x.document?.document_number||'Nieprzypisany'} · {x.document?.document_status==='issued'||x.document?.document_status==='reconciled'?'Ujęty':'Do weryfikacji'}</Text>
+       <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{alignSelf:'flex-start',padding:10,backgroundColor:pale,borderRadius:9}}><Text style={{fontWeight:'800',color:ink}}>Dokument sprzedaży</Text></Pressable>
        {accountShowTechnical&&<Text style={{color:muted,fontSize:12}}>Stripe: {x.source} · Opłata: {(x.fee_grosze/100).toFixed(2)} {x.currency} · Rodzaj: {x.category}</Text>}
       </View>)}
       {!accountReport.rows.some(x=>x.category==='charge')&&<Text style={{color:muted,marginTop:10}}>W tym okresie nie ma transakcji sprzedaży.</Text>}
       {!!accountEditSource&&<View style={{marginTop:18,padding:15,borderWidth:1,borderColor:'#bbd4bb',borderRadius:12,gap:9}}>
-       <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Przypisz dokument do sprzedaży</Text>
-       <Text style={{color:muted,fontSize:12,lineHeight:18}}>Ten formularz niczego nie wystawia. Zapisuje numer istniejącej faktury z Saldeo albo oznaczenie ewidencji sprzedaży. Nie wpisuj tutaj danych osobowych.</Text>
-       <Text style={{fontWeight:'800',color:ink}}>1. Jaki to dokument?</Text>
+       <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Dokument sprzedaży</Text>
+       <Text style={{color:muted,fontSize:12,lineHeight:18}}>Powiąż transakcję z fakturą lub ewidencją sprzedaży w Saldeo. Zapis nie wystawia nowej faktury.</Text>
+       <Text style={{fontWeight:'800',color:ink}}>1. Rodzaj dokumentu</Text>
        <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>
         {([['pending','Do ustalenia'],['b2c_register','Ewidencja B2C'],['b2c_invoice','Faktura B2C'],['b2b_invoice','Faktura B2B'],['refund_correction','Korekta']] as const).map(([value,label])=><Pressable key={value} onPress={()=>setAccountDocType(value)} style={{padding:9,borderRadius:8,backgroundColor:accountDocType===value?ink:pale}}><Text style={{color:accountDocType===value?'white':ink}}>{label}</Text></Pressable>)}
        </View>
-       <Text style={{fontWeight:'800',color:ink}}>2. Czy dokument jest gotowy?</Text>
+       <Text style={{fontWeight:'800',color:ink}}>2. Status dokumentu</Text>
        <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>
         {([['pending','Nowe'],['prepared','Przygotowane'],['issued','Wystawione'],['reconciled','Uzgodnione'],['review','Do wyjaśnienia']] as const).map(([value,label])=><Pressable key={value} onPress={()=>setAccountDocStatus(value)} style={{padding:9,borderRadius:8,backgroundColor:accountDocStatus===value?ink:pale}}><Text style={{color:accountDocStatus===value?'white':ink}}>{label}</Text></Pressable>)}
        </View>
-       <Text style={{fontWeight:'800',color:ink}}>3. Jak rozliczono VAT?</Text>
+       <Text style={{fontWeight:'800',color:ink}}>3. Rozliczenie VAT</Text>
        <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>
         {([['review','Sprawdź'],['pl_23','PL 23%'],['exempt','Zwolnienie'],['reverse_charge','Reverse charge'],['oss','OSS'],['outside_scope','Poza PL']] as const).map(([value,label])=><Pressable key={value} onPress={()=>setAccountTax(value)} style={{padding:9,borderRadius:8,backgroundColor:accountTax===value?ink:pale}}><Text style={{color:accountTax===value?'white':ink}}>{label}</Text></Pressable>)}
        </View>
@@ -501,13 +502,13 @@ export default function AdminPage(){
        </View>
       </View>}
       <Pressable onPress={()=>setAccountShowTechnical(x=>!x)} accessibilityRole="button" style={{marginTop:16,padding:11,backgroundColor:'#f1f4ec',borderRadius:9}}>
-       <Text style={{color:ink,fontWeight:'800'}}>{accountShowTechnical?'Ukryj operacje techniczne':'Pokaż opłaty, zwroty i przelewy Stripe'}</Text>
+       <Text style={{color:ink,fontWeight:'800'}}>{accountShowTechnical?'Ukryj szczegóły':'Szczegóły operacji Stripe'}</Text>
       </Pressable>
       {accountShowTechnical&&<View style={{gap:5,marginTop:8}}>
        {accountReport.summary.map((x,i)=><Text key={x.currency+x.category+i} style={{color:muted}}>{x.category} · {x.currency} · {x.count} operacji · {(x.gross_grosze/100).toFixed(2)} brutto · {(x.fee_grosze/100).toFixed(2)} opłat</Text>)}
        {accountReport.rows.filter(x=>x.category!=='charge').slice(0,100).map(x=><Text key={x.id} style={{color:muted,fontSize:12}}>{x.date} · {x.category} · {x.currency} {(x.gross_grosze/100).toFixed(2)} · {x.source}</Text>)}
       </View>}
-      <Text style={{fontSize:12,color:muted,marginTop:12,lineHeight:19}}>To pomocnicze zestawienie Stripe, a nie faktura VAT, ewidencja fiskalna ani gotowy import do SaldeoSMART. CSV zawiera operacje, nie dokumenty sprzedaży. Stawki podatku i numery dokumentów wymagają weryfikacji. Zwrócone płatności i karty podarunkowe mogą wymagać odrębnych rozliczeń.</Text>
+      <Text style={{fontSize:12,color:muted,marginTop:12,lineHeight:19}}>Eksport stanowi rejestr pomocniczy do uzgodnienia z Saldeo. Nie zastępuje faktury, ewidencji VAT ani dokumentu opłat. Karty podarunkowe i zwroty należy rozliczać oddzielnie.</Text>
      </>}
     </View>}
     {tab==='sales'&&<View style={card}>
