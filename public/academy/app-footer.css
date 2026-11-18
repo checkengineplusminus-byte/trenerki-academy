@@ -165,7 +165,3 @@
   outline: 2px solid var(--ta-app-footer-heart);
   outline-offset: 3px;
 }
-
-.ta-app-footer-affiliate{display:inline-flex;align-items:center;min-height:44px;border-radius:10px;border:1px solid #a5ce86;background:#d9f29c;color:#173d29!important;font-weight:900;padding:9px 13px;margin:2px 8px 2px 0;animation:ta-app-affiliate-pulse 3.2s ease-in-out infinite}
-@keyframes ta-app-affiliate-pulse{0%,100%{box-shadow:0 0 0 0 rgba(219,240,160,.08)}50%{box-shadow:0 0 0 6px rgba(219,240,160,.18)}}
-@media(prefers-reduced-motion:reduce){.ta-app-footer-affiliate{animation:none!important}}
