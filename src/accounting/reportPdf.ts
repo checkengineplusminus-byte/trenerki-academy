@@ -123,9 +123,9 @@ function reportContent(report:LedgerReport){
    operationLabel(r.category),
    productName(r),
    buyerName(r),
-   formatAmount(r.gross_grosze,''),
-   formatAmount(r.fee_grosze,''),
-   formatAmount(r.net_grosze,''),
+   formatAmount(r.gross_grosze,r.currency).replace(' '+r.currency,''),
+   formatAmount(r.fee_grosze,r.currency).replace(' '+r.currency,''),
+   formatAmount(r.net_grosze,r.currency).replace(' '+r.currency,''),
    r.currency,doc
   ].map((value,i)=>styleCell(value,i===4||i===6,i>=4&&i<=6?'right':'left',{
    margin:[3,5,3,5],fontSize:i===2||i===3?7.6:7.8
