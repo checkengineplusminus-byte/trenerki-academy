@@ -38,3 +38,4 @@ jobs:
         run: |
           python3 -m http.server 8791 --directory /tmp/trenerki-ai-browser >/tmp/ai-course-http.log 2>&1 &
           node scripts/test-ai-course-browser.mjs http://127.0.0.1:8791
+          node scripts/test-ai-owned-route-browser.mjs http://127.0.0.1:8791
