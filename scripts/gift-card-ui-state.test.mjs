@@ -75,6 +75,13 @@ function createScreen(path,params={}){
    vm.runInNewContext(helper.outputText,{...context,module:helperModule,exports:helperModule.exports},{filename:helperPath});
    return helperModule.exports;
   }
+  if(name==='../src/accounting/reportModel'){
+   // Real pure formatting helpers keep the admin report in-sync with production.
+   const real={exports:{}},file='src/accounting/reportModel.ts';
+   const parsed=ts.transpileModule(readFileSync(file,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}});
+   vm.runInNewContext(parsed.outputText,{...context,module:real,exports:real.exports},{filename:file});
+   return real.exports;
+  }
   if(name==='../src/courseQuote')return {coursePrice:async()=>10000,termsVersion:'2026-11-11'};
   return {__esModule:true,default:()=>null};
  };
