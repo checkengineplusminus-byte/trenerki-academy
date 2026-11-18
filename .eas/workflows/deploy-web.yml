@@ -39,6 +39,8 @@ jobs:
           run: node scripts/audit-course-standards.mjs --enforce
         - name: Verify content, exercises and protected course access
           run: node scripts/check-content-consistency.mjs
+        - name: Protect AI learning route and prevent accidental logout
+          run: node --experimental-default-type=module --test scripts/test-ai-navigation-session.mjs
         - name: Verify Excel currency calculations and spreadsheet navigation
           run: node scripts/test-excel-currency.mjs
         - name: Verify Excel first-day formulas on numerical and symbolic answers
