@@ -16,7 +16,7 @@ export default function AccountPage(){
  gift=validGiftCode(params.gift),
  referral=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const [isAdmin,setIsAdmin]=useState(false);
- const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':(course||gift||params.next==='valuegift'||params.next==='affiliate')?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':'login'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const isCompanyLogin=params.next==='company';
  const continueToSelectedCourse=async()=>{
     if(params.next==='company'){router.replace('/firma');return;}
