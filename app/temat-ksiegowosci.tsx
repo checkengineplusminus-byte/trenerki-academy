@@ -16,6 +16,31 @@ import {recommendedLabTab,LAB_TAB_NAMES} from '../src/accounting/lab-navigation.
 import {topicPhotoAssetId} from '../src/accounting/topic-media.js';
 
 type Lesson={topic_no:number;title_pl:string;learning_goal:string;editorial_status:string;legal_as_of:string|null;material:any;body_text:string};
+type LearningStep='learn'|'example'|'practice'|'homework'|'summary';
+const LESSON_STEPS:{id:LearningStep;icon:string;label:string;hint:string}[]=[
+ {id:'learn',icon:'📗',label:'Poznaj',hint:'Zrozum temat'},
+ {id:'example',icon:'💡',label:'Przykład',hint:'Zobacz rozwiązanie'},
+ {id:'practice',icon:'✍️',label:'Ćwicz',hint:'Odpowiedz tutaj'},
+ {id:'homework',icon:'🧰',label:'Zadanie',hint:'Wpisz własną pracę'},
+ {id:'summary',icon:'✅',label:'Sprawdź',hint:'Podsumuj wyniki'},
+];
+const BEGINNER_GUIDES:Record<number,{intro:string;items:{icon:string;title:string;description:string}[]}>={
+ 1:{intro:'Najpierw ustalamy, czyj jest dokument. Dopiero później zajmiemy się kwotami i księgowaniem.',items:[
+  {icon:'👤',title:'JDG',description:'Jednoosobowa działalność gospodarcza — firmę prowadzi konkretna osoba fizyczna.'},
+  {icon:'🏢',title:'Spółka z o.o.',description:'Spółka jest odrębnym podmiotem. Faktura wystawiona na jej wspólnika nie staje się automatycznie fakturą spółki.'},
+  {icon:'🤝',title:'Fundacja',description:'Organizacja z własnymi dokumentami i celami. Jej pieniądze nie są prywatnymi środkami członków zarządu.'}
+ ]},
+ 2:{intro:'Jedna faktura może mieć kilka ważnych dat. Zanim zrobisz zapis, dowiedz się, kiedy nastąpiło zdarzenie.',items:[
+  {icon:'📦',title:'Zdarzenie',description:'Co rzeczywiście się stało, np. firma odebrała towar.'},
+  {icon:'🧾',title:'Dokument',description:'Dowód opisujący zdarzenie, np. faktura — ma własną datę.'},
+  {icon:'💳',title:'Płatność',description:'Dzień zapłaty może być inny niż dzień dostawy i wystawienia faktury.'}
+ ]},
+ 3:{intro:'Najpierw rozpoznaj majątek firmy oraz skąd pochodziły pieniądze na jego zakup.',items:[
+  {icon:'📦',title:'Aktywa',description:'To, co firma posiada lub jej się należy, np. środki na rachunku i należności.'},
+  {icon:'🧮',title:'Zobowiązania',description:'Kwoty, które firma ma zapłacić innym osobom lub firmom.'},
+  {icon:'⚖️',title:'Bilans',description:'Porównuje majątek firmy ze źródłami jego finansowania.'}
+ ]}
+};
 // Static require() is intentionally used for Expo Web, Android and iOS bundling.
 // Assets never come from externally supplied URLs or user-generated HTML.
 const GENERATED_PHOTO_ASSETS:Record<string,number>=Object.freeze({
@@ -86,6 +111,10 @@ export default function TematKsiegowosci(){
  const [homeworkError,setHomeworkError]=useState('');
  const [homeworkMessage,setHomeworkMessage]=useState('');
  const [busy,setBusy]=useState(true),[error,setError]=useState(''),[warning,setWarning]=useState('');
+ const [step,setStep]=useState<LearningStep>('learn');
+ const [sectionIndex,setSectionIndex]=useState(0),[exampleIndex,setExampleIndex]=useState(0),[quizIndex,setQuizIndex]=useState(0);
+ const [showExtraHomework,setShowExtraHomework]=useState(false),[showGlossary,setShowGlossary]=useState(false),[showSources,setShowSources]=useState(false);
+ const scroll=useRef<React.ComponentRef<typeof ScrollView>>(null);
  const serial=useRef(0),owner=useRef('');
  const load=useCallback(async()=>{
   const run=++serial.current;setBusy(true);setLesson(null);setError('');setWarning('');setAnswers({});setHomework(null);setHomeworkText('');setHomeworkReady(false);setHomeworkError('');setHomeworkMessage('');
@@ -120,6 +149,7 @@ export default function TematKsiegowosci(){
   }catch(e:any){if(run===serial.current)setError(e?.message||'Błąd odczytu lekcji.');}
   finally{if(run===serial.current)setBusy(false);}
  },[topic,router]);
+ useEffect(()=>{setStep('learn');setSectionIndex(0);setExampleIndex(0);setQuizIndex(0);setShowExtraHomework(false);setShowGlossary(false);setShowSources(false);},[topic]);
  useEffect(()=>{void load();return()=>{++serial.current;};},[load]);
  useEffect(()=>{
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
@@ -183,42 +213,108 @@ export default function TematKsiegowosci(){
  const sectionProgress=topic!==null?progress.byTopic[topic]:null;
  const hasHomework=homeworkReady&&homeworkSubmitted(homework)&&homeworkText===homework?.response;
  const nextReady=sectionProgress?.passed===true&&hasHomework;
- return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
-  <View style={s.row}><Link href="/program-ksiegowosci" style={s.link}>← Wróć do 100 tematów</Link><Link href="/ksiegowosc" style={s.link}>Encyklopedia</Link></View>
+
+ const sections=Array.isArray(m.sections)?m.sections:[];
+ const currentSection=sections[Math.min(sectionIndex,Math.max(0,sections.length-1))];
+ const examples=Array.isArray(m.examples)?m.examples:[];
+ const example=examples[Math.min(exampleIndex,Math.max(0,examples.length-1))];
+ const tables=Array.isArray(m.tables)?m.tables:[];
+ const currentTable=tables[Math.min(exampleIndex,Math.max(0,tables.length-1))];
+ const exercises=Array.isArray(m.exercises)?m.exercises:[];
+ const currentExercise=exercises[Math.min(quizIndex,Math.max(0,exercises.length-1))];
+ const guide=topic===null?null:BEGINNER_GUIDES[topic]||null;
+ const position=LESSON_STEPS.findIndex(v=>v.id===step);
+ function goStep(next:LearningStep){
+  setStep(next);
+  scroll.current?.scrollTo({y:0,animated:false});
+ }
+ function changePart(kind:'section'|'example'|'quiz',next:number){
+  if(kind==='section')setSectionIndex(next);
+  if(kind==='example')setExampleIndex(next);
+  if(kind==='quiz')setQuizIndex(next);
+  scroll.current?.scrollTo({y:0,animated:false});
+ }
+ return <ScrollView ref={scroll} style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
+  <View style={s.topBar}><Link href="/program-ksiegowosci" style={s.link}>← Program kursu</Link><Text style={s.small}>Temat {topic||'—'} / 100</Text></View>
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie lekcji"/>}
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
   {!!warning&&<Text style={s.warning}>{warning}</Text>}
-  {!busy&&lesson&&!error&&<View>
-   <View style={s.header}>
-    <Text style={s.eyebrow}>TEMAT {lesson.topic_no} Z 100</Text>
-    <Text accessibilityRole="header" style={s.h1}>{lesson.title_pl}</Text>
-    <Text style={s.heroBody}>{lesson.learning_goal}</Text>
+  {!busy&&lesson&&!error&&<View style={s.lessonBody}>
+   <View style={s.lessonHero}>
+    <Text style={s.eyebrowDark}>📚 KSIĘGOWOŚĆ OD PODSTAW · TEMAT {lesson.topic_no}</Text>
+    <Text accessibilityRole="header" style={s.lessonTitle}>{lesson.topic_no===1?'Zacznijmy od podstaw: czyj to dokument?':lesson.title_pl}</Text>
+    <Text style={s.lessonGoal}>{lesson.topic_no===1?'Na początku wystarczy odróżnić osobę prowadzącą firmę, spółkę i fundację.':lesson.learning_goal}</Text>
    </View>
-   <Text style={s.small}>To ćwiczenie ma charakter edukacyjny i wykorzystuje fikcyjne dane. Przed rzeczywistymi rozliczeniami należy sprawdzić aktualne przepisy i zasięgnąć odpowiedniej porady.</Text>
-   <View style={s.card}><Text style={s.body}>{m.intro||lesson.body_text}</Text></View>
-   {(m.sections||[]).map((section:any,i:number)=><View key={i} style={s.card}>
-    <Text accessibilityRole="header" style={s.h2}>{section.heading}</Text>
-    {(section.paragraphs||[]).filter((p:string)=>!(section.curiosity?.text&&p.startsWith('Ciekawostka:')&&p.includes(section.curiosity.text))).map((p:string,j:number)=><Text key={j} selectable style={s.body}>{p}</Text>)}
-    {typeof section.curiosity?.text==='string'&&section.curiosity.text.trim()?<View style={s.curiosityBox}>
-      <Text style={s.curiosityTitle}>CIEKAWOSTKA</Text>
-      <Text selectable style={s.body}>{section.curiosity.text}</Text>
-      {section.curiosity.source_ref?<Text style={s.curiositySource}>Źródło: {section.curiosity.source_ref}</Text>:null}
-      {sourceURL(section.curiosity.source_url)&&/^https:\/\/(eli\.gov\.pl|eur-lex\.europa\.eu|uodo\.gov\.pl|www\.uodo\.gov\.pl|ksef\.podatki\.gov\.pl)\//i.test(section.curiosity.source_url)?<Pressable accessibilityRole="link" onPress={()=>Linking.openURL(section.curiosity.source_url)}><Text style={s.link}>Sprawdź źródło urzędowe</Text></Pressable>:null}
-    </View>:null}
-    <SectionPhoto photo={section.photo}/>
-   </View>)}
-   {(m.tables||[]).map((table:any,i:number)=><View key={i} style={s.card}>
-    <Text accessibilityRole="header" style={s.h2}>{table.title}</Text>
-    <ScrollView horizontal><View>
-     <View style={s.tableRow}>{(table.columns||[]).map((c:string,j:number)=><Text key={j} style={[s.cell,s.headCell]}>{c}</Text>)}</View>
-     {(table.rows||[]).map((r:any[],j:number)=><View key={j} style={s.tableRow}>{r.map((v:any,k:number)=><Text key={k} style={s.cell}>{String(v)}</Text>)}</View>)}
-    </View></ScrollView>
-   </View>)}
-   {(m.examples||[]).map((example:any,i:number)=><View key={i} style={s.card}>
-    <Text style={s.eyebrowDark}>PRZYKŁAD {i+1} – ROZWIĄZANIE</Text><Text accessibilityRole="header" style={s.h2}>{example.title}</Text>
-    {(example.steps||[]).map((step:string,j:number)=><Text key={j} style={s.body}>{j+1}. {step}</Text>)}
-    <Text style={s.result}>{example.result}</Text>
-   </View>)}
+   <ScrollView horizontal showsHorizontalScrollIndicator={false} keyboardShouldPersistTaps="handled" contentContainerStyle={s.stepRail}>
+    {LESSON_STEPS.map((item,i)=><Pressable key={item.id} accessibilityRole="button" accessibilityLabel={item.label+' — '+item.hint} accessibilityState={{selected:step===item.id}}
+     onPress={()=>goStep(item.id)} style={[s.stepTile,step===item.id&&s.stepTileActive]}>
+     <Text style={s.stepIcon}>{item.icon}</Text>
+     <Text style={[s.stepTitle,step===item.id&&s.stepTitleActive]}>{item.label}</Text>
+     <Text style={s.stepNumber}>{i+1} / 5</Text>
+    </Pressable>)}
+   </ScrollView>
+   <View style={s.stepIntro}><Text style={s.stepIntroTitle}>{LESSON_STEPS[position]?.icon} {LESSON_STEPS[position]?.label}</Text><Text style={s.stepIntroHint}>{LESSON_STEPS[position]?.hint} · Krok {position+1} z 5</Text></View>
+   {step==='learn'&&<View style={s.stageBody}>
+    {sectionIndex===0&&<View style={s.card}>
+     <Text style={s.h2}>Najpierw zrozum, o co chodzi</Text>
+     {guide&&<Text style={s.body}>{guide.intro}</Text>}
+     {!guide&&<Text style={s.body}>Zaczynamy bez sprawdzianu. Zobacz najważniejsze pojęcia, a następnie poznaj krótkie części tematu.</Text>}
+     {guide&&<View style={s.primerList}>{guide.items.map((item,i)=><View key={i} style={s.primerCard}>
+      <Text style={s.primerIcon}>{item.icon}</Text>
+      <View style={{flex:1,gap:4}}><Text style={s.label}>{item.title}</Text><Text style={s.bodySmall}>{item.description}</Text></View>
+     </View>)}</View>}
+     {(m.glossary||[]).slice(0,3).map((g:any,i:number)=><View key={i} style={s.wordRow}><Text style={s.label}>{g.term}:</Text><Text style={s.bodySmall}>{glossaryExplanation(g)}</Text></View>)}
+     <Text style={s.bodySmall}>{m.intro||lesson.body_text}</Text>
+    </View>}
+    {currentSection&&<View style={s.card}>
+     <Text style={s.eyebrowDark}>CZĘŚĆ {sectionIndex+1} / {sections.length}</Text>
+     <Text accessibilityRole="header" style={s.h2}>{String(currentSection.heading||'Poznaj temat').replace(/^\d+\.\s*/,'')}</Text>
+     {(currentSection.paragraphs||[]).filter((p:string)=>!(currentSection.curiosity?.text&&p.startsWith('Ciekawostka:')&&p.includes(currentSection.curiosity.text))).map((p:string,i:number)=><Text key={i} selectable style={s.body}>{p}</Text>)}
+     {typeof currentSection.curiosity?.text==='string'&&!!currentSection.curiosity.text.trim()&&<View style={s.curiosityBox}>
+      <Text style={s.curiosityTitle}>💡 Ciekawostka</Text><Text style={s.body}>{currentSection.curiosity.text}</Text>
+     </View>}
+     <SectionPhoto photo={currentSection.photo}/>
+    </View>}
+    <View style={s.nextControls}>
+     {sectionIndex>0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>changePart('section',sectionIndex-1)}><Text style={s.buttonText}>← Poprzednia część</Text></Pressable>}
+     {sectionIndex<sections.length-1?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>changePart('section',sectionIndex+1)}><Text style={s.primaryButtonText}>Następna część →</Text></Pressable>:
+      <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('example')}><Text style={s.primaryButtonText}>Zobacz przykład →</Text></Pressable>}
+    </View>
+   </View>}
+   {step==='example'&&<View style={s.stageBody}>
+    <Text style={s.bodySmall}>Przykłady są już rozwiązane. Najpierw zobacz tok rozumowania — własną odpowiedź wpiszesz dopiero w kroku „Ćwicz”.</Text>
+    {example&&<View style={s.card}>
+     <Text style={s.eyebrowDark}>PRZYKŁAD {exampleIndex+1} / {examples.length}</Text>
+     <Text accessibilityRole="header" style={s.h2}>{example.title}</Text>
+     {(example.steps||[]).map((part:string,i:number)=><View key={i} style={s.guidedStep}><Text style={s.guidedNumber}>{i+1}</Text><Text style={[s.body,{flex:1}]}>{part}</Text></View>)}
+     <View style={s.resultBox}><Text style={s.label}>Wynik przykładu</Text><Text style={s.body}>{example.result}</Text></View>
+    </View>}
+    {currentTable&&<View style={s.card}><Text style={s.h2}>Tabela do przykładu</Text><Text style={s.label}>{currentTable.title}</Text>
+     <ScrollView horizontal><View><View style={s.tableRow}>{(currentTable.columns||[]).map((v:string,i:number)=><Text key={i} style={[s.cell,s.headCell]}>{v}</Text>)}</View>
+      {(currentTable.rows||[]).map((row:any[],i:number)=><View key={i} style={s.tableRow}>{row.map((value:any,j:number)=><Text key={j} style={s.cell}>{String(value)}</Text>)}</View>)}
+     </View></ScrollView>
+    </View>}
+    <View style={s.nextControls}>
+     {exampleIndex>0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>changePart('example',exampleIndex-1)}><Text style={s.buttonText}>← Poprzedni przykład</Text></Pressable>}
+     {exampleIndex<Math.max(examples.length,tables.length)-1?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>changePart('example',exampleIndex+1)}><Text style={s.primaryButtonText}>Następny przykład →</Text></Pressable>:
+      <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('practice')}><Text style={s.primaryButtonText}>Teraz spróbuj sam →</Text></Pressable>}
+    </View>
+   </View>}
+   {step==='practice'&&<View style={s.stageBody}>
+    <View style={s.card}>
+     <Text style={s.h2}>Tu rozwiązujesz ćwiczenia</Text>
+     <Text style={s.bodySmall}>Wybierz odpowiedź albo wpisz liczbę w pole poniżej. Następnie naciśnij „Sprawdź i zapisz odpowiedź”. Własne próby są zapisywane na Twoim koncie.</Text>
+     <Text style={s.eyebrowDark}>ĆWICZENIE {exercises.length?quizIndex+1:0} Z {(m.exercises||[]).length}</Text>
+     {currentExercise?<Task key={String(currentExercise.id)} exercise={currentExercise} topicNo={lesson.topic_no} userId={userId} initial={answers[currentExercise.id]||''} onSaved={(id,answer)=>setAnswers(old=>({...old,[id]:answer}))}/>:<Text style={s.body}>W tym temacie nie ma ćwiczeń do zapisania.</Text>}
+    </View>
+    <View style={s.nextControls}>
+     {quizIndex>0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>changePart('quiz',quizIndex-1)}><Text style={s.buttonText}>← Poprzednie ćwiczenie</Text></Pressable>}
+     {quizIndex<exercises.length-1?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>changePart('quiz',quizIndex+1)}><Text style={s.primaryButtonText}>Następne ćwiczenie →</Text></Pressable>:
+      <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('homework')}><Text style={s.primaryButtonText}>Przejdź do pracy domowej →</Text></Pressable>}
+    </View>
+   </View>}
+   {step==='homework'&&<View style={s.stageBody}>
+    <View style={s.guideNotice}><Text style={s.label}>📝 Gdzie wpisać rozwiązanie?</Text><Text style={s.bodySmall}>W polu „Twoje rozwiązanie” poniżej. Możesz wcześniej skorzystać z biura ćwiczeniowego lub pliku CSV, ale zadanie oddajesz właśnie tutaj. „Zapisz szkic” nie oznacza oddania pracy.</Text></View>
    {m.practice&&<View style={s.practice}>
     <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
@@ -271,25 +367,25 @@ export default function TematKsiegowosci(){
        </View>}
     </>}
    </View>}
-   <View style={s.card}><Text accessibilityRole="header" style={s.h2}>Sprawdź samodzielnie</Text>
-    <Text style={s.small}>Liczba zadań w tym temacie: {(m.exercises||[]).length}. Klucz pojawia się po własnej próbie; nie jest to egzamin certyfikujący.</Text>
-    {(m.exercises||[]).map((e:any)=><Task key={e.id} exercise={e} topicNo={lesson.topic_no} userId={userId} initial={answers[e.id]||''} onSaved={(id,answer)=>setAnswers(old=>({...old,[id]:answer}))}/>)}
-   </View>
-   {(m.glossary||[]).length>0&&<View style={s.card}><Text accessibilityRole="header" style={s.h2}>Słowniczek od zera</Text>
-    {m.glossary.map((g:any,i:number)=><View key={i} style={s.gloss}><Text style={s.label}>{g.term}</Text><Text style={s.body}>{glossaryExplanation(g)}</Text></View>)}
+
+    {!m.practice&&<Text style={s.body}>W tej lekcji nie przewidziano pisemnej pracy domowej.</Text>}
+    <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('summary')}><Text style={s.primaryButtonText}>Przejdź do podsumowania →</Text></Pressable>
    </View>}
-   {(m.takeaways||[]).length>0&&<View style={s.card}><Text style={s.h2}>Najważniejsze do zapamiętania</Text>
-    {m.takeaways.map((v:string,i:number)=><Text key={i} style={s.body}>{i+1}. {v}</Text>)}
-   </View>}
-   <View style={s.card}><Text style={s.h2}>Źródła i zakres</Text>
-    <Text style={s.small}>Data odniesienia materiału: {lesson.legal_as_of||'nie podano'}. Sama data nie potwierdza weryfikacji prawnej ani aktualności odnośników; sprawdź źródła i przepisy właściwe dla konkretnej sytuacji.</Text>
-    {(m.sources||[]).map((v:any,i:number)=>{
-     const url=sourceURL(v.url);
-     return <View key={i} style={s.gloss}><Text style={s.label}>{v.title}</Text><Text style={s.small}>{v.scope}</Text>
-      {url&&<Pressable accessibilityRole="button" style={s.button} onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}><Text style={s.buttonText}>Otwórz wskazane źródło</Text></Pressable>}
-     </View>;
-    })}
-   </View>
+   {step==='summary'&&<View style={s.stageBody}>
+    <View style={s.card}><Text style={s.h2}>Co zapamiętać?</Text>
+     {(m.takeaways||[]).map((v:string,i:number)=><View key={i} style={s.takeawayRow}><Text style={s.checkIcon}>✓</Text><Text style={[s.body,{flex:1}]}>{v}</Text></View>)}
+     {!(m.takeaways||[]).length&&<Text style={s.body}>{lesson.learning_goal}</Text>}
+    </View>
+    {(m.glossary||[]).length>0&&<View style={s.card}>
+     <Pressable accessibilityRole="button" accessibilityState={{expanded:showGlossary}} onPress={()=>setShowGlossary(v=>!v)} style={s.accordionButton}><Text style={s.label}>📖 Słownik pojęć ({(m.glossary||[]).length})</Text><Text style={s.label}>{showGlossary?'−':'+'}</Text></Pressable>
+     {showGlossary&&(m.glossary||[]).map((g:any,i:number)=><View key={i} style={s.wordRow}><Text style={s.label}>{g.term}</Text><Text style={s.bodySmall}>{glossaryExplanation(g)}</Text></View>)}
+    </View>}
+    <View style={s.card}>
+     <Pressable accessibilityRole="button" accessibilityState={{expanded:showSources}} onPress={()=>setShowSources(v=>!v)} style={s.accordionButton}><Text style={s.label}>🔎 Źródła i aktualność przepisów</Text><Text style={s.label}>{showSources?'−':'+'}</Text></Pressable>
+     {showSources&&<View style={{gap:8}}><Text style={s.bodySmall}>Data odniesienia: {lesson.legal_as_of||'nie podano'}. Sama data nie potwierdza weryfikacji prawnej ani aktualności odnośników. Przed rzeczywistymi rozliczeniami sprawdź obowiązujące przepisy.</Text>
+      {(m.sources||[]).map((v:any,i:number)=>{const url=sourceURL(v.url);return <View key={i} style={s.gloss}><Text style={s.label}>{v.title}</Text>{v.scope&&<Text style={s.small}>{v.scope}</Text>}{url&&<Pressable accessibilityRole="button" style={s.button} onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}><Text style={s.buttonText}>Otwórz źródło</Text></Pressable>}</View>;})}
+     </View>}
+    </View>
    <View style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>Dokończ ten temat i przejdź dalej</Text>
     {sectionProgress?
@@ -304,10 +400,49 @@ export default function TematKsiegowosci(){
     </>}
     <Link href="/program-ksiegowosci" style={s.link}>Wróć do programu i swoich wyników</Link>
    </View>
+
+   </View>}
+   <View style={s.bottomNav}>
+    {position>0&&<Pressable accessibilityRole="button" onPress={()=>goStep(LESSON_STEPS[position-1].id)} style={s.backButton}><Text style={s.buttonText}>← {LESSON_STEPS[position-1].label}</Text></Pressable>}
+    {position<LESSON_STEPS.length-1&&<Pressable accessibilityRole="button" onPress={()=>goStep(LESSON_STEPS[position+1].id)} style={s.nextMini}><Text style={s.buttonText}>{LESSON_STEPS[position+1].label} →</Text></Pressable>}
+   </View>
+   <Text style={s.legalLine}>Ćwiczenia służą nauce i wykorzystują fikcyjne dane. Nie zastępują porady księgowej ani podatkowej.</Text>
   </View>}
  </ScrollView>;
 }
+
 const s=StyleSheet.create({
+ lessonBody:{gap:10},
+ topBar:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10,paddingVertical:3},
+ lessonHero:{padding:16,backgroundColor:'#ffffff',borderRadius:16,borderWidth:1,borderColor:'#d8e4d4',gap:7},
+ lessonTitle:{fontSize:24,lineHeight:31,fontWeight:'900',color:'#173b2a'},
+ lessonGoal:{fontSize:14,lineHeight:22,color:'#56725f'},
+ stepRail:{gap:10,paddingVertical:5,paddingHorizontal:2},
+ stepTile:{minWidth:93,alignItems:'center',justifyContent:'center',gap:3,paddingHorizontal:11,paddingVertical:11,borderWidth:1,borderBottomWidth:4,borderBottomColor:'#d3dfcd',borderColor:'#dce7d7',borderRadius:15,backgroundColor:'#fff'},
+ stepTileActive:{backgroundColor:'#e2efd5',borderColor:'#83ad7b',borderBottomColor:'#367b50'},
+ stepIcon:{fontSize:25},stepTitle:{fontSize:13,fontWeight:'800',color:'#33543d'},stepTitleActive:{color:'#153a29'},
+ stepNumber:{fontSize:10,color:'#738973',fontWeight:'700'},
+ stepIntro:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,flexWrap:'wrap',padding:7},
+ stepIntroTitle:{fontSize:20,fontWeight:'900',color:'#183c2b'},stepIntroHint:{fontSize:12,color:'#59735e'},
+ stageBody:{gap:10},
+ primerList:{gap:9,marginTop:4},primerCard:{backgroundColor:'#f0f6e9',borderRadius:12,padding:11,flexDirection:'row',gap:11,alignItems:'flex-start'},
+ primerIcon:{fontSize:25},bodySmall:{fontSize:14,lineHeight:22,color:'#4a6652'},
+ wordRow:{paddingVertical:9,borderTopWidth:1,borderTopColor:'#e2ebdb',gap:4},
+ nextControls:{flexDirection:'row',justifyContent:'space-between',gap:9,flexWrap:'wrap'},
+ primaryButton:{backgroundColor:'#183f2d',padding:14,minHeight:49,borderRadius:12,alignSelf:'flex-start',justifyContent:'center'},
+ primaryButtonText:{fontSize:14,fontWeight:'900',color:'#fff'},
+ backButton:{backgroundColor:'#e9f2e3',padding:12,minHeight:45,borderRadius:12,justifyContent:'center'},
+ guidedStep:{flexDirection:'row',gap:12,paddingVertical:9,borderTopWidth:1,borderTopColor:'#e8eee3'},
+ guidedNumber:{backgroundColor:'#dcedca',width:28,height:28,borderRadius:9,textAlign:'center',textAlignVertical:'center',fontWeight:'900',color:'#245b39',fontSize:13,overflow:'hidden'},
+ resultBox:{backgroundColor:'#e8f4e3',padding:13,borderRadius:13,gap:6},
+ guideNotice:{backgroundColor:'#edf6e7',borderRadius:13,padding:14,gap:7,borderWidth:1,borderColor:'#d4e4cd'},
+ takeawayRow:{flexDirection:'row',gap:10,paddingTop:8},
+ checkIcon:{fontSize:20,fontWeight:'900',color:'#3b884a'},
+ accordionButton:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:12,minHeight:44},
+ bottomNav:{flexDirection:'row',justifyContent:'space-between',flexWrap:'wrap',gap:10,marginTop:12},
+ nextMini:{backgroundColor:'#e8f2e2',padding:12,minHeight:45,borderRadius:12,justifyContent:'center'},
+ legalLine:{fontSize:11,lineHeight:18,color:'#77887b',marginTop:12},
+
  page:{flex:1,backgroundColor:'#f6f8f0'},wrap:{width:'100%',maxWidth:940,alignSelf:'center',padding:18,paddingBottom:65,gap:14},
  row:{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:12,marginBottom:12},
  link:{fontSize:14,fontWeight:'800',color:'#255c3b',paddingVertical:6},
