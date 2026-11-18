@@ -30,8 +30,13 @@ export default function Purchase(){
  useEffect(()=>{let active=true;void (async()=>{
   if(!slug){setMessage('Wybierz kurs w katalogu.');setBusy(false);return;}
   try{
+   // Network or token refresh errors do not mean that the user signed out.
+   const {data:{session},error:sessionError}=await supabase.auth.getSession();
+   if(sessionError)throw new Error('Nie udało się sprawdzić sesji. Nie wylogowaliśmy Cię — odśwież i spróbuj ponownie.');
+   if(!session?.user){router.replace({pathname:'/konto',params:{course:slug,next:'kup',...(referralCode?{ref:referralCode}:{})}});return;}
    const {data:{user},error:authError}=await supabase.auth.getUser();
-   if(authError||!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup',...(referralCode?{ref:referralCode}:{})}});return;}
+   if(authError)throw new Error('Wystąpił chwilowy problem z potwierdzeniem zalogowania. Spróbuj ponownie.');
+   if(!user){router.replace({pathname:'/konto',params:{course:slug,next:'kup',...(referralCode?{ref:referralCode}:{})}});return;}
    const [courseResult,previewResult,enrollmentResult]=await Promise.all([
     supabase.from('ta_courses').select('slug,title_pl,description_pl,category_pl,price_grosze').eq('slug',slug).eq('published',true).maybeSingle(),
     supabase.from('ta_course_previews').select('curiosity,scenario,outcome_1,outcome_2,outcome_3,module_titles,editorial_note').eq('course_slug',slug).maybeSingle(),
@@ -205,7 +210,11 @@ export default function Purchase(){
 
     </View>
    </>}
-   {!!message&&<View style={{backgroundColor:'#fff2dc',padding:17,borderRadius:12}}><Text style={{color:'#805f2e'}}>{message}</Text></View>}
+   {!!message&&<View style={{backgroundColor:'#fff2dc',padding:17,borderRadius:12,gap:9}}><Text accessibilityRole="alert" style={{color:'#805f2e'}}>{message}</Text>
+    <Pressable accessibilityRole="button" style={{alignSelf:'flex-start',padding:10,borderRadius:9,backgroundColor:'#e1efda'}}
+     onPress={()=>router.replace({pathname:'/kup',params:{course:slug,...(referralCode?{ref:referralCode}:{})}})}>
+     <Text style={{color:ink,fontWeight:'800'}}>Sprawdź ponownie bez wylogowania</Text>
+    </Pressable></View>}
    <Pressable onPress={()=>router.replace('/moje-kursy')} style={{padding:12}}><Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>Moje kursy</Text></Pressable>
   </View>
  </ScrollView>;
