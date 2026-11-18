@@ -3,8 +3,8 @@ import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform} fro
 import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 type Totals={pending_grosze:number;approved_grosze:number;in_process_grosze:number;transferred_grosze:number;needs_review_grosze:number;total_sales:number};
-type Partner={partner_id:string;code:string;legal_name:string;email?:string|null;partner_type:string;company_tax_id?:string|null;status:string;tax_status:string;stripe_connected:boolean;stripe_payouts_enabled:boolean;stripe_transfers_enabled:boolean;created_at:string;totals:Totals};
-type Row={code:string;legal_name:string;email?:string|null;partner_type:string;company_tax_id?:string|null;tax_status:string;sales:number;gross_sales_grosze:number;commission_grosze:number;pending_grosze:number;approved_grosze:number;transferred_grosze:number;void_grosze:number;needs_review_grosze:number};
+type Partner={partner_id:string;short_id?:number|null;code:string;legal_name:string;email?:string|null;partner_type:string;company_tax_id?:string|null;status:string;tax_status:string;stripe_connected:boolean;stripe_payouts_enabled:boolean;stripe_transfers_enabled:boolean;created_at:string;totals:Totals};
+type Row={short_id?:number|null;code:string;legal_name:string;email?:string|null;partner_type:string;company_tax_id?:string|null;tax_status:string;sales:number;gross_sales_grosze:number;commission_grosze:number;pending_grosze:number;approved_grosze:number;transferred_grosze:number;void_grosze:number;needs_review_grosze:number};
 type Config={program_enabled:boolean;payout_enabled:boolean;tax_review_approved:boolean;commission_percent:number;payout_min_grosze:number;hold_days:number;terms_version:string};
 const ink='#183c2a',muted='#58705f',pale='#f8fbf6';
 const money=(value=0)=>(value/100).toLocaleString('pl-PL',{style:'currency',currency:'PLN'});
@@ -60,8 +60,8 @@ export default function AffiliateAdmin(){
  }
  function download(){
   if(Platform.OS!=='web'||typeof document==='undefined')return;
-  const names=['Kod','Partner','E-mail','Typ','NIP','Status podatkowy','Sprzedaże','Przychód PLN','Prowizja PLN','Oczekuje PLN','Zatwierdzone PLN','Przekazano PLN','Anulowane PLN','Do wyjaśnienia PLN'];
-  const extract=(r:Row)=>[r.code,r.legal_name,r.email||'',r.partner_type,r.company_tax_id?"'"+r.company_tax_id:'',r.tax_status,r.sales,
+  const names=['Nr','Krótki link','Kod','Partner','E-mail','Typ','NIP','Status podatkowy','Sprzedaże','Przychód PLN','Prowizja PLN','Oczekuje PLN','Zatwierdzone PLN','Przekazano PLN','Anulowane PLN','Do wyjaśnienia PLN'];
+  const extract=(r:Row)=>[r.short_id||'',r.short_id?'https://trenerki.com/'+r.short_id:'',r.code,r.legal_name,r.email||'',r.partner_type,r.company_tax_id?"'"+r.company_tax_id:'',r.tax_status,r.sales,
    r.gross_sales_grosze/100,r.commission_grosze/100,r.pending_grosze/100,r.approved_grosze/100,
    r.transferred_grosze/100,r.void_grosze/100,r.needs_review_grosze/100];
   const csv=(rows:unknown[][])=>rows.map(row=>row.map(v=>{
@@ -77,7 +77,7 @@ export default function AffiliateAdmin(){
   approved:a.approved+(p.totals?.approved_grosze||0),transferred:a.transferred+(p.totals?.transferred_grosze||0),
   sales:a.sales+(p.totals?.total_sales||0)}),{pending:0,approved:0,transferred:0,sales:0});
  const search=partnerSearch.trim().toLocaleLowerCase('pl');
- const shownPartners=partners.filter(p=>!search||[p.legal_name,p.email||'',p.code,p.company_tax_id||''].join(' ').toLocaleLowerCase('pl').includes(search));
+ const shownPartners=partners.filter(p=>!search||[p.legal_name,p.email||'',p.code,String(p.short_id||''),p.company_tax_id||''].join(' ').toLocaleLowerCase('pl').includes(search));
  const companyCount=partners.filter(p=>p.partner_type==='company').length, privateCount=partners.filter(p=>p.partner_type==='individual').length;
  return <ScrollView style={{flex:1,backgroundColor:pale}} contentContainerStyle={{padding:23,paddingBottom:100}}>
   <View style={{width:'100%',maxWidth:1100,alignSelf:'center',gap:18}}>
@@ -109,6 +109,7 @@ export default function AffiliateAdmin(){
      {monthly.filter(r=>r.sales>0||r.commission_grosze>0).length===0?<Text style={{color:muted}}>Brak naliczeń w wybranym miesiącu.</Text>:
       monthly.filter(r=>r.sales>0||r.commission_grosze>0).map(r=><View key={r.code} style={{padding:12,borderWidth:1,borderColor:'#edf2e8',borderRadius:10,gap:5}}>
        <Text style={{fontWeight:'800',color:ink}}>{r.legal_name} · {r.code}</Text>
+       <Text style={{color:'#1c6842'}}>Link: {r.short_id?'trenerki.com/'+r.short_id:'numer oczekuje'}</Text>
        <Text selectable style={{color:muted}}>E-mail: {r.email||'brak'}</Text>
        <Text style={{color:muted}}>Sprzedaże: {r.sales} · Prowizje: {money(r.commission_grosze)} · Oczekuje: {money(r.pending_grosze)} · Zatwierdzone: {money(r.approved_grosze)}</Text>
       </View>)}
@@ -116,11 +117,12 @@ export default function AffiliateAdmin(){
     <View style={{backgroundColor:'white',padding:18,borderRadius:15,gap:12}}>
      <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Konta partnerów — osobny rejestr</Text>
      <Text style={{color:muted}}>Tylko właściciel: partner, e-mail, kod, status, prowizje i sposób rozliczenia.</Text>
-     <TextInput testID="affiliate-partner-admin-search" accessibilityLabel="Wyszukaj partnera po e-mailu, nazwie, kodzie lub NIP" placeholder="Szukaj po e-mailu, nazwie, kodzie lub NIP" value={partnerSearch} onChangeText={setPartnerSearch} style={inputStyle}/>
+     <TextInput testID="affiliate-partner-admin-search" accessibilityLabel="Wyszukaj partnera po numerze, e-mailu, nazwie, kodzie lub NIP" placeholder="Szukaj po e-mailu, nazwie, kodzie lub NIP" value={partnerSearch} onChangeText={setPartnerSearch} style={inputStyle}/>
      <Text style={{color:muted}}>Widoczni: {shownPartners.length} z {partners.length}</Text>
      {partners.length===0?<Text style={{color:muted}}>Jeszcze nikt nie zarejestrował się jako partner.</Text>:shownPartners.length===0?<Text style={{color:muted}}>Brak wyników wyszukiwania.</Text>:shownPartners.map(p=>
       <View key={p.partner_id} style={{paddingVertical:14,borderBottomWidth:1,borderColor:'#e6efe5',gap:5}}>
        <Text style={{fontWeight:'900',color:ink}}>{p.legal_name} · {p.code}</Text>
+       <Text selectable style={{color:'#1c6842',fontWeight:'800'}}>Krótki link: {p.short_id?'trenerki.com/'+p.short_id:'Numer oczekuje'}</Text>
        <Text selectable testID="affiliate-partner-email" style={{color:'#1f6a45',fontWeight:'800'}}>E-mail: {p.email||'Do weryfikacji'}</Text>
        <Text style={{color:muted}}>Typ: {p.partner_type==='company'?'Firma':'Osoba prywatna'} · {p.status} · PIT/dokumenty: {p.tax_status}</Text>
        {p.partner_type==='company'
