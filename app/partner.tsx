@@ -3,7 +3,7 @@ import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Linking,Platf
 import {useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 
-type Partner={code:string;partner_type:'individual'|'company';legal_name:string;status:string;stripe_connected:boolean;
+type Partner={code:string;short_id?:number|null;partner_type:'individual'|'company';legal_name:string;status:string;stripe_connected:boolean;
  stripe_details_submitted:boolean;stripe_payouts_enabled:boolean;stripe_transfers_enabled:boolean;
  payout_tax_status:string;terms_version:string};
 type Summary={pending_grosze:number;approved_grosze:number;in_process_grosze:number;transferred_grosze:number;total_sales:number};
@@ -84,6 +84,28 @@ export default function AffiliatePartner(){
   }catch(e:any){setError(String(e?.message||'Nie można rozpocząć weryfikacji Stripe.'))}
   finally{setSending(false)}
  }
+ async function downloadLogoPng(){
+  if(Platform.OS!=='web'||typeof window==='undefined'||typeof document==='undefined')return;
+  try{
+   const image=new window.Image();
+   image.onload=()=>{
+    const canvas=document.createElement('canvas');canvas.width=1200;canvas.height=360;
+    const ctx=canvas.getContext('2d');
+    if(!ctx){setCopied('Nie udało się utworzyć PNG. Pobierz wersję SVG.');return;}
+    ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.drawImage(image,0,0,canvas.width,canvas.height);
+    canvas.toBlob(blob=>{
+     if(!blob){setCopied('Nie udało się zapisać PNG. Pobierz SVG.');return;}
+     const href=window.URL.createObjectURL(blob);
+     const a=document.createElement('a');a.href=href;a.download='TRENERKI_Academy_logo.png';
+     a.click();window.setTimeout(()=>window.URL.revokeObjectURL(href),1000);
+     setCopied('Zapisano logo PNG.');
+    },'image/png');
+   };
+   image.onerror=()=>setCopied('Grafika jest chwilowo niedostępna. Spróbuj wersji SVG.');
+   image.src='/academy/assets/trenerki-logo-partner.svg';
+  }catch{setCopied('Nie można pobrać PNG. Wybierz SVG.')}
+ }
  async function copy(value:string,description:string){
   try{
    if(Platform.OS==='web'&&typeof navigator!=='undefined'&&navigator.clipboard){
@@ -92,7 +114,10 @@ export default function AffiliatePartner(){
   }catch{setCopied('Zaznacz i skopiuj link z pola poniżej.')}
  }
  const profile=data?.profile,code=profile?.code&&codeRX.test(profile.code)?profile.code:'';
- const link=code?'https://trenerki.com/academy/index.html?ref='+code:'';
+ const number=Number(profile?.short_id||0);
+ const shortNumber=Number.isSafeInteger(number)&&number>=1&&number<=999999999?number:0;
+ const link=shortNumber?'https://trenerki.com/'+shortNumber:
+  code?'https://trenerki.com/academy/index.html?ref='+code:'';
  const canSubmit=legalName.trim().length>=3&&(kind==='individual'||/^\d{10}$/.test(nip.replace(/\s/g,'')))&&adult&&terms&&privacy;
  return <ScrollView style={{flex:1,backgroundColor:cream}} contentContainerStyle={{padding:22,paddingBottom:100}}>
   <View style={{width:'100%',maxWidth:850,alignSelf:'center',gap:18}}>
@@ -129,13 +154,27 @@ export default function AffiliatePartner(){
        </>:<>
         <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Twój panel partnerski</Text>
         <Text style={{fontWeight:'700',color:muted}}>{profile.legal_name} · {profile.partner_type==='individual'?'Osoba prywatna':'Firma'}</Text>
-        <Text style={{color:muted}}>Kod partnera: <Text style={{fontWeight:'900',color:ink}}>{code}</Text></Text>
+        <Text style={{color:muted}}>Twój numer partnera: <Text style={{fontWeight:'900',color:ink}}>{shortNumber||'W trakcie nadawania'}</Text></Text>
+        <Text style={{color:muted,fontSize:12}}>Kod rozliczeniowy przechowujemy bezpiecznie w systemie. Nie musisz go kopiować ani wpisywać.</Text>
         <Text style={{fontWeight:'800',color:ink}}>Twój link do polecania kursów</Text>
         <TextInput editable={false} selectTextOnFocus value={link} accessibilityLabel="Twój link afiliacyjny"
          style={{borderWidth:1,borderColor:'#b7cfb8',padding:12,borderRadius:10,color:ink,fontSize:14}}/>
         <Button title="Skopiuj link" onPress={()=>void copy(link,'Skopiowano link')}/>
         {!!copied&&<Text style={{color:'#2d8049'}}>{copied}</Text>}
-        <Text style={{color:muted,fontSize:13,lineHeight:21}}>Możesz też dopisać numer kursu do linku, np. <Text style={{fontWeight:'800'}}>?course=ai-bez-tajemnic&ref={code}</Text>. Pamiętaj o widocznym oznaczeniu publikacji: „Materiał reklamowy — link afiliacyjny Trenerki”.</Text>
+        <Text style={{color:muted,fontSize:13,lineHeight:21}}>Twój krótki link prowadzi do katalogu. Ktoś kupuje dowolny kwalifikujący się kurs po wejściu z Twojego linku — naliczenie 10% zapisuje się na Twoim koncie. Udostępniając link oznacz publikację: „Materiał reklamowy — link afiliacyjny Trenerki”.</Text>
+        <View style={{backgroundColor:'#f1f7ed',padding:16,borderRadius:14,borderWidth:1,borderColor:'#d7e7d1',gap:11}}>
+          <Text style={{fontWeight:'900',fontSize:18,color:ink}}>Logo Trenerki do Twoich materiałów</Text>
+          {Platform.OS==='web'
+            ?<img src="/academy/assets/trenerki-logo-partner.svg" alt="Oficjalny znak TRENERKI Academy do udostępniania" width={540}
+              style={{display:'block',maxWidth:'100%',height:'auto',borderRadius:10}}/>
+            :<Text style={{color:muted}}>Logo dostępne na stronie Trenerki.com w formacie wektorowym.</Text>}
+          <Text style={{color:muted,lineHeight:21}}>Możesz umieszczać logo w swoich postach polecających kursy. Nie sugeruj jednak, że występujesz jako pracownik Trenerki.</Text>
+          {Platform.OS==='web'?<a href="/academy/assets/trenerki-logo-partner.svg" download="TRENERKI_Academy_logo.svg"
+             style={{padding:'12px 16px',backgroundColor:primary,color:'white',borderRadius:10,textAlign:'center',fontWeight:800,textDecoration:'none'}}>
+             Pobierz logo SVG (najwyższa jakość)
+           </a>:<Button title="Otwórz logo SVG" outline onPress={()=>visit('https://trenerki.com/academy/assets/trenerki-logo-partner.svg')}/>}
+          {Platform.OS==='web'&&<Button title="Pobierz logo PNG" outline onPress={()=>void downloadLogoPng()}/>}
+        </View>
         <View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>
          {([
           ['W oczekiwaniu',data?.totals?.pending_grosze],

@@ -101,6 +101,7 @@ jobs:
           node scripts/learning-browser.mjs http://127.0.0.1:8787
           node scripts/autocad-course-browser.mjs http://127.0.0.1:8787
           node scripts/company-browser.mjs http://127.0.0.1:8787
+          node scripts/test-affiliate-short-browser.mjs http://127.0.0.1:8787
           node scripts/gift-card-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()

@@ -80,6 +80,7 @@ function AccountLayout(){
   <Stack.Screen name="prezent"/>
   <Stack.Screen name="firma"/>
   <Stack.Screen name="partner"/>
+  <Stack.Screen name="referral"/>
   <Stack.Screen name="admin"/>
   <Stack.Protected guard={signedIn} redirectTo="/konto">
    <Stack.Screen name="partner-admin"/>

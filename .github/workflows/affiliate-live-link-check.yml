@@ -1,0 +1,37 @@
+name: TRENERKI — live numeric affiliate links
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/affiliate-live-link-check.yml'
+      - 'public/1.html'
+      - 'public/1/index.html'
+  workflow_dispatch:
+jobs:
+  live_short_link:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Verify short URL and unchanged core routes
+        run: |
+          set -euo pipefail
+          curl -sSL --retry 3 --retry-delay 3 --max-time 25 -D /tmp/affiliate1.headers -o /tmp/affiliate1.body https://trenerki.com/1
+          echo "=== /1 headers ==="
+          head -n 25 /tmp/affiliate1.headers
+          echo "=== /1 preview ==="
+          head -c 550 /tmp/affiliate1.body || true
+          echo
+          if ! grep -Eq 'affiliateNumber=1|/referral' /tmp/affiliate1.headers /tmp/affiliate1.body; then
+            echo "ERROR: /1 does not route to our secure affiliate resolver" >&2
+            exit 1
+          fi
+          for path in konto partner nauka admin; do
+            curl -sSL --retry 2 --retry-delay 2 --max-time 25 -D "/tmp/${path}.headers" -o "/tmp/${path}.body" "https://trenerki.com/${path}"
+            if grep -q 'affiliateNumber=' "/tmp/${path}.headers" "/tmp/${path}.body"; then
+              echo "ERROR: /${path} was hijacked by numeric affiliate routing" >&2
+              exit 1
+            fi
+            echo "OK: /${path} not intercepted"
+          done

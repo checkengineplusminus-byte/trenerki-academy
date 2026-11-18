@@ -25,6 +25,19 @@ includes(partner,['Załóż konto partnerskie','stripe_connected','Prowizje','re
 includes(partnerAdmin,['ta-affiliate-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację','affiliate-partner-admin-search','affiliate-partner-email','E-mail'],'Owner UI');
 includes(affiliate,['company_uses_invoice'],'Company partners use invoices, not Stripe Connect');
 includes(partner,['300 zł','fakturę'],'Company invoice and 300 PLN UI');
+includes(partner,['short_id','trenerki.com/','trenerki-logo-partner.svg','Pobierz logo PNG'],'Numeric short links and downloadable brand artwork');
+includes(partnerAdmin,['Krótki link','short_id','Numer oczekuje'],'Owner numeric link and CSV');
+const routerConfig=JSON.parse(read('app.json'));
+assert.equal(routerConfig.expo.web.output,'static');
+assert(!routerConfig.expo.plugins.some(p=>Array.isArray(p)&&p[1]?.redirects?.some(r=>r.source==='/[affiliateNumber]')),
+ 'Do not hijack /konto, /nauka, /admin or any other root path with wildcard redirect');
+includes(read('public/1.html'),['affiliateNumber=1','noindex'],'Static short link');
+includes(read('public/1/index.html'),['affiliateNumber=1','noindex'],'Directory short link');
+const referral=read('app/referral.tsx');
+includes(referral,['affiliateNumber','ta-affiliate-resolve','/academy/index.html?ref=','Number(raw)'],'Public short link resolver route');
+const brand=read('public/academy/assets/trenerki-logo-partner.svg');
+includes(brand,['TRENERKI','ACADEMY','viewBox="0 0 1200 360"'],'Downloadable branding');
+
 includes(layout,['<Stack.Screen name="partner"/>','<Stack.Screen name="partner-admin"/>'],'Route protection');
 assert(layout.indexOf('<Stack.Screen name="partner-admin"/>')>layout.indexOf('<Stack.Protected guard={signedIn}'),'Admin must be auth guarded');
 assert(!partner.includes('service_role')&&!partnerAdmin.includes('service_role'),'Secrets must not enter public UI');
