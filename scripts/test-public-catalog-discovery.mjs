@@ -12,6 +12,9 @@ assert.equal(core.length,81,'Preserve historical 81 course baseline');
 const intro=html.slice(html.indexOf('const ACCOUNTING_CATALOG='),html.indexOf('const $='));
 const catalog=html.slice(html.indexOf('let catalogVisibleByCategory={}'),html.indexOf('function taAffiliateCode(){'));
 assert(intro.includes('function publicCatalogCourses()'),'Public catalogue source must expose published course lookup');
+assert(html.includes('href="/academy/ksiegowosc-od-podstaw.html"'),'Public accounting catalogue needs direct path without search JS');
+assert(html.includes('href="/academy/index.html?course=ai-bez-tajemnic"'),'AI needs direct public course link');
+assert(/anielka-search\.js\?v=/.test(html),'Search script must be cache-busted after updates');
 assert(catalog.includes('function catalogCourseMatches('),'Search cannot drop standalone paid courses');
 const mainInline=html.slice(html.indexOf('const COURSES='),html.indexOf('</script>',html.indexOf('const COURSES=')));
 new Script(mainInline,{filename:'academy-inline.js'}); // syntax check, no execution
