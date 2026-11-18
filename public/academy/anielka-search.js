@@ -283,6 +283,11 @@ document.addEventListener('click',event=>{
   const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';
   const id=course.getAttribute('data-anielka-course');
   if(id==='ksiegowosc-od-podstaw'){window.location.assign('/academy/ksiegowosc-od-podstaw.html');return;}
+  if(id==='ai-bez-tajemnic'){
+   const ref=new URLSearchParams(window.location.search).get('ref');
+   window.location.assign('/academy/kursy/ai-bez-tajemnic.html'+(ref&&/^TA[A-F0-9]{12}$/.test(ref)?'?ref='+encodeURIComponent(ref):''));
+   return;
+  }
   if(typeof openCourse==='function')openCourse(id);return;
  }
  const details=event.target.closest?.('[data-anielka-details]');
