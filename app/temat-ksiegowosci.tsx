@@ -113,7 +113,7 @@ export default function TematKsiegowosci(){
  const [coachMessage,setCoachMessage]=useState<CoachMessage|null>(null);
  const [coachDraft,setCoachDraft]=useState('');
  const [coachBusy,setCoachBusy]=useState(false),[coachError,setCoachError]=useState('');
- const homeworkTextRef=useRef(''),saveLock=useRef(false);
+ const homeworkTextRef=useRef(''),saveLock=useRef(false),coachLock=useRef(false);
  const [homeworkReady,setHomeworkReady]=useState(false);
  const [homeworkBusy,setHomeworkBusy]=useState(false);
  const [homeworkError,setHomeworkError]=useState('');
@@ -169,16 +169,70 @@ export default function TematKsiegowosci(){
   });
   return()=>subscription.unsubscribe();
  },[router]);
+ async function askAnielka(mode:'hint'|'review'):Promise<CoachResult|null>{
+  const draft=homeworkTextRef.current.trim();
+  if(topic===null||!lesson||!userId||owner.current!==userId||coachLock.current)return null;
+  const local=draftGuidance(draft);
+  if(mode==='review'&&local.kind==='math_error'){
+   const result:CoachResult={ok:true,verdict:'needs_revision',reply:local.message,next_step:'Popraw obliczenie, opisz dane i sprawdź ponownie.',agent_online:false,math_error:true};
+   setCoachMessage({...result,mode});setCoachDraft(draft);setCoachError('');
+   return result;
+  }
+  if(mode==='review'&&local.kind==='empty'){
+   const result:CoachResult={ok:true,verdict:'needs_revision',reply:local.message,next_step:'Wpisz choć jedną próbę rozwiązania.',agent_online:false};
+   setCoachMessage({...result,mode});setCoachDraft(draft);setCoachError('');
+   return result;
+  }
+  coachLock.current=true;setCoachBusy(true);setCoachError('');
+  const run=serial.current;
+  try{
+   const {data,error:invokeError}=await supabase.functions.invoke<CoachResult>('ta-accounting-lesson-coach',{
+    body:{topic_no:topic,mode,draft:draft.slice(0,3200)}
+   });
+   if(invokeError||!data?.ok||typeof data.reply!=='string'){
+    let code='coach_unavailable';
+    try{const context=(invokeError as any)?.context;if(context?.json)code=String((await context.json())?.error||code);}catch{}
+    const mapped:Record<string,string>={
+     daily_limit:'Anielka ma dziś wykorzystany limit rozmów. Możesz nadal zapisać pracę i skorzystać z przykładów w lekcji.',
+     omit_personal_identifiers:'Nie wysyłaj Anielce prawdziwych adresów, e-maili, numerów dokumentów ani danych klientów. Użyj fikcyjnego przykładu.',
+     lesson_not_available:'Nie udało się potwierdzić dostępu do tej lekcji. Odśwież stronę po zalogowaniu.',
+     retry_request:'Dwa sprawdzenia uruchomiły się równocześnie. Spróbuj ponownie.',
+     coach_unavailable:'Anielka jest chwilowo niedostępna. Zapis szkicu i zwykłe ćwiczenia nadal działają.'
+    };
+    throw new Error(mapped[code]||mapped.coach_unavailable);
+   }
+   if(run!==serial.current||draft!==homeworkTextRef.current.trim())return null;
+   setCoachMessage({...data,mode});setCoachDraft(draft);
+   return data;
+  }catch(e:any){
+   if(run===serial.current)setCoachError(String(e?.message||'Anielka jest chwilowo niedostępna.'));
+   return null;
+  }finally{coachLock.current=false;if(run===serial.current)setCoachBusy(false);}
+ }
  async function saveHomework(submit:boolean){
-  if(homeworkBusy||!homeworkReady||busy||topic===null||!lesson||!userId||owner.current!==userId)return;
+  if(saveLock.current||homeworkBusy||!homeworkReady||busy||topic===null||!lesson||!userId||owner.current!==userId)return;
   setHomeworkError('');setHomeworkMessage('');
-  if(submit&&!homeworkCanSubmit(homeworkText)){
-   setHomeworkError('Przed oddaniem opisz wynik, wykonane kroki i wnioski — co najmniej 120 znaków. Możesz wcześniej zapisać krótszy szkic.');
+  const local=draftGuidance(homeworkText);
+  if(submit&&(!homeworkCanSubmit(homeworkText)||local.blocksSubmit)){
+   setHomeworkError(local.message);
    return;
   }
   const run=serial.current,activeUser=userId;
-  setHomeworkBusy(true);
+  saveLock.current=true;setHomeworkBusy(true);
+  let notReviewed=false;
   try{
+   if(submit){
+    let currentReview=coachDraft===homeworkText.trim()&&coachMessage?.mode==='review'?coachMessage:null;
+    if(!currentReview){
+     currentReview=await askAnielka('review') as CoachMessage|null;
+     if(!currentReview)notReviewed=true;
+    }
+    if(run!==serial.current||owner.current!==activeUser)return;
+    if(currentReview?.verdict==='needs_revision'){
+     setHomeworkError('Anielka wskazała błąd lub brak w pracy. Popraw próbę i sprawdź ją ponownie przed oddaniem.');
+     return;
+    }
+   }
    const answer=await supabase.rpc('ta_accounting_core_homework_save',{
     p_topic_no:topic,p_response:homeworkText,p_submit:submit,
     p_expected_version:homeworkVersion(homework)
@@ -187,12 +241,14 @@ export default function TematKsiegowosci(){
    if(answer.error||!answer.data||answer.data.user_id!==activeUser||answer.data.topic_no!==topic)
     throw new Error(answer.error?.message||'Serwer nie potwierdził zapisu Twojej pracy. Zachowaj tekst przed odświeżeniem.');
    setHomework(answer.data as Homework);
-   setHomeworkMessage(submit?'Praca domowa została oddana i zapisana na koncie. To nie jest jeszcze ocena eksperta ani zaliczenie kursu.':'Szkic pracy domowej zapisany na Twoim koncie.');
+   const note=notReviewed?' Anielka nie mogła sprawdzić treści, dlatego porównaj wynik z przykładem i skontroluj obliczenia.':'';
+   setHomeworkMessage(submit?'Praca zapisana jako oddana do samokontroli. Nie jest to ocena ani zaliczenie kursu.'+note:
+    'Szkic zapisany na Twoim koncie. '+(local.kind==='math_error'?'Uwaga: '+local.message:'Możesz poprosić Anielkę o wskazówkę.'));
   }catch(err:any){
    if(run===serial.current)setHomeworkError((err?.code==='40001'?
      'Konflikt wersji — ktoś zapisał nowszą pracę w drugim oknie. Skopiuj własny tekst przed odświeżeniem. ':
      'Nie udało się zapisać pracy. Skopiuj tekst przed odświeżeniem. ')+(err?.message||''));
-  }finally{if(run===serial.current)setHomeworkBusy(false);}
+  }finally{saveLock.current=false;if(run===serial.current)setHomeworkBusy(false);}
  }
  function downloadHomeworkWorksheet(){
   if(topic===null||!lesson||!lesson.material?.practice)return;
