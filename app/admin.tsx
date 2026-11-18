@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
-import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share} from 'react-native';
+import {ScrollView,View,Text,TextInput,Pressable,ActivityIndicator,Platform,Share,Linking} from 'react-native';
 import {useRouter} from 'expo-router';
 import {FunctionsHttpError} from '@supabase/supabase-js';
 import {supabase} from '../src/supabase';
@@ -428,6 +428,9 @@ export default function AdminPage(){
      <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
       <Pressable accessibilityRole="button" disabled={accountBusy} onPress={()=>void loadAccounting()} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
        <Text style={{color:'white',fontWeight:'900'}}>{accountBusy?'Pobieram…':'Odśwież dane'}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://saldeo.brainshare.pl/')} style={{padding:13,backgroundColor:'#edf2e9',borderRadius:10,borderWidth:1,borderColor:'#d7e1d2'}}>
+       <Text style={{color:ink,fontWeight:'900'}}>Otwórz SaldeoSMART</Text>
       </Pressable>
       {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
        <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV</Text>
