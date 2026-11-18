@@ -171,15 +171,13 @@ export default function ProgramKsiegowosci(){
  const filtering=filter!=='all'||term.length>0;
  const firstAvailable=topics.find(t=>!!materialStats[t.topic_no])?.topic_no??null;
  const nextLesson=nextActual??firstAvailable;
+ const hasStarted=savedAnswers.length>0||submittedHomeworks.some((r:any)=>!!r.submitted_at);
 
  return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
-  <View style={s.nav}>
-   <Link href="/ksiegowosc" style={s.link}>← Materiały kursu</Link>
-   <Link href="/biuro-ksiegowe" style={s.link}>Biuro ćwiczeniowe</Link>
-  </View>
-  <Text style={s.eyebrow}>TRENERKI · TWÓJ PROGRAM NAUKI</Text>
-  <Text accessibilityRole="header" style={s.h1}>100 tematów księgowości</Text>
-  <Text style={s.body}>Wybierz dział, otwórz lekcję, przećwicz temat i zapisz postęp.</Text>
+  <View style={s.nav}><Link href="/moje-kursy" style={s.link}>← Moje kursy</Link></View>
+  <Text style={s.eyebrow}>TRENERKI · NAUKA KROK PO KROKU</Text>
+  <Text accessibilityRole="header" style={s.h1}>Księgowość</Text>
+  <Text style={s.body}>10 działów · 100 tematów. Wybierz, czego chcesz się nauczyć.</Text>
   {isEditor&&showEditorial&&<Pressable accessibilityRole="button" onPress={()=>setReload(x=>x+1)} style={s.refresh}><Text style={s.link}>Odśwież stan z bazy</Text></Pressable>}
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie programu i stanu opracowań"/>}
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
@@ -188,22 +186,20 @@ export default function ProgramKsiegowosci(){
   {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
    <View style={s.startCard}>
-    <Text style={s.label}>Twój następny krok</Text>
-    {nextLesson!==null?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextLesson)}}} style={s.startLink}>{nextActual!==null?'Kontynuuj':'Rozpocznij'} naukę — temat {nextLesson} →</Link>:<Text style={s.body}>Wybierz dział poniżej, aby zobaczyć lekcje.</Text>}
+    {nextLesson!==null?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextLesson)}}} style={s.startLink}>{hasStarted?'▶ Kontynuuj':'▶ Rozpocznij od zera'} · temat {nextLesson}</Link>:<Text style={s.body}>Wybierz dział poniżej, aby zobaczyć lekcje.</Text>}
     <Pressable accessibilityRole="button" onPress={()=>setShowProgress(v=>!v)} style={s.progressToggle}>
-     <Text style={s.link}>{showProgress?'Ukryj mój postęp':'Pokaż mój postęp'}</Text>
+     <Text style={s.link}>{showProgress?'Ukryj postęp':'Mój postęp'}</Text>
     </Pressable>
    </View>
-   <View style={s.card}>
-    <Text style={s.label}>Szukaj w programie</Text>
-    <TextInput value={search} onChangeText={setSearch} placeholder="Numer lub słowo z tematu" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
-    <View style={s.filters}>
+   <View style={s.searchCard}>
+    <TextInput value={search} onChangeText={setSearch} placeholder="🔎 Znajdź temat lub numer lekcji…" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
+    {(!!term||showEditorial)&&<View style={s.filters}>
      {filters.filter(f=>(isEditor&&showEditorial)||f.key==='all'||f.key==='draft').map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
        onPress={()=>setFilter(f.key)} style={[s.pill,filter===f.key&&s.pillActive]}>
       <Text style={[s.pillText,filter===f.key&&s.pillTextActive]}>{!isEditor&&f.key==='draft'?'Udostępnione lekcje':f.label}</Text>
      </Pressable>)}
-    </View>
-    <Text style={s.small}>Widocznych tematów: {visible.length} z {total}. {filter==='missing'&&!coverageKnown?'Brak uprawnionych danych do wyliczenia brakujących opracowań.':''}</Text>
+    </View>}
+    {!!term&&<Text style={s.small}>Znaleziono {visible.length} tematów.</Text>}
    </View>
    {isEditor&&showEditorial&&<View style={s.grid}>
     <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
@@ -228,7 +224,7 @@ export default function ProgramKsiegowosci(){
       </>:<Text style={s.small}>Na tym koncie nie ma jeszcze dostępnych zadań do policzenia. Materiały ukryte przez RLS nie są uznawane za brakujące ani zaliczone.</Text>
     :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
    </View>}
-   {!isEditor&&<Text style={s.small}>Ćwiczenia opierają się na fikcyjnych przykładach i nie zastępują indywidualnej porady księgowej lub podatkowej.</Text>}
+
    {isEditor&&showEditorial&&materialsReady&&<View style={s.notice}>
     <Text style={s.label}>Zawartość zapisanych nowych opracowań</Text>
     <Text style={s.body}>{assets.sections} części · {assets.examples} przykładów · {assets.exercises} zadań · {assets.tables} tabel · {assets.glossary} haseł słownika.</Text>
@@ -302,7 +298,8 @@ export default function ProgramKsiegowosci(){
    {filtering&&visible.length===0&&<Text style={s.warning}>Nie znaleziono tematów. Spróbuj innego słowa.</Text>}
    {topics.length!==100&&<Text style={s.warning}>Niepełny odczyt mapy programu. Ten wynik nie dowodzi kompletności kursu.</Text>}
    {isEditor&&<Pressable accessibilityRole="button" onPress={()=>{setShowEditorial(v=>!v);setFilter('all');setExpanded(null);}} style={s.editorToggle}><Text style={s.small}>{showEditorial?'Ukryj panel redakcyjny':'Panel redakcyjny'}</Text></Pressable>}
-   <Text style={s.small}>Ćwiczenia wykorzystują przykładowe dane. Materiały są dostępne zgodnie z Twoim dostępem do kursu.</Text>
+   <Text style={s.small}>Ćwiczenia korzystają z fikcyjnych danych i nie zastępują porady księgowej ani podatkowej.</Text>
+   <Link href="/biuro-ksiegowe" style={s.link}>🧰 Otwórz biuro ćwiczeniowe</Link>
   </>}
  </ScrollView>;
 }
@@ -337,7 +334,7 @@ const s=StyleSheet.create({
  nav:{flexDirection:'row',flexWrap:'wrap',gap:18},
  link:{color:'#225b39',fontSize:14,fontWeight:'800',paddingVertical:5},
  eyebrow:{fontSize:12,letterSpacing:1,fontWeight:'800',color:'#507452'},
- h1:{fontSize:31,lineHeight:39,fontWeight:'900',color:'#183c2b'},
+ h1:{fontSize:28,lineHeight:35,fontWeight:'900',color:'#183c2b'},
  h2:{fontSize:19,fontWeight:'800',color:'#183c2b',lineHeight:26},
  body:{fontSize:15,lineHeight:24,color:'#294735'},
  label:{fontSize:14,lineHeight:22,fontWeight:'800',color:'#21492f'},
@@ -346,9 +343,10 @@ const s=StyleSheet.create({
  topicTitle:{fontSize:15,lineHeight:23,fontWeight:'800',color:'#183c2b'},
  notice:{padding:17,borderRadius:14,backgroundColor:'#e7f0dd',gap:8},
  card:{backgroundColor:'white',borderWidth:1,borderColor:'#d8e6ce',padding:14,borderRadius:14,gap:8},
- startCard:{backgroundColor:'#eef6e7',padding:15,borderRadius:14,gap:10},
- startLink:{backgroundColor:'#193c2b',color:'white',fontWeight:'900',fontSize:16,padding:14,borderRadius:12,overflow:'hidden'},
- progressToggle:{alignSelf:'flex-start',minHeight:40,justifyContent:'center',paddingHorizontal:5},
+ startCard:{backgroundColor:'#eef6e7',padding:10,borderRadius:14,gap:5},
+ searchCard:{backgroundColor:'white',padding:9,borderRadius:14,borderWidth:1,borderColor:'#d8e6ce',gap:5},
+ startLink:{backgroundColor:'#193c2b',color:'white',fontWeight:'900',fontSize:15,padding:12,borderRadius:12,overflow:'hidden'},
+ progressToggle:{alignSelf:'flex-start',minHeight:34,justifyContent:'center',paddingHorizontal:5},
  editorToggle:{alignSelf:'flex-end',padding:10},
  heading:{gap:5},step:{fontSize:11,fontWeight:'800',letterSpacing:.8,color:'#547d4d'},
  topic:{paddingTop:12,borderTopWidth:1,borderColor:'#e5ede0',gap:5},
