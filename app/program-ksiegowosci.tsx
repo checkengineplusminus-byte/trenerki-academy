@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {ActivityIndicator,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
+import {ActivityIndicator,Pressable,ScrollView,StyleSheet,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import {Link,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — niezależnie testowany pomocnik rozróżnia stan bazy i widoczność RLS.
@@ -17,6 +17,18 @@ type Topic={
 };
 type MaterialStats={sections:number;examples:number;exercises:number;tables:number;glossary:number;editorial_status:string};
 
+const tiles=[
+ {icon:'📗',title:'Podstawy',subtitle:'Rachunkowość'},
+ {icon:'🧾',title:'Faktury',subtitle:'Dokumenty i KSeF'},
+ {icon:'🧮',title:'Podatki',subtitle:'VAT, PIT, CIT'},
+ {icon:'🌍',title:'Zagranica',subtitle:'UE i rozliczenia'},
+ {icon:'👥',title:'Kadry i płace',subtitle:'ZUS i pracownicy'},
+ {icon:'📊',title:'Pełne księgi',subtitle:'Sprawozdania'},
+ {icon:'🏢',title:'Firmy',subtitle:'Rejestry i zmiany'},
+ {icon:'🏭',title:'Branże',subtitle:'Zastosowania'},
+ {icon:'🎬',title:'Twórcy',subtitle:'Internet i finanse'},
+ {icon:'💻',title:'Excel',subtitle:'Analiza i symulator'},
+];
 const sections=[
  'Podstawy rachunkowości i matematyka',
  'Dokumenty, faktury, KSeF i rozrachunki',
@@ -44,6 +56,8 @@ const count=(v:unknown)=>Array.isArray(v)?v.length:0;
 
 export default function ProgramKsiegowosci(){
  const router=useRouter();
+ const {width}=useWindowDimensions();
+ const mobile=width<720;
  const [topics,setTopics]=useState<Topic[]>([]);
  const [materialStats,setMaterialStats]=useState<Record<number,MaterialStats>>({});
  const [practiceMaterials,setPracticeMaterials]=useState<any[]>([]);
@@ -220,63 +234,104 @@ export default function ProgramKsiegowosci(){
     <Text style={s.body}>{assets.sections} części · {assets.examples} przykładów · {assets.exercises} zadań · {assets.tables} tabel · {assets.glossary} haseł słownika.</Text>
     <Text style={s.small}>To liczba zapisanych elementów, nie wynik końcowego odbioru. Osobno pozostają testy zalogowanego użytkownika, praktyka, zgodność prawa i kontrola jakości.</Text>
    </View>}
-   {filter==='missing'&&!coverageKnown&&<Text style={s.warning}>Filtr braków wymaga pełnego odczytu redakcyjnego. RLS ukrywa niezatwierdzone materiały przed kursantem; nie wolno traktować ich jako brakujących.</Text>}
-   {!(filter==='missing'&&!coverageKnown)&&sections.map((name,index)=>{
-    const sectionNo=index+1;
-    const rows=visible.filter(t=>t.section_no===sectionNo);
-    if(filtering&&rows.length===0)return null;
-    const all=topics.filter(t=>t.section_no===sectionNo);
-    const done=all.filter(t=>t.status==='complete').length;
-    const drafts=all.filter(t=>!!materialStats[t.topic_no]).length;
-    const open=filtering||expanded===sectionNo;
-    return <View key={sectionNo} style={s.card}>
-     <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setExpanded(open?null:sectionNo)} style={s.heading}>
-      <Text style={s.step}>DZIAŁ {sectionNo}{isEditor&&showEditorial?' · '+done+'/'+all.length+' odebranych'+(coverageKnown?' · '+drafts+' opracowań':''):''}</Text>
-      <Text style={s.h2}>{name}</Text>
-      {!filtering&&<Text style={s.small}>{open?'Zwiń listę':'Pokaż tematy'}</Text>}
+   <View style={s.dashboardHeading}>
+    <View style={{flex:1,gap:3}}>
+     <Text style={s.h2}>Wybierz dział</Text>
+     <Text style={s.small}>Dotknij kafelka, aby zobaczyć lekcje.</Text>
+    </View>
+    <Text style={s.chapterCount}>10 działów</Text>
+   </View>
+   {mobile
+    ?<ScrollView horizontal showsHorizontalScrollIndicator={false} keyboardShouldPersistTaps="handled" style={{marginHorizontal:-4}} contentContainerStyle={s.tilesRail}>
+      {sections.map((name,index)=>{
+       const no=index+1,chosen=expanded===no;
+       const available=materialsReady?topics.filter(t=>t.section_no===no&&!!materialStats[t.topic_no]).length:null;
+       return <Pressable key={no} accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name}
+        accessibilityState={{selected:chosen}} onPress={()=>{setSearch('');setFilter('all');setExpanded(chosen?null:no);}}
+        style={[s.tile,s.tileMobile,chosen&&s.tileActive]}>
+        <View style={[s.tileIcon,chosen&&s.tileIconActive]}><Text style={s.tileEmoji}>{tiles[index].icon}</Text></View>
+        <Text style={s.tileNumber}>{String(no).padStart(2,'0')} / 10</Text>
+        <Text style={[s.tileTitle,chosen&&s.tileTitleActive]}>{tiles[index].title}</Text>
+        <Text style={s.tileSubtitle}>{tiles[index].subtitle}</Text>
+        {available!==null&&<Text style={[s.tileAvailable,chosen&&s.tileTitleActive]}>{available>0?available+' dostępnych lekcji':'Wybierz dział'}</Text>}
+       </Pressable>;
+      })}
+     </ScrollView>
+    :<View style={s.tilesGrid}>{sections.map((name,index)=>{
+      const no=index+1,chosen=expanded===no;
+      const available=materialsReady?topics.filter(t=>t.section_no===no&&!!materialStats[t.topic_no]).length:null;
+      return <Pressable key={no} accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name}
+       accessibilityState={{selected:chosen}} onPress={()=>{setSearch('');setFilter('all');setExpanded(chosen?null:no);}}
+       style={[s.tile,s.tileDesktop,chosen&&s.tileActive]}>
+       <View style={[s.tileIcon,chosen&&s.tileIconActive]}><Text style={s.tileEmoji}>{tiles[index].icon}</Text></View>
+       <Text style={s.tileNumber}>{String(no).padStart(2,'0')} / 10</Text>
+       <Text style={[s.tileTitle,chosen&&s.tileTitleActive]}>{tiles[index].title}</Text>
+       <Text style={s.tileSubtitle}>{tiles[index].subtitle}</Text>
+       {available!==null&&<Text style={[s.tileAvailable,chosen&&s.tileTitleActive]}>{available>0?available+' dostępnych lekcji':'Wybierz dział'}</Text>}
+      </Pressable>;
+     })}</View>}
+   {(filtering||expanded!==null)&&<View style={s.activeChapter}>
+    <View style={s.dashboardHeading}>
+     <View style={{flex:1,gap:4}}>
+      <Text style={s.eyebrow}>{filtering?'WYNIKI WYSZUKIWANIA':'DZIAŁ '+expanded}</Text>
+      <Text style={s.h2}>{filtering?'Znalezione tematy':sections[(expanded||1)-1]}</Text>
+     </View>
+     <Pressable accessibilityRole="button" accessibilityLabel="Zamknij listę lekcji" onPress={()=>{setExpanded(null);setSearch('');setFilter('all');}} style={s.closeChapter}>
+      <Text style={{fontSize:20,color:'#315d42'}}>×</Text>
      </Pressable>
-     {open&&rows.map(topic=>{
-      const stats=materialStats[topic.topic_no],legacy=topic.lesson_no!==null;
-      const next=topic.status==='complete'?
-       'Odbiór potwierdzony w rejestrze.' :
-       !materialsReady?
-        'Nie potwierdzono odczytu opracowania. Brak danych nie oznacza braku lekcji.' :
-        stats?
-        'Pozostało: recenzja, sprawdzenie praktyki i test działania na zalogowanym koncie.' :
-        !isEditor?
-        'Lekcja nie jest jeszcze udostępniona temu kontu. Nie oznacza to braku napisanego materiału.' :
-        legacy?
-         'Pozostało: rozbudować starszy materiał do osobnego nowego opracowania oraz przetestować.' :
-         'Pozostało: stworzyć teorię, przykłady, zadania, praktykę, źródła i przejść kontrole.';
-      return <View key={topic.topic_no} style={s.topic}>
-       <Text style={s.topicTitle}>{topic.topic_no}. {topic.title_pl}</Text>
-       {isEditor&&showEditorial&&<Text style={s.small}>Status: {statusLabels[topic.status]||'Nieznany'}</Text>}
-       {isEditor&&showEditorial&&materialsReady&&<Text style={s.small}>{stats?
-        'Temat: '+stats.sections+' części, '+stats.examples+' przykładów, '+stats.exercises+' zadań, '+stats.tables+' tabel i '+stats.glossary+' pojęć.'+(isEditor?' Redakcja: '+stats.editorial_status:''):
-        !isEditor?'Materiał nie jest aktualnie dostępny na tym koncie.':
-        legacy?'Brak nowego opracowania; starsza lekcja nr '+topic.lesson_no+' to kandydat do wykorzystania.':
-        'Brak nowego opracowania i brak wskazanej starszej lekcji.'}</Text>}
-       {practice.known&&practice.byTopic[topic.topic_no]&&
-        <Text style={s.small}>Twoje ćwiczenia: {practice.byTopic[topic.topic_no].correct}/{practice.byTopic[topic.topic_no].total} poprawnych,
-         {practice.byTopic[topic.topic_no].attempted} zapisanych odpowiedzi.
-         {practice.byTopic[topic.topic_no].passed?' Komplet poprawnych odpowiedzi w tym temacie.':''}
-        </Text>}
-       {homeworks&&practice.byTopic[topic.topic_no]&&
-        <Text style={s.small}>Praca domowa: {homeworks.topics.includes(topic.topic_no)?'oddana do samokontroli, nieoceniona':'do napisania lub oddania'}.</Text>}
-       {isEditor&&showEditorial&&<Text style={s.todo}>{next}</Text>}
-       {!!stats&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>Otwórz lekcję →</Link>}
+    </View>
+    {(filter==='missing'&&!coverageKnown)
+     ?<Text style={s.small}>Nie można obecnie potwierdzić dostępności tych materiałów.</Text>
+     :(filtering?visible:visible.filter(t=>t.section_no===expanded)).map(topic=>{
+      const stats=materialStats[topic.topic_no];
+      const exercise=practice.known?practice.byTopic[topic.topic_no]:null;
+      return <View key={topic.topic_no} style={s.lessonTile}>
+       <View style={s.lessonBadge}><Text style={s.lessonBadgeText}>{String(topic.topic_no).padStart(2,'0')}</Text></View>
+       <View style={{flex:1,gap:7,minWidth:0}}>
+        <Text style={s.lessonTitle}>{topic.title_pl}</Text>
+        {exercise&&<Text style={s.small}>Ćwiczenia: {exercise.correct}/{exercise.total} poprawnych</Text>}
+        {stats
+         ?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.lessonLink}>Otwórz lekcję →</Link>
+         :<Text style={s.lessonUnavailable}>Materiał obecnie niedostępny</Text>}
+        {isEditor&&showEditorial&&<Text style={s.small}>Redakcja: {statusLabels[topic.status]} · {stats?stats.sections+' części opracowania':'brak odczytu materiału'}</Text>}
+       </View>
       </View>;
      })}
-    </View>;
-   })}
-   {visible.length===0&&<Text style={s.warning}>Brak tematów odpowiadających filtrom. Zmień wyszukiwanie lub wybierz „Wszystkie”.</Text>}
+    {!visible.length&&<Text style={s.small}>Brak tematów pasujących do wyszukiwania.</Text>}
+   </View>}
+   {filtering&&visible.length===0&&<Text style={s.warning}>Nie znaleziono tematów. Spróbuj innego słowa.</Text>}
    {topics.length!==100&&<Text style={s.warning}>Niepełny odczyt mapy programu. Ten wynik nie dowodzi kompletności kursu.</Text>}
    {isEditor&&<Pressable accessibilityRole="button" onPress={()=>{setShowEditorial(v=>!v);setFilter('all');setExpanded(null);}} style={s.editorToggle}><Text style={s.small}>{showEditorial?'Ukryj panel redakcyjny':'Panel redakcyjny'}</Text></Pressable>}
-   <Text style={s.small}>Ćwiczenia wykorzystują fikcyjne dane.</Text>
+   <Text style={s.small}>Ćwiczenia wykorzystują przykładowe dane. Materiały są dostępne zgodnie z Twoim dostępem do kursu.</Text>
   </>}
  </ScrollView>;
 }
 const s=StyleSheet.create({
+ dashboardHeading:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,marginTop:7},
+ chapterCount:{color:'#536f55',fontSize:12,fontWeight:'850',backgroundColor:'#e7f0df',borderRadius:20,paddingHorizontal:10,paddingVertical:7,overflow:'hidden'},
+ tilesRail:{paddingHorizontal:4,paddingTop:10,paddingBottom:14,gap:12},
+ tilesGrid:{flexDirection:'row',flexWrap:'wrap',gap:12,marginTop:8,marginBottom:12,justifyContent:'space-between'},
+ tile:{backgroundColor:'#fff',borderWidth:1,borderColor:'#d1e3ca',borderBottomWidth:6,borderBottomColor:'#bdd3b5',borderRadius:20,padding:14,minHeight:166,gap:7,shadowColor:'#183c2b',shadowOffset:{width:0,height:7},shadowOpacity:0.12,shadowRadius:11,elevation:4},
+ tileMobile:{width:156},
+ tileDesktop:{width:'18%',minWidth:145,flexGrow:1},
+ tileActive:{borderColor:'#5d9672',borderBottomColor:'#1b6440',backgroundColor:'#e5f1dc'},
+ tileIcon:{width:54,height:54,borderRadius:17,alignItems:'center',justifyContent:'center',backgroundColor:'#eaf5d8',borderBottomWidth:4,borderBottomColor:'#c3dca9',marginBottom:1},
+ tileIconActive:{backgroundColor:'#d5ecb5',borderBottomColor:'#93bf72'},
+ tileEmoji:{fontSize:29},
+ tileNumber:{fontSize:10,fontWeight:'900',letterSpacing:1.1,color:'#6d836e'},
+ tileTitle:{fontSize:16,fontWeight:'900',lineHeight:20,color:'#173b2a'},
+ tileTitleActive:{color:'#145337'},
+ tileSubtitle:{fontSize:11,lineHeight:16,color:'#58745f'},
+ tileAvailable:{fontSize:11,color:'#53745b',fontWeight:'750',marginTop:'auto'},
+ activeChapter:{backgroundColor:'#fff',borderWidth:1,borderColor:'#d5e4cf',borderRadius:18,padding:14,gap:8,marginBottom:15,shadowColor:'#244b36',shadowOpacity:0.06,shadowRadius:8,elevation:2},
+ closeChapter:{width:42,height:42,borderRadius:13,backgroundColor:'#ecf3e6',alignItems:'center',justifyContent:'center'},
+ lessonTile:{borderTopWidth:1,borderColor:'#e7eee1',paddingVertical:15,flexDirection:'row',gap:12,alignItems:'flex-start'},
+ lessonBadge:{width:38,height:38,backgroundColor:'#e5f1d9',borderRadius:12,alignItems:'center',justifyContent:'center'},
+ lessonBadgeText:{fontWeight:'900',color:'#236441',fontSize:13},
+ lessonTitle:{fontSize:15,color:'#193b29',fontWeight:'800',lineHeight:22},
+ lessonLink:{fontSize:14,color:'#1e6b3c',fontWeight:'900',paddingVertical:6},
+ lessonUnavailable:{fontSize:12,color:'#718676'},
+
  page:{flex:1,backgroundColor:'#f6f8f0'},
  wrap:{width:'100%',maxWidth:960,alignSelf:'center',padding:16,paddingBottom:40,gap:12},
  nav:{flexDirection:'row',flexWrap:'wrap',gap:18},
