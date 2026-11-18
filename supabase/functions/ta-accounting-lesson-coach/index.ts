@@ -7,6 +7,8 @@ function mathError(s:string):string{
  const rx=/(^|[^\d])(-?\d+(?:[.,]\d+)?)\s*([+\-*×÷/:])\s*(-?\d+(?:[.,]\d+)?)\s*=\s*(-?\d+(?:[.,]\d+)?)(?![\d])/g;
  let m;
  while((m=rx.exec(s))!==null){
+  // Avoid misreading thousands separators as a decimal or the end of a larger number.
+  if((m[1]&&/\s/u.test(m[1])&&m.index>0&&/\d/.test(s[m.index-1]))||[m[2],m[4],m[5]].some(x=>/^\d{1,3}\.\d{3}$/u.test(x)))continue;
   const a=Number(m[2].replace(',','.')),b=Number(m[4].replace(',','.')),given=Number(m[5].replace(',','.')),op=m[3];
   if(![a,b,given].every(Number.isFinite)||((op==='/'||op==='÷'||op===':')&&b===0))continue;
   const expected=op==='+'?a+b:op==='-'?a-b:op==='*'||op==='×'?a*b:a/b;
