@@ -19,12 +19,12 @@ includes(account,['pending_referral_code','params.next===\'affiliate\'','referra
 includes(buy,['referralCode','referral_code:referralCode','self_referral_not_allowed'],'Checkout UI');
 includes(checkout,['referral_code','ta_affiliate_partners','self_referral_not_allowed','ta_affiliate_attributions','ta_affiliate_partner_id','attributionError'],'Signed server checkout');
 includes(webhook,['ta_affiliate_commissions','commission=Math.round','payment_status!==\'paid\'','stripe_session_id','onConflict:\'stripe_session_id\'','charge.refunded','requires_review'],'Webhook accrual and refund');
-includes(affiliate,['auth.auth.getUser(bearer)','user.email_confirmed_at','tax_residency','account_links','stripe_connected','ta_affiliate_partner_totals','ta_affiliate_partners'],'Partner backend');
+includes(affiliate,['auth.auth.getUser(bearer)','user.email_confirmed_at','tax_residency','bank_transfer_pending_tax_verification','stripe_connected','ta_affiliate_partner_totals','ta_affiliate_partners'],'Partner backend');
 includes(admin,['ta_admins','eq(\'role\',\'owner\')','ta_affiliate_admin_report','ta_affiliate_monthly_report','mark_tax_verified','accountant_evidence_required'],'Owner admin API');
 includes(partner,['Załóż konto partnerskie','stripe_connected','Prowizje','regulamin-afiliacyjny.html','prywatnosc-afiliacja.html','ta-affiliate'],'Partner UI');
 includes(partnerAdmin,['ta-affiliate-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację','affiliate-partner-admin-search','affiliate-partner-email','E-mail'],'Owner UI');
-includes(affiliate,['company_uses_invoice'],'Company partners use invoices, not Stripe Connect');
-includes(partner,['300 zł','fakturę'],'Company invoice and 300 PLN UI');
+includes(affiliate,['bank_transfer_pending_tax_verification'],'Partner transfers require accountant review, no new Connect accounts');
+includes(partner,['300 zł','fakturę','PIT-11','przelew bankowy'],'Company and individual bank transfer UI');
 includes(partner,['short_id','trenerki.com/','trenerki-logo-partner.svg','Pobierz logo PNG'],'Numeric short links and downloadable brand artwork');
 includes(partnerAdmin,['Krótki link','short_id','Numer oczekuje'],'Owner numeric link and CSV');
 const routerConfig=JSON.parse(read('app.json'));
@@ -42,7 +42,7 @@ includes(layout,['<Stack.Screen name="partner"/>','<Stack.Screen name="partner-a
 assert(layout.indexOf('<Stack.Screen name="partner-admin"/>')>layout.indexOf('<Stack.Protected guard={signedIn}'),'Admin must be auth guarded');
 assert(!partner.includes('service_role')&&!partnerAdmin.includes('service_role'),'Secrets must not enter public UI');
 assert(!partner.includes('numer rachunku bankowego')&&!partner.includes('IBAN'),'No direct bank collection');
-assert(!affiliate.includes('payouts.create')&&!affiliate.includes("action==='send_payout'"),'Partner may not trigger payouts');
+assert(!affiliate.includes('payouts.create')&&!affiliate.includes("action==='send_payout'")&&!affiliate.includes("'account_links'"),'Partner may not trigger payouts or create Stripe Connect accounts');
 assert(!admin.includes('transfers')||admin.includes('stripe_transfers_enabled'),'Admin must not directly move funds');
 const valid=(v)=>/^TA[A-F0-9]{12}$/.test(v);
 for(let i=0;i<32;i++)assert(valid('TA'+i.toString(16).padStart(12,'0').toUpperCase()));
@@ -53,5 +53,5 @@ for(let amount=200;amount<50000;amount+=327){
 }
 console.log('✓ Affiliate: public footer + reduced-motion, legal/PIT/privacy pages, buyer referral continuation');
 console.log('✓ Affiliate: server-owned attribution, paid-session 10%, refunds, no self-earnings, idempotence');
-console.log('✓ Affiliate: owner-only accounting reports, Stripe onboarding, no bank account or payouts in public UI');
+console.log('✓ Affiliate: owner-only accounting reports, bank transfer model, no bank account or payouts in public UI');
 console.log('✓ Affiliate: 32 valid and 6 invalid referral codes plus commission arithmetic cases');

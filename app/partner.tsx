@@ -18,7 +18,7 @@ const statusLabel:Record<string,string>={
  pending:'Oczekuje 30 dni',approved:'Zatwierdzone',in_payout:'W rozliczeniu',transferred:'Wypłacone / przekazane',
  void:'Anulowane',requires_review:'Do wyjaśnienia',prepared:'Przygotowano',
  processing:'W trakcie',failed:'Wymaga sprawdzenia',canceled:'Anulowano'};
-const policyVersion='2026-11-18-v2';
+const policyVersion='2026-11-18-v3';
 function visit(url:string){
  if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(url);
  else void Linking.openURL(url);
@@ -73,17 +73,6 @@ export default function AffiliatePartner(){
   }catch(e:any){setError(String(e?.message||'Błąd zgłoszenia.'))}
   finally{setSending(false)}
  }
- async function onboarding(){
-  if(sending)return;
-  setSending(true);setError('');
-  try{
-   const r=await supabase.functions.invoke<Data>('ta-affiliate',{body:{action:'onboard'}});
-   if(r.error||!r.data?.ok||!r.data.url?.startsWith('https://connect.stripe.com/'))
-    throw new Error('Stripe Connect nie jest jeszcze gotowy dla tego konta lub wymaga dodatkowej konfiguracji. Twoje polecenia i saldo pozostają zapisane.');
-   visit(r.data.url);
-  }catch(e:any){setError(String(e?.message||'Nie można rozpocząć weryfikacji Stripe.'))}
-  finally{setSending(false)}
- }
  async function downloadLogoPng(){
   if(Platform.OS!=='web'||typeof window==='undefined'||typeof document==='undefined')return;
   try{
@@ -128,8 +117,8 @@ export default function AffiliatePartner(){
    <View style={{backgroundColor:'#eef5e9',borderRadius:14,padding:17,gap:8}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Jasne zasady rozliczeń</Text>
     <Text style={{color:muted,lineHeight:22}}>10% faktycznie zapłaconej ceny kursu (po rabacie), bez prowizji za własne zakupy, podarunki i zwrócone transakcje. Rozliczenia miesięczne, próg wypłaty 300 zł, okres weryfikacji 30 dni. Kwoty podane przed ewentualnym podatkiem dochodowym.</Text>
-    <Text style={{color:muted,lineHeight:22}}>Firma wystawia fakturę i otrzymuje zwykły przelew bankowy bez Stripe Connect. Osoba prywatna może podać dane do weryfikacji w Stripe Connect, ale Trenerki muszą zatwierdzić PIT i inne obowiązki podatkowe przed wypłatą.</Text>
-    <Text style={{color:ink,lineHeight:22,fontWeight:'700'}}>Osoby prywatne rozliczają otrzymane przychody zgodnie z właściwymi przepisami PIT; Trenerki mogą również mieć obowiązek przygotowania PIT-11. Przed pierwszą wypłatą zostaną ustalone wymagane dokumenty.</Text>
+    <Text style={{color:muted,lineHeight:22}}>Firmy wystawiają faktury i otrzymują zwykłe przelewy bankowe. Osoby prywatne również mogą otrzymać zwykły przelew bez Stripe Connect, po potwierdzeniu podatków i wymaganych danych przez księgowość.</Text>
+    <Text style={{color:ink,lineHeight:22,fontWeight:'700'}}>Jeśli dobrowolna prowizja osoby prywatnej jest przychodem z innych źródeł, partner rozlicza podatek w rocznym PIT, a Trenerki przygotowują PIT-11 bez pobierania zaliczki. Inny rodzaj współpracy może wymagać zaliczek lub ZUS. Przed pierwszą wypłatą potrzebna jest kontrola księgowa.</Text>
    </View>
    <View style={{backgroundColor:'white',borderWidth:1,borderColor:'#dbe8da',padding:20,borderRadius:16,gap:14}}>
     {busy?<ActivityIndicator color={primary}/>:
@@ -149,7 +138,7 @@ export default function AffiliatePartner(){
         maxLength={10} style={{borderWidth:1,borderColor:'#b7cdb7',borderRadius:10,padding:13,fontSize:16,color:ink,minHeight:50}}/></>}
        <Agree label="Potwierdzam pełnoletność i polską rezydencję podatkową" value={adult} onPress={()=>setAdult(v=>!v)}>Potwierdzam, że mam ukończone 18 lat oraz rozliczam się podatkowo w Polsce.</Agree>
        <Agree label="Akceptuję regulamin programu afiliacyjnego" value={terms} onPress={()=>setTerms(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/regulamin-afiliacyjny.html')} style={{textDecorationLine:'underline'}}>regulaminem programu afiliacyjnego</Text> (wersja {policyVersion}) i akceptuję jego warunki.</Agree>
-       <Agree label="Potwierdzam zapoznanie się z informacją o prywatności programu" value={privacy} onPress={()=>setPrivacy(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/prywatnosc-afiliacja.html')} style={{textDecorationLine:'underline'}}>informacją o przetwarzaniu danych partnerów</Text>. Dla osób prywatnych weryfikację wypłat może obsłużyć Stripe, a firmy rozliczają się na podstawie faktury.</Agree>
+       <Agree label="Potwierdzam zapoznanie się z informacją o prywatności programu" value={privacy} onPress={()=>setPrivacy(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/prywatnosc-afiliacja.html')} style={{textDecorationLine:'underline'}}>informacją o przetwarzaniu danych partnerów</Text>. Obie grupy mogą otrzymać zwykły przelew po zatwierdzeniu właściwych dokumentów.</Agree>
        <Button title={sending?'Zapisuję…':'Załóż konto partnerskie'} disabled={!canSubmit||sending} onPress={()=>void register()}/>
        </>:<>
         <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Twój panel partnerski</Text>
@@ -185,16 +174,14 @@ export default function AffiliatePartner(){
          </View>)}
         </View>
         {profile.partner_type==='company'?<>
-         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Rozliczenie firmy: faktura + przelew bankowy</Text>
-         <Text style={{color:muted,lineHeight:22}}>Nie musisz otwierać Stripe Connect. Po miesięcznym zestawieniu i po uzbieraniu minimum 300 zł zatwierdzonych prowizji wystawiasz Trenerki sp. z o.o. prawidłową fakturę za polecenia. Po sprawdzeniu dokumentu firma przelewa wynagrodzenie na rachunek wskazany na fakturze. Faktury i przelewy rozliczamy poza tym panelem.</Text>
-         <Text style={{color:'#895d24',lineHeight:22}}>Na razie przelewy są wstrzymane do zatwierdzenia księgowego. Samo saldo nie oznacza wypłaty.</Text>
+         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Firma: faktura i przelew bankowy</Text>
+         <Text style={{color:muted,lineHeight:22}}>Po miesięcznym zestawieniu i osiągnięciu 300 zł zatwierdzonych prowizji wystaw prawidłową fakturę lub inny wymagany dokument. Trenerki sprawdzą dokument i wykonają zwykły przelew na rachunek podany na fakturze. Nie potrzebujesz Stripe Connect.</Text>
         </>:<>
-         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Dane do wypłat · Stripe Connect</Text>
-         <Text style={{color:muted,lineHeight:22}}>Weryfikacja: {profile.stripe_details_submitted?'Dane dostarczone':'Wymaga uzupełnienia'} · Możliwość przelewu: {profile.stripe_transfers_enabled&&profile.stripe_payouts_enabled?'potwierdzona przez Stripe':'oczekuje'}.</Text>
-         <Button title={sending?'Otwieram Stripe…':profile.stripe_details_submitted?'Otwórz ustawienia wypłat Stripe':'Uzupełnij dane do wypłat w Stripe'} onPress={()=>void onboarding()}/>
-         <Text style={{color:muted,lineHeight:22}}>Weryfikacja Stripe nie zastępuje polskiego rozliczenia PIT. Trenerki muszą zatwierdzić dokumenty podatkowe przed wypłatą.</Text>
+         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Osoba prywatna: zwykły przelew bankowy</Text>
+         <Text style={{color:muted,lineHeight:22}}>Nie trzeba otwierać konta Stripe Connect wyłącznie dla wypłaty prowizji. Gdy zatwierdzone saldo osiągnie 300 zł, księgowość poprosi bezpiecznym kanałem o potrzebne dane podatkowe i rachunek bankowy. Nie podawaj PESEL ani numeru konta w czacie lub publicznych wiadomościach.</Text>
+         <Text style={{color:muted,lineHeight:22}}>W przypadku zakwalifikowania prowizji jako przychodu z innych źródeł partner sam rozlicza podatek w rocznym PIT, a Trenerki sporządzają PIT-11. Ostateczna kwalifikacja zależy od współpracy.</Text>
         </>}
-        {!data?.policy?.payouts_live&&<Text style={{color:'#895d24',lineHeight:22}}>Wypłaty programu oczekują na zakończenie konfiguracji prawno-podatkowej i akceptację przez administratora. Prowizje są zapisywane, ale nie są jeszcze przelewane.</Text>}
+        {!data?.policy?.payouts_live&&<Text style={{color:'#895d24',lineHeight:22}}>Rejestracja i naliczanie prowizji są aktywne. Przelewy są wstrzymane do zatwierdzenia dokumentów i sposobu rozliczenia przez księgowość. Naliczenie nie jest jeszcze potwierdzeniem wypłaty.</Text>}
         <Button title="Odśwież stan wypłat i prowizji" outline onPress={()=>void status().catch(e=>setError(String(e)) )}/>
         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Ostatnie naliczenia</Text>
         {(data?.transactions||[]).length===0?<Text style={{color:muted}}>Nie masz jeszcze potwierdzonych zakupów z polecenia.</Text>:
