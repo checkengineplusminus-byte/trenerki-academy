@@ -18,7 +18,7 @@ const statusLabel:Record<string,string>={
  pending:'Oczekuje 30 dni',approved:'Zatwierdzone',in_payout:'W rozliczeniu',transferred:'Wypłacone / przekazane',
  void:'Anulowane',requires_review:'Do wyjaśnienia',prepared:'Przygotowano',
  processing:'W trakcie',failed:'Wymaga sprawdzenia',canceled:'Anulowano'};
-const policyVersion='2026-11-18-v3';
+const policyVersion='2026-11-18-v4';
 function visit(url:string){
  if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(url);
  else void Linking.openURL(url);
@@ -116,7 +116,7 @@ export default function AffiliatePartner(){
    <Text style={{color:muted,fontSize:16,lineHeight:25}}>Prowizja za potwierdzony zakup kursu z Twojego indywidualnego linku. Nie musisz kupować kursów ani publikować reklam według narzuconego harmonogramu.</Text>
    <View style={{backgroundColor:'#eef5e9',borderRadius:14,padding:17,gap:8}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Jasne zasady rozliczeń</Text>
-    <Text style={{color:muted,lineHeight:22}}>10% faktycznie zapłaconej ceny kursu (po rabacie), bez prowizji za własne zakupy, podarunki i zwrócone transakcje. Rozliczenia miesięczne, próg wypłaty 300 zł, okres weryfikacji 30 dni. Kwoty podane przed ewentualnym podatkiem dochodowym.</Text>
+    <Text style={{color:muted,lineHeight:22}}>10% faktycznie zapłaconej ceny kursu (po rabacie), bez prowizji za własne zakupy, podarunki i zwrócone transakcje. Rozliczenia miesięczne, próg wypłaty 500 zł, okres weryfikacji 30 dni. Na koniec roku rozliczamy i wypłacamy również zatwierdzone salda niższe niż 500 zł, po kontroli dokumentów. Kwoty podane przed ewentualnym podatkiem dochodowym.</Text>
     <Text style={{color:muted,lineHeight:22}}>Firmy wystawiają faktury i otrzymują zwykłe przelewy bankowe. Osoby prywatne również mogą otrzymać zwykły przelew bez Stripe Connect, po potwierdzeniu podatków i wymaganych danych przez księgowość.</Text>
     <Text style={{color:ink,lineHeight:22,fontWeight:'700'}}>Jeśli dobrowolna prowizja osoby prywatnej jest przychodem z innych źródeł, partner rozlicza podatek w rocznym PIT, a Trenerki przygotowują PIT-11 bez pobierania zaliczki. Inny rodzaj współpracy może wymagać zaliczek lub ZUS. Przed pierwszą wypłatą potrzebna jest kontrola księgowa.</Text>
    </View>
@@ -175,10 +175,10 @@ export default function AffiliatePartner(){
         </View>
         {profile.partner_type==='company'?<>
          <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Firma: faktura i przelew bankowy</Text>
-         <Text style={{color:muted,lineHeight:22}}>Po miesięcznym zestawieniu i osiągnięciu 300 zł zatwierdzonych prowizji wystaw prawidłową fakturę lub inny wymagany dokument. Trenerki sprawdzą dokument i wykonają zwykły przelew na rachunek podany na fakturze. Nie potrzebujesz Stripe Connect.</Text>
+         <Text style={{color:muted,lineHeight:22}}>Po miesięcznym zestawieniu i osiągnięciu 500 zł zatwierdzonych prowizji wystaw prawidłową fakturę lub inny wymagany dokument. Trenerki sprawdzą dokument i wykonają zwykły przelew na rachunek podany na fakturze. Nie potrzebujesz Stripe Connect.</Text>
         </>:<>
          <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Osoba prywatna: zwykły przelew bankowy</Text>
-         <Text style={{color:muted,lineHeight:22}}>Nie trzeba otwierać konta Stripe Connect wyłącznie dla wypłaty prowizji. Gdy zatwierdzone saldo osiągnie 300 zł, księgowość poprosi bezpiecznym kanałem o potrzebne dane podatkowe i rachunek bankowy. Nie podawaj PESEL ani numeru konta w czacie lub publicznych wiadomościach.</Text>
+         <Text style={{color:muted,lineHeight:22}}>Nie trzeba otwierać konta Stripe Connect wyłącznie dla wypłaty prowizji. Gdy zatwierdzone saldo osiągnie 500 zł, księgowość poprosi bezpiecznym kanałem o potrzebne dane podatkowe i rachunek bankowy. Nie podawaj PESEL ani numeru konta w czacie lub publicznych wiadomościach.</Text>
          <Text style={{color:muted,lineHeight:22}}>W przypadku zakwalifikowania prowizji jako przychodu z innych źródeł partner sam rozlicza podatek w rocznym PIT, a Trenerki sporządzają PIT-11. Ostateczna kwalifikacja zależy od współpracy.</Text>
         </>}
         {!data?.policy?.payouts_live&&<Text style={{color:'#895d24',lineHeight:22}}>Rejestracja i naliczanie prowizji są aktywne. Przelewy są wstrzymane do zatwierdzenia dokumentów i sposobu rozliczenia przez księgowość. Naliczenie nie jest jeszcze potwierdzeniem wypłaty.</Text>}
@@ -190,7 +190,7 @@ export default function AffiliatePartner(){
           <Text style={{color:muted,fontSize:12}}>{new Date(r.purchased_at).toLocaleDateString('pl-PL')} · {statusLabel[r.status]||r.status}</Text></View>
           <Text style={{fontWeight:'900',color:ink}}>{pln(r.amount_grosze)}</Text>
          </View>)}
-        <Text style={{color:ink,fontWeight:'900',fontSize:17,marginTop:10}}>Miesięczne rozliczenia i wypłaty</Text>
+        <Text style={{color:ink,fontWeight:'900',fontSize:17,marginTop:10}}>Rozliczenia miesięczne i zamknięcie roku</Text>
         {(data?.payouts||[]).length===0?<Text style={{color:muted}}>Nie ma jeszcze zatwierdzonych wypłat. Prowizje gromadzą się w saldzie zgodnie z regulaminem.</Text>:
          (data?.payouts||[]).map(p=><View key={p.id} style={{paddingVertical:10,borderBottomWidth:1,borderColor:'#edf0e8',flexDirection:'row',justifyContent:'space-between',gap:12}}>
           <View style={{flex:1}}><Text style={{color:ink,fontWeight:'800'}}>{new Date(p.payout_month).toLocaleDateString('pl-PL',{month:'long',year:'numeric'})}</Text>
