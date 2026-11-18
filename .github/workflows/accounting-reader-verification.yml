@@ -1,0 +1,40 @@
+name: Accounting reader verification (diagnostic)
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  accounting_reader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check current accounting UI regression tests
+        run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+      - name: Verify optional homework and answer form
+        run: node --experimental-default-type=module --test scripts/test-accounting-extra-homework-reader.mjs
+      - name: Install isolated TypeScript parser
+        run: npm install --prefix /tmp/accounting-ts-parser --ignore-scripts --no-save --no-audit typescript@5.9.3
+      - name: Parse new React Native TSX without compiling the rest of Expo
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const ts=require('/tmp/accounting-ts-parser/node_modules/typescript');
+          let failed=false;
+          for(const filename of ['app/temat-ksiegowosci.tsx','app/program-ksiegowosci.tsx','app/ksiegowosc.tsx','app/_layout.tsx']){
+            const content=fs.readFileSync(filename,'utf8');
+            const file=ts.createSourceFile(filename,content,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+            const diagnostics=file.parseDiagnostics;
+            console.log(filename+': '+diagnostics.length+' parse errors');
+            for(const d of diagnostics){
+              const point=file.getLineAndCharacterOfPosition(d.start||0);
+              console.error(filename+':'+(point.line+1)+':'+(point.character+1)+' '+ts.flattenDiagnosticMessageText(d.messageText,' '));
+              failed=true;
+            }
+          }
+          if(failed)process.exitCode=1;
+          NODE
