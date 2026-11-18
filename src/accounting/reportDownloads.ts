@@ -66,10 +66,15 @@ const pdfEscape=(s:string)=>ascii(s).replace(/\\/g,'\\\\').replace(/\(/g,'\\(').
 export function downloadLedgerPdf(period:string,rows:LedgerLine[]){
  const {title,headings,data}=ledgerRows(period,rows);
  const header=['TRENERKI sp. z o.o.  |  NIP 5272961874',title,'Dokument pomocniczy - nie jest faktura VAT ani paragonem',''];
- const lines=[...header,headings.join(' | '),...data.map(row=>row.map((v,i)=>i===7?ascii(v).slice(0,24):i===6?ascii(v).slice(0,16):ascii(v)).join(' | ')),'',
+ const detailLines=data.flatMap((r,i)=>[
+  String(i+1).padStart(3,'0')+' | '+ascii(r[0])+' | '+ascii(r[1])+' | '+ascii(r[2])+
+   ' | Brutto: '+ascii(r[3])+' | Oplata: '+ascii(r[4])+' | Po oplacie: '+ascii(r[5]),
+  '      Dokument: '+ascii(r[6]||'nieprzypisany').slice(0,50)+' | Stripe: '+ascii(r[7]).slice(0,65)
+ ]);
+ const lines=[...header,'Data / operacja / rozliczenie',...detailLines,'',
   'Stripe pobiera platnosci od klientow. Przelewy Stripe nie sa nowa sprzedaza.',
   'Dokumenty VAT i faktury sa rejestrowane odrebnie w Saldeo / KSeF.'];
- const pageLines=36;const pages:string[][]=[];
+ const pageLines=32;const pages:string[][]=[];
  for(let i=0;i<lines.length;i+=pageLines)pages.push(lines.slice(i,i+pageLines));
  const objects:string[]=[''];
  const add=(body:string)=>{objects.push(body);return objects.length-1};
