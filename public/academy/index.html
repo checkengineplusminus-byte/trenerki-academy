@@ -715,10 +715,16 @@ async function syncLiveCatalog(){
    }
   }
   const requested=new URLSearchParams(window.location.search).get('course');
-  if(requested==='ai-bez-tajemnic'&&publicCatalogCourses().some(c=>c.id===requested)&&selectedCourse?.id!==requested)openCourse(requested,false);
-  else if(selectedCourse&&!COURSES.includes(selectedCourse)){showCatalog();}
-  else if(page==='home')updateCatalog();
-  else if(selectedCourse)render();
+  if(selectedCourse){
+   // The initial AI preview may be a static fallback object. The live sync
+   // replaces it with the verified published record, not a withdrawal.
+   // Compare by stable course slug, never by JavaScript object identity.
+   const current=publicCatalogCourses().find(c=>c.id===selectedCourse.id);
+   if(current){selectedCourse=current;render();}
+   else showCatalog(); // Withdrawn/unpublished courses must not be promoted.
+  }else if(requested==='ai-bez-tajemnic'&&publicCatalogCourses().some(c=>c.id===requested)){
+   openCourse(requested,false);
+  }else if(page==='home')updateCatalog();
   if(status()){status().textContent='';status().hidden=true;}
  }catch(err){
   // Offline fallback never grants course access or attempts to load protected lessons.
