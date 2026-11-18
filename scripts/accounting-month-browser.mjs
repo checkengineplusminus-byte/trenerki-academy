@@ -319,6 +319,8 @@ try{
  });
  await pass('Pierwszy etap udostępnia 36 fikcyjnych dokumentów',async()=>{
   assert.equal(await f.page.locator('#sim-doc option').count(),36);
+  assert.match(await f.page.locator('[data-testid="scenario-bank-bridge"]').innerText(),/0\/16/);
+  assert.equal(f.model().state.journals.length,0,'UI nie deklaruje księgowania bez zapisów');
   assert.equal(await f.page.locator('#sim-journal-doc option').count(),36);
   assert.deepEqual(f.errors,[]);
  });
@@ -368,6 +370,8 @@ try{
   assert.deepEqual(f.model().state.bank.map(x=>x.id),docs.map(x=>x.id));
   assert.equal(f.model().state.journals.length,0,'CSV nie księguje automatycznie');
   await tab(f.page).click();
+  assert.match(await f.page.locator('[data-testid="scenario-bank-bridge"]').innerText(),/0\/16/);
+  assert.match(await f.page.locator('[data-testid="scenario-bank-bridge"]').innerText(),/Dodaj dokładnie jeden aktywny dekret bankowy/);
   assert.equal(await f.page.locator('#sim-doc option').count(),36);
   assert.deepEqual(f.errors,[]);
  });
@@ -604,6 +608,7 @@ try{
  const mobile=await fixture({width:390,height:844});
  await mobile.page.goto(origin+'/biuro-ksiegowe');await tab(mobile.page).waitFor();await tab(mobile.page).click();
  await pass('Mobilna pracownia D01–D36 nie wychodzi poza ekran 390px',async()=>{
+  assert.match(await mobile.page.locator('[data-testid="scenario-bank-bridge"]').innerText(),/0\/16/);
   const size=await mobile.page.evaluate(()=>({screen:innerWidth,width:document.documentElement.scrollWidth}));
   assert.ok(size.width<=size.screen+2,JSON.stringify(size));
   assert.deepEqual(mobile.errors,[]);
