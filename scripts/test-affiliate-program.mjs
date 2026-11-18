@@ -11,7 +11,7 @@ const partner=read('app/partner.tsx'),partnerAdmin=read('app/partner-admin.tsx')
 const account=read('app/konto.tsx'),buy=read('app/kup.tsx'),layout=read('app/_layout.tsx');
 function includes(source,parts,label){for(const part of parts)assert(source.includes(part),label+': '+part)}
 includes(home,['Program partnerski','taAffiliateCode()','&ref=','prefers-reduced-motion:reduce','function startPurchase(id)'],'Public site');
-includes(styles,['.ta-app-footer-links','prefers-reduced-motion:reduce'],'App footer');
+includes(styles,['.ta-app-footer-links','prefers-reduced-motion: reduce'],'App footer');
 assert(!home.includes('academy-footer__affiliate')&&!styles.includes('ta-app-footer-affiliate'),'No oversized affiliate footer CTA');
 includes(landing,['Zarabiaj 10%','500 zł','5 000,00 zł','reklam'],'Affiliate landing');
 assert(!landing.includes('Pierwsze przelewy wymagają'),'No internal payout alarm on landing');
