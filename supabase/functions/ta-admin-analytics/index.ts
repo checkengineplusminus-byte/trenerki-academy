@@ -31,9 +31,42 @@ Deno.serve(async req=>{
  if(privilegesError)return send({error:'database_unavailable'},503);
  if(!privileges||!['owner','admin'].includes(privileges.role))return send({error:'admin_only'},403);
  let requestBody:any={};try{requestBody=await req.json()}catch{return send({error:'invalid_json'},400);}
+ if(requestBody?.action==='accounting_document_save'){
+  if(privileges.role!=='owner')return send({error:'owner_only'},403);
+  const source=String(requestBody.stripe_source||'');
+  const type=String(requestBody.document_type||'pending');
+  const status=String(requestBody.document_status||'pending');
+  const treatment=String(requestBody.tax_treatment||'review');
+  const doc=String(requestBody.document_number||'').trim();
+  const ksef=String(requestBody.ksef_number||'').trim();
+  const notes=String(requestBody.notes||'').trim();
+  if(!/^(ch|py|pi|cs)_[A-Za-z0-9_]{6,120}$/.test(source)||
+     !['pending','b2c_register','b2c_invoice','b2b_invoice','refund_correction','not_applicable'].includes(type)||
+     !['pending','prepared','issued','reconciled','review'].includes(status)||
+     !['review','pl_23','exempt','reverse_charge','oss','outside_scope'].includes(treatment)||
+     doc.length>120||ksef.length>150||notes.length>500||
+     (['issued','reconciled'].includes(status)&&!doc&&type!=='b2c_register'))
+   return send({error:'invalid_document'},400);
+  // Verify the Stripe source is genuinely present in the merchant account, not a client-created key.
+  const stripe=Deno.env.get('STRIPE_SECRET_KEY');
+  if(!stripe||!/^sk_live_/.test(stripe))return send({error:'stripe_reporting_unavailable'},503);
+  const resource=source.startsWith('ch_')?'charges':source.startsWith('py_')?'payment_intents':source.startsWith('pi_')?'payment_intents':null;
+  if(!resource)return send({error:'unsupported_stripe_source'},400);
+  const lookup=await fetch('https://api.stripe.com/v1/'+resource+'/'+encodeURIComponent(source),{headers:{Authorization:'Bearer '+stripe},signal:AbortSignal.timeout(12000)});
+  if(!lookup.ok)return send({error:'stripe_source_not_found'},400);
+  const verified=await lookup.json();
+  if(source.startsWith('ch_')&&verified.paid!==true)return send({error:'unpaid_source'},409);
+  const payload={stripe_source:source,document_type:type,document_status:status,tax_treatment:treatment,
+   document_number:doc||null,ksef_number:ksef||null,notes:notes||null,
+   processed_by:user.id,processed_at:new Date().toISOString(),updated_at:new Date().toISOString()};
+  const {data:stored,error:saveErr}=await admin.from('ta_accounting_documents').upsert(payload,{onConflict:'stripe_source'})
+   .select('stripe_source,document_type,document_status,document_number,ksef_number,tax_treatment,notes').single();
+  if(saveErr)return send({error:saveErr.code==='23505'?'document_already_assigned':'document_save_failed'},409);
+  return send({ok:true,document:stored});
+ }
  if(requestBody?.action==='accounting_export'){
   const period=String(requestBody.period||'');
-  if(!/^20\\d{2}(?:-(?:0[1-9]|1[0-2]))?$/.test(period))return send({error:'invalid_period'},400);
+  if(!/^20\d{2}(?:-(?:0[1-9]|1[0-2]))?$/.test(period))return send({error:'invalid_period'},400);
   const stripe=Deno.env.get('STRIPE_SECRET_KEY');
   if(!stripe||!/^sk_live_/.test(stripe))return send({error:'stripe_reporting_unavailable'},503);
   const start=period.length===7?period+'-01':period+'-01-01';
@@ -62,13 +95,27 @@ Deno.serve(async req=>{
     category:String(t.reporting_category||t.type||'other'),currency:String(t.currency||'').toUpperCase(),
     gross_grosze:Number(t.amount)||0,fee_grosze:Number(t.fee)||0,net_grosze:Number(t.net)||0}))
    .sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+  const chargeSources=entries.filter(x=>x.source.startsWith('ch_')).map(x=>x.source);
+  let documents:any[]=[];
+  if(chargeSources.length){
+   // No client access to this table: the owner-only function looks up matching references.
+   const unique=[...new Set(chargeSources)];
+   for(let i=0;i<unique.length;i+=200){
+    const {data,error}=await admin.from('ta_accounting_documents')
+      .select('stripe_source,document_type,document_status,document_number,ksef_number,tax_treatment,notes')
+      .in('stripe_source',unique.slice(i,i+200));
+    if(error)return send({error:'document_register_unavailable'},503);
+    documents.push(...(data||[]));
+   }
+  }
+  const documentMap=new Map(documents.map(d=>[d.stripe_source,d]));
   const summary:Record<string,{currency:string,category:string,count:number,gross_grosze:number,fee_grosze:number,net_grosze:number}>={};
   for(const t of entries){
    const key=t.currency+'/'+t.category;
    const v=summary[key]||{currency:t.currency,category:t.category,count:0,gross_grosze:0,fee_grosze:0,net_grosze:0};
    v.count++;v.gross_grosze+=t.gross_grosze;v.fee_grosze+=t.fee_grosze;v.net_grosze+=t.net_grosze;summary[key]=v;
   }
-  return send({ok:true,period,time_zone:'Europe/Warsaw',rows:entries,summary:Object.values(summary),
+  return send({ok:true,period,time_zone:'Europe/Warsaw',rows:entries.map(x=>({...x,document:documentMap.get(x.source)||null})),summary:Object.values(summary),
    note:'Zestawienie techniczne Stripe: nie jest fakturą VAT, paragonem ani gotowym dokumentem księgowym. Payout nie jest kolejnym przychodem; fee to koszt Stripe. Sprawdź faktury, zwroty, kursy walut i kwalifikację podatkową.'});
  }
  try{
