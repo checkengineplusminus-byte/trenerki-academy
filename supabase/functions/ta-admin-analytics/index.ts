@@ -93,8 +93,76 @@ Deno.serve(async req=>{
   const entries=raw.filter(t=>{const local=warsaw.format(new Date(t.created*1000));return local>=start&&local<end})
    .map(t=>({id:String(t.id),date:warsaw.format(new Date(t.created*1000)),source:String(t.source||''),
     category:String(t.reporting_category||t.type||'other'),currency:String(t.currency||'').toUpperCase(),
-    gross_grosze:Number(t.amount)||0,fee_grosze:Number(t.fee)||0,net_grosze:Number(t.net)||0}))
+    gross_grosze:Number(t.amount)||0,fee_grosze:Number(t.fee)||0,net_grosze:Number(t.net)||0,
+    created_at_utc:new Date(t.created*1000).toISOString(),
+    available_on:t.available_on?new Date(t.available_on*1000).toISOString():''}))
    .sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+  // Enrich the Stripe ledger with verifiable, owner-only purchase context.
+  // Never infer tax amounts or fabricate a customer, course, bank posting date or invoice.
+  const chargeIds=new Set(entries.filter(x=>x.category==='charge'&&x.source.startsWith('ch_')).map(x=>x.source));
+  const chargeMap=new Map<string,any>();
+  const warnings:string[]=[];
+  if(chargeIds.size){
+   let afterCharge='';
+   for(let page=0;page<100;page++){
+    const params=new URLSearchParams({'limit':'100','created[gte]':String(from-86400),'created[lt]':String(to+86400)});
+    if(afterCharge)params.set('starting_after',afterCharge);
+    const response=await fetch('https://api.stripe.com/v1/charges?'+params.toString(),{
+     headers:{Authorization:'Bearer '+stripe},signal:AbortSignal.timeout(15000)
+    });
+    if(!response.ok){warnings.push('Nie udało się pobrać opisów płatności Stripe.');break;}
+    const body=await response.json();
+    if(!Array.isArray(body.data)){warnings.push('Niekompletne dane opisowe płatności Stripe.');break;}
+    for(const ch of body.data)if(chargeIds.has(String(ch.id)))chargeMap.set(String(ch.id),ch);
+    if(!body.has_more)break;
+    afterCharge=String(body.data.at(-1)?.id||'');
+    if(!afterCharge||page===99){warnings.push('Niepełna lista danych nabywców.');break;}
+   }
+   if(chargeMap.size<chargeIds.size)warnings.push('Część transakcji nie ma danych nabywcy z Stripe.');
+  }
+  const intents=[...new Set([...chargeMap.values()].map(ch=>String(ch.payment_intent||'')).filter(x=>x.startsWith('pi_')))];
+  const checkoutByIntent=new Map<string,{course_slug:string;kind:string;purchased_at:string}>();
+  const findPurchases=async(table:string,fields:string,kind:string)=>{
+   for(let i=0;i<intents.length;i+=100){
+    const {data,error}=await admin.from(table).select(fields).in('stripe_payment_intent_id',intents.slice(i,i+100));
+    if(error){warnings.push('Nie udało się pobrać powiązań zakupów '+kind+'.');return;}
+    for(const item of data||[]){
+     const pi=String(item.stripe_payment_intent_id||'');
+     const label=kind==='voucher'?'Karta podarunkowa na kwotę':String(item.course_slug||'');
+     if(pi&&!checkoutByIntent.has(pi))checkoutByIntent.set(pi,{
+      course_slug:label,kind,purchased_at:String(item.purchased_at||item.paid_at||'')
+     });
+    }
+   }
+  };
+  if(intents.length){
+   await findPurchases('ta_enrollments','stripe_payment_intent_id,course_slug,purchased_at','course');
+   await findPurchases('ta_gift_cards','stripe_payment_intent_id,course_slug,paid_at','gift');
+   await findPurchases('ta_credit_vouchers','stripe_payment_intent_id,paid_at','voucher');
+  }
+  const slugSet=[...new Set([...checkoutByIntent.values()].map(v=>v.course_slug).filter(v=>v&&v!=='Karta podarunkowa na kwotę'))];
+  const courseNames=new Map<string,string>();
+  for(let i=0;i<slugSet.length;i+=100){
+   const {data,error}=await admin.from('ta_courses').select('slug,title_pl').in('slug',slugSet.slice(i,i+100));
+   if(error){warnings.push('Brak pełnych nazw sprzedanych kursów.');break;}
+   for(const item of data||[])courseNames.set(String(item.slug),String(item.title_pl||item.slug));
+  }
+  const detailedEntries=entries.map(t=>{
+   const charge=chargeMap.get(t.source);
+   const pi=String(charge?.payment_intent||'');
+   const purchase=checkoutByIntent.get(pi);
+   const product=purchase?(purchase.kind==='voucher'?'Karta podarunkowa na kwotę':purchase.kind==='gift'?'Karta podarunkowa - '+(courseNames.get(purchase.course_slug)||purchase.course_slug):(courseNames.get(purchase.course_slug)||purchase.course_slug)):'';
+   const customerEmail=typeof charge?.billing_details?.email==='string'?charge.billing_details.email:
+      typeof charge?.receipt_email==='string'?charge.receipt_email:'';
+   const buyerName=String(charge?.billing_details?.name||'').slice(0,120);
+   const buyerCountry=String(charge?.billing_details?.address?.country||'').slice(0,3).toUpperCase();
+   const time=new Intl.DateTimeFormat('pl-PL',{timeZone:'Europe/Warsaw',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(t.created_at_utc));
+   return {...t,time,product:product.slice(0,180),customer_email:customerEmail.slice(0,180),
+      customer_name:buyerName,customer_country:buyerCountry,payment_intent_id:pi,
+      purchase_category:purchase?.kind||'',payment_status:t.category==='charge'?(charge?.paid?'Opłacona':'Do sprawdzenia'):
+       t.category==='refund'?'Zwrot':t.category==='payout'?'Wypłata zlecona':'Operacja Stripe',
+      stripe_description:String(charge?.description||'').slice(0,180),purchase_date:purchase?.purchased_at||''};
+  });
   const chargeSources=entries.filter(x=>x.source.startsWith('ch_')).map(x=>x.source);
   let documents:any[]=[];
   if(chargeSources.length){
@@ -115,7 +183,8 @@ Deno.serve(async req=>{
    const v=summary[key]||{currency:t.currency,category:t.category,count:0,gross_grosze:0,fee_grosze:0,net_grosze:0};
    v.count++;v.gross_grosze+=t.gross_grosze;v.fee_grosze+=t.fee_grosze;v.net_grosze+=t.net_grosze;summary[key]=v;
   }
-  return send({ok:true,period,time_zone:'Europe/Warsaw',rows:entries.map(x=>({...x,document:documentMap.get(x.source)||null})),summary:Object.values(summary),
+  return send({ok:true,period,time_zone:'Europe/Warsaw',generated_at:new Date().toISOString(),
+   rows:detailedEntries.map(x=>({...x,document:documentMap.get(x.source)||null})),summary:Object.values(summary),warnings,
    note:'Zestawienie techniczne Stripe: nie jest fakturą VAT, paragonem ani gotowym dokumentem księgowym. Payout nie jest kolejnym przychodem; fee to koszt Stripe. Sprawdź faktury, zwroty, kursy walut i kwalifikację podatkową.'});
  }
  try{
