@@ -30,7 +30,7 @@ Deno.serve(async req=>{
  const {data:privileges,error:privilegesError}=await admin.from('ta_admins').select('role').eq('user_id',user.id).maybeSingle();
  if(privilegesError)return send({error:'database_unavailable'},503);
  if(!privileges||!['owner','admin'].includes(privileges.role))return send({error:'admin_only'},403);
- let requestBody:any={};try{requestBody=await req.json()}catch{return send({error:'invalid_json'},400);}
+ let requestBody:any={};try{const raw=await req.text();requestBody=raw.trim()?JSON.parse(raw):{};}catch{return send({error:'invalid_json'},400);}
  if(requestBody?.action==='accounting_document_save'){
   if(privileges.role!=='owner')return send({error:'owner_only'},403);
   const source=String(requestBody.stripe_source||'');
