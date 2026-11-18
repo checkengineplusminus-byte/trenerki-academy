@@ -8,6 +8,8 @@ on:
       - 'public/1/index.html'
       - 'scripts/generate-affiliate-short-pages.mjs'
       - '.eas/workflows/deploy-web.yml'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 jobs:
   live_short_link:
