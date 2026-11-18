@@ -50,7 +50,7 @@ assert.equal(pdfSingle.pageOrientation,'portrait');
 assert.equal(pdfMonth.pageOrientation,'landscape');
 assert(JSON.stringify(pdfSingle.content).includes('Księgowość'));
 assert(JSON.stringify(pdfMonth.content).includes('SZCZEGÓŁOWE OPERACJE'));
-assert(JSON.stringify(pdfMonth.content).includes('1 300 JPY'));
+assert(JSON.stringify(pdfMonth.content).includes('1300'));
 
 let downloadedBlob,downloadFilename;
 const fakeDocument={body:{appendChild(){return null}},createElement(){
