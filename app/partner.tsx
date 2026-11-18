@@ -117,8 +117,8 @@ export default function AffiliatePartner(){
    <View style={{backgroundColor:'#eef5e9',borderRadius:14,padding:17,gap:8}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Jasne zasady rozliczeń</Text>
     <Text style={{color:muted,lineHeight:22}}>10% faktycznie zapłaconej ceny kursu (po rabacie), bez prowizji za własne zakupy, podarunki i zwrócone transakcje. Rozliczenia miesięczne, próg wypłaty 500 zł, okres weryfikacji 30 dni. Na koniec roku rozliczamy i wypłacamy również zatwierdzone salda niższe niż 500 zł, po kontroli dokumentów. Kwoty podane przed ewentualnym podatkiem dochodowym.</Text>
-    <Text style={{color:muted,lineHeight:22}}>Firmy wystawiają faktury i otrzymują zwykłe przelewy bankowe. Osoby prywatne również mogą otrzymać zwykły przelew bez Stripe Connect, po potwierdzeniu podatków i wymaganych danych przez księgowość.</Text>
-    <Text style={{color:ink,lineHeight:22,fontWeight:'700'}}>Jeśli dobrowolna prowizja osoby prywatnej jest przychodem z innych źródeł, partner rozlicza podatek w rocznym PIT, a Trenerki przygotowują PIT-11 bez pobierania zaliczki. Inny rodzaj współpracy może wymagać zaliczek lub ZUS. Przed pierwszą wypłatą potrzebna jest kontrola księgowa.</Text>
+    <Text style={{color:muted,lineHeight:22}}>Prowizje wypłacamy przelewem bankowym. Wymagane dane rozliczeniowe podajesz zgodnie z instrukcjami na swoim koncie.</Text>
+    <Text style={{color:ink,lineHeight:22,fontWeight:'700'}}>Szczegółowe zasady podatkowe dla osób prywatnych i firm określają regulamin programu oraz obowiązujące przepisy.</Text>
    </View>
    <View style={{backgroundColor:'white',borderWidth:1,borderColor:'#dbe8da',padding:20,borderRadius:16,gap:14}}>
     {busy?<ActivityIndicator color={primary}/>:
@@ -175,13 +175,13 @@ export default function AffiliatePartner(){
         </View>
         {profile.partner_type==='company'?<>
          <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Firma: faktura i przelew bankowy</Text>
-         <Text style={{color:muted,lineHeight:22}}>Po miesięcznym zestawieniu i osiągnięciu 500 zł zatwierdzonych prowizji wystaw prawidłową fakturę lub inny wymagany dokument. Trenerki sprawdzą dokument i wykonają zwykły przelew na rachunek podany na fakturze. Nie potrzebujesz Stripe Connect.</Text>
+         <Text style={{color:muted,lineHeight:22}}>Po osiągnięciu 500 zł zatwierdzonych prowizji przedstaw wymagany dokument rozliczeniowy. Wynagrodzenie jest wypłacane przelewem na rachunek firmowy.</Text>
         </>:<>
          <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Osoba prywatna: zwykły przelew bankowy</Text>
-         <Text style={{color:muted,lineHeight:22}}>Nie trzeba otwierać konta Stripe Connect wyłącznie dla wypłaty prowizji. Gdy zatwierdzone saldo osiągnie 500 zł, księgowość poprosi bezpiecznym kanałem o potrzebne dane podatkowe i rachunek bankowy. Nie podawaj PESEL ani numeru konta w czacie lub publicznych wiadomościach.</Text>
-         <Text style={{color:muted,lineHeight:22}}>W przypadku zakwalifikowania prowizji jako przychodu z innych źródeł partner sam rozlicza podatek w rocznym PIT, a Trenerki sporządzają PIT-11. Ostateczna kwalifikacja zależy od współpracy.</Text>
+         <Text style={{color:muted,lineHeight:22}}>Po osiągnięciu 500 zł zatwierdzonych prowizji otrzymasz informacje o danych niezbędnych do przelewu. Dane bankowe i podatkowe przekazuj wyłącznie bezpiecznym kanałem wskazanym przez Trenerki.</Text>
+         <Text style={{color:muted,lineHeight:22}}>Rozliczenie podatkowe zależy od formy współpracy. Szczegóły podano w regulaminie programu.</Text>
         </>}
-        {!data?.policy?.payouts_live&&<Text style={{color:'#895d24',lineHeight:22}}>Rejestracja i naliczanie prowizji są aktywne. Przelewy są wstrzymane do zatwierdzenia dokumentów i sposobu rozliczenia przez księgowość. Naliczenie nie jest jeszcze potwierdzeniem wypłaty.</Text>}
+        {!data?.policy?.payouts_live&&<Text style={{color:'#895d24',lineHeight:22}}>Status wypłat: weryfikacja rozliczeń. Zatwierdzone prowizje pozostają zapisane na Twoim koncie.</Text>}
         <Button title="Odśwież stan wypłat i prowizji" outline onPress={()=>void status().catch(e=>setError(String(e)) )}/>
         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Ostatnie naliczenia</Text>
         {(data?.transactions||[]).length===0?<Text style={{color:muted}}>Nie masz jeszcze potwierdzonych zakupów z polecenia.</Text>:
