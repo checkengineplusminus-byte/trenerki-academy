@@ -88,10 +88,10 @@ export default function AffiliateAdmin(){
    {busy?<ActivityIndicator size="large" color={ink}/>:<>
     <View style={{padding:17,backgroundColor:'#fff',borderRadius:14,borderWidth:1,borderColor:'#dae9d7',gap:7}}>
      <Text style={{color:ink,fontWeight:'900'}}>Stan programu</Text>
-     <Text style={{color:muted}}>Firmy: {companyCount} · Osoby prywatne: {privateCount}. Firmy: faktura i przelew bankowy; osoby prywatne: Stripe Connect i rozliczenie podatkowe.</Text>
+     <Text style={{color:muted}}>Firmy: {companyCount} · Osoby prywatne: {privateCount}. Firmy: faktura i przelew bankowy; osoby prywatne: przelew bankowy i PIT-11 w zatwierdzonym modelu.</Text>
      <Text style={{color:muted}}>Rejestracje: {config?.program_enabled?'włączone':'wstrzymane'} · Prowizja: {config?.commission_percent}% · Okres kontrolny: {config?.hold_days} dni · Próg: {money(config?.payout_min_grosze)}</Text>
      <Text style={{color:config?.payout_enabled&&config?.tax_review_approved?'#327c46':'#915c27',fontWeight:'800'}}>
-      {config?.payout_enabled&&config?.tax_review_approved?'Wypłaty dopuszczone':'Wypłaty zablokowane — wymagane zatwierdzenie podatkowe i Stripe'}
+      {config?.payout_enabled&&config?.tax_review_approved?'Wypłaty dopuszczone':'Wypłaty zablokowane — wymagane zatwierdzenie podatkowe i dokumenty'}
      </Text>
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:11}}>
@@ -127,7 +127,7 @@ export default function AffiliateAdmin(){
        <Text style={{color:muted}}>Typ: {p.partner_type==='company'?'Firma':'Osoba prywatna'} · {p.status} · PIT/dokumenty: {p.tax_status}</Text>
        {p.partner_type==='company'
         ?<Text style={{color:muted}}>Firma — faktura i przelew bankowy poza Stripe · NIP: {p.company_tax_id||'brak'}</Text>
-        :<Text style={{color:muted}}>Osoba prywatna — Stripe Connect: {p.stripe_connected?'połączony':'oczekuje'} · przelew: {p.stripe_payouts_enabled?'zweryfikowany':'oczekuje'} · PIT: {p.tax_status}</Text>}
+        :<Text style={{color:muted}}>Osoba prywatna — przelew bankowy po weryfikacji podatkowej · dokumenty PIT: {p.tax_status}</Text>}
        <Text style={{color:muted}}>Prowizje zatwierdzone: {money(p.totals?.approved_grosze)} · Wymagają kontroli: {money(p.totals?.needs_review_grosze)}</Text>
        <Text style={{color:(p.totals?.approved_grosze||0)>=(config?.payout_min_grosze||30000)?'#236f45':'#795d37',fontWeight:'800'}}>Próg {money(config?.payout_min_grosze||30000)}: {(p.totals?.approved_grosze||0)>=(config?.payout_min_grosze||30000)?'osiągnięty — kontrola faktury/PIT przed wypłatą':'jeszcze nieosiągnięty — saldo przechodzi dalej'}</Text>
        {p.status==='active'&&<View style={{flexDirection:'row',gap:10,flexWrap:'wrap'}}>

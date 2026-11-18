@@ -71,38 +71,8 @@ Deno.serve(async(req:Request)=>{
   if(syncError)return reply(origin,{error:'partner_email_sync_failed'},503);
   old.email=confirmedEmail;
  }
- if(action==='onboard'){
-  if(old.partner_type!=='individual')return reply(origin,{error:'company_uses_invoice'},409);
-  if(old.status!=='active')return reply(origin,{error:'partner_inactive'},403);
-  if(!cfg.stripe_onboarding_enabled)return reply(origin,{error:'onboarding_pending'},409);
-  const stripe=Deno.env.get('STRIPE_SECRET_KEY');
-  if(!stripe||!/^sk_live_/.test(stripe))return reply(origin,{error:'stripe_connect_not_configured'},503);
-  let acct=old.stripe_account_id;
-  if(!acct){
-   const p=new URLSearchParams({
-    type:'express',country:'PL',email:user.email,
-    business_type:old.partner_type==='individual'?'individual':'company',
-    'capabilities[transfers][requested]':'true',
-    'metadata[ta_affiliate_partner_id]':old.id,
-    'metadata[program]':'TRENERKI_10_PERCENT'
-   });
-   const result=await stripeRequest(stripe,'accounts',p);
-   if(!result.ok||!/^acct_[a-zA-Z0-9]+$/.test(result.data?.id||''))
-    return reply(origin,{error:'stripe_connect_not_enabled',detail:'Sprawdź aktywację Connect w panelu Stripe.'},409);
-   acct=result.data.id;
-   const {error}=await db.from('ta_affiliate_partners').update({stripe_account_id:acct,updated_at:new Date().toISOString()}).eq('id',old.id).is('stripe_account_id',null);
-   if(error)return reply(origin,{error:'connect_account_save_failed'},503);
-  }
-  const p=new URLSearchParams({account:acct,
-    type:'account_onboarding',
-    refresh_url:'https://trenerki.com/partner?connect=refresh',
-    return_url:'https://trenerki.com/partner?connect=return'
-  });
-  const link=await stripeRequest(stripe,'account_links',p);
-  if(!link.ok||typeof link.data?.url!=='string'||!link.data.url.startsWith('https://connect.stripe.com/'))
-   return reply(origin,{error:'onboarding_link_unavailable'},503);
-  return reply(origin,{ok:true,url:link.data.url});
- }
+ // Legacy Connect onboarding is disabled. Trenerki will pay vetted partners by bank transfer.
+ if(action==='onboard')return reply(origin,{error:'bank_transfer_pending_tax_verification'},409);
  // Status is a summary of the caller's *own* commissions, never customer identities.
  if(old.stripe_account_id){
   const stripe=Deno.env.get('STRIPE_SECRET_KEY');
