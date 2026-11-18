@@ -111,7 +111,7 @@ export default function Learning(){
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
- [busy,setBusy]=useState(true),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
+ [busy,setBusy]=useState(true),[reload,setReload]=useState(0),[showProgram,setShowProgram]=useState(false),[saving,setSaving]=useState(false),[courseInfo,setCourseInfo]=useState({slug:'',title:'',description:''}),[review,setReview]=useState<Record<string,{correct:number,incorrect:number}>>({});
  useEffect(()=>{setCoachOpen(slug==='ai-bez-tajemnic');},[slug,module]);
  useEffect(()=>{
   if(slug==='excel-skroty'&&pendingExcelHomeworkRef.current&&introRead&&scrollToExcelHomework())
@@ -131,8 +131,16 @@ export default function Learning(){
   try{
    if(!slug)throw new Error('Wybierz kurs z listy.');
    if(slug==='ksiegowosc-od-podstaw'){router.replace(courseDestination(slug,lessonParam));return;}
+   // A transient auth/network failure must not be treated as a sign-out.
+   // The paid lesson stays mounted; only a confirmed missing session requires login.
+   const {data:sessionResult,error:sessionError}=await supabase.auth.getSession();
+   if(sessionError)throw new Error('Nie udało się sprawdzić sesji. Spróbuj ponownie — nie wylogowaliśmy Cię.');
+   if(!sessionResult.session?.user){
+    router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;
+   }
    const {data:{user:u},error:ue}=await supabase.auth.getUser();
-   if(ue||!u){router.replace('/konto');return;}
+   if(ue)throw new Error('Nie udało się potwierdzić sesji. Spróbuj ponownie — Twoja nauka i konto pozostają zapisane.');
+   if(!u){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}
    const {data:en,error:ee}=await supabase.from('ta_enrollments').select('id').eq('user_id',u.id).eq('course_slug',slug).eq('status','active').gt('expires_at',new Date().toISOString()).limit(1);
    if(ee)throw ee;
    if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
@@ -168,7 +176,7 @@ export default function Learning(){
    }
   }catch(e:any){if(active)setError(e?.message||'Nie udało się otworzyć kursu.');}
   finally{if(active)setBusy(false);}
- })();return()=>{active=false};},[slug]);
+ })();return()=>{active=false};},[slug,reload]);
  const study=items[0]?.material.study_project;
  const lesson=items.find(x=>x.lesson_no===module),index=items.findIndex(x=>x.lesson_no===module);
  const learning=lesson?.material.learning;
@@ -293,7 +301,13 @@ export default function Learning(){
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>{!busy&&courseInfo.slug===slug&&index===0?courseInfo.title:'Moja nauka'}</Text>
   {busy&&<ActivityIndicator size="large"/>}
-  {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}
+  {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>
+   <Text accessibilityRole="alert" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>
+   <Pressable accessibilityRole="button" onPress={()=>setReload(v=>v+1)}
+    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>
+    <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>
+   </Pressable>
+  </View>}
   {!!items.length&&<>
    {!busy&&courseInfo.slug===slug&&index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
    <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
