@@ -99,5 +99,5 @@ function AccountLayout(){
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>
- </Stack></View>{pathname==='/nauka'?<LearningSupportBar/>:<HelpFooter/>}</View>;
+ </Stack></View>{pathname==='/nauka'?<LearningSupportBar/>:<HelpFooter compact={pathname==='/konto'}/>}</View>;
 }
