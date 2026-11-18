@@ -98,7 +98,7 @@ export default function MyCourses(){
     <Text style={{fontSize:11,fontWeight:done?'800':'500',color:done?'#2c7b46':'#667b68'}}>{accounting?'Przeczytanie nie jest zaliczeniem kursu.':done?'Lekcje ukończone':row.progress+'% ukończono'}</Text>
    </View>
    <View style={{gap:6}}>
-    {active?<Pressable onPress={()=>router.push(courseDestination(row.course_slug))} accessibilityRole="button" style={{backgroundColor:'#173228',paddingVertical:10,paddingHorizontal:5,borderRadius:9}}><Text style={{textAlign:'center',fontSize:12,color:'white',fontWeight:'800'}}>{done?'Otwórz kurs':'Kontynuuj naukę'}</Text></Pressable>:<Text style={{fontSize:12,color:'#956532'}}>Dostęp wygasł</Text>}
+    {active?<Pressable onPress={()=>{if(row.course_slug==='ai-bez-tajemnic'&&Platform.OS==='web'&&typeof window!=='undefined'){window.location.assign('/nauka?course='+encodeURIComponent(row.course_slug));return;}router.push(courseDestination(row.course_slug));}} accessibilityRole="button" style={{backgroundColor:'#173228',paddingVertical:10,paddingHorizontal:5,borderRadius:9}}><Text style={{textAlign:'center',fontSize:12,color:'white',fontWeight:'800'}}>{done?'Otwórz kurs':'Kontynuuj naukę'}</Text></Pressable>:<Text style={{fontSize:12,color:'#956532'}}>Dostęp wygasł</Text>}
     {active&&!accounting&&<Pressable testID={'restart-course-'+row.course_slug} accessibilityRole="button" accessibilityLabel={'Zacznij od początku: '+(row.ta_courses?.title_pl||row.course_slug)}
       onPress={()=>router.push({pathname:'/nauka',params:{course:row.course_slug,lesson:'1',review:'1'}})}
       style={{backgroundColor:'#f0f7ee',borderWidth:1,borderColor:'#bfd6bd',borderRadius:9,padding:10}}>
