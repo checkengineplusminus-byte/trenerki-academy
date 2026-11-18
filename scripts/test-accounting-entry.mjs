@@ -224,6 +224,30 @@ test('Data odniesienia i link nie są bez dowodu potwierdzeniem aktualności pra
  assert.doesNotMatch(active,/Data sprawdzenia treści prawnej:/);
  assert.doesNotMatch(active,/>Otwórz urzędowe źródło<\/Text>/);
 });
+test('Lekcja księgowości ma pięć czytelnych ekranów i objaśnienia dla początkujących',()=>{
+ const ui=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
+ for(const id of ["id:'learn'","id:'example'","id:'practice'","id:'homework'","id:'summary'"])
+  assert.ok(ui.includes(id),'Brak kroku '+id);
+ assert.match(ui,/BEGINNER_GUIDES/);
+ assert.match(ui,/introComplete&&currentSection/);
+ assert.match(ui,/!introComplete&&<View/);
+ assert.ok(ui.includes('Rozumiem — pokaż pierwszą część'));
+ assert.ok(ui.includes('Tu rozwiązujesz ćwiczenia'));
+ assert.ok(ui.includes('ĆWICZENIE {exercises.length?quizIndex+1:0}'));
+ assert.ok(ui.includes('Tu oddajesz rozwiązanie'));
+ assert.ok(ui.includes('Tu rozwiązujesz ćwiczenia'));
+ assert.ok(ui.includes('goStep(\'summary\')'));
+ assert.ok(ui.includes('showExtraHomework&&'));
+ assert.ok(ui.includes('showGlossary&&(m.glossary||[]).map'));
+ assert.ok(ui.includes('showSources&&'));
+ const start=ui.indexOf('<Text style={s.body}>{m.practice.task}</Text>');
+ const input=ui.indexOf('accessibilityLabel="Rozwiązanie pracy domowej"');
+ const extras=ui.indexOf('Dodatkowe polecenia');
+ assert.ok(start>0&&input>start&&extras>input,'Pole odpowiedzi powinno być bezpośrednio pod poleceniem, przed dodatkami');
+ assert.ok(!ui.includes('Zrób zadanie również we własnym Excelu'));
+ assert.ok(ui.includes("const nextReady=sectionProgress?.passed===true&&hasHomework;"),'Nie osłabiać warunków przejścia');
+});
+
 test('Licznik ćwiczeń bieżącego tematu odpowiada zapisanej liczbie, nie sztucznym czterem',()=>{
  const code=readFileSync(new URL('../app/temat-ksiegowosci.tsx',import.meta.url),'utf8');
  assert.match(code,/\{\(m\.exercises\|\|\[\]\)\.length\}/);
