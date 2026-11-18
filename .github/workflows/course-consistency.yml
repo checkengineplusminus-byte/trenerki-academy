@@ -70,6 +70,8 @@ jobs:
         run: node scripts/test-formulas.mjs
       - name: Exclude test and promotional records from sales
         run: node scripts/test-sales-analytics.mjs
+      - name: Validate professional Stripe PDF and Excel accounting exports
+        run: node scripts/test-accounting-exports.mjs
       - name: Generate numeric affiliate pages before web export
         run: node scripts/generate-affiliate-short-pages.mjs
       - name: Verify production web bundle
