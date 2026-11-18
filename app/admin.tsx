@@ -9,6 +9,7 @@ import CourseFeedbackPanel from '../src/CourseFeedbackPanel';
 import ContactEditor from '../src/support/ContactEditor';
 import {downloadGiftPdf,saveGiftPdf} from '../src/giftPdf';
 import {formatGiftCode} from '../src/giftCode';
+import {downloadLedgerPdf,downloadLedgerXlsx} from '../src/accounting/reportDownloads';
 
 const ink='#183b2c',muted='#5b7663',pale='#e9f3dc';
 type Student={id:string,email:string,created_at:string,confirmed:boolean,last_sign_in_at?:string|null};
@@ -446,7 +447,11 @@ export default function AdminPage(){
     {tab==='accounting'&&<View style={card}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:8}}>Rozliczenia sprzedaży</Text>
      <Text style={{color:muted,lineHeight:21,marginBottom:12}}>Sprzedaż, opłaty, dokumenty i wypłaty. Dane z rachunku Stripe są aktualizowane przy pobraniu raportu.</Text>
-     <Text style={{fontWeight:'800',color:ink}}>Okres rozliczenia (np. 2026-11 lub 2026)</Text>
+     <Text style={{fontWeight:'800',color:ink}}>Okres rozliczenia</Text>
+     <View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginTop:8}}>
+      <Pressable accessibilityRole="button" onPress={()=>{const p=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit'}).format(new Date()).slice(0,7);setAccountPeriod(p);void loadAccounting(p)}} style={{padding:10,borderRadius:9,backgroundColor:pale}}><Text style={{color:ink,fontWeight:'800'}}>Bieżący miesiąc</Text></Pressable>
+      <Pressable accessibilityRole="button" onPress={()=>{const p=accountPeriod.slice(0,4);setAccountPeriod(p);void loadAccounting(p)}} style={{padding:10,borderRadius:9,backgroundColor:pale}}><Text style={{color:ink,fontWeight:'800'}}>Cały rok</Text></Pressable>
+     </View>
      <TextInput accessibilityLabel="Okres rozliczenia Stripe" value={accountPeriod} onChangeText={setAccountPeriod} autoCapitalize="none" placeholder="2026-11" style={{padding:12,borderWidth:1,borderColor:'#ccdcca',borderRadius:9,marginTop:7,marginBottom:12,color:ink}}/>
      <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
       <Pressable accessibilityRole="button" disabled={accountBusy} onPress={()=>void loadAccounting()} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
@@ -455,8 +460,11 @@ export default function AdminPage(){
       <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://saldeo.brainshare.pl/')} style={{padding:13,backgroundColor:'#edf2e9',borderRadius:10,borderWidth:1,borderColor:'#d7e1d2'}}>
        <Text style={{color:ink,fontWeight:'900'}}>Otwórz SaldeoSMART</Text>
       </Pressable>
-      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>printAccountingReport()} style={{padding:13,backgroundColor:'#edf2e9',borderRadius:10,borderWidth:1,borderColor:'#d7e1d2'}}>
-       <Text style={{color:ink,fontWeight:'900'}}>Drukuj / zapisz PDF</Text>
+      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerPdf(accountReport.period,accountReport.rows)}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
+       <Text style={{color:'white',fontWeight:'900'}}>Pobierz PDF</Text>
+      </Pressable>}
+      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx(accountReport.period,accountReport.rows)}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
+       <Text style={{color:ink,fontWeight:'900'}}>Pobierz Excel</Text>
       </Pressable>}
       {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
        <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV</Text>
@@ -503,9 +511,14 @@ export default function AdminPage(){
       {accountReport.rows.filter(x=>x.category==='charge').slice(0,100).map(x=><View key={x.id} style={{paddingVertical:13,borderBottomWidth:1,borderColor:'#e2e9de',gap:5}}>
        <Text style={{color:ink,fontWeight:'900',fontSize:16}}>{x.date} · Sprzedaż {money(x.gross_grosze)} {x.currency==='PLN'?'':'('+x.currency+')'}</Text>
        <Text style={{color:muted,fontSize:13}}>Dokument: {x.document?.document_number||'Nieprzypisany'} · {x.document?.document_status==='issued'||x.document?.document_status==='reconciled'?'Ujęty':'Do weryfikacji'}</Text>
-       <Pressable accessibilityRole="button" onPress={()=>printAccountingReport(x)} style={{alignSelf:'flex-start',padding:9,borderWidth:1,borderColor:'#cbdac9',borderRadius:8}}>
-        <Text style={{color:ink,fontWeight:'800'}}>Drukuj / PDF transakcji</Text>
-       </Pressable>
+       <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
+        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerPdf(x.date,[x])}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:10,backgroundColor:ink,borderRadius:8}}>
+         <Text style={{color:'white',fontWeight:'800'}}>PDF</Text>
+        </Pressable>
+        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx(x.date,[x])}catch(e:any){setAccountError(String(e?.message||e))}}} style={{padding:10,backgroundColor:pale,borderRadius:8}}>
+         <Text style={{color:ink,fontWeight:'800'}}>Excel</Text>
+        </Pressable>
+       </View>
        <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{alignSelf:'flex-start',padding:10,backgroundColor:pale,borderRadius:9}}><Text style={{fontWeight:'800',color:ink}}>Dokument sprzedaży</Text></Pressable>
        {accountShowTechnical&&<Text style={{color:muted,fontSize:12}}>Stripe: {x.source} · Opłata: {(x.fee_grosze/100).toFixed(2)} {x.currency} · Rodzaj: {x.category}</Text>}
       </View>)}
