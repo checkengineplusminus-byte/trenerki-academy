@@ -36,3 +36,34 @@
 .anielka-finder>.anielka-nav-search .anielka-nav-avatar{width:41px;height:41px;flex-basis:41px;border-radius:11px}
 .anielka-finder>.anielka-nav-search .anielka-peek:not(:empty){z-index:90;max-height:55vh;overflow:auto}
 @media(max-width:680px){.anielka-finder>.anielka-nav-search{padding:5px 8px}.anielka-finder>.anielka-nav-search input{font-size:15px;padding:11px 3px}}
+
+
+/* Compact mobile finder 2026-11-18.
+   Put the actual search field before category tiles, not below several cards.
+   The same Anielka input and all existing search handlers remain in place. */
+@media(max-width:760px){
+ #kursy>.wrap{display:flex;flex-direction:column;min-width:0}
+ #kursy>.wrap>.section-head{order:0;margin-bottom:9px}
+ #kursy .section-head .overline{display:none}
+ #kursy>.wrap>.anielka-finder{order:1}
+ #kursy>.wrap>.catalog-quick-links{order:2}
+ #kursy>.wrap>.category-tiles{order:3}
+ #kursy>.wrap>.filter-line{order:4}
+ #kursy>.wrap>#catalog-sync-note{order:5}
+ #kursy>.wrap>#course-cards{order:6}
+ #kursy .anielka-finder{padding:8px;margin:0 0 8px;border-radius:14px;box-shadow:none}
+ #kursy .anielka-finder-header{display:none}
+ #kursy .anielka-finder>.anielka-nav-search{
+  display:flex;align-items:center;flex-wrap:nowrap;
+  width:100%;min-width:0;max-width:none;box-sizing:border-box;
+  margin:0;padding:3px 12px;gap:0;border-radius:11px;
+ }
+ #kursy .anielka-finder>.anielka-nav-search .anielka-nav-avatar,
+ #kursy .anielka-finder>.anielka-nav-search .anielka-nav-greeting{display:none!important}
+ #kursy .anielka-finder>.anielka-nav-search input{
+  display:block;flex:1 1 100%;width:100%;min-width:0;
+  font-size:16px;line-height:1.45;padding:10px 2px;
+ }
+ #kursy .catalog-quick-links{gap:4px 12px;margin:0 0 13px}
+ #kursy .catalog-quick-links>span{display:none}
+}
