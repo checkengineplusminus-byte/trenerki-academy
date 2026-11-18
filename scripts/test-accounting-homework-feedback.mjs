@@ -14,6 +14,8 @@ test('Wrong math in homework gets a clear, immediate correction',()=>{
  assert.equal(arithmeticMistakes('2,5+1,5=4').length,0);
  assert.equal(arithmeticMistakes('15/3=5').length,0);
  assert.equal(arithmeticMistakes('10/3=3,33').length,0);
+ assert.equal(arithmeticMistakes('1 000+2=1002').length,0,'Do not parse the last 000 as a separate number');
+ assert.equal(arithmeticMistakes('1.000+2=1002').length,0,'Do not mistake a thousand separator for a decimal');
 });
 test('Short or empty drafts are explained, not called wrong exam answers',()=>{
  assert.equal(draftGuidance('').kind,'empty');
