@@ -26,7 +26,7 @@ includes(admin,['ta_admins','eq(\'role\',\'owner\')','ta_affiliate_admin_report'
 includes(partner,['Załóż konto partnerskie','stripe_connected','Prowizje','regulamin-afiliacyjny.html','prywatnosc-afiliacja.html','ta-affiliate'],'Partner UI');
 includes(partnerAdmin,['ta-affiliate-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację','affiliate-partner-admin-search','affiliate-partner-email','E-mail'],'Owner UI');
 includes(affiliate,['bank_transfer_pending_tax_verification'],'Partner transfers require accountant review, no new Connect accounts');
-includes(partner,['500 zł','fakturę','przelew bankowy'],'Company and individual bank transfer UI');
+includes(partner,['500 zł','faktura','przelew bankowy'],'Company and individual bank transfer UI');
 includes(partner,['short_id','trenerki.com/','trenerki-logo-partner.svg','Pobierz logo PNG'],'Numeric short links and downloadable brand artwork');
 includes(partnerAdmin,['Krótki link','short_id','Numer oczekuje'],'Owner numeric link and CSV');
 const routerConfig=JSON.parse(read('app.json'));
