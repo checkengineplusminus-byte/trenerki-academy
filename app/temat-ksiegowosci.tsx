@@ -113,6 +113,7 @@ export default function TematKsiegowosci(){
  const [busy,setBusy]=useState(true),[error,setError]=useState(''),[warning,setWarning]=useState('');
  const [step,setStep]=useState<LearningStep>('learn');
  const [sectionIndex,setSectionIndex]=useState(0),[exampleIndex,setExampleIndex]=useState(0),[quizIndex,setQuizIndex]=useState(0);
+ const [introComplete,setIntroComplete]=useState(false);
  const [showExtraHomework,setShowExtraHomework]=useState(false),[showGlossary,setShowGlossary]=useState(false),[showSources,setShowSources]=useState(false);
  const scroll=useRef<React.ComponentRef<typeof ScrollView>>(null);
  const serial=useRef(0),owner=useRef('');
@@ -149,7 +150,7 @@ export default function TematKsiegowosci(){
   }catch(e:any){if(run===serial.current)setError(e?.message||'Błąd odczytu lekcji.');}
   finally{if(run===serial.current)setBusy(false);}
  },[topic,router]);
- useEffect(()=>{setStep('learn');setSectionIndex(0);setExampleIndex(0);setQuizIndex(0);setShowExtraHomework(false);setShowGlossary(false);setShowSources(false);},[topic]);
+ useEffect(()=>{setStep('learn');setSectionIndex(0);setExampleIndex(0);setQuizIndex(0);setIntroComplete(false);setShowExtraHomework(false);setShowGlossary(false);setShowSources(false);},[topic]);
  useEffect(()=>{void load();return()=>{++serial.current;};},[load]);
  useEffect(()=>{
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
@@ -255,7 +256,7 @@ export default function TematKsiegowosci(){
    </ScrollView>
    <View style={s.stepIntro}><Text style={s.stepIntroTitle}>{LESSON_STEPS[position]?.icon} {LESSON_STEPS[position]?.label}</Text><Text style={s.stepIntroHint}>{LESSON_STEPS[position]?.hint} · Krok {position+1} z 5</Text></View>
    {step==='learn'&&<View style={s.stageBody}>
-    {sectionIndex===0&&<View style={s.card}>
+    {!introComplete&&<View style={s.card}>
      <Text style={s.h2}>Najpierw zrozum, o co chodzi</Text>
      {guide&&<Text style={s.body}>{guide.intro}</Text>}
      {!guide&&<Text style={s.body}>Zaczynamy bez sprawdzianu. Zobacz najważniejsze pojęcia, a następnie poznaj krótkie części tematu.</Text>}
@@ -266,7 +267,7 @@ export default function TematKsiegowosci(){
      {(m.glossary||[]).slice(0,3).map((g:any,i:number)=><View key={i} style={s.wordRow}><Text style={s.label}>{g.term}:</Text><Text style={s.bodySmall}>{glossaryExplanation(g)}</Text></View>)}
      <Text style={s.bodySmall}>{m.intro||lesson.body_text}</Text>
     </View>}
-    {currentSection&&<View style={s.card}>
+    {introComplete&&currentSection&&<View style={s.card}>
      <Text style={s.eyebrowDark}>CZĘŚĆ {sectionIndex+1} / {sections.length}</Text>
      <Text accessibilityRole="header" style={s.h2}>{String(currentSection.heading||'Poznaj temat').replace(/^\d+\.\s*/,'')}</Text>
      {(currentSection.paragraphs||[]).filter((p:string)=>!(currentSection.curiosity?.text&&p.startsWith('Ciekawostka:')&&p.includes(currentSection.curiosity.text))).map((p:string,i:number)=><Text key={i} selectable style={s.body}>{p}</Text>)}
@@ -276,9 +277,13 @@ export default function TematKsiegowosci(){
      <SectionPhoto photo={currentSection.photo}/>
     </View>}
     <View style={s.nextControls}>
-     {sectionIndex>0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>changePart('section',sectionIndex-1)}><Text style={s.buttonText}>← Poprzednia część</Text></Pressable>}
-     {sectionIndex<sections.length-1?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>changePart('section',sectionIndex+1)}><Text style={s.primaryButtonText}>Następna część →</Text></Pressable>:
-      <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('example')}><Text style={s.primaryButtonText}>Zobacz przykład →</Text></Pressable>}
+     {!introComplete?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>{setIntroComplete(true);scroll.current?.scrollTo({y:0,animated:false});}}><Text style={s.primaryButtonText}>Rozumiem — pokaż pierwszą część →</Text></Pressable>:
+      <>
+       {sectionIndex===0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>{setIntroComplete(false);scroll.current?.scrollTo({y:0,animated:false});}}><Text style={s.buttonText}>← Podstawy</Text></Pressable>}
+       {sectionIndex>0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>changePart('section',sectionIndex-1)}><Text style={s.buttonText}>← Poprzednia część</Text></Pressable>}
+       {sectionIndex<sections.length-1?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>changePart('section',sectionIndex+1)}><Text style={s.primaryButtonText}>Następna część →</Text></Pressable>:
+        <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('example')}><Text style={s.primaryButtonText}>Zobacz przykład →</Text></Pressable>}
+      </>}
     </View>
    </View>}
    {step==='example'&&<View style={s.stageBody}>
