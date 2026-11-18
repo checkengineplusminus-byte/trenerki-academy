@@ -321,8 +321,37 @@ export default function TematKsiegowosci(){
    {step==='homework'&&<View style={s.stageBody}>
     <View style={s.guideNotice}><Text style={s.label}>📝 Gdzie wpisać rozwiązanie?</Text><Text style={s.bodySmall}>W polu „Twoje rozwiązanie” poniżej. Możesz wcześniej skorzystać z biura ćwiczeniowego lub pliku CSV, ale zadanie oddajesz właśnie tutaj. „Zapisz szkic” nie oznacza oddania pracy.</Text></View>
    {m.practice&&<View style={s.practice}>
-    <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
+    <Text style={s.eyebrowDark}>SAMODZIELNA PRACA · TEMAT {lesson.topic_no}</Text>
+    <Text style={s.h2}>Wykonaj zadanie krok po kroku</Text>
+    <Text style={s.small}>Twoja rola: {m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
+    <View style={s.guideNotice}><Text style={s.label}>👇 Tu oddajesz rozwiązanie</Text><Text style={s.bodySmall}>Wpisz niżej własne obliczenia i wnioski, a potem wybierz „Zapisz szkic” albo „Oddaj pracę domową”.</Text></View>
+    {!homeworkReady?<Text style={s.warning}>Nie potwierdzono jeszcze odczytu Twojej wcześniejszej pracy. Zapis jest wyłączony.</Text>:<>
+     <Text style={s.h2}>✍️ Tutaj wpisz swoją pracę</Text>
+     <TextInput accessibilityLabel="Rozwiązanie pracy domowej" multiline textAlignVertical="top" maxLength={10000}
+      editable={!homeworkBusy} value={homeworkText} onChangeText={value=>{setHomeworkText(value);setHomeworkMessage('');setHomeworkError('');}}
+      placeholder="Opisz własnymi słowami: co sprawdziłeś, co obliczyłeś, jaki otrzymałeś wynik i dlaczego."
+      style={s.homeworkInput}/>
+     <Text style={s.small}>{homeworkText.length} znaków · minimum 120 do oddania. Szkic można zapisać wcześniej.</Text>
+     <View style={s.row}>
+      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy} onPress={()=>void saveHomework(false)} style={s.button}>
+       <Text style={s.buttonText}>{homeworkBusy?'Zapisywanie…':'Zapisz szkic'}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy||!homeworkCanSubmit(homeworkText)} onPress={()=>void saveHomework(true)} style={s.button}>
+       <Text style={s.buttonText}>Oddaj pracę domową</Text>
+      </Pressable>
+     </View>
+     {homeworkMessage!==''&&<Text style={s.notice}>{homeworkMessage}</Text>}
+     {homeworkError!==''&&<Text accessibilityRole="alert" style={s.warning}>{homeworkError}</Text>}
+     {hasHomework?<Text style={s.notice}>Praca oddana do własnego przeglądu. Zapis na koncie potwierdzony. Nie jest to automatyczna ocena ani dyplom.</Text>:
+       <Text style={s.small}>Praca jeszcze nieoddana. Samo zapisanie szkicu nie odblokowuje następnego tematu.</Text>}
+     {hasHomework&&typeof m.practice.expected_output==='string'&&
+       <View style={s.notice}><Text style={s.label}>Porównaj swój wynik z przykładowym kluczem</Text>
+        <Text style={s.body}>{m.practice.expected_output}</Text>
+        <Text style={s.small}>Klucz służy do samokontroli. Jeśli wynik się różni, popraw swoją pracę i oddaj ponownie. Rzeczywiste przepisy sprawdzaj w aktualnych źródłach.</Text>
+       </View>}
+    </>}
+
     {Array.isArray(m.practice.homework)&&m.practice.homework.some((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0)&&
      <View style={s.card}>
       <Pressable accessibilityRole="button" accessibilityState={{expanded:showExtraHomework}} onPress={()=>setShowExtraHomework(v=>!v)} style={s.accordionButton}>
@@ -349,31 +378,6 @@ export default function TematKsiegowosci(){
      <Text style={s.buttonText}>Pobierz arkusz pracy domowej (Excel / CSV)</Text>
     </Pressable>}
     <Text style={s.small}>Plik jest tylko szablonem. Nie wysyła danych na serwer. Pracuj na danych fikcyjnych.</Text>
-    {!homeworkReady?<Text style={s.warning}>Nie potwierdzono jeszcze odczytu Twojej wcześniejszej pracy. Zapis jest wyłączony.</Text>:<>
-     <Text style={s.h2}>✍️ Tutaj wpisz swoją pracę</Text>
-     <TextInput accessibilityLabel="Rozwiązanie pracy domowej" multiline textAlignVertical="top" maxLength={10000}
-      editable={!homeworkBusy} value={homeworkText} onChangeText={value=>{setHomeworkText(value);setHomeworkMessage('');setHomeworkError('');}}
-      placeholder={'1. Jakie dokumenty sprawdziłem?\\n2. Moje obliczenia i źródła...\\n3. Wynik oraz wątpliwości...'}
-      style={s.homeworkInput}/>
-     <Text style={s.small}>{homeworkText.length} znaków · minimum 120 do oddania. Szkic można zapisać wcześniej.</Text>
-     <View style={s.row}>
-      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy} onPress={()=>void saveHomework(false)} style={s.button}>
-       <Text style={s.buttonText}>{homeworkBusy?'Zapisywanie…':'Zapisz szkic'}</Text>
-      </Pressable>
-      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy||!homeworkCanSubmit(homeworkText)} onPress={()=>void saveHomework(true)} style={s.button}>
-       <Text style={s.buttonText}>Oddaj pracę domową</Text>
-      </Pressable>
-     </View>
-     {homeworkMessage!==''&&<Text style={s.notice}>{homeworkMessage}</Text>}
-     {homeworkError!==''&&<Text accessibilityRole="alert" style={s.warning}>{homeworkError}</Text>}
-     {hasHomework?<Text style={s.notice}>Praca oddana do własnego przeglądu. Zapis na koncie potwierdzony. Nie jest to automatyczna ocena ani dyplom.</Text>:
-       <Text style={s.small}>Praca jeszcze nieoddana. Samo zapisanie szkicu nie odblokowuje następnego tematu.</Text>}
-     {hasHomework&&typeof m.practice.expected_output==='string'&&
-       <View style={s.notice}><Text style={s.label}>Porównaj swój wynik z przykładowym kluczem</Text>
-        <Text style={s.body}>{m.practice.expected_output}</Text>
-        <Text style={s.small}>Klucz służy do samokontroli. Jeśli wynik się różni, popraw swoją pracę i oddaj ponownie. Rzeczywiste przepisy sprawdzaj w aktualnych źródłach.</Text>
-       </View>}
-    </>}
    </View>}
 
     {!m.practice&&<Text style={s.body}>W tej lekcji nie przewidziano pisemnej pracy domowej.</Text>}
