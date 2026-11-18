@@ -11,7 +11,7 @@ export type LedgerLine={
  document?:{document_type?:string;document_status?:string;document_number?:string|null;
   ksef_number?:string|null;tax_treatment?:string;notes?:string|null}|null;
 };
-export type LedgerReport={period:string;rows:LedgerLine[];time_zone?:string;generated_at?:string;
+export type LedgerReport={period:string;rows:LedgerLine[];scope?:'transaction'|'period';time_zone?:string;generated_at?:string;
  warnings?:string[]};
 const typeLabels:Record<string,string>={
  charge:'Sprzedaż',refund:'Zwrot',payout:'Wypłata Stripe',stripe_fee:'Opłata Stripe',
@@ -54,7 +54,7 @@ export const formatAmount=(n:number,currency='PLN')=>new Intl.NumberFormat('pl-P
  maximumFractionDigits:minorUnitFactor(currency)===1?0:2
 }).format((Number(n)||0)/minorUnitFactor(currency)).replace(/[\u00a0\u202f]/g,' ')+(currency?' '+currency:'');
 export const downloadName=(report:LedgerReport)=>'Trenerki-'+(
- report.rows.length===1?'transakcja-'+report.rows[0].date+'-'+report.rows[0].id:
+ report.scope==='transaction'&&report.rows.length===1?'transakcja-'+report.rows[0].date+'-'+report.rows[0].id:
  report.period.length===4?'raport-roczny-'+report.period:'raport-miesieczny-'+report.period);
 export type CurrencyTotals={
  currency:string;transactions:number;charges:number;refunds:number;fees:number;
