@@ -21,8 +21,8 @@ export function HelpLink({children,href='/pomoc'}:{children:React.ReactNode;href
      <Text style={{color:ink,fontWeight:'800',textDecorationLine:'underline'}}>{children}</Text>
     </Pressable>;
 }
-export function HelpFooter(){
- if(Platform.OS==='web')return <footer className="ta-app-footer">
+export function HelpFooter({compact=false}:{compact?:boolean}={}){
+ if(Platform.OS==='web')return <footer className={compact?'ta-app-footer ta-app-footer--compact':'ta-app-footer'}>
   <link rel="stylesheet" href="/academy/app-footer.css" precedence="default"/>
   <div className="ta-app-footer-inner">
    <a className="ta-app-footer-help" href="/pomoc" aria-label={helpTitle} aria-describedby="ta-app-footer-help-description">
