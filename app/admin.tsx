@@ -330,7 +330,7 @@ export default function AdminPage(){
   const csv='\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id].map(quote).join(';'))].join('\r\n');
   if(Platform.OS==='web'&&typeof document!=='undefined'){
    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
-   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Trenerki-Stripe-'+accountReport.period+'-do-Saldeo.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Trenerki-Stripe-'+accountReport.period+'-rozrachunki.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
   }else void Share.share({message:csv,title:'Zestawienie Stripe '+accountReport.period});
  }
  async function makeDraft(){
@@ -397,8 +397,8 @@ export default function AdminPage(){
      )}
     </View>
     {tab==='accounting'&&<View style={card}>
-     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:8}}>Księgowość — zestawienia do Saldeo</Text>
-     <Text style={{color:muted,lineHeight:21,marginBottom:12}}>Dane odczytywane bezpośrednio z produkcyjnego Stripe. Zestawienie techniczne do księgowania, nie faktura VAT ani paragon fiskalny. Wypłata Stripe na bank nie jest drugą sprzedażą.</Text>
+     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:8}}>Księgowość — Stripe i Saldeo</Text>
+     <Text style={{color:muted,lineHeight:21,marginBottom:12}}>Dane odczytywane bezpośrednio z produkcyjnego Stripe. CSV zawiera operacje rozrachunkowe i NIE jest plikiem importu faktur do SaldeoSMART (tam wymagany jest własny szablon Excel). Zestawienie nie jest fakturą VAT ani paragonem fiskalnym. Wypłata Stripe na bank nie jest drugą sprzedażą.</Text>
      <Text style={{fontWeight:'800',color:ink}}>Miesiąc RRRR-MM albo rok RRRR</Text>
      <TextInput accessibilityLabel="Okres rozliczenia Stripe" value={accountPeriod} onChangeText={setAccountPeriod} autoCapitalize="none" placeholder="2026-11" style={{padding:12,borderWidth:1,borderColor:'#ccdcca',borderRadius:9,marginTop:7,marginBottom:12,color:ink}}/>
      <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
@@ -406,7 +406,7 @@ export default function AdminPage(){
        <Text style={{color:'white',fontWeight:'900'}}>{accountBusy?'Pobieram…':'Pobierz zestawienie'}</Text>
       </Pressable>
       {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
-       <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV do Saldeo</Text>
+       <Text style={{color:ink,fontWeight:'900'}}>Pobierz CSV rozliczeń Stripe</Text>
       </Pressable>}
      </View>
      {!!accountError&&<Text style={{color:'#a52626',marginTop:11}}>{accountError}</Text>}
@@ -423,7 +423,7 @@ export default function AdminPage(){
        <Text style={{color:muted,fontSize:12}}>Opłata: {(x.fee_grosze/100).toFixed(2)} · Po opłacie: {(x.net_grosze/100).toFixed(2)} · {x.source}</Text>
       </View>)}
       {accountReport.rows.length>100&&<Text style={{color:muted}}>Na ekranie 100 pierwszych operacji. CSV zawiera cały pobrany okres.</Text>}
-      <Text style={{color:muted,fontSize:12,marginTop:18,lineHeight:19}}>Kwoty w oryginalnych walutach. Nie sumuj PLN i USD. Przypisz dokumenty sprzedaży do nabywców, ustal VAT i obowiązek ewidencji fiskalnej. Opłaty rozlicz według dokumentów Stripe. KSeF, kursy walut, korekty i Saldeo wymagają osobnej weryfikacji.</Text>
+      <Text style={{color:muted,fontSize:12,marginTop:18,lineHeight:19}}>KROK 1: ewidencja sprzedaży do rzeczywistych klientów (nie do Stripe), zgodnie z VAT i zasadami kasy fiskalnej. KROK 2: osobno rozlicz udokumentowane opłaty Stripe. KROK 3: przelew Stripe uzgodnij z rozrachunkami — nie księguj go ponownie jako sprzedaż. KROK 4: firmowe faktury wystawiaj w Saldeo/KSeF i zapisuj numer faktury przy zamówieniu. Kwoty w oryginalnych walutach: nie sumuj PLN i USD. Zestawienie nie decyduje o stawce VAT ani zwolnieniu z kasy.</Text>
      </>}
     </View>}
     {tab==='sales'&&<View style={card}>
