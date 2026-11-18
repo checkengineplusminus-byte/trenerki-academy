@@ -50,18 +50,27 @@ Deno.serve(async(req:Request)=>{
   let partner:any=null;
   for(let i=0;i<4;i++){
    const {data,error}=await db.from('ta_affiliate_partners').insert({
-    user_id:user.id,code:'TA'+hex(),partner_type:kind,legal_name:name,company_tax_id:kind==='company'?nip:null,
+    user_id:user.id,email:user.email.toLowerCase(),code:'TA'+hex(),partner_type:kind,legal_name:name,company_tax_id:kind==='company'?nip:null,
     tax_residency:'PL',adult_confirmed:true,terms_version:cfg.terms_version,
     status:'active'
-   }).select('id,code').single();
+   }).select('id,code,short_id').single();
    if(!error){partner=data;break}
    if(error.code!=='23505')return reply(origin,{error:'registration_unavailable'},503);
   }
   if(!partner)return reply(origin,{error:'registration_unavailable'},503);
   await db.from('ta_affiliate_audit').insert({partner_id:partner.id,actor_user_id:user.id,event_type:'partner_registered',info:{terms_version:cfg.terms_version,partner_type:kind}});
-  return reply(origin,{ok:true,code:partner.code,registration:true});
+  return reply(origin,{ok:true,code:partner.code,short_id:partner.short_id,registration:true});
  }
  if(!old)return reply(origin,{error:'not_registered'},404);
+ // Only verified Auth users can update their own partner email through this function.
+ const confirmedEmail=user.email.toLowerCase();
+ if(old.email!==confirmedEmail){
+  const {error:syncError}=await db.from('ta_affiliate_partners')
+    .update({email:confirmedEmail,updated_at:new Date().toISOString()})
+    .eq('id',old.id);
+  if(syncError)return reply(origin,{error:'partner_email_sync_failed'},503);
+  old.email=confirmedEmail;
+ }
  if(action==='onboard'){
   if(old.partner_type!=='individual')return reply(origin,{error:'company_uses_invoice'},409);
   if(old.status!=='active')return reply(origin,{error:'partner_inactive'},403);
@@ -119,7 +128,7 @@ Deno.serve(async(req:Request)=>{
  if(commissions.error||payouts.error||aggregates.error)return reply(origin,{error:'statement_unavailable'},503);
  const rows=commissions.data||[],pay=payouts.data||[];
  return reply(origin,{ok:true,
-  profile:{code:old.code,partner_type:old.partner_type,legal_name:old.legal_name,status:old.status,
+  profile:{code:old.code,short_id:old.short_id,partner_type:old.partner_type,legal_name:old.legal_name,status:old.status,
    stripe_connected:!!old.stripe_account_id,stripe_details_submitted:old.stripe_details_submitted,
    stripe_payouts_enabled:old.stripe_payouts_enabled,stripe_transfers_enabled:old.stripe_transfers_enabled,
    payout_tax_status:old.payout_tax_status,terms_version:old.terms_version},
