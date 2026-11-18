@@ -1,5 +1,5 @@
 import {type LedgerReport,downloadName,summaryFields,detailedCells,summarize,periodName,
- localDate,formatAmount,accountingFootnote,productName,buyerName,taxLabel,documentStatus} from './reportModel';
+ localDate,formatAmount,accountingFootnote,productName,buyerName,taxLabel,documentStatus,minorUnitFactor} from './reportModel';
 
 const bytes=(s:string)=>new TextEncoder().encode(s);
 const u16=(n:number)=>[n&255,(n>>>8)&255];
@@ -11,20 +11,23 @@ function crc32(b:Uint8Array){
  return(c^0xffffffff)>>>0;
 }
 function zipFiles(files:Array<[string,string]>){
- const local:number[]=[],central:number[]=[];let offset=0;
+ const chunks:Uint8Array[]=[];const central:number[]=[];let offset=0;
  for(const [name,source] of files){
   const nb=bytes(name),body=bytes(source),crc=crc32(body);
-  const record=[...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),
-   ...u32(crc),...u32(body.length),...u32(body.length),...u16(nb.length),...u16(0),...nb];
-  local.push(...record,...body);
+  const record=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),
+   ...u32(crc),...u32(body.length),...u32(body.length),...u16(nb.length),...u16(0),...nb]);
+  chunks.push(record,body);
   central.push(...u32(0x02014b50),...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0),
    ...u32(crc),...u32(body.length),...u32(body.length),...u16(nb.length),...u16(0),...u16(0),
    ...u16(0),...u16(0),...u32(0),...u32(offset),...nb);
   offset+=record.length+body.length;
  }
- const end=[...u32(0x06054b50),...u16(0),...u16(0),...u16(files.length),...u16(files.length),
-  ...u32(central.length),...u32(offset),...u16(0)];
- return new Uint8Array([...local,...central,...end]);
+ const end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(files.length),...u16(files.length),
+  ...u32(central.length),...u32(offset),...u16(0)]);
+ chunks.push(new Uint8Array(central),end);
+ const total=chunks.reduce((a,b)=>a+b.length,0),out=new Uint8Array(total);
+ let at=0;for(const chunk of chunks){out.set(chunk,at);at+=chunk.length;}
+ return out;
 }
 const col=(index:number)=>{let s='';for(let n=index;n>0;n=Math.floor((n-1)/26))s=String.fromCharCode(65+(n-1)%26)+s;return s};
 type Cell={value?:string|number;style?:number;formula?:string;numeric?:boolean};
@@ -109,8 +112,8 @@ export function downloadLedgerXlsx(report:LedgerReport){
  summary.rows.push(['Waluta','Sprzedaż brutto','Zwroty','Opłaty Stripe','Wypłaty Stripe','Zmiana salda','Operacje','Braki dokumentów']
   .map(x=>c(x,1)));
  for(const t of totals){
-  summary.rows.push(pad([c(t.currency,3),c(t.charges/100,10),c(t.refunds/100,10),c(t.fees/100,10),
-   c(t.payouts/100,10),c(t.balanceChange/100,10),c(t.transactions,3),c(t.documentMissing,3)],9));
+  summary.rows.push(pad([c(t.currency,3),c(t.charges/minorUnitFactor(t.currency),10),c(t.refunds/minorUnitFactor(t.currency),10),c(t.fees/minorUnitFactor(t.currency),10),
+   c(t.payouts/minorUnitFactor(t.currency),10),c(t.balanceChange/minorUnitFactor(t.currency),10),c(t.transactions,3),c(t.documentMissing,3)],9));
  }
  while(summary.rows.length<11+totals.length)summary.rows.push([]);
  summary.rows.push(pad([c('DOKUMENT POMOCNICZY • Nie stanowi faktury VAT ani raportu JPK_V7. VAT zależy od dokumentów źródłowych.',9)],9));
