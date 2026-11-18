@@ -69,6 +69,11 @@ Deno.serve(async req=>{
    success_url:site+(giftId?'/prezent?checkout=success':'/moje-kursy?checkout=success&session_id={CHECKOUT_SESSION_ID}'),
    cancel_url:site+(giftId?'/prezent':'/kup')+'?course='+encodeURIComponent(slug),
    customer_email:user.email,
+   // Collect optional company identity for later compliant VAT/KSeF invoicing.
+   // Do not auto-issue Stripe invoices: B2B invoices may need KSeF and an approved VAT classification.
+   'customer_creation':'always',
+   'tax_id_collection[enabled]':'true',
+   billing_address_collection:'required',
    client_reference_id:user.id,
    'line_items[0][price_data][currency]':'pln',
    'line_items[0][price_data][unit_amount]':String(checkoutAmount),
