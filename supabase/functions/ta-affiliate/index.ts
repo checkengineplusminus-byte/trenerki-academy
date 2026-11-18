@@ -63,6 +63,7 @@ Deno.serve(async(req:Request)=>{
  }
  if(!old)return reply(origin,{error:'not_registered'},404);
  if(action==='onboard'){
+  if(old.partner_type!=='individual')return reply(origin,{error:'company_uses_invoice'},409);
   if(old.status!=='active')return reply(origin,{error:'partner_inactive'},403);
   if(!cfg.stripe_onboarding_enabled)return reply(origin,{error:'onboarding_pending'},409);
   const stripe=Deno.env.get('STRIPE_SECRET_KEY');

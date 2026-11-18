@@ -13,7 +13,7 @@ function includes(source,parts,label){for(const part of parts)assert(source.incl
 includes(home,['academy-footer__affiliate','taAffiliateCode()','&ref=','prefers-reduced-motion:reduce','function startPurchase(id)'],'Public site');
 includes(styles,['ta-app-footer-affiliate','prefers-reduced-motion:reduce'],'App footer');
 includes(landing,['Zarabiaj 10%','Stripe','PIT','reklam'],'Affiliate landing');
-includes(terms,['§1.','§11.','PIT-11','30 dni','150 zł','reklam','Stripe'],'Affiliate terms');
+includes(terms,['§1.','§11.','PIT-11','30 dni','300 zł','reklam','Stripe'],'Affiliate terms');
 includes(privacy,['RODO','Stripe','Art. 6','kupującego','Rachunek'],'Affiliate privacy');
 includes(account,['pending_referral_code','params.next===\'affiliate\'','referral?{ref:referral}'],'Account referral continuation');
 includes(buy,['referralCode','referral_code:referralCode','self_referral_not_allowed'],'Checkout UI');
@@ -22,7 +22,9 @@ includes(webhook,['ta_affiliate_commissions','commission=Math.round','payment_st
 includes(affiliate,['auth.auth.getUser(bearer)','user.email_confirmed_at','tax_residency','account_links','stripe_connected','ta_affiliate_partner_totals','ta_affiliate_partners'],'Partner backend');
 includes(admin,['ta_admins','eq(\'role\',\'owner\')','ta_affiliate_admin_report','ta_affiliate_monthly_report','mark_tax_verified','accountant_evidence_required'],'Owner admin API');
 includes(partner,['Załóż konto partnerskie','stripe_connected','Prowizje','regulamin-afiliacyjny.html','prywatnosc-afiliacja.html','ta-affiliate'],'Partner UI');
-includes(partnerAdmin,['ta-affiliate-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację'],'Owner UI');
+includes(partnerAdmin,['ta-affiliate-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację','affiliate-partner-admin-search','affiliate-partner-email','E-mail'],'Owner UI');
+includes(affiliate,['company_uses_invoice'],'Company partners use invoices, not Stripe Connect');
+includes(partner,['300 zł','fakturę'],'Company invoice and 300 PLN UI');
 includes(layout,['<Stack.Screen name="partner"/>','<Stack.Screen name="partner-admin"/>'],'Route protection');
 assert(layout.indexOf('<Stack.Screen name="partner-admin"/>')>layout.indexOf('<Stack.Protected guard={signedIn}'),'Admin must be auth guarded');
 assert(!partner.includes('service_role')&&!partnerAdmin.includes('service_role'),'Secrets must not enter public UI');
