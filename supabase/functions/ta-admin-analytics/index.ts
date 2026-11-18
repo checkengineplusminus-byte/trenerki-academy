@@ -30,6 +30,47 @@ Deno.serve(async req=>{
  const {data:privileges,error:privilegesError}=await admin.from('ta_admins').select('role').eq('user_id',user.id).maybeSingle();
  if(privilegesError)return send({error:'database_unavailable'},503);
  if(!privileges||!['owner','admin'].includes(privileges.role))return send({error:'admin_only'},403);
+ let requestBody:any={};try{requestBody=await req.json()}catch{return send({error:'invalid_json'},400);}
+ if(requestBody?.action==='accounting_export'){
+  const period=String(requestBody.period||'');
+  if(!/^20\\d{2}(?:-(?:0[1-9]|1[0-2]))?$/.test(period))return send({error:'invalid_period'},400);
+  const stripe=Deno.env.get('STRIPE_SECRET_KEY');
+  if(!stripe||!/^sk_live_/.test(stripe))return send({error:'stripe_reporting_unavailable'},503);
+  const start=period.length===7?period+'-01':period+'-01-01';
+  const year=Number(period.slice(0,4)),month=period.length===7?Number(period.slice(5)):1;
+  const end=period.length===7?(month===12?String(year+1)+'-01-01':String(year)+'-'+String(month+1).padStart(2,'0')+'-01'):String(year+1)+'-01-01';
+  // Expand the search window by one day to keep Warsaw-local dates accurate across DST.
+  const from=Math.floor(Date.parse(start+'T00:00:00Z')/1000)-86400;
+  const to=Math.floor(Date.parse(end+'T00:00:00Z')/1000)+86400;
+  const raw:any[]=[];let after='';
+  for(let page=0;page<100;page++){
+   const query=new URLSearchParams({'limit':'100','created[gte]':String(from),'created[lt]':String(to)});
+   if(after)query.set('starting_after',after);
+   const response=await fetch('https://api.stripe.com/v1/balance_transactions?'+query.toString(),{
+    headers:{Authorization:'Bearer '+stripe},signal:AbortSignal.timeout(15000)
+   });
+   if(!response.ok)return send({error:'stripe_reporting_unavailable'},502);
+   const body=await response.json();
+   if(!Array.isArray(body.data))return send({error:'stripe_reporting_unavailable'},502);
+   raw.push(...body.data);if(!body.has_more)break;
+   after=String(body.data.at(-1)?.id||'');
+   if(!after||page===99)return send({error:'report_too_large'},503);
+  }
+  const warsaw=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit',day:'2-digit'});
+  const entries=raw.filter(t=>{const local=warsaw.format(new Date(t.created*1000));return local>=start&&local<end})
+   .map(t=>({id:String(t.id),date:warsaw.format(new Date(t.created*1000)),source:String(t.source||''),
+    category:String(t.reporting_category||t.type||'other'),currency:String(t.currency||'').toUpperCase(),
+    gross_grosze:Number(t.amount)||0,fee_grosze:Number(t.fee)||0,net_grosze:Number(t.net)||0}))
+   .sort((a,b)=>a.date.localeCompare(b.date)||a.id.localeCompare(b.id));
+  const summary:Record<string,{currency:string,category:string,count:number,gross_grosze:number,fee_grosze:number,net_grosze:number}>={};
+  for(const t of entries){
+   const key=t.currency+'/'+t.category;
+   const v=summary[key]||{currency:t.currency,category:t.category,count:0,gross_grosze:0,fee_grosze:0,net_grosze:0};
+   v.count++;v.gross_grosze+=t.gross_grosze;v.fee_grosze+=t.fee_grosze;v.net_grosze+=t.net_grosze;summary[key]=v;
+  }
+  return send({ok:true,period,time_zone:'Europe/Warsaw',rows:entries,summary:Object.values(summary),
+   note:'Zestawienie techniczne Stripe: nie jest fakturą VAT, paragonem ani gotowym dokumentem księgowym. Payout nie jest kolejnym przychodem; fee to koszt Stripe. Sprawdź faktury, zwroty, kursy walut i kwalifikację podatkową.'});
+ }
  try{
   const users:{created_at:string}[]=[];
   for(let p=1;p<=50;p++){
