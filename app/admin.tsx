@@ -68,6 +68,7 @@ export default function AdminPage(){
 
  const [accountPeriod,setAccountPeriod]=useState(new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit'}).format(new Date()).slice(0,7));
  const [accountReport,setAccountReport]=useState<AccountingReport|null>(null),[accountError,setAccountError]=useState(''),[accountBusy,setAccountBusy]=useState(false),[accountShowTechnical,setAccountShowTechnical]=useState(false),[accountVisible,setAccountVisible]=useState(40);
+ const safeAccountingRows=Array.isArray(accountReport?.rows)?accountReport.rows:[];
  const [accountEditSource,setAccountEditSource]=useState(''),[accountDocNumber,setAccountDocNumber]=useState(''),[accountKsef,setAccountKsef]=useState(''),[accountDocType,setAccountDocType]=useState('pending'),[accountTax,setAccountTax]=useState('review'),[accountDocStatus,setAccountDocStatus]=useState('pending'),[accountNotes,setAccountNotes]=useState(''),[accountSaving,setAccountSaving]=useState(false);
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
@@ -355,7 +356,7 @@ export default function AdminPage(){
   if(Platform.OS!=='web'||typeof window==='undefined'){setAccountError('Drukowanie jest dostępne w przeglądarce internetowej.');return;}
   const esc=(x:unknown)=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c));
   const format=(g:number,currency:string)=>new Intl.NumberFormat('pl-PL',{style:'currency',currency:currency||'PLN'}).format(g/100);
-  const rows=row?[row]:accountReport.rows;
+  const rows=row?[row]:safeAccountingRows;
   const head=row?'Rozliczenie transakcji Stripe':'Zestawienie operacji Stripe';
   const heading=row?'Transakcja '+row.date:'Okres '+accountReport.period;
   const cols=['Data','Rodzaj','Waluta','Kwota operacji','Opłata Stripe','Po opłacie','Dokument Saldeo','Numer Stripe'];
@@ -377,7 +378,7 @@ export default function AdminPage(){
   if(!accountReport)return;
   const quote=(x:unknown)=>'"'+String(x??'').replace(/"/g,'""')+'"';
   const cols=['data_PL','rodzaj_operacji','waluta','kwota_brutto_jednostki','oplata_stripe_jednostki','kwota_po_oplacie_jednostki','stripe_source','stripe_balance_id','typ_dokumentu','status_dokumentu','nr_faktury_saldeo','nr_KSeF','VAT_kwalifikacja'];
-  const csv='\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id,x.document?.document_type||'',x.document?.document_status||'',x.document?.document_number||'',x.document?.ksef_number||'',x.document?.tax_treatment||''].map(quote).join(';'))].join('\r\n');
+  const csv='\uFEFF'+[cols.join(';'),...safeAccountingRows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id,x.document?.document_type||'',x.document?.document_status||'',x.document?.document_number||'',x.document?.ksef_number||'',x.document?.tax_treatment||''].map(quote).join(';'))].join('\r\n');
   if(Platform.OS==='web'&&typeof document!=='undefined'){
    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Trenerki-Stripe-'+accountReport.period+'-rozrachunki.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
@@ -477,7 +478,7 @@ export default function AdminPage(){
      {!!accountReport&&<>
 
       {(()=>{
-       const pln=accountReport.rows.filter(x=>x.currency==='PLN');
+       const pln=safeAccountingRows.filter(x=>x.currency==='PLN');
        const sales=pln.filter(x=>x.category==='charge');
        const refunds=pln.filter(x=>x.category==='refund');
        const payouts=pln.filter(x=>x.category==='payout');
@@ -506,7 +507,7 @@ export default function AdminPage(){
          <Text style={{color:ink}}>3. Dołącz dokument opłat Stripe i rozlicz koszt operatora.</Text>
          <Text style={{color:ink}}>4. Uzgodnij wypłaty Stripe z wyciągiem bankowym.</Text>
         </View>
-        {accountReport.rows.some(x=>x.currency!=='PLN')&&<Text style={{color:'#8a5c13',fontSize:13}}>Występują także inne waluty. Powyższe kwoty dotyczą PLN; pozostałe waluty wykazano oddzielnie w eksporcie.</Text>}
+        {safeAccountingRows.some(x=>x.currency!=='PLN')&&<Text style={{color:'#8a5c13',fontSize:13}}>Występują także inne waluty. Powyższe kwoty dotyczą PLN; pozostałe waluty wykazano oddzielnie w eksporcie.</Text>}
        </View>;
       })()}
       {!!accountReport.warnings?.length&&<View style={{backgroundColor:'#FFF5E5',borderRadius:10,padding:12,gap:4,marginTop:6}}>
@@ -517,7 +518,7 @@ export default function AdminPage(){
        <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Transakcje sprzedaży</Text>
        <Text style={{color:muted,fontSize:13}}>Każda pozycja zawiera zakup, datę, kwotę i powiązanie z dokumentem księgowym.</Text>
       </View>
-      {accountReport.rows.filter(x=>x.category==='charge').slice(0,accountVisible).map(x=><View key={x.id}
+      {safeAccountingRows.filter(x=>x.category==='charge').slice(0,accountVisible).map(x=><View key={x.id}
        style={{marginTop:9,padding:16,borderWidth:1,borderColor:'#DFE9DE',borderRadius:12,backgroundColor:'#FAFCF9',gap:8}}>
        <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,flexWrap:'wrap'}}>
         <Text style={{color:ink,fontWeight:'900',fontSize:15,flexShrink:1}}>{productName(x)}</Text>
@@ -544,10 +545,10 @@ export default function AdminPage(){
        </View>
        {accountShowTechnical&&<Text style={{color:muted,fontSize:11}}>Stripe: {x.source} · {x.id} · PI: {x.payment_intent_id||'—'} · {operationLabel(x.category)}</Text>}
       </View>)}
-      {accountReport.rows.filter(x=>x.category==='charge').length>accountVisible&&<Pressable accessibilityRole="button" onPress={()=>setAccountVisible(v=>v+40)} style={{padding:12,backgroundColor:'#EAF3E6',borderRadius:9,marginTop:10}}>
+      {safeAccountingRows.filter(x=>x.category==='charge').length>accountVisible&&<Pressable accessibilityRole="button" onPress={()=>setAccountVisible(v=>v+40)} style={{padding:12,backgroundColor:'#EAF3E6',borderRadius:9,marginTop:10}}>
        <Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>Pokaż kolejne 40 transakcji</Text>
       </Pressable>}
-      {!accountReport.rows.some(x=>x.category==='charge')&&<Text style={{color:muted,marginTop:10}}>W wybranym okresie nie ma operacji sprzedaży.</Text>}
+      {!safeAccountingRows.some(x=>x.category==='charge')&&<Text style={{color:muted,marginTop:10}}>W wybranym okresie nie ma operacji sprzedaży.</Text>}
       {!!accountEditSource&&<View style={{marginTop:18,padding:15,borderWidth:1,borderColor:'#bbd4bb',borderRadius:12,gap:9}}>
        <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Dokument sprzedaży</Text>
        <Text style={{color:muted,fontSize:12,lineHeight:18}}>Powiąż transakcję z fakturą lub ewidencją sprzedaży w Saldeo. Zapis nie wystawia nowej faktury.</Text>
@@ -576,7 +577,7 @@ export default function AdminPage(){
       </Pressable>
       {accountShowTechnical&&<View style={{gap:5,marginTop:8}}>
        {accountReport.summary.map((x,i)=><Text key={x.currency+x.category+i} style={{color:muted}}>{x.category} · {x.currency} · {x.count} operacji · {(x.gross_grosze/100).toFixed(2)} brutto · {(x.fee_grosze/100).toFixed(2)} opłat</Text>)}
-       {accountReport.rows.filter(x=>x.category!=='charge').slice(0,100).map(x=><Text key={x.id} style={{color:muted,fontSize:12}}>{x.date} · {x.category} · {x.currency} {(x.gross_grosze/100).toFixed(2)} · {x.source}</Text>)}
+       {safeAccountingRows.filter(x=>x.category!=='charge').slice(0,100).map(x=><Text key={x.id} style={{color:muted,fontSize:12}}>{x.date} · {x.category} · {x.currency} {(x.gross_grosze/100).toFixed(2)} · {x.source}</Text>)}
       </View>}
       <Text style={{fontSize:12,color:muted,marginTop:12,lineHeight:19}}>Eksport stanowi rejestr pomocniczy do uzgodnienia z Saldeo. Nie zastępuje faktury, ewidencji VAT ani dokumentu opłat. Karty podarunkowe i zwroty należy rozliczać oddzielnie.</Text>
      </>}
