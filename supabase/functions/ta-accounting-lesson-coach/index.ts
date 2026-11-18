@@ -34,8 +34,8 @@ Deno.serve(async(req:Request)=>{
  if(Number(req.headers.get('content-length')||0)>5500)return reply({error:'input_too_large'},413);
  let body:any;
  try{const raw=await req.text();if(raw.length>5500)return reply({error:'input_too_large'},413);body=JSON.parse(raw);}catch{return reply({error:'invalid_json'},400);}
- const topic=Number(body?.topic_no),mode=body?.mode==='hint'?'hint':body?.mode==='review'?'review':'',draft=cut(body?.draft,3600);
- if(!Number.isSafeInteger(topic)||topic<1||topic>100||!mode||draft.length>3200)return reply({error:'invalid_input'},400);
+ const topic=Number(body?.topic_no),mode=body?.mode==='hint'?'hint':body?.mode==='review'?'review':'',draft=cut(body?.draft,3600),exerciseId=cut(body?.exercise_id,80);
+ if(!Number.isSafeInteger(topic)||topic<1||topic>100||!mode||draft.length>3200||(exerciseId&&(!/^[a-z0-9_-]{1,80}$/i.test(exerciseId)||mode!=='hint')))return reply({error:'invalid_input'},400);
  if(looksPrivate(draft))return reply({error:'omit_personal_identifiers'},400);
  const client=createClient(url,anon,{global:{headers:{Authorization:'Bearer '+token}},auth:{persistSession:false,autoRefreshToken:false}});
  const {data:{user},error:authError}=await client.auth.getUser(token);
@@ -47,6 +47,8 @@ Deno.serve(async(req:Request)=>{
  ]);
  if(access.error||lesson.error||!lesson.data)return reply({error:'lesson_not_available'},403);
  const material=lesson.data.material||{},task=cut(material.practice?.task,1000);
+ const exercise=exerciseId&&(Array.isArray(material.exercises)?material.exercises:[]).find((x:any)=>x?.id===exerciseId);
+ if(exerciseId&&!exercise)return reply({error:'exercise_not_available'},404);
  if(mode==='review'&&draft.length<2)return reply({ok:true,verdict:'needs_revision',reply:'Wpisz najpierw swoją próbę — nawet krótką. Mogę pomóc Ci zacząć od pierwszego kroku.',next_step:'Wybierz „Podpowiedz mi” albo napisz, co udało Ci się ustalić.',agent_online:false});
  const arithmetic=mathError(draft);
  if(mode==='review'&&arithmetic)return reply({ok:true,verdict:'needs_revision',reply:arithmetic,next_step:'Po poprawieniu obliczenia ponownie sprawdź swoją próbę.',agent_online:false,math_error:true});
@@ -73,13 +75,15 @@ Deno.serve(async(req:Request)=>{
  const lessonContext={
   title:cut(lesson.data.title_pl,180),goal:cut(lesson.data.learning_goal,470),
   intro:cut(material.intro,600),assignment:task,
+  exercise:exercise?{prompt:cut(exercise.prompt,650),type:cut(exercise.type,30),
+   choices:(Array.isArray(exercise.choices)?exercise.choices:[]).slice(0,5).map((x:any)=>cut(x,200))}:null,
   concepts:(Array.isArray(material.glossary)?material.glossary:[]).slice(0,8).map((v:any)=>({term:cut(v.term,60),meaning:cut(v.meaning||v.definition,190)})),
   example:(Array.isArray(material.examples)?material.examples:[]).slice(0,2).map((v:any)=>({title:cut(v.title,130),steps:(Array.isArray(v.steps)?v.steps:[]).slice(0,3).map((x:any)=>cut(x,220))}))
  };
  const instructions=[
   'Jesteś Anielką, polskojęzyczną mentorką początkujących w kursie księgowości. Krótko i konkretnie wyjaśniasz zadanie na podstawie podanego materiału.',
   'Uczeń może nie znać JDG, CEIDG ani innych skrótów: najpierw objaśnij trudne słowa w zwykłym języku.',
-  'Gdy tryb to hint, podaj jedną wskazówkę i pierwszy mały krok, BEZ gotowego pełnego rozwiązania.',
+  'Gdy tryb to hint, podaj jedną wskazówkę i pierwszy mały krok, BEZ gotowego pełnego rozwiązania. Jeśli przekazano exercise, skup się na tym konkretnym pytaniu: wyjaśnij znaczenie słów i sposób rozumowania, ale nie wskazuj litery ani indeksu poprawnej odpowiedzi.',
   'Gdy tryb to review, oceniaj wyłącznie roboczą PRÓBĘ na podstawie konkretnego polecenia, nie całego egzaminu.',
   'Jeśli próba jest bez sensu, nie zawiera wymaganych danych, ma błędny rachunek lub przeczy poleceniu: verdict=needs_revision, wyjaśnij dokładnie dlaczego i co poprawić.',
   'Jeśli nie możesz rozstrzygnąć albo kwestia zależy od prawa i aktualnych zasad: verdict=uncertain i wskaż, co trzeba sprawdzić.',
