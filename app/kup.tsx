@@ -52,6 +52,16 @@ export default function Purchase(){
   }catch(e:any){if(active)setMessage(e?.message||'Nie udało się pobrać danych kursu.');}
   finally{if(active)setBusy(false);}
  })();return()=>{active=false}},[slug,reload]);
+ function openOwnedCourse(){
+  // Direct browser navigation avoids a navigator reset to / during the
+  // transition from checkout to an authenticated AI lesson.
+  // Same-origin localStorage keeps the current Supabase session; RLS still
+  // verifies this learner's active enrollment on the lesson route.
+  if(slug==='ai-bez-tajemnic'&&Platform.OS==='web'&&typeof window!=='undefined'){
+   window.location.assign('/nauka?course='+encodeURIComponent(slug));return;
+  }
+  router.replace(accountingCourse?'/program-ksiegowosci':{pathname:'/nauka',params:{course:slug}});
+ }
  async function checkout(){
   if(!item||paying)return;
   setPaying(true);setMessage('');
@@ -199,7 +209,7 @@ export default function Purchase(){
         <Text style={{flex:1,color:ink,lineHeight:21}}>Wyraźnie zgadzam się na rozpoczęcie dostarczania treści cyfrowych przed upływem 14 dni i przyjmuję do wiadomości, że po rozpoczęciu dostarczania mogę utracić prawo odstąpienia, jeżeli spełniono wszystkie warunki ustawowe opisane w regulaminie.</Text>
        </Pressable>
       </View>}
-     {!!owned?<Pressable onPress={()=>router.replace(accountingCourse?'/program-ksiegowosci':{pathname:'/nauka',params:{course:slug}})} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
+     {!!owned?<Pressable onPress={openOwnedCourse} style={{padding:17,backgroundColor:ink,borderRadius:12}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
      </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null)))?0.5:1}}>
       <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?(item.price_grosze===0?'Zapisuję na kurs…':'Przechodzę do płatności…'):item.price_grosze===0?'Odbierz za darmo →':(effectiveCredit>0?(toPay===0?'Kupuję i płacę z salda '+pln(effectiveCredit):'Przejdź do płatności '+pln(toPay)):'Przejdź do płatności Stripe')+' →'}</Text>
