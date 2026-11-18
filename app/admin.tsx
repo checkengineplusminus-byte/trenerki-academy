@@ -20,7 +20,8 @@ type PromoBatch={id:string;recipient_email:string;amount_grosze:number;quantity:
 type PromoResult={batch_id:string;recipient_email:string;quantity:number;total_grosze:number;email_sent:boolean;cards:PromoCard[]};
 type PromoRequest={id:string;signature:string};
 type CourseGift={gift_id?:string;course_slug:string;title_pl:string;code:string;link:string;expires_at?:string};
-type AccountingRow={id:string;date:string;source:string;category:string;currency:string;gross_grosze:number;fee_grosze:number;net_grosze:number};
+type AccountingDocument={stripe_source:string;document_type:string;document_status:string;document_number:string|null;ksef_number:string|null;tax_treatment:string;notes:string|null};
+type AccountingRow={id:string;date:string;source:string;category:string;currency:string;gross_grosze:number;fee_grosze:number;net_grosze:number;document?:AccountingDocument|null};
 type AccountingReport={period:string;rows:AccountingRow[];summary:Array<{currency:string;category:string;count:number;gross_grosze:number;fee_grosze:number;net_grosze:number}>};
 type SalesAnalytics={
  timezone:string;
@@ -63,6 +64,7 @@ export default function AdminPage(){
 
  const [accountPeriod,setAccountPeriod]=useState(new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit'}).format(new Date()).slice(0,7));
  const [accountReport,setAccountReport]=useState<AccountingReport|null>(null),[accountError,setAccountError]=useState(''),[accountBusy,setAccountBusy]=useState(false);
+ const [accountEditSource,setAccountEditSource]=useState(''),[accountDocNumber,setAccountDocNumber]=useState(''),[accountKsef,setAccountKsef]=useState(''),[accountDocType,setAccountDocType]=useState('pending'),[accountTax,setAccountTax]=useState('review'),[accountDocStatus,setAccountDocStatus]=useState('pending'),[accountNotes,setAccountNotes]=useState(''),[accountSaving,setAccountSaving]=useState(false);
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
@@ -323,11 +325,31 @@ export default function AdminPage(){
   }catch(e:any){setAccountError(e?.message||'Raport jest niedostępny.')}
   finally{setAccountBusy(false)}
  }
+ function startAccountingEdit(row:AccountingRow){
+  setAccountEditSource(row.source);setAccountDocNumber(row.document?.document_number||'');
+  setAccountKsef(row.document?.ksef_number||'');setAccountDocType(row.document?.document_type||'pending');
+  setAccountDocStatus(row.document?.document_status||'pending');
+  setAccountTax(row.document?.tax_treatment||'review');setAccountNotes(row.document?.notes||'');
+ }
+ async function saveAccountingDocument(){
+  if(!accountEditSource||accountSaving)return;
+  setAccountSaving(true);setAccountError('');
+  try{
+   const payload={action:'accounting_document_save',stripe_source:accountEditSource,
+    document_type:accountDocType,document_status:accountDocStatus,
+    document_number:accountDocNumber.trim(),ksef_number:accountKsef.trim(),tax_treatment:accountTax,notes:accountNotes.trim()};
+   const {data,error}=await supabase.functions.invoke('ta-admin-analytics',{body:payload});
+   if(error||!data?.ok)throw Error(data?.error||'Nie udało się zapisać numeru dokumentu. Sprawdź uprawnienia i czy dokument nie jest już przypisany.');
+   setAccountReport(prev=>prev?{...prev,rows:prev.rows.map(x=>x.source===accountEditSource?{...x,document:data.document}:x)}:prev);
+   setAccountEditSource('');
+  }catch(e:any){setAccountError(e?.message||'Zapis nie powiódł się');}
+  finally{setAccountSaving(false);}
+ }
  function exportAccountingCsv(){
   if(!accountReport)return;
   const quote=(x:unknown)=>'"'+String(x??'').replace(/"/g,'""')+'"';
-  const cols=['data_PL','rodzaj_operacji','waluta','kwota_brutto_jednostki','oplata_stripe_jednostki','kwota_po_oplacie_jednostki','stripe_source','stripe_balance_id'];
-  const csv='\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id].map(quote).join(';'))].join('\r\n');
+  const cols=['data_PL','rodzaj_operacji','waluta','kwota_brutto_jednostki','oplata_stripe_jednostki','kwota_po_oplacie_jednostki','stripe_source','stripe_balance_id','typ_dokumentu','status_dokumentu','nr_faktury_saldeo','nr_KSeF','VAT_kwalifikacja'];
+  const csv='\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id,x.document?.document_type||'',x.document?.document_status||'',x.document?.document_number||'',x.document?.ksef_number||'',x.document?.tax_treatment||''].map(quote).join(';'))].join('\r\n');
   if(Platform.OS==='web'&&typeof document!=='undefined'){
    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Trenerki-Stripe-'+accountReport.period+'-rozrachunki.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
@@ -421,7 +443,34 @@ export default function AdminPage(){
       {accountReport.rows.slice(0,100).map(x=><View key={x.id} style={{paddingVertical:9,borderBottomWidth:1,borderColor:'#e2e9de'}}>
        <Text style={{color:ink,fontWeight:'800'}}>{x.date} · {x.category} · {x.currency} {(x.gross_grosze/100).toFixed(2)}</Text>
        <Text style={{color:muted,fontSize:12}}>Opłata: {(x.fee_grosze/100).toFixed(2)} · Po opłacie: {(x.net_grosze/100).toFixed(2)} · {x.source}</Text>
+       {x.category==='charge'&&<View style={{gap:4,marginTop:5}}>
+        <Text style={{fontSize:12,color:x.document?.document_status==='issued'||x.document?.document_status==='reconciled'?'#216343':'#a36b1b'}}>Dokument: {x.document?.document_status||'do rozliczenia'} · {x.document?.document_number||'bez numeru'} · VAT: {x.document?.tax_treatment||'do ustalenia'}</Text>
+        <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{alignSelf:'flex-start',padding:9,backgroundColor:pale,borderRadius:8}}><Text style={{fontWeight:'800',color:ink}}>Powiąż fakturę / ewidencję w Saldeo</Text></Pressable>
+       </View>}
       </View>)}
+      {!!accountEditSource&&<View style={{marginTop:18,padding:15,borderWidth:1,borderColor:'#bbd4bb',borderRadius:12,gap:9}}>
+       <Text style={{fontWeight:'900',fontSize:17,color:ink}}>Dokument dla {accountEditSource}</Text>
+       <Text style={{color:muted,fontSize:12,lineHeight:18}}>Ten formularz NIE wystawia faktury. Wpisz numer rzeczywiście wystawiony w Saldeo albo oznaczenie ewidencji B2C. Nie wpisuj danych osobowych klientów w notatkach.</Text>
+       <Text style={{fontWeight:'800',color:ink}}>Rodzaj</Text>
+       <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>
+        {([['pending','Do ustalenia'],['b2c_register','Ewidencja B2C'],['b2c_invoice','Faktura B2C'],['b2b_invoice','Faktura B2B'],['refund_correction','Korekta']] as const).map(([value,label])=><Pressable key={value} onPress={()=>setAccountDocType(value)} style={{padding:9,borderRadius:8,backgroundColor:accountDocType===value?ink:pale}}><Text style={{color:accountDocType===value?'white':ink}}>{label}</Text></Pressable>)}
+       </View>
+       <Text style={{fontWeight:'800',color:ink}}>Status</Text>
+       <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>
+        {([['pending','Nowe'],['prepared','Przygotowane'],['issued','Wystawione'],['reconciled','Uzgodnione'],['review','Do wyjaśnienia']] as const).map(([value,label])=><Pressable key={value} onPress={()=>setAccountDocStatus(value)} style={{padding:9,borderRadius:8,backgroundColor:accountDocStatus===value?ink:pale}}><Text style={{color:accountDocStatus===value?'white':ink}}>{label}</Text></Pressable>)}
+       </View>
+       <Text style={{fontWeight:'800',color:ink}}>VAT (nie ustawiaj automatycznie dla zagranicy)</Text>
+       <View style={{flexDirection:'row',gap:6,flexWrap:'wrap'}}>
+        {([['review','Sprawdź'],['pl_23','PL 23%'],['exempt','Zwolnienie'],['reverse_charge','Reverse charge'],['oss','OSS'],['outside_scope','Poza PL']] as const).map(([value,label])=><Pressable key={value} onPress={()=>setAccountTax(value)} style={{padding:9,borderRadius:8,backgroundColor:accountTax===value?ink:pale}}><Text style={{color:accountTax===value?'white':ink}}>{label}</Text></Pressable>)}
+       </View>
+       <TextInput value={accountDocNumber} onChangeText={setAccountDocNumber} placeholder="Numer faktury w Saldeo / ewidencji" accessibilityLabel="Numer dokumentu Saldeo" style={{borderWidth:1,borderColor:'#ccdcca',borderRadius:9,padding:12,color:ink}}/>
+       <TextInput value={accountKsef} onChangeText={setAccountKsef} placeholder="Numer KSeF (jeśli jest)" accessibilityLabel="Numer KSeF" style={{borderWidth:1,borderColor:'#ccdcca',borderRadius:9,padding:12,color:ink}}/>
+       <TextInput value={accountNotes} onChangeText={setAccountNotes} placeholder="Notatka księgowa, bez danych osobowych" accessibilityLabel="Notatka rozliczenia" style={{borderWidth:1,borderColor:'#ccdcca',borderRadius:9,padding:12,color:ink}}/>
+       <View style={{flexDirection:'row',gap:9,flexWrap:'wrap'}}>
+        <Pressable disabled={accountSaving} onPress={()=>void saveAccountingDocument()} style={{padding:12,backgroundColor:ink,borderRadius:9}}><Text style={{color:'white',fontWeight:'900'}}>{accountSaving?'Zapisuję…':'Zapisz powiązanie'}</Text></Pressable>
+        <Pressable onPress={()=>setAccountEditSource('')} style={{padding:12,backgroundColor:pale,borderRadius:9}}><Text style={{color:ink}}>Anuluj</Text></Pressable>
+       </View>
+      </View>}
       {accountReport.rows.length>100&&<Text style={{color:muted}}>Na ekranie 100 pierwszych operacji. CSV zawiera cały pobrany okres.</Text>}
       <Text style={{color:muted,fontSize:12,marginTop:18,lineHeight:19}}>KROK 1: ewidencja sprzedaży do rzeczywistych klientów (nie do Stripe), zgodnie z VAT i zasadami kasy fiskalnej. KROK 2: osobno rozlicz udokumentowane opłaty Stripe. KROK 3: przelew Stripe uzgodnij z rozrachunkami — nie księguj go ponownie jako sprzedaż. KROK 4: firmowe faktury wystawiaj w Saldeo/KSeF i zapisuj numer faktury przy zamówieniu. Kwoty w oryginalnych walutach: nie sumuj PLN i USD. Zestawienie nie decyduje o stawce VAT ani zwolnieniu z kasy.</Text>
      </>}
