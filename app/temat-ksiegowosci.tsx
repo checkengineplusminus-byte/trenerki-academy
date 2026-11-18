@@ -264,12 +264,13 @@ export default function TematKsiegowosci(){
       <Text style={s.primerIcon}>{item.icon}</Text>
       <View style={{flex:1,gap:4}}><Text style={s.label}>{item.title}</Text><Text style={s.bodySmall}>{item.description}</Text></View>
      </View>)}</View>}
-     {(m.glossary||[]).slice(0,3).map((g:any,i:number)=><View key={i} style={s.wordRow}><Text style={s.label}>{g.term}:</Text><Text style={s.bodySmall}>{glossaryExplanation(g)}</Text></View>)}
-     <Text style={s.bodySmall}>{m.intro||lesson.body_text}</Text>
+     {!guide&&(m.glossary||[]).slice(0,3).map((g:any,i:number)=><View key={i} style={s.wordRow}><Text style={s.label}>{g.term}:</Text><Text style={s.bodySmall}>{glossaryExplanation(g)}</Text></View>)}
+     {!guide&&<Text style={s.bodySmall}>{m.intro||lesson.body_text}</Text>}
     </View>}
     {introComplete&&currentSection&&<View style={s.card}>
      <Text style={s.eyebrowDark}>CZĘŚĆ {sectionIndex+1} / {sections.length}</Text>
      <Text accessibilityRole="header" style={s.h2}>{String(currentSection.heading||'Poznaj temat').replace(/^\d+\.\s*/,'')}</Text>
+     {guide&&sectionIndex===0&&<Text style={s.bodySmall}>{m.intro||lesson.body_text}</Text>}
      {(currentSection.paragraphs||[]).filter((p:string)=>!(currentSection.curiosity?.text&&p.startsWith('Ciekawostka:')&&p.includes(currentSection.curiosity.text))).map((p:string,i:number)=><Text key={i} selectable style={s.body}>{p}</Text>)}
      {typeof currentSection.curiosity?.text==='string'&&!!currentSection.curiosity.text.trim()&&<View style={s.curiosityBox}>
       <Text style={s.curiosityTitle}>💡 Ciekawostka</Text><Text style={s.body}>{currentSection.curiosity.text}</Text>
