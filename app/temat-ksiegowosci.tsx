@@ -490,10 +490,16 @@ export default function TematKsiegowosci(){
     </View>
    <View style={s.card}>
     <Text accessibilityRole="header" style={s.h2}>Dokończ ten temat i przejdź dalej</Text>
-    {sectionProgress?
-      <Text style={s.body}>Zapisane i poprawne odpowiedzi: {sectionProgress.correct}/{sectionProgress.total}. Zapisane próby: {sectionProgress.attempted}/{sectionProgress.total}.</Text>:
-      <Text style={s.warning}>Nie udało się zweryfikować wszystkich zadań. Nie oznaczamy tematu jako zaliczonego.</Text>}
-    {!nextReady&&<Text style={s.small}>Rozwiąż poprawnie i zapisz wszystkie zadania, a także oddaj pisemną pracę domową do samokontroli. Kolejny temat odblokuje się po potwierdzonym zapisie obu części. Oddanie pracy nie jest oceną profesjonalisty ani zaliczeniem całego kursu.</Text>}
+    <View style={s.progressChecklist}>
+     <Text style={s.label}>{sectionProgress?.passed===true?'✅':'◻️'} Ćwiczenia: {sectionProgress?sectionProgress.correct+'/'+sectionProgress.total+' poprawnych':'nie udało się potwierdzić wyniku'}</Text>
+     <Text style={s.label}>{hasHomework?'✅':'◻️'} Praca domowa: {hasHomework?'oddana do samokontroli':homeworkReady?(homeworkText.trim()?'zapisz i oddaj swoją próbę':'jeszcze nieoddana'):'oczekiwanie na odczyt'}</Text>
+    </View>
+    {!nextReady&&<View style={s.guideNotice}>
+     <Text style={s.label}>Co zrobić, aby przejść dalej?</Text>
+     {sectionProgress?.passed!==true&&<Pressable accessibilityRole="button" onPress={()=>goStep('practice')} style={s.coachButton}><Text style={s.coachButtonText}>✍️ Wróć i popraw ćwiczenia →</Text></Pressable>}
+     {!hasHomework&&<Pressable accessibilityRole="button" onPress={()=>goStep('homework')} style={s.coachButton}><Text style={s.coachButtonText}>🧰 Otwórz pracę domową →</Text></Pressable>}
+     <Text style={s.small}>Następny temat odblokuje się po poprawnym zapisaniu wymaganych ćwiczeń i oddaniu pracy. Sama rozmowa z Anielką nie zalicza tematu.</Text>
+    </View>}
     {nextReady&&topic!==null&&topic<100&&
      <Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic+1)}}} style={s.link}>Przejdź do tematu {topic+1} z 100</Link>}
     {nextReady&&topic===100&&<>
@@ -514,6 +520,7 @@ export default function TematKsiegowosci(){
 }
 
 const s=StyleSheet.create({
+ progressChecklist:{backgroundColor:'#f1f7ed',borderRadius:12,padding:13,gap:9,borderWidth:1,borderColor:'#d5e6d0'},
  coachActions:{flexDirection:'row',flexWrap:'wrap',gap:9,marginTop:5},
  coachButton:{minHeight:47,flexGrow:1,justifyContent:'center',paddingHorizontal:13,paddingVertical:11,borderRadius:12,borderWidth:1,borderColor:'#b7d5b4',backgroundColor:'#f9fcf6'},
  coachButtonText:{fontWeight:'800',fontSize:13,color:'#1e5436',textAlign:'center'},
