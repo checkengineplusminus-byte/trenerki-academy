@@ -20,6 +20,8 @@ type PromoBatch={id:string;recipient_email:string;amount_grosze:number;quantity:
 type PromoResult={batch_id:string;recipient_email:string;quantity:number;total_grosze:number;email_sent:boolean;cards:PromoCard[]};
 type PromoRequest={id:string;signature:string};
 type CourseGift={gift_id?:string;course_slug:string;title_pl:string;code:string;link:string;expires_at?:string};
+type AccountingRow={id:string;date:string;source:string;category:string;currency:string;gross_grosze:number;fee_grosze:number;net_grosze:number};
+type AccountingReport={period:string;rows:AccountingRow[];summary:Array<{currency:string;category:string;count:number;gross_grosze:number;fee_grosze:number;net_grosze:number}>};
 type SalesAnalytics={
  timezone:string;
  totals:{users:number,purchases:number,gifts?:number,revenue_grosze:number};
@@ -59,11 +61,13 @@ export default function AdminPage(){
   router.replace('/konto');
  }
 
+ const [accountPeriod,setAccountPeriod]=useState(new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit'}).format(new Date()).slice(0,7));
+ const [accountReport,setAccountReport]=useState<AccountingReport|null>(null),[accountError,setAccountError]=useState(''),[accountBusy,setAccountBusy]=useState(false);
  const [busy,setBusy]=useState(true),[working,setWorking]=useState(''),[error,setError]=useState(''),[message,setMessage]=useState('');
  const [analytics,setAnalytics]=useState<SalesAnalytics|null>(null),[analyticsError,setAnalyticsError]=useState(''),[salesInterval,setSalesInterval]=useState<'daily'|'monthly'|'yearly'>('daily');
  const [stats,setStats]=useState<any>(null),[courses,setCourses]=useState<Course[]>([]),[reviews,setReviews]=useState<{course_slug:string,review_status:string}[]>([]),[filter,setFilter]=useState('');
  const [selectedStudent,setSelectedStudent]=useState<Student|null>(null),[selectedCourse,setSelectedCourse]=useState<Course|null>(null);
- const [tab,setTab]=useState<'sales'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'feedback'|'diplomas'|'support'>('giveaway');
+ const [tab,setTab]=useState<'sales'|'accounting'|'users'|'orders'|'gifts'|'giveaway'|'credit-card'|'discount'|'drafts'|'quality'|'feedback'|'diplomas'|'support'>('giveaway');
  const [giftSearch,setGiftSearch]=useState(''),[giftQty,setGiftQty]=useState<Record<string,number>>({});
  const [giftEmail,setGiftEmail]=useState(''),[giftCompany,setGiftCompany]=useState(false),[giftSent,setGiftSent]=useState(false),[giftCompanyName,setGiftCompanyName]=useState(''),[giftCompanyPanel,setGiftCompanyPanel]=useState('');
  const [giftTransferable,setGiftTransferable]=useState(true),[giftDedication,setGiftDedication]=useState('');
@@ -309,6 +313,26 @@ export default function AdminPage(){
   }catch(e:any){setError(e?.message||'Panel nie jest dostępny.');}
   finally{setBusy(false)}
  }
+ async function loadAccounting(period=accountPeriod){
+  if(accountBusy)return;
+  setAccountBusy(true);setAccountError('');setAccountReport(null);
+  try{
+   const {data,error}=await supabase.functions.invoke('ta-admin-analytics',{body:{action:'accounting_export',period}});
+   if(error||!data?.ok)throw Error('Nie udało się pobrać operacji Stripe. Sprawdź wdrożenie funkcji i uprawnienia administratora.');
+   setAccountReport(data as AccountingReport);
+  }catch(e:any){setAccountError(e?.message||'Raport jest niedostępny.')}
+  finally{setAccountBusy(false)}
+ }
+ function exportAccountingCsv(){
+  if(!accountReport)return;
+  const quote=(x:unknown)=>'"'+String(x??'').replace(/"/g,'""')+'"';
+  const cols=['data_PL','rodzaj_operacji','waluta','kwota_brutto_jednostki','oplata_stripe_jednostki','kwota_po_oplacie_jednostki','stripe_source','stripe_balance_id'];
+  const csv='\\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id].map(quote).join(';'))].join('\\r\\n');
+  if(Platform.OS==='web'&&typeof document!=='undefined'){
+   const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Trenerki-Stripe-'+accountReport.period+'-do-Saldeo.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+  }else void Share.share({message:csv,title:'Zestawienie Stripe '+accountReport.period});
+ }
  async function makeDraft(){
   if(!selectedStudent||!selectedCourse||working)return;
   setWorking('draft');setMessage('');
@@ -366,12 +390,42 @@ export default function AdminPage(){
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['discount','Rabaty dzienne'],['sales','Sprzedaż Stripe'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['feedback','Zgłoszenia Anielki'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
+     {([['giveaway','🎁 Rozdaj kursy'],['credit-card','Karta na kwotę'],['discount','Rabaty dzienne'],['sales','Sprzedaż Stripe'],['accounting','Księgowość / Saldeo'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['feedback','Zgłoszenia Anielki'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
      )}
     </View>
+    {tab==='accounting'&&<View style={card}>
+     <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:8}}>Księgowość — zestawienia do Saldeo</Text>
+     <Text style={{color:muted,lineHeight:21,marginBottom:12}}>Dane odczytywane bezpośrednio z produkcyjnego Stripe. Zestawienie techniczne do księgowania, nie faktura VAT ani paragon fiskalny. Wypłata Stripe na bank nie jest drugą sprzedażą.</Text>
+     <Text style={{fontWeight:'800',color:ink}}>Miesiąc RRRR-MM albo rok RRRR</Text>
+     <TextInput accessibilityLabel="Okres rozliczenia Stripe" value={accountPeriod} onChangeText={setAccountPeriod} autoCapitalize="none" placeholder="2026-11" style={{padding:12,borderWidth:1,borderColor:'#ccdcca',borderRadius:9,marginTop:7,marginBottom:12,color:ink}}/>
+     <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
+      <Pressable accessibilityRole="button" disabled={accountBusy} onPress={()=>void loadAccounting()} style={{padding:13,backgroundColor:ink,borderRadius:10}}>
+       <Text style={{color:'white',fontWeight:'900'}}>{accountBusy?'Pobieram…':'Pobierz zestawienie'}</Text>
+      </Pressable>
+      {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
+       <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV do Saldeo</Text>
+      </Pressable>}
+     </View>
+     {!!accountError&&<Text style={{color:'#a52626',marginTop:11}}>{accountError}</Text>}
+     {!!accountReport&&<>
+      <Text style={{color:ink,fontWeight:'900',fontSize:17,marginTop:20}}>Podsumowanie okresu {accountReport.period}</Text>
+      {accountReport.summary.map((x,i)=><View key={x.currency+x.category+i} style={{borderBottomWidth:1,borderColor:'#e2e9de',paddingVertical:10}}>
+       <Text style={{fontWeight:'900',color:ink}}>{x.category} · {x.currency} · {x.count} operacji</Text>
+       <Text style={{color:muted}}>Brutto: {(x.gross_grosze/100).toFixed(2)} · Opłaty: {(x.fee_grosze/100).toFixed(2)} · Po opłatach: {(x.net_grosze/100).toFixed(2)}</Text>
+      </View>)}
+      {!accountReport.summary.length&&<Text style={{color:muted,marginTop:12}}>Brak operacji Stripe w podanym okresie.</Text>}
+      <Text style={{fontWeight:'900',color:ink,fontSize:17,marginTop:16}}>Operacje ({accountReport.rows.length})</Text>
+      {accountReport.rows.slice(0,100).map(x=><View key={x.id} style={{paddingVertical:9,borderBottomWidth:1,borderColor:'#e2e9de'}}>
+       <Text style={{color:ink,fontWeight:'800'}}>{x.date} · {x.category} · {x.currency} {(x.gross_grosze/100).toFixed(2)}</Text>
+       <Text style={{color:muted,fontSize:12}}>Opłata: {(x.fee_grosze/100).toFixed(2)} · Po opłacie: {(x.net_grosze/100).toFixed(2)} · {x.source}</Text>
+      </View>)}
+      {accountReport.rows.length>100&&<Text style={{color:muted}}>Na ekranie 100 pierwszych operacji. CSV zawiera cały pobrany okres.</Text>}
+      <Text style={{color:muted,fontSize:12,marginTop:18,lineHeight:19}}>Kwoty w oryginalnych walutach. Nie sumuj PLN i USD. Przypisz dokumenty sprzedaży do nabywców, ustal VAT i obowiązek ewidencji fiskalnej. Opłaty rozlicz według dokumentów Stripe. KSeF, kursy walut, korekty i Saldeo wymagają osobnej weryfikacji.</Text>
+     </>}
+    </View>}
     {tab==='sales'&&<View style={card}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink,marginBottom:12}}>Sprzedaż i rejestracje — Stripe</Text>
      <Text style={{fontSize:13,color:muted,lineHeight:20,marginBottom:15}}>Potwierdzone zakupy (bez symulacji, zwróconych płatności i darmowych zapisów). Okresy według czasu polskiego. Dane aktualizują się po potwierdzeniu Stripe webhook.</Text>
