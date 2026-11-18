@@ -346,6 +346,29 @@ export default function AdminPage(){
   }catch(e:any){setAccountError(e?.message||'Zapis nie powiódł się');}
   finally{setAccountSaving(false);}
  }
+ function printAccountingReport(row?:AccountingRow){
+  if(!accountReport)return;
+  if(Platform.OS!=='web'||typeof window==='undefined'){setAccountError('Drukowanie jest dostępne w przeglądarce internetowej.');return;}
+  const esc=(x:unknown)=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c));
+  const format=(g:number,currency:string)=>new Intl.NumberFormat('pl-PL',{style:'currency',currency:currency||'PLN'}).format(g/100);
+  const rows=row?[row]:accountReport.rows;
+  const head=row?'Rozliczenie transakcji Stripe':'Zestawienie operacji Stripe';
+  const heading=row?'Transakcja '+row.date:'Okres '+accountReport.period;
+  const cols=['Data','Rodzaj','Waluta','Kwota operacji','Opłata Stripe','Po opłacie','Dokument Saldeo','Numer Stripe'];
+  const tr=rows.map(x=>'<tr>'+[
+    x.date,x.category==='charge'?'Sprzedaż':x.category==='refund'?'Zwrot':x.category==='payout'?'Wypłata':x.category,
+    x.currency,format(x.gross_grosze,x.currency),format(x.fee_grosze,x.currency),
+    format(x.net_grosze,x.currency),x.document?.document_number||'—',x.source
+   ].map(y=>'<td>'+esc(y)+'</td>').join('')+'</tr>').join('');
+  const summary=row?'':accountReport.summary.map(x=>'<tr><td>'+esc(x.currency+' / '+x.category)+'</td><td>'+x.count+'</td><td>'+esc(format(x.gross_grosze,x.currency))+'</td><td>'+esc(format(x.fee_grosze,x.currency))+'</td><td>'+esc(format(x.net_grosze,x.currency))+'</td></tr>').join('');
+  const html='<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>'+esc(head+' — '+heading)+'</title><style>@page{size:A4 landscape;margin:15mm}body{font:12px Arial,sans-serif;color:#172e22;margin:0}h1{font-size:21px;margin:0 0 6px}h2{font-size:15px;margin:22px 0 8px}.meta{color:#526456;padding-bottom:15px;border-bottom:1px solid #bacbbd}.table{width:100%;border-collapse:collapse;margin-top:12px}th,td{border-bottom:1px solid #d8e2d7;text-align:left;padding:8px 5px;vertical-align:top;overflow-wrap:anywhere}th{background:#eef3ec}tr{break-inside:avoid}footer{margin-top:18px;font-size:10px;color:#506455}</style></head><body><h1>'+esc(head)+'</h1><div class="meta">TRENERKI sp. z o.o. · NIP 5272961874 · '+esc(heading)+' · Wygenerowano '+esc(new Date().toLocaleString('pl-PL'))+'</div>'+
+   (row?'':'<h2>Podsumowanie według walut i rodzajów</h2><table class="table"><thead><tr><th>Waluta / rodzaj</th><th>Operacje</th><th>Kwota</th><th>Opłaty</th><th>Po opłatach</th></tr></thead><tbody>'+summary+'</tbody></table>')+
+   '<h2>'+esc(row?'Szczegóły transakcji':'Rejestr operacji')+'</h2><table class="table"><thead><tr>'+cols.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>'+tr+'</tbody></table><footer>Raport pomocniczy do uzgodnienia z Saldeo. Nie jest fakturą VAT ani paragonem. Wypłata Stripe nie stanowi odrębnej sprzedaży. Dla rozliczeń podatkowych wymagane są właściwe dokumenty źródłowe.</footer></body></html>';
+  const w=window.open('','_blank');
+  if(!w){setAccountError('Przeglądarka zablokowała nowe okno. Zezwól na wyskakujące okna dla Trenerki.');return;}
+  w.document.open();w.document.write(html);w.document.close();w.focus();
+  w.print();
+ }
  function exportAccountingCsv(){
   if(!accountReport)return;
   const quote=(x:unknown)=>'"'+String(x??'').replace(/"/g,'""')+'"';
@@ -432,6 +455,9 @@ export default function AdminPage(){
       <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://saldeo.brainshare.pl/')} style={{padding:13,backgroundColor:'#edf2e9',borderRadius:10,borderWidth:1,borderColor:'#d7e1d2'}}>
        <Text style={{color:ink,fontWeight:'900'}}>Otwórz SaldeoSMART</Text>
       </Pressable>
+      {!!accountReport&&<Pressable accessibilityRole="button" onPress={()=>printAccountingReport()} style={{padding:13,backgroundColor:'#edf2e9',borderRadius:10,borderWidth:1,borderColor:'#d7e1d2'}}>
+       <Text style={{color:ink,fontWeight:'900'}}>Drukuj / zapisz PDF</Text>
+      </Pressable>}
       {!!accountReport&&<Pressable accessibilityRole="button" onPress={exportAccountingCsv} style={{padding:13,backgroundColor:pale,borderRadius:10}}>
        <Text style={{color:ink,fontWeight:'900'}}>Eksport CSV</Text>
       </Pressable>}
@@ -477,6 +503,9 @@ export default function AdminPage(){
       {accountReport.rows.filter(x=>x.category==='charge').slice(0,100).map(x=><View key={x.id} style={{paddingVertical:13,borderBottomWidth:1,borderColor:'#e2e9de',gap:5}}>
        <Text style={{color:ink,fontWeight:'900',fontSize:16}}>{x.date} · Sprzedaż {money(x.gross_grosze)} {x.currency==='PLN'?'':'('+x.currency+')'}</Text>
        <Text style={{color:muted,fontSize:13}}>Dokument: {x.document?.document_number||'Nieprzypisany'} · {x.document?.document_status==='issued'||x.document?.document_status==='reconciled'?'Ujęty':'Do weryfikacji'}</Text>
+       <Pressable accessibilityRole="button" onPress={()=>printAccountingReport(x)} style={{alignSelf:'flex-start',padding:9,borderWidth:1,borderColor:'#cbdac9',borderRadius:8}}>
+        <Text style={{color:ink,fontWeight:'800'}}>Drukuj / PDF transakcji</Text>
+       </Pressable>
        <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{alignSelf:'flex-start',padding:10,backgroundColor:pale,borderRadius:9}}><Text style={{fontWeight:'800',color:ink}}>Dokument sprzedaży</Text></Pressable>
        {accountShowTechnical&&<Text style={{color:muted,fontSize:12}}>Stripe: {x.source} · Opłata: {(x.fee_grosze/100).toFixed(2)} {x.currency} · Rodzaj: {x.category}</Text>}
       </View>)}
