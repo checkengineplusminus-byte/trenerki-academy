@@ -348,7 +348,7 @@ export default function AdminPage(){
    <Pressable accessibilityRole="button" onPress={()=>router.push('/partner-admin')}
     style={{backgroundColor:'#e1f0d5',borderRadius:12,padding:15,borderWidth:1,borderColor:'#b6d5ac',gap:5}}>
     <Text style={{color:ink,fontWeight:'900',fontSize:17}}>✦ Program afiliacyjny · 10% prowizji</Text>
-    <Text style={{color:'#496a52',fontSize:13}}>Partnerzy, rozliczenia miesięczne, eksport CSV i kontrola danych podatkowych →</Text>
+    <Text style={{color:'#496a52',fontSize:13}}>Partnerzy, e-maile, próg 300 zł, faktury firm, PIT i miesięczny eksport CSV →</Text>
    </Pressable>
    <Pressable accessibilityRole="button" onPress={()=>setTab('giveaway')} style={{backgroundColor:ink,padding:16,borderRadius:13}}>
     <Text style={{color:'white',fontSize:17,fontWeight:'900',textAlign:'center'}}>🎁 Rozdaj do 10 kursów za darmo</Text>
