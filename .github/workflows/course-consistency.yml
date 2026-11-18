@@ -37,6 +37,8 @@ jobs:
         run: node scripts/check-content-consistency.mjs
       - name: Enforce minimum thirty chapters in every course
         run: node scripts/audit-course-standards.mjs --enforce
+      - name: Verify all numeric partner redirects in Expo Router
+        run: node scripts/test-affiliate-numbered-redirects.mjs
       - name: Check secure affiliate referrals, legal notices and checkout integration
         run: node scripts/test-affiliate-program.mjs
       - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
