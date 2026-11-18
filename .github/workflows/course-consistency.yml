@@ -41,6 +41,19 @@ jobs:
         run: |
           node scripts/generate-affiliate-short-pages.mjs
           node scripts/test-affiliate-static-pages.mjs
+      - name: Live check numeric affiliate pages and preserved app routes
+        run: |
+          set -euo pipefail
+          for n in 1 2 7 15; do
+            curl -fsSL --max-time 20 "https://trenerki.com/$n" -o "/tmp/partner-$n.html"
+            grep -q "affiliateNumber=$n" "/tmp/partner-$n.html"
+            echo "OK: /$n → protected referral resolver"
+          done
+          for route in konto partner nauka admin; do
+            curl -fsSL --max-time 20 "https://trenerki.com/$route" -o "/tmp/$route.html"
+            ! grep -q "affiliateNumber=" "/tmp/$route.html"
+            echo "OK: /$route unaffected"
+          done
       - name: Check secure affiliate referrals, legal notices and checkout integration
         run: node scripts/test-affiliate-program.mjs
       - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
