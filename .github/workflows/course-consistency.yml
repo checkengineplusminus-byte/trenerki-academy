@@ -43,6 +43,8 @@ jobs:
           node scripts/test-affiliate-static-pages.mjs
       - name: Check secure affiliate referrals, legal notices and checkout integration
         run: node scripts/test-affiliate-program.mjs
+      - name: Verify anonymous AI and accounting course discovery (Anielka and catalog)
+        run: node scripts/test-public-catalog-discovery.mjs
       - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
         run: node scripts/test-ai-course-integration.mjs
       - name: Verify Anielka course discovery and consolidated sections
