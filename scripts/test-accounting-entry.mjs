@@ -156,6 +156,31 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
    sourceForAccounting=sourceForAccounting.replace(addition,previous);
   }
  }
+ // Audited AI auth hardening: confirm EXACT reviewed differences and normalize
+ // only these route/session/retry changes before the existing reader blob check.
+ // Any unrelated changes to the lesson renderer still fail the hash guard.
+ const reviewedAiAuthChanges=[
+  [
+    "[busy,setBusy]=useState(true),[reload,setReload]=useState(0),",
+    "[busy,setBusy]=useState(true),"
+  ],
+  [
+    "   // A transient auth/network failure must not be treated as a sign-out.\n   // The paid lesson stays mounted; only a confirmed missing session requires login.\n   const {data:sessionResult,error:sessionError}=await supabase.auth.getSession();\n   if(sessionError)throw new Error('Nie udało się sprawdzić sesji. Spróbuj ponownie — nie wylogowaliśmy Cię.');\n   if(!sessionResult.session?.user){\n    router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;\n   }\n   const {data:{user:u},error:ue}=await supabase.auth.getUser();\n   if(ue)throw new Error('Nie udało się potwierdzić sesji. Spróbuj ponownie — Twoja nauka i konto pozostają zapisane.');\n   if(!u){router.replace({pathname:'/konto',params:{course:slug,next:'kup'}});return;}\n",
+    "   const {data:{user:u},error:ue}=await supabase.auth.getUser();\n   if(ue||!u){router.replace('/konto');return;}\n"
+  ],
+  [
+    " })();return()=>{active=false};},[slug,reload]);\n",
+    " })();return()=>{active=false};},[slug]);\n"
+  ],
+  [
+    "  {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>\n   <Text accessibilityRole=\"alert\" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>\n   <Pressable accessibilityRole=\"button\" onPress={()=>setReload(v=>v+1)}\n    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>\n    <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>\n   </Pressable>\n  </View>}\n",
+    "  {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}\n"
+  ]
+];
+ for(const [updated,previous] of reviewedAiAuthChanges){
+  assert.equal(sourceForAccounting.split(updated).length,2,'Unreviewed change in lesson session handling');
+  sourceForAccounting=sourceForAccounting.replace(updated,previous);
+ }
  const bytes=Buffer.from(sourceForAccounting.replace(guard,'').replace(importLine,''),'utf8');
  const hash=createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
  // Przegląd oddzielnego commita be748774 (tylko import i ćwiczenie Excel) nie zmienia przekierowania księgowości.
