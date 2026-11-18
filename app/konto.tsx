@@ -210,6 +210,11 @@ export default function AccountPage(){
    <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/regulamin.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Regulamin</Text></Pressable>
    <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/prywatnosc.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Polityka prywatności</Text></Pressable>
    <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
+   <Pressable accessibilityRole="button" accessibilityLabel="Ustawienia plików cookie" onPress={()=>{
+    if(typeof window!=='undefined'&&typeof (window as any).TrenerkiAds?.openSettings==='function')
+     (window as any).TrenerkiAds.openSettings();
+    else void Linking.openURL(siteUrl+'/academy/prywatnosc.html#s8');
+   }}><Text style={{fontSize:12,color:'#237244',fontWeight:'900'}}>Ustawienia cookies</Text></Pressable>
   </View>
  </View>
  {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:15}}><Text style={{color:'#718779',fontSize:11}}>Staff</Text></Pressable>}
