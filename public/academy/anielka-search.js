@@ -5,8 +5,10 @@
 const normalize=s=>String(s||'').toLocaleLowerCase('pl').replace(/ł/g,'l').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
 const stop=new Set(('chce chcialbym chcialabym chcial chcialam chcialem sie nauczyc nauka nauczyc kurs kursu kursy szukam szuka potrzebuje prosze pomoc jak gdzie ktory ktora ktore co zrobic dobrze lepiej chce potrafie umiem umiec mnie moj moje ten takie te tego tych od dla przy bez do na i oraz albo byc jestem zostac co').split(/\s+/));
-const terms=s=>[...new Set(normalize(s).split(' ').filter(t=>t.length>2&&!stop.has(t)))];
+const terms=s=>[...new Set(normalize(s).split(' ').filter(t=>(t.length>2||t==='ai')&&!stop.has(t)))];
 const aliases=[
+ ['ai-bez-tajemnic',/\b(ai|sztuczn\w* inteligencj\w*|chatgpt|prompt\w*|generatywn\w*|artificial intelligence)/],
+ ['ksiegowosc-od-podstaw',/\b(ksieg\w*|rachunk\w*|vat|faktur\w*|bookkeeping|accounting)/],
  ['zaufany-wolontariusz',/\b(wolontar|deeskalacj)/],
  ['ciesla-przygotowanie-czeladnicze',/\b(ciesl|ciesiel|stolar|wiezb|krokwi|krokiew|drewnian|ciesio|konstrukcj drewna)/],
  ['brygadzista',/\b(brygadz|majster|zarzadzac ekipa|prowadzic zespol na budowie)/],
@@ -145,7 +147,8 @@ function contextualQuery(query){
 }
 function rank(question){
  const q=normalize(question),tokens=terms(question);
- return COURSES.map((course,index)=>{
+ const published=typeof window.TrenerkiPublicCatalog==='function'?window.TrenerkiPublicCatalog():COURSES;
+ return published.map((course,index)=>{
   const title=normalize(course.title),id=normalize(course.id.replace(/-/g,' ')),desc=normalize(course.short),
    outline=normalize((course.outline||[]).join(' ')),cat=normalize(course.cat);
   let score=0;
@@ -207,7 +210,7 @@ function response(query){
 function setPeek(query){
  const peek=document.getElementById('anielka-peek');if(!peek)return;
  const q=String(query||'').trim();
- if(q.length<3){peek.innerHTML='';return;}
+ if(q.length<3&&normalize(q)!=='ai'){peek.innerHTML='';return;}
  const match=find(q);
  if(!match.found){
   peek.innerHTML='<strong>Anielka</strong><p>Rozumiem, że szukasz czegoś konkretnego. Dopisz, jaki problem chcesz rozwiązać.</p>';return;
@@ -243,7 +246,7 @@ function show(query,scroll=false){
  if(support){showSupport(support,scroll);return;}
  // Search is local while typing. Only a deliberate submission can contact the AI.
  resetAiRequest();
- if(v.length<3){
+ if(v.length<3&&normalize(v)!=='ai'){
   resetAiRequest();const out=document.getElementById('anielka-output');
   if(out)out.innerHTML='';setPeek('');
   if(typeof searchCourses==='function')searchCourses('');return;
@@ -278,7 +281,9 @@ document.addEventListener('click',event=>{
  const course=event.target.closest?.('[data-anielka-course]');
  if(course){
   const peek=document.getElementById('anielka-peek');if(peek)peek.innerHTML='';
-  if(typeof openCourse==='function')openCourse(course.getAttribute('data-anielka-course'));return;
+  const id=course.getAttribute('data-anielka-course');
+  if(id==='ksiegowosc-od-podstaw'){window.location.assign('/academy/ksiegowosc-od-podstaw.html');return;}
+  if(typeof openCourse==='function')openCourse(id);return;
  }
  const details=event.target.closest?.('[data-anielka-details]');
  if(details){
@@ -293,5 +298,5 @@ document.addEventListener('click',event=>{
 });
 window.anielkaFindCourses=find;
 window.anielkaShowRecommendations=show;
-window.anielkaCatalogIds=query=>supportContext||globalThis.TrenerkiSupport?.route(query)||String(query||'').trim().length<3?[]:rank(contextualQuery(query)).filter(x=>x.score>0).slice(0,15).map(x=>x.course.id);
+window.anielkaCatalogIds=query=>supportContext||globalThis.TrenerkiSupport?.route(query)||(String(query||'').trim().length<3&&normalize(query)!=='ai')?[]:rank(contextualQuery(query)).filter(x=>x.score>0).slice(0,15).map(x=>x.course.id);
 })();
