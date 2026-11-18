@@ -196,13 +196,25 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
 test('Karta kursu korzysta z właściwego RPC i nawigacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("supabase.rpc('ta_accounting_overview')"));assert.ok(code.includes('courseDestination(row.course_slug)'));assert.ok(code.includes('Przeczytanie nie jest zaliczeniem kursu.'));});
 test('Podgląd właściciela nie zapisuje dostępu lub publikacji',()=>{const code=readFileSync(new URL('../app/moje-kursy.tsx',import.meta.url),'utf8');assert.ok(code.includes("academyAction('whoami')"));assert.ok(code.includes('Panel właściciela — księgowość'));assert.ok(!code.includes('service_role'));assert.ok(!code.includes(".update({published"));assert.ok(!code.includes(".insert({user_id"));});
 
-test('Aktywny program księgowości nie jest liczony z archiwalnych lekcji',()=>{
+test('Kurs księgowości otwiera prosty widok ucznia; archiwum wymaga świadomego wyboru',()=>{
  const code=readFileSync(new URL('../app/ksiegowosc.tsx',import.meta.url),'utf8');
- assert.match(code,/overview\.program_version==='core-v3-20261113'/);
- assert.match(code,/overview\.active_program\?\.topics===100/);
- assert.match(code,/overview\.active_program\.complete_topics/);
- assert.match(code,/Katalog wcześniejszych lekcji:/);
+ assert.match(code,/supabase\.rpc\('ta_accounting_overview'\)/);
+ assert.ok(code.includes("useState<'home'|'program'|'search'|'saved'>('home')"));
+ assert.match(code,/mode==='home'/);
+ assert.match(code,/chapters\.filter\(c=>Number\(c\.authored_count\)>0\)/);
+ assert.ok(code.includes('Starsze materiały'));
+ assert.ok(code.includes('Rozpocznij lub kontynuuj naukę'));
+ assert.doesNotMatch(code,/Aktywny program: 10 działów/);
+ assert.doesNotMatch(code,/Katalog wcześniejszych lekcji:/);
  assert.doesNotMatch(code,/Dostępne treści: \{overview\.is_editor\?overview\.authored_count/);
+});
+test('AI bez tajemnic pozostaje otwarty po odświeżeniu katalogu, bez obejścia publikacji',()=>{
+ const html=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
+ assert.match(html,/const current=publicCatalogCourses\(\)\.find\(c=>c\.id===selectedCourse\.id\)/);
+ assert.match(html,/if\(current\)\{selectedCourse=current;render\(\);\}/);
+ assert.match(html,/else showCatalog\(\); \/\/ Withdrawn\/unpublished courses/);
+ assert.doesNotMatch(html,/!COURSES\.includes\(selectedCourse\)/);
+ assert.match(html,/livePublishedCatalogIds=new Set\(bySlug\.keys\(\)\)/);
 });
 test('Data odniesienia i link nie są bez dowodu potwierdzeniem aktualności prawa',()=>{
  const archive=readFileSync(new URL('../app/ksiegowosc.tsx',import.meta.url),'utf8');
