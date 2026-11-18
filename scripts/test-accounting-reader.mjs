@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {lessonNumber,parsePolishNumber,checkExercise,sourceURL,noteDraftKey,resumeNoteDraft,glossaryExplanation} from '../src/accounting/reader-core.js';
+import {lessonNumber,parsePolishNumber,checkExercise,sourceURL,officialAccountingSourceURL,visibleHomeworkTasks,noteDraftKey,resumeNoteDraft,glossaryExplanation} from '../src/accounting/reader-core.js';
 test('Prawidłowy zakres lekcji',()=>{assert.equal(lessonNumber('1'),1);assert.equal(lessonNumber('100000'),100000);for(const x of ['0','01','100001','1.5','1x','',undefined,'-1'])assert.equal(lessonNumber(x),null);});
 test('Pusta odpowiedź nie jest zerem',()=>{for(const x of ['', ' ',null,undefined])assert.equal(parsePolishNumber(x),null);assert.equal(checkExercise({type:'number',expected:0},'').correct,false);});
 test('Przecinek, kropka i ujemna liczba',()=>{assert.equal(parsePolishNumber('1230,50'),1230.5);assert.equal(parsePolishNumber('-12.25'),-12.25);assert.equal(parsePolishNumber('+5'),5);});
@@ -19,4 +19,19 @@ test('Słownik 100 tematów wyświetla znaczenie z obu formatów zamiast pustych
  assert.equal(glossaryExplanation({term:'RLS',definition:'Ograniczenie dostępu do wierszy.'}),'Ograniczenie dostępu do wierszy.');
  assert.equal(glossaryExplanation({term:'VAT',meaning:'Podatek od towarów i usług.'}),'Podatek od towarów i usług.');
  assert.match(glossaryExplanation({term:'Nieznany'}),/Brak objaśnienia/);
+});
+
+test('Oficjalne źródła MF i ELI działają, domeny podobne są odrzucone',()=>{
+ for(const u of ['https://podatki.gov.pl/podatki-firmowe/vat/','https://www.podatki.gov.pl/','https://eli.gov.pl/eli/DU/2026/1263/ogl'])
+  assert.equal(officialAccountingSourceURL(u),u);
+ for(const u of ['https://podatki.gov.pl.evil.test/a','https://fakepodatki.gov.pl/','https://bad.test/','http://podatki.gov.pl/','https://u:p@podatki.gov.pl/'])
+  assert.equal(officialAccountingSourceURL(u),null);
+});
+test('Dodatkowe zadania pokazują wyłącznie polecenia bez kluczy',()=>{
+ const task={title:'Praca domowa',instructions:['Oblicz sumę.','Znajdź duplikat.'],self_check:'WYNIK_TYLKO_W_PRYWATNYM_MATERIALE',correctIndex:1};
+ const visible=visibleHomeworkTasks([task]);
+ assert.deepEqual(visible,[{title:'Praca domowa',instructions:['Oblicz sumę.','Znajdź duplikat.']}]);
+ assert.equal(JSON.stringify(visible).includes('WYNIK_TYLKO_W_PRYWATNYM_MATERIALE'),false);
+ assert.deepEqual(visibleHomeworkTasks(null),[]);
+ assert.deepEqual(visibleHomeworkTasks([{title:'x',instructions:'invalid'}]),[]);
 });
