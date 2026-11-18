@@ -4,7 +4,7 @@ export const isAccountingCourse = slug => slug === ACCOUNTING_COURSE;
 export function courseDestination(slug, lesson) {
   if (!isAccountingCourse(slug)) return {pathname:'/nauka',params:{course:slug}};
   const valid = typeof lesson === 'string' && /^[1-9][0-9]{0,5}$/.test(lesson) && Number(lesson)<=100000;
-  return valid ? {pathname:'/ksiegowosc',params:{lesson}} : {pathname:'/ksiegowosc'};
+  return valid ? {pathname:'/ksiegowosc',params:{lesson}} : {pathname:'/program-ksiegowosci'};
 }
 export function accountingProgress(overview) {
   if (!overview || !Number.isSafeInteger(overview.approved_count) || overview.approved_count<0 ||
