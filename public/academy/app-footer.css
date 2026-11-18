@@ -118,9 +118,82 @@
   }
 }
 
+/* Compact account footer: do not let legal links compete with the login form. */
+.ta-app-footer--compact {
+  padding-block: 6px;
+}
+.ta-app-footer--compact .ta-app-footer-inner {
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.ta-app-footer--compact .ta-app-footer-help {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 4px 8px;
+  gap: 6px;
+  border-radius: 10px;
+}
+.ta-app-footer--compact .ta-app-footer-heart {
+  flex-basis: 26px;
+  width: 26px;
+  height: 26px;
+  font-size: 18px;
+}
+.ta-app-footer--compact .ta-app-footer-help-copy > span { display: none; }
+.ta-app-footer--compact .ta-app-footer-links {
+  min-width: 0;
+  width: auto;
+  flex: 1 1 auto;
+  margin: 0;
+  flex-wrap: nowrap;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.ta-app-footer--compact .ta-app-footer-links::-webkit-scrollbar { display: none; }
+.ta-app-footer--compact .ta-app-footer-links a,
+.ta-app-footer--compact .ta-app-footer-links .trenerki-footer-cookie {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding-inline: 8px;
+  white-space: nowrap;
+  font-size: .75rem;
+}
+
 @media (max-width: 560px) {
-  .ta-app-footer-inner { gap: 3px; }
-  .ta-app-footer-links { width: 100%; margin-left: -9px; }
+  /* All pages get a single slim bar rather than a large card + two rows. */
+  .ta-app-footer {
+    padding: 6px max(10px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  }
+  .ta-app-footer-inner { flex-wrap: nowrap; gap: 8px; }
+  .ta-app-footer-help { flex: 0 0 auto; min-height: 36px; padding: 4px 7px; gap: 5px; border-radius: 10px; }
+  .ta-app-footer-heart { flex-basis: 26px; width: 26px; height: 26px; font-size: 18px; }
+  .ta-app-footer-help-copy strong { font-size: .75rem; white-space: nowrap; }
+  .ta-app-footer-help-copy > span { display: none; }
+  .ta-app-footer-links {
+    min-width: 0;
+    width: auto;
+    flex: 1 1 auto;
+    margin: 0;
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .ta-app-footer-links::-webkit-scrollbar { display: none; }
+  .ta-app-footer-links a,
+  .ta-app-footer-links .trenerki-footer-cookie {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding-inline: 7px;
+    white-space: nowrap;
+    font-size: .75rem;
+  }
+
+  /* The onscreen keyboard must never leave a support footer over the form. */
+  body:has(input:focus, textarea:focus) .ta-app-footer { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
