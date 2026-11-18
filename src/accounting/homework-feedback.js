@@ -4,6 +4,8 @@ export function arithmeticMistakes(value){
  const errors=[],rx=/(^|[^\d])(-?\d+(?:[.,]\d+)?)\s*([+\-*×÷/:])\s*(-?\d+(?:[.,]\d+)?)\s*=\s*(-?\d+(?:[.,]\d+)?)(?![\d])/g;
  let m;
  while((m=rx.exec(text))!==null&&errors.length<3){
+  // Avoid false alarms when a number uses Polish thousand grouping, e.g. 1 000 or 1.000.
+  if((m[1]&&/\s/u.test(m[1])&&m.index>0&&/\d/.test(text[m.index-1]))||[m[2],m[4],m[5]].some(x=>/^\d{1,3}\.\d{3}$/u.test(x)))continue;
   const op=m[3],a=Number(m[2].replace(',','.')),b=Number(m[4].replace(',','.')),given=Number(m[5].replace(',','.'));
   if(!Number.isFinite(a)||!Number.isFinite(b)||!Number.isFinite(given))continue;
   if((op==='/'||op==='÷'||op===':')&&b===0)continue;
