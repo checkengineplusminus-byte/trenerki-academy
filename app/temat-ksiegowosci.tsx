@@ -8,6 +8,8 @@ import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/rea
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 // @ts-ignore — pure homework validation; authority remains the Supabase RPC.
 import {homeworkCanSubmit,homeworkSubmitted,homeworkVersion} from '../src/accounting/homework-core.js';
+// @ts-ignore — offline, deterministic formative checks; not a grade.
+import {draftGuidance} from '../src/accounting/homework-feedback.js';
 // @ts-ignore — pure CSV template; no answers, private records, or keys are exported.
 import {buildHomeworkCsv,homeworkSheetFilename} from '../src/accounting/homework-worksheet.js';
 // @ts-ignore — only suggests the correct existing tab; auth remains server-side.
@@ -57,6 +59,8 @@ function SectionPhoto({photo}:{photo:any}){
 }
 type Answer={exercise_id:string;answer:string};
 type Homework={response:string;version:number;submitted_at:string|null;updated_at:string}|null;
+type CoachResult={ok:true;verdict:'needs_revision'|'possibly_ready'|'uncertain';reply:string;next_step:string;agent_online?:boolean;math_error?:boolean};
+type CoachMessage=CoachResult&{mode:'hint'|'review'};
 function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:number;userId:string;initial:string;onSaved:(id:string,answer:string)=>void}){
  const [answer,setAnswer]=useState(initial),[feedback,setFeedback]=useState<any>(null);
  const [saving,setSaving]=useState(false),[saved,setSaved]=useState(false),[saveError,setSaveError]=useState('');
@@ -106,6 +110,10 @@ export default function TematKsiegowosci(){
  const [userId,setUserId]=useState('');
  const [homework,setHomework]=useState<Homework>(null);
  const [homeworkText,setHomeworkText]=useState('');
+ const [coachMessage,setCoachMessage]=useState<CoachMessage|null>(null);
+ const [coachDraft,setCoachDraft]=useState('');
+ const [coachBusy,setCoachBusy]=useState(false),[coachError,setCoachError]=useState('');
+ const homeworkTextRef=useRef(''),saveLock=useRef(false);
  const [homeworkReady,setHomeworkReady]=useState(false);
  const [homeworkBusy,setHomeworkBusy]=useState(false);
  const [homeworkError,setHomeworkError]=useState('');
@@ -118,7 +126,8 @@ export default function TematKsiegowosci(){
  const scroll=useRef<React.ComponentRef<typeof ScrollView>>(null);
  const serial=useRef(0),owner=useRef('');
  const load=useCallback(async()=>{
-  const run=++serial.current;setBusy(true);setLesson(null);setError('');setWarning('');setAnswers({});setHomework(null);setHomeworkText('');setHomeworkReady(false);setHomeworkError('');setHomeworkMessage('');
+  const run=++serial.current;setBusy(true);setLesson(null);setError('');setWarning('');setAnswers({});setHomework(null);setHomeworkText('');homeworkTextRef.current='';setHomeworkReady(false);setHomeworkError('');setHomeworkMessage('');
+  setCoachMessage(null);setCoachDraft('');setCoachBusy(false);setCoachError('');
   try{
    if(topic===null)throw new Error('Nieprawidłowy numer tematu.');
    const u=await supabase.auth.getUser();
@@ -145,7 +154,7 @@ export default function TematKsiegowosci(){
    if(run!==serial.current)return;
    if(h.error)throw new Error('Nie udało się odczytać pracy domowej. Zapis jest zablokowany, aby nie nadpisać wcześniejszej wersji.');
    setHomework((h.data||null) as Homework);
-   setHomeworkText(h.data?.response||'');
+   setHomeworkText(h.data?.response||'');homeworkTextRef.current=h.data?.response||'';
    setHomeworkReady(true);
   }catch(e:any){if(run===serial.current)setError(e?.message||'Błąd odczytu lekcji.');}
   finally{if(run===serial.current)setBusy(false);}
@@ -155,7 +164,7 @@ export default function TematKsiegowosci(){
  useEffect(()=>{
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
    if(owner.current && owner.current!==(session?.user?.id||'')){
-    ++serial.current;owner.current='';setLesson(null);setAnswers({});setHomework(null);setHomeworkText('');setHomeworkReady(false);setUserId('');router.replace('/konto');
+    ++serial.current;owner.current='';setLesson(null);setAnswers({});setHomework(null);setHomeworkText('');homeworkTextRef.current='';setCoachMessage(null);setCoachDraft('');setCoachError('');setHomeworkReady(false);setUserId('');router.replace('/konto');
    }
   });
   return()=>subscription.unsubscribe();
