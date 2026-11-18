@@ -297,6 +297,7 @@ export default function AdminPage(){
  const students:Student[]=stats?.users||[];
  const filteredStudents=useMemo(()=>students.filter(u=>(u.email||'').toLowerCase().includes(filter.trim().toLowerCase())),[students,filter]);
  useEffect(()=>{if(authorized)void refresh();},[authorized]);
+ useEffect(()=>{if(authorized&&tab==='accounting')void loadAccounting();},[authorized,tab]);
  async function refresh(){
   setBusy(true);setError('');
   try{
