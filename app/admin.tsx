@@ -327,7 +327,7 @@ export default function AdminPage(){
   if(!accountReport)return;
   const quote=(x:unknown)=>'"'+String(x??'').replace(/"/g,'""')+'"';
   const cols=['data_PL','rodzaj_operacji','waluta','kwota_brutto_jednostki','oplata_stripe_jednostki','kwota_po_oplacie_jednostki','stripe_source','stripe_balance_id'];
-  const csv='\\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id].map(quote).join(';'))].join('\\r\\n');
+  const csv='\uFEFF'+[cols.join(';'),...accountReport.rows.map(x=>[x.date,x.category,x.currency,(x.gross_grosze/100).toFixed(2),(x.fee_grosze/100).toFixed(2),(x.net_grosze/100).toFixed(2),x.source,x.id].map(quote).join(';'))].join('\r\n');
   if(Platform.OS==='web'&&typeof document!=='undefined'){
    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Trenerki-Stripe-'+accountReport.period+'-do-Saldeo.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
