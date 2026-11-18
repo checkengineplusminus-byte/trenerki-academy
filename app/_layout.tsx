@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,Pressable,ActivityIndicator,Platform} from 'react-native';
+import {View,Text,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
 import {Link,Slot,Stack,usePathname,useGlobalSearchParams,Redirect,type ErrorBoundaryProps} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
@@ -52,6 +52,8 @@ export default function RootLayout(){
 
 function AccountLayout(){
  const pathname=usePathname();
+ const {width}=useWindowDimensions();
+ const hideAccountFooter=pathname==='/konto'&&width<640;
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  useEffect(()=>{
@@ -99,5 +101,5 @@ function AccountLayout(){
    <Stack.Screen name="dyplom"/>
    <Stack.Screen name="moje-dyplomy"/>
   </Stack.Protected>
- </Stack></View>{pathname==='/nauka'?<LearningSupportBar/>:<HelpFooter compact={pathname==='/konto'}/>}</View>;
+ </Stack></View>{pathname==='/nauka'?<LearningSupportBar/>:!hideAccountFooter?<HelpFooter/>:null}</View>;
 }
