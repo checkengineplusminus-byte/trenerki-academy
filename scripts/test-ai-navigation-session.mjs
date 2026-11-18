@@ -40,7 +40,9 @@ test('AI preview and owned checkout keep the current browser session',()=>{
  assert(buy.includes("if(authError)throw new Error("));
  assert(buy.includes("setReload(v=>v+1)"));
  assert(buy.includes("router.replace(accountingCourse?'/program-ksiegowosci':{pathname:'/nauka',params:{course:slug}})"));
+ assert(buy.includes("window.location.assign('/nauka?course='+encodeURIComponent(slug))"),'AI purchase CTA must use stable same-origin page navigation');
  assert(my.includes("supabase.auth.signOut({scope:'local'})"),'Signing out of one device must not log out all devices');
  assert(my.includes("courseDestination(row.course_slug)"));
+ assert(my.includes("window.location.assign('/nauka?course='+encodeURIComponent(row.course_slug))"),'Owned AI course card must use same-origin navigation');
  assert(my.includes("if(authError)throw new Error("));
 });
