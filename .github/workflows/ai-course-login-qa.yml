@@ -1,0 +1,32 @@
+name: AI course login and launch QA
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify AI learning route preserves authentication
+        run: node --experimental-default-type=module --test scripts/test-ai-navigation-session.mjs
+      - name: Verify audited legacy reader and enrollment checks
+        run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+      - name: Verify existing affiliate and checkout links
+        run: node scripts/test-affiliate-program.mjs
+      - name: Parse TypeScript and TSX for affected screens
+        run: |
+          npm install --prefix /tmp/tscheck --ignore-scripts --no-save --no-audit typescript@5.9.3
+          node <<'NODE'
+          const fs=require('fs'),ts=require('/tmp/tscheck/node_modules/typescript');
+          let bad=0;
+          for(const file of ['app/_layout.tsx','app/konto.tsx','app/kup.tsx','app/moje-kursy.tsx','app/nauka.tsx']){
+            const parsed=ts.createSourceFile(file,fs.readFileSync(file,'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+            console.log(file+': '+parsed.parseDiagnostics.length+' syntax errors');
+            for(const d of parsed.parseDiagnostics){console.error(ts.flattenDiagnosticMessageText(d.messageText,' '));bad++;}
+          }
+          if(bad)process.exitCode=1;
+          NODE
