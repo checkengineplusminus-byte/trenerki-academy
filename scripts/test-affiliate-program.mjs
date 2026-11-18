@@ -33,7 +33,7 @@ assert(routerConfig.expo.plugins.some(p=>Array.isArray(p)&&p[0]==='expo-router'&
  p[1]?.redirects?.some(r=>r.source==='/[affiliateNumber]'&&r.destination==='/referral')),
  'Numeric root link needs actual Expo Hosting server redirect');
 const referral=read('app/referral.tsx');
-includes(referral,['affiliateNumber','ta-affiliate-resolve','/academy/index.html?ref=','^\\\\d'],'Public short link resolver route');
+includes(referral,['affiliateNumber','ta-affiliate-resolve','/academy/index.html?ref=','Number(raw)'],'Public short link resolver route');
 const brand=read('public/academy/assets/trenerki-logo-partner.svg');
 includes(brand,['TRENERKI','ACADEMY','viewBox="0 0 1200 360"'],'Downloadable branding');
 
