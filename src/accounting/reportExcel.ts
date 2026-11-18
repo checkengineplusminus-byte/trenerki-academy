@@ -96,7 +96,7 @@ const pad=(items:Cell[],n:number)=>[...items,...Array.from({length:Math.max(0,n-
 export function downloadLedgerXlsx(report:LedgerReport){
  if(typeof document==='undefined')throw new Error('Otwórz panel w przeglądarce internetowej.');
  const totals=summarize(report);
- const single=report.rows.length===1;
+ const single=report.scope==='transaction'&&report.rows.length===1;
  const title=single?'KARTA TRANSAKCJI':report.period.length===4?'RAPORT ROCZNY':'RAPORT MIESIĘCZNY';
  const summary:Sheet={name:'Podsumowanie',rows:[],heights:{1:34,2:24,5:26,8:26},
   widths:[19,20,20,20,20,21,22,20,18],merge:['A1:I1','A2:I2','A5:I5','A7:I7','A'+(12+totals.length)+':I'+(12+totals.length)],
