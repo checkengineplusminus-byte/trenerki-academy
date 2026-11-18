@@ -13,7 +13,7 @@ const intro=html.slice(html.indexOf('const ACCOUNTING_CATALOG='),html.indexOf('c
 const catalog=html.slice(html.indexOf('let catalogVisibleByCategory={}'),html.indexOf('function taAffiliateCode(){'));
 assert(intro.includes('function publicCatalogCourses()'),'Public catalogue source must expose published course lookup');
 assert(catalog.includes('function catalogCourseMatches('),'Search cannot drop standalone paid courses');
-const mainInline=html.slice(html.indexOf('const COURSES='),html.lastIndexOf('</script>'));
+const mainInline=html.slice(html.indexOf('const COURSES='),html.indexOf('</script>',html.indexOf('const COURSES=')));
 new Script(mainInline,{filename:'academy-inline.js'}); // syntax check, no execution
 
 const elements={'#chips':{innerHTML:''},'#course-cards':{innerHTML:''}};
