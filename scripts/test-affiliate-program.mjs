@@ -10,10 +10,12 @@ const affiliate=read('supabase/functions/ta-affiliate/index.ts'),admin=read('sup
 const partner=read('app/partner.tsx'),partnerAdmin=read('app/partner-admin.tsx');
 const account=read('app/konto.tsx'),buy=read('app/kup.tsx'),layout=read('app/_layout.tsx');
 function includes(source,parts,label){for(const part of parts)assert(source.includes(part),label+': '+part)}
-includes(home,['academy-footer__affiliate','taAffiliateCode()','&ref=','prefers-reduced-motion:reduce','function startPurchase(id)'],'Public site');
-includes(styles,['ta-app-footer-affiliate','prefers-reduced-motion:reduce'],'App footer');
-includes(landing,['Zarabiaj 10%','Stripe','PIT','reklam'],'Affiliate landing');
-includes(terms,['§1.','§11.','PIT-11','30 dni','300 zł','reklam','Stripe'],'Affiliate terms');
+includes(home,['Program partnerski','taAffiliateCode()','&ref=','prefers-reduced-motion:reduce','function startPurchase(id)'],'Public site');
+includes(styles,['.ta-app-footer-links','prefers-reduced-motion:reduce'],'App footer');
+assert(!home.includes('academy-footer__affiliate')&&!styles.includes('ta-app-footer-affiliate'),'No oversized affiliate footer CTA');
+includes(landing,['Zarabiaj 10%','500 zł','5 000,00 zł','reklam'],'Affiliate landing');
+assert(!landing.includes('Pierwsze przelewy wymagają'),'No internal payout alarm on landing');
+includes(terms,['§1.','§11.','PIT-11','30 dni','500 zł','reklam','Stripe'],'Affiliate terms');
 includes(privacy,['RODO','Stripe','Art. 6','kupującego','rachunki bankowe'],'Affiliate privacy');
 includes(account,['pending_referral_code','params.next===\'affiliate\'','referral?{ref:referral}'],'Account referral continuation');
 includes(buy,['referralCode','referral_code:referralCode','self_referral_not_allowed'],'Checkout UI');
@@ -24,7 +26,7 @@ includes(admin,['ta_admins','eq(\'role\',\'owner\')','ta_affiliate_admin_report'
 includes(partner,['Załóż konto partnerskie','stripe_connected','Prowizje','regulamin-afiliacyjny.html','prywatnosc-afiliacja.html','ta-affiliate'],'Partner UI');
 includes(partnerAdmin,['ta-affiliate-admin','ta-affiliate-admin','Pobierz zestawienie CSV','Potwierdzam rzeczywistą weryfikację','affiliate-partner-admin-search','affiliate-partner-email','E-mail'],'Owner UI');
 includes(affiliate,['bank_transfer_pending_tax_verification'],'Partner transfers require accountant review, no new Connect accounts');
-includes(partner,['300 zł','fakturę','PIT-11','przelew bankowy'],'Company and individual bank transfer UI');
+includes(partner,['500 zł','fakturę','przelew bankowy'],'Company and individual bank transfer UI');
 includes(partner,['short_id','trenerki.com/','trenerki-logo-partner.svg','Pobierz logo PNG'],'Numeric short links and downloadable brand artwork');
 includes(partnerAdmin,['Krótki link','short_id','Numer oczekuje'],'Owner numeric link and CSV');
 const routerConfig=JSON.parse(read('app.json'));
