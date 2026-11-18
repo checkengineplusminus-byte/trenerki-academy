@@ -64,8 +64,21 @@ type CoachMessage=CoachResult&{mode:'hint'|'review'};
 function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:number;userId:string;initial:string;onSaved:(id:string,answer:string)=>void}){
  const [answer,setAnswer]=useState(initial),[feedback,setFeedback]=useState<any>(null);
  const [saving,setSaving]=useState(false),[saved,setSaved]=useState(false),[saveError,setSaveError]=useState('');
- const lock=useRef(false);
+ const [hint,setHint]=useState(''),[hintBusy,setHintBusy]=useState(false),[hintError,setHintError]=useState('');
+ const lock=useRef(false),hintLock=useRef(false);
  const change=(v:string)=>{setAnswer(v);setFeedback(null);setSaved(false);setSaveError('');};
+ async function askQuizHint(){
+  if(hintLock.current||typeof exercise?.id!=='string')return;
+  hintLock.current=true;setHintBusy(true);setHintError('');
+  try{
+   const {data,error:requestError}=await supabase.functions.invoke<{ok?:boolean;reply?:string}>('ta-accounting-lesson-coach',{
+    body:{topic_no:topicNo,mode:'hint',exercise_id:exercise.id}
+   });
+   if(requestError||!data?.ok||!data.reply)throw new Error('Anielka jest chwilowo niedostępna. Możesz nadal ćwiczyć i poprawiać odpowiedź.');
+   setHint(data.reply);
+  }catch(e:any){setHintError(String(e?.message||'Nie udało się pobrać wskazówki.'))}
+  finally{hintLock.current=false;setHintBusy(false);}
+ }
  async function check(){
   if(lock.current)return;
   const result=checkExercise(exercise,answer);
@@ -91,12 +104,20 @@ function Task({exercise,topicNo,userId,initial,onSaved}:{exercise:any;topicNo:nu
    <TextInput accessibilityLabel="Odpowiedź liczbowa" editable={!saving} value={answer} onChangeText={change} inputMode="decimal" maxLength={100} placeholder="Wpisz wynik" style={s.input}/>
    <Text style={s.small}>{exercise.unit||''}</Text>
   </View>}
-  <Pressable disabled={saving} accessibilityRole="button" onPress={()=>void check()} style={s.button}>
-   <Text style={s.buttonText}>{saving?'Zapisywanie…':'Sprawdź i zapisz odpowiedź'}</Text>
-  </Pressable>
+  <View style={s.coachActions}>
+   <Pressable accessibilityRole="button" disabled={hintBusy||saving} onPress={()=>void askQuizHint()} style={s.coachButton}>
+    <Text style={s.coachButtonText}>{hintBusy?'Anielka wyjaśnia…':'💡 Anielka — wyjaśnij pytanie'}</Text>
+   </Pressable>
+   <Pressable disabled={saving} accessibilityRole="button" onPress={()=>void check()} style={[s.homeworkButton,s.homeworkButtonPrimary]}>
+    <Text style={s.homeworkButtonPrimaryText}>{saving?'Zapisywanie…':'Sprawdź odpowiedź →'}</Text>
+   </Pressable>
+  </View>
+  {!!hint&&<View style={s.coachFeedback}><Text style={s.label}>💬 Anielka podpowiada</Text><Text style={s.bodySmall}>{hint}</Text><Text style={s.small}>Ta wskazówka nie zalicza ćwiczenia.</Text></View>}
+  {!!hintError&&<Text accessibilityRole="alert" style={s.warning}>{hintError}</Text>}
   {feedback&&<View accessibilityLiveRegion="polite" style={feedback.valid?s.notice:s.warning}>
    <Text style={s.label}>{!feedback.valid?feedback.message:feedback.correct?'Poprawnie!':'To jeszcze nie jest poprawny wynik.'}</Text>
    {feedback.valid&&<Text style={s.body}>{feedback.explanation}</Text>}
+   {feedback.valid&&!feedback.correct&&<Text style={s.bodySmall}>Ta odpowiedź nie zalicza ćwiczenia. Popraw ją albo poproś Anielkę o wskazówkę.</Text>}
   </View>}
   {saved&&<Text style={s.small}>Odpowiedź zapisana na Twoim koncie. Możesz wrócić i zmienić ją później.</Text>}
   {!!saveError&&<Text accessibilityRole="alert" style={s.warning}>{saveError}</Text>}
