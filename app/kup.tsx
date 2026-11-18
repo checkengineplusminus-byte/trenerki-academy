@@ -13,7 +13,7 @@ export default function Purchase(){
  const referralCode=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const router=useRouter(),[item,setItem]=useState<Course|null>(null),[preview,setPreview]=useState<Preview|null>(null),
  [email,setEmail]=useState(''),[termsAccepted,setTermsAccepted]=useState(false),[earlyAccessConsent,setEarlyAccessConsent]=useState(false),[busy,setBusy]=useState(true),
- [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState('');
+ [paying,setPaying]=useState(false),[owned,setOwned]=useState(''),[message,setMessage]=useState(''),[reload,setReload]=useState(0);
  const [creditBalance,setCreditBalance]=useState(0),[applyCredit,setApplyCredit]=useState(true),[quote,setQuote]=useState<{slug:string;price:number}|null>(null);
  const accountingCourse=slug==='ksiegowosc-od-podstaw';
  const quoted=quote?.slug===slug?quote.price:null;
@@ -51,7 +51,7 @@ export default function Purchase(){
    }
   }catch(e:any){if(active)setMessage(e?.message||'Nie udało się pobrać danych kursu.');}
   finally{if(active)setBusy(false);}
- })();return()=>{active=false}},[slug]);
+ })();return()=>{active=false}},[slug,reload]);
  async function checkout(){
   if(!item||paying)return;
   setPaying(true);setMessage('');
@@ -212,7 +212,7 @@ export default function Purchase(){
    </>}
    {!!message&&<View style={{backgroundColor:'#fff2dc',padding:17,borderRadius:12,gap:9}}><Text accessibilityRole="alert" style={{color:'#805f2e'}}>{message}</Text>
     <Pressable accessibilityRole="button" style={{alignSelf:'flex-start',padding:10,borderRadius:9,backgroundColor:'#e1efda'}}
-     onPress={()=>router.replace({pathname:'/kup',params:{course:slug,...(referralCode?{ref:referralCode}:{})}})}>
+     onPress={()=>{setBusy(true);setReload(v=>v+1);}}>
      <Text style={{color:ink,fontWeight:'800'}}>Sprawdź ponownie bez wylogowania</Text>
     </Pressable></View>}
    <Pressable onPress={()=>router.replace('/moje-kursy')} style={{padding:12}}><Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>Moje kursy</Text></Pressable>
