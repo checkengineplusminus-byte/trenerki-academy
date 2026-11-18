@@ -19,7 +19,9 @@ try{
   const context=await browser.newContext({viewport:{width,height:844},locale:'pl-PL',serviceWorkers:'block'});
   const page=await context.newPage();
   const errors=[];
-  page.on('pageerror',e=>errors.push(String(e)));
+  page.on('pageerror',e=>{errors.push(String(e));console.log('PAGE_ERROR',String(e).slice(0,1000));});
+  page.on('framenavigated',frame=>{if(frame===page.mainFrame())console.log('NAV',width,frame.url());});
+  page.on('console',message=>{if(message.type()==='error')console.log('CONSOLE_ERROR',String(message.text()).slice(0,600));});
   await page.addInitScript(({user})=>{
    localStorage.setItem('trenerki_ads_consent_v1','no');
    localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({
@@ -49,6 +51,8 @@ try{
   const button=page.getByText('Masz dostęp — rozpocznij naukę →');
   await button.waitFor({timeout:30000});
   await button.click();
+  await page.waitForTimeout(1600);
+  console.log('POST_CLICK',width,page.url(),(await page.locator('body').innerText()).slice(0,1100),'ERRORS',errors.slice(0,5));
   await page.getByTestId('course-reading-introduction').waitFor({timeout:30000});
   const url=new URL(page.url());
   assert.equal(url.pathname,'/nauka','Invalid destination at '+width+'px: '+page.url());
