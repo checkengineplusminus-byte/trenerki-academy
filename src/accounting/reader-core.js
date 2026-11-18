@@ -51,3 +51,20 @@ export function exerciseSaveLabel(checked, saved, error) {
   if (saved) return 'Odpowiedź zapisana na Twoim koncie. Możesz poprawić ją i spróbować ponownie.';
   return checked ? 'Wynik ćwiczenia nie jest wynikiem egzaminu.' : '';
 }
+
+/** Strict official-source allowlist for legal curiosity links (reject similar-looking domains). */
+export function officialAccountingSourceURL(raw){
+ const href=sourceURL(raw);
+ if(!href)return null;
+ const host=new URL(href).hostname.toLowerCase();
+ return ['eli.gov.pl','podatki.gov.pl','www.podatki.gov.pl','ksef.podatki.gov.pl','eur-lex.europa.eu','uodo.gov.pl','www.uodo.gov.pl'].includes(host)?href:null;
+}
+/** Display lesson homework instructions without exposing private self-check answers. */
+export function visibleHomeworkTasks(raw){
+ if(!Array.isArray(raw))return [];
+ return raw.filter(x=>x&&typeof x.title==='string'&&Array.isArray(x.instructions))
+   .slice(0,10).map(x=>({
+    title:x.title.trim().slice(0,180),
+    instructions:x.instructions.filter(s=>typeof s==='string'&&s.trim()).slice(0,20).map(s=>s.trim())
+   }));
+}
