@@ -128,7 +128,7 @@
 }
 .ta-app-footer--compact .ta-app-footer-help {
   flex: 0 0 auto;
-  min-height: 36px;
+  min-height: 44px;
   padding: 4px 8px;
   gap: 6px;
   border-radius: 10px;
@@ -155,7 +155,7 @@
 .ta-app-footer--compact .ta-app-footer-links a,
 .ta-app-footer--compact .ta-app-footer-links .trenerki-footer-cookie {
   flex: 0 0 auto;
-  min-height: 36px;
+  min-height: 44px;
   padding-inline: 8px;
   white-space: nowrap;
   font-size: .75rem;
@@ -167,7 +167,7 @@
     padding: 6px max(10px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
   }
   .ta-app-footer-inner { flex-wrap: nowrap; gap: 8px; }
-  .ta-app-footer-help { flex: 0 0 auto; min-height: 36px; padding: 4px 7px; gap: 5px; border-radius: 10px; }
+  .ta-app-footer-help { flex: 0 0 auto; min-height: 44px; padding: 4px 7px; gap: 5px; border-radius: 10px; }
   .ta-app-footer-heart { flex-basis: 26px; width: 26px; height: 26px; font-size: 18px; }
   .ta-app-footer-help-copy strong { font-size: .75rem; white-space: nowrap; }
   .ta-app-footer-help-copy > span { display: none; }
@@ -186,7 +186,7 @@
   .ta-app-footer-links a,
   .ta-app-footer-links .trenerki-footer-cookie {
     flex: 0 0 auto;
-    min-height: 36px;
+    min-height: 44px;
     padding-inline: 7px;
     white-space: nowrap;
     font-size: .75rem;
