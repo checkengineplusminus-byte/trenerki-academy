@@ -325,34 +325,37 @@ export default function TematKsiegowosci(){
     <Text style={s.body}>{m.practice.task}</Text>
     {Array.isArray(m.practice.homework)&&m.practice.homework.some((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0)&&
      <View style={s.card}>
-      <Text accessibilityRole="header" style={s.h2}>Dodatkowe zadania do samodzielnego wykonania</Text>
+      <Pressable accessibilityRole="button" accessibilityState={{expanded:showExtraHomework}} onPress={()=>setShowExtraHomework(v=>!v)} style={s.accordionButton}>
+       <Text style={s.h2}>Dodatkowe polecenia</Text><Text style={s.label}>{showExtraHomework?'−':'+'}</Text>
+      </Pressable>
+      {showExtraHomework&&<>
       {m.practice.homework.filter((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0).map((h:any,i:number)=>
        <View key={h.id||i} style={s.gloss}>
         <Text style={s.label}>Zadanie {i+1}{typeof h.format==='string'?' · '+h.format:''}</Text>
         <Text style={s.body}>{h.task}</Text>
         {typeof h.deliverable==='string'&&h.deliverable.trim()!==''&&<Text style={s.small}>Co przygotować: {h.deliverable}</Text>}
        </View>)}
-      <Text style={s.small}>Wykonaj ćwiczenia samodzielnie, bez danych prawdziwych klientów. Opisz ich wynik w rozwiązaniu poniżej; możesz oddać wszystkie części jako jedną pracę.</Text>
+      <Text style={s.small}>Opisz wszystkie części w jednym rozwiązaniu poniżej, bez danych prawdziwych klientów.</Text>
+      </>}
      </View>}
     <Link href={{pathname:'/biuro-ksiegowe',params:{tab:recommendedLabTab(topic)}}} style={s.link}>
      Otwórz ćwiczenie: {LAB_TAB_NAMES[recommendedLabTab(topic)]}
     </Link>
     {[54,55,98].includes(lesson.topic_no)&&<Link href="/majatek-ksiegowy" style={s.link}>Otwórz kartotekę środków trwałych</Link>}
     {[24,47,48].includes(lesson.topic_no)&&<Link href="/formularze-ksiegowego" style={s.link}>Otwórz ćwiczenia z formularzami</Link>}
-    <Text style={s.label}>Zrób zadanie również we własnym Excelu</Text>
-    <Text style={s.small}>1. Pobierz arkusz z poleceniem i kolumnami dopasowanymi do tego działu. 2. Otwórz CSV w Excelu, Arkuszach Google lub LibreOffice. 3. Uzupełnij własne obliczenia, wykonaj kontrolę i zapisz plik na urządzeniu. 4. Opisz rozwiązanie poniżej i oddaj pracę domową na koncie.</Text>
+    <Text style={s.label}>Opcjonalnie: arkusz Excel</Text>
+    <Text style={s.bodySmall}>Możesz pobrać arkusz, wykonać w nim obliczenia, a potem wpisać swoje wnioski do pola „Twoje rozwiązanie” na tej stronie.</Text>
     {Platform.OS==='web'&&<Pressable accessibilityRole="button" onPress={downloadHomeworkWorksheet} style={s.button}>
      <Text style={s.buttonText}>Pobierz arkusz pracy domowej (Excel / CSV)</Text>
     </Pressable>}
-    <Text style={s.small}>Arkusz jest pustym szablonem. Zawiera polecenie, ale nie zawiera odpowiedzi ani danych osobowych i nie przesyła Twojego pliku na serwer.</Text>
-    <Text style={s.small}>Możesz pracować na własnym arkuszu Excel, ale nie wpisuj rzeczywistych danych klientów. W polu poniżej zapisz swoje obliczenia, kroki, wynik i kwestie wymagające wyjaśnienia. Przeniesienie do biura nie wykonuje zadania.</Text>
+    <Text style={s.small}>Plik jest tylko szablonem. Nie wysyła danych na serwer. Pracuj na danych fikcyjnych.</Text>
     {!homeworkReady?<Text style={s.warning}>Nie potwierdzono jeszcze odczytu Twojej wcześniejszej pracy. Zapis jest wyłączony.</Text>:<>
-     <Text style={s.label}>Twoje rozwiązanie (wersja {homework?.version||'nowa'})</Text>
+     <Text style={s.h2}>✍️ Tutaj wpisz swoją pracę</Text>
      <TextInput accessibilityLabel="Rozwiązanie pracy domowej" multiline textAlignVertical="top" maxLength={10000}
       editable={!homeworkBusy} value={homeworkText} onChangeText={value=>{setHomeworkText(value);setHomeworkMessage('');setHomeworkError('');}}
       placeholder={'1. Jakie dokumenty sprawdziłem?\\n2. Moje obliczenia i źródła...\\n3. Wynik oraz wątpliwości...'}
       style={s.homeworkInput}/>
-     <Text style={s.small}>{homeworkText.length}/10 000 znaków · oddanie wymaga minimum 120 znaków.</Text>
+     <Text style={s.small}>{homeworkText.length} znaków · minimum 120 do oddania. Szkic można zapisać wcześniej.</Text>
      <View style={s.row}>
       <Pressable accessibilityRole="button" disabled={homeworkBusy||busy} onPress={()=>void saveHomework(false)} style={s.button}>
        <Text style={s.buttonText}>{homeworkBusy?'Zapisywanie…':'Zapisz szkic'}</Text>
