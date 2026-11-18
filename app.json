@@ -12,7 +12,21 @@
       "bundler": "metro"
     },
     "plugins": [
-      "expo-router"
+      [
+        "expo-router",
+        {
+          "redirects": [
+            {
+              "source": "/[affiliateNumber]",
+              "destination": "/referral",
+              "methods": [
+                "GET",
+                "HEAD"
+              ]
+            }
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
