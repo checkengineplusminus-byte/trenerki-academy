@@ -3,7 +3,7 @@ import {ActivityIndicator,Image,Linking,Platform,Pressable,ScrollView,StyleSheet
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
-import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/reader-core.js';
+import {checkExercise,sourceURL,officialAccountingSourceURL,visibleHomeworkTasks,glossaryExplanation} from '../src/accounting/reader-core.js';
 // @ts-ignore — same read-only progress rules as the 100-topic programme.
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 // @ts-ignore — pure homework validation; authority remains the Supabase RPC.
@@ -203,7 +203,7 @@ export default function TematKsiegowosci(){
       <Text style={s.curiosityTitle}>CIEKAWOSTKA</Text>
       <Text selectable style={s.body}>{section.curiosity.text}</Text>
       {section.curiosity.source_ref?<Text style={s.curiositySource}>Źródło: {section.curiosity.source_ref}</Text>:null}
-      {sourceURL(section.curiosity.source_url)&&/^https:\/\/(eli\.gov\.pl|eur-lex\.europa\.eu|uodo\.gov\.pl|www\.uodo\.gov\.pl|ksef\.podatki\.gov\.pl)\//i.test(section.curiosity.source_url)?<Pressable accessibilityRole="link" onPress={()=>Linking.openURL(section.curiosity.source_url)}><Text style={s.link}>Sprawdź źródło urzędowe</Text></Pressable>:null}
+      {officialAccountingSourceURL(section.curiosity.source_url)?<Pressable accessibilityRole="link" onPress={()=>Linking.openURL(officialAccountingSourceURL(section.curiosity.source_url)!)}><Text style={s.link}>Sprawdź źródło urzędowe</Text></Pressable>:null}
     </View>:null}
     <SectionPhoto photo={section.photo}/>
    </View>)}
@@ -219,6 +219,14 @@ export default function TematKsiegowosci(){
     {(example.steps||[]).map((step:string,j:number)=><Text key={j} style={s.body}>{j+1}. {step}</Text>)}
     <Text style={s.result}>{example.result}</Text>
    </View>)}
+   {visibleHomeworkTasks(m.homework).length>0&&<View style={s.card}>
+    <Text accessibilityRole="header" style={s.h2}>Dwie prace do samodzielnego wykonania</Text>
+    {visibleHomeworkTasks(m.homework).map((task:any,i:number)=><View key={i} style={s.gloss}>
+     <Text style={s.label}>{task.title}</Text>
+     {task.instructions.map((instruction:string,j:number)=><Text key={j} style={s.body}>{j+1}. {instruction}</Text>)}
+    </View>)}
+    <Text style={s.small}>Wykonaj zadania na fikcyjnych danych. Zapisz swoje obliczenia i wnioski poniżej. Klucz samokontroli nie jest podawany przed rozwiązaniem.</Text>
+   </View>}
    {m.practice&&<View style={s.practice}>
     <Text style={s.eyebrowDark}>ZADANIE DOMOWE · TEMAT {lesson.topic_no}/100</Text><Text style={s.h2}>{m.practice.role}</Text>
     <Text style={s.body}>{m.practice.task}</Text>
