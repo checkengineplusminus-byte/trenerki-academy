@@ -1,0 +1,38 @@
+name: Anielka accounting homework QA
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  lesson_feedback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check arithmetic and Anielka homework regression
+        run: node --experimental-default-type=module --test scripts/test-accounting-homework-feedback.mjs
+      - name: Check lesson progression and original save RPC
+        run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+      - name: Check homework input precedes extra instructions
+        run: node --experimental-default-type=module --test scripts/test-accounting-extra-homework-reader.mjs
+      - name: Install isolated TypeScript parser
+        run: npm install --prefix /tmp/trenerki-ts-parser --ignore-scripts --no-save --no-audit typescript@5.9.3
+      - name: Parse frontend and edge function TypeScript
+        run: |
+          node <<'NODE'
+          const fs=require('fs');
+          const ts=require('/tmp/trenerki-ts-parser/node_modules/typescript');
+          let failure=false;
+          for(const name of ['app/temat-ksiegowosci.tsx','app/program-ksiegowosci.tsx','supabase/functions/ta-accounting-lesson-coach/index.ts']){
+            const file=ts.createSourceFile(name,fs.readFileSync(name,'utf8'),ts.ScriptTarget.Latest,true,name.endsWith('.tsx')?ts.ScriptKind.TSX:ts.ScriptKind.TS);
+            console.log(name+': '+file.parseDiagnostics.length+' parse errors');
+            for(const d of file.parseDiagnostics){
+              const loc=file.getLineAndCharacterOfPosition(d.start||0);
+              console.error(name+':'+(loc.line+1)+':'+(loc.character+1)+' '+ts.flattenDiagnosticMessageText(d.messageText,' '));
+              failure=true;
+            }
+          }
+          if(failure)process.exitCode=1;
+          NODE
