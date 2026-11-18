@@ -38,6 +38,12 @@ test('Account lesson Anielka does not bypass server grading or saved-version aut
  assert.ok(backend.includes("auth.getUser(token)"));
  assert.ok(backend.includes(".eq('topic_no',topic)"));
  assert.ok(backend.includes("store:false"));
+ assert.ok(screen.includes("async function askQuizHint()"),'Short exercises must expose help');
+ assert.ok(screen.includes("exercise_id:exercise.id"),'Use trusted exercise identifier, never send answer key');
+ assert.ok(screen.includes("Anielka — wyjaśnij pytanie"));
+ assert.ok(backend.includes("exerciseId=cut(body?.exercise_id,80)"));
+ assert.ok(backend.includes("exercise:exercise?"));
+ assert.ok(backend.includes("mode!=='hint'"),'Exercise answers must not be graded through the hint endpoint');
  assert.ok(!screen.includes('SUPABASE_SERVICE_ROLE_KEY'));
  assert.ok(!screen.includes('OPENAI_API_KEY'));
  assert.ok(!backend.includes("from('ta_certificates')"));
