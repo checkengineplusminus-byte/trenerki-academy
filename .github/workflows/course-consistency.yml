@@ -37,6 +37,10 @@ jobs:
         run: node scripts/check-content-consistency.mjs
       - name: Enforce minimum thirty chapters in every course
         run: node scripts/audit-course-standards.mjs --enforce
+      - name: Test generated affiliate URLs and no hijacked app routes
+        run: |
+          node scripts/generate-affiliate-short-pages.mjs
+          node scripts/test-affiliate-static-pages.mjs
       - name: Check secure affiliate referrals, legal notices and checkout integration
         run: node scripts/test-affiliate-program.mjs
       - name: Verify AI course artwork, Anielka practice and mandatory stage checkpoints
@@ -66,6 +70,8 @@ jobs:
         run: node scripts/test-formulas.mjs
       - name: Exclude test and promotional records from sales
         run: node scripts/test-sales-analytics.mjs
+      - name: Generate numeric affiliate pages before web export
+        run: node scripts/generate-affiliate-short-pages.mjs
       - name: Verify production web bundle
         run: npx expo export --platform web --output-dir /tmp/trenerki-smoke
       - name: Check actual exported Academy assets and all 80 course icons

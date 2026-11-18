@@ -6,6 +6,8 @@ on:
       - '.github/workflows/affiliate-live-link-check.yml'
       - 'public/1.html'
       - 'public/1/index.html'
+      - 'scripts/generate-affiliate-short-pages.mjs'
+      - '.eas/workflows/deploy-web.yml'
   workflow_dispatch:
 jobs:
   live_short_link:
@@ -14,7 +16,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Verify short URL and unchanged core routes
+      - name: Verify short URL and unchanged core routes      - name: Verify short URL and unchanged core routes
         run: |
           set -euo pipefail
           curl -sSL --retry 3 --retry-delay 3 --max-time 25 -D /tmp/affiliate1.headers -o /tmp/affiliate1.body https://trenerki.com/1
@@ -27,6 +29,14 @@ jobs:
             echo "ERROR: /1 does not route to our secure affiliate resolver" >&2
             exit 1
           fi
+          for number in 2 7 15; do
+            curl -sSL --retry 3 --retry-delay 3 --max-time 25 -D "/tmp/affiliate${number}.headers" -o "/tmp/affiliate${number}.body" "https://trenerki.com/${number}"
+            if ! grep -Eq "affiliateNumber=${number}|/referral" "/tmp/affiliate${number}.headers" "/tmp/affiliate${number}.body"; then
+              echo "ERROR: /${number} short affiliate redirect missing" >&2
+              exit 1
+            fi
+            echo "OK: /${number} available"
+          done
           for path in konto partner nauka admin; do
             curl -sSL --retry 2 --retry-delay 2 --max-time 25 -D "/tmp/${path}.headers" -o "/tmp/${path}.body" "https://trenerki.com/${path}"
             if grep -q 'affiliateNumber=' "/tmp/${path}.headers" "/tmp/${path}.body"; then

@@ -78,6 +78,8 @@ jobs:
           npm install --no-audit --no-fund
           npm install --no-save --no-audit --no-fund playwright@1.56.1
           npx playwright install --with-deps chromium
+      - name: Generate numeric affiliate paths
+        run: node scripts/generate-affiliate-short-pages.mjs
       - name: Export public site
         run: npx expo export --platform web --output-dir /tmp/trenerki-browser
       - name: Check desktop and mobile browser experience
