@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,TextInput,Pressable,ScrollView,Linking} from 'react-native';
+import {View,Text,TextInput,Pressable,ScrollView,Linking,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
@@ -9,12 +9,14 @@ const ink='#193b2a',pale='#e7f2da';
 const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
  ? window.location.origin : 'https://trenerki.com';
 export default function AccountPage(){
+ const {width}=useWindowDimensions();
+ const compact=width<560;
  const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string;ref?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
  gift=validGiftCode(params.gift),
  referral=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const [isAdmin,setIsAdmin]=useState(false);
- const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':course?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':(course||gift||params.next==='valuegift'||params.next==='affiliate')?'login':'register'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
  const isCompanyLogin=params.next==='company';
  const continueToSelectedCourse=async()=>{
     if(params.next==='company'){router.replace('/firma');return;}
@@ -163,10 +165,10 @@ export default function AccountPage(){
  }
  const input={borderWidth:1,borderColor:'#c9d8c5',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
  const heading=mode==='register'?(isCompanyLogin?'Utwórz konto firmowe':'Rozpocznij naukę.'):mode==='login'?(isCompanyLogin?'Zaloguj się jako firma':'Witaj ponownie!'):mode==='reset'?'Odzyskaj konto':'Ustaw nowe hasło';
- return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{minHeight:'100%',padding:22,justifyContent:'center'}}>
- <View style={{maxWidth:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:20,padding:28,borderWidth:1,borderColor:'#e0e9dc'}}>
- <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:22}}>← Wszystkie kursy</Text></Pressable>
- <View style={{flexDirection:'row',gap:9,marginBottom:18}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} keyboardShouldPersistTaps="handled" contentContainerStyle={{minHeight:'100%',padding:compact?12:22,paddingBottom:compact?24:22,justifyContent:compact?'flex-start':'center'}}>
+ <View style={{maxWidth:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#e0e9dc'}}>
+ <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:compact?12:22}}>← Wszystkie kursy</Text></Pressable>
+ <View style={{flexDirection:'row',gap:9,marginBottom:compact?12:18}}>
   <Pressable accessibilityRole="button" onPress={()=>router.replace(gift?{pathname:'/konto',params:{gift}}:'/konto')} style={{flex:1,backgroundColor:isCompanyLogin?'#edf4e8':ink,padding:13,borderRadius:11,alignItems:'center'}}>
    <Text style={{color:isCompanyLogin?ink:'white',fontWeight:'900',fontSize:13}}>Konto prywatne</Text>
   </Pressable>
@@ -175,7 +177,7 @@ export default function AccountPage(){
   </Pressable>
  </View>
  <Text style={{fontSize:12,color:'#61826c',fontWeight:'800',marginBottom:8}}>{isCompanyLogin?'TRENERKI ACADEMY · DLA FIRM':'TRENERKI ACADEMY · TWOJE KONTO'}</Text>
- <Text style={{fontSize:30,fontWeight:'900',color:ink,marginBottom:10}}>{heading}</Text>
+ <Text style={{fontSize:compact?26:30,fontWeight:'900',color:ink,marginBottom:compact?8:10}}>{heading}</Text>
  {!!activeEmail&&mode!=='new-password'&&<View style={{backgroundColor:'#e8f3dc',borderWidth:1,borderColor:'#d3e6c0',borderRadius:13,padding:16,marginVertical:12}}>
    <Text style={{fontWeight:'800',color:ink}}>Twoja sesja nadal jest aktywna</Text>
    <Text style={{color:'#45664f',marginTop:5,marginBottom:11}}>{activeEmail}</Text>
@@ -192,7 +194,7 @@ export default function AccountPage(){
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
    </Pressable>
  </View>}
- <Text style={{color:'#53695d',lineHeight:22,marginBottom:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course==='zaufany-wolontariusz'?'Zaloguj się, aby zapisać bezpłatny kurs na swoim koncie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':isCompanyLogin?'Konto opiekuna firmy. Przydzielaj kursy pracownikom i sprawdzaj wykorzystanie miejsc.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
+ <Text style={{color:'#53695d',lineHeight:compact?21:22,marginBottom:compact?14:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course==='zaufany-wolontariusz'?'Zaloguj się, aby zapisać bezpłatny kurs na swoim koncie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':isCompanyLogin?'Konto opiekuna firmy. Przydzielaj kursy pracownikom i sprawdzaj wykorzystanie miejsc.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
  {mode==='register'&&<TextInput style={input} placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
  {mode!=='new-password'&&<TextInput style={input} placeholder="Adres e-mail" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address"/>}
  {mode!=='reset'&&<TextInput style={input} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'}/>}
