@@ -67,6 +67,8 @@ jobs:
           run: node --experimental-default-type=module --test scripts/test-accounting-identities.mjs
         - name: Sprawdz wejscie i postep encyklopedii
           run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+        - name: Sprawdz widok pracy domowej bez dlugiego przewijania
+          run: node --experimental-default-type=module --test scripts/test-accounting-extra-homework-reader.mjs
         - name: Sprawdz 100 arkuszy domowych dla Excel bez odpowiedzi i danych prywatnych
           run: node --experimental-default-type=module --test scripts/test-accounting-homework-worksheet.mjs
         - name: Sprawdz kierowanie 100 tematow do wlasciwego modulu pracowni
