@@ -210,7 +210,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '270f859b6147a7e3b227f9352338295f68d9af47', // audited 17.11: course-only private homework and tips, accounting guard unchanged
   '46fdaf64ac76e1dd2457107fbb2e9a30851501b6', // audited red-team-only change
   'c8268e990da7e1421dc19450339faac8b5497af9', // reviewed AI stage controls
-  'df96f74c58d6c1c59d99b13d09f3de99ea583a1f' // reviewed AI-only early Anielka CTA and scroll target; accounting guard unchanged
+  'df96f74c58d6c1c59d99b13d09f3de99ea583a1f', // reviewed AI-only early Anielka CTA and scroll target
+  '5e0a3f471e55ce6ee943e21130be1fb22f977ef2' // 18.11 reviewed auth-refresh recovery canonicalization; accounting guard unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
