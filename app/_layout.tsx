@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {View,Text,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
-import {Slot,Stack,usePathname,useGlobalSearchParams,Redirect,type ErrorBoundaryProps} from 'expo-router';
+import {Slot,Stack,usePathname,useGlobalSearchParams,type ErrorBoundaryProps} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
@@ -72,13 +72,18 @@ function AccountLayout(){
   return()=>{mounted=false;subscription.unsubscribe()};
  },[]);
  if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
- if(!signedIn&&pathname==='/nauka')return <Redirect href="/konto"/>;
+ // Learner entry routes must be exportable and remain mounted while a session
+ // is being revalidated. Both screens independently verify auth; RLS protects
+ // all personal/paid lesson data. A transient guard=false must not send learners
+ // to / (which redirects to the public catalog).
  return <View style={{flex:1}}>
 
   <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>
   <Stack.Screen name="kup"/>
+  <Stack.Screen name="moje-kursy"/>
+  <Stack.Screen name="nauka"/>
   <Stack.Screen name="materialy-wolontariusza"/>
   <Stack.Screen name="prezent"/>
   <Stack.Screen name="firma"/>
@@ -87,9 +92,7 @@ function AccountLayout(){
   <Stack.Screen name="admin"/>
   <Stack.Protected guard={signedIn} redirectTo="/konto">
    <Stack.Screen name="partner-admin"/>
-   <Stack.Screen name="moje-kursy"/>
    <Stack.Screen name="ustawienia"/>
-   <Stack.Screen name="nauka"/>
    <Stack.Screen name="biuro-ksiegowe"/>
    <Stack.Screen name="dane-biura"/>
    <Stack.Screen name="majatek-ksiegowy"/>
