@@ -43,11 +43,14 @@ assert.equal(model.summarize(month).find(x=>x.currency==='PLN').refunds,1000);
 assert.equal(model.summarize(month).find(x=>x.currency==='PLN').payouts,7000);
 
 const pdf=moduleFromFile('src/accounting/reportPdf.ts',{'./reportModel':model});
-const single={...month,rows:[month.rows[0]]};
+const single={...month,rows:[month.rows[0]],scope:'transaction'};
+const oneSaleMonth={...month,rows:[month.rows[0]],scope:'period'};
 const pdfSingle=pdf.buildPdfDefinition(single);
 const pdfMonth=pdf.buildPdfDefinition(month);
 assert.equal(pdfSingle.pageOrientation,'portrait');
 assert.equal(pdfMonth.pageOrientation,'landscape');
+assert.equal(pdf.buildPdfDefinition(oneSaleMonth).pageOrientation,'landscape');
+assert(model.downloadName(oneSaleMonth).includes('raport-miesieczny'));
 assert(JSON.stringify(pdfSingle.content).includes('Księgowość'));
 assert(JSON.stringify(pdfMonth.content).includes('SZCZEGÓŁOWE OPERACJE'));
 assert(JSON.stringify(pdfMonth.content).includes('1300'));
