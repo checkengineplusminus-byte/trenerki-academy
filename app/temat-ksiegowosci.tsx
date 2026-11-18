@@ -279,6 +279,8 @@ export default function TematKsiegowosci(){
  const sectionProgress=topic!==null?progress.byTopic[topic]:null;
  const hasHomework=homeworkReady&&homeworkSubmitted(homework)&&homeworkText===homework?.response;
  const nextReady=sectionProgress?.passed===true&&hasHomework;
+ const draftCheck=draftGuidance(homeworkText);
+ const currentCoachMessage=coachDraft===homeworkText.trim()?coachMessage:null;
 
  const sections=Array.isArray(m.sections)?m.sections:[];
  const currentSection=sections[Math.min(sectionIndex,Math.max(0,sections.length-1))];
@@ -395,16 +397,38 @@ export default function TematKsiegowosci(){
     {!homeworkReady?<Text style={s.warning}>Nie potwierdzono jeszcze odczytu Twojej wcześniejszej pracy. Zapis jest wyłączony.</Text>:<>
      <Text style={s.h2}>✍️ Tutaj wpisz swoją pracę</Text>
      <TextInput accessibilityLabel="Rozwiązanie pracy domowej" multiline textAlignVertical="top" maxLength={10000}
-      editable={!homeworkBusy} value={homeworkText} onChangeText={value=>{setHomeworkText(value);setHomeworkMessage('');setHomeworkError('');}}
+      editable={!homeworkBusy} value={homeworkText} onChangeText={value=>{homeworkTextRef.current=value;setHomeworkText(value);setHomeworkMessage('');setHomeworkError('');setCoachMessage(null);setCoachDraft('');setCoachError('');}}
       placeholder="Opisz własnymi słowami: co sprawdziłeś, co obliczyłeś, jaki otrzymałeś wynik i dlaczego."
       style={s.homeworkInput}/>
-     <Text style={s.small}>{homeworkText.length} znaków · minimum 120 do oddania. Szkic można zapisać wcześniej.</Text>
-     <View style={s.row}>
-      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy} onPress={()=>void saveHomework(false)} style={s.button}>
-       <Text style={s.buttonText}>{homeworkBusy?'Zapisywanie…':'Zapisz szkic'}</Text>
+     <Text style={s.small}>{homeworkText.trim().length} znaków · minimum 120 do oddania. Szkic można zapisać wcześniej.</Text>
+     {homeworkText.trim().length>0&&draftCheck.blocksSubmit&&<View accessibilityLiveRegion="polite" style={[s.coachFeedback,draftCheck.kind==='math_error'?s.coachErrorBox:s.coachSoftBox]}>
+      <Text style={s.label}>{draftCheck.kind==='math_error'?'⚠️ Błąd w obliczeniu':'📝 Uzupełnij swoją próbę'}</Text>
+      <Text style={s.bodySmall}>{draftCheck.message}</Text>
+     </View>}
+     <View style={s.coachActions}>
+      <Pressable accessibilityRole="button" accessibilityLabel="Anielka: daj wskazówkę do zadania" disabled={coachBusy||homeworkBusy} onPress={()=>void askAnielka('hint')} style={s.coachButton}>
+       <Text style={s.coachButtonText}>💡 Podpowiedź Anielki</Text>
       </Pressable>
-      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy||!homeworkCanSubmit(homeworkText)} onPress={()=>void saveHomework(true)} style={s.button}>
-       <Text style={s.buttonText}>Oddaj pracę domową</Text>
+      <Pressable accessibilityRole="button" accessibilityLabel="Anielka: sprawdź moją próbę przed oddaniem" disabled={coachBusy||homeworkBusy} onPress={()=>void askAnielka('review')} style={s.coachButton}>
+       <Text style={s.coachButtonText}>{coachBusy?'Anielka sprawdza…':'🔍 Sprawdź z Anielką'}</Text>
+      </Pressable>
+     </View>
+     {coachBusy&&<View style={s.coachWaiting}><ActivityIndicator color="#2c6747"/><Text style={s.bodySmall}>Anielka czyta polecenie i Twoją próbę…</Text></View>}
+     {!!currentCoachMessage&&<View accessibilityLiveRegion="polite" style={[s.coachFeedback,currentCoachMessage.verdict==='needs_revision'&&currentCoachMessage.mode==='review'?s.coachErrorBox:s.coachSoftBox]}>
+      <Text style={s.label}>💬 Anielka: {currentCoachMessage.mode==='hint'?'wskazówka':currentCoachMessage.verdict==='needs_revision'?'co poprawić':'informacja zwrotna'}</Text>
+      <Text style={s.bodySmall}>{currentCoachMessage.reply}</Text>
+      {!!currentCoachMessage.next_step&&<Text style={s.coachNext}>Następny krok: {currentCoachMessage.next_step}</Text>}
+      <Text style={s.small}>To pomoc w nauce, nie ocena egzaminu ani potwierdzenie poprawności.</Text>
+     </View>}
+     {!!coachError&&<Text accessibilityRole="alert" style={s.warning}>{coachError}</Text>}
+     <View style={s.homeworkButtons}>
+      <Pressable accessibilityRole="button" disabled={homeworkBusy||busy} onPress={()=>void saveHomework(false)} style={[s.homeworkButton,s.homeworkButtonSoft]}>
+       <Text style={s.buttonText}>{homeworkBusy?'Zapisywanie…':'💾 Zapisz szkic'}</Text>
+      </Pressable>
+      <Pressable accessibilityRole="button"
+       disabled={homeworkBusy||busy||!homeworkCanSubmit(homeworkText)||draftCheck.blocksSubmit||(currentCoachMessage?.mode==='review'&&currentCoachMessage?.verdict==='needs_revision')}
+       onPress={()=>void saveHomework(true)} style={[s.homeworkButton,s.homeworkButtonPrimary]}>
+       <Text style={s.homeworkButtonPrimaryText}>{homeworkBusy?'Sprawdzanie…':'Oddaj pracę →'}</Text>
       </Pressable>
      </View>
      {homeworkMessage!==''&&<Text style={s.notice}>{homeworkMessage}</Text>}
@@ -490,6 +514,20 @@ export default function TematKsiegowosci(){
 }
 
 const s=StyleSheet.create({
+ coachActions:{flexDirection:'row',flexWrap:'wrap',gap:9,marginTop:5},
+ coachButton:{minHeight:47,flexGrow:1,justifyContent:'center',paddingHorizontal:13,paddingVertical:11,borderRadius:12,borderWidth:1,borderColor:'#b7d5b4',backgroundColor:'#f9fcf6'},
+ coachButtonText:{fontWeight:'800',fontSize:13,color:'#1e5436',textAlign:'center'},
+ coachFeedback:{borderWidth:1,borderRadius:13,padding:12,gap:8,marginVertical:4},
+ coachErrorBox:{borderColor:'#e5b99b',backgroundColor:'#fff4eb'},
+ coachSoftBox:{borderColor:'#d2e4cc',backgroundColor:'#f1f7ed'},
+ coachNext:{fontSize:14,fontWeight:'700',lineHeight:22,color:'#27573a'},
+ coachWaiting:{flexDirection:'row',alignItems:'center',gap:9,padding:6},
+ homeworkButtons:{flexDirection:'row',flexWrap:'wrap',gap:10,alignItems:'stretch'},
+ homeworkButton:{minHeight:50,borderRadius:12,padding:12,flexGrow:1,alignItems:'center',justifyContent:'center'},
+ homeworkButtonSoft:{backgroundColor:'#dcebd5'},
+ homeworkButtonPrimary:{backgroundColor:'#193d2c'},
+ homeworkButtonPrimaryText:{color:'white',fontSize:14,fontWeight:'900'},
+
  lessonBody:{gap:10},
  topBar:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10,paddingVertical:3},
  lessonHero:{padding:16,backgroundColor:'#ffffff',borderRadius:16,borderWidth:1,borderColor:'#d8e4d4',gap:7},
