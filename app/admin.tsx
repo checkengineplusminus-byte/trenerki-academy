@@ -532,10 +532,10 @@ export default function AdminPage(){
         {x.document?.document_number?'Dokument Saldeo: '+x.document.document_number:'Dokument księgowy: nieprzypisany'}
        </Text>
        <View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginTop:4}}>
-        <Pressable accessibilityRole="button" onPress={()=>{void downloadLedgerPdf({...accountReport,rows:[x]}).catch((e:any)=>setAccountError(String(e?.message||e)))}} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:ink,borderRadius:9}}>
+        <Pressable accessibilityRole="button" onPress={()=>{void downloadLedgerPdf({...accountReport,rows:[x],scope:'transaction'}).catch((e:any)=>setAccountError(String(e?.message||e)))}} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:ink,borderRadius:9}}>
          <Text style={{color:'white',fontWeight:'800'}}>PDF transakcji</Text>
         </Pressable>
-        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx({...accountReport,rows:[x]})}catch(e:any){setAccountError(String(e?.message||e))}}} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:pale,borderRadius:9}}>
+        <Pressable accessibilityRole="button" onPress={()=>{try{downloadLedgerXlsx({...accountReport,rows:[x],scope:'transaction'})}catch(e:any){setAccountError(String(e?.message||e))}}} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:pale,borderRadius:9}}>
          <Text style={{color:ink,fontWeight:'800'}}>Excel transakcji</Text>
         </Pressable>
         <Pressable accessibilityRole="button" onPress={()=>startAccountingEdit(x)} style={{paddingVertical:10,paddingHorizontal:14,backgroundColor:'#F1F4ED',borderRadius:9,borderWidth:1,borderColor:'#D5E0D2'}}>
