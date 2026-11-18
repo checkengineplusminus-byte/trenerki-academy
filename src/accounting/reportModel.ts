@@ -47,9 +47,12 @@ export const localDateTime=(r:LedgerLine)=>localDate(r.date)+(r.time?' · '+r.ti
 export const periodName=(s:string)=>/^\d{4}-(0[1-9]|1[0-2])$/.test(s)?
   ['styczeń','luty','marzec','kwiecień','maj','czerwiec','lipiec','sierpień','wrzesień','październik','listopad','grudzień'][Number(s.slice(5))-1]+' '+s.slice(0,4):
   (/^\d{4}$/.test(s)?'rok '+s:s);
+const zeroDecimalCurrencies=new Set(['BIF','CLP','DJF','GNF','JPY','KMF','KRW','MGA','PYG','RWF','UGX','VND','VUV','XAF','XOF','XPF']);
+export const minorUnitFactor=(currency='PLN')=>zeroDecimalCurrencies.has(currency.toUpperCase())?1:100;
 export const formatAmount=(n:number,currency='PLN')=>new Intl.NumberFormat('pl-PL',{
- minimumFractionDigits:2,maximumFractionDigits:2
-}).format((Number(n)||0)/100)+' '+currency;
+ minimumFractionDigits:minorUnitFactor(currency)===1?0:2,
+ maximumFractionDigits:minorUnitFactor(currency)===1?0:2
+}).format((Number(n)||0)/minorUnitFactor(currency))+(currency?' '+currency:'');
 export const downloadName=(report:LedgerReport)=>'Trenerki-'+(
  report.rows.length===1?'transakcja-'+report.rows[0].date+'-'+report.rows[0].id:
  report.period.length===4?'raport-roczny-'+report.period:'raport-miesieczny-'+report.period);
@@ -88,7 +91,7 @@ export function detailedCells(r:LedgerLine){
   year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(r.available_on)):'';
  return [localDate(r.date)+(r.time?' '+r.time:''),operationLabel(r.category),productName(r),
   buyerName(r),r.customer_country||'—',r.currency,
-  r.gross_grosze/100,r.fee_grosze/100,r.net_grosze/100,
+  r.gross_grosze/minorUnitFactor(r.currency),r.fee_grosze/minorUnitFactor(r.currency),r.net_grosze/minorUnitFactor(r.currency),
   r.payment_status||'—',documentReference(r),documentStatus(r),taxLabel(r),
   r.document?.ksef_number||'—',r.source,r.payment_intent_id||'—',available];
 }
