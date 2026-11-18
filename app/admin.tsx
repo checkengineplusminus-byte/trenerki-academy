@@ -438,7 +438,7 @@ export default function AdminPage(){
      {count('Sprzedane karty',analytics?.totals.gifts??'—')}
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginTop:5}}>
-     {([['giveaway','Kursy gratis'],['credit-card','Karty podarunkowe'],['discount','Rabaty'],['sales','Statystyki sprzedaży'],['accounting','Rozliczenia / Saldeo'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość'],['feedback','Zgłoszenia'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
+     {([['giveaway','Kursy gratis'],['credit-card','Karty podarunkowe'],['discount','Rabaty'],['sales','Statystyki sprzedaży'],['accounting','Rozliczenia / Saldeo'],['users','Użytkownicy'],['gifts','Prezenty'],['quality','Jakość kursów'],['feedback','Zgłoszenia'],['diplomas','Dyplomy'],['support','Kontakty pomocowe']] as const).map(([key,label])=>
       <Pressable key={key} onPress={()=>setTab(key)} style={{padding:12,borderRadius:11,backgroundColor:tab===key?ink:pale}}>
        <Text style={{fontWeight:'800',color:tab===key?'white':ink}}>{label}</Text>
       </Pressable>
