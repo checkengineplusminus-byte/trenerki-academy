@@ -139,15 +139,7 @@ function reportContent(report:LedgerReport){
  intro.push({text:accountingFootnote,fontSize:8,color:muted,margin:[0,14,0,0]});
  return intro;
 }
-export async function downloadLedgerPdf(report:LedgerReport){
- if(typeof window==='undefined')throw new Error('Pobieranie PDF jest dostępne w przeglądarce internetowej.');
- // Browser distribution includes embedded Roboto: UTF-8 / Polish characters render correctly.
- const module:any=await import('pdfmake/build/pdfmake');
- const fontsModule:any=await import('pdfmake/build/vfs_fonts');
- const pdfMake:any=module.default||module;
- const fonts:any=fontsModule.default||fontsModule;
- if(pdfMake.addVirtualFileSystem)pdfMake.addVirtualFileSystem(fonts.pdfMake?.vfs||fonts);
- else pdfMake.vfs=fonts.pdfMake?.vfs||fonts;
+export function buildPdfDefinition(report:LedgerReport){
  const single=report.rows.length===1;
  const generated=printableDate(report.generated_at||new Date().toISOString());
  const def:any={
@@ -164,6 +156,17 @@ export async function downloadLedgerPdf(report:LedgerReport){
   ],margin:single?[38,9,38,0]:[27,9,27,0]}),
   content:single?singleContent(report):reportContent(report)
  };
- const pdf=pdfMake.createPdf(def);
+ return def;
+}
+export async function downloadLedgerPdf(report:LedgerReport){
+ if(typeof window==='undefined')throw new Error('Pobieranie PDF jest dostępne w przeglądarce internetowej.');
+ // Embedded Roboto supports Polish glyphs in the generated PDF.
+ const module:any=await import('pdfmake/build/pdfmake');
+ const fontsModule:any=await import('pdfmake/build/vfs_fonts');
+ const pdfMake:any=module.default||module;
+ const fonts:any=fontsModule.default||fontsModule;
+ if(pdfMake.addVirtualFileSystem)pdfMake.addVirtualFileSystem(fonts.pdfMake?.vfs||fonts);
+ else pdfMake.vfs=fonts.pdfMake?.vfs||fonts;
+ const pdf=pdfMake.createPdf(buildPdfDefinition(report));
  await pdf.download(downloadName(report)+'.pdf');
 }
