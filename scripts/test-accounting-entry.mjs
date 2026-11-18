@@ -245,7 +245,9 @@ test('Ekran programu nie myli RLS z brakiem nowego materiału',()=>{
  assert.match(code,/const coverageKnown=materialCoverageKnown\(isEditor,materialsReady\)/);
  assert.match(code,/filter==='missing'&&!coverageKnown/);
  assert.match(code,/Ćwiczenia opierają się na fikcyjnych przykładach/);
- assert.match(code,/isEditor&&<View style=\{s\.grid\}>/);
+ assert.match(code,/isEditor&&showEditorial&&<View style=\{s\.grid\}>/);
+ assert.match(code,/showProgress&&<View style=\{s\.card\}>/);
+ assert.match(code,/const \[expanded,setExpanded\]=useState<number\|null>\(null\)/);
  assert.doesNotMatch(code,/Wczesny dostęp pokazuje materiały wersji rozwojowej/);
  assert.doesNotMatch(code,/materialsReady\?total-draftCount/);
 });
