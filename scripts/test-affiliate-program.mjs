@@ -14,7 +14,7 @@ includes(home,['academy-footer__affiliate','taAffiliateCode()','&ref=','prefers-
 includes(styles,['ta-app-footer-affiliate','prefers-reduced-motion:reduce'],'App footer');
 includes(landing,['Zarabiaj 10%','Stripe','PIT','reklam'],'Affiliate landing');
 includes(terms,['§1.','§11.','PIT-11','30 dni','300 zł','reklam','Stripe'],'Affiliate terms');
-includes(privacy,['RODO','Stripe','Art. 6','kupującego','Rachunek'],'Affiliate privacy');
+includes(privacy,['RODO','Stripe','Art. 6','kupującego','rachunki bankowe'],'Affiliate privacy');
 includes(account,['pending_referral_code','params.next===\'affiliate\'','referral?{ref:referral}'],'Account referral continuation');
 includes(buy,['referralCode','referral_code:referralCode','self_referral_not_allowed'],'Checkout UI');
 includes(checkout,['referral_code','ta_affiliate_partners','self_referral_not_allowed','ta_affiliate_attributions','ta_affiliate_partner_id','attributionError'],'Signed server checkout');
