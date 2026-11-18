@@ -57,7 +57,9 @@ export default function ProgramKsiegowosci(){
  const [isEditor,setIsEditor]=useState(false);
  const [overviewAuthored,setOverviewAuthored]=useState<number|null>(null);
  const [materialError,setMaterialError]=useState('');
- const [expanded,setExpanded]=useState<number|null>(1);
+ const [expanded,setExpanded]=useState<number|null>(null);
+ const [showProgress,setShowProgress]=useState(false);
+ const [showEditorial,setShowEditorial]=useState(false);
  const [filter,setFilter]=useState<Filter>('all');
  const [search,setSearch]=useState('');
  const [reload,setReload]=useState(0);
@@ -153,6 +155,8 @@ export default function ProgramKsiegowosci(){
   return !term||String(topic.topic_no).includes(term)||topic.title_pl.toLocaleLowerCase('pl').includes(term);
  });
  const filtering=filter!=='all'||term.length>0;
+ const firstAvailable=topics.find(t=>!!materialStats[t.topic_no])?.topic_no??null;
+ const nextLesson=nextActual??firstAvailable;
 
  return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
   <View style={s.nav}>
@@ -161,17 +165,33 @@ export default function ProgramKsiegowosci(){
   </View>
   <Text style={s.eyebrow}>TRENERKI · TWÓJ PROGRAM NAUKI</Text>
   <Text accessibilityRole="header" style={s.h1}>100 tematów księgowości</Text>
-  <Text style={s.body}>Poznaj 100 tematów w 10 działach. Wybierz temat, przeczytaj szczegółowe materiały, wykonaj ćwiczenia i zapisz pracę domową. W każdej chwili możesz wrócić do nauki i sprawdzić swój postęp.</Text>
-  <Pressable accessibilityRole="button" onPress={()=>setReload(x=>x+1)} style={s.refresh}>
-   <Text style={s.link}>Odśwież stan z bazy</Text>
-  </Pressable>
+  <Text style={s.body}>Wybierz dział, otwórz lekcję, przećwicz temat i zapisz postęp.</Text>
+  {isEditor&&showEditorial&&<Pressable accessibilityRole="button" onPress={()=>setReload(x=>x+1)} style={s.refresh}><Text style={s.link}>Odśwież stan z bazy</Text></Pressable>}
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie programu i stanu opracowań"/>}
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
   {!!materialError&&<Text accessibilityRole="alert" style={s.warning}>{materialError}</Text>}
   {!!answersError&&<Text accessibilityRole="alert" style={s.warning}>{answersError}</Text>}
   {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
-   {isEditor&&<View style={s.grid}>
+   <View style={s.startCard}>
+    <Text style={s.label}>Twój następny krok</Text>
+    {nextLesson!==null?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextLesson)}}} style={s.startLink}>{nextActual!==null?'Kontynuuj':'Rozpocznij'} naukę — temat {nextLesson} →</Link>:<Text style={s.body}>Wybierz dział poniżej, aby zobaczyć lekcje.</Text>}
+    <Pressable accessibilityRole="button" onPress={()=>setShowProgress(v=>!v)} style={s.progressToggle}>
+     <Text style={s.link}>{showProgress?'Ukryj mój postęp':'Pokaż mój postęp'}</Text>
+    </Pressable>
+   </View>
+   <View style={s.card}>
+    <Text style={s.label}>Szukaj w programie</Text>
+    <TextInput value={search} onChangeText={setSearch} placeholder="Numer lub słowo z tematu" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
+    <View style={s.filters}>
+     {filters.filter(f=>(isEditor&&showEditorial)||f.key==='all'||f.key==='draft').map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
+       onPress={()=>setFilter(f.key)} style={[s.pill,filter===f.key&&s.pillActive]}>
+      <Text style={[s.pillText,filter===f.key&&s.pillTextActive]}>{!isEditor&&f.key==='draft'?'Udostępnione lekcje':f.label}</Text>
+     </Pressable>)}
+    </View>
+    <Text style={s.small}>Widocznych tematów: {visible.length} z {total}. {filter==='missing'&&!coverageKnown?'Brak uprawnionych danych do wyliczenia brakujących opracowań.':''}</Text>
+   </View>
+   {isEditor&&showEditorial&&<View style={s.grid}>
     <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{authoredCount===null?'—':authoredCount}</Text><Text style={s.small}>Zapisane opracowania w bazie (także nieudostępnione)</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{toReview}</Text><Text style={s.small}>Status: do recenzji</Text></View>
@@ -179,7 +199,7 @@ export default function ProgramKsiegowosci(){
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?total-draftCount:'—'}</Text><Text style={s.small}>Bez nowego opracowania (potwierdzone)</Text></View>
     <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?olderOnly:'—'}</Text><Text style={s.small}>Tylko odnośnik do starszej lekcji</Text></View>
    </View>}
-   <View style={s.card}>
+   {showProgress&&<View style={s.card}>
     <Text style={s.label}>Twoje ćwiczenia i prace domowe — zapisane na koncie</Text>
     {practice.known?
       practice.availableTopics>0?<>
@@ -193,24 +213,13 @@ export default function ProgramKsiegowosci(){
        <Text style={s.small}>Postęp pokazuje wykonane ćwiczenia i prace domowe. Do ukończenia nauki potrzebne jest przejście przez wszystkie wymagane etapy.</Text>
       </>:<Text style={s.small}>Na tym koncie nie ma jeszcze dostępnych zadań do policzenia. Materiały ukryte przez RLS nie są uznawane za brakujące ani zaliczone.</Text>
     :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
-   </View>
+   </View>}
    {!isEditor&&<Text style={s.small}>Ćwiczenia opierają się na fikcyjnych przykładach i nie zastępują indywidualnej porady księgowej lub podatkowej.</Text>}
-   {isEditor&&materialsReady&&<View style={s.notice}>
+   {isEditor&&showEditorial&&materialsReady&&<View style={s.notice}>
     <Text style={s.label}>Zawartość zapisanych nowych opracowań</Text>
     <Text style={s.body}>{assets.sections} części · {assets.examples} przykładów · {assets.exercises} zadań · {assets.tables} tabel · {assets.glossary} haseł słownika.</Text>
     <Text style={s.small}>To liczba zapisanych elementów, nie wynik końcowego odbioru. Osobno pozostają testy zalogowanego użytkownika, praktyka, zgodność prawa i kontrola jakości.</Text>
    </View>}
-   <View style={s.card}>
-    <Text style={s.label}>Wyszukaj i filtruj program</Text>
-    <TextInput value={search} onChangeText={setSearch} placeholder="Numer lub słowo z tematu" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
-    <View style={s.filters}>
-     {filters.filter(f=>isEditor||f.key==='all'||f.key==='draft').map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
-       onPress={()=>setFilter(f.key)} style={[s.pill,filter===f.key&&s.pillActive]}>
-      <Text style={[s.pillText,filter===f.key&&s.pillTextActive]}>{!isEditor&&f.key==='draft'?'Udostępnione lekcje':f.label}</Text>
-     </Pressable>)}
-    </View>
-    <Text style={s.small}>Widocznych tematów: {visible.length} z {total}. {filter==='missing'&&!coverageKnown?'Brak uprawnionych danych do wyliczenia brakujących opracowań.':''}</Text>
-   </View>
    {filter==='missing'&&!coverageKnown&&<Text style={s.warning}>Filtr braków wymaga pełnego odczytu redakcyjnego. RLS ukrywa niezatwierdzone materiały przed kursantem; nie wolno traktować ich jako brakujących.</Text>}
    {!(filter==='missing'&&!coverageKnown)&&sections.map((name,index)=>{
     const sectionNo=index+1;
@@ -222,7 +231,7 @@ export default function ProgramKsiegowosci(){
     const open=filtering||expanded===sectionNo;
     return <View key={sectionNo} style={s.card}>
      <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setExpanded(open?null:sectionNo)} style={s.heading}>
-      <Text style={s.step}>DZIAŁ {sectionNo}{isEditor?' · '+done+'/'+all.length+' odebranych'+(coverageKnown?' · '+drafts+' opracowań':''):''}</Text>
+      <Text style={s.step}>DZIAŁ {sectionNo}{isEditor&&showEditorial?' · '+done+'/'+all.length+' odebranych'+(coverageKnown?' · '+drafts+' opracowań':''):''}</Text>
       <Text style={s.h2}>{name}</Text>
       {!filtering&&<Text style={s.small}>{open?'Zwiń listę':'Pokaż tematy'}</Text>}
      </Pressable>
@@ -241,8 +250,8 @@ export default function ProgramKsiegowosci(){
          'Pozostało: stworzyć teorię, przykłady, zadania, praktykę, źródła i przejść kontrole.';
       return <View key={topic.topic_no} style={s.topic}>
        <Text style={s.topicTitle}>{topic.topic_no}. {topic.title_pl}</Text>
-       {isEditor&&<Text style={s.small}>Status: {statusLabels[topic.status]||'Nieznany'}</Text>}
-       {materialsReady&&<Text style={s.small}>{stats?
+       {isEditor&&showEditorial&&<Text style={s.small}>Status: {statusLabels[topic.status]||'Nieznany'}</Text>}
+       {isEditor&&showEditorial&&materialsReady&&<Text style={s.small}>{stats?
         'Temat: '+stats.sections+' części, '+stats.examples+' przykładów, '+stats.exercises+' zadań, '+stats.tables+' tabel i '+stats.glossary+' pojęć.'+(isEditor?' Redakcja: '+stats.editorial_status:''):
         !isEditor?'Materiał nie jest aktualnie dostępny na tym koncie.':
         legacy?'Brak nowego opracowania; starsza lekcja nr '+topic.lesson_no+' to kandydat do wykorzystania.':
@@ -254,21 +263,22 @@ export default function ProgramKsiegowosci(){
         </Text>}
        {homeworks&&practice.byTopic[topic.topic_no]&&
         <Text style={s.small}>Praca domowa: {homeworks.topics.includes(topic.topic_no)?'oddana do samokontroli, nieoceniona':'do napisania lub oddania'}.</Text>}
-       <Text style={s.todo}>{isEditor?next:stats?'Przeczytaj materiał, rozwiąż ćwiczenia i wykonaj pracę domową.':'Ten materiał nie jest aktualnie dostępny na Twoim koncie.'}</Text>
-       {!!stats&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>Otwórz zapisany materiał</Link>}
+       {isEditor&&showEditorial&&<Text style={s.todo}>{next}</Text>}
+       {!!stats&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.link}>Otwórz lekcję →</Link>}
       </View>;
      })}
     </View>;
    })}
    {visible.length===0&&<Text style={s.warning}>Brak tematów odpowiadających filtrom. Zmień wyszukiwanie lub wybierz „Wszystkie”.</Text>}
    {topics.length!==100&&<Text style={s.warning}>Niepełny odczyt mapy programu. Ten wynik nie dowodzi kompletności kursu.</Text>}
-   <Text style={s.small}>Dane aktualizują się po odświeżeniu strony. Przykłady i ćwiczenia wykorzystują fikcyjne dane.</Text>
+   {isEditor&&<Pressable accessibilityRole="button" onPress={()=>{setShowEditorial(v=>!v);setFilter('all');setExpanded(null);}} style={s.editorToggle}><Text style={s.small}>{showEditorial?'Ukryj panel redakcyjny':'Panel redakcyjny'}</Text></Pressable>}
+   <Text style={s.small}>Ćwiczenia wykorzystują fikcyjne dane.</Text>
   </>}
  </ScrollView>;
 }
 const s=StyleSheet.create({
  page:{flex:1,backgroundColor:'#f6f8f0'},
- wrap:{width:'100%',maxWidth:960,alignSelf:'center',padding:20,paddingBottom:65,gap:14},
+ wrap:{width:'100%',maxWidth:960,alignSelf:'center',padding:16,paddingBottom:40,gap:12},
  nav:{flexDirection:'row',flexWrap:'wrap',gap:18},
  link:{color:'#225b39',fontSize:14,fontWeight:'800',paddingVertical:5},
  eyebrow:{fontSize:12,letterSpacing:1,fontWeight:'800',color:'#507452'},
@@ -280,7 +290,11 @@ const s=StyleSheet.create({
  todo:{fontSize:13,lineHeight:21,color:'#44554a'},
  topicTitle:{fontSize:15,lineHeight:23,fontWeight:'800',color:'#183c2b'},
  notice:{padding:17,borderRadius:14,backgroundColor:'#e7f0dd',gap:8},
- card:{backgroundColor:'white',borderWidth:1,borderColor:'#d8e6ce',padding:17,borderRadius:14,gap:10},
+ card:{backgroundColor:'white',borderWidth:1,borderColor:'#d8e6ce',padding:14,borderRadius:14,gap:8},
+ startCard:{backgroundColor:'#eef6e7',padding:15,borderRadius:14,gap:10},
+ startLink:{backgroundColor:'#193c2b',color:'white',fontWeight:'900',fontSize:16,padding:14,borderRadius:12,overflow:'hidden'},
+ progressToggle:{alignSelf:'flex-start',minHeight:40,justifyContent:'center',paddingHorizontal:5},
+ editorToggle:{alignSelf:'flex-end',padding:10},
  heading:{gap:5},step:{fontSize:11,fontWeight:'800',letterSpacing:.8,color:'#547d4d'},
  topic:{paddingTop:12,borderTopWidth:1,borderColor:'#e5ede0',gap:5},
  warning:{backgroundColor:'#fff0e5',padding:14,color:'#893a26',borderRadius:10,fontSize:14},
