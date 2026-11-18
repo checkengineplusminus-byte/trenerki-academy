@@ -29,9 +29,10 @@ includes(partner,['short_id','trenerki.com/','trenerki-logo-partner.svg','Pobier
 includes(partnerAdmin,['Krótki link','short_id','Numer oczekuje'],'Owner numeric link and CSV');
 const routerConfig=JSON.parse(read('app.json'));
 assert.equal(routerConfig.expo.web.output,'static');
-assert(routerConfig.expo.plugins.some(p=>Array.isArray(p)&&p[0]==='expo-router'&&
- p[1]?.redirects?.some(r=>r.source==='/[affiliateNumber]'&&r.destination==='/referral')),
- 'Numeric root link needs actual Expo Hosting server redirect');
+assert(!routerConfig.expo.plugins.some(p=>Array.isArray(p)&&p[1]?.redirects?.some(r=>r.source==='/[affiliateNumber]')),
+ 'Do not hijack /konto, /nauka, /admin or any other root path with wildcard redirect');
+includes(read('public/1.html'),['affiliateNumber=1','noindex'],'Static short link');
+includes(read('public/1/index.html'),['affiliateNumber=1','noindex'],'Directory short link');
 const referral=read('app/referral.tsx');
 includes(referral,['affiliateNumber','ta-affiliate-resolve','/academy/index.html?ref=','Number(raw)'],'Public short link resolver route');
 const brand=read('public/academy/assets/trenerki-logo-partner.svg');
