@@ -348,13 +348,15 @@ test('Program księgowości pokazuje prace domowe i pierwszy niezakończony tema
 });
 
 
-test('Księgowość: normalna oferta tylko w kategorii Biznes i praca',()=>{
+test('Księgowość: zwykła oferta w katalogu i kategoria Biznes i praca',()=>{
  const home=readFileSync(new URL('../public/academy/index.html',import.meta.url),'utf8');
  const category=readFileSync(new URL('../public/academy/kategorie/biznes-i-praca.html',import.meta.url),'utf8');
  const page=readFileSync(new URL('../public/academy/ksiegowosc-od-podstaw.html',import.meta.url),'utf8');
  assert.doesNotMatch(home,/acct-feature-title|NOWOŚĆ · WCZESNY DOSTĘP/);
  assert.match(home,/const ACCOUNTING_CATALOG=/);
- assert.match(home,/c\.id!==ACCOUNTING_CATALOG\.id/);
+ assert.match(home,/function publicCatalogCourses\(/);
+ assert.match(home,/const priorities=\['ai-bez-tajemnic','ksiegowosc-od-podstaw'\]/);
+ assert.match(home,/catalogCourseMatches\(c,query\)/);
  assert.match(category,/Księgowość od podstaw/);
  assert.doesNotMatch(category,/Księgowość od podstaw — Encyklopedia/);
  assert.match(page,/CIEKAWOSTKA/);
