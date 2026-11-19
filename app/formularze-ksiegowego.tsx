@@ -7,6 +7,7 @@ import {supabase} from '../src/supabase';
 import {officialURL,formKey,draftKey,restoreDraft,feedbackTitle,periodLabel} from '../src/accounting/forms-core.js';
 // @ts-ignore — safe whitelisted Ministry of Finance links, not reproduced forms.
 import {OFFICIAL_FORMS,officialFormUrl} from '../src/accounting/official-forms.js';
+import OfficialFormTrainingDraft from '../src/accounting/OfficialFormTrainingDraft';
 type Card={reference_key:string;title_pl:string;summary:string;category:string;material:any;legal_as_of:string;revision:string;total_count?:number};
 type Saved={inputs:Record<string,string>;evaluation:any;version:number;content_revision:string}|null;
 function Button({title,onPress,disabled=false,primary=false}:{title:string;onPress:()=>void;disabled?:boolean;primary?:boolean}){return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={[s.button,primary&&s.primary,disabled&&s.disabled]}><Text style={primary?s.white:s.link}>{title}</Text></Pressable>;}
@@ -46,49 +47,54 @@ function Practice({userId,card,scenario,onReload}:{userId:string;card:Card;scena
   <Text style={s.small}>Otwarte pola zachowują się na tym urządzeniu. Przycisk zapisuje je na koncie. Nie wpisuj danych prawdziwego podatnika ani pracownika.</Text>
  </View>;
 }
-function OfficialFormsPanel({onSearch}:{onSearch:(query:string)=>void}){
- const [category,setCategory]=useState('Popularne'),[selected,setSelected]=useState<any>(null),[all,setAll]=useState(false);
- const listed=(OFFICIAL_FORMS as any[]).filter(f=>category==='Popularne'?['PIT-37','PIT-36L','PIT-11','CIT-8','CIT-8/O','VAT-R','VAT-UE'].includes(f.code):f.category===category);
+type OfficialForm={code:string;category:string;icon:string;description:string;source:string;edition?:string;pdf?:string};
+function OfficialFormsPanel({onSearch,userId}:{onSearch:(query:string)=>void;userId:string}){
+ const [category,setCategory]=useState('Popularne'),[selected,setSelected]=useState<OfficialForm|null>(null),[all,setAll]=useState(false);
+ const listed=(OFFICIAL_FORMS as OfficialForm[]).filter(f=>category==='Popularne'?['PIT-37','PIT-36L','PIT-11','CIT-8','CIT-8/O','VAT-R','VAT-UE'].includes(f.code):f.category===category);
  const subset=all?listed:listed.slice(0,category==='Popularne'?7:9);
  const open=(url:string|null)=>{if(url)void Linking.openURL(url);};
+ if(selected)return <View style={s.card}>
+  <Pressable accessibilityRole="button" onPress={()=>setSelected(null)} style={s.formTileBtn}><Text style={s.link}>← Wszystkie formularze</Text></Pressable>
+  <Text style={s.eyebrowDark}>{selected.category} · URZĘDOWY DOKUMENT</Text>
+  <Text style={s.h2}>{selected.icon} {selected.code}</Text>
+  <Text style={s.body}>{selected.description}</Text>
+  <Text style={s.small}>{selected.edition||'Sprawdź najnowsze wydanie i właściwy rocznik na stronie urzędu.'}</Text>
+  {Platform.OS==='web'&&!!selected.pdf&&React.createElement('iframe' as any,{
+   title:'Oryginalny dokument '+selected.code,src:officialFormUrl(selected,true)||'',
+   style:{width:'100%',height:350,border:'1px solid #d7e4d0',borderRadius:12,background:'white'}
+  })}
+  {!selected.pdf&&<View style={s.notice}><Text style={s.body}>Oryginalny druk i dostępne wersje do wypełnienia otworzysz na stronie Ministerstwa Finansów. Nie podstawiamy własnej kopii dokumentu.</Text></View>}
+  <View style={s.row}>
+   <Button title="📄 Oryginalny druk / PDF ↗" onPress={()=>open(officialFormUrl(selected,!!selected.pdf))}/>
+   <Button title="📚 Wersje i instrukcje MF ↗" onPress={()=>open(officialFormUrl(selected,false))}/>
+  </View>
+  <OfficialFormTrainingDraft key={selected.code} form={selected} userId={userId}/>
+  <Button title="Sprawdź inne gotowe scenariusze Trenerki" onPress={()=>{onSearch(selected.code);setSelected(null);}}/>
+ </View>;
  return <View style={s.card}>
-  <Text style={s.eyebrowDark}>URZĘDOWE ORYGINAŁY · PIT / CIT / VAT</Text>
+  <Text style={s.eyebrowDark}>PIT / CIT / VAT / JPK · ORYGINAŁY</Text>
   <Text style={s.h2}>📂 Wybierz dokument</Text>
-  <Text style={s.small}>Druki pochodzą z oficjalnych stron Ministerstwa Finansów. Do nauki używaj kopii z fikcyjnymi danymi. Wybierz rocznik i wersję zgodnie z instrukcją urzędu.</Text>
+  <Text style={s.small}>Otwórz oryginalny druk, a potem zapisz własne ćwiczenie na fikcyjnych danych.</Text>
   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{gap:7,paddingVertical:6}}>
    {['Popularne','PIT','CIT','VAT','JPK'].map(k=><Pressable key={k} accessibilityRole="button" accessibilityState={{selected:category===k}}
-    onPress={()=>{setCategory(k);setSelected(null);setAll(false);}} style={[s.taxPill,category===k&&s.taxPillActive]}>
+    onPress={()=>{setCategory(k);setAll(false);}} style={[s.taxPill,category===k&&s.taxPillActive]}>
     <Text style={[s.taxPillText,category===k&&s.taxPillTextActive]}>{k}</Text>
    </Pressable>)}
   </ScrollView>
-  <View style={s.formTiles}>{subset.map((form:any)=><View key={form.code} style={s.formTile}>
+  <View style={s.formTiles}>{subset.map((form:OfficialForm)=><View key={form.code} style={s.formTile}>
    <Text style={{fontSize:28}}>{form.icon}</Text>
    <Text style={s.formName}>{form.code}</Text>
    <Text style={s.small}>{form.description}</Text>
    <View style={{gap:7,marginTop:'auto'}}>
-    <Pressable accessibilityRole="button" onPress={()=>{setSelected(form);if(Platform.OS==='web'&&form.pdf){/* browser preview below */}}} style={s.formTileBtn}>
-     <Text style={s.link}>{form.pdf?'Podgląd PDF':'Zobacz formularz'}</Text>
+    <Pressable accessibilityRole="button" onPress={()=>setSelected(form)} style={s.formTileBtn}>
+     <Text style={s.link}>Podgląd i ćwiczenie →</Text>
     </Pressable>
     <Pressable accessibilityRole="link" onPress={()=>open(officialFormUrl(form,false))} style={s.formTileBtn}>
-     <Text style={s.link}>Wypełnij / pobierz u MF ↗</Text>
-    </Pressable>
-    <Pressable accessibilityRole="button" onPress={()=>onSearch(form.code)} style={s.formTileBtn}>
-     <Text style={s.link}>Ćwicz w Trenerki →</Text>
+     <Text style={s.link}>Oryginalny druk MF ↗</Text>
     </Pressable>
    </View>
   </View>)}</View>
   {!all&&listed.length>subset.length&&<Button title={'Pokaż wszystkie ('+listed.length+')'} onPress={()=>setAll(true)}/>}
-  {!!selected&&<View style={s.notice}>
-   <Text style={s.label}>{selected.icon} {selected.code} — oryginalny dokument</Text>
-   <Text style={s.small}>{selected.edition||'Wybierz aktualny rocznik na stronie urzędu.'} · Nie zmieniamy treści urzędowego formularza.</Text>
-   {Platform.OS==='web'&&!!selected.pdf&&React.createElement('iframe' as any,{
-    title:'Podgląd oryginalnego dokumentu '+selected.code,
-    src:officialFormUrl(selected,true)||'',style:{width:'100%',height:430,border:'1px solid #d7e4d0',borderRadius:12,background:'white'}
-   })}
-   {!selected.pdf&&<Text style={s.body}>Urzędowy formularz jest dostępny na stronie MF, również w wersji do wypełnienia online lub do pobrania, jeżeli urząd taką udostępnia.</Text>}
-   <Button title="Otwórz oryginał na stronie MF ↗" onPress={()=>open(officialFormUrl(selected,!!selected.pdf))}/>
-   <Text style={s.small}>Edycja w Trenerki dotyczy wyłącznie osobnego ćwiczenia szkoleniowego, a nie zapisu danych we właściwym dokumencie urzędowym.</Text>
-  </View>}
  </View>;
 }
 export default function AccountingForms(){
@@ -104,7 +110,7 @@ export default function AccountingForms(){
  return <ScrollView ref={scroll} style={s.page} contentContainerStyle={s.pad} keyboardShouldPersistTaps="handled"><View style={s.wrap}>
   <View style={s.row}><Link href="/ksiegowosc" style={s.link}>← Encyklopedia</Link><Link href="/biuro-ksiegowe" style={s.link}>Biuro ćwiczeniowe</Link><Link href="/slownik-ksiegowego" style={s.link}>Słownik</Link></View>
   <View style={s.hero}><Text style={s.eyebrow}>TRENERKI · FORMULARZE I ĆWICZENIA</Text><Text accessibilityRole="header" style={s.h1}>📄 Druki PIT, CIT i VAT</Text><Text style={s.heroText}>Podejrzyj oryginał, naucz się pól i zapisz własne ćwiczenie.</Text></View>
-  <OfficialFormsPanel onSearch={code=>{setQuery(code);setApplied(code);setPage(0);router.setParams({entry:''});}}/>
+  <OfficialFormsPanel userId={user} onSearch={code=>{setQuery(code);setApplied(code);setPage(0);router.setParams({entry:''});}}/>
   <View style={s.card}><Text style={s.label}>Szukaj dokumentu lub tematu</Text><View style={s.row}><TextInput value={query} onChangeText={setQuery} maxLength={120} placeholder="Np. PIT-38, DRA, udziały, składki" accessibilityLabel="Wyszukiwarka formularzy" style={[s.input,{flex:1,minWidth:180}]} onSubmitEditing={()=>{setApplied(query.trim());setPage(0);router.setParams({entry:''});}}/><Button title="Szukaj" primary onPress={()=>{setApplied(query.trim());setPage(0);router.setParams({entry:''});}}/></View><Text style={s.small}>Oryginalne wzory są dostępne bezpłatnie u wydawców. Objaśnienia i zadania Trenerki są odrębne od dokumentu urzędowego.</Text></View>
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}{!!detailError&&<Text accessibilityRole="alert" style={s.warning}>{detailError}</Text>}{opening&&<ActivityIndicator/>}
   {card&&f?<>
