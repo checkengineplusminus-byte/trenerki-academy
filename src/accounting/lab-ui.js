@@ -686,7 +686,7 @@ export function mountLab(root,db,initialTab='start'){
  }
  async function click(event){
   const header=event.target.closest('#lab-anielka>summary');
-  if(header){coachOpen=!header.parentElement.open;return;}
+  if(header&&header.parentElement?.id==='lab-anielka'){coachOpen=!header.parentElement.open;return;}
   const b=event.target.closest('[data-action]');if(!b||b.disabled||busy)return;
   const a=b.dataset.action,id=b.dataset.id;
   if(a==='coach-file-review'){
