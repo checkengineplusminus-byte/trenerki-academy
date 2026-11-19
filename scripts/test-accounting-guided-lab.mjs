@@ -56,3 +56,32 @@ test('Anielka file review requires explicit consent and never persists source fi
  assert(!backend.includes("storage.from("));
  assert(!backend.includes("ta_accounting_lab_save"));
 });
+
+test('All official form cards now have independent owner-only editable worksheets',()=>{
+ const ui=read('app/formularze-ksiegowego.tsx');
+ const form=read('src/accounting/OfficialFormTrainingDraft.tsx');
+ const migration=read('database/patches/20261119_accounting_official_training_drafts.sql');
+ for(const pattern of [
+  "import OfficialFormTrainingDraft from '../src/accounting/OfficialFormTrainingDraft'",
+  '<OfficialFormTrainingDraft key={selected.code} form={selected} userId={userId}/>',
+  'Podgląd i ćwiczenie',
+  'setSelected(form)'
+ ])assert(ui.includes(pattern),'Missing training form connection '+pattern);
+ for(const pattern of [
+  "ta_accounting_official_draft_save","p_expected_version:version",
+  ".eq('user_id',userId)","eq('form_code',form.code)","eq('tax_year',year)",
+  'Wypełnij krok po kroku','Nie udało się odczytać wcześniejszej wersji',
+  "if(problem||!data||!Number.isSafeInteger(data.version))",
+  "err?.code==='40001'",'Tylko dane fikcyjne'
+ ]){
+  if(pattern==='Tylko dane fikcyjne')continue;
+  assert(form.includes(pattern),'Missing safe workbook property '+pattern);
+ }
+ assert(migration.includes('alter table public.ta_accounting_official_drafts enable row level security'));
+ assert(migration.includes('with check (user_id=(select auth.uid()))'));
+ assert(migration.includes('security invoker'));
+ assert(migration.includes("and public.ta_accounting_official_drafts.version=p_expected_version"));
+ assert(!form.includes('service_role'));
+ assert(!form.includes('ta_certificates'));
+ assert(!form.includes('from('+"'"+"ta_enrollments'"+")"+'.insert'));
+});
