@@ -1,4 +1,4 @@
-name: Innore v2 — touch measurement end-to-end
+name: Innore V3 — native iPhone keypad field testing
 on:
   push:
     branches: [innore-measurement-preview-20261119]
@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     env:
-      SITE: https://adrianflaga-studio--innore-test.expo.app/innore-measurement.html
+      SITE: https://adrianflaga-studio--innore-test.expo.app/innore-measurement-native.html
     steps:
       - name: Install Playwright
         run: |
@@ -36,23 +36,22 @@ jobs:
             await bar.locator('[data-n="1"]').click();
             const v=await page.locator('#viewer').boundingBox();
             await page.locator('#viewer').click({position:{x:v.width*.46,y:v.height*.50}});
-            await page.locator('#quickEdit:not(.hidden)').waitFor({state:'visible'});
-            if(await page.locator('#quickInput').count())throw Error('Old input panel is still shown');
-            if(!await page.locator('#modalRoot').evaluate(el=>el.classList.contains('hidden')))throw Error('Measurement opened a separate modal');
-            if(await page.locator('.mark-pin').count()!==1)throw Error('Line did not appear immediately');
-            if(await page.locator('#quickEdit [data-key="1"]').count()!==1)throw Error('Number-first keypad not visible');
-            if(await page.locator('#quickEdit [data-key="Q"]').count())throw Error('ABC keyboard should not open first');
-            for(const key of ['2','2','0','0']) await page.locator('#quickEdit [data-key="'+key+'"]').click();
-            if((await page.locator('.mark-value').first().innerText())!=='2200')throw Error('Digits do not show on the drawing immediately');
-            await page.locator('#quickEdit [data-key="letters"]').click();
-            if(await page.locator('#quickEdit [data-key="G"]').count()!==1)throw Error('ABC switch failed');
-            await page.locator('#quickEdit [data-key=" "]').click();
-            await page.locator('#quickEdit [data-key="G"]').click();
-            await page.locator('#quickEdit [data-key="V"]').click();
-            await page.locator('#quickEdit [data-key="done"]').click();
-            if(!(await page.locator('.mark-value').first().innerText()).includes('2200 GV'))throw Error('Value did not appear next to line');
-            if(!await page.locator('#quickEdit').evaluate(el=>el.classList.contains('hidden')))throw Error('Keyboard not dismissed');
-            console.log('PASS tap -> number-first keypad -> ABC -> auto-save; no popup');
+            await page.locator('#nativeEntry:not(.hidden)').waitFor({state:'visible'});
+            if(await page.locator('#quickEdit').count())throw Error('Old custom entry panel is still present');
+            if(!await page.locator('#modalRoot').evaluate(el=>el.classList.contains('hidden')))throw Error('Length & Width popup opened');
+            if(await page.locator('.mark-pin').count()!==1)throw Error('Line not placed');
+            if((await page.locator('#measureInput').getAttribute('inputmode'))!=='decimal')throw Error('Not number keyboard by default');
+            if(await page.evaluate(()=>document.activeElement?.id)!=='measureInput')throw Error('Native keyboard field not focused from first tap');
+            await page.locator('#measureInput').fill('2200');
+            if((await page.locator('#measureInput').inputValue())!=='2200')throw Error('Input did not accept digits');
+            await page.locator('[data-act="switchKeyboard"]').click();
+            if((await page.locator('#measureInput').getAttribute('inputmode'))!=='text')throw Error('ABC keyboard not selected');
+            if(await page.evaluate(()=>document.activeElement?.id)!=='measureInput')throw Error('ABC keyboard input lost focus');
+            await page.locator('#measureInput').fill('2200 GV');
+            await page.locator('[data-act="finishMeasure"]').click();
+            if(!(await page.locator('.mark-value').first().innerText()).includes('2200 GV'))throw Error('Value did not appear beside line');
+            if(!await page.locator('#nativeEntry').evaluate(el=>el.classList.contains('hidden')))throw Error('Native entry did not close');
+            console.log('PASS V3: tap => focused native decimal field => ABC => autosave; no old modal or custom keypad');
             let handle=await page.locator('[data-rotate]').first().boundingBox();
             if(!handle)throw Error('Rotation handle missing');
             await page.mouse.move(handle.x+handle.width/2,handle.y+handle.height/2);
@@ -63,10 +62,10 @@ jobs:
             await bar.locator('[data-shape="arrow"]').click();
             await bar.locator('[data-n="2"]').click();
             await page.locator('#viewer').click({position:{x:v.width*.30,y:v.height*.61}});
-            await page.locator('#quickEdit:not(.hidden)').waitFor({state:'visible'});
-            if(await page.locator('#quickEdit [data-key="1"]').count()!==1)throw Error('Numeric keyboard must be default for each mark');
-            for(const key of ['1','7','8','0']) await page.locator('#quickEdit [data-key="'+key+'"]').click();
-            await page.locator('#quickEdit [data-key="done"]').click();
+            await page.locator('#nativeEntry:not(.hidden)').waitFor({state:'visible'});
+            if((await page.locator('#measureInput').getAttribute('inputmode'))!=='decimal')throw Error('Each measurement must begin with number keyboard');
+            await page.locator('#measureInput').fill('1780');
+            await page.locator('[data-act="finishMeasure"]').click();
             if(await page.locator('.mark-pin').count()!==2)throw Error('Second marker absent');
             if(await page.locator('.mark-geometry.arrow').count()!==1)throw Error('Arrow missing');
             console.log('PASS second color + arrow');
@@ -91,7 +90,12 @@ jobs:
             if(await page.locator('.mark-pin').count()!==2)throw Error('Local measurements lost after reload');
             const vals=await page.locator('.mark-value').allInnerTexts();
             if(!vals.some(v=>v.includes('2200 GV')))throw Error('Value lost after reload: '+vals);
-            console.log('PASS local measurement persistence after reload');
+            await page.locator('.mark-point').first().click();
+            await page.locator('#nativeEntry:not(.hidden)').waitFor();
+            if(!await page.locator('#modalRoot').evaluate(el=>el.classList.contains('hidden')))throw Error('Old measurement popup reopened for existing pin');
+            if((await page.locator('#measureInput').inputValue()).trim()!=='2200 GV')throw Error('Existing pin value not editable inline');
+            await page.locator('[data-act="finishMeasure"]').click();
+            console.log('PASS local persistence and no modal on editing existing pin');
             await page.locator('[data-act="back"]').click();
             const [zipDl]=await Promise.all([page.waitForEvent('download',{timeout:30000}),page.locator('[data-act="zip"]').click()]);
             if(!zipDl.suggestedFilename().endsWith('.zip'))throw Error('ZIP export failed');
