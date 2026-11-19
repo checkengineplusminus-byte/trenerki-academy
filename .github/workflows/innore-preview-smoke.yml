@@ -39,7 +39,7 @@ jobs:
             await page.locator('button[data-act="demo"]').click();
             await page.waitForSelector('button[data-act="tool"]',{timeout:30000});
             console.log('Demo loaded, five color tools available:',await page.locator('button[data-act="tool"]').count()-1);
-            await page.locator('button[data-act="layers"]').click();
+            await page.locator('button[data-act="layers"]').first().click();
             await page.waitForSelector('#layerPanel:not(.hidden)',{timeout:5000});
             await page.locator('button[data-act="noLayers"]').click();
             const shown=await page.locator('#layerPanel input[type="checkbox"]:checked').count();
