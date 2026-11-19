@@ -10,7 +10,7 @@ jobs:
       - name: Check Expo deployment HTML
         run: |
           set -euxo pipefail
-          URL="https://adrianflaga-studio--4mp4kvipm8.expo.app/innore-measurement.html"
+          URL="https://adrianflaga-studio--innore-test.expo.app/innore-measurement.html"
           curl -sSL -D /tmp/headers -o /tmp/body -w "STATUS=%{http_code} MIME=%{content_type} FINAL=%{url_effective}\n" "$URL"
           head -c 200 /tmp/body
           echo
