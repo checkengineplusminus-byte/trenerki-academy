@@ -17,7 +17,7 @@ export const OFFICIAL_FORMS=Object.freeze([
  {code:'VAT-8',category:'VAT',icon:'💳',description:'Deklaracja dla podatku od towarów i usług',source:'https://podatki.gov.pl/podatki-firmowe/vat/formularze-vat'},
  {code:'VAT-9M',category:'VAT',icon:'🗓️',description:'Deklaracja dla określonych rozliczeń podatku VAT',source:'https://podatki.gov.pl/podatki-firmowe/vat/formularze-vat'},
  {code:'VAT-UEK',category:'VAT',icon:'✏️',description:'Korekta informacji podsumowującej VAT-UE',source:'https://podatki.gov.pl/podatki-firmowe/vat/formularze-vat'},
- {code:'JPK',category:'JPK',icon:'🖥️',description:'Struktury Jednolitego Pliku Kontrolnego',source:'https://podatki.gov.pl/podatki-firmowe/jpk'}
+ {code:'JPK',category:'JPK',icon:'🖥️',description:'Struktury Jednolitego Pliku Kontrolnego',source:'https://podatki.gov.pl/podatki-firmowe/jednolity-plik-kontrolny/jpk_vat-z-deklaracja'}
 ]);
 export function officialFormFor(code){return OFFICIAL_FORMS.find(f=>f.code===code)||null;}
 export function officialFormUrl(item,preferPdf=false){if(!item)return null;const link=preferPdf&&item.pdf?item.pdf:item.source;try{const u=new URL(link);return u.protocol==='https:'&&['podatki.gov.pl','www.gov.pl'].includes(u.hostname)?u.toString():null}catch{return null}}
