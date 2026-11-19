@@ -28,7 +28,7 @@ jobs:
           (async()=>{
             const browser=await chromium.launch({headless:true});
             const context=await browser.newContext({...devices['iPhone 13'],browserName:undefined});
-            await context.addCookies([{name:'__Http-phish',value:'1',url:'https://raw.githack.com'}]);
+            await context.addCookies([{name:'__Http-phish',value:'1',secure:true,httpOnly:true,url:'https://raw.githack.com'}]);
             const page=await context.newPage();
             const errors=[];
             page.on('pageerror',e=>errors.push(e.message));
