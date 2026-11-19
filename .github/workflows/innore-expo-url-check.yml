@@ -1,0 +1,20 @@
+name: Innore Expo public URL and mobile browser check
+on:
+  push:
+    branches: ['innore-measurement-preview-20261119']
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - name: Check Expo deployment HTML
+        run: |
+          set -euxo pipefail
+          URL="https://adrianflaga-studio--4mp4kvipm8.expo.app/innore-measurement.html"
+          curl -sSL -D /tmp/headers -o /tmp/body -w "STATUS=%{http_code} MIME=%{content_type} FINAL=%{url_effective}\n" "$URL"
+          head -c 200 /tmp/body
+          echo
+          grep -iq '^content-type:.*text/html' /tmp/headers
+          grep -q 'Innore Measurement' /tmp/body
+          grep -q 'Balcony Photos' /tmp/body
+          echo "PASS: Expo deployment delivers the Innore HTML app"
