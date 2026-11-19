@@ -28,7 +28,7 @@ export default function CourseLessonExtras({lessonNo,title,tips,homework,value,o
     <View style={{width:27,height:27,borderRadius:14,backgroundColor:'#deedd5',alignItems:'center',justifyContent:'center'}}>
      <Text style={{fontSize:13,fontWeight:'900',color:ink}}>{i+1}</Text>
     </View>
-    <Text style={{flex:1,fontSize:14,lineHeight:23,color:secondary}}>{tip}</Text>
+    <Text style={{flex:1,fontSize:14,lineHeight:23,color:secondary}}>{tip.replace(/^\s*\d{1,3}[.)–-]\s*/u,'')}</Text>
    </View>)}
   </View>}
   <View testID="general-lesson-homework" style={{padding:18,borderRadius:16,borderWidth:1,borderColor:'#e3e1cb',backgroundColor:'#fffaf0',gap:12}}>
