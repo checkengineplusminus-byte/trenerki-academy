@@ -13,13 +13,13 @@ jobs:
       - name: Install Playwright
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install chromium --with-deps
+          which google-chrome || which google-chrome-stable || which chromium
       - name: Test iPhone simulated touch editor, autosave, PDF and ZIP
         run: |
           node <<'JS'
           const {chromium,devices}=require('playwright');
           (async()=>{
-            const browser=await chromium.launch({headless:true});
+            const browser=await chromium.launch({channel:'chrome',headless:true});
             const ctx=await browser.newContext({...devices['iPhone 13'],acceptDownloads:true});
             const page=await ctx.newPage(),errors=[];
             page.on('pageerror',e=>errors.push(e.message));
