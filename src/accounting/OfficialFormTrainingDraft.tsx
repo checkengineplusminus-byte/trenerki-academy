@@ -81,7 +81,7 @@ export default function OfficialFormTrainingDraft({form,userId}:{form:Form;userI
   {!!message&&<Text accessibilityLiveRegion="polite" style={{fontSize:13,fontWeight:'700',color:'#21583a'}}>{message}</Text>}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:9}}>
    <Pressable accessibilityRole="button" disabled={loading||saving||readError} onPress={()=>void save()}
-    style={{...buttonStyle,backgroundColor:ink,flexGrow:1,alignItems:'center',opacity:loading||saving||readError?.5:1}}>
+    style={{...buttonStyle,backgroundColor:ink,flexGrow:1,alignItems:'center',opacity:(loading||saving||readError)?0.5:1}}>
     <Text style={{color:'white',fontWeight:'900'}}>{saving?'Zapisywanie…':'💾 Zapisz prywatny szkic'}</Text>
    </Pressable>
    <Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://trenerki.com/biuro-ksiegowe')}
