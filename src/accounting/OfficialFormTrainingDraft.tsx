@@ -45,8 +45,9 @@ export default function OfficialFormTrainingDraft({form,userId}:{form:Form;userI
    setMessage('✓ Zapisano na koncie · wersja '+data.version+'. To wyłącznie ćwiczenie, nie złożona deklaracja.');
   }catch(e:any){
    const conflict=e?.code==='40001';
+   if(conflict)setReadError(true); // Freeze stale version until learner explicitly reloads.
    setError(conflict?
-    'Zapis odrzucony — w innym oknie jest nowsza wersja. Skopiuj swoje odpowiedzi przed ponownym odczytem.':
+    'Zapis odrzucony — w innym oknie jest nowsza wersja. Skopiuj własne odpowiedzi przed wczytaniem nowej wersji.':
     'Nie udało się zapisać szkicu. Zachowaj wpisane odpowiedzi i ponów próbę.');
   }finally{setSaving(false);lock.current=false;}
  }
