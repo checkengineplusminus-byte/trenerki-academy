@@ -55,7 +55,7 @@ jobs:
             console.log('PASS marker rotates by direct gesture: '+angle);
             await bar.locator('[data-shape="arrow"]').click();
             await bar.locator('[data-n="2"]').click();
-            await page.locator('#viewer').click({position:{x:v.width*.63,y:v.height*.59}});
+            await page.locator('#viewer').click({position:{x:v.width*.30,y:v.height*.61}});
             await page.locator('#quickInput').fill('1780');
             await page.locator('[data-act="quickDone"]').click();
             if(await page.locator('.mark-pin').count()!==2)throw Error('Second marker absent');
