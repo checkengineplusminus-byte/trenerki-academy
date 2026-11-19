@@ -27,7 +27,7 @@ test('Form library points only to original Ministry forms, with a separate pract
  assert.equal(officialFormUrl({source:'javascript:alert(1)'}),null);
  const screen=read('app/formularze-ksiegowego.tsx');
  for(const token of ['OfficialFormsPanel','Oryginalny druk / PDF',
-   "React.createElement('iframe' as any",'Ćwicz w Trenerki',
+   "React.createElement('iframe' as any",'Podgląd i ćwiczenie',
    'ta_accounting_form_save','p_expected_version:base','p_inputs:snapshot']){
   assert(screen.includes(token),'Missing official forms / private practice feature '+token);
  }
