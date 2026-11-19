@@ -1,10 +1,12 @@
 import React,{useEffect,useRef,useState} from 'react';
-import {ActivityIndicator,Linking,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
+import {ActivityIndicator,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — niewielki moduł bez zależności, testowany w Node.
 import {officialURL,formKey,draftKey,restoreDraft,feedbackTitle,periodLabel} from '../src/accounting/forms-core.js';
+// @ts-ignore — safe whitelisted Ministry of Finance links, not reproduced forms.
+import {OFFICIAL_FORMS,officialFormUrl} from '../src/accounting/official-forms.js';
 type Card={reference_key:string;title_pl:string;summary:string;category:string;material:any;legal_as_of:string;revision:string;total_count?:number};
 type Saved={inputs:Record<string,string>;evaluation:any;version:number;content_revision:string}|null;
 function Button({title,onPress,disabled=false,primary=false}:{title:string;onPress:()=>void;disabled?:boolean;primary?:boolean}){return <Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={[s.button,primary&&s.primary,disabled&&s.disabled]}><Text style={primary?s.white:s.link}>{title}</Text></Pressable>;}
@@ -44,6 +46,51 @@ function Practice({userId,card,scenario,onReload}:{userId:string;card:Card;scena
   <Text style={s.small}>Otwarte pola zachowują się na tym urządzeniu. Przycisk zapisuje je na koncie. Nie wpisuj danych prawdziwego podatnika ani pracownika.</Text>
  </View>;
 }
+function OfficialFormsPanel({onSearch}:{onSearch:(query:string)=>void}){
+ const [category,setCategory]=useState('Popularne'),[selected,setSelected]=useState<any>(null),[all,setAll]=useState(false);
+ const listed=(OFFICIAL_FORMS as any[]).filter(f=>category==='Popularne'?['PIT-37','PIT-36L','PIT-11','CIT-8','CIT-8/O','VAT-R','VAT-UE'].includes(f.code):f.category===category);
+ const subset=all?listed:listed.slice(0,category==='Popularne'?7:9);
+ const open=(url:string|null)=>{if(url)void Linking.openURL(url);};
+ return <View style={s.card}>
+  <Text style={s.eyebrowDark}>URZĘDOWE ORYGINAŁY · PIT / CIT / VAT</Text>
+  <Text style={s.h2}>📂 Wybierz dokument</Text>
+  <Text style={s.small}>Druki pochodzą z oficjalnych stron Ministerstwa Finansów. Do nauki używaj kopii z fikcyjnymi danymi. Wybierz rocznik i wersję zgodnie z instrukcją urzędu.</Text>
+  <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{gap:7,paddingVertical:6}}>
+   {['Popularne','PIT','CIT','VAT','JPK'].map(k=><Pressable key={k} accessibilityRole="button" accessibilityState={{selected:category===k}}
+    onPress={()=>{setCategory(k);setSelected(null);setAll(false);}} style={[s.taxPill,category===k&&s.taxPillActive]}>
+    <Text style={[s.taxPillText,category===k&&s.taxPillTextActive]}>{k}</Text>
+   </Pressable>)}
+  </ScrollView>
+  <View style={s.formTiles}>{subset.map((form:any)=><View key={form.code} style={s.formTile}>
+   <Text style={{fontSize:28}}>{form.icon}</Text>
+   <Text style={s.formName}>{form.code}</Text>
+   <Text style={s.small}>{form.description}</Text>
+   <View style={{gap:7,marginTop:'auto'}}>
+    <Pressable accessibilityRole="button" onPress={()=>{setSelected(form);if(Platform.OS==='web'&&form.pdf){/* browser preview below */}}} style={s.formTileBtn}>
+     <Text style={s.link}>{form.pdf?'Podgląd PDF':'Zobacz formularz'}</Text>
+    </Pressable>
+    <Pressable accessibilityRole="link" onPress={()=>open(officialFormUrl(form,false))} style={s.formTileBtn}>
+     <Text style={s.link}>Wypełnij / pobierz u MF ↗</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={()=>onSearch(form.code)} style={s.formTileBtn}>
+     <Text style={s.link}>Ćwicz w Trenerki →</Text>
+    </Pressable>
+   </View>
+  </View>)}</View>
+  {!all&&listed.length>subset.length&&<Button title={'Pokaż wszystkie ('+listed.length+')'} onPress={()=>setAll(true)}/>}
+  {!!selected&&<View style={s.notice}>
+   <Text style={s.label}>{selected.icon} {selected.code} — oryginalny dokument</Text>
+   <Text style={s.small}>{selected.edition||'Wybierz aktualny rocznik na stronie urzędu.'} · Nie zmieniamy treści urzędowego formularza.</Text>
+   {Platform.OS==='web'&&!!selected.pdf&&React.createElement('iframe' as any,{
+    title:'Podgląd oryginalnego dokumentu '+selected.code,
+    src:officialFormUrl(selected,true)||'',style:{width:'100%',height:430,border:'1px solid #d7e4d0',borderRadius:12,background:'white'}
+   })}
+   {!selected.pdf&&<Text style={s.body}>Urzędowy formularz jest dostępny na stronie MF, również w wersji do wypełnienia online lub do pobrania, jeżeli urząd taką udostępnia.</Text>}
+   <Button title="Otwórz oryginał na stronie MF ↗" onPress={()=>open(officialFormUrl(selected,!!selected.pdf))}/>
+   <Text style={s.small}>Edycja w Trenerki dotyczy wyłącznie osobnego ćwiczenia szkoleniowego, a nie zapisu danych we właściwym dokumencie urzędowym.</Text>
+  </View>}
+ </View>;
+}
 export default function AccountingForms(){
  const router=useRouter(),params=useLocalSearchParams<{entry?:string}>(),entry=typeof params.entry==='string'?params.entry:'';
  const [user,setUser]=useState(''),[query,setQuery]=useState(''),[applied,setApplied]=useState(''),[page,setPage]=useState(0),[total,setTotal]=useState(0),[cards,setCards]=useState<Card[]>([]);
@@ -56,7 +103,8 @@ export default function AccountingForms(){
  const f=card?.material?.form,scenario=f?.scenarios?.[scenarioIndex];
  return <ScrollView ref={scroll} style={s.page} contentContainerStyle={s.pad} keyboardShouldPersistTaps="handled"><View style={s.wrap}>
   <View style={s.row}><Link href="/ksiegowosc" style={s.link}>← Encyklopedia</Link><Link href="/biuro-ksiegowe" style={s.link}>Biuro ćwiczeniowe</Link><Link href="/slownik-ksiegowego" style={s.link}>Słownik</Link></View>
-  <View style={s.hero}><Text style={s.eyebrow}>PRACOWNIA FORMULARZY · OD DOKUMENTU DO POLA</Text><Text accessibilityRole="header" style={s.h1}>Wiesz, co wpisujesz i dlaczego.</Text><Text style={s.heroText}>Oryginalne druki, opis wersji, mapa pól i zadania na fikcyjnych danych. Ćwiczysz wybrane fragmenty — nie wysyłasz deklaracji.</Text></View>
+  <View style={s.hero}><Text style={s.eyebrow}>TRENERKI · FORMULARZE I ĆWICZENIA</Text><Text accessibilityRole="header" style={s.h1}>📄 Druki PIT, CIT i VAT</Text><Text style={s.heroText}>Podejrzyj oryginał, naucz się pól i zapisz własne ćwiczenie.</Text></View>
+  <OfficialFormsPanel onSearch={code=>{setQuery(code);setApplied(code);setPage(0);router.setParams({entry:''});}}/>
   <View style={s.card}><Text style={s.label}>Szukaj dokumentu lub tematu</Text><View style={s.row}><TextInput value={query} onChangeText={setQuery} maxLength={120} placeholder="Np. PIT-38, DRA, udziały, składki" accessibilityLabel="Wyszukiwarka formularzy" style={[s.input,{flex:1,minWidth:180}]} onSubmitEditing={()=>{setApplied(query.trim());setPage(0);router.setParams({entry:''});}}/><Button title="Szukaj" primary onPress={()=>{setApplied(query.trim());setPage(0);router.setParams({entry:''});}}/></View><Text style={s.small}>Oryginalne wzory są dostępne bezpłatnie u wydawców. Objaśnienia i zadania Trenerki są odrębne od dokumentu urzędowego.</Text></View>
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}{!!detailError&&<Text accessibilityRole="alert" style={s.warning}>{detailError}</Text>}{opening&&<ActivityIndicator/>}
   {card&&f?<>
@@ -68,4 +116,12 @@ export default function AccountingForms(){
   </>:!opening&&<>{loading?<ActivityIndicator/>:<><Text style={s.small}>Liczba dostępnych kart: {total}. Lista po 12 dokumentów.</Text>{cards.map(c=><View key={c.reference_key} style={s.card}><Text style={s.eyebrowDark}>{c.category}</Text><Text accessibilityRole="header" style={s.h2}>{c.title_pl}</Text><Text style={s.body}>{c.summary}</Text><Button title="Przejdź do pól i ćwiczeń" primary onPress={()=>router.setParams({entry:c.reference_key})}/></View>)}{!cards.length&&!error&&<Text style={s.body}>Nie znaleziono gotowej karty. Nie pokazujemy pustych pozycji programu jako opracowanych formularzy.</Text>}<View style={s.row}><Button title="Poprzednie" disabled={page===0} onPress={()=>setPage(p=>p-1)}/><Button title="Następne" disabled={(page+1)*12>=total} onPress={()=>setPage(p=>p+1)}/></View></>}</>}
  </View></ScrollView>;
 }
-const s=StyleSheet.create({page:{flex:1,backgroundColor:'#f6f8f0'},pad:{padding:18,paddingBottom:60},wrap:{width:'100%',maxWidth:1100,alignSelf:'center',gap:14},row:{flexDirection:'row',flexWrap:'wrap',gap:10,alignItems:'center'},hero:{backgroundColor:'#183c2b',padding:26,borderRadius:22,gap:12},h1:{fontSize:34,lineHeight:42,color:'white',fontWeight:'900'},heroText:{color:'#e0ecda',fontSize:16,lineHeight:26},eyebrow:{color:'#c9dfb7',fontSize:11,fontWeight:'800',letterSpacing:1},eyebrowDark:{color:'#58734e',fontSize:11,fontWeight:'800',letterSpacing:1},h2:{color:'#183c2b',fontSize:22,lineHeight:29,fontWeight:'800'},card:{backgroundColor:'white',padding:20,borderRadius:16,borderWidth:1,borderColor:'#dce6d6',gap:13},body:{color:'#263f30',fontSize:16,lineHeight:26},small:{color:'#617462',fontSize:12,lineHeight:19},label:{color:'#183c2b',fontSize:14,fontWeight:'800',lineHeight:21},input:{borderWidth:1,borderColor:'#baccb2',padding:12,borderRadius:9,fontSize:17,color:'#183c2b',backgroundColor:'white'},field:{gap:7,paddingVertical:10},button:{backgroundColor:'#eaf2df',paddingVertical:12,paddingHorizontal:16,borderRadius:10},primary:{backgroundColor:'#183c2b'},disabled:{opacity:.45},white:{color:'white',fontWeight:'800'},link:{color:'#245f36',fontWeight:'800'},notice:{backgroundColor:'#edf4e5',padding:14,borderRadius:10,gap:7},warning:{backgroundColor:'#fff1e7',padding:15,borderRadius:10,color:'#7f3b25',gap:10},message:{fontSize:14,lineHeight:22,color:'#365b3d'},tableRow:{flexDirection:'row'},cell:{width:240,padding:12,borderBottomWidth:1,borderColor:'#e2e8dc',fontSize:14,lineHeight:22,color:'#263f30'},tableHead:{fontWeight:'800',backgroundColor:'#eef4e7'}});
+const s=StyleSheet.create({page:{flex:1,backgroundColor:'#f6f8f0'},pad:{padding:18,paddingBottom:60},wrap:{width:'100%',maxWidth:1100,alignSelf:'center',gap:14},row:{flexDirection:'row',flexWrap:'wrap',gap:10,alignItems:'center'},hero:{backgroundColor:'#183c2b',padding:18,borderRadius:16,gap:8},h1:{fontSize:27,lineHeight:34,color:'white',fontWeight:'900'},heroText:{color:'#e0ecda',fontSize:16,lineHeight:26},eyebrow:{color:'#c9dfb7',fontSize:11,fontWeight:'800',letterSpacing:1},eyebrowDark:{color:'#58734e',fontSize:11,fontWeight:'800',letterSpacing:1},h2:{color:'#183c2b',fontSize:22,lineHeight:29,fontWeight:'800'},card:{backgroundColor:'white',padding:14,borderRadius:16,borderWidth:1,borderColor:'#dce6d6',gap:10},
+ taxPill:{paddingVertical:9,paddingHorizontal:13,borderWidth:1,borderColor:'#cfdfc8',backgroundColor:'#eef6e9',borderRadius:12,minHeight:43,justifyContent:'center'},
+ taxPillActive:{backgroundColor:'#173c2c',borderColor:'#173c2c'},
+ taxPillText:{fontSize:13,fontWeight:'800',color:'#274e36'},
+ taxPillTextActive:{color:'white'},
+ formTiles:{flexDirection:'row',flexWrap:'wrap',gap:10},
+ formTile:{width:'47%',minWidth:140,flexGrow:1,backgroundColor:'#fbfdf9',borderWidth:1,borderColor:'#d4e4cf',borderBottomWidth:4,borderBottomColor:'#bdd8b9',borderRadius:15,padding:12,gap:7},
+ formName:{fontSize:18,fontWeight:'900',color:'#183b2b'},
+ formTileBtn:{paddingVertical:9,paddingHorizontal:9,minHeight:42,borderRadius:10,backgroundColor:'#eaf3e5',justifyContent:'center'},body:{color:'#263f30',fontSize:16,lineHeight:26},small:{color:'#617462',fontSize:12,lineHeight:19},label:{color:'#183c2b',fontSize:14,fontWeight:'800',lineHeight:21},input:{borderWidth:1,borderColor:'#baccb2',padding:12,borderRadius:9,fontSize:17,color:'#183c2b',backgroundColor:'white'},field:{gap:7,paddingVertical:10},button:{backgroundColor:'#eaf2df',paddingVertical:12,paddingHorizontal:16,borderRadius:10},primary:{backgroundColor:'#183c2b'},disabled:{opacity:.45},white:{color:'white',fontWeight:'800'},link:{color:'#245f36',fontWeight:'800'},notice:{backgroundColor:'#edf4e5',padding:14,borderRadius:10,gap:7},warning:{backgroundColor:'#fff1e7',padding:15,borderRadius:10,color:'#7f3b25',gap:10},message:{fontSize:14,lineHeight:22,color:'#365b3d'},tableRow:{flexDirection:'row'},cell:{width:240,padding:12,borderBottomWidth:1,borderColor:'#e2e8dc',fontSize:14,lineHeight:22,color:'#263f30'},tableHead:{fontWeight:'800',backgroundColor:'#eef4e7'}});
