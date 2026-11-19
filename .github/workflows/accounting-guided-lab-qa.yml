@@ -1,0 +1,47 @@
+name: Guided accounting lab and official forms QA
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  accounting_ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install app dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify new guided lab, official forms, file-review safeguards
+        run: node --experimental-default-type=module --test scripts/test-accounting-guided-lab.mjs
+      - name: Verify accounting lab and saved progress
+        run: |
+          node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-lab-navigation.mjs
+          node --experimental-default-type=module --test scripts/test-accounting-homework-feedback.mjs
+      - name: Verify JavaScript and TypeScript syntax
+        run: |
+          node --check src/accounting/lab-ui.js
+          node --check src/accounting/official-forms.js
+          node <<'NODE'
+          const ts=require('typescript'),fs=require('fs');
+          let failed=false;
+          for(const name of ['app/formularze-ksiegowego.tsx','app/biuro-ksiegowe.web.tsx','src/LessonIllustratedSections.tsx','supabase/functions/ta-accounting-file-review/index.ts']){
+            const source=ts.createSourceFile(name,fs.readFileSync(name,'utf8'),ts.ScriptTarget.Latest,true,name.endsWith('.tsx')?ts.ScriptKind.TSX:ts.ScriptKind.TS);
+            console.log(name+': '+source.parseDiagnostics.length+' syntax errors');
+            for(const issue of source.parseDiagnostics){
+              failed=true;const at=source.getLineAndCharacterOfPosition(issue.start||0);
+              console.error(name+':'+(at.line+1)+':'+(at.character+1)+': '+ts.flattenDiagnosticMessageText(issue.messageText,' '));
+            }
+          }
+          if(failed)process.exitCode=1;
+          NODE
+      - name: Export web app with new accounting UI
+        run: npx expo export --platform web --output-dir /tmp/trenerki-accounting-guided-qa
+      - name: Verify exported accounting routes exist
+        run: |
+          test -s /tmp/trenerki-accounting-guided-qa/biuro-ksiegowe.html
+          test -s /tmp/trenerki-accounting-guided-qa/formularze-ksiegowego.html
