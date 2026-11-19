@@ -1,0 +1,55 @@
+name: Innore Measurement mobile web smoke test
+on:
+  push:
+    branches: [innore-measurement-preview-20261119]
+  workflow_dispatch:
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      TEST_URL: https://raw.githack.com/checkengineplusminus-byte/trenerki-academy/innore-measurement-preview-20261119/index.html
+    steps:
+      - name: Verify deployment response
+        run: |
+          set -euxo pipefail
+          curl -fLsS --retry 3 --retry-all-errors -D /tmp/headers -o /tmp/page.html "$TEST_URL"
+          grep -iq "^content-type:.*text/html" /tmp/headers
+          grep -q "Innore Measurement" /tmp/page.html
+          grep -q "Hide all" /tmp/page.html
+      - name: Install browser test tools
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install chromium --with-deps
+      - name: Test the site in mobile browser
+        run: |
+          node <<'JS'
+          const {chromium,devices}=require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({...devices['iPhone 13'],browserName:undefined});
+            await context.addCookies([{name:'__Http-phish',value:'1',url:'https://raw.githack.com'}]);
+            const page=await context.newPage();
+            const errors=[];
+            page.on('pageerror',e=>errors.push(e.message));
+            const response=await page.goto(process.env.TEST_URL,{waitUntil:'domcontentloaded',timeout:45000});
+            console.log('HTTP',response?.status(),'MIME',response?.headers()['content-type']);
+            await page.waitForSelector('button[data-act="demo"]',{timeout:25000});
+            console.log('Landing page visible');
+            await page.locator('button[data-act="demo"]').click();
+            await page.waitForSelector('button[data-act="tool"]',{timeout:30000});
+            console.log('Demo loaded, five color tools available:',await page.locator('button[data-act="tool"]').count()-1);
+            await page.locator('button[data-act="layers"]').click();
+            await page.waitForSelector('#layerPanel:not(.hidden)',{timeout:5000});
+            await page.locator('button[data-act="noLayers"]').click();
+            const shown=await page.locator('#layerPanel input[type="checkbox"]:checked').count();
+            if(shown!==0)throw Error('Hide all failed: '+shown);
+            await page.locator('button[data-act="allLayers"]').click();
+            const restored=await page.locator('#layerPanel input[type="checkbox"]:checked').count();
+            if(restored!==5)throw Error('Show all failed: '+restored);
+            console.log('Layers toggled off and on');
+            if(errors.length)throw Error('Page errors: '+errors.join('; '));
+            await browser.close();
+            console.log('MOBILE SMOKE PASSED');
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
