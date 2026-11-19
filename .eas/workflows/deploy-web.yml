@@ -63,6 +63,8 @@ jobs:
           run: node scripts/test-course-icons.mjs
         - name: Sprawdz obliczenia i import pracowni ksiegowej
           run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+        - name: Sprawdz aplikacyjny pulpit, urzedowe druki i analize plikow Anielki
+          run: node --experimental-default-type=module --test scripts/test-accounting-guided-lab.mjs
         - name: Sprawdz odpowiedzi i szkice czytnika ksiegowosci
           run: node --experimental-default-type=module --test scripts/test-accounting-reader.mjs
         - name: Sprawdz dane stron i historie identyfikatorow
