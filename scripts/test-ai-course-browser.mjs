@@ -116,7 +116,7 @@ async function run(env){
       if(!target)return false;
       const rect=target.getBoundingClientRect();
       return rect.top>=-32&&rect.top<window.innerHeight-100;
-    },{timeout:10000});
+    },undefined,{timeout:10000});
     await stage.getByTestId('adversarial-option-0').click();
     await stage.getByTestId('adversarial-retry').click();
     await stage.getByTestId('adversarial-option-1').click();
