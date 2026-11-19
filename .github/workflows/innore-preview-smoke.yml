@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   smoke:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     env:
       TEST_URL: https://raw.githack.com/checkengineplusminus-byte/trenerki-academy/innore-measurement-preview-20261119/index.html
