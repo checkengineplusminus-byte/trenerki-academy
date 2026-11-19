@@ -53,7 +53,7 @@ test('Reader uses static Expo image bundling with alt, responsive 16:9 and no re
  assert.match(reader,/accessibilityLabel=\{photo\.alt\}/);
  assert.match(reader,/resizeMode="cover"/);
  assert.match(reader,/sectionPhoto:\{width:'100%',aspectRatio:16\/9/);
- assert.match(reader,/<SectionPhoto photo=\{section\.photo\}\/>/);
+ assert.match(reader,/<SectionPhoto photo=\{(?:section|currentSection)\.photo\}\/>/);
  assert.doesNotMatch(reader,/source=\{\{uri:.*?\}\}/);
  assert.doesNotMatch(gate,/https?:\/\//);
 });
