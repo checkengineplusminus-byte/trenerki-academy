@@ -1,0 +1,94 @@
+name: Innore v2 — touch measurement end-to-end
+on:
+  push:
+    branches: [innore-measurement-preview-20261119]
+  workflow_dispatch:
+jobs:
+  test-field-ux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      SITE: https://adrianflaga-studio--innore-test.expo.app/innore-measurement.html
+    steps:
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install chromium --with-deps
+      - name: Test iPhone simulated touch editor, autosave, PDF and ZIP
+        run: |
+          node <<'JS'
+          const {chromium,devices}=require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const ctx=await browser.newContext({...devices['iPhone 13'],acceptDownloads:true});
+            const page=await ctx.newPage(),errors=[];
+            page.on('pageerror',e=>errors.push(e.message));
+            const r=await page.goto(process.env.SITE,{waitUntil:'domcontentloaded',timeout:45000});
+            if(r?.status()!==200)throw Error('site HTTP '+r?.status());
+            await page.waitForFunction(()=>window.PDFLib&&window.pdfjsLib&&window.JSZip,null,{timeout:30000});
+            await page.locator('[data-act="demo"]').click();
+            await page.waitForSelector('#loading.hidden',{timeout:30000});
+            console.log('PASS demo vector PDF rendered');
+            const bar=page.locator('#toolrail');
+            if(await bar.locator('[data-act="shape"]').count()!==2)throw Error('Line+arrow tools missing');
+            if(await bar.locator('[data-act="tool"]').count()!==5)throw Error('5 color tools missing');
+            await bar.locator('[data-shape="line"]').click();
+            await bar.locator('[data-n="1"]').click();
+            const v=await page.locator('#viewer').boundingBox();
+            await page.locator('#viewer').click({position:{x:v.width*.46,y:v.height*.50}});
+            await page.locator('#quickInput').waitFor({state:'visible'});
+            const focus=await page.evaluate(()=>document.activeElement?.id);
+            if(focus!=='quickInput')throw Error('Inline keyboard input did not autofocus: '+focus);
+            if(await page.locator('.mark-pin').count()!==1)throw Error('Line did not appear immediately');
+            await page.locator('#quickInput').fill('2200');
+            await page.locator('[data-act="quickStamp"][data-s="GV"]').click();
+            if(!(await page.locator('#quickInput').inputValue()).includes('2200 GV'))throw Error('GV stamp failed');
+            await page.locator('[data-act="quickDone"]').click();
+            if(!(await page.locator('.mark-value').first().innerText()).includes('2200 GV'))throw Error('Value not on line');
+            console.log('PASS tap -> immediate line -> keyboard -> autosave without form');
+            let handle=await page.locator('[data-rotate]').first().boundingBox();
+            if(!handle)throw Error('Rotation handle missing');
+            await page.mouse.move(handle.x+handle.width/2,handle.y+handle.height/2);
+            await page.mouse.down();await page.mouse.move(handle.x+handle.width/2-35,handle.y+handle.height/2+48,{steps:5});await page.mouse.up();
+            const angle=await page.locator('.mark-geometry').first().getAttribute('style');
+            if(!angle||angle.includes('rotate(0deg)'))throw Error('Drag rotate failed: '+angle);
+            console.log('PASS marker rotates by direct gesture: '+angle);
+            await bar.locator('[data-shape="arrow"]').click();
+            await bar.locator('[data-n="2"]').click();
+            await page.locator('#viewer').click({position:{x:v.width*.63,y:v.height*.59}});
+            await page.locator('#quickInput').fill('1780');
+            await page.locator('[data-act="quickDone"]').click();
+            if(await page.locator('.mark-pin').count()!==2)throw Error('Second marker absent');
+            if(await page.locator('.mark-geometry.arrow').count()!==1)throw Error('Arrow missing');
+            console.log('PASS second color + arrow');
+            await page.locator('[data-act="layers"]').first().click();
+            await page.locator('[data-layer="1"]').uncheck();
+            if(await page.locator('.mark-pin').count()!==1)throw Error('Layer 1 hide failed');
+            await page.locator('[data-layer="1"]').check();
+            if(await page.locator('.mark-pin').count()!==2)throw Error('Layer 1 show failed');
+            await page.locator('[data-act="layers"]').last().click();
+            await page.locator('[data-act="zin"]').click();
+            const z=await page.locator('#zoomLabel').innerText();
+            if(z==='100%')throw Error('Zoom button failed');
+            console.log('PASS layers, zoom');
+            await page.waitForTimeout(400);
+            let [pdfDl]=await Promise.all([page.waitForEvent('download',{timeout:30000}),page.locator('[data-act="pdf"]').click()]);
+            if(!pdfDl.suggestedFilename().endsWith('.pdf'))throw Error('PDF export naming failed');
+            console.log('PASS annotated PDF export');
+            await page.reload({waitUntil:'domcontentloaded'});
+            await page.locator('[data-act="project"]').first().click();
+            await page.locator('[data-act="edit"]').first().click();
+            await page.waitForSelector('#loading.hidden',{timeout:30000});
+            if(await page.locator('.mark-pin').count()!==2)throw Error('Local measurements lost after reload');
+            const vals=await page.locator('.mark-value').allInnerTexts();
+            if(!vals.some(v=>v.includes('2200 GV')))throw Error('Value lost after reload: '+vals);
+            console.log('PASS local measurement persistence after reload');
+            await page.locator('[data-act="back"]').click();
+            const [zipDl]=await Promise.all([page.waitForEvent('download',{timeout:30000}),page.locator('[data-act="zip"]').click()]);
+            if(!zipDl.suggestedFilename().endsWith('.zip'))throw Error('ZIP export failed');
+            console.log('PASS one project ZIP');
+            if(errors.length)throw Error('Browser JS errors: '+errors.join(' | '));
+            console.log('PASS ALL iPHONE FIELD UX TESTS');
+            await browser.close();
+          })().catch(e=>{console.error(e);process.exit(1)});
+          JS
