@@ -10,11 +10,14 @@ jobs:
       - name: Check Expo deployment HTML
         run: |
           set -euxo pipefail
-          URL="https://adrianflaga-studio--innore-test.expo.app/innore-measurement.html"
+          URL="https://adrianflaga-studio--innore-test.expo.app/innore-measurement-native.html"
           curl -sSL -D /tmp/headers -o /tmp/body -w "STATUS=%{http_code} MIME=%{content_type} FINAL=%{url_effective}\n" "$URL"
           head -c 200 /tmp/body
           echo
           grep -iq '^content-type:.*text/html' /tmp/headers
           grep -q 'Innore Measurement' /tmp/body
           grep -q 'Balcony Photos' /tmp/body
+          grep -q 'id="measureInput"' /tmp/body
+          ! grep -q 'Measurement / note (mm)' /tmp/body
+          ! grep -q 'Save measurement' /tmp/body
           echo "PASS: Expo deployment delivers the Innore HTML app"
