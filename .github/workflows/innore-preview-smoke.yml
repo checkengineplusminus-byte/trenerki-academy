@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     env:
-      TEST_URL: https://raw.githack.com/checkengineplusminus-byte/trenerki-academy/innore-measurement-preview-20261119/index.html
+      TEST_URL: https://adrianflaga-studio--4mp4kvipm8.expo.app/innore-measurement.html
     steps:
       - name: Verify deployment response
         run: |
@@ -28,7 +28,7 @@ jobs:
           (async()=>{
             const browser=await chromium.launch({headless:true});
             const context=await browser.newContext({...devices['iPhone 13'],browserName:undefined});
-            await context.addCookies([{name:'__Http-phish',value:'1',secure:true,httpOnly:true,url:'https://raw.githack.com'}]);
+
             const page=await context.newPage();
             const errors=[];
             page.on('pageerror',e=>errors.push(e.message));
