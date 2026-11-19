@@ -9,6 +9,7 @@ import {ExcelAcademyLibrary,ExcelDeepLesson} from './ExcelAcademyLibrary';
 export type LearningSection={heading:string;text:string};
 export type LessonVisual={title:string;kind:'flow'|'comparison';entries:{label:string;detail:string}[]};
 const ink='#173e2d',body='#3e5c48';
+const displayHeading=(value:string)=>String(value||'').replace(/^\s*(?:\d{1,3}[.)–-]\s*)+/u,'').trim();
 type Props={courseSlug:string;lessonNo:number;title:string;sections?:LearningSection[];illustration?:string;
             diagram?:string[];visual?:LessonVisual};
 const imageNames=new Set(['ciesla-odpady','ciesla-prawo','ciesla-warstwy-sciany','ciesla-rama-pomiar','ciesla-rejestr-odbioru','ciesla-legary','eko-hierarchy','eko-sort','eko-cycle','eko-hazard','eko-textiles','eko-food','eko-home','eko-community','windows-history','windows-folders','windows-security','windows-desktop','windows-explorer','excel-interface','word-interface','autocad-interface','word-document','word-structure','word-review','excel-addresses','excel-formulas','excel-chart','autocad-coordinates','autocad-layers','autocad-filetypes','autocad-commands','craft-bednarz','bednarz-anatomia','bednarz-geometria','bednarz-wrega','bednarz-diagnoza','craft-garncarz-tradycja','garncarz-etapy','garncarz-skurcz','garncarz-szkliwo','garncarz-bezpieczenstwo','craft-gontarz','gontarz-warstwy','gontarz-spadek','gontarz-szczeliny','gontarz-wlokna','craft-introligator-tradycja','introligator-anatomia','introligator-wlokna','introligator-skladka','introligator-przegub','craft-kaletnik-tradycja','kaletnik-przekroj','kaletnik-szew','kaletnik-portfel','kaletnik-grubosc','craft-kolodziej','kolodziej-przekroj','kolodziej-drewno','kolodziej-geometria','kolodziej-bicie','craft-kowal-tradycja','kowal-stanowisko','kowal-narzedzia','kowal-rysunek','kowal-operacje','kowal-kopyto','ciesla-drewno','ciesla-wilgotnosc','ciesla-rysunek','ciesla-zlacze','ciesla-dach','ciesla-mur-pruski','ciesla-sztapel','ciesla-suszarnia','ciesla-pily-zeby','ciesla-klin-pilarki','ciesla-strugarki','ciesla-narzedzia','ciesla-pasowe','ciesla-plyty','ciesla-kleje','ciesla-rachunki','ciesla-rysunek-skala','ciesla-bhp','ciesla-szkic-przekroj','craft-ludwisarz','ludwisarz-anatomia','ludwisarz-forma','ludwisarz-stop','ludwisarz-akustyka','ludwisarz-wady','ludwisarz-bhp','craft-mlynarz-tradycyjny','mlynarz-ziarno','mlynarz-kamienie','mlynarz-przekladnia','mlynarz-bilans','craft-plecionkarz','plecionkarz-anatomia','plecionkarz-material','plecionkarz-dno','plecionkarz-splot','plecionkarz-uchwyt','craft-powroznik','powroznik-konstrukcja','powroznik-skret','powroznik-ropewalk','powroznik-obliczenia','craft-rymarz','rymarz-pas','craft-sitarz','craft-snycerz','craft-szewc-tradycja','craft-tkacz-reczny','craft-woznica','craft-zdun-tradycja','craft-zecer','craft-zegarmistrz-tradycja']);
@@ -87,9 +88,9 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     {named.map((section,i)=><View key={i} style={{gap:9}}>
      <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
       <Text style={{width:29,height:29,lineHeight:29,textAlign:'center',backgroundColor:'#dfedd9',color:ink,borderRadius:9,overflow:'hidden',fontWeight:'900'}}>{i+1}</Text>
-      <Text style={{color:ink,fontWeight:'900',fontSize:16,flex:1}}>{section.heading}</Text>
+      <Text style={{color:ink,fontWeight:'900',fontSize:16,flex:1}}>{displayHeading(section.heading)}</Text>
      </View>
-     {section.heading==='Sprawdź wynik po wykonaniu'&&!showSolution?
+     {displayHeading(section.heading)==='Sprawdź wynik po wykonaniu'&&!showSolution?
       <Pressable accessibilityRole="button" onPress={()=>setShowSolution(true)} style={{backgroundColor:'#e8f3e3',alignSelf:'flex-start',padding:12,borderRadius:9}}>
        <Text style={{color:ink,fontWeight:'800'}}>Pokaż rozwiązanie i kryteria</Text>
       </Pressable>:<Text style={{color:body,fontSize:15.5,lineHeight:27}}>{section.text}</Text>}
