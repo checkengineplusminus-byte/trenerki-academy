@@ -242,7 +242,7 @@ export default function Learning(){
   ...(objective?[{key:objective,label:objective==='construction'?'Zadanie z rysunku lub obliczeń':'Pytanie do przeczytanej lekcji',passed:!!passed[objective]}]:[]),
   ...(lesson?.material?.shortcuts?.length?[{key:'keyboard',label:'Pytanie o skrót: wybierz skrót, potem odpowiedź',passed:!!passed.keyboard}]:[]),
   ...(carpentry?[{key:'carpentry',label:'Ćwiczenie praktyczne z ciesielstwa',passed:!!passed.carpentry}]:[]),
-  ...(stageRequired?[{key:'stage',label:'Sprawdzian etapu: wybierz jedną z czterech odpowiedzi',passed:!!passed.stage}]:[])
+  ...(stageRequired?[{key:'stage',label:'obowiązkowy sprawdzian etapu: wybierz jedną z czterech odpowiedzi',passed:!!passed.stage}]:[])
  ];
  const missingRequirements=requirements.filter(item=>!item.passed);
  const requirementMessage='Aby przejść dalej, dokończ: '+missingRequirements.map(item=>item.label.toLocaleLowerCase('pl')).join('; ')+'.';
