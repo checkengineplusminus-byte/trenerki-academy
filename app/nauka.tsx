@@ -47,7 +47,7 @@ const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
- const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0),coachYRef=React.useRef(0);
+ const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),stageYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0),coachYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
  const pendingExcelHomeworkRef=React.useRef(false);
  function scrollToTop(){
@@ -64,7 +64,14 @@ export default function Learning(){
  }
  function returnToExercise(){
   setMsg(requirementMessage);
-  const y=Math.max(0,exerciseYRef.current-24);
+  // The AI checkpoint is a separate required quiz positioned above the regular lesson question.
+  // Once that question is passed, guide the learner to the *remaining* stage test, not back to the answered question.
+  const goToStage=stageRequired&&!passed.stage&&(!objective||!!passed[objective]);
+  if(goToStage&&Platform.OS==='web'&&typeof document!=='undefined'){
+   const target=document.querySelector('[data-testid="ai-stage-quiz-'+module+'"]');
+   if(target){target.scrollIntoView?.({behavior:'smooth',block:'start'});return;}
+  }
+  const y=Math.max(0,(goToStage?stageYRef.current:exerciseYRef.current)-24);
   scrollRef.current?.scrollTo({y,animated:true});
   if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);
  }
@@ -235,7 +242,7 @@ export default function Learning(){
   ...(objective?[{key:objective,label:objective==='construction'?'Zadanie z rysunku lub obliczeń':'Pytanie do przeczytanej lekcji',passed:!!passed[objective]}]:[]),
   ...(lesson?.material?.shortcuts?.length?[{key:'keyboard',label:'Pytanie o skrót: wybierz skrót, potem odpowiedź',passed:!!passed.keyboard}]:[]),
   ...(carpentry?[{key:'carpentry',label:'Ćwiczenie praktyczne z ciesielstwa',passed:!!passed.carpentry}]:[]),
-  ...(stageRequired?[{key:'stage',label:'Obowiązkowy sprawdzian etapu z czterema odpowiedziami',passed:!!passed.stage}]:[])
+  ...(stageRequired?[{key:'stage',label:'Sprawdzian etapu: wybierz jedną z czterech odpowiedzi',passed:!!passed.stage}]:[])
  ];
  const missingRequirements=requirements.filter(item=>!item.passed);
  const requirementMessage='Aby przejść dalej, dokończ: '+missingRequirements.map(item=>item.label.toLocaleLowerCase('pl')).join('; ')+'.';
@@ -465,9 +472,11 @@ export default function Learning(){
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
    {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
-    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}
-     test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
-     onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>}
+    <View testID={'ai-stage-quiz-'+module} onLayout={event=>{stageYRef.current=event.nativeEvent.layout.y}}>
+     <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}
+      test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
+      onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>
+    </View>}
    {slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
     <CourseLessonExtras
      key={'course-homework-'+slug+'-'+module}
@@ -570,7 +579,7 @@ export default function Learning(){
     onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
     style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
     <Text style={{color:canFinish?'white':ink,fontWeight:'900',textAlign:'center',fontSize:17,lineHeight:25}}>
-     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':reviewMode?'Zakończ powtórkę →':'Przejdź do egzaminu →'}
+     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':stageRequired&&!passed.stage&&(!objective||passed[objective])?'↑ Otwórz sprawdzian etapu (4 odpowiedzi)':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':reviewMode?'Zakończ powtórkę →':'Przejdź do egzaminu →'}
     </Text>
     {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>
