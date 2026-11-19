@@ -60,17 +60,38 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  sourceForAccounting=sourceForAccounting.replace(clarificationImport,'').replace(clarificationMount,'');
  // Scope-specific red-team lesson test: added only under explicit non-accounting route.
  const toughImport="import AdversarialLessonTest,{type RedTeamQuiz} from '../src/AdversarialLessonTest';\n";
- const toughMount=`   {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
-    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}
-     test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
-     onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>}
-`;
+ const toughMount="   {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&\n    <View testID={'ai-stage-quiz-'+module} onLayout={event=>{stageYRef.current=event.nativeEvent.layout.y}}>\n     <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}\n      test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}\n      onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>\n    </View>}\n";
  const toughField="redteam_quiz?:RedTeamQuiz,";
  assert.equal(sourceForAccounting.split(toughImport).length,2,'One scoped red-team import');
  assert.equal(sourceForAccounting.split(toughMount).length,2,'One explicitly excluded accounting mount');
  assert.equal(sourceForAccounting.split(toughField).length,2,'One red-team-only material type');
  sourceForAccounting=sourceForAccounting.replace(toughImport,'').replace(toughMount,'').replace(toughField,'');
 
+
+ // Audited AI-only checkpoint navigation changes. Normalize them before the
+ // accounting reader blob hash: no change to accounting access, progression or data.
+ const reviewedAiStageNavigation=[
+  [
+    "exerciseYRef=React.useRef(0),stageYRef=React.useRef(0),carpentryYRef",
+    "exerciseYRef=React.useRef(0),carpentryYRef"
+  ],
+  [
+    " function returnToExercise(){\n  setMsg(requirementMessage);\n  // The AI checkpoint is a separate required quiz positioned above the regular lesson question.\n  // Once that question is passed, guide the learner to the *remaining* stage test, not back to the answered question.\n  const goToStage=stageRequired&&!passed.stage&&(!objective||!!passed[objective]);\n  if(goToStage&&Platform.OS==='web'&&typeof document!=='undefined'){\n   const target=document.querySelector('[data-testid=\"ai-stage-quiz-'+module+'\"]');\n   if(target){target.scrollIntoView?.({behavior:'smooth',block:'start'});return;}\n  }\n  const y=Math.max(0,(goToStage?stageYRef.current:exerciseYRef.current)-24);\n  scrollRef.current?.scrollTo({y,animated:true});\n  if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);\n }\n",
+    " function returnToExercise(){\n  setMsg(requirementMessage);\n  const y=Math.max(0,exerciseYRef.current-24);\n  scrollRef.current?.scrollTo({y,animated:true});\n  if(Platform.OS==='web'&&typeof window!=='undefined'&&y===0)window.scrollTo(0,0);\n }\n"
+  ],
+  [
+    "label:'obowiązkowy sprawdzian etapu: wybierz jedną z czterech odpowiedzi'",
+    "label:'Obowiązkowy sprawdzian etapu z czterema odpowiedziami'"
+  ],
+  [
+    "     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':stageRequired&&!passed.stage&&(!objective||passed[objective])?'↑ Otwórz sprawdzian etapu (4 odpowiedzi)':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':reviewMode?'Zakończ powtórkę →':'Przejdź do egzaminu →'}",
+    "     {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':reviewMode?'Zakończ powtórkę →':'Przejdź do egzaminu →'}"
+  ]
+];
+ for(const [updated,previous] of reviewedAiStageNavigation){
+  assert.equal(sourceForAccounting.split(updated).length,2,'Unreviewed AI checkpoint navigation change');
+  sourceForAccounting=sourceForAccounting.replace(updated,previous);
+ }
  // Scope-limited Excel homework jump. This block is reviewed against main byte-for-byte:
  // it cannot alter accounting routes, Auth or lesson completion.
  const homeworkMarker=" const pendingExcelHomeworkRef=React.useRef(false);\n";
