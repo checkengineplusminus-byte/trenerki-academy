@@ -101,7 +101,7 @@ function createScreen(path,params={}){
  return {flush,press,fill,fillPlaceholder,button,find,findAll,navigation,text:()=>text(tree)};
 }
 async function fillPromo(screen){
- await screen.press('Karta na kwotę');
+ // The current admin gift-value panel is visible directly; no obsolete mode-switch button.
  assert.equal(screen.button('Do przekazania dalej').props.accessibilityState.checked,true,'new value cards must default to transferable');
  assert.equal(screen.button('Do przekazania dalej').props['aria-checked'],true,'web must expose the selected transfer mode');
  assert.equal(screen.button('Dla wskazanej osoby').props['aria-checked'],false,'the personal mode must be exposed as unselected');
