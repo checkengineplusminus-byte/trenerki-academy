@@ -17,6 +17,27 @@ export const SECTION_HEADERS=Object.freeze([
  ['Lp.','Platforma / źródło','Rodzaj transakcji','Dokument','Waluta','Wpływ (zł)','Koszt (zł)','Kwestia do sprawdzenia','Wniosek'],
  ['Lp.','Dokument / zadanie','Dane wejściowe','Wzór / działanie','Wynik','Kontrola odwrotna','Błąd / poprawka','Wniosek']
 ].map(columns=>Object.freeze(columns)));
+/**
+ * Dział I ma różne cele: temat 2 wymaga śladu dat i dowodów,
+ * temat 4 — oddzielnego wyniku memoriałowego i przepływu pieniężnego.
+ * To są wyłącznie nagłówki pustych arkuszy; płatne zadania i klucze zostają w DB.
+ */
+export const TOPIC_HEADERS=Object.freeze({
+  2:Object.freeze([
+    'Lp.','ID / rodzaj dowodu','Data zdarzenia','Data dowodu','Data zapłaty',
+    'Okres ujęcia','Kwota (zł)','Powiązane ID operacji / dokumentu',
+    'Duplikat?','Uzasadnienie i kontrola'
+  ]),
+  4:Object.freeze([
+    'Lp.','Zdarzenie / dowód','Okres wyniku','Okres przepływu',
+    'Przychód (zł)','Koszt (zł)','Wpływ (zł)','Wydatek (zł)',
+    'Wynik (zł)','Przepływ netto (zł)','Rozrachunek / uzgodnienie'
+  ])
+});
+const TOPIC_NOTES=Object.freeze({
+  2:'Nie mieszaj daty operacji, dokumentu i przelewu. Zapisz okres ujęcia, powiąż dowody dotyczące tej samej operacji i oznacz duplikat bez podwójnego księgowania. Brakującej daty nie zgaduj. PZ dotyczy przyjęcia zapasów, a nie automatycznie wykonanej usługi.',
+  4:'Wynik rachunkowy = przychody minus koszty przypisane do okresu. Przepływ netto = wpływy minus wydatki z okresu. Rozlicz zaliczki i stare zobowiązania oddzielnie; wpływ bankowy nie oznacza automatycznie przychodu. Zadanie nie ustala VAT/PIT/CIT.'
+});
 const NOTES=Object.freeze([
  'Rozdziel własność jednostki, dokumenty i obie strony zapisu. Równość Wn i Ma nie wystarcza do potwierdzenia poprawności.',
  'Sprawdź dane stron i związek dokumentów z operacją. VAT oraz daty ustalaj w granicach założeń ćwiczenia.',
@@ -61,9 +82,10 @@ export function buildHomeworkCsv(topicNo,title,practice){
   ['4. Podsumuj','Napisz co obliczono, na jakich danych i co wymaga dodatkowego sprawdzenia.'],
   ['5. Oddaj','Zapisz arkusz na własnym urządzeniu. Następnie opisz kroki i wynik w pracy domowej na trenerki.com. Sam plik nie przesyła odpowiedzi.'],
   ['Wskazówka do działu',NOTES[section-1]],
+  ...(TOPIC_NOTES[topicNo]?[['Wskazówka do tego tematu',TOPIC_NOTES[topicNo]]]:[]),
   ['Bezpieczeństwo','Używaj wyłącznie fikcyjnych danych. Nie umieszczaj prawdziwych PESEL, NIP, rachunków, faktur ani danych pracowników.'],
   [],
-  SECTION_HEADERS[section-1],
+  TOPIC_HEADERS[topicNo]||SECTION_HEADERS[section-1],
   ...Array.from({length:12},(_,i)=>[String(i+1)]),
   ...bonusSpreadsheetRows(topicNo),
   [],
