@@ -50,6 +50,29 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
  // Do not weaken the accounting reader guard. Canonicalize ONLY the reviewed
  // Excel-specific additions, then compare with the existing approved blob hashes.
  let sourceForAccounting=source;
+ // AutoCAD-only UI mount reviewed in PR #42. These *exact* additions have no
+ // accounting route, enrollment, completion or auth effects. Canonicalize back
+ // to the last approved reader before checking the unchanged SHA allowlist.
+ const autocadImports=[
+  "import AutoCADHomework from '../src/AutoCADHomework';\n",
+  "import AutoCADPrecisionGuide from '../src/AutoCADPrecisionGuide';\n"
+ ];
+ for(const token of autocadImports){
+  assert.equal(sourceForAccounting.split(token).length,2,'AutoCAD guard: exactly one scoped import');
+  sourceForAccounting=sourceForAccounting.replace(token,'');
+ }
+ const newAutoCAD=[
+  "   {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}",
+  "   {slug==='autocad-skroty'&&<AutoCADPrecisionGuide lessonNo={module}/>} ",
+  "   {slug==='autocad-skroty'&&<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>} ",
+  "   {slug==='autocad-skroty'&&<AutoCADHomework key={'autocad-homework-'+module} lessonNo={module} userId={userId}/>}"
+ ].join('\n').replaceAll('} \n','}\n');
+ const oldAutoCAD=[
+  "   {slug==='autocad-skroty'&&<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>}",
+  "   {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}"
+ ].join('\n');
+ assert.equal(sourceForAccounting.split(newAutoCAD).length,2,'AutoCAD guard: only the four reviewed teaching/practice/homework mounts');
+ sourceForAccounting=sourceForAccounting.replace(newAutoCAD,oldAutoCAD);
  // Audited, read-only supplement: exactly one Anielka import + one lesson-only mount.
  const clarificationImport="import LessonClarification from '../src/LessonClarification';\n";
  const clarificationMount="   <LessonClarification key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>\n";

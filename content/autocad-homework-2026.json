@@ -1,0 +1,428 @@
+{
+  "version": "2026-11-16-homework-v1",
+  "course": "autocad-skroty",
+  "lessonCount": 30,
+  "kind": "independent-homework-not-an-exam",
+  "assignments": [
+    {
+      "lesson_no": 0,
+      "title": "Od fotografii do obiektu CAD",
+      "mode": "warsztat",
+      "minutes": 18,
+      "steps": [
+        "Ustal, że model rysujesz w milimetrach. Porównaj fotografię kreski z obiektem o znanych współrzędnych.",
+        "Wpisz LINE → 0,0 → 1000 → Enter → pusty Enter. Narysuj drugi odcinek długości 500 mm.",
+        "Z użyciem DI / DIST zmierz oba odcinki. Przybliż widok i sprawdź, czy wynik się nie zmienił."
+      ],
+      "expected": "Na rysunku są dwa odcinki o długościach 1000 i 500 jednostek; zmiana powiększenia nie wpływa na geometrię.",
+      "evidence": "Zapisz dwa wyniki pomiaru i wyjaśnij różnicę między pikselem a jednostką CAD.",
+      "commonMistake": "Nie odczytuj długości z rozmiaru kreski na monitorze."
+    },
+    {
+      "lesson_no": 1,
+      "title": "Poznaj cały ekran przed rysowaniem",
+      "mode": "mix",
+      "minutes": 20,
+      "steps": [
+        "Otwórz nowy rysunek i znajdź wstążkę Home, kartę Model, pasek stanu i wiersz poleceń.",
+        "Uruchom LINE, odczytaj prośbę o pierwszy punkt i naciśnij Esc bez rysowania.",
+        "Powtórz: LINE → 0,0 → 300,0 → Enter, następnie przerwij polecenie Esc i sprawdź wynik."
+      ],
+      "expected": "Po pierwszym uruchomieniu nie powstaje obiekt; po drugim jest jeden odcinek długości 300.",
+      "evidence": "W notatce zapisz nazwy czterech obszarów interfejsu i funkcję każdego z nich.",
+      "commonMistake": "W AutoCAD Esc anuluje polecenie, a Enter może powtórzyć ostatnie."
+    },
+    {
+      "lesson_no": 2,
+      "title": "Trzy formaty tego samego projektu",
+      "mode": "autocad",
+      "minutes": 25,
+      "steps": [
+        "Utwórz rysunek panelu A o wymiarze 1000 × 600 i zapisz go jako panel_A.dwg.",
+        "Wyeksportuj panel_A.pdf z Layout, zachowując tytuł i skalę. Otwórz PDF w oddzielnym czytniku.",
+        "Wyeksportuj panel_A.dxf tylko do ćwiczenia wymiany danych, potem otwórz go i porównaj liczbę elementów."
+      ],
+      "expected": "Trzy pliki mają wspólne oznaczenie rewizji A; DWG pozostaje edytowalnym źródłem.",
+      "evidence": "Wymień, który format przekazać projektantowi, wykonawcy i odbiorcy PDF, uzasadniając wybór.",
+      "commonMistake": "PDF nie jest automatycznie kompletnym zamiennikiem DWG."
+    },
+    {
+      "lesson_no": 3,
+      "title": "Milimetr, metr i kontrola jednostek",
+      "mode": "mix",
+      "minutes": 20,
+      "steps": [
+        "Przyjmij 1 jednostkę modelu = 1 mm i zapisz to w notatce.",
+        "Narysuj odcinki 4000 i 3000 jednostek; zmierz każdy poleceniem DIST.",
+        "W AutoCAD na komputerze sprawdź UNITS i INSUNITS. Przelicz 4000 mm, 3000 mm i 600 mm na metry."
+      ],
+      "expected": "4000 mm = 4 m, 3000 mm = 3 m, 600 mm = 0,6 m. DIST nie zmienia wartości po ZOOM.",
+      "evidence": "Zapisz ustawienie jednostki i trzy przeliczenia z podpisem.",
+      "commonMistake": "Nie zmieniaj skali już narysowanego projektu samym UNITS bez kontroli wymiaru odniesienia."
+    },
+    {
+      "lesson_no": 4,
+      "title": "Punkty absolutne, względne i biegunowe",
+      "mode": "warsztat",
+      "minutes": 25,
+      "steps": [
+        "Narysuj od 0,0 odcinek do 1200,0, a następnie polecenie LINE uruchom ponownie.",
+        "W nowym poleceniu wskaż 1200,0 i wpisz @0,800; odczytaj końcowy punkt 1200,800.",
+        "Od 1200,800 wprowadź @1000<180. Użyj DIST do weryfikacji długości i kierunków."
+      ],
+      "expected": "Powstają odcinki 1200, 800 i 1000; trzeci kończy się w punkcie 200,800.",
+      "evidence": "Podaj współrzędne końców wszystkich odcinków i wyjaśnij działanie znaku @.",
+      "commonMistake": "Nie myl 0,800 (punkt absolutny) z @0,800 (przesunięcie)."
+    },
+    {
+      "lesson_no": 5,
+      "title": "Trójkąt: LINE, PLINE i JOIN",
+      "mode": "warsztat",
+      "minutes": 30,
+      "steps": [
+        "Wprowadź LINE → 0,0 → 1000,0 → 500,800 → CLOSE i zakończ, żeby powstały trzy osobne odcinki.",
+        "Zaznacz połączone odcinki i wykonaj JOIN; spróbuj przesunąć cały trójkąt jednym MOVE.",
+        "Narysuj drugi trójkąt poleceniem PLINE i zakończ opcją Close. Porównaj liczbę obiektów."
+      ],
+      "expected": "JOIN daje jedną zamkniętą polilinię, podczas gdy LINE tworzy trzy odcinki. Obwód nie zmienia się po MOVE.",
+      "evidence": "Zapisz liczbę obiektów przed i po JOIN oraz zalety PLINE.",
+      "commonMistake": "Wspólny punkt końca nie oznacza automatycznie jednego obiektu."
+    },
+    {
+      "lesson_no": 6,
+      "title": "Enter, Esc, Undo i Redo bez stresu",
+      "mode": "warsztat",
+      "minutes": 20,
+      "steps": [
+        "Narysuj odcinek długości 500, następnie drugi o długości 700 i zakończ polecenie.",
+        "Zmień jeden odcinek przez MOVE, potem użyj UNDO i sprawdź jego pozycję.",
+        "Wykonaj REDO. Rozpocznij nowy LINE i przerwij Esc przed wskazaniem drugiego punktu."
+      ],
+      "expected": "Historia pozwala cofnąć zmianę i ponowić ją, a anulowanie nie tworzy niekompletnej linii.",
+      "evidence": "Opisz trzy sytuacje: kiedy używać Enter, kiedy Esc, a kiedy UNDO.",
+      "commonMistake": "Nie zakładaj, że Esc usuwa poprzednio narysowany poprawny odcinek."
+    },
+    {
+      "lesson_no": 7,
+      "title": "Warstwy: obrys, osie i wymiary",
+      "mode": "warsztat",
+      "minutes": 25,
+      "steps": [
+        "Utwórz warstwy OBRYS, OSIE i WYMIARY. Nadaj im trzy różne kolory.",
+        "Na OBRYS zrób RECTANG 1000 × 600, na OSIE narysuj poziomą linię.",
+        "Wyłącz widoczność OSIE, potem ją przywróć; zmierz długość na OBRYS."
+      ],
+      "expected": "Warstwy istnieją niezależnie od widoczności; wyłączenie OSIE nie usuwa jej geometrii.",
+      "evidence": "Wypisz przyporządkowanie obiektów i kolorów do warstw.",
+      "commonMistake": "Nie usuwaj osi tylko dlatego, że w tym momencie nie jest widoczna."
+    },
+    {
+      "lesson_no": 8,
+      "title": "Model 1:1 i arkusz A3",
+      "mode": "mix",
+      "minutes": 30,
+      "steps": [
+        "W Model narysuj prostokąt 4000 × 3000 w milimetrach i sprawdź oba wymiary.",
+        "Przejdź do Layout, ustaw A3 poziomo i wybierz skalę rzutni 1:50, a następnie 1:100.",
+        "W pełnym AutoCAD zablokuj rzutnię, dodaj tytuł arkusza i zapisz PDF."
+      ],
+      "expected": "Rysunek modelu nadal ma 4000 × 3000 mm; na papierze szerokość wynosi odpowiednio 80 i 40 mm.",
+      "evidence": "Zapisz obie wartości szerokości na papierze i dołącz do własnej notatki.",
+      "commonMistake": "Skala rzutni nie służy do zmieniania wymiarów elementu w modelu."
+    },
+    {
+      "lesson_no": 9,
+      "title": "Pokój 4 × 3 m — pierwszy kompletny szkic",
+      "mode": "mix",
+      "minutes": 30,
+      "steps": [
+        "Przyjmij jednostki mm i wykonaj RECTANG 0,0 → 4000,3000.",
+        "Zapisz szerokość, długość, przekątną i oblicz pole w metrach kwadratowych.",
+        "Wstaw dwa wymiary liniowe DLI oraz sprawdź przekątną poleceniem DIST."
+      ],
+      "expected": "Pole = 12 m², przekątna = 5000 mm; dwa boki mają 4000 i 3000 mm.",
+      "evidence": "Zapisz jednostkę każdego wyniku, a nie tylko samą liczbę.",
+      "commonMistake": "Pole w mm² wynosi 12 000 000, co nie jest liczbą metrów kwadratowych."
+    },
+    {
+      "lesson_no": 10,
+      "title": "Cztery narzędzia i cztery typy obiektów",
+      "mode": "warsztat",
+      "minutes": 30,
+      "steps": [
+        "Zrób osobno LINE 800, PLINE z trzema punktami, RECTANG 600 × 400 i CIRCLE o promieniu 200.",
+        "Zaznacz kolejno figury, porównaj liczbę segmentów i sposób zaznaczania.",
+        "Użyj MOVE na każdej figurze, a potem spróbuj JOIN na dwóch niepołączonych odcinkach."
+      ],
+      "expected": "LINE tworzy odcinek, PLINE jeden obiekt wielosegmentowy, RECTANG obrys, a CIRCLE okrąg o średnicy 400.",
+      "evidence": "Opisz, kiedy lepiej zastosować PLINE zamiast LINE.",
+      "commonMistake": "JOIN nie powinno łączyć obiektów, które nie mają wspólnych punktów."
+    },
+    {
+      "lesson_no": 11,
+      "title": "MOVE, COPY, ROTATE i SCALE w jednym rysunku",
+      "mode": "warsztat",
+      "minutes": 35,
+      "steps": [
+        "Zbuduj zamknięty trójkąt, skopiuj go o @1500,0 i sprawdź, czy oryginał pozostał.",
+        "Przesuń kopię o @0,1000, następnie obróć ją o 90° wokół wybranego punktu.",
+        "Użyj SCALE z czynnikiem 2 na kopii i ponownie zmierz co najmniej jeden bok."
+      ],
+      "expected": "Po MOVE i ROTATE długości są niezmienione; SCALE ×2 podwaja długość każdego boku.",
+      "evidence": "Zapisz długości przed i po każdej operacji.",
+      "commonMistake": "Zwróć uwagę, czy przypadkiem nie przeskalowano oryginału zamiast kopii."
+    },
+    {
+      "lesson_no": 12,
+      "title": "OSNAP, ORTHO i precyzja bez zgadywania",
+      "mode": "warsztat",
+      "minutes": 25,
+      "steps": [
+        "Narysuj linię od 0,0 do 1000,0 i włącz OSNAP Endpoint.",
+        "Rozpocznij kolejną linię i dopasuj jej początek do końca pierwszej, korzystając z oznaczenia przyciągania.",
+        "Włącz ORTHO F8; wprowadź dokładnie 600 i porównaj wynik z POLAR F10."
+      ],
+      "expected": "Końce odcinków pokrywają się, a ORTHO ogranicza kierunek do osi poziomej lub pionowej.",
+      "evidence": "Zapisz, do czego służą F3, F8, F10 i czym różnią się od siatki GRID.",
+      "commonMistake": "Widoczna siatka nie oznacza aktywnego przyciągania do końców obiektów."
+    },
+    {
+      "lesson_no": 13,
+      "title": "Kolor ByLayer kontra nadpisanie właściwości",
+      "mode": "autocad",
+      "minutes": 25,
+      "steps": [
+        "Narysuj trzy odcinki na jednej warstwie i ustaw dla nich kolor ByLayer.",
+        "Nadpisz kolor tylko jednego odcinka we Właściwościach (PROPERTIES).",
+        "Zmień kolor warstwy; sprawdź, które z trzech obiektów zmieniły wygląd."
+      ],
+      "expected": "Dwa obiekty dziedziczą nowy kolor warstwy, a jeden zachowuje indywidualne nadpisanie.",
+      "evidence": "Opisz różnicę między kolorami ByLayer i ustawionymi na obiekcie.",
+      "commonMistake": "Nie myl koloru ekranu z grubością linii na wydruku."
+    },
+    {
+      "lesson_no": 14,
+      "title": "ZOOM i PAN nie zmieniają wymiarów",
+      "mode": "warsztat",
+      "minutes": 20,
+      "steps": [
+        "Narysuj odcinek o długości 1200 i zmierz go DIST.",
+        "Powiększ go wielokrotnie kółkiem myszy lub ZOOM oraz użyj PAN.",
+        "Wróć do ZOOM Extents i ponownie zmierz dokładnie ten sam odcinek."
+      ],
+      "expected": "Obydwa wyniki DIST to 1200, mimo że obraz na ekranie ma inną wielkość.",
+      "evidence": "Zapisz dwa wyniki oraz porównaj ZOOM z poleceniem SCALE.",
+      "commonMistake": "Powiększenie widoku nie jest skalowaniem elementu."
+    },
+    {
+      "lesson_no": 15,
+      "title": "BLOCK, INSERT i odniesienie XREF",
+      "mode": "autocad",
+      "minutes": 40,
+      "steps": [
+        "Zbuduj symbol słupka z prostokąta 80 × 80 mm i zamień go na blok SLUPEK_80 przez BLOCK.",
+        "Użyj INSERT, aby wstawić cztery instancje co 800 mm w osi X.",
+        "Dołącz osobny plik podkładu poleceniem XREF. Zmień plik źródłowy i odśwież odnośnik."
+      ],
+      "expected": "Instancje bloku korzystają z jednej definicji; XREF pozostaje powiązaniem z zewnętrznym plikiem.",
+      "evidence": "Zapisz liczbę bloków, ich rozstaw i ścieżkę pliku XREF.",
+      "commonMistake": "Kopiowanie geometrii bez utworzenia bloku to nie to samo co INSERT."
+    },
+    {
+      "lesson_no": 16,
+      "title": "Wymiary DIM: poziom, pion i przekątna",
+      "mode": "mix",
+      "minutes": 35,
+      "steps": [
+        "Wpisz LINE → 0,0 → 1000 → Enter, zakończ, następnie narysuj pionowy odcinek 600.",
+        "Zaznacz linię 1000 i wykonaj DIM, wskaż położenie opisu; uruchom DLI dla rzutu poziomego/pionowego.",
+        "Utwórz odcinek od 0,0 do 1000,600. Zastosuj DAL oraz DI, porównując długość ukośną z wymiarami prostokątnymi."
+      ],
+      "expected": "Wymiar wzdłużny to około 1166,19; rzuty X=1000 i Y=600, a DIM nad linią poziomą pokazuje 1000.",
+      "evidence": "Zapisz trzy liczby i wyjaśnij różnicę między DIM/DLI, DAL i DIST.",
+      "commonMistake": "DIM tworzy oznaczenie wymiaru, DIST tylko podaje odległość; nie myl długości odcinka z rzutem poziomym."
+    },
+    {
+      "lesson_no": 17,
+      "title": "Zapis i wydruk PDF do kontroli",
+      "mode": "autocad",
+      "minutes": 35,
+      "steps": [
+        "Zbuduj panel 1000 × 600 na warstwie OBRYS, dodaj dwa czytelne wymiary.",
+        "Zapisz DWG pod nazwą panel_A_01.dwg; utwórz Layout A3 i ustaw skalę 1:20.",
+        "Wydrukuj PDF; otwórz go w osobnym czytniku i sprawdź widoczność wymiarów, jednostki i nazwę rewizji."
+      ],
+      "expected": "W PDF znajdują się wymiary 1000 × 600 oraz nazwa rewizji; źródłowy DWG zachowuje edytowalne obiekty.",
+      "evidence": "Wypisz trzy rzeczy, które sprawdzisz przed przekazaniem PDF wykonawcy.",
+      "commonMistake": "Nie traktuj poprawnego podglądu na ekranie jako dowodu poprawnej skali wydruku."
+    },
+    {
+      "lesson_no": 18,
+      "title": "Balustrada z osiami słupków co 800 mm",
+      "mode": "mix",
+      "minutes": 40,
+      "steps": [
+        "Narysuj poziomą linię bazową od 0,0 do 3200,0 i zaznacz osie X=0,800,1600,2400,3200.",
+        "Narysuj pięć słupków; w pełnym AutoCAD użyj BLOCK/INSERT lub ARRAY.",
+        "Dodaj wymiar osiowy 800 i całkowity 3200. DIST potwierdza odległość pierwszej i ostatniej osi."
+      ],
+      "expected": "Jest pięć osi i cztery odstępy po 800 mm, łącznie 3200 mm.",
+      "evidence": "Zapisz liczbę słupków i odstępów osobno oraz pokaż wynik 4 × 800 = 3200.",
+      "commonMistake": "Nie pomyl wymiarowania osiowego z odległością między zewnętrznymi krawędziami słupków."
+    },
+    {
+      "lesson_no": 19,
+      "title": "Daszek: obrys, otwór, promień i kontrola",
+      "mode": "mix",
+      "minutes": 40,
+      "steps": [
+        "Zrób obrys 4200 × 3000 mm na warstwie OBRYS i umieść okrąg o promieniu 300 mm na warstwie OTWORY.",
+        "W pracowni sprawdź wymiary główne poleceniami DIMLINEAR i DIST.",
+        "W oryginalnym AutoCAD dodaj adnotację promieniową DIMRADIUS i zapisz PDF z wyraźnym oznaczeniem otworu."
+      ],
+      "expected": "Obrys jest 4200 × 3000 mm, średnica otworu wynosi 600 mm, promień 300 mm.",
+      "evidence": "Zapisz, co jest promieniem R, a co średnicą Ø.",
+      "commonMistake": "R300 i Ø300 oznaczają różne otwory; nie używaj tych znaków zamiennie."
+    },
+    {
+      "lesson_no": 20,
+      "title": "Dwie rewizje panelu i tabela zmian",
+      "mode": "autocad",
+      "minutes": 40,
+      "steps": [
+        "Narysuj panel A o wymiarach 600 × 350, nadaj nazwę PANEL_A.",
+        "Skopiuj projekt do PANEL_B, zwiększ szerokość o 50 mm i zachowaj niezmienioną wysokość.",
+        "Dodaj MTEXT, tabelkę rewizji A→B z datą, opisem zmiany i nazwą autora."
+      ],
+      "expected": "Panel B ma 650 × 350 mm; zapisano +50 mm szerokości oraz 0 mm zmiany wysokości.",
+      "evidence": "Wpisz listę zmian, które odbiorca musi zobaczyć bez otwierania modelu.",
+      "commonMistake": "Nie podmieniaj wersji A bez zachowania rewizji do porównania."
+    },
+    {
+      "lesson_no": 21,
+      "title": "Kolizja branżowa to także problem wysokości Z",
+      "mode": "mix",
+      "minutes": 35,
+      "steps": [
+        "Na dwóch warstwach narysuj wspornik i przebieg rury, przecinające się w rzucie XY.",
+        "Sprawdź ich położenie na rysunku oraz zapisane współrzędne węzłów.",
+        "W pełnym AutoCAD sprawdź wysokości Z i wymagane prześwity; zanotuj, czego nie da się udowodnić samym 2D."
+      ],
+      "expected": "Rzut XY wskazuje potencjalną kolizję, ale dopiero dane Z pozwalają potwierdzić rzeczywiste przecięcie.",
+      "evidence": "Zapisz dwie brakujące informacje, które powinien dostarczyć projektant branżowy.",
+      "commonMistake": "Nie ogłaszaj kolizji na budowie wyłącznie na podstawie nakładających się kresek w rzucie."
+    },
+    {
+      "lesson_no": 22,
+      "title": "Kontrola obcego pliku DWG przed montażem",
+      "mode": "autocad",
+      "minutes": 35,
+      "steps": [
+        "Utwórz kopię otrzymanego DWG, zanotuj datę, źródło i numer rewizji.",
+        "Sprawdź UNITS, DIST dla jednego znanego wymiaru, XREF i widoczność warstw.",
+        "Otwórz weryfikowany podkład w nowym pliku oraz przygotuj protokół niezgodności lub akceptacji."
+      ],
+      "expected": "Lista kontrolna ma wynik jednostek, znany wymiar i aktualność XREF/revizji.",
+      "evidence": "Zapisz, jakie dane potwierdziłeś i czego nadal nie wolno zakładać.",
+      "commonMistake": "Nie przesuwaj modeli ani nie przeskalowuj obcej geometrii bez ustalenia przyczyny błędu."
+    },
+    {
+      "lesson_no": 23,
+      "title": "Porównanie DWG A i B",
+      "mode": "autocad",
+      "minutes": 40,
+      "steps": [
+        "Zapisz panel A 600 × 350, potem w kopii B narysuj panel 650 × 350.",
+        "Uruchom DWGCOMPARE albo porównaj współrzędne i wartości DIST niezależnie.",
+        "Oznacz różnicę +50 mm szerokości, zapisz datę, opis i osobny PDF dla wersji B."
+      ],
+      "expected": "Dokument porównania pokazuje wyłącznie zmianę szerokości +50, bez niezamierzonych zmian w wysokości.",
+      "evidence": "Wypisz nazwę pliku źródłowego, datę rewizji i jednoznaczny powód zmiany.",
+      "commonMistake": "Zmiana geometrii bez zmiany numeru rewizji stwarza ryzyko produkcyjne."
+    },
+    {
+      "lesson_no": 24,
+      "title": "Jedna geometria na dwóch skalach",
+      "mode": "mix",
+      "minutes": 35,
+      "steps": [
+        "W Model narysuj linię o długości 5000 mm; sprawdź ją DIST.",
+        "W Layout ustaw rzutnię 1:50 i oblicz długość na papierze. Zmień na 1:100 i oblicz ponownie.",
+        "W prawdziwym AutoCAD zablokuj rzutnię i wygeneruj PDF, nie skalując geometrii w Model."
+      ],
+      "expected": "Model ma zawsze 5000 mm; papier: 100 mm przy 1:50 oraz 50 mm przy 1:100.",
+      "evidence": "Zapisz oba obliczenia i krótko wyjaśnij, co robi blokada rzutni.",
+      "commonMistake": "Skalowanie obiektu przez SCALE jest inną operacją niż zmiana skali rzutni."
+    },
+    {
+      "lesson_no": 25,
+      "title": "Wymiar z natury i tolerancja pomiaru",
+      "mode": "mix",
+      "minutes": 35,
+      "steps": [
+        "Narysuj odcinek projektowy długości 3200 mm i drugi pomierzony długości 3170 mm.",
+        "Zmierz oba DI i oblicz różnicę pomiar - projekt ze znakiem.",
+        "W opisie wpisz datę, narzędzie pomiarowe, punkty bazowe i ocenę, czy potrzebna jest korekta."
+      ],
+      "expected": "Różnica 3170 - 3200 = -30 mm. Nie wolno jej zapisać jako dodatnie +30.",
+      "evidence": "Podaj różnicę wraz ze znakiem i wyjaśnij znaczenie punktów pomiaru.",
+      "commonMistake": "Wymiar bez bazy pomiarowej nie pozwala powtórzyć kontroli innemu pracownikowi."
+    },
+    {
+      "lesson_no": 26,
+      "title": "Bloki i COUNT — szukaj duplikatów",
+      "mode": "autocad",
+      "minutes": 35,
+      "steps": [
+        "Zbuduj blok słupka 50 × 50 i wstaw pięć instancji.",
+        "Skopiuj jedną instancję dokładnie w to samo miejsce i uruchom COUNT albo QSELECT.",
+        "Usuń niezamierzony duplikat i ponownie sprawdź liczbę elementów."
+      ],
+      "expected": "COUNT pokazuje najpierw sześć instancji, a po usunięciu duplikatu pięć.",
+      "evidence": "Zapisz wynik przed korektą i po korekcie oraz wpływ na zestawienie materiałowe.",
+      "commonMistake": "Na ekranie dwie identyczne nakładające się instancje mogą wyglądać jak jedna."
+    },
+    {
+      "lesson_no": 27,
+      "title": "Szczelina w konturze i nieudane HATCH",
+      "mode": "mix",
+      "minutes": 40,
+      "steps": [
+        "Narysuj cztery odcinki prostokątnego obrysu, ale pozostaw szczelinę 2 mm między dwoma końcami.",
+        "Spróbuj HATCH i oceń komunikat. Użyj OSNAP, skoryguj końce i połącz je w PEDIT/JOIN.",
+        "W pełnym AutoCAD wykonaj OVERKILL/BOUNDARY i sprawdź, czy wynik jest rzeczywiście zamknięty."
+      ],
+      "expected": "Kontur ze szczeliną nie ma być uznany za zamknięty; po korekcie powstaje szczelny obrys możliwy do wypełnienia.",
+      "evidence": "Wypisz, skąd wiesz, że końce linii faktycznie się spotykają.",
+      "commonMistake": "Widoczne na ekranie stykanie się kresek nie dowodzi zerowej szczeliny."
+    },
+    {
+      "lesson_no": 28,
+      "title": "ETRANSMIT i kompletność dokumentacji",
+      "mode": "autocad",
+      "minutes": 35,
+      "steps": [
+        "Utwórz plik rysunku z dołączonym XREF i opisem rewizji.",
+        "Przygotuj paczkę ETRANSMIT obejmującą DWG, referencje, potrzebne czcionki i uzgodniony PDF.",
+        "Rozpakuj paczkę do nowego folderu i otwórz rysunek bez ścieżek z własnego komputera."
+      ],
+      "expected": "Rysunek otwiera się z zachowanymi odniesieniami i opisem; żadnego brakującego pliku nie trzeba szukać.",
+      "evidence": "Zapisz listę plików i wynik otwarcia paczki w nowym folderze.",
+      "commonMistake": "Sam DWG może nie zawierać XREF i innych zależności używanych w projekcie."
+    },
+    {
+      "lesson_no": 29,
+      "title": "Projekt końcowy: panel A/B od modelu do PDF",
+      "mode": "mix",
+      "minutes": 60,
+      "steps": [
+        "Wymodeluj panel A 600 × 350 mm, oznacz osie dwóch otworów: (50,50) i (550,50).",
+        "Zrób wariant B 650 × 350 mm z osiami (50,70) i (600,70); dodaj dokładne wymiary DIM/DLI/DAL i zmierz je DIST.",
+        "Utwórz warstwy, opisy rewizji, arkusz A3 1:20 i PDF; sprawdź pliki w prawdziwym AutoCAD i niezależnym czytniku."
+      ],
+      "expected": "Wariant B ma szerokość +50 mm, oś drugiego otworu jest przesunięta o +50 mm w X, a oba środki o +20 mm w Y; wysokość jest taka sama.",
+      "evidence": "Zapisz krótką kartę odbioru: jednostki, wymiary, liczba otworów, rewizja, skala i komplet plików.",
+      "commonMistake": "Nie uznawaj samego zaliczenia pytań w Trenerki za sprawdzenie technicznego DWG przez projektanta."
+    }
+  ]
+}

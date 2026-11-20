@@ -35,6 +35,7 @@ for(const mobile of [false,true]){
   if(table==='ta_learning_attempts')return json(attempts);
   if(table==='ta_certificates')return json([{id:'fixture',certificate_no:'WZOR-TESTOWY',holder_name:'Test AutoCAD',title_pl:'AutoCAD',title_en:'AutoCAD',issued_at:'2026-11-15',is_demo:true}]);
   if(table==='ta_drafts')return req.method()==='POST'?json({},201):json([]);
+   if(table==='ta_autocad_homework')return req.method()==='GET'?json([]):json({},201);
   if(table==='ta-lesson-guide'){
    const body=req.postDataJSON(),material=lessons[body.lesson_no]?.material;
    if(body.action==='attempt'){
@@ -214,12 +215,22 @@ for(const mobile of [false,true]){
   await handbook.getByText(/ZEBRA → ANALYSISZEBRA/).waitFor();
   await handbook.getByRole('button',{name:/Zwiń bibliotekę AutoCAD/}).click();
   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: select ALL → group MOVE/SCALE; OSNAP modes, font preview, layout scale 1:100 and searchable Atlas');
+   // Regression for previously impossible typed LINE length and DIM measurement.
+   await send('LINE');await send('0,0');await send('1000');await send('');
+   await send('DIM');await send('500,200');
+   await cad.getByText(/Dodano wymiar 1000 jednostek modelu/).waitFor();
+   await send('DIST');await send('0,0');await send('1000,0');
+   await cad.getByText(/Odległość 1000/).waitFor();
+   console.log('✓ '+(mobile?'mobile':'desktop')+' AutoCAD: bare 1000 after LINE, DIM label 1000, independent DIST=1000');
   for(const lesson of lessons){
    const {lesson_no:n,material:m}=lesson;
    await page.getByTestId('lesson-heading').filter({hasText:lesson.title_pl}).waitFor();
    assert.equal(await page.getByTestId('autocad-original-screens').count(),0,'Welcome screenshot must never repeat inside any practical lesson');
    assert.equal(await page.getByTestId('autocad-real-practice').count(),0,'Old repeated lecture disguised as CAD practice');
    if(n===0||[4,5,9,10,11,17,19,27,29].includes(n))await page.getByTestId('cad-workspace').waitFor();
+   const homework=page.getByTestId('autocad-homework-'+n);
+   await homework.waitFor();
+   assert.equal(await homework.locator('[data-testid^="autocad-homework-step-"]').count(),3,'Every lesson must include three real homework steps');
    const assignment=page.getByTestId('cad-assigned-exercise');
    await assignment.waitFor();
    await assignment.getByText('Zadanie lekcji '+(n+1)+'/30',{exact:false}).waitFor();

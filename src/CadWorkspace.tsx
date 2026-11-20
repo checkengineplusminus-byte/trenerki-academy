@@ -2,11 +2,11 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Platform,Pressable,Text,TextInput,View} from 'react-native';
 import useLabKeys from './useLabKeys';
 import {LabButton,LabGroup,labStyles} from './LabControls';
-import {CAD_HEIGHT,CAD_WIDTH,contains,distance,edges,fillSegments,nearEdge,outline,readCadPoint,fitDrawing,joinCadLines,screenPoint,worldPoint,type CadShape,type Camera,type Point} from './CadGeometry';
+import {CAD_HEIGHT,CAD_WIDTH,contains,distance,edges,fillSegments,nearEdge,outline,readCadPoint,readCadDirectDistance,dimensionGeometry,fitDrawing,joinCadLines,screenPoint,worldPoint,type CadShape,type Camera,type Point} from './CadGeometry';
 
-type Tool='select'|'line'|'poly'|'rect'|'circle'|'hatch'|'move'|'copy';
-const commands:Record<string,Tool>={L:'line',LINE:'line',PL:'poly',PLINE:'poly',REC:'rect',RECTANG:'rect',C:'circle',CIRCLE:'circle',H:'hatch',HATCH:'hatch',M:'move',MOVE:'move',CO:'copy',CP:'copy',COPY:'copy'};
-const toolNames:Record<Tool,string>={select:'Wskaż obiekt',line:'LINE',poly:'PLINE',rect:'RECTANG',circle:'CIRCLE',hatch:'HATCH',move:'MOVE',copy:'COPY'};
+type Tool='select'|'line'|'poly'|'rect'|'circle'|'hatch'|'move'|'copy'|'dist'|'dimlinear'|'dimaligned';
+const commands:Record<string,Tool>={L:'line',LINE:'line',PL:'poly',PLINE:'poly',REC:'rect',RECTANG:'rect',C:'circle',CIRCLE:'circle',H:'hatch',HATCH:'hatch',M:'move',MOVE:'move',CO:'copy',CP:'copy',COPY:'copy',DI:'dist',DIST:'dist',DIM:'dimaligned',DIMENSION:'dimaligned',DLI:'dimlinear',DIMLINEAR:'dimlinear',DAL:'dimaligned',DIMALIGNED:'dimaligned'};
+const toolNames:Record<Tool,string>={select:'Wskaż obiekt',line:'LINE',poly:'PLINE',rect:'RECTANG',circle:'CIRCLE',hatch:'HATCH',move:'MOVE',copy:'COPY',dist:'DIST',dimlinear:'DIMLINEAR',dimaligned:'DIMALIGNED'};
 const number=(n:number)=>String(Number(n.toFixed(2)));
 const colors=['#cbe6a4','#89d9ed','#f0bf85'];
 const inBounds=(p:Point)=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Math.abs(p.x)<=1000000&&Math.abs(p.y)<=1000000;
@@ -26,6 +26,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
  const [fill,setFill]=useState<'hatch'|'solid'>('hatch'),[input,setInput]=useState(''),[width,setWidth]=useState(860);
  const [camera,setCamera]=useState<Camera>({center:{x:2000,y:1500},unitsPerPixel:5000/860});
  const [loaded,setLoaded]=useState(false);
+ const [distanceDirection,setDistanceDirection]=useState<'right'|'left'|'up'|'down'>('right');
  const [ribbon,setRibbon]=useState('Home'),[message,setMessage]=useState('Wybierz narzędzie z panelu Rysuj lub wpisz jego nazwę.');
  const nextId=useRef(1);
  const size={width,height:width*CAD_HEIGHT/CAD_WIDTH},scale=1/camera.unitsPerPixel;
@@ -40,6 +41,8 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   tool==='move'||tool==='copy'?(!target?'Wybierz obiekt na rysunku.':first?'Wskaż punkt docelowy.':'Wskaż punkt bazowy.'):
   tool==='circle'?(first?'Wskaż punkt na obwodzie albo wpisz promień.':'Wskaż środek.'):
   tool==='rect'?(first?'Wskaż przeciwległy narożnik.':'Wskaż pierwszy narożnik.'):
+  tool==='dist'?(first?'Wskaż drugi punkt — otrzymasz długość i różnicę X,Y.':'Wskaż pierwszy punkt pomiaru.'):
+  (tool==='dimlinear'||tool==='dimaligned')?(points.length>=2?'Wskaż położenie wymiaru.':first?'Wskaż drugi punkt wymiaru.':'Wskaż linię do zmierzenia albo pierwszy punkt.'):
   points.length?'Dodaj punkt albo zakończ rysowanie.':'Wskaż pierwszy punkt.';
 
  function store(next:CadShape[]){
@@ -66,7 +69,10 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   try{localStorage.setItem('trenerki-cad-drawing-v2-'+storageKey,JSON.stringify(shapes.slice(-200)));}catch{}
  },[shapes,loaded,storageKey]);
  function start(next:Tool){
-  setTool(next);setPoints([]);setInput('');setMessage(toolNames[next]+' · '+(next==='select'?'Gotowe do zaznaczenia.':'Polecenie aktywne.'));
+  const isDim=next==='dimlinear'||next==='dimaligned';
+  const endpoints=isDim&&target?.kind==='line'&&target.points.length===2?target.points.slice(0,2):[];
+  setTool(next);setPoints(endpoints);setInput('');
+  setMessage(toolNames[next]+' · '+(endpoints.length?'Wybrano zaznaczony odcinek. Wskaż położenie wymiaru.':next==='select'?'Gotowe do zaznaczenia.':'Polecenie aktywne.'));
  }
  function undo(){
   if(points.length){setPoints(points.slice(0,-1));setMessage('Cofnięto ostatni wskazany punkt.');return;}
@@ -87,6 +93,13 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(close)segments.push({id:nextId.current++,kind:'line',points:[points[points.length-1],points[0]],layer});
   store([...shapes,...segments]);setSelected(segments.at(-1)?.id);start('select');setMessage('Utworzono '+segments.length+' osobne odcinki LINE. Aby utworzyć jeden obiekt, wpisz JOIN.');
  }
+ function addDimension(placement:Point){
+  if(points.length<2||distance(points[0],points[1])<.001){setMessage('Wymiar wymaga dwóch różnych punktów.');return;}
+  const shape:CadShape={id:nextId.current++,kind:'dimension',points:[points[0],points[1],placement],layer,aligned:tool==='dimaligned'};
+  const label=dimensionGeometry(shape).label;
+  store([...shapes,shape]);setSelected(undefined);setTool('select');setPoints([]);
+  setMessage('Dodano wymiar '+label+' jednostek modelu. DIST służy do pomiaru dwóch punktów.');
+ }
  function erase(){
   if(!target){setMessage('Wskaż obiekt, który chcesz usunąć.');return;}
   store(shapes.filter(s=>s.id!==selected));setSelected(undefined);start('select');setMessage('Obiekt usunięty.');
@@ -104,6 +117,10 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    }else setMessage('Zaznaczono obiekt '+hit.id+'.');
    return;
   }
+  if((tool==='dimlinear'||tool==='dimaligned')&&!first){
+   const line=[...shapes].reverse().find(s=>s.kind==='line'&&s.points.length===2&&nearEdge(s,point,tolerance));
+   if(line){setPoints(line.points.slice(0,2));setMessage('Wskazano odcinek '+number(distance(line.points[0],line.points[1]))+'. Wskaż położenie wymiaru.');return;}
+  }
   let p=point;
   if(byTouch&&snap){
    const closest=shapes.flatMap(outline).reduce<Point|undefined>((best,current)=>distance(current,p)<distance(best??{x:Infinity,y:Infinity},p)?current:best,undefined);
@@ -115,6 +132,15 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   if(!inBounds(p)){setMessage('Wpisz punkt w bezpiecznym zakresie współrzędnych (od -1 000 000 do 1 000 000).');return;}
   if(!first){setPoints([p]);setMessage('Punkt '+number(p.x)+','+number(p.y)+' przyjęty.');return;}
   if(distance(p,last!)<0.001){setMessage('Wskaż punkt inny niż poprzedni.');return;}
+  if(tool==='dist'){
+   const dx=p.x-first.x,dy=p.y-first.y;
+   setTool('select');setPoints([]);setMessage('DIST: długość '+number(Math.hypot(dx,dy))+' · ΔX '+number(dx)+' · ΔY '+number(dy)+'.');return;
+  }
+  if(tool==='dimlinear'||tool==='dimaligned'){
+   if(points.length===1){setPoints([...points,p]);setMessage('Wybierz położenie linii wymiarowej.');}
+   else addDimension(p);
+   return;
+  }
   if(tool==='rect'){
    if(first.x===p.x||first.y===p.y){setMessage('Prostokąt potrzebuje dodatniej szerokości i wysokości.');return;}
    add('rect',[first,p]);
@@ -164,9 +190,11 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
    if(radius>0)place({x:first.x+radius,y:first.y});
    else setMessage('Promień musi być większy od zera.');
   }else {
-   const point=readCadPoint(command,last);
+   const v=last?{right:{x:last.x+1,y:last.y},left:{x:last.x-1,y:last.y},up:{x:last.x,y:last.y+1},down:{x:last.x,y:last.y-1}}[distanceDirection]:undefined;
+   const direct=(tool==='line'||tool==='poly')&&first?readCadDirectDistance(command,last,v,ortho):undefined;
+   const point=direct??readCadPoint(command,last);
    if(point)place(point);
-   else setMessage(command?'Polecenie omówione w lekcji. W warsztacie użyj przycisków z menu albo wpisz punkt, np. 120,80.':prompt);
+   else setMessage(command?'Nie rozpoznano polecenia. Po LINE wpisz punkt 0,0, następnie długość 1000 lub @1000<90. Dla pomiaru użyj DIST albo DIM.':prompt);
   }
   setInput('');
  }
@@ -184,6 +212,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   const [a,b]=shape.points,r=shape.kind==='circle'?distance(a,b)*scale:0;
   const center=screenPoint(a,camera,size),fillColor=shape.fill==='solid'?'#5a815c':color;
   return <React.Fragment key={shape.id}>
+   {shape.kind==='dimension'&&<Text style={{position:'absolute',left:screenPoint(dimensionGeometry(shape).labelAt,camera,size).x-30,top:screenPoint(dimensionGeometry(shape).labelAt,camera,size).y-21,minWidth:60,textAlign:'center',fontSize:12,color:'#ffebbd',fontWeight:'800'}}>{dimensionGeometry(shape).label}</Text>}
    {shape.fill&&fillSegments(shape,shape.fill==='solid'?3*camera.unitsPerPixel:32*camera.unitsPerPixel,shape.fill==='solid'?0:1).slice(0,500).map(([p,q],i)=>
     <Stroke key={'fill'+i} a={p} b={q} camera={camera} size={size} color={fillColor} weight={shape.fill==='solid'?3.4:1}/>)}
    {shape.kind==='circle'?<View style={{position:'absolute',left:center.x-r,top:center.y-r,width:2*r,height:2*r,borderRadius:r,borderWidth:2,borderColor:color}}/>:
@@ -193,7 +222,7 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
 
  return <View style={labStyles.panel} testID="cad-workspace">
   <Text style={labStyles.heading}>Warsztat AutoCAD 2D — rysuj i wpisuj polecenia</Text>
-  <Text style={labStyles.body}>To interaktywny trening komend, nie licencjonowany Autodesk AutoCAD. Wpisz LINE → Enter → 0,0 → Enter → 4000,0 → Enter → pusty Enter. Zobaczysz narysowaną linię. Możesz również rysować palcem lub myszą.</Text>
+  <Text style={labStyles.body}>To interaktywny trening komend, nie licencjonowany Autodesk AutoCAD. Wpisz LINE → Enter → 0,0 → Enter → 1000 → Enter → pusty Enter. Wybierz DIM, aby dodać widoczny wymiar, albo DI do pomiaru. Możesz też rysować palcem.</Text>
   <Text testID="cad-coordinate-guide" style={[labStyles.eyebrow,{marginBottom:5}]}>Jednostki ćwiczenia: mm · współrzędne X,Y · @X,Y = przesunięcie względem poprzedniego punktu</Text>
   <View style={labStyles.ribbon}>
    <View style={labStyles.row}>{['Home / Narzędzia główne','View / Widok'].map((label,i)=><LabButton key={label} label={label} selected={ribbon===(i?'View':'Home')} onPress={()=>setRibbon(i?'View':'Home')}/>)}</View>
@@ -201,6 +230,11 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
     <LabGroup label="Draw / Rysuj">
      {([['line','Linia'],['poly','Polilinia'],['rect','Prostokąt'],['circle','Okrąg'],['hatch','Kreskowanie']] as const).map(([id,label])=>
       <LabButton key={id} label={label+' · '+toolNames[id]} selected={tool===id} onPress={()=>start(id)}/>)}
+    </LabGroup>
+    <LabGroup label="Measure / Wymiary">
+     <LabButton label="DIM · Wymiar" selected={tool==='dimaligned'} onPress={()=>start('dimaligned')}/>
+     <LabButton label="DLI · Poziom/pion" selected={tool==='dimlinear'} onPress={()=>start('dimlinear')}/>
+     <LabButton label="DI · Pomiar" selected={tool==='dist'} onPress={()=>start('dist')}/>
     </LabGroup>
     <LabGroup label="Modify / Zmień">
      <LabButton label="Zaznacz" selected={tool==='select'} onPress={()=>start('select')}/>
@@ -267,6 +301,12 @@ export default function CadWorkspace({shortcut,runId,storageKey,lessonNo}:{short
   </View>
   <Text style={labStyles.eyebrow} testID="cad-summary">Model · Obiekty: {shapes.length} · Wypełnienia: {shapes.filter(s=>s.fill).length}{selected!==undefined?' · Wybrany: '+selected:''}</Text>
   <Text style={labStyles.body}>{prompt}</Text>
+  {(tool==='line'||tool==='poly')&&first&&<View style={{gap:5}}>
+   <Text style={labStyles.body}>Podaj długość, np. 1000. Na ekranie dotykowym wybierz kierunek:</Text>
+   <View style={[labStyles.row,{flexWrap:'wrap'}]}>
+    {([['right','→ w prawo'],['up','↑ w górę'],['left','← w lewo'],['down','↓ w dół']] as const).map(([value,label])=><LabButton key={value} label={label} selected={distanceDirection===value} onPress={()=>setDistanceDirection(value)}/>)}
+   </View></View>}
+  {(tool==='dimlinear'||tool==='dimaligned'||tool==='dist')&&<Text style={labStyles.body}>DIM: zaznacz odcinek, wybierz Wymiar, a potem punkt położenia wymiaru. DLI pokazuje rzut poziomy/pionowy, DIM długość odcinka. DI mierzy dwa punkty.</Text>}
   <View style={labStyles.row}>
    <TextInput testID="cad-command" accessibilityLabel="Wiersz poleceń AutoCAD" style={[labStyles.input,{flex:1,minWidth:125}]}
     value={input} onChangeText={setInput} onSubmitEditing={()=>runCommand(input)} autoCorrect={false} autoCapitalize="none" placeholder="LINE, 0,0, 4000,0, JOIN, MOVE..."/>

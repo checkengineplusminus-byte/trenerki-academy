@@ -23,6 +23,8 @@ jobs:
           run: node --experimental-strip-types --test scripts/test-autocad-full-manual-v3.mjs
         - name: Verify non-repeating AutoCAD teaching and universal restart
           run: node --test scripts/test-autocad-methodology-review.mjs
+        - name: Verify typed distance, dimensions and protected independent AutoCAD homework
+          run: node --experimental-strip-types --test scripts/test-cad-direct-dim-homework.mjs
         - name: Verify restored interactive CAD commands and coordinate geometry
           run: node --experimental-strip-types --test scripts/test-cad-restored.mjs
         - name: Verify group MOVE/COPY/SCALE, snap modes and reference Atlas
