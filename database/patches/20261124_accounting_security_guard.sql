@@ -6,6 +6,10 @@ BEGIN;
 -- Table-wide privileges bypass row-level security and are not needed by app users.
 REVOKE TRUNCATE, TRIGGER, REFERENCES ON ALL TABLES IN SCHEMA public FROM anon, authenticated;
 
+-- Avoid re-granting these privileges on new tables created by the application migration role.
+ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public
+  REVOKE TRUNCATE, TRIGGER, REFERENCES ON TABLES FROM anon, authenticated;
+
 -- Existing permissive INSERT policies are combined using OR.
 -- The following RESTRICTIVE policies add an essential owner-and-entitlement AND gate.
 DO $guard$
