@@ -250,7 +250,7 @@ async function verify(name,viewport,isMobile){
   await page.locator('.category-tiles .category-tile').nth(1).click();
   assert.equal(await page.locator('#course-cards .course-card').count(),25,'Craft category must show all twenty-five courses');
   await page.locator('#chips .chip').first().click();
-  assert.equal(await page.locator('#course-cards .course-card').count(),6,'All categories should return to curated discovery view');
+  assert.equal(await page.locator('#course-cards .course-card').count(),83,'Clicking Wszystkie must show all 81 core courses and both additional public offers');
   assert.equal(await page.locator('#course-search').count(),0,'Duplicate search field');
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');
