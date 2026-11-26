@@ -22,9 +22,9 @@ jobs:
             html_file=$(mktemp)
             css_file=$(mktemp)
             homepage_status=$(curl -L -sS -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)
-            stylesheet_status=$(curl -L -sS -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css?v=20261126-gold' || true)
-            if [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] &&               grep -Fq 'premium-theme.css?v=20261126-gold' "$html_file" &&               grep -Fq 'Ucz się umiejętności, które wykorzystasz' "$html_file" &&               grep -Fq 'TRENERKI premium navy' "$css_file"; then
-              echo "LIVE PREMIUM DEPLOYMENT VERIFIED — attempt $attempt"
+            stylesheet_status=$(curl -L -sS -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css?v=20261126-course-images-v2' || true)
+            if [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] &&               grep -Fq 'premium-theme.css?v=20261126-course-images-v2' "$html_file" &&               grep -Fq 'Ucz się umiejętności, które wykorzystasz' "$html_file" &&               grep -Fq 'TRENERKI premium navy' "$css_file" &&               grep -Fq 'class="card-media-loading"' "$html_file" &&               ! grep -Fq 'opacity:.0!important' "$css_file"; then
+              echo "LIVE PREMIUM IMAGE FIX VERIFIED — attempt $attempt"
               echo "Homepage status: $homepage_status; stylesheet status: $stylesheet_status"
               rm -f "$html_file" "$css_file"
               exit 0
@@ -33,5 +33,5 @@ jobs:
             rm -f "$html_file" "$css_file"
             sleep 16
           done
-          echo "::error::The live domain did not expose the premium design in the verification window. Check Expo deployment status and DNS/cache."
+          echo "::error::The live domain did not expose the image-loading fix and freshly versioned CSS. Check Expo deployment status and DNS/cache."
           exit 1
