@@ -217,12 +217,16 @@ for(const sample of samples){
  assert.equal(enteredCode(confirmedGift),sample.canonical);assert.equal(redeemedCount(),afterExplicit,'confirmation and active-session continuation must not redeem');
 }
 
+// The private/company chooser is available to anonymous users only. Test
+// switching account type before signing in, and logout after signing in.
+activeUser=null;
+const anonymousSwitcher=createScreen('app/konto.tsx',{gift:samples[0].input});await anonymousSwitcher.flush();
+await anonymousSwitcher.press('Konto prywatne');
+assert.deepEqual(anonymousSwitcher.navigation.at(-1).to,{pathname:'/konto',params:{gift:samples[0].canonical}},'switching account type must retain the gift');
 activeUser=user;
 const retained=createScreen('app/konto.tsx',{gift:samples[0].input});await retained.flush();
-await retained.press('Konto prywatne');
-assert.deepEqual(retained.navigation.at(-1).to,{pathname:'/konto',params:{gift:samples[0].canonical}});
 await retained.press('Wyloguj się');
-assert.deepEqual(retained.navigation.at(-1).to,{pathname:'/konto',params:{gift:samples[0].canonical}},'switching accounts must retain the gift');
+assert.deepEqual(retained.navigation.at(-1).to,{pathname:'/konto',params:{gift:samples[0].canonical}},'logout must retain gift continuation');
 activeUser=user;
 const malformed=createScreen('app/prezent.tsx');await malformed.flush();
 const beforeMalformed=redeemedCount(),beforeMalformedPrint=printRequests.length;
