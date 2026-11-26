@@ -59,3 +59,44 @@
   color: #173e2c;
   font: inherit;
 }
+
+/* Shared standalone course/category navigation — navy/gold brand. */
+body > header.ta-site-header{position:sticky;top:0;z-index:60;display:flex;
+ align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px 16px;
+ min-height:67px;padding:11px clamp(16px,3.5vw,40px);background:#0B2238!important;
+ color:#F7FAFC!important;border-bottom:1px solid #314962!important;
+ box-shadow:0 3px 15px rgba(9,28,45,.13)}
+body > header.ta-site-header > a,
+body > header.ta-site-header .brand,
+body > header.ta-site-header .logo{color:#F7FAFC!important;
+ font-size:clamp(14px,1.5vw,18px);font-weight:850;text-decoration:none}
+body > header.ta-site-header .top{width:100%;max-width:1150px;margin-inline:auto;
+ display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+ gap:10px 16px}
+body > header.ta-site-header .ta-site-shortcuts{margin:0 0 0 auto;
+ display:flex;align-items:center;gap:3px;max-width:100%;
+ overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+ white-space:nowrap}
+body > header.ta-site-header .ta-site-shortcuts::-webkit-scrollbar{display:none}
+body > header.ta-site-header .ta-site-shortcuts a{display:inline-flex;
+ align-items:center;justify-content:center;min-height:44px;padding:9px 12px;
+ font-size:13px;font-weight:750;line-height:1.2;color:#E9F0F8!important;
+ border-radius:9px;text-decoration:none}
+body > header.ta-site-header .ta-site-shortcuts a:hover,
+body > header.ta-site-header .ta-site-shortcuts a:focus-visible{
+ color:#FFDA86!important;background:#203C55}
+body > header.ta-site-header .ta-site-shortcuts .ta-site-profile{
+ background:#EDC368!important;color:#13253A!important;
+ border:1px solid #D6AA48;font-weight:850}
+body > header.ta-site-header .ta-site-shortcuts .ta-site-profile:hover,
+body > header.ta-site-header .ta-site-shortcuts .ta-site-profile:focus-visible{
+ background:#FFE1A1!important;color:#10243B!important}
+@media(max-width:720px){
+ body > header.ta-site-header{padding:9px 14px 5px;gap:5px}
+ body > header.ta-site-header .top{gap:5px}
+ body > header.ta-site-header .ta-site-shortcuts{order:3;width:100%;
+  flex:0 0 100%;justify-content:flex-start;margin-left:0;padding-bottom:3px}
+ body > header.ta-site-header .ta-site-shortcuts a{flex:0 0 auto;
+  min-height:42px;padding:8px 10px;font-size:12px}
+ body > header.ta-site-header > a{font-size:14px}
+}
