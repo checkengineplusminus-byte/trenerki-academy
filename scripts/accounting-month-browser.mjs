@@ -213,6 +213,7 @@ try{
  });
  await pass('Mobilne 390 px: plan etapów i finałowy raport są dostępne bez zmiany danych',async()=>{
   await mobileInvoice.page.locator('nav button[data-action="tab"][data-id="start"]').click();
+  await mobileInvoice.page.locator('summary').filter({hasText:'Rozwiń pełne instrukcje'}).click();
   await mobileInvoice.page.getByRole('heading',{name:'Jedna ścieżka: co naprawdę jest zrobione?'}).waitFor();
   assert.equal(await mobileInvoice.page.getByRole('button',{name:'Zobacz kontrolę szkoleniową',exact:true}).count(),1);
   const width=await mobileInvoice.page.evaluate(()=>({
@@ -287,6 +288,7 @@ try{
  await tab(f.page).waitFor();
  await pass('Przekrojowy plan prowadzi bezpośrednio do szkoleniowej kontroli zamknięcia, bez wysyłki',async()=>{
   const previous=f.model().version;
+  await f.page.locator('summary').filter({hasText:'Rozwiń pełne instrukcje'}).click();
   const close=f.page.getByRole('button',{name:'Zobacz kontrolę szkoleniową',exact:true});
   assert.equal(await close.count(),1,'Ostatni etap musi mieć działający przycisk');
   await close.click();
