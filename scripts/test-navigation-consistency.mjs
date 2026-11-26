@@ -6,7 +6,11 @@ import {resolve,join} from 'node:path';
 const root=resolve(process.cwd(),'public');
 const read=path=>readFileSync(join(root,path),'utf8');
 const courseDir=join(root,'academy','kursy');
-const files=readdirSync(courseDir).filter(f=>f.endsWith('.html')).sort();
+const files=readdirSync(courseDir).filter(f=>f.endsWith('.html')&&!f.endsWith('-nauka.html')).sort();
+// The one noindex learning gateway intentionally redirects to protected lessons; it is not a public offer.
+const gateway=read('academy/kursy/zaufany-wolontariusz-nauka.html');
+assert.match(gateway,/<meta name="robots" content="noindex">/);
+assert.match(gateway,/location\.replace\('\/nauka\?course=zaufany-wolontariusz/);
 assert(files.length>=81,'Expected every publicly listed course');
 const categoryDir=join(root,'academy','kategorie');
 const categories=readdirSync(categoryDir).filter(f=>f.endsWith('.html')).sort();
