@@ -1,0 +1,53 @@
+name: TRENERKI — mobile and desktop redesign validation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/design-browser.yml'
+      - 'scripts/browser-smoke.mjs'
+      - 'public/academy/brand-refresh.css'
+      - 'public/academy/index.html'
+      - 'public/academy/support-footer.css'
+      - 'public/academy/kursy/**'
+      - 'app/konto.tsx'
+      - 'app/kup.tsx'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: design-browser-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  redesign_ui:
+    name: Validate redesigned catalogue and 81 courses in Chromium
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
+      - name: Install Expo and Playwright
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Export real static production website
+        run: |
+          node scripts/generate-affiliate-short-pages.mjs
+          npx expo export --platform web --output-dir /tmp/trenerki-redesign
+      - name: Verify desktop and mobile UX
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-redesign >/tmp/trenerki-ui-http.log 2>&1 &
+          sleep 2
+          node scripts/browser-smoke.mjs http://127.0.0.1:8787
+      - name: Preserve screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-redesign-screenshots
+          path: /tmp/trenerki-*.png
+          if-no-files-found: ignore
+          retention-days: 7
