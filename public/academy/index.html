@@ -480,7 +480,7 @@ function categoryTileIcon(slug){
 }
 function categoryTilesHTML(){
  return '<div class="category-tiles" aria-label="Wybierz temat nauki">'+CATEGORY_TILES.map(c=>
-  '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" data-course-category="'+c.slug+'" onclick="setFilter(\\''+c.name+'\\');return false" aria-label="Pokaż kursy: '+esc(c.name)+'">'+
+  '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" data-course-category="'+c.slug+'" onclick="setFilter(\''+c.name+'\');return false" aria-label="Pokaż kursy: '+esc(c.name)+'">'+
   '<span class="category-tile-icon" aria-hidden="true">'+categoryTileIcon(c.slug)+'</span>'+
   '<span class="category-tile-copy"><strong>'+esc(c.name)+'</strong><small>Zobacz kursy →</small></span></a>'
  ).join('')+'</div>';
