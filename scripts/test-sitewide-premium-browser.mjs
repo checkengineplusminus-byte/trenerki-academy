@@ -32,6 +32,19 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
       assert(direct>0||await page.locator('link[href*="/academy/course-share.css"]').count()>0,
         item.path+' must load premium style directly or via current course-share.css');
     }else assert.equal(direct,1,item.path+' must include one direct premium stylesheet');
+    const shell=page.locator('header.ta-unified-header');
+    await shell.waitFor({state:'visible',timeout:8000});
+    assert.equal(await page.locator('header.ta-unified-header').count(),1,item.path+' unified header');
+    const menu=page.locator('header.ta-unified-header details.ta-unified-menu');
+    if(viewport.mobile)await menu.locator('summary').click();
+    const nav=page.locator('header.ta-unified-header '+(viewport.mobile?'.ta-unified-mobile':'.ta-unified-desktop'));
+    assert(await nav.getByRole('link',{name:'Dla firm'}).isVisible(),item.path+' company link');
+    assert(await nav.getByRole('link',{name:'Mój profil'}).isVisible(),item.path+' profile link');
+    assert(await nav.getByRole('link',{name:'Nie jesteś sam'}).isVisible(),item.path+' support link');
+    if(viewport.mobile){
+      await page.keyboard.press('Escape');
+      assert.equal(await menu.getAttribute('open'),null,item.path+' Escape closes dropdown');
+    }
     const styleResult=await page.evaluate(()=>{
      const el=document.body,head=document.querySelector('body > header');
      const s=getComputedStyle(el),h=head?getComputedStyle(head):null;
@@ -50,7 +63,7 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
      assert(await page.locator('main h1').first().isVisible(),item.path+' visible heading');
     }
     if(item.type==='affiliate'){
-     assert(await page.locator('.ta-affiliate-mark').isVisible(),item.path+' golden brand mark');
+     assert(await page.locator('.ta-unified-header .ta-affiliate-mark').isVisible(),item.path+' golden brand mark');
      if(item.name==='affiliate'){
       const button=page.getByRole('link',{name:'Dołącz do programu partnerskiego'});
       assert.equal(await button.getAttribute('href'),'/partner');
@@ -60,7 +73,7 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
     if(item.type==='listing'){
      const back=page.locator('main .back');
      assert(await back.isVisible(),item.path+' breadcrumb');
-     const head=await page.locator('body > header').evaluate(el=>getComputedStyle(el).backgroundImage);
+     const head=await page.locator('header.ta-unified-header').evaluate(el=>getComputedStyle(el).backgroundImage);
      assert(head.includes('gradient'),item.path+' navy header');
     }
     if(['regulamin','affiliate','category','course'].includes(item.name)){

@@ -21,13 +21,21 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['tablet',{width:
   for(const route of routes){
    const resp=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
    assert.equal(resp?.status(),200,route+' status');
-   const nav=page.locator('[data-academy-shortcuts]');
+   const compact=type!=='desktop';
+   const menu=page.locator('header.ta-unified-header details.ta-unified-menu');
+   if(compact)await menu.locator('summary').click();
+   const nav=page.locator('header.ta-unified-header '+(compact?'.ta-unified-mobile':'.ta-unified-desktop'));
    await nav.waitFor({state:'visible',timeout:8000});
    assert.equal(await nav.getByRole('link',{name:'Mój profil'}).getAttribute('href'),'/konto',route+' account');
    assert.equal(await nav.getByRole('link',{name:'Moje kursy'}).getAttribute('href'),'/moje-kursy',route+' library');
    assert.equal(await nav.getByRole('link',{name:'Kursy',exact:true}).getAttribute('href'),'/academy/index.html#kursy',route+' catalogue');
-   const accessible=await nav.getByRole('link',{name:'Mój profil'}).isVisible();
-   assert(accessible,route+' profile link must be visible in viewport');
+   assert.equal(await nav.getByRole('link',{name:'Dla firm'}).getAttribute('href'),'/firma',route+' company');
+   assert.equal(await nav.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc',route+' help');
+   assert(await nav.getByRole('link',{name:'Mój profil'}).isVisible(),route+' profile link visible');
+   if(compact){
+    await page.keyboard.press('Escape');
+    assert.equal(await menu.getAttribute('open'),null,'Escape closes course navigation');
+   }
    const bounds=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
    assert(bounds.scroll<=bounds.client+3,route+' horizontal overflow '+JSON.stringify(bounds));
   }

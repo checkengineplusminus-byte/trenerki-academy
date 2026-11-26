@@ -12,6 +12,10 @@ on:
       - 'app/konto.tsx'
       - 'app/moje-kursy.tsx'
       - 'app/ustawienia.tsx'
+      - 'public/academy/regulamin.html'
+      - 'public/academy/program-afiliacyjny.html'
+      - 'public/academy/zrodla-zdjec.html'
+      - 'src/support/links.tsx'
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,6 +39,9 @@ jobs:
             get '/academy/kursy/autocad-skroty.html' autocad || good=0
             get '/academy/kursy/ai-bez-tajemnic.html' ai || good=0
             get '/academy/kategorie/biznes-i-praca.html' category || good=0
+            get '/academy/regulamin.html' legal || good=0
+            get '/academy/program-afiliacyjny.html' affiliate || good=0
+            get '/academy/zrodla-zdjec.html' credits || good=0
             get '/konto' profile || good=0
             get '/moje-kursy' library || good=0
             if [ "$good" = 1 ]; then
@@ -43,16 +50,19 @@ jobs:
               grep -Fq '<details class="mobile-nav"><summary>' "$tmp/homepage" || good=0
               grep -Fq 'href="/firma">Dla firm</a>' "$tmp/homepage" || good=0
               grep -Fq 'initializeAcademyMobileMenu' "$tmp/navjs" || good=0
+              grep -Fq 'ta-unified-header' "$tmp/navjs" || good=0
+              grep -Fq 'ta-unified-menu' "$tmp/navjs" || good=0
+              grep -Fq 'ta-unified-header' "$tmp/navcss" || good=0
               grep -Fq '@media(max-width:420px)' "$tmp/navcss" || good=0
               grep -Fq "/academy/course-share.js?v=${navhash}" "$tmp/homepage" || good=0
               grep -Fq "/academy/course-share.css?v=${csshash}" "$tmp/homepage" || good=0
-              for page in autocad ai category; do
+              for page in autocad ai category legal affiliate credits; do
                 grep -Fq "/academy/course-share.js?v=${navhash}" "$tmp/$page" || good=0
                 grep -Fq "/academy/course-share.css?v=${csshash}" "$tmp/$page" || good=0
               done
             fi
             if [ "$good" = 1 ]; then
-              echo "LIVE NAV VERIFIED: Dla firm, outside/Escape support, hashed assets, profile and library (attempt $attempt)"
+              echo "LIVE NAV VERIFIED: all standalone course, legal, affiliate and contact-style pages; Dla firm, mobile menu, hashed assets, profile and library (attempt $attempt)"
               rm -rf "$tmp"
               exit 0
             fi

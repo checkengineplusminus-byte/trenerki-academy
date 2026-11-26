@@ -258,8 +258,8 @@
 <link rel="stylesheet" href="/academy/anielka-search.css" />
 <link rel="stylesheet" href="/academy/course-share.css">
 <script defer src="/academy/course-share.js"></script>
-<link rel="stylesheet" href="/academy/support-footer.css?v=a749e5a32a89">
-<link rel="stylesheet" href="/academy/footer.css?v=ad293085e464">
+<link rel="stylesheet" href="/academy/support-footer.css?v=20261126-unified2">
+<link rel="stylesheet" href="/academy/footer.css?v=20261126-unified2">
 <style>
 .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex:none}
 .nav-actions>.demo-tag{white-space:nowrap}
@@ -627,8 +627,9 @@ function updateCatalog(){
  if(initial){
   const freeOrder=['excel-skroty','zaufany-wolontariusz','swiety-mikolaj'];
   const freeCourses=result.filter(c=>Number(c.price)===0).sort((a,b)=>freeOrder.indexOf(a.id)-freeOrder.indexOf(b.id));
-  const priorities=['ai-bez-tajemnic','ksiegowosc-od-podstaw','autocad-skroty'];
-  const featured=result.filter(c=>Number(c.price)>0).sort((a,b)=>{
+  const priorities=['ai-bez-tajemnic','autocad-skroty'];
+  // Accounting stays in Biznes i praca and course search, not in homepage highlights.
+  const featured=result.filter(c=>Number(c.price)>0&&c.id!==ACCOUNTING_CATALOG.id).sort((a,b)=>{
    const ai=priorities.indexOf(a.id),bi=priorities.indexOf(b.id);
    return (ai<0?999:ai)-(bi<0?999:bi);
   }).slice(0,3);

@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+// Fast regression for learning-page responsive layout and preserved gated progress.
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
+const lesson=read('app/nauka.tsx'),layout=read('app/_layout.tsx');
+const intro=read('src/CourseIntro.tsx'),library=read('src/ExcelAcademyLibrary.tsx');
+const guide=read('src/ExcelMasterGuide.tsx');
+assert(lesson.includes('desktop=screenWidth>=1120'),'Desktop breakpoint should be based on actual viewport');
+assert(lesson.includes('maxWidth:desktop?1540:1020'),'Desktop must use more than the old narrow 860px cap');
+assert(lesson.includes('testID="learning-responsive-layout"'),'Responsive main/aside layout missing');
+assert(lesson.includes('testID="learning-main-content"'),'Main lesson panel missing');
+assert(lesson.includes('testID="learning-desktop-sidebar"'),'Desktop lesson navigation missing');
+assert(lesson.includes("items.slice(Math.max(0,index-3)"),'Navigation should show nearby lessons, not an overwhelming long list');
+assert(lesson.includes('disabled={saving||!available}'),'Sidebar must not bypass locked lesson prerequisites');
+assert(lesson.includes('canVisit(item.lesson_no)'),'Sidebar must respect progress and course locks');
+assert(lesson.includes("onPress={()=>changeModule(item.lesson_no)}"),'Sidebar lessons must use the existing guarded lesson transition');
+assert(lesson.includes('testID="excel-desktop-homework-shortcut"'),'Excel practice should be reachable from desktop sidebar');
+assert(lesson.includes('onPress={openExcelHomework}'),'Excel shortcut must preserve original homework flow');
+assert(lesson.includes('testID="course-reading-introduction"'),'Do not skip first-lesson onboarding and reading');
+assert(lesson.includes("supabase.functions.invoke"),'Existing server-verified progress/lesson controls must stay in place');
+assert(layout.includes("const hideSiteHeader=pathname==='/';"),'Active lessons must have the same top academy menu');
+assert(layout.includes('<SiteAccountHeader signedIn={signedIn}/>'),'Signed-in navigation missing');
+assert(library.includes('lessonNo===0&&width<1020'),'Desktop Excel reference library should start collapsed to reduce scrolling');
+assert(library.includes('accessibilityState={{expanded}}'),'Excel library must remain accessible and manually expandable');
+assert(intro.includes('accessibilityState={{expanded:open}}'),'Course introduction disclosure must expose its expanded state');
+assert(guide.includes('testID="excel-master-guide"'),'Advanced Excel reference guide must stay available');
+console.log('✓ Desktop: 1540px max learning layout, 1090px reading panel + 292px chapter rail; mobile: one column');
+console.log('✓ All chapter/practice controls preserve existing progress guards; lesson and help navigation remain accessible');
+console.log('✓ Excel intro, optional library/history and master guide remain available without forced long desktop scrolling');

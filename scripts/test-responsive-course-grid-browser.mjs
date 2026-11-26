@@ -65,7 +65,7 @@ for(const config of cases){
   // Category/related courses follow the same responsive column count.
   const category=await page.goto(origin+'/academy/kategorie/biznes-i-praca.html',{waitUntil:'domcontentloaded'});
   assert.equal(category?.status(),200);
-  await page.locator('body > header').first().waitFor();
+  await page.locator('header.ta-unified-header').waitFor();
   const related=await page.locator('main .related').evaluate(el=>({
    cols:getComputedStyle(el).gridTemplateColumns.split(/\s+/).filter(Boolean).length,
    count:el.querySelectorAll('a').length

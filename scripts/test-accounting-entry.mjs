@@ -104,9 +104,9 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
     <Pressable testID="excel-homework-quick-access" accessibilityRole="button"
      accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
      onPress={openExcelHomework}
-     style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
-     <Text style={{fontWeight:'900',fontSize:16,color:'#1d5839'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
-     <Text style={{fontSize:12,lineHeight:20,color:'#37674a'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
+     style={{minHeight:58,padding:14,backgroundColor:'#E9F2FC',borderWidth:2,borderColor:'#B4CCE3',borderRadius:12,marginBottom:12,gap:5}}>
+     <Text style={{fontWeight:'900',fontSize:16,color:'#1D527C'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
+     <Text style={{fontSize:12,lineHeight:20,color:'#4E6E8A'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
     </Pressable>}
 `
   ];
@@ -173,7 +173,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
     " })();return()=>{active=false};},[slug]);\n"
   ],
   [
-    "  {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>\n   <Text accessibilityRole=\"alert\" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>\n   <Pressable accessibilityRole=\"button\" onPress={()=>setReload(v=>v+1)}\n    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>\n    <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>\n   </Pressable>\n  </View>}\n",
+    "  {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>\n   <Text accessibilityRole=\"alert\" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>\n   <Pressable accessibilityRole=\"button\" onPress={()=>setReload(v=>v+1)}\n    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#1B3C5B',borderRadius:11,paddingHorizontal:13}}>\n    <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>\n   </Pressable>\n  </View>}\n",
     "  {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}\n"
   ]
 ];
@@ -211,7 +211,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '46fdaf64ac76e1dd2457107fbb2e9a30851501b6', // audited red-team-only change
   'c8268e990da7e1421dc19450339faac8b5497af9', // reviewed AI stage controls
   'df96f74c58d6c1c59d99b13d09f3de99ea583a1f', // reviewed AI-only early Anielka CTA and scroll target
-  '5e0a3f471e55ce6ee943e21130be1fb22f977ef2' // 18.11 reviewed auth-refresh recovery canonicalization; accounting guard unchanged
+  '5e0a3f471e55ce6ee943e21130be1fb22f977ef2', // 18.11 reviewed auth-refresh recovery canonicalization; accounting guard unchanged
+   'a779f1786fc290b21f6ee35d211d4e5179f681de' // 26.11 reviewed desktop layout/nav visual changes; accounting guard excluded and unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
@@ -419,7 +420,8 @@ test('Księgowość: zwykła oferta w katalogu i kategoria Biznes i praca',()=>{
  assert.doesNotMatch(home,/acct-feature-title|NOWOŚĆ · WCZESNY DOSTĘP/);
  assert.match(home,/const ACCOUNTING_CATALOG=/);
  assert.match(home,/function publicCatalogCourses\(/);
- assert.match(home,/const priorities=\['ai-bez-tajemnic','ksiegowosc-od-podstaw'(?:,'[^']+')*\]/);
+ assert.match(home,/const priorities=\['ai-bez-tajemnic','autocad-skroty'\]/);
+ assert.match(home,/c\.id!==ACCOUNTING_CATALOG\.id/,'Accounting must stay in search and Biznes i praca, not homepage highlights');
  assert.match(home,/catalogCourseMatches\(c,query\)/);
  assert.match(category,/Księgowość od podstaw/);
  assert.doesNotMatch(category,/Księgowość od podstaw — Encyklopedia/);

@@ -1,9 +1,9 @@
 .ta-app-footer {
-  --ta-app-footer-cream: #f1ede0;
-  --ta-app-footer-muted: #b7c8bd;
+  --ta-app-footer-cream: #F3F7FC;
+  --ta-app-footer-muted: #C8D8E8;
   --ta-app-footer-heart: #e9a6b0;
-  background: #102820;
-  border-top: 1px solid #2c463b;
+  background: #0B2238;
+  border-top: 1px solid #314962;
   flex: 0 0 auto;
   color: var(--ta-app-footer-cream);
   padding: 10px clamp(14px, 3vw, 26px);
@@ -44,9 +44,9 @@
   box-sizing: border-box;
   padding: 6px 12px 6px 7px;
   min-height: 46px;
-  border: 1px solid #355448;
+  border: 1px solid #48627A;
   border-radius: 14px;
-  background: #18372d;
+  background: #17354D;
   transition: background-color .18s ease, border-color .18s ease;
 }
 
@@ -56,8 +56,8 @@
   --ta-heart-scale: 1;
   --ta-heart-pulse: ta-app-heart-halo;
   --ta-heart-beat: ta-app-heart-beat;
-  background: #254337;
-  border-color: #7e6d70;
+  background: #244763;
+  border-color: #D6AE65;
 }
 
 .ta-app-footer-heart {
@@ -68,7 +68,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #2d4237;
+  background: #263E56;
   color: var(--ta-app-footer-heart);
   font: 23px/1 Arial, sans-serif;
 }
@@ -104,7 +104,7 @@
 
 .ta-app-footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 9px; }
 .ta-app-footer-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 9px; border-radius: 8px; color: var(--ta-app-footer-muted); font-size: .8125rem; font-weight: 650; }
-.ta-app-footer-links a:hover, .ta-app-footer-links a:focus-visible { color: var(--ta-app-footer-cream); background: #1c372d; }
+.ta-app-footer-links a:hover, .ta-app-footer-links a:focus-visible { color: var(--ta-app-footer-cream); background: #244763; }
 
 @media (hover: hover) and (pointer: fine) {
   .ta-app-footer-help:hover {
@@ -113,8 +113,8 @@
     --ta-heart-scale: 1;
     --ta-heart-pulse: ta-app-heart-halo;
     --ta-heart-beat: ta-app-heart-beat;
-    background: #254337;
-    border-color: #7e6d70;
+    background: #244763;
+    border-color: #D6AE65;
   }
 }
 
@@ -231,7 +231,7 @@
 .ta-app-footer-links .trenerki-footer-cookie:hover,
 .ta-app-footer-links .trenerki-footer-cookie:focus-visible {
   color: var(--ta-app-footer-cream);
-  background: #1c372d;
+  background: #244763;
 }
 
 .ta-app-footer-links .trenerki-footer-cookie:focus-visible {
@@ -252,3 +252,11 @@
 .ta-app-footer-heart{color:#edc66a!important}
 .ta-app-footer-links a:hover{color:#ffdb84!important;background:#24425e!important}
 .ta-app-footer-links .trenerki-footer-cookie{color:#d7e3ee!important}
+
+/* One navy-and-gold footer alongside the academy header (legacy green removed). */
+.ta-app-footer{background:#0b2238!important;border-top-color:#314962!important}
+.ta-app-footer-help{background:#17354d!important;border-color:#48627a!important}
+.ta-app-footer-help:hover{background:#244763!important;border-color:#e2bd70!important}
+.ta-app-footer-heart{background:#263e56!important}
+.ta-app-footer-links a:hover,.ta-app-footer-links a:focus-visible,
+.ta-app-footer-links .trenerki-footer-cookie:hover{background:#244763!important}

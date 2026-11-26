@@ -1,63 +1,103 @@
 'use strict';
 
-/* Shared, accessible navigation for the standalone public course and
-   category pages. No session inspection and no backend access. */
+/* One public navigation system for all standalone course, category,
+   legal, contact and affiliate pages. The catalogue has its own header.
+   Do not read sessions or use backend data in navigation. */
 function initializeAcademyShortcuts() {
-  if (!/^\/academy\/(?:kursy\/|kategorie\/|ksiegowosc-od-podstaw\.html)/.test(location.pathname)) return;
-  const header = document.querySelector('body > header');
-  if (!header || header.querySelector('[data-academy-shortcuts]')) return;
-  const host = header.querySelector('.top') || header;
-  // The dedicated AI offer page has a legacy navigation. Replace it with
-  // the same shortcuts as the rest, avoiding two competing account menus.
-  const existing = host.querySelector('nav.nav');
-  if (existing) existing.remove();
-  const links = [
+  const path=location.pathname;
+  if (!path.startsWith('/academy/') || path==='/academy/' ||
+      path==='/academy/index.html' || path.endsWith('/zaufany-wolontariusz-nauka.html')) return;
+  if (document.querySelector('[data-ta-unified-header]')) return;
+  const body=document.body;
+  if (!body) return;
+  const header=document.createElement('header');
+  header.className='ta-unified-header';
+  header.dataset.taUnifiedHeader='true';
+  const inner=document.createElement('div');
+  inner.className='ta-unified-inner';
+  const brand=document.createElement('a');
+  brand.className='ta-unified-brand';
+  brand.href='/academy/index.html';
+  brand.setAttribute('aria-label','TRENERKI Academy — strona główna');
+  const mark=document.createElement('span');
+  mark.className='ta-unified-mark ta-affiliate-mark';
+  mark.textContent='T.';
+  mark.setAttribute('aria-hidden','true');
+  const wordmark=document.createElement('span');
+  wordmark.className='ta-unified-wordmark';
+  wordmark.textContent='TRENERKI';
+  const suffix=document.createElement('small');
+  suffix.textContent='ACADEMY';
+  wordmark.append(suffix);
+  brand.append(mark,wordmark);
+  const links=[
     ['Kursy','/academy/index.html#kursy'],
+    ['Dla firm','/firma'],
     ['Moje kursy','/moje-kursy'],
     ['Mój profil','/konto'],
-    ['Pomoc','/pomoc']
+    ['Nie jesteś sam','/pomoc']
   ];
-  const nav = document.createElement('nav');
-  nav.className = 'ta-site-shortcuts';
-  nav.dataset.academyShortcuts = 'true';
-  nav.setAttribute('aria-label','Menu akademii');
-  for (const [label,url] of links) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.textContent = label;
-    if (label === 'Mój profil') link.className = 'ta-site-profile';
-    nav.append(link);
+  function makeNav(extraClass) {
+    const nav=document.createElement('nav');
+    nav.className='ta-unified-links '+extraClass;
+    nav.dataset.academyShortcuts='true';
+    nav.setAttribute('aria-label','Menu akademii');
+    for (const [label,href] of links) {
+      const a=document.createElement('a');
+      a.textContent=label;
+      a.href=href;
+      if (label==='Mój profil') a.className='ta-unified-profile';
+      nav.append(a);
+    }
+    return nav;
   }
-  header.classList.add('ta-site-header');
-  host.append(nav);
-}
-// Close the responsive dropdown on outside interaction, Escape and desktop resize.
-function initializeAcademyMobileMenu() {
-  const menu = document.querySelector('header .mobile-nav');
-  if (!menu) return;
-  document.addEventListener('pointerdown', (event) => {
-    if (menu.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+  const desktop=makeNav('ta-unified-desktop');
+  const menu=document.createElement('details');
+  menu.className='ta-unified-menu';
+  const toggle=document.createElement('summary');
+  toggle.textContent='Menu';
+  const mobile=makeNav('ta-unified-mobile');
+  menu.append(toggle,mobile);
+  inner.append(brand,desktop,menu);
+  header.append(inner);
+  body.classList.add('ta-shell-active');
+  body.insertBefore(header,body.firstChild);
+  mobile.addEventListener('click',event=>{
+    if (event.target instanceof Element && event.target.closest('a')) menu.open=false;
   });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menu.open) {
-      menu.open = false;
-      menu.querySelector('summary')?.focus();
+  document.addEventListener('pointerdown',event=>{
+    if (menu.open && event.target instanceof Node && !menu.contains(event.target)) menu.open=false;
+  });
+  document.addEventListener('keydown',event=>{
+    if (menu.open && event.key==='Escape') { menu.open=false;toggle.focus(); }
+  });
+  window.addEventListener('resize',()=>{
+    if (menu.open && window.innerWidth>940) menu.open=false;
+  },{passive:true});
+}
+// The dynamic catalogue keeps its original independent mobile search/header.
+function initializeAcademyMobileMenu() {
+  const menu=document.querySelector('header .mobile-nav');
+  if (!menu) return;
+  document.addEventListener('pointerdown',event=>{
+    if (menu.open && event.target instanceof Node && !menu.contains(event.target)) menu.open=false;
+  });
+  document.addEventListener('keydown',event=>{
+    if (menu.open && event.key==='Escape') {
+      menu.open=false;menu.querySelector('summary')?.focus();
     }
   });
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1070 && menu.open) menu.open = false;
-  }, {passive:true});
+  window.addEventListener('resize',()=>{
+    if (menu.open && window.innerWidth>1070) menu.open=false;
+  },{passive:true});
 }
 function initializeAcademyNavigation() {
   initializeAcademyShortcuts();
   initializeAcademyMobileMenu();
 }
-if (document.readyState === 'loading') {
+if (document.readyState==='loading')
   document.addEventListener('DOMContentLoaded',initializeAcademyNavigation,{once:true});
-} else {
-  initializeAcademyNavigation();
-}
-
+else initializeAcademyNavigation();
 
 document.addEventListener('click', async (event) => {
   if (!(event.target instanceof Element)) return;

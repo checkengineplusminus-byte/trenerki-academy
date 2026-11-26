@@ -318,6 +318,19 @@ async function persona(browser,p,round){
   await install(page,events);
   await page.goto(base+'/nauka?course=excel-skroty&lesson='+(p.lesson+1),{waitUntil:'domcontentloaded'});
   await page.getByTestId('lesson-heading').or(page.getByTestId('course-reading-introduction')).first().waitFor();
+  // Regression: a 1920px desktop must not look like a mobile-only column.
+  const layout=await page.evaluate(()=>{
+   const main=document.querySelector('[data-testid="learning-main-content"]')?.getBoundingClientRect();
+   const sidebar=document.querySelector('[data-testid="learning-desktop-sidebar"]')?.getBoundingClientRect();
+   return {mainWidth:main?.width||0,mainRight:main?.right||0,sideWidth:sidebar?.width||0,sideLeft:sidebar?.left||0,
+    viewport:document.documentElement.clientWidth};
+  });
+  if(p.width>=1120){
+   assert(layout.mainWidth>=760,'Desktop learning text is too narrow: '+JSON.stringify(layout));
+   assert(layout.sideWidth>=280,'Desktop lesson sidebar is missing: '+JSON.stringify(layout));
+   assert(layout.sideLeft>=layout.mainRight-3,'Sidebar must not overlap lesson content: '+JSON.stringify(layout));
+   assert(layout.sideLeft+layout.sideWidth<=layout.viewport+4,'Sidebar must stay within viewport: '+JSON.stringify(layout));
+  }else assert.equal(layout.sideWidth,0,'Mobile/tablet should keep a single-column lesson');
   const introConsent=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   if(await introConsent.isVisible())await introConsent.getByRole('button',{name:'Odrzuć',exact:true}).click();
   if(p.lesson===0){
@@ -490,7 +503,13 @@ async function totalBeginner(browser,p,round){
   assert.equal(response.status(),200,'Downloadable starting spreadsheet data is absent');
   assert((await response.text()).includes(p.track==='dom'?'Zakupy spozywcze':'Dlugopisy'),'Downloaded file has wrong starting data');
   const library=page.getByTestId('excel-encyclopedia');
-  await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
+  // The desktop library now starts collapsed to avoid an enormous first lesson.
+  // Explicitly expand it before studying the optional glossary.
+  const glossaryButton=library.getByRole('button',{name:'Biblioteka — Słownik A–Z'});
+  if(await glossaryButton.count()===0){
+   await library.getByRole('button',{name:'Biblioteka Excel: historia, wstęp, słownik i dodatkowe rozdziały'}).click();
+  }
+  await glossaryButton.click();
   await library.getByRole('textbox',{name:'Szukaj w słowniku Excel'}).fill('komórka');
   await library.getByRole('button',{name:'Wyjaśnij pojęcie Komórka',exact:true}).click();
   await library.getByTestId('excel-glossary-definition').getByText('Komórka',{exact:true}).waitFor();

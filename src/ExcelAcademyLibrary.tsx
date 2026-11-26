@@ -5,7 +5,7 @@ import bonus from '../content/excel-bonus-chapters.json';
 import {parseExcelResponseNumber,parseExcelResponseCount} from './excelMissionAnswers';
 import deep from '../content/excel-deep-lessons.json';
 
-const ink='#193b2b',muted='#4e6958',border='#d3e2d3';
+const ink='#142B42',muted='#52697F',border='#D8E2EC';
 const normalize=(value:string)=>value.toLocaleLowerCase('pl-PL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l').replace(/\s+/g,' ').trim();
 const glossary=encyclopedia.terms;
 type Tab='historia'|'start'|'slownik'|'rozdzialy';
@@ -20,12 +20,12 @@ function Source({url,label}:{url:string;label:string}){
 const chipStyle={minHeight:44,paddingHorizontal:12,paddingVertical:9,borderRadius:10,borderWidth:1,justifyContent:'center' as const};
 export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
  const {width}=useWindowDimensions(),compact=width<650;
- const [expanded,setExpanded]=useState(lessonNo===0),[tab,setTab]=useState<Tab>('historia');
+ const [expanded,setExpanded]=useState(lessonNo===0&&width<1020),[tab,setTab]=useState<Tab>('historia');
  const [search,setSearch]=useState(''),[category,setCategory]=useState('Wszystkie'),[limit,setLimit]=useState(18);
  const [chosen,setChosen]=useState(''),[chapterId,setChapterId]=useState('historia-arkuszy');
  const [chapterLevel,setChapterLevel]=useState('Wszystkie');
  const [answer,setAnswer]=useState(''),[feedback,setFeedback]=useState<'idle'|'wrong'|'right'>('idle'),[finished,setFinished]=useState<string[]>([]);
- useEffect(()=>{setExpanded(lessonNo===0);setTab(lessonNo===0?'historia':'slownik');setSearch('');setCategory('Wszystkie');setChosen('');setLimit(18);},[lessonNo]);
+ useEffect(()=>{setExpanded(lessonNo===0&&width<1020);setTab(lessonNo===0?'historia':'slownik');setSearch('');setCategory('Wszystkie');setChosen('');setLimit(18);},[lessonNo]);
  useEffect(()=>{
   if(!expanded||tab!=='slownik'||!chosen||typeof document==='undefined')return;
   // Place the definition in the learner's viewport after choosing an entry.
@@ -61,11 +61,11 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
   setFeedback(right?'right':'wrong');
   if(right)setFinished(old=>old.includes(chapter.id)?old:[...old,chapter.id]);
  }
- return <View testID="excel-encyclopedia" style={{borderWidth:1,borderColor:'#c9dccb',borderRadius:16,backgroundColor:'#f7faf5',overflow:'hidden',marginVertical:10}}>
+ return <View testID="excel-encyclopedia" style={{borderWidth:1,borderColor:'#CDDCEB',borderRadius:16,backgroundColor:'#FFFFFF',overflow:'hidden',marginVertical:10}}>
   <Pressable accessibilityRole="button" accessibilityState={{expanded}} accessibilityLabel="Biblioteka Excel: historia, wstęp, słownik i dodatkowe rozdziały"
-   onPress={()=>setExpanded(v=>!v)} style={{padding:compact?13:17,backgroundColor:'#e7f1e6',gap:5,minHeight:64}}>
-   <Text style={{fontSize:12,fontWeight:'900',color:'#4b7758'}}>BIBLIOTEKA WIEDZY · OD ZERA DO EKSPERTA</Text>
-   <Text style={{fontSize:compact?17:20,color:ink,fontWeight:'900'}}>Historia, wstęp, {glossary.length} pojęć i {bonus.chapters.length} rozdziałów dodatkowych {expanded?'▴':'▾'}</Text>
+   onPress={()=>setExpanded(v=>!v)} style={{padding:compact?13:17,backgroundColor:'#EDF3FA',gap:5,minHeight:64}}>
+   <Text style={{fontSize:12,fontWeight:'900',color:'#987332'}}>BIBLIOTEKA WIEDZY · OD ZERA DO EKSPERTA</Text>
+   <Text style={{fontSize:compact?18:22,color:ink,fontWeight:'900'}}>Historia, wstęp, {glossary.length} pojęć i {bonus.chapters.length} rozdziałów dodatkowych {expanded?'▴':'▾'}</Text>
    <Text style={{fontSize:12,color:muted}}>Otwórz dowolny temat w dowolnym momencie. Materiały uzupełniają 30 zaliczanych lekcji.</Text>
   </Pressable>
   {expanded&&<View style={{gap:14,padding:compact?12:17}}>
@@ -74,19 +74,19 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
      ['historia','Historia Excela'],['start','Od czego zacząć'],['slownik','Słownik A–Z'],['rozdzialy','12 rozdziałów']
     ] as [Tab,string][]).map(([id,label])=><Pressable key={id} accessibilityRole="button" accessibilityState={{selected:tab===id}}
      accessibilityLabel={'Biblioteka — '+label} onPress={()=>chooseTab(id)}
-     style={[chipStyle,{backgroundColor:tab===id?'#204b34':'#fff',borderColor:tab===id?'#204b34':'#cbdccf'}]}>
+     style={[chipStyle,{backgroundColor:tab===id?'#163B57':'#fff',borderColor:tab===id?'#163B57':'#CEDCE9'}]}>
      <Text style={{fontSize:13,fontWeight:'900',color:tab===id?'#fff':ink}}>{label}</Text>
     </Pressable>)}
    </View>
    {tab==='historia'&&<View testID="excel-history" style={{gap:13}}>
     <Text style={{fontSize:18,color:ink,fontWeight:'900'}}>Dlaczego Excel w ogóle powstał?</Text>
-    <Text style={{fontSize:14,lineHeight:23,color:muted}}>Przed arkuszami komputerowymi trzeba było ponownie liczyć całe kolumny kosztów po zmianie jednej ceny. Elektroniczny arkusz sprawił, że dane, formuły i raporty zaczęły pozostawać ze sobą powiązane. To historia o eliminowaniu żmudnego liczenia i uwalnianiu czasu na podejmowanie decyzji.</Text>
+    <Text style={{fontSize:compact?14:16,lineHeight:compact?23:27,color:muted}}>Przed arkuszami komputerowymi trzeba było ponownie liczyć całe kolumny kosztów po zmianie jednej ceny. Elektroniczny arkusz sprawił, że dane, formuły i raporty zaczęły pozostawać ze sobą powiązane. To historia o eliminowaniu żmudnego liczenia i uwalnianiu czasu na podejmowanie decyzji.</Text>
     {bonus.timeline.map((entry,i)=><View key={entry.year} style={{flexDirection:'row',gap:12}}>
      <View style={{width:61,alignItems:'center',gap:4}}>
-      <Text style={{fontSize:14,color:'#326b4c',fontWeight:'900'}}>{entry.year}</Text>
-      <View style={{width:2,height:52,backgroundColor:i===bonus.timeline.length-1?'transparent':'#b5d0bb'}}/>
+      <Text style={{fontSize:14,color:'#416889',fontWeight:'900'}}>{entry.year}</Text>
+      <View style={{width:2,height:52,backgroundColor:i===bonus.timeline.length-1?'transparent':'#CAD8E8'}}/>
      </View>
-     <View style={{flex:1,borderLeftWidth:2,borderColor:'#a5c4af',paddingLeft:13,paddingBottom:12,gap:5}}>
+     <View style={{flex:1,borderLeftWidth:2,borderColor:'#B3C9E0',paddingLeft:13,paddingBottom:12,gap:5}}>
       <Text style={{fontSize:15,color:ink,fontWeight:'900'}}>{entry.title}</Text>
       <Text style={{fontSize:13,lineHeight:21,color:muted}}>{entry.description}</Text>
       <Source url={entry.reference} label={'Sprawdź źródło wydarzenia: '+entry.year}/>
@@ -175,9 +175,9 @@ export function ExcelAcademyLibrary({lessonNo}:{lessonNo:number}){
       <Text style={{color:muted,fontSize:12,lineHeight:20}}>{/^\d+$/.test(chapter.answer)?(chapter.id==='historia-arkuszy'?'Wpisz czterocyfrowy rok, bez dopisku i bez formuły.':['projektowanie-danych','power-query-pierwsze-kroki'].includes(chapter.id)?'Wpisz samą liczbę policzonych rekordów. Nie dodawaj zł ani formuły.':'Wpisz obliczoną liczbę. Możesz dopisać zł, jeśli pytanie dotyczy kwoty.'):'Wpisz krótką odpowiedź tekstową zgodną z pytaniem. Nie wpisuj formuły, jeśli pytanie prosi o tak lub nie.'}</Text>
       <TextInput accessibilityLabel="Odpowiedź w dodatkowym rozdziale Excel" value={answer}
        onChangeText={v=>{setAnswer(v);setFeedback('idle');}} placeholder="Wpisz krótką odpowiedź..."
-       placeholderTextColor="#718a75" style={{borderWidth:1,borderColor:'#c0d3c3',padding:11,minHeight:46,backgroundColor:'#fff',color:ink,borderRadius:9}}/>
+       placeholderTextColor="#718a75" style={{borderWidth:1,borderColor:'#C7D8E8',padding:11,minHeight:46,backgroundColor:'#fff',color:ink,borderRadius:9}}/>
       <Pressable accessibilityRole="button" accessibilityLabel="Sprawdź dodatkowy rozdział" onPress={checkChapter}
-       style={[chipStyle,{alignSelf:'flex-start',backgroundColor:'#275a3a',borderColor:'#275a3a'}]}><Text style={{color:'#fff',fontWeight:'900',fontSize:13}}>Sprawdź odpowiedź</Text></Pressable>
+       style={[chipStyle,{alignSelf:'flex-start',backgroundColor:'#244D70',borderColor:'#244D70'}]}><Text style={{color:'#fff',fontWeight:'900',fontSize:13}}>Sprawdź odpowiedź</Text></Pressable>
       {feedback==='wrong'&&<Text testID="excel-bonus-wrong" accessibilityLiveRegion="polite" style={{fontSize:13,color:'#95542c',lineHeight:21}}>Sprawdź jeszcze raz. {chapter.tip}</Text>}
       {feedback==='right'&&<Text testID="excel-bonus-correct" accessibilityLiveRegion="polite" style={{fontSize:13,color:'#24643e',fontWeight:'900'}}>✓ Poprawnie! Rozumiesz zasadę — spróbuj zastosować ją na własnym przykładzie.</Text>}
      </View>
@@ -196,15 +196,15 @@ export function ExcelDeepLesson({lessonNo}:{lessonNo:number}){
  if(!record)return null;
  const related=record.glossary.map(word=>glossary.find(g=>normalize(g.term)===normalize(word))).filter(Boolean) as typeof glossary;
  const chosenDefinition=related.find(x=>x.id===chosen);
- return <View testID={'excel-deep-lesson-'+lessonNo} style={{borderWidth:1,borderColor:'#d4e4d6',borderRadius:16,padding:compact?13:18,backgroundColor:'#fff',gap:15,marginVertical:12}}>
+ return <View testID={'excel-deep-lesson-'+lessonNo} style={{borderWidth:1,borderColor:'#D6E3EF',borderRadius:16,padding:compact?13:18,backgroundColor:'#fff',gap:15,marginVertical:12}}>
   <View style={{gap:6}}>
-   <Text style={{fontSize:11,fontWeight:'900',color:'#4d805b'}}>EXCEL · WPROWADZENIE I WYJAŚNIENIA</Text>
+   <Text style={{fontSize:11,fontWeight:'900',color:'#A17A3A'}}>EXCEL · WPROWADZENIE I WYJAŚNIENIA</Text>
    <Text style={{color:ink,fontSize:compact?18:21,fontWeight:'900'}}>Zrozum temat, zanim zaczniesz liczyć</Text>
    <Text style={{fontSize:13,color:muted,lineHeight:21}}>Nie musisz zapamiętywać zdań. Przeczytaj, prześledź przykład, znajdź typową pułapkę i dopiero potem sprawdź wynik w praktyce.</Text>
   </View>
   {record.sections.map((section,i)=><View key={i} style={{gap:7}}>
    <View style={{flexDirection:'row',gap:9,alignItems:'center'}}>
-    <Text style={{width:27,height:27,lineHeight:27,textAlign:'center',backgroundColor:'#e5f0e3',borderRadius:8,overflow:'hidden',color:'#34714c',fontWeight:'900'}}>{i+1}</Text>
+    <Text style={{width:27,height:27,lineHeight:27,textAlign:'center',backgroundColor:'#E8F0FA',borderRadius:8,overflow:'hidden',color:'#296087',fontWeight:'900'}}>{i+1}</Text>
     <Text style={{color:ink,flex:1,fontSize:15,fontWeight:'900'}}>{section.heading}</Text>
    </View>
    <Text style={{fontSize:14.5,lineHeight:24,color:muted}}>{section.text}</Text>
@@ -214,7 +214,7 @@ export function ExcelDeepLesson({lessonNo}:{lessonNo:number}){
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
     {related.map(term=><Pressable key={term.id} accessibilityRole="button" accessibilityState={{selected:chosen===term.id}}
      accessibilityLabel={'Wyjaśnij hasło '+term.term} onPress={()=>setChosen(x=>x===term.id?'':term.id)}
-     style={[chipStyle,{backgroundColor:chosen===term.id?'#d7ebda':'#fff',borderColor:chosen===term.id?'#7bae86':border}]}>
+     style={[chipStyle,{backgroundColor:chosen===term.id?'#E9F2FC':'#fff',borderColor:chosen===term.id?'#B8CCE4':border}]}>
      <Text style={{color:ink,fontSize:12.5,fontWeight:'800'}}>{term.term}</Text>
     </Pressable>)}
    </View>

@@ -1,10 +1,10 @@
 .academy-footer {
-  --footer-text: #f1ede0;
-  --footer-muted: #b7c8bd;
+  --footer-text: #F3F7FC;
+  --footer-muted: #C8D8E8;
   --footer-rule: #ffffff29;
   color: var(--footer-text);
-  background: #102820;
-  border-top: 1px solid #264338;
+  background: #0B2238;
+  border-top: 1px solid #314962;
   padding: clamp(34px, 5vw, 60px) 0 0;
 }
 
@@ -25,9 +25,9 @@
 }
 
 .academy-footer__brand .brand-mark {
-  background: #1d3a30;
-  border: 1px solid #39574a;
-  color: #d8f69b;
+  background: #17354D;
+  border: 1px solid #456782;
+  color: #EDC368;
 }
 
 .academy-footer__operator {
@@ -83,7 +83,7 @@
 }
 
 .academy-footer a:focus-visible {
-  outline: 2px solid #d8f69b;
+  outline: 2px solid #EDC368;
   outline-offset: 4px;
   border-radius: 4px;
 }
@@ -96,8 +96,8 @@
   min-height: 62px;
   margin-top: 14px;
   padding: 10px 12px;
-  background: #19372c;
-  border: 1px solid #3d584e;
+  background: #17354D;
+  border: 1px solid #456782;
   border-radius: 13px;
   color: var(--footer-text);
   text-decoration: none;
@@ -106,8 +106,8 @@
 
 .academy-footer .academy-footer__help:hover,
 .academy-footer .academy-footer__help:focus-visible {
-  background: #234236;
-  border-color: #926a75;
+  background: #244763;
+  border-color: #D6AE65;
 }
 
 .academy-footer__help strong,
@@ -180,7 +180,7 @@
 }
 
 .academy-footer__utility .developer-credit a {
-  color: #c2e5d0;
+  color: #F0D391;
   font: inherit;
   font-weight: 700;
 }
@@ -190,7 +190,7 @@
 }
 
 .developer-credit .terminal-cursor {
-  color: #9bcead;
+  color: #E7BE66;
   font-weight: 700;
   animation: academy-cursor-blink 1.05s step-end infinite;
 }
@@ -207,7 +207,7 @@
   min-height: 34px;
   padding: 0;
   border-radius: 8px;
-  color: #a4b5aa;
+  color: #ADBFCE;
 }
 
 .academy-footer__gear {
@@ -231,8 +231,8 @@
 
 .academy-footer__utility .academy-footer__staff:hover,
 .academy-footer__utility .academy-footer__staff:focus-visible {
-  color: #f1ede0;
-  background: #234236;
+  color: #F3F7FC;
+  background: #244763;
 }
 
 @media (max-width: 880px) {
@@ -292,7 +292,7 @@
 }
 
 .academy-footer__utility .trenerki-footer-cookie {
-  border: 1px solid #355448;
+  border: 1px solid #456782;
   border-radius: 7px;
   min-height: 32px;
   padding: 4px 9px;
@@ -307,11 +307,11 @@
 .academy-footer__utility .trenerki-footer-cookie:hover,
 .academy-footer__utility .trenerki-footer-cookie:focus-visible {
   color: var(--footer-text);
-  background: #1c372d;
+  background: #244763;
 }
 
 .academy-footer__utility .trenerki-footer-cookie:focus-visible {
-  outline: 2px solid #d8f69b;
+  outline: 2px solid #EDC368;
   outline-offset: 3px;
 }
 

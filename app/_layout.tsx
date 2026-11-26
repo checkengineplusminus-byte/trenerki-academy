@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,Pressable,ActivityIndicator,Platform,useWindowDimensions} from 'react-native';
-import {Slot,Stack,usePathname,useGlobalSearchParams,type ErrorBoundaryProps} from 'expo-router';
+import {View,Text,Pressable,ActivityIndicator,Platform,useWindowDimensions,Linking} from 'react-native';
+import {Slot,Stack,usePathname,useGlobalSearchParams,useRouter,type ErrorBoundaryProps,type Href} from 'expo-router';
 import {HelpFooter} from '../src/support/links';
 import LearningSupportBar from '../src/support/LearningSupportBar';
 import {supabase} from '../src/supabase';
@@ -29,6 +29,103 @@ export function ErrorBoundary({retry}:ErrorBoundaryProps){
  </View>;
 }
 
+
+// Shared navigation across account, checkout, business, gifts and partner screens.
+// Course workspaces keep their own full-screen learning controls.
+const siteMenu=[
+ {label:'Kursy',href:'/academy/index.html#kursy'},
+ {label:'Dla firm',href:'/firma'},
+ {label:'Moje kursy',href:'/moje-kursy'},
+ {label:'Mój profil',href:'/konto'},
+ {label:'Nie jesteś sam',href:'/pomoc'}
+] as const;
+
+function SiteAccountHeader({signedIn}:{signedIn:boolean}){
+ const {width}=useWindowDimensions();
+ const router=useRouter();
+ const pathname=usePathname();
+ const compact=width<920;
+ const [open,setOpen]=useState(false);
+ useEffect(()=>{setOpen(false)},[pathname,compact]);
+ function navigate(href:string){
+  setOpen(false);
+  if(href.startsWith('/academy/')){
+   if(Platform.OS==='web'&&typeof window!=='undefined')window.location.assign(href);
+   else void Linking.openURL('https://trenerki.com'+href);
+  }else router.push(href as Href);
+ }
+ const nav=(mobile:boolean)=>siteMenu.map(item=>{
+  const active=item.href===pathname;
+  const profile=item.href==='/konto';
+  const label=profile&&!signedIn?'Zaloguj się':item.label;
+  return <Pressable key={item.href} accessibilityRole="link"
+   accessibilityState={{selected:active}}
+   onPress={()=>navigate(item.href)}
+   style={{minHeight:44,justifyContent:'center',alignItems:mobile?'flex-start':'center',
+    paddingHorizontal:mobile?16:12,paddingVertical:10,borderRadius:9,
+    backgroundColor:profile?'#EDC368':active?'#244963':'transparent',
+    borderWidth:profile?1:0,borderColor:'#D3A749'}}>
+   <Text style={{fontSize:mobile?14:13,fontWeight:profile?'900':'700',
+    color:profile?'#14263B':active?'#FFDC8B':'#EDF3FA'}}>{label}</Text>
+  </Pressable>;
+ });
+ return <View accessibilityRole="header" style={{zIndex:300,backgroundColor:'#0B2238',borderBottomWidth:1,borderBottomColor:'#395671'}}>
+  <View style={{width:'100%',maxWidth:1260,alignSelf:'center',paddingHorizontal:compact?14:24,
+    minHeight:64,flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8}}>
+   <Pressable accessibilityRole="link" accessibilityLabel="Trenerki Academy — strona główna"
+    onPress={()=>navigate('/academy/index.html')} style={{flexDirection:'row',alignItems:'center',gap:9,minWidth:0}}>
+    <View style={{width:37,height:37,borderRadius:10,borderWidth:2,borderColor:'#E7BC63',
+      justifyContent:'center',alignItems:'center'}}>
+     <Text style={{color:'#F5CB79',fontWeight:'900',fontSize:19}}>T.</Text>
+    </View>
+    <View>
+     <Text style={{fontWeight:'900',color:'#FFFFFF',fontSize:compact?15:18,letterSpacing:-.4}}>TRENERKI</Text>
+     <Text style={{fontWeight:'700',fontSize:9,color:'#C9DAEA',letterSpacing:1.7}}>ACADEMY</Text>
+    </View>
+   </Pressable>
+   {compact?
+    <Pressable accessibilityRole="button" accessibilityLabel={open?'Zamknij menu':'Otwórz menu'}
+     accessibilityState={{expanded:open}}
+     onPress={()=>setOpen(v=>!v)}
+     style={{minHeight:44,minWidth:76,alignItems:'center',justifyContent:'center',
+      borderRadius:10,borderWidth:1,borderColor:'#B59253',backgroundColor:'#163853'}}>
+     <Text style={{color:'#FFDA8B',fontWeight:'800',fontSize:13}}>{open?'Zamknij':'Menu'}</Text>
+    </Pressable>:
+    <View style={{flexDirection:'row',alignItems:'center',gap:3}}>{nav(false)}</View>}
+  </View>
+  {compact&&open&&<View style={{position:'absolute',right:14,top:63,
+    width:Math.min(310,width-28),backgroundColor:'#102E48',padding:10,
+    borderWidth:1,borderColor:'#B18B4A',borderRadius:14,
+    shadowColor:'#071726',shadowOpacity:.26,shadowRadius:18,elevation:16,zIndex:1000}}>
+    {nav(true)}
+   </View>}
+ </View>;
+}
+
+// Help is intentionally outside AccountLayout so visitors can open it immediately.
+// Read the real session rather than always showing a misleading 'Zaloguj się'
+// action to learners who are already authenticated.
+function HelpHeader(){
+ // Expo pre-renders /pomoc without a browser viewport. The desktop/mobile
+ // menu must mount only after hydration or the server and client HTML differ.
+ const [hydrated,setHydrated]=useState(false);
+ const [signedIn,setSignedIn]=useState<boolean|null>(null);
+ useEffect(()=>{setHydrated(true)},[]);
+ useEffect(()=>{
+  let active=true;
+  const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
+   if(active)setSignedIn(Boolean(session?.user));
+  });
+  void supabase.auth.getSession().then(({data})=>{
+   if(active)setSignedIn(Boolean(data.session?.user));
+  }).catch(()=>{if(active)setSignedIn(false)});
+  return()=>{active=false;subscription.unsubscribe()};
+ },[]);
+ // Keep 'Mój profil' while auth is unresolved, rather than briefly telling
+ // a signed-in learner to sign in again.
+ return hydrated?<SiteAccountHeader signedIn={signedIn!==false}/>:null;
+}
+
 /**
  * Route visibility is a convenience, NOT the authorization boundary.
  * /admin always renders only its access-check screen until the verified
@@ -46,7 +143,7 @@ export default function RootLayout(){
   const script=document.createElement('script');script.src='/academy/google-ads.js';script.async=true;
   script.setAttribute('data-trenerki-google-ads','true');document.head.appendChild(script);
  },[]);
- if(pathname==='/pomoc')return <Slot/>;
+ if(pathname==='/pomoc')return <View style={{flex:1}}><HelpHeader/><View style={{flex:1}}><Slot/></View></View>;
  return <AccountLayout/>;
 }
 
@@ -55,6 +152,7 @@ function AccountLayout(){
  const {width}=useWindowDimensions();
  const learningRoutes=['/ksiegowosc','/program-ksiegowosci','/temat-ksiegowosci','/sciezka-ksiegowosci','/biuro-ksiegowe','/dane-biura','/formularze-ksiegowego','/majatek-ksiegowy','/slownik-ksiegowego'];
  const hideAccountFooter=width<760&&(pathname==='/konto'||learningRoutes.includes(pathname));
+ const hideSiteHeader=pathname==='/';
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  useEffect(()=>{
@@ -77,7 +175,7 @@ function AccountLayout(){
  // all personal/paid lesson data. A transient guard=false must not send learners
  // to / (which redirects to the public catalog).
  return <View style={{flex:1}}>
-
+  {!hideSiteHeader&&<SiteAccountHeader signedIn={signedIn}/>}
   <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>

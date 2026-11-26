@@ -52,6 +52,9 @@ on:
       - 'public/academy/assets/excel-firstday-home.csv'
       - 'public/academy/assets/excel-firstday-shop.csv'
       - 'app/nauka.tsx'
+      - 'scripts/test-learning-desktop-layout.mjs'
+      - 'src/CourseIntro.tsx'
+      - 'src/CourseStudyPlan.tsx'
       - 'scripts/test-excel-pro-case.mjs'
       - 'src/excelProReview.ts'
       - 'src/ExcelProCaseLab.tsx'
@@ -94,6 +97,9 @@ on:
       - 'scripts/excel-all-missions-browser.mjs'
       - 'src/SoftwareOrientation.tsx'
       - 'app/nauka.tsx'
+      - 'scripts/test-learning-desktop-layout.mjs'
+      - 'src/CourseIntro.tsx'
+      - 'src/CourseStudyPlan.tsx'
       - 'content/excel-function-index-2026.json'
       - 'content/excel-master-syllabus.json'
       - 'scripts/test-excel-currency.mjs'
@@ -116,6 +122,8 @@ jobs:
           cache-dependency-path: package.json
       - name: Instaluj zależności silnika TypeScript przed testem walut
         run: npm install --no-audit --no-fund
+      - name: Sprawdź responsywny widok lekcji i boczną nawigację bez omijania blokad
+        run: node scripts/test-learning-desktop-layout.mjs
       - name: Sprawdź funkcje ekspertów i kurs od zera
         run: node --experimental-strip-types --test scripts/test-excel-expert.mjs scripts/test-excel-pro-case.mjs scripts/test-excel-knowledge.mjs
       - name: Sprawdź początek Excela — prawidłowe formuły i proste wyjaśnienia
