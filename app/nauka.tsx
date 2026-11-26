@@ -42,11 +42,11 @@ type Lesson={
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry'|'stage';
 type Checks=Partial<Record<AttemptMode,boolean>>;
-const ink='#183c2b',secondary='#526f5c',line='#dfeada';
+const ink='#142B42',secondary='#586F84',line='#DCE5EE';
 const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,24,26,27,28,29]);
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
- const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
+ const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640,desktop=screenWidth>=1120;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0),coachYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
  const pendingExcelHomeworkRef=React.useRef(false);
@@ -284,42 +284,46 @@ export default function Learning(){
   const hasNext=next!==undefined&&canVisit(next);
   return <View testID={'lesson-nav-'+position} style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginVertical:10}}>
    <Pressable accessibilityRole="button" accessibilityLabel="Poprzednia lekcja" disabled={saving||previous===undefined}
-    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9',opacity:previous===undefined?0.48:1}}>
+    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#EFF4FA',opacity:previous===undefined?0.48:1}}>
     <Text style={{color:ink,fontWeight:'800'}}>← Poprzednia lekcja</Text>
    </Pressable>
    {firstPending&&module!==unlockedNo&&<Pressable accessibilityRole="button" disabled={saving} onPress={()=>changeModule(unlockedNo)}
-    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#dfeeda'}}>
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#F7EDDA'}}>
     <Text style={{color:ink,fontWeight:'800'}}>Wróć do miejsca nauki</Text>
    </Pressable>}
    {hasNext&&<Pressable accessibilityRole="button" accessibilityLabel="Następna dostępna lekcja" disabled={saving} onPress={()=>changeModule(next)}
-    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9'}}>
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#EFF4FA'}}>
     <Text style={{color:ink,fontWeight:'800'}}>Następna lekcja →</Text>
    </Pressable>}
   </View>;
  }
- return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
-  <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
+ return <ScrollView ref={scrollRef} testID="learning-scroll" style={{backgroundColor:'#F7F9FC',flex:1}}
+  contentContainerStyle={{paddingHorizontal:mobile?14:desktop?26:22,paddingTop:mobile?15:desktop?26:22,paddingBottom:90,
+    maxWidth:desktop?1540:1020,alignSelf:'center',width:'100%'}}>
+  <View testID="learning-responsive-layout" style={{flexDirection:desktop?'row':'column',width:'100%',gap:desktop?24:0,alignItems:'flex-start'}}>
+   <View testID="learning-main-content" style={{flex:1,minWidth:0,width:desktop?undefined:'100%',maxWidth:desktop?1090:undefined}}>
+  <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#315C80',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>{!busy&&courseInfo.slug===slug&&index===0?courseInfo.title:'Moja nauka'}</Text>
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>
    <Text accessibilityRole="alert" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>
    <Pressable accessibilityRole="button" onPress={()=>setReload(v=>v+1)}
-    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>
+    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#1B3C5B',borderRadius:11,paddingHorizontal:13}}>
     <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>
    </Pressable>
   </View>}
   {!!items.length&&<>
    {!busy&&courseInfo.slug===slug&&index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
-   <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
+   <View style={{backgroundColor:'#EFF4FB',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
      <Text style={{fontSize:reviewMode?12:17,fontWeight:'900',color:ink}}>{reviewMode?'Dyplom zachowany':progress+'%'}</Text>
     </View>
-    {!reviewMode&&<View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
-     <View style={{height:8,width:progress+'%',backgroundColor:'#7cae6e'}}/>
+    {!reviewMode&&<View style={{height:8,backgroundColor:'#D9E4EF',borderRadius:9,marginTop:9,overflow:'hidden'}}>
+     <View style={{height:8,width:progress+'%',backgroundColor:'#D6A64B'}}/>
     </View>}
     <Pressable testID="start-course-from-beginning" accessibilityRole="button" disabled={saving} onPress={startFromBeginning}
-      style={{marginTop:12,paddingVertical:11,paddingHorizontal:13,backgroundColor:'white',borderRadius:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#bad4b6'}}>
+      style={{marginTop:12,paddingVertical:11,paddingHorizontal:13,backgroundColor:'white',borderRadius:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#CDDBEA'}}>
       <Text style={{fontWeight:'900',color:ink}}>↺ Zacznij od początku</Text>
     </Pressable>
     {reviewMode&&<Text style={{fontSize:12,lineHeight:19,color:'#49684c',marginTop:5}}>Powtarzasz materiały. Postęp i dyplom nie są kasowane.</Text>}
@@ -359,7 +363,7 @@ export default function Learning(){
    </View>}
    {index===0&&!!study&&<CourseStudyPlan key={slug} project={study}/>}
    <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
-    style={{backgroundColor:'#f1f6ed',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#d6e7d0',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
+    style={{backgroundColor:'#F1F5FA',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#DCE5EF',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
      <Text style={{color:secondary,fontSize:12}}>Lekcja {index+1}/{items.length}</Text>
    </Pressable>
@@ -402,9 +406,9 @@ export default function Learning(){
     <Pressable testID="excel-homework-quick-access" accessibilityRole="button"
      accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
      onPress={openExcelHomework}
-     style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
-     <Text style={{fontWeight:'900',fontSize:16,color:'#1d5839'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
-     <Text style={{fontSize:12,lineHeight:20,color:'#37674a'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
+     style={{minHeight:58,padding:14,backgroundColor:'#E9F2FC',borderWidth:2,borderColor:'#B4CCE3',borderRadius:12,marginBottom:12,gap:5}}>
+     <Text style={{fontWeight:'900',fontSize:16,color:'#1D527C'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
+     <Text style={{fontSize:12,lineHeight:20,color:'#4E6E8A'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
     </Pressable>}
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
@@ -578,6 +582,55 @@ export default function Learning(){
    {lessonNavigation('bottom')}
    </>}
   </>}
-  {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#eaf2e0'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
+  {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#EEF3FA'}}><Text style={{color:ink,fontWeight:'700',lineHeight:23,fontSize:15}}>{msg}</Text></View>}
+   </View>
+   {desktop&&index>=0&&<View testID="learning-desktop-sidebar" style={{width:292,flexShrink:0,
+    alignSelf:'flex-start',backgroundColor:'#FFFFFF',borderColor:'#DCE5EE',borderWidth:1,borderRadius:18,
+    padding:16,gap:13,...(Platform.OS==='web'?{position:'sticky' as any,top:18}:{}),
+    shadowColor:'#0D2943',shadowOpacity:0.06,shadowRadius:14,elevation:1}}>
+     <View style={{gap:6}}>
+      <Text style={{fontSize:12,fontWeight:'900',color:'#9C752F',letterSpacing:1}}>TWOJA ŚCIEŻKA</Text>
+      <Text style={{fontSize:18,fontWeight:'900',color:ink}}>Lekcja {index+1} z {items.length}</Text>
+      <Text style={{fontSize:14,lineHeight:21,color:secondary}} numberOfLines={3}>{lesson?.title_pl}</Text>
+      <View style={{height:7,backgroundColor:'#E4EBF2',borderRadius:9,overflow:'hidden',marginTop:3}}>
+       <View style={{height:7,width:progress+'%',backgroundColor:'#D8AC53'}}/>
+      </View>
+      <Text style={{fontSize:12,color:secondary}}>{completed}/{items.length} ukończonych · {progress}%</Text>
+     </View>
+     <View style={{height:1,backgroundColor:'#E2E9F1'}}/>
+     <Text style={{fontSize:13,fontWeight:'900',color:ink}}>Przejdź do lekcji</Text>
+     {items.slice(Math.max(0,index-3),Math.max(0,index-3)+8).map(item=>{
+      const active=item.lesson_no===module,available=canVisit(item.lesson_no);
+      return <Pressable key={item.lesson_no} testID={'learning-sidebar-lesson-'+item.lesson_no}
+       accessibilityRole="button" accessibilityLabel={'Lekcja '+(item.lesson_no+1)+': '+item.title_pl+(!available?' — zablokowana':'')}
+       disabled={saving||!available} onPress={()=>changeModule(item.lesson_no)}
+       style={{minHeight:42,paddingHorizontal:10,paddingVertical:8,borderWidth:1,borderRadius:10,
+        flexDirection:'row',alignItems:'center',gap:9,
+        backgroundColor:active?'#132E48':done.includes(item.lesson_no)?'#F4F7FB':'#FFFFFF',
+        borderColor:active?'#D4A84F':'#E0E7EF',opacity:available?1:0.56}}>
+        <Text style={{fontSize:13,fontWeight:'900',color:active?'#FFD982':'#688095',minWidth:29}}>
+         {done.includes(item.lesson_no)?'✓ ':available?String(item.lesson_no+1):'🔒'}
+        </Text>
+        <Text numberOfLines={2} style={{fontSize:12.5,lineHeight:18,flex:1,
+          fontWeight:active?'900':'700',color:active?'#FFFFFF':ink}}>{item.title_pl}</Text>
+      </Pressable>;
+     })}
+     <Pressable accessibilityRole="button" onPress={()=>{setShowProgram(v=>!v);scrollToTop()}}
+      style={{minHeight:44,padding:11,borderWidth:1,borderColor:'#D4B574',backgroundColor:'#FFF9EB',
+       borderRadius:10,justifyContent:'center',alignItems:'center'}}>
+      <Text style={{fontSize:13,fontWeight:'900',color:'#63491D'}}>{showProgram?'Zwiń plan kursu':'Pokaż cały plan kursu'}</Text>
+     </Pressable>
+     {slug==='excel-skroty'&&<Pressable accessibilityRole="button" testID="excel-desktop-homework-shortcut"
+      onPress={openExcelHomework} style={{minHeight:44,padding:11,borderWidth:1,borderColor:'#C1D3E6',
+       backgroundColor:'#EAF2FC',borderRadius:10,justifyContent:'center',alignItems:'center'}}>
+      <Text style={{fontSize:13,fontWeight:'800',color:'#1A4B74'}}>Ćwiczenie w Excelu ↗</Text>
+     </Pressable>}
+     <Pressable accessibilityRole="button" onPress={focusAnielka}
+      style={{minHeight:44,padding:11,borderWidth:1,borderColor:'#DCE5EE',backgroundColor:'#F6F8FC',
+       borderRadius:10,justifyContent:'center',alignItems:'center'}}>
+      <Text style={{fontSize:13,fontWeight:'800',color:ink}}>Zapytaj Anielkę</Text>
+     </Pressable>
+   </View>}
+  </View>
  </ScrollView>;
 }
