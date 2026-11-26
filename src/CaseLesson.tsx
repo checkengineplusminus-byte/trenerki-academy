@@ -59,7 +59,7 @@ export default function CaseLesson({data,identity,onPassed,onAttempt,hideSituati
    </Pressable>)}
    {chosen!==null&&<View style={{backgroundColor:passed?'#cfe8c7':'#ffefd8',borderRadius:11,padding:14,gap:7}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:16}}>{passed?'✓ Poprawna odpowiedź. Zapisano wynik.':verifying?'Sprawdzam odpowiedź…':chosen===data.correct?'Poprawna odpowiedź, trwa potwierdzanie.':'Jeszcze nie. Spróbuj raz jeszcze.'}</Text>
-    {!passed&&chosen!==data.correct&&<Text style={{color:ink,lineHeight:22,fontSize:14}}>{feedbackForChoice(chosen)||'Sprawdź, które kryterium w materiale decyduje o poprawnym rozwiązaniu.'}</Text>}
+    {!passed&&chosen!==data.correct&&<Text style={{color:ink,lineHeight:22,fontSize:14}}>{feedbackForChoice(chosen)||data.explanation?.trim()||data.example?.trim()||'Sprawdź, które kryterium w materiale decyduje o poprawnym rozwiązaniu.'}</Text>}
     {!!verifyError&&<Text style={{fontSize:13,color:'#95512f',fontWeight:'800'}}>{verifyError}</Text>}
     {!passed&&tries>=2&&!hint&&<Pressable accessibilityRole="button" onPress={()=>setHint(true)} style={{paddingVertical:6}}>
      <Text style={{color:'#4b674b',fontWeight:'900'}}>Potrzebuję podpowiedzi →</Text>
