@@ -118,8 +118,9 @@ async function verify(name,viewport,isMobile){
    assert.equal(await menu.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc');
    const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .brand').boundingBox();
    assert(bounds&&brandBounds&&bounds.x>=brandBounds.x+brandBounds.width-2,'Mobile menu should not overlap brand');
-   await menuToggle.click();
-   assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close');
+   await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
+   assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close after selection');
+   assert(await page.locator('#kursy').isVisible(),'Course section must remain available after mobile navigation');
    assert.equal(await page.locator('header .nav').isVisible(),false,'Desktop navigation must be hidden on mobile');
   }else{
    await help.waitFor({state:'visible'});
