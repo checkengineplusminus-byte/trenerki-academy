@@ -43,8 +43,11 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['desktop',{width
    await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
    assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close after selection');
   }
-  const profile=await page.goto(base+'/konto.html',{waitUntil:'domcontentloaded'});
-  assert.equal(profile?.status(),200,'Account Expo export route exists');
+  // Local static test server has no Expo Hosting route rewrite. Serve the
+  // exported HTML while keeping /konto as the browser pathname.
+  await page.route(base+'/konto',async route=>route.fulfill({response:await route.fetch({url:base+'/konto.html'})}));
+  const profile=await page.goto(base+'/konto',{waitUntil:'domcontentloaded'});
+  assert.equal(profile?.status(),200,'Account route must resolve through the Hosting rewrite');
   await page.getByText('Witaj ponownie!',{exact:false}).first().waitFor({state:'visible',timeout:16000});
   await page.getByPlaceholder('Adres e-mail').waitFor({state:'visible'});
   console.log('✓ '+type+': profile navigation on eight offers/categories, mobile catalogue menu, anonymous login');
