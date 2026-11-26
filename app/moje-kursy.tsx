@@ -11,7 +11,7 @@ type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean};
 export default function MyCourses(){
- const {width}=useWindowDimensions(),columns=width>=1120?5:width>=850?4:width>=640?3:2,availableWidth=Math.min(width,1150)-40,cardWidth=Math.max(130,Math.floor((availableWidth-(columns-1)*12)/columns));
+ const {width}=useWindowDimensions(),columns=width>=1120?5:width>=850?4:width>=640?3:width>=560?2:1,availableWidth=Math.min(width,1150)-40,cardWidth=Math.max(130,Math.floor((availableWidth-(columns-1)*12)/columns));
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
  const {checkout,session_id:sessionId}=useLocalSearchParams<{checkout?:string;session_id?:string}>();
  // Reklamy: dopiero potwierdzony webhook płatności, nigdy sam powrót z checkout.
@@ -114,7 +114,8 @@ export default function MyCourses(){
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10,flexWrap:'wrap',marginBottom:15}}>
    <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800'}}>← Katalog kursów</Text></Pressable>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
-    <Pressable accessibilityRole="link" onPress={()=>router.push('/ustawienia')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#F1F5F9'}}><Text style={{color:'#344B61',fontWeight:'800',fontSize:12}}>Ustawienia konta</Text></Pressable>
+    <Pressable accessibilityRole="link" onPress={()=>router.push('/konto')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#F1F5F9'}}><Text style={{color:'#344B61',fontWeight:'800',fontSize:12}}>Mój profil</Text></Pressable>
+     <Pressable accessibilityRole="link" onPress={()=>router.push('/ustawienia')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#F1F5F9'}}><Text style={{color:'#344B61',fontWeight:'800',fontSize:12}}>Ustawienia konta</Text></Pressable>
     <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut({scope:'local'});if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#F1F5F9'}}><Text style={{color:'#344B61',fontWeight:'800',fontSize:12}}>Wyloguj się</Text></Pressable>
    </View>
   </View>
@@ -142,7 +143,7 @@ export default function MyCourses(){
    <Text style={{backgroundColor:'#F1F5F9',borderRadius:9,padding:10,color:'#14263B',fontSize:12,fontWeight:'800'}}>Zaliczone lekcje: {items.filter(row=>!isAccountingCourse(row.course_slug)).reduce((sum,row)=>sum+row.completedCount,0)}</Text>
    <Text style={{backgroundColor:'#F1F5F9',borderRadius:9,padding:10,color:'#14263B',fontSize:12,fontWeight:'800'}}>Ukończone kursy: {items.filter(row=>valid(row)&&finished(row)).length}</Text>
   </View>}
-  {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a52626',marginBottom:14}}>{error}</Text>}
+  {busy&&<ActivityIndicator/>}
   {!busy&&!items.length&&<View style={{backgroundColor:'#eaf4e5',borderRadius:15,padding:23,gap:12}}><Text style={{fontSize:22,color:'#14263B',fontWeight:'900'}}>Zacznij od pierwszego kursu</Text><Text style={{color:'#63768A'}}>Po zapisaniu się na kurs znajdziesz go tutaj wraz z postępem nauki.</Text><Pressable onPress={()=>router.push('/')} style={{backgroundColor:'#14263B',padding:13,borderRadius:10}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Przeglądaj kursy</Text></Pressable></View>}
   {sections.filter(section=>section.rows.length>0).map(section=>{
    const limit=visibleSections[section.title]||columns,subset=section.rows.slice(0,limit),remaining=section.rows.length-subset.length;
@@ -150,6 +151,6 @@ export default function MyCourses(){
   })}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:10,marginTop:20}}><Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#F1F5F9',padding:13,borderRadius:11}}><Text style={{color:'#14263B',fontWeight:'800'}}>🎁 Karty podarunkowe</Text></Pressable><Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#F1F5F9',padding:13,borderRadius:11}}><Text style={{color:'#14263B',fontWeight:'800'}}>Przeglądaj kursy</Text></Pressable></View>
   {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:17}}><Text style={{fontSize:11,color:'#718779'}}>Staff</Text></Pressable>}
-  <Pressable onPress={async()=>{await supabase.auth.signOut({scope:'local'});router.replace('/konto')}} style={{alignSelf:'flex-start',padding:13,marginTop:12}}><Text style={{color:'#476d50',fontWeight:'700'}}>Wyloguj się</Text></Pressable>
+  
  </ScrollView>;
 }
