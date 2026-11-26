@@ -140,6 +140,7 @@ assert.ok(gift.text().includes('Ten kod został już odebrany lub stracił ważn
 await gift.press('Pobierz PDF tego kodu');
 assert.equal(printRequests.at(-1).code,'TW-00000000000000000000000000000001');assert.equal(redemptions.length,2,'printing must not redeem a code');
 const giver=createScreen('app/admin.tsx');await giver.flush();
+await giver.press('Kursy gratis'); // The admin opens on the accounting tab by default.
 assert.ok(giver.text().includes('Obdarowana osoba może odebrać kurs na koncie z innym adresem e-mail.'));
 await giver.fill('E-mail do wysyłki kart kursów','foundation@example.test');await giver.fill('Dedykacja na kartach kursów','Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();
