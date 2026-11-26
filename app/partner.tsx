@@ -11,7 +11,7 @@ type Data={ok?:boolean;error?:string;profile?:Partner;registration?:boolean;
  policy?:{commission_percent:number;min_payout_grosze:number;hold_days:number;payouts_live:boolean;terms_version:string};
  totals?:Summary;transactions?:{course_slug:string;amount_grosze:number;status:string;purchased_at:string;eligible_at:string}[];
  payouts?:{id:string;payout_month:string;amount_grosze:number;status:string;sent_at:string|null}[];url?:string};
-const ink='#173629',muted='#536c5a',primary='#204a33',cream='#f9fbf5';
+const ink='#14263B',muted='#607287',primary='#102C45',cream='#F7F9FC';
 const codeRX=/^TA[A-F0-9]{12}$/;
 const pln=(amount=0)=>(amount/100).toLocaleString('pl-PL',{style:'currency',currency:'PLN'});
 const statusLabel:Record<string,string>={
@@ -111,16 +111,16 @@ export default function AffiliatePartner(){
  return <ScrollView style={{flex:1,backgroundColor:cream}} contentContainerStyle={{padding:22,paddingBottom:100}}>
   <View style={{width:'100%',maxWidth:850,alignSelf:'center',gap:18}}>
    <Pressable onPress={()=>router.replace('/')} accessibilityRole="link"><Text style={{color:primary,fontWeight:'800'}}>← Wróć do Trenerki</Text></Pressable>
-   <Text style={{fontSize:12,color:'#638469',letterSpacing:2,fontWeight:'900'}}>TRENERKI · PARTNERZY</Text>
+   <Text style={{fontSize:12,color:'#5F758C',letterSpacing:2,fontWeight:'900'}}>TRENERKI · PARTNERZY</Text>
    <Text accessibilityRole="header" style={{color:ink,fontWeight:'900',fontSize:34,lineHeight:40}}>Polecaj wiedzę. Zarabiaj 10%.</Text>
    <Text style={{color:muted,fontSize:16,lineHeight:25}}>Prowizja za potwierdzony zakup kursu z Twojego indywidualnego linku. Nie musisz kupować kursów ani publikować reklam według narzuconego harmonogramu.</Text>
-   <View style={{backgroundColor:'#eef5e9',borderRadius:14,padding:17,gap:8}}>
+   <View style={{backgroundColor:'#F0F4F9',borderRadius:14,padding:17,gap:8}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Jasne zasady rozliczeń</Text>
     <Text style={{color:muted,lineHeight:22}}>10% faktycznie zapłaconej ceny kursu (po rabacie), bez prowizji za własne zakupy, podarunki i zwrócone transakcje. Rozliczenia miesięczne, próg wypłaty 500 zł, okres weryfikacji 30 dni. Na koniec roku rozliczamy i wypłacamy również zatwierdzone salda niższe niż 500 zł, po kontroli dokumentów. Kwoty podane przed ewentualnym podatkiem dochodowym.</Text>
     <Text style={{color:muted,lineHeight:22}}>Prowizje wypłacamy przelewem bankowym. Wymagane dane rozliczeniowe podajesz zgodnie z instrukcjami na swoim koncie.</Text>
     <Text style={{color:ink,lineHeight:22,fontWeight:'700'}}>Szczegółowe zasady podatkowe dla osób prywatnych i firm określają regulamin programu oraz obowiązujące przepisy.</Text>
    </View>
-   <View style={{backgroundColor:'white',borderWidth:1,borderColor:'#dbe8da',padding:20,borderRadius:16,gap:14}}>
+   <View style={{backgroundColor:'white',borderWidth:1,borderColor:'#DFE6EE',padding:20,borderRadius:16,gap:14}}>
     {busy?<ActivityIndicator color={primary}/>:
       account==='no'?<><Text style={{fontSize:20,fontWeight:'900',color:ink}}>Zaloguj się lub załóż konto</Text>
        <Text style={{color:muted,lineHeight:22}}>Użyj zwykłego konta Trenerki — nie tworzymy osobnego hasła dla programu.</Text>
@@ -132,10 +132,10 @@ export default function AffiliatePartner(){
        </View>
        <Text style={{color:ink,fontWeight:'800'}}>Imię i nazwisko / pełna nazwa firmy</Text>
        <TextInput value={legalName} onChangeText={setLegalName} accessibilityLabel="Imię i nazwisko albo nazwa firmy" placeholder="Wpisz pełną nazwę"
-        style={{borderWidth:1,borderColor:'#b7cdb7',borderRadius:10,padding:13,fontSize:16,color:ink,minHeight:50}}/>
+        style={{borderWidth:1,borderColor:'#CBD8E5',borderRadius:10,padding:13,fontSize:16,color:ink,minHeight:50}}/>
        {kind==='company'&&<><Text style={{color:ink,fontWeight:'800'}}>NIP firmy z Polski</Text>
        <TextInput value={nip} onChangeText={setNip} accessibilityLabel="NIP firmy" keyboardType="number-pad" placeholder="10 cyfr"
-        maxLength={10} style={{borderWidth:1,borderColor:'#b7cdb7',borderRadius:10,padding:13,fontSize:16,color:ink,minHeight:50}}/></>}
+        maxLength={10} style={{borderWidth:1,borderColor:'#CBD8E5',borderRadius:10,padding:13,fontSize:16,color:ink,minHeight:50}}/></>}
        <Agree label="Potwierdzam pełnoletność i polską rezydencję podatkową" value={adult} onPress={()=>setAdult(v=>!v)}>Potwierdzam, że mam ukończone 18 lat oraz rozliczam się podatkowo w Polsce.</Agree>
        <Agree label="Akceptuję regulamin programu afiliacyjnego" value={terms} onPress={()=>setTerms(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/regulamin-afiliacyjny.html')} style={{textDecorationLine:'underline'}}>regulaminem programu afiliacyjnego</Text> (wersja {policyVersion}) i akceptuję jego warunki.</Agree>
        <Agree label="Potwierdzam zapoznanie się z informacją o prywatności programu" value={privacy} onPress={()=>setPrivacy(v=>!v)}>Zapoznałem(-am) się z <Text onPress={()=>visit('https://trenerki.com/academy/prywatnosc-afiliacja.html')} style={{textDecorationLine:'underline'}}>informacją o przetwarzaniu danych partnerów</Text>. Obie grupy mogą otrzymać zwykły przelew po zatwierdzeniu właściwych dokumentów.</Agree>
@@ -147,11 +147,11 @@ export default function AffiliatePartner(){
         <Text style={{color:muted,fontSize:12}}>Kod rozliczeniowy przechowujemy bezpiecznie w systemie. Nie musisz go kopiować ani wpisywać.</Text>
         <Text style={{fontWeight:'800',color:ink}}>Twój link do polecania kursów</Text>
         <TextInput editable={false} selectTextOnFocus value={link} accessibilityLabel="Twój link afiliacyjny"
-         style={{borderWidth:1,borderColor:'#b7cfb8',padding:12,borderRadius:10,color:ink,fontSize:14}}/>
+         style={{borderWidth:1,borderColor:'#CBD8E5',padding:12,borderRadius:10,color:ink,fontSize:14}}/>
         <Button title="Skopiuj link" onPress={()=>void copy(link,'Skopiowano link')}/>
-        {!!copied&&<Text style={{color:'#2d8049'}}>{copied}</Text>}
+        {!!copied&&<Text style={{color:'#9D752F'}}>{copied}</Text>}
         <Text style={{color:muted,fontSize:13,lineHeight:21}}>Twój krótki link prowadzi do katalogu. Ktoś kupuje dowolny kwalifikujący się kurs po wejściu z Twojego linku — naliczenie 10% zapisuje się na Twoim koncie. Udostępniając link oznacz publikację: „Materiał reklamowy — link afiliacyjny Trenerki”.</Text>
-        <View style={{backgroundColor:'#f1f7ed',padding:16,borderRadius:14,borderWidth:1,borderColor:'#d7e7d1',gap:11}}>
+        <View style={{backgroundColor:'#F4F7FA',padding:16,borderRadius:14,borderWidth:1,borderColor:'#DFE7EE',gap:11}}>
           <Text style={{fontWeight:'900',fontSize:18,color:ink}}>Logo Trenerki do Twoich materiałów</Text>
           {Platform.OS==='web'
             ?<img src="/academy/assets/trenerki-logo-partner.svg" alt="Oficjalny znak TRENERKI Academy do udostępniania" width={540}
@@ -169,7 +169,7 @@ export default function AffiliatePartner(){
           ['W oczekiwaniu',data?.totals?.pending_grosze],
           ['Zatwierdzone',data?.totals?.approved_grosze],
           ['Wypłacone / przekazane',data?.totals?.transferred_grosze]
-         ] as const).map(([label,value])=><View key={label} style={{flexGrow:1,minWidth:150,backgroundColor:'#edf5e9',padding:15,borderRadius:12,gap:5}}>
+         ] as const).map(([label,value])=><View key={label} style={{flexGrow:1,minWidth:150,backgroundColor:'#F0F4F9',padding:15,borderRadius:12,gap:5}}>
           <Text style={{color:muted,fontSize:13}}>{label}</Text><Text style={{fontWeight:'900',fontSize:23,color:ink}}>{pln(value)}</Text>
          </View>)}
         </View>
@@ -185,14 +185,14 @@ export default function AffiliatePartner(){
         <Button title="Odśwież stan wypłat i prowizji" outline onPress={()=>void status().catch(e=>setError(String(e)) )}/>
         <Text style={{color:ink,fontWeight:'900',fontSize:17}}>Ostatnie naliczenia</Text>
         {(data?.transactions||[]).length===0?<Text style={{color:muted}}>Nie masz jeszcze potwierdzonych zakupów z polecenia.</Text>:
-         (data?.transactions||[]).slice(0,30).map((r,i)=><View key={i} style={{borderBottomWidth:1,borderColor:'#edf0e8',paddingVertical:10,flexDirection:'row',justifyContent:'space-between',gap:12}}>
+         (data?.transactions||[]).slice(0,30).map((r,i)=><View key={i} style={{borderBottomWidth:1,borderColor:'#F0F4F9',paddingVertical:10,flexDirection:'row',justifyContent:'space-between',gap:12}}>
           <View style={{flex:1}}><Text style={{color:ink,fontWeight:'700'}}>{r.course_slug}</Text>
           <Text style={{color:muted,fontSize:12}}>{new Date(r.purchased_at).toLocaleDateString('pl-PL')} · {statusLabel[r.status]||r.status}</Text></View>
           <Text style={{fontWeight:'900',color:ink}}>{pln(r.amount_grosze)}</Text>
          </View>)}
         <Text style={{color:ink,fontWeight:'900',fontSize:17,marginTop:10}}>Rozliczenia miesięczne i zamknięcie roku</Text>
         {(data?.payouts||[]).length===0?<Text style={{color:muted}}>Nie ma jeszcze zatwierdzonych wypłat. Prowizje gromadzą się w saldzie zgodnie z regulaminem.</Text>:
-         (data?.payouts||[]).map(p=><View key={p.id} style={{paddingVertical:10,borderBottomWidth:1,borderColor:'#edf0e8',flexDirection:'row',justifyContent:'space-between',gap:12}}>
+         (data?.payouts||[]).map(p=><View key={p.id} style={{paddingVertical:10,borderBottomWidth:1,borderColor:'#F0F4F9',flexDirection:'row',justifyContent:'space-between',gap:12}}>
           <View style={{flex:1}}><Text style={{color:ink,fontWeight:'800'}}>{new Date(p.payout_month).toLocaleDateString('pl-PL',{month:'long',year:'numeric'})}</Text>
            <Text style={{color:muted,fontSize:12}}>{statusLabel[p.status]||p.status} · {p.sent_at?new Date(p.sent_at).toLocaleDateString('pl-PL'):'bez potwierdzonej daty przelewu'}</Text></View>
           <Text style={{color:ink,fontWeight:'900'}}>{pln(p.amount_grosze)}</Text>

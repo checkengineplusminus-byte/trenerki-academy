@@ -6,13 +6,13 @@ type Totals={pending_grosze:number;approved_grosze:number;in_process_grosze:numb
 type Partner={partner_id:string;short_id?:number|null;code:string;legal_name:string;email?:string|null;partner_type:string;company_tax_id?:string|null;status:string;tax_status:string;stripe_connected:boolean;stripe_payouts_enabled:boolean;stripe_transfers_enabled:boolean;created_at:string;totals:Totals};
 type Row={short_id?:number|null;code:string;legal_name:string;email?:string|null;partner_type:string;company_tax_id?:string|null;tax_status:string;sales:number;gross_sales_grosze:number;commission_grosze:number;pending_grosze:number;approved_grosze:number;transferred_grosze:number;void_grosze:number;needs_review_grosze:number};
 type Config={program_enabled:boolean;payout_enabled:boolean;tax_review_approved:boolean;commission_percent:number;payout_min_grosze:number;hold_days:number;terms_version:string};
-const ink='#183c2a',muted='#58705f',pale='#f8fbf6';
+const ink='#14263B',muted='#607287',pale='#F7F9FC';
 const money=(value=0)=>(value/100).toLocaleString('pl-PL',{style:'currency',currency:'PLN'});
-const inputStyle={borderWidth:1,borderColor:'#c2d4c1',backgroundColor:'#fff',padding:12,borderRadius:10,color:ink,fontSize:16,minHeight:49} as const;
+const inputStyle={borderWidth:1,borderColor:'#D5E0EB',backgroundColor:'#fff',padding:12,borderRadius:10,color:ink,fontSize:16,minHeight:49} as const;
 function Btn({text,onPress,disabled=false,secondary=false}:{text:string;onPress:()=>void;disabled?:boolean;secondary?:boolean}){
  return <Pressable accessibilityRole="button" onPress={onPress} disabled={disabled}
   style={{minHeight:46,padding:12,justifyContent:'center',alignItems:'center',borderRadius:10,
-   backgroundColor:secondary?'#e7f0e2':ink,opacity:disabled?.45:1}}>
+   backgroundColor:secondary?'#EEF3F8':ink,opacity:disabled?.45:1}}>
   <Text style={{fontWeight:'900',color:secondary?ink:'white'}}>{text}</Text>
  </Pressable>;
 }
@@ -86,17 +86,17 @@ export default function AffiliateAdmin(){
    <Text accessibilityRole="header" style={{fontSize:34,fontWeight:'900',color:ink}}>Partnerzy, e-maile i prowizje</Text>
    {!!error&&<View style={{padding:14,borderRadius:11,backgroundColor:'#fae9e4'}}><Text style={{color:'#923c29'}}>{error}</Text></View>}
    {busy?<ActivityIndicator size="large" color={ink}/>:<>
-    <View style={{padding:17,backgroundColor:'#fff',borderRadius:14,borderWidth:1,borderColor:'#dae9d7',gap:7}}>
+    <View style={{padding:17,backgroundColor:'#fff',borderRadius:14,borderWidth:1,borderColor:'#DEE6EF',gap:7}}>
      <Text style={{color:ink,fontWeight:'900'}}>Stan programu</Text>
      <Text style={{color:muted}}>Firmy: {companyCount} · Osoby prywatne: {privateCount}. Firmy: faktura i przelew bankowy; osoby prywatne: przelew bankowy i PIT-11 w zatwierdzonym modelu.</Text>
      <Text style={{color:muted}}>Rejestracje: {config?.program_enabled?'włączone':'wstrzymane'} · Prowizja: {config?.commission_percent}% · Okres kontrolny: {config?.hold_days} dni · Próg: {money(config?.payout_min_grosze)}</Text>
-     <Text style={{color:config?.payout_enabled&&config?.tax_review_approved?'#327c46':'#915c27',fontWeight:'800'}}>
+     <Text style={{color:config?.payout_enabled&&config?.tax_review_approved?'#A1762D':'#915c27',fontWeight:'800'}}>
       {config?.payout_enabled&&config?.tax_review_approved?'Wypłaty dopuszczone':'Wypłaty zablokowane — wymagane zatwierdzenie podatkowe i dokumenty'}
      </Text>
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:11}}>
      {[['Partnerzy',String(partners.length)],['Sprzedaże',String(totals.sales)],['Weryfikowane',money(totals.pending)],['Zatwierdzone',money(totals.approved)],['Przekazane',money(totals.transferred)]].map(([label,val])=>
-      <View key={label} style={{minWidth:145,flexGrow:1,padding:15,borderRadius:12,backgroundColor:'#eef4e9',gap:5}}>
+      <View key={label} style={{minWidth:145,flexGrow:1,padding:15,borderRadius:12,backgroundColor:'#F1F5FA',gap:5}}>
        <Text style={{color:muted}}>{label}</Text><Text style={{fontWeight:'900',fontSize:23,color:ink}}>{val}</Text>
       </View>)}
     </View>
@@ -109,7 +109,7 @@ export default function AffiliateAdmin(){
      {monthly.filter(r=>r.sales>0||r.commission_grosze>0).length===0?<Text style={{color:muted}}>Brak naliczeń w wybranym miesiącu.</Text>:
       monthly.filter(r=>r.sales>0||r.commission_grosze>0).map(r=><View key={r.code} style={{padding:12,borderWidth:1,borderColor:'#edf2e8',borderRadius:10,gap:5}}>
        <Text style={{fontWeight:'800',color:ink}}>{r.legal_name} · {r.code}</Text>
-       <Text style={{color:'#1c6842'}}>Link: {r.short_id?'trenerki.com/'+r.short_id:'numer oczekuje'}</Text>
+       <Text style={{color:'#A1762D'}}>Link: {r.short_id?'trenerki.com/'+r.short_id:'numer oczekuje'}</Text>
        <Text selectable style={{color:muted}}>E-mail: {r.email||'brak'}</Text>
        <Text style={{color:muted}}>Sprzedaże: {r.sales} · Prowizje: {money(r.commission_grosze)} · Oczekuje: {money(r.pending_grosze)} · Zatwierdzone: {money(r.approved_grosze)}</Text>
       </View>)}
@@ -120,27 +120,27 @@ export default function AffiliateAdmin(){
      <TextInput testID="affiliate-partner-admin-search" accessibilityLabel="Wyszukaj partnera po numerze, e-mailu, nazwie, kodzie lub NIP" placeholder="Szukaj po e-mailu, nazwie, kodzie lub NIP" value={partnerSearch} onChangeText={setPartnerSearch} style={inputStyle}/>
      <Text style={{color:muted}}>Widoczni: {shownPartners.length} z {partners.length}</Text>
      {partners.length===0?<Text style={{color:muted}}>Jeszcze nikt nie zarejestrował się jako partner.</Text>:shownPartners.length===0?<Text style={{color:muted}}>Brak wyników wyszukiwania.</Text>:shownPartners.map(p=>
-      <View key={p.partner_id} style={{paddingVertical:14,borderBottomWidth:1,borderColor:'#e6efe5',gap:5}}>
+      <View key={p.partner_id} style={{paddingVertical:14,borderBottomWidth:1,borderColor:'#F0F4F9',gap:5}}>
        <Text style={{fontWeight:'900',color:ink}}>{p.legal_name} · {p.code}</Text>
-       <Text selectable style={{color:'#1c6842',fontWeight:'800'}}>Krótki link: {p.short_id?'trenerki.com/'+p.short_id:'Numer oczekuje'}</Text>
-       <Text selectable testID="affiliate-partner-email" style={{color:'#1f6a45',fontWeight:'800'}}>E-mail: {p.email||'Do weryfikacji'}</Text>
+       <Text selectable style={{color:'#A1762D',fontWeight:'800'}}>Krótki link: {p.short_id?'trenerki.com/'+p.short_id:'Numer oczekuje'}</Text>
+       <Text selectable testID="affiliate-partner-email" style={{color:'#A1762D',fontWeight:'800'}}>E-mail: {p.email||'Do weryfikacji'}</Text>
        <Text style={{color:muted}}>Typ: {p.partner_type==='company'?'Firma':'Osoba prywatna'} · {p.status} · PIT/dokumenty: {p.tax_status}</Text>
        {p.partner_type==='company'
         ?<Text style={{color:muted}}>Firma — faktura i przelew bankowy poza Stripe · NIP: {p.company_tax_id||'brak'}</Text>
         :<Text style={{color:muted}}>Osoba prywatna — przelew bankowy po weryfikacji podatkowej · dokumenty PIT: {p.tax_status}</Text>}
        <Text style={{color:muted}}>Prowizje zatwierdzone: {money(p.totals?.approved_grosze)} · Wymagają kontroli: {money(p.totals?.needs_review_grosze)}</Text>
-       <Text style={{color:(p.totals?.approved_grosze||0)>=(config?.payout_min_grosze||30000)?'#236f45':'#795d37',fontWeight:'800'}}>Próg {money(config?.payout_min_grosze||30000)}: {(p.totals?.approved_grosze||0)>=(config?.payout_min_grosze||30000)?'osiągnięty — kontrola faktury/PIT przed wypłatą':'jeszcze nieosiągnięty — saldo przechodzi dalej'}</Text>
+       <Text style={{color:(p.totals?.approved_grosze||0)>=(config?.payout_min_grosze||30000)?'#A1762D':'#795d37',fontWeight:'800'}}>Próg {money(config?.payout_min_grosze||30000)}: {(p.totals?.approved_grosze||0)>=(config?.payout_min_grosze||30000)?'osiągnięty — kontrola faktury/PIT przed wypłatą':'jeszcze nieosiągnięty — saldo przechodzi dalej'}</Text>
        {p.status==='active'&&<View style={{flexDirection:'row',gap:10,flexWrap:'wrap'}}>
         <Pressable onPress={()=>{setTaxTarget(p.partner_id);setSuspending('')}}><Text style={{color:'#245d3a',textDecorationLine:'underline'}}>Dokumenty podatkowe</Text></Pressable>
         <Pressable onPress={()=>{setSuspending(p.partner_id);setTaxTarget('')}}><Text style={{color:'#95532a',textDecorationLine:'underline'}}>Zawieś partnera</Text></Pressable>
        </View>}
-       {taxTarget===p.partner_id&&<View style={{backgroundColor:'#f2f6ed',padding:13,borderRadius:10,gap:11}}>
+       {taxTarget===p.partner_id&&<View style={{backgroundColor:'#F3F6FA',padding:13,borderRadius:10,gap:11}}>
         <Text style={{color:ink,fontWeight:'800'}}>Zatwierdzenie dokumentów podatkowych · po konsultacji z księgową</Text>
         <TextInput value={taxEvidence} onChangeText={setTaxEvidence} style={inputStyle} placeholder="Numer opinii/dokumentu księgowej (min. 12 znaków)"/>
         <Pressable accessibilityRole="checkbox" accessibilityState={{checked:taxConfirmed}} onPress={()=>setTaxConfirmed(v=>!v)}><Text style={{color:ink,fontWeight:'700'}}>{taxConfirmed?'☑':'☐'} Potwierdzam rzeczywistą weryfikację dokumentów</Text></Pressable>
         <Btn text="Zatwierdź dokumenty podatkowe" disabled={!!working||!taxConfirmed||taxEvidence.trim().length<12} onPress={()=>void verifyTax()}/>
        </View>}
-       {suspending===p.partner_id&&<View style={{backgroundColor:'#f8f1e9',padding:13,borderRadius:10,gap:11}}>
+       {suspending===p.partner_id&&<View style={{backgroundColor:'#FFF8EB',padding:13,borderRadius:10,gap:11}}>
         <Text style={{color:ink,fontWeight:'800'}}>Zawieszenie konta — podaj powód dla audytu</Text>
         <TextInput value={reason} onChangeText={setReason} style={inputStyle} placeholder="Co najmniej 10 znaków"/>
         <Btn text="Zawieś partnera" disabled={!!working||reason.trim().length<10} onPress={()=>void suspend()}/>

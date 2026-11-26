@@ -33,3 +33,27 @@
 .support-emergency .support-call{background:#702c23;color:white}
 .support-visit{border:1px solid #8fae96;color:#173d2c;background:#f7faf5}
 @media(max-width:680px){.support-grid{grid-template-columns:1fr}}
+
+/* Premium academic identity for the public help directory.
+   Emergency warning stays red and visually distinct from marketing CTAs. */
+.support-page{background:#f5f8fc;color:#162b40;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.support-header{background:linear-gradient(110deg,#071a2b,#11324d);border-bottom:1px solid #35516b}
+.support-header a{color:#f6f9fe;font-weight:850}
+.support-header span{background:transparent;border:2px solid #e8bf67;color:#f3d18c}
+.support-intro h1{color:#11263c;font-weight:850}
+.support-intro p{color:#506477}
+.support-intro .support-country,.support-hours{color:#52677a}
+.support-page a:focus-visible,.support-page button:focus-visible{outline-color:#ddaf52}
+.support-directory h2{color:#152b42}
+.support-filters button{border-color:#cddae6;color:#18334e;background:#fff}
+.support-filters button[aria-pressed=true]{background:#102f4a;color:#fff;border-color:#102f4a}
+.support-category{background:#f0f4f9;border-color:#dce5ef}
+.support-icon{background:#e6edf4;color:#1b3b59}
+.support-card{border-color:#dae4ed;box-shadow:0 5px 17px rgba(12,35,54,.035)}
+.support-call{background:#133e5a;color:#fff}
+.support-visit{background:#fff;border-color:#cddde7;color:#183d5c}
+.support-card .support-number{color:#152d44}
+.support-emergency{background:#fff2eb;color:#582f26;border-color:#d9b6aa}
+.support-emergency h2{color:#582f26}
+.support-emergency .support-call{background:#702c23;color:#fff}
+@media(prefers-reduced-motion:reduce){.support-page *{scroll-behavior:auto}}

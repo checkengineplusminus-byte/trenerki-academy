@@ -1,0 +1,330 @@
+/* TRENERKI / shared public information and affiliate pages
+   2026-11-26: visual changes only. Legal, pricing and tax text is unchanged.
+   Loaded after legacy page and catalogue styles. */
+:root{
+ --ta-page-ink:#13263b;--ta-page-quiet:#566a7d;--ta-page-dark:#071b2e;
+ --ta-page-dark2:#12314b;--ta-page-gold:#e6b956;--ta-page-border:#e0e7ef;
+ --ta-page-paper:#fff;--ta-page-bg:#f5f8fc;
+}
+body.ta-info-page,body.ta-affiliate-page{
+ color:var(--ta-page-ink);background:var(--ta-page-bg);
+ font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+ -webkit-font-smoothing:antialiased;line-height:1.67
+}
+body.ta-info-page *,body.ta-affiliate-page *{box-sizing:border-box}
+body.ta-info-page a:focus-visible,body.ta-affiliate-page a:focus-visible,
+body.ta-info-page button:focus-visible,body.ta-affiliate-page button:focus-visible{
+ outline:3px solid #e0b253!important;outline-offset:3px
+}
+body.ta-info-page>header,body.ta-affiliate-page>header{
+ position:relative!important;z-index:10;
+ background:linear-gradient(112deg,#071827,#0e2d47)!important;
+ color:#f7faff!important;border:0!important;
+ border-bottom:1px solid rgba(230,185,86,.36)!important;
+ padding:15px clamp(16px,4vw,54px)!important;
+ box-shadow:0 7px 28px rgba(9,29,47,.12)
+}
+body.ta-info-page>header a,body.ta-affiliate-page>header a{
+ color:#edf4fb!important;text-decoration:none;font-weight:750
+}
+body.ta-info-page>header .logo,body.ta-info-page>header .brand,
+body.ta-affiliate-page>header .brand{
+ font-weight:900;color:#fff!important;letter-spacing:-.035em;
+ font-size:clamp(15px,2.3vw,21px);line-height:1.25;display:inline-flex;gap:10px;align-items:center
+}
+body.ta-info-page>header .logo>span,body.ta-affiliate-page>header .brand>.ta-affiliate-mark{
+ display:grid;place-items:center;min-width:39px;height:39px;flex:0 0 39px;
+ background:transparent!important;border:2px solid #e6ba60!important;
+ color:#f2c66b!important;font-weight:900;border-radius:10px;
+ padding:0!important;margin:0!important;font-size:18px;letter-spacing:-.05em
+}
+body.ta-affiliate-page>header .brand small{color:#bccddd;font-size:11px;font-weight:650;letter-spacing:.08em}
+body.ta-info-page>header .back,body.ta-info-page>header a:last-child,
+body.ta-affiliate-page>header .nav>a:last-child{
+ color:#e8c47b!important;font-size:13px;
+ text-decoration:none;white-space:normal;text-align:right
+}
+body.ta-info-page>header a:hover,body.ta-affiliate-page>header a:hover{color:#f5d690!important}
+body.ta-info-page>main{
+ max-width:1020px;padding:clamp(35px,5.8vw,75px) clamp(20px,4vw,46px) 80px;
+ margin:27px auto 45px;background:#fff;
+ border:1px solid var(--ta-page-border);border-radius:24px;
+ box-shadow:0 16px 40px rgba(15,36,55,.055);
+}
+body.ta-info-page>main>h1,body.ta-affiliate-page>main>h1{
+ color:#10253b!important;letter-spacing:-.047em;font-weight:850;
+ font-size:clamp(32px,5vw,52px);line-height:1.13;margin:8px 0 17px
+}
+body.ta-info-page>main h2,body.ta-affiliate-page>main h2{
+ color:#162c43!important;letter-spacing:-.035em;line-height:1.25;
+ font-weight:800
+}
+body.ta-info-page>main .meta,body.ta-info-page>main .muted:first-child,
+body.ta-affiliate-page>main>.eyebrow{
+ color:#92661d!important;letter-spacing:.11em;font-size:12px;font-weight:850;
+ text-transform:uppercase
+}
+body.ta-info-page>main .lead,body.ta-affiliate-page>main .small,
+body.ta-info-page>main .muted{color:#5a6d81!important}
+body.ta-info-page>main a:not(.button),body.ta-affiliate-page>main a:not(.button){
+ color:#194c80;text-decoration:underline;text-underline-offset:3px;
+ text-decoration-thickness:1px
+}
+body.ta-info-page>main a:not(.button):hover,body.ta-affiliate-page>main a:not(.button):hover{
+ color:#986917
+}
+body.ta-info-page>main .toc{
+ background:#f2f6fa!important;border:1px solid #dee8f0;
+ border-radius:15px;padding:19px 22px;gap:9px;margin:25px 0 12px
+}
+body.ta-info-page>main .toc a{
+ display:block;text-decoration:none!important;
+ border-radius:7px;padding:5px 7px;color:#25445f!important
+}
+body.ta-info-page>main .toc a:hover{background:#e7edf5;color:#132a43!important}
+body.ta-info-page>main section{border-color:#e7ecf2;padding:clamp(26px,3vw,37px) 0}
+body.ta-info-page>main .panel,body.ta-info-page>main .notice,
+body.ta-info-page>main .important{
+ background:#f4f7fb!important;border:1px solid #dfe8ef!important;
+ border-radius:14px;color:#283c52!important;box-shadow:none
+}
+body.ta-info-page>main .notice{border-left:4px solid #d5a54a!important}
+body.ta-info-page>main .important{border-left:4px solid #b38937!important}
+body.ta-info-page>main .panel{padding:22px}
+body.ta-info-page>main li{line-height:1.65}
+body.ta-info-page>main table,body.ta-affiliate-page>main table{max-width:100%;border-collapse:collapse}
+body.ta-info-page>main th,body.ta-affiliate-page>main th{
+ color:#19334c;background:#eaf0f7
+}
+body.ta-info-page>main th,body.ta-info-page>main td,
+body.ta-affiliate-page>main th,body.ta-affiliate-page>main td{
+ border-bottom:1px solid #dde6ef;padding:11px 12px
+}
+body.ta-info-page>footer,body.ta-affiliate-page>footer{
+ background:#071a2c!important;border-top:1px solid #2e4560!important;
+ color:#d2e0ec!important;text-align:center;padding:28px 22px 34px!important;
+ font-size:13px;line-height:1.75
+}
+body.ta-info-page>footer a,body.ta-affiliate-page>footer a{
+ color:#ead09c!important;font-size:13px;overflow-wrap:anywhere
+}
+body.ta-info-page>footer .footer-links{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;align-items:center}
+body.ta-info-page>footer .footer-links a{margin:0;padding:6px 4px}
+body.ta-info-page>footer .footer-help{margin:19px auto 0;max-width:440px}
+body.ta-info-page>footer .footer-help a,body.ta-info-page .support-footer-link{
+ color:#f2d28e!important
+}
+/* Photo source list has a long grid and an internal support footer. */
+body.ta-info-page.ta-photo-credits>main{max-width:1130px}
+body.ta-info-page.ta-photo-credits>main ul{
+ grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px
+}
+body.ta-info-page.ta-photo-credits>main li{
+ border:1px solid #dfe6ef;background:#f8fafc;border-radius:13px;
+ padding:14px 16px;box-shadow:0 3px 9px rgba(13,39,61,.035);min-width:0;overflow-wrap:anywhere
+}
+body.ta-info-page.ta-photo-credits>main li:target{outline:2px solid #cb9e44}
+body.ta-info-page.ta-photo-credits>main>footer{
+ padding:23px 10px;background:transparent;color:#374a62
+}
+/* Affiliate marketing landing and its legal annexes. */
+body.ta-affiliate-page>header nav.nav{
+ max-width:1190px;display:flex;align-items:center;justify-content:space-between;gap:16px
+}
+body.ta-affiliate-page>main{max-width:1040px;padding:clamp(22px,4vw,50px) 20px 80px}
+body.ta-affiliate-page>main>.eyebrow{display:block;margin:8px 0 14px}
+body.ta-affiliate-page h1{color:#10263d;font-weight:850}
+body.ta-affiliate-page>main .hero{
+ border:1px solid #36516b!important;border-radius:22px;
+ background:radial-gradient(ellipse at 91% 25%,rgba(236,183,76,.2),transparent 42%),
+ linear-gradient(117deg,#071828,#123b5a)!important;
+ color:white!important;box-shadow:0 14px 38px rgba(9,36,56,.11);
+ padding:clamp(27px,5vw,55px)
+}
+body.ta-affiliate-page>main .hero h1{
+ font-size:clamp(37px,5.3vw,60px);color:#fff!important;letter-spacing:-.046em;
+ line-height:1.1
+}
+body.ta-affiliate-page>main .hero p{color:#d5e3ef!important;max-width:700px}
+body.ta-affiliate-page>main .hero .eyebrow{color:#f0ca76!important;font-weight:800}
+body.ta-affiliate-page>main .button{
+ display:inline-flex;justify-content:center;align-items:center;
+ background:linear-gradient(180deg,#ffda84,#dba63a)!important;
+ color:#10243a!important;border:1px solid #d2a04c!important;
+ font-weight:850;min-height:46px;text-decoration:none!important;
+ border-radius:10px;box-shadow:0 5px 16px rgba(19,37,49,.1);
+ padding:12px 19px;font-size:14px
+}
+body.ta-affiliate-page>main .button:hover{background:#ffe2a1!important;color:#13283e!important}
+body.ta-affiliate-page>main .button.secondary{
+ background:transparent!important;color:#fff!important;
+ border:1px solid rgba(249,245,223,.72)!important;box-shadow:none
+}
+body.ta-affiliate-page>main .button.secondary:hover{background:#ffffff1a!important}
+body.ta-affiliate-page>main .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:22px 0}
+body.ta-affiliate-page>main .col,body.ta-affiliate-page>main .section{
+ background:#fff;border:1px solid #dce5ef;border-radius:17px;
+ box-shadow:0 8px 25px rgba(13,35,56,.04)
+}
+body.ta-affiliate-page>main .col{padding:26px}
+body.ta-affiliate-page>main .col b{color:#98702b;font-weight:900;font-size:clamp(27px,3.5vw,35px)}
+body.ta-affiliate-page>main .col small{color:#5f7185;line-height:1.6}
+body.ta-affiliate-page>main .section{padding:clamp(20px,3vw,29px);margin:18px 0}
+body.ta-affiliate-page>main .section h2:first-child{margin-top:0}
+body.ta-affiliate-page>main .warning{
+ background:#fff7e5;border-left:4px solid #c59a46;color:#5d451b;
+ border-radius:10px
+}
+body.ta-affiliate-page>main .note{
+ background:#eff4f9;border-left:4px solid #486e91;color:#344c63;border-radius:10px
+}
+body.ta-affiliate-page>main table{width:100%;font-size:14px}
+body.ta-affiliate-page>main .actions{display:flex;flex-wrap:wrap;gap:11px}
+body.ta-affiliate-page>main .small{font-size:13px;line-height:1.6}
+/* All existing standalone course and category catalogue pages share this template.
+   Scope by breadcrumb so dynamic React and homepage components stay untouched. */
+body:has(>main>nav.back):not(.ta-info-page):not(.ta-affiliate-page),
+body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page){
+ background:#f5f8fc!important;color:#152940!important
+}
+body:has(>main>nav.back)>header,
+body:has(>main>a.back)>header{
+ background:linear-gradient(110deg,#071829,#102f49)!important;
+ color:#f6f9ff!important;border-bottom:1px solid #37516b;
+ box-shadow:0 5px 17px rgba(9,30,50,.11);
+ padding:18px clamp(17px,4vw,52px)
+}
+body:has(>main>nav.back)>header a,
+body:has(>main>a.back)>header a{
+ color:#f7faff!important;font-weight:800;letter-spacing:-.02em
+}
+body:has(>main>nav.back)>header a:hover,
+body:has(>main>a.back)>header a:hover{color:#f3c76e!important}
+body:has(>main>nav.back)>main,
+body:has(>main>a.back)>main{
+ max-width:1100px;padding-top:clamp(29px,4vw,48px)
+}
+body:has(>main>nav.back)>main h1,
+body:has(>main>a.back)>main h1{color:#11273d;font-weight:850;letter-spacing:-.045em}
+body:has(>main>nav.back)>main h2,
+body:has(>main>a.back)>main h2{color:#183049}
+body:has(>main>nav.back)>main .eyebrow,
+body:has(>main>a.back)>main .eyebrow{
+ color:#9c7228!important;letter-spacing:.1em;font-weight:850
+}
+body:has(>main>nav.back)>main .lede,
+body:has(>main>a.back)>main .lead{color:#5c7085!important;line-height:1.65}
+body:has(>main>nav.back)>main a:not(.cta):not(.button),
+body:has(>main>a.back)>main a:not(.cta):not(.button){
+ color:#24537e
+}
+body:has(>main>nav.back)>main .back a,
+body:has(>main>a.back)>main .back{
+ color:#446984!important;text-decoration:none
+}
+body:has(>main>nav.back)>main .info span,
+body:has(>main>nav.back)>main .tag,
+body:has(>main>a.back)>main .stats span{
+ background:#eef3f8;border:1px solid #dbe6f0;color:#304d68!important
+}
+body:has(>main>nav.back)>main .panel,
+body:has(>main>nav.back)>main .related a,
+body:has(>main>a.back)>main .stage{
+ background:#fff;border:1px solid #dce5ed;border-radius:14px;
+ box-shadow:0 6px 18px rgba(13,35,56,.045)
+}
+body:has(>main>nav.back)>main .related a:hover{
+ border-color:#d1ae65;background:#fffaf0
+}
+body:has(>main>nav.back)>main .program li{color:#354b61}
+body:has(>main>nav.back)>main .cta,
+body:has(>main>a.back)>main .button{
+ display:inline-flex;align-items:center;justify-content:center;min-height:45px;
+ background:linear-gradient(180deg,#ffdc86,#dba43a)!important;
+ color:#11243b!important;border:1px solid #cca14c!important;
+ border-radius:10px;font-weight:850;text-decoration:none;box-shadow:0 3px 12px #0f294016
+}
+body:has(>main>nav.back)>main .cta:hover,
+body:has(>main>a.back)>main .button:hover{background:#ffe3a4!important}
+body:has(>main>nav.back)>footer,
+body:has(>main>a.back)>footer{
+ background:#071a2b!important;border-top:1px solid #25435f;
+ color:#d6e4ee!important;padding:24px 18px!important
+}
+body:has(>main>nav.back)>footer a,
+body:has(>main>a.back)>footer a{color:#ead19a!important}
+@media(max-width:760px){
+ body.ta-info-page>header,body.ta-affiliate-page>header{padding:13px 16px!important}
+ body.ta-info-page>header .logo>span,body.ta-affiliate-page>header .brand>.ta-affiliate-mark{
+  min-width:35px;height:35px;flex-basis:35px;font-size:17px
+ }
+ body.ta-info-page>main{border-radius:0;border-left:0;border-right:0;margin:0 auto 20px;
+  padding:30px 18px 55px;box-shadow:none}
+ body.ta-info-page>main h1,body.ta-affiliate-page>main>h1{font-size:clamp(30px,7vw,40px)!important}
+ body.ta-info-page>main .toc{grid-template-columns:1fr 1fr;gap:4px 9px;padding:12px}
+ body.ta-info-page>main .toc a{font-size:12px;padding:7px 5px}
+ body.ta-affiliate-page>main{padding:25px 16px 65px}
+ body.ta-affiliate-page>main .hero{padding:26px 21px;border-radius:16px}
+ body.ta-affiliate-page>main .hero h1{font-size:38px}
+ body.ta-affiliate-page>main .cols{grid-template-columns:1fr}
+ body.ta-affiliate-page>main .col{padding:18px}
+ body.ta-affiliate-page>main .section{padding:20px}
+ body.ta-affiliate-page>main .actions .button{width:100%;justify-content:center}
+ body.ta-affiliate-page>header .nav{gap:6px}
+ body.ta-affiliate-page>header .brand{font-size:15px}
+ body.ta-affiliate-page>header .nav>a:last-child{font-size:12px;max-width:130px}
+ body:has(>main>nav.back)>main,body:has(>main>a.back)>main{padding:24px 18px 60px}
+}
+@media(max-width:390px){
+ body.ta-info-page>header .logo,body.ta-affiliate-page>header .brand{font-size:14px}
+ body.ta-info-page>header .back,body.ta-info-page>header a:last-child{font-size:11px}
+ body.ta-info-page>main .toc{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ body.ta-info-page *,body.ta-affiliate-page *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
+@media print{
+ body.ta-info-page{background:#fff!important;color:#000!important}
+ body.ta-info-page>header,body.ta-info-page>footer{display:none!important}
+ body.ta-info-page>main{border:0;box-shadow:none;margin:0;padding:0;max-width:none}
+ body.ta-info-page>main h1,body.ta-info-page>main h2{color:#000!important}
+ body.ta-info-page>main a{color:#000!important}
+ body.ta-info-page .toc{break-inside:avoid}
+}
+
+/* The small learner redirect page is intentionally simple and has no public course menu. */
+body.ta-learning-redirect{background:#f5f8fc;color:#173047;line-height:1.65;font-family:system-ui,-apple-system,sans-serif}
+body.ta-learning-redirect>main{max-width:660px;margin:44px auto 25px;background:#fff;padding:clamp(20px,5vw,44px);border:1px solid #dce6ef;border-radius:19px;box-shadow:0 15px 38px rgba(12,37,55,.07)}
+body.ta-learning-redirect>main h1{color:#142a41;font-size:clamp(28px,5vw,40px);letter-spacing:-.035em}
+body.ta-learning-redirect>main a{color:#1e5681;text-decoration:underline;text-underline-offset:3px}
+body.ta-learning-redirect>footer{color:#607185}
+
+/* The legacy global stylesheet uses two :not() classes with !important on
+   ordinary headers. Match its specificity without impacting the homepage. */
+body.ta-info-page>header:not(.header):not(.academy-footer),
+body.ta-affiliate-page>header:not(.header):not(.academy-footer){
+ background:linear-gradient(112deg,#071827,#0e2d47)!important;
+ background-color:#071827!important;
+ color:#f7faff!important;border-bottom:1px solid rgba(230,185,86,.36)!important;
+}
+body:has(>main>nav.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer),
+body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer){
+ background:linear-gradient(110deg,#071829,#102f49)!important;
+ background-color:#071829!important;color:#f6f9ff!important;
+ border-bottom:1px solid #37516b!important;
+}
+
+/* Match the support footer to the navy palette without losing readability. */
+body.ta-info-page>footer .footer-help,
+body:has(>main>nav.back)>footer .footer-help,
+body:has(>main>a.back)>footer .footer-help{
+ background:#12314b!important;border:1px solid #40607c!important;
+ color:#dce8f2!important;border-radius:12px
+}
+body.ta-info-page>footer .footer-help a,
+body:has(>main>nav.back)>footer .footer-help a,
+body:has(>main>a.back)>footer .footer-help a{color:#f4d38c!important}
+body.ta-info-page>footer .footer-help small,
+body:has(>main>nav.back)>footer .footer-help small,
+body:has(>main>a.back)>footer .footer-help small{color:#d4e1ec!important}
+body:has(>main>nav.back)>main .related a small{color:#97702b!important;font-weight:800}

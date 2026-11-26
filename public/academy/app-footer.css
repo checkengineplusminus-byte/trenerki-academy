@@ -238,3 +238,17 @@
   outline: 2px solid var(--ta-app-footer-heart);
   outline-offset: 3px;
 }
+
+/* Site-wide navy footer for account, gifts and partner dashboards. */
+.ta-app-footer{
+ --ta-app-footer-cream:#eef4fa;
+ --ta-app-footer-muted:#c3d0dd;
+ --ta-app-footer-heart:#ecbd63;
+ background:linear-gradient(100deg,#061b2c,#102c45)!important;
+ border-top:1px solid #3b5570!important;color:#eef4fa!important
+}
+.ta-app-footer-help{border-color:#3b5770!important;background:#16344f!important}
+.ta-app-footer-help:hover,.ta-app-footer-help:focus-visible{background:#1c4160!important;border-color:#dab162!important}
+.ta-app-footer-heart{color:#edc66a!important}
+.ta-app-footer-links a:hover{color:#ffdb84!important;background:#24425e!important}
+.ta-app-footer-links .trenerki-footer-cookie{color:#d7e3ee!important}

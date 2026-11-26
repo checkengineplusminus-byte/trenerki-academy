@@ -6,7 +6,7 @@ import {downloadGiftPdf} from '../src/giftPdf';
 
 type Seat={id:string;bundle_id:string;course_slug:string;title_pl:string;state:'available'|'assigned';assigned_email:string|null;email_sent_at:string|null;redeemed:boolean};
 type Link={title_pl:string;link:string;code?:string;gift_id?:string;email_sent:boolean;recipient:string};
-const ink='#183b2c',muted='#5a7463',pale='#ecf5e7';
+const ink='#14263B',muted='#607287',pale='#F2F6FB';
 const courseCount=(count:number)=>count+' '+(count===1?'kurs':count>=2&&count<=4?'kursy':'kursów');
 export default function CompanyPortal(){
  const router=useRouter(),{width}=useWindowDimensions();
@@ -17,7 +17,7 @@ export default function CompanyPortal(){
  const free=useMemo(()=>seats.filter(s=>s.state==='available'),[seats]);
  const assigned=useMemo(()=>seats.filter(s=>s.state==='assigned'),[seats]);
  const visible=useMemo(()=>seats.filter(s=>filter==='all'||s.state===filter),[seats,filter]);
- const card={backgroundColor:'white',borderWidth:1,borderColor:'#dce8d8',borderRadius:16,padding:width<600?16:22} as const;
+ const card={backgroundColor:'white',borderWidth:1,borderColor:'#E0E7F0',borderRadius:16,padding:width<600?16:22} as const;
  async function load(){
   setLoading(true);
   try{
@@ -67,7 +67,7 @@ export default function CompanyPortal(){
   }catch{setMessage('Skopiuj linki wyświetlone poniżej.')}
  }
  const select=(s:Seat)=>setSelected(old=>old.includes(s.id)?old.filter(id=>id!==s.id):old.length>=10?old:[...old,s.id]);
- return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:width<600?15:24,paddingBottom:65}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} contentContainerStyle={{padding:width<600?15:24,paddingBottom:65}}>
   <View style={{maxWidth:1040,width:'100%',alignSelf:'center',gap:16}}>
    <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,flexWrap:'wrap'}}>
     <Pressable onPress={()=>router.replace('/')}><Text style={{fontWeight:'800',color:ink}}>← TRENERKI Academy</Text></Pressable>
@@ -75,7 +75,7 @@ export default function CompanyPortal(){
      <Text style={{fontWeight:'800',color:ink}}>Wyloguj się</Text>
     </Pressable>}
    </View>
-   <Text style={{fontSize:12,fontWeight:'800',letterSpacing:1.5,color:'#678670'}}>TRENERKI DLA FIRM</Text>
+   <Text style={{fontSize:12,fontWeight:'800',letterSpacing:1.5,color:'#607388'}}>TRENERKI DLA FIRM</Text>
    <Text style={{fontSize:width<500?27:34,fontWeight:'900',color:ink}}>Panel firmy</Text>
    <Text style={{fontSize:14,color:muted,lineHeight:22}}>Rozdzielaj kursy pracownikom i kontroluj liczbę dostępnych miejsc.</Text>
    {loading&&<ActivityIndicator size="large" color={ink}/>}
@@ -106,11 +106,11 @@ export default function CompanyPortal(){
      <Text style={{fontSize:21,fontWeight:'900',color:ink,marginBottom:7}}>Przekaż kurs pracownikowi</Text>
      <Text style={{fontSize:13,color:muted,lineHeight:21,marginBottom:12}}>Podaj e-mail pracownika i zaznacz kursy. Każde miejsce można wykorzystać tylko raz.</Text>
      <TextInput placeholder="pracownik@firma.pl" accessibilityLabel="E-mail pracownika" value={recipient} onChangeText={setRecipient} editable={!busy} autoCapitalize="none" keyboardType="email-address"
-      style={{borderWidth:1,borderColor:'#cbdcc6',padding:13,borderRadius:10,fontSize:15,color:ink,marginBottom:13}}/>
+      style={{borderWidth:1,borderColor:'#D5E0EB',padding:13,borderRadius:10,fontSize:15,color:ink,marginBottom:13}}/>
      {free.length===0?<Text style={{color:muted}}>Wszystkie dostępne kursy zostały już przydzielone.</Text>:
       free.map(seat=><Pressable key={seat.id} accessibilityRole="checkbox" accessibilityState={{checked:selected.includes(seat.id),disabled:busy}} disabled={busy} onPress={()=>select(seat)}
-       style={{flexDirection:'row',alignItems:'center',gap:10,borderWidth:1,borderColor:'#e0eadd',padding:11,borderRadius:10,marginBottom:7,backgroundColor:selected.includes(seat.id)?pale:'white'}}>
-       <View style={{width:22,height:22,borderWidth:2,borderColor:'#559268',borderRadius:5,alignItems:'center',justifyContent:'center',backgroundColor:selected.includes(seat.id)?'#276a40':'white'}}>
+       style={{flexDirection:'row',alignItems:'center',gap:10,borderWidth:1,borderColor:'#E0E7F0',padding:11,borderRadius:10,marginBottom:7,backgroundColor:selected.includes(seat.id)?pale:'white'}}>
+       <View style={{width:22,height:22,borderWidth:2,borderColor:'#B58B3B',borderRadius:5,alignItems:'center',justifyContent:'center',backgroundColor:selected.includes(seat.id)?'#102C45':'white'}}>
         {selected.includes(seat.id)&&<Text style={{color:'white',fontWeight:'900'}}>✓</Text>}
        </View>
        <Text style={{color:ink,fontSize:13,fontWeight:'800',flex:1}}>{seat.title_pl}</Text>
@@ -122,10 +122,10 @@ export default function CompanyPortal(){
     </View>
     {!!links.length&&<View style={card}>
      <Text style={{color:ink,fontSize:20,fontWeight:'900',marginBottom:12}}>Nowe zaproszenia</Text>
-     {links.map((item,i)=><View key={item.link} style={{paddingVertical:10,borderBottomWidth:1,borderColor:'#e2eadd',gap:6}}>
+     {links.map((item,i)=><View key={item.link} style={{paddingVertical:10,borderBottomWidth:1,borderColor:'#E0E7F0',gap:6}}>
       <Text style={{color:ink,fontWeight:'800'}}>{i+1}. {item.title_pl}</Text>
       <Text style={{color:muted,fontSize:12}}>{item.recipient} · {item.email_sent?'Wysłano e-mail':'Wysyłka e-mail niepotwierdzona'}</Text>
-      <Text selectable style={{color:'#2e7950',fontSize:12}}>{item.link}</Text>
+      <Text selectable style={{color:'#A1762D',fontSize:12}}>{item.link}</Text>
       <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF kursu '+item.title_pl} disabled={busy||!!pdfBusy} onPress={()=>void printInvitation(item)} style={{alignSelf:'flex-start',backgroundColor:pale,padding:11,borderRadius:9,opacity:busy||pdfBusy?.5:1}}>
        <Text style={{color:ink,fontWeight:'800',fontSize:13}}>{pdfBusy===item.link?'Przygotowuję PDF…':'Pobierz kartę PDF'}</Text>
       </Pressable>
@@ -140,13 +140,13 @@ export default function CompanyPortal(){
       </Pressable>)}
      </View>
      {!visible.length&&<Text style={{color:muted}}>Brak kursów w tym widoku.</Text>}
-     {visible.map(s=><View key={s.id} style={{paddingVertical:11,borderBottomWidth:1,borderColor:'#e3ebe0',gap:5}}>
+     {visible.map(s=><View key={s.id} style={{paddingVertical:11,borderBottomWidth:1,borderColor:'#F1F5FA',gap:5}}>
       <Text style={{color:ink,fontWeight:'800'}}>{s.title_pl}</Text>
       <Text style={{color:muted,fontSize:12}}>{s.state==='available'?'Dostępne miejsce':'Pracownik: '+s.assigned_email}</Text>
-      {s.state==='assigned'&&<Text style={{color:s.redeemed?'#2b7845':'#976f2d',fontSize:12,fontWeight:'700'}}>{s.redeemed?'Odebrano kurs':'Oczekuje na odbiór'} · {s.email_sent_at?'Wysłano zaproszenie':'E-mail niepotwierdzony'}</Text>}
+      {s.state==='assigned'&&<Text style={{color:s.redeemed?'#A1762D':'#986A22',fontSize:12,fontWeight:'700'}}>{s.redeemed?'Odebrano kurs':'Oczekuje na odbiór'} · {s.email_sent_at?'Wysłano zaproszenie':'E-mail niepotwierdzony'}</Text>}
      </View>)}
     </View>
-    <Pressable onPress={()=>router.replace('/moje-kursy')} style={{alignSelf:'center',padding:13}}><Text style={{color:'#39734d',fontWeight:'800'}}>Moje konto prywatne</Text></Pressable>
+    <Pressable onPress={()=>router.replace('/moje-kursy')} style={{alignSelf:'center',padding:13}}><Text style={{color:'#A1762D',fontWeight:'800'}}>Moje konto prywatne</Text></Pressable>
    </>}
   </View>
  </ScrollView>;

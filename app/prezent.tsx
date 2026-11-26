@@ -8,7 +8,7 @@ import {coursePrice,termsVersion} from '../src/courseQuote';
 import {academyAction} from '../src/academyApi';
 import {downloadGiftPdf} from '../src/giftPdf';
 import {formatGiftCode,giftCodeEntryError,normalizeGiftCode,validGiftCode} from '../src/giftCode';
-const ink='#173d2c',pale='#e9f4dc';
+const ink='#14263B',pale='#FFF4DB';
 export function generateMetadata(){
  return {
   title:'Kurs online na prezent i karty podarunkowe — Trenerki Academy',
@@ -180,7 +180,7 @@ export default function GiftPage(){
   }
   try{await Share.share({message:'Mam dla Ciebie prezent od TRENERKI Academy: '+link});}catch{setNotice('Skopiuj widoczny link do prezentu.');}
  }
- const input={borderWidth:1,borderColor:'#cddfca',padding:14,borderRadius:12,color:ink,backgroundColor:'white',fontSize:15,marginTop:10} as const;
+ const input={borderWidth:1,borderColor:'#D5DFEA',padding:14,borderRadius:12,color:ink,backgroundColor:'white',fontSize:15,marginTop:10} as const;
  const gifts=catalog.filter(c=>c.price_grosze>0);
  const categories=['Wszystkie',...new Set(gifts.map(c=>c.category_pl||'Pozostałe'))];
  const matching=gifts.filter(c=>(category==='Wszystkie'||(c.category_pl||'Pozostałe')===category) && (!query.trim()||(c.title_pl+' '+(c.category_pl||'')).toLocaleLowerCase('pl').includes(query.trim().toLocaleLowerCase('pl'))));
@@ -189,15 +189,15 @@ export default function GiftPage(){
   setItem(chosen);setRecipient('');setMessage('');setTerms(false);setNotice('');
   scroll.current?.scrollTo({y:0,animated:true});
  }
- return <ScrollView ref={scroll} style={{backgroundColor:'#fcfcf7',flex:1}} contentContainerStyle={{padding:22,paddingBottom:50}}>
+ return <ScrollView ref={scroll} style={{backgroundColor:'#F7F9FC',flex:1}} contentContainerStyle={{padding:22,paddingBottom:50}}>
   <View style={{maxWidth:1070,alignSelf:'center',width:'100%',gap:17}}>
    <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← Katalog kursów</Text></Pressable>
-   <Text style={{fontSize:12,color:'#67836c',fontWeight:'800',letterSpacing:1.5}}>TRENERKI ACADEMY · PREZENT</Text>
+   <Text style={{fontSize:12,color:'#607388',fontWeight:'800',letterSpacing:1.5}}>TRENERKI ACADEMY · PREZENT</Text>
    <Text style={{fontSize:width<500?29:37,color:ink,fontWeight:'900',lineHeight:width<500?36:44}}>Podaruj komuś coś, co zostanie na dłużej. 🎁</Text>
-   <Text style={{color:'#526c5b',lineHeight:24,fontSize:16}}>Wybierz kurs, dodaj dedykację i podaruj bliskiej osobie nową umiejętność.</Text>
+   <Text style={{color:'#617287',lineHeight:24,fontSize:16}}>Wybierz kurs, dodaj dedykację i podaruj bliskiej osobie nową umiejętność.</Text>
    {!ready&&<ActivityIndicator/>}
    {p.checkout==='success'&&<Text style={{color:ink}}>Czekamy na potwierdzenie płatności ze Stripe. Po jego otrzymaniu wyślemy wiadomość do Ciebie i odbiorcy.</Text>}
-   {!item&&!ready&&<Text style={{color:'#5e7b62'}}>Wczytuję kursy do wyboru…</Text>}
+   {!item&&!ready&&<Text style={{color:'#607388'}}>Wczytuję kursy do wyboru…</Text>}
    <View style={{flexDirection:'row',gap:9,flexWrap:'wrap',marginBottom:4}}>
     <Pressable accessibilityRole="button" onPress={()=>setValueCardMode(false)} style={{backgroundColor:!valueCardMode?ink:pale,paddingVertical:13,paddingHorizontal:18,borderRadius:12,flexGrow:1}}>
      <Text style={{color:!valueCardMode?'white':ink,textAlign:'center',fontWeight:'900'}}>🎁 Podaruj kurs</Text>
@@ -206,9 +206,9 @@ export default function GiftPage(){
      <Text style={{color:valueCardMode?'white':ink,textAlign:'center',fontWeight:'900'}}>💳 Karta na kwotę</Text>
     </Pressable>
    </View>
-   {valueCardMode&&<View style={{backgroundColor:'white',borderRadius:17,borderWidth:1,borderColor:'#dce9d9',padding:width<540?16:23,gap:13}}>
+   {valueCardMode&&<View style={{backgroundColor:'white',borderRadius:17,borderWidth:1,borderColor:'#E0E7F0',padding:width<540?16:23,gap:13}}>
     <Text style={{fontSize:23,fontWeight:'900',color:ink}}>Podaruj środki na dowolny kurs</Text>
-    <Text style={{color:'#54705a',lineHeight:22,fontSize:14}}>Odbiorca dostanie kartę z saldem na swoim koncie. Może kupić kilka kursów, a jeśli zabraknie środków — dopłaci różnicę.</Text>
+    <Text style={{color:'#617287',lineHeight:22,fontSize:14}}>Odbiorca dostanie kartę z saldem na swoim koncie. Może kupić kilka kursów, a jeśli zabraknie środków — dopłaci różnicę.</Text>
     <View style={{flexDirection:'row',gap:8,flexWrap:'wrap'}}>
      {[50,100,200,500].map(amount=><Pressable key={amount} onPress={()=>setValueAmount(String(amount))} style={{backgroundColor:valueAmount===String(amount)?ink:pale,borderRadius:10,paddingVertical:10,paddingHorizontal:14}}>
       <Text style={{color:valueAmount===String(amount)?'white':ink,fontWeight:'800'}}>{amount} zł</Text>
@@ -226,9 +226,9 @@ export default function GiftPage(){
     </Pressable>
    </View>}
 
-   {!valueCardMode&&!!item&&<View style={{alignSelf:'stretch',maxWidth:740,width:'100%',backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#e2e9d8',borderRadius:18,gap:12}}>
-    <Text style={{color:'#73816c',fontWeight:'800',fontSize:12}}>TWÓJ WYBÓR — KURS NA PREZENT</Text>
-    <Pressable onPress={()=>{setItem(null);setNotice('')}} accessibilityRole="button" style={{alignSelf:'flex-end',padding:6}}><Text style={{color:'#4b7456',fontSize:12,fontWeight:'800'}}>Zmień kurs ↓</Text></Pressable>
+   {!valueCardMode&&!!item&&<View style={{alignSelf:'stretch',maxWidth:740,width:'100%',backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#E0E7F0',borderRadius:18,gap:12}}>
+    <Text style={{color:'#62758A',fontWeight:'800',fontSize:12}}>TWÓJ WYBÓR — KURS NA PREZENT</Text>
+    <Pressable onPress={()=>{setItem(null);setNotice('')}} accessibilityRole="button" style={{alignSelf:'flex-end',padding:6}}><Text style={{color:'#617287',fontSize:12,fontWeight:'800'}}>Zmień kurs ↓</Text></Pressable>
     <Text style={{fontSize:23,fontWeight:'800',color:ink,lineHeight:30}}>{item.title_pl}</Text>
     <Text style={{color:ink,fontWeight:'900',fontSize:23}}>{item.price_grosze===0?'GRATIS':'Cena katalogowa '+(item.price_grosze/100).toFixed(0)+' zł'}</Text>
     <TextInput style={input} placeholder={item.price_grosze>0?'E-mail obdarowanej osoby':'E-mail obdarowanej osoby (opcjonalnie)'} value={recipient} onChangeText={setRecipient} autoCapitalize="none" keyboardType="email-address"/>
@@ -246,20 +246,20 @@ export default function GiftPage(){
    {!valueCardMode&&<View style={{marginTop:12,gap:13}}>
     <View style={{gap:5}}>
      <Text style={{fontSize:24,color:ink,fontWeight:'900'}}>Wybierz kurs na prezent</Text>
-     <Text style={{color:'#5b745e',fontSize:14}}>Do wyboru {gifts.length} płatnych kursów. Znajdź coś, co naprawdę zainteresuje obdarowaną osobę.</Text>
+     <Text style={{color:'#607388',fontSize:14}}>Do wyboru {gifts.length} płatnych kursów. Znajdź coś, co naprawdę zainteresuje obdarowaną osobę.</Text>
     </View>
     <TextInput accessibilityLabel="Wyszukaj kurs na prezent" value={query} onChangeText={v=>{setQuery(v);setVisible(8)}} placeholder="Szukaj, np. Excel, budownictwo, dom…" autoCapitalize="none" style={[input,{marginTop:0}]}/>
     <View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>
-     {categories.map(cat=><Pressable key={cat} accessibilityRole="button" onPress={()=>{setCategory(cat);setVisible(8)}} style={{borderWidth:1,borderColor:category===cat?ink:'#d6e4d2',backgroundColor:category===cat?ink:'white',borderRadius:20,paddingVertical:7,paddingHorizontal:11}}>
+     {categories.map(cat=><Pressable key={cat} accessibilityRole="button" onPress={()=>{setCategory(cat);setVisible(8)}} style={{borderWidth:1,borderColor:category===cat?ink:'#E0E7F0',backgroundColor:category===cat?ink:'white',borderRadius:20,paddingVertical:7,paddingHorizontal:11}}>
       <Text style={{fontSize:11,fontWeight:'800',color:category===cat?'white':ink}}>{cat}</Text>
      </Pressable>)}
     </View>
     {!ready&&<ActivityIndicator/>}
-    {ready&&!matching.length&&<Text style={{color:'#5b745e',paddingVertical:14}}>Nie znaleziono kursu. Spróbuj innej nazwy lub kategorii.</Text>}
+    {ready&&!matching.length&&<Text style={{color:'#607388',paddingVertical:14}}>Nie znaleziono kursu. Spróbuj innej nazwy lub kategorii.</Text>}
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>
-     {offers.map(c=><View key={c.slug} style={{width:cardWidth,backgroundColor:'white',borderWidth:1,borderColor:item?.slug===c.slug?'#78a777':'#dbe7d6',borderRadius:15,padding:12,gap:8,justifyContent:'space-between',minHeight:160}}>
+     {offers.map(c=><View key={c.slug} style={{width:cardWidth,backgroundColor:'white',borderWidth:1,borderColor:item?.slug===c.slug?'#D0A24F':'#E0E7F0',borderRadius:15,padding:12,gap:8,justifyContent:'space-between',minHeight:160}}>
       <View style={{gap:7}}>
-       <View style={{width:38,height:38,borderRadius:11,backgroundColor:'#e4f1d9',alignItems:'center',justifyContent:'center'}}><Text style={{color:ink,fontSize:17,fontWeight:'900'}}>T.</Text></View>
+       <View style={{width:38,height:38,borderRadius:11,backgroundColor:'#FFF3D9',alignItems:'center',justifyContent:'center'}}><Text style={{color:ink,fontSize:17,fontWeight:'900'}}>T.</Text></View>
        <Text style={{fontSize:cols===2?12:14,color:ink,fontWeight:'800',lineHeight:cols===2?17:20}} numberOfLines={3}>{c.title_pl}</Text>
        <Text style={{color:'#3c6944',fontWeight:'900',fontSize:16}}>{(c.price_grosze/100).toLocaleString('pl-PL')} zł</Text>
       </View>
@@ -280,9 +280,9 @@ export default function GiftPage(){
     {!!createdGift&&<Pressable accessibilityRole="button" onPress={()=>void printGift(createdGift,'created')} disabled={busy||!!pdfBusy} style={{borderWidth:1,borderColor:ink,padding:14,borderRadius:12,opacity:busy||pdfBusy?.5:1}}><Text style={{color:ink,textAlign:'center',fontWeight:'800'}}>{pdfBusy==='created'?'Przygotowuję PDF…':'Pobierz kartę PDF do wydruku'}</Text></Pressable>}
     <Text style={{color:'#607863',fontSize:12}}>Kod pokazujemy przy tworzeniu. Przechowuj link w bezpiecznym miejscu. {sent?'Wysłano również e-mail.':'Jeśli podałeś adres odbiorcy, można wysłać mu link samodzielnie.'}</Text>
    </View>}
-   <View style={{backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#e2e9d8',borderRadius:18,gap:12}}>
+   <View style={{backgroundColor:'white',padding:22,borderWidth:1,borderColor:'#E0E7F0',borderRadius:18,gap:12}}>
     <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Masz kartę podarunkową?</Text>
-    <Text style={{color:'#5b755e',lineHeight:22}}>Wpisz kod, aby odebrać kurs lub środki na swoim koncie. Kartę „do przekazania dalej” może odebrać osoba, która ma jej kod i potwierdzone konto. Pozostałe karty odbiera się na wskazanym adresie e-mail.</Text>
+    <Text style={{color:'#607388',lineHeight:22}}>Wpisz kod, aby odebrać kurs lub środki na swoim koncie. Kartę „do przekazania dalej” może odebrać osoba, która ma jej kod i potwierdzone konto. Pozostałe karty odbiera się na wskazanym adresie e-mail.</Text>
     <TextInput accessibilityLabel="Kod karty podarunkowej" style={input} value={code} onChangeText={setCode} autoCapitalize="characters" autoCorrect={false} placeholder="TW-… lub TA-…"/>
     <Pressable onPress={redeem} disabled={busy||!code.trim()} style={{padding:17,backgroundColor:ink,borderRadius:12,opacity:(busy||!code.trim())?0.5:1}}>
      <Text style={{textAlign:'center',fontWeight:'900',color:'white'}}>Odbierz prezent →</Text>
@@ -290,23 +290,23 @@ export default function GiftPage(){
     <Pressable accessibilityRole="button" onPress={()=>void printGift({code},'entered')} disabled={busy||!!pdfBusy||!code.trim()} style={{borderWidth:1,borderColor:'#bfd4b8',padding:14,borderRadius:12,opacity:busy||pdfBusy||!code.trim()?.5:1}}>
      <Text style={{textAlign:'center',fontWeight:'800',color:ink}}>{pdfBusy==='entered'?'Przygotowuję PDF…':'Pobierz PDF tego kodu'}</Text>
     </Pressable>
-    <Text style={{fontSize:12,lineHeight:19,color:'#5b755e'}}>Po zalogowaniu możesz pobrać kartę z kodem TA- lub TW-. Pobranie PDF nie aktywuje prezentu.</Text>
+    <Text style={{fontSize:12,lineHeight:19,color:'#607388'}}>Po zalogowaniu możesz pobrać kartę z kodem TA- lub TW-. Pobranie PDF nie aktywuje prezentu.</Text>
    </View>
-   {(giftHistory.length>0||!!giftHistoryError)&&<View style={{backgroundColor:'white',padding:19,borderWidth:1,borderColor:'#e2e9d8',borderRadius:16,gap:12}}>
+   {(giftHistory.length>0||!!giftHistoryError)&&<View style={{backgroundColor:'white',padding:19,borderWidth:1,borderColor:'#E0E7F0',borderRadius:16,gap:12}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center',flexWrap:'wrap'}}>
      <Pressable accessibilityRole="button" accessibilityState={{expanded:giftHistoryOpen}} onPress={()=>setGiftHistoryOpen(v=>!v)}><Text style={{color:ink,fontWeight:'900',fontSize:17}}>Twoje wysłane prezenty {giftHistoryOpen?'↑':'↓'}</Text></Pressable>
-     <Pressable accessibilityRole="button" disabled={giftHistoryBusy} onPress={()=>void loadGiftHistory()}><Text style={{color:'#5b755e',fontWeight:'800',fontSize:12}}>{giftHistoryBusy?'Wczytuję…':'Odśwież prezenty'}</Text></Pressable>
+     <Pressable accessibilityRole="button" disabled={giftHistoryBusy} onPress={()=>void loadGiftHistory()}><Text style={{color:'#607388',fontWeight:'800',fontSize:12}}>{giftHistoryBusy?'Wczytuję…':'Odśwież prezenty'}</Text></Pressable>
     </View>
     {!!giftHistoryError&&<Text style={{color:'#a52626',fontSize:13}}>{giftHistoryError}</Text>}
     {giftHistoryOpen&&giftHistory.map(g=>{
      const active=g.status==='issued'&&Date.parse(g.expires_at)>Date.now();
      const title=catalog.find(c=>c.slug===g.course_slug)?.title_pl||'Karta kursu';
-     return <View key={g.id} style={{borderTopWidth:1,borderColor:'#e2e9d8',paddingTop:12,gap:7}}>
+     return <View key={g.id} style={{borderTopWidth:1,borderColor:'#E0E7F0',paddingTop:12,gap:7}}>
       <Text style={{color:ink,fontWeight:'800',fontSize:14}}>{title}</Text>
-      <Text style={{color:'#5b755e',fontSize:12}}>{g.recipient_email||'Do przekazania dalej'} · {new Date(g.created_at).toLocaleDateString('pl-PL')}</Text>
-      <Text style={{color:'#5b755e',fontSize:12}}>{active?'Ważna do '+new Date(g.expires_at).toLocaleDateString('pl-PL'):g.status==='redeemed'?'Prezent odebrany':g.status==='cancelled'?'Karta anulowana':'Karta nieaktywna'}</Text>
+      <Text style={{color:'#607388',fontSize:12}}>{g.recipient_email||'Do przekazania dalej'} · {new Date(g.created_at).toLocaleDateString('pl-PL')}</Text>
+      <Text style={{color:'#607388',fontSize:12}}>{active?'Ważna do '+new Date(g.expires_at).toLocaleDateString('pl-PL'):g.status==='redeemed'?'Prezent odebrany':g.status==='cancelled'?'Karta anulowana':'Karta nieaktywna'}</Text>
       {active&&g.printable&&<Pressable accessibilityRole="button" accessibilityLabel={'Pobierz PDF wysłanego prezentu '+title} disabled={busy||!!pdfBusy} onPress={()=>void printGift({gift_id:g.id},'history:'+g.id)} style={{alignSelf:'flex-start',backgroundColor:pale,padding:11,borderRadius:9,opacity:busy||pdfBusy?.5:1}}><Text style={{color:ink,fontWeight:'800',fontSize:13}}>{pdfBusy==='history:'+g.id?'Przygotowuję PDF…':'Pobierz kartę PDF'}</Text></Pressable>}
-      {active&&!g.printable&&<Text style={{color:'#5b755e',fontSize:12,lineHeight:19}}>Aby wydrukować tę starszą kartę, wpisz jej kod w polu odbioru prezentu i wybierz pobranie PDF.</Text>}
+      {active&&!g.printable&&<Text style={{color:'#607388',fontSize:12,lineHeight:19}}>Aby wydrukować tę starszą kartę, wpisz jej kod w polu odbioru prezentu i wybierz pobranie PDF.</Text>}
      </View>;
     })}
    </View>}
