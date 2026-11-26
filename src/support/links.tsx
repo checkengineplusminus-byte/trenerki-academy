@@ -23,9 +23,12 @@ export function HelpLink({children,href='/pomoc'}:{children:React.ReactNode;href
 }
 export function HelpFooter({compact=false}:{compact?:boolean}={}){
  const {width}=useWindowDimensions();
+ // The static HTML and the first browser render must choose the same footer.
+ const [viewportReady,setViewportReady]=React.useState(false);
+ React.useEffect(()=>setViewportReady(true),[]);
  // Mobile layout must not rely on a separately deployed/cached stylesheet.
  // One unobtrusive row, always horizontally scrollable, never a multi-line card.
- if(Platform.OS==='web'&&width<640){
+ if(Platform.OS==='web'&&viewportReady&&width<640){
   const linkStyle:React.CSSProperties={display:'inline-flex',alignItems:'center',justifyContent:'center',flex:'0 0 auto',height:44,padding:'0 7px',fontSize:12,fontWeight:650,whiteSpace:'nowrap',color:'#D6E1EA',textDecoration:'none'};
   return <footer aria-label="Pomoc i informacje" style={{flex:'0 0 auto',boxSizing:'border-box',width:'100%',backgroundColor:'#102C45',borderTop:'1px solid #39556D',padding:'2px 9px',fontFamily:'system-ui, -apple-system, BlinkMacSystemFont, sans-serif'}}>
    <div style={{display:'flex',alignItems:'center',gap:5,minWidth:0,maxWidth:1100,margin:'0 auto'}}>

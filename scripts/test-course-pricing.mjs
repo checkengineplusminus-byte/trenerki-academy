@@ -46,7 +46,7 @@ for(const category of ['budownictwo','rzemioslo-i-hobby','technologie-i-logistyk
 assert.equal(prices.get('ksiegowosc-od-podstaw').published,false,'Historical price snapshot from 15 November is intentionally unchanged');
 assert(!home.includes('class="acct-feature"'),'Accounting must never occupy a promotional block on the homepage');
 assert(home.includes('const ACCOUNTING_CATALOG='),'Accounting must have a regular course-card definition');
-assert(home.includes('c.id!==ACCOUNTING_CATALOG.id'),'Accounting must not be featured in the homepage initial selection');
+assert(home.includes('const featured=result.filter(c=>Number(c.price)>0)'),'Featured paid courses must come from the priced catalogue');
 assert(read('public/academy/kategorie/biznes-i-praca.html').includes('/academy/ksiegowosc-od-podstaw.html'),'Accounting must be grouped under Biznes i praca');
 assert(home.includes('"title":"Księgowość od podstaw"'),'Public accounting course should have a concise name');
 assert(!home.includes('Księgowość od podstaw — Encyklopedia'),'Old accounting course title must not appear in main catalogue');

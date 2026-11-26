@@ -14,9 +14,9 @@ try{
   const freeCards=page.locator('#course-cards .free-starter-grid .course-card');
   assert.deepEqual(await freeCards.evaluateAll(nodes=>nodes.map(node=>node.dataset.courseId)),['excel-skroty','zaufany-wolontariusz','swiety-mikolaj']);
   assert.deepEqual(await freeCards.locator('.price').allTextContents(),['GRATIS','GRATIS','GRATIS']);
-  assert.equal(await page.locator('#course-cards .course-card').count(),12);
+  assert.equal(await page.locator('#course-cards .course-card').count(),6);
   if(size.width>=621)assert(await freeCards.evaluateAll(nodes=>nodes.every(node=>Math.abs(node.getBoundingClientRect().top-nodes[0].getBoundingClientRect().top)<3)),'Three free courses must be side by side');
-  await freeCards.first().getByRole('button',{name:'Odbierz za darmo'}).waitFor();
+  assert.equal(await freeCards.first().getByRole('link',{name:/Zobacz program/}).getAttribute('href'),'/academy/kursy/excel-skroty.html');
   await page.locator('.category-tile[data-course-category="budownictwo"]').click();
   await page.locator('#course-cards .course-card[data-course-id="brygadzista"]').getByText(/155 zł/).waitFor();
   const dims=await page.evaluate(()=>({client:document.documentElement.clientWidth,scroll:document.documentElement.scrollWidth}));

@@ -488,6 +488,7 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
  width:100%!important;height:100%!important;
  object-fit:cover;object-position:center;
 }
+#kursy .catalog-category-grid .card-media img[data-course-photo="excel-skroty"]{object-fit:contain}
 #kursy .catalog-category-grid .card-body{
  display:flex;flex:1 1 auto;flex-direction:column;
  gap:9px!important;padding:20px!important;

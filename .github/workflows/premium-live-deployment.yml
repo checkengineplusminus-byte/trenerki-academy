@@ -15,7 +15,7 @@ permissions:
 jobs:
   verify_live_theme:
     runs-on: ubuntu-24.04
-    timeout-minutes: 16
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -25,7 +25,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for attempt in $(seq 1 24); do
+          for attempt in $(seq 1 54); do
             html_file=$(mktemp)
             css_file=$(mktemp)
             homepage_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)

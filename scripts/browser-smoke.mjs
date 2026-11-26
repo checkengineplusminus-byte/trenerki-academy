@@ -55,6 +55,9 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
       // The real Excel screenshot is 1920×1007 rather than a cropped stock 16:9 photo.
       assert.match(file,/^\/wikipedia\/commons\/0\/0a\/Anzahl_der_B%C3%A4ume_pro_Quadrat_1\.png$/,slug+': original Excel screenshot URL');
       assert(width>=1280&&height>=720&&width/height>1.6&&width/height<2.1,slug+': crisp real Excel screenshot');
+    }else if(slug==='ai-bez-tajemnic'){
+      assert.equal(file,'/academy/assets/lesson-visual-ai-bez-tajemnic-001.svg');
+      assert(width>0&&height>0,'AI illustration should render');
     }else{
       assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
       if(slug==='ksiegowosc-od-podstaw')assert.equal(file,'/academy/photos/ksiegowosc-od-podstaw.webp','Accounting must use its own generated WebP');
@@ -63,7 +66,7 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
     seen.push(slug);
    }
   }
-  assert.deepEqual(seen.sort(),[...expectedSlugs,'ksiegowosc-od-podstaw'].sort(),
+  assert.deepEqual(seen.sort(),[...expectedSlugs,'ksiegowosc-od-podstaw','ai-bez-tajemnic'].sort(),
   'All 81 standard course cards and the additional official accounting course must load their distinct photos');
  }finally{await page.close();}
 }
@@ -114,7 +117,7 @@ async function verify(name,viewport,isMobile){
    assert.equal(await menu.locator('nav').getAttribute('aria-label'),'Menu mobilne');
    await menuToggle.click();
    await menu.getByRole('link',{name:'Przeglądaj kursy'}).waitFor({state:'visible'});
-   assert.equal(await menu.getByRole('link',{name:'Zaloguj się'}).getAttribute('href'),'/konto');
+   assert.equal(await menu.getByRole('link',{name:'Moje konto'}).getAttribute('href'),'/konto');
    assert.equal(await menu.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc');
    const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .brand').boundingBox();
    assert(bounds&&brandBounds&&bounds.x>=brandBounds.x+brandBounds.width-2,'Mobile menu should not overlap brand');
@@ -326,11 +329,12 @@ async function verify(name,viewport,isMobile){
   assert.equal(support?.status(),200,'Public help route must render');
   await page.getByRole('heading',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).waitFor();
   assert.equal(await page.title(),'Bezpłatna pomoc i telefony zaufania – Trenerki.com');
-  const appHelp=page.locator('footer.ta-app-footer .ta-app-footer-help');
+  const appHelp=page.locator(isMobile?'footer[aria-label="Pomoc i informacje"] a[href="/pomoc"]':'footer.ta-app-footer .ta-app-footer-help');
   await appHelp.waitFor({state:'visible'});
   assert.equal(await appHelp.getAttribute('href'),'/pomoc');
   // A flex item blockifies an inline-flex child's computed display.
-  await page.waitForFunction(()=>getComputedStyle(document.querySelector('footer.ta-app-footer')).backgroundColor==='rgb(16, 40, 32)',null,{timeout:10000});
+  if(isMobile)assert.equal(await appHelp.evaluate(link=>getComputedStyle(link.closest('footer')).backgroundColor),'rgb(16, 44, 69)');
+  else await page.waitForFunction(()=>getComputedStyle(document.querySelector('footer.ta-app-footer')).backgroundImage.includes('linear-gradient'),null,{timeout:10000});
   assert.match(await appHelp.evaluate(el=>getComputedStyle(el).display),/^(?:inline-)?flex$/);
   if(!isMobile){
    await appHelp.hover();
