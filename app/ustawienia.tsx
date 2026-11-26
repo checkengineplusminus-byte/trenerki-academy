@@ -65,7 +65,7 @@ export default function AccountSettings() {
  }
 
  const disabled = saving || normalizedName === savedName;
- return <ScrollView style={{ flex: 1, backgroundColor: '#F7F9FC' }} contentContainerStyle={{ padding: 20, maxWidth: 650, alignSelf: 'center', width: '100%', gap: 16, paddingBottom: 55 }}>
+ return <ScrollView style={{ flex: 1, backgroundColor: '#F7F9FC' }} contentContainerStyle={{ padding: 20, maxWidth: 1400, alignSelf: 'center', width: '100%', gap: 16, paddingBottom: 55 }}>
   <View style={{flexDirection:'row',alignItems:'center',flexWrap:'wrap',gap:16}}>
    <Link href="/moje-kursy" replace style={{color:'#9A6D25',fontWeight:'800'}}>← Moje kursy</Link>
    <Pressable accessibilityRole="link" onPress={()=>router.push('/')}>
