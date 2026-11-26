@@ -42,7 +42,7 @@ type Lesson={
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry'|'stage';
 type Checks=Partial<Record<AttemptMode,boolean>>;
-const ink='#183c2b',secondary='#526f5c',line='#dfeada';
+const ink='#14263B',secondary='#53697E',line='#dfeada';
 const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,24,26,27,28,29]);
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
@@ -284,7 +284,7 @@ export default function Learning(){
   const hasNext=next!==undefined&&canVisit(next);
   return <View testID={'lesson-nav-'+position} style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginVertical:10}}>
    <Pressable accessibilityRole="button" accessibilityLabel="Poprzednia lekcja" disabled={saving||previous===undefined}
-    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9',opacity:previous===undefined?0.48:1}}>
+    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#F1F5F9',opacity:previous===undefined?0.48:1}}>
     <Text style={{color:ink,fontWeight:'800'}}>← Poprzednia lekcja</Text>
    </Pressable>
    {firstPending&&module!==unlockedNo&&<Pressable accessibilityRole="button" disabled={saving} onPress={()=>changeModule(unlockedNo)}
@@ -292,25 +292,25 @@ export default function Learning(){
     <Text style={{color:ink,fontWeight:'800'}}>Wróć do miejsca nauki</Text>
    </Pressable>}
    {hasNext&&<Pressable accessibilityRole="button" accessibilityLabel="Następna dostępna lekcja" disabled={saving} onPress={()=>changeModule(next)}
-    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9'}}>
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#F1F5F9'}}>
     <Text style={{color:ink,fontWeight:'800'}}>Następna lekcja →</Text>
    </Pressable>}
   </View>;
  }
- return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
+ return <ScrollView ref={scrollRef} style={{backgroundColor:'#F7F9FC',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>{!busy&&courseInfo.slug===slug&&index===0?courseInfo.title:'Moja nauka'}</Text>
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>
    <Text accessibilityRole="alert" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>
    <Pressable accessibilityRole="button" onPress={()=>setReload(v=>v+1)}
-    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>
+    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#14263B',borderRadius:11,paddingHorizontal:13}}>
     <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>
    </Pressable>
   </View>}
   {!!items.length&&<>
    {!busy&&courseInfo.slug===slug&&index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
-   <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
+   <View style={{backgroundColor:'#EFF4F8',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
      <Text style={{fontSize:reviewMode?12:17,fontWeight:'900',color:ink}}>{reviewMode?'Dyplom zachowany':progress+'%'}</Text>
@@ -348,7 +348,7 @@ export default function Learning(){
     ].map(part=>{
      const n=items.filter(x=>x.lesson_no>=part.start&&x.lesson_no<part.start+10&&done.includes(x.lesson_no)).length;
      const current=module>=part.start&&module<part.start+10;
-     return <View key={part.start} style={{backgroundColor:current?'#e5f2e0':'#f7faf4',borderWidth:1,borderColor:current?'#9bc39a':'#dae8d6',paddingVertical:10,paddingHorizontal:13,borderRadius:12}}>
+     return <View key={part.start} style={{backgroundColor:current?'#e5f2e0':'#F7F9FC',borderWidth:1,borderColor:current?'#9bc39a':'#dae8d6',paddingVertical:10,paddingHorizontal:13,borderRadius:12}}>
       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:7}}>
        <Text style={{color:ink,fontSize:13,fontWeight:'900',flex:1}}>{part.name}</Text>
        <Text style={{color:'#446b4f',fontSize:12,fontWeight:'900'}}>{n}/10</Text>
@@ -453,8 +453,8 @@ export default function Learning(){
    </View>}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:6,marginBottom:16,alignItems:'center'}}>
     <Text style={{color:'#366846',fontWeight:'900',fontSize:12,backgroundColor:'#e1efda',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
-    <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
-    <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
+    <Text style={{color:'#52677B',fontSize:12,fontWeight:'900',backgroundColor:'#F0F4F8',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
+    <Text style={{color:'#52677B',fontSize:12,fontWeight:'900',backgroundColor:'#F0F4F8',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
    </View>
    {slug==='autocad-skroty'&&<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>}
    {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
