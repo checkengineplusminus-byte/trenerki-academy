@@ -291,3 +291,10 @@ body:has(>main>a.back)>footer a{color:#ead19a!important}
  body.ta-info-page>main a{color:#000!important}
  body.ta-info-page .toc{break-inside:avoid}
 }
+
+/* The small learner redirect page is intentionally simple and has no public course menu. */
+body.ta-learning-redirect{background:#f5f8fc;color:#173047;line-height:1.65;font-family:system-ui,-apple-system,sans-serif}
+body.ta-learning-redirect>main{max-width:660px;margin:44px auto 25px;background:#fff;padding:clamp(20px,5vw,44px);border:1px solid #dce6ef;border-radius:19px;box-shadow:0 15px 38px rgba(12,37,55,.07)}
+body.ta-learning-redirect>main h1{color:#142a41;font-size:clamp(28px,5vw,40px);letter-spacing:-.035em}
+body.ta-learning-redirect>main a{color:#1e5681;text-decoration:underline;text-underline-offset:3px}
+body.ta-learning-redirect>footer{color:#607185}
