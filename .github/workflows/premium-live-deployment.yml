@@ -5,33 +5,60 @@ on:
     paths:
       - '.github/workflows/premium-live-deployment.yml'
       - 'public/academy/premium-theme.css'
+      - 'public/academy/sitewide-premium.css'
       - 'public/academy/index.html'
+      - 'app/moje-kursy.tsx'
+      - 'scripts/test-responsive-course-grid-browser.mjs'
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   verify_live_theme:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 16
     steps:
-      - name: Verify real live homepage and premium stylesheet
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Wait for exact desktop and mobile grid CSS on trenerki.com
         shell: bash
         run: |
           set -euo pipefail
-          for attempt in $(seq 1 16); do
+          for attempt in $(seq 1 24); do
             html_file=$(mktemp)
             css_file=$(mktemp)
-            homepage_status=$(curl -L -sS -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)
-            stylesheet_status=$(curl -L -sS -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css?v=20261126-mobile-catalog-v3' || true)
-            if [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] &&               grep -Fq 'premium-theme.css?v=20261126-mobile-catalog-v3' "$html_file" &&               grep -Fq 'Ucz się umiejętności, które wykorzystasz' "$html_file" &&               grep -Fq 'TRENERKI premium navy' "$css_file" &&               grep -Fq 'class="card-media-loading"' "$html_file" &&               grep -Fq 'catalog-show-all' "$html_file" &&               ! grep -Fq 'opacity:.0!important' "$css_file"; then
-              echo "LIVE PREMIUM MOBILE CATALOG VERIFIED — attempt $attempt"
-              echo "Homepage status: $homepage_status; stylesheet status: $stylesheet_status"
+            homepage_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)
+            stylesheet_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css' || true)
+            css_hash=$(sha256sum "$css_file" | cut -c1-12)
+            if [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] && \
+                grep -Fq "premium-theme.css?v=${css_hash}" "$html_file" && \
+                grep -Fq 'Responsive catalogue — single source of truth' "$css_file" && \
+                grep -Fq 'grid-template-columns:repeat(3,minmax(0,1fr))!important' "$css_file" && \
+                grep -Fq 'grid-template-columns:repeat(2,minmax(0,1fr))!important' "$css_file" && \
+                grep -Fq 'grid-template-columns:minmax(0,1fr)!important' "$css_file"; then
+              echo "LIVE DESKTOP/TABLET/PHONE CSS VERSION VERIFIED at attempt $attempt"
               rm -f "$html_file" "$css_file"
               exit 0
             fi
-            echo "Attempt $attempt: homepage $homepage_status / premium CSS $stylesheet_status; new version not confirmed"
+            echo "Attempt $attempt: live CSS fingerprint/layout still pending"
             rm -f "$html_file" "$css_file"
-            sleep 16
+            sleep 12
           done
-          echo "::error::The live domain did not expose the image-loading fix and freshly versioned CSS. Check Expo deployment status and DNS/cache."
+          echo "::error::New grid CSS not yet available on the production website"
           exit 1
+      - name: Install Chromium for live visual geometry test
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Check all live course groups and SEO category cards at four screen sizes
+        run: node scripts/test-responsive-course-grid-browser.mjs https://trenerki.com
+      - name: Save live desktop/tablet/phone grid screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-live-responsive-course-grid
+          path: /tmp/trenerki-grid-*.png
+          if-no-files-found: ignore
+          retention-days: 7
