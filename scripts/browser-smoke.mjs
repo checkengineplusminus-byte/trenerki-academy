@@ -114,7 +114,7 @@ async function verify(name,viewport,isMobile){
    assert.equal(await menu.locator('nav').getAttribute('aria-label'),'Menu mobilne');
    await menuToggle.click();
    await menu.getByRole('link',{name:'Przeglądaj kursy'}).waitFor({state:'visible'});
-   assert.equal(await menu.getByRole('link',{name:'Zaloguj się'}).getAttribute('href'),'/konto');
+   assert.equal(await menu.getByRole('link',{name:'Moje konto'}).getAttribute('href'),'/konto');
    assert.equal(await menu.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc');
    const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .brand').boundingBox();
    assert(bounds&&brandBounds&&bounds.x>=brandBounds.x+brandBounds.width-2,'Mobile menu should not overlap brand');
@@ -229,6 +229,12 @@ async function verify(name,viewport,isMobile){
   await firstMedia.scrollIntoViewIfNeeded();
   const firstPhoto=page.locator('#course-cards .has-course-photo .card-photo[data-course-photo="excel-skroty"]');
   await firstPhoto.waitFor({state:'visible',timeout:7000});
+  // A lazy-loaded image must be decoded before quality and opacity assertions.
+  await firstPhoto.evaluate(async img=>{if(typeof img.decode==='function')await img.decode();});
+  await page.waitForFunction(()=>{
+   const img=document.querySelector('#course-cards .has-course-photo .card-photo[data-course-photo="excel-skroty"]');
+   return !!img&&img.complete&&img.naturalWidth>=1280&&getComputedStyle(img).opacity==='1';
+  },null,{timeout:10000});
   assert(await firstPhoto.evaluate(img=>
    img.naturalWidth>=1280&&img.naturalHeight>=720&&
    img.naturalWidth/img.naturalHeight>1.6&&img.naturalWidth/img.naturalHeight<2.1&&
