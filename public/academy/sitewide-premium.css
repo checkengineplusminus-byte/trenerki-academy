@@ -298,3 +298,18 @@ body.ta-learning-redirect>main{max-width:660px;margin:44px auto 25px;background:
 body.ta-learning-redirect>main h1{color:#142a41;font-size:clamp(28px,5vw,40px);letter-spacing:-.035em}
 body.ta-learning-redirect>main a{color:#1e5681;text-decoration:underline;text-underline-offset:3px}
 body.ta-learning-redirect>footer{color:#607185}
+
+/* The legacy global stylesheet uses two :not() classes with !important on
+   ordinary headers. Match its specificity without impacting the homepage. */
+body.ta-info-page>header:not(.header):not(.academy-footer),
+body.ta-affiliate-page>header:not(.header):not(.academy-footer){
+ background:linear-gradient(112deg,#071827,#0e2d47)!important;
+ background-color:#071827!important;
+ color:#f7faff!important;border-bottom:1px solid rgba(230,185,86,.36)!important;
+}
+body:has(>main>nav.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer),
+body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer){
+ background:linear-gradient(110deg,#071829,#102f49)!important;
+ background-color:#071829!important;color:#f6f9ff!important;
+ border-bottom:1px solid #37516b!important;
+}
