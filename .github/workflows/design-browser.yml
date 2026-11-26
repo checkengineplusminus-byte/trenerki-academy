@@ -7,6 +7,10 @@ on:
       - 'scripts/browser-smoke.mjs'
       - 'scripts/premium-launch-smoke.mjs'
       - 'public/academy/brand-refresh.css'
+      - 'public/academy/premium-theme.css'
+      - 'public/academy/sitewide-premium.css'
+      - 'app/moje-kursy.tsx'
+      - 'scripts/test-responsive-course-grid-browser.mjs'
       - 'public/academy/index.html'
       - 'public/academy/support-footer.css'
       - 'public/academy/kursy/**'
@@ -44,11 +48,14 @@ jobs:
           python3 -m http.server 8787 --directory /tmp/trenerki-redesign >/tmp/trenerki-ui-http.log 2>&1 &
           sleep 2
           node scripts/premium-launch-smoke.mjs http://127.0.0.1:8787
+          node scripts/test-responsive-course-grid-browser.mjs http://127.0.0.1:8787
       - name: Preserve screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: trenerki-premium-launch-screenshots
-          path: /tmp/trenerki-premium-*.png
+          path: |
+            /tmp/trenerki-premium-*.png
+            /tmp/trenerki-grid-*.png
           if-no-files-found: ignore
           retention-days: 7
