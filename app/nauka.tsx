@@ -26,6 +26,7 @@ import PastryHomework from '../src/PastryHomework';
 import NorwegianWordBridge,{type NorwegianBridgeData} from '../src/NorwegianWordBridge';
 import NorwegianNotebook from '../src/NorwegianNotebook';
 import CourseLessonExtras from '../src/CourseLessonExtras';
+import LessonExperiment,{type Experiment} from '../src/LessonExperiment';
 import AdversarialLessonTest,{type RedTeamQuiz} from '../src/AdversarialLessonTest';
 import SoftwareOrientation,{hasSoftwareOrientation} from '../src/SoftwareOrientation';
 import AutoCADPracticeFiles from '../src/AutoCADPracticeFiles';
@@ -37,7 +38,7 @@ import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
  lesson_no:number,title_pl:string,
- material:{section?:number,stage_name?:string,lesson_kind?:string,study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
+ material:{experiment?:Experiment,section?:number,stage_name?:string,lesson_kind?:string,study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry'|'stage';
@@ -421,6 +422,7 @@ export default function Learning(){
      <Text style={{fontWeight:'900',fontSize:16,color:'#2C587B'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
      <Text style={{fontSize:12,lineHeight:20,color:'#43596F'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
     </Pressable>}
+   {lesson.material?.experiment&&<LessonExperiment key={slug+'-'+module} experiment={lesson.material.experiment}/>}
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelMasterGuide lessonNo={module}/>}

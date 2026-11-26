@@ -252,3 +252,8 @@
 .ta-app-footer-heart{color:#edc66a!important}
 .ta-app-footer-links a:hover{color:#ffdb84!important;background:#24425e!important}
 .ta-app-footer-links .trenerki-footer-cookie{color:#d7e3ee!important}
+
+@media (prefers-reduced-motion:no-preference){
+ [data-testid="experiment-changed-value"]{animation:lesson-value-change .5s ease-out both}
+ @keyframes lesson-value-change{from{transform:translateY(7px);opacity:.35}to{transform:translateY(0);opacity:1}}
+}

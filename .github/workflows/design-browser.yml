@@ -13,6 +13,8 @@ on:
       - 'app/_layout.tsx'
       - 'src/Academy*.tsx'
       - 'scripts/test-academy-workspace-browser.mjs'
+      - 'scripts/test-lesson-experiments-browser.mjs'
+      - 'src/LessonExperiment.tsx'
       - 'app/moje-kursy.tsx'
       - 'scripts/test-responsive-course-grid-browser.mjs'
       - 'public/academy/index.html'
@@ -54,6 +56,7 @@ jobs:
           node scripts/premium-launch-smoke.mjs http://127.0.0.1:8787
           node scripts/test-responsive-course-grid-browser.mjs http://127.0.0.1:8787
           node scripts/test-academy-workspace-browser.mjs http://127.0.0.1:8787
+          node scripts/test-lesson-experiments-browser.mjs http://127.0.0.1:8787
       - name: Preserve screenshots
         if: always()
         uses: actions/upload-artifact@v4
