@@ -128,7 +128,7 @@ function AccountLayout(){
  const {width}=useWindowDimensions();
  const learningRoutes=['/ksiegowosc','/program-ksiegowosci','/temat-ksiegowosci','/sciezka-ksiegowosci','/biuro-ksiegowe','/dane-biura','/formularze-ksiegowego','/majatek-ksiegowy','/slownik-ksiegowego'];
  const hideAccountFooter=width<760&&(pathname==='/konto'||learningRoutes.includes(pathname));
- const hideSiteHeader=pathname==='/'||pathname==='/nauka'||learningRoutes.includes(pathname);
+ const hideSiteHeader=pathname==='/'||pathname==='/nauka';
  const [ready,setReady]=useState(false);
  const [signedIn,setSignedIn]=useState(false);
  useEffect(()=>{
