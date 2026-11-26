@@ -313,3 +313,18 @@ body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.he
  background-color:#071829!important;color:#f6f9ff!important;
  border-bottom:1px solid #37516b!important;
 }
+
+/* Match the support footer to the navy palette without losing readability. */
+body.ta-info-page>footer .footer-help,
+body:has(>main>nav.back)>footer .footer-help,
+body:has(>main>a.back)>footer .footer-help{
+ background:#12314b!important;border:1px solid #40607c!important;
+ color:#dce8f2!important;border-radius:12px
+}
+body.ta-info-page>footer .footer-help a,
+body:has(>main>nav.back)>footer .footer-help a,
+body:has(>main>a.back)>footer .footer-help a{color:#f4d38c!important}
+body.ta-info-page>footer .footer-help small,
+body:has(>main>nav.back)>footer .footer-help small,
+body:has(>main>a.back)>footer .footer-help small{color:#d4e1ec!important}
+body:has(>main>nav.back)>main .related a small{color:#97702b!important;font-weight:800}
