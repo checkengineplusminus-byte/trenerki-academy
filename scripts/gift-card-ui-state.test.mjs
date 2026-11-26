@@ -101,7 +101,7 @@ function createScreen(path,params={}){
  return {flush,press,fill,fillPlaceholder,button,find,findAll,navigation,text:()=>text(tree)};
 }
 async function fillPromo(screen){
- await screen.press('Karta na kwotę');
+ await screen.press('Karty podarunkowe');
  assert.equal(screen.button('Do przekazania dalej').props.accessibilityState.checked,true,'new value cards must default to transferable');
  assert.equal(screen.button('Do przekazania dalej').props['aria-checked'],true,'web must expose the selected transfer mode');
  assert.equal(screen.button('Dla wskazanej osoby').props['aria-checked'],false,'the personal mode must be exposed as unselected');
@@ -140,9 +140,11 @@ assert.ok(gift.text().includes('Ten kod został już odebrany lub stracił ważn
 await gift.press('Pobierz PDF tego kodu');
 assert.equal(printRequests.at(-1).code,'TW-00000000000000000000000000000001');assert.equal(redemptions.length,2,'printing must not redeem a code');
 const giver=createScreen('app/admin.tsx');await giver.flush();
+await giver.press('Kursy gratis'); // The admin opens on the accounting tab by default.
 assert.ok(giver.text().includes('Obdarowana osoba może odebrać kurs na koncie z innym adresem e-mail.'));
 await giver.fill('E-mail do wysyłki kart kursów','foundation@example.test');await giver.fill('Dedykacja na kartach kursów','Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();
+
 await giver.press('Wyślij prezent — 1 kurs');assert.equal(giveaways.at(-1).bind_to_recipient,false);assert.equal(giveaways.at(-1).company_mode,false);assert.equal(giveaways.at(-1).message,'Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityLabel==='Pobierz PDF kursu Kurs testowy').props.onPress();await giver.flush();assert.equal(printRequests.at(-1).code,freeCode);
 await giver.press('Pakiet dla firmy / pracowników');await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();await giver.press('Wyślij prezent — 1 kurs');
@@ -182,7 +184,7 @@ for(const sample of samples){
  assert.equal(redeemedCount(),before,'signed-out entry must only navigate to login');
 
  const account=createScreen('app/konto.tsx',{gift:sample.input});await account.flush();
- await account.press('Mam już konto — zaloguj');
+ // Login is the current default on the account entry screen.
  await account.fillPlaceholder('Adres e-mail','Recipient@Example.test');await account.fillPlaceholder('Hasło (minimum 8 znaków)','test-password');
  await account.press('Zaloguj się');
  assert.equal(signIns.at(-1).email,'recipient@example.test');
@@ -199,6 +201,7 @@ for(const sample of samples){
 
  const afterExplicit=redeemedCount();activeUser=null;
  const signup=createScreen('app/konto.tsx',{gift:sample.input});await signup.flush();
+ await signup.press('Utwórz nowe konto');
  await signup.fillPlaceholder('Imię i nazwisko','Test Recipient');await signup.fillPlaceholder('Adres e-mail','recipient@example.test');
  await signup.fillPlaceholder('Hasło (minimum 8 znaków)','test-password');await signup.press('Załóż konto');
  assert.equal(signUps.at(-1).options.data.pending_gift,sample.canonical,'signup must save canonical short and legacy codes');
@@ -207,7 +210,7 @@ for(const sample of samples){
  activeUser={...user,user_metadata:{...signUps.at(-1).options.data}};
  const confirmed=createScreen('app/konto.tsx');await confirmed.flush();
  assert.equal(confirmed.navigation.length,0,'an existing session must wait for the continuation button');
- await confirmed.press('Otwórz Moje kursy →');
+ await confirmed.press('Przejdź do prezentu →');
  assert.deepEqual(confirmed.navigation.at(-1),{method:'replace',to:{pathname:'/prezent',params:{code:sample.canonical}}},'bare confirmation URL must recover the saved gift');
  assert.equal(metadataUpdates.at(-1).data.pending_gift,null,'consumed navigation metadata must be cleared');
  const confirmedGift=createScreen('app/prezent.tsx',{code:sample.canonical});await confirmedGift.flush();

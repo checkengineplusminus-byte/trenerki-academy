@@ -31,10 +31,31 @@ function initializeAcademyShortcuts() {
   header.classList.add('ta-site-header');
   host.append(nav);
 }
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded',initializeAcademyShortcuts,{once:true});
-} else {
+// Close the responsive dropdown on outside interaction, Escape and desktop resize.
+function initializeAcademyMobileMenu() {
+  const menu = document.querySelector('header .mobile-nav');
+  if (!menu) return;
+  document.addEventListener('pointerdown', (event) => {
+    if (menu.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu.open) {
+      menu.open = false;
+      menu.querySelector('summary')?.focus();
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1070 && menu.open) menu.open = false;
+  }, {passive:true});
+}
+function initializeAcademyNavigation() {
   initializeAcademyShortcuts();
+  initializeAcademyMobileMenu();
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded',initializeAcademyNavigation,{once:true});
+} else {
+  initializeAcademyNavigation();
 }
 
 

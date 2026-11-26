@@ -14,7 +14,7 @@ const routes=[
  '/academy/kategorie/biznes-i-praca.html',
  '/academy/kategorie/technologie-i-logistyka.html'
 ];
-for(const [type,viewport]of [['iphone',{width:390,height:844}],['desktop',{width:1365,height:900}]]){
+for(const [type,viewport]of [['iphone',{width:390,height:844}],['tablet',{width:820,height:950}],['desktop',{width:1365,height:900}]]){
  const ctx=await browser.newContext({viewport,isMobile:type==='iphone',hasTouch:type==='iphone'});
  const page=await ctx.newPage();
  try{
@@ -36,10 +36,14 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['desktop',{width
   const acc=page.locator('header .demo-tag');
   assert.equal(await acc.getAttribute('href'),'/konto');
   assert.match(await acc.innerText(),/Moje konto/);
-  if(type==='iphone'){
+  if(type!=='desktop'){
    const menu=page.locator('header .mobile-nav');
    await menu.locator('summary').click();
    assert(await menu.getByRole('link',{name:'Moje konto'}).isVisible());
+   assert.equal(await menu.getByRole('link',{name:'Dla firm'}).getAttribute('href'),'/firma');
+   await page.keyboard.press('Escape');
+   assert.equal(await menu.getAttribute('open'),null,'Escape closes the dropdown');
+   await menu.locator('summary').click();
    await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
    assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close after selection');
   }

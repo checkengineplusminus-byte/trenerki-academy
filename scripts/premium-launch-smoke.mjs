@@ -62,6 +62,10 @@ async function testViewport(name,width,height,mobile){
   const ai=await page.request.get(origin+'/academy/kursy/ai-bez-tajemnic.html');
   assert.equal(ai.status(),200);
   assert.match(await ai.text(),/premium-theme\.css/);
+  // Local http.server cannot reproduce Expo Hosting's extensionless route rewrite.
+  // Resolve /konto to the actual generated page, as navigation-browser.mjs does.
+  await page.route(url=>url.origin===origin&&url.pathname==='/konto',
+   async route=>route.fulfill({response:await route.fetch({url:origin+'/konto.html'})}));
   const login=await page.goto(origin+'/konto?course=autocad-skroty',{waitUntil:'domcontentloaded',timeout:30000});
   assert.equal(login?.status(),200,'Login URL must be reachable before checkout');
   await page.getByText('Witaj ponownie!',{exact:false}).first().waitFor({state:'visible',timeout:15000});

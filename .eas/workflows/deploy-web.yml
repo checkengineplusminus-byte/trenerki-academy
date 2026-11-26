@@ -15,6 +15,10 @@ jobs:
           run: node scripts/generate-affiliate-short-pages.mjs
         - name: Test numeric affiliate landing pages
           run: node scripts/test-affiliate-static-pages.mjs
+        - name: Version all shared menu and theme assets for mobile Safari
+          run: node scripts/version-public-navigation-assets.mjs
+        - name: Verify that public pages reference the deployed CSS and JS
+          run: node scripts/test-navigation-asset-versions.mjs
         - name: Verify complete catalogue progress beyond API pagination
           run: node --experimental-default-type=module --test scripts/test-course-progress.mjs
         - name: Verify exam never accepts obsolete lesson completions

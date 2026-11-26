@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Verify short URL and unchanged core routes      - name: Verify short URL and unchanged core routes
+      - name: Verify short URL and unchanged core routes
         run: |
           set -euo pipefail
           curl -sSL --retry 3 --retry-delay 3 --max-time 25 -D /tmp/affiliate1.headers -o /tmp/affiliate1.body https://trenerki.com/1
