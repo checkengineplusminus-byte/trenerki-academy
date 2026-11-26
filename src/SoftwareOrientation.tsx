@@ -7,7 +7,7 @@ type Program={
  name:string;image:string;history:string[];why:string;today:string;
  zones:{name:string;meaning:string}[];terms:Term[];
 };
-const ink='#183c2b';
+const ink='#14263B';
 const programs:Record<string,Program>={
  'word-skroty':{
   name:'Microsoft Word',image:'word-interface',
@@ -160,36 +160,36 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
  const [selectedTerm,setSelectedTerm]=useState(0),[selectedZone,setSelectedZone]=useState(0);
  const [tab,setTab]=useState<Tab>(slug==='autocad-skroty'?'terms':'history'),[imageFailed,setImageFailed]=useState(false);
  if(!p)return null;
- return <View testID="software-orientation" style={{backgroundColor:'#eef6e9',padding:mobile?12:16,borderRadius:18,borderColor:'#c9ddc5',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
-  <Text style={{color:'#477455',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
+ return <View testID="software-orientation" style={{backgroundColor:'#EFF3F8',padding:mobile?12:16,borderRadius:18,borderColor:'#DCE4ED',borderWidth:1,gap:mobile?11:15,marginBottom:20}}>
+  <Text style={{color:'#53677D',fontWeight:'900',fontSize:12}}>ZACZYNAMY OD ZERA · PRZEWODNIK PO PROGRAMIE</Text>
   <Text style={{color:ink,fontSize:mobile?20:23,fontWeight:'900',lineHeight:mobile?27:30}}>{p.name} — zobacz i spróbuj</Text>
   {slug==='autocad-skroty'?<AutoCADOriginalScreen focus={tab==='interface'?(selectedZone===2?'command':selectedZone===4?'tabs':'ribbon'):'ribbon'}/>:Platform.OS==='web'&&!imageFailed?
    <Image source={{uri:'/academy/assets/'+p.image+'.svg'}} onError={()=>setImageFailed(true)}
     resizeMode="contain" style={{width:'100%',height:mobile?210:290,backgroundColor:'white',borderRadius:12}}
     accessibilityLabel={'Ilustrowana mapa głównego ekranu '+p.name}/>:
    <View style={{backgroundColor:'white',borderRadius:12,padding:13,gap:10}}>
-    <View style={{padding:10,backgroundColor:'#193c2d',borderRadius:8}}>
+    <View style={{padding:10,backgroundColor:'#14263B',borderRadius:8}}>
      <Text style={{fontWeight:'900',color:'white'}}>{p.name} · ekran pracy</Text>
     </View>
     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-     {p.zones.slice(0,5).map((z,i)=><Pressable key={i} onPress={()=>{setSelectedZone(i);setTab('interface')}} style={{padding:8,backgroundColor:'#e5f1e1',borderRadius:8}}>
+     {p.zones.slice(0,5).map((z,i)=><Pressable key={i} onPress={()=>{setSelectedZone(i);setTab('interface')}} style={{padding:8,backgroundColor:'#EFF3F8',borderRadius:8}}>
       <Text style={{color:ink,fontSize:12,fontWeight:'800'}}>{z.name}</Text>
      </Pressable>)}
     </View>
-    <View style={{backgroundColor:'#ecf2ed',padding:25,minHeight:90,borderRadius:9}}>
+    <View style={{backgroundColor:'#EFF3F8',padding:25,minHeight:90,borderRadius:9}}>
      <Text style={{color:ink,fontWeight:'800'}}>{p.zones[selectedZone].name}</Text>
-     <Text style={{color:'#476a54',lineHeight:22}}>{p.zones[selectedZone].meaning}</Text>
+     <Text style={{color:'#53677D',lineHeight:22}}>{p.zones[selectedZone].meaning}</Text>
     </View>
    </View>}
-  {slug!=='autocad-skroty'&&<Text style={{fontSize:11,color:'#647d66',lineHeight:18}}>Autorski schemat edukacyjny, nie zrzut ekranu producenta. Wygląd może się zmieniać zależnie od wersji programu.</Text>}
+  {slug!=='autocad-skroty'&&<Text style={{fontSize:11,color:'#53677D',lineHeight:18}}>Autorski schemat edukacyjny, nie zrzut ekranu producenta. Wygląd może się zmieniać zależnie od wersji programu.</Text>}
   {slug==='excel-skroty'&&<Pressable accessibilityRole="link" accessibilityLabel="Zobacz oficjalną instrukcję Microsoft Excel" onPress={()=>void Linking.openURL('https://support.microsoft.com/pl-pl/excel')}
-   style={{paddingHorizontal:13,paddingVertical:11,minHeight:44,borderRadius:10,backgroundColor:'#fff',alignSelf:'flex-start',borderWidth:1,borderColor:'#b6d2bf',justifyContent:'center'}}>
-   <Text style={{color:'#1d6546',fontWeight:'800',fontSize:13}}>Oryginalny Excel i oficjalne instrukcje Microsoft ↗</Text>
+   style={{paddingHorizontal:13,paddingVertical:11,minHeight:44,borderRadius:10,backgroundColor:'#fff',alignSelf:'flex-start',borderWidth:1,borderColor:'#DCE4ED',justifyContent:'center'}}>
+   <Text style={{color:'#2C587B',fontWeight:'800',fontSize:13}}>Oryginalny Excel i oficjalne instrukcje Microsoft ↗</Text>
   </Pressable>}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
    {tabs.filter(x=>slug!=='autocad-skroty'||x.key!=='history').map(x=><Pressable key={x.key} onPress={()=>setTab(x.key)} accessibilityRole="button"
     accessibilityState={{selected:tab===x.key}}
-    style={{paddingHorizontal:12,paddingVertical:11,backgroundColor:tab===x.key?ink:'white',borderRadius:10,borderColor:'#d4e4d0',borderWidth:1}}>
+    style={{paddingHorizontal:12,paddingVertical:11,backgroundColor:tab===x.key?ink:'white',borderRadius:10,borderColor:'#DCE4ED',borderWidth:1}}>
     <Text style={{color:tab===x.key?'white':ink,fontWeight:'900',fontSize:13}}>{x.label}</Text>
    </Pressable>)}
   </View>
@@ -197,20 +197,20 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
    <Text style={{color:ink,fontWeight:'900',fontSize:19}}>Kliknij część menu i przećwicz jej funkcję</Text>
    {slug==='autocad-skroty'&&<Pressable accessibilityRole="link" onPress={()=>void Linking.openURL('https://help.autodesk.com/view/ACD/2026/ENU/?contextId=HITCHHIKERSGUIDETOAUTOCADBASICS')}
      style={{padding:11,alignSelf:'flex-start'}}>
-     <Text style={{color:'#1c6542',fontWeight:'800'}}>Otwórz oficjalną instrukcję Autodesk ↗</Text>
+     <Text style={{color:'#2C587B',fontWeight:'800'}}>Otwórz oficjalną instrukcję Autodesk ↗</Text>
     </Pressable>}}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
     {p.zones.map((z,i)=><Pressable key={i} onPress={()=>setSelectedZone(i)} accessibilityRole="button" accessibilityState={{selected:i===selectedZone}}
-     style={{padding:11,borderRadius:9,backgroundColor:i===selectedZone?'#cde6c5':'white',borderWidth:1,borderColor:'#c8dcca'}}>
+     style={{padding:11,borderRadius:9,backgroundColor:i===selectedZone?'#cde6c5':'white',borderWidth:1,borderColor:'#DCE4ED'}}>
      <Text style={{color:ink,fontWeight:'800',fontSize:13}}>{String(i+1)+'. '+z.name}</Text>
     </Pressable>)}
    </View>
    <View style={{backgroundColor:'white',borderRadius:12,padding:17,gap:10}}>
     <Text style={{color:'#3e8158',fontWeight:'900',fontSize:12}}>WYBRANA CZĘŚĆ EKRANU</Text>
     <Text style={{color:ink,fontSize:19,fontWeight:'900'}}>{p.zones[selectedZone].name}</Text>
-    <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{p.zones[selectedZone].meaning}</Text>
+    <Text style={{color:'#43596F',lineHeight:24,fontSize:15}}>{p.zones[selectedZone].meaning}</Text>
     <Text style={{color:ink,fontWeight:'900'}}>Spróbuj na własnym komputerze:</Text>
-    <Text style={{color:'#43654a',lineHeight:24,fontSize:15}}>{walkthroughs[slug][selectedZone]}</Text>
+    <Text style={{color:'#43596F',lineHeight:24,fontSize:15}}>{walkthroughs[slug][selectedZone]}</Text>
    </View>
    <Pressable onPress={openPractice} accessibilityRole="button" style={{padding:14,backgroundColor:ink,borderRadius:11}}>
     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>{slug==='autocad-skroty'?'Przejdź do instrukcji ćwiczenia →':slug==='excel-skroty'?'Otwórz arkusz ćwiczebny Excel ↓':'Przejdź do wirtualnego programu →'}</Text>
@@ -218,10 +218,10 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
   </>}
   {tab==='history'&&<View style={{gap:13}}>
    <Text style={{fontSize:18,fontWeight:'900',color:ink}}>Skąd pochodzi {p.name}?</Text>
-   {p.history.map((paragraph,i)=><Text key={i} style={{fontSize:15,lineHeight:26,color:'#355542'}}>{paragraph}</Text>)}
+   {p.history.map((paragraph,i)=><Text key={i} style={{fontSize:15,lineHeight:26,color:'#2C587B'}}>{paragraph}</Text>)}
    <View style={{backgroundColor:'white',padding:15,borderRadius:12,gap:8}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Gdzie wykorzystasz tę wiedzę?</Text>
-    <Text style={{fontSize:15,color:'#3e5f48',lineHeight:24}}>{p.why}</Text>
+    <Text style={{fontSize:15,color:'#43596F',lineHeight:24}}>{p.why}</Text>
    </View>
   </View>}
   {tab==='terms'&&<View style={{gap:12}}>
@@ -233,12 +233,12 @@ export default function SoftwareOrientation({slug,openPractice}:{slug:string;ope
    </View>
    <View style={{backgroundColor:'white',padding:16,borderRadius:12,gap:9}}>
     <Text style={{color:ink,fontWeight:'900',fontSize:17}}>{p.terms[selectedTerm].name}</Text>
-    <Text style={{color:'#3d604c',lineHeight:25,fontSize:15}}>{p.terms[selectedTerm].description}</Text>
+    <Text style={{color:'#43596F',lineHeight:25,fontSize:15}}>{p.terms[selectedTerm].description}</Text>
    </View>
   </View>}
   {tab==='practice'&&<View style={{gap:12}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Twoje pierwsze ćwiczenie</Text>
-   <Text style={{color:'#3d624d',lineHeight:24}}>{p.today}</Text>
+   <Text style={{color:'#43596F',lineHeight:24}}>{p.today}</Text>
    <Pressable accessibilityRole="button" onPress={openPractice} style={{padding:14,backgroundColor:ink,borderRadius:11}}>
     <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Otwórz warsztat →</Text>
    </Pressable>

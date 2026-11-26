@@ -99,7 +99,7 @@ function WindowSketch({slug}:{slug:string}){
    {data.panel.map(x=><Text key={x} style={{paddingHorizontal:8,paddingVertical:6,backgroundColor:'white',borderRadius:5,color:ink,fontSize:11}}>{x}</Text>)}
   </View>
   {excel?<View style={{backgroundColor:'white',padding:12,gap:7}}>
-   <Text style={{borderWidth:1,borderColor:'#dce9d8',padding:9,fontSize:12,color:ink}}>B2   ƒx   =C2*D2</Text>
+   <Text style={{borderWidth:1,borderColor:'#DCE4ED',padding:9,fontSize:12,color:ink}}>B2   ƒx   =C2*D2</Text>
    {[['','A','B','C','D'],['1','Produkt','Ilość','Cena','Razem'],['2','Farba','3','100','300'],['3','Taśma','2','25','50']].map((line,i)=><View key={i} style={{flexDirection:'row'}}>{line.map((v,j)=><Text key={j} style={{flex:1,borderWidth:.5,borderColor:'#d8e5d5',padding:5,color:ink,fontSize:10}}>{v}</Text>)}</View>)}
   </View>:cad?<View style={{height:146,backgroundColor:'#193a36',justifyContent:'center',alignItems:'center'}}>
     <View style={{width:145,height:78,borderColor:'#d7eb9b',borderWidth:2}}/>
@@ -116,7 +116,7 @@ export default function ConceptAtlas({slug}:{slug:string}){
  const [expanded,setExpanded]=useState(false),[selected,setSelected]=useState<string|null>(null);
  const list=terms(slug),data=labels[slug];
  if(!list.length)return null;
- return <View style={{borderRadius:17,backgroundColor:'#edf5e9',borderWidth:1,borderColor:'#d4e6ce',padding:18,gap:13,marginBottom:18}}>
+ return <View style={{borderRadius:17,backgroundColor:'#EFF3F8',borderWidth:1,borderColor:'#d4e6ce',padding:18,gap:13,marginBottom:18}}>
   <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Poznaj swój program i jego język</Text>
   <Text style={{fontSize:14,lineHeight:23,color:muted}}>Nie zakładamy żadnej wcześniejszej wiedzy. To autorski schemat układu programu i mała encyklopedia pojęć. Kliknij dowolne hasło, aby poznać jego znaczenie.</Text>
   {!!data&&<WindowSketch slug={slug}/>}

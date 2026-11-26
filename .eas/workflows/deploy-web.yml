@@ -20,7 +20,7 @@ jobs:
         - name: Verify that public pages reference the deployed CSS and JS
           run: node scripts/test-navigation-asset-versions.mjs
         - name: Verify complete catalogue progress beyond API pagination
-          run: node --experimental-default-type=module --test scripts/test-course-progress.mjs
+          run: node --test scripts/test-course-progress.mjs
         - name: Verify exam never accepts obsolete lesson completions
           run: node --test scripts/test-exam-readiness.mjs
         - name: Audit complete AutoCAD manual, 30 simulator exercises and source commands
@@ -44,7 +44,7 @@ jobs:
         - name: Verify content, exercises and protected course access
           run: node scripts/check-content-consistency.mjs
         - name: Protect AI learning route and prevent accidental logout
-          run: node --experimental-default-type=module --test scripts/test-ai-navigation-session.mjs
+          run: node --test scripts/test-ai-navigation-session.mjs
         - name: Verify Excel currency calculations and spreadsheet navigation
           run: node scripts/test-excel-currency.mjs
         - name: Verify Excel first-day formulas on numerical and symbolic answers
@@ -66,22 +66,22 @@ jobs:
         - name: Verify meaning and uniqueness of all 80 icons
           run: node scripts/test-course-icons.mjs
         - name: Sprawdz obliczenia i import pracowni ksiegowej
-          run: node --experimental-default-type=module --test scripts/test-accounting-lab.mjs
+          run: node --test scripts/test-accounting-lab.mjs
         - name: Sprawdz aplikacyjny pulpit, urzedowe druki i analize plikow Anielki
-          run: node --experimental-default-type=module --test scripts/test-accounting-guided-lab.mjs
+          run: node --test scripts/test-accounting-guided-lab.mjs
         - name: Sprawdz odpowiedzi i szkice czytnika ksiegowosci
-          run: node --experimental-default-type=module --test scripts/test-accounting-reader.mjs
+          run: node --test scripts/test-accounting-reader.mjs
         - name: Sprawdz dane stron i historie identyfikatorow
-          run: node --experimental-default-type=module --test scripts/test-accounting-identities.mjs
+          run: node --test scripts/test-accounting-identities.mjs
         - name: Sprawdz wejscie i postep encyklopedii
-          run: node --experimental-default-type=module --test scripts/test-accounting-entry.mjs
+          run: node --test scripts/test-accounting-entry.mjs
         - name: Sprawdz widok pracy domowej bez dlugiego przewijania
-          run: node --experimental-default-type=module --test scripts/test-accounting-extra-homework-reader.mjs
+          run: node --test scripts/test-accounting-extra-homework-reader.mjs
         - name: Sprawdz podpowiedzi Anielki i wykrywanie bledow w zadaniach
-          run: node --experimental-default-type=module --test scripts/test-accounting-homework-feedback.mjs
+          run: node --test scripts/test-accounting-homework-feedback.mjs
         - name: Sprawdz 100 arkuszy domowych dla Excel bez odpowiedzi i danych prywatnych
-          run: node --experimental-default-type=module --test scripts/test-accounting-homework-worksheet.mjs
+          run: node --test scripts/test-accounting-homework-worksheet.mjs
         - name: Sprawdz kierowanie 100 tematow do wlasciwego modulu pracowni
-          run: node --experimental-default-type=module --test scripts/test-accounting-lab-navigation.mjs
+          run: node --test scripts/test-accounting-lab-navigation.mjs
         - name: Sprawdz kolejnosc nauki i zachowanie postepow
-          run: node --experimental-default-type=module --test scripts/test-accounting-study-path.mjs
+          run: node --test scripts/test-accounting-study-path.mjs

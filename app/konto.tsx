@@ -167,7 +167,7 @@ export default function AccountPage(){
  const desktopProfile=width>=1000&&!!activeEmail&&mode!=='new-password';
  const heading=activeEmail&&mode!=='new-password'?'Twój profil':mode==='register'?(isCompanyLogin?'Utwórz konto firmowe':'Rozpocznij naukę.'):mode==='login'?(isCompanyLogin?'Zaloguj się jako firma':'Witaj ponownie!'):mode==='reset'?'Odzyskaj konto':'Ustaw nowe hasło';
  return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} keyboardShouldPersistTaps="handled" contentContainerStyle={{minHeight:'100%',padding:compact?12:22,paddingBottom:compact?24:22,justifyContent:compact||desktopProfile?'flex-start':'center'}}>
- <View style={{maxWidth:desktopProfile?1600:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#DCE4ED'}}>
+ <View style={{maxWidth:desktopProfile?1920:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#DCE4ED'}}>
  <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:compact?12:22}}>← Wszystkie kursy</Text></Pressable>
  {!activeEmail&&<View style={{flexDirection:'row',gap:9,marginBottom:compact?12:18}}>
   <Pressable accessibilityRole="button" onPress={()=>router.replace(gift?{pathname:'/konto',params:{gift}}:'/konto')} style={{flex:1,backgroundColor:isCompanyLogin?'#f0f4fb':ink,padding:13,borderRadius:11,alignItems:'center'}}>
@@ -186,9 +186,9 @@ export default function AccountPage(){
    <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{isCompanyLogin?'Otwórz panel firmy →':gift?'Przejdź do prezentu →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
-   <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-kursy')} style={{backgroundColor:'#F5F6FA',padding:13,borderRadius:10,alignItems:'center',marginTop:desktopProfile?0:8,minWidth:desktopProfile?220:undefined,flexGrow:desktopProfile?1:0}}>
+   {(isCompanyLogin||gift||course)&&<Pressable accessibilityRole="button" onPress={()=>router.push('/moje-kursy')} style={{backgroundColor:'#F5F6FA',padding:13,borderRadius:10,alignItems:'center',marginTop:desktopProfile?0:8,minWidth:desktopProfile?220:undefined,flexGrow:desktopProfile?1:0}}>
       <Text style={{color:ink,fontWeight:'800'}}>Moje kursy →</Text>
-    </Pressable>
+    </Pressable>}
     <Pressable accessibilityRole="button" onPress={()=>router.push('/ustawienia')} style={{backgroundColor:'#F5F6FA',padding:13,borderRadius:10,alignItems:'center',marginTop:desktopProfile?0:8,minWidth:desktopProfile?220:undefined,flexGrow:desktopProfile?1:0}}>
       <Text style={{color:ink,fontWeight:'800'}}>Ustawienia profilu →</Text>
     </Pressable>

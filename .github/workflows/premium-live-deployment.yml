@@ -31,7 +31,7 @@ jobs:
             homepage_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)
             stylesheet_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css' || true)
             css_hash=$(sha256sum "$css_file" | cut -c1-12)
-            if [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] && \
+            if [ "$css_hash" = "$(sha256sum public/academy/premium-theme.css | cut -c1-12)" ] && [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] && \
                 grep -Fq "premium-theme.css?v=${css_hash}" "$html_file" && \
                 grep -Fq 'Responsive catalogue — single source of truth' "$css_file" && \
                 grep -Fq 'grid-template-columns:repeat(3,minmax(0,1fr))!important' "$css_file" && \
@@ -52,8 +52,10 @@ jobs:
           npm install --no-audit --no-fund
           npm install --no-save --no-audit --no-fund playwright@1.56.1
           npx playwright install --with-deps chromium
-      - name: Check all live course groups and SEO category cards at four screen sizes
-        run: node scripts/test-responsive-course-grid-browser.mjs https://trenerki.com
+      - name: Check live catalogue geometry and the signed-in course workspace
+        run: |
+          node scripts/test-responsive-course-grid-browser.mjs https://trenerki.com
+          node scripts/test-academy-workspace-browser.mjs https://trenerki.com
       - name: Save live desktop/tablet/phone grid screenshots
         if: always()
         uses: actions/upload-artifact@v4

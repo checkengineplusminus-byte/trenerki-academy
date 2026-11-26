@@ -47,7 +47,7 @@ const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
- const desktop=Platform.OS==='web'&&screenWidth>=1100;
+ const desktop=Platform.OS==='web'&&screenWidth>=1024;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0),coachYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
  const pendingExcelHomeworkRef=React.useRef(false);
@@ -285,27 +285,34 @@ export default function Learning(){
   const hasNext=next!==undefined&&canVisit(next);
   return <View testID={'lesson-nav-'+position} style={{flexDirection:'row',flexWrap:'wrap',gap:8,marginVertical:10}}>
    <Pressable accessibilityRole="button" accessibilityLabel="Poprzednia lekcja" disabled={saving||previous===undefined}
-    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9',opacity:previous===undefined?0.48:1}}>
+    onPress={()=>{if(previous!==undefined)changeModule(previous);}} style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#EFF3F8',opacity:previous===undefined?0.48:1}}>
     <Text style={{color:ink,fontWeight:'800'}}>← Poprzednia lekcja</Text>
    </Pressable>
    {firstPending&&module!==unlockedNo&&<Pressable accessibilityRole="button" disabled={saving} onPress={()=>changeModule(unlockedNo)}
-    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#dfeeda'}}>
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#EFF3F8'}}>
     <Text style={{color:ink,fontWeight:'800'}}>Wróć do miejsca nauki</Text>
    </Pressable>}
    {hasNext&&<Pressable accessibilityRole="button" accessibilityLabel="Następna dostępna lekcja" disabled={saving} onPress={()=>changeModule(next)}
-    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#edf4e9'}}>
+    style={{minHeight:44,justifyContent:'center',paddingHorizontal:12,borderRadius:9,backgroundColor:'#EFF3F8'}}>
     <Text style={{color:ink,fontWeight:'800'}}>Następna lekcja →</Text>
    </Pressable>}
   </View>;
  }
- return <ScrollView ref={scrollRef} style={{backgroundColor:'#F7F9FC',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:desktop?1920:1000,alignSelf:'center',width:'100%'}}>
-  <View style={{flexDirection:desktop?'row':'column',alignItems:'flex-start',gap:desktop?28:0}}>
-   {desktop&&<View testID="desktop-course-sidebar" style={{width:290,flexShrink:0,backgroundColor:'white',borderColor:line,borderWidth:1,borderRadius:14,padding:16,gap:8}}>
-    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Plan kursu</Text>
-    <Text style={{fontSize:13,color:secondary,marginBottom:8}}>{courseInfo.title}</Text>
-    {items.map((item,i)=><Pressable key={item.lesson_no} accessibilityRole="button" disabled={saving||!canVisit(item.lesson_no)} onPress={()=>changeModule(item.lesson_no)} style={{padding:10,borderRadius:8,backgroundColor:item.lesson_no===module?ink:'#EFF3F8',opacity:canVisit(item.lesson_no)?1:0.5}}><Text style={{fontSize:13,lineHeight:19,color:item.lesson_no===module?'white':ink,fontWeight:item.lesson_no===module?'800':'500'}}>{done.includes(item.lesson_no)?'✓ ':!canVisit(item.lesson_no)?'🔒 ':''}{i+1}. {item.title_pl}</Text></Pressable>)}
-   </View>}
-   <View testID="course-main-content" style={{flex:desktop?1:undefined,width:desktop?undefined:'100%',minWidth:0}}>
+ return <View style={{flex:1,backgroundColor:'#F7F9FC'}}>
+  <View style={{flex:1,flexDirection:'row',width:'100%',maxWidth:1920,alignSelf:'center'}}>
+   {desktop&&items.length>0&&<ScrollView testID="desktop-course-sidebar" style={{width:screenWidth>=1280?300:252,flexGrow:0,flexShrink:0,backgroundColor:'white',borderRightColor:line,borderRightWidth:1}} contentContainerStyle={{padding:16,gap:6}}>
+    <Text accessibilityRole="header" style={{fontSize:20,fontWeight:'900',color:ink}}>Plan kursu</Text>
+    <Text style={{fontSize:14,color:secondary,marginBottom:10}}>{courseInfo.title}</Text>
+    {items.map((item,i)=>{
+     const current=item.lesson_no===module,locked=!canVisit(item.lesson_no);
+     return <Pressable key={item.lesson_no} accessibilityRole="button" accessibilityState={{selected:current,disabled:locked||saving}}
+      disabled={saving||locked} onPress={()=>changeModule(item.lesson_no)}
+      style={{minHeight:44,justifyContent:'center',padding:10,borderRadius:8,backgroundColor:current?ink:'#EFF3F8'}}>
+      <Text style={{fontSize:13,lineHeight:19,color:current?'white':locked?secondary:ink,fontWeight:current?'800':'500'}}>{done.includes(item.lesson_no)?'✓ ':locked?'🔒 ':''}{i+1}. {item.title_pl}</Text>
+     </Pressable>;
+    })}
+   </ScrollView>}
+   <ScrollView ref={scrollRef} testID="course-main-content" style={{flex:1,minWidth:0}} contentContainerStyle={{paddingHorizontal:mobile?12:24,paddingTop:mobile?15:24,paddingBottom:90}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#2C587B',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>{!busy&&courseInfo.slug===slug&&index===0?courseInfo.title:'Moja nauka'}</Text>
   {busy&&<ActivityIndicator size="large"/>}
@@ -356,7 +363,7 @@ export default function Learning(){
     ].map(part=>{
      const n=items.filter(x=>x.lesson_no>=part.start&&x.lesson_no<part.start+10&&done.includes(x.lesson_no)).length;
      const current=module>=part.start&&module<part.start+10;
-     return <View key={part.start} style={{backgroundColor:current?'#e5f2e0':'#f7faf4',borderWidth:1,borderColor:current?'#9bc39a':'#dae8d6',paddingVertical:10,paddingHorizontal:13,borderRadius:12}}>
+     return <View key={part.start} style={{backgroundColor:current?'#EFF3F8':'#EFF3F8',borderWidth:1,borderColor:current?'#D9B76D':'#DCE4ED',paddingVertical:10,paddingHorizontal:13,borderRadius:12}}>
       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:7}}>
        <Text style={{color:ink,fontSize:13,fontWeight:'900',flex:1}}>{part.name}</Text>
        <Text style={{color:'#446b4f',fontSize:12,fontWeight:'900'}}>{n}/10</Text>
@@ -366,12 +373,12 @@ export default function Learning(){
     })}
    </View>}
    {index===0&&!!study&&<CourseStudyPlan key={slug} project={study}/>}
-   <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
+   {!desktop&&<Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
     style={{backgroundColor:'#EFF3F8',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#DCE4ED',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
      <Text style={{color:secondary,fontSize:12}}>Lekcja {index+1}/{items.length}</Text>
-   </Pressable>
-   {showProgram&&((slug==='ciesla-przygotowanie-czeladnicze')?[
+   </Pressable>}
+   {!desktop&&showProgram&&((slug==='ciesla-przygotowanie-czeladnicze')?[
       {name:'I · TECHNOLOGIA CIESIELSKA',about:'Lekcje 1–10 · tarcica, suszenie, więźby, złącza, pomiary',list:items.slice(0,10)},
       {name:'II · MASZYNOZNAWSTWO',about:'Lekcje 11–20 · piły, obrabiarki, napędy, konserwacja',list:items.slice(10,20)},
       {name:'III · MATERIAŁOZNAWSTWO',about:'Lekcje 21–30 · anatomia drewna, wilgotność, wady, kleje',list:items.slice(20,30)},
@@ -411,8 +418,8 @@ export default function Learning(){
      accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
      onPress={openExcelHomework}
      style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
-     <Text style={{fontWeight:'900',fontSize:16,color:'#1d5839'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
-     <Text style={{fontSize:12,lineHeight:20,color:'#37674a'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
+     <Text style={{fontWeight:'900',fontSize:16,color:'#2C587B'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
+     <Text style={{fontSize:12,lineHeight:20,color:'#43596F'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
     </Pressable>}
    {index===0&&(slug!=='autocad-skroty'||!introRead)&&<CourseIntro slug={slug} title={courseInfo.title} description={courseInfo.description} first={slug!=='autocad-skroty'}/>}
    {index===0&&slug==='excel-skroty'&&<ExcelAcademyLibrary key={'excel-start-'+module} lessonNo={module}/>}
@@ -440,7 +447,7 @@ export default function Learning(){
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
    {slug==='ai-bez-tajemnic'&&<Pressable testID="anielka-top-cta" accessibilityRole="button" onPress={focusAnielka}
     style={{padding:15,backgroundColor:'#e4f2e5',borderRadius:13,borderWidth:1,borderColor:'#a9cfae',marginBottom:14,minHeight:51}}>
-    <Text style={{color:'#173e2d',fontSize:16,fontWeight:'900'}}>Ćwicz z Anielką · przejdź do pracowni ↓</Text>
+    <Text style={{color:'#14263B',fontSize:16,fontWeight:'900'}}>Ćwicz z Anielką · przejdź do pracowni ↓</Text>
     <Text style={{color:'#446b52',fontSize:12,lineHeight:20}}>4 sposoby pracy: wspólne ćwiczenie, wskazówka, sprawdzenie próby i pytanie kontrolne.</Text>
    </Pressable>}
    {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}
@@ -544,9 +551,9 @@ export default function Learning(){
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
        {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}
-      {!lesson.material?.sections?.length&&!!lesson.material?.shortcuts?.length&&!!lesson.material?.raw?.[1]&&<View style={{backgroundColor:'#ecf4e9',borderColor:'#dce9d8',borderWidth:1,padding:17,borderRadius:14,marginBottom:15,gap:8}}>
+      {!lesson.material?.sections?.length&&!!lesson.material?.shortcuts?.length&&!!lesson.material?.raw?.[1]&&<View style={{backgroundColor:'#EFF3F8',borderColor:'#DCE4ED',borderWidth:1,padding:17,borderRadius:14,marginBottom:15,gap:8}}>
        <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
-       <Text style={{color:'#244a36',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
+       <Text style={{color:'#2C587B',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
       <View onLayout={event=>{
        workshopYRef.current=exerciseYRef.current+event.nativeEvent.layout.y;
@@ -587,7 +594,7 @@ export default function Learning(){
    </>}
   </>}
   {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#EFF3F8'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
-   </View>
+   </ScrollView>
   </View>
- </ScrollView>;
+ </View>;
 }

@@ -273,7 +273,7 @@ export default function ProgramKsiegowosci(){
       <Text style={s.h2}>{filtering?'Znalezione tematy':sections[(expanded||1)-1]}</Text>
      </View>
      <Pressable accessibilityRole="button" accessibilityLabel="Zamknij listę lekcji" onPress={()=>{setExpanded(null);setSearch('');setFilter('all');}} style={s.closeChapter}>
-      <Text style={{fontSize:20,color:'#315d42'}}>×</Text>
+      <Text style={{fontSize:20,color:'#2C587B'}}>×</Text>
      </Pressable>
     </View>
     {(filter==='missing'&&!coverageKnown)
@@ -330,30 +330,30 @@ const s=StyleSheet.create({
  lessonUnavailable:{fontSize:12,color:'#718676'},
 
  page:{flex:1,backgroundColor:'#F7F9FC'},
- wrap:{width:'100%',maxWidth:960,alignSelf:'center',padding:16,paddingBottom:40,gap:12},
+ wrap:{width:'100%',maxWidth:1720,alignSelf:'center',padding:16,paddingBottom:40,gap:12},
  nav:{flexDirection:'row',flexWrap:'wrap',gap:18},
  link:{color:'#956818',fontSize:14,fontWeight:'800',paddingVertical:5},
- eyebrow:{fontSize:12,letterSpacing:1,fontWeight:'800',color:'#507452'},
+ eyebrow:{fontSize:12,letterSpacing:1,fontWeight:'800',color:'#53677D'},
  h1:{fontSize:28,lineHeight:35,fontWeight:'900',color:'#14263B'},
  h2:{fontSize:19,fontWeight:'800',color:'#14263B',lineHeight:26},
- body:{fontSize:15,lineHeight:24,color:'#294735'},
- label:{fontSize:14,lineHeight:22,fontWeight:'800',color:'#21492f'},
- small:{fontSize:12,lineHeight:20,color:'#526e59'},
- todo:{fontSize:13,lineHeight:21,color:'#44554a'},
+ body:{fontSize:15,lineHeight:24,color:'#43596F'},
+ label:{fontSize:14,lineHeight:22,fontWeight:'800',color:'#14263B'},
+ small:{fontSize:12,lineHeight:20,color:'#53677D'},
+ todo:{fontSize:13,lineHeight:21,color:'#43596F'},
  topicTitle:{fontSize:15,lineHeight:23,fontWeight:'800',color:'#14263B'},
- notice:{padding:17,borderRadius:14,backgroundColor:'#e7f0dd',gap:8},
+ notice:{padding:17,borderRadius:14,backgroundColor:'#EFF3F8',gap:8},
  card:{backgroundColor:'white',borderWidth:1,borderColor:'#DDE4EC',padding:14,borderRadius:14,gap:8},
- startCard:{backgroundColor:'#eef6e7',padding:10,borderRadius:14,gap:5},
+ startCard:{backgroundColor:'#EFF3F8',padding:10,borderRadius:14,gap:5},
  searchCard:{backgroundColor:'white',padding:9,borderRadius:14,borderWidth:1,borderColor:'#DDE4EC',gap:5},
- startLink:{backgroundColor:'#193c2b',color:'white',fontWeight:'900',fontSize:15,padding:12,borderRadius:12,overflow:'hidden'},
+ startLink:{backgroundColor:'#14263B',color:'white',fontWeight:'900',fontSize:15,padding:12,borderRadius:12,overflow:'hidden'},
  progressToggle:{alignSelf:'flex-start',minHeight:34,justifyContent:'center',paddingHorizontal:5},
  editorToggle:{alignSelf:'flex-end',padding:10},
- heading:{gap:5},step:{fontSize:11,fontWeight:'800',letterSpacing:.8,color:'#547d4d'},
- topic:{paddingTop:12,borderTopWidth:1,borderColor:'#e5ede0',gap:5},
+ heading:{gap:5},step:{fontSize:11,fontWeight:'800',letterSpacing:.8,color:'#53677D'},
+ topic:{paddingTop:12,borderTopWidth:1,borderColor:'#DCE4ED',gap:5},
  warning:{backgroundColor:'#fff0e5',padding:14,color:'#893a26',borderRadius:10,fontSize:14},
  grid:{flexDirection:'row',flexWrap:'wrap',gap:9},
  metric:{minWidth:136,flexGrow:1,flexBasis:'30%',backgroundColor:'white',borderRadius:13,borderColor:'#DDE4EC',borderWidth:1,padding:14,gap:4},
- metricNumber:{fontSize:25,fontWeight:'900',color:'#19422c'},
+ metricNumber:{fontSize:25,fontWeight:'900',color:'#14263B'},
  input:{borderWidth:1,borderColor:'#c9dcc6',borderRadius:10,padding:12,color:'#14263B',fontSize:15},
  filters:{flexDirection:'row',flexWrap:'wrap',gap:7},
  pill:{paddingVertical:8,paddingHorizontal:12,borderColor:'#ccdcc8',borderWidth:1,borderRadius:22,backgroundColor:'#F7F9FC'},

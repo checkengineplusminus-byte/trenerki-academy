@@ -25,14 +25,14 @@ export default function AutoCADPracticeFiles({lessonNo}:{lessonNo:number}){
    link.remove();
   }else void Linking.openURL('https://trenerki.com'+path);
  };
- return <View testID="autocad-real-dxf" style={{backgroundColor:'#f1f7ed',borderRadius:14,borderWidth:1,borderColor:'#c9ddc1',padding:16,gap:9,marginBottom:16}}>
-  <Text style={{fontSize:17,fontWeight:'900',color:'#173e2d'}}>Ćwicz w prawdziwym AutoCAD-zie</Text>
-  <Text style={{fontSize:14,lineHeight:22,color:'#355544'}}>Gotowy plik DXF zawiera rzeczywistą geometrię 2D w milimetrach, nie symulację. Otwórz go w AutoCAD lub AutoCAD LT na komputerze.</Text>
-  <Text style={{fontWeight:'800',fontSize:15,color:'#173e2d'}}>{file.name}</Text>
-  <Text style={{fontSize:14,lineHeight:22,color:'#355544'}}>{file.task}</Text>
-  <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz plik DXF: '+file.filename} onPress={download} style={{backgroundColor:'#173e2d',padding:15,borderRadius:10,minHeight:48}}>
+ return <View testID="autocad-real-dxf" style={{backgroundColor:'#EFF3F8',borderRadius:14,borderWidth:1,borderColor:'#DCE4ED',padding:16,gap:9,marginBottom:16}}>
+  <Text style={{fontSize:17,fontWeight:'900',color:'#14263B'}}>Ćwicz w prawdziwym AutoCAD-zie</Text>
+  <Text style={{fontSize:14,lineHeight:22,color:'#2C587B'}}>Gotowy plik DXF zawiera rzeczywistą geometrię 2D w milimetrach, nie symulację. Otwórz go w AutoCAD lub AutoCAD LT na komputerze.</Text>
+  <Text style={{fontWeight:'800',fontSize:15,color:'#14263B'}}>{file.name}</Text>
+  <Text style={{fontSize:14,lineHeight:22,color:'#2C587B'}}>{file.task}</Text>
+  <Pressable accessibilityRole="button" accessibilityLabel={'Pobierz plik DXF: '+file.filename} onPress={download} style={{backgroundColor:'#14263B',padding:15,borderRadius:10,minHeight:48}}>
    <Text style={{fontWeight:'900',fontSize:15,color:'white',textAlign:'center'}}>Pobierz plik DXF do AutoCAD ↓</Text>
   </Pressable>
-  <Text style={{fontSize:12,lineHeight:19,color:'#526b57'}}>Po otwarciu sprawdź jednostki poleceniem UNITS i zapisz własny plik DWG. Pliki służą wyłącznie do ćwiczeń, nie do produkcji.</Text>
+  <Text style={{fontSize:12,lineHeight:19,color:'#53677D'}}>Po otwarciu sprawdź jednostki poleceniem UNITS i zapisz własny plik DWG. Pliki służą wyłącznie do ćwiczeń, nie do produkcji.</Text>
  </View>;
 }

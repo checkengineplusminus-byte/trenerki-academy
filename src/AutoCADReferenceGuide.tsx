@@ -5,7 +5,7 @@ import supplement from '../content/autocad-source-aliases-2026.json';
 
 type Tab='steps'|'menu'|'commands'|'aliases'|'keys';
 type RecordItem={command:string;alias?:string;category:string;label:string;purpose:string;lab:boolean;sourceDescription?:string;note?:string};
-const ink='#183e2b',muted='#4d6754';
+const ink='#14263B',muted='#53677D';
 const tabs:{id:Tab;label:string}[]=[
  {id:'steps',label:'Ćwicz krok po kroku'},
  {id:'menu',label:'Całe menu'},
@@ -50,7 +50,7 @@ const detailFor=(item:RecordItem)=>{
 };
 const action=(label:string,onPress:()=>void,selected=false)=><Pressable key={label} accessibilityRole="button" accessibilityState={{selected}}
   onPress={onPress} style={{paddingHorizontal:12,paddingVertical:10,minHeight:43,borderRadius:9,justifyContent:'center',
-  backgroundColor:selected?ink:'#e7f1e4',borderWidth:1,borderColor:selected?ink:'#cadbc6'}}>
+  backgroundColor:selected?ink:'#EFF3F8',borderWidth:1,borderColor:selected?ink:'#DCE4ED'}}>
  <Text style={{fontWeight:'800',fontSize:13,color:selected?'white':ink}}>{label}</Text>
 </Pressable>;
 export default function AutoCADReferenceGuide(){
@@ -74,22 +74,22 @@ export default function AutoCADReferenceGuide(){
    <Pressable accessibilityRole="button" accessibilityState={{expanded}} onPress={()=>setDetails(expanded?'':item.command)} style={{gap:5}}>
     <Text style={{fontWeight:'900',fontSize:15,color:ink}}>{item.command}{item.alias?' · '+item.alias:''} — {item.label} {expanded?'↑':'↓'}</Text>
     <Text style={{color:muted,lineHeight:21,fontSize:13}}>{item.purpose}</Text>
-    <Text style={{fontSize:11,color:item.lab?'#267248':'#64776d',fontWeight:'800'}}>{item.lab?'Działa w naszym warsztacie 2D':'Ćwicz w Autodesk; zakres symulatora ograniczony'}</Text>
+    <Text style={{fontSize:11,color:item.lab?'#2C587B':'#53677D',fontWeight:'800'}}>{item.lab?'Działa w naszym warsztacie 2D':'Ćwicz w Autodesk; zakres symulatora ograniczony'}</Text>
    </Pressable>
-   {expanded&&<View testID="autocad-command-detail" style={{gap:10,padding:9,borderLeftWidth:3,borderColor:'#a6c7aa',backgroundColor:'#f5f9f2'}}>
+   {expanded&&<View testID="autocad-command-detail" style={{gap:10,padding:9,borderLeftWidth:3,borderColor:'#a6c7aa',backgroundColor:'#EFF3F8'}}>
     <Text style={{fontWeight:'900',color:ink}}>Uruchomienie i kolejność</Text><Text style={{color:muted,lineHeight:23}}>{ex.start}</Text>
     <Text style={{fontWeight:'900',color:ink}}>Kontrola wyniku</Text><Text style={{color:muted,lineHeight:23}}>{ex.check}</Text>
     <Text style={{fontWeight:'900',color:ink}}>Najczęstsza pomyłka</Text><Text style={{color:muted,lineHeight:23}}>{ex.warning}</Text>
     {item.note&&<Text style={{color:'#705823',lineHeight:21}}>{item.note}</Text>}
     {item.sourceDescription&&<Text style={{fontSize:12,color:'#748178',lineHeight:19}}>Opis z przesłanego zestawienia (EN): {item.sourceDescription}</Text>}
     <Pressable accessibilityRole="link" onPress={()=>link(supplement.autodeskDocs.commands)} style={{padding:8}}>
-     <Text style={{color:'#1f6745',fontWeight:'900'}}>Sprawdź szczegóły polecenia w Autodesk ↗</Text>
+     <Text style={{color:'#2C587B',fontWeight:'900'}}>Sprawdź szczegóły polecenia w Autodesk ↗</Text>
     </Pressable>
    </View>}
   </View>;
  };
- return <View testID="autocad-reference-guide" style={{borderColor:'#c8dcc6',borderWidth:1,borderRadius:15,backgroundColor:'#f5f9f2',marginVertical:12,overflow:'hidden'}}>
-  <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setOpen(x=>!x)} style={{padding:17,gap:6,backgroundColor:'#e9f4e5'}}>
+ return <View testID="autocad-reference-guide" style={{borderColor:'#DCE4ED',borderWidth:1,borderRadius:15,backgroundColor:'#EFF3F8',marginVertical:12,overflow:'hidden'}}>
+  <Pressable accessibilityRole="button" accessibilityState={{expanded:open}} onPress={()=>setOpen(x=>!x)} style={{padding:17,gap:6,backgroundColor:'#EFF3F8'}}>
    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{open?'Zwiń bibliotekę AutoCAD ↑':'Biblioteka AutoCAD: menu, skala, czcionki, OSNAP, skróty ↓'}</Text>
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>{allCommands.length} opisów poleceń, {supplement.entries.length} wierszy aliasów z przesłanej listy, {allKeys.length} skrótów i {ref.tabs.length} kart/pasków. Otwórz wybraną kartę, a następnie szczegóły funkcji.</Text>
   </Pressable>
@@ -105,7 +105,7 @@ export default function AutoCADReferenceGuide(){
      <Text style={{color:ink,fontWeight:'900'}}>Rezultat</Text><Text style={{color:muted,lineHeight:22}}>{guide.result}</Text>
      <Text style={{color:ink,fontWeight:'900'}}>Typowy błąd</Text><Text style={{color:muted,lineHeight:22}}>{guide.mistake}</Text>
      <Pressable accessibilityRole="link" onPress={()=>link(guide.docs)} style={{padding:10}}>
-      <Text style={{color:'#1d6a44',fontWeight:'900'}}>Instrukcja Autodesk ↗</Text>
+      <Text style={{color:'#2C587B',fontWeight:'900'}}>Instrukcja Autodesk ↗</Text>
      </Pressable>
     </View>
    </View>}
@@ -122,7 +122,7 @@ export default function AutoCADReferenceGuide(){
    {(tab==='commands'||tab==='aliases')&&<View style={{gap:12}}>
     <TextInput accessibilityLabel="Szukaj komendy AutoCAD" value={query} onChangeText={v=>{setQuery(v);setVisible(24);setDetails('');}}
      placeholder="Znajdź polecenie, alias albo temat" placeholderTextColor="#879988"
-     style={{padding:13,minHeight:46,backgroundColor:'white',borderRadius:9,borderWidth:1,borderColor:'#c4d6c2',fontSize:15,color:ink}}/>
+     style={{padding:13,minHeight:46,backgroundColor:'white',borderRadius:9,borderWidth:1,borderColor:'#DCE4ED',fontSize:15,color:ink}}/>
     {tab==='commands'&&<View style={{flexDirection:'row',gap:7,flexWrap:'wrap'}}>{categories.map(x=>action(x,()=>{setCategory(x);setVisible(24);},category===x))}</View>}
     <Text style={{fontSize:13,fontWeight:'800',color:muted}}>Znaleziono: {tab==='commands'?found.length:aliases.length}</Text>
     {tab==='commands'?found.slice(0,visible).map(detailCard):aliases.slice(0,visible).map((x,i)=><View key={x.alias+'-'+x.command+'-'+i} style={{backgroundColor:'white',padding:12,borderRadius:9,gap:5}}>
@@ -133,7 +133,7 @@ export default function AutoCADReferenceGuide(){
      </View>)}
     {(tab==='commands'?found.length:aliases.length)>visible&&action('Pokaż kolejne '+Math.min(24,(tab==='commands'?found.length:aliases.length)-visible),()=>setVisible(x=>x+24))}
     <Pressable accessibilityRole="link" onPress={()=>link(ref.links.commands)} style={{padding:10}}>
-     <Text style={{color:'#1e6544',fontWeight:'900'}}>Alfabetyczny indeks wszystkich poleceń Autodesk ↗</Text>
+     <Text style={{color:'#2C587B',fontWeight:'900'}}>Alfabetyczny indeks wszystkich poleceń Autodesk ↗</Text>
     </Pressable>
    </View>}
    {tab==='keys'&&<View style={{gap:10}}>
@@ -141,7 +141,7 @@ export default function AutoCADReferenceGuide(){
     <Text style={{fontSize:13,color:muted,lineHeight:21}}>Sprawdzaj przypisania z dokumentacją i plikami CUIx oraz PGP. Przesłana lista zawiera niektóre historyczne opisy; zaznaczyłem różnice z Autodesk 2026.</Text>
     <TextInput accessibilityLabel="Szukaj skrótu klawiaturowego" value={shortcutsQuery} onChangeText={setShortcutsQuery}
      placeholder="Ctrl+W, F3, OSNAP..." placeholderTextColor="#829282"
-     style={{backgroundColor:'white',padding:13,borderRadius:9,borderWidth:1,borderColor:'#b4ccb1',color:ink}}/>
+     style={{backgroundColor:'white',padding:13,borderRadius:9,borderWidth:1,borderColor:'#DCE4ED',color:ink}}/>
     {keys.map(x=><View key={x.keys} style={{flexDirection:'row',gap:12,padding:12,backgroundColor:'white',borderRadius:8}}>
      <Text style={{color:ink,fontWeight:'900',minWidth:112}}>{x.keys}</Text>
      <View style={{flex:1,gap:4}}><Text style={{color:muted,lineHeight:21}}>{x.purpose}</Text>
@@ -149,7 +149,7 @@ export default function AutoCADReferenceGuide(){
      </View>
     </View>)}
     <Pressable accessibilityRole="link" onPress={()=>link(supplement.autodeskDocs.keys)} style={{padding:10}}>
-     <Text style={{fontWeight:'900',color:'#246b47'}}>Autodesk 2026 — oficjalna tabela skrótów ↗</Text>
+     <Text style={{fontWeight:'900',color:'#2C587B'}}>Autodesk 2026 — oficjalna tabela skrótów ↗</Text>
     </Pressable>
    </View>}
   </View>}

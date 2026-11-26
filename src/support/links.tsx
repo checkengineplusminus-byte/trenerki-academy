@@ -3,7 +3,7 @@ import {Linking,Platform,Pressable,StyleSheet,Text,View,useWindowDimensions,Scro
 
 export const helpTitle='Potrzebujesz pomocy? Nie jesteś sam';
 export const helpDescription='Bezpłatne telefony zaufania i profesjonalne wsparcie';
-const ink='#17392a';
+const ink='#14263B';
 const footerLinks=[
  {label:'Kontakt',href:'/academy/kontakt.html'},
  {label:'Regulamin',href:'/academy/regulamin.html'},
@@ -26,10 +26,10 @@ export function HelpFooter({compact=false}:{compact?:boolean}={}){
  // Mobile layout must not rely on a separately deployed/cached stylesheet.
  // One unobtrusive row, always horizontally scrollable, never a multi-line card.
  if(Platform.OS==='web'&&width<640){
-  const linkStyle:React.CSSProperties={display:'inline-flex',alignItems:'center',justifyContent:'center',flex:'0 0 auto',height:44,padding:'0 7px',fontSize:12,fontWeight:650,whiteSpace:'nowrap',color:'#cbd9cf',textDecoration:'none'};
-  return <footer aria-label="Pomoc i informacje" style={{flex:'0 0 auto',boxSizing:'border-box',width:'100%',backgroundColor:'#102820',borderTop:'1px solid #2c463b',padding:'2px 9px',fontFamily:'system-ui, -apple-system, BlinkMacSystemFont, sans-serif'}}>
+  const linkStyle:React.CSSProperties={display:'inline-flex',alignItems:'center',justifyContent:'center',flex:'0 0 auto',height:44,padding:'0 7px',fontSize:12,fontWeight:650,whiteSpace:'nowrap',color:'#D6E1EA',textDecoration:'none'};
+  return <footer aria-label="Pomoc i informacje" style={{flex:'0 0 auto',boxSizing:'border-box',width:'100%',backgroundColor:'#102C45',borderTop:'1px solid #39556D',padding:'2px 9px',fontFamily:'system-ui, -apple-system, BlinkMacSystemFont, sans-serif'}}>
    <div style={{display:'flex',alignItems:'center',gap:5,minWidth:0,maxWidth:1100,margin:'0 auto'}}>
-    <a href="/pomoc" aria-label={helpTitle} style={{...linkStyle,padding:'0 4px',color:'#f1ede0',fontWeight:750}}>♡ Pomoc</a>
+    <a href="/pomoc" aria-label={helpTitle} style={{...linkStyle,padding:'0 4px',color:'#FAF7EF',fontWeight:750}}>♡ Pomoc</a>
     <nav aria-label="Informacje i kontakt" className="ta-app-footer-links" style={{display:'flex',alignItems:'center',flex:'1 1 auto',minWidth:0,width:'auto',flexWrap:'nowrap',gap:2,margin:0,overflowX:'auto',whiteSpace:'nowrap',WebkitOverflowScrolling:'touch'}}>
      <a style={linkStyle} href="/academy/program-afiliacyjny.html">Partnerzy</a>
      {footerLinks.map(({href,label})=><a style={linkStyle} href={href} key={href}>{label}</a>)}
@@ -37,13 +37,13 @@ export function HelpFooter({compact=false}:{compact?:boolean}={}){
    </div>
   </footer>;
  }
- if(Platform.OS!=='web'&&width<640)return <View role="contentinfo" style={{backgroundColor:'#102820',borderTopWidth:1,borderTopColor:'#2c463b'}}>
+ if(Platform.OS!=='web'&&width<640)return <View role="contentinfo" style={{backgroundColor:'#102C45',borderTopWidth:1,borderTopColor:'#39556D'}}>
   <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{alignItems:'center',paddingHorizontal:10,gap:4}}>
    <Pressable accessibilityRole="link" accessibilityLabel={helpTitle} onPress={()=>openSupportLink('/pomoc')} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}>
-    <Text style={{fontSize:12,fontWeight:'800',color:'#f1ede0'}}>♡ Pomoc</Text>
+    <Text style={{fontSize:12,fontWeight:'800',color:'#FAF7EF'}}>♡ Pomoc</Text>
    </Pressable>
-   <Pressable accessibilityRole="link" onPress={()=>openSupportLink('/academy/program-afiliacyjny.html')} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}><Text style={{fontSize:12,color:'#cbd9cf'}}>Partnerzy</Text></Pressable>
-   {footerLinks.map(({href,label})=><Pressable key={href} accessibilityRole="link" onPress={()=>openSupportLink(href)} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}><Text style={{fontSize:12,color:'#cbd9cf'}}>{label}</Text></Pressable>)}
+   <Pressable accessibilityRole="link" onPress={()=>openSupportLink('/academy/program-afiliacyjny.html')} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}><Text style={{fontSize:12,color:'#D6E1EA'}}>Partnerzy</Text></Pressable>
+   {footerLinks.map(({href,label})=><Pressable key={href} accessibilityRole="link" onPress={()=>openSupportLink(href)} style={{minHeight:44,justifyContent:'center',paddingHorizontal:8}}><Text style={{fontSize:12,color:'#D6E1EA'}}>{label}</Text></Pressable>)}
   </ScrollView>
  </View>;
  if(Platform.OS==='web')return <footer className={compact?'ta-app-footer ta-app-footer--compact':'ta-app-footer'}>
@@ -87,17 +87,17 @@ export function HelpFooter({compact=false}:{compact?:boolean}={}){
 }
 
 const footerStyles=StyleSheet.create({
- root:{backgroundColor:'#102820',borderTopWidth:1,borderColor:'#2c463b',paddingHorizontal:16,paddingVertical:10},
+ root:{backgroundColor:'#102C45',borderTopWidth:1,borderColor:'#39556D',paddingHorizontal:16,paddingVertical:10},
  inner:{width:'100%',maxWidth:1100,alignSelf:'center',flexDirection:'row',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',columnGap:20,rowGap:4},
- help:{maxWidth:'100%',minHeight:48,flexDirection:'row',alignItems:'center',gap:10,padding:8,paddingRight:13,borderRadius:14,borderWidth:1,borderColor:'#355448',backgroundColor:'#18372d'},
- heart:{width:34,height:34,borderRadius:17,justifyContent:'center',alignItems:'center',backgroundColor:'#2d4237'},
+ help:{maxWidth:'100%',minHeight:48,flexDirection:'row',alignItems:'center',gap:10,padding:8,paddingRight:13,borderRadius:14,borderWidth:1,borderColor:'#39556D',backgroundColor:'#102C45'},
+ heart:{width:34,height:34,borderRadius:17,justifyContent:'center',alignItems:'center',backgroundColor:'#39556D'},
  heartText:{fontSize:23,color:'#e9a6b0',lineHeight:27},
  copy:{flexShrink:1},
- title:{color:'#f1ede0',fontSize:14,fontWeight:'700'},
- description:{color:'#b7c8bd',fontSize:12,marginTop:2},
+ title:{color:'#FAF7EF',fontSize:14,fontWeight:'700'},
+ description:{color:'#D6E1EA',fontSize:12,marginTop:2},
  links:{flexDirection:'row',flexWrap:'wrap',gap:6},
  link:{minHeight:44,justifyContent:'center',paddingHorizontal:8},
- linkText:{color:'#f1ede0',fontSize:13,fontWeight:'700'},
+ linkText:{color:'#FAF7EF',fontSize:13,fontWeight:'700'},
  pressed:{opacity:.76},
 });
 
@@ -112,7 +112,7 @@ export function LessonHelp({slug,title}:{slug:string;title:string}){
  const category=courses[slug];
  const relevant=/kryzys|przemoc|uzależnie|nałóg|pomoc|wsparci|dług|zadłuż|rozsta|konflikt|granice|emocj|samotn|bezpieczeńst|mediac|finans|budżet|alarm/i.test(title);
  if(!category||!relevant)return null;
- return <View style={{borderLeftWidth:3,borderColor:'#6d9872',backgroundColor:'#eef5eb',marginTop:13,padding:14,gap:8}}>
+ return <View style={{borderLeftWidth:3,borderColor:'#D9B76D',backgroundColor:'#EFF3F8',marginTop:13,padding:14,gap:8}}>
   <Text style={{color:ink,lineHeight:22}}>Jeśli ten temat dotyczy Twojej osobistej sytuacji i potrzebujesz dodatkowego wsparcia, możesz bezpłatnie skontaktować się ze specjalistą.</Text>
   <HelpLink href={'/pomoc#'+category}>Znajdź pomoc</HelpLink>
  </View>;

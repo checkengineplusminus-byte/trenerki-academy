@@ -72,7 +72,7 @@ body > header.ta-site-header > a,
 body > header.ta-site-header .brand,
 body > header.ta-site-header .logo{color:#F7FAFC!important;
  font-size:clamp(14px,1.5vw,18px);font-weight:850;text-decoration:none}
-body > header.ta-site-header .top{width:100%;max-width:1150px;margin-inline:auto;
+body > header.ta-site-header .top{width:100%;max-width:1920px;margin-inline:auto;
  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
  gap:10px 16px}
 body > header.ta-site-header .ta-site-shortcuts{margin:0 0 0 auto;

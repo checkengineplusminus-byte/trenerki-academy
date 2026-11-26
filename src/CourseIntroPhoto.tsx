@@ -29,6 +29,6 @@ export default function CourseIntroPhoto({slug,title}:{slug:string;title:string}
 
 const styles=StyleSheet.create({
  frame:{width:'100%',aspectRatio:16/9,marginBottom:13,position:'relative',overflow:'hidden',
-  alignItems:'center',justifyContent:'center',backgroundColor:'#edf5e7',borderRadius:17,borderWidth:1,borderColor:'#dbe9d7'},
+  alignItems:'center',justifyContent:'center',backgroundColor:'#EFF3F8',borderRadius:17,borderWidth:1,borderColor:'#DCE4ED'},
  photo:{position:'absolute',top:0,left:0,width:'100%',height:'100%'},
 });

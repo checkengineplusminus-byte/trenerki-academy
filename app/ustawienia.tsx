@@ -74,7 +74,7 @@ export default function AccountSettings() {
   </View>
   <Text accessibilityRole="header" style={{ fontSize: 30, fontWeight: '900', color: ink }}>Ustawienia konta</Text>
   {loading && <ActivityIndicator color={ink} accessibilityLabel="Wczytuję ustawienia konta" />}
-  {!loading && savedName !== null && <View style={{ backgroundColor: 'white', borderColor: '#dbe8d9', borderWidth: 1, borderRadius: 14, padding: 18, gap: 11 }}>
+  {!loading && savedName !== null && <View style={{ backgroundColor: 'white', borderColor: '#DCE4ED', borderWidth: 1, borderRadius: 14, padding: 18, gap: 11 }}>
    <Text style={{ color: ink, fontWeight: '800' }}>Imię i nazwisko</Text>
    <TextInput
     accessibilityLabel="Imię i nazwisko"
@@ -84,9 +84,9 @@ export default function AccountSettings() {
     maxLength={120}
     value={name}
     onChangeText={value => { setName(value); setSaved(false); setError(''); }}
-    style={{ backgroundColor: 'white', borderColor: '#b8d3b7', borderWidth: 1, borderRadius: 10, color: ink, fontSize: 16, padding: 12 }}
+    style={{ backgroundColor: 'white', borderColor: '#DCE4ED', borderWidth: 1, borderRadius: 10, color: ink, fontSize: 16, padding: 12 }}
    />
-   <Text style={{ color: '#5c7460', lineHeight: 21 }}>Te dane będą podpowiadane przy rozpoczynaniu kolejnych egzaminów.</Text>
+   <Text style={{ color: '#53677D', lineHeight: 21 }}>Te dane będą podpowiadane przy rozpoczynaniu kolejnych egzaminów.</Text>
    <Pressable accessibilityRole="button" disabled={disabled} onPress={() => void save()} style={{ backgroundColor: '#E7BB5B', opacity: disabled ? .5 : 1, borderRadius: 10, padding: 12, alignSelf: 'flex-start' }}>
     <Text style={{ color: '#14263B', fontWeight: '800' }}>{saving ? 'Zapisuję…' : 'Zapisz zmiany'}</Text>
    </Pressable>

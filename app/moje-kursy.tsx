@@ -7,11 +7,13 @@ import {academyAction} from '../src/academyApi';
 import {isAccountingCourse,courseDestination,accountingProgress,courseFinished} from '../src/accounting/course-entry.js';
 // @ts-ignore — pagination and current-curriculum counts covered by Node tests.
 import {loadCourseProgress} from '../src/learning/course-progress.js';
+import {AcademyGrid,courseColumns} from '../src/AcademyGrid';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean};
 export default function MyCourses(){
- const {width}=useWindowDimensions(),columns=width>=1600?5:width>=1280?4:width>=1024?3:width>=680?2:1,availableWidth=Math.max(0,Math.min(width,1920)-40),cardWidth=Math.floor((availableWidth-(columns-1)*16)/columns);
+ const {width}=useWindowDimensions();
+ const columns=courseColumns(width);
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
  const {checkout,session_id:sessionId}=useLocalSearchParams<{checkout?:string;session_id?:string}>();
  // Reklamy: dopiero potwierdzony webhook płatności, nigdy sam powrót z checkout.
@@ -89,7 +91,7 @@ export default function MyCourses(){
  ];
  const courseCard=(row:CourseRow)=>{
   const accounting=isAccountingCourse(row.course_slug),cert=certificates[row.course_slug],hasDiploma=!accounting&&!!cert&&!cert.is_demo,active=valid(row),done=finished(row);
-  return <View key={row.course_slug} style={{width:cardWidth,backgroundColor:'white',borderRadius:15,borderWidth:1,borderColor:'#DDE4EC',padding:10,minHeight:192,justifyContent:'space-between',gap:9}}>
+  return <View key={row.course_slug} style={{minWidth:0,backgroundColor:'white',borderRadius:15,borderWidth:1,borderColor:'#DDE4EC',padding:10,minHeight:192,justifyContent:'space-between',gap:9}}>
    <View style={{gap:7}}>
     <View style={{width:31,height:31,backgroundColor:done?'#FFF2D4':'#F2F6FA',borderRadius:11,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:15,fontWeight:'900',color:'#14263B'}}>{done?'✓':'T.'}</Text></View>
     <Text style={{fontSize:columns===2?13:15,lineHeight:columns===2?18:21,color:'#14263B',fontWeight:'800',minHeight:columns===2?54:44}} numberOfLines={3}>{row.ta_courses?.title_pl||row.course_slug}</Text>
@@ -149,7 +151,7 @@ export default function MyCourses(){
   {!busy&&!items.length&&<View style={{backgroundColor:'#EDF3F8',borderRadius:15,padding:23,gap:12}}><Text style={{fontSize:22,color:'#14263B',fontWeight:'900'}}>Zacznij od pierwszego kursu</Text><Text style={{color:'#63768A'}}>Po zapisaniu się na kurs znajdziesz go tutaj wraz z postępem nauki.</Text><Pressable onPress={()=>router.push('/')} style={{backgroundColor:'#14263B',padding:13,borderRadius:10}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Przeglądaj kursy</Text></Pressable></View>}
   {sections.filter(section=>section.rows.length>0).map(section=>{
    const limit=visibleSections[section.title]||columns,subset=section.rows.slice(0,limit),remaining=section.rows.length-subset.length;
-   return <View key={section.title} style={{marginVertical:14,gap:11}}><Text style={{fontSize:21,fontWeight:'900',color:'#14263B'}}>{section.title} ({section.rows.length})</Text><Text style={{color:'#63768A',fontSize:12,lineHeight:19}}>{section.description}</Text><View style={{flexDirection:'row',flexWrap:'wrap',gap:16}}>{subset.map(courseCard)}</View>{remaining>0&&<Pressable onPress={()=>setVisibleSections(prev=>({...prev,[section.title]:(prev[section.title]||columns)+columns}))} accessibilityRole="button" style={{alignSelf:'center',backgroundColor:'#F1F5F9',borderRadius:12,paddingHorizontal:18,paddingVertical:11,marginTop:2}}><Text style={{color:'#14263B',fontSize:13,fontWeight:'800'}}>Pokaż kolejne {Math.min(columns,remaining)} • pozostało {remaining}</Text></Pressable>}</View>;
+   return <View key={section.title} style={{marginVertical:14,gap:11}}><Text style={{fontSize:21,fontWeight:'900',color:'#14263B'}}>{section.title} ({section.rows.length})</Text><Text style={{color:'#63768A',fontSize:12,lineHeight:19}}>{section.description}</Text><AcademyGrid>{subset.map(courseCard)}</AcademyGrid>{remaining>0&&<Pressable onPress={()=>setVisibleSections(prev=>({...prev,[section.title]:(prev[section.title]||columns)+columns}))} accessibilityRole="button" style={{alignSelf:'center',backgroundColor:'#F1F5F9',borderRadius:12,paddingHorizontal:18,paddingVertical:11,marginTop:2}}><Text style={{color:'#14263B',fontSize:13,fontWeight:'800'}}>Pokaż kolejne {Math.min(columns,remaining)} • pozostało {remaining}</Text></Pressable>}</View>;
   })}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:10,marginTop:20}}><Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#F1F5F9',padding:13,borderRadius:11}}><Text style={{color:'#14263B',fontWeight:'800'}}>🎁 Karty podarunkowe</Text></Pressable><Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#F1F5F9',padding:13,borderRadius:11}}><Text style={{color:'#14263B',fontWeight:'800'}}>Przeglądaj kursy</Text></Pressable></View>
   {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:17}}><Text style={{fontSize:11,color:'#63768A'}}>Staff</Text></Pressable>}

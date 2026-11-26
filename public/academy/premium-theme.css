@@ -571,3 +571,19 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
   grid-template-columns:90px minmax(0,1fr)!important;
  }
 }
+
+@media(min-width:1024px){
+ .header .head-in,.hero .hero-in,.section>.wrap,.footer .wrap{max-width:1920px}
+}
+@media(min-width:1500px){
+ #kursy .catalog-category-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(min-width:1800px){
+ #kursy .catalog-category-grid{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+}
+/* Three featured offers fill the first view; expanded categories use all tracks. */
+@media(min-width:1500px){
+ #kursy #course-cards:has(.catalog-show-all) .catalog-category-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important
+ }
+}

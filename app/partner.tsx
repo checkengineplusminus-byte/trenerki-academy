@@ -109,7 +109,7 @@ export default function AffiliatePartner(){
   code?'https://trenerki.com/academy/index.html?ref='+code:'';
  const canSubmit=legalName.trim().length>=3&&(kind==='individual'||/^\d{10}$/.test(nip.replace(/\s/g,'')))&&adult&&terms&&privacy;
  return <ScrollView style={{flex:1,backgroundColor:cream}} contentContainerStyle={{padding:22,paddingBottom:100}}>
-  <View style={{width:'100%',maxWidth:850,alignSelf:'center',gap:18}}>
+  <View style={{width:'100%',maxWidth:1480,alignSelf:'center',gap:18}}>
    <Pressable onPress={()=>router.replace('/')} accessibilityRole="link"><Text style={{color:primary,fontWeight:'800'}}>← Wróć do Trenerki</Text></Pressable>
    <Text style={{fontSize:12,color:'#5F758C',letterSpacing:2,fontWeight:'900'}}>TRENERKI · PARTNERZY</Text>
    <Text accessibilityRole="header" style={{color:ink,fontWeight:'900',fontSize:34,lineHeight:40}}>Polecaj wiedzę. Zarabiaj 10%.</Text>

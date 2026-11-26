@@ -6,6 +6,8 @@ import {chromium} from 'playwright';
 const origin=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
 const browser=await chromium.launch({headless:true});
 const cases=[
+ {name:'wide',width:1920,height:1080,cols:5,related:5},
+ {name:'large',width:1600,height:1000,cols:4,related:4},
  {name:'desktop',width:1440,height:960,cols:3,related:3},
  {name:'small-desktop',width:1100,height:900,cols:3,related:3},
  {name:'tablet',width:820,height:950,cols:2,related:2},
@@ -27,7 +29,7 @@ for(const config of cases){
   const metrics=await page.locator('#course-cards .catalog-category-grid').evaluateAll(grids=>{
    return grids.map(grid=>{
     const cards=[...grid.querySelectorAll('.course-card')];
-    const rects=cards.slice(0,3).map(card=>{
+    const rects=cards.slice(0,5).map(card=>{
      const rect=card.getBoundingClientRect();
      const media=card.querySelector('.card-media')?.getBoundingClientRect();
      return {left:rect.left,top:rect.top,width:rect.width,height:rect.height,
@@ -40,6 +42,7 @@ for(const config of cases){
   });
   assert(metrics.length>=6,'all six course categories rendered');
   for(const [i,g] of metrics.entries()){
+   if(config.width>=1024)assert(g.width>config.width*.9,config.name+' leaves unused desktop space');
    assert.equal(g.columns,config.cols,config.name+' group '+i+' track count: '+JSON.stringify(g));
    assert(g.rects.every(r=>r.width>110&&r.width<config.width),
     config.name+' group '+i+' unreasonable card widths');

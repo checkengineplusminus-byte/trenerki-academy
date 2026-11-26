@@ -8,7 +8,7 @@ import ExcelProCaseLab from './ExcelProCaseLab';
 import {ExcelAcademyLibrary,ExcelDeepLesson} from './ExcelAcademyLibrary';
 export type LearningSection={heading:string;text:string};
 export type LessonVisual={title:string;kind:'flow'|'comparison';entries:{label:string;detail:string}[]};
-const ink='#173e2d',body='#3e5c48';
+const ink='#14263B',body='#43596F';
 const displayHeading=(value:string)=>String(value||'').replace(/^\s*(?:\d{1,3}[.)–-]\s*)+/u,'').trim();
 type Props={courseSlug:string;lessonNo:number;title:string;sections?:LearningSection[];illustration?:string;
             diagram?:string[];visual?:LessonVisual};
@@ -24,11 +24,11 @@ const volunteerIllustrations=new Map<string,{file:string;alt:string}>([
 ]);
 function Visual({title,kind,entries}:LessonVisual){
  const isFlow=kind==='flow';
- return <View testID="lesson-visual" style={{backgroundColor:'#e9f1e4',padding:15,borderRadius:14,gap:10}}>
+ return <View testID="lesson-visual" style={{backgroundColor:'#EFF3F8',padding:15,borderRadius:14,gap:10}}>
   <Text accessibilityRole="header" style={{fontWeight:'900',color:ink,fontSize:16}}>{title}</Text>
   <View style={{flexDirection:isFlow?'column':'row',flexWrap:isFlow?'nowrap':'wrap',gap:8}}>
    {entries.map(({label,detail},index)=><View key={label} style={{flexGrow:1,flexBasis:isFlow?'auto':170,flexDirection:'row',alignItems:'flex-start',backgroundColor:'#fff',padding:12,borderRadius:9,gap:10}}>
-    {isFlow&&<Text style={{backgroundColor:'#dfead8',color:ink,fontWeight:'900',width:25,lineHeight:25,textAlign:'center',borderRadius:7,overflow:'hidden'}}>{index+1}</Text>}
+    {isFlow&&<Text style={{backgroundColor:'#DCE4ED',color:ink,fontWeight:'900',width:25,lineHeight:25,textAlign:'center',borderRadius:7,overflow:'hidden'}}>{index+1}</Text>}
     <View style={{flex:1,gap:4}}>
      <Text style={{fontWeight:'900',color:ink,fontSize:14}}>{label}</Text>
      <Text style={{color:body,fontSize:14,lineHeight:21}}>{detail}</Text>
@@ -54,7 +54,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
  // orientation tab on the first lesson; here show a topic-specific method/diagram.
  const showImage=!isAutoCAD&&!!file&&Platform.OS==='web'&&!failed;
  return <View style={{marginBottom:18,gap:14}}>
-  {showImage&&<View style={{backgroundColor:'#f1f8ed',padding:9,borderWidth:1,borderColor:'#d9e7d5',borderRadius:16,gap:7}}>
+  {showImage&&<View style={{backgroundColor:'#EFF3F8',padding:9,borderWidth:1,borderColor:'#DCE4ED',borderRadius:16,gap:7}}>
    <Image
     accessibilityLabel={volunteerImage?.alt??'Ilustracja objaśniająca temat: '+title}
     source={{uri:'/academy/assets/'+file}}
@@ -64,11 +64,11 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
    />
   </View>}
   {!!visual?.entries?.length&&<Visual {...visual}/>}
-  {!visual?.entries?.length&&!!diagram?.length&&<View accessibilityLabel={'Schemat pracowni: '+title} style={{backgroundColor:'#e8f0e2',padding:13,borderRadius:12,gap:9}}>
+  {!visual?.entries?.length&&!!diagram?.length&&<View accessibilityLabel={'Schemat pracowni: '+title} style={{backgroundColor:'#EFF3F8',padding:13,borderRadius:12,gap:9}}>
    <Text style={{color:ink,fontWeight:'900'}}>Jak podejść do zadania</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
     {diagram.map((label,i)=><View key={label} style={{flex:1,minWidth:124,backgroundColor:'#fff',padding:10,borderRadius:9,gap:4}}>
-     <Text style={{color:'#567357',fontWeight:'900',fontSize:12}}>{String(i+1).padStart(2,'0')}</Text>
+     <Text style={{color:'#53677D',fontWeight:'900',fontSize:12}}>{String(i+1).padStart(2,'0')}</Text>
      <Text style={{color:ink,fontWeight:'800',fontSize:14}}>{label}</Text>
     </View>)}
    </View>
@@ -80,18 +80,18 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
   {courseSlug==='excel-skroty'&&<ExcelRealHomework key={'excel-homework-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&lessonNo>=15&&<ExcelAnalystWorkbench key={'excel-advanced-'+lessonNo} lessonNo={lessonNo}/>}
   {courseSlug==='excel-skroty'&&[25,28,29].includes(lessonNo)&&<ExcelProCaseLab/>}
-  {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#dce9d8',borderRadius:16,overflow:'hidden'}}>
-   <View style={{backgroundColor:'#e8f3e3',padding:15}}>
+  {!!named.length&&<View style={{backgroundColor:'#fff',borderWidth:1,borderColor:'#DCE4ED',borderRadius:16,overflow:'hidden'}}>
+   <View style={{backgroundColor:'#EFF3F8',padding:15}}>
     <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Wyjaśnienie krok po kroku</Text>
    </View>
    <View style={{padding:15,gap:18}}>
     {named.map((section,i)=><View key={i} style={{gap:9}}>
      <View style={{flexDirection:'row',alignItems:'center',gap:10}}>
-      <Text style={{width:29,height:29,lineHeight:29,textAlign:'center',backgroundColor:'#dfedd9',color:ink,borderRadius:9,overflow:'hidden',fontWeight:'900'}}>{i+1}</Text>
+      <Text style={{width:29,height:29,lineHeight:29,textAlign:'center',backgroundColor:'#DCE4ED',color:ink,borderRadius:9,overflow:'hidden',fontWeight:'900'}}>{i+1}</Text>
       <Text style={{color:ink,fontWeight:'900',fontSize:16,flex:1}}>{displayHeading(section.heading)}</Text>
      </View>
      {displayHeading(section.heading)==='Sprawdź wynik po wykonaniu'&&!showSolution?
-      <Pressable accessibilityRole="button" onPress={()=>setShowSolution(true)} style={{backgroundColor:'#e8f3e3',alignSelf:'flex-start',padding:12,borderRadius:9}}>
+      <Pressable accessibilityRole="button" onPress={()=>setShowSolution(true)} style={{backgroundColor:'#EFF3F8',alignSelf:'flex-start',padding:12,borderRadius:9}}>
        <Text style={{color:ink,fontWeight:'800'}}>Pokaż rozwiązanie i kryteria</Text>
       </Pressable>:<Text style={{color:body,fontSize:15.5,lineHeight:27}}>{section.text}</Text>}
 

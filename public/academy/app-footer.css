@@ -1,9 +1,9 @@
 .ta-app-footer {
-  --ta-app-footer-cream: #f1ede0;
-  --ta-app-footer-muted: #b7c8bd;
+  --ta-app-footer-cream: #FAF7EF;
+  --ta-app-footer-muted: #D6E1EA;
   --ta-app-footer-heart: #e9a6b0;
-  background: #102820;
-  border-top: 1px solid #2c463b;
+  background: #102C45;
+  border-top: 1px solid #39556D;
   flex: 0 0 auto;
   color: var(--ta-app-footer-cream);
   padding: 10px clamp(14px, 3vw, 26px);
@@ -11,7 +11,7 @@
 }
 
 .ta-app-footer-inner {
-  max-width: 1100px;
+  max-width: 1920px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -44,9 +44,9 @@
   box-sizing: border-box;
   padding: 6px 12px 6px 7px;
   min-height: 46px;
-  border: 1px solid #355448;
+  border: 1px solid #39556D;
   border-radius: 14px;
-  background: #18372d;
+  background: #102C45;
   transition: background-color .18s ease, border-color .18s ease;
 }
 
@@ -68,7 +68,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #2d4237;
+  background: #39556D;
   color: var(--ta-app-footer-heart);
   font: 23px/1 Arial, sans-serif;
 }

@@ -33,21 +33,23 @@ jobs:
             get '/academy/kontakt.html' contact || good=0
             get '/academy/kursy/ciesla-przygotowanie-czeladnicze.html' course || good=0
             get '/academy/kategorie/biznes-i-praca.html' category || good=0
-            get '/academy/sitewide-premium.css?v=20261126-sitewide1' theme || good=0
-            get '/academy/course-share.css?v=20261126-nav-v2' shared || good=0
+            get '/academy/sitewide-premium.css' theme || good=0
+            get '/academy/course-share.css' shared || good=0
+            theme_hash=$(sha256sum "$tmp/theme" | cut -c1-12) || good=0
+            shared_hash=$(sha256sum "$tmp/shared" | cut -c1-12) || good=0
             if [ "$good" = 1 ] && \
               grep -Fq 'class="ta-info-page"' "$tmp/regulation" && \
               grep -Fq 'class="ta-info-page"' "$tmp/privacy" && \
               grep -Fq 'class="ta-info-page"' "$tmp/contact" && \
               grep -Fq 'class="ta-affiliate-page"' "$tmp/affiliate" && \
               grep -Fq 'class="ta-affiliate-page"' "$tmp/affiliate_terms" && \
-              grep -Fq 'sitewide-premium.css?v=20261126-sitewide1' "$tmp/regulation" && \
-              grep -Fq 'sitewide-premium.css?v=20261126-sitewide1' "$tmp/affiliate" && \
+              grep -Fq "sitewide-premium.css?v=$theme_hash" "$tmp/regulation" && \
+              grep -Fq "sitewide-premium.css?v=$theme_hash" "$tmp/affiliate" && \
               grep -Fq 'body.ta-info-page' "$tmp/theme" && \
               grep -Fq 'body.ta-affiliate-page' "$tmp/theme" && \
-              grep -Fq 'sitewide-premium.css?v=20261126-sitewide1' "$tmp/shared" && \
-              grep -Fq 'course-share.css?v=20261126-nav-v2' "$tmp/course" && \
-              grep -Fq 'course-share.css?v=20261126-nav-v1' "$tmp/category"; then
+              grep -Fq "sitewide-premium.css?v=$theme_hash" "$tmp/shared" && \
+              grep -Fq "course-share.css?v=$shared_hash" "$tmp/course" && \
+              grep -Fq "course-share.css?v=$shared_hash" "$tmp/category"; then
                 echo "LIVE SITEWIDE PREMIUM VERIFIED — attempt $attempt"
                 echo "Regulation, privacy, affiliate program, partner terms, contact and shared course CSS all serve the new theme."
                 rm -rf "$tmp"
