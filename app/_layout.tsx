@@ -106,7 +106,11 @@ function SiteAccountHeader({signedIn}:{signedIn:boolean}){
 // Read the real session rather than always showing a misleading 'Zaloguj się'
 // action to learners who are already authenticated.
 function HelpHeader(){
+ // Expo pre-renders /pomoc without a browser viewport. The desktop/mobile
+ // menu must mount only after hydration or the server and client HTML differ.
+ const [hydrated,setHydrated]=useState(false);
  const [signedIn,setSignedIn]=useState<boolean|null>(null);
+ useEffect(()=>{setHydrated(true)},[]);
  useEffect(()=>{
   let active=true;
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
@@ -119,7 +123,7 @@ function HelpHeader(){
  },[]);
  // Keep 'Mój profil' while auth is unresolved, rather than briefly telling
  // a signed-in learner to sign in again.
- return <SiteAccountHeader signedIn={signedIn!==false}/>;
+ return hydrated?<SiteAccountHeader signedIn={signedIn!==false}/>:null;
 }
 
 /**
