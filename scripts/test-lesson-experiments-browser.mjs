@@ -12,6 +12,13 @@ const fixture=process.argv[3]?JSON.parse(await readFile(process.argv[3],'utf8'))
   after:{description:'Po zmianie: dwa punkty',strokes:[{path:'M10 10 h1 M20 10 h1'}],labels:[]}
  }
 }];
+const visual={kind:'flow',title:'Przebieg próbki',entries:[
+ {label:'Zmierz',detail:'Zapisz wynik początkowy.'},
+ {label:'Zmień',detail:'Zmień jedną wartość.'},
+ {label:'Sprawdź',detail:'Porównaj oba wyniki.'}
+]};
+const learningRows=fixture.map((experiment,lesson_no)=>({lesson_no,title_pl:'Próba '+(lesson_no+1),material:{experiment,raw:['Ćwiczenie testowe']}}));
+learningRows.push({lesson_no:learningRows.length,title_pl:'Porównanie próbek',material:{practice:{visual},curiosity:'Warto wiedzieć przy temacie „Porównanie próbek”: Wskazówka dla próby.'}});
 const user={id:'00000000-0000-4000-a000-000000000131',email:'review@example.test',role:'authenticated',aud:'authenticated',app_metadata:{},user_metadata:{}};
 const browser=await chromium.launch();
 try{
@@ -27,7 +34,7 @@ try{
     if(req.method()==='OPTIONS')return route.fulfill({headers,status:204});
     const table=url.pathname.split('/').at(-1);
     if(req.method()!=='GET'&&(['ta_learning_attempts','ta_learning_progress'].includes(table)||table==='ta-exam'&&req.postDataJSON()?.action!=='status'||table==='ta-lesson-guide'&&req.postDataJSON()?.action==='attempt'))writes++;
-    const values={user,ta_enrollments:[{id:'test'}],ta_courses:{title_pl:'Próba',description_pl:''},ta_drafts:null,ta_lessons:fixture.map((experiment,lesson_no)=>({lesson_no,title_pl:'Próba '+(lesson_no+1),material:{experiment,raw:['Ćwiczenie testowe']}})),ta_learning_progress:fixture.map((_,lesson_no)=>({lesson_no})),'ta-academy':{ok:true,is_admin:false}};
+    const values={user,ta_enrollments:[{id:'test'}],ta_courses:{title_pl:'Próba',description_pl:''},ta_drafts:null,ta_lessons:learningRows,ta_learning_progress:learningRows.map(({lesson_no})=>({lesson_no})),'ta-academy':{ok:true,is_admin:false}};
     return route.fulfill({headers,contentType:'application/json',body:JSON.stringify(values[table]??[])});
    }
    if(url.origin!==origin)return route.abort();
@@ -62,6 +69,25 @@ try{
    assert.ok(await box.getByTestId('experiment-changed-value').count()>0);
    assert.ok(await box.evaluate(el=>el.scrollWidth<=el.clientWidth+1),'overflow '+width);
   }
+  await page.goto(origin+'/nauka?course=excel-skroty&lesson='+learningRows.length);
+  const guide=page.getByTestId('lesson-visual');
+  await guide.getByText(visual.title,{exact:true}).waitFor();
+  await page.getByText('Wskazówka dla próby.',{exact:true}).waitFor();
+  const cards=await guide.getByTestId('lesson-visual-entry').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().top));
+  if(width>=1100)assert.equal(new Set(cards).size,1,'horizontal desktop guide');
+  if(width<680)assert.equal(new Set(cards).size,3,'vertical mobile guide');
+  await guide.getByRole('button',{name:'Przejdź krok po kroku'}).press('Enter');
+  for(let i=0;i<visual.entries.length;i++){
+   if(i)await guide.getByRole('button',{name:'Następny krok'}).press('Enter');
+   const panel=guide.getByTestId('lesson-visual-current');
+   await panel.getByText(visual.entries[i].detail,{exact:true}).waitFor();
+   if(reduced)assert.equal(await panel.evaluate(el=>getComputedStyle(el).animationName),'none');
+  }
+  await guide.getByRole('button',{name:'Poprzedni krok'}).click();
+  await guide.getByTestId('lesson-visual-current').getByText(visual.entries[1].detail).waitFor();
+  await guide.getByRole('button',{name:'Pokaż cały schemat'}).press('Enter');
+  assert.equal(await guide.getByTestId('lesson-visual-current').count(),0);
+  assert.equal(await guide.getByRole('button',{name:'Przejdź krok po kroku'}).count(),1);
   assert.equal(writes,0,'an optional illustration must not record a real checkpoint');
   assert.deepEqual(errors,[]);
   console.log(width+' px: '+cases.length+' experiences checked');

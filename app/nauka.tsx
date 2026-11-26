@@ -466,7 +466,7 @@ export default function Learning(){
    </View>}
    {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#FDF4E1',borderLeftWidth:3,borderLeftColor:'#C99A43',borderRadius:9,gap:4}}>
     <Text style={{fontSize:12,color:'#8A641F',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
-    <Text style={{fontSize:15,color:'#14263B',lineHeight:23}}>{lesson.material.curiosity}</Text>
+    <Text style={{fontSize:15,color:'#14263B',lineHeight:23}}>{lesson.material.curiosity.replace(/^Warto wiedzieć przy temacie „[^”]{1,240}”:\s*/u,'')}</Text>
    </View>}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:6,marginBottom:16,alignItems:'center'}}>
     <Text style={{color:'#14263B',fontWeight:'900',fontSize:12,backgroundColor:'#F3E5C7',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
@@ -475,7 +475,7 @@ export default function Learning(){
    </View>
    {slug==='autocad-skroty'&&<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>}
    {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
-   {(!!lesson.material?.sections?.length||!!lesson.material?.illustration)&&
+   {(!!lesson.material?.sections?.length||!!lesson.material?.illustration||!!lesson.material?.practice?.visual?.entries?.length||!!lesson.material?.practice?.diagram?.length)&&
     <LessonIllustratedSections
      courseSlug={slug} lessonNo={module} title={lesson.title_pl}
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}

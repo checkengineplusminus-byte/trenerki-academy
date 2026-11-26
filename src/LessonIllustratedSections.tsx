@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {View,Text,Image,Platform,Pressable} from 'react-native';
+import {View,Text,Image,Platform,Pressable,useWindowDimensions} from 'react-native';
 import WindowsPracticeMission from './WindowsPracticeMission';
 import ExcelProfessionalMission from './ExcelProfessionalMission';
 import ExcelRealHomework from './ExcelRealHomework';
@@ -23,18 +23,45 @@ const volunteerIllustrations=new Map<string,{file:string;alt:string}>([
  ['volunteer-report',{file:'volunteer-report.webp',alt:'Wolontariusz zgłasza zdarzenie osobie, która zapisuje fakty.'}],
 ]);
 function Visual({title,kind,entries}:LessonVisual){
- const isFlow=kind==='flow';
+ const {width}=useWindowDimensions();
+ const [step,setStep]=useState<number|null>(null);
+ const isFlow=kind==='flow',wide=width>=680;
+ const current=step===null?null:entries[step];
+ const buttonStyle={minHeight:44,justifyContent:'center' as const,alignSelf:'flex-start' as const,paddingHorizontal:12,borderColor:'#A8BACC',borderWidth:1,borderRadius:8,backgroundColor:'white'};
  return <View testID="lesson-visual" style={{backgroundColor:'#EFF3F8',padding:15,borderRadius:14,gap:10}}>
   <Text accessibilityRole="header" style={{fontWeight:'900',color:ink,fontSize:16}}>{title}</Text>
-  <View style={{flexDirection:isFlow?'column':'row',flexWrap:isFlow?'nowrap':'wrap',gap:8}}>
-   {entries.map(({label,detail},index)=><View key={label} style={{flexGrow:1,flexBasis:isFlow?'auto':170,flexDirection:'row',alignItems:'flex-start',backgroundColor:'#fff',padding:12,borderRadius:9,gap:10}}>
+  <View testID="lesson-visual-entries" style={{flexDirection:wide?'row':'column',flexWrap:wide?'wrap':'nowrap',gap:8}}>
+   {entries.map(({label,detail},index)=><View key={index} testID="lesson-visual-entry"
+    style={{minWidth:0,flexGrow:wide?1:0,flexBasis:wide?155:'auto',flexDirection:'row',alignItems:'flex-start',
+     borderWidth:1,borderColor:step===index?'#A07219':'#D5DFE9',backgroundColor:step===index?'#FFF4D4':'white',padding:12,borderRadius:9,gap:8}}>
     {isFlow&&<Text style={{backgroundColor:'#DCE4ED',color:ink,fontWeight:'900',width:25,lineHeight:25,textAlign:'center',borderRadius:7,overflow:'hidden'}}>{index+1}</Text>}
     <View style={{flex:1,gap:4}}>
      <Text style={{fontWeight:'900',color:ink,fontSize:14}}>{label}</Text>
-     <Text style={{color:body,fontSize:14,lineHeight:21}}>{detail}</Text>
+     {step===null&&<Text style={{color:body,fontSize:14,lineHeight:21}}>{detail}</Text>}
     </View>
    </View>)}
   </View>
+  {current&&step!==null&&<View accessibilityLiveRegion="polite">
+   <View key={step} testID="lesson-visual-current" style={{gap:5,borderLeftWidth:3,borderLeftColor:'#A07219',paddingLeft:12}}>
+    <Text style={{color:ink,fontWeight:'800'}}>Krok {step+1} z {entries.length} · {current.label}</Text>
+    <Text style={{color:body,fontSize:15,lineHeight:23}}>{current.detail}</Text>
+   </View>
+  </View>}
+  {isFlow&&entries.length>1&&<View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
+   {step===null?<Pressable accessibilityRole="button" style={buttonStyle} onPress={()=>setStep(0)}>
+    <Text style={{color:ink,fontWeight:'800'}}>Przejdź krok po kroku</Text>
+   </Pressable>:<>
+    {step>0&&<Pressable accessibilityRole="button" style={buttonStyle} onPress={()=>setStep(step-1)}>
+     <Text style={{color:ink,fontWeight:'800'}}>Poprzedni krok</Text>
+    </Pressable>}
+    {step<entries.length-1&&<Pressable accessibilityRole="button" style={buttonStyle} onPress={()=>setStep(step+1)}>
+     <Text style={{color:ink,fontWeight:'800'}}>Następny krok</Text>
+    </Pressable>}
+    <Pressable accessibilityRole="button" style={buttonStyle} onPress={()=>setStep(null)}>
+     <Text style={{color:ink,fontWeight:'800'}}>Pokaż cały schemat</Text>
+    </Pressable>
+   </>}
+  </View>}
  </View>;
 }
 export default function LessonIllustratedSections({courseSlug,lessonNo,title,sections,illustration,diagram,visual}:Props){
@@ -63,7 +90,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
     style={{width:'100%',aspectRatio:(pastrySvg||editorialSvg)?16/9:undefined,height:(pastrySvg||editorialSvg)?undefined:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
    />
   </View>}
-  {!!visual?.entries?.length&&<Visual {...visual}/>}
+  {!!visual?.entries?.length&&<Visual key={courseSlug+'-'+lessonNo} {...visual}/>}
   {!visual?.entries?.length&&!!diagram?.length&&<View accessibilityLabel={'Schemat pracowni: '+title} style={{backgroundColor:'#EFF3F8',padding:13,borderRadius:12,gap:9}}>
    <Text style={{color:ink,fontWeight:'900'}}>Jak podejść do zadania</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
