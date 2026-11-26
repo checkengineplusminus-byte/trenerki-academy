@@ -328,3 +328,53 @@ body.ta-info-page>footer .footer-help small,
 body:has(>main>nav.back)>footer .footer-help small,
 body:has(>main>a.back)>footer .footer-help small{color:#d4e1ec!important}
 body:has(>main>nav.back)>main .related a small{color:#97702b!important;font-weight:800}
+
+/* Course/category landing cards — navy & gold, desktop 3 / tablet 2 / phone 1.
+   Preserve SEO, route data, price labels and original course descriptions. */
+body.ta-shell-active:has(>main>nav.back) > main .related,
+body.ta-shell-active:has(>main>a.back) > main .related{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:16px!important;
+}
+body.ta-shell-active:has(>main>nav.back) > main .related a,
+body.ta-shell-active:has(>main>a.back) > main .related a{
+ background:#FFFFFF!important;border:1px solid #DDE6EF!important;
+ color:#17314A!important;border-radius:12px;padding:17px!important;
+ box-shadow:0 5px 18px rgba(11,34,56,.055);line-height:1.45
+}
+body.ta-shell-active:has(>main>nav.back) > main .related a:hover,
+body.ta-shell-active:has(>main>a.back) > main .related a:hover{
+ border-color:#D1A65A!important;background:#FFFBF3!important
+}
+body.ta-shell-active:has(>main>nav.back) > main .category-links a,
+body.ta-shell-active:has(>main>a.back) > main .category-links a{
+ background:#EDF3F8!important;color:#244B6C!important;
+ border:1px solid #D6E2EE!important;
+}
+body.ta-shell-active:has(>main>nav.back) > main .program,
+body.ta-shell-active:has(>main>a.back) > main .program{
+ column-count:2;column-gap:32px
+}
+body.ta-shell-active:has(>main>nav.back) > main .tag,
+body.ta-shell-active:has(>main>nav.back) > main .info span{
+ color:#36546E!important;background:#EDF3F8!important;
+}
+body.ta-shell-active:has(>main>nav.back) > main .back,
+body.ta-shell-active:has(>main>nav.back) > main .back a{
+ color:#456782!important
+}
+@media(min-width:701px) and (max-width:1023px){
+ body.ta-shell-active:has(>main>nav.back) > main .related,
+ body.ta-shell-active:has(>main>a.back) > main .related{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ }
+}
+@media(max-width:700px){
+ body.ta-shell-active:has(>main>nav.back) > main .related,
+ body.ta-shell-active:has(>main>a.back) > main .related{
+  grid-template-columns:minmax(0,1fr)!important;
+ }
+ body.ta-shell-active:has(>main>nav.back) > main .program,
+ body.ta-shell-active:has(>main>a.back) > main .program{column-count:1}
+}

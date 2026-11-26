@@ -51,7 +51,7 @@ assert.match(profile,/Twój profil/,'Logged-in profile has own title');
 assert.match(profile,/\(!activeEmail\|\|mode==='new-password'\)/,'Login form must be hidden from active sessions');
 assert.match(profile,/Ustawienia profilu/);
 const library=readFileSync('app/moje-kursy.tsx','utf8');
-assert.match(library,/width>=560\?2:1/,'Phone cards must be legible one per row');
+assert.match(library,/width>=1024\?3:width>=680\?2:1/,'Course library must be 3 desktop, 2 tablet, 1 phone');
 const signouts=[...library.matchAll(/>Wyloguj się<\/Text>/g)].length;
 assert.equal(signouts,1,'No duplicate sign-out controls');
 if(errors.length){
