@@ -173,7 +173,7 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
     " })();return()=>{active=false};},[slug]);\n"
   ],
   [
-    "  {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>\n   <Text accessibilityRole=\"alert\" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>\n   <Pressable accessibilityRole=\"button\" onPress={()=>setReload(v=>v+1)}\n    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>\n    <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>\n   </Pressable>\n  </View>}\n",
+    "  {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>\n   <Text accessibilityRole=\"alert\" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>\n   <Pressable accessibilityRole=\"button\" onPress={()=>setReload(v=>v+1)}\n    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#1B3C5B',borderRadius:11,paddingHorizontal:13}}>\n    <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>\n   </Pressable>\n  </View>}\n",
     "  {!!error&&<Text style={{color:'#ac382a',backgroundColor:'#fff2e8',padding:17,borderRadius:12}}>{error}</Text>}\n"
   ]
 ];
