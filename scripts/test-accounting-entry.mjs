@@ -419,7 +419,8 @@ test('Księgowość: zwykła oferta w katalogu i kategoria Biznes i praca',()=>{
  assert.doesNotMatch(home,/acct-feature-title|NOWOŚĆ · WCZESNY DOSTĘP/);
  assert.match(home,/const ACCOUNTING_CATALOG=/);
  assert.match(home,/function publicCatalogCourses\(/);
- assert.match(home,/const priorities=\['ai-bez-tajemnic','ksiegowosc-od-podstaw'(?:,'[^']+')*\]/);
+ assert.match(home,/const priorities=\['ai-bez-tajemnic','autocad-skroty'\]/);
+ assert.match(home,/c\.id!==ACCOUNTING_CATALOG\.id/,'Accounting must stay in search and Biznes i praca, not homepage highlights');
  assert.match(home,/catalogCourseMatches\(c,query\)/);
  assert.match(category,/Księgowość od podstaw/);
  assert.doesNotMatch(category,/Księgowość od podstaw — Encyklopedia/);
