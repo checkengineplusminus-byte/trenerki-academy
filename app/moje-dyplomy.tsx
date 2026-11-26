@@ -29,9 +29,9 @@ export default function MyDiplomas(){
   try{await downloadDiploma(d.id,lang);}catch(e:any){setError(e.message||'Nie można pobrać PDF.');}
   finally{setDownloading(null);}
  }
- return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:20,paddingBottom:80,maxWidth:950,alignSelf:'center',width:'100%',gap:15}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} contentContainerStyle={{padding:20,paddingBottom:80,maxWidth:1600,alignSelf:'center',width:'100%',gap:15}}>
   <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button">
-   <Text style={{color:'#356e4e',fontWeight:'800'}}>← Mój profil</Text>
+   <Text style={{color:'#2C587B',fontWeight:'800'}}>← Mój profil</Text>
   </Pressable>
   <Text style={{fontSize:31,fontWeight:'900',color:ink}}>Moje dyplomy</Text>
   {busy&&<ActivityIndicator color={ink}/>}
