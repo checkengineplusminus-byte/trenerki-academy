@@ -462,15 +462,14 @@ function courseCardMedia(c){
  const photoSlug=cardPhotoSlug(c.id);
  // The most visible cards should never display an empty placeholder while the
  // public photo manifest is being fetched asynchronously.
- const immediate=({'excel-skroty':EXCEL_REAL_SCREENSHOT,
-   'ksiegowosc-od-podstaw':'ksiegowosc-od-podstaw.webp',
-   'autocad-skroty':'autocad-skroty.webp',
-   'zaufany-wolontariusz':'ongoing-wms.webp',
-   'swiety-mikolaj':'swiety-mikolaj.webp'})[c.id]||null;
- const file=coursePhotoFile(photoSlug)||immediate;
- if(coursePhotos&&!file)return courseIllustration(c);
- const source=file?' src="'+esc(coursePhotoSrc(file))+'"':'';
- return `<img class="card-photo" data-course-photo="${esc(photoSlug)}"${source} alt="" width="960" height="540" loading="lazy" decoding="async">
+ // The public catalogue ships matching local WebP covers for every published
+ // slug. Start the request immediately instead of waiting for the manifest
+ // fetch (which may be delayed or fail on a mobile connection).
+ const file=coursePhotoFile(photoSlug)||
+   (c.id==='excel-skroty'?EXCEL_REAL_SCREENSHOT:photoSlug+'.webp');
+ const source=esc(coursePhotoSrc(file));
+ return `<span class="card-media-loading" aria-hidden="true"><span class="card-media-loading-title">${esc(c.title)}</span></span>
+ <img class="card-photo" data-course-photo="${esc(photoSlug)}" src="${source}" alt="" width="960" height="540" loading="lazy" decoding="async">
  <template class="card-photo-fallback">${courseIllustration(c)}</template>`;
 }
 
@@ -748,7 +747,7 @@ function render(){
  if(input&&nav&&input.parentNode!==nav)nav.insertBefore(input,actions||null);
  app.innerHTML=page==='home'?homeHTML():courseHTML();
  if(page==='home'&&input)document.querySelector('#anielka-szukaj .anielka-finder-header')?.after(input);
- if(page==='home'){updateCatalog();heroTickerIndex=-1;paintHeroTicker();if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)heroTickerTimer=setInterval(paintHeroTicker,9000);}
+ if(page==='home'){updateCatalog();heroTickerIndex=-1;paintHeroTicker();}
  document.title=page==='home'?'Kursy online po polsku — TRENERKI Academy':selectedCourse.title+' — kurs online | TRENERKI Academy';
 }
 function openCheckout(){const code=selectedCourse?.id;if(code)startPurchase(code);else window.location.assign('/konto');}
