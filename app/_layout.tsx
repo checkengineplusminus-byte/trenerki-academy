@@ -15,14 +15,14 @@ let lastWorkingWebLocation=webLocation();
 // deployment. Keep a recovery action visible instead of leaving a blank page.
 export function ErrorBoundary({retry}:ErrorBoundaryProps){
  const web=Platform.OS==='web';
- return <View testID="route-recovery" style={{flex:1,justifyContent:'center',alignItems:'center',padding:24,backgroundColor:'#fbfcf7'}}>
-  <View style={{width:'100%',maxWidth:540,gap:16,padding:24,borderRadius:16,backgroundColor:'#eaf3e4'}}>
-   <Text accessibilityRole="header" style={{fontSize:24,fontWeight:'900',color:'#19392b'}}>Nie udało się otworzyć tej strony</Text>
-   <Text style={{fontSize:16,lineHeight:25,color:'#19392b'}}>Strona mogła zostać zaktualizowana lub połączenie zostało przerwane. Zapisane wyniki pozostają na Twoim koncie. Spróbuj ponownie.</Text>
+ return <View testID="route-recovery" style={{flex:1,justifyContent:'center',alignItems:'center',padding:24,backgroundColor:'#F7F9FC'}}>
+  <View style={{width:'100%',maxWidth:540,gap:16,padding:24,borderRadius:16,backgroundColor:'#EFF4F8'}}>
+   <Text accessibilityRole="header" style={{fontSize:24,fontWeight:'900',color:'#14263B'}}>Nie udało się otworzyć tej strony</Text>
+   <Text style={{fontSize:16,lineHeight:25,color:'#14263B'}}>Strona mogła zostać zaktualizowana lub połączenie zostało przerwane. Zapisane wyniki pozostają na Twoim koncie. Spróbuj ponownie.</Text>
    <Pressable accessibilityRole="button" onPress={()=>{
     if(web&&typeof window!=='undefined')window.location.replace(lastWorkingWebLocation||webLocation());
     else void retry();
-   }} style={{minHeight:48,padding:14,borderRadius:10,backgroundColor:'#245f36'}}>
+   }} style={{minHeight:48,padding:14,borderRadius:10,backgroundColor:'#D6A444'}}>
     <Text style={{fontWeight:'800',color:'white',textAlign:'center'}}>{web?'Odśwież stronę':'Spróbuj ponownie'}</Text>
    </Pressable>
   </View>
@@ -71,7 +71,7 @@ function AccountLayout(){
   }).catch(()=>{if(mounted){setSignedIn(false);setReady(true)}});
   return()=>{mounted=false;subscription.unsubscribe()};
  },[]);
- if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#fcfcf7'}}><ActivityIndicator size="large" color="#2d7146"/></View>;
+ if(!ready)return <View style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'#F7F9FC'}}><ActivityIndicator size="large" color="#B88426"/></View>;
  // Learner entry routes must be exportable and remain mounted while a session
  // is being revalidated. Both screens independently verify auth; RLS protects
  // all personal/paid lesson data. A transient guard=false must not send learners

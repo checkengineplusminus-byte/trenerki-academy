@@ -55,16 +55,16 @@ function save(value){
 }
 function btn(text,fn,primary){
  var b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',fn);
- b.style.cssText='min-height:42px;padding:9px 16px;border-radius:9px;cursor:pointer;font:700 13px system-ui,sans-serif;border:1px solid #cad8c9;background:'+(primary?'#173e2c;color:white':'white;color:#173e2c')+';';
+ b.style.cssText='min-height:42px;padding:9px 16px;border-radius:9px;cursor:pointer;font:700 13px system-ui,sans-serif;border:1px solid #d5deeb;background:'+(primary?'#A8741C;color:white':'white;color:#A8741C')+';';
  return b;
 }
 function banner(){
  if(!document.body||document.getElementById('trenerki-ads-banner'))return;
  var el=document.createElement('section');el.id='trenerki-ads-banner';el.setAttribute('role','region');
  el.setAttribute('aria-label','Zgoda na pomiary reklamowe');
- el.style.cssText='position:fixed;bottom:12px;left:12px;right:12px;max-width:850px;margin:auto;z-index:2147483640;background:#fff;color:#173228;border:1px solid #cbd9ca;border-radius:14px;box-shadow:0 12px 40px #0003;padding:18px 22px;box-sizing:border-box;font:14px/1.6 system-ui,sans-serif;';
+ el.style.cssText='position:fixed;bottom:12px;left:12px;right:12px;max-width:850px;margin:auto;z-index:2147483640;background:#fff;color:#14263B;border:1px solid #dce3ef;border-radius:14px;box-shadow:0 12px 40px #0003;padding:18px 22px;box-sizing:border-box;font:14px/1.6 system-ui,sans-serif;';
  var p=document.createElement('div');
- p.innerHTML='<strong style="font-size:16px">Prywatność i pliki cookie</strong><p style="margin:7px 0 12px">Za Twoją zgodą używamy Google Ads do mierzenia skuteczności reklam kursów. Odmowa nie ogranicza korzystania ze strony. Nie personalizujemy reklam. <a style="color:#145d3b;text-decoration:underline" href="/academy/prywatnosc.html#s8">Dowiedz się więcej</a>.</p>';
+ p.innerHTML='<strong style="font-size:16px">Prywatność i pliki cookie</strong><p style="margin:7px 0 12px">Za Twoją zgodą używamy Google Ads do mierzenia skuteczności reklam kursów. Odmowa nie ogranicza korzystania ze strony. Nie personalizujemy reklam. <a style="color:#A8741C;text-decoration:underline" href="/academy/prywatnosc.html#s8">Dowiedz się więcej</a>.</p>';
  el.appendChild(p);
  var row=document.createElement('div');row.style.cssText='display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;';
  row.appendChild(btn('Odrzuć',function(){save('no')},false));

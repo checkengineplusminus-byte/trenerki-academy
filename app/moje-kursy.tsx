@@ -89,66 +89,66 @@ export default function MyCourses(){
  ];
  const courseCard=(row:CourseRow)=>{
   const accounting=isAccountingCourse(row.course_slug),cert=certificates[row.course_slug],hasDiploma=!accounting&&!!cert&&!cert.is_demo,active=valid(row),done=finished(row);
-  return <View key={row.course_slug} style={{width:cardWidth,backgroundColor:'white',borderRadius:15,borderWidth:1,borderColor:'#dbe8d9',padding:10,minHeight:192,justifyContent:'space-between',gap:9}}>
+  return <View key={row.course_slug} style={{width:cardWidth,backgroundColor:'white',borderRadius:15,borderWidth:1,borderColor:'#DDE4EC',padding:10,minHeight:192,justifyContent:'space-between',gap:9}}>
    <View style={{gap:7}}>
-    <View style={{width:31,height:31,backgroundColor:done?'#dceeca':'#eaf2e7',borderRadius:11,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:15,fontWeight:'900',color:'#173228'}}>{done?'✓':'T.'}</Text></View>
-    <Text style={{fontSize:columns===2?13:15,lineHeight:columns===2?18:21,color:'#173228',fontWeight:'800',minHeight:columns===2?54:44}} numberOfLines={3}>{row.ta_courses?.title_pl||row.course_slug}</Text>
-    <Text style={{fontSize:11,color:'#667b68'}}>{row.progressAvailable?String(row.completedCount)+' / '+String(row.lessonCount)+(accounting?' dostępnych lekcji przeczytanych':' lekcji'):'Postęp niedostępny'}</Text>
-    {row.progressAvailable&&<View style={{height:7,borderRadius:8,backgroundColor:'#e9f0e6',overflow:'hidden'}} accessibilityLabel={(accounting?'Postęp czytania dostępnych materiałów ':'Postęp ')+row.progress+'%'}><View style={{height:7,backgroundColor:'#76a777',width:row.progress+'%'}}/></View>}
-    <Text style={{fontSize:11,fontWeight:done?'800':'500',color:done?'#2c7b46':'#667b68'}}>{accounting?'Przeczytanie nie jest zaliczeniem kursu.':done?'Lekcje ukończone':row.progress+'% ukończono'}</Text>
+    <View style={{width:31,height:31,backgroundColor:done?'#dceeca':'#F2F6FA',borderRadius:11,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:15,fontWeight:'900',color:'#14263B'}}>{done?'✓':'T.'}</Text></View>
+    <Text style={{fontSize:columns===2?13:15,lineHeight:columns===2?18:21,color:'#14263B',fontWeight:'800',minHeight:columns===2?54:44}} numberOfLines={3}>{row.ta_courses?.title_pl||row.course_slug}</Text>
+    <Text style={{fontSize:11,color:'#63768A'}}>{row.progressAvailable?String(row.completedCount)+' / '+String(row.lessonCount)+(accounting?' dostępnych lekcji przeczytanych':' lekcji'):'Postęp niedostępny'}</Text>
+    {row.progressAvailable&&<View style={{height:7,borderRadius:8,backgroundColor:'#F2F6FA',overflow:'hidden'}} accessibilityLabel={(accounting?'Postęp czytania dostępnych materiałów ':'Postęp ')+row.progress+'%'}><View style={{height:7,backgroundColor:'#76a777',width:row.progress+'%'}}/></View>}
+    <Text style={{fontSize:11,fontWeight:done?'800':'500',color:done?'#2c7b46':'#63768A'}}>{accounting?'Przeczytanie nie jest zaliczeniem kursu.':done?'Lekcje ukończone':row.progress+'% ukończono'}</Text>
    </View>
    <View style={{gap:6}}>
-    {active?<Pressable onPress={()=>{if(row.course_slug==='ai-bez-tajemnic'&&Platform.OS==='web'&&typeof window!=='undefined'){window.location.assign('/nauka?course='+encodeURIComponent(row.course_slug));return;}router.push(courseDestination(row.course_slug));}} accessibilityRole="button" style={{backgroundColor:'#173228',paddingVertical:10,paddingHorizontal:5,borderRadius:9}}><Text style={{textAlign:'center',fontSize:12,color:'white',fontWeight:'800'}}>{done?'Otwórz kurs':'Kontynuuj naukę'}</Text></Pressable>:<Text style={{fontSize:12,color:'#956532'}}>Dostęp wygasł</Text>}
+    {active?<Pressable onPress={()=>{if(row.course_slug==='ai-bez-tajemnic'&&Platform.OS==='web'&&typeof window!=='undefined'){window.location.assign('/nauka?course='+encodeURIComponent(row.course_slug));return;}router.push(courseDestination(row.course_slug));}} accessibilityRole="button" style={{backgroundColor:'#14263B',paddingVertical:10,paddingHorizontal:5,borderRadius:9}}><Text style={{textAlign:'center',fontSize:12,color:'white',fontWeight:'800'}}>{done?'Otwórz kurs':'Kontynuuj naukę'}</Text></Pressable>:<Text style={{fontSize:12,color:'#956532'}}>Dostęp wygasł</Text>}
     {active&&!accounting&&<Pressable testID={'restart-course-'+row.course_slug} accessibilityRole="button" accessibilityLabel={'Zacznij od początku: '+(row.ta_courses?.title_pl||row.course_slug)}
       onPress={()=>router.push({pathname:'/nauka',params:{course:row.course_slug,lesson:'1',review:'1'}})}
-      style={{backgroundColor:'#f0f7ee',borderWidth:1,borderColor:'#bfd6bd',borderRadius:9,padding:10}}>
-      <Text style={{color:'#26533a',fontWeight:'800',fontSize:12,textAlign:'center'}}>↺ Zacznij od początku</Text>
+      style={{backgroundColor:'#F2F6F9',borderWidth:1,borderColor:'#bfd6bd',borderRadius:9,padding:10}}>
+      <Text style={{color:'#344B61',fontWeight:'800',fontSize:12,textAlign:'center'}}>↺ Zacznij od początku</Text>
     </Pressable>}
-    {hasDiploma&&<Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug}})} accessibilityRole="button" style={{backgroundColor:'#e8f3dc',padding:9,borderRadius:9}}><Text style={{textAlign:'center',fontSize:11,color:'#245c3c',fontWeight:'800'}}>Zobacz dyplom</Text></Pressable>}
-    {hasDiploma&&!done&&row.progressAvailable&&<Text style={{fontSize:10,lineHeight:15,color:'#667b68'}}>Dyplom z wcześniejszego zaliczenia pozostaje dostępny. Dokończ aktualne lekcje.</Text>}
-    {done&&!hasDiploma&&<Text style={{fontSize:10,lineHeight:15,color:'#667b68'}}>Egzamin i dyplom w kursie</Text>}
+    {hasDiploma&&<Pressable onPress={()=>router.push({pathname:'/dyplom',params:{course:row.course_slug}})} accessibilityRole="button" style={{backgroundColor:'#F1F5F9',padding:9,borderRadius:9}}><Text style={{textAlign:'center',fontSize:11,color:'#AC7923',fontWeight:'800'}}>Zobacz dyplom</Text></Pressable>}
+    {hasDiploma&&!done&&row.progressAvailable&&<Text style={{fontSize:10,lineHeight:15,color:'#63768A'}}>Dyplom z wcześniejszego zaliczenia pozostaje dostępny. Dokończ aktualne lekcje.</Text>}
+    {done&&!hasDiploma&&<Text style={{fontSize:10,lineHeight:15,color:'#63768A'}}>Egzamin i dyplom w kursie</Text>}
    </View>
   </View>;
  };
- return <ScrollView style={{flex:1,backgroundColor:'#fcfcf7'}} contentContainerStyle={{padding:20,maxWidth:1150,alignSelf:'center',width:'100%',paddingBottom:55}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} contentContainerStyle={{padding:20,maxWidth:1150,alignSelf:'center',width:'100%',paddingBottom:55}}>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10,flexWrap:'wrap',marginBottom:15}}>
    <Pressable onPress={()=>router.push('/')}><Text style={{color:'#376143',fontWeight:'800'}}>← Katalog kursów</Text></Pressable>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
-    <Pressable accessibilityRole="link" onPress={()=>router.push('/ustawienia')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}><Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Ustawienia konta</Text></Pressable>
-    <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut({scope:'local'});if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#eaf2e6'}}><Text style={{color:'#29543a',fontWeight:'800',fontSize:12}}>Wyloguj się</Text></Pressable>
+    <Pressable accessibilityRole="link" onPress={()=>router.push('/ustawienia')} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#F1F5F9'}}><Text style={{color:'#344B61',fontWeight:'800',fontSize:12}}>Ustawienia konta</Text></Pressable>
+    <Pressable accessibilityRole="button" onPress={async()=>{const {error}=await supabase.auth.signOut({scope:'local'});if(!error)router.replace('/konto');}} style={{paddingVertical:10,paddingHorizontal:13,borderRadius:9,backgroundColor:'#F1F5F9'}}><Text style={{color:'#344B61',fontWeight:'800',fontSize:12}}>Wyloguj się</Text></Pressable>
    </View>
   </View>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:8,flexWrap:'wrap',marginBottom:9}}>
-   <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#173228'}}>Moje kursy</Text>
-   <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#e7f0df',borderRadius:10,paddingVertical:11,paddingHorizontal:14}}><Text style={{color:'#214c36',fontWeight:'900'}}>Moje dyplomy</Text></Pressable>
+   <Text style={{fontSize:width<500?28:33,fontWeight:'900',color:'#14263B'}}>Moje kursy</Text>
+   <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#EFF3F8',borderRadius:10,paddingVertical:11,paddingHorizontal:14}}><Text style={{color:'#214c36',fontWeight:'900'}}>Moje dyplomy</Text></Pressable>
   </View>
-  <Text style={{color:'#5c7460',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
+  <Text style={{color:'#63768A',fontSize:14,lineHeight:21,marginBottom:15}}>Kursy, zapisane postępy i dyplomy w jednym miejscu.</Text>
   {!!error&&<View style={{padding:15,marginBottom:14,backgroundColor:'#fff2e8',borderRadius:12,gap:8}}>
    <Text accessibilityRole="alert" style={{color:'#88422d',fontSize:14}}>{error}</Text>
    <Pressable accessibilityRole="button" onPress={()=>void load()} style={{minHeight:44,justifyContent:'center',alignSelf:'flex-start',paddingHorizontal:15,backgroundColor:'#1c4a31',borderRadius:9}}><Text style={{color:'white',fontWeight:'800'}}>Spróbuj ponownie</Text></Pressable>
   </View>}
-  {isAdmin&&<View style={{backgroundColor:'#edf5e9',padding:16,borderRadius:13,gap:8}}><Text style={{color:'#173228',fontWeight:'800'}}>Panel właściciela — księgowość</Text><Text style={{color:'#5c7460',fontSize:12}}>Podgląd administracyjny pozwala sprawdzać kurs bez nadawania dostępu innym kontom. Uprawnienia sprawdza serwer.</Text><Pressable accessibilityRole="button" onPress={()=>router.push('/ksiegowosc')} style={{padding:10}}><Text style={{color:'#245c3c',fontWeight:'800'}}>Otwórz encyklopedię →</Text></Pressable></View>}
-  <View style={{backgroundColor:'#e8f3dc',padding:16,borderRadius:13,gap:10,marginVertical:12}}>
+  {isAdmin&&<View style={{backgroundColor:'#F1F5F9',padding:16,borderRadius:13,gap:8}}><Text style={{color:'#14263B',fontWeight:'800'}}>Panel właściciela — księgowość</Text><Text style={{color:'#63768A',fontSize:12}}>Podgląd administracyjny pozwala sprawdzać kurs bez nadawania dostępu innym kontom. Uprawnienia sprawdza serwer.</Text><Pressable accessibilityRole="button" onPress={()=>router.push('/ksiegowosc')} style={{padding:10}}><Text style={{color:'#AC7923',fontWeight:'800'}}>Otwórz encyklopedię →</Text></Pressable></View>}
+  <View style={{backgroundColor:'#F1F5F9',padding:16,borderRadius:13,gap:10,marginVertical:12}}>
    <Text style={{color:'#56725c',fontWeight:'700',fontSize:12}}>Saldo kart podarunkowych</Text>
-   <Text style={{fontSize:29,color:'#173228',fontWeight:'900'}}>{(creditBalance/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})} zł</Text>
+   <Text style={{fontSize:29,color:'#14263B',fontWeight:'900'}}>{(creditBalance/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})} zł</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:12}}>
-    <Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#173228',borderRadius:10,padding:11}}><Text style={{color:'white',fontWeight:'800'}}>Odbierz kartę / wpisz kod</Text></Pressable>
+    <Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#14263B',borderRadius:10,padding:11}}><Text style={{color:'white',fontWeight:'800'}}>Odbierz kartę / wpisz kod</Text></Pressable>
     {!!creditHistory.length&&<Pressable onPress={()=>setShowCreditHistory(v=>!v)} style={{padding:9}}><Text style={{color:'#356d43',fontWeight:'800'}}>{showCreditHistory?'Ukryj historię':'Historia salda'}</Text></Pressable>}
    </View>
-   {showCreditHistory&&creditHistory.slice(0,10).map((h:any,i:number)=><View key={String(i)} style={{borderTopWidth:1,borderColor:'#cfdfc6',paddingVertical:7,gap:3}}><Text style={{color:'#173228',fontSize:12,fontWeight:'700'}}>{h.kind==='redeemed_card'?'Doładowanie karty':h.kind==='paid_course'?'Zakup kursu':h.kind==='refunded_course'?'Zwrot za kurs':'Operacja na saldzie'} · {(Number(h.amount_grosze)/100).toLocaleString('pl-PL',{minimumFractionDigits:2})} zł</Text><Text style={{color:'#667d6b',fontSize:11}}>{new Date(h.created_at).toLocaleDateString('pl-PL')}</Text></View>)}
+   {showCreditHistory&&creditHistory.slice(0,10).map((h:any,i:number)=><View key={String(i)} style={{borderTopWidth:1,borderColor:'#cfdfc6',paddingVertical:7,gap:3}}><Text style={{color:'#14263B',fontSize:12,fontWeight:'700'}}>{h.kind==='redeemed_card'?'Doładowanie karty':h.kind==='paid_course'?'Zakup kursu':h.kind==='refunded_course'?'Zwrot za kurs':'Operacja na saldzie'} · {(Number(h.amount_grosze)/100).toLocaleString('pl-PL',{minimumFractionDigits:2})} zł</Text><Text style={{color:'#667d6b',fontSize:11}}>{new Date(h.created_at).toLocaleDateString('pl-PL')}</Text></View>)}
   </View>
   {!busy&&<View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginBottom:18}}>
-   <Text style={{backgroundColor:'#edf5e9',borderRadius:9,padding:10,color:'#173228',fontSize:12,fontWeight:'800'}}>Kursy: {items.length}</Text>
-   <Text style={{backgroundColor:'#edf5e9',borderRadius:9,padding:10,color:'#173228',fontSize:12,fontWeight:'800'}}>Zaliczone lekcje: {items.filter(row=>!isAccountingCourse(row.course_slug)).reduce((sum,row)=>sum+row.completedCount,0)}</Text>
-   <Text style={{backgroundColor:'#edf5e9',borderRadius:9,padding:10,color:'#173228',fontSize:12,fontWeight:'800'}}>Ukończone kursy: {items.filter(row=>valid(row)&&finished(row)).length}</Text>
+   <Text style={{backgroundColor:'#F1F5F9',borderRadius:9,padding:10,color:'#14263B',fontSize:12,fontWeight:'800'}}>Kursy: {items.length}</Text>
+   <Text style={{backgroundColor:'#F1F5F9',borderRadius:9,padding:10,color:'#14263B',fontSize:12,fontWeight:'800'}}>Zaliczone lekcje: {items.filter(row=>!isAccountingCourse(row.course_slug)).reduce((sum,row)=>sum+row.completedCount,0)}</Text>
+   <Text style={{backgroundColor:'#F1F5F9',borderRadius:9,padding:10,color:'#14263B',fontSize:12,fontWeight:'800'}}>Ukończone kursy: {items.filter(row=>valid(row)&&finished(row)).length}</Text>
   </View>}
   {busy&&<ActivityIndicator/>}{!!error&&<Text style={{color:'#a52626',marginBottom:14}}>{error}</Text>}
-  {!busy&&!items.length&&<View style={{backgroundColor:'#eaf4e5',borderRadius:15,padding:23,gap:12}}><Text style={{fontSize:22,color:'#173228',fontWeight:'900'}}>Zacznij od pierwszego kursu</Text><Text style={{color:'#5c7460'}}>Po zapisaniu się na kurs znajdziesz go tutaj wraz z postępem nauki.</Text><Pressable onPress={()=>router.push('/')} style={{backgroundColor:'#173228',padding:13,borderRadius:10}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Przeglądaj kursy</Text></Pressable></View>}
+  {!busy&&!items.length&&<View style={{backgroundColor:'#eaf4e5',borderRadius:15,padding:23,gap:12}}><Text style={{fontSize:22,color:'#14263B',fontWeight:'900'}}>Zacznij od pierwszego kursu</Text><Text style={{color:'#63768A'}}>Po zapisaniu się na kurs znajdziesz go tutaj wraz z postępem nauki.</Text><Pressable onPress={()=>router.push('/')} style={{backgroundColor:'#14263B',padding:13,borderRadius:10}}><Text style={{color:'white',fontWeight:'800',textAlign:'center'}}>Przeglądaj kursy</Text></Pressable></View>}
   {sections.filter(section=>section.rows.length>0).map(section=>{
    const limit=visibleSections[section.title]||columns,subset=section.rows.slice(0,limit),remaining=section.rows.length-subset.length;
-   return <View key={section.title} style={{marginVertical:14,gap:11}}><Text style={{fontSize:21,fontWeight:'900',color:'#173228'}}>{section.title} ({section.rows.length})</Text><Text style={{color:'#617866',fontSize:12,lineHeight:19}}>{section.description}</Text><View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>{subset.map(courseCard)}</View>{remaining>0&&<Pressable onPress={()=>setVisibleSections(prev=>({...prev,[section.title]:(prev[section.title]||columns)+columns}))} accessibilityRole="button" style={{alignSelf:'center',backgroundColor:'#e8f3dc',borderRadius:12,paddingHorizontal:18,paddingVertical:11,marginTop:2}}><Text style={{color:'#173228',fontSize:13,fontWeight:'800'}}>Pokaż kolejne {Math.min(columns,remaining)} • pozostało {remaining}</Text></Pressable>}</View>;
+   return <View key={section.title} style={{marginVertical:14,gap:11}}><Text style={{fontSize:21,fontWeight:'900',color:'#14263B'}}>{section.title} ({section.rows.length})</Text><Text style={{color:'#617866',fontSize:12,lineHeight:19}}>{section.description}</Text><View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>{subset.map(courseCard)}</View>{remaining>0&&<Pressable onPress={()=>setVisibleSections(prev=>({...prev,[section.title]:(prev[section.title]||columns)+columns}))} accessibilityRole="button" style={{alignSelf:'center',backgroundColor:'#F1F5F9',borderRadius:12,paddingHorizontal:18,paddingVertical:11,marginTop:2}}><Text style={{color:'#14263B',fontSize:13,fontWeight:'800'}}>Pokaż kolejne {Math.min(columns,remaining)} • pozostało {remaining}</Text></Pressable>}</View>;
   })}
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:10,marginTop:20}}><Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#e8f3dc',padding:13,borderRadius:11}}><Text style={{color:'#173228',fontWeight:'800'}}>🎁 Karty podarunkowe</Text></Pressable><Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#e8f3dc',padding:13,borderRadius:11}}><Text style={{color:'#173228',fontWeight:'800'}}>Przeglądaj kursy</Text></Pressable></View>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:10,marginTop:20}}><Pressable onPress={()=>router.push('/prezent')} style={{backgroundColor:'#F1F5F9',padding:13,borderRadius:11}}><Text style={{color:'#14263B',fontWeight:'800'}}>🎁 Karty podarunkowe</Text></Pressable><Pressable onPress={()=>router.replace('/')} style={{backgroundColor:'#F1F5F9',padding:13,borderRadius:11}}><Text style={{color:'#14263B',fontWeight:'800'}}>Przeglądaj kursy</Text></Pressable></View>
   {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:17}}><Text style={{fontSize:11,color:'#718779'}}>Staff</Text></Pressable>}
   <Pressable onPress={async()=>{await supabase.auth.signOut({scope:'local'});router.replace('/konto')}} style={{alignSelf:'flex-start',padding:13,marginTop:12}}><Text style={{color:'#476d50',fontWeight:'700'}}>Wyloguj się</Text></Pressable>
  </ScrollView>;

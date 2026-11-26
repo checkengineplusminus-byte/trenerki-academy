@@ -100,34 +100,52 @@ async function verify(name,viewport,isMobile){
   assert(await page.locator('#hero-course-spotlight').evaluate(card=>{
    const title=card.querySelector('.spotlight-title')?.getBoundingClientRect();
    const photo=card.querySelector('.spotlight-illustration')?.getBoundingClientRect();
-   return title&&photo&&(title.right<=photo.left+3||title.bottom<=photo.top||title.top>=photo.bottom);
+   return title&&photo&&(title.right<=photo.left+3||photo.right<=title.left+3||title.bottom<=photo.top||title.top>=photo.bottom);
   }),'The rotating course photo must not overlap its title');
   const field=page.locator('#anielka-question');
   const help=page.locator('header .nav-help');
-  assert.equal(await help.getAttribute('href'),'/pomoc');
-  await help.waitFor({state:'visible'});
-  assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
-  assert.equal(await help.locator('.nav-help-heart').innerText(),'❤️');
-  const supportStyle=await help.evaluate(el=>{
-   const menuStyle=getComputedStyle(document.querySelector('header .nav a'));
-   const style=getComputedStyle(el);
-   const copy=el.querySelector('.nav-help-copy');
-   return {matched:['fontFamily','fontSize','fontWeight','color'].every(key=>style[key]===menuStyle[key]),
-    stacked:getComputedStyle(copy).display==='grid',
-    small:parseFloat(getComputedStyle(copy.querySelector('small')).fontSize)<parseFloat(style.fontSize)};
-  });
-  assert.deepEqual(supportStyle,{matched:true,stacked:true,small:true});
   const account=page.locator('header .demo-tag');
-  const helpBounds=await help.boundingBox(),accountBounds=await account.boundingBox();
-  assert(helpBounds&&accountBounds,'Help and account links must both be visible');
-  assert(accountBounds.x>=helpBounds.x+helpBounds.width&&accountBounds.x-helpBounds.x-helpBounds.width<=20,'Help must be immediately to the left of My account');
-  assert(Math.abs(helpBounds.y+helpBounds.height/2-accountBounds.y-accountBounds.height/2)<=2,'Help and account must share a row');
-  for(const neighbor of [field,account]){
-   const bounds=await neighbor.boundingBox();
-   assert(helpBounds&&bounds);
-   const overlap=helpBounds.x<bounds.x+bounds.width&&helpBounds.x+helpBounds.width>bounds.x&&
-    helpBounds.y<bounds.y+bounds.height&&helpBounds.y+helpBounds.height>bounds.y;
-   assert(!overlap,'Help link overlaps a neighboring control');
+  assert.equal(await help.getAttribute('href'),'/pomoc');
+  if(isMobile){
+   // Mobile navigation replaces the crowded desktop controls.
+   const menu=page.locator('header .mobile-nav');
+   const menuToggle=menu.locator('summary');
+   await menuToggle.waitFor({state:'visible'});
+   assert.equal(await menu.locator('nav').getAttribute('aria-label'),'Menu mobilne');
+   await menuToggle.click();
+   await menu.getByRole('link',{name:'Przeglądaj kursy'}).waitFor({state:'visible'});
+   assert.equal(await menu.getByRole('link',{name:'Zaloguj się'}).getAttribute('href'),'/konto');
+   assert.equal(await menu.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc');
+   const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .brand').boundingBox();
+   assert(bounds&&brandBounds&&bounds.x>=brandBounds.x+brandBounds.width-2,'Mobile menu should not overlap brand');
+   await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
+   assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close after selection');
+   assert(await page.locator('#kursy').isVisible(),'Course section must remain available after mobile navigation');
+   assert.equal(await page.locator('header .nav').isVisible(),false,'Desktop navigation must be hidden on mobile');
+  }else{
+   await help.waitFor({state:'visible'});
+   assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
+   assert.equal(await help.locator('.nav-help-heart').innerText(),'❤️');
+   const supportStyle=await help.evaluate(el=>{
+    const menuStyle=getComputedStyle(document.querySelector('header .nav a'));
+    const style=getComputedStyle(el);
+    const copy=el.querySelector('.nav-help-copy');
+    return {matched:['fontFamily','fontSize','fontWeight','color'].every(key=>style[key]===menuStyle[key]),
+     stacked:getComputedStyle(copy).display==='grid',
+     small:parseFloat(getComputedStyle(copy.querySelector('small')).fontSize)<parseFloat(style.fontSize)};
+   });
+   assert.deepEqual(supportStyle,{matched:true,stacked:true,small:true});
+   const helpBounds=await help.boundingBox(),accountBounds=await account.boundingBox();
+   assert(helpBounds&&accountBounds,'Help and account links must both be visible');
+   assert(accountBounds.x>=helpBounds.x+helpBounds.width&&accountBounds.x-helpBounds.x-helpBounds.width<=20,'Help must be immediately to the left of My account');
+   assert(Math.abs(helpBounds.y+helpBounds.height/2-accountBounds.y-accountBounds.height/2)<=2,'Help and account must share a row');
+   for(const neighbor of [field,account]){
+    const bounds=await neighbor.boundingBox();
+    assert(helpBounds&&bounds);
+    const overlap=helpBounds.x<bounds.x+bounds.width&&helpBounds.x+helpBounds.width>bounds.x&&
+     helpBounds.y<bounds.y+bounds.height&&helpBounds.y+helpBounds.height>bounds.y;
+    assert(!overlap,'Help link overlaps a neighboring control');
+   }
   }
   const footer=page.locator('footer.academy-footer');
   await footer.waitFor({state:'visible'});
@@ -201,7 +219,7 @@ async function verify(name,viewport,isMobile){
   assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug).sort(),['excel-skroty','swiety-mikolaj','zaufany-wolontariusz']);
   assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),69);
   assert.equal(await page.locator('.category-tiles .category-tile').count(),6,'Six clickable category cards must appear on homepage');
-  assert.equal(await page.locator('#course-cards .course-card').count(),12,'Homepage should show twelve featured courses');
+  assert.equal(await page.locator('#course-cards .course-card').count(),6,'Homepage should show six curated courses');
   const freeCards=page.locator('#course-cards .free-starter-grid .course-card');
    assert.deepEqual(await freeCards.evaluateAll(nodes=>nodes.map(node=>node.dataset.courseId)),['excel-skroty','zaufany-wolontariusz','swiety-mikolaj'],'Free courses must appear together in the first catalogue row');
    assert.deepEqual(await freeCards.locator('.price').allTextContents(),['GRATIS','GRATIS','GRATIS']);
@@ -217,10 +235,11 @@ async function verify(name,viewport,isMobile){
    img.getAttribute('alt')===''&&img.loading==='lazy'&&
    getComputedStyle(img).objectFit==='contain'&&getComputedStyle(img).opacity==='1'),
    'The original Excel screenshot must render fully, crisply and without duplicate screen-reader text');
-  assert(await page.locator('#course-cards .btn-buy-card').evaluateAll(buttons=>buttons.every(button=>{
-   const card=button.closest('.course-card').getBoundingClientRect(), action=button.getBoundingClientRect();
-   return action.left>=card.left&&action.right<=card.right;
-  })),'Course purchase buttons must fit inside their cards');
+  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),0,'Cards should present one clear action');
+   assert(await page.locator('#course-cards .card-foot .btn-inline').evaluateAll(links=>links.length===6&&links.every(link=>{
+    const card=link.closest('.course-card').getBoundingClientRect(),action=link.getBoundingClientRect();
+    return action.left>=card.left&&action.right<=card.right&&link.href.includes('/academy/');
+   })),'Every curated card must expose a clear programme link');
   assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'technologie-i-logistyka');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
   assert.equal(await page.locator('.excel-free-intro').count(),0,'No separate Excel hero banner');
@@ -231,7 +250,7 @@ async function verify(name,viewport,isMobile){
   await page.locator('.category-tiles .category-tile').nth(1).click();
   assert.equal(await page.locator('#course-cards .course-card').count(),25,'Craft category must show all twenty-five courses');
   await page.locator('#chips .chip').first().click();
-  assert.equal(await page.locator('#course-cards .course-card').count(),12,'All categories should return to featured discovery view');
+  assert.equal(await page.locator('#course-cards .course-card').count(),6,'All categories should return to curated discovery view');
   assert.equal(await page.locator('#course-search').count(),0,'Duplicate search field');
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');

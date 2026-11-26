@@ -47,8 +47,8 @@ for(const q of ['księgowość','ksiegowosc','księgowości','rachunkowość','f
 const featured=search('');
 assert(featured.includes('data-course-id="ai-bez-tajemnic"'));
 assert(featured.includes('data-course-id="ksiegowosc-od-podstaw"'));
-assert.equal((featured.match(/data-course-id=/g)||[]).length,12,
- 'Keep 3 free plus 9 featured course cards');
+assert.equal((featured.match(/data-course-id=/g)||[]).length,6,
+ 'Show 3 free and 3 carefully selected paid courses, without hiding other categories');
 
 runInContext('livePublishedCatalogIds=new Set(COURSES.map(x=>x.id).concat("ksiegowosc-od-podstaw"));',env);
 assert(!search('AI').includes('data-course-id="ai-bez-tajemnic"'),

@@ -1,0 +1,344 @@
+/* TRENERKI premium navy & gold system — 2026-11-26
+ * Editorial design, real course data and no synthetic testimonials or fake claims.
+ * Overrides the earlier light trial; keeps public catalogue and checkout routes intact.
+ */
+:root{
+ --ink:#13253A;--ink2:#304358;--soft:#627084;--cream:#F7F9FC;
+ --lime:#F4D080;--olive:#E8BD5D;--border:#DCE5EF;--paper:#FFFFFF;
+ --muted:#F1F5F9;--green:#B98222;--shadow:0 16px 45px rgba(12,28,45,.09);
+ --ta-primary:#DCA83E;--ta-primary-hover:#F0C76B;--ta-text:#14253B;
+ --ta-subtle:#5F7084;--ta-outline:#DCE4ED;
+ --premium-navy:#061829;--premium-navy2:#0F2941;
+ --premium-gold:#E7BB5B;--premium-gold-bright:#FFD779;
+ --premium-gold-ink:#3A290C;
+}
+html{scroll-padding-top:95px}
+body{background:#F7F9FC;color:#13253A}
+h1,h2,h3,h4{letter-spacing:-.037em}
+.header{background:linear-gradient(110deg,#061829,#102740)!important;
+ border:0;border-bottom:1px solid rgba(231,187,91,.26)!important;
+ box-shadow:0 6px 24px rgba(5,18,32,.16);backdrop-filter:none}
+.header .head-in{max-width:1350px;min-height:78px;gap:13px}
+.header .brand{color:#FFFFFF!important;letter-spacing:-.04em;font-size:20px;gap:10px}
+.header .brand-mark{background:transparent!important;border:2px solid #E7BB5B!important;
+ color:#F5CA71!important;border-radius:10px;width:42px;height:42px;
+ box-shadow:0 0 25px rgba(229,185,92,.08)}
+.header .brand small{color:#B4C6D6}
+.header .nav{gap:19px}
+.header .nav a{color:#E9F1F8!important;font-size:13px;font-weight:700;opacity:.96}
+.header .nav a:hover,.header .nav a:focus-visible{color:#F5CB70!important}
+.header .nav-actions>.nav-help{color:#E9F1F8!important;font-size:12px}
+.header .nav-help-copy small{color:#BAC9D7!important;font-size:10px}
+.header .nav-help-heart{--support-heart-accent:#EDC669}
+.header .anielka-nav-search{
+ background:#122E48!important;border:1px solid #496277!important;
+ min-width:150px;max-width:300px;border-radius:12px;
+ box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)!important
+}
+.header .anielka-nav-search input{color:#FFFFFF!important;font-size:13px}
+.header .anielka-nav-search input::placeholder{color:#CBD7E2;opacity:1}
+.header .anielka-nav-search:focus-within{border-color:#F1C568!important;
+ box-shadow:0 0 0 3px rgba(232,193,101,.18)!important}
+.header .nav-actions>.demo-tag{
+ background:linear-gradient(180deg,#FFD97E,#DBA636)!important;
+ color:#142237!important;border:1px solid #D9A133!important;
+ border-radius:11px!important;font-size:13px;font-weight:850!important;
+ letter-spacing:0;box-shadow:0 5px 15px rgba(211,153,44,.16);min-height:43px;padding:9px 16px
+}
+.header .nav-actions>.demo-tag:hover{background:#FFE3A2!important}
+.header .nav-end{min-width:0}
+.header .anielka-peek{color:#14283D}
+.header .anielka-peek a{color:#14283D}
+.mobile-nav summary{font-weight:750}
+.hero{position:relative;overflow:hidden;
+ background:radial-gradient(ellipse at 79% 36%,rgba(209,164,71,.18),transparent 35%),
+ radial-gradient(ellipse at 10% 86%,rgba(31,75,109,.75),transparent 62%),
+ linear-gradient(112deg,#061625 0%,#0C2337 56%,#10283C 100%)!important;
+ border-bottom:0!important;color:#FFF}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.11;
+ background-image:linear-gradient(90deg,transparent 98%,rgba(255,255,255,.18) 100%);
+ background-size:47px 47px}
+.hero .hero-in{max-width:1350px;padding-top:65px;padding-bottom:72px;
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:36px;align-items:center}
+.hero h1{color:#FFFFFF!important;font-size:clamp(39px,4.7vw,64px)!important;
+ font-weight:850;line-height:1.11;max-width:670px;letter-spacing:-.052em}
+.hero h1 span{color:#F2C669!important}
+.hero .eyebrow{color:#F4CF7D!important;letter-spacing:.1em;font-size:11px;
+ text-transform:uppercase;font-weight:850;margin-bottom:20px;line-height:1.5}
+.hero .dot{background:#F4CE75;box-shadow:0 0 0 5px rgba(231,187,91,.1)}
+.hero-desc{font-size:16px!important;color:#DCE7F1!important;line-height:1.72;
+ margin-top:23px;max-width:555px}
+.hero .hero-actions{margin:25px 0 21px!important;gap:12px;display:flex}
+.btn,.btn-dark,.btn-lime,.cta,.button,.btn-inline{font-weight:800}
+.hero .btn-dark,.btn-dark,.btn-lime,.course-card .btn-inline,
+ body>main .button,body>main .cta,.anielka-input-row button{
+ background:linear-gradient(180deg,#FFDC86,#DCA73B)!important;
+ border:1px solid #D7A23B!important;color:#172335!important;
+ box-shadow:0 5px 14px rgba(206,154,43,.16);
+ min-height:45px;border-radius:10px
+}
+.hero .btn-dark:hover,.btn-dark:hover,.btn-lime:hover,.course-card .btn-inline:hover,
+ body>main .button:hover,body>main .cta:hover,.anielka-input-row button:hover{
+ background:#FFE2A1!important;color:#132338!important
+}
+.hero .btn-outline{
+ background:rgba(255,255,255,.06)!important;color:#FFFFFF!important;
+ border:1px solid rgba(233,241,249,.57)!important;box-shadow:none
+}
+.hero .btn-outline:hover{background:rgba(255,255,255,.15)!important}
+.hero .trust-strip{gap:16px;color:#C6D5E3!important;font-size:12px;line-height:1.7}
+.hero .trust-strip span:before{color:#F4C96A!important}
+.hero-art{min-height:370px!important;width:100%;display:flex!important;
+ flex-direction:column;justify-content:center;align-items:stretch;gap:16px;padding:0 5px}
+.hero-product-showcase{width:100%;max-width:600px;margin:0 auto;position:relative}
+.hero-laptop{display:block;position:relative;color:#101F32!important;
+ background:#0B1828;border:1px solid #65809B;border-radius:19px 19px 9px 9px;
+ padding:10px 10px 12px;box-shadow:0 30px 64px rgba(0,0,0,.34),0 0 0 5px rgba(255,255,255,.035);
+ text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.hero-laptop:hover{transform:translateY(-3px);box-shadow:0 38px 70px rgba(0,0,0,.39)}
+.hero-laptop-screen{min-height:294px;background:#F8FAFD;border-radius:10px;overflow:hidden}
+.hero-laptop-top{background:#0C2943;color:#FFF;display:flex;
+ align-items:center;justify-content:space-between;gap:8px;padding:9px 14px}
+.hero-laptop-logo{font-weight:900;letter-spacing:-.03em;font-size:12px}
+.hero-laptop-logo span{color:#F0C365}
+.hero-laptop-top small{color:#C3D3E1;font-size:10px}
+.hero-laptop-body{display:grid;grid-template-columns:31% 69%;min-height:262px}
+.hero-laptop-side{background:#ECF2F8;border-right:1px solid #DCE5EF;padding:14px 10px;display:grid;gap:11px;align-content:start}
+.hero-laptop-side span{display:block;font-size:10px;line-height:1.35;color:#43586F}
+.hero-laptop-side span:first-child{font-weight:850;color:#0E2941;font-size:11px}
+.hero-laptop-side .active{background:#DDE9FA;border-left:3px solid #C99739;
+ padding:7px 5px;border-radius:4px;color:#152B45;font-weight:800}
+.hero-laptop-content{padding:16px 14px 20px;min-width:0}
+.hero-demo-kicker{display:block;font-size:10px;font-weight:850;letter-spacing:.1em;color:#8B692D;margin-bottom:4px}
+.hero-laptop-content strong{font-size:16px;font-weight:900;line-height:1.2}
+.hero-laptop-content p{font-size:11px;line-height:1.5;color:#61738A;margin:7px 0 12px}
+.hero-sheet{width:100%;border-collapse:collapse;table-layout:fixed;font-size:11px;color:#25394F}
+.hero-sheet th{background:#E5EDF5;color:#36536E;font-weight:750}
+.hero-sheet th,.hero-sheet td{border:1px solid #CFDAE6;padding:5px 6px;text-align:right;white-space:nowrap}
+.hero-sheet th:first-child,.hero-sheet td:first-child{text-align:left}
+.hero-sheet tr:last-child td{background:#FFF5DB;font-weight:800;color:#2F4259}
+.hero-formula{display:inline-block;margin-top:10px;border:1px solid #E5C578;
+ color:#72541E;background:#FFF8E7;border-radius:7px;padding:5px 9px;font-size:11px;font-weight:800}
+.hero-laptop::after{content:"";position:absolute;left:-6%;right:-6%;bottom:-19px;height:17px;
+ background:linear-gradient(180deg,#D0D7DE,#7F8C9B 73%,#596678);
+ border-radius:2px 2px 42px 42px;box-shadow:0 10px 16px #0004}
+.hero-screen-note{color:#B6C8D8;font-size:11px;max-width:580px;text-align:center;margin:21px auto 0}
+.hero .hero-course-spotlight{position:relative;min-height:76px!important;max-width:500px;width:100%;
+ display:flex;flex-direction:row;justify-content:flex-start;align-items:center;
+ margin:5px auto 0;padding:11px 14px 11px 88px!important;gap:6px;
+ background:rgba(17,42,63,.93)!important;border:1px solid rgba(230,187,91,.39)!important;
+ border-radius:13px;color:#F7FAFD!important;box-shadow:none!important;transform:none!important}
+.hero .hero-course-spotlight:hover{border-color:#F2C76D!important;background:#1A3B54!important}
+.hero .spotlight-illustration{position:absolute!important;left:11px!important;right:auto!important;
+ top:11px!important;width:60px!important;height:52px!important;border-radius:9px!important;
+ border:1px solid #56728A!important;transform:none!important;box-shadow:none!important;background:#DCE7F0}
+.hero .spotlight-kicker{display:none}
+.hero .spotlight-title{max-width:none!important;font-size:12px;color:#FFF;line-height:1.25}
+.hero .spotlight-pricing{font-size:11px;color:#F4C568}
+.hero .spotlight-cta{font-size:11px;color:#14263A;background:#F3CB71;
+ padding:6px 9px;border-radius:7px;white-space:nowrap;margin-left:auto}
+.hero .spotlight-disclaimer{display:none!important}
+.hero .spotlight-photo{object-fit:cover}
+#kursy{background:#F7F9FC!important}
+#kursy .section-head{margin-bottom:19px}
+#kursy .section-head h2{color:#14253B;font-size:clamp(26px,3vw,38px)}
+#kursy .section-head .overline{color:#9B712A}
+.category-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+ gap:11px;margin:12px 0 26px!important}
+.category-tile{min-height:130px!important;border-radius:14px!important;
+ padding:15px 10px!important;display:flex;flex-direction:column;
+ justify-content:center;align-items:center;text-align:center;gap:8px!important;
+ background:linear-gradient(140deg,#12314B,#071C30)!important;
+ border:1px solid #234864!important;color:#FFF!important;box-shadow:0 7px 17px rgba(10,35,55,.1)!important}
+.category-tile:hover,.category-tile:focus-visible{transform:translateY(-3px);
+ border-color:#D9AE59!important;background:#173C57!important;box-shadow:0 12px 24px #06182930!important}
+.category-tile-icon{width:45px!important;height:45px!important;background:transparent!important;
+ border:0!important;border-radius:0!important;display:grid;place-items:center}
+.category-tile-icon svg{width:36px;height:36px;stroke:#F6CD72;stroke-width:1.7;
+ fill:none;stroke-linecap:round;stroke-linejoin:round}
+.category-tile-icon img,.category-tile-icon .category-tile-fallback{display:none!important}
+.category-tile-copy{display:grid;gap:3px;text-align:center}
+.category-tile-copy strong{font-size:12px!important;color:#FFF!important;line-height:1.3}
+.category-tile-copy small{font-size:10px;color:#C8D8E5!important}
+.category-tile-copy>span,.category-tile>b{display:none!important}
+#kursy .anielka-finder{background:#FFFFFF!important;border:1px solid #DFE6EE!important;
+ border-radius:14px;box-shadow:0 5px 18px #07182908!important;padding:15px 18px}
+#kursy .anielka-finder-header h3{color:#13253A}
+#kursy .anielka-finder>.anielka-nav-search{border:1px solid #C7D3DE!important;
+ border-radius:10px;background:#F9FBFD!important}
+#kursy .anielka-finder>.anielka-nav-search input{color:#13253A}
+#kursy .anielka-finder>.anielka-nav-search .anielka-nav-avatar{background:#F7D784;color:#172B41}
+#kursy .chips{gap:7px}
+#kursy .chip{background:#FFFFFF!important;border:1px solid #DCE4EF!important;color:#354B60!important}
+#kursy .chip.active{background:#112B43!important;color:#FFFFFF!important;border-color:#112B43!important}
+.catalog-category{margin:0 0 32px}
+.catalog-category-head{margin:14px 0;display:flex;align-items:baseline;gap:12px}
+.catalog-category-head h3{color:#152A42;font-weight:850;letter-spacing:-.03em;font-size:23px}
+.catalog-category-head small{color:#64758A;font-size:12px}
+.catalog-category-grid{gap:19px}
+.course-card{border:1px solid #E0E5ED!important;border-radius:16px!important;
+ background:#FFFFFF!important;box-shadow:0 7px 17px rgba(17,38,59,.07)!important;
+ overflow:hidden}
+.course-card:hover{box-shadow:0 18px 36px rgba(17,38,59,.13)!important}
+.course-card .card-media{height:165px;background:#E9EEF5!important}
+.course-card .card-photo{display:block;width:100%;height:100%;object-fit:cover}
+.course-card .card-body{padding:18px 19px 19px;gap:9px}
+.course-card .card-category{color:#9B752D!important;letter-spacing:.06em}
+.course-card .card-title{font-size:18px;line-height:1.28;color:#15283B!important}
+.course-card .card-desc{min-height:0;color:#66758A;font-size:13px;line-height:1.5}
+.course-card .card-foot{margin-top:auto;padding-top:13px;border-color:#E9EFF5;gap:13px;flex-wrap:wrap}
+.course-card .price{font-size:21px;color:#11273C!important;white-space:nowrap}
+.course-card .price small{color:#728196}
+.course-card .btn-inline{font-size:12px;min-height:42px;padding:10px 12px;white-space:nowrap}
+.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media,
+.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media{
+ background:linear-gradient(135deg,#173D54,#0B2035)!important}
+.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media .card-photo,
+.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media .card-photo{
+ opacity:.0!important}
+.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media:after{
+ content:"WOLONTARIAT";position:absolute;z-index:3;color:#EAC46F;font-size:23px;letter-spacing:.06em;font-weight:850}
+.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media:after{
+ content:"KURS ŚWIĄTECZNY";position:absolute;z-index:3;color:#EAC46F;font-size:22px;letter-spacing:.06em;font-weight:850}
+.features{background:#EEF3F8!important;border-block:1px solid #E1E8F0!important}
+.feature-ico{color:#D8AA4E!important;background:#FFF;border:1px solid #E4EAF2}
+.features h2,.feature h3{color:#14283E}
+.feature p{color:#63758A}
+.cta-band{background:linear-gradient(110deg,#0A2034,#17374E)!important;border:1px solid #264760}
+.cta-band h2{color:#FFF}
+.cta-band p{color:#CCDBE8}
+.cta-band .overline{color:#EEC774!important}
+.cta-band .btn-lime{background:linear-gradient(180deg,#FFDA84,#DCA43A)!important;color:#142339!important}
+.academy-footer{background:#071A2B!important;color:#E1EBF4;border-color:#274056}
+.academy-footer .brand-mark{background:transparent!important;border:2px solid #DDB65A!important;
+ color:#F0C86F!important}
+.academy-footer__help{background:#0D2A42;border-color:#38536A}
+.academy-footer__founder{color:#B8C8D6}
+.academy-footer a:focus-visible{outline-color:#F1CB6E}
+body>header:not(.header):not(.academy-footer){background:#0B2238!important;color:#FFF!important;
+ border-bottom:1px solid #314963;box-shadow:none}
+body>header:not(.header):not(.academy-footer) a{color:#F8FAFC!important}
+body>header:not(.header):not(.academy-footer) a:hover{color:#F1C66C!important}
+body>main .eyebrow,body>main .back,body>main .back a{color:#996E21!important}
+body>main .headline{background:linear-gradient(130deg,#F9FAFC,#F0F4F8)!important;
+ border-color:#E0E7EF!important}
+body>main .checkout{background:#0C2842!important;color:#FFF!important}
+body>main .checkout .price{color:#FFF!important}
+body>main .checkout p{color:#CDDDEB!important}
+body>main .button,body>main .cta{color:#13263B!important}
+body>main .panel,body>main .related a{border-color:#DCE4ED}
+body>main .related a:hover{border-color:#D7AC54;background:#FFF9EA}
+body>footer:not(.academy-footer){background:#071A2B!important;color:#DCE8F2}
+body>footer:not(.academy-footer) a{color:#F0CE7D!important}
+.accounting-landing .hero{background:linear-gradient(130deg,#071A2D,#163C58)!important}
+.accounting-landing .hero h1,.accounting-landing .hero .price{color:#FFFFFF!important}
+.accounting-landing .hero .lead{color:#DFE8F2!important}
+.accounting-landing .hero .btn{background:linear-gradient(180deg,#FFDA86,#D7A23A)!important;
+ color:#12263D!important;border-color:#D4A03C!important}
+.course-heading,.lesson-head h2{color:#172A42}
+.module-btn.sel{background:#FFF7E4!important;border-color:#E4C680!important}
+.progressbar i{background:#D6A544!important}
+.choice:has(input:checked){background:#FFF7E3!important;border-color:#CFA554!important}
+.choice input{accent-color:#A26C13}
+@media(max-width:1260px){
+ .header .head-in{gap:9px}
+ .header .nav{gap:11px}
+ .header .brand{font-size:18px}
+ .header .anielka-nav-search{max-width:210px;min-width:130px}
+ .header .nav-help-copy small{display:none}
+ .category-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:960px){
+ .hero .hero-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+ .hero h1{font-size:clamp(34px,4.4vw,49px)!important}
+ .hero-laptop-screen{min-height:240px}
+ .hero-laptop-body{min-height:210px}
+ .hero-laptop-side{display:none}
+ .hero-laptop-body{grid-template-columns:1fr}
+ .hero-art{min-height:310px!important}
+}
+@media(max-width:760px){
+ html{scroll-padding-top:111px}
+ .header .head-in{display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-auto-rows:auto;gap:9px;padding:9px 18px;max-width:100%}
+ .header .brand{font-size:17px}
+ .header .brand-mark{width:35px;height:35px;font-size:18px}
+ .header .nav{display:none!important}
+ .header .nav-end{display:contents}
+ .header .nav-end>.nav-actions{display:none!important}
+ .header .nav-end>.anielka-nav-search{grid-column:1/-1;grid-row:2;max-width:none;
+  width:100%;margin:0;min-height:41px}
+ .mobile-nav{display:block;grid-column:2;grid-row:1;justify-self:end}
+ .mobile-nav summary{background:#132F49!important;color:#FFE0A0!important;
+  border:1px solid #9F7E41!important;border-radius:10px;padding:8px 11px}
+ .mobile-nav[open] summary{background:#213F58!important;border-color:#F4C96A!important}
+ .mobile-nav nav{background:#0E2A43!important;border:1px solid #B58E4C!important;
+  box-shadow:0 18px 45px #0007}
+ .mobile-nav nav a{color:#F4F7FA!important;min-height:46px;border-radius:8px}
+ .mobile-nav nav a:hover,.mobile-nav nav a:focus-visible{background:#1F405B!important;color:#FFD77E!important}
+ .mobile-nav nav a:last-child{color:#F6CC73!important}
+ .hero .hero-in{display:flex;flex-direction:column;align-items:stretch;
+  padding-top:36px;padding-bottom:44px;gap:25px}
+ .hero h1{font-size:clamp(37px,9vw,52px)!important;max-width:620px}
+ .hero-desc{font-size:15px!important;max-width:550px;margin-top:17px}
+ .hero .eyebrow{font-size:10px;letter-spacing:.06em;margin-bottom:12px}
+ .hero .hero-actions{display:flex;gap:9px;margin:21px 0 15px!important}
+ .hero .hero-actions .btn{flex:1 1 auto;min-height:47px;padding-inline:14px}
+ .hero .trust-strip{gap:6px 13px;font-size:11px}
+ .hero-art{min-height:0!important;padding:0 6px;gap:11px}
+ .hero-product-showcase{width:min(100%,490px)}
+ .hero-laptop-screen{min-height:244px}
+ .hero-laptop-body{grid-template-columns:1fr;min-height:210px}
+ .hero-laptop-side{display:none}
+ .hero-laptop-content{padding:13px 12px}
+ .hero-laptop-content strong{font-size:14px}
+ .hero .hero-course-spotlight{max-width:490px;width:100%}
+ .category-tiles{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px}
+ .category-tile{min-height:113px!important;padding:13px 8px!important}
+ .category-tile-icon{height:39px!important}
+ .category-tile-icon svg{width:33px;height:33px}
+ .category-tile-copy strong{font-size:12px!important}
+ .category-tile-copy small{font-size:9px}
+ #kursy .anielka-finder{padding:12px!important}
+ #kursy .section-head h2{font-size:28px}
+ .catalog-category-head h3{font-size:21px}
+ .catalog-category-grid{gap:14px}
+ .course-card .card-body{padding:15px}
+ .course-card .card-media{height:170px}
+ .course-card .card-foot{gap:12px}
+ .course-card .btn-inline{white-space:normal;text-align:center}
+ .cta-band{padding:30px 23px}
+}
+@media(max-width:390px){
+ .header .brand{font-size:15px}
+ .header .brand-mark{width:33px;height:33px}
+ .hero h1{font-size:35px!important}
+ .hero .hero-actions{flex-direction:column}
+ .hero .hero-actions .btn{width:100%}
+ .hero-laptop-content p{margin:5px 0 7px}
+ .hero-sheet th,.hero-sheet td{font-size:9px;padding:5px 3px}
+}
+@media(prefers-reduced-motion:reduce){
+ .hero-laptop,.category-tile,.course-card{transition:none!important;transform:none!important}
+}
+
+/* QA corrections: retain full-width 3-column course grids and readable thumbnails. */
+#kursy .catalog-category-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:19px!important}
+#kursy .catalog-category-grid .course-card{width:auto;min-width:0;max-width:none}
+.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media:after,
+.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media:after{
+ position:absolute;inset:0;left:0;right:0;top:0;bottom:0;
+ width:auto;height:auto;border:0;border-radius:0;transform:none!important;
+ display:grid;place-items:center;padding:16px;text-align:center;
+ font-size:clamp(16px,2vw,22px);line-height:1.25;letter-spacing:.06em;
+ color:#F6CF79;filter:none;opacity:1
+}
+.academy-footer .academy-footer__help{background:#102D46!important;
+ border-color:#365471!important;color:#FFF!important}
+.header .nav-actions>.nav-help{font-size:13px!important;font-weight:700!important}
+@media(max-width:760px){
+ #kursy .catalog-category-grid{grid-template-columns:1fr!important;gap:13px!important}
+ #trenerki-ads-banner{bottom:8px!important;padding:13px 15px!important;max-width:calc(100% - 20px)!important}
+ #trenerki-ads-banner p{margin:5px 0 9px!important;font-size:12px;line-height:1.45}
+ #trenerki-ads-banner strong{font-size:14px!important}
+}
