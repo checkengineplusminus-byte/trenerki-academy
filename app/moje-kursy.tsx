@@ -11,7 +11,7 @@ type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean};
 export default function MyCourses(){
- const {width}=useWindowDimensions(),columns=width>=1024?3:width>=680?2:1,availableWidth=Math.max(0,Math.min(width,1150)-40),cardWidth=Math.floor((availableWidth-(columns-1)*16)/columns);
+ const {width}=useWindowDimensions(),columns=width>=1600?5:width>=1280?4:width>=1024?3:width>=680?2:1,availableWidth=Math.max(0,Math.min(width,1920)-40),cardWidth=Math.floor((availableWidth-(columns-1)*16)/columns);
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
  const {checkout,session_id:sessionId}=useLocalSearchParams<{checkout?:string;session_id?:string}>();
  // Reklamy: dopiero potwierdzony webhook płatności, nigdy sam powrót z checkout.
@@ -110,7 +110,7 @@ export default function MyCourses(){
    </View>
   </View>;
  };
- return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} contentContainerStyle={{padding:20,maxWidth:1150,alignSelf:'center',width:'100%',paddingBottom:55}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} contentContainerStyle={{padding:20,maxWidth:1920,alignSelf:'center',width:'100%',paddingBottom:55}}>
   <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:10,flexWrap:'wrap',marginBottom:15}}>
    <Pressable onPress={()=>router.push('/')}><Text style={{color:'#2C587B',fontWeight:'800'}}>← Katalog kursów</Text></Pressable>
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
@@ -128,8 +128,9 @@ export default function MyCourses(){
    <Text accessibilityRole="alert" style={{color:'#88422d',fontSize:14}}>{error}</Text>
    <Pressable accessibilityRole="button" onPress={()=>void load()} style={{minHeight:44,justifyContent:'center',alignSelf:'flex-start',paddingHorizontal:15,backgroundColor:'#142F49',borderRadius:9}}><Text style={{color:'white',fontWeight:'800'}}>Spróbuj ponownie</Text></Pressable>
   </View>}
-  {isAdmin&&<View style={{backgroundColor:'#F1F5F9',padding:16,borderRadius:13,gap:8}}><Text style={{color:'#14263B',fontWeight:'800'}}>Panel właściciela — księgowość</Text><Text style={{color:'#63768A',fontSize:12}}>Podgląd administracyjny pozwala sprawdzać kurs bez nadawania dostępu innym kontom. Uprawnienia sprawdza serwer.</Text><Pressable accessibilityRole="button" onPress={()=>router.push('/ksiegowosc')} style={{padding:10}}><Text style={{color:'#AC7923',fontWeight:'800'}}>Otwórz encyklopedię →</Text></Pressable></View>}
-  <View style={{backgroundColor:'#F1F5F9',padding:16,borderRadius:13,gap:10,marginVertical:12}}>
+  <View style={{flexDirection:width>=1024?'row':'column',gap:12,alignItems:'stretch',marginBottom:12}}>
+  {isAdmin&&<View style={{flex:width>=1024?1:undefined,backgroundColor:'#F1F5F9',padding:16,borderRadius:13,gap:8}}><Text style={{color:'#14263B',fontWeight:'800'}}>Panel właściciela — księgowość</Text><Text style={{color:'#63768A',fontSize:12}}>Podgląd administracyjny pozwala sprawdzać kurs bez nadawania dostępu innym kontom. Uprawnienia sprawdza serwer.</Text><Pressable accessibilityRole="button" onPress={()=>router.push('/ksiegowosc')} style={{padding:10}}><Text style={{color:'#AC7923',fontWeight:'800'}}>Otwórz kurs księgowości →</Text></Pressable></View>}
+  <View style={{flex:width>=1024?1:undefined,backgroundColor:'#F1F5F9',padding:16,borderRadius:13,gap:10}}>
    <Text style={{color:'#516D86',fontWeight:'700',fontSize:12}}>Saldo kart podarunkowych</Text>
    <Text style={{fontSize:29,color:'#14263B',fontWeight:'900'}}>{(creditBalance/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})} zł</Text>
    <View style={{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:12}}>
@@ -137,6 +138,7 @@ export default function MyCourses(){
     {!!creditHistory.length&&<Pressable onPress={()=>setShowCreditHistory(v=>!v)} style={{padding:9}}><Text style={{color:'#2C587B',fontWeight:'800'}}>{showCreditHistory?'Ukryj historię':'Historia salda'}</Text></Pressable>}
    </View>
    {showCreditHistory&&creditHistory.slice(0,10).map((h:any,i:number)=><View key={String(i)} style={{borderTopWidth:1,borderColor:'#DDE6EF',paddingVertical:7,gap:3}}><Text style={{color:'#14263B',fontSize:12,fontWeight:'700'}}>{h.kind==='redeemed_card'?'Doładowanie karty':h.kind==='paid_course'?'Zakup kursu':h.kind==='refunded_course'?'Zwrot za kurs':'Operacja na saldzie'} · {(Number(h.amount_grosze)/100).toLocaleString('pl-PL',{minimumFractionDigits:2})} zł</Text><Text style={{color:'#63768A',fontSize:11}}>{new Date(h.created_at).toLocaleDateString('pl-PL')}</Text></View>)}
+  </View>
   </View>
   {!busy&&<View style={{flexDirection:'row',gap:8,flexWrap:'wrap',marginBottom:18}}>
    <Text style={{backgroundColor:'#F1F5F9',borderRadius:9,padding:10,color:'#14263B',fontSize:12,fontWeight:'800'}}>Kursy: {items.length}</Text>
