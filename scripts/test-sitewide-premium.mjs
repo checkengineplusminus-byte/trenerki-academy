@@ -39,16 +39,24 @@ assert.equal(subpaths.filter(p=>p.startsWith('kursy/')).length,83,'83 course SEO
 assert.equal(subpaths.filter(p=>p.startsWith('kategorie/')).length,6,'Six category pages must remain');
 for(const p of subpaths){
  const h=load(p);
- assert(h.includes(link),'Theme must be linked directly from '+p);
- assert(h.includes('/academy/index.html'),'Course navigation back to the catalogue missing: '+p);
+ const isRedirect=p.endsWith('zaufany-wolontariusz-nauka.html');
+ assert(h.includes(link)||h.includes('/academy/course-share.css')||h.includes('/academy/support-footer.css'),
+  'Premium CSS must be reached directly or through the shared styles on '+p);
+ if(isRedirect){
+   assert(h.includes('class="ta-learning-redirect"'),'Secure training redirect should use premium styling');
+   assert(h.includes('href="/materialy-wolontariusza"'),'Keep original access route');
+ }else{
+   assert(h.includes('/academy/index.html'),'Course navigation back to the catalogue missing: '+p);
+ }
  assert(h.includes('<main'),'Main content missing in '+p);
 }
 const support=load('support-footer.css');
 assert(support.includes(link),'Legacy shared footer should import the new theme');
+assert(load('course-share.css').includes(link),'Modern course and category pages must import the same theme');
 const pathnames=['regulamin','prywatnosc','certyfikaty','kontakt','odstapienie','program-afiliacyjny','regulamin-afiliacyjny','prywatnosc-afiliacja','zrodla-zdjec',...subpaths];
 for(const f of pathnames){
  const name=f.endsWith('.html')?f:f+'.html';
  assert(existsSync(new URL(name,root)),name+' must exist');
 }
-console.log('✓ All 6 legal/info pages, 3 partner pages, 83 course landings and 6 category pages share the premium theme.');
+console.log('✓ All 6 legal/info pages, 3 partner pages, 83 course landings and 6 category pages share the premium theme through direct or shared CSS.');
 console.log('✓ Legal/affiliate routes, core content, pricing terms and course paths remain present.');
