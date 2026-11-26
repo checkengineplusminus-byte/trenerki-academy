@@ -214,3 +214,9 @@ body>footer:not(.academy-footer) a{color:#e4ecfa}
   html{scroll-behavior:auto}
   .btn,.course-card,.category-tile,.hero-course-spotlight{transition:none!important;transform:none!important}
 }
+
+/* One clear action per card: see programme, then decide on detail page. */
+.course-card .btn-inline{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;font-weight:800;border-radius:10px;background:#245ddf;color:#fff;text-decoration:none;white-space:nowrap}
+.course-card .btn-inline:hover{background:#174ab7;color:#fff}
+.course-card .card-foot{gap:15px;align-items:center}
+@media(max-width:380px){.course-card .btn-inline{padding-inline:12px;white-space:normal;line-height:1.25;text-align:center}}
