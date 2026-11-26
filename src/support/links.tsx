@@ -47,7 +47,7 @@ export function HelpFooter({compact=false}:{compact?:boolean}={}){
   </ScrollView>
  </View>;
  if(Platform.OS==='web')return <footer className={compact?'ta-app-footer ta-app-footer--compact':'ta-app-footer'}>
-  <link rel="stylesheet" href="/academy/app-footer.css" precedence="default"/>
+  <link rel="stylesheet" href="/academy/app-footer.css?v=20261126-unified2" precedence="default"/>
   <div className="ta-app-footer-inner">
    <a className="ta-app-footer-help" href="/pomoc" aria-label={helpTitle} aria-describedby="ta-app-footer-help-description">
     <span className="ta-app-footer-heart" aria-hidden="true">
