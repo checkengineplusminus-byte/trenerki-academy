@@ -104,9 +104,9 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
     <Pressable testID="excel-homework-quick-access" accessibilityRole="button"
      accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
      onPress={openExcelHomework}
-     style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
-     <Text style={{fontWeight:'900',fontSize:16,color:'#1d5839'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
-     <Text style={{fontSize:12,lineHeight:20,color:'#37674a'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
+     style={{minHeight:58,padding:14,backgroundColor:'#E9F2FC',borderWidth:2,borderColor:'#B4CCE3',borderRadius:12,marginBottom:12,gap:5}}>
+     <Text style={{fontWeight:'900',fontSize:16,color:'#1D527C'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
+     <Text style={{fontSize:12,lineHeight:20,color:'#4E6E8A'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
     </Pressable>}
 `
   ];
@@ -211,7 +211,8 @@ test('Stare linki księgowości przekierowują bez zmiany pozostałych kursów',
   '46fdaf64ac76e1dd2457107fbb2e9a30851501b6', // audited red-team-only change
   'c8268e990da7e1421dc19450339faac8b5497af9', // reviewed AI stage controls
   'df96f74c58d6c1c59d99b13d09f3de99ea583a1f', // reviewed AI-only early Anielka CTA and scroll target
-  '5e0a3f471e55ce6ee943e21130be1fb22f977ef2' // 18.11 reviewed auth-refresh recovery canonicalization; accounting guard unchanged
+  '5e0a3f471e55ce6ee943e21130be1fb22f977ef2', // 18.11 reviewed auth-refresh recovery canonicalization; accounting guard unchanged
+   'a779f1786fc290b21f6ee35d211d4e5179f681de' // 26.11 reviewed desktop layout/nav visual changes; accounting guard excluded and unchanged
  ]);
  // Exact reviewed source hash is allowed in addition to the canonicalized Excel-only
  // hash. No wildcard: any subsequent unreviewed alteration is rejected.
