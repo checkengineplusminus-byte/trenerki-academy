@@ -190,16 +190,8 @@ h1,h2,h3,h4{letter-spacing:-.037em}
 .course-card .price{font-size:21px;color:#11273C!important;white-space:nowrap}
 .course-card .price small{color:#728196}
 .course-card .btn-inline{font-size:12px;min-height:42px;padding:10px 12px;white-space:nowrap}
-.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media,
-.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media{
- background:linear-gradient(135deg,#173D54,#0B2035)!important}
-.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media .card-photo,
-.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media .card-photo{
- opacity:.0!important}
-.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media:after{
- content:"WOLONTARIAT";position:absolute;z-index:3;color:#EAC46F;font-size:23px;letter-spacing:.06em;font-weight:850}
-.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media:after{
- content:"KURS ŚWIĄTECZNY";position:absolute;z-index:3;color:#EAC46F;font-size:22px;letter-spacing:.06em;font-weight:850}
+/* Use the actual course photographs, including the free courses.
+   The former photo opacity:0 and pseudo-labels produced blank navy cards on iPhone. */
 .features{background:#EEF3F8!important;border-block:1px solid #E1E8F0!important}
 .feature-ico{color:#D8AA4E!important;background:#FFF;border:1px solid #E4EAF2}
 .features h2,.feature h3{color:#14283E}
@@ -325,14 +317,7 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
 /* QA corrections: retain full-width 3-column course grids and readable thumbnails. */
 #kursy .catalog-category-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:19px!important}
 #kursy .catalog-category-grid .course-card{width:auto;min-width:0;max-width:none}
-.free-starter-grid .course-card[data-course-id="zaufany-wolontariusz"] .card-media:after,
-.free-starter-grid .course-card[data-course-id="swiety-mikolaj"] .card-media:after{
- position:absolute;inset:0;left:0;right:0;top:0;bottom:0;
- width:auto;height:auto;border:0;border-radius:0;transform:none!important;
- display:grid;place-items:center;padding:16px;text-align:center;
- font-size:clamp(16px,2vw,22px);line-height:1.25;letter-spacing:.06em;
- color:#F6CF79;filter:none;opacity:1
-}
+/* Course titles are visible as real DOM text until the thumbnail has loaded. */
 .academy-footer .academy-footer__help{background:#102D46!important;
  border-color:#365471!important;color:#FFF!important}
 .header .nav-actions>.nav-help{font-size:13px!important;font-weight:700!important}
@@ -342,3 +327,21 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
  #trenerki-ads-banner p{margin:5px 0 9px!important;font-size:12px;line-height:1.45}
  #trenerki-ads-banner strong{font-size:14px!important}
 }
+
+/* Stable, readable media placeholders instead of empty navy slabs. */
+#kursy .catalog-category-grid .card-media{position:relative;isolation:isolate;background:#102A40!important}
+#kursy .catalog-category-grid .card-media-loading{
+ position:absolute;inset:0;z-index:1;display:flex;justify-content:center;
+ align-items:center;padding:20px 28px;text-align:center;
+ background:linear-gradient(135deg,#163A54 0%,#0A2339 100%);
+ color:#F2CA76;pointer-events:none
+}
+#kursy .catalog-category-grid .card-media-loading-title{
+ max-width:100%;font-weight:850;font-size:clamp(15px,2vw,21px);
+ line-height:1.35;letter-spacing:-.015em;
+ display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden
+}
+#kursy .catalog-category-grid .card-photo{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover}
+#kursy .catalog-category-grid .card-media.has-course-photo .card-media-loading{display:none}
+#kursy .catalog-category-grid .card-media.has-course-photo .card-photo{opacity:1}
+#kursy .catalog-category-grid .card-media .course-icon-art{z-index:3}
