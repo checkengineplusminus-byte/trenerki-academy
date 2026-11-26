@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
 import {Pressable,Text,View} from 'react-native';
+import ExperimentDrawing,{type ExperimentDrawingData} from './ExperimentDrawing';
 
 type Signal={label:string;before:string;after:string};
 type Answer={label:string;feedback:string;correct:boolean};
-export type Experiment={title:string;prompt:string;signals:Signal[];answers:Answer[];explanation:string};
+export type Experiment={title:string;prompt:string;signals:Signal[];answers:Answer[];explanation:string;drawing?:ExperimentDrawingData};
 
 const ink='#142F48',muted='#43596C';
 export default function LessonExperiment({experiment}:{experiment:Experiment}){
@@ -13,6 +14,7 @@ export default function LessonExperiment({experiment}:{experiment:Experiment}){
  return <View testID="lesson-experiment" style={{gap:12,backgroundColor:'#FFFFFF',borderWidth:1,borderColor:'#BDCCD8',borderRadius:14,padding:18,marginBottom:16}}>
   <Text accessibilityRole="header" style={{color:ink,fontSize:21,fontWeight:'800'}}>{experiment.title}</Text>
   <Text style={{color:muted,fontSize:16,lineHeight:24}}>{experiment.prompt}</Text>
+  {experiment.drawing&&<ExperimentDrawing frame={after?experiment.drawing.after:experiment.drawing.before}/>}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:8}}>
    {experiment.signals.map(signal=>{
     const changed=after&&signal.after!==signal.before;

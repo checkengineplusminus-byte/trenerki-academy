@@ -10,7 +10,7 @@ import {loadCourseProgress} from '../src/learning/course-progress.js';
 import {AcademyGrid,courseColumns} from '../src/AcademyGrid';
 type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{title_pl:string}|null};
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
-type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean};
+type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean;programTopics?:number|null};
 export default function MyCourses(){
  const {width}=useWindowDimensions();
  const columns=courseColumns(width);
@@ -66,9 +66,14 @@ export default function MyCourses(){
    const slugs=[...new Set(enrolled.map(r=>r.course_slug))].filter(slug=>!isAccountingCourse(slug));
    const progressByCourse=await loadCourseProgress(supabase,user.id,slugs);
    let accountingInfo:any=null;
+   let programTopics:number|null=null;
    if(enrolled.some(r=>isAccountingCourse(r.course_slug)&&r.status==='active'&&new Date(r.expires_at)>new Date())){
-    const result=await supabase.rpc('ta_accounting_overview');
+    const [result,materials]=await Promise.all([
+     supabase.rpc('ta_accounting_overview'),
+     supabase.from('ta_accounting_core_materials_v3').select('topic_no',{count:'exact',head:true})
+    ]);
     if(!result.error)accountingInfo=result.data;
+    if(!materials.error)programTopics=materials.count;
    }
    const reading=accountingProgress(accountingInfo);
    const {data:diplomas,error:de}=await supabase.from('ta_certificates')
@@ -76,7 +81,7 @@ export default function MyCourses(){
    if(de)throw de;
    setCertificates(Object.fromEntries((diplomas||[]).map(d=>[d.course_slug,d as Diploma])));
    setItems(enrolled.map(row=>{
-    if(isAccountingCourse(row.course_slug))return {...row,lessonCount:reading.lessonCount,completedCount:reading.completedCount,progress:reading.progress,progressAvailable:reading.available};
+    if(isAccountingCourse(row.course_slug))return {...row,programTopics,lessonCount:reading.lessonCount,completedCount:reading.completedCount,progress:reading.progress,progressAvailable:reading.available};
     return {...row,...(progressByCourse.get(row.course_slug)||{lessonCount:0,completedCount:0,progress:0,progressAvailable:false})};
    }));
   }catch(e:any){setError(e.message||'Nie udało się wczytać kursów.');}finally{setBusy(false);}
@@ -95,8 +100,9 @@ export default function MyCourses(){
    <View style={{gap:7}}>
     <View style={{width:31,height:31,backgroundColor:done?'#FFF2D4':'#F2F6FA',borderRadius:11,justifyContent:'center',alignItems:'center'}}><Text style={{fontSize:15,fontWeight:'900',color:'#14263B'}}>{done?'✓':'T.'}</Text></View>
     <Text style={{fontSize:columns===2?13:15,lineHeight:columns===2?18:21,color:'#14263B',fontWeight:'800',minHeight:columns===2?54:44}} numberOfLines={3}>{row.ta_courses?.title_pl||row.course_slug}</Text>
-    <Text style={{fontSize:11,color:'#63768A'}}>{row.progressAvailable?String(row.completedCount)+' / '+String(row.lessonCount)+(accounting?' dostępnych lekcji przeczytanych':' lekcji'):'Postęp niedostępny'}</Text>
-    {row.progressAvailable&&<View style={{height:7,borderRadius:8,backgroundColor:'#F2F6FA',overflow:'hidden'}} accessibilityLabel={(accounting?'Postęp czytania dostępnych materiałów ':'Postęp ')+row.progress+'%'}><View style={{height:7,backgroundColor:'#D5A447',width:row.progress+'%'}}/></View>}
+    {accounting&&row.programTopics!=null&&<Text style={{fontSize:13,color:'#14263B',fontWeight:'700'}}>Dostępne tematy programu · {row.programTopics}</Text>}
+    <Text style={{fontSize:11,color:'#63768A'}}>{row.progressAvailable?(accounting?'Przeczytane w encyklopedii · ':'')+String(row.completedCount)+' / '+String(row.lessonCount)+(accounting?'':' lekcji'):'Postęp niedostępny'}</Text>
+    {row.progressAvailable&&<View style={{height:7,borderRadius:8,backgroundColor:'#F2F6FA',overflow:'hidden'}} accessibilityLabel={(accounting?'Postęp czytania encyklopedii ':'Postęp ')+row.progress+'%'}><View style={{height:7,backgroundColor:'#D5A447',width:row.progress+'%'}}/></View>}
     <Text style={{fontSize:11,fontWeight:done?'800':'500',color:done?'#9A7028':'#63768A'}}>{accounting?'Przeczytanie nie jest zaliczeniem kursu.':done?'Lekcje ukończone':row.progress+'% ukończono'}</Text>
    </View>
    <View style={{gap:6}}>

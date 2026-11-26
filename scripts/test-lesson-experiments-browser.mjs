@@ -6,7 +6,11 @@ const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const fixture=process.argv[3]?JSON.parse(await readFile(process.argv[3],'utf8')):[{
  title:'Próba zmiany',prompt:'Jak zmieni się liczba?',signals:[{label:'Stan',before:'1',after:'2'}],
  answers:[{label:'Wzrośnie',feedback:'Drugi stan ma wartość 2.',correct:true},{label:'Zmaleje',feedback:'Porównaj 1 i 2.',correct:false}],
- explanation:'Początkowy stan można odtworzyć.'
+ explanation:'Początkowy stan można odtworzyć.',
+ drawing:{
+  before:{description:'Przed zmianą: jeden punkt',strokes:[{path:'M10 10 h1'}],labels:[]},
+  after:{description:'Po zmianie: dwa punkty',strokes:[{path:'M10 10 h1 M20 10 h1'}],labels:[]}
+ }
 }];
 const user={id:'00000000-0000-4000-a000-000000000131',email:'review@example.test',role:'authenticated',aud:'authenticated',app_metadata:{},user_metadata:{}};
 const browser=await chromium.launch();
@@ -39,18 +43,21 @@ try{
    const box=page.getByTestId('lesson-experiment');
    const data=fixture[i];
    await box.getByText(data.title,{exact:true}).waitFor();
+   if(data.drawing)await box.getByRole('img',{name:data.drawing.before.description,exact:true}).waitFor();
    const changed=data.signals.find(x=>x.before!==x.after);
    assert.ok(changed);
    for(const correct of [false,true]){
     const a=data.answers.find(x=>x.correct===correct);
     await box.getByRole('button',{name:a.label,exact:true}).click();
     await box.getByText((correct?'Trafione. ':'Sprawdź różnicę. ')+a.feedback,{exact:true}).waitFor();
+    if(data.drawing)await box.getByRole('img',{name:data.drawing.after.description,exact:true}).waitFor();
    }
    const changedCell=box.getByTestId('experiment-changed-value').first();
    if(reduced)assert.equal(await changedCell.evaluate(el=>getComputedStyle(el).animationName),'none');
    if(!reduced)assert.equal(await changedCell.evaluate(el=>getComputedStyle(el).animationName),'lesson-value-change');
    await box.getByRole('button',{name:'Pokaż stan początkowy'}).press('Enter');
    assert.equal(await box.getByTestId('experiment-changed-value').count(),0);
+   if(data.drawing)await box.getByRole('img',{name:data.drawing.before.description,exact:true}).waitFor();
    await box.getByRole('button',{name:'Powtórz zmianę'}).click();
    assert.ok(await box.getByTestId('experiment-changed-value').count()>0);
    assert.ok(await box.evaluate(el=>el.scrollWidth<=el.clientWidth+1),'overflow '+width);
