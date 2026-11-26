@@ -26,7 +26,7 @@ button,.btn,.button,.cta,.demo-tag{min-height:44px}
 .header .nav{gap:20px}
 .header .nav a{font-size:13px;font-weight:700;color:#465569;white-space:nowrap}
 .header .nav a:hover,.header .nav a:focus-visible{color:#174ab7}
-.header .nav-actions>.nav-help{color:#536176;font-weight:650}
+.header .nav-actions>.nav-help{color:#465569;font-weight:700}
 .header .nav-help-copy small{color:#778294}
 .header .nav-actions>.demo-tag{
   display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
