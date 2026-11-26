@@ -1,0 +1,50 @@
+name: TRENERKI — live navigation and profile rollout
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/navigation-live-check.yml'
+      - 'public/academy/course-share.js'
+      - 'public/academy/course-share.css'
+      - 'public/academy/index.html'
+      - 'public/academy/kursy/**'
+      - 'public/academy/kategorie/**'
+      - 'app/konto.tsx'
+      - 'app/moje-kursy.tsx'
+      - 'app/ustawienia.tsx'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live_nav:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    steps:
+      - name: Check real public pages and cache-busted profile menu
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://trenerki.com"
+          for attempt in $(seq 1 20); do
+            tmp=$(mktemp -d)
+            get() { curl -fLsS --connect-timeout 6 --max-time 15 "$base$1" > "$tmp/$2"; }
+            good=1
+            get '/academy/index.html' homepage || good=0
+            get '/academy/course-share.js?v=20261126-nav-v2' navjs || good=0
+            get '/academy/course-share.css?v=20261126-nav-v2' navcss || good=0
+            get '/academy/kursy/autocad-skroty.html' autocad || good=0
+            get '/academy/kursy/ai-bez-tajemnic.html' ai || good=0
+            get '/academy/kategorie/biznes-i-praca.html' category || good=0
+            get '/konto' profile || good=0
+            get '/moje-kursy' library || good=0
+            if [ "$good" = 1 ] &&                grep -Fq '<a href="/konto">Moje konto</a>' "$tmp/homepage" &&                grep -Fq 'nav.dataset.academyShortcuts' "$tmp/navjs" &&                grep -Fq '.ta-site-shortcuts' "$tmp/navcss" &&                grep -Fq 'course-share.js?v=20261126-nav-v2' "$tmp/autocad" &&                grep -Fq 'course-share.js?v=20261126-nav-v1' "$tmp/ai" &&                grep -Fq 'course-share.js?v=20261126-nav-v1' "$tmp/category"; then
+              echo "LIVE NAVIGATION VERIFIED: home, standalone courses, category, profile and library (attempt $attempt)"
+              rm -rf "$tmp"
+              exit 0
+            fi
+            echo "Attempt $attempt: new menu not fully visible yet"
+            rm -rf "$tmp"
+            sleep 12
+          done
+          echo "::error::Navigation files or account routes are not consistently visible on trenerki.com"
+          exit 1
