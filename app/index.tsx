@@ -27,11 +27,11 @@ export default function Home(){
       window.location.replace(target);
     }
   },[]);
-  return <View style={{flex:1,backgroundColor:'#fcfcf7',alignItems:'center',justifyContent:'center',padding:24}}>
-    <Text style={{fontSize:28,fontWeight:'900',color:'#173228',marginBottom:18}}>TRENERKI Academy</Text>
-    <Text style={{color:'#567362',fontSize:16,marginBottom:14,textAlign:'center'}}>Otwieramy stronę akademii w oryginalnym wyglądzie.</Text>
+  return <View style={{flex:1,backgroundColor:'#F7F9FC',alignItems:'center',justifyContent:'center',padding:24}}>
+    <Text style={{fontSize:28,fontWeight:'900',color:'#14263B',marginBottom:18}}>TRENERKI Academy</Text>
+    <Text style={{color:'#5F7185',fontSize:16,marginBottom:14,textAlign:'center'}}>Otwieramy stronę akademii w oryginalnym wyglądzie.</Text>
     <Pressable onPress={()=>Linking.openURL('https://trenerki.com'+LEGACY_SITE)}
-      style={{backgroundColor:'#173228',borderRadius:12,paddingHorizontal:22,paddingVertical:15}}>
+      style={{backgroundColor:'#14263B',borderRadius:12,paddingHorizontal:22,paddingVertical:15}}>
       <Text style={{color:'white',fontWeight:'800'}}>Otwórz akademię →</Text>
     </Pressable>
   </View>;

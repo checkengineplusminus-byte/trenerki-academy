@@ -252,3 +252,11 @@
 .ta-app-footer-heart{color:#edc66a!important}
 .ta-app-footer-links a:hover{color:#ffdb84!important;background:#24425e!important}
 .ta-app-footer-links .trenerki-footer-cookie{color:#d7e3ee!important}
+
+/* One navy-and-gold footer alongside the academy header (legacy green removed). */
+.ta-app-footer{background:#0b2238!important;border-top-color:#314962!important}
+.ta-app-footer-help{background:#17354d!important;border-color:#48627a!important}
+.ta-app-footer-help:hover{background:#244763!important;border-color:#e2bd70!important}
+.ta-app-footer-heart{background:#263e56!important}
+.ta-app-footer-links a:hover,.ta-app-footer-links a:focus-visible,
+.ta-app-footer-links .trenerki-footer-cookie:hover{background:#244763!important}
