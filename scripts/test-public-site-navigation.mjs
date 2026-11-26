@@ -36,5 +36,8 @@ assert(css.includes('@media(max-width:940px)'),'Mobile/tablet breakpoint missing
 const app=readFileSync(resolve('app/_layout.tsx'),'utf8');
 assert(app.includes('function SiteAccountHeader'),'Expo header missing');
 assert(app.includes('<SiteAccountHeader signedIn={signedIn}/>'),'Expo account pages missing header');
+assert(app.includes('function HelpHeader()'),'Help screen must read an authenticated session');
+assert(app.includes('<HelpHeader/>'),'Help page must use session-aware navigation');
+assert(!app.includes('<SiteAccountHeader signedIn={false}/>'),'Help must not always show sign-in to logged-in learners');
 console.log('✓ '+covered+'/'+pages+' public pages share the same navigation; catalogue and learning redirect are intentional exceptions');
 console.log('✓ Public/mobile links, preserved single header, Expo account navigation verified');
