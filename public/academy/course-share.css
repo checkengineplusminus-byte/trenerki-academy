@@ -100,3 +100,6 @@ body > header.ta-site-header .ta-site-shortcuts .ta-site-profile:focus-visible{
   min-height:42px;padding:8px 10px;font-size:12px}
  body > header.ta-site-header > a{font-size:14px}
 }
+
+/* Accounting landing uses .wrap on the header; the nav must still span the viewport. */
+body.accounting-landing > header.ta-site-header{max-width:none;width:100%}
