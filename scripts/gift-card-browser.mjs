@@ -40,6 +40,8 @@ try{
    throw new Error('Unexpected academy action: '+body.action);
   }
   if(path==='/functions/v1/ta-admin-analytics'){
+   const body=req.postDataJSON();
+   if(body.action==='accounting_export')return json({ok:true,period:body.period,rows:[],summary:[]});
    const metric={new_users:0,purchases:0,gifts:0,revenue_grosze:0,unique_buyers:0};
    return json({ok:true,timezone:'Europe/Warsaw',totals:{users:1,purchases:0,gifts:0,revenue_grosze:0},today:metric,current_month:metric,current_year:metric,daily:[],monthly:[],yearly:[],orders:[]});
   }
@@ -85,7 +87,7 @@ try{
   throw new Error('Unexpected credit action: '+body.action);
  });
  async function openForm(){
-  await page.getByText('Karta na kwotę',{exact:true}).click();
+  await page.getByText('Karty podarunkowe',{exact:true}).click();
   assert.equal(await page.getByRole('radio',{name:'Do przekazania dalej'}).getAttribute('aria-checked'),'true','new admin cards must default to delivery-only transfer mode');
   await page.getByRole('textbox',{name:'Liczba kart',exact:true}).fill('3');
   await page.getByRole('textbox',{name:'Wartość jednej karty w złotych',exact:true}).fill('100');
@@ -116,7 +118,7 @@ try{
  await page.getByText('Wiadomość z PDF-ami przyjęto do wysyłki na foundation@example.test.',{exact:true}).waitFor();
  assert.equal(resendRequests.length,1);assert.equal(resendRequests[0].batch_id,issueRequests[0].request_id);assert.equal(issueRequests.length,2,'resend must not issue cards');
  await page.setViewportSize({width:390,height:844});
- assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1),false,'mobile layout must not overflow horizontally');
+ await page.waitForFunction(()=>document.documentElement.scrollWidth<=window.innerWidth+1,undefined,{timeout:3000});
  await mkdir(output,{recursive:true});await page.screenshot({path:output+'/admin-mobile.png',fullPage:true});
  await page.getByRole('button',{name:'Nowy pakiet →',exact:true}).click();
  await page.getByRole('button',{name:'Wystaw i wyślij karty PDF',exact:true}).click();
@@ -151,7 +153,6 @@ try{
   assert.equal(redeemRequests.length,2,'opening a link must not redeem');
   await page.getByText('Odbierz prezent →',{exact:true}).click();
   await page.waitForURL(url=>url.pathname==='/konto'&&url.searchParams.get('gift')===sample.canonical);
-  await page.getByText('Mam już konto — zaloguj',{exact:true}).click();
   await page.getByPlaceholder('Adres e-mail',{exact:true}).fill('recipient@example.test');
   await page.getByPlaceholder('Hasło (minimum 8 znaków)',{exact:true}).fill('test-password');
   await page.getByText('Zaloguj się',{exact:true}).click();
