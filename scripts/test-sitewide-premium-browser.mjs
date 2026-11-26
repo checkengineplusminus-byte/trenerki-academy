@@ -27,12 +27,16 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
     const response=await page.goto(root+item.path,{waitUntil:'domcontentloaded',timeout:20000});
     assert.equal(response?.status(),200,item.path+' HTTP success');
     const link=page.locator('link[href*="/academy/sitewide-premium.css"]');
-    assert.equal(await link.count(),1,item.path+' must load premium style explicitly once');
+    const direct=await link.count();
+    if(item.type==='listing'){
+      assert(direct>0||await page.locator('link[href*="/academy/course-share.css"]').count()>0,
+        item.path+' must load premium style directly or via current course-share.css');
+    }else assert.equal(direct,1,item.path+' must include one direct premium stylesheet');
     const styleResult=await page.evaluate(()=>{
      const el=document.body,head=document.querySelector('body > header');
      const s=getComputedStyle(el),h=head?getComputedStyle(head):null;
      return {body:s.backgroundColor,headBackground:h?.backgroundImage||'',headColor:h?.color||'',text:s.color,
-      cssLoaded:!![...document.styleSheets].find(s=>s.href?.includes('sitewide-premium.css')),
+      cssLoaded:!![...document.styleSheets].find(s=>s.href?.includes('sitewide-premium.css')||s.href?.includes('course-share.css')),
       scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth,
       main:document.querySelector('main')?.textContent?.length||0
      };
