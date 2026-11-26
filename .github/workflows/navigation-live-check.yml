@@ -20,31 +20,45 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 7
     steps:
-      - name: Check real public pages and cache-busted profile menu
+      - name: Check actual production mobile menu and content-hashed navigation assets
         shell: bash
         run: |
           set -euo pipefail
           base="https://trenerki.com"
           for attempt in $(seq 1 20); do
             tmp=$(mktemp -d)
-            get() { curl -fLsS --connect-timeout 6 --max-time 15 "$base$1" > "$tmp/$2"; }
+            get() { curl -fLsS --connect-timeout 6 --max-time 15 -H 'Cache-Control: no-cache' "$base$1" > "$tmp/$2"; }
             good=1
             get '/academy/index.html' homepage || good=0
-            get '/academy/course-share.js?v=20261126-nav-v2' navjs || good=0
-            get '/academy/course-share.css?v=20261126-nav-v2' navcss || good=0
+            get '/academy/course-share.js' navjs || good=0
+            get '/academy/course-share.css' navcss || good=0
             get '/academy/kursy/autocad-skroty.html' autocad || good=0
             get '/academy/kursy/ai-bez-tajemnic.html' ai || good=0
             get '/academy/kategorie/biznes-i-praca.html' category || good=0
             get '/konto' profile || good=0
             get '/moje-kursy' library || good=0
-            if [ "$good" = 1 ] &&                grep -Fq '<a href="/konto">Moje konto</a>' "$tmp/homepage" &&                grep -Fq 'nav.dataset.academyShortcuts' "$tmp/navjs" &&                grep -Fq '.ta-site-shortcuts' "$tmp/navcss" &&                grep -Fq 'course-share.js?v=20261126-nav-v2' "$tmp/autocad" &&                grep -Fq 'course-share.js?v=20261126-nav-v1' "$tmp/ai" &&                grep -Fq 'course-share.js?v=20261126-nav-v1' "$tmp/category"; then
-              echo "LIVE NAVIGATION VERIFIED: home, standalone courses, category, profile and library (attempt $attempt)"
+            if [ "$good" = 1 ]; then
+              navhash="$(sha256sum "$tmp/navjs" | cut -c1-12)"
+              csshash="$(sha256sum "$tmp/navcss" | cut -c1-12)"
+              grep -Fq '<details class="mobile-nav"><summary>' "$tmp/homepage" || good=0
+              grep -Fq 'href="/firma">Dla firm</a>' "$tmp/homepage" || good=0
+              grep -Fq 'initializeAcademyMobileMenu' "$tmp/navjs" || good=0
+              grep -Fq '@media(max-width:420px)' "$tmp/navcss" || good=0
+              grep -Fq "/academy/course-share.js?v=${navhash}" "$tmp/homepage" || good=0
+              grep -Fq "/academy/course-share.css?v=${csshash}" "$tmp/homepage" || good=0
+              for page in autocad ai category; do
+                grep -Fq "/academy/course-share.js?v=${navhash}" "$tmp/$page" || good=0
+                grep -Fq "/academy/course-share.css?v=${csshash}" "$tmp/$page" || good=0
+              done
+            fi
+            if [ "$good" = 1 ]; then
+              echo "LIVE NAV VERIFIED: Dla firm, outside/Escape support, hashed assets, profile and library (attempt $attempt)"
               rm -rf "$tmp"
               exit 0
             fi
-            echo "Attempt $attempt: new menu not fully visible yet"
+            echo "Attempt $attempt: latest navigation assets not fully deployed yet"
             rm -rf "$tmp"
             sleep 12
           done
-          echo "::error::Navigation files or account routes are not consistently visible on trenerki.com"
+          echo "::error::New menu and asset fingerprints could not be verified on trenerki.com"
           exit 1
