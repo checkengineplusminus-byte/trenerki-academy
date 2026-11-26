@@ -37,7 +37,7 @@ async function testViewport(name,width,height,mobile){
   if(mobile){
    const menu=page.locator('header .mobile-nav');
    await menu.locator('summary').click();
-   assert(await menu.getByRole('link',{name:'Zaloguj się'}).isVisible());
+   assert(await menu.getByRole('link',{name:'Moje konto'}).isVisible());
    await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
    assert.equal(await menu.getAttribute('open'),null,'Menu must close on selection');
    assert.equal(await page.locator('header .nav').isVisible(),false,'Desktop links hidden on mobile');
