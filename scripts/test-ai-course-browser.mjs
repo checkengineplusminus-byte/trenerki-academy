@@ -107,6 +107,16 @@ async function run(env){
     await stage.waitFor();
     await page.getByTestId('lesson-requirements').getByText(/sprawdzian etapu/).waitFor();
     assert.equal(completed.length,lesson-1,'Stage must stay locked until checkpoint');
+    // Regression: after the normal question is marked correct, the bottom CTA must
+    // take the learner to the separate FOUR-option stage quiz, not back to the answered question.
+    const stageCta=page.getByRole('button',{name:/Otwórz sprawdzian etapu \(4 odpowiedzi\)/}).last();
+    await stageCta.click();
+    await page.waitForFunction(()=>{
+      const target=document.querySelector('[data-testid="ai-stage-checkpoint"]');
+      if(!target)return false;
+      const rect=target.getBoundingClientRect();
+      return rect.top>=-32&&rect.top<window.innerHeight-100;
+    },undefined,{timeout:10000});
     await stage.getByTestId('adversarial-option-0').click();
     await stage.getByTestId('adversarial-retry').click();
     await stage.getByTestId('adversarial-option-1').click();
