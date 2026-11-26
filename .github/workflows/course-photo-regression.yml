@@ -1,0 +1,61 @@
+name: TRENERKI — course photo performance and visibility
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/academy/index.html'
+      - 'public/academy/premium-theme.css'
+      - 'scripts/test-course-photo-immediate.mjs'
+      - 'scripts/test-course-photos-browser.mjs'
+      - '.github/workflows/course-photo-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/academy/index.html'
+      - 'public/academy/premium-theme.css'
+      - 'scripts/test-course-photo-immediate.mjs'
+      - 'scripts/test-course-photos-browser.mjs'
+      - '.github/workflows/course-photo-regression.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  course_photo_integrity:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert immediate image URLs for all 81 courses without fetching the manifest
+        run: node scripts/test-course-photo-immediate.mjs
+  real_browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies and Chromium
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Export static site with the real course assets
+        run: |
+          node scripts/generate-affiliate-short-pages.mjs
+          npx expo export --platform web --output-dir /tmp/trenerki-course-photos
+      - name: Simulate slow images and slow manifest on iPhone and desktop
+        run: |
+          python3 -m http.server 8787 --directory /tmp/trenerki-course-photos >/tmp/trenerki-photo-test-http.log 2>&1 &
+          sleep 2
+          node scripts/test-course-photos-browser.mjs http://127.0.0.1:8787
+      - name: Retain screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-photo-regression-screenshots
+          path: /tmp/trenerki-course-photo-*.png
+          if-no-files-found: ignore
+          retention-days: 7
