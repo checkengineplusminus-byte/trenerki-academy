@@ -503,7 +503,13 @@ async function totalBeginner(browser,p,round){
   assert.equal(response.status(),200,'Downloadable starting spreadsheet data is absent');
   assert((await response.text()).includes(p.track==='dom'?'Zakupy spozywcze':'Dlugopisy'),'Downloaded file has wrong starting data');
   const library=page.getByTestId('excel-encyclopedia');
-  await library.getByRole('button',{name:'Biblioteka — Słownik A–Z'}).click();
+  // The desktop library now starts collapsed to avoid an enormous first lesson.
+  // Explicitly expand it before studying the optional glossary.
+  const glossaryButton=library.getByRole('button',{name:'Biblioteka — Słownik A–Z'});
+  if(await glossaryButton.count()===0){
+   await library.getByRole('button',{name:'Biblioteka Excel: historia, wstęp, słownik i dodatkowe rozdziały'}).click();
+  }
+  await glossaryButton.click();
   await library.getByRole('textbox',{name:'Szukaj w słowniku Excel'}).fill('komórka');
   await library.getByRole('button',{name:'Wyjaśnij pojęcie Komórka',exact:true}).click();
   await library.getByTestId('excel-glossary-definition').getByText('Komórka',{exact:true}).waitFor();
