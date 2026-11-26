@@ -65,7 +65,7 @@ function SiteAccountHeader({signedIn}:{signedIn:boolean}){
     paddingHorizontal:mobile?16:12,paddingVertical:10,borderRadius:9,
     backgroundColor:profile?'#EDC368':active?'#244963':'transparent',
     borderWidth:profile?1:0,borderColor:'#D3A749'}}>
-   <Text style={{fontSize:mobile?14:13,fontWeight:profile?'900':'750',
+   <Text style={{fontSize:mobile?14:13,fontWeight:profile?'900':'700',
     color:profile?'#14263B':active?'#FFDC8B':'#EDF3FA'}}>{label}</Text>
   </Pressable>;
  });
@@ -80,7 +80,7 @@ function SiteAccountHeader({signedIn}:{signedIn:boolean}){
     </View>
     <View>
      <Text style={{fontWeight:'900',color:'#FFFFFF',fontSize:compact?15:18,letterSpacing:-.4}}>TRENERKI</Text>
-     <Text style={{fontWeight:'750',fontSize:9,color:'#C9DAEA',letterSpacing:1.7}}>ACADEMY</Text>
+     <Text style={{fontWeight:'700',fontSize:9,color:'#C9DAEA',letterSpacing:1.7}}>ACADEMY</Text>
     </View>
    </Pressable>
    {compact?
@@ -89,7 +89,7 @@ function SiteAccountHeader({signedIn}:{signedIn:boolean}){
      onPress={()=>setOpen(v=>!v)}
      style={{minHeight:44,minWidth:76,alignItems:'center',justifyContent:'center',
       borderRadius:10,borderWidth:1,borderColor:'#B59253',backgroundColor:'#163853'}}>
-     <Text style={{color:'#FFDA8B',fontWeight:'850',fontSize:13}}>{open?'Zamknij':'Menu'}</Text>
+     <Text style={{color:'#FFDA8B',fontWeight:'800',fontSize:13}}>{open?'Zamknij':'Menu'}</Text>
     </Pressable>:
     <View style={{flexDirection:'row',alignItems:'center',gap:3}}>{nav(false)}</View>}
   </View>
