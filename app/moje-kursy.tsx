@@ -11,7 +11,7 @@ type Enrollment={course_slug:string,expires_at:string,status:string,ta_courses:{
 type Diploma={course_slug:string;certificate_no:string;is_demo:boolean;issued_at:string};
 type CourseRow=Enrollment&{progress:number;completedCount:number;lessonCount:number;progressAvailable:boolean};
 export default function MyCourses(){
- const {width}=useWindowDimensions(),columns=width>=1024?3:width>=680?2:1,availableWidth=Math.max(280,Math.min(width,1150)-40),cardWidth=Math.max(240,Math.floor((availableWidth-(columns-1)*16)/columns));
+ const {width}=useWindowDimensions(),columns=width>=1024?3:width>=680?2:1,availableWidth=Math.max(0,Math.min(width,1150)-40),cardWidth=Math.floor((availableWidth-(columns-1)*16)/columns);
  const [visibleSections,setVisibleSections]=useState<Record<string,number>>({});
  const {checkout,session_id:sessionId}=useLocalSearchParams<{checkout?:string;session_id?:string}>();
  // Reklamy: dopiero potwierdzony webhook płatności, nigdy sam powrót z checkout.
