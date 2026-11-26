@@ -46,7 +46,8 @@ for(const q of ['księgowość','ksiegowosc','księgowości','rachunkowość','f
 }
 const featured=search('');
 assert(featured.includes('data-course-id="ai-bez-tajemnic"'));
-assert(featured.includes('data-course-id="ksiegowosc-od-podstaw"'));
+assert(!featured.includes('data-course-id="ksiegowosc-od-podstaw"'),
+ 'Accounting is available in Biznes i praca and search, not promoted on homepage');
 assert.equal((featured.match(/data-course-id=/g)||[]).length,6,
  'Show 3 free and 3 carefully selected paid courses, without hiding other categories');
 runInContext('catalogAllExpanded=true;filter="Wszystkie";query="";updateCatalog();',env);
@@ -54,6 +55,8 @@ const allVisible=elements['#course-cards'].innerHTML;
 assert.equal((allVisible.match(/data-course-id=/g)||[]).length,83,
  'Clicking all courses must reveal 81 main courses plus approved public AI and accounting offers');
 assert(allVisible.includes('data-course-id="autocad-skroty"'));
+assert(allVisible.includes('data-course-id="ksiegowosc-od-podstaw"'),
+ 'Full public catalog must still include accounting');
 runInContext('catalogAllExpanded=false;filter="Wszystkie";query="";updateCatalog();',env);
 
 runInContext('livePublishedCatalogIds=new Set(COURSES.map(x=>x.id).concat("ksiegowosc-od-podstaw"));',env);
