@@ -104,30 +104,47 @@ async function verify(name,viewport,isMobile){
   }),'The rotating course photo must not overlap its title');
   const field=page.locator('#anielka-question');
   const help=page.locator('header .nav-help');
-  assert.equal(await help.getAttribute('href'),'/pomoc');
-  await help.waitFor({state:'visible'});
-  assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
-  assert.equal(await help.locator('.nav-help-heart').innerText(),'❤️');
-  const supportStyle=await help.evaluate(el=>{
-   const menuStyle=getComputedStyle(document.querySelector('header .nav a'));
-   const style=getComputedStyle(el);
-   const copy=el.querySelector('.nav-help-copy');
-   return {matched:['fontFamily','fontSize','fontWeight','color'].every(key=>style[key]===menuStyle[key]),
-    stacked:getComputedStyle(copy).display==='grid',
-    small:parseFloat(getComputedStyle(copy.querySelector('small')).fontSize)<parseFloat(style.fontSize)};
-  });
-  assert.deepEqual(supportStyle,{matched:true,stacked:true,small:true});
   const account=page.locator('header .demo-tag');
-  const helpBounds=await help.boundingBox(),accountBounds=await account.boundingBox();
-  assert(helpBounds&&accountBounds,'Help and account links must both be visible');
-  assert(accountBounds.x>=helpBounds.x+helpBounds.width&&accountBounds.x-helpBounds.x-helpBounds.width<=20,'Help must be immediately to the left of My account');
-  assert(Math.abs(helpBounds.y+helpBounds.height/2-accountBounds.y-accountBounds.height/2)<=2,'Help and account must share a row');
-  for(const neighbor of [field,account]){
-   const bounds=await neighbor.boundingBox();
-   assert(helpBounds&&bounds);
-   const overlap=helpBounds.x<bounds.x+bounds.width&&helpBounds.x+helpBounds.width>bounds.x&&
-    helpBounds.y<bounds.y+bounds.height&&helpBounds.y+helpBounds.height>bounds.y;
-   assert(!overlap,'Help link overlaps a neighboring control');
+  assert.equal(await help.getAttribute('href'),'/pomoc');
+  if(isMobile){
+   // Mobile navigation replaces the crowded desktop controls.
+   const menu=page.locator('header .mobile-nav');
+   const menuToggle=menu.locator('summary');
+   await menuToggle.waitFor({state:'visible'});
+   assert.equal(await menu.locator('nav').getAttribute('aria-label'),'Menu mobilne');
+   await menuToggle.click();
+   await menu.getByRole('link',{name:'Przeglądaj kursy'}).waitFor({state:'visible'});
+   assert.equal(await menu.getByRole('link',{name:'Zaloguj się'}).getAttribute('href'),'/konto');
+   assert.equal(await menu.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc');
+   const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .brand').boundingBox();
+   assert(bounds&&brandBounds&&bounds.x>=brandBounds.x+brandBounds.width-2,'Mobile menu should not overlap brand');
+   await menuToggle.click();
+   assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close');
+   assert.equal(await page.locator('header .nav').isVisible(),false,'Desktop navigation must be hidden on mobile');
+  }else{
+   await help.waitFor({state:'visible'});
+   assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
+   assert.equal(await help.locator('.nav-help-heart').innerText(),'❤️');
+   const supportStyle=await help.evaluate(el=>{
+    const menuStyle=getComputedStyle(document.querySelector('header .nav a'));
+    const style=getComputedStyle(el);
+    const copy=el.querySelector('.nav-help-copy');
+    return {matched:['fontFamily','fontSize','fontWeight','color'].every(key=>style[key]===menuStyle[key]),
+     stacked:getComputedStyle(copy).display==='grid',
+     small:parseFloat(getComputedStyle(copy.querySelector('small')).fontSize)<parseFloat(style.fontSize)};
+   });
+   assert.deepEqual(supportStyle,{matched:true,stacked:true,small:true});
+   const helpBounds=await help.boundingBox(),accountBounds=await account.boundingBox();
+   assert(helpBounds&&accountBounds,'Help and account links must both be visible');
+   assert(accountBounds.x>=helpBounds.x+helpBounds.width&&accountBounds.x-helpBounds.x-helpBounds.width<=20,'Help must be immediately to the left of My account');
+   assert(Math.abs(helpBounds.y+helpBounds.height/2-accountBounds.y-accountBounds.height/2)<=2,'Help and account must share a row');
+   for(const neighbor of [field,account]){
+    const bounds=await neighbor.boundingBox();
+    assert(helpBounds&&bounds);
+    const overlap=helpBounds.x<bounds.x+bounds.width&&helpBounds.x+helpBounds.width>bounds.x&&
+     helpBounds.y<bounds.y+bounds.height&&helpBounds.y+helpBounds.height>bounds.y;
+    assert(!overlap,'Help link overlaps a neighboring control');
+   }
   }
   const footer=page.locator('footer.academy-footer');
   await footer.waitFor({state:'visible'});
