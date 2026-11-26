@@ -7,7 +7,7 @@ import {coursePrice,termsVersion} from '../src/courseQuote';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
 type Preview={curiosity:string,scenario:string,outcome_1:string,outcome_2:string,outcome_3:string,module_titles:string[],editorial_note:string};
-const ink='#182230',muted='#5d6b7b',lime='#eef2ff';
+const ink='#14263B',muted='#5d6b7b',lime='#FDF4E1';
 export default function Purchase(){
  const params=useLocalSearchParams<{course?:string;ref?:string}>(),slug=typeof params.course==='string'?params.course:'';
  const referralCode=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
@@ -136,10 +136,10 @@ export default function Purchase(){
  const effectiveCredit=quoted!==null&&applyCredit?(creditBalance>=quoted?quoted:Math.min(creditBalance,Math.max(0,quoted-200))):0;
  const toPay=quoted===null?0:quoted-effectiveCredit;
  const pln=(grosze:number)=>(grosze/100).toLocaleString('pl-PL',{minimumFractionDigits:2,maximumFractionDigits:2})+' zł';
- return <ScrollView style={{flex:1,backgroundColor:'#f8fafc'}} contentContainerStyle={{padding:22,paddingBottom:60}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} contentContainerStyle={{padding:22,paddingBottom:60}}>
   <View style={{maxWidth:820,width:'100%',alignSelf:'center',gap:18}}>
    <Pressable onPress={()=>router.replace('/')}><Text style={{color:ink,fontWeight:'800'}}>← Wróć do katalogu</Text></Pressable>
-   <Text style={{fontSize:11,color:'#64748b',letterSpacing:2,fontWeight:'800'}}>TRENERKI ACADEMY · TWOJA DECYZJA</Text>
+   <Text style={{fontSize:11,color:'#617386',letterSpacing:2,fontWeight:'800'}}>TRENERKI ACADEMY · TWOJA DECYZJA</Text>
    <Text style={{fontSize:37,fontWeight:'900',color:ink}}>Sprawdź kurs i jego cenę</Text>
    <Text style={{fontSize:16,color:muted,lineHeight:25}}>{item?.price_grosze===0?'Zobacz program i dodaj bezpłatny kurs do zakładki Moje kursy.':'Sprawdź program, ćwiczenia i całkowitą cenę przed przejściem do bezpiecznej płatności.'}</Text>
    {busy&&<ActivityIndicator/>}
@@ -148,7 +148,7 @@ export default function Purchase(){
      <Text style={{color:ink,fontWeight:'800'}}>Zakup z polecenia partnera: {referralCode}</Text>
      <Text style={{color:muted,lineHeight:20,fontSize:13}}>Partner może otrzymać 10% prowizji od kwalifikującej się płatności Stripe. Nie otrzyma Twoich danych osobowych. Przy zakupie z salda wewnętrznego prowizja nie zostanie naliczona.</Text>
     </View>}
-    <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#e2e8f0',padding:23,gap:11}}>
+    <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#DCE4ED',padding:23,gap:11}}>
      <Text style={{fontSize:12,color:'#63748c',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'}</Text>
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
      <Text style={{fontSize:15,color:muted,lineHeight:24}}>{item.description_pl}</Text>
@@ -162,24 +162,24 @@ export default function Purchase(){
       <Text style={{fontWeight:'700',color:ink,fontSize:15,lineHeight:24}}>Wyobraź sobie taką sytuację:</Text>
       <Text style={{fontSize:16,color:'#4c5d74',lineHeight:25}}>{preview.scenario}</Text>
      </View>
-     <View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#e2e8f0',padding:23,gap:14}}>
+     <View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#DCE4ED',padding:23,gap:14}}>
       <Text style={{fontSize:24,fontWeight:'900',color:ink}}>Czego naprawdę się nauczysz?</Text>
       {[preview.outcome_1,preview.outcome_2,preview.outcome_3].map((t,i)=><View key={i} style={{flexDirection:'row',gap:12}}>
-       <Text style={{fontSize:21,color:'#245ddf',fontWeight:'900'}}>✓</Text><Text style={{color:'#35465e',fontSize:15,flex:1,lineHeight:24}}>{t}</Text>
+       <Text style={{fontSize:21,color:'#A8741C',fontWeight:'900'}}>✓</Text><Text style={{color:'#35465e',fontSize:15,flex:1,lineHeight:24}}>{t}</Text>
       </View>)}
      </View>
      <View style={{backgroundColor:'#f3f6fb',padding:18,borderRadius:12,gap:8}}>
       <Text style={{fontWeight:'900',color:ink}}>Ważne zasady tego kursu</Text>
       <Text style={{color:'#48586d',lineHeight:22}}>{preview.editorial_note}</Text>
      </View>
-     {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#e2e8f0',padding:23,gap:12}}>
+     {!!preview.module_titles?.length&&<View style={{backgroundColor:'white',borderRadius:18,borderWidth:1,borderColor:'#DCE4ED',padding:23,gap:12}}>
       <Text style={{fontSize:23,fontWeight:'900',color:ink,marginBottom:6}}>Program kursu</Text>
       {preview.module_titles.map((name,i)=><View key={String(i)} style={{flexDirection:'row',gap:12,alignItems:'center',paddingVertical:6,borderBottomWidth:i===preview.module_titles.length-1?0:1,borderColor:'#e8ecf3'}}>
-       <Text style={{color:'#245ddf',fontWeight:'800',fontSize:16}}>{String(i+1).padStart(2,'0')}</Text><Text style={{fontSize:14,color:ink,flex:1}}>{name}</Text>
+       <Text style={{color:'#A8741C',fontWeight:'800',fontSize:16}}>{String(i+1).padStart(2,'0')}</Text><Text style={{fontSize:14,color:ink,flex:1}}>{name}</Text>
       </View>)}
      </View>}
     </>}
-    <View style={{backgroundColor:'white',borderRadius:19,borderWidth:1,borderColor:'#e2e8f0',padding:24,gap:12}}>
+    <View style={{backgroundColor:'white',borderRadius:19,borderWidth:1,borderColor:'#DCE4ED',padding:24,gap:12}}>
      <Text style={{fontSize:22,fontWeight:'900',color:ink}}>Twój wybór</Text>
      <Text style={{color:muted}}>Zalogowano: {email}</Text>
      <Text style={{fontSize:23,fontWeight:'900',color:ink}}>Cena katalogowa: {item.price_grosze===0?'0 zł':price}</Text>
@@ -188,7 +188,7 @@ export default function Purchase(){
      </Pressable>}
      {item.price_grosze>0&&!owned&&quoted!==null&&<View style={{backgroundColor:'#f5f7fb',borderRadius:12,padding:15,gap:13}}>
        <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Łączna cena brutto {pln(quoted)}</Text>
-       {creditBalance>0&&<View style={{padding:12,borderRadius:11,backgroundColor:'#eef2ff',gap:8}}>
+       {creditBalance>0&&<View style={{padding:12,borderRadius:11,backgroundColor:'#FDF4E1',gap:8}}>
         <Text style={{color:ink,fontWeight:'900'}}>Twoje saldo kart: {pln(creditBalance)}</Text>
         <Pressable accessibilityRole="checkbox" accessibilityState={{checked:applyCredit}} onPress={()=>setApplyCredit(v=>!v)} style={{flexDirection:'row',gap:10,alignItems:'center',paddingVertical:5}}>
          <Text style={{fontSize:19,color:ink}}>{applyCredit?'☑':'☐'}</Text>
@@ -209,10 +209,10 @@ export default function Purchase(){
         <Text style={{flex:1,color:ink,lineHeight:21}}>Wyraźnie zgadzam się na rozpoczęcie dostarczania treści cyfrowych przed upływem 14 dni i przyjmuję do wiadomości, że po rozpoczęciu dostarczania mogę utracić prawo odstąpienia, jeżeli spełniono wszystkie warunki ustawowe opisane w regulaminie.</Text>
        </Pressable>
       </View>}
-     {!!owned?<Pressable onPress={openOwnedCourse} style={{padding:17,backgroundColor:'#245ddf',borderRadius:12}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
-     </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:'#245ddf',borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null)))?0.5:1}}>
-      <Text style={{color:'white',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?(item.price_grosze===0?'Zapisuję na kurs…':'Przechodzę do płatności…'):item.price_grosze===0?'Odbierz za darmo →':(effectiveCredit>0?(toPay===0?'Kupuję i płacę z salda '+pln(effectiveCredit):'Przejdź do płatności '+pln(toPay)):'Przejdź do płatności Stripe')+' →'}</Text>
+     {!!owned?<Pressable onPress={openOwnedCourse} style={{padding:17,backgroundColor:'#E7BB5B',borderRadius:12}}>
+      <Text style={{color:'#14263B',fontWeight:'900',textAlign:'center'}}>Masz dostęp — rozpocznij naukę →</Text>
+     </Pressable>:<Pressable disabled={paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null))} onPress={checkout} accessibilityRole="button" style={{padding:17,backgroundColor:'#E7BB5B',borderRadius:12,opacity:(paying||(item.price_grosze>0&&(!termsAccepted||!earlyAccessConsent||quoted===null)))?0.5:1}}>
+      <Text style={{color:'#14263B',fontWeight:'900',textAlign:'center',fontSize:16}}>{paying?(item.price_grosze===0?'Zapisuję na kurs…':'Przechodzę do płatności…'):item.price_grosze===0?'Odbierz za darmo →':(effectiveCredit>0?(toPay===0?'Kupuję i płacę z salda '+pln(effectiveCredit):'Przejdź do płatności '+pln(toPay)):'Przejdź do płatności Stripe')+' →'}</Text>
      </Pressable>}
      {slug!=='zaufany-wolontariusz'&&!accountingCourse&&<Pressable onPress={()=>router.push({pathname:'/prezent',params:{course:slug}})} style={{padding:15,backgroundColor:lime,borderRadius:12}}>
       <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>🎁 Podaruj ten kurs</Text>
