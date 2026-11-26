@@ -164,7 +164,7 @@ export default function AccountPage(){
    }finally{setBusy(false)}
  }
  const input={borderWidth:1,borderColor:'#DCE4ED',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
- const heading=mode==='register'?(isCompanyLogin?'Utwórz konto firmowe':'Rozpocznij naukę.'):mode==='login'?(isCompanyLogin?'Zaloguj się jako firma':'Witaj ponownie!'):mode==='reset'?'Odzyskaj konto':'Ustaw nowe hasło';
+ const heading=activeEmail&&mode!=='new-password'?'Twój profil':mode==='register'?(isCompanyLogin?'Utwórz konto firmowe':'Rozpocznij naukę.'):mode==='login'?(isCompanyLogin?'Zaloguj się jako firma':'Witaj ponownie!'):mode==='reset'?'Odzyskaj konto':'Ustaw nowe hasło';
  return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} keyboardShouldPersistTaps="handled" contentContainerStyle={{minHeight:'100%',padding:compact?12:22,paddingBottom:compact?24:22,justifyContent:compact?'flex-start':'center'}}>
  <View style={{maxWidth:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#DCE4ED'}}>
  <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:compact?12:22}}>← Wszystkie kursy</Text></Pressable>
@@ -179,31 +179,41 @@ export default function AccountPage(){
  <Text style={{fontSize:12,color:'#617386',fontWeight:'800',marginBottom:8}}>{isCompanyLogin?'TRENERKI ACADEMY · DLA FIRM':'TRENERKI ACADEMY · TWOJE KONTO'}</Text>
  <Text style={{fontSize:compact?26:30,fontWeight:'900',color:ink,marginBottom:compact?8:10}}>{heading}</Text>
  {!!activeEmail&&mode!=='new-password'&&<View style={{backgroundColor:'#eef3fc',borderWidth:1,borderColor:'#dbe5f4',borderRadius:13,padding:16,marginVertical:12}}>
-   <Text style={{fontWeight:'800',color:ink}}>Twoja sesja nadal jest aktywna</Text>
+   <Text style={{fontWeight:'800',color:ink}}>Jesteś zalogowany</Text>
    <Text style={{color:'#53657c',marginTop:5,marginBottom:11}}>{activeEmail}</Text>
    <Pressable onPress={()=>{void continueToSelectedCourse().catch(()=>router.replace('/moje-kursy'));}} style={{backgroundColor:ink,padding:13,borderRadius:10,alignItems:'center'}}>
      <Text style={{color:'#fff',fontWeight:'800'}}>{isCompanyLogin?'Otwórz panel firmy →':gift?'Przejdź do prezentu →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
-   <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#edf2ff',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
+   <Pressable accessibilityRole="button" onPress={()=>router.push('/ustawienia')} style={{backgroundColor:'#F5F6FA',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
+      <Text style={{color:ink,fontWeight:'800'}}>Ustawienia profilu →</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#edf2ff',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
      <Text style={{color:'#9A6D25',fontWeight:'800'}}>Moje dyplomy →</Text>
    </Pressable>
-   <Pressable accessibilityRole="button" onPress={logout} style={{backgroundColor:'#f0f3f8',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
+   <Pressable accessibilityRole="button" onPress={()=>router.push('/')} style={{backgroundColor:'#F5F6FA',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
+      <Text style={{color:ink,fontWeight:'800'}}>Przeglądaj kursy →</Text>
+    </Pressable>
+    <Pressable accessibilityRole="button" onPress={logout} style={{backgroundColor:'#f0f3f8',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
      <Text style={{color:'#465569',fontWeight:'800'}}>Wyloguj się</Text>
    </Pressable>
    <Pressable onPress={()=>{setMode('new-password');setMessage('Możesz zmienić hasło w zalogowanym koncie.');}} style={{padding:11,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'700'}}>Zmień hasło bez ponownego logowania</Text>
    </Pressable>
  </View>}
- <Text style={{color:'#58677b',lineHeight:compact?21:22,marginBottom:compact?14:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course==='zaufany-wolontariusz'?'Zaloguj się, aby zapisać bezpłatny kurs na swoim koncie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':isCompanyLogin?'Konto opiekuna firmy. Przydzielaj kursy pracownikom i sprawdzaj wykorzystanie miejsc.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
+ {(!activeEmail||mode==='new-password')&&<>
+  <Text style={{color:'#58677b',lineHeight:compact?21:22,marginBottom:compact?14:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course==='zaufany-wolontariusz'?'Zaloguj się, aby zapisać bezpłatny kurs na swoim koncie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':isCompanyLogin?'Konto opiekuna firmy. Przydzielaj kursy pracownikom i sprawdzaj wykorzystanie miejsc.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
  {mode==='register'&&<TextInput style={input} placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
  {mode!=='new-password'&&<TextInput style={input} placeholder="Adres e-mail" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address"/>}
  {mode!=='reset'&&<TextInput style={input} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'}/>}
  {mode!=='reset'&&<Pressable onPress={()=>setShowPassword(v=>!v)} style={{alignSelf:'flex-end',paddingVertical:6,marginBottom:9}}><Text style={{color:ink,fontWeight:'700'}}>{showPassword?'Ukryj hasło':'Pokaż hasło'}</Text></Pressable>}
  {mode==='new-password'&&<TextInput style={input} placeholder="Powtórz nowe hasło" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry autoComplete="new-password"/>}
+  </>}
  {!!message&&<Text style={{color:'#264b92',backgroundColor:pale,padding:13,borderRadius:12,marginBottom:14}}>{message}</Text>}
- <Pressable onPress={submit} disabled={busy} style={{backgroundColor:'#E7BB5B',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'#14263B',fontWeight:'900'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
+ {(!activeEmail||mode==='new-password')&&<>
+  <Pressable onPress={submit} disabled={busy} style={{backgroundColor:'#E7BB5B',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'#14263B',fontWeight:'900'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
  {mode!=='new-password'&&<Pressable onPress={()=>{setMode(mode==='register'?'login':'register');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{mode==='register'?'Mam już konto — zaloguj':'Utwórz nowe konto'}</Text></Pressable>}
  {mode==='login'&&<Pressable onPress={()=>{setMode('reset');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink}}>Nie pamiętam hasła</Text></Pressable>}
+  </>}
  <View style={{marginTop:17,marginBottom:6,gap:8}}>
   <Text style={{color:'#58677b',fontSize:12,lineHeight:20}}>TRENERKI oferuje autorskie kursy i autorskie dyplomy potwierdzające naukę. Dyplom można wpisać do CV jako szkolenie dodatkowe; nie jest kwalifikacją zawodową ani oficjalnym uprawnieniem.</Text>
   <View style={{flexDirection:'row',gap:17,flexWrap:'wrap'}}>
