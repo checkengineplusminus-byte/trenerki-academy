@@ -332,11 +332,17 @@ async function verify(name,viewport,isMobile){
   assert.equal(support?.status(),200,'Public help route must render');
   await page.getByRole('heading',{name:'Potrzebujesz pomocy? Nie jesteś sam'}).waitFor();
   assert.equal(await page.title(),'Bezpłatna pomoc i telefony zaufania – Trenerki.com');
-  const appHelp=page.locator('footer.ta-app-footer .ta-app-footer-help');
+  // Mobile uses a compact footer without the desktop-only CSS class.
+  // Both layouts must retain a visible help link and the navy brand background.
+  const appFooter=page.locator(isMobile?'footer[aria-label="Pomoc i informacje"]':'footer.ta-app-footer');
+  const appHelp=page.locator(isMobile?'footer[aria-label="Pomoc i informacje"] a[href="/pomoc"]':'footer.ta-app-footer .ta-app-footer-help');
+  await appFooter.waitFor({state:'visible'});
   await appHelp.waitFor({state:'visible'});
   assert.equal(await appHelp.getAttribute('href'),'/pomoc');
-  // A flex item blockifies an inline-flex child's computed display.
-  await page.waitForFunction(()=>getComputedStyle(document.querySelector('footer.ta-app-footer')).backgroundColor==='rgb(16, 40, 32)',null,{timeout:10000});
+  await page.waitForFunction(mobile=>{
+   const el=document.querySelector(mobile?'footer[aria-label="Pomoc i informacje"]':'footer.ta-app-footer');
+   return !!el&&getComputedStyle(el).backgroundColor==='rgb(11, 34, 56)';
+  },isMobile,{timeout:10000});
   assert.match(await appHelp.evaluate(el=>getComputedStyle(el).display),/^(?:inline-)?flex$/);
   if(!isMobile){
    await appHelp.hover();
