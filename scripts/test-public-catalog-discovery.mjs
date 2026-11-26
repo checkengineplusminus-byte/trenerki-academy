@@ -49,6 +49,12 @@ assert(featured.includes('data-course-id="ai-bez-tajemnic"'));
 assert(featured.includes('data-course-id="ksiegowosc-od-podstaw"'));
 assert.equal((featured.match(/data-course-id=/g)||[]).length,6,
  'Show 3 free and 3 carefully selected paid courses, without hiding other categories');
+runInContext('catalogAllExpanded=true;filter="Wszystkie";query="";updateCatalog();',env);
+const allVisible=elements['#course-cards'].innerHTML;
+assert.equal((allVisible.match(/data-course-id=/g)||[]).length,83,
+ 'Clicking all courses must reveal 81 main courses plus approved public AI and accounting offers');
+assert(allVisible.includes('data-course-id="autocad-skroty"'));
+runInContext('catalogAllExpanded=false;filter="Wszystkie";query="";updateCatalog();',env);
 
 runInContext('livePublishedCatalogIds=new Set(COURSES.map(x=>x.id).concat("ksiegowosc-od-podstaw"));',env);
 assert(!search('AI').includes('data-course-id="ai-bez-tajemnic"'),
