@@ -141,16 +141,15 @@ await gift.press('Pobierz PDF tego kodu');
 assert.equal(printRequests.at(-1).code,'TW-00000000000000000000000000000001');assert.equal(redemptions.length,2,'printing must not redeem a code');
 const giver=createScreen('app/admin.tsx');await giver.flush();
 await giver.press('Kursy gratis'); // The admin opens on the accounting tab by default.
-const pickFreeCourse=async()=>{await giver.find('Pressable',node=>node.props.accessibilityLabel==='Dodaj jeden kod: Kurs testowy').props.onPress();await giver.flush();};
 assert.ok(giver.text().includes('Obdarowana osoba może odebrać kurs na koncie z innym adresem e-mail.'));
 await giver.fill('E-mail do wysyłki kart kursów','foundation@example.test');await giver.fill('Dedykacja na kartach kursów','Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();
-await pickFreeCourse();
+
 await giver.press('Wyślij prezent — 1 kurs');assert.equal(giveaways.at(-1).bind_to_recipient,false);assert.equal(giveaways.at(-1).company_mode,false);assert.equal(giveaways.at(-1).message,'Dla fundacji');
 await giver.find('Pressable',node=>node.props.accessibilityLabel==='Pobierz PDF kursu Kurs testowy').props.onPress();await giver.flush();assert.equal(printRequests.at(-1).code,freeCode);
-await giver.press('Pakiet dla firmy / pracowników');await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();await pickFreeCourse();await giver.press('Wyślij prezent — 1 kurs');
+await giver.press('Pakiet dla firmy / pracowników');await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();await giver.press('Wyślij prezent — 1 kurs');
 assert.equal(giveaways.at(-1).company_mode,true);assert.equal(giveaways.at(-1).bind_to_recipient,false);assert.ok(giver.text().includes('Firma ma swój panel'));
-await giver.press('Dla jednej osoby');await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();await pickFreeCourse();await giver.press('Wyślij prezent — 1 kurs');
+await giver.press('Dla jednej osoby');await giver.find('Pressable',node=>node.props.accessibilityRole==='checkbox').props.onPress();await giver.flush();await giver.press('Wyślij prezent — 1 kurs');
 assert.equal(giveaways.at(-1).company_mode,false);assert.equal(giveaways.at(-1).bind_to_recipient,true);
 const freeGift=createScreen('app/prezent.tsx',{course:'test-free-course'});await freeGift.flush();await freeGift.press('Utwórz kartę podarunkową →');
 await freeGift.fill('Kod karty podarunkowej','TA-'+'C'.repeat(32));await freeGift.press('Pobierz kartę PDF do wydruku');
