@@ -73,7 +73,7 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
     if(item.type==='listing'){
      const back=page.locator('main .back');
      assert(await back.isVisible(),item.path+' breadcrumb');
-     const head=await page.locator('body > header').evaluate(el=>getComputedStyle(el).backgroundImage);
+     const head=await page.locator('header.ta-unified-header').evaluate(el=>getComputedStyle(el).backgroundImage);
      assert(head.includes('gradient'),item.path+' navy header');
     }
     if(['regulamin','affiliate','category','course'].includes(item.name)){
