@@ -1,0 +1,61 @@
+name: TRENERKI — sitewide premium public pages
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'public/academy/**'
+      - 'app/partner.tsx'
+      - 'app/prezent.tsx'
+      - 'app/firma.tsx'
+      - 'app/ustawienia.tsx'
+      - 'scripts/test-sitewide-premium*.mjs'
+      - '.github/workflows/sitewide-premium.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'public/academy/**'
+      - 'scripts/test-sitewide-premium*.mjs'
+      - '.github/workflows/sitewide-premium.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static_public:
+    name: Keep legal and affiliate content; cover every public page
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/test-sitewide-premium.mjs
+  visual_public:
+    name: Real mobile and desktop screenshots for legal, affiliate and course pages
+    runs-on: ubuntu-24.04
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
+      - name: Install browser tests
+        run: |
+          npm install --no-audit --no-fund
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Verify real static legal, affiliate and SEO pages on iPhone and desktop
+        run: |
+          python3 -m http.server 8787 --directory public >/tmp/trenerki-public-page-http.log 2>&1 &
+          sleep 2
+          node scripts/test-sitewide-premium-browser.mjs http://127.0.0.1:8787
+      - name: Save screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trenerki-sitewide-premium-screenshots
+          path: /tmp/trenerki-sitewide-*.png
+          if-no-files-found: ignore
+          retention-days: 7
