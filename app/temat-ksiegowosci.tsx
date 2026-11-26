@@ -434,7 +434,7 @@ export default function TematKsiegowosci(){
        <Text style={s.coachButtonText}>{coachBusy?'Anielka sprawdza…':'🔍 Sprawdź z Anielką'}</Text>
       </Pressable>
      </View>
-     {coachBusy&&<View style={s.coachWaiting}><ActivityIndicator color="#2c6747"/><Text style={s.bodySmall}>Anielka czyta polecenie i Twoją próbę…</Text></View>}
+     {coachBusy&&<View style={s.coachWaiting}><ActivityIndicator color="#A87929"/><Text style={s.bodySmall}>Anielka czyta polecenie i Twoją próbę…</Text></View>}
      {!!currentCoachMessage&&<View accessibilityLiveRegion="polite" style={[s.coachFeedback,currentCoachMessage.verdict==='needs_revision'&&currentCoachMessage.mode==='review'?s.coachErrorBox:s.coachSoftBox]}>
       <Text style={s.label}>💬 Anielka: {currentCoachMessage.mode==='hint'?'wskazówka':currentCoachMessage.verdict==='needs_revision'?'co poprawić':'informacja zwrotna'}</Text>
       <Text style={s.bodySmall}>{currentCoachMessage.reply}</Text>
@@ -541,14 +541,14 @@ export default function TematKsiegowosci(){
 }
 
 const s=StyleSheet.create({
- progressChecklist:{backgroundColor:'#f1f7ed',borderRadius:12,padding:13,gap:9,borderWidth:1,borderColor:'#d5e6d0'},
+ progressChecklist:{backgroundColor:'#F1F5F9',borderRadius:12,padding:13,gap:9,borderWidth:1,borderColor:'#DDE5EF'},
  coachActions:{flexDirection:'row',flexWrap:'wrap',gap:9,marginTop:5},
- coachButton:{minHeight:47,flexGrow:1,justifyContent:'center',paddingHorizontal:13,paddingVertical:11,borderRadius:12,borderWidth:1,borderColor:'#b7d5b4',backgroundColor:'#f9fcf6'},
- coachButtonText:{fontWeight:'800',fontSize:13,color:'#1e5436',textAlign:'center'},
+ coachButton:{minHeight:47,flexGrow:1,justifyContent:'center',paddingHorizontal:13,paddingVertical:11,borderRadius:12,borderWidth:1,borderColor:'#b7d5b4',backgroundColor:'#F7F9FC'},
+ coachButtonText:{fontWeight:'800',fontSize:13,color:'#9B7026',textAlign:'center'},
  coachFeedback:{borderWidth:1,borderRadius:13,padding:12,gap:8,marginVertical:4},
  coachErrorBox:{borderColor:'#e5b99b',backgroundColor:'#fff4eb'},
- coachSoftBox:{borderColor:'#d2e4cc',backgroundColor:'#f1f7ed'},
- coachNext:{fontSize:14,fontWeight:'700',lineHeight:22,color:'#27573a'},
+ coachSoftBox:{borderColor:'#d2e4cc',backgroundColor:'#F1F5F9'},
+ coachNext:{fontSize:14,fontWeight:'700',lineHeight:22,color:'#9B7026'},
  coachWaiting:{flexDirection:'row',alignItems:'center',gap:9,padding:6},
  homeworkButtons:{flexDirection:'row',flexWrap:'wrap',gap:10,alignItems:'stretch'},
  homeworkButton:{minHeight:50,borderRadius:12,padding:12,flexGrow:1,alignItems:'center',justifyContent:'center'},
@@ -558,8 +558,8 @@ const s=StyleSheet.create({
 
  lessonBody:{gap:10},
  topBar:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10,paddingVertical:3},
- lessonHero:{padding:16,backgroundColor:'#ffffff',borderRadius:16,borderWidth:1,borderColor:'#d8e4d4',gap:7},
- lessonTitle:{fontSize:24,lineHeight:31,fontWeight:'900',color:'#173b2a'},
+ lessonHero:{padding:16,backgroundColor:'#ffffff',borderRadius:16,borderWidth:1,borderColor:'#DDE5EF',gap:7},
+ lessonTitle:{fontSize:24,lineHeight:31,fontWeight:'900',color:'#14263B'},
  lessonGoal:{fontSize:14,lineHeight:22,color:'#56725f'},
  stepRail:{gap:10,paddingVertical:5,paddingHorizontal:2},
  stepTile:{minWidth:93,alignItems:'center',justifyContent:'center',gap:3,paddingHorizontal:11,paddingVertical:11,borderWidth:1,borderBottomWidth:4,borderBottomColor:'#d3dfcd',borderColor:'#dce7d7',borderRadius:15,backgroundColor:'#fff'},
@@ -567,7 +567,7 @@ const s=StyleSheet.create({
  stepIcon:{fontSize:25},stepTitle:{fontSize:13,fontWeight:'800',color:'#33543d'},stepTitleActive:{color:'#153a29'},
  stepNumber:{fontSize:10,color:'#738973',fontWeight:'700'},
  stepIntro:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,flexWrap:'wrap',padding:7},
- stepIntroTitle:{fontSize:20,fontWeight:'900',color:'#183c2b'},stepIntroHint:{fontSize:12,color:'#59735e'},
+ stepIntroTitle:{fontSize:20,fontWeight:'900',color:'#14263B'},stepIntroHint:{fontSize:12,color:'#59735e'},
  stageBody:{gap:10},
  primerList:{gap:9,marginTop:4},primerCard:{backgroundColor:'#f0f6e9',borderRadius:12,padding:11,flexDirection:'row',gap:11,alignItems:'flex-start'},
  primerIcon:{fontSize:25},bodySmall:{fontSize:14,lineHeight:22,color:'#4a6652'},
@@ -587,31 +587,31 @@ const s=StyleSheet.create({
  nextMini:{backgroundColor:'#e8f2e2',padding:12,minHeight:45,borderRadius:12,justifyContent:'center'},
  legalLine:{fontSize:11,lineHeight:18,color:'#77887b',marginTop:12},
 
- page:{flex:1,backgroundColor:'#f6f8f0'},wrap:{width:'100%',maxWidth:940,alignSelf:'center',padding:18,paddingBottom:65,gap:14},
+ page:{flex:1,backgroundColor:'#F7F9FC'},wrap:{width:'100%',maxWidth:940,alignSelf:'center',padding:18,paddingBottom:65,gap:14},
  row:{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:12,marginBottom:12},
  link:{fontSize:14,fontWeight:'800',color:'#255c3b',paddingVertical:6},
- header:{borderRadius:20,backgroundColor:'#183c2b',padding:25,gap:11,marginBottom:14},
+ header:{borderRadius:20,backgroundColor:'#14263B',padding:25,gap:11,marginBottom:14},
  eyebrow:{fontSize:11,fontWeight:'800',letterSpacing:1,color:'#d4e6c8'},eyebrowDark:{fontSize:11,letterSpacing:.8,fontWeight:'800',color:'#567c4b'},
  h1:{fontSize:29,lineHeight:38,fontWeight:'900',color:'white'},heroBody:{fontSize:16,lineHeight:25,color:'#e0ebdd'},
- h2:{fontSize:20,lineHeight:28,fontWeight:'800',color:'#183c2b'},
- body:{fontSize:16,lineHeight:26,color:'#274734'},small:{fontSize:12,lineHeight:20,color:'#56715b'},
+ h2:{fontSize:20,lineHeight:28,fontWeight:'800',color:'#14263B'},
+ body:{fontSize:16,lineHeight:26,color:'#334960'},small:{fontSize:12,lineHeight:20,color:'#56715b'},
  label:{fontSize:14,fontWeight:'800',color:'#1e422d'},
  card:{borderRadius:15,borderWidth:1,borderColor:'#dbe7d2',padding:18,backgroundColor:'white',gap:13,marginBottom:14},
  curiosityBox:{backgroundColor:'#f2f7e9',borderRadius:12,padding:14,gap:5,marginVertical:12,borderLeftWidth:4,borderLeftColor:'#69a33a'},
  curiosityTitle:{fontWeight:'800',color:'#27551c',fontSize:13,letterSpacing:0.8},
  curiositySource:{color:'#36523b',fontSize:12,fontWeight:'600'},
- sectionPhoto:{width:'100%',aspectRatio:16/9,borderRadius:12,backgroundColor:'#edf3e8'},
- practice:{padding:20,borderRadius:15,backgroundColor:'#e8f2df',gap:12,marginBottom:14},
+ sectionPhoto:{width:'100%',aspectRatio:16/9,borderRadius:12,backgroundColor:'#F1F5F9'},
+ practice:{padding:20,borderRadius:15,backgroundColor:'#F1F4F8',gap:12,marginBottom:14},
  result:{fontSize:16,lineHeight:26,fontWeight:'800',color:'#1b5332',backgroundColor:'#ebf4e3',padding:13,borderRadius:10},
- tableRow:{flexDirection:'row'},cell:{width:210,padding:12,borderBottomWidth:1,borderBottomColor:'#dee8d9',fontSize:14,lineHeight:22,color:'#274734'},
- headCell:{fontWeight:'800',backgroundColor:'#edf3e8'},
+ tableRow:{flexDirection:'row'},cell:{width:210,padding:12,borderBottomWidth:1,borderBottomColor:'#dee8d9',fontSize:14,lineHeight:22,color:'#334960'},
+ headCell:{fontWeight:'800',backgroundColor:'#F1F5F9'},
  task:{gap:12,borderTopWidth:1,borderColor:'#e1e9dc',paddingVertical:18},
  option:{borderWidth:1,borderColor:'#cbdcc4',borderRadius:10,padding:12},
- selected:{backgroundColor:'#e8f2df',borderColor:'#567e45'},
+ selected:{backgroundColor:'#F1F4F8',borderColor:'#567e45'},
  button:{alignSelf:'flex-start',paddingHorizontal:15,paddingVertical:12,borderRadius:10,backgroundColor:'#e4efdb'},
  buttonText:{fontWeight:'800',color:'#214b30'},
- input:{fontSize:16,padding:12,minWidth:160,borderColor:'#becdb6',borderWidth:1,borderRadius:10,color:'#1b3e2b'},
- homeworkInput:{fontSize:16,lineHeight:24,minHeight:220,padding:14,borderWidth:1,borderRadius:12,borderColor:'#b7c9b3',backgroundColor:'#fff',color:'#1b3e2b'},
+ input:{fontSize:16,padding:12,minWidth:160,borderColor:'#becdb6',borderWidth:1,borderRadius:10,color:'#14263B'},
+ homeworkInput:{fontSize:16,lineHeight:24,minHeight:220,padding:14,borderWidth:1,borderRadius:12,borderColor:'#b7c9b3',backgroundColor:'#fff',color:'#14263B'},
  notice:{padding:13,borderRadius:9,backgroundColor:'#ecf4e6',gap:7},
  warning:{backgroundColor:'#fff0e5',padding:13,borderRadius:10,color:'#813d25',fontSize:14,lineHeight:22,marginBottom:12},
  gloss:{gap:6,borderTopWidth:1,borderColor:'#e0e8dc',paddingTop:9},
