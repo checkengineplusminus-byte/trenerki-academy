@@ -592,8 +592,8 @@ function cardHTML(c){
  </article>`;
 }
 
-let catalogAllExpanded=false;
 let catalogVisibleByCategory={};
+let catalogAllExpanded=false;
 let catalogRenderCategories=[];
 const normalizeCatalogSearch=value=>String(value||'').toLocaleLowerCase('pl')
  .normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l')
