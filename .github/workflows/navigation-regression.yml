@@ -59,6 +59,8 @@ jobs:
       - name: Produce real web build
         run: |
           node scripts/generate-affiliate-short-pages.mjs
+          node scripts/version-public-navigation-assets.mjs
+          node scripts/test-navigation-asset-versions.mjs
           npx expo export --platform web --output-dir /tmp/trenerki-nav-build
       - name: Test course/menu/profile links on iPhone and desktop
         run: |
