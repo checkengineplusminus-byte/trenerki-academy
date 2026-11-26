@@ -17,10 +17,10 @@ const masteryImages=new Set(['mastery-bednarz','mastery-garncarz-tradycja','mast
 const deeperCraftImages=new Set(['technique-bednarz','diagnosis-bednarz','technique-garncarz-tradycja','diagnosis-garncarz-tradycja','technique-gontarz','diagnosis-gontarz','technique-introligator-tradycja','diagnosis-introligator-tradycja','technique-kaletnik-tradycja','diagnosis-kaletnik-tradycja','technique-kolodziej','diagnosis-kolodziej','technique-ludwisarz','diagnosis-ludwisarz','technique-mlynarz-tradycyjny','diagnosis-mlynarz-tradycyjny','technique-plecionkarz','diagnosis-plecionkarz','technique-powroznik','diagnosis-powroznik','technique-rymarz','diagnosis-rymarz','technique-sitarz','diagnosis-sitarz','technique-snycerz','diagnosis-snycerz','technique-szewc-tradycja','diagnosis-szewc-tradycja','technique-tkacz-reczny','diagnosis-tkacz-reczny','technique-woznica','diagnosis-woznica','technique-zdun-tradycja','diagnosis-zdun-tradycja','technique-zecer','diagnosis-zecer','technique-zegarmistrz-tradycja','diagnosis-zegarmistrz-tradycja']);
 const secondLessonImages=new Set(['second-brygadzista','second-kierownik-budowy','second-dostepne-pdf','second-nie-marnuj-jedzenia','second-obowiazki-domowe','second-ekonomia-domowa-bez-dlugow','second-lepszy-cukiernik','second-lepszy-kucharz','second-pasieka','second-swiety-mikolaj','second-trawnik-jestem-ogrodnikiem','second-angielski-na-budowie','second-niemiecki-na-budowie','second-norweski-na-budowie','second-lepszy-szef','second-astro-consafe-wms','second-axapta-dynamics-magazyn','second-blue-yonder-wms','second-infor-wms','second-manhattan-active-wms','second-ongoing-wms','second-oracle-wms-cloud','second-sap-ewm-magazyn','second-sap-tm-transport','second-facebook-ads-promocja','second-google-ads-promocja','second-apartamenty','second-odbiory','second-wspolnota','second-opieka-seniorzy','second-wsparcie-adhd','second-festyn','second-kgw','second-blizej-dziecka','second-bdo','second-gpsr','second-koordynator','second-dziennik-kota','second-petsitter','second-kryzys-po-40-bez-dlugow','second-lepsza-mama','second-lepszy-tata','second-mierz-ponad-sily','second-mocny-charakter','second-nie-lubie-ludzi','second-partner-z-uzaleznieniem','second-pomagaj-dziecku-w-lekcjach','second-poznaj-siebie','second-rodzice-50-50','second-transport-logistyka-praktycznie','second-wyjdz-z-toksycznego-zwiazku','second-zaczynam-od-zera','second-zwiazek-rozmowa']);
 const volunteerIllustrations=new Map<string,{file:string;alt:string}>([
- ['volunteer-box',{file:'volunteer-box.webp',alt:'Dwoje wolontariuszy przy stanowisku zbiórki z zamkniętą puszką.'}],
- ['volunteer-seal',{file:'volunteer-seal.webp',alt:'Zbliżenie na plombę zamkniętej puszki przygotowanej do zbiórki.'}],
- ['volunteer-handover',{file:'volunteer-handover.webp',alt:'Dwie osoby przekazują zamkniętą puszkę przy stanowisku rozliczeń.'}],
- ['volunteer-report',{file:'volunteer-report.webp',alt:'Wolontariusz zgłasza zdarzenie osobie, która zapisuje fakty.'}],
+ ['volunteer-box',{file:'volunteer-box.webp',alt:'Schemat puszki. Oznaczono szczelinę wrzutową, plombę na łączeniu i korpus.'}],
+ ['volunteer-seal',{file:'volunteer-seal.webp',alt:'Plomba A-017 łączy wieko z korpusem. Zaznaczono jej numer, styk obu części i dolną krawędź.'}],
+ ['volunteer-handover',{file:'volunteer-handover.webp',alt:'Puszka A-017 oraz karta przekazania z tym samym numerem plomby, opisem stanu i godziną 14.20.'}],
+ ['volunteer-report',{file:'volunteer-report.webp',alt:'Notatka o nacięciu plomby A-017. Obserwacja o 14.35, zgłoszenie koordynatorowi o 14.37.'}],
 ]);
 function Visual({title,kind,entries}:LessonVisual){
  const {width}=useWindowDimensions();
@@ -84,7 +84,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
   {showImage&&<View style={{backgroundColor:'#EFF3F8',padding:9,borderWidth:1,borderColor:'#DCE4ED',borderRadius:16,gap:7}}>
    <Image
     accessibilityLabel={volunteerImage?.alt??'Ilustracja objaśniająca temat: '+title}
-    source={{uri:'/academy/assets/'+file}}
+    source={{uri:'/academy/assets/'+file+(volunteerImage?'?v=20261126-objects':'')}}
     onError={()=>setFailed(true)}
     resizeMode="contain"
     style={{width:'100%',aspectRatio:(pastrySvg||editorialSvg)?16/9:undefined,height:(pastrySvg||editorialSvg)?undefined:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}

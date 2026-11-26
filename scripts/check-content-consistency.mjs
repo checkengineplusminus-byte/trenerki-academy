@@ -252,7 +252,7 @@ try{
   else ok(slug+': 30 illustrated lessons, '+seen.size+' themed visual families, substantial introductory theory');
  }
  if(!illustrated.includes('{showImage&&<View')||!illustrated.includes('imageNames.has(illustration)')||
-    !illustrated.includes('<Visual {...visual}/>'))fail('Existing and course-specific illustrations must render independently of the text sections');
+    !/<Visual\b[^>]*\{\.\.\.visual\}[^>]*\/>/.test(illustrated))fail('Existing and course-specific illustrations must render independently of the text sections');
  else ok('Software illustrations work with and without long-form sections');
  for(const asset of Object.values(expectedVisualGroups).flat()){
   if(!illustrated.includes("'"+asset+"'"))fail('Renderer does not support course asset '+asset);

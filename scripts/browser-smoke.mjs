@@ -42,15 +42,6 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
     slug:img.closest('.course-card').dataset.courseId,file:new URL(img.currentSrc).pathname,
     width:img.naturalWidth,height:img.naturalHeight,
    })))){
-    const photoOverride={
-     'zaufany-wolontariusz':'ongoing-wms',
-     'ciesla-przygotowanie-czeladnicze':'kolodziej',
-     'brygadzista':'angielski-na-budowie',
-     'kierownik-budowy':'niemiecki-na-budowie',
-     'lepszy-szef':'zaczynam-od-zera',
-     'bdo':'oracle-wms-cloud',
-     'kgw':'lepszy-cukiernik'
-    };
     if(slug==='excel-skroty'){
       // The real Excel screenshot is 1920×1007 rather than a cropped stock 16:9 photo.
       assert.match(file,/^\/wikipedia\/commons\/0\/0a\/Anzahl_der_B%C3%A4ume_pro_Quadrat_1\.png$/,slug+': original Excel screenshot URL');
@@ -59,7 +50,7 @@ async function verifyAllCataloguePhotos(ctx,expectedSlugs){
       assert.equal(file,'/academy/assets/lesson-visual-ai-bez-tajemnic-001.svg');
       assert(width>0&&height>0,'AI illustration should render');
     }else{
-      assert.equal(file,'/academy/photos/'+(photoOverride[slug]||slug)+'.webp',slug+': curated course card photo path');
+      assert.equal(file,'/academy/photos/'+slug+'.webp',slug+': curated course card photo path');
       if(slug==='ksiegowosc-od-podstaw')assert.equal(file,'/academy/photos/ksiegowosc-od-podstaw.webp','Accounting must use its own generated WebP');
       assert.equal(width*9,height*16,slug+': course card photo ratio');
     }

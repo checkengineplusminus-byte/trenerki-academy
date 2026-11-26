@@ -3,28 +3,33 @@
   "courses": {
     "zaufany-wolontariusz": {
       "file": "zaufany-wolontariusz.webp",
-      "alt": "Zespół wolontariuszy pakuje dary do kartonów",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Paczka z darami oraz lista przekazania.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "ciesla-przygotowanie-czeladnicze": {
       "file": "ciesla-przygotowanie-czeladnicze.webp",
-      "alt": "Pomiar drewnianej belki w warsztacie",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Więźba oraz cyrkiel.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "brygadzista": {
       "file": "brygadzista.webp",
-      "alt": "Dwie osoby w kamizelkach roboczych omawiają pracę na budowie",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Kask oraz lista robót.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "kierownik-budowy": {
       "file": "kierownik-budowy.webp",
-      "alt": "Zespół w kaskach i kamizelkach nad dokumentacją budowy",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Żuraw oraz konstrukcja.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "lepszy-szef": {
       "file": "lepszy-szef.webp",
-      "alt": "Rozmowa zespołu przy wspólnym stole",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Lista ustaleń oraz rozmowa zespołu.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "apartamenty": {
       "file": "apartamenty.webp",
@@ -33,38 +38,45 @@
     },
     "gpsr": {
       "file": "gpsr.webp",
-      "alt": "Przygotowanie ceramicznego kubka do zapakowania",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Kontrola produktu oraz opakowanie.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "bdo": {
       "file": "bdo.webp",
-      "alt": "Pakowanie produktów z użyciem papierowych wypełnień",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Opakowanie oraz ewidencja.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "dostepne-pdf": {
       "file": "dostepne-pdf.webp",
-      "alt": "Dokument na stole obok laptopa i dłoni z długopisem",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Dokument źródłowy oraz podgląd ekranowy.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "kgw": {
       "file": "kgw.webp",
-      "alt": "Dłonie wyrabiające ciasto na blacie",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Fundusze koła oraz dokument.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "festyn": {
       "file": "festyn.webp",
-      "alt": "Kolorowe stoiska i namioty na festynie",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Stoisko oraz utarg.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "petsitter": {
       "file": "petsitter.webp",
-      "alt": "Karmienie kotów z miski",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Symbol kota oraz karta opieki.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "odbiory": {
       "file": "odbiory.webp",
-      "alt": "Pomiar przy ścianie za pomocą taśmy mierniczej",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Zarys domu oraz protokół odbioru.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "wspolnota": {
       "file": "wspolnota.webp",
@@ -73,8 +85,9 @@
     },
     "pasieka": {
       "file": "pasieka.webp",
-      "alt": "Pszczelarz trzyma ramkę z plastrem i pszczołami",
-      "iconBundle": 1
+      "alt": "Plansza przedmiotowa. Ul oraz kalendarz pasieczny.",
+      "iconBundle": 1,
+      "origin": "illustrated_inhouse"
     },
     "koordynator": {
       "file": "koordynator.webp",
@@ -88,8 +101,9 @@
     },
     "opieka-seniorzy": {
       "file": "opieka-seniorzy.webp",
-      "alt": "Dłonie starszej osoby trzymające szklankę herbaty",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Kalendarz wizyt oraz plan dnia.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "wsparcie-adhd": {
       "file": "wsparcie-adhd.webp",
@@ -98,23 +112,27 @@
     },
     "poznaj-siebie": {
       "file": "poznaj-siebie.webp",
-      "alt": "Dłoń zapisująca refleksje w otwartym notesie",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Karta refleksji oraz stopnie celu.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "mocny-charakter": {
       "file": "mocny-charakter.webp",
-      "alt": "Dłonie pokryte magnezją na ściance wspinaczkowej",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Tarcza z symbolem wyboru oraz lista decyzji.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "zwiazek-rozmowa": {
       "file": "zwiazek-rozmowa.webp",
-      "alt": "Dwie osoby rozmawiają z kubkami w dłoniach",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Dymek rozmowy oraz kalendarz spotkań.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "blizej-dziecka": {
       "file": "blizej-dziecka.webp",
-      "alt": "Dorosły i dziecko kolorują wspólny rysunek",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Drewniana kolejka oraz książka do czytania.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "rodzice-50-50": {
       "file": "rodzice-50-50.webp",
@@ -123,28 +141,33 @@
     },
     "zaczynam-od-zera": {
       "file": "zaczynam-od-zera.webp",
-      "alt": "Osoba porządkująca rzeczy i notatki przy kartonach",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Schody z chorągiewką oraz portfel.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "obowiazki-domowe": {
       "file": "obowiazki-domowe.webp",
-      "alt": "Składanie żółtej koszulki na stole",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Dom oraz szczotka.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "lepszy-cukiernik": {
       "file": "lepszy-cukiernik.webp",
-      "alt": "Dekorowanie wypieku za pomocą rękawa cukierniczego",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Tort oraz zeszyt receptur.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "lepszy-kucharz": {
       "file": "lepszy-kucharz.webp",
-      "alt": "Kucharz przygotowujący składniki na desce do krojenia",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Garnek oraz karta receptury.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "nie-lubie-ludzi": {
       "file": "nie-lubie-ludzi.webp",
-      "alt": "Dwie osoby z filiżankami przy wspólnym stole",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Dymek rozmowy oraz notes.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "jak-kupic-samochod": {
       "file": "jak-kupic-samochod.webp",
@@ -153,8 +176,9 @@
     },
     "mierz-ponad-sily": {
       "file": "mierz-ponad-sily.webp",
-      "alt": "Dłoń szkicująca pomysł na dużej kartce",
-      "iconBundle": 2
+      "alt": "Plansza przedmiotowa. Etapy celu oraz plan działania.",
+      "iconBundle": 2,
+      "origin": "illustrated_inhouse"
     },
     "excel-skroty": {
       "file": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Anzahl_der_B%C3%A4ume_pro_Quadrat_1.png",
@@ -170,28 +194,33 @@
     },
     "google-ads-promocja": {
       "file": "google-ads-promocja.webp",
-      "alt": "Dwie osoby omawiają wyniki na ekranie laptopa",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Okno wyszukiwarki oraz tabela wyników.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "facebook-ads-promocja": {
       "file": "facebook-ads-promocja.webp",
-      "alt": "Dłonie obsługujące aplikację społecznościową na telefonie",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Megafon oraz ekran kampanii.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "swiety-mikolaj": {
       "file": "swiety-mikolaj.webp",
-      "alt": "Osoba w stroju Świętego Mikołaja z zapakowanym prezentem",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Czapka oraz paczka prezentowa.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "lepszy-tata": {
       "file": "lepszy-tata.webp",
-      "alt": "Ojciec i syn wspólnie układają drewniane klocki",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Elementy układanki oraz wspólny kalendarz.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "lepsza-mama": {
       "file": "lepsza-mama.webp",
-      "alt": "Matka i córka wspólnie czytają książkę",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Książka oraz kalendarz.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "word-skroty": {
       "file": "word-skroty.webp",
@@ -200,8 +229,9 @@
     },
     "wyjdz-z-toksycznego-zwiazku": {
       "file": "wyjdz-z-toksycznego-zwiazku.webp",
-      "alt": "Zapisywanie planu w notesie przy kubku",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Tarcza oraz karta osobistego planu.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "kryzys-po-40-bez-dlugow": {
       "file": "kryzys-po-40-bez-dlugow.webp",
@@ -225,28 +255,33 @@
     },
     "ekonomia-domowa-bez-dlugow": {
       "file": "ekonomia-domowa-bez-dlugow.webp",
-      "alt": "Obliczanie domowych wydatków przy stole",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Skarbonka oraz arkusz wydatków.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "angielski-na-budowie": {
       "file": "angielski-na-budowie.webp",
-      "alt": "Rozmowa dwóch osób w kaskach na placu budowy",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Kask roboczy oraz odbiór budynku.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "norweski-na-budowie": {
       "file": "norweski-na-budowie.webp",
-      "alt": "Ekipa przy drewnianej konstrukcji budynku",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Kask oraz szkielet dachu.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "niemiecki-na-budowie": {
       "file": "niemiecki-na-budowie.webp",
-      "alt": "Dwie osoby w kaskach omawiają cyfrowy plan",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Kask oraz żuraw budowlany.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "pomagaj-dziecku-w-lekcjach": {
       "file": "pomagaj-dziecku-w-lekcjach.webp",
-      "alt": "Rodzic pomaga dziecku przy zadaniu z zeszytu",
-      "iconBundle": 3
+      "alt": "Plansza przedmiotowa. Otwarty zeszyt oraz plan zadania.",
+      "iconBundle": 3,
+      "origin": "illustrated_inhouse"
     },
     "windows-skroty": {
       "file": "windows-skroty.webp",
@@ -260,8 +295,9 @@
     },
     "kowal-tradycja": {
       "file": "kowal-tradycja.webp",
-      "alt": "Kowal kształtujący metal młotem na kowadle",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Kowadło i młot oraz koło z obręczą.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "zdun-tradycja": {
       "file": "zdun-tradycja.webp",
@@ -271,46 +307,51 @@
     },
     "kolodziej": {
       "file": "kolodziej.webp",
-      "alt": "Kołodziej pracuje przy drewnianym kole szprychowym w warsztacie",
+      "alt": "Plansza przedmiotowa. Koło szprychowe oraz wóz.",
       "iconBundle": 4,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "bednarz": {
       "file": "bednarz.webp",
-      "alt": "Bednarz przy ręcznej obróbce drewnianych elementów beczki",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Beczka klepkowa oraz dzban ceramiczny.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "woznica": {
       "file": "woznica.webp",
-      "alt": "Dwa konie w uprzęży przed wozem",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Wóz oraz koło szprychowe.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "rymarz": {
       "file": "rymarz.webp",
-      "alt": "Rymarz i siodło w warsztacie w Minna",
+      "alt": "Plansza przedmiotowa. Pasek z klamrą oraz wóz zaprzęgowy.",
       "iconBundle": 4,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "garncarz-tradycja": {
       "file": "garncarz-tradycja.webp",
-      "alt": "Dłonie formujące gliniane naczynie na kole garncarskim",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Naczynie oraz koło garncarskie.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "plecionkarz": {
       "file": "plecionkarz.webp",
-      "alt": "Dłonie plecionkarki przy pracy nad tradycyjnym koszem",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Kosz pleciony oraz osnowa i wątek.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "powroznik": {
       "file": "powroznik.webp",
-      "alt": "Powroźnik przy warsztacie, wśród włókien używanych do wyrobu lin",
+      "alt": "Plansza przedmiotowa. Skręt liny oraz wóz.",
       "iconBundle": 4,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "snycerz": {
       "file": "snycerz.webp",
-      "alt": "Stanowisko snycerza z dłutami i przykładami rzeźbienia w drewnie",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Ornament w drewnie oraz struktura drewna.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "sitarz": {
       "file": "sitarz.webp",
@@ -326,36 +367,39 @@
     },
     "ludwisarz": {
       "file": "ludwisarz.webp",
-      "alt": "Formy odlewnicze i piece w odlewni dzwonów w Loughborough",
+      "alt": "Plansza przedmiotowa. Dzwon oraz warsztat metalu.",
       "iconBundle": 4,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "introligator-tradycja": {
       "file": "introligator-tradycja.webp",
-      "alt": "Ręczne przeszywanie grzbietu książki",
-      "iconBundle": 4
+      "alt": "Plansza przedmiotowa. Rozkładówka oraz arkusz.",
+      "iconBundle": 4,
+      "origin": "illustrated_inhouse"
     },
     "tkacz-reczny": {
       "file": "tkacz-reczny.webp",
-      "alt": "Dwie tkaczki pracują przy ręcznym krośnie",
+      "alt": "Plansza przedmiotowa. Krosno oraz skręcone włókna.",
       "iconBundle": 5,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "kaletnik-tradycja": {
       "file": "kaletnik-tradycja.webp",
-      "alt": "Obróbka skórzanego portfela na macie warsztatowej",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Teczka oraz klamra.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "zegarmistrz-tradycja": {
       "file": "zegarmistrz-tradycja.webp",
-      "alt": "Zegarmistrz pochylony nad stołem warsztatowym z lampą i narzędziami",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Tarcza zegarka oraz cyrkiel pomiarowy.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "mlynarz-tradycyjny": {
       "file": "mlynarz-tradycyjny.webp",
-      "alt": "Młynarz przy workach z mąką w tradycyjnym młynie",
+      "alt": "Plansza przedmiotowa. Kamień młyński oraz sito.",
       "iconBundle": 5,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "gontarz": {
       "file": "gontarz.webp",
@@ -364,29 +408,33 @@
     },
     "szewc-tradycja": {
       "file": "szewc-tradycja.webp",
-      "alt": "Szewc naprawia obuwie ręcznie w warsztacie",
+      "alt": "Plansza przedmiotowa. But oraz pasek z klamrą.",
       "iconBundle": 5,
-      "credits": true
+      "origin": "illustrated_inhouse"
     },
     "axapta-dynamics-magazyn": {
       "file": "axapta-dynamics-magazyn.webp",
-      "alt": "Pracownik sprawdzający dokument przy regale z kartonami",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Lokalizacja regałowa oraz dokument przyjęcia.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "sap-ewm-magazyn": {
       "file": "sap-ewm-magazyn.webp",
-      "alt": "Pracownik magazynu używający ręcznego skanera",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Regał magazynowy oraz kod skanowania.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "oracle-wms-cloud": {
       "file": "oracle-wms-cloud.webp",
-      "alt": "Pracownik sprawdzający stan magazynowy na tablecie",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Potwierdzenie w chmurze oraz paczka.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "manhattan-active-wms": {
       "file": "manhattan-active-wms.webp",
-      "alt": "Pracownik zdejmujący karton z regału",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Kod kreskowy oraz jednostka pakunkowa.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "blue-yonder-wms": {
       "file": "blue-yonder-wms.webp",
@@ -395,13 +443,15 @@
     },
     "infor-wms": {
       "file": "infor-wms.webp",
-      "alt": "Pracownica z dokumentacją między regałami",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Terminal oraz miejsce odkładcze.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "ongoing-wms": {
       "file": "ongoing-wms.webp",
-      "alt": "Pakowanie zamówienia do kartonu obok laptopa",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Paczka wysyłkowa oraz trasa dostawy.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "astro-consafe-wms": {
       "file": "astro-consafe-wms.webp",
@@ -410,13 +460,15 @@
     },
     "sap-tm-transport": {
       "file": "sap-tm-transport.webp",
-      "alt": "Pracownik układający paczki w samochodzie dostawczym",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Trasa przewozu oraz samochód ciężarowy.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "jestem-eko": {
       "file": "jestem-eko.webp",
-      "alt": "Odkładanie tekturowego pudełka do pojemnika do segregacji",
-      "iconBundle": 5
+      "alt": "Plansza przedmiotowa. Liść oraz tektura.",
+      "iconBundle": 5,
+      "origin": "illustrated_inhouse"
     },
     "ksiegowosc-od-podstaw": {
       "file": "ksiegowosc-od-podstaw.webp",

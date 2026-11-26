@@ -14,7 +14,7 @@ for(const [name,viewport] of [['iphone',{width:390,height:844}],['desktop',{widt
    await route.continue();
   });
   // Slow down one visible course image to inspect the loading fallback.
-  await page.route('**/academy/photos/ongoing-wms.webp**',async route=>{
+  await page.route('**/academy/photos/zaufany-wolontariusz.webp**',async route=>{
    await new Promise(resolve=>setTimeout(resolve,2000));
    await route.continue();
   });
@@ -29,7 +29,7 @@ for(const [name,viewport] of [['iphone',{width:390,height:844}],['desktop',{widt
   const photo=card.locator('img.card-photo');
   const waiting=card.locator('.card-media-loading');
   await card.waitFor({state:'attached'});
-  assert.match(await photo.getAttribute('src'),/ongoing-wms\.webp/);
+  assert.match(await photo.getAttribute('src'),/zaufany-wolontariusz\.webp/);
   assert.equal(await waiting.isVisible(),true,'Loading title must show before image is ready');
   assert.match(await waiting.innerText(),/Zaufany wolontariusz/);
   await page.waitForFunction(()=>{

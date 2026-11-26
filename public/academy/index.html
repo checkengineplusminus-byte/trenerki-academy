@@ -378,7 +378,6 @@ const accessEntry=id=>null;
 const formatDate=iso=>iso?new Date(iso).toLocaleDateString('pl-PL'):'';
 const money=n=>Number(n)===0?'GRATIS':Number(n).toLocaleString('pl-PL')+' zł';
 const button=(label,func,klass='btn-dark')=>`<button class="btn ${klass}" onclick="${func}">${label}</button>`;
-function avatarSVG(size=48){return `<svg class="coach-svg" width="${size}" height="${size}" viewBox="0 0 100 100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="46" fill="#d8f69b"/><path d="M22 57Q23 19 50 19Q77 19 78 57V72Q68 88 50 88Q31 88 22 72Z" fill="#275642"/><path d="M31 50Q31 32 50 31Q69 32 69 50V61Q67 78 50 79Q33 78 31 61Z" fill="#ffe7cd"/><path d="M32 45Q38 28 54 32Q68 29 70 45L66 38Q47 43 32 45" fill="#275642"/><circle cx="41" cy="54" r="3" fill="#224b3c"/><circle cx="59" cy="54" r="3" fill="#224b3c"/><path d="M43 65Q50 71 57 65" stroke="#b86d66" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M25 91Q29 76 40 75L50 84L60 75Q71 76 75 91" fill="#76a85e"/></svg>`}
 function courseIllustration(c){
  if(c.id==='ksiegowosc-od-podstaw')return `<div class="accounting-course-art" role="img" aria-label="Przykładowa faktura: 1230 zł brutto, 1000 zł netto i 230 zł VAT">
  <span class="accounting-art-header">FAKTURA · ĆWICZENIE</span>
@@ -403,7 +402,7 @@ const coursePhotoFile=slug=>{
   (slug==='excel-skroty'&&file===EXCEL_REAL_SCREENSHOT)
  )?file:null;
 };
-const coursePhotoSrc=file=>file===EXCEL_REAL_SCREENSHOT?file:'/academy/photos/'+file+'?v=20261112-h1';
+const coursePhotoSrc=file=>file===EXCEL_REAL_SCREENSHOT?file:'/academy/photos/'+file+'?v=20261126-objects';
 
 function usePhotoFallback(img){
  const fallback=img.parentElement?.querySelector('.card-photo-fallback');
@@ -445,21 +444,11 @@ async function loadCoursePhotoManifest(){
  }
 }
 
-const FEATURED_CARD_PHOTO_OVERRIDES={
- 'zaufany-wolontariusz':'ongoing-wms',
- 'ciesla-przygotowanie-czeladnicze':'kolodziej',
- 'brygadzista':'angielski-na-budowie',
- 'kierownik-budowy':'niemiecki-na-budowie',
- 'lepszy-szef':'zaczynam-od-zera',
- 'bdo':'oracle-wms-cloud',
- 'kgw':'lepszy-cukiernik'
-};
-function cardPhotoSlug(courseSlug){return FEATURED_CARD_PHOTO_OVERRIDES[courseSlug]||courseSlug;}
 function courseCardMedia(c){
  if(c.id==='ai-bez-tajemnic'){
   return '<img class="card-photo" data-course-photo="ai-bez-tajemnic" src="/academy/assets/lesson-visual-ai-bez-tajemnic-001.svg" alt="" width="960" height="540" loading="lazy" decoding="async">';
  }
- const photoSlug=cardPhotoSlug(c.id);
+ const photoSlug=c.id;
  // The most visible cards should never display an empty placeholder while the
  // public photo manifest is being fetched asynchronously.
  // The public catalogue ships matching local WebP covers for every published
@@ -536,7 +525,7 @@ function homeHTML(){return `<section class="hero">
    </div>
    <a class="hero-course-spotlight" id="hero-course-spotlight" href="/academy/kursy/zaufany-wolontariusz.html" aria-label="Odkryj kurs Zaufany wolontariusz">
     <span class="spotlight-kicker">ODKRYJ KURS</span>
-    <span class="spotlight-illustration" aria-hidden="true"><span class="spotlight-fallback">✦</span><img class="spotlight-photo" src="/academy/photos/ongoing-wms.webp?v=20261112-h1" alt="" width="240" height="240" decoding="async"></span>
+    <span class="spotlight-illustration" aria-hidden="true"><span class="spotlight-fallback">✦</span><img class="spotlight-photo" src="/academy/photos/zaufany-wolontariusz.webp?v=20261126-objects" alt="" width="240" height="240" decoding="async"></span>
     <strong class="spotlight-title">Zaufany wolontariusz</strong>
     <span class="spotlight-pricing">GRATIS</span>
     <span class="spotlight-cta">Zobacz program →</span>
@@ -693,25 +682,6 @@ function keyboardTeaserHTML(c){
 function courseHTML(){let c=selectedCourse,st=courseState(c.id);return `<div class="wrap page-top"><a class="crumb" onclick="showCatalog()">← Wszystkie kursy <span style="color:#a2b2a5">/</span> ${esc(c.cat)}</a><div class="course-titleblock"><div><div class="overline">${esc(c.cat)}</div><h1 class="course-heading">${esc(c.title)}</h1><p class="course-summary">${esc(c.short.replace(/[.\s]+$/,''))}. Zobacz, czego się nauczysz i przećwicz proste sytuacje z codziennego życia. Po aktywacji kursu zapiszesz swój postęp i wrócisz do lekcji, kiedy zechcesz.</p>${c.independent_software?'<p class="course-summary">Niezależny kurs TRENERKI. Nazwa produktu wskazuje temat szkolenia. Kurs nie jest autoryzowanym szkoleniem ani certyfikacją dostawcy.</p>':''}<div class="award-name"><span>Planowane potwierdzenie ukończenia / Course completion record</span><strong>${esc(c.certificate_title_pl)}</strong><em>${esc(c.certificate_title_en)}</em></div><div class="course-meta"><span class="pill">Egzamin końcowy</span><span class="pill">Dyplom PL / EN</span></div>${c.id==='kierownik-budowy'?`<div class="course-disclaimer">Ten kurs doskonali praktyczne umiejętności. Nie nadaje uprawnień budowlanych ani prawa do pełnienia samodzielnych funkcji technicznych.</div>`:''}${c.id==='ciesla-przygotowanie-czeladnicze'?`<div class="course-disclaimer" role="note"><strong>Przygotowanie do egzaminu czeladniczego.</strong> Program przygotowawczy obejmuje teorię, rysunki i ćwiczenia. Egzamin czeladniczy odbywa się osobno przed właściwą komisją.</div>`:''}</div><aside class="buy-card"><div class="overline">Nauka we własnym tempie</div><div class="big">${money(c.price)}</div><p>${hasAccess(c.id)?`Dostęp demonstracyjny ważny do ${formatDate(accessEntry(c.id).expiresAt)}. Wracaj w dowolnym momencie.`:c.price===0?'Załóż konto, aby odebrać kurs i zapisywać postęp.':'Dostęp do pełnych lekcji po zakupie kursu, ważny 12 miesięcy.'}</p><button class="btn btn-dark" onclick="${hasAccess(c.id)?'resumeCourse()':'openCheckout()'}">${hasAccess(c.id)?'Kontynuuj naukę':c.price===0?'Odbierz bezpłatny kurs':'Kup kurs'} ↗</button><a class="btn btn-outline" style="margin-top:9px" href="/prezent?course=${encodeURIComponent(c.id)}">🎁 Podaruj kurs</a><button class="btn btn-outline" style="margin-top:9px" onclick="openLibrary()">Moje kursy</button><div class="course-share"><button class="course-share-button" type="button" data-share-course="${esc(c.id)}">Udostępnij kurs</button><div class="course-share-status" role="status"></div></div></aside></div></div><section class="wrap preview-story"><div class="story-panel"><span class="overline">Ciekawostka, która może Ci się przydać</span><h2>${esc(PREVIEWS[c.id]?.curiosity || c.short)}</h2><p><strong>Wyobraź sobie taką sytuację:</strong> ${esc(PREVIEWS[c.id]?.scenario || 'Codzienność stawia przed nami wybory. Zamiast odgadywać cudze oczekiwania, sprawdź, co naprawdę pomaga.')}</p></div><div class="story-outcomes"><h3>Co przećwiczysz w praktyce?</h3>${[PREVIEWS[c.id]?.outcome_1,PREVIEWS[c.id]?.outcome_2,PREVIEWS[c.id]?.outcome_3].filter(Boolean).map(x=>`<div class="story-outcome"><span aria-hidden="true">✓</span>${esc(x)}</div>`).join('')}<p class="story-foot">Nie obiecujemy idealnego życia po jednym kursie. Pokazujemy sytuacje, pytania i małe kroki, które możesz dopasować do siebie.</p></div></section>${keyboardTeaserHTML(c)}${PREVIEWS[c.id]?.history?`<section class="wrap craft-history"><div class="story-history"><div class="overline">Rzemiosło dawniej i dziś</div><h2>Jak pracowali dawni mistrzowie?</h2><p>Warsztat, narzędzia i cierpliwość — te umiejętności przez pokolenia przekazywano w praktyce. Wiele z nich nadal żyje w małych pracowniach i warsztatach.</p><p>Na lekcjach poznasz materiał, narzędzia i budowę charakterystycznego wyrobu. Następnie spróbujesz zrozumieć, dlaczego rzemieślnik wybierał właśnie taki sposób pracy.</p></div></section>`:""}${c.cat==="Języki na budowie"?`<section class="wrap language-intro-art"><img src="/academy/illustrations/wejscie.svg" alt="Autorska ilustracja pierwszego dnia pracy na budowie — od bramy do wprowadzenia" loading="lazy" /><div><span class="overline">Od pierwszego słowa</span><h2>Nie znasz języka? Właśnie od tego zaczynamy.</h2><p>Posłuchasz krótkich zwrotów, poznasz litery, zapytasz o wejście i bezpieczną pracę. Każdy kraj ma własne zasady i własne instytucje. Uczysz się od pierwszego dnia aż po zakończenie zmiany.</p></div></section>`:""}<section class="wrap course-syllabus"><div class="syllabus-intro"><div class="overline">Program kursu</div><h2>Sprawdź, czego się nauczysz.</h2><p>Przejrzyj tematy i zobacz, czego nauczysz się na przykładach i w ćwiczeniach.</p></div><div class="syllabus-grid">${(Array.isArray(c.outline)&&c.outline.length?c.outline:['Wprowadzenie i cele','Najważniejsze zasady','Zastosowanie w praktyce','Ćwiczenia na przykładach','Najczęstsze błędy','Trudniejsze sytuacje','Samodzielne zadanie','Podsumowanie i sprawdzenie wiedzy']).map((title,i)=>`<div class="syllabus-item"><span>${String(i+1).padStart(2,"0")}</span><b>${esc(title)}</b></div>`).join('')}</div>${c.price===0?'<button class="btn btn-dark" style="margin:23px 0 18px" onclick="openCheckout()">Odbierz darmowy kurs →</button>':''}</section>${hasAccess(c.id)?`<section class="learn-area scrolltop" id="learn-area"><div class="wrap learn-layout"><aside class="sidebar"><div class="side-title">TWOJA DROGA DO UMIEJĘTNOŚCI</div><div class="progress-head"><span>Etapy praktyki</span><span>${st.done.length}/8</span></div><div class="progressbar"><i style="width:${st.done.length*12.5}%"></i></div>${c.modules.map((m,i)=>`<button class="module-btn ${selectedStep===i&&['lesson','quiz'].includes(mode)?'sel':''} ${st.done.includes(i)?'done':''}" ${i>st.done.length?'disabled':''} onclick="jumpStep(${i})"><span class="num">${st.done.includes(i)?'✓':String(i+1).padStart(2,'0')}</span><span><span class="mod-name">${esc(m[0])}</span><small class="mod-sub">${st.done.includes(i)?'Zaliczony':'Nauka, ćwiczenie i quiz'}</small></span></button>`).join('')}<button class="module-btn ${mode==='roleplay'?'sel':''}" ${st.done.length<8?'disabled':''} onclick="roleplayStart()"><span class="num">☺</span><span><span class="mod-name">Rozmowa z Trenerką</span><small class="mod-sub">5 pytań • 5 minut</small></span></button><button class="module-btn ${mode==='exam'?'sel':''}" ${st.done.length<8||!st.roleplayDone?'disabled':''} onclick="startExam()"><span class="num">★</span><span><span class="mod-name">Egzamin końcowy</span><small class="mod-sub">16 losowanych pytań</small></span></button>${st.passed?`<button class="module-btn ${mode==='cert'?'sel':''}" onclick="showCert()"><span class="num">🏆</span><span><span class="mod-name">Certyfikat PL / EN</span><small class="mod-sub">Przykładowy dokument</small></span></button>`:''}</aside><section class="lesson" id="lesson-view">${mode==='roleplay'?roleplayHTML():mode==='exam'?examHTML():mode==='cert'?certHTML():lessonHTML()}</section></div></section>${coachWidget()}`:`<section class="wrap"><div class="lock-card"><div class="overline">Dostęp do nauki</div><h2>Twój kurs czeka na Ciebie</h2><p>Po aktywacji dostępu zobaczysz lekcje i praktyczne ćwiczenia z możliwością zapisywania postępu. Po ukończeniu lekcji i zaliczeniu egzaminu pobierzesz dyplom po polsku i angielsku. Dostęp do dyplomu zależy od ukończenia kursu i wyniku egzaminu.</p><button class="btn btn-dark" onclick="openCheckout()">${c.price===0?'Odbierz za darmo':'Kup kurs →'}</button></div></section>`}`;}
 
 
-// Hand-picked course photo alternatives for the compact rotating spotlight.
-// Use real, relevant scenes and keep the full original course images elsewhere.
-const SPOTLIGHT_PHOTO_OVERRIDES={
- 'brygadzista':'angielski-na-budowie',
- 'kierownik-budowy':'niemiecki-na-budowie',
- 'ciesla-przygotowanie-czeladnicze':'norweski-na-budowie',
- 'odbiory':'mierz-ponad-sily',
- 'lepszy-szef':'zaczynam-od-zera',
- 'lepszy-tata':'blizej-dziecka',
- 'lepsza-mama':'blizej-dziecka',
- 'zaufany-wolontariusz':'ongoing-wms',
- 'opieka-seniorzy':'mierz-ponad-sily',
- 'jestem-eko':'nie-marnuj-jedzenia',
- 'google-ads-promocja':'facebook-ads-promocja',
- 'bdo':'oracle-wms-cloud',
- 'kgw':'lepszy-cukiernik',
- 'swiety-mikolaj':'swiety-mikolaj'
-};
-function spotlightPhotoSlug(slug){return SPOTLIGHT_PHOTO_OVERRIDES[slug]||slug;}
 
 let heroTickerTimer=null,heroTickerIndex=-1;
 function paintHeroTicker(){
@@ -732,8 +702,8 @@ function paintHeroTicker(){
   photo.onload=()=>{if(photo.dataset.courseId===c.id&&photo.naturalWidth>0)art.classList.add('is-loaded');};
   photo.onerror=()=>{if(photo.dataset.courseId===c.id)art.classList.remove('is-loaded');};
   photo.dataset.courseId=c.id;
-  const spotlightFile=coursePhotoFile(spotlightPhotoSlug(c.id));
-  photo.src=spotlightFile?coursePhotoSrc(spotlightFile):'/academy/photos/'+spotlightPhotoSlug(c.id)+'.webp?v=20261112-h1';
+  const spotlightFile=coursePhotoFile(c.id);
+  photo.src=spotlightFile?coursePhotoSrc(spotlightFile):'/academy/photos/'+c.id+'.webp?v=20261126-objects';
   photo.style.objectFit=c.id==='excel-skroty'?'contain':'cover';
   if(photo.complete&&photo.naturalWidth>0)art.classList.add('is-loaded');
  }

@@ -11,7 +11,7 @@ export default function CourseIntroPhoto({slug,title}:{slug:string;title:string}
  const photo=photos[slug];
  if(!photo?.file||photo.file!==slug+'.webp'||(failed&&!web))return null;
 
- const path='/academy/photos/'+photo.file;
+ const path='/academy/photos/'+photo.file+'?v=20261126-objects';
  return <View testID="course-intro-photo" style={styles.frame}>
   {failed?
    <svg role="img" aria-label={'Ikona kursu: '+title} viewBox="0 0 256 256" width={128} height={128}>
