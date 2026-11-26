@@ -4,7 +4,7 @@ import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 import {validGiftCode} from '../src/giftCode';
-const ink='#182230',pale='#eef2ff';
+const ink='#14263B',pale='#FDF4E1';
 // Keep Expo preview authentication working until custom DNS and Supabase Auth allowlist are configured.
 const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
  ? window.location.origin : 'https://trenerki.com';
@@ -163,10 +163,10 @@ export default function AccountPage(){
      setMessage(friendly);
    }finally{setBusy(false)}
  }
- const input={borderWidth:1,borderColor:'#d8e1ef',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
+ const input={borderWidth:1,borderColor:'#DCE4ED',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
  const heading=mode==='register'?(isCompanyLogin?'Utwórz konto firmowe':'Rozpocznij naukę.'):mode==='login'?(isCompanyLogin?'Zaloguj się jako firma':'Witaj ponownie!'):mode==='reset'?'Odzyskaj konto':'Ustaw nowe hasło';
- return <ScrollView style={{flex:1,backgroundColor:'#f8fafc'}} keyboardShouldPersistTaps="handled" contentContainerStyle={{minHeight:'100%',padding:compact?12:22,paddingBottom:compact?24:22,justifyContent:compact?'flex-start':'center'}}>
- <View style={{maxWidth:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#e2e8f0'}}>
+ return <ScrollView style={{flex:1,backgroundColor:'#F7F9FC'}} keyboardShouldPersistTaps="handled" contentContainerStyle={{minHeight:'100%',padding:compact?12:22,paddingBottom:compact?24:22,justifyContent:compact?'flex-start':'center'}}>
+ <View style={{maxWidth:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#DCE4ED'}}>
  <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:compact?12:22}}>← Wszystkie kursy</Text></Pressable>
  <View style={{flexDirection:'row',gap:9,marginBottom:compact?12:18}}>
   <Pressable accessibilityRole="button" onPress={()=>router.replace(gift?{pathname:'/konto',params:{gift}}:'/konto')} style={{flex:1,backgroundColor:isCompanyLogin?'#f0f4fb':ink,padding:13,borderRadius:11,alignItems:'center'}}>
@@ -176,7 +176,7 @@ export default function AccountPage(){
    <Text style={{color:isCompanyLogin?'white':ink,fontWeight:'900',fontSize:13}}>Dla firm</Text>
   </Pressable>
  </View>
- <Text style={{fontSize:12,color:'#64748b',fontWeight:'800',marginBottom:8}}>{isCompanyLogin?'TRENERKI ACADEMY · DLA FIRM':'TRENERKI ACADEMY · TWOJE KONTO'}</Text>
+ <Text style={{fontSize:12,color:'#617386',fontWeight:'800',marginBottom:8}}>{isCompanyLogin?'TRENERKI ACADEMY · DLA FIRM':'TRENERKI ACADEMY · TWOJE KONTO'}</Text>
  <Text style={{fontSize:compact?26:30,fontWeight:'900',color:ink,marginBottom:compact?8:10}}>{heading}</Text>
  {!!activeEmail&&mode!=='new-password'&&<View style={{backgroundColor:'#eef3fc',borderWidth:1,borderColor:'#dbe5f4',borderRadius:13,padding:16,marginVertical:12}}>
    <Text style={{fontWeight:'800',color:ink}}>Twoja sesja nadal jest aktywna</Text>
@@ -185,7 +185,7 @@ export default function AccountPage(){
      <Text style={{color:'#fff',fontWeight:'800'}}>{isCompanyLogin?'Otwórz panel firmy →':gift?'Przejdź do prezentu →':course?'Kontynuuj do kursu →':'Otwórz Moje kursy →'}</Text>
    </Pressable>
    <Pressable accessibilityRole="button" onPress={()=>router.push('/moje-dyplomy')} style={{backgroundColor:'#edf2ff',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
-     <Text style={{color:'#224a9f',fontWeight:'800'}}>Moje dyplomy →</Text>
+     <Text style={{color:'#9A6D25',fontWeight:'800'}}>Moje dyplomy →</Text>
    </Pressable>
    <Pressable accessibilityRole="button" onPress={logout} style={{backgroundColor:'#f0f3f8',padding:13,borderRadius:10,alignItems:'center',marginTop:8}}>
      <Text style={{color:'#465569',fontWeight:'800'}}>Wyloguj się</Text>
@@ -201,20 +201,20 @@ export default function AccountPage(){
  {mode!=='reset'&&<Pressable onPress={()=>setShowPassword(v=>!v)} style={{alignSelf:'flex-end',paddingVertical:6,marginBottom:9}}><Text style={{color:ink,fontWeight:'700'}}>{showPassword?'Ukryj hasło':'Pokaż hasło'}</Text></Pressable>}
  {mode==='new-password'&&<TextInput style={input} placeholder="Powtórz nowe hasło" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry autoComplete="new-password"/>}
  {!!message&&<Text style={{color:'#264b92',backgroundColor:pale,padding:13,borderRadius:12,marginBottom:14}}>{message}</Text>}
- <Pressable onPress={submit} disabled={busy} style={{backgroundColor:'#245ddf',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'white',fontWeight:'800'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
+ <Pressable onPress={submit} disabled={busy} style={{backgroundColor:'#E7BB5B',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'#14263B',fontWeight:'900'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
  {mode!=='new-password'&&<Pressable onPress={()=>{setMode(mode==='register'?'login':'register');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{mode==='register'?'Mam już konto — zaloguj':'Utwórz nowe konto'}</Text></Pressable>}
  {mode==='login'&&<Pressable onPress={()=>{setMode('reset');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink}}>Nie pamiętam hasła</Text></Pressable>}
  <View style={{marginTop:17,marginBottom:6,gap:8}}>
   <Text style={{color:'#58677b',fontSize:12,lineHeight:20}}>TRENERKI oferuje autorskie kursy i autorskie dyplomy potwierdzające naukę. Dyplom można wpisać do CV jako szkolenie dodatkowe; nie jest kwalifikacją zawodową ani oficjalnym uprawnieniem.</Text>
   <View style={{flexDirection:'row',gap:17,flexWrap:'wrap'}}>
-   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/regulamin.html')}><Text style={{fontSize:12,color:'#245ddf',fontWeight:'900'}}>Regulamin</Text></Pressable>
-   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/prywatnosc.html')}><Text style={{fontSize:12,color:'#245ddf',fontWeight:'900'}}>Polityka prywatności</Text></Pressable>
-   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#245ddf',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/regulamin.html')}><Text style={{fontSize:12,color:'#A8741C',fontWeight:'900'}}>Regulamin</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/prywatnosc.html')}><Text style={{fontSize:12,color:'#A8741C',fontWeight:'900'}}>Polityka prywatności</Text></Pressable>
+   <Pressable onPress={()=>Linking.openURL(siteUrl+'/academy/certyfikaty.html')}><Text style={{fontSize:12,color:'#A8741C',fontWeight:'900'}}>Zasady dyplomów</Text></Pressable>
    <Pressable accessibilityRole="button" accessibilityLabel="Ustawienia plików cookie" onPress={()=>{
     if(typeof window!=='undefined'&&typeof (window as any).TrenerkiAds?.openSettings==='function')
      (window as any).TrenerkiAds.openSettings();
     else void Linking.openURL(siteUrl+'/academy/prywatnosc.html#s8');
-   }}><Text style={{fontSize:12,color:'#245ddf',fontWeight:'900'}}>Ustawienia cookies</Text></Pressable>
+   }}><Text style={{fontSize:12,color:'#A8741C',fontWeight:'900'}}>Ustawienia cookies</Text></Pressable>
   </View>
  </View>
  {isAdmin&&<Pressable accessibilityRole="button" onPress={()=>router.push('/admin')} style={{alignSelf:'center',padding:11,marginTop:15}}><Text style={{color:'#6b788d',fontSize:11}}>Staff</Text></Pressable>}
