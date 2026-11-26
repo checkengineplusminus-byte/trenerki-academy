@@ -18,6 +18,10 @@ for(const [name,viewport] of [['iphone',{width:390,height:844}],['desktop',{widt
    await new Promise(resolve=>setTimeout(resolve,2000));
    await route.continue();
   });
+  await ctx.route('https://upload.wikimedia.org/**',route=>route.fulfill({
+   status:200,contentType:'image/svg+xml',headers:{'access-control-allow-origin':'*'},
+   body:'<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1007"><rect width="1920" height="1007" fill="#edf1f5"/></svg>'
+  }));
   await page.route('**/rest/v1/**',route=>route.fulfill({status:503,contentType:'application/json',body:'[]'}));
   const r=await page.goto(base+'/academy/index.html',{waitUntil:'domcontentloaded'});
   assert.equal(r?.status(),200);
@@ -39,7 +43,31 @@ for(const [name,viewport] of [['iphone',{width:390,height:844}],['desktop',{widt
   const courseImages=page.locator('#course-cards img.card-photo');
   const missing=await courseImages.evaluateAll(nodes=>nodes.filter(img=>!img.getAttribute('src')).map(x=>x.dataset.coursePhoto));
   assert.deepEqual(missing,[],'No course may wait for a manifest before receiving its photo URL');
-  const size=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+  // Verify all six thumbnails after they enter the viewport (not just one).
+  const six=page.locator('#course-cards .course-card');
+  await courseImages.evaluateAll(nodes=>nodes.forEach(img=>{img.loading='eager'}));
+  await page.waitForFunction(()=>[...document.querySelectorAll('#course-cards img.card-photo')].length===6&&
+   [...document.querySelectorAll('#course-cards img.card-photo')].every(img=>img.complete&&img.naturalWidth>0),null,{timeout:20000});
+  const rendering=await six.evaluateAll(nodes=>nodes.map(card=>{
+    const img=card.querySelector('img.card-photo');
+    const media=card.querySelector('.card-media');
+    const rect=card.getBoundingClientRect();
+    return {id:card.dataset.courseId,opacity:getComputedStyle(img).opacity,mediaHeight:media.getBoundingClientRect().height,
+      cardHeight:rect.height,photoReady:img.complete&&img.naturalWidth>0};
+  }));
+  assert(rendering.every(c=>c.photoReady&&c.opacity==='1'),name+': blank course covers '+JSON.stringify(rendering));
+  if(name==='iphone')assert(rendering.every(c=>c.cardHeight<285),
+    'Mobile cards are too tall: '+JSON.stringify(rendering));
+  // The first visit shows a short featured list, but "Wszystkie" must reveal all offers.
+  assert.equal(await six.count(),6,'Exactly six featured cards by default');
+  await page.locator('.catalog-show-all').click();
+  assert.equal(await six.count(),83,'The full public catalogue must remain discoverable');
+  await page.locator('.category-tiles .category-tile').first().click();
+  assert.equal(await six.count(),9,'Construction filter must show its 9 relevant courses');
+  await page.locator('#chips .chip').first().click();
+  assert.equal(await six.count(),83,'Wszystkie filter must not hide courses');
+  await page.locator('.category-tiles .category-tile').first().click();
+    const size=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
   assert(size.scroll<=size.client+3,'No horizontal overflow');
   await page.screenshot({path:'/tmp/trenerki-course-photo-'+name+'.png',fullPage:true});
   console.log('✓ '+name+': photo remains readable while loading, becomes visible, no manifest dependency');
