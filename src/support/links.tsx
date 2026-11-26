@@ -23,6 +23,12 @@ export function HelpLink({children,href='/pomoc'}:{children:React.ReactNode;href
 }
 export function HelpFooter({compact=false}:{compact?:boolean}={}){
  const {width}=useWindowDimensions();
+ // Static HTML export has no real viewport: first render the same tree on the
+ // server and browser, then select the compact footer after hydration.
+ // Otherwise a desktop browser hydrates over the server's mobile variant.
+ const [hydrated,setHydrated]=React.useState(false);
+ React.useEffect(()=>{setHydrated(true)},[]);
+ if(Platform.OS==='web'&&!hydrated)return null;
  // Mobile layout must not rely on a separately deployed/cached stylesheet.
  // One unobtrusive row, always horizontally scrollable, never a multi-line card.
  if(Platform.OS==='web'&&width<640){
