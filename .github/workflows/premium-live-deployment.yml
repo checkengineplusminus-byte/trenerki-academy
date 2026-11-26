@@ -1,0 +1,37 @@
+name: TRENERKI — verify premium live deployment
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/premium-live-deployment.yml'
+      - 'public/academy/premium-theme.css'
+      - 'public/academy/index.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify_live_theme:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Verify real live homepage and premium stylesheet
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 16); do
+            html_file=$(mktemp)
+            css_file=$(mktemp)
+            homepage_status=$(curl -L -sS -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)
+            stylesheet_status=$(curl -L -sS -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css?v=20261126-gold' || true)
+            if [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] &&               grep -Fq 'premium-theme.css?v=20261126-gold' "$html_file" &&               grep -Fq 'Ucz się umiejętności, które wykorzystasz' "$html_file" &&               grep -Fq 'TRENERKI premium navy' "$css_file"; then
+              echo "LIVE PREMIUM DEPLOYMENT VERIFIED — attempt $attempt"
+              echo "Homepage status: $homepage_status; stylesheet status: $stylesheet_status"
+              rm -f "$html_file" "$css_file"
+              exit 0
+            fi
+            echo "Attempt $attempt: homepage $homepage_status / premium CSS $stylesheet_status; new version not confirmed"
+            rm -f "$html_file" "$css_file"
+            sleep 16
+          done
+          echo "::error::The live domain did not expose the premium design in the verification window. Check Expo deployment status and DNS/cache."
+          exit 1
