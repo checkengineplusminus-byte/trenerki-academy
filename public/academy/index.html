@@ -525,7 +525,7 @@ function updateCatalog(){
  const cats=["Wszystkie",...allCats];
  $('#chips').innerHTML=cats.map(x=>`<button class="chip ${filter===x?'active':''}" onclick="setFilter('${x}')">${esc(x)}</button>`).join('');
  const matchedIds=window.anielkaCatalogIds?.(query)||[];
- let result=publicCatalogCourses().filter(c=>(filter==='Wszystkie'||c.cat===filter)&&catalogCourseMatches(c,query));
+ let result=publicCatalogCourses().filter(c=>(filter==='Wszystkie'||c.cat===filter)&&(!query.trim()||catalogCourseMatches(c,query)||matchedIds.includes(c.id)));
  if(query.trim()&&matchedIds.length)result.sort((a,b)=>{
   const ap=matchedIds.indexOf(a.id),bp=matchedIds.indexOf(b.id);
   return (ap<0?999:ap)-(bp<0?999:bp);
