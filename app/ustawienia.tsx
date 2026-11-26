@@ -66,7 +66,12 @@ export default function AccountSettings() {
 
  const disabled = saving || normalizedName === savedName;
  return <ScrollView style={{ flex: 1, backgroundColor: '#F7F9FC' }} contentContainerStyle={{ padding: 20, maxWidth: 650, alignSelf: 'center', width: '100%', gap: 16, paddingBottom: 55 }}>
-  <Link href="/moje-kursy" replace style={{ color: '#A1762D', fontWeight: '800' }}>← Moje kursy</Link>
+  <View style={{flexDirection:'row',alignItems:'center',flexWrap:'wrap',gap:16}}>
+   <Link href="/moje-kursy" replace style={{color:'#9A6D25',fontWeight:'800'}}>← Moje kursy</Link>
+   <Pressable accessibilityRole="link" onPress={()=>router.push('/')}>
+    <Text style={{color:ink,fontWeight:'750'}}>Katalog kursów →</Text>
+   </Pressable>
+  </View>
   <Text accessibilityRole="header" style={{ fontSize: 30, fontWeight: '900', color: ink }}>Ustawienia konta</Text>
   {loading && <ActivityIndicator color={ink} accessibilityLabel="Wczytuję ustawienia konta" />}
   {!loading && savedName !== null && <View style={{ backgroundColor: 'white', borderColor: '#dbe8d9', borderWidth: 1, borderRadius: 14, padding: 18, gap: 11 }}>
@@ -79,15 +84,15 @@ export default function AccountSettings() {
     maxLength={120}
     value={name}
     onChangeText={value => { setName(value); setSaved(false); setError(''); }}
-    style={{ backgroundColor: 'white', borderColor: '#D3DFEA', borderWidth: 1, borderRadius: 10, color: ink, fontSize: 16, padding: 12 }}
+    style={{ backgroundColor: 'white', borderColor: '#b8d3b7', borderWidth: 1, borderRadius: 10, color: ink, fontSize: 16, padding: 12 }}
    />
-   <Text style={{ color: '#607388', lineHeight: 21 }}>Te dane będą podpowiadane przy rozpoczynaniu kolejnych egzaminów.</Text>
-   <Pressable accessibilityRole="button" disabled={disabled} onPress={() => void save()} style={{ backgroundColor: ink, opacity: disabled ? .5 : 1, borderRadius: 10, padding: 12, alignSelf: 'flex-start' }}>
-    <Text style={{ color: 'white', fontWeight: '800' }}>{saving ? 'Zapisuję…' : 'Zapisz zmiany'}</Text>
+   <Text style={{ color: '#5c7460', lineHeight: 21 }}>Te dane będą podpowiadane przy rozpoczynaniu kolejnych egzaminów.</Text>
+   <Pressable accessibilityRole="button" disabled={disabled} onPress={() => void save()} style={{ backgroundColor: '#E7BB5B', opacity: disabled ? .5 : 1, borderRadius: 10, padding: 12, alignSelf: 'flex-start' }}>
+    <Text style={{ color: '#14263B', fontWeight: '800' }}>{saving ? 'Zapisuję…' : 'Zapisz zmiany'}</Text>
    </Pressable>
-   {saved && <Text accessibilityLiveRegion="polite" style={{ color: '#9C712C', fontWeight: '700' }}>Zapisano imię i nazwisko.</Text>}
+   {saved && <Text accessibilityLiveRegion="polite" style={{ color: '#245c3c', fontWeight: '700' }}>Zapisano imię i nazwisko.</Text>}
   </View>}
-  {!!error && <Text accessibilityRole="alert" style={{ color: '#A52626' }}>{error}</Text>}
+  {!!error && <Text accessibilityRole="alert" style={{ color: '#a52626' }}>{error}</Text>}
   {!loading && savedName === null && !!error && <Pressable accessibilityRole="button" onPress={() => setReload(attempt => attempt + 1)}>
    <Text style={{ color: ink, fontWeight: '800' }}>Spróbuj ponownie</Text>
   </Pressable>}
