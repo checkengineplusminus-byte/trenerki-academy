@@ -494,9 +494,8 @@ function cardHTML(c){
    <p class="card-desc">${esc(c.short)}</p>
    <div class="card-foot">
     <span class="price">${money(c.price)}${c.price>0?' <small>/ kurs</small>':''}</span>
-    <a class="btn-inline" href="${courseHref}">Poznaj kurs</a>
+    <a class="btn-inline" href="${courseHref}">Zobacz program →</a>
    </div>
-   <button class="btn btn-dark btn-buy-card" onclick="startPurchase('${c.id}')">${c.price===0?'Odbierz za darmo':'Kup kurs →'}</button>
   </div>
  </article>`;
 }
@@ -535,11 +534,11 @@ function updateCatalog(){
  if(initial){
   const freeOrder=['excel-skroty','zaufany-wolontariusz','swiety-mikolaj'];
   const freeCourses=result.filter(c=>Number(c.price)===0).sort((a,b)=>freeOrder.indexOf(a.id)-freeOrder.indexOf(b.id));
-  const priorities=['ai-bez-tajemnic','ksiegowosc-od-podstaw'];
+  const priorities=['ai-bez-tajemnic','ksiegowosc-od-podstaw','ciesla-przygotowanie-czeladnicze'];
   const featured=result.filter(c=>Number(c.price)>0).sort((a,b)=>{
    const ai=priorities.indexOf(a.id),bi=priorities.indexOf(b.id);
    return (ai<0?999:ai)-(bi<0?999:bi);
-  }).slice(0,9);
+  }).slice(0,3);
   $('#course-cards').innerHTML=`<section class="catalog-category" aria-label="Darmowe kursy TRENERKI"><div class="catalog-category-head"><h3>Darmowe kursy na start</h3></div><div class="catalog-category-grid free-starter-grid">${freeCourses.map(cardHTML).join('')}</div></section><section class="catalog-category" aria-label="Wybrane kursy TRENERKI"><div class="catalog-category-head"><h3>Wybrane kursy online</h3></div><div class="catalog-category-grid">${featured.map(cardHTML).join('')}</div></section>`;
   return;
  }
