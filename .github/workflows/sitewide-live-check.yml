@@ -1,0 +1,61 @@
+name: TRENERKI — live legal and affiliate design
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sitewide-live-check.yml'
+      - 'public/academy/sitewide-premium.css'
+      - 'public/academy/regulamin.html'
+      - 'public/academy/program-afiliacyjny.html'
+      - 'public/academy/course-share.css'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  live_sitewide:
+    name: Verify navy-gold legal, partners and course pages on trenerki.com
+    runs-on: ubuntu-24.04
+    timeout-minutes: 9
+    steps:
+      - name: Verify real public deployment over HTTPS
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://trenerki.com"
+          for attempt in $(seq 1 20); do
+            tmp=$(mktemp -d)
+            get() { curl -fLsS --connect-timeout 6 --max-time 20 "$base$1" -o "$tmp/$2"; }
+            good=1
+            get '/academy/regulamin.html' regulation || good=0
+            get '/academy/prywatnosc.html' privacy || good=0
+            get '/academy/program-afiliacyjny.html' affiliate || good=0
+            get '/academy/regulamin-afiliacyjny.html' affiliate_terms || good=0
+            get '/academy/kontakt.html' contact || good=0
+            get '/academy/kursy/ciesla-przygotowanie-czeladnicze.html' course || good=0
+            get '/academy/kategorie/biznes-i-praca.html' category || good=0
+            get '/academy/sitewide-premium.css?v=20261126-sitewide1' theme || good=0
+            get '/academy/course-share.css?v=20261126-nav-v2' shared || good=0
+            if [ "$good" = 1 ] && \
+              grep -Fq 'class="ta-info-page"' "$tmp/regulation" && \
+              grep -Fq 'class="ta-info-page"' "$tmp/privacy" && \
+              grep -Fq 'class="ta-info-page"' "$tmp/contact" && \
+              grep -Fq 'class="ta-affiliate-page"' "$tmp/affiliate" && \
+              grep -Fq 'class="ta-affiliate-page"' "$tmp/affiliate_terms" && \
+              grep -Fq 'sitewide-premium.css?v=20261126-sitewide1' "$tmp/regulation" && \
+              grep -Fq 'sitewide-premium.css?v=20261126-sitewide1' "$tmp/affiliate" && \
+              grep -Fq 'body.ta-info-page' "$tmp/theme" && \
+              grep -Fq 'body.ta-affiliate-page' "$tmp/theme" && \
+              grep -Fq 'sitewide-premium.css?v=20261126-sitewide1' "$tmp/shared" && \
+              grep -Fq 'course-share.css?v=20261126-nav-v2' "$tmp/course" && \
+              grep -Fq 'course-share.css?v=20261126-nav-v1' "$tmp/category"; then
+                echo "LIVE SITEWIDE PREMIUM VERIFIED — attempt $attempt"
+                echo "Regulation, privacy, affiliate program, partner terms, contact and shared course CSS all serve the new theme."
+                rm -rf "$tmp"
+                exit 0
+            fi
+            echo "Attempt $attempt: live deployment not yet fully confirmed"
+            rm -rf "$tmp"
+            sleep 15
+          done
+          echo "::error::The live domain has not consistently served the new legal and affiliate styles."
+          exit 1
