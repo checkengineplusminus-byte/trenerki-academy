@@ -218,7 +218,7 @@ async function verify(name,viewport,isMobile){
   assert.deepEqual(prices.filter(c=>c.price===0).map(c=>c.slug).sort(),['excel-skroty','swiety-mikolaj','zaufany-wolontariusz']);
   assert.equal(Math.min(...prices.filter(c=>c.price>0).map(c=>c.price)),69);
   assert.equal(await page.locator('.category-tiles .category-tile').count(),6,'Six clickable category cards must appear on homepage');
-  assert.equal(await page.locator('#course-cards .course-card').count(),12,'Homepage should show twelve featured courses');
+  assert.equal(await page.locator('#course-cards .course-card').count(),6,'Homepage should show six curated courses');
   const freeCards=page.locator('#course-cards .free-starter-grid .course-card');
    assert.deepEqual(await freeCards.evaluateAll(nodes=>nodes.map(node=>node.dataset.courseId)),['excel-skroty','zaufany-wolontariusz','swiety-mikolaj'],'Free courses must appear together in the first catalogue row');
    assert.deepEqual(await freeCards.locator('.price').allTextContents(),['GRATIS','GRATIS','GRATIS']);
@@ -234,10 +234,11 @@ async function verify(name,viewport,isMobile){
    img.getAttribute('alt')===''&&img.loading==='lazy'&&
    getComputedStyle(img).objectFit==='contain'&&getComputedStyle(img).opacity==='1'),
    'The original Excel screenshot must render fully, crisply and without duplicate screen-reader text');
-  assert(await page.locator('#course-cards .btn-buy-card').evaluateAll(buttons=>buttons.every(button=>{
-   const card=button.closest('.course-card').getBoundingClientRect(), action=button.getBoundingClientRect();
-   return action.left>=card.left&&action.right<=card.right;
-  })),'Course purchase buttons must fit inside their cards');
+  assert.equal(await page.locator('#course-cards .btn-buy-card').count(),0,'Cards should present one clear action');
+   assert(await page.locator('#course-cards .card-foot .btn-inline').evaluateAll(links=>links.length===6&&links.every(link=>{
+    const card=link.closest('.course-card').getBoundingClientRect(),action=link.getBoundingClientRect();
+    return action.left>=card.left&&action.right<=card.right&&link.href.includes('/academy/');
+   })),'Every curated card must expose a clear programme link');
   assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'technologie-i-logistyka');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
   assert.equal(await page.locator('.excel-free-intro').count(),0,'No separate Excel hero banner');
@@ -248,7 +249,7 @@ async function verify(name,viewport,isMobile){
   await page.locator('.category-tiles .category-tile').nth(1).click();
   assert.equal(await page.locator('#course-cards .course-card').count(),25,'Craft category must show all twenty-five courses');
   await page.locator('#chips .chip').first().click();
-  assert.equal(await page.locator('#course-cards .course-card').count(),12,'All categories should return to featured discovery view');
+  assert.equal(await page.locator('#course-cards .course-card').count(),6,'All categories should return to curated discovery view');
   assert.equal(await page.locator('#course-search').count(),0,'Duplicate search field');
   assert.equal(await page.locator('#anielka-form').count(),0,'Secondary Anielka form');
   assert.equal(await page.locator('.anielka-examples').count(),0,'Hardcoded example prompts');
