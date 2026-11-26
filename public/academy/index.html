@@ -460,7 +460,14 @@ function courseCardMedia(c){
   return '<img class="card-photo" data-course-photo="ai-bez-tajemnic" src="/academy/assets/lesson-visual-ai-bez-tajemnic-001.svg" alt="" width="960" height="540" loading="lazy" decoding="async">';
  }
  const photoSlug=cardPhotoSlug(c.id);
- const file=coursePhotoFile(photoSlug);
+ // The most visible cards should never display an empty placeholder while the
+ // public photo manifest is being fetched asynchronously.
+ const immediate=({'excel-skroty':EXCEL_REAL_SCREENSHOT,
+   'ksiegowosc-od-podstaw':'ksiegowosc-od-podstaw.webp',
+   'autocad-skroty':'autocad-skroty.webp',
+   'zaufany-wolontariusz':'ongoing-wms.webp',
+   'swiety-mikolaj':'swiety-mikolaj.webp'})[c.id]||null;
+ const file=coursePhotoFile(photoSlug)||immediate;
  if(coursePhotos&&!file)return courseIllustration(c);
  const source=file?' src="'+esc(coursePhotoSrc(file))+'"':'';
  return `<img class="card-photo" data-course-photo="${esc(photoSlug)}"${source} alt="" width="960" height="540" loading="lazy" decoding="async">
