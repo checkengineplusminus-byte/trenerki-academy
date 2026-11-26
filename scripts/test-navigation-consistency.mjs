@@ -36,11 +36,16 @@ for(const relative of [
 }
 const home=read('academy/index.html');
 assert.match(home,/<details class="mobile-nav"/,'Mobile menu must be present');
+assert.match(home,/<details class="mobile-nav"[^>]*>[\s\S]*?<a href="\/firma">Dla firm<\/a>[\s\S]*?<\/details>/,'Mobile menu must contain the Dla firm route');
+assert.match(home,/<details class="mobile-nav"><summary>/,'Mobile menu summary must not always say Open');
 assert.match(home,/<a href="\/moje-kursy">Moje kursy<\/a>/,'Learner library must be reachable');
 assert.match(home,/<a href="\/konto">Moje konto<\/a>/,'Logged-in and logged-out users need account access');
 const navJS=read('academy/course-share.js');
 assert.match(navJS,/Mój profil.*\/konto/,'Standalone offers must link to profile');
 assert.match(navJS,/Moje kursy.*\/moje-kursy/,'Standalone offers must link to library');
+assert.match(navJS,/function initializeAcademyMobileMenu/,'Mobile dropdown must have accessible close behaviour');
+const premium=read('academy/premium-theme.css');
+assert.match(premium,/@media\(min-width:761px\) and \(max-width:1070px\)/,'Tablet header must switch to compact menu');
 const profile=readFileSync('app/konto.tsx','utf8');
 assert.match(profile,/Twój profil/,'Logged-in profile has own title');
 assert.match(profile,/\(!activeEmail\|\|mode==='new-password'\)/,'Login form must be hidden from active sessions');
