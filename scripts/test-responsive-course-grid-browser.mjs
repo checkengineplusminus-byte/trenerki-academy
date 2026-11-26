@@ -17,6 +17,7 @@ for(const config of cases){
   isMobile:config.name==='phone',hasTouch:config.name==='phone'});
  const page=await context.newPage();
  try{
+  await page.route('**/rest/v1/**',route=>route.fulfill({status:503,contentType:'application/json',body:'[]'}));
   const response=await page.goto(origin+'/academy/index.html',{waitUntil:'domcontentloaded',timeout:30000});
   assert.equal(response?.status(),200,'catalog route');
   await page.locator('#course-cards .course-card').first().waitFor();
