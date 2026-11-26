@@ -13,7 +13,7 @@
 <script defer src="/academy/google-ads.js?v=7f242c874905"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#102820" />
+<meta name="theme-color" content="#071A2B" />
 <meta name="description" content="Odkryj 80 kursów online po polsku: budownictwo, rzemiosło, Excel, AutoCAD, biznes, dom i rozwój. Poznaj program, cenę i ucz się w swoim tempie." />
 <meta name="author" content="TRENERKI Academy — założyciel Adrian Flaga" />
 <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -284,8 +284,9 @@
 .academy-footer__founder{margin:9px 0;font-size:12px;line-height:1.55;color:#69786d}.academy-footer__founder a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 </style>
 <link rel="stylesheet" href="/academy/brand-refresh.css?v=20261126" />
+<link rel="stylesheet" href="/academy/premium-theme.css?v=20261126-gold" />
 </head>
-<body><header class="header"><div class="wrap head-in"><a class="brand" href="#" onclick="goHome(event)" aria-label="TRENERKI Academy — strona główna"><span class="brand-mark">T.</span><span>TRENERKI <small>ACADEMY</small></span></a><details class="mobile-nav"><summary aria-label="Otwórz menu nawigacyjne"><span aria-hidden="true">☰</span> Menu</summary><nav aria-label="Menu mobilne" onclick="if(event.target.closest('a'))this.parentElement.open=false"><a href="#kursy" onclick="goHome(event,'kursy')">Przeglądaj kursy</a><a href="#jak-dziala" onclick="goHome(event,'jak-dziala')">Jak działa nauka</a><a href="#certyfikat" onclick="goHome(event,'certyfikat')">Dyplomy</a><a href="/moje-kursy">Moje kursy</a><a href="/konto">Zaloguj się</a><a href="/pomoc">Nie jesteś sam</a></nav></details><nav class="nav"><a href="#kursy" onclick="goHome(event,'kursy')">Kursy</a><a href="#jak-dziala" onclick="goHome(event,'jak-dziala')">Jak to działa</a><a href="#certyfikat" onclick="goHome(event,'certyfikat')">Dyplomy</a><a href="#moje-kursy" onclick="openLibrary(event)">Moje kursy</a></nav><div class="nav-end"><div class="anielka-nav-search"><span class="anielka-nav-avatar" aria-hidden="true">A.</span><span class="anielka-nav-greeting"><strong>Wyszukaj kurs</strong><small>Wpisz temat, którego chcesz się nauczyć</small></span><input id="anielka-question" type="search" aria-label="Zapytaj Anielkę, czego chcesz się nauczyć" aria-controls="anielka-peek anielka-output" autocomplete="off" enterkeyhint="search" maxlength="250" placeholder="Wpisz kurs lub temat…" /><div class="anielka-peek" id="anielka-peek" role="status" aria-live="polite"></div></div><div class="nav-actions"><a class="nav-help" href="/pomoc"><span class="nav-help-heart" aria-hidden="true">❤️</span><span class="nav-help-copy">Nie jesteś sam<small>Bezpłatna pomoc</small></span></a><a class="demo-tag" href="/konto" aria-label="Zaloguj się lub otwórz konto ucznia">MOJE KONTO ↗</a></div></div></div></header>
+<body><header class="header"><div class="wrap head-in"><a class="brand" href="#" onclick="goHome(event)" aria-label="TRENERKI Academy — strona główna"><span class="brand-mark">T.</span><span>TRENERKI <small>ACADEMY</small></span></a><details class="mobile-nav"><summary aria-label="Otwórz menu nawigacyjne"><span aria-hidden="true">☰</span> Menu</summary><nav aria-label="Menu mobilne" onclick="if(event.target.closest('a'))this.parentElement.open=false"><a href="#kursy" onclick="goHome(event,'kursy')">Przeglądaj kursy</a><a href="#jak-dziala" onclick="goHome(event,'jak-dziala')">Jak działa nauka</a><a href="#certyfikat" onclick="goHome(event,'certyfikat')">Dyplomy</a><a href="/moje-kursy">Moje kursy</a><a href="/konto">Zaloguj się</a><a href="/pomoc">Nie jesteś sam</a></nav></details><nav class="nav" aria-label="Nawigacja główna"><a href="#kursy" onclick="goHome(event,'kursy')">Kursy</a><a href="/firma">Dla firm</a><a href="#jak-dziala" onclick="goHome(event,'jak-dziala')">Jak to działa</a><a href="#certyfikat" onclick="goHome(event,'certyfikat')">Dyplomy</a></nav><div class="nav-end"><div class="anielka-nav-search"><span class="anielka-nav-avatar" aria-hidden="true">A.</span><span class="anielka-nav-greeting"><strong>Wyszukaj kurs</strong><small>Wpisz temat, którego chcesz się nauczyć</small></span><input id="anielka-question" type="search" aria-label="Zapytaj Anielkę, czego chcesz się nauczyć" aria-controls="anielka-peek anielka-output" autocomplete="off" enterkeyhint="search" maxlength="250" placeholder="Wpisz kurs lub temat…" /><div class="anielka-peek" id="anielka-peek" role="status" aria-live="polite"></div></div><div class="nav-actions"><a class="nav-help" href="/pomoc"><span class="nav-help-heart" aria-hidden="true">❤️</span><span class="nav-help-copy">Nie jesteś sam<small>Bezpłatna pomoc</small></span></a><a class="demo-tag" href="/konto" aria-label="Zaloguj się lub otwórz konto ucznia">Zaloguj się</a></div></div></div></header>
 <main id="app"></main>
 <footer class="footer academy-footer">
   <div class="wrap academy-footer__main">
@@ -466,18 +467,103 @@ function courseCardMedia(c){
  <template class="card-photo-fallback">${courseIllustration(c)}</template>`;
 }
 
+function categoryTileIcon(slug){
+ const paths={
+  "budownictwo":'<path d="M4 20h24M7 20V11l9-7 9 7v9M12 20v-7h8v7"/><path d="M3 11 16 2l13 9"/>',
+  "rzemioslo-i-hobby":'<path d="M6 5 27 26M26 6 5 27M8 2l5 5-6 6-5-5zM24 19l6 6-5 5-6-6z"/>',
+  "technologie-i-logistyka":'<rect x="4" y="5" width="24" height="18" rx="2"/><path d="M2 27h28M12 23v4m8-4v4"/>',
+  "biznes-i-praca":'<rect x="3" y="9" width="26" height="18" rx="3"/><path d="M11 9V5h10v4M3 17h26M14 17v3h4v-3"/>',
+  "rodzina-i-rozwoj":'<path d="M16 29S4 21 4 12a7 7 0 0 1 12-5 7 7 0 0 1 12 5c0 9-12 17-12 17z"/>',
+  "dom-i-codziennosc":'<path d="m3 14 13-11 13 11M7 12v17h18V12M13 29v-9h6v9"/>'
+ };
+ return '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">'+(paths[slug]||paths["dom-i-codziennosc"])+'</svg>';
+}
 function categoryTilesHTML(){
  return '<div class="category-tiles" aria-label="Wybierz temat nauki">'+CATEGORY_TILES.map(c=>
- '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" data-course-category="'+c.slug+'" onclick="setFilter(\''+c.name+'\');return false" aria-label="'+esc(c.name)+' — zobacz '+c.count+' kursów">'+
- '<span class="category-tile-icon" aria-hidden="true"><span class="category-tile-fallback">'+c.icon+'</span><img src="/academy/photos/'+c.photo+'.webp?v=20261112-h1" alt="" loading="lazy" decoding="async" width="140" height="140"></span><span class="category-tile-copy"><strong>'+esc(c.headline)+'</strong>'+
- '<small>'+esc(c.name)+' · '+c.count+' kursów</small><span>'+esc(c.sub)+'</span></span><b aria-hidden="true">↗</b></a>'
+  '<a href="/academy/kategorie/'+c.slug+'.html" class="category-tile" data-course-category="'+c.slug+'" onclick="setFilter(\\''+c.name+'\\');return false" aria-label="Pokaż kursy: '+esc(c.name)+'">'+
+  '<span class="category-tile-icon" aria-hidden="true">'+categoryTileIcon(c.slug)+'</span>'+
+  '<span class="category-tile-copy"><strong>'+esc(c.name)+'</strong><small>Zobacz kursy →</small></span></a>'
  ).join('')+'</div>';
 }
 
-function homeHTML(){return `<section class="hero"><div class="wrap hero-in"><div><div class="eyebrow"><i class="dot"></i> Praktyczne kursy online po polsku</div><h1>Nowe umiejętności.<br/><span>Praktyka od pierwszej lekcji.</span></h1><p class="hero-desc">Wybierz interesujący Cię temat, sprawdź program, przykłady ćwiczeń i cenę. Ucz się we własnym tempie, krok po kroku.</p><div class="hero-actions">${button('Przeglądaj kursy',`scrollToSection('kursy')`,'btn-dark')}${button('Zobacz, jak uczymy',`scrollToSection('jak-dziala')`,'btn-outline')}</div><div class="trust-strip"><span>Jasne ceny</span><span>Praktyczne ćwiczenia</span><span>Własne tempo nauki</span></div></div><div class="hero-art"><a class="hero-course-spotlight" id="hero-course-spotlight" href="/academy/kursy/zaufany-wolontariusz.html" aria-label="Odkryj kurs: Zaufany wolontariusz — GRATIS"><span class="spotlight-kicker">ODKRYJ KOLEJNY KURS</span><span class="spotlight-illustration" aria-hidden="true"><span class="spotlight-fallback">🤝</span><img class="spotlight-photo" src="/academy/photos/ongoing-wms.webp?v=20261112-h1" alt="" width="240" height="240" decoding="async"></span><strong class="spotlight-title">Zaufany wolontariusz</strong><span class="spotlight-pricing">GRATIS</span><span class="spotlight-cta">Zobacz kurs <span aria-hidden="true">↗</span></span><span class="spotlight-disclaimer">Przykładowy kurs — zobacz szczegóły przed wyborem.</span></a></div></div></section><section class="section" id="kursy"><div class="wrap"><div class="section-head"><div><div class="overline">Wybierz coś dla siebie</div><h2>Czego chcesz się nauczyć?</h2></div></div>${categoryTilesHTML()}<section class="anielka-finder" id="anielka-szukaj" aria-labelledby="anielka-title">
- <div class="anielka-finder-header"><h3 id="anielka-title">Znajdź kurs z Anielką</h3></div>
- <div id="anielka-output" class="anielka-output" role="status" aria-live="polite" aria-relevant="additions text"></div>
-</section><div class="filter-line"><div class="chips" id="chips"></div></div><nav class="catalog-quick-links" aria-label="Bezpośrednie odnośniki do kursów"><span>Znajdź kurs:</span><a href="/academy/kursy/ai-bez-tajemnic.html">AI bez tajemnic</a><a href="/academy/ksiegowosc-od-podstaw.html">Księgowość od podstaw</a></nav><p id="catalog-sync-note" role="status" aria-live="polite" style="font-size:12px;color:#627568;margin:0 0 14px" hidden></p><div class="cards" id="course-cards"></div></div></section><section class="section features" id="jak-dziala"><div class="wrap"><div class="section-head"><div><div class="overline">Co znajdziesz w kursie?</div><h2>Od „nie wiem jak” do „umiem to zrobić”.</h2></div></div><div class="feature-grid"><div class="feature"><div class="feature-ico">✎</div><h3>Najpierw rozumiesz, po co</h3><p>Bez długich wstępów. Na przykładach zobaczysz, gdzie przydaje się dana umiejętność i czego warto nauczyć się najpierw.</p></div><div class="feature"><div class="feature-ico">↗</div><h3>Sprawdzasz to w praktyce</h3><p>Czytasz, próbujesz, rozwiązujesz zadania i widzisz, do czego wrócić. Wiedza ma być czymś, z czego korzystasz, a nie tylko czymś, co zapamiętujesz.</p></div><div class="feature"><div class="feature-ico">☺</div><h3>Wybierasz własne tempo</h3><p>Jedna lekcja po pracy albo kilka w wolny dzień. Tam, gdzie kurs zapisuje postęp, wrócisz do swojego miejsca po zalogowaniu.</p></div></div></div></section><section class="section" id="certyfikat"><div class="wrap"><div class="cta-band"><div><div class="overline" style="color:#d1ed9d">TRENERKI ACADEMY</div><h2>Od pomysłu do pierwszej<br/>opanowanej umiejętności.</h2><p>Nie musisz od razu znać wszystkich odpowiedzi. Zajrzyj do programu, sprawdź, czego się nauczysz, i wybierz coś ważnego dla siebie. Najpierw liczy się wiedza i ćwiczenia. Autorskie dyplomy potwierdzają ukończenie nauki i egzaminu wewnętrznego, ale nie nadają kwalifikacji zawodowych.</p></div>${button('Zobacz, czego możesz się nauczyć →',`scrollToSection('kursy')`,'btn-lime')}</div></div></section>`}
+function homeHTML(){return `<section class="hero">
+ <div class="wrap hero-in">
+  <div class="hero-copy">
+   <div class="eyebrow"><i class="dot"></i> TRENERKI ACADEMY · PRAKTYCZNE KURSY ONLINE</div>
+   <h1>Ucz się umiejętności, które wykorzystasz <span>w pracy i w życiu.</span></h1>
+   <p class="hero-desc">Kursy po polsku, z przykładami, zadaniami i ćwiczeniami. Wybierz temat, poznaj program i ucz się we własnym tempie.</p>
+   <div class="hero-actions">
+    <a class="btn btn-dark" href="#kursy" onclick="scrollToSection('kursy');return false">Zobacz dostępne kursy <span aria-hidden="true">→</span></a>
+    <a class="btn btn-outline" href="#jak-dziala" onclick="scrollToSection('jak-dziala');return false">Jak wygląda nauka?</a>
+   </div>
+   <div class="trust-strip" aria-label="Co oferujemy"><span>Praktyczne ćwiczenia</span><span>Autorskie materiały</span><span>Jasne ceny przed zakupem</span></div>
+  </div>
+  <div class="hero-art">
+   <div class="hero-product-showcase">
+    <a class="hero-laptop" href="/academy/kursy/excel-skroty.html" aria-label="Otwórz darmowy kurs Excel — przykład ćwiczenia z arkuszem">
+     <div class="hero-laptop-screen">
+      <div class="hero-laptop-top"><span class="hero-laptop-logo">T. Trenerki<span>.com</span></span><small>Podgląd przykładowego ćwiczenia</small></div>
+      <div class="hero-laptop-body">
+       <div class="hero-laptop-side">
+        <span>EXCEL · OD PODSTAW</span>
+        <span>✓ Komórki i dane</span>
+        <span>✓ Formuły</span>
+        <span class="active">→ Zadanie praktyczne</span>
+        <span>○ Sprawdzenie wyniku</span>
+       </div>
+       <div class="hero-laptop-content">
+        <span class="hero-demo-kicker">ĆWICZENIE PRZYKŁADOWE</span>
+        <strong>Oblicz wartość zamówienia</strong>
+        <p>Sprawdź ilość, cenę jednostkową i sumę. Tak poznaje się formuły w praktyce.</p>
+        <table class="hero-sheet" aria-label="Przykład tabeli w arkuszu kalkulacyjnym">
+         <thead><tr><th>Pozycja</th><th>Ilość</th><th>Cena</th><th>Wartość</th></tr></thead>
+         <tbody><tr><td>Materiały</td><td>12</td><td>25</td><td>300</td></tr>
+         <tr><td>Usługa</td><td>3</td><td>120</td><td>360</td></tr>
+         <tr><td>Razem</td><td></td><td></td><td>660</td></tr></tbody>
+        </table>
+        <span class="hero-formula">=SUMA(D2:D3)</span>
+       </div>
+      </div>
+     </div>
+    </a>
+    <p class="hero-screen-note">Wizualizacja przykładowego ćwiczenia — nie zrzut ekranu z kursu.</p>
+   </div>
+   <a class="hero-course-spotlight" id="hero-course-spotlight" href="/academy/kursy/zaufany-wolontariusz.html" aria-label="Odkryj kurs Zaufany wolontariusz">
+    <span class="spotlight-kicker">ODKRYJ KURS</span>
+    <span class="spotlight-illustration" aria-hidden="true"><span class="spotlight-fallback">✦</span><img class="spotlight-photo" src="/academy/photos/ongoing-wms.webp?v=20261112-h1" alt="" width="240" height="240" decoding="async"></span>
+    <strong class="spotlight-title">Zaufany wolontariusz</strong>
+    <span class="spotlight-pricing">GRATIS</span>
+    <span class="spotlight-cta">Zobacz program →</span>
+    <span class="spotlight-disclaimer">Sprawdź program kursu przed wyborem.</span>
+   </a>
+  </div>
+ </div>
+</section>
+<section class="section" id="kursy"><div class="wrap">
+ <div class="section-head"><div><div class="overline">ODKRYJ SWÓJ KIERUNEK</div><h2>Wybierz kategorię kursów</h2><p>Wszystkie dostępne dziedziny w jednym miejscu.</p></div></div>
+ ${categoryTilesHTML()}
+ <section class="anielka-finder" id="anielka-szukaj" aria-labelledby="anielka-title">
+  <div class="anielka-finder-header"><h3 id="anielka-title">Znajdź kurs z Anielką</h3></div>
+  <div id="anielka-output" class="anielka-output" role="status" aria-live="polite" aria-relevant="additions text"></div>
+ </section>
+ <div class="filter-line"><div class="chips" id="chips"></div></div>
+ <nav class="catalog-quick-links" aria-label="Bezpośrednie odnośniki do kursów"><span>Polecane tematy:</span><a href="/academy/kursy/ai-bez-tajemnic.html">AI bez tajemnic</a><a href="/academy/ksiegowosc-od-podstaw.html">Księgowość od podstaw</a></nav>
+ <p id="catalog-sync-note" role="status" aria-live="polite" style="font-size:12px;color:#68788b;margin:0 0 14px" hidden></p>
+ <div class="cards" id="course-cards"></div>
+</div></section>
+<section class="section features" id="jak-dziala"><div class="wrap">
+ <div class="section-head"><div class="overline">JAK UCZYMY</div><h2>Teoria, przykład, samodzielne zadanie.</h2></div>
+ <div class="feature-grid">
+  <div class="feature"><div class="feature-ico" aria-hidden="true">01</div><h3>Poznaj podstawy</h3><p>Wyjaśnienia bez zbędnego żargonu. Zaczniesz od tego, co naprawdę trzeba zrozumieć.</p></div>
+  <div class="feature"><div class="feature-ico" aria-hidden="true">02</div><h3>Sprawdź na przykładzie</h3><p>Zobaczysz zastosowania umiejętności w pracy lub codziennych sytuacjach.</p></div>
+  <div class="feature"><div class="feature-ico" aria-hidden="true">03</div><h3>Wykonaj ćwiczenie</h3><p>Uczysz się aktywnie, rozwiązując zadania i wracając do materiału we własnym tempie.</p></div>
+ </div>
+</div></section>
+<section class="section" id="certyfikat"><div class="wrap"><div class="cta-band">
+ <div><div class="overline">TRENERKI ACADEMY</div><h2>Najważniejsze jest to,<br/>co potrafisz zrobić.</h2>
+ <p>Sprawdź zawartość kursu i wybierz praktyczne umiejętności dla siebie. Autorskie dyplomy dokumentują ukończenie odpowiedniego programu i egzaminu wewnętrznego — nie są państwowymi kwalifikacjami zawodowymi.</p></div>
+ <a class="btn btn-lime" href="#kursy" onclick="scrollToSection('kursy');return false">Przeglądaj kursy →</a>
+</div></div></section>`}
 
 function cardHTML(c){
  const category=CATEGORY_TILES.find(tile=>tile.name===c.cat)?.slug||'';
@@ -534,7 +620,7 @@ function updateCatalog(){
  if(initial){
   const freeOrder=['excel-skroty','zaufany-wolontariusz','swiety-mikolaj'];
   const freeCourses=result.filter(c=>Number(c.price)===0).sort((a,b)=>freeOrder.indexOf(a.id)-freeOrder.indexOf(b.id));
-  const priorities=['ai-bez-tajemnic','ksiegowosc-od-podstaw','ciesla-przygotowanie-czeladnicze'];
+  const priorities=['ai-bez-tajemnic','ksiegowosc-od-podstaw','autocad-skroty'];
   const featured=result.filter(c=>Number(c.price)>0).sort((a,b)=>{
    const ai=priorities.indexOf(a.id),bi=priorities.indexOf(b.id);
    return (ai<0?999:ai)-(bi<0?999:bi);
