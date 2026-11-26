@@ -9,12 +9,18 @@ on:
       - 'app/firma.tsx'
       - 'app/ustawienia.tsx'
       - 'scripts/test-sitewide-premium*.mjs'
+      - 'scripts/test-public-site-navigation.mjs'
+      - 'app/_layout.tsx'
+      - 'src/support/links.tsx'
       - '.github/workflows/sitewide-premium.yml'
   push:
     branches: [main]
     paths:
       - 'public/academy/**'
       - 'scripts/test-sitewide-premium*.mjs'
+      - 'scripts/test-public-site-navigation.mjs'
+      - 'app/_layout.tsx'
+      - 'src/support/links.tsx'
       - '.github/workflows/sitewide-premium.yml'
   workflow_dispatch:
 permissions:
@@ -30,6 +36,7 @@ jobs:
         with:
           node-version: '22'
       - run: node scripts/test-sitewide-premium.mjs
+      - run: node scripts/test-public-site-navigation.mjs
   visual_public:
     name: Real mobile and desktop screenshots for legal, affiliate and course pages
     runs-on: ubuntu-24.04
