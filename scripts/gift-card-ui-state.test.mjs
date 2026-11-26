@@ -210,7 +210,7 @@ for(const sample of samples){
  activeUser={...user,user_metadata:{...signUps.at(-1).options.data}};
  const confirmed=createScreen('app/konto.tsx');await confirmed.flush();
  assert.equal(confirmed.navigation.length,0,'an existing session must wait for the continuation button');
- await confirmed.press('Przejdź do prezentu →');
+ await confirmed.press('Otwórz Moje kursy →');
  assert.deepEqual(confirmed.navigation.at(-1),{method:'replace',to:{pathname:'/prezent',params:{code:sample.canonical}}},'bare confirmation URL must recover the saved gift');
  assert.equal(metadataUpdates.at(-1).data.pending_gift,null,'consumed navigation metadata must be cleared');
  const confirmedGift=createScreen('app/prezent.tsx',{code:sample.canonical});await confirmedGift.flush();
