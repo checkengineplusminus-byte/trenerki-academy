@@ -27,8 +27,11 @@ async function testViewport(name,width,height,mobile){
   assert.equal(await page.locator('#course-cards .btn-buy-card').count(),0,'Each card has only a clear program link');
   assert.equal(await page.locator('#course-cards .btn-inline').count(),6);
   assert.equal(await page.locator('#anielka-question').count(),1,'Exactly one catalog search');
-  const colors=await page.locator('.header').evaluate(el=>getComputedStyle(el).backgroundColor);
-  assert.notEqual(colors,'rgba(0, 0, 0, 0)','Header must have an opaque premium background');
+  const headerPaint=await page.locator('.header').evaluate(el=>{
+   const style=getComputedStyle(el);return {image:style.backgroundImage,color:style.backgroundColor};
+  });
+  assert(headerPaint.image.includes('gradient')||headerPaint.color!=='rgba(0, 0, 0, 0)',
+   'Header must have an opaque premium background');
   const primary=await page.locator('.hero .btn-dark').evaluate(el=>getComputedStyle(el).color);
   assert.equal(primary,'rgb(23, 35, 53)','Gold CTA must use legible dark text');
   if(mobile){
