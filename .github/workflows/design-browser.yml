@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/design-browser.yml'
       - 'scripts/browser-smoke.mjs'
+      - 'scripts/premium-launch-smoke.mjs'
       - 'public/academy/brand-refresh.css'
       - 'public/academy/index.html'
       - 'public/academy/support-footer.css'
@@ -42,12 +43,12 @@ jobs:
         run: |
           python3 -m http.server 8787 --directory /tmp/trenerki-redesign >/tmp/trenerki-ui-http.log 2>&1 &
           sleep 2
-          node scripts/browser-smoke.mjs http://127.0.0.1:8787
+          node scripts/premium-launch-smoke.mjs http://127.0.0.1:8787
       - name: Preserve screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: trenerki-redesign-screenshots
-          path: /tmp/trenerki-*.png
+          name: trenerki-premium-launch-screenshots
+          path: /tmp/trenerki-premium-*.png
           if-no-files-found: ignore
           retention-days: 7
