@@ -571,3 +571,8 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
   grid-template-columns:90px minmax(0,1fr)!important;
  }
 }
+
+/* Genuine CC0 Excel screenshot must never be cropped, including on desktop. */
+#kursy .catalog-category-grid .card-media img.card-photo[data-course-photo="excel-skroty"]{
+ object-fit:contain!important;background-color:#F5F8FC!important
+}
