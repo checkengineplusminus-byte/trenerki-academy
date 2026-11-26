@@ -100,7 +100,7 @@ async function verify(name,viewport,isMobile){
   assert(await page.locator('#hero-course-spotlight').evaluate(card=>{
    const title=card.querySelector('.spotlight-title')?.getBoundingClientRect();
    const photo=card.querySelector('.spotlight-illustration')?.getBoundingClientRect();
-   return title&&photo&&(title.right<=photo.left+3||title.bottom<=photo.top||title.top>=photo.bottom);
+   return title&&photo&&(title.right<=photo.left+3||photo.right<=title.left+3||title.bottom<=photo.top||title.top>=photo.bottom);
   }),'The rotating course photo must not overlap its title');
   const field=page.locator('#anielka-question');
   const help=page.locator('header .nav-help');
