@@ -13,7 +13,7 @@ const chapters=syllabus.chapters as Chapter[];
 const levels=['Wszystkie','Podstawy','Praktyka','Zaawansowane'];
 const categories=['Wszystkie',...new Set(allFunctions.map(item=>item.category))];
 const normalize=(text:string)=>text.toLocaleLowerCase('pl-PL').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ł/g,'l');
-const ink='#193d2c',muted='#4c6756',outline='#cbded0';
+const ink='#142B42',muted='#52697F',outline='#D5E1EC';
 const link=(url:string)=>void Linking.openURL(url);
 
 export default function ExcelMasterGuide({lessonNo=0}:{lessonNo?:number}){
@@ -30,25 +30,25 @@ export default function ExcelMasterGuide({lessonNo=0}:{lessonNo?:number}){
  ),[category,query]);
  const chosen=chapters.find(c=>c.id===openChapter);
  const pill=(selected:boolean)=>({minHeight:40,paddingHorizontal:11,paddingVertical:8,borderRadius:9,borderWidth:1,
-  borderColor:selected?'#559671':outline,backgroundColor:selected?'#d9ecdd':'white'} as const);
+  borderColor:selected?'#A17A3A':outline,backgroundColor:selected?'#FEF3DB':'white'} as const);
  const sectionHeading={color:ink,fontSize:mobile?17:19,fontWeight:'900' as const};
- return <View testID="excel-master-guide" style={{borderWidth:1,borderColor:'#bfd6c7',borderRadius:17,backgroundColor:'#f3f8f3',marginVertical:14,overflow:'hidden'}}>
+ return <View testID="excel-master-guide" style={{borderWidth:1,borderColor:'#CADBEA',borderRadius:17,backgroundColor:'#FFFFFF',marginVertical:14,overflow:'hidden'}}>
   <Pressable accessibilityRole="button" accessibilityState={{expanded}} onPress={()=>setExpanded(v=>!v)}
-   style={{padding:mobile?13:19,backgroundColor:'#e2f0e2',gap:8,minHeight:68}}>
-   <Text style={{fontSize:11,fontWeight:'900',color:'#427657'}}>TRENERKI · PODRĘCZNIK EXCEL · SKRÓTY, FUNKCJE, PRAKTYKA</Text>
-   <Text style={{fontSize:mobile?20:23,fontWeight:'900',color:ink}}>Excel krok po kroku — od pierwszej komórki do raportu PDF</Text>
+   style={{padding:mobile?13:19,backgroundColor:'#EDF3FA',gap:8,minHeight:68}}>
+   <Text style={{fontSize:11,fontWeight:'900',color:'#987332'}}>TRENERKI · PODRĘCZNIK EXCEL · SKRÓTY, FUNKCJE, PRAKTYKA</Text>
+   <Text style={{fontSize:mobile?20:24,fontWeight:'900',color:ink}}>Excel krok po kroku — od pierwszej komórki do raportu PDF</Text>
    <Text style={{fontSize:13,lineHeight:21,color:muted}}>39 dodatkowych rozdziałów, atlas 70 skrótów i indeks 514 funkcji. 66 funkcji ma rozpisane argumenty, przykład, wynik i ćwiczenie; pozostałe mają opis i odsyłacz do dokumentacji Microsoft. Nie zmieniamy postępów 30 zaliczanych lekcji.</Text>
    <Text style={{fontSize:12,lineHeight:19,color:muted}}>To niezależny kurs TRENERKI, a nie oficjalne szkolenie ani certyfikacja Microsoft. Część operacji wykonujesz w prawdziwym Excelu; szkoleniowy symulator odtwarza tylko wybrane funkcje.</Text>
-   <Text style={{color:'#256347',fontWeight:'900',fontSize:14}}>{expanded?'Zwiń podręcznik i wróć do lekcji ▴':'Otwórz szczegółowy podręcznik i wyszukiwarkę funkcji ▾'}</Text>
+   <Text style={{color:'#1C5681',fontWeight:'900',fontSize:14}}>{expanded?'Zwiń podręcznik i wróć do lekcji ▴':'Otwórz szczegółowy podręcznik i wyszukiwarkę funkcji ▾'}</Text>
   </Pressable>
   <View style={{paddingHorizontal:mobile?12:17,paddingTop:5,flexDirection:'row',flexWrap:'wrap',gap:8}}>
    <Pressable testID="excel-shortcuts-open-button" accessibilityRole="button" onPress={()=>{setExpanded(true);setTab('shortcuts')}}
-    style={{backgroundColor:'#dcefe1',borderColor:'#a9d2b5',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
-    <Text style={{color:'#214e37',fontSize:13,fontWeight:'900'}}>Pokaż 70 skrótów klawiaturowych</Text>
+    style={{backgroundColor:'#EAF2FB',borderColor:'#C7D8EA',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
+    <Text style={{color:'#1A4263',fontSize:13,fontWeight:'900'}}>Pokaż 70 skrótów klawiaturowych</Text>
    </Pressable>
    <Pressable testID="excel-functions-open-button" accessibilityRole="button" onPress={()=>{setExpanded(true);setTab('functions')}}
-    style={{backgroundColor:'#dcefe1',borderColor:'#a9d2b5',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
-    <Text style={{color:'#214e37',fontSize:13,fontWeight:'900'}}>Pokaż wszystkie 514 funkcji</Text>
+    style={{backgroundColor:'#EAF2FB',borderColor:'#C7D8EA',borderWidth:1,padding:12,borderRadius:9,minHeight:44}}>
+    <Text style={{color:'#1A4263',fontSize:13,fontWeight:'900'}}>Pokaż wszystkie 514 funkcji</Text>
    </Pressable>
   </View>
   <Pressable accessibilityRole="link" accessibilityLabel="Otwórz prawdziwy Microsoft Excel w przeglądarce"
@@ -75,16 +75,16 @@ export default function ExcelMasterGuide({lessonNo=0}:{lessonNo?:number}){
     <View style={{gap:7}}>{visibleChapters.map(c=>
      <Pressable key={c.id} accessibilityRole="button" accessibilityState={{expanded:openChapter===c.id}}
       onPress={()=>setOpenChapter(prev=>prev===c.id?null:c.id)}
-      style={{padding:12,minHeight:44,borderWidth:1,borderColor:openChapter===c.id?'#5f9c72':outline,borderRadius:10,backgroundColor:openChapter===c.id?'#e4f1e5':'white'}}>
+      style={{padding:12,minHeight:44,borderWidth:1,borderColor:openChapter===c.id?'#D4B574':outline,borderRadius:10,backgroundColor:openChapter===c.id?'#FFF6E4':'white'}}>
       <Text style={{fontSize:13,fontWeight:'900',color:ink}}>{c.id}. {c.title} {openChapter===c.id?'▴':'▾'}</Text>
       <Text style={{fontSize:11,color:muted,marginTop:3}}>{c.level}</Text>
      </Pressable>)}</View>
     {chosen&&visibleChapters.some(c=>c.id===chosen.id)&&<View testID="excel-master-chapter" style={{backgroundColor:'white',borderWidth:1,borderColor:outline,borderRadius:12,padding:mobile?13:17,gap:11}}>
      <Text style={sectionHeading}>{chosen.id}. {chosen.title}</Text>
      <Text style={{fontSize:14,lineHeight:24,color:muted}}>{chosen.explanation}</Text>
-     <Text style={{fontSize:13,fontWeight:'900',color:'#235a38'}}>Wykonaj krok po kroku</Text>
+     <Text style={{fontSize:13,fontWeight:'900',color:'#1A527A'}}>Wykonaj krok po kroku</Text>
      {chosen.steps.map((step,i)=><Text key={i} style={{fontSize:13,lineHeight:22,color:ink}}>{i+1}. {step}</Text>)}
-     <View style={{backgroundColor:'#f0f7ee',padding:11,borderRadius:8,gap:5}}>
+     <View style={{backgroundColor:'#EDF4FA',padding:11,borderRadius:8,gap:5}}>
       <Text style={{fontSize:12,fontWeight:'900',color:ink}}>Przykład z oczekiwanym wynikiem</Text>
       <Text style={{fontSize:13,lineHeight:21,color:muted}}>{chosen.example}</Text>
      </View>
