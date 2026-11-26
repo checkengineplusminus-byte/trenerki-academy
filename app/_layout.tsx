@@ -102,6 +102,26 @@ function SiteAccountHeader({signedIn}:{signedIn:boolean}){
  </View>;
 }
 
+// Help is intentionally outside AccountLayout so visitors can open it immediately.
+// Read the real session rather than always showing a misleading 'Zaloguj się'
+// action to learners who are already authenticated.
+function HelpHeader(){
+ const [signedIn,setSignedIn]=useState<boolean|null>(null);
+ useEffect(()=>{
+  let active=true;
+  const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
+   if(active)setSignedIn(Boolean(session?.user));
+  });
+  void supabase.auth.getSession().then(({data})=>{
+   if(active)setSignedIn(Boolean(data.session?.user));
+  }).catch(()=>{if(active)setSignedIn(false)});
+  return()=>{active=false;subscription.unsubscribe()};
+ },[]);
+ // Keep 'Mój profil' while auth is unresolved, rather than briefly telling
+ // a signed-in learner to sign in again.
+ return <SiteAccountHeader signedIn={signedIn!==false}/>;
+}
+
 /**
  * Route visibility is a convenience, NOT the authorization boundary.
  * /admin always renders only its access-check screen until the verified
@@ -119,7 +139,7 @@ export default function RootLayout(){
   const script=document.createElement('script');script.src='/academy/google-ads.js';script.async=true;
   script.setAttribute('data-trenerki-google-ads','true');document.head.appendChild(script);
  },[]);
- if(pathname==='/pomoc')return <View style={{flex:1}}><SiteAccountHeader signedIn={false}/><View style={{flex:1}}><Slot/></View></View>;
+ if(pathname==='/pomoc')return <View style={{flex:1}}><HelpHeader/><View style={{flex:1}}><Slot/></View></View>;
  return <AccountLayout/>;
 }
 
