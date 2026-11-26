@@ -42,11 +42,12 @@ type Lesson={
 type NoteState=Record<string,string>;
 type AttemptMode='case'|'construction'|'keyboard'|'carpentry'|'stage';
 type Checks=Partial<Record<AttemptMode,boolean>>;
-const ink='#183c2b',secondary='#526f5c',line='#dfeada';
+const ink='#14263B',secondary='#53677D',line='#DCE4ED';
 const cadWorkshopLessons=new Set([0,4,5,6,9,10,11,12,13,15,16,17,18,19,20,22,23,24,26,27,28,29]);
 export default function Learning(){
  const {course,lesson:lessonParam,review:reviewParam}=useLocalSearchParams<{course?:string;lesson?:string;review?:string}>(),slug=typeof course==='string'?course:'',router=useRouter();
  const {width:screenWidth}=useWindowDimensions(),mobile=screenWidth<640;
+ const desktop=Platform.OS==='web'&&screenWidth>=1100;
  const scrollRef=React.useRef<React.ComponentRef<typeof ScrollView>>(null),exerciseYRef=React.useRef(0),carpentryYRef=React.useRef(0),workshopYRef=React.useRef(0),coachYRef=React.useRef(0);
  const pendingWorkshopRef=React.useRef(false);
  const pendingExcelHomeworkRef=React.useRef(false);
@@ -297,32 +298,39 @@ export default function Learning(){
    </Pressable>}
   </View>;
  }
- return <ScrollView ref={scrollRef} style={{backgroundColor:'#fbfcf7',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:860,alignSelf:'center',width:'100%'}}>
-  <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#376143',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
+ return <ScrollView ref={scrollRef} style={{backgroundColor:'#F7F9FC',flex:1}} contentContainerStyle={{paddingHorizontal:mobile?12:22,paddingTop:mobile?15:25,paddingBottom:90,maxWidth:desktop?1920:1000,alignSelf:'center',width:'100%'}}>
+  <View style={{flexDirection:desktop?'row':'column',alignItems:'flex-start',gap:desktop?28:0}}>
+   {desktop&&<View testID="desktop-course-sidebar" style={{width:290,flexShrink:0,backgroundColor:'white',borderColor:line,borderWidth:1,borderRadius:14,padding:16,gap:8}}>
+    <Text style={{fontSize:17,fontWeight:'900',color:ink}}>Plan kursu</Text>
+    <Text style={{fontSize:13,color:secondary,marginBottom:8}}>{courseInfo.title}</Text>
+    {items.map((item,i)=><Pressable key={item.lesson_no} accessibilityRole="button" disabled={saving||!canVisit(item.lesson_no)} onPress={()=>changeModule(item.lesson_no)} style={{padding:10,borderRadius:8,backgroundColor:item.lesson_no===module?ink:'#EFF3F8',opacity:canVisit(item.lesson_no)?1:0.5}}><Text style={{fontSize:13,lineHeight:19,color:item.lesson_no===module?'white':ink,fontWeight:item.lesson_no===module?'800':'500'}}>{done.includes(item.lesson_no)?'✓ ':!canVisit(item.lesson_no)?'🔒 ':''}{i+1}. {item.title_pl}</Text></Pressable>)}
+   </View>}
+   <View testID="course-main-content" style={{flex:desktop?1:undefined,width:desktop?undefined:'100%',minWidth:0}}>
+  <Pressable onPress={()=>router.push('/moje-kursy')} accessibilityRole="button"><Text style={{color:'#2C587B',fontWeight:'800'}}>← Moje kursy</Text></Pressable>
   <Text style={{fontSize:mobile?24:31,fontWeight:'900',color:ink,marginTop:12,marginBottom:9}}>{!busy&&courseInfo.slug===slug&&index===0?courseInfo.title:'Moja nauka'}</Text>
   {busy&&<ActivityIndicator size="large"/>}
   {!!error&&<View style={{backgroundColor:'#fff2e8',padding:17,borderRadius:12,gap:12,marginVertical:10}}>
    <Text accessibilityRole="alert" style={{color:'#934330',fontSize:15,lineHeight:23}}>{error}</Text>
    <Pressable accessibilityRole="button" onPress={()=>setReload(v=>v+1)}
-    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#193e2d',borderRadius:11,paddingHorizontal:13}}>
+    style={{minHeight:45,justifyContent:'center',alignItems:'center',backgroundColor:'#14263B',borderRadius:11,paddingHorizontal:13}}>
     <Text style={{color:'white',fontWeight:'900'}}>Spróbuj ponownie — bez wylogowania</Text>
    </Pressable>
   </View>}
   {!!items.length&&<>
    {!busy&&courseInfo.slug===slug&&index===0&&slug!=='autocad-skroty'&&<CourseIntroPhoto key={slug} slug={slug} title={courseInfo.title}/>}
-   <View style={{backgroundColor:'#eaf3e4',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
+   <View style={{backgroundColor:'#EFF3F8',padding:mobile?12:16,borderRadius:14,marginTop:10,marginBottom:10}}>
     <View style={{flexDirection:'row',justifyContent:'space-between',gap:10,alignItems:'center'}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{reviewMode?'Powtórka kursu · lekcja '+(index+1)+'/'+items.length:'Postęp · '+completed+'/'+items.length+' lekcji'}</Text>
      <Text style={{fontSize:reviewMode?12:17,fontWeight:'900',color:ink}}>{reviewMode?'Dyplom zachowany':progress+'%'}</Text>
     </View>
-    {!reviewMode&&<View style={{height:8,backgroundColor:'#cfddca',borderRadius:9,marginTop:9,overflow:'hidden'}}>
-     <View style={{height:8,width:progress+'%',backgroundColor:'#7cae6e'}}/>
+    {!reviewMode&&<View style={{height:8,backgroundColor:'#DCE4ED',borderRadius:9,marginTop:9,overflow:'hidden'}}>
+     <View style={{height:8,width:progress+'%',backgroundColor:'#C99A43'}}/>
     </View>}
     <Pressable testID="start-course-from-beginning" accessibilityRole="button" disabled={saving} onPress={startFromBeginning}
-      style={{marginTop:12,paddingVertical:11,paddingHorizontal:13,backgroundColor:'white',borderRadius:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#bad4b6'}}>
+      style={{marginTop:12,paddingVertical:11,paddingHorizontal:13,backgroundColor:'white',borderRadius:9,alignSelf:'flex-start',borderWidth:1,borderColor:'#DCE4ED'}}>
       <Text style={{fontWeight:'900',color:ink}}>↺ Zacznij od początku</Text>
     </Pressable>
-    {reviewMode&&<Text style={{fontSize:12,lineHeight:19,color:'#49684c',marginTop:5}}>Powtarzasz materiały. Postęp i dyplom nie są kasowane.</Text>}
+    {reviewMode&&<Text style={{fontSize:12,lineHeight:19,color:'#53677D',marginTop:5}}>Powtarzasz materiały. Postęp i dyplom nie są kasowane.</Text>}
    </View>
    {lessonNavigation('top')}
    {slug==='autocad-skroty'&&<AutoCADReferenceGuide/>}
@@ -359,7 +367,7 @@ export default function Learning(){
    </View>}
    {index===0&&!!study&&<CourseStudyPlan key={slug} project={study}/>}
    <Pressable onPress={()=>setShowProgram(v=>!v)} accessibilityRole="button"
-    style={{backgroundColor:'#f1f6ed',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#d6e7d0',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
+    style={{backgroundColor:'#EFF3F8',paddingVertical:12,paddingHorizontal:15,borderRadius:12,marginBottom:12,borderWidth:1,borderColor:'#DCE4ED',flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:8,minHeight:48}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:14}}>{showProgram?'Zwiń plan lekcji ↑':'Plan lekcji ↓'}</Text>
      <Text style={{color:secondary,fontSize:12}}>Lekcja {index+1}/{items.length}</Text>
    </Pressable>
@@ -384,10 +392,10 @@ export default function Learning(){
      {name:slug==='kowal-tradycja'?'DZIAŁ I · WARSZTAT I PODSTAWY':'DZIAŁ I · PODSTAWY',about:slug==='kowal-tradycja'?'Lekcje 1–10 · BHP, stal, rysunek techniczny, pomiary i narzędzia':'Lekcje 1–10 · poznaj pojęcia, interfejs i pierwsze kroki',list:items.slice(0,10)},
      {name:slug==='kowal-tradycja'?'DZIAŁ II · TECHNIKI KUCIA':'DZIAŁ II · PRAKTYKA',about:slug==='kowal-tradycja'?'Lekcje 11–20 · wydłużanie, spęcznianie, gięcie, przebijanie, łączenie i obróbka cieplna':'Lekcje 11–20 · ćwiczenia, scenariusze i kontrola wyniku',list:items.slice(10,20)},
      {name:slug==='kowal-tradycja'?'DZIAŁ III · PROJEKTY I NAPRAWY':'DZIAŁ III · ZAAWANSOWANE',about:slug==='kowal-tradycja'?'Lekcje 21–30 · wyroby, bryczki, podkuwnictwo i projekt końcowy':'Lekcje 21–30 · samodzielne zadania i decyzje',list:items.slice(20,30)}
-   ]:[{name:'DOSTĘPNE LEKCJE',about:`${items.length} lekcji i ćwiczenia praktyczne`,list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#dfe9dc',borderRadius:13,padding:13,gap:9}}>
+   ]:[{name:'DOSTĘPNE LEKCJE',about:`${items.length} lekcji i ćwiczenia praktyczne`,list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#DCE4ED',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
-     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} disabled={saving||!canVisit(v.lesson_no)} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,opacity:!canVisit(v.lesson_no)?0.38:1,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#f8faf6',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} disabled={saving||!canVisit(v.lesson_no)} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,opacity:!canVisit(v.lesson_no)?0.38:1,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#F7F9FC',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
       <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':!canVisit(v.lesson_no)?'🔒 ':''}{v.lesson_no+1}</Text>
      </Pressable>)}</View>
    </View>)}
@@ -424,10 +432,10 @@ export default function Learning(){
    {index>=0&&index<=2&&hasSoftwareMenuLab(slug)&&<SoftwareMenuLab slug={slug}/>}
     {hasCampaignLab(slug)&&index>=0&&[0,2,4,5,7,10,11].includes(index)&&<CampaignWorkshop slug={slug} lessonNo={module}/>}
    {slug!=='ciesla-przygotowanie-czeladnicze'&&(index===0||(items.length===30&&index%10===0))&&(slug==='jestem-eko'?<EcoAtlas/>:isLogisticsCourse(slug)?<LogisticsAtlas slug={slug}/>:hasSoftwareOrientation(slug)?null:<ConceptAtlas slug={slug}/>)}
-   {(items.length===30||slug==='ciesla-przygotowanie-czeladnicze')&&<View style={{borderLeftWidth:4,borderColor:index<10?'#b0d9aa':index<20?'#679c72':'#305c45',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#edf3e9',marginBottom:12}}>
+   {(items.length===30||slug==='ciesla-przygotowanie-czeladnicze')&&<View style={{borderLeftWidth:4,borderColor:index<10?'#D9B76D':index<20?'#B68A36':'#14263B',paddingHorizontal:13,paddingVertical:9,backgroundColor:'#EFF3F8',marginBottom:12}}>
      <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · ZAAWANSOWANE')}</Text>
    </View>}
-   <Text style={{color:'#638068',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
+   <Text style={{color:'#53677D',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
    {slug==='ai-bez-tajemnic'&&<Text testID="ai-course-stage" style={{color:'#356e44',fontSize:13,fontWeight:'900',marginBottom:6}}>ETAP {lesson.material.section||Math.floor(module/4)+1}/8 · {lesson.material.stage_name||'Pracownia umiejętności'}</Text>}
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
    {slug==='ai-bez-tajemnic'&&<Pressable testID="anielka-top-cta" accessibilityRole="button" onPress={focusAnielka}
@@ -447,14 +455,14 @@ export default function Learning(){
     </Pressable>
     <Text style={{fontSize:12,lineHeight:19,color:'#626e59'}}>Kalkulator na własnych danych służy do ćwiczeń. Aby zaliczyć zadanie 2, wybierz „Zadanie z lekcji”, wpisz wynik i naciśnij „Sprawdź mój wynik”. Oba zaliczenia zostaną zachowane.</Text>
    </View>}
-   {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#eff5e9',borderLeftWidth:3,borderLeftColor:'#87af73',borderRadius:9,gap:4}}>
-    <Text style={{fontSize:12,color:'#3b6a46',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
-    <Text style={{fontSize:15,color:'#2b4b35',lineHeight:23}}>{lesson.material.curiosity}</Text>
+   {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#FDF4E1',borderLeftWidth:3,borderLeftColor:'#C99A43',borderRadius:9,gap:4}}>
+    <Text style={{fontSize:12,color:'#8A641F',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
+    <Text style={{fontSize:15,color:'#14263B',lineHeight:23}}>{lesson.material.curiosity}</Text>
    </View>}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:6,marginBottom:16,alignItems:'center'}}>
-    <Text style={{color:'#366846',fontWeight:'900',fontSize:12,backgroundColor:'#e1efda',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
-    <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
-    <Text style={{color:'#526b57',fontSize:12,fontWeight:'900',backgroundColor:'#eef2ea',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
+    <Text style={{color:'#14263B',fontWeight:'900',fontSize:12,backgroundColor:'#F3E5C7',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
+    <Text style={{color:'#53677D',fontSize:12,fontWeight:'900',backgroundColor:'#EFF3F8',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>2 · SPRÓBUJ</Text>
+    <Text style={{color:'#53677D',fontSize:12,fontWeight:'900',backgroundColor:'#EFF3F8',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>3 · DALEJ</Text>
    </View>
    {slug==='autocad-skroty'&&<CadWorkspace key={'autocad-workshop-'+module} storageKey={userId} lessonNo={module} shortcut={undefined} runId={0}/>}
    {slug==='autocad-skroty'&&<AutoCADLessonMethod lessonNo={module} title={lesson.title_pl} raw={lesson.material?.raw}/>}
@@ -514,7 +522,7 @@ export default function Learning(){
      <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
      {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
-   {!carpentry&&requirements.length>0&&<View testID="lesson-requirements" accessibilityLiveRegion="polite" style={{backgroundColor:'#edf5e7',padding:17,borderRadius:12,gap:9,marginVertical:12}}>
+   {!carpentry&&requirements.length>0&&<View testID="lesson-requirements" accessibilityLiveRegion="polite" style={{backgroundColor:'#EFF3F8',padding:17,borderRadius:12,gap:9,marginVertical:12}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Do ukończenia tej lekcji: {requirements.length===1?'1 zadanie':requirements.length+' zadania'}</Text>
     {requirements.map((item,i)=><Text key={item.key} style={{color:ink,lineHeight:24}}>{item.passed?'✓':'○'} {i+1}. {item.label}{item.passed?' — zaliczone':' — do wykonania'}</Text>)}
     <Text style={{color:secondary,lineHeight:22}}>W pytaniu wybierz jedną odpowiedź. Rozmowa z Anielką jest opcjonalna.</Text>
@@ -560,7 +568,7 @@ export default function Learning(){
 
    <LessonHelp slug={slug} title={lesson.title_pl}/>
    <Pressable testID="anielka-help-toggle" accessibilityRole="button" accessibilityState={{expanded:coachOpen}}
-     onPress={()=>setCoachOpen(v=>!v)} style={{marginTop:14,padding:15,backgroundColor:'#edf5e8',borderRadius:12}}>
+     onPress={()=>setCoachOpen(v=>!v)} style={{marginTop:14,padding:15,backgroundColor:'#EFF3F8',borderRadius:12}}>
     <Text style={{color:ink,fontWeight:'900'}}>{slug==='ai-bez-tajemnic'?(coachOpen?'Zwiń pracownię z Anielką ↑':'Ćwicz z Anielką · wskazówki, próby i pytania ↓'):(coachOpen?'Zwiń rozmowę z Anielką ↑':'Nie rozumiesz? Zapytaj Anielkę ↓')}</Text>
    </Pressable>
    {coachOpen&&<View onLayout={event=>{coachYRef.current=event.nativeEvent.layout.y}}>
@@ -568,16 +576,18 @@ export default function Learning(){
    </View>}
    <Pressable accessibilityRole="button" disabled={saving}
     onPress={()=>{if(canFinish)void finishLesson();else if(carpentry&&(!objective||passed[objective])&&!passed.carpentry)openCarpentry();else returnToExercise()}}
-    style={{backgroundColor:canFinish?ink:'#e0e9db',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
+    style={{backgroundColor:canFinish?ink:'#E4EAF1',paddingVertical:19,paddingHorizontal:15,borderRadius:15,marginTop:14,opacity:saving?0.6:1}}>
     <Text style={{color:canFinish?'white':ink,fontWeight:'900',textAlign:'center',fontSize:17,lineHeight:25}}>
      {saving?'Zapisuję…':!canFinish?(carpentry?'Zaliczone '+passedCount+'/2 · dokończ zadanie ↑':'↑ Pozostało zadań: '+missingRequirements.length):next!==undefined?'Dalej · lekcja '+(index+2)+' →':reviewMode?'Zakończ powtórkę →':'Przejdź do egzaminu →'}
     </Text>
-    {canFinish&&next!==undefined&&<Text style={{color:'#d5e9d4',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
+    {canFinish&&next!==undefined&&<Text style={{color:'#E4EAF1',textAlign:'center',fontSize:12,marginTop:4}} numberOfLines={1}>{items[index+1]?.title_pl}</Text>}
    </Pressable>
-   {!canFinish&&<Text style={{fontSize:12,color:'#647565',lineHeight:19,marginTop:7,textAlign:'center'}}>{requirementMessage}</Text>}
+   {!canFinish&&<Text style={{fontSize:12,color:'#53677D',lineHeight:19,marginTop:7,textAlign:'center'}}>{requirementMessage}</Text>}
    {lessonNavigation('bottom')}
    </>}
   </>}
-  {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#eaf2e0'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
+  {!!msg&&<View style={{marginTop:15,padding:15,borderRadius:12,backgroundColor:'#EFF3F8'}}><Text style={{color:ink,fontWeight:'700',lineHeight:22}}>{msg}</Text></View>}
+   </View>
+  </View>
  </ScrollView>;
 }
