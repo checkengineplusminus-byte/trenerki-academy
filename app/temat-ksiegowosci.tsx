@@ -2,6 +2,7 @@ import React,{useCallback,useEffect,useRef,useState} from 'react';
 import {ActivityIndicator,Image,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import {AccountingWalkthrough} from '../src/accounting/AccountingWalkthrough';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
 import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/reader-core.js';
 import {accountingSupplements} from '../src/accounting/topic-supplements.js';
@@ -366,6 +367,7 @@ export default function TematKsiegowosci(){
      {!guide&&(m.glossary||[]).slice(0,3).map((g:any,i:number)=><View key={i} style={s.wordRow}><Text style={s.label}>{g.term}:</Text><Text style={s.bodySmall}>{glossaryExplanation(g)}</Text></View>)}
      {!guide&&<Text style={s.bodySmall}>{m.intro||lesson.body_text}</Text>}
     </View>}
+    {!introComplete&&m.walkthrough&&<AccountingWalkthrough key={lesson.topic_no} value={m.walkthrough}/>}
     {introComplete&&currentSection&&<View style={s.card}>
      <Text style={s.eyebrowDark}>CZĘŚĆ {sectionIndex+1} / {sections.length}</Text>
      <Text accessibilityRole="header" style={s.h2}>{String(currentSection.heading||'Poznaj temat').replace(/^\d+\.\s*/,'')}</Text>
