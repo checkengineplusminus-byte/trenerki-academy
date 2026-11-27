@@ -42,7 +42,7 @@ try{
     if(certificate)return reply({ok:true,state:'passed',certificate});
     if(input.action==='status')return reply(ready?
      {ok:true,state:step?'in_progress':'ready',available:true,...(step?{session:question()}:{})}:
-     {ok:true,state:'not_ready',completed:0,total:100,month_complete:false,available:false});
+     {ok:true,state:'not_ready',completed:0,total:100,month_complete:false,available:false,is_demo:true});
     if(input.action==='start'){step=1;return reply({ok:true,state:'in_progress',available:true,session:question()});}
     if(input.action==='answer'){
      assert.equal(input.selected_index,1);
@@ -62,6 +62,7 @@ try{
   await page.goto(origin+'/program-ksiegowosci');
   await page.getByRole('button',{name:'Odrzuć',exact:true}).click();
   await page.getByText('Ukończone tematy: 0/100.',{exact:true}).waitFor();
+  await page.getByText('W obecnym wydaniu po zaliczeniu powstaje dokument oznaczony jako wzór testowy.',{exact:true}).waitFor();
   assert.equal(await page.getByRole('button',{name:'Rozpocznij egzamin',exact:true}).count(),0);
   await page.getByText('Miesiąc w biurze: do dokończenia.',{exact:true}).waitFor();
   ready=true;
@@ -73,9 +74,9 @@ try{
    await page.getByRole('button',{name:'B. Druga',exact:true}).click();
    await page.getByRole('button',{name:'Zatwierdź odpowiedź',exact:true}).click();
   }
-  await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Zobacz dokument próbny',exact:true}).waitFor();
   await page.reload();
-  await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Zobacz dokument próbny',exact:true}).waitFor();
   assert.equal(awards,1,'Reload must show the existing result');
   assert.deepEqual(errors,[]);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+3));
