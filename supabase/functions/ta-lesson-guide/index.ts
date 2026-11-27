@@ -121,7 +121,7 @@ Deno.serve(async(req:Request)=>{
   .in('status',['active','demo']).gt('expires_at',new Date().toISOString()).limit(1);
  if(ae)return respond({error:'database_unavailable'},503);
  if(!access?.length)return respond({error:'course_not_owned'},403);
- const {data:lessons,error:le}=await db.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no');
+ const {data:lessons,error:le}=await db.from('ta_lessons').select('lesson_no,title_pl,material,updated_at').eq('course_slug',slug).order('lesson_no');
  if(le||!lessons?.length)return respond({error:'course_not_found'},404);
  const lesson=lessons.find(l=>l.lesson_no===no);
  if(!lesson)return respond({error:'lesson_not_found'},404);
@@ -142,6 +142,9 @@ Deno.serve(async(req:Request)=>{
   opening,history:visible,reply:firstMsg||null,
   cooldown_until:row?.cooldown_until||null,available:true,agent_online:!!(Deno.env.get('OPENAI_API_KEY') || Deno.env.get('OPENAI_KEY_API'))});
  if(action==='attempt'){
+  // A participant may have kept a lesson open while its questions were edited.
+  if(typeof payload.lesson_revision==='string'&&payload.lesson_revision!==lesson.updated_at)
+   return respond({ok:false,stale:true});
   const mode=cut(payload.mode,24),selected=Number(payload.selected_index);
   if(!['case','construction','keyboard','carpentry','stage'].includes(mode)||!Number.isInteger(selected)||selected<0||selected>10)return respond({error:'invalid_attempt'},400);
   const material=lesson.material||{};

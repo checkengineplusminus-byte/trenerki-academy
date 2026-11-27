@@ -37,7 +37,7 @@ import SoftwareMenuLab,{hasSoftwareMenuLab} from '../src/SoftwareMenuLab';
 import CampaignWorkshop,{hasCampaignLab} from '../src/CampaignWorkshop';
 import {isLogisticsCourse,LogisticsAtlas,LogisticsWorkshop} from '../src/LogisticsWorkshop';
 type Lesson={
- lesson_no:number,title_pl:string,
+ lesson_no:number,title_pl:string,updated_at?:string,
  material:{experiment?:Experiment,section?:number,stage_name?:string,lesson_kind?:string,study_project?:StudyProject,practice?:{diagram?:string[],visual?:LessonVisual},raw?:string[],curiosity?:string,sections?:LearningSection[],illustration?:string,construction?:ConstructionMaterial,learning?:LearningCase,shortcuts?:KeyboardShortcut[],quickTips?:string[],exercise?:string,homework?:{title?:string,instructions:string,self_check?:string,review_status?:string},anielka?:{mission?:string,starter?:string,rubric?:string[],pitfalls?:string[]},lesson_tips?:string[],language_bridge?:NorwegianBridgeData,redteam_quiz?:RedTeamQuiz,editorial_status?:string}
 };
 type NoteState=Record<string,string>;
@@ -110,6 +110,7 @@ export default function Learning(){
  },[introRead,slug]);
  useEffect(()=>{setReviewMode(reviewParam==='1');},[slug,reviewParam]);
  const [checks,setChecks]=useState<Record<number,Checks>>({});
+ const [refreshedQuestion,setRefreshedQuestion]=useState<Lesson|null>(null);
  const [items,setItems]=useState<Lesson[]>([]),[done,setDone]=useState<number[]>([]),
  [notes,setNotes]=useState<NoteState>({}),[module,setModule]=useState(0),
  [userId,setUserId]=useState(''),[error,setError]=useState(''),[msg,setMsg]=useState(''),
@@ -147,7 +148,7 @@ export default function Learning(){
    if(ee)throw ee;
    if(!en?.length)throw new Error('Nie masz obecnie dostępu do tego kursu. Wróć do swoich kursów.');
    const [lessons,draft,progress,details,attempts]=await Promise.all([
-    supabase.from('ta_lessons').select('lesson_no,title_pl,material').eq('course_slug',slug).order('lesson_no',{ascending:true}),
+    supabase.from('ta_lessons').select('lesson_no,title_pl,material,updated_at').eq('course_slug',slug).order('lesson_no',{ascending:true}),
     supabase.from('ta_drafts').select('last_module,notes').eq('user_id',u.id).eq('course_slug',slug).maybeSingle(),
     supabase.from('ta_learning_progress').select('lesson_no').eq('user_id',u.id).eq('course_slug',slug),
     supabase.from('ta_courses').select('title_pl,description_pl').eq('slug',slug).maybeSingle(),
@@ -189,12 +190,22 @@ export default function Learning(){
  async function recordAttempt(mode:AttemptMode,answerIndex:number,_localCorrect:boolean,activeCombo?:string,selectedCombo?:string,numericAnswer?:string):Promise<boolean>{
   if(!userId)return false;
   try{
-   const {data,error:e}=await supabase.functions.invoke<{ok?:boolean;correct?:boolean;error?:string}>('ta-lesson-guide',{
-    body:{action:'attempt',course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,
+   const {data,error:e}=await supabase.functions.invoke<{ok?:boolean;correct?:boolean;stale?:boolean;error?:string}>('ta-lesson-guide',{
+    body:{action:'attempt',course_slug:slug,lesson_no:module,mode,selected_index:answerIndex,lesson_revision:lesson?.updated_at,
      ...(mode==='keyboard'?{active_combo:activeCombo,selected_combo:selectedCombo}:{}),
      ...(mode==='carpentry'?{numeric_answer:numericAnswer}:{})}
    });
+   if(!e&&data?.stale&&lesson){
+    const refreshed=await supabase.from('ta_lessons').select('lesson_no,title_pl,material,updated_at')
+     .eq('course_slug',slug).eq('lesson_no',module).single();
+    if(refreshed.error||!refreshed.data)throw new Error('Nie udało się wczytać nowej wersji pytania.');
+    const current=refreshed.data as Lesson;
+    setItems(list=>list.map(item=>item===lesson?current:item));
+    setRefreshedQuestion(current);
+    return false;
+   }
    if(e||!data?.ok)throw new Error(data?.error||e?.message||'Brak odpowiedzi serwera');
+   if(refreshedQuestion===lesson)setRefreshedQuestion(null);
    const correct=!!data.correct;
    if(correct)markPassed(module,mode);
    setReview(v=>{
@@ -481,8 +492,11 @@ export default function Learning(){
      sections={lesson.material?.sections} illustration={lesson.material?.illustration}
      diagram={lesson.material.practice?.diagram} visual={lesson.material.practice?.visual}
     />}
+   {refreshedQuestion===lesson&&<Text accessibilityLiveRegion="polite" testID="lesson-revision-notice" style={{color:ink,fontWeight:'700',lineHeight:22,marginVertical:10}}>
+    W trakcie nauki zaktualizowano treść lekcji. Wyświetlamy jej nową wersję. Przeczytaj pytanie i wybierz odpowiedź ponownie.
+   </Text>}
    {slug!=='ksiegowosc-od-podstaw'&&!!lesson.material?.redteam_quiz&&
-    <AdversarialLessonTest key={'redteam-'+slug+'-'+module} courseSlug={slug} lessonNo={module}
+    <AdversarialLessonTest key={'redteam-'+slug+'-'+module+'-'+(lesson.updated_at??'')} courseSlug={slug} lessonNo={module}
      test={lesson.material.redteam_quiz} required={stageRequired} alreadyVerified={!!passed.stage}
      onAttempt={stageRequired?(answerIndex,correct)=>recordAttempt('stage',answerIndex,correct):undefined}/>}
    {slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'&&!!lesson.material?.homework?.instructions&&
@@ -537,11 +551,11 @@ export default function Learning(){
     <Text style={{color:secondary,lineHeight:22}}>W pytaniu wybierz jedną odpowiedź. Rozmowa z Anielką jest opcjonalna.</Text>
    </View>}
    {carpentry&&<View onLayout={event=>{carpentryYRef.current=event.nativeEvent.layout.y}}>
-    <CarpentryPracticeLab key={module} lessonNo={module} alreadyPassed={passed.carpentry}
+    <CarpentryPracticeLab key={module+'-'+(lesson.updated_at??'')} lessonNo={module} alreadyPassed={passed.carpentry}
      onPassed={()=>markPassed(module,'carpentry')}
      onVerify={(answer)=>recordAttempt('carpentry',0,true,undefined,undefined,answer)}/>
    </View>}
-    <View onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
+    <View key={slug+'-'+module+'-'+(lesson.updated_at??'')} onLayout={(event)=>{exerciseYRef.current=event.nativeEvent.layout.y}}>
    {!!objective&&!!passed[objective]&&<Text style={{color:ink,marginVertical:8,fontWeight:'800'}}>✓ Odpowiedź do zadania zapisana</Text>}
    {lesson.material?.construction?
      <ConstructionLesson identity={slug+'-'+String(module)} lesson={lesson.material.construction} onAttempt={(index,correct)=>recordAttempt('construction',index,correct)}/>:
