@@ -12,13 +12,18 @@ const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\
 export default function AccountPage(){
  const {width}=useWindowDimensions();
  const compact=width<560;
- const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string;ref?:string}>(),
+ const router=useRouter(),params=useLocalSearchParams<{course?:string;next?:string;gift?:string;ref?:string;'#'?:string;link_error?:string;link_flow?:string}>(),
  course=typeof params.course==='string' && /^[a-z0-9][a-z0-9_-]{1,79}$/.test(params.course)?params.course:'',
  gift=validGiftCode(params.gift),
  referral=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const [isAdmin,setIsAdmin]=useState(false);
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':'login'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
- const authRequest=useRef(false);
+ const authRequest=useRef(false),callbackCleared=useRef(false);
+ function clearCallbackAddress(linkError?:{code:string;recovery:boolean}|null){
+  if(callbackCleared.current||!params['#'])return;
+  callbackCleared.current=true;
+  router.replace({pathname:'/konto',params:{...(course?{course}:{}),...(gift?{gift}:{}),...(referral?{ref:referral}:{}),...(params.next?{next:params.next}:{}),...(linkError?{link_error:linkError.code,...(linkError.recovery?{link_flow:'recovery'}:{})}:{})}});
+ }
  const [canRetryRecovery,setCanRetryRecovery]=useState(false);
  const nextConfirmationAt=useRef(0);
  const [canResend,setCanResend]=useState(false),[resendWait,setResendWait]=useState(0),[linkNeedsConfirmation,setLinkNeedsConfirmation]=useState(false);
@@ -68,20 +73,20 @@ export default function AccountPage(){
  };
  useEffect(()=>{
   let isCurrent=true;
-  const linkError=getAuthRedirectError();
+  const linkError=getAuthRedirectError()||(['otp_expired','invalid_link'].includes(params.link_error||'')?{code:params.link_error!,recovery:params.link_flow==='recovery'}:null);
   if(linkError){
     setMode(linkError.recovery?'reset':'login');
     setCanResend(!linkError.recovery);setLinkNeedsConfirmation(!linkError.recovery);
     setMessage(accountErrorMessage(linkError)+(linkError.recovery?' Wpisz swój e-mail, aby otrzymać nowy link do hasła.':' Wpisz swój e-mail i wyślij ponownie potwierdzenie albo wybierz „Nie pamiętam hasła”.'));
     clearAuthRedirectError();
     // Do not keep a dead callback in the address bar or replay it on refresh.
-    router.setParams({'#':''});
+    clearCallbackAddress(linkError);
   }
   const showRecovery=()=>{
     if(!isCurrent)return;
     setMode('new-password');
     setMessage('Link potwierdzony. Ustaw nowe hasło do swojego konta.');
-    router.setParams({'#':''});
+    clearCallbackAddress();
   };
   // Subscribe before reading the session; the redirect event can race with screen mounting.
   const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
@@ -105,7 +110,7 @@ export default function AccountPage(){
         setCanRetryRecovery(true);
         setMessage('Nie udało się sprawdzić linku przez problem z połączeniem. Sprawdź internet i wybierz „Sprawdź link ponownie”.');
       }else{
-        clearPasswordRecoveryFlag();router.setParams({'#':''});
+        clearPasswordRecoveryFlag();clearCallbackAddress({code:'invalid_link',recovery});
         setMessage(accountErrorMessage({code:'invalid_link'})+(recovery?' Wpisz swój e-mail, aby otrzymać nowy link do hasła.':''));
       }
       return;
@@ -114,7 +119,7 @@ export default function AccountPage(){
     if(!isCurrent)return;
     if(!error&&user?.email){
       setActiveEmail(user.email);
-      if(getInitialAuthCallbackHash())router.setParams({'#':''});
+      if(getInitialAuthCallbackHash())clearCallbackAddress();
     }
     if(isPasswordRecoveryRedirect()){
       if(!error&&user)showRecovery();
@@ -267,7 +272,7 @@ export default function AccountPage(){
   <Text style={{color:'#58677b',lineHeight:compact?21:22,marginBottom:compact?14:20}}>{mode==='new-password'?'Ustaw nowe hasło, powtórz je w drugim polu i zapisz. Następnie zalogujesz się ponownie.':mode==='reset'?'Wpisz adres e-mail użyty przy zakładaniu konta. Wyślemy instrukcję zmiany hasła. Sprawdź również folder SPAM.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course==='zaufany-wolontariusz'?'Zaloguj się, aby zapisać bezpłatny kurs na swoim koncie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':isCompanyLogin?'Konto opiekuna firmy. Przydzielaj kursy pracownikom i sprawdzaj wykorzystanie miejsc.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
  {mode==='register'&&<TextInput style={input} accessibilityLabel="Imię i nazwisko" placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
  {mode!=='new-password'&&<TextInput style={input} accessibilityLabel="Adres e-mail" placeholder="Adres e-mail" value={email} onChangeText={value=>{setEmail(value);setCanResend(false);setResendWait(0);nextConfirmationAt.current=0}} autoCapitalize="none" autoComplete="email" keyboardType="email-address" onSubmitEditing={()=>{if(mode==='reset')void submit()}} returnKeyType={mode==='reset'?'go':'next'}/>}
- {mode!=='reset'&&<TextInput style={input} accessibilityLabel={mode==='new-password'?'Nowe hasło':mode==='register'?'Hasło (minimum 8 znaków)':'Hasło'} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'} onSubmitEditing={()=>{if(mode!=='new-password')void submit()}} returnKeyType={mode==='new-password'?'next':'go'}/>}
+ {mode!=='reset'&&<TextInput style={input} accessibilityLabel={mode==='new-password'?'Nowe hasło':mode==='register'?'Hasło (minimum 8 znaków)':'Hasło'} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':mode==='register'?'Hasło (minimum 8 znaków)':'Hasło'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'} onSubmitEditing={()=>{if(mode!=='new-password')void submit()}} returnKeyType={mode==='new-password'?'next':'go'}/>}
  {mode!=='reset'&&<Pressable accessibilityRole="button" onPress={()=>setShowPassword(v=>!v)} style={{alignSelf:'flex-end',paddingVertical:6,marginBottom:9}}><Text style={{color:ink,fontWeight:'700'}}>{showPassword?'Ukryj hasło':'Pokaż hasło'}</Text></Pressable>}
  {mode==='new-password'&&<TextInput style={input} accessibilityLabel="Powtórz nowe hasło" placeholder="Powtórz nowe hasło" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry autoComplete="new-password" onSubmitEditing={()=>void submit()} returnKeyType="go"/>}
   </>}

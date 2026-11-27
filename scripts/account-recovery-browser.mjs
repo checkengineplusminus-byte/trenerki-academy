@@ -28,7 +28,7 @@ async function setup(width,{path='/konto',hash='',signed=false,readNetworkFailur
    return route.continue();
   }
   if(url.origin!==api){state.outside.push(url.origin);return route.abort();}
-  const headers={'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Headers':'*','Access-Control-Allow-Methods':'*'};
+  const headers={'Access-Control-Allow-Origin':origin,'Access-Control-Allow-Headers':'*','Access-Control-Allow-Methods':'*','Access-Control-Expose-Headers':'X-Supabase-Api-Version','X-Supabase-Api-Version':'2024-01-01'};
   const reply=(json,status=200)=>route.fulfill({json,status,headers});
   if(request.method()==='OPTIONS')return route.fulfill({status:204,headers});
   if(url.pathname==='/auth/v1/user'){
