@@ -184,6 +184,11 @@ export default function Learning(){
  const lesson=items.find(x=>x.lesson_no===module),index=items.findIndex(x=>x.lesson_no===module);
  const learning=lesson?.material.learning;
  const sections=lesson?.material.sections??[];
+ const curiosity=lesson?.material.curiosity?.replace(/^Warto wiedzieć przy temacie „[^”]{1,240}”:\s*/u,'').trim();
+ // Keep distinct side notes and text that would only be revealed after the exercise.
+ const curiosityInExplanation=slug!=='autocad-skroty'&&!!curiosity&&sections.some(section=>
+  !!section?.heading&&!section.heading.includes('Sprawdź wynik po wykonaniu')&&section.text?.trim()===curiosity);
+
  const completed=items.filter(x=>done.includes(x.lesson_no)).length;
  const progress=items.length?Math.round(completed/items.length*100):0;
  const next=index>=0?items[index+1]?.lesson_no:undefined,previous=index>0?items[index-1]?.lesson_no:undefined;
@@ -475,9 +480,9 @@ export default function Learning(){
     </Pressable>
     <Text style={{fontSize:12,lineHeight:19,color:'#626e59'}}>Kalkulator na własnych danych służy do ćwiczeń. Aby zaliczyć zadanie 2, wybierz „Zadanie z lekcji”, wpisz wynik i naciśnij „Sprawdź mój wynik”. Oba zaliczenia zostaną zachowane.</Text>
    </View>}
-   {!!lesson.material?.curiosity&&<View style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#FDF4E1',borderLeftWidth:3,borderLeftColor:'#C99A43',borderRadius:9,gap:4}}>
+   {!!curiosity&&!curiosityInExplanation&&<View testID="lesson-curiosity" style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#FDF4E1',borderLeftWidth:3,borderLeftColor:'#C99A43',borderRadius:9,gap:4}}>
     <Text style={{fontSize:12,color:'#8A641F',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
-    <Text style={{fontSize:15,color:'#14263B',lineHeight:23}}>{lesson.material.curiosity.replace(/^Warto wiedzieć przy temacie „[^”]{1,240}”:\s*/u,'')}</Text>
+    <Text style={{fontSize:15,color:'#14263B',lineHeight:23}}>{curiosity}</Text>
    </View>}
    <View style={{flexDirection:'row',flexWrap:'wrap',gap:6,marginBottom:16,alignItems:'center'}}>
     <Text style={{color:'#14263B',fontWeight:'900',fontSize:12,backgroundColor:'#F3E5C7',paddingHorizontal:11,paddingVertical:8,borderRadius:10}}>1 · POZNAJ</Text>
