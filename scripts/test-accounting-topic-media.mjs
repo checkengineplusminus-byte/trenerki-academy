@@ -13,9 +13,17 @@ const photo={
 const assetPaths=[
  ['accounting-desk-01','../assets/accounting/generated/accounting-desk-01.webp'],
  ['accounting-archive-02','../assets/accounting/generated/accounting-archive-02.webp'],
+ ['accounting-sales-document-2026','../assets/accounting/generated/accounting-sales-document-2026.webp'],
+ ['accounting-digital-receipt-2026','../assets/accounting/generated/accounting-digital-receipt-2026.webp'],
+ ['accounting-advance-and-settlement-2026','../assets/accounting/generated/accounting-advance-and-settlement-2026.webp'],
+ ['accounting-invoice-correction-2026','../assets/accounting/generated/accounting-invoice-correction-2026.webp'],
+ ['accounting-retail-close-2026','../assets/accounting/generated/accounting-retail-close-2026.webp'],
+ ['accounting-stock-receipt-2026','../assets/accounting/generated/accounting-stock-receipt-2026.webp'],
+ ['accounting-purchase-match-2026','../assets/accounting/generated/accounting-purchase-match-2026.webp'],
 ];
 test('Every image is an original local WebP file, small enough for mobile',()=>{
  for(const [id,path] of assetPaths){
+  assert.equal(topicPhotoAssetId({...photo,asset_id:id}),id);
   const bytes=readFileSync(new URL(path,import.meta.url));
   const size=statSync(new URL(path,import.meta.url)).size;
   assert.equal(bytes.toString('ascii',0,4),'RIFF',id);
@@ -54,6 +62,7 @@ test('Reader uses static Expo image bundling with alt, responsive 16:9 and no re
  assert.match(reader,/resizeMode="cover"/);
  assert.match(reader,/sectionPhoto:\{width:'100%',aspectRatio:16\/9/);
  assert.match(reader,/<SectionPhoto photo=\{(?:section|currentSection)\.photo\}\/>/);
+ for(const [,path] of assetPaths)assert.ok(reader.includes(`require('${path}')`),path);
  assert.doesNotMatch(reader,/source=\{\{uri:.*?\}\}/);
  assert.doesNotMatch(gate,/https?:\/\//);
 });

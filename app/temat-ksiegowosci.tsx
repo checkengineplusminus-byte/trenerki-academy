@@ -49,6 +49,13 @@ const BEGINNER_GUIDES:Record<number,{intro:string;items:{icon:string;title:strin
 const GENERATED_PHOTO_ASSETS:Record<string,number>=Object.freeze({
  'accounting-desk-01':require('../assets/accounting/generated/accounting-desk-01.webp'),
  'accounting-archive-02':require('../assets/accounting/generated/accounting-archive-02.webp'),
+ 'accounting-sales-document-2026':require('../assets/accounting/generated/accounting-sales-document-2026.webp'),
+ 'accounting-digital-receipt-2026':require('../assets/accounting/generated/accounting-digital-receipt-2026.webp'),
+ 'accounting-advance-and-settlement-2026':require('../assets/accounting/generated/accounting-advance-and-settlement-2026.webp'),
+ 'accounting-invoice-correction-2026':require('../assets/accounting/generated/accounting-invoice-correction-2026.webp'),
+ 'accounting-retail-close-2026':require('../assets/accounting/generated/accounting-retail-close-2026.webp'),
+ 'accounting-stock-receipt-2026':require('../assets/accounting/generated/accounting-stock-receipt-2026.webp'),
+ 'accounting-purchase-match-2026':require('../assets/accounting/generated/accounting-purchase-match-2026.webp'),
 });
 function SectionPhoto({photo}:{photo:any}){
  const assetId=topicPhotoAssetId(photo);
