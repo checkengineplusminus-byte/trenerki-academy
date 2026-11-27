@@ -50,7 +50,7 @@ export function DocumentDecision({value}:{value:unknown}) {
       })}
     </View>
     <Text style={s.question}>{value.question}</Text>
-    {value.options.map((option,i)=><Pressable key={i} accessibilityRole="button" accessibilityState={{selected:choice===i}}
+    {value.options.map((option,i)=><Pressable key={i} accessibilityRole="button" accessibilityState={{selected:choice===i}} aria-pressed={choice===i}
       onPress={()=>setChoice(i)} style={[s.option,choice===i&&s.selected]}>
       <Text style={[s.optionText,choice===i&&s.selectedText]}>{option}</Text></Pressable>)}
     {choice!==null&&<Animated.View accessibilityLiveRegion="polite" style={[s.feedback,{opacity:fade,transform:[{translateY:fade.interpolate({inputRange:[0,1],outputRange:[5,0]})}]}]}>

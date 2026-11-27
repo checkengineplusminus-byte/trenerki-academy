@@ -348,7 +348,7 @@ export default function TematKsiegowosci(){
     <Text style={s.lessonGoal}>{lesson.topic_no===1?'Na początku wystarczy odróżnić osobę prowadzącą firmę, spółkę i fundację.':lesson.learning_goal}</Text>
    </View>
    <View style={s.stepRail}>
-    {LESSON_STEPS.map((item,i)=><Pressable key={item.id} accessibilityRole="button" accessibilityLabel={item.label+' — '+item.hint} accessibilityState={{selected:step===item.id}}
+    {LESSON_STEPS.map((item,i)=><Pressable key={item.id} accessibilityRole="button" accessibilityLabel={item.label+' — '+item.hint} accessibilityState={{selected:step===item.id}} aria-current={step===item.id?"step":undefined}
      onPress={()=>goStep(item.id)} style={[s.stepTile,step===item.id&&s.stepTileActive]}>
      <Text style={[s.stepTitle,step===item.id&&s.stepTitleActive]}>{i+1}. {item.label}</Text>
     </Pressable>)}

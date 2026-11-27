@@ -189,7 +189,7 @@ export default function ProgramKsiegowosci(){
   {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
    <View style={[s.startCard,{flexDirection:mobile?'column':'row-reverse'}]}>
-    <Image accessible={false} resizeMode="cover" source={require('../assets/accounting/generated/accounting-desk-01.webp')} style={mobile?{width:'100%',height:104}:{width:'38%',alignSelf:'stretch'}}/>
+    <View style={mobile?{width:'100%',height:104}:{width:'38%',alignSelf:'stretch'}}><Image accessible={false} resizeMode="cover" source={require('../assets/accounting/generated/accounting-workshop-cover.webp')} style={{width:'100%',height:'100%',position:'absolute'}}/></View>
     <View style={s.startCopy}>
      <Text style={s.startKicker}>{hasStarted?'TWOJA NAUKA':'PIERWSZA LEKCJA'}</Text>
      <Text accessibilityRole="header" style={s.startTitle}>{topics.find(t=>t.topic_no===nextLesson)?.title_pl||'Program kursu'}</Text>
@@ -197,7 +197,7 @@ export default function ProgramKsiegowosci(){
      {nextLesson!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextLesson)}}} style={s.startLink}>{hasStarted?'Kontynuuj naukę':'Rozpocznij od zera'} · temat {nextLesson} →</Link>}
     </View>
    </View>
-   <Pressable accessibilityRole="button" accessibilityState={{expanded:showProgress}} onPress={()=>setShowProgress(v=>!v)} style={s.progressToggle}><Text style={s.link}>{showProgress?'Ukryj postęp':'Mój postęp'}</Text></Pressable>
+   <Pressable accessibilityRole="button" accessibilityState={{expanded:showProgress}} aria-expanded={showProgress} onPress={()=>setShowProgress(v=>!v)} style={s.progressToggle}><Text style={s.link}>{showProgress?'Ukryj postęp':'Mój postęp'}</Text></Pressable>
    {showProgress&&<View style={s.card}>
     <Text style={s.label}>Twoje ćwiczenia i prace domowe — zapisane na koncie</Text>
     {practice.known?
@@ -247,7 +247,7 @@ export default function ProgramKsiegowosci(){
     {sections.map((name,index)=>{
      const no=index+1,open=expanded===no,items=topics.filter(t=>t.section_no===no);
      return <View key={no} style={[s.chapter,open&&s.chapterOpen]}>
-      <Pressable accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name} accessibilityState={{expanded:open}}
+      <Pressable accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name} accessibilityState={{expanded:open}} aria-expanded={open}
        onPress={()=>setExpanded(open?null:no)} style={s.chapterControl}>
        <Text style={s.chapterNumber}>{String(no).padStart(2,'0')}</Text>
        <Text style={s.chapterName}>{name}</Text><Text style={s.chapterSign}>{open?'−':'+'}</Text>
