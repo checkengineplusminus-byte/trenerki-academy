@@ -92,7 +92,7 @@ Deno.serve(async(req:Request)=>{
  }
  const {completed,ready}=readiness;
  if(!ready){
-  if(action==='status')return json({ok:true,state:'not_ready',available:false,...readiness});
+  if(action==='status')return json({ok:true,state:'not_ready',available:false,is_demo:!requireReal,...readiness});
   return json({error:'lessons_incomplete',completed,total:lessons.length},403);
  }
  // Older diplomas remain in the learner's archive, but cannot bypass a new lesson requirement.
@@ -137,7 +137,7 @@ Deno.serve(async(req:Request)=>{
   if(sessionId)query.neq('id',sessionId);
   return query;
  }
- const present=(s:any)=>({ok:true,state:s?'in_progress':ready?'ready':'not_ready',available,completed:completed||0,total:lessons.length,
+ const present=(s:any)=>({ok:true,state:s?'in_progress':ready?'ready':'not_ready',available,is_demo:!requireReal,completed:completed||0,total:lessons.length,
   session:s?{id:s.id,phase:s.phase,question:s.question,step:s.step,correct:s.correct_count,wrong:s.wrong_count,
   history:(s.history||[]).map((v:any)=>({question:v.question,answer:v.answer,correct:v.correct,feedback:v.feedback})),
   holder_name:s.holder_name,is_demo:s.is_demo,grading_mode:s.grading_mode||'oral',options:(s.grading_mode==='choice'?s.question_options||[]:[])}:null});

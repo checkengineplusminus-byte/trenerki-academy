@@ -7,7 +7,7 @@ type Cert={id:string;certificate_no:string;holder_name:string;title_pl:string;is
 type History={question:string;answer:string;correct:boolean;feedback:string};
 type Session={id?:string;phase?:string;step:number;correct:number;wrong:number;question:string;history:History[];holder_name:string;is_demo:boolean;grading_mode?:'oral'|'choice';options?:string[]};
 type Api={ok?:boolean;state?:'ready'|'not_ready'|'in_progress'|'passed'|'failed';available?:boolean;
- completed?:number;total?:number;month_complete?:boolean;session?:Session|null;certificate?:Cert;
+ completed?:number;total?:number;month_complete?:boolean;is_demo?:boolean;session?:Session|null;certificate?:Cert;
  session_id?:string;step?:number;question?:string;phase?:string;correct?:number;wrong?:number;feedback?:string;
  answer_correct?:boolean;announcement?:string;message?:string;error?:string;grading_mode?:'oral'|'choice';options?:string[];fallback_available?:boolean};
 const ink='#17354D';
@@ -34,6 +34,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const [correct,setCorrect]=useState(0),[wrong,setWrong]=useState(0),[history,setHistory]=useState<History[]>([]);
  const [message,setMessage]=useState(''),[error,setError]=useState(''),[cert,setCert]=useState<Cert|null>(null);
  const [readiness,setReadiness]=useState<{completed:number;total:number;monthComplete?:boolean}|null>(null);
+ const [demoMode,setDemoMode]=useState<boolean|null>(null);
  const [gradingMode,setGradingMode]=useState<'oral'|'choice'>('oral'),[options,setOptions]=useState<string[]>([]),[selectedOption,setSelectedOption]=useState<number|null>(null);
  const call=async(action:'status'|'start'|'answer'|'switch_mode',fields:Record<string,unknown>={})=>{
   const {data,error:e}=await supabase.functions.invoke<Api>('ta-exam',{body:{action,course_slug:courseSlug,...fields}});
@@ -50,10 +51,11 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const apply=(r:Api)=>{
   if(r.state)setState(r.state);
   if(r.available!==undefined)setAvailable(r.available);
+  if(typeof r.is_demo==='boolean')setDemoMode(r.is_demo);
   if(r.completed!==undefined&&r.total!==undefined)setReadiness({completed:r.completed,total:r.total,monthComplete:r.month_complete});
-  if(r.certificate)setCert(r.certificate);
+  if(r.certificate){setCert(r.certificate);setDemoMode(r.certificate.is_demo);}
   if(r.session){
-   const s=r.session;if(s.id)setAttempt({id:s.id,step:s.step});setQuestion(s.question);setPhase(s.phase||'practice');setCorrect(s.correct);
+   const s=r.session;setDemoMode(s.is_demo);if(s.id)setAttempt({id:s.id,step:s.step});setQuestion(s.question);setPhase(s.phase||'practice');setCorrect(s.correct);
    setWrong(s.wrong);setHistory(s.history||[]);setName(s.holder_name||'');
    setGradingMode(s.grading_mode||'oral');setOptions(s.options||[]);setSelectedOption(null);
   }else if(r.question){
@@ -108,7 +110,8 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  return <View style={{marginTop:25,padding:20,backgroundColor:'#EFF3F8',borderRadius:19,borderWidth:1,borderColor:'#D8E2EB',gap:13}}>
   <Text style={{color:'#49647A',fontSize:12,fontWeight:'900'}}>ETAP KOŃCOWY · OSOBNY OD POSTĘPU LEKCJI</Text>
   <Text style={{color:ink,fontWeight:'900',fontSize:24}}>Egzamin końcowy</Text>
-  <Text style={{color:'#49647A',lineHeight:23}}>Sprawdzimy, czego nauczyłeś się podczas kursu. Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. Jeżeli się pomylisz, dostaniesz jeszcze jedną szansę. Po zaliczeniu otrzymasz autorski dyplom z imieniem, nazwiskiem i datą ukończenia.</Text>
+  <Text style={{color:'#49647A',lineHeight:23}}>Sprawdzimy, czego nauczyłeś się podczas kursu. Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. Jeżeli się pomylisz, dostaniesz jeszcze jedną szansę.</Text>
+  {!loading&&demoMode!==null&&<Text style={{color:ink,lineHeight:23,fontWeight:'700'}}>{demoMode?'W obecnym wydaniu po zaliczeniu powstaje dokument oznaczony jako wzór testowy.':'Po zaliczeniu otrzymasz autorski dyplom z imieniem, nazwiskiem i datą ukończenia.'}</Text>}
   {loading&&<ActivityIndicator color={ink}/>}
   {!loading&&state==='not_ready'&&<View style={{gap:10}}>
    <Text style={{color:ink,lineHeight:23}}>Ukończone tematy: {readiness?.completed??0}/{readiness?.total??0}.</Text>
@@ -162,7 +165,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
   {!loading&&state==='passed'&&<View style={{gap:12}}>
    <Text style={{color:'#17354D',fontWeight:'900',fontSize:19}}>Gratulacje! Zaliczyłeś egzamin.</Text>
    {!!cert&&<Text style={{color:ink,lineHeight:23}}>Dyplom: {cert.certificate_no}{cert.is_demo?' · WZÓR TESTOWY — NIEWAŻNY':''}</Text>}
-   {button('Zobacz autorski dyplom',()=>router.push({pathname:'/dyplom',params:{course:courseSlug}}),!cert)}
+   {button(cert?.is_demo?'Zobacz dokument próbny':'Zobacz autorski dyplom',()=>router.push({pathname:'/dyplom',params:{course:courseSlug}}),!cert)}
   </View>}
   {!!message&&<Text style={{padding:12,borderRadius:10,backgroundColor:'white',color:'#17354D',lineHeight:22,fontWeight:'700'}}>{message}</Text>}
   {!!error&&<View style={{gap:9,padding:12,backgroundColor:'#fff0e7',borderRadius:11}}>
