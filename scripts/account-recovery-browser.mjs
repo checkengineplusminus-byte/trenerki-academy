@@ -13,12 +13,12 @@ const expired='#error=access_denied&error_code=otp_expired&error_description=pro
 const payload=Buffer.from(JSON.stringify({aud:'authenticated',sub:'00000000-0000-4000-a000-000000000202',exp:Math.floor(Date.now()/1000)+3600,iat:Math.floor(Date.now()/1000)})).toString('base64url');
 const token=Buffer.from('{"alg":"HS256","typ":"JWT"}').toString('base64url')+'.'+payload+'.synthetic-signature';
 const recovery='#access_token='+token+'&refresh_token=synthetic-refresh&expires_in=3600&token_type=bearer&type=recovery';
-async function setup(width,{path='/konto',hash='',signed=false,readNetworkFailure=false}={}){
+async function setup(width,{path='/konto',hash='',signed=false,readNetworkFailure=false,readInvalidToken=false}={}){
  const context=await browser.newContext({viewport:{width,height:960},serviceWorkers:'block'});
  const user={id:'00000000-0000-4000-a000-000000000202',email:'learner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
  const session={access_token:token,refresh_token:'synthetic-refresh',expires_in:3600,expires_at:Math.floor(Date.now()/1000)+3600,token_type:'bearer',user};
  if(signed)await context.addInitScript(session=>localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify(session)),session);
- const state={readNetworkFailure,signed:signed||hash===recovery,updateError:'',logoutError:false,updates:[],logouts:[],recoveries:[],resends:[],userReads:[],outside:[]};
+ const state={readNetworkFailure,readInvalidToken,signed:signed||hash===recovery,updateError:'',logoutError:false,updates:[],logouts:[],recoveries:[],resends:[],userReads:[],outside:[]};
  let page;
  await context.route('**/*',async route=>{
   const request=route.request(),url=new URL(request.url());
@@ -41,6 +41,7 @@ async function setup(width,{path='/konto',hash='',signed=false,readNetworkFailur
    }
    state.userReads.push(new URL(page.url()).pathname);
    if(state.readNetworkFailure){state.readNetworkFailure=false;return route.abort('failed');}
+   if(state.readInvalidToken)return reply({code:'bad_jwt',msg:'Synthetic expired access token'},401);
    return state.signed?reply(user):reply({code:'session_not_found',msg:'Auth session missing!'},401);
   }
   if(url.pathname==='/auth/v1/logout'){
@@ -61,10 +62,10 @@ async function setup(width,{path='/konto',hash='',signed=false,readNetworkFailur
  const errors=[];page.on('pageerror',error=>errors.push(error.message));
  await page.goto(origin+path+hash);
  if(path==='/'&&!hash)await page.waitForURL(url=>url.pathname==='/academy/index.html');
- else if(!signed)await page.getByLabel(hash===recovery&&!readNetworkFailure?'Nowe hasło':'Adres e-mail',{exact:true}).waitFor();
+ else if(!signed)await page.getByLabel(hash===recovery&&!readNetworkFailure&&!readInvalidToken?'Nowe hasło':'Adres e-mail',{exact:true}).waitFor();
  else await page.getByText('Twój profil',{exact:true}).waitFor();
  const consent=page.getByRole('button',{name:'Odrzuć',exact:true});
- if(await consent.count())await consent.click();
+ await consent.waitFor();await consent.click();
  return {context,page,state,errors};
 }
 let checks=0;
@@ -83,7 +84,7 @@ try{
  for(const width of widths){
   await scenario(width,{hash:expired},async({page,state})=>{
    await page.getByTestId('account-feedback').filter({hasText:'Link wygasł lub został już użyty.'}).waitFor();
-   assert.equal(new URL(page.url()).hash,'');
+   await page.waitForURL(url=>!url.hash);
    assert.equal((await page.locator('body').innerText()).includes('provider-private-description'),false);
    await page.getByLabel('Adres e-mail',{exact:true}).fill(' Learner@Example.test ');
    await page.getByRole('button',{name:'Wyślij ponownie potwierdzenie e-mail',exact:true}).click();
@@ -129,6 +130,7 @@ try{
   });
   await scenario(width,{path:'/',hash:recovery},async({page,state})=>{
    await page.getByTestId('account-feedback').filter({hasText:'Link potwierdzony.'}).waitFor();
+   await page.waitForURL(url=>!url.hash);
    await page.reload();await page.getByLabel('Nowe hasło',{exact:true}).waitFor();
    assert.equal(new URL(page.url()).pathname,'/konto');
    assert(state.userReads.length>0);assert(state.userReads.every(path=>path==='/konto'),'Root must not consume the callback before forwarding it');
@@ -173,6 +175,12 @@ try{
    await page.getByRole('button',{name:'Sprawdź link ponownie',exact:true}).click();
    await page.getByLabel('Nowe hasło',{exact:true}).waitFor();assert.equal(state.updates.length,0);
   });
+  await scenario(width,{hash:recovery,readInvalidToken:true},async({page,state})=>{
+   await page.getByText('Odzyskaj konto',{exact:true}).waitFor();
+   await page.getByTestId('account-feedback').filter({hasText:'Nie udało się potwierdzić linku'}).waitFor();
+   await page.waitForURL(url=>!url.hash);
+   assert.equal(await page.getByLabel('Nowe hasło',{exact:true}).count(),0);assert.equal(state.updates.length,0);
+  });
   await scenario(width,{signed:true},async({page,state})=>{
    await page.getByText('Zmień hasło bez ponownego logowania',{exact:true}).click();
    await page.getByLabel('Nowe hasło',{exact:true}).waitFor();
@@ -180,7 +188,7 @@ try{
    await page.getByText('Twój profil',{exact:true}).waitFor();assert.equal(state.updates.length,0);
   });
   await scenario(width,{path:'/'},async({page})=>{assert.equal(new URL(page.url()).pathname,'/academy/index.html');});
-  console.log(engine+' '+width+'px: 13 recovery scenarios passed with a synthetic API');
+  console.log(engine+' '+width+'px: 14 recovery scenarios passed with a synthetic API');
  }
  console.log(JSON.stringify({engine,checks,real_accounts:false,real_password_changes:false,email_delivery:false,physical_device:false}));
 }finally{await browser.close();}

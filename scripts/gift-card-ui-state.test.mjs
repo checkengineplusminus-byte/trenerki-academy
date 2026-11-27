@@ -63,9 +63,9 @@ function createScreen(path,params={}){
  const require=name=>{
   if(name==='react')return {__esModule:true,default:react,...react};
   if(name==='react-native')return rn;
-  if(name==='expo-router')return {useRouter:()=>({replace:to=>navigation.push({method:'replace',to:JSON.parse(JSON.stringify(to))}),push:to=>navigation.push({method:'push',to:JSON.parse(JSON.stringify(to))})}),useLocalSearchParams:()=>params};
+  if(name==='expo-router')return {useRouter:()=>({replace:to=>navigation.push({method:'replace',to:JSON.parse(JSON.stringify(to))}),push:to=>navigation.push({method:'push',to:JSON.parse(JSON.stringify(to))}),setParams:()=>{}}),useLocalSearchParams:()=>params};
   if(name==='@supabase/supabase-js')return {FunctionsHttpError};
-  if(name==='../src/supabase'||name==='./supabase')return {supabase,isPasswordRecoveryRedirect:()=>false,clearPasswordRecoveryFlag:()=>{},getAuthRedirectError:()=>null,clearAuthRedirectError:()=>{},hasPasswordRecoveryCallback:()=>false};
+  if(name==='../src/supabase'||name==='./supabase')return {supabase,isPasswordRecoveryRedirect:()=>false,clearPasswordRecoveryFlag:()=>{},getAuthRedirectError:()=>null,clearAuthRedirectError:()=>{},hasPasswordRecoveryCallback:()=>false,getInitialAuthCallbackHash:()=>''};
   if(name==='../src/accountFeedback.mjs')return accountFeedback;
   if(name==='../src/academyApi')return {academyAction:async (action,body)=>{
    if(action==='redeem_gift'){courseRedemptions.push(body);return {ok:true};}

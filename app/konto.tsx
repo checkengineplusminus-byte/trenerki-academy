@@ -1,7 +1,7 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {View,Text,TextInput,Pressable,ScrollView,Linking,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
-import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag,getAuthRedirectError,clearAuthRedirectError,hasPasswordRecoveryCallback} from '../src/supabase';
+import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag,getAuthRedirectError,clearAuthRedirectError,hasPasswordRecoveryCallback,getInitialAuthCallbackHash} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 import {validGiftCode} from '../src/giftCode';
 import {AccountFeedbackError,accountEmail,accountErrorMessage} from '../src/accountFeedback.mjs';
@@ -75,12 +75,13 @@ export default function AccountPage(){
     setMessage(accountErrorMessage(linkError)+(linkError.recovery?' Wpisz swój e-mail, aby otrzymać nowy link do hasła.':' Wpisz swój e-mail i wyślij ponownie potwierdzenie albo wybierz „Nie pamiętam hasła”.'));
     clearAuthRedirectError();
     // Do not keep a dead callback in the address bar or replay it on refresh.
-    if(typeof window!=='undefined')window.history.replaceState(window.history.state,'',window.location.pathname+window.location.search);
+    router.setParams({'#':''});
   }
   const showRecovery=()=>{
     if(!isCurrent)return;
     setMode('new-password');
     setMessage('Link potwierdzony. Ustaw nowe hasło do swojego konta.');
+    router.setParams({'#':''});
   };
   // Subscribe before reading the session; the redirect event can race with screen mounting.
   const {data:{subscription}}=supabase.auth.onAuthStateChange((event,session)=>{
@@ -97,13 +98,24 @@ export default function AccountPage(){
   void(async()=>{
     const initialization=await supabase.auth.initialize();
     if(!isCurrent)return;
-    if(hasPasswordRecoveryCallback()&&initialization.error?.name==='AuthRetryableFetchError'){
-      setMode('reset');setCanRetryRecovery(true);
-      setMessage('Nie udało się sprawdzić linku przez problem z połączeniem. Sprawdź internet i wybierz „Sprawdź link ponownie”.');return;
+    if(getInitialAuthCallbackHash()&&initialization.error&&!linkError){
+      const recovery=hasPasswordRecoveryCallback();
+      setMode(recovery?'reset':'login');setLinkNeedsConfirmation(!recovery);
+      if(initialization.error.name==='AuthRetryableFetchError'){
+        setCanRetryRecovery(true);
+        setMessage('Nie udało się sprawdzić linku przez problem z połączeniem. Sprawdź internet i wybierz „Sprawdź link ponownie”.');
+      }else{
+        clearPasswordRecoveryFlag();router.setParams({'#':''});
+        setMessage(accountErrorMessage({code:'invalid_link'})+(recovery?' Wpisz swój e-mail, aby otrzymać nowy link do hasła.':''));
+      }
+      return;
     }
     const {data:{user},error}=await supabase.auth.getUser();
     if(!isCurrent)return;
-    if(!error&&user?.email)setActiveEmail(user.email);
+    if(!error&&user?.email){
+      setActiveEmail(user.email);
+      if(getInitialAuthCallbackHash())router.setParams({'#':''});
+    }
     if(isPasswordRecoveryRedirect()){
       if(!error&&user)showRecovery();
       else if(error?.name==='AuthRetryableFetchError')setMessage(accountErrorMessage(error));
@@ -261,7 +273,7 @@ export default function AccountPage(){
   </>}
  {!!message&&<Text accessibilityLiveRegion="polite" testID="account-feedback" style={{color:'#264b92',backgroundColor:pale,padding:13,borderRadius:12,marginBottom:14}}>{message}</Text>}
  {(!activeEmail||mode==='new-password')&&<>
-  {canRetryRecovery&&(mode==='reset'||mode==='new-password')&&<Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(typeof window!=='undefined')window.location.reload()}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>Sprawdź link ponownie</Text></Pressable>}
+  {canRetryRecovery&&mode!=='register'&&<Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(typeof window!=='undefined')window.location.reload()}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>Sprawdź link ponownie</Text></Pressable>}
   <Pressable accessibilityRole="button" onPress={submit} disabled={busy} style={{backgroundColor:'#E7BB5B',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'#14263B',fontWeight:'900'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
  {(canResend||linkNeedsConfirmation&&mode==='login')&&(mode==='login'||mode==='register')&&<Pressable accessibilityRole="button" disabled={busy||resendWait>0} onPress={resendConfirmation} style={{padding:12,alignItems:'center',opacity:busy||resendWait>0?.6:1}}><Text style={{color:ink,fontWeight:'700'}}>{resendWait>0?'Wyślij ponownie za '+resendWait+' s':'Wyślij ponownie potwierdzenie e-mail'}</Text></Pressable>}
  {(mode==='reset'||mode==='new-password')&&<Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(authRequest.current)return;clearPasswordRecoveryFlag();setCanRetryRecovery(false);setMode('login');setPassword('');setConfirmPassword('');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{activeEmail?'Wróć do profilu':'Wróć do logowania'}</Text></Pressable>}
