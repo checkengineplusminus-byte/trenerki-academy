@@ -32,6 +32,7 @@ jobs:
             get '/academy/index.html' homepage || good=0
             get '/academy/course-share.js' navjs || good=0
             get '/academy/course-share.css' navcss || good=0
+            get '/academy/academy-course-menu.v1.css' menucss || good=0
             get '/academy/kursy/autocad-skroty.html' autocad || good=0
             get '/academy/kursy/ai-bez-tajemnic.html' ai || good=0
             get '/academy/kategorie/biznes-i-praca.html' category || good=0
@@ -43,7 +44,9 @@ jobs:
               grep -Fq '<details class="mobile-nav"><summary>' "$tmp/homepage" || good=0
               grep -Fq 'href="/firma">Dla firm</a>' "$tmp/homepage" || good=0
               grep -Fq 'initializeAcademyMobileMenu' "$tmp/navjs" || good=0
-              grep -Fq '@media(max-width:420px)' "$tmp/navcss" || good=0
+              grep -Fq '@import url("/academy/academy-course-menu.v1.css")' "$tmp/navcss" || good=0
+              grep -Fq '@media(max-width:1070px)' "$tmp/menucss" || good=0
+              grep -Fq '.ta-academy-mobile{display:block}' "$tmp/menucss" || good=0
               grep -Fq "/academy/course-share.js?v=${navhash}" "$tmp/homepage" || good=0
               grep -Fq "/academy/course-share.css?v=${csshash}" "$tmp/homepage" || good=0
               for page in autocad ai category; do
