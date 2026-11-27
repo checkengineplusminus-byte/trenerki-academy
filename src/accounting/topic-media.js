@@ -3,7 +3,17 @@
  * No customer data, external image servers, remote addresses, or stock photos.
  * The reader owns static require() expressions so Expo can bundle the binaries.
  */
-const GENERATED_ASSET_IDS=new Set(['accounting-desk-01','accounting-archive-02']);
+const GENERATED_ASSET_IDS=new Set([
+ 'accounting-desk-01',
+ 'accounting-archive-02',
+ 'accounting-sales-document-2026',
+ 'accounting-digital-receipt-2026',
+ 'accounting-advance-and-settlement-2026',
+ 'accounting-invoice-correction-2026',
+ 'accounting-retail-close-2026',
+ 'accounting-stock-receipt-2026',
+ 'accounting-purchase-match-2026',
+]);
 
 export function topicPhotoAssetId(photo){
  if(!photo||typeof photo!=='object'||Array.isArray(photo))return null;
