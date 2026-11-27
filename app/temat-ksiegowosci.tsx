@@ -4,6 +4,7 @@ import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
 import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/reader-core.js';
+import {accountingSupplements} from '../src/accounting/topic-supplements.js';
 // @ts-ignore — same read-only progress rules as the 100-topic programme.
 import {buildCorePracticeProgress} from '../src/accounting/core-progress.js';
 // @ts-ignore — pure homework validation; authority remains the Supabase RPC.
@@ -144,6 +145,8 @@ export default function TematKsiegowosci(){
  const [sectionIndex,setSectionIndex]=useState(0),[exampleIndex,setExampleIndex]=useState(0),[quizIndex,setQuizIndex]=useState(0);
  const [introComplete,setIntroComplete]=useState(false);
  const [showExtraHomework,setShowExtraHomework]=useState(false),[showGlossary,setShowGlossary]=useState(false),[showSources,setShowSources]=useState(false);
+ const [workshopIndex,setWorkshopIndex]=useState<number|null>(null);
+ const [showFacts,setShowFacts]=useState(false);
  const scroll=useRef<React.ComponentRef<typeof ScrollView>>(null);
  const serial=useRef(0),owner=useRef('');
  const load=useCallback(async()=>{
@@ -180,7 +183,7 @@ export default function TematKsiegowosci(){
   }catch(e:any){if(run===serial.current)setError(e?.message||'Błąd odczytu lekcji.');}
   finally{if(run===serial.current)setBusy(false);}
  },[topic,router]);
- useEffect(()=>{setStep('learn');setSectionIndex(0);setExampleIndex(0);setQuizIndex(0);setIntroComplete(false);setShowExtraHomework(false);setShowGlossary(false);setShowSources(false);},[topic]);
+ useEffect(()=>{setStep('learn');setSectionIndex(0);setExampleIndex(0);setQuizIndex(0);setIntroComplete(false);setShowExtraHomework(false);setShowGlossary(false);setShowSources(false);setShowFacts(false);setWorkshopIndex(null);},[topic]);
  useEffect(()=>{void load();return()=>{++serial.current;};},[load]);
  useEffect(()=>{
   const {data:{subscription}}=supabase.auth.onAuthStateChange((_event,session)=>{
@@ -292,6 +295,7 @@ export default function TematKsiegowosci(){
   }
  }
  const m=lesson?.material||{};
+ const extras=React.useMemo(()=>accountingSupplements(lesson?.material),[lesson?.material]);
  const savedRows=topic!==null?Object.entries(answers).map(([exercise_id,answer])=>({topic_no:topic,exercise_id,answer})):[];
  const progress=buildCorePracticeProgress(
   topic!==null&&lesson?[{topic_no:topic,status:lesson.editorial_status}]:[],
@@ -306,9 +310,9 @@ export default function TematKsiegowosci(){
  const sections=Array.isArray(m.sections)?m.sections:[];
  const currentSection=sections[Math.min(sectionIndex,Math.max(0,sections.length-1))];
  const examples=Array.isArray(m.examples)?m.examples:[];
- const example=examples[Math.min(exampleIndex,Math.max(0,examples.length-1))];
+ const example=examples[exampleIndex];
  const tables=Array.isArray(m.tables)?m.tables:[];
- const currentTable=tables[Math.min(exampleIndex,Math.max(0,tables.length-1))];
+ const currentTable=tables[exampleIndex];
  const exercises=Array.isArray(m.exercises)?m.exercises:[];
  const currentExercise=exercises[Math.min(quizIndex,Math.max(0,exercises.length-1))];
  const guide=topic===null?null:BEGINNER_GUIDES[topic]||null;
@@ -388,6 +392,19 @@ export default function TematKsiegowosci(){
       {(currentTable.rows||[]).map((row:any[],i:number)=><View key={i} style={s.tableRow}>{row.map((value:any,j:number)=><Text key={j} style={s.cell}>{String(value)}</Text>)}</View>)}
      </View></ScrollView>
     </View>}
+    {extras.workshops.length>0&&<View style={s.card} testID="accounting-workshops">
+     <Text accessibilityRole="header" style={s.h2}>Warsztaty krok po kroku</Text>
+     {extras.workshops.map((w,i)=><View key={i} style={s.gloss}>
+       <Pressable accessibilityRole="button" accessibilityState={{expanded:workshopIndex===i}}
+         onPress={()=>setWorkshopIndex(workshopIndex===i?null:i)} style={s.accordionButton}>
+         <Text style={[s.label,{flex:1}]}>{w.title}</Text><Text style={s.label}>{workshopIndex===i?'−':'+'}</Text>
+       </Pressable>
+       {workshopIndex===i&&<View style={{gap:10}}>
+         {w.steps.map((line,j)=><View key={j} style={s.guidedStep}><Text style={s.guidedNumber}>{j+1}</Text><Text selectable style={[s.body,{flex:1}]}>{line.replace(/^\d+[.)]\s+/,'')}</Text></View>)}
+         {!!w.result&&<View style={s.resultBox}><Text style={s.label}>Wynik warsztatu</Text><Text selectable style={s.body}>{w.result}</Text></View>}
+       </View>}
+     </View>)}
+    </View>}
     <View style={s.nextControls}>
      {exampleIndex>0&&<Pressable accessibilityRole="button" style={s.backButton} onPress={()=>changePart('example',exampleIndex-1)}><Text style={s.buttonText}>← Poprzedni przykład</Text></Pressable>}
      {exampleIndex<Math.max(examples.length,tables.length)-1?<Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>changePart('example',exampleIndex+1)}><Text style={s.primaryButtonText}>Następny przykład →</Text></Pressable>:
@@ -463,19 +480,18 @@ export default function TematKsiegowosci(){
        </View>}
     </>}
 
-    {Array.isArray(m.practice.homework)&&m.practice.homework.some((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0)&&
+    {extras.homework.length>0&&
      <View style={s.card}>
       <Pressable accessibilityRole="button" accessibilityState={{expanded:showExtraHomework}} onPress={()=>setShowExtraHomework(v=>!v)} style={s.accordionButton}>
        <Text style={s.h2}>Dodatkowe polecenia</Text><Text style={s.label}>{showExtraHomework?'−':'+'}</Text>
       </Pressable>
       {showExtraHomework&&<>
-      {m.practice.homework.filter((h:any)=>typeof h?.task==='string'&&h.task.trim().length>0).map((h:any,i:number)=>
-       <View key={h.id||i} style={s.gloss}>
-        <Text style={s.label}>Zadanie {i+1}{typeof h.format==='string'?' · '+h.format:''}</Text>
-        <Text style={s.body}>{h.task}</Text>
-        {typeof h.deliverable==='string'&&h.deliverable.trim()!==''&&<Text style={s.small}>Co przygotować: {h.deliverable}</Text>}
+      {extras.homework.map((h,i)=><View key={i} style={s.gloss}>
+        <Text style={s.label}>Zadanie {i+1}{h.title?' · '+h.title:''}</Text>
+        {h.paragraphs.map((line,j)=><Text key={j} selectable style={s.body}>{line}</Text>)}
+        {!!h.deliverable&&<Text style={s.small}>Co przygotować: {h.deliverable}</Text>}
+        {hasHomework&&!!h.answer&&<Text selectable style={s.small}>Klucz do samokontroli: {h.answer}</Text>}
        </View>)}
-      <Text style={s.small}>Opisz wszystkie części w jednym rozwiązaniu poniżej, bez danych prawdziwych klientów.</Text>
       </>}
      </View>}
     <Link href={{pathname:'/biuro-ksiegowe',params:{tab:recommendedLabTab(topic)}}} style={s.link}>
@@ -495,6 +511,16 @@ export default function TematKsiegowosci(){
     <Pressable accessibilityRole="button" style={s.primaryButton} onPress={()=>goStep('summary')}><Text style={s.primaryButtonText}>Przejdź do podsumowania →</Text></Pressable>
    </View>}
    {step==='summary'&&<View style={s.stageBody}>
+    {extras.facts.length>0&&<View style={s.card} testID="accounting-additional-facts">
+     <Pressable accessibilityRole="button" accessibilityState={{expanded:showFacts}} onPress={()=>setShowFacts(!showFacts)} style={s.accordionButton}>
+      <Text style={s.h2}>Ciekawostki do tematu</Text><Text style={s.label}>{showFacts?'−':'+'}</Text>
+     </Pressable>
+     {showFacts&&extras.facts.map((f,i)=>{const url=sourceURL(f.source);return <View key={i} style={s.gloss}>
+       {!!f.title&&<Text style={s.label}>{f.title}</Text>}<Text selectable style={s.body}>{f.text}</Text>
+       {url&&<Pressable accessibilityRole="link" onPress={()=>void Linking.openURL(url).catch(()=>setWarning('Nie udało się otworzyć źródła.'))}>
+        <Text style={s.link}>{f.sourceTitle||'Źródło'}{f.checked?' · '+f.checked:''}</Text></Pressable>}
+     </View>;})}
+    </View>}
     <View style={s.card}><Text style={s.h2}>Co zapamiętać?</Text>
      {(m.takeaways||[]).map((v:string,i:number)=><View key={i} style={s.takeawayRow}><Text style={s.checkIcon}>✓</Text><Text style={[s.body,{flex:1}]}>{v}</Text></View>)}
      {!(m.takeaways||[]).length&&<Text style={s.body}>{lesson.learning_goal}</Text>}
