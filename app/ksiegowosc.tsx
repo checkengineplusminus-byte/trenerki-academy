@@ -95,7 +95,22 @@ export default function AccountingReader(){
     supabase.from('ta_accounting_progress').select('lesson_no').eq('user_id',userId).eq('lesson_no',requested).maybeSingle()
    ]);
    if(!mounted||serial!==detailSerial.current)return;
-   if(l.error||!l.data)throw new Error('Ta lekcja nie jest jeszcze dostępna na Twoim koncie. Puste pozycje programu nie są publikowane.');
+   if(l.error)throw new Error('Nie udało się pobrać lekcji. Spróbuj ponownie.');
+   if(!l.data){
+    const matches=await supabase.from('ta_accounting_core_topics_v3')
+     .select('topic_no').eq('lesson_no',requested).limit(2);
+    if(!mounted||serial!==detailSerial.current)return;
+    if(matches.error)throw new Error('Nie udało się sprawdzić odnośnika w obecnym programie.');
+    if(matches.data?.length===1){
+     router.replace({pathname:'/temat-ksiegowosci',params:{temat:String(matches.data[0].topic_no)}});
+     return;
+    }
+    if(matches.data?.length===0&&requested>=1&&requested<=100){
+     router.replace({pathname:'/temat-ksiegowosci',params:{temat:String(requested)}});
+     return;
+    }
+    throw new Error('Ten odnośnik prowadzi do starszego programu. Wybierz temat w aktualnym spisie kursu.');
+   }
    setDetail(l.data);setAnswersReady(!a.error);setAnswerMap(Object.fromEntries((a.data||[]).map(x=>[x.exercise_id,x.answer])));setBookmarked(!!b.data);setRead(!!p.data);setMarkReady(!b.error&&!p.error);
    if(a.error||b.error||p.error)setNotice('Treść odczytana, ale część zapisów osobistych jest niedostępna. Nie uznajemy brakującej odpowiedzi serwera za brak Twojego postępu.');
    scroll.current?.scrollTo({y:0,animated:false});
