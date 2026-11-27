@@ -41,7 +41,7 @@ assert.match(home,/<details class="mobile-nav"><summary>/,'Mobile menu summary m
 assert.match(home,/<a href="\/moje-kursy">Moje kursy<\/a>/,'Learner library must be reachable');
 assert.match(home,/<a href="\/konto">Moje konto<\/a>/,'Logged-in and logged-out users need account access');
 const navJS=read('academy/course-share.js');
-assert.match(navJS,/Mój profil.*\/konto/,'Standalone offers must link to profile');
+assert.match(navJS,/ta-academy-profile[^\n]*href="\/konto"/,'Standalone offers must link to profile');
 assert.match(navJS,/Moje kursy.*\/moje-kursy/,'Standalone offers must link to library');
 assert.match(navJS,/function initializeAcademyMobileMenu/,'Mobile dropdown must have accessible close behaviour');
 const premium=read('academy/premium-theme.css');

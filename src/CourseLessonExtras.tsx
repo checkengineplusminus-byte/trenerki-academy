@@ -25,7 +25,7 @@ export default function CourseLessonExtras({lessonNo,title,tips,homework,value,o
   {!!visibleTips.length&&<View testID="general-lesson-tips" style={{padding:17,borderRadius:16,borderWidth:1,borderColor:'#DCE4ED',backgroundColor:'#EFF3F8',gap:10}}>
    <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Wskazówki do tej lekcji</Text>
    {visibleTips.map((tip,i)=><View key={i} style={{flexDirection:'row',gap:11,alignItems:'flex-start'}}>
-    <View style={{width:27,height:27,borderRadius:14,backgroundColor:'#deedd5',alignItems:'center',justifyContent:'center'}}>
+    <View style={{width:27,height:27,borderRadius:14,backgroundColor:'#EFF3F8',alignItems:'center',justifyContent:'center'}}>
      <Text style={{fontSize:13,fontWeight:'900',color:ink}}>{i+1}</Text>
     </View>
     <Text style={{flex:1,fontSize:14,lineHeight:23,color:secondary}}>{tip.replace(/^\s*\d{1,3}[.)–-]\s*/u,'')}</Text>
@@ -36,11 +36,11 @@ export default function CourseLessonExtras({lessonNo,title,tips,homework,value,o
    <Text style={{fontSize:15,lineHeight:24,color:'#43596F'}}>{homework.instructions}</Text>
    <Text style={{fontSize:13,lineHeight:21,color:secondary}}>Zapisz swoje rozwiązanie, obliczenia lub wnioski. Możesz użyć bezpiecznej symulacji. Zeszyt jest prywatny. Pytanie kontrolne w lekcji jest sprawdzane osobno.</Text>
    <TextInput testID="general-lesson-homework-note" accessibilityLabel="Moje rozwiązanie zadania domowego"
-    placeholder="Moje dane, rozwiązanie, sprawdzenie i wnioski..." placeholderTextColor="#7b8777"
+    placeholder="Moje dane, rozwiązanie, sprawdzenie i wnioski..." placeholderTextColor="#49647A"
     value={value} onChangeText={text=>{onChange(text);setMessage('');}}
     multiline textAlignVertical="top" style={{minHeight:143,backgroundColor:'white',color:ink,borderColor:'#DCE4ED',borderWidth:1.5,borderRadius:11,padding:13,fontSize:15,lineHeight:23}}/>
    <Pressable testID="general-lesson-homework-save" accessibilityRole="button" disabled={saving}
-    onPress={()=>void save()} style={{backgroundColor:saving?'#71967a':ink,borderRadius:10,minHeight:46,paddingVertical:13,paddingHorizontal:18,alignSelf:'flex-start',justifyContent:'center'}}>
+    onPress={()=>void save()} style={{backgroundColor:saving?'#748DA2':ink,borderRadius:10,minHeight:46,paddingVertical:13,paddingHorizontal:18,alignSelf:'flex-start',justifyContent:'center'}}>
     <Text style={{fontWeight:'900',fontSize:15,color:'white'}}>{saving?'Zapisuję…':'Zapisz zadanie domowe'}</Text>
    </Pressable>
    {!!message&&<Text accessibilityLiveRegion="polite" style={{fontSize:13,lineHeight:20,fontWeight:'800',color:ink}}>{message}</Text>}

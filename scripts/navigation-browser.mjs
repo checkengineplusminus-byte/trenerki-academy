@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
+import {readdirSync} from 'node:fs';
 import {chromium} from 'playwright';
 const base=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
 const browser=await chromium.launch({headless:true});
 let errors=[];
-const routes=[
+const sampleRoutes=[
  '/academy/kursy/autocad-skroty.html',
  '/academy/kursy/excel-skroty.html',
  '/academy/kursy/zaufany-wolontariusz.html',
@@ -18,19 +19,31 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['tablet',{width:
  const ctx=await browser.newContext({viewport,isMobile:type==='iphone',hasTouch:type==='iphone'});
  const page=await ctx.newPage();
  try{
+  const routes=type==='tablet'?sampleRoutes:[...['kursy','kategorie'].flatMap(dir=>
+   readdirSync('public/academy/'+dir).filter(f=>f.endsWith('.html')&&!f.endsWith('-nauka.html')).map(f=>'/academy/'+dir+'/'+f)
+  ),'/academy/ksiegowosc-od-podstaw.html'];
   for(const route of routes){
    const resp=await page.goto(base+route,{waitUntil:'domcontentloaded',timeout:30000});
    assert.equal(resp?.status(),200,route+' status');
    const nav=page.locator('[data-academy-shortcuts]');
    await nav.waitFor({state:'visible',timeout:8000});
+   assert.equal(await nav.evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(12, 37, 60)',route+' menu theme');
+   if(type!=='desktop')await nav.locator('summary').click();
    assert.equal(await nav.getByRole('link',{name:'Mój profil'}).getAttribute('href'),'/konto',route+' account');
    assert.equal(await nav.getByRole('link',{name:'Moje kursy'}).getAttribute('href'),'/moje-kursy',route+' library');
    assert.equal(await nav.getByRole('link',{name:'Kursy',exact:true}).getAttribute('href'),'/academy/index.html#kursy',route+' catalogue');
    const accessible=await nav.getByRole('link',{name:'Mój profil'}).isVisible();
    assert(accessible,route+' profile link must be visible in viewport');
+   if(type!=='desktop'){
+    await page.keyboard.press('Escape');
+    assert.equal(await nav.locator('details').getAttribute('open'),null,route+' mobile dismissal');
+   }
    const bounds=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
    assert(bounds.scroll<=bounds.client+3,route+' horizontal overflow '+JSON.stringify(bounds));
   }
+  await page.goto(base+'/academy/index.html?course=excel-skroty',{waitUntil:'domcontentloaded'});
+  await page.locator('#app .course-heading').waitFor();
+  await page.getByRole('navigation',{name:'Nawigacja akademii'}).waitFor();
   const h=await page.goto(base+'/academy/index.html',{waitUntil:'domcontentloaded'});
   assert.equal(h?.status(),200);
   const acc=page.locator('header .demo-tag');
@@ -54,7 +67,7 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['tablet',{width:
   assert.equal(profile?.status(),200,'Account route must resolve through the Hosting rewrite');
   await page.getByText('Witaj ponownie!',{exact:false}).first().waitFor({state:'visible',timeout:16000});
   await page.getByPlaceholder('Adres e-mail').waitFor({state:'visible'});
-  console.log('✓ '+type+': profile navigation on eight offers/categories, mobile catalogue menu, anonymous login');
+  console.log('✓ '+type+': profile navigation on '+routes.length+' offers/categories, mobile catalogue menu, anonymous login');
   await page.screenshot({path:'/tmp/trenerki-nav-'+type+'.png',fullPage:false});
  }catch(error){
   errors.push(type+': '+String(error.stack||error));

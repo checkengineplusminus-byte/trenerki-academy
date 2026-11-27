@@ -207,10 +207,10 @@ h1,h2,h3,h4{letter-spacing:-.037em}
 .academy-footer__help{background:#0D2A42;border-color:#38536A}
 .academy-footer__founder{color:#B8C8D6}
 .academy-footer a:focus-visible{outline-color:#F1CB6E}
-body>header:not(.header):not(.academy-footer){background:#0B2238!important;color:#FFF!important;
+body>header:not(.header):not(.academy-footer):not(.ta-course-header){background:#0B2238!important;color:#FFF!important;
  border-bottom:1px solid #314963;box-shadow:none}
-body>header:not(.header):not(.academy-footer) a{color:#F8FAFC!important}
-body>header:not(.header):not(.academy-footer) a:hover{color:#F1C66C!important}
+body>header:not(.header):not(.academy-footer):not(.ta-course-header) a{color:#F8FAFC!important}
+body>header:not(.header):not(.academy-footer):not(.ta-course-header) a:hover{color:#F1C66C!important}
 body>main .eyebrow,body>main .back,body>main .back a{color:#996E21!important}
 body>main .headline{background:linear-gradient(130deg,#F9FAFC,#F0F4F8)!important;
  border-color:#E0E7EF!important}
@@ -588,3 +588,32 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
   grid-template-columns:repeat(3,minmax(0,1fr))!important
  }
 }
+
+/* Course details opened from search, recommendations and shared catalogue URLs. */
+.page-top,.story-panel,.story-outcomes,.language-intro-art,.lock-card{background:#edf3f8;color:#17354d;border-color:#d3dfeb}
+.crumb,.award-name,.story-history,.syllabus-item,.module-btn{color:#294961}
+.buy-card,.sidebar{background:#112e46;color:#f6f9fc}
+.buy-card :is(p,small),.sidebar .module-btn{color:#e3ecf2}
+.sidebar .module-btn{background:#1b3b54;border-color:#425c72}
+.sidebar .module-btn.sel{background:#efcb82;color:#172e42}
+.story-outcome,.syllabus-item{background:#fff;border-color:#d3dfe9}
+.buy-card .fine{color:#d0dce7}.sidebar .module-btn.sel{color:#17354d}
+
+body > header.header > .ta-academy-bar{display:none}
+body:has(#app .course-heading) > header.header > .ta-academy-bar{display:block}
+body:has(#app .course-heading) > header.header > .head-in{height:auto;min-height:0;justify-content:flex-end}
+body:has(#app .course-heading) > header.header > .head-in > :not(.nav-end),
+body:has(#app .course-heading) > header.header .nav-end > :not(.anielka-nav-search){display:none!important}
+body:has(#app .course-heading) > header.header .nav-end{width:100%;justify-content:flex-end}
+body:has(#app .course-heading) > header.header .anielka-nav-search{margin-block:4px}
+
+#app .award-name,#app .keyboard-teaser-keys,#app .keyboard-teaser-contrast>span{background:#edf3f8;border-color:#cddbea}
+#app .keyboard-teaser-contrast>span+span{background:#fff5df;border-color:#e7d1a2}
+#app :is(.award-name strong,.keyboard-teaser-card h3,.keyboard-teaser-contrast strong){color:#19364e}
+#app :is(.award-name span,.award-name em,.story-panel p,.story-foot,.keyboard-teaser-intro,.keyboard-teaser-disclaimer,.keyboard-teaser-contrast small,.syllabus-intro p,.story-history p){color:#4b6278}
+#app .spotlight-fallback{background:linear-gradient(145deg,#edf2f8,#d6e3ef)}
+#app .anielka-nav-greeting{color:#28455e}
+.academy-footer .academy-footer__operator{color:#bacbd9}
+.academy-footer .developer-credit a{color:#eed499}
+#app .lock-card p{color:#4b6278}
+.academy-footer :is(.academy-footer__company-link,.academy-footer__links a){color:#cedbe5}

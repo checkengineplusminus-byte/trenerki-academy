@@ -1,0 +1,25 @@
+/* Academy navigation shared by public offers and the signed-in learning screens. */
+.ta-academy-bar, .ta-academy-bar *{box-sizing:border-box}
+body > header.ta-course-header{display:block!important;position:sticky!important;top:0;z-index:65;width:100%;max-width:none;margin:0;padding:0!important;border:0!important}
+.ta-academy-bar{position:relative;z-index:65;flex:none;width:100%;font:700 14px/1.35 system-ui,-apple-system,"Segoe UI",sans-serif;background:#0c253c;color:#fff;border-bottom:2px solid #cca14e}
+.ta-academy-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:62px;max-width:1920px;margin:0 auto;padding:6px clamp(16px,3vw,48px)}
+.ta-academy-bar a,.ta-academy-bar summary{font:inherit;text-decoration:none;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 12px;color:#f2f6fa!important;cursor:pointer}
+.ta-academy-bar .ta-academy-brand{padding:0;margin-right:auto;gap:9px;letter-spacing:-.02em;color:#fff!important;font-size:17px;font-weight:850}
+.ta-academy-brand small{display:block;font-size:9px;color:#b9cbdc;letter-spacing:.19em}
+.ta-academy-mark{display:grid;place-items:center;width:36px;height:36px;border:2px solid #e5b958;border-radius:9px;color:#f4ce7d}
+.ta-academy-bar .ta-academy-profile{background:#f2cd82;color:#13263b!important;white-space:nowrap}
+.ta-academy-links{display:flex;align-items:center;gap:3px}
+.ta-academy-bar a[aria-current=page],.ta-academy-bar a:hover,.ta-academy-bar summary:hover{box-shadow:inset 0 -2px #edc775}
+.ta-academy-bar :is(a,summary):focus-visible{outline:3px solid #e6b957;outline-offset:2px}
+.ta-academy-mobile{display:none}
+@media(max-width:1070px){
+ .ta-academy-inner{min-height:54px;padding:4px 12px;gap:7px}
+ .ta-academy-links{display:none}
+ .ta-academy-mobile{display:block}
+ .ta-academy-mobile summary{list-style:none;gap:6px}
+ .ta-academy-mobile summary::-webkit-details-marker{display:none}
+ .ta-academy-mobile[open] summary{background:#203e56}
+ .ta-academy-mobile>div{position:absolute;right:12px;top:100%;width:min(300px,calc(100vw - 24px));padding:8px;background:#102e46;border:1px solid #48627a;border-radius:0 0 12px 12px;box-shadow:0 12px 24px #13263b33}
+ .ta-academy-mobile>div a{display:flex;justify-content:flex-start}
+}
+@media(max-width:370px){.ta-academy-bar .ta-academy-brand{gap:6px;font-size:14px}.ta-academy-inner{gap:2px}.ta-academy-bar summary,.ta-academy-bar .ta-academy-profile{padding-inline:9px}}

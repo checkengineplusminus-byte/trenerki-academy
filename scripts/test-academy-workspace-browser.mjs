@@ -70,7 +70,11 @@ try{
   assert.equal(await grid.locator(':scope > *').count(),Math.min(7,columns*2));
   await load('/konto');
   await page.getByText(user.email,{exact:true}).waitFor();
-  assert.equal(await page.getByRole('navigation',{name:'Nawigacja akademii'}).count(),desktop?1:0);
+  const navigation=page.getByRole('navigation',{name:'Nawigacja akademii'});
+  await navigation.waitFor();
+  if(width<=1070)await navigation.locator('summary').click();
+  assert(await navigation.getByRole('link',{name:'Moje kursy',exact:true}).isVisible());
+  if(width<=1070)await page.keyboard.press('Escape');
   await load('/nauka?course=layout-0');
   await page.getByTestId('course-reading-introduction').waitFor();
   const main=page.getByTestId('course-main-content'),side=page.getByTestId('desktop-course-sidebar');
@@ -83,7 +87,10 @@ try{
    assert(await side.evaluate(el=>el.scrollHeight>el.clientHeight));
   }else{
    assert.equal(await side.count(),0);assert(panel.width>=width-5);
-   await page.getByRole('button',{name:/Plan lekcji/}).waitFor();
+   await page.getByRole('button',{name:/Plan lekcji/}).click();
+   const second=page.getByRole('button',{name:/Lekcja 2: Temat 2/});
+   assert.match(await second.innerText(),/Temat 2/);
+   assert(await second.isDisabled());
   }
   assert(await main.evaluate(el=>el.scrollWidth<=el.clientWidth+2),'lesson overflow at '+width);
   console.log(width+'px · '+columns+' course columns · '+(desktop?'split course workspace':'compact lesson plan'));

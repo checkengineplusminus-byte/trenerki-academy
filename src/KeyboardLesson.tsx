@@ -9,9 +9,9 @@ export type KeyboardShortcut={
  combo:string;keys:string[];kind:'alias'|'hotkey';label:string;
  before:string;after:string;tip:string;platform?:string;
 };
-const muted='#526c5b';
+const muted='#49647A';
 function Keycap({value}:{value:string}){
- return <Text style={{borderRadius:7,borderWidth:1,borderBottomWidth:3,borderColor:'#b9cbbb',backgroundColor:'white',paddingHorizontal:8,paddingVertical:6,color:labInk,fontWeight:'900'}}>{value}</Text>;
+ return <Text style={{borderRadius:7,borderWidth:1,borderBottomWidth:3,borderColor:'#ADBDCC',backgroundColor:'white',paddingHorizontal:8,paddingVertical:6,color:labInk,fontWeight:'900'}}>{value}</Text>;
 }
 
 export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,alreadyVerified}:{
@@ -70,14 +70,14 @@ export default function KeyboardLesson({slug,shortcuts,tips,exercise,onAttempt,a
   {mode&&slug!=='autocad-skroty'&&<Text style={labStyles.eyebrow}>Autorski warsztat szkoleniowy. Pracujesz na danych ćwiczebnych w obrębie Akademii.</Text>}
   {alreadyVerified&&<Text style={labStyles.status}>✓ Zaliczenie skrótów zapisane. Możesz przejść dalej albo poćwiczyć ponownie.</Text>}
   {active&&options.length>=3&&<View testID={slug==='excel-skroty'?'excel-keyboard-quiz':undefined} style={{backgroundColor:labInk,padding:15,borderRadius:13,gap:10}}>
-   <Text style={{fontSize:12,fontWeight:'900',color:'#d1ebbf'}}>SPRAWDŹ WIEDZĘ</Text>
+   <Text style={{fontSize:12,fontWeight:'900',color:'#EFF3F8'}}>SPRAWDŹ WIEDZĘ</Text>
    <Text style={{fontWeight:'900',color:'white',fontSize:17,lineHeight:24}}>Które polecenie daje taki efekt? {active.after}</Text>
    {options.map((option,i)=><Pressable key={option.combo} accessibilityRole="button" disabled={verifying||quizConfirmed}
-    onPress={()=>void verify(option,i)} style={{minHeight:44,padding:12,borderRadius:9,backgroundColor:answer===i?(option.combo===active.combo?'#d8efcf':'#fff0d6'):'#f5f8f2'}}>
+    onPress={()=>void verify(option,i)} style={{minHeight:44,padding:12,borderRadius:9,backgroundColor:answer===i?(option.combo===active.combo?'#EFF3F8':'#fff0d6'):'#F7F9FC'}}>
     <Text style={{color:labInk,fontWeight:'800'}}>{String.fromCharCode(65+i)}. {option.combo} · {option.label}</Text>
    </Pressable>)}
    {!!error&&<Text style={{color:'#ffe2ac',fontWeight:'800'}}>{error}</Text>}
-   {answer!==null&&!error&&<Text style={{color:'#def2d8',fontWeight:'700',lineHeight:22}}>{quizConfirmed?'Wynik zapisany.':verifying?'Sprawdzam odpowiedź…':'Porównaj opis działania z wybranym skrótem i spróbuj ponownie.'}</Text>}
+   {answer!==null&&!error&&<Text style={{color:'#EFF3F8',fontWeight:'700',lineHeight:22}}>{quizConfirmed?'Wynik zapisany.':verifying?'Sprawdzam odpowiedź…':'Porównaj opis działania z wybranym skrótem i spróbuj ponownie.'}</Text>}
   </View>}
   {slug!=='autocad-skroty'&&!!tips?.length&&<View style={labStyles.ribbon}>
    <Text style={labStyles.heading}>Wskazówki do ćwiczenia</Text>

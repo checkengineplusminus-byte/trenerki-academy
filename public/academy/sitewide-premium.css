@@ -16,7 +16,7 @@ body.ta-info-page a:focus-visible,body.ta-affiliate-page a:focus-visible,
 body.ta-info-page button:focus-visible,body.ta-affiliate-page button:focus-visible{
  outline:3px solid #e0b253!important;outline-offset:3px
 }
-body.ta-info-page>header,body.ta-affiliate-page>header{
+body.ta-info-page>header:not(.ta-course-header),body.ta-affiliate-page>header:not(.ta-course-header){
  position:relative!important;z-index:10;
  background:linear-gradient(112deg,#071827,#0e2d47)!important;
  color:#f7faff!important;border:0!important;
@@ -24,7 +24,7 @@ body.ta-info-page>header,body.ta-affiliate-page>header{
  padding:15px clamp(16px,4vw,54px)!important;
  box-shadow:0 7px 28px rgba(9,29,47,.12)
 }
-body.ta-info-page>header a,body.ta-affiliate-page>header a{
+body.ta-info-page>header:not(.ta-course-header) a,body.ta-affiliate-page>header:not(.ta-course-header) a{
  color:#edf4fb!important;text-decoration:none;font-weight:750
 }
 body.ta-info-page>header .logo,body.ta-info-page>header .brand,
@@ -39,12 +39,12 @@ body.ta-info-page>header .logo>span,body.ta-affiliate-page>header .brand>.ta-aff
  padding:0!important;margin:0!important;font-size:18px;letter-spacing:-.05em
 }
 body.ta-affiliate-page>header .brand small{color:#bccddd;font-size:11px;font-weight:650;letter-spacing:.08em}
-body.ta-info-page>header .back,body.ta-info-page>header a:last-child,
+body.ta-info-page>header .back,body.ta-info-page>header:not(.ta-course-header) a:last-child,
 body.ta-affiliate-page>header .nav>a:last-child{
  color:#e8c47b!important;font-size:13px;
  text-decoration:none;white-space:normal;text-align:right
 }
-body.ta-info-page>header a:hover,body.ta-affiliate-page>header a:hover{color:#f5d690!important}
+body.ta-info-page>header:not(.ta-course-header) a:hover,body.ta-affiliate-page>header:not(.ta-course-header) a:hover{color:#f5d690!important}
 body.ta-info-page>main{
  max-width:1020px;padding:clamp(35px,5.8vw,75px) clamp(20px,4vw,46px) 80px;
  margin:27px auto 45px;background:#fff;
@@ -187,19 +187,19 @@ body:has(>main>nav.back):not(.ta-info-page):not(.ta-affiliate-page),
 body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page){
  background:#f5f8fc!important;color:#152940!important
 }
-body:has(>main>nav.back)>header,
-body:has(>main>a.back)>header{
+body:has(>main>nav.back)>header:not(.ta-course-header),
+body:has(>main>a.back)>header:not(.ta-course-header){
  background:linear-gradient(110deg,#071829,#102f49)!important;
  color:#f6f9ff!important;border-bottom:1px solid #37516b;
  box-shadow:0 5px 17px rgba(9,30,50,.11);
  padding:18px clamp(17px,4vw,52px)
 }
-body:has(>main>nav.back)>header a,
-body:has(>main>a.back)>header a{
+body:has(>main>nav.back)>header:not(.ta-course-header) a,
+body:has(>main>a.back)>header:not(.ta-course-header) a{
  color:#f7faff!important;font-weight:800;letter-spacing:-.02em
 }
-body:has(>main>nav.back)>header a:hover,
-body:has(>main>a.back)>header a:hover{color:#f3c76e!important}
+body:has(>main>nav.back)>header:not(.ta-course-header) a:hover,
+body:has(>main>a.back)>header:not(.ta-course-header) a:hover{color:#f3c76e!important}
 body:has(>main>nav.back)>main,
 body:has(>main>a.back)>main{
  max-width:1100px;padding-top:clamp(29px,4vw,48px)
@@ -254,7 +254,7 @@ body:has(>main>a.back)>footer{
 body:has(>main>nav.back)>footer a,
 body:has(>main>a.back)>footer a{color:#ead19a!important}
 @media(max-width:760px){
- body.ta-info-page>header,body.ta-affiliate-page>header{padding:13px 16px!important}
+ body.ta-info-page>header:not(.ta-course-header),body.ta-affiliate-page>header:not(.ta-course-header){padding:13px 16px!important}
  body.ta-info-page>header .logo>span,body.ta-affiliate-page>header .brand>.ta-affiliate-mark{
   min-width:35px;height:35px;flex-basis:35px;font-size:17px
  }
@@ -277,7 +277,7 @@ body:has(>main>a.back)>footer a{color:#ead19a!important}
 }
 @media(max-width:390px){
  body.ta-info-page>header .logo,body.ta-affiliate-page>header .brand{font-size:14px}
- body.ta-info-page>header .back,body.ta-info-page>header a:last-child{font-size:11px}
+ body.ta-info-page>header .back,body.ta-info-page>header:not(.ta-course-header) a:last-child{font-size:11px}
  body.ta-info-page>main .toc{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
@@ -285,7 +285,7 @@ body:has(>main>a.back)>footer a{color:#ead19a!important}
 }
 @media print{
  body.ta-info-page{background:#fff!important;color:#000!important}
- body.ta-info-page>header,body.ta-info-page>footer{display:none!important}
+ body.ta-info-page>header:not(.ta-course-header),body.ta-info-page>footer{display:none!important}
  body.ta-info-page>main{border:0;box-shadow:none;margin:0;padding:0;max-width:none}
  body.ta-info-page>main h1,body.ta-info-page>main h2{color:#000!important}
  body.ta-info-page>main a{color:#000!important}
@@ -301,14 +301,14 @@ body.ta-learning-redirect>footer{color:#607185}
 
 /* The legacy global stylesheet uses two :not() classes with !important on
    ordinary headers. Match its specificity without impacting the homepage. */
-body.ta-info-page>header:not(.header):not(.academy-footer),
-body.ta-affiliate-page>header:not(.header):not(.academy-footer){
+body.ta-info-page>header:not(.header):not(.academy-footer):not(.ta-course-header),
+body.ta-affiliate-page>header:not(.header):not(.academy-footer):not(.ta-course-header){
  background:linear-gradient(112deg,#071827,#0e2d47)!important;
  background-color:#071827!important;
  color:#f7faff!important;border-bottom:1px solid rgba(230,185,86,.36)!important;
 }
-body:has(>main>nav.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer),
-body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer){
+body:has(>main>nav.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer):not(.ta-course-header),
+body:has(>main>a.back):not(.ta-info-page):not(.ta-affiliate-page)>header:not(.header):not(.academy-footer):not(.ta-course-header){
  background:linear-gradient(110deg,#071829,#102f49)!important;
  background-color:#071829!important;color:#f6f9ff!important;
  border-bottom:1px solid #37516b!important;
@@ -393,3 +393,25 @@ body:has(>main>nav.back) > main .back a{
   grid-template-columns:repeat(5,minmax(0,1fr))!important
  }
 }
+
+/* Course offers, category indexes and the specialist AI and accounting offers. */
+body > header.ta-course-header{padding:0!important;background:linear-gradient(110deg,#0b2136,#14334e)!important}
+body > header.ta-course-header .ta-academy-bar a.ta-academy-profile{color:#13263b!important}
+body:has(.ta-course-header){background:#f5f8fc;color:#162c42}
+.ta-course-header~main .headline,.accounting-landing .curiosity-box{background:linear-gradient(120deg,#fffaf0,#edf3f9);border-color:#d8e2eb;color:#17354d}
+.ta-course-header~main :is(.lead,.lede,.program li,.stage p,.section-lead){color:#455d72}
+.ta-course-header~main :is(.eyebrow,.back,.related small,.curiosity-label){color:#48637b}
+.ta-course-header~main :is(.checkout,.stage-icon),.accounting-landing .buy{background:#102d46;color:#fff}
+.ta-course-header~main .checkout :is(.cap,p,.subbutton),.accounting-landing .buy p{color:#e0e9f2}
+.ta-course-header~main .checkout .button,.accounting-landing .buy .btn{background:#efcb82;color:#14283b}
+.ta-course-header~main :is(.info span,.tag,.category-links a,.skills-list li,.stats span){color:#18354d;border-color:#ccd9e4;background:#eef3f8}
+.ta-course-header~main :is(.related a,.grid article,.stage,.box){border-color:#d6e1eb;color:#1c3c55}
+.ta-course-header~main .grid b{color:#705322}
+.ta-course-header~footer{background:#102a40;color:#e3ebf3}
+.ta-course-header~footer a{color:#f5d899}
+.ta-course-header~main .examples{background:#edf3f8;border-color:#cfdce7;color:#1c384f}
+.ta-course-header~main .examples p{color:#455d72}
+.ta-course-header~main .stage-icon{box-shadow:0 3px 0 #bf9652}
+
+.ta-course-header~main .stage :is(ol,small),.ta-course-header~main .stages small,.accounting-landing :is(.curiosity-box,.learning-includes) p{color:#496279}
+.accounting-landing .skills-list strong{color:#17354d}

@@ -22,7 +22,7 @@ export default function LessonClarification({courseSlug,lessonNo}:{
  },[courseSlug,lessonNo]);
  if(!note)return null;
  return <View testID="anielka-auto-clarification" style={{
-  borderLeftWidth:4,borderLeftColor:'#75ac85',borderRadius:12,
+  borderLeftWidth:4,borderLeftColor:'#748DA2',borderRadius:12,
   backgroundColor:'#EFF3F8',padding:15,marginVertical:12,gap:8
  }}>
   <Pressable accessibilityRole="button" accessibilityState={{expanded:open}}
