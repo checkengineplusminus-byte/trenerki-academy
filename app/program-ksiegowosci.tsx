@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react';
 import {ActivityIndicator,Image,Pressable,ScrollView,StyleSheet,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import {Link,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import FinalExam from '../src/FinalExam';
 // @ts-ignore — niezależnie testowany pomocnik rozróżnia stan bazy i widoczność RLS.
 import {materialCoverageKnown,materialCount} from '../src/accounting/program-visibility.js';
 // @ts-ignore — read-only per-exercise progress, checked against visible materials and private answers.
@@ -260,6 +261,7 @@ export default function ProgramKsiegowosci(){
    {isEditor&&<Pressable accessibilityRole="button" onPress={()=>{setShowEditorial(v=>!v);setFilter('all');setExpanded(null);}} style={s.editorToggle}><Text style={s.small}>{showEditorial?'Ukryj panel redakcyjny':'Panel redakcyjny'}</Text></Pressable>}
    <Text style={s.small}>Ćwiczenia korzystają z fikcyjnych danych i nie zastępują porady księgowej ani podatkowej.</Text>
    <Link href="/biuro-ksiegowe" style={s.link}>🧰 Otwórz biuro ćwiczeniowe</Link>
+   <FinalExam courseSlug="ksiegowosc-od-podstaw"/>
   </>}
  </ScrollView>;
 }

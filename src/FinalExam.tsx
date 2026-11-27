@@ -7,10 +7,10 @@ type Cert={id:string;certificate_no:string;holder_name:string;title_pl:string;is
 type History={question:string;answer:string;correct:boolean;feedback:string};
 type Session={id?:string;phase?:string;step:number;correct:number;wrong:number;question:string;history:History[];holder_name:string;is_demo:boolean;grading_mode?:'oral'|'choice';options?:string[]};
 type Api={ok?:boolean;state?:'ready'|'not_ready'|'in_progress'|'passed'|'failed';available?:boolean;
- completed?:number;total?:number;session?:Session|null;certificate?:Cert;
+ completed?:number;total?:number;month_complete?:boolean;session?:Session|null;certificate?:Cert;
  session_id?:string;step?:number;question?:string;phase?:string;correct?:number;wrong?:number;feedback?:string;
  answer_correct?:boolean;announcement?:string;message?:string;error?:string;grading_mode?:'oral'|'choice';options?:string[];fallback_available?:boolean};
-const ink='#173e2d';
+const ink='#17354D';
 const mapError=(code:string)=>({
  course_not_owned:'Nie masz aktualnego dostępu do tego kursu.',
  lessons_incomplete:'Ukończ wymagane lekcje przed egzaminem.',
@@ -33,6 +33,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const [answer,setAnswer]=useState(''),[question,setQuestion]=useState(''),[phase,setPhase]=useState('practice');
  const [correct,setCorrect]=useState(0),[wrong,setWrong]=useState(0),[history,setHistory]=useState<History[]>([]);
  const [message,setMessage]=useState(''),[error,setError]=useState(''),[cert,setCert]=useState<Cert|null>(null);
+ const [readiness,setReadiness]=useState<{completed:number;total:number;monthComplete?:boolean}|null>(null);
  const [gradingMode,setGradingMode]=useState<'oral'|'choice'>('oral'),[options,setOptions]=useState<string[]>([]),[selectedOption,setSelectedOption]=useState<number|null>(null);
  const call=async(action:'status'|'start'|'answer'|'switch_mode',fields:Record<string,unknown>={})=>{
   const {data,error:e}=await supabase.functions.invoke<Api>('ta-exam',{body:{action,course_slug:courseSlug,...fields}});
@@ -49,6 +50,7 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const apply=(r:Api)=>{
   if(r.state)setState(r.state);
   if(r.available!==undefined)setAvailable(r.available);
+  if(r.completed!==undefined&&r.total!==undefined)setReadiness({completed:r.completed,total:r.total,monthComplete:r.month_complete});
   if(r.certificate)setCert(r.certificate);
   if(r.session){
    const s=r.session;if(s.id)setAttempt({id:s.id,step:s.step});setQuestion(s.question);setPhase(s.phase||'practice');setCorrect(s.correct);
@@ -103,61 +105,70 @@ export default function FinalExam({courseSlug}:{courseSlug:string}){
  const button=(label:string,onPress:()=>void,disabled=false)=><Pressable accessibilityRole="button" disabled={disabled} onPress={onPress} style={{padding:15,backgroundColor:ink,borderRadius:11,opacity:disabled?.45:1}}>
   <Text style={{color:'white',textAlign:'center',fontWeight:'900'}}>{label}</Text>
  </Pressable>;
- return <View style={{marginTop:25,padding:20,backgroundColor:'#e7f2e1',borderRadius:19,borderWidth:1,borderColor:'#cde5c6',gap:13}}>
-  <Text style={{color:'#668466',fontSize:12,fontWeight:'900'}}>ETAP KOŃCOWY · OSOBNY OD POSTĘPU LEKCJI</Text>
+ return <View style={{marginTop:25,padding:20,backgroundColor:'#EFF3F8',borderRadius:19,borderWidth:1,borderColor:'#D8E2EB',gap:13}}>
+  <Text style={{color:'#49647A',fontSize:12,fontWeight:'900'}}>ETAP KOŃCOWY · OSOBNY OD POSTĘPU LEKCJI</Text>
   <Text style={{color:ink,fontWeight:'900',fontSize:24}}>Egzamin końcowy</Text>
-  <Text style={{color:'#516e58',lineHeight:23}}>Sprawdzimy, czego nauczyłeś się podczas kursu. Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. Jeżeli się pomylisz, dostaniesz jeszcze jedną szansę. Po zaliczeniu otrzymasz autorski dyplom z imieniem, nazwiskiem i datą ukończenia.</Text>
+  <Text style={{color:'#49647A',lineHeight:23}}>Sprawdzimy, czego nauczyłeś się podczas kursu. Po pięciu prawidłowych odpowiedziach otrzymasz pytanie finałowe. Jeżeli się pomylisz, dostaniesz jeszcze jedną szansę. Po zaliczeniu otrzymasz autorski dyplom z imieniem, nazwiskiem i datą ukończenia.</Text>
   {loading&&<ActivityIndicator color={ink}/>}
+  {!loading&&state==='not_ready'&&<View style={{gap:10}}>
+   <Text style={{color:ink,lineHeight:23}}>Ukończone tematy: {readiness?.completed??0}/{readiness?.total??0}.</Text>
+   {courseSlug==='ksiegowosc-od-podstaw'&&<>
+    <Text style={{color:ink,lineHeight:23}}>Przed egzaminem popraw wszystkie ćwiczenia, oddaj prace domowe i uzgodnij miesiąc D01–D36 w biurze.</Text>
+    <Text style={{color:ink,lineHeight:23}}>Miesiąc w biurze: {readiness?.monthComplete?'uzgodniony':'do dokończenia'}.</Text>
+    {button('Otwórz biuro ćwiczeniowe',()=>router.push('/biuro-ksiegowe'))}
+   </>}
+   {button('Sprawdź ponownie gotowość',()=>void refresh())}
+  </View>}
   {!loading&&state==='ready'&&<View style={{gap:12}}>
    {!available?<Text style={{color:'#8b5941',lineHeight:22}}>Egzamin jest chwilowo niedostępny. Twoja dotychczasowa nauka pozostaje zapisana.</Text>:<>
     <Text style={{fontWeight:'900',color:ink}}>Imię i nazwisko na dyplomie</Text>
-    <TextInput value={name} maxLength={120} onChangeText={setName} placeholder="Imię i nazwisko" style={{backgroundColor:'white',color:ink,borderColor:'#b8d3b7',borderWidth:1,borderRadius:11,padding:13,fontSize:16}}/>
-    <Text style={{fontSize:12,color:'#647b69',lineHeight:20}}>Dane na dokumencie są deklarowane przez użytkownika; nie stanowią potwierdzenia tożsamości.</Text>
+    <TextInput accessibilityLabel="Imię i nazwisko na dyplomie" value={name} maxLength={120} onChangeText={setName} placeholder="Imię i nazwisko" style={{backgroundColor:'white',color:ink,borderColor:'#D8E2EB',borderWidth:1,borderRadius:11,padding:13,fontSize:16}}/>
+    <Text style={{fontSize:12,color:'#49647A',lineHeight:20}}>Dane na dokumencie są deklarowane przez użytkownika; nie stanowią potwierdzenia tożsamości.</Text>
     {button('Rozpocznij egzamin',start,busy||name.trim().length<3)}
    </>}
   </View>}
   {!loading&&state==='in_progress'&&<View style={{gap:13}}>
    <Text style={{fontSize:14,fontWeight:'900',color:ink}}>Poprawne odpowiedzi: {correct}/5 · Błędy: {wrong}</Text>
-   <Text style={{color:'#4f7455',fontSize:12,fontWeight:'800'}}>{gradingMode==='choice'?'Pytania jednokrotnego wyboru':'Odpowiedzi własnymi słowami'}</Text>
-   <View style={{height:9,backgroundColor:'#cadec4',borderRadius:7,overflow:'hidden'}}><View style={{height:9,width:Math.min(100,correct/5*100)+'%',backgroundColor:'#72ae79'}}/></View>
-   {phase==='final'&&<Text style={{fontWeight:'900',color:'#316d42'}}>Gratulacje! Pięć poprawnych odpowiedzi — ostatnie pytanie przed zaliczeniem.</Text>}
+   <Text style={{color:'#49647A',fontSize:12,fontWeight:'800'}}>{gradingMode==='choice'?'Pytania jednokrotnego wyboru':'Odpowiedzi własnymi słowami'}</Text>
+   <View style={{height:9,backgroundColor:'#D8E2EB',borderRadius:7,overflow:'hidden'}}><View style={{height:9,width:Math.min(100,correct/5*100)+'%',backgroundColor:'#748DA2'}}/></View>
+   {phase==='final'&&<Text style={{fontWeight:'900',color:'#49647A'}}>Gratulacje! Pięć poprawnych odpowiedzi — ostatnie pytanie przed zaliczeniem.</Text>}
    {phase==='extra'&&<Text style={{fontWeight:'900',color:'#98682b'}}>To dodatkowa szansa po pytaniu finałowym. Zastanów się dokładnie.</Text>}
    {!!history.length&&<View style={{gap:8}}>
     {history.slice(-2).map((h,i)=><View key={i} style={{padding:11,backgroundColor:'white',borderRadius:10}}>
-     <Text style={{fontWeight:'900',color:h.correct?'#337249':'#9f6940'}}>{h.correct?'✓ Dobrze':'✕ Wymaga poprawy'}</Text>
-     <Text style={{color:'#526c55',fontSize:12,lineHeight:19}}>{h.feedback}</Text>
+     <Text style={{fontWeight:'900',color:h.correct?'#49647A':'#9f6940'}}>{h.correct?'✓ Dobrze':'✕ Wymaga poprawy'}</Text>
+     <Text style={{color:'#49647A',fontSize:12,lineHeight:19}}>{h.feedback}</Text>
     </View>)}
    </View>}
    <View style={{backgroundColor:'white',padding:17,borderRadius:12,gap:9}}>
-    <Text style={{color:'#53805c',fontWeight:'900'}}>PYTANIE EGZAMINACYJNE</Text>
+    <Text style={{color:'#49647A',fontWeight:'900'}}>PYTANIE EGZAMINACYJNE</Text>
     <Text style={{color:ink,fontWeight:'800',fontSize:17,lineHeight:27}}>{question}</Text>
    </View>
    {gradingMode==='choice'?<View style={{gap:9}}>
-    {options.map((option,i)=><Pressable accessibilityRole="button" key={i} onPress={()=>setSelectedOption(i)} style={{padding:15,backgroundColor:selectedOption===i?'#d2ebca':'white',borderWidth:selectedOption===i?2:1,borderColor:selectedOption===i?'#377746':'#c2d7b9',borderRadius:11}}>
+    {options.map((option,i)=><Pressable accessibilityRole="button" accessibilityState={{selected:selectedOption===i}} key={i} onPress={()=>setSelectedOption(i)} style={{padding:15,backgroundColor:selectedOption===i?'#FFF4DB':'white',borderWidth:selectedOption===i?2:1,borderColor:selectedOption===i?'#A57626':'#D8E2EB',borderRadius:11}}>
      <Text style={{color:ink,fontWeight:selectedOption===i?'900':'700',lineHeight:23}}>{String.fromCharCode(65+i)}. {option}</Text>
     </Pressable>)}
    </View>:<>
-   <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#bdd4b7',borderRadius:11,fontSize:15,color:ink}}/></>}
+   <TextInput value={answer} onChangeText={setAnswer} multiline maxLength={1200} placeholder="Opisz dokładnie, co zrobisz i dlaczego. Podaj, jak sprawdzisz wynik..." style={{backgroundColor:'white',padding:15,minHeight:130,textAlignVertical:'top',borderWidth:1,borderColor:'#D8E2EB',borderRadius:11,fontSize:15,color:ink}}/></>}
    {button(busy?'Sprawdzanie odpowiedzi…':'Zatwierdź odpowiedź',send,busy||(gradingMode==='choice'?selectedOption===null:answer.trim().length<20))}
-   {gradingMode==='oral'&&<Pressable accessibilityRole="button" onPress={switchMode} disabled={busy} style={{padding:13,backgroundColor:'#f2f7ec',borderRadius:11,borderWidth:1,borderColor:'#c9ddc4'}}>
+   {gradingMode==='oral'&&<Pressable accessibilityRole="button" onPress={switchMode} disabled={busy} style={{padding:13,backgroundColor:'#F7F9FC',borderRadius:11,borderWidth:1,borderColor:'#D8E2EB'}}>
     <Text style={{color:ink,fontWeight:'800',textAlign:'center'}}>Wolę pytania jednokrotnego wyboru — zachowaj mój postęp</Text>
    </Pressable>}
   </View>}
   {!loading&&state==='failed'&&<View style={{gap:12}}>
    <Text style={{color:ink,fontWeight:'900',fontSize:18}}>Tym razem nie udało się zaliczyć.</Text>
-   <Text style={{color:'#526c55',lineHeight:22}}>Wróć do trudnych tematów i wykonaj nowe podejście. Wynik tej próby został zapisany.</Text>
+   <Text style={{color:'#49647A',lineHeight:22}}>Wróć do trudnych tematów i wykonaj nowe podejście. Wynik tej próby został zapisany.</Text>
    {button('Spróbuj jeszcze raz',()=>{setState('ready');setHistory([]);setCorrect(0);setWrong(0);},busy)}
   </View>}
   {!loading&&state==='passed'&&<View style={{gap:12}}>
-   <Text style={{color:'#205c35',fontWeight:'900',fontSize:19}}>Gratulacje! Zaliczyłeś egzamin.</Text>
+   <Text style={{color:'#17354D',fontWeight:'900',fontSize:19}}>Gratulacje! Zaliczyłeś egzamin.</Text>
    {!!cert&&<Text style={{color:ink,lineHeight:23}}>Dyplom: {cert.certificate_no}{cert.is_demo?' · WZÓR TESTOWY — NIEWAŻNY':''}</Text>}
    {button('Zobacz autorski dyplom',()=>router.push({pathname:'/dyplom',params:{course:courseSlug}}),!cert)}
   </View>}
-  {!!message&&<Text style={{padding:12,borderRadius:10,backgroundColor:'white',color:'#355e3e',lineHeight:22,fontWeight:'700'}}>{message}</Text>}
+  {!!message&&<Text style={{padding:12,borderRadius:10,backgroundColor:'white',color:'#17354D',lineHeight:22,fontWeight:'700'}}>{message}</Text>}
   {!!error&&<View style={{gap:9,padding:12,backgroundColor:'#fff0e7',borderRadius:11}}>
    <Text style={{color:'#984d34',lineHeight:21}}>{error}</Text>
    <Pressable onPress={()=>void refresh()}><Text style={{fontWeight:'900',color:ink}}>Odśwież stan egzaminu</Text></Pressable>
   </View>}
-  <Text style={{color:'#768a75',fontSize:12,lineHeight:19}}>Niezależny dyplom TRENERKI nie jest kwalifikacją zawodową.</Text>
+  <Text style={{color:'#748DA2',fontSize:12,lineHeight:19}}>Niezależny dyplom TRENERKI nie jest kwalifikacją zawodową.</Text>
  </View>;
 }
