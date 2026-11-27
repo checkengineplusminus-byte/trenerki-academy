@@ -320,7 +320,7 @@ export function mountLab(root,db,initialTab='start'){
    needsWork=d=>!checkJournalAttempt(scenario,d.id,attempts[d.id]).correct;
   }else{
    const answers=readScenarioAnswers(ws.state);
-   needsWork=d=>answers[d.id]!==d.kind;
+   needsWork=d=>!checkScenarioAnswer(d,answers[d.id]).correct;
   }
   const start=docs.findIndex(d=>d.id===current)+1;
   return docs.slice(start).find(needsWork)||docs.slice(0,start).find(needsWork)||null;
@@ -558,7 +558,7 @@ export function mountLab(root,db,initialTab='start'){
   const previous=answers[doc.id],checked=previous?checkScenarioAnswer(doc,previous):null;
   const docList=docs.map(d=>'<option value="'+e(d.id)+'" '+(d.id===doc.id?'selected':'')+'>'+e(d.id+' · '+d.title)+'</option>').join('');
   const kindList='<option value="">Wybierz rodzaj dokumentu</option>'+Object.entries(CLASS_KINDS).map(([kind,label])=>'<option value="'+e(kind)+'" '+(previous===kind?'selected':'')+'>'+e(label)+'</option>').join('');
-  const rows=docs.map(d=>'<tr><td>'+e(d.id)+'</td><td>'+e(d.date)+'</td><td>'+e(d.title)+'</td><td>'+(!answers[d.id]?'Niepróbowany':answers[d.id]===d.kind?'Rozpoznany':'Do poprawy')+'</td></tr>');
+  const rows=docs.map(d=>'<tr><td>'+e(d.id)+'</td><td>'+e(d.date)+'</td><td>'+e(d.title)+'</td><td>'+(!answers[d.id]?'Niepróbowany':checkScenarioAnswer(d,answers[d.id]).correct?'Rozpoznany':'Do poprawy')+'</td></tr>');
   return '<section class="card"><span class="pill">STYCZEŃ 2026 · FIKCYJNA SPÓŁKA</span><h2>Rozpoznaj 36 dokumentów z jednego miesiąca</h2>'+
    '<p>To pierwszy działający etap praktyki: rozpoznanie źródła, a nie kompletne księgowanie ani egzamin. Wszystkie odpowiedzi zapisują się w Twoim prywatnym biurze po naciśnięciu przycisku. Nie wysyłamy nic do banku, KSeF ani urzędu.</p>'+
    '<p class="notice">Odpowiedzi zapisane: <strong>'+summary.attempted+'/36</strong> · poprawnie rozpoznane: <strong>'+summary.correct+'/36</strong>. Nie stanowi to odbioru pełnego symulatora D01–D36.</p>'+
@@ -806,7 +806,7 @@ export function mountLab(root,db,initialTab='start'){
      if(!canWrite||!scenario)throw new Error('Ten etap wymaga dostępu do kursu.');
      const current=scenario.documents.find(d=>d.id===id);
      await commit(withScenarioAnswer(ws.state,scenario,id,choice));
-     if(current&&choice===current.kind){
+     if(current&&checkScenarioAnswer(current,choice).correct){
       const next=nextUnresolvedDocument(id,'classification');
       if(next)scenarioDoc=next.id;
      }
