@@ -154,7 +154,7 @@ try{
   await page.getByText('Odbierz prezent →',{exact:true}).click();
   await page.waitForURL(url=>url.pathname==='/konto'&&url.searchParams.get('gift')===sample.canonical);
   await page.getByPlaceholder('Adres e-mail',{exact:true}).fill('recipient@example.test');
-  await page.getByPlaceholder('Hasło (minimum 8 znaków)',{exact:true}).fill('test-password');
+  await page.getByLabel('Hasło',{exact:true}).fill('test-password');
   await page.getByText('Zaloguj się',{exact:true}).click();
   await page.waitForURL(url=>url.pathname==='/prezent'&&url.searchParams.get('code')===sample.canonical);
   await entered.waitFor();assert.equal(await entered.inputValue(),sample.canonical,'login must retain the code');
