@@ -87,6 +87,7 @@ jobs:
           node scripts/gift-card-ui-state.test.mjs
           node --experimental-default-type=module --test scripts/test-course-progress.mjs
           node --test scripts/test-exam-readiness.mjs
+          node --test scripts/test-accounting-final-exam.mjs
           node --test scripts/test-autocad-dxf.mjs
           node --experimental-strip-types --test scripts/test-autocad-full-manual-v3.mjs
           node --experimental-strip-types --test scripts/test-cad-restored.mjs
@@ -105,6 +106,7 @@ jobs:
           node scripts/company-browser.mjs http://127.0.0.1:8787
           node scripts/test-affiliate-short-browser.mjs http://127.0.0.1:8787
           node scripts/gift-card-browser.mjs http://127.0.0.1:8787
+          node scripts/accounting-exam-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()
         uses: actions/upload-artifact@v4
