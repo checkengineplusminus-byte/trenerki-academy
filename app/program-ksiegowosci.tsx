@@ -1,5 +1,5 @@
 import React,{useEffect,useState} from 'react';
-import {ActivityIndicator,Pressable,ScrollView,StyleSheet,Text,TextInput,View,useWindowDimensions} from 'react-native';
+import {ActivityIndicator,Image,Pressable,ScrollView,StyleSheet,Text,TextInput,View,useWindowDimensions} from 'react-native';
 import {Link,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 // @ts-ignore — niezależnie testowany pomocnik rozróżnia stan bazy i widoczność RLS.
@@ -17,18 +17,6 @@ type Topic={
 };
 type MaterialStats={sections:number;examples:number;exercises:number;tables:number;glossary:number;editorial_status:string};
 
-const tiles=[
- {icon:'📗',title:'Podstawy',subtitle:'Rachunkowość'},
- {icon:'🧾',title:'Faktury',subtitle:'Dokumenty i KSeF'},
- {icon:'🧮',title:'Podatki',subtitle:'VAT, PIT, CIT'},
- {icon:'🌍',title:'Zagranica',subtitle:'UE i rozliczenia'},
- {icon:'👥',title:'Kadry i płace',subtitle:'ZUS i pracownicy'},
- {icon:'📊',title:'Pełne księgi',subtitle:'Sprawozdania'},
- {icon:'🏢',title:'Firmy',subtitle:'Rejestry i zmiany'},
- {icon:'🏭',title:'Branże',subtitle:'Zastosowania'},
- {icon:'🎬',title:'Twórcy',subtitle:'Internet i finanse'},
- {icon:'💻',title:'Excel',subtitle:'Analiza i symulator'},
-];
 const sections=[
  'Podstawy rachunkowości i matematyka',
  'Dokumenty, faktury, KSeF i rozrachunki',
@@ -173,11 +161,26 @@ export default function ProgramKsiegowosci(){
  const nextLesson=nextActual??firstAvailable;
  const hasStarted=savedAnswers.length>0||submittedHomeworks.some((r:any)=>!!r.submitted_at);
 
+ function renderTopic(topic:Topic){
+      const stats=materialStats[topic.topic_no];
+      const exercise=practice.known?practice.byTopic[topic.topic_no]:null;
+      return <View key={topic.topic_no} style={s.lessonTile}>
+       <View style={s.lessonBadge}><Text style={s.lessonBadgeText}>{String(topic.topic_no).padStart(2,'0')}</Text></View>
+       <View style={{flex:1,gap:7,minWidth:0}}>
+        <Text style={s.lessonTitle}>{topic.title_pl}</Text>
+        {exercise&&<Text style={s.small}>Ćwiczenia: {exercise.correct}/{exercise.total} poprawnych</Text>}
+        {stats
+         ?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} accessibilityLabel={'Otwórz lekcję '+topic.topic_no+': '+topic.title_pl} style={s.lessonLink}>Otwórz lekcję →</Link>
+         :<Text style={s.lessonUnavailable}>Materiał obecnie niedostępny</Text>}
+        {isEditor&&showEditorial&&<Text style={s.small}>Redakcja: {statusLabels[topic.status]} · {stats?stats.sections+' części opracowania':'brak odczytu materiału'}</Text>}
+       </View>
+      </View>;
+ }
  return <ScrollView style={s.page} contentContainerStyle={s.wrap} keyboardShouldPersistTaps="handled">
   <View style={s.nav}><Link href="/moje-kursy" style={s.link}>← Moje kursy</Link></View>
-  <Text style={s.eyebrow}>TRENERKI · NAUKA KROK PO KROKU</Text>
+
   <Text accessibilityRole="header" style={s.h1}>Księgowość</Text>
-  <Text style={s.body}>10 działów · 100 tematów. Wybierz, czego chcesz się nauczyć.</Text>
+
   {isEditor&&showEditorial&&<Pressable accessibilityRole="button" onPress={()=>setReload(x=>x+1)} style={s.refresh}><Text style={s.link}>Odśwież stan z bazy</Text></Pressable>}
   {busy&&<ActivityIndicator accessibilityLabel="Odczytywanie programu i stanu opracowań"/>}
   {!!error&&<Text accessibilityRole="alert" style={s.warning}>{error}</Text>}
@@ -185,30 +188,16 @@ export default function ProgramKsiegowosci(){
   {!!answersError&&<Text accessibilityRole="alert" style={s.warning}>{answersError}</Text>}
   {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
-   <View style={s.startCard}>
-    {nextLesson!==null?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextLesson)}}} style={s.startLink}>{hasStarted?'▶ Kontynuuj':'▶ Rozpocznij od zera'} · temat {nextLesson}</Link>:<Text style={s.body}>Wybierz dział poniżej, aby zobaczyć lekcje.</Text>}
-    <Pressable accessibilityRole="button" onPress={()=>setShowProgress(v=>!v)} style={s.progressToggle}>
-     <Text style={s.link}>{showProgress?'Ukryj postęp':'Mój postęp'}</Text>
-    </Pressable>
+   <View style={[s.startCard,{flexDirection:mobile?'column':'row-reverse'}]}>
+    <Image accessible={false} resizeMode="cover" source={require('../assets/accounting/generated/accounting-desk-01.webp')} style={mobile?{width:'100%',height:104}:{width:'38%',alignSelf:'stretch'}}/>
+    <View style={s.startCopy}>
+     <Text style={s.startKicker}>{hasStarted?'TWOJA NAUKA':'PIERWSZA LEKCJA'}</Text>
+     <Text accessibilityRole="header" style={s.startTitle}>{topics.find(t=>t.topic_no===nextLesson)?.title_pl||'Program kursu'}</Text>
+     <Text style={s.startBody}>W lekcji poznasz pojęcia, zobaczysz przykład i samodzielnie rozwiążesz zadanie.</Text>
+     {nextLesson!==null&&<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(nextLesson)}}} style={s.startLink}>{hasStarted?'Kontynuuj naukę':'Rozpocznij od zera'} · temat {nextLesson} →</Link>}
+    </View>
    </View>
-   <View style={s.searchCard}>
-    <TextInput value={search} onChangeText={setSearch} placeholder="🔎 Znajdź temat lub numer lekcji…" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
-    {(!!term||showEditorial)&&<View style={s.filters}>
-     {filters.filter(f=>(isEditor&&showEditorial)||f.key==='all'||f.key==='draft').map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
-       onPress={()=>setFilter(f.key)} style={[s.pill,filter===f.key&&s.pillActive]}>
-      <Text style={[s.pillText,filter===f.key&&s.pillTextActive]}>{!isEditor&&f.key==='draft'?'Udostępnione lekcje':f.label}</Text>
-     </Pressable>)}
-    </View>}
-    {!!term&&<Text style={s.small}>Znaleziono {visible.length} tematów.</Text>}
-   </View>
-   {isEditor&&showEditorial&&<View style={s.grid}>
-    <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
-    <View style={s.metric}><Text style={s.metricNumber}>{authoredCount===null?'—':authoredCount}</Text><Text style={s.small}>Zapisane opracowania w bazie (także nieudostępnione)</Text></View>
-    <View style={s.metric}><Text style={s.metricNumber}>{toReview}</Text><Text style={s.small}>Status: do recenzji</Text></View>
-    <View style={s.metric}><Text style={s.metricNumber}>{planned}</Text><Text style={s.small}>Status: planowane</Text></View>
-    <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?total-draftCount:'—'}</Text><Text style={s.small}>Bez nowego opracowania (potwierdzone)</Text></View>
-    <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?olderOnly:'—'}</Text><Text style={s.small}>Tylko odnośnik do starszej lekcji</Text></View>
-   </View>}
+   <Pressable accessibilityRole="button" accessibilityState={{expanded:showProgress}} onPress={()=>setShowProgress(v=>!v)} style={s.progressToggle}><Text style={s.link}>{showProgress?'Ukryj postęp':'Mój postęp'}</Text></Pressable>
    {showProgress&&<View style={s.card}>
     <Text style={s.label}>Twoje ćwiczenia i prace domowe — zapisane na koncie</Text>
     {practice.known?
@@ -225,77 +214,48 @@ export default function ProgramKsiegowosci(){
     :<Text style={s.warning}>Postęp nie został ustalony, ponieważ odczyt odpowiedzi lub materiałów jest niekompletny. Niczego nie wyzerowano.</Text>}
    </View>}
 
+   <View style={s.searchCard}>
+    <TextInput value={search} onChangeText={setSearch} placeholder="Szukaj, np. faktura lub numer lekcji" autoCorrect={false} accessibilityLabel="Szukaj tematu" style={s.input}/>
+    {(!!term||showEditorial)&&<View style={s.filters}>
+     {filters.filter(f=>(isEditor&&showEditorial)||f.key==='all'||f.key==='draft').map(f=><Pressable key={f.key} accessibilityRole="button" accessibilityState={{selected:filter===f.key}}
+       onPress={()=>setFilter(f.key)} style={[s.pill,filter===f.key&&s.pillActive]}>
+      <Text style={[s.pillText,filter===f.key&&s.pillTextActive]}>{!isEditor&&f.key==='draft'?'Udostępnione lekcje':f.label}</Text>
+     </Pressable>)}
+    </View>}
+    {!!term&&<Text style={s.small}>Znaleziono {visible.length} tematów.</Text>}
+   </View>
+   {isEditor&&showEditorial&&<View style={s.grid}>
+    <View style={s.metric}><Text style={s.metricNumber}>{finished}/{total}</Text><Text style={s.small}>Ukończone i odebrane</Text></View>
+    <View style={s.metric}><Text style={s.metricNumber}>{authoredCount===null?'—':authoredCount}</Text><Text style={s.small}>Zapisane opracowania w bazie (także nieudostępnione)</Text></View>
+    <View style={s.metric}><Text style={s.metricNumber}>{toReview}</Text><Text style={s.small}>Status: do recenzji</Text></View>
+    <View style={s.metric}><Text style={s.metricNumber}>{planned}</Text><Text style={s.small}>Status: planowane</Text></View>
+    <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?total-draftCount:'—'}</Text><Text style={s.small}>Bez nowego opracowania (potwierdzone)</Text></View>
+    <View style={s.metric}><Text style={s.metricNumber}>{coverageKnown?olderOnly:'—'}</Text><Text style={s.small}>Tylko odnośnik do starszej lekcji</Text></View>
+   </View>}
    {isEditor&&showEditorial&&materialsReady&&<View style={s.notice}>
     <Text style={s.label}>Zawartość zapisanych nowych opracowań</Text>
     <Text style={s.body}>{assets.sections} części · {assets.examples} przykładów · {assets.exercises} zadań · {assets.tables} tabel · {assets.glossary} haseł słownika.</Text>
     <Text style={s.small}>To liczba zapisanych elementów, nie wynik końcowego odbioru. Osobno pozostają testy zalogowanego użytkownika, praktyka, zgodność prawa i kontrola jakości.</Text>
    </View>}
-   <View style={s.dashboardHeading}>
-    <View style={{flex:1,gap:3}}>
-     <Text style={s.h2}>Wybierz dział</Text>
-     <Text style={s.small}>Dotknij kafelka, aby zobaczyć lekcje.</Text>
-    </View>
-    <Text style={s.chapterCount}>10 działów</Text>
-   </View>
-   {mobile
-    ?<ScrollView horizontal showsHorizontalScrollIndicator={false} keyboardShouldPersistTaps="handled" style={{marginHorizontal:-4}} contentContainerStyle={s.tilesRail}>
-      {sections.map((name,index)=>{
-       const no=index+1,chosen=expanded===no;
-       const available=materialsReady?topics.filter(t=>t.section_no===no&&!!materialStats[t.topic_no]).length:null;
-       return <Pressable key={no} accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name}
-        accessibilityState={{selected:chosen}} onPress={()=>{setSearch('');setFilter('all');setExpanded(chosen?null:no);}}
-        style={[s.tile,s.tileMobile,chosen&&s.tileActive]}>
-        <View style={[s.tileIcon,chosen&&s.tileIconActive]}><Text style={s.tileEmoji}>{tiles[index].icon}</Text></View>
-        <Text style={s.tileNumber}>{String(no).padStart(2,'0')} / 10</Text>
-        <Text style={[s.tileTitle,chosen&&s.tileTitleActive]}>{tiles[index].title}</Text>
-        <Text style={s.tileSubtitle}>{tiles[index].subtitle}</Text>
-        {available!==null&&<Text style={[s.tileAvailable,chosen&&s.tileTitleActive]}>{available>0?available+' dostępnych lekcji':'Wybierz dział'}</Text>}
-       </Pressable>;
-      })}
-     </ScrollView>
-    :<View style={s.tilesGrid}>{sections.map((name,index)=>{
-      const no=index+1,chosen=expanded===no;
-      const available=materialsReady?topics.filter(t=>t.section_no===no&&!!materialStats[t.topic_no]).length:null;
-      return <Pressable key={no} accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name}
-       accessibilityState={{selected:chosen}} onPress={()=>{setSearch('');setFilter('all');setExpanded(chosen?null:no);}}
-       style={[s.tile,s.tileDesktop,chosen&&s.tileActive]}>
-       <View style={[s.tileIcon,chosen&&s.tileIconActive]}><Text style={s.tileEmoji}>{tiles[index].icon}</Text></View>
-       <Text style={s.tileNumber}>{String(no).padStart(2,'0')} / 10</Text>
-       <Text style={[s.tileTitle,chosen&&s.tileTitleActive]}>{tiles[index].title}</Text>
-       <Text style={s.tileSubtitle}>{tiles[index].subtitle}</Text>
-       {available!==null&&<Text style={[s.tileAvailable,chosen&&s.tileTitleActive]}>{available>0?available+' dostępnych lekcji':'Wybierz dział'}</Text>}
-      </Pressable>;
-     })}</View>}
-   {(filtering||expanded!==null)&&<View style={s.activeChapter}>
-    <View style={s.dashboardHeading}>
-     <View style={{flex:1,gap:4}}>
-      <Text style={s.eyebrow}>{filtering?'WYNIKI WYSZUKIWANIA':'DZIAŁ '+expanded}</Text>
-      <Text style={s.h2}>{filtering?'Znalezione tematy':sections[(expanded||1)-1]}</Text>
-     </View>
-     <Pressable accessibilityRole="button" accessibilityLabel="Zamknij listę lekcji" onPress={()=>{setExpanded(null);setSearch('');setFilter('all');}} style={s.closeChapter}>
-      <Text style={{fontSize:20,color:'#2C587B'}}>×</Text>
-     </Pressable>
-    </View>
-    {(filter==='missing'&&!coverageKnown)
-     ?<Text style={s.small}>Nie można obecnie potwierdzić dostępności tych materiałów.</Text>
-     :(filtering?visible:visible.filter(t=>t.section_no===expanded)).map(topic=>{
-      const stats=materialStats[topic.topic_no];
-      const exercise=practice.known?practice.byTopic[topic.topic_no]:null;
-      return <View key={topic.topic_no} style={s.lessonTile}>
-       <View style={s.lessonBadge}><Text style={s.lessonBadgeText}>{String(topic.topic_no).padStart(2,'0')}</Text></View>
-       <View style={{flex:1,gap:7,minWidth:0}}>
-        <Text style={s.lessonTitle}>{topic.title_pl}</Text>
-        {exercise&&<Text style={s.small}>Ćwiczenia: {exercise.correct}/{exercise.total} poprawnych</Text>}
-        {stats
-         ?<Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic.topic_no)}}} style={s.lessonLink}>Otwórz lekcję →</Link>
-         :<Text style={s.lessonUnavailable}>Materiał obecnie niedostępny</Text>}
-        {isEditor&&showEditorial&&<Text style={s.small}>Redakcja: {statusLabels[topic.status]} · {stats?stats.sections+' części opracowania':'brak odczytu materiału'}</Text>}
-       </View>
-      </View>;
-     })}
-    {!visible.length&&<Text style={s.small}>Brak tematów pasujących do wyszukiwania.</Text>}
-   </View>}
-   {filtering&&visible.length===0&&<Text style={s.warning}>Nie znaleziono tematów. Spróbuj innego słowa.</Text>}
+   {filtering?<View style={s.activeChapter}>
+    <View style={s.dashboardHeading}><Text accessibilityRole="header" style={s.h2}>Znalezione tematy</Text>
+     <Pressable accessibilityRole="button" onPress={()=>{setSearch('');setFilter('all');}} style={s.progressToggle}><Text style={s.link}>Wyczyść</Text></Pressable></View>
+    {filter==='missing'&&!coverageKnown?<Text style={s.small}>Nie można obecnie potwierdzić dostępności materiałów.</Text>:
+     visible.length?visible.map(renderTopic):<Text style={s.body}>Brak wyników. Spróbuj krótszej nazwy, np. „bank”.</Text>}
+   </View>:<>
+    <Text accessibilityRole="header" style={s.h2}>Wybierz dział</Text>
+    {sections.map((name,index)=>{
+     const no=index+1,open=expanded===no,items=topics.filter(t=>t.section_no===no);
+     return <View key={no} style={[s.chapter,open&&s.chapterOpen]}>
+      <Pressable accessibilityRole="button" accessibilityLabel={'Otwórz dział '+no+': '+name} accessibilityState={{expanded:open}}
+       onPress={()=>setExpanded(open?null:no)} style={s.chapterControl}>
+       <Text style={s.chapterNumber}>{String(no).padStart(2,'0')}</Text>
+       <Text style={s.chapterName}>{name}</Text><Text style={s.chapterSign}>{open?'−':'+'}</Text>
+      </Pressable>
+      {open&&<View style={s.lessonList}>{items.map(renderTopic)}</View>}
+     </View>;
+    })}
+   </>}
    {topics.length!==100&&<Text style={s.warning}>Niepełny odczyt mapy programu. Ten wynik nie dowodzi kompletności kursu.</Text>}
    {isEditor&&<Pressable accessibilityRole="button" onPress={()=>{setShowEditorial(v=>!v);setFilter('all');setExpanded(null);}} style={s.editorToggle}><Text style={s.small}>{showEditorial?'Ukryj panel redakcyjny':'Panel redakcyjny'}</Text></Pressable>}
    <Text style={s.small}>Ćwiczenia korzystają z fikcyjnych danych i nie zastępują porady księgowej ani podatkowej.</Text>
@@ -306,31 +266,22 @@ export default function ProgramKsiegowosci(){
 const s=StyleSheet.create({
  dashboardHeading:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,marginTop:7},
  chapterCount:{color:'#60758B',fontSize:12,fontWeight:'800',backgroundColor:'#EFF3F8',borderRadius:20,paddingHorizontal:10,paddingVertical:7,overflow:'hidden'},
- tilesRail:{paddingHorizontal:4,paddingTop:10,paddingBottom:14,gap:12},
- tilesGrid:{flexDirection:'row',flexWrap:'wrap',gap:12,marginTop:8,marginBottom:12,justifyContent:'space-between'},
- tile:{backgroundColor:'#fff',borderWidth:1,borderColor:'#D9E3EC',borderBottomWidth:6,borderBottomColor:'#bdd3b5',borderRadius:20,padding:14,minHeight:166,gap:7,shadowColor:'#14263B',shadowOffset:{width:0,height:7},shadowOpacity:0.12,shadowRadius:11,elevation:4},
- tileMobile:{width:156},
- tileDesktop:{width:'18%',minWidth:145,flexGrow:1},
- tileActive:{borderColor:'#5d9672',borderBottomColor:'#1b6440',backgroundColor:'#e5f1dc'},
- tileIcon:{width:54,height:54,borderRadius:17,alignItems:'center',justifyContent:'center',backgroundColor:'#eaf5d8',borderBottomWidth:4,borderBottomColor:'#c3dca9',marginBottom:1},
- tileIconActive:{backgroundColor:'#d5ecb5',borderBottomColor:'#93bf72'},
- tileEmoji:{fontSize:29},
- tileNumber:{fontSize:10,fontWeight:'900',letterSpacing:1.1,color:'#6d836e'},
- tileTitle:{fontSize:16,fontWeight:'900',lineHeight:20,color:'#14263B'},
- tileTitleActive:{color:'#145337'},
- tileSubtitle:{fontSize:11,lineHeight:16,color:'#58745f'},
- tileAvailable:{fontSize:11,color:'#53745b',fontWeight:'700',marginTop:'auto'},
+ chapter:{borderWidth:1,borderColor:'#D4DCE2',borderRadius:14,backgroundColor:'white',overflow:'hidden'},
+ chapterOpen:{borderColor:'#486D81'},chapterControl:{flexDirection:'row',alignItems:'center',gap:13,padding:15,minHeight:60},
+ chapterNumber:{fontSize:13,color:'#53667A',fontWeight:'700'},chapterName:{flex:1,fontSize:16,color:'#17344A',fontWeight:'700'},chapterSign:{fontSize:23,color:'#36576F'},
+ lessonList:{paddingHorizontal:16},startCopy:{flexGrow:1,minWidth:0,flexShrink:1,padding:20,gap:10},
+ startTitle:{color:'white',fontSize:23,lineHeight:29,fontWeight:'800'},startKicker:{color:'#F5CE8D',fontWeight:'800',fontSize:11,letterSpacing:1.3},startBody:{color:'#DCE8F1',lineHeight:21,fontSize:14},
  activeChapter:{backgroundColor:'#fff',borderWidth:1,borderColor:'#d5e4cf',borderRadius:18,padding:14,gap:8,marginBottom:15,shadowColor:'#244b36',shadowOpacity:0.06,shadowRadius:8,elevation:2},
  closeChapter:{width:42,height:42,borderRadius:13,backgroundColor:'#ecf3e6',alignItems:'center',justifyContent:'center'},
  lessonTile:{borderTopWidth:1,borderColor:'#e7eee1',paddingVertical:15,flexDirection:'row',gap:12,alignItems:'flex-start'},
- lessonBadge:{width:38,height:38,backgroundColor:'#e5f1d9',borderRadius:12,alignItems:'center',justifyContent:'center'},
- lessonBadgeText:{fontWeight:'900',color:'#236441',fontSize:13},
- lessonTitle:{fontSize:15,color:'#193b29',fontWeight:'800',lineHeight:22},
- lessonLink:{fontSize:14,color:'#1e6b3c',fontWeight:'900',paddingVertical:6},
+ lessonBadge:{width:38,height:38,backgroundColor:'#E6EFF1',borderRadius:12,alignItems:'center',justifyContent:'center'},
+ lessonBadgeText:{fontWeight:'900',color:'#24546B',fontSize:13},
+ lessonTitle:{fontSize:15,color:'#17344A',fontWeight:'800',lineHeight:22},
+ lessonLink:{fontSize:14,color:'#24546B',fontWeight:'900',paddingVertical:6},
  lessonUnavailable:{fontSize:12,color:'#718676'},
 
- page:{flex:1,backgroundColor:'#F7F9FC'},
- wrap:{width:'100%',maxWidth:1720,alignSelf:'center',padding:16,paddingBottom:40,gap:12},
+ page:{flex:1,backgroundColor:'#F8F6F1'},
+ wrap:{width:'100%',maxWidth:1050,alignSelf:'center',padding:16,paddingBottom:40,gap:12},
  nav:{flexDirection:'row',flexWrap:'wrap',gap:18},
  link:{color:'#956818',fontSize:14,fontWeight:'800',paddingVertical:5},
  eyebrow:{fontSize:12,letterSpacing:1,fontWeight:'800',color:'#53677D'},
@@ -343,9 +294,9 @@ const s=StyleSheet.create({
  topicTitle:{fontSize:15,lineHeight:23,fontWeight:'800',color:'#14263B'},
  notice:{padding:17,borderRadius:14,backgroundColor:'#EFF3F8',gap:8},
  card:{backgroundColor:'white',borderWidth:1,borderColor:'#DDE4EC',padding:14,borderRadius:14,gap:8},
- startCard:{backgroundColor:'#EFF3F8',padding:10,borderRadius:14,gap:5},
+ startCard:{backgroundColor:'#17344A',borderRadius:18,overflow:'hidden'},
  searchCard:{backgroundColor:'white',padding:9,borderRadius:14,borderWidth:1,borderColor:'#DDE4EC',gap:5},
- startLink:{backgroundColor:'#14263B',color:'white',fontWeight:'900',fontSize:15,padding:12,borderRadius:12,overflow:'hidden'},
+ startLink:{alignSelf:'flex-start',backgroundColor:'#F4CD8B',color:'#192E3F',fontWeight:'900',fontSize:15,padding:12,borderRadius:12,overflow:'hidden'},
  progressToggle:{alignSelf:'flex-start',minHeight:34,justifyContent:'center',paddingHorizontal:5},
  editorToggle:{alignSelf:'flex-end',padding:10},
  heading:{gap:5},step:{fontSize:11,fontWeight:'800',letterSpacing:.8,color:'#53677D'},
@@ -356,9 +307,9 @@ const s=StyleSheet.create({
  metricNumber:{fontSize:25,fontWeight:'900',color:'#14263B'},
  input:{borderWidth:1,borderColor:'#c9dcc6',borderRadius:10,padding:12,color:'#14263B',fontSize:15},
  filters:{flexDirection:'row',flexWrap:'wrap',gap:7},
- pill:{paddingVertical:8,paddingHorizontal:12,borderColor:'#ccdcc8',borderWidth:1,borderRadius:22,backgroundColor:'#F7F9FC'},
+ pill:{paddingVertical:8,paddingHorizontal:12,borderColor:'#ccdcc8',borderWidth:1,borderRadius:22,backgroundColor:'#F8F6F1'},
  pillActive:{backgroundColor:'#956818',borderColor:'#956818'},
  pillText:{fontSize:12,fontWeight:'700',color:'#275538'},
  pillTextActive:{color:'white'},
- refresh:{alignSelf:'flex-start',paddingHorizontal:12,borderRadius:10,borderWidth:1,borderColor:'#bbd4bd',backgroundColor:'#F7F9FC'},
+ refresh:{alignSelf:'flex-start',paddingHorizontal:12,borderRadius:10,borderWidth:1,borderColor:'#bbd4bd',backgroundColor:'#F8F6F1'},
 });
