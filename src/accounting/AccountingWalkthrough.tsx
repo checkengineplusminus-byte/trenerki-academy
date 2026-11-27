@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {AccessibilityInfo, Animated, Pressable, StyleSheet, Text, View} from 'react-native';
 
-type Frame = {title:string; note:string; amounts:number[]};
+type Frame = {title:string; note:string; amounts:(number|null)[]};
 type Demo = {title:string; unit:string; labels:string[]; steps:Frame[]};
 
 function isDemo(value: any): value is Demo {
@@ -10,11 +10,11 @@ function isDemo(value: any): value is Demo {
       !Array.isArray(value.steps) || value.steps.length < 2) return false;
   return value.steps.every((step:any)=>step && typeof step.title==='string' && typeof step.note==='string' &&
     Array.isArray(step.amounts) && step.amounts.length===value.labels.length &&
-    step.amounts.every((n:unknown)=>typeof n==='number' && Number.isFinite(n) && n>=0));
+    step.amounts.every((n:unknown)=>n===null || (typeof n==='number' && Number.isFinite(n) && n>=0)));
 }
 
-function Meter({label, amount, unit, maximum, reduced}:{label:string; amount:number; unit:string; maximum:number; reduced:boolean}) {
-  const ratio = amount / maximum;
+function Meter({label, amount, unit, maximum, reduced}:{label:string; amount:number|null; unit:string; maximum:number; reduced:boolean}) {
+  const ratio = (amount ?? 0) / maximum;
   const fill = useRef(new Animated.Value(ratio)).current;
   useEffect(()=>{
     if (reduced) { fill.setValue(ratio); return; }
@@ -23,7 +23,7 @@ function Meter({label, amount, unit, maximum, reduced}:{label:string; amount:num
     return ()=>transition.stop();
   },[fill,ratio,reduced]);
   return <View style={s.meter}>
-    <Text style={s.metric}>{label} · {amount.toLocaleString('pl-PL')} {unit}</Text>
+    <Text style={s.metric}>{label} · {amount===null?'do obliczenia':amount.toLocaleString('pl-PL')+' '+unit}</Text>
     <View style={s.track}><Animated.View style={[s.fill,{width:fill.interpolate({inputRange:[0,1],outputRange:['0%','100%']})}]}/></View>
   </View>;
 }
@@ -38,7 +38,7 @@ export function AccountingWalkthrough({value}:{value:unknown}) {
     return ()=>{active=false;subscription.remove();};
   },[]);
   if (!isDemo(value)) return null;
-  const maximum=Math.max(1,...value.steps.flatMap(step=>step.amounts));
+  const maximum=Math.max(1,...value.steps.flatMap(step=>step.amounts.map(amount=>amount??0)));
   const last=value.steps.length-1;
   const step=value.steps[Math.min(index,last)];
   return <View style={s.card}>
