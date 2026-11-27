@@ -266,13 +266,14 @@ for(const mobile of [false,true]){
   }
   await page.getByText('Gratulacje! Zaliczyłeś egzamin.',{exact:true}).waitFor();
   await page.getByText(/WZOR-TESTOWY/).waitFor();
+  assert.equal(await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).count(),0,'A demo certificate must be labelled as a sample document');
   assert.equal(examStep,6);assert.deepEqual(errors,[]);
   // Reproduce the observed production failure: a tab opened before deployment
   // requests a diploma chunk that no longer exists. Recovery is user initiated.
   let blockedChunks=0;
   const diplomaChunk=url=>url.origin===origin&&/\/_expo\/static\/js\/web\/dyplom-[^/]+\.js$/.test(url.pathname);
   await page.route(diplomaChunk,route=>{blockedChunks++;return route.abort('failed');});
-  await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).click();
+  await page.getByRole('button',{name:'Zobacz dokument próbny',exact:true}).click();
   await page.getByTestId('route-recovery').waitFor();
   assert(blockedChunks>0,'The stale route module must actually fail');
   console.log('Recovery boundary opened at',page.url());
@@ -285,7 +286,7 @@ for(const mobile of [false,true]){
   // A failed lazy navigation can leave the browser at its previous URL. A
   // reload must also recover that course, retaining its passed exam status.
   if(new URL(page.url()).pathname==='/nauka'){
-   await page.getByRole('button',{name:'Zobacz autorski dyplom',exact:true}).click();
+   await page.getByRole('button',{name:'Zobacz dokument próbny',exact:true}).click();
   }
   await page.getByRole('button',{name:'Pobierz dyplom PDF (PL)',exact:true}).waitFor();
   assert.equal(await page.getByTestId('route-recovery').count(),0);
