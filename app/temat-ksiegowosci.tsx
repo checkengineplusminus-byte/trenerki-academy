@@ -2,6 +2,7 @@ import React,{useCallback,useEffect,useRef,useState} from 'react';
 import {ActivityIndicator,Image,Linking,Platform,Pressable,ScrollView,StyleSheet,Text,TextInput,View} from 'react-native';
 import {Link,useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
+import {DocumentDecision} from '../src/accounting/DocumentDecision';
 import {AccountingWalkthrough} from '../src/accounting/AccountingWalkthrough';
 // @ts-ignore — walidatory czytnika są wspólne z wcześniejszymi lekcjami.
 import {checkExercise,sourceURL,glossaryExplanation} from '../src/accounting/reader-core.js';
@@ -342,20 +343,19 @@ export default function TematKsiegowosci(){
   {!!warning&&<Text style={s.warning}>{warning}</Text>}
   {!busy&&lesson&&!error&&<View style={s.lessonBody}>
    <View style={s.lessonHero}>
-    <Text style={s.eyebrowDark}>📚 KSIĘGOWOŚĆ OD PODSTAW · TEMAT {lesson.topic_no}</Text>
+    <Text style={s.heroKicker}>KSIĘGOWOŚĆ · TEMAT {lesson.topic_no}</Text>
     <Text accessibilityRole="header" style={s.lessonTitle}>{lesson.topic_no===1?'Zacznijmy od podstaw: czyj to dokument?':lesson.title_pl}</Text>
     <Text style={s.lessonGoal}>{lesson.topic_no===1?'Na początku wystarczy odróżnić osobę prowadzącą firmę, spółkę i fundację.':lesson.learning_goal}</Text>
    </View>
-   <ScrollView horizontal showsHorizontalScrollIndicator={false} keyboardShouldPersistTaps="handled" contentContainerStyle={s.stepRail}>
+   <View style={s.stepRail}>
     {LESSON_STEPS.map((item,i)=><Pressable key={item.id} accessibilityRole="button" accessibilityLabel={item.label+' — '+item.hint} accessibilityState={{selected:step===item.id}}
      onPress={()=>goStep(item.id)} style={[s.stepTile,step===item.id&&s.stepTileActive]}>
-     <Text style={s.stepIcon}>{item.icon}</Text>
-     <Text style={[s.stepTitle,step===item.id&&s.stepTitleActive]}>{item.label}</Text>
-     <Text style={s.stepNumber}>{i+1} / 5</Text>
+     <Text style={[s.stepTitle,step===item.id&&s.stepTitleActive]}>{i+1}. {item.label}</Text>
     </Pressable>)}
-   </ScrollView>
-   <View style={s.stepIntro}><Text style={s.stepIntroTitle}>{LESSON_STEPS[position]?.icon} {LESSON_STEPS[position]?.label}</Text><Text style={s.stepIntroHint}>{LESSON_STEPS[position]?.hint} · Krok {position+1} z 5</Text></View>
+   </View>
+   <Text style={s.stepIntroHint}>Krok {position+1} z 5 · {LESSON_STEPS[position]?.hint}</Text>
    {step==='learn'&&<View style={s.stageBody}>
+    {!introComplete&&m.document_decision&&<DocumentDecision key={lesson.topic_no} value={m.document_decision}/>}
     {!introComplete&&<View style={s.card}>
      <Text style={s.h2}>Najpierw zrozum, o co chodzi</Text>
      {guide&&<Text style={s.body}>{guide.intro}</Text>}
@@ -568,7 +568,7 @@ export default function TematKsiegowosci(){
    </View>}
    <View style={s.bottomNav}>
     {position>0&&<Pressable accessibilityRole="button" onPress={()=>goStep(LESSON_STEPS[position-1].id)} style={s.backButton}><Text style={s.buttonText}>← {LESSON_STEPS[position-1].label}</Text></Pressable>}
-    {position<LESSON_STEPS.length-1&&<Pressable accessibilityRole="button" onPress={()=>goStep(LESSON_STEPS[position+1].id)} style={s.nextMini}><Text style={s.buttonText}>{LESSON_STEPS[position+1].label} →</Text></Pressable>}
+
    </View>
    <Text style={s.legalLine}>Ćwiczenia służą nauce i wykorzystują fikcyjne dane. Nie zastępują porady księgowej ani podatkowej.</Text>
   </View>}
@@ -578,7 +578,7 @@ export default function TematKsiegowosci(){
 const s=StyleSheet.create({
  progressChecklist:{backgroundColor:'#F1F5F9',borderRadius:12,padding:13,gap:9,borderWidth:1,borderColor:'#DDE5EF'},
  coachActions:{flexDirection:'row',flexWrap:'wrap',gap:9,marginTop:5},
- coachButton:{minHeight:47,flexGrow:1,justifyContent:'center',paddingHorizontal:13,paddingVertical:11,borderRadius:12,borderWidth:1,borderColor:'#b7d5b4',backgroundColor:'#F7F9FC'},
+ coachButton:{minHeight:47,flexGrow:1,justifyContent:'center',paddingHorizontal:13,paddingVertical:11,borderRadius:12,borderWidth:1,borderColor:'#b7d5b4',backgroundColor:'#F8F6F1'},
  coachButtonText:{fontWeight:'800',fontSize:13,color:'#9B7026',textAlign:'center'},
  coachFeedback:{borderWidth:1,borderRadius:13,padding:12,gap:8,marginVertical:4},
  coachErrorBox:{borderColor:'#e5b99b',backgroundColor:'#fff4eb'},
@@ -588,29 +588,26 @@ const s=StyleSheet.create({
  homeworkButtons:{flexDirection:'row',flexWrap:'wrap',gap:10,alignItems:'stretch'},
  homeworkButton:{minHeight:50,borderRadius:12,padding:12,flexGrow:1,alignItems:'center',justifyContent:'center'},
  homeworkButtonSoft:{backgroundColor:'#dcebd5'},
- homeworkButtonPrimary:{backgroundColor:'#193d2c'},
+ homeworkButtonPrimary:{backgroundColor:'#21485D'},
  homeworkButtonPrimaryText:{color:'white',fontSize:14,fontWeight:'900'},
 
  lessonBody:{gap:10},
  topBar:{flexDirection:'row',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10,paddingVertical:3},
- lessonHero:{padding:16,backgroundColor:'#ffffff',borderRadius:16,borderWidth:1,borderColor:'#DDE5EF',gap:7},
- lessonTitle:{fontSize:24,lineHeight:31,fontWeight:'900',color:'#14263B'},
- lessonGoal:{fontSize:14,lineHeight:22,color:'#56725f'},
- stepRail:{gap:10,paddingVertical:5,paddingHorizontal:2},
- stepTile:{minWidth:93,alignItems:'center',justifyContent:'center',gap:3,paddingHorizontal:11,paddingVertical:11,borderWidth:1,borderBottomWidth:4,borderBottomColor:'#d3dfcd',borderColor:'#dce7d7',borderRadius:15,backgroundColor:'#fff'},
- stepTileActive:{backgroundColor:'#e2efd5',borderColor:'#83ad7b',borderBottomColor:'#367b50'},
- stepIcon:{fontSize:25},stepTitle:{fontSize:13,fontWeight:'800',color:'#33543d'},stepTitleActive:{color:'#153a29'},
- stepNumber:{fontSize:10,color:'#738973',fontWeight:'700'},
- stepIntro:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,flexWrap:'wrap',padding:7},
- stepIntroTitle:{fontSize:20,fontWeight:'900',color:'#14263B'},stepIntroHint:{fontSize:12,color:'#59735e'},
+ lessonHero:{padding:20,backgroundColor:'#17344A',borderRadius:16,gap:7},
+ heroKicker:{fontSize:11,letterSpacing:1.2,color:'#F4CD8B',fontWeight:'800'},lessonTitle:{fontSize:24,lineHeight:31,fontWeight:'900',color:'#FFFFFF'},
+ lessonGoal:{fontSize:15,lineHeight:23,color:'#DFEAF2'},
+ stepRail:{flexDirection:'row',gap:6,flexWrap:'wrap'},
+ stepTile:{flexGrow:1,flexBasis:90,alignItems:'center',justifyContent:'center',minHeight:44,paddingHorizontal:4,paddingVertical:9,borderWidth:1,borderColor:'#C9D4DD',borderRadius:9,backgroundColor:'#fff'},
+ stepTileActive:{backgroundColor:'#21485D',borderColor:'#21485D'},
+ stepTitle:{fontSize:13,fontWeight:'700',color:'#324D60'},stepTitleActive:{color:'#fff'},stepIntroHint:{fontSize:13,fontWeight:'600',color:'#415C6C'},
  stageBody:{gap:10},
- primerList:{gap:9,marginTop:4},primerCard:{backgroundColor:'#f0f6e9',borderRadius:12,padding:11,flexDirection:'row',gap:11,alignItems:'flex-start'},
- primerIcon:{fontSize:25},bodySmall:{fontSize:14,lineHeight:22,color:'#4a6652'},
+ primerList:{gap:9,marginTop:4},primerCard:{backgroundColor:'#EFF3F4',borderRadius:12,padding:11,flexDirection:'row',gap:11,alignItems:'flex-start'},
+ primerIcon:{fontSize:25},bodySmall:{fontSize:14,lineHeight:22,color:'#425969'},
  wordRow:{paddingVertical:9,borderTopWidth:1,borderTopColor:'#e2ebdb',gap:4},
  nextControls:{flexDirection:'row',justifyContent:'space-between',gap:9,flexWrap:'wrap'},
- primaryButton:{backgroundColor:'#183f2d',padding:14,minHeight:49,borderRadius:12,alignSelf:'flex-start',justifyContent:'center'},
+ primaryButton:{backgroundColor:'#21485D',padding:14,minHeight:49,borderRadius:12,alignSelf:'flex-start',justifyContent:'center'},
  primaryButtonText:{fontSize:14,fontWeight:'900',color:'#fff'},
- backButton:{backgroundColor:'#e9f2e3',padding:12,minHeight:45,borderRadius:12,justifyContent:'center'},
+ backButton:{backgroundColor:'#E8EFF2',padding:12,minHeight:45,borderRadius:12,justifyContent:'center'},
  guidedStep:{flexDirection:'row',gap:12,paddingVertical:9,borderTopWidth:1,borderTopColor:'#e8eee3'},
  guidedNumber:{backgroundColor:'#dcedca',width:28,height:28,borderRadius:9,textAlign:'center',textAlignVertical:'center',fontWeight:'900',color:'#245b39',fontSize:13,overflow:'hidden'},
  resultBox:{backgroundColor:'#e8f4e3',padding:13,borderRadius:13,gap:6},
@@ -622,18 +619,18 @@ const s=StyleSheet.create({
  nextMini:{backgroundColor:'#e8f2e2',padding:12,minHeight:45,borderRadius:12,justifyContent:'center'},
  legalLine:{fontSize:11,lineHeight:18,color:'#77887b',marginTop:12},
 
- page:{flex:1,backgroundColor:'#F7F9FC'},wrap:{width:'100%',maxWidth:940,alignSelf:'center',padding:18,paddingBottom:65,gap:14},
+ page:{flex:1,backgroundColor:'#F8F6F1'},wrap:{width:'100%',maxWidth:940,alignSelf:'center',padding:18,paddingBottom:65,gap:14},
  row:{flexDirection:'row',flexWrap:'wrap',alignItems:'center',gap:12,marginBottom:12},
  link:{fontSize:14,fontWeight:'800',color:'#255c3b',paddingVertical:6},
  header:{borderRadius:20,backgroundColor:'#14263B',padding:25,gap:11,marginBottom:14},
- eyebrow:{fontSize:11,fontWeight:'800',letterSpacing:1,color:'#d4e6c8'},eyebrowDark:{fontSize:11,letterSpacing:.8,fontWeight:'800',color:'#567c4b'},
+ eyebrow:{fontSize:11,fontWeight:'800',letterSpacing:1,color:'#d4e6c8'},eyebrowDark:{fontSize:11,letterSpacing:.8,fontWeight:'800',color:'#486173'},
  h1:{fontSize:29,lineHeight:38,fontWeight:'900',color:'white'},heroBody:{fontSize:16,lineHeight:25,color:'#e0ebdd'},
  h2:{fontSize:20,lineHeight:28,fontWeight:'800',color:'#14263B'},
  body:{fontSize:16,lineHeight:26,color:'#334960'},small:{fontSize:12,lineHeight:20,color:'#56715b'},
  label:{fontSize:14,fontWeight:'800',color:'#1e422d'},
- card:{borderRadius:15,borderWidth:1,borderColor:'#dbe7d2',padding:18,backgroundColor:'white',gap:13,marginBottom:14},
- curiosityBox:{backgroundColor:'#f2f7e9',borderRadius:12,padding:14,gap:5,marginVertical:12,borderLeftWidth:4,borderLeftColor:'#69a33a'},
- curiosityTitle:{fontWeight:'800',color:'#27551c',fontSize:13,letterSpacing:0.8},
+ card:{borderRadius:15,borderWidth:1,borderColor:'#D4DDE1',padding:18,backgroundColor:'white',gap:13,marginBottom:14},
+ curiosityBox:{backgroundColor:'#FFF4DC',borderRadius:12,padding:14,gap:5,marginVertical:12,borderLeftWidth:4,borderLeftColor:'#B77722'},
+ curiosityTitle:{fontWeight:'800',color:'#724914',fontSize:13,letterSpacing:0.8},
  curiositySource:{color:'#36523b',fontSize:12,fontWeight:'600'},
  sectionPhoto:{width:'100%',aspectRatio:16/9,borderRadius:12,backgroundColor:'#F1F5F9'},
  practice:{padding:20,borderRadius:15,backgroundColor:'#F1F4F8',gap:12,marginBottom:14},
