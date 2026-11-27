@@ -5,6 +5,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {webcrypto} from 'node:crypto';
 import ts from 'typescript';
+import * as accountFeedback from '../src/accountFeedback.mjs';
 const user={id:'00000000-0000-4000-a000-000000000001',email:'owner@example.test',email_confirmed_at:'2026-11-13T00:00:00Z'};
 class FunctionsHttpError extends Error{constructor(code){super(code);this.context={json:async()=>({error:code})};}}
 const storage=new Map(),issues=[],resends=[],pdfs=[],redemptions=[],courseRedemptions=[],downloads=[],printRequests=[],giveaways=[],assignments=[],signIns=[],signUps=[],metadataUpdates=[];
@@ -64,6 +65,7 @@ function createScreen(path,params={}){
   if(name==='expo-router')return {useRouter:()=>({replace:to=>navigation.push({method:'replace',to:JSON.parse(JSON.stringify(to))}),push:to=>navigation.push({method:'push',to:JSON.parse(JSON.stringify(to))})}),useLocalSearchParams:()=>params};
   if(name==='@supabase/supabase-js')return {FunctionsHttpError};
   if(name==='../src/supabase'||name==='./supabase')return {supabase,isPasswordRecoveryRedirect:()=>false,clearPasswordRecoveryFlag:()=>{}};
+  if(name==='../src/accountFeedback.mjs')return accountFeedback;
   if(name==='../src/academyApi')return {academyAction:async (action,body)=>{
    if(action==='redeem_gift'){courseRedemptions.push(body);return {ok:true};}
    return action==='whoami'?{is_admin:true}:action==='create_gift'?{code:freeCode,link:'https://trenerki.com/prezent?code='+freeCode,gift_id:'free-gift-id',email_sent:true}:action==='my_gifts'?{gifts:historyRecords}:{users:[],counts:{users:1,courses:1}};
@@ -85,7 +87,7 @@ function createScreen(path,params={}){
   if(name==='../src/courseQuote')return {coursePrice:async()=>10000,termsVersion:'2026-11-11'};
   return {__esModule:true,default:()=>null};
  };
- const context={module,exports:module.exports,require,console,crypto:webcrypto,Intl,Date,URL,Blob,Uint8Array,atob,btoa,sessionStorage:{getItem:key=>storage.get(key)||null,setItem:(key,val)=>storage.set(key,val),removeItem:key=>storage.delete(key)},navigator:{clipboard:{writeText:async()=>{}}},document:{body:{appendChild:()=>{}},createElement:()=>{const a={href:'',download:'',remove(){},click(){downloads.push(a.download);}};return a;}},setTimeout:(fn,ms)=>ms>=60000?(fn(),0):setTimeout(fn,ms)};
+ const context={module,exports:module.exports,require,console,crypto:webcrypto,Intl,Date,URL,Blob,Uint8Array,atob,btoa,sessionStorage:{getItem:key=>storage.get(key)||null,setItem:(key,val)=>storage.set(key,val),removeItem:key=>storage.delete(key)},navigator:{clipboard:{writeText:async()=>{}}},document:{body:{appendChild:()=>{}},createElement:()=>{const a={href:'',download:'',remove(){},click(){downloads.push(a.download);}};return a;}},setTimeout:(fn,ms)=>ms>=60000?(fn(),0):setTimeout(fn,ms),clearTimeout};
  const result=ts.transpileModule(readFileSync(path,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.React,esModuleInterop:true},fileName:path});
  vm.runInNewContext(result.outputText,context,{filename:path});
  const component=module.exports.default;

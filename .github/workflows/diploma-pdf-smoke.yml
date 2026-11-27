@@ -9,6 +9,7 @@ on:
       - 'supabase/functions/_shared/gift-code.ts'
       - 'scripts/gift-code.test.ts'
       - 'scripts/gift-code-backend.test.ts'
+      - 'scripts/order-webhook-backend.test.ts'
       - 'supabase/functions/ta-credit/**'
       - 'supabase/functions/ta-admin-gifts/**'
       - 'supabase/functions/ta-academy/**'
@@ -20,6 +21,11 @@ on:
       - 'scripts/gift-card-mail.test.ts'
       - '.github/workflows/diploma-pdf-smoke.yml'
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/order-webhook-backend.test.ts'
+      - '.github/workflows/diploma-pdf-smoke.yml'
 jobs:
   diploma_pdf:
     runs-on: ubuntu-latest
@@ -34,3 +40,5 @@ jobs:
         run: deno test --node-modules-dir=auto --allow-net scripts/diploma-pdf-smoke.test.ts
       - name: Verify printable gift cards and email attachments without sending messages
         run: deno test --node-modules-dir=none --no-lock --allow-read --allow-net scripts/gift-code.test.ts scripts/gift-card-pdf-smoke.test.ts scripts/gift-card-mail.test.ts scripts/gift-code-backend.test.ts
+      - name: Verify payment validation, email retries and refunds with signed fixtures
+        run: deno test --node-modules-dir=none --no-lock --allow-read --allow-net scripts/order-webhook-backend.test.ts
