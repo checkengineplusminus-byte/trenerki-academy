@@ -2,6 +2,12 @@
 // Historical private questions cover only the first eight lessons, so they
 // cannot be the source of final-stage competence checks.
 export function selectCourseExamBank(slug,privateBank,lessonBank){
+ if(slug==='ai-bez-tajemnic'){
+  // The eight-stage AI course has a separately authored final exam.
+  // Retain the legacy lesson bank for installations still loading the new bank.
+  const coverage=new Set(privateBank.map(question=>question.lesson_no));
+  if(privateBank.length>=9&&Array.from({length:8},(_,stage)=>stage).every(stage=>coverage.has(stage)))return privateBank;
+ }
  if(slug!=='autocad-skroty')return [...privateBank,...lessonBank];
  const numbered=new Set(lessonBank.map(question=>question.lesson_no));
  if(lessonBank.length!==30||numbered.size!==30||
