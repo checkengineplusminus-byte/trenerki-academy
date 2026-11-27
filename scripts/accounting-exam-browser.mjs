@@ -60,6 +60,7 @@ try{
   const page=await context.newPage(),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto(origin+'/program-ksiegowosci');
+  await page.getByRole('button',{name:'Odrzuć',exact:true}).click();
   await page.getByText('Ukończone tematy: 0/100.',{exact:true}).waitFor();
   assert.equal(await page.getByRole('button',{name:'Rozpocznij egzamin',exact:true}).count(),0);
   await page.getByText('Miesiąc w biurze: do dokończenia.',{exact:true}).waitFor();
