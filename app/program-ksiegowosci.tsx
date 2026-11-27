@@ -189,7 +189,7 @@ export default function ProgramKsiegowosci(){
   {!!homeworksError&&<Text accessibilityRole="alert" style={s.warning}>{homeworksError}</Text>}
   {!busy&&!error&&<>
    <View style={[s.startCard,{flexDirection:mobile?'column':'row-reverse'}]}>
-    <Image accessible={false} resizeMode="cover" source={require('../assets/accounting/generated/accounting-desk-01.webp')} style={mobile?{width:'100%',height:104}:{width:'38%',alignSelf:'stretch'}}/>
+    <Image accessible={false} resizeMode="cover" source={require('../assets/accounting/generated/accounting-workshop-cover.webp')} style={mobile?{width:'100%',height:104}:{width:'38%',alignSelf:'stretch'}}/>
     <View style={s.startCopy}>
      <Text style={s.startKicker}>{hasStarted?'TWOJA NAUKA':'PIERWSZA LEKCJA'}</Text>
      <Text accessibilityRole="header" style={s.startTitle}>{topics.find(t=>t.topic_no===nextLesson)?.title_pl||'Program kursu'}</Text>
