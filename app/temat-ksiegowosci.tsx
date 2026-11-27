@@ -559,8 +559,9 @@ export default function TematKsiegowosci(){
     {nextReady&&topic!==null&&topic<100&&
      <Link href={{pathname:'/temat-ksiegowosci',params:{temat:String(topic+1)}}} style={s.link}>Przejdź do tematu {topic+1} z 100</Link>}
     {nextReady&&topic===100&&<>
-     <Text style={s.small}>Ostatni temat — teraz wykonaj końcowe ćwiczenia na fikcyjnej firmie. To jeszcze nie oznacza wydania dyplomu.</Text>
+     <Text style={s.small}>Uzgodnij miesiąc w biurze ćwiczeniowym. Po wykonaniu wszystkich ćwiczeń i prac domowych przejdź do egzaminu końcowego w programie kursu.</Text>
      <Link href="/biuro-ksiegowe" style={s.link}>Otwórz biuro — Zestawienia i sprawdzian końcowy</Link>
+     <Link href="/program-ksiegowosci" style={s.link}>Sprawdź gotowość do egzaminu końcowego</Link>
     </>}
     <Link href="/program-ksiegowosci" style={s.link}>Wróć do programu i swoich wyników</Link>
    </View>

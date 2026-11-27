@@ -35,6 +35,12 @@ function constructionChoices(bank, history, phase) {
   return atStage(stage, history.at(-1)?.correct === false ? 'B' : 'A');
 }
 export function examPhaseChoices(slug,bank,history,phase){
+ if(slug==='ksiegowosc-od-podstaw'){
+  if(phase==='final'||phase==='extra')return bank.filter(q=>q.lesson_no>=90);
+  const visited=new Set(history.map(row=>Math.floor(row.lesson_no/10)));
+  const unvisited=bank.filter(q=>!visited.has(Math.floor(q.lesson_no/10)));
+  return unvisited.length?unvisited:bank;
+ }
  if(slug==='kierownik-budowy')return constructionChoices(bank,history,phase);
  if(slug!=='autocad-skroty')return bank;
  if(phase==='final'||phase==='extra')return bank.filter(q=>q.lesson_no>=20&&q.lesson_no<30);
