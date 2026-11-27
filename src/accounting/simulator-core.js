@@ -32,6 +32,15 @@ export function readScenario(raw){
      ((d.kind==='bank_in'||d.kind==='bank_out')&&d.amount_pln<0)||
      d.fictional!==true||d.source_verification!=='training_only')
    throw new Error('Niespójne dane dokumentu w manifeście ćwiczeniowym.');
+  if(d.alternative_kinds!==undefined){
+   if(!Array.isArray(d.alternative_kinds)||d.alternative_kinds.length>2||
+      d.alternative_kinds.some(k=>!isKind(k)||k===d.kind)||
+      new Set(d.alternative_kinds).size!==d.alternative_kinds.length)
+    throw new Error('Nieprawidłowe dodatkowe role dokumentu w ćwiczeniu.');
+  }
+  if(d.classification_note!==undefined&&(typeof d.classification_note!=='string'||
+     d.classification_note.trim().length<1||d.classification_note.length>400))
+   throw new Error('Nieprawidłowe wyjaśnienie roli dokumentu.');
   seen.add(d.id);
  }
  for(let n=1;n<=36;n++)if(!seen.has('D'+String(n).padStart(2,'0')))
@@ -60,9 +69,9 @@ export function readScenarioAnswers(state){
 }
 export function checkScenarioAnswer(doc,kind){
  if(!doc||!isKind(doc.kind)||!isKind(kind))return {valid:false,correct:false,message:'Wybierz rodzaj dokumentu.'};
- const correct=kind===doc.kind;
+ const correct=kind===doc.kind||(Array.isArray(doc.alternative_kinds)&&doc.alternative_kinds.includes(kind));
  return {valid:true,correct,message:correct?
-  'Rozpoznano prawidłowo. Następny etap to ustalenie skutku księgowego, a nie automatyczne księgowanie.':
+  (doc.classification_note||'Rozpoznano prawidłowo. Następny etap to ustalenie skutku księgowego, a nie automatyczne księgowanie.'):
   'Wróć do tytułu i daty dokumentu. Ustal, czy to zdarzenie źródłowe, wpływ lub wydatek bankowy, czy tylko potwierdzenie wcześniej ujętej operacji.'};
 }
 export function withScenarioAnswer(state,scenario,docId,kind){
@@ -75,7 +84,7 @@ export function scenarioSummary(scenario,answers={}){
  const docs=readScenario(scenario).documents;
  let attempted=0,correct=0,bankIn=0,bankOut=0;
  for(const d of docs){
-  if(answers[d.id]!==undefined){attempted++;if(answers[d.id]===d.kind)correct++;}
+  if(answers[d.id]!==undefined){attempted++;if(checkScenarioAnswer(d,answers[d.id]).correct)correct++;}
   if(d.kind==='bank_in')bankIn+=d.amount_pln;
   if(d.kind==='bank_out')bankOut+=d.amount_pln;
  }

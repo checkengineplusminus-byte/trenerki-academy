@@ -47,6 +47,23 @@ test('Manifest 36 dokumentów: ID, źródła i brak duplikatów',()=>{
  assert.throws(()=>readScenario({...fakeManifest,documents:[...fakeManifest.documents.slice(0,35),fakeManifest.documents[0]]}));
  assert.throws(()=>readScenario({...fakeManifest,documents:fakeManifest.documents.map((d,i)=>i===0?{...d,fictional:false}:d)}));
 });
+test('Dwie uzasadnione role jednego fikcyjnego dokumentu liczą się także dla wcześniej zapisanych decyzji',()=>{
+ const manifest=structuredClone(fakeManifest);
+ const doc=manifest.documents[0];
+ doc.alternative_kinds=['closing'];
+ doc.classification_note='Ta fikcyjna karta ma dwie role określone w ramach ćwiczenia.';
+ readScenario(manifest);
+ for(const kind of [doc.kind,'closing']){
+  assert.equal(checkScenarioAnswer(doc,kind).correct,true);
+  assert.equal(checkScenarioAnswer(doc,kind).message,doc.classification_note);
+  assert.equal(scenarioSummary(manifest,{[doc.id]:kind}).correct,1);
+ }
+ assert.equal(checkScenarioAnswer(doc,'payroll').correct,false);
+ assert.equal(checkScenarioAnswer(fakeManifest.documents[0],'closing').correct,false);
+ for(const invalid of [['unknown'],[doc.kind],['closing','closing'],'closing']){
+  assert.throws(()=>readScenario({...manifest,documents:[{...doc,alternative_kinds:invalid},...manifest.documents.slice(1)]}));
+ }
+});
 test('Błędne kategorie są odrzucane przed zapisem, odpowiedź na koncie jest izolowana od oryginału',()=>{
  const base={schema_version:1,invoices:[],bank:[],journals:[],matches:[]};
  assert.throws(()=>withScenarioAnswer(base,fakeManifest,'D01','admin'));
