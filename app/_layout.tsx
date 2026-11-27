@@ -78,7 +78,7 @@ function AccountLayout(){
  // all personal/paid lesson data. A transient guard=false must not send learners
  // to / (which redirects to the public catalog).
  return <View style={{flex:1}}>
-  {Platform.OS==='web'&&width>=1024&&pathname!=='/'&&<AcademyDesktopNav signedIn={signedIn}/>}
+  {Platform.OS==='web'&&pathname!=='/'&&<AcademyDesktopNav signedIn={signedIn}/>}
   <View style={{flex:1}}><Stack screenOptions={{headerShown:false}}>
   <Stack.Screen name="index"/>
   <Stack.Screen name="konto"/>

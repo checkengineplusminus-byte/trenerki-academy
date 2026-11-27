@@ -1,35 +1,48 @@
 'use strict';
 
-/* Shared, accessible navigation for the standalone public course and
-   category pages. No session inspection and no backend access. */
+const academySections = [
+  ['Kursy','/academy/index.html#kursy'],
+  ['Moje kursy','/moje-kursy'],
+  ['Dyplomy','/moje-dyplomy'],
+  ['Dla firm','/firma'],
+  ['Pomoc','/pomoc']
+];
+
+// Only these static labels and destinations are inserted into the header.
+function academyMenuMarkup(signedIn,pathname='') {
+  const links=academySections.map(([label,url])=>
+    '<a href="'+url+'"'+(url===pathname?' aria-current="page"':'')+'>'+label+'</a>').join('');
+  const profile=signedIn===false?'Zaloguj się':'Mój profil';
+  return '<nav class="ta-academy-bar" aria-label="Nawigacja akademii" data-academy-shortcuts>'+
+    '<div class="ta-academy-inner"><a class="ta-academy-brand" href="/academy/index.html" aria-label="TRENERKI Academy">'+
+    '<span class="ta-academy-mark" aria-hidden="true">T.</span><span>TRENERKI <small>ACADEMY</small></span></a>'+
+    '<div class="ta-academy-links">'+links+'</div>'+
+    '<details class="ta-academy-mobile"><summary>Menu <span aria-hidden="true">▾</span></summary><div>'+links+'</div></details>'+
+    '<a class="ta-academy-profile" href="/konto"'+(pathname==='/konto'?' aria-current="page"':'')+'>'+profile+'</a></div></nav>';
+}
+
+function bindAcademyDisclosure(menu) {
+  if(!menu)return ()=>{};
+  const closeOutside=event=>{if(menu.open&&!menu.contains(event.target))menu.open=false;};
+  const escape=event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus();}};
+  const resize=()=>{if(window.innerWidth>1070)menu.open=false;};
+  document.addEventListener('pointerdown',closeOutside);
+  document.addEventListener('keydown',escape);
+  window.addEventListener('resize',resize);
+  return ()=>{
+    document.removeEventListener('pointerdown',closeOutside);
+    document.removeEventListener('keydown',escape);
+    window.removeEventListener('resize',resize);
+  };
+}
+
 function initializeAcademyShortcuts() {
   if (!/^\/academy\/(?:kursy\/|kategorie\/|ksiegowosc-od-podstaw\.html)/.test(location.pathname)) return;
-  const header = document.querySelector('body > header');
-  if (!header || header.querySelector('[data-academy-shortcuts]')) return;
-  const host = header.querySelector('.top') || header;
-  // The dedicated AI offer page has a legacy navigation. Replace it with
-  // the same shortcuts as the rest, avoiding two competing account menus.
-  const existing = host.querySelector('nav.nav');
-  if (existing) existing.remove();
-  const links = [
-    ['Kursy','/academy/index.html#kursy'],
-    ['Moje kursy','/moje-kursy'],
-    ['Mój profil','/konto'],
-    ['Pomoc','/pomoc']
-  ];
-  const nav = document.createElement('nav');
-  nav.className = 'ta-site-shortcuts';
-  nav.dataset.academyShortcuts = 'true';
-  nav.setAttribute('aria-label','Menu akademii');
-  for (const [label,url] of links) {
-    const link = document.createElement('a');
-    link.href = url;
-    link.textContent = label;
-    if (label === 'Mój profil') link.className = 'ta-site-profile';
-    nav.append(link);
-  }
-  header.classList.add('ta-site-header');
-  host.append(nav);
+  const header=document.querySelector('body > header');
+  if(!header)return;
+  if(!header.querySelector('.ta-academy-bar'))header.innerHTML=academyMenuMarkup();
+  header.className='ta-course-header';
+  bindAcademyDisclosure(header.querySelector('details'));
 }
 // Close the responsive dropdown on outside interaction, Escape and desktop resize.
 function initializeAcademyMobileMenu() {
@@ -50,8 +63,17 @@ function initializeAcademyMobileMenu() {
 }
 function initializeAcademyNavigation() {
   initializeAcademyShortcuts();
+  const catalogueHeader=document.querySelector('body > header.header');
+  if(catalogueHeader&&document.getElementById('app')){
+    catalogueHeader.insertAdjacentHTML('afterbegin',academyMenuMarkup());
+    bindAcademyDisclosure(catalogueHeader.querySelector('.ta-academy-mobile'));
+  }
   initializeAcademyMobileMenu();
 }
+// Expo and the static export consume the same navigation markup as the public pages.
+if(typeof module!=='undefined'&&module.exports){
+  module.exports={academyMenuMarkup,bindAcademyDisclosure};
+}else if(typeof document!=='undefined'){
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded',initializeAcademyNavigation,{once:true});
 } else {
@@ -100,3 +122,5 @@ document.addEventListener('click', async (event) => {
     button.disabled = false;
   }
 });
+
+}

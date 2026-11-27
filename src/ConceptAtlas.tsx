@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {View,Text,Pressable} from 'react-native';
 
-const ink='#153e2e',muted='#54715e';
+const ink='#17354D',muted='#49647A';
 export const glossary:Record<string,{term:string,meaning:string}[]>={
  'windows-skroty':[
  {term:'System operacyjny',meaning:'Podstawowe oprogramowanie sterujące sprzętem komputera i uruchamiające aplikacje.'},
@@ -87,41 +87,41 @@ const labels:Record<string,{title:string,menus:string[],panel:string[],hint:stri
 function WindowSketch({slug}:{slug:string}){
  const data=labels[slug];if(!data)return null;
  const cad=slug==='autocad-skroty',win=slug==='windows-skroty',excel=slug==='excel-skroty';
- return <View style={{borderWidth:1,borderColor:'#c9d9c9',borderRadius:13,overflow:'hidden'}}>
-  <View style={{backgroundColor:'#e9f1e5',padding:11,flexDirection:'row',justifyContent:'space-between'}}>
+ return <View style={{borderWidth:1,borderColor:'#D8E2EB',borderRadius:13,overflow:'hidden'}}>
+  <View style={{backgroundColor:'#EFF3F8',padding:11,flexDirection:'row',justifyContent:'space-between'}}>
    <Text style={{fontWeight:'900',color:ink,fontSize:12}}>{data.title}</Text>
    <Text style={{color:muted,fontSize:11}}>— □ ×</Text>
   </View>
-  <View style={{flexDirection:'row',flexWrap:'wrap',backgroundColor:'#f5f7f2',padding:10,gap:10}}>
+  <View style={{flexDirection:'row',flexWrap:'wrap',backgroundColor:'#F7F9FC',padding:10,gap:10}}>
    {data.menus.map(x=><Text key={x} style={{fontSize:11,color:ink,fontWeight:'700'}}>{x}</Text>)}
   </View>
-  <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,backgroundColor:'#e1eadd',padding:10}}>
+  <View style={{flexDirection:'row',flexWrap:'wrap',gap:7,backgroundColor:'#EFF3F8',padding:10}}>
    {data.panel.map(x=><Text key={x} style={{paddingHorizontal:8,paddingVertical:6,backgroundColor:'white',borderRadius:5,color:ink,fontSize:11}}>{x}</Text>)}
   </View>
   {excel?<View style={{backgroundColor:'white',padding:12,gap:7}}>
    <Text style={{borderWidth:1,borderColor:'#DCE4ED',padding:9,fontSize:12,color:ink}}>B2   ƒx   =C2*D2</Text>
-   {[['','A','B','C','D'],['1','Produkt','Ilość','Cena','Razem'],['2','Farba','3','100','300'],['3','Taśma','2','25','50']].map((line,i)=><View key={i} style={{flexDirection:'row'}}>{line.map((v,j)=><Text key={j} style={{flex:1,borderWidth:.5,borderColor:'#d8e5d5',padding:5,color:ink,fontSize:10}}>{v}</Text>)}</View>)}
-  </View>:cad?<View style={{height:146,backgroundColor:'#193a36',justifyContent:'center',alignItems:'center'}}>
-    <View style={{width:145,height:78,borderColor:'#d7eb9b',borderWidth:2}}/>
-    <View style={{position:'absolute',width:54,height:54,borderRadius:30,borderColor:'#a9e0de',borderWidth:2,right:'22%',top:33}}/>
-    <Text style={{position:'absolute',bottom:8,left:10,color:'#d9e9bc',fontSize:11}}>Command: LINE  Specify first point:</Text>
+   {[['','A','B','C','D'],['1','Produkt','Ilość','Cena','Razem'],['2','Farba','3','100','300'],['3','Taśma','2','25','50']].map((line,i)=><View key={i} style={{flexDirection:'row'}}>{line.map((v,j)=><Text key={j} style={{flex:1,borderWidth:.5,borderColor:'#D8E2EB',padding:5,color:ink,fontSize:10}}>{v}</Text>)}</View>)}
+  </View>:cad?<View style={{height:146,backgroundColor:'#17354D',justifyContent:'center',alignItems:'center'}}>
+    <View style={{width:145,height:78,borderColor:'#EFF3F8',borderWidth:2}}/>
+    <View style={{position:'absolute',width:54,height:54,borderRadius:30,borderColor:'#D8E2EB',borderWidth:2,right:'22%',top:33}}/>
+    <Text style={{position:'absolute',bottom:8,left:10,color:'#EFF3F8',fontSize:11}}>Command: LINE  Specify first point:</Text>
   </View>:<View style={{minHeight:120,backgroundColor:win?'#cedbf1':'#fff',padding:16,flexDirection:win?'row':'column',gap:8}}>
    {win?<><View style={{width:'43%',backgroundColor:'white',padding:8,borderRadius:7}}><Text style={{fontWeight:'900',color:ink,fontSize:12}}>Eksplorator</Text><Text style={{color:muted,fontSize:10,marginTop:5}}>Dokumenty  •  Obrazy</Text></View><View style={{flex:1,justifyContent:'flex-end'}}><Text style={{color:ink,fontSize:11}}>Pulpit</Text></View></>:
     <><Text style={{fontWeight:'900',color:ink}}>Potwierdzenie zamówienia</Text><Text style={{color:ink,fontSize:12,lineHeight:22}}>Szanowni Państwo,{"\n"}potwierdzamy termin wykonania prac...{"\n"}Z poważaniem...</Text></>}
   </View>}
-  <Text style={{backgroundColor:'#eff6ed',padding:12,color:muted,fontSize:12,lineHeight:19}}>{data.hint}</Text>
+  <Text style={{backgroundColor:'#F7F9FC',padding:12,color:muted,fontSize:12,lineHeight:19}}>{data.hint}</Text>
  </View>;
 }
 export default function ConceptAtlas({slug}:{slug:string}){
  const [expanded,setExpanded]=useState(false),[selected,setSelected]=useState<string|null>(null);
  const list=terms(slug),data=labels[slug];
  if(!list.length)return null;
- return <View style={{borderRadius:17,backgroundColor:'#EFF3F8',borderWidth:1,borderColor:'#d4e6ce',padding:18,gap:13,marginBottom:18}}>
+ return <View style={{borderRadius:17,backgroundColor:'#EFF3F8',borderWidth:1,borderColor:'#D8E2EB',padding:18,gap:13,marginBottom:18}}>
   <Text style={{fontSize:20,fontWeight:'900',color:ink}}>Poznaj swój program i jego język</Text>
   <Text style={{fontSize:14,lineHeight:23,color:muted}}>Nie zakładamy żadnej wcześniejszej wiedzy. To autorski schemat układu programu i mała encyklopedia pojęć. Kliknij dowolne hasło, aby poznać jego znaczenie.</Text>
   {!!data&&<WindowSketch slug={slug}/>}
   <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>
-   {list.slice(0,expanded?list.length:7).map(item=><Pressable key={item.term} onPress={()=>setSelected(v=>v===item.term?null:item.term)} style={{backgroundColor:selected===item.term?'#d3e9c8':'white',paddingHorizontal:12,paddingVertical:9,borderWidth:1,borderColor:'#d4e3d2',borderRadius:10}}>
+   {list.slice(0,expanded?list.length:7).map(item=><Pressable key={item.term} onPress={()=>setSelected(v=>v===item.term?null:item.term)} style={{backgroundColor:selected===item.term?'#EFF3F8':'white',paddingHorizontal:12,paddingVertical:9,borderWidth:1,borderColor:'#D8E2EB',borderRadius:10}}>
     <Text style={{fontSize:12,fontWeight:'800',color:ink}}>{item.term}</Text>
    </Pressable>)}
   </View>
@@ -130,7 +130,7 @@ export default function ConceptAtlas({slug}:{slug:string}){
    <Text style={{color:muted,lineHeight:23,marginTop:5}}>{list.find(i=>i.term===selected)?.meaning}</Text>
   </View>}
   <Pressable onPress={()=>setExpanded(x=>!x)} style={{paddingVertical:9}}>
-   <Text style={{color:'#236b46',fontWeight:'800'}}>{expanded?'Zwiń encyklopedię':'Zobacz wszystkie hasła ('+list.length+') →'}</Text>
+   <Text style={{color:'#49647A',fontWeight:'800'}}>{expanded?'Zwiń encyklopedię':'Zobacz wszystkie hasła ('+list.length+') →'}</Text>
   </Pressable>
  </View>
 }

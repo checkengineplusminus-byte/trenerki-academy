@@ -588,3 +588,17 @@ body>footer:not(.academy-footer) a{color:#F0CE7D!important}
   grid-template-columns:repeat(3,minmax(0,1fr))!important
  }
 }
+
+/* Course details opened from search, recommendations and shared catalogue URLs. */
+.page-top,.story-panel,.story-outcomes,.language-intro-art,.lock-card{background:#edf3f8;color:#17354d;border-color:#d3dfeb}
+.crumb,.award-name,.story-history,.syllabus-item,.module-btn{color:#294961}
+.buy-card,.sidebar{background:#112e46;color:#f6f9fc}
+.buy-card :is(p,small),.sidebar .module-btn{color:#e3ecf2}
+.sidebar .module-btn{background:#1b3b54;border-color:#425c72}
+.sidebar .module-btn.sel{background:#efcb82;color:#172e42}
+.story-outcome,.syllabus-item{background:#fff;border-color:#d3dfe9}
+.buy-card .fine{color:#d0dce7}.sidebar .module-btn.sel{color:#17354d}
+
+body > header.header > .ta-academy-bar{display:none}
+body:has(#app .course-heading) > header.header > .ta-academy-bar{display:block}
+body:has(#app .course-heading) > header.header > .head-in{display:none}

@@ -317,15 +317,15 @@ export default function Learning(){
  }
  return <View style={{flex:1,backgroundColor:'#F7F9FC'}}>
   <View style={{flex:1,flexDirection:'row',width:'100%',maxWidth:1920,alignSelf:'center'}}>
-   {desktop&&items.length>0&&<ScrollView testID="desktop-course-sidebar" style={{width:screenWidth>=1280?300:252,flexGrow:0,flexShrink:0,backgroundColor:'white',borderRightColor:line,borderRightWidth:1}} contentContainerStyle={{padding:16,gap:6}}>
-    <Text accessibilityRole="header" style={{fontSize:20,fontWeight:'900',color:ink}}>Plan kursu</Text>
-    <Text style={{fontSize:14,color:secondary,marginBottom:10}}>{courseInfo.title}</Text>
+   {desktop&&items.length>0&&<ScrollView testID="desktop-course-sidebar" style={{width:screenWidth>=1280?300:252,flexGrow:0,flexShrink:0,backgroundColor:'#102B42',borderRightColor:'#253F56',borderRightWidth:1}} contentContainerStyle={{padding:16,gap:6}}>
+    <Text accessibilityRole="header" style={{fontSize:20,fontWeight:'900',color:'#FFFFFF'}}>Plan kursu</Text>
+    <Text style={{fontSize:14,color:'#D0DBE6',marginBottom:10}}>{courseInfo.title}</Text>
     {items.map((item,i)=>{
      const current=item.lesson_no===module,locked=!canVisit(item.lesson_no);
      return <Pressable key={item.lesson_no} accessibilityRole="button" accessibilityState={{selected:current,disabled:locked||saving}}
       disabled={saving||locked} onPress={()=>changeModule(item.lesson_no)}
-      style={{minHeight:44,justifyContent:'center',padding:10,borderRadius:8,backgroundColor:current?ink:'#EFF3F8'}}>
-      <Text style={{fontSize:13,lineHeight:19,color:current?'white':locked?secondary:ink,fontWeight:current?'800':'500'}}>{done.includes(item.lesson_no)?'✓ ':locked?'🔒 ':''}{i+1}. {item.title_pl}</Text>
+      style={{minHeight:44,justifyContent:'center',padding:10,borderRadius:8,backgroundColor:current?'#F1CF8D':'#193950'}}>
+      <Text style={{fontSize:13,lineHeight:19,color:current?'#14283B':locked?'#C4D0DA':'#FFFFFF',fontWeight:current?'800':'500'}}>{done.includes(item.lesson_no)?'✓ ':locked?'🔒 ':''}{i+1}. {item.title_pl}</Text>
      </Pressable>;
     })}
    </ScrollView>}
@@ -383,7 +383,7 @@ export default function Learning(){
      return <View key={part.start} style={{backgroundColor:current?'#EFF3F8':'#EFF3F8',borderWidth:1,borderColor:current?'#D9B76D':'#DCE4ED',paddingVertical:10,paddingHorizontal:13,borderRadius:12}}>
       <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',gap:7}}>
        <Text style={{color:ink,fontSize:13,fontWeight:'900',flex:1}}>{part.name}</Text>
-       <Text style={{color:'#446b4f',fontSize:12,fontWeight:'900'}}>{n}/10</Text>
+       <Text style={{color:'#49647A',fontSize:12,fontWeight:'900'}}>{n}/10</Text>
       </View>
       <Text style={{color:secondary,fontSize:12,lineHeight:19,marginTop:4}}>{part.description}</Text>
      </View>;
@@ -419,11 +419,11 @@ export default function Learning(){
    ]:[{name:'DOSTĘPNE LEKCJE',about:`${items.length} lekcji i ćwiczenia praktyczne`,list:items}]).map((part,i)=><View key={part.name} style={{marginBottom:13,backgroundColor:'white',borderWidth:1,borderColor:'#DCE4ED',borderRadius:13,padding:13,gap:9}}>
      <Text style={{color:ink,fontWeight:'900',fontSize:13}}>{part.name}</Text>
      <Text style={{color:secondary,fontSize:12,lineHeight:19}}>{part.about}</Text>
-     <View style={{flexDirection:'row',flexWrap:'wrap',gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} disabled={saving||!canVisit(v.lesson_no)} onPress={()=>changeModule(v.lesson_no)} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minWidth:40,paddingVertical:10,paddingHorizontal:11,opacity:!canVisit(v.lesson_no)?0.38:1,backgroundColor:v.lesson_no===module?ink:done.includes(v.lesson_no)?'#def0d4':'#F7F9FC',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
-      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':ink,textAlign:'center'}}>{done.includes(v.lesson_no)?'✓ ':!canVisit(v.lesson_no)?'🔒 ':''}{v.lesson_no+1}</Text>
+     <View style={{gap:7}}>{part.list.map(v=><Pressable key={v.lesson_no} accessibilityRole="button" accessibilityState={{selected:v.lesson_no===module,disabled:saving||!canVisit(v.lesson_no)}} disabled={saving||!canVisit(v.lesson_no)} onPress={()=>{setShowProgram(false);changeModule(v.lesson_no)}} accessibilityLabel={'Lekcja '+(v.lesson_no+1)+': '+v.title_pl+(!canVisit(v.lesson_no)?' — zablokowana':'')} style={{minHeight:44,justifyContent:'center',paddingVertical:10,paddingHorizontal:12,backgroundColor:v.lesson_no===module?ink:'#F4F7FA',borderRadius:10,borderWidth:1,borderColor:v.lesson_no===module?ink:line}}>
+      <Text style={{fontWeight:'900',color:v.lesson_no===module?'white':!canVisit(v.lesson_no)?'#4A6176':ink,textAlign:'left'}}>{done.includes(v.lesson_no)?'✓ ':!canVisit(v.lesson_no)?'🔒 ':''}{v.lesson_no+1}. {v.title_pl}</Text>
      </Pressable>)}</View>
    </View>)}
-   {progress===100&&index===items.length-1&&!reviewMode&&<View testID="course-completed-last-page-only" style={{padding:17,backgroundColor:'#e5f2de',borderRadius:12,marginBottom:15}}>
+   {progress===100&&index===items.length-1&&!reviewMode&&<View testID="course-completed-last-page-only" style={{padding:17,backgroundColor:'#EFF3F8',borderRadius:12,marginBottom:15}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:18}}>Wszystkie lekcje ukończone! 🎉</Text>
     <Text style={{color:secondary,marginTop:6}}>Masz komplet lekcji. Teraz czeka Cię osobny egzamin Anielki. Dopiero jego zaliczenie umożliwia wystawienie autorskiego dyplomu.</Text>
    </View>}
@@ -434,7 +434,7 @@ export default function Learning(){
     <Pressable testID="excel-homework-quick-access" accessibilityRole="button"
      accessibilityLabel="Otwórz pracę domową w prawdziwym Excelu i pobierz pliki CSV"
      onPress={openExcelHomework}
-     style={{minHeight:58,padding:14,backgroundColor:'#dceee0',borderWidth:2,borderColor:'#8ab99a',borderRadius:12,marginBottom:12,gap:5}}>
+     style={{minHeight:58,padding:14,backgroundColor:'#EFF3F8',borderWidth:2,borderColor:'#ADBDCC',borderRadius:12,marginBottom:12,gap:5}}>
      <Text style={{fontWeight:'900',fontSize:16,color:'#2C587B'}}>📗 Praca domowa w prawdziwym Excelu — pobierz plik CSV ↓</Text>
      <Text style={{fontSize:12,lineHeight:20,color:'#43596F'}}>Każda lekcja ma własne ćwiczenie i wynik kontrolny. Kliknij, aby przejść do zadania i rozwinąć instrukcję.</Text>
     </Pressable>}
@@ -461,24 +461,24 @@ export default function Learning(){
      <Text style={{fontWeight:'900',color:ink}}>{slug==='ciesla-przygotowanie-czeladnicze'?(index<10?'I · TECHNOLOGIA':index<20?'II · MASZYNOZNAWSTWO':index<30?'III · MATERIAŁOZNAWSTWO':index<42?'IV · TECHNOLOGIE':index<50?'V · DETALE':index<56?'VI · WARSZTAT':'VII · EGZAMIN PISEMNY'):(index<10?'DZIAŁ I · PODSTAWY — OD ZERA':index<20?'DZIAŁ II · PRAKTYKA':'DZIAŁ III · ZAAWANSOWANE')}</Text>
    </View>}
    <Text style={{color:'#53677D',fontWeight:'700'}}>Lekcja {index+1} z {items.length}{!reviewMode&&progress<100&&done.includes(module)?' · Zaliczone ćwiczenia ✓':''}</Text>
-   {slug==='ai-bez-tajemnic'&&<Text testID="ai-course-stage" style={{color:'#356e44',fontSize:13,fontWeight:'900',marginBottom:6}}>ETAP {lesson.material.section||Math.floor(module/4)+1}/8 · {lesson.material.stage_name||'Pracownia umiejętności'}</Text>}
+   {slug==='ai-bez-tajemnic'&&<Text testID="ai-course-stage" style={{color:'#49647A',fontSize:13,fontWeight:'900',marginBottom:6}}>ETAP {lesson.material.section||Math.floor(module/4)+1}/8 · {lesson.material.stage_name||'Pracownia umiejętności'}</Text>}
    <Text testID="lesson-heading" accessibilityRole="header" style={{color:ink,fontSize:mobile?23:26,fontWeight:'900',marginTop:10,marginBottom:12,lineHeight:mobile?30:33}}>{lesson.title_pl}</Text>
    {slug==='ai-bez-tajemnic'&&<Pressable testID="anielka-top-cta" accessibilityRole="button" onPress={focusAnielka}
-    style={{padding:15,backgroundColor:'#e4f2e5',borderRadius:13,borderWidth:1,borderColor:'#a9cfae',marginBottom:14,minHeight:51}}>
+    style={{padding:15,backgroundColor:'#EFF3F8',borderRadius:13,borderWidth:1,borderColor:'#D8E2EB',marginBottom:14,minHeight:51}}>
     <Text style={{color:'#14263B',fontSize:16,fontWeight:'900'}}>Ćwicz z Anielką · przejdź do pracowni ↓</Text>
-    <Text style={{color:'#446b52',fontSize:12,lineHeight:20}}>4 sposoby pracy: wspólne ćwiczenie, wskazówka, sprawdzenie próby i pytanie kontrolne.</Text>
+    <Text style={{color:'#49647A',fontSize:12,lineHeight:20}}>4 sposoby pracy: wspólne ćwiczenie, wskazówka, sprawdzenie próby i pytanie kontrolne.</Text>
    </Pressable>}
    {slug==='excel-skroty'&&index>0&&<ExcelMasterGuide key={'excel-master-'+module} lessonNo={module}/>}
-   {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#e5f4e1':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#a8cda4':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
+   {carpentry&&<View testID="carpentry-checklist" accessibilityLiveRegion="polite" style={{backgroundColor:canFinish?'#EFF3F8':'#fff7e6',borderRadius:15,borderWidth:1,borderColor:canFinish?'#D8E2EB':'#e7d3a7',padding:16,marginBottom:16,gap:9}}>
     <Text style={{fontSize:17,fontWeight:'900',color:ink}}>{canFinish?'✓ Obydwa zadania zaliczone — możesz przejść dalej':'Aby przejść dalej, zalicz 2 zadania'}</Text>
-    <Text style={{fontSize:14,fontWeight:'800',color:'#4c634d'}}>Twój wynik: {done.includes(module)?2:passedCount}/2</Text>
+    <Text style={{fontSize:14,fontWeight:'800',color:'#49647A'}}>Twój wynik: {done.includes(module)?2:passedCount}/2</Text>
     <Pressable accessibilityRole="button" onPress={returnToExercise} style={{paddingVertical:10,paddingHorizontal:12,backgroundColor:'white',borderRadius:9,minHeight:44}}>
      <Text style={{fontWeight:'800',color:ink}}>{done.includes(module)||passed[objective||'case']?'✓':'○'} 1. Pytanie kontrolne — {done.includes(module)||passed[objective||'case']?'zaliczone':'do rozwiązania'} ↗</Text>
     </Pressable>
     <Pressable accessibilityRole="button" onPress={openCarpentry} style={{paddingVertical:10,paddingHorizontal:12,backgroundColor:'white',borderRadius:9,minHeight:44}}>
      <Text style={{fontWeight:'800',color:ink}}>{done.includes(module)||passed.carpentry?'✓':'○'} 2. Zadanie z obliczeń — {done.includes(module)||passed.carpentry?'zaliczone':'do rozwiązania'} ↗</Text>
     </Pressable>
-    <Text style={{fontSize:12,lineHeight:19,color:'#626e59'}}>Kalkulator na własnych danych służy do ćwiczeń. Aby zaliczyć zadanie 2, wybierz „Zadanie z lekcji”, wpisz wynik i naciśnij „Sprawdź mój wynik”. Oba zaliczenia zostaną zachowane.</Text>
+    <Text style={{fontSize:12,lineHeight:19,color:'#49647A'}}>Kalkulator na własnych danych służy do ćwiczeń. Aby zaliczyć zadanie 2, wybierz „Zadanie z lekcji”, wpisz wynik i naciśnij „Sprawdź mój wynik”. Oba zaliczenia zostaną zachowane.</Text>
    </View>}
    {!!curiosity&&!curiosityInExplanation&&<View testID="lesson-curiosity" style={{paddingVertical:11,paddingHorizontal:15,marginBottom:12,backgroundColor:'#FDF4E1',borderLeftWidth:3,borderLeftColor:'#C99A43',borderRadius:9,gap:4}}>
     <Text style={{fontSize:12,color:'#8A641F',fontWeight:'900'}}>WARTO WIEDZIEĆ</Text>
@@ -547,8 +547,8 @@ export default function Learning(){
    {slug==='autocad-skroty'&&<AutoCADPracticeFiles lessonNo={module}/>}
    <LessonClarification key={slug+'-'+module} courseSlug={slug} lessonNo={module}/>
    {!lesson.material?.sections?.length&&!!lesson.material?.learning&&!!lesson.material?.raw?.length&&<View style={{backgroundColor:'#fff',borderRadius:17,padding:21,borderWidth:1,borderColor:line,gap:13,marginBottom:16}}>
-     <Text style={{color:'#3d7650',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
-     {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#365344',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
+     <Text style={{color:'#49647A',fontWeight:'900',fontSize:12}}>WYJAŚNIENIA I PRZYKŁADY Z ŻYCIA</Text>
+     {lesson.material.raw.slice(1).filter(paragraph=>typeof paragraph==='string'&&!/^(Źródło|Status nauczania w Polsce|Wersja edukacyjna|Materiał wstępny|Do sprawdzenia)/i.test(paragraph)&&!paragraph.includes(lesson.material?.learning?.situation||'____NO_MATCH____')&&!paragraph.includes(lesson.material?.learning?.task||'____NO_MATCH____')).slice(0,5).map((paragraph,i)=><Text key={i} style={{color:'#17354D',lineHeight:25,fontSize:15}}>{paragraph}</Text>)}
    </View>}
    {!carpentry&&requirements.length>0&&<View testID="lesson-requirements" accessibilityLiveRegion="polite" style={{backgroundColor:'#EFF3F8',padding:17,borderRadius:12,gap:9,marginVertical:12}}>
     <Text style={{fontWeight:'900',color:ink,fontSize:17}}>Do ukończenia tej lekcji: {requirements.length===1?'1 zadanie':requirements.length+' zadania'}</Text>
@@ -570,10 +570,10 @@ export default function Learning(){
        hideTask={slug==='autocad-skroty'||!!learning.task&&sections.some(section=>section?.text?.includes(learning.task!))}
        onAttempt={(index,correct)=>recordAttempt('case',index,correct)}/>}
       {!lesson.material?.learning&&!lesson.material?.shortcuts?.length&&<View style={{backgroundColor:'white',borderRadius:17,padding:22,borderWidth:1,borderColor:line,gap:12}}>
-       {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#394d41',fontSize:16,lineHeight:26}}>{line}</Text>)}
+       {(lesson.material?.raw||[]).filter((line,i)=>i>0&&!/https?:\/\/|^Źródło|^Do sprawdzenia|^Status nauczania|^Wersja edukacyjna|^Materiał wstępny|^Zastanów się, jak temat|^Ćwiczenie: przygotuj krótką listę|^Status: zarys dydaktyczny/i.test(line)).map((line,i)=><Text key={i} style={{color:'#17354D',fontSize:16,lineHeight:26}}>{line}</Text>)}
       </View>}
       {!lesson.material?.sections?.length&&!!lesson.material?.shortcuts?.length&&!!lesson.material?.raw?.[1]&&<View style={{backgroundColor:'#EFF3F8',borderColor:'#DCE4ED',borderWidth:1,padding:17,borderRadius:14,marginBottom:15,gap:8}}>
-       <Text style={{color:'#28563c',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
+       <Text style={{color:'#17354D',fontWeight:'900',fontSize:13}}>CEL TEJ LEKCJI</Text>
        <Text style={{color:'#2C587B',fontSize:16,lineHeight:25}}>{lesson.material.raw[1]}</Text>
       </View>}
       <View onLayout={event=>{

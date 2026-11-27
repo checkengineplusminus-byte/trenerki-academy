@@ -129,7 +129,7 @@ export default function CourseIntro({slug,title,description,first}:{slug:string,
      {era:'Średniowiecze i późniejsze stulecia',story:'Rozwijano ciesielskie wręby, czopy i więźby dachowe. W niektórych regionach Polski rozpowszechniły się szkielety drewniane z wypełnionymi polami, nazywane szachulcem lub murem pruskim.'},
      {era:'XIX i XX wiek',story:'Mechaniczne piły i rozwój tartaków umożliwiły szybszą obróbkę oraz bardziej powtarzalne wymiary tarcicy. Jednocześnie umiejętność pomiaru, trasowania i pasowania elementów pozostała niezbędna.'},
      {era:'Współczesność',story:'Obok tradycyjnych złączy spotkasz łączniki stalowe, drewno konstrukcyjne, prefabrykowane wiązary i projekty cyfrowe. Nadal trzeba rozumieć obciążenia, wilgotność i sposób podparcia.'}
-    ].map(({era,story},i)=><View key={era} style={{backgroundColor:'white',padding:13,borderRadius:12,borderLeftWidth:4,borderLeftColor:i%2===0?'#D9B76D':'#659579',gap:5}}>
+    ].map(({era,story},i)=><View key={era} style={{backgroundColor:'white',padding:13,borderRadius:12,borderLeftWidth:4,borderLeftColor:i%2===0?'#D9B76D':'#748DA2',gap:5}}>
      <Text style={{fontWeight:'900',fontSize:14,color:'#2C587B'}}>{i+1}. {era}</Text>
      <Text style={{fontSize:14,lineHeight:23,color:'#2C587B'}}>{story}</Text>
     </View>)}

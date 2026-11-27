@@ -266,35 +266,35 @@ function Sources({sources}:{sources:Source[]}){
  </View>;
 }
 
-const ink='#183c2b';
+const ink='#17354D';
 const styles=StyleSheet.create({
- page:{flex:1,backgroundColor:'#f7faf4'},
+ page:{flex:1,backgroundColor:'#F7F9FC'},
  content:{width:'100%',maxWidth:880,alignSelf:'center',padding:18,paddingBottom:44,gap:18},
  back:{alignSelf:'flex-start',minHeight:44,justifyContent:'center'},
  title:{color:ink,fontSize:32,fontWeight:'900'},
  heading:{color:ink,fontSize:24,fontWeight:'900'},
  subheading:{color:ink,fontSize:17,fontWeight:'900',lineHeight:24,flexShrink:1},
- body:{color:'#304b3a',fontSize:15,lineHeight:23},
- muted:{color:'#516657',fontSize:14,lineHeight:21},
- link:{color:'#245a3a',fontSize:14,fontWeight:'800',textDecorationLine:'underline'},
+ body:{color:'#17354D',fontSize:15,lineHeight:23},
+ muted:{color:'#49647A',fontSize:14,lineHeight:21},
+ link:{color:'#17354D',fontSize:14,fontWeight:'800',textDecorationLine:'underline'},
  tabs:{flexDirection:'row',flexWrap:'wrap',gap:8},
- tab:{backgroundColor:'#e7f1e2',borderColor:'#cbdcc5',borderWidth:1,borderRadius:10,paddingHorizontal:12,paddingVertical:10,minHeight:44,justifyContent:'center'},
+ tab:{backgroundColor:'#EFF3F8',borderColor:'#D8E2EB',borderWidth:1,borderRadius:10,paddingHorizontal:12,paddingVertical:10,minHeight:44,justifyContent:'center'},
  selectedTab:{backgroundColor:ink,borderColor:ink},
  tabText:{color:ink,fontSize:14,fontWeight:'800'},
  selectedTabText:{color:'#fff'},
  stack:{gap:12},
- panel:{backgroundColor:'#fff',borderColor:'#dce8d6',borderWidth:1,borderRadius:14,padding:15,gap:10},
+ panel:{backgroundColor:'#fff',borderColor:'#EFF3F8',borderWidth:1,borderRadius:14,padding:15,gap:10},
  cardToggle:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',gap:10,minHeight:40},
  field:{gap:5},
  fieldLabel:{color:ink,fontSize:14,fontWeight:'800'},
- input:{color:ink,backgroundColor:'#f8faf6',borderColor:'#c9d9c3',borderWidth:1,borderRadius:8,minHeight:72,padding:10,textAlignVertical:'top'},
- choice:{borderColor:'#d6e3d1',borderWidth:1,borderRadius:9,padding:12,minHeight:44,justifyContent:'center'},
- selectedChoice:{backgroundColor:'#e0efd8',borderColor:'#487a53'},
+ input:{color:ink,backgroundColor:'#F7F9FC',borderColor:'#D8E2EB',borderWidth:1,borderRadius:8,minHeight:72,padding:10,textAlignVertical:'top'},
+ choice:{borderColor:'#D8E2EB',borderWidth:1,borderRadius:9,padding:12,minHeight:44,justifyContent:'center'},
+ selectedChoice:{backgroundColor:'#EFF3F8',borderColor:'#49647A'},
  choiceText:{color:ink,fontSize:15,lineHeight:22},
  actions:{flexDirection:'row',flexWrap:'wrap',gap:8},
  primary:{backgroundColor:ink,borderRadius:10,paddingHorizontal:15,paddingVertical:11,minHeight:44,justifyContent:'center',alignSelf:'flex-start'},
  primaryText:{color:'#fff',fontSize:15,fontWeight:'900'},
  disabled:{opacity:0.55},
- feedback:{backgroundColor:'#e7f3e0',borderRadius:10,padding:12,gap:8},
+ feedback:{backgroundColor:'#EFF3F8',borderRadius:10,padding:12,gap:8},
  warning:{backgroundColor:'#fff0dc'}
 });
