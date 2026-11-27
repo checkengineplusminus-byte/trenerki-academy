@@ -1,9 +1,10 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useRef,useState} from 'react';
 import {View,Text,TextInput,Pressable,ScrollView,Linking,useWindowDimensions} from 'react-native';
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase,isPasswordRecoveryRedirect,clearPasswordRecoveryFlag} from '../src/supabase';
 import {academyAction} from '../src/academyApi';
 import {validGiftCode} from '../src/giftCode';
+import {AccountFeedbackError,accountEmail,accountErrorMessage} from '../src/accountFeedback.mjs';
 const ink='#14263B',pale='#FDF4E1';
 // Keep Expo preview authentication working until custom DNS and Supabase Auth allowlist are configured.
 const siteUrl=(typeof window!=='undefined' && /^https:\/\/(?:www\.)?(?:trenerki\.com)$|^https:\/\/trenerki-academy\.expo\.app$/.test(window.location?.origin||''))
@@ -17,6 +18,15 @@ export default function AccountPage(){
  referral=typeof params.ref==='string'&&/^TA[A-F0-9]{12}$/.test(params.ref)?params.ref:'';
  const [isAdmin,setIsAdmin]=useState(false);
  const [activeEmail,setActiveEmail]=useState(''),[mode,setMode]=useState<'register'|'login'|'reset'|'new-password'>(isPasswordRecoveryRedirect()?'new-password':'login'),[name,setName]=useState(''),[email,setEmail]=useState(''),[password,setPassword]=useState(''),[confirmPassword,setConfirmPassword]=useState(''),[showPassword,setShowPassword]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState('');
+ const authRequest=useRef(false);
+ const nextConfirmationAt=useRef(0);
+ const [canResend,setCanResend]=useState(false),[resendWait,setResendWait]=useState(0);
+ useEffect(()=>{
+  if(resendWait<=0)return;
+  const timer=setTimeout(()=>setResendWait(Math.max(0,Math.ceil((nextConfirmationAt.current-Date.now())/1000))),1000);
+  return()=>clearTimeout(timer);
+ },[resendWait]);
+ function deferConfirmation(){nextConfirmationAt.current=Date.now()+60000;setResendWait(60);}
  const isCompanyLogin=params.next==='company';
  const continueToSelectedCourse=async()=>{
     if(params.next==='company'){router.replace('/firma');return;}
@@ -109,11 +119,13 @@ export default function AccountPage(){
   finally{setBusy(false);}
  }
  async function submit(){
+   if(authRequest.current)return;
+   authRequest.current=true;
    setBusy(true);setMessage('');
    try{
      if(mode==='new-password'){
-       if(password.length<8)throw new Error('Nowe hasło musi mieć co najmniej 8 znaków.');
-       if(password!==confirmPassword)throw new Error('Podane hasła różnią się.');
+       if(password.length<8)throw new AccountFeedbackError('Nowe hasło musi mieć co najmniej 8 znaków.');
+       if(password!==confirmPassword)throw new AccountFeedbackError('Podane hasła różnią się.');
        const {error}=await supabase.auth.updateUser({password});
        if(error)throw error;
        clearPasswordRecoveryFlag();
@@ -122,46 +134,44 @@ export default function AccountPage(){
        setMessage('Hasło zostało zmienione. Zaloguj się teraz nowym hasłem.');
        return;
      }
-     if(!email.trim().includes('@'))throw new Error('Wpisz prawidłowy adres e-mail.');
+     const normalizedEmail=accountEmail(email);
      if(mode==='reset'){
        const redirectTo=siteUrl+'/konto';
-       const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo});if(error)throw error;
+       const {error}=await supabase.auth.resetPasswordForEmail(normalizedEmail,{redirectTo});if(error)throw error;
        setMessage('Sprawdź pocztę e-mail i folder SPAM.');return;
      }
-     if(password.length<8)throw new Error('Hasło powinno mieć minimum 8 znaków.');
+     if(!password)throw new AccountFeedbackError('Wpisz hasło do swojego konta.');
      if(mode==='register'){
-       if(name.trim().length<2)throw new Error('Wpisz swoje imię i nazwisko.');
+       if(password.length<8)throw new AccountFeedbackError('Hasło powinno mieć minimum 8 znaków.');
+       if(name.trim().length<2)throw new AccountFeedbackError('Wpisz swoje imię i nazwisko.');
        const emailRedirectTo=siteUrl+'/konto';
-       const {data,error}=await supabase.auth.signUp({email,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null,pending_company:isCompanyLogin,pending_affiliate:params.next==='affiliate',pending_referral_code:referral||null,pending_valuegift:params.next==='valuegift'}}});
+       const {data,error}=await supabase.auth.signUp({email:normalizedEmail,password,options:{emailRedirectTo,data:{full_name:name.trim(),pending_course:course||null,pending_gift:gift||null,pending_checkout:params.next==='gift'?'gift':null,pending_company:isCompanyLogin,pending_affiliate:params.next==='affiliate',pending_referral_code:referral||null,pending_valuegift:params.next==='valuegift'}}});
        if(error)throw error;
        if(data.session){await continueToSelectedCourse();return;}
+       setCanResend(true);deferConfirmation();
        setMessage(gift?'Konto utworzone. Potwierdź e-mail (sprawdź także SPAM), następnie zaloguj się. Twoja karta będzie czekać na odbiór.':'Konto utworzone. Potwierdź e-mail (również w SPAM), następnie zaloguj się. Wybrany kurs będzie czekał w koszyku.');return;
      }
-     const {error}=await supabase.auth.signInWithPassword({email:email.trim().toLowerCase(),password});
-     if(error){
-       if(error.code==='invalid_credentials'||/invalid login credentials/i.test(error.message))throw new Error('Nieprawidłowy e-mail lub hasło. Sprawdź hasło wpisane przy rejestracji lub wybierz „Nie pamiętam hasła”.');
-       if(error.code==='email_not_confirmed')throw new Error('Potwierdź adres e-mail w wiadomości od TRENERKI Academy.');
-       throw error;
-     }
+     const {error}=await supabase.auth.signInWithPassword({email:normalizedEmail,password});
+     if(error)throw error;
      await continueToSelectedCourse();
    }catch(e:any){
-     const raw=String(e?.message||'');
-     const code=String(e?.code||'');
-     const translations:Record<string,string>={
-       'Error sending recovery email':'Nie udało się wysłać wiadomości do zmiany hasła. Spróbuj ponownie za chwilę.',
-       'Email rate limit exceeded':'Zbyt wiele prób wysłania wiadomości. Spróbuj ponownie później.',
-       'New password should be different from the old password.':'Nowe hasło musi różnić się od poprzedniego.',
-       'Auth session missing!':'Sesja wygasła. Poproś o nowy link zmiany hasła.',
-     };
-     const friendly=translations[raw]||
-       (code==='over_email_send_rate_limit'?'Zbyt wiele prób wysłania wiadomości. Spróbuj ponownie później.':
-        code==='email_not_confirmed'?'Najpierw potwierdź adres e-mail.':
-        code==='same_password'?'Nowe hasło musi różnić się od poprzedniego.':
-        code==='weak_password'?'Wybierz silniejsze hasło.':
-        code==='unexpected_failure'?'Nie udało się wykonać operacji. Spróbuj ponownie za chwilę.':
-        'Nie udało się wykonać operacji. Spróbuj ponownie.');
-     setMessage(friendly);
-   }finally{setBusy(false)}
+     if(e?.code==='email_not_confirmed')setCanResend(true);
+     setMessage(accountErrorMessage(e));
+   }finally{authRequest.current=false;setBusy(false)}
+ }
+ async function resendConfirmation(){
+  if(authRequest.current||Date.now()<nextConfirmationAt.current)return;
+  authRequest.current=true;setBusy(true);setMessage('');
+  try{
+   const normalizedEmail=accountEmail(email);
+   const {error}=await supabase.auth.resend({type:'signup',email:normalizedEmail,options:{emailRedirectTo:siteUrl+'/konto'}});
+   if(error)throw error;
+   deferConfirmation();
+   setMessage('Jeśli ten adres czeka na potwierdzenie, wysłaliśmy nowy link. Sprawdź odebrane wiadomości i SPAM.');
+  }catch(e:any){
+   if(e?.code==='over_email_send_rate_limit')deferConfirmation();
+   setMessage(accountErrorMessage(e));
+  }finally{authRequest.current=false;setBusy(false)}
  }
  const input={borderWidth:1,borderColor:'#DCE4ED',borderRadius:12,padding:13,marginBottom:12,color:ink,fontSize:16} as const;
  const desktopProfile=width>=1000&&!!activeEmail&&mode!=='new-password';
@@ -170,10 +180,10 @@ export default function AccountPage(){
  <View style={{maxWidth:desktopProfile?1920:530,width:'100%',alignSelf:'center',backgroundColor:'white',borderRadius:compact?15:20,padding:compact?17:28,borderWidth:1,borderColor:'#DCE4ED'}}>
  <Pressable onPress={()=>router.push('/')}><Text style={{color:ink,fontWeight:'700',marginBottom:compact?12:22}}>← Wszystkie kursy</Text></Pressable>
  {!activeEmail&&<View style={{flexDirection:'row',gap:9,marginBottom:compact?12:18}}>
-  <Pressable accessibilityRole="button" onPress={()=>router.replace(gift?{pathname:'/konto',params:{gift}}:'/konto')} style={{flex:1,backgroundColor:isCompanyLogin?'#f0f4fb':ink,padding:13,borderRadius:11,alignItems:'center'}}>
+  <Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(!authRequest.current)router.replace(gift?{pathname:'/konto',params:{gift}}:'/konto')}} style={{flex:1,backgroundColor:isCompanyLogin?'#f0f4fb':ink,padding:13,borderRadius:11,alignItems:'center'}}>
    <Text style={{color:isCompanyLogin?ink:'white',fontWeight:'900',fontSize:13}}>Konto prywatne</Text>
   </Pressable>
-  <Pressable accessibilityRole="button" onPress={()=>router.replace({pathname:'/konto',params:{next:'company'}})} style={{flex:1,backgroundColor:isCompanyLogin?ink:'#f0f4fb',padding:13,borderRadius:11,alignItems:'center'}}>
+  <Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(!authRequest.current)router.replace({pathname:'/konto',params:{next:'company'}})}} style={{flex:1,backgroundColor:isCompanyLogin?ink:'#f0f4fb',padding:13,borderRadius:11,alignItems:'center'}}>
    <Text style={{color:isCompanyLogin?'white':ink,fontWeight:'900',fontSize:13}}>Dla firm</Text>
   </Pressable>
  </View>}
@@ -208,17 +218,18 @@ export default function AccountPage(){
  </View>}
  {(!activeEmail||mode==='new-password')&&<>
   <Text style={{color:'#58677b',lineHeight:compact?21:22,marginBottom:compact?14:20}}>{mode==='new-password'?'Po otwarciu linku z e-maila ustaw nowe hasło i zaloguj się ponownie.':gift?'Zaloguj się, żeby odebrać prezent od bliskiej osoby. Twoja karta podarunkowa pozostanie wybrana.':course==='zaufany-wolontariusz'?'Zaloguj się, aby zapisać bezpłatny kurs na swoim koncie.':course?'Zaloguj się lub utwórz konto. Po zalogowaniu wrócisz do wybranego kursu i zobaczysz jego cenę oraz przycisk zakupu.':isCompanyLogin?'Konto opiekuna firmy. Przydzielaj kursy pracownikom i sprawdzaj wykorzystanie miejsc.':'Zaloguj się, aby zobaczyć swoje kursy i zapisany postęp. Wybierz kurs, a następnie zapłać bezpiecznie przez Stripe.'}</Text>
- {mode==='register'&&<TextInput style={input} placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
- {mode!=='new-password'&&<TextInput style={input} placeholder="Adres e-mail" value={email} onChangeText={setEmail} autoCapitalize="none" autoComplete="email" keyboardType="email-address"/>}
- {mode!=='reset'&&<TextInput style={input} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'}/>}
- {mode!=='reset'&&<Pressable onPress={()=>setShowPassword(v=>!v)} style={{alignSelf:'flex-end',paddingVertical:6,marginBottom:9}}><Text style={{color:ink,fontWeight:'700'}}>{showPassword?'Ukryj hasło':'Pokaż hasło'}</Text></Pressable>}
- {mode==='new-password'&&<TextInput style={input} placeholder="Powtórz nowe hasło" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry autoComplete="new-password"/>}
+ {mode==='register'&&<TextInput style={input} accessibilityLabel="Imię i nazwisko" placeholder="Imię i nazwisko" value={name} onChangeText={setName} autoComplete="name"/>}
+ {mode!=='new-password'&&<TextInput style={input} accessibilityLabel="Adres e-mail" placeholder="Adres e-mail" value={email} onChangeText={value=>{setEmail(value);setCanResend(false);setResendWait(0);nextConfirmationAt.current=0}} autoCapitalize="none" autoComplete="email" keyboardType="email-address" onSubmitEditing={()=>{if(mode==='reset')void submit()}} returnKeyType={mode==='reset'?'go':'next'}/>}
+ {mode!=='reset'&&<TextInput style={input} accessibilityLabel={mode==='new-password'?'Nowe hasło':mode==='register'?'Hasło (minimum 8 znaków)':'Hasło'} placeholder={mode==='new-password'?'Nowe hasło (min. 8 znaków)':'Hasło (minimum 8 znaków)'} value={password} onChangeText={setPassword} secureTextEntry={!showPassword} autoComplete={mode==='register'||mode==='new-password'?'new-password':'current-password'} onSubmitEditing={()=>{if(mode!=='new-password')void submit()}} returnKeyType={mode==='new-password'?'next':'go'}/>}
+ {mode!=='reset'&&<Pressable accessibilityRole="button" onPress={()=>setShowPassword(v=>!v)} style={{alignSelf:'flex-end',paddingVertical:6,marginBottom:9}}><Text style={{color:ink,fontWeight:'700'}}>{showPassword?'Ukryj hasło':'Pokaż hasło'}</Text></Pressable>}
+ {mode==='new-password'&&<TextInput style={input} accessibilityLabel="Powtórz nowe hasło" placeholder="Powtórz nowe hasło" value={confirmPassword} onChangeText={setConfirmPassword} secureTextEntry autoComplete="new-password" onSubmitEditing={()=>void submit()} returnKeyType="go"/>}
   </>}
- {!!message&&<Text style={{color:'#264b92',backgroundColor:pale,padding:13,borderRadius:12,marginBottom:14}}>{message}</Text>}
+ {!!message&&<Text accessibilityLiveRegion="polite" testID="account-feedback" style={{color:'#264b92',backgroundColor:pale,padding:13,borderRadius:12,marginBottom:14}}>{message}</Text>}
  {(!activeEmail||mode==='new-password')&&<>
-  <Pressable onPress={submit} disabled={busy} style={{backgroundColor:'#E7BB5B',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'#14263B',fontWeight:'900'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
- {mode!=='new-password'&&<Pressable onPress={()=>{setMode(mode==='register'?'login':'register');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{mode==='register'?'Mam już konto — zaloguj':'Utwórz nowe konto'}</Text></Pressable>}
- {mode==='login'&&<Pressable onPress={()=>{setMode('reset');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink}}>Nie pamiętam hasła</Text></Pressable>}
+  <Pressable accessibilityRole="button" onPress={submit} disabled={busy} style={{backgroundColor:'#E7BB5B',padding:16,borderRadius:12,alignItems:'center',opacity:busy?.5:1}}><Text style={{color:'#14263B',fontWeight:'900'}}>{busy?'Przetwarzanie…':mode==='register'?'Załóż konto':mode==='login'?'Zaloguj się':mode==='reset'?'Wyślij link':'Zmień hasło'}</Text></Pressable>
+ {canResend&&mode!=='new-password'&&<Pressable accessibilityRole="button" disabled={busy||resendWait>0} onPress={resendConfirmation} style={{padding:12,alignItems:'center',opacity:busy||resendWait>0?.6:1}}><Text style={{color:ink,fontWeight:'700'}}>{resendWait>0?'Wyślij ponownie za '+resendWait+' s':'Wyślij ponownie potwierdzenie e-mail'}</Text></Pressable>}
+ {mode!=='new-password'&&<Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(authRequest.current)return;setMode(mode==='register'?'login':'register');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink,fontWeight:'700'}}>{mode==='register'?'Mam już konto — zaloguj':'Utwórz nowe konto'}</Text></Pressable>}
+ {mode==='login'&&<Pressable accessibilityRole="button" disabled={busy} onPress={()=>{if(authRequest.current)return;setMode('reset');setMessage('')}} style={{padding:12,alignItems:'center'}}><Text style={{color:ink}}>Nie pamiętam hasła</Text></Pressable>}
   </>}
  <View style={{marginTop:17,marginBottom:6,gap:8}}>
   <Text style={{color:'#58677b',fontSize:12,lineHeight:20}}>TRENERKI oferuje autorskie kursy i autorskie dyplomy potwierdzające naukę. Dyplom można wpisać do CV jako szkolenie dodatkowe; nie jest kwalifikacją zawodową ani oficjalnym uprawnieniem.</Text>

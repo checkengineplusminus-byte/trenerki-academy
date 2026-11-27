@@ -85,6 +85,7 @@ jobs:
       - name: Check desktop and mobile browser experience
         run: |
           node scripts/gift-card-ui-state.test.mjs
+          node --test scripts/test-account-feedback.mjs
           node --experimental-default-type=module --test scripts/test-course-progress.mjs
           node --test scripts/test-exam-readiness.mjs
           node --test scripts/test-accounting-final-exam.mjs
@@ -107,6 +108,7 @@ jobs:
           node scripts/test-affiliate-short-browser.mjs http://127.0.0.1:8787
           node scripts/gift-card-browser.mjs http://127.0.0.1:8787
           node scripts/accounting-exam-browser.mjs http://127.0.0.1:8787
+          node scripts/account-entry-browser.mjs http://127.0.0.1:8787
       - name: Save screenshots for manual inspection
         if: always()
         uses: actions/upload-artifact@v4
