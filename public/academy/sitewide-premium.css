@@ -412,3 +412,6 @@ body:has(.ta-course-header){background:#f5f8fc;color:#162c42}
 .ta-course-header~main .examples{background:#edf3f8;border-color:#cfdce7;color:#1c384f}
 .ta-course-header~main .examples p{color:#455d72}
 .ta-course-header~main .stage-icon{box-shadow:0 3px 0 #bf9652}
+
+.ta-course-header~main .stage :is(ol,small),.ta-course-header~main .stages small,.accounting-landing :is(.curiosity-box,.learning-includes) p{color:#496279}
+.accounting-landing .skills-list strong{color:#17354d}
