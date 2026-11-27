@@ -15,7 +15,7 @@ async function fixture(viewport,authenticated=true){
  const context=await browser.newContext({viewport,serviceWorkers:'block'});const page=await context.newPage();let workspace=initial(),saves=0;const errors=[];
  page.on('pageerror',e=>errors.push(e.message));
  await context.route(url=>url.origin!==origin&&url.origin!==api,route=>route.fulfill({status:200,body:''}));
- await page.route(url=>url.origin===origin&&['/majatek-ksiegowy','/konto'].includes(url.pathname),async route=>{const response=await route.fetch({url:origin+new URL(route.request().url()).pathname+'.html'});await route.fulfill({response});});
+ await page.route(url=>url.origin===origin&&['/majatek-ksiegowy','/konto','/program-ksiegowosci','/temat-ksiegowosci'].includes(url.pathname),async route=>{const response=await route.fetch({url:origin+new URL(route.request().url()).pathname+'.html'});await route.fulfill({response});});
  if(authenticated)await page.addInitScript(({user})=>localStorage.setItem('sb-kcvvixcjuwglfvdpypzs-auth-token',JSON.stringify({access_token:'local-fixture-not-a-real-token',refresh_token:'local-fixture-no-server-access',expires_at:Math.floor(Date.now()/1000)+3600,expires_in:3600,token_type:'bearer',user})),{user});
  await page.route(url=>url.origin===api,async route=>{
   const request=route.request(),url=new URL(request.url()),json=(body,status=200)=>route.fulfill({headers,contentType:'application/json',body:JSON.stringify(body),status});
@@ -23,6 +23,14 @@ async function fixture(viewport,authenticated=true){
   if(!authenticated)return json({error:'local_unauthorized_fixture'},401);
   if(url.pathname==='/auth/v1/user')return json(user);
   if(url.pathname==='/rest/v1/rpc/ta_accounting_overview')return json({is_editor:true,approved_count:50,read_count:0,sections:[]});
+  if(url.pathname==='/rest/v1/ta_accounting_core_topics_v3')return json([{topic_no:1,section_no:1,title_pl:'Temat testowy',status:'complete'}]);
+  if(url.pathname==='/rest/v1/ta_accounting_core_materials_v3'){
+   const lesson={topic_no:1,title_pl:'Temat testowy',learning_goal:'Sprawdź dokument.',material:{
+    sections:[{heading:'Treść testowa',paragraphs:['Sekcja testowa.']}],
+    document_decision:{title:'Trening z dokumentem',scene:'Porównaj wpisy.',document:'Dokument treningowy',rows:[{label:'Plan',value:'13 zł'},{label:'Wpłata',value:'12 zł'}],
+     question:'Która pozycja pokazuje przelew?',options:['Plan','Wpłata'],feedback:['Przeczytaj drugi wiersz.','Zgadza się z wyciągiem.'],correct:1,clue:1,curiosity:'Wpłata ma własną datę.'}}};
+   return json([lesson]);
+  }
   if(url.pathname==='/rest/v1/ta_accounting_lab_workspaces')return json(url.searchParams.has('id')?workspace:[{id:workspace.id,name:workspace.name,version:workspace.version}]);
   if(url.pathname==='/rest/v1/rpc/ta_accounting_lab_save'){
    const payload=request.postDataJSON();if(payload.workspace_id!==workspace.id||payload.expected_version!==workspace.version)return json({code:'40001',message:'Konflikt wersji testowej'},409);
@@ -66,6 +74,35 @@ try{
   await sold.page.getByText('Składnik sprzedany i wyksięgowany w modelu.',{exact:true}).waitFor();
   assert.deepEqual(sold.errors,[]);
  });await sold.context.close();
+ for(const width of [360,1440]){
+  await pass('Nawigacja programu i dokument treningowy przy '+width+' px',async()=>{
+   const {context,page,errors}=await fixture({width,height:900});
+   try{
+    await page.goto(origin+'/program-ksiegowosci');
+    const chapter=page.getByRole('button',{name:/^Otwórz dział 1:/});
+    await chapter.click();
+    assert.equal(await chapter.getAttribute('aria-expanded'),'true');
+    await page.getByRole('link',{name:/Otwórz lekcję 1:/}).waitFor();
+    await chapter.click();
+    await page.getByRole('textbox',{name:'Szukaj tematu'}).fill('testowy');
+    await page.getByRole('heading',{name:'Znalezione tematy'}).waitFor();
+    await page.getByRole('link',{name:/Otwórz lekcję 1:/}).click();
+    await page.getByText('Dokument treningowy',{exact:true}).waitFor();
+    for(const label of ['Poznaj —','Przykład —','Ćwicz —','Zadanie —','Sprawdź —']){
+     const box=await page.getByRole('button',{name:new RegExp('^'+label)}).boundingBox();
+     assert.ok(box&&box.x>=0&&box.x+box.width<=width+1,label);
+    }
+    await page.getByRole('button',{name:'Plan',exact:true}).click();
+    await page.getByText('Przeczytaj drugi wiersz.',{exact:true}).waitFor();
+    await page.getByRole('button',{name:'Wpłata',exact:true}).press('Enter');
+    await page.getByText('Zgadza się z wyciągiem.',{exact:true}).waitFor();
+    await page.getByRole('button',{name:/^Sprawdź —/}).click();
+    await page.getByText('Dokończ ten temat i przejdź dalej').waitFor();
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    assert.deepEqual(errors,[]);
+   }finally{await context.close();}
+  });
+ }
  const mobile=await fixture({width:390,height:844});await mobile.page.goto(origin+'/majatek-ksiegowy');await fill(mobile.page);
  await pass('Widok 390 px nie wyjeżdża poza ekran',async()=>{const size=await mobile.page.evaluate(()=>({screen:innerWidth,width:document.documentElement.scrollWidth}));assert.ok(size.width<=size.screen+2,JSON.stringify(size));await mobile.page.screenshot({path:'/tmp/trenerki-assets-mobile.png',fullPage:true});assert.deepEqual(mobile.errors,[]);});await mobile.context.close();
  console.log(JSON.stringify({tests:checks,passed:checks,scope:'lokalny eksport + całkowicie przechwycone API, bez prawdziwego logowania',real_auth_test:false}));
