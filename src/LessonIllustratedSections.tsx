@@ -84,7 +84,7 @@ export default function LessonIllustratedSections({courseSlug,lessonNo,title,sec
   {showImage&&<View style={{backgroundColor:'#EFF3F8',padding:9,borderWidth:1,borderColor:'#DCE4ED',borderRadius:16,gap:7}}>
    <Image
     accessibilityLabel={volunteerImage?.alt??'Ilustracja objaśniająca temat: '+title}
-    source={{uri:'/academy/assets/'+file+(['rodzice-50-50','dziennik-kota','petsitter','wyjdz-z-toksycznego-zwiazku'].includes(courseSlug)?'?v=objects-20261127a':volunteerImage?'?v=20261126-objects':'')}}
+    source={{uri:'/academy/assets/'+file+(['rodzice-50-50','dziennik-kota','petsitter','wyjdz-z-toksycznego-zwiazku','partner-z-uzaleznieniem'].includes(courseSlug)?'?v=objects-20261127a':volunteerImage?'?v=20261126-objects':'')}}
     onError={()=>setFailed(true)}
     resizeMode="contain"
     style={{width:'100%',aspectRatio:(pastrySvg||editorialSvg)?16/9:undefined,height:(pastrySvg||editorialSvg)?undefined:Math.max(210,Math.min(395,typeof window==='undefined'?280:window.innerWidth*.45)),borderRadius:10}}
