@@ -188,7 +188,7 @@ for(const sample of samples){
 
  const account=createScreen('app/konto.tsx',{gift:sample.input});await account.flush();
  // Login is the current default on the account entry screen.
- await account.fillPlaceholder('Adres e-mail','Recipient@Example.test');await account.fillPlaceholder('Hasło (minimum 8 znaków)','test-password');
+ await account.fillPlaceholder('Adres e-mail','Recipient@Example.test');await account.fill('Hasło','test-password');
  await account.press('Zaloguj się');
  assert.equal(signIns.at(-1).email,'recipient@example.test');
  assert.deepEqual(account.navigation.at(-1),{method:'replace',to:{pathname:'/prezent',params:{code:sample.canonical}}},'sign-in must preserve short and legacy codes');
