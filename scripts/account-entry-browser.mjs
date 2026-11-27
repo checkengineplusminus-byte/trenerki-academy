@@ -6,7 +6,8 @@ const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 assert.match(origin,/^http:\/\/(?:127\.0\.0\.1|localhost):\d+$/);
 const engine=process.env.TRENERKI_TEST_ENGINE||'chromium';
 assert(['chromium','firefox','webkit'].includes(engine));
-const browser=await({chromium,firefox,webkit})[engine].launch(engine==='webkit'&&process.env.TRENERKI_WEBKIT_EXECUTABLE?{executablePath:process.env.TRENERKI_WEBKIT_EXECUTABLE}:{});
+const executablePath=process.env.TRENERKI_TEST_EXECUTABLE||(engine==='webkit'?process.env.TRENERKI_WEBKIT_EXECUTABLE:undefined);
+const browser=await({chromium,firefox,webkit})[engine].launch(executablePath?{executablePath}:{});
 const api='https://kcvvixcjuwglfvdpypzs.supabase.co';
 async function setup(width,metadata=null){
  const context=await browser.newContext({viewport:{width,height:960},serviceWorkers:'block'});

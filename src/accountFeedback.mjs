@@ -22,6 +22,7 @@ export function accountErrorMessage(error){
   same_password:'Nowe hasło musi różnić się od poprzedniego.',
   weak_password:'Wybierz silniejsze hasło. Użyj co najmniej 8 znaków.',
   otp_expired:'Link wygasł lub został już użyty. Poproś o nową wiadomość.',
+  invalid_link:'Nie udało się potwierdzić linku z wiadomości. Poproś o nowy link.',
   session_not_found:'Sesja wygasła. Zaloguj się ponownie lub poproś o nowy link zmiany hasła.',
   unexpected_failure:'Nie udało się wykonać operacji. Spróbuj ponownie za chwilę.',
  };

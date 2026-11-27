@@ -15,6 +15,7 @@ let activeUser=user,companyAssigned=false;let historyRecords=[];
 let firstIssue=true,batch=null,redeemError='wrong_email';
 function queryRows(rows){const chain=new Proxy({then:(resolve,reject)=>Promise.resolve({data:rows,error:null}).then(resolve,reject)},{get(target,key){return key==='then'?target.then:()=>chain;}});return chain;}
 const supabase={auth:{
+ initialize:async()=>({error:null}),
  getUser:async()=>({data:{user:activeUser},error:null}),
  signOut:async()=>{activeUser=null;return {error:null};},
  onAuthStateChange:()=>({data:{subscription:{unsubscribe:()=>{}}}}),
@@ -62,9 +63,9 @@ function createScreen(path,params={}){
  const require=name=>{
   if(name==='react')return {__esModule:true,default:react,...react};
   if(name==='react-native')return rn;
-  if(name==='expo-router')return {useRouter:()=>({replace:to=>navigation.push({method:'replace',to:JSON.parse(JSON.stringify(to))}),push:to=>navigation.push({method:'push',to:JSON.parse(JSON.stringify(to))})}),useLocalSearchParams:()=>params};
+  if(name==='expo-router')return {useRouter:()=>({replace:to=>navigation.push({method:'replace',to:JSON.parse(JSON.stringify(to))}),push:to=>navigation.push({method:'push',to:JSON.parse(JSON.stringify(to))}),setParams:()=>{}}),useLocalSearchParams:()=>params};
   if(name==='@supabase/supabase-js')return {FunctionsHttpError};
-  if(name==='../src/supabase'||name==='./supabase')return {supabase,isPasswordRecoveryRedirect:()=>false,clearPasswordRecoveryFlag:()=>{}};
+  if(name==='../src/supabase'||name==='./supabase')return {supabase,isPasswordRecoveryRedirect:()=>false,clearPasswordRecoveryFlag:()=>{},getAuthRedirectError:()=>null,clearAuthRedirectError:()=>{},hasPasswordRecoveryCallback:()=>false,getInitialAuthCallbackHash:()=>''};
   if(name==='../src/accountFeedback.mjs')return accountFeedback;
   if(name==='../src/academyApi')return {academyAction:async (action,body)=>{
    if(action==='redeem_gift'){courseRedemptions.push(body);return {ok:true};}
@@ -187,7 +188,7 @@ for(const sample of samples){
 
  const account=createScreen('app/konto.tsx',{gift:sample.input});await account.flush();
  // Login is the current default on the account entry screen.
- await account.fillPlaceholder('Adres e-mail','Recipient@Example.test');await account.fillPlaceholder('Hasło (minimum 8 znaków)','test-password');
+ await account.fillPlaceholder('Adres e-mail','Recipient@Example.test');await account.fill('Hasło','test-password');
  await account.press('Zaloguj się');
  assert.equal(signIns.at(-1).email,'recipient@example.test');
  assert.deepEqual(account.navigation.at(-1),{method:'replace',to:{pathname:'/prezent',params:{code:sample.canonical}}},'sign-in must preserve short and legacy codes');
