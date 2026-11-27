@@ -12,7 +12,7 @@ const academySections = [
 function academyMenuMarkup(signedIn,pathname='') {
   const links=academySections.map(([label,url])=>
     '<a href="'+url+'"'+(url===pathname?' aria-current="page"':'')+'>'+label+'</a>').join('');
-  const profile=signedIn===false?'Zaloguj się':'Mój profil';
+  const profile=signedIn===false?'Moje konto':'Mój profil';
   return '<nav class="ta-academy-bar" aria-label="Nawigacja akademii" data-academy-shortcuts>'+
     '<div class="ta-academy-inner"><a class="ta-academy-brand" href="/academy/index.html" aria-label="TRENERKI Academy">'+
     '<span class="ta-academy-mark" aria-hidden="true">T.</span><span>TRENERKI <small>ACADEMY</small></span></a>'+
