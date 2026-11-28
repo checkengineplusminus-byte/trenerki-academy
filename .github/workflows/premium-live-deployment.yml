@@ -28,21 +28,30 @@ jobs:
           for attempt in $(seq 1 54); do
             html_file=$(mktemp)
             css_file=$(mktemp)
+            nav_file=$(mktemp)
+            menu_file=$(mktemp)
             homepage_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$html_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/index.html' || true)
             stylesheet_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$css_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/premium-theme.css' || true)
+            nav_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$nav_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/course-share.js' || true)
+            menu_status=$(curl -L -sS -H 'Cache-Control: no-cache' -o "$menu_file" --max-time 20 -w '%{http_code}' 'https://trenerki.com/academy/academy-course-menu.v1.css' || true)
             css_hash=$(sha256sum "$css_file" | cut -c1-12)
             if [ "$css_hash" = "$(sha256sum public/academy/premium-theme.css | cut -c1-12)" ] && [ "$homepage_status" = 200 ] && [ "$stylesheet_status" = 200 ] && \
+                [ "$nav_status" = 200 ] && [ "$menu_status" = 200 ] && \
+                [ "$(sha256sum "$nav_file" | cut -c1-12)" = "$(sha256sum public/academy/course-share.js | cut -c1-12)" ] && \
+                [ "$(sha256sum "$menu_file" | cut -c1-12)" = "$(sha256sum public/academy/academy-course-menu.v1.css | cut -c1-12)" ] && \
+                grep -Fq 'class="ta-course-header"' "$html_file" && \
+                grep -Fq 'class="ta-academy-profile" href="/konto"' "$html_file" && \
                 grep -Fq "premium-theme.css?v=${css_hash}" "$html_file" && \
                 grep -Fq 'Responsive catalogue — single source of truth' "$css_file" && \
                 grep -Fq 'grid-template-columns:repeat(3,minmax(0,1fr))!important' "$css_file" && \
                 grep -Fq 'grid-template-columns:repeat(2,minmax(0,1fr))!important' "$css_file" && \
                 grep -Fq 'grid-template-columns:minmax(0,1fr)!important' "$css_file"; then
               echo "LIVE DESKTOP/TABLET/PHONE CSS VERSION VERIFIED at attempt $attempt"
-              rm -f "$html_file" "$css_file"
+              rm -f "$html_file" "$css_file" "$nav_file" "$menu_file"
               exit 0
             fi
             echo "Attempt $attempt: live CSS fingerprint/layout still pending"
-            rm -f "$html_file" "$css_file"
+            rm -f "$html_file" "$css_file" "$nav_file" "$menu_file"
             sleep 12
           done
           echo "::error::New grid CSS not yet available on the production website"
