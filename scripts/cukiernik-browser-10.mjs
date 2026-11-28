@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Real Playwright browser tests: ten distinct engines/viewport/device profiles.
 // Auth and learning API are synthetic; tests never use paid learner accounts.
 import assert from 'node:assert/strict';
@@ -9,7 +10,7 @@ const lessons=data.lessons;
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000001',email:'cukiernik-review@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
-const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const profiles=[
  ['chromium','desktop-large',1440,900,false],
  ['chromium','desktop-compact',1280,720,false],
@@ -36,6 +37,7 @@ async function setup(page,number){
   await route.fulfill({response});
  });
  const completed=Array.from({length:number},(_,i)=>({lesson_no:i})),answers=[];
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===apiOrigin,async route=>{
   const req=route.request(),u=new URL(req.url()),table=u.pathname.split('/').at(-1);
   const respond=(value,status=200)=>route.fulfill({headers,status,contentType:'application/json',body:JSON.stringify(value)});
@@ -43,7 +45,7 @@ async function setup(page,number){
   if(u.pathname==='/auth/v1/user')return respond(user);
   if(table==='ta_enrollments')return respond([{id:'synthetic'}]);
   if(table==='ta_lessons')return respond(lessons.map(x=>({lesson_no:x.lesson_no,title_pl:x.title_pl,material:x.material})));
-  if(table==='ta_drafts')return respond([]);
+  if(table==='ta_drafts')return serveDraft(route,headers);
   if(table==='ta_learning_progress')return respond(completed);
   if(table==='ta_courses')return respond([{title_pl:'Bądź lepszym cukiernikiem',description_pl:data.description}]);
   if(table==='ta_learning_attempts')return respond(answers);

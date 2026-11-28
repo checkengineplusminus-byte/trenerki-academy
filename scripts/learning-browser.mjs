@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // Exercise the exported /nauka route using synthetic learners and isolated API responses.
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -9,7 +10,7 @@ const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000001',email:'learner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
 const quiz={situation:'Próba na danych ćwiczebnych.',example:'Sprawdź wynik na dwóch danych.',question:'Jak zaczynasz?',options:['Sprawdzam dane','Pomijam dane','Zamykam okno'],correct:0,explanation:'Dane wpływają na wynik.'};
 const shortcuts=['L','PL','C'].map((combo,i)=>({combo,keys:[combo,'Enter'],kind:'alias',label:['Linia','Polilinia','Okrąg'][i],before:'Sprawdź wiersz poleceń.',after:'Przygotuj punkty figury '+combo+'.',tip:'Potwierdź Enterem.',platform:'AutoCAD Windows'}));
-const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const photos=JSON.parse(readFileSync(new URL('../public/academy/course-photo-manifest.json',import.meta.url),'utf8')).courses;
 
 async function serveExportedRoutes(page,routes){
@@ -87,6 +88,7 @@ async function installFixture(page,catalog){
   }));
  },{user});
  await serveExportedRoutes(page,['/nauka']);
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===apiOrigin,async route=>{
   const req=route.request(),url=new URL(req.url());
   const table=url.pathname.split('/').at(-1);
@@ -104,7 +106,7 @@ async function installFixture(page,catalog){
     ...(n===1?{learning:quiz}:{}),...(slug==='autocad-skroty'&&n===0?{shortcuts}:{}),
    },
   })));
-  if(table==='ta_drafts')return method==='POST'?route.fulfill({headers,status:201}):json([]);
+  if(table==='ta_drafts')return serveDraft(route,headers);
   if(table==='ta_learning_progress')return json(completed(slug).map(lesson_no=>({lesson_no})));
   if(table==='ta_courses')return json([{title_pl:'Kurs testowy '+slug,description_pl:'Dane demonstracyjne'}]);
   if(table==='ta_learning_attempts')return json(catalog?answers.filter(x=>x.course_slug===slug):[{lesson_no:1,mode:'case',correct:true},...answers.filter(x=>x.course_slug===slug)]);

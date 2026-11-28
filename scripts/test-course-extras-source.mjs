@@ -24,6 +24,7 @@ assert(source.includes("testID=\"general-lesson-homework\""));
 assert(source.includes("testID=\"general-lesson-homework-note\""));
 assert(source.includes('onSave(draft)'));
 assert(reader.includes("slug!=='ksiegowosc-od-podstaw'&&slug!=='norweski-na-budowie'&&slug!=='lepszy-cukiernik'"));
-assert(reader.includes("await persistDraft(firstPending?.lesson_no??module,{...notes,[String(module)]:draft})"));
+assert(reader.includes("await persistDraft(firstPending?.lesson_no??module)"));
+assert(reader.includes('courseNotesAdapter(supabase,u.id,slug)'));
 assert(reader.includes("if(slug==='ksiegowosc-od-podstaw'){router.replace(courseDestination(slug,lessonParam));return;}"));
 console.log('✓ 79/79 courses have real lesson-specific homework, 3 tips, scenario-based insights and authenticated saved notes; accounting excluded');

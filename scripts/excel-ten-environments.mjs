@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // QA: two independent sequential ten-environment rounds, each reviewed by IT,
 // a content critic and a course seller. Synthetic account/API; no learner data.
 import assert from 'node:assert/strict';
@@ -28,7 +29,7 @@ const roleIds=[
 ];
 assert.equal(roleIds.length,10);
 const user={id:'00000000-0000-4000-a000-000000000086',email:'excel-quality@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
-const cors={'access-control-allow-origin':base,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const cors={'access-control-allow-origin':base,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const sum=(items,field='netPrice')=>items.reduce((t,r)=>t+r.quantity*r[field],0);
 const northMaterial=rows.filter(x=>x.region==='Północ'&&x.category==='Materiały');
 const north=rows.filter(x=>x.region==='Północ');
@@ -49,6 +50,7 @@ async function install(page,events,firstTime=false,fullCurriculum=false){
   const res=await route.fetch({url:base+'/nauka.html'});
   await route.fulfill({response:res});
  });
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===api,async route=>{
   const request=route.request(),url=new URL(request.url()),table=url.pathname.split('/').at(-1);
   const response=(body,status=200)=>route.fulfill({headers:cors,status,contentType:'application/json',body:JSON.stringify(body)});
@@ -58,7 +60,8 @@ async function install(page,events,firstTime=false,fullCurriculum=false){
   if(table==='ta_courses')return response([{title_pl:'Excel od zera do analizy danych',description_pl:'Zadania zawodowe'}]);
   if(table==='ta_lessons')return response(fullCurriculum?authoredLessons:missions.map(x=>({lesson_no:x.lesson_no,title_pl:'Lekcja Excel '+(x.lesson_no+1),material:material(x.lesson_no)})));
   if(table==='ta_learning_progress')return response(firstTime?[]:Array.from({length:29},(_,lesson_no)=>({lesson_no})));
-  if(table==='ta_learning_attempts'||table==='ta_drafts')return response([]);
+  if(table==='ta_drafts')return serveDraft(route,cors);
+  if(table==='ta_learning_attempts')return response([]);
   if(table==='ta-lesson-guide'){
    const body=(()=>{try{return JSON.parse(request.postData()||'{}')}catch{return {}}})();
    if(fullCurriculum&&body.action==='attempt'&&body.mode==='case'){

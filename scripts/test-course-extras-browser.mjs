@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // No live credentials: synthetic student and mocked Supabase save operations.
 // First lesson of all regular non-accounting courses is tested on desktop/mobile;
 // a cross-browser selection is checked in Chromium, Firefox and Safari WebKit.
@@ -11,7 +12,7 @@ const byId=new Map(items.map(x=>[x.course_slug,x]));
 const origin=new URL(process.argv[2]||'http://127.0.0.1:8787').origin;
 const apiOrigin='https://kcvvixcjuwglfvdpypzs.supabase.co';
 const user={id:'00000000-0000-4000-a000-000000000031',email:'lesson-notes@example.test',aud:'authenticated',role:'authenticated',email_confirmed_at:'2026-01-01T00:00:00Z',app_metadata:{},user_metadata:{}};
-const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,OPTIONS'};
+const headers={'access-control-allow-origin':origin,'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer','access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const profiles=[
  ['chromium','desktop-large',1440,900,false],['chromium','desktop-small',1280,720,false],
  ['chromium','tablet-landscape',1024,768,false],['chromium','android-mobile',412,915,true],
@@ -32,7 +33,7 @@ async function setup(page,row){
   const response=await route.fetch({url:origin+'/nauka.html'});
   await route.fulfill({response});
  });
- let draft=null;
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===apiOrigin,async route=>{
   const req=route.request(),u=new URL(req.url()),table=u.pathname.split('/').at(-1);
   const respond=(value,status=200)=>route.fulfill({headers,status,contentType:'application/json',body:JSON.stringify(value)});
@@ -40,10 +41,7 @@ async function setup(page,row){
   if(u.pathname==='/auth/v1/user')return respond(user);
   if(table==='ta_enrollments')return respond([{id:'synthetic-enrollment'}]);
   if(table==='ta_lessons')return respond([{lesson_no:row.lesson_no,title_pl:row.title_pl,material:row.material}]);
-  if(table==='ta_drafts'){
-   if(req.method()==='POST'){draft=req.postDataJSON();return respond([],201);}
-   return respond(draft?[draft]:[]);
-  }
+  if(table==='ta_drafts')return serveDraft(route,headers);
   if(table==='ta_learning_progress')return respond([]);
   if(table==='ta_courses')return respond([{title_pl:row.title_pl,description_pl:'Praktyczny kurs z materiałami'}]);
   if(table==='ta_learning_attempts')return respond([]);

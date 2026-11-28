@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import {createDraftFixture} from './draft-fixture.mjs';
 // End-to-end audit of 30 real authored Excel lesson screens, 30 case quizzes,
 // all 12 bonus tasks and 8 interactive chart/table exercises.
 // Runs against the Expo production bundle with only synthetic Auth and Supabase data.
@@ -19,7 +20,7 @@ const user={id:'00000000-0000-4000-a000-0000000000f0',email:'all-excel-qa@exampl
  aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
 const cors={'access-control-allow-origin':base,
  'access-control-allow-headers':'apikey,authorization,content-type,x-client-info,accept-profile,content-profile,prefer',
- 'access-control-allow-methods':'GET,POST,OPTIONS'};
+ 'access-control-allow-methods':'GET,POST,PATCH,OPTIONS'};
 const visualLessons=new Set([9,15,17,18,20,25,26,29]);
 async function stubProduction(page,attempts){
  await page.addInitScript(({user})=>{
@@ -31,6 +32,7 @@ async function stubProduction(page,attempts){
   const response=await route.fetch({url:base+'/nauka.html'});
   await route.fulfill({response});
  });
+ const serveDraft=createDraftFixture();
  await page.route(url=>url.origin===api,async route=>{
   const request=route.request(),url=new URL(request.url()),table=url.pathname.split('/').at(-1);
   const response=(obj,status=200)=>route.fulfill({status,headers:cors,contentType:'application/json',body:JSON.stringify(obj)});
@@ -40,7 +42,8 @@ async function stubProduction(page,attempts){
   if(table==='ta_courses')return response([{title_pl:'Excel — kompletny kurs od podstaw do eksperta',description_pl:'Ćwiczenia kontrolne'}]);
   if(table==='ta_lessons')return response(lessons);
   if(table==='ta_learning_progress')return response(Array.from({length:29},(_,lesson_no)=>({lesson_no})));
-  if(table==='ta_learning_attempts'||table==='ta_drafts')return response([]);
+  if(table==='ta_drafts')return serveDraft(route,cors);
+  if(table==='ta_learning_attempts')return response([]);
   if(table==='ta-lesson-guide'){
    const body=(()=>{try{return JSON.parse(request.postData()||'{}')}catch{return {}}})();
    if(body.action==='attempt'&&body.mode==='case'){
