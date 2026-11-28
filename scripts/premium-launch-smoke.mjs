@@ -4,7 +4,7 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 const origin=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.TRENERKI_TEST_EXECUTABLE?{executablePath:process.env.TRENERKI_TEST_EXECUTABLE}:{})});
 let failed=false;
 const fakeScreenshot='<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1007"><rect width="1920" height="1007" fill="#e9eef5"/><text x="90" y="160" font-size="64" fill="#14263b">Przykladowy arkusz Excel — test offline</text></svg>';
 
@@ -27,7 +27,7 @@ async function testViewport(name,width,height,mobile){
   assert.equal(await page.locator('#course-cards .btn-buy-card').count(),0,'Each card has only a clear program link');
   assert.equal(await page.locator('#course-cards .btn-inline').count(),6);
   assert.equal(await page.locator('#anielka-question').count(),1,'Exactly one catalog search');
-  const headerPaint=await page.locator('.header').evaluate(el=>{
+  const headerPaint=await page.locator('.ta-academy-bar').evaluate(el=>{
    const style=getComputedStyle(el);return {image:style.backgroundImage,color:style.backgroundColor};
   });
   assert(headerPaint.image.includes('gradient')||headerPaint.color!=='rgba(0, 0, 0, 0)',
@@ -35,14 +35,14 @@ async function testViewport(name,width,height,mobile){
   const primary=await page.locator('.hero .btn-dark').evaluate(el=>getComputedStyle(el).color);
   assert.equal(primary,'rgb(23, 35, 53)','Gold CTA must use legible dark text');
   if(mobile){
-   const menu=page.locator('header .mobile-nav');
+   const menu=page.locator('header .ta-academy-mobile');
    await menu.locator('summary').click();
-   assert(await menu.getByRole('link',{name:'Moje konto'}).isVisible());
-   await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
+   assert(await page.locator('header .ta-academy-profile').isVisible());
+   await menu.getByRole('link',{name:'Kursy',exact:true}).click();
    assert.equal(await menu.getAttribute('open'),null,'Menu must close on selection');
-   assert.equal(await page.locator('header .nav').isVisible(),false,'Desktop links hidden on mobile');
+   assert.equal(await page.locator('header .ta-academy-links').isVisible(),false,'Desktop links hidden on mobile');
   }else{
-   assert(await page.locator('header .nav a[href="/firma"]').isVisible());
+   assert(await page.locator('header .ta-academy-links a[href="/firma"]').isVisible());
   }
   const gdpr=page.getByRole('region',{name:'Zgoda na pomiary reklamowe'});
   if(await gdpr.isVisible())await gdpr.getByRole('button',{name:'Odrzuć',exact:true}).click();

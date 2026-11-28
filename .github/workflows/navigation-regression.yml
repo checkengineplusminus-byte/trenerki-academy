@@ -17,6 +17,11 @@ on:
       - 'public/academy/ksiegowosc-od-podstaw.html'
       - 'scripts/test-navigation-consistency.mjs'
       - 'scripts/navigation-browser.mjs'
+      - 'scripts/public-release-browser.mjs'
+      - 'src/CourseReleaseNotice.tsx'
+      - 'src/navigationAssets.json'
+      - 'app/kup.tsx'
+      - 'app/+html.tsx'
       - '.github/workflows/navigation-regression.yml'
   push:
     branches: [main]
@@ -35,6 +40,11 @@ on:
       - 'public/academy/ksiegowosc-od-podstaw.html'
       - 'scripts/test-navigation-consistency.mjs'
       - 'scripts/navigation-browser.mjs'
+      - 'scripts/public-release-browser.mjs'
+      - 'src/CourseReleaseNotice.tsx'
+      - 'src/navigationAssets.json'
+      - 'app/kup.tsx'
+      - 'app/+html.tsx'
       - '.github/workflows/navigation-regression.yml'
   workflow_dispatch:
 permissions:
@@ -61,7 +71,7 @@ jobs:
         run: |
           npm install --no-audit --no-fund
           npm install --no-save --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium firefox webkit
       - name: Produce real web build
         run: |
           node scripts/generate-affiliate-short-pages.mjs
@@ -73,6 +83,7 @@ jobs:
           python3 -m http.server 8787 --directory /tmp/trenerki-nav-build >/tmp/trenerki-nav-http.log 2>&1 &
           sleep 2
           node scripts/navigation-browser.mjs http://127.0.0.1:8787
+          node scripts/public-release-browser.mjs http://127.0.0.1:8787
       - name: Store snapshots
         if: always()
         uses: actions/upload-artifact@v4

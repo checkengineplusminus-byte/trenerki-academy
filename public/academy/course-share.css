@@ -1,5 +1,10 @@
-@import url("/academy/sitewide-premium.css?v=20261126-sitewide1");
-@import url("/academy/academy-course-menu.v1.css");
+@import url("/academy/sitewide-premium.css?v=475b870dff44");
+@import url("/academy/academy-course-menu.v1.css?v=74e47c0f4b9f");
+
+.ta-release-notice{display:block;max-width:800px;margin:16px 0;padding:15px 18px;border:1px solid #D7B569;border-left:4px solid #C69B45;border-radius:12px;background:#FFF6E3;color:#14263B;font:400 14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;text-align:left}
+.ta-release-notice strong{display:block;color:#14263B;font-size:15px;font-weight:800}
+.ta-release-notice p{margin:5px 0 0;line-height:1.6;color:#43566B}
+.ta-release-summary{display:block;margin-top:8px;padding-top:8px;border-top:1px solid #D7B569;color:#795618;font-size:13px;font-weight:700;line-height:1.5}
 
 .course-actions {
   display: flex;

@@ -48,6 +48,7 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Verify real static legal, affiliate and SEO pages on iPhone and desktop
         run: |
+          node scripts/version-public-navigation-assets.mjs
           python3 -m http.server 8787 --directory public >/tmp/trenerki-public-page-http.log 2>&1 &
           sleep 2
           node scripts/test-sitewide-premium-browser.mjs http://127.0.0.1:8787

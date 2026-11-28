@@ -3,6 +3,7 @@ import {ScrollView,View,Text,Pressable,ActivityIndicator,Linking,Platform} from 
 import {useLocalSearchParams,useRouter} from 'expo-router';
 import {supabase} from '../src/supabase';
 import PurchaseLegalLinks from '../src/PurchaseLegalLinks';
+import CourseReleaseNotice from '../src/CourseReleaseNotice';
 import {coursePrice,termsVersion} from '../src/courseQuote';
 
 type Course={slug:string,title_pl:string,description_pl:string|null,category_pl:string|null,price_grosze:number};
@@ -109,8 +110,8 @@ export default function Purchase(){
     try{if((error as any).context?.json)code=String((await (error as any).context.json())?.error||'')}catch{}
     if(code==='quote_changed'){await loadQuote();throw new Error('Cena się zmieniła. Sprawdź nową kwotę i potwierdź ponownie.');}
     const message:Record<string,string>={
-      payments_not_configured:'Sprzedaż jest wyłączona w konfiguracji serwera. Administrator może sprawdzić cztery wymagane ustawienia w panelu TRENERKI.',
-      payments_not_live:'Serwer wymaga produkcyjnego klucza Stripe LIVE. Nie pobrano pieniędzy.',
+      payments_not_configured:'Płatność jest chwilowo niedostępna. Nie pobrano pieniędzy. Spróbuj ponownie później lub skontaktuj się z nami.',
+      payments_not_live:'Nie udało się przygotować płatności. Nie pobrano pieniędzy. Spróbuj ponownie później.',
       server_not_ready:'Brakuje konfiguracji serwera płatności. Nie pobrano pieniędzy.',
       database_unavailable:'Baza płatności jest tymczasowo niedostępna. Nie pobrano pieniędzy.',
       email_not_configured:'Potwierdzenia e-mail są chwilowo niedostępne. Spróbuj ponownie później.',
@@ -151,6 +152,7 @@ export default function Purchase(){
     <View style={{borderRadius:19,backgroundColor:'white',borderWidth:1,borderColor:'#DCE4ED',padding:23,gap:11}}>
      <Text style={{fontSize:12,color:'#63748c',fontWeight:'800'}}>{item.category_pl||'KURS ONLINE'}</Text>
      <Text style={{fontSize:26,fontWeight:'900',color:ink}}>{item.title_pl}</Text>
+     <CourseReleaseNotice slug={slug}/>
      <Text style={{fontSize:15,color:muted,lineHeight:24}}>{item.description_pl}</Text>
      <Text style={{fontSize:27,fontWeight:'900',color:ink}}>{item.price_grosze===0?'GRATIS':price}</Text>
      

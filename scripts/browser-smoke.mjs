@@ -3,7 +3,7 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 const root=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.TRENERKI_TEST_EXECUTABLE?{executablePath:process.env.TRENERKI_TEST_EXECUTABLE}:{})});
 let problems=[];
 
 async function verifyAllCataloguePhotos(ctx,expectedSlugs){
@@ -98,30 +98,30 @@ async function verify(name,viewport,isMobile){
   }),'The rotating course photo must not overlap its title');
   const field=page.locator('#anielka-question');
   const help=page.locator('header .nav-help');
-  const account=page.locator('header .demo-tag');
+  const account=page.locator('header .ta-academy-profile');
   assert.equal(await help.getAttribute('href'),'/pomoc');
   if(isMobile){
    // Mobile navigation replaces the crowded desktop controls.
-   const menu=page.locator('header .mobile-nav');
+   const menu=page.locator('header .ta-academy-mobile');
    const menuToggle=menu.locator('summary');
    await menuToggle.waitFor({state:'visible'});
-   assert.equal(await menu.locator('nav').getAttribute('aria-label'),'Menu mobilne');
+   assert.equal(await page.locator('[data-academy-shortcuts]').getAttribute('aria-label'),'Nawigacja akademii');
    await menuToggle.click();
-   await menu.getByRole('link',{name:'Przeglądaj kursy'}).waitFor({state:'visible'});
-   assert.equal(await menu.getByRole('link',{name:'Moje konto'}).getAttribute('href'),'/konto');
+   await menu.getByRole('link',{name:'Kursy',exact:true}).waitFor({state:'visible'});
+   assert.equal(await account.getAttribute('href'),'/konto');
    assert.equal(await menu.getByRole('link',{name:'Nie jesteś sam'}).getAttribute('href'),'/pomoc');
-   const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .brand').boundingBox();
+   const bounds=await menu.boundingBox(),brandBounds=await page.locator('header .ta-academy-brand').boundingBox();
    assert(bounds&&brandBounds&&bounds.x>=brandBounds.x+brandBounds.width-2,'Mobile menu should not overlap brand');
-   await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
+   await menu.getByRole('link',{name:'Kursy',exact:true}).click();
    assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close after selection');
    assert(await page.locator('#kursy').isVisible(),'Course section must remain available after mobile navigation');
-   assert.equal(await page.locator('header .nav').isVisible(),false,'Desktop navigation must be hidden on mobile');
+   assert.equal(await page.locator('header .ta-academy-links').isVisible(),false,'Desktop navigation must be hidden on mobile');
   }else{
    await help.waitFor({state:'visible'});
    assert.equal(await help.locator('small').innerText(),'Bezpłatna pomoc');
    assert.equal(await help.locator('.nav-help-heart').innerText(),'❤️');
    const supportStyle=await help.evaluate(el=>{
-    const menuStyle=getComputedStyle(document.querySelector('header .nav a'));
+    const menuStyle=getComputedStyle(document.querySelector('header .ta-academy-links a'));
     const style=getComputedStyle(el);
     const copy=el.querySelector('.nav-help-copy');
     return {matched:['fontFamily','fontSize','fontWeight','color'].every(key=>style[key]===menuStyle[key]),
@@ -237,7 +237,7 @@ async function verify(name,viewport,isMobile){
   assert.equal(await page.locator('#course-cards .course-card').first().getAttribute('data-course-category'),'technologie-i-logistyka');
   assert.doesNotMatch(await page.locator('#course-cards').innerText(),/\b\d+\s*(?:lekcj\w*|godz\w*|minut\w*)/i,'Cards should omit lesson counts and duration');
   assert.equal(await page.locator('.excel-free-intro').count(),0,'No separate Excel hero banner');
-   assert.equal(await page.locator('header .nav a[href*="excel"]').count(),0,'No extra Excel nav link');
+   assert.equal(await page.locator('header .ta-academy-links a[href*="excel"]').count(),0,'No extra Excel nav link');
   assert.equal(await page.locator('.catalog-more').count(),0,'No more-courses buttons');
   await page.locator('.category-tiles .category-tile').first().click();
   assert.equal(await page.locator('#course-cards .course-card').count(),9,'Selecting construction must show all nine courses');

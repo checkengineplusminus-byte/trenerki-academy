@@ -33,7 +33,7 @@ const pages=readdirSync(root,{recursive:true}).filter(path=>path.endsWith('.html
 for(const path of pages){
  const html=readFileSync(new URL(path,root),'utf8');
  if(path==='index.html'){
-  assert.match(html,/<header\b[^>]*>.*<div class="nav-actions"><a class="nav-help" href="\/pomoc"[^>]*>.*?<\/a><a class="demo-tag" href="\/konto"/s);
+  assert.match(html,/<header\b[^>]*>.*<div class="ta-academy-actions"><a class="nav-help" href="\/pomoc"[^>]*>.*?<\/a><a class="ta-academy-profile" href="\/konto"/s);
  }else{
   assert.match(html,/<footer\b[^>]*>.*href="\/pomoc"/s,path);
  }
