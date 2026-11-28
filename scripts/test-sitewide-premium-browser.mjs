@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 const root=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.TRENERKI_TEST_EXECUTABLE?{executablePath:process.env.TRENERKI_TEST_EXECUTABLE}:{})});
 const paths=[
  {path:'/academy/regulamin.html',type:'info',name:'regulamin'},
  {path:'/academy/prywatnosc.html',type:'info',name:'prywatnosc'},
@@ -33,7 +33,7 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
         item.path+' must load premium style directly or via current course-share.css');
     }else assert.equal(direct,1,item.path+' must include one direct premium stylesheet');
     const styleResult=await page.evaluate(()=>{
-     const el=document.body,head=document.querySelector('body > header');
+     const el=document.body,head=document.querySelector('body > header [data-academy-shortcuts]')||document.querySelector('body > header');
      const s=getComputedStyle(el),h=head?getComputedStyle(head):null;
      return {body:s.backgroundColor,headBackground:h?.backgroundImage||'',headColor:h?.color||'',text:s.color,
       cssLoaded:!![...document.styleSheets].find(s=>s.href?.includes('sitewide-premium.css')||s.href?.includes('course-share.css')),
@@ -50,7 +50,7 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
      assert(await page.locator('main h1').first().isVisible(),item.path+' visible heading');
     }
     if(item.type==='affiliate'){
-     assert(await page.locator('.ta-affiliate-mark').isVisible(),item.path+' golden brand mark');
+     assert(await page.locator('header .ta-academy-mark').isVisible(),item.path+' golden brand mark');
      if(item.name==='affiliate'){
       const button=page.getByRole('link',{name:'Dołącz do programu partnerskiego'});
       assert.equal(await button.getAttribute('href'),'/partner');
@@ -60,7 +60,7 @@ for(const viewport of [{name:'iphone',w:390,h:844,mobile:true},{name:'desktop',w
     if(item.type==='listing'){
      const back=page.locator('main .back');
      assert(await back.isVisible(),item.path+' breadcrumb');
-     const head=await page.locator('body > header').evaluate(el=>getComputedStyle(el).backgroundImage);
+     const head=await page.locator('body > header [data-academy-shortcuts]').evaluate(el=>getComputedStyle(el).backgroundImage);
      assert(head.includes('gradient'),item.path+' navy header');
     }
     if(['regulamin','affiliate','category','course'].includes(item.name)){

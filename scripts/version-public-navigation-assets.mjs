@@ -40,7 +40,11 @@ let scanned=0,referenced=0,updated=0;
 for(const path of htmlFiles(root)){
  scanned++;
  const original=readFileSync(path,'utf8');
- let result=original.replace(assetRefs,(_,start,name,end)=>{
+ let prepared=original;
+ if(/<header\b/i.test(prepared)&&!prepared.includes('/academy/course-share.js')){
+  prepared=prepared.replace('</head>','<link rel="stylesheet" href="/academy/course-share.css"><script defer src="/academy/course-share.js"></script></head>');
+ }
+ let result=prepared.replace(assetRefs,(_,start,name,end)=>{
   referenced++;
   return start+'/academy/'+name+'?v='+versions[name]+end;
  });

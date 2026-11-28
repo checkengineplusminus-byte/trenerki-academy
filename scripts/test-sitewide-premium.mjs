@@ -2,6 +2,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import {join} from 'node:path';
+import {createHash} from 'node:crypto';
 const root=new URL('../public/academy/',import.meta.url);
 const load=name=>readFileSync(new URL(name,root),'utf8');
 const themeFile='sitewide-premium.css';
@@ -14,7 +15,7 @@ assert.match(theme,/@media\s*\(max-width:760px\)/);
 assert.match(theme,/@media print/);
 const legal=['regulamin','prywatnosc','odstapienie','kontakt','certyfikaty','zrodla-zdjec'];
 const affiliate=['program-afiliacyjny','regulamin-afiliacyjny','prywatnosc-afiliacja'];
-const link='/academy/sitewide-premium.css?v=20261126-sitewide1';
+const link='/academy/sitewide-premium.css';
 for(const slug of legal){
  const h=load(slug+'.html');
  assert.match(h,/class="ta-info-page(?: ta-photo-credits)?"/,'Info page body class: '+slug);
@@ -52,7 +53,8 @@ for(const p of subpaths){
 }
 const support=load('support-footer.css');
 assert(support.includes(link),'Legacy shared footer should import the new theme');
-assert(load('course-share.css').includes(link),'Modern course and category pages must import the same theme');
+assert.match(load('course-share.css'),/@import\s+url\(["']\/academy\/sitewide-premium\.css(?:\?[^"')]+)?["']\)/,'Modern course and category pages must import the same theme');
+assert(load('course-share.css').includes(link+'?v='+createHash('sha256').update(theme).digest('hex').slice(0,12)),'Shared theme import must match the current stylesheet bytes');
 const pathnames=['regulamin','prywatnosc','certyfikaty','kontakt','odstapienie','program-afiliacyjny','regulamin-afiliacyjny','prywatnosc-afiliacja','zrodla-zdjec',...subpaths];
 for(const f of pathnames){
  const name=f.endsWith('.html')?f:f+'.html';
