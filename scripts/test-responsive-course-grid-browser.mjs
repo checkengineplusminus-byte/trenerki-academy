@@ -59,7 +59,7 @@ for(const config of cases){
   const overflow=await page.evaluate(()=>({
    page:document.documentElement.scrollWidth,viewport:document.documentElement.clientWidth,
    gold:getComputedStyle(document.querySelector('#course-cards .btn-inline')).backgroundImage,
-   navy:getComputedStyle(document.querySelector('.header')).backgroundImage
+   navy:getComputedStyle(document.querySelector('.ta-academy-bar')).backgroundImage
   }));
   assert(overflow.page<=overflow.viewport+3,config.name+' horizontal overflow: '+JSON.stringify(overflow));
   assert(overflow.gold.includes('gradient'),config.name+' gold CTA missing');

@@ -3,22 +3,40 @@
 const academySections = [
   ['Kursy','/academy/index.html#kursy'],
   ['Moje kursy','/moje-kursy'],
+  ['Jak to działa','/academy/index.html#jak-dziala'],
   ['Dyplomy','/moje-dyplomy'],
-  ['Dla firm','/firma'],
-  ['Pomoc','/pomoc']
+  ['Dla firm','/firma']
 ];
+
+const accountingRelease = Object.freeze({
+  title:'Kurs w trakcie dopracowania',
+  summary:'Wydanie w trakcie dopracowania. Dokument po egzaminie: wzór testowy.',
+  body:'Kupujesz dostęp do bieżącego wydania materiałów. Po zaliczeniu egzaminu w tym wydaniu otrzymasz dokument oznaczony jako „wzór testowy”.'
+});
+function courseRelease(slug){return slug==='ksiegowosc-od-podstaw'?accountingRelease:null;}
+function courseReleaseMarkup(slug){
+  const release=courseRelease(slug);
+  return release?'<aside class="ta-release-notice" data-course-release="'+slug+'" role="note"><strong>'+release.title+'</strong><p>'+release.body+'</p></aside>':'';
+}
+function courseReleaseSummaryMarkup(slug){
+  const release=courseRelease(slug);
+  return release?'<p class="ta-release-summary" data-course-release="'+slug+'" role="note">'+release.summary+'</p>':'';
+}
 
 // Only these static labels and destinations are inserted into the header.
 function academyMenuMarkup(signedIn,pathname='') {
   const links=academySections.map(([label,url])=>
     '<a href="'+url+'"'+(url===pathname?' aria-current="page"':'')+'>'+label+'</a>').join('');
-  const profile=signedIn===false?'Moje konto':'Mój profil';
+  // The destination verifies the session. Public pages must not guess whether
+  // somebody is signed in, or rename the same destination across screens.
+  const profile='Moje konto';
+  const support='<a class="nav-help" href="/pomoc"><span class="nav-help-heart" aria-hidden="true">❤️</span><span class="nav-help-copy">Nie jesteś sam<small>Bezpłatna pomoc</small></span></a>';
   return '<nav class="ta-academy-bar" aria-label="Nawigacja akademii" data-academy-shortcuts>'+
     '<div class="ta-academy-inner"><a class="ta-academy-brand" href="/academy/index.html" aria-label="TRENERKI Academy">'+
     '<span class="ta-academy-mark" aria-hidden="true">T.</span><span>TRENERKI <small>ACADEMY</small></span></a>'+
     '<div class="ta-academy-links">'+links+'</div>'+
-    '<details class="ta-academy-mobile"><summary>Menu <span aria-hidden="true">▾</span></summary><div>'+links+'</div></details>'+
-    '<a class="ta-academy-profile" href="/konto"'+(pathname==='/konto'?' aria-current="page"':'')+'>'+profile+'</a></div></nav>';
+    '<details class="ta-academy-mobile"><summary>Menu <span aria-hidden="true">▾</span></summary><div>'+links+'<a href="/pomoc">Nie jesteś sam</a></div></details>'+
+    '<div class="ta-academy-actions">'+support+'<a class="ta-academy-profile" href="/konto"'+(pathname==='/konto'?' aria-current="page"':'')+'>'+profile+'</a></div></div></nav>';
 }
 
 function bindAcademyDisclosure(menu) {
@@ -26,18 +44,21 @@ function bindAcademyDisclosure(menu) {
   const closeOutside=event=>{if(menu.open&&!menu.contains(event.target))menu.open=false;};
   const escape=event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary').focus();}};
   const resize=()=>{if(window.innerWidth>1070)menu.open=false;};
+  const navigate=event=>{if(event.target.closest('a'))menu.open=false;};
   document.addEventListener('pointerdown',closeOutside);
   document.addEventListener('keydown',escape);
   window.addEventListener('resize',resize);
+  menu.addEventListener('click',navigate);
   return ()=>{
     document.removeEventListener('pointerdown',closeOutside);
     document.removeEventListener('keydown',escape);
     window.removeEventListener('resize',resize);
+    menu.removeEventListener('click',navigate);
   };
 }
 
 function initializeAcademyShortcuts() {
-  if (!/^\/academy\/(?:kursy\/|kategorie\/|ksiegowosc-od-podstaw\.html)/.test(location.pathname)) return;
+  if (!location.pathname.startsWith('/academy/')) return;
   const header=document.querySelector('body > header');
   if(!header)return;
   if(!header.querySelector('.ta-academy-bar'))header.innerHTML=academyMenuMarkup();
@@ -63,16 +84,11 @@ function initializeAcademyMobileMenu() {
 }
 function initializeAcademyNavigation() {
   initializeAcademyShortcuts();
-  const catalogueHeader=document.querySelector('body > header.header');
-  if(catalogueHeader&&document.getElementById('app')){
-    catalogueHeader.insertAdjacentHTML('afterbegin',academyMenuMarkup());
-    bindAcademyDisclosure(catalogueHeader.querySelector('.ta-academy-mobile'));
-  }
   initializeAcademyMobileMenu();
 }
 // Expo and the static export consume the same navigation markup as the public pages.
 if(typeof module!=='undefined'&&module.exports){
-  module.exports={academyMenuMarkup,bindAcademyDisclosure};
+  module.exports={academyMenuMarkup,bindAcademyDisclosure,courseRelease,courseReleaseMarkup,courseReleaseSummaryMarkup};
 }else if(typeof document!=='undefined'){
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded',initializeAcademyNavigation,{once:true});

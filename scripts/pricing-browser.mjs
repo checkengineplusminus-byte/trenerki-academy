@@ -2,7 +2,7 @@
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 const root=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.TRENERKI_TEST_EXECUTABLE?{executablePath:process.env.TRENERKI_TEST_EXECUTABLE}:{})});
 try{
  for(const size of [{width:390,height:844},{width:1440,height:900}]){
   const ctx=await browser.newContext({viewport:size,locale:'pl-PL'}),page=await ctx.newPage();
@@ -10,7 +10,7 @@ try{
   await page.route('**/rest/v1/**',route=>route.fulfill({status:503,contentType:'application/json',body:'[]'}));
   await page.goto(root+'/academy/index.html',{waitUntil:'domcontentloaded'});
   assert.equal(await page.locator('.excel-free-intro').count(),0,'No duplicate Excel banner at the top');
-  assert.equal(await page.locator('header .nav a[href*="excel"]').count(),0,'No extra Excel navigation tab');
+  assert.equal(await page.locator('header .ta-academy-links a[href*="excel"]').count(),0,'No extra Excel navigation tab');
   const freeCards=page.locator('#course-cards .free-starter-grid .course-card');
   assert.deepEqual(await freeCards.evaluateAll(nodes=>nodes.map(node=>node.dataset.courseId)),['excel-skroty','zaufany-wolontariusz','swiety-mikolaj']);
   assert.deepEqual(await freeCards.locator('.price').allTextContents(),['GRATIS','GRATIS','GRATIS']);

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readdirSync} from 'node:fs';
 import {chromium} from 'playwright';
 const base=(process.argv[2]||'http://127.0.0.1:8787').replace(/\/+$/,'');
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,...(process.env.TRENERKI_TEST_EXECUTABLE?{executablePath:process.env.TRENERKI_TEST_EXECUTABLE}:{})});
 let errors=[];
 const sampleRoutes=[
  '/academy/kursy/autocad-skroty.html',
@@ -29,10 +29,10 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['tablet',{width:
    await nav.waitFor({state:'visible',timeout:8000});
    assert.equal(await nav.evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(12, 37, 60)',route+' menu theme');
    if(type!=='desktop')await nav.locator('summary').click();
-   assert.equal(await nav.getByRole('link',{name:'Mój profil'}).getAttribute('href'),'/konto',route+' account');
+   assert.equal(await nav.getByRole('link',{name:'Moje konto',exact:true}).getAttribute('href'),'/konto',route+' account');
    assert.equal(await nav.getByRole('link',{name:'Moje kursy'}).getAttribute('href'),'/moje-kursy',route+' library');
    assert.equal(await nav.getByRole('link',{name:'Kursy',exact:true}).getAttribute('href'),'/academy/index.html#kursy',route+' catalogue');
-   const accessible=await nav.getByRole('link',{name:'Mój profil'}).isVisible();
+   const accessible=await nav.getByRole('link',{name:'Moje konto',exact:true}).isVisible();
    assert(accessible,route+' profile link must be visible in viewport');
    if(type!=='desktop'){
     await page.keyboard.press('Escape');
@@ -46,18 +46,18 @@ for(const [type,viewport]of [['iphone',{width:390,height:844}],['tablet',{width:
   await page.getByRole('navigation',{name:'Nawigacja akademii'}).waitFor();
   const h=await page.goto(base+'/academy/index.html',{waitUntil:'domcontentloaded'});
   assert.equal(h?.status(),200);
-  const acc=page.locator('header .demo-tag');
+  const acc=page.locator('header .ta-academy-profile');
   assert.equal(await acc.getAttribute('href'),'/konto');
   assert.match(await acc.innerText(),/Moje konto/);
   if(type!=='desktop'){
-   const menu=page.locator('header .mobile-nav');
+   const menu=page.locator('header .ta-academy-mobile');
    await menu.locator('summary').click();
-   assert(await menu.getByRole('link',{name:'Moje konto'}).isVisible());
+   assert(await acc.isVisible());
    assert.equal(await menu.getByRole('link',{name:'Dla firm'}).getAttribute('href'),'/firma');
    await page.keyboard.press('Escape');
    assert.equal(await menu.getAttribute('open'),null,'Escape closes the dropdown');
    await menu.locator('summary').click();
-   await menu.getByRole('link',{name:'Przeglądaj kursy'}).click();
+   await menu.getByRole('link',{name:'Kursy',exact:true}).click();
    assert.equal(await menu.getAttribute('open'),null,'Mobile menu must close after selection');
   }
   // Local static test server has no Expo Hosting route rewrite. Serve the

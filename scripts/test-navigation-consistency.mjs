@@ -3,6 +3,8 @@
 import assert from 'node:assert/strict';
 import {readFileSync,readdirSync,existsSync} from 'node:fs';
 import {resolve,join} from 'node:path';
+import {createRequire} from 'node:module';
+const {academyMenuMarkup}=createRequire(import.meta.url)('../public/academy/course-share.js');
 const root=resolve(process.cwd(),'public');
 const read=path=>readFileSync(join(root,path),'utf8');
 const courseDir=join(root,'academy','kursy');
@@ -35,11 +37,12 @@ for(const relative of [
  }
 }
 const home=read('academy/index.html');
-assert.match(home,/<details class="mobile-nav"/,'Mobile menu must be present');
-assert.match(home,/<details class="mobile-nav"[^>]*>[\s\S]*?<a href="\/firma">Dla firm<\/a>[\s\S]*?<\/details>/,'Mobile menu must contain the Dla firm route');
-assert.match(home,/<details class="mobile-nav"><summary>/,'Mobile menu summary must not always say Open');
+assert(home.includes(academyMenuMarkup()),'Home and offers must share the same navigation, including without JavaScript');
+assert.match(home,/<details class="ta-academy-mobile"[^>]*>[\s\S]*?<a href="\/firma">Dla firm<\/a>[\s\S]*?<\/details>/,'Mobile menu must contain the Dla firm route');
+assert.match(home,/<details class="ta-academy-mobile"><summary>/,'Mobile menu summary must not always say Open');
 assert.match(home,/<a href="\/moje-kursy">Moje kursy<\/a>/,'Learner library must be reachable');
-assert.match(home,/<a href="\/konto">Moje konto<\/a>/,'Logged-in and logged-out users need account access');
+assert.match(home,/<a class="ta-academy-profile" href="\/konto">Moje konto<\/a>/,'Logged-in and logged-out users need account access');
+assert.equal(academyMenuMarkup(true),academyMenuMarkup(false),'The same account destination must keep the same label across public and authenticated screens');
 const navJS=read('academy/course-share.js');
 assert.match(navJS,/ta-academy-profile[^\n]*href="\/konto"/,'Standalone offers must link to profile');
 assert.match(navJS,/Moje kursy.*\/moje-kursy/,'Standalone offers must link to library');
